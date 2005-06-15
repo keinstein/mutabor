@@ -1,0 +1,11 @@
+del *.bak
+del *.~*
+del *.obr
+del *.csm
+del *.mlt
+del *.met
+del *.obj
+del *.il*
+del *.tds
+del *.res
+del *.gid
