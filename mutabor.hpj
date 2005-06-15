@@ -1,0 +1,30 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+; Mutabor 3, 1999
+
+[OPTIONS]
+COMPRESS=12 Hall Zeck
+LCID=0x407 0x0 0x0 ; Deutsch (Deutschland)
+REPORT=Yes
+FTS=1
+TITLE=Hilfe zu Mutabor
+CNT=mutabor.cnt
+COPYRIGHT=R. Krauﬂe, Version 3.0, 1999
+HLP=mutabor.hlp
+
+[FILES]
+mutabor.rtf
+muhlp.rtf
+NoHelp.rtf
+
+[MAP]
+#include diahlp.h
+#include Help.rh
+#include mutabor.rh
+
+[WINDOWS]
+main="",(149,60,748,860),60672,(r14811135),(r8454143),f3
+
+[CONFIG]
+BrowseButtons()
+CreateButton("btn_hb", "&Handbook", "JumpContents(handbook.hlp)")

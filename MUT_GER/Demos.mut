@@ -1,0 +1,388 @@
+LOGIK
+    Gleich Taste G = Halb
+    [
+	Taste T -> Test
+	Taste D -> Drittel
+        Taste V -> Viertel
+        Taste A -> Achtel 
+        Taste S -> Sechzehntel
+        Taste P -> Pentatonik
+    ] 
+
+    Historisch Taste H =
+    [ 
+  	Taste P -> Pythagoras
+        Taste M -> Mitteltoenig                                 
+        Taste S -> Silbermann 
+        Taste W -> Werckmeister
+        Taste K -> Kirnberger3
+        Taste B -> Bach 
+        Taste C -> Schlick
+    ] 
+
+    TonNetz Taste N = C_Dur
+    [
+        FORM nTerz -> Transpo ( Abstand )
+   	FORM nDur  -> Transpo ( Abstand ) 
+        FORM nMoll -> Transpo ( Abstand ) 
+    ]
+
+    Obertoene Taste O = Obertoene [ ]
+
+    Selbst Taste S = Init
+    [
+    	Taste U -> Up(ABSTAND)
+   	Taste D -> Down(ABSTAND)
+	FORM Keyb -> Leer
+    ]
+
+INTERVALL
+    Pentaton = 5 Wurzel 2
+    Halbton = 12 Wurzel 2
+    Drittelton = 18 Wurzel 2
+    Viertelton = 24 Wurzel 2
+    Achtelton = 48 Wurzel 2
+    Sechzehntelton = 96 Wurzel 2
+        
+    Terz = 5:4
+    Quint = 3:2
+    Oktave = 2:1
+    Natursept = 7:4
+
+    Cent = 1200 Wurzel 2
+
+" ======================================= Gleichstufige Stimmungen " 
+
+TONSYSTEM
+    Halb        = 60 [ c ] Halbton
+    Drittel     = 60 [ c ] Drittelton
+    Viertel     = 60 [ c ] Viertelton
+    Achtel      = 60 [ c ] Achtelton
+    Sechzehntel = 60 [ c ] Sechzehntelton
+    Pentatonik  = 60 [ ,c, ,p1, , ,p2, ,p3, ,p4, ] Oktave
+
+TON "allgemeine Tondeklarationen" 
+    a=440                   
+    c=a-Terz+Quint-Oktave   
+
+TON "für die Pentatonik"
+    p1=c+Pentaton
+    p2=c+2Pentaton
+    p3=c+3Pentaton
+    p4=c+4Pentaton
+
+TONSYSTEM
+    Test        = 60 [ c ] Testint
+INTERVALL
+    Testint = 43 wurzel 2 
+
+
+" ======================================= HISTORISCHE STIMMUNGEN    
+
+  Quellen: - B.Billeter, Anweisung zum Stimmen von Tasteninstrumenten
+           - H.Kelletat, Zur musikalischen Temperatur (Band I + II)
+           - Wandel&Goltermann (Hrsg.), Ein Beitrag zur musik.Temp.
+                                der Musikinstrumente vom Mittelalter
+                                bis zur Gegenwart
+           
+  ======================================= Pythagoreisches Tonsystem "
+
+TON
+    pc = c
+    pd = pg + Quint - Oktave
+    pe = pa + Quint - Oktave
+    pf = pc - Quint + Oktave
+    pg = pc + Quint
+    pa = pd + Quint
+    ph = pe + Quint 
+
+TONSYSTEM
+    Pythagoras = 60 [ pc, ,pd, ,pe,pf, ,pg, ,pa, ,ph] Oktave
+
+
+" ======================================= Mitteltoenig "
+
+INTERVALL
+    SynKomma=81:80
+
+TON
+    mc   = c
+    mcis = mfis + Quint - 0.25 Synkomma - Oktave
+    md   = mg   + Quint - 0.25 Synkomma - Oktave
+    mes  = mb   - Quint + 0.25 Synkomma 
+    me   = ma   + Quint - 0.25 Synkomma - Oktave
+    mf   = mc   - Quint + 0.25 Synkomma + Oktave
+    mfis = mh   + Quint - 0.25 SynKomma - Oktave
+    mg   = mc   + Quint - 0.25 Synkomma
+    mgis = mcis + Quint - 0.25 Synkomma
+    ma   = md   + Quint - 0.25 Synkomma
+    mb   = mf   - Quint + 0.25 Synkomma + Oktave
+    mh   = me   + Quint - 0.25 Synkomma
+      
+TONSYSTEM
+    Mitteltoenig = 60 [ mc,mcis,md,mes,me,mf,mfis,mg,mgis,ma,mb,mh] Oktave
+
+
+" ======================================== Silbermann "
+
+TON
+    sc   = c
+    scis = sfis + Quint - 0.181 Synkomma - Oktave
+    sd   = sg   + Quint - 0.181 Synkomma - Oktave
+    ses  = sb   - Quint + 0.181 Synkomma 
+    se   = sa   + Quint - 0.181 Synkomma - Oktave
+    sf   = sc   - Quint + 0.181 Synkomma + Oktave
+    sfis = sh   + Quint - 0.181 SynKomma - Oktave
+    sg   = sc   + Quint - 0.181 Synkomma
+    sgis = scis + Quint - 0.181 Synkomma
+    sa   = sd   + Quint - 0.181 Synkomma
+    sb   = sf   - Quint + 0.181 Synkomma + Oktave
+    sh   = se   + Quint - 0.181 Synkomma
+       
+TONSYSTEM
+    Silbermann = 60 [ sc,scis,sd,ses,se,sf,sfis,sg,sgis,sa,sb,sh] Oktave
+
+
+" ======================================= Werckmeister 
+
+  Bei vielen Stimmungen wurde eine Inkonsistenz in der Literatur
+  bemerkt. Wenn dort in der Stimmanweisung die Rede war von
+  'Die Quinten von C bis A mitteltönig', und wir die mitteltönige
+  Quint mit 1/4 Synton.Komma ansetzen, so erhält man bereits beim
+  A Abweichungen von über 1.4 Cent gegenüber den Centtabellen in
+  derselbel Literatur! Deshalb habe ich hier ein wenig interpoliert. "
+
+INTERVALL
+    MQ = 1.495:1 "ein wenig kleiner als die exakt mittelt. Quint"
+
+TON
+    wc   = c
+    wcis = wgis-quint
+    wd   = wg+MQ-oktave
+    wdis = wb-quint
+    we   = wa+quint-oktave
+    wf   = wc-quint+oktave
+    wfis = wcis-quint+oktave
+    wg   = wc+MQ   
+    wgis = wdis-quint+oktave
+    wa   = wd+MQ
+    wb   = wf-quint+oktave
+    wh   = we+quint
+      
+TONSYSTEM
+    Werckmeister=60[wc,wcis,wd,wdis,we,wf,wfis,wg,wgis,wa,wb,wh]Oktave
+
+
+" ====================================== Kirnberger 3 "
+" Das pyth. Komma wird ungleichmäßig auf die
+  Quinten C-G-D-A und Cis-Fis verteilt.
+  siehe H.Kelletat, Zur musik. Temp. Band II, 1982, S.140 "
+  
+INTERVALL
+    p1_12   = 1.00112989063:1 "1/12   pyth. Komma"
+    p2_12   = 1.00226105791:1 "2/12   pyth. Komma"
+    p25_120 = 1.00282712075:1 "2,5/12 pyth. Komma"
+    p3_12   = 1.00339350329:1 "3/12   pyth. Komma"
+    p35_120 = 1.00396020572:1 "3,5/12 pyth. Komma"
+    PythKomma = 531441:524288
+
+TON
+    kc   = c
+    kg   = kc + quint- p2_12
+    kd   = kg + quint- p25_120 - oktave
+    ka   = kd + quint - p35_120
+    ke   = ka + quint - p3_12 - oktave
+    kcis = kfis + quint - p1_12 - oktave
+    kh   = ke + quint
+    kb   = kf - quint + oktave
+    kes  = kb - quint
+    kf   = kc - quint + oktave
+    kgis = kcis + quint
+    kfis = kh + quint - oktave
+
+TONSYSTEM 
+    Kirnberger3=60[kc,kcis,kd,kes,ke,kf,kfis,kg,kgis,ka,kb,kh]Oktave
+
+
+" ====================================== 'Bach' (nach Billeter 1979)
+
+  hier erschien es mir am sinnvollsten, einfach die in der
+  Literatur angegebene Cent-tabelle abzuschreiben.              "
+
+TON
+    bc   = c
+    bcis = bc +   92 cent
+    bd   = bc +  200 cent
+    bes  = bc +  296 cent
+    be   = bc +  390 cent
+    bf   = bc +  500 cent
+    bfis = bc +  590 cent
+    bg   = bc +  700 cent
+    bgis = bc +  794 cent
+    ba   = bc +  895 cent
+    bb   = bc +  998 cent
+    bh   = bc + 1090 cent    
+
+TONSYSTEM
+   Bach = 60 [bc,bcis,bd,bes,be,bf,bfis,bg,bgis,ba,bb,bh] Oktave
+
+
+" ====================================== Schlick 
+
+  Es hat über eine Stunde gebraucht, bis ich diese Stimmung fertig
+  programmiert hatte. Dies lag an der schwer zu interpretierenden
+  Literatur über die Schlick-Stimmung. Angaben im Buch stimmten nicht
+  mit dem Hörtest überein, und so habe ich mehrmals neu programmiert.
+  ich hoffe, die Stimmung nun getroffen zu haben.                     "
+  
+INTERVALL
+    Spy = 1.002261058:1 "sechstel PythagoKomma"
+    Zpy = 1.001129891:1 "zwölftel PythagoKomma"
+
+TON
+    cf  = c-quint+Spy+oktave
+    cg  = c+quint-Spy
+    cd  = cg+quint-Spy-oktave
+    ca  = cd+quint-Spy
+    ce  = ca+quint-Spy-oktave
+    ch  = ce+quint-Spy
+    cb  = cf-quint+Zpy+oktave
+    ces = cb-quint+Zpy
+    cas = ces-708cent+oktave
+    cfis= ch+quint-Zpy-oktave
+    ccis= cfis+quint-Zpy-oktave
+    
+TONSYSTEM
+    Schlick=60[c,ccis,cd,ces,ce,cf,cfis,cg,cas,ca,cb,ch]Oktave
+
+
+" ====================================== Tonales Netz 
+
+  Eine mutierende Rein-Stimmung nach Martin Vogel. "
+
+TON
+    nc = nf + quint - oktave
+    ndes = nas - quint
+    nd = ng + quint - oktave
+    nes = ng-terz
+    ne = nc+terz
+    nf = na-terz
+    nfis = nd+terz
+    ng = nc+quint
+    nas =nc-terz + oktave
+    na = 440
+    nb = nf-quint + oktave
+    nh = ng+terz
+
+TONSYSTEM
+    C_dur = 60  [ nc,ndes,nd,nes,ne,nf,nfis,ng,nas,na,nb,nh] oktave
+ 
+UMSTIMMUNG
+    Transpo(x)=@+x[]
+
+HARMONIE
+    nTerz={0,4,*7,*10}
+    nDur ={0,*4,7}
+    nMoll={0,3,7}
+
+" ====================================== Obertöne 
+  Auf den weissen Tasten eine Obertonreihe, auf den schwarzen eine
+  Untertonreihe ; über 3 Oktaven der Klaviatur "
+
+INTERVALL
+    i1=1:1   i2=2:1   i3=3:1   i4=4:1   i5=5:1   i6=6:1
+    i7=7:1   i8=8:1   i9=9:1   i10=10:1 i11=11:1 i12=12:1
+    i13=13:1 i14=14:1 i15=15:1 i16=16:1 i17=17:1 i18=18:1
+    i19=19:1 i20=20:1 i21=21:1 i22=22:1 i23=23:1 i24=24:1
+    i25=25:1 i27=27:1 i28=28:1 i30=30:1
+
+TON
+    AA=110
+    o2=AA+i2   o3=AA+i3   o4=AA+i4   o5=AA+i5   o6=AA+i6   o7=AA+i7
+    o8=AA+i8   o9=AA+i9   o10=AA+i10 o11=AA+i11 o12=AA+i12 o13=AA+i13
+    o14=AA+i14 o15=AA+i15 o16=AA+i16 o17=AA+i17 o18=AA+i18 o19=AA+i19
+    o20=AA+i20 o21=AA+i21 o22=AA+i22 o23=AA+i23 o24=AA+i24 o25=AA+i25
+    o27=AA+i27 o28=AA+i28 o30=AA+i30
+    CC=AA+5i2
+    u2=CC-i2   u3=CC-i3   u4=CC-i4   u5=CC-i5   u6=CC-i6   u7=CC-i7
+    u8=CC-i8   u9=CC-i9   u10=CC-i10 u11=CC-i11 u12=CC-i12 u13=CC-i13
+    u14=CC-i14 u15=CC-i15 u16=CC-i16 u17=CC-i17 u18=CC-i18 u19=CC-i19
+    u20=CC-i20 u21=CC-i21 u22=CC-i22 u23=CC-i23 u24=CC-i24 
+ 
+TONSYSTEM
+    Obertoene = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
+                  o8,u10,o9,u9,o10,o11,u8,o12,u7,o13,u6,o14,
+                  o15,u5,o16,u4,o17,o18,u3,o19,u2,o20,CC,o21 ] i1
+
+" ====================================== Stimmung zum selbst verändern 
+  Immer de zuletzt angeschlagene Ton kann über die
+  Computertastatur verändert werden."
+
+UMSTIMMUNG
+    U__0 = [ @+Delta, @, @, @, @, @, @, @, @, @, @, @]  
+    U__1 = [ @, @+Delta, @, @, @, @, @, @, @, @, @, @]  
+    U__2 = [ @, @, @+Delta, @, @, @, @, @, @, @, @, @]  
+    U__3 = [ @, @, @, @+Delta, @, @, @, @, @, @, @, @]  
+    U__4 = [ @, @, @, @, @+Delta, @, @, @, @, @, @, @]  
+    U__5 = [ @, @, @, @, @, @+Delta, @, @, @, @, @, @]  
+    U__6 = [ @, @, @, @, @, @, @+Delta, @, @, @, @, @]  
+    U__7 = [ @, @, @, @, @, @, @, @+Delta, @, @, @, @]  
+    U__8 = [ @, @, @, @, @, @, @, @, @+Delta, @, @, @]  
+    U__9 = [ @, @, @, @, @, @, @, @, @, @+Delta, @, @]  
+    U_10 = [ @, @, @, @, @, @, @, @, @, @, @+Delta, @]  
+    U_11 = [ @, @, @, @, @, @, @, @, @, @, @, @+Delta]  
+ 
+    Up(dist) = dist
+    {
+        0 -> U__0  
+     	1 -> U__1  
+     	2 -> U__2
+     	3 -> U__3
+     	4 -> U__4
+     	5 -> U__5
+     	6 -> U__6
+     	7 -> U__7
+     	8 -> U__8
+    	9 -> U__9
+    	10 -> U_10
+    	11 -> U_11
+    }
+
+    D__0 = [ @-Delta, @, @, @, @, @, @, @, @, @, @, @]  
+    D__1 = [ @, @-Delta, @, @, @, @, @, @, @, @, @, @]  
+    D__2 = [ @, @, @-Delta, @, @, @, @, @, @, @, @, @]  
+    D__3 = [ @, @, @, @-Delta, @, @, @, @, @, @, @, @]  
+    D__4 = [ @, @, @, @, @-Delta, @, @, @, @, @, @, @]  
+    D__5 = [ @, @, @, @, @, @-Delta, @, @, @, @, @, @]  
+    D__6 = [ @, @, @, @, @, @, @-Delta, @, @, @, @, @]  
+    D__7 = [ @, @, @, @, @, @, @, @-Delta, @, @, @, @]  
+    D__8 = [ @, @, @, @, @, @, @, @, @-Delta, @, @, @]  
+    D__9 = [ @, @, @, @, @, @, @, @, @, @-Delta, @, @]  
+    D_10 = [ @, @, @, @, @, @, @, @, @, @, @-Delta, @]  
+    D_11 = [ @, @, @, @, @, @, @, @, @, @, @, @-Delta]  
+  
+    Down(dist) = dist
+    {
+   	0 -> D__0  
+     	1 -> D__1  
+     	2 -> D__2
+     	3 -> D__3
+     	4 -> D__4
+     	5 -> D__5
+     	6 -> D__6
+     	7 -> D__7
+     	8 -> D__8
+     	9 -> D__9
+    	10 -> D_10
+    	11 -> D_11
+    }
+
+    Init = [<< 12 >>]
+    Leer = @ + 0 [ ] 
+
+INTERVALL
+    Delta = 120 Wurzel 2
+
+HARMONIE
+    Keyb = { 0, *1, *2, *3, *4, *5, *6, *7, *8, *9, *10, *11 }
+ 
