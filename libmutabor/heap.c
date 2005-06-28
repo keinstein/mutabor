@@ -4,11 +4,14 @@
  * \author R.Krauﬂe
  * \date 1997
  * \version 2.win
+ * \bug fatal_error(...) muss von Oberfl‰che getrennt werden.
  ********************************************************************/
 
-//#include "global.h"
-//#include "grafkern.h"
-#include "heap.h"
+#include<stdlib.h>
+#include<string.h>
+
+#include "mutabor/heap.h"
+
 #undef ACS_VERSION
 
 char SeRiEnNuMmEr[] = { 4,3,70,2,11,61,
@@ -143,7 +146,7 @@ void * xmalloc (size_t size)
 		  syntax_heap = Ax_malloc (sizeof (struct heap_element));
         memset(syntax_heap,0,sizeof (struct heap_element));
 #else
-		  syntax_heap = (heap_element*) calloc (1,sizeof (struct heap_element));
+		  syntax_heap = (struct heap_element*) calloc (1,sizeof (struct heap_element));
 #endif
 		  if (syntax_heap == NULL) {
 				fatal_error (4);
@@ -169,7 +172,8 @@ void * xmalloc (size_t size)
         heap_to_use_syntax -> next = Ax_malloc (sizeof (struct heap_element));
         memset(heap_to_use_syntax -> next,0,sizeof (struct heap_element));
 #else
-        heap_to_use_syntax -> next = (heap_element*) calloc (1,sizeof (struct heap_element));
+        heap_to_use_syntax -> next = (struct heap_element*) 
+	          calloc (1,sizeof (struct heap_element));
 #endif
         if (heap_to_use_syntax -> next == NULL) {
             fatal_error (4);
@@ -301,7 +305,7 @@ void * ymalloc (size_t size) {
 #else
     void * help1 = malloc (size);
 #endif
-    struct mini_heap * help2 = (mini_heap*) malloc (sizeof (struct mini_heap));
+    struct mini_heap * help2 = (struct mini_heap*) malloc (sizeof (struct mini_heap));
     
     if (help1 == NULL || help2 == NULL) {
         fatal_error (4);
