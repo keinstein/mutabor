@@ -1,6 +1,7 @@
 %verbose
 %locations
 %name-prefix="mutabor_parser_"
+%token-table
 /* Mutabor Tonsysteme */
 
 %{
@@ -9,10 +10,12 @@
 
 /* MUTABOR / Version 2.1 */
 
+#ifdef __BORLANDC__
 #pragma warn -cln
 #pragma warn -aus
 #pragma warn -sig
 #pragma warn -par
+#endif
 
 #include <ctype.h>
 #include <limits.h>

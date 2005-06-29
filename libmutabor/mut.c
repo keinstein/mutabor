@@ -101,17 +101,19 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 6 "mut.y"
+#line 7 "mut.y"
 
 
 /* BEGIN MUT_TAB.C */
 
 /* MUTABOR / Version 2.1 */
 
+#ifdef __BORLANDC__
 #pragma warn -cln
 #pragma warn -aus
 #pragma warn -sig
 #pragma warn -par
+#endif
 
 #include <ctype.h>
 #include <limits.h>
@@ -161,14 +163,14 @@
 #endif
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 51 "mut.y"
+#line 54 "mut.y"
 typedef union YYSTYPE {
     double      f_value;        /* fr Gleitkommazahlen */
     int         integer;        /* Fr integers */
     char        *identifier;    /* Fr Namen */
 } YYSTYPE;
 /* Line 191 of yacc.c.  */
-#line 172 "mut.c"
+#line 174 "mut.c"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -192,7 +194,7 @@ typedef struct YYLTYPE
 
 
 /* Line 214 of yacc.c.  */
-#line 196 "mut.c"
+#line 198 "mut.c"
 
 #if ! defined (yyoverflow) || YYERROR_VERBOSE
 
@@ -460,27 +462,27 @@ static const short int yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
-       0,    82,    82,    83,    84,    85,    86,    87,    88,    89,
-      90,    94,    96,    98,   102,   102,   106,   112,   121,   123,
-     124,   128,   130,   132,   136,   136,   140,   143,   147,   151,
-     155,   159,   163,   165,   168,   171,   174,   177,   180,   186,
-     192,   198,   219,   227,   230,   236,   262,   264,   266,   270,
-     270,   275,   274,   279,   278,   284,   284,   287,   288,   289,
-     293,   294,   296,   301,   302,   303,   308,   309,   310,   316,
-     318,   320,   325,   327,   324,   332,   335,   331,   341,   342,
-     343,   344,   345,   346,   347,   348,   349,   350,   351,   356,
-     358,   363,   365,   367,   369,   374,   376,   381,   383,   385,
-     387,   389,   391,   393,   395,   401,   400,   410,   411,   413,
-     413,   420,   421,   426,   430,   434,   435,   437,   437,   440,
-     440,   443,   443,   446,   446,   453,   453,   456,   456,   462,
-     462,   465,   465,   471,   471,   477,   478,   482,   484,   484,
-     488,   487,   494,   494,   497,   497,   503,   504,   509,   508,
-     513,   512,   517,   516,   524,   523,   531,   535,   536,   541,
-     540,   545,   549,   550,   554,   555,   559,   560,   564,   568,
-     569,   569,   577,   576,   582,   581,   589,   590,   595,   595,
-     599,   599,   605,   607,   609,   611,   616,   617,   618,   619,
-     620,   620,   626,   628,   630,   635,   639,   640,   644,   646,
-     648,   650,   652,   657,   658
+       0,    85,    85,    86,    87,    88,    89,    90,    91,    92,
+      93,    97,    99,   101,   105,   105,   109,   115,   124,   126,
+     127,   131,   133,   135,   139,   139,   143,   146,   150,   154,
+     158,   162,   166,   168,   171,   174,   177,   180,   183,   189,
+     195,   201,   222,   230,   233,   239,   265,   267,   269,   273,
+     273,   278,   277,   282,   281,   287,   287,   290,   291,   292,
+     296,   297,   299,   304,   305,   306,   311,   312,   313,   319,
+     321,   323,   328,   330,   327,   335,   338,   334,   344,   345,
+     346,   347,   348,   349,   350,   351,   352,   353,   354,   359,
+     361,   366,   368,   370,   372,   377,   379,   384,   386,   388,
+     390,   392,   394,   396,   398,   404,   403,   413,   414,   416,
+     416,   423,   424,   429,   433,   437,   438,   440,   440,   443,
+     443,   446,   446,   449,   449,   456,   456,   459,   459,   465,
+     465,   468,   468,   474,   474,   480,   481,   485,   487,   487,
+     491,   490,   497,   497,   500,   500,   506,   507,   512,   511,
+     516,   515,   520,   519,   527,   526,   534,   538,   539,   544,
+     543,   548,   552,   553,   557,   558,   562,   563,   567,   571,
+     572,   572,   580,   579,   585,   584,   592,   593,   598,   598,
+     602,   602,   608,   610,   612,   614,   619,   620,   621,   622,
+     623,   623,   629,   631,   633,   638,   642,   643,   647,   649,
+     651,   653,   655,   660,   661
 };
 #endif
 
@@ -1453,17 +1455,17 @@ yyreduce:
   switch (yyn)
     {
         case 10:
-#line 90 "mut.y"
+#line 93 "mut.y"
     { fatal_error(1,yyloc.first_line+1); }
     break;
 
   case 14:
-#line 102 "mut.y"
+#line 105 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 16:
-#line 107 "mut.y"
+#line 110 "mut.y"
     { if ( fabs(yyvsp[0].f_value) > 0.001 )
                          get_new_intervall (yyvsp[-4].identifier, yyvsp[-2].f_value / yyvsp[0].f_value);
                       else
@@ -1471,7 +1473,7 @@ yyreduce:
     break;
 
   case 17:
-#line 113 "mut.y"
+#line 116 "mut.y"
     { if ( fabs (yyvsp[-2].f_value) > 0.001 )
                           get_new_intervall (yyvsp[-4].identifier, pow (yyvsp[0].f_value, 1 / yyvsp[-2].f_value));
                       else
@@ -1479,72 +1481,72 @@ yyreduce:
     break;
 
   case 18:
-#line 122 "mut.y"
+#line 125 "mut.y"
     { get_new_intervall_komplex (yyvsp[-2].identifier); }
     break;
 
   case 19:
-#line 123 "mut.y"
+#line 126 "mut.y"
     { fatal_error(71,yyvsp[-2].identifier); }
     break;
 
   case 20:
-#line 124 "mut.y"
+#line 127 "mut.y"
     { fatal_error(70,"'='",FEHLERZEILE); }
     break;
 
   case 24:
-#line 136 "mut.y"
+#line 139 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 26:
-#line 141 "mut.y"
+#line 144 "mut.y"
     { get_new_ton_absolut (yyvsp[-2].identifier, yyvsp[0].f_value); }
     break;
 
   case 27:
-#line 145 "mut.y"
+#line 148 "mut.y"
     { get_new_ton_komplex_negative (yyvsp[-4].identifier, yyvsp[-2].identifier); }
     break;
 
   case 28:
-#line 149 "mut.y"
+#line 152 "mut.y"
     { get_new_ton_komplex_positive (yyvsp[-2].identifier, yyvsp[0].identifier); }
     break;
 
   case 29:
-#line 153 "mut.y"
+#line 156 "mut.y"
     { get_new_ton_komplex_positive (yyvsp[-4].identifier, yyvsp[-2].identifier); }
     break;
 
   case 30:
-#line 155 "mut.y"
+#line 158 "mut.y"
     { fatal_error( 72, yyvsp[-2].identifier ); }
     break;
 
   case 34:
-#line 169 "mut.y"
+#line 172 "mut.y"
     { get_new_faktor_anteil ( (double) 1, yyvsp[0].identifier); }
     break;
 
   case 35:
-#line 172 "mut.y"
+#line 175 "mut.y"
     { get_new_faktor_anteil ( (double) -1, yyvsp[0].identifier); }
     break;
 
   case 36:
-#line 175 "mut.y"
+#line 178 "mut.y"
     { get_new_faktor_anteil ( yyvsp[-1].f_value, yyvsp[0].identifier); }
     break;
 
   case 37:
-#line 178 "mut.y"
+#line 181 "mut.y"
     { get_new_faktor_anteil ( -(yyvsp[-1].f_value), yyvsp[0].identifier); }
     break;
 
   case 38:
-#line 181 "mut.y"
+#line 184 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1552,7 +1554,7 @@ yyreduce:
     break;
 
   case 39:
-#line 187 "mut.y"
+#line 190 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) -1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1560,7 +1562,7 @@ yyreduce:
     break;
 
   case 40:
-#line 193 "mut.y"
+#line 196 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1568,7 +1570,7 @@ yyreduce:
     break;
 
   case 41:
-#line 199 "mut.y"
+#line 202 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( -(yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1576,17 +1578,17 @@ yyreduce:
     break;
 
   case 42:
-#line 220 "mut.y"
+#line 223 "mut.y"
     { get_new_faktor_anteil ( (double) 1.0 , yyvsp[0].identifier); }
     break;
 
   case 43:
-#line 228 "mut.y"
+#line 231 "mut.y"
     { get_new_faktor_anteil ( yyvsp[-1].f_value, yyvsp[0].identifier); }
     break;
 
   case 44:
-#line 231 "mut.y"
+#line 234 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1594,7 +1596,7 @@ yyreduce:
     break;
 
   case 45:
-#line 237 "mut.y"
+#line 240 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1602,758 +1604,758 @@ yyreduce:
     break;
 
   case 49:
-#line 270 "mut.y"
+#line 273 "mut.y"
     { init_ton_liste (); }
     break;
 
   case 51:
-#line 275 "mut.y"
+#line 278 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 52:
-#line 277 "mut.y"
+#line 280 "mut.y"
     { get_new_tonsystem (yyvsp[-7].identifier, yyvsp[-5].integer); }
     break;
 
   case 53:
-#line 279 "mut.y"
+#line 282 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 54:
-#line 281 "mut.y"
+#line 284 "mut.y"
     { get_new_tonsystem_negative (yyvsp[-8].identifier, yyvsp[-6].integer); }
     break;
 
   case 57:
-#line 287 "mut.y"
+#line 290 "mut.y"
     { get_new_ton_in_tonsystem (yyvsp[0].identifier); }
     break;
 
   case 58:
-#line 288 "mut.y"
+#line 291 "mut.y"
     { get_new_ton_in_tonsystem (NULL); }
     break;
 
   case 59:
-#line 289 "mut.y"
+#line 292 "mut.y"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 60:
-#line 293 "mut.y"
+#line 296 "mut.y"
     { get_new_name_in_parameterlist (yyvsp[0].identifier); }
     break;
 
   case 61:
-#line 295 "mut.y"
+#line 298 "mut.y"
     { get_new_name_in_parameterlist (yyvsp[0].identifier); }
     break;
 
   case 62:
-#line 296 "mut.y"
+#line 299 "mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 63:
-#line 301 "mut.y"
+#line 304 "mut.y"
     {}
     break;
 
   case 64:
-#line 302 "mut.y"
+#line 305 "mut.y"
     {}
     break;
 
   case 65:
-#line 303 "mut.y"
+#line 306 "mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 66:
-#line 308 "mut.y"
+#line 311 "mut.y"
     { get_new_name_in_argument_list (yyvsp[0].identifier);   }
     break;
 
   case 67:
-#line 309 "mut.y"
+#line 312 "mut.y"
     { get_new_number_in_argument_list (yyvsp[0].integer); }
     break;
 
   case 68:
-#line 310 "mut.y"
+#line 313 "mut.y"
     { get_new_number_in_argument_list (-(yyvsp[0].integer)); }
     break;
 
   case 72:
-#line 325 "mut.y"
+#line 328 "mut.y"
     { init_umstimmung (yyvsp[0].identifier);
                       init_parameter_liste (); }
     break;
 
   case 73:
-#line 327 "mut.y"
+#line 330 "mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 74:
-#line 329 "mut.y"
+#line 332 "mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 75:
-#line 332 "mut.y"
+#line 335 "mut.y"
     { init_umstimmung (yyvsp[0].identifier);
                       init_parameter_liste (); }
     break;
 
   case 76:
-#line 335 "mut.y"
+#line 338 "mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 77:
-#line 337 "mut.y"
+#line 340 "mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 78:
-#line 341 "mut.y"
-    {}
-    break;
-
-  case 79:
-#line 342 "mut.y"
-    {}
-    break;
-
-  case 80:
-#line 343 "mut.y"
-    {}
-    break;
-
-  case 81:
 #line 344 "mut.y"
     {}
     break;
 
-  case 82:
+  case 79:
 #line 345 "mut.y"
     {}
     break;
 
-  case 83:
+  case 80:
 #line 346 "mut.y"
     {}
     break;
 
-  case 84:
+  case 81:
 #line 347 "mut.y"
     {}
     break;
 
-  case 85:
+  case 82:
 #line 348 "mut.y"
     {}
     break;
 
-  case 86:
+  case 83:
 #line 349 "mut.y"
     {}
     break;
 
-  case 87:
+  case 84:
 #line 350 "mut.y"
     {}
     break;
 
-  case 88:
+  case 85:
 #line 351 "mut.y"
+    {}
+    break;
+
+  case 86:
+#line 352 "mut.y"
+    {}
+    break;
+
+  case 87:
+#line 353 "mut.y"
+    {}
+    break;
+
+  case 88:
+#line 354 "mut.y"
     {fatal_error(75,FEHLERZEILE);}
     break;
 
   case 89:
-#line 357 "mut.y"
+#line 360 "mut.y"
     { get_umstimmung_taste_abs (zahl, yyvsp[-2].integer, NULL); }
     break;
 
   case 90:
-#line 359 "mut.y"
+#line 362 "mut.y"
     { get_umstimmung_taste_abs (parameter, 0.0, yyvsp[-2].identifier); }
     break;
 
   case 91:
-#line 364 "mut.y"
+#line 367 "mut.y"
     { get_umstimmung_taste_rel (zahl, yyvsp[-2].integer, NULL, '+'); }
     break;
 
   case 92:
-#line 366 "mut.y"
+#line 369 "mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, yyvsp[-2].identifier, '+'); }
     break;
 
   case 93:
-#line 368 "mut.y"
+#line 371 "mut.y"
     { get_umstimmung_taste_rel (zahl, yyvsp[-2].integer, NULL, '-'); }
     break;
 
   case 94:
-#line 370 "mut.y"
+#line 373 "mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, yyvsp[-2].identifier, '-'); }
     break;
 
   case 95:
-#line 375 "mut.y"
+#line 378 "mut.y"
     { get_umstimmung_breite_abs (zahl, yyvsp[-3].integer, NULL); }
     break;
 
   case 96:
-#line 377 "mut.y"
+#line 380 "mut.y"
     { get_umstimmung_breite_abs (parameter, 0.0, yyvsp[-3].identifier); }
     break;
 
   case 97:
-#line 382 "mut.y"
+#line 385 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '+'); }
     break;
 
   case 98:
-#line 384 "mut.y"
+#line 387 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '+'); }
     break;
 
   case 99:
-#line 386 "mut.y"
+#line 389 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '-'); }
     break;
 
   case 100:
-#line 388 "mut.y"
+#line 391 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '-'); }
     break;
 
   case 101:
-#line 390 "mut.y"
+#line 393 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '*'); }
     break;
 
   case 102:
-#line 392 "mut.y"
+#line 395 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '*'); }
     break;
 
   case 103:
-#line 394 "mut.y"
+#line 397 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '/'); }
     break;
 
   case 104:
-#line 396 "mut.y"
+#line 399 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '/'); }
     break;
 
   case 105:
-#line 401 "mut.y"
+#line 404 "mut.y"
     { init_umstimm_expression_list (); }
     break;
 
   case 106:
-#line 403 "mut.y"
+#line 406 "mut.y"
     { get_umstimmung_tonhoehe_veraendert (); }
     break;
 
   case 107:
-#line 410 "mut.y"
+#line 413 "mut.y"
     {}
     break;
 
   case 108:
-#line 411 "mut.y"
+#line 414 "mut.y"
     {}
     break;
 
   case 109:
-#line 413 "mut.y"
+#line 416 "mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
     break;
 
   case 110:
-#line 416 "mut.y"
+#line 419 "mut.y"
     {}
     break;
 
   case 111:
-#line 420 "mut.y"
+#line 423 "mut.y"
     {}
     break;
 
   case 112:
-#line 421 "mut.y"
+#line 424 "mut.y"
     {}
     break;
 
   case 113:
-#line 426 "mut.y"
+#line 429 "mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
     break;
 
   case 115:
-#line 434 "mut.y"
+#line 437 "mut.y"
     { get_new_umstimm_expression (yyvsp[0].identifier); }
     break;
 
   case 116:
-#line 435 "mut.y"
+#line 438 "mut.y"
     { get_new_umstimm_expression ("@"); }
     break;
 
   case 117:
-#line 437 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 118:
-#line 439 "mut.y"
-    { get_new_umstimm_expression_positive (yyvsp[-3].identifier); }
-    break;
-
-  case 119:
 #line 440 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 120:
+  case 118:
 #line 442 "mut.y"
-    { get_new_umstimm_expression_positive ( "@" ); }
+    { get_new_umstimm_expression_positive (yyvsp[-3].identifier); }
     break;
 
-  case 121:
+  case 119:
 #line 443 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 122:
+  case 120:
 #line 445 "mut.y"
-    { get_new_umstimm_expression_negative (yyvsp[-3].identifier); }
+    { get_new_umstimm_expression_positive ( "@" ); }
     break;
 
-  case 123:
+  case 121:
 #line 446 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 124:
+  case 122:
 #line 448 "mut.y"
+    { get_new_umstimm_expression_negative (yyvsp[-3].identifier); }
+    break;
+
+  case 123:
+#line 449 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 124:
+#line 451 "mut.y"
     { get_new_umstimm_expression_negative ( "@" ); }
     break;
 
   case 125:
-#line 453 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 126:
-#line 455 "mut.y"
-    { get_umstimmung_wiederholung_abs (); }
-    break;
-
-  case 127:
 #line 456 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 128:
+  case 126:
 #line 458 "mut.y"
+    { get_umstimmung_wiederholung_abs (); }
+    break;
+
+  case 127:
+#line 459 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 128:
+#line 461 "mut.y"
     { get_umstimmung_wiederholung_abs_negative (); }
     break;
 
   case 129:
-#line 462 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 130:
-#line 464 "mut.y"
-    { get_umstimmung_wiederholung_rel_positive (); }
-    break;
-
-  case 131:
 #line 465 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 132:
+  case 130:
 #line 467 "mut.y"
+    { get_umstimmung_wiederholung_rel_positive (); }
+    break;
+
+  case 131:
+#line 468 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 132:
+#line 470 "mut.y"
     { get_umstimmung_wiederholung_rel_negative (); }
     break;
 
   case 133:
-#line 471 "mut.y"
+#line 474 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 134:
-#line 473 "mut.y"
+#line 476 "mut.y"
     { get_umstimmung_umstimmungs_bund (); }
     break;
 
   case 135:
-#line 477 "mut.y"
+#line 480 "mut.y"
     {}
     break;
 
   case 136:
-#line 478 "mut.y"
+#line 481 "mut.y"
     {}
     break;
 
   case 137:
-#line 482 "mut.y"
+#line 485 "mut.y"
     { init_argument_liste (); 
                        get_new_aktion_aufruf_element (yyvsp[0].identifier); }
     break;
 
   case 138:
-#line 484 "mut.y"
+#line 487 "mut.y"
     { init_argument_liste (); }
     break;
 
   case 139:
-#line 486 "mut.y"
+#line 489 "mut.y"
     { get_new_aktion_aufruf_element (yyvsp[-4].identifier); }
     break;
 
   case 140:
-#line 488 "mut.y"
+#line 491 "mut.y"
     { init_integersequenz ();}
     break;
 
   case 141:
-#line 490 "mut.y"
+#line 493 "mut.y"
     { get_new_aktion_midi_out_element (); }
     break;
 
   case 142:
-#line 494 "mut.y"
-    { init_umstimmungs_case_liste (); }
-    break;
-
-  case 143:
-#line 496 "mut.y"
-    { get_umstimmung_umstimm_case_zahl (yyvsp[-4].integer); }
-    break;
-
-  case 144:
 #line 497 "mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
-  case 145:
+  case 143:
 #line 499 "mut.y"
+    { get_umstimmung_umstimm_case_zahl (yyvsp[-4].integer); }
+    break;
+
+  case 144:
+#line 500 "mut.y"
+    { init_umstimmungs_case_liste (); }
+    break;
+
+  case 145:
+#line 502 "mut.y"
     { get_umstimmung_umstimm_case_parameter (yyvsp[-4].identifier); }
     break;
 
   case 146:
-#line 503 "mut.y"
+#line 506 "mut.y"
     {}
     break;
 
   case 147:
-#line 504 "mut.y"
+#line 507 "mut.y"
     {}
     break;
 
   case 148:
-#line 509 "mut.y"
+#line 512 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 149:
-#line 511 "mut.y"
+#line 514 "mut.y"
     { get_umstimmungs_case_zahl_element (yyvsp[-4].integer); }
     break;
 
   case 150:
-#line 513 "mut.y"
+#line 516 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 151:
-#line 515 "mut.y"
+#line 518 "mut.y"
     { get_umstimmungs_case_zahl_element (-(yyvsp[-4].integer)); }
     break;
 
   case 152:
-#line 517 "mut.y"
+#line 520 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 153:
-#line 519 "mut.y"
+#line 522 "mut.y"
     { get_umstimmungs_case_default_element (); }
     break;
 
   case 154:
-#line 524 "mut.y"
+#line 527 "mut.y"
     { init_integersequenz ();}
     break;
 
   case 155:
-#line 526 "mut.y"
+#line 529 "mut.y"
     { get_umstimmung_midi_out (); }
     break;
 
   case 156:
-#line 531 "mut.y"
+#line 534 "mut.y"
     {}
     break;
 
   case 157:
-#line 535 "mut.y"
+#line 538 "mut.y"
     {}
     break;
 
   case 158:
-#line 536 "mut.y"
+#line 539 "mut.y"
     {}
     break;
 
   case 159:
-#line 541 "mut.y"
+#line 544 "mut.y"
     { init_tastenliste (); }
     break;
 
   case 160:
-#line 543 "mut.y"
+#line 546 "mut.y"
     { get_new_harmonie (yyvsp[-6].identifier, yyvsp[0].integer); }
     break;
 
   case 161:
-#line 545 "mut.y"
+#line 548 "mut.y"
     { fatal_error(76,yyvsp[-2].identifier); }
     break;
 
   case 162:
-#line 549 "mut.y"
+#line 552 "mut.y"
     { yyval.integer = -1; }
     break;
 
   case 163:
-#line 550 "mut.y"
+#line 553 "mut.y"
     { yyval.integer = yyvsp[0].integer; }
     break;
 
   case 164:
-#line 554 "mut.y"
+#line 557 "mut.y"
     {}
     break;
 
   case 165:
-#line 555 "mut.y"
+#line 558 "mut.y"
     {}
     break;
 
   case 166:
-#line 559 "mut.y"
+#line 562 "mut.y"
     { get_new_taste ( yyvsp[0].integer, '+'); }
     break;
 
   case 167:
-#line 560 "mut.y"
+#line 563 "mut.y"
     { get_new_taste ( yyvsp[0].integer, '*'); }
     break;
 
   case 168:
-#line 564 "mut.y"
+#line 567 "mut.y"
     {}
     break;
 
   case 169:
-#line 568 "mut.y"
+#line 571 "mut.y"
     {}
     break;
 
   case 170:
-#line 569 "mut.y"
+#line 572 "mut.y"
     { init_ausloeser ();
                          /* fr die Anfangsausloesung der Logik */
                        }
     break;
 
   case 171:
-#line 572 "mut.y"
+#line 575 "mut.y"
     {}
     break;
 
   case 172:
-#line 577 "mut.y"
+#line 580 "mut.y"
     { get_new_logik (yyvsp[-3].identifier, NULL);
                 init_anweisungs_liste (); }
     break;
 
   case 173:
-#line 580 "mut.y"
+#line 583 "mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 174:
-#line 582 "mut.y"
+#line 585 "mut.y"
     { get_new_logik (yyvsp[-4].identifier, yyvsp[-1].identifier);
                 init_anweisungs_liste (); }
     break;
 
   case 175:
-#line 585 "mut.y"
+#line 588 "mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 176:
-#line 589 "mut.y"
+#line 592 "mut.y"
     {}
     break;
 
   case 177:
-#line 590 "mut.y"
+#line 593 "mut.y"
     {}
     break;
 
   case 178:
-#line 595 "mut.y"
+#line 598 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 179:
-#line 597 "mut.y"
+#line 600 "mut.y"
     { get_new_anweisung (); }
     break;
 
   case 180:
-#line 599 "mut.y"
+#line 602 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 181:
-#line 601 "mut.y"
+#line 604 "mut.y"
     { get_new_anweisung (); }
     break;
 
   case 182:
-#line 606 "mut.y"
+#line 609 "mut.y"
     { get_harmoniebezeichner (  yyvsp[-4].integer, yyvsp[-2].identifier,  yyvsp[0].integer); }
     break;
 
   case 183:
-#line 608 "mut.y"
+#line 611 "mut.y"
     { get_harmoniebezeichner (-1, yyvsp[-2].identifier,  yyvsp[0].integer); }
     break;
 
   case 184:
-#line 610 "mut.y"
+#line 613 "mut.y"
     { get_harmoniebezeichner (  yyvsp[-2].integer, yyvsp[0].identifier, -1); }
     break;
 
   case 185:
-#line 612 "mut.y"
+#line 615 "mut.y"
     { get_harmoniebezeichner (-1, yyvsp[0].identifier, -1); }
     break;
 
   case 186:
-#line 616 "mut.y"
+#line 619 "mut.y"
     { get_ausloeser_default (); }
     break;
 
   case 187:
-#line 617 "mut.y"
+#line 620 "mut.y"
     { get_ausloeser_harmonie (); }
     break;
 
   case 188:
-#line 618 "mut.y"
+#line 621 "mut.y"
     { get_ausloeser_harmonie_form (); }
     break;
 
   case 189:
-#line 619 "mut.y"
+#line 622 "mut.y"
     { get_ausloeser_taste (yyvsp[0].identifier); }
     break;
 
   case 190:
-#line 620 "mut.y"
+#line 623 "mut.y"
     { init_integersequenz (); }
     break;
 
   case 191:
-#line 622 "mut.y"
+#line 625 "mut.y"
     { get_ausloeser_midi_in (); }
     break;
 
   case 192:
-#line 627 "mut.y"
+#line 630 "mut.y"
     { get_new_integer_in_integersequenz (yyvsp[0].integer);}
     break;
 
   case 193:
-#line 629 "mut.y"
+#line 632 "mut.y"
     { get_new_integer_in_integersequenz (yyvsp[0].integer);}
     break;
 
   case 194:
-#line 630 "mut.y"
+#line 633 "mut.y"
     { fatal_error( 77, FEHLERZEILE ); }
     break;
 
   case 195:
-#line 635 "mut.y"
+#line 638 "mut.y"
     {}
     break;
 
   case 196:
-#line 639 "mut.y"
+#line 642 "mut.y"
     {}
     break;
 
   case 197:
-#line 640 "mut.y"
+#line 643 "mut.y"
     {}
     break;
 
   case 198:
-#line 645 "mut.y"
+#line 648 "mut.y"
     { get_instrument_dekl (yyvsp[-3].integer, yyvsp[0].integer, yyvsp[0].integer, 0, & list_of_instrumente); }
     break;
 
   case 199:
-#line 647 "mut.y"
+#line 650 "mut.y"
     { get_instrument_dekl (yyvsp[-5].integer, yyvsp[-2].integer, yyvsp[0].integer, 0, & list_of_instrumente); }
     break;
 
   case 200:
-#line 649 "mut.y"
+#line 652 "mut.y"
     { get_instrument_dekl (yyvsp[-5].integer, 0, 0, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 201:
-#line 651 "mut.y"
+#line 654 "mut.y"
     { get_instrument_dekl (yyvsp[-6].integer, yyvsp[-3].integer, yyvsp[-3].integer, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 202:
-#line 653 "mut.y"
+#line 656 "mut.y"
     { get_instrument_dekl (yyvsp[-8].integer, yyvsp[-5].integer, yyvsp[-3].integer, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 203:
-#line 657 "mut.y"
+#line 660 "mut.y"
     { yyval.f_value = yyvsp[0].f_value; }
     break;
 
   case 204:
-#line 658 "mut.y"
+#line 661 "mut.y"
     { yyval.f_value = (double) yyvsp[0].integer; }
     break;
 
@@ -2361,7 +2363,7 @@ yyreduce:
     }
 
 /* Line 1010 of yacc.c.  */
-#line 2365 "mut.c"
+#line 2367 "mut.c"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -2590,7 +2592,7 @@ yyreturn:
 }
 
 
-#line 662 "mut.y"
+#line 665 "mut.y"
 
 
 int yylex(void) 
