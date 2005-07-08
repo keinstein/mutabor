@@ -2,9 +2,17 @@
  ********************************************************************
  * Alles zu Anweisungen.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/anweisung.h,v 1.2 2005/07/08 14:48:35 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/08 14:48:35 $
+ * \version $Revision: 1.2 $
+ * \log 
+ * $Log: anweisung.h,v $
+ * Revision 1.2  2005/07/08 14:48:35  keinstein
+ * Neu:
+ * 	Kopf (CVS)
+ * 	get_last_anweisungs_liste
+ *
  ********************************************************************/
 
 #ifndef __ANWEISUNG_H_INCLUDED
@@ -28,8 +36,9 @@ namespace mutabor {
       struct anweisung * next;         /**< Nächste Anweisung */
     };
     
-void init_anweisungs_liste (void);
-void get_new_anweisung (void);
+    struct anweisung * get_last_anweisungs_liste (void);
+    void init_anweisungs_liste (void);
+    void get_new_anweisung (void);
 
 
 #ifdef __cplusplus 
