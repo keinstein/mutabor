@@ -24,7 +24,9 @@ namespace mutabor {
 
     void init_tastenliste (void);
     void get_new_taste (int taste, char stern);
-
+    int enthalten_in_tastenliste (int taste, struct taste * lauf);
+    
+    struct taste * tmp_tastenliste;
 #ifdef __cplusplus 
   } // extern "C"
 } // namespace mutabor
