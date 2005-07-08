@@ -2,9 +2,15 @@
  ********************************************************************
  * Alles zu Instrumenten.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/instrument.h,v 1.2 2005/07/08 14:53:24 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/08 14:53:24 $
+ * \version $Revision: 1.2 $
+ * \log $Log: instrument.h,v $
+ * \log Revision 1.2  2005/07/08 14:53:24  keinstein
+ * \log Neu:
+ * \log 	Kopf
+ * \log
  ********************************************************************/
 
 #ifndef __INSTRUMENT_H_INCLUDED
