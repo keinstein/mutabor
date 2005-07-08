@@ -2,14 +2,24 @@
  ********************************************************************
  * Verzweigungsliste für Umstimmungen und ähnliches.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/case_liste.h,v 1.2 2005/07/08 14:51:41 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/08 14:51:41 $
+ * \version $Revision: 1.2 $
+ * \log 
+ * $Log: case_liste.h,v $
+ * Revision 1.2  2005/07/08 14:51:41  keinstein
+ * Neu:
+ * 	Kopf
+ * 	case_label_enthalten_in_case_liste
+ * 	Abhängig von aktion.h
+ *
  ********************************************************************/
 
 #ifndef __CASE_LISTE_H_INCLUDED
 #define __CASE_LISTE_H_INCLUDED
 
+#include "mutabor/aktion.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -32,7 +42,8 @@ namespace mutabor {
     void get_umstimmungs_case_zahl_element (int konstante); 
     void get_umstimmungs_case_default_element (void);
     void get_umstimmungs_case_aktions_element (char * aktion);
-    
+    int case_label_enthalten_in_case_liste (double case_label, struct case_liste * lauf);
+
 #ifdef __cplusplus 
   } // extern "C"
 } // namespace mutabor
