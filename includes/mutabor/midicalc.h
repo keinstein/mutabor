@@ -38,7 +38,9 @@ namespace mutabor {
     void init_integersequenz (void);
     void get_new_integer_in_integersequenz (int wert);
     int midi_list_laenge (struct midiliste *list);
+    struct midiliste * get_last_integersequenz (void);
 
+    void print_integersequenz (struct midiliste * this_);
 
 #ifdef __cplusplus 
   }
