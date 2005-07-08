@@ -142,7 +142,22 @@ ACLOCAL_AMFLAGS = -I m4
 
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_CFLAGS = -Wall --ansi
-libmutabor_la_SOURCES = heap.c interval.c ../includes/mutabor/heap.h ../includes/mutabor/interval.h mut.y
+libmutabor_la_SOURCES = ../includes/mutabor/heap.h ../includes/mutabor/interval.h \
+			../includes/mutabor/aktion.h ../includes/mutabor/anweisung.h \
+			../includes/mutabor/argument.h ../includes/mutabor/ausloeser.h \
+			../includes/mutabor/bad_decl.h ../includes/mutaborcase_liste.h \
+			../includes/mutabor/global.h ../includes/mutabor/harmonie.h \
+			../includes/mutabor/instrument.h ../includes/mutabor/logik.h \
+			../includes/mutabor/midicalc.h ../includes/mutabor/mut_tab.h \
+			../includes/mutabor/parameter.h ../includes/mutabor/parser.h \
+			../includes/mutabor/tabgen.h ../includes/mutabor/taste.h \
+			../includes/mutabor/ton.h ../includes/mutabor/tonsystem.h \
+			../includes/mutabor/umstimmung.h \
+			mut.y \
+			aktion.c anweisung.c argument.c ausloeser.c \
+			case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
+			midicalc.c parameter.c parser.c taste.c ton.c tonsystem.c umstimmung.c
+
 libmutabor_la_LDFLAGS = -version-info 0:0:0
 subdir = libmutabor
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -152,16 +167,38 @@ CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
 libmutabor_la_LIBADD =
-am_libmutabor_la_OBJECTS = libmutabor_la-heap.lo \
-	libmutabor_la-interval.lo libmutabor_la-mut.lo
+am_libmutabor_la_OBJECTS = libmutabor_la-mut.lo libmutabor_la-aktion.lo \
+	libmutabor_la-anweisung.lo libmutabor_la-argument.lo \
+	libmutabor_la-ausloeser.lo libmutabor_la-case_liste.lo \
+	libmutabor_la-harmonie.lo libmutabor_la-heap.lo \
+	libmutabor_la-instrument.lo libmutabor_la-interval.lo \
+	libmutabor_la-logik.lo libmutabor_la-midicalc.lo \
+	libmutabor_la-parameter.lo libmutabor_la-parser.lo \
+	libmutabor_la-taste.lo libmutabor_la-ton.lo \
+	libmutabor_la-tonsystem.lo libmutabor_la-umstimmung.lo
 libmutabor_la_OBJECTS = $(am_libmutabor_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libmutabor_la-heap.Plo \
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libmutabor_la-aktion.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-anweisung.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-argument.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-ausloeser.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-case_liste.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-harmonie.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-heap.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-instrument.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-interval.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-mut.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-logik.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-midicalc.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-mut.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-parameter.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-parser.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-taste.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-ton.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-tonsystem.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-umstimmung.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -226,9 +263,24 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-aktion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-anweisung.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-argument.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-ausloeser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-case_liste.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-harmonie.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-heap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-instrument.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-interval.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-logik.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-midicalc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-mut.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-parameter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-parser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-taste.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-ton.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-tonsystem.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-umstimmung.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
@@ -263,6 +315,237 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
+libmutabor_la-mut.o: mut.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.o `test -f 'mut.c' || echo '$(srcdir)/'`mut.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.o `test -f 'mut.c' || echo '$(srcdir)/'`mut.c
+
+libmutabor_la-mut.obj: mut.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.obj `if test -f 'mut.c'; then $(CYGPATH_W) 'mut.c'; else $(CYGPATH_W) '$(srcdir)/mut.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.obj `if test -f 'mut.c'; then $(CYGPATH_W) 'mut.c'; else $(CYGPATH_W) '$(srcdir)/mut.c'; fi`
+
+libmutabor_la-mut.lo: mut.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.lo `test -f 'mut.c' || echo '$(srcdir)/'`mut.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.lo `test -f 'mut.c' || echo '$(srcdir)/'`mut.c
+
+libmutabor_la-aktion.o: aktion.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-aktion.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-aktion.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-aktion.o `test -f 'aktion.c' || echo '$(srcdir)/'`aktion.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-aktion.Tpo" "$(DEPDIR)/libmutabor_la-aktion.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-aktion.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='aktion.c' object='libmutabor_la-aktion.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-aktion.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-aktion.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-aktion.o `test -f 'aktion.c' || echo '$(srcdir)/'`aktion.c
+
+libmutabor_la-aktion.obj: aktion.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-aktion.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-aktion.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-aktion.obj `if test -f 'aktion.c'; then $(CYGPATH_W) 'aktion.c'; else $(CYGPATH_W) '$(srcdir)/aktion.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-aktion.Tpo" "$(DEPDIR)/libmutabor_la-aktion.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-aktion.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='aktion.c' object='libmutabor_la-aktion.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-aktion.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-aktion.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-aktion.obj `if test -f 'aktion.c'; then $(CYGPATH_W) 'aktion.c'; else $(CYGPATH_W) '$(srcdir)/aktion.c'; fi`
+
+libmutabor_la-aktion.lo: aktion.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-aktion.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-aktion.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-aktion.lo `test -f 'aktion.c' || echo '$(srcdir)/'`aktion.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-aktion.Tpo" "$(DEPDIR)/libmutabor_la-aktion.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-aktion.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='aktion.c' object='libmutabor_la-aktion.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-aktion.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-aktion.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-aktion.lo `test -f 'aktion.c' || echo '$(srcdir)/'`aktion.c
+
+libmutabor_la-anweisung.o: anweisung.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-anweisung.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-anweisung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-anweisung.o `test -f 'anweisung.c' || echo '$(srcdir)/'`anweisung.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo" "$(DEPDIR)/libmutabor_la-anweisung.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='anweisung.c' object='libmutabor_la-anweisung.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-anweisung.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-anweisung.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-anweisung.o `test -f 'anweisung.c' || echo '$(srcdir)/'`anweisung.c
+
+libmutabor_la-anweisung.obj: anweisung.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-anweisung.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-anweisung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-anweisung.obj `if test -f 'anweisung.c'; then $(CYGPATH_W) 'anweisung.c'; else $(CYGPATH_W) '$(srcdir)/anweisung.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo" "$(DEPDIR)/libmutabor_la-anweisung.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='anweisung.c' object='libmutabor_la-anweisung.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-anweisung.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-anweisung.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-anweisung.obj `if test -f 'anweisung.c'; then $(CYGPATH_W) 'anweisung.c'; else $(CYGPATH_W) '$(srcdir)/anweisung.c'; fi`
+
+libmutabor_la-anweisung.lo: anweisung.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-anweisung.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-anweisung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-anweisung.lo `test -f 'anweisung.c' || echo '$(srcdir)/'`anweisung.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo" "$(DEPDIR)/libmutabor_la-anweisung.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-anweisung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='anweisung.c' object='libmutabor_la-anweisung.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-anweisung.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-anweisung.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-anweisung.lo `test -f 'anweisung.c' || echo '$(srcdir)/'`anweisung.c
+
+libmutabor_la-argument.o: argument.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-argument.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-argument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-argument.o `test -f 'argument.c' || echo '$(srcdir)/'`argument.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-argument.Tpo" "$(DEPDIR)/libmutabor_la-argument.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-argument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='argument.c' object='libmutabor_la-argument.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-argument.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-argument.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-argument.o `test -f 'argument.c' || echo '$(srcdir)/'`argument.c
+
+libmutabor_la-argument.obj: argument.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-argument.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-argument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-argument.obj `if test -f 'argument.c'; then $(CYGPATH_W) 'argument.c'; else $(CYGPATH_W) '$(srcdir)/argument.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-argument.Tpo" "$(DEPDIR)/libmutabor_la-argument.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-argument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='argument.c' object='libmutabor_la-argument.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-argument.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-argument.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-argument.obj `if test -f 'argument.c'; then $(CYGPATH_W) 'argument.c'; else $(CYGPATH_W) '$(srcdir)/argument.c'; fi`
+
+libmutabor_la-argument.lo: argument.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-argument.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-argument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-argument.lo `test -f 'argument.c' || echo '$(srcdir)/'`argument.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-argument.Tpo" "$(DEPDIR)/libmutabor_la-argument.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-argument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='argument.c' object='libmutabor_la-argument.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-argument.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-argument.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-argument.lo `test -f 'argument.c' || echo '$(srcdir)/'`argument.c
+
+libmutabor_la-ausloeser.o: ausloeser.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ausloeser.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ausloeser.o `test -f 'ausloeser.c' || echo '$(srcdir)/'`ausloeser.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" "$(DEPDIR)/libmutabor_la-ausloeser.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ausloeser.c' object='libmutabor_la-ausloeser.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ausloeser.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-ausloeser.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ausloeser.o `test -f 'ausloeser.c' || echo '$(srcdir)/'`ausloeser.c
+
+libmutabor_la-ausloeser.obj: ausloeser.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ausloeser.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ausloeser.obj `if test -f 'ausloeser.c'; then $(CYGPATH_W) 'ausloeser.c'; else $(CYGPATH_W) '$(srcdir)/ausloeser.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" "$(DEPDIR)/libmutabor_la-ausloeser.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ausloeser.c' object='libmutabor_la-ausloeser.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ausloeser.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-ausloeser.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ausloeser.obj `if test -f 'ausloeser.c'; then $(CYGPATH_W) 'ausloeser.c'; else $(CYGPATH_W) '$(srcdir)/ausloeser.c'; fi`
+
+libmutabor_la-ausloeser.lo: ausloeser.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ausloeser.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ausloeser.lo `test -f 'ausloeser.c' || echo '$(srcdir)/'`ausloeser.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo" "$(DEPDIR)/libmutabor_la-ausloeser.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ausloeser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ausloeser.c' object='libmutabor_la-ausloeser.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ausloeser.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-ausloeser.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ausloeser.lo `test -f 'ausloeser.c' || echo '$(srcdir)/'`ausloeser.c
+
+libmutabor_la-case_liste.o: case_liste.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-case_liste.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-case_liste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-case_liste.o `test -f 'case_liste.c' || echo '$(srcdir)/'`case_liste.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo" "$(DEPDIR)/libmutabor_la-case_liste.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='case_liste.c' object='libmutabor_la-case_liste.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-case_liste.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-case_liste.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-case_liste.o `test -f 'case_liste.c' || echo '$(srcdir)/'`case_liste.c
+
+libmutabor_la-case_liste.obj: case_liste.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-case_liste.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-case_liste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-case_liste.obj `if test -f 'case_liste.c'; then $(CYGPATH_W) 'case_liste.c'; else $(CYGPATH_W) '$(srcdir)/case_liste.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo" "$(DEPDIR)/libmutabor_la-case_liste.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='case_liste.c' object='libmutabor_la-case_liste.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-case_liste.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-case_liste.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-case_liste.obj `if test -f 'case_liste.c'; then $(CYGPATH_W) 'case_liste.c'; else $(CYGPATH_W) '$(srcdir)/case_liste.c'; fi`
+
+libmutabor_la-case_liste.lo: case_liste.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-case_liste.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-case_liste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-case_liste.lo `test -f 'case_liste.c' || echo '$(srcdir)/'`case_liste.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo" "$(DEPDIR)/libmutabor_la-case_liste.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-case_liste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='case_liste.c' object='libmutabor_la-case_liste.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-case_liste.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-case_liste.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-case_liste.lo `test -f 'case_liste.c' || echo '$(srcdir)/'`case_liste.c
+
+libmutabor_la-harmonie.o: harmonie.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-harmonie.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-harmonie.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-harmonie.o `test -f 'harmonie.c' || echo '$(srcdir)/'`harmonie.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo" "$(DEPDIR)/libmutabor_la-harmonie.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='harmonie.c' object='libmutabor_la-harmonie.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-harmonie.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-harmonie.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-harmonie.o `test -f 'harmonie.c' || echo '$(srcdir)/'`harmonie.c
+
+libmutabor_la-harmonie.obj: harmonie.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-harmonie.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-harmonie.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-harmonie.obj `if test -f 'harmonie.c'; then $(CYGPATH_W) 'harmonie.c'; else $(CYGPATH_W) '$(srcdir)/harmonie.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo" "$(DEPDIR)/libmutabor_la-harmonie.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='harmonie.c' object='libmutabor_la-harmonie.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-harmonie.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-harmonie.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-harmonie.obj `if test -f 'harmonie.c'; then $(CYGPATH_W) 'harmonie.c'; else $(CYGPATH_W) '$(srcdir)/harmonie.c'; fi`
+
+libmutabor_la-harmonie.lo: harmonie.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-harmonie.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-harmonie.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-harmonie.lo `test -f 'harmonie.c' || echo '$(srcdir)/'`harmonie.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo" "$(DEPDIR)/libmutabor_la-harmonie.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-harmonie.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='harmonie.c' object='libmutabor_la-harmonie.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-harmonie.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-harmonie.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-harmonie.lo `test -f 'harmonie.c' || echo '$(srcdir)/'`harmonie.c
+
 libmutabor_la-heap.o: heap.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-heap.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-heap.Tpo" \
 @am__fastdepCC_TRUE@	  -c -o libmutabor_la-heap.o `test -f 'heap.c' || echo '$(srcdir)/'`heap.c; \
@@ -295,6 +578,39 @@ libmutabor_la-heap.lo: heap.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-heap.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-heap.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-heap.lo `test -f 'heap.c' || echo '$(srcdir)/'`heap.c
+
+libmutabor_la-instrument.o: instrument.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-instrument.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-instrument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-instrument.o `test -f 'instrument.c' || echo '$(srcdir)/'`instrument.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-instrument.Tpo" "$(DEPDIR)/libmutabor_la-instrument.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-instrument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='instrument.c' object='libmutabor_la-instrument.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-instrument.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-instrument.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-instrument.o `test -f 'instrument.c' || echo '$(srcdir)/'`instrument.c
+
+libmutabor_la-instrument.obj: instrument.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-instrument.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-instrument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-instrument.obj `if test -f 'instrument.c'; then $(CYGPATH_W) 'instrument.c'; else $(CYGPATH_W) '$(srcdir)/instrument.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-instrument.Tpo" "$(DEPDIR)/libmutabor_la-instrument.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-instrument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='instrument.c' object='libmutabor_la-instrument.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-instrument.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-instrument.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-instrument.obj `if test -f 'instrument.c'; then $(CYGPATH_W) 'instrument.c'; else $(CYGPATH_W) '$(srcdir)/instrument.c'; fi`
+
+libmutabor_la-instrument.lo: instrument.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-instrument.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-instrument.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-instrument.lo `test -f 'instrument.c' || echo '$(srcdir)/'`instrument.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-instrument.Tpo" "$(DEPDIR)/libmutabor_la-instrument.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-instrument.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='instrument.c' object='libmutabor_la-instrument.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-instrument.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-instrument.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-instrument.lo `test -f 'instrument.c' || echo '$(srcdir)/'`instrument.c
 
 libmutabor_la-interval.o: interval.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-interval.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-interval.Tpo" \
@@ -329,38 +645,269 @@ libmutabor_la-interval.lo: interval.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-interval.lo `test -f 'interval.c' || echo '$(srcdir)/'`interval.c
 
-libmutabor_la-mut.o: mut.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.o `test -f 'mut.c' || echo '$(srcdir)/'`mut.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+libmutabor_la-logik.o: logik.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-logik.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-logik.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-logik.o `test -f 'logik.c' || echo '$(srcdir)/'`logik.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-logik.Tpo" "$(DEPDIR)/libmutabor_la-logik.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-logik.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='logik.c' object='libmutabor_la-logik.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-logik.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-logik.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.o `test -f 'mut.c' || echo '$(srcdir)/'`mut.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-logik.o `test -f 'logik.c' || echo '$(srcdir)/'`logik.c
 
-libmutabor_la-mut.obj: mut.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.obj `if test -f 'mut.c'; then $(CYGPATH_W) 'mut.c'; else $(CYGPATH_W) '$(srcdir)/mut.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+libmutabor_la-logik.obj: logik.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-logik.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-logik.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-logik.obj `if test -f 'logik.c'; then $(CYGPATH_W) 'logik.c'; else $(CYGPATH_W) '$(srcdir)/logik.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-logik.Tpo" "$(DEPDIR)/libmutabor_la-logik.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-logik.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='logik.c' object='libmutabor_la-logik.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-logik.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-logik.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.obj `if test -f 'mut.c'; then $(CYGPATH_W) 'mut.c'; else $(CYGPATH_W) '$(srcdir)/mut.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-logik.obj `if test -f 'logik.c'; then $(CYGPATH_W) 'logik.c'; else $(CYGPATH_W) '$(srcdir)/logik.c'; fi`
 
-libmutabor_la-mut.lo: mut.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mut.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-mut.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mut.lo `test -f 'mut.c' || echo '$(srcdir)/'`mut.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mut.Tpo" "$(DEPDIR)/libmutabor_la-mut.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mut.Tpo"; exit 1; \
+libmutabor_la-logik.lo: logik.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-logik.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-logik.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-logik.lo `test -f 'logik.c' || echo '$(srcdir)/'`logik.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-logik.Tpo" "$(DEPDIR)/libmutabor_la-logik.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-logik.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mut.c' object='libmutabor_la-mut.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mut.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-mut.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='logik.c' object='libmutabor_la-logik.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-logik.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-logik.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mut.lo `test -f 'mut.c' || echo '$(srcdir)/'`mut.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-logik.lo `test -f 'logik.c' || echo '$(srcdir)/'`logik.c
+
+libmutabor_la-midicalc.o: midicalc.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-midicalc.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-midicalc.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-midicalc.o `test -f 'midicalc.c' || echo '$(srcdir)/'`midicalc.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo" "$(DEPDIR)/libmutabor_la-midicalc.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='midicalc.c' object='libmutabor_la-midicalc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-midicalc.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-midicalc.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-midicalc.o `test -f 'midicalc.c' || echo '$(srcdir)/'`midicalc.c
+
+libmutabor_la-midicalc.obj: midicalc.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-midicalc.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-midicalc.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-midicalc.obj `if test -f 'midicalc.c'; then $(CYGPATH_W) 'midicalc.c'; else $(CYGPATH_W) '$(srcdir)/midicalc.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo" "$(DEPDIR)/libmutabor_la-midicalc.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='midicalc.c' object='libmutabor_la-midicalc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-midicalc.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-midicalc.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-midicalc.obj `if test -f 'midicalc.c'; then $(CYGPATH_W) 'midicalc.c'; else $(CYGPATH_W) '$(srcdir)/midicalc.c'; fi`
+
+libmutabor_la-midicalc.lo: midicalc.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-midicalc.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-midicalc.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-midicalc.lo `test -f 'midicalc.c' || echo '$(srcdir)/'`midicalc.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo" "$(DEPDIR)/libmutabor_la-midicalc.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-midicalc.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='midicalc.c' object='libmutabor_la-midicalc.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-midicalc.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-midicalc.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-midicalc.lo `test -f 'midicalc.c' || echo '$(srcdir)/'`midicalc.c
+
+libmutabor_la-parameter.o: parameter.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parameter.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-parameter.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parameter.o `test -f 'parameter.c' || echo '$(srcdir)/'`parameter.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parameter.Tpo" "$(DEPDIR)/libmutabor_la-parameter.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parameter.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parameter.c' object='libmutabor_la-parameter.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parameter.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-parameter.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parameter.o `test -f 'parameter.c' || echo '$(srcdir)/'`parameter.c
+
+libmutabor_la-parameter.obj: parameter.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parameter.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-parameter.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parameter.obj `if test -f 'parameter.c'; then $(CYGPATH_W) 'parameter.c'; else $(CYGPATH_W) '$(srcdir)/parameter.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parameter.Tpo" "$(DEPDIR)/libmutabor_la-parameter.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parameter.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parameter.c' object='libmutabor_la-parameter.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parameter.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-parameter.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parameter.obj `if test -f 'parameter.c'; then $(CYGPATH_W) 'parameter.c'; else $(CYGPATH_W) '$(srcdir)/parameter.c'; fi`
+
+libmutabor_la-parameter.lo: parameter.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parameter.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-parameter.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parameter.lo `test -f 'parameter.c' || echo '$(srcdir)/'`parameter.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parameter.Tpo" "$(DEPDIR)/libmutabor_la-parameter.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parameter.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parameter.c' object='libmutabor_la-parameter.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parameter.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-parameter.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parameter.lo `test -f 'parameter.c' || echo '$(srcdir)/'`parameter.c
+
+libmutabor_la-parser.o: parser.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parser.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-parser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parser.o `test -f 'parser.c' || echo '$(srcdir)/'`parser.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parser.Tpo" "$(DEPDIR)/libmutabor_la-parser.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parser.c' object='libmutabor_la-parser.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parser.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-parser.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parser.o `test -f 'parser.c' || echo '$(srcdir)/'`parser.c
+
+libmutabor_la-parser.obj: parser.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parser.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-parser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parser.obj `if test -f 'parser.c'; then $(CYGPATH_W) 'parser.c'; else $(CYGPATH_W) '$(srcdir)/parser.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parser.Tpo" "$(DEPDIR)/libmutabor_la-parser.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parser.c' object='libmutabor_la-parser.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parser.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-parser.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parser.obj `if test -f 'parser.c'; then $(CYGPATH_W) 'parser.c'; else $(CYGPATH_W) '$(srcdir)/parser.c'; fi`
+
+libmutabor_la-parser.lo: parser.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-parser.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-parser.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-parser.lo `test -f 'parser.c' || echo '$(srcdir)/'`parser.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-parser.Tpo" "$(DEPDIR)/libmutabor_la-parser.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-parser.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='parser.c' object='libmutabor_la-parser.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-parser.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-parser.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-parser.lo `test -f 'parser.c' || echo '$(srcdir)/'`parser.c
+
+libmutabor_la-taste.o: taste.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-taste.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-taste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-taste.o `test -f 'taste.c' || echo '$(srcdir)/'`taste.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-taste.Tpo" "$(DEPDIR)/libmutabor_la-taste.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-taste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='taste.c' object='libmutabor_la-taste.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-taste.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-taste.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-taste.o `test -f 'taste.c' || echo '$(srcdir)/'`taste.c
+
+libmutabor_la-taste.obj: taste.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-taste.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-taste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-taste.obj `if test -f 'taste.c'; then $(CYGPATH_W) 'taste.c'; else $(CYGPATH_W) '$(srcdir)/taste.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-taste.Tpo" "$(DEPDIR)/libmutabor_la-taste.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-taste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='taste.c' object='libmutabor_la-taste.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-taste.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-taste.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-taste.obj `if test -f 'taste.c'; then $(CYGPATH_W) 'taste.c'; else $(CYGPATH_W) '$(srcdir)/taste.c'; fi`
+
+libmutabor_la-taste.lo: taste.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-taste.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-taste.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-taste.lo `test -f 'taste.c' || echo '$(srcdir)/'`taste.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-taste.Tpo" "$(DEPDIR)/libmutabor_la-taste.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-taste.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='taste.c' object='libmutabor_la-taste.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-taste.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-taste.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-taste.lo `test -f 'taste.c' || echo '$(srcdir)/'`taste.c
+
+libmutabor_la-ton.o: ton.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ton.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-ton.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ton.o `test -f 'ton.c' || echo '$(srcdir)/'`ton.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ton.Tpo" "$(DEPDIR)/libmutabor_la-ton.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ton.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ton.c' object='libmutabor_la-ton.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ton.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-ton.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ton.o `test -f 'ton.c' || echo '$(srcdir)/'`ton.c
+
+libmutabor_la-ton.obj: ton.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ton.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-ton.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ton.obj `if test -f 'ton.c'; then $(CYGPATH_W) 'ton.c'; else $(CYGPATH_W) '$(srcdir)/ton.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ton.Tpo" "$(DEPDIR)/libmutabor_la-ton.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ton.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ton.c' object='libmutabor_la-ton.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ton.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-ton.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ton.obj `if test -f 'ton.c'; then $(CYGPATH_W) 'ton.c'; else $(CYGPATH_W) '$(srcdir)/ton.c'; fi`
+
+libmutabor_la-ton.lo: ton.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-ton.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-ton.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-ton.lo `test -f 'ton.c' || echo '$(srcdir)/'`ton.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-ton.Tpo" "$(DEPDIR)/libmutabor_la-ton.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-ton.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ton.c' object='libmutabor_la-ton.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-ton.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-ton.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-ton.lo `test -f 'ton.c' || echo '$(srcdir)/'`ton.c
+
+libmutabor_la-tonsystem.o: tonsystem.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-tonsystem.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-tonsystem.o `test -f 'tonsystem.c' || echo '$(srcdir)/'`tonsystem.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" "$(DEPDIR)/libmutabor_la-tonsystem.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tonsystem.c' object='libmutabor_la-tonsystem.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-tonsystem.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-tonsystem.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-tonsystem.o `test -f 'tonsystem.c' || echo '$(srcdir)/'`tonsystem.c
+
+libmutabor_la-tonsystem.obj: tonsystem.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-tonsystem.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-tonsystem.obj `if test -f 'tonsystem.c'; then $(CYGPATH_W) 'tonsystem.c'; else $(CYGPATH_W) '$(srcdir)/tonsystem.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" "$(DEPDIR)/libmutabor_la-tonsystem.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tonsystem.c' object='libmutabor_la-tonsystem.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-tonsystem.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-tonsystem.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-tonsystem.obj `if test -f 'tonsystem.c'; then $(CYGPATH_W) 'tonsystem.c'; else $(CYGPATH_W) '$(srcdir)/tonsystem.c'; fi`
+
+libmutabor_la-tonsystem.lo: tonsystem.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-tonsystem.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-tonsystem.lo `test -f 'tonsystem.c' || echo '$(srcdir)/'`tonsystem.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo" "$(DEPDIR)/libmutabor_la-tonsystem.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-tonsystem.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='tonsystem.c' object='libmutabor_la-tonsystem.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-tonsystem.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-tonsystem.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-tonsystem.lo `test -f 'tonsystem.c' || echo '$(srcdir)/'`tonsystem.c
+
+libmutabor_la-umstimmung.o: umstimmung.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-umstimmung.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-umstimmung.o `test -f 'umstimmung.c' || echo '$(srcdir)/'`umstimmung.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" "$(DEPDIR)/libmutabor_la-umstimmung.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='umstimmung.c' object='libmutabor_la-umstimmung.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-umstimmung.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-umstimmung.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-umstimmung.o `test -f 'umstimmung.c' || echo '$(srcdir)/'`umstimmung.c
+
+libmutabor_la-umstimmung.obj: umstimmung.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-umstimmung.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-umstimmung.obj `if test -f 'umstimmung.c'; then $(CYGPATH_W) 'umstimmung.c'; else $(CYGPATH_W) '$(srcdir)/umstimmung.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" "$(DEPDIR)/libmutabor_la-umstimmung.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='umstimmung.c' object='libmutabor_la-umstimmung.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-umstimmung.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-umstimmung.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-umstimmung.obj `if test -f 'umstimmung.c'; then $(CYGPATH_W) 'umstimmung.c'; else $(CYGPATH_W) '$(srcdir)/umstimmung.c'; fi`
+
+libmutabor_la-umstimmung.lo: umstimmung.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-umstimmung.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-umstimmung.lo `test -f 'umstimmung.c' || echo '$(srcdir)/'`umstimmung.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo" "$(DEPDIR)/libmutabor_la-umstimmung.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-umstimmung.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='umstimmung.c' object='libmutabor_la-umstimmung.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-umstimmung.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-umstimmung.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-umstimmung.lo `test -f 'umstimmung.c' || echo '$(srcdir)/'`umstimmung.c
 
 .y.c:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
