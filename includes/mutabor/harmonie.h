@@ -27,8 +27,9 @@ namespace mutabor {
       struct harmonie * next;        /**< Nächste Harmonie */
     };
 
-    void get_new_harmonie (char * name, int bezugstaste);
+    void drucke_harmonie (struct harmonie * this_);
 
+    void get_new_harmonie (char * name, int bezugstaste);
     void get_harmoniebezeichner (int vor_taste,
 				 char * name,
 				 int nach_taste);
@@ -36,6 +37,9 @@ namespace mutabor {
     struct harmonie * get_harmonie (char * name, struct harmonie * liste);
 
     extern struct harmonie       *  list_of_harmonien;
+    int        tmp_vor_taste; /**< Zwischenspeicher für tiefste Taste einer Harmonie */
+    char *     tmp_name; /**< Zwischenspeicher für Name einer Harmonie */
+    int        tmp_nach_taste; /**< Zwischenspeicher für höchste Taste einer Harmonie */
 
 #ifdef __cplusplus 
   } // extern "C"
