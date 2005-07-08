@@ -11,6 +11,7 @@
 #define __TONSYSTEM_H_INCLUDED
 
 #include "ton.h"
+#include "interval.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -38,8 +39,9 @@ namespace mutabor {
     int tonsystem_list_laenge (struct tonsystem *list);
 
     struct tonsystem * parser_get_tonsystem (char * name, struct tonsystem * liste);
-    
-    extern struct tonsystem      *  list_of_tonsysteme;
+    void check_tonsystem_konsistenz(void);
+
+    struct tonsystem      *  list_of_tonsysteme;
 
 
 #ifdef __cplusplus 
