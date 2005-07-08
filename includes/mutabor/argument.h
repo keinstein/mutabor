@@ -40,9 +40,15 @@ namespace mutabor {
       struct argument_liste * next; /**< Das nächste Argument in der Liste */
     };
     
+    void drucke_argument (struct argument * z_or_p);
+
     void init_argument_liste (void);
     void get_new_name_in_argument_list (char * parameter);
     void get_new_number_in_argument_list (double parameter);
+
+    int argument_list_laenge (struct argument_liste *list);
+
+    struct argument_liste * get_last_argument_liste (void);
 
 #ifdef __cplusplus 
   } // extern "C"
