@@ -21,6 +21,8 @@ namespace mutabor {
 
     void fatal_error( int nummer, ... );
     void show_line_number( int n );
+    void compiler_warning( int nummer, ... );
+ 
     extern int keys_changed[MAX_BOX];
     extern bool RealTime;
 
