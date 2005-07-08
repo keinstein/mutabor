@@ -48,7 +48,9 @@ int  intern_fgetc( FILE *stream )
  * zwischenspeichern. Bei weiteren Aufrufen wird das vorher gespeicherte Zeichen 
  * einfach überschrieben.
  */
+#ifdef __BORLANDC__
 #pragma warn -par
+#endif
 int  intern_ungetc( int c, FILE *stream )
 { 
 	 SeRiEnNuMmEr[0] = the_character;
@@ -56,7 +58,9 @@ int  intern_ungetc( int c, FILE *stream )
 	 the_character = c;
 	 return 0;
 }
+#ifdef __BORLANDC__
 #pragma warn .par
+#endif
 
 /************************************
 
@@ -119,7 +123,9 @@ static struct heap_element * heap_to_use_syntax = NULL;
 
 
 
+#ifdef __BORLANDC__
 #pragma warn -par
+#endif
 /** Freigeben oder auch nich. 
  * \param pointer Zeiger auf den Speicherbereich, der hier nicht freigegeben wird. */
 void xfree (void * pointer)
@@ -128,7 +134,9 @@ void xfree (void * pointer)
 
  /*   free (pointer); */
 }
+#ifdef __BORLANDC__
 #pragma warn .par
+#endif
 
 /** Belegt einen Speicherbereich in der einfach verketteten Liste \c syntax_heap.
  * Gegebenenfalls wird ein neues Element angelegt.
@@ -286,13 +294,17 @@ struct mini_heap {
 /** Laufzeit-Heap */
 static struct mini_heap * laufzeit_heap = NULL;
 
+#ifdef __BORLANDC__
 #pragma warn -par
+#endif
 /** Löscht \a pointer nicht vom Laufzeit-Heap. ;-).
  * \param pointer Zeiger auf den zu ,,löschenden`` Speicherbreich. */
 void yfree (void * pointer) {
   /* nix */
 }
+#ifdef __BORLANDC__
 #pragma warn .par
+#endif
 
 /** Fordert Speicher auf dem Laufzeit-Heap an. 
  * Dabei wird auf der Liste ein neues Element angelegt.
