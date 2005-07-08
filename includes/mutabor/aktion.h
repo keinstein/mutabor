@@ -45,7 +45,9 @@ namespace mutabor {
     void get_new_aktion_midi_out_element (void);
     void get_aktion_midi_out (void);
     void get_aktion_aufruf (char * name);
-
+    void check_aktionen (struct aktions_liste * aktionen, char * name);
+    
+    struct aktions_liste * get_last_aktions_liste (void);
 
 #ifdef __cplusplus 
   } // extern "C"
