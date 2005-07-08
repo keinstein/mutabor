@@ -113,7 +113,11 @@ namespace mutabor {
     void get_umstimmung_midi_out (void);
     int umstimmungs_list_laenge (struct umstimmung *list);
     struct umstimmung * get_umstimmung (char * name, struct umstimmung * liste);
+    void check_umstimmungs_konsistenz(void);
 
+    /** Wurzel der Umstimmungen */
+    struct umstimmung     *  list_of_umstimmungen;
+    struct umstimmung * tmp_umstimmung;
 #ifdef __cplusplus 
   } // extern "C"
 } // namespace mutabor
