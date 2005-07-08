@@ -337,3 +337,116 @@ void check_komplex_intervall (struct komplex_intervall * liste,
     }
 }
 
+/* Einleseroutinen fr komplex_intervalle  ****/
+
+/** Liste komplexer Intervalle */
+static struct komplex_intervall * the_komplex_liste; 
+
+
+/** Setzt Liste komplexer Intervalle auf NULL.
+ * \warning Die Liste wird nicht gelöscht. 
+ *          Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden.
+ */
+void init_komplex_ton_list (void)
+{
+    the_komplex_liste = NULL;
+}
+
+/** Fügt ein Intervall ans Ende von \a the_komplex_liste an. 
+ * \param f Faktor des Intervalles.
+ * \param name Bezeichnung des Intervalles, das angefügt werden soll 
+ * \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ */
+void get_new_faktor_anteil (double f, char *name)
+{
+    struct komplex_intervall * * lauf;
+
+    for (lauf= & the_komplex_liste; * lauf; lauf= & (*lauf)->next) 
+      /* nur ende der Liste finden */ ;
+
+    (* lauf) = (struct komplex_intervall*) xmalloc ((size_t) sizeof (struct komplex_intervall));
+    (* lauf) -> faktor = f;
+    (* lauf) -> name   = name;
+	 (* lauf) -> next   = NULL;
+    
+}
+
+/** Gibt Wurzelelement von \a the_komplex_liste zurück */
+struct komplex_intervall * get_last_komplex_intervall (void) 
+{
+    return the_komplex_liste;
+}
+
+#if 0
+
+void get_new_relativ_anteil (double f, char *linke_grenze, char *rechte_grenze)
+{
+    struct komplex_anteil * * lauf;
+
+    for (lauf= & komplex_liste; * lauf; lauf= & (*lauf)->next) 
+      /* nur ende der Liste finden */ ;
+
+    (* lauf) = xmalloc ((size_t) sizeof (struct komplex_anteil));
+    (* lauf) -> komplex_typ                     = komplex_anteil_relativ;
+    (* lauf) -> u.komplex_anteil_relativ.faktor        = f;
+    (* lauf) -> u.komplex_anteil_relativ.linke_grenze  = linke_grenze;
+    (* lauf) -> u.komplex_anteil_relativ.rechte_grenze = rechte_grenze;
+	 (* lauf) -> next                                   = NULL;
+    
+}
+#endif
+
+/** Einleseroutine fuer die Intervalle 
+ *  Es wird einfach eine Liste of Intervallen aufgebaut. Das übergebene 
+ *  Intervall wird hinten angehängt. Taucht der Intervallname schon einmal auf, 
+ *  wird ein fataler Fehler ausgegeben.
+ *  \param name Name des Intervalles
+ *  \param wert Wert des Intervalles (\f$\geq\f$ 0,001)
+ *  \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ */
+
+void get_new_intervall (char *name, double wert)
+{
+    struct intervall * * lauf;
+    for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
+        if ( ! strcmp (name, (*lauf)->name)) {
+            fatal_error(10,name); /* Intervallname doppelt */
+        }
+    }
+    
+    if (fabs (wert) < 0.001) 
+        fatal_error (46, name);
+    
+    (* lauf) = (struct intervall*) xmalloc ((size_t) sizeof (struct intervall));
+    (* lauf) -> name = name;
+    (* lauf) -> intervall_typ = intervall_absolut;
+    (* lauf) -> u.intervall_absolut.intervall_wert = wert;
+    (* lauf) -> next = NULL;
+    
+}
+
+
+/** Fügt ein komplexes Intervall ans Ende von \a list_of_intervalle an. 
+ *  Taucht der Intervallname schon einmal auf, 
+ *  wird ein fataler Fehler ausgegeben.
+ * \param name Bezeichnung des Intervalles, das angefügt werden soll 
+ * \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ */
+void get_new_intervall_komplex (char *name)
+{
+    struct intervall * * lauf;
+    for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
+        if ( ! strcmp (name, (*lauf)->name)) {
+            fatal_error(10,name); /* Intervallname doppelt */
+        }
+    }
+    
+    (* lauf) = (struct intervall*) xmalloc ((size_t) sizeof (struct intervall));
+    (* lauf) -> name = name;
+    (* lauf) -> intervall_typ = intervall_komplex;
+    (* lauf) -> u.intervall_komplex.komplex_liste = 
+                       get_last_komplex_intervall ();
+    (* lauf) -> next = NULL;
+    
+}
+
