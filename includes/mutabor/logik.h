@@ -34,6 +34,8 @@ namespace mutabor {
     int logik_list_laenge (struct logik *list);
     int get_logik_nummer (char * name, struct logik * liste);
     struct logik * get_logik (char * name, struct logik * liste);
+    void setze_nummer_von_abstand_und_zentrum (void);
+    void check_logik_konsistenz(void);
 
     extern struct logik          *  list_of_logiken;
 
