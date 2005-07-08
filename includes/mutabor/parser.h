@@ -10,6 +10,7 @@
 #ifndef __PARSER_H_INCLUDED
 #define __PARSER_H_INCLUDED
 
+#include <stdio.h>
 #include "mutabor/midicalc.h"
 #include "mutabor/argument.h"
 
@@ -23,6 +24,8 @@ void mutabor_programm_einlesen (char * filename) ;
 
 extern FILE * quelldatei;
 extern long anzahl_eingelesene_zeichen;
+
+void check_konsistenz (void);
 
 #ifdef __cplusplus 
   } // extern "C"
