@@ -56,6 +56,7 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle);
 void check_komplex_intervall (struct komplex_intervall * liste,
                               char * konstrukt_name);
 
+    struct komplex_intervall * get_last_komplex_intervall (void);
 extern struct intervall      *  list_of_intervalle;
 
 #ifdef __cplusplus
