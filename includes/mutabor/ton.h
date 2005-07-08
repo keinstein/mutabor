@@ -45,11 +45,15 @@ namespace mutabor {
       struct ton * next; /** Nächste Ton */
     };
 
+    void berechne_toene_absolut (struct ton *ton_liste);
+    void drucke_ton (struct ton * lauf);
+
     void get_new_ton_absolut (char * name, double wert);
     void init_komplex_ton_list (void);
     void get_new_ton_komplex_positive (char *name, char *bezugston);
     void get_new_ton_komplex_negative (char *name, char *bezugston);
     
+    void init_nullton( void );
     void init_ton_liste (void);
     void get_new_ton_in_tonsystem (char *name);
 
@@ -57,7 +61,8 @@ namespace mutabor {
     
     struct ton * get_ton (char * name, struct ton * liste);
 
-    extern struct ton            *  list_of_toene;
+    struct ton            *  list_of_toene;
+    struct ton            *  ton_ohne_namen; /**< Frequenz=0 */
 
 #ifdef __cplusplus 
   } // extern "C"
