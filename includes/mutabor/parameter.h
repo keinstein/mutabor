@@ -29,6 +29,12 @@ namespace mutabor {
     void get_new_name_in_parameterlist (char * name);
     void get_new_number_in_parameterlist (double wert);
 
+    int parameter_list_laenge (struct parameter_liste *list);
+
+    int parameter_nummer (int aktueller_index, char * such_name, 
+			  struct parameter_liste * knoten);
+    struct parameter_liste * get_last_parameter_liste (void);
+
 #ifdef __cplusplus 
   } // extern "C"
 } // namespace mutabor
