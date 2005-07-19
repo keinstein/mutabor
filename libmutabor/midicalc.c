@@ -2,11 +2,23 @@
  ********************************************************************
  * Alles zu MIDI-Berechnungen.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/midicalc.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
+ * $Log: midicalc.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************/
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+/* für HAVE_STDDEF_H, size_t */
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include <stdio.h>
 #include "mutabor/midicalc.h"
 #include "mutabor/umstimmung.h"

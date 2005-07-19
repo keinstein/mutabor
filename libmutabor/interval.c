@@ -1,15 +1,31 @@
 /** \file
  ********************************************************************
  * Intervallberechnungen
- * \author R.Krauße
- * \date 1997
- * \version 2.win
+ *
+ * \author R.Krauße <krausze@users.berlios.de>
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.4 $
+ *
  * \todo make this file thred-proof
+ * \todo Portabilisierung von: pow
  ********************************************************************/
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+  /* Relevante Variablen für diese Datei:
+   * HAVE_POW
+   * size_t
+   */
+#endif
+
 #include<string.h>
 #include<math.h>
 #include "mutabor/interval.h"
 #include "mutabor/heap.h"
+#include "mutabor/parser.h"
+#include "mutabor/errors.h"
+
+/** Wurzel der Intervallliste */
+struct intervall      *  list_of_intervalle;
 
 /** Sucht ein Intervall aus einer Intervallliste.
  * \param name Name des gesuchten Intervalles
@@ -34,22 +50,42 @@ struct intervall * get_intervall (char * name,
 static double get_intervall_wert (char *name)
 {
   struct intervall *lauf;
+#if (DEBUG)
+  if (mutabor_debug_level)
+    fprintf(stderr,"Reading interval: %s",name);
+#endif
   
   for (lauf = list_of_intervalle; lauf; lauf = lauf -> next) {
+#if (DEBUG)
+  if (mutabor_debug_level)
+    fprintf(stderr,"Reading interval: %s (%s)\n",name,lauf->name);
+#endif
       if ( ! strcmp (name, lauf->name)) {
           switch (lauf -> intervall_typ) {
           default: /* und */
           case intervall_komplex:
+#if (DEBUG)
+	    if (mutabor_debug_level)
+	      fprintf(stderr,"\n");
+#endif
               fatal_error (0, __FILE__, __LINE__);
           break;
           case intervall_absolut:
+#if (DEBUG)
+	    if (mutabor_debug_level)
+	      fprintf(stderr,"%f\n",lauf->u.intervall_absolut.intervall_wert);
+#endif
               return lauf->u.intervall_absolut.intervall_wert ;
           /* break; */
           }
       }
   }
   
-  fatal_error(26,name); /* Intrvall n.dekl. */
+#if (DEBUG)
+	    if (mutabor_debug_level)
+	      fprintf(stderr,"\n");
+#endif
+  fatal_error(MUTABOR_ERROR_UNDEFINED_INTERVAL,strdup(name)); /* Intrvall n.dekl. */
   return 0.0; /* to prevent warnings */
 }
 
@@ -64,17 +100,31 @@ double get_wert_komplex_intervall (struct komplex_intervall * intervall)
 {
     double ret = 1.0;
 
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Get value of complex interval.\n");
+#endif
     for ( ; intervall ; intervall = intervall -> next ) {
-        double help = get_intervall_wert (intervall -> name);
+        double help;
+#ifdef DEBUG
+	if (mutabor_debug_level) 
+	  fprintf (stderr,"    %s*%f\n",intervall->name,intervall->faktor);
+#endif
+	help = get_intervall_wert (intervall -> name);
         if (help > 0)
             ret *= pow (help, intervall -> faktor);
         else {
-              fatal_error(46, intervall -> name); 
+              fatal_error(MUTABOR_ERROR_INVALID_INTERVAL_VALUE,
+			  intervall -> name); 
                     /* unzul. Intervallwert */
         }
           
     }
 
+#ifdef DEBUG
+	if (mutabor_debug_level) 
+	  fprintf (stderr,"           %f",ret);
+#endif
     return ret;
 }
 
@@ -145,8 +195,13 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
  * \retval Laufende Nummer des Intervalls.
  */
 static int intervall_nummer (char *name)
-{ int i;
-
+{ 
+  int i;
+#if (DEBUG)
+  if (mutabor_debug_level)
+    fprintf(stderr,"Suche Intervall: %s\n",name);
+#endif
+	 
   for (i=0; i<anzahl_intervalle; i++)
       if ( ! strcmp (name, intervalle[i]->name)) return i;
       
@@ -229,10 +284,19 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
   
 
 /* Feld mit intervallen initialisieren (zum schnelleren Zugriff) */
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Belege Intervalle\n");
+#endif
 
   belege_intervalle (intervalle, list_of_intervalle);
   
 /* Adjazenzmatrix initialisieren (Kein Intervall h„ngt vom anderen ab) */
+
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initialisiere Adjazenzmatrix (Nullen)\n");
+#endif
 
   for (i=0; i<anzahl_intervalle; i++) {
       for (j=0; j<anzahl_intervalle; j++) {
@@ -241,6 +305,11 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
   }
   
 /* Adjazenzmatrix initialisieren (Abh„ngigkeiten eintragen) */
+
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initialisiere Adjazenzmatrix (Abhängigkeiten)\n");
+#endif
 
   for (i=0; i<anzahl_intervalle; i++) {
       if (intervalle[i]->intervall_typ == intervall_absolut)  /* alles ok */ ;
@@ -257,21 +326,22 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
       }
   }   
 
-#ifdef DEBUG_ANZEIGE_3
-/* Adjazenzmatrix anzeigen */
+#ifdef DEBUG
+  if (mutabor_debug_level) {
+    /* Adjazenzmatrix anzeigen */
 
-  printf ("Matrix:\n");
-  
-  for (i=0; i<anzahl_intervalle; i++) {
-      printf ("%s -> ", intervalle[i]->name);
+    fprintf (stderr,"Matrix:\n");
+    
+    for (i=0; i<anzahl_intervalle; i++) {
+      fprintf (stderr,"%s -> ", intervalle[i]->name);
       for (j=0; j<anzahl_intervalle; j++) {
-          if (adjazent (i,j))
-              printf ("%s  ", intervalle[j]->name);
+	if (adjazent (i,j))
+	  fprintf (stderr,"%s  ", intervalle[j]->name);
       }
-      printf ("\n");
-  } 
-  printf ("\n");
-
+      fprintf (stderr,"\n");
+    } 
+    fprintf (stderr,"\n");
+  }
 #endif
   
 /* auf Zyklenfreiheit Pruefen */
@@ -290,20 +360,22 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
   for (k=0; k<anzahl_intervalle; k++)
       berechne_intervall_endgueltig (k);
       
-#ifdef DEBUG_ANZEIGE_3
-                        /* Adjazenzmatrix anzeigen */
-
-  printf ("Matrix:\n");
-  
-  for (i=0; i<anzahl_intervalle; i++) {
-      printf ("%s -> ", intervalle[i]->name);
+#ifdef DEBUG
+  if (mutabor_debug_level) {
+    /* Adjazenzmatrix anzeigen */
+    
+    fprintf (stderr,"\nMatrix nach dem Zyklentest:\n");
+    
+    for (i=0; i<anzahl_intervalle; i++) {
+      fprintf (stderr,"%s -> ", intervalle[i]->name);
       for (j=0; j<anzahl_intervalle; j++) {
-          if (adjazent (i,j))
-              printf ("%s  ", intervalle[j]->name);
+	if (adjazent (i,j))
+	  fprintf (stderr,"%s  ", intervalle[j]->name);
       }
-      printf ("\n");
+      fprintf (stderr,"\n");
+    }
+    fprintf (stderr,"\n");
   }
-  printf ("\n");
 #endif
 
   xde_alloca (intervalle);
@@ -360,6 +432,10 @@ void init_komplex_ton_list (void)
 void get_new_faktor_anteil (double f, char *name)
 {
     struct komplex_intervall * * lauf;
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"New complex interval factor %s*%f\n",name,f);
+#endif
 
     for (lauf= & the_komplex_liste; * lauf; lauf= & (*lauf)->next) 
       /* nur ende der Liste finden */ ;
@@ -367,8 +443,12 @@ void get_new_faktor_anteil (double f, char *name)
     (* lauf) = (struct komplex_intervall*) xmalloc ((size_t) sizeof (struct komplex_intervall));
     (* lauf) -> faktor = f;
     (* lauf) -> name   = name;
-	 (* lauf) -> next   = NULL;
+    (* lauf) -> next   = NULL;
     
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"End complex interval factor %s*%f\n",name,f);
+#endif
 }
 
 /** Gibt Wurzelelement von \a the_komplex_liste zurück */
@@ -426,7 +506,7 @@ void get_new_intervall (char *name, double wert)
 }
 
 
-/** Fügt ein komplexes Intervall ans Ende von \a list_of_intervalle an. 
+/** Fügt ein komplexes Intervall ans Ende von \a #list_of_intervalle an. 
  *  Taucht der Intervallname schon einmal auf, 
  *  wird ein fataler Fehler ausgegeben.
  * \param name Bezeichnung des Intervalles, das angefügt werden soll 

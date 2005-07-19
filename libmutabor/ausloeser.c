@@ -2,16 +2,26 @@
  ********************************************************************
  * Alles zu Ereignis-Auslösern
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
  * $Log: ausloeser.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  * Revision 1.1  2005/07/08 14:44:20  keinstein
  * Neue Datei.
  * Aus parser.c herausgelöst.
  *
  ********************************************************************/
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include "mutabor/ausloeser.h"

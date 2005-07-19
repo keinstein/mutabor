@@ -2,18 +2,30 @@
  ********************************************************************
  * Alles zu Umstimmungen.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/harmonie.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
+ * $Log: harmonie.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************/
 
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include "mutabor/harmonie.h"
 #include "mutabor/bad_decl.h"
 #include "mutabor/taste.h"
 #include "mutabor/heap.h"
+#include "mutabor/errors.h"
 
 /** Wurzel der Harmonien */
 struct harmonie       *  list_of_harmonien;
@@ -56,6 +68,10 @@ void drucke_harmonie (struct harmonie * this_)
 void get_new_harmonie (char * name, int bezugstaste)
 {
     struct harmonie * * lauf;
+#if (DEBUG)
+    if (mutabor_debug_level)
+      fprintf (stderr,"Neue Harmonie: %s %d\n",name,bezugstaste);
+#endif
     for (lauf= & list_of_harmonien; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
             fatal_error(14,name); /* Harmoniename doppelt */

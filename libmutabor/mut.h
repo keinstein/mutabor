@@ -68,7 +68,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 54 "mut.y"
+#line 82 "mut.y"
 typedef union YYSTYPE {
     double      f_value;        /* fÅr Gleitkommazahlen */
     int         integer;        /* FÅr integers */
@@ -81,7 +81,7 @@ typedef union YYSTYPE {
 # define YYSTYPE_IS_TRIVIAL 1
 #endif
 
-extern YYSTYPE mutabor_parser_lval;
+
 
 #if ! defined (YYLTYPE) && ! defined (YYLTYPE_IS_DECLARED)
 typedef struct YYLTYPE
@@ -96,6 +96,6 @@ typedef struct YYLTYPE
 # define YYLTYPE_IS_TRIVIAL 1
 #endif
 
-extern YYLTYPE mutabor_parser_lloc;
+
 
 

@@ -2,17 +2,27 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/aktion.c,v 1.1 2005/07/08 14:44:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/aktion.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
  * $Log: aktion.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  * Revision 1.1  2005/07/08 14:44:20  keinstein
  * Neue Datei.
  * Aus parser.c herausgelöst.
  *
  ********************************************************************/
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+/* für HAVE_STDDEF_H, size_t */
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include "mutabor/aktion.h"
 #include "mutabor/argument.h"
 #include "mutabor/heap.h"
@@ -76,30 +86,28 @@ struct aktions_liste * get_last_aktions_liste (void)
     return list_of_aktionen;
 }
 
-#ifdef DEBUG_ANZEIGE
 
 void print_aktions_liste (struct aktions_liste * lauf)
-{ /*
-              
-              
-                            for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
-						 help_umst;
-                   help_umst = help_umst -> next ) {
-                  struct argument_liste * help;
-                  printf ("                Umstimmungs-name: %s, Parameter: ",
-                           help_umst->name ? help_umst->name : "(NULL)");
-                  for (help = help_umst->argument_liste; help; help = help->next ) {
-                      drucke_argument ( & help -> argument );
-                  }
-                  printf ("\n");
-              }
+{ 
+  fprintf(stderr,"print_aktions_liste() undefined.\n");
+  /*
+  struct aktions_liste * help_umst;
+    for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
+	 help_umst;
+	 help_umst = help_umst -> next ) {
+      struct argument_liste * help;
+      printf ("                Umstimmungs-name: %s, Parameter: ",
+	      help_umst->name ? help_umst->name : "(NULL)");
+      for (help = help_umst->argument_liste; help; help = help->next ) {
+	drucke_argument ( & help -> argument );
+      }
+      printf ("\n");
+    }
+  */
+};
 
 
-	 */ };
 
-
-
-#endif
 
 /** Testet eine Liste von Aktionen auf Zulässigkeit. Wird eine nicht zulässige oder erreichbare
  * Konfiguration gefunden, wird je nach Situation ein fataler Fehler oder eine Compiler-Warnung

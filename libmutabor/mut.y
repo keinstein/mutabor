@@ -1,5 +1,21 @@
+/** \file
+ ******************************************************
+ * Parser-Generator f�r Mutabor-Dateien.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.3 2005/07/19 15:15:27 keinstein Exp $
+ * \author R�diger Krauﾟe <krausze@users.berlios.de>
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.3 $
+ * $Log: mut.y,v $
+ * Revision 1.3  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
+ * \todo Portabilisierung von: memmove, pow, limits.h
+ ******************************************************
+ */
 %verbose
 %locations
+%pure-parser
 %name-prefix="mutabor_parser_"
 %token-table
 /* Mutabor Tonsysteme */
@@ -17,8 +33,21 @@
 #pragma warn -par
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+  /* Relevante Variablen f�r diese Datei:
+   * HAVE_MEMMOVE 
+   * HAVE_POW
+   * HAVE_LIMITS_H
+   * const
+   * size_t
+   */
+#endif
+
 #include <ctype.h>
+#  ifdef HAVE_LIMITS_H
 #include <limits.h>
+#endif
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,6 +69,8 @@
 #include "mutabor/anweisung.h"
 #include "mutabor/instrument.h"
 #include "mutabor/parser.h"
+#include "mutabor/errors.h"
+#include "mutlex.h"
 
 #define MAX_IDENTIFIER_LEN 80
 
@@ -619,7 +650,7 @@ ausloeser :
           ANSONSTEN { get_ausloeser_default (); }
         | harmoniebezeichner  { get_ausloeser_harmonie (); }
         | FORM harmoniebezeichner { get_ausloeser_harmonie_form (); }
-        | TASTE IDENTIFIER { get_ausloeser_taste ($2); }
+        | TASTE IDENTIFIER { get_ausloeser_taste ($2); fprintf(stderr,"Taste akzeptiert"); }
         | MIDI_IN '(' { init_integersequenz (); }
               integersequenz ')' 
                       { get_ausloeser_midi_in (); }
@@ -664,236 +695,277 @@ GLEITKOMMA_ZAHL:
         
 %%
 
+	/* anderen Lexer verwenden */
+#undef yylex
+#undef init_yylex
 int yylex(void) 
 {
-    int c;
+  YYLTYPE yylloc;
+  YYSTYPE yylval;
+  int c;
+  
+ start_lex:
+  
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    printf("Leerkram ignorieren\n");
+#endif
 
-start_lex:
-
-    /* Ignore whitespace, get first nonwhitespace character */
-    while ( anzahl_eingelesene_zeichen ++,
-
-            (c = toupper( intern_fgetc(quelldatei) )) == ' ' 
+  /* Ignore whitespace, get first nonwhitespace character */
+  while ( anzahl_eingelesene_zeichen ++,
+	  (c = toupper( intern_fgetc(mutabor_parser_in) )) == ' ' 
           || c == '\t'
-          || c == '\n') {
-
-       if (c == '\n') 
+          || c == '\n'
+	  || c == '\r') {
+    
+    if (c == '\n') 
 #ifdef ACS_VERSION
-        if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
-           show_line_number(yylloc.first_line);
+      if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
+	show_line_number(yylloc.first_line);
 #else
-         yylloc.first_line ++;
+    yylloc.first_line ++;
 #endif
-       }
+  }
 
-    if (c == '"') {
-       while (anzahl_eingelesene_zeichen ++,
-       
-              (c=intern_fgetc(quelldatei)) != '"' && c != EOF )
-                    if (c == '\n') yylloc.first_line ++;
-        
-       goto start_lex;
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    printf("Token start: '%c'\n",c);
+#endif
+
+  
+  if (c == '"') {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Kommentar:\n");
+#endif
+
+    while (anzahl_eingelesene_zeichen ++,
+	   (c=intern_fgetc(mutabor_parser_in)) != '"' && c != EOF ){
+      if (c == '\n') yylloc.first_line ++;
+#ifdef DEBUG
+      if (mutabor_debug_level)
+	printf("%c",c);
+#endif
     }
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Kommentar Ende.\n");
+#endif
+    goto start_lex;
+  }
 
-    if (c == EOF)
-        return 0;
-
-        
-    /* char starts a number => parse the number. */
-    if (isdigit(c)) {
-
+  if (c == EOF) {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Dateiende.\n");
+#endif
+    return 0;
+  }
+  
+  /* char starts a number => parse the number. */
+  if (isdigit(c)) {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Zahl.\n");
+#endif
+    
 #if 1
-        double zahl = 0.0;
-        while (isdigit(c)) {
-            zahl *= 10;
-            zahl += ( c - '0' );
-            anzahl_eingelesene_zeichen ++;
-            c = intern_fgetc (quelldatei);
-        }
-        if (c == '.') {    /* dann nachkommastellen */
-            double faktor = 1.0;
-            while (anzahl_eingelesene_zeichen ++,
-                   isdigit (c = intern_fgetc (quelldatei))) {
-                faktor /= 10;
-                zahl += faktor * ( c - '0' );
-            }
-            intern_ungetc (c, quelldatei);
-            anzahl_eingelesene_zeichen --;
-            yylval.f_value = zahl;
-            return F_NUMBER;
-        }
-        else {
-            intern_ungetc (c, quelldatei);
-            anzahl_eingelesene_zeichen --;
-            
-            if (zahl > INT_MAX) {
-                yylval.f_value = zahl;
-                return F_NUMBER;
-            }
-            else {
-                yylval.integer = (int)zahl;
-                return INTEGER;
-            }
-        }
+    double zahl = 0.0;
+    while (isdigit(c)) {
+      zahl *= 10;
+      zahl += ( c - '0' );
+      anzahl_eingelesene_zeichen ++;
+      c = intern_fgetc (mutabor_parser_in);
+    }
+    if (c == '.') {    /* dann nachkommastellen */
+      double faktor = 1.0;
+      while (anzahl_eingelesene_zeichen ++,
+	     isdigit (c = intern_fgetc (mutabor_parser_in))) {
+	faktor /= 10;
+	zahl += faktor * ( c - '0' );
+      }
+      intern_ungetc (c, mutabor_parser_in);
+      anzahl_eingelesene_zeichen --;
+      yylval.f_value = zahl;
+      return F_NUMBER;
+    }
+    else {
+      intern_ungetc (c, mutabor_parser_in);
+      anzahl_eingelesene_zeichen --;
+      
+      if (zahl > INT_MAX) {
+	yylval.f_value = zahl;
+	return F_NUMBER;
+      }
+      else {
+	yylval.integer = (int)zahl;
+	return INTEGER;
+      }
+    }
 #else
 
-        intern_ungetc (c, quelldatei);
-        anzahl_eingelesene_zeichen --;
-        fscanf (quelldatei, "%lf", &yylval.f_value);
-
+    intern_ungetc (c, mutabor_parser_in);
+    anzahl_eingelesene_zeichen --;
+    fscanf (mutabor_parser_in, "%lf", &yylval.f_value);
+    
 #endif
-
-/*
- printf("f_number:%lf:\n", yylval.f_value); 
-*/
-      
-    }
     
-    /* # starts a HEX-number => parse the number. */
-    if (c == '#') {
-        int help;
-        if (fscanf (quelldatei, "%x", &help) == 0) {
-            fatal_error (78, yylloc.first_line + 1);
-            exit (1);
-        }
-        yylval.integer = help;
-
-/* printf("f_number:%lf:\n", yylval.f_value); */
-
-        return INTEGER;
-    }
+    /*
+      printf("f_number:%lf:\n", yylval.f_value); 
+    */
     
-    /* Test auf reserved word oder einen Identifier */
-    if (isalpha (c) || (c == '_') || (c == '\'') ) {
-
-static struct { 
-    char *word;
-    int token;
-} reserved_words [] = {
-/* Deutsche Schl《selworte : */
-{ "INTERVALL"  , INTERVALL  },
-{ "WURZEL"     , WURZEL     },
-{ "TON"        , TON        },
-{ "TONSYSTEM"  , TONSYSTEM  },
-{ "UMSTIMMUNG" , UMSTIMMUNG },
-{ "HARMONIE"   , HARMONIE   },
-{ "LOGIK"      , LOGIK      },
-{ "FORM"       , FORM       },
-{ "MIDIKANAL" , INSTRUMENT },
-{ "TASTE"      , TASTE      },
-{ "MIDIIN"     , MIDI_IN    },
-{ "MIDIOUT"    , MIDI_OUT   },
-{ "ANSONSTEN"  , ANSONSTEN  },
-/* Englische Schl《selworte : */
-{ "INTERVAL"  , INTERVALL  },
-{ "ROOT"     , WURZEL     },
-{ "TONE"        , TON        },
-{ "TONESYSTEM"  , TONSYSTEM  },
-{ "RETUNING" , UMSTIMMUNG },
-{ "PATTERN"   , HARMONIE   },
-{ "LOGIC"      , LOGIK      },
-{ "SHIFTED"       , FORM       },
-{ "MIDICHANNEL" , INSTRUMENT },
-{ "KEY"      , TASTE      },
-{ "ELSE"  , ANSONSTEN  },
-{ NULL         , 0          }
-};
-
+  }
+  
+  /* # starts a HEX-number => parse the number. */
+  if (c == '#') {
+    int help;
+    if (fscanf (mutabor_parser_in, "%x", &help) == 0) {
+      fatal_error (78, yylloc.first_line + 1);
+      exit (1);
+    }
+    yylval.integer = help;
+    
+    /* printf("f_number:%lf:\n", yylval.f_value); */
+    
+    return INTEGER;
+  }
+  
+  /* Test auf reserved word oder einen Identifier */
+  if (isalpha (c) || (c == '_') || (c == '\'') ) {
+    
+    static struct { 
+      char *word;
+      int token;
+    } reserved_words [] = {
+      /* Deutsche Schl《selworte : */
+      { "INTERVALL"  , INTERVALL  },
+      { "WURZEL"     , WURZEL     },
+      { "TON"        , TON        },
+      { "TONSYSTEM"  , TONSYSTEM  },
+      { "UMSTIMMUNG" , UMSTIMMUNG },
+      { "HARMONIE"   , HARMONIE   },
+      { "LOGIK"      , LOGIK      },
+      { "FORM"       , FORM       },
+      { "MIDIKANAL" , INSTRUMENT },
+      { "TASTE"      , TASTE      },
+      { "MIDIIN"     , MIDI_IN    },
+      { "MIDIOUT"    , MIDI_OUT   },
+      { "ANSONSTEN"  , ANSONSTEN  },
+      /* Englische Schl《selworte : */
+      { "INTERVAL"  , INTERVALL  },
+      { "ROOT"     , WURZEL     },
+      { "TONE"        , TON        },
+      { "TONESYSTEM"  , TONSYSTEM  },
+      { "RETUNING" , UMSTIMMUNG },
+      { "PATTERN"   , HARMONIE   },
+      { "LOGIC"      , LOGIK      },
+      { "SHIFTED"       , FORM       },
+      { "MIDICHANNEL" , INSTRUMENT },
+      { "KEY"      , TASTE      },
+      { "ELSE"  , ANSONSTEN  },
+      { NULL         , 0          }
+    };
+    
 
 #if 0
-        char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
-        int i=0;
-        
-        do {
-            if (c == '\'') c = 'i';
-            symbuffer[i++] = c;
-            c = toupper(intern_fgetc (quelldatei));
-        } while (c != EOF                && 
-                 i < MAX_IDENTIFIER_LEN  && 
-                 (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
-        intern_ungetc (c, quelldatei);
-        symbuffer[i] = '\0';
+    char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
+    int i=0;
+    
+    do {
+      if (c == '\'') c = 'i';
+      symbuffer[i++] = c;
+      c = toupper(intern_fgetc (mutabor_parser_in));
+    } while (c != EOF                && 
+	     i < MAX_IDENTIFIER_LEN  && 
+	     (isalnum (c) || (c == '_') || (c == '\'') ) );
+    
+    intern_ungetc (c, mutabor_parser_in);
+    symbuffer[i] = '\0';
 #else
-        int i = 0;
-        int max_identifier_len = 10;
-        char *symbuffer = (char*) xmalloc ((size_t) max_identifier_len);
-
-        do {
-            if (c == '\'') c = 'i';
-
-            if ( i + 1 == max_identifier_len ) {
-                char * help = (char*) xrealloc (symbuffer, (size_t) (max_identifier_len += 10));
-                memmove (help, symbuffer, (size_t) max_identifier_len);
-                symbuffer = help;
-            }
-
-            symbuffer[i++] = c;
-            c = toupper(intern_fgetc (quelldatei));
-            anzahl_eingelesene_zeichen ++;
-
-        } while (c != EOF                && 
-                 (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
-        intern_ungetc (c, quelldatei);
-        anzahl_eingelesene_zeichen --;
-        symbuffer[i] = '\0';
-
+    int i = 0;
+    int max_identifier_len = 10;
+    char *symbuffer = (char*) xmalloc ((size_t) max_identifier_len);
+    
+    do {
+      if (c == '\'') c = 'i';
+      
+      if ( i + 1 == max_identifier_len ) {
+	char * help = (char*) xrealloc (symbuffer, (size_t) (max_identifier_len += 10));
+	memmove (help, symbuffer, (size_t) max_identifier_len);
+	symbuffer = help;
+      }
+      
+      symbuffer[i++] = c;
+      c = toupper(intern_fgetc (mutabor_parser_in));
+      anzahl_eingelesene_zeichen ++;
+      
+    } while (c != EOF                && 
+	     (isalnum (c) || (c == '_') || (c == '\'') ) );
+    
+    intern_ungetc (c, mutabor_parser_in);
+    anzahl_eingelesene_zeichen --;
+    symbuffer[i] = '\0';
+	
 #endif
-
-/* printf("symbuffer:%s:\n", symbuffer); */
-        
-        for (i=0; reserved_words[i].word; i++) {
-            if ( ! strcmp (symbuffer, reserved_words[i].word)) {
-                xfree (symbuffer);
-                return reserved_words[i].token;
-            }
-        }
-        
-        yylval.identifier = symbuffer;
-        return IDENTIFIER;
+    
+    /* printf("symbuffer:%s:\n", symbuffer); */
+    
+    for (i=0; reserved_words[i].word; i++) {
+      if ( ! strcmp (symbuffer, reserved_words[i].word)) {
+	xfree (symbuffer);
+	return reserved_words[i].token;
+      }
     }
     
-    /* Any other character is a token by itself */
-    switch (c) {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-        case '[':
-        case ']':
-        case ':':
-        case '=':
-        case '(':
-        case ')':
-        case ',':
-        case '~':
-        case '@':
-        case '<':
-        case '>':
-        case '{':
-        case '}':
-        case ';':
-               return c;
-    }
+    yylval.identifier = symbuffer;
+    return IDENTIFIER;
+  }
+  
+  /* Any other character is a token by itself */
+  switch (c) {
+  case '+':
+  case '-':
+  case '*':
+  case '/':
+  case '[':
+  case ']':
+  case ':':
+  case '=':
+  case '(':
+  case ')':
+  case ',':
+  case '~':
+  case '@':
+  case '<':
+  case '>':
+  case '{':
+  case '}':
+  case ';':
+    return c;
+  }
 
-    fatal_error(2,c,yylloc.first_line + 1);
-    
-    return 0;  /* um Compilerwarnungen zu vermeiden */
-
-    
+  fprintf(stderr,"Lexer: durchgefallen");
+  fatal_error(2,c,yylloc.first_line + 1);
+  
+  return 0;  /* um Compilerwarnungen zu vermeiden */
+  
+  
 } /* yylex */
 
 void init_yylex (void)
 {
-    yylloc.first_line = 0;
-    anzahl_eingelesene_zeichen = 0;
+  YYLTYPE yylloc;
+  yylloc.first_line = 0;
+  anzahl_eingelesene_zeichen = 0;
 }
 
 void yyerror(char *s) {
-
+  fprintf(stderr,s);
+  /*
+  return 1;
+  */
 /* ignore it ! */
-
+  
 } /* yyerror */
 
 

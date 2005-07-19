@@ -2,18 +2,26 @@
  ********************************************************************
  * Alles zu Anweisungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/anweisung.c,v 1.1 2005/07/08 14:44:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/anweisung.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
  * $Log: anweisung.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  * Revision 1.1  2005/07/08 14:44:20  keinstein
  * Neue Datei.
  * Aus parser.c herausgelöst.
  *
  ********************************************************************/
-
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include "mutabor/anweisung.h"
 #include "mutabor/ausloeser.h"
 #include "mutabor/aktion.h"
@@ -31,7 +39,7 @@ void init_anweisungs_liste (void)
     tmp_anweisungsliste = NULL;
 }
 
-/** Gibt Wurzelelement von \a the_komplex_liste zurück */
+/** Gibt Wurzelelement von \a #tmp_anweisungs_liste zurück */
 struct anweisung * get_last_anweisungs_liste (void)
 {
     return tmp_anweisungsliste ;

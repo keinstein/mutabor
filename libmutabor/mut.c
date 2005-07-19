@@ -40,7 +40,7 @@
 #define YYSKELETON_NAME "yacc.c"
 
 /* Pure parsers.  */
-#define YYPURE 0
+#define YYPURE 1
 
 /* Using locations.  */
 #define YYLSP_NEEDED 1
@@ -101,7 +101,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 7 "mut.y"
+#line 20 "mut.y"
 
 
 /* BEGIN MUT_TAB.C */
@@ -115,8 +115,21 @@
 #pragma warn -par
 #endif
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+  /* Relevante Variablen f¸r diese Datei:
+   * HAVE_MEMMOVE 
+   * HAVE_POW
+   * HAVE_LIMITS_H
+   * const
+   * size_t
+   */
+#endif
+
 #include <ctype.h>
+#  ifdef HAVE_LIMITS_H
 #include <limits.h>
+#endif
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -138,6 +151,8 @@
 #include "mutabor/anweisung.h"
 #include "mutabor/instrument.h"
 #include "mutabor/parser.h"
+#include "mutabor/errors.h"
+#include "mutlex.h"
 
 #define MAX_IDENTIFIER_LEN 80
 
@@ -163,14 +178,14 @@
 #endif
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 54 "mut.y"
+#line 82 "mut.y"
 typedef union YYSTYPE {
     double      f_value;        /* fÅr Gleitkommazahlen */
     int         integer;        /* FÅr integers */
     char        *identifier;    /* FÅr Namen */
 } YYSTYPE;
 /* Line 191 of yacc.c.  */
-#line 174 "mut.c"
+#line 189 "mut.c"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -194,7 +209,7 @@ typedef struct YYLTYPE
 
 
 /* Line 214 of yacc.c.  */
-#line 198 "mut.c"
+#line 213 "mut.c"
 
 #if ! defined (yyoverflow) || YYERROR_VERBOSE
 
@@ -462,27 +477,27 @@ static const short int yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
-       0,    85,    85,    86,    87,    88,    89,    90,    91,    92,
-      93,    97,    99,   101,   105,   105,   109,   115,   124,   126,
-     127,   131,   133,   135,   139,   139,   143,   146,   150,   154,
-     158,   162,   166,   168,   171,   174,   177,   180,   183,   189,
-     195,   201,   222,   230,   233,   239,   265,   267,   269,   273,
-     273,   278,   277,   282,   281,   287,   287,   290,   291,   292,
-     296,   297,   299,   304,   305,   306,   311,   312,   313,   319,
-     321,   323,   328,   330,   327,   335,   338,   334,   344,   345,
-     346,   347,   348,   349,   350,   351,   352,   353,   354,   359,
-     361,   366,   368,   370,   372,   377,   379,   384,   386,   388,
-     390,   392,   394,   396,   398,   404,   403,   413,   414,   416,
-     416,   423,   424,   429,   433,   437,   438,   440,   440,   443,
-     443,   446,   446,   449,   449,   456,   456,   459,   459,   465,
-     465,   468,   468,   474,   474,   480,   481,   485,   487,   487,
-     491,   490,   497,   497,   500,   500,   506,   507,   512,   511,
-     516,   515,   520,   519,   527,   526,   534,   538,   539,   544,
-     543,   548,   552,   553,   557,   558,   562,   563,   567,   571,
-     572,   572,   580,   579,   585,   584,   592,   593,   598,   598,
-     602,   602,   608,   610,   612,   614,   619,   620,   621,   622,
-     623,   623,   629,   631,   633,   638,   642,   643,   647,   649,
-     651,   653,   655,   660,   661
+       0,   113,   113,   114,   115,   116,   117,   118,   119,   120,
+     121,   125,   127,   129,   133,   133,   137,   143,   152,   154,
+     155,   159,   161,   163,   167,   167,   171,   174,   178,   182,
+     186,   190,   194,   196,   199,   202,   205,   208,   211,   217,
+     223,   229,   250,   258,   261,   267,   293,   295,   297,   301,
+     301,   306,   305,   310,   309,   315,   315,   318,   319,   320,
+     324,   325,   327,   332,   333,   334,   339,   340,   341,   347,
+     349,   351,   356,   358,   355,   363,   366,   362,   372,   373,
+     374,   375,   376,   377,   378,   379,   380,   381,   382,   387,
+     389,   394,   396,   398,   400,   405,   407,   412,   414,   416,
+     418,   420,   422,   424,   426,   432,   431,   441,   442,   444,
+     444,   451,   452,   457,   461,   465,   466,   468,   468,   471,
+     471,   474,   474,   477,   477,   484,   484,   487,   487,   493,
+     493,   496,   496,   502,   502,   508,   509,   513,   515,   515,
+     519,   518,   525,   525,   528,   528,   534,   535,   540,   539,
+     544,   543,   548,   547,   555,   554,   562,   566,   567,   572,
+     571,   576,   580,   581,   585,   586,   590,   591,   595,   599,
+     600,   600,   608,   607,   613,   612,   620,   621,   626,   626,
+     630,   630,   636,   638,   640,   642,   647,   648,   649,   650,
+     651,   651,   657,   659,   661,   666,   670,   671,   675,   677,
+     679,   681,   683,   688,   689
 };
 #endif
 
@@ -903,9 +918,9 @@ while (0)
 /* YYLEX -- calling `yylex' with the right arguments.  */
 
 #ifdef YYLEX_PARAM
-# define YYLEX yylex (YYLEX_PARAM)
+# define YYLEX yylex (&yylval, &yylloc, YYLEX_PARAM)
 #else
-# define YYLEX yylex ()
+# define YYLEX yylex (&yylval, &yylloc)
 #endif
 
 /* Enable debugging if requested.  */
@@ -1171,16 +1186,6 @@ int yyparse ();
 
 
 
-/* The lookahead symbol.  */
-int yychar;
-
-/* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval;
-
-/* Number of syntax errors so far.  */
-int yynerrs;
-/* Location data for the lookahead symbol.  */
-YYLTYPE yylloc;
 
 
 
@@ -1206,7 +1211,17 @@ yyparse ()
 #endif
 #endif
 {
-  
+  /* The lookahead symbol.  */
+int yychar;
+
+/* The semantic value of the lookahead symbol.  */
+YYSTYPE yylval;
+
+/* Number of syntax errors so far.  */
+int yynerrs;
+/* Location data for the lookahead symbol.  */
+YYLTYPE yylloc;
+
   register int yystate;
   register int yyn;
   int yyresult;
@@ -1455,17 +1470,17 @@ yyreduce:
   switch (yyn)
     {
         case 10:
-#line 93 "mut.y"
+#line 121 "mut.y"
     { fatal_error(1,yyloc.first_line+1); }
     break;
 
   case 14:
-#line 105 "mut.y"
+#line 133 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 16:
-#line 110 "mut.y"
+#line 138 "mut.y"
     { if ( fabs(yyvsp[0].f_value) > 0.001 )
                          get_new_intervall (yyvsp[-4].identifier, yyvsp[-2].f_value / yyvsp[0].f_value);
                       else
@@ -1473,7 +1488,7 @@ yyreduce:
     break;
 
   case 17:
-#line 116 "mut.y"
+#line 144 "mut.y"
     { if ( fabs (yyvsp[-2].f_value) > 0.001 )
                           get_new_intervall (yyvsp[-4].identifier, pow (yyvsp[0].f_value, 1 / yyvsp[-2].f_value));
                       else
@@ -1481,72 +1496,72 @@ yyreduce:
     break;
 
   case 18:
-#line 125 "mut.y"
+#line 153 "mut.y"
     { get_new_intervall_komplex (yyvsp[-2].identifier); }
     break;
 
   case 19:
-#line 126 "mut.y"
+#line 154 "mut.y"
     { fatal_error(71,yyvsp[-2].identifier); }
     break;
 
   case 20:
-#line 127 "mut.y"
+#line 155 "mut.y"
     { fatal_error(70,"'='",FEHLERZEILE); }
     break;
 
   case 24:
-#line 139 "mut.y"
+#line 167 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 26:
-#line 144 "mut.y"
+#line 172 "mut.y"
     { get_new_ton_absolut (yyvsp[-2].identifier, yyvsp[0].f_value); }
     break;
 
   case 27:
-#line 148 "mut.y"
+#line 176 "mut.y"
     { get_new_ton_komplex_negative (yyvsp[-4].identifier, yyvsp[-2].identifier); }
     break;
 
   case 28:
-#line 152 "mut.y"
+#line 180 "mut.y"
     { get_new_ton_komplex_positive (yyvsp[-2].identifier, yyvsp[0].identifier); }
     break;
 
   case 29:
-#line 156 "mut.y"
+#line 184 "mut.y"
     { get_new_ton_komplex_positive (yyvsp[-4].identifier, yyvsp[-2].identifier); }
     break;
 
   case 30:
-#line 158 "mut.y"
+#line 186 "mut.y"
     { fatal_error( 72, yyvsp[-2].identifier ); }
     break;
 
   case 34:
-#line 172 "mut.y"
+#line 200 "mut.y"
     { get_new_faktor_anteil ( (double) 1, yyvsp[0].identifier); }
     break;
 
   case 35:
-#line 175 "mut.y"
+#line 203 "mut.y"
     { get_new_faktor_anteil ( (double) -1, yyvsp[0].identifier); }
     break;
 
   case 36:
-#line 178 "mut.y"
+#line 206 "mut.y"
     { get_new_faktor_anteil ( yyvsp[-1].f_value, yyvsp[0].identifier); }
     break;
 
   case 37:
-#line 181 "mut.y"
+#line 209 "mut.y"
     { get_new_faktor_anteil ( -(yyvsp[-1].f_value), yyvsp[0].identifier); }
     break;
 
   case 38:
-#line 184 "mut.y"
+#line 212 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1554,7 +1569,7 @@ yyreduce:
     break;
 
   case 39:
-#line 190 "mut.y"
+#line 218 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) -1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1562,7 +1577,7 @@ yyreduce:
     break;
 
   case 40:
-#line 196 "mut.y"
+#line 224 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1570,7 +1585,7 @@ yyreduce:
     break;
 
   case 41:
-#line 202 "mut.y"
+#line 230 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( -(yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1578,17 +1593,17 @@ yyreduce:
     break;
 
   case 42:
-#line 223 "mut.y"
+#line 251 "mut.y"
     { get_new_faktor_anteil ( (double) 1.0 , yyvsp[0].identifier); }
     break;
 
   case 43:
-#line 231 "mut.y"
+#line 259 "mut.y"
     { get_new_faktor_anteil ( yyvsp[-1].f_value, yyvsp[0].identifier); }
     break;
 
   case 44:
-#line 234 "mut.y"
+#line 262 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1596,7 +1611,7 @@ yyreduce:
     break;
 
   case 45:
-#line 240 "mut.y"
+#line 268 "mut.y"
     { if ( fabs(yyvsp[-1].f_value) > 0.001 )
                        get_new_faktor_anteil ( (yyvsp[-3].f_value) / (yyvsp[-1].f_value), yyvsp[0].identifier);
                      else
@@ -1604,758 +1619,758 @@ yyreduce:
     break;
 
   case 49:
-#line 273 "mut.y"
+#line 301 "mut.y"
     { init_ton_liste (); }
     break;
 
   case 51:
-#line 278 "mut.y"
+#line 306 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 52:
-#line 280 "mut.y"
+#line 308 "mut.y"
     { get_new_tonsystem (yyvsp[-7].identifier, yyvsp[-5].integer); }
     break;
 
   case 53:
-#line 282 "mut.y"
+#line 310 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 54:
-#line 284 "mut.y"
+#line 312 "mut.y"
     { get_new_tonsystem_negative (yyvsp[-8].identifier, yyvsp[-6].integer); }
     break;
 
   case 57:
-#line 290 "mut.y"
+#line 318 "mut.y"
     { get_new_ton_in_tonsystem (yyvsp[0].identifier); }
     break;
 
   case 58:
-#line 291 "mut.y"
+#line 319 "mut.y"
     { get_new_ton_in_tonsystem (NULL); }
     break;
 
   case 59:
-#line 292 "mut.y"
+#line 320 "mut.y"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 60:
-#line 296 "mut.y"
+#line 324 "mut.y"
     { get_new_name_in_parameterlist (yyvsp[0].identifier); }
     break;
 
   case 61:
-#line 298 "mut.y"
+#line 326 "mut.y"
     { get_new_name_in_parameterlist (yyvsp[0].identifier); }
     break;
 
   case 62:
-#line 299 "mut.y"
+#line 327 "mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 63:
-#line 304 "mut.y"
+#line 332 "mut.y"
     {}
     break;
 
   case 64:
-#line 305 "mut.y"
+#line 333 "mut.y"
     {}
     break;
 
   case 65:
-#line 306 "mut.y"
+#line 334 "mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 66:
-#line 311 "mut.y"
+#line 339 "mut.y"
     { get_new_name_in_argument_list (yyvsp[0].identifier);   }
     break;
 
   case 67:
-#line 312 "mut.y"
+#line 340 "mut.y"
     { get_new_number_in_argument_list (yyvsp[0].integer); }
     break;
 
   case 68:
-#line 313 "mut.y"
+#line 341 "mut.y"
     { get_new_number_in_argument_list (-(yyvsp[0].integer)); }
     break;
 
   case 72:
-#line 328 "mut.y"
+#line 356 "mut.y"
     { init_umstimmung (yyvsp[0].identifier);
                       init_parameter_liste (); }
     break;
 
   case 73:
-#line 330 "mut.y"
+#line 358 "mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 74:
-#line 332 "mut.y"
+#line 360 "mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 75:
-#line 335 "mut.y"
+#line 363 "mut.y"
     { init_umstimmung (yyvsp[0].identifier);
                       init_parameter_liste (); }
     break;
 
   case 76:
-#line 338 "mut.y"
+#line 366 "mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 77:
-#line 340 "mut.y"
+#line 368 "mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 78:
-#line 344 "mut.y"
+#line 372 "mut.y"
     {}
     break;
 
   case 79:
-#line 345 "mut.y"
+#line 373 "mut.y"
     {}
     break;
 
   case 80:
-#line 346 "mut.y"
+#line 374 "mut.y"
     {}
     break;
 
   case 81:
-#line 347 "mut.y"
+#line 375 "mut.y"
     {}
     break;
 
   case 82:
-#line 348 "mut.y"
+#line 376 "mut.y"
     {}
     break;
 
   case 83:
-#line 349 "mut.y"
+#line 377 "mut.y"
     {}
     break;
 
   case 84:
-#line 350 "mut.y"
+#line 378 "mut.y"
     {}
     break;
 
   case 85:
-#line 351 "mut.y"
+#line 379 "mut.y"
     {}
     break;
 
   case 86:
-#line 352 "mut.y"
+#line 380 "mut.y"
     {}
     break;
 
   case 87:
-#line 353 "mut.y"
+#line 381 "mut.y"
     {}
     break;
 
   case 88:
-#line 354 "mut.y"
+#line 382 "mut.y"
     {fatal_error(75,FEHLERZEILE);}
     break;
 
   case 89:
-#line 360 "mut.y"
+#line 388 "mut.y"
     { get_umstimmung_taste_abs (zahl, yyvsp[-2].integer, NULL); }
     break;
 
   case 90:
-#line 362 "mut.y"
+#line 390 "mut.y"
     { get_umstimmung_taste_abs (parameter, 0.0, yyvsp[-2].identifier); }
     break;
 
   case 91:
-#line 367 "mut.y"
+#line 395 "mut.y"
     { get_umstimmung_taste_rel (zahl, yyvsp[-2].integer, NULL, '+'); }
     break;
 
   case 92:
-#line 369 "mut.y"
+#line 397 "mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, yyvsp[-2].identifier, '+'); }
     break;
 
   case 93:
-#line 371 "mut.y"
+#line 399 "mut.y"
     { get_umstimmung_taste_rel (zahl, yyvsp[-2].integer, NULL, '-'); }
     break;
 
   case 94:
-#line 373 "mut.y"
+#line 401 "mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, yyvsp[-2].identifier, '-'); }
     break;
 
   case 95:
-#line 378 "mut.y"
+#line 406 "mut.y"
     { get_umstimmung_breite_abs (zahl, yyvsp[-3].integer, NULL); }
     break;
 
   case 96:
-#line 380 "mut.y"
+#line 408 "mut.y"
     { get_umstimmung_breite_abs (parameter, 0.0, yyvsp[-3].identifier); }
     break;
 
   case 97:
-#line 385 "mut.y"
+#line 413 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '+'); }
     break;
 
   case 98:
-#line 387 "mut.y"
+#line 415 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '+'); }
     break;
 
   case 99:
-#line 389 "mut.y"
+#line 417 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '-'); }
     break;
 
   case 100:
-#line 391 "mut.y"
+#line 419 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '-'); }
     break;
 
   case 101:
-#line 393 "mut.y"
+#line 421 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '*'); }
     break;
 
   case 102:
-#line 395 "mut.y"
+#line 423 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '*'); }
     break;
 
   case 103:
-#line 397 "mut.y"
+#line 425 "mut.y"
     { get_umstimmung_breite_rel (zahl, yyvsp[-3].integer, NULL, '/'); }
     break;
 
   case 104:
-#line 399 "mut.y"
+#line 427 "mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, yyvsp[-3].identifier, '/'); }
     break;
 
   case 105:
-#line 404 "mut.y"
+#line 432 "mut.y"
     { init_umstimm_expression_list (); }
     break;
 
   case 106:
-#line 406 "mut.y"
+#line 434 "mut.y"
     { get_umstimmung_tonhoehe_veraendert (); }
     break;
 
   case 107:
-#line 413 "mut.y"
+#line 441 "mut.y"
     {}
     break;
 
   case 108:
-#line 414 "mut.y"
+#line 442 "mut.y"
     {}
     break;
 
   case 109:
-#line 416 "mut.y"
+#line 444 "mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
     break;
 
   case 110:
-#line 419 "mut.y"
+#line 447 "mut.y"
     {}
     break;
 
   case 111:
-#line 423 "mut.y"
+#line 451 "mut.y"
     {}
     break;
 
   case 112:
-#line 424 "mut.y"
+#line 452 "mut.y"
     {}
     break;
 
   case 113:
-#line 429 "mut.y"
+#line 457 "mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
     break;
 
   case 115:
-#line 437 "mut.y"
+#line 465 "mut.y"
     { get_new_umstimm_expression (yyvsp[0].identifier); }
     break;
 
   case 116:
-#line 438 "mut.y"
+#line 466 "mut.y"
     { get_new_umstimm_expression ("@"); }
     break;
 
   case 117:
-#line 440 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 118:
-#line 442 "mut.y"
-    { get_new_umstimm_expression_positive (yyvsp[-3].identifier); }
-    break;
-
-  case 119:
-#line 443 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 120:
-#line 445 "mut.y"
-    { get_new_umstimm_expression_positive ( "@" ); }
-    break;
-
-  case 121:
-#line 446 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 122:
-#line 448 "mut.y"
-    { get_new_umstimm_expression_negative (yyvsp[-3].identifier); }
-    break;
-
-  case 123:
-#line 449 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 124:
-#line 451 "mut.y"
-    { get_new_umstimm_expression_negative ( "@" ); }
-    break;
-
-  case 125:
-#line 456 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 126:
-#line 458 "mut.y"
-    { get_umstimmung_wiederholung_abs (); }
-    break;
-
-  case 127:
-#line 459 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 128:
-#line 461 "mut.y"
-    { get_umstimmung_wiederholung_abs_negative (); }
-    break;
-
-  case 129:
-#line 465 "mut.y"
-    { init_komplex_ton_list (); }
-    break;
-
-  case 130:
-#line 467 "mut.y"
-    { get_umstimmung_wiederholung_rel_positive (); }
-    break;
-
-  case 131:
 #line 468 "mut.y"
     { init_komplex_ton_list (); }
     break;
 
-  case 132:
+  case 118:
 #line 470 "mut.y"
+    { get_new_umstimm_expression_positive (yyvsp[-3].identifier); }
+    break;
+
+  case 119:
+#line 471 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 120:
+#line 473 "mut.y"
+    { get_new_umstimm_expression_positive ( "@" ); }
+    break;
+
+  case 121:
+#line 474 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 122:
+#line 476 "mut.y"
+    { get_new_umstimm_expression_negative (yyvsp[-3].identifier); }
+    break;
+
+  case 123:
+#line 477 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 124:
+#line 479 "mut.y"
+    { get_new_umstimm_expression_negative ( "@" ); }
+    break;
+
+  case 125:
+#line 484 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 126:
+#line 486 "mut.y"
+    { get_umstimmung_wiederholung_abs (); }
+    break;
+
+  case 127:
+#line 487 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 128:
+#line 489 "mut.y"
+    { get_umstimmung_wiederholung_abs_negative (); }
+    break;
+
+  case 129:
+#line 493 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 130:
+#line 495 "mut.y"
+    { get_umstimmung_wiederholung_rel_positive (); }
+    break;
+
+  case 131:
+#line 496 "mut.y"
+    { init_komplex_ton_list (); }
+    break;
+
+  case 132:
+#line 498 "mut.y"
     { get_umstimmung_wiederholung_rel_negative (); }
     break;
 
   case 133:
-#line 474 "mut.y"
+#line 502 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 134:
-#line 476 "mut.y"
+#line 504 "mut.y"
     { get_umstimmung_umstimmungs_bund (); }
     break;
 
   case 135:
-#line 480 "mut.y"
+#line 508 "mut.y"
     {}
     break;
 
   case 136:
-#line 481 "mut.y"
+#line 509 "mut.y"
     {}
     break;
 
   case 137:
-#line 485 "mut.y"
+#line 513 "mut.y"
     { init_argument_liste (); 
                        get_new_aktion_aufruf_element (yyvsp[0].identifier); }
     break;
 
   case 138:
-#line 487 "mut.y"
+#line 515 "mut.y"
     { init_argument_liste (); }
     break;
 
   case 139:
-#line 489 "mut.y"
+#line 517 "mut.y"
     { get_new_aktion_aufruf_element (yyvsp[-4].identifier); }
     break;
 
   case 140:
-#line 491 "mut.y"
+#line 519 "mut.y"
     { init_integersequenz ();}
     break;
 
   case 141:
-#line 493 "mut.y"
+#line 521 "mut.y"
     { get_new_aktion_midi_out_element (); }
     break;
 
   case 142:
-#line 497 "mut.y"
+#line 525 "mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 143:
-#line 499 "mut.y"
+#line 527 "mut.y"
     { get_umstimmung_umstimm_case_zahl (yyvsp[-4].integer); }
     break;
 
   case 144:
-#line 500 "mut.y"
+#line 528 "mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 145:
-#line 502 "mut.y"
+#line 530 "mut.y"
     { get_umstimmung_umstimm_case_parameter (yyvsp[-4].identifier); }
     break;
 
   case 146:
-#line 506 "mut.y"
-    {}
-    break;
-
-  case 147:
-#line 507 "mut.y"
-    {}
-    break;
-
-  case 148:
-#line 512 "mut.y"
-    { init_aktions_liste (); }
-    break;
-
-  case 149:
-#line 514 "mut.y"
-    { get_umstimmungs_case_zahl_element (yyvsp[-4].integer); }
-    break;
-
-  case 150:
-#line 516 "mut.y"
-    { init_aktions_liste (); }
-    break;
-
-  case 151:
-#line 518 "mut.y"
-    { get_umstimmungs_case_zahl_element (-(yyvsp[-4].integer)); }
-    break;
-
-  case 152:
-#line 520 "mut.y"
-    { init_aktions_liste (); }
-    break;
-
-  case 153:
-#line 522 "mut.y"
-    { get_umstimmungs_case_default_element (); }
-    break;
-
-  case 154:
-#line 527 "mut.y"
-    { init_integersequenz ();}
-    break;
-
-  case 155:
-#line 529 "mut.y"
-    { get_umstimmung_midi_out (); }
-    break;
-
-  case 156:
 #line 534 "mut.y"
     {}
     break;
 
+  case 147:
+#line 535 "mut.y"
+    {}
+    break;
+
+  case 148:
+#line 540 "mut.y"
+    { init_aktions_liste (); }
+    break;
+
+  case 149:
+#line 542 "mut.y"
+    { get_umstimmungs_case_zahl_element (yyvsp[-4].integer); }
+    break;
+
+  case 150:
+#line 544 "mut.y"
+    { init_aktions_liste (); }
+    break;
+
+  case 151:
+#line 546 "mut.y"
+    { get_umstimmungs_case_zahl_element (-(yyvsp[-4].integer)); }
+    break;
+
+  case 152:
+#line 548 "mut.y"
+    { init_aktions_liste (); }
+    break;
+
+  case 153:
+#line 550 "mut.y"
+    { get_umstimmungs_case_default_element (); }
+    break;
+
+  case 154:
+#line 555 "mut.y"
+    { init_integersequenz ();}
+    break;
+
+  case 155:
+#line 557 "mut.y"
+    { get_umstimmung_midi_out (); }
+    break;
+
+  case 156:
+#line 562 "mut.y"
+    {}
+    break;
+
   case 157:
-#line 538 "mut.y"
+#line 566 "mut.y"
     {}
     break;
 
   case 158:
-#line 539 "mut.y"
-    {}
-    break;
-
-  case 159:
-#line 544 "mut.y"
-    { init_tastenliste (); }
-    break;
-
-  case 160:
-#line 546 "mut.y"
-    { get_new_harmonie (yyvsp[-6].identifier, yyvsp[0].integer); }
-    break;
-
-  case 161:
-#line 548 "mut.y"
-    { fatal_error(76,yyvsp[-2].identifier); }
-    break;
-
-  case 162:
-#line 552 "mut.y"
-    { yyval.integer = -1; }
-    break;
-
-  case 163:
-#line 553 "mut.y"
-    { yyval.integer = yyvsp[0].integer; }
-    break;
-
-  case 164:
-#line 557 "mut.y"
-    {}
-    break;
-
-  case 165:
-#line 558 "mut.y"
-    {}
-    break;
-
-  case 166:
-#line 562 "mut.y"
-    { get_new_taste ( yyvsp[0].integer, '+'); }
-    break;
-
-  case 167:
-#line 563 "mut.y"
-    { get_new_taste ( yyvsp[0].integer, '*'); }
-    break;
-
-  case 168:
 #line 567 "mut.y"
     {}
     break;
 
+  case 159:
+#line 572 "mut.y"
+    { init_tastenliste (); }
+    break;
+
+  case 160:
+#line 574 "mut.y"
+    { get_new_harmonie (yyvsp[-6].identifier, yyvsp[0].integer); }
+    break;
+
+  case 161:
+#line 576 "mut.y"
+    { fatal_error(76,yyvsp[-2].identifier); }
+    break;
+
+  case 162:
+#line 580 "mut.y"
+    { yyval.integer = -1; }
+    break;
+
+  case 163:
+#line 581 "mut.y"
+    { yyval.integer = yyvsp[0].integer; }
+    break;
+
+  case 164:
+#line 585 "mut.y"
+    {}
+    break;
+
+  case 165:
+#line 586 "mut.y"
+    {}
+    break;
+
+  case 166:
+#line 590 "mut.y"
+    { get_new_taste ( yyvsp[0].integer, '+'); }
+    break;
+
+  case 167:
+#line 591 "mut.y"
+    { get_new_taste ( yyvsp[0].integer, '*'); }
+    break;
+
+  case 168:
+#line 595 "mut.y"
+    {}
+    break;
+
   case 169:
-#line 571 "mut.y"
+#line 599 "mut.y"
     {}
     break;
 
   case 170:
-#line 572 "mut.y"
+#line 600 "mut.y"
     { init_ausloeser ();
                          /* fÅr die Anfangsausloesung der Logik */
                        }
     break;
 
   case 171:
-#line 575 "mut.y"
+#line 603 "mut.y"
     {}
     break;
 
   case 172:
-#line 580 "mut.y"
+#line 608 "mut.y"
     { get_new_logik (yyvsp[-3].identifier, NULL);
                 init_anweisungs_liste (); }
     break;
 
   case 173:
-#line 583 "mut.y"
+#line 611 "mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 174:
-#line 585 "mut.y"
+#line 613 "mut.y"
     { get_new_logik (yyvsp[-4].identifier, yyvsp[-1].identifier);
                 init_anweisungs_liste (); }
     break;
 
   case 175:
-#line 588 "mut.y"
+#line 616 "mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 176:
-#line 592 "mut.y"
+#line 620 "mut.y"
     {}
     break;
 
   case 177:
-#line 593 "mut.y"
+#line 621 "mut.y"
     {}
     break;
 
   case 178:
-#line 598 "mut.y"
+#line 626 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 179:
-#line 600 "mut.y"
+#line 628 "mut.y"
     { get_new_anweisung (); }
     break;
 
   case 180:
-#line 602 "mut.y"
+#line 630 "mut.y"
     { init_aktions_liste (); }
     break;
 
   case 181:
-#line 604 "mut.y"
+#line 632 "mut.y"
     { get_new_anweisung (); }
     break;
 
   case 182:
-#line 609 "mut.y"
+#line 637 "mut.y"
     { get_harmoniebezeichner (  yyvsp[-4].integer, yyvsp[-2].identifier,  yyvsp[0].integer); }
     break;
 
   case 183:
-#line 611 "mut.y"
+#line 639 "mut.y"
     { get_harmoniebezeichner (-1, yyvsp[-2].identifier,  yyvsp[0].integer); }
     break;
 
   case 184:
-#line 613 "mut.y"
+#line 641 "mut.y"
     { get_harmoniebezeichner (  yyvsp[-2].integer, yyvsp[0].identifier, -1); }
     break;
 
   case 185:
-#line 615 "mut.y"
+#line 643 "mut.y"
     { get_harmoniebezeichner (-1, yyvsp[0].identifier, -1); }
     break;
 
   case 186:
-#line 619 "mut.y"
+#line 647 "mut.y"
     { get_ausloeser_default (); }
     break;
 
   case 187:
-#line 620 "mut.y"
+#line 648 "mut.y"
     { get_ausloeser_harmonie (); }
     break;
 
   case 188:
-#line 621 "mut.y"
+#line 649 "mut.y"
     { get_ausloeser_harmonie_form (); }
     break;
 
   case 189:
-#line 622 "mut.y"
-    { get_ausloeser_taste (yyvsp[0].identifier); }
+#line 650 "mut.y"
+    { get_ausloeser_taste (yyvsp[0].identifier); fprintf(stderr,"Taste akzeptiert"); }
     break;
 
   case 190:
-#line 623 "mut.y"
+#line 651 "mut.y"
     { init_integersequenz (); }
     break;
 
   case 191:
-#line 625 "mut.y"
+#line 653 "mut.y"
     { get_ausloeser_midi_in (); }
     break;
 
   case 192:
-#line 630 "mut.y"
+#line 658 "mut.y"
     { get_new_integer_in_integersequenz (yyvsp[0].integer);}
     break;
 
   case 193:
-#line 632 "mut.y"
+#line 660 "mut.y"
     { get_new_integer_in_integersequenz (yyvsp[0].integer);}
     break;
 
   case 194:
-#line 633 "mut.y"
+#line 661 "mut.y"
     { fatal_error( 77, FEHLERZEILE ); }
     break;
 
   case 195:
-#line 638 "mut.y"
+#line 666 "mut.y"
     {}
     break;
 
   case 196:
-#line 642 "mut.y"
+#line 670 "mut.y"
     {}
     break;
 
   case 197:
-#line 643 "mut.y"
+#line 671 "mut.y"
     {}
     break;
 
   case 198:
-#line 648 "mut.y"
+#line 676 "mut.y"
     { get_instrument_dekl (yyvsp[-3].integer, yyvsp[0].integer, yyvsp[0].integer, 0, & list_of_instrumente); }
     break;
 
   case 199:
-#line 650 "mut.y"
+#line 678 "mut.y"
     { get_instrument_dekl (yyvsp[-5].integer, yyvsp[-2].integer, yyvsp[0].integer, 0, & list_of_instrumente); }
     break;
 
   case 200:
-#line 652 "mut.y"
+#line 680 "mut.y"
     { get_instrument_dekl (yyvsp[-5].integer, 0, 0, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 201:
-#line 654 "mut.y"
+#line 682 "mut.y"
     { get_instrument_dekl (yyvsp[-6].integer, yyvsp[-3].integer, yyvsp[-3].integer, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 202:
-#line 656 "mut.y"
+#line 684 "mut.y"
     { get_instrument_dekl (yyvsp[-8].integer, yyvsp[-5].integer, yyvsp[-3].integer, yyvsp[-1].integer, & list_of_instrumente); }
     break;
 
   case 203:
-#line 660 "mut.y"
+#line 688 "mut.y"
     { yyval.f_value = yyvsp[0].f_value; }
     break;
 
   case 204:
-#line 661 "mut.y"
+#line 689 "mut.y"
     { yyval.f_value = (double) yyvsp[0].integer; }
     break;
 
@@ -2363,7 +2378,7 @@ yyreduce:
     }
 
 /* Line 1010 of yacc.c.  */
-#line 2367 "mut.c"
+#line 2382 "mut.c"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -2592,239 +2607,280 @@ yyreturn:
 }
 
 
-#line 665 "mut.y"
+#line 693 "mut.y"
 
 
+	/* anderen Lexer verwenden */
+#undef yylex
+#undef init_yylex
 int yylex(void) 
 {
-    int c;
+  YYLTYPE yylloc;
+  YYSTYPE yylval;
+  int c;
+  
+ start_lex:
+  
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    printf("Leerkram ignorieren\n");
+#endif
 
-start_lex:
-
-    /* Ignore whitespace, get first nonwhitespace character */
-    while ( anzahl_eingelesene_zeichen ++,
-
-            (c = toupper( intern_fgetc(quelldatei) )) == ' ' 
+  /* Ignore whitespace, get first nonwhitespace character */
+  while ( anzahl_eingelesene_zeichen ++,
+	  (c = toupper( intern_fgetc(mutabor_parser_in) )) == ' ' 
           || c == '\t'
-          || c == '\n') {
-
-       if (c == '\n') 
+          || c == '\n'
+	  || c == '\r') {
+    
+    if (c == '\n') 
 #ifdef ACS_VERSION
-        if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
-           show_line_number(yylloc.first_line);
+      if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
+	show_line_number(yylloc.first_line);
 #else
-         yylloc.first_line ++;
+    yylloc.first_line ++;
 #endif
-       }
+  }
 
-    if (c == '"') {
-       while (anzahl_eingelesene_zeichen ++,
-       
-              (c=intern_fgetc(quelldatei)) != '"' && c != EOF )
-                    if (c == '\n') yylloc.first_line ++;
-        
-       goto start_lex;
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    printf("Token start: '%c'\n",c);
+#endif
+
+  
+  if (c == '"') {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Kommentar:\n");
+#endif
+
+    while (anzahl_eingelesene_zeichen ++,
+	   (c=intern_fgetc(mutabor_parser_in)) != '"' && c != EOF ){
+      if (c == '\n') yylloc.first_line ++;
+#ifdef DEBUG
+      if (mutabor_debug_level)
+	printf("%c",c);
+#endif
     }
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Kommentar Ende.\n");
+#endif
+    goto start_lex;
+  }
 
-    if (c == EOF)
-        return 0;
-
-        
-    /* char starts a number => parse the number. */
-    if (isdigit(c)) {
-
+  if (c == EOF) {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Dateiende.\n");
+#endif
+    return 0;
+  }
+  
+  /* char starts a number => parse the number. */
+  if (isdigit(c)) {
+#ifdef DEBUG
+    if (mutabor_debug_level)
+      printf("Zahl.\n");
+#endif
+    
 #if 1
-        double zahl = 0.0;
-        while (isdigit(c)) {
-            zahl *= 10;
-            zahl += ( c - '0' );
-            anzahl_eingelesene_zeichen ++;
-            c = intern_fgetc (quelldatei);
-        }
-        if (c == '.') {    /* dann nachkommastellen */
-            double faktor = 1.0;
-            while (anzahl_eingelesene_zeichen ++,
-                   isdigit (c = intern_fgetc (quelldatei))) {
-                faktor /= 10;
-                zahl += faktor * ( c - '0' );
-            }
-            intern_ungetc (c, quelldatei);
-            anzahl_eingelesene_zeichen --;
-            yylval.f_value = zahl;
-            return F_NUMBER;
-        }
-        else {
-            intern_ungetc (c, quelldatei);
-            anzahl_eingelesene_zeichen --;
-            
-            if (zahl > INT_MAX) {
-                yylval.f_value = zahl;
-                return F_NUMBER;
-            }
-            else {
-                yylval.integer = (int)zahl;
-                return INTEGER;
-            }
-        }
+    double zahl = 0.0;
+    while (isdigit(c)) {
+      zahl *= 10;
+      zahl += ( c - '0' );
+      anzahl_eingelesene_zeichen ++;
+      c = intern_fgetc (mutabor_parser_in);
+    }
+    if (c == '.') {    /* dann nachkommastellen */
+      double faktor = 1.0;
+      while (anzahl_eingelesene_zeichen ++,
+	     isdigit (c = intern_fgetc (mutabor_parser_in))) {
+	faktor /= 10;
+	zahl += faktor * ( c - '0' );
+      }
+      intern_ungetc (c, mutabor_parser_in);
+      anzahl_eingelesene_zeichen --;
+      yylval.f_value = zahl;
+      return F_NUMBER;
+    }
+    else {
+      intern_ungetc (c, mutabor_parser_in);
+      anzahl_eingelesene_zeichen --;
+      
+      if (zahl > INT_MAX) {
+	yylval.f_value = zahl;
+	return F_NUMBER;
+      }
+      else {
+	yylval.integer = (int)zahl;
+	return INTEGER;
+      }
+    }
 #else
 
-        intern_ungetc (c, quelldatei);
-        anzahl_eingelesene_zeichen --;
-        fscanf (quelldatei, "%lf", &yylval.f_value);
-
+    intern_ungetc (c, mutabor_parser_in);
+    anzahl_eingelesene_zeichen --;
+    fscanf (mutabor_parser_in, "%lf", &yylval.f_value);
+    
 #endif
-
-/*
- printf("f_number:%lf:\n", yylval.f_value); 
-*/
-      
-    }
     
-    /* # starts a HEX-number => parse the number. */
-    if (c == '#') {
-        int help;
-        if (fscanf (quelldatei, "%x", &help) == 0) {
-            fatal_error (78, yylloc.first_line + 1);
-            exit (1);
-        }
-        yylval.integer = help;
-
-/* printf("f_number:%lf:\n", yylval.f_value); */
-
-        return INTEGER;
-    }
+    /*
+      printf("f_number:%lf:\n", yylval.f_value); 
+    */
     
-    /* Test auf reserved word oder einen Identifier */
-    if (isalpha (c) || (c == '_') || (c == '\'') ) {
-
-static struct { 
-    char *word;
-    int token;
-} reserved_words [] = {
-/* Deutsche SchlÅsselworte : */
-{ "INTERVALL"  , INTERVALL  },
-{ "WURZEL"     , WURZEL     },
-{ "TON"        , TON        },
-{ "TONSYSTEM"  , TONSYSTEM  },
-{ "UMSTIMMUNG" , UMSTIMMUNG },
-{ "HARMONIE"   , HARMONIE   },
-{ "LOGIK"      , LOGIK      },
-{ "FORM"       , FORM       },
-{ "MIDIKANAL" , INSTRUMENT },
-{ "TASTE"      , TASTE      },
-{ "MIDIIN"     , MIDI_IN    },
-{ "MIDIOUT"    , MIDI_OUT   },
-{ "ANSONSTEN"  , ANSONSTEN  },
-/* Englische SchlÅsselworte : */
-{ "INTERVAL"  , INTERVALL  },
-{ "ROOT"     , WURZEL     },
-{ "TONE"        , TON        },
-{ "TONESYSTEM"  , TONSYSTEM  },
-{ "RETUNING" , UMSTIMMUNG },
-{ "PATTERN"   , HARMONIE   },
-{ "LOGIC"      , LOGIK      },
-{ "SHIFTED"       , FORM       },
-{ "MIDICHANNEL" , INSTRUMENT },
-{ "KEY"      , TASTE      },
-{ "ELSE"  , ANSONSTEN  },
-{ NULL         , 0          }
-};
-
+  }
+  
+  /* # starts a HEX-number => parse the number. */
+  if (c == '#') {
+    int help;
+    if (fscanf (mutabor_parser_in, "%x", &help) == 0) {
+      fatal_error (78, yylloc.first_line + 1);
+      exit (1);
+    }
+    yylval.integer = help;
+    
+    /* printf("f_number:%lf:\n", yylval.f_value); */
+    
+    return INTEGER;
+  }
+  
+  /* Test auf reserved word oder einen Identifier */
+  if (isalpha (c) || (c == '_') || (c == '\'') ) {
+    
+    static struct { 
+      char *word;
+      int token;
+    } reserved_words [] = {
+      /* Deutsche SchlÅsselworte : */
+      { "INTERVALL"  , INTERVALL  },
+      { "WURZEL"     , WURZEL     },
+      { "TON"        , TON        },
+      { "TONSYSTEM"  , TONSYSTEM  },
+      { "UMSTIMMUNG" , UMSTIMMUNG },
+      { "HARMONIE"   , HARMONIE   },
+      { "LOGIK"      , LOGIK      },
+      { "FORM"       , FORM       },
+      { "MIDIKANAL" , INSTRUMENT },
+      { "TASTE"      , TASTE      },
+      { "MIDIIN"     , MIDI_IN    },
+      { "MIDIOUT"    , MIDI_OUT   },
+      { "ANSONSTEN"  , ANSONSTEN  },
+      /* Englische SchlÅsselworte : */
+      { "INTERVAL"  , INTERVALL  },
+      { "ROOT"     , WURZEL     },
+      { "TONE"        , TON        },
+      { "TONESYSTEM"  , TONSYSTEM  },
+      { "RETUNING" , UMSTIMMUNG },
+      { "PATTERN"   , HARMONIE   },
+      { "LOGIC"      , LOGIK      },
+      { "SHIFTED"       , FORM       },
+      { "MIDICHANNEL" , INSTRUMENT },
+      { "KEY"      , TASTE      },
+      { "ELSE"  , ANSONSTEN  },
+      { NULL         , 0          }
+    };
+    
 
 #if 0
-        char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
-        int i=0;
-        
-        do {
-            if (c == '\'') c = 'i';
-            symbuffer[i++] = c;
-            c = toupper(intern_fgetc (quelldatei));
-        } while (c != EOF                && 
-                 i < MAX_IDENTIFIER_LEN  && 
-                 (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
-        intern_ungetc (c, quelldatei);
-        symbuffer[i] = '\0';
+    char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
+    int i=0;
+    
+    do {
+      if (c == '\'') c = 'i';
+      symbuffer[i++] = c;
+      c = toupper(intern_fgetc (mutabor_parser_in));
+    } while (c != EOF                && 
+	     i < MAX_IDENTIFIER_LEN  && 
+	     (isalnum (c) || (c == '_') || (c == '\'') ) );
+    
+    intern_ungetc (c, mutabor_parser_in);
+    symbuffer[i] = '\0';
 #else
-        int i = 0;
-        int max_identifier_len = 10;
-        char *symbuffer = (char*) xmalloc ((size_t) max_identifier_len);
-
-        do {
-            if (c == '\'') c = 'i';
-
-            if ( i + 1 == max_identifier_len ) {
-                char * help = (char*) xrealloc (symbuffer, (size_t) (max_identifier_len += 10));
-                memmove (help, symbuffer, (size_t) max_identifier_len);
-                symbuffer = help;
-            }
-
-            symbuffer[i++] = c;
-            c = toupper(intern_fgetc (quelldatei));
-            anzahl_eingelesene_zeichen ++;
-
-        } while (c != EOF                && 
-                 (isalnum (c) || (c == '_') || (c == '\'') ) );
-        
-        intern_ungetc (c, quelldatei);
-        anzahl_eingelesene_zeichen --;
-        symbuffer[i] = '\0';
-
+    int i = 0;
+    int max_identifier_len = 10;
+    char *symbuffer = (char*) xmalloc ((size_t) max_identifier_len);
+    
+    do {
+      if (c == '\'') c = 'i';
+      
+      if ( i + 1 == max_identifier_len ) {
+	char * help = (char*) xrealloc (symbuffer, (size_t) (max_identifier_len += 10));
+	memmove (help, symbuffer, (size_t) max_identifier_len);
+	symbuffer = help;
+      }
+      
+      symbuffer[i++] = c;
+      c = toupper(intern_fgetc (mutabor_parser_in));
+      anzahl_eingelesene_zeichen ++;
+      
+    } while (c != EOF                && 
+	     (isalnum (c) || (c == '_') || (c == '\'') ) );
+    
+    intern_ungetc (c, mutabor_parser_in);
+    anzahl_eingelesene_zeichen --;
+    symbuffer[i] = '\0';
+	
 #endif
-
-/* printf("symbuffer:%s:\n", symbuffer); */
-        
-        for (i=0; reserved_words[i].word; i++) {
-            if ( ! strcmp (symbuffer, reserved_words[i].word)) {
-                xfree (symbuffer);
-                return reserved_words[i].token;
-            }
-        }
-        
-        yylval.identifier = symbuffer;
-        return IDENTIFIER;
+    
+    /* printf("symbuffer:%s:\n", symbuffer); */
+    
+    for (i=0; reserved_words[i].word; i++) {
+      if ( ! strcmp (symbuffer, reserved_words[i].word)) {
+	xfree (symbuffer);
+	return reserved_words[i].token;
+      }
     }
     
-    /* Any other character is a token by itself */
-    switch (c) {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-        case '[':
-        case ']':
-        case ':':
-        case '=':
-        case '(':
-        case ')':
-        case ',':
-        case '~':
-        case '@':
-        case '<':
-        case '>':
-        case '{':
-        case '}':
-        case ';':
-               return c;
-    }
+    yylval.identifier = symbuffer;
+    return IDENTIFIER;
+  }
+  
+  /* Any other character is a token by itself */
+  switch (c) {
+  case '+':
+  case '-':
+  case '*':
+  case '/':
+  case '[':
+  case ']':
+  case ':':
+  case '=':
+  case '(':
+  case ')':
+  case ',':
+  case '~':
+  case '@':
+  case '<':
+  case '>':
+  case '{':
+  case '}':
+  case ';':
+    return c;
+  }
 
-    fatal_error(2,c,yylloc.first_line + 1);
-    
-    return 0;  /* um Compilerwarnungen zu vermeiden */
-
-    
+  fprintf(stderr,"Lexer: durchgefallen");
+  fatal_error(2,c,yylloc.first_line + 1);
+  
+  return 0;  /* um Compilerwarnungen zu vermeiden */
+  
+  
 } /* yylex */
 
 void init_yylex (void)
 {
-    yylloc.first_line = 0;
-    anzahl_eingelesene_zeichen = 0;
+  YYLTYPE yylloc;
+  yylloc.first_line = 0;
+  anzahl_eingelesene_zeichen = 0;
 }
 
 void yyerror(char *s) {
-
+  fprintf(stderr,s);
+  /*
+  return 1;
+  */
 /* ignore it ! */
-
+  
 } /* yyerror */
 
 

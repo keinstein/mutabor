@@ -2,11 +2,14 @@
  ********************************************************************
  * Kopfdatei zu mut.c, welche aus mut.y erstellt wird.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/mut_tab.h,v 1.2 2005/07/08 14:56:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/mut_tab.h,v 1.3 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:56:50 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.3 $
  * $Log: mut_tab.h,v $
+ * Revision 1.3  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  * Revision 1.2  2005/07/08 14:56:50  keinstein
  * Neu:
  * 	Kopf
@@ -27,9 +30,11 @@ void yyerror(char *);
 int yyparse ();
 */
 
+long anzahl_eingelesene_zeichen;
+
 int mutabor_parser_parse();
-int mutabor_parser_lex();
+/* int mutabor_parser_lex(); */
 void mutabor_parser_error(char *);
-void init_mutabor_parser_lex(void);
+/* void init_mutabor_parser_lex(void); */
 
 #endif /* __MUT_TAB_H_INCLUDED */

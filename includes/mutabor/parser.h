@@ -22,7 +22,7 @@ namespace mutabor {
 
 void mutabor_programm_einlesen (char * filename) ;
 
-extern FILE * quelldatei;
+extern FILE * mutabor_parser_in;
 extern long anzahl_eingelesene_zeichen;
 
 void check_konsistenz (void);

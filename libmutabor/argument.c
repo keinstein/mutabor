@@ -2,12 +2,24 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/argument.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
+ * $Log: argument.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************/
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+/* für HAVE_STDDEF_H, size_t */
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include <stdio.h>
-#include <stddef.h>
 
 #include "mutabor/argument.h"
 #include "mutabor/heap.h"
