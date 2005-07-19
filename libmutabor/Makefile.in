@@ -37,7 +37,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
 ACLOCAL = @ACLOCAL@
-ALLOCA = @ALLOCA@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
@@ -71,6 +70,9 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LDFLAGS = @LDFLAGS@
+LEX = @LEX@
+LEXLIB = @LEXLIB@
+LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -134,6 +136,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+SUBDIRS = . tests
 INCLUDES = -I../includes
 AUTOMAKE_OPTIONS = foreign
 AM_YFLAGS = -d
@@ -142,23 +145,30 @@ ACLOCAL_AMFLAGS = -I m4
 
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_CFLAGS = -Wall --ansi
-libmutabor_la_SOURCES = ../includes/mutabor/heap.h ../includes/mutabor/interval.h \
+libmutabor_la_includedir = $(pkgincludedir)
+libmutabor_la_include_HEADERS = ../includes/mutabor/heap.h ../includes/mutabor/interval.h \
 			../includes/mutabor/aktion.h ../includes/mutabor/anweisung.h \
 			../includes/mutabor/argument.h ../includes/mutabor/ausloeser.h \
-			../includes/mutabor/bad_decl.h ../includes/mutaborcase_liste.h \
+			../includes/mutabor/bad_decl.h ../includes/mutabor/case_liste.h \
 			../includes/mutabor/global.h ../includes/mutabor/harmonie.h \
 			../includes/mutabor/instrument.h ../includes/mutabor/logik.h \
 			../includes/mutabor/midicalc.h ../includes/mutabor/mut_tab.h \
 			../includes/mutabor/parameter.h ../includes/mutabor/parser.h \
 			../includes/mutabor/tabgen.h ../includes/mutabor/taste.h \
 			../includes/mutabor/ton.h ../includes/mutabor/tonsystem.h \
-			../includes/mutabor/umstimmung.h \
-			mut.y \
+			../includes/mutabor/umstimmung.h 
+
+
+libmutabor_la_SOURCES = mut.y mutlex.h mut.h \
 			aktion.c anweisung.c argument.c ausloeser.c \
 			case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
-			midicalc.c parameter.c parser.c taste.c ton.c tonsystem.c umstimmung.c
+			midicalc.c parameter.c parser.c taste.c ton.c tonsystem.c umstimmung.c \
+			errors.c mutlex.l
+
 
 libmutabor_la_LDFLAGS = -version-info 0:0:0
+
+SUFFIXES = .h
 subdir = libmutabor
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -175,7 +185,8 @@ am_libmutabor_la_OBJECTS = libmutabor_la-mut.lo libmutabor_la-aktion.lo \
 	libmutabor_la-logik.lo libmutabor_la-midicalc.lo \
 	libmutabor_la-parameter.lo libmutabor_la-parser.lo \
 	libmutabor_la-taste.lo libmutabor_la-ton.lo \
-	libmutabor_la-tonsystem.lo libmutabor_la-umstimmung.lo
+	libmutabor_la-tonsystem.lo libmutabor_la-umstimmung.lo \
+	libmutabor_la-errors.lo libmutabor_la-mutlex.lo
 libmutabor_la_OBJECTS = $(am_libmutabor_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
@@ -186,6 +197,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-argument.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-ausloeser.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-case_liste.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-errors.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-harmonie.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-heap.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-instrument.Plo \
@@ -193,6 +205,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-logik.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-midicalc.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-mut.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-mutlex.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-parameter.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-parser.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libmutabor_la-taste.Plo \
@@ -206,16 +219,28 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+LEXCOMPILE = $(LEX) $(LFLAGS) $(AM_LFLAGS)
+LTLEXCOMPILE = $(LIBTOOL) --mode=compile $(LEX) $(LFLAGS) $(AM_LFLAGS)
 YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 LTYACCCOMPILE = $(LIBTOOL) --mode=compile $(YACC) $(YFLAGS) $(AM_YFLAGS)
 DIST_SOURCES = $(libmutabor_la_SOURCES)
-DIST_COMMON = $(srcdir)/Makefile.in Makefile.am mut.c mut.h
+HEADERS = $(libmutabor_la_include_HEADERS)
+
+
+RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
+	ps-recursive install-info-recursive uninstall-info-recursive \
+	all-recursive install-data-recursive install-exec-recursive \
+	installdirs-recursive install-recursive uninstall-recursive \
+	check-recursive installcheck-recursive
+DIST_COMMON = $(libmutabor_la_include_HEADERS) $(srcdir)/Makefile.in \
+	Makefile.am mut.c mut.h mutlex.c
+DIST_SUBDIRS = $(SUBDIRS)
 SOURCES = $(libmutabor_la_SOURCES)
 
-all: all-am
+all: all-recursive
 
 .SUFFIXES:
-.SUFFIXES: .c .lo .o .obj .y
+.SUFFIXES: .h .c .l .lo .o .obj .y
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --foreign  libmutabor/Makefile
@@ -268,6 +293,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-argument.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-ausloeser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-case_liste.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-errors.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-harmonie.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-heap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-instrument.Plo@am__quote@
@@ -275,6 +301,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-logik.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-midicalc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-mut.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-mutlex.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-parameter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-parser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-taste.Plo@am__quote@
@@ -909,6 +936,77 @@ libmutabor_la-umstimmung.lo: umstimmung.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-umstimmung.lo `test -f 'umstimmung.c' || echo '$(srcdir)/'`umstimmung.c
 
+libmutabor_la-errors.o: errors.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-errors.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-errors.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-errors.o `test -f 'errors.c' || echo '$(srcdir)/'`errors.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-errors.Tpo" "$(DEPDIR)/libmutabor_la-errors.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-errors.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='errors.c' object='libmutabor_la-errors.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-errors.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-errors.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-errors.o `test -f 'errors.c' || echo '$(srcdir)/'`errors.c
+
+libmutabor_la-errors.obj: errors.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-errors.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-errors.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-errors.obj `if test -f 'errors.c'; then $(CYGPATH_W) 'errors.c'; else $(CYGPATH_W) '$(srcdir)/errors.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-errors.Tpo" "$(DEPDIR)/libmutabor_la-errors.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-errors.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='errors.c' object='libmutabor_la-errors.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-errors.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-errors.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-errors.obj `if test -f 'errors.c'; then $(CYGPATH_W) 'errors.c'; else $(CYGPATH_W) '$(srcdir)/errors.c'; fi`
+
+libmutabor_la-errors.lo: errors.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-errors.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-errors.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-errors.lo `test -f 'errors.c' || echo '$(srcdir)/'`errors.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-errors.Tpo" "$(DEPDIR)/libmutabor_la-errors.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-errors.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='errors.c' object='libmutabor_la-errors.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-errors.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-errors.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-errors.lo `test -f 'errors.c' || echo '$(srcdir)/'`errors.c
+
+libmutabor_la-mutlex.o: mutlex.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mutlex.o -MD -MP -MF "$(DEPDIR)/libmutabor_la-mutlex.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mutlex.o `test -f 'mutlex.c' || echo '$(srcdir)/'`mutlex.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo" "$(DEPDIR)/libmutabor_la-mutlex.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mutlex.c' object='libmutabor_la-mutlex.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mutlex.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mutlex.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mutlex.o `test -f 'mutlex.c' || echo '$(srcdir)/'`mutlex.c
+
+libmutabor_la-mutlex.obj: mutlex.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mutlex.obj -MD -MP -MF "$(DEPDIR)/libmutabor_la-mutlex.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mutlex.obj `if test -f 'mutlex.c'; then $(CYGPATH_W) 'mutlex.c'; else $(CYGPATH_W) '$(srcdir)/mutlex.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo" "$(DEPDIR)/libmutabor_la-mutlex.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mutlex.c' object='libmutabor_la-mutlex.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mutlex.Po' tmpdepfile='$(DEPDIR)/libmutabor_la-mutlex.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mutlex.obj `if test -f 'mutlex.c'; then $(CYGPATH_W) 'mutlex.c'; else $(CYGPATH_W) '$(srcdir)/mutlex.c'; fi`
+
+libmutabor_la-mutlex.lo: mutlex.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-mutlex.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-mutlex.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libmutabor_la-mutlex.lo `test -f 'mutlex.c' || echo '$(srcdir)/'`mutlex.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo" "$(DEPDIR)/libmutabor_la-mutlex.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libmutabor_la-mutlex.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mutlex.c' object='libmutabor_la-mutlex.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libmutabor_la-mutlex.Plo' tmpdepfile='$(DEPDIR)/libmutabor_la-mutlex.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-mutlex.lo `test -f 'mutlex.c' || echo '$(srcdir)/'`mutlex.c
+
+.l.c:
+	$(LEXCOMPILE) `test -f $< || echo '$(srcdir)/'`$<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	rm -f $(LEX_OUTPUT_ROOT).c
+
 .y.c:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
 	if test -f y.tab.h; then \
@@ -938,6 +1036,83 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+libmutabor_la_includeHEADERS_INSTALL = $(INSTALL_HEADER)
+install-libmutabor_la_includeHEADERS: $(libmutabor_la_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(libmutabor_la_includedir)
+	@list='$(libmutabor_la_include_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(libmutabor_la_includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libmutabor_la_includedir)/$$f"; \
+	  $(libmutabor_la_includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libmutabor_la_includedir)/$$f; \
+	done
+
+uninstall-libmutabor_la_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(libmutabor_la_include_HEADERS)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(libmutabor_la_includedir)/$$f"; \
+	  rm -f $(DESTDIR)$(libmutabor_la_includedir)/$$f; \
+	done
+
+# This directory's subdirectories are mostly independent; you can cd
+# into them and run `make' without going through this Makefile.
+# To change the values of `make' variables: instead of editing Makefiles,
+# (1) if the variable is set in `config.status', edit `config.status'
+#     (which will cause the Makefiles to be regenerated when you run `make');
+# (2) otherwise, pass the desired values on the `make' command line.
+$(RECURSIVE_TARGETS):
+	@set fnord $$MAKEFLAGS; amf=$$2; \
+	dot_seen=no; \
+	target=`echo $@ | sed s/-recursive//`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    dot_seen=yes; \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done; \
+	if test "$$dot_seen" = "no"; then \
+	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+	fi; test -z "$$fail"
+
+mostlyclean-recursive clean-recursive distclean-recursive \
+maintainer-clean-recursive:
+	@set fnord $$MAKEFLAGS; amf=$$2; \
+	dot_seen=no; \
+	case "$@" in \
+	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+	  *) list='$(SUBDIRS)' ;; \
+	esac; \
+	rev=''; for subdir in $$list; do \
+	  if test "$$subdir" = "."; then :; else \
+	    rev="$$subdir $$rev"; \
+	  fi; \
+	done; \
+	rev="$$rev ."; \
+	target=`echo $@ | sed s/-recursive//`; \
+	for subdir in $$rev; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+tags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) tags); \
+	done
+ctags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) ctags); \
+	done
 
 ETAGS = etags
 ETAGSFLAGS =
@@ -956,10 +1131,21 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	       END { for (i in files) print i; }'`; \
 	mkid -fID $$unique
 
-TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
+	if (etags --etags-include --version) >/dev/null 2>&1; then \
+	  include_option=--etags-include; \
+	else \
+	  include_option=--include; \
+	fi; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    test -f $$subdir/TAGS && \
+	      tags="$$tags $$include_option=$$here/$$subdir/TAGS"; \
+	  fi; \
+	done; \
 	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
@@ -971,7 +1157,7 @@ TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 	     $$tags $$unique
 
 ctags: CTAGS
-CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+CTAGS: ctags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
@@ -998,6 +1184,7 @@ top_distdir = ..
 distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
 
 distdir: $(DISTFILES)
+	$(mkinstalldirs) $(distdir)/../includes/mutabor
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -1024,21 +1211,35 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    test -d $(distdir)/$$subdir \
+	    || mkdir $(distdir)/$$subdir \
+	    || exit 1; \
+	    (cd $$subdir && \
+	      $(MAKE) $(AM_MAKEFLAGS) \
+	        top_distdir="$(top_distdir)" \
+	        distdir=../$(distdir)/$$subdir \
+	        distdir) \
+	      || exit 1; \
+	  fi; \
+	done
 check-am: all-am
-check: check-am
-all-am: Makefile $(LTLIBRARIES)
+check: check-recursive
+all-am: Makefile $(LTLIBRARIES) $(HEADERS)
+installdirs: installdirs-recursive
+installdirs-am:
+	$(mkinstalldirs) $(DESTDIR)$(libdir) $(DESTDIR)$(libmutabor_la_includedir)
 
-installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
-install: install-am
-install-exec: install-exec-am
-install-data: install-data-am
-uninstall: uninstall-am
+install: install-recursive
+install-exec: install-exec-recursive
+install-data: install-data-recursive
+uninstall: uninstall-recursive
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 
-installcheck: installcheck-am
+installcheck: installcheck-recursive
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
 	  install_sh_PROGRAM="$(INSTALL_STRIP_PROGRAM)" INSTALL_STRIP_FLAG=-s \
@@ -1055,69 +1256,108 @@ maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 	-rm -f mut.h
+	-rm -f mutlex.c
 	-rm -f mut.c
-clean: clean-am
+clean: clean-recursive
 
 clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
-distclean: distclean-am
+distclean: distclean-recursive
 	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
 
-dvi: dvi-am
+dvi: dvi-recursive
 
 dvi-am:
 
-info: info-am
+info: info-recursive
 
 info-am:
 
-install-data-am:
+install-data-am: install-libmutabor_la_includeHEADERS
 
 install-exec-am: install-libLTLIBRARIES
 
-install-info: install-info-am
+install-info: install-info-recursive
 
 install-man:
 
 installcheck-am:
 
-maintainer-clean: maintainer-clean-am
+maintainer-clean: maintainer-clean-recursive
 	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
-mostlyclean: mostlyclean-am
+mostlyclean: mostlyclean-recursive
 
 mostlyclean-am: mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool
 
-pdf: pdf-am
+pdf: pdf-recursive
 
 pdf-am:
 
-ps: ps-am
+ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES
+uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
+	uninstall-libmutabor_la_includeHEADERS
 
-.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool ctags distclean \
+uninstall-info: uninstall-info-recursive
+
+.PHONY: $(RECURSIVE_TARGETS) CTAGS GTAGS all all-am check check-am clean \
+	clean-generic clean-libLTLIBRARIES clean-libtool \
+	clean-recursive ctags ctags-recursive distclean \
 	distclean-compile distclean-generic distclean-libtool \
-	distclean-tags distdir dvi dvi-am info info-am install \
-	install-am install-data install-data-am install-exec \
-	install-exec-am install-info install-info-am \
-	install-libLTLIBRARIES install-man install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-info-am \
-	uninstall-libLTLIBRARIES
+	distclean-recursive distclean-tags distdir dvi dvi-am \
+	dvi-recursive info info-am info-recursive install install-am \
+	install-data install-data-am install-data-recursive \
+	install-exec install-exec-am install-exec-recursive \
+	install-info install-info-am install-info-recursive \
+	install-libLTLIBRARIES install-libmutabor_la_includeHEADERS \
+	install-man install-recursive install-strip installcheck \
+	installcheck-am installdirs installdirs-am \
+	installdirs-recursive maintainer-clean maintainer-clean-generic \
+	maintainer-clean-recursive mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool mostlyclean-recursive \
+	pdf pdf-am pdf-recursive ps ps-am ps-recursive tags \
+	tags-recursive uninstall uninstall-am uninstall-info-am \
+	uninstall-info-recursive uninstall-libLTLIBRARIES \
+	uninstall-libmutabor_la_includeHEADERS uninstall-recursive
 
+
+.l.h:
+	$(LEXCOMPILE) `test -f $< || echo '$(srcdir)/'`$<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	rm -f $(LEX_OUTPUT_ROOT).c
+
+.y.h:
+	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
+	if test -f y.tab.h; then \
+	  to=`echo "$*_H" | sed \
+                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
+                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
+	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
+	  rm -f y.tab.h; \
+	  if cmp -s $*.ht $*.h; then \
+	    rm -f $*.ht ;\
+	  else \
+	    mv $*.ht $*.h; \
+	  fi; \
+	fi
+	if test -f y.output; then \
+	  mv y.output $*.output; \
+	fi
+	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
+	rm -f y.tab.c
+
+mutlex.h: mutlex.l
+mut.h: mut.y
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

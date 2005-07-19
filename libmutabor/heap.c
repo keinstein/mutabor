@@ -1,11 +1,27 @@
 /** \file
  ********************************************************************
  *  Heapverwaltung.
- * \author R.Krauße
- * \date 1997
- * \version 2.win
+ *
+ * \author R.Krauße <krausze@users.berlios.de>
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.4 $
  * \bug fatal_error(...) muss von Oberfläche getrennt werden.
+ * \todo Portabilisierung von: memmove
+ *
+ * $Log: heap.c,v $
+ * Revision 1.4  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************/
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+  /* Relevante Variablen für diese Datei:
+   * HAVE_MEMMOVE 
+   * malloc
+   * size_t
+   */
+#endif
 
 #include<stdlib.h>
 #include<string.h>
@@ -33,7 +49,7 @@ int  intern_fgetc( FILE *stream )
 { int zeichen;
   if (is_valid) {
       is_valid = 0;
-		return  the_character;
+      return  the_character;
   }
   zeichen = fgetc(stream);
   return zeichen;

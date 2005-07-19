@@ -2,25 +2,34 @@
  ********************************************************************
  * Alles zu Tönen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.1 2005/07/08 14:44:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
- * \log 
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *  
  * $Log: ton.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  * Revision 1.1  2005/07/08 14:44:20  keinstein
  * Neue Datei.
  * Aus parser.c herausgelöst.
  *
  ********************************************************************/
-
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+/* für HAVE_STDDEF_H, size_t */
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include "mutabor/ton.h"
 #include "mutabor/heap.h"
 #include "mutabor/bad_decl.h"
 #include "mutabor/interval.h"
+#include "mutabor/errors.h"
 
 /** Wurzel der Tonliste */
 struct ton            *  list_of_toene;
@@ -223,6 +232,10 @@ static char * matrix;          /**< Adjazenzmatrix (auf sie darf nur ueber
  */
 static void belege_toene (struct ton **toene, struct ton * liste)
 {
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initializing tone array\n");
+#endif
   while (liste) {
       *toene = liste;
       toene++;
@@ -272,12 +285,24 @@ static void berechne_ton_endgueltig (int k)
 { int b;
   double help, help2;
   
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Calculate final tone values %d ",k);
+#endif
   switch (toene[k]->ton_typ) {
 
     case ton_absolut:         /* hier nichts zu tun */
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Absolute tone %s: %f\n",toene[k]->name,toene[k]->u.ton_absolut.ton_wert);
+#endif
       break;
       
     case ton_komplex:
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Complex tone %s:\n",toene[k]->name);
+#endif
       b = ton_nummer (toene[k]->u.ton_komplex.bezugston);
       berechne_ton_endgueltig (b);
       
@@ -286,6 +311,10 @@ static void berechne_ton_endgueltig (int k)
       
       toene[k]->ton_typ = ton_absolut;
       toene[k]->u.ton_absolut.ton_wert = help * help2;
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Complex tone %s: %f\n",toene[k]->name, toene[k]->u.ton_absolut.ton_wert);
+#endif
       break;
       
     default:
@@ -301,6 +330,10 @@ static void berechne_ton_endgueltig (int k)
  */
 void berechne_toene_absolut (struct ton *list_of_toene)
 { 
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Calculate abolute tone values\n");
+#endif
   int i,j,k;
 
   anzahl_toene = ton_list_laenge (list_of_toene);
@@ -315,14 +348,22 @@ void berechne_toene_absolut (struct ton *list_of_toene)
   
 /* Adjazenzmatrix initialisieren (Kein Ton h�ngt vom anderen ab) */
 
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initializing adjacency matrix\n");
+#endif
   for (i=0; i<anzahl_toene; i++) {
       for (j=0; j<anzahl_toene; j++) {
           adjazent (i,j) = 0;
       }
   }
   
-/* Adjazenzmatrix initialisieren (Abh�ngigkeiten eintragen) */
+/* Adjazenzmatrix initialisieren (Abhängigkeiten eintragen) */
 
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initializing tone entries\n");
+#endif
   for (i=0; i<anzahl_toene; i++) {
       if (toene[i]->ton_typ == ton_absolut)  /* alles ok */ ;
       else if (toene[i]->ton_typ == ton_komplex) {
@@ -333,21 +374,22 @@ void berechne_toene_absolut (struct ton *list_of_toene)
       }
   }
 
-#ifdef DEBUG_ANZEIGE
-/* Adjazenzmatrix anzeigen */
-
-  printf ("Matrix:\n");
+#ifdef DEBUG
+  if (mutabor_debug_level) {
+    /* Adjazenzmatrix anzeigen */
+    
+    fprintf (stderr,"Tone Matrix:\n");
   
-  for (i=0; i<anzahl_toene; i++) {
-      printf ("%s -> ", toene[i]->name);
+    for (i=0; i<anzahl_toene; i++) {
+      fprintf (stderr,"%s -> ", toene[i]->name);
       for (j=0; j<anzahl_toene; j++) {
-          if (adjazent (i,j))
-              printf ("%s  ", toene[j]->name);
+	if (adjazent (i,j))
+	  fprintf (stderr,"%s  ", toene[j]->name);
       }
-      printf ("\n");
-  } 
-  printf ("\n");
-
+      fprintf (stderr,"\n");
+    } 
+    fprintf (stderr,"\n");
+  }
 #endif
   
 /* auf Zyklenfreiheit Pruefen */

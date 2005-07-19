@@ -122,7 +122,8 @@ FILE_PATTERNS          = *.c \
                          *.rh \
                          *.RH
 RECURSIVE              = YES
-EXCLUDE                = 
+EXCLUDE                = bison old \
+			 müll
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = 
 EXAMPLE_PATH           = 
@@ -153,9 +154,9 @@ IGNORE_PREFIX          =
 GENERATE_HTML          = YES
 HTML_OUTPUT            = html
 HTML_FILE_EXTENSION    = .html
-HTML_HEADER            = 
-HTML_FOOTER            = 
-HTML_STYLESHEET        = 
+HTML_HEADER            = doxygen/html-header 
+HTML_FOOTER            = doxygen/html-footer
+HTML_STYLESHEET        = doxygen/html-stylesheet
 HTML_ALIGN_MEMBERS     = YES
 GENERATE_HTMLHELP      = YES
 CHM_FILE               = 
@@ -177,7 +178,7 @@ MAKEINDEX_CMD_NAME     = makeindex
 COMPACT_LATEX          = YES
 PAPER_TYPE             = a4wide
 EXTRA_PACKAGES         = 
-LATEX_HEADER           = 
+LATEX_HEADER           = doxygen/latex-header
 PDF_HYPERLINKS         = YES
 USE_PDFLATEX           = NO
 LATEX_BATCHMODE        = NO

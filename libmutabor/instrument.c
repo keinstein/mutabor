@@ -2,17 +2,26 @@
  ********************************************************************
  * Alles zu Instrumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/instrument.c,v 1.1 2005/07/08 14:44:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/instrument.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
- * \log $Log: instrument.c,v $
- * \log Revision 1.1  2005/07/08 14:44:20  keinstein
- * \log Neue Datei.
- * \log Aus parser.c herausgelöst.
- * \log
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.2 $
+ *
+ * $Log: instrument.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
+ * Revision 1.1  2005/07/08 14:44:20  keinstein
+ * Neue Datei.
+ * Aus parser.c herausgelöst.
+ * 
  ********************************************************************/
-#include <stddef.h>
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
 #include "mutabor/instrument.h"
 #include "mutabor/bad_decl.h"
 #include "mutabor/heap.h"

@@ -1,12 +1,24 @@
 /** \file
  ********************************************************************
  *  Heapverwaltung.
- * \author R.Krauße
- * \date 1997
- * \version 2.win
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/heap.h,v 1.3 2005/07/19 15:15:27 keinstein Exp $
+ * \author R.Krauße <krausze@users.berlios.de>
+ * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.3 $
+ *
+ * $Log: heap.h,v $
+ * Revision 1.3  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************/
 #ifndef __HEAP_H_INCLUDED__
 #define __HEAP_H_INCLUDED__7
+
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+/* für size_t */
+#endif
 
 #ifdef __cplusplus
 namespace mutabor {

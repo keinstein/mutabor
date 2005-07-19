@@ -1,9 +1,16 @@
 /** \file
  ********************************************************************
- * Mutabor Fileparser
- * \author R. Krauﬂe
- * \version 2.win
- * \date 1997
+ * Mutabor Fileparser.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * \author R. Krauﬂe <krausze@users.berlios.de>
+ * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/19 15:15:27 $
+ *
+ * $Log: parser.c,v $
+ * Revision 1.2  2005/07/19 15:15:27  keinstein
+ * Using own Templates
+ *
  ********************************************************************
  * \note Eventuell Listen-Z‰hlen mit while-Schleife 
  * \note Eventuell Listen-Z‰hlen als Template
@@ -23,6 +30,7 @@
 #include "mutabor/heap.h"
 #include "mutabor/aktion.h"
 #include "mutabor/ausloeser.h"
+#include "mutabor/errors.h"
 
 /* Globale Variablen des Compilers mit dem Codegenerator und
                                        dem Tabellengenerator  */
@@ -32,8 +40,6 @@
              da die Sprache NICHT rekursiv ist.
 ***********/
 
-/** Wurzel der Intervallliste */
-struct intervall      *  list_of_intervalle;
 /** Wurzel der Instrumente */
 struct instrument     *  list_of_instrumente;
 /** Wurzel der Instrumentenkonfiguration */
@@ -63,7 +69,7 @@ void allgemeine_initialisierungen( void ) {
 /********* Eintrittspunkt in das File ist hier !! *******/
 
 /** Quelldatei f¸r das Mutabor-Programm */
-FILE * quelldatei;
+FILE * mutabor_parser_in;
 
 /** Liest ein Mutabor-Programm ein.
  * Ist \c DEBUG_ANZEIGE definiert, dann werden die erzeugten Strukturen 
@@ -73,253 +79,303 @@ FILE * quelldatei;
 void mutabor_programm_einlesen ( char *filename )
 {
 
-	 if ((quelldatei = fopen (filename, "r")) == NULL) {
-		  fatal_error(3,filename);
-	 }
-
-	 list_of_intervalle            = NULL;
-	 list_of_toene                 = NULL;
-	 list_of_tonsysteme            = NULL;
-	 list_of_umstimmungen          = NULL;
-	 list_of_harmonien             = NULL;
-	 list_of_logiken               = NULL;
-	 list_of_instrumente           = NULL;
-	 list_of_config_instrumente    = NULL;
-
-
-#ifdef DEBUG_ANZEIGE
-	 printf ("\nStart parsing\n");
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    fprintf(stderr,"Datei ˆffnen: %s\n",filename);
 #endif
+  
+  if ((mutabor_parser_in = fopen (filename, "r")) == NULL) {
+    fatal_error(3,filename);
+  }
 
-	 if (mutabor_parser_parse()) {
-		  fatal_error(1,-999); /* Wird sowieso nie aufgerufen ... */
-	 }
+#ifdef DEBUG
+  if (mutabor_debug_level)
+    fprintf(stderr,"Datei geˆffnet: %s\n",filename);
+#endif
+  
+  
+  list_of_intervalle            = NULL;
+  list_of_toene                 = NULL;
+  list_of_tonsysteme            = NULL;
+  list_of_umstimmungen          = NULL;
+  list_of_harmonien             = NULL;
+  list_of_logiken               = NULL;
+  list_of_instrumente           = NULL;
+  list_of_config_instrumente    = NULL;
 
-    fclose (quelldatei);
+  
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"\nStart parsing\n");
+#endif
+  
+  if (mutabor_parser_parse()) {
+    fatal_error(7,__FILE__,__LINE__); /* Wird sowieso nie aufgerufen ... */
+  }
+  
+  fclose (mutabor_parser_in);
 
-    /*
-    // NEU: wenn kein Intervall oder Ton da, dann Speichermangel
-    // also evtl. Dummy
-    // (das Problem l‰ﬂt sich sicher auch direkt lˆsen ...)
-    */
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"\nEnd parsing\n");
+#endif
+  
+  
+  /*
+  // NEU: wenn kein Intervall oder Ton da, dann Speichermangel
+  // also evtl. Dummy
+  // (das Problem l‰ﬂt sich sicher auch direkt lˆsen ...)
+  */
+  
+  if ( !list_of_intervalle )
+    get_new_intervall("__TopSecret__RK__Intervall__", 1.0);
 
-    if ( !list_of_intervalle )
-      get_new_intervall("__TopSecret__RK__Intervall__", 1.0);
-    berechne_intervalle_absolut (list_of_intervalle);
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Calculate absolute interval values\n");
+#endif
+ 
+  berechne_intervalle_absolut (list_of_intervalle);
+  
+  if ( !list_of_toene )
+    get_new_ton_absolut("__TopSecret__RK__Ton__", 440.0);
 
-    if ( !list_of_toene )
-      get_new_ton_absolut("__TopSecret__RK__Ton__", 440.0);
-    berechne_toene_absolut (list_of_toene);
-
-
+  berechne_toene_absolut (list_of_toene);
+  
+  
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Calculate instruments\n");
+#endif
     /* Falls kein Instrument angegeben ist: Dann 1 -> 1-16 */
-
-    if (list_of_instrumente == NULL &&
-        list_of_config_instrumente == NULL) { 
-        get_instrument_dekl (1, 1, 16, 0, & list_of_instrumente);
-    }
-    else if (list_of_instrumente == NULL) {
-        list_of_instrumente = list_of_config_instrumente;
-    }
-
-          
-    setze_nummer_von_abstand_und_zentrum ();
-
-    check_konsistenz ();
-
-#ifdef DEBUG_ANZEIGE
-    { struct intervall * lauf;
+  
+  if (list_of_instrumente == NULL &&
+      list_of_config_instrumente == NULL) { 
+    get_instrument_dekl (1, 1, 16, 0, & list_of_instrumente);
+  }
+  else if (list_of_instrumente == NULL) {
+    list_of_instrumente = list_of_config_instrumente;
+  }
+  
+  
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Calculate number of distance and center\n");
+#endif
+  setze_nummer_von_abstand_und_zentrum ();
+  
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Check consistency\n");
+#endif
+  check_konsistenz ();
+  
+  if (mutabor_debug_level) {
+    { 
+      struct intervall * lauf;
       printf ("\n");
       for (lauf=list_of_intervalle; lauf; lauf=lauf->next) {
-          printf ("Name: %s, Wert: %lf:\n", lauf->name,
-						 lauf->intervall_wert );
+	if (lauf->intervall_typ==intervall_absolut)
+	  printf ("Name: %s, Wert: %lf:\n", lauf->name,
+		  lauf->u.intervall_absolut.intervall_wert );
+	else printf ("Komplexes Intervall: Name: %s\n",lauf->name);
       }
     }
-
-    { struct ton * lauf;
+    
+    { 
+      struct ton * lauf;
       printf ("\n");
       for (lauf=list_of_toene; lauf; lauf=lauf->next) {
-          drucke_ton (lauf);
-
+	drucke_ton (lauf);
+	
       }
     }
-
-    { struct tonsystem * lauf;
+    
+    { 
+      struct tonsystem * lauf;
       printf ("\n");
       for (lauf=list_of_tonsysteme; lauf; lauf=lauf->next) {
-          struct ton * help;
-          printf ("Name: %s, Taste: %d, Periode: %s, "
-                  "Tonleiter_breite: %d\n", 
-                   lauf->name,
-                   lauf->taste,
-                   lauf->periode,
-                   ton_list_laenge (lauf->toene));
-          for (help = lauf->toene; help; help = help->next ) {
-              printf ("%s , ", help->name ? help->name : "(NULL)");
-          }
-          printf ("\n");
+	struct ton * help;
+	printf ("Name: %s, Taste: %d, Periode: %s, "
+		"Tonleiter_breite: %d\n", 
+		lauf->name,
+		lauf->taste,
+		lauf->periode->name, 
+		ton_list_laenge (lauf->toene));
+	for (help = lauf->toene; help; help = help->next ) {
+	  printf ("%s , ", help->name ? help->name : "(NULL)");
+	}
+	printf ("\n");
       }
-	 }
+    }
 
-printf ("Umstimmungen:\n");
-
-    { struct umstimmung * lauf;
+    printf ("Umstimmungen:\n");
+    
+    { 
+      struct umstimmung * lauf;
       printf ("\n");
       for (lauf=list_of_umstimmungen; lauf; lauf=lauf->next) {
-          struct parameter_liste * help;
-          printf ("\nName: %s, Parameter: ", lauf->name);
-          for (help = lauf->parameter_liste; help; help = help->next ) {
-              printf ("%s , ", help->name ? help->name : "(NULL)");
-          }
-			 printf ("\n");
-          switch (lauf -> umstimmung_typ) {
-          case umstimmung_taste_abs :
-              printf ("        umstimmung_taste_abs : ");
-              drucke_argument (
-                  & lauf -> u.umstimmung_taste_abs.argument);
-              printf ("\n");
-          break;
-          case umstimmung_taste_rel :
-              printf ("        umstimmung_taste_rel : ");
-              drucke_argument (
-                  & lauf -> u.umstimmung_taste_rel.argument);
-				  printf (" Rechenzeichen: \"%c\"\n",
-                  lauf -> u.umstimmung_taste_rel.rechenzeichen);
-          break;
-          case umstimmung_breite_abs :
-              printf ("        umstimmung_breite_abs : ");
-              drucke_argument (
-                  & lauf -> u.umstimmung_breite_abs.argument);
-              printf ("\n");
-          break;
-          case umstimmung_breite_rel :
-              printf ("        umstimmung_breite_rel : ");
-              drucke_argument (
-						& lauf -> u.umstimmung_breite_rel.argument);
-              printf (" Rechenzeichen: \"%c\"\n", 
+	struct parameter_liste * help;
+	printf ("\nName: %s, Parameter: ", lauf->name);
+	for (help = lauf->parameter_liste; help; help = help->next ) {
+	  printf ("%s , ", help->name ? help->name : "(NULL)");
+	}
+	printf ("\n");
+	switch (lauf -> umstimmung_typ) {
+	case umstimmung_taste_abs :
+	  printf ("        umstimmung_taste_abs : ");
+	  drucke_argument (
+			   & lauf -> u.umstimmung_taste_abs.argument);
+	  printf ("\n");
+	  break;
+	case umstimmung_taste_rel :
+	  printf ("        umstimmung_taste_rel : ");
+	  drucke_argument (
+			   & lauf -> u.umstimmung_taste_rel.argument);
+	  printf (" Rechenzeichen: \"%c\"\n",
+		  lauf -> u.umstimmung_taste_rel.rechenzeichen);
+	  break;
+	case umstimmung_breite_abs :
+	  printf ("        umstimmung_breite_abs : ");
+	  drucke_argument (
+			   & lauf -> u.umstimmung_breite_abs.argument);
+	  printf ("\n");
+	  break;
+	case umstimmung_breite_rel :
+	  printf ("        umstimmung_breite_rel : ");
+	  drucke_argument (
+			   & lauf -> u.umstimmung_breite_rel.argument);
+	  printf (" Rechenzeichen: \"%c\"\n", 
                   lauf -> u.umstimmung_breite_rel.rechenzeichen);
-          break;
-          case umstimmung_toene_veraendert : {
-              struct ton * help;
-              printf ("        umstimmung_toene_veraendert : \n");
-              for (help = lauf -> u.umstimmung_toene_veraendert.tonliste;
-                   help;
-                   help = help -> next) {
-                       printf ("        ");
-                       drucke_ton (help);
-						 }
-          break;
-          }
-          case umstimmung_wiederholung_abs :
-              printf ("        umstimmung_wiederholung_abs :");
-              printf ("Name : %s \n",
-						lauf -> u.umstimmung_wiederholung_abs.name);
-          break;
-          case umstimmung_wiederholung_rel :
-              printf ("        umstimmung_wiederholung_rel : ");
-              drucke_argument (
-						& lauf -> u.umstimmung_wiederholung_rel.argument);
-				  printf (" R-zeichen: \"%c\"\n",
-						lauf -> u.umstimmung_wiederholung_rel.rechenzeichen);
-          break;
-          case umstimmung_umstimmungsbund : {
-              struct aktions_liste * help_umst;
-              printf ("        umstimmung_umstimmungsbund : \n");
-              print_aktions_liste (lauf->u.umstimmung_umstimmungsbund.aktions_liste);
+	  break;
+	case umstimmung_toene_veraendert : {
+	  struct ton * help;
+	  printf ("        umstimmung_toene_veraendert : \n");
+	  for (help = lauf -> u.umstimmung_toene_veraendert.tonliste;
+	       help;
+	       help = help -> next) {
+	    printf ("        ");
+	    drucke_ton (help);
+	  }
+	  break;
+	}
+	case umstimmung_wiederholung_abs :
+	  printf ("        umstimmung_wiederholung_abs :");
+	  printf ("Name : %s \n",
+		  lauf -> u.umstimmung_wiederholung_abs.komplex_liste->name);
+	  break;
+	case umstimmung_wiederholung_rel :
+	  printf ("        umstimmung_wiederholung_rel : ");
+	  printf (lauf->u.umstimmung_wiederholung_rel.komplex_liste->name);
+	  /*	    drucke_argument (
+		    lauf -> u.umstimmung_wiederholung_rel.komplex_liste);
+		    printf (" R-zeichen: \"%c\"\n",
+		    lauf -> u.umstimmung_wiederholung_rel.rechenzeichen);
+	  */
+	  break;
+	case umstimmung_umstimmungsbund : {
+	  struct aktions_liste * help_umst;
+	  printf ("        umstimmung_umstimmungsbund : \n");
+	  print_aktions_liste (lauf->u.umstimmung_umstimmungsbund.aktions_liste);
+	  /*
+	    for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
+	    help_umst;
+	    help_umst = help_umst -> next ) {
+	    struct argument_liste * help;
+	    printf ("                Umstimmungs-name: %s, Parameter: ",
+	    help_umst->name ? help_umst->name : "(NULL)");
+	    for (help = help_umst->argument_liste; help; help = help->next ) {
+	    drucke_argument ( & help -> argument );
+	    }
+	    printf ("\n");
+	    } 
+	  */
+	}
+	  break;
+	case umstimmung_umstimmungs_case : {
+	  struct case_liste * help_case;
+	  printf ("        umstimmung_umstimmungs_case : \n");
+	  drucke_argument (
+			   & lauf -> u.umstimmung_umstimmungs_case.argument);
 
-              
-              
-                            for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
-                   help_umst;
-                   help_umst = help_umst -> next ) {
-                  struct argument_liste * help;
-                  printf ("                Umstimmungs-name: %s, Parameter: ",
-                           help_umst->name ? help_umst->name : "(NULL)");
-                  for (help = help_umst->argument_liste; help; help = help->next ) {
-                      drucke_argument ( & help -> argument );
-                  }
-                  printf ("\n");
-              }          
+	  for (help_case = lauf -> u.umstimmung_umstimmungs_case.umstimmungs_case_liste;
+	       help_case;
+	       help_case = help_case -> next) {
+	    struct aktions_liste * help_umst;
 
-
-              
-          }
-          break;
-          case umstimmung_umstimmungs_case : {
-              struct case_liste * help_case;
-              printf ("        umstimmung_umstimmungs_case : \n");
-              drucke_argument (
-                  & lauf -> u.umstimmung_umstimmungs_case.argument);
-
-              for (help_case = lauf -> u.umstimmung_umstimmungs_case.umstimmungs_case_liste;
-                   help_case;
-                   help_case = help_case -> next) {
-                  struct aufruf_liste * help_umst;
-
-                  if (help_case->is_default)
-                      printf ("(ANSONSTEN)");
-                  else
-                      printf ("%lf ", help_case->case_label);
-
-                  for (help_umst = help_case->case_aufruf;
-                       help_umst;
-                       help_umst = help_umst -> next ) {
-                      struct argument_liste * help;
-                      printf ("                Aktions-name: %s, Parameter: ",
-                               help_umst->name ? help_umst->name : "(NULL)");
-                      for (help = help_umst->argument_liste; help; help = help->next ) {
-                          drucke_argument ( & help->argument);
-                      }
-                      printf ("\n");
-                  }
-              }
-          }
-          break;
-          } /* end of switch */
+	    if (help_case->is_default)
+	      printf ("(ANSONSTEN)");
+	    else
+	      printf ("%d ", help_case->case_label);
+		
+	    for (help_umst = help_case->case_aktion;
+		 help_umst;
+		 help_umst = help_umst -> next ) {
+	      struct argument_liste * help;
+	      print_aktions_liste(help_umst);
+	      /*
+		printf ("                Aktions-name: %s, Parameter: ",
+		help_umst->name ? help_umst->name : "(NULL)");
+		  
+		for (help = help_umst->argument_liste; help; help = help->next ) {
+		drucke_argument ( & help->argument);
+		}
+	      */
+	      printf ("\n");
+	    }
+	  }
+	}
+	  break;
+	} /* end of switch */
       }
     }
 
-printf ("\nHarmonien:\n");
-
-    { struct harmonie * lauf;
+    printf ("\nHarmonien:\n");
+      
+    { 
+      struct harmonie * lauf;
       for (lauf=list_of_harmonien; lauf; lauf=lauf->next) {
-          printf ("\n");
-          drucke_harmonie (lauf);
-          printf ("\n");
+	printf ("\n");
+	drucke_harmonie (lauf);
+	printf ("\n");
       }
     }
 
-printf ("\nLogiken:\n");
+    printf ("\nLogiken:\n");
 
-    { struct logik * lauf;
+    { 
+      struct logik * lauf;
       for (lauf=list_of_logiken; lauf; lauf=lauf->next) {
-          struct anweisung * anw_lauf;
-          print_ausloeser (lauf->ausloeser);
-          printf ("\nName: %s Einstimmung : %s\n", 
-                  lauf->name,
-                  lauf->einstimmungs_name ?
-                        lauf->einstimmungs_name :
-                        "(NULL)");
+	struct anweisung * anw_lauf;
+	print_ausloeser (lauf->ausloeser);
+	printf ("\nName: %s Einstimmung : %s\n", 
+		lauf->name,
+		lauf->einstimmungs_name ?
+		lauf->einstimmungs_name :
+		"(NULL)");
+	printf ("Anweisungsliste drucken .... ");
+	/*
           for (anw_lauf = lauf->anweisungsliste;
-               anw_lauf;
-               anw_lauf = anw_lauf -> next) {
-              print_ausloeser (anw_lauf->ausloeser);
-              print_aktion (anw_lauf->aktion); 
-          }
+	  anw_lauf;
+	  anw_lauf = anw_lauf->next) {
+	  print_ausloeser (anw_lauf->ausloeser);
+	  print_aktion (anw_lauf->aktion); 
+          }*/
+	 
       }
     }
+      
+    printf ("\nInstrumente:\n");
 
-printf ("\nInstrumente:\n");
-
-    { struct instrument * lauf;
+    { 
+      struct instrument * lauf;
       for (lauf=list_of_instrumente; lauf; lauf=lauf->next) {
-      printf ("Instrument %d -> %d - %d\n", lauf->midi_in,
-                   lauf->midi_von, lauf->midi_bis);
+	printf ("Instrument %d -> %d - %d\n", lauf->midi_in,
+		lauf->midi_von, lauf->midi_bis);
       }
     }
+  } /* Ende des Debug_bereiches */
 
-
-#endif
     
 }
 
@@ -534,10 +590,31 @@ static void u_test_zyklen (int startknoten)
 
 void check_konsistenz (void)
 {
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Initializing consistency check\n");
+#endif
+  
+
   allgemeine_initialisierungen();
+
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Checking Tone systems\n");
+#endif
+
   check_tonsystem_konsistenz();
+
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Checking retunings\n");
+#endif
   check_umstimmungs_konsistenz();
     
+#ifdef DEBUG
+  if (mutabor_debug_level) 
+    fprintf (stderr,"Checking for cycles\n");
+#endif
     /**** testzyklen ****/
     
     { 
