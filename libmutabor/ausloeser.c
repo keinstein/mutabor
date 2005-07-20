@@ -2,12 +2,17 @@
  ********************************************************************
  * Alles zu Ereignis-Auslösern
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.3 2005/07/20 09:49:55 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 09:49:55 $
+ * \version $Revision: 1.3 $
  *
  * $Log: ausloeser.c,v $
+ * Revision 1.3  2005/07/20 09:49:55  keinstein
+ * Includes für Doxygen verschönert
+ * config.h genutzt
+ * ein paar Links für Doxygen
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -25,8 +30,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "mutabor/ausloeser.h"
-#include "mutabor/bad_decl.h"
-#include "mutabor/midicalc.h"
 #include "mutabor/heap.h"
 #include "mutabor/harmonie.h"
 #include "mutabor/taste.h"
@@ -44,20 +47,20 @@ void init_ausloeser (void)
     tmp_ausloeser = NULL;
 }
 
-/** Gibt Wurzelelement von \a tmp_ausloeser zurück */
+/** Gibt Wurzelelement von \a #tmp_ausloeser zurück */
 struct ausloeser * get_last_ausloeser (void)
 {
     return tmp_ausloeser;
 }
 
-/** Markiert \c tmp_ausloeser als Standard-Auslöser */
+/** Markiert \c #tmp_ausloeser als Standard-Auslöser */
 void get_ausloeser_default (void)
 {
     tmp_ausloeser = (struct ausloeser*) xmalloc (sizeof (struct ausloeser));
     tmp_ausloeser -> ausloeser_typ = ausloeser_default;
 }
 
-/** Deklariert \c tmp_ausloeser als Harmonie-Auslöser und setzt die Werte aus 
+/** Deklariert \c #tmp_ausloeser als Harmonie-Auslöser und setzt die Werte aus 
  * dem Zwischenspeicher.
  */
 void get_ausloeser_harmonie (void)
@@ -69,7 +72,7 @@ void get_ausloeser_harmonie (void)
     tmp_ausloeser -> u.ausloeser_harmonie.nachtaste = tmp_nach_taste;
 }
 
-/** Deklariert \c tmp_ausloeser als Harmonie-Auslöser und setzt die Werte aus 
+/** Deklariert \c #tmp_ausloeser als Harmonie-Auslöser und setzt die Werte aus 
  * dem Zwischenspeicher.
  */
 void get_ausloeser_harmonie_form (void)
