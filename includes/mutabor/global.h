@@ -9,24 +9,16 @@
 #if ! defined (__GLOBAL_H_INCLUDED)
 #define __GLOBAL_H_INCLUDED
 
-#include "aktion.h"
 #include "anweisung.h"
-#include "argument.h"
-#include "ausloeser.h"
-#include "bad_decl.h"
-#include "case_liste.h"
 #include "harmonie.h"
 #include "heap.h"
 #include "instrument.h"
-#include "interval.h"
 #include "logik.h"
-#include "midicalc.h"
 #include "mut_tab.h"
 #include "parameter.h"
 #include "parser.h"
 #include "tabgen.h"
 #include "taste.h"
-#include "ton.h"
 #include "tonsystem.h"
 #include "umstimmung.h"
 
