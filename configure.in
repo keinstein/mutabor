@@ -43,12 +43,21 @@ AC_ARG_ENABLE(debug,
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
+AC_ARG_ENABLE(ansi,
+	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
+	[AS_IF(test "$enableval" = yes,
+	       AC_DEFINE(ANSI,1,[Define to 1 for compiling in ansi mode.]),
+               AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
+	 AX_CXXFLAGS_WARN_ALL_ANSI
+	 AX_CFLAGS_WARN_ALL_ANSI
+])
 AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_RANLIB
+
 
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
@@ -63,6 +72,7 @@ AC_TYPE_SIZE_T
 # Checks for library functions.
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memmove pow]) 
+AC_CHECK_FUNC(strdup)
 
 AC_CONFIG_FILES([Makefile libmutabor/Makefile libmutabor/tests/Makefile])
 AC_OUTPUT
