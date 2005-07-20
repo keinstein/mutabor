@@ -2,13 +2,18 @@
  ********************************************************************
  *  Heapverwaltung.
  *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/heap.c,v 1.5 2005/07/20 11:51:59 keinstein Exp $
  * \author R.Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2005/07/20 11:51:59 $
+ * \version $Revision: 1.5 $
  * \bug fatal_error(...) muss von Oberfl‰che getrennt werden.
  * \todo Portabilisierung von: memmove
  *
  * $Log: heap.c,v $
+ * Revision 1.5  2005/07/20 11:51:59  keinstein
+ * CVS-Kopf
+ * config.h
+ *
  * Revision 1.4  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
