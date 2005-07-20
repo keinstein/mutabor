@@ -2,12 +2,16 @@
  ********************************************************************
  * Alles zu Instrumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/instrument.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/instrument.c,v 1.3 2005/07/20 11:53:56 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 11:53:56 $
+ * \version $Revision: 1.3 $
  *
  * $Log: instrument.c,v $
+ * Revision 1.3  2005/07/20 11:53:56  keinstein
+ * Kopf korrigiert
+ * config.h
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -23,7 +27,6 @@
 #  include <stddef.h>
 #endif
 #include "mutabor/instrument.h"
-#include "mutabor/bad_decl.h"
 #include "mutabor/heap.h"
 
 /******* Einlesen der Instrumente *******/
