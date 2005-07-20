@@ -2,12 +2,17 @@
  ********************************************************************
  * Alles zu Tönen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.3 2005/07/20 12:29:50 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 12:29:50 $
+ * \version $Revision: 1.3 $
  *  
  * $Log: ton.c,v $
+ * Revision 1.3  2005/07/20 12:29:50  keinstein
+ * Kopf korrigiert
+ * config.h
+ * Rudimentäre Debug-Ausgaben
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -27,7 +32,6 @@
 #include <stdio.h>
 #include "mutabor/ton.h"
 #include "mutabor/heap.h"
-#include "mutabor/bad_decl.h"
 #include "mutabor/interval.h"
 #include "mutabor/errors.h"
 
