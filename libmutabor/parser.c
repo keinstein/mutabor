@@ -2,12 +2,20 @@
  ********************************************************************
  * Mutabor Fileparser.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.3 2005/07/20 12:24:52 keinstein Exp $
  * \author R. Krau�e <krausze@users.berlios.de>
- * \version $Revision: 1.2 $
- * \date $Date: 2005/07/19 15:15:27 $
+ * \version $Revision: 1.3 $
+ * \date $Date: 2005/07/20 12:24:52 $
  *
  * $Log: parser.c,v $
+ * Revision 1.3  2005/07/20 12:24:52  keinstein
+ * CVS-Kopf
+ * config.h
+ * includes für Doxygen optimiert" parameter.c
+ * Formatierung
+ * Compilierbar gemacht
+ * rudimentäre Debug-Ausgabe
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -17,19 +25,14 @@
  */
 #include <string.h>
 #include "mutabor/parser.h"
-#include "mutabor/ton.h"
 #include "mutabor/tonsystem.h"
 #include "mutabor/umstimmung.h"
 #include "mutabor/harmonie.h"
 #include "mutabor/logik.h"
 #include "mutabor/mut_tab.h"
-#include "mutabor/bad_decl.h"
 #include "mutabor/instrument.h"
 #include "mutabor/parameter.h"
-#include "mutabor/case_liste.h"
 #include "mutabor/heap.h"
-#include "mutabor/aktion.h"
-#include "mutabor/ausloeser.h"
 #include "mutabor/errors.h"
 
 /* Globale Variablen des Compilers mit dem Codegenerator und
