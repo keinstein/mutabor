@@ -2,22 +2,27 @@
  ********************************************************************
  * Intervallberechnungen
  *
- * \author R.Krauße <krausze@users.berlios.de>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.4 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/interval.c,v 1.5 2005/07/20 11:58:43 keinstein Exp $
+ * \author R.Krauï¿½e <krausze@users.berlios.de>
+ * \date $Date: 2005/07/20 11:58:43 $
+ * \version $Revision: 1.5 $
  *
  * \todo make this file thred-proof
  * \todo Portabilisierung von: pow
  ********************************************************************/
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-  /* Relevante Variablen für diese Datei:
+  /* Relevante Variablen fï¿½r diese Datei:
    * HAVE_POW
    * size_t
+   * HAVE_STRING_H
    */
 #endif
 
-#include<string.h>
+#ifdef HAVE_STRING_H
+#  include<string.h>
+#endif
+
 #include<math.h>
 #include "mutabor/interval.h"
 #include "mutabor/heap.h"
@@ -45,7 +50,7 @@ struct intervall * get_intervall (char * name,
  * Falls das erste gefundene Intervall nicht absolut ist, wird 
  * ein fataler Fehler ausgegeben.
  * \param name Name des gesuchten Intervalles
- * \retval Frequenzverhältnis des Intervalles
+ * \retval Frequenzverhï¿½ltnis des Intervalles
  */
 static double get_intervall_wert (char *name)
 {
@@ -85,7 +90,7 @@ static double get_intervall_wert (char *name)
 	    if (mutabor_debug_level)
 	      fprintf(stderr,"\n");
 #endif
-  fatal_error(MUTABOR_ERROR_UNDEFINED_INTERVAL,strdup(name)); /* Intrvall n.dekl. */
+  fatal_error(MUTABOR_ERROR_UNDEFINED_INTERVAL,name); /* Intrvall n.dekl. */
   return 0.0; /* to prevent warnings */
 }
 
@@ -94,7 +99,7 @@ static double get_intervall_wert (char *name)
  * Falls ein Intervallwert nicht positiv ist, wird 
  * ein fataler Fehler ausgegeben.
  * \param intervall
- * \retval Frequenzverhältnis des Intervalles
+ * \retval Frequenzverhï¿½ltnis des Intervalles
  */
 double get_wert_komplex_intervall (struct komplex_intervall * intervall)
 {
@@ -132,7 +137,7 @@ double get_wert_komplex_intervall (struct komplex_intervall * intervall)
 
 /**************************************************************
 
-            Hier werden die Intervalle aufgel”st.
+            Hier werden die Intervalle aufgelï¿½st.
             Nach dem Parsing ist nur die Syntax-Struktur
             vorhanden, aber keine fertig ausgerechneten Intervalle.
             
@@ -163,10 +168,10 @@ static char * matrix;          /**< Adjazenzmatrix (auf sie darf nur ueber
                              + (b) * sizeof (char)]
   
 
-/** Zählt die Einträge eine Liste von Intervallen.
+/** Zï¿½hlt die Eintrï¿½ge eine Liste von Intervallen.
  * \param list Liste der Intervalle
- * \retval Länge der Intervall-Liste
- * \todo Zählen in iterativer Form
+ * \retval Lï¿½nge der Intervall-Liste
+ * \todo Zï¿½hlen in iterativer Form
  */
 int intervall_list_laenge (struct intervall *list)
 { if (list) return 1 + intervall_list_laenge (list -> next);
@@ -178,7 +183,7 @@ int intervall_list_laenge (struct intervall *list)
 /** Belegt ein Feld von Zeigern auf Intervalle mit den Werten einer Intervallliste.
  * \param intervalle Feld, in das die Intervalle eingetragen werden.
  * \param liste Liste mit den Intervallen, die einsortiert werden sollen.
- * \todo Zählen in iterativer Form
+ * \todo Zï¿½hlen in iterativer Form
  */
 static void belege_intervalle (struct intervall **intervalle, struct intervall * liste)
 {
@@ -190,7 +195,7 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
 }
 
 /** Sucht die Nummer eines Intervalles im globalen Intervall-Feld.
- * Wird das Intervall nicht gefunden, wird ein fataler Fehler ausgelöst.
+ * Wird das Intervall nicht gefunden, wird ein fataler Fehler ausgelï¿½st.
  * \param name Name des zu suchenden Intervalles.
  * \retval Laufende Nummer des Intervalls.
  */
@@ -212,7 +217,7 @@ static int intervall_nummer (char *name)
  
 /** Testet den Graphen der Intervalle auf Kreise.
  * \param startknoten Knoten, von dem an getestet werden soll.
- * \todo Komplexität n!(?) reduzieren
+ * \todo Komplexitï¿½t n!(?) reduzieren
  */
 static void test_zyklen (int startknoten)
 {
@@ -230,9 +235,9 @@ static void test_zyklen (int startknoten)
     }
 }
 
-/** Berechnet für alle Intervalle die endgültigen Werte.  Wird
+/** Berechnet fï¿½r alle Intervalle die endgï¿½ltigen Werte.  Wird
  * ein nicht korrektes Intervall gefunden, wird ein fataler Fehler
- * ausgelöst.  
+ * ausgelï¿½st.  
  * \param k Nummer des aktuell zu bearbeitenden Intervalles.
  */
 static void berechne_intervall_endgueltig (int k)
@@ -267,8 +272,8 @@ static void berechne_intervall_endgueltig (int k)
 
 /** Berechnet aus einer Intervall-Liste ein Intervall-Feld mit
  * absoluten Werten.  Dabei wird das Intervall-Feld aufgebaut, auf
- * Kreisbezüge getestet und abschließend werden zusammengesetzte
- * Intervalle zu absoluten Intervallen aufgelöst.
+ * Kreisbezï¿½ge getestet und abschlieï¿½end werden zusammengesetzte
+ * Intervalle zu absoluten Intervallen aufgelï¿½st.
  * \param list_of_intervalle Liste der Intervalle, die bearbeitet werden sollen.
  * \return Fertige Intervalle in der Intervall-Liste \a list_of_intervalle.
  */ 
@@ -291,7 +296,7 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 
   belege_intervalle (intervalle, list_of_intervalle);
   
-/* Adjazenzmatrix initialisieren (Kein Intervall h„ngt vom anderen ab) */
+/* Adjazenzmatrix initialisieren (Kein Intervall hï¿½ngt vom anderen ab) */
 
 #ifdef DEBUG
   if (mutabor_debug_level) 
@@ -304,11 +309,11 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
       }
   }
   
-/* Adjazenzmatrix initialisieren (Abh„ngigkeiten eintragen) */
+/* Adjazenzmatrix initialisieren (Abhï¿½ngigkeiten eintragen) */
 
 #ifdef DEBUG
   if (mutabor_debug_level) 
-    fprintf (stderr,"Initialisiere Adjazenzmatrix (Abhängigkeiten)\n");
+    fprintf (stderr,"Initialisiere Adjazenzmatrix (Abhï¿½ngigkeiten)\n");
 #endif
 
   for (i=0; i<anzahl_intervalle; i++) {
@@ -388,10 +393,10 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 
 /** Sucht zusammengesetzte Intervalle in der globalen Intervallliste.
  * Ist ein Intervall nicht in der Intervallliste oder es wurde kein
- * absolutes Intervall zurückgegeben, wird ein fataler Fehler ausgelöst.
+ * absolutes Intervall zurï¿½ckgegeben, wird ein fataler Fehler ausgelï¿½st.
  *
  * \param liste Liste der zu suchenden Intervalle.
- * \param konstrukt_name Konstruktionsname für eventuelle Fehlermeldung.
+ * \param konstrukt_name Konstruktionsname fï¿½r eventuelle Fehlermeldung.
  */
 void check_komplex_intervall (struct komplex_intervall * liste,
                               char * konstrukt_name)
@@ -409,14 +414,14 @@ void check_komplex_intervall (struct komplex_intervall * liste,
     }
 }
 
-/* Einleseroutinen fr komplex_intervalle  ****/
+/* Einleseroutinen fï¿½r komplex_intervalle  ****/
 
 /** Liste komplexer Intervalle */
 static struct komplex_intervall * the_komplex_liste; 
 
 
 /** Setzt Liste komplexer Intervalle auf NULL.
- * \warning Die Liste wird nicht gelöscht. 
+ * \warning Die Liste wird nicht gelï¿½scht. 
  *          Das muss gegebenenfalls vor der Initialiserung manuell erledigt werden.
  */
 void init_komplex_ton_list (void)
@@ -424,10 +429,10 @@ void init_komplex_ton_list (void)
     the_komplex_liste = NULL;
 }
 
-/** Fügt ein Intervall ans Ende von \a the_komplex_liste an. 
+/** Fï¿½gt ein Intervall ans Ende von \a the_komplex_liste an. 
  * \param f Faktor des Intervalles.
- * \param name Bezeichnung des Intervalles, das angefügt werden soll 
- * \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ * \param name Bezeichnung des Intervalles, das angefï¿½gt werden soll 
+ * \note Es wird immer die gesamte Liste durchsucht. Effektivitï¿½t?
  */
 void get_new_faktor_anteil (double f, char *name)
 {
@@ -451,7 +456,7 @@ void get_new_faktor_anteil (double f, char *name)
 #endif
 }
 
-/** Gibt Wurzelelement von \a the_komplex_liste zurück */
+/** Gibt Wurzelelement von \a the_komplex_liste zurï¿½ck */
 struct komplex_intervall * get_last_komplex_intervall (void) 
 {
     return the_komplex_liste;
@@ -477,12 +482,12 @@ void get_new_relativ_anteil (double f, char *linke_grenze, char *rechte_grenze)
 #endif
 
 /** Einleseroutine fuer die Intervalle 
- *  Es wird einfach eine Liste of Intervallen aufgebaut. Das übergebene 
- *  Intervall wird hinten angehängt. Taucht der Intervallname schon einmal auf, 
+ *  Es wird einfach eine Liste of Intervallen aufgebaut. Das ï¿½bergebene 
+ *  Intervall wird hinten angehï¿½ngt. Taucht der Intervallname schon einmal auf, 
  *  wird ein fataler Fehler ausgegeben.
  *  \param name Name des Intervalles
  *  \param wert Wert des Intervalles (\f$\geq\f$ 0,001)
- *  \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ *  \note Es wird immer die gesamte Liste durchsucht. Effektivitï¿½t?
  */
 
 void get_new_intervall (char *name, double wert)
@@ -506,11 +511,11 @@ void get_new_intervall (char *name, double wert)
 }
 
 
-/** Fügt ein komplexes Intervall ans Ende von \a #list_of_intervalle an. 
+/** Fï¿½gt ein komplexes Intervall ans Ende von \a #list_of_intervalle an. 
  *  Taucht der Intervallname schon einmal auf, 
  *  wird ein fataler Fehler ausgegeben.
- * \param name Bezeichnung des Intervalles, das angefügt werden soll 
- * \note Es wird immer die gesamte Liste durchsucht. Effektivität?
+ * \param name Bezeichnung des Intervalles, das angefï¿½gt werden soll 
+ * \note Es wird immer die gesamte Liste durchsucht. Effektivitï¿½t?
  */
 void get_new_intervall_komplex (char *name)
 {
