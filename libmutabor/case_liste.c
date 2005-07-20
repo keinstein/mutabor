@@ -2,11 +2,14 @@
  ********************************************************************
  * Verzweigungsliste für Umstimmungen und ähnliches.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/case_liste.c,v 1.1 2005/07/08 14:44:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/case_liste.c,v 1.2 2005/07/20 11:05:17 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/08 14:44:20 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/07/20 11:05:17 $
+ * \version $Revision: 1.2 $
  * $Log: case_liste.c,v $
+ * Revision 1.2  2005/07/20 11:05:17  keinstein
+ * Includes vereinfacht (für Doxygen)
+ *
  * Revision 1.1  2005/07/08 14:44:20  keinstein
  * Neue Datei.
  * Aus parser.c herausgelöst.
@@ -17,8 +20,7 @@
  * \{
  */
 
-
-#include "mutabor/case_liste.h"
+/* case_liste.h ist in umstimmung.h */
 #include "mutabor/heap.h"
 #include "mutabor/umstimmung.h"
 #include "mutabor/parameter.h"
