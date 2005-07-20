@@ -68,7 +68,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 82 "mut.y"
+#line 91 "mut.y"
 typedef union YYSTYPE {
     double      f_value;        /* fÅr Gleitkommazahlen */
     int         integer;        /* FÅr integers */
