@@ -1,4 +1,259 @@
-2005-06-17  keinstein  <keinstein@users.berlios.de>
+2005-07-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* includes/mutabor/errors.h: Fehlerkonstanten
+
+	* libmutabor/mutlex_de.tab:
+	Standardtabelle für deutsche Stimmungslogiken
+
+	* libmutabor/mut.c: Update
+
+	* libmutabor/tonsystem.c, libmutabor/umstimmung.c: Kopf
+	config.h
+	header aufgeräumt für Doxygen
+
+	* libmutabor/ton.c: Kopf korrigiert
+	config.h
+	Rudimentäre Debug-Ausgaben
+
+	* libmutabor/parser.c: CVS-Kopf
+	config.h
+	includes für Doxygen optimiert" parameter.c
+	Formatierung
+	Compilierbar gemacht
+	rudimentäre Debug-Ausgabe
+
+	* libmutabor/parameter.c: CVS-Kopf
+	config.h
+	includes für Doxygen optimiert
+
+	* libmutabor/mutlex.c, libmutabor/mutlex.h: In Parser integriert.
+	Noch Groß-/Kleinschreibung relevant.
+	Optionen und C-Präprozessor-Direktiven angepasst
+	s/yylval\./yylval->/g
+	s/yytext/strdup(yytext)/g
+	Kommentare vorläufig auf stderr ausgeben
+	Zeichenklassen statt einzelnen Zeichen
+
+	* libmutabor/mut.h, libmutabor/mut.c, libmutabor/mut.y: CVS-Kopf
+	%pure-parser
+	config.h
+	Header-Dateien ausgemistet
+	yylex neutralisiert.
+	Formatierung
+
+	* libmutabor/midicalc.c: Kopf korrigiert
+	Includes bereinigt.
+	config.h
+	Header ausgemistet
+
+	* libmutabor/logik.c: Kopf korrigiert
+	Includes bereinigt.
+	config.h
+
+	* libmutabor/interval.c: CVS-Kopf
+	config.h
+	compilierbar gemacht.
+	Formatierung.
+	rudimentäre DEBUG-Funktionalität.
+
+	* libmutabor/instrument.c: Kopf korrigiert
+	config.h
+
+	* libmutabor/heap.c: CVS-Kopf
+	config.h
+
+	* libmutabor/harmonie.c: Dateikopf
+	config.h
+	Includes für Doxygen vereinfacht.
+	rudimentäre Debug-ausgabe
+
+	* libmutabor/case_liste.c: Includes vereinfacht (für Doxygen)
+
+	* libmutabor/ausloeser.c: Includes für Doxygen verschönert
+	config.h genutzt
+	ein paar Links für Doxygen
+
+	* libmutabor/aktion.c, libmutabor/anweisung.c:
+	Includes verschönert für Doxygen
+
+	* libmutabor/Makefile.am, libmutabor/Makefile.in:
+	ansi nach ../configure
+
+	* includes/mutabor/global.h, includes/mutabor/umstimmung.h:
+	Include-Abhängigkeiten verrinert (Querabhängigkeiten ausgenutzt)
+
+	* configure, configure.in: Neu: ansi
+	    strdup test (rudimentär)
+
+	* config.h.in: Neu: ANSI
+
+	* Makefile.in: Neu: acinclude.m4
+
+	* aclocal.m4: Neu. CFlags-Ansi-Makros.
+
+2005-07-19  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Doxyfile, Makefile.in, aclocal.m4, config.h.in, configure, configure.in, devgis.h, includes/mutabor/aktion.h, includes/mutabor/heap.h, includes/mutabor/mut_tab.h, includes/mutabor/parser.h, libmutabor/Makefile.am, libmutabor/Makefile.in, libmutabor/aktion.c, libmutabor/anweisung.c, libmutabor/argument.c, libmutabor/ausloeser.c, libmutabor/harmonie.c, libmutabor/heap.c, libmutabor/instrument.c, libmutabor/interval.c, libmutabor/logik.c, libmutabor/midicalc.c, libmutabor/mut.c, libmutabor/mut.h, libmutabor/mut.y, libmutabor/mutlex.l, libmutabor/parameter.c, libmutabor/parser.c, libmutabor/taste.c, libmutabor/ton.c, libmutabor/tonsystem.c, libmutabor/umstimmung.c:
+	Using own Templates
+
+	* GPL-2, LGPL-2.1: Licences
+
+	* debian/preinst.ex, debian/prerm.ex, debian/rules, debian/watch.ex, debian/README.Debian, debian/changelog, debian/compat, debian/conffiles.ex, debian/control, debian/copyright, debian/dirs, debian/docs, debian/emacsen-install.ex, debian/emacsen-remove.ex, debian/emacsen-startup.ex, debian/manpage.1.ex, debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu.ex, debian/mutabor-doc.docs, debian/mutabor-doc.install, debian/mutabor.doc-base.EX, debian/postinst.ex, debian/postrm.ex:
+	Neu, Basis für Debian-Paket
+
+	* doxygen/doxygen.sty, doxygen/html-footer, doxygen/html-header, doxygen/html-style, doxygen/latex-header, doxygen/rtf-style:
+	Neu für Doku.
+
+2005-07-08  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libtool: Gelöscht. Wird von configure erzeugt.
+
+	* libmutabor/lextables/lex-en.sed, libmutabor/lextables/lex-ru.sed:
+	Ersetzungstabellen für zum erzuegen von mutlex-*.l
+
+	* libmutabor/interval.c: Komplexe Intervalle
+	Neu:
+		the_komplex_liste           - Variable
+		init_komplex_ton_list       - Initialisierung derselben
+		get_new_faktor_anteil       - Fügt ein Intervall ans Ende von \a
+					      the_komplex_liste an.
+		get_last_komplex_intervall  - Gibt Wurzelelement von \a the_komplex_liste zurück
+		get_new_intervall           - get_new_intervall
+		get_new_intervall_komplex   - get_new_intervall_komplex
+
+	* libmutabor/Makefile.am, libmutabor/Makefile.in: Neue Dateien:
+	       ../includes/mutabor/aktion.h ../includes/mutabor/anweisung.h \
+	       ../includes/mutabor/argument.h ../includes/mutabor/ausloeser.h \
+	       ../includes/mutabor/bad_decl.h ../includes/mutaborcase_liste.h \
+	       ../includes/mutabor/global.h ../includes/mutabor/harmonie.h \
+	       ../includes/mutabor/instrument.h ../includes/mutabor/logik.h \
+	       ../includes/mutabor/midicalc.h ../includes/mutabor/mut_tab.h \
+	       ../includes/mutabor/parameter.h ../includes/mutabor/parser.h \
+	       ../includes/mutabor/tabgen.h ../includes/mutabor/taste.h \
+	       ../includes/mutabor/ton.h ../includes/mutabor/tonsystem.h \
+	       ../includes/mutabor/umstimmung.h \
+	       aktion.c anweisung.c argument.c ausloeser.c \
+	       case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
+	       midicalc.c parameter.c parser.c taste.c ton.c tonsystem.c umstimmung.c
+
+	* includes/mutabor/umstimmung.h: Neu:
+		check_umstimmungs_konsistenz
+		list_of_umstimmungen
+		tmp_umstimmung
+
+	* includes/mutabor/tonsystem.h: Abhängig von interval.h
+	Neu:
+		check_tonsystem_konsistenz
+	list_of_tonsysteme nicht extern
+
+	* includes/mutabor/ton.h: Neu:
+		berechne_toene_absolut
+		drucke_ton
+		init_nullton
+		ton_ohne_namen
+
+	Speicherklasse: list_of_toene kann nicht extern sein (ANSI-Standard).
+
+	* includes/mutabor/taste.h: Neu:
+		enthalten_in_tastenliste
+		tmp_tastenliste
+
+	* includes/mutabor/parser.h: Abhängig von stdio.h
+	Neu: check_konsistenz
+
+	* includes/mutabor/parameter.h: Neu:
+		parameter_list_laenge
+		parameter_nummer
+		get_last_parameter_liste
+
+	* includes/mutabor/mut_tab.h: Neu:
+		Kopf
+
+	Ersetze yy durch mutabor_parser_
+
+	* includes/mutabor/midicalc.h: Neu: get_last_integersequenz
+	     print_integersequenz
+
+	* includes/mutabor/logik.h: Neu:
+		setze_nummer_von_abstand_und_zentrum
+		check_logik_konsistenz
+
+	* includes/mutabor/interval.h: Neu: get_last_komplex_intervall
+
+	* includes/mutabor/instrument.h: Neu:
+		Kopf
+
+	* includes/mutabor/harmonie.h: Neu:
+		drucke_harmonie
+		tmp_vor_taste, tmp_name, tmp_nach_taste
+
+	* includes/mutabor/case_liste.h: Neu:
+		Kopf
+		case_label_enthalten_in_case_liste
+		Abhängig von aktion.h
+
+	* includes/mutabor/bad_decl.h: Neu:
+		compiler_warning
+
+	* includes/mutabor/ausloeser.h: Neu:
+		print_ausloeser
+		check_ausloeser
+		get_last_ausloeser
+
+	* includes/mutabor/argument.h: Neu:
+	drucke_argument
+	argument_list_laenge
+	get_last_argument_liste
+
+	* includes/mutabor/anweisung.h: Neu:
+		Kopf (CVS)
+		get_last_anweisungs_liste
+
+	* includes/mutabor/aktion.h: Neu:
+	check_aktionen
+	get_last_aktions_liste
+
+	* libmutabor/lextables/mutlex-en.l, libmutabor/lextables/mutlex-ru.l, libmutabor/mutlex.l:
+	Neue Dateien.
+	Vorläufig für Einlesen mittels lex.
+
+	* libmutabor/aktion.c, libmutabor/anweisung.c, libmutabor/argument.c, libmutabor/ausloeser.c, libmutabor/case_liste.c, libmutabor/harmonie.c, libmutabor/instrument.c, libmutabor/logik.c, libmutabor/midicalc.c, libmutabor/parameter.c, libmutabor/parser.c, libmutabor/taste.c, libmutabor/ton.c, libmutabor/tonsystem.c, libmutabor/umstimmung.c:
+	Neue Datei.
+	Aus parser.c herausgelöst.
+ 
+2005-07-07  Rüdiger Krauße  <krausze@users.berlios.de>
+
+	* devgis.h, device.cpp, device.h, devmidf.cpp, devmidf.h, devmidi.cpp, devmidi.h:
+	Geistertöne weg
+
+2005-06-29  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libtool, configure, configure.in: package name corrected
+
+2005-06-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libmutabor/Makefile.in, libmutabor/mut.c, libmutabor/mut.h, libmutabor/mut.y:
+	New file.
+
+	* includes/mutabor/aktion.h, includes/mutabor/anweisung.h, includes/mutabor/argument.h, includes/mutabor/ausloeser.h, includes/mutabor/bad_decl.h, includes/mutabor/case_liste.h, includes/mutabor/global.h, includes/mutabor/harmonie.h, includes/mutabor/instrument.h, includes/mutabor/logik.h, includes/mutabor/midicalc.h, includes/mutabor/mut_tab.h, includes/mutabor/parameter.h, includes/mutabor/parser.h, includes/mutabor/tabgen.h, includes/mutabor/taste.h, includes/mutabor/ton.h, includes/mutabor/tonsystem.h, includes/mutabor/umstimmung.h:
+	Splitted global.h
+
+	* AUTHORS, ChangeLog, Makefile.am, Makefile.in, NEWS, README, aclocal.m4, config.h.in, configure, configure.in, includes/mutabor/heap.h, includes/mutabor/interval.h, libmutabor/Makefile.am, libmutabor/heap.c, libmutabor/interval.c, libtool:
+	Neu.
+
+2005-06-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.in, mut.c, mut.h, mut.y: New file.
+
+	* Makefile.am, heap.c, interval.c: Neu.
+
+2005-06-17  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am: New files.
+
+	* heap.c, interval.c: Neu vom alten.
+
+2005-06-17  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* COPYING, INSTALL, configure.in, libmutabor/Makefile.am: New files.
 
@@ -88,7 +343,7 @@
 
 	* ENTRTANR.MID, E_ORG.MID: broken files
 
-2005-06-16  keinstein  <keinstein@users.berlios.de>
+2005-06-16  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* TABGEN.CPP, tabgen.cpp: Umbenannt.
 
@@ -119,7 +374,7 @@
 
 	* DEFS.H, defs.h: Umbenannt.
 
-2005-06-15  keinstein  <keinstein@users.berlios.de>
+2005-06-15  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* SyntaxBMP/HBAF.SHG, SyntaxBMP/HBAK.SHG, SyntaxBMP/HBAKMIOU.SHG,
 	SyntaxBMP/HBAN.SHG, SyntaxBMP/HBAU.SHG, SyntaxBMP/HBAktion.bmp,
