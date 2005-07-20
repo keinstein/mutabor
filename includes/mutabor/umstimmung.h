@@ -11,10 +11,7 @@
 #ifndef __UMSTIMMUNG_H_INCLUDED
 #define __UMSTIMMUNG_H_INCLUDED
 
-#include "argument.h"
 #include "ton.h"
-#include "interval.h"
-#include "midicalc.h"
 #include "case_liste.h"
 
 #ifdef __cplusplus
