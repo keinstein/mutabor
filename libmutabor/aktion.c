@@ -2,12 +2,15 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/aktion.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/aktion.c,v 1.3 2005/07/20 09:46:09 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 09:46:09 $
+ * \version $Revision: 1.3 $
  *
  * $Log: aktion.c,v $
+ * Revision 1.3  2005/07/20 09:46:09  keinstein
+ * Includes verschönert für Doxygen
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -23,8 +26,7 @@
 #ifdef HAVE_STDDEF_H
 #  include <stddef.h>
 #endif
-#include "mutabor/aktion.h"
-#include "mutabor/argument.h"
+/* aktion.h ist in umstimmung.h und in logik.h enthalten */
 #include "mutabor/heap.h"
 #include "mutabor/umstimmung.h"
 #include "mutabor/tonsystem.h"

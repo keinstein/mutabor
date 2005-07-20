@@ -2,12 +2,15 @@
  ********************************************************************
  * Alles zu Anweisungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/anweisung.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/anweisung.c,v 1.3 2005/07/20 09:46:09 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 09:46:09 $
+ * \version $Revision: 1.3 $
  *
  * $Log: anweisung.c,v $
+ * Revision 1.3  2005/07/20 09:46:09  keinstein
+ * Includes verschönert für Doxygen
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -23,8 +26,6 @@
 #  include <stddef.h>
 #endif
 #include "mutabor/anweisung.h"
-#include "mutabor/ausloeser.h"
-#include "mutabor/aktion.h"
 #include "mutabor/heap.h"
 
 /** Globaler Zwischenspeicher für genau eine Anweisungsliste. */
