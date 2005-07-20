@@ -2,11 +2,20 @@
  ******************************************************
  * Parser-Generator für Mutabor-Dateien.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.3 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.4 2005/07/20 12:13:47 keinstein Exp $
  * \author Rüdiger Krauße <krausze@users.berlios.de>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/07/20 12:13:47 $
+ * \version $Revision: 1.4 $
+ *
  * $Log: mut.y,v $
+ * Revision 1.4  2005/07/20 12:13:47  keinstein
+ * CVS-Kopf
+ * %pure-parser
+ * config.h
+ * Header-Dateien ausgemistet
+ * yylex neutralisiert.
+ * Formatierung
+ *
  * Revision 1.3  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -55,16 +64,13 @@
 #include "mut.h"
 #include "mutabor/heap.h"
 #include "mutabor/mut_tab.h"
-#include "mutabor/ton.h"
 #include "mutabor/interval.h"
 #include "mutabor/tonsystem.h"
 #include "mutabor/argument.h"
 #include "mutabor/parameter.h"
 #include "mutabor/umstimmung.h"
-#include "mutabor/aktion.h"
 #include "mutabor/taste.h"
 #include "mutabor/harmonie.h"
-#include "mutabor/ausloeser.h"
 #include "mutabor/logik.h"
 #include "mutabor/anweisung.h"
 #include "mutabor/instrument.h"
@@ -650,7 +656,7 @@ ausloeser :
           ANSONSTEN { get_ausloeser_default (); }
         | harmoniebezeichner  { get_ausloeser_harmonie (); }
         | FORM harmoniebezeichner { get_ausloeser_harmonie_form (); }
-        | TASTE IDENTIFIER { get_ausloeser_taste ($2); fprintf(stderr,"Taste akzeptiert"); }
+        | TASTE IDENTIFIER { get_ausloeser_taste ($2); }
         | MIDI_IN '(' { init_integersequenz (); }
               integersequenz ')' 
                       { get_ausloeser_midi_in (); }
