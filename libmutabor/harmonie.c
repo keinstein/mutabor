@@ -2,12 +2,18 @@
  ********************************************************************
  * Alles zu Umstimmungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/harmonie.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/harmonie.c,v 1.3 2005/07/20 11:13:46 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 11:13:46 $
+ * \version $Revision: 1.3 $
  *
  * $Log: harmonie.c,v $
+ * Revision 1.3  2005/07/20 11:13:46  keinstein
+ * Dateikopf
+ * config.h
+ * Includes für Doxygen vereinfacht.
+ * rudimentäre Debug-ausgabe
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -22,7 +28,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "mutabor/harmonie.h"
-#include "mutabor/bad_decl.h"
 #include "mutabor/taste.h"
 #include "mutabor/heap.h"
 #include "mutabor/errors.h"
