@@ -2,12 +2,18 @@
  ********************************************************************
  * Alles zu MIDI-Berechnungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/midicalc.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/midicalc.c,v 1.3 2005/07/20 12:03:38 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 12:03:38 $
+ * \version $Revision: 1.3 $
  *
  * $Log: midicalc.c,v $
+ * Revision 1.3  2005/07/20 12:03:38  keinstein
+ * Kopf korrigiert
+ * Includes bereinigt.
+ * config.h
+ * Header ausgemistet
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -20,7 +26,7 @@
 #  include <stddef.h>
 #endif
 #include <stdio.h>
-#include "mutabor/midicalc.h"
+/* midicalc.h ist in umstimmung.h enthalten */
 #include "mutabor/umstimmung.h"
 #include "mutabor/heap.h"
 
