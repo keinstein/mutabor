@@ -144,7 +144,7 @@ AM_YFLAGS = -d
 ACLOCAL_AMFLAGS = -I m4
 
 lib_LTLIBRARIES = libmutabor.la
-libmutabor_la_CFLAGS = -Wall --ansi
+libmutabor_la_CFLAGS = -Wall
 libmutabor_la_includedir = $(pkgincludedir)
 libmutabor_la_include_HEADERS = ../includes/mutabor/heap.h ../includes/mutabor/interval.h \
 			../includes/mutabor/aktion.h ../includes/mutabor/anweisung.h \
