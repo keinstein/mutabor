@@ -2,12 +2,17 @@
  ********************************************************************
  * Alles zu Umstimmungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/umstimmung.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/umstimmung.c,v 1.3 2005/07/20 12:33:41 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/07/20 12:33:41 $
+ * \version $Revision: 1.3 $
  *
  * $Log: umstimmung.c,v $
+ * Revision 1.3  2005/07/20 12:33:41  keinstein
+ * Kopf
+ * config.h
+ * header aufgeräumt für Doxygen
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -26,7 +31,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "mutabor/umstimmung.h"
-#include "mutabor/bad_decl.h"
 #include "mutabor/parameter.h"
 #include "mutabor/tonsystem.h"
 #include "mutabor/logik.h"
