@@ -1,36 +1,25 @@
-/** \file
- *******************************************************************
- * Tabellengenerator
- * \author R.Krauße
- * \version 2.win
- * \date
- *******************************************************************/
+// ------------------------------------------------------------------
+// Mutabor 2.win, 1997, R.Krauße
+// Tabellengenerator
+// ------------------------------------------------------------------
 
-#include "global.h"
-#include "interpre.h"
-#include "grafkern.h"
-//#include "midikern.h"
+#include "Global.h"
+#include "Interpre.h"
+#include "GrafKern.h"
+//#include "MidiKern.h"
 #include <math.h>
 
 /*** Das sind die Anfangslisten des Interpreters **/
 
-/** Liste der globalen auslösenden Harmonieen. */
+
 struct harmonie_ereignis *  first_harmonie[MAX_BOX];
-/** Letztes Element der globalen auslösenden Harmonien. */
 struct harmonie_ereignis ** last_global_harmonie[MAX_BOX];
-/** Liste der lokalen auslösenden Harmonien. */
 struct harmonie_ereignis ** first_lokal_harmonie;
-/** Liste der globalen auslösenden Tastenereignissen. */
 struct keyboard_ereignis *  first_keyboard[MAX_BOX];
-/** Letztes Element der globalen auslösenden Tastenereignissen. */
 struct keyboard_ereignis ** last_global_keyboard[MAX_BOX];
-/** Liste der lokalen auslösenden Tastenereignissen. */
 struct keyboard_ereignis ** first_lokal_keyboard;
-/** Liste der globalen auslösenden MIDI-Ereignissen. */
 struct midi_ereignis     *  first_midi[MAX_BOX];
-/** Letztes Element der globalen auslösenden MIDI-Ereignissen. */
 struct midi_ereignis     ** last_global_midi[MAX_BOX];
-/** Liste der lokalen auslösenden MIDI-Ereignissen. */
 struct midi_ereignis     ** first_lokal_midi;
 
 long anzahl_eingelesene_zeichen;
@@ -55,11 +44,7 @@ static struct do_aktion * expandiere_midi (struct midiliste * liste);
 /**************************************************/
 
 
-/** Berechnet den Intervall-Faktor eines komplexen Intervalles. 
- * Bei Inkonsistenzen wird ein fataler Fehler ausgegeben.
- * \param lauf Komplexes Intervall, das bei der Berechnung durchlaufen 
- *             werden soll.
- */
+
 double get_komplex_faktor (struct komplex_intervall * lauf) {
     double ret = 1.0;
     for ( ; lauf ; lauf = lauf -> next ) {
@@ -71,14 +56,12 @@ double get_komplex_faktor (struct komplex_intervall * lauf) {
         else {
             fatal_error (0, __FILE__, __LINE__);
         }
-        
+
     }
     return ret;
 }
 
-/** Berechnet deie Frequenz eines komplexen Tones.
- * \param dieser Ton, für den die Frequenz berechnet werden soll.
- */
+
 double get_komplex_frequenz (struct ton * dieser) {
     double ret = get_ton (dieser->u.ton_komplex.bezugston, list_of_toene)
                       -> u.ton_absolut.ton_wert;
@@ -86,13 +69,7 @@ double get_komplex_frequenz (struct ton * dieser) {
     return ret;
 }
 
-/** Schreibt ein Argument in eine Zieldatei. Das Argument wird je nach Typ
- * als Zeichenkette oder Zahl ausgegeben. Ist der Typ unbekannt, wird ein fataler
- * Fehler ausgegeben.
- * \param zieldatei Datei, in die geschrieben werden soll. Diese muss 
- *                  schon für das Schreiben geöffnet sein.
- * \param argument  Argument, das geschrieben werden soll.
- */
+
 void fprint_argument (FILE * zieldatei, struct argument * argument)
 {
     if (argument -> argument_typ == zahl) {
@@ -105,11 +82,6 @@ void fprint_argument (FILE * zieldatei, struct argument * argument)
         fatal_error (0, __FILE__, __LINE__ );
 }
 
-/** Testet, ob eine Liste von Tönen nue feste, konstante Töne enthält. 
- *  \param lauf Liste der Töne.
- *  \retval 1 Die Liste enthält nur konstante Töne.
- *  \retval 0 Es wurde ein relativer komplexer Ton gefunden.
- */
 static int enthaelt_nur_konstante_toene (struct ton * lauf)
 {
     while (lauf) {
@@ -143,8 +115,8 @@ struct interpreter_parameter_liste * start_parameter_liste =
 
 
 
-/** \c cache_konstanten enthält alle jemals als Wert benutzten
-      Konstanten (ohne doppelte).
+/**** cache_konstanten enth„lt alle jemals als Wert benutzten
+      Konstanten (ohne doppelte)
 *******/
 
 struct cache_konstanten {
@@ -154,12 +126,6 @@ struct cache_konstanten {
 
 static struct cache_konstanten * cache_konstanten = NULL;
 
-/** Sichert, dass ein Wert in \c cache_konstanten vorhanden ist
- *  und gibt das entsprechende Element der Liste zurück. Bei neuen
- *  Einträgen werden alle Einträge des entsprechenden Feldes \c konstante
- *  auf den übergebenen Wert gesetzt.
- *  \param wert Wert, dessen Element zurückgegeben werden soll
- */
 static int (* get_cache_konstante (int wert) ) [MAX_BOX]
 {
     struct cache_konstanten ** lauf;
@@ -176,14 +142,6 @@ static int (* get_cache_konstante (int wert) ) [MAX_BOX]
     return & (*lauf)->konstante;
 }
 
-/** Generiert eine Interpreter-Parameterliste aus eine Argumentliste. Dabei
- * wird eine Bezugsliste verwendet, die für parametrische argumente die 
- * Wertefelder zur Verfügung stellt. Taucht ein unerwartetes Ereignis auf, wird ein
- * fataler Fehler ausgelöst.
- * \param liste Liste der Argumente, die in die Interpreter-Liste eingetragen werden sollen.
- * \param bezugs_liste Liste mit den Bezügen/Wertefeldern, die für nichtnumerische Argumente
- *                     verwendet werden soll.
- */
 static struct interpreter_parameter_liste * gen_parameter_liste (
            struct argument_liste * liste,
            struct interpreter_parameter_liste * bezugs_liste)
@@ -218,11 +176,6 @@ static struct interpreter_parameter_liste * gen_parameter_liste (
     return help;
 }
 
-/** Gibt das Wertefeld eines Argumentes zurück.
- * \param argument Argument, das gesucht werden soll.
- * \param aktuelle_parameter Interpreter-Parameter-Liste mit Wertefeldern für 
- * nichtnumerische Argumente.
- */
 static int * get_wert_of_argument (
                  struct argument * argument,
                  struct interpreter_parameter_liste * aktuelle_parameter
@@ -247,23 +200,21 @@ static int * get_wert_of_argument (
         }
     }
 /*    break; */
-    default: 
+    default:
         fatal_error (0, __FILE__, __LINE__);
         return NULL;
 /*    break; */
     }
-    
+
 }
 
-/** Expandiert eine Tonliste in eine einfach verkettete Liste von Einstellungen.
- * \param the_tonliste Liste von Tönen. 
- */
+
 static struct ton_einstell * expand_tonliste (struct ton * the_tonliste)
 {
     struct ton_einstell * help;
-    
+
     if (the_tonliste == NULL) return NULL;
-    
+
     help = (ton_einstell*) xmalloc (sizeof (struct ton_einstell));
 
     switch (the_tonliste -> ton_typ) {
@@ -277,7 +228,7 @@ static struct ton_einstell * expand_tonliste (struct ton * the_tonliste)
                                the_tonliste->u.ton_absolut.ton_wert));
         } else {
             help -> ton_einstell_typ = einstell_stumm;
-        }               
+        }
     break;
     case ton_komplex:
         if (the_tonliste->name == NULL) {
@@ -302,23 +253,20 @@ static struct ton_einstell * expand_tonliste (struct ton * the_tonliste)
                      DOUBLE_TO_LONG (
                             FREQUENZ_TO_MIDI (
                                   get_komplex_frequenz (the_tonliste)));
-                  
+
             }
 
     break;
     }
-    
+
     help -> next = expand_tonliste (the_tonliste -> next);
 
     return help;
-    
+
 
 }
 
-/** Wandelt ein Tonsystem in eine Aktion um. 
- * Dazu werden Tonnamen expandiert und die
- *   einzelnen Töne in MIDI-Werte umgerechnet.
- * \param the_tonsystem Tonsystem. */
+
 static struct do_aktion * expandiere_tonsystem (
            struct tonsystem * the_tonsystem)
 {
@@ -332,21 +280,21 @@ static struct do_aktion * expandiere_tonsystem (
     help_tonsystem = (TSYS*) xmalloc (sizeof (TONSYSTEM));
     help_tonsystem -> anker = the_tonsystem -> taste;
     help_tonsystem -> breite = ton_list_laenge (the_tonsystem -> toene);
-    help_tonsystem -> periode = 
-         DOUBLE_TO_LONG ( 
+    help_tonsystem -> periode =
+         DOUBLE_TO_LONG (
              FAKTOR_TO_MIDI (
                  get_wert_komplex_intervall (
                          the_tonsystem -> periode)));
 
     {
         struct ton * ton_lauf;
-        int i; 
+        int i;
 
         for (ton_lauf = the_tonsystem -> toene , i = 0 ;
              ton_lauf;
              ton_lauf = ton_lauf -> next , i++ ) {
             if (ton_lauf->name) {
-                help_tonsystem->ton[i] = 
+                help_tonsystem->ton[i] =
                     DOUBLE_TO_LONG( FREQUENZ_TO_MIDI(
                                      get_ton (
                                       ton_lauf -> name, list_of_toene)
@@ -356,21 +304,15 @@ static struct do_aktion * expandiere_tonsystem (
                help_tonsystem->ton[i] = 0 ;
             }
         }
-    }      
+    }
 
     help -> u.aufruf_tonsystem.tonsystem = help_tonsystem;
     help -> next = NULL;
-    
+
     return help;
 }
 
-/** Wandelt eine Logik in eine Aktion um.
- * Dabei werden die Namen der entsprechenden Bezeichner der Logik
- * durch die zugehörigen Werte ersetzt.
- * Anschließend werden lokale Harmonie, Klaviatur und Midiwerte auf die
- * ersten der Logik initialisiert.
- * \param the_logik Logik, die expandiert werden soll.
- */
+
 static struct do_aktion * expandiere_logik (
            struct logik * the_logik)
 {
@@ -398,11 +340,11 @@ static struct do_aktion * expandiere_logik (
                 fatal_error (0, __FILE__, __LINE__);
                 help -> u.aufruf_logik.einstimmung = NULL;
             }
-        }  
+        }
     }
     else
         help -> u.aufruf_logik.einstimmung = NULL;
-        
+
     i = get_logik_nummer (the_logik -> name, list_of_logiken);
     help -> u.aufruf_logik.lokal_harmonie = & first_lokal_harmonie [i];
     help -> u.aufruf_logik.lokal_keyboard = & first_lokal_keyboard [i];
@@ -412,19 +354,14 @@ static struct do_aktion * expandiere_logik (
     return help;
 }
 
-/** Ersetzt Parameter in einer Aktionsliste durch ihre aktuellen Werte. 
- * \param the_liste Ausgangs-Liste mit den Aktionen, deren Parameter ersetzt werden sollon.
- * \param aktuelle_parameter Liste mit den Aktuellen Parametern, die ersetzt werden können.
- * \note Neu hinzukommende Aktionen werden erhalten. Kann das passieren?
- */
 static struct do_aktion * expand_aktions_liste (
            struct aktions_liste * the_liste,
            struct interpreter_parameter_liste * aktuelle_parameter)
 {
     struct do_aktion * help_1, * help_2, ** help_3;
-    
+
     if (the_liste == NULL) return NULL;
-    
+
     if (the_liste -> aktions_typ == aktion_aufruf) {
         help_1 = expandiere_name (the_liste -> u.aktion_aufruf.name,
                               the_liste -> u.aktion_aufruf.argument_liste,
@@ -435,24 +372,19 @@ static struct do_aktion * expand_aktions_liste (
     }
     else
         fatal_error (0, __FILE__, __LINE__);
-                                      
+
     help_2 = expand_aktions_liste (the_liste -> next, aktuelle_parameter);
-    
+
     for (help_3 = & help_1; * help_3; help_3 = & (*help_3)->next)
     ;
 
     * help_3 = help_2;
-    
+
     return help_1;
-    
+
 }
-    
-/** Sortiert die Default-Zweige von Case-Listen ans Ende und expandiert die 
- * Paramater der einzelnen Aktionen.
- * \param the_liste Case-Liste, die bearbeitet werden soll.
- * \param aktuelle_parameter Aktuelle Parameter, die ersetzt werden können.
- * \todo Vereinigen beider Schleifen duch hinzufügen einer neuen temporären default-ende-liste.
- */
+
+
 static struct case_element * expand_case_liste (
            struct case_liste * the_liste,
            struct interpreter_parameter_liste * aktuelle_parameter)
@@ -488,15 +420,11 @@ static struct case_element * expand_case_liste (
             ende_liste = & (*ende_liste) -> next;
         }
     }
-    
-    return start_liste;    
+
+    return start_liste;
 }
-    
-   
-/** Ersetzt die Parameter einer Umstimmung durch deren Werte.
- * \param the_umstimmung Umstimmung, die bearbeitet werden soll.
- * \param aktuelle_parameter Liste der Parameter, die ersetzt werden können
- */  
+
+
 static struct do_aktion * expandiere_umstimmung (
            struct umstimmung * the_umstimmung,
            struct interpreter_parameter_liste * aktuelle_parameter)
@@ -505,11 +433,11 @@ static struct do_aktion * expandiere_umstimmung (
 
     help = (do_aktion*) xmalloc (sizeof (struct do_aktion));
     help -> name = the_umstimmung -> name;
-    
+
     switch (the_umstimmung -> umstimmung_typ) {
     case umstimmung_taste_abs:
         help -> aufruf_typ = aufruf_umst_taste_abs;
-        help -> u.aufruf_umst_taste_abs.wert = 
+        help -> u.aufruf_umst_taste_abs.wert =
                  get_wert_of_argument ( & the_umstimmung->u.umstimmung_taste_abs.argument,
                                         aktuelle_parameter);
         help -> next = NULL;
@@ -518,7 +446,7 @@ static struct do_aktion * expandiere_umstimmung (
 
     case umstimmung_breite_abs:
         help -> aufruf_typ = aufruf_umst_breite_abs;
-        help -> u.aufruf_umst_breite_abs.wert = 
+        help -> u.aufruf_umst_breite_abs.wert =
                  get_wert_of_argument ( & the_umstimmung->u.umstimmung_breite_abs.argument,
                                         aktuelle_parameter);
         help -> next = NULL;
@@ -538,7 +466,7 @@ static struct do_aktion * expandiere_umstimmung (
 
     case umstimmung_wiederholung_rel:
         help -> aufruf_typ = aufruf_umst_wiederholung_rel;
-        help -> u.aufruf_umst_wiederholung_rel.faktor = 
+        help -> u.aufruf_umst_wiederholung_rel.faktor =
              DOUBLE_TO_LONG (
                   FAKTOR_TO_MIDI (
                        get_wert_komplex_intervall (
@@ -549,7 +477,7 @@ static struct do_aktion * expandiere_umstimmung (
 
     case umstimmung_taste_rel:
         help -> aufruf_typ = aufruf_umst_taste_rel;
-        help -> u.aufruf_umst_taste_rel.wert = 
+        help -> u.aufruf_umst_taste_rel.wert =
                    get_wert_of_argument ( & the_umstimmung->u.umstimmung_taste_rel.argument,
                                          aktuelle_parameter);
 
@@ -557,10 +485,10 @@ static struct do_aktion * expandiere_umstimmung (
         help -> next = NULL;
         return help;
 /*        break; */
-                              
+
     case umstimmung_breite_rel:
         help -> aufruf_typ = aufruf_umst_breite_rel;
-        help -> u.aufruf_umst_breite_rel.wert = 
+        help -> u.aufruf_umst_breite_rel.wert =
                    get_wert_of_argument ( & the_umstimmung->u.umstimmung_breite_rel.argument,
                                          aktuelle_parameter);
         help -> u.aufruf_umst_breite_rel.rechenzeichen = the_umstimmung->u.umstimmung_breite_rel.rechenzeichen;
@@ -570,21 +498,21 @@ static struct do_aktion * expandiere_umstimmung (
 
     case umstimmung_toene_veraendert:
         help -> aufruf_typ = aufruf_umst_toene_veraendert;
-        help -> u.aufruf_umst_toene_veraendert.tonliste = 
+        help -> u.aufruf_umst_toene_veraendert.tonliste =
                    expand_tonliste ( the_umstimmung->u.umstimmung_toene_veraendert.tonliste);
         help -> next = NULL;
         return help;
 /*        break; */
-                              
+
     case umstimmung_umstimmungsbund:
         xfree (help);
         return expand_aktions_liste (the_umstimmung->u.umstimmung_umstimmungsbund.aktions_liste,
                                     aktuelle_parameter);
 /*        break; */
-                              
+
     case umstimmung_umstimmungs_case:
         help -> aufruf_typ = aufruf_umst_umst_case;
-        help -> u.aufruf_umst_umst_case.wert = 
+        help -> u.aufruf_umst_umst_case.wert =
                    get_wert_of_argument ( & the_umstimmung->u.umstimmung_umstimmungs_case.argument,
                                          aktuelle_parameter);
         help -> u.aufruf_umst_umst_case.umst_case =
@@ -596,12 +524,12 @@ static struct do_aktion * expandiere_umstimmung (
 
     case umstimmung_midi_out:
         help -> aufruf_typ = aufruf_midi_out;
-        help -> u.aufruf_midi_out.out_liste = 
+        help -> u.aufruf_midi_out.out_liste =
                     the_umstimmung->u.umstimmung_midi_out.out_liste;
         help -> next = NULL;
         return help;
 /*        break; */
-                       
+
     default:
         fatal_error (0, __FILE__, __LINE__);
         return NULL;
@@ -609,16 +537,8 @@ static struct do_aktion * expandiere_umstimmung (
     }
 }
 
-/** Sucht nach einer Logik, einem Tonsystem bzw. einer Umstimmung in dieser
- * Reihenfolge. Wird eine Umstimmung zurückgeliefert, so werden gleich auch
- * deren Parameter ersetzt.
- * \param name         Name der zu suchenden Logik, des Tonsystems oder der Umstimmung.
- * \param parameter    Argumente, für die Parameter-Ersetzung
- * \param bezugs_liste Liste mit den Interpreter-Parametern, aus denen die 
- *                     aktuellen Parameter für die Expansion der Umstimmung generiert
- *                     werden.
- */     
-    
+
+
 static struct do_aktion * expandiere_name (
            char * name,
            struct argument_liste * parameter,
@@ -630,23 +550,23 @@ static struct do_aktion * expandiere_name (
 
     if (name == NULL) return NULL;
 
-    
+
     help_logik = get_logik (name, list_of_logiken);
     if (help_logik) {
-        
-        return expandiere_logik (help_logik);        
-        
+
+        return expandiere_logik (help_logik);
+
     }
     else {
 
     help_tonsystem = parser_get_tonsystem (name, list_of_tonsysteme);
     if (help_tonsystem) {
-    
+
         return expandiere_tonsystem (help_tonsystem);
-            
+
     }
     else {
-    
+
     help_umstimmung = get_umstimmung (name, list_of_umstimmungen);
     if (help_umstimmung) {
 
@@ -654,18 +574,15 @@ static struct do_aktion * expandiere_name (
         aktuelle_parameter = gen_parameter_liste (parameter, bezugs_liste);
         return expandiere_umstimmung (help_umstimmung,
                                       aktuelle_parameter);
-        
+
     }
     else
         fatal_error (0, __FILE__, __LINE__);
         return NULL;
     }}
-    
+
 }
 
-/** Wandelt eine MIDI-Liste in eine MIDI-Ausgabe-Aktion um
- *  \param[in] liste MIDI-Liste, die umgewandelt werden soll
- */
 static struct do_aktion * expandiere_midi (struct midiliste * liste)
 {
     struct do_aktion * help;
@@ -675,32 +592,25 @@ static struct do_aktion * expandiere_midi (struct midiliste * liste)
     help -> aufruf_typ = aufruf_midi_out;
     help -> u.aufruf_midi_out.out_liste = liste;
     help -> next = NULL;
-    
+
     return help;
 }
 
-/** Wandelt eine einfach verkettete MIDI-Liste in ein Ganzzahlen-(\c int)-Feld
- * um.
- * \return Ganzzahlenfeld. Der Letzte Eintrag enthält quasi als Wächter den Wert -1.
- */
+
 static int * create_midi_scan_liste (struct midiliste * lauf)
 {
     int j, k, * ret;
 
     j = midi_list_laenge (lauf);
-    
+
     ret = (int*) xcalloc((size_t)(j+1), sizeof(int));
 
-    for (k=0; lauf; lauf=lauf->next, k++) 
+    for (k=0; lauf; lauf=lauf->next, k++)
         ret [k] = lauf->midi_code;
     ret [k] = -1;
     return ret;
 }
 
-/** Erzeugt eine Suchmaske für die Suche nach Harmonien. 
- * \param harmonie_name Name der Harmonie, für die die Maske erzeugt werden soll.
- * \return Ganzzahlenfeld, das die Harmonie-Suchmaske symbolisiert
- */
 PATTERNN * expand_pattern (char * harmonie_name)
 {
     struct harmonie * the_harmonie;
@@ -712,27 +622,22 @@ PATTERNN * expand_pattern (char * harmonie_name)
     if (the_harmonie == NULL) {
         fatal_error (0, __FILE__, __LINE__);
     }
-    
+
     help = (PTRN*) xmalloc (sizeof (PATTERNN));
-    
+
     for (i=0;i<MAX_BREITE;i++) help->tonigkeit[i]=1; /* Off */
     for (lauf_taste = the_harmonie->tastenliste;
          lauf_taste;
          lauf_taste = lauf_taste -> next) {
         if (lauf_taste->stern=='*')
-            help->tonigkeit[lauf_taste->taste]=0; /* Egal */
-        else 
-            help->tonigkeit[lauf_taste->taste]=2; /* On */
+            help->tonigkeit[lauf_taste->code]=0; /* Egal */
+        else
+            help->tonigkeit[lauf_taste->code]=2; /* On */
     }
-    
+
     return help;
 }
 
-/** Fügt die auslösende Harmonien, Taste bzw. das Midiereignis der Logik in die 
- * entsprechenede globale Liste eines Instrumentes ein.
- * \param instrument Instrument, für das das Ereignis eingefügt werden soll.
- * \param lauf Logik, deren Auslöser eingefügt werden soll.
- */
 
 void insert_in_globale_liste (int instrument, struct logik * lauf)
 {
@@ -770,7 +675,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
                 /* Neuen Eintrag erzeugen */
                 for (temp_harmonie = & first_harmonie[instrument];
                      *temp_harmonie;
-                     temp_harmonie = & (*temp_harmonie)->next) 
+                     temp_harmonie = & (*temp_harmonie)->next)
                 ;
 
                 *temp_harmonie  = (harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
@@ -801,12 +706,12 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
                 /* Neuen Eintrag erzeugen */
                 for (temp_midi = & first_midi[instrument];
                      *temp_midi;
-                     temp_midi = & (*temp_midi)->next) 
+                     temp_midi = & (*temp_midi)->next)
                 ;
 
                 *temp_midi  = (midi_ereignis*) xmalloc((size_t)sizeof(struct midi_ereignis));
                 /* Werte eintragen */
-                   
+
                 (*temp_midi) -> first_pos =
                 (*temp_midi) -> scan_pos =
                         create_midi_scan_liste (lauf->ausloeser->u.ausloeser_midi_in.midi_code);
@@ -820,13 +725,6 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
     }
 }
 
-
-/** Fügt die auslösende Harmonien, Taste bzw. das Midiereignis der Logik in die 
- * entsprechenede lokale Liste eines Instrumentes ein.
- * \param instrument Instrument, für das das Ereignis eingefügt werden soll.
- * \param lauf Anweisung, deren Auslöser eingefügt werden soll.
- * \param name_der_logik Name der Logik, zu der die Anweisung gehört.
- */
 void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
                              char * name_der_logik)
 {
@@ -864,7 +762,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
                 /* Neuen Eintrag erzeugen */
                 for (temp_harmonie = & first_lokal_harmonie[instrument];
                      *temp_harmonie;
-                     temp_harmonie = & (*temp_harmonie)->next) 
+                     temp_harmonie = & (*temp_harmonie)->next)
                 ;
 
                 *temp_harmonie  = (harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
@@ -881,7 +779,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
                 /* Neuen Eintrag erzeugen */
                 for (temp_harmonie = & first_lokal_harmonie[instrument];
                      *temp_harmonie;
-                     temp_harmonie = & (*temp_harmonie)->next) 
+                     temp_harmonie = & (*temp_harmonie)->next)
                 ;
 
                 *temp_harmonie  = (harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
@@ -900,7 +798,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
                 /* Neuen Eintrag erzeugen */
                 for (temp_keyboard = & first_lokal_keyboard[instrument];
                      *temp_keyboard;
-                     temp_keyboard = & (*temp_keyboard)->next) 
+                     temp_keyboard = & (*temp_keyboard)->next)
                 ;
 
                 *temp_keyboard  = (keyboard_ereignis*) xmalloc((size_t)sizeof(struct keyboard_ereignis));
@@ -934,28 +832,25 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 }
 
 
-/** Expandiert die Auslösenden Ereignisse aller angesammeldten Logiken in die globale
- * Liste.
- */
 static void expandiere_in_globale_liste (void)
 {
     struct harmonie_ereignis * lauf_harmonie [MAX_BOX];
     struct keyboard_ereignis * lauf_keyboard [MAX_BOX];
     struct midi_ereignis     * lauf_midi     [MAX_BOX];
     int i;
-    
+
     for (i=0; i<MAX_BOX; i++) {
         lauf_harmonie[i] = first_harmonie[i];
         lauf_keyboard[i] = first_keyboard[i];
         lauf_midi    [i] = first_midi    [i];
     }
-    
+
     while (lauf_harmonie[0]) {
         int j;
 
         lauf_harmonie[0] -> aktion =
             expandiere_logik (lauf_harmonie[0] -> the_logik_to_expand);
-        
+
         for (j=1; j<MAX_BOX; j++) {
             lauf_harmonie[j] -> aktion = lauf_harmonie[0] -> aktion;
         }
@@ -965,12 +860,12 @@ static void expandiere_in_globale_liste (void)
         }
     }
 
-        
+
 
     while (lauf_keyboard[0]) {
         int j;
 
-        lauf_keyboard[0] -> aktion = 
+        lauf_keyboard[0] -> aktion =
             expandiere_logik (lauf_keyboard[0] -> the_logik_to_expand);
 
         for (j=1; j<MAX_BOX; j++) {
@@ -981,9 +876,9 @@ static void expandiere_in_globale_liste (void)
             lauf_keyboard[j] = lauf_keyboard[j] -> next;
         }
     }
-    
-    
-    
+
+
+
     while (lauf_midi[0]) {
         int j;
 
@@ -1003,34 +898,23 @@ static void expandiere_in_globale_liste (void)
 
 
 
-/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
- *  Harmonie-Ereignis-Liste.
- * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von Harmonieereignissen.
- */
-static struct harmonie_ereignis ** 
+
+static struct harmonie_ereignis **
         get_ende_harmonie (struct harmonie_ereignis ** lauf)
 {
     if (*lauf == NULL) return lauf;
     return get_ende_harmonie (& (*lauf) -> next);
 }
 
-/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
- *  Tasten-Ereignis-Liste.
- * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von Tastenereignissen.
- */
 static struct keyboard_ereignis **
-        get_ende_keyboard (struct keyboard_ereignis ** lauf) 
+        get_ende_keyboard (struct keyboard_ereignis ** lauf)
 {
     if (*lauf == NULL) return lauf;
     return get_ende_keyboard (& (*lauf) -> next);
 }
 
-/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
- *  MIDI-Ereignis-Liste.
- * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von MIDI-Ereignissen.
- */
 static struct midi_ereignis **
-        get_ende_midi (struct midi_ereignis ** lauf) 
+        get_ende_midi (struct midi_ereignis ** lauf)
 {
     if (*lauf == NULL) return lauf;
     return get_ende_midi (& (*lauf) -> next);
@@ -1039,9 +923,7 @@ static struct midi_ereignis **
 
 /*==============================================================*/
 
-/** Initialisiert die Mutabor-Tabellen.
- * Dabei werden die globalen und die lokalen Auslöser initialisiert.
- */
+
 void mutabor_tabellen_generator (void)
 {
     //Neu:  extra Löschungen
@@ -1092,7 +974,7 @@ void mutabor_tabellen_generator (void)
 
         for (lauf_anweisung=lauf->anweisungsliste; lauf_anweisung;
                     lauf_anweisung=lauf_anweisung->next) {
-        
+
             insert_in_lokale_liste (i, lauf_anweisung, lauf->name);
         }
     }
