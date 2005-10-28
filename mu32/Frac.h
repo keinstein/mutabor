@@ -2,10 +2,11 @@
 // frac ... calculating with fractions
 // ##################################################################
 
-#include <iostream.h>
-
 #ifndef FRAC_H
 #define FRAC_H
+
+#include <iostream>
+#include "Defs.h"
 
 class frac
 {
@@ -37,7 +38,7 @@ class frac
 
 	 long gcd(long a, long b);
 
-	 friend ostream& operator<<(ostream& os, const frac f);
+	 friend STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f);
 };
 
 #endif

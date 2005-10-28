@@ -134,7 +134,7 @@ MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 
 void MutTag::InitText(wxDC& dc)
 {
-	int i = strlen(Text);
+	int i = Text.Length();
 	wxCoord w, h;
 	dc.GetTextExtent(Text, &w, &h);
 	if ( w <= MUTTAGX-4 ) TPos = 0;
@@ -156,7 +156,7 @@ void MutTag::InitText(wxDC& dc)
 	if ( w > MUTTAGX-4 )
 		Text.Last() = '.';
 	dc.GetTextExtent(Text.Mid(TPos), &w, &h);
-	int l = strlen(Text);
+	int l = Text.Length();
 	while ( w > MUTTAGX-4 )
 	{
 	   l--;
@@ -494,28 +494,30 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	// alte TMutTag-s löschen
 	DestroyChildren();
 	// neue erstellen
-	char isLogic, s[100], s1[100], key, isOpen;
+	char isLogic, s[200], s1[200], key, isOpen;
+	wxString sText, sEinst;
 	wxWindow *aWin;
 	nTags = 0;
 	if ( GetMutTag(isLogic, s, s1, key, Box) )
 		do
 		{
 			nTags++;
+			sText = muT(s);
+			sEinst = muT(s1);
 			if ( (isOpen = (key == curTaste[Box][isLogic])) != 0 )
 				if ( isLogic )
 				{
-					curLogic[Box] = s;
-					if ( !s1[0] )
-						if ( !curTS[Box] )
-							sprintf(s1, "(INITIAL)");
-						else if ( curTS[Box][0] != '[' )
-							sprintf(s1, "[%s]", curTS[Box].c_str());
-						else strcpy(s1, curTS[Box]);
-					curTS[Box] = s1;
+					curLogic[Box] = sText;
+					if ( !sEinst.IsEmpty() )
+						curTS[Box] = sEinst;
+					else if ( !curTS[Box] )
+						curTS[Box] = _("(INITIAL)");
+					else if ( curTS[Box][0] != '[' )
+						curTS[Box] = wxString::Format(_T("[%s]"), curTS[Box].c_str());
 				}
 				else
-					curTS[Box] = s;
-			aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, s);
+					curTS[Box] = sText;
+			aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
 			if ( isOpen ) ToFocus = aWin;
 		}
 		while ( GetMutTag(isLogic, s, s1, key) );

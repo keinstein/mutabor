@@ -8,13 +8,12 @@
 #if ! defined (__GLOBAL_H_INCLUDED)
 #define __GLOBAL_H_INCLUDED
 
-#include "Defs.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdarg.h>
-//#include <ctype.h>
+#include <string>
 #include <math.h>
+#include "Defs.h"
 
 /* #define alloca xmalloc */
 #define bcopy(from,to,n) memcpy((to),(from),(n))

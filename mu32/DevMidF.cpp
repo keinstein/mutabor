@@ -3,11 +3,8 @@
 // MIDI-File als Device
 // ------------------------------------------------------------------
 
-#ifndef WX
+#if defined(MUTWIN) && !defined(WX)
 #include <owl/pch.h>
-#else
-#include <fstream.h>
-#include <windows.h>
 #endif
 
 #ifdef RTMIDI
@@ -81,7 +78,7 @@ BYTE *pData;
 int nData;
 long NRT_Speed;
 
-DWORD ReadLength(ifstream &is)
+DWORD ReadLength(STD_PRE::ifstream &is)
 {
   BYTE a[4];
   is.read((char*)a, 4);
@@ -89,7 +86,7 @@ DWORD ReadLength(ifstream &is)
 	  (((DWORD)a[2]) << 8) + ((DWORD)a[3]);
 }
 
-void WriteLength(ofstream &os, DWORD l)
+void WriteLength(STD_PRE::ofstream &os, DWORD l)
 {
   os.put((BYTE) ((l >> 24) & 0xFF));
   os.put((BYTE) ((l >> 16) & 0xFF));
@@ -145,7 +142,7 @@ void Track::WriteDelta()
 	  Data->Add(w[i]);
 }
 
-void Track::Save(ofstream &os)
+void Track::Save(STD_PRE::ofstream &os)
 {
   os << "MTrk";
   WriteLength(os, Data->GetItemsInContainer()+4);
@@ -172,7 +169,7 @@ void OutMidiFile::Close()
     if ( KeyDir[i] >= 16 )  // benutzt
       MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
   // Datei speichern
-  ofstream os(Name, ios::out | ios::binary/*0, filebuf::openprot*/);
+	STD_PRE::ofstream os(Name, STD_PRE::ios::out | STD_PRE::ios::binary/*0, filebuf::openprot*/);
   BYTE Header[41] =
 	  { 'M', 'T', 'h', 'd', 0, 0, 0, 6, 0, 1, 0, 2, 1, 0x00,
       'M', 'T', 'r', 'k', 0, 0, 0, 0x13, 0x00, 0xFF, 0x51, 0x03, 0x07, 0xD0, 0x00,
@@ -391,12 +388,12 @@ bool InMidiFile::Open()
   TicksPerQuater = 0;
   MMSPerQuater = (long) 1000000;
   // Datei lesen
-  ifstream is(Name, ios::in | ios::binary/*, 0/*filebuf::openprot*/);
+  STD_PRE::ifstream is(Name, STD_PRE::ios::in | STD_PRE::ios::binary/*, 0/*filebuf::openprot*/);
   if ( is.bad() )
   {
     Mode = 3;
     InDevChanged = 1;
-    sprintf(Fmeldung, "Can not open Midi input file '%s'.", GetName());
+    LAUFZEIT_ERROR1("Can not open Midi input file '%s'.", GetName());
     return false;
   }
   // Header Chunk
@@ -431,7 +428,7 @@ bool InMidiFile::Open()
     {
       Mode = 3;
       InDevChanged = 1;
-    	sprintf(Fmeldung, "Midi input file '%s' is to long.", GetName());
+    	LAUFZEIT_ERROR1("Midi input file '%s' is to long.", GetName());
       return false;
     }
     Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
@@ -446,7 +443,7 @@ bool InMidiFile::Open()
     {
       Mode = 3;
       InDevChanged = 1;
-      sprintf(Fmeldung, "Midi input file '%s' produces errors.", GetName());
+      LAUFZEIT_ERROR1("Midi input file '%s' produces errors.", GetName());
       return false;
     }
   }

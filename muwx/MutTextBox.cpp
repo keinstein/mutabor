@@ -86,10 +86,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
   // Titel setzen
   if ( newTitle )
   {
-    char sHelp[100] = "Actions - all boxes";
-    if ( PARENT_KIND != WK_ACT || !CAW )
-      sprintf(sHelp, "%s - Box %d", TextBoxTitle[PARENT_KIND].c_str(), Box());
-    GetParent()->SetTitle(sHelp);
+    GetParent()->SetTitle(PARENT_KIND != WK_ACT || !CAW ? wxString::Format(_("%s - Box %d"), TextBoxTitle[PARENT_KIND].c_str(), Box()) : _("Actions - all boxes"));
     int NewColorBox = UseColorBars ? Box() : -1;
     if ( ColorBox != NewColorBox )
     {

@@ -11,8 +11,14 @@
 #include <setjmp.h>
 extern jmp_buf weiter_gehts_nach_compilerfehler;
 
+#if defined(WX)
+#include <wx/wx.h>
+extern wxString Error_text[]; /* Liste der Fehlermeldungen */
+extern wxString Warning_text[]; /* Liste der Warnungen */
+#else
 extern char * Error_text[]; /* Liste der Fehlermeldungen */
 extern char * Warning_text[]; /* Liste der Warnungen */
+#endif
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();
@@ -57,9 +63,16 @@ extern "C"
 
 #ifdef WX
 extern wxString sd1, sd2, sd3, sd4, sd5, sd6;
+extern wxString Fmeldung;
+#define LAUFZEIT_ERROR0(format) Fmeldung = _(format)
+#define LAUFZEIT_ERROR1(format, a) Fmeldung = wxString::Format(_(format), a)
+#define LAUFZEIT_ERROR2(format, a, b) Fmeldung = wxString::Format(_(format), a, b)
 #else
 extern char sd1[100], sd2[100];
-#endif
 extern char Fmeldung[255];
+#define LAUFZEIT_ERROR0(format, a) strcpy(Fmeldung, format)
+#define LAUFZEIT_ERROR1(format, a) sprintf(Fmeldung, format, a)
+#define LAUFZEIT_ERROR2(format, a, b) sprintf(Fmeldung, format, a, b)
+#endif
 
 #endif
