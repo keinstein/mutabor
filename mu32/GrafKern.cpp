@@ -3,10 +3,6 @@
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
-#ifdef MUTWIN
-  #include <windows.h>
-#endif
-
 #include "Global.h"
 #include "Interpre.h"
 #include "GrafKern.h"
@@ -17,9 +13,10 @@
 
 #ifdef MUTWIN
 #ifdef WX
-CompDlg* CompDia1 = NULL;
+	#include <wx/msgdlg.h>
+	CompDlg* CompDia1 = NULL;
 #else
-HWND CompDiaLine;
+	HWND CompDiaLine;
 #endif
 #endif
 
@@ -41,11 +38,14 @@ int nAktionen = 0;
 int keys_changed[MAX_BOX];
 int keys_changed_sum;
 
-char sd1[100], sd2[100];
 #ifdef WX
-char sd3[20], sd4[20], sd5[20], sd6[20];
-#endif
+wxString sd1, sd2, sd3, sd4, sd5, sd6;
+wxString Fmeldung;
+#else
+char sd1[100], sd2[100];
 char Fmeldung[255];
+#endif
+
 
 // Aktionen ---------------------------------------------------------
 
@@ -123,6 +123,25 @@ void aktionen_message( char * Meldung )
 
 void calc_declaration_numbers(char withNames)
 {
+#ifdef MUTWIN
+#ifdef WX
+	sd1 = wxString::Format(_T("%d"), logik_list_laenge(list_of_logiken));
+	sd2 = wxString::Format(_T("%d"), ton_list_laenge(list_of_toene));
+	sd3 = wxString::Format(_T("%d"), umstimmungs_list_laenge(list_of_umstimmungen));
+	sd4 = wxString::Format(_T("%d"), tonsystem_list_laenge(list_of_tonsysteme));
+	sd5 = wxString::Format(_T("%d"), intervall_list_laenge(list_of_intervalle));
+	sd6 = wxString::Format(_T("%d"), anzahl_eingelesene_zeichen);
+#else
+	 sprintf(sd1, "%d\n%d\n%d",
+		logik_list_laenge(list_of_logiken),
+		ton_list_laenge(list_of_toene),
+		umstimmungs_list_laenge(list_of_umstimmungen));
+	 sprintf(sd2, "%d\n%d\n%d",
+		tonsystem_list_laenge(list_of_tonsysteme),
+		intervall_list_laenge(list_of_intervalle),
+		anzahl_eingelesene_zeichen);
+#endif
+#else
   if ( withNames)
   {
 	 sprintf(sd1, "  logics: %d\n  tones: %d\n  tunes: %d",
@@ -136,14 +155,6 @@ void calc_declaration_numbers(char withNames)
   }
   else
   {
-#ifdef WX
-	 sprintf(sd1, "%d", logik_list_laenge(list_of_logiken));
-	 sprintf(sd2, "%d", ton_list_laenge(list_of_toene));
-	 sprintf(sd3, "%d", umstimmungs_list_laenge(list_of_umstimmungen));
-	 sprintf(sd4, "%d", tonsystem_list_laenge(list_of_tonsysteme));
-	 sprintf(sd5, "%d", intervall_list_laenge(list_of_intervalle));
-	 sprintf(sd6, "%d", anzahl_eingelesene_zeichen);
-#else
 	 sprintf(sd1, "%d\n%d\n%d",
 		logik_list_laenge(list_of_logiken),
 		ton_list_laenge(list_of_toene),
@@ -152,19 +163,19 @@ void calc_declaration_numbers(char withNames)
 		tonsystem_list_laenge(list_of_tonsysteme),
 		intervall_list_laenge(list_of_intervalle),
 		anzahl_eingelesene_zeichen);
-#endif
   }
+#endif
 }
 
 void show_line_number( int n )
 {
+#ifdef MUTWIN
 #ifdef WX
   if ( !CompDia1 ) return;
   wxString s = _T("---      ");
   if ( n != -1 ) s.Format(_T("%d       "), n);
   CompDia1->SetText(IDC_COMP_LINE, s);
 #else
-#ifdef MUTWIN
   if ( !CompDiaLine ) return;
   char s[20] = "---      ";
   if ( n != -1 ) sprintf(s, "%d       ", n);
@@ -177,31 +188,29 @@ void fatal_error( int nr, ... )
 {
   va_list arglist;
   va_start(arglist,nr);
-  vsprintf(Fmeldung,Error_text[nr], arglist );
+#if defined(WX)
+  Fmeldung = wxString::FormatV(Error_text[nr], arglist);
+#else
+  vsprintf( Fmeldung, Error_text[nr], arglist );
+#endif
   longjmp( weiter_gehts_nach_compilerfehler , (nr==0)?255:nr );
 }
 
 // Compiler - Warning -----------------------------------------------
 
-#if defined(WX) && defined(MUTWIN) && !defined(__WXMSW__)
-	#include <wx/msgdlg.h>
-#endif
-
 void compiler_warning( int nr, ... )
 {
-  char Fmeldung[255];
-  va_list arglist;
-
-  va_start(arglist,nr);
-  vsprintf(Fmeldung,Warning_text[nr], arglist );
-
-  #ifdef MUTWIN
-    #if defined(WX) && !defined(__WXMSW__)
-      wxMessageBox(Fmeldung, _("Compiler warning"), wxOK | wxICON_ASTERISK );
+	va_list arglist;
+	va_start(arglist,nr);
+#ifdef MUTWIN
+    #if defined(WX)
+		wxMessageBox(wxString::FormatV(Warning_text[nr], arglist), _("Compiler warning"), wxOK | wxICON_ASTERISK );
     #else
-      MessageBox(0, Fmeldung, "Compiler warning", MB_OK | MB_ICONASTERISK );
+		char Fmeldung[255];
+		vsprintf( Fmeldung, Warning_text[nr], arglist );
+		MessageBox(0, Fmeldung, "Compiler warning", MB_OK | MB_ICONASTERISK );
     #endif
-  #endif
+#endif
 }
 
 void laufzeit_message( char * Meldung )
@@ -265,8 +274,17 @@ int pascal _export GetLineNumbers()
 
 int pascal _export GetErrorLine()
 {
-  char *s = strstr(Fmeldung, "Zeile");
-  if ( !s ) return -1;
-  return atol(&(s[5]));
+#if defined(WX)
+	int i = Fmeldung.First(_("Zeile"));
+	long l;
+	if ( i != -1 && Fmeldung.Mid(i+wxString(_("Zeile")).Length()).ToLong(&l) )
+		return l;
+	else
+		return -1;
+#else
+	char *s = strstr(Fmeldung, "Zeile");
+	if ( !s ) return -1;
+	return atol(&(s[5]));
+#endif
 }
 

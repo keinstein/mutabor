@@ -6,10 +6,11 @@
 #ifndef EDEVICE_H
 #define EDEVICE_H
 
-#include <string.h>
+#include <cstring>
 #include "Global.h"
 
 #ifdef WX
+#include <wx/string.h>
 #include "Device.h"
 #endif
 
@@ -24,7 +25,11 @@ extern EDevice *InEDevices;
 extern EDevice *OutEDevices;
 
 // Routen als Stream
-extern char *RouteConfig;
+#if defined(WX)
+	extern wxString RouteConfig;
+#else
+	extern char *RouteConfig;
+#endif
 
 #define INIT_BENDINGRANGE 2
 
@@ -40,33 +45,33 @@ enum RouteType { RTall, RTelse, RTchannel, RTstaff };
 class ERoute
 {
   public:
-	  ERoute *Next;
-	  char Id;
-	  RouteType Type;
-	  int IFrom, ITo;
-	  int Box;
-    bool Active;
-	  EDevice *Out;
-    int OFrom, OTo;
-    bool ONoDrum;
-	  ERoute(RouteType type, int iFrom, int iTo, int box, bool active, EDevice *out,
-    int oFrom = -1, int oTo = -1, bool oNoDrum = true)
-	  {
-	    Type = type;
-	    IFrom = iFrom;
-	    ITo = iTo;
-	    Box = box;
-      Active = active;
-		  Out = out;
-		  OFrom = oFrom;
-		  OTo = oTo;
-      ONoDrum = oNoDrum;
-      Next = 0;
-	  }
-	  ~ERoute()
-	  {
-		  if ( Next ) delete Next;
-	  }
+	ERoute *Next;
+	char Id;
+	RouteType Type;
+	int IFrom, ITo;
+	int Box;
+	bool Active;
+	EDevice *Out;
+	int OFrom, OTo;
+	bool ONoDrum;
+	ERoute(RouteType type, int iFrom, int iTo, int box, bool active, EDevice *out,
+		int oFrom = -1, int oTo = -1, bool oNoDrum = true)
+	{
+		Type = type;
+		IFrom = iFrom;
+		ITo = iTo;
+		Box = box;
+		Active = active;
+		Out = out;
+		OFrom = oFrom;
+		OTo = oTo;
+		ONoDrum = oNoDrum;
+		Next = 0;
+	}
+	~ERoute()
+	{
+		if ( Next ) delete Next;
+	}
 };
 
 // Oberflächen Devices ---------------------------------------------------
@@ -74,44 +79,66 @@ class ERoute
 class EDevice
 {
   public:
-    EDevice *Next;
-    char Name[200];
-    DevType DT;
-  	ERoute *Routes;
-    int DevId;
-    int BendingRange;
-    int Nr;
-    int Mode;
-    EDevice(DevType dt, char *name = "", int devId = 0)
-	  {
-      DT = dt;
-      strcpy(Name, name);
-      Next = 0;
-      Routes = 0;
-      DevId = devId;
-      BendingRange = INIT_BENDINGRANGE;
-      Mode = -1;
-      Nr = -1;
-	  }
-    ~EDevice()
-    {
-      if ( Routes )
-        delete Routes;
-      if ( Next )
-        delete Next;
-    }
-    ERoute *GetRoute(int nr);
-    int nRoutes();
-	  void AddRoute(ERoute *route);
-    char *GetName(); // mit ' ' -> '_'
+	EDevice *Next;
+#if defined(WX)
+	wxString Name;
+#else
+	char Name[200];
+#endif
+	DevType DT;
+	ERoute *Routes;
+	int DevId;
+	int BendingRange;
+	int Nr;
+	int Mode;
+#if defined(WX)
+	EDevice(DevType dt, const wxString& name = wxEmptyString, int devId = 0)
+#else
+	EDevice(DevType dt, char *name = "", int devId = 0)
+#endif
+	{
+		DT = dt;
+#if defined(WX)
+		Name = name;
+#else
+		strcpy(Name, name);
+#endif
+		Next = 0;
+		Routes = 0;
+		DevId = devId;
+		BendingRange = INIT_BENDINGRANGE;
+		Mode = -1;
+		Nr = -1;
+	}
+	~EDevice()
+	{
+		if ( Routes )
+			delete Routes;
+		if ( Next )
+			delete Next;
+	}
+	ERoute *GetRoute(int nr);
+	int nRoutes();
+	void AddRoute(ERoute *route);
+#if defined(WX)
+	wxString GetName(); // mit ' ' -> '_'
+#else
+	char *GetName(); // mit ' ' -> '_'
+#endif
 };
 
 // Funktionen -------------------------------------------------------
 
+#if defined(WX)
+EDevice* NewDevice(EDevice **List, DevType dt, const wxString& name, int devId, EDevice *oldPos = 0, EDevice *newPos = 0);
+void ScanRoutes(const wxString& config);
+void WriteRoutes(wxString &config);
+#else
 EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *oldPos = 0, EDevice *newPos = 0);
-
 void ScanRoutes(char *config);
 void WriteRoutes(char **config);
+#endif
+
 
 extern bool BoxUsed[MAX_BOX];
 void CheckBoxesUsed();

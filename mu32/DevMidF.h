@@ -6,10 +6,9 @@
 #ifndef DEVMIDF_H
 #define DEVMIDF_H
 
-//#include "Global.h"
+#include <fstream>
+
 #include "Device.h"
-//#include "Interpre.h"
-#include <fstream.h>
 
 #ifdef WX
   #include "mhArray.h"
@@ -50,7 +49,7 @@ class Track
       Data->Add(c1);
       Data->Add(c2);
     }
-    void Save(ofstream &os);
+    void Save(STD_PRE::ofstream &os);
     void Add(BYTE c)
     {
       Data->Add(c);

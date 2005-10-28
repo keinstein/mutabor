@@ -4,7 +4,13 @@
 
 #include "GIS_Head.h"
 #include <stdlib.h>
-#include <string.h>
+
+#if defined(WX)
+  #include <wx/string.h>
+#else
+  #include <string.h>
+  #define muT(x) x
+#endif
 
 char ArticulationHold[5] = { 80, 100, 90, 90, 60 }; // range: 0-100
 char ArticulationOff[5] = { 80, 80, 60, 127, 127 }; // range: 0-127
@@ -21,17 +27,15 @@ double GetReal(GisToken *token)
   return 0;
 }
 
-#if defined(WX) && !defined(__WXMSW__)
-  #include <wx/string.h>
-#endif
 char GetMidiInstrument(GisToken *token)
 {
   if ( token && GetGisType(token) == GTParaStr )
   {
    char t[30];
    strncpy(t, ((GisParaStr*)token)->s, 30);
-#if defined(WX) && !defined(__WXMSW__)
-   strcpy(t, wxString(t).Upper().c_str());
+#if defined(WX) 
+   for (int i = 0; i<30 && t[i] ; i++)
+	   t[i]=toupper(t[i]);
 #else
    strupr(t);
 #endif

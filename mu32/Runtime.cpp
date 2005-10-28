@@ -140,7 +140,7 @@ bool pascal _export Activate(bool realTime, UpdateUICallback* callback)
       timeEndPeriod(1);
 #endif
 #ifdef MUTWIN
-    #if defined(WX) && !defined(__WXMSW__)
+    #if defined(WX)
       wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
     #else
       MessageBox(0, Fmeldung, "Activation error", MB_OK | MB_ICONASTERISK );

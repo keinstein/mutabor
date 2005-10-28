@@ -225,7 +225,7 @@ long frac::gcd(long a, long b)
   return p;
 }
 
-ostream& operator<<(ostream& os, const frac f)
+STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f)
 {
 	 return os << "(" << f.n << "/" << f.d << ")";
 }

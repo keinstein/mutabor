@@ -48,12 +48,6 @@
 #include "Device.h"
 #include "MidiKern.h"
 
-#ifdef __WXMSW__			
-	#define ICON(s)	wxIcon(_T(#s "_icn"))
-#else						
-    #define ICON(s)	wxIcon( s##_xpm )		
-#endif				
-
 #if !defined(__WXMSW__)
     #include "Icon/DevUnknown.xpm"
     #include "Icon/DevMidiPort.xpm"
@@ -114,15 +108,15 @@ int GetTextWidth(wxDC& dc, const wxString &s)
 	dc.GetTextExtent(s, &w, &h);
 	return w;
 }
-
+/* lieber nicht wg. unicode
 int GetTextWidth(wxDC& dc, char *s)
 {
 	wxString s1 = s;
 	return GetTextWidth(dc, s1);
-}
+}*/
 
 // TextPin
-void TextPin(wxDC &dc, int xm, int y, int xl, wxString &s, char withBox)
+void TextPin(wxDC &dc, int xm, int y, int xl, const wxString &s, char withBox)
 {
 	if ( withBox )
 		dc.DrawRectangle(xm-xl/2, y, xl, yt);
@@ -140,11 +134,12 @@ void TextPin(wxDC &dc, int xm, int y, int xl, wxString &s, char withBox)
 	dc.SetBackgroundMode(wxSOLID);
 }
 
+/* Lieber nicht (unicode)
 void TextPin(wxDC &dc, int xm, int y, int xl, char *s, char withBox)
 {
 	wxString s1 = s;
 	TextPin(dc, xm, y, xl, s1, withBox);
-}
+}*/
 
 // von - bis als string
 
@@ -186,9 +181,9 @@ void PrintBox(wxDC &dc, int xm, int ym, int nr, char active, int x3)
 {
 	if ( nr == -2 )
 		return;
-	char s[5] = "x";
+	wxString s(_T("x"));
 	if ( nr >= 0 )
-		sprintf(s, "%d", nr);
+		s = wxString::Format(_T("%d"), nr);
 	wxBrush Brush = wxBrush(BoxColor(nr));
 	dc.SetBrush(Brush);
 	if ( !active )
@@ -925,7 +920,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 		{	// evtl. neues Device anlegen
 			if ( NeedNew )
 			{
-				In = NewDevice(&InEDevices, DTUnknown, "", 0, 0, In);
+				In = NewDevice(&InEDevices, DTUnknown, wxEmptyString, 0, 0, In);
 				Refresh();//RePaint();
 			}
 			InputDevDlg in(this);
@@ -939,7 +934,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 				{	
 					try {
 						portName = rtmidiin->getPortName(i);
-						in.ctrlMidiDevice->Append(portName.c_str());
+						in.ctrlMidiDevice->Append(muT(portName.c_str()));
 					}
 					catch (RtError &error) {
 						error.printMessage();
@@ -988,18 +983,18 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			{
 				int type = in.GetType();
 				if ( type == 0 )
-					NewDevice(&InEDevices, DTMidiPort, (char*)in.ctrlMidiDevice->GetString(in.GetMidiDevice()).c_str(), in.GetMidiDevice(), In, In);
+					NewDevice(&InEDevices, DTMidiPort, in.ctrlMidiDevice->GetString(in.GetMidiDevice()), in.GetMidiDevice(), In, In);
 				else if ( type == 1 )			
-					NewDevice(&InEDevices, DTMidiFile, (char*)in.GetMidiFile().c_str(), 0, In, In);
+					NewDevice(&InEDevices, DTMidiFile, in.GetMidiFile(), 0, In, In);
 				else			
-					NewDevice(&InEDevices, DTGis, (char*)in.GetGUIDOFile().c_str(), 0, In, In);
+					NewDevice(&InEDevices, DTGis, in.GetGUIDOFile(), 0, In, In);
 			/*        if ( DataR0.Type.GetSelIndex() == 0 )
           DataR0.Device.GetSelString(DataR0.FileName, FILENAMELENGTH);
         NewDevice(&InDevices, DevInTypes[DataR0.Type.GetSelIndex()], DataR0.FileName,
           DataR0.Device.GetSelIndex(), In, In);*/
 			}
 			else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
-				NewDevice(&InEDevices, DTNotSet, "", 0, In, 0);
+				NewDevice(&InEDevices, DTNotSet, wxEmptyString, 0, In, 0);
 			break;
 		}
 		case RT_INFILTER:
@@ -1096,7 +1091,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			// evtl. neues Device anlegen
 			if ( !Out )
 			{
-				Out = NewDevice(&OutEDevices, DTUnknown, "", 0, 0, 0);
+				Out = NewDevice(&OutEDevices, DTUnknown, wxEmptyString, 0, 0, 0);
 				R->Out = Out;
 				Refresh(); //RePaint();
 				NeedNew = TRUE;
@@ -1112,7 +1107,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 				{
 					try {
 						portName = rtmidiout->getPortName(i);
-						out.ctrlMidiDevice->Append(portName.c_str());
+						out.ctrlMidiDevice->Append(muT(portName.c_str()));
 					}
 					catch (RtError &error) {
 						error.printMessage();
@@ -1166,16 +1161,16 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 				int type = out.GetType();
 				if ( type == 0 )
 				{
-					Out = NewDevice(&OutEDevices, DTMidiPort, (char*)out.ctrlMidiDevice->GetString(out.GetMidiDevice()).c_str(), out.GetMidiDevice(), Out, Out);
+					Out = NewDevice(&OutEDevices, DTMidiPort, out.ctrlMidiDevice->GetString(out.GetMidiDevice()), out.GetMidiDevice(), Out, Out);
 					Out->BendingRange = out.GetMidiDeviceBending();
 				}
 				else if ( type == 1 )
 				{
-					Out = NewDevice(&OutEDevices, DTMidiFile, (char*)out.GetMidiFile().c_str(), 0, Out, Out);
+					Out = NewDevice(&OutEDevices, DTMidiFile, out.GetMidiFile(), 0, Out, Out);
 					Out->BendingRange = out.GetMidiFileBending();
 				}
 				else			
-					Out = NewDevice(&OutEDevices, DTGis, (char*)out.GetGUIDOFile().c_str(), 0, Out, Out);
+					Out = NewDevice(&OutEDevices, DTGis, out.GetGUIDOFile(), 0, Out, Out);
 			}
 			else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
 				Out = 0; // NewDevice(&OutEDevices, DTNotSet, "", 0, Out, 0);  nicht löschen, könnte ja noch eine andere Route verwenden

@@ -104,14 +104,14 @@ bool OutMidiPort::Open()
     hMidiOut = new RtMidiOut();
   }
   catch (RtError &error) {
-    sprintf(Fmeldung, "Can not open Midi devices.");
+    LAUFZEIT_ERROR0("Can not open Midi devices.");
     return false;
   }
   try {
     hMidiOut->openPort(DevId);
   }
   catch (RtError &error) {
-    sprintf(Fmeldung, "Can not open Midi device nr. %d (%s)", DevId, GetName());
+    LAUFZEIT_ERROR2("Can not open Midi device nr. %d (%s)", DevId, GetName());
     return false;
   }
 #else
@@ -425,14 +425,14 @@ bool InMidiPort::Open()
     hMidiIn = new RtMidiIn();
   }
   catch (RtError &error) {
-    sprintf(Fmeldung, "Can not open Midi input devices.");
+    LAUFZEIT_ERROR0("Can not open Midi input devices.");
     return false;
   }
   try {
     hMidiIn->openPort(DevId);
   }
   catch (RtError &error) {
-    sprintf(Fmeldung, "Can not open Midi input device no. %d (%s).", DevId, GetName());
+    LAUFZEIT_ERROR2("Can not open Midi input device no. %d (%s).", DevId, GetName());
     return false;
   }
   hMidiIn->setCallback(mycallback, this);

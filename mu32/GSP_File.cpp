@@ -5,13 +5,13 @@
 // ##################################################################
 
 #include "GSP_File.h"
-#include <fstream.h>
+#include <fstream>
 
 char CurrentLine[GSP_MAX_LINE];
 int  CurrentPos;
 int  Eof;
 
-ifstream *File;  // the file
+STD_PRE::ifstream *File;  // the file
 
 // ##################################################################
 // basic file operations
@@ -22,7 +22,7 @@ ifstream *File;  // the file
 // opens the file
 int OpenFile(const char *Name)
 {
-  File = new ifstream(Name, ios::in/*, 0/*int = filebuf::openprot*/);
+  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
   return File->bad();
 }
 

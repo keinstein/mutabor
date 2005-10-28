@@ -4,11 +4,14 @@
 // ------------------------------------------------------------------
 
 #include <math.h>
+#ifndef MUTWIN
+#include <conio.h>
+#endif
+
 #include "Global.h"
 #include "Interpre.h"
 #include "GrafKern.h"
 #include "MidiKern.h"
-#include <conio.h>
 
 int protokollfunktionen_aktiv=0;
 int protokollfunktion_aktionsausgabe=0;

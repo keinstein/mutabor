@@ -3,6 +3,10 @@
 #define MUTWIN
 //#define MUTMIDI
 
+#ifdef WX
+  #include "mhDefs.h"
+#endif
+
 #if defined(MUTWIN) && (!defined(WX) || defined(__WXMSW__))
   #include <windows.h>
 #endif
@@ -16,10 +20,16 @@
   #define BOOL bool
   #define pascal
   #define CALLBACK 
-  #define min(a, b)	((a) < (b) ? (a) : (b))
 #endif
-  #include "mhDefs.h"
+  #define min(a, b)	((a) < (b) ? (a) : (b))
   #define _export
-#else
+#else // not WX
   #define REUSE(type) type
 #endif 
+
+#if defined(WX)
+  #define STD_PRE std
+#else
+  #define STD_PRE
+#endif
+

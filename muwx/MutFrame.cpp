@@ -48,11 +48,12 @@
 #include "bitmaps/print.xpm"
 #include "bitmaps/help.xpm"
 
-#include "wx/filename.h"
+#include <wx/filename.h>
 #include <wx/config.h>
 #include <wx/confbase.h>
 #include <wx/fileconf.h>
 #include <wx/msw/regconf.h>
+#include <wx/ffile.h>
 #include "MutFrame.h"
 #include "MutChild.h"
 #include "MutEditFile.h"
@@ -419,16 +420,16 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 	if ( !Compiled )
 		return;
 	// Routen Übermitteln
-	WriteRoutes(&RouteConfig);
-	ScanDevices(RouteConfig);
+	WriteRoutes(RouteConfig);
+	ScanDevices((char*)RouteConfig.c_str());
 	AktionTraceReset();
 	// aktivieren
 #ifndef NOACTIVATE
 	RealTime = true;
 	if ( !CheckNeedsRealTime() )
-		RealTime = (wxMessageBox(_T("There are no realtime instruments in the routes.\n"
-			"Shall Mutabor translate the files in batch mode, to keep the MIDI files with the original time stamp?\n"
-			"(This means also, that you can't modify the tunings while playing by computer keyboard.)"),
+		RealTime = (wxMessageBox(_T("There are no realtime instruments in the routes.\n")
+			_T("Shall Mutabor translate the files in batch mode, to keep the MIDI files with the original time stamp?\n")
+			_T("(This means also, that you can't modify the tunings while playing by computer keyboard.)"),
 			_T("No realtime => batch mode?"), wxYES_NO | wxICON_QUESTION /*| MB_DEFBUTTON2*/) == wxNO);
 	theFrame = this;
 	if ( !Activate(RealTime, &UpdateUIcallback) )
@@ -736,13 +737,13 @@ MutChild* MutFrame::NewFrame(WinKind winKind, int box, const wxString &frameName
 	wxMenu *menu;
 	OPENMENU;
 	MENUITEM(_("&New\tCtrl-N"), CM_FILENEW, _("Create a new child window"));
-	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, (""));
-	MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE, (""));
-	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, (""));
+	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, _(""));
+	MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE, _(""));
+	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, _(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, (""));
+	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, _(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("O&ptions"), CM_SETUP, (""));
+	MENUITEM(_("O&ptions"), CM_SETUP, _(""));
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("E&xit"), CM_EXIT, _T("Quit the program"));
 	CLOSEMENU(_("&File"));
@@ -861,20 +862,19 @@ void MutFrame::WindowSize(MutChild *win)
 	}
 }
 
-#include <wx/wfstream.h>
 //
 // Save the the position and contents of the windows to the "desktop" file.
 //
 void MutFrame::SaveState()
 {
-	wxConfig *config = new wxConfig("Mutabor");
+	wxConfig *config = new wxConfig(_T("Mutabor"));
 /*	if ( MainWindow->Attr.X >= 0 && MainWindow->Attr.Y >= 0 &&
 	 MainWindow->Attr.W > 0 && MainWindow->Attr.H > 0 )*/
 	{
 		wxPoint pos = GetPosition();
 		wxSize size = GetSize();
 		int DeskMax = size.GetWidth() < GetClientSize().GetWidth();
-		config->Write("DESKTOP", wxString::Format(_T("%d %d %d %d %d"),
+		config->Write(_T("DESKTOP"), wxString::Format(_T("%d %d %d %d %d"),
 			pos.x, pos.y,
 			size.GetWidth(), size.GetHeight(), DeskMax));
 	}
@@ -916,12 +916,12 @@ void MutFrame::SaveState()
 		TextBoxWanted[0], TextBoxWanted[1], TextBoxWanted[2]));
 	delete config;
 	// routes
-	wxFileOutputStream os(RcfFile);
-	if ( os.Ok() )
+	wxFFile os(RcfFile, _T("w"));
+	if ( os.IsOpened() )
 	{
-		WriteRoutes(&RouteConfig);
-		os.Write(_T("# last routes configuration MUTABOR 3.x\n"), 40);
-		os.Write(RouteConfig, strlen(RouteConfig));
+		WriteRoutes(RouteConfig);
+		os.Write(_T("# last routes configuration MUTABOR 3.x\n"));
+		os.Write(RouteConfig);
 	}
 }
 
@@ -950,13 +950,13 @@ void MutFrame::RestoreState()
 {
 	int DeskMax = 1, WinMax = 2, HelpMax = 0;
 //	TMDIChild *active = NULL;
-	wxConfig *config = new wxConfig("Mutabor");
+	wxConfig *config = new wxConfig(_T("Mutabor"));
 	wxString s;
 	int test;
 	if ( config->Read(_T("DESKTOP"), &s) )
 	{
 		int x, y, w, h;
-		test = sscanf (s.c_str(), "%d %d %d %d %d", &x, &y, &w, &h, &DeskMax);
+		test = SSCANF (s.c_str(), _T("%d %d %d %d %d"), &x, &y, &w, &h, &DeskMax);
 		if ( test >= 4 )
 			SetSize(x, y, w, h);
 	}
@@ -988,7 +988,7 @@ void MutFrame::RestoreState()
     if ( config->Read(_T("PROTOKOLL"), &s) )
 	{
         int a, b, c;
-        test = sscanf (s.c_str(), "%d %d %d ", &a, &b, &c);
+        test = SSCANF (s.c_str(), _T("%d %d %d"), &a, &b, &c);
         if ( test >= 3 )
         {
 	        TextBoxWanted[0] = (a != 0);
@@ -1001,23 +1001,18 @@ void MutFrame::RestoreState()
 	{
 		wxFFile ir(RcfFile);
 		if ( ir.IsOpened() )
-		{
-			wxString s;
-			ir.ReadAll(&s);
-			RouteConfig = strdup(s.c_str());
-		}
+			ir.ReadAll(&RouteConfig);
 	}
 	if ( !RouteConfig )
 	{
 		::wxMessageBox(_("Could not find routes file."), _("Disk error"),
 		wxOK | wxICON_EXCLAMATION);
-		RouteConfig = strdup(
-			"OUTPUT\n"
-			"  MIDIPORT MIDIPORT_OUT 0 2\n"
-			"INPUT\n"
-			"  MIDIPORT MIDIPORT_IN 0\n"
-			"    ALL 0 0 0 1 0 0 15\n"
-		);
+		RouteConfig =
+			_T("OUTPUT\n")
+			_T("  MIDIPORT MIDIPORT_OUT 0 2\n")
+			_T("INPUT\n")
+			_T("  MIDIPORT MIDIPORT_IN 0\n")
+			_T("    ALL 0 0 0 1 0 0 15\n");
 	}
 	ScanRoutes(RouteConfig);
 	if ( Get(WK_ROUTE) && Get(WK_ROUTE)->Wanted )
@@ -1094,7 +1089,7 @@ void MutFrame::CeInDevStop(wxUpdateUIEvent& event)
 
 void MutFrame::CeInDevPlay(wxUpdateUIEvent& event)
 {
-  if ( !CompiledFile[0] )
+  if ( !CompiledFile )
   {
     event.Enable(false);
     return;

@@ -11,7 +11,11 @@
 EDevice *InEDevices = 0;
 EDevice *OutEDevices = 0;
 
-char *RouteConfig = 0;
+#if defined(WX)
+	wxString RouteConfig;
+#else
+	char *RouteConfig = 0;
+#endif
 
 // EDevice ----------------------------------------------------------
 
@@ -43,6 +47,17 @@ void EDevice::AddRoute(ERoute *route)
     *R = route;
 }
 
+#ifdef WX
+
+wxString EDevice::GetName()
+{
+	wxString s = Name;
+	s.Replace(_T(" "), _T("_"));
+	return s;
+}
+
+#else
+
 char help[200];
 
 // Name mit '_' aufgefüllt
@@ -54,6 +69,8 @@ char *EDevice::GetName()
       help[i] = '_';
   return help;
 }
+
+#endif
 
 // Hilfe für Verkettung: Wenn Outgerät gekillt wird,
 // sollten die Verweise in den Routen verbogen werden
@@ -73,7 +90,11 @@ void ChangeOutReferences(EDevice *from, EDevice *to)
 // oldPos wird entfernt
 // einfügen auf newPos
 // bei dt == -1 und keinem newPlace wird nur gelöscht
+#ifdef WX
+EDevice* NewDevice(EDevice **List, DevType dt, const wxString& name, int devId, EDevice *oldPos, EDevice *newPos)
+#else
 EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *oldPos, EDevice *newPos)
+#endif
 {
   // Position finden zum Daten abladen
   EDevice *Pos = 0;
@@ -82,7 +103,11 @@ EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *o
   {
     Pos = oldPos;
     Pos->DT = dt;
+#ifdef WX
+	Pos->Name = name;
+#else
     strcpy(Pos->Name, name);
+#endif
     Pos->DevId = devId;
     Pos->Mode = -1;
   }
@@ -124,8 +149,12 @@ EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *o
   for (EDevice **Dev = List ; *Dev; Dev = &((*Dev)->Next))
     if ( *Dev != Pos &&
          (*Dev)->DT == dt &&
+#ifdef WX
+         ( ( !(*Dev)->Name.Cmp(name) ) ||
+#else
          ( ( !strcmp((*Dev)->Name, name) ) ||
-           ( dt == DTMidiPort && (*Dev)->DevId == devId ) ) )
+#endif
+		 ( dt == DTMidiPort && (*Dev)->DevId == devId ) ) )
     {
       // doppeltes Device gefunden, Routen übertragen und löschen
       EDevice *Dev1 = *Dev;
@@ -147,36 +176,6 @@ EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *o
 
 // Hilfsfunktionen --------------------------------------------------
 
-// aus p eine Zeile in s lesen, p wird verschoben
-char GetELine(char **p, char *s)
-{
-start:
-  if ( !p || !(*p)[0] )
-    return 0;
-  while ( (*p)[0] == ' ' || (*p)[0] == '\n' || (*p)[0] == '\r' )
-    *p = &(*p)[1];
-  if ( !(*p)[0] )
-    return 0;
-  char *p1 = *p;
-  *p = strchr(p1, '\n');
-  if ( !p )
-    *p = &p1[strlen(p1)];
-  while ( *p1 && strchr("\n\r\t ", *p1) )
-    p1 = &p1[1];
-  int i = (*p)-p1;
-  strncpy(s, p1, i);
-  s[i] = 0;
-  while ( i > 0 && strchr("\n\r\t ", s[i-1]) )
-    s[--i] = 0;
-  if ( !s[0] || s[0] == '#' )
-    goto start;
-  return 1;
-}
-
-#define GETLINE \
-  if ( !GetELine(&p1, s) ) \
-    return
-
 #ifndef WX
 DevType Str2DT(char *type)
 {
@@ -188,7 +187,15 @@ DevType Str2DT(char *type)
   return (DevType)i;
 }
 #else
-DevType Str2DT(char *type);
+DevType Str2DT(const wxString& type)
+{
+	wxString DTName[] =  { _T(""), _T("MIDIPORT"), _T("MIDIFILE"), _T("GMN") };
+	int i;
+	for (i = 3; i > 0; i--)
+	if ( type.StartsWith(DTName[i]) )
+		break;
+	return (DevType)i;
+}
 #endif
 
 #ifndef WX
@@ -222,6 +229,147 @@ EDevice *GetEOut(int nr)
   }
   return Out;
 }
+
+#if defined(WX)
+
+// aus p eine Zeile in s lesen, i wird verschoben
+bool GetELine(const wxString& p, size_t& i, wxString &s)
+{
+	size_t l = p.Length();
+start:
+	if ( i >= l )
+		return false;
+	while ( i < l && wxString(_T(" \t\n\r")).Find(p.GetChar(i)) != -1 )
+		i++;
+	if ( i >= l )
+		return false;
+	size_t i1 = i;
+	i = p.find(_T("\n"), i1);
+	if ( i == -1 )
+	{
+		i = l;
+		s = p.Mid(i1);
+	}
+	else
+		s = p.Mid(i1, i);
+	s = s.Trim();
+	if ( s.Length() == 0 || s.StartsWith(_T("#")) )
+		goto start;
+	return true;
+}
+
+#define GETLINE \
+  if ( !GetELine(config, i, s) ) \
+    return
+
+// Routen scannen
+void ScanRoutes(const wxString& config)
+{
+	// Listen säubern
+	if ( InEDevices )
+	{
+		delete InEDevices;
+		InEDevices = 0;
+	}
+	if ( OutEDevices )
+	{
+		delete OutEDevices;
+		OutEDevices = 0;
+	}
+	// Zerlegen von config
+	wxString s;
+	size_t i;
+	GETLINE;
+	while ( s.CmpNoCase(_T("OUTPUT")) )
+	{
+		GETLINE;
+	}
+	GETLINE;
+	// Output lesen
+	while ( s.CmpNoCase(_T("INPUT")) )
+	{
+		//char Type[40] Name[400];
+		wxString Type, Name;
+		int DevId, BendingRange;
+//		int test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
+		int test = SSCANF(s, _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
+		if ( test < 2 )
+			test = SSCANF(s, _T("%s %s %d %d"), Type, Name, &DevId, &BendingRange);
+		if ( test < 2 )
+		{
+		  //3 ??
+		}
+		EDevice *Out = NewDevice(&OutEDevices, Str2DT(Type), Name, DevId);
+		if ( test == 4 )
+			Out->BendingRange = BendingRange;
+		GETLINE;
+	}
+	GETLINE;
+	// Input lesen
+	while ( 1 )
+	{
+		// Device lesen
+		//char Type[40], Name[400];
+		wxString Type, Name;
+		int DevId = -1;
+		int test = SSCANF(s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
+		if ( test < 2 )
+			test = SSCANF(s, _T("%s %s %d"), Type, Name, &DevId);
+		if ( test < 2 )
+		{
+		  //3 ??
+		}
+		EDevice *In = NewDevice(&InEDevices, Str2DT(Type), Name, DevId);
+		GETLINE;
+		// Routen lesen
+		while ( Str2DT(s) == DTUnknown )
+		{
+			// Route lesen
+			char Type[40];
+			int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
+			test = SSCANF(s.c_str(), _T("%s %d %d %d %d %d %d %d %d"),
+				Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+			if ( test < 2 )
+			{
+				//3 ??
+			}
+			In->AddRoute(new ERoute(Str2RT(Type), IFrom, ITo, Box, BoxActive, GetEOut(OutDev), OFrom, OTo, ONoDrum));
+			GETLINE;
+		}
+	}
+}
+
+#else // no WX
+
+// aus p eine Zeile in s lesen, p wird verschoben
+char GetELine(char **p, char *s)
+{
+start:
+  if ( !p || !(*p)[0] )
+    return 0;
+  while ( (*p)[0] == ' ' || (*p)[0] == '\n' || (*p)[0] == '\r' )
+    *p = &(*p)[1];
+  if ( !(*p)[0] )
+    return 0;
+  char *p1 = *p;
+  *p = strchr(p1, '\n');
+  if ( !p )
+    *p = &p1[strlen(p1)];
+  while ( *p1 && strchr("\n\r\t ", *p1) )
+    p1 = &p1[1];
+  int i = (*p)-p1;
+  strncpy(s, p1, i);
+  s[i] = 0;
+  while ( i > 0 && strchr("\n\r\t ", s[i-1]) )
+    s[--i] = 0;
+  if ( !s[0] || s[0] == '#' )
+    goto start;
+  return 1;
+}
+
+#define GETLINE \
+  if ( !GetELine(&p1, s) ) \
+    return
 
 // Routen scannen
 void ScanRoutes(char *config)
@@ -296,6 +444,99 @@ void ScanRoutes(char *config)
     }
   }
 }
+
+#endif
+
+#ifdef WX
+
+// Routen schreiben
+void WriteRoutes(wxString &config)
+{
+	// config säubern
+	config = wxEmptyString;
+	// Unbenötigte Out Devices entfernen
+	EDevice *Out;
+	EDevice *In;
+	for (Out = OutEDevices; Out; Out = Out->Next)
+		Out->Nr = 0;
+	for (In = InEDevices; In; In = In->Next)
+		for (ERoute *R = In->Routes; R; R = R->Next)
+			if ( R->Out )
+				R->Out->Nr = 1;
+	Out = OutEDevices;
+	while ( Out )
+	{
+		if ( !Out->Nr )
+		{
+			NewDevice(&OutEDevices, DTNotSet, _T(""), 0, Out, 0);
+			Out = OutEDevices;
+			continue;
+		}
+		Out = Out->Next;
+	}
+	// Output schreiben
+	config << _T("OUTPUT\n");
+	int nr = 0;
+	for ( Out = OutEDevices; Out; Out = Out->Next)
+	{
+		Out->Nr = nr++; // Nummerierung zur bequemen Referenzierung beim Input schreiben
+		wxString sName = Out->Name;
+		if ( sName.Find(_T(" ")) )
+			sName.Prepend(_T("\"")) << _T("\"");
+		switch ( Out->DT )
+		{
+			case DTUnknown:
+				config << wxString::Format(_T("  UNKNOWN %s\n"), sName);
+				break;
+			case DTMidiPort:
+				config << wxString::Format(_T("  MIDIPORT %s %d %d\n"), sName, Out->DevId, Out->BendingRange);
+				break;
+			case DTMidiFile:
+				config << wxString::Format(_T("  MIDIFILE %s %d %d\n"), sName, 0, Out->BendingRange);
+				break;
+			case DTGis:
+				config << wxString::Format(_T("  GMN %s\n"), sName);
+				break;
+		}
+	}
+	// Input schreiben
+	nr = 0;
+	config << _T("INPUT\n");
+	for ( In = InEDevices; In; In = In->Next)
+	{
+		// Device schreiben
+		In->Nr = nr++; // Nummern zur Referenz bei Play/Stop
+		In->Mode = 0; // Mode auf "registriert" setzen
+		wxString sName = In->Name;
+		if ( sName.Find(_T(" ")) )
+			sName.Prepend(_T("\"")) << _T("\"");
+		switch ( In->DT )
+		{
+			case DTUnknown:
+				config << wxString::Format(_T("  UNKNOWN %s\n"), sName);
+				break;
+			case DTGis:
+				config << wxString::Format(_T("  GMN %s\n"), sName);
+				break;
+			case DTMidiPort:
+				config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName, In->DevId);
+				break;
+			case DTMidiFile:
+				config << wxString::Format(_T("  MIDIFILE %s\n"), sName);
+				break;
+		}
+		// Routen schreiben
+		for (ERoute *R = In->Routes; R; R = R->Next)
+		{
+			int OutNr = ( R->Out ) ?  R->Out->Nr : -1;
+			config << wxString::Format(_T("    %s  %d %d  %d %d  %d  %d %d %d\n"),
+				RTName[R->Type], R->IFrom, R->ITo, R->Box, R->Active, OutNr,
+				R->OFrom, R->OTo, R->ONoDrum ? 1 : 0);
+		}
+	}
+}
+
+#else // no WX
 
 // Routen schreiben
 void WriteRoutes(char **config)
@@ -395,6 +636,8 @@ void WriteRoutes(char **config)
   *config = strdup(s);
   free(s);
 }
+
+#endif
 
 // Boxes used
 
