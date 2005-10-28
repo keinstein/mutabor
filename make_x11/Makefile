@@ -83,7 +83,8 @@ MUTABOR_OBJECTS =  \
 	mu32_TabGen.o \
 	rtmidi.o \
 	mywx_valNum.o \
-	mywx_valRadio.o
+	mywx_valRadio.o \
+	mywx_mxDefs.o
 
 ### Conditionally set variables: ###
 
@@ -328,6 +329,8 @@ mywx_valNum.o: $(srcdir)/mywx/valNum.cpp
 mywx_valRadio.o: $(srcdir)/mywx/valRadio.cpp
 	$(CXXC) -c -o $@ $(MUTABOR_CXXFLAGS) $(srcdir)/mywx/valRadio.cpp
 
+mywx_mxDefs.o: $(srcdir)/mywx/mxDefs.cpp
+	$(CXXC) -c -o $@ $(MUTABOR_CXXFLAGS) $(srcdir)/mywx/mxDefs.cpp
 
 # Include dependency info, if present:
 -include .deps/*.d
