@@ -2,9 +2,15 @@
  ********************************************************************
  * Tabellengenerator.
  *
+ * $Id: tabgen.h,v 1.2 2005/11/03 14:36:28 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/11/03 14:36:28 $
+ * \version $Revision: 1.2 $
+ *
+ * $Log: tabgen.h,v $
+ * Revision 1.2  2005/11/03 14:36:28  keinstein
+ * new file header
+ *
  ********************************************************************/
 
 #ifndef __TABGEN_H_INCLUDED
