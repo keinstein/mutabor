@@ -2,12 +2,17 @@
  ********************************************************************
  * Alles zu Ereignis-Auslösern
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.3 2005/07/20 09:49:55 keinstein Exp $
- * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 09:49:55 $
- * \version $Revision: 1.3 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ausloeser.c,v 1.4 2005/11/03 14:47:08 keinstein Exp $
+ * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2005/11/03 14:47:08 $
+ * \version $Revision: 1.4 $
  *
  * $Log: ausloeser.c,v $
+ * Revision 1.4  2005/11/03 14:47:08  keinstein
+ * email to berlios
+ * new includes
+ * interpreter functions and data
+ *
  * Revision 1.3  2005/07/20 09:49:55  keinstein
  * Includes für Doxygen verschönert
  * config.h genutzt
@@ -33,10 +38,33 @@
 #include "mutabor/heap.h"
 #include "mutabor/harmonie.h"
 #include "mutabor/taste.h"
+#include "mutabor/logik.h"
+#include "mutabor/anweisung.h"
 
 /** Globaler Zwischenspeicher für auslösende Ereignisse */
 static struct ausloeser * tmp_ausloeser;
+/** Liste der globalen auslösenden Harmonieen. */
+struct harmonie_ereignis *  first_harmonie[MAX_BOX];
+/** Letztes Element der globalen auslösenden Harmonien. */
+struct harmonie_ereignis ** last_global_harmonie[MAX_BOX];
+/** Liste der lokalen auslösenden Harmonien. */
+struct harmonie_ereignis ** first_lokal_harmonie;
+/** Liste der globalen auslösenden Tastenereignissen. */
+struct keyboard_ereignis *  first_keyboard[MAX_BOX];
+/** Letztes Element der globalen auslösenden Tastenereignissen. */
+struct keyboard_ereignis ** last_global_keyboard[MAX_BOX];
+/** Liste der lokalen auslösenden Tastenereignissen. */
+struct keyboard_ereignis ** first_lokal_keyboard;
+/** Liste der globalen auslösenden MIDI-Ereignissen. */
+struct midi_ereignis     *  first_midi[MAX_BOX];
+/** Letztes Element der globalen auslösenden MIDI-Ereignissen. */
+struct midi_ereignis     ** last_global_midi[MAX_BOX];
+/** Liste der lokalen auslösenden MIDI-Ereignissen. */
+struct midi_ereignis     ** first_lokal_midi;
 
+/** \defgroup Parser 
+ * \{
+ */
 
 /** Setzt Liste auslösender Ereignisse auf NULL.
  * \warning Die Liste wird nicht gelöscht. 
@@ -257,4 +285,315 @@ void check_ausloeser (struct ausloeser * ausloeser, char * name) {
 
 }
 
+/** \}
+ * \defgroup Interpreter
+ * \{
+ */
 
+/** Fügt die auslösende Harmonien, Taste bzw. das Midiereignis der Logik in die 
+ * entsprechenede globale Liste eines Instrumentes ein.
+ * \param instrument Instrument, für das das Ereignis eingefügt werden soll.
+ * \param lauf Logik, deren Auslöser eingefügt werden soll.
+ */
+
+void insert_in_globale_liste (int instrument, struct logik * lauf)
+{
+    struct harmonie_ereignis ** temp_harmonie;
+    struct keyboard_ereignis ** temp_keyboard;
+    struct midi_ereignis     ** temp_midi;
+
+    if (lauf->ausloeser) {
+        switch ((lauf->ausloeser)->ausloeser_typ) {
+            case ausloeser_harmonie:
+                if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
+            /* Dann unmöglicher Harmonieauslöser */
+                    break;
+
+                /* Neuen Eintrag erzeugen */
+                for (temp_harmonie = & first_harmonie[instrument];
+                     *temp_harmonie;
+                     temp_harmonie = & (*temp_harmonie)->next)
+                ;
+
+                *temp_harmonie = (struct harmonie_ereignis*) xmalloc( (size_t)sizeof(struct harmonie_ereignis));
+                (*temp_harmonie) -> pattern=expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie.name) ;
+                (*temp_harmonie) -> ist_harmonieform=0;
+                (*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
+                (*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie.nachtaste ;
+                (*temp_harmonie) -> name=lauf->name;
+                (*temp_harmonie) -> aktion=NULL;
+                (*temp_harmonie) -> the_logik_to_expand=lauf;
+                (*temp_harmonie) -> next=NULL;
+            break;
+            case ausloeser_harmonie_form:
+                if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == -2)
+            /* Dann unmöglicher Harmonieauslöser */
+                    break;
+                /* Neuen Eintrag erzeugen */
+                for (temp_harmonie = & first_harmonie[instrument];
+                     *temp_harmonie;
+                     temp_harmonie = & (*temp_harmonie)->next) 
+                ;
+
+                *temp_harmonie  = (struct harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
+                (*temp_harmonie) -> pattern=expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie_form.name) ;
+                (*temp_harmonie) -> ist_harmonieform=1;
+                (*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie_form.vortaste ;
+                (*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie_form.nachtaste ;
+                (*temp_harmonie) -> name=lauf->name;
+                (*temp_harmonie) -> aktion=NULL;
+                (*temp_harmonie) -> the_logik_to_expand=lauf;
+                (*temp_harmonie) -> next=NULL;
+            break;
+            case ausloeser_taste:
+                /* Neuen Eintrag erzeugen */
+                for (temp_keyboard = & first_keyboard[instrument];
+                     *temp_keyboard;
+                     temp_keyboard = & (*temp_keyboard)->next)
+                ;
+
+                *temp_keyboard  = (struct keyboard_ereignis*) xmalloc((size_t)sizeof(struct keyboard_ereignis));
+                (*temp_keyboard) -> taste= (*((lauf->ausloeser)->u.ausloeser_taste.taste)) ;
+                (*temp_keyboard) -> name=lauf->name;
+                (*temp_keyboard) -> aktion=NULL;
+                (*temp_keyboard) -> the_logik_to_expand=lauf;
+                (*temp_keyboard) -> next=NULL;
+            break;
+            case ausloeser_midi_in:
+                /* Neuen Eintrag erzeugen */
+                for (temp_midi = & first_midi[instrument];
+                     *temp_midi;
+                     temp_midi = & (*temp_midi)->next) 
+                ;
+
+                *temp_midi  = (struct midi_ereignis*) xmalloc((size_t)sizeof(struct midi_ereignis));
+                /* Werte eintragen */
+                   
+                (*temp_midi) -> first_pos =
+                (*temp_midi) -> scan_pos =
+                        create_midi_scan_liste (lauf->ausloeser->u.ausloeser_midi_in.midi_code);
+                (*temp_midi) -> name = lauf->name;
+                (*temp_midi) -> aktion=NULL;
+                (*temp_midi) -> the_logik_to_expand=lauf;
+                (*temp_midi) -> next = NULL;
+            break;
+            default: fatal_error(0, __FILE__, __LINE__);
+        }
+    }
+}
+
+/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
+ *  Harmonie-Ereignis-Liste.
+ * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von Harmonieereignissen.
+ */
+struct harmonie_ereignis ** 
+        get_ende_harmonie (struct harmonie_ereignis ** lauf)
+{
+    if (*lauf == NULL) return lauf;
+    return get_ende_harmonie (& (*lauf) -> next);
+}
+
+/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
+ *  Tasten-Ereignis-Liste.
+ * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von Tastenereignissen.
+ */
+struct keyboard_ereignis **
+        get_ende_keyboard (struct keyboard_ereignis ** lauf) 
+{
+    if (*lauf == NULL) return lauf;
+    return get_ende_keyboard (& (*lauf) -> next);
+}
+
+/** Liefert einen Zeiger auf den Nachfolge-Zeiger des letzten Elementes einer
+ *  MIDI-Ereignis-Liste.
+ * \param lauf Zeiger auf die Wurzel einer einfach verketteten Liste von MIDI-Ereignissen.
+ */
+struct midi_ereignis **
+        get_ende_midi (struct midi_ereignis ** lauf) 
+{
+    if (*lauf == NULL) return lauf;
+    return get_ende_midi (& (*lauf) -> next);
+}
+
+/** Fügt die auslösende Harmonien, Taste bzw. das Midiereignis der Logik in die 
+ * entsprechenede lokale Liste eines Instrumentes ein.
+ * \param instrument Instrument, für das das Ereignis eingefügt werden soll.
+ * \param lauf Anweisung, deren Auslöser eingefügt werden soll.
+ * \param name_der_logik Name der Logik, zu der die Anweisung gehört.
+ */
+void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
+                             char * name_der_logik)
+{
+    struct harmonie_ereignis ** temp_harmonie;
+    struct keyboard_ereignis ** temp_keyboard;
+    struct midi_ereignis     ** temp_midi;
+
+    if (lauf->ausloeser) {
+        switch ((lauf->ausloeser)->ausloeser_typ) {
+            case ausloeser_harmonie:
+                if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
+            /* Dann unmöglicher Harmonieauslöser */
+                    break;
+
+                /* Neuen Eintrag erzeugen */
+                for (temp_harmonie = & first_lokal_harmonie[instrument];
+                     *temp_harmonie;
+                     temp_harmonie = & (*temp_harmonie)->next)
+                ;
+
+                *temp_harmonie = (struct harmonie_ereignis*) xmalloc( (size_t)sizeof(struct harmonie_ereignis));
+                (*temp_harmonie) -> pattern =expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie.name) ;
+                (*temp_harmonie) -> ist_harmonieform=0;
+                (*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
+                (*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie.nachtaste ;
+                (*temp_harmonie) -> name=name_der_logik;
+                (*temp_harmonie) -> aktion=
+                         expand_aktions_liste (lauf->aktion, start_parameter_liste);
+                (*temp_harmonie) -> next=NULL;
+            break;
+            case ausloeser_harmonie_form:
+                if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == -2)
+            /* Dann unmöglicher Harmonieauslöser */
+                    break;
+                /* Neuen Eintrag erzeugen */
+                for (temp_harmonie = & first_lokal_harmonie[instrument];
+                     *temp_harmonie;
+                     temp_harmonie = & (*temp_harmonie)->next) 
+                ;
+
+                *temp_harmonie  = (struct harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
+                (*temp_harmonie) -> pattern=expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie_form.name) ;
+                (*temp_harmonie) -> ist_harmonieform=1;
+                (*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie_form.vortaste ;
+                (*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie_form.nachtaste ;
+                (*temp_harmonie) -> name=name_der_logik;
+                (*temp_harmonie) -> aktion=
+                         expand_aktions_liste (lauf->aktion, start_parameter_liste);
+                (*temp_harmonie) -> next=NULL;
+            break;
+            case ausloeser_default:
+                /* Neuen Eintrag erzeugen */
+                for (temp_harmonie = & first_lokal_harmonie[instrument];
+                     *temp_harmonie;
+                     temp_harmonie = & (*temp_harmonie)->next) 
+                ;
+
+                *temp_harmonie  = (struct harmonie_ereignis*) xmalloc((size_t)sizeof(struct harmonie_ereignis));
+                (*temp_harmonie) -> pattern=NULL ;
+                (*temp_harmonie) -> ist_harmonieform=2;
+/* 2 als Wert für ANSONSTEN */
+
+                (*temp_harmonie) -> vortaste=0 ;
+                (*temp_harmonie) -> nachtaste=0 ;
+                (*temp_harmonie) -> name=name_der_logik;
+                (*temp_harmonie) -> aktion=
+                         expand_aktions_liste (lauf->aktion, start_parameter_liste);
+                (*temp_harmonie) -> next=NULL;
+            break;
+            case ausloeser_taste:
+                /* Neuen Eintrag erzeugen */
+                for (temp_keyboard = & first_lokal_keyboard[instrument];
+                     *temp_keyboard;
+                     temp_keyboard = & (*temp_keyboard)->next) 
+                ;
+
+                *temp_keyboard  = (struct keyboard_ereignis*) xmalloc((size_t)sizeof(struct keyboard_ereignis));
+                (*temp_keyboard) -> taste= (*((lauf->ausloeser)->u.ausloeser_taste.taste)) ;
+                (*temp_keyboard) -> name=name_der_logik;
+                (*temp_keyboard) -> aktion=
+                         expand_aktions_liste (lauf->aktion, start_parameter_liste);
+                (*temp_keyboard) -> next=NULL;
+            break;
+            case ausloeser_midi_in:
+                /* Neuen Eintrag erzeugen */
+                for (temp_midi = & first_lokal_midi[instrument];
+                     *temp_midi;
+                     temp_midi = & (*temp_midi)->next)
+                ;
+
+                *temp_midi  = (struct midi_ereignis*) xmalloc((size_t)sizeof(struct midi_ereignis));
+                /* Werte eintragen */
+
+                (*temp_midi) -> first_pos =
+                (*temp_midi) -> scan_pos =
+                        create_midi_scan_liste (lauf->ausloeser->u.ausloeser_midi_in.midi_code);
+                (*temp_midi) -> name=name_der_logik;
+                (*temp_midi) -> aktion=
+                         expand_aktions_liste (lauf->aktion, start_parameter_liste);
+                (*temp_midi) -> next = NULL;
+            break;
+            default: fatal_error(0, __FILE__, __LINE__);
+        }
+    }
+}
+
+
+/** Expandiert die Auslösenden Ereignisse aller angesammeldten Logiken in die globale
+ * Liste.
+ */
+void expandiere_in_globale_liste (void)
+{
+    struct harmonie_ereignis * lauf_harmonie [MAX_BOX];
+    struct keyboard_ereignis * lauf_keyboard [MAX_BOX];
+    struct midi_ereignis     * lauf_midi     [MAX_BOX];
+    int i;
+    
+    for (i=0; i<MAX_BOX; i++) {
+        lauf_harmonie[i] = first_harmonie[i];
+        lauf_keyboard[i] = first_keyboard[i];
+        lauf_midi    [i] = first_midi    [i];
+    }
+    
+    while (lauf_harmonie[0]) {
+        int j;
+
+        lauf_harmonie[0] -> aktion =
+            expandiere_logik (lauf_harmonie[0] -> the_logik_to_expand);
+        
+        for (j=1; j<MAX_BOX; j++) {
+            lauf_harmonie[j] -> aktion = lauf_harmonie[0] -> aktion;
+        }
+
+        for (j=0; j<MAX_BOX; j++) {
+            lauf_harmonie[j] = lauf_harmonie[j] -> next;
+        }
+    }
+
+        
+
+    while (lauf_keyboard[0]) {
+        int j;
+
+        lauf_keyboard[0] -> aktion = 
+            expandiere_logik (lauf_keyboard[0] -> the_logik_to_expand);
+
+        for (j=1; j<MAX_BOX; j++) {
+            lauf_keyboard[j] -> aktion = lauf_keyboard[0] -> aktion;
+        }
+
+        for (j=0; j<MAX_BOX; j++) {
+            lauf_keyboard[j] = lauf_keyboard[j] -> next;
+        }
+    }
+    
+    
+    
+    while (lauf_midi[0]) {
+        int j;
+
+        lauf_midi[0] -> aktion =
+            expandiere_logik (lauf_midi[0] -> the_logik_to_expand);
+
+        for (j=1; j<MAX_BOX; j++) {
+            lauf_midi[j] -> aktion = lauf_midi[0] -> aktion;
+        }
+
+        for (j=0; j<MAX_BOX; j++) {
+            lauf_midi[j] = lauf_midi[j] -> next;
+        }
+    }
+
+}
+
+
+/** \} */
