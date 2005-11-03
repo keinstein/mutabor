@@ -1,0 +1,40 @@
+/** \file
+ ********************************************************************
+ * Complex intervals (differences).
+ *
+ * $Id: intervalDiff.def,v 1.1 2005/11/03 13:55:24 keinstein Exp $
+ * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2005/11/03 13:55:24 $
+ * \version $Revision: 1.1 $
+ * 
+ * $Log: intervalDiff.def,v $
+ * Revision 1.1  2005/11/03 13:55:24  keinstein
+ * Initial release
+ *
+ ********************************************************************/
+
+#if ! defined (__MUTABOR_INTERVALDIFF_H_INCLUDED__)
+#define __MUTABOR_INTERVALDIFF_H_INCLUDED__
+
+#ifdef __cplusplus 
+namespace mutabor {
+  extern "C" {
+#endif
+
+#include "intervalSum.h"
+
+    /** Difference of two intervals. */
+
+%include "intervalSum.def"
+%class intervalDiff
+%parent intervalSum
+%virtual void precalculate(void * _self)
+%endclass
+
+
+#ifdef __cplusplus
+  }
+}
+#endif
+
+#endif /* __MUTABOR_INTERVALDIFF_H_INCLUDED__ */
