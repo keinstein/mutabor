@@ -2,14 +2,18 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parameter.c,v 1.3 2005/07/20 12:22:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parameter.c,v 1.4 2005/11/03 14:55:39 keinstein Exp $
  *
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 12:22:38 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/03 14:55:39 $
+ * \version $Revision: 1.4 $
  * \todo Portabilisierung von:
  *
  * $Log: parameter.c,v $
+ * Revision 1.4  2005/11/03 14:55:39  keinstein
+ * includes
+ * interpreter functions
+ *
  * Revision 1.3  2005/07/20 12:22:38  keinstein
  * CVS-Kopf
  * config.h
@@ -30,6 +34,7 @@
 #include <stdio.h>
 #include "mutabor/parameter.h"
 #include "mutabor/heap.h"
+#include "mutabor/interpreter.h"
 
 /** Zählen der Elemente einer einfach verketteten Parameterliste.
  * \param list Liste der Parameter
@@ -99,3 +104,46 @@ int parameter_nummer (int aktueller_index, char * such_name,
     return parameter_nummer (aktueller_index + 1, such_name, 
                              knoten -> next);
 }
+
+/** Generiert eine Interpreter-Parameterliste aus eine Argumentliste. Dabei
+ * wird eine Bezugsliste verwendet, die für parametrische argumente die 
+ * Wertefelder zur Verfügung stellt. Taucht ein unerwartetes Ereignis auf, wird ein
+ * fataler Fehler ausgelöst.
+ * \param liste Liste der Argumente, die in die Interpreter-Liste eingetragen werden sollen.
+ * \param bezugs_liste Liste mit den Bezügen/Wertefeldern, die für nichtnumerische Argumente
+ *                     verwendet werden soll.
+ */
+struct interpreter_parameter_liste * gen_parameter_liste (
+           struct argument_liste * liste,
+           struct interpreter_parameter_liste * bezugs_liste)
+{
+    struct interpreter_parameter_liste * help;
+
+    if (liste == NULL)
+        return NULL;
+    help = (struct interpreter_parameter_liste*) xmalloc (sizeof (struct interpreter_parameter_liste));
+    switch (liste->argument.argument_typ) {
+    case zahl:
+        help->werte_feld = get_cache_konstante (liste->argument.u.zahl.zahl);
+    break;
+    case parameter: {
+        int i;
+        struct interpreter_parameter_liste * lauf;
+        for (lauf = bezugs_liste, i=liste->argument.u.parameter.parameter_nummer;
+             lauf && i;
+             lauf = lauf -> next, i--)
+        ;
+        if (lauf)
+            help->werte_feld = lauf -> werte_feld;
+        else
+            fatal_error (0, __FILE__, __LINE__);
+    }
+    break;
+    default:
+        fatal_error (0, __FILE__, __LINE__);
+    break;
+    }
+    help->next = gen_parameter_liste (liste->next, bezugs_liste);
+    return help;
+}
+
