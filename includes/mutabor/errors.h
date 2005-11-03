@@ -2,12 +2,15 @@
  ********************************************************************
  * Fehlermeldungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/errors.h,v 1.1 2005/07/20 12:37:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/includes/mutabor/errors.h,v 1.2 2005/11/03 14:30:49 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 12:37:21 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/03 14:30:49 $
+ * \version $Revision: 1.2 $
  *
  * $Log: errors.h,v $
+ * Revision 1.2  2005/11/03 14:30:49  keinstein
+ * whitespace corrections
+ *
  * Revision 1.1  2005/07/20 12:37:21  keinstein
  * Fehlerkonstanten
  *
@@ -25,6 +28,8 @@ namespace mutabor {
     extern char * Error_text[]; /**< Liste der Warnungen */
     extern char * Warning_text[]; /**< Liste der Warnungen */
 
+
+
 #define MUTABOR_ERROR_UNDEFINED           0
 #define MUTABOR_ERROR_SYNTAX_COMMON       1
 #define MUTABOR_ERROR_INVALID_CHARACTOR   2
@@ -32,6 +37,9 @@ namespace mutabor {
 #define MUTABOR_ERROR_MEMORY_LOW          4
 #define MUTABOR_ERROR_UNFINISHED_COMMENT  5
 #define MUTABOR_ERROR_UNREACHABLE_CODE    6
+
+
+
 #define MUTABOR_ERROR_DOUBLE_INTERVAL     10
 #define MUTABOR_ERROR_DOUBLE_TONE         11
 #define MUTABOR_ERROR_DOUBLE_TONE_SYSTEM  12
@@ -45,7 +53,6 @@ namespace mutabor {
 #define MUTABOR_ERROR_MULTIPLE_DEFAULT_TRIGGER 20
 #define MUTABOR_ERROR_MULTIPLE_DEFAULT_RETUNING 21
 #define MUTABOR_ERROR_DOUBLE_ALTERNATIVE  22
-
 
 
 #define MUTABOR_ERROR_UNDEFINED_SYMBOL    25
@@ -106,6 +113,11 @@ namespace mutabor {
 #define MUTABOR_ERROR_B_MULTIPLE_DOT_IN_NUMBER 80
 #define MUTABOR_ERROR_B_ONLY_INTEGER_ALLOWED 81
 #define MUTABOR_ERROR_B_MISSING_OPERAND      82
+
+
+
+
+
 
 
 #define MUTABOR_WARNING_UNDEFINED             0
