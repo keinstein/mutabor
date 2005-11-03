@@ -2,9 +2,17 @@
  ********************************************************************
  * Alles zu Tonsystemen.
  *
+ * $Id: tonsystem.h,v 1.3 2005/11/03 14:37:57 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/11/03 14:37:57 $
+ * \version $Revision: 1.3 $
+ * 
+ * $Log: tonsystem.h,v $
+ * Revision 1.3  2005/11/03 14:37:57  keinstein
+ * new file header
+ * includes corrected
+ * interpreter data structures
+ *
  ********************************************************************/
 
 #ifndef __TONSYSTEM_H_INCLUDED
@@ -12,6 +20,7 @@
 
 #include "ton.h"
 #include "interval.h"
+#include "bad_decl.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -33,6 +42,16 @@ namespace mutabor {
       struct ton *toene; /**< Töne für die Tasten */
       struct tonsystem *next; /**< Nächstes */
     };
+
+    /** Einzelnes Tonsystem. Enthält die aktuellen Daten für den Interpreter.*/
+
+    typedef struct TSYS {
+      int anker; /**< Verankerungstaste */
+      int breite; /**< Tonsystembreite */
+      long periode; /**< Perioden-Faktor */
+      long ton[MAX_BREITE]; /**< Töne. */
+    } TONSYST;
+    
 
     void get_new_tonsystem (char *name, int taste);
     void get_new_tonsystem_negative (char *name, int taste);
