@@ -2,12 +2,16 @@
  ********************************************************************
  * Alles zu Umstimmungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/harmonie.c,v 1.3 2005/07/20 11:13:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/harmonie.c,v 1.4 2005/11/03 14:48:18 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 11:13:46 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/03 14:48:18 $
+ * \version $Revision: 1.4 $
  *
  * $Log: harmonie.c,v $
+ * Revision 1.4  2005/11/03 14:48:18  keinstein
+ * parser and interpreter groups for doxygen
+ * interpreter functions
+ *
  * Revision 1.3  2005/07/20 11:13:46  keinstein
  * Dateikopf
  * config.h
@@ -31,6 +35,11 @@
 #include "mutabor/taste.h"
 #include "mutabor/heap.h"
 #include "mutabor/errors.h"
+
+/** \defgroup Parser 
+ * \{
+ */
+
 
 /** Wurzel der Harmonien */
 struct harmonie       *  list_of_harmonien;
@@ -107,3 +116,40 @@ void get_harmoniebezeichner (int vor_taste,
     tmp_nach_taste  = nach_taste;
 }
 
+/** \} 
+ * \defgroup Interpreter
+ * \{
+ */
+
+/** Erzeugt eine Suchmaske für die Suche nach Harmonien. 
+ * \param harmonie_name Name der Harmonie, für die die Maske erzeugt werden soll.
+ * \return Ganzzahlenfeld, das die Harmonie-Suchmaske symbolisiert
+ */
+PATTERNN * expand_pattern (char * harmonie_name)
+{
+    struct harmonie * the_harmonie;
+    PATTERNN * help;
+    int i;
+    struct taste * lauf_taste;
+
+    the_harmonie = get_harmonie (harmonie_name, list_of_harmonien);
+    if (the_harmonie == NULL) {
+        fatal_error (0, __FILE__, __LINE__);
+    }
+    
+    help = (struct PTRN*) xmalloc (sizeof (PATTERNN));
+    
+    for (i=0;i<MAX_BREITE;i++) help->tonigkeit[i]=1; /* Off */
+    for (lauf_taste = the_harmonie->tastenliste;
+         lauf_taste;
+         lauf_taste = lauf_taste -> next) {
+        if (lauf_taste->stern=='*')
+            help->tonigkeit[lauf_taste->taste]=0; /* Egal */
+        else 
+            help->tonigkeit[lauf_taste->taste]=2; /* On */
+    }
+    
+    return help;
+}
+
+/** \} */
