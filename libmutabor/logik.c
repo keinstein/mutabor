@@ -2,12 +2,16 @@
  ********************************************************************
  * Alles zu Logiken.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/logik.c,v 1.3 2005/07/20 12:01:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/logik.c,v 1.4 2005/11/03 14:50:27 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 12:01:01 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/03 14:50:27 $
+ * \version $Revision: 1.4 $
  *
  * $Log: logik.c,v $
+ * Revision 1.4  2005/11/03 14:50:27  keinstein
+ * new includes
+ * interpreter functions
+ *
  * Revision 1.3  2005/07/20 12:01:01  keinstein
  * Kopf korrigiert
  * Includes bereinigt.
@@ -34,6 +38,7 @@
 #include "mutabor/tonsystem.h"
 #include "mutabor/umstimmung.h"
 #include "mutabor/parameter.h"
+#include "mutabor/aktion.h"
 
 /** Wurzel der Logiken */
 struct logik          *  list_of_logiken;
@@ -244,4 +249,52 @@ void check_logik_konsistenz(void)
       }
     }
   }
+
+/** Wandelt eine Logik in eine Aktion um.
+ * Dabei werden die Namen der entsprechenden Bezeichner der Logik
+ * durch die zugehörigen Werte ersetzt.
+ * Anschließend werden lokale Harmonie, Klaviatur und Midiwerte auf die
+ * ersten der Logik initialisiert.
+ * \param the_logik Logik, die expandiert werden soll.
+ */
+struct do_aktion * expandiere_logik (
+           struct logik * the_logik)
+{
+    struct do_aktion * help;
+    int i;
+
+    help = (struct do_aktion*) xmalloc (sizeof (struct do_aktion));
+    help -> name = the_logik -> name;
+    help -> aufruf_typ = aufruf_logik;
+    if (the_logik -> einstimmungs_name) {
+        struct tonsystem * help_tonsystem;
+        struct umstimmung * help_umstimmung;
+        help_tonsystem = parser_get_tonsystem (the_logik->einstimmungs_name,
+                                        list_of_tonsysteme);
+        if (help_tonsystem) {
+            help -> u.aufruf_logik.einstimmung = expandiere_tonsystem (help_tonsystem);
+        }
+        else {
+	        help_umstimmung = get_umstimmung (the_logik->einstimmungs_name,
+	                                        list_of_umstimmungen);
+	        if (help_umstimmung) {
+	            help -> u.aufruf_logik.einstimmung = expandiere_umstimmung (help_umstimmung, NULL);
+	        }
+            else {
+                fatal_error (0, __FILE__, __LINE__);
+                help -> u.aufruf_logik.einstimmung = NULL;
+            }
+        }  
+    }
+    else
+        help -> u.aufruf_logik.einstimmung = NULL;
+        
+    i = get_logik_nummer (the_logik -> name, list_of_logiken);
+    help -> u.aufruf_logik.lokal_harmonie = & first_lokal_harmonie [i];
+    help -> u.aufruf_logik.lokal_keyboard = & first_lokal_keyboard [i];
+    help -> u.aufruf_logik.lokal_midi     = & first_lokal_midi     [i];
+    help -> next = NULL;
+
+    return help;
+}
 

@@ -2,12 +2,16 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/argument.c,v 1.2 2005/07/19 15:15:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/argument.c,v 1.3 2005/11/03 14:45:58 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/19 15:15:27 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/11/03 14:45:58 $
+ * \version $Revision: 1.3 $
  *
  * $Log: argument.c,v $
+ * Revision 1.3  2005/11/03 14:45:58  keinstein
+ * new includes
+ * interpreter functions
+ *
  * Revision 1.2  2005/07/19 15:15:27  keinstein
  * Using own Templates
  *
@@ -23,6 +27,8 @@
 
 #include "mutabor/argument.h"
 #include "mutabor/heap.h"
+#include "mutabor/interpreter.h"
+#include "mutabor/errors.h"
 
 /** Zählen der Elemente einer einfach verketteten Argumentliste.
  * \param list Liste der Argumente
@@ -126,3 +132,58 @@ void drucke_argument (struct argument * z_or_p)
     }
 }
 
+/** Schreibt ein Argument in eine Zieldatei. Das Argument wird je nach Typ
+ * als Zeichenkette oder Zahl ausgegeben. Ist der Typ unbekannt, wird ein fataler
+ * Fehler ausgegeben.
+ * \param zieldatei Datei, in die geschrieben werden soll. Diese muss 
+ *                  schon für das Schreiben geöffnet sein.
+ * \param argument  Argument, das geschrieben werden soll.
+ */
+void fprint_argument (FILE * zieldatei, struct argument * argument)
+{
+    if (argument -> argument_typ == zahl) {
+        fprintf (zieldatei, ", %c ", argument -> u.zahl.zahl);
+    }
+    else if (argument -> argument_typ == parameter) {
+        fprintf (zieldatei, ", %s ", argument -> u.parameter.parameter_name);
+    }
+    else
+        fatal_error (MUTABOR_ERROR_UNDEFINED, __FILE__, __LINE__ );
+}
+
+/** Gibt das Wertefeld eines Argumentes zurück.
+ * \param argument Argument, das gesucht werden soll.
+ * \param aktuelle_parameter Interpreter-Parameter-Liste mit Wertefeldern für 
+ * nichtnumerische Argumente.
+ */
+int * get_wert_of_argument (
+                 struct argument * argument,
+                 struct interpreter_parameter_liste * aktuelle_parameter
+                 )
+{
+    switch (argument->argument_typ) {
+    case zahl:
+        return * get_cache_konstante (argument->u.zahl.zahl);
+/*    break; */
+    case parameter: {
+        struct interpreter_parameter_liste * lauf;
+        int i;
+        for (lauf=aktuelle_parameter, i=argument->u.parameter.parameter_nummer;
+             lauf && i;
+             lauf = lauf -> next, i--)
+        ;
+        if (lauf)
+            return * lauf->werte_feld;
+        else {
+            fatal_error (MUTABOR_ERROR_UNDEFINED, __FILE__, __LINE__);
+            return NULL;
+        }
+    }
+/*    break; */
+    default: 
+        fatal_error (MUTABOR_ERROR_UNDEFINED, __FILE__, __LINE__);
+        return NULL;
+/*    break; */
+    }
+    
+}
