@@ -2,9 +2,16 @@
  ********************************************************************
  * Alles zu Logiken.
  *
+ * $Id: logik.h,v 1.3 2005/11/03 14:32:29 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/11/03 14:32:29 $
+ * \version $Revision: 1.3 $
+ *
+ * $Log: logik.h,v $
+ * Revision 1.3  2005/11/03 14:32:29  keinstein
+ * new header
+ * expandiere_logik
+ *
  ********************************************************************/
 
 #ifndef __LOGIK_H_INCLUDED
@@ -36,6 +43,7 @@ namespace mutabor {
     struct logik * get_logik (char * name, struct logik * liste);
     void setze_nummer_von_abstand_und_zentrum (void);
     void check_logik_konsistenz(void);
+    struct do_aktion * expandiere_logik (struct logik * the_logik);
 
     extern struct logik          *  list_of_logiken;
 
