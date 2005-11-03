@@ -1,0 +1,37 @@
+/** \file
+ ***********************************************************************
+ * List of identifiers.
+ *
+ * $Id: idlist.def,v 1.1 2005/11/03 13:53:39 keinstein Exp $
+ * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2005/11/03 13:53:39 $
+ * \version $Revision: 1.1 $
+ *
+ * $Log: idlist.def,v $
+ * Revision 1.1  2005/11/03 13:53:39  keinstein
+ * Identifier list class
+ *
+ */
+
+#ifndef __MUTABOR_IDLIST_H__
+#define __MUTABOR_IDLIST_H__
+
+#include "identifier.h"
+
+%include "object.def"
+%class idlist
+%parent object
+%field size_t number /**< Current number of entries */
+%field size_t arraysize /**< Maximum number of entries */
+%field int status /**< 1 sorted according name, 2 sorted according pointers */
+%field MUT_CLASS(identifier) ** array /**< Entries of class */
+%virtual void * constructor(void * _self) /**< Constructor for creating an object. */
+%virtual void * destructor(void * _self) /**< Destructor for deleting an object. */
+%virtual char * tostring (void * _self) /**< Stringify for data output. */
+%virtual int insert (void * _self,const void * identifier)
+%virtual MUT_CLASS(identifier) * find (void * _self,const char * name)
+%function void sortbyname (void * _self, int force_bubble)
+%function void sortbynumber (void * _self, int force_bubble)
+%endclass
+
+#endif /* __MUTABOR_IDLIST_H__ */
