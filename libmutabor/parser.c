@@ -2,12 +2,15 @@
  ********************************************************************
  * Mutabor Fileparser.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.3 2005/07/20 12:24:52 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.4 2005/11/03 14:56:11 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \version $Revision: 1.3 $
- * \date $Date: 2005/07/20 12:24:52 $
+ * \version $Revision: 1.4 $
+ * \date $Date: 2005/11/03 14:56:11 $
  *
  * $Log: parser.c,v $
+ * Revision 1.4  2005/11/03 14:56:11  keinstein
+ * type in printf call
+ *
  * Revision 1.3  2005/07/20 12:24:52  keinstein
  * CVS-Kopf
  * config.h
@@ -179,7 +182,7 @@ void mutabor_programm_einlesen ( char *filename )
       printf ("\n");
       for (lauf=list_of_intervalle; lauf; lauf=lauf->next) {
 	if (lauf->intervall_typ==intervall_absolut)
-	  printf ("Name: %s, Wert: %lf:\n", lauf->name,
+	  printf ("Name: %s, Wert: %f:\n", lauf->name,
 		  lauf->u.intervall_absolut.intervall_wert );
 	else printf ("Komplexes Intervall: Name: %s\n",lauf->name);
       }
