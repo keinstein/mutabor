@@ -1,13 +1,16 @@
 /** \file
  ******************************************************
- * Parser-Generator f¸r Mutabor-Dateien.
+ * Parser-Generator f√ºr Mutabor-Dateien.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.4 2005/07/20 12:13:47 keinstein Exp $
- * \author R¸diger Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2005/07/20 12:13:47 $
- * \version $Revision: 1.4 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.5 2005/11/03 14:52:10 keinstein Exp $
+ * \author R√ºdiger Krau√üe <krausze@users.berlios.de>
+ * \date $Date: 2005/11/03 14:52:10 $
+ * \version $Revision: 1.5 $
  *
  * $Log: mut.y,v $
+ * Revision 1.5  2005/11/03 14:52:10  keinstein
+ * *** empty log message ***
+ *
  * Revision 1.4  2005/07/20 12:13:47  keinstein
  * CVS-Kopf
  * %pure-parser
@@ -26,6 +29,7 @@
 %locations
 %pure-parser
 %name-prefix="mutabor_parser_"
+%parse-param {void * _self}
 %token-table
 /* Mutabor Tonsysteme */
 
@@ -44,7 +48,7 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-  /* Relevante Variablen f¸r diese Datei:
+  /* Relevante Variablen f√ºr diese Datei:
    * HAVE_MEMMOVE 
    * HAVE_POW
    * HAVE_LIMITS_H
@@ -60,11 +64,14 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
-#include "mut.h"
 #include "mutabor/heap.h"
 #include "mutabor/mut_tab.h"
-#include "mutabor/interval.h"
+#include "mutabor/intervalDiff.h"
+#include "mutabor/intervalPlaceholder.h"
+#include "mutabor/intervalStretch.h"
+#include "mutabor/intervalInv.h"
 #include "mutabor/tonsystem.h"
 #include "mutabor/argument.h"
 #include "mutabor/parameter.h"
@@ -76,31 +83,56 @@
 #include "mutabor/instrument.h"
 #include "mutabor/parser.h"
 #include "mutabor/errors.h"
-#include "mutlex.h"
+#include "mutabor/mutfile.h"
 
+  /*  
+#undef yylloc
+#undef yylval
+#undef yylloc
+#undef yylval
+#define yylloc  mutabor_parser_lloc
+#define yylval  mutabor_parser_lval
+  */
+
+#define YYLEX_PARAM self->scanner
+#define FEHLERZEILE yylloc.first_line
+  /*
 #define MAX_IDENTIFIER_LEN 80
 
-#define FEHLERZEILE yylloc.first_line+1
 
 #define alloca xmalloc
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
-                   /* wegen fehlendem alloca in PUREC */
+                   / wegen fehlendem alloca in PUREC /
+
+*/
+
 
 %}
 
 %union {
-    double      f_value;        /* fÅr Gleitkommazahlen */
-    int         integer;        /* FÅr integers */
-    char        *identifier;    /* FÅr Namen */
+	double      f_value;        /* for floating point numbers */
+	int         integer;        /* for integers */
+	char        *identifier;    /* for names */
+	void        *object;        /* for data objects */
 }
 
+
+%{
+#include "mutlex.h" 
+#define self ((MUT_CLASS(mutfile)*)_self)
+void yyerror(YYLTYPE * locp, void * _self, char const *s);
+
+%}
 %token <identifier> IDENTIFIER
 %token <f_value> F_NUMBER
 %token <integer> INTEGER
 
+%token UNREACHED
 %token INTERVALL
+%token INTERVALLOBJ
 %token WURZEL
 %token TON
+%token TONOBJ
 %token TONSYSTEM
 %token UMSTIMMUNG
 %token HARMONIE
@@ -112,36 +144,165 @@
 %token MIDI_OUT
 %token ANSONSTEN
 
+/* 
 %type <integer> bezugs_taste
+*/
 %type <f_value> GLEITKOMMA_ZAHL
+%type <object> intervalldekl3 intervalldekl2 intervalsum tondekl2_1 tonsum tondekl3
+%destructor { free($$); } IDENTIFIER
+
+/* are in a symbol table, so we don't need any destructor for them
+%destructor { mutabor_delete($$); } intervalldekl2
+*/
+
+%nonassoc INTERVALL TON TONSYSTEM UMSTIMMUNG HARMONIE LOGIK FORM INSTRUMENT TASTE MIDI_IN MIDI_OUT ANSONSTEN 
+%right '='
+%left ','
+%left '+' '-'
+%left INTEGER F_NUMBER
+%left '/' ':' WURZEL
+%right '(' ')' 
 
 /*  %left '+' '-'  */
 
 %% /* Grammar rules and actions */
 
-start : /* empty */
+start : /* empty */ { yylloc.last_line=1; yylloc.last_column=0; }
         | start intervalldeklaration
         | start tondeklaration
         | start tonsystemdeklaration
-      	| start umstimmungdeklaration
+/*      	| start umstimmungdeklaration
         | start harmoniedeklaration
         | start logikdeklaration
         | start instrumentdeklaration
-        | start error { fatal_error(1,@$.first_line+1); }
-      ;
+        | start error { fatal_error(1,@$.last_line,@$.last_column); }
+*/      ;
 
 intervalldeklaration :
-        INTERVALL intervalldekl1 ;
+        INTERVALL
+        | INTERVALL intervalldekl1 ;
 
 intervalldekl1 :
-          /* empty */
-        | intervalldekl1 intervalldekl2_1
+          intervalldekl2_1
+          | intervalldekl1 intervalldekl2_1 
       ;
 
 intervalldekl2_1:
-          { init_komplex_ton_list (); } intervalldekl2
+           IDENTIFIER '=' intervalsum {		   
+		   if ($3) { 
+			   char * c;
+			   if ((c=MUTABOR_CLASS_FUNCTION(identifier,get_name)($3))) {
+			     if (strcmp(c,$1)) {
+			       MUT_CLASS(intervalPlaceholder)* alias;
+			       alias=MUT_NEW(intervalPlaceholder);
+			       MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,alias);
+			       MUTABOR_CLASS_FUNCTION(intervalPlaceholder,setreplacement)
+				                                               (alias,$3);
+			       MUTABOR_CLASS_FUNCTION(identifier,set_name)(alias,$1);
+			       MUTABOR_CLASS_FUNCTION(idlist,sortbyname)(self->intervals,1);
+			     }  else {
+				     if (c!=$1) free($1);
+			     }
+			   } else { 
+				   if (MUTABOR_CLASS_FUNCTION(mutfile,check_interval)
+				       (_self,$3,$1)) {
+					   fatal_error(MUTABOR_ERROR_DOUBLE_INTERVAL,$1);
+					   free($1);
+				   }
+			   }
+		   } else free($1);
+	   }
       ;
 
+intervalsum : intervalsum '+' intervalsum {
+		    $$=MUT_NEW(intervalSum);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setleft)($$,$1);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setright)($$,$3);
+           }
+	   | intervalsum '-' intervalsum {
+		    $$=MUT_NEW(intervalDiff);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalDiff,setleft)($$,$1);
+		    MUTABOR_CLASS_FUNCTION(intervalDiff,setright)($$,$3);
+           } 
+           | GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL intervalldekl2 {
+		   $$=MUT_NEW(intervalStretch);
+		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setstretch)
+			   ($$,MUTABOR_FLOAT_DIVIDE($1,$3));
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setright)($$,$4);
+	   }
+           | '/' GLEITKOMMA_ZAHL intervalldekl2 {
+		   $$=MUT_NEW(intervalStretch);
+		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setstretch)
+			   ($$,MUTABOR_FLOAT_DIVIDE(1,$2));
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setright)($$,$3);
+	   }
+           | intervalldekl2 '/' GLEITKOMMA_ZAHL {
+		   $$=MUT_NEW(intervalStretch);
+		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setstretch)
+			   ($$,MUTABOR_FLOAT_DIVIDE(1,$3));
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setright)($$,$1);
+	   }
+           | GLEITKOMMA_ZAHL intervalldekl2 {
+		   $$=MUT_NEW(intervalStretch);
+		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setstretch)($$,$1);
+		   MUTABOR_CLASS_FUNCTION(intervalStretch,setright)($$,$2);
+	   }
+           | '-' intervalldekl2 {
+		   $$=MUT_NEW(intervalInv);
+		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		   MUTABOR_CLASS_FUNCTION(intervalInv,setright)
+			   ($$,$2);
+	   }
+           | intervalldekl2
+/*	   | intervalldekl2 error {
+		   fatal_error(MUTABOR_ERROR_B_MISSING_OPERAND,@$.first_line); 
+		   $$=NULL; 
+	   }
+           | error { fatal_error(MUTABOR_ERROR_B_INVALID_INTERVAL,@$.first_line); }
+*/;
+           
+intervalldekl2 : intervalldekl3 
+	   | '(' intervalsum ')' { $$=$2; } 
+	   | '(' tondekl3 ',' tondekl3 ')' {
+		    $$=MUT_NEW(intervalDiff);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setleft)($$,$2);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setright)($$,$4);
+           } 
+;
+
+intervalldekl3 :
+           GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL {	    
+			    $$=MUT_NEW(interval);
+			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+			    MUTABOR_CLASS_FUNCTION(interval,set_factor)
+				    ($$,MUTABOR_FLOAT_DIVIDE($1,$3));
+		    }
+
+           | GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL {
+			    $$=MUT_NEW(interval);
+			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+			    MUTABOR_CLASS_FUNCTION(interval,set_factor)
+				    ($$,MUTABOR_FLOAT_POW($3,MUTABOR_FLOAT_DIVIDE(1,$1)));
+	            }
+           | IDENTIFIER {
+		   $$=MUTABOR_CLASS_FUNCTION(mutfile,get_interval)(_self,$1);
+		   free($1);
+	   }
+/*	   | error {
+		   fatal_error(MUTABOR_ERROR_B_MISSING_OPERAND,@$.first_line); 
+		   $$=NULL; 
+	   }
+*/	   ;
+
+
+/*
 intervalldekl2 :
           IDENTIFIER '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
                     { if ( fabs($5) > 0.001 )
@@ -154,21 +315,100 @@ intervalldekl2 :
                           get_new_intervall ($1, pow ($5, 1 / $3));
                       else
                          fatal_error (46, $1); }
-/*****
+/ *****
         | IDENTIFIER '=' GLEITKOMMA_ZAHL
                     { get_new_intervall ($1, $3); }
-****/
+**** /
 	| IDENTIFIER '=' KOMPLEX_TON_LIST
 			 { get_new_intervall_komplex ($1); }
 	| IDENTIFIER '=' error { fatal_error(71,$1); }
         | IDENTIFIER error { fatal_error(70,"'='",FEHLERZEILE); }
       ;
+*/
+tondeklaration :
+        TON
+        | TON tondekl1 ;
 
+tondekl1 :
+          tondekl2_1
+          | tondekl1 tondekl2_1 
+      ;
+
+tondekl2_1:
+           IDENTIFIER '=' tonsum {		   
+		   if ($3) { 
+			   char * c;
+			   if ((c=MUTABOR_CLASS_FUNCTION(identifier,get_name)($3))) {
+			     if (strcmp(c,$1)) {
+			       MUT_CLASS(intervalPlaceholder)* alias;
+			       alias=MUT_NEW(intervalPlaceholder);
+			       MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,alias);
+			       MUTABOR_CLASS_FUNCTION(intervalPlaceholder,setreplacement)
+				                                               (alias,$3);
+			       MUTABOR_CLASS_FUNCTION(identifier,set_name)(alias,$1);
+			       MUTABOR_CLASS_FUNCTION(idlist,sortbyname)(self->intervals,1);
+			     }  else {
+					if (c!=$1) free($1);
+			     }
+			   } else { 
+				   if (MUTABOR_CLASS_FUNCTION(mutfile,check_interval)
+				       (_self,$3,$1)) {
+					   fatal_error(MUTABOR_ERROR_DOUBLE_INTERVAL,$1);
+					   free($1);
+				   }
+			   }
+		   } else free($1);
+	   }
+      ;
+
+tonsum :   tondekl3 '+' intervalsum {
+		    $$=MUT_NEW(intervalSum);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setleft)($$,$1);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setright)($$,$3);
+           }
+/*           | intervalsum '+' tondekl3 { / * using commutativity * /
+		    $$=MUT_NEW(intervalSum);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setleft)($$,$3);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setright)($$,$1);
+           }
+*/	   | tondekl3 '-' intervalsum {
+		    $$=MUT_NEW(intervalDiff);
+		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setleft)($$,$1);
+		    MUTABOR_CLASS_FUNCTION(intervalSum,setright)($$,$3);
+           } 
+           | tondekl3 { $$=$1; } 
+/*           | tondekl3 error { fatal_error(MUTABOR_ERROR_B_MISSING_OPERAND,@$.first_line); 
+		   $$=NULL; 
+	   }
+           | error { fatal_error(MUTABOR_ERROR_B_INVALID_INTERVAL,@$.first_line); }
+*/	  ;
+           
+tondekl3 :
+           GLEITKOMMA_ZAHL {
+			    $$=MUT_NEW(interval);
+			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,$$);
+			    MUTABOR_CLASS_FUNCTION(interval,set_factor)($$,$1);
+           }
+           | IDENTIFIER {
+	           printf("tondekl3");
+		   $$=MUTABOR_CLASS_FUNCTION(mutfile,get_interval)(_self,$1);
+		   free($1);
+	   }
+/*	   | error {
+		   fatal_error(MUTABOR_ERROR_B_MISSING_OPERAND,@$.first_line); 
+		   $$=NULL; 
+	   }
+*/   ;
+
+/*
 tondeklaration :
         TON tondekl1 ;
 
 tondekl1 :
-          /* empty */
+          / empty /
 	| tondekl1 tondekl2_1
       ;
 
@@ -201,7 +441,7 @@ KOMPLEX_TON_LIST:
 
 
 KOMPLEX_TON_LIST_2 :
-	  /* empty */
+	  / * empty * /
 	| KOMPLEX_TON_LIST_2 KOMPLEX_TON_1
 
 KOMPLEX_TON_1 :
@@ -240,7 +480,7 @@ KOMPLEX_TON_1 :
                        get_new_faktor_anteil ( -($2) / ($4), $5);
                      else
                        fatal_error(53, FEHLERZEILE);  }
-/******
+/ ******
         | '+'  '(' IDENTIFIER ',' IDENTIFIER ')'
             { get_new_relativ_anteil ( (double) 1, $3, $5); }
 
@@ -252,17 +492,17 @@ KOMPLEX_TON_1 :
 
         | '-' GLEITKOMMA_ZAHL '(' IDENTIFIER ',' IDENTIFIER ')'
             { get_new_relativ_anteil ( - $2, $4, $6); }
-**********/
+********** /
         ;
 
 KOMPLEX_TON_START :
 	  IDENTIFIER
 		   { get_new_faktor_anteil ( (double) 1.0 , $1); }
 
-/***
+/ ***
         | '-' IDENTIFIER
                    { get_new_faktor_anteil ( (double) -1.0 , $2); }
-***/
+*** /
 
 	|  GLEITKOMMA_ZAHL IDENTIFIER
 		   { get_new_faktor_anteil ( $1, $2); }
@@ -278,12 +518,12 @@ KOMPLEX_TON_START :
                        get_new_faktor_anteil ( ($1) / ($3), $4);
                      else
                        fatal_error(53, FEHLERZEILE);  }
-/****
+/ ****
         | '-' GLEITKOMMA_ZAHL IDENTIFIER
                    { get_new_faktor_anteil ( -($2), $3); }
-****/
+**** /
 
-/********
+/ ********
 	|  '(' IDENTIFIER ',' IDENTIFIER ')'
 	    { get_new_relativ_anteil ( (double) 1, $2, $4); }
 
@@ -295,14 +535,44 @@ KOMPLEX_TON_START :
 
         | '-' GLEITKOMMA_ZAHL '(' IDENTIFIER ',' IDENTIFIER ')'
             { get_new_relativ_anteil ( - $2, $4, $6); }
-**********/
+********** /
         ;
+*/
+tonsystemdeklaration :
+        TONSYSTEM
+	| TONSYSTEM tonsystemdekl1
 
+tonsystemdekl1 :
+	tonsystemdekl2_1
+        | tonsystemdekl1 tonsystemdekl2_1
+      ;
+      
+tonsystemdekl2_1:
+         tonsystemdekl2
+      ;
+
+tonsystemdekl2 : 
+         IDENTIFIER '=' INTEGER '[' tonliste ']' 
+                      intervalsum
+/*      |  IDENTIFIER '=' INTEGER '[' tonliste ']' 
+                      { init_komplex_ton_list (); }
+                    '-' KOMPLEX_TON_LIST
+                   { get_new_tonsystem_negative ($1, $3); }
+*/      ;
+
+tonliste : ton_element | tonliste ',' ton_element ;
+
+ton_element :
+          IDENTIFIER      
+        | /* empty */  
+        | error { fatal_error(73,FEHLERZEILE); }
+      ;
+/*
 tonsystemdeklaration :
         TONSYSTEM tonsystemdekl1 ;
 
 tonsystemdekl1 :
-          /* empty */
+          / * empty * /
         | tonsystemdekl1 tonsystemdekl2_1
       ;
       
@@ -313,23 +583,31 @@ tonsystemdekl2_1:
 tonsystemdekl2 : 
          IDENTIFIER '=' INTEGER '[' tonliste ']' 
                       { init_komplex_ton_list (); }
-                        KOMPLEX_TON_LIST
+                      intervalsum
                    { get_new_tonsystem ($1, $3); }
-      |  IDENTIFIER '=' INTEGER '[' tonliste ']' 
+/ *      |  IDENTIFIER '=' INTEGER '[' tonliste ']' 
                       { init_komplex_ton_list (); }
                     '-' KOMPLEX_TON_LIST
                    { get_new_tonsystem_negative ($1, $3); }
-      ;
+* /      ;
 
 tonliste : ton_element | tonliste ',' ton_element ;
 
 ton_element :
           IDENTIFIER      { get_new_ton_in_tonsystem ($1); }
-        | /* empty */     { get_new_ton_in_tonsystem (NULL); }
+        | / * empty * /     { get_new_ton_in_tonsystem (NULL); }
         | error { fatal_error(73,FEHLERZEILE); }
       ;
+*/
 
 parameter_liste :      /* allgemein eine Liste von Identifiern */
+          IDENTIFIER  
+        | parameter_liste ',' IDENTIFIER
+        | error { fatal_error(74,FEHLERZEILE); }
+        ;
+
+/*
+parameter_liste :      / * allgemein eine Liste von Identifiern * /
           IDENTIFIER      { get_new_name_in_parameterlist ($1); }
         | parameter_liste ',' IDENTIFIER
                           { get_new_name_in_parameterlist ($3); }
@@ -343,20 +621,82 @@ argument_liste :
         | error { fatal_error(74,FEHLERZEILE); }
         ;
 
-argument_listenelement :        /* allgemein eine Liste von Identifiern
-                          oder Kommazahlen */
+argument_listenelement :        / * allgemein eine Liste von Identifiern
+                          oder Kommazahlen * /
           IDENTIFIER      { get_new_name_in_argument_list ($1);   }
         | INTEGER        { get_new_number_in_argument_list ($1); }
         | '-' INTEGER        { get_new_number_in_argument_list (-($2)); }
 
         ;
 
+*/
+umstimmungdeklaration :
+	UMSTIMMUNG 
+        | UMSTIMMUNG umstimmungs_dekl_1 ;
 
+umstimmungs_dekl_1 :
+        umstimmungs_dekl_2 
+        | umstimmungs_dekl_1 umstimmungs_dekl_2
+      ;
+
+umstimmungs_dekl_2 :
+          IDENTIFIER '=' umstimmungs_dekl_3
+        | IDENTIFIER '(' parameter_liste ')' '=' umstimmungs_dekl_3 
+        ;
+        
+umstimmungs_dekl_3 :
+          umstimmungs_dekl_taste_abs       
+        | umstimmungs_dekl_taste_rel      
+        | umstimmungs_dekl_breite_abs    
+        | umstimmungs_dekl_breite_rel   
+        | umstimmungs_dekl_tonhoehe_veraendert 
+/*        | umstimmungs_dekl_wiederholung_abs   
+        | umstimmungs_dekl_wiederholung_rel  
+        | umstimmungs_dekl_umstimmungs_bund 
+        | umstimmungs_dekl_umstimmungs_case
+        | umstimmungs_dekl_midi_out       
+*/        | error {fatal_error(75,FEHLERZEILE);}   
+        ;
+
+
+umstimmungs_dekl_taste_abs :
+          INTEGER '[' ']'
+        | IDENTIFIER '[' ']'
+        ;
+
+umstimmungs_dekl_taste_rel :
+          '@' '+' INTEGER '[' ']'
+        | '@' '+' IDENTIFIER '[' ']'
+        | '@' '-' INTEGER '[' ']'
+        | '@' '-' IDENTIFIER '[' ']'
+        ;
+
+umstimmungs_dekl_breite_abs :
+          '[' '<' '<' INTEGER '>' '>' ']'
+        | '[' '<' '<' IDENTIFIER '>' '>' ']'
+        ;
+
+umstimmungs_dekl_breite_rel :
+          '[' '<' '<' '@' '+' INTEGER '>' '>' ']'
+        | '[' '<' '<' '@' '+' IDENTIFIER '>' '>' ']'
+        | '[' '<' '<' '@' '-' INTEGER '>' '>' ']'
+        | '[' '<' '<' '@' '-' IDENTIFIER '>' '>' ']'
+        | '[' '<' '<' '@' '*' INTEGER '>' '>' ']'
+        | '[' '<' '<' '@' '*' IDENTIFIER '>' '>' ']'
+        | '[' '<' '<' '@' '/' INTEGER '>' '>' ']'
+        | '[' '<' '<' '@' '/' IDENTIFIER '>' '>' ']'
+        ;
+
+umstimmungs_dekl_tonhoehe_veraendert :
+          '[' 
+/*          nonempty_umstimm_expression_list ']'
+*/        ;
+/*	
 umstimmungdeklaration :
         UMSTIMMUNG umstimmungs_dekl_1 ;
 
 umstimmungs_dekl_1 :
-          /* empty */
+          / * empty * /
         | umstimmungs_dekl_1 umstimmungs_dekl_2
       ;
 
@@ -443,8 +783,8 @@ umstimmungs_dekl_tonhoehe_veraendert :
           { get_umstimmung_tonhoehe_veraendert (); }
         ;
 
-/* Eine leere Liste von Umstimm-expression kollidiert syntaktisch
-   mit "umstimmungs-wiederholung" oder "umstimmungs-bund" */
+/ * Eine leere Liste von Umstimm-expression kollidiert syntaktisch
+   mit "umstimmungs-wiederholung" oder "umstimmungs-bund" * /
         
 nonempty_umstimm_expression_list :
           nonempty_umstimm_expression {}
@@ -462,7 +802,7 @@ umstimm_expression_list :
         ;
         
 umstimm_expression :
-          /* empty */
+          / * empty * /
                    { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
@@ -572,7 +912,7 @@ harmoniedeklaration :
         ;
         
 harmonie_dekl_1 :
-          /* empty */ {}
+         
         | harmonie_dekl_1  harmonie_dekl_2 {}
         ;
         
@@ -586,7 +926,7 @@ harmonie_dekl_2 :
         ;
         
 bezugs_taste :
-          /* empty */      { $$ = -1; }
+          / * empty * /      { $$ = -1; }
         | '.' INTEGER     { $$ = $2; }
         ;
         
@@ -605,9 +945,9 @@ logikdeklaration :
         ;
         
 logik_dekl_1 :
-          /* empty */ {}
+          / * empty * / {}
         | logik_dekl_1 { init_ausloeser ();
-                         /* fÅr die Anfangsausloesung der Logik */
+                         / * fÅr die Anfangsausloesung der Logik * /
                        } 
                logik_dekl_2 {}
         ;
@@ -626,7 +966,7 @@ logik_dekl_2 :
         ;
         
 anweisungs_liste :
-          /* empty */ {}
+          / * empty * / {}
         | anweisungs_liste anweisung {}
         ;
 
@@ -676,7 +1016,7 @@ instrumentdeklaration :
         ;
         
 instrument_dekl_1 :
-          /* empty */ {}
+          / * empty * / {}
         | instrument_dekl_1 instrument_dekl_2 {}
         ;
 
@@ -692,288 +1032,21 @@ instrument_dekl_2 :
         | INTEGER '-' '>' INTEGER '-' INTEGER '[' INTEGER ']'
              { get_instrument_dekl ($1, $4, $6, $8, & list_of_instrumente); }
         ;
-        
+
+*/        
 GLEITKOMMA_ZAHL:
            F_NUMBER  { $$ = $1; }
         |  INTEGER   { $$ = (double) $1; }
         ;
 
-        
-%%
-
-	/* anderen Lexer verwenden */
-#undef yylex
-#undef init_yylex
-int yylex(void) 
-{
-  YYLTYPE yylloc;
-  YYSTYPE yylval;
-  int c;
-  
- start_lex:
-  
-#ifdef DEBUG
-  if (mutabor_debug_level)
-    printf("Leerkram ignorieren\n");
-#endif
-
-  /* Ignore whitespace, get first nonwhitespace character */
-  while ( anzahl_eingelesene_zeichen ++,
-	  (c = toupper( intern_fgetc(mutabor_parser_in) )) == ' ' 
-          || c == '\t'
-          || c == '\n'
-	  || c == '\r') {
-    
-    if (c == '\n') 
-#ifdef ACS_VERSION
-      if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
-	show_line_number(yylloc.first_line);
-#else
-    yylloc.first_line ++;
-#endif
-  }
-
-#ifdef DEBUG
-  if (mutabor_debug_level)
-    printf("Token start: '%c'\n",c);
-#endif
-
-  
-  if (c == '"') {
-#ifdef DEBUG
-    if (mutabor_debug_level)
-      printf("Kommentar:\n");
-#endif
-
-    while (anzahl_eingelesene_zeichen ++,
-	   (c=intern_fgetc(mutabor_parser_in)) != '"' && c != EOF ){
-      if (c == '\n') yylloc.first_line ++;
-#ifdef DEBUG
-      if (mutabor_debug_level)
-	printf("%c",c);
-#endif
-    }
-#ifdef DEBUG
-    if (mutabor_debug_level)
-      printf("Kommentar Ende.\n");
-#endif
-    goto start_lex;
-  }
-
-  if (c == EOF) {
-#ifdef DEBUG
-    if (mutabor_debug_level)
-      printf("Dateiende.\n");
-#endif
-    return 0;
-  }
-  
-  /* char starts a number => parse the number. */
-  if (isdigit(c)) {
-#ifdef DEBUG
-    if (mutabor_debug_level)
-      printf("Zahl.\n");
-#endif
-    
-#if 1
-    double zahl = 0.0;
-    while (isdigit(c)) {
-      zahl *= 10;
-      zahl += ( c - '0' );
-      anzahl_eingelesene_zeichen ++;
-      c = intern_fgetc (mutabor_parser_in);
-    }
-    if (c == '.') {    /* dann nachkommastellen */
-      double faktor = 1.0;
-      while (anzahl_eingelesene_zeichen ++,
-	     isdigit (c = intern_fgetc (mutabor_parser_in))) {
-	faktor /= 10;
-	zahl += faktor * ( c - '0' );
-      }
-      intern_ungetc (c, mutabor_parser_in);
-      anzahl_eingelesene_zeichen --;
-      yylval.f_value = zahl;
-      return F_NUMBER;
-    }
-    else {
-      intern_ungetc (c, mutabor_parser_in);
-      anzahl_eingelesene_zeichen --;
-      
-      if (zahl > INT_MAX) {
-	yylval.f_value = zahl;
-	return F_NUMBER;
-      }
-      else {
-	yylval.integer = (int)zahl;
-	return INTEGER;
-      }
-    }
-#else
-
-    intern_ungetc (c, mutabor_parser_in);
-    anzahl_eingelesene_zeichen --;
-    fscanf (mutabor_parser_in, "%lf", &yylval.f_value);
-    
-#endif
-    
-    /*
-      printf("f_number:%lf:\n", yylval.f_value); 
-    */
-    
-  }
-  
-  /* # starts a HEX-number => parse the number. */
-  if (c == '#') {
-    int help;
-    if (fscanf (mutabor_parser_in, "%x", &help) == 0) {
-      fatal_error (78, yylloc.first_line + 1);
-      exit (1);
-    }
-    yylval.integer = help;
-    
-    /* printf("f_number:%lf:\n", yylval.f_value); */
-    
-    return INTEGER;
-  }
-  
-  /* Test auf reserved word oder einen Identifier */
-  if (isalpha (c) || (c == '_') || (c == '\'') ) {
-    
-    static struct { 
-      char *word;
-      int token;
-    } reserved_words [] = {
-      /* Deutsche SchlÅsselworte : */
-      { "INTERVALL"  , INTERVALL  },
-      { "WURZEL"     , WURZEL     },
-      { "TON"        , TON        },
-      { "TONSYSTEM"  , TONSYSTEM  },
-      { "UMSTIMMUNG" , UMSTIMMUNG },
-      { "HARMONIE"   , HARMONIE   },
-      { "LOGIK"      , LOGIK      },
-      { "FORM"       , FORM       },
-      { "MIDIKANAL" , INSTRUMENT },
-      { "TASTE"      , TASTE      },
-      { "MIDIIN"     , MIDI_IN    },
-      { "MIDIOUT"    , MIDI_OUT   },
-      { "ANSONSTEN"  , ANSONSTEN  },
-      /* Englische SchlÅsselworte : */
-      { "INTERVAL"  , INTERVALL  },
-      { "ROOT"     , WURZEL     },
-      { "TONE"        , TON        },
-      { "TONESYSTEM"  , TONSYSTEM  },
-      { "RETUNING" , UMSTIMMUNG },
-      { "PATTERN"   , HARMONIE   },
-      { "LOGIC"      , LOGIK      },
-      { "SHIFTED"       , FORM       },
-      { "MIDICHANNEL" , INSTRUMENT },
-      { "KEY"      , TASTE      },
-      { "ELSE"  , ANSONSTEN  },
-      { NULL         , 0          }
-    };
-    
-
-#if 0
-    char *symbuffer = xmalloc ((size_t)(MAX_IDENTIFIER_LEN + 1));
-    int i=0;
-    
-    do {
-      if (c == '\'') c = 'i';
-      symbuffer[i++] = c;
-      c = toupper(intern_fgetc (mutabor_parser_in));
-    } while (c != EOF                && 
-	     i < MAX_IDENTIFIER_LEN  && 
-	     (isalnum (c) || (c == '_') || (c == '\'') ) );
-    
-    intern_ungetc (c, mutabor_parser_in);
-    symbuffer[i] = '\0';
-#else
-    int i = 0;
-    int max_identifier_len = 10;
-    char *symbuffer = (char*) xmalloc ((size_t) max_identifier_len);
-    
-    do {
-      if (c == '\'') c = 'i';
-      
-      if ( i + 1 == max_identifier_len ) {
-	char * help = (char*) xrealloc (symbuffer, (size_t) (max_identifier_len += 10));
-	memmove (help, symbuffer, (size_t) max_identifier_len);
-	symbuffer = help;
-      }
-      
-      symbuffer[i++] = c;
-      c = toupper(intern_fgetc (mutabor_parser_in));
-      anzahl_eingelesene_zeichen ++;
-      
-    } while (c != EOF                && 
-	     (isalnum (c) || (c == '_') || (c == '\'') ) );
-    
-    intern_ungetc (c, mutabor_parser_in);
-    anzahl_eingelesene_zeichen --;
-    symbuffer[i] = '\0';
-	
-#endif
-    
-    /* printf("symbuffer:%s:\n", symbuffer); */
-    
-    for (i=0; reserved_words[i].word; i++) {
-      if ( ! strcmp (symbuffer, reserved_words[i].word)) {
-	xfree (symbuffer);
-	return reserved_words[i].token;
-      }
-    }
-    
-    yylval.identifier = symbuffer;
-    return IDENTIFIER;
-  }
-  
-  /* Any other character is a token by itself */
-  switch (c) {
-  case '+':
-  case '-':
-  case '*':
-  case '/':
-  case '[':
-  case ']':
-  case ':':
-  case '=':
-  case '(':
-  case ')':
-  case ',':
-  case '~':
-  case '@':
-  case '<':
-  case '>':
-  case '{':
-  case '}':
-  case ';':
-    return c;
-  }
-
-  fprintf(stderr,"Lexer: durchgefallen");
-  fatal_error(2,c,yylloc.first_line + 1);
-  
-  return 0;  /* um Compilerwarnungen zu vermeiden */
-  
-  
-} /* yylex */
-
-void init_yylex (void)
-{
-  YYLTYPE yylloc;
-  yylloc.first_line = 0;
-  anzahl_eingelesene_zeichen = 0;
-}
-
-void yyerror(char *s) {
-  fprintf(stderr,s);
+%%        
+void yyerror(YYLTYPE * locp, void * _self, char const *s) {
+  fprintf(stderr,"\n%s at line %d col %d\n",s,locp->first_line,locp->first_column);
   /*
   return 1;
   */
 /* ignore it ! */
   
 } /* yyerror */
-
-
 
 /* END MUT_TAB.C */
