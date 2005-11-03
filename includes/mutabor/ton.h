@@ -45,10 +45,35 @@ namespace mutabor {
       struct ton * next; /** Nächste Ton */
     };
 
+    /** Typ einer Einstellung für einen zu berechnenden Ton. */
+    enum ton_einstell_typ { 
+      einstell_stumm, /**< Ton soll nicht erklingen */
+      einstell_gleich, /**< Ton soll gleich bleiben */
+      einstell_absolut, /**< Ton soll absolut verändert werden */
+      einstell_relativ /**< Ton soll relativ verändert werden */
+    };
+    
+
+    /** Einstellungen eines Tones */
+    struct ton_einstell {
+      /** Typ der Veränderung. Siehe #ton_einstell_typ */
+      enum ton_einstell_typ ton_einstell_typ; 
+      union {
+        struct {
+	  long wert; /**< Wert der absoluten Einstellung */
+        } einstell_absolut; /**< Wert bei einer Absoluten Einstellung */
+        struct {
+	  long wert; /**< Wert der relativen Einstellung */
+        } einstell_relativ; /**< Wert bei einer relativen Einstellung */
+      } u; /**< Wert bei einer Einstellung mit Wert */
+      struct ton_einstell * next; /**< Nächster Ton. */
+    };
+
     void berechne_toene_absolut (struct ton *ton_liste);
     void drucke_ton (struct ton * lauf);
 
     void get_new_ton_absolut (char * name, double wert);
+    double get_komplex_frequenz (struct ton * dieser);
     void init_komplex_ton_list (void);
     void get_new_ton_komplex_positive (char *name, char *bezugston);
     void get_new_ton_komplex_negative (char *name, char *bezugston);
