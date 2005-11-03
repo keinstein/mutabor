@@ -2,12 +2,15 @@
  ********************************************************************
  * Alles zu Tönen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.3 2005/07/20 12:29:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/ton.c,v 1.4 2005/11/03 14:56:33 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 12:29:50 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/03 14:56:33 $
+ * \version $Revision: 1.4 $
  *  
  * $Log: ton.c,v $
+ * Revision 1.4  2005/11/03 14:56:33  keinstein
+ * interpreter functions
+ *
  * Revision 1.3  2005/07/20 12:29:50  keinstein
  * Kopf korrigiert
  * config.h
@@ -87,13 +90,13 @@ void drucke_ton (struct ton * lauf)
 
           switch (lauf->ton_typ) {
             case ton_absolut : 
-                printf ("%lf\n", lauf->u.ton_absolut.ton_wert);
+                printf ("%f\n", lauf->u.ton_absolut.ton_wert);
                 break;
             case ton_komplex : {
                  struct komplex_intervall * help = lauf->u.ton_komplex.komplex_liste;
                  printf ("%s ", lauf->u.ton_komplex.bezugston);
                  while (help) {
-                     printf ("Faktor: %lf %s ", 
+                     printf ("Faktor: %f %s ", 
                              help->faktor, 
                              help->name);
                      help = help->next;
@@ -434,3 +437,30 @@ void berechne_toene_absolut (struct ton *list_of_toene)
 
 }
 
+/** Berechnet deie Frequenz eines komplexen Tones.
+ * \param dieser Ton, für den die Frequenz berechnet werden soll.
+ */
+double get_komplex_frequenz (struct ton * dieser) {
+    double ret = get_ton (dieser->u.ton_komplex.bezugston, list_of_toene)
+                      -> u.ton_absolut.ton_wert;
+    ret *= get_komplex_faktor (dieser->u.ton_komplex.komplex_liste);
+    return ret;
+}
+
+/** Testet, ob eine Liste von Tönen nue feste, konstante Töne enthält. 
+ *  \param lauf Liste der Töne.
+ *  \retval 1 Die Liste enthält nur konstante Töne.
+ *  \retval 0 Es wurde ein relativer komplexer Ton gefunden.
+ */
+static int enthaelt_nur_konstante_toene (struct ton * lauf)
+{
+    while (lauf) {
+        if (lauf -> name != NULL           &&
+            lauf -> ton_typ == ton_komplex &&
+            lauf -> u.ton_komplex.bezugston [0] == '@' ) {
+            return 0;
+        }
+        lauf = lauf -> next;
+    }
+    return 1;
+}
