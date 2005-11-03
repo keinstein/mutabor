@@ -11,6 +11,7 @@
 #ifndef __UMSTIMMUNG_H_INCLUDED
 #define __UMSTIMMUNG_H_INCLUDED
 
+struct umstimmung; 
 #include "ton.h"
 #include "case_liste.h"
 
