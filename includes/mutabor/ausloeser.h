@@ -2,15 +2,18 @@
  ********************************************************************
  * Alles zu Auslösern.
  *
+ * $Id: ausloeser.h,v 1.3 2005/11/03 14:24:54 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * \date $Date: 2005/11/03 14:24:54 $
+ * \version $Revision: 1.3 $
  ********************************************************************/
 
 #ifndef __AUSLOESER_H_INCLUDED
 #define __AUSLOESER_H_INCLUDED
 
 #include "mutabor/midicalc.h"
+#include "mutabor/harmonie.h"
+#include "mutabor/anweisung.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -49,6 +52,47 @@ namespace mutabor {
       } u; /**< Daten des Auslösers */
     };
     
+    /** Tastatur-Eingabe */
+    struct keyboard_ereignis {
+      char taste; /**< Taste, die gedrückt wurde */
+      char * name; /**< Name des Ereignisses */
+      struct do_aktion * aktion; /**< Auszuführende Aktion */
+      struct logik * the_logik_to_expand; /**< auszuführende Logik */
+      struct keyboard_ereignis * next; /**< Nächstes Ereignis */
+    };
+
+    /** MIDI-Ereignis in aktueller Logik. */
+    struct midi_ereignis {
+      int * first_pos; /**< Anfangsposition des MIDI-Scans */
+      int * scan_pos; /**< aktuelle Position des MIDI-Scans */
+      char * name; /**< Name des Ereignisses */
+      struct do_aktion * aktion; /**< Auszuführende Aktion */
+      struct logik * the_logik_to_expand; /**< Zu expandierende Logik */
+      struct midi_ereignis * next; /**< Nächstes. */
+    };
+
+    /** Klaviatur-Eingabe: Harmonien und -formen */
+    struct harmonie_ereignis {
+      PATTERNN * pattern; /**< zu erkennendes Tastenmuster (Harmonie/-form) */
+      char ist_harmonieform; /**< Harmonieform oder Harmonie? */
+      int vortaste; /**< linkeste Taste */
+      int nachtaste; /**< rechteste Taste */
+      char * name; /**< Name */
+      struct do_aktion * aktion; /**< auszuführende Aktion */
+      struct logik * the_logik_to_expand; /**< zu verwendende Logik */
+      struct harmonie_ereignis * next; /**< Nächstes */
+    };
+
+    extern struct harmonie_ereignis *  first_harmonie[MAX_BOX];
+    extern struct harmonie_ereignis ** last_global_harmonie[MAX_BOX];
+    extern struct harmonie_ereignis ** first_lokal_harmonie;
+    extern struct keyboard_ereignis *  first_keyboard[MAX_BOX];
+    extern struct keyboard_ereignis ** last_global_keyboard[MAX_BOX];
+    extern struct keyboard_ereignis ** first_lokal_keyboard;
+    extern struct midi_ereignis     *  first_midi[MAX_BOX];
+    extern struct midi_ereignis     ** last_global_midi[MAX_BOX];
+    extern struct midi_ereignis     ** first_lokal_midi;
+
     void print_ausloeser (struct ausloeser * this_);
 
     void init_ausloeser (void);
@@ -58,7 +102,14 @@ namespace mutabor {
     void get_ausloeser_taste (char * name);
     void get_ausloeser_midi_in (void);
     void check_ausloeser (struct ausloeser * ausloeser, char * name);
-
+    void insert_in_globale_liste (int instrument, struct logik * lauf);
+    void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
+				 char * name_der_logik);
+    void expandiere_in_globale_liste (void);
+    
+    struct midi_ereignis ** get_ende_midi (struct midi_ereignis ** lauf);
+    struct keyboard_ereignis ** get_ende_keyboard (struct keyboard_ereignis ** lauf);
+    struct harmonie_ereignis ** get_ende_harmonie (struct harmonie_ereignis ** lauf);
     struct ausloeser * get_last_ausloeser (void);
 
 #ifdef __cplusplus 

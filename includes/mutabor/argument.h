@@ -2,14 +2,24 @@
  ********************************************************************
  * Alles zu Argumenten.
  *
- * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date 2005
- * \version 0.1
+ * $Id: argument.h,v 1.3 2005/11/03 14:24:30 keinstein Exp $
+ * \author Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2005/11/03 14:24:30 $
+ * \version $Revision: 1.3 $
+ *
+ * $Log: argument.h,v $
+ * Revision 1.3  2005/11/03 14:24:30  keinstein
+ * new Header
+ * includes corrected
+ * interpreter functions and data structures
+ *
  ********************************************************************/
 
+struct argument_liste;
 #ifndef __ARGUMENT_H_INCLUDED
 #define __ARGUMENT_H_INCLUDED
 
+#include "mutabor/parameter.h"
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -46,6 +56,10 @@ namespace mutabor {
     void get_new_name_in_argument_list (char * parameter);
     void get_new_number_in_argument_list (double parameter);
 
+    int * get_wert_of_argument(
+                 struct argument * argument,
+                 struct interpreter_parameter_liste * aktuelle_parameter
+                 );
     int argument_list_laenge (struct argument_liste *list);
 
     struct argument_liste * get_last_argument_liste (void);
