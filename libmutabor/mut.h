@@ -32,50 +32,57 @@
      IDENTIFIER = 258,
      F_NUMBER = 259,
      INTEGER = 260,
-     INTERVALL = 261,
-     WURZEL = 262,
-     TON = 263,
-     TONSYSTEM = 264,
-     UMSTIMMUNG = 265,
-     HARMONIE = 266,
-     LOGIK = 267,
-     FORM = 268,
-     INSTRUMENT = 269,
-     TASTE = 270,
-     MIDI_IN = 271,
-     MIDI_OUT = 272,
-     ANSONSTEN = 273
+     UNREACHED = 261,
+     INTERVALL = 262,
+     INTERVALLOBJ = 263,
+     WURZEL = 264,
+     TON = 265,
+     TONOBJ = 266,
+     TONSYSTEM = 267,
+     UMSTIMMUNG = 268,
+     HARMONIE = 269,
+     LOGIK = 270,
+     FORM = 271,
+     INSTRUMENT = 272,
+     TASTE = 273,
+     MIDI_IN = 274,
+     MIDI_OUT = 275,
+     ANSONSTEN = 276
    };
 #endif
 #define IDENTIFIER 258
 #define F_NUMBER 259
 #define INTEGER 260
-#define INTERVALL 261
-#define WURZEL 262
-#define TON 263
-#define TONSYSTEM 264
-#define UMSTIMMUNG 265
-#define HARMONIE 266
-#define LOGIK 267
-#define FORM 268
-#define INSTRUMENT 269
-#define TASTE 270
-#define MIDI_IN 271
-#define MIDI_OUT 272
-#define ANSONSTEN 273
+#define UNREACHED 261
+#define INTERVALL 262
+#define INTERVALLOBJ 263
+#define WURZEL 264
+#define TON 265
+#define TONOBJ 266
+#define TONSYSTEM 267
+#define UMSTIMMUNG 268
+#define HARMONIE 269
+#define LOGIK 270
+#define FORM 271
+#define INSTRUMENT 272
+#define TASTE 273
+#define MIDI_IN 274
+#define MIDI_OUT 275
+#define ANSONSTEN 276
 
 
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 91 "mut.y"
+#line 109 "mut.y"
 typedef union YYSTYPE {
-    double      f_value;        /* fÅr Gleitkommazahlen */
-    int         integer;        /* FÅr integers */
-    char        *identifier;    /* FÅr Namen */
+	double      f_value;        /* for floating point numbers */
+	int         integer;        /* for integers */
+	char        *identifier;    /* for names */
+	void        *object;        /* for data objects */
 } YYSTYPE;
 /* Line 1285 of yacc.c.  */
-#line 79 "y.tab.h"
+#line 86 "mut.h"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
