@@ -2,12 +2,16 @@
  ********************************************************************
  * Alles zu MIDI-Berechnungen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/midicalc.c,v 1.3 2005/07/20 12:03:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/midicalc.c,v 1.4 2005/11/03 14:51:01 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 12:03:38 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/03 14:51:01 $
+ * \version $Revision: 1.4 $
  *
  * $Log: midicalc.c,v $
+ * Revision 1.4  2005/11/03 14:51:01  keinstein
+ * interpreter group for doxygen
+ * interpreter functions
+ *
  * Revision 1.3  2005/07/20 12:03:38  keinstein
  * Kopf korrigiert
  * Includes bereinigt.
@@ -100,3 +104,27 @@ void get_umstimmung_midi_out (void)
                                 = get_last_integersequenz ();
 }
 
+/** \}
+ * \defgroup Interpreter 
+ * \{
+ */
+
+/** Wandelt eine einfach verkettete MIDI-Liste in ein Ganzzahlen-(\c int)-Feld
+ * um.
+ * \return Ganzzahlenfeld. Der Letzte Eintrag enthält quasi als Wächter den Wert -1.
+ */
+int * create_midi_scan_liste (struct midiliste * lauf)
+{
+    int j, k, * ret;
+
+    j = midi_list_laenge (lauf);
+    
+    ret = (int*) xcalloc((size_t)(j+1), sizeof(int));
+
+    for (k=0; lauf; lauf=lauf->next, k++) 
+        ret [k] = lauf->midi_code;
+    ret [k] = -1;
+    return ret;
+}
+
+/** \} */
