@@ -2,11 +2,15 @@
  ********************************************************************
  * Verzweigungsliste für Umstimmungen und ähnliches.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/case_liste.c,v 1.2 2005/07/20 11:05:17 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/case_liste.c,v 1.3 2005/11/03 14:47:41 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/07/20 11:05:17 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/11/03 14:47:41 $
+ * \version $Revision: 1.3 $
  * $Log: case_liste.c,v $
+ * Revision 1.3  2005/11/03 14:47:41  keinstein
+ * interpreter group for doxygen
+ * interpreter functions
+ *
  * Revision 1.2  2005/07/20 11:05:17  keinstein
  * Includes vereinfacht (für Doxygen)
  *
@@ -298,4 +302,55 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
            return case_label_enthalten_in_case_liste (case_label, lauf -> next);
 }        
 
+/** \} 
+ * \defgroup Interpreter
+ * Eigentliche Ausführung des Programmes.
+ * \{
+ */
+
+/** Sortiert die Default-Zweige von Case-Listen ans Ende und expandiert die 
+ * Paramater der einzelnen Aktionen.
+ * \param the_liste Case-Liste, die bearbeitet werden soll.
+ * \param aktuelle_parameter Aktuelle Parameter, die ersetzt werden können.
+ * \todo Vereinigen beider Schleifen duch hinzufügen einer neuen temporären default-ende-liste.
+ */
+struct case_element * expand_case_liste (
+           struct case_liste * the_liste,
+           struct interpreter_parameter_liste * aktuelle_parameter)
+{
+    struct case_element * start_liste = NULL;
+    struct case_element ** ende_liste = & start_liste;
+    struct case_liste * lauf_liste;
+
+    for (lauf_liste = the_liste; lauf_liste; lauf_liste = lauf_liste -> next) {
+        if ( ! lauf_liste -> is_default ) {
+             *ende_liste = (struct case_element*) xmalloc (sizeof (struct case_element));
+            (*ende_liste) -> case_wert = lauf_liste -> case_label;
+            (*ende_liste) -> is_default = 0;
+            (*ende_liste) -> case_aktion =
+                         expand_aktions_liste (
+                                lauf_liste -> case_aktion,
+                                aktuelle_parameter);
+            (*ende_liste) -> next = NULL;
+            ende_liste = & (*ende_liste) -> next;
+        }
+    }
+
+    for (lauf_liste = the_liste; lauf_liste; lauf_liste = lauf_liste -> next) {
+        if ( lauf_liste -> is_default ) {
+             *ende_liste = (struct case_element*) xmalloc (sizeof (struct case_element));
+            (*ende_liste) -> case_wert = lauf_liste -> case_label;
+            (*ende_liste) -> is_default = 1;
+            (*ende_liste) -> case_aktion =
+                         expand_aktions_liste (
+                                lauf_liste -> case_aktion,
+                                aktuelle_parameter);
+            (*ende_liste) -> next = NULL;
+            ende_liste = & (*ende_liste) -> next;
+        }
+    }
+    
+    return start_liste;    
+}
+    
 /** \} */
