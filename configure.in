@@ -18,6 +18,8 @@ AC_DEFINE_UNQUOTED(VERSION, "$VERSION", [Version of this package])
 
 AC_DEFINE_UNQUOTED(PACKAGE_BUGREPORT, "$PACKAGE_BUGREPORT",
                                       [address for reporting bugs])
+AM_OPTIONS_WXCONFIG
+
 
 dnl AH_TOP([
 dnl /* We need this, because some autoconf tests rely on this (e.g. stpcpy)
@@ -30,6 +32,12 @@ AH_BOTTOM([
 #ifdef DEBUG
 #  define YYDEBUG 1
 #endif
+
+#define MUTWIN
+#define WX
+#define RTMIDI
+#define __LINUX_ALSASEQ__
+#define REUSE(x) x
 ])
 
 AM_MAINTAINER_MODE
@@ -56,11 +64,23 @@ AC_PROG_YACC
 AC_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_LN_S
-AC_PROG_RANLIB
-
 
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
+AM_PATH_ALSA(1.0.0)
+AM_PATH_WXCONFIG(2.3.4, wxWin=1)
+if test "$wxWin" != 1; then
+         AC_MSG_ERROR([
+                wxWindows must be installed on your system
+                but wx-config script couldn't be found.
+     
+                Please check that wx-config is in path, the directory
+                where wxWindows libraries are installed (returned by
+                'wx-config --libs' command) is in LD_LIBRARY_PATH or
+                equivalent variable and wxWindows version is 2.3.4 or above.
+        ])
+fi
+
 
 # Checks for header files.
 AC_CHECK_HEADERS([limits.h stddef.h math.h])
@@ -74,7 +94,7 @@ AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memmove pow]) 
 AC_CHECK_FUNC(strdup)
 
-AC_CONFIG_FILES([Makefile libmutabor/Makefile libmutabor/tests/Makefile])
+AC_CONFIG_FILES([Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile])
 AC_OUTPUT
 
 
