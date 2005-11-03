@@ -130,10 +130,28 @@ typedef unsigned int flex_uint32_t;
 /* %not-for-header */
 
 /* %if-reentrant */
+
+/* An opaque pointer. */
+#ifndef YY_TYPEDEF_YY_SCANNER_T
+#define YY_TYPEDEF_YY_SCANNER_T
+typedef void* yyscan_t;
+#endif
+
+/* For convenience, these vars (plus the bison vars far below)
+   are macros in the reentrant scanner. */
+#define yyin yyg->yyin_r
+#define yyout yyg->yyout_r
+#define yyextra yyg->yyextra_r
+#define yyleng yyg->yyleng_r
+#define yytext yyg->yytext_r
+#define yylineno (YY_CURRENT_BUFFER_LVALUE->yy_bs_lineno)
+#define yycolumn (YY_CURRENT_BUFFER_LVALUE->yy_bs_column)
+#define yy_flex_debug yyg->yy_flex_debug_r
+
+int mutabor_parser_lex_init (yyscan_t* scanner);
 /* %endif */
 
 /* %if-not-reentrant */
-
 /* %endif */
 
 #ifndef YY_TYPEDEF_YY_BUFFER_STATE
@@ -142,12 +160,10 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 #endif
 
 /* %if-not-reentrant */
-extern int mutabor_parser_leng;
 /* %endif */
 
 /* %if-c-only */
 /* %if-not-reentrant */
-extern FILE *mutabor_parser_in, *mutabor_parser_out;
 /* %endif */
 /* %endif */
 
@@ -229,25 +245,25 @@ struct yy_buffer_state
 
 /* %endif */
 
-void mutabor_parser_restart (FILE *input_file  );
-void mutabor_parser__switch_to_buffer (YY_BUFFER_STATE new_buffer  );
-YY_BUFFER_STATE mutabor_parser__create_buffer (FILE *file,int size  );
-void mutabor_parser__delete_buffer (YY_BUFFER_STATE b  );
-void mutabor_parser__flush_buffer (YY_BUFFER_STATE b  );
-void mutabor_parser_push_buffer_state (YY_BUFFER_STATE new_buffer  );
-void mutabor_parser_pop_buffer_state (void );
+void mutabor_parser_restart (FILE *input_file ,yyscan_t yyscanner );
+void mutabor_parser__switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+YY_BUFFER_STATE mutabor_parser__create_buffer (FILE *file,int size ,yyscan_t yyscanner );
+void mutabor_parser__delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void mutabor_parser__flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
+void mutabor_parser_push_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
+void mutabor_parser_pop_buffer_state (yyscan_t yyscanner );
 
-YY_BUFFER_STATE mutabor_parser__scan_buffer (char *base,yy_size_t size  );
-YY_BUFFER_STATE mutabor_parser__scan_string (yyconst char *yy_str  );
-YY_BUFFER_STATE mutabor_parser__scan_bytes (yyconst char *bytes,int len  );
+YY_BUFFER_STATE mutabor_parser__scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
+YY_BUFFER_STATE mutabor_parser__scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
+YY_BUFFER_STATE mutabor_parser__scan_bytes (yyconst char *bytes,int len ,yyscan_t yyscanner );
 
 /* %endif */
 
-void *mutabor_parser_alloc (yy_size_t  );
-void *mutabor_parser_realloc (void *,yy_size_t  );
-void mutabor_parser_free (void *  );
+void *mutabor_parser_alloc (yy_size_t ,yyscan_t yyscanner );
+void *mutabor_parser_realloc (void *,yy_size_t ,yyscan_t yyscanner );
+void mutabor_parser_free (void * ,yyscan_t yyscanner );
 
-/* %% [1.0] mutabor_parser_text/mutabor_parser_in/mutabor_parser_out/yy_state_type/mutabor_parser_lineno etc. def's & init go here */
+/* %% [1.0] yytext/yyin/yyout/yy_state_type/yylineno etc. def's & init go here */
 /* Begin user sect3 */
 
 #define mutabor_parser_wrap(n) 1
@@ -255,10 +271,7 @@ void mutabor_parser_free (void *  );
 
 #define FLEX_DEBUG
 
-extern int mutabor_parser_lineno;
-
-extern char *mutabor_parser_text;
-#define yytext_ptr mutabor_parser_text
+#define yytext_ptr yytext_r
 
 /* %if-c-only Standard (non-C++) definition */
 
@@ -288,9 +301,52 @@ extern char *mutabor_parser_text;
 
 /* %if-c-only Reentrant structure and macros (non-C++). */
 /* %if-reentrant */
+
+static int yy_init_globals (yyscan_t yyscanner );
+
 /* %if-reentrant */
+
 /* %endif */
+
+/* Accessor methods to globals.
+   These are made visible to non-reentrant scanners for convenience. */
+
+int mutabor_parser_lex_destroy (yyscan_t yyscanner );
+
+int mutabor_parser_get_debug (yyscan_t yyscanner );
+
+void mutabor_parser_set_debug (int debug_flag ,yyscan_t yyscanner );
+
+YY_EXTRA_TYPE mutabor_parser_get_extra (yyscan_t yyscanner );
+
+void mutabor_parser_set_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+
+FILE *mutabor_parser_get_in (yyscan_t yyscanner );
+
+void mutabor_parser_set_in  (FILE * in_str ,yyscan_t yyscanner );
+
+FILE *mutabor_parser_get_out (yyscan_t yyscanner );
+
+void mutabor_parser_set_out  (FILE * out_str ,yyscan_t yyscanner );
+
+int mutabor_parser_get_leng (yyscan_t yyscanner );
+
+char *mutabor_parser_get_text (yyscan_t yyscanner );
+
+int mutabor_parser_get_lineno (yyscan_t yyscanner );
+
+void mutabor_parser_set_lineno (int line_number ,yyscan_t yyscanner );
+
 /* %if-bison-bridge */
+
+YYSTYPE * mutabor_parser_get_lval (yyscan_t yyscanner );
+
+void mutabor_parser_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+
+       YYLTYPE *mutabor_parser_get_lloc (yyscan_t yyscanner );
+    
+        void mutabor_parser_set_lloc (YYLTYPE * yylloc_param ,yyscan_t yyscanner );
+    
 /* %endif */
 /* %endif End reentrant structures and macros. */
 
@@ -300,9 +356,9 @@ extern char *mutabor_parser_text;
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int mutabor_parser_wrap (void );
+extern "C" int mutabor_parser_wrap (yyscan_t yyscanner );
 #else
-extern int mutabor_parser_wrap (void );
+extern int mutabor_parser_wrap (yyscan_t yyscanner );
 #endif
 #endif
 
@@ -311,11 +367,11 @@ extern int mutabor_parser_wrap (void );
 /* %endif */
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char *,yyconst char *,int );
+static void yy_flex_strncpy (char *,yyconst char *,int ,yyscan_t yyscanner);
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (yyconst char * );
+static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
 #endif
 
 #ifndef YY_NO_INPUT
@@ -482,10 +538,10 @@ struct yytbl_data {
 /* vim:set noexpandtab cindent tabstop=8 softtabstop=0 shiftwidth=8 textwidth=0: */
 
 /* Load the DFA tables from the given stream.  */
-int mutabor_parser_tables_fload (FILE * fp );
+int mutabor_parser_tables_fload (FILE * fp ,yyscan_t yyscanner);
 
 /* Unload the tables from memory. */
-int mutabor_parser_tables_destroy (void);
+int mutabor_parser_tables_destroy (yyscan_t yyscanner);
 /* %not-for-header */
 
 /* Default declaration of generated scanner - a define so the user can
@@ -495,9 +551,9 @@ int mutabor_parser_tables_destroy (void);
 #define YY_DECL_IS_OURS 1
 /* %if-c-only Standard (non-C++) definition */
 
-extern int mutabor_parser_lex (YYSTYPE * yylval_param,YYLTYPE * yylloc_param );
+extern int mutabor_parser_lex (YYSTYPE * yylval_param,YYLTYPE * yylloc_param ,yyscan_t yyscanner);
 
-#define YY_DECL int mutabor_parser_lex (YYSTYPE * yylval_param, YYLTYPE * yylloc_param )
+#define YY_DECL int mutabor_parser_lex (YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner)
 /* %endif */
 /* %if-c++-only C++ definition */
 /* %endif */
@@ -527,9 +583,9 @@ extern int mutabor_parser_lex (YYSTYPE * yylval_param,YYLTYPE * yylloc_param );
 #undef YY_DECL_IS_OURS
 #undef YY_DECL
 #endif
-#line 52 "mutlex.l"
+#line 74 "mutlex.l"
 
 
-#line 534 "mutlex.h"
+#line 590 "mutlex.h"
 #undef mutabor_parser_IN_HEADER
 #endif /* mutabor_parser_HEADER_H */
