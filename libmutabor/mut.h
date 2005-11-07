@@ -74,7 +74,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 109 "mut.y"
+#line 112 "mut.y"
 typedef union YYSTYPE {
 	double      f_value;        /* for floating point numbers */
 	int         integer;        /* for integers */

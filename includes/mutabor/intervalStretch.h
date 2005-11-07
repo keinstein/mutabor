@@ -2,13 +2,16 @@
  ********************************************************************
  * Placeholder objects for not yet specified identifiers.
  *
- * $Id: intervalStretch.h,v 1.1 2005/11/03 14:00:08 keinstein Exp $
+ * $Id: intervalStretch.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:00:08 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: intervalStretch.h,v $
- * Revision 1.1  2005/11/03 14:00:08  keinstein
+ * Revision 1.2  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
+ * Revision 1.1  2005/11/03 14:00:01  keinstein
  * initial revision
  *
  ********************************************************************/

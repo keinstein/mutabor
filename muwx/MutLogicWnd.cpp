@@ -25,11 +25,11 @@
 //    #include "wx/mdi.h"
 #endif
 
+#include "Global.h"
 //#include <stdio.h>
 #include "Runtime.h"
 #include "MidiKern.h"
 //#include "Help.rh"
-#include "Global.h"
 #include "Mutabor.rh"
 #include "MutLogicWnd.h"
 #include "MutChild.h"

@@ -1,3 +1,17 @@
+/** \file
+ ********************************************************************
+ * MIDI-File als Device.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.5 2005/11/07 19:42:54 keinstein Exp $
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.5 $
+ *
+ * $Log: DevMidF.cpp,v $
+ * Revision 1.5  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
+ ********************************************************************/
 // ------------------------------------------------------------------
 // Mutabor 3, 1998, R.Krauße
 // MIDI-File als Device
@@ -8,7 +22,7 @@
 #endif
 
 #ifdef RTMIDI
-  #include "RtMidi.h"
+#  include "RtMidi.h"
 #else
 #ifndef H_MMSYSTEM
 //  #define WINVER 0x030a
@@ -211,11 +225,11 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
   {
     // "mittelste Taste weglassen"
     int AM = 0; // arithmetisches Mittel der Tasten
-    for (j =r->OFrom; j <= r->OTo; j++)
+    for (REUSE(int) j =r->OFrom; j <= r->OTo; j++)
      if ( j != DRUMCHANNEL || !r->ONoDrum )
       AM += ton_auf_kanal[j].taste;
     AM /= help + 1 - r->OFrom;
-    for ( j = r->OFrom; j <= r->OTo; j++ )
+    for (REUSE(int) j = r->OFrom; j <= r->OTo; j++ )
      if ( j != DRUMCHANNEL || !r->ONoDrum )
       if ( abs(AM - ton_auf_kanal[j].taste) < abs(AM - ton_auf_kanal[i].taste) )
         i = j;

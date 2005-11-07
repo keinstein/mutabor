@@ -2,13 +2,16 @@
  ********************************************************************
  * Complex intervals (differences).
  *
- * $Id: intervalDiff.h,v 1.1 2005/11/03 13:55:25 keinstein Exp $
+ * $Id: intervalDiff.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:55:25 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: intervalDiff.h,v $
- * Revision 1.1  2005/11/03 13:55:25  keinstein
+ * Revision 1.2  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
+ * Revision 1.1  2005/11/03 13:55:24  keinstein
  * Initial release
  *
  ********************************************************************/
@@ -37,8 +40,8 @@ struct mutabor_virttable_intervalDiff {
     void * (*destructor)(void * _self); /**< Destructor for deleting the class. */
     int (*compare)(void * one, void * two); 
     char * (*tostring)(void * _self); 
+    void * (*check_cycle)(register void * _self, register void * _identifier,  register MUT_CLASS(ptrlist) * list); /**< checks, if _self depends somehow on _identifier. */
     void (*precalculate)(void * _self); 
-    void (*link_childs)(void * _self); /**< link pointers to childs */
 };
 
 extern const void * mutabor_object_intervalDiff;
@@ -46,7 +49,9 @@ extern const void * mutabor_object_intervalDiff;
 
 #define mutabor_cls_intervalDiff_copy_name mutabor_cls_identifier_copy_name
 
-#define mutabor_cls_intervalDiff_is_name mutabor_cls_identifier_is_name
+#define mutabor_cls_intervalDiff_set_name mutabor_cls_identifier_set_name
+
+#define mutabor_cls_intervalDiff_get_name mutabor_cls_identifier_get_name
 
 #define mutabor_cls_intervalDiff_set_factor mutabor_cls_interval_set_factor
 

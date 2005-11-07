@@ -1,7 +1,17 @@
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
-// Devices Basisklassen
-// ------------------------------------------------------------------
+/** \file
+ ********************************************************************
+ * Devices Basisklassen.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.3 2005/11/07 19:42:54 keinstein Exp $
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.3 $
+ *
+ * $Log: EDevice.h,v $
+ * Revision 1.3  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
+ ********************************************************************/
 
 #ifndef EDEVICE_H
 #define EDEVICE_H

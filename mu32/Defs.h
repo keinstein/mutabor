@@ -1,8 +1,7 @@
 // definitions
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#  include "config.h"
 #endif
-
 
 #define MUTWIN
 //#define MUTMIDI
@@ -16,6 +15,7 @@
 #endif
 
 #ifdef WX
+#include "wx/setup.h"
 #if !defined(__WXMSW__)
   #define UINT unsigned int
   #define WORD unsigned int

@@ -5,10 +5,12 @@
     #include "wx/wx.h"
 #endif
 
-#ifdef __WXMSW__
-  #define REUSE(type)
-#else
-  #define REUSE(type) type
+#ifndef HAVE_CONFIG_H
+#  ifdef __WXMSW__
+#    define REUSE(type)
+#  else
+#    define REUSE(type) type
+#  endif
 #endif
 
 #ifdef __WXMSW__			

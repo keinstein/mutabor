@@ -3,12 +3,15 @@
  * Common definitions for object oriented programming and base class
  * \c #object.
  *
- * $Id: object.h,v 1.1 2005/11/03 14:02:56 keinstein Exp $
+ * $Id: object.h,v 1.5 2008/10/10 08:45:28 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:02:56 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2008/10/10 08:45:28 $
+ * \version $Revision: 1.5 $
  *
  * $Log: object.h,v $
+ * Revision 1.5  2008/10/10 08:45:28  keinstein
+ * myContextHelpButton is still not needed
+ *
  * Revision 1.1  2005/11/03 14:02:56  keinstein
  * initial revision
  *

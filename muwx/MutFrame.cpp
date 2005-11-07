@@ -1,3 +1,17 @@
+/** \file
+ ********************************************************************
+ * Mutabor Frame.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.6 2005/11/07 19:42:54 keinstein Exp $
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.6 $
+ *
+ * $Log: MutFrame.cpp,v $
+ * Revision 1.6  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
+ ********************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutFrame.cpp
 // Purpose:     Mutabor Frame
@@ -52,7 +66,7 @@
 #include <wx/config.h>
 #include <wx/confbase.h>
 #include <wx/fileconf.h>
-#ifdef __WXWIN__
+#ifdef __WXMSW__
 #  include <wx/msw/regconf.h>
 #endif
 #include <wx/ffile.h>
@@ -61,6 +75,7 @@
 #include "MutEditFile.h"
 #include "Mutabor.rh"
 
+#include "Defs.h"
 #include "mhDefs.h"
 #include "EDevice.h"
 #include "Runtime.h"
@@ -92,9 +107,13 @@
 // global variables
 // ---------------------------------------------------------------------------
 
-#define APPNAME _("Mutabor")
+#ifndef HAVE_CONFIG_H
+#  define PACKAGE_NAME "Mutabor"
+#endif
 
-wxString RcfFile = _T("ROUTES.CFG");
+#define APPNAME _(PACKAGE_NAME)
+
+wxString RcfFile = wxT("Routes.cfg");
 
 bool demo = false;
 
@@ -435,10 +454,10 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 #ifndef NOACTIVATE
 	RealTime = true;
 	if ( !CheckNeedsRealTime() )
-		RealTime = (wxMessageBox(_T("There are no realtime instruments in the routes.\n")
+		RealTime = (wxMessageBox(_("There are no realtime instruments in the routes.\n"
 			_T("Shall Mutabor translate the files in batch mode, to keep the MIDI files with the original time stamp?\n")
-			_T("(This means also, that you can't modify the tunings while playing by computer keyboard.)"),
-			_T("No realtime => batch mode?"), wxYES_NO | wxICON_QUESTION /*| MB_DEFBUTTON2*/) == wxNO);
+			_T("(This means also, that you can't modify the tunings while playing by computer keyboard.)")),
+			_("No realtime => batch mode?"), wxYES_NO | wxICON_QUESTION /*| MB_DEFBUTTON2*/) == wxNO);
 	theFrame = this;
 	if ( !Activate(RealTime, &UpdateUIcallback) )
 		return;
@@ -756,59 +775,59 @@ MutChild* MutFrame::NewFrame(WinKind winKind, int box, const wxString &frameName
 	wxMenu *menu;
 	OPENMENU;
 	MENUITEM(_("&New\tCtrl-N"), CM_FILENEW, _("Create a new child window"));
-	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, _(""));
-	MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE, _(""));
-	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, _(""));
+	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, wxT(""));
+	MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE, wxT(""));
+	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, _(""));
+	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("O&ptions"), CM_SETUP, _(""));
+	MENUITEM(_("O&ptions"), CM_SETUP, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("E&xit"), CM_EXIT, _T("Quit the program"));
+	MENUITEM(_("E&xit"), CM_EXIT, _("Quit the program"));
 	CLOSEMENU(_("&File"));
 
 	OPENMENU;
-	MENUITEM(_("&Compile\tAlt-F9"), CM_COMPILE, _(""));
-	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _(""));
-	MENUITEM(_("&Stop\tF8"), CM_STOP, _(""));
+	MENUITEM(_("&Compile\tAlt-F9"), CM_COMPILE, wxT(""));
+	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, wxT(""));
+	MENUITEM(_("&Stop\tF8"), CM_STOP, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Panic\tF12"), CM_PANIC, _(""));
+	MENUITEM(_("&Panic\tF12"), CM_PANIC, wxT(""));
 	CLOSEMENU(_("&Logic"));
 
 	OPENMENU;
-	MENUITEM(_("&Load routes"), CM_ROUTELOAD, _("")); 
-	MENUITEM(_("&Save routes"), CM_ROUTESAVE, _(""));
-	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS, _(""));
+	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
+	MENUITEM(_("&Save routes"), CM_ROUTESAVE, wxT(""));
+	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS, wxT(""));
 	CLOSEMENU(_("&Routes"));
 
 	OPENMENU;
-	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR, _(""));
-	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR, _(""));
+	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR, wxT(""));
+	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Routes\tF11"), CM_ROUTES, _(""));
+	MENUITEM(_("&Routes\tF11"), CM_ROUTES, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY, _(""));
-	MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS, _(""));
-	MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT, _(""));
+	MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY, wxT(""));
+	MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS, wxT(""));
+	MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUCHECKITEM(_("&One window mode"), CM_OWM, _(""));
-	MENUCHECKITEM(_("One &common action window"), CM_CAW, _(""));
+	MENUCHECKITEM(_("&One window mode"), CM_OWM, wxT(""));
+	MENUCHECKITEM(_("One &common action window"), CM_CAW, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("Select &Box"), CM_SELECTBOX, _(""));
+	MENUITEM(_("Select &Box"), CM_SELECTBOX, wxT(""));
 	CLOSEMENU(_("&View"));
 
 	OPENMENU;
-	MENUITEM(_("&Play"), CM_INDEVPLAY, _(""));
-	MENUITEM(_("St&op"), CM_INDEVSTOP, _(""));
-	MENUITEM(_("P&ause"), CM_INDEVPAUSE, _(""));
+	MENUITEM(_("&Play"), CM_INDEVPLAY, wxT(""));
+	MENUITEM(_("St&op"), CM_INDEVSTOP, wxT(""));
+	MENUITEM(_("P&ause"), CM_INDEVPAUSE, wxT(""));
 	CLOSEMENU(_("&Sequencer"));
 
 	OPENMENU;
-	MENUITEM(_("&Index"), CM_HELPINDEX, _(""));
-	MENUITEM(_("&Handbook"), CM_HELPHANDBOOK, _(""));
-	MENUITEM(_("&Help on help"), CM_HELPONHELP, _(""));
+	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
+	MENUITEM(_("&Handbook"), CM_HELPHANDBOOK, wxT(""));
+	MENUITEM(_("&Help on help"), CM_HELPONHELP, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&About"), CM_ABOUT, _(""));
+	MENUITEM(_("&About"), CM_ABOUT, wxT(""));
 	CLOSEMENU(_("&Help"));
 
     // Associate the menu bar with the frame
@@ -886,7 +905,7 @@ void MutFrame::WindowSize(MutChild *win)
 //
 void MutFrame::SaveState()
 {
-	wxConfig *config = new wxConfig(_T("Mutabor"));
+	wxConfig *config = new wxConfig(wxT(PACKAGE_NAME));
 /*	if ( MainWindow->Attr.X >= 0 && MainWindow->Attr.Y >= 0 &&
 	 MainWindow->Attr.W > 0 && MainWindow->Attr.H > 0 )*/
 	{
@@ -969,10 +988,10 @@ void MutFrame::RestoreState()
 {
 	int DeskMax = 1, WinMax = 2, HelpMax = 0;
 //	TMDIChild *active = NULL;
-	wxConfig *config = new wxConfig(_T("Mutabor"));
+	wxConfig *config = new wxConfig(wxT(PACKAGE_NAME));
 	wxString s;
 	int test;
-	if ( config->Read(_T("DESKTOP"), &s) )
+	if ( config->Read(wxT("DESKTOP"), &s) )
 	{
 		int x, y, w, h;
 		test = SSCANF (s.c_str(), _T("%d %d %d %d %d"), &x, &y, &w, &h, &DeskMax);

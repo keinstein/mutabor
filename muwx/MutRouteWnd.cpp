@@ -24,6 +24,7 @@
 //    #include "wx/mdi.h"
 #endif
 
+#include "Defs.h"
 #include <stdio.h>
 #include "Runtime.h"
 //#include "edevice.h"
@@ -111,7 +112,7 @@ int GetTextWidth(wxDC& dc, const wxString &s)
 /* lieber nicht wg. unicode
 int GetTextWidth(wxDC& dc, char *s)
 {
-	wxString s1 = s;
+	wxString s1 = muT(s);
 	return GetTextWidth(dc, s1);
 }*/
 
@@ -137,7 +138,7 @@ void TextPin(wxDC &dc, int xm, int y, int xl, const wxString &s, char withBox)
 /* Lieber nicht (unicode)
 void TextPin(wxDC &dc, int xm, int y, int xl, char *s, char withBox)
 {
-	wxString s1 = s;
+	wxString s1 = muT(s);
 	TextPin(dc, xm, y, xl, s1, withBox);
 }*/
 
@@ -183,7 +184,7 @@ void PrintBox(wxDC &dc, int xm, int ym, int nr, char active, int x3)
 		return;
 	wxString s(_T("x"));
 	if ( nr >= 0 )
-		s = wxString::Format(_T("%d"), nr);
+		s.Printf(wxT("%d"), nr);
 	wxBrush Brush = wxBrush(BoxColor(nr));
 	dc.SetBrush(Brush);
 	if ( !active )
@@ -572,17 +573,17 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 					break;
 				case RTchannel:
 					if ( In->DT == DTGis )
-						s = wxString::Format(_T("box: %s"), sRange(R->IFrom, R->ITo).c_str());
+						s = wxString::Format(_("box: %s"), sRange(R->IFrom, R->ITo).c_str());
 					else
-						s = wxString::Format(_T("channel: %s"), sRange(R->IFrom, R->ITo).c_str());
+						s = wxString::Format(_("channel: %s"), sRange(R->IFrom, R->ITo).c_str());
 					break;
 				case RTstaff:
 					if ( In->DT == DTGis)
-						s = wxString::Format(_T("staff: %s"), sRange(R->IFrom, R->ITo).c_str());
+						s = wxString::Format(_("staff: %s"), sRange(R->IFrom, R->ITo).c_str());
 					else if ( In->DT == DTMidiPort )
-						s = wxString::Format(_T("keys: %s"), sRange(R->IFrom, R->ITo).c_str());
+						s = wxString::Format(_("keys: %s"), sRange(R->IFrom, R->ITo).c_str());
 					else
-						s = wxString::Format(_T("track: %s"), sRange(R->IFrom, R->ITo).c_str());
+						s = wxString::Format(_("track: %s"), sRange(R->IFrom, R->ITo).c_str());
 					break;
 			}
 			TextPin(dc, z2, y-yt/2, x2, s, 1);
@@ -591,7 +592,7 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 			// Filter
 			if ( R->OFrom != -1 && R->Out && R->Out->DT != DTGis )
 			{
-				s = wxString::Format(_T("channel: %s"), sRange(R->OFrom, R->OTo).c_str());
+				s = wxString::Format(_("channel: %s"), sRange(R->OFrom, R->OTo).c_str());
 				dc.SetBrush(*wxWHITE_BRUSH);
 				TextPin(dc, z4, y-yt/2, x4, s, 1);
 			}
