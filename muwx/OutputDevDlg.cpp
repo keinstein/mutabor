@@ -241,19 +241,23 @@ wxIcon OutputDevDlg::GetIconResource( const wxString& name )
 
 void OutputDevDlg::OnChoice2Selected( wxCommandEvent& event )
 {
-    int type = ctrlType->GetSelection();
-    ctrlPanel->Show(ctrlMidiDevicePanel, type == 0, true);
-    ctrlPanel->Show(ctrlMidiFilePanel, type == 1, true);
-    ctrlPanel->Show(ctrlGUIDOFilePanel, type == 2, true);
-    ctrlPanel->Layout();
-	GetSizer()->SetSizeHints(this);
-	Fit();
+    UpdateLayout(ctrlType->GetSelection());
 ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE2 in OutputDevDlg.
     // Before editing this code, remove the block markers.
     event.Skip();
 ////@end wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE2 in OutputDevDlg. 
 }
 
+
+void OutputDevDlg::UpdateLayout(int type)
+{
+    ctrlPanel->Show(ctrlMidiDevicePanel, type == 0, true);
+    ctrlPanel->Show(ctrlMidiFilePanel, type == 1, true);
+    ctrlPanel->Show(ctrlGUIDOFilePanel, type == 2, true);
+    ctrlPanel->Layout();
+	GetSizer()->SetSizeHints(this);
+	Fit();
+}
 
 /*!
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE

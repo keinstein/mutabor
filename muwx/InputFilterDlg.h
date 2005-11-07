@@ -82,6 +82,7 @@ public:
 
     /// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX
     void OnRadioboxSelected( wxCommandEvent& event );
+	void UpdateLayout(int type);
 
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE
     void OnRemoveClick( wxCommandEvent& event );

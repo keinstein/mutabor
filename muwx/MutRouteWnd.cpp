@@ -868,52 +868,19 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	EDevice *In;
 	ERoute *R, **R1;
 	bool NeedNew;
-	int Token, Res = wxCANCEL;
+	int Token, Res = wxID_CANCEL;
 	wxPoint rp;
 	CalcUnscrolledPosition(event.GetX(), event.GetY(), &rp.x, &rp.y);
 	if ( !CheckPoint(rp, &In, &R, Token, NeedNew) )
 		return;
 	if ( !R && Token > RT_INFILTER )
 		return;
-	int nMidi, i;
+	int nMidi;
 	/*if ( LogicOn )
 	{
 		wxMessageBox(_("Stop the logics, before you edit the routes!"), _("Not yet!") , wxOK | wxICON_STOP);
 		return;
 	}*/
-	DevType DevInTypes[3] = { DTMidiPort, DTMidiFile, DTGis };
-  // Datentypen für die Dialoge
-/*  struct TDataR0
-  {
-    TComboBoxData Type;
-    char FileName[FILENAMELENGTH];
-    TComboBoxData Device;
-    char BendingRange[4];
-  } DataR0;
-  struct TDataR1
-  {
-    uint16 Type[4];
-    char From[4];
-    char To[4];
-  } DataR1;
-  struct TDataR2
-  {
-    uint16 nrBox;
-    uint16 gmnBox;
-    uint16 noBox;
-    char boxNr[4];
-    uint16 active;
-    uint16 passiv;
-  } DataR2;
-  struct TDataR3
-  {
-    char From[4];
-    char To[4];
-    uint16 avoidDrumChannel;
-  } DataR3;
-  void *Datas[5] = { &DataR0, &DataR1, &DataR2, &DataR3, &DataR0};
-  TRouteDialog dia(this, Token, Datas[Token], DE_R0+Token, point.x, point.y);*/
-	wxCommandEvent event1(0, ID_CHOICE);
 	switch ( Token )
 	{
 		case RT_INDEVICE:
@@ -963,21 +930,22 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			in.SetMidiFile(wxEmptyString);
 			in.SetGUIDOFile(wxEmptyString);
 			// fill with datas
+			int type = 0;
 			switch ( In->DT )
 			{
 				case DTGis:
-					in.SetType(2);
+					in.SetType(type = 2);
 					in.SetGUIDOFile(In->Name);
 					break;
 				case DTMidiPort:
 					in.SetMidiDevice(In->DevId);
 					break;
 				case DTMidiFile:
-					in.SetType(1);
+					in.SetType(type = 1);
 					in.SetMidiFile(In->Name);
 					break;
 			}
-			in.OnChoiceSelected(event1);
+			in.UpdateLayout(type);
 			Res = in.ShowModal();
 			if ( Res == wxID_OK )
 			{
@@ -988,10 +956,6 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 					NewDevice(&InEDevices, DTMidiFile, in.GetMidiFile(), 0, In, In);
 				else			
 					NewDevice(&InEDevices, DTGis, in.GetGUIDOFile(), 0, In, In);
-			/*        if ( DataR0.Type.GetSelIndex() == 0 )
-          DataR0.Device.GetSelString(DataR0.FileName, FILENAMELENGTH);
-        NewDevice(&InDevices, DevInTypes[DataR0.Type.GetSelIndex()], DataR0.FileName,
-          DataR0.Device.GetSelIndex(), In, In);*/
 			}
 			else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
 				NewDevice(&InEDevices, DTNotSet, wxEmptyString, 0, In, 0);
@@ -1019,7 +983,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			dlg.SetType(R->Type);
 			dlg.SetFrom(R->IFrom);
 			dlg.SetTo(R->ITo);
-			dlg.OnRadioboxSelected(event1);
+			dlg.UpdateLayout(R->Type);
 			Res = dlg.ShowModal();
 			if ( Res == wxID_OK )
 			{
@@ -1057,7 +1021,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			dlg.ctrlBox2->SetValue(Type == 1);
 			dlg.ctrlBox3->SetValue(Type == 2);
 			dlg.SetMode(!R->Active);
-			dlg.UpdateEnable(event1);
+			dlg.UpdateLayout(Type);
 			Res = dlg.ShowModal();
 			if ( Res == wxID_OK )
 			{
@@ -1138,10 +1102,11 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			out.SetMidiFileBending(2);
 			out.SetGUIDOFile(wxEmptyString);
 			// fill with datas
+			int type = 0;
 			switch ( Out->DT )
 			{
 				case DTGis:
-					out.SetType(2);
+					out.SetType(type = 2);
 					out.SetGUIDOFile(Out->Name);
 					break;
 				case DTMidiPort:
@@ -1149,12 +1114,12 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 					out.SetMidiDeviceBending(Out->BendingRange);
 					break;
 				case DTMidiFile:
-					out.SetType(1);
+					out.SetType(type = 1);
 					out.SetMidiFile(Out->Name);
 					out.SetMidiFileBending(Out->BendingRange);
 					break;
 			}
-			out.OnChoice2Selected(event1);
+			out.UpdateLayout(type);
 			Res = out.ShowModal();
 			if ( Res == wxID_OK )
 			{

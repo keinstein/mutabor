@@ -84,6 +84,7 @@ public:
 
     /// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON
     void UpdateEnable( wxCommandEvent& event );
+	void UpdateLayout(int type);
 
 ////@end BoxDlg event handler declarations
 

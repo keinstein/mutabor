@@ -104,14 +104,14 @@ bool OutMidiPort::Open()
     hMidiOut = new RtMidiOut();
   }
   catch (RtError &error) {
-    LAUFZEIT_ERROR0("Can not open Midi devices.");
+    LAUFZEIT_ERROR0("Can not open ouput Midi devices.");
     return false;
   }
   try {
     hMidiOut->openPort(DevId);
   }
   catch (RtError &error) {
-    LAUFZEIT_ERROR2("Can not open Midi device nr. %d (%s)", DevId, GetName());
+    LAUFZEIT_ERROR2("Can not open output Midi device nr. %d (%s)", DevId, GetName());
     return false;
   }
 #else

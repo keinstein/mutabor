@@ -202,12 +202,16 @@ wxIcon BoxDlg::GetIconResource( const wxString& name )
 
 void BoxDlg::UpdateEnable( wxCommandEvent& event )
 {
-    ctrlBoxNr->Enable(ctrlBox1->GetValue());
-    ctrlMode->Enable(!ctrlBox3->GetValue());
+	UpdateLayout((ctrlBox2->GetValue() ? 1 : 0) + (ctrlBox3->GetValue() ? 2 : 0));
 ////@begin wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON in BoxDlg.
     // Before editing this code, remove the block markers.
     event.Skip();
 ////@end wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON in BoxDlg. 
 }
 
+void BoxDlg::UpdateLayout(int type)
+{
+    ctrlBoxNr->Enable(type == 0);
+    ctrlMode->Enable(type != 2);
+}
 

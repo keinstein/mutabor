@@ -98,6 +98,7 @@ public:
 
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE
     void OnRemoveClick( wxCommandEvent& event );
+	void UpdateLayout(int type);
 
 ////@end OutputDevDlg event handler declarations
 
