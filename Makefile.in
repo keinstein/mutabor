@@ -56,7 +56,7 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) \
+am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
 	mutabor-Interval.$(OBJEXT) mutabor-Mut_Tab.$(OBJEXT) \
 	mutabor-Parser.$(OBJEXT) mutabor-Runtime.$(OBJEXT) \
 	mutabor-TabGen.$(OBJEXT) mutabor-RtMidi.$(OBJEXT) \
@@ -72,7 +72,9 @@ am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) \
 	mutabor-Frac.$(OBJEXT) mutabor-GrafKern.$(OBJEXT) \
 	mutabor-valNum.$(OBJEXT) mutabor-GIS_Head.$(OBJEXT) \
 	mutabor-GIS.$(OBJEXT) mutabor-GSP_Err.$(OBJEXT) \
-	mutabor-GSP_File.$(OBJEXT) mutabor-GSP.$(OBJEXT)
+	mutabor-GSP_File.$(OBJEXT) mutabor-GSP.$(OBJEXT) \
+	mutabor-InputFilterDlg.$(OBJEXT) mutabor-BoxDlg.$(OBJEXT) \
+	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-valRadio.$(OBJEXT)
 mutabor_OBJECTS = $(am_mutabor_OBJECTS)
 mutabor_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I.
@@ -224,7 +226,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
-mutabor_SOURCES = mu32/Hilfs.cpp \
+mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp muwx/MutLogicWnd.cpp \
@@ -233,7 +235,8 @@ mutabor_SOURCES = mu32/Hilfs.cpp \
 		muwx/InputDevDlg.cpp mu32/DevGIS.cpp mu32/Device.cpp mu32/DevMidF.cpp \
 		mu32/DevMidi.cpp mu32/EDevice.cpp mu32/Errors.cpp mu32/Execute.cpp \
 		mu32/Frac.cpp mu32/GrafKern.cpp mywx/valNum.cpp mu32/GIS_Head.cpp mu32/GIS.cpp \
-		mu32/GSP_Err.cpp mu32/GSP_File.cpp mu32/GSP.cpp
+		mu32/GSP_Err.cpp mu32/GSP_File.cpp mu32/GSP.cpp muwx/InputFilterDlg.cpp \
+		muwx/BoxDlg.cpp muwx/OutputFilterDlg.cpp mywx/valRadio.cpp 
 
 mutabor_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS)
@@ -333,6 +336,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Action.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-BoxDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-CompDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-DevGIS.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-DevMidF.Po@am__quote@
@@ -350,6 +354,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-GrafKern.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Hilfs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputDevDlg.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputFilterDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Interval.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutApp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutChild.Po@am__quote@
@@ -360,11 +365,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutTextBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Mut_Tab.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputDevDlg.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputFilterDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Parser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-RtMidi.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Runtime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-TabGen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valNum.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valRadio.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -400,6 +408,20 @@ mutabor-Hilfs.obj: mu32/Hilfs.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mu32/Hilfs.cpp' object='mutabor-Hilfs.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-Hilfs.obj `if test -f 'mu32/Hilfs.cpp'; then $(CYGPATH_W) 'mu32/Hilfs.cpp'; else $(CYGPATH_W) '$(srcdir)/mu32/Hilfs.cpp'; fi`
+
+mutabor-mxDefs.o: mywx/mxDefs.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mxDefs.o -MD -MP -MF "$(DEPDIR)/mutabor-mxDefs.Tpo" -c -o mutabor-mxDefs.o `test -f 'mywx/mxDefs.cpp' || echo '$(srcdir)/'`mywx/mxDefs.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-mxDefs.Tpo" "$(DEPDIR)/mutabor-mxDefs.Po"; else rm -f "$(DEPDIR)/mutabor-mxDefs.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/mxDefs.cpp' object='mutabor-mxDefs.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mxDefs.o `test -f 'mywx/mxDefs.cpp' || echo '$(srcdir)/'`mywx/mxDefs.cpp
+
+mutabor-mxDefs.obj: mywx/mxDefs.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mxDefs.obj -MD -MP -MF "$(DEPDIR)/mutabor-mxDefs.Tpo" -c -o mutabor-mxDefs.obj `if test -f 'mywx/mxDefs.cpp'; then $(CYGPATH_W) 'mywx/mxDefs.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/mxDefs.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-mxDefs.Tpo" "$(DEPDIR)/mutabor-mxDefs.Po"; else rm -f "$(DEPDIR)/mutabor-mxDefs.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/mxDefs.cpp' object='mutabor-mxDefs.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mxDefs.obj `if test -f 'mywx/mxDefs.cpp'; then $(CYGPATH_W) 'mywx/mxDefs.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/mxDefs.cpp'; fi`
 
 mutabor-Interval.o: mu32/Interval.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-Interval.o -MD -MP -MF "$(DEPDIR)/mutabor-Interval.Tpo" -c -o mutabor-Interval.o `test -f 'mu32/Interval.cpp' || echo '$(srcdir)/'`mu32/Interval.cpp; \
@@ -848,6 +870,62 @@ mutabor-GSP.obj: mu32/GSP.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mu32/GSP.cpp' object='mutabor-GSP.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-GSP.obj `if test -f 'mu32/GSP.cpp'; then $(CYGPATH_W) 'mu32/GSP.cpp'; else $(CYGPATH_W) '$(srcdir)/mu32/GSP.cpp'; fi`
+
+mutabor-InputFilterDlg.o: muwx/InputFilterDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-InputFilterDlg.o -MD -MP -MF "$(DEPDIR)/mutabor-InputFilterDlg.Tpo" -c -o mutabor-InputFilterDlg.o `test -f 'muwx/InputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/InputFilterDlg.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-InputFilterDlg.Tpo" "$(DEPDIR)/mutabor-InputFilterDlg.Po"; else rm -f "$(DEPDIR)/mutabor-InputFilterDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/InputFilterDlg.cpp' object='mutabor-InputFilterDlg.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-InputFilterDlg.o `test -f 'muwx/InputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/InputFilterDlg.cpp
+
+mutabor-InputFilterDlg.obj: muwx/InputFilterDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-InputFilterDlg.obj -MD -MP -MF "$(DEPDIR)/mutabor-InputFilterDlg.Tpo" -c -o mutabor-InputFilterDlg.obj `if test -f 'muwx/InputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/InputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/InputFilterDlg.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-InputFilterDlg.Tpo" "$(DEPDIR)/mutabor-InputFilterDlg.Po"; else rm -f "$(DEPDIR)/mutabor-InputFilterDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/InputFilterDlg.cpp' object='mutabor-InputFilterDlg.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-InputFilterDlg.obj `if test -f 'muwx/InputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/InputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/InputFilterDlg.cpp'; fi`
+
+mutabor-BoxDlg.o: muwx/BoxDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-BoxDlg.o -MD -MP -MF "$(DEPDIR)/mutabor-BoxDlg.Tpo" -c -o mutabor-BoxDlg.o `test -f 'muwx/BoxDlg.cpp' || echo '$(srcdir)/'`muwx/BoxDlg.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-BoxDlg.Tpo" "$(DEPDIR)/mutabor-BoxDlg.Po"; else rm -f "$(DEPDIR)/mutabor-BoxDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/BoxDlg.cpp' object='mutabor-BoxDlg.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-BoxDlg.o `test -f 'muwx/BoxDlg.cpp' || echo '$(srcdir)/'`muwx/BoxDlg.cpp
+
+mutabor-BoxDlg.obj: muwx/BoxDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-BoxDlg.obj -MD -MP -MF "$(DEPDIR)/mutabor-BoxDlg.Tpo" -c -o mutabor-BoxDlg.obj `if test -f 'muwx/BoxDlg.cpp'; then $(CYGPATH_W) 'muwx/BoxDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/BoxDlg.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-BoxDlg.Tpo" "$(DEPDIR)/mutabor-BoxDlg.Po"; else rm -f "$(DEPDIR)/mutabor-BoxDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/BoxDlg.cpp' object='mutabor-BoxDlg.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-BoxDlg.obj `if test -f 'muwx/BoxDlg.cpp'; then $(CYGPATH_W) 'muwx/BoxDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/BoxDlg.cpp'; fi`
+
+mutabor-OutputFilterDlg.o: muwx/OutputFilterDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-OutputFilterDlg.o -MD -MP -MF "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo" -c -o mutabor-OutputFilterDlg.o `test -f 'muwx/OutputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/OutputFilterDlg.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo" "$(DEPDIR)/mutabor-OutputFilterDlg.Po"; else rm -f "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/OutputFilterDlg.cpp' object='mutabor-OutputFilterDlg.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-OutputFilterDlg.o `test -f 'muwx/OutputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/OutputFilterDlg.cpp
+
+mutabor-OutputFilterDlg.obj: muwx/OutputFilterDlg.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-OutputFilterDlg.obj -MD -MP -MF "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo" -c -o mutabor-OutputFilterDlg.obj `if test -f 'muwx/OutputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/OutputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/OutputFilterDlg.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo" "$(DEPDIR)/mutabor-OutputFilterDlg.Po"; else rm -f "$(DEPDIR)/mutabor-OutputFilterDlg.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/OutputFilterDlg.cpp' object='mutabor-OutputFilterDlg.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-OutputFilterDlg.obj `if test -f 'muwx/OutputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/OutputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/OutputFilterDlg.cpp'; fi`
+
+mutabor-valRadio.o: mywx/valRadio.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-valRadio.o -MD -MP -MF "$(DEPDIR)/mutabor-valRadio.Tpo" -c -o mutabor-valRadio.o `test -f 'mywx/valRadio.cpp' || echo '$(srcdir)/'`mywx/valRadio.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-valRadio.Tpo" "$(DEPDIR)/mutabor-valRadio.Po"; else rm -f "$(DEPDIR)/mutabor-valRadio.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/valRadio.cpp' object='mutabor-valRadio.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.o `test -f 'mywx/valRadio.cpp' || echo '$(srcdir)/'`mywx/valRadio.cpp
+
+mutabor-valRadio.obj: mywx/valRadio.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-valRadio.obj -MD -MP -MF "$(DEPDIR)/mutabor-valRadio.Tpo" -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/mutabor-valRadio.Tpo" "$(DEPDIR)/mutabor-valRadio.Po"; else rm -f "$(DEPDIR)/mutabor-valRadio.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/valRadio.cpp' object='mutabor-valRadio.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

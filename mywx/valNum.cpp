@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     04/01/98
-// RCS-ID:      $Id: valNum.cpp,v 1.3 2005/11/07 14:12:40 krausze Exp $
+// RCS-ID:      $Id: valNum.cpp,v 1.4 2005/11/07 14:51:08 keinstein Exp $
 // Copyright:   (c) Julian Smart and Markus Holzem
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -126,7 +126,7 @@ bool wxNumValidator::Validate(wxWindow *parent)
     {
         ok = FALSE;
 
-        errormsg = _("'%s' ist zu groﬂ.");
+        errormsg = _("'%s' is too big.");
     }
 
     if ( !ok )

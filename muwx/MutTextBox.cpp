@@ -75,7 +75,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
     {
       s1[j] = 0;
       if ( j )
-        Append(wxString(s1));
+        Append(wxString(muT(s1)));
       j = 0;
       i++;
     }
@@ -84,7 +84,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
   }
   s1[j] = 0;
   if ( j )
-    Append(wxString(s1));
+    Append(wxString(muT(s1)));
   // Titel setzen
   if ( newTitle )
   {

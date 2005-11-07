@@ -38,9 +38,9 @@
 // RtMidi: Version 1.0.3, 22 November 2004
 
 #include <iostream>
-#include <strstream>
-#include "RtMidi.h"
+#include <sstream>
 #include "Defs.h"
+#include "RtMidi.h"
 
 //*********************************************************************//
 //  Common RtMidi Definitions
