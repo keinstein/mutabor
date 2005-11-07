@@ -4,13 +4,13 @@
 // ------------------------------------------------------------------
 #include "Defs.h"
 
+#include "Global.h"
 #ifndef WX
 #include <owl\dialog.h>
 #else
   #include "EDevice.h"
 #endif
 
-#include "Global.h"
 #include "Hilfs.h"
 #include "GrafKern.h"
 
@@ -375,7 +375,7 @@ bool GetLine(char **p, char *s)
 
 DevType Str2DT(char *type)
 {
-  char *DTName[] =  { "", "MIDIPORT", "MIDIFILE", "GMN" };
+  char * DTName[] =  { "", "MIDIPORT", "MIDIFILE", "GMN" };
   int i;
   for (i = 3; i > 0; i--)
     if ( !strncmp(type, DTName[i], strlen(DTName[i])) )
@@ -385,7 +385,7 @@ DevType Str2DT(char *type)
 
 char *RTName[] =  { "ALL", "ELSE", "CHANNEL", "STAFF" };
 
-RouteType Str2RT(char *type)
+RouteType Str2RT(char * type)
 {
   int i;
   for (i = 3; i > 0; i--)

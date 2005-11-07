@@ -18,6 +18,7 @@
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
+#include "Defs.h"
 #include "Mutabor.rh"
 
 #ifdef __BORLANDC__

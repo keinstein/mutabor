@@ -12,7 +12,7 @@
 #ifndef RTERROR_H
 #define RTERROR_H
 
-#include <iostream.h>
+#include <iostream>
 #include <string>
 
 class RtError
@@ -47,7 +47,7 @@ public:
   //! Prints "thrown" error message to stdout.
   virtual void printMessage(void) {
 #ifndef WX
-	  cout << '\n' << message_.c_str() << "\n\n"
+	  std::cout << '\n' << message_.c_str() << "\n\n"
 #endif
 	; }
 

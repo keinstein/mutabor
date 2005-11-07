@@ -2,12 +2,15 @@
  ********************************************************************
  * Inv objects for not yet specified identifiers.
  *
- * $Id: intervalInv.h,v 1.1 2005/11/03 13:56:24 keinstein Exp $
+ * $Id: intervalInv.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:56:24 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: intervalInv.h,v $
+ * Revision 1.2  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
  * Revision 1.1  2005/11/03 13:56:24  keinstein
  * Initial revision
  *
@@ -38,8 +41,8 @@ struct mutabor_virttable_intervalInv {
     void * (*destructor)(void * _self); /**< Destructor for deleting the class. */
     int (*compare)(void * one, void * two); 
     char * (*tostring)(void * _self); 
+    void * (*check_cycle)(register void * _self, register void * _identifier,  register MUT_CLASS(ptrlist) * list); /**< checks, if _self depends somehow on _identifier. */
     void (*precalculate)(void * _self); /**< precalculate the dependencies */
-    void (*link_childs)(void * _self); /**< link pointers to childs */
 };
 
 extern const void * mutabor_object_intervalInv;

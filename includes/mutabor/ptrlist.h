@@ -2,12 +2,15 @@
  ***********************************************************************
  * List of identifiers.
  *
- * $Id: ptrlist.h,v 1.1 2005/11/03 14:02:56 keinstein Exp $
+ * $Id: ptrlist.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:02:56 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/07 19:42:54 $
+ * \version $Revision: 1.2 $
  *
  * $Log: ptrlist.h,v $
+ * Revision 1.2  2005/11/07 19:42:54  keinstein
+ * Some additional changes
+ *
  * Revision 1.1  2005/11/03 14:02:56  keinstein
  * initial revision
  *
