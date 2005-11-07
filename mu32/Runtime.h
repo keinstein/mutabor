@@ -6,6 +6,7 @@
 #if ! defined (__RUNTIME_H_INCLUDED)
 #define __RUNTIME_H_INCLUDED
 
+#include "Defs.h"
 #ifndef WX
 #include <owl\dialog.h>
 #else

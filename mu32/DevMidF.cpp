@@ -2,7 +2,7 @@
 // Mutabor 3, 1998, R.Krauﬂe
 // MIDI-File als Device
 // ------------------------------------------------------------------
-
+#include "Defs.h"
 #if defined(MUTWIN) && !defined(WX)
 #include <owl/pch.h>
 #endif
