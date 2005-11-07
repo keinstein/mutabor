@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.1 2005/10/26 12:34:00 krausze Exp $
+// RCS-ID:      $Id: valNum.h,v 1.2 2005/11/07 14:51:08 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -12,9 +12,11 @@
 #ifndef _WX_VALNUMH__
 #define _WX_VALNUMH__
 
+/*
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma interface "valNum.h"
 #endif
+*/
 
 #include "wx/defs.h"
 
@@ -22,6 +24,7 @@
 
 #include "wx/valtext.h"
 #include "wx/checkbox.h"
+#include "wx/string.h"
 
 #define NV_MIN 1
 #define NV_MAX 2

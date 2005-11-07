@@ -302,7 +302,7 @@ void ScanRoutes(const wxString& config)
 		{
 		  //3 ??
 		}
-		EDevice *Out = NewDevice(&OutEDevices, Str2DT(Type), Name, DevId);
+		EDevice *Out = NewDevice(&OutEDevices, Str2DT(muT(Type)), muT(Name), DevId);
 		if ( test == 4 )
 			Out->BendingRange = BendingRange;
 		GETLINE;
@@ -322,7 +322,7 @@ void ScanRoutes(const wxString& config)
 		{
 		  //3 ??
 		}
-		EDevice *In = NewDevice(&InEDevices, Str2DT(Type), Name, DevId);
+		EDevice *In = NewDevice(&InEDevices, Str2DT(muT(Type)), muT(Name), DevId);
 		GETLINE;
 		// Routen lesen
 		while ( Str2DT(s) == DTUnknown )
