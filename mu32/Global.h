@@ -317,7 +317,7 @@ int yylex();
 void yyerror(char *);
 int yyparse ();
 
-void mutabor_programm_einlesen (char * filename) ;
+void mutabor_programm_einlesen (const char * filename) ;
 void mutabor_tabellen_generator (void);
 void mutabor_codegenerator(char * filename);
 void write_kompletten_code (FILE * zieldatei);

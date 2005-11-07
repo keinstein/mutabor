@@ -29,7 +29,7 @@ bool RealTime = false;
 jmp_buf weiter_gehts_nach_compilerfehler;
 
 #ifdef WX
-char pascal _export Compile(CompDlg *compDia, char *name)
+char pascal _export Compile(CompDlg *compDia, const char *name)
 {
   InitCompDia(compDia);
 
@@ -345,6 +345,10 @@ int pascal _export GetAktuellesKeyboardInstrument()
 }
 
 // scan-Hilfsfunktionen ---------------------------------------------
+#ifdef WX
+bool GetELine(const wxString& p, size_t& i, wxString &s);
+DevType Str2DT(const wxString& type);
+#endif
 
 // aus p eine Zeile in s lesen, p wird verschoben
 bool GetLine(char **p, char *s)
@@ -366,7 +370,7 @@ bool GetLine(char **p, char *s)
 }
 
 #define GETLINE \
-  if ( !GetLine(&p1, s) ) \
+  if ( !GetELine(config, i, s) ) \
     return
 
 DevType Str2DT(char *type)
@@ -405,7 +409,7 @@ OutDevice *GetOut(int nr)
 }
 
 // Device aus einem String scannen
-void pascal _export ScanDevices(char *config)
+void pascal _export ScanDevices(const wxString &config)
 {
   // Listen säubern
   if ( InDevices )
@@ -419,30 +423,32 @@ void pascal _export ScanDevices(char *config)
     OutDevices = 0;
   }
   // Zerlegen von config
-  char s[200], *p1 = config;
+  wxString s;
+  size_t i = 0;
   GETLINE;
-  while ( strncmp(s, "OUTPUT", 6) )
+  while ( s.CmpNoCase(_T("OUTPUT" )))
   {
     GETLINE;
   }
   GETLINE;
   // Output lesen
   OutDevice **PreOut = &OutDevices;
-  while ( strncmp(s, "INPUT", 5) )
+  while ( s.CmpNoCase(_T("INPUT") ))
   {
-    char Type[20], Name[200];
+    char Type[80], Name[400];
     int DevId, BendingRange;
-		int test = sscanf (s, "%s \"%[^\"]\" %d %d", Type, Name, &DevId, &BendingRange);
+		int test = SSCANF (s, _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
     if ( test < 2 )
-      test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
+      test = SSCANF (s, _T("%s %s %d %d"), Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
 		{
-		  //3 ??
+ 		  //3 ??
 		}
     OutDevice *Out;
-    switch ( Str2DT(Type) )
+    switch ( Str2DT(muT(Type)) )
     {
       case DTUnknown:
+	std::cerr << "Unknown device: " << Type << std::endl;
         //3 ??
       case DTGis:
         Out = new OutGis(Name);
@@ -464,17 +470,17 @@ void pascal _export ScanDevices(char *config)
   while ( 1 )
   {
     // Device lesen
-    char Type[20], Name[200];
+    char Type[80], Name[400];
     int DevId = -1;
-		int test = sscanf (s, "%s \"%[^\"]\" %d", Type, Name, &DevId);
+		int test = SSCANF (s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
     if ( test < 2 )
-      test = sscanf (s, "%s %s %d", Type, Name, &DevId);
+      test = SSCANF (s, _T("%s %s %d"), Type, Name, &DevId);
 		if ( test < 2 )
 		{
 		  //3 ??
 		}
     InDevice *In;
-    switch ( Str2DT(Type) )
+    switch ( Str2DT(muT(Type)) )
     {
       case DTUnknown:
         //3 ??
@@ -495,9 +501,9 @@ void pascal _export ScanDevices(char *config)
     while ( Str2DT(s) == DTUnknown )
     {
       // Route lesen
-      char Type[20];
+      char Type[40];
       int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
-      test = sscanf(s, "%s %d %d %d %d %d %d %d %d",
+      test = SSCANF(s, _("%s %d %d %d %d %d %d %d %d"),
         Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
       if ( test < 2 )
       {

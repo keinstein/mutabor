@@ -459,7 +459,7 @@ void print_aktions_liste (struct aktions_liste * lauf)
 
 FILE * quelldatei;
 
-void mutabor_programm_einlesen ( char *filename )
+void mutabor_programm_einlesen (const char * filename )
 {
 
 	 if ((quelldatei = fopen (filename, "r")) == NULL) {

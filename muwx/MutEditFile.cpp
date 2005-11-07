@@ -83,7 +83,7 @@ void MutEditFile::CmCompile(wxCommandEvent& WXUNUSED(event))
 		CompDia = new CompDlg(this);
 		CompDia->Show();
 		CompDia->SetText(IDC_COMP_FILENAME, GetName());
-		if ( Compile(CompDia, (char*)TmpFile.c_str()) )
+		if ( Compile(CompDia, TmpFile.fn_str()) )
 			CompiledFile = GetName();
 		else
 		{
@@ -117,7 +117,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& WXUNUSED(event))
 		CompDia = new CompDlg(this);
 		CompDia->Show();
 		CompDia->SetText(IDC_COMP_FILENAME, GetName());
-		if ( Compile(CompDia, (char*)TmpFile.c_str()) )
+		if ( Compile(CompDia, TmpFile.fn_str()) )
 		{
 			CompiledFile = GetName();
 			//CompDia->SendMessage(WM_CLOSE);
