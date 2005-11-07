@@ -28,8 +28,10 @@
   #include <wx/strconv.h>
   extern wxCSConv muCSConv;
   #define muT(x)  (wxString(x, muCSConv))
+  #define mumT(x) _T(x)
 #else
   #define muT(x) x
+  #define mumT(x) muT(x)
 #endif
 
 #endif
