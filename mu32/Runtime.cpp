@@ -2,6 +2,7 @@
 // Mutabor 2.win, 1997, R.Krauﬂe
 // Laufzeitfunktionen der DLL
 // ------------------------------------------------------------------
+#include "Defs.h"
 
 #ifndef WX
 #include <owl\dialog.h>

@@ -1,4 +1,4 @@
-#include "Global.h"
+
 
 #if defined(WX)
   #include "wx/wx.h"

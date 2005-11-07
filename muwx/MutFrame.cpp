@@ -52,7 +52,9 @@
 #include <wx/config.h>
 #include <wx/confbase.h>
 #include <wx/fileconf.h>
-#include <wx/msw/regconf.h>
+#ifdef __WXWIN__
+#  include <wx/msw/regconf.h>
+#endif
 #include <wx/ffile.h>
 #include "MutFrame.h"
 #include "MutChild.h"

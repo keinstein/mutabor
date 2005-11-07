@@ -2,7 +2,7 @@
 // Mutabor 3, 1998, R.Krauﬂe
 // Berechnungen der Stimmungen in den Boxen
 // ------------------------------------------------------------------
-
+#include "Defs.h"
 #include <math.h>
 #ifndef MUTWIN
 #include <conio.h>
