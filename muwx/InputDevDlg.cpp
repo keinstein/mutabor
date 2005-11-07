@@ -219,20 +219,22 @@ wxIcon InputDevDlg::GetIconResource( const wxString& name )
 
 void InputDevDlg::OnChoiceSelected( wxCommandEvent& event )
 {
-    int type = ctrlType->GetSelection();
-    ctrlPanel->Show(ctrlMidiDevicePanel, type == 0, true);
-    ctrlPanel->Show(ctrlMidiFilePanel, type == 1, true);
-    ctrlPanel->Show(ctrlGUIDOFilePanel, type == 2, true);
-    ctrlPanel->Layout();
-	GetSizer()->SetSizeHints(this);
-	Fit();
+    UpdateLayout(ctrlType->GetSelection());
 ////@begin wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE in InputDevDlg.
     // Before editing this code, remove the block markers.
     event.Skip();
 ////@end wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE in InputDevDlg. 
 }
 
-
+void InputDevDlg::UpdateLayout(int type)
+{
+    ctrlPanel->Show(ctrlMidiDevicePanel, type == 0, true);
+    ctrlPanel->Show(ctrlMidiFilePanel, type == 1, true);
+    ctrlPanel->Show(ctrlGUIDOFilePanel, type == 2, true);
+    ctrlPanel->Layout();
+	GetSizer()->SetSizeHints(this);
+	Fit();
+}
 /*!
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
  */

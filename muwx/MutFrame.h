@@ -37,6 +37,8 @@ public:
 	void CmDoActivate(wxCommandEvent& WXUNUSED(event));
 	void CmStop(wxCommandEvent& WXUNUSED(event));
 	void CmPanic(wxCommandEvent& WXUNUSED(event));
+    void CeActivate(wxUpdateUIEvent& event);
+    void CeStop(wxUpdateUIEvent& event);
 
 	void CmRoutes(wxCommandEvent& WXUNUSED(event));
 

@@ -194,15 +194,18 @@ wxIcon InputFilterDlg::GetIconResource( const wxString& name )
 
 void InputFilterDlg::OnRadioboxSelected( wxCommandEvent& event )
 {
-    int type = ctrlType->GetSelection();
-    ctrlFrom->Enable(type >=2);
-    ctrlTo->Enable(type >= 2);
+    UpdateLayout(ctrlType->GetSelection());
 ////@begin wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX in InputFilterDlg.
     // Before editing this code, remove the block markers.
     event.Skip();
 ////@end wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX in InputFilterDlg. 
 }
 
+void InputFilterDlg::UpdateLayout(int type)
+{
+    ctrlFrom->Enable(type >=2);
+    ctrlTo->Enable(type >= 2);
+}
 
 /*!
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE

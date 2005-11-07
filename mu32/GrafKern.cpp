@@ -130,7 +130,7 @@ void calc_declaration_numbers(char withNames)
 	sd3 = wxString::Format(_T("%d"), umstimmungs_list_laenge(list_of_umstimmungen));
 	sd4 = wxString::Format(_T("%d"), tonsystem_list_laenge(list_of_tonsysteme));
 	sd5 = wxString::Format(_T("%d"), intervall_list_laenge(list_of_intervalle));
-	sd6 = wxString::Format(_T("%d"), anzahl_eingelesene_zeichen);
+	sd6 = wxString::Format(_T("%ld"), anzahl_eingelesene_zeichen);
 #else
 	 sprintf(sd1, "%d\n%d\n%d",
 		logik_list_laenge(list_of_logiken),

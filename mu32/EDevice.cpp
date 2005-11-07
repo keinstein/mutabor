@@ -244,14 +244,17 @@ start:
 	if ( i >= l )
 		return false;
 	size_t i1 = i;
-	i = p.find(_T("\n"), i1);
-	if ( i == -1 )
+	int i2 = p.find(_T("\n"), i1);
+	if ( i2 == -1 )
 	{
 		i = l;
 		s = p.Mid(i1);
 	}
 	else
-		s = p.Mid(i1, i);
+	{
+		s = p.Mid(i1, i2-i1);
+		i = (size_t) i2;
+    }
 	s = s.Trim();
 	if ( s.Length() == 0 || s.StartsWith(_T("#")) )
 		goto start;
@@ -278,7 +281,7 @@ void ScanRoutes(const wxString& config)
 	}
 	// Zerlegen von config
 	wxString s;
-	size_t i;
+	size_t i = 0;
 	GETLINE;
 	while ( s.CmpNoCase(_T("OUTPUT")) )
 	{
@@ -288,8 +291,8 @@ void ScanRoutes(const wxString& config)
 	// Output lesen
 	while ( s.CmpNoCase(_T("INPUT")) )
 	{
-		//char Type[40] Name[400];
-		wxString Type, Name;
+		char Type[80], Name[400];
+		//wxString Type, Name;
 		int DevId, BendingRange;
 //		int test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
 		int test = SSCANF(s, _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
@@ -309,8 +312,8 @@ void ScanRoutes(const wxString& config)
 	while ( 1 )
 	{
 		// Device lesen
-		//char Type[40], Name[400];
-		wxString Type, Name;
+		char Type[40], Name[400];
+		//wxString Type, Name;
 		int DevId = -1;
 		int test = SSCANF(s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
 		if ( test < 2 )
@@ -486,16 +489,16 @@ void WriteRoutes(wxString &config)
 		switch ( Out->DT )
 		{
 			case DTUnknown:
-				config << wxString::Format(_T("  UNKNOWN %s\n"), sName);
+				config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
 				break;
 			case DTMidiPort:
-				config << wxString::Format(_T("  MIDIPORT %s %d %d\n"), sName, Out->DevId, Out->BendingRange);
+				config << wxString::Format(_T("  MIDIPORT %s %d %d\n"), sName.c_str(), Out->DevId, Out->BendingRange);
 				break;
 			case DTMidiFile:
-				config << wxString::Format(_T("  MIDIFILE %s %d %d\n"), sName, 0, Out->BendingRange);
+				config << wxString::Format(_T("  MIDIFILE %s %d %d\n"), sName.c_str(), 0, Out->BendingRange);
 				break;
 			case DTGis:
-				config << wxString::Format(_T("  GMN %s\n"), sName);
+				config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
 				break;
 		}
 	}
@@ -513,16 +516,16 @@ void WriteRoutes(wxString &config)
 		switch ( In->DT )
 		{
 			case DTUnknown:
-				config << wxString::Format(_T("  UNKNOWN %s\n"), sName);
+				config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
 				break;
 			case DTGis:
-				config << wxString::Format(_T("  GMN %s\n"), sName);
+				config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
 				break;
 			case DTMidiPort:
-				config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName, In->DevId);
+				config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), In->DevId);
 				break;
 			case DTMidiFile:
-				config << wxString::Format(_T("  MIDIFILE %s\n"), sName);
+				config << wxString::Format(_T("  MIDIFILE %s\n"), sName.c_str());
 				break;
 		}
 		// Routen schreiben

@@ -211,7 +211,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
   {
     // "mittelste Taste weglassen"
     int AM = 0; // arithmetisches Mittel der Tasten
-    for (int j =r->OFrom; j <= r->OTo; j++)
+    for (j =r->OFrom; j <= r->OTo; j++)
      if ( j != DRUMCHANNEL || !r->ONoDrum )
       AM += ton_auf_kanal[j].taste;
     AM /= help + 1 - r->OFrom;
@@ -354,7 +354,7 @@ void OutMidiFile::MidiOut(BYTE *p, char n)
 void OutMidiFile::Quite(Route *r)
 {
   for (int i = 0; i < 16; i++)
-    if ( ((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->Id )
+    if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->Id )
       NoteOff(r->Box, ton_auf_kanal[i].id % 256, 64, r, ton_auf_kanal[i].id >> 24);
 }
 

@@ -26,7 +26,7 @@ class MutTextBox : public wxListBox {
 	  void EvChar(uint key, uint repeatCount, uint flags);
 	void EvSetFocus(HWND hWndLostFocus);
 	void EvRButtonDown(uint modKeys, TPoint& point);*/
-	int Box() { return PARENT_BOX; }
+	  int Box() { return 0; } //PARENT_BOX; }
 	DECLARE_EVENT_TABLE()
 };
 

@@ -134,6 +134,8 @@ BEGIN_EVENT_TABLE(MutFrame, wxMDIParentFrame)
     EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
+	EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
+	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
     
 	EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
@@ -390,8 +392,7 @@ void MutFrame::OpenFile(wxString path)
     MutEditFile *client = new MutEditFile(subframe, wxPoint(0, 0), wxSize(width, height));
 	if ( !!path)
 		client->LoadFile(path);
-	subframe->client = client;
-
+	subframe->winAttr->Win = subframe->client = client;
 	subframe->Show(true);
 	client->SetSelection(0, 0);
 }
@@ -486,7 +487,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 			DontWant(kind, curBox);
 	// Überschrift in MutWin setzen
 	wxFileName s(CompiledFile);
-	SetTitle(wxString::Format(_T("%s - %s"), APPNAME, s.GetName()));
+	SetTitle(wxString::Format(_T("%s - %s"), APPNAME, s.GetName().c_str()));
 	Get(WK_LOGIC, curBox)->Win->SetFocus();
 	REPAINT_ROUTE;
 }
@@ -521,7 +522,18 @@ void MutFrame::CmPanic(wxCommandEvent& WXUNUSED(event))
 		Panic();
 }
 
+void MutFrame::CeActivate(wxUpdateUIEvent& event)
+{
+	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
+}
+
+void MutFrame::CeStop(wxUpdateUIEvent& event)
+{
+	event.Enable(LogicOn);
+}
+
 // Routenfenster anzeigen
+
 void MutFrame::CmRoutes(wxCommandEvent& WXUNUSED(event))
 {
 	if ( IsOpen(WK_ROUTE) )
@@ -539,7 +551,7 @@ void MutFrame::CmRoutes(wxCommandEvent& WXUNUSED(event))
 	int width, height;
 	subframe->GetClientSize(&width, &height);
 	MutRouteWnd *client = new MutRouteWnd(subframe, wxPoint(0, 0), wxSize(width, height));
-	subframe->client = client;
+	subframe->winAttr->Win = subframe->client = client;
 
 	subframe->Show(true);
   }
@@ -560,7 +572,7 @@ void MutFrame::LogicWinOpen(int box)
     int width, height;
     subframe->GetClientSize(&width, &height);
     MutLogicWnd *client = new MutLogicWnd(subframe, wxPoint(0, 0), wxSize(width, height));
-	subframe->client = client;
+	subframe->winAttr->Win = subframe->client = client;
 
 	subframe->Show(true);
 }
@@ -598,7 +610,7 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
     int width, height;
     subframe->GetClientSize(&width, &height);
     MutTextBox *client = new MutTextBox(subframe, wxPoint(0, 0), wxSize(width, height));
-	subframe->client = client;
+	subframe->winAttr->Win = subframe->client = client;
 
 	subframe->Show(true);
 	client->NewText(s, true);
@@ -1204,8 +1216,8 @@ void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 
 void MutFrame::OnIdle(wxIdleEvent& event)
 {
-	//wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_UPDATEUI);
-	//UpdateUI(event1);
+	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_UPDATEUI);
+	UpdateUI(event1);
 	event.Skip();
 }
 

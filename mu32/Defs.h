@@ -21,8 +21,10 @@
   #define pascal
   #define CALLBACK 
 #endif
-  #define min(a, b)	((a) < (b) ? (a) : (b))
   #define _export
+#if defined(__VISUALC__)
+  #define min(a, b) wxMin(a, b)
+#endif
 #else // not WX
   #define REUSE(type) type
 #endif 

@@ -271,7 +271,8 @@ void CloseAll(WinKind kind)
     if ( WinAttrs[kind][i].Win )
     {
       WinAttrs[kind][i].Wanted = 2;
-      WinAttrs[kind][i].Win->Close();
+      WinAttrs[kind][i].Win->GetParent()->Close();
+	  WinAttrs[kind][i].Win = 0;
     }
 }
 

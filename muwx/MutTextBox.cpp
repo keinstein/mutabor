@@ -42,8 +42,10 @@ BEGIN_EVENT_TABLE(MutTextBox, wxListBox)
   EV_WM_RBUTTONDOWN,*/
 END_EVENT_TABLE()
 
+wxString ListInit[1] = { _("<init>") };
+
 MutTextBox::MutTextBox(wxWindow* parent, const wxPoint& pos, const wxSize& size)
- : wxListBox(parent, -1, pos, size, 0)
+ : wxListBox(parent, -1, pos, size, 1, ListInit)
 {
 /*  Attr.Style &= ~LBS_SORT;
   Attr.Style |= LBS_NOINTEGRALHEIGHT | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL | LBS_NOSEL;
@@ -64,7 +66,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 void MutTextBox::NewText(char *s, bool newTitle)
 {
   // Text in Liste
-/*test   Clear();
+  Clear();
   char s1[2000];
   int i = 0, j = 0;
   while ( s[i] )
@@ -82,11 +84,11 @@ void MutTextBox::NewText(char *s, bool newTitle)
   }
   s1[j] = 0;
   if ( j )
-    Append(wxString(s1));*/
+    Append(wxString(s1));
   // Titel setzen
   if ( newTitle )
   {
-    GetParent()->SetTitle(PARENT_KIND != WK_ACT || !CAW ? wxString::Format(_("%s - Box %d"), TextBoxTitle[PARENT_KIND].c_str(), Box()) : _("Actions - all boxes"));
+    GetParent()->SetTitle(PARENT_KIND != WK_ACT || !CAW ? wxString::Format(_("%s - Box %d"), TextBoxTitle[PARENT_KIND].c_str(), Box()) : wxString(_("Actions - all boxes")));
     int NewColorBox = UseColorBars ? Box() : -1;
     if ( ColorBox != NewColorBox )
     {
