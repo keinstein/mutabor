@@ -203,6 +203,7 @@ MutFrame::MutFrame(wxWindow *parent,
 
 void MutFrame::OnClose(wxCloseEvent& event)
 {
+  /*
     if ( event.CanVeto() && (gs_nFrames > 0) )
     {
         wxString msg;
@@ -215,7 +216,8 @@ void MutFrame::OnClose(wxCloseEvent& event)
             return;
         }
     }
-	SaveState();
+  */
+    SaveState();
     event.Skip();
 }
 
@@ -226,9 +228,12 @@ void MutFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 
 void MutFrame::OnAbout(wxCommandEvent& WXUNUSED(event) )
 {
-    (void)wxMessageBox(_T("wxWidgets 2.0 MDI Demo\n")
-                       _T("Author: Julian Smart (c) 1997\n")
-                       _T("Usage: mdi.exe"), _T("About MDI Demo"));
+  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
+				      mumT(PACKAGE_STRING),
+				      _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
+				      _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
+				      mumT(PACKAGE)),
+		     wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
 }
 
 void MutFrame::OnNewWindow(wxCommandEvent& WXUNUSED(event) )
@@ -424,7 +429,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 		return;
 	// Routen Übermitteln
 	WriteRoutes(RouteConfig);
-	ScanDevices((char*)RouteConfig.c_str());
+	ScanDevices(RouteConfig);
 	AktionTraceReset();
 	// aktivieren
 #ifndef NOACTIVATE
