@@ -532,8 +532,9 @@ void WriteRoutes(wxString &config)
 		for (ERoute *R = In->Routes; R; R = R->Next)
 		{
 			int OutNr = ( R->Out ) ?  R->Out->Nr : -1;
-			config << wxString::Format(_T("    %s  %d %d  %d %d  %d  %d %d %d\n"),
-				RTName[R->Type], R->IFrom, R->ITo, R->Box, R->Active, OutNr,
+			config << wxT("    ") << muT(RTName[R->Type]) << 
+			  wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
+				R->IFrom, R->ITo, R->Box, R->Active, OutNr,
 				R->OFrom, R->OTo, R->ONoDrum ? 1 : 0);
 		}
 	}
