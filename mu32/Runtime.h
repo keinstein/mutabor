@@ -22,9 +22,9 @@ typedef void UpdateUICallback();
 extern "C"
 {
 #ifndef WX
-  char pascal Compile( TDialog *compWin, char *name );
+  char pascal Compile( TDialog *compWin, const char *name );
 #else
-  char pascal Compile( CompDlg *compWin, char *name );
+  char pascal Compile( CompDlg *compWin, const char *name );
 #endif
   bool pascal Activate(bool realTime, UpdateUICallback* callback = 0);
   void pascal Stop();
@@ -54,7 +54,11 @@ extern "C"
   void pascal SetAktuellesKeyboardInstrument(int instr);
   int  pascal GetAktuellesKeyboardInstrument();
 
+#ifndef WX
   void pascal ScanDevices(char *config);
+#else
+  void pascal ScanDevices(const wxString &config);
+#endif
 
   void pascal GetTimerData(UINT &min, UINT &max);
 }
