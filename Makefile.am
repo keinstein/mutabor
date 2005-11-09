@@ -1,4 +1,5 @@
-SUBDIRS=includes libmutabor .
+distdir = $(PACKAGE_TARNAME)-$(VERSION)
+SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
 bin_PROGRAMS = mutabor
 
