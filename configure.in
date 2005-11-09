@@ -3,13 +3,18 @@
 
 AC_PREREQ(2.59)
 AC_INIT(Mutabor, 3.1.0-0pre1, mutabor@math.tu-dresden.de)
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+echo target_os: $target_os
 AC_CONFIG_SRCDIR([README])
 AM_INIT_AUTOMAKE
 
 AC_CONFIG_HEADER([config.h])
 
+
 dnl PACKAGE=$PACKAGE_NAME
 dnl VERSION=$PACKAGE_VERSION
+PACKAGE_TARNAME=mutabor
 
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
@@ -32,12 +37,6 @@ AH_BOTTOM([
 #ifdef DEBUG
 #  define YYDEBUG 1
 #endif
-
-#define MUTWIN
-#define WX
-#define RTMIDI
-#define __LINUX_ALSASEQ__
-#define REUSE(x) x
 ])
 
 AM_MAINTAINER_MODE
@@ -55,10 +54,19 @@ AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
 	[AS_IF(test "$enableval" = yes,
 	       AC_DEFINE(ANSI,1,[Define to 1 for compiling in ansi mode.]),
-               AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
+               AC_DEFINE_UNQUOTED(ANSI,[$enableval]))
 	 AX_CXXFLAGS_WARN_ALL_ANSI
 	 AX_CFLAGS_WARN_ALL_ANSI
 ])
+AC_ARG_ENABLE(gui,
+	AS_HELP_STRING([--enable-gui],[Enable compiling ]),
+	[AS_IF(test "$enableval" = yes,
+	       AC_DEFINE(MUTWIN,1,[Define to 1 for compiling the gui version of $PACKAGE.]),
+               AC_DEFINE_UNQUOTED(MUTWIN,[$enableval]))
+],[
+	       AC_DEFINE(MUTWIN,1,[Define to 1 for compiling the gui version of $PACKAGE.])
+])
+AC_DEFINE(RTMIDI,1,[Define to 1 for usage of the RtMidi Library.])
 AM_PROG_LEX
 AC_PROG_YACC
 AC_PROG_LIBTOOL
@@ -67,8 +75,56 @@ AC_PROG_LN_S
 
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
-AM_PATH_ALSA(1.0.0)
-AM_PATH_WXCONFIG(2.3.4, wxWin=1)
+
+case "$target_os" in 
+
+dnl GNU/Linux on an Intel or compatible
+*linux*)
+PLATFORM=linux
+
+AM_PATH_ALSA(1.0.0,[
+	AC_DEFINE(__LINUX_ALSASEQ__,1,[Define to 1 for compiling with alsa sequencer support.])
+	],
+	[
+	AC_DEFINE_UNQUOTED(__LINUX_ALSASEQ__,1)
+	AC_MSG_ERROR([
+		ALSA headers or configuration not found. $PACKAGE depends on
+		a working MIDI configuration for your System.
+
+		Simple non realtime batch conversion is not yet availlable.
+	])
+])
+
+;;
+
+darwin*)
+PLATFORM=macosx
+AC_DEFINE(__MACOSX_CORE__,1,[Define to 1 for compiling with MAC OSX CoreMIDI support.])
+;;
+*winnt*|*interix*|cygwin*|mingw32*|uwin*)
+PLATFORM=windows
+AC_DEFINE(__WINDOWS_MM__,1,[Define to 1 for compiling with Windows MM system support.])
+;;
+*)
+	AC_MSG_ERROR([
+		Your target system could not be recognized. $PACKAGE depends on
+		a working MIDI configuration for your System. So it can't be built
+		without knowing it.
+		
+		Please contact the Development team at 
+		    
+		    $PACKAGE_BUGREPORT
+
+		and provide the following information:
+
+		* The output of configure
+		* The description of your System.
+
+	])
+
+esac
+
+AM_PATH_WXCONFIG(2.6.0, wxWin=1)
 if test "$wxWin" != 1; then
          AC_MSG_ERROR([
                 wxWindows must be installed on your system
@@ -79,6 +135,8 @@ if test "$wxWin" != 1; then
                 'wx-config --libs' command) is in LD_LIBRARY_PATH or
                 equivalent variable and wxWindows version is 2.3.4 or above.
         ])
+else
+	AC_DEFINE(WX,1,[Define to 1 if $PACKAGE should be compiled using wxWidgets.])	
 fi
 
 
@@ -88,6 +146,67 @@ AC_CHECK_HEADERS([limits.h stddef.h math.h])
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
 AC_TYPE_SIZE_T
+AC_C_RESTRICT
+AC_C_VOLATILE
+AC_C_INLINE
+
+AC_LANG_PUSH(C)
+if test "$ac_cv_c_inline" != no ; then
+  AC_DEFINE(HAVE_INLINE,1,[Define to 1 if the C Compiler supports inline functions.])
+  AC_SUBST(HAVE_INLINE)
+fi
+
+dnl Check for "extern inline", using a modified version
+dnl of the test for AC_C_INLINE from acspecific.mt
+dnl
+AC_CACHE_CHECK([for extern inline], ac_cv_c_extern_inline,
+[ac_cv_c_extern_inline=no
+AC_TRY_COMPILE([extern $ac_cv_c_inline double foo(double x);
+extern $ac_cv_c_inline double foo(double x) { return x+1.0; };
+double foo (double x) { return x + 1.0; };], 
+[  foo(1.0)  ],
+[ac_cv_c_extern_inline="yes"])
+])
+
+if test "$ac_cv_c_extern_inline" != no ; then
+  AC_DEFINE(HAVE_EXTERN_INLINE,1,[Define to 1 if "extern inline" works.])
+  AC_SUBST(HAVE_EXTERN_INLINE)
+fi
+
+AC_CACHE_CHECK([for varibale scope in for loops in C mode], ac_cv_c_scope_reuse,
+[
+ AC_COMPILE_IFELSE([
+	AC_LANG_PROGRAM([],[
+	for (int i=1; i<3; i++) ;
+	for (int i=1; i<4; i++) ; 
+	])],[ac_cv_c_scope_reuse=yes],[ac_cv_c_scope_reuse=no])
+])
+
+if test $ac_cv_c_scope_reuse = yes
+then
+	AC_DEFINE([REUSE_C(x)],[x],[Define to x if the scope of C loop variables is inside the loop])
+else
+	AC_DEFINE([REUSE_C(x)],[],[Define to x if the scope of C loop variables is inside the loop])
+fi
+
+AC_LANG(C++)
+
+AC_CACHE_CHECK([for varibale scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
+[
+ AC_COMPILE_IFELSE([
+	AC_LANG_PROGRAM([],[
+	for (int i=1; i<3; i++) ;
+	for (int i=1; i<4; i++) ; 
+	])],[ac_cv_cxx_scope_reuse=yes],[ac_cv_cxx_scope_reuse=no])
+])
+if test $ac_cv_cxx_scope_reuse = yes
+then
+	AC_DEFINE([REUSE(x)],[x],[Define to x if the scope of C++ loop variables is inside the loop])
+else
+	AC_DEFINE([REUSE(x)],[],[Define to x if the scope of C++ loop variables is inside the loop])
+fi
+
+AC_LANG_POP(C++)
 
 # Checks for library functions.
 AC_FUNC_MALLOC
