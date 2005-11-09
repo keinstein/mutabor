@@ -173,16 +173,16 @@ if test "$ac_cv_c_extern_inline" != no ; then
   AC_SUBST(HAVE_EXTERN_INLINE)
 fi
 
-AC_CACHE_CHECK([for varibale scope in for loops in C mode], ac_cv_c_scope_reuse,
+AC_CACHE_CHECK([for variable scope in for loops in C mode], ac_cv_c_scope_reuse,
 [
  AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([],[
 	for (int i=1; i<3; i++) ;
 	for (int i=1; i<4; i++) ; 
-	])],[ac_cv_c_scope_reuse=yes],[ac_cv_c_scope_reuse=no])
+	])],[ac_cv_c_scope_reuse=inside],[ac_cv_c_scope_reuse=outside])
 ])
 
-if test $ac_cv_c_scope_reuse = yes
+if test $ac_cv_c_scope_reuse = inside
 then
 	AC_DEFINE(REUSE_C,[(x) x],[Define to x if the scope of C loop variables is inside the loop])
 else
@@ -191,15 +191,15 @@ fi
 
 AC_LANG(C++)
 
-AC_CACHE_CHECK([for varibale scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
+AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
 [
  AC_COMPILE_IFELSE([
 	AC_LANG_PROGRAM([],[
 	for (int i=1; i<3; i++) ;
 	for (int i=1; i<4; i++) ; 
-	])],[ac_cv_cxx_scope_reuse=yes],[ac_cv_cxx_scope_reuse=no])
+	])],[ac_cv_cxx_scope_reuse=inside],[ac_cv_cxx_scope_reuse=outside])
 ])
-if test $ac_cv_cxx_scope_reuse = yes
+if test $ac_cv_cxx_scope_reuse = inside
 then
 	AC_DEFINE(REUSE,[(x) x],[Define to x if the scope of C++ loop variables is inside the loop])
 else
