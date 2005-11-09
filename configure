@@ -21103,8 +21103,8 @@ _ACEOF
 
 fi
 
-echo "$as_me:$LINENO: checking for varibale scope in for loops in C mode" >&5
-echo $ECHO_N "checking for varibale scope in for loops in C mode... $ECHO_C" >&6
+echo "$as_me:$LINENO: checking for variable scope in for loops in C mode" >&5
+echo $ECHO_N "checking for variable scope in for loops in C mode... $ECHO_C" >&6
 if test "${ac_cv_c_scope_reuse+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
@@ -21149,12 +21149,12 @@ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_c_scope_reuse=yes
+  ac_cv_c_scope_reuse=inside
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-ac_cv_c_scope_reuse=no
+ac_cv_c_scope_reuse=outside
 fi
 rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
 
@@ -21162,7 +21162,7 @@ fi
 echo "$as_me:$LINENO: result: $ac_cv_c_scope_reuse" >&5
 echo "${ECHO_T}$ac_cv_c_scope_reuse" >&6
 
-if test $ac_cv_c_scope_reuse = yes
+if test $ac_cv_c_scope_reuse = inside
 then
 
 cat >>confdefs.h <<\_ACEOF
@@ -21184,8 +21184,8 @@ ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ex
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
-echo "$as_me:$LINENO: checking for varibale scope in for loops in C++ mode" >&5
-echo $ECHO_N "checking for varibale scope in for loops in C++ mode... $ECHO_C" >&6
+echo "$as_me:$LINENO: checking for variable scope in for loops in C++ mode" >&5
+echo $ECHO_N "checking for variable scope in for loops in C++ mode... $ECHO_C" >&6
 if test "${ac_cv_cxx_scope_reuse+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
@@ -21230,19 +21230,19 @@ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   ac_status=$?
   echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_cxx_scope_reuse=yes
+  ac_cv_cxx_scope_reuse=inside
 else
   echo "$as_me: failed program was:" >&5
 sed 's/^/| /' conftest.$ac_ext >&5
 
-ac_cv_cxx_scope_reuse=no
+ac_cv_cxx_scope_reuse=outside
 fi
 rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
 
 fi
 echo "$as_me:$LINENO: result: $ac_cv_cxx_scope_reuse" >&5
 echo "${ECHO_T}$ac_cv_cxx_scope_reuse" >&6
-if test $ac_cv_cxx_scope_reuse = yes
+if test $ac_cv_cxx_scope_reuse = inside
 then
 
 cat >>confdefs.h <<\_ACEOF
