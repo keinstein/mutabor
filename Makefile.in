@@ -233,6 +233,7 @@ target_vendor = @target_vendor@
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
+CVS = cvs
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
@@ -1321,6 +1322,28 @@ uninstall-info: uninstall-info-recursive
 	pdf pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
+
+.PHONY: cvs_dist cvs_distcheck
+
+cvs_dist: Makefile
+	chmod -R u+w  cvsdist
+	rm -rf cvsdist
+	mkdir cvsdist
+	cd cvsdist && \
+	$(CVS) -d `cat ../CVS/Root` export -r HEAD `cat ../CVS/Repository` && \
+	cd `cat ../CVS/Repository` && \
+	./configure && \
+	$(MAKE) dist
+
+cvs_distcheck: Makefile
+	chmod -R u+w  cvsdist
+	rm -rf cvsdist
+	mkdir cvsdist
+	cd cvsdist && \
+	$(CVS) -d `cat ../CVS/Root` export -r HEAD `cat ../CVS/Repository` && \
+	cd `cat ../CVS/Repository` && \
+	./configure && \
+	$(MAKE)  distcheck
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

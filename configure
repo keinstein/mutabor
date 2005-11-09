@@ -21166,13 +21166,13 @@ if test $ac_cv_c_scope_reuse = yes
 then
 
 cat >>confdefs.h <<\_ACEOF
-#define REUSE_C(x) x
+#define REUSE_C (x) x
 _ACEOF
 
 else
 
 cat >>confdefs.h <<\_ACEOF
-#define REUSE_C(x)
+#define REUSE_C (x)
 _ACEOF
 
 fi
@@ -21246,13 +21246,13 @@ if test $ac_cv_cxx_scope_reuse = yes
 then
 
 cat >>confdefs.h <<\_ACEOF
-#define REUSE(x) x
+#define REUSE (x) x
 _ACEOF
 
 else
 
 cat >>confdefs.h <<\_ACEOF
-#define REUSE(x)
+#define REUSE (x)
 _ACEOF
 
 fi
