@@ -465,7 +465,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LEX LEXLIB LEX_OUTPUT_ROOT YACC build build_cpu build_vendor build_os host host_cpu host_vendor host_os EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL ALSA_CFLAGS ALSA_LIBS WX_CONFIG_PATH WX_CPPFLAGS WX_CFLAGS WX_CXXFLAGS WX_CFLAGS_ONLY WX_CXXFLAGS_ONLY WX_LIBS WX_LIBS_STATIC WX_VERSION LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os target target_cpu target_vendor target_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LEX LEXLIB LEX_OUTPUT_ROOT YACC EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL ALSA_CFLAGS ALSA_LIBS WX_CONFIG_PATH WX_CPPFLAGS WX_CFLAGS WX_CXXFLAGS WX_CFLAGS_ONLY WX_CXXFLAGS_ONLY WX_LIBS WX_LIBS_STATIC WX_VERSION HAVE_INLINE HAVE_EXTERN_INLINE LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -1015,6 +1015,7 @@ Program names:
 System types:
   --build=BUILD     configure for building on BUILD [guessed]
   --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+  --target=TARGET   configure for building compilers for TARGET [HOST]
 _ACEOF
 fi
 
@@ -1033,6 +1034,7 @@ Optional Features:
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
   --enable-ansi           Enable strict ansi compiling and warnings
+  --enable-gui            Enable compiling
   --enable-shared[=PKGS]
                           build shared libraries [default=yes]
   --enable-static[=PKGS]
@@ -1521,8 +1523,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-
-am__api_version="1.9"
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
   if test -f $ac_dir/install-sh; then
@@ -1548,6 +1548,91 @@ ac_config_guess="$SHELL $ac_aux_dir/config.guess"
 ac_config_sub="$SHELL $ac_aux_dir/config.sub"
 ac_configure="$SHELL $ac_aux_dir/configure" # This should be Cygnus configure.
 
+# Make sure we can run config.sub.
+$ac_config_sub sun4 >/dev/null 2>&1 ||
+  { { echo "$as_me:$LINENO: error: cannot run $ac_config_sub" >&5
+echo "$as_me: error: cannot run $ac_config_sub" >&2;}
+   { (exit 1); exit 1; }; }
+
+echo "$as_me:$LINENO: checking build system type" >&5
+echo $ECHO_N "checking build system type... $ECHO_C" >&6
+if test "${ac_cv_build+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_build_alias=$build_alias
+test -z "$ac_cv_build_alias" &&
+  ac_cv_build_alias=`$ac_config_guess`
+test -z "$ac_cv_build_alias" &&
+  { { echo "$as_me:$LINENO: error: cannot guess build type; you must specify one" >&5
+echo "$as_me: error: cannot guess build type; you must specify one" >&2;}
+   { (exit 1); exit 1; }; }
+ac_cv_build=`$ac_config_sub $ac_cv_build_alias` ||
+  { { echo "$as_me:$LINENO: error: $ac_config_sub $ac_cv_build_alias failed" >&5
+echo "$as_me: error: $ac_config_sub $ac_cv_build_alias failed" >&2;}
+   { (exit 1); exit 1; }; }
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_build" >&5
+echo "${ECHO_T}$ac_cv_build" >&6
+build=$ac_cv_build
+build_cpu=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
+build_vendor=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
+build_os=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
+
+
+echo "$as_me:$LINENO: checking host system type" >&5
+echo $ECHO_N "checking host system type... $ECHO_C" >&6
+if test "${ac_cv_host+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_host_alias=$host_alias
+test -z "$ac_cv_host_alias" &&
+  ac_cv_host_alias=$ac_cv_build_alias
+ac_cv_host=`$ac_config_sub $ac_cv_host_alias` ||
+  { { echo "$as_me:$LINENO: error: $ac_config_sub $ac_cv_host_alias failed" >&5
+echo "$as_me: error: $ac_config_sub $ac_cv_host_alias failed" >&2;}
+   { (exit 1); exit 1; }; }
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_host" >&5
+echo "${ECHO_T}$ac_cv_host" >&6
+host=$ac_cv_host
+host_cpu=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
+host_vendor=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
+host_os=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
+
+
+echo "$as_me:$LINENO: checking target system type" >&5
+echo $ECHO_N "checking target system type... $ECHO_C" >&6
+if test "${ac_cv_target+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_target_alias=$target_alias
+test "x$ac_cv_target_alias" = "x" &&
+  ac_cv_target_alias=$ac_cv_host_alias
+ac_cv_target=`$ac_config_sub $ac_cv_target_alias` ||
+  { { echo "$as_me:$LINENO: error: $ac_config_sub $ac_cv_target_alias failed" >&5
+echo "$as_me: error: $ac_config_sub $ac_cv_target_alias failed" >&2;}
+   { (exit 1); exit 1; }; }
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_target" >&5
+echo "${ECHO_T}$ac_cv_target" >&6
+target=$ac_cv_target
+target_cpu=`echo $ac_cv_target | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
+target_vendor=`echo $ac_cv_target | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
+target_os=`echo $ac_cv_target | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
+
+
+# The aliases save the names the user supplied, while $host etc.
+# will get canonicalized.
+test -n "$target_alias" &&
+  test "$program_prefix$program_suffix$program_transform_name" = \
+    NONENONEs,x,x, &&
+  program_prefix=${target_alias}-
+echo target_os: $target_os
+
+am__api_version="1.9"
 # Find a good install program.  We prefer a C program (faster),
 # so one script is as good as another.  But avoid the broken or
 # incompatible versions:
@@ -1963,6 +2048,8 @@ am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
           ac_config_headers="$ac_config_headers config.h"
 
 
+
+PACKAGE_TARNAME=mutabor
 
 
 
@@ -3634,7 +3721,7 @@ _ACEOF
 
 else
   cat >>confdefs.h <<_ACEOF
-#define DEBUG $enableval
+#define ANSI $enableval
 _ACEOF
 
 fi
@@ -3837,6 +3924,37 @@ esac
 
 
 fi;
+# Check whether --enable-gui or --disable-gui was given.
+if test "${enable_gui+set}" = set; then
+  enableval="$enable_gui"
+  if test "$enableval" = yes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define MUTWIN 1
+_ACEOF
+
+else
+  cat >>confdefs.h <<_ACEOF
+#define MUTWIN $enableval
+_ACEOF
+
+fi
+
+
+else
+
+
+cat >>confdefs.h <<\_ACEOF
+#define MUTWIN 1
+_ACEOF
+
+
+fi;
+
+cat >>confdefs.h <<\_ACEOF
+#define RTMIDI 1
+_ACEOF
+
 for ac_prog in flex lex
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -4223,60 +4341,6 @@ if test "${enable_fast_install+set}" = set; then
 else
   enable_fast_install=yes
 fi;
-
-# Make sure we can run config.sub.
-$ac_config_sub sun4 >/dev/null 2>&1 ||
-  { { echo "$as_me:$LINENO: error: cannot run $ac_config_sub" >&5
-echo "$as_me: error: cannot run $ac_config_sub" >&2;}
-   { (exit 1); exit 1; }; }
-
-echo "$as_me:$LINENO: checking build system type" >&5
-echo $ECHO_N "checking build system type... $ECHO_C" >&6
-if test "${ac_cv_build+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_cv_build_alias=$build_alias
-test -z "$ac_cv_build_alias" &&
-  ac_cv_build_alias=`$ac_config_guess`
-test -z "$ac_cv_build_alias" &&
-  { { echo "$as_me:$LINENO: error: cannot guess build type; you must specify one" >&5
-echo "$as_me: error: cannot guess build type; you must specify one" >&2;}
-   { (exit 1); exit 1; }; }
-ac_cv_build=`$ac_config_sub $ac_cv_build_alias` ||
-  { { echo "$as_me:$LINENO: error: $ac_config_sub $ac_cv_build_alias failed" >&5
-echo "$as_me: error: $ac_config_sub $ac_cv_build_alias failed" >&2;}
-   { (exit 1); exit 1; }; }
-
-fi
-echo "$as_me:$LINENO: result: $ac_cv_build" >&5
-echo "${ECHO_T}$ac_cv_build" >&6
-build=$ac_cv_build
-build_cpu=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
-build_vendor=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
-build_os=`echo $ac_cv_build | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
-
-
-echo "$as_me:$LINENO: checking host system type" >&5
-echo $ECHO_N "checking host system type... $ECHO_C" >&6
-if test "${ac_cv_host+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_cv_host_alias=$host_alias
-test -z "$ac_cv_host_alias" &&
-  ac_cv_host_alias=$ac_cv_build_alias
-ac_cv_host=`$ac_config_sub $ac_cv_host_alias` ||
-  { { echo "$as_me:$LINENO: error: $ac_config_sub $ac_cv_host_alias failed" >&5
-echo "$as_me: error: $ac_config_sub $ac_cv_host_alias failed" >&2;}
-   { (exit 1); exit 1; }; }
-
-fi
-echo "$as_me:$LINENO: result: $ac_cv_host" >&5
-echo "${ECHO_T}$ac_cv_host" >&6
-host=$ac_cv_host
-host_cpu=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
-host_vendor=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
-host_os=`echo $ac_cv_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
-
 
 echo "$as_me:$LINENO: checking for a sed that does not truncate output" >&5
 echo $ECHO_N "checking for a sed that does not truncate output... $ECHO_C" >&6
@@ -4750,7 +4814,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 4753 "configure"' > conftest.$ac_ext
+  echo '#line 4817 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -5853,7 +5917,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:5856:" \
+echo "$as_me:5920:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -6885,11 +6949,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:6888: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:6952: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:6892: \$? = $ac_status" >&5
+   echo "$as_me:6956: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7118,11 +7182,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7121: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7185: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7125: \$? = $ac_status" >&5
+   echo "$as_me:7189: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7178,11 +7242,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7181: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7245: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7185: \$? = $ac_status" >&5
+   echo "$as_me:7249: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -9366,7 +9430,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 9369 "configure"
+#line 9433 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -9464,7 +9528,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 9467 "configure"
+#line 9531 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -11641,11 +11705,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:11644: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:11708: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:11648: \$? = $ac_status" >&5
+   echo "$as_me:11712: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -11701,11 +11765,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:11704: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:11768: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:11708: \$? = $ac_status" >&5
+   echo "$as_me:11772: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -13070,7 +13134,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13073 "configure"
+#line 13137 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13168,7 +13232,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13171 "configure"
+#line 13235 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13995,11 +14059,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13998: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14062: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14002: \$? = $ac_status" >&5
+   echo "$as_me:14066: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -14055,11 +14119,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14058: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14122: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14062: \$? = $ac_status" >&5
+   echo "$as_me:14126: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16100,11 +16164,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16103: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16167: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16107: \$? = $ac_status" >&5
+   echo "$as_me:16171: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -16333,11 +16397,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16336: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16400: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16340: \$? = $ac_status" >&5
+   echo "$as_me:16404: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -16393,11 +16457,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16396: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16460: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:16400: \$? = $ac_status" >&5
+   echo "$as_me:16464: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -18581,7 +18645,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 18584 "configure"
+#line 18648 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -18679,7 +18743,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 18682 "configure"
+#line 18746 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19858,6 +19922,12 @@ _ACEOF
 
 fi
 
+
+case "$target_os" in
+
+*linux*)
+PLATFORM=linux
+
 alsa_save_CFLAGS="$CFLAGS"
 alsa_save_LDFLAGS="$LDFLAGS"
 alsa_save_LIBS="$LIBS"
@@ -20008,9 +20078,7 @@ sed 's/^/| /' conftest.$ac_ext >&5
 
 echo "$as_me:$LINENO: result: not present." >&5
 echo "${ECHO_T}not present." >&6
-   { { echo "$as_me:$LINENO: error: Sufficiently new version of libasound not found." >&5
-echo "$as_me: error: Sufficiently new version of libasound not found." >&2;}
-   { (exit 1); exit 1; }; }
+
    alsa_found=no
 
 fi
@@ -20095,9 +20163,7 @@ _ACEOF
   LIBS="-lasound $LIBS"
 
 else
-  { { echo "$as_me:$LINENO: error: No linkable libasound was found." >&5
-echo "$as_me: error: No linkable libasound was found." >&2;}
-   { (exit 1); exit 1; }; }
+
 	 alsa_found=no
 
 fi
@@ -20108,15 +20174,93 @@ LDFLAGS="$alsa_save_LDFLAGS"
 LIBS="$alsa_save_LIBS"
 
 if test "x$alsa_found" = "xyes" ; then
-   :
+
+
+cat >>confdefs.h <<\_ACEOF
+#define __LINUX_ALSASEQ__ 1
+_ACEOF
+
+
 else
    ALSA_CFLAGS=""
    ALSA_LIBS=""
-   :
+
+	cat >>confdefs.h <<_ACEOF
+#define __LINUX_ALSASEQ__ 1
+_ACEOF
+
+	{ { echo "$as_me:$LINENO: error:
+		ALSA headers or configuration not found. $PACKAGE depends on
+		a working MIDI configuration for your System.
+
+		Simple non realtime batch conversion is not yet availlable.
+	" >&5
+echo "$as_me: error:
+		ALSA headers or configuration not found. $PACKAGE depends on
+		a working MIDI configuration for your System.
+
+		Simple non realtime batch conversion is not yet availlable.
+	" >&2;}
+   { (exit 1); exit 1; }; }
+
 fi
 
 
 
+
+
+;;
+
+darwin*)
+PLATFORM=macosx
+
+cat >>confdefs.h <<\_ACEOF
+#define __MACOSX_CORE__ 1
+_ACEOF
+
+;;
+*winnt*|*interix*|cygwin*|mingw32*|uwin*)
+PLATFORM=windows
+
+cat >>confdefs.h <<\_ACEOF
+#define __WINDOWS_MM__ 1
+_ACEOF
+
+;;
+*)
+	{ { echo "$as_me:$LINENO: error:
+		Your target system could not be recognized. $PACKAGE depends on
+		a working MIDI configuration for your System. So it can't be built
+		without knowing it.
+
+		Please contact the Development team at
+
+		    $PACKAGE_BUGREPORT
+
+		and provide the following information:
+
+		* The output of configure
+		* The description of your System.
+
+	" >&5
+echo "$as_me: error:
+		Your target system could not be recognized. $PACKAGE depends on
+		a working MIDI configuration for your System. So it can't be built
+		without knowing it.
+
+		Please contact the Development team at
+
+		    $PACKAGE_BUGREPORT
+
+		and provide the following information:
+
+		* The output of configure
+		* The description of your System.
+
+	" >&2;}
+   { (exit 1); exit 1; }; }
+
+esac
 
 
     if test x${WX_CONFIG_NAME+set} != xset ; then
@@ -20192,7 +20336,7 @@ fi
   if test "$WX_CONFIG_PATH" != "no" ; then
     WX_VERSION=""
 
-    min_wx_version=2.3.4
+    min_wx_version=2.6.0
     if test -z "" ; then
       echo "$as_me:$LINENO: checking for wxWidgets version >= $min_wx_version" >&5
 echo $ECHO_N "checking for wxWidgets version >= $min_wx_version... $ECHO_C" >&6
@@ -20349,6 +20493,12 @@ echo "$as_me: error:
                 equivalent variable and wxWindows version is 2.3.4 or above.
         " >&2;}
    { (exit 1); exit 1; }; }
+else
+
+cat >>confdefs.h <<\_ACEOF
+#define WX 1
+_ACEOF
+
 fi
 
 
@@ -20676,6 +20826,442 @@ cat >>confdefs.h <<_ACEOF
 _ACEOF
 
 fi
+
+echo "$as_me:$LINENO: checking for C/C++ restrict keyword" >&5
+echo $ECHO_N "checking for C/C++ restrict keyword... $ECHO_C" >&6
+if test "${ac_cv_c_restrict+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_c_restrict=no
+   # Try the official restrict keyword, then gcc's __restrict, and
+   # the less common variants.
+   for ac_kw in restrict __restrict __restrict__ _Restrict; do
+     cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+float * $ac_kw x;
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_c_restrict=$ac_kw; break
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+   done
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_c_restrict" >&5
+echo "${ECHO_T}$ac_cv_c_restrict" >&6
+ case $ac_cv_c_restrict in
+   restrict) ;;
+   no)
+cat >>confdefs.h <<\_ACEOF
+#define restrict
+_ACEOF
+ ;;
+   *)  cat >>confdefs.h <<_ACEOF
+#define restrict $ac_cv_c_restrict
+_ACEOF
+ ;;
+ esac
+
+echo "$as_me:$LINENO: checking for working volatile" >&5
+echo $ECHO_N "checking for working volatile... $ECHO_C" >&6
+if test "${ac_cv_c_volatile+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+volatile int x;
+int * volatile y;
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_c_volatile=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_c_volatile=no
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: $ac_cv_c_volatile" >&5
+echo "${ECHO_T}$ac_cv_c_volatile" >&6
+if test $ac_cv_c_volatile = no; then
+
+cat >>confdefs.h <<\_ACEOF
+#define volatile
+_ACEOF
+
+fi
+
+echo "$as_me:$LINENO: checking for inline" >&5
+echo $ECHO_N "checking for inline... $ECHO_C" >&6
+if test "${ac_cv_c_inline+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_c_inline=no
+for ac_kw in inline __inline__ __inline; do
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#ifndef __cplusplus
+typedef int foo_t;
+static $ac_kw foo_t static_foo () {return 0; }
+$ac_kw foo_t foo () {return 0; }
+#endif
+
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_c_inline=$ac_kw; break
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+done
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_c_inline" >&5
+echo "${ECHO_T}$ac_cv_c_inline" >&6
+
+
+case $ac_cv_c_inline in
+  inline | yes) ;;
+  *)
+    case $ac_cv_c_inline in
+      no) ac_val=;;
+      *) ac_val=$ac_cv_c_inline;;
+    esac
+    cat >>confdefs.h <<_ACEOF
+#ifndef __cplusplus
+#define inline $ac_val
+#endif
+_ACEOF
+    ;;
+esac
+
+
+ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+if test "$ac_cv_c_inline" != no ; then
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_INLINE 1
+_ACEOF
+
+
+fi
+
+echo "$as_me:$LINENO: checking for extern inline" >&5
+echo $ECHO_N "checking for extern inline... $ECHO_C" >&6
+if test "${ac_cv_c_extern_inline+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  ac_cv_c_extern_inline=no
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+extern $ac_cv_c_inline double foo(double x);
+extern $ac_cv_c_inline double foo(double x) { return x+1.0; };
+double foo (double x) { return x + 1.0; };
+int
+main ()
+{
+  foo(1.0)
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_c_extern_inline="yes"
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_c_extern_inline" >&5
+echo "${ECHO_T}$ac_cv_c_extern_inline" >&6
+
+if test "$ac_cv_c_extern_inline" != no ; then
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_EXTERN_INLINE 1
+_ACEOF
+
+
+fi
+
+echo "$as_me:$LINENO: checking for varibale scope in for loops in C mode" >&5
+echo $ECHO_N "checking for varibale scope in for loops in C mode... $ECHO_C" >&6
+if test "${ac_cv_c_scope_reuse+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+
+ cat >conftest.$ac_ext <<_ACEOF
+
+	/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+	for (int i=1; i<3; i++) ;
+	for (int i=1; i<4; i++) ;
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_c_scope_reuse=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_c_scope_reuse=no
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_c_scope_reuse" >&5
+echo "${ECHO_T}$ac_cv_c_scope_reuse" >&6
+
+if test $ac_cv_c_scope_reuse = yes
+then
+
+cat >>confdefs.h <<\_ACEOF
+#define REUSE_C(x) x
+_ACEOF
+
+else
+
+cat >>confdefs.h <<\_ACEOF
+#define REUSE_C(x)
+_ACEOF
+
+fi
+
+ac_ext=cc
+ac_cpp='$CXXCPP $CPPFLAGS'
+ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+
+
+echo "$as_me:$LINENO: checking for varibale scope in for loops in C++ mode" >&5
+echo $ECHO_N "checking for varibale scope in for loops in C++ mode... $ECHO_C" >&6
+if test "${ac_cv_cxx_scope_reuse+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+
+ cat >conftest.$ac_ext <<_ACEOF
+
+	/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+	for (int i=1; i<3; i++) ;
+	for (int i=1; i<4; i++) ;
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_cxx_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_cxx_scope_reuse=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_cxx_scope_reuse=no
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+
+fi
+echo "$as_me:$LINENO: result: $ac_cv_cxx_scope_reuse" >&5
+echo "${ECHO_T}$ac_cv_cxx_scope_reuse" >&6
+if test $ac_cv_cxx_scope_reuse = yes
+then
+
+cat >>confdefs.h <<\_ACEOF
+#define REUSE(x) x
+_ACEOF
+
+else
+
+cat >>confdefs.h <<\_ACEOF
+#define REUSE(x)
+_ACEOF
+
+fi
+
+ac_ext=c
+ac_cpp='$CPP $CPPFLAGS'
+ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 # Checks for library functions.
@@ -21759,6 +22345,18 @@ s,@ECHO_C@,$ECHO_C,;t t
 s,@ECHO_N@,$ECHO_N,;t t
 s,@ECHO_T@,$ECHO_T,;t t
 s,@LIBS@,$LIBS,;t t
+s,@build@,$build,;t t
+s,@build_cpu@,$build_cpu,;t t
+s,@build_vendor@,$build_vendor,;t t
+s,@build_os@,$build_os,;t t
+s,@host@,$host,;t t
+s,@host_cpu@,$host_cpu,;t t
+s,@host_vendor@,$host_vendor,;t t
+s,@host_os@,$host_os,;t t
+s,@target@,$target,;t t
+s,@target_cpu@,$target_cpu,;t t
+s,@target_vendor@,$target_vendor,;t t
+s,@target_os@,$target_os,;t t
 s,@INSTALL_PROGRAM@,$INSTALL_PROGRAM,;t t
 s,@INSTALL_SCRIPT@,$INSTALL_SCRIPT,;t t
 s,@INSTALL_DATA@,$INSTALL_DATA,;t t
@@ -21810,14 +22408,6 @@ s,@LEX@,$LEX,;t t
 s,@LEXLIB@,$LEXLIB,;t t
 s,@LEX_OUTPUT_ROOT@,$LEX_OUTPUT_ROOT,;t t
 s,@YACC@,$YACC,;t t
-s,@build@,$build,;t t
-s,@build_cpu@,$build_cpu,;t t
-s,@build_vendor@,$build_vendor,;t t
-s,@build_os@,$build_os,;t t
-s,@host@,$host,;t t
-s,@host_cpu@,$host_cpu,;t t
-s,@host_vendor@,$host_vendor,;t t
-s,@host_os@,$host_os,;t t
 s,@EGREP@,$EGREP,;t t
 s,@LN_S@,$LN_S,;t t
 s,@ECHO@,$ECHO,;t t
@@ -21842,6 +22432,8 @@ s,@WX_CXXFLAGS_ONLY@,$WX_CXXFLAGS_ONLY,;t t
 s,@WX_LIBS@,$WX_LIBS,;t t
 s,@WX_LIBS_STATIC@,$WX_LIBS_STATIC,;t t
 s,@WX_VERSION@,$WX_VERSION,;t t
+s,@HAVE_INLINE@,$HAVE_INLINE,;t t
+s,@HAVE_EXTERN_INLINE@,$HAVE_EXTERN_INLINE,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF
