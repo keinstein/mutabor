@@ -37,6 +37,18 @@ AH_BOTTOM([
 #ifdef DEBUG
 #  define YYDEBUG 1
 #endif
+
+#ifdef MUST_REUSE
+#  define REUSE(x) x
+#else
+#  define REUSE(x)
+#endif
+
+#ifdef MUST_REUSE_C
+#  define REUSE_C(x) x
+#else
+#  define REUSE_C(x)
+#endif
 ])
 
 AM_MAINTAINER_MODE
@@ -184,9 +196,7 @@ AC_CACHE_CHECK([for variable scope in for loops in C mode], ac_cv_c_scope_reuse,
 
 if test $ac_cv_c_scope_reuse = inside
 then
-	AC_DEFINE(REUSE_C,[(x) x],[Define to x if the scope of C loop variables is inside the loop])
-else
-	AC_DEFINE(REUSE_C,[(x)],[Define to x if the scope of C loop variables is inside the loop])
+	AC_DEFINE(MUST_REUSE_C,1,[Define to x if the scope of C loop variables is inside the loop])
 fi
 
 AC_LANG(C++)
@@ -201,9 +211,7 @@ AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_re
 ])
 if test $ac_cv_cxx_scope_reuse = inside
 then
-	AC_DEFINE(REUSE,[(x) x],[Define to x if the scope of C++ loop variables is inside the loop])
-else
-	AC_DEFINE(REUSE,[(x)],[Define to x if the scope of C++ loop variables is inside the loop])
+	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 fi
 
 AC_LANG_POP(C++)

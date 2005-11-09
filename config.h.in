@@ -67,6 +67,12 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
+/* Define to x if the scope of C++ loop variables is inside the loop */
+#undef MUST_REUSE
+
+/* Define to x if the scope of C loop variables is inside the loop */
+#undef MUST_REUSE_C
+
 /* Define to 1 for compiling the gui version of $PACKAGE. */
 #undef MUTWIN
 
@@ -87,12 +93,6 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
-
-/* Define to x if the scope of C++ loop variables is inside the loop */
-#undef REUSE
-
-/* Define to x if the scope of C loop variables is inside the loop */
-#undef REUSE_C
 
 /* Define to 1 for usage of the RtMidi Library. */
 #undef RTMIDI
@@ -146,5 +146,17 @@
 /* Debug also for Bison output. */
 #ifdef DEBUG
 #  define YYDEBUG 1
+#endif
+
+#ifdef MUST_REUSE
+#  define REUSE(x) x
+#else
+#  define REUSE(x)
+#endif
+
+#ifdef MUST_REUSE_C
+#  define REUSE_C(x) x
+#else
+#  define REUSE_C(x)
 #endif
 
