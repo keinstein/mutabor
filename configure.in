@@ -184,9 +184,9 @@ AC_CACHE_CHECK([for varibale scope in for loops in C mode], ac_cv_c_scope_reuse,
 
 if test $ac_cv_c_scope_reuse = yes
 then
-	AC_DEFINE([REUSE_C(x)],[x],[Define to x if the scope of C loop variables is inside the loop])
+	AC_DEFINE(REUSE_C,[(x) x],[Define to x if the scope of C loop variables is inside the loop])
 else
-	AC_DEFINE([REUSE_C(x)],[],[Define to x if the scope of C loop variables is inside the loop])
+	AC_DEFINE(REUSE_C,[(x)],[Define to x if the scope of C loop variables is inside the loop])
 fi
 
 AC_LANG(C++)
@@ -201,9 +201,9 @@ AC_CACHE_CHECK([for varibale scope in for loops in C++ mode], ac_cv_cxx_scope_re
 ])
 if test $ac_cv_cxx_scope_reuse = yes
 then
-	AC_DEFINE([REUSE(x)],[x],[Define to x if the scope of C++ loop variables is inside the loop])
+	AC_DEFINE(REUSE,[(x) x],[Define to x if the scope of C++ loop variables is inside the loop])
 else
-	AC_DEFINE([REUSE(x)],[],[Define to x if the scope of C++ loop variables is inside the loop])
+	AC_DEFINE(REUSE,[(x)],[Define to x if the scope of C++ loop variables is inside the loop])
 fi
 
 AC_LANG_POP(C++)

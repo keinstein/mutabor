@@ -1,6 +1,7 @@
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
+CVS = cvs
 bin_PROGRAMS = mutabor
 
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
@@ -18,3 +19,25 @@ mutabor_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS)
 mutabor_CXXFLAGS = $(ALSA_CFLAGS) $(WX_CXXFLAGS)
 mutabor_CPPFLAGS = $(WX_CPPFLAGS)
+
+.PHONY: cvs_dist cvs_distcheck
+
+cvs_dist: Makefile
+	chmod -R u+w  cvsdist
+	rm -rf cvsdist
+	mkdir cvsdist
+	cd cvsdist && \
+	$(CVS) -d `cat ../CVS/Root` export -r HEAD `cat ../CVS/Repository` && \
+	cd `cat ../CVS/Repository` && \
+	./configure && \
+	$(MAKE) dist
+
+cvs_distcheck: Makefile
+	chmod -R u+w  cvsdist
+	rm -rf cvsdist
+	mkdir cvsdist
+	cd cvsdist && \
+	$(CVS) -d `cat ../CVS/Root` export -r HEAD `cat ../CVS/Repository` && \
+	cd `cat ../CVS/Repository` && \
+	./configure && \
+	$(MAKE)  distcheck
