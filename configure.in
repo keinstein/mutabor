@@ -26,11 +26,11 @@ AC_DEFINE_UNQUOTED(PACKAGE_BUGREPORT, "$PACKAGE_BUGREPORT",
 AM_OPTIONS_WXCONFIG
 
 
-dnl AH_TOP([
-dnl /* We need this, because some autoconf tests rely on this (e.g. stpcpy)
-dnl    and it should be used for new programs anyway */
-dnl #define _GNU_SOURCE  1
-dnl ])
+AH_TOP([
+/* We need this, because some autoconf tests rely on this (e.g. stpcpy)
+    and it should be used for new programs anyway */
+#define _GNU_SOURCE  1
+])
 
 AH_BOTTOM([
 /* Debug also for Bison output. */

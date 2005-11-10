@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: identifier.h,v 1.2 2005/11/10 16:16:59 keinstein Exp $
+ * $Id: identifier.h,v 1.5 2008/10/10 08:45:28 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/10 16:16:59 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2008/10/10 08:45:28 $
+ * \version $Revision: 1.5 $
  *
  * $Log: identifier.h,v $
+ * Revision 1.5  2008/10/10 08:45:28  keinstein
+ * myContextHelpButton is still not needed
+ *
  * Revision 1.2  2005/11/10 16:16:59  keinstein
  * working distcheck
  *
