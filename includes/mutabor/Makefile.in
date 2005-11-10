@@ -63,6 +63,8 @@ AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+COND_PERL_FALSE = @COND_PERL_FALSE@
+COND_PERL_TRUE = @COND_PERL_TRUE@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -107,6 +109,7 @@ PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PERL = @PERL@
 RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -349,10 +352,10 @@ uninstall-am: uninstall-info-am
 
 $(BUILT_SOURCES):makeclass.pl
 
-.def.hh:
-	$(srcdir)/makeclass.pl <$< >$*.h
-.def.h:	
-	$(srcdir)/makeclass.pl <$< >$*.h
+@COND_PERL_TRUE@.def.hh:
+@COND_PERL_TRUE@	$(PERL)  $(srcdir)/makeclass.pl -I$(srcdir) -d $*.hh  <$<  >$*.h
+@COND_PERL_TRUE@.def.h:	
+@COND_PERL_TRUE@	$(PERL) $(srcdir)/makeclass.pl -I$(srcdir) -d $*.hh <$<  >$*.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

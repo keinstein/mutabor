@@ -1,5 +1,13 @@
 #!/usr/bin/perl
+use Getopt::Long;
 my $classname;
+Getopt::Long::Configure ("bundling");
+my @includedirs;
+my @deps;
+GetOptions ('include|I=s' => \@includedirs,
+	    'header|o=s' => \$outputname,
+	    'definition|d=s' => \$defname,
+	    'dependencies|deps|D|m' => \$depname);
 $parengroup=qr{\(
 		   (?:
 		      (?> [^()]+ ) # non parenthesized text
@@ -46,9 +54,15 @@ while (<>) {
 }
 
 sub parse_file {
-    ($_)=@_;
-    print STDERR "Parsing file: $_\n";
-    open (my $inputfile,"<$_") or die "Can't open include file $_";
+    my $infilename;
+    my $filename;
+    ($infilename)=@_;
+    for (@includedirs) {
+	print STDERR "Trying $_/$infilename...\n";
+	last if -r ($filename="$_/$infilename");
+    }
+    print STDERR "Parsing file: $filename\n";
+    open (my $inputfile,"<$filename") or die "Can't open include file $filename";
     while (<$inputfile>) {
 #	print "Data: $_";
 	switch_data();
@@ -197,7 +211,7 @@ sub switch_data {
 }
 
 sub write_hh {
-    open outputfile,">$classname.hh" or 
+    open outputfile,">$defname" or 
 	die "Can't write class definition file for class $classname";
 
     for (@{$classes{$classname}{"virtual"}}){

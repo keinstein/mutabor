@@ -12,8 +12,8 @@
 #define __UMSTIMMUNG_H_INCLUDED
 
 struct umstimmung; 
-#include "ton.h"
-#include "case_liste.h"
+#include "mutabor/ton.h"
+#include "mutabor/case_liste.h"
 
 #ifdef __cplusplus
 namespace mutabor {

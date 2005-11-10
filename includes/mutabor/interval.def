@@ -2,13 +2,16 @@
  ********************************************************************
  * Intervallberechnungen
  *
- * $Id: interval.def,v 1.1 2005/11/03 13:57:46 keinstein Exp $
+ * $Id: interval.def,v 1.2 2005/11/10 16:16:59 keinstein Exp $
  * \author R.Krauﬂe
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:57:46 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: interval.def,v $
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 13:57:46  keinstein
  * basic interval class
  *
@@ -22,8 +25,8 @@ namespace mutabor {
   extern "C" {
 #endif
 
-#include "identifier.h"
-#include "bad_decl.h"
+#include "mutabor/identifier.h"
+#include "mutabor/bad_decl.h"
 
     /** Interval class. */
 

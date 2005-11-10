@@ -1,5 +1,6 @@
 SUBDIRS = . tests
-INCLUDES = -I../includes
+buildincludedir=$(top_builddir)/includes
+INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes
 AUTOMAKE_OPTIONS=foreign
 AM_YFLAGS = -d -v --report=itemset
 
@@ -10,26 +11,38 @@ BUILT_SOURCES=mutlex.h mut.h
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_CFLAGS = -Wall
 libmutabor_la_includedir = $(pkgincludedir)
-libmutabor_la_include_HEADERS = ../includes/mutabor/object.h \
-			../includes/mutabor/identifier.h \
-			../includes/mutabor/intervalSum.h \
-			../includes/mutabor/idlist.h \
-			../includes/mutabor/ptrlist.h \
-			../includes/mutabor/intervalPlaceholder.h \
-			../includes/mutabor/intervalStretch.h \
-			../includes/mutabor/intervalInv.h \
-			../includes/mutabor/mutfile.h \
-			../includes/mutabor/heap.h ../includes/mutabor/interval.h \
-			../includes/mutabor/aktion.h ../includes/mutabor/anweisung.h \
-			../includes/mutabor/argument.h ../includes/mutabor/ausloeser.h \
-			../includes/mutabor/bad_decl.h ../includes/mutabor/case_liste.h \
-			../includes/mutabor/global.h ../includes/mutabor/harmonie.h \
-			../includes/mutabor/instrument.h ../includes/mutabor/logik.h \
-			../includes/mutabor/midicalc.h ../includes/mutabor/mut_tab.h \
-			../includes/mutabor/parameter.h ../includes/mutabor/parser.h \
-			../includes/mutabor/tabgen.h ../includes/mutabor/taste.h \
-			../includes/mutabor/ton.h ../includes/mutabor/tonsystem.h \
-			../includes/mutabor/umstimmung.h 
+libmutabor_la_include_HEADERS = $(buildincludedir)/mutabor/object.h \
+			$(buildincludedir)/mutabor/identifier.h \
+			$(buildincludedir)/mutabor/intervalSum.h \
+			$(buildincludedir)/mutabor/idlist.h \
+			$(buildincludedir)/mutabor/ptrlist.h \
+			$(buildincludedir)/mutabor/intervalPlaceholder.h \
+			$(buildincludedir)/mutabor/intervalStretch.h \
+			$(buildincludedir)/mutabor/intervalInv.h \
+			$(buildincludedir)/mutabor/mutfile.h \
+			$(buildincludedir)/mutabor/interval.h \
+			$(top_srcdir)/includes/mutabor/heap.h \
+			$(top_srcdir)/includes/mutabor/aktion.h \
+			$(top_srcdir)/includes/mutabor/anweisung.h \
+			$(top_srcdir)/includes/mutabor/argument.h \
+			$(top_srcdir)/includes/mutabor/ausloeser.h \
+			$(top_srcdir)/includes/mutabor/bad_decl.h \
+			$(top_srcdir)/includes/mutabor/case_liste.h \
+			$(top_srcdir)/includes/mutabor/global.h \
+			$(top_srcdir)/includes/mutabor/harmonie.h \
+			$(top_srcdir)/includes/mutabor/instrument.h \
+			$(top_srcdir)/includes/mutabor/interpreter.h \
+			$(top_srcdir)/includes/mutabor/logik.h \
+			$(top_srcdir)/includes/mutabor/midicalc.h \
+			$(top_srcdir)/includes/mutabor/mut_tab.h \
+			$(top_srcdir)/includes/mutabor/parameter.h \
+			$(top_srcdir)/includes/mutabor/parser.h \
+			$(top_srcdir)/includes/mutabor/tabgen.h \
+			$(top_srcdir)/includes/mutabor/taste.h \
+			$(top_srcdir)/includes/mutabor/ton.h \
+			$(top_srcdir)/includes/mutabor/tonsystem.h \
+			$(top_srcdir)/includes/mutabor/umstimmung.h \
+			$(top_srcdir)/includes/mutabor/errors.h 
 
 libmutabor_la_SOURCES = object.c identifier.c \
 			intervalSum.c intervalDiff.c \
@@ -40,7 +53,17 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			aktion.c anweisung.c argument.c ausloeser.c \
 			case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
 			midicalc.c parameter.c taste.c ton.c tonsystem.c umstimmung.c \
-			errors.c mutlex.l interpreter.c 
+			errors.c mutlex.l interpreter.c \
+			$(buildincludedir)/mutabor/object.hh \
+			$(buildincludedir)/mutabor/identifier.hh \
+			$(buildincludedir)/mutabor/intervalSum.hh \
+			$(buildincludedir)/mutabor/idlist.hh \
+			$(buildincludedir)/mutabor/ptrlist.hh \
+			$(buildincludedir)/mutabor/intervalPlaceholder.hh \
+			$(buildincludedir)/mutabor/intervalStretch.hh \
+			$(buildincludedir)/mutabor/intervalInv.hh \
+			$(buildincludedir)/mutabor/mutfile.hh \
+			$(buildincludedir)/mutabor/interval.hh 
 #			parser.c
 
 libmutabor_la_LDFLAGS = -version-info 0:0:0

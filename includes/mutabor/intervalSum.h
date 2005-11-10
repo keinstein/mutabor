@@ -2,14 +2,14 @@
  ********************************************************************
  * Complex intervals.
  *
- * $Id: intervalSum.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
+ * $Id: intervalSum.h,v 1.3 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.3 $
  * 
  * $Log: intervalSum.h,v $
- * Revision 1.2  2005/11/07 19:42:54  keinstein
- * Some additional changes
+ * Revision 1.3  2005/11/10 16:16:59  keinstein
+ * working distcheck
  *
  * Revision 1.1  2005/11/03 14:29:13  keinstein
  * initial revision
@@ -24,7 +24,7 @@ namespace mutabor {
   extern "C" {
 #endif
 
-#include "interval.h"
+#include "mutabor/interval.h"
 
     /** Interval class. */
 

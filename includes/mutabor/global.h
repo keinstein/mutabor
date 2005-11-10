@@ -9,18 +9,18 @@
 #if ! defined (__GLOBAL_H_INCLUDED)
 #define __GLOBAL_H_INCLUDED
 
-#include "anweisung.h"
-#include "harmonie.h"
-#include "heap.h"
-#include "instrument.h"
-#include "logik.h"
-#include "mut_tab.h"
-#include "parameter.h"
-#include "parser.h"
-#include "tabgen.h"
-#include "taste.h"
-#include "tonsystem.h"
-#include "umstimmung.h"
+#include "mutabor/anweisung.h"
+#include "mutabor/harmonie.h"
+#include "mutabor/heap.h"
+#include "mutabor/instrument.h"
+#include "mutabor/logik.h"
+#include "mutabor/mut_tab.h"
+#include "mutabor/parameter.h"
+#include "mutabor/parser.h"
+#include "mutabor/tabgen.h"
+#include "mutabor/taste.h"
+#include "mutabor/tonsystem.h"
+#include "mutabor/umstimmung.h"
 
 #endif
 

@@ -2,12 +2,15 @@
  ********************************************************************
  * Placeholder objects for not yet specified identifiers.
  *
- * $Id: intervalPlaceholder.def,v 1.1 2005/11/03 13:58:48 keinstein Exp $
+ * $Id: intervalPlaceholder.def,v 1.2 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:58:48 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: intervalPlaceholder.def,v $
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 13:58:48  keinstein
  * initial revision
  *
@@ -21,8 +24,8 @@ namespace mutabor {
   extern "C" {
 #endif
 
-#include "interval.h"
-#include "bad_decl.h"
+#include "mutabor/interval.h"
+#include "mutabor/bad_decl.h"
 
     /** Interval class. */
 
