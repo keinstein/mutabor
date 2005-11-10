@@ -1,5 +1,11 @@
 /* config.h.in.  Generated from configure.in by autoheader.  */
 
+
+/* We need this, because some autoconf tests rely on this (e.g. stpcpy)
+    and it should be used for new programs anyway */
+#define _GNU_SOURCE  1
+
+
 /* Define to 1 for compiling in ansi mode. */
 #undef ANSI
 

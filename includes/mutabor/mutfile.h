@@ -2,13 +2,16 @@
  ***********************************************************************
  * Mutabor File class.
  *
- * $Id: mutfile.h,v 1.3 2005/11/10 16:16:59 keinstein Exp $
+ * $Id: mutfile.h,v 1.6 2008/10/10 08:45:28 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/10 16:16:59 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2008/10/10 08:45:28 $
+ * \version $Revision: 1.6 $
  *
  * $Log: mutfile.h,v $
- * Revision 1.3  2005/11/10 16:16:59  keinstein
+ * Revision 1.6  2008/10/10 08:45:28  keinstein
+ * myContextHelpButton is still not needed
+ *
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
  * working distcheck
  *
  * Revision 1.1  2005/11/03 14:01:48  keinstein

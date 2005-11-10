@@ -2,14 +2,17 @@
  ********************************************************************
  * Intervallberechnungen
  *
- * $Id: interval.h,v 1.5 2005/11/10 16:16:59 keinstein Exp $
+ * $Id: interval.h,v 1.7 2005/11/14 14:35:49 keinstein Exp $
  * \author R.Krauﬂe
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/10 16:16:59 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2005/11/14 14:35:49 $
+ * \version $Revision: 1.7 $
  * 
  * $Log: interval.h,v $
- * Revision 1.5  2005/11/10 16:16:59  keinstein
+ * Revision 1.7  2005/11/14 14:35:49  keinstein
+ * make distcheck happy
+ *
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
  * working distcheck
  *
  * Revision 1.1  2005/11/03 13:57:46  keinstein
