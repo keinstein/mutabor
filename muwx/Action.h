@@ -18,3 +18,4 @@ bool ACTChanged(int box);
 char *GenerateACTString(int box);
 char *GenerateCAWString();
 
+

@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.2 2005/11/07 14:51:08 keinstein Exp $
+// RCS-ID:      $Id: valNum.h,v 1.3 2005/11/10 17:54:01 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -101,3 +101,4 @@ protected:
 
 #endif
   // _WX_VALTEXTH__
+

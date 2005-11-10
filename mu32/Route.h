@@ -51,3 +51,4 @@ extern TOpenSaveDialog::TData GmnFileData;
 TColor BoxColor(int nr);
 
 #endif
+

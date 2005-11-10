@@ -142,3 +142,4 @@ public:
 
 #endif
     // _INPUTDEVDLG_H_
+

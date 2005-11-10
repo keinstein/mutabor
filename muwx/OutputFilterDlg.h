@@ -112,3 +112,4 @@ public:
 
 #endif
     // _OUTPUTFILTERDLG_H_
+

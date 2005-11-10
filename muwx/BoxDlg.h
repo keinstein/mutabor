@@ -123,3 +123,4 @@ public:
 
 #endif
     // _BOXDLG_H_
+

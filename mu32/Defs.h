@@ -1,10 +1,10 @@
 // definitions
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
-#endif
-
+#else
 #define MUTWIN
 //#define MUTMIDI
+#endif
 
 #ifdef WX
   #include "mhDefs.h"
@@ -38,4 +38,5 @@
 #else
   #define STD_PRE
 #endif
+
 

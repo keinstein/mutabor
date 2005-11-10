@@ -191,3 +191,4 @@ void NotesCorrect(int box);
 int GetChannel(int box, int taste);
 
 #endif
+

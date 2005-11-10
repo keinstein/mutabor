@@ -25,3 +25,4 @@ class MutEditFile : public wxTextCtrl
 	DECLARE_EVENT_TABLE()
 };
 
+

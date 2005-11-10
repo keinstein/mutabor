@@ -316,3 +316,4 @@ GisType GetGisType(GisToken* token);
 GisToken *GisParse(const char *FileName);
 
 #endif
+
