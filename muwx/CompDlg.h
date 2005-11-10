@@ -115,3 +115,4 @@ public:
 
 #endif
     // _COMPDLG_H_
+

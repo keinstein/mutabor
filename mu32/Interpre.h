@@ -227,3 +227,4 @@ extern int liegende_tasten_max[MAX_BOX];
 /* jedem Kanal seinen Synthesizer */
 
 #endif
+

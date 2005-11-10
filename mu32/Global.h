@@ -502,3 +502,4 @@ extern char aktionen_puffer[MAXLINE_AKTIONEN][30];
 extern int aktionen_puffer_in;
 extern int aktionen_puffer_out; */
 #endif
+

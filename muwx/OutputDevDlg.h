@@ -152,3 +152,4 @@ public:
 
 #endif
     // _OUTPUTDEVDLG_H_
+

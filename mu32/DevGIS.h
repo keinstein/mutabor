@@ -93,3 +93,4 @@ class InGis : public InDevice
 };
 
 #endif
+

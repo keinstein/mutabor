@@ -122,3 +122,4 @@ public:
 
 #endif
     // _INPUTFILTERDLG_H_
+

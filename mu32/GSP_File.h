@@ -16,3 +16,4 @@ int CloseFile();
 int ReadNewLine();
 
 #endif
+

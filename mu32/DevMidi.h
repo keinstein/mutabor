@@ -107,3 +107,4 @@ class InMidiPort : public InDevice
 
 void MidiInit();
 #endif
+

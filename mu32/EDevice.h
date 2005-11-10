@@ -2,12 +2,15 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.3 2005/11/07 19:42:54 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.4 2005/11/10 17:54:01 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/10 17:54:01 $
+ * \version $Revision: 1.4 $
  *
  * $Log: EDevice.h,v $
+ * Revision 1.4  2005/11/10 17:54:01  keinstein
+ * created debian installer
+ *
  * Revision 1.3  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
@@ -153,3 +156,4 @@ void WriteRoutes(char **config);
 extern bool BoxUsed[MAX_BOX];
 void CheckBoxesUsed();
 #endif
+

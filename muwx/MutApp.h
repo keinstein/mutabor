@@ -14,3 +14,4 @@ class MutApp : public wxApp
 public:
     bool OnInit();
 };
+
