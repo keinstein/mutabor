@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: mutfile.c,v 1.1 2005/11/03 14:58:11 keinstein Exp $
+ * $Id: mutfile.c,v 1.2 2005/11/10 16:17:00 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:58:11 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:17:00 $
+ * \version $Revision: 1.2 $
  *
  * $Log: mutfile.c,v $
+ * Revision 1.2  2005/11/10 16:17:00  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 14:58:11  keinstein
  * initial release
  *
@@ -22,7 +25,7 @@
 #ifdef HAVE_STRINGS_H
 #  include <strings.h>
 #endif
-#  include <stdio.h>
+#include <stdio.h>
 #include <assert.h>
 #include "mutabor/mutfile.h"
 #include "mutabor/mutfile.hh"

@@ -2,12 +2,15 @@
  ********************************************************************
  * Alles zu Tonsystemen.
  *
- * $Id: tonsystem.h,v 1.3 2005/11/03 14:37:57 keinstein Exp $
+ * $Id: tonsystem.h,v 1.4 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/11/03 14:37:57 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.4 $
  * 
  * $Log: tonsystem.h,v $
+ * Revision 1.4  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.3  2005/11/03 14:37:57  keinstein
  * new file header
  * includes corrected
@@ -18,9 +21,9 @@
 #ifndef __TONSYSTEM_H_INCLUDED
 #define __TONSYSTEM_H_INCLUDED
 
-#include "ton.h"
-#include "interval.h"
-#include "bad_decl.h"
+#include "mutabor/ton.h"
+#include "mutabor/interval.h"
+#include "mutabor/bad_decl.h"
 
 #ifdef __cplusplus
 namespace mutabor {

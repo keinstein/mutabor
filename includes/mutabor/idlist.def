@@ -2,12 +2,15 @@
  ***********************************************************************
  * List of identifiers.
  *
- * $Id: idlist.def,v 1.1 2005/11/03 13:53:39 keinstein Exp $
+ * $Id: idlist.def,v 1.2 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:53:39 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.2 $
  *
  * $Log: idlist.def,v $
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 13:53:39  keinstein
  * Identifier list class
  *
@@ -16,7 +19,7 @@
 #ifndef __MUTABOR_IDLIST_H__
 #define __MUTABOR_IDLIST_H__
 
-#include "identifier.h"
+#include "mutabor/identifier.h"
 
 %include "object.def"
 %class idlist

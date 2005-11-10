@@ -15,7 +15,7 @@ EXTRA_DIST=makeclass.pl $(CLASSES:%=%.def)
 
 $(BUILT_SOURCES):makeclass.pl
 
-.def.hh:
-	$(srcdir)/makeclass.pl <$< >$*.h
-.def.h:	
-	$(srcdir)/makeclass.pl <$< >$*.h
+@COND_PERL_TRUE@.def.hh:
+@COND_PERL_TRUE@	$(PERL)  $(srcdir)/makeclass.pl -I$(srcdir) -d $*.hh  <$<  >$*.h
+@COND_PERL_TRUE@.def.h:	
+@COND_PERL_TRUE@	$(PERL) $(srcdir)/makeclass.pl -I$(srcdir) -d $*.hh <$<  >$*.h

@@ -2,14 +2,14 @@
  ***********************************************************************
  * Mutabor File class.
  *
- * $Id: mutfile.h,v 1.2 2005/11/07 19:42:54 keinstein Exp $
+ * $Id: mutfile.h,v 1.3 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.3 $
  *
  * $Log: mutfile.h,v $
- * Revision 1.2  2005/11/07 19:42:54  keinstein
- * Some additional changes
+ * Revision 1.3  2005/11/10 16:16:59  keinstein
+ * working distcheck
  *
  * Revision 1.1  2005/11/03 14:01:48  keinstein
  * initial revision
@@ -19,7 +19,7 @@
 #ifndef __MUTABOR_MUTFILE_H__
 #define __MUTABOR_MUTFILE_H__
 
-#include "idlist.h"
+#include "mutabor/idlist.h"
 
 struct mutabor_class_mutfile {
     struct mutabor_class_object _; /**< Parent class */

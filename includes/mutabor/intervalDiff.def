@@ -2,12 +2,15 @@
  ********************************************************************
  * Complex intervals (differences).
  *
- * $Id: intervalDiff.def,v 1.1 2005/11/03 13:55:24 keinstein Exp $
+ * $Id: intervalDiff.def,v 1.2 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:55:24 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.2 $
  * 
  * $Log: intervalDiff.def,v $
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 13:55:24  keinstein
  * Initial release
  *
@@ -21,7 +24,7 @@ namespace mutabor {
   extern "C" {
 #endif
 
-#include "intervalSum.h"
+#include "mutabor/intervalSum.h"
 
     /** Difference of two intervals. */
 

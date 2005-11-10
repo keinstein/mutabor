@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: identifier.h,v 1.1 2005/11/03 13:52:56 keinstein Exp $
+ * $Id: identifier.h,v 1.2 2005/11/10 16:16:59 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:52:56 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.2 $
  *
  * $Log: identifier.h,v $
+ * Revision 1.2  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
  * Revision 1.1  2005/11/03 13:52:56  keinstein
  * Identifier Class file
  *
@@ -16,7 +19,7 @@
 #ifndef __MUTABOR_IDENTIFIER_H__
 #define __MUTABOR_IDENTIFIER_H__
 
-#include "object.h"
+#include "mutabor/object.h"
 
 #ifdef OLD_MUTABOR_CLASSES
 #define MUTABOR_CLASS_DEFINITIONS_identifier(class) \

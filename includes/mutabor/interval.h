@@ -2,14 +2,17 @@
  ********************************************************************
  * Intervallberechnungen
  *
- * $Id: interval.h,v 1.4 2005/11/03 13:57:46 keinstein Exp $
+ * $Id: interval.h,v 1.5 2005/11/10 16:16:59 keinstein Exp $
  * \author R.Krauﬂe
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:57:46 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2005/11/10 16:16:59 $
+ * \version $Revision: 1.5 $
  * 
  * $Log: interval.h,v $
- * Revision 1.4  2005/11/03 13:57:46  keinstein
+ * Revision 1.5  2005/11/10 16:16:59  keinstein
+ * working distcheck
+ *
+ * Revision 1.1  2005/11/03 13:57:46  keinstein
  * basic interval class
  *
  ********************************************************************/
@@ -22,8 +25,8 @@ namespace mutabor {
   extern "C" {
 #endif
 
-#include "identifier.h"
-#include "bad_decl.h"
+#include "mutabor/identifier.h"
+#include "mutabor/bad_decl.h"
 
     /** Interval class. */
 
@@ -40,8 +43,8 @@ struct mutabor_virttable_interval {
     void * (*destructor)(void * _self); /**< Destructor for deleting the class. */
     int (*compare)(void * one, void * two); 
     char * (*tostring)(void * _self); 
+    void * (*check_cycle)(register void * _self, register void * _identifier,  register MUT_CLASS(ptrlist) * list); /**< checks, if _self depends somehow on _identifier. */
     void (*precalculate)(void * _self); /**< precalculate the dependencies */
-    void (*link_childs)(void * _self); /**< link pointers to childs */
 };
 
 extern const void * mutabor_object_interval;
@@ -49,7 +52,9 @@ extern const void * mutabor_object_interval;
 
 #define mutabor_cls_interval_copy_name mutabor_cls_identifier_copy_name
 
-#define mutabor_cls_interval_is_name mutabor_cls_identifier_is_name
+#define mutabor_cls_interval_set_name mutabor_cls_identifier_set_name
+
+#define mutabor_cls_interval_get_name mutabor_cls_identifier_get_name
 extern void mutabor_cls_interval_set_factor(void * _self,MUTABOR_FLOAT value);
 
 #ifdef OLD_MUTABOR_CLASSES

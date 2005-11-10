@@ -1,4 +1,5 @@
-INCLUDES = -I../../includes
+buildincludedir=$(top_builddir)/includes
+INCLUDES = -I$(buildincludedir)  -I$(top_srcdir)/includes
 AM_LDFLAGS = -static
 check_PROGRAMS = testmutfile
 bin_PROGRAMS = testobject testidentifier testinterval testchkobject testidlist \

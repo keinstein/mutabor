@@ -84,6 +84,19 @@ AC_PROG_YACC
 AC_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_LN_S
+AC_PATH_PROG(PERL,perl)
+AM_CONDITIONAL(COND_PERL, test -n "$PERL")
+AS_IF(test -z "$PERL",
+  AC_MSG_WARN([
+          Some source files are generated using Perl. But I could not find
+	  Perl. So changing those files will possibly have not the desired 
+	  effect.
+
+	  Simple compiling should work fine. Otherwise complain at 
+	     $PACKAGE_BUGREPORT 
+	  please.
+]))
+
 
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
@@ -191,6 +204,7 @@ AC_CACHE_CHECK([for variable scope in for loops in C mode], ac_cv_c_scope_reuse,
 	AC_LANG_PROGRAM([],[
 	for (int i=1; i<3; i++) ;
 	for (int i=1; i<4; i++) ; 
+	exit (0);
 	])],[ac_cv_c_scope_reuse=inside],[ac_cv_c_scope_reuse=outside])
 ])
 
@@ -207,6 +221,7 @@ AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_re
 	AC_LANG_PROGRAM([],[
 	for (int i=1; i<3; i++) ;
 	for (int i=1; i<4; i++) ; 
+	exit(0);
 	])],[ac_cv_cxx_scope_reuse=inside],[ac_cv_cxx_scope_reuse=outside])
 ])
 if test $ac_cv_cxx_scope_reuse = inside
