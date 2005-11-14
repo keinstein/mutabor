@@ -11,7 +11,8 @@ BUILT_SOURCES=$(CLASSES:%=%.h) $(CLASSES:%=%.hh)
 #	intervalInv.h intervalInv.hh ptrlist.h ptrlist.hh \
 #	mutfile.h mutfile.hh
 
-EXTRA_DIST=makeclass.pl $(CLASSES:%=%.def)
+EXTRA_DIST=makeclass.pl $(CLASSES:%=%.def) $(BUILT_SOURCES)
+
 
 $(BUILT_SOURCES):makeclass.pl
 
