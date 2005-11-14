@@ -2,6 +2,10 @@ distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
 CVS = cvs
+EXTRA_DIST = debian/changelog debian/compat debian/control debian/copyright \
+debian/dirs debian/docs debian/libmutabor-dev.install \
+debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
+debian/mutabor.install debian/README.Debian debian/rules
 bin_PROGRAMS = mutabor
 
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
@@ -15,17 +19,19 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Frac.cpp mu32/GrafKern.cpp mywx/valNum.cpp mu32/GIS_Head.cpp mu32/GIS.cpp \
 		mu32/GSP_Err.cpp mu32/GSP_File.cpp mu32/GSP.cpp muwx/InputFilterDlg.cpp \
 		muwx/BoxDlg.cpp muwx/OutputFilterDlg.cpp mywx/valRadio.cpp \
-		mu32/Hilfs.h mywx/mxDefs.h \
-		mu32/Interval.h mu32/Mut_Tab.h mu32/Parser.h mu32/Runtime.h \
-		mu32/TabGen.h rtmidi/RtMidi.h muwx/MutApp.h muwx/MutChild.h \
+		mu32/Hilfs.h mywx/mhDefs.h mu32/Defs.h mu32/Interpre.h \
+		mu32/Interval.h mu32/Runtime.h mu32/Global.h \
+		rtmidi/RtMidi.h muwx/MutApp.h muwx/MutChild.h \
 		muwx/MutEditFile.h muwx/MutFrame.h muwx/MutLogicWnd.h \
-		muwx/OutputDevDlg.h \
+		muwx/OutputDevDlg.h muwx/Mutabor.rh \
 		muwx/MutRouteWnd.h muwx/MutTextBox.h muwx/CompDlg.h muwx/Action.h \
 		muwx/InputDevDlg.h mu32/DevGIS.h mu32/Device.h mu32/DevMidF.h \
-		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
+		mu32/DevMidi.h mu32/EDevice.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
-		mu32/GSP_Err.h mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
-		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h 
+		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
+		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
+		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
+		muwx/Icon muwx/bitmaps
 mutabor_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS)
 mutabor_CXXFLAGS = $(ALSA_CFLAGS) $(WX_CXXFLAGS)
