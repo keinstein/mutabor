@@ -183,7 +183,7 @@ BUILT_SOURCES = $(CLASSES:%=%.h) $(CLASSES:%=%.hh)
 #	intervalPlaceholder.h intervalPlaceholder.hh intervalStretch.h intervalStretch.hh \
 #	intervalInv.h intervalInv.hh ptrlist.h ptrlist.hh \
 #	mutfile.h mutfile.hh
-EXTRA_DIST = makeclass.pl $(CLASSES:%=%.def)
+EXTRA_DIST = makeclass.pl $(CLASSES:%=%.def) $(BUILT_SOURCES)
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
