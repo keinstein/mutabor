@@ -976,7 +976,7 @@ void get_new_tonsystem (char * name, int taste)
         }
     }
 
-    (* lauf) = (tonsystem*) xmalloc ((size_t) sizeof (struct tonsystem));
+    (* lauf) = (struct tonsystem*) xmalloc ((size_t) sizeof (struct tonsystem));
     (* lauf) -> name          = name;
     (* lauf) -> taste         = taste;
     (* lauf) -> periode       = get_last_komplex_intervall ();
@@ -994,7 +994,7 @@ void get_new_tonsystem_negative (char * name, int taste)
         }
     }
 
-    (* lauf) = (tonsystem*) xmalloc ((size_t) sizeof (struct tonsystem));
+    (* lauf) = (struct tonsystem*) xmalloc ((size_t) sizeof (struct tonsystem));
     (* lauf) -> name          = name;
     (* lauf) -> taste         = taste;
     {
