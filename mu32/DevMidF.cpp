@@ -2,12 +2,15 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.5 2005/11/07 19:42:54 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.6 2006/01/18 15:07:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2006/01/18 15:07:39 $
+ * \version $Revision: 1.6 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.6  2006/01/18 15:07:39  keinstein
+ * 3 translation calls
+ *
  * Revision 1.5  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
@@ -407,7 +410,7 @@ bool InMidiFile::Open()
   {
     Mode = 3;
     InDevChanged = 1;
-    LAUFZEIT_ERROR1("Can not open Midi input file '%s'.", GetName());
+    LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
     return false;
   }
   // Header Chunk
@@ -442,7 +445,7 @@ bool InMidiFile::Open()
     {
       Mode = 3;
       InDevChanged = 1;
-    	LAUFZEIT_ERROR1("Midi input file '%s' is to long.", GetName());
+    	LAUFZEIT_ERROR1(_("Midi input file '%s' is to long."), GetName());
       return false;
     }
     Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
@@ -457,7 +460,7 @@ bool InMidiFile::Open()
     {
       Mode = 3;
       InDevChanged = 1;
-      LAUFZEIT_ERROR1("Midi input file '%s' produces errors.", GetName());
+      LAUFZEIT_ERROR1(_("Midi input file '%s' produces errors."), GetName());
       return false;
     }
   }
