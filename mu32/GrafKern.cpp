@@ -2,12 +2,15 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.4 2005/11/07 19:42:54 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.5 2006/01/18 15:28:03 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2006/01/18 15:28:03 $
+ * \version $Revision: 1.5 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.5  2006/01/18 15:28:03  keinstein
+ * Get translations of error strings
+ *
  * Revision 1.4  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
@@ -203,7 +206,7 @@ void fatal_error( int nr, ... )
   va_list arglist;
   va_start(arglist,nr);
 #if defined(WX)
-  Fmeldung = wxString::FormatV(Error_text[nr], arglist);
+  Fmeldung = wxString::FormatV(wxGetTranslation(Error_text[nr]), arglist);
 #else
   vsprintf( Fmeldung, Error_text[nr], arglist );
 #endif
@@ -218,7 +221,7 @@ void compiler_warning( int nr, ... )
 	va_start(arglist,nr);
 #ifdef MUTWIN
     #if defined(WX)
-		wxMessageBox(wxString::FormatV(Warning_text[nr], arglist), _("Compiler warning"), wxOK | wxICON_ASTERISK );
+		wxMessageBox(wxString::FormatV(wxGetTranslation(Warning_text[nr]), arglist), _("Compiler warning"), wxOK | wxICON_ASTERISK );
     #else
 		char Fmeldung[255];
 		vsprintf( Fmeldung, Warning_text[nr], arglist );
@@ -289,9 +292,9 @@ int pascal _export GetLineNumbers()
 int pascal _export GetErrorLine()
 {
 #if defined(WX)
-	int i = Fmeldung.First(_("Zeile"));
+	int i = Fmeldung.First(_("line"));
 	long l;
-	if ( i != -1 && Fmeldung.Mid(i+wxString(_("Zeile")).Length()).ToLong(&l) )
+	if ( i != -1 && Fmeldung.Mid(i+wxString(_("line")).Length()).ToLong(&l) )
 		return l;
 	else
 		return -1;
