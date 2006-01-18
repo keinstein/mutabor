@@ -65,8 +65,13 @@ ArrayOfWinAttr WinAttrs[6] = { ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAtt
 // Note that MDI_NEW_WINDOW and MDI_ABOUT commands get passed
 // to the parent window for processing, so no need to
 // duplicate event handlers here.
+#ifdef MDI_FORCE_EXTERN
+BEGIN_EVENT_TABLE(MutChild, wxFrame)
+#else
 BEGIN_EVENT_TABLE(MutChild, wxMDIChildFrame)
+#endif
 //    EVT_MENU(MDI_CHILD_QUIT, MutChild::OnQuit)
+	EVT_MENU(CM_FILESAVE, MutChild::MenuPassOn)
 	EVT_MENU(CM_COMPILE, MutChild::MenuPassOn)
 	EVT_MENU(CM_ACTIVATE, MutChild::MenuPassOn)
 //	EVT_MENU(CM_TOGGLEKEY, MutChild::MenuPassToParent)
@@ -86,8 +91,13 @@ END_EVENT_TABLE()
 // ===========================================================================
 
 MutChild::MutChild(wxMDIParentFrame *parent, WinKind winkind, WinAttr *winAttr, const wxString& title)
+#ifdef MDI_FORCE_EXTERN
+       : wxFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
+                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
+#else
        : wxMDIChildFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
-                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE) 
+                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
+#endif
 {
     client = (wxWindow *) NULL;
     MutChildren.Append(this);
