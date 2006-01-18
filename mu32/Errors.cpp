@@ -1,4 +1,6 @@
-
+#ifdef HAVE_CONFIG_H
+#  include "config.h"
+#endif
 
 #if defined(WX)
   #include "wx/wx.h"
@@ -90,7 +92,7 @@ char *Error_text[] =
 
 /* Abhängigkeiten */
 /* 65 */ "Die Töne %s und %s hängen gegenseitig voneinander ab",
-         "Die Umstimmungen/Logiken %s und %s hängen gegenseitig voneinander ab",
+ "Die Umstimmungen/Logiken %s und %s hängen gegenseitig voneinander ab",
          "Die Intervalle %s und %s hängen gegenseitig voneinander ab",
          "Die MIDI-Kanäle hängen gegenseitig voneinander ab",
          " ",
@@ -134,115 +136,115 @@ char * Warning_text[] =
 STR Error_text[] =
 {
 
-/* 0 */ _("Unknown error in %s , line %d !"), /* allgemeinster Fehler */
+/* 0 */ N_("Unknown error in %s , line %d !"), /* allgemeinster Fehler */
 
 /* Datei- und Systemfehler */
-/* 1 */ _("Syntax error, not specified. (line %d)"),
-		_("Non-valid character: asc=%d (line %d)"),
-		_("Can't open file: %s"),
-		_("Not enough memory or to few datas for mutabor in source file"),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
+/* 1 */ N_("Syntax error, not specified. (line %d)"),
+		N_("Non-valid character: asc=%d (line %d)"),
+		N_("Can't open file: %s"),
+		N_("Not enough memory or to few datas for mutabor in source file"),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
 
 /* Doppeldeklarationen */
-/* 10 */ _("The interval name %s was used twice"),
-		_("The tone name %s was used twice"),
-		_("The tonesystem name %s was used twice"),
-		_("The retuning name %s was used twice"),
-		_("The pattern name %s was used twice"),
-		_("The logic name %s was used twice"),
-		_("(unused)"),
-		_("The parameter name %s was used twice"),
-		_("The MIDI-Instrument %d was used twice"),
-		_("MIDI-Mapping: Channel %d was used twice"),
-		_("Logik %s contains more than one ELSE statement"),
-		_("Retuning %s contains more than one ELSE statement"),
-		_("The alternative %d is ued twice in %s"),
-		_(" "),
-		_(" "),
+/* 10 */ N_("The interval name %s was used twice"),
+		N_("The tone name %s was used twice"),
+		N_("The tonesystem name %s was used twice"),
+		N_("The retuning name %s was used twice"),
+		N_("The pattern name %s was used twice"),
+		N_("The logic name %s was used twice"),
+		N_("(unused)"),
+		N_("The parameter name %s was used twice"),
+		N_("The MIDI-Instrument %d was used twice"),
+		N_("MIDI-Mapping: Channel %d was used twice"),
+		N_("Logik %s contains more than one ELSE statement"),
+		N_("Retuning %s contains more than one ELSE statement"),
+		N_("The alternative %d is ued twice in %s"),
+		N_(" "),
+		N_(" "),
 
 /* Undefinierte Symbole */
-/* 25 */ _("Undefined symbol: %s"),
-		_("Undefined interval: %s"),
-		_("Undefined tone: %s"),
-		_("Undefined tonesystem: %s"),
-		_("Undefined retuning: %s"),
-		_("Undefined pattern: %s (in logic %s)"),
-		_("Undefined parameter name: %s in %s"),
-		_("Undefined interval: %s (in %s)"),
-		_("Undefined tone: %s (in tone system %s)"),
-		_("Undefined tone: %s (in retuning %s)"),
-/* 35 */ _("(to be reused)"),
-		_("Undefined retuning: %s (in retuning %s)"),
-		_("Undefined initial tuning: %s (in logic %s)"),
-		_("Undefined action: %s (in logic %s)"),
-		_("Undefined parameter: %s (in call %s from logic %s)"),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
+/* 25 */ N_("Undefined symbol: %s"),
+		N_("Undefined interval: %s"),
+		N_("Undefined tone: %s"),
+		N_("Undefined tonesystem: %s"),
+		N_("Undefined retuning: %s"),
+		N_("Undefined pattern: %s (in logic %s)"),
+		N_("Undefined parameter name: %s in %s"),
+		N_("Undefined interval: %s (in %s)"),
+		N_("Undefined tone: %s (in tone system %s)"),
+		N_("Undefined tone: %s (in retuning %s)"),
+/* 35 */ N_("(to be reused)"),
+		N_("Undefined retuning: %s (in retuning %s)"),
+		N_("Undefined initial tuning: %s (in logic %s)"),
+		N_("Undefined action: %s (in logic %s)"),
+		N_("Undefined parameter: %s (in call %s from logic %s)"),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
 
 /* Bereichsüber- bzw. unterschreitungen */
-/* 45 */ _("Bad MIDI-Channel (valid: 1 .. 16)"),
-		_("Bad interval value in %s"),
-		_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
-		_("Not-complex tone in retuning %s ( %s )"),
-		_("Bad value in %s"), /* (allgemein) */
-		_("Bad MIDI-Code in logic %s (expecting %s )"),
-		_("Logic %s must not be called by ELSE"),
-		_("A Key needs to be a single character ( %s )"),
-		_("Division by (nearly) 0 in line %d"),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
-		_(" "),
+/* 45 */ N_("Bad MIDI-Channel (valid: 1 .. 16)"),
+		N_("Bad interval value in %s"),
+		N_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
+		N_("Not-complex tone in retuning %s ( %s )"),
+		N_("Bad value in %s"), /* (allgemein) */
+		N_("Bad MIDI-Code in logic %s (expecting %s )"),
+		N_("Logic %s must not be called by ELSE"),
+		N_("A Key needs to be a single character ( %s )"),
+		N_("Division by (nearly) 0 in line %d"),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
+		N_(" "),
 
 /* Parameterfehler */
-/* 60 */ _("In retuning %s and %s : Bad parameters"),
-		_("In logic %s : Bad number of parameters ( %s )"),
-		_("In logik %s : initial tuning %s mustn't have parameters"),
-		_("In collection %s : call to %s mustn't have parameters"),
-		_("In case %s : call to %s mustn't have parameters"),
+/* 60 */ N_("In retuning %s and %s : Bad parameters"),
+		N_("In logic %s : Bad number of parameters ( %s )"),
+		N_("In logik %s : initial tuning %s mustn't have parameters"),
+		N_("In collection %s : call to %s mustn't have parameters"),
+		N_("In case %s : call to %s mustn't have parameters"),
 
 /* Abhängigkeiten */
-/* 65 */ _("Tones %s and %s are dependent"),
-		_("Retunings/logics %s and %s are dependent"),
-		_("Intervals %s and %s are dependent"),
-		_("MIDI-channels are dependent"),
-		_(" "),
+/* 65 */ N_("Tones %s and %s are dependent"),
+		N_("Retunings/logics %s and %s are dependent"),
+		N_("Intervals %s and %s are dependent"),
+		N_("MIDI-channels are dependent"),
+		N_(" "),
 
 /* Syntaxfehler (vom BISON-Parser aufgerufen) */
-/* 70 */ _("Wrong character ! Expecting %s (line %d)"),
-		_("Bad interval declaration of intervall %s"),
-		_("Bad tone declaration of tone %s"),
-		_("Bad tonesystem declaration. (line %d)"),
-		_("Bad parameter list in call to %s in line %d"),
-		_("Bad retuning in line %d"),
-		_("bad pattern decl. at %s"),
-		_("Bad MIDI list in line %d"),
-		_("No hex number after # (line %d)"),
-		_(" ")
+/* 70 */ N_("Wrong character ! Expecting %s (line %d)"),
+		N_("Bad interval declaration of intervall %s"),
+		N_("Bad tone declaration of tone %s"),
+		N_("Bad tonesystem declaration. (line %d)"),
+		N_("Bad parameter list in call to %s in line %d"),
+		N_("Bad retuning in line %d"),
+		N_("bad pattern decl. at %s"),
+		N_("Bad MIDI list in line %d"),
+		N_("No hex number after # (line %d)"),
+		N_(" ")
 
 };
 
 STR Warning_text[] =
 {
-/*  0 */ _("Undefined compiler warning"),
-		_("MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0- Statusbyte. Wert wurde korrigiert!"),
-		_("Unmoeglicher Harmonieausloeser in Logik %s"),
-		_("Mehrdeutiger Ausloeser %s in Logik %s"),
-		_("Auslöser ANSONSTEN ist nicht der letzte in Logik %s"),
-/*  5 */ _("Verschwendung bei der Kanalzuordnung"),
-		_("Keine Datei angegeben, versuche TEST.MUS"),
-		_("Konfigurationsdatei fehlerhaft"),
-		_("Überschneidung bei der MIDI-Zuordnung: Kanäle %d und %d"),
-		_("Error in GMN-File %s position(%d, %d): %s")
+/*  0 */ N_("Undefined compiler warning"),
+		N_("MIDI event in logic %s does not start with channel 0 status byte. Value corrected."),
+		N_("Non existent harmony event in logic %s"),
+		N_("Non well defined event %s in logic %s"),
+		N_("Event ANSONSTEN is last in %s"),
+/*  5 */ N_("MIDI channels wasted in channel assotiation"),
+		N_("No file given, trying test.mut"),
+		N_("Invalid configuration file"),
+		N_("Intersection of MIDI channels %d und %d"),
+		N_("Error in GMN-File %s position(%d, %d): %s")
 };
 
 #endif
