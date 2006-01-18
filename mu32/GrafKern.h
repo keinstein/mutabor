@@ -1,5 +1,20 @@
+/** \file
+ ***********************************************************************
+ * Output functions.
+ *
+ * $Id: GrafKern.h,v 1.4 2006/01/18 15:29:56 keinstein Exp $
+ * \author R. Krauße <krausze@users.berlios.de>
+ * \date $Date: 2006/01/18 15:29:56 $
+ * \version $Revision: 1.4 $
+ *
+ * $Log: GrafKern.h,v $
+ * Revision 1.4  2006/01/18 15:29:56  keinstein
+ * New header and translations at display time
+ *
+ */
+
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krau�e
+// Mutabor 2.win, 1997, R.Krauße
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
@@ -64,9 +79,9 @@ extern "C"
 #ifdef WX
 extern wxString sd1, sd2, sd3, sd4, sd5, sd6;
 extern wxString Fmeldung;
-#define LAUFZEIT_ERROR0(format) Fmeldung = _(format)
-#define LAUFZEIT_ERROR1(format, a) Fmeldung = wxString::Format(_(format), a)
-#define LAUFZEIT_ERROR2(format, a, b) Fmeldung = wxString::Format(_(format), a, b)
+#define LAUFZEIT_ERROR0(format) Fmeldung = format
+#define LAUFZEIT_ERROR1(format, a) Fmeldung = wxString::Format(format, a)
+#define LAUFZEIT_ERROR2(format, a, b) Fmeldung = wxString::Format(format, a, b)
 #else
 extern char sd1[100], sd2[100];
 extern char Fmeldung[255];
