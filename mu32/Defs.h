@@ -15,8 +15,8 @@
 #endif
 
 #ifdef WX
-#include "wx/setup.h"
-#if !defined(__WXMSW__)
+#  include "wx/setup.h"
+#  if !defined(__WXMSW__)
   #define UINT unsigned int
   #define WORD unsigned int
   #define DWORD unsigned long
@@ -40,3 +40,4 @@
 #endif
 
 
+#ifndef 
