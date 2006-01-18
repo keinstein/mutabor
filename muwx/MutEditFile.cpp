@@ -26,6 +26,7 @@
 #ifndef WX_PRECOMP
     #include "wx/wx.h"
     #include "wx/mdi.h"
+    #include "wx/filename.h"
 #endif
 
 #include "wx/toolbar.h"
@@ -44,6 +45,7 @@ CompDlg *CompDia = NULL;
 
 BEGIN_EVENT_TABLE(MutEditFile, wxTextCtrl)
 //    EVT_MOUSE_EVENTS(MyCanvas::OnEvent)
+        EVT_MENU(CM_FILESAVE, MutEditFile::CmFileSave)
 	EVT_MENU(CM_COMPILE, MutEditFile::CmCompile)
 	EVT_MENU(CM_COMPACT, MutEditFile::CmCompAct)
 	EVT_MENU(CM_ACTIVATE, MutEditFile::CmCompAct)
@@ -59,7 +61,13 @@ END_EVENT_TABLE()
 
 //SETUPWINDOW_FONT(TEditFileMut, TEditFile, EditFont)
 
-wxString TmpFile = _T("$$$.TMP");
+wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
+
+void MutEditFile::CmFileSave(wxCommandEvent& WXUNUSED(event))
+{
+	SaveFile(GetName());
+	std::cout << "File saved: " << GetName().fn_str() << std::endl;
+}
 
 void MutEditFile::CmCompile(wxCommandEvent& WXUNUSED(event))
 {

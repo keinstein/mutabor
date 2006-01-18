@@ -2,12 +2,15 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.6 2005/11/07 19:42:54 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.7 2006/01/18 15:37:02 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2005/11/07 19:42:54 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2006/01/18 15:37:02 $
+ * \version $Revision: 1.7 $
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.7  2006/01/18 15:37:02  keinstein
+ * no MDI Windows in some environments
+ *
  * Revision 1.6  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
@@ -153,6 +156,7 @@ char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEW
 BEGIN_EVENT_TABLE(MutFrame, wxMDIParentFrame)
     EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
     EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
+    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
 	EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
@@ -219,6 +223,27 @@ MutFrame::MutFrame(wxWindow *parent,
     wxAcceleratorTable accel(3, entries);
     SetAcceleratorTable(accel);*/
 }
+
+void MutFrame::EventPassOn(wxCommandEvent& event)
+{ 
+        if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
+                return;
+        event.SetEventObject(NULL);
+	std::cout << "Skippen? " << event.GetSkipped() << 
+	  " Propagate? " << event.ShouldPropagate() << std::endl;
+	/*        if (!GetClientWindow()->ProcessEvent(event)) {
+		std::cout << "Event ignoriert von:" << GetClientWindow()->GetName().fn_str() << std::endl;
+	*/	wxFrame * frame = GetActiveChild();
+		if (frame){
+		  frame->ProcessEvent(event);
+		  std::cout << "Event " << event.ShouldPropagate() << " war da:" 
+			    << frame->GetName().fn_str() << std::endl;
+		}
+		//	}
+		std::cout << frame << std::endl;
+        event.Skip();
+}
+
 
 void MutFrame::OnClose(wxCloseEvent& event)
 {
@@ -352,28 +377,17 @@ void MutFrame::InitToolBar(wxToolBar* toolBar)
     bitmaps[6] = new wxBitmap( print_xpm );
     bitmaps[7] = new wxBitmap( help_xpm );
 
-    int width = 24;
-    int currentX = 5;
-
-    toolBar->AddTool(CM_FILENEW, *(bitmaps[0]), wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("New file"));
-    currentX += width + 5;
-    toolBar->AddTool(CM_FILEOPEN, *bitmaps[1], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Open file"));
-    currentX += width + 5;
-    toolBar->AddTool(2, *bitmaps[2], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Save file"));
-    currentX += width + 5;
+    toolBar->AddTool(CM_FILENEW, _("New"), *(bitmaps[0]), _("New file"));
+    toolBar->AddTool(CM_FILEOPEN, _("Open"), *bitmaps[1], _("Open file"));
+    toolBar->AddTool(CM_FILESAVE, _("Save"), *bitmaps[2], _("Save file"));
     toolBar->AddSeparator();
-    toolBar->AddTool(3, *bitmaps[3], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Copy"));
-    currentX += width + 5;
-    toolBar->AddTool(4, *bitmaps[4], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Cut"));
-    currentX += width + 5;
-    toolBar->AddTool(5, *bitmaps[5], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Paste"));
-    currentX += width + 5;
+    toolBar->AddTool(3, _("Copy"), *bitmaps[3], _("Copy"));
+    toolBar->AddTool(4, _("Cut"), *bitmaps[4],  _("Cut"));
+    toolBar->AddTool(5, _("Paste"), *bitmaps[5], _("Paste"));
     toolBar->AddSeparator();
-    toolBar->AddTool(6, *bitmaps[6], wxNullBitmap, false, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Print"));
-    currentX += width + 5;
+    toolBar->AddTool(6, _("Print"), *bitmaps[6], _("Print"));
     toolBar->AddSeparator();
-    toolBar->AddTool( CM_ABOUT, *bitmaps[7], wxNullBitmap, true, currentX, wxDefaultCoord, (wxObject *) NULL, _T("Help"));
-
+    toolBar->AddTool( CM_ABOUT, _("About"), *bitmaps[7], _("Help"));
     toolBar->Realize();
 
     int i;
@@ -391,10 +405,10 @@ void MutFrame::CmFileOpen(wxCommandEvent& WXUNUSED(event))
 {
     static wxString s_extDef;
     wxString path = wxFileSelector(
-                                    _T("Which Mutabor-file shall be loaded?"),
+                                    _("Which Mutabor-file shall be loaded?"),
                                     _T(""), _T(""),
                                     s_extDef,
-                                    _T("MUT-file (*.mut)|*.mut|Old MUS-file (*.mus)|*.mus|All files (*.*)|*.*"),
+                                    _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
                                     /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
                                     this
                                    );
@@ -408,19 +422,39 @@ void MutFrame::CmFileOpen(wxCommandEvent& WXUNUSED(event))
     OpenFile(path);
 }
 
+/** 
+ * open a file in a new frame.
+ * \param path Path of the file to open
+ * \todo file loading fails silently if it is not in the systems encoding.
+ * */
+
 void MutFrame::OpenFile(wxString path)
 {
 	// Make another frame, containing a canvas
 	MutChild *subframe = NewFrame(WK_EDIT, 0, _T("Editor"), ICON(document),
-		!path ? _T("noname.mus") : wxFileName(path).GetFullName());
+		!path ? _T("noname.mut") : wxFileName(path).GetFullName());
     int width, height;
     subframe->GetClientSize(&width, &height);
+#ifdef MDI_FORCE_EXTERN
+#if wxUSE_TOOLBAR
+    subframe->CreateToolBar(wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
+    InitToolBar(subframe->GetToolBar());
+#endif // wxUSE_TOOLBAR
+#else
+    /*
+#if wxUSE_TOOLBAR
+    subframe->CreateToolBar(0l | wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
+    InitToolBar(subframe->GetToolBar());
+#endif // wxUSE_TOOLBAR
+    */
+#endif
     MutEditFile *client = new MutEditFile(subframe, wxPoint(0, 0), wxSize(width, height));
-	if ( !!path)
+	if (!(!path))
 		client->LoadFile(path);
 	subframe->winAttr->Win = subframe->client = client;
 	subframe->Show(true);
 	client->SetSelection(0, 0);
+	client->SetName(!path ? _T("noname.mut") : wxFileName(path).GetFullPath());
 }
 
 

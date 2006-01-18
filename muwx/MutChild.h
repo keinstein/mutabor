@@ -14,6 +14,7 @@
 #include <wx/toolbar.h>
 #include <wx/dynarray.h>
 #include <wx/arrimpl.cpp> // this is a magic incantation which must be done!
+#include "mhDefs.h"
 
 //enum WinKind { WK_KEY, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
 
@@ -57,7 +58,11 @@ WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
 
 extern ArrayOfWinAttr WinAttrs[6];
 
+#ifdef MDI_FORCE_EXTERN
+class MutChild: public wxFrame
+#else
 class MutChild: public wxMDIChildFrame
+#endif
 {
 public:
     wxWindow *client;
