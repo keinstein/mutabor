@@ -1614,6 +1614,7 @@ void RtMidiOut :: sendMessage( STD_PRE::vector<unsigned char> *message )
 // Windows MM MIDI header files.
 #include <windows.h>
 #include <mmsystem.h>
+#include <strstream>
 
 // A structure to hold variables related to the CoreMIDI API
 // implementation.
