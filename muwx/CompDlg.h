@@ -1,11 +1,25 @@
+/** \file
+ ***********************************************************************
+ *.
+ *
+ * $Id: CompDlg.h,v 1.3 2006/01/18 15:33:42 keinstein Exp $
+ * \author R. Krau√üe <krausze@users.berlios.de>
+ * \date $Date: 2006/01/18 15:33:42 $
+ * \version $Revision: 1.3 $
+ *
+ * $Log: CompDlg.h,v $
+ * Revision 1.3  2006/01/18 15:33:42  keinstein
+ * Doxygen header
+ *
+ */
 /////////////////////////////////////////////////////////////////////////////
 // Name:        CompDlg.h
 // Purpose:     
-// Author:      R. Krauﬂe
+// Author:      R. Krau√üe
 // Modified by: 
 // Created:     08/14/05 21:41:59
 // RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
+// Copyright:   (c) R. Krau√üe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
