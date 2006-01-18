@@ -3,7 +3,9 @@
 // Globale Defiitionen der DLL
 // ------------------------------------------------------------------
 
+#ifndef WX
 #define GERMAN
+#endif
 
 #if ! defined (__GLOBAL_H_INCLUDED)
 #define __GLOBAL_H_INCLUDED
