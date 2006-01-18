@@ -1,16 +1,34 @@
+/** \file
+ ***********************************************************************
+ * Input device selection dialog.
+ *
+ * $Id: InputDevDlg.h,v 1.4 2006/01/18 15:34:57 keinstein Exp $
+ * \author R. Krau√üe <krausze@users.berlios.de>
+ * \date $Date: 2006/01/18 15:34:57 $
+ * \version $Revision: 1.4 $
+ *
+ * $Log: InputDevDlg.h,v $
+ * Revision 1.4  2006/01/18 15:34:57  keinstein
+ * Doxygen header
+ *
+ * ID definition conflict solved
+ *
+ */
+
 /////////////////////////////////////////////////////////////////////////////
 // Name:        InputDevDlg.h
 // Purpose:     
-// Author:      R. Krauﬂe
+// Author:      R. Krau√üe
 // Modified by: 
 // Created:     10/12/05 14:22:47
 // RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
+// Copyright:   (c) R. Krau√üe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _INPUTDEVDLG_H_
 #define _INPUTDEVDLG_H_
+
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma interface "InputDevDlg.cpp"
@@ -38,10 +56,10 @@ class wxBoxSizer;
  */
 
 ////@begin control identifiers
-#define ID_DIALOG 10010
+#define ID_INPDIALOG 10010
 #define SYMBOL_INPUTDEVDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_INPUTDEVDLG_TITLE _("Inut Device")
-#define SYMBOL_INPUTDEVDLG_IDNAME ID_DIALOG
+#define SYMBOL_INPUTDEVDLG_IDNAME ID_INPDIALOG
 #define SYMBOL_INPUTDEVDLG_SIZE wxSize(400, 300)
 #define SYMBOL_INPUTDEVDLG_POSITION wxDefaultPosition
 #define ID_CHOICE 10011
