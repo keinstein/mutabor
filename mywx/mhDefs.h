@@ -36,5 +36,8 @@
   #define mumT(x) muT(x)
 #endif
 
+#ifdef __WXGTK__
+#define MDI_FORCE_EXTERN
+#endif
 #endif
 
