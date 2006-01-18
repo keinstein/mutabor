@@ -1604,9 +1604,10 @@ start_lex:
     /* Ignore whitespace, get first nonwhitespace character */
     while ( anzahl_eingelesene_zeichen ++,
 
-            (c = toupper( intern_fgetc(quelldatei) )) == ' '
+            isspace(c = toupper( intern_fgetc(quelldatei) ))
+		    /* == ' '
           || c == '\t'
-          || c == '\n') {
+          || c == '\n'*/)  {
 
        if (c == '\n')
 #ifdef ACS_VERSION
