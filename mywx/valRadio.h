@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        valradio.h
 // Purpose:     wxRadio Validator class
-// Author:      Rüdiger Krauße
+// Author:      RÃ¼diger KrauÃŸe
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valRadio.h,v 1.2 2005/11/10 17:54:01 keinstein Exp $
+// RCS-ID:      $Id: valRadio.h,v 1.3 2006/01/18 15:39:17 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -12,9 +12,9 @@
 #ifndef _WX_VALRADIOH__
 #define _WX_VALRADIOH__
 
-#if defined(__GNUG__) && !defined(__APPLE__)
-#pragma interface "valRadio.h"
-#endif
+//#if defined(__GNUG__) && !defined(__APPLE__)
+//#pragma interface "valRadio.h"
+//#endif
 
 #include "wx/defs.h"
 
@@ -27,7 +27,7 @@
 #define NV_BOTH 3
 #define NV_NNEG 1, 0
 
-class WXDLLEXPORT wxRadioValidator: public wxValidator
+class  wxRadioValidator: public wxValidator
 {
 DECLARE_DYNAMIC_CLASS(wxRadioValidator)
 public:
