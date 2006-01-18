@@ -1,13 +1,14 @@
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = includes libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi -I $(srcdir)/mywx
+SUFFIXES = .$(PCHEXT_CXX)
+BUILT_SOURCES = @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 CVS = cvs
 EXTRA_DIST = debian/changelog debian/compat debian/control debian/copyright \
 debian/dirs debian/docs debian/libmutabor-dev.install \
 debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules
 bin_PROGRAMS = mutabor
-
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
@@ -31,13 +32,49 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
-		muwx/Icon muwx/bitmaps
+		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 mutabor_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
-mutabor_CFLAGS = $(ALSA_CFLAGS) $(WX_CFLAGS)
-mutabor_CXXFLAGS = $(ALSA_CFLAGS) $(WX_CXXFLAGS)
-mutabor_CPPFLAGS = $(WX_CPPFLAGS)
+mutabor_CallFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
+mutabor_CFLAGS = $(mutabor_CallFLAGS)
+mutabor_CXXFLAGS = $(mutabor_CallFLAGS)
+mutabor_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
+mutabor_CPPFLAGS = $(WX_CPPFLAGS) 
+mutabor_CFLAGS += @COND_PRECOMP_C_TRUE@-include mutabor-precompiled.h
+mutabor_CXXFLAGS += @COND_PRECOMP_CXX_TRUE@-include mutabor-cxxprecompiled.h
 
-.PHONY: cvs_dist cvs_distcheck
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+
+.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled
+
+.h.$(PCHEXT_CXX):
+@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -o $@ -c `test -f '$<' || echo '$(srcdir)/'`$<; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi 
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CallFLAGS) $(CXXFLAGS) -c  `test -f '$<' || echo '$(srcdir)/'`$<
+
+.cpp.o:
+@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ $<
+
+.cpp.obj:
+#@COND_PRECOMP_C_TRUE@	$(MAKE) $(AM_MAKEFLAGS) mutabor-cxxprecompiled.$(PCHEXT_CXX)
+@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.cpp.lo:
+#@COND_PRECOMP_C_TRUE@	$(MAKE) $(AM_MAKEFLAGS) mutabor-cxxprecompiled.$(PCHEXT_CXX)
+@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Plo"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 
 cvs_dist: Makefile
 	chmod -R u+w  cvsdist
@@ -58,3 +95,20 @@ cvs_distcheck: Makefile
 	cd `cat ../CVS/Repository` && \
 	./configure && \
 	$(MAKE)  distcheck
+
+@COND_PRECOMP_CXX_TRUE@$(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
+
+mutabor-cxxprecompiled.stamp:mutabor-cxxprecompiled.$(PCHEXT_CXX)
+	if test \! -f mutabor-cxxprecompiled.stamp ; then touch mutabor-cxxprecompiled.stamp ; fi
+
+#@COND_PRECOMP_CXX_TRUE@  $(mutabor_OBJECTS) mutabor-cxxprecompile: mutabor-cxxprecompile
+
+mutabor-cxxprecompiled.h:
+@COND_PRECOMP_CXX_TRUE@	echo '#define PRECOMPILE 1' >$@
+@COND_PRECOMP_CXX_TRUE@	echo '#ifdef HAVE_CONFIG_H' >>$@
+@COND_PRECOMP_CXX_TRUE@	echo '#include "config.h"' >>$@
+@COND_PRECOMP_CXX_TRUE@	echo '#endif' >>$@
+@COND_PRECOMP_CXX_TRUE@	ls $(mutabor_SOURCES) | \
+@COND_PRECOMP_CXX_TRUE@		sed '/\.r\?h$$/ ! d ; s/^\(.*\)$$/#include "\1"/' >>$@
+@COND_PRECOMP_CXX_TRUE@	echo '#undef PRECOMPILE' >>$@
+
