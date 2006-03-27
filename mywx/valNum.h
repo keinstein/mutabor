@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.3 2005/11/10 17:54:01 keinstein Exp $
+// RCS-ID:      $Id: valNum.h,v 1.4 2006/03/27 17:20:41 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -31,7 +31,7 @@
 #define NV_BOTH 3
 #define NV_NNEG 1, 0
 
-class WXDLLEXPORT wxNumValidator: public wxTextValidator
+class wxNumValidator: public wxTextValidator
 {
 DECLARE_DYNAMIC_CLASS(wxNumValidator)
 public:
