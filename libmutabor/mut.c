@@ -107,7 +107,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 36 "mut.y"
+#line 36 "../../libmutabor/mut.y"
 
 
 /* BEGIN MUT_TAB.C */
@@ -141,7 +141,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "mutabor/heap.h"
+/* #include "mutabor/heap.h" */
+#include "mutabor/bad_decl.h"
 #include "mutabor/mut_tab.h"
 #include "mutabor/intervalDiff.h"
 #include "mutabor/intervalPlaceholder.h"
@@ -198,7 +199,7 @@
 #endif
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 112 "mut.y"
+#line 113 "../../libmutabor/mut.y"
 typedef union YYSTYPE {
 	double      f_value;        /* for floating point numbers */
 	int         integer;        /* for integers */
@@ -206,7 +207,7 @@ typedef union YYSTYPE {
 	void        *object;        /* for data objects */
 } YYSTYPE;
 /* Line 191 of yacc.c.  */
-#line 210 "mut.c"
+#line 211 "../../libmutabor/mut.c"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -227,16 +228,16 @@ typedef struct YYLTYPE
 
 
 /* Copy the second part of user declarations.  */
-#line 120 "mut.y"
+#line 121 "../../libmutabor/mut.y"
 
-#include "mutlex.h" 
+/* #include "mutlex.h" */
 #define self ((MUT_CLASS(mutfile)*)_self)
 void yyerror(YYLTYPE * locp, void * _self, char const *s);
 
 
 
 /* Line 214 of yacc.c.  */
-#line 240 "mut.c"
+#line 241 "../../libmutabor/mut.c"
 
 #if ! defined (yyoverflow) || YYERROR_VERBOSE
 
@@ -430,11 +431,11 @@ static const yysigned_char yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
-       0,   170,   170,   171,   172,   173,   182,   183,   186,   187,
-     191,   217,   223,   229,   236,   243,   250,   256,   262,   270,
-     271,   272,   281,   288,   294,   329,   330,   333,   334,   338,
-     364,   376,   382,   390,   395,   542,   543,   546,   547,   551,
-     555,   563,   563,   566,   567,   568,  1038,  1039
+       0,   171,   171,   172,   173,   174,   183,   184,   187,   188,
+     192,   218,   224,   230,   237,   244,   251,   257,   263,   271,
+     272,   273,   282,   289,   295,   330,   331,   334,   335,   339,
+     365,   377,   383,   391,   396,   543,   544,   547,   548,   552,
+     556,   564,   564,   567,   568,   569,  1039,  1040
 };
 #endif
 
@@ -889,9 +890,9 @@ yydestruct (yytype, yyvaluep, yylocationp)
   switch (yytype)
     {
       case 3: /* IDENTIFIER */
-#line 152 "mut.y"
+#line 153 "../../libmutabor/mut.y"
         { free(yyvaluep->identifier); };
-#line 895 "mut.c"
+#line 896 "../../libmutabor/mut.c"
         break;
 
       default:
@@ -1202,12 +1203,12 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 170 "mut.y"
+#line 171 "../../libmutabor/mut.y"
     { yylloc.last_line=1; yylloc.last_column=0; }
     break;
 
   case 10:
-#line 191 "mut.y"
+#line 192 "../../libmutabor/mut.y"
     {		   
 		   if (yyvsp[0].object) { 
 			   char * c;
@@ -1235,7 +1236,7 @@ yyreduce:
     break;
 
   case 11:
-#line 217 "mut.y"
+#line 218 "../../libmutabor/mut.y"
     {
 		    yyval.object=MUT_NEW(intervalSum);
 		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1245,7 +1246,7 @@ yyreduce:
     break;
 
   case 12:
-#line 223 "mut.y"
+#line 224 "../../libmutabor/mut.y"
     {
 		    yyval.object=MUT_NEW(intervalDiff);
 		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1255,7 +1256,7 @@ yyreduce:
     break;
 
   case 13:
-#line 229 "mut.y"
+#line 230 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUT_NEW(intervalStretch);
 		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1266,7 +1267,7 @@ yyreduce:
     break;
 
   case 14:
-#line 236 "mut.y"
+#line 237 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUT_NEW(intervalStretch);
 		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1277,7 +1278,7 @@ yyreduce:
     break;
 
   case 15:
-#line 243 "mut.y"
+#line 244 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUT_NEW(intervalStretch);
 		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1288,7 +1289,7 @@ yyreduce:
     break;
 
   case 16:
-#line 250 "mut.y"
+#line 251 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUT_NEW(intervalStretch);
 		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1298,7 +1299,7 @@ yyreduce:
     break;
 
   case 17:
-#line 256 "mut.y"
+#line 257 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUT_NEW(intervalInv);
 		   MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1308,12 +1309,12 @@ yyreduce:
     break;
 
   case 20:
-#line 271 "mut.y"
+#line 272 "../../libmutabor/mut.y"
     { yyval.object=yyvsp[-1].object; }
     break;
 
   case 21:
-#line 272 "mut.y"
+#line 273 "../../libmutabor/mut.y"
     {
 		    yyval.object=MUT_NEW(intervalDiff);
 		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1323,7 +1324,7 @@ yyreduce:
     break;
 
   case 22:
-#line 281 "mut.y"
+#line 282 "../../libmutabor/mut.y"
     {	    
 			    yyval.object=MUT_NEW(interval);
 			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1333,7 +1334,7 @@ yyreduce:
     break;
 
   case 23:
-#line 288 "mut.y"
+#line 289 "../../libmutabor/mut.y"
     {
 			    yyval.object=MUT_NEW(interval);
 			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1343,7 +1344,7 @@ yyreduce:
     break;
 
   case 24:
-#line 294 "mut.y"
+#line 295 "../../libmutabor/mut.y"
     {
 		   yyval.object=MUTABOR_CLASS_FUNCTION(mutfile,get_interval)(_self,yyvsp[0].identifier);
 		   free(yyvsp[0].identifier);
@@ -1351,7 +1352,7 @@ yyreduce:
     break;
 
   case 29:
-#line 338 "mut.y"
+#line 339 "../../libmutabor/mut.y"
     {		   
 		   if (yyvsp[0].object) { 
 			   char * c;
@@ -1379,7 +1380,7 @@ yyreduce:
     break;
 
   case 30:
-#line 364 "mut.y"
+#line 365 "../../libmutabor/mut.y"
     {
 		    yyval.object=MUT_NEW(intervalSum);
 		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1389,7 +1390,7 @@ yyreduce:
     break;
 
   case 31:
-#line 376 "mut.y"
+#line 377 "../../libmutabor/mut.y"
     {
 		    yyval.object=MUT_NEW(intervalDiff);
 		    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1399,12 +1400,12 @@ yyreduce:
     break;
 
   case 32:
-#line 382 "mut.y"
+#line 383 "../../libmutabor/mut.y"
     { yyval.object=yyvsp[0].object; }
     break;
 
   case 33:
-#line 390 "mut.y"
+#line 391 "../../libmutabor/mut.y"
     {
 			    yyval.object=MUT_NEW(interval);
 			    MUTABOR_CLASS_FUNCTION(mutfile,insert_interval)(_self,yyval.object);
@@ -1413,7 +1414,7 @@ yyreduce:
     break;
 
   case 34:
-#line 395 "mut.y"
+#line 396 "../../libmutabor/mut.y"
     {
 	           printf("tondekl3");
 		   yyval.object=MUTABOR_CLASS_FUNCTION(mutfile,get_interval)(_self,yyvsp[0].identifier);
@@ -1422,17 +1423,17 @@ yyreduce:
     break;
 
   case 45:
-#line 568 "mut.y"
+#line 569 "../../libmutabor/mut.y"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 46:
-#line 1038 "mut.y"
+#line 1039 "../../libmutabor/mut.y"
     { yyval.f_value = yyvsp[0].f_value; }
     break;
 
   case 47:
-#line 1039 "mut.y"
+#line 1040 "../../libmutabor/mut.y"
     { yyval.f_value = (double) yyvsp[0].integer; }
     break;
 
@@ -1440,7 +1441,7 @@ yyreduce:
     }
 
 /* Line 1010 of yacc.c.  */
-#line 1444 "mut.c"
+#line 1445 "../../libmutabor/mut.c"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -1669,7 +1670,7 @@ yyreturn:
 }
 
 
-#line 1042 "mut.y"
+#line 1043 "../../libmutabor/mut.y"
         
 void yyerror(YYLTYPE * locp, void * _self, char const *s) {
   fprintf(stderr,"\n%s at line %d col %d\n",s,locp->first_line,locp->first_column);

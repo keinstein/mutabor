@@ -2,12 +2,15 @@
  ******************************************************
  * Parser-Generator für Mutabor-Dateien.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.5 2005/11/03 14:52:10 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/mut.y,v 1.6 2006/03/27 17:03:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@users.berlios.de>
- * \date $Date: 2005/11/03 14:52:10 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2006/03/27 17:03:06 $
+ * \version $Revision: 1.6 $
  *
  * $Log: mut.y,v $
+ * Revision 1.6  2006/03/27 17:03:06  keinstein
+ * get rid of heap.h and mutlex.h
+ *
  * Revision 1.5  2005/11/03 14:52:10  keinstein
  * *** empty log message ***
  *
@@ -66,7 +69,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "mutabor/heap.h"
+/* #include "mutabor/heap.h" */
+#include "mutabor/bad_decl.h"
 #include "mutabor/mut_tab.h"
 #include "mutabor/intervalDiff.h"
 #include "mutabor/intervalPlaceholder.h"
@@ -118,7 +122,7 @@
 
 
 %{
-#include "mutlex.h" 
+/* #include "mutlex.h" */
 #define self ((MUT_CLASS(mutfile)*)_self)
 void yyerror(YYLTYPE * locp, void * _self, char const *s);
 
@@ -947,7 +951,7 @@ logikdeklaration :
 logik_dekl_1 :
           / * empty * / {}
         | logik_dekl_1 { init_ausloeser ();
-                         / * f�r die Anfangsausloesung der Logik * /
+                         / * für die Anfangsausloesung der Logik * /
                        } 
                logik_dekl_2 {}
         ;
