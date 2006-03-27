@@ -2,13 +2,17 @@
  ********************************************************************
  * Interpretation der Logiken zur Laufzeit 
  *
- * $Id: interpreter.h,v 1.1 2005/11/03 13:54:28 keinstein Exp $
- * \author R.Krau�e, Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 13:54:28 $
- * \version $Revision: 1.1 $
- * \todo Auskommentierten Kram �berpr�fen
+ * $Id: interpreter.h,v 1.2 2006/03/27 16:54:05 keinstein Exp $
+ * \author R.Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2006/03/27 16:54:05 $
+ * \version $Revision: 1.2 $
+ * \todo Auskommentierten Kram überprüfen
  *
  * $Log: interpreter.h,v $
+ * Revision 1.2  2006/03/27 16:54:05  keinstein
+ * Charset conversion to UTF8
+ * prevent warning about comments
+ *
  * Revision 1.1  2005/11/03 13:54:28  keinstein
  * New file.
  *
@@ -55,7 +59,7 @@ struct harmonieereignis { PATTERNN * pattern;
 
 
 
-/* Funktionsprototypen: /
+/ Funktionsprototypen: /
 
 void HARMONIE_analyse(int instr,PATTERNN * pattern);
 void MIDI_analyse( int code );
