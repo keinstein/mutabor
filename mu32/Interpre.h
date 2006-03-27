@@ -11,7 +11,7 @@
 /* Zur Umrechnung in die Midi-Darstellung
    als Gleitpunktzahl in long.
    Erstes Byte Vorkommastellen, drei Bytes Nachkommastellen. */
-#define DOUBLE_TO_LONG(x) ((x) * (1L<<24))
+#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L<<24)))
 
 void message_tasten_liste( void );
 
