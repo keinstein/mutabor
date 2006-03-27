@@ -657,11 +657,6 @@ void CheckBoxesUsed()
         BoxUsed[R->Box] = true;
 }
 
-#ifdef WX
-#if !defined(__WXMSW__)
-  #define min(a, b)	((a) < (b) ? (a) : (b))
-#endif
-#endif
 
 int SmallestBoxUsed()
 {
