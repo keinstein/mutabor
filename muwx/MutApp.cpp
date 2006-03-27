@@ -69,6 +69,95 @@ IMPLEMENT_APP(MutApp)
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
+  // initialize the languages
+      long lng = -1;
+
+    if ( argc == 2 )
+    {
+        // the parameter must be the lang index
+        wxString tmp(argv[1]);
+        tmp.ToLong(&lng);
+    }
+
+    static const wxLanguage langIds[] =
+    {
+        wxLANGUAGE_DEFAULT,
+	//        wxLANGUAGE_FRENCH,
+        wxLANGUAGE_GERMAN,
+	//        wxLANGUAGE_RUSSIAN,
+	//        wxLANGUAGE_BULGARIAN,
+	//        wxLANGUAGE_CZECH,
+	//        wxLANGUAGE_POLISH,
+	//        wxLANGUAGE_SWEDISH,
+#if wxUSE_UNICODE
+	//        wxLANGUAGE_JAPANESE,
+	//        wxLANGUAGE_GEORGIAN,
+#endif
+        wxLANGUAGE_ENGLISH,
+        wxLANGUAGE_ENGLISH_US
+    };
+
+    if ( lng == -1 )
+    {
+        // note that it makes no sense to translate these strings, they are
+        // shown before we set the locale anyhow
+        const wxString langNames[] =
+        {
+            _T("System default"),
+	    //            _T("French"),
+            _T("German"),
+	    //            _T("Russian"),
+	    //            _T("Bulgarian"),
+	    //            _T("Czech"),
+	    //            _T("Polish"),
+	    //            _T("Swedish"),
+#if wxUSE_UNICODE
+	    //            _T("Japanese"),
+	    //            _T("Georgian"),
+#endif
+            _T("English"),
+            _T("English (U.S.)")
+        };
+
+        // the arrays should be in sync
+        wxCOMPILE_TIME_ASSERT( WXSIZEOF(langNames) == WXSIZEOF(langIds),
+                               LangArraysMismatch );
+
+        lng = wxGetSingleChoiceIndex
+              (
+                _T("Please choose language:"),
+                _T("Language"),
+                WXSIZEOF(langNames),
+                langNames
+              );
+    }
+
+    if ( lng != -1 )
+        m_locale.Init(langIds[lng]);
+
+    // normally this wouldn't be necessary as the catalog files would be found
+    // in the default locations, but under Windows then the program is not
+    // installed the catalogs are in the parent directory (because the binary
+    // is in a subdirectory of samples/internat) where we wouldn't find them by
+    // default
+    wxLocale::AddCatalogLookupPathPrefix(wxT("."));
+    wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
+
+    // Initialize the catalogs we'll be using
+    m_locale.AddCatalog(wxT("mutabor"));
+
+    // this catalog is installed in standard location on Linux systems and
+    // shows that you may make use of the standard message catalogs as well
+    //
+    // if it's not installed on your system, it is just silently ignored
+#ifdef __LINUX__
+    {
+        wxLogNull noLog;
+        m_locale.AddCatalog(_T("fileutils"));
+    }
+#endif
+
+  
     // Create the main frame window
 
     frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
