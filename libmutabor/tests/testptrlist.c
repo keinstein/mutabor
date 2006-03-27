@@ -3,7 +3,9 @@
 #endif
 #include <stdio.h>
 #include <assert.h>
-#include <mcheck.h>
+#ifdef HAVE_MCHECK_H
+#  include <mcheck.h>
+#endif
 #include "mutabor/ptrlist.h"
 #include "mutabor/intervalDiff.h"
 
@@ -24,7 +26,9 @@ int main() {
   MUT_CLASS(intervalSum)* s1,*s2,*s3;
   char * c1,*c2;
 
+#ifdef HAVE_MCHECK_H
   mtrace();
+#endif
 
   fprintf(stderr,"o1\n");
   o1=MUT_NEW(interval);
@@ -120,6 +124,8 @@ int main() {
   
   fprintf(stderr,"Deleting list...\n");
   mutabor_delete(list);
+#ifdef HAVE_MCHECK_H
   muntrace();
+#endif
   return 0;
 }

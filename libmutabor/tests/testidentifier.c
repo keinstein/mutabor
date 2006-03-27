@@ -1,7 +1,9 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-#include <mcheck.h>
+#ifdef HAVE_MCHECK_H
+#  include <mcheck.h>
+#endif
 #include <stdio.h>
 #include <assert.h>
 #include "mutabor/identifier.h"
@@ -12,7 +14,9 @@ int fatal_error;
 int main() {
   char * s1,*s2;
   MUT_CLASS(identifier)* o1,*o2;
+#ifdef HAVE_MCHECK_H
   mtrace();
+#endif
   fprintf(stderr,"Beginn...\n");
   fprintf(stderr,"o1\n");
   o1=MUT_NEW(identifier);
@@ -31,6 +35,8 @@ int main() {
   mutabor_delete(o1);
   printf("Deleting o2...\n");
   mutabor_delete(o2);
+#ifdef HAVE_MCHECK_H
   muntrace();
+#endif
   return 0;
 }

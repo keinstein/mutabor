@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <mcheck.h>
+#ifdef HAVE_MCHEK_H
+#  include <mcheck.h>
+#endif
 #include "mutabor/errors.h"
 #include "mutabor/parser.h"
 

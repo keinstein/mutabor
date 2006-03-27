@@ -1,13 +1,14 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-#include <mcheck.h>
+#ifdef HAVE_MCHECK_H
+#  include <mcheck.h>
+#endif
 #include <stdio.h>
 #include <assert.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <mcheck.h>
 #include "mutabor/errors.h"
 #include "mutabor/parser.h"
 #include "mutabor/mutfile.h"
@@ -40,7 +41,9 @@ int main() {
   MUT_CLASS(mutfile) *file;
   char * c1;
 
+#ifdef HAVE_MCHECK_H
   mtrace();
+#endif
 
   /*  mutabor_parser_debug = 1; */
   file = MUT_NEW(mutfile);
@@ -55,6 +58,8 @@ int main() {
 
   mutabor_delete(file);
 
+#ifdef HAVE_MCHECK_H
   muntrace();
+#endif
   return 0;
 }

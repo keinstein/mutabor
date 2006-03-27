@@ -1,7 +1,9 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-#include <mcheck.h>
+#ifdef HAVE_MCHECK_H
+#  include <mcheck.h>
+#endif
 #include <stdio.h>
 #include <assert.h>
 #include "mutabor/object.h"
@@ -12,7 +14,9 @@ int fatal_error;
 int main() {
   MUT_CLASS(object) *o1, *o2;
   char *c1,*c2;
+#ifdef HAVE_MCHECK_H  
   mtrace();
+#endif
   o1 = MUT_NEW(object);
   assert(o1);
   o2 = MUT_NEW(object);
@@ -24,6 +28,8 @@ int main() {
   printf("Compare: %d\n",(*(MUT_VIRTTABLE(object)**) o1)->compare(o1,o2));
   mutabor_delete(o1);
   mutabor_delete(o2);
+#ifdef HAVE_MCHECK_H  
   muntrace();
+#endif
   return 0;
 }
