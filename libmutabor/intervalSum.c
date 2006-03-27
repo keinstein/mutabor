@@ -2,12 +2,15 @@
  ********************************************************************
  * complex intervals.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/intervalSum.c,v 1.1 2005/11/03 14:12:02 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/intervalSum.c,v 1.2 2006/03/27 17:01:22 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:12:02 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2006/03/27 17:01:22 $
+ * \version $Revision: 1.2 $
  *
  * $Log: intervalSum.c,v $
+ * Revision 1.2  2006/03/27 17:01:22  keinstein
+ * added lab-asprintf.h to headers
+ *
  * Revision 1.1  2005/11/03 14:12:02  keinstein
  * initial revision
  *
@@ -27,6 +30,7 @@
 
 #include<math.h>
 #include<assert.h>
+#include "lib-asprintf.h"
 #include "mutabor/ptrlist.h"
 #include "mutabor/intervalSum.h"
 #include "mutabor/intervalSum.hh"
