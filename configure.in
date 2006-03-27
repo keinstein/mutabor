@@ -28,6 +28,8 @@ AM_OPTIONS_WXCONFIG
 
 
 AH_TOP([
+#ifndef MUTABOR_CONFIG_H_INCLUDED
+#define MUTABOR_CONFIG_H_INCLUDED
 /* We need this, because some autoconf tests rely on this (e.g. stpcpy)
     and it should be used for new programs anyway */
 #define _GNU_SOURCE  1
@@ -50,6 +52,12 @@ AH_BOTTOM([
 #else
 #  define REUSE_C(x)
 #endif
+
+#ifdef LOAD_LIBGNUINTL_H
+#  include "libgnuintl.h"
+#endif
+
+#endif /* MUTABOR_CONFIG_H_INCLUDED */
 ])
 
 AM_MAINTAINER_MODE
@@ -99,7 +107,6 @@ AS_IF(test -z "$PERL",
 	  please.
 ]))
 
-
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
 
@@ -128,10 +135,21 @@ darwin*)
 PLATFORM=macosx
 AC_DEFINE(__MACOSX_CORE__,1,[Define to 1 for compiling with MAC OSX CoreMIDI support.])
 ;;
+
 *winnt*|*interix*|cygwin*|mingw32*|uwin*)
 PLATFORM=windows
 AC_DEFINE(__WINDOWS_MM__,1,[Define to 1 for compiling with Windows MM system support.])
-AC_CHECK_LIB(winmm,midiOutGetNumDevs)
+ac_includes_default="$ac_includes_default 
+#include <windows.h>
+#include <mmsystem.h>
+"
+AC_LIB_WINMM([midiOutGetNumDevs])
+AC_LIBTOOL_RC
+dnl AC_LIBTOOL_LANG_RC_CONFIG
+AC_CHECK_HEADERS([winsock2.h])
+AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
+#include <winsock2.h>
+])
 ;;
 *)
 	AC_MSG_ERROR([
@@ -151,6 +169,8 @@ AC_CHECK_LIB(winmm,midiOutGetNumDevs)
 	])
 
 esac
+AM_CONDITIONAL(COND_WINRC,test "$RC")
+AM_GNU_GETTEXT
 
 AM_PATH_WXCONFIG(2.6.0, wxWin=1)
 if test "$wxWin" != 1; then
@@ -161,21 +181,36 @@ if test "$wxWin" != 1; then
                 Please check that wx-config is in path, the directory
                 where wxWindows libraries are installed (returned by
                 'wx-config --libs' command) is in LD_LIBRARY_PATH or
-                equivalent variable and wxWindows version is 2.3.4 or above.
+                equivalent variable and wxWindows version is 2.6.0 or above.
         ])
+	AC_SUBST(INTLDIR,intl)
+	AC_SUBST(USE_INCLUDED_LIBWXINTL,no)
+	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,no)
 else
-	AC_DEFINE(WX,1,[Define to 1 if $PACKAGE should be compiled using wxWidgets.])	
+	AC_DEFINE(WX,1,[Define to 1 if $PACKAGE should be compiled using wxWidgets.])
+	AC_SUBST(INTLDIR,wxintl)
+	AC_SUBST(USE_INCLUDED_LIBWXINTL,$USE_INCLUDED_LIBINTL)
+	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,$BUILD_INCLUDED_LIBINTL)
 fi
+
 
 
 # Checks for header files.
 AC_HEADER_STDBOOL
 AC_HEADER_TIME
-AC_CHECK_HEADERS([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h])
+AC_CHECK_HEADERS([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h mcheck.h])
 ac_includes_default="$ac_includes_default 
 #if HAVE_MALLOC_H
 #  include <malloc.h>
-#endif"
+#endif
+"
+echo \|$HAVE_NETINET_IN_H\|
+if test "$ac_cv_header_netinet_in_h" = no ; then
+	AC_SUBST(NETINET_INC,"-I\$(top_srcdir)/includes/netinet")
+fi
+if test "$HAVE_MCHECK_H"; then
+	AC_SUBST(MCHECK,"mcheck")
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
@@ -248,6 +283,7 @@ AX_COMPILER_PCH_CXX
 AX_COMPILER_PCH_C
 
 # Checks for library functions.
+AM_INTL_SUBDIR
 AC_FUNC_MALLOC
 AC_FUNC_ALLOCA
 AC_FUNC_ERROR_AT_LINE
@@ -258,7 +294,9 @@ AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr]) 
 AC_CHECK_FUNC(strdup)
 
-AC_CONFIG_FILES([Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile])
+
+AC_CONFIG_FILES([Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile intl/libgnuintl.h po/Makefile.in wxintl/Makefile intl/Makefile])
+AC_CONFIG_FILES([missfunc/Makefile])
 AC_OUTPUT
 
 
