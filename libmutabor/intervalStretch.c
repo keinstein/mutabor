@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: intervalStretch.c,v 1.1 2005/11/03 14:11:17 keinstein Exp $
+ * $Id: intervalStretch.c,v 1.2 2006/03/27 17:01:22 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:11:17 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2006/03/27 17:01:22 $
+ * \version $Revision: 1.2 $
  *
  * $Log: intervalStretch.c,v $
+ * Revision 1.2  2006/03/27 17:01:22  keinstein
+ * added lab-asprintf.h to headers
+ *
  * Revision 1.1  2005/11/03 14:11:17  keinstein
  * initial revision
  *
@@ -24,6 +27,9 @@
 #endif
 #  include <stdio.h>
 #include <assert.h>
+#ifndef HAVE_ASPRINTF
+#  include "lib-asprintf.h"
+#endif
 #include "mutabor/ptrlist.h"
 #include "mutabor/intervalStretch.h"
 #include "mutabor/intervalStretch.hh"
@@ -101,4 +107,5 @@ void * MUTABOR_CLASS_FUNCTION(intervalStretch,check_cycle)
 		     (self->right,_identifier,list))) return i;
 		else MUT_VIRTCALL(ptrlist,list,insert)(list,self->right);
 	}
+	return NULL;
 }

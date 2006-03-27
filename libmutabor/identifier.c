@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: identifier.c,v 1.1 2005/11/03 14:06:05 keinstein Exp $
+ * $Id: identifier.c,v 1.2 2006/03/27 16:58:42 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:06:05 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2006/03/27 16:58:42 $
+ * \version $Revision: 1.2 $
  *
  * $Log: identifier.c,v $
+ * Revision 1.2  2006/03/27 16:58:42  keinstein
+ * added lab-asprintf.h to headers
+ *
  * Revision 1.1  2005/11/03 14:06:05  keinstein
  * initial revision
  *
@@ -24,6 +27,7 @@
 #endif
 #  include <stdio.h>
 #include <assert.h>
+#include "lib-asprintf.h"
 #include "mutabor/bad_decl.h"
 #include "mutabor/ptrlist.h"
 #include "mutabor/identifier.h"
