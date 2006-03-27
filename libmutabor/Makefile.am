@@ -1,12 +1,14 @@
 SUBDIRS = . tests
 buildincludedir=$(top_builddir)/includes
-INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes
+INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes \
+	-I$(top_builddir)/$(INTLDIR) -I$(top_srcdir)/$(INTLDIR) \
+	@NETINET_INC@ -I$(top_srcdir)/libasprintf -I$(top_srcdir)/missfunc
 AUTOMAKE_OPTIONS=foreign
 AM_YFLAGS = -d -v --report=itemset
 
 ACLOCAL_AMFLAGS = -I m4
 
-BUILT_SOURCES=mutlex.h mut.h
+BUILT_SOURCES=$(srcdir)/mutlex.h $(srcdir)/mut.h
 
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_CFLAGS = -Wall
@@ -49,7 +51,7 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			idlist.c intervalPlaceholder.c \
 			intervalStretch.c intervalInv.c mutfile.c \
 			ptrlist.c \
-			mut.y mutlex.h mut.h \
+			mut.y $(srcdir)/mutlex.h $(srcdir)/mut.h \
 			aktion.c anweisung.c argument.c ausloeser.c \
 			case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
 			midicalc.c parameter.c taste.c ton.c tonsystem.c umstimmung.c \
@@ -63,17 +65,28 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			$(buildincludedir)/mutabor/intervalStretch.hh \
 			$(buildincludedir)/mutabor/intervalInv.hh \
 			$(buildincludedir)/mutabor/mutfile.hh \
-			$(buildincludedir)/mutabor/interval.hh 
+			$(buildincludedir)/mutabor/interval.hh \
+			$(top_srcdir)/libasprintf/lib-asprintf.c
 #			parser.c
 
-libmutabor_la_LDFLAGS = -version-info 0:0:0
+libmutabor_la_LDFLAGS = -version-info 0:0:0 @INTLLIBS@ \
+	$(top_builddir)/missfunc/libmissfunc.a
 
 SUFFIXES = .h
 
 .l.h:
-	$(LEXCOMPILE) `test -f $< || echo '$(srcdir)/'`$<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$*.c|' $(LEX_OUTPUT_ROOT).c >$*.c
-	rm -f $(LEX_OUTPUT_ROOT).c
+	$(LEXCOMPILE) $<
+	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
+		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
+		$(LEX_OUTPUT_ROOT).c >$$cfilename
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+.l.c:
+	$(LEXCOMPILE) $<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+
 
 .y.h:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
@@ -97,3 +110,7 @@ SUFFIXES = .h
 
 mutlex.h: mutlex.l
 mut.h: mut.y
+
+@INTLLIBS@:
+	$(MAKE) -C $(top_srcdir)/intl $@
+	$(MAKE) -C $(top_srcdir)/wxintl $@
