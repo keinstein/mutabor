@@ -1,37 +1,44 @@
 buildincludedir=$(top_builddir)/includes
-INCLUDES = -I$(buildincludedir)  -I$(top_srcdir)/includes
+INCLUDES = -I$(buildincludedir)  -I$(top_srcdir)/includes \
+	@NETINET_INC@ -I $(top_builddir)/intl
 AM_LDFLAGS = -static
 check_PROGRAMS = testmutfile
 bin_PROGRAMS = testobject testidentifier testinterval testchkobject testidlist \
 	testplaceholder testptrlist
+LDADD = @INTLLIBS@
 
 #testparser_SOURCES = testparser.c
 #testparser_LDADD = ../libmutabor.la
 
 testobject_SOURCES = testobject.c
-testobject_LDADD = -lmcheck ../libmutabor.la
+testobject_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la $(LDADD)
 
 testidentifier_SOURCES = testidentifier.c
-testidentifier_LDADD = -lmcheck ../libmutabor.la
+testidentifier_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testinterval_SOURCES = testinterval.c
-testinterval_LDADD = -lmcheck ../libmutabor.la
+testinterval_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testchkobject_SOURCES = testchkobject.c
-testchkobject_LDADD = -lmcheck ../libmutabor.la
+testchkobject_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testidlist_SOURCES = testidlist.c
-testidlist_LDADD = -lmcheck ../libmutabor.la
+testidlist_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testptrlist_SOURCES = testptrlist.c
-testptrlist_LDADD = -lmcheck ../libmutabor.la
+testptrlist_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testplaceholder_SOURCES = testplaceholder.c
-testplaceholder_LDADD = -lmcheck ../libmutabor.la
+testplaceholder_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 
 testmutfile_SOURCES = testmutfile.c
-testmutfile_LDADD = -lmcheck ../libmutabor.la
+testmutfile_LDADD = @MCHECK@ $(LDADD) ../libmutabor.la
 testmutfile_LDFLAGS = -static
 
 
-TESTS=testobject testidentifier testinterval testidlist testplaceholder testmutfile testptrlist
+TESTS=testobject$(EXEEXT) testidentifier$(EXEEXT) testinterval$(EXEEXT) testidlist$(EXEEXT) testplaceholder$(EXEEXT) testmutfile$(EXEEXT) testptrlist$(EXEEXT)
+
+@INTLLIBS@:
+	$(MAKE) -C $(top_srcdir)/intl $@
+	$(MAKE) -C $(top_srcdir)/wxintl $@
+		
