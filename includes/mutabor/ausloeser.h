@@ -2,10 +2,10 @@
  ********************************************************************
  * Alles zu Auslösern.
  *
- * $Id: ausloeser.h,v 1.3 2005/11/03 14:24:54 keinstein Exp $
+ * $Id: ausloeser.h,v 1.4 2006/03/27 16:53:05 keinstein Exp $
  * \author Tobias Schlemmer <keinstein_junior@gmx.net>
- * \date $Date: 2005/11/03 14:24:54 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2006/03/27 16:53:05 $
+ * \version $Revision: 1.4 $
  ********************************************************************/
 
 #ifndef __AUSLOESER_H_INCLUDED
@@ -103,8 +103,6 @@ namespace mutabor {
     void get_ausloeser_midi_in (void);
     void check_ausloeser (struct ausloeser * ausloeser, char * name);
     void insert_in_globale_liste (int instrument, struct logik * lauf);
-    void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
-				 char * name_der_logik);
     void expandiere_in_globale_liste (void);
     
     struct midi_ereignis ** get_ende_midi (struct midi_ereignis ** lauf);
