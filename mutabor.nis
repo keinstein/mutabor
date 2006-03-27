@@ -1,0 +1,126 @@
+; Installer Pages
+Page license
+Page components
+Page directory
+Page instfiles
+
+; Uninstaller Pages
+UninstPage uninstConfirm
+UninstPage instfiles
+
+InstType "full"
+InstType "minimal"
+
+; Sections
+Section "!Program"
+SectionIn 1 2 RO
+  SetOutPath $INSTDIR
+  File mutabor.exe
+  CreateShortCut "$SMPROGRAMS\Mutabor\Mutabor.lnk" \
+  	"$INSTDIR\mutabor.exe"
+SectionEnd
+
+SectionGroup /e "Other"
+Section "Demo Logics"
+SectionIn 1
+  SetOutPath $INSTDIR
+  File Demo.mut	
+SectionEnd
+
+Section /o "Header files"
+SectionIn 1
+  SetOutPath $INSTDIR
+  File Mutabor.h
+SectionEnd
+
+Section "Uninstall"
+  Delete $INSTDIR\Uninst.exe
+  Delete $INSTDIR\mutabor.exe
+  RMDir $INSTDIR
+  DeleteRegKey HKLM SOFTWARE\Mutabor
+SectionEnd
+
+
+; Functions. Ask on init.
+Function .onInit
+  MessageBox MB_YESNO "This will install Mutabor on your computer. \
+  	Du you wish to continue?" IDYES gogogo
+    Abort
+  gogogo:
+FunctionEnd
+
+Function .onInstSuccess
+   MessageBox MB_YESNO "Congrats, it worked. View readme?" IDNO NoReadme 
+      Exec notepad.exe ; view readme or whatever, if you want. 
+   NoReadme: 
+FunctionEnd
+
+Function .onMouseOverSection
+  FindWindow $R0 "#32770" "" $HWNDPARENT 
+  GetDlgItem $R0 $R0 1043 ; description item (must be added to the UI) 
+
+  StrCmp $0 0 "" +2 
+    SendMessage $R0 ${WM_SETTEXT} 0 "STR:first section description" 
+  StrCmp $0 1 "" +2 
+
+  SendMessage $R0 ${WM_SETTEXT} 0 "STR:second section description" 
+FunctionEnd 
+
+Function .onUserAbort
+  MessageBox MB_YESNO "Abort install?" IDYES NoCancelAbort 
+     Abort ; causes installer to not quit. 
+  NoCancelAbort: 
+FunctionEnd 
+
+Function un.onInit
+   MessageBox MB_YESNO "This will uninstall. Continue?" IDYES NoAbort 
+      Abort ; causes uninstaller to quit. 
+   NoAbort: 
+FunctionEnd 
+
+Function un.onUninstFailed
+  MessageBox MB_OK "Better luck next time." 
+FunctionEnd 
+
+Function un.onUninstSuccess
+  MessageBox MB_OK "Congrats, it's gone." 
+FunctionEnd
+
+Function un.onUserAbort
+  MessageBox MB_YESNO "Abort uninstall?" IDYES NoCancelAbort 
+      Abort ; causes uninstaller to not quit. 
+  NoCancelAbort: 
+FunctionEnd 
+
+Icon muwx\Icon\Mutabor.ico
+InstallDir $PROGRAMFILES\Mutabor
+InstallDirRegKey HKLM Software\Mutabor InstallLocation
+LicenseData GPL-2.txt
+Name Mutabor
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "Mutabor"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "Mutable Tuning Logic interpreter with GUI" 
+VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "TU Dresden" 
+;VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" "Test Application is a trademark of Fake company" 
+VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "© The program Team" 
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "Mutabor - Mutable tunings for MIDI" 
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "0.0.0" 
+VIProductVersion "0.0.0"
+
+!define VERSION "@VERSION@"
+Name "Mutabor ${VERSION}"
+OutFile "Mutabor Installer - ${Version}.exe"
+
+; Makro (currently unused)
+!macro MyFunc UN
+Function ${UN}MyFunc
+  Call ${UN}DoRegStuff
+  ReadRegStr $0 HKLM Softwame\Mutabor
+  DetailPrint $0
+FunctionEnd
+!macroend
+
+; !insertmacro MyFunc ""
+; !insertmacro MyFunc "un."
+
+
+
