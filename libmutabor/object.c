@@ -3,12 +3,15 @@
  * Common definitions for object oriented programming and base class
  * \c #object.
  *
- * $Id: object.c,v 1.1 2005/11/03 14:58:11 keinstein Exp $
+ * $Id: object.c,v 1.2 2006/03/27 17:07:51 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:58:11 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2006/03/27 17:07:51 $
+ * \version $Revision: 1.2 $
  *
  * $Log: object.c,v $
+ * Revision 1.2  2006/03/27 17:07:51  keinstein
+ * added lib-asprintf.h
+ *
  * Revision 1.1  2005/11/03 14:58:11  keinstein
  * initial release
  *
@@ -33,6 +36,7 @@
 #endif
 #  include <stdio.h>
 #include<assert.h>
+#include "lib-asprintf.h"
 #include "mutabor/object.h"
 #include "mutabor/object.hh"
 #include "mutabor/bad_decl.h"
