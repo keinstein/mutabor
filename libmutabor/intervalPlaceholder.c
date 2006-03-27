@@ -2,12 +2,15 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: intervalPlaceholder.c,v 1.1 2005/11/03 14:10:35 keinstein Exp $
+ * $Id: intervalPlaceholder.c,v 1.2 2006/03/27 17:00:19 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/03 14:10:35 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2006/03/27 17:00:19 $
+ * \version $Revision: 1.2 $
  *
  * $Log: intervalPlaceholder.c,v $
+ * Revision 1.2  2006/03/27 17:00:19  keinstein
+ * added lab-asprintf.h to headers and stpcpy if necessary
+ *
  * Revision 1.1  2005/11/03 14:10:35  keinstein
  * initial revision
  *
@@ -24,6 +27,9 @@
 #endif
 #  include <stdio.h>
 #include <assert.h>
+#ifndef HAVE_ASPRINTF
+# include "lib-asprintf.h"
+#endif
 #include "mutabor/ptrlist.h"
 #include "mutabor/intervalPlaceholder.h"
 #include "mutabor/intervalPlaceholder.hh"

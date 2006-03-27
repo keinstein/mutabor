@@ -2,10 +2,10 @@
  ********************************************************************
  * Intervallberechnungen
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/interval.c,v 1.6 2005/11/03 14:49:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/interval.c,v 1.7 2006/03/27 16:59:34 keinstein Exp $
  * \author R.Krauße <krausze@users.berlios.de>
- * \date $Date: 2005/11/03 14:49:57 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2006/03/27 16:59:34 $
+ * \version $Revision: 1.7 $
  *
  * \todo make this file thred-proof
  * \todo Portabilisierung von: pow
@@ -25,6 +25,9 @@
 
 #include<math.h>
 #include<assert.h>
+#ifndef HAVE_ASPRINTF
+#  include "lib-asprintf.h"
+#endif
 #include "mutabor/interval.h"
 #include "mutabor/interval.hh"
 #include "mutabor/heap.h"

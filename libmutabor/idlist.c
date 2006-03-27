@@ -3,13 +3,16 @@
 * Identifier list class. It is inmplemented as simple 
 * dynamic unordered array.
 *
-* $Id: idlist.c,v 1.1 2005/11/03 14:06:46 keinstein Exp $
+* $Id: idlist.c,v 1.2 2006/03/27 16:59:54 keinstein Exp $
 * \author Tobias Schlemmer <keinstein@users.berlios.de>
-* \date $Date: 2005/11/03 14:06:46 $
-* \version $Revision: 1.1 $
+* \date $Date: 2006/03/27 16:59:54 $
+* \version $Revision: 1.2 $
 * \todo Use better data structures (trees or ordered arrays).
 *
 * $Log: idlist.c,v $
+* Revision 1.2  2006/03/27 16:59:54  keinstein
+* added lab-asprintf.h to headers and stpcpy if necessary
+*
 * Revision 1.1  2005/11/03 14:06:46  keinstein
 * Identifier list class
 *
@@ -26,6 +29,10 @@
 #endif
 #  include <stdio.h>
 #include <assert.h>
+#ifndef HAVE_STPCPY
+# include "stpcpy.h"
+#endif
+#include "lib-asprintf.h"
 #include "mutabor/bad_decl.h"
 #include "mutabor/idlist.h"
 #include "mutabor/idlist.hh"
