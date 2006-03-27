@@ -312,7 +312,7 @@ void GisReadArtHead::Read()
 		if ( Id == TTintens )
 		{
 		  if ( TAG->GetParaType(2) == GTParaInt || TAG->GetParaType(2) == GTParaReal)
-			 AddTag(&Intensity, TAG)->Data.ch = GetReal(TAG->GetPara(2)) * 127;
+			 AddTag(&Intensity, TAG)->Data.ch = (char) GetReal(TAG->GetPara(2)) * 127;
 		}
 		else if ( Id == TTaccent )
 		{
@@ -334,7 +334,7 @@ void GisReadArtHead::Read()
 		else if ( Id == TTalter )
 		{
 		  if ( TAG->GetParaType(1) != GTParaStr )
-			 AddTag(&Alter, TAG)->Data.i = GetReal(TAG->GetPara(1)) * 0x1FFF ;
+			 AddTag(&Alter, TAG)->Data.i = (int) GetReal(TAG->GetPara(1)) * 0x1FFF ;
 		}
 		else if ( Id == TTinstr )
 		{
