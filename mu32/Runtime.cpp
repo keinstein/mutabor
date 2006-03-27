@@ -69,6 +69,7 @@ char pascal _export Compile(CompDlg *compDia, const char *name)
 #else
 	 compDia->SetText(wxID_OK, _("Translation interrupted !"));
 #endif
+	 std::cout << (char*)Fmeldung.c_str() << std::endl;
 	 compDia->SetText(IDC_COMP_MESSAGE, Fmeldung);
 	 return 0;
   }
@@ -109,6 +110,7 @@ char pascal _export Compile(TDialog *compDia, char *name)
 #else
 	 ::SetWindowText(compDia->GetDlgItem(IDOK), "Translation interrupted !");
 #endif
+	 std::cout << (char *)Fmeldung.c_str() << endl;
 	 ::SetWindowText(compDia->GetDlgItem(IDS_COMP5), Fmeldung);
 	 return 0;
   }
