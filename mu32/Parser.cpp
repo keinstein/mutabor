@@ -252,7 +252,7 @@ void get_new_number_in_argument_list (double parameter_zahl)
 
     (* lauf) = (argument_liste*) xmalloc ((size_t) sizeof (struct argument_liste));
     (* lauf) -> argument.argument_typ = zahl;
-    (* lauf) -> argument.u.zahl.zahl  = parameter_zahl;
+    (* lauf) -> argument.u.zahl.zahl  = (int) parameter_zahl;
     (* lauf) -> next                  = NULL;
 }
 
@@ -1069,7 +1069,7 @@ void get_umstimmung_taste_abs (
           = argument;
     if (argument == zahl) {
         tmp_umstimmung -> u.umstimmung_taste_abs.
-            argument.u.zahl.zahl = zahl_wert;
+            argument.u.zahl.zahl = (int) zahl_wert;
     }
     else {
         int i = parameter_nummer (0, parameter,
@@ -1096,7 +1096,7 @@ void get_umstimmung_taste_rel (
           = argument;
     if (argument == zahl) {
         tmp_umstimmung -> u.umstimmung_taste_rel.
-            argument.u.zahl.zahl = zahl_wert;
+            argument.u.zahl.zahl = (int) zahl_wert;
     }
     else {
         int i = parameter_nummer (0, parameter,
@@ -1125,7 +1125,7 @@ void get_umstimmung_breite_abs (
           = argument;
     if (argument == zahl) {
         tmp_umstimmung -> u.umstimmung_breite_abs.
-            argument.u.zahl.zahl = zahl_wert;
+            argument.u.zahl.zahl = (int) zahl_wert;
     }
     else {
         int i = parameter_nummer (0, parameter,
@@ -1152,7 +1152,7 @@ void get_umstimmung_breite_rel (
           = argument;
     if (argument == zahl) {
         tmp_umstimmung -> u.umstimmung_breite_rel.
-            argument.u.zahl.zahl = zahl_wert;
+            argument.u.zahl.zahl = (int) zahl_wert;
     }
     else {
         int i = parameter_nummer (0, parameter,
@@ -1450,7 +1450,7 @@ void get_umstimmungs_case_default_element (void)
         /* Nur Ende der Liste finden */ ;
 
     (* lauf) = (case_liste*) xmalloc (sizeof (struct case_liste));
-    (* lauf) -> case_label          = -1000000.0; /* als dummy-wert */
+    (* lauf) -> case_label          = -1000000; /* als dummy-wert */
     (* lauf) -> is_default          = 1;
     (* lauf) -> case_aktion         = get_last_aktions_liste ();
     (* lauf) -> next                = NULL;
