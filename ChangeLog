@@ -1,3 +1,19 @@
+2006-01-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile.
+
+2006-01-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Remove intl.
+	* configure.in (AC_CONFIG_FILES): Remove intl/Makefile.
+
+2006-01-18  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl, po.
+	(ACLOCAL_AMFLAGS): New variable.
+	(EXTRA_DIST): Add config.rpath, mkinstalldirs, m4/ChangeLog.
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile, po/Makefile.in.
+
 2005-07-20  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* includes/mutabor/errors.h: Fehlerkonstanten
