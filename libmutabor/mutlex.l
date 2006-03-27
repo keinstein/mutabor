@@ -1,7 +1,7 @@
 %option   8bit 
 %option   warn 
 %option   outfile="lex.yy.c"
-%option   header-file="mutlex.h"
+%option   header-file="mutlex.h" 
 %option   tables-file="mutlex_de.tab"
 /* %option   tables-verify */
 %option   case-insensitive
@@ -10,16 +10,34 @@
 /* %option   ecs
 %option   full */
 %option   verbose
-%option   debug
+%option   debug 
 %option bison-bridge reentrant
 %option bison-locations 
 %option yylineno 
 
 %{
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+#include <stdio.h>
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#endif
+#ifdef HAVE_WINSOCK2_H
+# include <winsock2.h>
+#endif
+#ifdef HAVE_NETINET_IN_H
+# include <netinet/in.h>
+#endif
+
 #include "mut.h"
-#include "stdio.h"
+/*#include "mutlex.h"
+*/
+#undef yylloc
+#undef yylval
 #include "mutabor/bad_decl.h"
 #include "mutabor/mutfile.h"
+
 /*
 #define YY_DECL int mutabor_parser_lex (YYSTYPE * yylval_param, \
 		YYLTYPE * yylloc_param, void * _self )

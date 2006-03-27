@@ -583,7 +583,7 @@ extern int mutabor_parser_lex (YYSTYPE * yylval_param,YYLTYPE * yylloc_param ,yy
 #undef YY_DECL_IS_OURS
 #undef YY_DECL
 #endif
-#line 74 "mutlex.l"
+#line 92 "../../libmutabor/mutlex.l"
 
 
 #line 590 "mutlex.h"

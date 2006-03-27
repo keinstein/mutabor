@@ -1,6 +1,6 @@
-#line 2 "mutlex.c"
+#line 2 "$cfilename"
 
-#line 4 "mutlex.c"
+#line 4 "$cfilename"
 
 #define  YY_INT_ALIGNED short int
 
@@ -461,15 +461,33 @@ static yyconst flex_int16_t * yy_rule_linenum = 0;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "mutlex.l"
+#line 1 "../../libmutabor/mutlex.l"
 /* %option   tables-verify */
 /* %option   ecs
 %option   full */
-#line 19 "mutlex.l"
+#line 19 "../../libmutabor/mutlex.l"
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+#include <stdio.h>
+#ifdef HAVE_STDINT_H
+# include <stdint.h>
+#endif
+#ifdef HAVE_WINSOCK2_H
+# include <winsock2.h>
+#endif
+#ifdef HAVE_NETINET_IN_H
+# include <netinet/in.h>
+#endif
+
 #include "mut.h"
-#include "stdio.h"
+/*#include "mutlex.h"
+*/
+#undef yylloc
+#undef yylval
 #include "mutabor/bad_decl.h"
 #include "mutabor/mutfile.h"
+
 /*
 #define YY_DECL int mutabor_parser_lex (YYSTYPE * yylval_param, \
 		YYLTYPE * yylloc_param, void * _self )
@@ -487,7 +505,7 @@ static yyconst flex_int16_t * yy_rule_linenum = 0;
   yylloc->last_column = yycolumn; \
   yylloc->last_line = yylineno;
 
-#line 491 "mutlex.c"
+#line 509 "$cfilename"
 
 #define INITIAL 0
 #define string 1
@@ -959,13 +977,13 @@ YY_DECL
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
 /* %% [7.0] user's declarations go here */
-#line 42 "mutlex.l"
+#line 60 "../../libmutabor/mutlex.l"
 
 
 /*  MUT_CLASS(mutfile) * self=_self; */
 
 
-#line 969 "mutlex.c"
+#line 987 "$cfilename"
 
     yylval = yylval_param;
 
@@ -1097,103 +1115,103 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 47 "mutlex.l"
+#line 65 "../../libmutabor/mutlex.l"
 BEGIN(string);
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 48 "mutlex.l"
+#line 66 "../../libmutabor/mutlex.l"
 /* comment */
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 49 "mutlex.l"
+#line 67 "../../libmutabor/mutlex.l"
 BUMP BEGIN(0);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 51 "mutlex.l"
+#line 69 "../../libmutabor/mutlex.l"
 BUMP yylval->f_value = atof(yytext); return F_NUMBER;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 52 "mutlex.l"
+#line 70 "../../libmutabor/mutlex.l"
 BUMP yylval->integer = atoi(yytext); return INTEGER;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 53 "mutlex.l"
+#line 71 "../../libmutabor/mutlex.l"
 BUMP sscanf(yytext+1,"%x",(unsigned int *) &(yylval->integer)); return INTEGER;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 54 "mutlex.l"
+#line 72 "../../libmutabor/mutlex.l"
 BUMP return INTERVALL;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 55 "mutlex.l"
+#line 73 "../../libmutabor/mutlex.l"
 BUMP return WURZEL;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 56 "mutlex.l"
+#line 74 "../../libmutabor/mutlex.l"
 BUMP  return TON;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 57 "mutlex.l"
+#line 75 "../../libmutabor/mutlex.l"
 BUMP  return TONSYSTEM;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 58 "mutlex.l"
+#line 76 "../../libmutabor/mutlex.l"
 BUMP  return UMSTIMMUNG;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 59 "mutlex.l"
+#line 77 "../../libmutabor/mutlex.l"
 BUMP  return HARMONIE;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 60 "mutlex.l"
+#line 78 "../../libmutabor/mutlex.l"
 BUMP  return LOGIK;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 61 "mutlex.l"
+#line 79 "../../libmutabor/mutlex.l"
 BUMP  return FORM;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 62 "mutlex.l"
+#line 80 "../../libmutabor/mutlex.l"
 BUMP  return INSTRUMENT;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 63 "mutlex.l"
+#line 81 "../../libmutabor/mutlex.l"
 BUMP  return TASTE;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 64 "mutlex.l"
+#line 82 "../../libmutabor/mutlex.l"
 BUMP  return MIDI_IN;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 65 "mutlex.l"
+#line 83 "../../libmutabor/mutlex.l"
 BUMP  return MIDI_OUT;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 66 "mutlex.l"
+#line 84 "../../libmutabor/mutlex.l"
 BUMP  return ANSONSTEN;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 67 "mutlex.l"
+#line 85 "../../libmutabor/mutlex.l"
 { 
                   BUMP yylval->identifier = strdup(yytext); 
                   return IDENTIFIER;
@@ -1201,26 +1219,26 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 71 "mutlex.l"
+#line 89 "../../libmutabor/mutlex.l"
 BUMP return yytext[0]; 
 	YY_BREAK
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 72 "mutlex.l"
+#line 90 "../../libmutabor/mutlex.l"
 BUMP  /* Leerzeichen ignorieren  */
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 73 "mutlex.l"
+#line 91 "../../libmutabor/mutlex.l"
 fatal_error(2,yytext[0],yylloc->first_line + 1); 
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 74 "mutlex.l"
+#line 92 "../../libmutabor/mutlex.l"
 ECHO;
 	YY_BREAK
-#line 1224 "mutlex.c"
+#line 1242 "$cfilename"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(string):
 	yyterminate();
@@ -2083,6 +2101,7 @@ YY_BUFFER_STATE mutabor_parser__scan_buffer  (char * base, yy_size_t  size , yys
 /** Setup the input buffer state to scan a string. The next call to mutabor_parser_lex() will
  * scan from a @e copy of @a str.
  * @param str a NUL-terminated string to scan
+ * @param yy_str a NUL-terminated string to scan
  * @param yyscanner The scanner object.
  * @return the newly allocated buffer state object.
  * @note If you want to scan bytes that may contain NUL values, then use
@@ -2959,7 +2978,7 @@ int mutabor_parser_tables_destroy (yyscan_t yyscanner)
 #undef YY_DECL_IS_OURS
 #undef YY_DECL
 #endif
-#line 74 "mutlex.l"
+#line 92 "../../libmutabor/mutlex.l"
 
 
 
