@@ -42,11 +42,25 @@ subdir = libmutabor
 DIST_COMMON = $(libmutabor_la_include_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in mut.c mut.h mutlex.c
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/codeset.m4 \
+	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/glibc2.m4 \
+	$(top_srcdir)/m4/glibc21.m4 $(top_srcdir)/m4/iconv.m4 \
+	$(top_srcdir)/m4/intdiv0.m4 $(top_srcdir)/m4/intmax.m4 \
+	$(top_srcdir)/m4/inttypes-pri.m4 $(top_srcdir)/m4/inttypes.m4 \
+	$(top_srcdir)/m4/inttypes_h.m4 $(top_srcdir)/m4/lcmessage.m4 \
+	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
+	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/m4/longdouble.m4 \
+	$(top_srcdir)/m4/longlong.m4 $(top_srcdir)/m4/nls.m4 \
+	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/printf-posix.m4 \
+	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/signed.m4 \
+	$(top_srcdir)/m4/size_max.m4 $(top_srcdir)/m4/stdint_h.m4 \
+	$(top_srcdir)/m4/uintmax_t.m4 $(top_srcdir)/m4/ulonglong.m4 \
+	$(top_srcdir)/m4/wchar_t.m4 $(top_srcdir)/m4/wint_t.m4 \
+	$(top_srcdir)/m4/xsize.m4 $(top_srcdir)/acinclude.m4 \
 	$(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
-mkinstalldirs = $(install_sh) -d
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
@@ -75,7 +89,8 @@ am_libmutabor_la_OBJECTS = libmutabor_la-object.lo \
 	libmutabor_la-parameter.lo libmutabor_la-taste.lo \
 	libmutabor_la-ton.lo libmutabor_la-tonsystem.lo \
 	libmutabor_la-umstimmung.lo libmutabor_la-errors.lo \
-	libmutabor_la-mutlex.lo libmutabor_la-interpreter.lo
+	libmutabor_la-mutlex.lo libmutabor_la-interpreter.lo \
+	libmutabor_la-lib-asprintf.lo
 libmutabor_la_OBJECTS = $(am_libmutabor_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -119,6 +134,9 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
+BUILD_INCLUDED_LIBWXINTL = @BUILD_INCLUDED_LIBWXINTL@
+CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
@@ -128,6 +146,8 @@ COND_PRECOMP_CXX_FALSE = @COND_PRECOMP_CXX_FALSE@
 COND_PRECOMP_CXX_TRUE = @COND_PRECOMP_CXX_TRUE@
 COND_PRECOMP_C_FALSE = @COND_PRECOMP_C_FALSE@
 COND_PRECOMP_C_TRUE = @COND_PRECOMP_C_TRUE@
+COND_WINRC_FALSE = @COND_WINRC_FALSE@
+COND_WINRC_TRUE = @COND_WINRC_TRUE@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -135,6 +155,7 @@ CXXCPP = @CXXCPP@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
+DATADIRNAME = @DATADIRNAME@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
 ECHO = @ECHO@
@@ -145,25 +166,49 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
+GENCAT = @GENCAT@
+GLIBC2 = @GLIBC2@
+GLIBC21 = @GLIBC21@
+GMSGFMT = @GMSGFMT@
+HAVE_ASPRINTF = @HAVE_ASPRINTF@
 HAVE_EXTERN_INLINE = @HAVE_EXTERN_INLINE@
 HAVE_INLINE = @HAVE_INLINE@
+HAVE_POSIX_PRINTF = @HAVE_POSIX_PRINTF@
+HAVE_SNPRINTF = @HAVE_SNPRINTF@
+HAVE_WPRINTF = @HAVE_WPRINTF@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+INSTOBJEXT = @INSTOBJEXT@
+INTLBISON = @INTLBISON@
+INTLDIR = @INTLDIR@
+INTLLIBS = @INTLLIBS@
+INTLOBJS = @INTLOBJS@
+INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
+INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
 LDFLAGS = @LDFLAGS@
 LEX = @LEX@
 LEXLIB = @LEXLIB@
 LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+LIBICONV = @LIBICONV@
+LIBINTL = @LIBINTL@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
+LTLIBICONV = @LTLIBICONV@
+LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
 MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
+MCHECK = @MCHECK@
+MKINSTALLDIRS = @MKINSTALLDIRS@
+MSGFMT = @MSGFMT@
+MSGMERGE = @MSGMERGE@
+NETINET_INC = @NETINET_INC@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
@@ -175,10 +220,15 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 PCHEXT_C = @PCHEXT_C@
 PCHEXT_CXX = @PCHEXT_CXX@
 PERL = @PERL@
+POSUB = @POSUB@
 RANLIB = @RANLIB@
+RC = @RC@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
+USE_INCLUDED_LIBWXINTL = @USE_INCLUDED_LIBWXINTL@
+USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 WX_CFLAGS = @WX_CFLAGS@
 WX_CFLAGS_ONLY = @WX_CFLAGS_ONLY@
@@ -189,12 +239,14 @@ WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
 WX_VERSION = @WX_VERSION@
+XGETTEXT = @XGETTEXT@
 YACC = @YACC@
 ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_F77 = @ac_ct_F77@
 ac_ct_RANLIB = @ac_ct_RANLIB@
+ac_ct_RC = @ac_ct_RC@
 ac_ct_STRIP = @ac_ct_STRIP@
 am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
 am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
@@ -239,11 +291,14 @@ target_os = @target_os@
 target_vendor = @target_vendor@
 SUBDIRS = . tests
 buildincludedir = $(top_builddir)/includes
-INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes
+INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes \
+	-I$(top_builddir)/$(INTLDIR) -I$(top_srcdir)/$(INTLDIR) \
+	@NETINET_INC@ -I$(top_srcdir)/libasprintf -I$(top_srcdir)/missfunc
+
 AUTOMAKE_OPTIONS = foreign
 AM_YFLAGS = -d -v --report=itemset
 ACLOCAL_AMFLAGS = -I m4
-BUILT_SOURCES = mutlex.h mut.h
+BUILT_SOURCES = $(srcdir)/mutlex.h $(srcdir)/mut.h
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_CFLAGS = -Wall
 libmutabor_la_includedir = $(pkgincludedir)
@@ -285,7 +340,7 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			idlist.c intervalPlaceholder.c \
 			intervalStretch.c intervalInv.c mutfile.c \
 			ptrlist.c \
-			mut.y mutlex.h mut.h \
+			mut.y $(srcdir)/mutlex.h $(srcdir)/mut.h \
 			aktion.c anweisung.c argument.c ausloeser.c \
 			case_liste.c harmonie.c heap.c instrument.c interval.c logik.c \
 			midicalc.c parameter.c taste.c ton.c tonsystem.c umstimmung.c \
@@ -299,10 +354,13 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			$(buildincludedir)/mutabor/intervalStretch.hh \
 			$(buildincludedir)/mutabor/intervalInv.hh \
 			$(buildincludedir)/mutabor/mutfile.hh \
-			$(buildincludedir)/mutabor/interval.hh 
+			$(buildincludedir)/mutabor/interval.hh \
+			$(top_srcdir)/libasprintf/lib-asprintf.c
 
 #			parser.c
-libmutabor_la_LDFLAGS = -version-info 0:0:0
+libmutabor_la_LDFLAGS = -version-info 0:0:0 @INTLLIBS@ \
+	$(top_builddir)/missfunc/libmissfunc.a
+
 SUFFIXES = .h
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -392,6 +450,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-intervalPlaceholder.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-intervalStretch.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-intervalSum.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-lib-asprintf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-logik.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-midicalc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmutabor_la-mut.Plo@am__quote@
@@ -636,10 +695,12 @@ libmutabor_la-interpreter.lo: interpreter.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-interpreter.lo `test -f 'interpreter.c' || echo '$(srcdir)/'`interpreter.c
 
-.l.c:
-	$(LEXCOMPILE) $<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
-	rm -f $(LEX_OUTPUT_ROOT).c
+libmutabor_la-lib-asprintf.lo: $(top_srcdir)/libasprintf/lib-asprintf.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -MT libmutabor_la-lib-asprintf.lo -MD -MP -MF "$(DEPDIR)/libmutabor_la-lib-asprintf.Tpo" -c -o libmutabor_la-lib-asprintf.lo `test -f '$(top_srcdir)/libasprintf/lib-asprintf.c' || echo '$(srcdir)/'`$(top_srcdir)/libasprintf/lib-asprintf.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libmutabor_la-lib-asprintf.Tpo" "$(DEPDIR)/libmutabor_la-lib-asprintf.Plo"; else rm -f "$(DEPDIR)/libmutabor_la-lib-asprintf.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_srcdir)/libasprintf/lib-asprintf.c' object='libmutabor_la-lib-asprintf.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmutabor_la_CFLAGS) $(CFLAGS) -c -o libmutabor_la-lib-asprintf.lo `test -f '$(top_srcdir)/libasprintf/lib-asprintf.c' || echo '$(srcdir)/'`$(top_srcdir)/libasprintf/lib-asprintf.c
 
 .y.c:
 	$(YACCCOMPILE) $<
@@ -975,9 +1036,17 @@ uninstall-info: uninstall-info-recursive
 
 
 .l.h:
-	$(LEXCOMPILE) `test -f $< || echo '$(srcdir)/'`$<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$*.c|' $(LEX_OUTPUT_ROOT).c >$*.c
-	rm -f $(LEX_OUTPUT_ROOT).c
+	$(LEXCOMPILE) $<
+	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
+		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
+		$(LEX_OUTPUT_ROOT).c >$$cfilename
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+.l.c:
+	$(LEXCOMPILE) $<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
 
 .y.h:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
@@ -1001,6 +1070,10 @@ uninstall-info: uninstall-info-recursive
 
 mutlex.h: mutlex.l
 mut.h: mut.y
+
+@INTLLIBS@:
+	$(MAKE) -C $(top_srcdir)/intl $@
+	$(MAKE) -C $(top_srcdir)/wxintl $@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
