@@ -74,7 +74,7 @@
 
 
 #if ! defined (YYSTYPE) && ! defined (YYSTYPE_IS_DECLARED)
-#line 112 "mut.y"
+#line 113 "../../libmutabor/mut.y"
 typedef union YYSTYPE {
 	double      f_value;        /* for floating point numbers */
 	int         integer;        /* for integers */
@@ -82,7 +82,7 @@ typedef union YYSTYPE {
 	void        *object;        /* for data objects */
 } YYSTYPE;
 /* Line 1285 of yacc.c.  */
-#line 86 "mut.h"
+#line 86 "../../libmutabor/mut.h"
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
