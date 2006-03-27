@@ -1,14 +1,14 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        valradio.cpp
 // Purpose:     wxRadioValidator
-// Author:      Rüdiger Krauße
+// Author:      RÃ¼diger KrauÃŸe
 // Modified by:
 // Created:     20/04/2004
 /////////////////////////////////////////////////////////////////////////////
 
-#ifdef __GNUG__
-#pragma implementation "valRadio.h"
-#endif
+//#ifdef __GNUG__
+//#pragma implementation "valRadio.h"
+//#endif
 
 // For compilers that support precompilation, includes "wx.h".
 #include "wx/wxprec.h"
