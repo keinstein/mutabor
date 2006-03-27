@@ -2,12 +2,16 @@
  ***********************************************************************
  * Identifier class
  *
- * $Id: mutfile.c,v 1.2 2005/11/10 16:17:00 keinstein Exp $
+ * $Id: mutfile.c,v 1.3 2006/03/27 17:04:01 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2005/11/10 16:17:00 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2006/03/27 17:04:01 $
+ * \version $Revision: 1.3 $
  *
  * $Log: mutfile.c,v $
+ * Revision 1.3  2006/03/27 17:04:01  keinstein
+ * added lib-asprintf.h
+ *       libintl.h
+ *
  * Revision 1.2  2005/11/10 16:17:00  keinstein
  * working distcheck
  *
@@ -27,6 +31,9 @@
 #endif
 #include <stdio.h>
 #include <assert.h>
+#ifndef HAVE_ASPRINTF
+#  include "lib-asprintf.h"
+#endif
 #include "mutabor/mutfile.h"
 #include "mutabor/mutfile.hh"
 #include "mutabor/bad_decl.h"
@@ -37,7 +44,8 @@
 #include "mutabor/errors.h"
 #include "mut.h"
 #undef self
-#include "mutlex.h"
+#include "mutlex.h" 
+#include "libintl.h"
 
 /** Constructor for class object. Does nothing than error checking. */
 extern void * MUTABOR_CLASS_FUNCTION(object,constructor)(void * _self);
