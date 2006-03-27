@@ -2,12 +2,15 @@
 ***********************************************************************
 * Storage for simple pointers. Implemented as AVL tree.
 *
-* $Id: ptrlist.c,v 1.1 2005/11/03 14:58:11 keinstein Exp $
+* $Id: ptrlist.c,v 1.2 2006/03/27 17:07:51 keinstein Exp $
 * \author Tobias Schlemmer <keinstein@users.berlios.de>
-* \date $Date: 2005/11/03 14:58:11 $
-* \version $Revision: 1.1 $
+* \date $Date: 2006/03/27 17:07:51 $
+* \version $Revision: 1.2 $
 *
 * $Log: ptrlist.c,v $
+* Revision 1.2  2006/03/27 17:07:51  keinstein
+* added lib-asprintf.h
+*
 * Revision 1.1  2005/11/03 14:58:11  keinstein
 * initial release
 *
@@ -24,6 +27,9 @@
 #endif
 #  include <stdio.h>
 #include <assert.h>
+#ifndef HAVE_ASPRINTF
+#include "lib-asprintf.h"
+#endif
 #include "mutabor/bad_decl.h"
 #include "mutabor/ptrlist.h"
 #include "mutabor/ptrlist.hh"
