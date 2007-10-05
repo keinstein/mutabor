@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@math.tu-dresden.de\n"
-"POT-Creation-Date: 2006-01-18 17:16+0100\n"
-"PO-Revision-Date: 2006-01-19 19:19+0100\n"
-"Last-Translator: Tobias Schlemmer <keinstein_junior@gmx.net>\n"
+"POT-Creation-Date: 2007-10-03 15:48+0200\n"
+"PO-Revision-Date: 2007-10-03 15:52+0100\n"
+"Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -77,9 +77,9 @@ msgstr "Nicht genügend Speicher oder zu wenig Datein im Mutabor-Quelltext"
 #: mu32/Errors.cpp:149 mu32/Errors.cpp:150 mu32/Errors.cpp:166
 #: mu32/Errors.cpp:167 mu32/Errors.cpp:185 mu32/Errors.cpp:186
 #: mu32/Errors.cpp:187 mu32/Errors.cpp:188 mu32/Errors.cpp:189
-#: mu32/Errors.cpp:201 mu32/Errors.cpp:202 mu32/Errors.cpp:203
-#: mu32/Errors.cpp:204 mu32/Errors.cpp:205 mu32/Errors.cpp:206
-#: mu32/Errors.cpp:220 mu32/Errors.cpp:232
+#: mu32/Errors.cpp:202 mu32/Errors.cpp:203 mu32/Errors.cpp:204
+#: mu32/Errors.cpp:205 mu32/Errors.cpp:206 mu32/Errors.cpp:207
+#: mu32/Errors.cpp:221 mu32/Errors.cpp:233
 msgid " "
 msgstr " "
 
@@ -221,183 +221,189 @@ msgstr "Undefinierte Aktion: „%s“ (in Logik „%s“)"
 msgid "Undefined parameter: %s (in call %s from logic %s)"
 msgstr "Undefinierte Parameter: „%s“ (im Aufrum „%s“ von Logik „%s“)"
 
-#: mu32/Errors.cpp:192
-msgid "Bad MIDI-Channel (valid: 1 .. 16)"
+#: mu32/Errors.cpp:193
+#, fuzzy
+msgid "Bad MIDI channel (valid: 1...16)"
 msgstr "Ungültiger MIDI-Kanal (erlaubt: 1 bis 16)"
 
-#: mu32/Errors.cpp:193
+#: mu32/Errors.cpp:194
 #, c-format
 msgid "Bad interval value in %s"
 msgstr "Ungültiger Intervallvert in „%s“"
 
-#: mu32/Errors.cpp:194
+#: mu32/Errors.cpp:195
 #, c-format
 msgid "Bad key %d (valid: 36..96 (in tonesystem %s)"
 msgstr "Ungültige Taste %d (gültig: 36 bis 96; im Tonsystem „%s“)"
 
-#: mu32/Errors.cpp:195
+#: mu32/Errors.cpp:196
 #, c-format
 msgid "Not-complex tone in retuning %s ( %s )"
 msgstr "Kein zusammengesetzter Ton in Umstimmung „%s“ („%s“)"
 
-#: mu32/Errors.cpp:196
+#: mu32/Errors.cpp:197
 #, c-format
 msgid "Bad value in %s"
 msgstr "Ungültiger Wert in „%s“"
 
-#: mu32/Errors.cpp:197
+#: mu32/Errors.cpp:198
 #, c-format
 msgid "Bad MIDI-Code in logic %s (expecting %s )"
 msgstr "Falscher MIDI-Kod in der Logik „%s“ (erwarte „%s“)"
 
-#: mu32/Errors.cpp:198
+#: mu32/Errors.cpp:199
 #, c-format
 msgid "Logic %s must not be called by ELSE"
 msgstr "Die Logik „%s“ darf nicht im „ANSONSTEN“-Zweig aufgerufen werden"
 
-#: mu32/Errors.cpp:199
+#: mu32/Errors.cpp:200
 #, c-format
 msgid "A Key needs to be a single character ( %s )"
 msgstr "Eine Taste muss ein einzelnes Zeichen sein (%s)"
 
-#: mu32/Errors.cpp:200
+#: mu32/Errors.cpp:201
 #, c-format
 msgid "Division by (nearly) 0 in line %d"
 msgstr "Division durch (fast) 0 in Zeile %d"
 
-#: mu32/Errors.cpp:209
+#: mu32/Errors.cpp:210
 #, c-format
 msgid "In retuning %s and %s : Bad parameters"
 msgstr "In der Umstimmung „%s“ und „%s“: Falsche Parameter"
 
-#: mu32/Errors.cpp:210
+#: mu32/Errors.cpp:211
 #, c-format
 msgid "In logic %s : Bad number of parameters ( %s )"
 msgstr "In der Logik „%s“: Falsche Parameteranzahl („%s“)"
 
-#: mu32/Errors.cpp:211
+#: mu32/Errors.cpp:212
 #, c-format
 msgid "In logik %s : initial tuning %s mustn't have parameters"
 msgstr "In Logik „%s“: Einstimmung „%s“ darf keine Parameter haben"
 
-#: mu32/Errors.cpp:212
+#: mu32/Errors.cpp:213
 #, c-format
 msgid "In collection %s : call to %s mustn't have parameters"
-msgstr "In der Mehrfach-Anweisung „%s“: „%s“ muss ohne Parameter aufgerufen werden"
+msgstr ""
+"In der Mehrfach-Anweisung „%s“: „%s“ muss ohne Parameter aufgerufen werden"
 
-#: mu32/Errors.cpp:213
+#: mu32/Errors.cpp:214
 #, c-format
 msgid "In case %s : call to %s mustn't have parameters"
 msgstr "Im Fall „%s“: „%s“ muss ohne Parameter aufgerufen werden"
 
-#: mu32/Errors.cpp:216
+#: mu32/Errors.cpp:217
 #, c-format
 msgid "Tones %s and %s are dependent"
-msgstr "Die Töne „%s“ und „%s“ hängen gegenseitig voneinander ab. Das darf nicht sein."
+msgstr ""
+"Die Töne „%s“ und „%s“ hängen gegenseitig voneinander ab. Das darf nicht "
+"sein."
 
-#: mu32/Errors.cpp:217
+#: mu32/Errors.cpp:218
 #, c-format
 msgid "Retunings/logics %s and %s are dependent"
 msgstr "Die Umstimmungen bzw. Logiken „%s“ und „%s“ hängen voneinander ab"
 
-#: mu32/Errors.cpp:218
+#: mu32/Errors.cpp:219
 #, c-format
 msgid "Intervals %s and %s are dependent"
 msgstr "Die Intervalle „%s“ und „%s“ hängen gegenseitig voneinander ab"
 
-#: mu32/Errors.cpp:219
+#: mu32/Errors.cpp:220
 msgid "MIDI-channels are dependent"
 msgstr "Die MIDI-Kanäle hängen voneinander ab"
 
-#: mu32/Errors.cpp:223
+#: mu32/Errors.cpp:224
 #, c-format
 msgid "Wrong character ! Expecting %s (line %d)"
 msgstr "Ungültiges Zeichen! Erwarte „%s“ (in Zeile %d)"
 
-#: mu32/Errors.cpp:224
+#: mu32/Errors.cpp:225
 #, c-format
 msgid "Bad interval declaration of intervall %s"
 msgstr "„Ungültige Intervall-Definition vom Intervall „%s“"
 
-#: mu32/Errors.cpp:225
+#: mu32/Errors.cpp:226
 #, c-format
 msgid "Bad tone declaration of tone %s"
 msgstr "Ungültige Tondefinition von „%s“"
 
-#: mu32/Errors.cpp:226
+#: mu32/Errors.cpp:227
 #, c-format
 msgid "Bad tonesystem declaration. (line %d)"
 msgstr "Ungültige Tonsystem-Definition. (Zeile %d)"
 
-#: mu32/Errors.cpp:227
+#: mu32/Errors.cpp:228
 #, c-format
 msgid "Bad parameter list in call to %s in line %d"
 msgstr "Fehlerhafte Parameter-Liste im Aufruf von „%s“ in Zeile %d"
 
-#: mu32/Errors.cpp:228
+#: mu32/Errors.cpp:229
 #, c-format
 msgid "Bad retuning in line %d"
 msgstr "Ungültige Umstimmung in Zeile %d"
 
-#: mu32/Errors.cpp:229
+#: mu32/Errors.cpp:230
 #, c-format
 msgid "bad pattern decl. at %s"
 msgstr "Ungültige Harmonieform-Definition bei „%s“"
 
-#: mu32/Errors.cpp:230
+#: mu32/Errors.cpp:231
 #, c-format
 msgid "Bad MIDI list in line %d"
 msgstr "Ungültige MIDI-Daten-Liste in Zeile %d"
 
-#: mu32/Errors.cpp:231
+#: mu32/Errors.cpp:232
 #, c-format
 msgid "No hex number after # (line %d)"
 msgstr "Fehlerhafte Hexadezimalzahl nach „#“ (Zeile %d)"
 
-#: mu32/Errors.cpp:238
+#: mu32/Errors.cpp:239
 msgid "Undefined compiler warning"
 msgstr "Undefinierte Übersetzer-Warnung"
 
-#: mu32/Errors.cpp:239
+#: mu32/Errors.cpp:240
 #, c-format
 msgid ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
-msgstr "Ein MIDI-Ereignis in der Logik „%s“ beginnt nicht mit einem Kanal-0-Statusbyte. Der Wert wurde korrigiert."
+msgstr ""
+"Ein MIDI-Ereignis in der Logik „%s“ beginnt nicht mit einem Kanal-0-"
+"Statusbyte. Der Wert wurde korrigiert."
 
-#: mu32/Errors.cpp:240
+#: mu32/Errors.cpp:241
 #, c-format
 msgid "Non existent harmony event in logic %s"
 msgstr "Unbekanntes Harmonieereignis in Logik „%s“"
 
-#: mu32/Errors.cpp:241
+#: mu32/Errors.cpp:242
 #, c-format
 msgid "Non well defined event %s in logic %s"
 msgstr "Unsauber definiertes Ereignis „%s“ in Logik „%s“"
 
-#: mu32/Errors.cpp:242
+#: mu32/Errors.cpp:243
 #, c-format
 msgid "Event ANSONSTEN is last in %s"
 msgstr "Das Ereignis „ANSONSTEN“ ist das letzte in „%s“"
 
-#: mu32/Errors.cpp:243
+#: mu32/Errors.cpp:244
 msgid "MIDI channels wasted in channel assotiation"
 msgstr "Es wurden bei der MIDI-Kanalzuordnung Kanäle verschwendet"
 
-#: mu32/Errors.cpp:244
+#: mu32/Errors.cpp:245
 msgid "No file given, trying test.mut"
 msgstr "Es wurde keine Datei angegeben. Versuche „test.mut“"
 
-#: mu32/Errors.cpp:245
+#: mu32/Errors.cpp:246
 msgid "Invalid configuration file"
 msgstr "Ungültige oder beschädigte Konfigurationsdatei"
 
-#: mu32/Errors.cpp:246
+#: mu32/Errors.cpp:247
 #, c-format
 msgid "Intersection of MIDI channels %d und %d"
 msgstr "Die MIDI-Kanäle %d und %d überschneiden sich"
 
-#: mu32/Errors.cpp:247
+#: mu32/Errors.cpp:248
 #, c-format
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Fehler in der GMN-Datei „%s“ an der Position (%d, %d): %s"
@@ -478,8 +484,8 @@ msgid "&Cancel"
 msgstr "A&bbruch"
 
 #: muwx/BoxDlg.cpp:155 muwx/InputDevDlg.cpp:173 muwx/InputFilterDlg.cpp:149
-#: muwx/MutApp.cpp:151 muwx/MutFrame.cpp:865 muwx/OutputDevDlg.cpp:193
-#: muwx/OutputFilterDlg.cpp:134
+#: muwx/MutApp.cpp:189 muwx/MutApp.cpp:249 muwx/MutFrame.cpp:867
+#: muwx/OutputDevDlg.cpp:193 muwx/OutputFilterDlg.cpp:134
 msgid "&Help"
 msgstr "&Hilfe"
 
@@ -501,7 +507,7 @@ msgstr "Zeile"
 
 #: muwx/CompDlg.cpp:117
 msgid "..."
-msgstr "..."
+msgstr "…"
 
 #: muwx/CompDlg.cpp:120
 msgid "Statistics"
@@ -642,159 +648,159 @@ msgstr "bis"
 msgid "Input Filter"
 msgstr "Eingabe-Filter"
 
-#: muwx/MutApp.cpp:97 muwx/MutFrame.cpp:811
+#: muwx/MutApp.cpp:195 muwx/MutFrame.cpp:813
 msgid "&New\tCtrl-N"
 msgstr "&Neu\tCtrl-N"
 
-#: muwx/MutApp.cpp:97 muwx/MutFrame.cpp:811
+#: muwx/MutApp.cpp:195 muwx/MutFrame.cpp:813
 msgid "Create a new child window"
 msgstr "Erzeuge ein neues Kindfenster"
 
-#: muwx/MutApp.cpp:98 muwx/MutFrame.cpp:812
+#: muwx/MutApp.cpp:196 muwx/MutFrame.cpp:814
 msgid "&Open...\tCtrl+O"
-msgstr "Ö&ffnen...\tStrg+O"
+msgstr "Ö&ffnen...\tCtrl+O"
 
-#: muwx/MutApp.cpp:99 muwx/MutFrame.cpp:813
+#: muwx/MutApp.cpp:197 muwx/MutFrame.cpp:815
 msgid "&Save\tCtrl+S"
-msgstr "&Speichern\tStrg+S"
+msgstr "&Speichern\tCtrl+S"
 
-#: muwx/MutApp.cpp:100 muwx/MutFrame.cpp:814
+#: muwx/MutApp.cpp:198 muwx/MutFrame.cpp:816
 msgid "Save &As...\tShift+Ctrl+S"
-msgstr "Speichern &unter...\tUmschalt+Strg+S"
+msgstr "Speichern &unter...\tShift+Ctrl+S"
 
-#: muwx/MutApp.cpp:102 muwx/MutFrame.cpp:816
+#: muwx/MutApp.cpp:200 muwx/MutFrame.cpp:818
 msgid "&Execute\tCtrl-F9"
-msgstr "S&tarten\tStrg-F9"
+msgstr "S&tarten\tCtrl-F9"
 
-#: muwx/MutApp.cpp:104 muwx/MutFrame.cpp:818
-msgid "O&ptions"
-msgstr "O&ptionen"
+#: muwx/MutApp.cpp:202
+msgid "&Preferences"
+msgstr "&Einstellungen"
 
-#: muwx/MutApp.cpp:106 muwx/MutFrame.cpp:820
+#: muwx/MutApp.cpp:204 muwx/MutFrame.cpp:822
 msgid "E&xit"
 msgstr "&Beenden"
 
-#: muwx/MutApp.cpp:106 muwx/MutFrame.cpp:820
+#: muwx/MutApp.cpp:204 muwx/MutFrame.cpp:822
 msgid "Quit the program"
 msgstr "Programm beenden"
 
-#: muwx/MutApp.cpp:107 muwx/MutFrame.cpp:821
+#: muwx/MutApp.cpp:205 muwx/MutFrame.cpp:823
 msgid "&File"
 msgstr "&Datei"
 
-#: muwx/MutApp.cpp:110 muwx/MutFrame.cpp:824
+#: muwx/MutApp.cpp:208 muwx/MutFrame.cpp:826
 msgid "&Compile\tAlt-F9"
 msgstr "&Übersetzen\tAlt-F9"
 
-#: muwx/MutApp.cpp:111 muwx/MutFrame.cpp:825
+#: muwx/MutApp.cpp:209 muwx/MutFrame.cpp:827
 msgid "&Activate\tF9"
 msgstr "&Aktivieren\tF9"
 
-#: muwx/MutApp.cpp:112 muwx/MutFrame.cpp:826
+#: muwx/MutApp.cpp:210 muwx/MutFrame.cpp:828
 msgid "&Stop\tF8"
 msgstr "An&halten\tF8"
 
-#: muwx/MutApp.cpp:114 muwx/MutFrame.cpp:828
+#: muwx/MutApp.cpp:212 muwx/MutFrame.cpp:830
 msgid "&Panic\tF12"
 msgstr "&Panik\tF12"
 
-#: muwx/MutApp.cpp:115 muwx/MutFrame.cpp:829
+#: muwx/MutApp.cpp:213 muwx/MutFrame.cpp:831
 msgid "&Logic"
 msgstr "&Logik"
 
-#: muwx/MutApp.cpp:118 muwx/MutFrame.cpp:832
+#: muwx/MutApp.cpp:216 muwx/MutFrame.cpp:834
 msgid "&Load routes"
 msgstr "Route laden"
 
-#: muwx/MutApp.cpp:119 muwx/MutFrame.cpp:833
+#: muwx/MutApp.cpp:217 muwx/MutFrame.cpp:835
 msgid "&Save routes"
 msgstr "Route &speichern"
 
-#: muwx/MutApp.cpp:120 muwx/MutFrame.cpp:834
+#: muwx/MutApp.cpp:218 muwx/MutFrame.cpp:836
 msgid "Save routes &as"
 msgstr "Speichere Routen &unter..."
 
-#: muwx/MutApp.cpp:121 muwx/MutFrame.cpp:835
+#: muwx/MutApp.cpp:219 muwx/MutFrame.cpp:837
 msgid "&Routes"
 msgstr "&Routen"
 
-#: muwx/MutApp.cpp:124 muwx/MutFrame.cpp:838
+#: muwx/MutApp.cpp:222 muwx/MutFrame.cpp:840
 msgid "&Status bar"
 msgstr "&Statuszeile"
 
-#: muwx/MutApp.cpp:125 muwx/MutFrame.cpp:839
+#: muwx/MutApp.cpp:223 muwx/MutFrame.cpp:841
 msgid "&Toolbar"
 msgstr "&Toolbar"
 
-#: muwx/MutApp.cpp:127 muwx/MutFrame.cpp:841
+#: muwx/MutApp.cpp:225 muwx/MutFrame.cpp:843
 msgid "&Routes\tF11"
 msgstr "&Routen\tF11"
 
-#: muwx/MutApp.cpp:129 muwx/MutFrame.cpp:843
+#: muwx/MutApp.cpp:227 muwx/MutFrame.cpp:845
 msgid "Current ke&ys\tF5"
 msgstr "Aktuelle &Tasten\tF5"
 
-#: muwx/MutApp.cpp:130 muwx/MutFrame.cpp:844
+#: muwx/MutApp.cpp:228 muwx/MutFrame.cpp:846
 msgid "&Tone system\tF6"
 msgstr "Ton&system\tF6"
 
-#: muwx/MutApp.cpp:131 muwx/MutFrame.cpp:845
+#: muwx/MutApp.cpp:229 muwx/MutFrame.cpp:847
 msgid "&Actions\tF7"
 msgstr "&Aktionen\tF7"
 
-#: muwx/MutApp.cpp:133 muwx/MutFrame.cpp:847
+#: muwx/MutApp.cpp:231 muwx/MutFrame.cpp:849
 msgid "&One window mode"
 msgstr "Nur &ein Fenster"
 
-#: muwx/MutApp.cpp:134 muwx/MutFrame.cpp:848
+#: muwx/MutApp.cpp:232 muwx/MutFrame.cpp:850
 msgid "One &common action window"
 msgstr "Ein &gemeinsames Aktionsfenster"
 
-#: muwx/MutApp.cpp:136 muwx/MutFrame.cpp:850
+#: muwx/MutApp.cpp:234 muwx/MutFrame.cpp:852
 msgid "Select &Box"
 msgstr "Kasten &Auswählen"
 
-#: muwx/MutApp.cpp:137 muwx/MutFrame.cpp:851
+#: muwx/MutApp.cpp:235 muwx/MutFrame.cpp:853
 msgid "&View"
 msgstr "&Anzeigen"
 
-#: muwx/MutApp.cpp:140 muwx/MutFrame.cpp:854
+#: muwx/MutApp.cpp:238 muwx/MutFrame.cpp:856
 msgid "&Play"
 msgstr "Ab&spielen"
 
-#: muwx/MutApp.cpp:141 muwx/MutFrame.cpp:855
+#: muwx/MutApp.cpp:239 muwx/MutFrame.cpp:857
 msgid "St&op"
 msgstr "St&op"
 
-#: muwx/MutApp.cpp:142 muwx/MutFrame.cpp:856
+#: muwx/MutApp.cpp:240 muwx/MutFrame.cpp:858
 msgid "P&ause"
 msgstr "&Pause"
 
-#: muwx/MutApp.cpp:143 muwx/MutFrame.cpp:857
+#: muwx/MutApp.cpp:241 muwx/MutFrame.cpp:859
 msgid "&Sequencer"
 msgstr "&Sequencer"
 
-#: muwx/MutApp.cpp:146 muwx/MutFrame.cpp:860
+#: muwx/MutApp.cpp:244 muwx/MutFrame.cpp:862
 msgid "&Index"
 msgstr "&Register"
 
-#: muwx/MutApp.cpp:147 muwx/MutFrame.cpp:861
+#: muwx/MutApp.cpp:245 muwx/MutFrame.cpp:863
 msgid "&Handbook"
 msgstr "&Handbuch"
 
-#: muwx/MutApp.cpp:148 muwx/MutFrame.cpp:862
+#: muwx/MutApp.cpp:246 muwx/MutFrame.cpp:864
 msgid "&Help on help"
 msgstr "H&ilfe über Hilfe"
 
-#: muwx/MutApp.cpp:150 muwx/MutFrame.cpp:864
+#: muwx/MutApp.cpp:248 muwx/MutFrame.cpp:866
 msgid "&About"
 msgstr "Ü&ber"
 
-#: muwx/MutEditFile.cpp:84 muwx/MutEditFile.cpp:118
+#: muwx/MutEditFile.cpp:87 muwx/MutEditFile.cpp:121
 msgid "Can't write temporary file."
 msgstr "Kann temporäre Datei nicht anlegen"
 
-#: muwx/MutEditFile.cpp:84 muwx/MutEditFile.cpp:118
+#: muwx/MutEditFile.cpp:87 muwx/MutEditFile.cpp:121
 msgid "Error"
 msgstr "Fehler"
 
@@ -872,7 +878,9 @@ msgstr "Welche Mutabor-Datei soll geladen werden?"
 msgid ""
 "Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All "
 "files (*.*)|*.*"
-msgstr "Mutabor-Datei (*.mut)|*.mut|Alte Mutabor-Datei (*.mus)|*.mus|Alle Dateien (*.*)|*.*"
+msgstr ""
+"Mutabor-Datei (*.mut)|*.mut|Alte Mutabor-Datei (*.mus)|*.mus|Alle Dateien (*."
+"*)|*.*"
 
 #: muwx/MutFrame.cpp:491
 msgid "There are no realtime instruments in the routes.\n"
@@ -882,19 +890,23 @@ msgstr "Es gibt keine Echtzeit-Instrumente in den Routen.\n"
 msgid "No realtime => batch mode?"
 msgstr "Keine Echtzeit => Stapelmodus?"
 
-#: muwx/MutFrame.cpp:1080
+#: muwx/MutFrame.cpp:820
+msgid "O&ptions"
+msgstr "O&ptionen"
+
+#: muwx/MutFrame.cpp:1082
 msgid "Could not find routes file."
 msgstr "Konnte die Routen-Datei nicht finden."
 
-#: muwx/MutFrame.cpp:1080
+#: muwx/MutFrame.cpp:1082
 msgid "Disk error"
 msgstr "Plattenfehler"
 
-#: muwx/MutFrame.cpp:1272
+#: muwx/MutFrame.cpp:1274
 msgid "Translation in batch mode completed. Output was generated."
 msgstr "Die Umwandlung im Stapelmodus wurde beendet und die Ausgabe generiert."
 
-#: muwx/MutFrame.cpp:1273
+#: muwx/MutFrame.cpp:1275
 msgid "Batch translation finished"
 msgstr "Stapelverarbeitung beendet"
 
