@@ -25,7 +25,6 @@ public:
 
 //    void OnSize(wxSizeEvent& event);
     void EventPassOn(wxCommandEvent& event);
-    void OnAbout(wxCommandEvent& event);
     void OnNewWindow(wxCommandEvent& event);
     void OnQuit(wxCommandEvent& event);
     void OnClose(wxCloseEvent& event);
