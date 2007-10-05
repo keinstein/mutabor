@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
+// Mutabor 3, 1998, R.Krau√üe
 // MIDI-File als Device
 // ------------------------------------------------------------------
 
@@ -11,9 +11,9 @@
 #include "Device.h"
 
 #ifdef WX
-  #include "mhArray.h"
- WX_DEFINE_ARRAY(BYTE, TBYTEBase1);
- DEF_MHARRAY(BYTE, TByteArray, TBYTEBase1);
+#include "mhArray.h"
+  WX_DEFINE_ARRAY_INT(BYTE, TBYTEBase1);
+  DEF_MHARRAY(BYTE, TByteArray, TBYTEBase1);
 #else
   #include <classlib/arrays.h>
   typedef TArray<BYTE> TByteArray;
@@ -61,7 +61,7 @@ typedef struct TAK1 {
 	int key;
 	int fine;
 	DWORD id;         // (channel << 24) +(Route->Id << 16) + (Box << 8) + Taste
-                    // zum Identifizieren f¸rs korrekte Ausschalten
+                    // zum Identifizieren f√ºrs korrekte Ausschalten
 } TonAufKanal1;
 
 // OutMidiFile ------------------------------------------------------
@@ -86,7 +86,7 @@ class OutMidiFile : public OutDevice
 	  virtual void NoteOff(int box, int taste, int velo, Route *r, int channel);
 	  virtual void NotesCorrect(int box);
 	  virtual void Sustain(char on, int channel);
- 	  virtual int  GetChannel(int taste) { return -1; } // hier kˆnnte man auch den richtigen Wett ausgeben, macht aber nixcht so viel Sinn
+ 	  virtual int  GetChannel(int taste) { return -1; } // hier kÀÜnnte man auch den richtigen Wett ausgeben, macht aber nixcht so viel Sinn
 	  virtual void Gis(GisToken *token, char turn) {};
 	  virtual void AddTime(frac time) {};
 	  virtual void MidiOut(DWORD data, char n);
