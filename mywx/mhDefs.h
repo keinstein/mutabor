@@ -39,5 +39,6 @@
 #ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
 #endif
+
 #endif
 
