@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
-SUBDIRS = missfunc intl po wxintl includes libmutabor .
+SUBDIRS = missfunc intl po wxintl includes . # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
 	@NETINET_INC@
@@ -17,9 +17,12 @@ bin_PROGRAMS = mutabor
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
-		muwx/MutEditFile.cpp muwx/MutFrame.cpp muwx/MutLogicWnd.cpp \
+		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
-		muwx/MutRouteWnd.cpp muwx/MutTextBox.cpp muwx/CompDlg.cpp muwx/Action.cpp \
+		muwx/MutLogicWnd.cpp \
+		muwx/MutRouteWnd.cpp  \
+		muwx/MutTextBox.cpp \
+		muwx/CompDlg.cpp muwx/Action.cpp \
 		muwx/InputDevDlg.cpp mu32/DevGIS.cpp mu32/Device.cpp mu32/DevMidF.cpp \
 		mu32/DevMidi.cpp mu32/EDevice.cpp mu32/Errors.cpp mu32/Execute.cpp \
 		mu32/Frac.cpp mu32/GrafKern.cpp mywx/valNum.cpp mu32/GIS_Head.cpp mu32/GIS.cpp \
@@ -39,7 +42,10 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
-mutabor_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
+
+#
+
+mutabor_LDFLAGS = $(LDFLAGS) $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CallFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
 mutabor_CFLAGS = $(mutabor_CallFLAGS)
 mutabor_CXXFLAGS = $(mutabor_CallFLAGS)
@@ -96,10 +102,28 @@ mutabor-cxxprecompiled.h:
 @COND_PRECOMP_CXX_TRUE@	echo '#ifdef HAVE_CONFIG_H' >>$@
 @COND_PRECOMP_CXX_TRUE@	echo '#include "config.h"' >>$@
 @COND_PRECOMP_CXX_TRUE@	echo '#endif' >>$@
-@COND_PRECOMP_CXX_TRUE@	ls $(mutabor_SOURCES) | \
-@COND_PRECOMP_CXX_TRUE@		sed '/\.r\?h$$/ ! d ; s/^\(.*\)$$/#include "\1"/' >>$@
+@COND_PRECOMP_CXX_TRUE@	for datei in $(mutabor_SOURCES) ; \
+@COND_PRECOMP_CXX_TRUE@	do  \
+@COND_PRECOMP_CXX_TRUE@		echo -n $$datei | $(EGREP) '\.r?h$$' && echo '#include "'"$$datei"'"' >>$@ ; \
+@COND_PRECOMP_CXX_TRUE@ done ; true
 @COND_PRECOMP_CXX_TRUE@	echo '#undef PRECOMPILE' >>$@
 
 
 @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
+
+Mutabor.app:all
+	mkdir -p Mutabor.app/Contents/MacOS
+	mkdir -p Mutabor.app/Contents/Resources
+	cp mutabor Mutabor.app/Contents/MacOS/Mutabor
+	cp osdep/macosx/Info.plist Mutabor.app/Contents
+	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	echo -n APPL???? >Mutabor.app/Contents/PkgInfo
+	for datei in $(top_srcdir)/po/*.gmo ; \ 
+	do \
+		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
+		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
+		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
+	done
+		
+	
