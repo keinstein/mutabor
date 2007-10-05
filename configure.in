@@ -41,11 +41,13 @@ AH_BOTTOM([
 #  define YYDEBUG 1
 #endif
 
+/*
 #ifdef MUST_REUSE
 #  define REUSE(x) x
 #else
 #  define REUSE(x)
 #endif
+*/
 
 #ifdef MUST_REUSE_C
 #  define REUSE_C(x) x
@@ -107,6 +109,12 @@ AS_IF(test -z "$PERL",
 	  please.
 ]))
 
+CXX_FOR_SCOPING
+AS_IF(test "$cxx_iso_for_loop_scope" = yes,
+  AC_DEFINE(REUSE(x), x, [Define if variables must be declared again in for loops]),
+  AC_DEFINE(REUSE(x), , [Define if variables must be declared again in for loops]))
+#./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
+  
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
 
@@ -114,43 +122,63 @@ case "$target_os" in
 
 dnl GNU/Linux on an Intel or compatible
 *linux*)
-PLATFORM=linux
+	PLATFORM=linux
 
-AM_PATH_ALSA(1.0.0,[
-	AC_DEFINE(__LINUX_ALSASEQ__,1,[Define to 1 for compiling with alsa sequencer support.])
-	],
-	[
-	AC_DEFINE_UNQUOTED(__LINUX_ALSASEQ__,1)
-	AC_MSG_ERROR([
-		ALSA headers or configuration not found. $PACKAGE depends on
-		a working MIDI configuration for your System.
+	AM_PATH_ALSA(1.0.0,[
+		AC_DEFINE(__LINUX_ALSASEQ__,1,[Define to 1 for compiling with alsa sequencer support.])
+		],
+		[
+		AC_DEFINE_UNQUOTED(__LINUX_ALSASEQ__,1)
+		AC_MSG_ERROR([
+			ALSA headers or configuration not found. $PACKAGE depends on
+			a working MIDI configuration for your System.
 
-		Simple non realtime batch conversion is not yet availlable.
+			Simple non realtime batch conversion is not yet availlable.
+		])
 	])
-])
 
-;;
+	;;
 
 darwin*)
-PLATFORM=macosx
-AC_DEFINE(__MACOSX_CORE__,1,[Define to 1 for compiling with MAC OSX CoreMIDI support.])
-;;
+	PLATFORM=macosx
+	AC_DEFINE(__MACOSX_CORE__,1,[Define to 1 for compiling with MAC OSX CoreMIDI support.])
+	LDFLAGS="$LDFLAGS  -framework Carbon -Wl,-Y,1455 -framework CoreAudio -framework CoreMIDI"
+	;;
 
-*winnt*|*interix*|cygwin*|mingw32*|uwin*)
-PLATFORM=windows
-AC_DEFINE(__WINDOWS_MM__,1,[Define to 1 for compiling with Windows MM system support.])
-ac_includes_default="$ac_includes_default 
-#include <windows.h>
-#include <mmsystem.h>
-"
-AC_LIB_WINMM([midiOutGetNumDevs])
-AC_LIBTOOL_RC
-dnl AC_LIBTOOL_LANG_RC_CONFIG
-AC_CHECK_HEADERS([winsock2.h])
-AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
-#include <winsock2.h>
-])
-;;
+*winnt*|*interix*|cygwin*|mingw*|uwin*)
+	PLATFORM=windows
+	AC_DEFINE(__WINDOWS_MM__,1,[Define to 1 for compiling with Windows MM system support.])
+	ac_includes_default="$ac_includes_default 
+	#include <windows.h>
+	#include <mmsystem.h>
+	"
+	AC_LIB_WINMM([midiOutGetNumDevs])
+	AC_LIBTOOL_RC
+	dnl AC_LIBTOOL_LANG_RC_CONFIG
+	AC_CHECK_HEADERS([winsock2.h])
+	AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
+	#include <winsock2.h>
+	])
+	
+	if test "$cross_compiling" = yes; then
+		case "$target_os" in 
+		mingw*|cygwin*)
+			AC_MSG_NOTICE([
+  Cross compiling for windows. Assuming you use a compiler
+  with gcc style malloc and realloc.
+            ])
+			ac_cv_func_malloc_0_nonnull=yes
+			ac_cv_func_realloc_0_nonnull=yes
+			;;
+		*)
+			AC_MSG_WARN([
+			Cross compiling for $target_os can not detect your 
+			compiler behavior. Please, contact the author and help
+			supplying needed information!
+			])
+		esac
+	fi
+	;;
 *)
 	AC_MSG_ERROR([
 		Your target system could not be recognized. $PACKAGE depends on
@@ -297,6 +325,7 @@ AC_CHECK_FUNC(strdup)
 
 AC_CONFIG_FILES([Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile intl/libgnuintl.h po/Makefile.in wxintl/Makefile intl/Makefile])
 AC_CONFIG_FILES([missfunc/Makefile])
+AC_CONFIG_FILES([osdep/macosx/Info.plist])
 AC_OUTPUT
 
 
