@@ -1,3 +1,8 @@
+#ifndef MU32_HILFS_H
+#define MU32_HILFS_H 
+
+#include <cstdio>
+
 #define HEAP_PORTION_SYNTAX   /*65536L*/ 64000
 #define HEAP_PORTION_LAUFZEIT /*65536L*/ 64000
 
@@ -21,6 +26,6 @@ int loesche_laufzeit_speicher ( void );
 void * xalloca (size_t size);
 void xde_alloca (void * pointer);
 
-
+#endif /* MU32_HILFS_H */
 
 
