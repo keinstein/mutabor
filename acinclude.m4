@@ -158,13 +158,16 @@ m4_define([AX_COMPILER_PCH_CXX_],
   cat >conftest.h <<_ACEOF
 #define pchtest 1
 _ACEOF
-  AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS $CPPFLAGS -Winvalid-pch conftest.h >&AS_MESSAGE_LOG_FD)],[
+  AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS -xc++-header $CPPFLAGS -Winvalid-pch conftest.h >&AS_MESSAGE_LOG_FD)],[
     rm -f conftest.h
-    AC_LANG_CONFTEST([AC_LANG_PROGRAM([],[])])
+    AC_LANG_CONFTEST([AC_LANG_PROGRAM([
+#include "conftest.h"
+],[])])
     rm -f conftest.o conftest.obj
     ls conftest.*
-    AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS $CPPFLAGS -Winvalid-pch -include conftest.h conftest.cc)],
+    AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS $CPPFLAGS -Winvalid-pch -include conftest.h conftest.$ac_ext)],
     [ac_cv_cxx_header_precompile="yes"
+		ls conftest.*
       for ac_file in ` ( ls conftest.h.gch conftest.h.* ; ls conftest.* )` ; do
         case $ac_file in
           _AC_COMPILER_PCHEXT_REJECT ) ;;
@@ -199,7 +202,7 @@ m4_define([AX_COMPILER_PCH_CXX],
 	[AX_COMPILER_PCH_CXX_])
   fi
 
-  AM_CONDITIONAL(COND_PRECOMP_CXX,test "$ac_cv_cxx_header_precompile"="yes")
+  AM_CONDITIONAL(COND_PRECOMP_CXX,test "$ac_cv_cxx_header_precompile" = "yes")
   rm -f conftest.$ac_ext conftest.$ac_objext conftest.$ac_cv_cxx_pchext
   AC_SUBST([PCHEXT_CXX], [$ac_cv_cxx_pchext])dnl
   ac_cxx_pchext=$PCHEXT_CXX
