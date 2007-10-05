@@ -555,7 +555,7 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 void MutLogicWnd::CmBox()
 {
 	// Titel setzen
-	GetParent()->SetTitle(wxString::Format(_T("Logic: %s - Box %d"), CompiledFile.c_str(), PARENT_BOX));
+	GetParent()->SetName(wxString::Format(_T("Logic: %s - Box %d"), CompiledFile.c_str(), PARENT_BOX));
 	// Tags updaten
 	UpDate(0, true);
 }
