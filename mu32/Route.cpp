@@ -5,6 +5,8 @@
 
 // TRouteWin --------------------------------------------------------
 
+#ifndef WX
+
 #include <owl/pch.h>
 #include <owl/radiobut.H>
 #include <owl/combobox.H>
@@ -13,7 +15,7 @@
 #include <owl/scroller.h>
 #include <owl/validate.h>
 #include <winsys/color.h>
-
+#endif
 
 #include <stdio.h>
 #include "Runtime.h"
