@@ -2,12 +2,17 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.7 2006/01/18 15:37:02 keinstein Exp $
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2006/01/18 15:37:02 $
- * \version $Revision: 1.7 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.8 2007/10/05 12:41:44 keinstein Exp $
+ * \author RÃ¼diger KrauÃŸe <krausze@mail.berlios.de>
+ * \date $Date: 2007/10/05 12:41:44 $
+ * \version $Revision: 1.8 $
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.8  2007/10/05 12:41:44  keinstein
+ * first steps towards a real mac version:
+ *  - move OnAbout to MutApp
+ *  - set ext on frame delete on Quitting, so that program quits too
+ *
  * Revision 1.7  2006/01/18 15:37:02  keinstein
  * no MDI Windows in some environments
  *
@@ -18,10 +23,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutFrame.cpp
 // Purpose:     Mutabor Frame
-// Author:      R. Krauße
+// Author:      R. KrauÃŸe
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +82,7 @@
 #include "MutChild.h"
 #include "MutEditFile.h"
 #include "Mutabor.rh"
+#include "MutApp.h"
 
 #include "Defs.h"
 #include "mhDefs.h"
@@ -182,7 +188,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxMDIParentFrame)
 	EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
 	EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
 
-	EVT_MENU(CM_ABOUT, MutFrame::OnAbout)
+//	EVT_MENU(CM_ABOUT, MutApp::OnAbout)
 //    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
     EVT_MENU(CM_EXIT, MutFrame::OnQuit)
 
@@ -267,18 +273,10 @@ void MutFrame::OnClose(wxCloseEvent& event)
 
 void MutFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
+	wxGetApp().SetExitOnFrameDelete(true);
     Close();
 }
 
-void MutFrame::OnAbout(wxCommandEvent& WXUNUSED(event) )
-{
-  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
-				      mumT(PACKAGE_STRING),
-				      _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
-				      _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
-				      mumT(PACKAGE)),
-		     wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
-}
 
 void MutFrame::OnNewWindow(wxCommandEvent& WXUNUSED(event) )
 {
@@ -405,13 +403,17 @@ void MutFrame::CmFileOpen(wxCommandEvent& WXUNUSED(event))
 {
     static wxString s_extDef;
     wxString path = wxFileSelector(
-                                    _("Which Mutabor-file shall be loaded?"),
-                                    _T(""), _T(""),
-                                    s_extDef,
-                                    _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
-                                    /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
-                                    this
-                                   );
+		_("Which Mutabor-file shall be loaded?"),
+        _T(""), _T(""),
+        s_extDef,
+        _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
+#ifdef __WXCOCOA__
+		0,
+#else
+        /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
+#endif
+        this
+	);
 
     if ( !path )
         return;
@@ -480,7 +482,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 {
 	if ( !Compiled )
 		return;
-	// Routen Übermitteln
+	// Routen â€¹bermitteln
 	WriteRoutes(RouteConfig);
 	ScanDevices(RouteConfig);
 	AktionTraceReset();
@@ -517,12 +519,12 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 			}
 	}
 	SetAktuellesKeyboardInstrument(curBox);
-	// WinAttrs säubern
+	// WinAttrs sâ€°ubern
 	for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
 		for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
 			if ( !BoxUsed[WinAttrs[kind][i].Box] )
 				WinAttrs[kind].RemoveAt(i);
-	// Fenster außer curBox setzen
+	// Fenster auï¬‚er curBox setzen
 	if ( !OWM )
 		for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
 			for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
@@ -540,12 +542,14 @@ void MutFrame::CmDoActivate(wxCommandEvent& WXUNUSED(event))
 	ControlBar->LayoutSession();*/
 	// Statusbar
 	SetStatus(SG_LOGIC);
-	for (REUSE(WinKind) kind = WK_KEY; kind <= WK_ACT; kind++)
-		if ( TextBoxWanted[(int)kind] )
+	for (REUSE(WinKind) kind = WK_KEY; kind <= WK_ACT; kind++) 
+	{
+		if ( TextBoxWanted[(size_t)kind] )
 			TextBoxOpen(kind, curBox);
 		else
 			DontWant(kind, curBox);
-	// Überschrift in MutWin setzen
+	}
+	// Ãœberschrift in MutWin setzen
 	wxFileName s(CompiledFile);
 	SetTitle(wxString::Format(_T("%s - %s"), APPNAME, s.GetName().c_str()));
 	Get(WK_LOGIC, curBox)->Win->SetFocus();
@@ -568,7 +572,7 @@ void MutFrame::CmStop(wxCommandEvent& event)
 //		StatusBar->SetText("");
 		// Titel
 		SetTitle(APPNAME);
-		// alle Fenser schließen
+		// alle Fenser schlieï¬‚en
 		for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
 			CloseAll(kind);
 		AktionTraceReset();
@@ -721,11 +725,11 @@ void MutFrame::CmToggleCAW(wxCommandEvent& WXUNUSED(event))
   CAW = !CAW;
   if ( !LogicOn )
     return;
-  // ActWin für curBox updaten
+  // ActWin fÂ¸r curBox updaten
   WinAttr *WinAttr = Get(WK_ACT, curBox);
   if ( WinAttr && WinAttr->Win )
     ((MutTextBox*)WinAttr->Win)->NewText(CAW ? GenerateCAWString() : GenerateACTString(curBox), 1);
-  // andere Action-Fenster schließen bzw. öffnen
+  // andere Action-Fenster schlieï¬‚en bzw. Ë†ffnen
   if ( CAW )
   {
     for (size_t i = 0; i < WinAttrs[WK_ACT].Count(); i++)
@@ -903,7 +907,7 @@ void MutFrame::WindowSize(MutChild *win)
 	{
 		int w, h;
 		GetClientSize(&w, &h);
-		// Fenstergröße eines Editwindows ermitteln
+		// FenstergrË†ï¬‚e eines Editwindows ermitteln
 		int w1 = w * 4 / 5, h1 = h * 2 / 3;
         if ( subSize.GetWidth() != 0 )
 		{
@@ -1105,7 +1109,7 @@ void MutFrame::RestoreState()
   	 MainWindow->Show(SW_SHOW);*/
 }
 
-// Recorder-Knöpfe --------------------------------------------------
+// Recorder-KnË†pfe --------------------------------------------------
 
 void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
 {
