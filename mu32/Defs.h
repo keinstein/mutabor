@@ -1,3 +1,9 @@
+// prevent double inclusion
+
+#ifndef	MU32_DEFS_H
+#define MU32_DEFS_H
+
+
 // definitions
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -39,5 +45,6 @@
   #define STD_PRE
 #endif
 
+#endif /* MU32_DEFS_H */
 
 
