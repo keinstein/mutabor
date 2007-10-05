@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        OutputDevDlg.cpp
 // Purpose:     
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by: 
 // Created:     10/19/05 12:10:52
 // RCS-ID:      
-// Copyright:   (c) R. Krauße, TU Dresden
+// Copyright:   (c) R. Krauï¬‚e, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
@@ -279,7 +279,12 @@ void OutputDevDlg::OnButton2Click( wxCommandEvent& event )
 	if ( !ctrlMidiFile->GetValue().empty() )
 		OldFileName = ctrlMidiFile->GetValue();
     wxString NewFileName = wxFileSelector(_("Select Midi-File file"),
-		_T(""), OldFileName, _T(""), _("Midi-file (*.mid*)|*.mid*|All files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+		_T(""), OldFileName, _T(""), _("Midi-file (*.mid*)|*.mid*|All files (*.*)|*.*"), 
+#ifdef __WXCOCOA__
+		0);
+#else
+		wxOPEN | wxFILE_MUST_EXIST);
+#endif
     if ( !NewFileName.empty() )
 		ctrlMidiFile->SetValue(NewFileName);
     event.Skip();
@@ -295,7 +300,12 @@ void OutputDevDlg::OnButton3Click( wxCommandEvent& event )
 	if ( !ctrlMidiFile->GetValue().empty() )
 		OldFileName = ctrlMidiFile->GetValue();
     wxString NewFileName = wxFileSelector(_("Select Midi-File file"),
-		_T(""), OldFileName, _T(""), _("GUIDO-file (*.gmn)|*.gmn|All files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+		_T(""), OldFileName, _T(""), _("GUIDO-file (*.gmn)|*.gmn|All files (*.*)|*.*"), 
+#ifdef __WXCOCOA__
+        0);
+#else
+		wxOPEN | wxFILE_MUST_EXIST);
+#endif
     if ( !NewFileName.empty() )
 		ctrlMidiFile->SetValue(NewFileName);
     event.Skip();
