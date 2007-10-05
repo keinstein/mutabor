@@ -17,10 +17,10 @@ char *Error_text[] =
 /* 0 */ "Undefinierter Fehler in %s   Zeile %d !", /* allgemeinster Fehler */
 
 /* Datei- und Systemfehler */
-/* 1 */ "Syntaktischer Fehler, nicht näher spezifiziert. (Zeile %d)" ,
-		"Ungültiges Zeichen im Quelltext: asc=%d (Zeile %d)",
-		"Kann Datei nicht öffnen: %s",
-		"Speichermangel oder zu wenig Daten für Mutabor in Quelldatei.",
+/* 1 */ "Syntaktischer Fehler, nicht nâ€°her spezifiziert. (Zeile %d)" ,
+		"UngÂ¸ltiges Zeichen im Quelltext: asc=%d (Zeile %d)",
+		"Kann Datei nicht Ë†ffnen: %s",
+		"Speichermangel oder zu wenig Daten fÂ¸r Mutabor in Quelldatei.",
 		"Kommentar am Dateiende nicht abgeschlossen.",
 		" ",
 		" ",
@@ -37,8 +37,8 @@ char *Error_text[] =
          "(unbenutzt)",
          "Der Parametername %s wurde doppelt benutzt",
          "Das MIDI-Instrument %d wurde doppelt benutzt",
-         "Überlappungsfehler bei der MIDI-Zuordnung: Kanal %d wurde doppelt benutzt",
-         "Mehr als ein ANSONSTEN-Auslöser in Logik %s",
+         "â€¹berlappungsfehler bei der MIDI-Zuordnung: Kanal %d wurde doppelt benutzt",
+         "Mehr als ein ANSONSTEN-AuslË†ser in Logik %s",
          "Mehr als ein ANSONSTEN in Umstimmung %s",
          "Die Alternative %d ist doppelt in %s",
          " ",
@@ -66,15 +66,15 @@ char *Error_text[] =
          " ",
          " ",
 
-/* Bereichsüber- bzw. unterschreitungen */
-/* 45 */ "MIDI-Kanal ungültig (zulässig: 1 bis 16)",
-         "Unzulässiger Wert von Intervall %s",
-         "Taste %d liegt außerhalb des Wertebereichs 24..108 (in Tonsystem %s)",
+/* BereichsÂ¸ber- bzw. unterschreitungen */
+/* 45 */ "MIDI-Kanal ungÂ¸ltig (zulâ€°ssig: 1 bis 16)",
+         "Unzulâ€°ssiger Wert von Intervall %s",
+         "Taste %d liegt auï¬‚erhalb des Wertebereichs 24..108 (in Tonsystem %s)",
          "In Umstimmung %s ist der Ton %s nicht komplex",
-         "Unzulässiger Wert in %s", /* (allgemein) */
-         "Unzulässiger MIDI-Code in Logik %s (erwarte %s)",
+         "Unzulâ€°ssiger Wert in %s", /* (allgemein) */
+         "Unzulâ€°ssiger MIDI-Code in Logik %s (erwarte %s)",
          "Logik %s darf nicht mit ANSONSTEN aufgerufen werden",
-         "Als Taste eines Auslösers wurde kein einzelner Buchstabe angegeben TASTE %s",
+         "Als Taste eines AuslË†sers wurde kein einzelner Buchstabe angegeben TASTE %s",
          "Division durch (fast) 0 in Zeile %d",
 			   " ",
          " ",
@@ -90,11 +90,11 @@ char *Error_text[] =
 			"in Umstimmungsbund %s ist der Aufruf %s nicht parameterlos",
          "in Umstimmungs_case %s ist der Aufruf %s nicht parameterlos",
 
-/* Abhängigkeiten */
-/* 65 */ "Die Töne %s und %s hängen gegenseitig voneinander ab",
- "Die Umstimmungen/Logiken %s und %s hängen gegenseitig voneinander ab",
-         "Die Intervalle %s und %s hängen gegenseitig voneinander ab",
-         "Die MIDI-Kanäle hängen gegenseitig voneinander ab",
+/* Abhâ€°ngigkeiten */
+/* 65 */ "Die TË†ne %s und %s hâ€°ngen gegenseitig voneinander ab",
+ "Die Umstimmungen/Logiken %s und %s hâ€°ngen gegenseitig voneinander ab",
+         "Die Intervalle %s und %s hâ€°ngen gegenseitig voneinander ab",
+         "Die MIDI-Kanâ€°le hâ€°ngen gegenseitig voneinander ab",
          " ",
 
 /* Syntaxfehler (vom BISON-Parser aufgerufen) */
@@ -102,9 +102,9 @@ char *Error_text[] =
          "Fehlerhafte Intervall- deklaration in Intervall %s.",
          "Fehlerhafte Tondeklaration von Ton %s.",
          "Fehlerhafte Tonsystem- deklaration. (Zeile %d)",
-         "Ungültige Pameterliste in Zeile %d",
-         "Ungültige Umstimmung in Zeile %d",
-         "Ungültige Harmoniedekl. bei %s",
+         "UngÂ¸ltige Pameterliste in Zeile %d",
+         "UngÂ¸ltige Umstimmung in Zeile %d",
+         "UngÂ¸ltige Harmoniedekl. bei %s",
          "Fehlerhafte MIDI-Liste in Zeile %d",
          "Nach einem # folgt keine Hex-Ziffer (Zeile %d)",
 /* 79 */ "Deklaration erwartet. (Zeile %d)",
@@ -117,15 +117,15 @@ char *Error_text[] =
 char * Warning_text[] =
 {
 /*  0 */ "Undefinierte Compilerwarnung",
-         "MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0- Statusbyte. "
+         "MIDI-AuslË†ser in Logik %s beginnt nicht mit Kanal 0- Statusbyte. "
                  "Wert wurde korrigiert!",
-         "Unmöglicher Harmonieauslöser in Logik %s",
-         "Mehrdeutiger Auslöser %s in Logik %s",
-         "Auslöser ANSONSTEN ist nicht der letzte in Logik %s",
+         "UnmË†glicher HarmonieauslË†ser in Logik %s",
+         "Mehrdeutiger AuslË†ser %s in Logik %s",
+         "AuslË†ser ANSONSTEN ist nicht der letzte in Logik %s",
 /*  5 */ "Verschwendung bei der Kanalzuordnung",
 			"Keine Datei angegeben, versuche TEST.MUS",
          "Konfigurationsdatei fehlerhaft",
-         "Echte Überschneidung bei der MIDI-Zuordnung: Kanäle %d und %d",
+         "Echte â€¹berschneidung bei der MIDI-Zuordnung: Kanâ€°le %d und %d",
        "Fehler in GMN-Datei %s Position(%d, %d): %s"
          };
 
@@ -188,8 +188,9 @@ STR Error_text[] =
 		N_(" "),
 		N_(" "),
 
-/* Bereichsüber- bzw. unterschreitungen */
-/* 45 */ N_("Bad MIDI-Channel (valid: 1 .. 16)"),
+/* Range violations */
+/* 45 */ 
+        N_("Bad MIDI channel (valid: 1...16)"),
 		N_("Bad interval value in %s"),
 		N_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
 		N_("Not-complex tone in retuning %s ( %s )"),
@@ -212,7 +213,7 @@ STR Error_text[] =
 		N_("In collection %s : call to %s mustn't have parameters"),
 		N_("In case %s : call to %s mustn't have parameters"),
 
-/* Abhängigkeiten */
+/* Dependencies */
 /* 65 */ N_("Tones %s and %s are dependent"),
 		N_("Retunings/logics %s and %s are dependent"),
 		N_("Intervals %s and %s are dependent"),
