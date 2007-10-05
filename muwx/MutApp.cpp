@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutApp.cpp
 // Purpose:     Mutabor Application
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -70,7 +70,7 @@ IMPLEMENT_APP(MutApp)
 bool MutApp::OnInit()
 {
   // initialize the languages
-      long lng = -1;
+      long lng = wxLANGUAGE_DEFAULT;
 
     if ( argc == 2 )
     {
@@ -157,11 +157,118 @@ bool MutApp::OnInit()
     }
 #endif
 
-  
-    // Create the main frame window
+/* TODO: Implement common behaviour for Mac OS   
+  wxMenuBar *menubar = new wxMenuBar;
+  // add open, new, etc options to your menubar.
 
-    frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
-                        wxDefaultPosition, wxSize(500, 400),
+*/
+#if defined(__WXMAC__)
+// || defined(__WXCOCOA__)
+    // Make a common menubar
+
+    wxApp::SetExitOnFrameDelete(false);
+
+	wxApp::s_macAboutMenuItemId = CM_ABOUT;
+	wxApp::s_macPreferencesMenuItemId = CM_SETUP;
+	wxApp::s_macExitMenuItemId = CM_EXIT;
+	wxApp::s_macHelpMenuTitleName = _("&Help");
+
+    wxMenuBar *menuBar = new wxMenuBar;
+	wxMenu *menu;
+	OPENMENU;
+	MENUITEM(_("&New\tCtrl-N"), CM_FILENEW, _("Create a new child window"));
+	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, wxT(""));
+	MENUITEM_SEPARATOR;
+	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
+	MENUITEM_SEPARATOR;
+	MENUITEM(_("&Preferences"), CM_SETUP, wxT(""));
+	MENUITEM(_T("E&xit"), CM_EXIT, _("Quit the program"));
+	CLOSEMENU(_("&File"));
+
+	OPENMENU;
+	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
+	CLOSEMENU(_("&Routes"));
+
+	OPENMENU;
+	MENUITEM(_("&Routes\tF11"), CM_ROUTES, wxT(""));
+	CLOSEMENU(_("&View"));
+
+	OPENMENU;
+	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
+	MENUITEM(_("&Handbook"), CM_HELPHANDBOOK, wxT(""));
+	MENUITEM(_("&Help on help"), CM_HELPONHELP, wxT(""));
+	MENUITEM_SEPARATOR;
+	MENUITEM(_("&About"), CM_ABOUT, wxT(""));
+	CLOSEMENU(_("&Help"));
+	
+	wxMenuBar::MacSetCommonMenuBar(menuBar);
+#endif
+
+
+    frame = CreateMainFrame();
+    SetTopWindow(frame);
+
+	((MutFrame*)frame)->RestoreState();
+
+	MidiInit();
+
+    return true;
+}
+
+
+void MutApp::OnAbout (wxCommandEvent& event)
+{
+  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
+				      mumT(PACKAGE_STRING),
+				      _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
+				      _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
+				      mumT(PACKAGE)),
+		     wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
+}
+
+
+BEGIN_EVENT_TABLE(MutApp, wxApp)
+/*    EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
+    EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
+    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
+    EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
+    EVT_MENU(CM_STOP, MutFrame::CmStop)
+	EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
+	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
+    
+	EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
+
+	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
+	EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
+	EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
+	EVT_MENU(CM_OWM, MutFrame::CmToggleOWM)
+	EVT_MENU(CM_CAW, MutFrame::CmToggleCAW)
+	EVT_UPDATE_UI(CM_TOGGLEKEY, MutFrame::CeToggleKey)
+	EVT_UPDATE_UI(CM_TOGGLETS, MutFrame::CeToggleTS)
+	EVT_UPDATE_UI(CM_TOGGLEACT, MutFrame::CeToggleAct)
+	EVT_UPDATE_UI(CM_OWM, MutFrame::CeToggleOWM)
+	EVT_UPDATE_UI(CM_CAW, MutFrame::CeToggleCAW)
+	
+	EVT_MENU(CM_INDEVSTOP, MutFrame::CmInDevStop)
+	EVT_MENU(CM_INDEVPLAY, MutFrame::CmInDevPlay)
+	EVT_MENU(CM_INDEVPAUSE, MutFrame::CmInDevPause)
+	EVT_UPDATE_UI(CM_INDEVSTOP, MutFrame::CeInDevStop)
+	EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
+	EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
+
+*/	EVT_MENU(CM_ABOUT, MutApp::OnAbout)
+//    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
+/*    EVT_MENU(CM_EXIT, MutFrame::OnQuit)
+
+    EVT_CLOSE(MutFrame::OnClose)
+    EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
+*/	EVT_IDLE(MutFrame::OnIdle) 
+//    EVT_SIZE(MutFrame::OnSize)
+END_EVENT_TABLE()
+
+MutFrame* MutApp::CreateMainFrame() {
+	MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
+                        wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
                         wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
 #ifdef __WXMSW__
 #if 0
@@ -180,6 +287,7 @@ bool MutApp::OnInit()
 #endif
 
     // Make a menubar
+
     wxMenuBar *menuBar = new wxMenuBar;
 	wxMenu *menu;
 	OPENMENU;
@@ -190,9 +298,13 @@ bool MutApp::OnInit()
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("O&ptions"), CM_SETUP, wxT(""));
+	MENUITEM(_("&Preferences"), CM_SETUP, wxT(""));
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("E&xit"), CM_EXIT, _("Quit the program"));
+#else
+	MENUITEM(_T("E&xit"), CM_EXIT, _("Quit the program"));
+#endif
 	CLOSEMENU(_("&File"));
 
 	OPENMENU;
@@ -247,12 +359,6 @@ bool MutApp::OnInit()
 #endif // wxUSE_STATUSBAR
 
     frame->Show(true);
-
-    SetTopWindow(frame);
-
-	((MutFrame*)frame)->RestoreState();
-
-	MidiInit();
-
-    return true;
+	
+	return frame;
 }
