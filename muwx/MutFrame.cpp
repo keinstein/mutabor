@@ -2,12 +2,15 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.8 2007/10/05 12:41:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.9 2007/10/08 12:21:50 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2007/10/05 12:41:44 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2007/10/08 12:21:50 $
+ * \version $Revision: 1.9 $
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.9  2007/10/08 12:21:50  keinstein
+ * Moved major Handling of file opening and new file to MutApp event handler.
+ *
  * Revision 1.8  2007/10/05 12:41:44  keinstein
  * first steps towards a real mac version:
  *  - move OnAbout to MutApp
@@ -160,8 +163,8 @@ char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEW
 // ---------------------------------------------------------------------------
 
 BEGIN_EVENT_TABLE(MutFrame, wxMDIParentFrame)
-    EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
-    EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
+//    EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
+//    EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
     EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
@@ -190,7 +193,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxMDIParentFrame)
 
 //	EVT_MENU(CM_ABOUT, MutApp::OnAbout)
 //    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
-    EVT_MENU(CM_EXIT, MutFrame::OnQuit)
+//    EVT_MENU(CM_EXIT, MutFrame::OnQuit)
 
     EVT_CLOSE(MutFrame::OnClose)
     EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
@@ -267,16 +270,21 @@ void MutFrame::OnClose(wxCloseEvent& event)
         }
     }
   */
+	wxGetApp().UnregisterFrame(this);
     SaveState();
     event.Skip();
 }
 
+
+// TODO: Currently unused; to be deleted.
 void MutFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
-	wxGetApp().SetExitOnFrameDelete(true);
-    Close();
+/*	wxApp &application=wxGetApp();
+	wxWindow * window
+	application.SetExitOnFrameDelete(true);
+	application.SetTopWindow(this);
+*/    Close();
 }
-
 
 void MutFrame::OnNewWindow(wxCommandEvent& WXUNUSED(event) )
 {
@@ -396,6 +404,9 @@ void MutFrame::InitToolBar(wxToolBar* toolBar)
 
 void MutFrame::CmFileNew(wxCommandEvent& WXUNUSED(event))
 {
+#ifdef DEBUG
+	printf("MutFrame::CmFileNew\n");
+#endif
 	OpenFile(wxEmptyString);
 }
 
@@ -437,6 +448,7 @@ void MutFrame::OpenFile(wxString path)
 		!path ? _T("noname.mut") : wxFileName(path).GetFullName());
     int width, height;
     subframe->GetClientSize(&width, &height);
+	
 #ifdef MDI_FORCE_EXTERN
 #if wxUSE_TOOLBAR
     subframe->CreateToolBar(wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
@@ -450,6 +462,7 @@ void MutFrame::OpenFile(wxString path)
 #endif // wxUSE_TOOLBAR
     */
 #endif
+
     MutEditFile *client = new MutEditFile(subframe, wxPoint(0, 0), wxSize(width, height));
 	if (!(!path))
 		client->LoadFile(path);
