@@ -69,6 +69,8 @@ IMPLEMENT_APP(MutApp)
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
+
+	quitting = false;
   // initialize the languages
       long lng = wxLANGUAGE_DEFAULT;
 
@@ -180,11 +182,11 @@ bool MutApp::OnInit()
 	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, wxT(""));
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
-	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Preferences"), CM_SETUP, wxT(""));
 	MENUITEM(_T("E&xit"), CM_EXIT, _("Quit the program"));
 	CLOSEMENU(_("&File"));
 
+/*
 	OPENMENU;
 	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
 	CLOSEMENU(_("&Routes"));
@@ -192,6 +194,7 @@ bool MutApp::OnInit()
 	OPENMENU;
 	MENUITEM(_("&Routes\tF11"), CM_ROUTES, wxT(""));
 	CLOSEMENU(_("&View"));
+*/
 
 	OPENMENU;
 	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
@@ -216,7 +219,7 @@ bool MutApp::OnInit()
 }
 
 
-void MutApp::OnAbout (wxCommandEvent& event)
+void MutApp::CmAbout (wxCommandEvent& event)
 {
   (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
 				      mumT(PACKAGE_STRING),
@@ -228,9 +231,9 @@ void MutApp::OnAbout (wxCommandEvent& event)
 
 
 BEGIN_EVENT_TABLE(MutApp, wxApp)
-/*    EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
-    EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
-    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
+    EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
+    EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
+/*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
 	EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
@@ -256,11 +259,11 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
 	EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
 
-*/	EVT_MENU(CM_ABOUT, MutApp::OnAbout)
+*/	EVT_MENU(CM_ABOUT, MutApp::CmAbout)
 //    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
-/*    EVT_MENU(CM_EXIT, MutFrame::OnQuit)
+    EVT_MENU(CM_EXIT, MutApp::CmQuit)
 
-    EVT_CLOSE(MutFrame::OnClose)
+/*    EVT_CLOSE(MutFrame::OnClose)
     EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
 */	EVT_IDLE(MutFrame::OnIdle) 
 //    EVT_SIZE(MutFrame::OnSize)
@@ -297,7 +300,9 @@ MutFrame* MutApp::CreateMainFrame() {
 	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, wxT(""));
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
+#endif
 	MENUITEM(_("&Preferences"), CM_SETUP, wxT(""));
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
@@ -314,6 +319,7 @@ MutFrame* MutApp::CreateMainFrame() {
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Panic\tF12"), CM_PANIC, wxT(""));
 	CLOSEMENU(_("&Logic"));
+
 
 	OPENMENU;
 	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
@@ -347,7 +353,9 @@ MutFrame* MutApp::CreateMainFrame() {
 	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
 	MENUITEM(_("&Handbook"), CM_HELPHANDBOOK, wxT(""));
 	MENUITEM(_("&Help on help"), CM_HELPONHELP, wxT(""));
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
+#endif
 	MENUITEM(_("&About"), CM_ABOUT, wxT(""));
 	CLOSEMENU(_("&Help"));
 
@@ -360,5 +368,75 @@ MutFrame* MutApp::CreateMainFrame() {
 
     frame->Show(true);
 	
+	RegisterFrame(frame);
+	
 	return frame;
+}
+
+void MutApp::CmFileNew (wxCommandEvent& event) {
+#ifdef DEBUG
+	printf("MutApp::CmFileNew\n");
+#endif
+
+	frame = CreateMainFrame();
+	SetTopWindow(frame);
+	frame->CmFileNew(event);
+}
+
+
+void MutApp::CmFileOpen (wxCommandEvent& event) {
+	frame = CreateMainFrame();
+	SetTopWindow(frame);
+	frame->CmFileOpen(event);
+}
+
+void MutApp::CmQuit (wxCommandEvent& event) {
+#ifdef DEBUG
+	printf("MutApp::CmQuit\n");
+#endif
+	quitting = true;
+
+	if (frames.empty()) {
+#ifdef DEBUG
+		printf("MutApp::CmQuit: No Frames.\n");
+#endif
+		quitting = false;
+		return;
+	}
+	
+	wxFrame * frame;
+	FrameHash::iterator it;
+
+	SetExitOnFrameDelete(true);
+
+#ifdef DEBUG
+	printf("MutApp::CmQuit: Starting Loop\n");
+#endif
+
+    for( it = frames.begin(); !frames.empty(); it = frames.begin() )
+    {
+        frame	= it->second;
+		
+#ifdef DEBUG
+		printf("MutApp::CmQuit: Trying to delete Frame %x/%x\n",frame,frame);
+#endif
+
+		if (frame) {
+			SetTopWindow(frame);
+			if (!frame -> Close()) {
+				// the frame vetoed.
+				event.Skip();
+				quitting = false;
+				return;
+			}
+		}
+    }
+}
+
+void MutApp::RegisterFrame (wxFrame * f) {
+	frames[f] = f;
+}
+
+void MutApp::UnregisterFrame (wxFrame * f) {
+	frames.erase(f);
 }
