@@ -2,12 +2,16 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.9 2007/10/08 12:21:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.10 2007/10/09 14:56:13 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2007/10/08 12:21:50 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2007/10/09 14:56:13 $
+ * \version $Revision: 1.10 $
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.10  2007/10/09 14:56:13  keinstein
+ * MutFrame::DetermineFrameSize: New Function.
+ * MutFrame::MutFrame: Automagic Frame size detection.
+ *
  * Revision 1.9  2007/10/08 12:21:50  keinstein
  * Moved major Handling of file opening and new file to MutApp event handler.
  *
@@ -219,10 +223,16 @@ MutFrame::MutFrame(wxWindow *parent,
        : wxMDIParentFrame(parent, id, title, pos, size,
                           style | wxNO_FULL_REPAINT_ON_RESIZE)
 {
+	    SetSize (DetermineFrameSize ());
+
+
+
 #if wxUSE_TOOLBAR
     CreateToolBar(wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
     InitToolBar(GetToolBar());
 #endif // wxUSE_TOOLBAR
+
+
 
     // Accelerators
 /*    wxAcceleratorEntry entries[3];
@@ -1361,3 +1371,27 @@ TMutaborApp::CmRouteSaveAs()
   }
 }
 */
+
+wxRect MutFrame::DetermineFrameSize () {
+
+    wxSize scr = wxGetDisplaySize();
+
+    // determine default frame position/size
+    wxRect normal;
+    if (scr.x <= 640) {
+        normal.x = 40 / 2;
+        normal.width = scr.x - 40;
+    }else{
+        normal.x = (scr.x - 640) / 2;
+        normal.width = 640;
+    }
+    if (scr.y <= 480) {
+        normal.y = 80 / 2;
+        normal.height = scr.y - 80;
+    }else{
+        normal.y = (scr.y - 400) / 2;
+        normal.height = 400;
+    }
+
+    return normal;
+}

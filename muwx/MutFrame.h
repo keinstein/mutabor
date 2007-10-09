@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutFrame.h
 // Purpose:     Mutabor Frame
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,8 @@ class MutFrame : public wxMDIParentFrame
 {
 public:
     MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
-            const wxPoint& pos, const wxSize& size, const long style);
+            const wxPoint& pos, const wxSize& size,
+			 const long style);
 
     void InitToolBar(wxToolBar* toolBar);
 
@@ -53,7 +54,7 @@ public:
     void CeToggleOWM(wxUpdateUIEvent& event);
     void CeToggleCAW(wxUpdateUIEvent& event);
 
-    // Recorder-Knöpfe
+    // Recorder-KnË†pfe
 	void CmInDevStop(wxCommandEvent& WXUNUSED(event));
 	void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
 	void CmInDevPause(wxCommandEvent& WXUNUSED(event));
@@ -80,8 +81,13 @@ public:
     {
       //StatusGadget->SelectImage(curStatusImg = imgNr, true);
     }
+	
+	wxRect DetermineFrameSize ();
   private:
     int curStatusImg;
+
+	//wxAuiManager m_mgr;
+
 
 
     DECLARE_EVENT_TABLE()
