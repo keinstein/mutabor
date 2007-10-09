@@ -2,12 +2,16 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.6 2007/10/08 12:15:51 keinstein Exp $
+ * $Id: MutApp.h,v 1.7 2007/10/09 14:57:49 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2007/10/08 12:15:51 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2007/10/09 14:57:49 $
+ * \version $Revision: 1.7 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.7  2007/10/09 14:57:49  keinstein
+ * AppAbout: New class.
+ * MutApp::CmAbout: Use AppAbout for displaying about window.
+ *
  * Revision 1.6  2007/10/08 12:15:51  keinstein
  * Move FileNew and FileOpen from MutFrame to MutApp
  * Enable multiple main windows
@@ -64,6 +68,7 @@ WX_DECLARE_HASH_MAP( wxFrame *,      // type of the keys
 // Define a new application
 class MutApp : public wxApp
 {
+	friend class AppAbout;
  public:
     bool OnInit();
 	void CmAbout (wxCommandEvent& event);
@@ -80,6 +85,14 @@ class MutApp : public wxApp
 	FrameHash frames;
 	bool quitting;
 };
+
+
+class AppAbout : public wxDialog
+{
+	public:
+		AppAbout (wxWindow *parent=(wxWindow *) NULL, long style = 0);
+};
+
 
 DECLARE_APP(MutApp)
 

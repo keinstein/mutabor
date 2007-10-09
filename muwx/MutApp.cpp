@@ -22,6 +22,9 @@
 #ifndef WX_PRECOMP
     #include "wx/wx.h"
 //    #include "wx/mdi.h"
+	#include "wx/stdpaths.h"
+	#include "wx/filename.h"
+	#include "wx/imagpng.h"
 #endif
 
 //#include "wx/toolbar.h"
@@ -137,6 +140,7 @@ bool MutApp::OnInit()
     if ( lng != -1 )
         m_locale.Init(langIds[lng]);
 
+	// TODO: Check this!
     // normally this wouldn't be necessary as the catalog files would be found
     // in the default locations, but under Windows then the program is not
     // installed the catalogs are in the parent directory (because the binary
@@ -159,11 +163,10 @@ bool MutApp::OnInit()
     }
 #endif
 
-/* TODO: Implement common behaviour for Mac OS   
-  wxMenuBar *menubar = new wxMenuBar;
-  // add open, new, etc options to your menubar.
+	// We are using .png files for some extra bitmaps.
+	wxImageHandler * pnghandler = new wxPNGHandler;
+	wxImage::AddHandler(pnghandler);
 
-*/
 #if defined(__WXMAC__)
 // || defined(__WXCOCOA__)
     // Make a common menubar
@@ -221,12 +224,97 @@ bool MutApp::OnInit()
 
 void MutApp::CmAbout (wxCommandEvent& event)
 {
+
+/*
   (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
 				      mumT(PACKAGE_STRING),
 				      _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
 				      _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
 				      mumT(PACKAGE)),
 		     wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
+*/
+	AppAbout * about;
+	about = new AppAbout((wxFrame *) NULL);
+	about->Destroy();
+}
+
+
+AppAbout::AppAbout (wxWindow *parent, long style)
+        : wxDialog (parent, -1, wxEmptyString,
+                    wxDefaultPosition, wxDefaultSize,
+                    wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER) {
+					
+	// setup path
+	wxStandardPathsBase &path = wxStandardPaths::Get();
+	
+
+    // sets the application icon
+    SetTitle (_("About ..."));
+
+    // about info
+    wxGridSizer *aboutinfo = new wxGridSizer (2, 3, 3);
+    aboutinfo->Add (new wxStaticText(this, -1, _("Version: ")));
+    aboutinfo->Add (new wxStaticText(this, -1, PACKAGE_VERSION));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Written by: ")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Volker Abel")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Peter Reiss")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Ruediger Krausze <krausze@mail.berlios.de>")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Ruediger Krausze <krausze@mail.berlios.de>")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
+    aboutinfo->Add (new wxStaticText(this, -1, _T("Tobias Schlemmer <keinstein@mail.berlios.de>")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical modelling:")));
+    aboutinfo->Add (new wxStaticText(this, -1, "Rudolf Wille"));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Licence type: ")));
+    aboutinfo->Add (new wxStaticText(this, -1, "GPL"));
+    aboutinfo->Add (new wxStaticText(this, -1, _("wxWidgets: ")));
+    aboutinfo->Add (new wxStaticText(this, -1, wxVERSION_STRING));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Copyright: ")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("(c) 2007 TU Dresden, Institut fuer Algebra")));
+
+    // about title/info
+    wxBoxSizer *abouttext = new wxBoxSizer (wxVERTICAL);
+//    wxStaticText *appname = new wxStaticText (this, -1, g_appname);
+	wxStaticText * appname = new wxStaticText (this, -1, mumT(PACKAGE_NAME));
+    appname->SetFont (wxFont (10, wxDEFAULT, wxNORMAL, wxBOLD));
+    abouttext->Add (appname, 0, wxALIGN_LEFT);
+    abouttext->Add (0, 10);
+    abouttext->Add (aboutinfo, 1, wxEXPAND);
+
+    // about icontitle//info
+    wxBoxSizer *aboutpane = new wxBoxSizer (wxHORIZONTAL);
+//    wxBitmap bitmap = wxBitmap(wxICON (mutabor));
+std::cout << wxFileName(path.GetResourcesDir(),"about","png").GetFullPath() << std::endl;
+	wxBitmap bitmap = wxBitmap(wxFileName(path.GetResourcesDir(),"about","png").GetFullPath(),
+							wxBITMAP_TYPE_PNG);
+    aboutpane->Add (new wxStaticBitmap (this, -1, bitmap),
+                    0, wxALIGN_LEFT);
+    aboutpane->Add (10, 0);
+    aboutpane->Add (abouttext, 1, wxEXPAND);
+
+    // about complete
+    wxBoxSizer *totalpane = new wxBoxSizer (wxVERTICAL);
+    totalpane->Add (aboutpane, 0, wxEXPAND | wxALL, 10);
+    totalpane->Add (new wxStaticText(this, -1, _("Mutabor tuning")),
+                    0, wxALIGN_CENTER | wxLEFT | wxRIGHT, 10);
+    totalpane->Add (0, 6);
+//    myHyperLink *website = new myHyperLink (this, -1, APP_WEBSITE);
+//    wxString url = APP_WEBSITE;
+//    url.Append ("/indexedit.html");
+//    website->SetURL (url);
+//    totalpane->Add (website, 0, wxALIGN_CENTER);
+//	totalpane->Add (new wxStaticLine(this, -1), 0, wxEXPAND | wxALL, 10);
+	wxButton *okButton = new wxButton (this, wxID_OK, _("OK"));
+    okButton->SetDefault();
+    totalpane->Add (okButton, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM, 10);
+
+    SetSizerAndFit (totalpane);
+
+    ShowModal();
 }
 
 
