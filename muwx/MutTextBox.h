@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutTextBox.h
 // Purpose:     Textbox for Lists
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     01.09.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -18,6 +18,7 @@ class MutTextBox : public wxListBox {
   public:
 	MutTextBox(wxWindow* parent = NULL, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
 	void NewText(char *s, bool newTitle = false);
+	void NewText(wxString s, bool newTitle = false);
 //    TControl *ColorBar1, *ColorBar2;
 	int ColorBox;
 	void OnClose(wxCloseEvent& event);
