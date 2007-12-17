@@ -49,7 +49,7 @@ class Track
       Data->Add(c1);
       Data->Add(c2);
     }
-    void Save(STD_PRE::ofstream &os);
+    void Save(mutOFstream &os);
     void Add(BYTE c)
     {
       Data->Add(c);
@@ -69,13 +69,12 @@ typedef struct TAK1 {
 class OutMidiFile : public OutDevice
 {
   public:
-    char *Name;
+    wxString Name;
     int DevId;
     int bending_range;
-    OutMidiFile(char *name, int devId, int bendingRange = 1)
-	  : OutDevice()
+    OutMidiFile(wxString name, int devId, int bendingRange = 1)
+	  : OutDevice(),Name(name)
 	  {
-      Name = strdup(name);
 	    DevId = devId;
       bending_range = bendingRange;
 	  }
@@ -92,7 +91,7 @@ class OutMidiFile : public OutDevice
 	  virtual void MidiOut(DWORD data, char n);
 	  virtual void MidiOut(BYTE *p, char n);
     virtual void Quite(Route *r);
-	  virtual char* GetName() { return Name; }
+	  virtual wxString &GetName() { return Name; }
 	  virtual DevType GetType() const { return DTMidiFile; }
   protected:
     Track Tracks;
@@ -107,12 +106,11 @@ class OutMidiFile : public OutDevice
 class InMidiFile : public InDevice
 {
   public:
-    char Name[180];
+    wxString Name;
     int DevId;
-	  InMidiFile(char *name, int devId)
-	  : InDevice()
+	  InMidiFile(wxString name, int devId)
+	  : InDevice(),Name(name)
 	  {
-      strcpy(Name, name);
 	    DevId = devId;
 	  }
 	  virtual bool Open();
@@ -123,7 +121,7 @@ class InMidiFile : public InDevice
 //	   void Proceed(GisReadArtHead *h, char turn, Route *route) {};
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};
 	  virtual frac ReadOn(frac time) { return frac(0, 1); }
-	  virtual char* GetName() { return Name; }
+	  virtual wxString & GetName() { return Name; }
 	  virtual DevType GetType() const { return DTMidiFile; }
     void IncDelta();
   protected:

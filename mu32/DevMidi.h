@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.Krauï¬‚e
 // MidiPort Klassen
 // ------------------------------------------------------------------
 
@@ -23,19 +23,18 @@ typedef struct TAK {
   int taste;
 	int key;
 	DWORD id;         // (channel << 24) + (Route->Id << 16) + (Box << 8) + Taste
-                    // zum Identifizieren fürs korrekte Ausschalten
+                    // zum Identifizieren fÂ¸rs korrekte Ausschalten
 } TonAufKanal;
 
 class OutMidiPort : public OutDevice
 {
   public:
-    char *Name;
+    wxString Name;
     int DevId;
     int bending_range;
-	  OutMidiPort(char *name, int devId, int bendingRange = 1)
-	  : OutDevice()
+	  OutMidiPort(wxString name, int devId, int bendingRange = 1)
+	  : OutDevice(),Name(name)
 	  {
-      Name = strdup(name);
 	    DevId = devId;
       bending_range = bendingRange;
 	  }
@@ -54,7 +53,7 @@ class OutMidiPort : public OutDevice
     virtual void Quite(Route *r);
     virtual void Panic();
     virtual bool NeedsRealTime() { return true; }
-	  virtual char* GetName() { return Name; }
+	  virtual wxString & GetName() { return Name; }
 	  virtual DevType GetType() const { return DTMidiPort; }
   private:
 #ifdef RTMIDI
@@ -73,16 +72,31 @@ class OutMidiPort : public OutDevice
 class InMidiPort : public InDevice
 {
   public:
+#ifdef WX
+    wxString Name;
+#else
     char *Name;
+#endif
+
     int DevId;
     InMidiPort *NextMidiPort;
+	
+#ifdef WX 
+	  InMidiPort(wxString name, int devId)
+	  : InDevice(),Name(name)
+	  {
+	    DevId = devId;
+		NextMidiPort = 0;
+	  }
+#else
 	  InMidiPort(char *name, int devId)
 	  : InDevice()
 	  {
-      Name = strdup(name);
+        Name = strdup(name);
 	    DevId = devId;
-      NextMidiPort = 0;
+		NextMidiPort = 0;
 	  }
+#endif
 	  virtual bool Open();
 	  virtual void Close();
 	  virtual void Stop() {};
@@ -92,7 +106,7 @@ class InMidiPort : public InDevice
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};
 	  virtual frac ReadOn(frac time) { return frac(0,0); };
     virtual bool NeedsRealTime() { return true; }
-	  virtual char* GetName() { return Name; }
+	  virtual wxString &GetName() { return Name; }
 	  virtual DevType GetType() const { return DTMidiPort; }
 #ifdef RTMIDI
     RtMidiIn *hMidiIn;

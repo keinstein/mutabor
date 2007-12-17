@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.Krauï¬‚e
 // Devices Basisklassen
 // ------------------------------------------------------------------
 
@@ -20,6 +20,7 @@ extern char InDevChanged;
 
 // Device Typen
 enum DevType { DTNotSet = -1, DTUnknown, DTMidiPort, DTMidiFile, DTGis };
+#define DeviceMaxType DTGis
 
 // channel data -----------------------------------------------------
 
@@ -116,22 +117,22 @@ class OutDevice
     {
       if ( Next ) delete Next;
     }
-	  virtual bool Open() = 0;
-	  virtual void Close() = 0;
-	  virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd) = 0;
-	  virtual void NoteOff(int box, int taste, int velo, Route *r, int channel) = 0;
-	  virtual void NotesCorrect(int box) = 0;
-	  virtual void Sustain(char on, int channel) = 0;
-	  virtual int  GetChannel(int taste) = 0;
-	  virtual void Gis(GisToken *token, char turn) = 0;
-	  virtual void AddTime(frac time) = 0;
-	  virtual void MidiOut(DWORD data, char n) = 0;
-	  virtual void MidiOut(BYTE *p, char n) = 0;
+	virtual bool Open() = 0;
+	virtual void Close() = 0;
+	virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd) = 0;
+	virtual void NoteOff(int box, int taste, int velo, Route *r, int channel) = 0;
+	virtual void NotesCorrect(int box) = 0;
+	virtual void Sustain(char on, int channel) = 0;
+	virtual int  GetChannel(int taste) = 0;
+	virtual void Gis(GisToken *token, char turn) = 0;
+	virtual void AddTime(frac time) = 0;
+	virtual void MidiOut(DWORD data, char n) = 0;
+	virtual void MidiOut(BYTE *p, char n) = 0;
     virtual void Quite(Route *r) = 0;
     virtual void Panic() {};
     virtual bool NeedsRealTime() { return false; }
-	  virtual char* GetName() = 0;
-	  virtual DevType GetType() const { return DTUnknown; }
+	virtual wxString &GetName() = 0;
+	virtual DevType GetType() const { return DTUnknown; }
 };
 
 // Input devices ----------------------------------------------------
@@ -168,7 +169,7 @@ class InDevice
 	  void AddRoute(Route *route);
     void Quite(); // all Routes quite
     virtual bool NeedsRealTime() { return false; }
-	  virtual char* GetName() = 0;
+	  virtual wxString &  GetName() = 0;
 	  virtual DevType GetType() const { return DTUnknown; }
 };
 

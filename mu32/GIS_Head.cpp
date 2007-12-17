@@ -31,16 +31,20 @@ char GetMidiInstrument(GisToken *token)
 {
   if ( token && GetGisType(token) == GTParaStr )
   {
-   char t[30];
-   strncpy(t, ((GisParaStr*)token)->s, 30);
+   mutString t;
 #if defined(WX) 
-   for (int i = 0; i<30 && t[i] ; i++)
-	   t[i]=toupper(t[i]);
+	long value;
+	t=(((GisParaStr*)token)->s).Upper();
+	if (t.IsSameAs(mutT("MIDI"),false)) {
+		t.Mid(4).ToLong(&value);
+		return (char) value;
+	}
 #else
+   strncpy(t, ((GisParaStr*)token)->s, 30);
    strupr(t);
-#endif
    if ( !strncmp(t, "MIDI", 4) )
 	   return atoi(&t[4]);
+#endif
   }
   return 0;
 }
@@ -50,8 +54,7 @@ int GetTheSpeedFactor(GisToken *token)
 {
   if ( token && GetGisType(token) == GTParaStr )
   {
-   char t[30];
-   strncpy(t, ((GisParaStr*)token)->s, 30);
+	mutString &t = ((GisParaStr*) token) -> s;
    int i = 0;
    long n=0, d=0, bpm=0;
    while ( !ZIFFER && t[i] )
@@ -116,14 +119,18 @@ void GisReadHead::CreateSegmentSubs()
 {
   GisSegment *Seg = (GisSegment*)Cursor;
   GisToken *Cont = Seg->Contents;
+#ifdef WX
+  mutString id = Id + mutT("*");
+#else
   char *id = (char*)malloc(strlen(Id)+2);
   strcpy(id, Id);
   strcat(id, "*");
+#endif
   nSub = 0;
   while ( Cont ) // create the single token subs
   {
 	 nSub++;
-	 id[strlen(Id)] = nSub;
+	 id[mutLen(Id)] = nSub;
 	 GisReadHead *Sub = Build(this, Cont, id, 1);
 	 Cont = Cont->Next;
 	 while ( Cont ) // read until end or comma
@@ -142,9 +149,12 @@ void GisReadHead::CreateSegmentSubs()
 void GisReadHead::CreateSequenzSubs()
 {
   GisSegment *Seq = (GisSegment*)Cursor;
+  mutString id = Id + mutT("\x01");
+#if 0
   char *id = (char*)malloc(strlen(Id)+2);
   strcpy(id, Id);
   strcat(id, "\x01");
+#endif
   nSub = 1;
   GisReadHead *Sub = Build(this, Seq->Contents, id);
 }
@@ -457,6 +467,8 @@ frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proc
 #define NOTE1 ((GisNote*)note1)
 #define NOTE2 ((GisNote*)note2)
 
+
+#if 0
 char StrCmp(const char *s1, const char *s2)
 {
   if ( s1 )
@@ -468,6 +480,12 @@ char StrCmp(const char *s1, const char *s2)
   }
   else
 	 return s2 != 0;
+}
+#endif
+
+int StrCmp(const mutString &s1, const mutString &s2)
+{
+	return s1.Cmp(s2);
 }
 
 int CmpNote(GisToken *note1, GisToken *note2)
@@ -494,7 +512,7 @@ ChordNote::ChordNote(ChordNote *first) // not the first ChordNote
   Cursor = &Data;
   TotalTime = Boss->TotalTime;
   if ( TotalTime.n )
-	 AddGis(new GisNote("_", 0, 0, TotalTime, " ", 0));
+	 AddGis(new GisNote(mutT("_"), mutEmptyString, 0, TotalTime, mutT(" "), 0));
   CurrentTime = 0;
   Boss->ChordPos = Boss->Cursor;
   Status =0;
@@ -550,15 +568,22 @@ void ChordNote::CheckCloseAlter()
 {
   if ( Status & CNAlter )
   {
-	 char *s = 0;
-	 char **Sep = LastSep;
+	 mutString s = mutEmptyString;
+	 mutString *Sep = LastSep;
 	 if ( !LastSep ) Sep = &s;
 	 AddGis(new GisTagEnd((GisTagBegin*)*AlterBegin, *Sep));
+	 if ( Sep )
+	 {
+		delete(Sep);
+		Sep = 0;
+	 }
+#if 0
 	 if ( *Sep )
 	 {
 		free(*Sep);
 		*Sep = 0;
 	 }
+#endif
 	 Status -= CNAlter;
 	 Pitch = 0;
   }
@@ -571,23 +596,23 @@ void ChordNote::CheckCloseTie()
 	 // close alter
 	 CheckCloseAlter();
 	 // insert begin range
-	 *TieBegin = new GisTagBegin(TTtie, 0, 0, "(", *TieBegin);
+	 *TieBegin = new GisTagBegin(TTtie, 0, 0, mutT("("), *TieBegin);
 	 // add end range
-	 char *s = 0;
-	 char **Sep = LastSep;
+	 mutString s = mutEmptyString;
+	 mutString *Sep = LastSep;
 	 if ( !LastSep ) Sep = &s;
 	 AddGis(new GisTagEnd((GisTagBegin*)*TieBegin, *Sep));
-	 if ( *Sep )
+	 if ( Sep )
 	 {
-		free(*Sep);
-		*Sep = 0;
+		delete(Sep);
+		Sep = 0;
 	 }
   }
   TieBegin = Cursor;
   nTie = 0;
 }
 
-int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, char *sep)
+int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, mutString sep)
 {
   if ( Status & CNNoteOn )
   	return 1;
@@ -595,7 +620,7 @@ int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, char *se
   {
 	 CheckCloseAlter();
 	 AlterBegin = Cursor;
-	 AddGis(new GisTagBegin(TTalter, 0, new GisParaReal(pitch, ">("), "<", 0));
+	 AddGis(new GisTagBegin(TTalter, 0, new GisParaReal(pitch, mutT(">(")), mutT("<"), 0));
 	 Status |= CNAlter;
 	 Pitch = pitch;
   }
@@ -690,7 +715,7 @@ ChordNote *GisWriteHead::GetFreeNote()
 	 if ( !((*ANote)->Status & CNNoteOn) )
 	 {
 		if ( (*ANote)->CurrentTime.n )
-		  (*ANote)->AddGis(new GisNote("_", 0, 0, (*ANote)->CurrentTime, " ", 0));
+		  (*ANote)->AddGis(new GisNote(mutT("_"), mutEmptyString, 0, (*ANote)->CurrentTime, mutT(" "), 0));
 		return *ANote;
 	 }
 	 ANote = &(*ANote)->Next;
@@ -716,7 +741,7 @@ ChordNote *GisWriteHead::GetNote(int instrId, int taste)
 // prepare for taking over by boss
 int GisWriteHead::ReadyForBoss()
 {
-  CloseCurrentToken(0); //+ zu hart: bei Unknown muß keine Note eingefügt werden (zumindest nur beim ersten
+  CloseCurrentToken(0); //+ zu hart: bei Unknown muï¬‚ keine Note eingefÂ¸gt werden (zumindest nur beim ersten
   // put in Sequenz, when single token mode
 #ifdef GMN_STRICT
   if ( SingleToken && Data && &Data->Next != Cursor && Data->Type() != GTSequenz )
@@ -787,7 +812,7 @@ int GisWriteHead::CloseSubs(GisToken **cont)
 		Cont = h->Cursor;
 	 if ( nSub > 1 && !h->CommaAtEnd )
 	 {
-		*Cont = new GisComma(" ", 0);
+		*Cont = new GisComma(mutT(" "), 0);
 		Cont = &((*Cont)->Next);
 	 }
 	 nSub--;
@@ -811,7 +836,7 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
 	 case GTNull:
 		if ( insertRest && CurrentTime.n ) // write a rest
 		{
-		  *Cursor = new GisNote("_", "", 0, CurrentTime, " ");
+		  *Cursor = new GisNote(mutT("_"), mutT(""), 0, CurrentTime, mutT(" "));
 		  Cursor = &((*Cursor)->Next);
 		  CurrentTime = 0;
 		}
@@ -838,7 +863,7 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
 		((GisNote*)(*Cursor))->Duration = CurrentTime;
 		Cursor = &(*Cursor)->Next;
 		CurrentTime = frac(0, 1);
-		// das hier muß anders sein, um mehrere Noten gleichzeitig zu schaffen
+		// das hier muï¬‚ anders sein, um mehrere Noten gleichzeitig zu schaffen
 		break;  */
 	 case GTParaInt:
 		return 1; // impossible
@@ -998,7 +1023,7 @@ void GisWriteHead::AddTime(frac dTime)
 // procedures with GisWriteHead
 
 // search the header with the matching Id
-GisWriteHead *GetMatchingHeader(GisWriteHead **head, char *id)
+GisWriteHead *GetMatchingHeader(GisWriteHead **head, const mutString id)
 {
   GisWriteHead *h = *head, *LastHead = 0;
   GisWriteHead *Boss = 0;
@@ -1007,12 +1032,22 @@ GisWriteHead *GetMatchingHeader(GisWriteHead **head, char *id)
   // search header
   while ( h )
   {
+  
+#ifdef WX
+	 if ( (id.StartsWith(h->Id)) && (mutLen(h->Id) > BossIdLength) )
+	 {
+		Boss = h; BossIdLength = mutLen(h->Id);
+	 }
+	 CmpRes = mutStrCmp(h->Id, id);
+	 if ( CmpRes >= 0 ) break;
+#else
 	 if ( !strncmp(h->Id, id, strlen(h->Id)) && ((int)strlen(h->Id) > BossIdLength) )
 	 {
 		Boss = h; BossIdLength = strlen(h->Id);
 	 }
 	 CmpRes = strcmp(h->Id, id);
 	 if ( CmpRes >= 0 ) break;
+#endif
 	 LastHead = h;
 	 h = h->Next;
   }
@@ -1033,7 +1068,7 @@ GisWriteHead *GetMatchingHeader(GisWriteHead **head, char *id)
 }
 
 // write from a GisToken
-int GisWriteHeadGis(GisWriteHead **head,  char *id, GisToken *token, char turn)
+int GisWriteHeadGis(GisWriteHead **head,  mutString id, GisToken *token, char turn)
 {
   return GetMatchingHeader(head, id)->ProceedGis(token, turn);
 }
@@ -1065,10 +1100,10 @@ void CloseAllSubs(GisWriteHead *head)
 	 {
 		if ( Boss->Data && !Boss->CommaAtEnd )
 		{
-		  *Boss->Cursor = new GisComma(" ", 0);
+		  *Boss->Cursor = new GisComma(mutT(" "), 0);
 		  Boss->Cursor = &((*Boss->Cursor)->Next);
 		}
-		Boss->Data = new GisSegment(Boss->Data, " ", 0);
+		Boss->Data = new GisSegment(Boss->Data, mutT(" "), 0);
 		GisToken **Cont = Boss->Cursor;
 		if ( Boss->Cursor == &Boss->Data )
 		  Cont = 0;

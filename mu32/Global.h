@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
+// Mutabor 2.win, 1997, R.KrauÔ¨Çe
 // Globale Defiitionen der DLL
 // ------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ struct intervall {
     struct intervall *next;
 };
 
-/*********  Definition der Tîne als verkettete Liste ********/
+/*********  Definition der T√Æne als verkettete Liste ********/
 /*********  Der Komplexanteil ist eine Folge von Intervallen,
             die zum Grundton addiert werden.  ***********/
 
@@ -134,9 +134,9 @@ struct ton {
 };
 
 /*********  Definition der Tonsysteme als verkettete Liste ********/
-/********   Ein Tonsystem enthÑlt eine Liste mit den enthaltenen
-            Tînen. Der Name eines Tons ist (NULL) wenn dieser Ton
-            nicht gÅltig ist, ansonsten der Name des Tons.
+/********   Ein Tonsystem enth√ëlt eine Liste mit den enthaltenen
+            T√Ænen. Der Name eines Tons ist (NULL) wenn dieser Ton
+            nicht g√Öltig ist, ansonsten der Name des Tons.
 *******/
 
 
@@ -319,7 +319,7 @@ int yylex();
 void yyerror(char *);
 int yyparse ();
 
-void mutabor_programm_einlesen (const char * filename) ;
+void mutabor_programm_einlesen (const wxChar * filename) ;
 void mutabor_tabellen_generator (void);
 void mutabor_codegenerator(char * filename);
 void write_kompletten_code (FILE * zieldatei);

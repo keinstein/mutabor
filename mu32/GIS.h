@@ -7,7 +7,7 @@
 
 #include "Defs.h"
 
-// Stream und cout unterdrücken
+// Stream und cout unterdrÂ¸cken
 #define FOR_MUTWIN
 
 #ifndef FOR_MUTWIN
@@ -18,19 +18,23 @@
 #include <stdlib.h>
 #include "Frac.h"
 
+#ifdef WX
+#define CHECKDUP(target, source) target = source;
+#else
 #define CHECKDUP(target, source) \
   if ( source )	               \
-	 target = strdup(source);     \
+	 target = mutStrdup(source);     \
   else                           \
 	 target = 0
+#endif
 
 // regisered tags ---------------------------------------------------
 
 #define NTAGS 52
 #define NTAGSHORTS 6
 
-extern char *Tags[NTAGS];
-extern char *TagShorts[NTAGSHORTS];
+extern mutString Tags[NTAGS];
+extern mutString TagShorts[NTAGSHORTS];
 
 #define TTintens   1
 #define TTslur     2
@@ -51,35 +55,47 @@ extern char *TagShorts[NTAGSHORTS];
 
 // ------------------------------------------------------------------
 
-int GetTagId(const char *name, char **registered);
+int GetTagId(const mutString name, mutString &registered);
 
 // ##################################################################
 // GIS types
 
-enum GisType { GTNull, GTUnknown, GTSequenz, GTSegment, GTTag, GTTagBegin,
-  GTTagEnd, GTNote, GTParaInt, GTParaReal, GTParaStr, GTComma};
+enum GisType { 
+	GTNull, 
+	GTUnknown, 
+	GTSequenz, 
+	GTSegment, 
+	GTTag, 
+	GTTagBegin,
+	GTTagEnd, 
+	GTNote, 
+	GTParaInt, 
+	GTParaReal, 
+	GTParaStr, 
+	GTComma
+};
 
 // basic type -------------------------------------------------------
 class GisToken
 {
-  public:
-	 GisToken *Next;
-	 char *Sep;
-	 GisToken(char *sep = 0, GisToken *next = 0)
-	 {
-		CHECKDUP(Sep, sep);
-		Next = next;
-	 }
-	 ~GisToken()
-	 {
-		if ( Sep ) free(Sep);
-		if ( Next ) delete Next;
-	 }
-	 virtual GisType Type() const { return GTUnknown; }
-	 virtual GisToken *Copy() { return new GisToken(Sep, 0); }
+	public:
+		GisToken *Next;
+		mutString Sep;
+		GisToken(const mutString sep = mutEmptyString, GisToken *next = 0)
+		{
+			CHECKDUP(Sep, sep);
+			Next = next;
+		}
+		~GisToken()
+		{
+			mutFreeString(Sep);
+			if ( Next ) delete Next;
+		}
+		virtual GisType Type() const { return GTUnknown; }
+		virtual GisToken *Copy() { return new GisToken(Sep, 0); }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
-	 virtual void Echo() { cout << "?? "; }
+		virtual void Stream(ostream &out, char sep);
+		virtual void Echo() { cout << "?? "; }
 #endif
 };
 
@@ -89,16 +105,16 @@ GisToken *CopyPara(GisToken *para);
 class GisSequenz : public GisToken
 {
   public:
-	 char *Sep2;
+	 mutString Sep2;
 	 GisToken *Contents;
-	 GisSequenz(GisToken *contents = 0, char *sep = 0, GisToken *next = 0) :
+	 GisSequenz(GisToken *contents = 0, const mutString sep = mutEmptyString, GisToken *next = 0) :
 		GisToken(sep, next)
 	 {
-		Contents = contents; Sep2 = 0;
+		Contents = contents; Sep2 = mutEmptyString;
 	 }
 	 ~GisSequenz()
 	 {
-		if ( Sep2 ) free(Sep2);
+		mutFreeString(Sep2);
 		if ( Contents ) delete Contents;
 	 }
 	 GisType Type() const { return GTSequenz; }
@@ -112,18 +128,22 @@ class GisSequenz : public GisToken
 class GisSegment : public GisToken
 {
   public:
-	 char *Sep2;
+	 mutString Sep2;
+	 
 	 GisToken *Contents;
-	 GisSegment(GisToken *contents = 0, char *sep = 0, GisToken *next = 0) :
+	 
+	 GisSegment(GisToken *contents = 0, const mutString sep = mutEmptyString, GisToken *next = 0) :
 		GisToken(sep, next)
 	 {
-		Contents = contents; Sep2 = 0;
+		Contents = contents; Sep2 = mutEmptyString;
 	 }
+	 
 	 ~GisSegment()
 	 {
-		if ( Sep2 ) free(Sep2);
+		mutFreeString(Sep2);
 		if ( Contents ) delete Contents;
 	 }
+	 
 	 virtual GisType Type() const { return GTSegment; }
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, char sep);
@@ -134,66 +154,75 @@ class GisSegment : public GisToken
 // tag --------------------------------------------------------------
 class GisTag : public GisToken
 {
-  public:
-	 int Id;     // 0 ... no registered id
-	 char *Name;
-	 GisToken *Para;
-	 GisTag(char *name = 0, GisToken *para = 0, char *sep = 0, GisToken *next = 0)
-		: GisToken(sep, next)
-	 {
-      Id = GetTagId(name, &Name);
-		if ( Id == -1 )
+	public:
+		int Id;     // 0 ... no registered id
+		mutString Name;
+		GisToken *Para;
+	 
+		GisTag(mutString name = mutEmptyString, GisToken *para = 0, 
+			mutString sep = mutEmptyString, GisToken *next = 0)
+			: GisToken(sep, next)
 		{
-        Id = 0;
-        CHECKDUP(Name, name);
-      }
-		Para = para;
-	 }
-	 GisTag(int id, char shortForm, GisToken *para = 0, char *sep = 0, GisToken *next = 0)
-		: GisToken(sep, next)
-	 {
-		Id = id;
-      if ( shortForm )
-        Name = TagShorts[Id];
-		else
-        Name = Tags[Id];
-		Para = para;
-	 }
-	 ~GisTag()
-	 {
-		if ( !Id && Name ) free(Name);
-		if ( Para ) delete Para;
-	 }
-	 virtual GisType Type() const { return GTTag; }
-	 virtual GisToken *Copy() { return new GisTag(Name, CopyPara(Para), Sep, 0); }
-	 GisType GetParaType(int nr);  // counting from 1
-	 GisToken *GetPara(int nr);
+			Id = GetTagId(name, Name);
+			if ( Id == -1 ) {
+				Id = 0;
+				CHECKDUP(Name, name);
+			}
+			Para = para;
+		}
+	 
+		GisTag(int id, char shortForm, GisToken *para = 0, mutString sep = mutEmptyString, GisToken *next = 0)
+			: GisToken(sep, next)
+		{
+			Id = id;
+			if ( shortForm )
+				Name = TagShorts[Id];
+			else
+				Name = Tags[Id];
+			Para = para;
+		}
+		
+		~GisTag()
+		{
+			if ( !Id && Name ) mutFreeString(Name);
+			if ( Para ) delete Para;
+		}
+		
+		virtual GisType Type() const { return GTTag; }
+		virtual GisToken *Copy() { return new GisTag(Name, CopyPara(Para), Sep, 0); }
+		GisType GetParaType(int nr);  // counting from 1
+		GisToken *GetPara(int nr);
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
-   virtual void Echo() { cout << "Tag: " << Name <<" "; }
+		virtual void Stream(ostream &out, char sep);
+		virtual void Echo() { cout << "Tag: " << Name <<" "; }
 #endif
 };
 
 // begin ranged tag -------------------------------------------------
 class GisTagBegin : public GisTag
 {
-  public:
-	 GisToken *End;
-	 GisTagBegin(char *name = 0, GisToken *para = 0, char *sep = 0, GisToken *next = 0)
+	public:
+		GisToken *End;
+	 
+		GisTagBegin(mutString name = mutEmptyString, GisToken *para = 0, 
+					mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisTag(name, para, sep, next)
-	 {
-		End = 0;
-	 }
-	 GisTagBegin(int id, char shortForm, GisToken *para = 0, char *sep = 0, GisToken *next = 0)
+		{
+			End = 0;
+		}
+		
+		GisTagBegin(int id, char shortForm, GisToken *para = 0, 
+					mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisTag(id, shortForm, para, sep, next)
-	 {
-		End = 0;
-	 }
-	 virtual GisType Type() const { return GTTagBegin; }
-	 virtual GisToken *Copy() { return new GisTagBegin(Name, CopyPara(Para), Sep, 0); }
+		{
+			End = 0;
+		}
+		
+		virtual GisType Type() const { return GTTagBegin; }
+		virtual GisToken *Copy() { return new GisTagBegin(Name, CopyPara(Para), Sep, 0); }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
-	 virtual void Echo() { cout << "Tag: " << Name << "( "; }
+		virtual void Stream(ostream &out, char sep);
+		virtual void Echo() { cout << "Tag: " << Name << "( "; }
 #endif
 };
 
@@ -202,7 +231,7 @@ class GisTagEnd : public GisToken
 {
   public:
 	 GisTagBegin *Begin;
-	 GisTagEnd(GisTagBegin *begin = 0, char *sep = 0, GisToken *next = 0)
+	 GisTagEnd(GisTagBegin *begin = 0, mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next)
 	 {
 		Begin = begin;
@@ -218,24 +247,26 @@ class GisTagEnd : public GisToken
 class GisNote : public GisToken
 {
   public:
-	 char *Name;
-	 char *Accedentials;
+	 mutString Name;
+	 mutString Accedentials;
 	 int Octave;
 	 frac Duration;
-	 GisNote(char *name = 0, char *accedentials = 0, int octave = 0,
-		frac duration = frac(1,4), char *sep = 0, GisToken *next = 0)
-		: GisToken(sep, next)
+	 GisNote(const mutString &name = mutEmptyString, const mutString &accedentials = mutEmptyString, int octave = 0,
+		frac duration = frac(1,4), const mutString &sep = mutEmptyString, GisToken *next = 0)
+		: GisToken(sep, next),Name(name),Accedentials(accedentials)
 	 {
+#if 0
 		CHECKDUP(Name, name);
 		CHECKDUP(Accedentials, accedentials);
+#endif
 		Octave = octave;
 		Duration = duration;
 	 }
-	 GisNote(int key, int octave, int acc, char *sep = 0, GisToken *next = 0);
+	 GisNote(int key, int octave, int acc, const mutString sep = mutEmptyString, GisToken *next = 0);
     int GetKey();
 	 virtual GisType Type() const { return GTNote; }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
+	 virtual void Stream(ostream &out, mutChar sep);
 	 virtual void Echo() { cout << "Note: " << Name << Accedentials << Octave <<" "; }
 #endif
 };
@@ -243,34 +274,38 @@ class GisNote : public GisToken
 // integer parameter ------------------------------------------------
 class GisParaInt : public GisToken
 {
-  public:
-	 int i;
-	 GisParaInt(int value = 0, char *sep = 0, GisToken *next = 0)
+	public:
+		int i;
+		
+		GisParaInt(int value = 0, mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next)
-	 {
-		i = value;
-	 }
-	 virtual GisType Type() const { return GTParaInt; }
-	 virtual GisToken *Copy() { return new GisParaInt(i, Sep, 0); }
+		{
+			i = value;
+		}
+		
+		virtual GisType Type() const { return GTParaInt; }
+		virtual GisToken *Copy() { return new GisParaInt(i, Sep, 0); }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
+		virtual void Stream(ostream &out, mutChar sep);
 #endif
 };
 
 // real parameter ---------------------------------------------------
 class GisParaReal : public GisToken
 {
-  public:
-	 double x;
-	 GisParaReal(double value = 0, char *sep = 0, GisToken *next = 0)
+	public:
+		double x;
+		
+		GisParaReal(double value = 0, mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next)
-	 {
-		x = value;
-	 }
-	 virtual GisType Type() const { return GTParaReal; }
-	 virtual GisToken *Copy() { return new GisParaReal(x, Sep, 0); }
+		{
+			x = value;
+		}
+		
+		virtual GisType Type() const { return GTParaReal; }
+		virtual GisToken *Copy() { return new GisParaReal(x, Sep, 0); }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
+		virtual void Stream(ostream &out, char sep);
 #endif
 };
 
@@ -278,8 +313,8 @@ class GisParaReal : public GisToken
 class GisParaStr : public GisToken
 {
   public:
-	 char *s;
-	 GisParaStr(const char *value = 0, char *sep = 0, GisToken *next = 0)
+	 mutString s;
+	 GisParaStr(const mutString value = mutEmptyString, mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next)
 	 {
 		CHECKDUP(s, value);
@@ -291,7 +326,7 @@ class GisParaStr : public GisToken
 	 virtual GisType Type() const { return GTParaStr; }
 	 virtual GisToken *Copy() { return new GisParaStr(s, Sep, 0); }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
+	 virtual void Stream(ostream &out, mutChar sep);
 #endif
 };
 
@@ -299,11 +334,11 @@ class GisParaStr : public GisToken
 class GisComma : public GisToken
 {
   public:
-	 GisComma(char *sep = 0, GisToken *next = 0)
+	 GisComma(const mutString sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next) { };
 	 virtual GisType Type() const { return GTComma; }
 #ifndef FOR_MUTWIN
-	 virtual void Stream(ostream &out, char sep);
+	 virtual void Stream(ostream &out, mutChar sep);
 	 virtual void Echo() { cout << ", "; }
 #endif
 };
@@ -313,7 +348,7 @@ class GisComma : public GisToken
 
 GisType GetGisType(GisToken* token);
 
-GisToken *GisParse(const char *FileName);
+GisToken *GisParse(const mutString FileName);
 
 #endif
 
