@@ -20,13 +20,13 @@
 #endif				
 
 
-#if defined(_UNICODE)
+#if defined(_UNICODE) || defined(UNICODE)
 #define SSCANF swscanf
 #else		
 #define SSCANF sscanf
 #endif
 
-#if defined(WX) && defined(_UNICODE)
+#if defined(WX) && defined(UNICODE)
   #include <wx/strconv.h>
   extern wxCSConv muCSConv;
   #define muT(x)  (wxString(x, muCSConv))
@@ -36,9 +36,9 @@
   #define mumT(x) muT(x)
 #endif
 
-#ifdef __WXGTK__
+//#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
-#endif
+//#endif
 
 #endif
 
