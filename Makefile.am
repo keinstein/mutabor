@@ -41,9 +41,11 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
+		mywx/muconvauto.cpp mywx/muconvauto.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 #
+mutabordir=$(datadir)/mutabor
 
 mutabor_LDFLAGS = $(LDFLAGS) $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CallFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
@@ -56,6 +58,7 @@ mutabor_CXXFLAGS += @COND_PRECOMP_CXX_TRUE@-include mutabor-cxxprecompiled.h
 mutabor_SHORTNAME = mutabor
 mutabor_DEPENDENCIES = @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
 mutabor_LDADD = $(LDADD) @COND_WINRC_TRUE@ $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+mutabor_DATA = Images/about.png
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 
@@ -115,15 +118,16 @@ mutabor-cxxprecompiled.h:
 Mutabor.app:all
 	mkdir -p Mutabor.app/Contents/MacOS
 	mkdir -p Mutabor.app/Contents/Resources
-	cp mutabor Mutabor.app/Contents/MacOS/Mutabor
+	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPL???? >Mutabor.app/Contents/PkgInfo
-	for datei in $(top_srcdir)/po/*.gmo ; \ 
+	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
 		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
+	cp $(top_srcdir)/Images/about.png Mutabor.app/Contents/Resources
 		
 	
