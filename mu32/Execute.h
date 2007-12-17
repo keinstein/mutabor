@@ -7,7 +7,7 @@
 
 #include "Interpre.h"
 
-void KeyboardIn(int box, char *keys);
+void KeyboardIn(int box, const mutChar *keys);
 void GlobalReset();
 void AddKey(int box, int taste, int id);
 void DeleteKey(int box, int taste, int id);

@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
+// Mutabor 2.win, 1997, R.Krauï¬‚e
 // Fileparser
 // ------------------------------------------------------------------
 
@@ -321,7 +321,7 @@ static struct aktions_liste * get_last_aktions_liste (void)
     return list_of_aktionen;
 }
 
-/* Einleseroutinen fr komplex_intervalle  ****/
+/* Einleseroutinen fÃ…r komplex_intervalle  ****/
 
 static struct komplex_intervall * the_komplex_liste;
 
@@ -459,10 +459,10 @@ void print_aktions_liste (struct aktions_liste * lauf)
 
 FILE * quelldatei;
 
-void mutabor_programm_einlesen (const char * filename )
+void mutabor_programm_einlesen (const wxChar * filename )
 {
 
-	 if ((quelldatei = fopen (filename, "r")) == NULL) {
+	 if ((quelldatei = wxFopen (filename, _T("r"))) == NULL) {
 		  fatal_error(3,filename);
 	 }
 
@@ -488,7 +488,7 @@ void mutabor_programm_einlesen (const char * filename )
 
     // NEU: wenn kein Intervall oder Ton da, dann Speichermangel
     // also evtl. Dummy
-    // (das Problem läßt sich sicher auch direkt lösen ...)
+    // (das Problem lâ€°ï¬‚t sich sicher auch direkt lË†sen ...)
 
     if ( !list_of_intervalle )
       get_new_intervall("__TopSecret__RK__Intervall__", 1.0);
@@ -943,9 +943,9 @@ void get_new_ton_komplex_negative (char *name, char *bezugston)
 /********* Einleseroutinen fuer die Tonsysteme          *********/
 /*         Es wird einfach eine Liste of Tonsysteme aufgebaut  **/
 
-/* ton_liste dient zum Aufsammeln einzelner T”ne
-   w„hrend eines Tonsystems. Die aufgebaute Liste wird dann
-   jeweils an das Tonsystem angeh„ngt. */
+/* ton_liste dient zum Aufsammeln einzelner TÃ®ne
+   wÃ‘hrend eines Tonsystems. Die aufgebaute Liste wird dann
+   jeweils an das Tonsystem angehÃ‘ngt. */
 
 static struct ton * ton_liste;
 
@@ -958,7 +958,7 @@ void get_new_ton_in_tonsystem (char *name)
 {
     struct ton * * lauf;
     for (lauf= & ton_liste; * lauf; lauf= & (*lauf)->next) {
-        /* Hier sind doppelte T”ne zul„ssig !! */
+        /* Hier sind doppelte TÃ®ne zulÃ‘ssig !! */
     }
 
     (* lauf) = (ton*) xmalloc ((size_t) sizeof (struct ton));
@@ -1015,7 +1015,7 @@ void get_new_tonsystem_negative (char * name, int taste)
 /*            init_umstimmung (name);                          **/
 /*         in die dann die Varianten eingetragen werden.       **/
 /*         Zuletzt wird diese Umstimmung in die Liste          **/
-/*         eingeh„ngt.					                       **/
+/*         eingehÃ‘ngt.					                       **/
 /*            get_new_umstimmung ();                           **/
 
 static struct umstimmung * tmp_umstimmung;
@@ -1171,7 +1171,7 @@ void get_umstimmung_breite_rel (
                                                 = vorzeichen;
 }
 
-/*********** Bei "tonh”he ver„ndert" mu wieder die gesamte
+/*********** Bei "tonhÃ®he verÃ‘ndert" muÃ» wieder die gesamte
              expression eines Tons pro Listeneintrag
              aufgesammelt werden.
 ********/
@@ -1283,7 +1283,7 @@ void get_umstimmung_wiederholung_rel_negative (void)
                          komplex_liste -> faktor      *= - 1.0 ;
 }
 
-/*********** Bei "umstimmungsbund" mu wieder eine Liste von
+/*********** Bei "umstimmungsbund" muÃ» wieder eine Liste von
              Aufrufen (mit evtl. Parametern)
              aufgesammelt werden.
 ********/
@@ -1308,7 +1308,7 @@ void get_umstimmungs_bund_element (char * name)
     (* lauf) -> parameterliste      = get_last_parameter_liste ();
     (* lauf) -> next                = NULL;
 
-/* check, ob die Parameter zul„ssig sind */
+/* check, ob die Parameter zulÃ‘ssig sind */
 
     {
         struct namensliste * params;
@@ -1332,7 +1332,7 @@ void get_umstimmung_umstimmungs_bund (void)
                        .aktions_liste = get_last_aktions_liste ();
 
 
-/* check, ob die Parameter zul„ssig sind */
+/* check, ob die Parameter zulÃ‘ssig sind */
 
     {
 
@@ -1405,7 +1405,7 @@ void get_umstimmungs_case_aufrufs_element (char * aktion)
     (* lauf) -> argument_liste      = get_last_argument_liste ();
     (* lauf) -> next                = NULL;
 
-/* check, ob die Parameter zul„ssig sind */
+/* check, ob die Parameter zulÃ‘ssig sind */
 
     {
         struct argument_liste * params;
@@ -1476,7 +1476,7 @@ void get_umstimmung_umstimm_case_zahl (int selector)
                        .umstimmungs_case_liste = tmp_umstimmungs_case_liste;
 
 
-/* check, ob die Parameter zul„ssig sind */
+/* check, ob die Parameter zulÃ‘ssig sind */
 
     {
       struct case_liste * case_lauf;
@@ -1547,7 +1547,7 @@ void get_umstimmung_umstimm_case_parameter (char * selector)
 
 
 
-/* check, ob die Parameter zul„ssig sind */
+/* check, ob die Parameter zulÃ‘ssig sind */
 
     {
       struct case_liste * case_lauf;
@@ -1856,7 +1856,7 @@ void get_instrument_dekl (int midi_in, int midi_von, int midi_bis, int midi_umle
 
 /**************************************************************
 
-            Hier werden die Toene aufgel”st.
+            Hier werden die Toene aufgelÃ®st.
             Nach dem Parsing ist nur die Syntax-Struktur
             vorhanden, aber keine fertig ausgerechneten Toene.
 
@@ -1956,7 +1956,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 
   belege_toene (toene, list_of_toene);
 
-/* Adjazenzmatrix initialisieren (Kein Ton h„ngt vom anderen ab) */
+/* Adjazenzmatrix initialisieren (Kein Ton hÃ‘ngt vom anderen ab) */
 
   for (i=0; i<anzahl_toene; i++) {
       for (j=0; j<anzahl_toene; j++) {
@@ -1964,7 +1964,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
       }
   }
 
-/* Adjazenzmatrix initialisieren (Abh„ngigkeiten eintragen) */
+/* Adjazenzmatrix initialisieren (AbhÃ‘ngigkeiten eintragen) */
 
   for (i=0; i<anzahl_toene; i++) {
       if (toene[i]->ton_typ == ton_absolut)  /* alles ok */ ;
@@ -2032,10 +2032,10 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 }
 
 /************** Hier wird die innere Konsistenz des
-                ganzen MUTABOR-Programms geprft.
+                ganzen MUTABOR-Programms geprÃ…ft.
                 Bei Fehlern wird einfach abgebrochen,
                 ansonsten hat diese Funktion keine
-                ver„ndernde Wirkung auf die Listen.
+                verÃ‘ndernde Wirkung auf die Listen.
 
                 Eintrittspunkt ist "check_konsistenz".
 
@@ -2240,7 +2240,7 @@ static void check_aktionen (struct aktions_liste * aktionen, char * name) {
 /**************************************************************
 
             Hier sind einige Hilfsfunktionen zum Testen,
-            da Umstimmungsbnde und die Einstimmungen der
+            daÃ» UmstimmungsbÃ…nde und die Einstimmungen der
             Logiken sich nicht rekursiv enthalten.
 
             Es wird ein azyklischer Graph der Umstimmungen
@@ -2339,7 +2339,7 @@ static void check_konsistenz (void)
     allgemeine_initialisierungen();
 
     /* Tonsysteme:
-       šberprfen, ob Periode und T”ne deklariert sind
+       Ã¶berprÃ…fen, ob Periode und TÃ®ne deklariert sind
        und ob die Taste im Bereich 36 - 96 liegt.
     */
 
@@ -2348,7 +2348,7 @@ static void check_konsistenz (void)
       for (lauf = list_of_tonsysteme; lauf; lauf = lauf->next) {
           check_komplex_intervall (lauf->periode, lauf->name);
           if (lauf->taste < 24  ||  lauf->taste > 108) {
-              fatal_error(47,lauf->taste,lauf->name); /* Unglt. Taste */
+              fatal_error(47,lauf->taste,lauf->name); /* UngÃ…lt. Taste */
           }
           for (ton_lauf = lauf->toene;
                ton_lauf;
@@ -2362,9 +2362,9 @@ static void check_konsistenz (void)
     }
 
 
-/**** Umstimmungen prfen, ob alle T”ne und Intervalle
+/**** Umstimmungen prÃ…fen, ob alle TÃ®ne und Intervalle
       global deklariert sind, ob Umstimmungsbund und Umstimmungs_case
-      keine Rekursion enth„lt, ob case_labels eindeutig sind,
+      keine Rekursion enthÃ‘lt, ob case_labels eindeutig sind,
       und ob die benutzten Parameter
       zu den deklarierten Parametern passen.
 ****/
@@ -2429,8 +2429,8 @@ static void check_konsistenz (void)
 
         case umstimmung_umstimmungsbund : {
 
-               /* Hier werden nur die L„ngen der Parameterlisten
-                  verglichen. Die Zyklenfreiheit kommt sp„ter
+               /* Hier werden nur die LÃ‘ngen der Parameterlisten
+                  verglichen. Die Zyklenfreiheit kommt spÃ‘ter
                */
 
             struct aktions_liste * help_aktionen;
@@ -2479,8 +2479,8 @@ static void check_konsistenz (void)
         case umstimmung_umstimmungs_case : {
 
                /* Hier werden nur Eindeutigkeit der case_label
-                  und die L„ngen der Parameterlisten
-                  verglichen. Die Zyklenfreiheit kommt sp„ter
+                  und die LÃ‘ngen der Parameterlisten
+                  verglichen. Die Zyklenfreiheit kommt spÃ‘ter
                */
 
           struct case_liste * case_lauf;
@@ -2581,7 +2581,7 @@ static void check_konsistenz (void)
   belege_zyklenfeld (zyklen_feld, list_of_umstimmungen, list_of_logiken);
 
 /* Adjazenzmatrix initialisieren (Keine Umstimmung
-               h„ngt von einer anderen ab) */
+               hÃ‘ngt von einer anderen ab) */
 
   for (i=0; i<anzahl_umstimmungen_und_logiken; i++) {
       for (j=0; j<anzahl_umstimmungen_und_logiken; j++) {
@@ -2589,7 +2589,7 @@ static void check_konsistenz (void)
       }
   }
 
-/* Adjazenzmatrix initialisieren (Abh„ngigkeiten eintragen) */
+/* Adjazenzmatrix initialisieren (AbhÃ‘ngigkeiten eintragen) */
 
   for (i=0; i<anzahl_umstimmungen_und_logiken; i++) {
       if (zyklen_feld[i].umst_oder_logik_typ == typ_umstimmung &&
@@ -2718,7 +2718,7 @@ static void check_konsistenz (void)
 
 
     /* Logiken:
-       šberprfen, ob Einstimmung deklariert ist
+       Ã¶berprÃ…fen, ob Einstimmung deklariert ist
        und ob die Anweisungen korrekt deklariert sind.
     */
 
@@ -2733,7 +2733,7 @@ static void check_konsistenz (void)
 
           check_ausloeser (lauf->ausloeser, lauf->name);
 
-/* Eine Logik darf nicht mit dem DEFAULT-Ausl”ser aufgerufen werden */
+/* Eine Logik darf nicht mit dem DEFAULT-AuslÃ®ser aufgerufen werden */
 
           if (lauf->ausloeser) {
               if (lauf->ausloeser->ausloeser_typ == ausloeser_default) {

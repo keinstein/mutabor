@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.Krauï¬‚e
 // Berechnungen der Stimmungen in den Boxen
 // ------------------------------------------------------------------
 #include "Defs.h"
@@ -19,7 +19,7 @@ int zeige_aktuelles_tonsystem=0;
 
 //#define KEY_WATCH  //protokoll in keys_changed // alte Vaiante
 
-// wenn kein Protokoll gewünscht, dann diese Definition auf "Leer" setzen
+// wenn kein Protokoll gewÂ¸nscht, dann diese Definition auf "Leer" setzen
 #define KEY_CHANGED(instrument) { keys_changed[instrument]=1; keys_changed_sum = 1; }
 
 // in device.h :
@@ -28,7 +28,7 @@ void NotesCorrect(int box);
 int  GetChannel(int box, int taste);
 
 PATTERNN pattern[MAX_BOX];         /* Die momentan gespielte Harmonie */
-TONSYSTEM tonsystem_memory[MAX_BOX+1];  /* Der Platz fr die tats„chlichen
+TONSYSTEM tonsystem_memory[MAX_BOX+1];  /* Der Platz fÃ…r die tatsÃ‘chlichen
 												tonsysteme */
 
 TONSYSTEM tonsystem_init =
@@ -62,7 +62,7 @@ int aktuelles_midi_instrument=0;
 int aktuelles_keyboard_instrument=0;
 char tempstring[255];
 
-// Boxen zurücksetzen
+// Boxen zurÂ¸cksetzen
 void GlobalReset()
 {
   int i;
@@ -329,7 +329,7 @@ int tiefste_taste(int instr)
   return min;
 }
 
-// ermittelt die höchste liegende Taste bei instr
+// ermittelt die hË†chste liegende Taste bei instr
 int hoechste_taste(int instr)
 {
   int i, max = 0;
@@ -463,19 +463,19 @@ void DeleteKey( int box, int taste, int id)
 	 }
 }
 
-void KeyboardIn(int box, char *keys)
+void KeyboardIn(int box, const mutChar *keys)
 {
   aktuelles_keyboard_instrument = box;
   char TonSystem = 0;
-  for (int i= 0; i < strlen(keys); i++)
+  for (int i= 0; i < mutStrLen(keys); i++)
   {
-	 char c = keys[i];
-	 if ( c == '&' )
+	 mutChar c = keys[i];
+	 if ( c == mutT('&') )
 	 {
 		TonSystem = 1;
 		continue;
 	 }
-	 if ( '0' <= c && c <= 'z' )
+	 if ( mutT('0') <= c && c <= mutT('z') )
 		if ( TonSystem )
 		  KeyboardAnalyse(box, (int) c, 0);
 		else

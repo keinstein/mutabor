@@ -15,15 +15,19 @@
 extern int GspCurrentLineNr;    // curent line parser deals with
 extern int GspErrorLineNr;      // line of occured error
 extern int GspErrorPos;         // column of occured error in line
-extern char *GspErrorLine;      // text of error line
+extern mutString GspErrorLine;      // text of error line
 extern int  GspError;           // error id
 
-extern char Sep[GSP_MAX_SEP];
+#ifdef WX
+  extern mutString Sep;
+#else
+  extern char[GSP_MAX_SEP];
+#endif
 extern int  SepPos;
 
 extern char *GspErrorText[];
 
-int GspParse(const char *FileName);
+int GspParse(const mutString FileName);
 
 // extern user defined functions
 
@@ -37,12 +41,12 @@ extern int EndParameter();
 extern int BeginRange();
 extern int EndRange();
 extern int NextSequenz();
-extern int Note(char *name, char *accedentials, int octave,
+extern int Note(mutString name, mutString accedentials, int octave,
   frac duration);
-extern int Tag(char *tagName);
+extern int Tag(mutString tagName);
 extern int TagParaInt(long i);
 extern int TagParaReal(double x);
-extern int TagParaStr(char *s);
+extern int TagParaStr(mutString s);
 extern int Comma();
 
 #endif

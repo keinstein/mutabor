@@ -7,11 +7,11 @@
 
 #include "GSP.h"
 
-extern char CurrentLine[GSP_MAX_LINE];
+extern mutString CurrentLine; //[GSP_MAX_LINE];
 extern int  CurrentPos;
 extern int  Eof;
 
-int OpenFile(const char *Name);
+int OpenFile(const mutString Name);
 int CloseFile();
 int ReadNewLine();
 

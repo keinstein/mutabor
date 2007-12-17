@@ -2,12 +2,16 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.6 2006/01/18 15:07:39 keinstein Exp $
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2006/01/18 15:07:39 $
- * \version $Revision: 1.6 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.7 2007/12/17 12:52:15 keinstein Exp $
+ * \author RÃ¼diger KrauÃŸe <krausze@mail.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2007/12/17 12:52:15 $
+ * \version $Revision: 1.7 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.7  2007/12/17 12:52:15  keinstein
+ * Make the file compile in WX Unicode mode
+ *
  * Revision 1.6  2006/01/18 15:07:39  keinstein
  * 3 translation calls
  *
@@ -16,7 +20,7 @@
  *
  ********************************************************************/
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.KrauÃŸe
 // MIDI-File als Device
 // ------------------------------------------------------------------
 #include "Defs.h"
@@ -37,6 +41,8 @@
 #include "DevMidF.h"
 #include "Execute.h"
 #include "GrafKern.h"
+
+#include "wx/wfstream.h"
 
 /* berechnet die Tonigkeit einer Taste bzgl. tonsystem */
 #define GET_INDEX(taste,tonsystem)                \
@@ -90,25 +96,25 @@
 
 int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
 
-// Daten übergeben für NoRealTime-Übersetzungen
+// Daten Â¸bergeben fÃ¼r NoRealTime-Ãœbersetzungen
 BYTE *pData;
 int nData;
 long NRT_Speed;
 
-DWORD ReadLength(STD_PRE::ifstream &is)
+DWORD ReadLength(mutIFstream &is)
 {
   BYTE a[4];
-  is.read((char*)a, 4);
+  mutReadStream(is,(char*)a, 4);
   return (((DWORD)a[0]) << 24) + (((DWORD)a[1]) << 16) +
 	  (((DWORD)a[2]) << 8) + ((DWORD)a[3]);
 }
 
-void WriteLength(STD_PRE::ofstream &os, DWORD l)
+void WriteLength(mutOFstream &os, DWORD l)
 {
-  os.put((BYTE) ((l >> 24) & 0xFF));
-  os.put((BYTE) ((l >> 16) & 0xFF));
-  os.put((BYTE) ((l >> 8) & 0xFF));
-  os.put((BYTE) (l & 0xFF));
+  mutPutC(os,(BYTE) ((l >> 24) & 0xFF));
+  mutPutC(os,(BYTE) ((l >> 16) & 0xFF));
+  mutPutC(os,(BYTE) ((l >> 8) & 0xFF));
+  mutPutC(os,(BYTE) (l & 0xFF));
 }
 
 // CurrentTime ------------------------------------------------------
@@ -131,7 +137,7 @@ void StartCurrentTime()
 #endif
 }
 
-// Timer löschen
+// Timer lË†schen
 void StopCurrentTime()
 {
 #if !defined(WX) || defined(__WXMSW__)
@@ -159,16 +165,16 @@ void Track::WriteDelta()
 	  Data->Add(w[i]);
 }
 
-void Track::Save(STD_PRE::ofstream &os)
+void Track::Save(mutOFstream &os)
 {
-  os << "MTrk";
+  mutWriteStream(os,"MTrk",4);
   WriteLength(os, Data->GetItemsInContainer()+4);
   for (DWORD i = 0; i < Data->GetItemsInContainer(); i++)
-	  os.put((BYTE)(*Data)[i]);
-  os.put((BYTE)0x00);
-  os.put((BYTE)0xFF);
-  os.put((BYTE)0x2F);
-  os.put((BYTE)0x00);
+	  mutPutC(os,(BYTE)(*Data)[i]);
+  mutPutC(os,(BYTE)0x00);
+  mutPutC(os,(BYTE)0xFF);
+  mutPutC(os,(BYTE)0x2F);
+  mutPutC(os,(BYTE)0x00);
 }
 
 // OutMidiFile ------------------------------------------------------
@@ -181,12 +187,13 @@ bool OutMidiFile::Open()
 
 void OutMidiFile::Close()
 {
-  // alle liegenden Töne ausschalten
+  // alle liegenden TË†ne ausschalten
   for (int i = 0; i < 16; i++)
     if ( KeyDir[i] >= 16 )  // benutzt
       MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
   // Datei speichern
-	STD_PRE::ofstream os(Name, STD_PRE::ios::out | STD_PRE::ios::binary/*0, filebuf::openprot*/);
+  mutOpenOFstream(os,Name);
+	
   BYTE Header[41] =
 	  { 'M', 'T', 'h', 'd', 0, 0, 0, 6, 0, 1, 0, 2, 1, 0x00,
       'M', 'T', 'r', 'k', 0, 0, 0, 0x13, 0x00, 0xFF, 0x51, 0x03, 0x07, 0xD0, 0x00,
@@ -196,7 +203,7 @@ void OutMidiFile::Close()
     Header[12] = ((WORD)(NRT_Speed >> 8)) & 0xFF;
     Header[13] = ((WORD)(NRT_Speed)) & 0xFF;
   }
-  os.write((char*)Header, 41);
+  mutWriteStream(os,Header, 41);
   Tracks.Save(os);
 }
 
@@ -216,7 +223,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
   if ( !freq )
     return;
   int help = r->OTo;
-  i = r->OFrom; // "irgendein" Startwert im gültigen Bereich
+  i = r->OFrom; // "irgendein" Startwert im gÂ¸ltigen Bereich
   if ( i == DRUMCHANNEL && r->ONoDrum && i < r->OTo )
     i++;
   int j;
@@ -318,7 +325,7 @@ void OutMidiFile::NotesCorrect(int box)
       if ( Box != box )
         break;
       long freq = GET_FREQ(ton_auf_kanal[i].taste, tonsystem[Box]);
-      // hier kann ein evtl. größerer bending_range genutzt werden, um
+      // hier kann ein evtl. grË†ï¬‚erer bending_range genutzt werden, um
       // Ton aus und einschalten zu vermeiden
       if ( ton_auf_kanal[i].key == (zugriff[3] & 0x7f) &&
         Cd[i].Pitch == (freq & 0xFFFFFF) )
@@ -334,7 +341,7 @@ void OutMidiFile::NotesCorrect(int box)
       }
       else if ( Delta == Cd[i].Pitch )
         continue;
-      // Spezialbending (großer Range)
+      // Spezialbending (groï¬‚er Range)
       Cd[i].Pitch = Delta;
       Delta /= (4*bending_range);
       Delta += 0x400000;
@@ -398,82 +405,84 @@ long ReadDelta(BYTE *data, DWORD *i)
 
 bool InMidiFile::Open()
 {
-  Track = 0;
-  curDelta = 0;
-  TrackPos = 0;
-  StatusByte = 0;
-  TicksPerQuater = 0;
-  MMSPerQuater = (long) 1000000;
-  // Datei lesen
-  STD_PRE::ifstream is(Name, STD_PRE::ios::in | STD_PRE::ios::binary/*, 0/*filebuf::openprot*/);
-  if ( is.bad() )
-  {
-    Mode = 3;
-    InDevChanged = 1;
-    LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
-    return false;
-  }
-  // Header Chunk
-  char Header[5];
-  is.read(Header, 4);
-  DWORD l = ReadLength(is);
-  BYTE a, b;
-  // file type
-  a = is.get(); //is.get(a);
+	Track = 0;
+	curDelta = 0;
+	TrackPos = 0;
+	StatusByte = 0;
+	TicksPerQuater = 0;
+	MMSPerQuater = (long) 1000000;
+	// Datei lesen
+	mutOpenIFstream(is, Name);
 
-  FileType = is.get(); //is.get(FileType);
-  // number of tracks
-  a = is.get(); //is.get(a);
-  b = is.get(); // is.get(b);
-  nTrack = (((int)a) << 8) + b;
-  // speed info
-  a = is.get(); //is.get(a);
-  b = is.get(); //is.get(b);
-  Speed = (((int)a) << 8) + b;
-  NRT_Speed = Speed;
-  // rest of header
-  DWORD i;
-  for (i = 6; i < l && !is.eof() && !is.bad(); i++ )
- 	  a = is.get();// is.get(a);
-  // Tracks lesen
-  Track = (BYTE**)malloc(nTrack*sizeof(BYTE*));
-  for (i = 0; i < nTrack; i++ )
-  {
-    is.read(Header, 4);
-    l = ReadLength(is);
-    if ( l > (long) 64000 )
-    {
-      Mode = 3;
-      InDevChanged = 1;
-    	LAUFZEIT_ERROR1(_("Midi input file '%s' is to long."), GetName());
-      return false;
-    }
-    Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
-    if ( l > 32000 )
-    {
-      is.read((char*)Track[i], 32000);
-      is.read((char*)&Track[i][32000], l-32000);
-    }
-    else
-      is.read((char*)Track[i], l);
-    if ( /*is.gcount() != l ||*/ is.bad() )
-    {
-      Mode = 3;
-      InDevChanged = 1;
-      LAUFZEIT_ERROR1(_("Midi input file '%s' produces errors."), GetName());
-      return false;
-    }
-  }
-  is.close();
-  // Daten vorbereiten
-  curDelta = (long*)malloc(nTrack*sizeof(long));
-  TrackPos = (DWORD*)malloc(nTrack*sizeof(DWORD));
-  StatusByte = (BYTE*)malloc(nTrack*sizeof(BYTE));
-  // Mode setzen
-  Mode = 0;
-  // initialisieren
-  Stop();
-  return true;
+	if ( mutStreamBad(is) )
+	{
+		Mode = 3;
+		InDevChanged = 1;
+//		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
+		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), Name.c_str());
+		return false;
+	}
+	// Header Chunk
+	char Header[5];
+	mutReadStream(is,Header, 4);
+	DWORD l = ReadLength(is);
+	BYTE a, b;
+	// file type
+	a = mutGetC(is); //mutGetC(is,a);
+
+	FileType = mutGetC(is); //mutGetC(is,FileType);
+	// number of tracks
+	a = mutGetC(is); //mutGetC(is,a);
+	b = mutGetC(is); // mutGetC(is,b);
+	nTrack = (((int)a) << 8) + b;
+	// speed info
+	a = mutGetC(is); //mutGetC(is,a);
+	b = mutGetC(is); //mutGetC(is,b);
+	Speed = (((int)a) << 8) + b;
+	NRT_Speed = Speed;
+	// rest of header
+	DWORD i;
+	for (i = 6; i < l && !mutStreamEOF(is) && mutStreamGood(is); i++ )
+		a = mutGetC(is);// mutGetC(is,a);
+		// Tracks lesen
+	Track = (BYTE**) malloc(nTrack*sizeof(BYTE*));
+	for (i = 0; i < nTrack; i++ )
+	{
+		mutReadStream(is,Header, 4);
+		l = ReadLength(is);
+		if ( l > (long) 64000 )
+		{
+			Mode = 3;
+			InDevChanged = 1;
+			LAUFZEIT_ERROR1(_("Midi input file '%s' is to long."), Name.c_str());
+			return false;
+		}
+		Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
+		if ( l > 32000 )
+		{
+			mutReadStream(is, (char*)Track[i], 32000);
+			mutReadStream(is, (char*)&Track[i][32000], l-32000);
+		}
+		else
+			mutReadStream(is, (char*)Track[i], l);
+		if ( /*is.gcount() != l ||*/ mutStreamBad(is) )
+		{
+			Mode = 3;
+			InDevChanged = 1;
+			LAUFZEIT_ERROR1(_("Midi input file '%s' produces errors."), Name.c_str());
+			return false;
+		}
+	}
+	mutCloseStream(is);
+	// Daten vorbereiten
+	curDelta = (long*)malloc(nTrack*sizeof(long));
+	TrackPos = (DWORD*)malloc(nTrack*sizeof(DWORD));
+	StatusByte = (BYTE*)malloc(nTrack*sizeof(BYTE));
+	// Mode setzen
+	Mode = 0;
+	// initialisieren
+	Stop();
+	return true;
 }
 
 void InMidiFile::Close()
@@ -630,7 +639,7 @@ long InMidiFile::ReadMidiProceed(int nr, long time)
     }
     else if ( SB == 0xF3 ) // song select
      a += Track[nr][TrackPos[nr]++] << 8;
-    // ausführen
+    // ausfÂ¸hren
     nData = TrackPos[nr] - OldPos;
 //9    if ( *((BYTE*)(&a)) < 0xF0 )
     if ( a == 0x2FFF )
@@ -651,7 +660,7 @@ long InMidiFile::ReadMidiProceed(int nr, long time)
 #define MIDICODE(i) \
   (((BYTE*)(&midiCode))[i])
 
-// für bestimmte Route Codeverarbeitung
+// fÂ¸r bestimmte Route Codeverarbeitung
 void InMidiFile::ProceedRoute(DWORD midiCode, Route *route)
 {
   int Box = route->Box;

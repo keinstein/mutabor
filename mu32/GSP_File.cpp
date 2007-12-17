@@ -5,13 +5,23 @@
 // ##################################################################
 
 #include "GSP_File.h"
-#include <fstream>
 
-char CurrentLine[GSP_MAX_LINE];
+#ifdef WX
+#include "wx/textfile.h"
+#else
+#include <fstream>
+#endif
+
+mutString CurrentLine;//[GSP_MAX_LINE];
 int  CurrentPos;
 int  Eof;
 
-STD_PRE::ifstream *File;  // the file
+mutTextStream* File;  // the file
+
+#ifdef WX
+static bool initialized = false;
+static int bad = 0;
+#endif
 
 // ##################################################################
 // basic file operations
@@ -20,10 +30,16 @@ STD_PRE::ifstream *File;  // the file
 // the current line number.
 
 // opens the file
-int OpenFile(const char *Name)
+int OpenFile(const mutString Name)
 {
-  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
-  return File->bad();
+//  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
+  File = new mutOpenITextStream(,Name);
+  initialized = false;
+#ifdef WX
+  return bad=(!(File->Open()));
+#else
+  return mutStreamBad(*File);
+#endif
 }
 
 // closes the file
@@ -33,18 +49,33 @@ int CloseFile()
   return 0;
 }
 
+
 // reads a line into CurrentLine
 int ReadNewLine()
 {
   CurrentPos = 0;
-  if ( File->eof() || File->bad() )
+#ifdef WX
+  if ( (Eof = mutStreamEOF(*File)) || bad )
   {
-	 Eof = File->eof();
 	 CurrentLine[0] = 0;
-	 return File->bad();
+	 return bad;
+  }
+  if (initialized)
+	CurrentLine = File->GetNextLine();
+  else {
+    CurrentLine = File->GetFirstLine();
+  }
+  GspCurrentLineNr++;
+  return bad;
+#else
+  if ( (Eof = mutStreamEOF(*File)) || mutStreamBad(*File) )
+  {
+	 CurrentLine[0] = 0;
+	 return mutStreamBad(*File);
   }
   File->getline(CurrentLine, GSP_MAX_LINE);
   GspCurrentLineNr++;
-  return File->bad();
+  return mutStreamBad(*File);
+#endif
 }
 

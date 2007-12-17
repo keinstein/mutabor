@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
+// Mutabor 2.win, 1997, R.Krauï¬‚e
 // Laufzeitfunktionen der DLL
 // ------------------------------------------------------------------
 
@@ -10,6 +10,7 @@
 #ifndef WX
 #include <owl\dialog.h>
 #else
+#include "wx/wxchar.h"
 #include "CompDlg.h"
 #if !defined(__WXMSW__)
   #define UINT unsigned int
@@ -24,7 +25,7 @@ extern "C"
 #ifndef WX
   char pascal Compile( TDialog *compWin, const char *name );
 #else
-  char pascal Compile( CompDlg *compWin, const char *name );
+  char pascal Compile( CompDlg *compWin, const wxChar *name );
 #endif
   bool pascal Activate(bool realTime, UpdateUICallback* callback = 0);
   void pascal Stop();

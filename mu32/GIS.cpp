@@ -3,7 +3,7 @@
 // ##################################################################
 
 #ifndef FOR_MUTWIN
-  #include <iostream.h>
+  #include <iostream>
 #endif
 
 #include "Frac.h"
@@ -12,26 +12,27 @@
 
 // registered tags
 
-char *Tags[NTAGS] =
-  { "", "intens",  "slur",  "beam", "text",
-    "bar", "cresc", "dim", "crescBegin", "crescEnd",
-    "dimBegin", "dimEnd", "tempo", "accel", "rit",
-    "accelBegin", "accelEnd", "ritBegin", "ritEnd", "instr",
-	 "tie", "stacc", "accent", "ten", "marcato",
-    "trill", "mord", "turn", "trem", "fermata",
-    "grace", "cue", "repeatBegin", "repeatEnd", "clef",
-    "meter", "key", "oct", "staff", "beamsAuto",
-    "beamsOff", "stemsAuto", "stemsUp", "stemsDown", "doubleBar",
-    "tactus", "title", "composer", "mark", "label",
-	 "alter", "mutabor" };
+mutString Tags[NTAGS] =
+  { mutT(""), mutT("intens"),  mutT("slur"),  mutT("beam"), mutT("text"),
+    mutT("bar"), mutT("cresc"), mutT("dim"), mutT("crescBegin"), mutT("crescEnd"),
+    mutT("dimBegin"), mutT("dimEnd"), mutT("tempo"), mutT("accel"), mutT("rit"),
+    mutT("accelBegin"), mutT("accelEnd"), mutT("ritBegin"), mutT("ritEnd"), mutT("instr"),
+	 mutT("tie"), mutT("stacc"), mutT("accent"), mutT("ten"), mutT("marcato"),
+    mutT("trill"), mutT("mord"), mutT("turn"), mutT("trem"), mutT("fermata"),
+    mutT("grace"), mutT("cue"), mutT("repeatBegin"), mutT("repeatEnd"), mutT("clef"),
+    mutT("meter"), mutT("key"), mutT("oct"), mutT("staff"), mutT("beamsAuto"),
+    mutT("beamsOff"), mutT("stemsAuto"), mutT("stemsUp"), mutT("stemsDown"), mutT("doubleBar"),
+    mutT("tactus"), mutT("title"), mutT("composer"), mutT("mark"), mutT("label"),
+	 mutT("alter"), mutT("mutabor") };
 
-char *TagShorts[NTAGSHORTS] = { "", "i", "sl", "bm", "t", "|" };
+mutString TagShorts[NTAGSHORTS] = { _(""), _("i"), _("sl"), _("bm"), _("t"), _("|") };
 
 GisToken *Root;
 GisToken **Current, *LastOpenBracket;
 GisTagBegin *LastOpenRange;
 char TagMode;
-char *TagName, *TagSep;
+mutString TagName;
+mutString TagSep;
 GisToken *Para, *LastPara;
 int LastOctave;
 frac LastDuration;
@@ -173,10 +174,10 @@ void GisTagEnd::Stream(ostream &out, char sep)
 
 #endif
 
-int Name2Key(const char *name)
+int Name2Key(const mutString name)
 {
-  char notes[] = "c d ef g a b";
-  int l = strlen(name);
+  mutChar notes[] = mutT("c d ef g a b");
+  size_t l = mutLen(name);
   int i = 11;
   if ( l == 1 )
   {
@@ -206,7 +207,7 @@ int Name2Key(const char *name)
 	 return -1;
 }
 
-int Acc2Int(const char *acc)
+int Acc2Int(const mutString acc)
 {
   if ( !acc ) return 0;
   int i = 0;
@@ -220,29 +221,37 @@ int Acc2Int(const char *acc)
   return i;
 }
 
+#ifdef WX
+#define strdupchr(a) a
+#else
 char *strdupchr(char a)
 {
   char s[2] = "w";
   s[0] = a;
   return strdup(s);
 }
+#endif
 
-GisNote::GisNote(int key, int octave, int acc, char *sep, GisToken *next)
+GisNote::GisNote(int key, int octave, int acc, mutString sep, GisToken *next)
   : GisToken(sep, next)
 {
   if ( key == NO_KEY )
   {
+#ifdef WX
+	Name = mutT("_");
+#else
 	 Name = strdup("_");
-	 Accedentials = 0;;
+#endif
+	 Accedentials = mutEmptyString;;
 	 Octave = 0;
   }
   else
   {
-	 char Flats[]   = "cddeefggaabb";
-	 char FlatsA[]  = " & &  & & & ";
-	 char Sharps[]  = "ccddeffggaab";
-	 char SharpsA[] = " # #  # # # ";
-	 char accs;
+	 mutChar Flats[]   = mutT("cddeefggaabb");
+	 mutChar FlatsA[]  = mutT(" & &  & & & ");
+	 mutChar Sharps[]  = mutT("ccddeffggaab");
+	 mutChar SharpsA[] = mutT(" # #  # # # ");
+	 mutChar accs;
 	 int Index = key % 12;
 	 int Abstand = key /12;
 	 if ( Index < 0 )
@@ -263,7 +272,7 @@ GisNote::GisNote(int key, int octave, int acc, char *sep, GisToken *next)
 	 if ( accs != ' ' )
 		Accedentials = strdupchr(accs);
 	 else
-		Accedentials = 0;
+		Accedentials = mutEmptyString;
 	 Octave = Abstand - 5 - octave;
   }
   Duration = 0;
@@ -357,6 +366,14 @@ void GisComma::Stream(ostream &out, char sep)
 // help procedures for GIS structures
 
 // frees string pointer and sets it 0
+
+#ifdef WX
+#define AddStr(s1,s2,s3) (s1 += s2 + s3)
+void Clear(mutString * s) 
+{
+	if (s) delete(s);
+}
+#else
 void Clear(char **s)
 {
   if ( *s )
@@ -379,6 +396,7 @@ char *AddStr(char **s1, const char *s2, const char *s3)
   *s1 = s;
   return *s1;
 }
+#endif
 
 int BuildTag()
 {
@@ -419,7 +437,7 @@ int EndSegment()
   GISDEBUG("}\n")
   if ( TagMode ) BuildTag();
   *Current = 0;
-  ((GisSegment*)(LastOpenBracket))->Sep2 = strdup(Sep);
+  mutCopyString(((GisSegment*)(LastOpenBracket))->Sep2, Sep);
   Current = &(LastOpenBracket->Next);
   LastOpenBracket = LastOpenBracket->Next;
   return 0;
@@ -441,7 +459,7 @@ int EndSequenz()
   GISDEBUG("]\n")
   if ( TagMode ) BuildTag();
   *Current = 0;
-  ((GisSequenz*)LastOpenBracket)->Sep2 = strdup(Sep);
+  mutCopyString(((GisSequenz*)LastOpenBracket)->Sep2, Sep);
   Current = &(LastOpenBracket->Next);
   LastOpenBracket = LastOpenBracket->Next;
   return 0;
@@ -450,7 +468,7 @@ int EndSequenz()
 int BeginParameter()
 {
   GISDEBUG("<")
-  AddStr(&TagSep, "<", Sep);
+  AddStr(TagSep, mutT("<"), Sep);
   return 0;
 };
 
@@ -458,9 +476,9 @@ int EndParameter()
 {
   GISDEBUG(">")
   if ( Para )
-	 AddStr(&(LastPara->Sep), ">", Sep);
+	 AddStr((LastPara->Sep), mutT(">"), Sep);
   else
-	 AddStr(&TagSep, ">", Sep);
+	 AddStr(TagSep, mutT(">"), Sep);
   return 0;
 };
 
@@ -468,11 +486,11 @@ int BeginRange()
 {
   GISDEBUG("( ")
   if ( LastPara )
-	 AddStr(&LastPara->Sep, "(", Sep);
+	 AddStr(LastPara->Sep, mutT("("), Sep);
   else if ( Para )
-	 AddStr(&Para->Sep, "(", Sep);
+	 AddStr(Para->Sep, mutT("("), Sep);
   else
-	 AddStr(&TagSep, "(", Sep);
+	 AddStr(TagSep, mutT("("), Sep);
   GisTagBegin *Tag = new GisTagBegin(TagName, Para, TagSep, 0);
   *Current = Tag;
   Current = &(Tag->Next);
@@ -505,7 +523,7 @@ int NextSequenz()
   return 0;
 };
 
-int Note(char *name, char *accedentials, int octave, frac duration)
+int Note(const mutString name, const mutString accedentials, int octave, frac duration)
 {
   GISDEBUG(name << accedentials << octave << "*" << duration << " ")
   if ( TagMode ) BuildTag();
@@ -515,12 +533,12 @@ int Note(char *name, char *accedentials, int octave, frac duration)
   return 0;
 };
 
-int Tag(char *tagName)
+int Tag(const mutString tagName)
 {
   GISDEBUG("\n\\" << tagName)
   if ( TagMode ) BuildTag();
-  TagName = strdup(tagName);
-  TagSep = strdup(Sep);
+  mutCopyString(TagName, tagName);
+  mutCopyString(TagSep, Sep);
   TagMode = 1;
   return 0;
 };
@@ -549,7 +567,7 @@ int TagParaReal(double x)
   return 0;
 };
 
-int TagParaStr(char *s)
+int TagParaStr(mutString s)
 {
   GISDEBUG("ParaStr: " << """" << s << """" << ", ")
   GisParaStr *p = new GisParaStr(s, Sep, 0);
@@ -595,37 +613,37 @@ void UnRavel()
 
 GisType GetGisType(GisToken* token)
 {
-  if ( token )
-    return token->Type();
-  else
-    return GTNull;
+	if ( token )
+		return token->Type();
+	else 
+		return GTNull;
 }
 
-int GetTagId(const char *name, char **registered)
+int GetTagId(const mutString name, mutString &registered)
 {
-  if ( name == 0 )
-  {
-    *registered = Tags[0];
-    return 0;
-  }
-  // check normal form
-  int i;
-  for (i = 1; i <= NTAGS; i++)
-    if ( !strcmp(name, Tags[i]) )
-    {
-      *registered = Tags[i];
-      return i;
-    }
-  // check short form
-  for (i = 0; i < NTAGSHORTS; i++)
-    if ( !strcmp(name, TagShorts[i]) )
-	 {
-      *registered = TagShorts[i];
-		return i;
-	 }
-  // no registered tag
-  *registered = 0;
-  return -1;
+	if (!name) {
+		registered = Tags[0];
+		return 0;
+	}
+	
+	// check normal form
+	int i;
+	for (i = 1; i <= NTAGS; i++)
+		if ( mutStrEq(name, Tags[i]) ) {
+			registered = Tags[i];
+			return i;
+	}
+	
+	// check short form
+	for (i = 0; i < NTAGSHORTS; i++)
+		if ( mutStrEq(name, TagShorts[i]) ) {
+			registered = TagShorts[i];
+			return i;
+		}
+		
+	// no registered tag
+	registered = mutEmptyString;
+	return -1;
 }
 
 GisToken *CopyPara(GisToken *para)
@@ -641,18 +659,18 @@ GisToken *CopyPara(GisToken *para)
   return C;
 }
 
-GisToken *GisParse(const char *FileName)
+GisToken *GisParse(const mutString FileName)
 {
   Root = 0;
   Current = &Root;
   LastOpenBracket = 0;
   LastOpenRange = 0;
   TagMode = 0;
-  TagName = 0;
-  TagSep = 0;
+  TagName = mutEmptyString;
+  TagSep = mutEmptyString;
   Para = 0;
   LastPara = 0;
-  if ( GspParse(FileName) )
+  if ( GspParse(FileName.c_str()) )
   {
 	 UnRavel();
 	 delete Root;

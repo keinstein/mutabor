@@ -6,7 +6,9 @@
 #ifndef ROUTE_H
 #define ROUTE_H
 
+#ifndef WX
 #include <owl/OPENSAVE.H>
+#endif
 #include "EDevice.h"
 
 #define xz 5 // Zwischenräume

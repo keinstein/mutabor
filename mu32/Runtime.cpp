@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
+// Mutabor 2.win, 1997, R.Krauï¬‚e
 // Laufzeitfunktionen der DLL
 // ------------------------------------------------------------------
 #include "Defs.h"
@@ -29,7 +29,7 @@ bool RealTime = false;
 jmp_buf weiter_gehts_nach_compilerfehler;
 
 #ifdef WX
-char pascal _export Compile(CompDlg *compDia, const char *name)
+char pascal _export Compile(CompDlg *compDia, const wxChar *name)
 {
   InitCompDia(compDia);
 
@@ -69,7 +69,7 @@ char pascal _export Compile(CompDlg *compDia, const char *name)
 #else
 	 compDia->SetText(wxID_OK, _("Translation interrupted !"));
 #endif
-	 std::cout << (char*)Fmeldung.c_str() << std::endl;
+	 std::cout << (Fmeldung.ToUTF8()) << std::endl;
 	 compDia->SetText(IDC_COMP_MESSAGE, Fmeldung);
 	 return 0;
   }
@@ -200,7 +200,7 @@ void NRT_Play()
       }
     CurrentTime++;
   }
-  // alles schließen
+  // alles schlieï¬‚en
   for (InDevice *In1 = InDevices; In1; In1 = In1->Next)
     In1->Stop();
   InDevChanged = 1;
@@ -350,6 +350,16 @@ int pascal _export GetAktuellesKeyboardInstrument()
 #ifdef WX
 bool GetELine(const wxString& p, size_t& i, wxString &s);
 DevType Str2DT(const wxString& type);
+#else 
+DevType Str2DT(char *type)
+{
+  char * DTName[] =  { "", "MIDIPORT", "MIDIFILE", "GMN" };
+  int i;
+  for (i = 3; i > 0; i--)
+    if ( !strncmp(type, DTName[i], strlen(DTName[i])) )
+      break;
+  return (DevType)i;
+}
 #endif
 
 // aus p eine Zeile in s lesen, p wird verschoben
@@ -375,23 +385,14 @@ bool GetLine(char **p, char *s)
   if ( !GetELine(config, i, s) ) \
     return
 
-DevType Str2DT(char *type)
-{
-  char * DTName[] =  { "", "MIDIPORT", "MIDIFILE", "GMN" };
-  int i;
-  for (i = 3; i > 0; i--)
-    if ( !strncmp(type, DTName[i], strlen(DTName[i])) )
-      break;
-  return (DevType)i;
-}
 
-char *RTName[] =  { "ALL", "ELSE", "CHANNEL", "STAFF" };
-
-RouteType Str2RT(char * type)
+wxChar *RTName[] =  { _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF") };
+ 
+RouteType Str2RT(wxChar * type)
 {
   int i;
   for (i = 3; i > 0; i--)
-    if ( !strncmp(type, RTName[i], strlen(RTName[i])) )
+    if ( !wxStricmp(type, RTName[i])) //, strlen(RTName[i])) )
       break;
   return (RouteType) i;
 }
@@ -413,7 +414,7 @@ OutDevice *GetOut(int nr)
 // Device aus einem String scannen
 void pascal _export ScanDevices(const wxString &config)
 {
-  // Listen säubern
+  // Listen sâ€°ubern
   if ( InDevices )
   {
     delete InDevices;
@@ -428,26 +429,32 @@ void pascal _export ScanDevices(const wxString &config)
   wxString s;
   size_t i = 0;
   GETLINE;
-  while ( s.CmpNoCase(_T("OUTPUT" )))
+  while ( !s.StartsWith(_T("OUTPUT" )))
   {
     GETLINE;
   }
   GETLINE;
   // Output lesen
   OutDevice **PreOut = &OutDevices;
-  while ( s.CmpNoCase(_T("INPUT") ))
+  while ( !s.StartsWith(_T("INPUT") ))
   {
-    char Type[80], Name[400];
+    wxChar Type[80], Name[400];
     int DevId, BendingRange;
+#if (wxUSE_UNICODE)
+	int test = SSCANF (s, _T("%ls \"%l[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
+    if ( test < 2 )
+		test = SSCANF (s, _T("%ls %ls %d %d"), Type, Name, &DevId, &BendingRange);
+#else
 		int test = SSCANF (s, _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
     if ( test < 2 )
       test = SSCANF (s, _T("%s %s %d %d"), Type, Name, &DevId, &BendingRange);
+#endif
 		if ( test < 2 )
 		{
  		  //3 ??
 		}
     OutDevice *Out;
-    switch ( Str2DT(muT(Type)) )
+    switch ( Str2DT(Type) )
     {
       case DTUnknown:
 	std::cerr << "Unknown device: " << Type << std::endl;
@@ -459,7 +466,7 @@ void pascal _export ScanDevices(const wxString &config)
         Out = new OutMidiPort(Name, DevId, BendingRange);
         break;
       case DTMidiFile:
-        Out = new OutMidiFile(Name, BendingRange);
+        Out = new OutMidiFile(Name, DevId, BendingRange);
         break;
     }
     *PreOut = Out;
@@ -472,22 +479,28 @@ void pascal _export ScanDevices(const wxString &config)
   while ( 1 )
   {
     // Device lesen
-    char Type[80], Name[400];
+    wxChar Type[80], Name[400];
     int DevId = -1;
-		int test = SSCANF (s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
+#if (wxUSE_UNICODE)
+	int test = SSCANF (s, _T("%ls \"%l[^\"]\" %d"), Type, Name, &DevId);
     if ( test < 2 )
-      test = SSCANF (s, _T("%s %s %d"), Type, Name, &DevId);
-		if ( test < 2 )
-		{
+		test = SSCANF (s, _T("%ls %ls %d"), Type, Name, &DevId);
+#else
+	int test = SSCANF (s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
+    if ( test < 2 )
+		test = SSCANF (s, _T("%s %s %d"), Type, Name, &DevId);
+#endif
+	if ( test < 2 )
+	{
 		  //3 ??
-		}
+	}
     InDevice *In;
     switch ( Str2DT(muT(Type)) )
     {
       case DTUnknown:
         //3 ??
       case DTGis:
-        In = new InGis(Name, "GIS");
+        In = new InGis(Name, _T("GIS"));
         break;
       case DTMidiPort:
         In = new InMidiPort(Name, DevId);
@@ -503,10 +516,15 @@ void pascal _export ScanDevices(const wxString &config)
     while ( Str2DT(s) == DTUnknown )
     {
       // Route lesen
-      char Type[40];
+      wxChar Type[40];
       int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
+#if (wxUSE_UNICODE)
+      test = SSCANF(s, _("%ls %d %d %d %d %d %d %d %d"),
+			Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+#else
       test = SSCANF(s, _("%s %d %d %d %d %d %d %d %d"),
-        Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+			Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+#endif
       if ( test < 2 )
       {
         //3 ??

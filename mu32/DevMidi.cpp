@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.Krauï¬‚e
 // MidiPort Klassen
 // ------------------------------------------------------------------
 
@@ -111,7 +111,7 @@ bool OutMidiPort::Open()
     hMidiOut->openPort(DevId);
   }
   catch (RtError &error) {
-    LAUFZEIT_ERROR2(_("Can not open output Midi device nr. %d (%s)"), DevId, GetName());
+    LAUFZEIT_ERROR2(_("Can not open output Midi device nr. %d (%s)"), DevId, (GetName().c_str()));
     return false;
   }
 #else
@@ -129,13 +129,13 @@ bool OutMidiPort::Open()
 
 void OutMidiPort::Close()
 {
-  // alle liegenden Töne ausschalten
+  // alle liegenden TË†ne ausschalten
   for (int i = 0; i < 16; i++)
     if ( KeyDir[i] >= 16 )  // benutzt
       MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
 /*  for (int i = 0; i < 16; i++)
 	 MidiOut3(176+i, 122, 1);  // local on */
-  // Device schließen
+  // Device schlieï¬‚en
 #ifdef RTMIDI
   hMidiOut->closePort();
   delete hMidiOut;
@@ -292,7 +292,7 @@ void OutMidiPort::NotesCorrect(int box)
       if ( Box != box )
         break;
       long freq = GET_FREQ(ton_auf_kanal[i].taste, tonsystem[Box]);
-      // hier kann ein evtl. größerer bending_range genutzt werden, um
+      // hier kann ein evtl. grË†ï¬‚erer bending_range genutzt werden, um
       // Ton aus und einschalten zu vermeiden
       if ( ton_auf_kanal[i].key == (zugriff[3] & 0x7f) &&
         Cd[i].Pitch == ((DWORD)freq & 0xFFFFFF) )
@@ -315,7 +315,7 @@ void OutMidiPort::NotesCorrect(int box)
       }
       else if ( Delta == Cd[i].Pitch )
         continue;
-      // Spezialbending (großer Range)
+      // Spezialbending (groï¬‚er Range)
       Cd[i].Pitch = Delta;
       Delta /= (4*bending_range);
       Delta +=  0x400000; // lieber hier addieren //9
@@ -380,7 +380,7 @@ void OutMidiPort::Panic()
     MIDI_OUT3(0xB0+i, 7, 127);  // main volume
     // sound piano
     MIDI_OUT2(0xC0+i, 0);
-    // Merker aufräumen
+    // Merker aufrâ€°umen
     ton_auf_kanal[i].taste=0;
     ton_auf_kanal[i].id=0;
     Cd[i].Sound = 0;
@@ -432,7 +432,7 @@ bool InMidiPort::Open()
     hMidiIn->openPort(DevId);
   }
   catch (RtError &error) {
-    LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, GetName());
+    LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
     return false;
   }
   hMidiIn->setCallback(mycallback, this);
@@ -459,7 +459,7 @@ void InMidiPort::Close()
 #define MIDICODE(i) \
   (((BYTE*)(&midiCode))[i])
 
-// für bestimmte Route Codeverarbeitung
+// fÂ¸r bestimmte Route Codeverarbeitung
 void InMidiPort::ProceedRoute(DWORD midiCode, Route *route)
 {
   int Box = route->Box;

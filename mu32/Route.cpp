@@ -1,9 +1,13 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
+// Mutabor 3, 1998, R.Krauï¬‚e
 // Routenfenster Klasse
 // ------------------------------------------------------------------
 
 // TRouteWin --------------------------------------------------------
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 
 #ifndef WX
 
@@ -69,7 +73,7 @@
 #define POINT_IN(p, x1, y1, xl, yl) \
 (x1 <= p.x && p.x < x1+xl && y1 < p.y && p.y < y1+yl)
 
-DevType IsDT;  // Info für Inputfilter
+DevType IsDT;  // Info fÂ¸r Inputfilter
 
 extern int curBox;
 void RightButtonMenu(TWindow *win, TPoint &point);
@@ -482,7 +486,7 @@ void TRouteWin::CmTaste()
   else
   {
 	   // Buchstabentaste
-	   // Umwandeln in Großbuchstaben
+	   // Umwandeln in Groï¬‚buchstaben
 	   if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
 	   // ermiteln, ob Logik
 	   char isLogic = IsLogicKey(key);
@@ -562,7 +566,7 @@ void TRouteWin::Paint(TDC& dc, bool erase, TRect& rect)
   int z3 = 5*xz+x1+x2+x3/2;
   int z4 = 7*xz+x1+x2+x3+x4/2;
   int z5 = 9*xz+x1+x2+x3+x4+x5/2;
-  int z1t = z1;  // für Textplop
+  int z1t = z1;  // fÂ¸r Textplop
   if ( z1-xd/2-20 < 2 )
     z1 = xd/2+22; // evtl. verschieben wegen Play-Plops
   char s[100];
@@ -710,7 +714,7 @@ void TRouteWin::SetFocusPos()
   FocusPos[1] = Win->Attr.Y; */
 }
 /*
-// keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
+// keyboardanalyse, Fenster aufrâ€°umen, Logiken lesen und anzeigen
 void TRouteWin::UpDate(int thekey, bool isLogicKey)
 {
   // Analyse zuerst
@@ -719,7 +723,7 @@ void TRouteWin::UpDate(int thekey, bool isLogicKey)
   TWindow *ToFocus = NULL;
   if ( isLogicKey )
 	   curTaste[curInstr][0] = 0;
-  // alte TMutTag-s löschen
+  // alte TMutTag-s lË†schen
   ChildBroadcastMessage(WM_CLOSE);
   // neue erstellen
   char isLogic, s[100], s1[100], key, isOpen;
@@ -936,7 +940,7 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
     return;
   }*/
   DevType DevInTypes[3] = { DTMidiPort, DTMidiFile, DTGis };
-  // Datentypen für die Dialoge
+  // Datentypen fÂ¸r die Dialoge
   struct TDataR0
   {
     TComboBoxData Type;
@@ -976,7 +980,7 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
         In = NewDevice(&InEDevices, DTUnknown, "", 0, 0, In);
         RePaint();
       }
-      // ComboBoxen füllen
+      // ComboBoxen fÂ¸llen
       DataR0.Type.AddString("Midi device");
       DataR0.Type.AddString("Midi file");
       DataR0.Type.AddString("GUIDO file");
@@ -984,12 +988,20 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
       nMidi = rtmidiin->getPortCount();
       if ( nMidi )
       {
+#ifdef __WXMSW__
+		wxString portName;
+#else
         std::string portName;
+#endif
         for (int i = 0; i < nMidi; i++)
         {
           try {
             portName = rtmidiin->getPortName(i);
+#ifdef __WXMSW__
+			DataR0.Device.AddString(portName);
+#else
             DataR0.Device.AddString(portName.c_str());
+#endif
           }
           catch (RtError &error) {
             error.printMessage();
@@ -1139,7 +1151,7 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
         RePaint();
         NeedNew = TRUE;
       }
-      // ComboBoxen füllen
+      // ComboBoxen fÂ¸llen
       DataR0.Type.AddString("Midi device");
       DataR0.Type.AddString("Midi file");
       DataR0.Type.AddString("GUIDO file");
@@ -1147,12 +1159,20 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
       nMidi = rtmidiout->getPortCount();
       if ( nMidi )
       {
+#ifdef __WXMSW__
+		wxString portName;
+#else
         std::string portName;
+#endif
         for (int i = 0; i < nMidi; i++)
         {
           try {
             portName = rtmidiout->getPortName(i);
+#ifdef __WXMSW__
+			DataR0.Device.AddString(portName);
+#else
             DataR0.Device.AddString(portName.c_str());
+#endif
           }
           catch (RtError &error) {
             error.printMessage();
@@ -1206,7 +1226,7 @@ void TRouteWin::EvLButtonDblClk(UINT modKeys, TPoint& point)
       }
       else if ( Res == IDR_ERASE01 || (NeedNew && Res == IDCANCEL) )
       {
-//        NewDevice(&OutDevices, -1, "", 0, Out, 0); nicht löschen, könnte ja noch eine andere Route verwenden
+//        NewDevice(&OutDevices, -1, "", 0, Out, 0); nicht lË†schen, kË†nnte ja noch eine andere Route verwenden
         Out = 0;
       }
       R->Out = Out;
