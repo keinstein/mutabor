@@ -14,6 +14,7 @@
 
 @SET_MAKE@
 
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
@@ -69,7 +70,7 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = intl/libgnuintl.h intl/Makefile \
 	osdep/macosx/Info.plist
-am__installdirs = "$(DESTDIR)$(bindir)"
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mutabordir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
@@ -90,7 +91,8 @@ am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
 	mutabor-GIS.$(OBJEXT) mutabor-GSP_Err.$(OBJEXT) \
 	mutabor-GSP_File.$(OBJEXT) mutabor-GSP.$(OBJEXT) \
 	mutabor-InputFilterDlg.$(OBJEXT) mutabor-BoxDlg.$(OBJEXT) \
-	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-valRadio.$(OBJEXT)
+	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-valRadio.$(OBJEXT) \
+	mutabor-muconvauto.$(OBJEXT)
 mutabor_OBJECTS = $(am_mutabor_OBJECTS)
 mutabor_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(mutabor_CXXFLAGS) $(CXXFLAGS) \
@@ -125,6 +127,14 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	install-pdf-recursive install-ps-recursive install-recursive \
 	installcheck-recursive installdirs-recursive pdf-recursive \
 	ps-recursive uninstall-recursive
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
+mutaborDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(mutabor_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 ETAGS = etags
@@ -351,10 +361,12 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
+		mywx/muconvauto.cpp mywx/muconvauto.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 
 #
+mutabordir = $(datadir)/mutabor
 mutabor_LDFLAGS = $(LDFLAGS) $(ALSA_LIBS) $(WX_LIBS)
 mutabor_CallFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
 mutabor_CFLAGS = $(mutabor_CallFLAGS) @COND_PRECOMP_C_TRUE@-include \
@@ -366,6 +378,7 @@ mutabor_CPPFLAGS = $(WX_CPPFLAGS)
 mutabor_SHORTNAME = mutabor
 mutabor_DEPENDENCIES = @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
 mutabor_LDADD = $(LDADD) @COND_WINRC_TRUE@ $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+mutabor_DATA = Images/about.png
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -500,6 +513,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-RtMidi.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Runtime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-TabGen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-muconvauto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valNum.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valRadio.Po@am__quote@
@@ -1057,6 +1071,20 @@ mutabor-valRadio.obj: mywx/valRadio.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`
 
+mutabor-muconvauto.o: mywx/muconvauto.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-muconvauto.o -MD -MP -MF $(DEPDIR)/mutabor-muconvauto.Tpo -c -o mutabor-muconvauto.o `test -f 'mywx/muconvauto.cpp' || echo '$(srcdir)/'`mywx/muconvauto.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-muconvauto.Tpo $(DEPDIR)/mutabor-muconvauto.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/muconvauto.cpp' object='mutabor-muconvauto.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-muconvauto.o `test -f 'mywx/muconvauto.cpp' || echo '$(srcdir)/'`mywx/muconvauto.cpp
+
+mutabor-muconvauto.obj: mywx/muconvauto.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-muconvauto.obj -MD -MP -MF $(DEPDIR)/mutabor-muconvauto.Tpo -c -o mutabor-muconvauto.obj `if test -f 'mywx/muconvauto.cpp'; then $(CYGPATH_W) 'mywx/muconvauto.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/muconvauto.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-muconvauto.Tpo $(DEPDIR)/mutabor-muconvauto.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/muconvauto.cpp' object='mutabor-muconvauto.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-muconvauto.obj `if test -f 'mywx/muconvauto.cpp'; then $(CYGPATH_W) 'mywx/muconvauto.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/muconvauto.cpp'; fi`
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -1065,6 +1093,23 @@ clean-libtool:
 
 distclean-libtool:
 	-rm -f libtool
+install-mutaborDATA: $(mutabor_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(mutabordir)" || $(MKDIR_P) "$(DESTDIR)$(mutabordir)"
+	@list='$(mutabor_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(mutaborDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(mutabordir)/$$f'"; \
+	  $(mutaborDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(mutabordir)/$$f"; \
+	done
+
+uninstall-mutaborDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(mutabor_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(mutabordir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(mutabordir)/$$f"; \
+	done
 
 # This directory's subdirectories are mostly independent; you can cd
 # into them and run `make' without going through this Makefile.
@@ -1343,10 +1388,10 @@ distcleancheck: distclean
 check-am: all-am
 check: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) check-recursive
-all-am: Makefile $(PROGRAMS) config.h
+all-am: Makefile $(PROGRAMS) $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mutabordir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -1396,7 +1441,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am:
+install-data-am: install-mutaborDATA
 
 install-dvi: install-dvi-recursive
 
@@ -1434,7 +1479,7 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS
+uninstall-am: uninstall-binPROGRAMS uninstall-mutaborDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) install-am \
 	install-strip
@@ -1449,13 +1494,13 @@ uninstall-am: uninstall-binPROGRAMS
 	info-am install install-am install-binPROGRAMS install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am \
-	uninstall-binPROGRAMS
+	install-info-am install-man install-mutaborDATA install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs installdirs-am \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-mutaborDATA
 
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
@@ -1514,7 +1559,7 @@ mutabor-cxxprecompiled.h:
 Mutabor.app:all
 	mkdir -p Mutabor.app/Contents/MacOS
 	mkdir -p Mutabor.app/Contents/Resources
-	cp mutabor Mutabor.app/Contents/MacOS/Mutabor
+	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPL???? >Mutabor.app/Contents/PkgInfo
@@ -1524,6 +1569,7 @@ Mutabor.app:all
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
+	cp $(top_srcdir)/Images/about.png Mutabor.app/Contents/Resources
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
