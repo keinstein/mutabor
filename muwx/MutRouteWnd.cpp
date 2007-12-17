@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutApp.cpp
 // Purpose:     Mutabor Application
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -93,7 +93,7 @@
 #define POINT_IN(p, x1, y1, xl, yl) \
 (x1 <= p.x && p.x < x1+xl && y1 < p.y && p.y < y1+yl)
 
-DevType IsDT;  // Info für Inputfilter
+DevType IsDT;  // Info fÂ¸r Inputfilter
 
 extern int curBox;
 /*wx
@@ -517,7 +517,7 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 	int z3 = 5*xz+x1+x2+x3/2;
 	int z4 = 7*xz+x1+x2+x3+x4/2;
 	int z5 = 9*xz+x1+x2+x3+x4+x5/2;
-	int z1t = z1;  // für Textplop
+	int z1t = z1;  // fÂ¸r Textplop
 	if ( z1-xd/2-20 < 2 )
 		z1 = xd/2+22; // evtl. verschieben wegen Play-Plops
 	wxString s;
@@ -655,7 +655,7 @@ void TRouteWin::CorrectScroller()
 }
 
 /*
-// keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
+// keyboardanalyse, Fenster aufrâ€°umen, Logiken lesen und anzeigen
 void TRouteWin::UpDate(int thekey, bool isLogicKey)
 {
   // Analyse zuerst
@@ -664,7 +664,7 @@ void TRouteWin::UpDate(int thekey, bool isLogicKey)
   TWindow *ToFocus = NULL;
   if ( isLogicKey )
 	   curTaste[curInstr][0] = 0;
-  // alte TMutTag-s löschen
+  // alte TMutTag-s lË†schen
   ChildBroadcastMessage(WM_CLOSE);
   // neue erstellen
   char isLogic, s[100], s1[100], key, isOpen;
@@ -892,17 +892,25 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 				Refresh();//RePaint();
 			}
 			InputDevDlg in(this);
-			// ComboBoxen füllen
+			// ComboBoxen fÂ¸llen
 #ifdef RTMIDI
 			nMidi = rtmidiin->getPortCount();
 			if ( nMidi )
 			{
+#ifdef __WXMSW__
+				wxString portName;
+#else
 				std::string portName;
+#endif
 				for (int i = 0; i < nMidi; i++)
 				{	
-					try {
+	 	 			try {
 						portName = rtmidiin->getPortName(i);
+#ifdef __WXMSW__
+						in.ctrlMidiDevice->Append(portName);
+#else						
 						in.ctrlMidiDevice->Append(muT(portName.c_str()));
+#endif
 					}
 					catch (RtError &error) {
 						error.printMessage();
@@ -1061,18 +1069,26 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 				Refresh(); //RePaint();
 				NeedNew = TRUE;
 			}
-			// ComboBoxen füllen
+			// ComboBoxen fÂ¸llen
 			OutputDevDlg out(this);
 #ifdef RTMIDI
 			nMidi = rtmidiout->getPortCount();
 			if ( nMidi )
 			{
+#ifdef __WXMSW__
+				wxString portName;
+#else
 				std::string portName;
+#endif
 				for (int i = 0; i < nMidi; i++)
 				{
 					try {
 						portName = rtmidiout->getPortName(i);
+#ifdef __WXMSW__
+						out.ctrlMidiDevice->Append(portName);
+#else	
 						out.ctrlMidiDevice->Append(muT(portName.c_str()));
+#endif
 					}
 					catch (RtError &error) {
 						error.printMessage();
@@ -1139,7 +1155,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 					Out = NewDevice(&OutEDevices, DTGis, out.GetGUIDOFile(), 0, Out, Out);
 			}
 			else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
-				Out = 0; // NewDevice(&OutEDevices, DTNotSet, "", 0, Out, 0);  nicht löschen, könnte ja noch eine andere Route verwenden
+				Out = 0; // NewDevice(&OutEDevices, DTNotSet, "", 0, Out, 0);  nicht lË†schen, kË†nnte ja noch eine andere Route verwenden
 			R->Out = Out;
 			break;
 	}
