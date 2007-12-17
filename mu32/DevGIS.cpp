@@ -20,8 +20,8 @@
 
 //int ausgabe_instrument[16][4];
 
-char *CurrentId;
-char *CurrentSep;
+mutString CurrentId;
+mutString CurrentSep;
 
 #define ROUND_FACTOR 1000000
 #define ROUND(x) x = (floor(x*ROUND_FACTOR+0.5)) / ROUND_FACTOR
@@ -146,13 +146,19 @@ bool InGis::Open()
     *Echo << "  ErrorNr: " << GspError << " - " << GspErrorText[GspError] << "\n";
     *Echo << "  Line: " << GspErrorLineNr << ", " << GspErrorPos << "\n";
     *Echo << "  " << GspErrorLine << "\n  "; */
-    compiler_warning(9, Name, GspErrorLineNr, GspErrorPos, GspErrorText[GspError]);
+#ifdef DEBUG
+	std::cerr << "Issuing Compiler warning 9..." << std::endl;
+#endif
+    compiler_warning(9, Name.c_str(), GspErrorLineNr, GspErrorPos, GspErrorText[GspError]);
+#ifdef DEBUG
+	std::cerr << "done.";
+#endif
     Mode = 3;
     InDevChanged = 1;
     return false;
   }
   Head = new GisReadArtHead(0, Data, Id);
-  Head->Box = 0; /// hier muß noch was hin
+  Head->Box = 0; /// hier muï¬‚ noch was hin
   Head->Prev = (GisReadHead*)(&Head);
   // Mode setzen
   Mode = 0;
@@ -194,7 +200,7 @@ void InGis::Stop()
     Head = 0;
   }
   Head = new GisReadArtHead(0, Data, Id);
-  Head->Box = 0; /// hier muß noch was hin
+  Head->Box = 0; /// hier muï¬‚ noch was hin
   Head->Prev = (GisReadHead*)&Head;
   // Delta-Times lesen
   minDelta = 0;
@@ -246,15 +252,15 @@ void MutaborTag(GisReadArtHead *h, GisToken *Para, int box)
 {
   if ( !Para || Para->Type() != GTParaStr )
 	 return; // strange parameters
-  char *ParaName = ((GisParaStr*)Para)->s;
+  mutString ParaName = ((GisParaStr*)Para)->s;
   Para = Para->Next;
-  if ( !strcmp(ParaName, "key") )
+  if ( mutStrEq(ParaName, mutT("key")) )
   {
 	 if ( GetGisType(Para) == GTParaStr )
 ///		KeyboardIn(Box, ((GisParaStr*)Para)->s);
-		KeyboardIn(box, ((GisParaStr*)Para)->s);
+		KeyboardIn(box, ((GisParaStr*)Para)->s.c_str());
   }
-  if ( !strcmp(ParaName, "box") || !strcmp(ParaName, "instrument") )
+  if ( mutStrEq(ParaName, mutT("box")) || mutStrEq(ParaName, mutT("instrument")) )
   {
 	 if ( GetGisType(Para) == GTParaInt )
 		h->Box = ((GisParaInt*)Para)->i;
@@ -265,65 +271,60 @@ ChannelData Cd(0, 0);
 
 void InGis::Proceed(GisReadArtHead *h, char turn, Route *route)
 {
-  CurrentId = h->Id;
-  CurrentSep = h->Cursor->Sep;
-  // calculate box
-  int Box = route->Box;
-  if ( Box == -1 )
-	 Box = h->Box;
-  OutDevice *out = route->Out;
-  // check wether no box should be used
-  if ( Box == -2 )
-  {
-	 if ( out )
-		out->Gis(h->Cursor, turn);
-	 return;
-  }
-  // proceed the token
-  int Key;
-  switch ( GetGisType(h->Cursor))
-  {
-	 case GTTag:
-	 case GTTagBegin:
+	CurrentId = h->Id;
+	CurrentSep = h->Cursor->Sep;
+	// calculate box
+	int Box = route->Box;
+	if ( Box == -1 )
+		Box = h->Box;
+	OutDevice *out = route->Out;
+	// check wether no box should be used
+	if ( Box == -2 ) {
+		if ( out )
+			out->Gis(h->Cursor, turn);
+		return;
+	}	
+	// proceed the token
+	int Key;
+	switch ( GetGisType(h->Cursor)) {
+	case GTTag:
+	case GTTagBegin:
 		if ( ((GisTag*)(h->Cursor))->Id == TTmutabor )
-		  MutaborTag(h, ((GisTag*)(h->Cursor))->Para, Box);
+			MutaborTag(h, ((GisTag*)(h->Cursor))->Para, Box);
 		if ( ((GisTag*)(h->Cursor))->Id == TTalter ) return;
 		if ( out ) out->Gis(h->Cursor, turn);
 		break;
-	 case GTTagEnd:
+	case GTTagEnd:
 		if ( (((GisTagEnd*)(h->Cursor))->Begin)->Id == TTalter ) return;
 		if ( out )out->Gis(h->Cursor, turn);
 		break;
-	 case GTNote:
+	case GTNote:
 		Key = ((GisNote*)(h->Cursor))->GetKey();
 		if ( Key == -1 ) return ;
 		Key += h->GetOctave()*12;
-    if ( turn != 1 && route->Active )
-    {
-	   	if ( turn )
-		    DeleteKey(Box, Key, route->Id);
-		  else
-		    AddKey(Box, Key, route->Id);
-    }
-		if ( turn != 2 && route->Out )
-    {
-	   	if ( turn )
-        route->Out->NoteOff(Box, Key, h->GetIntensity(turn), route, 0); //4 ?? channelid aus staff
-		  else
-      {
-        Cd.Sound = h->GetInstr();
-        route->Out->NoteOn(Box, Key, h->GetIntensity(turn), route, 0, &Cd);
-      }
-    }
+		if ( turn != 1 && route->Active ) {
+			if ( turn )
+				DeleteKey(Box, Key, route->Id);
+			else
+				AddKey(Box, Key, route->Id);
+		}
+		if ( turn != 2 && route->Out ) {
+			if ( turn )
+				route->Out->NoteOff(Box, Key, h->GetIntensity(turn), route, 0); //4 ?? channelid aus staff
+			else {
+				Cd.Sound = h->GetInstr();
+				route->Out->NoteOn(Box, Key, h->GetIntensity(turn), route, 0, &Cd);
+			}
+		}
 		break;
-	 default:
+	default:
 		if ( out ) out->Gis(h->Cursor, turn);
-  }
+	}
 }
 
 void InGis::ProceedRoute(GisReadArtHead *h, char turn)
 {
-  char staff = h->Id[strlen(Id)];
+  mutChar staff = mutStrLast(h->Id);
   char DidOut = 0;
   for (Route *R = Routes; R; R = R->Next)
 	 switch ( R->Type )
@@ -350,7 +351,7 @@ void InGis::ProceedRoute(GisReadArtHead *h, char turn)
 	 }
 }
 
-// return -1 heißt Ende der GMN
+// return -1 heiï¬‚t Ende der GMN
 // ein und ausgabe in ticks
 // Sinn der ticks: verschiedene Tempi in den Spuren
 long InGis::ReadOn(long delta)
