@@ -11,20 +11,25 @@
 #ifndef MUTFRAME_H
 #define MUTFRAME_H
 
-#include "wx/toolbar.h"
 #include "Global.h"
 #include "MutChild.h"
+#include "MutEditFile.h"
+#include "wx/aui/aui.h"
+#include "wx/toolbar.h"
 
-class MutFrame : public wxMDIParentFrame
+class MutFrame : public wxFrame
 {
 public:
     MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
             const wxPoint& pos, const wxSize& size,
 			 const long style);
+			 
+	~MutFrame();
 
     void InitToolBar(wxToolBar* toolBar);
 
 //    void OnSize(wxSizeEvent& event);
+	void PassEventToEditor(wxCommandEvent &event);
     void EventPassOn(wxCommandEvent& event);
     void OnNewWindow(wxCommandEvent& event);
     void OnQuit(wxCommandEvent& event);
@@ -35,13 +40,13 @@ public:
 
 	void OpenFile(wxString path);
 
-	void CmDoActivate(wxCommandEvent& WXUNUSED(event));
+	void CmDoActivate(wxCommandEvent& event);
 	void CmStop(wxCommandEvent& WXUNUSED(event));
 	void CmPanic(wxCommandEvent& WXUNUSED(event));
     void CeActivate(wxUpdateUIEvent& event);
     void CeStop(wxUpdateUIEvent& event);
 
-	void CmRoutes(wxCommandEvent& WXUNUSED(event));
+	void CmRoutes(wxCommandEvent& event);
 
     void CmToggleKey(wxCommandEvent& WXUNUSED(event));
     void CmToggleTS(wxCommandEvent& WXUNUSED(event));
@@ -65,6 +70,10 @@ public:
 	// Idle
 	void UpdateUI(wxCommandEvent& WXUNUSED(event));
 	void OnIdle(wxIdleEvent& WXUNUSED(event));
+	void OnActivate(wxActivateEvent& event);
+	void OnEraseBackground(wxEraseEvent& event);
+	void OnSize(wxSizeEvent& event);
+	wxAuiDockArt* MutFrame::GetDockArt();
 
 	MutChild* NewFrame(WinKind winKind, int box, const wxString &frameName, wxIcon icon, const wxString &title = wxEmptyString);
 	void WindowSize(MutChild *win);
@@ -86,9 +95,9 @@ public:
   private:
     int curStatusImg;
 
-	//wxAuiManager m_mgr;
+	wxAuiManager auimanager;
 
-
+	wxWindow *client;
 
     DECLARE_EVENT_TABLE()
 };
