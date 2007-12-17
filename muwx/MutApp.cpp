@@ -13,6 +13,7 @@
 // ---------------------------------------------------------------------------
 
 // For compilers that support precompilation, includes "wx/wx.h".
+#include "Defs.h"
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -193,11 +194,11 @@ bool MutApp::OnInit()
 	OPENMENU;
 	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
 	CLOSEMENU(_("&Routes"));
-
+*/
 	OPENMENU;
 	MENUITEM(_("&Routes\tF11"), CM_ROUTES, wxT(""));
 	CLOSEMENU(_("&View"));
-*/
+
 
 	OPENMENU;
 	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
@@ -252,25 +253,19 @@ AppAbout::AppAbout (wxWindow *parent, long style)
     SetTitle (_("About ..."));
 
     // about info
-    wxGridSizer *aboutinfo = new wxGridSizer (2, 3, 3);
+    wxGridSizer *aboutinfo = new wxFlexGridSizer (2, 5, 5);
     aboutinfo->Add (new wxStaticText(this, -1, _("Version: ")));
-    aboutinfo->Add (new wxStaticText(this, -1, PACKAGE_VERSION));
+    aboutinfo->Add (new wxStaticText(this, -1, _T(PACKAGE_VERSION)));
     aboutinfo->Add (new wxStaticText(this, -1, _("Written by: ")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Volker Abel")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Peter Reiss")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Ruediger Krausze <krausze@mail.berlios.de>")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Ruediger Krausze <krausze@mail.berlios.de>")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("")));
-    aboutinfo->Add (new wxStaticText(this, -1, _T("Tobias Schlemmer <keinstein@mail.berlios.de>")));
-    aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical modelling:")));
-    aboutinfo->Add (new wxStaticText(this, -1, "Rudolf Wille"));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter\n"
+												 "Volker Abel\n"
+												 "Peter Reiss\n"
+												 "Ruediger Krausze <krausze@mail.berlios.de>\n"
+												 "Tobias Schlemmer <keinstein@mail.berlios.de>")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical\nmodelling:")));
+    aboutinfo->Add (new wxStaticText(this, -1, _("Rudolf Wille")));
     aboutinfo->Add (new wxStaticText(this, -1, _("Licence type: ")));
-    aboutinfo->Add (new wxStaticText(this, -1, "GPL"));
+    aboutinfo->Add (new wxStaticText(this, -1, _("GPL")));
     aboutinfo->Add (new wxStaticText(this, -1, _("wxWidgets: ")));
     aboutinfo->Add (new wxStaticText(this, -1, wxVERSION_STRING));
     aboutinfo->Add (new wxStaticText(this, -1, _("Copyright: ")));
@@ -288,8 +283,7 @@ AppAbout::AppAbout (wxWindow *parent, long style)
     // about icontitle//info
     wxBoxSizer *aboutpane = new wxBoxSizer (wxHORIZONTAL);
 //    wxBitmap bitmap = wxBitmap(wxICON (mutabor));
-std::cout << wxFileName(path.GetResourcesDir(),"about","png").GetFullPath() << std::endl;
-	wxBitmap bitmap = wxBitmap(wxFileName(path.GetResourcesDir(),"about","png").GetFullPath(),
+	wxBitmap bitmap = wxBitmap(wxFileName(path.GetResourcesDir(),_T("about"),_T("png")).GetFullPath(),
 							wxBITMAP_TYPE_PNG);
     aboutpane->Add (new wxStaticBitmap (this, -1, bitmap),
                     0, wxALIGN_LEFT);
@@ -327,8 +321,8 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
 	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
     
-	EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
-
+*/	EVT_MENU(CM_ROUTES, MutApp::CmRoutes)
+/*
 	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
 	EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
 	EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
@@ -357,7 +351,7 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 //    EVT_SIZE(MutFrame::OnSize)
 END_EVENT_TABLE()
 
-MutFrame* MutApp::CreateMainFrame() {
+MutFrame* MutApp::CreateMainFrame(wxWindowID id) {
 	MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
                         wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
                         wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
@@ -478,6 +472,15 @@ void MutApp::CmFileOpen (wxCommandEvent& event) {
 	frame->CmFileOpen(event);
 }
 
+void MutApp::CmRoutes (wxCommandEvent& event) {
+	frame = new MutFrame((wxFrame *) NULL,WK_ROUTE, wxString().Format(_("%s -- Routes"),_(PACKAGE_NAME)),
+		wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
+	SetTopWindow(frame);
+	RegisterFrame(frame);
+	frame->CmRoutes(event);
+	frame->Show(true);
+}
+
 void MutApp::CmQuit (wxCommandEvent& event) {
 #ifdef DEBUG
 	printf("MutApp::CmQuit\n");
@@ -489,6 +492,7 @@ void MutApp::CmQuit (wxCommandEvent& event) {
 		printf("MutApp::CmQuit: No Frames.\n");
 #endif
 		quitting = false;
+		event.Skip(true);
 		return;
 	}
 	
@@ -520,6 +524,8 @@ void MutApp::CmQuit (wxCommandEvent& event) {
 		}
     }
 }
+
+
 
 void MutApp::RegisterFrame (wxFrame * f) {
 	frames[f] = f;

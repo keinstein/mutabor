@@ -2,12 +2,18 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.7 2007/10/09 14:57:49 keinstein Exp $
+ * $Id: MutApp.h,v 1.8 2007/12/17 12:56:04 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2007/10/09 14:57:49 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2007/12/17 12:56:04 $
+ * \version $Revision: 1.8 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.8  2007/12/17 12:56:04  keinstein
+ * Fix Unicode compilation
+ * Catch CM_ROUTES
+ * MutApp::CmRoutes: New function.
+ * MuttApp::CreateMainFrame: Accept window id as argument.
+ *
  * Revision 1.7  2007/10/09 14:57:49  keinstein
  * AppAbout: New class.
  * MutApp::CmAbout: Use AppAbout for displaying about window.
@@ -74,8 +80,9 @@ class MutApp : public wxApp
 	void CmAbout (wxCommandEvent& event);
 	void CmFileNew (wxCommandEvent& event);
 	void CmFileOpen (wxCommandEvent& event);
+	void CmRoutes (wxCommandEvent& event);
 	void CmQuit (wxCommandEvent& event);
-	MutFrame* CreateMainFrame();
+	MutFrame* CreateMainFrame(wxWindowID id = wxID_ANY);
 	void RegisterFrame(wxFrame * f);
 	void UnregisterFrame (wxFrame * f);
  private:
