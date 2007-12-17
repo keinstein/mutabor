@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutLogicWnd.cpp
 // Purpose:     Logic window
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     01.09.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -14,12 +14,12 @@
 #include <wx/scrolwin.h>
 
 // RouteWin ----------------------------------------------------------
-// Fenster, das die Routen enthält
+// Fenster, das die Routen enthâ€°lt
 
 class MutLogicWnd : public wxScrolledWindow
 {
   public:
-	MutLogicWnd(wxWindow *parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
+	MutLogicWnd(wxWindow *parent, 	int Kind, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
 	void OnSize(wxSizeEvent& event);
 	void OnClose(wxCloseEvent& event);
 	void UpDate(int thekey, bool isLogicKey);
@@ -33,6 +33,7 @@ class MutLogicWnd : public wxScrolledWindow
 	bool Ok;
 	int nTags;
 	wxWindow *ColorBar1, *ColorBar2;
+	int boxnumber;
   public:
    	DECLARE_EVENT_TABLE()
 };
