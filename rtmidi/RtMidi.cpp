@@ -421,6 +421,7 @@ unsigned int RtMidiIn :: getPortCount()
   return MIDIGetNumberOfSources();
 }
 
+
 STD_PRE::string RtMidiIn :: getPortName( unsigned int portNumber )
 {
   CFStringRef nameRef;
@@ -1793,6 +1794,26 @@ unsigned int RtMidiIn :: getPortCount()
   return midiInGetNumDevs();
 }
 
+#ifdef __WXMSW__
+
+wxString RtMidiIn :: getPortName( unsigned int portNumber )
+{
+  unsigned int nDevices = midiInGetNumDevs();
+  if ( portNumber >= nDevices ) {
+	  STD_PRE::ostrstream ost;
+    ost << "RtMidiIn::getPortName: the 'portNumber' argument (" << portNumber << ") is invalid.";
+    errorString_ = ost.str();
+    error( RtError::INVALID_PARAMETER );
+  }
+
+  MIDIINCAPS deviceCaps;
+  MMRESULT result = midiInGetDevCaps( portNumber, &deviceCaps, sizeof(MIDIINCAPS));
+
+  wxString stringName ( deviceCaps.szPname );
+  return stringName;
+}
+
+#else
 STD_PRE::string RtMidiIn :: getPortName( unsigned int portNumber )
 {
   unsigned int nDevices = midiInGetNumDevs();
@@ -1807,8 +1828,16 @@ STD_PRE::string RtMidiIn :: getPortName( unsigned int portNumber )
   MMRESULT result = midiInGetDevCaps( portNumber, &deviceCaps, sizeof(MIDIINCAPS));
 
   STD_PRE::string stringName = STD_PRE::string( (char*)deviceCaps.szPname );
+  std::cout << "RtMidiIn::getPortName" << std::endl;
+  std::cout << ((deviceCaps.szPname)) << " " << sizeof(*deviceCaps.szPname) << std::endl;
+  for (size_t i=0; deviceCaps.szPname[i] !=0; i++)
+	std::cout << ((char)(deviceCaps.szPname[i])); 
+  std::cout << std::endl;
+  
+  
   return stringName;
 }
+#endif
 
 //*********************************************************************//
 //  API: Windows MM
@@ -1820,6 +1849,25 @@ unsigned int RtMidiOut :: getPortCount()
   return midiOutGetNumDevs();
 }
 
+
+#ifdef __WXMSW__
+wxString RtMidiOut :: getPortName( unsigned int portNumber )
+{
+  unsigned int nDevices = midiOutGetNumDevs();
+  if ( portNumber >= nDevices ) {
+	  STD_PRE::ostrstream ost;
+    ost << "RtMidiOut::getPortName: the 'portNumber' argument (" << portNumber << ") is invalid.";
+    errorString_ = ost.str();
+    error( RtError::INVALID_PARAMETER );
+  }
+
+  MIDIOUTCAPS deviceCaps;
+  MMRESULT result = midiOutGetDevCaps( portNumber, &deviceCaps, sizeof(MIDIOUTCAPS));
+
+  wxString stringName ( deviceCaps.szPname );
+  return stringName;
+}
+#else
 STD_PRE::string RtMidiOut :: getPortName( unsigned int portNumber )
 {
   unsigned int nDevices = midiOutGetNumDevs();
@@ -1836,6 +1884,7 @@ STD_PRE::string RtMidiOut :: getPortName( unsigned int portNumber )
   STD_PRE::string stringName = std::string( (char*)deviceCaps.szPname );
   return stringName;
 }
+#endif
 
 void RtMidiOut :: initialize( void )
 {

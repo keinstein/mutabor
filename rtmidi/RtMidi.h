@@ -62,7 +62,11 @@ class RtMidi
   virtual unsigned int getPortCount() = 0;
 
   //! Pure virtual getPortName() function.
+#ifdef __WXMSW__
+  virtual wxString getPortName(unsigned int portNumber = 0 ) = 0;
+#else
   virtual std::string getPortName( unsigned int portNumber = 0 ) = 0;
+#endif
 
   //! Pure virtual closePort() function.
   virtual void closePort( void ) = 0;
@@ -161,7 +165,11 @@ class RtMidiIn : public RtMidi
   /*!
       An exception is thrown if an invalid port specifier is provided.
   */
+#ifdef __WXMSW__
+  wxString getPortName( unsigned int portNumber = 0 );
+#else
   std::string getPortName( unsigned int portNumber = 0 );
+#endif
 
   //! Set the maximum number of MIDI messages to be saved in the queue.
   /*!
@@ -284,7 +292,11 @@ class RtMidiOut : public RtMidi
   /*!
       An exception is thrown if an invalid port specifier is provided.
   */
+#ifdef __WXMSW__
+  wxString getPortName( unsigned int portNumber );
+#else
   std::string getPortName( unsigned int portNumber );
+#endif
 
   //! Immediately send a single message out an open MIDI output port.
   /*!
