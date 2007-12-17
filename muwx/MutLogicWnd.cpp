@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutApp.cpp
 // Purpose:     Mutabor Application
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -43,15 +43,16 @@
     #include "Icon/TonesystOpen.xpm"
 #endif
 
-int pubTaste; // Taste aus anderen Fenstern für MutWin
+int pubTaste; // Taste aus anderen Fenstern fÂ¸r MutWin
 extern bool UseColorBars;
 //void RightButtonMenu(TWindow *win, TPoint &point);
 
 // TMutTag -----------------------------------------------------------
-// repräsentiert Logik im Mut-Dialog
+// reprâ€°sentiert Logik im Mut-Dialog
 
 #define MUTTAGX 90
 #define MUTTAGY 70
+
 
 wxSize MutTagSize(MUTTAGX, MUTTAGY);
 
@@ -285,7 +286,7 @@ void MutTag::OnFocus(wxFocusEvent& event)
   return TButton::EvCommand(id, hWndCtl, notifyCode);
 }*/
 
-// Funktion für FirstThat
+// Funktion fÂ¸r FirstThat
 
 /*bool HasPosition(TWindow *win, void *param)
 {
@@ -293,7 +294,7 @@ void MutTag::OnFocus(wxFocusEvent& event)
 }*/
 
 // MutLogicWnd ----------------------------------------------------------
-// Fenster, das die Logiken enthält
+// Fenster, das die Logiken enthâ€°lt
 
 /*DEFINE_RESPONSE_TABLE1(MutLogicWnd, TWindow)
   EV_WM_CHAR,
@@ -310,12 +311,13 @@ BEGIN_EVENT_TABLE(MutLogicWnd, wxScrolledWindow)
 	EVT_CLOSE(MutLogicWnd::OnClose)
 END_EVENT_TABLE()
 
-MutLogicWnd::MutLogicWnd(wxWindow *parent, const wxPoint& pos, const wxSize& size)
+MutLogicWnd::MutLogicWnd(wxWindow *parent, 	WinKind box, const wxPoint& pos, const wxSize& size)
  : wxScrolledWindow(parent, -1, pos, size, wxHSCROLL | wxVSCROLL | wxTAB_TRAVERSAL)
 {
 /*  TWindow::Attr.Style |= WS_GROUP | WS_CLIPCHILDREN|
 				WS_CLIPSIBLINGS | WS_VSCROLL | WS_HSCROLL | WS_BORDER;
   Scroller = new TScroller(this, 8, 7, 8, 7);*/
+  boxnumber = box;
   ColorBar1 = 0;
   ColorBar2 = 0;
 /*  Attr.AccelTable = IDA_MUTWIN;*/
@@ -389,7 +391,7 @@ void MutLogicWnd::CmTaste()
 	else
 	{
 	   // Buchstabentaste
-	   // Umwandeln in Großbuchstaben
+	   // Umwandeln in Groï¬‚buchstaben
 	   if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
 	   // ermiteln, ob Logik
 	   char isLogic = IsLogicKey((char)key);
@@ -415,12 +417,14 @@ void MutLogicWnd::DoLayout()
 	bool quer = R.GetWidth() > R.GetHeight();
 	if ( nx * ny < nTags ) // Scroller notwendig
 	{
-		if  ( !nx ) nx = 1;
-		if  ( !ny ) ny = 1;
+		if  ( ny < 1) ny = 1;
 		if ( quer ) nx = (nTags + ny -1) / ny;
 	}
+	std::cout << nTags << nx << std::endl;
+	if  ( nx < 1 ) nx = 1;
 	ny = (nTags + nx -1) / nx;
 	int x = 4, y = 4, xi = 0;
+	std::cout << nx << MUTTAGX << ny << MUTTAGY << std::endl;
 	SetVirtualSize(nx*MUTTAGX+8, ny*MUTTAGY+8);
 	int xv, yv;
 	GetViewStart(&xv, &yv);
@@ -482,42 +486,41 @@ void MutLogicWnd::CorrectScroller()
 	Scroll(dx / 10, dy / 10);
 }
 
-// keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
+// keyboardanalyse, Fenster aufrâ€°umen, Logiken lesen und anzeigen
 void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 {
 	// Analyse zuerst
-	int Box = PARENT_BOX;
-	KeyboardAnalyse(Box, thekey, isLogicKey);
-	curTaste[Box][isLogicKey] = thekey;
+	KeyboardAnalyse(boxnumber, thekey, isLogicKey);
+	curTaste[boxnumber][isLogicKey] = thekey;
 	wxWindow *ToFocus = NULL;
 	if ( isLogicKey )
-		curTaste[Box][0] = 0;
-	// alte TMutTag-s löschen
+		curTaste[boxnumber][0] = 0;
+	// alte TMutTag-s lË†schen
 	DestroyChildren();
 	// neue erstellen
 	char isLogic, s[200], s1[200], key, isOpen;
 	wxString sText, sEinst;
 	wxWindow *aWin;
 	nTags = 0;
-	if ( GetMutTag(isLogic, s, s1, key, Box) )
+	if ( GetMutTag(isLogic, s, s1, key, boxnumber) )
 		do
 		{
 			nTags++;
 			sText = muT(s);
 			sEinst = muT(s1);
-			if ( (isOpen = (key == curTaste[Box][isLogic])) != 0 )
+			if ( (isOpen = (key == curTaste[boxnumber][isLogic])) != 0 )
 				if ( isLogic )
 				{
-					curLogic[Box] = sText;
+					curLogic[boxnumber] = sText;
 					if ( !sEinst.IsEmpty() )
-						curTS[Box] = sEinst;
-					else if ( !curTS[Box] )
-						curTS[Box] = _("(INITIAL)");
-					else if ( curTS[Box][0] != '[' )
-						curTS[Box] = wxString::Format(_T("[%s]"), curTS[Box].c_str());
+						curTS[boxnumber] = sEinst;
+					else if ( !curTS[boxnumber] )
+						curTS[boxnumber] = _("(INITIAL)");
+					else if ( curTS[boxnumber][0] != '[' )
+						curTS[boxnumber] = wxString::Format(_T("[%s]"), curTS[boxnumber].c_str());
 				}
 				else
-					curTS[Box] = sText;
+					curTS[boxnumber] = sText;
 			aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
 			if ( isOpen ) ToFocus = aWin;
 		}
@@ -525,7 +528,7 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	// Color Bars
 	if ( UseColorBars )
 	{
-		wxColour BarColor = BoxColor(PARENT_BOX);
+		wxColour BarColor = BoxColor(boxnumber);
 		ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(1,1));
 		ColorBar1->SetBackgroundColour(BarColor);
 		ColorBar1->Disable();
@@ -554,8 +557,10 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 // Reaktion auf neues aktuelles Instrument
 void MutLogicWnd::CmBox()
 {
+	std::cout << (CompiledFile.fn_str()) << std::endl;
+	std::cout << boxnumber << std::endl;
 	// Titel setzen
-	GetParent()->SetName(wxString::Format(_T("Logic: %s - Box %d"), CompiledFile.c_str(), PARENT_BOX));
+	GetParent()->SetName(wxString::Format(_("Logic: %s - Box %d"), CompiledFile.c_str(), boxnumber));
 	// Tags updaten
 	UpDate(0, true);
 }
