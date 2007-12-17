@@ -91,13 +91,13 @@ END_EVENT_TABLE()
 // ===========================================================================
 
 MutChild::MutChild(wxMDIParentFrame *parent, WinKind winkind, WinAttr *winAttr, const wxString& title)
-#ifdef MDI_FORCE_EXTERN
+//#ifdef MDI_FORCE_EXTERN
        : wxFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
                          wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
-#else
-       : wxMDIChildFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
-                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
-#endif
+//#else
+//       : wxMDIChildFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
+//                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
+//#endif
 {
     client = (wxWindow *) NULL;
     MutChildren.Append(this);

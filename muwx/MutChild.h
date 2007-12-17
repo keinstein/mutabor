@@ -58,11 +58,11 @@ WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
 
 extern ArrayOfWinAttr WinAttrs[6];
 
-#ifdef MDI_FORCE_EXTERN
+//#ifdef MDI_FORCE_EXTERN
 class MutChild: public wxFrame
-#else
-class MutChild: public wxMDIChildFrame
-#endif
+//#else
+//class MutChild: public wxMDIChildFrame
+//#endif
 {
 public:
     wxWindow *client;
