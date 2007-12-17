@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MuMutTextBox.cpp
 // Purpose:     Textbox for Lists
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -15,6 +15,7 @@
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
+#include <iostream>
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
@@ -29,6 +30,7 @@
     #include "wx/wx.h"
 #endif
 
+#include "wx/tokenzr.h"
 #include "MutTextBox.h"
 #include "MutFrame.h"
 
@@ -89,19 +91,65 @@ void MutTextBox::NewText(char *s, bool newTitle)
   // Titel setzen
   if ( newTitle )
   {  
+  
+	std::cerr << "Not implemented: MutTextBox::NewText(...,newTitle=true);" << std::endl;
+  /*
     GetParent()->SetName(PARENT_KIND != WK_ACT || !CAW ? wxString::Format(_("%s - Box %d"), TextBoxTitle[PARENT_KIND].c_str(), Box()) : wxString(_("Actions - all boxes")));
     int NewColorBox = UseColorBars ? Box() : -1;
     if ( ColorBox != NewColorBox )
     {
       ColorBox = NewColorBox;
+	*/
 /*wx      ColorBar1->SetBkgndColor(BoxColor(ColorBox));
       ColorBar2->SetBkgndColor(BoxColor(ColorBox));
       ColorBar1->Invalidate();
       ColorBar2->Invalidate();
       ColorBar1->SendMessage(WM_PAINT);
       ColorBar2->SendMessage(WM_PAINT);*/
-    }
+//    }
   }
+	// Scrollen, falls Aktion-Window
+	if ( PARENT_KIND == WK_ACT )
+		SetSelection(GetCount()-1);
+  // Farbbalken ggf. korrigieren
+/*  if ( GetTopIndex() == 0 && PARENT_KIND != WK_ACT )
+  {
+    ColorBar1->MoveWindow(1, 1, 1000, 1, true);
+    ColorBar2->MoveWindow(1, 1, 1, 1000, true);
+  }*/
+}
+
+void MutTextBox::NewText(wxString s, bool newTitle)
+{
+  // Text in Liste
+  Clear();
+  
+  
+  
+  wxStringTokenizer tokenizer(s,_T("\r\n"));
+  while (tokenizer.HasMoreTokens()) 
+	Append(tokenizer.GetNextToken());
+
+  // Titel setzen
+  if ( newTitle )
+  {  
+	std::cerr << "Not implemented: MutTextBox::NewText(...,newTitle=true);" << std::endl;
+
+/*    GetParent()->SetName(PARENT_KIND != WK_ACT || !CAW ? wxString::Format(_("%s - Box %d"), TextBoxTitle[PARENT_KIND].c_str(), Box()) : wxString(_("Actions - all boxes")));
+    int NewColorBox = UseColorBars ? Box() : -1;
+    if ( ColorBox != NewColorBox )
+    {
+      ColorBox = NewColorBox;
+	  */
+/*wx      ColorBar1->SetBkgndColor(BoxColor(ColorBox));
+      ColorBar2->SetBkgndColor(BoxColor(ColorBox));
+      ColorBar1->Invalidate();
+      ColorBar2->Invalidate();
+      ColorBar1->SendMessage(WM_PAINT);
+      ColorBar2->SendMessage(WM_PAINT);*/
+//    }
+  }
+
 	// Scrollen, falls Aktion-Window
 	if ( PARENT_KIND == WK_ACT )
 		SetSelection(GetCount()-1);
