@@ -398,6 +398,11 @@ Makefile: Makefile.in.in Makevars $(top_builddir)/config.status @POMAKEFILEDEPS@
 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
 	       $(SHELL) ./config.status
 
+
+@top_srcdir@/xrc/reslocale.cpp: @top_srcdir@/xrc/Mutabor.xrc
+	wxrc -g $<|sed -e 's/\&amp;/\&/g' >$@
+
+
 force:
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
