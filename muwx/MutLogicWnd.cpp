@@ -311,7 +311,10 @@ BEGIN_EVENT_TABLE(MutLogicWnd, wxScrolledWindow)
 	EVT_CLOSE(MutLogicWnd::OnClose)
 END_EVENT_TABLE()
 
-MutLogicWnd::MutLogicWnd(wxWindow *parent, 	WinKind box, const wxPoint& pos, const wxSize& size)
+MutLogicWnd::MutLogicWnd(wxWindow *parent, 
+			 int box,
+			 const wxPoint& pos,
+			 const wxSize& size)
  : wxScrolledWindow(parent, -1, pos, size, wxHSCROLL | wxVSCROLL | wxTAB_TRAVERSAL)
 {
 /*  TWindow::Attr.Style |= WS_GROUP | WS_CLIPCHILDREN|
@@ -321,10 +324,14 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent, 	WinKind box, const wxPoint& pos, con
   ColorBar1 = 0;
   ColorBar2 = 0;
 /*  Attr.AccelTable = IDA_MUTWIN;*/
-	SetScrollRate( 10, 10 );
-	SetBackgroundColour(*wxWHITE);
-	Ok = false;
-	CmBox();
+  SetScrollRate( 10, 10 );
+  SetBackgroundColour(*wxWHITE);
+  Ok = false;
+  CmBox();
+
+  winAttr=GetWinAttr(WK_LOGIC,box);
+  winAttr->Win = this;
+    //    delete winAttr;
 }
 
 /*void MutLogicWnd::SetupWindow()
@@ -334,16 +341,23 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent, 	WinKind box, const wxPoint& pos, con
   CmBox();
 }
 */
-void MutLogicWnd::OnClose(wxCloseEvent& event)
-{
-	if ( NumberOfOpen(WK_LOGIC) <= 1 )
-	{
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-		GetParent()->AddPendingEvent(event1);
-		//GetApplication()->GetMainWindow()->PostMessage(WM_COMMAND, CM_STOP);
-	}
-	event.Skip();
+
+void MutLogicWnd::doClose(wxEvent& event) {
+    
+  if ( NumberOfOpen(WK_LOGIC) <= 1 )
+    {
+      wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
+      GetParent()->AddPendingEvent(event1);
+      //GetApplication()->GetMainWindow()->PostMessage(WM_COMMAND, CM_STOP);
+    }
+  
+  size_t i = WinAttrs[WK_LOGIC].Index(*(this->winAttr));
+  WinAttrs[WK_LOGIC][i].Win = NULL;
+  WinAttrs[WK_LOGIC].RemoveAt(i,1);
+  //    delete winAttr;
+  event.Skip();
 }
+
 
 // Reaktion auf Computertastatur
 
