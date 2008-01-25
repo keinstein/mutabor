@@ -3,6 +3,7 @@ distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc intl po wxintl includes . # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
+	-I $(top_srcdir)/xrc \
 	@NETINET_INC@
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 BUILT_SOURCES = @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
@@ -128,6 +129,9 @@ Mutabor.app:all
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
+	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.app/Contents/Resources/Mutabor.xrc
 	cp $(top_srcdir)/Images/about.png Mutabor.app/Contents/Resources
-		
-	
+
+wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
+	(cd $(top_srcdir)/xrc; \
+	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
