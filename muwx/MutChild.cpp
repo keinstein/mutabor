@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        MutChild.cpp
 // Purpose:     Mutabor MDI-Child
-// Author:      R. Krauße
+// Author:      R. Krauï¬‚e
 // Modified by:
 // Created:     12.08.05
-// Copyright:   (c) R. Krauße
+// Copyright:   (c) R. Krauï¬‚e
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
@@ -16,6 +16,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
+#include <iostream>
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 
@@ -43,6 +44,8 @@
 #include "Mutabor.rh"
 #include "MutChild.h"
 #include "MutEditFile.h"
+#include "MutFrame.h"
+
 
 WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
 
@@ -53,10 +56,12 @@ WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
 wxList MutChildren;
 int gs_nFrames = 0;
 
-WinKind ActiveWinKind = WK_NULL;
+//WinKind ActiveWinKind = WK_NULL;
 
-ArrayOfWinAttr WinAttrs[6] = { ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr(),
-                               ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr() };
+ArrayOfWinAttr WinAttrs[WK_NULL] = { 
+  ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr(),
+  ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr()
+};
 
 // ---------------------------------------------------------------------------
 // event tables
@@ -65,15 +70,15 @@ ArrayOfWinAttr WinAttrs[6] = { ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAtt
 // Note that MDI_NEW_WINDOW and MDI_ABOUT commands get passed
 // to the parent window for processing, so no need to
 // duplicate event handlers here.
-#ifdef MDI_FORCE_EXTERN
-BEGIN_EVENT_TABLE(MutChild, wxFrame)
-#else
-BEGIN_EVENT_TABLE(MutChild, wxMDIChildFrame)
-#endif
+//#ifdef MDI_FORCE_EXTERN
+BEGIN_EVENT_TABLE(MutChild, MutTextBox)
+//#else
+//BEGIN_EVENT_TABLE(MutChild, wxMDIChildFrame)
+//#endif
 //    EVT_MENU(MDI_CHILD_QUIT, MutChild::OnQuit)
-	EVT_MENU(CM_FILESAVE, MutChild::MenuPassOn)
-	EVT_MENU(CM_COMPILE, MutChild::MenuPassOn)
-	EVT_MENU(CM_ACTIVATE, MutChild::MenuPassOn)
+//	EVT_MENU(CM_FILESAVE, MutChild::MenuPassOn)
+//	EVT_MENU(CM_COMPILE, MutChild::MenuPassOn)
+//	EVT_MENU(CM_ACTIVATE, MutChild::MenuPassOn)
 //	EVT_MENU(CM_TOGGLEKEY, MutChild::MenuPassToParent)
 //    EVT_MENU(MDI_REFRESH, MutChild::OnRefresh)
 //    EVT_MENU(MDI_CHANGE_TITLE, MutChild::OnChangeTitle)
@@ -82,35 +87,68 @@ BEGIN_EVENT_TABLE(MutChild, wxMDIChildFrame)
 
 //    EVT_SIZE(MutChild::OnSize)
 //    EVT_MOVE(MutChild::OnMove)
-
-    EVT_CLOSE(MutChild::OnClose)
+EVT_CLOSE(MutChild::OnClose)
+EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose)
 END_EVENT_TABLE()
 
 // ===========================================================================
 // implementation
 // ===========================================================================
 
-MutChild::MutChild(wxMDIParentFrame *parent, WinKind winkind, WinAttr *winAttr, const wxString& title)
+MutChild::MutChild (WinKind winkind, 
+		    WinAttr *winAttr, 
+		    wxWindow * parent, 
+		    wxWindowID id,
+		    const wxPoint& pos,
+		    const wxSize & size):
+  MutTextBox(parent,id,pos,size)
 //#ifdef MDI_FORCE_EXTERN
-       : wxFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
-                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
+//       : wxAuiPaneInfo()
+
 //#else
 //       : wxMDIChildFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
 //                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
 //#endif
 {
-    client = (wxWindow *) NULL;
+
     MutChildren.Append(this);
-	this->winKind = winkind;
-	this->winAttr = winAttr;
-	winAttr->Win = this;
-    // this should work for MDI frames as well as for normal ones
-    SetSizeHints(100, 100);
+    this->winKind = winkind;
+    this->winAttr = winAttr;
+    winAttr->Win = this;
 }
 
 MutChild::~MutChild()
 {
     MutChildren.DeleteObject(this);
+    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
+    WinAttrs[winKind].RemoveAt(i,1);
+    //    delete winAttr;
+}
+
+void MutChild::OnClose(wxCloseEvent& event)
+{
+#ifdef DEBUG
+  std::cerr << "MutChild::OnClose" << std::endl;
+#endif
+    MutChildren.DeleteObject(this);
+    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
+    WinAttrs[winKind][i].Win = NULL;
+    WinAttrs[winKind].RemoveAt(i,1);
+    //    delete winAttr;
+    MutTextBox::OnClose(event);
+}
+
+void MutChild::OnAuiClose(wxAuiManagerEvent& event)
+{
+#ifdef DEBUG
+  std::cerr << "MutChild::OnClose" << std::endl;
+#endif
+    MutChildren.DeleteObject(this);
+    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
+    WinAttrs[winKind][i].Win = NULL;
+    WinAttrs[winKind].RemoveAt(i,1);
+    //    delete winAttr;
+    //    MutTextBox::OnClose(event);
 }
 
 /*void MutChild::OnQuit(wxCommandEvent& WXUNUSED(event))
@@ -118,44 +156,19 @@ MutChild::~MutChild()
     Close(true);
 }*/
 
+/*
 void MutChild::OnRefresh(wxCommandEvent& WXUNUSED(event))
 {
-    if ( client )
-        client->Refresh();
+	Refresh();
 }
 
-void MutChild::OnChangePosition(wxCommandEvent& WXUNUSED(event))
-{
-    Move(10, 10);
-}
-
-void MutChild::OnChangeSize(wxCommandEvent& WXUNUSED(event))
-{
-    SetClientSize(100, 100);
-}
-
-void MutChild::OnChangeTitle(wxCommandEvent& WXUNUSED(event))
-{
-//#if wxUSE_TEXTDLG
-    static wxString s_title = _T("Canvas Frame");
-
-    wxString title = wxGetTextFromUser(_T("Enter the new title for MDI child"),
-                                       _T("MDI sample question"),
-                                       s_title,
-                                       GetParent()->GetParent());
-    if ( !title )
-        return;
-
-    s_title = title;
-    SetTitle(s_title);
-//#endif
-}
 
 void MutChild::OnActivate(wxActivateEvent& event)
 {
-    if ( event.GetActive() && client )
-        client->SetFocus();
+    if ( event.GetActive() )
+        SetFocus();
 }
+*/
 
 /*void MutChild::OnMove(wxMoveEvent& event)
 {
@@ -184,45 +197,19 @@ void MutChild::OnSize(wxSizeEvent& event)
     event.Skip();
 }*/
 
-void MutChild::OnClose(wxCloseEvent& event)
-{
-    if ( client && winKind == WK_EDIT && ((MutEditFile*)client)->IsModified() )
-    {
-        if ( wxMessageBox(_T("Really close?"), _T("Please confirm"),
-                          wxICON_QUESTION | wxYES_NO) != wxYES )
-        {
-            event.Veto();
-
-            return;
-        }
-    }
-
-    gs_nFrames--;
-	winAttr->Win = NULL;
-    event.Skip();
-}
-
-
-void MutChild::MenuPassOn(wxCommandEvent& event)
-{
-	if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
-		return;
-	event.SetEventObject(NULL);
-	client->ProcessEvent(event);
-	event.Skip();
-}
+/*
 
 void MutChild::MenuPassToParent(wxCommandEvent& event)
 {
-/*	if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
-		return;
-	GetParent()->ProcessEvent(event);*/
+//	if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
+//		return;
+//	GetParent()->ProcessEvent(event);
 	event.Skip();
 }
-
+*/
 // TWinAttr ---------------------------------------------------------
 
-WinAttr* GetWinAttr(WinKind kind, int box)
+WinAttr *GetWinAttr(WinKind kind, int box)
 {
   if ( kind != WK_EDIT )
     for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
@@ -239,7 +226,7 @@ WinAttr *Get(WinKind kind, int box)
     if ( WinAttrs[kind][i].Box == box )
       return &WinAttrs[kind][i];
   return 0;
-}
+ }
 
 bool IsOpen(WinKind kind, int box)
 {
@@ -275,16 +262,6 @@ int NumberOfOpen(WinKind kind)
   return n;
 }
 
-void CloseAll(WinKind kind)
-{
-  for (size_t i = 0; i < WinAttrs[kind].Count(); i++)
-    if ( WinAttrs[kind][i].Win )
-    {
-      WinAttrs[kind][i].Wanted = 2;
-      WinAttrs[kind][i].Win->GetParent()->Close();
-	  WinAttrs[kind][i].Win = 0;
-    }
-}
 
 
 
