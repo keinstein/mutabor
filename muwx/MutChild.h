@@ -1,12 +1,25 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutChild.h
-// Purpose:     Mutabor MDI-Child
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file MutChild.h
+ ********************************************************************
+ * Mutabor Mutabor Child Frame management.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.5 2008/01/25 09:21:40 keinstein Exp $
+ * Copyright:   (c) 2005,2006,2007 TU Dresden
+ * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2008/01/25 09:21:40 $
+ * \version $Revision: 1.5 $
+ * \license wxWindows license
+ * 
+ * $Log: MutChild.h,v $
+ * Revision 1.5  2008/01/25 09:21:40  keinstein
+ * MutChild: Inherit MutTextBox
+ * Add EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose) event handler
+ * Reduce functionality to management of the window lists.
+ * Implement WinKind as enum with (pre- and postfix) operator ++.
+ * Removed unused Coordinates from WinAttr.
+ * Move CloseAll to MutFrame
+ *
+ ********************************************************************/
 
 #ifndef MUTCHILD_H
 #define MUTCHILD_H
@@ -15,9 +28,18 @@
 #include <wx/dynarray.h>
 #include <wx/arrimpl.cpp> // this is a magic incantation which must be done!
 #include "mhDefs.h"
+#include "wx/aui/aui.h"
+#include "MutTextBox.h"
 
-//enum WinKind { WK_KEY, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
+enum WinKind { WK_KEY = 0, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
 
+inline WinKind operator++(WinKind & k)
+{ return k = WinKind(int(k) + 1); }
+
+inline WinKind operator++(WinKind & k,int)
+{ WinKind l=k; ++k; return l; }
+
+/*
 typedef int WinKind;
 #define WK_KEY 0
 #define WK_TS  1
@@ -26,8 +48,9 @@ typedef int WinKind;
 #define WK_ROUTE 4
 #define WK_EDIT 5
 #define WK_NULL 6
+*/
 
-extern WinKind ActiveWinKind;
+//extern WinKind ActiveWinKind;
 
 #define PARENT_KIND (PARENT->winKind)
 #define PARENT_BOX (PARENT->winAttr->Box)
@@ -39,51 +62,57 @@ extern WinKind ActiveWinKind;
 
 class WinAttr
 {
-  public:
-    wxWindow *Win;  // 0 = nicht offen
-    char Wanted;   // 0 = nicht wanted
-    int X, Y, W, H;     // W = 0 ... noch nicht benutzt, d.h. undefiniert
-    int Box;
-    WinAttr(char wanted = 0, int box = -1)
+ public:
+  wxWindow *Win;  // 0 = nicht offen
+  char Wanted;   // 0 = nicht wanted
+  //  int X, Y, W, H;     // W = 0 ... noch nicht benutzt, d.h. undefiniert
+  int Box;
+  WinAttr(char wanted = 0, int box = -1)
     {
       Wanted = wanted;
       Box = box;
-      W = 0;
-      Win = 0;
+      //      X = Y = H = W = 0;
+      Win = NULL;
     }
 };
 
 WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
 //WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
 
-extern ArrayOfWinAttr WinAttrs[6];
+extern ArrayOfWinAttr WinAttrs[WK_NULL];
+
+class MutFrame;
 
 //#ifdef MDI_FORCE_EXTERN
-class MutChild: public wxFrame
+//class MutChild: public wxAuiPaneInfo, private wxObject
 //#else
 //class MutChild: public wxMDIChildFrame
 //#endif
+
+class MutChild: public MutTextBox
 {
 public:
-    wxWindow *client;
-	WinKind winKind;
-    WinAttr *winAttr;
-    MutChild(wxMDIParentFrame *parent, WinKind winKind, WinAttr *winAttr, const wxString& title);
-    ~MutChild();
+  WinKind winKind;
+  WinAttr *winAttr;
+  MutChild (WinKind winkind, 
+		    WinAttr *winAttr, 
+		    wxWindow * parent= NULL, 
+		    wxWindowID id = -1,
+		    const wxPoint& pos = wxDefaultPosition,
+	    const wxSize & size = wxDefaultSize);
+  ~MutChild();
 
-    void OnActivate(wxActivateEvent& event);
+//    void OnActivate(wxActivateEvent& event);
 
-    void OnRefresh(wxCommandEvent& event);
-    void OnUpdateRefresh(wxUpdateUIEvent& event);
-    void OnChangeTitle(wxCommandEvent& event);
-    void OnChangePosition(wxCommandEvent& event);
-    void OnChangeSize(wxCommandEvent& event);
+//    void OnRefresh(wxCommandEvent& event);
+//    void OnUpdateRefresh(wxUpdateUIEvent& event);
 //    void OnQuit(wxCommandEvent& event);
 //    void OnSize(wxSizeEvent& event);
 //    void OnMove(wxMoveEvent& event);
     void OnClose(wxCloseEvent& event);
-	void MenuPassOn(wxCommandEvent& event);
-	void MenuPassToParent(wxCommandEvent& event);
+    void OnAuiClose(wxAuiManagerEvent& event);
+//	void MenuPassOn(wxCommandEvent& event);
+//	void MenuPassToParent(wxCommandEvent& event);
 
     DECLARE_EVENT_TABLE()
 };
@@ -97,6 +126,5 @@ bool IsOpen(WinKind kind, int box = 0);
 bool IsWanted(WinKind kind, int box = 0);
 void DontWant(WinKind kind, int box = 0);
 int NumberOfOpen(WinKind kind);
-void CloseAll(WinKind kind);
 
 #endif
