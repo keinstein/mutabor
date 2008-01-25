@@ -12,11 +12,11 @@
 #define MUTTEXTBOX_H
 
 #include <wx/listbox.h>
-#include "MutChild.h"
+// #include "MutChild.h"
 
 class MutTextBox : public wxListBox {
   public:
-	MutTextBox(wxWindow* parent = NULL, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
+	MutTextBox(wxWindow* parent = NULL, wxWindowID id=-1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
 	void NewText(char *s, bool newTitle = false);
 	void NewText(wxString s, bool newTitle = false);
 //    TControl *ColorBar1, *ColorBar2;

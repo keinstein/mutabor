@@ -47,8 +47,8 @@ END_EVENT_TABLE()
 
 wxString ListInit[1] = { _("<init>") };
 
-MutTextBox::MutTextBox(wxWindow* parent, const wxPoint& pos, const wxSize& size)
- : wxListBox(parent, -1, pos, size, 1, ListInit)
+MutTextBox::MutTextBox(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size)
+ : wxListBox(parent, id, pos, size, 1, ListInit)
 {
 /*  Attr.Style &= ~LBS_SORT;
   Attr.Style |= LBS_NOINTEGRALHEIGHT | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL | LBS_NOSEL;
@@ -61,9 +61,10 @@ extern bool TextBoxWanted[];
 
 void MutTextBox::OnClose(wxCloseEvent& event)
 {
-	if ( LogicOn )
-		TextBoxWanted[PARENT_KIND] = false;
-	event.Skip();
+  //	if ( LogicOn )
+  //		TextBoxWanted[PARENT_KIND] = false;
+       	event.Skip();
+	
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)
