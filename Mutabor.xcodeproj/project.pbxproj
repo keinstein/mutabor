@@ -1,0 +1,1061 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B05514620CCC94D200CB6DE2 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = B05514610CCC94D200CB6DE2 /* about.png */; };
+		B06374360C8B3AC80028A7DB /* DevGIS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063740D0C8B3AC80028A7DB /* DevGIS.cpp */; };
+		B06374370C8B3AC80028A7DB /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063740F0C8B3AC80028A7DB /* Device.cpp */; };
+		B06374380C8B3AC80028A7DB /* DevMidF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374110C8B3AC80028A7DB /* DevMidF.cpp */; };
+		B06374390C8B3AC80028A7DB /* DevMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374130C8B3AC80028A7DB /* DevMidi.cpp */; };
+		B063743A0C8B3AC80028A7DB /* EDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374150C8B3AC80028A7DB /* EDevice.cpp */; };
+		B063743B0C8B3AC80028A7DB /* Errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374170C8B3AC80028A7DB /* Errors.cpp */; };
+		B063743C0C8B3AC80028A7DB /* Execute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374180C8B3AC80028A7DB /* Execute.cpp */; };
+		B063743D0C8B3AC80028A7DB /* Frac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063741A0C8B3AC80028A7DB /* Frac.cpp */; };
+		B063743E0C8B3AC80028A7DB /* GIS_Head.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063741C0C8B3AC80028A7DB /* GIS_Head.cpp */; };
+		B063743F0C8B3AC80028A7DB /* GIS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063741E0C8B3AC80028A7DB /* GIS.cpp */; };
+		B06374400C8B3AC80028A7DB /* GrafKern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374210C8B3AC80028A7DB /* GrafKern.cpp */; };
+		B06374420C8B3AC80028A7DB /* GSP_Err.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374240C8B3AC80028A7DB /* GSP_Err.cpp */; };
+		B06374430C8B3AC80028A7DB /* GSP_File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374250C8B3AC80028A7DB /* GSP_File.cpp */; };
+		B06374440C8B3AC80028A7DB /* GSP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374270C8B3AC80028A7DB /* GSP.cpp */; };
+		B06374450C8B3AC80028A7DB /* Hilfs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374290C8B3AC80028A7DB /* Hilfs.cpp */; };
+		B06374460C8B3AC80028A7DB /* Interval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063742C0C8B3AC80028A7DB /* Interval.cpp */; };
+		B06374470C8B3AC80028A7DB /* Mut_Tab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063742F0C8B3AC80028A7DB /* Mut_Tab.cpp */; };
+		B06374480C8B3AC80028A7DB /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374300C8B3AC80028A7DB /* Parser.cpp */; };
+		B063744A0C8B3AC80028A7DB /* Runtime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374330C8B3AC80028A7DB /* Runtime.cpp */; };
+		B063744B0C8B3AC80028A7DB /* TabGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374350C8B3AC80028A7DB /* TabGen.cpp */; };
+		B06374540C8B3B2E0028A7DB /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374520C8B3B2E0028A7DB /* Action.cpp */; };
+		B063745C0C8B3B3F0028A7DB /* BoxDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374580C8B3B3F0028A7DB /* BoxDlg.cpp */; };
+		B06374650C8B3B500028A7DB /* InputDevDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374610C8B3B500028A7DB /* InputDevDlg.cpp */; };
+		B06374660C8B3B500028A7DB /* InputFilterDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374630C8B3B500028A7DB /* InputFilterDlg.cpp */; };
+		B063747C0C8B3B5C0028A7DB /* MutApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063746A0C8B3B5C0028A7DB /* MutApp.cpp */; };
+		B063747D0C8B3B5C0028A7DB /* MutChild.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063746C0C8B3B5C0028A7DB /* MutChild.cpp */; };
+		B063747E0C8B3B5C0028A7DB /* MutEditFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063746E0C8B3B5C0028A7DB /* MutEditFile.cpp */; };
+		B063747F0C8B3B5C0028A7DB /* MutFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374700C8B3B5C0028A7DB /* MutFrame.cpp */; };
+		B06374810C8B3B5C0028A7DB /* MutRouteWnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374740C8B3B5C0028A7DB /* MutRouteWnd.cpp */; };
+		B06374830C8B3B5C0028A7DB /* OutputDevDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374780C8B3B5C0028A7DB /* OutputDevDlg.cpp */; };
+		B06374840C8B3B5C0028A7DB /* OutputFilterDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063747A0C8B3B5C0028A7DB /* OutputFilterDlg.cpp */; };
+		B063749B0C8B3B970028A7DB /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06374990C8B3B970028A7DB /* RtMidi.cpp */; };
+		B06375280C8B42B30028A7DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B06375230C8B42B30028A7DB /* Cocoa.framework */; };
+		B06375340C8B42D00028A7DB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B063752C0C8B42D00028A7DB /* CoreMIDI.framework */; };
+		B063755F0C8B42E90028A7DB /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B063753B0C8B42E80028A7DB /* QuickTime.framework */; };
+		B06375680C8B43170028A7DB /* System.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B06375660C8B43170028A7DB /* System.framework */; };
+		B063760F0C8B432C0028A7DB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B063756F0C8B432C0028A7DB /* IOKit.framework */; };
+		B063762B0C8B43400028A7DB /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B06376160C8B43400028A7DB /* Carbon.framework */; };
+		B06376390C8B43830028A7DB /* libwx_macu-2.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B06376380C8B43830028A7DB /* libwx_macu-2.8.dylib */; };
+		B06378A20C8B587F0028A7DB /* mxDefs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063789D0C8B587F0028A7DB /* mxDefs.cpp */; };
+		B06378A30C8B587F0028A7DB /* valNum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063789E0C8B587F0028A7DB /* valNum.cpp */; };
+		B06378A40C8B587F0028A7DB /* valRadio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06378A00C8B587F0028A7DB /* valRadio.cpp */; };
+		B06378B00C8B594C0028A7DB /* CompDlg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B063745A0C8B3B3F0028A7DB /* CompDlg.cpp */; };
+		B0CF19050CB0DAA7004297B8 /* MutTextBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CF19040CB0DAA7004297B8 /* MutTextBox.cpp */; };
+		B0CF19170CB0DBBF004297B8 /* MutLogicWnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CF19160CB0DBBF004297B8 /* MutLogicWnd.cpp */; };
+		B0CF1A1C0CB0DFFD004297B8 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0CF1A120CB0DFFD004297B8 /* CoreAudio.framework */; };
+		B0CF1D100CB22E95004297B8 /* Mutabor.icns in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1D0F0CB22E94004297B8 /* Mutabor.icns */; };
+		B0CF1DD40CB3C8EC004297B8 /* boldquot.sed in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DBF0CB3C8EC004297B8 /* boldquot.sed */; };
+		B0CF1DD50CB3C8EC004297B8 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC00CB3C8EC004297B8 /* ChangeLog */; };
+		B0CF1DD60CB3C8EC004297B8 /* de.gmo in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC10CB3C8EC004297B8 /* de.gmo */; };
+		B0CF1DD80CB3C8EC004297B8 /* en@boldquot.gmo in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC30CB3C8EC004297B8 /* en@boldquot.gmo */; };
+		B0CF1DD90CB3C8EC004297B8 /* en@boldquot.header in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC40CB3C8EC004297B8 /* en@boldquot.header */; };
+		B0CF1DDA0CB3C8EC004297B8 /* en@boldquot.po in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC50CB3C8EC004297B8 /* en@boldquot.po */; };
+		B0CF1DDB0CB3C8EC004297B8 /* en@quot.gmo in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC60CB3C8EC004297B8 /* en@quot.gmo */; };
+		B0CF1DDC0CB3C8EC004297B8 /* en@quot.header in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC70CB3C8EC004297B8 /* en@quot.header */; };
+		B0CF1DDD0CB3C8EC004297B8 /* en@quot.po in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC80CB3C8EC004297B8 /* en@quot.po */; };
+		B0CF1DDE0CB3C8EC004297B8 /* insert-header.sin in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DC90CB3C8EC004297B8 /* insert-header.sin */; };
+		B0CF1DDF0CB3C8EC004297B8 /* LINGUAS in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCA0CB3C8EC004297B8 /* LINGUAS */; };
+		B0CF1DE00CB3C8EC004297B8 /* Makefile.in.in in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCB0CB3C8EC004297B8 /* Makefile.in.in */; };
+		B0CF1DE10CB3C8EC004297B8 /* Makevars in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCC0CB3C8EC004297B8 /* Makevars */; };
+		B0CF1DE20CB3C8EC004297B8 /* Makevars.template in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCD0CB3C8EC004297B8 /* Makevars.template */; };
+		B0CF1DE30CB3C8EC004297B8 /* mutabor.pot in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCE0CB3C8EC004297B8 /* mutabor.pot */; };
+		B0CF1DE40CB3C8EC004297B8 /* mutabor.pot.autosave in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DCF0CB3C8EC004297B8 /* mutabor.pot.autosave */; };
+		B0CF1DE50CB3C8EC004297B8 /* POTFILES.in in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DD00CB3C8EC004297B8 /* POTFILES.in */; };
+		B0CF1DE60CB3C8EC004297B8 /* quot.sed in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DD10CB3C8EC004297B8 /* quot.sed */; };
+		B0CF1DE70CB3C8EC004297B8 /* remove-potcdate.sin in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DD20CB3C8EC004297B8 /* remove-potcdate.sin */; };
+		B0CF1DE80CB3C8EC004297B8 /* Rules-quot in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1DD30CB3C8EC004297B8 /* Rules-quot */; };
+		B0CF1FCE0CB5227B004297B8 /* acinclude.m4 in Resources */ = {isa = PBXBuildFile; fileRef = B0CF1FCD0CB5227B004297B8 /* acinclude.m4 */; };
+		B0CF223F0CB669E9004297B8 /* ActTextBox.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22160CB669E9004297B8 /* ActTextBox.ico */; };
+		B0CF22400CB669E9004297B8 /* ActTextBox.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22170CB669E9004297B8 /* ActTextBox.xpm */; };
+		B0CF22410CB669E9004297B8 /* AddPause.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22180CB669E9004297B8 /* AddPause.bmp */; };
+		B0CF22420CB669E9004297B8 /* AddPlay.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22190CB669E9004297B8 /* AddPlay.bmp */; };
+		B0CF22430CB669E9004297B8 /* AddStop.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221A0CB669E9004297B8 /* AddStop.bmp */; };
+		B0CF22440CB669E9004297B8 /* AddStopDis.bmp in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221B0CB669E9004297B8 /* AddStopDis.bmp */; };
+		B0CF22450CB669E9004297B8 /* DevGMN.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221C0CB669E9004297B8 /* DevGMN.ico */; };
+		B0CF22460CB669E9004297B8 /* DevGMN.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221D0CB669E9004297B8 /* DevGMN.xpm */; };
+		B0CF22470CB669E9004297B8 /* DevMidiFile.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221E0CB669E9004297B8 /* DevMidiFile.ico */; };
+		B0CF22480CB669E9004297B8 /* DevMidiFile.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF221F0CB669E9004297B8 /* DevMidiFile.xpm */; };
+		B0CF22490CB669E9004297B8 /* DevMidiPort.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22200CB669E9004297B8 /* DevMidiPort.ico */; };
+		B0CF224A0CB669E9004297B8 /* DevMidiPort.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22210CB669E9004297B8 /* DevMidiPort.xpm */; };
+		B0CF224B0CB669E9004297B8 /* DevUnknown.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22220CB669E9004297B8 /* DevUnknown.ico */; };
+		B0CF224C0CB669E9004297B8 /* DevUnknown.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22230CB669E9004297B8 /* DevUnknown.xpm */; };
+		B0CF224D0CB669E9004297B8 /* Document.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22240CB669E9004297B8 /* Document.ico */; };
+		B0CF224E0CB669E9004297B8 /* Document.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22250CB669E9004297B8 /* Document.xpm */; };
+		B0CF224F0CB669E9004297B8 /* ErrorPlop.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22260CB669E9004297B8 /* ErrorPlop.ico */; };
+		B0CF22500CB669E9004297B8 /* ErrorPlop.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22270CB669E9004297B8 /* ErrorPlop.xpm */; };
+		B0CF22510CB669E9004297B8 /* KeyTextBox.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22280CB669E9004297B8 /* KeyTextBox.ico */; };
+		B0CF22520CB669E9004297B8 /* KeyTextBox.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22290CB669E9004297B8 /* KeyTextBox.xpm */; };
+		B0CF22530CB669E9004297B8 /* Logic.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF222A0CB669E9004297B8 /* Logic.ico */; };
+		B0CF22540CB669E9004297B8 /* Logic.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF222B0CB669E9004297B8 /* Logic.xpm */; };
+		B0CF22550CB669E9004297B8 /* LogicOpen.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF222C0CB669E9004297B8 /* LogicOpen.ico */; };
+		B0CF22560CB669E9004297B8 /* LogicOpen.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF222D0CB669E9004297B8 /* LogicOpen.xpm */; };
+		B0CF22580CB669E9004297B8 /* Mutabor.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF222F0CB669E9004297B8 /* Mutabor.ico */; };
+		B0CF22590CB669E9004297B8 /* Mutabor.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22300CB669E9004297B8 /* Mutabor.xpm */; };
+		B0CF225A0CB669E9004297B8 /* NewPlop.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22310CB669E9004297B8 /* NewPlop.ico */; };
+		B0CF225B0CB669E9004297B8 /* NewPlop.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22320CB669E9004297B8 /* NewPlop.xpm */; };
+		B0CF225C0CB669E9004297B8 /* PausePlop.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22330CB669E9004297B8 /* PausePlop.ico */; };
+		B0CF225D0CB669E9004297B8 /* PausePlop.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22340CB669E9004297B8 /* PausePlop.xpm */; };
+		B0CF225E0CB669E9004297B8 /* PlayPlop.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22350CB669E9004297B8 /* PlayPlop.ico */; };
+		B0CF225F0CB669E9004297B8 /* PlayPlop.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22360CB669E9004297B8 /* PlayPlop.xpm */; };
+		B0CF22600CB669E9004297B8 /* Route.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22370CB669E9004297B8 /* Route.ico */; };
+		B0CF22610CB669E9004297B8 /* Route.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22380CB669E9004297B8 /* Route.xpm */; };
+		B0CF22620CB669E9004297B8 /* Tonesyst.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF22390CB669E9004297B8 /* Tonesyst.ico */; };
+		B0CF22630CB669E9004297B8 /* Tonesyst.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF223A0CB669E9004297B8 /* Tonesyst.xpm */; };
+		B0CF22640CB669E9004297B8 /* TonesystOpen.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF223B0CB669E9004297B8 /* TonesystOpen.ico */; };
+		B0CF22650CB669E9004297B8 /* TonesystOpen.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF223C0CB669E9004297B8 /* TonesystOpen.xpm */; };
+		B0CF22660CB669E9004297B8 /* TSTextBox.ico in Resources */ = {isa = PBXBuildFile; fileRef = B0CF223D0CB669E9004297B8 /* TSTextBox.ico */; };
+		B0CF22670CB669E9004297B8 /* TSTextBox.xpm in Resources */ = {isa = PBXBuildFile; fileRef = B0CF223E0CB669E9004297B8 /* TSTextBox.xpm */; };
+		B0CF27440CBD0120004297B8 /* muconvauto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CF27420CBD0120004297B8 /* muconvauto.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0E5A81A0CE8AF7900E6DBE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B06373C40C8B367D0028A7DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B063793E0C8B66020028A7DB /* configure */;
+			remoteInfo = configure;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B05514610CCC94D200CB6DE2 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		B06373DB0C8B38D90028A7DB /* Mutabor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mutabor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B06373DE0C8B38D90028A7DB /* Mutabor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mutabor-Info.plist"; sourceTree = "<group>"; };
+		B063740C0C8B3AC80028A7DB /* Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defs.h; path = mu32/Defs.h; sourceTree = "<group>"; };
+		B063740D0C8B3AC80028A7DB /* DevGIS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DevGIS.cpp; path = mu32/DevGIS.cpp; sourceTree = "<group>"; };
+		B063740F0C8B3AC80028A7DB /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Device.cpp; path = mu32/Device.cpp; sourceTree = "<group>"; };
+		B06374100C8B3AC80028A7DB /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = mu32/Device.h; sourceTree = "<group>"; };
+		B06374110C8B3AC80028A7DB /* DevMidF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DevMidF.cpp; path = mu32/DevMidF.cpp; sourceTree = "<group>"; };
+		B06374120C8B3AC80028A7DB /* DevMidF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevMidF.h; path = mu32/DevMidF.h; sourceTree = "<group>"; };
+		B06374130C8B3AC80028A7DB /* DevMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DevMidi.cpp; path = mu32/DevMidi.cpp; sourceTree = "<group>"; };
+		B06374140C8B3AC80028A7DB /* DevMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DevMidi.h; path = mu32/DevMidi.h; sourceTree = "<group>"; };
+		B06374150C8B3AC80028A7DB /* EDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EDevice.cpp; path = mu32/EDevice.cpp; sourceTree = "<group>"; };
+		B06374160C8B3AC80028A7DB /* EDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDevice.h; path = mu32/EDevice.h; sourceTree = "<group>"; };
+		B06374170C8B3AC80028A7DB /* Errors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Errors.cpp; path = mu32/Errors.cpp; sourceTree = "<group>"; };
+		B06374180C8B3AC80028A7DB /* Execute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Execute.cpp; path = mu32/Execute.cpp; sourceTree = "<group>"; };
+		B06374190C8B3AC80028A7DB /* Execute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Execute.h; path = mu32/Execute.h; sourceTree = "<group>"; };
+		B063741A0C8B3AC80028A7DB /* Frac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Frac.cpp; path = mu32/Frac.cpp; sourceTree = "<group>"; };
+		B063741B0C8B3AC80028A7DB /* Frac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frac.h; path = mu32/Frac.h; sourceTree = "<group>"; };
+		B063741C0C8B3AC80028A7DB /* GIS_Head.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GIS_Head.cpp; path = mu32/GIS_Head.cpp; sourceTree = "<group>"; };
+		B063741D0C8B3AC80028A7DB /* GIS_Head.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIS_Head.h; path = mu32/GIS_Head.h; sourceTree = "<group>"; };
+		B063741E0C8B3AC80028A7DB /* GIS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GIS.cpp; path = mu32/GIS.cpp; sourceTree = "<group>"; };
+		B063741F0C8B3AC80028A7DB /* GIS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIS.h; path = mu32/GIS.h; sourceTree = "<group>"; };
+		B06374200C8B3AC80028A7DB /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Global.h; path = mu32/Global.h; sourceTree = "<group>"; };
+		B06374210C8B3AC80028A7DB /* GrafKern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GrafKern.cpp; path = mu32/GrafKern.cpp; sourceTree = "<group>"; };
+		B06374220C8B3AC80028A7DB /* GrafKern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrafKern.h; path = mu32/GrafKern.h; sourceTree = "<group>"; };
+		B06374240C8B3AC80028A7DB /* GSP_Err.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GSP_Err.cpp; path = mu32/GSP_Err.cpp; sourceTree = "<group>"; };
+		B06374250C8B3AC80028A7DB /* GSP_File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GSP_File.cpp; path = mu32/GSP_File.cpp; sourceTree = "<group>"; };
+		B06374260C8B3AC80028A7DB /* GSP_File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSP_File.h; path = mu32/GSP_File.h; sourceTree = "<group>"; };
+		B06374270C8B3AC80028A7DB /* GSP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GSP.cpp; path = mu32/GSP.cpp; sourceTree = "<group>"; };
+		B06374280C8B3AC80028A7DB /* GSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSP.h; path = mu32/GSP.h; sourceTree = "<group>"; };
+		B06374290C8B3AC80028A7DB /* Hilfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Hilfs.cpp; path = mu32/Hilfs.cpp; sourceTree = "<group>"; };
+		B063742A0C8B3AC80028A7DB /* Hilfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hilfs.h; path = mu32/Hilfs.h; sourceTree = "<group>"; };
+		B063742B0C8B3AC80028A7DB /* Interpre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interpre.h; path = mu32/Interpre.h; sourceTree = "<group>"; };
+		B063742C0C8B3AC80028A7DB /* Interval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Interval.cpp; path = mu32/Interval.cpp; sourceTree = "<group>"; };
+		B063742D0C8B3AC80028A7DB /* Interval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interval.h; path = mu32/Interval.h; sourceTree = "<group>"; };
+		B063742E0C8B3AC80028A7DB /* MidiKern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiKern.h; path = mu32/MidiKern.h; sourceTree = "<group>"; };
+		B063742F0C8B3AC80028A7DB /* Mut_Tab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mut_Tab.cpp; path = mu32/Mut_Tab.cpp; sourceTree = "<group>"; };
+		B06374300C8B3AC80028A7DB /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Parser.cpp; path = mu32/Parser.cpp; sourceTree = "<group>"; };
+		B06374320C8B3AC80028A7DB /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = mu32/Route.h; sourceTree = "<group>"; };
+		B06374330C8B3AC80028A7DB /* Runtime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Runtime.cpp; path = mu32/Runtime.cpp; sourceTree = "<group>"; };
+		B06374340C8B3AC80028A7DB /* Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Runtime.h; path = mu32/Runtime.h; sourceTree = "<group>"; };
+		B06374350C8B3AC80028A7DB /* TabGen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TabGen.cpp; path = mu32/TabGen.cpp; sourceTree = "<group>"; };
+		B06374520C8B3B2E0028A7DB /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = muwx/Action.cpp; sourceTree = "<group>"; };
+		B06374530C8B3B2E0028A7DB /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = muwx/Action.h; sourceTree = "<group>"; };
+		B06374580C8B3B3F0028A7DB /* BoxDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxDlg.cpp; path = muwx/BoxDlg.cpp; sourceTree = "<group>"; };
+		B06374590C8B3B3F0028A7DB /* BoxDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxDlg.h; path = muwx/BoxDlg.h; sourceTree = "<group>"; };
+		B063745A0C8B3B3F0028A7DB /* CompDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CompDlg.cpp; path = muwx/CompDlg.cpp; sourceTree = "<group>"; };
+		B063745B0C8B3B3F0028A7DB /* CompDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompDlg.h; path = muwx/CompDlg.h; sourceTree = "<group>"; };
+		B06374610C8B3B500028A7DB /* InputDevDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputDevDlg.cpp; path = muwx/InputDevDlg.cpp; sourceTree = "<group>"; };
+		B06374620C8B3B500028A7DB /* InputDevDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputDevDlg.h; path = muwx/InputDevDlg.h; sourceTree = "<group>"; };
+		B06374630C8B3B500028A7DB /* InputFilterDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputFilterDlg.cpp; path = muwx/InputFilterDlg.cpp; sourceTree = "<group>"; };
+		B06374640C8B3B500028A7DB /* InputFilterDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputFilterDlg.h; path = muwx/InputFilterDlg.h; sourceTree = "<group>"; };
+		B063746A0C8B3B5C0028A7DB /* MutApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutApp.cpp; path = muwx/MutApp.cpp; sourceTree = "<group>"; };
+		B063746B0C8B3B5C0028A7DB /* MutApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutApp.h; path = muwx/MutApp.h; sourceTree = "<group>"; };
+		B063746C0C8B3B5C0028A7DB /* MutChild.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutChild.cpp; path = muwx/MutChild.cpp; sourceTree = "<group>"; };
+		B063746D0C8B3B5C0028A7DB /* MutChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutChild.h; path = muwx/MutChild.h; sourceTree = "<group>"; };
+		B063746E0C8B3B5C0028A7DB /* MutEditFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutEditFile.cpp; path = muwx/MutEditFile.cpp; sourceTree = "<group>"; };
+		B063746F0C8B3B5C0028A7DB /* MutEditFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutEditFile.h; path = muwx/MutEditFile.h; sourceTree = "<group>"; };
+		B06374700C8B3B5C0028A7DB /* MutFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutFrame.cpp; path = muwx/MutFrame.cpp; sourceTree = "<group>"; };
+		B06374710C8B3B5C0028A7DB /* MutFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutFrame.h; path = muwx/MutFrame.h; sourceTree = "<group>"; };
+		B06374730C8B3B5C0028A7DB /* MutLogicWnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutLogicWnd.h; path = muwx/MutLogicWnd.h; sourceTree = "<group>"; };
+		B06374740C8B3B5C0028A7DB /* MutRouteWnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutRouteWnd.cpp; path = muwx/MutRouteWnd.cpp; sourceTree = "<group>"; };
+		B06374750C8B3B5C0028A7DB /* MutRouteWnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutRouteWnd.h; path = muwx/MutRouteWnd.h; sourceTree = "<group>"; };
+		B06374770C8B3B5C0028A7DB /* MutTextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MutTextBox.h; path = muwx/MutTextBox.h; sourceTree = "<group>"; };
+		B06374780C8B3B5C0028A7DB /* OutputDevDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OutputDevDlg.cpp; path = muwx/OutputDevDlg.cpp; sourceTree = "<group>"; };
+		B06374790C8B3B5C0028A7DB /* OutputDevDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutputDevDlg.h; path = muwx/OutputDevDlg.h; sourceTree = "<group>"; };
+		B063747A0C8B3B5C0028A7DB /* OutputFilterDlg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OutputFilterDlg.cpp; path = muwx/OutputFilterDlg.cpp; sourceTree = "<group>"; };
+		B063747B0C8B3B5C0028A7DB /* OutputFilterDlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutputFilterDlg.h; path = muwx/OutputFilterDlg.h; sourceTree = "<group>"; };
+		B06374980C8B3B970028A7DB /* RtError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtError.h; path = rtmidi/RtError.h; sourceTree = "<group>"; };
+		B06374990C8B3B970028A7DB /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = rtmidi/RtMidi.cpp; sourceTree = "<group>"; };
+		B063749A0C8B3B970028A7DB /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = rtmidi/RtMidi.h; sourceTree = "<group>"; };
+		B06375230C8B42B30028A7DB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		B063752C0C8B42D00028A7DB /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		B063753B0C8B42E80028A7DB /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		B06375660C8B43170028A7DB /* System.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = System.framework; path = /System/Library/Frameworks/System.framework; sourceTree = "<absolute>"; };
+		B063756F0C8B432C0028A7DB /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		B06376160C8B43400028A7DB /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		B06376380C8B43830028A7DB /* libwx_macu-2.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libwx_macu-2.8.dylib"; path = "/opt/local/lib/libwx_macu-2.8.dylib"; sourceTree = "<absolute>"; };
+		B06377C60C8B53FE0028A7DB /* Mutabor.rh */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Mutabor.rh; path = muwx/Mutabor.rh; sourceTree = "<group>"; };
+		B063789B0C8B587F0028A7DB /* mhArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mhArray.h; path = mywx/mhArray.h; sourceTree = "<group>"; };
+		B063789C0C8B587F0028A7DB /* mhDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mhDefs.h; path = mywx/mhDefs.h; sourceTree = "<group>"; };
+		B063789D0C8B587F0028A7DB /* mxDefs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mxDefs.cpp; path = mywx/mxDefs.cpp; sourceTree = "<group>"; };
+		B063789E0C8B587F0028A7DB /* valNum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = valNum.cpp; path = mywx/valNum.cpp; sourceTree = "<group>"; };
+		B063789F0C8B587F0028A7DB /* valNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = valNum.h; path = mywx/valNum.h; sourceTree = "<group>"; };
+		B06378A00C8B587F0028A7DB /* valRadio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = valRadio.cpp; path = mywx/valRadio.cpp; sourceTree = "<group>"; };
+		B06378A10C8B587F0028A7DB /* valRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = valRadio.h; path = mywx/valRadio.h; sourceTree = "<group>"; };
+		B0CF19040CB0DAA7004297B8 /* MutTextBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutTextBox.cpp; path = muwx/MutTextBox.cpp; sourceTree = "<group>"; };
+		B0CF19160CB0DBBF004297B8 /* MutLogicWnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MutLogicWnd.cpp; path = muwx/MutLogicWnd.cpp; sourceTree = "<group>"; };
+		B0CF1A120CB0DFFD004297B8 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		B0CF1B020CB0F652004297B8 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = XCode/config.h; sourceTree = "<group>"; };
+		B0CF1CC80CB1497F004297B8 /* Info.plist.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Info.plist.in; path = osdep/macosx/Info.plist.in; sourceTree = "<group>"; };
+		B0CF1D0F0CB22E94004297B8 /* Mutabor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Mutabor.icns; path = muwx/Icon/Mutabor.icns; sourceTree = "<group>"; };
+		B0CF1DBF0CB3C8EC004297B8 /* boldquot.sed */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = boldquot.sed; sourceTree = "<group>"; };
+		B0CF1DC00CB3C8EC004297B8 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		B0CF1DC10CB3C8EC004297B8 /* de.gmo */ = {isa = PBXFileReference; explicitFileType = file; path = de.gmo; sourceTree = "<group>"; };
+		B0CF1DC30CB3C8EC004297B8 /* en@boldquot.gmo */ = {isa = PBXFileReference; lastKnownFileType = file; path = "en@boldquot.gmo"; sourceTree = "<group>"; };
+		B0CF1DC40CB3C8EC004297B8 /* en@boldquot.header */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en@boldquot.header"; sourceTree = "<group>"; };
+		B0CF1DC50CB3C8EC004297B8 /* en@boldquot.po */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en@boldquot.po"; sourceTree = "<group>"; };
+		B0CF1DC60CB3C8EC004297B8 /* en@quot.gmo */ = {isa = PBXFileReference; lastKnownFileType = file; path = "en@quot.gmo"; sourceTree = "<group>"; };
+		B0CF1DC70CB3C8EC004297B8 /* en@quot.header */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en@quot.header"; sourceTree = "<group>"; };
+		B0CF1DC80CB3C8EC004297B8 /* en@quot.po */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "en@quot.po"; sourceTree = "<group>"; };
+		B0CF1DC90CB3C8EC004297B8 /* insert-header.sin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "insert-header.sin"; sourceTree = "<group>"; };
+		B0CF1DCA0CB3C8EC004297B8 /* LINGUAS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LINGUAS; sourceTree = "<group>"; };
+		B0CF1DCB0CB3C8EC004297B8 /* Makefile.in.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in.in; sourceTree = "<group>"; };
+		B0CF1DCC0CB3C8EC004297B8 /* Makevars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makevars; sourceTree = "<group>"; };
+		B0CF1DCD0CB3C8EC004297B8 /* Makevars.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makevars.template; sourceTree = "<group>"; };
+		B0CF1DCE0CB3C8EC004297B8 /* mutabor.pot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mutabor.pot; sourceTree = "<group>"; };
+		B0CF1DCF0CB3C8EC004297B8 /* mutabor.pot.autosave */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mutabor.pot.autosave; sourceTree = "<group>"; };
+		B0CF1DD00CB3C8EC004297B8 /* POTFILES.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = POTFILES.in; sourceTree = "<group>"; };
+		B0CF1DD10CB3C8EC004297B8 /* quot.sed */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = quot.sed; sourceTree = "<group>"; };
+		B0CF1DD20CB3C8EC004297B8 /* remove-potcdate.sin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "remove-potcdate.sin"; sourceTree = "<group>"; };
+		B0CF1DD30CB3C8EC004297B8 /* Rules-quot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Rules-quot"; sourceTree = "<group>"; };
+		B0CF1FCD0CB5227B004297B8 /* acinclude.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acinclude.m4; sourceTree = "<group>"; };
+		B0CF21C50CB65DF7004297B8 /* aclocal.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aclocal.m4; sourceTree = "<group>"; };
+		B0CF21C60CB65DF7004297B8 /* config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
+		B0CF21C70CB65E16004297B8 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		B0CF21C90CB65EA8004297B8 /* alsa.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alsa.m4; sourceTree = "<group>"; };
+		B0CF21CA0CB65EA8004297B8 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		B0CF21CB0CB65EA8004297B8 /* codeset.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = codeset.m4; sourceTree = "<group>"; };
+		B0CF21CC0CB65EA8004297B8 /* forstyle.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = forstyle.m4; sourceTree = "<group>"; };
+		B0CF21CD0CB65EA8004297B8 /* gettext.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gettext.m4; sourceTree = "<group>"; };
+		B0CF21CE0CB65EA8004297B8 /* glibc2.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = glibc2.m4; sourceTree = "<group>"; };
+		B0CF21CF0CB65EA8004297B8 /* glibc21.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = glibc21.m4; sourceTree = "<group>"; };
+		B0CF21D00CB65EA8004297B8 /* iconv.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iconv.m4; sourceTree = "<group>"; };
+		B0CF21D10CB65EA8004297B8 /* intdiv0.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = intdiv0.m4; sourceTree = "<group>"; };
+		B0CF21D20CB65EA8004297B8 /* intmax.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = intmax.m4; sourceTree = "<group>"; };
+		B0CF21D30CB65EA8004297B8 /* inttypes-pri.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "inttypes-pri.m4"; sourceTree = "<group>"; };
+		B0CF21D40CB65EA8004297B8 /* inttypes.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = inttypes.m4; sourceTree = "<group>"; };
+		B0CF21D50CB65EA8004297B8 /* inttypes_h.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = inttypes_h.m4; sourceTree = "<group>"; };
+		B0CF21D60CB65EA8004297B8 /* isc-posix.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "isc-posix.m4"; sourceTree = "<group>"; };
+		B0CF21D70CB65EA8004297B8 /* lcmessage.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lcmessage.m4; sourceTree = "<group>"; };
+		B0CF21D80CB65EA8004297B8 /* lib-ld.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lib-ld.m4"; sourceTree = "<group>"; };
+		B0CF21D90CB65EA8004297B8 /* lib-link.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lib-link.m4"; sourceTree = "<group>"; };
+		B0CF21DA0CB65EA8004297B8 /* lib-prefix.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lib-prefix.m4"; sourceTree = "<group>"; };
+		B0CF21DB0CB65EA8004297B8 /* longdouble.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = longdouble.m4; sourceTree = "<group>"; };
+		B0CF21DC0CB65EA8004297B8 /* longlong.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = longlong.m4; sourceTree = "<group>"; };
+		B0CF21DD0CB65EA8004297B8 /* nls.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nls.m4; sourceTree = "<group>"; };
+		B0CF21DE0CB65EA8004297B8 /* po.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = po.m4; sourceTree = "<group>"; };
+		B0CF21DF0CB65EA8004297B8 /* printf-posix.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "printf-posix.m4"; sourceTree = "<group>"; };
+		B0CF21E00CB65EA8004297B8 /* progtest.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progtest.m4; sourceTree = "<group>"; };
+		B0CF21E10CB65EA8004297B8 /* signed.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signed.m4; sourceTree = "<group>"; };
+		B0CF21E20CB65EA8004297B8 /* size_max.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = size_max.m4; sourceTree = "<group>"; };
+		B0CF21E30CB65EA8004297B8 /* smpeg.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smpeg.m4; sourceTree = "<group>"; };
+		B0CF21E40CB65EA8004297B8 /* stdint_h.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stdint_h.m4; sourceTree = "<group>"; };
+		B0CF21E50CB65EA8004297B8 /* uintmax_t.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uintmax_t.m4; sourceTree = "<group>"; };
+		B0CF21E60CB65EA8004297B8 /* ulonglong.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ulonglong.m4; sourceTree = "<group>"; };
+		B0CF21E70CB65EA8004297B8 /* wchar_t.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wchar_t.m4; sourceTree = "<group>"; };
+		B0CF21E80CB65EA8004297B8 /* wint_t.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wint_t.m4; sourceTree = "<group>"; };
+		B0CF21E90CB65EA8004297B8 /* xsize.m4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xsize.m4; sourceTree = "<group>"; };
+		B0CF22080CB666D2004297B8 /* Route.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Route.cpp; path = mu32/Route.cpp; sourceTree = "<group>"; };
+		B0CF22160CB669E9004297B8 /* ActTextBox.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = ActTextBox.ico; sourceTree = "<group>"; };
+		B0CF22170CB669E9004297B8 /* ActTextBox.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ActTextBox.xpm; sourceTree = "<group>"; };
+		B0CF22180CB669E9004297B8 /* AddPause.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = AddPause.bmp; sourceTree = "<group>"; };
+		B0CF22190CB669E9004297B8 /* AddPlay.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = AddPlay.bmp; sourceTree = "<group>"; };
+		B0CF221A0CB669E9004297B8 /* AddStop.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = AddStop.bmp; sourceTree = "<group>"; };
+		B0CF221B0CB669E9004297B8 /* AddStopDis.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = AddStopDis.bmp; sourceTree = "<group>"; };
+		B0CF221C0CB669E9004297B8 /* DevGMN.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = DevGMN.ico; sourceTree = "<group>"; };
+		B0CF221D0CB669E9004297B8 /* DevGMN.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DevGMN.xpm; sourceTree = "<group>"; };
+		B0CF221E0CB669E9004297B8 /* DevMidiFile.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = DevMidiFile.ico; sourceTree = "<group>"; };
+		B0CF221F0CB669E9004297B8 /* DevMidiFile.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DevMidiFile.xpm; sourceTree = "<group>"; };
+		B0CF22200CB669E9004297B8 /* DevMidiPort.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = DevMidiPort.ico; sourceTree = "<group>"; };
+		B0CF22210CB669E9004297B8 /* DevMidiPort.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DevMidiPort.xpm; sourceTree = "<group>"; };
+		B0CF22220CB669E9004297B8 /* DevUnknown.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = DevUnknown.ico; sourceTree = "<group>"; };
+		B0CF22230CB669E9004297B8 /* DevUnknown.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DevUnknown.xpm; sourceTree = "<group>"; };
+		B0CF22240CB669E9004297B8 /* Document.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Document.ico; sourceTree = "<group>"; };
+		B0CF22250CB669E9004297B8 /* Document.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Document.xpm; sourceTree = "<group>"; };
+		B0CF22260CB669E9004297B8 /* ErrorPlop.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = ErrorPlop.ico; sourceTree = "<group>"; };
+		B0CF22270CB669E9004297B8 /* ErrorPlop.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ErrorPlop.xpm; sourceTree = "<group>"; };
+		B0CF22280CB669E9004297B8 /* KeyTextBox.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = KeyTextBox.ico; sourceTree = "<group>"; };
+		B0CF22290CB669E9004297B8 /* KeyTextBox.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KeyTextBox.xpm; sourceTree = "<group>"; };
+		B0CF222A0CB669E9004297B8 /* Logic.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Logic.ico; sourceTree = "<group>"; };
+		B0CF222B0CB669E9004297B8 /* Logic.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Logic.xpm; sourceTree = "<group>"; };
+		B0CF222C0CB669E9004297B8 /* LogicOpen.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = LogicOpen.ico; sourceTree = "<group>"; };
+		B0CF222D0CB669E9004297B8 /* LogicOpen.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LogicOpen.xpm; sourceTree = "<group>"; };
+		B0CF222E0CB669E9004297B8 /* Mutabor.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mutabor.icns; sourceTree = "<group>"; };
+		B0CF222F0CB669E9004297B8 /* Mutabor.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Mutabor.ico; sourceTree = "<group>"; };
+		B0CF22300CB669E9004297B8 /* Mutabor.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mutabor.xpm; sourceTree = "<group>"; };
+		B0CF22310CB669E9004297B8 /* NewPlop.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = NewPlop.ico; sourceTree = "<group>"; };
+		B0CF22320CB669E9004297B8 /* NewPlop.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewPlop.xpm; sourceTree = "<group>"; };
+		B0CF22330CB669E9004297B8 /* PausePlop.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = PausePlop.ico; sourceTree = "<group>"; };
+		B0CF22340CB669E9004297B8 /* PausePlop.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PausePlop.xpm; sourceTree = "<group>"; };
+		B0CF22350CB669E9004297B8 /* PlayPlop.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = PlayPlop.ico; sourceTree = "<group>"; };
+		B0CF22360CB669E9004297B8 /* PlayPlop.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlayPlop.xpm; sourceTree = "<group>"; };
+		B0CF22370CB669E9004297B8 /* Route.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Route.ico; sourceTree = "<group>"; };
+		B0CF22380CB669E9004297B8 /* Route.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Route.xpm; sourceTree = "<group>"; };
+		B0CF22390CB669E9004297B8 /* Tonesyst.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = Tonesyst.ico; sourceTree = "<group>"; };
+		B0CF223A0CB669E9004297B8 /* Tonesyst.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tonesyst.xpm; sourceTree = "<group>"; };
+		B0CF223B0CB669E9004297B8 /* TonesystOpen.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = TonesystOpen.ico; sourceTree = "<group>"; };
+		B0CF223C0CB669E9004297B8 /* TonesystOpen.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TonesystOpen.xpm; sourceTree = "<group>"; };
+		B0CF223D0CB669E9004297B8 /* TSTextBox.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = TSTextBox.ico; sourceTree = "<group>"; };
+		B0CF223E0CB669E9004297B8 /* TSTextBox.xpm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TSTextBox.xpm; sourceTree = "<group>"; };
+		B0CF27420CBD0120004297B8 /* muconvauto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = muconvauto.cpp; path = mywx/muconvauto.cpp; sourceTree = "<group>"; };
+		B0CF27430CBD0120004297B8 /* muconvauto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = muconvauto.h; path = mywx/muconvauto.h; sourceTree = "<group>"; };
+		B0CF29040CC364AE004297B8 /* macrotrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macrotrans.h; sourceTree = "<group>"; };
+		B0FBC5E90C8C2E920052E304 /* configure.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure.in; sourceTree = "<group>"; };
+		B0FBC5EA0C8C2F210052E304 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B06373D90C8B38D90028A7DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B06375280C8B42B30028A7DB /* Cocoa.framework in Frameworks */,
+				B06375340C8B42D00028A7DB /* CoreMIDI.framework in Frameworks */,
+				B063755F0C8B42E90028A7DB /* QuickTime.framework in Frameworks */,
+				B06375680C8B43170028A7DB /* System.framework in Frameworks */,
+				B063760F0C8B432C0028A7DB /* IOKit.framework in Frameworks */,
+				B063762B0C8B43400028A7DB /* Carbon.framework in Frameworks */,
+				B06376390C8B43830028A7DB /* libwx_macu-2.8.dylib in Frameworks */,
+				B0CF1A1C0CB0DFFD004297B8 /* CoreAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B05514600CCC94D200CB6DE2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B05514610CCC94D200CB6DE2 /* about.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B06373C20C8B367D0028A7DB = {
+			isa = PBXGroup;
+			children = (
+				B05514600CCC94D200CB6DE2 /* Images */,
+				B0CF1DBE0CB3C8EC004297B8 /* po */,
+				B0CF1CC80CB1497F004297B8 /* Info.plist.in */,
+				B0FBC5E80C8C2D010052E304 /* Autotools */,
+				B0FBC5D40C8C27D30052E304 /* XCode */,
+				B06378380C8B56940028A7DB /* mywx */,
+				B063773D0C8B49950028A7DB /* muwx */,
+				B06377570C8B49CD0028A7DB /* mu32 */,
+				B06377470C8B49A40028A7DB /* RtMidi */,
+				B06376380C8B43830028A7DB /* libwx_macu-2.8.dylib */,
+				B06376160C8B43400028A7DB /* Carbon.framework */,
+				B063756F0C8B432C0028A7DB /* IOKit.framework */,
+				B0CF1A120CB0DFFD004297B8 /* CoreAudio.framework */,
+				B06375660C8B43170028A7DB /* System.framework */,
+				B063753B0C8B42E80028A7DB /* QuickTime.framework */,
+				B063752C0C8B42D00028A7DB /* CoreMIDI.framework */,
+				B06375230C8B42B30028A7DB /* Cocoa.framework */,
+				B06373DC0C8B38D90028A7DB /* Products */,
+				B06373DE0C8B38D90028A7DB /* Mutabor-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		B06373DC0C8B38D90028A7DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B06373DB0C8B38D90028A7DB /* Mutabor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B063773D0C8B49950028A7DB /* muwx */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF22150CB669E9004297B8 /* Icon */,
+				B06374610C8B3B500028A7DB /* InputDevDlg.cpp */,
+				B06374620C8B3B500028A7DB /* InputDevDlg.h */,
+				B06374630C8B3B500028A7DB /* InputFilterDlg.cpp */,
+				B06374640C8B3B500028A7DB /* InputFilterDlg.h */,
+				B06374580C8B3B3F0028A7DB /* BoxDlg.cpp */,
+				B06374590C8B3B3F0028A7DB /* BoxDlg.h */,
+				B063745A0C8B3B3F0028A7DB /* CompDlg.cpp */,
+				B063745B0C8B3B3F0028A7DB /* CompDlg.h */,
+				B06374520C8B3B2E0028A7DB /* Action.cpp */,
+				B063746A0C8B3B5C0028A7DB /* MutApp.cpp */,
+				B063746B0C8B3B5C0028A7DB /* MutApp.h */,
+				B063746C0C8B3B5C0028A7DB /* MutChild.cpp */,
+				B063746D0C8B3B5C0028A7DB /* MutChild.h */,
+				B063746E0C8B3B5C0028A7DB /* MutEditFile.cpp */,
+				B063746F0C8B3B5C0028A7DB /* MutEditFile.h */,
+				B06374700C8B3B5C0028A7DB /* MutFrame.cpp */,
+				B06374710C8B3B5C0028A7DB /* MutFrame.h */,
+				B0CF19160CB0DBBF004297B8 /* MutLogicWnd.cpp */,
+				B06374730C8B3B5C0028A7DB /* MutLogicWnd.h */,
+				B06374740C8B3B5C0028A7DB /* MutRouteWnd.cpp */,
+				B06374750C8B3B5C0028A7DB /* MutRouteWnd.h */,
+				B0CF19040CB0DAA7004297B8 /* MutTextBox.cpp */,
+				B06374770C8B3B5C0028A7DB /* MutTextBox.h */,
+				B06374780C8B3B5C0028A7DB /* OutputDevDlg.cpp */,
+				B06374790C8B3B5C0028A7DB /* OutputDevDlg.h */,
+				B063747A0C8B3B5C0028A7DB /* OutputFilterDlg.cpp */,
+				B063747B0C8B3B5C0028A7DB /* OutputFilterDlg.h */,
+				B06374530C8B3B2E0028A7DB /* Action.h */,
+				B06377C60C8B53FE0028A7DB /* Mutabor.rh */,
+			);
+			name = muwx;
+			sourceTree = "<group>";
+		};
+		B06377470C8B49A40028A7DB /* RtMidi */ = {
+			isa = PBXGroup;
+			children = (
+				B06374980C8B3B970028A7DB /* RtError.h */,
+				B06374990C8B3B970028A7DB /* RtMidi.cpp */,
+				B063749A0C8B3B970028A7DB /* RtMidi.h */,
+			);
+			name = RtMidi;
+			sourceTree = "<group>";
+		};
+		B06377570C8B49CD0028A7DB /* mu32 */ = {
+			isa = PBXGroup;
+			children = (
+				B063740C0C8B3AC80028A7DB /* Defs.h */,
+				B063740F0C8B3AC80028A7DB /* Device.cpp */,
+				B06374100C8B3AC80028A7DB /* Device.h */,
+				B063740D0C8B3AC80028A7DB /* DevGIS.cpp */,
+				B06374110C8B3AC80028A7DB /* DevMidF.cpp */,
+				B06374120C8B3AC80028A7DB /* DevMidF.h */,
+				B06374130C8B3AC80028A7DB /* DevMidi.cpp */,
+				B06374140C8B3AC80028A7DB /* DevMidi.h */,
+				B06374150C8B3AC80028A7DB /* EDevice.cpp */,
+				B06374160C8B3AC80028A7DB /* EDevice.h */,
+				B06374170C8B3AC80028A7DB /* Errors.cpp */,
+				B06374180C8B3AC80028A7DB /* Execute.cpp */,
+				B06374190C8B3AC80028A7DB /* Execute.h */,
+				B063741A0C8B3AC80028A7DB /* Frac.cpp */,
+				B063741B0C8B3AC80028A7DB /* Frac.h */,
+				B063741C0C8B3AC80028A7DB /* GIS_Head.cpp */,
+				B063741D0C8B3AC80028A7DB /* GIS_Head.h */,
+				B063741E0C8B3AC80028A7DB /* GIS.cpp */,
+				B063741F0C8B3AC80028A7DB /* GIS.h */,
+				B06374200C8B3AC80028A7DB /* Global.h */,
+				B06374210C8B3AC80028A7DB /* GrafKern.cpp */,
+				B06374220C8B3AC80028A7DB /* GrafKern.h */,
+				B06374240C8B3AC80028A7DB /* GSP_Err.cpp */,
+				B06374250C8B3AC80028A7DB /* GSP_File.cpp */,
+				B06374260C8B3AC80028A7DB /* GSP_File.h */,
+				B06374270C8B3AC80028A7DB /* GSP.cpp */,
+				B06374280C8B3AC80028A7DB /* GSP.h */,
+				B06374290C8B3AC80028A7DB /* Hilfs.cpp */,
+				B063742A0C8B3AC80028A7DB /* Hilfs.h */,
+				B063742B0C8B3AC80028A7DB /* Interpre.h */,
+				B063742C0C8B3AC80028A7DB /* Interval.cpp */,
+				B063742D0C8B3AC80028A7DB /* Interval.h */,
+				B063742E0C8B3AC80028A7DB /* MidiKern.h */,
+				B063742F0C8B3AC80028A7DB /* Mut_Tab.cpp */,
+				B06374300C8B3AC80028A7DB /* Parser.cpp */,
+				B0CF22080CB666D2004297B8 /* Route.cpp */,
+				B06374320C8B3AC80028A7DB /* Route.h */,
+				B06374330C8B3AC80028A7DB /* Runtime.cpp */,
+				B06374340C8B3AC80028A7DB /* Runtime.h */,
+				B06374350C8B3AC80028A7DB /* TabGen.cpp */,
+			);
+			name = mu32;
+			sourceTree = "<group>";
+		};
+		B06378380C8B56940028A7DB /* mywx */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF27420CBD0120004297B8 /* muconvauto.cpp */,
+				B0CF27430CBD0120004297B8 /* muconvauto.h */,
+				B063789B0C8B587F0028A7DB /* mhArray.h */,
+				B063789C0C8B587F0028A7DB /* mhDefs.h */,
+				B063789D0C8B587F0028A7DB /* mxDefs.cpp */,
+				B063789E0C8B587F0028A7DB /* valNum.cpp */,
+				B063789F0C8B587F0028A7DB /* valNum.h */,
+				B06378A00C8B587F0028A7DB /* valRadio.cpp */,
+				B06378A10C8B587F0028A7DB /* valRadio.h */,
+			);
+			name = mywx;
+			sourceTree = "<group>";
+		};
+		B0CF1DBE0CB3C8EC004297B8 /* po */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF1DBF0CB3C8EC004297B8 /* boldquot.sed */,
+				B0CF1DC00CB3C8EC004297B8 /* ChangeLog */,
+				B0CF1DC10CB3C8EC004297B8 /* de.gmo */,
+				B0CF1DC30CB3C8EC004297B8 /* en@boldquot.gmo */,
+				B0CF1DC40CB3C8EC004297B8 /* en@boldquot.header */,
+				B0CF1DC50CB3C8EC004297B8 /* en@boldquot.po */,
+				B0CF1DC60CB3C8EC004297B8 /* en@quot.gmo */,
+				B0CF29040CC364AE004297B8 /* macrotrans.h */,
+				B0CF1DC70CB3C8EC004297B8 /* en@quot.header */,
+				B0CF1DC80CB3C8EC004297B8 /* en@quot.po */,
+				B0CF1DC90CB3C8EC004297B8 /* insert-header.sin */,
+				B0CF1DCA0CB3C8EC004297B8 /* LINGUAS */,
+				B0CF1DCB0CB3C8EC004297B8 /* Makefile.in.in */,
+				B0CF1DCC0CB3C8EC004297B8 /* Makevars */,
+				B0CF1DCD0CB3C8EC004297B8 /* Makevars.template */,
+				B0CF1DCE0CB3C8EC004297B8 /* mutabor.pot */,
+				B0CF1DCF0CB3C8EC004297B8 /* mutabor.pot.autosave */,
+				B0CF1DD00CB3C8EC004297B8 /* POTFILES.in */,
+				B0CF1DD10CB3C8EC004297B8 /* quot.sed */,
+				B0CF1DD20CB3C8EC004297B8 /* remove-potcdate.sin */,
+				B0CF1DD30CB3C8EC004297B8 /* Rules-quot */,
+			);
+			path = po;
+			sourceTree = "<group>";
+		};
+		B0CF21C80CB65EA8004297B8 /* m4 */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF21C90CB65EA8004297B8 /* alsa.m4 */,
+				B0CF21CA0CB65EA8004297B8 /* ChangeLog */,
+				B0CF21CB0CB65EA8004297B8 /* codeset.m4 */,
+				B0CF21CC0CB65EA8004297B8 /* forstyle.m4 */,
+				B0CF21CD0CB65EA8004297B8 /* gettext.m4 */,
+				B0CF21CE0CB65EA8004297B8 /* glibc2.m4 */,
+				B0CF21CF0CB65EA8004297B8 /* glibc21.m4 */,
+				B0CF21D00CB65EA8004297B8 /* iconv.m4 */,
+				B0CF21D10CB65EA8004297B8 /* intdiv0.m4 */,
+				B0CF21D20CB65EA8004297B8 /* intmax.m4 */,
+				B0CF21D30CB65EA8004297B8 /* inttypes-pri.m4 */,
+				B0CF21D40CB65EA8004297B8 /* inttypes.m4 */,
+				B0CF21D50CB65EA8004297B8 /* inttypes_h.m4 */,
+				B0CF21D60CB65EA8004297B8 /* isc-posix.m4 */,
+				B0CF21D70CB65EA8004297B8 /* lcmessage.m4 */,
+				B0CF21D80CB65EA8004297B8 /* lib-ld.m4 */,
+				B0CF21D90CB65EA8004297B8 /* lib-link.m4 */,
+				B0CF21DA0CB65EA8004297B8 /* lib-prefix.m4 */,
+				B0CF21DB0CB65EA8004297B8 /* longdouble.m4 */,
+				B0CF21DC0CB65EA8004297B8 /* longlong.m4 */,
+				B0CF21DD0CB65EA8004297B8 /* nls.m4 */,
+				B0CF21DE0CB65EA8004297B8 /* po.m4 */,
+				B0CF21DF0CB65EA8004297B8 /* printf-posix.m4 */,
+				B0CF21E00CB65EA8004297B8 /* progtest.m4 */,
+				B0CF21E10CB65EA8004297B8 /* signed.m4 */,
+				B0CF21E20CB65EA8004297B8 /* size_max.m4 */,
+				B0CF21E30CB65EA8004297B8 /* smpeg.m4 */,
+				B0CF21E40CB65EA8004297B8 /* stdint_h.m4 */,
+				B0CF21E50CB65EA8004297B8 /* uintmax_t.m4 */,
+				B0CF21E60CB65EA8004297B8 /* ulonglong.m4 */,
+				B0CF21E70CB65EA8004297B8 /* wchar_t.m4 */,
+				B0CF21E80CB65EA8004297B8 /* wint_t.m4 */,
+				B0CF21E90CB65EA8004297B8 /* xsize.m4 */,
+			);
+			path = m4;
+			sourceTree = "<group>";
+		};
+		B0CF22150CB669E9004297B8 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF22160CB669E9004297B8 /* ActTextBox.ico */,
+				B0CF22170CB669E9004297B8 /* ActTextBox.xpm */,
+				B0CF22180CB669E9004297B8 /* AddPause.bmp */,
+				B0CF22190CB669E9004297B8 /* AddPlay.bmp */,
+				B0CF221A0CB669E9004297B8 /* AddStop.bmp */,
+				B0CF221B0CB669E9004297B8 /* AddStopDis.bmp */,
+				B0CF221C0CB669E9004297B8 /* DevGMN.ico */,
+				B0CF221D0CB669E9004297B8 /* DevGMN.xpm */,
+				B0CF221E0CB669E9004297B8 /* DevMidiFile.ico */,
+				B0CF221F0CB669E9004297B8 /* DevMidiFile.xpm */,
+				B0CF22200CB669E9004297B8 /* DevMidiPort.ico */,
+				B0CF22210CB669E9004297B8 /* DevMidiPort.xpm */,
+				B0CF22220CB669E9004297B8 /* DevUnknown.ico */,
+				B0CF22230CB669E9004297B8 /* DevUnknown.xpm */,
+				B0CF22240CB669E9004297B8 /* Document.ico */,
+				B0CF22250CB669E9004297B8 /* Document.xpm */,
+				B0CF22260CB669E9004297B8 /* ErrorPlop.ico */,
+				B0CF22270CB669E9004297B8 /* ErrorPlop.xpm */,
+				B0CF22280CB669E9004297B8 /* KeyTextBox.ico */,
+				B0CF22290CB669E9004297B8 /* KeyTextBox.xpm */,
+				B0CF222A0CB669E9004297B8 /* Logic.ico */,
+				B0CF222B0CB669E9004297B8 /* Logic.xpm */,
+				B0CF222C0CB669E9004297B8 /* LogicOpen.ico */,
+				B0CF222D0CB669E9004297B8 /* LogicOpen.xpm */,
+				B0CF222E0CB669E9004297B8 /* Mutabor.icns */,
+				B0CF222F0CB669E9004297B8 /* Mutabor.ico */,
+				B0CF22300CB669E9004297B8 /* Mutabor.xpm */,
+				B0CF22310CB669E9004297B8 /* NewPlop.ico */,
+				B0CF22320CB669E9004297B8 /* NewPlop.xpm */,
+				B0CF22330CB669E9004297B8 /* PausePlop.ico */,
+				B0CF22340CB669E9004297B8 /* PausePlop.xpm */,
+				B0CF22350CB669E9004297B8 /* PlayPlop.ico */,
+				B0CF22360CB669E9004297B8 /* PlayPlop.xpm */,
+				B0CF22370CB669E9004297B8 /* Route.ico */,
+				B0CF22380CB669E9004297B8 /* Route.xpm */,
+				B0CF22390CB669E9004297B8 /* Tonesyst.ico */,
+				B0CF223A0CB669E9004297B8 /* Tonesyst.xpm */,
+				B0CF223B0CB669E9004297B8 /* TonesystOpen.ico */,
+				B0CF223C0CB669E9004297B8 /* TonesystOpen.xpm */,
+				B0CF223D0CB669E9004297B8 /* TSTextBox.ico */,
+				B0CF223E0CB669E9004297B8 /* TSTextBox.xpm */,
+			);
+			name = Icon;
+			path = muwx/Icon;
+			sourceTree = "<group>";
+		};
+		B0FBC5D40C8C27D30052E304 /* XCode */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF1B020CB0F652004297B8 /* config.h */,
+			);
+			name = XCode;
+			sourceTree = "<group>";
+		};
+		B0FBC5E80C8C2D010052E304 /* Autotools */ = {
+			isa = PBXGroup;
+			children = (
+				B0CF21C80CB65EA8004297B8 /* m4 */,
+				B0CF21C50CB65DF7004297B8 /* aclocal.m4 */,
+				B0CF21C60CB65DF7004297B8 /* config.h.in */,
+				B0CF1D0F0CB22E94004297B8 /* Mutabor.icns */,
+				B0FBC5EA0C8C2F210052E304 /* Makefile.am */,
+				B0CF21C70CB65E16004297B8 /* Makefile.in */,
+				B0FBC5E90C8C2E920052E304 /* configure.in */,
+				B0CF1FCD0CB5227B004297B8 /* acinclude.m4 */,
+			);
+			name = Autotools;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		B06373CD0C8B38210028A7DB /* make */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = B06373CE0C8B383F0028A7DB /* Build configuration list for PBXLegacyTarget "make" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = XCode;
+			dependencies = (
+				B0E5A81B0CE8AF7900E6DBE9 /* PBXTargetDependency */,
+			);
+			name = make;
+			passBuildSettingsInEnvironment = 1;
+			productName = make;
+		};
+		B063793E0C8B66020028A7DB /* configure */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--disable-shared --enable-maintainer-mode --enable-static";
+			buildConfigurationList = B063793F0C8B66200028A7DB /* Build configuration list for PBXLegacyTarget "configure" */;
+			buildPhases = (
+			);
+			buildToolPath = ../configure;
+			buildWorkingDirectory = /Users/schlemme/Entwicklung/mutabor/XCode;
+			dependencies = (
+			);
+			name = configure;
+			passBuildSettingsInEnvironment = 1;
+			productName = configure;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		B06373DA0C8B38D90028A7DB /* Mutabor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B06373DF0C8B38D90028A7DB /* Build configuration list for PBXNativeTarget "Mutabor" */;
+			buildPhases = (
+				B06373D70C8B38D90028A7DB /* Resources */,
+				B06373D80C8B38D90028A7DB /* Sources */,
+				B06373D90C8B38D90028A7DB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mutabor;
+			productName = Mutabor;
+			productReference = B06373DB0C8B38D90028A7DB /* Mutabor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B06373C40C8B367D0028A7DB /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = B06373C50C8B367D0028A7DB /* Build configuration list for PBXProject "Mutabor" */;
+			hasScannedForEncodings = 0;
+			mainGroup = B06373C20C8B367D0028A7DB;
+			productRefGroup = B06373DC0C8B38D90028A7DB /* Products */;
+			projectDirPath = "";
+			targets = (
+				B06373CD0C8B38210028A7DB /* make */,
+				B06373DA0C8B38D90028A7DB /* Mutabor */,
+				B063793E0C8B66020028A7DB /* configure */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B06373D70C8B38D90028A7DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0CF1D100CB22E95004297B8 /* Mutabor.icns in Resources */,
+				B0CF1DD40CB3C8EC004297B8 /* boldquot.sed in Resources */,
+				B0CF1DD50CB3C8EC004297B8 /* ChangeLog in Resources */,
+				B0CF1DD60CB3C8EC004297B8 /* de.gmo in Resources */,
+				B0CF1DD80CB3C8EC004297B8 /* en@boldquot.gmo in Resources */,
+				B0CF1DD90CB3C8EC004297B8 /* en@boldquot.header in Resources */,
+				B0CF1DDA0CB3C8EC004297B8 /* en@boldquot.po in Resources */,
+				B0CF1DDB0CB3C8EC004297B8 /* en@quot.gmo in Resources */,
+				B0CF1DDC0CB3C8EC004297B8 /* en@quot.header in Resources */,
+				B0CF1DDD0CB3C8EC004297B8 /* en@quot.po in Resources */,
+				B0CF1DDE0CB3C8EC004297B8 /* insert-header.sin in Resources */,
+				B0CF1DDF0CB3C8EC004297B8 /* LINGUAS in Resources */,
+				B0CF1DE00CB3C8EC004297B8 /* Makefile.in.in in Resources */,
+				B0CF1DE10CB3C8EC004297B8 /* Makevars in Resources */,
+				B0CF1DE20CB3C8EC004297B8 /* Makevars.template in Resources */,
+				B0CF1DE30CB3C8EC004297B8 /* mutabor.pot in Resources */,
+				B0CF1DE40CB3C8EC004297B8 /* mutabor.pot.autosave in Resources */,
+				B0CF1DE50CB3C8EC004297B8 /* POTFILES.in in Resources */,
+				B0CF1DE60CB3C8EC004297B8 /* quot.sed in Resources */,
+				B0CF1DE70CB3C8EC004297B8 /* remove-potcdate.sin in Resources */,
+				B0CF1DE80CB3C8EC004297B8 /* Rules-quot in Resources */,
+				B0CF1FCE0CB5227B004297B8 /* acinclude.m4 in Resources */,
+				B0CF223F0CB669E9004297B8 /* ActTextBox.ico in Resources */,
+				B0CF22400CB669E9004297B8 /* ActTextBox.xpm in Resources */,
+				B0CF22410CB669E9004297B8 /* AddPause.bmp in Resources */,
+				B0CF22420CB669E9004297B8 /* AddPlay.bmp in Resources */,
+				B0CF22430CB669E9004297B8 /* AddStop.bmp in Resources */,
+				B0CF22440CB669E9004297B8 /* AddStopDis.bmp in Resources */,
+				B0CF22450CB669E9004297B8 /* DevGMN.ico in Resources */,
+				B0CF22460CB669E9004297B8 /* DevGMN.xpm in Resources */,
+				B0CF22470CB669E9004297B8 /* DevMidiFile.ico in Resources */,
+				B0CF22480CB669E9004297B8 /* DevMidiFile.xpm in Resources */,
+				B0CF22490CB669E9004297B8 /* DevMidiPort.ico in Resources */,
+				B0CF224A0CB669E9004297B8 /* DevMidiPort.xpm in Resources */,
+				B0CF224B0CB669E9004297B8 /* DevUnknown.ico in Resources */,
+				B0CF224C0CB669E9004297B8 /* DevUnknown.xpm in Resources */,
+				B0CF224D0CB669E9004297B8 /* Document.ico in Resources */,
+				B0CF224E0CB669E9004297B8 /* Document.xpm in Resources */,
+				B0CF224F0CB669E9004297B8 /* ErrorPlop.ico in Resources */,
+				B0CF22500CB669E9004297B8 /* ErrorPlop.xpm in Resources */,
+				B0CF22510CB669E9004297B8 /* KeyTextBox.ico in Resources */,
+				B0CF22520CB669E9004297B8 /* KeyTextBox.xpm in Resources */,
+				B0CF22530CB669E9004297B8 /* Logic.ico in Resources */,
+				B0CF22540CB669E9004297B8 /* Logic.xpm in Resources */,
+				B0CF22550CB669E9004297B8 /* LogicOpen.ico in Resources */,
+				B0CF22560CB669E9004297B8 /* LogicOpen.xpm in Resources */,
+				B0CF22580CB669E9004297B8 /* Mutabor.ico in Resources */,
+				B0CF22590CB669E9004297B8 /* Mutabor.xpm in Resources */,
+				B0CF225A0CB669E9004297B8 /* NewPlop.ico in Resources */,
+				B0CF225B0CB669E9004297B8 /* NewPlop.xpm in Resources */,
+				B0CF225C0CB669E9004297B8 /* PausePlop.ico in Resources */,
+				B0CF225D0CB669E9004297B8 /* PausePlop.xpm in Resources */,
+				B0CF225E0CB669E9004297B8 /* PlayPlop.ico in Resources */,
+				B0CF225F0CB669E9004297B8 /* PlayPlop.xpm in Resources */,
+				B0CF22600CB669E9004297B8 /* Route.ico in Resources */,
+				B0CF22610CB669E9004297B8 /* Route.xpm in Resources */,
+				B0CF22620CB669E9004297B8 /* Tonesyst.ico in Resources */,
+				B0CF22630CB669E9004297B8 /* Tonesyst.xpm in Resources */,
+				B0CF22640CB669E9004297B8 /* TonesystOpen.ico in Resources */,
+				B0CF22650CB669E9004297B8 /* TonesystOpen.xpm in Resources */,
+				B0CF22660CB669E9004297B8 /* TSTextBox.ico in Resources */,
+				B0CF22670CB669E9004297B8 /* TSTextBox.xpm in Resources */,
+				B05514620CCC94D200CB6DE2 /* about.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B06373D80C8B38D90028A7DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B06374360C8B3AC80028A7DB /* DevGIS.cpp in Sources */,
+				B06374370C8B3AC80028A7DB /* Device.cpp in Sources */,
+				B06374380C8B3AC80028A7DB /* DevMidF.cpp in Sources */,
+				B06374390C8B3AC80028A7DB /* DevMidi.cpp in Sources */,
+				B063743A0C8B3AC80028A7DB /* EDevice.cpp in Sources */,
+				B063743B0C8B3AC80028A7DB /* Errors.cpp in Sources */,
+				B063743C0C8B3AC80028A7DB /* Execute.cpp in Sources */,
+				B063743D0C8B3AC80028A7DB /* Frac.cpp in Sources */,
+				B063743E0C8B3AC80028A7DB /* GIS_Head.cpp in Sources */,
+				B063743F0C8B3AC80028A7DB /* GIS.cpp in Sources */,
+				B06374400C8B3AC80028A7DB /* GrafKern.cpp in Sources */,
+				B06374420C8B3AC80028A7DB /* GSP_Err.cpp in Sources */,
+				B06374430C8B3AC80028A7DB /* GSP_File.cpp in Sources */,
+				B06374440C8B3AC80028A7DB /* GSP.cpp in Sources */,
+				B06374450C8B3AC80028A7DB /* Hilfs.cpp in Sources */,
+				B06374460C8B3AC80028A7DB /* Interval.cpp in Sources */,
+				B06374470C8B3AC80028A7DB /* Mut_Tab.cpp in Sources */,
+				B06374480C8B3AC80028A7DB /* Parser.cpp in Sources */,
+				B063744A0C8B3AC80028A7DB /* Runtime.cpp in Sources */,
+				B063744B0C8B3AC80028A7DB /* TabGen.cpp in Sources */,
+				B06374540C8B3B2E0028A7DB /* Action.cpp in Sources */,
+				B063745C0C8B3B3F0028A7DB /* BoxDlg.cpp in Sources */,
+				B06374650C8B3B500028A7DB /* InputDevDlg.cpp in Sources */,
+				B06374660C8B3B500028A7DB /* InputFilterDlg.cpp in Sources */,
+				B063747C0C8B3B5C0028A7DB /* MutApp.cpp in Sources */,
+				B063747D0C8B3B5C0028A7DB /* MutChild.cpp in Sources */,
+				B063747E0C8B3B5C0028A7DB /* MutEditFile.cpp in Sources */,
+				B063747F0C8B3B5C0028A7DB /* MutFrame.cpp in Sources */,
+				B06374810C8B3B5C0028A7DB /* MutRouteWnd.cpp in Sources */,
+				B06374830C8B3B5C0028A7DB /* OutputDevDlg.cpp in Sources */,
+				B06374840C8B3B5C0028A7DB /* OutputFilterDlg.cpp in Sources */,
+				B063749B0C8B3B970028A7DB /* RtMidi.cpp in Sources */,
+				B06378A20C8B587F0028A7DB /* mxDefs.cpp in Sources */,
+				B06378A30C8B587F0028A7DB /* valNum.cpp in Sources */,
+				B06378A40C8B587F0028A7DB /* valRadio.cpp in Sources */,
+				B06378B00C8B594C0028A7DB /* CompDlg.cpp in Sources */,
+				B0CF19050CB0DAA7004297B8 /* MutTextBox.cpp in Sources */,
+				B0CF19170CB0DBBF004297B8 /* MutLogicWnd.cpp in Sources */,
+				B0CF27440CBD0120004297B8 /* muconvauto.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0E5A81B0CE8AF7900E6DBE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B063793E0C8B66020028A7DB /* configure */;
+			targetProxy = B0E5A81A0CE8AF7900E6DBE9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B06373C60C8B367D0028A7DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_CONFIG_H,
+					RTMIDI,
+					NO_GCC_PRAGMA,
+					_LARGE_FILES,
+					"_FILE_OFFSET_BITS=64",
+					__WXMAC__,
+					WX,
+					"$(inherited)",
+				);
+				GCC_UNROLL_LOOPS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/opt/local/include/wx-2.8",
+					"/opt/local/lib/wx/include/mac-unicode-release-2.8",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_ports_graphics_wxWidgets/work/wxWidgets-2.8.4/build/lib",
+					/opt/local/lib,
+					"$(inherited)",
+				);
+				USER_HEADER_SEARCH_PATHS = "muwx $(inherited)";
+			};
+			name = Debug;
+		};
+		B06373C70C8B367D0028A7DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_CONFIG_H,
+					RTMIDI,
+					NO_GCC_PRAGMA,
+					_LARGE_FILES,
+					"_FILE_OFFSET_BITS=64",
+					__WXMAC__,
+					WX,
+					"$(inherited)",
+				);
+				GCC_UNROLL_LOOPS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/opt/local/include/wx-2.8",
+					"/opt/local/lib/wx/include/mac-unicode-release-2.8",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/local/lib,
+					"/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_ports_graphics_wxWidgets/work/wxWidgets-2.8.4/build/lib",
+					/opt/local/lib,
+					"$(inherited)",
+				);
+				USER_HEADER_SEARCH_PATHS = "muwx $(inherited)";
+			};
+			name = Release;
+		};
+		B06373CF0C8B383F0028A7DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PATH = "/opt/local/bin:$PATH";
+				PRODUCT_NAME = make;
+			};
+			name = Debug;
+		};
+		B06373D00C8B383F0028A7DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = make;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B06373E00C8B38D90028A7DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Mutabor-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Mutabor;
+				USER_HEADER_SEARCH_PATHS = "Help $(inherited)";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		B06373E10C8B38D90028A7DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Mutabor-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Mutabor;
+				USER_HEADER_SEARCH_PATHS = "Help $(inherited)";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B06379400C8B66200028A7DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PATH = "/opt/local/bin:$PATH";
+				PRODUCT_NAME = configure;
+			};
+			name = Debug;
+		};
+		B06379410C8B66200028A7DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PATH = "/opt/local/bin:$PATH";
+				PRODUCT_NAME = configure;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B06373C50C8B367D0028A7DB /* Build configuration list for PBXProject "Mutabor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B06373C60C8B367D0028A7DB /* Debug */,
+				B06373C70C8B367D0028A7DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B06373CE0C8B383F0028A7DB /* Build configuration list for PBXLegacyTarget "make" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B06373CF0C8B383F0028A7DB /* Debug */,
+				B06373D00C8B383F0028A7DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B06373DF0C8B38D90028A7DB /* Build configuration list for PBXNativeTarget "Mutabor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B06373E00C8B38D90028A7DB /* Debug */,
+				B06373E10C8B38D90028A7DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B063793F0C8B66200028A7DB /* Build configuration list for PBXLegacyTarget "configure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B06379400C8B66200028A7DB /* Debug */,
+				B06379410C8B66200028A7DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B06373C40C8B367D0028A7DB /* Project object */;
+}
