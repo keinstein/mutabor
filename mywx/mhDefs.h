@@ -4,6 +4,9 @@
 #ifndef WX_PRECOMP
     #include "wx/wx.h"
 #endif
+#include "wx/stdpaths.h"
+#include "wx/filename.h"
+#include <iostream>
 
 #ifndef HAVE_CONFIG_H
 #  ifdef __WXMSW__
@@ -25,6 +28,9 @@
 #else		
 #define SSCANF sscanf
 #endif
+
+class wxHtmlHelpController;
+extern wxHtmlHelpController * HelpController;
 
 #if defined(WX) && defined(UNICODE)
   #include <wx/strconv.h>
