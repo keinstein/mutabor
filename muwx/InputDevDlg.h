@@ -2,29 +2,24 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.4 2006/01/18 15:34:57 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.5 2008/01/25 09:08:58 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2006/01/18 15:34:57 $
- * \version $Revision: 1.4 $
+ * \date Created: 2005/12/10 14:22:47
+ * $Date: 2008/01/25 09:08:58 $
+ * \version $Revision: 1.5 $
+ * \license: GPL
+ * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
+ * Revision 1.5  2008/01/25 09:08:58  keinstein
+ * charset conversion
+ *
  * Revision 1.4  2006/01/18 15:34:57  keinstein
  * Doxygen header
  *
  * ID definition conflict solved
  *
  */
-
-/////////////////////////////////////////////////////////////////////////////
-// Name:        InputDevDlg.h
-// Purpose:     
-// Author:      R. Krauße
-// Modified by: 
-// Created:     10/12/05 14:22:47
-// RCS-ID:      
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
-/////////////////////////////////////////////////////////////////////////////
 
 #ifndef _INPUTDEVDLG_H_
 #define _INPUTDEVDLG_H_

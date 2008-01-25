@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        InputDevDlg.cpp
 // Purpose:     
-// Author:      R. Krauﬂe
+// Author:      R. Krau√üe
 // Modified by: 
 // Created:     10/12/05 14:22:47
 // RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
+// Copyright:   (c) R. Krau√üe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
