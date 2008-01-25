@@ -2,12 +2,29 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.8 2007/12/17 12:56:04 keinstein Exp $
+ * $Id: MutApp.h,v 1.9 2008/01/25 09:14:35 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2007/12/17 12:56:04 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/01/25 09:14:35 $
+ * \version $Revision: 1.9 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.9  2008/01/25 09:14:35  keinstein
+ * MutApp::OnInit:
+ * 	Remove unused i18n demo code.
+ * 	output directory constants in Debug compilation
+ * 	Add PNG and GIF image handlers.
+ * 	Add ZIP filesystem handler
+ * 	Load Resource file Mutabor.xrc
+ *
+ * MutApp::GetResourceName:
+ * MutApp::CmSetup:
+ * 	New function.
+ *
+ * Add CM_SETUP event handler.
+ *
+ *
+ * First steps towards a help system
+ *
  * Revision 1.8  2007/12/17 12:56:04  keinstein
  * Fix Unicode compilation
  * Catch CM_ROUTES
@@ -62,6 +79,8 @@
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
+//#include "Defs.h"
+//#include "wx/intl.h"
 #include "MutFrame.h"
 
 // Declare a frame array as an hash table
@@ -78,15 +97,17 @@ class MutApp : public wxApp
  public:
     bool OnInit();
 	void CmAbout (wxCommandEvent& event);
-	void CmFileNew (wxCommandEvent& event);
+	void CmSetup (wxCommandEvent& event);
+      	void CmFileNew (wxCommandEvent& event);
 	void CmFileOpen (wxCommandEvent& event);
 	void CmRoutes (wxCommandEvent& event);
 	void CmQuit (wxCommandEvent& event);
 	MutFrame* CreateMainFrame(wxWindowID id = wxID_ANY);
 	void RegisterFrame(wxFrame * f);
 	void UnregisterFrame (wxFrame * f);
+	static wxString GetResourceName(const wxString & file);
  private:
-    wxLocale m_locale;
+	wxLocale m_locale;
 	DECLARE_EVENT_TABLE()
 	
 	FrameHash frames;
@@ -102,5 +123,7 @@ class AppAbout : public wxDialog
 
 
 DECLARE_APP(MutApp)
+
+
 
 #endif  // __MUTAPP_H_INCLUDED__ 

@@ -15,6 +15,9 @@
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
 #include "wx/wxprec.h"
+#include <wx/xrc/xmlres.h>
+#include <wx/xrc/xh_all.h>
+
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -38,8 +41,10 @@
 #include "MutApp.h"
 #include "MutFrame.h"
 #include "DevMidi.h"
+#include "MutConfDlg.h"
 
 MutFrame *frame = (MutFrame *) NULL;
+wxHtmlHelpController * controller = (wxHtmlHelpController *) NULL;
 
 IMPLEMENT_APP(MutApp)
 
@@ -73,90 +78,23 @@ IMPLEMENT_APP(MutApp)
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
-
+  SetAppName(_T(PACKAGE_NAME));
+  SetClassName(_T(PACKAGE_NAME));
 	quitting = false;
   // initialize the languages
-      long lng = wxLANGUAGE_DEFAULT;
-
-    if ( argc == 2 )
-    {
-        // the parameter must be the lang index
-        wxString tmp(argv[1]);
-        tmp.ToLong(&lng);
-    }
-
-    static const wxLanguage langIds[] =
-    {
-        wxLANGUAGE_DEFAULT,
-	//        wxLANGUAGE_FRENCH,
-        wxLANGUAGE_GERMAN,
-	//        wxLANGUAGE_RUSSIAN,
-	//        wxLANGUAGE_BULGARIAN,
-	//        wxLANGUAGE_CZECH,
-	//        wxLANGUAGE_POLISH,
-	//        wxLANGUAGE_SWEDISH,
-#if wxUSE_UNICODE
-	//        wxLANGUAGE_JAPANESE,
-	//        wxLANGUAGE_GEORGIAN,
-#endif
-        wxLANGUAGE_ENGLISH,
-        wxLANGUAGE_ENGLISH_US
-    };
-
-    if ( lng == -1 )
-    {
-        // note that it makes no sense to translate these strings, they are
-        // shown before we set the locale anyhow
-        const wxString langNames[] =
-        {
-            _T("System default"),
-	    //            _T("French"),
-            _T("German"),
-	    //            _T("Russian"),
-	    //            _T("Bulgarian"),
-	    //            _T("Czech"),
-	    //            _T("Polish"),
-	    //            _T("Swedish"),
-#if wxUSE_UNICODE
-	    //            _T("Japanese"),
-	    //            _T("Georgian"),
-#endif
-            _T("English"),
-            _T("English (U.S.)")
-        };
-
-        // the arrays should be in sync
-        wxCOMPILE_TIME_ASSERT( WXSIZEOF(langNames) == WXSIZEOF(langIds),
-                               LangArraysMismatch );
-
-        lng = wxGetSingleChoiceIndex
-              (
-                _T("Please choose language:"),
-                _T("Language"),
-                WXSIZEOF(langNames),
-                langNames
-              );
-    }
-
-    if ( lng != -1 )
-        m_locale.Init(langIds[lng]);
+	m_locale.Init(wxLANGUAGE_DEFAULT);
 
 	// TODO: Check this!
-    // normally this wouldn't be necessary as the catalog files would be found
-    // in the default locations, but under Windows then the program is not
-    // installed the catalogs are in the parent directory (because the binary
-    // is in a subdirectory of samples/internat) where we wouldn't find them by
-    // default
-    wxLocale::AddCatalogLookupPathPrefix(wxT("."));
-    wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
+	// normally this wouldn't be necessary as the catalog files would be found
+	// in the default locations, but under Windows then the program is not
+	// installed the catalogs are in the parent directory (because the binary
+	// is in a subdirectory of samples/internat) where we wouldn't find them by
+	// default
+	wxLocale::AddCatalogLookupPathPrefix(_T("."));
+	wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
 
     // Initialize the catalogs we'll be using
-    m_locale.AddCatalog(wxT("mutabor"));
-
-    // this catalog is installed in standard location on Linux systems and
-    // shows that you may make use of the standard message catalogs as well
-    //
-    // if it's not installed on your system, it is just silently ignored
+	m_locale.AddCatalog(wxT("mutabor"));
 #ifdef __LINUX__
     {
         wxLogNull noLog;
@@ -164,9 +102,79 @@ bool MutApp::OnInit()
     }
 #endif
 
+  wxStandardPathsBase & sp = wxStandardPaths::Get();
+
+#ifdef DEBUG
+  std::cout << "ConfigDir:        "
+	    << sp.GetConfigDir().ToUTF8() << std::endl
+	    << "DataDir:          " 
+	    << sp.GetDataDir().ToUTF8() << std::endl
+	    << "DocumentsDir:     "
+	    << sp.GetDocumentsDir().ToUTF8() << std::endl
+	    << "ExecutablePath:   " 
+	    << sp.GetExecutablePath().ToUTF8() << std::endl
+#if defined(__UNIX__) && !defined(__WXMAC__)
+	    << "InstallPrefix:    " << sp.GetInstallPrefix().ToUTF8() 
+	    << std::endl
+#endif
+	    << "LocalDataDir:     " << sp.GetLocalDataDir().ToUTF8() 
+	    << std::endl
+	    << "PluginsDir:       " << sp.GetPluginsDir().ToUTF8() << std::endl
+	    << "ResourcesDir:     " << sp.GetResourcesDir().ToUTF8() 
+	    << std::endl
+	    << "TempDir:          " << sp.GetTempDir().ToUTF8() << std::endl
+	    << "UserConfigDir:    " << sp.GetUserConfigDir().ToUTF8() 
+	    << std::endl
+	    << "UserDataDir:      " << sp.GetUserDataDir().ToUTF8() << std::endl
+	    << "UserLocalDataDir: " << sp.GetUserLocalDataDir().ToUTF8() 
+	    << std::endl;
+    
+  std::cout 
+            << "LocalizedResourcesDir(Can): " 
+	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName()).ToUTF8()
+	    << std::endl
+            << "LocalizedResourcesDir(Can,Messages): " 
+	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+					   sp.ResourceCat_Messages).ToUTF8()
+	    << std::endl
+            << "LocalizedResourcesDir(): " 
+	    << sp.GetLocalizedResourcesDir(m_locale.GetName()).ToUTF8()
+	    << std::endl
+            << "LocalizedResourcesDir(Messages): " 
+	    << sp.GetLocalizedResourcesDir(m_locale.GetName(),
+					   sp.ResourceCat_Messages).ToUTF8()
+	    << std::endl;
+#endif 
+
+
+
+
+
+    // this catalog is installed in standard location on Linux systems and
+    // shows that you may make use of the standard message catalogs as well
+    //
+    // if it's not installed on your system, it is just silently ignored
+
 	// We are using .png files for some extra bitmaps.
-	wxImageHandler * pnghandler = new wxPNGHandler;
-	wxImage::AddHandler(pnghandler);
+  wxImageHandler * pnghandler = new wxPNGHandler;
+  wxImage::AddHandler(pnghandler);
+  wxImage::AddHandler(new wxGIFHandler);
+
+  wxFileSystem::AddHandler(new wxZipFSHandler);
+
+  wxXmlResource::Get()->InitAllHandlers();
+  wxXmlResource::Get()->Load(GetResourceName(_T("Mutabor.xrc")));
+
+  wxHelpControllerHelpProvider* provider = new wxHelpControllerHelpProvider;
+  wxHelpProvider::Set(provider);
+
+  HelpController = new wxHtmlHelpController();
+
+  provider->SetHelpController(HelpController);
+
+  // we want to name the help files according to the lanuage.
+  HelpController->Initialize(_("usage"));
+  HelpController->AddBook(_("handbook"));
 
 #if defined(__WXMAC__)
 // || defined(__WXCOCOA__)
@@ -209,10 +217,12 @@ bool MutApp::OnInit()
 	CLOSEMENU(_("&Help"));
 	
 	wxMenuBar::MacSetCommonMenuBar(menuBar);
+	
 #endif
 
 
     frame = CreateMainFrame();
+    provider->SetHelpController(& frame->GetHelpController());
     SetTopWindow(frame);
 
 	((MutFrame*)frame)->RestoreState();
@@ -222,6 +232,18 @@ bool MutApp::OnInit()
     return true;
 }
 
+
+void MutApp::CmSetup (wxCommandEvent& event)
+{
+
+	MutConfigDialog * config;
+	config = new MutConfigDialog((wxFrame *) NULL);
+	int value = config->ShowModal();
+	std::cout << "MutApp::CmSetup: not implemented. Got value " 
+		  << value << std::endl;
+	if 
+	config->Destroy();
+}
 
 void MutApp::CmAbout (wxCommandEvent& event)
 {
@@ -313,6 +335,7 @@ AppAbout::AppAbout (wxWindow *parent, long style)
 
 
 BEGIN_EVENT_TABLE(MutApp, wxApp)
+    EVT_MENU(CM_SETUP, MutApp::CmSetup)
     EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
     EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
 /*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
@@ -534,3 +557,35 @@ void MutApp::RegisterFrame (wxFrame * f) {
 void MutApp::UnregisterFrame (wxFrame * f) {
 	frames.erase(f);
 }
+
+wxString MutApp::GetResourceName(const wxString & file){
+  const wxLocale * m_locale = wxGetLocale();
+  wxStandardPathsBase & sp = wxStandardPaths::Get();
+  wxString localename = m_locale->GetCanonicalName();
+  wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
+
+#ifdef DEBUG
+  std::cerr << "Trying do load resources..." << std::endl
+	    << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl
+	    << (sp.GetResourcesDir().ToUTF8()) << std::endl;
+#endif
+
+  if (!rcname.IsFileReadable()) {
+    rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
+#ifdef DEBUG
+    std::cerr << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl;
+#endif
+
+    if (!rcname.IsFileReadable()){
+      rcname.SetPath(sp.GetResourcesDir());
+#ifdef DEBUG
+      std::cerr << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl;
+#endif
+    }
+
+  }
+  return rcname.GetFullPath(); 
+}
+
+
+
