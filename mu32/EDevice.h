@@ -2,12 +2,17 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.4 2005/11/10 17:54:01 keinstein Exp $
- * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2005/11/10 17:54:01 $
- * \version $Revision: 1.4 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.5 2008/01/25 09:07:48 keinstein Exp $
+ * \author RÂ¸diger Krauï¬‚e <krausze@mail.berlios.de>
+ * \date $Date: 2008/01/25 09:07:48 $
+ * \version $Revision: 1.5 $
  *
  * $Log: EDevice.h,v $
+ * Revision 1.5  2008/01/25 09:07:48  keinstein
+ * Make route file reading/writing wchar compatible
+ * charset conversion
+ * Read and write routes to wxConfigBase compatible config files
+ *
  * Revision 1.4  2005/11/10 17:54:01  keinstein
  * created debian installer
  *
@@ -24,6 +29,7 @@
 
 #ifdef WX
 #include <wx/string.h>
+#include <wx/config.h>
 #include "Device.h"
 #endif
 
@@ -87,7 +93,7 @@ class ERoute
 	}
 };
 
-// Oberflächen Devices ---------------------------------------------------
+// Oberflâ€°chen Devices ---------------------------------------------------
 
 class EDevice
 {
@@ -143,9 +149,12 @@ class EDevice
 // Funktionen -------------------------------------------------------
 
 #if defined(WX)
-EDevice* NewDevice(EDevice **List, DevType dt, const wxString& name, int devId, EDevice *oldPos = 0, EDevice *newPos = 0);
+EDevice* NewDevice(EDevice **List, DevType dt, const wxString& name, 
+					int devId, EDevice *oldPos = 0, EDevice *newPos = 0);
 void ScanRoutes(const wxString& config);
+void ScanRoutes(const wxConfigBase *config);
 void WriteRoutes(wxString &config);
+void WriteRoutes(wxConfigBase *config);
 #else
 EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *oldPos = 0, EDevice *newPos = 0);
 void ScanRoutes(char *config);
@@ -155,5 +164,6 @@ void WriteRoutes(char **config);
 
 extern bool BoxUsed[MAX_BOX];
 void CheckBoxesUsed();
+
 #endif
 
