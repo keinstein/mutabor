@@ -59,7 +59,7 @@ mutabor_CXXFLAGS += @COND_PRECOMP_CXX_TRUE@-include mutabor-cxxprecompiled.h
 mutabor_SHORTNAME = mutabor
 mutabor_DEPENDENCIES = @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
 mutabor_LDADD = $(LDADD) @COND_WINRC_TRUE@ $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
-mutabor_DATA = Images/about.png
+mutabor_DATA = Images/about.png Mutabor.xrc
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 
@@ -116,7 +116,10 @@ mutabor-cxxprecompiled.h:
 @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
 
-Mutabor.app:all
+Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
+	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
+
+Mutabor.app:all Mutabor.xrc
 	mkdir -p Mutabor.app/Contents/MacOS
 	mkdir -p Mutabor.app/Contents/Resources
 	cp mutabor Mutabor.app/Contents/MacOS
@@ -129,8 +132,7 @@ Mutabor.app:all
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
-	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.app/Contents/Resources/Mutabor.xrc
-	cp $(top_srcdir)/Images/about.png Mutabor.app/Contents/Resources
+	cp $(top_srcdir)/Images/about.png Mutabor.xrc Mutabor.app/Contents/Resources
 
 wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
