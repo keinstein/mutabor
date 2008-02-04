@@ -17,6 +17,8 @@
 #include "wx/wxprec.h"
 #include <wx/xrc/xmlres.h>
 #include <wx/xrc/xh_all.h>
+#include <wx/fs_zip.h>
+#include <wx/cshelp.h>
 
 
 #ifdef __BORLANDC__
@@ -44,7 +46,7 @@
 #include "MutConfDlg.h"
 
 MutFrame *frame = (MutFrame *) NULL;
-wxHtmlHelpController * controller = (wxHtmlHelpController *) NULL;
+wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
 
 IMPLEMENT_APP(MutApp)
 
@@ -78,7 +80,7 @@ IMPLEMENT_APP(MutApp)
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
-  SetAppName(_T(PACKAGE_NAME));
+  SetAppName(_T(PACKAGE));
   SetClassName(_T(PACKAGE_NAME));
 	quitting = false;
   // initialize the languages
@@ -102,7 +104,7 @@ bool MutApp::OnInit()
     }
 #endif
 
-  wxStandardPathsBase & sp = wxStandardPaths::Get();
+  wxStandardPaths & sp = (wxStandardPaths &) (wxStandardPaths::Get());
 
 #ifdef DEBUG
   std::cout << "ConfigDir:        "
@@ -113,6 +115,7 @@ bool MutApp::OnInit()
 	    << sp.GetDocumentsDir().ToUTF8() << std::endl
 	    << "ExecutablePath:   " 
 	    << sp.GetExecutablePath().ToUTF8() << std::endl
+	    
 #if defined(__UNIX__) && !defined(__WXMAC__)
 	    << "InstallPrefix:    " << sp.GetInstallPrefix().ToUTF8() 
 	    << std::endl
@@ -131,14 +134,14 @@ bool MutApp::OnInit()
     
   std::cout 
             << "LocalizedResourcesDir(Can): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName()).ToUTF8()
+	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(), sp.ResourceCat_None).ToUTF8()
 	    << std::endl
             << "LocalizedResourcesDir(Can,Messages): " 
 	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
 					   sp.ResourceCat_Messages).ToUTF8()
 	    << std::endl
             << "LocalizedResourcesDir(): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetName()).ToUTF8()
+	    << sp.GetLocalizedResourcesDir(m_locale.GetName(), sp.ResourceCat_None).ToUTF8()
 	    << std::endl
             << "LocalizedResourcesDir(Messages): " 
 	    << sp.GetLocalizedResourcesDir(m_locale.GetName(),
@@ -173,8 +176,8 @@ bool MutApp::OnInit()
   provider->SetHelpController(HelpController);
 
   // we want to name the help files according to the lanuage.
-  HelpController->Initialize(_("usage"));
-  HelpController->AddBook(_("handbook"));
+  HelpController->Initialize(_("help"));
+  HelpController->AddBook(_("manual"));
 
 #if defined(__WXMAC__)
 // || defined(__WXCOCOA__)
@@ -222,7 +225,6 @@ bool MutApp::OnInit()
 
 
     frame = CreateMainFrame();
-    provider->SetHelpController(& frame->GetHelpController());
     SetTopWindow(frame);
 
 	((MutFrame*)frame)->RestoreState();
@@ -241,7 +243,7 @@ void MutApp::CmSetup (wxCommandEvent& event)
 	int value = config->ShowModal();
 	std::cout << "MutApp::CmSetup: not implemented. Got value " 
 		  << value << std::endl;
-	if 
+//	if 
 	config->Destroy();
 }
 
