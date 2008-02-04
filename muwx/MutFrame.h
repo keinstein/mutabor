@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// $Id: MutFrame.h,v 1.8 2008/01/25 09:37:11 keinstein Exp $
+// $Id: MutFrame.h,v 1.9 2008/02/04 10:22:53 keinstein Exp $
 // Name:        MutFrame.h
 // Purpose:     Mutabor Frame
 // Author:      R. Krauße
@@ -8,6 +8,9 @@
 // Copyright:   (c) R. Krauße, T. Schlemmer
 // Licence:     GPL
 // $Log: MutFrame.h,v $
+// Revision 1.9  2008/02/04 10:22:53  keinstein
+// Fix typo in MutFrame::GetDockArt declaration
+//
 // Revision 1.8  2008/01/25 09:37:11  keinstein
 // Enable CM_ACTIVATE, CM_FILENEW and CM_FILEOPEN in event table
 // Inherit wxFrame
@@ -89,7 +92,7 @@ public:
     void OnActivate(wxActivateEvent& event);
     void OnEraseBackground(wxEraseEvent& event);
     void OnSize(wxSizeEvent& event);
-    wxAuiDockArt* MutFrame::GetDockArt();
+    wxAuiDockArt* GetDockArt();
     
     MutChild* NewFrame(WinKind winKind, 
 		       int box, 
