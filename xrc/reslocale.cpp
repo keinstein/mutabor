@@ -1,4 +1,5 @@
 _("Mutabor configuration");
+_("How shall the tone system be reported: relative or absolute?");
 _("Tone System");
 _("as &relations");
 _("as &tone system");

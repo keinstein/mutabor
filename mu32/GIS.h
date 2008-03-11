@@ -78,24 +78,24 @@ enum GisType {
 // basic type -------------------------------------------------------
 class GisToken
 {
-	public:
-		GisToken *Next;
-		mutString Sep;
-		GisToken(const mutString sep = mutEmptyString, GisToken *next = 0)
-		{
-			CHECKDUP(Sep, sep);
-			Next = next;
-		}
-		~GisToken()
-		{
-			mutFreeString(Sep);
-			if ( Next ) delete Next;
-		}
-		virtual GisType Type() const { return GTUnknown; }
-		virtual GisToken *Copy() { return new GisToken(Sep, 0); }
+ public:
+  GisToken *Next;
+  mutString Sep;
+  GisToken(const mutString sep = mutEmptyString, GisToken *next = 0)
+    {
+      CHECKDUP(Sep, sep);
+      Next = next;
+    }
+  virtual ~GisToken()
+    {
+      mutFreeString(Sep);
+      if ( Next ) delete Next;
+    }
+  virtual GisType Type() const { return GTUnknown; }
+  virtual GisToken *Copy() { return new GisToken(Sep, 0); }
 #ifndef FOR_MUTWIN
-		virtual void Stream(ostream &out, char sep);
-		virtual void Echo() { cout << "?? "; }
+  virtual void Stream(ostream &out, char sep);
+  virtual void Echo() { cout << "?? "; }
 #endif
 };
 

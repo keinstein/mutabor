@@ -38,6 +38,7 @@ AH_TOP([
 AH_BOTTOM([
 /* Debug also for Bison output. */
 #ifdef DEBUG
+/* #  define __WXDEBUG__ */
 #  define YYDEBUG 1
 #endif
 
@@ -202,7 +203,7 @@ esac
 AM_CONDITIONAL(COND_WINRC,test "$RC")
 AM_GNU_GETTEXT
 
-AM_PATH_WXCONFIG(2.6.0, wxWin=1)
+AM_PATH_WXCONFIG(2.8.0, wxWin=1)
 if test "$wxWin" != 1; then
          AC_MSG_ERROR([
                 wxWindows must be installed on your system

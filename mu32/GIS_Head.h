@@ -34,7 +34,7 @@ class GisReadHead
 			Time = frac(0, 1);
 			SingleToken = singleToken;
 		}
-		~GisReadHead()
+		virtual ~GisReadHead()
 		{
 			mutFreeString(Id);
 			if ( Next ) delete Next; // only the following will be deleted

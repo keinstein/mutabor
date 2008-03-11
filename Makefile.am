@@ -119,7 +119,7 @@ mutabor-cxxprecompiled.h:
 Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
 	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
 
-Mutabor.app:all Mutabor.xrc
+Mutabor.app:all Mutabor.xrc mutabor
 	mkdir -p Mutabor.app/Contents/MacOS
 	mkdir -p Mutabor.app/Contents/Resources
 	cp mutabor Mutabor.app/Contents/MacOS

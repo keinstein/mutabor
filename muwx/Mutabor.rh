@@ -1,4 +1,4 @@
-/*// menu items ids
+/*// menu items ids  -*- C++ -*-
 enum
 {
     MDI_QUIT = wxID_EXIT,
@@ -15,7 +15,7 @@ enum
 // alt
 
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
+// Mutabor 2.win, 1997, R.Krau√üe
 // Konstantendefinitionen
 // ------------------------------------------------------------------
 
@@ -61,62 +61,67 @@ enum
 #define IDM_DEMO_DOC	       102
 */
 
-#define CM_FILENEW 90
-#define CM_FILEOPEN 91
-#define CM_FILESAVE 92
-#define CM_FILESAVEAS 93
-#define CM_EXIT 94
+#define CM_FILEOPEN wxID_OPEN
+#define CM_FILECLOSE wxID_CLOSE
+#define CM_FILENEW wxID_NEW
+#define CM_FILESAVE wxID_SAVE
+#define CM_FILESAVEAS wxID_SAVEAS
+#define CM_FILEREVERT wxID_REVERT
+#define CM_EXIT wxID_EXIT
 
+#define CM_HELP wxID_HELP
+#define CM_HELPINDEX wxID_HELP_INDEX
+#define CM_HELPSEARCH wxID_HELP_SEARCH
+#define CM_ABOUT wxID_ABOUT
+enum {	
+  CM_EXECUTE=101,
+  CM_SETUP=102,
 
-#define CM_EXECUTE      101
-#define CM_SETUP        102
+  CM_COMPILE=104,
+  CM_ACTIVATE,
+  CM_STOP,
+  CM_PANIC,
 
-#define CM_COMPILE      104
-#define CM_ACTIVATE  	  105
-#define CM_STOP      	  106
-#define CM_PANIC        107
+  CM_TOGGLEKEY,
+  CM_TOGGLETS,
+  CM_TOGGLEACT,
+  CM_ROUTES,
+  CM_OWM,
+  CM_CAW,
+  CM_SELECTBOX,
 
-#define CM_TOGGLEKEY 	  109
-#define CM_TOGGLETS     110
-#define CM_TOGGLEACT    111
-#define CM_ROUTES	      112
-#define CM_OWM	        113
-#define CM_CAW          114
-#define CM_SELECTBOX    115
+  CM_ROUTELOAD,
+  CM_ROUTESAVE,
+  CM_ROUTESAVEAS,
 
-#define CM_ROUTELOAD    117
-#define CM_ROUTESAVE    118
-#define CM_ROUTESAVEAS  119
+  CM_INDEVPLAY,
+  CM_INDEVSTOP,
+  CM_INDEVPAUSE,
 
-#define CM_INDEVPLAY    121
-#define CM_INDEVSTOP    122
-#define CM_INDEVPAUSE   123
+  CM_HELPHANDBOOK,
+  CM_HELPONHELP,
+  CM_HELPCOMMON,
 
-#define CM_HELPINDEX    125
-#define CM_HELPHANDBOOK 126
-#define CM_HELPONHELP   127
-#define CM_HELPCOMMON   128
-#define CM_ABOUT        129
+  CM_BOX,
 
-#define CM_BOX          140
+  CM_HELPCONTEXT,
 
-#define CM_HELPCONTEXT  130
+  CM_COMPACT,
+  CM_MUTTAG,
+  CM_SBREFRESH,
+  CM_GETLINE,
+  CM_DOACTIVATE,
+  CM_TASTE,
+  CM_UPDATE,
 
-#define CM_COMPACT      201
-#define CM_MUTTAG       202
-#define CM_SBREFRESH    203
-#define CM_GETLINE      204
-#define CM_DOACTIVATE   205
-#define CM_TASTE        206
-#define CM_UPDATE       207
+  MDI_REFRESH,
+  /*
+    CM_CLOSECHILD,
 
-#define MDI_REFRESH		208
-/*
-#define CM_CLOSECHILD   209
-
-#define CM_FACE      210
-*/
-#define CM_UPDATEUI  220
+    CM_FACE,
+  */
+  CM_UPDATEUI
+};
 /*
 #define IDD_COMPILER 100
 #define IDD_SETUP    101
