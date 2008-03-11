@@ -7,16 +7,15 @@
 #define __RUNTIME_H_INCLUDED
 
 #include "Defs.h"
-#ifndef WX
-#include <owl\dialog.h>
-#else
+
 #include "wx/wxchar.h"
 #include "CompDlg.h"
 #if !defined(__WXMSW__)
   #define UINT unsigned int
   #define pascal
 #endif
-#endif 
+
+#include "Device.h"
 
 typedef void UpdateUICallback();
 
@@ -57,9 +56,10 @@ extern "C"
 
 #ifndef WX
   void pascal ScanDevices(char *config);
-#else
-  void pascal ScanDevices(const wxString &config);
+
 #endif
+
+  OutDevice * GetOut(int nr);
 
   void pascal GetTimerData(UINT &min, UINT &max);
 }

@@ -57,13 +57,13 @@ class OutGis : public OutDevice
 class InGis : public InDevice
 {
   protected:
-  	 wxString Id;
-     wxString Name;
-  	 GisToken *Data;
-  	 GisReadArtHead *Head;
-  public:
-  	InGis(wxString name, wxString id)
-	  : InDevice(),Name(name),Id(id)
+  wxString Id;
+  wxString Name;
+  GisToken *Data;
+  GisReadArtHead *Head;
+ public:
+ InGis(wxString name, wxString id)
+   : InDevice(),Id(id),Name(name)
 	{
 		Head = 0;
 		Data = 0;

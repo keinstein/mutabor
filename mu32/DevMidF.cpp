@@ -2,13 +2,22 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.7 2007/12/17 12:52:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.8 2008/03/11 10:37:34 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2007/12/17 12:52:15 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2008/03/11 10:37:34 $
+ * \version $Revision: 1.8 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.8  2008/03/11 10:37:34  keinstein
+ * Holyday edition
+ * put CM_xxx in an enum
+ * use wx constants
+ * document mutframe
+ * some white space formattings
+ * make route saving more system specific
+ * many other fixes
+ *
  * Revision 1.7  2007/12/17 12:52:15  keinstein
  * Make the file compile in WX Unicode mode
  *
@@ -211,7 +220,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
 {
   int i = 0, s;
   DWORD p;
-  long freq;
+  unsigned long freq;
   if ( box == -2 )
   {
     freq = ((long)taste) << 24;
@@ -265,6 +274,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
     MIDI_SOUND(i, s);
     Cd[i].Sound = s;
   }
+
   // Bank testen
   if ( (s = cd->BankSelectMSB) != Cd[i].BankSelectMSB && s != -1 )
   {
@@ -276,6 +286,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
     MIDI_OUT3(0xB0+i, 32, (BYTE) s);
     Cd[i].BankSelectLSB = s;
   }
+
   // Pitch testen
   if ( (p = freq & 0xFFFFFF) != Cd[i].Pitch )
   {

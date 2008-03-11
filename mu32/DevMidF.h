@@ -78,7 +78,7 @@ class OutMidiFile : public OutDevice
 	    DevId = devId;
       bending_range = bendingRange;
 	  }
-	  ~OutMidiFile() {};
+	  virtual ~OutMidiFile() {};
 	  virtual bool Open();
 	  virtual void Close();
 	  virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd);
@@ -105,43 +105,43 @@ class OutMidiFile : public OutDevice
 
 class InMidiFile : public InDevice
 {
-  public:
-    wxString Name;
-    int DevId;
-	  InMidiFile(wxString name, int devId)
-	  : InDevice(),Name(name)
-	  {
-	    DevId = devId;
-	  }
-	  virtual bool Open();
-	  virtual void Close();
-	  virtual void Stop();
-	  virtual void Play();
-	  virtual void Pause();
+ public:
+  wxString Name;
+  int DevId;
+ InMidiFile(wxString name, int devId): InDevice(),Name(name) {
+    DevId = devId;
+  }
+  virtual ~InMidiFile() {};
+
+  virtual bool Open();
+  virtual void Close();
+  virtual void Stop();
+  virtual void Play();
+  virtual void Pause();
 //	   void Proceed(GisReadArtHead *h, char turn, Route *route) {};
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};
-	  virtual frac ReadOn(frac time) { return frac(0, 1); }
-	  virtual wxString & GetName() { return Name; }
-	  virtual DevType GetType() const { return DTMidiFile; }
-    void IncDelta();
-  protected:
-    BYTE FileType;
-    int nTrack;
-    int Speed;
-    BYTE **Track;
-    DWORD *TrackPos;
-    long *curDelta;
-    long minDelta;
-    long actDelta;
-    BYTE *StatusByte;
-    ChannelData Cd[16];
-    UINT TimerId;
-    BOOL Busy;
-    DWORD TicksPerQuater;
-    long MMSPerQuater;
-    void Proceed(DWORD midiCode, int track);
-    void ProceedRoute(DWORD midiCode, Route *route);
-    long ReadMidiProceed(int nr, long time);
+  virtual frac ReadOn(frac time) { return frac(0, 1); }
+  virtual wxString & GetName() { return Name; }
+  virtual DevType GetType() const { return DTMidiFile; }
+  void IncDelta();
+ protected:
+  BYTE FileType;
+  int nTrack;
+  int Speed;
+  BYTE **Track;
+  DWORD *TrackPos;
+  long *curDelta;
+  long minDelta;
+  long actDelta;
+  BYTE *StatusByte;
+  ChannelData Cd[16];
+  UINT TimerId;
+  BOOL Busy;
+  DWORD TicksPerQuater;
+  long MMSPerQuater;
+  void Proceed(DWORD midiCode, int track);
+  void ProceedRoute(DWORD midiCode, Route *route);
+  long ReadMidiProceed(int nr, long time);
 };
 
 // Function ---------------------------------------------------------

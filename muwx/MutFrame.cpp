@@ -2,15 +2,24 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.11 2008/01/25 09:37:11 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.12 2008/03/11 10:37:34 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/01/25 09:37:11 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2008/03/11 10:37:34 $
+ * \version $Revision: 1.12 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.12  2008/03/11 10:37:34  keinstein
+ * Holyday edition
+ * put CM_xxx in an enum
+ * use wx constants
+ * document mutframe
+ * some white space formattings
+ * make route saving more system specific
+ * many other fixes
+ *
  * Revision 1.11  2008/01/25 09:37:11  keinstein
  * Enable CM_ACTIVATE, CM_FILENEW and CM_FILEOPEN in event table
  * Inherit wxFrame
@@ -37,12 +46,14 @@
  *  - move OnAbout to MutApp
  *  - set ext on frame delete on Quitting, so that program quits too
  *
- * Revision 1.7  2006/01/18 15:37:02  keinstein
+ * Revision 1.7  2006/01/18 15:37:02  kewxWindows licenseinstein
  * no MDI Windows in some environments
  *
  * Revision 1.6  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
+ * \addtogroup muwx
+ * \{
  ********************************************************************/
 
 
@@ -210,11 +221,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxFrame)
     EVT_UPDATE_UI(CM_INDEVSTOP, MutFrame::CeInDevStop)
     EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
     EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
-    EVT_ACTIVATE(MutFrame::OnActivate)
-
-//	EVT_MENU(CM_ABOUT, MutApp::OnAbout)
-//    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
-//    EVT_MENU(CM_EXIT, MutFrame::OnQuit)
+//    EVT_ACTIVATE(MutFrame::OnActivate)
 
     EVT_CLOSE(MutFrame::OnClose)
     EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
@@ -249,17 +256,18 @@ MutFrame::MutFrame(wxWindow *parent,
 
 
 #if wxUSE_TOOLBAR
-	wxToolBar * tb = new  wxToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-                                 wxTB_FLAT | wxTB_NODIVIDER);
-//    CreateToolBar(wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
-//    InitToolBar(GetToolBar());
+	wxToolBar * tb = new  wxToolBar(this, 
+					wxID_ANY, 
+					wxDefaultPosition, 
+					wxDefaultSize,
+					wxTB_FLAT | wxTB_NODIVIDER);
 	InitToolBar(tb);
-#endif // wxUSE_TOOLBAR
 
 	auimanager.AddPane(tb, wxAuiPaneInfo().
-						Name(_T("tb")).Caption(_("Toolbar")).
-						ToolbarPane().Top().
-						LeftDockable(false).RightDockable(false));
+			   Name(_T("tb")).Caption(_("Toolbar")).
+			   ToolbarPane().Top().
+			   LeftDockable(false).RightDockable(false));
+#endif // wxUSE_TOOLBAR
 
 
     // Accelerators
@@ -275,6 +283,41 @@ MutFrame::~MutFrame() {
    auimanager.UnInit();
 }
 
+#if wxUSE_TOOLBAR
+void MutFrame::InitToolBar(wxToolBar* toolBar)
+{
+    wxBitmap* bitmaps[8];
+
+    /* \todo use PNG images from resources */
+    bitmaps[0] = new wxBitmap( new_xpm );
+    bitmaps[1] = new wxBitmap( open_xpm );
+    bitmaps[2] = new wxBitmap( save_xpm );
+    bitmaps[3] = new wxBitmap( copy_xpm );
+    bitmaps[4] = new wxBitmap( cut_xpm );
+    bitmaps[5] = new wxBitmap( paste_xpm );
+    bitmaps[6] = new wxBitmap( print_xpm );
+    bitmaps[7] = new wxBitmap( help_xpm );
+
+    toolBar->AddTool(CM_FILENEW, _("New"), *(bitmaps[0]), _("New file"));
+    toolBar->AddTool(CM_FILEOPEN, _("Open"), *bitmaps[1], _("Open file"));
+    toolBar->AddTool(CM_FILESAVE, _("Save"), *bitmaps[2], _("Save file"));
+    toolBar->AddSeparator();
+    toolBar->AddTool(3, _("Copy"), *bitmaps[3], _("Copy"));
+    toolBar->AddTool(4, _("Cut"), *bitmaps[4],  _("Cut"));
+    toolBar->AddTool(5, _("Paste"), *bitmaps[5], _("Paste"));
+    toolBar->AddSeparator();
+    toolBar->AddTool(6, _("Print"), *bitmaps[6], _("Print"));
+    toolBar->AddSeparator();
+    toolBar->AddTool( CM_ABOUT, _("About"), *bitmaps[7], _("Help"));
+    toolBar->AddSeparator();
+    toolBar->Realize();
+
+    int i;
+    for (i = 0; i < 8; i++)
+        delete bitmaps[i];
+}
+#endif // wxUSE_TOOLBAR
+
 void MutFrame::PassEventToEditor(wxCommandEvent &event) {
 	if (client) {
 		client->ProcessEvent(event);
@@ -284,7 +327,8 @@ void MutFrame::PassEventToEditor(wxCommandEvent &event) {
 
 void MutFrame::EventPassOn(wxCommandEvent& event)
 { 
-	if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
+	if ( event.GetEventObject() == NULL ) 
+	  // als Flag zur Sicherheit vor Endlosschleifen
                 return;
 	event.SetEventObject(NULL);
 	
@@ -328,178 +372,51 @@ void MutFrame::OnClose(wxCloseEvent& event)
         }
     }
   */
-	wxGetApp().UnregisterFrame(this);
-    SaveState();
-    event.Skip();
+  wxGetApp().UnregisterFrame(this);
+  SaveState();
+  event.Skip();
 }
 
 
-// TODO: Currently unused; to be deleted.
-void MutFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
-{
-/*	wxApp &application=wxGetApp();
-	wxWindow * window
-	application.SetExitOnFrameDelete(true);
-	application.SetTopWindow(this);
-*/    Close();
-}
-
-void MutFrame::OnNewWindow(wxCommandEvent& WXUNUSED(event) )
-{
-/*    // Make another frame, containing a canvas
-    MutChild *subframe = new MutChild(this/*frame* /, _T("Canvas Frame"));
-
-    wxString title;
-    title.Printf(_T("Canvas Frame %d"), ++gs_nFrames);
-
-    subframe->SetTitle(title);
-
-    // Give it an icon
-#ifdef __WXMSW__
-    subframe->SetIcon(wxIcon(_T("editor_icn")));
-#else
-    subframe->SetIcon(wxIcon( mondrian_xpm ));
-#endif
-
-    // Make a menubar
-    wxMenu *file_menu = new wxMenu;
-
-    file_menu->Append(MDI_NEW_WINDOW, _T("&New window"));
-    file_menu->Append(MDI_CHILD_QUIT, _T("&Close child"), _T("Close this window"));
-    file_menu->Append(MDI_QUIT, _T("&Exit"));
-
-    wxMenu *option_menu = new wxMenu;
-
-    option_menu->Append(MDI_REFRESH, _T("&Refresh picture"));
-    option_menu->Append(MDI_CHANGE_TITLE, _T("Change &title...\tCtrl-T"));
-    option_menu->AppendSeparator();
-    option_menu->Append(MDI_CHANGE_POSITION, _T("Move frame\tCtrl-M"));
-    option_menu->Append(MDI_CHANGE_SIZE, _T("Resize frame\tCtrl-S"));
-
-    wxMenu *help_menu = new wxMenu;
-    help_menu->Append(MDI_ABOUT, _T("&About"));
-
-    wxMenuBar *menu_bar = new wxMenuBar;
-
-    menu_bar->Append(file_menu, _T("&File"));
-    menu_bar->Append(option_menu, _T("&Child"));
-    menu_bar->Append(help_menu, _T("&Help"));
-
-    // Associate the menu bar with the frame
-    subframe->SetMenuBar(menu_bar);
-
-#if wxUSE_STATUSBAR
-    subframe->CreateStatusBar();
-    subframe->SetStatusText(title);
-#endif // wxUSE_STATUSBAR
-
-    int width, height;
-    subframe->GetClientSize(&width, &height);
-    MyCanvas *canvas = new MyCanvas(subframe, wxPoint(0, 0), wxSize(width, height));
-    canvas->SetCursor(wxCursor(wxCURSOR_PENCIL));
-    subframe->canvas = canvas;
-
-    // Give it scrollbars
-    canvas->SetScrollbars(20, 20, 50, 50);
-
-    subframe->Show(true);*/
-}
-/*
-void MutFrame::OnSize(wxSizeEvent& 
-                                  #ifdef __WXUNIVERSAL__
-                                  event
-                                  #else
-                                  WXUNUSED(event)
-                                  #endif
-                                  )
-{
-    int w, h;
-    GetClientSize(&w, &h);
-
-    textWindow->SetSize(0, 0, 200, h);
-    GetClientWindow()->SetSize(200, 0, w - 200, h);
-
-    // FIXME: On wxX11, we need the MDI frame to process this
-    // event, but on other platforms this should not
-    // be done.
-#ifdef __WXUNIVERSAL__   
-    event.Skip();
-#endif
-}*/
-
-#if wxUSE_TOOLBAR
-void MutFrame::InitToolBar(wxToolBar* toolBar)
-{
-    wxBitmap* bitmaps[8];
-
-    bitmaps[0] = new wxBitmap( new_xpm );
-    bitmaps[1] = new wxBitmap( open_xpm );
-    bitmaps[2] = new wxBitmap( save_xpm );
-    bitmaps[3] = new wxBitmap( copy_xpm );
-    bitmaps[4] = new wxBitmap( cut_xpm );
-    bitmaps[5] = new wxBitmap( paste_xpm );
-    bitmaps[6] = new wxBitmap( print_xpm );
-    bitmaps[7] = new wxBitmap( help_xpm );
-
-    toolBar->AddTool(CM_FILENEW, _("New"), *(bitmaps[0]), _("New file"));
-    toolBar->AddTool(CM_FILEOPEN, _("Open"), *bitmaps[1], _("Open file"));
-    toolBar->AddTool(CM_FILESAVE, _("Save"), *bitmaps[2], _("Save file"));
-    toolBar->AddSeparator();
-    toolBar->AddTool(3, _("Copy"), *bitmaps[3], _("Copy"));
-    toolBar->AddTool(4, _("Cut"), *bitmaps[4],  _("Cut"));
-    toolBar->AddTool(5, _("Paste"), *bitmaps[5], _("Paste"));
-    toolBar->AddSeparator();
-    toolBar->AddTool(6, _("Print"), *bitmaps[6], _("Print"));
-    toolBar->AddSeparator();
-    toolBar->AddTool( CM_ABOUT, _("About"), *bitmaps[7], _("Help"));
-    toolBar->Realize();
-
-    int i;
-    for (i = 0; i < 8; i++)
-        delete bitmaps[i];
-}
-#endif // wxUSE_TOOLBAR
 
 void MutFrame::CmFileNew(wxCommandEvent& event)
 {
 #ifdef DEBUG
-	printf("MutFrame::CmFileNew\n");
+  printf("MutFrame::CmFileNew\n");
 #endif
-	if (client) {
-		event.Skip(true);
-		return;
-	}
-	OpenFile(wxEmptyString);
+
+  event.Skip( OpenFile(wxEmptyString) );
+}
+
+wxString MutFrame::FileNameDialog() {
+  return  wxFileSelector(_("Which Mutabor-file shall be loaded?"),
+			 _T(""), _T(""),
+			 _T(""),
+			 _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
+#ifdef __WXCOCOA__
+		   0,
+#else
+		   /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
+#endif
+		   this
+		   );
 }
 
 void MutFrame::CmFileOpen(wxCommandEvent& event)
 {
-	if (client) {
-		event.Skip(true);
-		return;
-	}
+  if (client) {
+    event.Skip(true);
+    return;
+  }
+  
+  wxString path = FileNameDialog();
 
-    static wxString s_extDef;
-    wxString path = wxFileSelector(
-		_("Which Mutabor-file shall be loaded?"),
-        _T(""), _T(""),
-        s_extDef,
-        _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
-#ifdef __WXCOCOA__
-		0,
-#else
-        /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
-#endif
-        this
-	);
-
-    if ( !path )
-        return;
-
-    // it is just a sample, would use wxSplitPath in real program
-    s_extDef = path.AfterLast(_T('.'));
-
-    OpenFile(path);
+  if ( !path )
+    return;
+  
+   
+  OpenFile(path);
+  event.Skip(false);
 }
 
 /** 
@@ -508,47 +425,29 @@ void MutFrame::CmFileOpen(wxCommandEvent& event)
  * \todo file loading fails silently if it is not in the systems encoding.
  * */
 
-void MutFrame::OpenFile(wxString path)
+bool MutFrame::OpenFile (wxString path, bool newfile)
 {
-	wxString filename = !path ? wxString(_("noname.mut")) : wxFileName(path).GetFullName();
+  if (client) return false;
+  wxString filename = !path ? wxString(_("noname.mut")) 
+    : wxFileName(path).GetFullName();
 	
-#ifdef NOAUI
-	// Make another frame, containing a canvas
-	MutChild *subframe = NewFrame(WK_EDIT, 0, _T("Editor"), ICON(document), filename);
-    int width, height;
-    subframe->GetClientSize(&width, &height);
-	
-#ifdef MDI_FORCE_EXTERN
-#if wxUSE_TOOLBAR
-    subframe->CreateToolBar(wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
-    InitToolBar(subframe->GetToolBar());
-#endif // wxUSE_TOOLBAR
-#else
-    /*
-#if wxUSE_TOOLBAR
-    subframe->CreateToolBar(0l | wxNO_BORDER | wxTB_FLAT | wxTB_HORIZONTAL);
-    InitToolBar(subframe->GetToolBar());
-#endif // wxUSE_TOOLBAR
-    */
-#endif
-#endif
     MutEditFile * editor = new MutEditFile(this, wxPoint(0, 0), wxDefaultSize);
     client = editor;
+
 #ifdef DEBUG
-	std::cout << "MutFrame::OpenFile(): Loading " << (path.fn_str()) << std::endl;
+    std::cout << "MutFrame::OpenFile(): Loading " << (path.fn_str()) << std::endl;
 #endif
-	if (!(!path))
-		editor->LoadFile(path);
-		
-	auimanager.AddPane(client,wxAuiPaneInfo().Caption(filename).CenterPane().PaneBorder(false));
-		
-//	subframe->winAttr->Win = subframe->client = client;
-//	subframe->Show(true);
-	editor->SetSelection(0, 0);
-//	client->SetName(!path ? wxString(_("noname.mut")) : wxFileName(path).GetFullPath());
-	SetTitle(wxString().Format(_("%s -- %s"),APPNAME,filename.c_str()));
+    if (!(!path))
+      editor->LoadFile(path);
+    
+    auimanager.AddPane(client,wxAuiPaneInfo().
+		       Caption(filename).CenterPane().PaneBorder(false));
+    
+    editor->SetSelection(0, 0);
+    SetTitle(wxString().Format(_("%s -- %s"),APPNAME,filename.c_str()));
 	
-	auimanager.Update();
+    auimanager.Update();
+    return true;
 }
 
 
@@ -579,19 +478,20 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 #endif
   if ( !Compiled )
     return;
-  // Routen ‹bermitteln
-  WriteRoutes(RouteConfig);
+
+  wxGetApp().SaveState();
 #ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: " 
-	    << (RouteConfig.ToUTF8()) 
-	    << std::endl;
+  std::cerr << "CmDoActivate: Restoring state for debugging";
+  wxGetApp().RestoreState();
 #endif
-  ScanDevices(RouteConfig);
+
+  ScanDevices();
   AktionTraceReset();
-	// aktivieren
+
+  // aktivieren
 #ifndef NOACTIVATE
 #ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Activate" << std::endl;
+  std::cerr << "MutFrame::CmDoActivate: Activate" << std::endl;
 #endif
   RealTime = true;
   if ( !CheckNeedsRealTime() )
@@ -609,7 +509,7 @@ while playing by computer keyboard.)"),
     return;
 #endif
 #ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Initialize state" << std::endl;
+  std::cerr << "MutFrame::CmDoActivate: Initialize state" << std::endl;
 #endif
 	// Variablen initialisieren
   for (int instr = 0; instr < MAX_BOX; instr++)
@@ -840,44 +740,46 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 #ifdef DEBUG	
 	std::cout << "Mutframe::TextBoxOpen: Not implemented" << std::cout;
 #endif
-	char *s;
+	char *s = NULL;
 	wxString title;
-	switch ( kind )
-	{
-		case WK_KEY: 
-			s = GetKeyString(box, asTS); 
-			title.Printf(_("Current keys at Box %d"),box); 
-			break;
-		case WK_TS:  
-			s = GetTSString(box, asTS); 
-			title.Printf(_("Current tone system at Box %d"),box); 
-			break;
-		case WK_ACT: 
-			if (CAW) {
-				s = GenerateCAWString(); 
-				title=_("Action log"); 
-			} else {
-				s = GenerateACTString(box); 
-				title.Printf(_("Actions at Box %d"),box); 
-			}
-			break;
+	switch ( kind ) {
+	case WK_KEY: 
+	  s = GetKeyString(box, asTS); 
+	  title.Printf(_("Current keys at Box %d"),box); 
+	  break;
+	case WK_TS:  
+	  s = GetTSString(box, asTS); 
+	  title.Printf(_("Current tone system at Box %d"),box); 
+	  break;
+	case WK_ACT: 
+	  if (CAW) {
+	    s = GenerateCAWString(); 
+	    title=_("Action log"); 
+	  } else {
+	    s = GenerateACTString(box); 
+	    title.Printf(_("Actions at Box %d"),box); 
+	  }
+	  break;
+	case WK_LOGIC:
+	  wxLogWarning(_("Unexpected value: WK_LOGIC"));
+	  break;
+	case WK_ROUTE:
+	  wxLogWarning(_("Unexpected value: WK_ROUTE"));
+	  break;
+	case WK_EDIT:
+	  wxLogWarning(_("Unexpected value: WK_EDIT"));
+	  break;
+	case WK_NULL:
+	  wxLogWarning(_("Unexpected value: WK_NULL"));
+	  break;
+	default:
+	  wxLogError(_("Unexpected window kind: %d"), kind); 
 	}
-//  TextBox[nr]->NewText(s, TRUE);
-//  if (curChild && (curChild->GetWindowLong(GWL_STYLE) & WS_MAXIMIZE))
-// 	  Win->Attr.Style |= WS_MAXIMIZE;
-//#ifdef __WXMSW__
-//	wxString Icon[3] = { _T("keytextbox_icn"), _T("tstextbox_icn"), _T("acttextbox_icn") };
-//	MutChild *subframe = NewFrame(kind, box, _T("Textbox"), wxIcon(Icon[kind]));
-//#else
-//	wxIcon Icon[3] = { ICON(keytextbox), ICON(tstextbox), ICON(acttextbox) };
-//	MutChild *subframe = NewFrame(kind, box, _T("Textbox"), Icon[kind]);
-//#endif
-    int width, height;
-    GetClientSize(&width, &height);
+
+	int width, height;
+	GetClientSize(&width, &height);
 	width /= 2;
 	height /= 2;
-//	MutChild * client = new MutChild(this, wxID_ANY, wxPoint(0, 0), wxSize(width, height),
-//		kind, GetWinAttr(kind, box));
 
 	MutTextBox *client = new MutChild(kind,
 					  GetWinAttr(kind, box),
@@ -895,8 +797,6 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 	else 
 		str = wxEmptyString;
 
-//	wxString Name;
-//	(title.Printf(_("MutTextBox: %s")),str);
 	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title).CloseButton(true).
 								MaximizeButton(true).Float().DestroyOnClose(true));
 	client->NewText(str, true);
@@ -1021,92 +921,6 @@ void MutFrame::CmCloseChild()
     ChildToClose->Close();
 }
 
-// OpenWindow -------------------------------------------------------
-
-MutChild* MutFrame::NewFrame(WinKind winKind, int box, const wxString &frameName, wxIcon icon, const wxString &title)
-{
-/*
-	// Make another frame, containing a canvas
-	MutChild *subframe = new MutChild(this, winKind, GetWinAttr(winKind, box), frameName);
-	gs_nFrames++;
-
-	subframe->SetTitle(title.IsEmpty() ? frameName : title );
-
-    // Give it an icon
-    subframe->SetIcon(icon);
-
-    // Make a menubar
-    wxMenuBar *menuBar = new wxMenuBar;
-	wxMenu *menu;
-	OPENMENU;
-	MENUITEM(_("&New\tCtrl-N"), CM_FILENEW, _("Create a new child window"));
-	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN, wxT(""));
-	MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE, wxT(""));
-	MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Execute\tCtrl-F9"), CM_EXECUTE, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("O&ptions"), CM_SETUP, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("E&xit"), CM_EXIT, _("Quit the program"));
-	CLOSEMENU(_("&File"));
-
-	OPENMENU;
-	MENUITEM(_("&Compile\tAlt-F9"), CM_COMPILE, wxT(""));
-	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, wxT(""));
-	MENUITEM(_("&Stop\tF8"), CM_STOP, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Panic\tF12"), CM_PANIC, wxT(""));
-	CLOSEMENU(_("&Logic"));
-
-	OPENMENU;
-	MENUITEM(_("&Load routes"), CM_ROUTELOAD, wxT("")); 
-	MENUITEM(_("&Save routes"), CM_ROUTESAVE, wxT(""));
-	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS, wxT(""));
-	CLOSEMENU(_("&Routes"));
-
-	OPENMENU;
-	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR, wxT(""));
-	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Routes\tF11"), CM_ROUTES, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY, wxT(""));
-	MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS, wxT(""));
-	MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUCHECKITEM(_("&One window mode"), CM_OWM, wxT(""));
-	MENUCHECKITEM(_("One &common action window"), CM_CAW, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("Select &Box"), CM_SELECTBOX, wxT(""));
-	CLOSEMENU(_("&View"));
-
-	OPENMENU;
-	MENUITEM(_("&Play"), CM_INDEVPLAY, wxT(""));
-	MENUITEM(_("St&op"), CM_INDEVSTOP, wxT(""));
-	MENUITEM(_("P&ause"), CM_INDEVPAUSE, wxT(""));
-	CLOSEMENU(_("&Sequencer"));
-
-	OPENMENU;
-	MENUITEM(_("&Index"), CM_HELPINDEX, wxT(""));
-	MENUITEM(_("&Handbook"), CM_HELPHANDBOOK, wxT(""));
-	MENUITEM(_("&Help on help"), CM_HELPONHELP, wxT(""));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&About"), CM_ABOUT, wxT(""));
-	CLOSEMENU(_("&Help"));
-
-    // Associate the menu bar with the frame
-    subframe->SetMenuBar(menuBar);
-
-#if wxUSE_STATUSBAR
-    subframe->CreateStatusBar();
-    subframe->SetStatusText(title);
-#endif // wxUSE_STATUSBAR
-	WindowSize(subframe);
-	return subframe;
-*/
-}
-
 // Windowsize -------------------------------------------------------
 
 wxSize subSize = wxDefaultSize;
@@ -1119,8 +933,7 @@ int WSize[4][3] =
 
 void MutFrame::WindowSize(MutChild *win)
 {
-  std::cout << "MutFrame::WindowSize:  not implemented" 
-	    << std::endl;
+  wxLogWarning(_("MutFrame::WindowSize:  not implemented" ));
 #if 0
 
 	if ( !subSize.IsFullySpecified() )
@@ -1178,77 +991,19 @@ void MutFrame::WindowSize(MutChild *win)
 //
 void MutFrame::SaveState()
 {
-	wxConfig *config = new wxConfig(wxT(PACKAGE_NAME));
-/*	if ( MainWindow->Attr.X >= 0 && MainWindow->Attr.Y >= 0 &&
-	 MainWindow->Attr.W > 0 && MainWindow->Attr.H > 0 )*/
-	{
-		wxPoint pos = GetPosition();
-		wxSize size = GetSize();
-		int DeskMax = size.GetWidth() < GetClientSize().GetWidth();
-		config->SetPath(_T("Desktop"));
-		config->Write(_T("X Position"),pos.x);
-		config->Write(_T("Y Position"),pos.y);
-		config->Write(_T("Width"),size.GetWidth());
-		config->Write(_T("Height"),size.GetHeight());
-		config->Write(_T("DeskMax"),DeskMax);
-		
-		config->SetPath(_T(".."));
-		
-/*		config->Write(_T("DESKTOP"), wxString::Format(_T("%d %d %d %d %d"),
-			pos.x, pos.y,
-			size.GetWidth(), size.GetHeight(), DeskMax));
-*/
-	}
-/*TODO	wxMutChild *active = GetActiveChild();
-	if ( !active )
-	{
-		if ( Client->GetFirstChild() )
-			(Client->GetFirstChild())->SendMessage(WM_ACTIVATE, WA_ACTIVE);
-		active = Client->GetActiveChild();
-	}
-	wxMutChild *child = active;
-	if ( active )
-	{
-		int WinMax = Client->GetClientRect() == active->GetClientRect();
-		do
-		{
-			char s[100];
-			child->GetWindowText(s, 100);
-			if ( ActiveWinKind == WK_EDIT && strcmp(s, "Untitled") )
-  			fprintf(os, "EDITOR = %d %d %d %d %s %d\n",
-			child->Attr.X, child->Attr.Y,
-			child->Attr.W, child->Attr.H, s, WinMax);
-			Client->HandleMessage(WM_MDINEXT, NULL);
-			child = Client->GetActiveMDIChild();
-		}
-		while ( child != active );
-	}
-	for (TWinKind kind = WK_KEY; kind <= WK_ROUTE; kind++)
-		for (int i = 0; i < LENGTH(WinAttrs[kind]); i++)
-			if ( WinAttrs[kind][i]->W )
-     			fprintf(os, "%s = %d %d %d %d %d %d\n",
-						WinName[kind], WinAttrs[kind][i]->Box,
-          WinAttrs[kind][i]->X, WinAttrs[kind][i]->Y,
-          WinAttrs[kind][i]->W, WinAttrs[kind][i]->H, WinAttrs[kind][i]->Wanted);*/
-    config->SetPath(_T("Settings"));
-	config->Write(_T("Tone system"), asTS);
-	config->Write(_T("Save editor"), SaveEditor);
-	config->Write(_T("Color bars"), UseColorBars);
+  wxConfigBase *config = wxConfig::Get();
 
-	config->Write(_T("Protocol 1"), TextBoxWanted[0]);
-	config->Write(_T("Protocol 2"), TextBoxWanted[1]);
-	config->Write(_T("Protocol 3"), TextBoxWanted[2]);
-	
-	WriteRoutes(config);
-	delete config;
-	// routes
-	wxFFile os(RcfFile, _T("w"));
-	if ( os.IsOpened() )
-	{
-		WriteRoutes(RouteConfig);
-		os.Write(_T("# last routes configuration MUTABOR 3.x\n"));
-		os.Write(RouteConfig);
-	}
+  wxPoint pos = GetPosition();
+  wxSize size = GetSize();
+  int DeskMax = size.GetWidth() < GetClientSize().GetWidth();
+  config->SetPath(_T("Desktop"));
+  config->Write(_T("X Position"),pos.x);
+  config->Write(_T("Y Position"),pos.y);
+  config->Write(_T("Width"),size.GetWidth());
+  config->Write(_T("Height"),size.GetHeight());
+  config->Write(_T("DeskMax"),DeskMax);
+		
+  config->SetPath(_T(".."));
 }
 
 /*bool CheckMutChild(char *name, char *data)
@@ -1274,121 +1029,27 @@ void MutFrame::SaveState()
 
 void MutFrame::RestoreState()
 {
-	int DeskMax = 1, WinMax = 2, HelpMax = 0;
-//	TMDIChild *active = NULL;
-	wxConfig *config = new wxConfig(wxT(PACKAGE_NAME));
-	wxString s;
-	int test;
-	int x, y, w, h;
+  //  int DeskMax = 1, WinMax = 2, HelpMax = 0;
+  wxConfigBase *config = wxConfig::Get();
+  int x=0, y=0, w=0, h=0;
+  
+  config->SetPath(_T("Desktop"));
+  //  DeskMax=config->Read(_T("DeskMax"),0l);
+  if ((x=config->Read(_T("X Position"),0l)) &&
+      (y=config->Read(_T("Y Position"),0l)) &&
+      (w=config->Read(_T("Width"),0l)) &&
+      (h=config->Read(_T("Height"),0l))) {
+    SetSize(x, y, w, h);
 
-	config->SetPath(_T("Desktop"));
-	DeskMax=config->Read(_T("DeskMax"),0l);
-	if ((x=config->Read(_T("X Position"),0l)) &&
-		(y=config->Read(_T("Y Position"),0l)) &&
-		(w=config->Read(_T("Width"),0l)) &&
-		(h=config->Read(_T("Height"),0l)))
-			SetSize(x, y, w, h);
 #ifdef DEBUG
-	std::cerr << "x=" << x << ", y=" << y << ", w=" << w << ", h=" << h << std::endl;
+    std::cerr << "x=" << x << ", y=" << y << ", w=" << w << ", h=" << h << std::endl;
 #endif
-
-	config->SetPath(_T(".."));
-
-/*	if ( config->Read(wxT("DESKTOP"), &s) )
-	{
-		int x, y, w, h;
-		test = SSCANF (s.c_str(), _T("%d %d %d %d %d"), &x, &y, &w, &h, &DeskMax);
-		if ( test >= 4 )
-			SetSize(x, y, w, h);
-	}
-*/
-/*      else if ( !stricmp(param, "EDITOR") )
-      {
-        int x, y, w, h;
-        char title[100];
-        test = sscanf (datas, " = %d %d %d %d %s %d", &x, &y, &w, &h, title, &HelpMax);
-        if ( test < 5 )
-        {
-          break;
-        }
-        TMDIChild* child = new TMDIMutChild(WK_EDIT, GetWinAttr(WK_EDIT), *Client, "", new TEditFileMut(0, 0, 0, x, y, w, h, title));
-        child->SetMenuDescr(TMenuDescr(IDM_EDITFILE_CHILD, 0, 2, 0, 0, 0, 0));
-        child->SetIcon(this, IDI_DOC);
-        child->SetIconSm(this, IDI_DOC);
-        child->Attr.X = x; child->Attr.Y = y;
-        child->Attr.W = w; child->Attr.H = h;
-        if  ( !active ) active = child;
-        if ( WinMax == 2 ) WinMax = HelpMax;
-        SaveMenuChoice(title);
-      }
-      else if ( CheckMutChild(param, datas) )
-      {
-      }*/
-    config->SetPath(_T("Settings"));
-	asTS=config->Read(_T("Tone system"), true);
-	SaveEditor=config->Read(_T("Save editor"), true);
-	UseColorBars=config->Read(_T("Color bars"), true);
-
-	TextBoxWanted[0]=config->Read(_T("Protocol 1"), 0l);
-	TextBoxWanted[1]=config->Read(_T("Protocol 2"), 0l);
-	TextBoxWanted[2]=config->Read(_T("Protocol 3"), 0l);
-
-/*	config->Read(_T("TONSYST"), &asTS, true);
-	config->Read(_T("SAVEEDITOR"), &SaveEditor, true);
-	config->Read(_T("COLORBARS"), &UseColorBars, true);
-    if ( config->Read(_T("PROTOKOLL"), &s) )
-	{
-        int a, b, c;
-        test = SSCANF (s.c_str(), _T("%d %d %d"), &a, &b, &c);
-        if ( test >= 3 )
-        {
-	        TextBoxWanted[0] = (a != 0);
-		    TextBoxWanted[1] = (b != 0);
-			TextBoxWanted[2] = (c != 0);
-		}
-    }
-*/
-	// route
-	if ( wxFile::Exists(RcfFile) )
-	{
-		wxFFile ir(RcfFile);
-		if ( ir.IsOpened() )
-			ir.ReadAll(&RouteConfig);
-	}
-#ifdef	DEBUG
-	std::cerr << "-" << (RouteConfig.ToUTF8()) << std::endl;
-#endif
-	if ( !RouteConfig )
-	{
-		::wxMessageBox(_("Could not find routes file."), _("Disk error"),
-		wxOK | wxICON_EXCLAMATION);
-		RouteConfig =
-			_T("OUTPUT\n")
-			_T("  MIDIPORT MIDIPORT_OUT 0 2\n")
-			_T("INPUT\n")
-			_T("  MIDIPORT MIDIPORT_IN 0\n")
-			_T("    ALL 0 0 0 1 0 0 15\n");
-	}
-	ScanRoutes(RouteConfig);
-	if ( Get(WK_ROUTE) && Get(WK_ROUTE)->Wanted )
-	{
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_ROUTES);
-		AddPendingEvent(event1);
-	}
-	// resliche Initialisierung
-/*TODO	Client->CreateChildren();
-	if ( active )
-	{
-	   Client->HandleMessage(WM_MDIACTIVATE, (UINT)active->HWindow);
-	   if ( WinMax ) active->Show(SW_SHOWMAXIMIZED);
   }
-  if ( DeskMax )
-  	 MainWindow->Show(SW_SHOWMAXIMIZED);
-  else
-  	 MainWindow->Show(SW_SHOW);*/
+  config->SetPath(_T(".."));
+  wxLogWarning(_("MutFrame::RestoreState() doesn't handle multiple windows"));
 }
 
-// Recorder-Knˆpfe --------------------------------------------------
+// Recorder-Knöpfe --------------------------------------------------
 
 void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
 {
@@ -1487,35 +1148,33 @@ void MutFrame::CeInDevPause(wxUpdateUIEvent& event)
 // Updaten der Protokollfenster
 void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 {
-	for (int i = 0; i < WinAttrs[WK_KEY].GetCount(); i++)
-	{
-		WinAttr *winAttr = &WinAttrs[WK_KEY][i];
-		if ( winAttr->Win && KeyChanged(winAttr->Box) )
-			((MutTextBox*)winAttr->Win)->NewText(GetKeyString(winAttr->Box, asTS), 1);
-	}
-	for (REUSE(int) i = 0; i < WinAttrs[WK_TS].GetCount(); i++)
-	{
-		WinAttr *winAttr = &WinAttrs[WK_TS][i];
-		if ( winAttr->Win && TSChanged(winAttr->Box) )
-			((MutTextBox*)winAttr->Win)->NewText(GetTSString(winAttr->Box, asTS), 1);
-	}
-	// Aktionen
-	if ( TakeOverAktions() )
-		if ( CAW )
-		{
-			WinAttr *winAttr = Get(WK_ACT, curBox);
-			if ( winAttr && winAttr->Win )
-				((MutTextBox*)winAttr->Win)->NewText(GenerateCAWString(), 1);
-		}
-		else
-		{
-			for (int i = 0; i < WinAttrs[WK_ACT].GetCount(); i++)
-			{
-				WinAttr *winAttr = &WinAttrs[WK_ACT][i];
-				if ( winAttr->Win && ACTChanged(winAttr->Box) )
-					((MutTextBox*)winAttr->Win)->NewText(GenerateACTString(winAttr->Box), 1);
-			}
-		}
+  for (size_t i = 0; i < WinAttrs[WK_KEY].GetCount(); i++) {
+      WinAttr *winAttr = &WinAttrs[WK_KEY][i];
+      if ( winAttr->Win && KeyChanged(winAttr->Box) )
+	((MutTextBox*)winAttr->Win)->
+	  NewText(GetKeyString(winAttr->Box, asTS), 1);
+  }
+  for (size_t i = 0; i < WinAttrs[WK_TS].GetCount(); i++) {
+    WinAttr *winAttr = &WinAttrs[WK_TS][i];
+    if ( winAttr->Win && TSChanged(winAttr->Box) )
+      ((MutTextBox*)winAttr->Win)->
+	NewText(GetTSString(winAttr->Box, asTS), 1);
+  }
+
+  // Aktionen
+  if ( TakeOverAktions() )
+    if ( CAW ) {
+      WinAttr *winAttr = Get(WK_ACT, curBox);
+      if ( winAttr && winAttr->Win )
+	((MutTextBox*)winAttr->Win)->NewText(GenerateCAWString(), 1);
+    } else {
+      for (size_t i = 0; i < WinAttrs[WK_ACT].GetCount(); i++) {
+	WinAttr *winAttr = &WinAttrs[WK_ACT][i];
+	if ( winAttr->Win && ACTChanged(winAttr->Box) )
+	  ((MutTextBox*)winAttr->Win)->
+	    NewText(GenerateACTString(winAttr->Box), 1);
+      }
+    }
 	// Zeilen/Spalte
 /*  if ( ActiveWinKind == WK_EDIT )
   {
@@ -1532,130 +1191,35 @@ void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 	  IndikatorGadget->SetText(s);
 	  oldEditLine = EditLine; oldEditRow = EditRow;
   }*/
-	if ( InDevicesChanged() )
-	{
-		char Mode[256];
-		GetInDevicesMode(Mode);
-		bool NRT_Finish = false;
-		for (EDevice *In = InEDevices; In; In = In->Next)
-		{
-			if ( In->Nr != -1 )
-				if ( Mode[In->Nr] == 4 )
-				{
-					In->Mode = 0;
-					InDeviceAction(In->Nr, 0);
-					NRT_Finish = !RealTime;
-				}
-				else
-				{
-					In->Mode = Mode[In->Nr];
-				}
-		}
-		REPAINT_ROUTE;
-		if ( !RealTime )
-			wxMessageBox(_("Translation in batch mode completed. Output was generated."),
-				_("Batch translation finished"), wxOK);
+  if ( InDevicesChanged() ) {
+    char Mode[256];
+    GetInDevicesMode(Mode);
+    bool NRT_Finish = false;
+    for (EDevice *In = InEDevices; In; In = In->Next) {
+      if ( In->Nr != -1 )
+	if ( Mode[In->Nr] == 4 ) {
+	  In->Mode = 0;
+	  InDeviceAction(In->Nr, 0);
+	  NRT_Finish = !RealTime;
+	} else {
+	  In->Mode = Mode[In->Nr];
 	}
-}
-
-/*
-void MyFrame::OnUpdateUI(wxUpdateUIEvent& event)
-{
-    unsigned int flags = m_mgr.GetFlags();
-
-    switch (event.GetId())
-    {
-/*        case ID_NoGradient:
-            event.Check(m_mgr.GetArtProvider()->GetMetric(wxAUI_DOCKART_GRADIENT_TYPE) == wxAUI_GRADIENT_NONE);
-            break;
-        case ID_VerticalGradient:
-            event.Check(m_mgr.GetArtProvider()->GetMetric(wxAUI_DOCKART_GRADIENT_TYPE) == wxAUI_GRADIENT_VERTICAL);
-            break;
-        case ID_HorizontalGradient:
-            event.Check(m_mgr.GetArtProvider()->GetMetric(wxAUI_DOCKART_GRADIENT_TYPE) == wxAUI_GRADIENT_HORIZONTAL);
-            break;
-        case ID_AllowFloating:
-            event.Check((flags & wxAUI_MGR_ALLOW_FLOATING) != 0);
-            break;
-        case ID_TransparentDrag:
-            event.Check((flags & wxAUI_MGR_TRANSPARENT_DRAG) != 0);
-            break;
-        case ID_TransparentHint:
-            event.Check((flags & wxAUI_MGR_TRANSPARENT_HINT) != 0);
-            break;
-        case ID_VenetianBlindsHint:
-            event.Check((flags & wxAUI_MGR_VENETIAN_BLINDS_HINT) != 0);
-            break;
-        case ID_RectangleHint:
-            event.Check((flags & wxAUI_MGR_RECTANGLE_HINT) != 0);
-            break;
-        case ID_NoHint:
-            event.Check(((wxAUI_MGR_TRANSPARENT_HINT |
-                          wxAUI_MGR_VENETIAN_BLINDS_HINT |
-                          wxAUI_MGR_RECTANGLE_HINT) & flags) == 0);
-            break;        
-        case ID_HintFade:
-            event.Check((flags & wxAUI_MGR_HINT_FADE) != 0);
-            break;
-        case ID_NoVenetianFade:
-            event.Check((flags & wxAUI_MGR_NO_VENETIAN_BLINDS_FADE) != 0);
-            break;
-            
-        case ID_NotebookNoCloseButton:
-            event.Check((m_notebook_style & (wxAUI_NB_CLOSE_BUTTON|wxAUI_NB_CLOSE_ON_ALL_TABS|wxAUI_NB_CLOSE_ON_ACTIVE_TAB)) != 0);
-            break;
-        case ID_NotebookCloseButton:
-            event.Check((m_notebook_style & wxAUI_NB_CLOSE_BUTTON) != 0);
-            break;
-        case ID_NotebookCloseButtonAll:
-            event.Check((m_notebook_style & wxAUI_NB_CLOSE_ON_ALL_TABS) != 0);
-            break;
-        case ID_NotebookCloseButtonActive:
-            event.Check((m_notebook_style & wxAUI_NB_CLOSE_ON_ACTIVE_TAB) != 0);
-            break;
-        case ID_NotebookAllowTabSplit:
-            event.Check((m_notebook_style & wxAUI_NB_TAB_SPLIT) != 0);
-            break;
-        case ID_NotebookAllowTabMove:
-            event.Check((m_notebook_style & wxAUI_NB_TAB_MOVE) != 0);
-            break;
-        case ID_NotebookAllowTabExternalMove:
-            event.Check((m_notebook_style & wxAUI_NB_TAB_EXTERNAL_MOVE) != 0);
-            break;
-        case ID_NotebookScrollButtons:
-            event.Check((m_notebook_style & wxAUI_NB_SCROLL_BUTTONS) != 0);
-            break;
-        case ID_NotebookWindowList:
-            event.Check((m_notebook_style & wxAUI_NB_WINDOWLIST_BUTTON) != 0);
-            break;
-        case ID_NotebookTabFixedWidth:
-            event.Check((m_notebook_style & wxAUI_NB_TAB_FIXED_WIDTH) != 0);
-            break;
-        case ID_NotebookArtGloss:
-            event.Check(m_notebook_style == 0);
-            break;
-        case ID_NotebookArtSimple:
-            event.Check(m_notebook_style == 1);
-            break;
-*
-		default: 
-			std::cout << _("Fatal error: UpdateUI called with unknown event: ")
-					<< (event.GetId()) << std::endl;
     }
+
+    REPAINT_ROUTE;
+    if ( !RealTime )
+      wxMessageBox(_("Translation in batch mode completed. Output was generated."),
+		   _("Batch translation finished"), wxOK);
+  }
 }
-*/
+
+
 
 void MutFrame::OnIdle(wxIdleEvent& event)
 {
 	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_UPDATEUI);
 	UpdateUI(event1);
 	event.Skip();
-}
-
-void MutFrame::OnActivate(wxActivateEvent& event) {
-	if (event.GetActive()) 
-		wxGetApp().SetTopWindow(this);
-		
 }
 
 void MutFrame::OnEraseBackground(wxEraseEvent& event)
@@ -1779,3 +1343,4 @@ void MutFrame::CloseAll(WinKind kind)
       }
   auimanager.Update();
 }
+//\}

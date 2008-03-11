@@ -7,17 +7,17 @@
 #include <stdlib.h>
 
 #include "EDevice.h"
+#include "DevMidi.h"
 
-wxChar* DevTypeName[] = {N_("Unknown"),N_("Midi Port"), N_("Midi File"), N_("GUIDO .gmn File")};
+wxChar* DevTypeName[] = { 
+  N_("Unknown"),
+  N_("Midi Port"), 
+  N_("Midi File"), 
+  N_("GUIDO .gmn File")
+};
 
 EDevice *InEDevices = 0;
 EDevice *OutEDevices = 0;
-
-#if defined(WX)
-	wxString RouteConfig = wxEmptyString;
-#else
-	char *RouteConfig = 0;
-#endif
 
 // EDevice ----------------------------------------------------------
 
@@ -49,30 +49,12 @@ void EDevice::AddRoute(ERoute *route)
     *R = route;
 }
 
-#ifdef WX
-
 wxString EDevice::GetName()
 {
 	wxString s = Name;
 	s.Replace(_T(" "), _T("_"));
 	return s;
 }
-
-#else
-
-char help[200];
-
-// Name mit '_' aufgef¸llt
-char *EDevice::GetName()
-{
-  strcpy(help, Name);
-  for (int i = 0; i < strlen(help); i++)
-    if ( help[i] == ' ' )
-      help[i] = '_';
-  return help;
-}
-
-#endif
 
 // Hilfe f¸r Verkettung: Wenn Outger‰t gekillt wird,
 // sollten die Verweise in den Routen verbogen werden
@@ -92,15 +74,21 @@ void ChangeOutReferences(EDevice *from, EDevice *to)
 // oldPos wird entfernt
 // einf¸gen auf newPos
 // bei dt == -1 und keinem newPlace wird nur gelˆscht
-#ifdef WX
-EDevice* NewDevice(EDevice **List, DevType dt, const wxString& name, int devId, EDevice *oldPos, EDevice *newPos)
-#else
-EDevice* NewDevice(EDevice **List, DevType dt, char *name, int devId, EDevice *oldPos, EDevice *newPos)
-#endif
+EDevice* NewDevice(EDevice **List, 
+		   DevType dt, 
+		   const wxString& name, 
+		   int devId, 
+		   EDevice *oldPos, 
+		   EDevice *newPos)
 {
-	std::cout << "test" << std::endl <<
-		(wxString(_T("::NewDevice(")).ToUTF8()) << List << ", " << dt << ", " << (name.ToUTF8()) << ", " << oldPos << ", " 
-			<< newPos << ")" << std::endl;
+#ifdef DEBUG
+  std::cerr << "test" << std::endl <<
+    (wxString(_T("::NewDevice(")).ToUTF8()) << List << ", " 
+	    << dt << ", " 
+	    << (name.ToUTF8()) << ", " 
+	    << oldPos << ", " 
+	    << newPos << ")" << std::endl;
+#endif
 
   // Position finden zum Daten abladen
   EDevice *Pos = 0;
@@ -211,24 +199,26 @@ DevType Str2DT(const wxString& type)
 }
 #endif
 
-#ifndef WX
-char *RTName[] =  { "ALL", "ELSE", "CHANNEL", "STAFF" };
-#else
-extern char *RTName[];
-#endif
+ 
+mutChar *RTName[] =  { _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF") };
 
-#ifndef WX
-RouteType Str2RT(char *type)
+/// parse a string representation of a route type
+/** This function returns the numeric route type to a string representation
+    \param type String (array of \c mutChar)
+    \return numeric id of the route type
+*/
+RouteType Str2RT(mutChar *type)
 {
   int i;
   for (i = 3; i > 0; i--)
+#ifndef WX
     if ( !strncmp(type, RTName[i], strlen(RTName[i])) )
+#else 
+    if ( !wxStricmp(type, RTName[i])) //, strlen(RTName[i])) )
+#endif
       break;
   return (RouteType) i;
 }
-#else
-RouteType Str2RT(wxChar *type);
-#endif
 
 EDevice *GetEOut(int nr)
 {
@@ -318,22 +308,28 @@ void ScanRoutes(const wxString& config)
 		//wxString Type, Name;
 		int DevId, BendingRange;
 		
-		std::cout << (sizeof(char)) << " " << sizeof(wxChar) << std::endl;
+#ifdef DEBUG
+		std::cout << (sizeof(char)) << " "
+			  << sizeof(wxChar) << std::endl;
 		std::cout << "a" << (s.fn_str()) << std::endl;
 		std::cout << "=" << (s.ToUTF8()) << std::endl;
-//		int test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
+#endif
 #if (wxUSE_UNICODE)
-		int test = SSCANF(s.c_str(), _T("%ls \"%l[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
+		int test = SSCANF(s.c_str(), _T("%ls \"%l[^\"]\" %d %d"),
+				  Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
-			test = SSCANF(s.c_str(), _T("%ls %ls %d %d"), Type, Name, &DevId, &BendingRange);
+			test = SSCANF(s.c_str(), _T("%ls %ls %d %d"), 
+				      Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
 		{
 		  //3 ??
 		}
 #else
-		int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
+t		int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"), 
+				  Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
-			test = SSCANF(s.c_str(), _T("%s %s %d %d"), Type, Name, &DevId, &BendingRange);
+			test = SSCANF(s.c_str(), _T("%s %s %d %d"), 
+				      Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
 		{
 		  //3 ??
@@ -360,17 +356,21 @@ void ScanRoutes(const wxString& config)
 		//wxString Type, Name;
 		int DevId = -1;
 #if (wxUSE_UNICODE)
-		int test = SSCANF(s, _T("%ls \"%l[^\"]\" %d"), Type, Name, &DevId);
+		int test = SSCANF(s, _T("%ls \"%l[^\"]\" %d"), 
+				  Type, Name, &DevId);
 		if ( test < 2 )
-			test = SSCANF(s, _T("%ls %ls %d"), Type, Name, &DevId);
+			test = SSCANF(s, _T("%ls %ls %d"), 
+				      Type, Name, &DevId);
 		if ( test < 2 )
 		{
 		  //3 ??
 		}
 #else
-		int test = SSCANF(s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
+		int test = SSCANF(s, _T("%s \"%[^\"]\" %d"), 
+				  Type, Name, &DevId);
 		if ( test < 2 )
-			test = SSCANF(s, _T("%s %s %d"), Type, Name, &DevId);
+			test = SSCANF(s, _T("%s %s %d"), 
+				      Type, Name, &DevId);
 		if ( test < 2 )
 		{
 		  //3 ??
@@ -380,29 +380,39 @@ void ScanRoutes(const wxString& config)
 		GETLINE;
 #ifdef DEBUG
 	std::cerr << "+" << s.ToUTF8() << std::endl;
+
 #endif
 		// Routen lesen
 		while ( Str2DT(s) == DTUnknown )
 		{
 			// Route lesen
 			wxChar Type[40];
-			int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
+			int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, 
+			  OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
 #if (wxUSE_UNICODE)
-			test = SSCANF(s.c_str(), _T("%ls %d %d %d %d %d %d %d %d"),
-				Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+			test = SSCANF(s.c_str(),
+				      _T("%ls %d %d %d %d %d %d %d %d"),
+				      Type, &IFrom, &ITo, &Box, &BoxActive, 
+				      &OutDev, &OFrom, &OTo, &ONoDrum);
 			if ( test < 2 )
 			{
 				//3 ??
 			}
 #else
-			test = SSCANF(s.c_str(), _T("%s %d %d %d %d %d %d %d %d"),
-				Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
+			test = SSCANF(s.c_str(), 
+				      _T("%s %d %d %d %d %d %d %d %d"),
+				      Type, &IFrom, &ITo, &Box, 
+				      &BoxActive, &OutDev, &OFrom, &OTo,
+				      &ONoDrum);
 			if ( test < 2 )
 			{
 				//3 ??
 			}
 #endif
-			In->AddRoute(new ERoute(Str2RT(Type), IFrom, ITo, Box, BoxActive, GetEOut(OutDev), OFrom, OTo, ONoDrum));
+			In->AddRoute(new ERoute(Str2RT(Type), 
+						IFrom, ITo, Box, 
+						BoxActive, GetEOut(OutDev), 
+						OFrom, OTo, ONoDrum));
 			GETLINE;
 #ifdef DEBUG
 	std::cerr << "+" << s.ToUTF8() << std::endl;
@@ -411,89 +421,140 @@ void ScanRoutes(const wxString& config)
 	}
 }
 
-// Routen scannen
-void ScanRoutes(wxConfigBase *config)
-{
-	// Listen s‰ubern
-	if ( InEDevices )
-	{
-		delete InEDevices;
-		InEDevices = 0;
-	}
-	if ( OutEDevices )
-	{
-		delete OutEDevices;
-		OutEDevices = 0;
-	}
-	// Zerlegen von config
-	wxString s;
-	size_t i = 0;
 
-//	while ( s.CmpNoCase(_T("OUTPUT")) )
-//	{
-//		GETLINE;
-//	}
-//	GETLINE;
-	// Output lesen
-	config->SetPath(_T("Input"));
+/* old default routing file:
+OUTPUT
+  MIDIPORT MIDIPORT_OUT 0 2
+INPUT
+  MIDIPORT MIDIPORT_IN 0
+    ALL 0 0 0 1 0 0 15
+ */
+// Routen scannen
+void ScanRoutes(wxConfigBase * config)
+{
+  if (! config->HasGroup(_T("Input"))) return;
+
+  // Listen s‰ubern
+  if ( InEDevices ) {
+    delete InEDevices;
+    InEDevices = 0;
+  }
+
+  if ( OutEDevices ) {
+    delete OutEDevices;
+    OutEDevices = 0;
+  }
+  // Zerlegen von config
+
+  wxString group;
+  long group_number;
+
+  // read output devices
+  config->SetPath(_T("Output"));
+  config->GetFirstGroup(group,group_number);
+  for (bool test = true; // we have a default output device
+       test; test = config->GetNextGroup(group,group_number)){
+    config->SetPath(group);
+    wxString name; 
+    long type, id; 
+    config->Read(_T("Name"), &name, muT(rtmidiout->getPortName(0).c_str()));
+
+    config->Read(_T("Type"), &type, 1);
+
+    if (type <= 0 || type >= DeviceMaxType) {
+      // Bad device type; try to recover
+      wxString type_name;
+      config->Read(_T("Type_Name"), &type_name, _("Midi Port"));
+      
+      int i;
+      for (i = 1; i < DeviceMaxType; i++) 
+	if (wxGetTranslation(DevTypeName[i]) == type_name) break;
+      if (i == DeviceMaxType) type = 0;
+      else type = i;
+    }
+    
+    config->Read(_("Device_Id"), &id, 0);
+
+    EDevice *out = NewDevice(&OutEDevices, (DevType) type, name, id);
+
+    out->BendingRange = config->Read(_("Bending_Range"), 
+				     (long)out->BendingRange);
+    
+    config->SetPath(_T(".."));
+  }
+  config->SetPath(_T(".."));
+
+  // read input devices
+  config->SetPath(_T("Input"));
+  config->GetFirstGroup(group,group_number);
+  for (bool test = true; // we have a default output device
+       test; test = config->GetNextGroup(group,group_number)){
+    config->SetPath(group);
+
+    wxString name; 
+    long type, id; 
+    config->Read(_T("Name"), &name, muT(rtmidiout->getPortName(0).c_str()));
+
+    config->Read(_T("Type"), &type, 1);
+
+    if (type <= 0 || type >= DeviceMaxType) {
+      // Bad device type; try to recover
+      wxString type_name;
+      config->Read(_T("Type_Name"), &type_name, _("Midi Port"));
+
+      int i;
+      for (i = 1; i < DeviceMaxType; i++) 
+	if (wxGetTranslation(DevTypeName[i]) == type_name) break;
+      if (i == DeviceMaxType) i = 0;
+    }
+    
+    config->Read(_("Device_Id"), &id, 0);
+
+    EDevice *in = NewDevice(&InEDevices, (DevType) type, name, id);
+
+    config->SetPath(_T("Routes"));
+    wxString route_group;
+    long route_iterator;
+    config->GetFirstGroup(route_group,route_iterator);
+    for (bool test2 = true; // we need a default route
+	 test2; test2 = config->GetNextGroup(route_group,route_iterator)){
+      config->SetPath(route_group);
+
+      long type; 
+      
+      config->Read(_T("Type"), &type, 0);
+
+      if (type < 0 || type > 3) {
+
+	// Route type; try to recover
+	wxString type_name;
+	config->Read(_T("Type_Name"), &type_name, _("Midi Port"));
+	int i; 
+	for (i = 1; i < 4; i++) 
+	  if (muT(RTName[i]) == type_name) break;
+	if (i == 4) type = 0;
+	else type = i;
+      }
 	
-	while ( s.CmpNoCase(_T("INPUT")) )
-	{
-		wxChar Type[80], Name[400];
-		//wxString Type, Name;
-		int DevId, BendingRange;
-		
-		std::cout << (sizeof(char)) << " " << sizeof(wxChar) << std::endl;
-		std::cout << "a" << (s.fn_str()) << std::endl;
-		std::cout << "=" << (s.ToUTF8()) << std::endl;
-		std::cout << "=" << (s.c_str()) << std::endl;
-//		int test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
-		int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
-		if ( test < 2 )
-			test = SSCANF(s.c_str(), _T("%s %s %d %d"), Type, Name, &DevId, &BendingRange);
-		if ( test < 2 )
-		{
-		  //3 ??
-		}
-		std::cout << (wxString(Name).ToUTF8()) << std::endl;
-		EDevice *Out = NewDevice(&OutEDevices, Str2DT(muT(Type)), Name, DevId);
-		if ( test == 4 )
-			Out->BendingRange = BendingRange;
-//		GETLINE;
-	}
-//	GETLINE;
-	// Input lesen
-	while ( 1 )
-	{
-		// Device lesen
-		wxChar Type[40], Name[400];
-		//wxString Type, Name;
-		int DevId = -1;
-		int test = SSCANF(s, _T("%s \"%[^\"]\" %d"), Type, Name, &DevId);
-		if ( test < 2 )
-			test = SSCANF(s, _T("%s %s %d"), Type, Name, &DevId);
-		if ( test < 2 )
-		{
-		  //3 ??
-		}
-		EDevice *In = NewDevice(&InEDevices, Str2DT(muT(Type)), Name, DevId);
-//		GETLINE;
-		// Routen lesen
-		while ( Str2DT(s) == DTUnknown )
-		{
-			// Route lesen
-			wxChar Type[40];
-			int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
-			test = SSCANF(s.c_str(), _T("%s %d %d %d %d %d %d %d %d"),
-				Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
-			if ( test < 2 )
-			{
-				//3 ??
-			}
-			In->AddRoute(new ERoute(Str2RT(Type), IFrom, ITo, Box, BoxActive, GetEOut(OutDev), OFrom, OTo, ONoDrum));
-//			GETLINE;
-		}
-	}
+      long IFrom, ITo, Box, Active, OutDev, OFrom, OTo, ONoDrum;
+      config->Read(_T("Input_from"), &IFrom, 0);
+      config->Read(_T("Input_to"), &ITo, 0);
+      config->Read(_T("Box"), &Box, 0);
+      config->Read(_T("Active"), &Active, 1);
+      config->Read(_T("Output_device"), &OutDev, 0);
+      config->Read(_T("Output_from"), &OFrom, 0);
+      config->Read(_T("Output_to"), &OTo, 15);
+      config->Read(_T("No_Drum"), &ONoDrum, 1);
+      
+      in->AddRoute(new ERoute((RouteType) type, IFrom, ITo, Box, Active,
+			      GetEOut(OutDev), OFrom, OTo, ONoDrum));
+      
+      config->SetPath(_T(".."));
+    }
+
+    config->SetPath(_T("../.."));
+  }
+  config->SetPath(_T(".."));
 }
 #else // no WX
 
@@ -554,14 +615,16 @@ void ScanRoutes(char *config)
   {
     char Type[20], Name[200];
     int DevId, BendingRange;
-//		int test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
-		int test = sscanf (s, "%s \"%[^\"]\" %d %d", Type, Name, &DevId, &BendingRange);
+    //    int test = sscanf (s, "%s %s %d %d", Type, Name,
+    //		       &DevId, &BendingRange);
+    int test = sscanf (s, "%s \"%[^\"]^^\" %d %d", Type, Name,
+		       &DevId, &BendingRange);
     if ( test < 2 )
       test = sscanf (s, "%s %s %d %d", Type, Name, &DevId, &BendingRange);
-		if ( test < 2 )
-		{
-		  //3 ??
-		}
+    if ( test < 2 )
+      {
+	//3 ??
+      }
     EDevice *Out = NewDevice(&OutEDevices, Str2DT(Type), Name, DevId);
     if ( test == 4 )
       Out->BendingRange = BendingRange;
@@ -633,27 +696,33 @@ void WriteRoutes(wxString &config)
 	// Output schreiben
 	config << _T("OUTPUT\n");
 	int nr = 0;
-	for ( Out = OutEDevices; Out; Out = Out->Next)
-	{
-		Out->Nr = nr++; // Nummerierung zur bequemen Referenzierung beim Input schreiben
-		wxString sName = Out->Name;
-		if ( sName.Find(_T(" ")) )
-			sName.Prepend(_T("\"")) << _T("\"");
-		switch ( Out->DT )
-		{
-			case DTUnknown:
-				config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
-				break;
-			case DTMidiPort:
-				config << wxString::Format(_T("  MIDIPORT %s %d %d\n"), sName.c_str(), Out->DevId, Out->BendingRange);
-				break;
-			case DTMidiFile:
-				config << wxString::Format(_T("  MIDIFILE %s %d %d\n"), sName.c_str(), 0, Out->BendingRange);
-				break;
-			case DTGis:
-				config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
-				break;
-		}
+	for ( Out = OutEDevices; Out; Out = Out->Next) {
+	  Out->Nr = nr++; // Nummerierung zur bequemen Referenzierung
+			  // beim Input schreiben
+	  wxString sName = Out->Name;
+	  if ( sName.Find(_T(" ")) )
+	    sName.Prepend(_T("\"")) << _T("\"");
+	  switch ( Out->DT ) {
+	  case DTUnknown:
+	    config << wxString::Format(_T("  UNKNOWN %s\n"), 
+				       sName.c_str());
+	    break;
+	  case DTMidiPort:
+	    config << wxString::Format(_T("  MIDIPORT %s %d %d\n"), 
+				       sName.c_str(), Out->DevId, 
+				       Out->BendingRange);
+	    break;
+	  case DTMidiFile:
+	    config << wxString::Format(_T("  MIDIFILE %s %d %d\n"), 
+				       sName.c_str(), 0, 
+				       Out->BendingRange);
+	    break;
+	  case DTGis:
+	    config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
+	    break;
+	  case DTNotSet:
+	    wxLogWarning(_("Device found, but device type not set."));
+	  }
 	}
 #ifdef DEBUG
 	std::cerr << "WriteConfig: " << (config.ToUTF8()) << std::endl;
@@ -663,36 +732,37 @@ void WriteRoutes(wxString &config)
 	config << _T("INPUT\n");
 	for ( In = InEDevices; In; In = In->Next)
 	{
-		// Device schreiben
-		In->Nr = nr++; // Nummern zur Referenz bei Play/Stop
-		In->Mode = 0; // Mode auf "registriert" setzen
-		wxString sName = In->Name;
-		if ( sName.Find(_T(" ")) )
-			sName.Prepend(_T("\"")) << _T("\"");
-		switch ( In->DT )
-		{
-			case DTUnknown:
-				config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
-				break;
-			case DTGis:
-				config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
-				break;
-			case DTMidiPort:
-				config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), In->DevId);
-				break;
-			case DTMidiFile:
-				config << wxString::Format(_T("  MIDIFILE %s\n"), sName.c_str());
-				break;
-		}
-		// Routen schreiben
-		for (ERoute *R = In->Routes; R; R = R->Next)
-		{
-			int OutNr = ( R->Out ) ?  R->Out->Nr : -1;
-			config << wxT("    ") << muT(RTName[R->Type]) << 
-			  wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
-				R->IFrom, R->ITo, R->Box, R->Active, OutNr,
-				R->OFrom, R->OTo, R->ONoDrum ? 1 : 0);
-		}
+	  // Device schreiben
+	  In->Nr = nr++; // Nummern zur Referenz bei Play/Stop
+	  In->Mode = 0; // Mode auf "registriert" setzen
+	  wxString sName = In->Name;
+	  if ( sName.Find(_T(" ")) )
+	    sName.Prepend(_T("\"")) << _T("\"");
+	  switch ( In->DT ) {
+	  case DTUnknown:
+	    config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
+	    break;
+	  case DTGis:
+	    config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
+	    break;
+	  case DTMidiPort:
+	    config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), In->DevId);
+	    break;
+	  case DTMidiFile:
+	    config << wxString::Format(_T("  MIDIFILE %s\n"), sName.c_str());
+	    break;
+	  case DTNotSet:
+	    wxLogWarning(_("Device found but device type not set."));
+	    break;
+	  }
+	  // Routen schreiben
+	  for (ERoute *R = In->Routes; R; R = R->Next) {
+	    int OutNr = ( R->Out ) ?  R->Out->Nr : -1;
+	    config << wxT("    ") << muT(RTName[R->Type]) << 
+	      wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
+			       R->IFrom, R->ITo, R->Box, R->Active, OutNr,
+			       R->OFrom, R->OTo, R->ONoDrum ? 1 : 0);
+	  }
 	}
 #ifdef DEBUG
 	std::cout << "WriteRoutes: " << (config.ToUTF8()) << std::endl;
@@ -728,33 +798,36 @@ void WriteRoutes(wxConfigBase *config)
 	int nr = 0;
 	for ( Out = OutEDevices; Out; Out = Out->Next)
 	{
-		Out->Nr = nr++; // Nummerierung zur bequemen Referenzierung beim Input schreiben
+		Out->Nr = nr++; 
+		// Nummerierung zur bequemen Referenzierung beim Input schreiben
 #ifdef DEBUG
-		std::cerr << "Trying to save output device Nr. " << Out->Nr << std::endl;
+		std::cerr << "Trying to save output device Nr. " 
+			  << Out->Nr << std::endl;
 #endif
 		config->SetPath(wxString(_T("")) << Out->Nr);
 		
 		config->Write(_T("Name"), Out->Name);
 
-		mutAssertMsg((Out->DT > 0) && (Out->DT < DeviceMaxType),
-			wxString(_("Internal Error: Forbidden output device type: ")) << Out->DT);
+		mutAssertMsg((Out->DT >= 0) && (Out->DT < DeviceMaxType),
+			     wxString(_("Internal Error: Forbidden output device type: ")) << Out->DT);
 
 		config->Write(_T("Type"), Out->DT);
-		config->Write(_T("Type Name"), wxGetTranslation(DevTypeName[Out->DT]));
+		config->Write(_T("Type_Name"), wxGetTranslation(DevTypeName[Out->DT]));
 
 		switch ( Out->DT )
 		{
-			case DTUnknown:
-			case DTGis:
-				break;
-			case DTMidiPort:
-				config -> Write(_T("Device Id"), Out->DevId);
-				config -> Write(_T("Bending Range"), Out->BendingRange);
-				break;
-			case DTMidiFile:
-				config -> Write(_T("Device Id"), 0);
-				config -> Write(_T("Bending Range"), Out->BendingRange);
-				break;
+		case DTNotSet:
+		case DTUnknown:
+		case DTGis:
+		  break;
+		case DTMidiPort:
+		  config -> Write(_T("Device_Id"), Out->DevId);
+		  config -> Write(_T("Bending_Range"), Out->BendingRange);
+		  break;
+		case DTMidiFile:
+		  config -> Write(_T("Device_Id"), 0);
+		  config -> Write(_T("Bending_Range"), Out->BendingRange);
+		  break;
 		}
 		config -> SetPath(_T(".."));
 	}
@@ -777,21 +850,28 @@ void WriteRoutes(wxConfigBase *config)
 			_("Internal Error: Forbidden input device type."));
 
 		config->Write(_T("Type"), In->DT);
-std::cerr << "Type Name, " << std::endl;
-		config->Write(_T("Type Name"), wxGetTranslation(DevTypeName[In->DT]));
+#ifdef DEBUG
+		std::cerr << "Type Name, " << std::endl;
+#endif
+		config->Write(_T("Type_Name"), wxGetTranslation(DevTypeName[In->DT]));
 
-		switch ( In->DT )
-		{
-			case DTMidiFile:
-			case DTGis:
-			case DTUnknown:
-				break;
-			case DTMidiPort:
-std::cerr << "Device Id " << std::endl;
-				config -> Write(_T("Device Id"), In->DevId);
-				break;
+		switch ( In->DT ) {
+		case DTNotSet:
+		case DTMidiFile:
+		case DTGis:
+		case DTUnknown:
+		  break;
+		case DTMidiPort:
+#ifdef DEBUG
+		  std::cerr << "Device Id " << std::endl;
+#endif
+		  config -> Write(_T("Device_Id"), In->DevId);
+		  break;
+		default:
+		  wxLogError(_("Undefinded device type %d"), In->DT);
 		}
 		config -> SetPath(_T("Routes"));
+		
 		// Routen schreiben
 		int routenr=0;
 		for (ERoute *R = In->Routes; R; R = R->Next, routenr++)
@@ -800,16 +880,17 @@ std::cerr << "Device Id " << std::endl;
 			std::cerr << "Trying to save Route Nr: " << routenr << std::endl;
 #endif
 			config -> SetPath(wxString(_T("")) << routenr);
-			int OutNr = ( R->Out ) ?  R->Out->Nr : -1;
 			config -> Write(_T("Type"), R->Type);
-			config -> Write(_T("Type Name"), muT(RTName[R->Type]));
-			config -> Write(_T("Input from"),R->IFrom);
-			config -> Write(_T("Input to"), R->ITo);
+			config -> Write(_T("Type_Name"), muT(RTName[R->Type]));
+			config -> Write(_T("Input_from"),R->IFrom);
+			config -> Write(_T("Input_to"), R->ITo);
 			config -> Write(_T("Box"), R->Box);
 			config -> Write(_T("Active"), R->Active);
-			config -> Write(_T("Output from"), R->OFrom);
-			config -> Write(_T("Output to"), R->OTo);
-			config -> Write(_T("No Drum"), R->ONoDrum);
+			config -> Write(_T("Output_device"), 
+					( R->Out ) ?  R->Out->Nr : -1 );
+			config -> Write(_T("Output_from"), R->OFrom);
+			config -> Write(_T("Output_to"), R->OTo);
+			config -> Write(_T("No_Drum"), R->ONoDrum);
 			config -> SetPath(_T(".."));
 		}
 		config -> SetPath(_T(".."));
@@ -950,3 +1031,45 @@ int SmallestBoxUsed()
     return Box;
 }
 
+void ScanDevices()
+{
+  /** \TODO make devices and routes so that we can avoid this 
+      function
+      \TODO enable changes on line
+  */
+
+  // clean device lists
+  if ( InDevices )
+  {
+    delete InDevices;
+    InDevices = NULL;
+  }
+
+  if ( OutDevices )
+  {
+    delete OutDevices;
+    OutDevices = NULL;
+  }
+
+  // handle output devices
+  OutDevice **PreOut = &OutDevices;
+  for (EDevice * oute = OutEDevices; oute ; oute = oute->Next) {
+    OutDevice *Out = oute->newOutDevice();
+    *PreOut = Out;
+    PreOut = &(Out->Next);
+  }
+
+  // handle input devices
+  InDevice **PreIn = &InDevices;
+  for (EDevice * ine = InEDevices; ine ; ine = ine->Next) {
+    
+    InDevice *In = ine->newInDevice();
+    *PreIn = In;
+    PreIn = &(In->Next);
+
+    // handle routes
+    for (ERoute * routee = ine->Routes; routee; routee = routee->Next) {
+      In->AddRoute(routee->newRoute());
+    }
+  }
+}

@@ -1,15 +1,35 @@
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
-// Laufzeitfunktionen der DLL
-// ------------------------------------------------------------------
+/** \file
+ ********************************************************************
+ * Mutabor runtime functions.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.8 2008/03/11 10:37:34 keinstein Exp $
+ * Copyright:   (c) 1997-2007 TU Dresden
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2008/03/11 10:37:34 $
+ * \version $Revision: 1.8 $
+ * \license wxWindows license
+ *
+ * $Log: Runtime.cpp,v $
+ * Revision 1.8  2008/03/11 10:37:34  keinstein
+ * Holyday edition
+ * put CM_xxx in an enum
+ * use wx constants
+ * document mutframe
+ * some white space formattings
+ * make route saving more system specific
+ * many other fixes
+ *
+ *
+ ********************************************************************
+ * \defgroup runtime Runtime functions
+ * \{
+ ********************************************************************
+ */
 #include "Defs.h"
 
 #include "Global.h"
-#ifndef WX
-#include <owl\dialog.h>
-#else
-  #include "EDevice.h"
-#endif
+#include "EDevice.h"
 
 #include "Hilfs.h"
 #include "GrafKern.h"
@@ -28,7 +48,6 @@ bool RealTime = false;
 
 jmp_buf weiter_gehts_nach_compilerfehler;
 
-#ifdef WX
 char pascal _export Compile(CompDlg *compDia, const wxChar *name)
 {
   InitCompDia(compDia);
@@ -64,58 +83,15 @@ char pascal _export Compile(CompDlg *compDia, const wxChar *name)
   else
   {
 	 show_line_number(-1);
-#ifdef GERMAN
-	 compDia->SetText(wxID_OK, _("Abbruch wegen Fehler !"));
-#else
 	 compDia->SetText(wxID_OK, _("Translation interrupted !"));
-#endif
+
+#ifdef DEBUG
 	 std::cout << (Fmeldung.ToUTF8()) << std::endl;
+#endif
 	 compDia->SetText(IDC_COMP_MESSAGE, Fmeldung);
 	 return 0;
   }
 }
-#else
-char pascal _export Compile(TDialog *compDia, char *name)
-{
-  InitCompDia(compDia->GetDlgItem(IDS_COMP2));
-
-  if (!setjmp(weiter_gehts_nach_compilerfehler))
-  {
-	 loesche_syntax_speicher();
-	 init_yylex ();
-
-	 mutabor_programm_einlesen ( name );
-
-	 calc_declaration_numbers();
-	 ::SetWindowText(compDia->GetDlgItem(IDS_COMP3), sd1);
-	 ::SetWindowText(compDia->GetDlgItem(IDS_COMP4), sd2);
-
-	 show_line_number(-1);
-
-	 ::SetWindowText(compDia->GetDlgItem(IDOK), "Generating tables");
-
-	 mutabor_tabellen_generator();
-
-
-	 ::SetWindowText(compDia->GetDlgItem(IDOK), "Translation successful !");
-	 ::SetWindowText(compDia->GetDlgItem(IDS_COMP5), "No error occured !");
-
-	 return 1;
-  }
-  else
-  {
-	 show_line_number(-1);
-#ifdef GERMAN
-	 ::SetWindowText(compDia->GetDlgItem(IDOK), "Abbruch wegen Fehler !");
-#else
-	 ::SetWindowText(compDia->GetDlgItem(IDOK), "Translation interrupted !");
-#endif
-	 std::cout << (char *)Fmeldung.c_str() << endl;
-	 ::SetWindowText(compDia->GetDlgItem(IDS_COMP5), Fmeldung);
-	 return 0;
-  }
-}
-#endif
 
 extern DWORD CurrentTime;
 UpdateUICallback* updateUIcallback;
@@ -142,12 +118,9 @@ bool pascal _export Activate(bool realTime, UpdateUICallback* callback)
     if ( RealTime )
       timeEndPeriod(1);
 #endif
+
 #ifdef MUTWIN
-    #if defined(WX)
       wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
-    #else
-      MessageBox(0, Fmeldung, "Activation error", MB_OK | MB_ICONASTERISK );
-    #endif
 #endif
     return false;
   }
@@ -347,20 +320,8 @@ int pascal _export GetAktuellesKeyboardInstrument()
 }
 
 // scan-Hilfsfunktionen ---------------------------------------------
-#ifdef WX
 bool GetELine(const wxString& p, size_t& i, wxString &s);
 DevType Str2DT(const wxString& type);
-#else 
-DevType Str2DT(char *type)
-{
-  char * DTName[] =  { "", "MIDIPORT", "MIDIFILE", "GMN" };
-  int i;
-  for (i = 3; i > 0; i--)
-    if ( !strncmp(type, DTName[i], strlen(DTName[i])) )
-      break;
-  return (DevType)i;
-}
-#endif
 
 // aus p eine Zeile in s lesen, p wird verschoben
 bool GetLine(char **p, char *s)
@@ -386,17 +347,6 @@ bool GetLine(char **p, char *s)
     return
 
 
-wxChar *RTName[] =  { _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF") };
- 
-RouteType Str2RT(wxChar * type)
-{
-  int i;
-  for (i = 3; i > 0; i--)
-    if ( !wxStricmp(type, RTName[i])) //, strlen(RTName[i])) )
-      break;
-  return (RouteType) i;
-}
-
 // das nr-ste Output Device
 OutDevice *GetOut(int nr)
 {
@@ -411,6 +361,7 @@ OutDevice *GetOut(int nr)
   return Out;
 }
 
+#if 0
 // Device aus einem String scannen
 void pascal _export ScanDevices(const wxString &config)
 {
@@ -536,6 +487,7 @@ void pascal _export ScanDevices(const wxString &config)
     }
   }
 }
+#endif
 
 // Timerdaten
 void pascal _export GetTimerData(UINT &min, UINT &max)
@@ -551,3 +503,4 @@ void pascal _export GetTimerData(UINT &min, UINT &max)
 }
 
 
+/* \} */

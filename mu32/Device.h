@@ -113,64 +113,63 @@ class OutDevice
     {
       Next = 0;
     };
-    ~OutDevice()
+    virtual ~OutDevice()
     {
       if ( Next ) delete Next;
     }
-	virtual bool Open() = 0;
-	virtual void Close() = 0;
-	virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd) = 0;
-	virtual void NoteOff(int box, int taste, int velo, Route *r, int channel) = 0;
-	virtual void NotesCorrect(int box) = 0;
-	virtual void Sustain(char on, int channel) = 0;
-	virtual int  GetChannel(int taste) = 0;
-	virtual void Gis(GisToken *token, char turn) = 0;
-	virtual void AddTime(frac time) = 0;
-	virtual void MidiOut(DWORD data, char n) = 0;
-	virtual void MidiOut(BYTE *p, char n) = 0;
+
+    virtual bool Open() = 0;
+    virtual void Close() = 0;
+    virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd) = 0;
+    virtual void NoteOff(int box, int taste, int velo, Route *r, int channel) = 0;
+    virtual void NotesCorrect(int box) = 0;
+    virtual void Sustain(char on, int channel) = 0;
+    virtual int  GetChannel(int taste) = 0;
+    virtual void Gis(GisToken *token, char turn) = 0;
+    virtual void AddTime(frac time) = 0;
+    virtual void MidiOut(DWORD data, char n) = 0;
+    virtual void MidiOut(BYTE *p, char n) = 0;
     virtual void Quite(Route *r) = 0;
     virtual void Panic() {};
     virtual bool NeedsRealTime() { return false; }
-	virtual wxString &GetName() = 0;
-	virtual DevType GetType() const { return DTUnknown; }
+    virtual wxString &GetName() = 0;
+    virtual DevType GetType() const { return DTUnknown; }
 };
 
 // Input devices ----------------------------------------------------
 
 class InDevice
 {
-  public:
-  	InDevice *Next;
-    int Mode;
-  protected:
-  	Route *Routes;
-  public:
-  	InDevice()
-	  {
-      Mode = 0;
-	    Next = 0;
-		  Routes = 0;
-	  }
-    ~InDevice()
-    {
-      if ( Routes ) delete Routes;
-      if ( Next ) delete Next;
-    }
-    Route *GetRoutes() { return Routes; }
-    Route *GetMoveRoutes();
-    Route *GetRoute(int nr);   // counting starts with 0
-    int nRoutes();
-	  virtual bool Open() = 0;
-	  virtual void Close() = 0;
-	  virtual void Stop() = 0;
-	  virtual void Play() = 0;
-	  virtual void Pause() = 0;
-//	  virtual frac ReadOn(frac time) = 0;
-	  void AddRoute(Route *route);
-    void Quite(); // all Routes quite
-    virtual bool NeedsRealTime() { return false; }
-	  virtual wxString &  GetName() = 0;
-	  virtual DevType GetType() const { return DTUnknown; }
+ public:
+  InDevice *Next;
+  int Mode;
+ protected:
+  Route *Routes;
+ public:
+  InDevice() {
+    Mode = 0;
+    Next = 0;
+    Routes = 0;
+  }
+  virtual ~InDevice() {
+    if ( Routes ) delete Routes;
+    if ( Next ) delete Next;
+  }
+  Route *GetRoutes() { return Routes; }
+  Route *GetMoveRoutes();
+  Route *GetRoute(int nr);   // counting starts with 0
+  int nRoutes();
+  virtual bool Open() = 0;
+  virtual void Close() = 0;
+  virtual void Stop() = 0;
+  virtual void Play() = 0;
+  virtual void Pause() = 0;
+  //	  virtual frac ReadOn(frac time) = 0;
+  void AddRoute(Route *route);
+  void Quite(); // all Routes quite
+  virtual bool NeedsRealTime() { return false; }
+  virtual wxString &  GetName() = 0;
+  virtual DevType GetType() const { return DTUnknown; }
 };
 
 // functions --------------------------------------------------------

@@ -1,31 +1,46 @@
-/////////////////////////////////////////////////////////////////////////////
-// $Id: MutFrame.h,v 1.9 2008/02/04 10:22:53 keinstein Exp $
-// Name:        MutFrame.h
-// Purpose:     Mutabor Frame
-// Author:      R. Krauße
-// Modified by: T. Schlemmer <keinstein@users.berlios.de>
-// Created:     12.08.05
-// Copyright:   (c) R. Krauße, T. Schlemmer
-// Licence:     GPL
-// $Log: MutFrame.h,v $
-// Revision 1.9  2008/02/04 10:22:53  keinstein
-// Fix typo in MutFrame::GetDockArt declaration
-//
-// Revision 1.8  2008/01/25 09:37:11  keinstein
-// Enable CM_ACTIVATE, CM_FILENEW and CM_FILEOPEN in event table
-// Inherit wxFrame
-// Use AUIManager
-// Let Application handle CM_FILENEW/CM_FILEOPEN if we have already a client
-// New titles for Subframes
-// Some Debug output
-// use wxConfig
-//
-// MutFrame::CloseAll,
-// MutFrame::OnSize,
-// MutFrame::OnEraseBackground,
-// MutFrame::OnActivate:        New Functions.
-//
-/////////////////////////////////////////////////////////////////////////////
+/** \file MutFrame.cpp
+ ********************************************************************
+ * Mutabor Frame.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.10 2008/03/11 10:37:34 keinstein Exp $
+ * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/12
+ * $Date: 2008/03/11 10:37:34 $
+ * \version $Revision: 1.10 $
+ * \license GPL
+ *
+ * $Log: MutFrame.h,v $
+ * Revision 1.10  2008/03/11 10:37:34  keinstein
+ * Holyday edition
+ * put CM_xxx in an enum
+ * use wx constants
+ * document mutframe
+ * some white space formattings
+ * make route saving more system specific
+ * many other fixes
+ *
+ * Revision 1.9  2008/02/04 10:22:53  keinstein
+ * Fix typo in MutFrame::GetDockArt declaration
+ *
+ * Revision 1.8  2008/01/25 09:37:11  keinstein
+ * Enable CM_ACTIVATE, CM_FILENEW and CM_FILEOPEN in event table
+ * Inherit wxFrame
+ * Use AUIManager
+ * Let Application handle CM_FILENEW/CM_FILEOPEN if we have already a client
+ * New titles for Subframes
+ * Some Debug output
+ * use wxConfig
+ *
+ * MutFrame::CloseAll,
+ * MutFrame::OnSize,
+ * MutFrame::OnEraseBackground,
+ * MutFrame::OnActivate:        New Functions.
+ *
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #ifndef MUTFRAME_H
 #define MUTFRAME_H
@@ -36,28 +51,60 @@
 #include "wx/aui/aui.h"
 #include "wx/toolbar.h"
 
+/// Main mutabor frame class
+/** This class is used to create the main windows
+ */
 class MutFrame : public wxFrame
 {
 public:
+  /// Constructor 
+  /** This constructor creates a new main window. 
+   */
     MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
             const wxPoint& pos, const wxSize& size,
 			 const long style);
 			 
-	~MutFrame();
+    /// Destructor
+    ~MutFrame();
 
+#if wxUSE_TOOLBAR
+    /// initialize the toolbar
+    /** Initializes the toolbar. 
+	\param toolBar Toolbar to which the tools shall be added
+    */
     void InitToolBar(wxToolBar* toolBar);
-
-//    void OnSize(wxSizeEvent& event);
+#endif
+    
+    /// passes an event to the editor.
+    /** This function is used to pass one event to the 
+	client window. 
+	\param event Event to be passed */
     void PassEventToEditor(wxCommandEvent &event);
+
+    /// passes an event to the MDI client window.
+    /** \deprecated This function was formerly used to pass one event
+	to the client MDI window.
+
+	\param event Event to be passed */
     void EventPassOn(wxCommandEvent& event);
-    void OnNewWindow(wxCommandEvent& event);
-    void OnQuit(wxCommandEvent& event);
+
+    /// Handles close event.
+    /** This function tries to determine, if we can close the current window.
+     */
     void OnClose(wxCloseEvent& event);
     
+    /// This function creates a new file editor
+    /** Handle new file event if we don't have a client yet. */
     void CmFileNew(wxCommandEvent& WXUNUSED(event));
+
+    /// Open an existing file if we don't have a client yet.
     void CmFileOpen(wxCommandEvent& WXUNUSED(event));
     
-    void OpenFile(wxString path);
+    /// Opens the given file, if we don't have a client yet.
+    bool OpenFile(wxString path, bool newfile=false);
+
+    /// Get a file name to open
+    wxString FileNameDialog();
     
     void CmDoActivate(wxCommandEvent& event);
     void CmStop(wxCommandEvent& WXUNUSED(event));
@@ -89,16 +136,11 @@ public:
     // Idle
     void UpdateUI(wxCommandEvent& WXUNUSED(event));
     void OnIdle(wxIdleEvent& WXUNUSED(event));
-    void OnActivate(wxActivateEvent& event);
+    //    void OnActivate(wxActivateEvent& event);
     void OnEraseBackground(wxEraseEvent& event);
     void OnSize(wxSizeEvent& event);
     wxAuiDockArt* GetDockArt();
     
-    MutChild* NewFrame(WinKind winKind, 
-		       int box, 
-		       const wxString &frameName, 
-		       wxIcon icon, 
-		       const wxString &title = wxEmptyString);
     void WindowSize(MutChild *win);
     void SaveState();
     void RestoreState();
@@ -145,5 +187,6 @@ extern wxString CompiledFile;
 extern wxString curLogic[MAX_BOX];
 extern wxString curTS[MAX_BOX];
 extern int curTaste[MAX_BOX][2];
+extern bool TextBoxWanted[];
 
 #endif
