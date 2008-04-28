@@ -645,7 +645,7 @@ void TRouteWin::CorrectScroller()
   int xw = Win->Attr.X, yw = Win->Attr.Y;
   int xl = Attr.W, yl = Attr.H;
   int dx = 0, dy = 0;
-/*  // rechte untere Ecke im Bild ???
+/wx*  // rechte untere Ecke im Bild ???
   if ( xw + MUTTAGX > xl ) dx = xw + MUTTAGX - xl;
   if ( yw + MUTTAGY > yl ) dy = yw + MUTTAGY - yl;
   // linke obere Ecke im Bild ??? (dominierend)
@@ -654,7 +654,7 @@ void TRouteWin::CorrectScroller()
   Scroller->ScrollBy(dx / Scroller->XUnit, dy / Scroller->YUnit); *wx/
 }
 
-/*
+/wx*
 // keyboardanalyse, Fenster aufr‰umen, Logiken lesen und anzeigen
 void TRouteWin::UpDate(int thekey, bool isLogicKey)
 {
@@ -942,17 +942,26 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			int type = 0;
 			switch ( In->DT )
 			{
-				case DTGis:
-					in.SetType(type = 2);
-					in.SetGUIDOFile(In->Name);
-					break;
-				case DTMidiPort:
-					in.SetMidiDevice(In->DevId);
-					break;
-				case DTMidiFile:
-					in.SetType(type = 1);
-					in.SetMidiFile(In->Name);
-					break;
+			case DTGis:
+			  in.SetType(type = 2);
+			  in.SetGUIDOFile(In->Name);
+			  break;
+			case DTMidiPort:
+			  in.SetMidiDevice(In->DevId);
+			  break;
+			case DTMidiFile:
+			  in.SetType(type = 1);
+			  in.SetMidiFile(In->Name);
+			  break;
+			case DTNotSet:
+			  wxLogWarning(_("Unexpected value: DTNotSet"));
+			  break;
+			case DTUnknown:
+			  wxLogWarning(_("Unexpected value: DTUnknown"));
+			  break;
+			default:
+			  wxLogError(_("Unexpected device type: %d"), In->DT); 
+			  
 			}
 			in.UpdateLayout(type);
 			Res = in.ShowModal();
@@ -1122,19 +1131,27 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 			int type = 0;
 			switch ( Out->DT )
 			{
-				case DTGis:
-					out.SetType(type = 2);
-					out.SetGUIDOFile(Out->Name);
-					break;
-				case DTMidiPort:
-					out.SetMidiDevice(Out->DevId);
-					out.SetMidiDeviceBending(Out->BendingRange);
-					break;
-				case DTMidiFile:
-					out.SetType(type = 1);
-					out.SetMidiFile(Out->Name);
-					out.SetMidiFileBending(Out->BendingRange);
-					break;
+			case DTGis:
+			  out.SetType(type = 2);
+			  out.SetGUIDOFile(Out->Name);
+			  break;
+			case DTMidiPort:
+			  out.SetMidiDevice(Out->DevId);
+			  out.SetMidiDeviceBending(Out->BendingRange);
+			  break;
+			case DTMidiFile:
+			  out.SetType(type = 1);
+			  out.SetMidiFile(Out->Name);
+			  out.SetMidiFileBending(Out->BendingRange);
+			  break;
+			case DTNotSet:
+			  wxLogWarning(_("Unexpected value: DTNotSet"));
+			  break;
+			case DTUnknown:
+			  wxLogWarning(_("Unexpected value: DTUnknown"));
+			  break;
+			default:
+			  wxLogError(_("Unexpected device type: %d"), Out->DT); 
 			}
 			out.UpdateLayout(type);
 			Res = out.ShowModal();
