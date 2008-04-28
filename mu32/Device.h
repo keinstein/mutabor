@@ -69,38 +69,43 @@ char NextRouteId();
 class Route
 {
   public:
-	  Route *Next;
-	  char Id;
-	  RouteType Type;
-	  int IFrom, ITo;
-	  int Box;
-    bool Active;
-	  OutDevice *Out;
-    int OFrom, OTo;
-    bool ONoDrum;
-	  Route(RouteType type, int iFrom, int iTo, int box, bool active, OutDevice *out,
-    int oFrom = -1, int oTo = -1, bool oNoDrum = true, Route *next = 0)
-	  {
-	    Type = type;
-	    IFrom = iFrom;
-	    ITo = iTo;
-	    Box = box;
-      Active = active;
-		  Out = out;
-		  OFrom = oFrom;
-		  OTo = oTo;
-      ONoDrum = oNoDrum;
-		  Next = next;
-		  Id = NextRouteId();
-	  }
-	  ~Route()
-	  {
-		  if ( Next ) delete Next;
-	  }
-	  char Check(int i)
-	  {
-	    return (IFrom <= i && i <= ITo);
-	  }
+  Route *Next;
+  char Id;
+  RouteType Type;
+  int IFrom, ITo;
+  int Box;
+  bool Active;
+  OutDevice *Out;
+  int OFrom, OTo;
+  bool ONoDrum;
+  Route(RouteType type, 
+	int iFrom, 
+	int iTo, 
+	int box, 
+	bool active, 
+	OutDevice *out,
+	int oFrom = -1, 
+	int oTo = -1, 
+	bool oNoDrum = true, 
+	Route *next = 0){
+    Type = type;
+    IFrom = iFrom;
+    ITo = iTo;
+    Box = box;
+    Active = active;
+    Out = out;
+    OFrom = oFrom;
+    OTo = oTo;
+    ONoDrum = oNoDrum;
+    Next = next;
+    Id = NextRouteId();
+  }
+  ~Route() {
+    if ( Next ) delete Next;
+  }
+  char Check(int i) {
+    return (IFrom <= i && i <= ITo);
+  }
 };
 
 // Output devices ---------------------------------------------------

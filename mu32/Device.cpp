@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
+// Mutabor 3, 1998, R.Krau√üe
 // Devices Basisklassen
 // ------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ int InDevice::nRoutes()
   return n;
 }
 
-// Neue Route am Ende anh‰ngen (damit RTelse O.K. geht)
+// Neue Route am Ende anh√§ngen (damit RTelse O.K. geht)
 void InDevice::AddRoute(Route *route)
 {
   Route **R = &Routes;
