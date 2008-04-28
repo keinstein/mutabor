@@ -17,3 +17,4 @@ all-no: all-no-@BUILD_INCLUDED_LIBWXINTL@
 all-no-yes: #libgnuintl.$la
 all-no-no:
 
+mac:
