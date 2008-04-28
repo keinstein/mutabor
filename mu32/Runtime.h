@@ -10,8 +10,10 @@
 
 #include "wx/wxchar.h"
 #include "CompDlg.h"
-#if !defined(__WXMSW__)
+#if !defined(__WXMSW__) 
+#ifndef UINT
   #define UINT unsigned int
+#endif
   #define pascal
 #endif
 
