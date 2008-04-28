@@ -934,6 +934,7 @@ WX_VERSION
 INTLDIR
 USE_INCLUDED_LIBWXINTL
 BUILD_INCLUDED_LIBWXINTL
+WX_LOCALE_DIRS
 NETINET_INC
 MCHECK
 HAVE_INLINE
@@ -5527,7 +5528,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5530 "configure"' > conftest.$ac_ext
+  echo '#line 5531 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7796,11 +7797,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7799: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7800: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7803: \$? = $ac_status" >&5
+   echo "$as_me:7804: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8086,11 +8087,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8089: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8090: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:8093: \$? = $ac_status" >&5
+   echo "$as_me:8094: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8190,11 +8191,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8193: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8194: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8197: \$? = $ac_status" >&5
+   echo "$as_me:8198: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -10539,7 +10540,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10542 "configure"
+#line 10543 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10639,7 +10640,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10642 "configure"
+#line 10643 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13059,11 +13060,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13062: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13063: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:13066: \$? = $ac_status" >&5
+   echo "$as_me:13067: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -13163,11 +13164,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13166: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13167: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13170: \$? = $ac_status" >&5
+   echo "$as_me:13171: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -14725,11 +14726,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14728: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14729: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14732: \$? = $ac_status" >&5
+   echo "$as_me:14733: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -14829,11 +14830,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14832: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14833: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14836: \$? = $ac_status" >&5
+   echo "$as_me:14837: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -17016,11 +17017,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17019: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17020: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17023: \$? = $ac_status" >&5
+   echo "$as_me:17024: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17306,11 +17307,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17309: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17310: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17313: \$? = $ac_status" >&5
+   echo "$as_me:17314: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -17410,11 +17411,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17413: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17414: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17417: \$? = $ac_status" >&5
+   echo "$as_me:17418: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -27974,7 +27975,32 @@ _ACEOF
 	BUILD_INCLUDED_LIBWXINTL=$BUILD_INCLUDED_LIBINTL
 
 fi
+{ echo "$as_me:$LINENO: checking for wxWidgets locale directories" >&5
+echo $ECHO_N "checking for wxWidgets locale directories... $ECHO_C" >&6; }
+if test "${ac_cv_wx_locale_dirs+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
 
+	for dir in `$WX_CONFIG_WITH_ARGS --prefix` \
+	    /usr /usr/local /opt /opt/local ;
+	do
+	    if test -d "$dir"/share/locale  ; then
+	    	found=""
+		for dirx in "$dir"/share/locale/* ; do
+		    test -f "$dirx"/LC_MESSAGES/wxstd.mo && found="yes"
+		done
+
+		if test	"$found" = yes ; then
+		    ac_cv_wx_locale_dirs="$ac_cv_wx_locale_dirs $dir/share/locale"
+		fi
+
+	    fi
+	done
+
+fi
+{ echo "$as_me:$LINENO: result: $ac_cv_wx_locale_dirs" >&5
+echo "${ECHO_T}$ac_cv_wx_locale_dirs" >&6; }
+WX_LOCALE_DIRS=$ac_cv_wx_locale_dirs
 
 
 # Checks for header files.
@@ -32130,11 +32156,7 @@ echo "${ECHO_T}$ac_cv_func_strdup" >&6; }
 
 
 
-ac_config_files="$ac_config_files Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile intl/libgnuintl.h po/Makefile.in wxintl/Makefile intl/Makefile"
-
-ac_config_files="$ac_config_files missfunc/Makefile"
-
-ac_config_files="$ac_config_files osdep/macosx/Info.plist"
+ac_config_files="$ac_config_files Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile intl/libgnuintl.h po/Makefile.in wxintl/Makefile intl/Makefile missfunc/Makefile osdep/macosx/Info.plist doc/Makefile doc/localized/Makefile doc/localized/de/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -32776,6 +32798,9 @@ do
     "intl/Makefile") CONFIG_FILES="$CONFIG_FILES intl/Makefile" ;;
     "missfunc/Makefile") CONFIG_FILES="$CONFIG_FILES missfunc/Makefile" ;;
     "osdep/macosx/Info.plist") CONFIG_FILES="$CONFIG_FILES osdep/macosx/Info.plist" ;;
+    "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
+    "doc/localized/Makefile") CONFIG_FILES="$CONFIG_FILES doc/localized/Makefile" ;;
+    "doc/localized/de/Makefile") CONFIG_FILES="$CONFIG_FILES doc/localized/de/Makefile" ;;
 
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
@@ -33042,6 +33067,7 @@ WX_VERSION!$WX_VERSION$ac_delim
 INTLDIR!$INTLDIR$ac_delim
 USE_INCLUDED_LIBWXINTL!$USE_INCLUDED_LIBWXINTL$ac_delim
 BUILD_INCLUDED_LIBWXINTL!$BUILD_INCLUDED_LIBWXINTL$ac_delim
+WX_LOCALE_DIRS!$WX_LOCALE_DIRS$ac_delim
 NETINET_INC!$NETINET_INC$ac_delim
 MCHECK!$MCHECK$ac_delim
 HAVE_INLINE!$HAVE_INLINE$ac_delim
@@ -33056,7 +33082,7 @@ LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 78; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 79; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

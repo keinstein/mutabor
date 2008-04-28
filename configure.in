@@ -223,8 +223,25 @@ else
 	AC_SUBST(USE_INCLUDED_LIBWXINTL,$USE_INCLUDED_LIBINTL)
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,$BUILD_INCLUDED_LIBINTL)
 fi
+AC_CACHE_CHECK([for wxWidgets locale directories], ac_cv_wx_locale_dirs,
+[
+	for dir in `$WX_CONFIG_WITH_ARGS --prefix` \
+	    /usr /usr/local /opt /opt/local ; 
+	do 
+	    if test -d "$dir"/share/locale  ; then
+	    	found=""
+		for dirx in "$dir"/share/locale/* ; do 
+		    test -f "$dirx"/LC_MESSAGES/wxstd.mo && found="yes"
+		done
+		
+		if test	"$found" = yes ; then
+		    ac_cv_wx_locale_dirs="$ac_cv_wx_locale_dirs $dir/share/locale"
+		fi
 
-
+	    fi	
+	done
+])
+AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
 
 # Checks for header files.
 AC_HEADER_STDBOOL
@@ -326,9 +343,22 @@ AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strs
 AC_CHECK_FUNC(strdup)
 
 
-AC_CONFIG_FILES([Makefile includes/Makefile includes/mutabor/Makefile libmutabor/Makefile libmutabor/tests/Makefile intl/libgnuintl.h po/Makefile.in wxintl/Makefile intl/Makefile])
-AC_CONFIG_FILES([missfunc/Makefile])
-AC_CONFIG_FILES([osdep/macosx/Info.plist])
+AC_CONFIG_FILES([
+Makefile
+includes/Makefile 
+includes/mutabor/Makefile 
+libmutabor/Makefile 
+libmutabor/tests/Makefile 
+intl/libgnuintl.h 
+po/Makefile.in 
+wxintl/Makefile 
+intl/Makefile
+missfunc/Makefile
+osdep/macosx/Info.plist
+doc/Makefile
+doc/localized/Makefile
+doc/localized/de/Makefile
+])
 AC_OUTPUT
 
 
