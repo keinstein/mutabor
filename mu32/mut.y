@@ -1,4 +1,5 @@
 /* Mutabor Tonsysteme */
+%locations
 
 %{
 
@@ -11,6 +12,7 @@
 //#pragma warn -sig
 //#pragma warn -par
 
+
 #include <ctype.h>
 #include <limits.h>
 #include "global.h"
@@ -22,9 +24,11 @@
 #define FEHLERZEILE yylloc.first_line+1
 
 #ifdef alloca
-#undefine alloca
+#undef alloca
+#define alloca make_an_error ---
 #endif
-#define alloca xmalloc
+#define YYMALLOC xmalloc
+#define YYFREE(X) do { /* empty */; } while (YYID (0))
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
                    /* wegen fehlendem alloca in PUREC */
 
@@ -272,9 +276,9 @@ ton_element :
       ;
 
 parameter_liste :      /* allgemein eine Liste von Identifiern */
-          IDENTIFIER      { get_new_name_in_parameterlist ($1) }
+IDENTIFIER      { get_new_name_in_parameterlist ($1); }
         | parameter_liste ',' IDENTIFIER
-                          { get_new_name_in_parameterlist ($3) }
+{ get_new_name_in_parameterlist ($3); }
         | error { fatal_error(74,FEHLERZEILE); }
         ;
 
@@ -287,9 +291,9 @@ argument_liste :
 
 argument_listenelement :        /* allgemein eine Liste von Identifiern
                           oder Kommazahlen */
-          IDENTIFIER      { get_new_name_in_argument_list ($1)   }
-        | INTEGER        { get_new_number_in_argument_list ($1) }
-        | '-' INTEGER        { get_new_number_in_argument_list (-($2)) }
+IDENTIFIER      { get_new_name_in_argument_list ($1) ;  }
+| INTEGER        { get_new_number_in_argument_list ($1) ;  }
+| '-' INTEGER        { get_new_number_in_argument_list (-($2)); }
 
         ;
 
@@ -636,8 +640,8 @@ instrument_dekl_2 :
         ;
         
 GLEITKOMMA_ZAHL:
-           F_NUMBER  { $$ = $1 }
-        |  INTEGER   { $$ = (double) $1 }
+F_NUMBER  { $$ = $1 ; }
+|  INTEGER   { $$ = (double) $1 ; }
         ;
 
         
