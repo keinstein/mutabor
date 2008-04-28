@@ -25,7 +25,7 @@ int  intern_fgetc( FILE *stream )
   return zeichen;
 }
 
-#pragma warn -par
+//#pragma warn -par
 int  intern_ungetc( int c, FILE *stream )
 { 
 	 SeRiEnNuMmEr[0] = the_character;
@@ -33,7 +33,7 @@ int  intern_ungetc( int c, FILE *stream )
 	 the_character = c;
 	 return 0;
 }
-#pragma warn .par
+//#pragma warn .par
 
 /************************************
 
@@ -85,14 +85,14 @@ static struct heap_element * heap_to_use_syntax = NULL;
 
 
 
-#pragma warn -par
+//#pragma warn -par
 void xfree (void * pointer)
 {
  /* Nichts, wenn eigene Speicherverwaltung */
 
  /*   free (pointer); */
 }
-#pragma warn .par
+//#pragma warn .par
 
 void * xmalloc (size_t size)
 {  
@@ -225,11 +225,11 @@ struct mini_heap {
 
 static struct mini_heap * laufzeit_heap = NULL;
 
-#pragma warn -par
+//#pragma warn -par
 void yfree (void * pointer) {
   /* nix */
 }
-#pragma warn .par
+//#pragma warn .par
 
 void * ymalloc (size_t size) {
 #ifdef ACS_VERSION
