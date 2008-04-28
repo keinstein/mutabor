@@ -25,12 +25,13 @@
 
 /* MUTABOR / Version 2.1 */
 
-#pragma warn -cln
-#pragma warn -aus
-#pragma warn -sig
-#pragma warn -par
+//#pragma warn -cln
+//#pragma warn -aus
+//#pragma warn -sig
+//#pragma warn -par
 
 #include <ctype.h>
+#include <alloca.h>
 #include <limits.h>
 #include "Global.h"
 #include "GrafKern.h"
@@ -39,6 +40,7 @@
 #define MAX_IDENTIFIER_LEN 80
 
 #define FEHLERZEILE yylloc.first_line+1
+
 
 #define alloca xmalloc
 #define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
