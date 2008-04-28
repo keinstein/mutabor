@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.12 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.13 2008/04/28 08:21:33 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2008/04/28 08:21:33 $
+ * \version $Revision: 1.13 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.13  2008/04/28 08:21:33  keinstein
+ * Silence a warning since it is issued every normal start.
+ *
  * Revision 1.12  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -1046,7 +1049,7 @@ void MutFrame::RestoreState()
 #endif
   }
   config->SetPath(_T(".."));
-  wxLogWarning(_("MutFrame::RestoreState() doesn't handle multiple windows"));
+  //  wxLogWarning(_("MutFrame::RestoreState() doesn't handle multiple windows"));
 }
 
 // Recorder-Knöpfe --------------------------------------------------
