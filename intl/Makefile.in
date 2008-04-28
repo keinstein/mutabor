@@ -495,6 +495,8 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 # when AC_CONFIG_FILES([intl/Makefile:somedir/Makefile.in]) is used.
 #	cd $(top_builddir) && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
+mac:
+
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

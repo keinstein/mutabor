@@ -201,6 +201,7 @@ WX_CXXFLAGS = @WX_CXXFLAGS@
 WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
+WX_LOCALE_DIRS = @WX_LOCALE_DIRS@
 WX_VERSION = @WX_VERSION@
 XGETTEXT = @XGETTEXT@
 YACC = @YACC@
@@ -548,6 +549,8 @@ all-yes: $(BUILT_SOURCES) all-am #libintl.h charset.alias ref-add.sed ref-del.se
 all-no: all-no-@BUILD_INCLUDED_LIBWXINTL@
 all-no-yes: #libgnuintl.$la
 all-no-no:
+
+mac:
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
