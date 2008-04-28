@@ -1,0 +1,58 @@
+#!/bin/sh
+
+installpath=./help
+
+if command -v xhtex > /dev/null 2>&1 ; then
+  true
+else
+  export PATH=/usr/share/tex4ht:$PATH
+fi
+
+#        latex $5 '\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode '$2'.a.b.c.\input ' $1
+
+for datei in "$@"
+do
+  rm -f ${datei%.tex}.{idx,aux,ind,xref,4ct,4tc,tmp}
+done
+
+for seq in 1 2 3 4
+do 
+  for datei in "$@"
+  do
+    echo 
+    echo $seq $datei
+    echo $TEXINPUTS
+    echo
+	latex '\def\outputformat{help}\input '"$datei"
+	if [ -f "${datei%.tex}".idx ] 
+	then
+  	  tex '\def\filename{{'"${datei%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht' 
+	  makeindex -o ${datei%.tex}.ind ${datei%.tex}.4dx 
+	  makeindex -s wxdin.ist -o ${datei%.tex}.wxi ${datei%.tex}.4dx
+        fi
+  done
+done
+
+mkdir -p $installpath
+
+
+for datei in "$@"
+do
+	instpath="$installpath"
+	mkdir -p $instpath
+        tex4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidate
+        t4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidatehtml ## -d~/WWW/temp/ -m644 
+
+	filebase="`basename ${datei%.tex}`"
+
+	mv ${filebase}*.{html,png,js,css} $instpath
+	pwd
+	$htmldecode <${filebase}.hhk >$instpath/${filebase}.hhk
+	$htmldecode <${filebase}.hhc >$instpath/${filebase}.hhc
+	$fixhhp <${filebase}.hhp|sed -e 's/^ *//g' -e '/^$/ d' |$htmldecode>$instpath/${filebase}.hhp
+	cp *.png $instpath
+done
+cp "$srcdir"/*.png $instpath
+cp "$top_docdir"/*.png $instpath
+(cd $instpath ; zip ../help.zip *)
+

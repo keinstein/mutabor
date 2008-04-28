@@ -1,0 +1,597 @@
+% Um alles auf einmal pflegen zu können, verwenden wir \ifhtml als
+% Anzeige für tex4ht oder „normales“ (PDF)LaTeX.
+%
+\makeatletter
+
+\let\ifhelp\iffalse
+\let\ifhtml\iffalse
+\let\ifpdf\iffalse
+\let\ifdvi\iffalse
+
+\def\mutabor@utput@html{
+  \typeout{Producing HTML format.}
+  \let\ifhtml\iftrue
+}
+
+\def\mutabor@utput@help{%
+  \mutabor@utput@html
+  \typeout{Subtype: .hhp .}
+  \let\ifhelp\iftrue
+}
+
+\@ifundefined{mutabor@utput@\outputformat}{
+  \typeout{Undefined output format%
+    \@ifundefined{outputformat}{}{ \outputformat}.
+  }
+}{
+  \csname mutabor@utput@\outputformat\endcsname
+}
+
+%\def\htmltrue{\let\ifhtml\iftrue}
+%\def\htmlfalse{\let\ifhtml\iffalse}
+%\ifx\ifhtml\undefined
+%  \htmlfalse
+%\else
+%  \htmltrue
+%\fi
+% 
+% Ein Kommentar aus dem alten Handbuch... ;-)
+%
+% =====================================================
+%
+% NOCH ZU KORRIGIEREN :
+%
+%
+% - oberflächenspezifische Beschreibungen auslagern !
+%
+% =====================================================
+%
+% Koma-Skript liefert ein paar nützliche zusätzliche Definitionen
+%
+\documentclass[german,a4paper,BCOR1.0cm]{scrbook}
+%
+% Für tex4ht müssen wir auch tex4ht laden...
+\ifhtml
+\setcounter{tocdepth}{1}
+% Grundeinstellungen liegen in der Datei „tshtml.cfg“
+\usepackage[%tshtml,
+mutabor,
+% Es folgt das Hauptformat: hier xhtml
+            html,
+% CSS2 verwenden
+%            css2,
+% in der Log-Datei Informationen zur Konfiguration von tex4ht ausgeben
+          info,
+% Fußnoten (und Literaturzitate) erscheinen beim überfahren der Marke
+%            mouseover,
+% Auf der ersten Seite wird auch ein „Weiter“-Pfeil angezeigt
+            next,
+            sections+,
+% HTML-Dateien möglichst kurz -- maximale Aufsplittungstiefe
+            4,
+ %            nominitoc,
+% Index 2-Spaltig
+            index=2,
+            Gin-dim+,
+% HTML-Zeichensatz: UTF-8
+            charset=utf-8,
+            hyperref,
+            NoFonts,
+%            fonts+
+%            fonts,
+]{tex4ht}
+\makeatletter
+\edef\ts@savecatcode{\noexpand\catcode`\noexpand\:\the\catcode`\:\relax} 
+%\catcode`\:11\relax
+\AtEndDocument{\makehhk}
+\newcommand\tshhkentry{}
+\newcommand\tsatoclink{}
+
+%\:::HRefTag=macro:
+%#1#2->\if \relax #2\relax \else \:TagHTag {#2}\fi \HCode {<\tag:A \:newlnch \if
+% \relax #1\relax \NOHREF: {#2}\else \HREF: "\get:hfile {#1}\:sharp #1"\fi \if \
+%relax #2\relax \else \space \NAME: "#2"\fi \:attr \empty:lnk >}.
+%<insert>    \show\:::HRefTag
+
+\expandafter\def\expandafter\mut@sharp\expandafter{\csname :sharp\endcsname}
+
+\newif\ifwx@inrange
+\wx@inrangefalse
+\def\wx@item#1{%
+  \def\wx@item@{#1}%
+  \let\wx@indextext\wx@item@
+}
+\def\wx@subitem#1{%
+  \def\wx@subitem@{\wx@item@{}: #1}
+  \let\wx@indextext\wx@subitem@
+}
+\def\wx@subsubitem#1{%
+  \def\wx@subsubitem@{\wx@subitem@{} -- #1}%
+  \let\wx@indextext\wx@subsubitem@
+}
+\def\wx@LNK#1#2#3#4{%
+  \ifwx@inrange
+  \wx@inrangefalse
+  \else
+  \HCode{<li>^^J}%
+  \HCode{<object type="text/sitemap" >^^J%
+\space<param name="Name" value="}\wx@indextext\HCode{" >^^J%
+\space<param name="Local" value="}#1\mut@sharp #2\HCode{" >^^J%
+</object>^^J}% 
+  \HCode{</li>^^J}%
+  \fi
+}
+\def\loadwxindex{%
+  {%
+    \let\item\wx@item
+    \let\subitem\wx@subitem
+    \let\subsubitem\wx@subsubitem
+    \let\LNK\wx@LNK
+    \let\rangeto\wx@inrangetrue
+    \InputIfFileExists{\jobname.wxi}{}{}%
+  }%
+}
+
+
+
+\def\tsatoclink#1#2#3#4{%
+  \typeout{Setting: \csname get:hfile\endcsname{#2} at \csname :sharp\endcsname #2}%
+  \HCode{%
+\tslinestart<object type="text/sitemap" >^^J
+\tslinestart\space<param name="Name" value="}#4\HCode{" >^^J
+\tslinestart\space<param name="Local" value="}\csname get:hfile\endcsname{#2}\csname :sharp\endcsname #2\HCode{" >^^J
+\tslinestart</object>^^J}% "<
+%   \expandafter\ifx \csname #3-def\endcsname\relax
+%      \global \expandafter\let \csname #3-def\endcsname\def
+%      \Link {#2}{#3}
+%   \else
+%      \Link {#2}{}
+%   \fi 
+%   {\Configure {ref}{}{}{}%
+%     \let \EndLink =\empty
+%     \let \H:Tag:attr \:gobbleII
+%     \let \:::HRef \empty
+%     \def \::hRef [##1]##2{}%
+%     \def \::hRefTag [##1]##2##3{}%
+%     \def \:::HRefTag ##1##2{}%
+%     \Configure {cite}{}{}{}{}%
+%     #4}%
+%   \EndLink
+}
+\def\ts@hhkentry#1#2#3#4{%
+  \def\tslinestart{#1\space}%
+  \HCode{#1<li>^^J}%
+  #3%
+  \HCode{#1</li>^^J}%
+}
+\def\tshhkentry{\ts@hhkentry{}}
+\def\tstocendsubparagraph{}
+\def\tstocendparagraph{\endsubparagraph}
+
+\def\deftocmacro#1#2#3{
+  \expandafter\def\csname tstocstart#1\endcsname{%
+    \HCode{#3\space<ul><!-- u#1 -->^^J}%
+    \expandafter\let\csname tocstart#1\endcsname\relax
+    \expandafter\def\csname tocstop#1\expandafter\endcsname{\csname tstocstop#1\endcsname}
+  }
+
+  \expandafter\def\csname tstocskip#1\endcsname{\csname tocstop#2\endcsname}
+
+  \expandafter\def\csname tstocstop#1\endcsname{%
+    \csname tocstop#2\endcsname
+    \HCode{#3\space</ul><!-- i#1 -->^^J}%
+    \expandafter\def\csname tocstop#1\endcsname{\csname tstocskip#1\endcsname}
+  }
+
+  \expandafter\def\csname tstoc#2\endcsname{%
+    \csname tocstop#2\endcsname
+    \csname tocstart#1\endcsname
+    \expandafter\def\csname tocstart#2\endcsname{\csname tstocstart#2\endcsname}
+    \HCode{#3\space\space<!-- a#2 -->^^J}%
+    \ts@hhkentry{#3\space\space}%
+  }%
+}
+
+\def\tstocpart{
+  \tocstoppart
+  \ts@hhkentry{}%
+}
+
+\deftocmacro{part}{chapter}{}
+\deftocmacro{chapter}{section}{\space}
+\deftocmacro{section}{subsection}{\space\space}
+\deftocmacro{subsection}{subsubsection}{\space\space\space}
+\deftocmacro{subsubsection}{paragraph}{\space\space\space\space}
+\deftocmacro{paragraph}{subparagraph}{\space\space\space\space\space}
+\def\tocstopsubparagraph{}
+
+\def\gobblenl{\@ifnextchar[\@gobblenl{}}
+\def\@gobblenl[#1]{}
+{\catcode`\^^J=\active
+  \gdef\mknlsp{%
+    \def^^J{ }}%
+}
+\def\@nl@end{nl@end}
+\def\@removenl#1#2\@nl@end{%
+  \ifx#1^^J
+  \ 
+  \else
+  #1
+  \fi
+  \ifx#2\relax
+  \else
+  \expandafter\@removenl
+  \fi
+}
+
+\newcommand\removenewline[1]{%
+  \ifx#1\relax
+  \else
+    \@removenl#1\@nl@end
+  \fi
+}
+
+\newcommand\mutabortitle{}
+\ifhelp
+  \let\mutaborsavesubject\subject
+  \def\subject#1{%
+    \def\mutabortitle{#1}%
+    \mutaborsavesubject{#1}%
+  }
+\else
+  \let\mutaborsavetitle\title
+  \def\title#1{%
+    \def\mutabortitle{#1}%
+    \mutaborsavetitle{#1}%
+  }
+\fi
+\def\mutabordefaulttopic{\jobname.html}
+\newcommand\tsarg{}
+\def\tsarg#1{#1}
+\let\tsdotocentry\tsarg
+\expandafter\let\expandafter\mut@gobbleIV\csname :gobbleIV\endcsname
+\expandafter\let\expandafter\mut@gobbleIII\csname :gobbleIII\endcsname
+\expandafter\let\expandafter\mut@gobble\csname :gobble\endcsname
+\newcommand\makehhk{%
+  {\ignorespaces
+    \let\par\relax
+    \def\showname##1{\expandafter\show\csname ##1\endcsname}%
+    \let\@gnewline\space
+    \def\@newline{\space\mut@gobbleIII}%
+    \let\texorpdfstring\@secondoftwo%
+    \let\fontencoding\mut@gobble
+    \let\fontfamily\mut@gobble
+    \let\fontseries\mut@gobble
+    \let\fontshape\mut@gobble
+    \let\fontsize\mut@gobble
+    \let\@setfontsize\mut@gobbleIII
+    \let\usefont\mut@gobbleIV 
+    \let\selectfont\relax
+    \let\LARGE\relax
+    \let\normalsize\relax
+    % .hhp-Datei erstellen.
+    \special{t4ht>\jobname.hhp}%
+    \HCode{%
+Contents file=\jobname.hhc^^J%
+Index file=\jobname.hhk^^J%
+Title=}{%
+      \removenewline\expandafter{\mutabortitle}}%
+    \HCode{^^J%
+Default Topic=\mutabordefaulttopic^^J
+Charset=UTF-8^^J}%
+\special{t4ht<\jobname.hhp}%
+\typeout{done}%
+%\expandafter\show\csname a:TocLink\endcsname
+    \let\doTocEntry\tsdotocentry
+    \expandafter\let\csname a:TocLink\endcsname\tsatoclink
+    \let\toclikesection\tshhkentry
+    \let\toclikechapter\tshhkentry
+    \let\tocaddchap\tshhkentry
+    \let\tocpart\tshhkentry
+    \let\tocsection\tshhkentry
+    \let\tocchapter\tshhkentry
+    \let\tocsubsection\tshhkentry
+    \let\tocparagraph\tshhkentry
+    \let\tocappendix\tshhkentry
+    \let\tocminisec\tshhkentry
+    \let\textsc\tsarg%
+    \special{t4ht>\jobname.hhk}%
+    \HCode{<ul>^^J}%
+    \loadwxindex 
+%    \catcode`\#11
+    \InputIfFileExists{\jobname.4ct}{}{}%
+\typeout{finished}%
+    \HCode{</ul>^^J}%
+    \special{t4ht<\jobname.hhk}%
+\typeout{closed}%
+%
+    \let\toclikesection\tstocsection
+    \let\toclikechapter\tstocchapter
+    \let\tocaddchap\tstocchapter
+    \let\tocpart\tstocpart
+    \let\tocsection\tstocsection
+    \let\tocchapter\tstocchapter
+    \let\tocsubsection\tstocsubsection
+    \let\tocparagraph\tstocparagraph
+    \let\tocappendix\tstocchapter
+    \def\tocminisec{\tocparagraph}%
+%
+    \let\tocstartpart\relax
+    \let\tocstoppart\tstocskippart
+    \let\tocstartchapter\relax
+    \let\tocstopchapter\tstocskipchapter
+    \let\tocstartsection\relax
+    \let\tocstopsection\tstocskipsection
+    \let\tocstartsubsection\relax
+    \let\tocstopsubsection\tstocskipsubsection
+    \let\tocstartsubsubsection\relax
+    \let\tocstopsubsubsection\tstocskipsubsubsection
+    \let\tocstartparagraph\relax
+    \let\tocstopparagraph\tstocskipparagraph
+    \let\tocstartsubparagraph\relax
+    \let\tocstopsubparagraph\tstocskipsubparagraph
+%
+    \special{t4ht>\jobname.hhc}%
+    \HCode{<ul>^^J}%
+%    \catcode`\#11
+    \InputIfFileExists{\jobname.4ct}{}{}%
+    \HCode{</ul>^^J}%
+    \special{t4ht<\jobname.hhc}%
+  }%
+  \relax
+}
+\fi
+% Einstellungen für Latex laden
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+% Exteren Referenzen und Hyperref laden. 
+% Das kann unterschiedlich ablaufen.
+\ifhtml
+ %  \Configure{html}{html.de}
+  \ifpdfoutput{\pdfoutput0\relax}{}
+   \usepackage{xr-hyper}
+   \usepackage{hyperref}
+\else
+ %  \usepackage{mathpazo}
+  \usepackage{xr-hyper}
+  \usepackage[extension=pdf]{hyperref}
+\fi
+% Überschriften als Referenzen einfügen.
+\usepackage{nameref}
+%\ifhtml
+%\input nameref.4ht
+%\fi
+% Papierformat a4weit wird nicht empfohlen
+%\usepackage{a4wide}
+%
+% Die üblichen Pakete für Grafik und Farben 
+\usepackage{graphicx}
+\usepackage{color}
+%
+% Das Handbuch wurde mit emTeX geschrieben. TeTeX versteht die emTeX
+% specials. Also verwenden wir sie.
+\usepackage{emlines}
+% Makeindex laden
+\usepackage{makeidx}
+%
+% file: macht uns die relativen Links kaputt :-(
+%
+\hyperlinkfileprefix{}
+%
+% Kolumnentitel erleichtern dem Leser die Orientierung
+%
+\AtBeginDocument{\pagestyle{headings}}
+% 
+% Titelei
+\setkomafont{title}{\fontfamily{\rmdefault}\fontseries{bx}\huge}
+\title{\rmfamily\texorpdfstring{\mutabor\\[\baselineskip]}{MUTABOR --}
+ \LARGE\slshape Ein computergesteuertes Musikinstrument \\
+	  zum Experimentieren mit\\
+	  Stimmungslogiken und Mikrotönen}
+\author{Volker Abel, Peter Reiss,\\ Rüdiger Krauße und Tobias Schlemmer}
+\date{Programmversion $3.0x$ (\the\year)}
+\ifhtml\else
+  \publishers{\includegraphics[width=0.5\linewidth]{start}}
+\fi
+\lowertitleback{\footnotesize\copyright 1991, 1992 Volker Abel \& Peter Reiss\\
+\copyright 2006 TU Dresden, Institut für Algebra}
+%
+% Index-Datei öffnen
+%
+\makeindex
+\hyphenation{wei-te-re Ton-sys-tem Ton-sys-te-me}
+%\parindent 0mm
+%\parskip 5pt
+%\textheight 18.5cm
+%
+% Jetzt wirds ein wenig wüst.
+%
+% Wir wollen mit wenig Aufwand die Labels auch für Hyperlinks
+% verwenden. Damit sparen wir uns zusätzliche Anker.
+% 
+\makeatletter
+%
+% \XR@ext enthält die Erweiterung für Querverweise. Wenn wir auf
+% Buchanfänge usw. verweisen wollen, kann uns xr-hyper nicht
+% undbedingt helfen. (oder wir müsste das entsprechend definieren).
+% Einfacher ist es wohl, wir nehmen den Dateinamen.
+%
+\newcommand\makefilename[1]{#1.\XR@ext}
+%
+%
+% erstes von sechs Argumenten wiedergeben und Rest verwerfen
+\def\ts@firstofsix#1#2#3#4#5#6{#1}
+%
+\ifhtml
+% voreinstellungen, um „:“ als Buchstaben zu behandeln (für tex4ht)
+% 
+% Herausfiltern des Verlinkungsmakros aus Querverweis-Speichern
+%
+\def\ts@parse@ref@a#1#2\ts@end@parse{\ts@parse@ref@b#1\ts@end@parse}
+\def\ts@parse@ref@b#1#2#3\ts@end@parse{#1{#2}}
+%
+% Setzen des Verweises.
+% Das erste Argument mus zunächst expandiert werden, bevor es
+% überhaupt mit den obigen makros geparst werden kann. Wir sichern uns
+% das ganze in einem temporären Makro zusammen mit dem Ankertext. 
+%
+\def\ts@setref#1#2#3{%
+  \expandafter\expandafter
+  \expandafter\def
+  \expandafter\expandafter
+  \expandafter\ts@@tmp
+  \expandafter\expandafter
+  \expandafter{%
+    \expandafter\ts@parse@ref@a#1\ts@end@parse{#2}}%
+%
+% Wir hacken uns in \@setref hineein.
+% dort steht: \expandafter #2#1. Wir liefern aber alles, was wir
+% brauchen schon in #2 mit, verwerfen also alles aus #1.
+% wir machen daraus \expandafter\ts@firstofsix\expandafter\ts@@tmp#1
+% damit wird zunächst #1 expandiert und dann verworfen.
+% Genial nicht ;-)?
+%
+% Alternativ könnte man auch mit \@firstoftwo arbeiten. Hier muss man
+% aufpassen, dass das erste Argument nicht falsch expandiert wird.
+% \setref#1{\@firstoftwo{\ts@@tmp}}{#3}
+%
+  \@setref#1{% 
+    \ts@firstofsix%
+      \expandafter\ts@@tmp}{#3}%
+}
+%
+% Jetzt können wir das eigentliche Linkmakro definieren. 
+%
+% Wenn die Referenz nicht definiert ist, setzen wir den Ankertext und
+% rufen setref auf, damit die entsprechende Warnung ausgespuckt
+% wird. Die ausgegebenen Fragezeichen setzen wir in weißer Farbe in
+% eine 0pt breite Box (llap). Damit kommt es nur zu minimalen
+% Verschiebungen (Kerning) zwischen undefiniert und definiert. 
+%
+% Ist die Referenz definiert, wird sie verwendet, um einen Link zu erzeugen.
+\newcommand\ts@reflink[2]{%
+  \@ifundefined{r@#1}{%
+    \textcolor{red}{%
+      #2%
+      \color{white}{%
+        \llap{%
+          \@safe@activestrue
+          \edef \RefArg {#1}
+          \expandafter\ts@setref\csname r@#1\endcsname{{\@safe@activesfalse #2}}{#1}%
+          \@safe@activesfalse
+        }%
+      }%
+    }%
+  }{%
+    \@safe@activestrue
+%    \let\::ref \T:ref
+    \expandafter\ts@setref\csname r@#1\endcsname{{\@safe@activesfalse #2}}{#1}%
+%    \def\::ref{\protect\T@ref}%
+    \@safe@activesfalse
+  }%
+}
+% : wiederherstellen
+%\ts@savecatcode
+\else
+% Hier läuft es eigentlich genauso ab, wie bei der
+% tex4ht-Variante. Nur werden jetzt die Verweise etwas anders kodiert,
+% so dass man sie nicht wirklich neu parsen muss.
+\newcommand\ts@reflink[2]{%
+\begingroup%\tracingall
+  \def\ts@tmp{{\@safe@activesfalse #2}}%
+  \@ifundefined{r@#1}{%
+    \textcolor{red}{%
+      #2%
+      \color{white}{%
+        \llap{%
+          \@safe@activestrue
+          \expandafter\@setref\csname r@#1\endcsname{\ts@firstofsix\ts@tmp}{#1}%
+          \@safe@activesfalse
+        }%
+      }%
+    }%
+  }{%
+    \@safe@activestrue
+    \expandafter\@setref\csname r@#1\endcsname{\ts@firstofsix\ts@tmp}{#1}%
+    \@safe@activesfalse
+  }%
+%\show\ts@reflink
+\endgroup
+}
+\fi
+%\newcommand\ts@@reflink{\protect\ts@reflink}
+%
+% die anderen definierten Referenz-Makros sind auch \protect-et
+% definiert. Also machen wir das auch mit einem Querverweis auf ein
+% Label mit einem beliebigen Ankertext.
+%
+\newcommand\reflink{\protect\ts@reflink}
+%
+% Referenz durch Titel, ggf. Zusatz (wie z.\,B. Buchname bei externen
+% Referenzen) und Seite bei nicht-HTML-Ausgabe. Der Zusatz wird in []
+% angegeben. Das erledigen wir durch zwei Makros:
+%
+\newcommand\tsciteref[1]{%
+  \frqq\nameref{#1}\flqq
+  \@ifnextchar[{\ts@cite@ref{#1}}{\ts@cite@@ref{#1}}
+}
+% mit optionalem Argument: Leerzeichen+Zwischentext und dann
+% Seitenangabe ohne zweites Arg.
+\def\ts@cite@ref#1[#2]{ #2\ts@cite@@ref{#1}}
+% Ohne optionales Argument: Seitenangabe
+\def\ts@cite@@ref#1{%
+  \ifhtml\else{}
+  auf Seite \pageref{#1}%
+  \fi
+}
+% So ziemlich alles, was man referenzieren kann:
+% Verweis-Typ: Kapitel, Abschnitt usw. 
+% Nummer, Titel, ggf. optionales Argument, ggf. Seite.
+% Syntax \vollref{Label}[zwischentext] (letzteres wird durch
+% \tsciteref eingeführt
+\newcommand\vollref[1]{\autoref{#1} \tsciteref{#1}}
+%
+% Und hier sind wir aus den Interna heraus.
+%
+\makeatother
+%
+% Ein Makro zur vereinfachten Umwandlung der Mutabor-Hilfe mit Querverweisen.
+%
+\newcommand\tsreflink[2]{\reflink{sec:#2}{#1}}
+%
+% Der Name unseres Programmes
+%
+\newcommand\mutabor[1][]{\textsc{Mutabor#1}}
+%
+% Vorbereitung zur Verwendung des Pakets keystroke. Damit werden
+% Tasten als Piktogramme angezeigt.
+%
+\usepackage{keystroke}%
+%\providecommand\keystroke[1]{#1}
+%
+% Schlüsselworte und sonstiger Quelltext in Schreibmaschinenschrift.
+%
+\newcommand\keyword[1]{\texttt{#1}}
+%
+% Wir wollen die Handbücher ja nicht nur in die CD integrieren.
+%
+\ifhtml
+  \newcommand\cdoronline[2]{#1}
+\else
+  \newcommand\cdoronline[2]{#2}
+\fi
+
+\newcommand\sourcecode{\texttt}%
+\newcommand\filename{\texttt}
+
+\newcommand\mutimage[2]{%
+  \ifhtml
+  \Picture{#1}%
+  \else
+  \includegraphics#2
+  \fi
+}
+
+\endinput
+
