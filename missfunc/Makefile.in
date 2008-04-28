@@ -197,6 +197,7 @@ WX_CXXFLAGS = @WX_CXXFLAGS@
 WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
+WX_LOCALE_DIRS = @WX_LOCALE_DIRS@
 WX_VERSION = @WX_VERSION@
 XGETTEXT = @XGETTEXT@
 YACC = @YACC@
@@ -539,6 +540,10 @@ uninstall-am: uninstall-libLIBRARIES
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags uninstall uninstall-am uninstall-libLIBRARIES
 
+
+.PHONY: mac
+
+mac:
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
