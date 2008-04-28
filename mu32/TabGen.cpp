@@ -73,7 +73,7 @@ double get_komplex_frequenz (struct ton * dieser) {
 void fprint_argument (FILE * zieldatei, struct argument * argument)
 {
     if (argument -> argument_typ == zahl) {
-        fprintf (zieldatei, ", %lf ", argument -> u.zahl.zahl);
+        fprintf (zieldatei, ", %d ", argument -> u.zahl.zahl);
     }
     else if (argument -> argument_typ == parameter) {
         fprintf (zieldatei, ", %s ", argument -> u.parameter.parameter_name);
@@ -82,6 +82,7 @@ void fprint_argument (FILE * zieldatei, struct argument * argument)
         fatal_error (0, __FILE__, __LINE__ );
 }
 
+/* 
 static int enthaelt_nur_konstante_toene (struct ton * lauf)
 {
     while (lauf) {
@@ -95,7 +96,7 @@ static int enthaelt_nur_konstante_toene (struct ton * lauf)
     return 1;
 }
 
-
+*/
 
 
 
