@@ -31,12 +31,13 @@ struct ton            *  ton_ohne_namen; /* Frequenz=0 */
 static void berechne_toene_absolut (struct ton *ton_liste);
 static void check_konsistenz (void);
 
+/*
 static void drucke_ton (struct ton * lauf);
 static void drucke_harmonie (struct harmonie * this_);
 static void drucke_argument (struct argument * z_or_p);
 
 static void print_ausloeser (struct ausloeser * this_);
-
+*/
 /*
 static void print_aktion (struct aktion * this);
 */
@@ -225,7 +226,7 @@ void print_argumentliste (struct argument_liste * this_)
 {
     if (this_) {
         if (this_ -> argument.argument_typ == zahl)
-            printf (" %lf ", this_ -> argument.u.zahl.zahl);
+            printf (" %d ", this_ -> argument.u.zahl.zahl);
         else
             printf (" %s ", this_ -> argument.u.parameter.parameter_name);
 
@@ -710,13 +711,15 @@ printf ("\nInstrumente:\n");
 
 }
 
+/* unused 
+
 static void drucke_argument (struct argument * z_or_p)
 {
     if (z_or_p -> argument_typ == zahl) {
-        printf (" Zahl: %lf ", z_or_p->u.zahl.zahl);
+      printf (" Number: %d ", z_or_p->u.zahl.zahl);
     }
     else {
-        printf (" Parameter: %s, Nr: %d ",
+      printf (" Parameter: %s, Nr: %d ",
                  z_or_p->u.parameter.parameter_name,
                  z_or_p->u.parameter.parameter_nummer);
     }
@@ -761,7 +764,7 @@ static void drucke_harmonie (struct harmonie * this_)
         printf (" %c%d ,", lauf->stern, lauf->code);
     }
 }
-
+*/
 /************/
 
 void print_integersequenz (struct midiliste * this_)
@@ -771,7 +774,7 @@ void print_integersequenz (struct midiliste * this_)
       print_integersequenz (this_->next);
   }
 }
-
+/*
 static void print_ausloeser (struct ausloeser * this_)
 {
   if (this_) {
@@ -811,7 +814,7 @@ static void print_ausloeser (struct ausloeser * this_)
      printf ("Kein Ausloeser\n");
 }
 
-
+*/
 /********
 static void print_aktions_liste (struct aktions_liste * this)
 {
