@@ -98,168 +98,175 @@ void execute_aktion (int instrument, struct do_aktion * aktion)
 {
   bool WasNewLogic = false;
   for ( ; aktion; aktion = aktion -> next) {
-		AktionenMessage(instrument, aktion->name);
-	  switch (aktion->aufruf_typ) {
-	    case aufruf_logik:
-	        execute_aktion (instrument, aktion->u.aufruf_logik.einstimmung);
-	        * last_global_keyboard[instrument] =
-	                   * aktion->u.aufruf_logik.lokal_keyboard;
-	        * last_global_harmonie[instrument] =
-	                   * aktion->u.aufruf_logik.lokal_harmonie;
-	        * last_global_midi[instrument] =
-	                   * aktion->u.aufruf_logik.lokal_midi;
-          WasNewLogic = true;
-	    break;
-	    case aufruf_tonsystem:
-	        * tonsystem[instrument] =
-	                 * aktion->u.aufruf_tonsystem.tonsystem;
-			  update_pattern(instrument);
+    AktionenMessage(instrument, aktion->name);
+    switch (aktion->aufruf_typ) {
+    case aufruf_logik:
+      execute_aktion (instrument, aktion->u.aufruf_logik.einstimmung);
+      * last_global_keyboard[instrument] =
+	* aktion->u.aufruf_logik.lokal_keyboard;
+      * last_global_harmonie[instrument] =
+	* aktion->u.aufruf_logik.lokal_harmonie;
+      * last_global_midi[instrument] =
+	* aktion->u.aufruf_logik.lokal_midi;
+      WasNewLogic = true;
+      break;
+    case aufruf_tonsystem:
+      * tonsystem[instrument] =
+	* aktion->u.aufruf_tonsystem.tonsystem;
+      update_pattern(instrument);
 #ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-        KEY_CHANGED(instrument);
-	    break;
-		 case aufruf_umst_taste_abs:
-			  change_anker(instrument,
-	            aktion->u.aufruf_umst_taste_abs.wert[instrument]);
-            update_pattern(instrument);
+      KEY_CHANGED(instrument);
+      break;
+    case aufruf_umst_taste_abs:
+      change_anker(instrument,
+		   aktion->u.aufruf_umst_taste_abs.wert[instrument]);
+      update_pattern(instrument);
 #ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-        KEY_CHANGED(instrument);
-	    break;
-	    case aufruf_umst_breite_abs:
-			  change_breite(instrument,
-	        aktion->u.aufruf_umst_breite_abs.wert[instrument]);
-	        update_pattern(instrument);
+      KEY_CHANGED(instrument);
+      break;
+    case aufruf_umst_breite_abs:
+      change_breite(instrument,
+		    aktion->u.aufruf_umst_breite_abs.wert[instrument]);
+      update_pattern(instrument);
 #ifdef NOTES_CORRECT_SOFORT
-          NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-          KEY_CHANGED(instrument);
-	    break;
-	    case aufruf_umst_wiederholung_abs:
-	        tonsystem[instrument]->periode =
-	            aktion->u.aufruf_umst_wiederholung_abs.faktor;
+      KEY_CHANGED(instrument);
+      break;
+    case aufruf_umst_wiederholung_abs:
+      tonsystem[instrument]->periode =
+	aktion->u.aufruf_umst_wiederholung_abs.faktor;
 #ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-          KEY_CHANGED(instrument);
-	    break;
-	    case aufruf_umst_wiederholung_rel:
-	        tonsystem[instrument]->periode +=
-	            aktion->u.aufruf_umst_wiederholung_rel.faktor;
+      KEY_CHANGED(instrument);
+      break;
+    case aufruf_umst_wiederholung_rel:
+      tonsystem[instrument]->periode +=
+	aktion->u.aufruf_umst_wiederholung_rel.faktor;
 #ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-          KEY_CHANGED(instrument);
-	    break;
-	    case aufruf_umst_taste_rel: {
-	        int help;
-	        help = tonsystem[instrument]->anker;
-	        switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
-            case '+':
-                help += aktion->u.aufruf_umst_taste_rel.wert[instrument];
-            break;
-            case '-':
-                help -= aktion->u.aufruf_umst_taste_rel.wert[instrument];
-            break;
-            }
-            change_anker(instrument, help);
-            update_pattern(instrument);
+      KEY_CHANGED(instrument);
+      break;
+    case aufruf_umst_taste_rel: {
+      int help;
+      help = tonsystem[instrument]->anker;
+      switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
+      case '+':
+	help += aktion->u.aufruf_umst_taste_rel.wert[instrument];
+	break;
+      case '-':
+	help -= aktion->u.aufruf_umst_taste_rel.wert[instrument];
+	break;
+      }
+      change_anker(instrument, help);
+      update_pattern(instrument);
 #ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
+      NotesCorrect(instrument);
 #endif
-          KEY_CHANGED(instrument);
-        }
-	    break;
-	    case aufruf_umst_breite_rel: {
-	        int help;
-	        help = tonsystem[instrument]->breite;
-	        switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
-            case '+':
-                help += aktion->u.aufruf_umst_breite_rel.wert[instrument];
-            break;
-            case '-':
-                help -= aktion->u.aufruf_umst_breite_rel.wert[instrument];
-            break;
-            case '*':
-                help *= aktion->u.aufruf_umst_breite_rel.wert[instrument];
-            break;
-            case '/':
-                help /= aktion->u.aufruf_umst_breite_rel.wert[instrument];
-            break;
-            }
-            change_breite(instrument, help);
-            update_pattern(instrument);
-#ifdef NOTES_CORRECT_SOFORT
-            NotesCorrect(instrument);
-#endif
-          KEY_CHANGED(instrument);
-        }
-
-	    break;
-	    case aufruf_umst_toene_veraendert: {
-            long * ton_zeiger;
-            struct ton_einstell * lauf;
-
-            for (ton_zeiger = tonsystem[instrument]->ton,
-                 lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
-					  lauf;
-					  lauf = lauf->next, ton_zeiger ++) {
-
-					switch (lauf->ton_einstell_typ) {
-						 case einstell_stumm:
-							  * ton_zeiger = 0;
-						 break;
-						 case einstell_gleich:
-							  /* nichts tun */
-						 break;
-						 case einstell_absolut:
-							  * ton_zeiger = lauf->u.einstell_absolut.wert;
-						 break;
-						 case einstell_relativ:
-							  * ton_zeiger += lauf->u.einstell_relativ.wert;
-						 break;
-
-					}
-
-				}
-#ifdef NOTES_CORRECT_SOFORT
-				NotesCorrect(instrument);
-#endif
-        KEY_CHANGED(instrument);
-		 }
-		 break;
-		 case aufruf_umst_umst_case: {
-			  struct case_element * lauf;
-			  int i;
-			  i=aktion->u.aufruf_umst_umst_case.wert[instrument];
-			  for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
-					 lauf;
-					 lauf = lauf->next) {
-					if ( (i == lauf->case_wert) || (lauf->is_default)) {
-						 execute_aktion (instrument, lauf->case_aktion);
-						 return;
-					}
-			  }
-		 }
-		 break;
-		 case aufruf_midi_out: {
-			  struct midiliste * lauf;
-			  unsigned long data = 0, faktor = 1, n = 0;;
-
-			  for (lauf = aktion->u.aufruf_midi_out.out_liste; lauf && faktor ;
-	 				 lauf = lauf -> next)
-        {
-					data += faktor * (unsigned char) lauf->midi_code;
-					faktor *= 0x100;
-          n++;
-			  }
-			  MidiOut(instrument, data, n);
-	    }
-	    break;
-		  }
+      KEY_CHANGED(instrument);
     }
+      break;
+    case aufruf_umst_breite_rel: {
+      int help;
+      help = tonsystem[instrument]->breite;
+      switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
+      case '+':
+	help += aktion->u.aufruf_umst_breite_rel.wert[instrument];
+	break;
+      case '-':
+	help -= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+	break;
+      case '*':
+	help *= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+	break;
+      case '/':
+	help /= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+	break;
+      }
+      change_breite(instrument, help);
+      update_pattern(instrument);
+#ifdef NOTES_CORRECT_SOFORT
+      NotesCorrect(instrument);
+#endif
+      KEY_CHANGED(instrument);
+    }
+      
+      break;
+    case aufruf_umst_toene_veraendert: {
+      long * ton_zeiger;
+      struct ton_einstell * lauf;
+      
+      for (ton_zeiger = tonsystem[instrument]->ton,
+	     lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
+	   lauf;
+	   lauf = lauf->next, ton_zeiger ++) {
+	
+	switch (lauf->ton_einstell_typ) {
+	case einstell_stumm:
+	  * ton_zeiger = 0;
+	  break;
+	case einstell_gleich:
+	  /* nichts tun */
+	  break;
+	case einstell_absolut:
+	  * ton_zeiger = lauf->u.einstell_absolut.wert;
+	  break;
+	case einstell_relativ:
+	  * ton_zeiger += lauf->u.einstell_relativ.wert;
+	  break;
+
+	}
+	
+      }
+#ifdef NOTES_CORRECT_SOFORT
+      NotesCorrect(instrument);
+#endif
+      KEY_CHANGED(instrument);
+    }
+      break;
+    case aufruf_umst_umst_case: 
+      {
+	struct case_element * lauf;
+	int i;
+	i=aktion->u.aufruf_umst_umst_case.wert[instrument];
+	for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
+	     lauf;
+	     lauf = lauf->next) {
+	  if ( (i == lauf->case_wert) || (lauf->is_default)) {
+	    execute_aktion (instrument, lauf->case_aktion);
+	    return;
+	  }
+	}
+      }
+      break;
+    case aufruf_midi_out: 
+      {
+	struct midiliste * lauf;
+	unsigned long data = 0, faktor = 1, n = 0;;
+	
+	for (lauf = aktion->u.aufruf_midi_out.out_liste; 
+	     lauf && faktor ;
+	     lauf = lauf -> next) {
+	  data += faktor * (unsigned char) lauf->midi_code;
+	  faktor *= 0x100;
+	  n++;
+	}
+	MidiOut(instrument, data, n);
+      }
+      break;
+    case aufruf_umst_umst_bund:
+      wxLogWarning(_("Unhandled case path: aufruf_umst_umst_bund"));
+      break;
+    default:
+      wxLogError(_("Unexpected action type: %d"), aktion->aufruf_typ);       
+    }
+  }
   // evtl gleich HArmonien checken
   if ( WasNewLogic )
     HarmonyAnalysis(instrument, &pattern[instrument]);
@@ -467,7 +474,7 @@ void KeyboardIn(int box, const mutChar *keys)
 {
   aktuelles_keyboard_instrument = box;
   char TonSystem = 0;
-  for (int i= 0; i < mutStrLen(keys); i++)
+  for (size_t i= 0; i < mutStrLen(keys); i++)
   {
 	 mutChar c = keys[i];
 	 if ( c == mutT('&') )
