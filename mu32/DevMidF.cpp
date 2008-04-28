@@ -2,13 +2,16 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.8 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.9 2008/04/28 08:00:37 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/04/28 08:00:37 $
+ * \version $Revision: 1.9 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.9  2008/04/28 08:00:37  keinstein
+ * Fix some size warnings
+ *
  * Revision 1.8  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -288,7 +291,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
   }
 
   // Pitch testen
-  if ( (p = freq & 0xFFFFFF) != Cd[i].Pitch )
+  if ( (long) (p = freq & 0xFFFFFF) != Cd[i].Pitch )
   {
     MIDI_PITCH(i);
     Cd[i].Pitch = p;
@@ -502,7 +505,7 @@ void InMidiFile::Close()
   // Speicher freigeben
   if ( Mode == 3 )
     return;
-  for (int i = 0; i < nTrack; i++ )
+  for (size_t i = 0; i < nTrack; i++ )
     free(Track[i]);
   free(Track);
   free(TrackPos);
@@ -521,7 +524,7 @@ void InMidiFile::Stop()
   minDelta = 0;
   long NewMinDelta = NO_DELTA;
   MMSPerQuater = (long)1000000;
-  for (int i = 0; i < nTrack; i++ )
+  for (size_t i = 0; i < nTrack; i++ )
   {
     TrackPos[i] = 0;
     curDelta[i] = ReadDelta(Track[i], &(TrackPos[i]));
@@ -565,7 +568,7 @@ void InMidiFile::IncDelta()
   actDelta -= minDelta;
   long passedDelta = minDelta;
   long NewMinDelta = NO_DELTA;
-  for (int i = 0; i < nTrack; i++ )
+  for (size_t i = 0; i < nTrack; i++ )
   {
     if ( curDelta[i] != NO_DELTA )
     {
@@ -586,7 +589,7 @@ void InMidiFile::IncDelta()
   Busy = FALSE;
 }
 
-long InMidiFile::ReadMidiProceed(int nr, long time)
+long InMidiFile::ReadMidiProceed(size_t nr, long time)
 {
   long Delta = 0;
   long OldPos;
@@ -633,10 +636,10 @@ long InMidiFile::ReadMidiProceed(int nr, long time)
           (((DWORD)Track[nr][TrackPos[nr]]) << 16) +
           (((DWORD)Track[nr][TrackPos[nr]+1]) << 8) +
           ((DWORD)Track[nr][TrackPos[nr]]);
-        for (int j = 0; j < nr; j++ )
+        for (size_t j = 0; j < nr; j++ )
           if ( curDelta[j] != NO_DELTA )
             curDelta[j] = curDelta[j] * NewMMSPerQuater / MMSPerQuater;
-        for (REUSE(int) j = nr+1; j < nTrack; j++ )
+        for (REUSE(size_t) j = nr+1; j < nTrack; j++ )
           if ( curDelta[j] != NO_DELTA && curDelta[j] >= minDelta)
             curDelta[j] = (curDelta[j]-minDelta) * NewMMSPerQuater / MMSPerQuater +minDelta;
         MMSPerQuater = NewMMSPerQuater;

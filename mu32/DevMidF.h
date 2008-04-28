@@ -126,7 +126,7 @@ class InMidiFile : public InDevice
   void IncDelta();
  protected:
   BYTE FileType;
-  int nTrack;
+  size_t nTrack;
   int Speed;
   BYTE **Track;
   DWORD *TrackPos;
@@ -141,7 +141,7 @@ class InMidiFile : public InDevice
   long MMSPerQuater;
   void Proceed(DWORD midiCode, int track);
   void ProceedRoute(DWORD midiCode, Route *route);
-  long ReadMidiProceed(int nr, long time);
+  long ReadMidiProceed(size_t nr, long time);
 };
 
 // Function ---------------------------------------------------------
