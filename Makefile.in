@@ -74,7 +74,7 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mutabordir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
-	mutabor-Interval.$(OBJEXT) mutabor-Mut_Tab.$(OBJEXT) \
+	mutabor-Interval.$(OBJEXT) mutabor-mut.$(OBJEXT) \
 	mutabor-Parser.$(OBJEXT) mutabor-Runtime.$(OBJEXT) \
 	mutabor-TabGen.$(OBJEXT) mutabor-RtMidi.$(OBJEXT) \
 	mutabor-MutApp.$(OBJEXT) mutabor-MutChild.$(OBJEXT) \
@@ -258,6 +258,7 @@ WX_CXXFLAGS = @WX_CXXFLAGS@
 WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
+WX_LOCALE_DIRS = @WX_LOCALE_DIRS@
 WX_VERSION = @WX_VERSION@
 XGETTEXT = @XGETTEXT@
 YACC = @YACC@
@@ -319,14 +320,17 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
-SUBDIRS = missfunc intl po wxintl includes . # libmutabor .
+SUBDIRS = missfunc intl po wxintl includes . doc # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
 	-I $(top_srcdir)/xrc \
 	@NETINET_INC@
 
-SUFFIXES = .$(PCHEXT_CXX) .rc .res
-BUILT_SOURCES = @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+SUFFIXES = .$(PCHEXT_CXX) .rc .res .h
+#RECURSIVE_TARGETS += mac-recursive
+BUILT_SOURCES =  \
+	@COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX) \
+	$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 EXTRA_DIST = config.rpath mkinstalldirs m4/ChangeLog  debian/changelog debian/compat debian/control debian/copyright \
@@ -336,7 +340,9 @@ debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
 
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
-		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
+		mu32/Interval.cpp \
+		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
+		mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
@@ -380,11 +386,12 @@ mutabor_SHORTNAME = mutabor
 mutabor_DEPENDENCIES = @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
 mutabor_LDADD = $(LDADD) @COND_WINRC_TRUE@ $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
 mutabor_DATA = Images/about.png Mutabor.xrc
+YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
 .SUFFIXES:
-.SUFFIXES: .$(PCHEXT_CXX) .rc .res .cpp .h .lo .o .obj
+.SUFFIXES: .$(PCHEXT_CXX) .rc .res .h .c .cpp .l .lo .o .obj .y
 am--refresh:
 	@:
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -507,7 +514,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutLogicWnd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutRouteWnd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutTextBox.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Mut_Tab.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputDevDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputFilterDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Parser.Po@am__quote@
@@ -515,6 +521,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Runtime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-TabGen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-muconvauto.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mut.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valNum.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valRadio.Po@am__quote@
@@ -582,19 +589,19 @@ mutabor-Interval.obj: mu32/Interval.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-Interval.obj `if test -f 'mu32/Interval.cpp'; then $(CYGPATH_W) 'mu32/Interval.cpp'; else $(CYGPATH_W) '$(srcdir)/mu32/Interval.cpp'; fi`
 
-mutabor-Mut_Tab.o: mu32/Mut_Tab.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-Mut_Tab.o -MD -MP -MF $(DEPDIR)/mutabor-Mut_Tab.Tpo -c -o mutabor-Mut_Tab.o `test -f 'mu32/Mut_Tab.cpp' || echo '$(srcdir)/'`mu32/Mut_Tab.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-Mut_Tab.Tpo $(DEPDIR)/mutabor-Mut_Tab.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mu32/Mut_Tab.cpp' object='mutabor-Mut_Tab.o' libtool=no @AMDEPBACKSLASH@
+mutabor-mut.o: $(top_srcdir)/mu32/mut.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mut.o -MD -MP -MF $(DEPDIR)/mutabor-mut.Tpo -c -o mutabor-mut.o `test -f '$(top_srcdir)/mu32/mut.cpp' || echo '$(srcdir)/'`$(top_srcdir)/mu32/mut.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mut.Tpo $(DEPDIR)/mutabor-mut.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$(top_srcdir)/mu32/mut.cpp' object='mutabor-mut.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-Mut_Tab.o `test -f 'mu32/Mut_Tab.cpp' || echo '$(srcdir)/'`mu32/Mut_Tab.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mut.o `test -f '$(top_srcdir)/mu32/mut.cpp' || echo '$(srcdir)/'`$(top_srcdir)/mu32/mut.cpp
 
-mutabor-Mut_Tab.obj: mu32/Mut_Tab.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-Mut_Tab.obj -MD -MP -MF $(DEPDIR)/mutabor-Mut_Tab.Tpo -c -o mutabor-Mut_Tab.obj `if test -f 'mu32/Mut_Tab.cpp'; then $(CYGPATH_W) 'mu32/Mut_Tab.cpp'; else $(CYGPATH_W) '$(srcdir)/mu32/Mut_Tab.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-Mut_Tab.Tpo $(DEPDIR)/mutabor-Mut_Tab.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mu32/Mut_Tab.cpp' object='mutabor-Mut_Tab.obj' libtool=no @AMDEPBACKSLASH@
+mutabor-mut.obj: $(top_srcdir)/mu32/mut.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mut.obj -MD -MP -MF $(DEPDIR)/mutabor-mut.Tpo -c -o mutabor-mut.obj `if test -f '$(top_srcdir)/mu32/mut.cpp'; then $(CYGPATH_W) '$(top_srcdir)/mu32/mut.cpp'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/mu32/mut.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mut.Tpo $(DEPDIR)/mutabor-mut.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$(top_srcdir)/mu32/mut.cpp' object='mutabor-mut.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-Mut_Tab.obj `if test -f 'mu32/Mut_Tab.cpp'; then $(CYGPATH_W) 'mu32/Mut_Tab.cpp'; else $(CYGPATH_W) '$(srcdir)/mu32/Mut_Tab.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mut.obj `if test -f '$(top_srcdir)/mu32/mut.cpp'; then $(CYGPATH_W) '$(top_srcdir)/mu32/mut.cpp'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/mu32/mut.cpp'; fi`
 
 mutabor-Parser.o: mu32/Parser.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-Parser.o -MD -MP -MF $(DEPDIR)/mutabor-Parser.Tpo -c -o mutabor-Parser.o `test -f 'mu32/Parser.cpp' || echo '$(srcdir)/'`mu32/Parser.cpp
@@ -1512,7 +1519,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-mutaborDATA
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 
-.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled
+.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled mac mac-recursive
 
 @COND_WINRC_TRUE@.rc.$(OBJEXT):
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $< $@
@@ -1580,10 +1587,58 @@ Mutabor.app:all Mutabor.xrc mutabor
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
 	cp $(top_srcdir)/Images/about.png Mutabor.xrc Mutabor.app/Contents/Resources
+	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
+		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
+	done
 
 wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
+
+.l.h:
+	$(LEXCOMPILE) $<
+	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
+		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
+		$(LEX_OUTPUT_ROOT).c >$$cfilename
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+.l.c:
+	$(LEXCOMPILE) $<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+
+.y.h:
+	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
+	if test -f y.tab.h; then \
+	  to=`echo "$*_H" | sed \
+                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
+                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
+	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
+	  rm -f y.tab.h; \
+	  if cmp -s $*.ht $*.h; then \
+	    rm -f $*.ht ;\
+	  else \
+	    mv $*.ht $*.h; \
+	  fi; \
+	fi
+	if test -f y.output; then \
+	  mv y.output $*.output; \
+	fi
+	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
+	mv y.tab.c $*.cpp
+
+mutlex.h: mutlex.l
+$(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
+$(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
+
+mac: copymac
+	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
+
+copymac: Mutabor.app
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

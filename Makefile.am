@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
-SUBDIRS = missfunc intl po wxintl includes . # libmutabor .
+SUBDIRS = missfunc intl po wxintl includes . doc # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
 	-I $(top_srcdir)/xrc \
@@ -14,9 +14,13 @@ debian/dirs debian/docs debian/libmutabor-dev.install \
 debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
+#RECURSIVE_TARGETS += mac-recursive
+BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
 bin_PROGRAMS = mutabor
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
-		mu32/Interval.cpp mu32/Mut_Tab.cpp mu32/Parser.cpp mu32/Runtime.cpp \
+		mu32/Interval.cpp \
+		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
+		mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
@@ -63,7 +67,7 @@ mutabor_DATA = Images/about.png Mutabor.xrc
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 
-.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled
+.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled mac mac-recursive
 
 @COND_WINRC_TRUE@.rc.$(OBJEXT):
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $< $@
@@ -133,7 +137,60 @@ Mutabor.app:all Mutabor.xrc mutabor
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
 	cp $(top_srcdir)/Images/about.png Mutabor.xrc Mutabor.app/Contents/Resources
+	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
+		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
+	done
 
 wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
+
+SUFFIXES += .h
+
+.l.h:
+	$(LEXCOMPILE) $<
+	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
+		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
+		$(LEX_OUTPUT_ROOT).c >$$cfilename
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+.l.c:
+	$(LEXCOMPILE) $<
+	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
+	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
+
+YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
+
+.y.h:
+	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
+	if test -f y.tab.h; then \
+	  to=`echo "$*_H" | sed \
+                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
+                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
+	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
+	  rm -f y.tab.h; \
+	  if cmp -s $*.ht $*.h; then \
+	    rm -f $*.ht ;\
+	  else \
+	    mv $*.ht $*.h; \
+	  fi; \
+	fi
+	if test -f y.output; then \
+	  mv y.output $*.output; \
+	fi
+	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
+	mv y.tab.c $*.cpp
+
+mutlex.h: mutlex.l
+$(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
+$(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
+
+mac: copymac
+	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
+
+
+copymac: Mutabor.app
