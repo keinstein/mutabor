@@ -522,7 +522,7 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 			nTags++;
 			sText = muT(s);
 			sEinst = muT(s1);
-			if ( (isOpen = (key == curTaste[boxnumber][isLogic])) != 0 )
+			if ( (isOpen = (key == curTaste[boxnumber][(size_t)isLogic])) != 0 )
 				if ( isLogic )
 				{
 					curLogic[boxnumber] = sText;
