@@ -28,43 +28,44 @@ typedef struct TAK {
 
 class OutMidiPort : public OutDevice
 {
-  public:
-    wxString Name;
-    int DevId;
-    int bending_range;
-	  OutMidiPort(wxString name, int devId, int bendingRange = 1)
-	  : OutDevice(),Name(name)
-	  {
-	    DevId = devId;
-      bending_range = bendingRange;
-	  }
-	  ~OutMidiPort() {};
-	  virtual bool Open();
-	  virtual void Close();
-	  virtual void NoteOn(int Box, int taste, int velo, Route *r, int channel, ChannelData *cd);
-	  virtual void NoteOff(int Box, int taste, int velo, Route *r, int channel);
-	  virtual void NotesCorrect(int box);
-	  virtual void Sustain(char on, int channel);
-	  virtual int  GetChannel(int taste);
-	  virtual void Gis(GisToken *token, char turn) {};
-	  virtual void AddTime(frac time) {};
-	  virtual void MidiOut(DWORD data, char n);
-	  virtual void MidiOut(BYTE *p, char n) {};
-    virtual void Quite(Route *r);
-    virtual void Panic();
-    virtual bool NeedsRealTime() { return true; }
-	  virtual wxString & GetName() { return Name; }
-	  virtual DevType GetType() const { return DTMidiPort; }
-  private:
+ public:
+  wxString Name;
+  int DevId;
+  int bending_range;
+ OutMidiPort(wxString name, int devId, int bendingRange = 1)
+   : OutDevice(),Name(name)
+  {
+    DevId = devId;
+    bending_range = bendingRange;
+  }
+  ~OutMidiPort() {};
+  virtual bool Open();
+  virtual void Close();
+  virtual void NoteOn(int Box, int taste, int velo, Route *r,
+		      int channel, ChannelData *cd);
+  virtual void NoteOff(int Box, int taste, int velo, Route *r, int channel);
+  virtual void NotesCorrect(int box);
+  virtual void Sustain(char on, int channel);
+  virtual int  GetChannel(int taste);
+  virtual void Gis(GisToken *token, char turn) {};
+  virtual void AddTime(frac time) {};
+  virtual void MidiOut(DWORD data, char n);
+  virtual void MidiOut(BYTE *p, char n) {};
+  virtual void Quite(Route *r);
+  virtual void Panic();
+  virtual bool NeedsRealTime() { return true; }
+  virtual wxString & GetName() { return Name; }
+  virtual DevType GetType() const { return DTMidiPort; }
+ private:
 #ifdef RTMIDI
-    RtMidiOut *hMidiOut;
+  RtMidiOut *hMidiOut;
 #else
-    HMIDIOUT hMidiOut;
+  HMIDIOUT hMidiOut;
 #endif
-    ChannelData Cd[16];
-    char KeyDir[16];
-    TonAufKanal ton_auf_kanal[16];
-    int nKeyOn;
+  ChannelData Cd[16];
+  char KeyDir[16];
+  TonAufKanal ton_auf_kanal[16];
+  int nKeyOn;
 };
 
 // InMidiPort -------------------------------------------------------

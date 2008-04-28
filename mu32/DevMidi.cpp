@@ -239,7 +239,7 @@ void OutMidiPort::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
     Cd[free].BankSelectLSB = s;
   }
   // Pitch testen
-  if ( (p = freq & 0xFFFFFF) != Cd[free].Pitch )
+  if ( (long)(p = freq & 0xFFFFFF) != Cd[free].Pitch )
   {
     MIDI_PITCH(free);
     Cd[free].Pitch = p;
@@ -295,7 +295,7 @@ void OutMidiPort::NotesCorrect(int box)
       // hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
       // Ton aus und einschalten zu vermeiden
       if ( ton_auf_kanal[i].key == (zugriff[3] & 0x7f) &&
-        Cd[i].Pitch == ((DWORD)freq & 0xFFFFFF) )
+        Cd[i].Pitch == ((long)freq & 0xFFFFFF) )
         continue;
       long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
       bool SwitchTone = (LongAbs(Delta) >= ((long)bending_range << 24));
@@ -328,8 +328,9 @@ void OutMidiPort::NotesCorrect(int box)
 
 void OutMidiPort::Sustain(char on, int channel)
 {
+  DWORD chan = channel; // Midi has unsigned channels
   for (int i = 0; i < 16; i++)
-    if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].id >> 24) == channel )
+    if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].id >> 24) == chan )
     {
  	    MIDI_OUT3(0xB0+i, 64, on);
       Cd[i].Sustain = on;
@@ -368,7 +369,7 @@ void OutMidiPort::MidiOut(DWORD data, char n)
 void OutMidiPort::Quite(Route *r)
 {
   for (int i = 0; i < 16; i++)
-    if ( ((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->Id )
+    if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->Id )
       NoteOff(r->Box, ton_auf_kanal[i].id % 256, 64, r,  ton_auf_kanal[i].id >> 24);
 }
 
