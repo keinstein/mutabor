@@ -1,0 +1,27 @@
+#       -*- Makefile-automake -*-
+top_docdir = $(srcdir)/$(rel_docdir)
+macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
+
+.PHONY: mac copymac
+
+html: $(ZIPFILE)
+$(ZIPFILE): Makefile $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
+	$(top_docdir)/preamble.tex
+	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
+	htmldecode='$(rel_docdir)/htmldecode' \
+	fixhhp='$(rel_docdir)/fixhhp' \
+	srcdir='$(srcdir)' \
+	top_docdir='$(top_docdir)' \
+	$(top_docdir)/mkhtml $(TEXSOURCES) 
+	mv help.zip $(ZIPFILE)
+
+mac: $(ZIPFILE) copymac
+
+copymac:
+	mkdir -p $(macdocdir)
+	if test -z "$(DOCLOCALE)" ; then \
+		cp '$(ZIPFILE)' '$(macdocdir)' ; \
+	else \
+		mkdir -p $(macdocdir)/$(DOCLOCALE).lproj ; \
+		cp '$(ZIPFILE)' '$(macdocdir)/$(DOCLOCALE).lproj' ; \
+	fi
