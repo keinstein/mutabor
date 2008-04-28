@@ -2,16 +2,23 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.11 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.12 2008/04/28 08:19:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.11 $
+ * $Date: 2008/04/28 08:19:58 $
+ * \version $Revision: 1.12 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.12  2008/04/28 08:19:58  keinstein
+ * Use one single file Help.zip for online help.
+ * MutApp::ShowHelp: Implement the other Help commands.
+ * MutApp::CmQuit: remove unused variable frame
+ * 	silence a warning about paren scoping
+ * MutApp::MakeHelpMenu: Add missing menu items.
+ *
  * Revision 1.11  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -196,7 +203,7 @@ bool MutApp::OnInit()
   provider->SetHelpController(HelpController);
 
   // we want to name the help files according to the lanuage.
-  if (!HelpController->Initialize(GetResourceName(_("manual.zip")))) 
+  if (!HelpController->Initialize(GetResourceName(_("Help.zip")))) 
     std::cerr << "Warning: could not initialize Help system: " 
 	      << wxString(_("manual.zip")).ToUTF8() << std::endl;
   //  HelpController->AddBook(_("manual.zip"));
@@ -390,10 +397,15 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
 	EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
 
-*/	EVT_MENU(CM_ABOUT, MutApp::CmAbout)
-EVT_MENU(CM_HELPINDEX, MutApp::CmHelp)
+*/	
+
+EVT_MENU(CM_HELP, MutApp::CmHelp)
 EVT_MENU(CM_HELPHANDBOOK, MutApp::CmHelp)
+EVT_MENU(CM_HELPREFERENCE, MutApp::CmHelp)
+EVT_MENU(CM_HELPINDEX, MutApp::CmHelp)
+EVT_MENU(CM_HELPSEARCH, MutApp::CmHelp)
 EVT_MENU(CM_HELPONHELP, MutApp::CmHelp)
+EVT_MENU(CM_ABOUT, MutApp::CmAbout)
 //    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
     EVT_MENU(CM_EXIT, MutApp::CmQuit)
 
@@ -479,8 +491,18 @@ void MutApp::ShowHelp(int commandId) {
   case CM_HELPINDEX:
     HelpController->DisplayContents();
     break;
+  case CM_HELP:
+    HelpController->Display(_("help.html"));
+    break;
   case CM_HELPHANDBOOK:
+    HelpController->Display(_("manual.html"));
+    break;
+  case CM_HELPREFERENCE:
+    HelpController->Display(_("reference.html"));
+    break;
   case CM_HELPONHELP:
+    HelpController->Display(_("Help window"));
+    break;
   case CM_HELPCOMMON:
     HelpController->DisplayContents();
     break;
@@ -520,10 +542,9 @@ void MutApp::CmQuit (wxCommandEvent& event) {
 	}
 
 	
-	wxFrame * frame;
 	FrameHash::iterator it;
 
-	while (window = GetTopWindow()) {
+	while ((window = GetTopWindow())) {
 	  if (!window->Close()) return;
 	  while (Pending()) Dispatch();
 	}
@@ -597,15 +618,23 @@ wxString MutApp::GetResourceName(const wxString & file){
 
 void MutApp::MakeHelpMenu(wxMenuBar * menuBar) {
   OPENMENU;
+  MENUITEM(_("Online &Help\tF1"), CM_HELP,
+	   _("Open the help Window"));
+  MENUITEM(_("&Manual"), CM_HELPHANDBOOK,
+	   _("Open the manual"));
+  MENUITEM(_("Language &reference"), CM_HELPREFERENCE,
+	   _("Open the Mutabor language reference"));
+  MENUITEM_SEPARATOR; 
   MENUITEM(_("&Index"), CM_HELPINDEX,
 	   _("Open the help index"));
-  MENUITEM(_("&Handbook"), CM_HELPHANDBOOK,
-	   _("Open the Handbook"));
-  MENUITEM(_("&Help on help"), CM_HELPONHELP,
+  MENUITEM(_("&Search"), CM_HELPSEARCH,
+	   _("Search the help system for a specific keyword"));
+  MENUITEM_SEPARATOR;
+  MENUITEM(_("Help &on help"), CM_HELPONHELP,
 	   _("Show Help about the help system"));
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-  MENUITEM_SEPARATOR;
+  MENUITEM_SEPARATOR; 
 #endif
 
   MENUITEM(_("&About"), CM_ABOUT,
