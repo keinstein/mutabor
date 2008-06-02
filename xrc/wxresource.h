@@ -64,6 +64,7 @@ protected:
  wxStaticText* m_staticText10;
  wxStaticText* chars;
  wxStaticText* message;
+ wxButton* wxID_OK;
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
@@ -86,6 +87,7 @@ private:
   m_staticText10 = XRCCTRL(*this,"m_staticText10",wxStaticText);
   chars = XRCCTRL(*this,"chars",wxStaticText);
   message = XRCCTRL(*this,"message",wxStaticText);
+  wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
  }
 public:
 CompileDlg(wxWindow *parent=NULL){
