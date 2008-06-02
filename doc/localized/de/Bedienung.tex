@@ -1684,10 +1684,62 @@ Am oberen Fensterrand befindet sich die Symbolleiste. Die einzelnen Symbole kön
 \item[\mutimage{{htmoptns}}{{htmoptns}}~Einstellungen-Dialog]~Hier können Sie die Einstellungen (Schrift usw.) von Ihrem Hilfefenster beeinflussen. 
 \end{description}
 
-\section{Der Suchbaum}
+\section{Das Navigationsfenster}
 \label{sec:der-suchbaum}
 
 \mutimage{{Hilfeinhaltsbaum}}{{Hilfeinhaltsbaum}}
+
+Das Navigationsfenster besitzt drei Reiter:
+\begin{itemize}
+\item Den Dokumentbaum („Inhalte“),
+\item den Hilfeindex („Hilfe-Index“) und
+\item das Suchformular („Suchen“).
+\end{itemize}
+
+Klicken Sie auf den gewünschten Reiter, um sich die entsprechenden
+Bedienelemente anzeigen zu lassen!
+
+\subsection{Der Dokumentbaum}
+\mutimage{{Hilfeinhaltsbaum}}{{Hilfeinhaltsbaum}}
+
+Der Dokumentbaum dient dafür, einzelne Kapitel schnell anspringen zu
+können. Dabei werden die Unterkapiteln den jeweils übergeordneten
+zugeordnet. Ein Buch (\mutimage{{htmbook}}{{htmbook}}) oder Ordner
+(\mutimage{{htmfoldr}}) kann aufgeklappt werden, um die darin
+enthaltenen Abschnitte angzeigt zu bekommen. Dazu genügt es mit der
+linken Maustaste auf die entsprechende Zeile zu klicken. Einzelne
+Seiten werden durch ein Blatt Papier
+(\mutimage{{htmpage}}{{htmpage}}) symbolisiert. Auch sie können
+angeklickt werden.
+
+Oberhalb des Baumes können Sie Lesezeichen anlegen. Möchten Sie ein
+Lesezeichen hinzufügen, klicken Sie dazu einfach auf das zugehörige
+Symbol mit einem kleinen „+“
+(\mutimage{{addbookm}}{{addbookm}}). Danach können Sie die Seite
+jederzeit in der Auswahl links neben dem Knopf aktivieren. Ein Klick
+auf den Knopf mit dem kleinen „x“ (\mutimage{{delbookm}}{{delbookm}})
+entfernt das Lesezeichen wieder.
+
+\subsection{Der Hilfeindex}
+\mutimage{{Hilfeindex}}{{Hilfeindex}}
+
+Die Hilfe enthält ähnlich einem guten Handbuch ein
+Stichwortverzeichnis bzw. Index. Wenn Sie ein Wort suchen ist der Index zunächst einmal die richtige Anlaufstelle. Geben Sie das Wort oben in das Eingabefeld ein und drücken Sie auf „Suchen“! Es erscheint gleich darauf eine Auswahl von Stichworten, die zu Ihrer Suchanfrage passen. Alternativ können sie sich auch alle Stichworte mit dem Knopf „Alles zeigen“ anzeigen lassen.
+
+\subsection{Das Suchformular}
+\mutimage{{Hilfesuchformular}}{{Hilfesuchformular}}
+
+Wenn der Index nicht ausreicht, gibt es auch die Möglichkeit, das
+gesamte Dokument zu durchsuchen. Geben Sie im Eingabefeld das
+gewünschte Suchwort ein! Darunter können Sie auswählen, in welchen
+Handbüchern gesucht werden soll. Markieren Sie
+„Groß-/Kleinschreibung“, wenn sie Groß- von Kleinbuchstaben
+unterscheiden wollen und „Nur ganze Wörter“, wenn Sie nur eigene
+Wörter, aber keine Wortteile finden möchten. Klicken Sie nun auf
+„Suchen“ und es werden Ihnen unterhalb des Knopfes die gefundenen
+Textstellen angezeigt. Diese können Sie anklicken und damit im
+nebenstehenden \reflink{sec:das-textfenster}{Textfenster} anzeigen
+lassen.
 
 \section{Das Textfenster}
 \label{sec:das-textfenster}
@@ -1987,32 +2039,32 @@ Dieses Fenster zeigt lediglich, das Sie tatsächlich mit \mutabor{}
 arbeiten und enthält kurze Informationen zum Programm und zur 
 Version.
 
-\section{Optionen"=Dialog}\label{sec:DE_SETUP}
+\section{Der Einstellungsdialog}\label{sec:DE_SETUP}
 Hier können Sie einige globale Parameter von \mutabor{} einstellen.
 
 
-\subsection{Tone sytem}
+\subsection{Tonsytem}
 Ansicht der Tonsysteme im
 \reflink{sec:DE_KEY}{Aktuelle"=Tasten"=Fenster} und
 \reflink{sec:DE_TS}{Tonsystem"=Fenster}.
 \begin{description}
-\item[as relations (als Relationen):] Bei dieser Einstellung werden
+\item[als Relationen:] Bei dieser Einstellung werden
   die einzelnen Töne als \reflink{sec:DV_CENT}{Cent}"=Abstände zum
   \reflink{sec:DV_BASETONE}{Verankerungston} angegeben)
-\item[as tone system (als Tonsystem):] Die einzelnen Töne werden als
+\item[als Tonsystem:] Die einzelnen Töne werden als
   absolute Frequenzen und \reflink{sec:DV_MIDINOTES}{MIDI"=Noten}
   angegeben.
 \end{description}
 
-\subsection{Windows}
+\subsection{Fenster}
 \begin{description}
-\item[save editor files (Quelltext sichern):] ist diese Option
+\item[Speichere Editor-Dateien:] ist diese Option
   eingeschaltet, so wird der \reflink{sec:DV_QUELLTEXT}{Quelltext} in
-  den \reflink{sec:DE_EDIT}{Editorfenstern} vor jedem aktivieren eines
-  \reflink{sec:DV_LOGIKPROGRAMM}{Logikprogramms} gespeichert.  Das
+  den \reflink{sec:DE_EDIT}{Editorfenstern} gespeichert, bevor ein
+  \reflink{sec:DV_LOGIKPROGRAMM}{Logikprogramms} aktiviert wird.  Das
   kann sinnvoll sein, wenn Sie mit instabilen
   \reflink{sec:DV_MIDI}{MIDI"=Konfigurationen} experimentieren.
-\item[use color bars (Farbbalken verwenden):] Jeder
+\item[Nutze Farbbalken:] Jeder
   \reflink{sec:DV_BOX}{Box} ist in \mutabor{} eine Farbe zugeordnet.
   ist diese Option aktiviert, so erscheinen in den
   \reflink{sec:DE_LOGIC}{Logik-} und
