@@ -18,6 +18,7 @@
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
+#include "mhDefs.h"
 
 #include <iostream>
 
@@ -57,7 +58,7 @@
 #endif // __WXMSW__
 
 
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "MutFrame.h"
 #include "MutEditFile.h"
 #include "CompDlg.h"
@@ -72,6 +73,7 @@ CompDlg *CompDia = NULL;
 BEGIN_EVENT_TABLE(MutEditFile, wxTextCtrl)
 //    EVT_MOUSE_EVENTS(MyCanvas::OnEvent)
 	EVT_MENU(CM_FILESAVE, MutEditFile::CmFileSave)
+        EVT_MENU(CM_FILESAVEAS, MutEditFile::CmFileSaveAs)
 	EVT_MENU(CM_COMPILE, MutEditFile::CmCompile)
 	EVT_MENU(CM_COMPACT, MutEditFile::CmCompAct)
 	EVT_MENU(CM_ACTIVATE, MutEditFile::CmCompAct)
@@ -151,14 +153,41 @@ bool MutEditFile::DoSaveFile(const wxString& filename, int WXUNUSED(fileType))
 void MutEditFile::CmFileSave(wxCommandEvent& WXUNUSED(event))
 {
 	SaveFile(m_filename);
-	std::cout << "File saved: " << m_filename.fn_str() << std::endl;
+#ifdef DEBUG
+	std::cerr << "File saved: " << m_filename.fn_str() << std::endl;
+#endif
 }
 
-void MutEditFile::CmCompile(wxCommandEvent& WXUNUSED(event))
+void MutEditFile::CmFileSaveAs(wxCommandEvent& event)
 {
+  wxString newname = FileNameDialog(GetParent(), event.GetId(), m_filename);
+  if (newname.IsEmpty()) return;
+
+  m_filename = newname;
+
+  CmFileSave(event);
+  
+    // Überschrift in MutWin setzen
+  wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_SETTITLE);
+  //  e.ResumePropagation(wxEVENT_PROPAGATE_MAX);
+  wxFileName s(m_filename);
+  e.SetString(s.GetFullName());
+  AddPendingEvent(e);
+}
+
+
+void MutEditFile::CmCompile(wxCommandEvent& event)
+{
+
+#ifdef DEBUG
+  std::cerr << "MutEditFile::CmCompile(Event(" << event.GetId() << "))" << std::endl;
+  std::cerr << m_filename.ToUTF8() << std::endl;
+#endif
+  wxString origfilename = m_filename;
 	if ( SaveEditor )
 		SaveFile(m_filename);
 	bool modified = IsModified();
+
 	if ( LogicOn )
 	{
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
@@ -174,21 +203,35 @@ void MutEditFile::CmCompile(wxCommandEvent& WXUNUSED(event))
 		if ( modified )
 			MarkDirty();
 		CompDia = new CompDlg(this);
+		CompDia->SetFileName(origfilename);
+		CompDia->Centre();
 		CompDia->Show();
-		CompDia->SetText(IDC_COMP_FILENAME, GetName());
+		CompDia->MakeModal(true);
 		if ( Compile(CompDia, TmpFile.c_str()) )
-			CompiledFile = m_filename;
+			CompiledFile = origfilename;
 		else
 		{
 			CompiledFile = wxEmptyString;
 			GoErrorLine();
 		}
-		CompDia->FindWindow(wxID_OK)->Enable(TRUE);
+		CompDia->MakeModal(false);
+		CompDia->EnableButton(true);
+		CompDia->Hide();
+		int r = CompDia->ShowModal();
+#ifdef DEBUG
+		std::cerr << "MutEditFile::CmCompile return code: "  
+			  << r << std::endl;
+#endif
 		wxRemoveFile(TmpFile);
 	}
+	m_filename = origfilename;
+#ifdef DEBUG
+  std::cerr << m_filename.ToUTF8() << std::endl;
+#endif
+	event.Skip(false);
 }
 
-void MutEditFile::CmCompAct(wxCommandEvent& WXUNUSED(event))
+void MutEditFile::CmCompAct(wxCommandEvent& event)
 {
 	if ( SaveEditor )
 		SaveFile(m_filename);
@@ -209,7 +252,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& WXUNUSED(event))
 			MarkDirty();
 		CompDia = new CompDlg(this);
 		CompDia->Show();
-		CompDia->SetText(IDC_COMP_FILENAME, GetName());
+		CompDia->SetFileName(GetName());
 		if ( Compile(CompDia, TmpFile.c_str()) )
 		{
 			CompiledFile = m_filename;
@@ -226,6 +269,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& WXUNUSED(event))
 		CompDia->FindWindow(wxID_OK)->Enable(TRUE);
 		wxRemoveFile(TmpFile);
 	}
+	event.Skip(false);
 }
 
 void MutEditFile::CmGetLine(wxCommandEvent& WXUNUSED(event))
