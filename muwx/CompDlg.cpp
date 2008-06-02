@@ -1,14 +1,15 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        CompDlg.cpp
 // Purpose:     
-// Author:      R. Krauﬂe
+// Author:      R. Krau√üe
 // Modified by: 
 // Created:     08/14/05 21:41:59
 // RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
+// Copyright:   (c) R. Krau√üe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
-
+/// not used anymore
+#if 0 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma implementation "CompDlg.h"
 #endif
@@ -24,10 +25,11 @@
 #include "wx/wx.h"
 #endif
 
+#include "CompDlg.h"
+
 ////@begin includes
 ////@end includes
 
-#include "CompDlg.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -214,3 +216,5 @@ wxIcon CompDlg::GetIconResource( const wxString& name )
     return wxNullIcon;
 ////@end CompDlg icon retrieval
 }
+
+#endif
