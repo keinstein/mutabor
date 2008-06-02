@@ -30,7 +30,7 @@
 #include "Runtime.h"
 #include "MidiKern.h"
 //#include "Help.rh"
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "MutLogicWnd.h"
 #include "MutChild.h"
 #include "MutFrame.h"
