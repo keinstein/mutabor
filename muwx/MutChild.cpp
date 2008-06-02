@@ -41,7 +41,7 @@
 #include "bitmaps/help.xpm"
 
 
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "MutChild.h"
 #include "MutEditFile.h"
 #include "MutFrame.h"
