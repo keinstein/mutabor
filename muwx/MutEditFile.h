@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.4 2007/12/17 13:00:46 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.5 2008/06/02 16:17:31 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2007/12/17 13:00:46 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2008/06/02 16:17:31 $
+ * \version $Revision: 1.5 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.5  2008/06/02 16:17:31  keinstein
+ * CmFileSaveAs: new function
+ *
  * Revision 1.4  2007/12/17 13:00:46  keinstein
  * MutEditFile::DoLoadFile, MutEditFile::DoSaveFile: New functions.
  * Fix compilation in Unicode mode.
@@ -45,6 +48,7 @@ class MutEditFile : public wxTextCtrl
 	bool DoLoadFile(const wxString &filename, int WXUNUSED(fileType));
 	bool DoSaveFile(const wxString& filename, int WXUNUSED(fileType));
 	void CmFileSave(wxCommandEvent& WXUNUSED(event));
+	void CmFileSaveAs(wxCommandEvent& event);
 	void CmCompile(wxCommandEvent& WXUNUSED(event));
 	void CmCompAct(wxCommandEvent& WXUNUSED(event));
 	void CmGetLine(wxCommandEvent& WXUNUSED(event));
