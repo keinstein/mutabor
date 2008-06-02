@@ -2,16 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.10 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.11 2008/06/02 16:27:08 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.10 $
+ * $Date: 2008/06/02 16:27:08 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.11  2008/06/02 16:27:08  keinstein
+ * Chenged FileNameDialog
+ * CmSetTitle(), HasClient(): new functions
+ *
  * Revision 1.10  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -104,7 +108,7 @@ public:
     bool OpenFile(wxString path, bool newfile=false);
 
     /// Get a file name to open
-    wxString FileNameDialog();
+    ///    static wxString FileNameDialog(wxWindow * parent);
     
     void CmDoActivate(wxCommandEvent& event);
     void CmStop(wxCommandEvent& WXUNUSED(event));
@@ -132,6 +136,7 @@ public:
     void CeInDevStop(wxUpdateUIEvent& event);
     void CeInDevPlay(wxUpdateUIEvent& event);
     void CeInDevPause(wxUpdateUIEvent& event);
+    void CmSetTitle(wxCommandEvent& event);
 
     // Idle
     void UpdateUI(wxCommandEvent& WXUNUSED(event));
@@ -158,6 +163,10 @@ public:
     }
 	
     wxRect DetermineFrameSize ();
+
+    /// retrun true if we have already a client
+    bool HasClient() { return (bool) client; }
+
  private:
     int curStatusImg;
 
