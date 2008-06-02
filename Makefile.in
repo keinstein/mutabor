@@ -92,6 +92,7 @@ am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
 	mutabor-GSP_File.$(OBJEXT) mutabor-GSP.$(OBJEXT) \
 	mutabor-InputFilterDlg.$(OBJEXT) mutabor-BoxDlg.$(OBJEXT) \
 	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-valRadio.$(OBJEXT) \
+	mutabor-myContextHelpButton.$(OBJEXT) \
 	mutabor-muconvauto.$(OBJEXT)
 mutabor_OBJECTS = $(am_mutabor_OBJECTS)
 mutabor_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
@@ -368,6 +369,8 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
+		mywx/myContextHelpButton.h \
+		mywx/myContextHelpButton.cpp \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
@@ -523,6 +526,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-muconvauto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mut.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-myContextHelpButton.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valNum.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valRadio.Po@am__quote@
 
@@ -1079,6 +1083,20 @@ mutabor-valRadio.obj: mywx/valRadio.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`
 
+mutabor-myContextHelpButton.o: mywx/myContextHelpButton.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-myContextHelpButton.o -MD -MP -MF $(DEPDIR)/mutabor-myContextHelpButton.Tpo -c -o mutabor-myContextHelpButton.o `test -f 'mywx/myContextHelpButton.cpp' || echo '$(srcdir)/'`mywx/myContextHelpButton.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-myContextHelpButton.Tpo $(DEPDIR)/mutabor-myContextHelpButton.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/myContextHelpButton.cpp' object='mutabor-myContextHelpButton.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-myContextHelpButton.o `test -f 'mywx/myContextHelpButton.cpp' || echo '$(srcdir)/'`mywx/myContextHelpButton.cpp
+
+mutabor-myContextHelpButton.obj: mywx/myContextHelpButton.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-myContextHelpButton.obj -MD -MP -MF $(DEPDIR)/mutabor-myContextHelpButton.Tpo -c -o mutabor-myContextHelpButton.obj `if test -f 'mywx/myContextHelpButton.cpp'; then $(CYGPATH_W) 'mywx/myContextHelpButton.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/myContextHelpButton.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-myContextHelpButton.Tpo $(DEPDIR)/mutabor-myContextHelpButton.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/myContextHelpButton.cpp' object='mutabor-myContextHelpButton.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-myContextHelpButton.obj `if test -f 'mywx/myContextHelpButton.cpp'; then $(CYGPATH_W) 'mywx/myContextHelpButton.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/myContextHelpButton.cpp'; fi`
+
 mutabor-muconvauto.o: mywx/muconvauto.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-muconvauto.o -MD -MP -MF $(DEPDIR)/mutabor-muconvauto.Tpo -c -o mutabor-muconvauto.o `test -f 'mywx/muconvauto.cpp' || echo '$(srcdir)/'`mywx/muconvauto.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-muconvauto.Tpo $(DEPDIR)/mutabor-muconvauto.Po
@@ -1571,7 +1589,8 @@ mutabor-cxxprecompiled.h:
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
 
 Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
-	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
+	cp $< $@
+#	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
 
 Mutabor.app:all Mutabor.xrc mutabor
 	mkdir -p Mutabor.app/Contents/MacOS

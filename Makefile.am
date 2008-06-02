@@ -46,6 +46,8 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
+		mywx/myContextHelpButton.h \
+		mywx/myContextHelpButton.cpp \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
@@ -121,7 +123,8 @@ mutabor-cxxprecompiled.h:
 @COND_WINRC_TRUE@	 $(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
 
 Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
-	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
+	cp $< $@
+#	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
 
 Mutabor.app:all Mutabor.xrc mutabor
 	mkdir -p Mutabor.app/Contents/MacOS
