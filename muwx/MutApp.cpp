@@ -2,16 +2,23 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.12 2008/04/28 08:19:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.13 2008/06/02 16:11:00 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/04/28 08:19:58 $
- * \version $Revision: 1.12 $
+ * $Date: 2008/06/02 16:11:00 $
+ * \version $Revision: 1.13 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.13  2008/06/02 16:11:00  keinstein
+ * Don't include Mutabor.rh, since it is included with headers.
+ * Implement Help for config dialog
+ * MutApp::CmAbout(): Remove newlines from People list.
+ * Implement CM_EXECUTE
+ * MutApp::CmFileOpen(), MutApp::CmFileNew(): Open new windows only when really necessary
+ *
  * Revision 1.12  2008/04/28 08:19:58  keinstein
  * Use one single file Help.zip for online help.
  * MutApp::ShowHelp: Implement the other Help commands.
@@ -67,12 +74,13 @@
     #include "Icon/Mutabor.xpm"
 #endif
 
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "MutApp.h"
 #include "MutFrame.h"
 #include "DevMidi.h"
 #include "MutConfDlg.h"
 #include "EDevice.h"
+#include "wxresource.h"
 
 MutFrame *frame = (MutFrame *) NULL;
 wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
@@ -238,17 +246,21 @@ bool MutApp::OnInit()
   return true;
 }
 
+BEGIN_EVENT_TABLE(MutConfigDialog, ConfigDlg)
+EVT_BUTTON(::wxID_HELP, MutConfigDialog::CmHelp)
+END_EVENT_TABLE()
 
 void MutApp::CmSetup (wxCommandEvent& event)
 {
 
 	MutConfigDialog * config;
 	config = new MutConfigDialog((wxFrame *) NULL);
+
 	int value = config->ShowModal();
-	std::cout << "MutApp::CmSetup: not implemented. Got value " 
-		  << value << std::endl;
-//	if 
+
 	config->Destroy();
+
+	event.Skip();
 }
 
 void MutApp::CmAbout (wxCommandEvent& event)
@@ -278,20 +290,21 @@ void MutApp::CmAbout (wxCommandEvent& event)
 				   _T("png")).GetFullPath(),
 			wxBITMAP_TYPE_PNG));
   info.SetDescription(_("An application to implement different tuning logics.\n Both fixed, adaptive and mutable tunings are supported."));
-  info.AddArtist(_("Rudolf Wille (mathematical foundation)\n"));
+  info.AddArtist(_("Rudolf Wille (mathematical foundation)"));
   info.AddArtist(_("Tobias Schlemmer (new icon/splash)"));
-  info.AddDeveloper(_("Bernhard Ganter\n"));
-  info.AddDeveloper(_("Volker Abel\n"));
-  info.AddDeveloper(_("Peter Reiss\n"));
-  info.AddDeveloper(_("Ruediger Krausze <krausze@mail.berlios.de>\n"));
+  info.AddDeveloper(_("Bernhard Ganter"));
+  info.AddDeveloper(_("Volker Abel"));
+  info.AddDeveloper(_("Peter Reiss"));
+  info.AddDeveloper(_("Ruediger Krausze <krausze@mail.berlios.de>"));
   info.AddDeveloper(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
-  info.AddDocWriter(_("Volker Abel\n"));
-  info.AddDocWriter(_("Peter Reiss\n"));
-  info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>\n"));
+  info.AddDocWriter(_("Volker Abel"));
+  info.AddDocWriter(_("Peter Reiss"));
+  info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>"));
   info.AddDocWriter(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
   //  info.AddTranslator(_("English: N.N."));
   
   wxGenericAboutBox(info);
+  //  event.Skip(false);
 }
 
 
@@ -371,6 +384,7 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
     EVT_MENU(CM_SETUP, MutApp::CmSetup)
     EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
     EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
+    EVT_MENU(CM_EXECUTE, MutApp::CmFileOpen)
 /*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
@@ -463,15 +477,51 @@ void MutApp::CmFileNew (wxCommandEvent& event) {
 #ifdef DEBUG
 	printf("MutApp::CmFileNew\n");
 #endif
+	frame = dynamic_cast<MutFrame*>(GetTopWindow());
+	if (frame) 
+	  if (frame->HasClient())
+	    frame = CreateMainFrame(EditorMenu);
 
-	frame = CreateMainFrame(EditorMenu);
+#ifdef DEBUG
+	printf("MutApp::CmFileNew: created main frame\n");
+#endif
 	frame->CmFileNew(event);
+#ifdef DEBUG
+	printf("MutApp::CmFileNew: file new: done.\n");
+#endif
+	event.Skip(false);
 }
 
 
 void MutApp::CmFileOpen (wxCommandEvent& event) {
-	frame = CreateMainFrame(EditorMenu);
-	frame->CmFileOpen(event);
+  wxWindow * topwindow=GetTopWindow();
+  frame = dynamic_cast<MutFrame*>(topwindow);
+  
+  event.Skip(false);
+  
+  wxString path = FileNameDialog(topwindow);
+  
+  if ( !path )
+    return;
+	
+  if (frame) 
+    if (frame->HasClient())
+      frame = CreateMainFrame(EditorMenu);
+
+  frame->OpenFile(path);
+
+#ifdef DEBUG
+  std::cerr << "MutApp:CmFileOpen " << CM_EXECUTE << " == " 
+	    << event.GetId() << "?" << std::endl;
+#endif
+
+  switch (event.GetId()) {
+  case CM_EXECUTE: 
+    wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_ACTIVATE);
+    frame->ProcessEvent(e);
+    break;
+  }
+
 }
 
 void MutApp::CmRoutes (wxCommandEvent& event) {
@@ -480,10 +530,12 @@ void MutApp::CmRoutes (wxCommandEvent& event) {
 	RegisterFrame(frame);
 	frame->CmRoutes(event);
 	frame->Show(true);
+	event.Skip();
 }
 
 void MutApp::CmHelp (wxCommandEvent& event) {
   ShowHelp(event.GetId());
+  event.Skip();
 }
 
 void MutApp::ShowHelp(int commandId) {
@@ -493,6 +545,9 @@ void MutApp::ShowHelp(int commandId) {
     break;
   case CM_HELP:
     HelpController->Display(_("help.html"));
+    break;
+  case CM_SETUP:
+    HelpController->Display(_("The setup dialog"));
     break;
   case CM_HELPHANDBOOK:
     HelpController->Display(_("manual.html"));
