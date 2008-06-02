@@ -325,7 +325,7 @@ void ScanRoutes(const wxString& config)
 		  //3 ??
 		}
 #else
-t		int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"), 
+		int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"), 
 				  Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
 			test = SSCANF(s.c_str(), _T("%s %s %d %d"), 
