@@ -2,12 +2,15 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.4 2006/01/18 15:29:56 keinstein Exp $
+ * $Id: GrafKern.h,v 1.5 2008/06/02 16:00:34 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2006/01/18 15:29:56 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2008/06/02 16:00:34 $
+ * \version $Revision: 1.5 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.5  2008/06/02 16:00:34  keinstein
+ * InitCompDia: new interface
+ *
  * Revision 1.4  2006/01/18 15:29:56  keinstein
  * New header and translations at display time
  *
@@ -52,7 +55,7 @@ void show_line_number( int n );
 #ifdef MUTWIN
 #ifdef WX
 #include "CompDlg.h"
-  void InitCompDia(CompDlg *compDia);
+void InitCompDia(CompDlg *compDia, wxString filename);
 #else
   void InitCompDia(HWND compDiaLine);
 #endif
