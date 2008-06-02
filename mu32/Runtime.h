@@ -26,7 +26,7 @@ extern "C"
 #ifndef WX
   char pascal Compile( TDialog *compWin, const char *name );
 #else
-  char pascal Compile( CompDlg *compWin, const wxChar *name );
+  char pascal Compile( CompDlg *compDia, const wxChar *name );
 #endif
   bool pascal Activate(bool realTime, UpdateUICallback* callback = 0);
   void pascal Stop();
