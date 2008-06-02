@@ -2,12 +2,18 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.5 2006/01/18 15:28:03 keinstein Exp $
- * \author R¸diger Krauﬂe <krausze@mail.berlios.de>
- * \date $Date: 2006/01/18 15:28:03 $
- * \version $Revision: 1.5 $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.6 2008/06/02 16:00:12 keinstein Exp $
+ * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
+ * \date $Date: 2008/06/02 16:00:12 $
+ * \version $Revision: 1.6 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.6  2008/06/02 16:00:12  keinstein
+ * UTF-8
+ * don't include Mutabor.rh (already included)
+ * access compile dialog static text directly to display line number
+ * fix formatting of line numbers
+ *
  * Revision 1.5  2006/01/18 15:28:03  keinstein
  * Get translations of error strings
  *
@@ -16,7 +22,7 @@
  *
  ********************************************************************/
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
+// Mutabor 2.win, 1997, R.Krau√üe
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
@@ -24,14 +30,14 @@
 #include "Interpre.h"
 #include "GrafKern.h"
 #include "Interval.h"
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "Execute.h"
 #include <setjmp.h>
 
 #ifdef MUTWIN
 #ifdef WX
 	#include <wx/msgdlg.h>
-	CompDlg* CompDia1 = NULL;
+	wxStaticText* CompDiaLine = NULL;
 #else
 	HWND CompDiaLine;
 #endif
@@ -116,9 +122,10 @@ int pascal _export GetActString(unsigned char **box, int **l, char **s)
 // Compiler-Dialog --------------------------------------------------
 
 #ifdef WX
-void InitCompDia(CompDlg *compDia)
+void InitCompDia(CompDlg *compDia, wxString filename)
 {
-  CompDia1 = compDia;
+  wxASSERT(compDia);
+  CompDiaLine = compDia->GetLine();
 }
 #else
 void InitCompDia(HWND compDiaLine)
@@ -186,13 +193,26 @@ void calc_declaration_numbers(char withNames)
 
 void show_line_number( int n )
 {
-#ifdef MUTWIN
 #ifdef WX
-  if ( !CompDia1 ) return;
-  wxString s = _T("---      ");
-  if ( n != -1 ) s.Format(_T("%d       "), n);
-  CompDia1->SetText(IDC_COMP_LINE, s);
+#ifdef DEBUG
+  std::cerr << "show_line_number(" << n << ") in WX mode " << std::endl;
+#endif
+  if ( !CompDiaLine ) return;
+#ifdef DEBUG
+  std::cerr << "setting number ";
+#endif 
+  wxString s = _T("");
+  if ( n != -1 ) s << n;
+#ifdef DEBUG
+  std::cerr << s.ToUTF8() << std::endl;
+#endif 
+  CompDiaLine->SetLabel(s);
+  CompDiaLine->Refresh();
 #else
+#ifdef DEBUG
+  std::cerr << "show_line_number(" << n << ") in non-WX mode " << std::endl;
+#endif
+#ifdef MUTWIN
   if ( !CompDiaLine ) return;
   char s[20] = "---      ";
   if ( n != -1 ) sprintf(s, "%d       ", n);
