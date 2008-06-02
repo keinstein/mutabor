@@ -2,15 +2,20 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.8 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.9 2008/06/02 16:02:00 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/06/02 16:02:00 $
+ * \version $Revision: 1.9 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.9  2008/06/02 16:02:00  keinstein
+ * dont include Mutabor.rh since it is already included now
+ * New interfache for InitCompDia
+ * Set status dialog fields directly
+ *
  * Revision 1.8  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -36,7 +41,7 @@
 
 #include "Runtime.h"
 #include "Execute.h"
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include <setjmp.h>
 
 #include "Device.h"
@@ -50,7 +55,7 @@ jmp_buf weiter_gehts_nach_compilerfehler;
 
 char pascal _export Compile(CompDlg *compDia, const wxChar *name)
 {
-  InitCompDia(compDia);
+  InitCompDia(compDia, name);
 
   if (!setjmp(weiter_gehts_nach_compilerfehler))
   {
@@ -61,34 +66,32 @@ char pascal _export Compile(CompDlg *compDia, const wxChar *name)
 
 	 calc_declaration_numbers();
 
-	 compDia->SetText(IDC_COMP_LOGICS, sd1);
-	 compDia->SetText(IDC_COMP_TONES, sd2);
-	 compDia->SetText(IDC_COMP_TUNES, sd3);
-	 compDia->SetText(IDC_COMP_TONESYST, sd4);
-	 compDia->SetText(IDC_COMP_INTERVALS, sd5);
-	 compDia->SetText(IDC_COMP_READCHARS, sd6);
+	 compDia->SetStatus(sd1,sd2,sd3,sd4,sd5,sd6);
 
-	 show_line_number(-1);
+	 //	 show_line_number(-1);
 
-	 compDia->SetText(wxID_OK, _("Generating tables"));
+	 compDia->SetButtonText(_("Generating tables"));
+	 compDia->Refresh();
 
 	 mutabor_tabellen_generator();
 
 
-	 compDia->SetText(wxID_OK, _("Translation successful !"));
-	 compDia->SetText(IDC_COMP_MESSAGE, _("No error occured !"));
+	 compDia->SetButtonText(_("Translation successful !"));
+	 compDia->SetMessage(_("No error occured !"));
+	 compDia->Refresh();
 
 	 return 1;
   }
   else
   {
-	 show_line_number(-1);
-	 compDia->SetText(wxID_OK, _("Translation interrupted !"));
+    //show_line_number(-1);
+    compDia->SetButtonText(_("Translation interrupted !"));
 
 #ifdef DEBUG
 	 std::cout << (Fmeldung.ToUTF8()) << std::endl;
 #endif
-	 compDia->SetText(IDC_COMP_MESSAGE, Fmeldung);
+	 compDia->SetMessage(Fmeldung);
+	 compDia->Refresh();
 	 return 0;
   }
 }
