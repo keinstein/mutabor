@@ -8,6 +8,8 @@
 #include "wx/filename.h"
 #include <iostream>
 
+#include "Mutabor.rh"
+
 #ifndef HAVE_CONFIG_H
 #  ifdef __WXMSW__
 #    define REUSE(type)
@@ -41,6 +43,10 @@ extern wxHtmlHelpController * HelpController;
   #define muT(x) x
   #define mumT(x) muT(x)
 #endif
+
+wxString FileNameDialog(wxWindow * parent, 
+			int Command = CM_FILEOPEN, 
+			wxString Filename = wxEmptyString);
 
 //#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
