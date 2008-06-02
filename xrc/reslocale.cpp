@@ -1,12 +1,17 @@
+_("toooltip");
 _("Mutabor configuration");
 _("How shall the tone system be reported: relative or absolute?");
 _("Tone System");
 _("as &relations");
 _("as &tone system");
 _("Windows");
+_("save editor window before compiling");
 _("save &editor files");
+_("Use color bars.");
 _("use color bars");
+_("Save settings.");
 _("OK");
+_("Discard changes.");
 _("Cancel");
 _("Help");
 _("About Mutabor");
