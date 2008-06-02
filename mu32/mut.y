@@ -661,12 +661,8 @@ start_lex:
           || c == '\n') {
 
        if (c == '\n') 
-#ifdef ACS_VERSION
-        if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
+	 if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
            show_line_number(yylloc.first_line);
-#else
-         yylloc.first_line ++;
-#endif
        }
 
     if (c == '"') {
@@ -678,8 +674,10 @@ start_lex:
        goto start_lex;
     }
 
-    if (c == EOF)
+    if (c == EOF) {
+      show_line_number(yylloc.first_line);
         return 0;
+    }
 
         
     /* char starts a number => parse the number. */
