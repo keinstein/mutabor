@@ -2,15 +2,25 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.13 2008/04/28 08:21:33 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.14 2008/06/02 16:25:26 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/04/28 08:21:33 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2008/06/02 16:25:26 $
+ * \version $Revision: 1.14 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.14  2008/06/02 16:25:26  keinstein
+ * don't include Mutabor.rh
+ * implement CM_EXECUTE action
+ * disable CM_COMPILE, CM_EXECUTE, CM_DOACTIVATE if logic is active
+ * implement CM_SETTITLE for setting the window title
+ * FileNameDialog(): reimplemented
+ * CmFileOpen() and other: correct Event Skipping.
+ * MutFrame::ToggleTextBox(), CloseAll():
+ * use DetachPane and Close instead of ClosePane
+ *
  * Revision 1.13  2008/04/28 08:21:33  keinstein
  * Silence a warning since it is issued every normal start.
  *
@@ -111,7 +121,7 @@
 #include <wx/ffile.h>
 #include "MutFrame.h"
 #include "MutChild.h"
-#include "Mutabor.rh"
+//#include "Mutabor.rh"
 #include "MutApp.h"
 
 #include "Defs.h"
@@ -195,12 +205,16 @@ BEGIN_EVENT_TABLE(MutFrame, wxFrame)
 
     EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
     EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
+    EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
     EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
+//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
+    EVT_UPDATE_UI(CM_EXECUTE, MutFrame::CeActivate)
     EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
+    EVT_UPDATE_UI(CM_COMPILE, MutFrame::CeActivate)
+    EVT_UPDATE_UI(CM_DOACTIVATE, MutFrame::CeActivate)
     EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
-	
     EVT_MENU(CM_COMPILE, MutFrame::PassEventToEditor)
     EVT_MENU(CM_COMPACT, MutFrame::PassEventToEditor)
     EVT_MENU(CM_ACTIVATE, MutFrame::PassEventToEditor)
@@ -228,7 +242,8 @@ BEGIN_EVENT_TABLE(MutFrame, wxFrame)
 
     EVT_CLOSE(MutFrame::OnClose)
     EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
-	EVT_IDLE(MutFrame::OnIdle) 
+    EVT_IDLE(MutFrame::OnIdle) 
+    EVT_MENU(CM_SETTITLE, MutFrame::CmSetTitle)
 //    EVT_SIZE(MutFrame::OnSize)
 END_EVENT_TABLE()
 
@@ -387,39 +402,56 @@ void MutFrame::CmFileNew(wxCommandEvent& event)
 #ifdef DEBUG
   printf("MutFrame::CmFileNew\n");
 #endif
+  if (client) {
+    event.Skip(true);
+    return ;
+  }
 
-  event.Skip( OpenFile(wxEmptyString) );
+  event.Skip(false); // Its our task to try create the file
+
+  OpenFile(wxEmptyString);
 }
 
-wxString MutFrame::FileNameDialog() {
-  return  wxFileSelector(_("Which Mutabor-file shall be loaded?"),
-			 _T(""), _T(""),
-			 _T(""),
-			 _("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"),
-#ifdef __WXCOCOA__
-		   0,
-#else
-		   /*wxCHANGE_DIR |*/ wxFILE_MUST_EXIST | wxOPEN,
-#endif
-		   this
-		   );
-}
 
 void MutFrame::CmFileOpen(wxCommandEvent& event)
 {
   if (client) {
-    event.Skip(true);
+    event . Skip (true);
     return;
   }
+
+  event . Skip (false); // it's our task to try to open that file
   
-  wxString path = FileNameDialog();
+  wxString path = FileNameDialog(this, event.GetId());
 
   if ( !path )
     return;
   
-   
-  OpenFile(path);
-  event.Skip(false);
+
+#ifdef DEBUG
+  std::cerr << "MutFrame:CmFileOpen " << CM_EXECUTE << " == " 
+	    << event . GetId () << "?" << std::endl;
+#endif
+
+
+  switch (event.GetId()) {
+  case CM_FILEOPEN:
+    OpenFile(path); 
+    break;
+  case CM_EXECUTE: 
+    {
+      OpenFile(path);
+      wxCommandEvent e (wxEVT_COMMAND_MENU_SELECTED, CM_ACTIVATE);
+      ProcessEvent (e);
+    }
+    break;
+  case CM_FILESAVEAS:
+    event.SetString(path);
+    PassEventToEditor(event);
+    break;
+  default:
+    wxLogError(_("Unexpected Event in MutFrame::CmFileOpen: %d"),event.GetId());
+  }
 }
 
 /** 
@@ -573,21 +605,18 @@ while playing by computer keyboard.)"),
 	// Statusbar
   SetStatus(SG_LOGIC);
 #ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Open Text boxes: " << WK_KEY << "--" <<WK_ACT << std::endl;
+  std::cout << "MutFrame::CmDoActivate: Open Text boxes: " 
+	    << WK_KEY << "--" <<WK_ACT << std::endl;
 #endif
-  for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) 
-    {
-      if ( TextBoxWanted[kind] )
-	TextBoxOpen(kind, curBox);
-      else
-	DontWant(kind, curBox);
-    }
+  for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
+    if ( TextBoxWanted[kind] )
+      TextBoxOpen(kind, curBox);
+    else
+      DontWant(kind, curBox);
+  }
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Set window title" << std::endl;
 #endif
-  // Überschrift in MutWin setzen
-  wxFileName s(CompiledFile);
-  SetTitle(wxString::Format(_("%s -- %s"), APPNAME, s.GetName().c_str()));
   //	Get(WK_LOGIC, curBox)->Win->SetFocus();
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Repaint route" << std::endl;
@@ -596,23 +625,22 @@ while playing by computer keyboard.)"),
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: event.Skip()" << std::endl;
 #endif
-  event.Skip();
+  event.Skip(false);
 }
 
 void MutFrame::CmStop(wxCommandEvent& event)
 {
-	if ( LogicOn )
-	{
- 		LogicOn = false;
-		CmInDevStop(event);
-		Stop();
-        // Ampel umschalten
-/*		ControlBar->Remove(*ButtonStop);
+  if ( LogicOn ) {
+    LogicOn = false;
+    CmInDevStop(event);
+    Stop();
+    // Ampel umschalten
+    /*		ControlBar->Remove(*ButtonStop);
 		ControlBar->Insert(*ButtonActivate, TGadgetWindow::Before, ButtonPanic);
 		ControlBar->LayoutSession();*/
-		// Statusleiste
-		SetStatus(SG_NOTHING);
-//		StatusBar->SetText("");
+    // Statusleiste
+    SetStatus(SG_NOTHING);
+    //		StatusBar->SetText("");
 		// Titel
 		SetTitle(APPNAME);
 		// alle Fenser schlieﬂen
@@ -693,18 +721,22 @@ void MutFrame::LogicWinOpen(int box)
 
     int width, height;
     GetClientSize(&width, &height);
-	width /= 2;
-	height /= 2;
-    MutLogicWnd *client = new MutLogicWnd(this, box, wxPoint(0, 0), wxSize(width,height));
-	wxString Name;
-	Name.Printf(_("Logic -- Box %d"),box);
-	auimanager.AddPane(client,wxAuiPaneInfo().Name(_("Logic -- Box %d")).Caption(Name).
-								Bottom().Floatable(true).CloseButton(true).MaximizeButton(true).Float());
-	auimanager.Update();
-	
-//	subframe->winAttr->Win = subframe->client = client;
-
-//	subframe->Show(true);
+    width /= 2;
+    height /= 2;
+    MutLogicWnd *client = new MutLogicWnd(this, box, 
+					  wxPoint(0, 0), 
+					  wxSize(width,height));
+    wxString Name;
+    Name.Printf(_("Logic -- Box %d"),box);
+    auimanager.AddPane(client,
+		       wxAuiPaneInfo().Name(_("Logic -- Box %d"))
+		       .Caption(Name)
+		       .Bottom()
+		       .Floatable(true)
+		       .CloseButton(true)
+		       .MaximizeButton(true)
+		       .Float());
+    auimanager.Update();
 }
 
 void MutFrame::ToggleTextBox(WinKind kind)
@@ -714,28 +746,29 @@ void MutFrame::ToggleTextBox(WinKind kind)
 	    << "MutFrame::ToggleTextBox: TextBoxWanted:"
 	    << TextBoxWanted[kind] << std::endl;
 #endif
-	TextBoxWanted[kind] = !TextBoxWanted[kind];
+  TextBoxWanted[kind] = !TextBoxWanted[kind];
 #ifdef DEBUG
   std::cerr << "MutFrame::ToggleTextBox: LogicOn"
 	    << LogicOn << std::endl;
 #endif
 
-	if ( !LogicOn ) return;
+  if ( !LogicOn ) return;
 
 #ifdef DEBUG
   std::cerr << "MutFrame::ToggleTextBox: IsOpen(kind, curBox)"
 	    << IsOpen(kind, curBox) << std::endl;
 #endif
-	if ( IsOpen(kind, curBox) ) {
-	  wxWindow *win = Get(kind, curBox)->Win;
-		//Get(kind, curBox)->Win->SendMessage(WM_CLOSE);
-	  auimanager.ClosePane(auimanager.GetPane(win));
-	  auimanager.Update();
-	  //win->Close();
-	  //win->Destroy();
-	}
-	else
-		TextBoxOpen(kind, curBox);
+  if ( IsOpen(kind, curBox) ) {
+    wxWindow *win = Get(kind, curBox)->Win;
+    //Get(kind, curBox)->Win->SendMessage(WM_CLOSE);
+    auimanager.DetachPane(win);
+    win->Close();
+    auimanager.Update();
+    //win->Close();
+    //win->Destroy();
+  }
+  else
+    TextBoxOpen(kind, curBox);
 }
 
 void MutFrame::TextBoxOpen(WinKind kind, int box)
@@ -800,13 +833,11 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 	else 
 		str = wxEmptyString;
 
-	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title).CloseButton(true).
-								MaximizeButton(true).Float().DestroyOnClose(true));
+	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
+			   .CloseButton(true).MaximizeButton(true)
+			   .Float().DestroyOnClose(true));
 	client->NewText(str, true);
 	auimanager.Update();
-
-//	subframe->Show(true);
-//	client->NewText(s, true);
 }
 
 void MutFrame::CmToggleKey(wxCommandEvent& WXUNUSED(event))
@@ -1148,6 +1179,10 @@ void MutFrame::CeInDevPause(wxUpdateUIEvent& event)
   event.Enable(false);
 }
 
+void MutFrame::CmSetTitle(wxCommandEvent& event) {
+  SetTitle(wxString::Format(_("%s -- %s"), APPNAME, event.GetString().c_str()));
+}
+
 // Updaten der Protokollfenster
 void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 {
@@ -1337,13 +1372,22 @@ wxRect MutFrame::DetermineFrameSize () {
 
 void MutFrame::CloseAll(WinKind kind)
 {
-  for (size_t i = 0; i < WinAttrs[kind].Count(); i++)
-    if ( WinAttrs[kind][i].Win )
+  for (size_t i = 0; i < WinAttrs[kind].Count(); i++) {
+#ifdef DEBUG
+    std::cerr << "MutFrame::CloseAll: " << i 
+	      << " of " << WinAttrs[kind].Count() << std::endl;
+#endif
+    WinAttr &win = WinAttrs[kind].Item(i);
+    if ( win.Win )
       {
-	WinAttrs[kind][i].Wanted = 2;
-	auimanager.ClosePane(auimanager.GetPane(WinAttrs[kind][i].Win));
-	WinAttrs[kind][i].Win = 0;
+	
+	win.Wanted = 2;
+	auimanager.DetachPane(win.Win);
+	win.Win->Close();
+	//	win.Win->Destroy();
+	win.Win = NULL;
       }
+  }
   auimanager.Update();
 }
 //\}
