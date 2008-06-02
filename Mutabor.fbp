@@ -2,15 +2,14 @@
 <wxFormBuilder_Project>
     <FileVersion major="1" minor="9" />
     <object class="Project" expanded="1">
-        <property name="bitmaps"></property>
         <property name="class_decoration"></property>
         <property name="code_generation">C++|XRC</property>
+        <property name="disconnect_events">1</property>
         <property name="encoding">UTF-8</property>
         <property name="event_generation">connect</property>
         <property name="file">Mutabor</property>
         <property name="first_id">1000</property>
         <property name="help_provider">wxHelpControllerHelpProvider</property>
-        <property name="icons"></property>
         <property name="internationalize">1</property>
         <property name="name">MyProject1</property>
         <property name="namespace"></property>
@@ -22,9 +21,9 @@
         <object class="Dialog" expanded="1">
             <property name="bg"></property>
             <property name="center">wxBOTH</property>
-            <property name="context_help"></property>
+            <property name="context_help">Help window</property>
             <property name="enabled">1</property>
-            <property name="extra_style"></property>
+            <property name="extra_style">wxDIALOG_EX_CONTEXTHELP</property>
             <property name="fg"></property>
             <property name="font"></property>
             <property name="hidden">0</property>
@@ -37,7 +36,7 @@
             <property name="style">wxDEFAULT_DIALOG_STYLE</property>
             <property name="subclass"></property>
             <property name="title">Mutabor configuration</property>
-            <property name="tooltip"></property>
+            <property name="tooltip">toooltip</property>
             <property name="window_extra_style"></property>
             <property name="window_name"></property>
             <property name="window_style"></property>
@@ -98,7 +97,7 @@
                             <property name="proportion">0</property>
                             <object class="wxRadioBox" expanded="1">
                                 <property name="bg"></property>
-                                <property name="choices">&quot;as &amp;amp;relations&quot; &quot;as &amp;amp;tone system&quot;</property>
+                                <property name="choices">&quot;as &amp;relations&quot; &quot;as &amp;tone system&quot;</property>
                                 <property name="context_help">The tone system will be printed either relative or absolute. Select, which one you prefer.</property>
                                 <property name="enabled">1</property>
                                 <property name="fg"></property>
@@ -165,7 +164,7 @@
                                     <object class="wxCheckBox" expanded="1">
                                         <property name="bg"></property>
                                         <property name="checked">1</property>
-                                        <property name="context_help"></property>
+                                        <property name="context_help">Save Editor befor compiling the Mutabor logic</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -180,7 +179,7 @@
                                         <property name="size"></property>
                                         <property name="style">wxCHK_2STATE</property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip"></property>
+                                        <property name="tooltip">save editor window before compiling</property>
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
@@ -217,7 +216,7 @@
                                     <object class="wxCheckBox" expanded="1">
                                         <property name="bg"></property>
                                         <property name="checked">1</property>
-                                        <property name="context_help"></property>
+                                        <property name="context_help">If you enable this, the status windows will be surrounded by the color of the corresponding Mutabor box.</property>
                                         <property name="enabled">1</property>
                                         <property name="fg"></property>
                                         <property name="font"></property>
@@ -232,7 +231,7 @@
                                         <property name="size"></property>
                                         <property name="style">wxCHK_2STATE</property>
                                         <property name="subclass"></property>
-                                        <property name="tooltip"></property>
+                                        <property name="tooltip">Use color bars.</property>
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
@@ -272,7 +271,7 @@
                     <property name="proportion">1</property>
                     <object class="wxBoxSizer" expanded="1">
                         <property name="minimum_size"></property>
-                        <property name="name">bSizer10</property>
+                        <property name="name">ButtonSizer</property>
                         <property name="orient">wxVERTICAL</property>
                         <property name="permission">none</property>
                         <object class="sizeritem" expanded="1">
@@ -291,7 +290,7 @@
                             <property name="proportion">0</property>
                             <object class="wxButton" expanded="1">
                                 <property name="bg"></property>
-                                <property name="context_help"></property>
+                                <property name="context_help">Click here to save the current settings.</property>
                                 <property name="default">1</property>
                                 <property name="enabled">1</property>
                                 <property name="fg"></property>
@@ -307,7 +306,7 @@
                                 <property name="size"></property>
                                 <property name="style"></property>
                                 <property name="subclass"></property>
-                                <property name="tooltip"></property>
+                                <property name="tooltip">Save settings.</property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
                                 <property name="window_style"></property>
@@ -343,7 +342,7 @@
                             <property name="proportion">0</property>
                             <object class="wxButton" expanded="1">
                                 <property name="bg"></property>
-                                <property name="context_help"></property>
+                                <property name="context_help">Click here to discard the changes you made in this dialog.</property>
                                 <property name="default">0</property>
                                 <property name="enabled">1</property>
                                 <property name="fg"></property>
@@ -359,7 +358,7 @@
                                 <property name="size"></property>
                                 <property name="style"></property>
                                 <property name="subclass"></property>
-                                <property name="tooltip"></property>
+                                <property name="tooltip">Discard changes.</property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
                                 <property name="window_style"></property>
@@ -419,12 +418,12 @@
                                 <property name="permission">protected</property>
                                 <property name="pos"></property>
                                 <property name="size"></property>
-                                <property name="style">wxBU_LEFT|wxBU_RIGHT</property>
+                                <property name="style">wxNO_BORDER</property>
                                 <property name="subclass"></property>
                                 <property name="tooltip"></property>
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
-                                <property name="window_style"></property>
+                                <property name="window_style">wxNO_BORDER</property>
                                 <event name="OnButtonClick"></event>
                                 <event name="OnChar"></event>
                                 <event name="OnEnterWindow"></event>
@@ -617,13 +616,13 @@
             <property name="name">CompileDlg</property>
             <property name="pos"></property>
             <property name="size"></property>
-            <property name="style">wxDEFAULT_DIALOG_STYLE</property>
+            <property name="style"></property>
             <property name="subclass"></property>
             <property name="title">Compiling</property>
             <property name="tooltip"></property>
             <property name="window_extra_style"></property>
             <property name="window_name"></property>
-            <property name="window_style">wxNO_BORDER</property>
+            <property name="window_style">wxSIMPLE_BORDER</property>
             <event name="OnActivate"></event>
             <event name="OnActivateApp"></event>
             <event name="OnChar"></event>
@@ -663,7 +662,7 @@
                     <property name="border">5</property>
                     <property name="flag">wxALL|wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxStaticBoxSizer" expanded="0">
+                    <object class="wxStaticBoxSizer" expanded="1">
                         <property name="id">wxID_ANY</property>
                         <property name="label">Source</property>
                         <property name="minimum_size"></property>
@@ -689,7 +688,7 @@
                                 <property name="vgap">0</property>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -698,7 +697,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">File:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -706,7 +705,7 @@
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
                                         <property name="size"></property>
-                                        <property name="style"></property>
+                                        <property name="style">wxALIGN_LEFT</property>
                                         <property name="subclass"></property>
                                         <property name="tooltip"></property>
                                         <property name="window_extra_style"></property>
@@ -740,7 +739,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -749,7 +748,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">IDC_COMP_FILE</property>
                                         <property name="label">No file.</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -757,13 +756,13 @@
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
                                         <property name="size"></property>
-                                        <property name="style"></property>
+                                        <property name="style">wxALIGN_LEFT</property>
                                         <property name="subclass"></property>
                                         <property name="tooltip"></property>
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style">wxSUNKEN_BORDER</property>
-                                        <property name="wrap">-1</property>
+                                        <property name="wrap">0</property>
                                         <event name="OnChar"></event>
                                         <event name="OnEnterWindow"></event>
                                         <event name="OnEraseBackground"></event>
@@ -791,7 +790,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -808,7 +807,7 @@
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
                                         <property name="size"></property>
-                                        <property name="style"></property>
+                                        <property name="style">wxALIGN_RIGHT</property>
                                         <property name="subclass"></property>
                                         <property name="tooltip"></property>
                                         <property name="window_extra_style"></property>
@@ -851,8 +850,8 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_LINE</property>
+                                        <property name="label">00000000</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">line</property>
@@ -897,9 +896,9 @@
                 </object>
                 <object class="sizeritem" expanded="1">
                     <property name="border">5</property>
-                    <property name="flag">wxALL|wxEXPAND</property>
+                    <property name="flag">wxALIGN_CENTER_HORIZONTAL|wxALL|wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxStaticBoxSizer" expanded="0">
+                    <object class="wxStaticBoxSizer" expanded="1">
                         <property name="id">wxID_ANY</property>
                         <property name="label">Statistics</property>
                         <property name="minimum_size"></property>
@@ -925,7 +924,7 @@
                                 <property name="vgap">0</property>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL|wxLEFT|wxRIGHT</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -934,7 +933,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Logics:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -942,7 +941,7 @@
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
                                         <property name="size"></property>
-                                        <property name="style"></property>
+                                        <property name="style">wxALIGN_LEFT</property>
                                         <property name="subclass"></property>
                                         <property name="tooltip"></property>
                                         <property name="window_extra_style"></property>
@@ -976,7 +975,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -985,10 +984,10 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_LOGIC</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
-                                        <property name="minimum_size">30,-1</property>
+                                        <property name="minimum_size">-1,-1</property>
                                         <property name="name">logic</property>
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
@@ -1027,7 +1026,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL|wxLEFT|wxRIGHT</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1036,7 +1035,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Tones:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -1078,7 +1077,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1087,8 +1086,8 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_TONES</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">tones</property>
@@ -1129,7 +1128,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1138,7 +1137,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Tunes:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -1180,7 +1179,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1189,8 +1188,8 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_TUNES</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">tunes</property>
@@ -1298,7 +1297,7 @@
                                 <property name="vgap">0</property>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1307,7 +1306,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Tone systems:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -1349,7 +1348,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1358,10 +1357,10 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_TONESYST</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
-                                        <property name="minimum_size">30,-1</property>
+                                        <property name="minimum_size">-1,-1</property>
                                         <property name="name">tone_system</property>
                                         <property name="permission">protected</property>
                                         <property name="pos"></property>
@@ -1400,7 +1399,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1409,7 +1408,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Intervals:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -1451,7 +1450,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1460,8 +1459,8 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_INTERVALS</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">intervals</property>
@@ -1502,7 +1501,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1511,7 +1510,7 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_STATIC</property>
                                         <property name="label">Read chars:</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
@@ -1553,7 +1552,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="1">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALL|wxEXPAND</property>
+                                    <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                                     <property name="proportion">0</property>
                                     <object class="wxStaticText" expanded="1">
                                         <property name="bg"></property>
@@ -1562,8 +1561,8 @@
                                         <property name="fg"></property>
                                         <property name="font"></property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
-                                        <property name="label">0</property>
+                                        <property name="id">IDC_COMP_READCHARS</property>
+                                        <property name="label">000000</property>
                                         <property name="maximum_size"></property>
                                         <property name="minimum_size"></property>
                                         <property name="name">chars</property>
@@ -1629,7 +1628,7 @@
                                 <property name="fg"></property>
                                 <property name="font"></property>
                                 <property name="hidden">0</property>
-                                <property name="id">wxID_ANY</property>
+                                <property name="id">wxIDC_COMP_MESSAGE</property>
                                 <property name="label">Reading source ...</property>
                                 <property name="maximum_size"></property>
                                 <property name="minimum_size"></property>
@@ -1683,11 +1682,11 @@
                         <property name="fg"></property>
                         <property name="font"></property>
                         <property name="hidden">0</property>
-                        <property name="id">wxID_ANY</property>
-                        <property name="label">Close</property>
+                        <property name="id">wxID_OK</property>
+                        <property name="label">Reading Source …</property>
                         <property name="maximum_size"></property>
                         <property name="minimum_size"></property>
-                        <property name="name">CloseButton</property>
+                        <property name="name">wxID_OK</property>
                         <property name="permission">protected</property>
                         <property name="pos"></property>
                         <property name="size"></property>
@@ -1725,7 +1724,7 @@
                 </object>
             </object>
         </object>
-        <object class="Dialog" expanded="0">
+        <object class="Dialog" expanded="1">
             <property name="bg"></property>
             <property name="center"></property>
             <property name="context_help"></property>
