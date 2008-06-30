@@ -80,30 +80,30 @@ class MutTag : public wxWindow
     int GetKey() { return Key; }
     bool GetIsLogic() { return IsLogic; }
     void InitText(wxDC& dc);
-/*    void ODADrawEntire(DRAWITEMSTRUCT far& drawInfo);
-    void ODAFocus(DRAWITEMSTRUCT far& drawInfo);
-    void ODASelect(DRAWITEMSTRUCT far& drawInfo);*/
-	void OnPaint(wxPaintEvent& WXUNUSED(event));
-	void OnChar(wxKeyEvent& event);
-	void OnLeftUp(wxMouseEvent& event);
-	void OnFocus(wxFocusEvent& event);
-  private:
-	void PaintCenteredText(wxDC &dc, wxString s, int y)
-	{
-		wxCoord w, h;
-		dc.GetTextExtent(s, &w, &h);
-		dc.DrawText(s, (MUTTAGX-w)/2, y);
-	}
-  public:
-	DECLARE_EVENT_TABLE()
+  /*    void ODADrawEntire(DRAWITEMSTRUCT far& drawInfo);
+	void ODAFocus(DRAWITEMSTRUCT far& drawInfo);
+	void ODASelect(DRAWITEMSTRUCT far& drawInfo);*/
+  void OnPaint(wxPaintEvent& WXUNUSED(event));
+  void OnChar(wxKeyEvent& event);
+  void OnLeftUp(wxMouseEvent& event);
+  void OnFocus(wxFocusEvent& event);
+private:
+  void PaintCenteredText(wxDC &dc, wxString s, int y) {
+    wxCoord w, h;
+    dc.GetTextExtent(s, &w, &h);
+    dc.DrawText(s, (MUTTAGX-w)/2, y);
+  }
+
+public:
+  DECLARE_EVENT_TABLE()
 };
 
 BEGIN_EVENT_TABLE(MutTag, wxWindow)
-	EVT_PAINT(MutTag::OnPaint)
-	EVT_CHAR(MutTag::OnChar)
-	EVT_LEFT_UP(MutTag::OnLeftUp)
-	EVT_SET_FOCUS(MutTag::OnFocus)
-	EVT_KILL_FOCUS(MutTag::OnFocus)
+EVT_PAINT(MutTag::OnPaint)
+EVT_CHAR(MutTag::OnChar)
+EVT_LEFT_UP(MutTag::OnLeftUp)
+EVT_SET_FOCUS(MutTag::OnFocus)
+EVT_KILL_FOCUS(MutTag::OnFocus)
 END_EVENT_TABLE()
 
 /*TFont MutFont(8, 0, 0, 0, FW_NORMAL,
@@ -317,6 +317,9 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
 			 const wxSize& size)
  : wxScrolledWindow(parent, -1, pos, size, wxHSCROLL | wxVSCROLL | wxTAB_TRAVERSAL)
 {
+#ifdef DEBUG
+  std::cout << "MutLogicWnd::MutLogicWnd: Box " <<  box << std::endl;
+#endif
 /*  TWindow::Attr.Style |= WS_GROUP | WS_CLIPCHILDREN|
 				WS_CLIPSIBLINGS | WS_VSCROLL | WS_HSCROLL | WS_BORDER;
   Scroller = new TScroller(this, 8, 7, 8, 7);*/
@@ -329,9 +332,9 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
   Ok = false;
   CmBox();
 
-  winAttr=GetWinAttr(WK_LOGIC,box);
+  winAttr = GetWinAttr(WK_LOGIC,box);
+  wxASSERT(!winAttr->Win);
   winAttr->Win = this;
-    //    delete winAttr;
 }
 
 /*void MutLogicWnd::SetupWindow()
