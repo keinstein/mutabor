@@ -64,6 +64,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
   //	if ( LogicOn )
   //		TextBoxWanted[PARENT_KIND] = false;
        	event.Skip();
+	Destroy();
 	
 }
 
