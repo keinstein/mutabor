@@ -359,6 +359,7 @@ Charset=UTF-8^^J}%
 \fi
 % Überschriften als Referenzen einfügen.
 \usepackage{nameref}
+\usepackage{color}
 %\ifhtml
 %\input nameref.4ht
 %\fi
@@ -592,6 +593,8 @@ Charset=UTF-8^^J}%
   \includegraphics#2
   \fi
 }
+
+\newcommand\translate[1]{\textcolor{red}{#1}}
 
 \endinput
 
