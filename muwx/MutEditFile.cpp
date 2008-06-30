@@ -128,7 +128,10 @@ bool MutEditFile::DoLoadFile(const wxString &filename, int WXUNUSED(fileType)) {
 bool MutEditFile::DoSaveFile(const wxString& filename, int WXUNUSED(fileType))
 {
 #if wxUSE_FFILE
-	std::cout << (GetValue().fn_str()) << std::endl;
+#ifdef DEBUG
+  std::cerr << "MutEditFile::DoSaveFile" << std::endl
+	   << (GetValue().fn_str()) << std::endl;
+#endif
     wxFFile file(filename, _T("w"));
     if ( file.IsOpened() && file.Write(GetValue(), autoConverter) )
     {
@@ -204,7 +207,12 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
 			MarkDirty();
 		CompDia = new CompDlg(this);
 		CompDia->SetFileName(origfilename);
-		CompDia->Centre();
+#ifdef DEBUG
+		std::cout << "MutEditile::CmCompile: Parent" 
+			  << CompDia->GetParent() << std::endl;
+#endif
+		if (CompDia->GetParent())
+		    CompDia->Centre();
 		CompDia->Show();
 		CompDia->MakeModal(true);
 		if ( Compile(CompDia, TmpFile.c_str()) )
@@ -243,7 +251,8 @@ void MutEditFile::CmCompAct(wxCommandEvent& event)
 	}
 	if ( !SaveFile(TmpFile) )
 	{
-		wxMessageBox(_("Can't write temporary file."), _("Error"), wxOK | wxICON_HAND);
+		wxMessageBox(_("Can't write temporary file."),
+			     _("Error"), wxOK | wxICON_HAND);
 		CompiledFile = wxEmptyString;
 	}
 	else
@@ -251,7 +260,9 @@ void MutEditFile::CmCompAct(wxCommandEvent& event)
 		if ( modified )
 			MarkDirty();
 		CompDia = new CompDlg(this);
-		CompDia->Show();
+		if (!CompDia->Show()) {
+		  wxLogError(_("The compile dialog could not be loaded."));
+		};
 		CompDia->SetFileName(GetName());
 		if ( Compile(CompDia, TmpFile.c_str()) )
 		{
@@ -266,7 +277,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& event)
 			CompiledFile = wxEmptyString;
 			GoErrorLine();
 		}
-		CompDia->FindWindow(wxID_OK)->Enable(TRUE);
+		CompDia->EnableButton(true);
 		wxRemoveFile(TmpFile);
 	}
 	event.Skip(false);
