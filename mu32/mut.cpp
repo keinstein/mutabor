@@ -2914,15 +2914,13 @@ start_lex:
     /* Ignore whitespace, get first nonwhitespace character */
     while ( anzahl_eingelesene_zeichen ++,
 
-            (c = toupper( intern_fgetc(quelldatei) )) == ' ' 
-          || c == '\t'
-          || c == '\n') {
+            isspace(c = toupper( intern_fgetc(quelldatei) ))) {
 
-       if (c == '\n') 
-	 if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
-           show_line_number(yylloc.first_line);
-       }
-
+      if (c == '\n') 
+	if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
+	  show_line_number(yylloc.first_line);
+    }
+    
     if (c == '"') {
        while (anzahl_eingelesene_zeichen ++,
        
