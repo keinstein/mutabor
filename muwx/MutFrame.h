@@ -2,16 +2,41 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.11 2008/06/02 16:27:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.12 2008/06/30 08:57:17 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/06/02 16:27:08 $
- * \version $Revision: 1.11 $
+ * $Date: 2008/06/30 08:57:17 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.12  2008/06/30 08:57:17  keinstein
+ * Fix UPDATE_UI for CM_PANIC and CM_EXECUTE
+ * MurFileData: new struct
+ * theFrame: new variable
+ * ~MutFrame(): empty event loop
+ * PassEventToEditor(): Runtime Class check for client
+ * OnClose(): implement Veto if logic is active
+ * 	stop logic if running
+ * 	close all clients before deletion to make AUI on reopening happy
+ * CmDoActivate(): Separate Logic window creation from other windows
+ * 	Create box selection submenu
+ * ClearMenuItem(), ClearSubMenu(), RaiseLogic(), CmStop(), CeActivate(): New functions.
+ * CmRoutes(): Raise window and return if we have a route window already.
+ * 	Set window ID.
+ * LogicWinOpen(): remove close button
+ * 	Set unique name
+ * TextBoxOpen(): don't destroy on close
+ * 	set unique window name
+ * StopInDev(): new function.
+ * CmInDevStop(): sooutsourcing to StopInDev().
+ * CmRouteLoad(): New function.
+ * CmRouteSave(), CmRouteSaveAs(): New funcitons.
+ * CloseAll(): Some reorganization.
+ * ActiveWindow, BoxCommandIds: new Attributes.
+ *
  * Revision 1.11  2008/06/02 16:27:08  keinstein
  * Chenged FileNameDialog
  * CmSetTitle(), HasClient(): new functions
@@ -111,12 +136,20 @@ public:
     ///    static wxString FileNameDialog(wxWindow * parent);
     
     void CmDoActivate(wxCommandEvent& event);
+    void RaiseLogic(wxCommandEvent& event);
+    wxMenuItem* ClearMenuItem(int id);
+    void ClearSubMenu(wxMenuItem * item);
+    void DoStop();
     void CmStop(wxCommandEvent& WXUNUSED(event));
     void CmPanic(wxCommandEvent& WXUNUSED(event));
+    void CeExecute(wxUpdateUIEvent& event);
     void CeActivate(wxUpdateUIEvent& event);
     void CeStop(wxUpdateUIEvent& event);
 
     void CmRoutes(wxCommandEvent& event);
+    static void CmRouteLoad(wxCommandEvent& event);
+    static void CmRouteSave(wxCommandEvent& event);
+    static void CmRouteSaveAs(wxCommandEvent& event);
 
     void CmToggleKey(wxCommandEvent& WXUNUSED(event));
     void CmToggleTS(wxCommandEvent& WXUNUSED(event));
@@ -133,6 +166,7 @@ public:
     void CmInDevStop(wxCommandEvent& WXUNUSED(event));
     void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
     void CmInDevPause(wxCommandEvent& WXUNUSED(event));
+    void StopInDev();
     void CeInDevStop(wxUpdateUIEvent& event);
     void CeInDevPlay(wxUpdateUIEvent& event);
     void CeInDevPause(wxUpdateUIEvent& event);
@@ -177,6 +211,10 @@ public:
     wxWindow *actionwindows[MAX_BOX];
     
     wxWindow *client;
+
+    static MutFrame * ActiveWindow;
+
+    int boxCommandIds[MAX_BOX];
     
     DECLARE_EVENT_TABLE()
 };

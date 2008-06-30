@@ -2,15 +2,40 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.14 2008/06/02 16:25:26 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.15 2008/06/30 08:57:17 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/06/02 16:25:26 $
- * \version $Revision: 1.14 $
+ * \date $Date: 2008/06/30 08:57:17 $
+ * \version $Revision: 1.15 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.15  2008/06/30 08:57:17  keinstein
+ * Fix UPDATE_UI for CM_PANIC and CM_EXECUTE
+ * MurFileData: new struct
+ * theFrame: new variable
+ * ~MutFrame(): empty event loop
+ * PassEventToEditor(): Runtime Class check for client
+ * OnClose(): implement Veto if logic is active
+ * 	stop logic if running
+ * 	close all clients before deletion to make AUI on reopening happy
+ * CmDoActivate(): Separate Logic window creation from other windows
+ * 	Create box selection submenu
+ * ClearMenuItem(), ClearSubMenu(), RaiseLogic(), CmStop(), CeActivate(): New functions.
+ * CmRoutes(): Raise window and return if we have a route window already.
+ * 	Set window ID.
+ * LogicWinOpen(): remove close button
+ * 	Set unique name
+ * TextBoxOpen(): don't destroy on close
+ * 	set unique window name
+ * StopInDev(): new function.
+ * CmInDevStop(): sooutsourcing to StopInDev().
+ * CmRouteLoad(): New function.
+ * CmRouteSave(), CmRouteSaveAs(): New funcitons.
+ * CloseAll(): Some reorganization.
+ * ActiveWindow, BoxCommandIds: new Attributes.
+ *
  * Revision 1.14  2008/06/02 16:25:26  keinstein
  * don't include Mutabor.rh
  * implement CM_EXECUTE action
@@ -163,7 +188,12 @@
 #define APPNAME _(PACKAGE_NAME)
 
 wxString RcfFile = wxT("Routes.cfg");
+struct MurFileDataType {
+  wxFileName name;
+  muConvAuto autoConverter;
+} MurFileData;
 
+MutFrame* theFrame = 0;
 bool demo = false;
 
 bool asTS = true;
@@ -210,16 +240,18 @@ BEGIN_EVENT_TABLE(MutFrame, wxFrame)
 //    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
     EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
     EVT_MENU(CM_STOP, MutFrame::CmStop)
-    EVT_UPDATE_UI(CM_EXECUTE, MutFrame::CeActivate)
+    EVT_MENU(CM_PANIC, MutFrame::CmPanic)
+    EVT_UPDATE_UI(CM_EXECUTE, MutFrame::CeExecute)
     EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
     EVT_UPDATE_UI(CM_COMPILE, MutFrame::CeActivate)
     EVT_UPDATE_UI(CM_DOACTIVATE, MutFrame::CeActivate)
     EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
+    EVT_UPDATE_UI(CM_PANIC, MutFrame::CeStop)  
     EVT_MENU(CM_COMPILE, MutFrame::PassEventToEditor)
     EVT_MENU(CM_COMPACT, MutFrame::PassEventToEditor)
     EVT_MENU(CM_ACTIVATE, MutFrame::PassEventToEditor)
     EVT_MENU(CM_GETLINE, MutFrame::PassEventToEditor)
-    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
+//    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
     EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
     EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
@@ -298,7 +330,8 @@ MutFrame::MutFrame(wxWindow *parent,
 }
 
 MutFrame::~MutFrame() {
-   auimanager.UnInit();
+  auimanager.UnInit();
+  while (wxGetApp().Pending()) wxGetApp().Dispatch();
 }
 
 #if wxUSE_TOOLBAR
@@ -337,10 +370,10 @@ void MutFrame::InitToolBar(wxToolBar* toolBar)
 #endif // wxUSE_TOOLBAR
 
 void MutFrame::PassEventToEditor(wxCommandEvent &event) {
-	if (client) {
+	event.Skip(false);
+	if (dynamic_cast<MutEditFile*>(client)) {
 		client->ProcessEvent(event);
 	}
-	event.Skip();
 }
 
 void MutFrame::EventPassOn(wxCommandEvent& event)
@@ -376,23 +409,42 @@ void MutFrame::EventPassOn(wxCommandEvent& event)
 
 void MutFrame::OnClose(wxCloseEvent& event)
 {
-  /*
-    if ( event.CanVeto() && (gs_nFrames > 0) )
-    {
-        wxString msg;
-        msg.Printf(_T("%d windows still open, close anyhow?"), gs_nFrames);
-        if ( wxMessageBox(msg, _T("Please confirm"),
-                          wxICON_QUESTION | wxYES_NO) != wxYES )
-        {
-            event.Veto();
+#ifdef DEBUG
+  std::cout << "MutFame::OnClose: " 
+	    << this << " == " << theFrame << " ?"
+	    << std::endl;
+#endif
 
-            return;
-        }
+  if ( event.CanVeto() && theFrame == this ) {
+    wxString msg;
+    msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
+    if ( wxMessageBox(msg, _("Please confirm closing."),
+		      wxICON_QUESTION | wxYES_NO) != wxYES ) {
+      event.Veto();
+      return;
     }
-  */
-  wxGetApp().UnregisterFrame(this);
+  }
+
+  if (theFrame == this) {
+    DoStop();
+    theFrame = NULL;
+  }
+
+  if (client) {
+#ifdef DEBUG
+    std::cout << "MutFame::OnClose: Deleting Client" << std::endl;
+#endif
+    auimanager.DetachPane(client);
+    client->Close();
+    client = NULL;
+  }
+  //while (wxGetApp().Pending()) wxGetApp().Dispatch();
+  
+
   SaveState();
-  event.Skip();
+  wxGetApp().UnregisterFrame(this);
+  Destroy();
+  event.Skip(false);
 }
 
 
@@ -488,13 +540,14 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 
 // Logic-Arbeit: CmDoActivate, CmStop, CmPanic, CmExecute
 
-MutFrame* theFrame = 0;
 
 void UpdateUIcallback()
 {
 	if ( theFrame )
 	{
-		wxCommandEvent *event1 = new wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED, CM_UPDATEUI);
+		wxCommandEvent *event1 = 
+		  new wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED, 
+				     CM_UPDATEUI);
 		theFrame->AddPendingEvent(*event1);
 	}
 }
@@ -557,19 +610,21 @@ while playing by computer keyboard.)"),
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Check used boxes" << std::endl;
 #endif
+
   // curBox checken
   CheckBoxesUsed();
-  if ( !BoxUsed[curBox] )
-    {
-      curBox = 0;
-      for (int i = 0; i < MAX_BOX; i++)
-	if ( BoxUsed[i] )
-	  {
-	    curBox = i;
-	    break;
-	  }
-    }
+  if ( !BoxUsed[curBox] ) {
+    curBox = 0;
+    for (int i = 0; i < MAX_BOX; i++)
+      if ( BoxUsed[i] )
+	{
+	  curBox = i;
+	  break;
+	}
+  }
+
   SetAktuellesKeyboardInstrument(curBox);
+
   // WinAttrs säubern
 #ifdef DEBUG	
   std::cout << "MutFrame::CmDoActivate: Clear window attributes" << std::endl;
@@ -580,23 +635,41 @@ while playing by computer keyboard.)"),
 	WinAttrs[kind].RemoveAt(i);
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Open other than logic" << std::endl;
+  std::cout << "MutFrame::CmDoActivate: One window mode: " << OWM << std::endl;
 #endif
 
   // Fenster auﬂer curBox setzen
   if ( !OWM )
-    for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
+    for (WinKind kind = WK_KEY; kind < WK_LOGIC; kind++)
       for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
-	if ( WinAttrs[kind][i].Box != curBox && WinAttrs[kind][i].Wanted )
-	  if ( kind == WK_LOGIC )
-	    LogicWinOpen(WinAttrs[kind][i].Box);
-	  else
-	    TextBoxOpen(kind, WinAttrs[kind][i].Box);
+	if ( WinAttrs[kind][i].Box != curBox
+	     &&  WinAttrs[kind][i].Wanted )
+	  TextBoxOpen(kind, WinAttrs[kind][i].Box);
+  
+#ifdef DEBUG
+  std::cout << "MutFrame::CmDoActivate: Set Box selection menu" << std::endl;
+#endif
+  wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
+  wxASSERT(boxSelector->IsSubMenu());
+  wxMenu * boxMenu = boxSelector->GetSubMenu();
+  //  wxID_HIGHEST
+  //  wxMenu * 
+
+  for (size_t i = 0, j=0; i < MAX_BOX; i++) {
+    if (BoxUsed[i]) {
+      LogicWinOpen(i);
+      boxCommandIds[i]=wxNewId();
+      boxMenu->Append(boxCommandIds[i],
+		      wxString::Format(_("Select box %d"),i),
+		      wxString::Format(_("Select box %d as the active Box for box specific commands."),i));
+    }
+  }
   
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Open Logic window" << std::endl;
 #endif
   // curBox-Fenstersetzen
-  LogicWinOpen(curBox);
+  //  LogicWinOpen(curBox);
   LogicOn = true;
   // Toolbar
   /*2	ControlBar->Remove(*ButtonActivate);
@@ -614,6 +687,9 @@ while playing by computer keyboard.)"),
     else
       DontWant(kind, curBox);
   }
+
+
+
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Set window title" << std::endl;
 #endif
@@ -628,11 +704,63 @@ while playing by computer keyboard.)"),
   event.Skip(false);
 }
 
-void MutFrame::CmStop(wxCommandEvent& event)
+wxMenuItem * MutFrame::ClearMenuItem(int id) {
+  wxMenuItem * item = GetMenuBar()->FindItem(id);
+  if (item->IsSubMenu()) 
+    ClearSubMenu(item);
+  return item;
+}
+
+void MutFrame::ClearSubMenu(wxMenuItem * item) {
+
+  wxMenu * menu = item->GetSubMenu();
+#ifdef DEBUG
+  std::cout << "MutFrame::ClearSubMenu: " 
+	    << (item->GetText()).ToUTF8()
+	    << " (" << item << ")"
+	    << std::endl;
+#endif
+  if (! menu) return;
+
+  
+
+  wxMenuItemList& l = menu->GetMenuItems();
+#ifdef DEBUG
+  std::cout << l.GetCount() << " items"
+	    << std::endl;
+#endif
+  while (wxMenuItemList::Node * node = l.GetFirst()) {
+    wxMenuItem * i = node->GetData();
+#ifdef DEBUG
+    std::cout << "MutFrame::ClearSubMenu: ptr" << i << std::endl;
+    std::cout << "MutFrame::ClearSubMenu: handling " 
+	      << (i->GetText()).ToUTF8()
+	      << std::endl;
+#endif
+    if (i->IsSubMenu()) 
+      ClearSubMenu(i);
+    Disconnect(i->GetId(),wxEVT_COMMAND_MENU_SELECTED);
+#ifdef DEBUG
+    std::cout << "MutFrame:: ClearSubMenu: destroying " 
+	      << (i->GetText()).ToUTF8()
+	      << std::endl;
+#endif
+    //    node->GetNext();
+    menu->Destroy(i);
+  }
+}
+
+void MutFrame::RaiseLogic(wxCommandEvent& event) {
+#ifdef DEBUG
+  std::cout << "MutFrame::RaiseLogic:" << event.GetId() << std::endl;
+#endif
+}
+
+void MutFrame::DoStop() 
 {
   if ( LogicOn ) {
     LogicOn = false;
-    CmInDevStop(event);
+    StopInDev();
     Stop();
     // Ampel umschalten
     /*		ControlBar->Remove(*ButtonStop);
@@ -641,26 +769,41 @@ void MutFrame::CmStop(wxCommandEvent& event)
     // Statusleiste
     SetStatus(SG_NOTHING);
     //		StatusBar->SetText("");
-		// Titel
-		SetTitle(APPNAME);
+    // Titel
+    SetTitle(APPNAME);
 		// alle Fenser schlieﬂen
-		for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
-			CloseAll(kind);
-		AktionTraceReset();
-		REPAINT_ROUTE;
-	}
+    wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
+    wxASSERT(boxSelector->IsSubMenu());
+
+    for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
+      CloseAll(kind);
+    AktionTraceReset();
+    REPAINT_ROUTE;
+  }
+}
+
+void MutFrame::CmStop(wxCommandEvent& event)
+{
+  DoStop();
 }
 
 void MutFrame::CmPanic(wxCommandEvent& WXUNUSED(event))
 {
-	if ( LogicOn )
-		Panic();
+  if ( LogicOn )
+    Panic();
 }
+
+void MutFrame::CeExecute(wxUpdateUIEvent& event)
+{
+  //	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
+	event.Enable(!LogicOn);
+}
+
 
 void MutFrame::CeActivate(wxUpdateUIEvent& event)
 {
   //	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
-	event.Enable(!LogicOn);
+  event.Enable(!LogicOn && (dynamic_cast<MutEditFile *>(client)));
 }
 
 void MutFrame::CeStop(wxUpdateUIEvent& event)
@@ -672,36 +815,34 @@ void MutFrame::CeStop(wxUpdateUIEvent& event)
 
 void MutFrame::CmRoutes(wxCommandEvent& event)
 {
-	if ( IsOpen(WK_ROUTE) )
-		ROUTE_WIN->GetParent()->SetFocus();
-	else
-	{
-/*    TMDIChild* curChild = Client->GetActiveMDIChild();
-    TMDIMutChild *Win = new TMDIMutChild(WK_ROUTE, GetWinAttr(WK_ROUTE, 0), *Client, 
-							"Routes", new TRouteWin(0, Module));
-    Win->SetIcon(this, IDI_ROUTE);
-    Win->SetIconSm(this, IDI_ROUTE);*/
-/*    if (curChild && (curChild->GetWindowLong(GWL_STYLE) & WS_MAXIMIZE))
-      Win->Attr.Style |= WS_MAXIMIZE;
-    Win->Create();*/
-
-	if (client) {
-		event.Skip(true);
-		return;
-	}
+  if ( GetId()== WK_ROUTE ) {
+#ifdef DEBUG
+    std::cerr << "MutFrame::CmRoutes: setting Focus" << std::endl;
+#endif
+    auimanager.Update();
+    Raise();
+    return;
+  }
+  
+  if (client) {
+    event.Skip(true);
+    return;
+  }
 
 //	MutFrame *subframe = new MutFrame((wxFrame *) NULL,WK_ROUTE, wxString().Format(_("%s -- Routes"),_(PACKAGE_NAME)),
 //		wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
 //	subframe->SetIcon(ICON(route));
-	int width, height;
-	GetClientSize(&width, &height);
-	client = new MutRouteWnd(this, wxPoint(0, 0), wxSize(width, height));
-	auimanager.AddPane(client,wxAuiPaneInfo().Caption(_("Routes")).CenterPane().PaneBorder(false));
-	auimanager.Update();
-	SetIcon(ICON(route));
+
+  SetId(WK_ROUTE);
+  int width, height;
+  GetClientSize(&width, &height);
+  client = new MutRouteWnd(this, wxPoint(0, 0), wxSize(width, height));
+  auimanager.AddPane(client,wxAuiPaneInfo().Caption(_("Routes")).CenterPane().PaneBorder(false));
+  auimanager.Update();
+  SetIcon(ICON(route));
 
 //	subframe->Show(true);
-  }
+  
 }
 
 // TextBox-Arbeit: ToggleTextBox, TextBoxOpen, CmToggleKey, CmToggleTS
@@ -728,12 +869,18 @@ void MutFrame::LogicWinOpen(int box)
 					  wxSize(width,height));
     wxString Name;
     Name.Printf(_("Logic -- Box %d"),box);
+#ifdef DEBUG
+    std::cout << "Adding pane '" 
+	      << Name.Format(_T("Logic%d"),box).ToUTF8()
+	      << "' with caption '" << Name.ToUTF8() << "'"
+	      << std::endl;
+#endif
     auimanager.AddPane(client,
-		       wxAuiPaneInfo().Name(_("Logic -- Box %d"))
+		       wxAuiPaneInfo().Name(Name.Format(_T("Logic%d"),box))
 		       .Caption(Name)
 		       .Bottom()
 		       .Floatable(true)
-		       .CloseButton(true)
+		       .CloseButton(false)
 		       .MaximizeButton(true)
 		       .Float());
     auimanager.Update();
@@ -774,7 +921,7 @@ void MutFrame::ToggleTextBox(WinKind kind)
 void MutFrame::TextBoxOpen(WinKind kind, int box)
 {
 #ifdef DEBUG	
-	std::cout << "Mutframe::TextBoxOpen: Not implemented" << std::cout;
+  std::cout << "Mutframe::TextBoxOpen: " << box << std::cout;
 #endif
 	char *s = NULL;
 	wxString title;
@@ -835,7 +982,8 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 
 	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
 			   .CloseButton(true).MaximizeButton(true)
-			   .Float().DestroyOnClose(true));
+			   .Float().
+			   Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
 	client->NewText(str, true);
 	auimanager.Update();
 }
@@ -1085,8 +1233,7 @@ void MutFrame::RestoreState()
 
 // Recorder-Knöpfe --------------------------------------------------
 
-void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
-{
+void MutFrame::StopInDev() {
   int nr = 0;
   for ( EDevice *In = InEDevices; In; In = In->Next, nr++)
     if ( In->Mode == 1 || In->Mode == 2 )
@@ -1094,6 +1241,13 @@ void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
         In->Mode = 0;
         InDeviceAction(nr, 0);
       }
+  SetStatus(1-LogicOn);
+}
+
+
+void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
+{
+  StopInDev();
   REPAINT_ROUTE;
   SetStatus(1-LogicOn);
 }
@@ -1283,67 +1437,98 @@ void MutFrame::OnSize(wxSizeEvent& event)
 
 // Route laden, speichern
 
-/*void MutFrame::CmRouteLoad()
+void MutFrame::CmRouteLoad(wxCommandEvent& event)
 {
-  *MurFileData.FileName = 0;
-  if (TFileOpenDialog(MainWindow, MurFileData, 0, "Load Mutabor Routes").Execute() == IDOK)
-  {
-    ifstream is(MurFileData.FileName);
-    if ( is.bad() )
-    {
-      MainWindow->MessageBox("Unable to read this route file.", "Disk error",
-        MB_OK | MB_ICONEXCLAMATION);
-      return;
-    }
-    char *s = (char*) malloc(30000);
-    is.read(s, 30000);
-    s[is.gcount()] = 0;
-    free(RouteConfig);
-    RouteConfig = strdup(s);
-    ScanRoutes(RouteConfig);
-    REPAINT_ROUTE;
-    CmRoutes();
+  // it's our task
+  event.Skip(false);
+
+  wxString filename = FileNameDialog(wxGetApp().GetTopWindow(),
+				     event.GetId());
+  if (!filename) return;
+
+  MurFileData.name.Assign(filename);
+
+  wxFFile file(filename);
+  if (!file.IsOpened()) {
+    wxLogError(_("File '%s' couldn't be loaded"),filename.c_str());
+    return;
   }
+
+  wxString text;
+  if (! file.ReadAll(&text, MurFileData.autoConverter)) {
+    wxLogError(_("File '%s' could be opened, but not loaded."),filename.c_str());
+    return;
+  }
+
+  //  RouteConfig = text;
+  ScanRoutes(text);
+
+  wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,CM_ROUTES);
+  wxGetApp().ProcessEvent(ev);
+  
 }
 
 void
-TMutaborApp::CmRouteSave()
+MutFrame::CmRouteSave(wxCommandEvent& event)
 {
-  if ( *MurFileData.FileName == 0 )
+  event.Skip(false);
+  
+  if (!MurFileData.name.IsOk() )
   {
-    CmRouteSaveAs();
+    CmRouteSaveAs(event);
     return;
   }
-  ofstream os(MurFileData.FileName);
-  if ( os.bad() )
-  {
-    MainWindow->MessageBox("Unable to write this route file.", "Disk error",
-      MB_OK | MB_ICONEXCLAMATION);
+
+  /* not applicable, since the file might not yet exsist
+  if (!MurFileData.name.IsFileWritable()) {
+    wxLogError(_("Cannot write to routes file '%s'."), 
+	       MurFileData.name.GetFullPath().c_str());
     return;
   }
-  WriteRoutes(&RouteConfig);
-  os << "# Mutabor 3.x routes configuration\n" << RouteConfig;
+  */
+
+  wxFFile file(MurFileData.name.GetFullPath(), _T("w"));
+  if (!file.IsOpened()) {
+    wxLogError(_("Cannot open routes file '%s' for writing."),
+	       MurFileData.name.GetFullPath().c_str());
+    return;
+  }
+  
+  wxString RouteConfig;
+  WriteRoutes(RouteConfig);
+  if (file.Write(_T("# Mutabor 3.x routes configuration\n"), 
+		 MurFileData.autoConverter))
+    if (file.Write(RouteConfig, MurFileData.autoConverter)) {
+      file.Close();
+      return;
+    }
+  
+  wxLogError(_("Error writing file '%s'."),
+	     MurFileData.name.GetFullPath().c_str());
+  file.Close();
 }
 
 void
-TMutaborApp::CmRouteSaveAs()
+MutFrame::CmRouteSaveAs(wxCommandEvent& event)
 {
-  if ( *MurFileData.FileName == 0 )
-    strcpy(MurFileData.FileName, "noname.mur");
-  if (TFileSaveDialog(MainWindow, MurFileData, 0, "Save Mutabor Routes").Execute() == IDOK)
-  {
-    ofstream os(MurFileData.FileName);
-    if ( os.bad() )
-    {
-      MainWindow->MessageBox("Unable to write this route file.", "Disk error",
-        MB_OK | MB_ICONEXCLAMATION);
-      return;
-    }
-    WriteRoutes(&RouteConfig);
-    os << "# Mutabor 3.x routes configuration\n" << RouteConfig;
+
+  // it's our task
+  event.Skip(false);
+
+  wxString filename = FileNameDialog(wxGetApp().GetTopWindow(),
+				     event.GetId(),
+				     MurFileData.name.GetFullPath());
+  if (!filename) return;
+  
+  MurFileData.name.Assign(filename);
+  if (!MurFileData.name.IsOk()) {
+    wxLogError(_("The string '%s' is not a valid file name."),
+	       filename.c_str());
+    return;
   }
+
+  CmRouteSave(event);
 }
-*/
 
 wxRect MutFrame::DetermineFrameSize () {
 
@@ -1372,18 +1557,24 @@ wxRect MutFrame::DetermineFrameSize () {
 
 void MutFrame::CloseAll(WinKind kind)
 {
-  for (size_t i = 0; i < WinAttrs[kind].Count(); i++) {
+  for (size_t i = WinAttrs[kind].Count(); i >0; i--) {
 #ifdef DEBUG
-    std::cerr << "MutFrame::CloseAll: " << i 
+    std::cerr << "MutFrame::CloseAll(" << kind << "): " << i 
 	      << " of " << WinAttrs[kind].Count() << std::endl;
 #endif
-    WinAttr &win = WinAttrs[kind].Item(i);
+    WinAttr &win = WinAttrs[kind].Item(i-1);
     if ( win.Win )
       {
 	
 	win.Wanted = 2;
 	auimanager.DetachPane(win.Win);
-	win.Win->Close();
+       	win.Win->Close();
+	//win.Win->Destroy();
+	while (wxGetApp().Pending()) wxGetApp().Dispatch();
+	/*	delete(win.Win); 
+	 */
+	//	win.Win->Close();
+       
 	//	win.Win->Destroy();
 	win.Win = NULL;
       }
