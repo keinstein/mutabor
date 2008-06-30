@@ -40,7 +40,7 @@ extern wxHtmlHelpController * HelpController;
   #define muT(x)  (wxString(x, muCSConv))
   #define mumT(x) _T(x)
 #else
-  #define muT(x) x
+  #define muT(x) wxString(x)
   #define mumT(x) muT(x)
 #endif
 
