@@ -53,7 +53,6 @@ WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
 // global variables
 // ---------------------------------------------------------------------------
 
-wxList MutChildren;
 int gs_nFrames = 0;
 
 //WinKind ActiveWinKind = WK_NULL;
@@ -111,7 +110,6 @@ MutChild::MutChild (WinKind winkind,
 //#endif
 {
 
-    MutChildren.Append(this);
     this->winKind = winkind;
     this->winAttr = winAttr;
     winAttr->Win = this;
@@ -119,36 +117,22 @@ MutChild::MutChild (WinKind winkind,
 
 MutChild::~MutChild()
 {
-    MutChildren.DeleteObject(this);
-    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
-    WinAttrs[winKind].RemoveAt(i,1);
-    //    delete winAttr;
+  deleteFromWinAttrs();
 }
 
-void MutChild::OnClose(wxCloseEvent& event)
-{
+void MutChild::OnActivate(wxActivateEvent& event) {
 #ifdef DEBUG
-  std::cerr << "MutChild::OnClose" << std::endl;
+  std::cout << "MutChild::OnActivate" << std::endl;
 #endif
-    MutChildren.DeleteObject(this);
+  curBox = winAttr->Box;
+}
+
+void MutChild::deleteFromWinAttrs()
+{
     size_t i = WinAttrs[winKind].Index(*(this->winAttr));
     WinAttrs[winKind][i].Win = NULL;
     WinAttrs[winKind].RemoveAt(i,1);
     //    delete winAttr;
-    MutTextBox::OnClose(event);
-}
-
-void MutChild::OnAuiClose(wxAuiManagerEvent& event)
-{
-#ifdef DEBUG
-  std::cerr << "MutChild::OnClose" << std::endl;
-#endif
-    MutChildren.DeleteObject(this);
-    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
-    WinAttrs[winKind][i].Win = NULL;
-    WinAttrs[winKind].RemoveAt(i,1);
-    //    delete winAttr;
-    //    MutTextBox::OnClose(event);
 }
 
 /*void MutChild::OnQuit(wxCommandEvent& WXUNUSED(event))
