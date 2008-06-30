@@ -11,6 +11,7 @@ wxString FileNameDialog(wxWindow * parent,
 			wxString Filename)
 {
   static const wxString logic_sources(_("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"));
+  static const wxString route_sources(_("Mutabor routing file (*.mur)|*.mur|All files (*.*)|*.*"));
 
   wxString title, filetypes, 
     dir(wxEmptyString), name(wxEmptyString) , ext(wxEmptyString);
@@ -30,6 +31,17 @@ wxString FileNameDialog(wxWindow * parent,
   case CM_FILESAVEAS:
     title = _("Enter the new Mutabor file name, please!");
     filetypes = logic_sources;
+    flags = wxFD_CHANGE_DIR | wxFD_OVERWRITE_PROMPT | wxFD_SAVE; 
+    break;
+  case CM_ROUTELOAD:
+    title = _("Which Mutabor route file shall be loaded?");
+    filetypes = route_sources;
+    flags = wxFD_CHANGE_DIR | wxFD_FILE_MUST_EXIST | wxFD_OPEN; 
+    break;
+  case CM_ROUTESAVE:
+  case CM_ROUTESAVEAS:
+    title = _("Enter the new Mutabor route file name, please!");
+    filetypes = route_sources;
     flags = wxFD_CHANGE_DIR | wxFD_OVERWRITE_PROMPT | wxFD_SAVE; 
     break;
   default:
