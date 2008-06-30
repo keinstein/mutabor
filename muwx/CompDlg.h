@@ -3,12 +3,15 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.4 2008/06/02 16:39:17 keinstein Exp $
+ * $Id: CompDlg.h,v 1.5 2008/06/30 08:16:30 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/06/02 16:39:17 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2008/06/30 08:16:30 $
+ * \version $Revision: 1.5 $
  *
  * $Log: CompDlg.h,v $
+ * Revision 1.5  2008/06/30 08:16:30  keinstein
+ * Check if childs exist, when updating data.
+ *
  * Revision 1.4  2008/06/02 16:39:17  keinstein
  * Use CompieleDlg from resource system now
  *
@@ -81,29 +84,39 @@ class CompDlg: public CompileDlg
   wxStaticText * GetLine() { return line; }
   void SetStatus(wxString l, wxString to, wxString tu, 
 		 wxString ts, wxString i, wxString ch) {
-    logic->SetLabel(l);
-    tones->SetLabel(to);
-    tunes->SetLabel(tu);
-    tone_system->SetLabel(ts);
-    intervals->SetLabel(i);
-    chars->SetLabel(ch);
+    if (logic) 
+      logic->SetLabel(l);
+    if (tones)
+      tones->SetLabel(to);
+    if (tunes) 
+      tunes->SetLabel(tu);
+    if (tone_system)
+      tone_system->SetLabel(ts);
+    if (intervals)
+      intervals->SetLabel(i);
+    if (chars)
+      chars->SetLabel(ch);
     Layout();
   }
 
   void SetFileName(wxString s) {
-    filename->SetLabel(s);
+    if (filename)
+      filename->SetLabel(s);
   }
 
   void SetButtonText(wxString s) {
-    wxID_OK->SetLabel(s);
+    if (wxID_OK)
+      wxID_OK->SetLabel(s);
   }
 
   void SetMessage(wxString s) {
-    message->SetLabel(s);
+    if (message)
+      message->SetLabel(s);
   }
 
   void EnableButton(bool enable = true) {
-    wxID_OK->Enable(enable);
+    if (wxID_OK)
+      wxID_OK->Enable(enable);
   }
   /*
     CompDlg( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );
