@@ -1,0 +1,857 @@
+\input{preamble.tex}
+\subject{Referenzhandbuch}
+\externaldocument{handbuch}
+\externaldocument{bedienung}
+\begin{document}
+\ifhtml
+\setcounter{tocdepth}{1}
+\fi
+
+\maketitle
+%\ifhtml\else\clearpage\fi
+\ifhtml\ifhelp\else
+\section*{Availlable formats of this reference}
+You can read and print this reference in the following formats:
+
+\HCode{<?php require_once(\dq \cdoronline{}\urlbase includes/hilfsfkt.inc\dq);?>\Hnewline
+  <div class=\dq dokumentation download tex4ht-vorspann\dq>\Hnewline
+<table class=\dq beitraege\dq>\Hnewline
+  <tbody class=\dq beitraege\dq >\Hnewline
+  <tr class=\dq beitraege\dq >	\Hnewline
+    <th
+      class=\dq beitraege\dq ><a href=\dq
+      \jobname.html\dq class=\dq link\dq>\jobname.html</a></th>\Hnewline
+   <td class=\dq beitraege\dq >The document you are reading currently. </td>\Hnewline
+  </tr>\Hnewline
+  <tr class=\dq beitraege\dq >\Hnewline
+    <th
+      class=\dq beitraege\dq ><?=dateilink(\dq \jobname.ps\cdoronline{}{.bz2}\dq )?></th>\Hnewline
+    <td class=\dq beitraege\dq >PostScript for printing</td>\Hnewline
+  </tr>\Hnewline
+  <tr class=\dq beitraege\dq >\Hnewline
+    <th class=\dq beitraege\dq ><?=dateilink(\dq \jobname.pdf\dq )?></th>\Hnewline
+    <td class=\dq beitraege\dq >PDF for printing</td>\Hnewline
+  </tr>\Hnewline
+  </tbody>\Hnewline
+</table>\Hnewline
+</div>}
+\Css{div.tex4ht-vorspann { 
+    margin-bottom: 2em; 
+    width:30em;
+    width:auto;
+    max-width:30em;
+}}
+\fi
+\else
+\tableofcontents
+\fi
+
+\iffalse
+
+% Nummerierung der Kapitel
+% damit es linear weitergeht (Nach dem Anhang...)
+%
+%\setcounter{chapter}{\value{savedchapter}}%
+%                           % Muss im Bedienungshandbuch 
+%                           % gesetzt werden (vor \appendix)
+%\setcounter{savedchapter}{\value{page}} % muss nach \mainmatter
+%                                % wiederhergestellt werden.
+%\setcounter{section}{0}%
+%\def\thechapter{\arabic{chapter}}% 
+%\global\let\chapter\savedchaptercommand
+%\mainmatter
+%\setcounter{page}{\value{savedchapter}}
+%\makeatletter
+%\xdef\@chapapp{\chaptername}%
+%\ifx\theHchapter\undefined
+%\else
+%\renewcommand\theHchapter    {\arabic{chapter}}
+%\renewcommand\theHfigure     {\theHchapter.\arabic{figure}}
+%\renewcommand\theHtable      {\theHchapter.\arabic{table}}
+%\renewcommand\theHsection    {\theHchapter.\arabic{section}}
+%\def\Hy@chapapp{\Hy@chapterstring}
+%\fi
+%\makeatother
+\fi
+
+
+\hyphenation{Har-mo-nie-na-me
+	     Har-mo-nie-na-men
+	     kon-sis-tent kon-sis-ten-te kon-sis-ten-ter}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+
+\pagestyle{headings}
+
+\chapter{language reference}\label{cha:sprachreferenz}
+\label{eins}
+
+On the one hand the reference manual shall be a short
+\translate{Nachschlagewerk}. On the other hand it is a basic
+description of the logic language of \mutabor{}. It is not intended to
+be 
+
+Das Referenzhandbuch soll einerseits ein kurzes
+Nachschlagewerk sein, andererseits stellt es die Basisbeschreibung
+der Logiksprache \mutabor{} dar. Es ist nicht dafür geeignet, die
+Logiksprache zu erlernen, dafür sei an dieser Stelle auf das
+Bedienungshandbuch verwiesen, sondern gibt bei zweifelhaften
+Fragen exakte Auskünfte. Das Referenzhandbuch ist dafür gedacht,
+die Funktionalität der Logiksprache festzulegen. Wenn ein Benutzer
+von \mutabor{} feststellt, daß eine von ihm programmierte Logik
+nicht so funktioniert, wie er es wünscht, so ist dieses
+Referenzhandbuch die Entscheidungsinstanz, anhand derer man
+feststellen kann, ob das Logikprogramm falsch ist, oder ob
+\mutabor{} nicht korrekt funktioniert.
+Dieser Abschnitt beschreibt die Logiksprache \mutabor{} in der Version 3.0.
+
+
+\chapter{Lexikalische Konventionen}\label{cha:lexik-konv}
+\label{zwei}
+
+Ein Programm besteht aus einem Text, der in einer Datei gespeichert ist.
+Es wird in einer einzigen Phase übersetzt.
+
+\section{Eingabesymbole}\label{sec:eingabesymbole}
+\index{Eingabesymbole}
+\label{zweieins}
+
+Es  gibt fünf Klassen\index{Wortklassen} von Eingabesymbolen:
+Namen\index{Namen},  reservierte  Worte\index{Worte!reservierte},
+Zahlen,
+ Operatoren  und  andere
+Trenner.  Leerzeichen,\index{Leerzeichen} Tabulatorzeichen,
+Vertikal-Tabulatoren,
+Zeilentrenner,\index{Zeilentrenner} Seitenvorschub\index{Seitenvorschub}
+sowie Kommentare\index{Kommentare},
+allgemein mit Zwischenraum  bezeichnet,  werden
+ignoriert,  abgesehen davon,  daß sie zur Trennung direkt
+benachbarter Namen, Zahlen oder reservierter Worte nötig sind.
+
+Wenn  die Eingabe bis zu einem bestimmten Zeichen schon in Eingabesymbole
+zerlegt  wurde,  wird als nächstes
+Eingabesymbol die längstmögliche  Kette
+von Zeichen aufgefasst, die ein Eingabesymbol darstellen kann.
+
+
+\section{Kommentare}\label{sec:kommentare}
+\index{Kommentare}
+\label{zweizwei}
+
+Kommentare\index{Kommentar} werden in doppelte Anführungszeichen ({\tt \dq})
+\index{\dq (Anführungszeichen)}eingeschlossen.
+Kommentare  können  nicht
+verschachtelt\index{Verschachtelung} werden.
+Kommentare dürfen sich über mehrere Zeilen erstrecken.
+
+\section{Namen}\label{sec:namen}
+\label{zweidrei}
+
+Ein Name\index{Namen} besteht aus einer Folge von
+Buchstaben und Ziffern;  das
+erste Zeichen muss ein Buchstabe sein.  Dabei zählen
+der Unterstrich  (\_)\index{\_ (Unterstrich)} und der Apostroph
+({\bf '})\index{' (Apostroph)}
+zu den Buchstaben.\footnote{Der Unterstrich zählt zu den Buchstaben, damit
+man aussagekräftige Namen gut lesbar schreiben kann, z.\,B.
+{\tt LOGIK Drittel\_Ton\_Mutierend} ist besser als
+{\tt LOGIK dritteltonmutierend}
+und der Apostroph zählt als Buchstabe,
+damit man Töne mit einfach oder mehrfach gestrichenen
+Namen versehen kann, z.\,B. {\tt TON e${}'''$ }}
+Große und kleine Buchstaben werden gleich behandelt.
+Namen können beliebig lang sein.
+Zur  Unterscheidung von Namen wird der gesamte Name herangezogen,
+und nicht nur die ersten paar Buchstaben, wie dies bei anderen
+Programmiersprachen üblich ist\index{Signifikanz}.
+
+In den Büchern von \mutabor{} werden die Begriffe {\it Name}\index{Namen}
+und {\it Bezeichner}\index{Bezeichner}
+parallel und mit gleicher Bedeutung verwendet. Ferner werden bei einigen
+Syntaxgraphen auch Begriffe der Art {\it Intervallname}, {\it Tonname},\ldots
+verwendet. Diese Begriffe sind syntaktisch gesehen einfache Namen.
+Es soll damit zum Ausdruck kommen, daß Namen einer bestimmten Art von
+Objekten gemeint sind. Dies gehört prinzipiell nicht zur Syntax der
+Logiksprache, sondern wird erst später semantisch überprüft. Es erhöht
+jedoch das Verständnis, wenn direkt erkennbar ist, welche Art von Namen
+in Frage kommt.
+
+\section{Reservierte Worte}\label{sec:reservierte-worte}
+\label{zweivier}
+
+Die  folgenden  Worte sind reserviert\index{Worte!reservierte}
+ und können  nur  mit  ihrer
+vordefinierten Bedeutung verwendet werden:
+
+%\vspace{1cm}
+\begin{center}
+\begin{tabular}{|llll|}
+	      \hline
+   ANSONSTEN & FORM   & HARMONIE & INTERVALL \\
+   LOGIK  & MIDIIN   & MIDIKANAL & MIDIOUT    \\
+   TASTE     & TON    & TONSYSTEM &   UMSTIMMUNG \\
+   WURZEL    &        &           &              \\
+ \hline
+\end{tabular}
+\end{center}
+%\vspace{1cm}
+
+Ebenso dürfen die folgenden englischen Schlüsselworte
+benutzt werden. Sie sind ebenfalls reserviert und
+dürfen nicht als Namen benutzt werden.
+
+\begin{center}
+\begin{tabular}{|llll|}
+	      \hline
+   ELSE & SHIFTED   & PATTERN & INTERVAL \\
+   LOGIC  & MIDIIN   & MIDICHANNEL & MIDIOUT    \\
+   KEY     & TONE    & TONESYSTEM &  RETUNING \\
+   ROOT    &        &           &              \\
+ \hline
+\end{tabular}
+\end{center}
+
+Alle anderen Wörter dürfen als Namen oder Bezeichner verwendet werden.
+
+\section{Zahlen}\label{sec:zahlen}
+\index{Zahlen}
+\label{zweifuenf}
+
+Zahlen können ganzzahlig oder mit Dezimalpunkt geschrieben werden.
+Eine Schreibweise mit Zehnerexponent ist nicht
+zugelassen.\index{Zahlen} Ferner kann eine Zahl auch mit dem Zeichen
+{\bf \#}\index{\#} beginnen und weitere Hex-Ziffern\index{Hex-Ziffern}
+enthalten. Diese Schreibweise bedeutet, daß die Zahl zur Basis 16
+ausgewertet wird. In dieser Hex-Schreibweise ist kein Dezimalpunkt
+erlaubt, folglich sind nur ganzzahlige Werte darstellbar.
+
+Ähnlich wie bei Namen werden Zahlen im Syntaxdiagramm auch als {\it Faktor}
+oder {\it Verankerungs-Taste} bezeichnet,
+um ihre jeweilige semantische Bedeutung
+hervorzuheben. Es handelt sich aber syntaktisch gesehen um ganz gewöhnliche
+Zahlen.
+
+An einigen Stellen sind nur ganze Zahlen zugelassen (z.\,B. als
+Verankerungs-Taste, Tonsystem-Breite,\ldots) und an anderen Stellen
+sind auch Komma-Zahlen zugelassen, (Tonfrequenz,
+In\-ter\-vall\-gr"o"se,\ldots).
+
+
+
+\chapter{Syntax Schreibweise}\label{cha:syntax-schreibweise}
+\label{drei}
+
+In der Syntax-Darstellung in diesem Buch werden die Grammatikbegriffe
+{\it in eckigen Kästchen} und reservierte Worte und Zeichen {\it in
+ovalen Kästchen} geschrieben. Die Syntax erhält man, indem man auf den
+Pfeilen entlang durch das Syntaxdiagramm läuft.
+Alternative Formulierungen erscheinen dabei als Verzweigungen
+und Wiederholungen ergeben sich, indem das Syntaxdiagramm Zyklen enthält.
+Ein Beispiel:
+
+\input{syn1.pic}
+
+Das Wort {\it TON} muss genau so geschrieben werden, während das Konstrukt
+{\it EinzelTon} noch genauer aufgelöst werden muss. Ferner ergibt sich durch
+die Schleife, daß mehrere Konstrukte von der Art {\it EinzelTon}
+aufeinander folgen können.
+
+
+\chapter{Das Logikprogramm}\label{cha:das-logikprogramm}
+Das Logikprogramm ist der oberste Grammatikbegriff und entspricht
+dem gesamten Programm. Das Logikprogramm selbst ist eine beliebige
+Folge von Deklarationen\index{Deklarationen}.
+Insbesondere ist hervorzuheben, daß auch
+gar nichts, also ein leeres File, ein zulässiges Programm ist.
+In diesem Fall ist keine Logik vorhanden und die normale
+gleichstufig temperierte Stimmung eingestellt.
+
+Es können Intervalle, Töne, Tonsysteme, Umstimmungen, Harmonien,
+Logiken und MIDI-Kanäle deklariert werden. Die einzelnen Elemente können
+in beliebiger Reihenfolge deklariert werden. Insbesondere kann auf
+Elemente Bezug genommen werden, die erst später deklariert werden.
+
+\input{syn2.pic}
+
+\chapter{Intervall}\index{Intervall}\label{cha:intervall}
+
+Eine Intervalldeklaration definiert einzelne Intervalle und die
+dazugehörenden Werte. Intervallnamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Der Wert eines Intervalls ist ein Frequenzverhältnis.
+Der Wert eines Intervalls kann auf eine von drei Arten angegeben werden:
+\bi
+  \item als Zahlenverhältnis,
+  \item als Wurzelausdruck\index{Wurzel} oder
+  \item als Kombination aus anderen Intervallen.
+\ei
+Es bedeutet dabei
+{\tt Zahl1 : Zahl2} das Verhältnis von Zahl1 zu Zahl2 und
+{\tt A WURZEL B} ist die \texttt{A}te Wurzel aus \texttt{B}.
+Wenn Intervalle aus anderen Intervallen zusammengesetzt werden,
+so dürfen keine gegenseitigen Abhängigkeiten entstehen, sondern
+die Werte der Intervalle müssen in konsistenter Form berechenbar sein.
+Alle Intervalle die zum Zusammensetzen anderer Intervalle benutzt werden,
+müssen innerhalb des Logik-Programms deklariert werden.
+Optional kann einem Intervall auch ein Faktor\index{Faktor}
+ vorangestellt werden, dann gilt der Wert dieses Intervalls
+entsprechend mehrfach. Da es sich bei Intervallen eigentlich um
+Frequenzverhältnisse handelt, ergibt sich der Wert eines zusammengesetzten
+Intervalles multiplikativ. Zum Beispiel wird das Intervall
+\begin{verbatim} 
+INTERVALL I = 3 oktave - 5 terz + 17 cent 
+\end{verbatim}
+ nach folgendem Schema
+berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
+
+\input{syn3.pic}
+
+\input{syn5.pic}
+
+\chapter{Ton}\label{cha:ton}
+\index{Ton}
+
+Eine Tondeklaration definiert einzelne Töne und die
+dazugehörenden Werte. Tonnamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Der Wert eines Tons ist eine Zahl, die der Frequenz des Tons
+entspricht. Der Wert eines Tons kann eine einfache Zahl sein oder
+sich aus einem Bezugston\index{Bezugston}
+ ergeben, der möglicherweise
+um bestimmte Intervalle verschoben wird.
+Im ersteren Fall wird die Frequenz\index{Frequenz}
+ des Tons direkt angegeben.
+Im anderen Fall folgt nach dem Gleichheitszeichen der Name eines
+Bezugstons, sowie eine Folge von Intervallen, mit denen die Frequenz des
+Bezugstons multipliziert wird, bis sie den gewünschten Ton ergibt.
+Grundsätzlich müssen alle Töne, die als Bezugston herangezogen werden,
+im Logikprogramm definiert sein. Ferner darf die Definition aller Töne
+keine gegenseitigen Abhängigkeiten enthalten.
+
+Sämtliche Töne ergeben nach deren Berechnung immer eine feste Frequenz.
+Ein Tonname steht also als Synonym für eine
+absolute Frequenz\index{Frequenz!absolute}, deren
+Wert sich multiplikativ ergibt. Beispiel:
+\begin{verbatim} 
+TON  b = c - 2 quint + oktave 
+\end{verbatim}
+wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) * \mathtt{quint}^{-2} * \mathtt{oktave}\].
+
+\input{syn4.pic}
+
+
+
+\chapter{Tonsystem}\label{cha:tonsystem}
+\index{Tonsystem}
+Eine Tonsystemdeklaration definiert einzelne Tonsysteme und die
+dazugehörenden Werte. Tonsystemnamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Ein Tonsystem besteht aus einer Verankerungstaste\index{Verankerungstaste},
+einer Menge von Tönen
+und einem Periodenintervall\index{Periodenintervall}.
+Das Periodenintervall kann auch aus mehreren Intervallen
+kombiniert werden.
+Die Fundamentaltonleiter wiederum
+besteht aus einer Folge von Tönen, die in eckigen Klammern
+``{\bf [ ]}''\index{[ ] (eckige Klammern)}
+ stehen und durch Kommata getrennt sind.
+Sie entspricht einem Bereich auf der Klaviatur. Die Zuordnung der Töne
+zu den Tasten ergibt sich durch die Verankerungstaste.
+Sie entspricht der MIDI-Nummer\index{MIDI!Nummer} des ersten Tones der
+Fundamentaltonleiter.\footnote{Das eingestrichene $c'$ entspricht
+der MIDI-Tastennummer 60.}
+Von dieser Position aus werden nach rechts folgend die weiteren Töne
+den Klaviaturtasten zugeordnet. Die nächste Taste rechts daneben entspricht
+folglich dem zweiten Ton der Fundamentaltonleiter, etc\ldots\ .
+Wenn nach diesem Schema
+alle Töne der Fundamentaltonleiter zugeordnet sind, wird die gesamte
+Fundamentaltonleiter sowohl nach unten, wie nach oben wiederholt und
+dabei um das Periodenintervall\label{Periodenintervall}
+verschoben, bis die Grenzen der Klaviatur erreicht sind.
+
+Bei der Deklaration der Fundamentaltonleiter\index{Fundamentaltonleiter}
+dürfen einzelne Töne fehlen, nicht jedoch die trennenden Kommata.
+Diese fehlenden Töne bewirken,
+daß die entsprechende Taste keinen Ton erzeugt.
+Fehlende Töne werden bei der Zuordnung
+$Klaviaturtaste \rightarrow Ton$ normal
+mitgezählt, als wären sie vorhanden.
+
+
+
+\input{syn6.pic}
+
+
+\chapter{Umstimmung}\label{cha:umstimmung}
+\index{Umstimmung}
+Eine Umstimmungsdeklaration definiert einzelne Umstimmungen und die
+dazugehörenden Werte. Umstimmungsnamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Eine Umstimmung enthält Regeln, nach denen die aktuelle Stimmung
+\index{Stimmung!aktuelle} zu
+verändern ist. Der Wert der Änderung kann sowohl absolut als auch
+relativ zum alten Zustand angegeben werden. Bei einer absoluten Änderung
+wird eine Zahl oder ein symbolischer Parameter angegeben, der den
+neuen Wert darstellt, ohne Rücksicht auf den vorherigen Zustand.
+Bei einer relativen Änderung wird der bisherige Wert als Bezugswert
+genommen und um einen gewissen Betrag verändert. Semantisch bedeutet das
+Symbol {\bf @}\index{\sourcecode{@}} `{\it der alte Wert}',
+auf den Bezug genommen werden soll.
+
+Falls die Umstimmung von einem oder mehreren Parametern\index{Parameter}
+ abhängig sein soll,
+so ist für jeden Parameter\index{Parameter!symbolischer Name}
+ ein symbolischer Parameter-Name anzugeben.
+Ein Parameter-Name kann später im Umstimmungs-Ausdruck benutzt werden.
+
+\input{syn8.pic}
+
+
+Es gibt sieben Arten von Umstimmungs-Ausdrücken, die jeweils einzelne
+Merkmale der aktuellen Stimmung ver\-än\-dern:
+
+\input{syn7.pic}
+
+\begin{description}
+  \item[Umstimmung-Verankerung]\index{Umstimmung!Verankerung}
+      entspricht einer Verschiebung
+      der Fundamentaltonleiter. Dabei wird angegeben, wo sich die
+      neue Verankerungs-Taste befinden soll. Diese neue Verankerungstaste
+      behält ihre Frequenz bei und alle anderen Töne ergeben sich,
+      indem relativ zur neuen Verankerungstaste die gesamte
+      bisherige Intervallstruktur\index{Intervallstruktur}
+      übernommen wird.
+
+      Im allgemeinen folgt aus einer Veränderung der Verankerungstaste auch
+      eine Veränderung der Töne.
+
+      \input{syn9.pic}
+
+      \input{syn26.pic}
+
+  \item[Umstimmung-Breite]\index{Umstimmung!Breite}
+      entspricht einer Veränderung der Breite
+      der Fundamentaltonleiter.\index{Fundamentaltonleiter!Breite der}
+      Der erste Ton der Fundamentaltonleiter bleibt erhalten und alle
+      Töne rechts davon werden im aktuellen Zustand festgehalten.
+      Dann wird abgezählt, wieviele der festgehaltenen Töne benötigt
+      werden, um die neue Breite der Fundamentaltonleiter zu erhalten.
+      Diese Töne bilden dann die neue Fundamentaltonleiter.
+      Das Intervall von der Verankerungstaste zur ersten Taste nach der
+      Fundamentaltonleiter ergibt das neue Periodenintervall.
+
+      Im allgemeinen folgt aus der Veränderung der Breite auch eine Veränderung
+      des Periodenintervalls. Eine Verkürzung der Breite, die zu einer
+      Breite kleiner 1 führt, wird ignoriert. Eine Verbreiterung, die
+      zu einer Breite von mehr als 60 Tasten führt, wird ignoriert.
+
+      \input{syn10.pic}
+
+
+  \item[Umstimmung-Töne]\index{Umstimmung!Töne}
+      entspricht einer Änderung einzelner Töne
+      innerhalb der Fundamentaltonleiter.
+      Hier wird für jeden Ton der Fundamentaltonleiter ein Rechenausdruck
+      angegeben, um den sich der Ton zu verändern hat. Diese Rechenausdrücke
+      sind durch Kommata getrennt und beziehen sich in ihrer Reihenfolge
+      auf die entsprechenden Töne, wie sie bei einem Tonsystem
+      angegeben werden.
+      Soll ein Ton unverändert
+      erhalten bleiben, so ist dafür das Symbol {\tt @}\index{\sourcecode{@}}
+      zu schreiben, weil
+      `{\it nichts}' bedeutet, daß der Ton stumm geschaltet wird.
+      Falls die Anzahl der Rechenausdrücke kleiner ist, als die
+      Breite der Fundamentaltonleiter, so bleiben die überzähligen Töne
+      unverändert. Falls die Breite der Fundamentaltonleiter kleiner ist,
+      als die Anzahl der Rechenausdrücke, so bleiben die
+      überzähligen Rechenausdrücke ohne Effekt.
+
+      \input{syn11.pic}
+
+      \input{syn12.pic}
+
+  \item[Umstimmung-Periode]\index{Umstimmung!Periode}
+      entspricht einer Änderung des
+      Periodenintervalls\index{Periodenintervall}.
+      Hier wird der Wert des
+      Periodenintervalls verändert, so daß die Töne der Fundamentaltonleiter
+      erhalten bleiben, aber alle anderen Töne neu berechnet werden,
+      da sie sich aus der Fundamentaltonleiter und der Periodenverschiebung
+      ergeben.
+
+      \input{syn13.pic}
+
+
+
+  \item[Umstimmungs-Bund]\index{Umstimmung!Bund}
+      Ein Umstimmungsbund umfasst eine Folge von
+      Aktionen.\index{Aktionen} Die einzelnen
+      Aktionen können andere Umstimmungen,
+      Tonsysteme oder Logiken aufrufen, oder auch MIDI-Nachrichten
+      senden. Dabei dürfen keine gegenseitigen
+      Abhängigkeiten entstehen. Die einzelnen Aktionen werden in der
+      aufgeführten Reihenfolge ausgeführt.
+      Die Parameter\index{Parameter} eines
+      Umstimmungsbundes können an die einzelnen Aufrufe weitergegeben
+      werden, sofern der aufgerufene Name eine Umstimmung ist und
+      diese Umstimmung auch entsprechend viele Parameter akzeptiert.
+      Die mitgegebenen Parameter werden in der gleichen Reihenfolge
+      den Parameter-Namen der Umstimmung zugeordnet.
+
+
+      \input{syn14.pic}
+
+      \input{syn28.pic}
+
+      \input{syn23.pic}
+
+      \input{syn17.pic}
+
+
+    \item[Umstimmungs-Alternative]\index{Umstimmung!Alternative} Eine
+      Umstimmungs-Alternative ermöglicht die Auswahl einer von
+      mehreren Alternativen in Abhängigkeit eines
+      Parameters\index{Parameter} der Umstimmung (der
+      Selektor\index{Selektor}).  Die Alternativen bestehen jeweils
+      aus der Konstanten, die einen der möglichen Fälle bestimmt, und
+      einer Folge von Aktionen, welche durchgeführt werden, falls die
+      Auswahl für diese Alternative zutrifft. Die einzelnen Aktionen
+      einer Alternative sind mit Komma (\texttt{,}) getrennt, während
+      komplette Alternativen nicht durch ein besonderes Trennzeichen
+      getrennt sind. Die Konstanten der einzelnen Alternativen müssen
+      ganzzahlig und eindeutig sein. Am Ende der Alternativen darf
+      einmalig die Spezialkonstante {\tt ansonsten}\index{Ansonsten}
+      stehen. Falls der Selektor mit einer der Konstanten
+      übereinstimmt, wird diese Alternative durchgeführt. Falls der
+      Selektor mit keiner Konstanten übereinstimmt und die
+      Spezialkonstante {\tt ansonsten} vorhanden ist, wird die
+      Alternative des {\tt ansonsten}-Zweigs durchgeführt. Falls der
+      Selektor mit keiner Konstanten übereinstimmt und die
+      Spezialkonstante {\tt ansonsten} nicht vorhanden ist, wird keine
+      der Alternativen durchgeführt, der Aufruf dieser Umstimmung
+      bleibt in diesem Fall folgenlos.
+
+      \input{syn16.pic}
+
+      \item[Aktion-MIDI-Out]\index{Aktion!MIDI-Out}
+	MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
+	 eingeleitet und
+sind eine in runde Klammern eingeklammerte
+und durch Kommata getrennte Folge von Zahlen. Bei Zahlen ist die sedezimale
+Schreibweise zulässig (\#{\it ziffern}).\index{\#} Die Zahlen
+müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
+Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
+
+      \input{syn22.pic}
+
+\end{description}
+
+\chapter{Harmonie}\label{cha:harmonie}
+\index{Harmonie}
+
+Eine Harmoniedeklaration definiert einzelne Harmonien und die
+dazugehörenden Werte. Harmonienamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Der Wert einer Harmonie ist eine Folge von Tasten-Nummern,\index{Tasten!Nummer}
+welche einzelne Tasten innerhalb der Fundamentaltonleiter identifizieren.
+Die Tasten der Klaviatur, welche außerhalb der Fundamentaltonleiter
+stehen, werden in die Fundamentaltonleiter hineinprojiziert und
+bilden die Projektionstonleiter,\index{Projektionstonleiter}
+welche die gleiche Breite
+hat, wie die Fundamentaltonleiter, aber stattdessen die Information
+enthält, welche (projizierten) Tasten (Tonigkeiten\index{Tonigkeit})
+gerade gedrückt sind.
+Eine Harmonie wiederum wird erkannt, wenn in der Projektionstonleiter genau
+die angegebenen Tastennummern gedrückt sind. Dabei können einzelne
+Tasten unberücksichtigt bleiben. Die entsprechenden Tastennummern sind
+durch einen Stern (*)\index{*} gekennzeichnet.
+Optional kann eine Bezugstaste\index{Bezugstaste}\index{Tasten!Bezugs-}
+mit angegeben werden.
+Ihr Wert ändert nicht das Harmonie-Erkennungsmuster, sondern gibt
+bei der Harmonieform-Analyse eine relative Verschiebung
+der Bezugstonigkeit\index{Bezugstonigkeit}
+ in dem Wert \texttt{ABSTAND}\index{ABSTAND} an.
+Falls keine Bezugstaste angegeben ist, so wird ihr Wert als $0$ angenommen,
+also ohne Verschiebung der Bezugstonigkeit.
+
+\input{syn15.pic}
+
+
+
+\chapter{Logik}\label{cha:logik}
+\index{Logik}
+Eine Logikdeklaration definiert einzelne Logiken und die
+dazugehörenden Werte. Logiknamen dürfen nicht doppelt definiert
+werden, sie dürfen jedoch gleiche Namen tragen,
+wie Objekte einer anderen Art.
+Logiken werden durch einen Auslöser\index{Auslöser} aktiviert und
+bestehen aus einer Einstimmung\index{Einstimmung}
+ und einer Menge von Anweisungen\index{Anweisung!Menge von}.
+Die Einstimmung darf ein Tonsystem oder eine Umstimmung sein.
+Die Einstimmung darf fehlen, in diesem Fall wird die vorherige Stimmung
+beibehalten. Die Menge der Anweisungen darf ebenfalls leer sein, in diesem
+Fall bleibt die Logik in der aktuellen Stimmung stehen.
+Eine Anweisung wiederum besteht ebenfalls aus einem Auslöser, sowie einer
+Liste von Aktionen.
+Die Aktionen dürfen der Aufruf einer Umstimmung, eines Tonsystems
+oder einer Logik sein, oder das Senden einer MIDI-Nachricht.
+
+Grundsätzlich existieren zwei Mengen von Auslösern: Die Auslöser, welche
+eine der Logiken aktivieren, und die Auslöser, die innerhalb der
+gerade aktiven Logik die Anweisungen anwählen. Erstere nennen wir
+{\it globale Auslöser}\index{Auslöser!globale}
+ und letztere {\it lokale Auslöser}\index{Auslöser!lokale}. Beim Eintreffen
+eines Ereignisses wird zuerst die Menge der globalen Auslöser
+und dann die Menge der lokalen Auslöser überprüft, ob das Ereignis
+den Auslöser auslöst. Innerhalb der globalen und lokalen Auslöser wird
+in der Reihenfolge ihrer Deklaration gesucht und beim ersten zutreffenden
+Auslöser die Suche beendet.
+Wenn ein globaler Auslöser zutrifft, so wird in die entsprechende Logik
+gewechselt. Wenn ein lokaler Auslöser zutrifft, so werden die entsprechenden
+Aktionen innerhalb der aktuellen Logik aufgerufen.
+Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
+{\tt ansonsten}\index{ansonsten} nicht erlaubt.
+
+\input{syn24.pic}
+
+\input{syn27.pic}
+
+\section{Auslöser}\label{sec:ausloser}
+\index{Auslöser}
+
+Auslöser können wahlweise eine der 26 Buchstabentasten, eine Harmonie,
+eine Harmonieform,
+ein MIDI-Ereignis oder der Spezialauslöser {\tt ansonsten} sein.
+
+\input{syn18.pic}
+
+\subsection{Tasten}\index{Tasten}\label{sec:tasten}
+
+Dieser Auslöser\index{Auslöser!Taste}
+ besteht aus dem Wort {\it Taste}\index{Tasten}, gefolgt von einem der
+26 Buchstaben. Wenn innerhalb von \mutabor{} die angegebene Taste auf der
+Tastatur gedrückt wird, so gilt dieser Auslöser als erfüllt.
+Der Auslöser bezieht sich jeweils auf das Instrument bzw.\ MIDI-Kanal,
+das vorher
+mit den Zifferntasten angewählt wurde. Man kann also nur die
+Instrumente/MIDI-Kanäle 1--9 mit einem Tasten-Auslöser steuern.
+
+      \input{syn19.pic}
+
+\subsection{Harmonien}\label{sec:harmonien}
+\index{Harmonien}
+Harmonie-Auslöser\index{Auslöser!Harmonie}
+ können wahlweise eine Harmonie oder eine Harmonieform
+\index{Auslöser!Harmonie-Form}
+erkennen. Die Harmonie wird beim Namen genannt und die enthaltenen
+Tasten-Nummern beziehen sich auf die entsprechenden Ton-Nummern der
+Fundamentaltonleiter\index{Fundamentaltonleiter}.
+Alle gedrückten Tasten werden in die
+Fundamentaltonleiter hineinprojiziert und das entstehende Tastenmuster
+wird mit der Harmonie verglichen. Bei Übereinstimmung gilt die
+Harmonie als erkannt. Tasten, die in der Harmonie mit einem
+Stern (*)\index{*} gekennzeichnet sind, werden bei diesem
+Vergleich nicht berücksichtigt.
+Einschränkenderweise kann man mit der Vortaste\index{Vortaste} angeben,
+welche Tonigkeit\index{Tonigkeit}
+der tiefste Ton haben muss, damit diese Harmonie gilt. Entsprechend muss
+bei Angabe der Nachtaste\index{Nachtaste} der höchste Ton
+die Tonigkeit der Nachtaste
+haben. Bei Angabe von Vortaste und Nachtaste müssen beide Bedingungen
+erfüllt sein. Die Tonigkeit eines Tons bezieht sich hier auf die Breite
+der aktuellen Fundamentaltonleiter.\footnote{Diese Breite ist nicht
+auf 12 festgelegt, sondern in weiten Grenzen frei wählbar.}
+Wenn Vortaste oder Nachtaste eine Tonigkeit haben, die nicht in der
+Harmonie vorkommt, so kann diese Harmonie nicht gespielt werden, da sie
+sich selbst widerspricht. Solche Harmonien sind '{\it unmögliche}'
+Auslöser\index{Auslöser!unmögliche}
+ und werden mit einer Warnung gekennzeichnet. Praktisch
+bleiben sie ohne Effekt, da sie nie zutreffen können.
+
+Bei einer Harmonieform\index{Harmonieform} wird überprüft,
+ob die Harmonie relativ zu jedem
+Ton der Fundamentaltonleiter zutrifft. Wird eine solchermaßen
+verschobene Harmonie erkannt, gilt der Auslöser als erfüllt
+und der Wert \texttt{ABSTAND}\index{ABSTAND} wird entsprechend der Harmonieanalyse gesetzt.
+
+Wenn bei der Harmonie eine Bezugstaste\index{Bezugstaste}
+ angegeben wurde, dann wird
+die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
+
+    \input{syn20.pic}
+
+\subsection{MIDI-Ereignisse}\index{Auslöser!MIDI-Ereignis}\label{sec:midi-ereignisse}
+MIDI-Ereignisse werden mit dem Wort {\it MIDIIN}\index{MIDIIN}
+eingeleitet und
+sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
+Schreibweise zulässig (\#{\it ziffern}).\index{\#}
+Die erste Zahl muss im Bereich von
+128 bis 255 liegen, also ein Status-Byte sein. Alle weiteren Zahlen
+müssen im Bereich von 0 bis 127 liegen, also Daten-Bytes sein.
+Beim Status-Byte müssen die unteren vier Bits (Kanal-Nummer) auf Null stehen.
+Die tatsächliche Kanalnummer wird dem jeweiligen
+Instrument/MIDI-Kanal zugeordnet,
+so daß ein MIDI-Ereignis sich jeweils auf das richtige
+Instrument/MIDI-Kanal bezieht.
+Die Status-Bytes\index{Status-Byte}
+ {\it Note-On\index{Note-On} (\#90)}, {\it Note-Off\index{Note-Off}
+  (\#80)} und
+{\it System-Byte\index{System-Byte}
+ (\#F0 - \#FF)} werden nicht in die MIDI-Analyse
+einbezogen.
+
+    \input{syn21.pic}
+
+\section{Aktionen}\index{Aktionen}\label{sec:aktionen}
+
+Aktionen werden innerhalb einer Logik ausgelöst und können wahlweise
+ein Tonsystem aufrufen, eine Umstimmung aufrufen,
+zu einer Logik wechseln oder eine MIDI-Nachricht
+senden. Beim Aufruf einer Umstimmung müssen genau so viele Parameter\index{Parameter}
+mitgegeben werden, wie die aufgerufene Umstimmung benötigt. Die mitgegebenen
+Parameter werden in der gleichen Reihenfolge den Parameter-Namen
+der Umstimmung zugeordnet. Als Parameter können Zahlen angegeben werden,
+sowie der Wert {\it ABSTAND}\index{ABSTAND}.
+Der Wert ABSTAND entspricht den Gegebenheiten der
+zuletzt durchgeführten Harmonie-FORM-Analyse, wobei der Wert
+ABSTAND bis zur nächsten Harmonie-FORM-Analyse beibehalten wird.
+
+Eine Logik kann eine einzelne Aktion ausführen oder eine in geschweiften
+Klammern stehende Aktions-Liste aus\-füh\-ren. Im Falle der Aktions-Liste
+werden die einzelnen Aktionen der Liste in genau der angegebenen
+Reihenfolge ausgeführt.
+
+
+\subsection{MIDI-Ausgaben}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
+\index{Aktion!MIDI Ausgabe}
+
+MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
+ eingeleitet und
+sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
+Schreibweise zulässig (\#{\it ziffern}). Die Zahlen
+müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
+Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
+
+    \input{syn22.pic}
+
+\chapter{MIDI-Kanäle}\label{cha:midi-kanale}
+\index{MIDI!Kanal}
+\label{MIDIKANAL}
+
+Eine MIDI-Kanal-Deklaration definiert die Zuordnung, auf welchen
+MIDI-In-Kanal \mutabor{} reagieren soll, und wieviele MIDI-Out-Kanäle
+den einzelnen Eingabekanälen zugeordnet werden. Dies ist für die
+Tonerzeugung nach dem Multi-16-Verfahren\index{Multi-16-Verfahren}
+ nötig. Wird als
+Synthesizer-Treiber das Modell FB-01\index{FB-01} eingestellt, so gilt nur
+die Angabe des MIDI-In-Kanals, der Ausgabekanal wird ignoriert.
+Die MIDI-In-Kanäle werden auch als {\it Instrumente} bezeichnet, da
+für jeden MIDI-In-Kanal separat das gesamte Logikprogramm gilt.
+Es können bis zu 16 Instrumente gleichzeitig und in
+verschiedenen Logiken spielen.
+Werden alle 16 Instrumente/MIDI-Kanäle
+und das Multi-16-Verfahren benutzt, so kann jedes Instrument nur
+noch einen einzigen
+Ton gleichzeitig spielen, da nicht mehr als eben diese 16 Midikanäle
+auch als Ausgabe-Kanäle verfügbar sind. Beim Modell FB-01 von Yamaha wird
+eine spezielle System-exklusive Ansteuerungsmethode verwendet,
+so daß hier bis zu 16 Instrumente zu je 16 gleichzeitigen Tönen
+spielbar sind.
+
+Beim Multi-16-Verfahren wird
+jedem Eingabekanal ein Bereich von MIDI-Out-Kanälen zugeordnet. Die Größe
+dieses Bereichs entspricht der Anzahl Töne,
+die mit diesem Eingabekanal gleichzeitig gespielt werden können.
+Die Kanal-Information des empfangenen Statusbytes bestimmt, für
+welchen Eingabekanal die Meldung gilt.
+Jeder Eingabekanal hat für sich das gesamte Logik-Programm
+zur Verfügung und arbeitet unabhängig von den anderen Eingabekanälen.
+Bei der Analyse einer Harmonie und bei der Analyse einer MIDI-in-Nachricht
+wird berücksichtigt, auf welchen Eingabekanal es sich bezieht.
+Auf dem Bildschirm kann mit den Zifferntasten 1 bis 9 zwischen den
+Eingabekanälen 1 bis 9 umgeschaltet werden. Ein Tasten-Auslöser
+bezieht sich immer auf den am Bildschirm angezeigten Eingabekanal.
+Falls keine MIDI-Kanäle deklariert werden, und auch keine Kanalzuordnung
+in der Konfigurationsdatei angegeben ist,
+gilt die Deklaration
+\begin{verbatim}
+	MIDIKANAL  1  ->  1 - 16
+\end{verbatim}
+als automatisch gegeben.
+
+\input{syn25.pic}
+
+\section{Worterklärungen}\label{sec:worterklarungen}
+\begin{description}
+\item[Taste] Die Klaviatur-Tasten werden als Abstand in
+  Tastatur-Halbtönen zur Verankerungstaste angegeben. Die
+  Verankerungstaste hat somit die Nummer 0, die nächste Taste weiter
+  rechts die Nummer 1, die nächste die 2 usw.
+
+\item[Selektor] Der Selektor einer Umstimmungs-Alternative ist der
+  Parameter, nach dem sich die Alternativen ausrichteten. In der Regel
+  ist dies ein Parameter (d.\,h. der Parametername) der Umstimmung und
+  repräsentiert so eine ganze Zahl.
+
+\item[Buchstabe] Hier können sie einen der 26 Standard-Buchstaben des
+  lateinischen Alphabets angeben (also keine Umlaute). Wenn Sie dann
+  auf der Computer"=Tastatur diese Taste drücken wird das zugeordnete
+  Ereignis ausgelöst. Es wird dabei nicht zwischen Klein- und
+  Großbuchstaben unterschieden.
+
+\item[Verankerungs-Taste] Die Verankerungs-Taste ist die
+  Klaviatur-Taste, bei der die Fundamentaltonleiter beginnt und wird
+  als MIDI-Nummer der Taste angegeben (also als Zahl). Das
+  eingestrichene c (c') hat die Nummer 60, die anderen Tasten sind
+  aufsteigend bzw. absteigend durchnummeriert, d.\,h.  c\#' hat die
+  Nummer 61, d' die 62 usw.
+
+\item[Konstanten] Die Konstanten ganze Zahlen, die festlegen, bei
+  welchem Wert des Selektors in die
+  darauf folgende Umstimmung verzweigt wird.
+
+\item[Namen] Viele Aufrufe und Zuordnungen laufen in \mutabor{}
+  über die Namen ab. Beim deklarieren eines jeden Objektes müssen Sie
+  diesem einen Namen geben, den Sie später als Referenz in anderen
+  Deklarationen angeben können.
+
+\item[Zahlen] Zahlen können in Mutabor als Ganze Zahlen oder
+  Dezimalzahlen (mit Punkt als Komma) angegeben werden.
+
+\item[MIDI-Werte] MIDI-Werte sind ganze Zahlen zwischen 0 und 255, die
+  von MIDI-Geräten als Befehle und Daten ausgewertet werden.
+  Zusätzlich ist hier die hexadezimale Schreibweise erlaubt, der ein
+  Gatterzeichen (\#) voran zu stellen ist, also z.\,B. \#9C, \#A0, \#78,
+  \#E0 \dots
+\end{description}
+
+%\chapter{Konfiguration}
+%\index{Konfiguration}
+%
+%Die Datei {\tt MUTABOR.CFG} enthält die globalen Voreinstellungen bezüglich
+%der an den Instrumenten angeschlossenen Synthesizer-Treiber und
+%der Voreinstellungen der Kanalzuordnung bei den MIDI-Kanälen.
+%Als Treibernummern sind bisher vorgesehen:
+%\begin{description}
+% \item[1] System-Exclusiv, Typ Yamaha FB01
+% \item[2] Standard Midi nach Multi-16-Methode
+%\end{description}
+%Falls hier MIDI-Kanäle deklariert sind, so gilt deren Kanal-Zuordnung,
+%es sei denn, das Logikprogramm gibt eine eigene Kanal-Zuordnung vor.
+%Falls keinerlei Kanalzuordnung getroffen wird, so gilt die Zuordnung
+%{\tt 1 -> 1 - 16} als gegeben.
+
+
+
+
+\printindex
+%\input{handbuch.ind}
+
+\end{document}
