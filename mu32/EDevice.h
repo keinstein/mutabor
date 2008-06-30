@@ -2,12 +2,16 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.6 2008/03/11 10:37:34 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.7 2008/06/30 08:07:45 keinstein Exp $
  * \author R¸diger Krauﬂe <krausze@mail.berlios.de>
- * \date $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/06/30 08:07:45 $
+ * \version $Revision: 1.7 $
  *
  * $Log: EDevice.h,v $
+ * Revision 1.7  2008/06/30 08:07:45  keinstein
+ * Get default port name only if midi devices are attached on startup to prevent crashes
+ * Check for device existence when routes are created.
+ *
  * Revision 1.6  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -274,10 +278,14 @@ inline Route * ERoute::newRoute()
 {
   if (Box == -2)
     Active = false;
+  OutDevice * o;
+  if (Out) o = GetOut(Out->DevId);
+  else o = NULL;
   return new Route(Type, 
 		   IFrom, ITo, 
 		   Box, Active, 
-		   GetOut(Out->DevId), OFrom, OTo, ONoDrum);
+		   o, OFrom, OTo, ONoDrum);
+  
 }
 
 /// create a new device.
