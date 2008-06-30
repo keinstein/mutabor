@@ -447,6 +447,8 @@ void ScanRoutes(wxConfigBase * config)
   // Zerlegen von config
 
   wxString group;
+  wxString defaultPortName = rtmidiout->getPortCount()? 
+    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"));
   long group_number;
 
   // read output devices
@@ -457,7 +459,7 @@ void ScanRoutes(wxConfigBase * config)
     config->SetPath(group);
     wxString name; 
     long type, id; 
-    config->Read(_T("Name"), &name, muT(rtmidiout->getPortName(0).c_str()));
+    config->Read(_T("Name"), &name, defaultPortName);
 
     config->Read(_T("Type"), &type, 1);
 
@@ -493,7 +495,7 @@ void ScanRoutes(wxConfigBase * config)
 
     wxString name; 
     long type, id; 
-    config->Read(_T("Name"), &name, muT(rtmidiout->getPortName(0).c_str()));
+    config->Read(_T("Name"), &name, defaultPortName);
 
     config->Read(_T("Type"), &type, 1);
 
