@@ -2,12 +2,21 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.10 2008/03/11 10:37:34 keinstein Exp $
+ * $Id: MutApp.h,v 1.11 2008/06/30 08:27:10 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/03/11 10:37:34 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2008/06/30 08:27:10 $
+ * \version $Revision: 1.11 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.11  2008/06/30 08:27:10  keinstein
+ * New Variable: routewindow
+ * OnInit(): Register Ids from Mutabor.rh
+ * Implement Loading and Saving routes
+ * MustOpenFrame(): New function.
+ * On window open: use MustOpenFrame() to determine if new frame must be created
+ * CmRoutes(): Implement correct window opening.
+ * CmQuit(): Reimplemented Frame deletion to prevent crashes and endless loops on quitting
+ *
  * Revision 1.10  2008/03/11 10:37:34  keinstein
  * Holyday edition
  * put CM_xxx in an enum
@@ -123,6 +132,8 @@ class MutApp : public wxApp {
     EditorMenu, ///< File editor menu
     RouteMenu, ///< Route editor menu
   };
+
+  MutFrame * routewindow;
  public:
   /// Initialization
   /** This function does the common setup.
@@ -144,6 +155,19 @@ class MutApp : public wxApp {
   void CmFileOpen (wxCommandEvent& event);
   /// Open a new route editor
   void CmRoutes (wxCommandEvent& event);
+  /// Load a Route
+  void CmRouteLoad(wxCommandEvent& event) {
+    MutFrame::CmRouteLoad(event);
+  }
+  /// Save a Route
+  void CmRouteSave(wxCommandEvent& event) {
+    MutFrame::CmRouteSave(event);
+  }
+  /// Save a Route under a new name
+  void CmRouteSaveAs(wxCommandEvent& event) {
+    MutFrame::CmRouteSaveAs(event);
+  }
+
   /// Read help about a certain topic
   void CmHelp (wxCommandEvent& event);
   /// Show the helpwindow on the page associated with a certain command id
@@ -203,6 +227,17 @@ class MutApp : public wxApp {
   /** Load the current global settings in the registry or configuration file.
    */
   void RestoreState();
+
+  /// determine if new frame must be opened
+  /** Determine we have an empty frame or we must open a new one
+   */
+  static bool MustOpenFrame(MutFrame * frame) {
+    if (frame) {
+      if (frame->HasClient()) 
+	return true;
+      else return false;
+    } else return true;
+  }
 
  private:
   /// Creates a file menu

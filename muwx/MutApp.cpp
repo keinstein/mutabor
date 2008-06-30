@@ -2,16 +2,25 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.13 2008/06/02 16:11:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.14 2008/06/30 08:27:10 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/06/02 16:11:00 $
- * \version $Revision: 1.13 $
+ * $Date: 2008/06/30 08:27:10 $
+ * \version $Revision: 1.14 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.14  2008/06/30 08:27:10  keinstein
+ * New Variable: routewindow
+ * OnInit(): Register Ids from Mutabor.rh
+ * Implement Loading and Saving routes
+ * MustOpenFrame(): New function.
+ * On window open: use MustOpenFrame() to determine if new frame must be created
+ * CmRoutes(): Implement correct window opening.
+ * CmQuit(): Reimplemented Frame deletion to prevent crashes and endless loops on quitting
+ *
  * Revision 1.13  2008/06/02 16:11:00  keinstein
  * Don't include Mutabor.rh, since it is included with headers.
  * Implement Help for config dialog
@@ -117,8 +126,15 @@ IMPLEMENT_APP(MutApp)
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
+  /* Short form for  
+  for (int i = MUT_FIRST; i < MUT_LAST; i++) 
+    wxRegisterId(i);
+  */
+  wxRegisterId(MUT_LAST);
+
   SetAppName(_T(PACKAGE));
   SetClassName(_T(PACKAGE_NAME));
+  routewindow = NULL;
   quitting = false;
   
   // initialize the languages
@@ -392,6 +408,9 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
     
 */	EVT_MENU(CM_ROUTES, MutApp::CmRoutes)
+EVT_MENU(CM_ROUTELOAD, MutApp::CmRouteLoad)
+EVT_MENU(CM_ROUTESAVE, MutApp::CmRouteSave)
+EVT_MENU(CM_ROUTESAVEAS, MutApp::CmRouteSaveAs)
 /*
 	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
 	EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
@@ -478,9 +497,8 @@ void MutApp::CmFileNew (wxCommandEvent& event) {
 	printf("MutApp::CmFileNew\n");
 #endif
 	frame = dynamic_cast<MutFrame*>(GetTopWindow());
-	if (frame) 
-	  if (frame->HasClient())
-	    frame = CreateMainFrame(EditorMenu);
+	if (MustOpenFrame(frame))
+	  frame = CreateMainFrame(EditorMenu);
 
 #ifdef DEBUG
 	printf("MutApp::CmFileNew: created main frame\n");
@@ -504,9 +522,8 @@ void MutApp::CmFileOpen (wxCommandEvent& event) {
   if ( !path )
     return;
 	
-  if (frame) 
-    if (frame->HasClient())
-      frame = CreateMainFrame(EditorMenu);
+  if (MustOpenFrame(frame))
+    frame = CreateMainFrame(EditorMenu);
 
   frame->OpenFile(path);
 
@@ -525,12 +542,28 @@ void MutApp::CmFileOpen (wxCommandEvent& event) {
 }
 
 void MutApp::CmRoutes (wxCommandEvent& event) {
-	frame = new MutFrame((wxFrame *) NULL,WK_ROUTE, wxString().Format(_("%s -- Routes"),_(PACKAGE_NAME)),
-		wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
-	RegisterFrame(frame);
-	frame->CmRoutes(event);
-	frame->Show(true);
-	event.Skip();
+
+  wxWindow * topwindow=GetTopWindow();
+
+#ifdef DEBUG
+  std::cerr << "MutApp::CmRoutes: window " 
+	    << wxWindow::FindWindowById(WK_ROUTE)
+	    << " casted " 
+	    << dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)) 
+	    << std::endl;
+#endif
+
+  frame = dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
+  if (!frame) {
+    frame = dynamic_cast<MutFrame*>(GetTopWindow());
+    if (MustOpenFrame(frame))
+      frame = CreateMainFrame(RouteMenu);
+  }
+
+  frame->CmRoutes(event);
+  frame->Show(true);
+  routewindow = frame;
+  event.Skip(false);
 }
 
 void MutApp::CmHelp (wxCommandEvent& event) {
@@ -582,54 +615,56 @@ void MutApp::CmQuit (wxCommandEvent& event) {
 	SetExitOnFrameDelete(true);
 	//		Exit();
 
+	if (quitting) return;
 	quitting = true;
-
+	event.Skip(false);
+		
 
 	wxWindow * window;
+	SetTopWindow(NULL);
 	//	if (frames.empty()) {
 	if ((window = GetTopWindow()) == NULL) {
 #ifdef DEBUG
 		printf("MutApp::CmQuit: No Frames.\n");
 #endif
 		quitting = false;
-		event.Skip(true);
 		return;
 	}
 
 	
 	FrameHash::iterator it;
 
-	while ((window = GetTopWindow())) {
-	  if (!window->Close()) return;
-	  while (Pending()) Dispatch();
-	}
-
 #ifdef DEBUG
 	printf("MutApp::CmQuit: Starting Loop\n");
 #endif
-
-
-
-	/*
-
-    for( it = frames.begin(); !frames.empty(); it = frames.begin() )
-    {
-        frame	= it->second;
-		
+	  while (Pending()) Dispatch();
 #ifdef DEBUG
-		printf("MutApp::CmQuit: Trying to delete Frame %x/%x\n",frame,frame);
+	  std::cout << "MutApp::CmQuit: Dispatched all events" << std::endl;
 #endif
 
-		if (frame) {
-			if (!frame -> Close()) {
-				// the frame vetoed.
-				event.Skip();
-				quitting = false;
-				return;
-			}
-		}
-    }
-	*/
+	while ((window = GetTopWindow())) {
+#ifdef DEBUG
+	  std::cout << "MutApp::CmQuit: Next Window" << std::endl;
+#endif
+	  if (!window->Close()) return;
+#ifdef DEBUG
+	  std::cout << "MutApp::CmQuit: Closed window" << std::endl;
+#endif
+
+	  // empty queue and process idle event to delete the frame
+	  while(Pending()) Dispatch();
+
+	  wxIdleEvent idle;
+	  ProcessEvent(idle);
+#ifdef DEBUG
+	  std::cout << "MutApp::CmQuit: Dispatched all events" << std::endl;
+#endif
+	}
+
+
+#ifdef DEBUG
+	  std::cout << "MutApp::CmQuit: finished loop" << std::endl;
+#endif
 }
 
 
@@ -710,12 +745,13 @@ void MutApp::MakeSequencerMenu(wxMenuBar * menuBar) {
 
 void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type) {
   	OPENMENU;
-	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
+	/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
 	   _("Toggle status bar on/off"));
 	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
 	   _("Toggle tool bar on/off"));
 	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Routes\tF11"), CM_ROUTES,
+	*/
+	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
 	   _("Open route configuration window"));
 
 	if (type != ProgramMenu) {
@@ -732,7 +768,7 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type) {
 	  MENUCHECKITEM(_("One &common action window"), CM_CAW,
 			_("Toggle action window mode: one each or one common"));
 	  MENUITEM_SEPARATOR;
-	  MENUITEM(_("Select &Box"), CM_SELECTBOX,
+	  menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
 		   _("Select current Box"));
 	}
 
