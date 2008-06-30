@@ -43,6 +43,7 @@ class MutLogicWnd : public wxScrolledWindow
 	void CmBox();
 	void OnChar(wxKeyEvent& event);
 	void CmTaste();
+	void OnActivate(wxActivateEvent& event);
 
    	DECLARE_EVENT_TABLE()
 };
