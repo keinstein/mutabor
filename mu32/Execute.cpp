@@ -12,6 +12,7 @@
 #include "Interpre.h"
 #include "GrafKern.h"
 #include "MidiKern.h"
+#include "Runtime.h"
 
 int protokollfunktionen_aktiv=0;
 int protokollfunktion_aktionsausgabe=0;
@@ -632,3 +633,15 @@ void protokoll_liegende_relationen( int instr ) {
   }
   exit_laufzeit_protokoll( );
 }
+
+
+
+void FlushUpdateUI()
+{
+  if ( keys_changed_sum && updateUIcallback )
+  {
+    keys_changed_sum = 0;
+    updateUIcallback();
+  }
+}
+
