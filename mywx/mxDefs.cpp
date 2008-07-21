@@ -10,6 +10,10 @@ wxString FileNameDialog(wxWindow * parent,
 			int Command,
 			wxString Filename)
 {
+#ifdef DEBUG
+  std::cout << "FileNameDialog: " << Command << std::endl;
+#endif
+
   static const wxString logic_sources(_("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"));
   static const wxString route_sources(_("Mutabor routing file (*.mur)|*.mur|All files (*.*)|*.*"));
 
@@ -55,7 +59,7 @@ wxString FileNameDialog(wxWindow * parent,
     dir = splitter.GetPath();
   }
 
-  wxFileDialog  FileSelector(parent, title, dir, name, filetypes,
+  wxFileDialog  * FileSelector = new wxFileDialog(parent, title, dir, name, filetypes,
 #ifdef __WXCOCOA__
 		   0
 #else
@@ -64,11 +68,12 @@ wxString FileNameDialog(wxWindow * parent,
 			     //	,parent
 		   );
 
-  int cmd = FileSelector.ShowModal();
+  int cmd = FileSelector->ShowModal();
   
-  if (cmd == wxID_OK) {
-    return FileSelector.GetPath();
-  } else {
-    return wxEmptyString;
-  }
+  wxString retval;
+  retval = (cmd == wxID_OK) ? (FileSelector->GetPath()) : wxString(wxEmptyString);
+
+  FileSelector->Destroy();
+
+  return retval;
 }
