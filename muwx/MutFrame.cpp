@@ -2,15 +2,23 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.15 2008/06/30 08:57:17 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.16 2008/07/21 09:25:29 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/06/30 08:57:17 $
- * \version $Revision: 1.15 $
+ * \date $Date: 2008/07/21 09:25:29 $
+ * \version $Revision: 1.16 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.16  2008/07/21 09:25:29  keinstein
+ * RcfFile: removed
+ * TextBoxWanted: one variable per box and type
+ * removed ROUTE_WIN and REPAINT_ROUTE definitions
+ * reformatted debug logging
+ * Implement box selection Menu
+ * MutFrame::repaint_route(): New function
+ *
  * Revision 1.15  2008/06/30 08:57:17  keinstein
  * Fix UPDATE_UI for CM_PANIC and CM_EXECUTE
  * MurFileData: new struct
@@ -187,7 +195,7 @@
 
 #define APPNAME _(PACKAGE_NAME)
 
-wxString RcfFile = wxT("Routes.cfg");
+//wxString RcfFile = wxT("Routes.cfg");
 struct MurFileDataType {
   wxFileName name;
   muConvAuto autoConverter;
@@ -211,9 +219,27 @@ wxString curLogic[MAX_BOX];
 wxString curTS[MAX_BOX];
 int curTaste[MAX_BOX][2]; // [0] ... ToneSyst, [1] ... Logic
 
-bool TextBoxWanted[] =
-  { false, false, false };
+bool TextBoxWanted[MAX_BOX][3] = {
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false },
+  { false, false, false }
+};
 char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEWIN" };
+
+int MutFrame::boxCommandIds[MAX_BOX];
 
 #define SG_NOTHING 1
 #define SG_LOGIC   0
@@ -222,8 +248,8 @@ char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEW
 #define SG_PAUSE   4
 
 #define Compiled (!CompiledFile.IsEmpty())
-#define ROUTE_WIN ((MutRouteWnd*)(Get(WK_ROUTE)->Win))
-#define REPAINT_ROUTE if ( IsOpen(WK_ROUTE) ) ROUTE_WIN->Refresh()
+//#define ROUTE_WIN ((MutRouteWnd*)(Get(WK_ROUTE)->Win))
+//#define REPAINT_ROUTE if ( IsOpen(WK_ROUTE) ) ROUTE_WIN->Refresh()
 
 // ---------------------------------------------------------------------------
 // event tables
@@ -409,11 +435,7 @@ void MutFrame::EventPassOn(wxCommandEvent& event)
 
 void MutFrame::OnClose(wxCloseEvent& event)
 {
-#ifdef DEBUG
-  std::cout << "MutFame::OnClose: " 
-	    << this << " == " << theFrame << " ?"
-	    << std::endl;
-#endif
+  DEBUGLOG(_T("%x == %x"),this,theFrame);
 
   if ( event.CanVeto() && theFrame == this ) {
     wxString msg;
@@ -427,7 +449,6 @@ void MutFrame::OnClose(wxCloseEvent& event)
 
   if (theFrame == this) {
     DoStop();
-    theFrame = NULL;
   }
 
   if (client) {
@@ -552,11 +573,6 @@ void UpdateUIcallback()
 	}
 }
 
-/*void TMutaborApp::CmUpdateUI()
-{
-  IdleAction(0);
-}*/
-
 void MutFrame::CmDoActivate(wxCommandEvent& event)
 {
   if (LogicOn) return;
@@ -569,7 +585,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
   wxGetApp().SaveState();
 #ifdef DEBUG
-  std::cerr << "CmDoActivate: Restoring state for debugging";
+  DEBUGLOG(_T("Restoring state for debugging"));
   wxGetApp().RestoreState();
 #endif
 
@@ -589,17 +605,20 @@ Shall Mutabor translate the files in batch mode, \
 to keep the MIDI files with the original time stamp?\n\
 (This means also, that you can't modify the tunings \
 while playing by computer keyboard.)"),
-			     _("No realtime => batch mode?"), 
+			     _("No realtime => batch mode?"),
 			     wxYES_NO | wxICON_QUESTION 
 			     /*| MB_DEFBUTTON2*/) == wxNO);
+
   theFrame = this;
   if ( !Activate(RealTime, &UpdateUIcallback) )
     return;
 #endif
+
 #ifdef DEBUG
   std::cerr << "MutFrame::CmDoActivate: Initialize state" << std::endl;
 #endif
-	// Variablen initialisieren
+
+  // Variablen initialisieren
   for (int instr = 0; instr < MAX_BOX; instr++)
     {
       curLogic[instr] = _T("(INITIAL)");
@@ -607,10 +626,10 @@ while playing by computer keyboard.)"),
       curTaste[instr][0] = 0;
       curTaste[instr][1] = 0;
     }
+
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Check used boxes" << std::endl;
 #endif
-
   // curBox checken
   CheckBoxesUsed();
   if ( !BoxUsed[curBox] ) {
@@ -633,12 +652,12 @@ while playing by computer keyboard.)"),
     for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
       if ( !BoxUsed[WinAttrs[kind][i].Box] )
 	WinAttrs[kind].RemoveAt(i);
+
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Open other than logic" << std::endl;
   std::cout << "MutFrame::CmDoActivate: One window mode: " << OWM << std::endl;
 #endif
-
-  // Fenster auﬂer curBox setzen
+  // Fenster außer curBox setzen
   if ( !OWM )
     for (WinKind kind = WK_KEY; kind < WK_LOGIC; kind++)
       for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
@@ -646,25 +665,10 @@ while playing by computer keyboard.)"),
 	     &&  WinAttrs[kind][i].Wanted )
 	  TextBoxOpen(kind, WinAttrs[kind][i].Box);
   
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Set Box selection menu" << std::endl;
-#endif
-  wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
-  wxASSERT(boxSelector->IsSubMenu());
-  wxMenu * boxMenu = boxSelector->GetSubMenu();
-  //  wxID_HIGHEST
-  //  wxMenu * 
+  UpdateBoxMenu();  
+  MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+  if ( routewin ) routewin->UpdateBoxMenu();
 
-  for (size_t i = 0, j=0; i < MAX_BOX; i++) {
-    if (BoxUsed[i]) {
-      LogicWinOpen(i);
-      boxCommandIds[i]=wxNewId();
-      boxMenu->Append(boxCommandIds[i],
-		      wxString::Format(_("Select box %d"),i),
-		      wxString::Format(_("Select box %d as the active Box for box specific commands."),i));
-    }
-  }
-  
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Open Logic window" << std::endl;
 #endif
@@ -681,11 +685,12 @@ while playing by computer keyboard.)"),
   std::cout << "MutFrame::CmDoActivate: Open Text boxes: " 
 	    << WK_KEY << "--" <<WK_ACT << std::endl;
 #endif
-  for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
-    if ( TextBoxWanted[kind] )
-      TextBoxOpen(kind, curBox);
-    else
-      DontWant(kind, curBox);
+  for (size_t i; i < MAX_BOX; i++)
+    for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
+      if ( TextBoxWanted[i][kind] )
+	TextBoxOpen(kind, i);
+      else
+	DontWant(kind, i);
   }
 
 
@@ -697,7 +702,7 @@ while playing by computer keyboard.)"),
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: Repaint route" << std::endl;
 #endif
-  REPAINT_ROUTE;
+  repaint_route();
 #ifdef DEBUG
   std::cout << "MutFrame::CmDoActivate: event.Skip()" << std::endl;
 #endif
@@ -751,9 +756,36 @@ void MutFrame::ClearSubMenu(wxMenuItem * item) {
 }
 
 void MutFrame::RaiseLogic(wxCommandEvent& event) {
-#ifdef DEBUG
-  std::cout << "MutFrame::RaiseLogic:" << event.GetId() << std::endl;
-#endif
+  if (!RaiseTheFrame()) {
+    DEBUGLOG(_T("Calling Logic frame for id %d"), event.GetId());
+    theFrame -> RaiseLogic(event);
+    return;
+  }
+
+  DEBUGLOG(_T("Reached logic frame"));
+  wxASSERT(theFrame == this);
+  DEBUGLOG(_T("%d"),event.GetId());
+
+  size_t i = 0;
+  while (i < MAX_BOX && boxCommandIds[i] != event.GetId()) i++;
+  wxASSERT(i!=MAX_BOX);
+
+  DEBUGLOG(_T("%d"),i);
+
+  curBox = i;
+
+  if (WinAttrs[WK_LOGIC][i].Win) {
+    WinAttrs[WK_LOGIC][i].Win->SetFocus();
+    
+    wxFrame * win = 
+      dynamic_cast<wxFrame *>(WinAttrs[WK_LOGIC][i].Win->GetParent());
+    if (win) win->Raise();
+    DEBUGLOG(_T("Parent type: ")) 
+      << typeid(*( WinAttrs[WK_LOGIC][i].Win->GetParent())).name()
+      << std::endl;
+
+    GetMenuBar()->Check(event.GetId(),true);
+  }
 }
 
 void MutFrame::DoStop() 
@@ -762,6 +794,7 @@ void MutFrame::DoStop()
     LogicOn = false;
     StopInDev();
     Stop();
+
     // Ampel umschalten
     /*		ControlBar->Remove(*ButtonStop);
 		ControlBar->Insert(*ButtonActivate, TGadgetWindow::Before, ButtonPanic);
@@ -770,15 +803,17 @@ void MutFrame::DoStop()
     SetStatus(SG_NOTHING);
     //		StatusBar->SetText("");
     // Titel
-    SetTitle(APPNAME);
+    //    SetTitle(APPNAME);
 		// alle Fenser schlieﬂen
     wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
     wxASSERT(boxSelector->IsSubMenu());
 
     for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
-      CloseAll(kind);
+      theFrame->CloseAll(kind);
+    
     AktionTraceReset();
-    REPAINT_ROUTE;
+    repaint_route();
+    theFrame = NULL;
   }
 }
 
@@ -840,6 +875,7 @@ void MutFrame::CmRoutes(wxCommandEvent& event)
   auimanager.AddPane(client,wxAuiPaneInfo().Caption(_("Routes")).CenterPane().PaneBorder(false));
   auimanager.Update();
   SetIcon(ICON(route));
+  if (LogicOn) UpdateBoxMenu();
 
 //	subframe->Show(true);
   
@@ -883,6 +919,7 @@ void MutFrame::LogicWinOpen(int box)
 		       .CloseButton(false)
 		       .MaximizeButton(true)
 		       .Float());
+    client->SetFocus();
     auimanager.Update();
 }
 
@@ -891,9 +928,9 @@ void MutFrame::ToggleTextBox(WinKind kind)
 #ifdef DEBUG
   std::cerr << "MutFrame::ToggleTextBox: kind: " << kind << std::endl
 	    << "MutFrame::ToggleTextBox: TextBoxWanted:"
-	    << TextBoxWanted[kind] << std::endl;
+	    << TextBoxWanted[curBox][kind] << std::endl;
 #endif
-  TextBoxWanted[kind] = !TextBoxWanted[kind];
+  TextBoxWanted[curBox][kind] = !TextBoxWanted[curBox][kind];
 #ifdef DEBUG
   std::cerr << "MutFrame::ToggleTextBox: LogicOn"
 	    << LogicOn << std::endl;
@@ -982,8 +1019,8 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 
 	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
 			   .CloseButton(true).MaximizeButton(true)
-			   .Float().
-			   Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
+			   .Float()
+			   .Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
 	client->NewText(str, true);
 	auimanager.Update();
 }
@@ -1055,17 +1092,17 @@ void MutFrame::CmToggleCAW(wxCommandEvent& WXUNUSED(event))
 
 void MutFrame::CeToggleKey(wxUpdateUIEvent& event)
 {
-	event.Check(TextBoxWanted[WK_KEY]);
+	event.Check(TextBoxWanted[curBox][WK_KEY]);
 }
 
 void MutFrame::CeToggleTS(wxUpdateUIEvent& event)
 {
-  	event.Check(TextBoxWanted[WK_TS]);
+  	event.Check(TextBoxWanted[curBox][WK_TS]);
 }
 
 void MutFrame::CeToggleAct(wxUpdateUIEvent& event)
 {
-  	event.Check(TextBoxWanted[WK_ACT]);
+  	event.Check(TextBoxWanted[curBox][WK_ACT]);
 }
 
 void MutFrame::CeToggleOWM(wxUpdateUIEvent& event)
@@ -1117,54 +1154,54 @@ void MutFrame::WindowSize(MutChild *win)
 {
   wxLogWarning(_("MutFrame::WindowSize:  not implemented" ));
 #if 0
-
-	if ( !subSize.IsFullySpecified() )
+  
+  if ( !subSize.IsFullySpecified() )
+    {
+      wxScreenDC *sdc = new wxScreenDC();
+      wxSize deskSize = sdc->GetSize();
+      delete sdc;
+      subSize.Set(0, 0);
+      for (int i = 0; i < 4; i++)
+	if ( deskSize.GetWidth() == WSize[i][0] )
+	  subSize.Set(WSize[i][1], WSize[i][2]);
+    }
+  if ( win->winAttr->W ) {
+    win->SetSize(win->winAttr->X, win->winAttr->Y, 
+		 win->winAttr->W, win->winAttr->H);
+  }
+  else
+    {
+      int w, h;
+      GetClientSize(&w, &h);
+      // get size of editor window
+      int w1 = w * 4 / 5, h1 = h * 2 / 3;
+      if ( subSize.GetWidth() != 0 )
 	{
-		wxScreenDC *sdc = new wxScreenDC();
-		wxSize deskSize = sdc->GetSize();
-		delete sdc;
-		subSize.Set(0, 0);
-		for (int i = 0; i < 4; i++)
-			if ( deskSize.GetWidth() == WSize[i][0] )
-				subSize.Set(WSize[i][1], WSize[i][2]);
+	  w1 = subSize.GetWidth();
+	  h1 = subSize.GetHeight();
 	}
-	if ( win->winAttr->W ) {
-	  win->SetSize(win->winAttr->X, win->winAttr->Y, 
-		       win->winAttr->W, win->winAttr->H);
-	}
-	else
-	{
-		int w, h;
-		GetClientSize(&w, &h);
-		// get size of editor window
-		int w1 = w * 4 / 5, h1 = h * 2 / 3;
-        if ( subSize.GetWidth() != 0 )
-		{
-			w1 = subSize.GetWidth();
-			h1 = subSize.GetHeight();
-		}
-		if ( w - w1 < 112 )
-			w1 = w - 112;
-		int n = (NumberOfOpen(win->winKind)-1)*22;
-		if ( demo )
-			switch ( win->winKind )
-			{
-				case WK_KEY: win->SetSize(w / 2-n, n, w / 4, h / 2); break;
-				case WK_TS: win->SetSize(w / 2 + w / 4-n, n, w / 4, h); break;
-				case WK_ACT: win->SetSize(w / 2 + n, h / 2-n, w / 4, h - h / 2); break;
-				case WK_LOGIC: win->SetSize(n, n, w / 2, h); break;
-				case WK_ROUTE: win->SetSize(n, n, w / 2, h); break;
-			}
-		else
-			switch ( win->winKind )
-			{
-				case WK_KEY: win->SetSize(w1-n, n, w - w1, h / 2); break;
-				case WK_TS: win->SetSize(w1-n, h / 2-n, w - w1, h - h / 2); break;
-				case WK_ACT: win->SetSize(w1 * 3 / 4-n, h1-n, w1 - w1 * 3 / 4, h - h1); break;
-				case WK_LOGIC: win->SetSize(n, h1-n, w1 * 3 / 4, h - h1); break;
-				case WK_ROUTE: win->SetSize(n, h1-n, w1 * 3 / 4, h - h1); break;
-			};
-	}
+      if ( w - w1 < 112 )
+	w1 = w - 112;
+      int n = (NumberOfOpen(win->winKind)-1)*22;
+      if ( demo )
+	switch ( win->winKind )
+	  {
+	  case WK_KEY: win->SetSize(w / 2-n, n, w / 4, h / 2); break;
+	  case WK_TS: win->SetSize(w / 2 + w / 4-n, n, w / 4, h); break;
+	  case WK_ACT: win->SetSize(w / 2 + n, h / 2-n, w / 4, h - h / 2); break;
+	  case WK_LOGIC: win->SetSize(n, n, w / 2, h); break;
+	  case WK_ROUTE: win->SetSize(n, n, w / 2, h); break;
+	  }
+      else
+	switch ( win->winKind )
+	  {
+	  case WK_KEY: win->SetSize(w1-n, n, w - w1, h / 2); break;
+	  case WK_TS: win->SetSize(w1-n, h / 2-n, w - w1, h - h / 2); break;
+	  case WK_ACT: win->SetSize(w1 * 3 / 4-n, h1-n, w1 - w1 * 3 / 4, h - h1); break;
+	  case WK_LOGIC: win->SetSize(n, h1-n, w1 * 3 / 4, h - h1); break;
+	  case WK_ROUTE: win->SetSize(n, h1-n, w1 * 3 / 4, h - h1); break;
+	  };
+    }
 #endif
 }
 
@@ -1236,10 +1273,10 @@ void MutFrame::RestoreState()
 void MutFrame::StopInDev() {
   int nr = 0;
   for ( EDevice *In = InEDevices; In; In = In->Next, nr++)
-    if ( In->Mode == 1 || In->Mode == 2 )
+    if ( In->Mode == MutaborDevicePlay || In->Mode == MutaborDevicePause )
       {
-        In->Mode = 0;
-        InDeviceAction(nr, 0);
+        In->Mode = MutaborDeviceStop;
+        InDeviceAction(nr, In->Mode);
       }
   SetStatus(1-LogicOn);
 }
@@ -1248,23 +1285,24 @@ void MutFrame::StopInDev() {
 void MutFrame::CmInDevStop(wxCommandEvent& WXUNUSED(event))
 {
   StopInDev();
-  REPAINT_ROUTE;
+  repaint_route();
   SetStatus(1-LogicOn);
 }
 
 void MutFrame::CmInDevPlay(wxCommandEvent& event)
 {
-	std::cout << "MutFrame::CmInDevPlay" << std::endl;
+  DEBUGLOG(_T(""));
   if ( !LogicOn )
     CmDoActivate(event);
   int nr = 0;
   for ( EDevice *In = InEDevices; In; In = In->Next, nr++)
-    if ( In->Mode == 0 || In->Mode == 2 )
+    if ( In->Mode == MutaborDeviceStop || 
+	 In->Mode == MutaborDevicePause )
       {
-        In->Mode = 1;
-        InDeviceAction(nr, 1);
+        In->Mode = MutaborDevicePlay;
+        InDeviceAction(nr, In->Mode);
       }
-  REPAINT_ROUTE;
+  repaint_route();
   SetStatus(SG_PLAY);
 }
 
@@ -1272,19 +1310,21 @@ void MutFrame::CmInDevPause(wxCommandEvent& WXUNUSED(event))
 {
   int nr = 0;
   for ( EDevice *In = InEDevices; In; In = In->Next, nr++)
-    if ( In->Mode == 1 )
+    if ( In->Mode == MutaborDevicePlay )
       {
-        In->Mode = 2;
-        InDeviceAction(nr, 2);
+        In->Mode = MutaborDevicePause;
+        InDeviceAction(nr, In->Mode);
       }
-  REPAINT_ROUTE;
+  repaint_route();
   SetStatus(SG_PAUSE);
 }
 
 void MutFrame::CeInDevStop(wxUpdateUIEvent& event)
 {
   for ( EDevice *In = InEDevices; In; In = In->Next)
-    if ( In->DT >= DTMidiFile && (In->Mode == 1 || In->Mode == 2) )
+    if ( In->DT >= DTMidiFile && 
+	 (In->Mode == MutaborDevicePlay || 
+	  In->Mode == MutaborDevicePause) )
     {
       event.Enable(true);
       return;
@@ -1294,42 +1334,49 @@ void MutFrame::CeInDevStop(wxUpdateUIEvent& event)
 
 void MutFrame::CeInDevPlay(wxUpdateUIEvent& event)
 {
-  if ( !CompiledFile )
-  {
+  if ( !LogicOn ) {
+    DEBUGLOG(_T("Logic is off"));
     event.Enable(false);
     return;
   }
-  for ( EDevice *In = InEDevices; In; In = In->Next)
-    if ( In->DT >= DTMidiFile && (In->Mode == 0 || In->Mode == 2) )
-    {
+
+  for ( EDevice *In = InEDevices; In; In = In->Next) {
+    DEBUGLOG(_T("checking Device type %d >= %d with mode %d for pointer %p"),
+	     In->DT,
+	     DTMidiFile,
+	     In->Mode,
+	     In);
+    if ( In->DT >= DTMidiFile && 
+	 (In->Mode == MutaborDeviceStop || 
+	  In->Mode == MutaborDevicePause) ) {
+      DEBUGLOG(_T("Device can be activated"));
       event.Enable(true);
       return;
     }
+    DEBUGLOG(_T("Device can not be activated"));
+  }
   event.Enable(false);
 }
 
 void MutFrame::CeInDevPause(wxUpdateUIEvent& event)
 {
-  char Pause = 0;
+  bool Pause = 0;
   for ( EDevice *In = InEDevices; In; In = In->Next)
     if ( In->DT >= DTMidiFile )
-      if ( In->Mode == 1 )
-      {
+      if ( In->Mode == MutaborDevicePlay ) {
         event.Enable(true);
         if ( curStatusImg != SG_PLAY )
           SetStatus(SG_PLAY);
         return;
       }
-      else if ( In->Mode == 2 )
-        Pause = 1;
-  if ( Pause )
-  {
+      else if ( In->Mode == MutaborDevicePause )
+        Pause = true;
+  if ( Pause ) {
     if ( curStatusImg != SG_PAUSE )
       SetStatus(SG_PAUSE);
-  }
-  else
-    if ( curStatusImg != 1-LogicOn )
+  } else if ( curStatusImg != 1-LogicOn )
       SetStatus(1-LogicOn);
+
   event.Enable(false);
 }
 
@@ -1367,38 +1414,39 @@ void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 	    NewText(GenerateACTString(winAttr->Box), 1);
       }
     }
-	// Zeilen/Spalte
-/*  if ( ActiveWinKind == WK_EDIT )
-  {
-    TMDIChild* curChild = Client->GetActiveMDIChild();
-    if ( curChild )
-	     curChild->SendMessage(WM_COMMAND, CM_GETLINE);
-  }
-  else
-    EditLine = -1;
-  if ( EditLine != oldEditLine || EditRow != oldEditRow )
-  {
-	  char s[10] = "";
-	  if ( EditLine != -1 ) sprintf(s, "%d:%d", EditLine, EditRow);
-	  IndikatorGadget->SetText(s);
-	  oldEditLine = EditLine; oldEditRow = EditRow;
-  }*/
+
+  // Zeilen/Spalte
+  /*  if ( ActiveWinKind == WK_EDIT )
+      {
+      TMDIChild* curChild = Client->GetActiveMDIChild();
+      if ( curChild )
+      curChild->SendMessage(WM_COMMAND, CM_GETLINE);
+      }
+      else
+      EditLine = -1;
+      if ( EditLine != oldEditLine || EditRow != oldEditRow )
+      {
+      char s[10] = "";
+      if ( EditLine != -1 ) sprintf(s, "%d:%d", EditLine, EditRow);
+      IndikatorGadget->SetText(s);
+      oldEditLine = EditLine; oldEditRow = EditRow;
+      }*/
   if ( InDevicesChanged() ) {
-    char Mode[256];
+    enum MutaborModeType Mode[256];
     GetInDevicesMode(Mode);
     bool NRT_Finish = false;
     for (EDevice *In = InEDevices; In; In = In->Next) {
       if ( In->Nr != -1 )
 	if ( Mode[In->Nr] == 4 ) {
-	  In->Mode = 0;
-	  InDeviceAction(In->Nr, 0);
+	  In->Mode = MutaborDeviceStop;
+	  InDeviceAction(In->Nr, In->Mode);
 	  NRT_Finish = !RealTime;
 	} else {
 	  In->Mode = Mode[In->Nr];
 	}
     }
 
-    REPAINT_ROUTE;
+    repaint_route();
     if ( !RealTime )
       wxMessageBox(_("Translation in batch mode completed. Output was generated."),
 		   _("Batch translation finished"), wxOK);
@@ -1456,7 +1504,8 @@ void MutFrame::CmRouteLoad(wxCommandEvent& event)
 
   wxString text;
   if (! file.ReadAll(&text, MurFileData.autoConverter)) {
-    wxLogError(_("File '%s' could be opened, but not loaded."),filename.c_str());
+    wxLogError(_("File '%s' could be opened, but not loaded."),
+	       filename.c_str());
     return;
   }
 
@@ -1471,6 +1520,7 @@ void MutFrame::CmRouteLoad(wxCommandEvent& event)
 void
 MutFrame::CmRouteSave(wxCommandEvent& event)
 {
+  DEBUGLOGTYPE(MutFrame,_T(""));
   event.Skip(false);
   
   if (!MurFileData.name.IsOk() )
@@ -1511,6 +1561,7 @@ MutFrame::CmRouteSave(wxCommandEvent& event)
 void
 MutFrame::CmRouteSaveAs(wxCommandEvent& event)
 {
+  DEBUGLOGTYPE(MutFrame,_T("")); 
 
   // it's our task
   event.Skip(false);
@@ -1531,54 +1582,100 @@ MutFrame::CmRouteSaveAs(wxCommandEvent& event)
 }
 
 wxRect MutFrame::DetermineFrameSize () {
+  DEBUGLOG(_T(""));
 
-    wxSize scr = wxGetDisplaySize();
+  wxSize scr = wxGetDisplaySize();
 
-    // determine default frame position/size
-    wxRect normal;
-    if (scr.x <= 640) {
-        normal.x = 40 / 2;
-        normal.width = scr.x - 40;
-    }else{
-        normal.x = (scr.x - 640) / 2;
-        normal.width = 640;
-    }
-    if (scr.y <= 480) {
-        normal.y = 80 / 2;
-        normal.height = scr.y - 80;
-    }else{
-        normal.y = (scr.y - 400) / 2;
-        normal.height = 400;
-    }
+  // determine default frame position/size
+  wxRect normal;
+  if (scr.x <= 640) {
+    normal.x = 40 / 2;
+    normal.width = scr.x - 40;
+  }else{
+    normal.x = (scr.x - 640) / 2;
+    normal.width = 640;
+  }
+  if (scr.y <= 480) {
+    normal.y = 80 / 2;
+    normal.height = scr.y - 80;
+  }else{
+    normal.y = (scr.y - 400) / 2;
+    normal.height = 400;
+  }
 
-    return normal;
+  return normal;
 }
 
+/// Close all child windows of given kind
+/** This function closes all child windows of the given kind. 
+ *
+ * \param kind any wk_kind, that describes which kind of windows shall
+ * be closed.  
+ */
+void MutFrame::CloseAll(WinKind kind) {
+  DEBUGLOG(_T(""));
 
-void MutFrame::CloseAll(WinKind kind)
-{
+  auimanager.Update();
   for (size_t i = WinAttrs[kind].Count(); i >0; i--) {
-#ifdef DEBUG
-    std::cerr << "MutFrame::CloseAll(" << kind << "): " << i 
-	      << " of " << WinAttrs[kind].Count() << std::endl;
-#endif
+    DEBUGLOG(_T("kind %d (%d of %d)"),kind,i,WinAttrs[kind].Count());
     WinAttr &win = WinAttrs[kind].Item(i-1);
     if ( win.Win )
       {
 	
 	win.Wanted = 2;
+
+	DEBUGLOG(_T("Detaching pane."));
+	auimanager.ClosePane(auimanager.GetPane(win.Win));
+	DEBUGLOG(_T("Update."));
 	auimanager.DetachPane(win.Win);
-       	win.Win->Close();
-	//win.Win->Destroy();
-	while (wxGetApp().Pending()) wxGetApp().Dispatch();
-	/*	delete(win.Win); 
-	 */
-	//	win.Win->Close();
-       
-	//	win.Win->Destroy();
+	auimanager.Update();
+	//	auimanager.DetachPane(win.Win);
+
+	//       	win.Win->Close();
+
+	DEBUGLOG(_T("Destroying window."));
+	win.Win->Destroy();
 	win.Win = NULL;
       }
   }
-  auimanager.Update();
+}
+
+void MutFrame::UpdateBoxMenu() {
+#ifdef DEBUG
+  std::cout << "MutFrame::CmDoActivate: Set Box selection menu" << std::endl;
+#endif
+  wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
+  wxASSERT(boxSelector->IsSubMenu());
+  wxMenu * boxMenu = boxSelector->GetSubMenu();
+  //  wxID_HIGHEST
+  //  wxMenu * 
+
+  for (size_t i = 0, j=0; i < MAX_BOX; i++) {
+    if (BoxUsed[i]) {
+      if (theFrame == this) LogicWinOpen(i);
+      if (!boxCommandIds[i]) {
+	boxCommandIds[i]=wxNewId();
+	DEBUGLOG(_("Box %d got id %d"),i,boxCommandIds[i]);
+      }
+      DEBUGLOG(_("Appending menu for box %d with id %d"),i,boxCommandIds[i]);
+      boxMenu->Append(boxCommandIds[i],
+		      wxString::Format(_("Select box %d\tCtrl+%d"),i,i),
+		      wxString::Format(_("Select box %d as the active Box for box specific commands."),i), wxITEM_RADIO);
+      if (i == curBox) boxMenu->Check(boxCommandIds[i],true);
+      DEBUGLOG(_("Connecting command with id %d for box %d"),
+	       i,boxCommandIds[i]);
+      Connect( boxCommandIds[i],
+	       wxEVT_COMMAND_MENU_SELECTED,
+	       wxCommandEventHandler(MutFrame::RaiseLogic) );
+
+    }
+  }
+}
+
+bool MutFrame::RaiseTheFrame() {
+  if (this == theFrame) return true;
+
+  theFrame->Raise();
+  return false;
 }
 //\}
