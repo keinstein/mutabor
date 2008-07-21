@@ -18,6 +18,7 @@
 // RouteWin ----------------------------------------------------------
 // Fenster, das die Routen enth‰lt
 
+
 class MutLogicWnd : public wxScrolledWindow
 {
   private:
