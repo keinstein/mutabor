@@ -50,14 +50,18 @@
 #include "MidiKern.h"
 
 #if !defined(__WXMSW__)
-    #include "Icon/DevUnknown.xpm"
-    #include "Icon/DevMidiPort.xpm"
-    #include "Icon/DevMidiFile.xpm"
-    #include "Icon/DevGMN.xpm"
-    #include "Icon/NewPlop.xpm"
-    #include "Icon/PlayPlop.xpm"
-    #include "Icon/PausePlop.xpm"
-    #include "Icon/ErrorPlop.xpm"
+#include "Icon/DevUnknown.xpm"
+#include "Icon/DevMidiPort.xpm"
+#include "Icon/DevMidiFile.xpm"
+#include "Icon/DevGMN.xpm"
+#include "Icon/NewPlop.xpm"
+#include "Icon/PlayPlop.xpm"
+#include "Icon/PausePlop.xpm"
+#include "Icon/ErrorPlop.xpm"
+#include "Icon/AddStop.xpm"
+#include "Icon/AddPlay.xpm"
+#include "Icon/AddPause.xpm"
+#include "Icon/AddStopDis.xpm"
 #endif
 
 #ifdef RTMIDI
@@ -443,10 +447,10 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 	DevIcon[DTMidiPort] = new ICON(devmidiport);
 	DevIcon[DTMidiFile] = new ICON(devmidifile);
 	DevIcon[DTGis] = new ICON(devgmn);
-	ConIcon[0] = new wxBitmap(_T("AddStop_bmp"));
-	ConIcon[1] = new wxBitmap(_T("AddPlay_bmp"));
-	ConIcon[2] = new wxBitmap(_T("AddPause_bmp"));
-	ConIcon[3] = new wxBitmap(_T("AddStopDis_bmp"));
+	ConIcon[0] = new wxBitmap(AddStop_xpm, wxBITMAP_TYPE_XPM);
+	ConIcon[1] = new wxBitmap(AddPlay_xpm, wxBITMAP_TYPE_XPM);
+	ConIcon[2] = new wxBitmap(AddPause_xpm, wxBITMAP_TYPE_XPM);
+	ConIcon[3] = new wxBitmap(AddStopDis_xpm, wxBITMAP_TYPE_XPM);
 	PlopIcon[0] = new ICON(newplop);
 	PlopIcon[1] = new ICON(playplop);
 	PlopIcon[2] = new ICON(pauseplop);
@@ -844,19 +848,19 @@ void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
 		return;
 	if ( Token == RT_PLAYBUTTON )
 	{
-		if ( In->Mode == 1 ) // Pause
-			In->Mode = 2;
+		if ( In->Mode == MutaborDevicePlay ) // Pause
+			In->Mode = MutaborDevicePause;
 		else                 // Play
-			In->Mode = 1;
+			In->Mode = MutaborDevicePlay;
 		InDeviceAction(In->Nr, In->Mode);
 		//RePaint();
 		Refresh(); // Reicht das auch?
 	}
 	if ( Token == RT_STOPBUTTON )
 	{
-		if ( In->Mode != 0 ) // Stop
+		if ( In->Mode != MutaborDeviceStop ) // Stop
 		{
-			In->Mode = 0;
+			In->Mode = MutaborDeviceStop;
 			InDeviceAction(In->Nr, In->Mode);
 			//RePaint();
 			Refresh(); // Reicht das auch?
