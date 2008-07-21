@@ -245,7 +245,7 @@ void InputDevDlg::OnButtonClick( wxCommandEvent& event )
 	if ( !ctrlMidiFile->GetValue().empty() )
 		OldFileName = ctrlMidiFile->GetValue();
     wxString NewFileName = wxFileSelector(_("Select Midi-File file"),
-		_T(""), OldFileName, _T(""), _("Midi-file (*.mid*)|*.mid*|All files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
+		_T(""), OldFileName, _T(""), _("Midi-file (*.mid; *.midi)|*.mid;*.midi|All files (*.*)|*.*"), wxOPEN | wxFILE_MUST_EXIST);
     if ( !NewFileName.empty() )
 		ctrlMidiFile->SetValue(NewFileName);
     event.Skip();
