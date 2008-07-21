@@ -100,7 +100,7 @@ MutChild::MutChild (WinKind winkind,
 		    wxWindowID id,
 		    const wxPoint& pos,
 		    const wxSize & size):
-  MutTextBox(parent,id,pos,size)
+MutTextBox(winKind,winAttr,parent,id,pos,size)
 //#ifdef MDI_FORCE_EXTERN
 //       : wxAuiPaneInfo()
 
@@ -109,26 +109,23 @@ MutChild::MutChild (WinKind winkind,
 //                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
 //#endif
 {
-
-    this->winKind = winkind;
-    this->winAttr = winAttr;
     winAttr->Win = this;
 }
 
 MutChild::~MutChild()
 {
+  DEBUGLOG(_T(""));
   deleteFromWinAttrs();
 }
 
 void MutChild::OnActivate(wxActivateEvent& event) {
-#ifdef DEBUG
-  std::cout << "MutChild::OnActivate" << std::endl;
-#endif
+  DEBUGLOG(_T(""));
   curBox = winAttr->Box;
 }
 
 void MutChild::deleteFromWinAttrs()
 {
+  DEBUGLOG(_T(""));
     size_t i = WinAttrs[winKind].Index(*(this->winAttr));
     WinAttrs[winKind][i].Win = NULL;
     WinAttrs[winKind].RemoveAt(i,1);
