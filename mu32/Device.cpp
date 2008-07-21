@@ -97,11 +97,12 @@ void OutAddTime(frac time)
 
 bool InOpen()
 {
+  DEBUGLOGBASE("",_T(""));
   for (InDevice *In = InDevices; In; In = In->Next)
-	  if ( !In->Open() )
-    {
-	    for (InDevice *In1 = InDevices; In1 && In1 != In; In1 = In1->Next)
-	      In1->Close();
+    if ( !In->Open() ) {
+      for (InDevice *In1 = InDevices; In1 && In1 != In; In1 = In1->Next)
+	In1->Close();
+      DEBUGLOGBASE("",_T("Opening failed"));
       return false;
     }
   return true;
