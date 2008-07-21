@@ -2,13 +2,17 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.9 2008/04/28 08:00:37 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.10 2008/07/21 08:56:18 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/04/28 08:00:37 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2008/07/21 08:56:18 $
+ * \version $Revision: 1.10 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.10  2008/07/21 08:56:18  keinstein
+ * Changed numeric device modes into an enum
+ * use wxTimer instead of obsolete WinXP timers
+ *
  * Revision 1.9  2008/04/28 08:00:37  keinstein
  * Fix some size warnings
  *
@@ -55,6 +59,7 @@
 #include "GrafKern.h"
 
 #include "wx/wfstream.h"
+
 
 /* berechnet die Tonigkeit einer Taste bzgl. tonsystem */
 #define GET_INDEX(taste,tonsystem)                \
@@ -131,30 +136,30 @@ void WriteLength(mutOFstream &os, DWORD l)
 
 // CurrentTime ------------------------------------------------------
 
-DWORD CurrentTime;
-UINT CurrentTimeId;
+//DWORD CurrentTime;
+CurrentTimer CurrentTime;
+//UINT CurrentTimeId;
 
+
+/* Obsoleted by CurrentTime Class
 // CallBack Funktion
 void CALLBACK _export CurrentTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
 {
   CurrentTime++;
 }
-
+*/
 // Timer setzen
 void StartCurrentTime()
 {
   CurrentTime = 0;
-#if !defined(WX) || defined(__WXMSW__)
-  CurrentTimeId = timeSetEvent(2, 1, CurrentTimeFunc, 0, TIME_PERIODIC);
-#endif
+  CurrentTime.Start(2,wxTIMER_CONTINUOUS);
+  //  CurrentTimeId = timeSetEvent(2, 1, CurrentTimeFunc, 0, TIME_PERIODIC);
 }
 
 // Timer lˆschen
 void StopCurrentTime()
 {
-#if !defined(WX) || defined(__WXMSW__)
-  timeKillEvent(CurrentTimeId);
-#endif
+  CurrentTime.Stop();
 }
 
 // Tracks -----------------------------------------------------------
@@ -398,10 +403,12 @@ void OutMidiFile::Quite(Route *r)
 
 // InMidiFile -------------------------------------------------------
 
+/*
 void CALLBACK _export MidiTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
 {
-  ((InMidiFile*)dwUser)->IncDelta();
+ ((InMidiFile*)dwUser)->IncDelta();
 }
+*/
 
 long ReadDelta(BYTE *data, DWORD *i)
 {
@@ -419,6 +426,7 @@ long ReadDelta(BYTE *data, DWORD *i)
 
 bool InMidiFile::Open()
 {
+  DEBUGLOG(_T("start"));
 	Track = 0;
 	curDelta = 0;
 	TrackPos = 0;
@@ -430,7 +438,8 @@ bool InMidiFile::Open()
 
 	if ( mutStreamBad(is) )
 	{
-		Mode = 3;
+	  DEBUGLOG(_T("Opening Stream failed"));
+		Mode = MutaborDeviceCompileError;
 		InDevChanged = 1;
 //		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
 		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), Name.c_str());
@@ -466,9 +475,10 @@ bool InMidiFile::Open()
 		l = ReadLength(is);
 		if ( l > (long) 64000 )
 		{
-			Mode = 3;
+			Mode = MutaborDeviceCompileError;
 			InDevChanged = 1;
 			LAUFZEIT_ERROR1(_("Midi input file '%s' is to long."), Name.c_str());
+			DEBUGLOG(_T("Midi input file '%s' is too long."),Name.c_str());
 			return false;
 		}
 		Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
@@ -481,7 +491,9 @@ bool InMidiFile::Open()
 			mutReadStream(is, (char*)Track[i], l);
 		if ( /*is.gcount() != l ||*/ mutStreamBad(is) )
 		{
-			Mode = 3;
+		  DEBUGLOG(_("Midi input file '%s' produces errors."), 
+			   Name.c_str());
+			Mode = MutaborDeviceCompileError;
 			InDevChanged = 1;
 			LAUFZEIT_ERROR1(_("Midi input file '%s' produces errors."), Name.c_str());
 			return false;
@@ -493,9 +505,10 @@ bool InMidiFile::Open()
 	TrackPos = (DWORD*)malloc(nTrack*sizeof(DWORD));
 	StatusByte = (BYTE*)malloc(nTrack*sizeof(BYTE));
 	// Mode setzen
-	Mode = 0;
+	Mode = MutaborDeviceStop;
 	// initialisieren
 	Stop();
+	DEBUGLOG(_T("finished. Mode = %d, this = %p"),Mode,this);
 	return true;
 }
 
@@ -503,7 +516,7 @@ void InMidiFile::Close()
 {
   Stop();
   // Speicher freigeben
-  if ( Mode == 3 )
+  if ( Mode == MutaborDeviceCompileError )
     return;
   for (size_t i = 0; i < nTrack; i++ )
     free(Track[i]);
@@ -515,10 +528,10 @@ void InMidiFile::Close()
 
 void InMidiFile::Stop()
 {
-  if ( Mode == 1 || Mode == 4 )
+  if ( Mode == MutaborDevicePlay || Mode == MutaborDeviceTimingError )
     Pause();
   // OK ?
-  if ( Mode == 3 )
+  if ( Mode == MutaborDeviceCompileError )
     return;
   // Delta-Times lesen
   minDelta = 0;
@@ -533,32 +546,31 @@ void InMidiFile::Stop()
   }
   minDelta = NewMinDelta;
   actDelta = -1;
-  Mode = 0;
+  Mode = MutaborDeviceStop;
 }
 
 void InMidiFile::Play()
 {
-#if !defined(WX) || defined(__WXMSW__)
   if ( RealTime )
-    TimerId = timeSetEvent(2, 1, MidiTimeFunc, (DWORD)this, TIME_PERIODIC);
-#endif
+    timer.Start(2,wxTIMER_CONTINUOUS);
+  //    TimerId = timeSetEvent(2, 1, MidiTimeFunc, (DWORD)this, TIME_PERIODIC);
   Busy = FALSE;
-  Mode = 1;
+  Mode = MutaborDevicePlay;
 }
 
 void InMidiFile::Pause()
 {
-#if !defined(WX) || defined(__WXMSW__)
   if ( RealTime )
-    timeKillEvent(TimerId);
-#endif
-  Mode = 2;
+    timer.Stop();
+  //    timeKillEvent(TimerId);
+  Mode = MutaborDevicePause;
   Quite();
 }
 
 void InMidiFile::IncDelta()
 {
   actDelta++;
+  DEBUGLOG(_T("actDelta: %d"),actDelta);
   if ( Busy )
     return;
   if ( actDelta < minDelta )
@@ -582,7 +594,7 @@ void InMidiFile::IncDelta()
   }
   if ( NewMinDelta == NO_DELTA )
   {
-    Mode = 4;
+    Mode = MutaborDeviceTimingError;
     InDevChanged = 1;
   }
   minDelta = NewMinDelta;

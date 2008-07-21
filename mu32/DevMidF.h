@@ -103,12 +103,26 @@ class OutMidiFile : public OutDevice
 
 // InMidiFile -------------------------------------------------------
 
+
+
 class InMidiFile : public InDevice
 {
- public:
+
+  class MidiTimer : public wxTimer {
+    InMidiFile * file;
+  public:
+    MidiTimer(InMidiFile * f) : wxTimer(),file(f) {}
+    void Notify()
+    {
+      file->IncDelta();
+    }
+  };
+  MidiTimer timer;
+
+public:
   wxString Name;
   int DevId;
- InMidiFile(wxString name, int devId): InDevice(),Name(name) {
+  InMidiFile(wxString name, int devId): InDevice(),timer(this),Name(name) {
     DevId = devId;
   }
   virtual ~InMidiFile() {};
@@ -135,7 +149,7 @@ class InMidiFile : public InDevice
   long actDelta;
   BYTE *StatusByte;
   ChannelData Cd[16];
-  UINT TimerId;
+  //  UINT TimerId;
   BOOL Busy;
   DWORD TicksPerQuater;
   long MMSPerQuater;
@@ -146,7 +160,89 @@ class InMidiFile : public InDevice
 
 // Function ---------------------------------------------------------
 
+class CurrentTimer: public wxTimer {
+  unsigned int time;
+public:
+  CurrentTimer(unsigned int t = 0):wxTimer(),time(t) {
+  }
+  void Notify() {
+    time++;
+  }
+  void Set(unsigned int t = 0) { time = t; }
+  CurrentTimer& operator = (unsigned int t) { 
+    time = t; 
+    return * this;
+  }
+  operator unsigned int () { return time; }
+};
+
 void StartCurrentTime();
 void StopCurrentTime();
 
 #endif
+
+/* 
+timeSetEvent
+
+The timeSetEvent function starts a specified timer event. The multimedia timer runs in its own thread. After the event is activated, it calls the specified callback function or sets or pulses the specified event object.
+
+This function is obsolete. New applications should use CreateTimerQueueTimer to create a timer-queue timer.
+
+MMRESULT timeSetEvent(
+  UINT           uDelay,      
+  UINT           uResolution, 
+  LPTIMECALLBACK lpTimeProc,  
+  DWORD_PTR      dwUser,      
+  UINT           fuEvent      
+);
+
+Parameters
+
+uDelay
+
+Event delay, in milliseconds. If this value is not in the range of the minimum and maximum event delays supported by the timer, the function returns an error.
+
+uResolution
+
+Resolution of the timer event, in milliseconds. The resolution increases with smaller values; a resolution of 0 indicates periodic events should occur with the greatest possible accuracy. To reduce system overhead, however, you should use the maximum value appropriate for your application.
+
+lpTimeProc
+
+Pointer to a callback function that is called once upon expiration of a single event or periodically upon expiration of periodic events. If fuEvent specifies the TIME_CALLBACK_EVENT_SET or TIME_CALLBACK_EVENT_PULSE flag, then the lpTimeProc parameter is interpreted as a handle to an event object. The event will be set or pulsed upon completion of a single event or periodically upon completion of periodic events. For any other value of fuEvent, the lpTimeProc parameter is interpreted as a function pointer with the following signature: void (CALLBACK)(UINT uTimerID, UINT uMsg, DWORD_PTR dwUser, DWORD_PTR dw1, DWORD_PTR dw2);
+
+dwUser
+
+User-supplied callback data.
+
+fuEvent
+
+Timer event type. This parameter may include one of the following values.
+Value 	Meaning
+TIME_ONESHOT 	Event occurs once, after uDelay milliseconds.
+TIME_PERIODIC 	Event occurs every uDelay milliseconds.
+
+The fuEvent parameter may also include one of the following values.
+Value 	Meaning
+TIME_CALLBACK_FUNCTION 	When the timer expires, Windows calls the function pointed to by the lpTimeProc parameter. This is the default.
+TIME_CALLBACK_EVENT_SET 	When the timer expires, Windows calls the SetEvent function to set the event pointed to by the lpTimeProc parameter. The dwUser parameter is ignored.
+TIME_CALLBACK_EVENT_PULSE 	When the timer expires, Windows calls the PulseEvent function to pulse the event pointed to by the lpTimeProc parameter. The dwUser parameter is ignored.
+TIME_KILL_SYNCHRONOUS 	Passing this flag prevents an event from occurring after the timeKillEvent() function is called.
+
+Return Values
+
+Returns an identifier for the timer event if successful or an error otherwise. This function returns NULL if it fails and the timer event was not created. (This identifier is also passed to the callback function.)
+
+Remarks
+
+Each call to timeSetEvent for periodic timer events requires a corresponding call to the timeKillEvent function.
+
+Creating an event with the TIME_KILL_SYNCHRONOUS and the TIME_CALLBACK_FUNCTION flag prevents the event from occurring after the timeKillEvent function is called.
+
+Requirements
+
+  Windows XP: Included in Windows XP only.
+  Header: Declared in Mmsystem.h; include Windows.h.
+  Library: Use Winmm.lib.
+
+
+ */
