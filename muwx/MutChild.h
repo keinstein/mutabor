@@ -2,15 +2,19 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.6 2008/06/30 08:31:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.7 2008/07/21 09:10:54 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/06/30 08:31:21 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/07/21 09:10:54 $
+ * \version $Revision: 1.7 $
  * \license wxWindows license
  * 
  * $Log: MutChild.h,v $
+ * Revision 1.7  2008/07/21 09:10:54  keinstein
+ * changed parent signalling according to current window loayout
+ * moved WinAttr
+ *
  * Revision 1.6  2008/06/30 08:31:21  keinstein
  * removed MutChildren.
  * ~MutChild: outcourcing WinAttrs logic
@@ -36,13 +40,6 @@
 #include "wx/aui/aui.h"
 #include "MutTextBox.h"
 
-enum WinKind { WK_KEY = 0, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
-
-inline WinKind operator++(WinKind & k)
-{ return k = WinKind(int(k) + 1); }
-
-inline WinKind operator++(WinKind & k,int)
-{ WinKind l=k; ++k; return l; }
 
 /*
 typedef int WinKind;
@@ -57,31 +54,14 @@ typedef int WinKind;
 
 //extern WinKind ActiveWinKind;
 
-#define PARENT_KIND (PARENT->winKind)
-#define PARENT_BOX (PARENT->winAttr->Box)
-#define PARENT ((MutChild*)GetParent())
+//#define PARENT_KIND (PARENT->winKind)
+//#define PARENT_BOX (PARENT->winAttr->Box)
+//#define PARENT ((MutChild*)GetParent())
 
 
 //class WinAttr;
 //WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
 
-class WinAttr
-{
- public:
-  wxWindow *Win;  // 0 = nicht offen
-  char Wanted;   // 0 = nicht wanted
-  //  int X, Y, W, H;     // W = 0 ... noch nicht benutzt, d.h. undefiniert
-  int Box;
-  WinAttr(char wanted = 0, int box = -1)
-    {
-      Wanted = wanted;
-      Box = box;
-      //      X = Y = H = W = 0;
-      Win = NULL;
-    }
-};
-
-WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
 //WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
 
 extern ArrayOfWinAttr WinAttrs[WK_NULL];
@@ -97,8 +77,6 @@ class MutFrame;
 class MutChild: public MutTextBox
 {
 public:
-  WinKind winKind;
-  WinAttr *winAttr;
   MutChild (WinKind winkind, 
 	    WinAttr *winAttr, 
 	    wxWindow * parent= NULL, 
