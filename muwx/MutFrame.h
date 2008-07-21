@@ -2,16 +2,24 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.12 2008/06/30 08:57:17 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.13 2008/07/21 09:25:29 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/06/30 08:57:17 $
- * \version $Revision: 1.12 $
+ * $Date: 2008/07/21 09:25:29 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.13  2008/07/21 09:25:29  keinstein
+ * RcfFile: removed
+ * TextBoxWanted: one variable per box and type
+ * removed ROUTE_WIN and REPAINT_ROUTE definitions
+ * reformatted debug logging
+ * Implement box selection Menu
+ * MutFrame::repaint_route(): New function
+ *
  * Revision 1.12  2008/06/30 08:57:17  keinstein
  * Fix UPDATE_UI for CM_PANIC and CM_EXECUTE
  * MurFileData: new struct
@@ -77,6 +85,7 @@
 #include "Global.h"
 #include "MutChild.h"
 #include "MutEditFile.h"
+#include "MutRouteWnd.h"
 #include "wx/aui/aui.h"
 #include "wx/toolbar.h"
 
@@ -201,6 +210,18 @@ public:
     /// retrun true if we have already a client
     bool HasClient() { return (bool) client; }
 
+    void UpdateBoxMenu();
+    bool RaiseTheFrame();
+
+    static void repaint_route() {
+      MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+      if (routewin) {
+	MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
+	if (route) route->Refresh();
+      }
+    }
+
+    
  private:
     int curStatusImg;
 
@@ -214,7 +235,7 @@ public:
 
     static MutFrame * ActiveWindow;
 
-    int boxCommandIds[MAX_BOX];
+    static int boxCommandIds[MAX_BOX];
     
     DECLARE_EVENT_TABLE()
 };
@@ -234,6 +255,6 @@ extern wxString CompiledFile;
 extern wxString curLogic[MAX_BOX];
 extern wxString curTS[MAX_BOX];
 extern int curTaste[MAX_BOX][2];
-extern bool TextBoxWanted[];
+extern bool TextBoxWanted[][3];
 
 #endif
