@@ -34,6 +34,7 @@
 class wxHtmlHelpController;
 extern wxHtmlHelpController * HelpController;
 
+#ifdef WX
 #if defined(WX) && defined(UNICODE)
   #include <wx/strconv.h>
   extern wxCSConv muCSConv;
@@ -41,12 +42,27 @@ extern wxHtmlHelpController * HelpController;
   #define mumT(x) _T(x)
 #else
   #define muT(x) wxString(x)
-  #define mumT(x) muT(x)
+  #define mumT(x) _T(x)
+#endif
+#else
 #endif
 
 wxString FileNameDialog(wxWindow * parent, 
 			int Command = CM_FILEOPEN, 
 			wxString Filename = wxEmptyString);
+
+#ifdef DEBUG
+# define DEBUGLOGBASE(type, ...)			   \
+  std::cout << __FILE__ << ":" << __LINE__ << ": " \
+  << (type) << "::" << __WXFUNCTION__ << ": "			\
+  << (wxString::Format(__VA_ARGS__)).ToUTF8() << std::endl
+
+#else
+# define DEBUGLOGBASE(...)
+#endif
+
+# define DEBUGLOG(...) DEBUGLOGBASE(typeid(*this).name(),__VA_ARGS__)
+# define DEBUGLOGTYPE(type, ...) DEBUGLOGBASE(typeid(type).name(), __VA_ARGS__)
 
 //#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
