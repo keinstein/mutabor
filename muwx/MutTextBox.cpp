@@ -47,9 +47,17 @@ END_EVENT_TABLE()
 
 wxString ListInit[1] = { _("<init>") };
 
-MutTextBox::MutTextBox(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size)
- : wxListBox(parent, id, pos, size, 1, ListInit)
+MutTextBox::MutTextBox(WinKind winKind,
+		       WinAttr *winAttr, 
+		       wxWindow* parent,
+		       wxWindowID id, 
+		       const wxPoint& pos, 
+		       const wxSize& size): 
+  wxListBox(parent, id, pos, size, 1, ListInit), 
+  winAttr(winAttr),
+  winKind(winKind)
 {
+  DEBUGLOG(_T(""));
 /*  Attr.Style &= ~LBS_SORT;
   Attr.Style |= LBS_NOINTEGRALHEIGHT | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL | LBS_NOSEL;
   ColorBar1 = new TControl(this, 0, "", 1, 1, 1000, 1);
@@ -57,19 +65,19 @@ MutTextBox::MutTextBox(wxWindow* parent, wxWindowID id, const wxPoint& pos, cons
   ColorBox = -1;
 }
 
-extern bool TextBoxWanted[];
 
 void MutTextBox::OnClose(wxCloseEvent& event)
 {
+  DEBUGLOG(_T(""));
   //	if ( LogicOn )
-  //		TextBoxWanted[PARENT_KIND] = false;
-       	event.Skip();
-	Destroy();
-	
+  TextBoxWanted[curBox][winKind] = false;
+  //       	event.Skip(true);
+  Destroy();
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)
 {
+  DEBUGLOG(_T(""));
   // Text in Liste
   Clear();
   char s1[2000];
@@ -111,7 +119,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
 //    }
   }
 	// Scrollen, falls Aktion-Window
-	if ( PARENT_KIND == WK_ACT )
+	if ( winKind == WK_ACT )
 		SetSelection(GetCount()-1);
   // Farbbalken ggf. korrigieren
 /*  if ( GetTopIndex() == 0 && PARENT_KIND != WK_ACT )
@@ -123,6 +131,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
 
 void MutTextBox::NewText(wxString s, bool newTitle)
 {
+  DEBUGLOG(_T(""));
   // Text in Liste
   Clear();
   
@@ -153,7 +162,7 @@ void MutTextBox::NewText(wxString s, bool newTitle)
   }
 
 	// Scrollen, falls Aktion-Window
-	if ( PARENT_KIND == WK_ACT )
+	if ( winKind == WK_ACT )
 		SetSelection(GetCount()-1);
   // Farbbalken ggf. korrigieren
 /*  if ( GetTopIndex() == 0 && PARENT_KIND != WK_ACT )
