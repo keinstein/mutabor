@@ -2,12 +2,16 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.7 2008/06/30 08:07:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.8 2008/07/21 08:59:38 keinstein Exp $
  * \author R¸diger Krauﬂe <krausze@mail.berlios.de>
- * \date $Date: 2008/06/30 08:07:45 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2008/07/21 08:59:38 $
+ * \version $Revision: 1.8 $
  *
  * $Log: EDevice.h,v $
+ * Revision 1.8  2008/07/21 08:59:38  keinstein
+ * recoded
+ * Use symbolic enum values for device modes.
+ *
  * Revision 1.7  2008/06/30 08:07:45  keinstein
  * Get default port name only if midi devices are attached on startup to prevent crashes
  * Check for device existence when routes are created.
@@ -160,7 +164,7 @@ class EDevice
   /// Number
   int Nr;
   /// Mode
-  int Mode;
+  MutaborModeType Mode;
   
   /// Constructor 
   /**
@@ -176,7 +180,7 @@ class EDevice
     Routes = 0;
     DevId = devId;
     BendingRange = INIT_BENDINGRANGE;
-    Mode = -1;
+    Mode = MutaborDeviceUnregistered;
     Nr = -1;
   }
   /// Destructor
@@ -257,12 +261,14 @@ class EDevice
       return NULL;
       //3 ??
     case DTGis:
+      Mode = MutaborDeviceStop;
       return new InGis(Name, _T("GIS"));
       break;
     case DTMidiPort:
       return new InMidiPort(Name, DevId);
       break;
     case DTMidiFile:
+      Mode = MutaborDeviceStop;
       return new InMidiFile(Name, 0);
       break;
     default:

@@ -1,6 +1,6 @@
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
-// Oberfl‰chen Devices
+// Mutabor 3, 1998, R.Krauï¬‚e
+// Oberflâ€°chen Devices
 // ------------------------------------------------------------------
 
 #include <stdio.h>
@@ -40,7 +40,7 @@ int EDevice::nRoutes()
   return n;
 }
 
-// Neue Route am Ende anh‰ngen (damit RTelse O.K. geht)
+// Neue Route am Ende anhâ€°ngen (damit RTelse O.K. geht)
 void EDevice::AddRoute(ERoute *route)
 {
   ERoute **R = &Routes;
@@ -56,7 +56,7 @@ wxString EDevice::GetName()
 	return s;
 }
 
-// Hilfe f¸r Verkettung: Wenn Outger‰t gekillt wird,
+// Hilfe fÂ¸r Verkettung: Wenn Outgerâ€°t gekillt wird,
 // sollten die Verweise in den Routen verbogen werden
 
 void ChangeOutReferences(EDevice *from, EDevice *to)
@@ -69,11 +69,11 @@ void ChangeOutReferences(EDevice *from, EDevice *to)
 
 // Verkettung in den Listen -----------------------------------------
 
-// f¸gt neues Device in Liste,
-// wenn Device schon existiert, dann wird nicht neu eingef¸gt
+// fügt neues Device in Liste,
+// wenn Device schon existiert, dann wird nicht neu eingefügt
 // oldPos wird entfernt
-// einf¸gen auf newPos
-// bei dt == -1 und keinem newPlace wird nur gelˆscht
+// einfügen auf newPos
+// bei dt == -1 und keinem newPlace wird nur gelöscht
 EDevice* NewDevice(EDevice **List, 
 		   DevType dt, 
 		   const wxString& name, 
@@ -103,25 +103,22 @@ EDevice* NewDevice(EDevice **List,
     strcpy(Pos->Name, name);
 #endif
     Pos->DevId = devId;
-    Pos->Mode = -1;
-  }
-  else
-  {
-    if ( oldPos )
-    {
+    Pos->Mode = MutaborDeviceUnregistered;
+  } else {
+    if ( oldPos ) {
       // Position von oldPos als Adresse finden
       EDevice **PreOldPos = List;
       for (;*PreOldPos; PreOldPos = &((*PreOldPos)->Next))
         if ( *PreOldPos == oldPos )
           break;
-      // oldPos lˆschen, Routen retten
+      // oldPos löschen, Routen retten
       R = oldPos->Routes;
       oldPos->Routes = 0;
       *PreOldPos = (*PreOldPos)->Next;
       oldPos->Next = 0;
       delete oldPos;
     }
-    // evtl. nur lˆschen
+    // evtl. nur löschen
     if ( dt == -1 )
     {
       if ( R )
@@ -133,7 +130,8 @@ EDevice* NewDevice(EDevice **List,
     for (;*PreNewPos; PreNewPos = &((*PreNewPos)->Next))
       if ( *PreNewPos == newPos )
         break;
-    // Device einf¸gen
+
+    // Device einfügen
     Pos = new EDevice(dt, name, devId);
     Pos->Routes = R;
     Pos->Next = *PreNewPos;
@@ -150,7 +148,7 @@ EDevice* NewDevice(EDevice **List,
 #endif
 		 ( dt == DTMidiPort && (*Dev)->DevId == devId ) ) )
     {
-      // doppeltes Device gefunden, Routen ¸bertragen und lˆschen
+      // doppeltes Device gefunden, Routen Â¸bertragen und lË†schen
       EDevice *Dev1 = *Dev;
       if ( Dev1->Routes )
       {
@@ -271,7 +269,7 @@ start:
 // Routen scannen
 void ScanRoutes(const wxString& config)
 {
-	// Listen s‰ubern
+	// Listen sâ€°ubern
 	if ( InEDevices )
 	{
 		delete InEDevices;
@@ -349,8 +347,7 @@ void ScanRoutes(const wxString& config)
 	std::cerr << "+" << s.ToUTF8() << std::endl;
 #endif
 	// Input lesen
-	while ( 1 )
-	{
+	while ( 1 ) {
 		// Device lesen
 		wxChar Type[40], Name[400];
 		//wxString Type, Name;
@@ -434,7 +431,7 @@ void ScanRoutes(wxConfigBase * config)
 {
   if (! config->HasGroup(_T("Input"))) return;
 
-  // Listen s‰ubern
+  // Listen sâ€°ubern
   if ( InEDevices ) {
     delete InEDevices;
     InEDevices = 0;
@@ -593,7 +590,7 @@ start:
 // Routen scannen
 void ScanRoutes(char *config)
 {
-  // Listen s‰ubern
+  // Listen sâ€°ubern
   if ( InEDevices )
   {
     delete InEDevices;
@@ -673,9 +670,9 @@ void ScanRoutes(char *config)
 // Routen schreiben
 void WriteRoutes(wxString &config)
 {
-	// config s‰ubern
+	// config sâ€°ubern
 	config = wxEmptyString;
-	// Unbenˆtigte Out Devices entfernen
+	// UnbenË†tigte Out Devices entfernen
 	EDevice *Out;
 	EDevice *In;
 	for (Out = OutEDevices; Out; Out = Out->Next)
@@ -736,7 +733,7 @@ void WriteRoutes(wxString &config)
 	{
 	  // Device schreiben
 	  In->Nr = nr++; // Nummern zur Referenz bei Play/Stop
-	  In->Mode = 0; // Mode auf "registriert" setzen
+	  In->Mode = MutaborDeviceStop; // Mode auf "registriert" setzen
 	  wxString sName = In->Name;
 	  if ( sName.Find(_T(" ")) )
 	    sName.Prepend(_T("\"")) << _T("\"");
@@ -796,6 +793,7 @@ void WriteRoutes(wxConfigBase *config)
 		Out = Out->Next;
 	}
 	// Output schreiben
+	config -> DeleteGroup(_T("Output"));
 	config -> SetPath(_T("Output"));
 	int nr = 0;
 	for ( Out = OutEDevices; Out; Out = Out->Next)
@@ -835,15 +833,17 @@ void WriteRoutes(wxConfigBase *config)
 	}
 	// Input schreiben
 	nr = 0;
+		    config -> DeleteGroup(_T("../Input"));
 	config -> SetPath(_T("../Input"));
 	for ( In = InEDevices; In; In = In->Next)
 	{
 		// Device schreiben
 		In->Nr = nr++; // Nummern zur Referenz bei Play/Stop
-#ifdef DEBUG
-		std::cerr << "Trying to save input device Nr. " << In->Nr << std::endl;
-#endif
-		In->Mode = 0; // Mode auf "registriert" setzen
+
+		DEBUGLOGBASE("",
+			     _T("Trying to save input device Nr. %d"),
+			     In->Nr);
+		In->Mode = MutaborDeviceStop; // Mode auf "registriert" setzen
 		config->SetPath(wxString(_T("")) << In->Nr);
 		
 		config->Write(_T("Name"), In->Name);
@@ -870,7 +870,7 @@ void WriteRoutes(wxConfigBase *config)
 		  config -> Write(_T("Device_Id"), In->DevId);
 		  break;
 		default:
-		  wxLogError(_("Undefinded device type %d"), In->DT);
+		  wxLogError(_("Undefined device type %d."), In->DT);
 		}
 		config -> SetPath(_T("Routes"));
 		
@@ -909,10 +909,10 @@ void WriteRoutes(char **config)
 {
   char *s = (char*) malloc(30000), s1[200];
   s[0] = 0;
-  // config s‰ubern
+  // config sâ€°ubern
   if ( *config )
     free(*config);
-  // Unbenˆtigte Out Devices entfernen
+  // UnbenË†tigte Out Devices entfernen
   EDevice *Out;
   EDevice *In;
   for (Out = OutEDevices; Out; Out = Out->Next)
