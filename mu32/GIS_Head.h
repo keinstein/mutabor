@@ -331,7 +331,11 @@ class ChordNote
 			Data = 0;
 			Cursor = &Data;
 			if ( TotalTime.n )
-				AddGis(new GisNote(muT("_"), mutEmptyString, 0, TotalTime, muT(" "), 0));
+			  AddGis(new GisNote(mutT("_"), 
+					     mutEmptyString, 
+					     0, 
+					     TotalTime, 
+					     mutT(" "), 0));
 			CurrentTime = 0;
 			Boss->ChordPos = Boss->Cursor;
 			Status = 0;
