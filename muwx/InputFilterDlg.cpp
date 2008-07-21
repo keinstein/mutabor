@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        InputFilterDlg.cpp
 // Purpose:     
-// Author:      R. Krauße
+// Author:      R. KrauÃŸe
 // Modified by: 
 // Created:     10/21/05 18:28:56
 // RCS-ID:      
-// Copyright:   (c) R. Krauße, TU Dresden
+// Copyright:   (c) R. KrauÃŸe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
@@ -113,7 +113,7 @@ void InputFilterDlg::CreateControls()
         _("&all"),
         _("&else"),
         _("&channel"),
-        _("&stuff")
+        _("&staff")
     };
     ctrlType = new wxRadioBox( itemDialog1, ID_RADIOBOX, _("Type"), wxDefaultPosition, wxDefaultSize, 4, ctrlTypeStrings, 1, 0 );
     itemBoxSizer4->Add(ctrlType, 0, wxGROW|wxALL, 0);
