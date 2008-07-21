@@ -8,7 +8,18 @@
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 
+enum MutaborModeType {
+  MutaborDeviceUnregistered = -1,
+  MutaborDeviceStop,
+  MutaborDevicePlay,
+  MutaborDevicePause,
+  MutaborDeviceCompileError,
+  MutaborDeviceTimingError
+};
+
 #include "GIS.h"
+
+
 
 class OutDevice;
 class InDevice;
@@ -147,12 +158,12 @@ class InDevice
 {
  public:
   InDevice *Next;
-  int Mode;
+  enum MutaborModeType Mode;
  protected:
   Route *Routes;
  public:
   InDevice() {
-    Mode = 0;
+    Mode = MutaborDeviceStop;
     Next = 0;
     Routes = 0;
   }
