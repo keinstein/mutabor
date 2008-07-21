@@ -153,7 +153,7 @@ bool InGis::Open()
 #ifdef DEBUG
 	std::cerr << "done.";
 #endif
-    Mode = 3;
+    Mode = MutaborDeviceCompileError;
     InDevChanged = 1;
     return false;
   }
@@ -161,7 +161,7 @@ bool InGis::Open()
   Head->Box = 0; /// hier muﬂ noch was hin
   Head->Prev = (GisReadHead*)(&Head);
   // Mode setzen
-  Mode = 0;
+  Mode = MutaborDeviceStop;
   // initialisieren
   Stop();
   return true;
@@ -171,7 +171,7 @@ void InGis::Close()
 {
   Stop();
   // Speicher freigeben
-  if ( Mode == 3 )
+  if ( Mode == MutaborDeviceCompileError )
     return;
   if ( Head )
   {
@@ -188,10 +188,10 @@ void InGis::Close()
 
 void InGis::Stop()
 {
-  if ( Mode == 1 || Mode == 4 )
+  if ( Mode == MutaborDevicePlay || Mode == MutaborDeviceTimingError )
     Pause();
   // OK ?
-  if ( Mode == 3 )
+  if ( Mode == MutaborDeviceCompileError )
     return;
   // Header auf Start setzen
   if ( Head )
@@ -205,7 +205,7 @@ void InGis::Stop()
   // Delta-Times lesen
   minDelta = 0;
   actDelta = -1;
-  Mode = 0;
+  Mode = MutaborDeviceStop;
 }
 
 void InGis::Play()
@@ -214,7 +214,7 @@ void InGis::Play()
 	TimerId = timeSetEvent(2, 1, GisTimeFunc, (DWORD)this, TIME_PERIODIC);
 #endif
 	Busy = FALSE;
-	Mode = 1;
+	Mode = MutaborDevicePlay;
 }
 
 void InGis::Pause()
@@ -222,7 +222,7 @@ void InGis::Pause()
 #if !defined(WX) || defined(__WXMSW__)
   timeKillEvent(TimerId);
 #endif
-  Mode = 2;
+  Mode = MutaborDevicePause;
   Quite();
 }
 
@@ -241,7 +241,7 @@ void InGis::IncDelta()
   actDelta = 0;
   if ( minDelta == -1 )
   {
-    Mode = 4;
+    Mode = MutaborDeviceTimingError;
     Stop();
     InDevChanged = 1;
   }
