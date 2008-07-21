@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.14 2008/06/30 08:27:10 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.15 2008/07/21 09:08:44 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/06/30 08:27:10 $
- * \version $Revision: 1.14 $
+ * $Date: 2008/07/21 09:08:44 $
+ * \version $Revision: 1.15 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.15  2008/07/21 09:08:44  keinstein
+ * some reformatting of white space and debug logging
+ * Changed window deletion on Quit.
+ * Changed window Variables to one per Box and type
+ *
  * Revision 1.14  2008/06/30 08:27:10  keinstein
  * New Variable: routewindow
  * OnInit(): Register Ids from Mutabor.rh
@@ -608,63 +613,48 @@ void MutApp::ShowHelp(int commandId) {
 }
 
 void MutApp::CmQuit (wxCommandEvent& event) {
-#ifdef DEBUG
-	printf("MutApp::CmQuit\n");
-#endif
-
-	SetExitOnFrameDelete(true);
-	//		Exit();
-
-	if (quitting) return;
-	quitting = true;
-	event.Skip(false);
+  DEBUGLOG(_T(""));
+  
+  SetExitOnFrameDelete(true);
+  //		Exit();
+  
+  if (quitting) return;
+  quitting = true;
+  event.Skip(false);
 		
 
-	wxWindow * window;
-	SetTopWindow(NULL);
-	//	if (frames.empty()) {
-	if ((window = GetTopWindow()) == NULL) {
-#ifdef DEBUG
-		printf("MutApp::CmQuit: No Frames.\n");
-#endif
-		quitting = false;
-		return;
-	}
+  wxWindow * window;
+  SetTopWindow(NULL);
+  //	if (frames.empty()) {
+  if ((window = GetTopWindow()) == NULL) {
+    DEBUGLOG(_T("No Frames."));
+    quitting = false;
+    return;
+  }
 
-	
-	FrameHash::iterator it;
+  FrameHash::iterator it;
+  DEBUGLOG(_T("Starting Loop"));
+  while (Pending()) Dispatch();
+  DEBUGLOG(_T("Dispatched all events"));
 
-#ifdef DEBUG
-	printf("MutApp::CmQuit: Starting Loop\n");
-#endif
-	  while (Pending()) Dispatch();
-#ifdef DEBUG
-	  std::cout << "MutApp::CmQuit: Dispatched all events" << std::endl;
-#endif
+  while ((window = GetTopWindow())) {
+    DEBUGLOG(_T("Next Window"));
+    if (!window->Close()) {
+      quitting = false;
+      return;
+    }
+    DEBUGLOG(_T("Closed window"));
 
-	while ((window = GetTopWindow())) {
-#ifdef DEBUG
-	  std::cout << "MutApp::CmQuit: Next Window" << std::endl;
-#endif
-	  if (!window->Close()) return;
-#ifdef DEBUG
-	  std::cout << "MutApp::CmQuit: Closed window" << std::endl;
-#endif
+    // empty queue and process idle event to delete the frame
+    while(Pending()) Dispatch();
 
-	  // empty queue and process idle event to delete the frame
-	  while(Pending()) Dispatch();
-
-	  wxIdleEvent idle;
-	  ProcessEvent(idle);
-#ifdef DEBUG
-	  std::cout << "MutApp::CmQuit: Dispatched all events" << std::endl;
-#endif
-	}
+    wxIdleEvent idle;
+    ProcessEvent(idle);
+    DEBUGLOG(_T("Dispatched all events"));
+  }
 
 
-#ifdef DEBUG
-	  std::cout << "MutApp::CmQuit: finished loop" << std::endl;
-#endif
+  DEBUGLOG(_T("finished loop"));
 }
 
 
@@ -762,14 +752,14 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type) {
 			_("Show tone system window"));
 	  MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
 			_("Show current actions window"));
-	  MENUITEM_SEPARATOR;
+	  /*	  MENUITEM_SEPARATOR;
 	  MENUCHECKITEM(_("&One window mode"), CM_OWM,
 			_("Toggle logic satus window: one each or one common"));
 	  MENUCHECKITEM(_("One &common action window"), CM_CAW,
 			_("Toggle action window mode: one each or one common"));
-	  MENUITEM_SEPARATOR;
+	  */	  MENUITEM_SEPARATOR;
 	  menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
-		   _("Select current Box"));
+		       _("Select current Box"));
 	}
 
 	CLOSEMENU(_("&View"));
@@ -845,9 +835,15 @@ void MutApp::SaveState()
   config->Write(_T("Save editor"), SaveEditor);
   config->Write(_T("Color bars"), UseColorBars);
 
-  config->Write(_T("KeyWindow"), TextBoxWanted[WK_KEY]);
-  config->Write(_T("ToneSystemWindow"), TextBoxWanted[WK_TS]);
-  config->Write(_T("ActionsWindow"), TextBoxWanted[WK_ACT]);
+  config->SetPath(_T("Box settings"));
+  for (size_t box = 0 ; box < MAX_BOX ; box++) {
+    config->SetPath(wxString::Format(_T("%d"),box));
+    config->Write(_T("KeyWindow"), TextBoxWanted[box][WK_KEY]);
+    config->Write(_T("ToneSystemWindow"), TextBoxWanted[box][WK_TS]);
+    config->Write(_T("ActionsWindow"), TextBoxWanted[box][WK_ACT]);
+    config->SetPath(_T(".."));
+  }
+  config->SetPath(_T(".."));
 
   WriteRoutes(config);
   config->SetPath(oldpath);
@@ -865,9 +861,15 @@ void MutApp::RestoreState()
   config->Read(_T("SaveEditor"), &SaveEditor, true);
   config->Read(_T("ColorBars"), &UseColorBars, true);
     
-  config->Read(_T("KeyWindow"), &TextBoxWanted[WK_KEY], false);
-  config->Read(_T("ToneSystemWindow"), &TextBoxWanted[WK_TS], false);
-  config->Read(_T("ActionsWindow"), &TextBoxWanted[WK_ACT], false);
+  config->SetPath(_T("Box settings"));
+  for (size_t box = 0 ; box < MAX_BOX ; box++) {
+    config->SetPath(wxString::Format(_T("%d"),box));
+    config->Read(_T("KeyWindow"), &TextBoxWanted[box][WK_KEY], false);
+    config->Read(_T("ToneSystemWindow"), &TextBoxWanted[box][WK_TS], false);
+    config->Read(_T("ActionsWindow"), &TextBoxWanted[box][WK_ACT], false);
+    config->SetPath(_T(".."));
+  }
+  config->SetPath(_T(".."));
 
   ScanRoutes(config);
   config->SetPath(oldpath);
