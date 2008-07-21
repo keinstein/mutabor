@@ -23,6 +23,8 @@ typedef void UpdateUICallback();
 
 extern "C"
 {
+extern UpdateUICallback* updateUIcallback;
+
 #ifndef WX
   char pascal Compile( TDialog *compWin, const char *name );
 #else
@@ -33,7 +35,7 @@ extern "C"
   void pascal Panic();
 
 //  void pascal InDeviceActionAll(char action);
-  void pascal InDeviceAction(int inDevNr, char action);
+  void pascal InDeviceAction(int inDevNr, enum MutaborModeType action);
 
   bool pascal CheckNeedsRealTime();
 
@@ -45,7 +47,7 @@ extern "C"
   bool pascal TSChanged(int box);
   bool pascal InDevicesChanged();
 
-  void pascal GetInDevicesMode(char *mode);
+  void pascal GetInDevicesMode(enum MutaborModeType *mode);
 
   void pascal GetDrivers(int *driver);
   void pascal SetDrivers(int *driver);

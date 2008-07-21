@@ -2,15 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.9 2008/06/02 16:02:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.10 2008/07/21 09:03:11 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/06/02 16:02:00 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2008/07/21 09:03:11 $
+ * \version $Revision: 1.10 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.10  2008/07/21 09:03:11  keinstein
+ * Use symbolic enum values for device modes and device actions
+ * move FlushUpdateUI() to Execute.cpp
+ *
  * Revision 1.9  2008/06/02 16:02:00  keinstein
  * dont include Mutabor.rh since it is already included now
  * New interfache for InitCompDia
@@ -48,6 +52,8 @@
 #include "DevGIS.h"
 #include "DevMidi.h"
 #include "DevMidF.h"
+
+extern "C" {
 
 bool RealTime = false;
 
@@ -122,9 +128,7 @@ bool pascal _export Activate(bool realTime, UpdateUICallback* callback)
       timeEndPeriod(1);
 #endif
 
-#ifdef MUTWIN
-      wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
-#endif
+    wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
     return false;
   }
   if ( RealTime )
@@ -147,14 +151,6 @@ void pascal _export Stop()
   GlobalReset();
 }
 
-void FlushUpdateUI()
-{
-  if ( keys_changed_sum && updateUIcallback )
-  {
-    keys_changed_sum = 0;
-    updateUIcallback();
-  }
-}
 
 // NoRealTime - Aktionen
 
@@ -182,7 +178,7 @@ void NRT_Play()
   InDevChanged = 1;
 }
 
-void pascal _export InDeviceAction(int inDevNr, char action)
+void pascal _export InDeviceAction(int inDevNr, enum MutaborModeType action)
 {
 //  return; entkoppeln (zum debuggen)
   if ( !RealTime )
@@ -196,16 +192,16 @@ void pascal _export InDeviceAction(int inDevNr, char action)
     In = In->Next;
     inDevNr--;
   }
-  if ( !In || In->Mode == 3 ) return;
+  if ( !In || In->Mode == MutaborDeviceCompileError ) return;
   switch ( action )
   {
-    case 0:
+    case MutaborDeviceStop:
       In->Stop();
       break;
-    case 1:
+    case MutaborDevicePlay:
       In->Play();
       break;
-    case 2:
+    case MutaborDevicePause:
       In->Pause();
       break;
   }
@@ -284,11 +280,11 @@ bool pascal _export InDevicesChanged()
   return flag;
 }
 
-void pascal _export GetInDevicesMode(char *mode)
+void pascal _export GetInDevicesMode(enum MutaborModeType *mode)
 {
   int nr = 0;
   for (InDevice *In = InDevices; In; In = In->Next,nr++)
-    mode[nr] = (char)In->Mode;
+    mode[nr] = In->Mode;
 }
 
 struct instrument * lauf_instrument;
@@ -505,5 +501,6 @@ void pascal _export GetTimerData(UINT &min, UINT &max)
 #endif
 }
 
+} // Extern C
 
 /* \} */
