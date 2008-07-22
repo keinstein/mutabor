@@ -16,6 +16,7 @@
 #endif
   #define pascal
 #endif
+#include <setjmp.h>
 
 #include "Device.h"
 
@@ -23,6 +24,8 @@ typedef void UpdateUICallback();
 
 extern "C"
 {
+extern bool RealTime;
+extern jmp_buf weiter_gehts_nach_compilerfehler;
 extern UpdateUICallback* updateUIcallback;
 
 #ifndef WX

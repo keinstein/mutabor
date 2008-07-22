@@ -50,6 +50,7 @@ wxString FileNameDialog(wxWindow * parent,
     break;
   default:
     wxLogError(_("Unexpected Command Id in FileNameDialog: %d"),Command);
+    return wxString(_T(""));
   }
 
   if (!Filename.IsEmpty()) {

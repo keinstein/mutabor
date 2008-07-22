@@ -32,8 +32,9 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(top_srcdir)/doc/Makefile.cmn
 subdir = doc/localized/de
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/alsa.m4 \
 	$(top_srcdir)/m4/codeset.m4 $(top_srcdir)/m4/forstyle.m4 \
@@ -232,13 +233,17 @@ TEXSOURCES = $(srcdir)/Handbuch.tex \
 	$(srcdir)/Referenz.tex \
 	$(srcdir)/Bedienung.tex
 
-ZIPFILE = $(srcdir)/Hilfe.zip
+ZIPFILE = Hilfe.zip
 rel_docdir = ../..
 DOCLOCALE = de
+
+#       -*- Makefile-automake -*-
+top_docdir = $(srcdir)/$(rel_docdir)
+macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
 all: all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/doc/Makefile.cmn $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -346,13 +351,11 @@ dvi: dvi-am
 
 dvi-am:
 
-html: html-am
-
 info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-data-local
 
 install-dvi: install-dvi-am
 
@@ -393,16 +396,46 @@ uninstall-am:
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am
+	install-data install-data-am install-data-local install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	uninstall uninstall-am
 
 
-@am__include@ @am__quote@$(srcdir)/$(rel_docdir)/Makefile.cmn@am__quote@
+.PHONY: mac copymac install-data-mutabor
+
+html: $(srcdir)/$(ZIPFILE)
+$(ZIPFILE): Makefile $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
+	$(top_docdir)/preamble.tex
+	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
+	htmldecode='$(rel_docdir)/htmldecode' \
+	fixhhp='$(rel_docdir)/fixhhp' \
+	srcdir='$(srcdir)' \
+	top_docdir='$(top_docdir)' \
+	$(top_docdir)/mkhtml $(TEXSOURCES) 
+	mv help.zip $(srcdir)/$(ZIPFILE)
+
+mac: $(ZIPFILE) copymac
+
+copymac:
+	mkdir -p $(macdocdir)
+	if test -z "$(DOCLOCALE)" ; then \
+		cp '$(srcdir)/$(ZIPFILE)' '$(macdocdir)' ; \
+	else \
+		mkdir -p $(macdocdir)/$(DOCLOCALE).lproj ; \
+		cp '$(srcdir)/$(ZIPFILE)' '$(macdocdir)/$(DOCLOCALE).lproj' ; \
+	fi
+
+install-data-local: install-data-mutabor
+	test -z '$(pkgdatadir)/$(DOCLOCALE)' || \
+		$(MKDIR_P) '$(pkgdatadir)/$(DOCLOCALE)'
+	$(INSTALL_DATA) '$(srcdir)/$(ZIPFILE)' '$(pkgdatadir)/$(DOCLOCALE)/'
+
+install-data-mutabor:
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.15 2008/07/21 09:08:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.16 2008/07/22 07:57:06 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/07/21 09:08:44 $
- * \version $Revision: 1.15 $
+ * $Date: 2008/07/22 07:57:06 $
+ * \version $Revision: 1.16 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.16  2008/07/22 07:57:06  keinstein
+ * solved some valgrind issues
+ *
  * Revision 1.15  2008/07/21 09:08:44  keinstein
  * some reformatting of white space and debug logging
  * Changed window deletion on Quit.
@@ -222,7 +225,8 @@ bool MutApp::OnInit()
   wxFileSystem::AddHandler(new wxZipFSHandler);
 
   wxXmlResource::Get()->InitAllHandlers();
-  wxXmlResource::Get()->Load(GetResourceName(_T("Mutabor.xrc")));
+  wxString resfilename = GetResourceName(_T("Mutabor.xrc"));
+  wxXmlResource::Get()->Load(resfilename);
 
   wxHelpControllerHelpProvider* provider = new wxHelpControllerHelpProvider;
   wxHelpProvider::Set(provider);
@@ -693,7 +697,8 @@ wxString MutApp::GetResourceName(const wxString & file){
     }
 
   }
-  return rcname.GetFullPath(); 
+  localename = rcname.GetFullPath();
+  return localename; 
 }
 
 void MutApp::MakeHelpMenu(wxMenuBar * menuBar) {

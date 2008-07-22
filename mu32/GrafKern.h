@@ -2,12 +2,15 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.5 2008/06/02 16:00:34 keinstein Exp $
+ * $Id: GrafKern.h,v 1.6 2008/07/22 07:57:06 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/06/02 16:00:34 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2008/07/22 07:57:06 $
+ * \version $Revision: 1.6 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.6  2008/07/22 07:57:06  keinstein
+ * solved some valgrind issues
+ *
  * Revision 1.5  2008/06/02 16:00:34  keinstein
  * InitCompDia: new interface
  *
@@ -26,8 +29,6 @@
 
 #include "Defs.h"
 
-#include <setjmp.h>
-extern jmp_buf weiter_gehts_nach_compilerfehler;
 
 #if defined(WX)
 #include <wx/wx.h>

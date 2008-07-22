@@ -123,72 +123,14 @@ void MutChild::OnActivate(wxActivateEvent& event) {
   curBox = winAttr->Box;
 }
 
-void MutChild::deleteFromWinAttrs()
-{
+void MutChild::deleteFromWinAttrs() {
   DEBUGLOG(_T(""));
-    size_t i = WinAttrs[winKind].Index(*(this->winAttr));
-    WinAttrs[winKind][i].Win = NULL;
-    WinAttrs[winKind].RemoveAt(i,1);
-    //    delete winAttr;
+  size_t i = WinAttrs[winKind].Index(*(this->winAttr));
+  WinAttrs[winKind][i].Win = NULL;
+  WinAttrs[winKind].RemoveAt(i,1);
+  //    delete winAttr;
 }
 
-/*void MutChild::OnQuit(wxCommandEvent& WXUNUSED(event))
-{
-    Close(true);
-}*/
-
-/*
-void MutChild::OnRefresh(wxCommandEvent& WXUNUSED(event))
-{
-	Refresh();
-}
-
-
-void MutChild::OnActivate(wxActivateEvent& event)
-{
-    if ( event.GetActive() )
-        SetFocus();
-}
-*/
-
-/*void MutChild::OnMove(wxMoveEvent& event)
-{
-    // VZ: here everything is totally wrong under MSW, the positions are
-    //     different and both wrong (pos2 is off by 2 pixels for me which seems
-    //     to be the width of the MDI canvas border)
-    wxPoint pos1 = event.GetPosition(),
-            pos2 = GetPosition();
-    wxLogStatus(wxT("position from event: (%d, %d), from frame (%d, %d)"),
-                pos1.x, pos1.y, pos2.x, pos2.y);
-
-    event.Skip();
-}
-
-void MutChild::OnSize(wxSizeEvent& event)
-{
-    // VZ: under MSW the size event carries the client size (quite
-    //     unexpectedly) *except* for the very first one which has the full
-    //     size... what should it really be? TODO: check under wxGTK
-    wxSize size1 = event.GetSize(),
-           size2 = GetSize(),
-           size3 = GetClientSize();
-    wxLogStatus(wxT("size from event: %dx%d, from frame %dx%d, client %dx%d"),
-                size1.x, size1.y, size2.x, size2.y, size3.x, size3.y);
-
-    event.Skip();
-}*/
-
-/*
-
-void MutChild::MenuPassToParent(wxCommandEvent& event)
-{
-//	if ( event.GetEventObject() == NULL ) // als Flag zur Sicherheit vor Endlosschleifen
-//		return;
-//	GetParent()->ProcessEvent(event);
-	event.Skip();
-}
-*/
-// TWinAttr ---------------------------------------------------------
 
 WinAttr *GetWinAttr(WinKind kind, int box)
 {

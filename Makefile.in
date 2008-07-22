@@ -36,9 +36,10 @@ host_triplet = @host@
 target_triplet = @target@
 bin_PROGRAMS = mutabor$(EXEEXT)
 subdir = .
-DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(top_srcdir)/configure $(top_srcdir)/intl/Makefile.in \
+DIST_COMMON = README $(am__configure_deps) $(dist_pkgdata_DATA) \
+	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(srcdir)/config.h.in $(top_srcdir)/configure \
+	$(top_srcdir)/intl/Makefile.in \
 	$(top_srcdir)/intl/libgnuintl.h.in \
 	$(top_srcdir)/osdep/macosx/Info.plist.in ABOUT-NLS AUTHORS \
 	COPYING ChangeLog INSTALL NEWS compile config.guess \
@@ -70,7 +71,8 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = intl/libgnuintl.h intl/Makefile \
 	osdep/macosx/Info.plist
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mutabordir)"
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(pkgdatadir)" \
+	"$(DESTDIR)$(mutabordir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
@@ -134,8 +136,9 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
+dist_pkgdataDATA_INSTALL = $(INSTALL_DATA)
 mutaborDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(mutabor_DATA)
+DATA = $(dist_pkgdata_DATA) $(mutabor_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 ETAGS = etags
@@ -340,6 +343,7 @@ debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
 
+dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp \
 		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
@@ -1119,6 +1123,23 @@ clean-libtool:
 
 distclean-libtool:
 	-rm -f libtool
+install-dist_pkgdataDATA: $(dist_pkgdata_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(pkgdatadir)" || $(MKDIR_P) "$(DESTDIR)$(pkgdatadir)"
+	@list='$(dist_pkgdata_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(dist_pkgdataDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(pkgdatadir)/$$f'"; \
+	  $(dist_pkgdataDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
+
+uninstall-dist_pkgdataDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(dist_pkgdata_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(pkgdatadir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
 install-mutaborDATA: $(mutabor_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(mutabordir)" || $(MKDIR_P) "$(DESTDIR)$(mutabordir)"
@@ -1422,7 +1443,7 @@ check: $(BUILT_SOURCES)
 all-am: Makefile $(PROGRAMS) $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(mutabordir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(pkgdatadir)" "$(DESTDIR)$(mutabordir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -1472,7 +1493,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-mutaborDATA
+install-data-am: install-dist_pkgdataDATA install-mutaborDATA
 
 install-dvi: install-dvi-recursive
 
@@ -1510,7 +1531,8 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-mutaborDATA
+uninstall-am: uninstall-binPROGRAMS uninstall-dist_pkgdataDATA \
+	uninstall-mutaborDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) install-am \
 	install-strip
@@ -1523,16 +1545,17 @@ uninstall-am: uninstall-binPROGRAMS uninstall-mutaborDATA
 	distclean-generic distclean-hdr distclean-libtool \
 	distclean-tags distcleancheck distdir distuninstallcheck dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-mutaborDATA install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am \
-	uninstall-binPROGRAMS uninstall-mutaborDATA
+	install-binPROGRAMS install-data install-data-am \
+	install-dist_pkgdataDATA install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-mutaborDATA \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	installdirs-am maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-binPROGRAMS \
+	uninstall-dist_pkgdataDATA uninstall-mutaborDATA
 
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@

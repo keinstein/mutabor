@@ -14,6 +14,7 @@ debian/dirs debian/docs debian/libmutabor-dev.install \
 debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
+dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png
 #RECURSIVE_TARGETS += mac-recursive
 BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
 bin_PROGRAMS = mutabor
