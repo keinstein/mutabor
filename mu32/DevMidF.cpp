@@ -2,13 +2,16 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.10 2008/07/21 08:56:18 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.11 2008/07/22 07:57:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/07/21 08:56:18 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2008/07/22 07:57:06 $
+ * \version $Revision: 1.11 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.11  2008/07/22 07:57:06  keinstein
+ * solved some valgrind issues
+ *
  * Revision 1.10  2008/07/21 08:56:18  keinstein
  * Changed numeric device modes into an enum
  * use wxTimer instead of obsolete WinXP timers
@@ -57,6 +60,7 @@
 #include "DevMidF.h"
 #include "Execute.h"
 #include "GrafKern.h"
+#include "Runtime.h"
 
 #include "wx/wfstream.h"
 

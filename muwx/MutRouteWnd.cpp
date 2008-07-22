@@ -826,8 +826,8 @@ bool MutRouteWnd::CheckPoint(wxPoint point, EDevice **in, ERoute **r, int &token
 
 void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
 {
-	EDevice *In;
-	ERoute *R;
+	EDevice *In=0;
+	ERoute *R=0;
 	bool NeedNew;
 	int Token;
 	// Punkt auf absolute Fensterkoordinaten umrechnen
@@ -870,8 +870,8 @@ void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
 
 void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 {
-	EDevice *In;
-	ERoute *R, **R1;
+	EDevice *In=NULL;
+	ERoute *R=NULL, **R1 = NULL;
 	bool NeedNew;
 	int Token, Res = wxID_CANCEL;
 	wxPoint rp;

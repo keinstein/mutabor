@@ -73,7 +73,7 @@ class MutTag : public wxWindow
   private:
     bool IsLogic;
     int Key;
-    wxIcon* Icon;
+    wxIcon Icon;
     wxString Text;
     int TPos;
   public:
@@ -126,9 +126,9 @@ MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 #else
   char** TagIcon[4] = { tonesyst_xpm, logic_xpm, tonesystopen_xpm, logicopen_xpm};
 #endif
-  Icon = new wxIcon(TagIcon[isLogic + 2*isOpen]);
+  Icon = wxIcon(TagIcon[isLogic + 2*isOpen]);
   Text = text;
-  TPos = -1;
+ TPos = -1;
   IsLogic = isLogic;
   Key = key;
 //TODO  Attr.AccelTable = IDA_MUTWIN;
@@ -187,7 +187,7 @@ void MutTag::OnPaint(wxPaintEvent& WXUNUSED(event))
 	   dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-6);
 	dc.SetPen(wxNullPen);
 	// Icon zeichnen
-	dc.DrawIcon(*Icon, MUTTAGX/2-16, 10);
+	dc.DrawIcon(Icon, MUTTAGX/2-16, 10);
 	// Taste auf Icon
 	dc.SetBackgroundMode(wxTRANSPARENT);
 	PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 20);

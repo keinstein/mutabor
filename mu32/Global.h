@@ -485,7 +485,6 @@ void show_line_number( int n );
 extern int keys_changed[MAX_BOX];
 extern int keys_changed_sum;
 extern char KeepSound;
-extern bool RealTime;
 
 /*void disable_protokoll_frame( void );
 void enable_protokoll_frame( void ); */

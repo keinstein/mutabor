@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.16 2008/07/21 09:25:29 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.17 2008/07/22 07:57:06 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/07/21 09:25:29 $
- * \version $Revision: 1.16 $
+ * \date $Date: 2008/07/22 07:57:06 $
+ * \version $Revision: 1.17 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.17  2008/07/22 07:57:06  keinstein
+ * solved some valgrind issues
+ *
  * Revision 1.16  2008/07/21 09:25:29  keinstein
  * RcfFile: removed
  * TextBoxWanted: one variable per box and type
@@ -321,8 +324,8 @@ MutFrame::MutFrame(wxWindow *parent,
                  const wxSize& size,
                  const long style)
        : wxFrame(parent, id, title, pos, size,
-                          style | wxNO_FULL_REPAINT_ON_RESIZE)
-{
+		 style | wxNO_FULL_REPAINT_ON_RESIZE),
+  curStatusImg(0){
 
 	SetSize (DetermineFrameSize ());
 	SetMinSize(wxSize(200,200));
@@ -570,6 +573,7 @@ void UpdateUIcallback()
 		  new wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED, 
 				     CM_UPDATEUI);
 		theFrame->AddPendingEvent(*event1);
+		delete (event1);
 	}
 }
 
@@ -685,7 +689,7 @@ while playing by computer keyboard.)"),
   std::cout << "MutFrame::CmDoActivate: Open Text boxes: " 
 	    << WK_KEY << "--" <<WK_ACT << std::endl;
 #endif
-  for (size_t i; i < MAX_BOX; i++)
+  for (size_t i = 0; i < MAX_BOX; i++)
     for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
       if ( TextBoxWanted[i][kind] )
 	TextBoxOpen(kind, i);
@@ -1624,18 +1628,17 @@ void MutFrame::CloseAll(WinKind kind) {
 	
 	win.Wanted = 2;
 
-	DEBUGLOG(_T("Detaching pane."));
-	auimanager.ClosePane(auimanager.GetPane(win.Win));
 	DEBUGLOG(_T("Update."));
+	auimanager.ClosePane(auimanager.GetPane(win.Win));
 	auimanager.DetachPane(win.Win);
+	DEBUGLOG(_T("Detaching pane."));
 	auimanager.Update();
 	//	auimanager.DetachPane(win.Win);
 
 	//       	win.Win->Close();
 
 	DEBUGLOG(_T("Destroying window."));
-	win.Win->Destroy();
-	win.Win = NULL;
+	win.Win->Close(); // win should be invalid now.
       }
   }
 }
