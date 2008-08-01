@@ -28,17 +28,16 @@ inline WinKind operator++(WinKind & k,int)
 class WinAttr
 {
  public:
-  wxWindow *Win;  // 0 = nicht offen
+  wxWindow * Win;  // 0 = nicht offen
   char Wanted;   // 0 = nicht wanted
   //  int X, Y, W, H;     // W = 0 ... noch nicht benutzt, d.h. undefiniert
   int Box;
-  WinAttr(char wanted = 0, int box = -1)
-    {
-      Wanted = wanted;
-      Box = box;
-      //      X = Y = H = W = 0;
-      Win = NULL;
-    }
+  WinAttr(char wanted = 0, int box = -1) {
+    Wanted = wanted;
+    Box = box;
+    //      X = Y = H = W = 0;
+    Win = NULL;
+  }
 };
 
 WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
@@ -49,8 +48,8 @@ protected:
   WinKind winKind;
   WinAttr *winAttr;
 public:
-  MutTextBox(  WinKind winKind,
-	       WinAttr *winAttr, 
+  MutTextBox(  WinKind k,
+	       WinAttr *a, 
 	       wxWindow* parent = NULL, 
 	     wxWindowID id=-1, 
 	     const wxPoint& pos = wxDefaultPosition, 
@@ -59,6 +58,7 @@ public:
   void NewText(wxString s, bool newTitle = false);
   int ColorBox;
   void OnClose(wxCloseEvent& event);
+  WinKind GetKind() { return winKind; }
 protected:
   int Box() { return winAttr->Box; }
 	DECLARE_EVENT_TABLE()

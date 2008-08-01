@@ -31,8 +31,15 @@ class MutLogicWnd : public wxScrolledWindow
   public:
 	MutLogicWnd(wxWindow *parent, 	int box, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
 	~MutLogicWnd() {
-	  size_t i = WinAttrs[WK_LOGIC].Index(*(this->winAttr));
+	  DEBUGLOG(_T(""));
+	  int i = WinAttrs[WK_LOGIC].Index(*winAttr);
+	  if (i == wxNOT_FOUND) {
+	    wxLogWarning(_("Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"),__WXFUNCTION__,_T(__FILE__),__LINE__);
+	    return;
+	  }
+	  WinAttrs[WK_LOGIC][i].Win=NULL;
 	  WinAttrs[WK_LOGIC].RemoveAt(i,1);
+	  DEBUGLOG(_T("Finished"));
 	}
 	void OnSize(wxSizeEvent& event);
 	void OnClose(wxCloseEvent& event) { doClose(event); }

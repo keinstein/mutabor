@@ -347,19 +347,25 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
 */
 
 void MutLogicWnd::doClose(wxEvent& event) {
-    
-  if ( NumberOfOpen(WK_LOGIC) <= 1 )
-    {
-      wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-      GetParent()->AddPendingEvent(event1);
-      //GetApplication()->GetMainWindow()->PostMessage(WM_COMMAND, CM_STOP);
+  DEBUGLOG(_T(""));
+  wxWindow * parent;
+  bool stop;
+  wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
+  if ( (stop = (NumberOfOpen(WK_LOGIC) <= 1) ) ) {
+    parent = GetParent();
+    while (!(dynamic_cast<MutFrame *>(parent))) {
+      DEBUGLOG(_T("Searching for MutFrame: %p..."),parent);
+      parent = parent->GetParent();
     }
+    //GetApplication()->GetMainWindow()->PostMessage(WM_COMMAND, CM_STOP);
+  }
   
-  size_t i = WinAttrs[WK_LOGIC].Index(*(this->winAttr));
-  WinAttrs[WK_LOGIC][i].Win = NULL;
-  WinAttrs[WK_LOGIC].RemoveAt(i,1);
   //    delete winAttr;
-  event.Skip();
+  event.Skip(false);
+  Destroy();
+  DEBUGLOGBASE("MutLogicWnd",_T("Destroyed Window"));
+  if (stop) parent->AddPendingEvent(event1);
+  DEBUGLOGBASE("MutLogicWnd",_T("Destroyed Window"));
 }
 
 

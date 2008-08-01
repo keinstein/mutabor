@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.13 2008/07/21 09:25:29 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.14 2008/08/01 16:24:30 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/07/21 09:25:29 $
- * \version $Revision: 1.13 $
+ * $Date: 2008/08/01 16:24:30 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.14  2008/08/01 16:24:30  keinstein
+ * Fix some segfaults on stopping Mutabor
+ *
  * Revision 1.13  2008/07/21 09:25:29  keinstein
  * RcfFile: removed
  * TextBoxWanted: one variable per box and type
@@ -223,6 +226,17 @@ public:
 
     
  private:
+
+    void CloseClientWindow(wxWindow * w) {
+	auimanager.ClosePane(auimanager.GetPane(w));
+	DEBUGLOG(_T("Detaching pane."));
+	auimanager.DetachPane(w);
+	auimanager.Update();
+
+	DEBUGLOG(_T("Closing window."));
+	w->Close(); // win should be invalid now.
+    }
+
     int curStatusImg;
 
     wxAuiManager auimanager;
