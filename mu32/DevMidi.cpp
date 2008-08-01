@@ -576,3 +576,8 @@ void MidiInit()
   }
 #endif
 }
+
+void MidiUninit() {
+  delete rtmidiin;
+  delete rtmidiout;
+}

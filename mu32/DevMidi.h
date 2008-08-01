@@ -121,6 +121,7 @@ class InMidiPort : public InDevice
 };
 
 void MidiInit();
+void MidiUninit();
 extern RtMidiOut * rtmidiout;
 extern RtMidiIn * rtmidiin;
 #endif
