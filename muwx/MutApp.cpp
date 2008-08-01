@@ -2,16 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.16 2008/07/22 07:57:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.17 2008/08/01 16:22:13 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/07/22 07:57:06 $
- * \version $Revision: 1.16 $
+ * $Date: 2008/08/01 16:22:13 $
+ * \version $Revision: 1.17 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.17  2008/08/01 16:22:13  keinstein
+ * OnExit: uninit MIDI
+ * CmQuit: try to fix endless loop on Linux
+ *
  * Revision 1.16  2008/07/22 07:57:06  keinstein
  * solved some valgrind issues
  *
@@ -98,6 +102,7 @@
 #include "MutConfDlg.h"
 #include "EDevice.h"
 #include "wxresource.h"
+#include "Action.h"
 
 MutFrame *frame = (MutFrame *) NULL;
 wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
@@ -638,22 +643,31 @@ void MutApp::CmQuit (wxCommandEvent& event) {
 
   FrameHash::iterator it;
   DEBUGLOG(_T("Starting Loop"));
-  while (Pending()) Dispatch();
+  while (Pending())
+    Dispatch();
   DEBUGLOG(_T("Dispatched all events"));
+  wxIdleMode imode = wxIdleEvent::GetMode();
+  wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 
   while ((window = GetTopWindow())) {
-    DEBUGLOG(_T("Next Window"));
+    DEBUGLOG(_("Closing window of class "))
+      << typeid(*(window)).name();
+
     if (!window->Close()) {
+      wxIdleEvent::SetMode(imode);
       quitting = false;
       return;
     }
     DEBUGLOG(_T("Closed window"));
 
     // empty queue and process idle event to delete the frame
-    while(Pending()) Dispatch();
+    while(Pending())
+      Dispatch();
 
     wxIdleEvent idle;
     ProcessEvent(idle);
+    while(Pending())
+      Dispatch();
     DEBUGLOG(_T("Dispatched all events"));
   }
 
@@ -825,6 +839,12 @@ void MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type) {
 
 int MutApp::OnExit() {
   SaveState();
+  AktionTraceReset();
+  MidiUninit();
+#if defined(__WXMAC__)
+  wxMenuBar::MacSetCommonMenuBar(NULL);
+#endif
+  delete HelpController;
   return wxApp::OnExit();
 }
 
