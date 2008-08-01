@@ -47,15 +47,15 @@ END_EVENT_TABLE()
 
 wxString ListInit[1] = { _("<init>") };
 
-MutTextBox::MutTextBox(WinKind winKind,
-		       WinAttr *winAttr, 
+MutTextBox::MutTextBox(WinKind k,
+		       WinAttr *a, 
 		       wxWindow* parent,
 		       wxWindowID id, 
 		       const wxPoint& pos, 
 		       const wxSize& size): 
   wxListBox(parent, id, pos, size, 1, ListInit), 
-  winAttr(winAttr),
-  winKind(winKind)
+  winKind(k),
+  winAttr(a)
 {
   DEBUGLOG(_T(""));
 /*  Attr.Style &= ~LBS_SORT;
@@ -68,7 +68,8 @@ MutTextBox::MutTextBox(WinKind winKind,
 
 void MutTextBox::OnClose(wxCloseEvent& event)
 {
-  DEBUGLOG(_T(""));
+  wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+  DEBUGLOG(_T("winKind: %d"), winKind);
   //	if ( LogicOn )
   TextBoxWanted[curBox][winKind] = false;
   //       	event.Skip(true);
@@ -77,6 +78,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 
 void MutTextBox::NewText(char *s, bool newTitle)
 {
+  wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
   DEBUGLOG(_T(""));
   // Text in Liste
   Clear();
@@ -131,7 +133,8 @@ void MutTextBox::NewText(char *s, bool newTitle)
 
 void MutTextBox::NewText(wxString s, bool newTitle)
 {
-  DEBUGLOG(_T(""));
+  DEBUGLOG(_T("s=%s; newTitle=%d; winKind=%d"),s.c_str(),newTitle,winKind);
+  wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
   // Text in Liste
   Clear();
   

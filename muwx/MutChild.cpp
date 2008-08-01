@@ -94,13 +94,13 @@ END_EVENT_TABLE()
 // implementation
 // ===========================================================================
 
-MutChild::MutChild (WinKind winkind, 
-		    WinAttr *winAttr, 
+MutChild::MutChild (WinKind k, 
+		    WinAttr * attr, 
 		    wxWindow * parent, 
 		    wxWindowID id,
 		    const wxPoint& pos,
 		    const wxSize & size):
-MutTextBox(winKind,winAttr,parent,id,pos,size)
+MutTextBox(k,attr,parent,id,pos,size)
 //#ifdef MDI_FORCE_EXTERN
 //       : wxAuiPaneInfo()
 
@@ -109,50 +109,66 @@ MutTextBox(winKind,winAttr,parent,id,pos,size)
 //                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title) 
 //#endif
 {
-    winAttr->Win = this;
+  DEBUGLOG(_T("winKind=%d"),winKind);
+  wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+  winAttr->Win = this;
+  DEBUGLOG(_T("winKind=%d"),winKind);
 }
 
 MutChild::~MutChild()
 {
+  wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
   DEBUGLOG(_T(""));
   deleteFromWinAttrs();
 }
 
 void MutChild::OnActivate(wxActivateEvent& event) {
+  wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
   DEBUGLOG(_T(""));
   curBox = winAttr->Box;
 }
 
 void MutChild::deleteFromWinAttrs() {
-  DEBUGLOG(_T(""));
-  size_t i = WinAttrs[winKind].Index(*(this->winAttr));
+  DEBUGLOG(_T("winKind: %d"),winKind);
+  wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
+  int i = WinAttrs[winKind].Index(*winAttr);
+  wxASSERT(WK_KEY <= winKind &&i != wxNOT_FOUND);
+  if (i == wxNOT_FOUND) {
+    wxLogWarning(_("Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"),__WXFUNCTION__,_T(__FILE__),__LINE__);
+    return;
+  }
   WinAttrs[winKind][i].Win = NULL;
   WinAttrs[winKind].RemoveAt(i,1);
   //    delete winAttr;
 }
 
 
-WinAttr *GetWinAttr(WinKind kind, int box)
+WinAttr* GetWinAttr (WinKind kind, int box)
 {
-  if ( kind != WK_EDIT )
-    for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
-      if ( WinAttrs[kind][i].Box == box )
-        return &WinAttrs[kind][i];
-  WinAttr *New = new WinAttr(true, box);
-  WinAttrs[kind].Add(New);
-  return New;
+  wxASSERT(WK_KEY <= kind &&kind < WK_NULL);
+  WinAttr * attr;
+  if ( kind != WK_EDIT ) {
+    attr = Get (kind, box);
+    if (attr) return attr;
+  }
+  attr = new WinAttr(true, box);
+  WinAttrs[kind].Add(attr);
+  return attr;
 }
 
-WinAttr *Get(WinKind kind, int box)
+WinAttr* Get (WinKind kind, int box)
 {
+  wxASSERT(WK_KEY <= kind && kind < WK_NULL);
   for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
     if ( WinAttrs[kind][i].Box == box )
       return &WinAttrs[kind][i];
   return 0;
  }
 
-bool IsOpen(WinKind kind, int box)
+bool IsOpen (WinKind kind, int box)
 {
+  wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+
   WinAttr *Help;
   if ( (Help = Get(kind, box)) )
     if ( Help->Win )
@@ -162,6 +178,8 @@ bool IsOpen(WinKind kind, int box)
 
 bool IsWanted(WinKind kind, int box)
 {
+  wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+
   WinAttr *Help;
   if ( (Help = Get(kind, box)) )
     if ( Help->Wanted )
@@ -171,6 +189,8 @@ bool IsWanted(WinKind kind, int box)
 
 void DontWant(WinKind kind, int box)
 {
+  wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+
   WinAttr *Help;
   if ( (Help = Get(kind, box)) )
     Help->Wanted = 0;
@@ -178,6 +198,8 @@ void DontWant(WinKind kind, int box)
 
 int NumberOfOpen(WinKind kind)
 {
+  wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+
   int n = 0;
   for (size_t i = 0; i < WinAttrs[kind].Count(); i++)
     if ( WinAttrs[kind][i].Win )

@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.17 2008/07/22 07:57:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.18 2008/08/01 16:24:30 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/07/22 07:57:06 $
- * \version $Revision: 1.17 $
+ * \date $Date: 2008/08/01 16:24:30 $
+ * \version $Revision: 1.18 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.18  2008/08/01 16:24:30  keinstein
+ * Fix some segfaults on stopping Mutabor
+ *
  * Revision 1.17  2008/07/22 07:57:06  keinstein
  * solved some valgrind issues
  *
@@ -440,33 +443,35 @@ void MutFrame::OnClose(wxCloseEvent& event)
 {
   DEBUGLOG(_T("%x == %x"),this,theFrame);
 
-  if ( event.CanVeto() && theFrame == this ) {
-    wxString msg;
-    msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
-    if ( wxMessageBox(msg, _("Please confirm closing."),
-		      wxICON_QUESTION | wxYES_NO) != wxYES ) {
-      event.Veto();
-      return;
-    }
-  }
-
   if (theFrame == this) {
+    DEBUGLOG(_T("We are the active window."));
+    if ( event.CanVeto() ) {
+      wxString msg;
+      msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
+      if ( wxMessageBox(msg, _("Please confirm closing."),
+		      wxICON_QUESTION | wxYES_NO) != wxYES ) {
+	event.Veto();
+	return;
+      }
+    }
+
     DoStop();
   }
 
+  DEBUGLOG(_T("Closing actual window"));
+
   if (client) {
-#ifdef DEBUG
-    std::cout << "MutFame::OnClose: Deleting Client" << std::endl;
-#endif
-    auimanager.DetachPane(client);
-    client->Close();
+    DEBUGLOG(_T("Deleting Client"));
+    CloseClientWindow(client);
     client = NULL;
   }
   //while (wxGetApp().Pending()) wxGetApp().Dispatch();
   
-
+  DEBUGLOG(_T("Saving State"));
   SaveState();
+  DEBUGLOG(_T("Unregistering"));
   wxGetApp().UnregisterFrame(this);
+  DEBUGLOG(_T("Delete"));
   Destroy();
   event.Skip(false);
 }
@@ -649,18 +654,15 @@ while playing by computer keyboard.)"),
   SetAktuellesKeyboardInstrument(curBox);
 
   // WinAttrs säubern
-#ifdef DEBUG	
-  std::cout << "MutFrame::CmDoActivate: Clear window attributes" << std::endl;
-#endif
-  for (WinKind kind = WK_KEY; kind < WK_NULL; kind++)
-    for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
+  DEBUGLOG(_T("Clear window attributes"));
+  for (WinKind kind = WK_KEY; kind < WK_NULL; kind++) {
+    size_t i;
+    while ( (i = WinAttrs[kind].GetCount()) > 0)
       if ( !BoxUsed[WinAttrs[kind][i].Box] )
 	WinAttrs[kind].RemoveAt(i);
+  }
 
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Open other than logic" << std::endl;
-  std::cout << "MutFrame::CmDoActivate: One window mode: " << OWM << std::endl;
-#endif
+  DEBUGLOG(_T("Open other than logic; One window mode: %d"),OWM);
   // Fenster außer curBox setzen
   if ( !OWM )
     for (WinKind kind = WK_KEY; kind < WK_LOGIC; kind++)
@@ -673,9 +675,8 @@ while playing by computer keyboard.)"),
   MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
   if ( routewin ) routewin->UpdateBoxMenu();
 
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Open Logic window" << std::endl;
-#endif
+  DEBUGLOG(_T("Open Logic window"));
+
   // curBox-Fenstersetzen
   //  LogicWinOpen(curBox);
   LogicOn = true;
@@ -685,31 +686,22 @@ while playing by computer keyboard.)"),
 	ControlBar->LayoutSession();*/
 	// Statusbar
   SetStatus(SG_LOGIC);
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Open Text boxes: " 
-	    << WK_KEY << "--" <<WK_ACT << std::endl;
-#endif
+
+  DEBUGLOG(_T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
   for (size_t i = 0; i < MAX_BOX; i++)
-    for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
-      if ( TextBoxWanted[i][kind] )
-	TextBoxOpen(kind, i);
-      else
-	DontWant(kind, i);
+    if(BoxUsed[i])
+      for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
+	if ( TextBoxWanted[i][kind] )
+	  TextBoxOpen(kind, i);
+	else
+	  DontWant(kind, i);
   }
 
 
-
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Set window title" << std::endl;
-#endif
-  //	Get(WK_LOGIC, curBox)->Win->SetFocus();
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: Repaint route" << std::endl;
-#endif
+  DEBUGLOG(_T("Repaint route"));
   repaint_route();
-#ifdef DEBUG
-  std::cout << "MutFrame::CmDoActivate: event.Skip()" << std::endl;
-#endif
+
+  DEBUGLOG(_T("event.Skip()"));
   event.Skip(false);
 }
 
@@ -730,7 +722,7 @@ void MutFrame::ClearSubMenu(wxMenuItem * item) {
 	    << std::endl;
 #endif
   if (! menu) return;
-
+  menu->AppendSeparator(); // just to make sure, the item group is finished.
   
 
   wxMenuItemList& l = menu->GetMenuItems();
@@ -812,8 +804,10 @@ void MutFrame::DoStop()
     wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
     wxASSERT(boxSelector->IsSubMenu());
 
-    for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++)
+    for (WinKind kind = WK_KEY; kind <= WK_LOGIC; kind++) {
+      DEBUGLOG(_T("Closing kind %d"),kind);
       theFrame->CloseAll(kind);
+    }
     
     AktionTraceReset();
     repaint_route();
@@ -961,9 +955,8 @@ void MutFrame::ToggleTextBox(WinKind kind)
 
 void MutFrame::TextBoxOpen(WinKind kind, int box)
 {
-#ifdef DEBUG	
-  std::cout << "Mutframe::TextBoxOpen: " << box << std::cout;
-#endif
+  DEBUGLOG(_T("%d,%d"),kind,box);
+
 	char *s = NULL;
 	wxString title;
 	switch ( kind ) {
@@ -1005,27 +998,31 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 	width /= 2;
 	height /= 2;
 
+	WinAttr *attr = GetWinAttr(kind, box);
 	MutTextBox *client = new MutChild(kind,
-					  GetWinAttr(kind, box),
+					  attr,
 					  this,
 					  -1,
 					  wxDefaultPosition,
 					  wxSize(width, height));
-#ifdef DEBUG
-	std::cout << "s:= " << s << std::endl;
-#endif
+	DEBUGLOG(_T("client->winKind=%d"),client->GetKind());
+	DEBUGLOG(_T("s:= %s"),s);
+	DEBUGLOG(_T("client->winKind=%d"),client->GetKind());
 
 	wxString str;
 	if (s)
 		str = muT(s);
 	else 
 		str = wxEmptyString;
+	DEBUGLOG(_T("client->winKind=%d"),client->GetKind());
 
 	auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
 			   .CloseButton(true).MaximizeButton(true)
 			   .Float()
 			   .Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
+	DEBUGLOG(_T("client->winKind=%d"),client->GetKind());
 	client->NewText(str, true);
+	DEBUGLOG(_T("client->winKind=%d"),client->GetKind());
 	auimanager.Update();
 }
 
@@ -1625,20 +1622,12 @@ void MutFrame::CloseAll(WinKind kind) {
     WinAttr &win = WinAttrs[kind].Item(i-1);
     if ( win.Win )
       {
-	
+	DEBUGLOG(_("Closing window of class "))
+	  << typeid(*(win.Win)).name() << std::endl;
 	win.Wanted = 2;
 
-	DEBUGLOG(_T("Update."));
-	auimanager.ClosePane(auimanager.GetPane(win.Win));
-	auimanager.DetachPane(win.Win);
-	DEBUGLOG(_T("Detaching pane."));
-	auimanager.Update();
-	//	auimanager.DetachPane(win.Win);
-
-	//       	win.Win->Close();
-
-	DEBUGLOG(_T("Destroying window."));
-	win.Win->Close(); // win should be invalid now.
+	CloseClientWindow(win.Win);
+	DEBUGLOG(_T("Returned."));
       }
   }
 }
@@ -1650,6 +1639,8 @@ void MutFrame::UpdateBoxMenu() {
   wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
   wxASSERT(boxSelector->IsSubMenu());
   wxMenu * boxMenu = boxSelector->GetSubMenu();
+  wxASSERT(boxMenu);
+  DEBUGLOG(_T("boxMenu = %p"),boxMenu);
   //  wxID_HIGHEST
   //  wxMenu * 
 
@@ -1660,10 +1651,16 @@ void MutFrame::UpdateBoxMenu() {
 	boxCommandIds[i]=wxNewId();
 	DEBUGLOG(_("Box %d got id %d"),i,boxCommandIds[i]);
       }
+      DEBUGLOG(_("Currently %d items in box menu"),boxMenu->GetMenuItemCount());
       DEBUGLOG(_("Appending menu for box %d with id %d"),i,boxCommandIds[i]);
-      boxMenu->Append(boxCommandIds[i],
-		      wxString::Format(_("Select box %d\tCtrl+%d"),i,i),
-		      wxString::Format(_("Select box %d as the active Box for box specific commands."),i), wxITEM_RADIO);
+      wxString name = wxString::Format(_("Select box %d\tCtrl+%d"),i,i),
+	description = wxString::Format(_("Select box %d as the active Box for box specific commands."),i);
+      wxASSERT(!(GetMenuBar()->FindItem(boxCommandIds[i])));
+      wxMenuItem * item = new wxMenuItem(boxMenu,boxCommandIds[i],
+					 name,
+					 description,
+					 wxITEM_RADIO);
+      boxMenu->Append(item);
       if (i == curBox) boxMenu->Check(boxCommandIds[i],true);
       DEBUGLOG(_("Connecting command with id %d for box %d"),
 	       i,boxCommandIds[i]);
