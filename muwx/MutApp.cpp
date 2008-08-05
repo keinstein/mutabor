@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.17 2008/08/01 16:22:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.18 2008/08/05 07:04:47 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/08/01 16:22:13 $
- * \version $Revision: 1.17 $
+ * $Date: 2008/08/05 07:04:47 $
+ * \version $Revision: 1.18 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.18  2008/08/05 07:04:47  keinstein
+ * CmQuit Use DeletePendingObjects to delete frames
+ *
  * Revision 1.17  2008/08/01 16:22:13  keinstein
  * OnExit: uninit MIDI
  * CmQuit: try to fix endless loop on Linux
@@ -664,10 +667,11 @@ void MutApp::CmQuit (wxCommandEvent& event) {
     while(Pending())
       Dispatch();
 
-    wxIdleEvent idle;
-    ProcessEvent(idle);
-    while(Pending())
-      Dispatch();
+    //   wxIdleEvent idle;
+    //ProcessEvent(idle);
+    //while(Pending())
+    //  Dispatch();
+    DeletePendingObjects();
     DEBUGLOG(_T("Dispatched all events"));
   }
 
