@@ -970,11 +970,9 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	    wxLogWarning(_("Unexpected value: DTNotSet"));
 	    break;
 	  case DTUnknown:
-	    wxLogWarning(_("Unexpected value: DTUnknown"));
 	    break;
 	  default:
 	    wxLogError(_("Unexpected device type: %d"), In->DT); 
-			  
 	  }
 	in.UpdateLayout(type);
 	Res = in.ShowModal();
@@ -1160,7 +1158,6 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	wxLogWarning(_("Unexpected value: DTNotSet"));
 	break;
       case DTUnknown:
-	wxLogWarning(_("Unexpected value: DTUnknown"));
 	break;
       default:
 	wxLogError(_("Unexpected device type: %d"), Out->DT); 
