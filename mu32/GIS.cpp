@@ -12,8 +12,9 @@
 
 // registered tags
 
-mutString Tags[NTAGS] =
-  { mutT(""), mutT("intens"),  mutT("slur"),  mutT("beam"), mutT("text"),
+const mutChar * Tags[NTAGS] =
+  { 
+    mutT(""), mutT("intens"),  mutT("slur"),  mutT("beam"), mutT("text"),
     mutT("bar"), mutT("cresc"), mutT("dim"), mutT("crescBegin"), mutT("crescEnd"),
     mutT("dimBegin"), mutT("dimEnd"), mutT("tempo"), mutT("accel"), mutT("rit"),
     mutT("accelBegin"), mutT("accelEnd"), mutT("ritBegin"), mutT("ritEnd"), mutT("instr"),
@@ -25,7 +26,7 @@ mutString Tags[NTAGS] =
     mutT("tactus"), mutT("title"), mutT("composer"), mutT("mark"), mutT("label"),
 	 mutT("alter"), mutT("mutabor") };
 
-mutString TagShorts[NTAGSHORTS] = { _(""), _("i"), _("sl"), _("bm"), _("t"), _("|") };
+const mutChar * TagShorts[NTAGSHORTS] = { mutT(""), mutT("i"), mutT("sl"), mutT("bm"), mutT("t"), mutT("|") };
 
 GisToken *Root;
 GisToken **Current, *LastOpenBracket;
@@ -37,13 +38,15 @@ GisToken *Para, *LastPara;
 int LastOctave;
 frac LastDuration;
 
-#define GISDEBUG(para)
-
-/*
+#ifdef DEBUG
 int debugcount = 0;
 #define GISDEBUG(para) \
-  cout << char(0x08)<< char(0x08)<< char(0x08)<< char(0x08) << debugcount++;
+  DEBUGLOG2(_T("")) << para << std::endl;
   //cout << para;
+#else
+#define GISDEBUG(para)
+#endif
+/*
 */
 
 // ##################################################################
@@ -211,7 +214,11 @@ int Acc2Int(const mutString acc)
 {
   if ( !acc ) return 0;
   int i = 0;
+#ifdef WX
+  for (size_t j = 0; j < mutLen(acc); j++)
+#else
   for (int j = 0; acc[j]; j++)
+#endif
   {
 	 if ( acc[j] == '&' )
 		i--;
@@ -222,7 +229,7 @@ int Acc2Int(const mutString acc)
 }
 
 #ifdef WX
-#define strdupchr(a) a
+#define strdupchr(a) (a)
 #else
 char *strdupchr(char a)
 {
@@ -269,7 +276,7 @@ GisNote::GisNote(int key, int octave, int acc, mutString sep, GisToken *next)
 		Name = strdupchr(Sharps[Index]);
 		accs = SharpsA[Index];
 	 }
-	 if ( accs != ' ' )
+	 if ( accs != mutT(' ') )
 		Accedentials = strdupchr(accs);
 	 else
 		Accedentials = mutEmptyString;
@@ -371,7 +378,7 @@ void GisComma::Stream(ostream &out, char sep)
 #define AddStr(s1,s2,s3) (s1 += s2 + s3)
 void Clear(mutString * s) 
 {
-	if (s) delete(s);
+  *s = mutEmptyString;
 }
 #else
 void Clear(char **s)
@@ -400,6 +407,7 @@ char *AddStr(char **s1, const char *s2, const char *s3)
 
 int BuildTag()
 {
+  DEBUGLOG2(_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
   GisTag *Tag = new GisTag(TagName, Para, TagSep);
   *Current = Tag;
   Current = &(Tag->Next);
@@ -421,7 +429,7 @@ int StartSep()
   return 0;
 };
 
-int _export BeginSegment()
+int BeginSegment()
 {
   GISDEBUG("{")
   if ( TagMode ) BuildTag();
@@ -525,6 +533,10 @@ int NextSequenz()
 
 int Note(const mutString name, const mutString accedentials, int octave, frac duration)
 {
+  DEBUGLOG2(_T("Note '%s' %s Oktave %d "),
+	    name.c_str(),
+	    accedentials.c_str(),
+	    octave);
   GISDEBUG(name << accedentials << octave << "*" << duration << " ")
   if ( TagMode ) BuildTag();
   GisNote *Note = new GisNote(name, accedentials, octave, duration, Sep);
@@ -579,7 +591,7 @@ int TagParaStr(mutString s)
   return 0;
 };
 
-int _export Comma()
+int Comma()
 {
   GISDEBUG(", ")
   if ( TagMode ) BuildTag();
@@ -619,7 +631,7 @@ GisType GetGisType(GisToken* token)
 		return GTNull;
 }
 
-int GetTagId(const mutString name, mutString &registered)
+int GetTagId(const mutString &name, mutString &registered)
 {
 	if (!name) {
 		registered = Tags[0];
@@ -628,18 +640,22 @@ int GetTagId(const mutString name, mutString &registered)
 	
 	// check normal form
 	int i;
-	for (i = 1; i <= NTAGS; i++)
-		if ( mutStrEq(name, Tags[i]) ) {
+	for (i = 0; i < NTAGS; i++) {
+	  std::cout << (char *) name.c_str() << std::endl;
+	  if ( mutStrEq2(wxString(name), Tags[i]) ) {
 			registered = Tags[i];
 			return i;
+		} ;
 	}
 	
 	// check short form
-	for (i = 0; i < NTAGSHORTS; i++)
-		if ( mutStrEq(name, TagShorts[i]) ) {
+	for (i = 0; i < NTAGSHORTS; i++) {
+	  DEBUGLOG2(_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
+		if ( mutStrEq2(name, TagShorts[i]) ) {
 			registered = TagShorts[i];
 			return i;
 		}
+	}
 		
 	// no registered tag
 	registered = mutEmptyString;
@@ -670,7 +686,8 @@ GisToken *GisParse(const mutString FileName)
   TagSep = mutEmptyString;
   Para = 0;
   LastPara = 0;
-  if ( GspParse(FileName.c_str()) )
+  DEBUGLOG2(_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
+  if ( GspParse(FileName) )
   {
 	 UnRavel();
 	 delete Root;

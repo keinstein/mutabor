@@ -24,18 +24,25 @@ int PossibleErrorPos;
 mutString PossibleErrorLine; //[GSP_MAX_LINE];
 
 #ifdef WX
-  mutString Sep;
+  mutString Sep = mutEmptyString;
+#define SepPos (Sep.Len())
 #else
   char Sep[GSP_MAX_SEP];
+  int  SepPos;
 #endif
-int  SepPos;
 
 // local data
 char ParaMode;
 char Komma;
 int  NumberLength;
+#ifdef WX
+mutString Brackets = mutEmptyString;
+#define BracketDeep \
+  (Brackets.Len())
+#else
 int  BracketDeep;
 char Brackets[200];
+#endif
 char LastTag;
 // last note
 
@@ -44,14 +51,36 @@ mutString accedentials /*[GSP_MAX_LINE]*/;
 frac duration;
 
 #define NEW_LINE mutT("\n")
-mutString SepChars = mutT(" \t");
-mutString DelimitChars = mutT("{}[]()");
+mutChar SepChars[] = mutT(" \t");
+mutChar DelimitChars[] = mutT("{}[]()");
 
 #define uchar unsigned char
 
 // ##################################################################
 // Work with strings
 
+#ifdef WX
+inline void Addstr(mutString & Target, int Pos, const mutString& Source) {
+  Target += Source;
+}
+
+int CharIn(mutChar c, const mutString s)
+{
+  return mutStrChr(s, c) != 0;
+}
+
+int IsLetter(mutChar c)
+{
+  return ((mutT('a') <= c) && (c <= mutT('z'))) ||
+			((mutT('A') <= c) && (c <= mutT('Z'))) ||
+         ( c == mutT('_') );
+}
+
+int IsNumber(mutChar c)
+{
+  return (mutT('0') <= c) && (c <= mutT('9'));
+}
+#else
 void AddStr(char *Target, int &Pos, char *Source)
 {
   for (int i = 0; Source[i]; i++)
@@ -77,7 +106,7 @@ int IsNumber(mutChar c)
 {
   return (mutT('0') <= c) && (c <= mutT('9'));
 }
-
+#endif
 // ##################################################################
 // dealing with errors
 
@@ -120,7 +149,7 @@ void SavePos()
 
 #define CHAR0 CurrentLine[CurrentPos]
 #define CHAR1 CurrentLine[CurrentPos+1]
-#define TAKESEP Sep[SepPos++] = CurrentLine[CurrentPos++]
+#define TAKESEP Sep += CurrentLine[CurrentPos++]
 
 #ifdef WX
 #define AddStr(a,b,c) (a += b + c)
@@ -129,7 +158,11 @@ void SavePos()
 // reading separator string
 int GetSep()
 {
+#ifdef WX
+  Sep = mutEmptyString;
+#else
   SepPos = 0;
+#endif
   Komma = 0;
   int RemDeep = 0;
   int RemLine = 0;
@@ -141,7 +174,12 @@ int GetSep()
 		if ( ReadNewLine() )
 		{
 		  DoError(32);
+#ifdef WX
+		  Sep = Sep.Left(1);
+		  return 1;
+#else
 		  return ( SepPos = 1 );
+#endif
 		}
 		RemLine = 0;
 		if ( GspCurrentLineNr != 1 )
@@ -193,14 +231,18 @@ int GetSep()
 
 	 break;
   }
+#ifdef WX
+  Sep = mutEmptyString;
+#else
   Sep[SepPos] = 0;
+#endif
   return SepPos;
 }
 
 // ##################################################################
 // subfunctions of parsing process
 
-char minus;
+mutChar minus;
 
 // reads an integer
 long ReadLong(int SignAllowed)
@@ -210,16 +252,16 @@ long ReadLong(int SignAllowed)
   minus = 0;
   if ( SignAllowed )
   {
-	 if ( CHAR0 == '+' ) CurrentPos++;
-	 else if ( CHAR0 == '-' )
+    if ( CHAR0 == mutT('+') ) CurrentPos++;
+    else if ( CHAR0 == mutT('-') )
 	 { CurrentPos++; minus = 1; }
   }
   GetSep();
   while ( IsNumber(CHAR0) && !SepPos )
   {
-	 a = a*10 + (CurrentLine[CurrentPos++]-'0');
-	 NumberLength++;
-	 GetSep();
+    a = a*10 + (CurrentLine[CurrentPos++]-mutT('0'));
+    NumberLength++;
+    GetSep();
   }
   if ( minus ) return -a;
   return a;
@@ -229,14 +271,14 @@ long ReadLong(int SignAllowed)
 int ReadParaNumber()
 {
   long a = ReadLong(1);
-  if ( SepPos || CHAR0 != '.' ) // integer
+  if ( SepPos || CHAR0 != mutT('.') ) // integer
 	 return CheckError(TagParaInt(a));
 
   // real
   CurrentPos++; // comma position
 
   GetSep();
-  char minus1 = minus;
+  mutChar minus1 = minus;
   double r = (double)a;
   if ( SepPos ) // real without fraction part
 	 return CheckError(TagParaReal(r));
@@ -253,10 +295,14 @@ int ReadParaNumber()
 // reads a parameter string
 int ReadParaStr()
 {
+#ifdef WX
   mutString s /*[GSP_MAX_LINE]*/ = mutT("");
+#else
+  mutChar s[GSP_MAX_LINE] = "";
+#endif
   int i = 0;
   CurrentPos++;
-  while ( (CHAR0 != '"' || CHAR1 == '"') && !Eof )
+  while ( (CHAR0 != mutT('"') || CHAR1 == mutT('"')) && !Eof )
   {
 	 if ( !CHAR0 ) // new Line
 	 {
@@ -264,11 +310,17 @@ int ReadParaStr()
 		AddStr(s, i, NEW_LINE);
 		continue;
 	 }
-	 if ( CHAR0 == '"' ) CurrentPos++;
+	 if ( CHAR0 == mutT('"') ) CurrentPos++;
+#ifdef WX
+	 s += CurrentLine[CurrentPos++];
+#else
 	 s[i++] = CurrentLine[CurrentPos++];
+#endif
   }
-  if ( CHAR0 == '"' ) CurrentPos++;
+  if ( CHAR0 == mutT('"') ) CurrentPos++;
+#ifndef WX
   s[i] = 0;
+#endif
   GetSep();
   return CheckError(TagParaStr(s));
 }
@@ -277,16 +329,27 @@ int ReadParaStr()
 int ReadTag()
 {
   mutString Name/* [GSP_MAX_LINE] */ = mutT("");
-  char i = 0;
+  mutChar i = 0;
   LastTag = 2; // to have an indicator, wether the last token was a tag
   CurrentPos++;
   GetSep();
+#ifdef WX
+  i = CurrentPos;
+#endif
   while ( IsLetter(CHAR0) && !SepPos )
   {
-	 Name[i++] = CurrentLine[CurrentPos++];
-	 GetSep();
+#ifdef WX
+    CurrentPos++;
+#else
+    Name[i++] = CurrentLine[CurrentPos++];
+#endif
+    GetSep();
   }
+#ifdef WX
+  Name = CurrentLine (i,CurrentPos-i);
+#else
   Name[i] = 0;
+#endif
   if ( !GspError ) CheckError(Tag(Name));
   if ( CHAR0 == mutT('<') )
   {
@@ -306,26 +369,28 @@ int ReadTag()
 // reads a note
 int ReadNote()
 {
-  mutString Name /* [GSP_MAX_LINE]*/ = mutT("");
-  char i = 0;
+  mutChar i = 0;
 #ifdef WX
-  accedentials = mutT("");
+  mutString Name /* [GSP_MAX_LINE]*/ = wxEmptyString;
+  accedentials = wxEmptyString;
 #else
+  mutChar Name[GSP_MAX_LINE] = mutT("");
   accedentials[0] = 0;
 #endif
 
   GetSep();
   
 #ifdef WX
-  for (i = CurrentPos; IsLetter(CHAR0) && !SepPos; CurrentPos++) {
-	Name += CurrentLine[CurrentPos];
-	GetSep();
-  }
+  for (i = CurrentPos; IsLetter(CHAR0) && !SepPos; CurrentPos++) 
+    GetSep();
+
+  Name = CurrentLine(i,CurrentPos-i);
 #else
   while ( IsLetter(CHAR0) && !SepPos )
   {
 	 Name[i++] = CurrentLine[CurrentPos++];
-	 GetSep();
+	 GetSep();  mutString Name /* [GSP_MAX_LINE]*/ = mutT("");
+
   }
   Name[i] = 0;
 #endif
@@ -372,7 +437,7 @@ int ReadNote()
   if ( SepPos || !CharIn(CHAR0, mutT("/.")) )
 	 return CheckError(Note(Name, accedentials, octave, duration));
 
-  if ( CHAR0 == '/' )
+  if ( CHAR0 == mutT('/') )
   {
 	 DurOk = 1;
 	 CurrentPos++;
@@ -388,7 +453,7 @@ int ReadNote()
 	 return DoError(23); // error: dotting wihtout duration
 
   frac add = duration;
-  while ( CHAR0 == '.' && !SepPos )
+  while ( CHAR0 == mutT('.') && !SepPos )
   {
 	 add *= frac(1,2);
 	 duration += add;
@@ -409,16 +474,16 @@ int DoParse()
 
   while ( !Eof )
   {
-	 char c = CHAR0;
+	 mutChar c = CHAR0;
 	 SavePos();
 	 Komma = 0;
 	 if ( ParaMode )
 	 {
-		if ( IsNumber(c) || ( c == '+') || ( c == '-') ) // number parameter
+	   if ( IsNumber(c) || ( c == mutT('+')) || ( c == mutT('-')) ) // number parameter
 		{
 		  if ( ReadParaNumber() ) return GspError;
 		}
-		else if ( c == '"' ) // string parameter
+		else if ( c == mutT('"') ) // string parameter
 		{
 		  if ( ReadParaStr() ) return GspError;
 		}
@@ -426,7 +491,7 @@ int DoParse()
 		{
 		  return DoError(10);
 		}
-		if ( CHAR0 == '>' ) // end of parameterlist
+		if ( CHAR0 == mutT('>') ) // end of parameterlist
 		{
 		  CurrentPos++; GetSep();
 		  if ( CheckError(EndParameter()) ) return GspError;
@@ -443,36 +508,51 @@ int DoParse()
 		if ( LastTag ) LastTag --;
 		if ( CharIn(c, DelimitChars) )
 		{
-		  int i = 0;
+		  mutChar i = 0;
 		  while ( DelimitChars[i] != c ) i++;
 		  if ( i & 1 ) // closing bracket
 		  {
 			 if ( !BracketDeep )
 				return DoError(1);
+#ifdef WX
+			 DEBUGLOGBASE (_T(""), 
+				       _T("brackets: %s, i= %d, last = %d"),
+				       Brackets.c_str(), 
+				       i,
+				       Brackets[Brackets.Len()-1]);
+			 if ( Brackets[Brackets.Len()-1] != i-1 )
+			   return DoError(2 + Brackets[BracketDeep-1]/2);
+			 Brackets = Brackets.Left(Brackets.Len()-1);
+#else
 			 if ( Brackets[--BracketDeep] != i-1 )
-				return DoError(2 + Brackets[BracketDeep]/2);
+			   return DoError(2 + Brackets[BracketDeep]/2);
+#endif
 		  }
 		  else // opening bracket
+#ifdef WX
+		    Brackets += i;
+#else
 			 Brackets[BracketDeep++] = i;
+#endif
 		  #ifdef GMN_STRICT
-		  if ( !LastTag && c == '(' ) return DoError(41); // error: range without tag
+			 if ( !LastTag && c == mutT('(') ) return DoError(41); // error: range without tag
 		  #endif
 		  CurrentPos++; GetSep();
 		  switch ( c )
 		  {
-			 case '{': if ( CheckError(BeginSegment()) ) return GspError; break;
-			 case '}': if ( CheckError(EndSegment()) ) return GspError; break;
-			 case '[': if ( CheckError(BeginSequenz()) ) return GspError; break;
-			 case ']': if ( CheckError(EndSequenz()) ) return GspError; break;
-			 case '(': if ( CheckError(BeginRange()) ) return GspError; break;
-			 case ')': if ( CheckError(EndRange()) ) return GspError; break;
+		  case mutT('{'): if ( CheckError(BeginSegment()) ) return GspError; break;
+		  case mutT('}'): if ( CheckError(EndSegment()) ) return GspError; break;
+		  case mutT('['): if ( CheckError(BeginSequenz()) ) return GspError; break;
+		  case mutT(']'): if ( CheckError(EndSequenz()) ) return GspError; break;
+		  case mutT('('): if ( CheckError(BeginRange()) ) return GspError; break;
+		  case mutT(')'): if ( CheckError(EndRange()) ) return GspError; break;
 		  }
 /*		  if ( Komma )
 			 if ( CheckError(NextSequenz()) ) return GspError; */
 		  continue;
 		}
 
-		if ( c == '\\' )
+		if ( c == mutT('\\') )
 		{
 		  if ( ReadTag() ) return GspError;
 /*		  if ( !ParaMode && Komma )
@@ -480,7 +560,7 @@ int DoParse()
 		  continue;
 		}
 
-		if ( c == '|' )
+		if ( c == mutT('|') )
 		{
 		  CurrentPos++;
 		  GetSep();
@@ -494,7 +574,7 @@ int DoParse()
 		  continue;
 		}
 
-		if ( c == ',' )
+		if ( c == mutT(',') )
 		{
 		  if ( Brackets[BracketDeep-1] != 0 )
 			 return DoError(24); // unexpected comma
@@ -522,7 +602,7 @@ int DoParse()
 // ##################################################################
 // main procedure
 
-int GspParse(const mutString FileName)
+int GspParse(const mutString &FileName)
 {
   GspCurrentLineNr = 0;
   CurrentPos = 0;
@@ -534,7 +614,11 @@ int GspParse(const mutString FileName)
   GspError = 0;
 
   Eof = 0;
+#ifdef WX
+  Brackets = mutEmptyString;
+#else
   BracketDeep = 0;
+#endif
   LastTag = 0;
 
   octave = 1;

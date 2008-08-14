@@ -12,7 +12,11 @@
 #include <fstream>
 #endif
 
+#ifdef WX
 mutString CurrentLine;//[GSP_MAX_LINE];
+#else
+mutChar CurrentLine[GSP_MAX_LINE];
+#endif
 int  CurrentPos;
 int  Eof;
 
@@ -30,12 +34,12 @@ static int bad = 0;
 // the current line number.
 
 // opens the file
-int OpenFile(const mutString Name)
+int OpenFile(const mutString &Name)
 {
 //  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
   File = new mutOpenITextStream(,Name);
-  initialized = false;
 #ifdef WX
+  initialized = false;
   return bad=(!(File->Open()));
 #else
   return mutStreamBad(*File);
@@ -57,13 +61,14 @@ int ReadNewLine()
 #ifdef WX
   if ( (Eof = mutStreamEOF(*File)) || bad )
   {
-	 CurrentLine[0] = 0;
+	 CurrentLine  = mutEmptyString;
 	 return bad;
   }
   if (initialized)
 	CurrentLine = File->GetNextLine();
   else {
     CurrentLine = File->GetFirstLine();
+    initialized = true;
   }
   GspCurrentLineNr++;
   return bad;

@@ -7,7 +7,7 @@
 
 #include "Defs.h"
 
-// Stream und cout unterdr¸cken
+// Stream und cout unterdrücken
 #define FOR_MUTWIN
 
 #ifndef FOR_MUTWIN
@@ -33,8 +33,8 @@
 #define NTAGS 52
 #define NTAGSHORTS 6
 
-extern mutString Tags[NTAGS];
-extern mutString TagShorts[NTAGSHORTS];
+extern const mutChar * Tags[NTAGS];
+extern const mutChar * TagShorts[NTAGSHORTS];
 
 #define TTintens   1
 #define TTslur     2
@@ -55,7 +55,7 @@ extern mutString TagShorts[NTAGSHORTS];
 
 // ------------------------------------------------------------------
 
-int GetTagId(const mutString name, mutString &registered);
+int GetTagId(const mutString &name, mutString &registered);
 
 // ##################################################################
 // GIS types
@@ -163,12 +163,13 @@ class GisTag : public GisToken
 			mutString sep = mutEmptyString, GisToken *next = 0)
 			: GisToken(sep, next)
 		{
-			Id = GetTagId(name, Name);
-			if ( Id == -1 ) {
-				Id = 0;
-				CHECKDUP(Name, name);
-			}
-			Para = para;
+		  DEBUGLOG(_T("name.len %d"),name.Len());
+		  Id = GetTagId(name, Name);
+		  if ( Id == -1 ) {
+		    Id = 0;
+		    CHECKDUP(Name, name);
+		  }
+		  Para = para;
 		}
 	 
 		GisTag(int id, char shortForm, GisToken *para = 0, mutString sep = mutEmptyString, GisToken *next = 0)
@@ -255,10 +256,8 @@ class GisNote : public GisToken
 		frac duration = frac(1,4), const mutString &sep = mutEmptyString, GisToken *next = 0)
 		: GisToken(sep, next),Name(name),Accedentials(accedentials)
 	 {
-#if 0
 		CHECKDUP(Name, name);
 		CHECKDUP(Accedentials, accedentials);
-#endif
 		Octave = octave;
 		Duration = duration;
 	 }
@@ -321,7 +320,10 @@ class GisParaStr : public GisToken
 	 }
 	 ~GisParaStr()
 	 {
+#ifdef WX
+#else
 		if ( s ) delete s;
+#endif
 	 }
 	 virtual GisType Type() const { return GTParaStr; }
 	 virtual GisToken *Copy() { return new GisParaStr(s, Sep, 0); }
@@ -350,5 +352,22 @@ GisType GetGisType(GisToken* token);
 
 GisToken *GisParse(const mutString FileName);
 
+extern int StartSep();  // at the beginning, to get comments infront of the first token
+extern int BeginSegment();
+extern int EndSegment();
+extern int BeginSequenz();
+extern int EndSequenz();
+extern int BeginParameter();
+extern int EndParameter();
+extern int BeginRange();
+extern int EndRange();
+extern int NextSequenz();
+extern int Tag(mutString tagName);
+extern int TagParaInt(long i);
+extern int TagParaReal(double x);
+extern int TagParaStr(mutString s);
+extern int Comma();
+int Note(const mutString name, const mutString accedentials, int octave, frac duration);
 #endif
+
 

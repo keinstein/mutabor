@@ -23,16 +23,18 @@ class GisReadHead
 		frac Time;
 		mutString Id;
 		char Turn;
-		char SingleToken; // proceed only one token (in accords)
-		GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString id, uint8_t singleToken = 0)
+		uint8_t SingleToken; // proceed only one token (in accords)
+		GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, uint8_t singleToken = 0)
 		{
-			Cursor = cursor;
-			mutCopyString(Id,id);
-			InsertInfrontOf(boss);
-			Boss = boss;
-			nSub = -1;
-			Time = frac(0, 1);
-			SingleToken = singleToken;
+		  DEBUGLOG(_T("boss = %p"),boss);
+		  Next = Prev = NULL;
+		  Cursor = cursor;
+		  mutCopyString(Id,id);
+		  InsertInfrontOf(boss);
+		  Boss = boss;
+		  nSub = -1;
+		  Time = frac(0, 1);
+		  SingleToken = singleToken;
 		}
 		virtual ~GisReadHead()
 		{
@@ -99,9 +101,11 @@ class GisReadArtHead : public GisReadHead
 		TagList *Instr;
 		TagList *Tempo;
 	public:
-		GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutChar *id, char singleToken = 0)
+		GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, uint8_t singleToken = 0)
 		: GisReadHead(boss, cursor, id, singleToken)
 		{
+		  DEBUGLOG(_T("boss = %p"), boss);
+		  DEBUGLOG(_T("cursor = %p"), cursor);
 			if ( boss ) {
 				Intensity = Copy(boss->Intensity);
 				Articulation = Copy(boss->Articulation);
@@ -111,17 +115,17 @@ class GisReadArtHead : public GisReadHead
 				Tempo = Copy(boss->Tempo);
 				Box = boss->Box;
 			} else {
-				Intensity = 0;
-				Articulation = 0;
-				Octave = 0;
-				Alter = 0;
-				Instr = 0;
-				Tempo = 0;
-				Box = 0;
+				Intensity = NULL;
+				Articulation = NULL;
+				Octave = NULL;
+				Alter = NULL;
+				Instr = NULL;
+				Tempo = NULL;
+				Box = NULL;
 			}
-			Time2 = 0;
-			Delta = 0;
-			Turn = 0;
+			Time2 = NULL;
+			Delta = NULL;
+			Turn = NULL;
 		}
 		~GisReadArtHead()
 		{
@@ -132,7 +136,7 @@ class GisReadArtHead : public GisReadHead
 			Erase(Instr);
 			Erase(Tempo);
 		}
-		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutChar *id, char singleToken = 0)
+		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, char singleToken = 0)
 		{
 			return new GisReadArtHead((GisReadArtHead*)boss, cursor, id, singleToken);
 		}
@@ -182,10 +186,13 @@ class GisReadArtHead : public GisReadHead
 		}
 		int GetSpeedFactor()
 		{
-			if ( Tempo )
-				return Tempo->Data.i;
-			else
-				return 2000;
+		  DEBUGLOG(_T("Tempo: %p"));
+		  if (Tempo)
+		    DEBUGLOG(_T("Tempo->Data.i: %d"),Tempo);
+		  if ( Tempo )
+		    return Tempo->Data.i;
+		  else
+		    return 2000;
 		}
 };
 

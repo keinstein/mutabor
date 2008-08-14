@@ -9,8 +9,10 @@
 
 // #define GMN_STRICT
 
+#ifndef WX
 #define GSP_MAX_SEP 8000  // maximal length of a comment
 #define GSP_MAX_LINE 1000  // maximal length of a line
+#endif
 
 extern int GspCurrentLineNr;    // curent line parser deals with
 extern int GspErrorLineNr;      // line of occured error
@@ -22,32 +24,15 @@ extern int  GspError;           // error id
   extern mutString Sep;
 #else
   extern char[GSP_MAX_SEP];
+  extern int  SepPos;
 #endif
-extern int  SepPos;
 
-extern char *GspErrorText[];
+extern const mutChar *GspErrorText[];
 
-int GspParse(const mutString FileName);
+int GspParse(const mutString &FileName);
 
 // extern user defined functions
 
-extern int StartSep();  // at the beginning, to get comments infront of the first token
-extern int BeginSegment();
-extern int EndSegment();
-extern int BeginSequenz();
-extern int EndSequenz();
-extern int BeginParameter();
-extern int EndParameter();
-extern int BeginRange();
-extern int EndRange();
-extern int NextSequenz();
-extern int Note(mutString name, mutString accedentials, int octave,
-  frac duration);
-extern int Tag(mutString tagName);
-extern int TagParaInt(long i);
-extern int TagParaReal(double x);
-extern int TagParaStr(mutString s);
-extern int Comma();
-
+#include "GIS.h"
 #endif
 

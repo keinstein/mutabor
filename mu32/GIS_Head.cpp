@@ -33,12 +33,14 @@ char GetMidiInstrument(GisToken *token)
   {
    mutString t;
 #if defined(WX) 
-	long value;
-	t=(((GisParaStr*)token)->s).Upper();
-	if (t.IsSameAs(mutT("MIDI"),false)) {
-		t.Mid(4).ToLong(&value);
-		return (char) value;
-	}
+   mutString v;
+   long value;
+   t=(((GisParaStr*)token)->s).Upper();
+   DEBUGLOG2(_T("t= %s"), t.c_str());
+   if (t.StartsWith(mutT("MIDI"),&v)) {
+     v.ToLong(&value);
+     return (char) value;
+   }
 #else
    strncpy(t, ((GisParaStr*)token)->s, 30);
    strupr(t);
@@ -49,26 +51,26 @@ char GetMidiInstrument(GisToken *token)
   return 0;
 }
 
-#define ZIFFER ('0' <= t[i] && t[i] <= '9')
+#define ZIFFER (mutT('0') <= t[i] && t[i] <= mutT('9'))
 int GetTheSpeedFactor(GisToken *token)
 {
   if ( token && GetGisType(token) == GTParaStr )
   {
-	mutString &t = ((GisParaStr*) token) -> s;
+	const mutString &t = ((GisParaStr*) token) -> s;
    int i = 0;
    long n=0, d=0, bpm=0;
    while ( !ZIFFER && t[i] )
      i++;
    while ( ZIFFER )
-     n = n*10 + (t[i++]-'0');
+     n = n*10 + (t[i++]-mutT('0'));
    while ( !ZIFFER && t[i] )
      i++;
    while ( ZIFFER )
-     d = d*10 + (t[i++]-'0');
+     d = d*10 + (t[i++]-mutT('0'));
    while ( !ZIFFER && t[i] )
      i++;
    while ( ZIFFER )
-     bpm = bpm*10 + (t[i++]-'0');
+     bpm = bpm*10 + (t[i++]-mutT('0'));
    if ( !n || !d || bpm < 4 )
      return 2000;
    else
@@ -82,24 +84,53 @@ int GetTheSpeedFactor(GisToken *token)
 
 GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 {
+  DEBUGLOG(_T("pos = %p"),position);
   if ( !position )
   {
-	 Next = 0;
-	 Prev = 0;
+	 Next = NULL;
+	 Prev = NULL;
 	 return this;
   }
-  if ( *((GisReadHead**)(position->Prev)) == position ) // first position
-	 *(GisReadHead**)(position->Prev) = this;
-  else  // normal position in list
-	 position->Prev->Next = this;
+#if 1
+  // *(position->Prev) == position
+  if ( *((GisReadHead**)(position->Prev)) == position ) { // first position
+      DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	       position,
+	       position->Prev,
+	       position->Next,
+	       *((GisReadHead**)(position->Prev))
+	       );
+	*((GisReadHead**)(position->Prev)) = this;
+  } else { // normal position in list
+      DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	       position,
+	       position->Prev,
+	       position->Next,
+	       *((GisReadHead**)(position->Prev))
+	       );
+    position->Prev->Next = this;
+  }
   Prev = position->Prev;
   Next = position;
   position->Prev = this;
   return this;
+#else
+  DEBUGLOG(_T("pos = %p, prev = %p"),position, position->Prev);
+  if ( (position -> Prev) == position) {
+    Prev = this;
+  } else {
+    Prev = position -> Prev; 
+    position->Prev->Next = this;
+  }
+  Next = position;
+  Next->Prev = this;
+  return this;
+#endif
 }
 
 GisReadHead* GisReadHead::CutOut()
 {
+#if 1
   if ( *(GisReadHead**)Prev == this ) // first of list
   {
 	 *(GisReadHead**)Prev = Next;
@@ -112,6 +143,18 @@ GisReadHead* GisReadHead::CutOut()
   Next = 0;
   Prev = 0;
   return this;
+#else
+  if ( Prev == this ) // first of list
+  {
+    if (Next) Next->Prev = Next;
+  } else {  // normal list postition
+    Prev->Next = Next;
+    if ( Next ) Next->Prev = Prev;
+  }
+  Next = 0;
+  Prev = 0;
+  return this;
+#endif
 }
 
 // create segment subs, insert infront of this
@@ -131,6 +174,7 @@ void GisReadHead::CreateSegmentSubs()
   {
 	 nSub++;
 	 id[mutLen(Id)] = nSub;
+	 
 	 GisReadHead *Sub = Build(this, Cont, id, 1);
 	 Cont = Cont->Next;
 	 while ( Cont ) // read until end or comma
@@ -149,8 +193,9 @@ void GisReadHead::CreateSegmentSubs()
 void GisReadHead::CreateSequenzSubs()
 {
   GisSegment *Seq = (GisSegment*)Cursor;
+#ifdef WX
   mutString id = Id + mutT("\x01");
-#if 0
+#else
   char *id = (char*)malloc(strlen(Id)+2);
   strcpy(id, Id);
   strcat(id, "\x01");
@@ -322,7 +367,7 @@ void GisReadArtHead::Read()
 		if ( Id == TTintens )
 		{
 		  if ( TAG->GetParaType(2) == GTParaInt || TAG->GetParaType(2) == GTParaReal)
-			 AddTag(&Intensity, TAG)->Data.ch = (char) GetReal(TAG->GetPara(2)) * 127;
+		    AddTag(&Intensity, TAG)->Data.ch = (char) (GetReal(TAG->GetPara(2)) * 127);
 		}
 		else if ( Id == TTaccent )
 		{
@@ -344,7 +389,7 @@ void GisReadArtHead::Read()
 		else if ( Id == TTalter )
 		{
 		  if ( TAG->GetParaType(1) != GTParaStr )
-			 AddTag(&Alter, TAG)->Data.i = (int) GetReal(TAG->GetPara(1)) * 0x1FFF ;
+		    AddTag(&Alter, TAG)->Data.i = (int) (GetReal(TAG->GetPara(1)) * 0x1FFF) ;
 		}
 		else if ( Id == TTinstr )
 		{
@@ -353,8 +398,10 @@ void GisReadArtHead::Read()
 		}
 		else if ( Id == TTtempo )
 		{
-		  if ( TAG->GetParaType(2) == GTParaStr )
-			 AddTag(&Tempo, TAG)->Data.i = GetTheSpeedFactor(TAG->GetPara(2));
+		  if ( TAG->GetParaType(2) == GTParaStr ) {
+		    int speed = (AddTag(&Tempo, TAG)->Data.i = GetTheSpeedFactor(TAG->GetPara(2)));
+		    DEBUGLOG(_T("Got speed factor %d"),speed); 
+		  }
 		}
 		break;
 	 case GTTagEnd:
@@ -389,6 +436,7 @@ void GisReadArtDummy(GisReadArtHead*, char)
 // ReadOn the GisReadArtHead, chained
 frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proceed)
 {
+  DEBUGLOG2(_T(""));
   frac MinTime = frac(-1, 1);
   beginloop:
   while ( *Head )
@@ -467,8 +515,12 @@ frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proc
 #define NOTE1 ((GisNote*)note1)
 #define NOTE2 ((GisNote*)note2)
 
-
-#if 0
+#ifdef WX
+int StrCmp(const mutString &s1, const mutString &s2)
+{
+	return s1.Cmp(s2);
+}
+#else
 char StrCmp(const char *s1, const char *s2)
 {
   if ( s1 )
@@ -483,10 +535,6 @@ char StrCmp(const char *s1, const char *s2)
 }
 #endif
 
-int StrCmp(const mutString &s1, const mutString &s2)
-{
-	return s1.Cmp(s2);
-}
 
 int CmpNote(GisToken *note1, GisToken *note2)
 {
@@ -572,12 +620,12 @@ void ChordNote::CheckCloseAlter()
 	 mutString *Sep = LastSep;
 	 if ( !LastSep ) Sep = &s;
 	 AddGis(new GisTagEnd((GisTagBegin*)*AlterBegin, *Sep));
-	 if ( Sep )
+#ifdef WX
+	 if ( *Sep )
 	 {
-		delete(Sep);
-		Sep = 0;
+		*Sep = wxEmptyString;
 	 }
-#if 0
+#else
 	 if ( *Sep )
 	 {
 		free(*Sep);
@@ -602,11 +650,18 @@ void ChordNote::CheckCloseTie()
 	 mutString *Sep = LastSep;
 	 if ( !LastSep ) Sep = &s;
 	 AddGis(new GisTagEnd((GisTagBegin*)*TieBegin, *Sep));
-	 if ( Sep )
+#ifdef WX
+	 if ( *Sep )
 	 {
-		delete(Sep);
-		Sep = 0;
+	   *Sep=mutEmptyString;
 	 }
+#else
+	 if ( *Sep )
+	 {
+		free(*Sep);
+		*Sep = 0;
+	 }
+#endif
   }
   TieBegin = Cursor;
   nTie = 0;
@@ -741,7 +796,7 @@ ChordNote *GisWriteHead::GetNote(int instrId, int taste)
 // prepare for taking over by boss
 int GisWriteHead::ReadyForBoss()
 {
-  CloseCurrentToken(0); //+ zu hart: bei Unknown muﬂ keine Note eingef¸gt werden (zumindest nur beim ersten
+  CloseCurrentToken(0); //+ zu hart: bei Unknown muß keine Note eingefügt werden (zumindest nur beim ersten
   // put in Sequenz, when single token mode
 #ifdef GMN_STRICT
   if ( SingleToken && Data && &Data->Next != Cursor && Data->Type() != GTSequenz )
@@ -863,7 +918,7 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
 		((GisNote*)(*Cursor))->Duration = CurrentTime;
 		Cursor = &(*Cursor)->Next;
 		CurrentTime = frac(0, 1);
-		// das hier muﬂ anders sein, um mehrere Noten gleichzeitig zu schaffen
+		// das hier muß anders sein, um mehrere Noten gleichzeitig zu schaffen
 		break;  */
 	 case GTParaInt:
 		return 1; // impossible
@@ -1026,24 +1081,24 @@ void GisWriteHead::AddTime(frac dTime)
 GisWriteHead *GetMatchingHeader(GisWriteHead **head, const mutString id)
 {
   GisWriteHead *h = *head, *LastHead = 0;
-  GisWriteHead *Boss = 0;
-  int  BossIdLength = -1;
+  GisWriteHead *Boss = h;
+  size_t  BossIdLength = mutLen(h->Id);
   char CmpRes = 0;
   // search header
   while ( h )
   {
   
 #ifdef WX
-	 if ( (id.StartsWith(h->Id)) && (mutLen(h->Id) > BossIdLength) )
+	 if ( (id.StartsWith(h->Id)) && (mutLen(h->Id) >= BossIdLength) )
 	 {
-		Boss = h; BossIdLength = mutLen(h->Id);
+		Boss = h; BossIdLength = mutLen(h->Id) + 1;
 	 }
 	 CmpRes = mutStrCmp(h->Id, id);
 	 if ( CmpRes >= 0 ) break;
 #else
-	 if ( !strncmp(h->Id, id, strlen(h->Id)) && ((int)strlen(h->Id) > BossIdLength) )
+	 if ( !strncmp(h->Id, id, strlen(h->Id)) && (strlen(h->Id) >= BossIdLength) )
 	 {
-		Boss = h; BossIdLength = strlen(h->Id);
+		Boss = h; BossIdLength = strlen(h->Id) + 1;
 	 }
 	 CmpRes = strcmp(h->Id, id);
 	 if ( CmpRes >= 0 ) break;
