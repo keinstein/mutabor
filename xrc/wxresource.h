@@ -101,7 +101,6 @@ protected:
  wxRadioButton* guido_box;
  wxFilePickerCtrl* m_filePicker1;
  wxRadioButton* no_box;
- wxRadioBox* m_radioBox2;
  wxButton* wxID_OK;
  wxButton* wxID_CANCEL;
  wxButton* wxID_HELP;
@@ -114,7 +113,6 @@ private:
   guido_box = XRCCTRL(*this,"guido_box",wxRadioButton);
   m_filePicker1 = XRCCTRL(*this,"m_filePicker1",wxFilePickerCtrl);
   no_box = XRCCTRL(*this,"no_box",wxRadioButton);
-  m_radioBox2 = XRCCTRL(*this,"m_radioBox2",wxRadioBox);
   wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
   wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
   wxID_HELP = XRCCTRL(*this,"wxID_HELP",wxButton);
@@ -124,15 +122,61 @@ mutabor_box(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };
-class MyDialog5 : public wxDialog {
+class InputFilterDlgBase : public wxDialog {
 protected:
+ wxRadioBox* Type;
+ wxStaticText* fromlabel;
+ wxTextCtrl* From;
+ wxStaticText* tolabel;
+ wxTextCtrl* To;
+ wxButton* wxID_OK;
+ wxButton* wxID_CANCEL;
+ wxButton* wxID_REMOVE;
+ wxButton* wxID_HELP;
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MyDialog5"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,_T("InputFilterDlgBase"), _T("wxDialog"));
+  Type = XRCCTRL(*this,"Type",wxRadioBox);
+  fromlabel = XRCCTRL(*this,"fromlabel",wxStaticText);
+  From = XRCCTRL(*this,"From",wxTextCtrl);
+  tolabel = XRCCTRL(*this,"tolabel",wxStaticText);
+  To = XRCCTRL(*this,"To",wxTextCtrl);
+  wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
+  wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
+  wxID_REMOVE = XRCCTRL(*this,"wxID_REMOVE",wxButton);
+  wxID_HELP = XRCCTRL(*this,"wxID_HELP",wxButton);
  }
 public:
-MyDialog5(wxWindow *parent=NULL){
+InputFilterDlgBase(wxWindow *parent=NULL){
+  InitWidgetsFromXRC((wxWindow *)parent);
+ }
+};
+class InputDevDlgBase : public wxDialog {
+protected:
+ wxChoice* DeviceChoice;
+ wxChoice* PortChoice;
+ wxFilePickerCtrl* MidiFilePicker;
+ wxFilePickerCtrl* GuidoFilePicker;
+ wxButton* wxID_OK;
+ wxButton* wxID_CANCEL;
+ wxButton* wxID_REMOVE;
+ wxButton* wxID_HELP;
+
+private:
+ void InitWidgetsFromXRC(wxWindow *parent){
+  wxXmlResource::Get()->LoadObject(this,parent,_T("InputDevDlgBase"), _T("wxDialog"));
+  DeviceChoice = XRCCTRL(*this,"DeviceChoice",wxChoice);
+  PortChoice = XRCCTRL(*this,"PortChoice",wxChoice);
+  MidiFilePicker = XRCCTRL(*this,"MidiFilePicker",wxFilePickerCtrl);
+  GuidoFilePicker = XRCCTRL(*this,"GuidoFilePicker",wxFilePickerCtrl);
+  wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
+  wxID_CANCEL = XRCCTRL(*this,"wxID_CANCEL",wxButton);
+  wxID_REMOVE = XRCCTRL(*this,"wxID_REMOVE",wxButton);
+  wxID_HELP = XRCCTRL(*this,"wxID_HELP",wxButton);
+ }
+public:
+InputDevDlgBase(wxWindow *parent=NULL){
   InitWidgetsFromXRC((wxWindow *)parent);
  }
 };
