@@ -31,7 +31,7 @@ extern char InDevChanged;
 
 // Device Typen
 enum DevType { DTNotSet = -1, DTUnknown, DTMidiPort, DTMidiFile, DTGis };
-#define DeviceMaxType DTGis
+#define DeviceMaxType DTGis+1
 
 // channel data -----------------------------------------------------
 
