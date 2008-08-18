@@ -47,7 +47,9 @@ class OutMidiPort : public OutDevice
   virtual void NotesCorrect(int box);
   virtual void Sustain(char on, int channel);
   virtual int  GetChannel(int taste);
-  virtual void Gis(GisToken *token, char turn) {};
+  virtual void Gis(GisToken *token, char turn) {
+    DEBUGLOG(_T(""));
+  };
   virtual void AddTime(frac time) {};
   virtual void MidiOut(DWORD data, char n);
   virtual void MidiOut(BYTE *p, char n) {};
