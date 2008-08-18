@@ -43,29 +43,33 @@
 
 // Midi-Ausgabe
 #ifdef RTMIDI
-#define MIDI_OUT3(code1, code2, code3) \
-  { std::vector<unsigned char> message; \
-    message.push_back(code1);            \
-    message.push_back(code2);            \
-    message.push_back(code3);            \
+#define MIDI_OUT3(code1, code2, code3)		\
+  { std::vector<unsigned char> message;		\
+    message.push_back(code1);			\
+    message.push_back(code2);			\
+    message.push_back(code3);			\
+    DEBUGLOG2(_T("MIDI OUT %x %x %x"),		\
+	      code1,code2,code3);		\
     hMidiOut->sendMessage(&message); }
 
-#define MIDI_OUT2(code1, code2) \
-  { std::vector<unsigned char> message; \
-    message.push_back(code1);            \
-    message.push_back(code2);            \
+#define MIDI_OUT2(code1, code2)			\
+  { std::vector<unsigned char> message;		\
+    message.push_back(code1);			\
+    message.push_back(code2);			\
+    DEBUGLOG2(_T("MIDI OUT %x %x"),		\
+	      code1,code2);			\
     hMidiOut->sendMessage(&message); }
 #else
 #define MIDI_OUT3(code1, code2, code3) \
-  midiOutShortMsg(hMidiOut, \
-    ((DWORD) (code3) << 16) + \
-    ((DWORD) (code2) << 8) +   \
-    ((DWORD) (code1)))
+  midiOutShortMsg(hMidiOut,	       \
+		  ((DWORD) (code3) << 16) +	\
+		  ((DWORD) (code2) << 8) +	\
+		  ((DWORD) (code1)))
 
-#define MIDI_OUT2(code1, code2) \
-  midiOutShortMsg(hMidiOut, \
-    ((DWORD) (code2) << 8) +   \
-    ((DWORD) (code1)))
+#define MIDI_OUT2(code1, code2)			\
+  midiOutShortMsg(hMidiOut,			\
+		  ((DWORD) (code2) << 8) +	\
+		  ((DWORD) (code1)))
 #endif
 
 // Zugriffe
@@ -119,7 +123,7 @@ bool OutMidiPort::Open()
 #endif
   for (i = 0; i < 16; i++)
   {
-    MIDI_OUT3(0xE0+i, 0, 0); // pitch auf 0
+    MIDI_OUT3(0xE0+i, 0x00, 0x40); // pitch auf 0
   	 MIDI_OUT3(0xB0+i, 122, 0);  // local off
 	 MIDI_OUT3(0xB0+i, 125, 0);  // omni on
 	 MIDI_OUT3(0xB0+i, 127, 0);  // poly on
@@ -146,6 +150,8 @@ void OutMidiPort::Close()
 
 void OutMidiPort::NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd)
 {
+  DEBUGLOG(_T("box %d, key %d, velo %d, channel %d"),
+	   box, taste, velo, channel);
   int free = 16, freeSus = r->OTo, freeV = 64, freeSusV = 64, s;
   DWORD p;
   long freq;
@@ -353,6 +359,7 @@ void OutMidiPort::MidiOut(DWORD data, char n)
   std::vector<unsigned char> message;
   while ( n-- )
   {
+    DEBUGLOG(_T("sending byte %x"), data & 0xff);
     message.push_back(data & 0xFF);
     data >>= 8;
   }
