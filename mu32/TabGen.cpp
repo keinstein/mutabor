@@ -30,7 +30,7 @@ long anzahl_eingelesene_zeichen;
 *****/
 
 static struct do_aktion * expandiere_name (
-           char * name,
+           const char * name,
            struct argument_liste * parameter,
            struct interpreter_parameter_liste * bezugs_liste);
 
@@ -541,7 +541,7 @@ static struct do_aktion * expandiere_umstimmung (
 
 
 static struct do_aktion * expandiere_name (
-           char * name,
+           const char * name,
            struct argument_liste * parameter,
            struct interpreter_parameter_liste * bezugs_liste)
 {
@@ -612,7 +612,7 @@ static int * create_midi_scan_liste (struct midiliste * lauf)
     return ret;
 }
 
-PATTERNN * expand_pattern (char * harmonie_name)
+PATTERNN * expand_pattern (const char * harmonie_name)
 {
     struct harmonie * the_harmonie;
     PATTERNN * help;
@@ -727,7 +727,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 }
 
 void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
-                             char * name_der_logik)
+                             const char * name_der_logik)
 {
     struct harmonie_ereignis ** temp_harmonie;
     struct keyboard_ereignis ** temp_keyboard;

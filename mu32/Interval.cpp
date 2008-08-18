@@ -8,7 +8,7 @@
 #include "Interval.h"
 #include "Hilfs.h"
 
-static double get_intervall_wert (char *name)
+static double get_intervall_wert (const char * name)
 {
   struct intervall *lauf;
 
@@ -17,7 +17,7 @@ static double get_intervall_wert (char *name)
           switch (lauf -> intervall_typ) {
           default: /* und */
           case intervall_komplex:
-              fatal_error (0, __FILE__, __LINE__);
+	    fatal_error (0, mutC_STR(__FILE__), __LINE__);
           break;
           case intervall_absolut:
               return lauf->u.intervall_absolut.intervall_wert ;
@@ -26,7 +26,7 @@ static double get_intervall_wert (char *name)
       }
   }
 
-  fatal_error(26,name); /* Intrvall n.dekl. */
+  fatal_error(26,mutC_STR(name)); /* Intrvall n.dekl. */
   return 0.0; /* to prevent warnings */
 }
 
@@ -40,7 +40,7 @@ double get_wert_komplex_intervall (struct komplex_intervall * intervall)
         if (help > 0)
             ret *= pow (help, intervall -> faktor);
         else {
-              fatal_error(46, intervall -> name);
+	  fatal_error(46, mutC_STR(intervall -> name));
                     /* unzul. Intervallwert */
         }
 
@@ -93,13 +93,13 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
   }
 }
 
-static int intervall_nummer (char *name)
+static int intervall_nummer (const char *name)
 { int i;
 
   for (i=0; i<anzahl_intervalle; i++)
       if ( ! strcmp (name, intervalle[i]->name)) return i;
 
-  fatal_error(26,name); /* Ton n.dekl. */
+  fatal_error(26,mutC_STR(name)); /* Ton n.dekl. */
 
   return 0; /* to prevent warnings */
 }
@@ -110,7 +110,7 @@ static void test_zyklen (int startknoten)
     for (i=0; i<anzahl_intervalle; i++) {
         if (adjazent (startknoten, i)) {
             if (visited [i]) {
-                fatal_error(67,intervalle [startknoten]->name,
+	      fatal_error(67,mutC_STR(intervalle [startknoten]->name),
                                intervalle [i]->name);
             }
             visited [i] = 1;
@@ -146,7 +146,7 @@ static void berechne_intervall_endgueltig (int k)
       break;
 
     default:
-      fatal_error(0,"schleife");
+      fatal_error(0,_("loop"));
   }
 }
 
@@ -185,7 +185,7 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
           }
       }
       else {
-          fatal_error(0,"schleife");
+	fatal_error(0,_("loop"));
       }
   }
 
@@ -247,17 +247,17 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 /*****************************************/
 
 void check_komplex_intervall (struct komplex_intervall * liste,
-                              char * konstrukt_name)
+                              const char * konstrukt_name)
 {
     for ( ; liste ; liste = liste -> next ) {
         struct intervall * help = get_intervall (liste -> name, list_of_intervalle);
         if (help == NULL) {
-            fatal_error (32, liste -> name, konstrukt_name);
+	  fatal_error (32, mutC_STR(liste -> name), mutC_STR(konstrukt_name));
             return;
         }
         if (help -> intervall_typ != intervall_absolut) {
-            fatal_error (0, __FILE__, __LINE__);
-            return;
+	  fatal_error (0, _T(__FILE__), __LINE__);
+	  return;
         }
     }
 }

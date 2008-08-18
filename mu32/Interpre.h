@@ -33,13 +33,13 @@ struct midiereignis { struct midiereignis * next;
                       int * first;
                       int * scanpos;
                       void (*aufruf)();
-                      char * name;
+                      const char * name;
 };
 
 struct keyboardereignis { int taste;
                           struct keyboardereignis * next;
                           void (*aufruf)();
-                          char * name;
+                          const char * name;
 };
 
 struct harmonieereignis { PATTERNN * pattern;
@@ -48,7 +48,7 @@ struct harmonieereignis { PATTERNN * pattern;
                           int nachtaste;
                           struct harmonieereignis * next;
                           void (*aufruf)();
-                          char * name;
+                          const char * name;
 };
 
 ********************/
@@ -118,7 +118,7 @@ struct do_aktion {
 /*
     parameter_liste * parameter;
 */
-    char * name;
+    const char * name;
     enum aufruf_typ aufruf_typ;
     union {
         struct {
@@ -169,7 +169,7 @@ struct do_aktion {
 struct midi_ereignis {
     int * first_pos;
     int * scan_pos;
-    char * name;
+    const char * name;
     struct do_aktion * aktion;
     struct logik * the_logik_to_expand;
     struct midi_ereignis * next;
@@ -177,7 +177,7 @@ struct midi_ereignis {
 
 struct keyboard_ereignis {
     char taste;
-    char * name;
+    const char * name;
     struct do_aktion * aktion;
     struct logik * the_logik_to_expand;
     struct keyboard_ereignis * next;
@@ -188,7 +188,7 @@ struct harmonie_ereignis {
     char ist_harmonieform;
     int vortaste;
     int nachtaste;
-    char * name;
+    const char * name;
     struct do_aktion * aktion;
     struct logik * the_logik_to_expand;
     struct harmonie_ereignis * next;
