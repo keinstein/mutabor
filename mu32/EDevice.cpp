@@ -9,12 +9,14 @@
 #include "EDevice.h"
 #include "DevMidi.h"
 
-wxChar* DevTypeName[] = { 
+
+const wxChar* DevTypeName[] = { 
   N_("Unknown"),
   N_("Midi Port"), 
   N_("Midi File"), 
   N_("GUIDO .gmn File")
 };
+
 
 EDevice *InEDevices = 0;
 EDevice *OutEDevices = 0;
@@ -198,7 +200,7 @@ DevType Str2DT(const wxString& type)
 #endif
 
  
-mutChar *RTName[] =  { _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF") };
+const mutChar * RTName[] =  { _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF") };
 
 /// parse a string representation of a route type
 /** This function returns the numeric route type to a string representation
@@ -792,8 +794,9 @@ void WriteRoutes(wxConfigBase *config)
 		}
 		Out = Out->Next;
 	}
-	// Output schreiben
+	config -> DeleteGroup(_T("Input"));
 	config -> DeleteGroup(_T("Output"));
+	// Output schreiben
 	config -> SetPath(_T("Output"));
 	int nr = 0;
 	for ( Out = OutEDevices; Out; Out = Out->Next)
@@ -833,7 +836,6 @@ void WriteRoutes(wxConfigBase *config)
 	}
 	// Input schreiben
 	nr = 0;
-		    config -> DeleteGroup(_T("../Input"));
 	config -> SetPath(_T("../Input"));
 	for ( In = InEDevices; In; In = In->Next)
 	{
@@ -895,7 +897,8 @@ void WriteRoutes(wxConfigBase *config)
 			config -> Write(_T("No_Drum"), R->ONoDrum);
 			config -> SetPath(_T(".."));
 		}
-		config -> SetPath(_T(".."));
+		config -> SetPath(_T("..")); // Routes
+		config -> SetPath(_T("..")); // Input dev Counter
 	}
 	config -> SetPath(_T(".."));
 #ifdef DEBUG
