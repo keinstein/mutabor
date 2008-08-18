@@ -89,7 +89,6 @@ END_EVENT_TABLE()
 
 //SETUPWINDOW_FONT(TEditFileMut, TEditFile, EditFont)
 
-wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 
 bool MutEditFile::DoLoadFile(const wxString &filename, int WXUNUSED(fileType)) {
 #ifdef DEBUG
@@ -187,6 +186,7 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
   std::cerr << m_filename.ToUTF8() << std::endl;
 #endif
   wxString origfilename = m_filename;
+  wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 	if ( SaveEditor )
 		SaveFile(m_filename);
 	bool modified = IsModified();
@@ -241,6 +241,7 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
 
 void MutEditFile::CmCompAct(wxCommandEvent& event)
 {
+  wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 	if ( SaveEditor )
 		SaveFile(m_filename);
 	bool modified = IsModified();

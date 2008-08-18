@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.5 2008/06/02 16:17:31 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.6 2008/08/18 15:09:39 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2008/06/02 16:17:31 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2008/08/18 15:09:39 $
+ * \version $Revision: 1.6 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.6  2008/08/18 15:09:39  keinstein
+ * Moved temp file handling a little bit around
+ *
  * Revision 1.5  2008/06/02 16:17:31  keinstein
  * CmFileSaveAs: new function
  *
@@ -66,7 +69,8 @@ class MutEditFile : public wxTextCtrl
     wxString StreamOut(wxFontEncoding encoding, bool selOnly = false) const;
 #endif // wxUSE_RICHEDIT
 #endif
-	
+    
+
 	muConvAuto autoConverter;
 	
 	DECLARE_EVENT_TABLE()
