@@ -61,8 +61,9 @@ wxString FileNameDialog(wxWindow * parent,
 # define DEBUGLOGBASE(...)
 #endif
 
-# define DEBUGLOG(...) DEBUGLOGBASE(typeid(*this).name(),__VA_ARGS__)
-# define DEBUGLOGTYPE(type, ...) DEBUGLOGBASE(typeid(type).name(), __VA_ARGS__)
+#define DEBUGLOG(...) DEBUGLOGBASE(typeid(*this).name(),__VA_ARGS__)
+#define DEBUGLOG2(...) DEBUGLOGBASE(_T(""),__VA_ARGS__)
+#define DEBUGLOGTYPE(type, ...) DEBUGLOGBASE(typeid(type).name(), __VA_ARGS__)
 
 //#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
