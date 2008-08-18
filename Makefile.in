@@ -332,7 +332,7 @@ INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res .h
 #RECURSIVE_TARGETS += mac-recursive
-BUILT_SOURCES =  \
+BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h \
 	@COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX) \
 	$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
@@ -376,6 +376,7 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mywx/myContextHelpButton.h \
 		mywx/myContextHelpButton.cpp \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
+		$(top_srcdir)/xrc/wxresource.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 
@@ -1636,7 +1637,7 @@ Mutabor.app:all Mutabor.xrc mutabor
 		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
 	done
 
-wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
+$(top_srcdir)/xrc/wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
 
