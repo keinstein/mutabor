@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.4 2006/03/27 17:20:41 keinstein Exp $
+// RCS-ID:      $Id: valNum.h,v 1.5 2008/08/18 15:12:57 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -33,10 +33,17 @@
 
 class wxNumValidator: public wxTextValidator
 {
-DECLARE_DYNAMIC_CLASS(wxNumValidator)
+  DECLARE_DYNAMIC_CLASS(wxNumValidator)
+    protected:
+  int Style;
+  long *m_intValue;
+  wxString bufferString;
+  int Min, Max;
+  wxCheckBox* Enabler;
+
 public:
 
-    wxNumValidator(long *val = 0, int style = 0, int min = 0, int max = 0, wxCheckBox* enabler = 0);
+    wxNumValidator(long *val = 0, int style = 0, int min = 0, int max = 12, wxCheckBox* enabler = 0);
     wxNumValidator(const wxNumValidator& val);
 
     ~wxNumValidator();
@@ -77,11 +84,6 @@ public:
 DECLARE_EVENT_TABLE()
 */
 protected:
-    int Style;
-    long *m_intValue;
-	wxString bufferString;
-    int Min, Max;
-	wxCheckBox* Enabler;
 
 /*    bool CheckValidator() const
     {
