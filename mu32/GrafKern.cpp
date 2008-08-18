@@ -2,12 +2,15 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.6 2008/06/02 16:00:12 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.7 2008/08/18 15:02:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2008/06/02 16:00:12 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/08/18 15:02:41 $
+ * \version $Revision: 1.7 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.7  2008/08/18 15:02:41  keinstein
+ * fixed some const char * warnings
+ *
  * Revision 1.6  2008/06/02 16:00:12  keinstein
  * UTF-8
  * don't include Mutabor.rh (already included)
@@ -96,7 +99,7 @@ void AktionenInit()
   aktionen_changed = 1;
 }*/
 
-void AktionenMessage(int box, char* aktionName)
+void AktionenMessage(int box, const char* aktionName)
 {
   if ( nAktionen < AKTIONEN_MAX )
   {
@@ -237,20 +240,28 @@ void fatal_error( int nr, ... )
 
 void compiler_warning( int nr, ... )
 {
-	va_list arglist;
-	va_start(arglist,nr);
+  va_list arglist;
+  va_start(arglist,nr);
 #ifdef MUTWIN
-    #if defined(WX)
-		wxMessageBox(wxString::FormatV(wxGetTranslation(Warning_text[nr]), arglist), _("Compiler warning"), wxOK | wxICON_ASTERISK );
-    #else
-		char Fmeldung[255];
-		vsprintf( Fmeldung, Warning_text[nr], arglist );
-		MessageBox(0, Fmeldung, "Compiler warning", MB_OK | MB_ICONASTERISK );
-    #endif
+  DEBUGLOGBASE (_T(""), _T("testing %s"), _T("%s"));
+  DEBUGLOGBASE (_T(""), 
+		_T("Compiler warning %d: %s"),
+		nr,
+		Warning_text[nr]);
+#if defined(WX)
+  wxMessageBox(wxString::FormatV(wxGetTranslation(Warning_text[nr]), 
+				 arglist), 
+	       _("Compiler warning"), 
+	       wxOK | wxICON_ASTERISK );
+#else
+  char Fmeldung[255];
+  vsprintf( Fmeldung, Warning_text[nr], arglist );
+  MessageBox(0, Fmeldung, "Compiler warning", MB_OK | MB_ICONASTERISK );
+#endif
 #endif
 }
 
-void laufzeit_message( char * Meldung )
+void laufzeit_message(const char * Meldung )
 {
   if ( strlen(protokoll_string) + strlen(Meldung) <= PROT_MAXCHARS - 2 )
   {
@@ -271,7 +282,7 @@ void exit_laufzeit_protokoll( void )
 {
 }
 
-void laufzeit_protokoll( char * formatstring , ... )
+void laufzeit_protokoll(const char * formatstring , ... )
 {
   char Fmeldung[255];
   va_list arglist;
