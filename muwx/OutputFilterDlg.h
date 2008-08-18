@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        OutputFilterDlg.h
 // Purpose:     
-// Author:      R. Krauﬂe
+// Author:      R. Krau√üe
 // Modified by: 
 // Created:     10/22/05 16:09:37
 // RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
+// Copyright:   (c) R. Krau√üe, TU Dresden
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 

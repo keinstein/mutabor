@@ -121,11 +121,8 @@ MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 			 | WS_GROUP | WS_TABSTOP;
   Icon = new TIcon(GetModule()->GetInstance(), (TResId)Types[isLogic + 2*isOpen]);*/
 	//	SetBackgroundColour(*wxWHITE);
-#ifdef __WXMSW__
-  wxString TagIcon[4] = {  _T("Tonesyst_icn"), _T("Logic_icn"), _T("TonesystOpen_icn"), _T("LogicOpen_icn")};
-#else
-  char** TagIcon[4] = { tonesyst_xpm, logic_xpm, tonesystopen_xpm, logicopen_xpm};
-#endif
+  const char  ** TagIcon[4] = { tonesyst_xpm, logic_xpm, tonesystopen_xpm, logicopen_xpm};
+
   Icon = wxIcon(TagIcon[isLogic + 2*isOpen]);
   Text = text;
  TPos = -1;

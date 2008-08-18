@@ -618,11 +618,11 @@ void MutRouteWnd::OnDraw(wxDC& dc)
       }
       y+=yr;
     }
-    if ( In->Routes ) {
+    //    if ( In->Routes ) {
       dc.SetPen(GrayPen);
       dc.SetBrush(*wxTRANSPARENT_BRUSH);
       dc.DrawRectangle(z2-x2/2, y-yt/2-26, x2, yt-26);
-    }
+      //}
     if ( !n )
       y += yr;
     y += yz;
@@ -847,34 +847,30 @@ void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
     return;
   if ( !R || NeedNew )
     return;
-  if ( R->Box >= 0 )
-    {
-      wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_BOX);
-      event1.SetId(R->Box);
-      GetParent()->ProcessEvent(event1);
-    }
+  if ( R->Box >= 0 ) {
+    wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_BOX);
+    event1.SetId(R->Box);
+    GetParent()->ProcessEvent(event1);
+  }
   if ( In->DT < DTMidiPort )
     return;
-  if ( Token == RT_PLAYBUTTON )
-    {
-      if ( In->Mode == MutaborDevicePlay ) // Pause
-	In->Mode = MutaborDevicePause;
-      else                 // Play
-	In->Mode = MutaborDevicePlay;
+  if ( Token == RT_PLAYBUTTON ) {
+    if ( In->Mode == MutaborDevicePlay ) // Pause
+      In->Mode = MutaborDevicePause;
+    else                 // Play
+      In->Mode = MutaborDevicePlay;
+    InDeviceAction(In->Nr, In->Mode);
+    //RePaint();
+    Refresh(); // Reicht das auch?
+  }
+  if ( Token == RT_STOPBUTTON ) {
+    if ( In->Mode != MutaborDeviceStop ) {
+      In->Mode = MutaborDeviceStop;
       InDeviceAction(In->Nr, In->Mode);
       //RePaint();
       Refresh(); // Reicht das auch?
     }
-  if ( Token == RT_STOPBUTTON )
-    {
-      if ( In->Mode != MutaborDeviceStop ) // Stop
-	{
-	  In->Mode = MutaborDeviceStop;
-	  InDeviceAction(In->Nr, In->Mode);
-	  //RePaint();
-	  Refresh(); // Reicht das auch?
-	}
-    }
+  }
 }
 
 void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
@@ -884,6 +880,7 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
   bool NeedNew;
   int Token, Res = wxID_CANCEL;
   wxPoint rp;
+
   CalcUnscrolledPosition(event.GetX(), event.GetY(), &rp.x, &rp.y);
   if ( !CheckPoint(rp, &In, &R, Token, NeedNew) )
     return;
@@ -895,44 +892,40 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
     wxMessageBox(_("Stop the logics, before you edit the routes!"), _("Not yet!") , wxOK | wxICON_STOP);
     return;
     }*/
-  switch ( Token )
-    {
-    case RT_INDEVICE:
-      {	// evtl. neues Device anlegen
-	if ( NeedNew )
-	  {
-	    In = NewDevice(&InEDevices, DTUnknown, wxEmptyString, 0, 0, In);
-	    Refresh();//RePaint();
-	  }
-	InputDevDlg in(this);
-	// ComboBoxen f¸llen
+
+  switch ( Token ) {
+  case RT_INDEVICE: 
+    {	// evtl. neues Device anlegen
+      if ( NeedNew ) {
+	In = NewDevice(&InEDevices, DTUnknown, wxEmptyString, 0, 0, In);
+	Refresh();//RePaint();
+      }
+      InputDevDlg in(this);
+      // ComboBoxen f¸llen
 #ifdef RTMIDI
-	nMidi = rtmidiin->getPortCount();
-	if ( nMidi )
-	  {
+      nMidi = rtmidiin->getPortCount();
+      if ( nMidi )  {
 #ifdef __WXMSW__
-	    wxString portName;
+	wxString portName;
 #else
-	    std::string portName;
+	std::string portName;
 #endif
-	    for (int i = 0; i < nMidi; i++)
-	      {	
-		try {
-		  portName = rtmidiin->getPortName(i);
+	for (int i = 0; i < nMidi; i++) {	
+	  try {
+	    portName = rtmidiin->getPortName(i);
 #ifdef __WXMSW__
-		  in.ctrlMidiDevice->Append(portName);
+	    in.AppendPortChoice(portName);
 #else						
-		  in.ctrlMidiDevice->Append(muT(portName.c_str()));
+	    in.AppendPortChoice(muT(portName.c_str()));
 #endif
-		}
-		catch (RtError &error) {
-		  error.printMessage();
-		  break;
-		}
-	      }
 	  }
-	else
-	  in.ctrlMidiDevice->Append(_("no device"));
+	  catch (RtError &error) {
+	    error.printMessage();
+	    break;
+	  }
+	}
+      } else
+	in.AppendPortChoice(_("no device"));
 #else
 	/*    nMidi = midiInGetNumDevs();
 	      if ( nMidi )
@@ -947,87 +940,95 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	      else
 	      DataR0.Device.AddString("no device");*/
 #endif
-	in.SetType(0);
-	in.SetMidiDevice(0);
-	in.SetMidiFile(wxEmptyString);
-	in.SetGUIDOFile(wxEmptyString);
-	// fill with datas
-	int type = 0;
-	switch ( In->DT )
-	  {
-	  case DTGis:
-	    in.SetType(type = 2);
-	    in.SetGUIDOFile(In->Name);
-	    break;
-	  case DTMidiPort:
-	    in.SetMidiDevice(In->DevId);
-	    break;
-	  case DTMidiFile:
-	    in.SetType(type = 1);
-	    in.SetMidiFile(In->Name);
-	    break;
-	  case DTNotSet:
-	    wxLogWarning(_("Unexpected value: DTNotSet"));
-	    break;
-	  case DTUnknown:
-	    break;
-	  default:
-	    wxLogError(_("Unexpected device type: %d"), In->DT); 
-	  }
-	in.UpdateLayout(type);
-	Res = in.ShowModal();
-	if ( Res == wxID_OK )
-	  {
-	    int type = in.GetType();
-	    if ( type == 0 )
-	      NewDevice(&InEDevices, DTMidiPort, in.ctrlMidiDevice->GetString(in.GetMidiDevice()), in.GetMidiDevice(), In, In);
-	    else if ( type == 1 )			
-	      NewDevice(&InEDevices, DTMidiFile, in.GetMidiFile(), 0, In, In);
-	    else			
-	      NewDevice(&InEDevices, DTGis, in.GetGUIDOFile(), 0, In, In);
-	  }
-	else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
+      in.SetType(DTUnknown);
+      in.SetMidiDevice(0);
+      in.SetMidiFile(wxEmptyString);
+      in.SetGUIDOFile(wxEmptyString);
+      // fill with datas
+      DevType type = DTUnknown;
+      in.SetType( In->DT );
+      switch ( In->DT ) {
+      case DTGis:
+	in.SetGUIDOFile(In->Name);
+	break;
+      case DTMidiPort:
+	in.SetMidiDevice(In->DevId);
+	break;
+      case DTMidiFile:
+	in.SetMidiFile(In->Name);
+	break;
+      case DTNotSet:
+	wxLogWarning(_("Unexpected value: DTNotSet"));
+	break;
+      case DTUnknown:
+	break;
+      default:
+	wxLogError(_("Unexpected device type: %d"), In->DT); 
+      }
+
+      Res = in.ShowModal();
+
+      if ( Res == wxID_OK ) {
+	DEBUGLOG(_T("Got value %d"),in.GetType());
+	type = in.GetType();
+	switch (type) {
+	case DTMidiPort:
+	  NewDevice(&InEDevices, 
+		    DTMidiPort, 
+		    in.GetPortString(in.GetMidiDevice()), 
+		    in.GetMidiDevice(), In, In);
+	  break;
+	case DTMidiFile:
+	  NewDevice(&InEDevices, DTMidiFile, in.GetMidiFile(), 0, In, In);
+	  break;
+	case DTGis:
+	  NewDevice(&InEDevices, DTGis, in.GetGUIDOFile(), 0, In, In);
+	  break;
+	case DTNotSet:
+	case DTUnknown:
+	  break;
+	default:
+	  wxLogWarning(_("Unexpected value: %d"),type);
+	}
+      } else if ( Res == wxID_REMOVE || (NeedNew && Res == wxCANCEL) )
 	  NewDevice(&InEDevices, DTNotSet, wxEmptyString, 0, In, 0);
 	break;
-      }
+    }
     case RT_INFILTER:
       {
 	// evtl. neue Route anlegen
 	if ( !R )
 	  NeedNew = TRUE;
-	if ( NeedNew )
-	  {
-	    // als Adresse ermitteln
-	    for (R1 = &In->Routes; *R1; R1 = &((*R1)->Next))
-	      if ( *R1 == R )
-		break;
-	    R = new ERoute(RTall, 0, 0, -2, 0, 0, 0, 15);
-	    R->Next = *R1;
-	    *R1 = R;
-	    Refresh();//RePaint();
-	  }
+	if ( NeedNew ) {
+	  // als Adresse ermitteln
+	  for (R1 = &In->Routes; *R1; R1 = &((*R1)->Next))
+	    if ( *R1 == R )
+	      break;
+	  R = new ERoute(RTall, 0, 0, -2, 0, 0, 0, 15);
+	  R->Next = *R1;
+	  *R1 = R;
+	  Refresh();//RePaint();
+	}
 	//
 	IsDT = In->DT;
-	InputFilterDlg dlg(this);
+	InputFilterDlg dlg(this, In->DT);
 	dlg.SetType(R->Type);
 	dlg.SetFrom(R->IFrom);
 	dlg.SetTo(R->ITo);
 	dlg.UpdateLayout(R->Type);
 	Res = dlg.ShowModal();
-	if ( Res == wxID_OK )
-	  {
-	    R->Type = (RouteType)dlg.GetType();
-	    R->IFrom = dlg.GetFrom();
-	    R->ITo = dlg.GetTo();
-	  }
+	if ( Res == wxID_OK ) {
+	  R->Type = (RouteType)dlg.GetType();
+	  R->IFrom = dlg.GetFrom();
+	  R->ITo = dlg.GetTo();
+	}
 	else if ( Res == wxID_REMOVE || (NeedNew && Res == wxID_CANCEL) )
 	  for (R1 = &(In->Routes); *R1; R1 = &((*R1)->Next))
-	    if ( *R1 == R )
-	      {
-		*R1 = R->Next;
-		R->Next = 0;
-		break;
-	      }
+	    if ( *R1 == R ) {
+	      *R1 = R->Next;
+	      R->Next = 0;
+	      break;
+	    }
 	break;
       }
     case RT_BOX:
@@ -1040,11 +1041,10 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	  Type = 2;
 	else if ( R->Box == GmnBox )
 	  Type = 1;
-	else
-	  {
-	    Type = 0;
-	    dlg.SetBoxNr(R->Box);
-	  }
+	else {
+	  Type = 0;
+	  dlg.SetBoxNr(R->Box);
+	}
 	dlg.SetBoxType(Type);
 	dlg.ctrlBox1->SetValue(Type == 0);
 	dlg.ctrlBox2->SetValue(Type == 1);
@@ -1052,16 +1052,14 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	dlg.SetMode(!R->Active);
 	dlg.UpdateLayout(Type);
 	Res = dlg.ShowModal();
-	if ( Res == wxID_OK )
-	  {
-	    switch ( dlg.GetBoxType() )
-	      {
-	      case 0: R->Box = dlg.GetBoxNr(); break;
-	      case 1: R->Box = GmnBox; break;
-	      case 2: R->Box = NoBox; break;
-	      }
-	    R->Active = !dlg.GetMode();
+	if ( Res == wxID_OK ) {
+	  switch ( dlg.GetBoxType() ) {
+	  case 0: R->Box = dlg.GetBoxNr(); break;
+	  case 1: R->Box = GmnBox; break;
+	  case 2: R->Box = NoBox; break;
 	  }
+	  R->Active = !dlg.GetMode();
+	}
 	break;
       }
     case RT_OUTFILTER:
@@ -1071,64 +1069,58 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	dlg.SetTo(R->OTo);
 	dlg.SetAvoidDrumChannel(R->ONoDrum);
 	Res = dlg.ShowModal();
-	if ( Res == wxID_OK )
-	  {
-	    R->OFrom = dlg.GetFrom();
-	    R->OTo = dlg.GetTo();
-	    R->ONoDrum = dlg.GetAvoidDrumChannel();
-	  }
+	if ( Res == wxID_OK ) {
+	  R->OFrom = dlg.GetFrom();
+	  R->OTo = dlg.GetTo();
+	  R->ONoDrum = dlg.GetAvoidDrumChannel();
+	}
 	break;
       }
     case RT_OUTDEVICE:
       EDevice *Out = R->Out;
       // evtl. neues Device anlegen
-      if ( !Out )
-	{
-	  Out = NewDevice(&OutEDevices, DTUnknown, wxEmptyString, 0, 0, 0);
-	  R->Out = Out;
-	  Refresh(); //RePaint();
-	  NeedNew = TRUE;
-	}
+      if ( !Out ) {
+	Out = NewDevice(&OutEDevices, DTUnknown, wxEmptyString, 0, 0, 0);
+	R->Out = Out;
+	Refresh(); //RePaint();
+	NeedNew = TRUE;
+      }
       // ComboBoxen f¸llen
       OutputDevDlg out(this);
 #ifdef RTMIDI
       nMidi = rtmidiout->getPortCount();
-      if ( nMidi )
-	{
+      if ( nMidi ) {
 #ifdef __WXMSW__
-	  wxString portName;
+	wxString portName;
 #else
-	  std::string portName;
+	std::string portName;
 #endif
-	  for (int i = 0; i < nMidi; i++)
-	    {
-	      try {
-		portName = rtmidiout->getPortName(i);
+	for (int i = 0; i < nMidi; i++)  {
+	  try {
+	    portName = rtmidiout->getPortName(i);
 #ifdef __WXMSW__
-		out.ctrlMidiDevice->Append(portName);
+	    out.ctrlMidiDevice->Append(portName);
 #else	
-		out.ctrlMidiDevice->Append(muT(portName.c_str()));
+	    out.ctrlMidiDevice->Append(muT(portName.c_str()));
 #endif
-	      }
-	      catch (RtError &error) {
-		error.printMessage();
-		break;
-	      }
-	    }
+	  }
+	  catch (RtError &error) {
+	    error.printMessage();
+	    break;
+	  }
 	}
+      }
       else
 	out.ctrlMidiDevice->Append(_("no device"));
 #else
       nMidi = midiOutGetNumDevs();
-      if ( nMidi )
-	{
-	  for (int i = 0; i < nMidi; i++)
-	    {
-	      MIDIOUTCAPS miout;
-	      midiOutGetDevCaps(i, &miout, sizeof(MIDIOUTCAPS));
-	      DataR0.Device.AddString(miout.szPname);
-	    }
+      if ( nMidi ) {
+	for (int i = 0; i < nMidi; i++) {
+	  MIDIOUTCAPS miout;
+	  midiOutGetDevCaps(i, &miout, sizeof(MIDIOUTCAPS));
+	  DataR0.Device.AddString(miout.szPname);
 	}
+      }
       else
         DataR0.Device.AddString("no device");
 #endif
@@ -1166,19 +1158,20 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
       Res = out.ShowModal();
       if ( Res == wxID_OK ) {
 	int type = out.GetType();
-	if ( type == 0 )
-	  {
-	    Out = NewDevice(&OutEDevices, 
-			    DTMidiPort, 
-			    out.ctrlMidiDevice->GetString(out.GetMidiDevice()), 
-			    out.GetMidiDevice(), Out, Out);
-	    Out->BendingRange = out.GetMidiDeviceBending();
-	  }
-	else if ( type == 1 )
-	  {
-	    Out = NewDevice(&OutEDevices, DTMidiFile, out.GetMidiFile(), 0, Out, Out);
-	    Out->BendingRange = out.GetMidiFileBending();
-	  }
+	if ( type == 0 ) {
+	  Out = NewDevice(&OutEDevices, 
+			  DTMidiPort, 
+			  out.ctrlMidiDevice->GetString(out.GetMidiDevice()), 
+			  out.GetMidiDevice(), Out, Out);
+	  Out->BendingRange = out.GetMidiDeviceBending();
+	}
+	else if ( type == 1 ) {
+	  Out = NewDevice(&OutEDevices,
+			  DTMidiFile, 
+			  out.GetMidiFile(), 
+			  0, Out, Out);
+	  Out->BendingRange = out.GetMidiFileBending();
+	}
 	else			
 	  Out = NewDevice(&OutEDevices, DTGis, out.GetGUIDOFile(), 0, Out, Out);
       }
@@ -1187,10 +1180,10 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
       R->Out = Out;
       break;
     }
-  // evtl. neu zeichnen
-  if ( Res == wxID_OK || Res == wxID_REMOVE || NeedNew )
-    Refresh();//RePaint();
-}
+    // evtl. neu zeichnen
+    if ( Res == wxID_OK || Res == wxID_REMOVE || NeedNew )
+      Refresh();//RePaint();
+  }
 /*
   void TRouteWin::EvRButtonDown(uint, TPoint& point)
   {

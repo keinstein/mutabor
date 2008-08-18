@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.18 2008/08/01 16:24:30 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.19 2008/08/18 15:10:37 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/08/01 16:24:30 $
- * \version $Revision: 1.18 $
+ * \date $Date: 2008/08/18 15:10:37 $
+ * \version $Revision: 1.19 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.19  2008/08/18 15:10:37  keinstein
+ * Fix subwindow creation when on other window
+ *
  * Revision 1.18  2008/08/01 16:24:30  keinstein
  * Fix some segfaults on stopping Mutabor
  *
@@ -928,6 +931,12 @@ void MutFrame::ToggleTextBox(WinKind kind)
 	    << "MutFrame::ToggleTextBox: TextBoxWanted:"
 	    << TextBoxWanted[curBox][kind] << std::endl;
 #endif
+  if (theFrame && (theFrame != this)) {
+    theFrame->ToggleTextBox(kind);
+    return;
+  }
+
+
   TextBoxWanted[curBox][kind] = !TextBoxWanted[curBox][kind];
 #ifdef DEBUG
   std::cerr << "MutFrame::ToggleTextBox: LogicOn"
