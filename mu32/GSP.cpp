@@ -25,7 +25,11 @@ mutString PossibleErrorLine; //[GSP_MAX_LINE];
 
 #ifdef WX
   mutString Sep = mutEmptyString;
-#define SepPos (Sep.Len())
+inline size_t SepPos() {
+  size_t a =  (Sep.Len()); 
+  return a; 
+}
+#define SepPos SepPos()
 #else
   char Sep[GSP_MAX_SEP];
   int  SepPos;
@@ -46,12 +50,12 @@ char Brackets[200];
 char LastTag;
 // last note
 
-int octave;
-mutString accedentials /*[GSP_MAX_LINE]*/;
-frac duration;
+static int octave;
+static mutString accedentials /*[GSP_MAX_LINE]*/;
+static frac duration;
 
 #define NEW_LINE mutT("\n")
-mutChar SepChars[] = mutT(" \t");
+mutChar SepChars[] = mutT(" \t\r\n");
 mutChar DelimitChars[] = mutT("{}[]()");
 
 #define uchar unsigned char
@@ -60,26 +64,32 @@ mutChar DelimitChars[] = mutT("{}[]()");
 // Work with strings
 
 #ifdef WX
-inline void Addstr(mutString & Target, int Pos, const mutString& Source) {
+inline void AddStr(mutString & Target, int Pos, const mutString& Source) {
+  DEBUGLOG2(_T("%s + %s"), Target.c_str(), Source.c_str());
   Target += Source;
+  DEBUGLOG2(_T("=%s"), Target.c_str());
 }
 
-int CharIn(mutChar c, const mutString s)
+inline int CharIn(mutChar c, const mutChar * s)
 {
-  return mutStrChr(s, c) != 0;
+  DEBUGLOG2(_T("'%c' is in '%s' at position %d, returning %d"), 
+	    c, s, mutStrChr(s, c), mutStrChr(s, c) != NULL);
+  return mutStrChr(s, c) != NULL;
 }
 
-int IsLetter(mutChar c)
+inline int IsLetter(mutChar c)
 {
   return ((mutT('a') <= c) && (c <= mutT('z'))) ||
 			((mutT('A') <= c) && (c <= mutT('Z'))) ||
          ( c == mutT('_') );
 }
 
-int IsNumber(mutChar c)
+/*
+inline int IsNumber(mutChar c)
 {
-  return (mutT('0') <= c) && (c <= mutT('9'));
+  return (mutIsDigit(c));
 }
+*/
 #else
 void AddStr(char *Target, int &Pos, char *Source)
 {
@@ -149,11 +159,13 @@ void SavePos()
 
 #define CHAR0 CurrentLine[CurrentPos]
 #define CHAR1 CurrentLine[CurrentPos+1]
-#define TAKESEP Sep += CurrentLine[CurrentPos++]
+inline wxString & takesep() {
+  Sep += CurrentLine[CurrentPos++];
+  DEBUGLOG2(_T("New Sep: %s"), Sep.c_str());
+  return Sep;
+}
+#define TAKESEP takesep() 
 
-#ifdef WX
-#define AddStr(a,b,c) (a += b + c)
-#endif
 
 // reading separator string
 int GetSep()
@@ -168,15 +180,23 @@ int GetSep()
   int RemLine = 0;
   while ( !Eof && !GspError )
   {
+#ifdef WX 
+    DEBUGLOG2(_T("%d >= %d? Sep.Len=%d"),CurrentPos,CurrentLine.Len(),Sep.Len());
+    DEBUGLOG2(_T("%s"),CurrentLine.c_str());
+	 if (CurrentPos >= CurrentLine.Len())
+#else
 	 mutChar c = CHAR0;
 	 if ( !c ) // new Line
+#endif
 	 {
 		if ( ReadNewLine() )
 		{
 		  DoError(32);
 #ifdef WX
 		  Sep = Sep.Left(1);
-		  return 1;
+		  DEBUGLOG2(_T("Returning 1 at with (%d) '%s'"),
+			    SepPos, Sep.c_str());
+		  return SepPos;
 #else
 		  return ( SepPos = 1 );
 #endif
@@ -186,6 +206,10 @@ int GetSep()
 		  AddStr(Sep, SepPos, NEW_LINE);
 		continue;
 	 }
+
+#ifdef WX
+	 mutChar c = CHAR0;
+#endif
 
 	 if ( c == mutT('(') && CHAR1 == mutT('*') )  // comment start
 	 {
@@ -231,9 +255,9 @@ int GetSep()
 
 	 break;
   }
-#ifdef WX
-  Sep = mutEmptyString;
-#else
+
+  DEBUGLOG2(_T("Returning with (%d) '%s'"),SepPos,Sep.c_str());
+#ifndef WX
   Sep[SepPos] = 0;
 #endif
   return SepPos;
@@ -242,23 +266,25 @@ int GetSep()
 // ##################################################################
 // subfunctions of parsing process
 
-mutChar minus;
+bool minus;
 
 // reads an integer
 long ReadLong(int SignAllowed)
 {
   long a = 0;
   NumberLength = 0;
-  minus = 0;
+  minus = false;
   if ( SignAllowed )
   {
+    DEBUGLOG2(_T("Sign char %c?"), CHAR0);
     if ( CHAR0 == mutT('+') ) CurrentPos++;
     else if ( CHAR0 == mutT('-') )
-	 { CurrentPos++; minus = 1; }
+	 { CurrentPos++; minus = true; }
   }
   GetSep();
-  while ( IsNumber(CHAR0) && !SepPos )
+  while ( mutIsdigit(CHAR0) && !SepPos )
   {
+    DEBUGLOG2(_T("Number char %c? (a=%d)"), CHAR0, a);    
     a = a*10 + (CurrentLine[CurrentPos++]-mutT('0'));
     NumberLength++;
     GetSep();
@@ -383,8 +409,8 @@ int ReadNote()
 #ifdef WX
   for (i = CurrentPos; IsLetter(CHAR0) && !SepPos; CurrentPos++) 
     GetSep();
-
   Name = CurrentLine(i,CurrentPos-i);
+  GetSep();
 #else
   while ( IsLetter(CHAR0) && !SepPos )
   {
@@ -395,6 +421,7 @@ int ReadNote()
   Name[i] = 0;
 #endif
 
+  DEBUGLOG2(_T("SepPos: %d"),SepPos);
   if ( SepPos )
 	 return CheckError(Note(Name, accedentials, octave, duration));
 
@@ -412,6 +439,7 @@ int ReadNote()
   accedentials[i] = 0;
 #endif
 
+  DEBUGLOG2(_T("SepPos: %d"),SepPos);
   if ( SepPos )
 	 return CheckError(Note(Name, accedentials, octave, duration));
 
@@ -479,7 +507,7 @@ int DoParse()
 	 Komma = 0;
 	 if ( ParaMode )
 	 {
-	   if ( IsNumber(c) || ( c == mutT('+')) || ( c == mutT('-')) ) // number parameter
+	   if ( mutIsdigit(c) || ( c == mutT('+')) || ( c == mutT('-')) ) // number parameter
 		{
 		  if ( ReadParaNumber() ) return GspError;
 		}

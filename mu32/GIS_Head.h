@@ -1,3 +1,5 @@
+//     -*- C++ -*-
+
 // #################################################################
 // header file for read header for GIS (GMN Intern Structur)
 // ##################################################################
@@ -16,16 +18,17 @@ enum ARType { ARNormal, ARSlur, ARTenuto, ARPortato, ARStaccatto };
 class GisReadHead
 {
 	public:
-		GisReadHead *Next, *Prev; // double chained, first Prev points to its own adress
+  GisReadHead *Next, **PrevPtr, *Prev; // double chained, first Prev points to its own adress
 		GisReadHead *Boss;
 		int nSub;
 		GisToken *Cursor;
 		frac Time;
 		mutString Id;
 		char Turn;
-		uint8_t SingleToken; // proceed only one token (in accords)
-		GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, uint8_t singleToken = 0)
+		bool SingleToken; // proceed only one token (in accords)
+		GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
 		{
+		  PrevPtr = &Prev;
 		  DEBUGLOG(_T("boss = %p"),boss);
 		  Next = Prev = NULL;
 		  Cursor = cursor;
@@ -41,7 +44,7 @@ class GisReadHead
 			mutFreeString(Id);
 			if ( Next ) delete Next; // only the following will be deleted
 		}
-		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString id, uint8_t singleToken = 0)
+		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
 		{
 			return new GisReadHead(boss, cursor, id, singleToken);
 		}
@@ -61,6 +64,16 @@ class GisReadHead
 		void CreateSegmentSubs();
 		void CreateSequenzSubs();
 		void Read();
+#ifdef WX
+		operator wxString() {
+		  if (Next) 
+		    return ToString() + (wxString) (*Next) ; 
+		  else 
+		    return ToString();
+		}
+		virtual wxString ToString();
+#endif
+
 };
 
 typedef void GisReadProceed(GisReadHead*, char) ;
@@ -101,7 +114,7 @@ class GisReadArtHead : public GisReadHead
 		TagList *Instr;
 		TagList *Tempo;
 	public:
-		GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, uint8_t singleToken = 0)
+		GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, bool singleToken = false)
 		: GisReadHead(boss, cursor, id, singleToken)
 		{
 		  DEBUGLOG(_T("boss = %p"), boss);
@@ -136,7 +149,7 @@ class GisReadArtHead : public GisReadHead
 			Erase(Instr);
 			Erase(Tempo);
 		}
-		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, char singleToken = 0)
+		virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, bool singleToken = false)
 		{
 			return new GisReadArtHead((GisReadArtHead*)boss, cursor, id, singleToken);
 		}
@@ -194,6 +207,15 @@ class GisReadArtHead : public GisReadHead
 		  else
 		    return 2000;
 		}
+#ifdef WX
+		operator wxString() {
+		  if (Next) 
+		    return ToString() + (wxString) (*Next) ; 
+		  else 
+		    return ToString();
+		}
+		virtual wxString ToString();
+#endif
 };
 
 typedef void GisReadArtProceed(GisReadArtHead* token, char turn) ;

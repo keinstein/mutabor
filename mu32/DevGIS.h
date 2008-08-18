@@ -61,9 +61,21 @@ class InGis : public InDevice
   wxString Name;
   GisToken *Data;
   GisReadArtHead *Head;
+
+  class GisTimer : public wxTimer {
+    InGis * file;
+  public:
+    GisTimer(InGis * f) : wxTimer(),file(f) {}
+    void Notify()
+    {
+      file->IncDelta();
+    }
+  };
+  GisTimer timer;
+
  public:
- InGis(wxString name, wxString id)
-   : InDevice(),Id(id),Name(name)
+ InGis(const wxString &name, const wxString &id)
+   : InDevice(),Id(id),Name(name),timer(this)
 	{
 		Head = 0;
 		Data = 0;

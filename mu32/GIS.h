@@ -26,6 +26,7 @@
 	 target = mutStrdup(source);     \
   else                           \
 	 target = 0
+
 #endif
 
 // regisered tags ---------------------------------------------------
@@ -61,18 +62,18 @@ int GetTagId(const mutString &name, mutString &registered);
 // GIS types
 
 enum GisType { 
-	GTNull, 
-	GTUnknown, 
-	GTSequenz, 
-	GTSegment, 
-	GTTag, 
-	GTTagBegin,
-	GTTagEnd, 
-	GTNote, 
-	GTParaInt, 
-	GTParaReal, 
-	GTParaStr, 
-	GTComma
+  GTNull, 
+  GTUnknown,  // 1
+  GTSequenz,  // 2
+  GTSegment, 
+  GTTag, 
+  GTTagBegin, // 5
+  GTTagEnd, 
+  GTNote,     // 7
+  GTParaInt, 
+  GTParaReal, 
+  GTParaStr,  // 10
+  GTComma
 };
 
 // basic type -------------------------------------------------------
@@ -81,9 +82,10 @@ class GisToken
  public:
   GisToken *Next;
   mutString Sep;
-  GisToken(const mutString sep = mutEmptyString, GisToken *next = 0)
+  GisToken(const mutString &sep = mutEmptyString, GisToken *next = 0)
     {
       CHECKDUP(Sep, sep);
+      DEBUGLOG(_T("New Token: %s (was %s)"),Sep.c_str(),sep.c_str());
       Next = next;
     }
   virtual ~GisToken()
@@ -96,6 +98,17 @@ class GisToken
 #ifndef FOR_MUTWIN
   virtual void Stream(ostream &out, char sep);
   virtual void Echo() { cout << "?? "; }
+#endif
+#ifdef WX
+  operator wxString() { 
+    if (Next) 
+      return ToString() + ((wxString) *Next);
+    else
+      return ToString();
+  }
+  virtual wxString ToString() {
+    return _T("GisToken: { Sep: '") + Sep + _T("' }\n");
+  }
 #endif
 };
 
@@ -121,6 +134,13 @@ class GisSequenz : public GisToken
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, char sep);
 	 virtual void Echo() { cout << "[ "; }
+#endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisSequenz: {\n") + GisToken::ToString() + 
+      _T("Sep2: '") + Sep2 + _T("'; Contents: {\n") + 
+      (Contents?((wxString) *Contents):wxString(_T(""))) + _T("}\n}\n");
+  }
 #endif
 };
 
@@ -148,6 +168,13 @@ class GisSegment : public GisToken
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, char sep);
    virtual void Echo() { cout << "{ "; }
+#endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisSegment: {\n") + GisToken::ToString() + 
+      _T("Sep2: '") + Sep2 + _T("'; Contents: {\n") + 
+      (Contents?((wxString) *Contents):wxString(_T(""))) + _T("}\n}\n");
+  }
 #endif
 };
 
@@ -197,6 +224,13 @@ class GisTag : public GisToken
 		virtual void Stream(ostream &out, char sep);
 		virtual void Echo() { cout << "Tag: " << Name <<" "; }
 #endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisTag: {\n") + GisToken::ToString() + 
+      wxString::Format(_T("Id: %d\nName: '"),Id) + Name + _T("'; Para: {\n") + 
+      (Para?((wxString) *Para):wxString(_(""))) + _T("}\n}\n");
+  }
+#endif
 };
 
 // begin ranged tag -------------------------------------------------
@@ -225,6 +259,12 @@ class GisTagBegin : public GisTag
 		virtual void Stream(ostream &out, char sep);
 		virtual void Echo() { cout << "Tag: " << Name << "( "; }
 #endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisTagBegin: {\n") + GisTag::ToString() + 
+      wxString::Format(_T("End: %p\n}\n"),End);
+  }
+#endif
 };
 
 // end ranged tag ---------------------------------------------------
@@ -241,6 +281,12 @@ class GisTagEnd : public GisToken
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, char sep);
    virtual void Echo() { cout << ") "; }
+#endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisTagEnd: {\n") + GisToken::ToString() + 
+      wxString::Format(_T("Begin: %p\n}\n"),Begin);
+  }
 #endif
 };
 
@@ -268,6 +314,14 @@ class GisNote : public GisToken
 	 virtual void Stream(ostream &out, mutChar sep);
 	 virtual void Echo() { cout << "Note: " << Name << Accedentials << Octave <<" "; }
 #endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisNote: {\n") + GisToken::ToString() + 
+      wxString::Format(_T("Name: '%s'; Accedentials: '%s'; Octave: %d; Duration: "),
+		       Name.c_str(),Accedentials.c_str(),Octave) +
+      ((wxString) Duration) + _T("\n}\n");
+  }
+#endif
 };
 
 // integer parameter ------------------------------------------------
@@ -287,6 +341,12 @@ class GisParaInt : public GisToken
 #ifndef FOR_MUTWIN
 		virtual void Stream(ostream &out, mutChar sep);
 #endif
+#ifdef WX 
+  virtual wxString ToString() {
+    return _T("GisParaInt: { ") + GisToken::ToString() + 
+      wxString::Format(_T("i: %d }\n"),i);
+  }
+#endif
 };
 
 // real parameter ---------------------------------------------------
@@ -305,6 +365,12 @@ class GisParaReal : public GisToken
 		virtual GisToken *Copy() { return new GisParaReal(x, Sep, 0); }
 #ifndef FOR_MUTWIN
 		virtual void Stream(ostream &out, char sep);
+#endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisParaReal: { ") + GisToken::ToString() + 
+      wxString::Format(_T("x: %g }\n"),x);
+  }
 #endif
 };
 
@@ -330,6 +396,12 @@ class GisParaStr : public GisToken
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, mutChar sep);
 #endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisParaStr: { ") + GisToken::ToString() + 
+      wxString::Format(_T("s: '%s' }\n"),s.c_str());
+  }
+#endif
 };
 
 // comma (in chord as separator) ------------------------------------
@@ -342,6 +414,12 @@ class GisComma : public GisToken
 #ifndef FOR_MUTWIN
 	 virtual void Stream(ostream &out, mutChar sep);
 	 virtual void Echo() { cout << ", "; }
+#endif
+#ifdef WX
+  virtual wxString ToString() {
+    return _T("GisComma: { ") + GisToken::ToString() + 
+      _T(" }\n");
+  }
 #endif
 };
 
@@ -368,6 +446,9 @@ extern int TagParaReal(double x);
 extern int TagParaStr(mutString s);
 extern int Comma();
 int Note(const mutString name, const mutString accedentials, int octave, frac duration);
+#ifdef WX
+wxString GISPrettyPrint(wxString s);
 #endif
 
 
+#endif
