@@ -1777,7 +1777,7 @@ yyreduce:
     {
         case 10:
 #line 76 "../mu32/mut.y"
-    { fatal_error(1,FEHLERZEILE); }
+    {  fatal_error(1,FEHLERZEILE); }
     break;
 
   case 14:
@@ -1790,7 +1790,7 @@ yyreduce:
     { if ( fabs((yyvsp[(5) - (5)].f_value)) > 0.001 )
                          get_new_intervall ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].f_value) / (yyvsp[(5) - (5)].f_value));
                       else
-                         fatal_error (46, (yyvsp[(1) - (5)].identifier) ); }
+			fatal_error (46, mutC_STR((yyvsp[(1) - (5)].identifier)) ); }
     break;
 
   case 17:
@@ -1798,7 +1798,7 @@ yyreduce:
     { if ( fabs ((yyvsp[(3) - (5)].f_value)) > 0.001 )
                           get_new_intervall ((yyvsp[(1) - (5)].identifier), pow ((yyvsp[(5) - (5)].f_value), 1 / (yyvsp[(3) - (5)].f_value)));
                       else
-                         fatal_error (46, (yyvsp[(1) - (5)].identifier)); }
+			fatal_error (46, mutC_STR((yyvsp[(1) - (5)].identifier))); }
     break;
 
   case 18:
@@ -1808,7 +1808,7 @@ yyreduce:
 
   case 19:
 #line 109 "../mu32/mut.y"
-    { fatal_error(71,(yyvsp[(1) - (3)].identifier)); }
+    { fatal_error(71, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 20:
@@ -1843,7 +1843,7 @@ yyreduce:
 
   case 30:
 #line 141 "../mu32/mut.y"
-    { fatal_error( 72, (yyvsp[(1) - (3)].identifier) ); }
+    { fatal_error( 72, mutC_STR((yyvsp[(1) - (3)].identifier)) ); }
     break;
 
   case 34:
@@ -2458,7 +2458,7 @@ yyreduce:
 
   case 161:
 #line 531 "../mu32/mut.y"
-    { fatal_error(76,(yyvsp[(1) - (3)].identifier)); }
+    { fatal_error(76, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 162:
@@ -3004,7 +3004,7 @@ start_lex:
     if (isalpha (c) || (c == '_') || (c == '\'') ) {
 
 static struct { 
-    char *word;
+    const char *word;
     int token;
 } reserved_words [] = {
 /* Deutsche SchlÅsselworte : */
@@ -3127,7 +3127,7 @@ void init_yylex (void)
     anzahl_eingelesene_zeichen = 0;
 }
 
-void yyerror(char *s) {
+void yyerror(const char *s) {
 
 /* ignore it ! */
 

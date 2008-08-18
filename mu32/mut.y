@@ -73,7 +73,7 @@ start : /* empty */
         | start harmoniedeklaration
         | start logikdeklaration
         | start instrumentdeklaration
-        | start error { fatal_error(1,FEHLERZEILE); }
+        | start error {  fatal_error(1,FEHLERZEILE); }
       ;
 
 intervalldeklaration :
@@ -93,20 +93,20 @@ intervalldekl2 :
                     { if ( fabs($5) > 0.001 )
                          get_new_intervall ($1, $3 / $5);
                       else
-                         fatal_error (46, $1 ); }
+			fatal_error (46, mutC_STR($1) ); }
 
         | IDENTIFIER '=' GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL
                     { if ( fabs ($3) > 0.001 )
                           get_new_intervall ($1, pow ($5, 1 / $3));
                       else
-                         fatal_error (46, $1); }
+			fatal_error (46, mutC_STR($1)); }
 /*****
         | IDENTIFIER '=' GLEITKOMMA_ZAHL
                     { get_new_intervall ($1, $3); }
 ****/
 	| IDENTIFIER '=' KOMPLEX_TON_LIST
 			 { get_new_intervall_komplex ($1); }
-	| IDENTIFIER '=' error { fatal_error(71,$1); }
+        | IDENTIFIER '=' error { fatal_error(71, mutC_STR($1)); }
         | IDENTIFIER error { fatal_error(70,"'='",FEHLERZEILE); }
       ;
 
@@ -138,7 +138,7 @@ tondekl2 :
 		     IDENTIFIER '+' KOMPLEX_TON_LIST
 		   { get_new_ton_komplex_positive ($1, $3); }
 
-        | IDENTIFIER '=' error { fatal_error( 72, $1 ); }
+      | IDENTIFIER '=' error { fatal_error( 72, mutC_STR($1) ); }
       ;
 
 KOMPLEX_TON_LIST:
@@ -528,7 +528,7 @@ harmonie_dekl_2 :
           tasten_liste '}' bezugs_taste
             { get_new_harmonie ($1, $7); }
 
-         | IDENTIFIER '=' error { fatal_error(76,$1); }
+        | IDENTIFIER '=' error { fatal_error(76, mutC_STR($1)); }
         ;
         
 bezugs_taste :
@@ -746,7 +746,7 @@ start_lex:
     if (isalpha (c) || (c == '_') || (c == '\'') ) {
 
 static struct { 
-    char *word;
+    const char *word;
     int token;
 } reserved_words [] = {
 /* Deutsche SchlÅsselworte : */
@@ -869,7 +869,7 @@ void init_yylex (void)
     anzahl_eingelesene_zeichen = 0;
 }
 
-void yyerror(char *s) {
+void yyerror(const char *s) {
 
 /* ignore it ! */
 

@@ -79,9 +79,9 @@ int midi_list_laenge (struct midiliste *list)
   return 0;
 }
 
-int get_logik_nummer (char * name, struct logik * liste)
+int get_logik_nummer (const char * name, struct logik * liste)
 {  if (liste == NULL) {
-       fatal_error (0, __FILE__, __LINE__);
+    fatal_error (0, _T(__FILE__), __LINE__);
        return 0;
    }
    else if ( ! strcmp (name, liste->name))
@@ -101,7 +101,7 @@ int argument_list_laenge (struct argument_liste *list)
 }
 
 
-struct ton * get_ton (char * name, struct ton * liste)
+struct ton * get_ton (const char * name, struct ton * liste)
 {
     if (name==NULL) return(ton_ohne_namen);
     if (liste == NULL) return NULL;
@@ -110,7 +110,7 @@ struct ton * get_ton (char * name, struct ton * liste)
 }
 
 
-struct intervall * get_intervall (char * name,
+struct intervall * get_intervall (const char * name,
                                       struct intervall * liste)
 {
     if (liste == NULL) return NULL;
@@ -118,7 +118,7 @@ struct intervall * get_intervall (char * name,
     return get_intervall (name, liste->next);
 }
 
-struct tonsystem * parser_get_tonsystem (char * name,
+struct tonsystem * parser_get_tonsystem (const char * name,
                                       struct tonsystem * liste)
 {
     if (liste == NULL) return NULL;
@@ -126,7 +126,7 @@ struct tonsystem * parser_get_tonsystem (char * name,
     return parser_get_tonsystem (name, liste->next);
 }
 
-struct umstimmung * get_umstimmung (char * name,
+struct umstimmung * get_umstimmung (const char * name,
                                       struct umstimmung * liste)
 {
     if (liste == NULL) return NULL;
@@ -134,7 +134,7 @@ struct umstimmung * get_umstimmung (char * name,
     return get_umstimmung (name, liste->next);
 }
 
-struct harmonie * get_harmonie (char * name, struct harmonie * liste)
+struct harmonie * get_harmonie (const char * name, struct harmonie * liste)
 {
     if (liste == NULL) return NULL;
     if ( ! strcmp (name, liste->name)) return liste;
@@ -142,7 +142,7 @@ struct harmonie * get_harmonie (char * name, struct harmonie * liste)
 }
 
 
-struct logik * get_logik (char * name, struct logik * liste)
+struct logik * get_logik (const char * name, struct logik * liste)
 {
     if (liste == NULL) return NULL;
     if ( ! strcmp (name, liste->name)) return liste;
@@ -192,12 +192,12 @@ void init_parameter_liste (void)
 }
 
 
-void get_new_name_in_parameterlist (char * name)
+void get_new_name_in_parameterlist (const char * name)
 {
     struct parameter_liste * * lauf;
     for (lauf= & list_of_names; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(17,name); /* Parametername doppelt: name */
+	  fatal_error(17,mutC_STR(name)); /* Parametername doppelt: name */
         }
     }
 
@@ -212,7 +212,7 @@ static struct parameter_liste * get_last_parameter_liste (void)
 }
 
 
-static int parameter_nummer (int aktueller_index, char * such_name,
+static int parameter_nummer (int aktueller_index, const char * such_name,
                              struct parameter_liste * knoten)
 {
     if (knoten == NULL) return EOF;
@@ -258,13 +258,13 @@ void get_new_number_in_argument_list (double parameter_zahl)
 }
 
 
-void get_new_name_in_argument_list (char * parameter_name)
+void get_new_name_in_argument_list (const char * parameter_name)
 {
     struct argument_liste * * lauf;
     for (lauf= & list_of_argumente; * lauf; lauf= & (*lauf)->next) {
 #if 0
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(17,name); /* Parametername doppelt: name */
+	  fatal_error(17,mutC_STR(name)); /* Parametername doppelt: name */
         }
 #endif
     }
@@ -292,7 +292,7 @@ void init_aktions_liste (void)
 }
 
 
-void get_new_aktion_aufruf_element (char * name)
+void get_new_aktion_aufruf_element (const char * name)
 {
     struct aktions_liste * * lauf;
     for (lauf= & list_of_aktionen; * lauf; lauf= & (*lauf)->next) {
@@ -331,7 +331,7 @@ void init_komplex_ton_list (void)
     the_komplex_liste = NULL;
 }
 
-void get_new_faktor_anteil (double f, char *name)
+void get_new_faktor_anteil (double f, const char *name)
 {
     struct komplex_intervall * * lauf;
 
@@ -353,7 +353,7 @@ struct komplex_intervall * get_last_komplex_intervall (void)
 #if 0
 
 void get_new_relativ_anteil (double f,
-								  char *linke_grenze, char *rechte_grenze)
+								  const char *linke_grenze, const char *rechte_grenze)
 {
     struct komplex_anteil * * lauf;
 
@@ -416,12 +416,12 @@ void setze_nummer_von_abstand_und_zentrum (void)
 								}
                         else
                             fatal_error (39,
-                                         lauf_arg->argument.u.parameter.parameter_name,
-                                         lauf_anw->aktion->u.aktion_aufruf.name,
-                                         lauf->name);
+                                         mutC_STR(lauf_arg->argument.u.parameter.parameter_name),
+                                         mutC_STR(lauf_anw->aktion->u.aktion_aufruf.name),
+                                         mutC_STR(lauf->name));
                     break;
                     default:
-                        fatal_error (0, __FILE__, __LINE__);
+		      fatal_error (0, _T(__FILE__), __LINE__);
                     break;
                     }
                 }
@@ -460,7 +460,7 @@ void print_aktions_liste (struct aktions_liste * lauf)
 
 FILE * quelldatei;
 
-void mutabor_programm_einlesen (const wxChar * filename )
+void mutabor_programm_einlesen (const mutChar * filename )
 {
 
 	 if ((quelldatei = wxFopen (filename, _T("r"))) == NULL) {
@@ -838,17 +838,17 @@ static void print_aktions_liste (struct aktions_liste * this)
 /********* Einleseroutine fuer die Intervalle           *********/
 /*         Es wird einfach eine Liste of Intervallen aufgebaut **/
 
-void get_new_intervall (char *name, double wert)
+void get_new_intervall (const char *name, double wert)
 {
     struct intervall * * lauf;
     for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(10,name); /* Intervallname doppelt */
+	  fatal_error(10,mutC_STR(name)); /* Intervallname doppelt */
         }
     }
 
     if (fabs (wert) < 0.001)
-        fatal_error (46, name);
+      fatal_error (46, mutC_STR(name));
 
     (* lauf) = (intervall*) xmalloc ((size_t) sizeof (struct intervall));
     (* lauf) -> name = name;
@@ -858,12 +858,12 @@ void get_new_intervall (char *name, double wert)
 
 }
 
-void get_new_intervall_komplex (char *name)
+void get_new_intervall_komplex (const char *name)
 {
     struct intervall * * lauf;
     for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(10,name); /* Intervallname doppelt */
+	  fatal_error(10,mutC_STR(name)); /* Intervallname doppelt */
         }
     }
 
@@ -880,12 +880,12 @@ void get_new_intervall_komplex (char *name)
 /*         Es wird einfach eine Liste of Toenen aufgebaut  **/
 /*         Je nach erkanntem Ton_Typ                       **/
 
-void get_new_ton_absolut (char *name, double wert)
+void get_new_ton_absolut (const char *name, double wert)
 {
     struct ton * * lauf;
     for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (* lauf)->name)) {
-            fatal_error(11,name); /* Tonname doppelt */
+	  fatal_error(11,mutC_STR(name)); /* Tonname doppelt */
         }
     }
 
@@ -898,12 +898,12 @@ void get_new_ton_absolut (char *name, double wert)
 }
 
 
-void get_new_ton_komplex_positive (char *name, char *bezugston)
+void get_new_ton_komplex_positive (const char *name, const char *bezugston)
 {
     struct ton * * lauf;
     for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(11,name); /* Tonname doppelt */
+	  fatal_error(11,mutC_STR(name)); /* Tonname doppelt */
         }
     }
 
@@ -916,12 +916,12 @@ void get_new_ton_komplex_positive (char *name, char *bezugston)
 
 }
 
-void get_new_ton_komplex_negative (char *name, char *bezugston)
+void get_new_ton_komplex_negative (const char *name, const char *bezugston)
 {
     struct ton * * lauf;
     for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(11,name); /* Tonname doppelt */
+	  fatal_error(11,mutC_STR(name)); /* Tonname doppelt */
         }
     }
 
@@ -933,7 +933,7 @@ void get_new_ton_komplex_negative (char *name, char *bezugston)
     {
         struct komplex_intervall * help = get_last_komplex_intervall ();
         if (help == NULL) {
-            fatal_error (0, __FILE__, __LINE__);
+	  fatal_error (0, _T(__FILE__), __LINE__);
         }
         help -> faktor *= -1.0 ;
         (* lauf) -> u.ton_komplex.komplex_liste = help;
@@ -957,7 +957,7 @@ void init_ton_liste (void)
     ton_liste = NULL;
 }
 
-void get_new_ton_in_tonsystem (char *name)
+void get_new_ton_in_tonsystem (const char *name)
 {
     struct ton * * lauf;
     for (lauf= & ton_liste; * lauf; lauf= & (*lauf)->next) {
@@ -970,12 +970,12 @@ void get_new_ton_in_tonsystem (char *name)
 
 }
 
-void get_new_tonsystem (char * name, int taste)
+void get_new_tonsystem (const char * name, int taste)
 {
     struct tonsystem * * lauf;
     for (lauf= & list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(12,name); /* Tonsystemname doppelt */
+	  fatal_error(12,mutC_STR(name)); /* Tonsystemname doppelt */
         }
     }
 
@@ -988,12 +988,12 @@ void get_new_tonsystem (char * name, int taste)
 
 }
 
-void get_new_tonsystem_negative (char * name, int taste)
+void get_new_tonsystem_negative (const char * name, int taste)
 {
     struct tonsystem * * lauf;
     for (lauf= & list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(12,name); /* Tonsystemname doppelt */
+	  fatal_error(12,mutC_STR(name)); /* Tonsystemname doppelt */
         }
     }
 
@@ -1003,7 +1003,7 @@ void get_new_tonsystem_negative (char * name, int taste)
     {
         struct komplex_intervall * help = get_last_komplex_intervall ();
         if (help == NULL)
-            fatal_error (0, __FILE__, __LINE__);
+	  fatal_error (0, _T(__FILE__), __LINE__);
         help -> faktor *= -1.0 ;
         (* lauf) -> periode = help;
     }
@@ -1023,12 +1023,12 @@ void get_new_tonsystem_negative (char * name, int taste)
 
 static struct umstimmung * tmp_umstimmung;
 
-void init_umstimmung (char * name)
+void init_umstimmung (const char * name)
 {
     struct umstimmung * lauf;
     for (lauf= list_of_umstimmungen; lauf; lauf= lauf -> next) {
         if ( ! strcmp (name, lauf -> name)) {
-            fatal_error(13,name); /* Umstimmungsname doppelt */
+	  fatal_error(13,mutC_STR(name)); /* Umstimmungsname doppelt */
         }
     }
 
@@ -1064,7 +1064,7 @@ void eintrage_parameterliste_in_umstimmung (void)
 
 void get_umstimmung_taste_abs (
      enum argument_typ argument,
-     double zahl_wert, char * parameter)
+     double zahl_wert, const char * parameter)
 {
     tmp_umstimmung -> umstimmung_typ = umstimmung_taste_abs;
     tmp_umstimmung -> u.umstimmung_taste_abs.
@@ -1078,7 +1078,9 @@ void get_umstimmung_taste_abs (
         int i = parameter_nummer (0, parameter,
                                   tmp_umstimmung->parameter_liste);
         if (i == EOF) {
-            fatal_error(31,parameter,tmp_umstimmung->name); /* Parameter n.dekl. */
+	  fatal_error(31,
+		      mutC_STR(parameter),
+		      mutC_STR(tmp_umstimmung->name)); /* Parameter n.dekl. */
         }
         tmp_umstimmung -> u.umstimmung_taste_abs.
             argument.u.parameter.
@@ -1091,7 +1093,7 @@ void get_umstimmung_taste_abs (
 
 void get_umstimmung_taste_rel (
      enum argument_typ argument,
-     double zahl_wert, char * parameter, char vorzeichen)
+     double zahl_wert, const char * parameter, char vorzeichen)
 {
     tmp_umstimmung -> umstimmung_typ = umstimmung_taste_rel;
     tmp_umstimmung -> u.umstimmung_taste_rel.
@@ -1105,7 +1107,9 @@ void get_umstimmung_taste_rel (
         int i = parameter_nummer (0, parameter,
                                   tmp_umstimmung->parameter_liste);
         if (i == EOF) {
-            fatal_error(31,parameter,tmp_umstimmung -> name); /* Parameter n.dekl. */
+            fatal_error(31,
+			mutC_STR(parameter),
+			mutC_STR(tmp_umstimmung -> name)); /* Parameter n.dekl. */
         }
         tmp_umstimmung -> u.umstimmung_taste_rel.
             argument.u.parameter.
@@ -1120,7 +1124,7 @@ void get_umstimmung_taste_rel (
 
 void get_umstimmung_breite_abs (
      enum argument_typ argument,
-     double zahl_wert, char * parameter)
+     double zahl_wert, const char * parameter)
 {
     tmp_umstimmung -> umstimmung_typ = umstimmung_breite_abs;
     tmp_umstimmung -> u.umstimmung_breite_abs.
@@ -1134,7 +1138,9 @@ void get_umstimmung_breite_abs (
         int i = parameter_nummer (0, parameter,
                                   tmp_umstimmung->parameter_liste);
         if (i == EOF) {
-            fatal_error(31,parameter,tmp_umstimmung->name); /* Parameter n.dekl. */
+            fatal_error(31,
+			mutC_STR(parameter),
+			mutC_STR(tmp_umstimmung->name)); /* Parameter n.dekl. */
         }
         tmp_umstimmung -> u.umstimmung_breite_abs.
             argument.u.parameter.
@@ -1147,7 +1153,7 @@ void get_umstimmung_breite_abs (
 
 void get_umstimmung_breite_rel (
      enum argument_typ argument,
-     double zahl_wert, char * parameter, char vorzeichen)
+     double zahl_wert, const char * parameter, char vorzeichen)
 {
     tmp_umstimmung -> umstimmung_typ = umstimmung_breite_rel;
     tmp_umstimmung -> u.umstimmung_breite_rel.
@@ -1161,7 +1167,9 @@ void get_umstimmung_breite_rel (
         int i = parameter_nummer (0, parameter,
                                   tmp_umstimmung->parameter_liste);
         if (i == EOF) {
-            fatal_error(31,parameter,tmp_umstimmung->name); /* Parameter n.dekl. */
+            fatal_error(31,
+			mutC_STR(parameter),
+			mutC_STR(tmp_umstimmung->name)); /* Parameter n.dekl. */
         }
         tmp_umstimmung -> u.umstimmung_breite_rel.
             argument.u.parameter.
@@ -1186,7 +1194,7 @@ void init_umstimm_expression_list (void)
     tmp_tonliste = NULL;
 }
 
-void get_new_umstimm_expression (char * bezugston)
+void get_new_umstimm_expression (const char * bezugston)
 {
     struct ton * * lauf;
     for (lauf= & tmp_tonliste; * lauf; lauf= & (*lauf)->next)
@@ -1202,7 +1210,7 @@ void get_new_umstimm_expression (char * bezugston)
 }
 
 
-void get_new_umstimm_expression_positive (char * bezugston)
+void get_new_umstimm_expression_positive (const char * bezugston)
 {
     struct ton * * lauf;
     for (lauf= & tmp_tonliste; * lauf; lauf= & (*lauf)->next)
@@ -1218,7 +1226,7 @@ void get_new_umstimm_expression_positive (char * bezugston)
 }
 
 
-void get_new_umstimm_expression_negative (char * bezugston)
+void get_new_umstimm_expression_negative (const char * bezugston)
 {
     struct ton * * lauf;
     for (lauf= & tmp_tonliste; * lauf; lauf= & (*lauf)->next)
@@ -1260,7 +1268,7 @@ void get_umstimmung_wiederholung_abs_negative (void)
     {
         struct komplex_intervall * help = get_last_komplex_intervall ();
         if (help == NULL)
-            fatal_error (0, __FILE__, __LINE__);
+	  fatal_error (0, _T(__FILE__), __LINE__);
         help -> faktor *= -1.0;
 
         tmp_umstimmung ->
@@ -1298,7 +1306,7 @@ void init_aufruf_liste (void)
 }
 */
 #if 0
-void get_umstimmungs_bund_element (char * name)
+void get_umstimmungs_bund_element (const char * name)
 {
     struct umstimmung * * lauf;
     for (lauf= & tmp_umstimmungsbund_liste;
@@ -1320,7 +1328,7 @@ void get_umstimmungs_bund_element (char * name)
              params = params -> next ) {
             if (parameter_nummer (0,params->name,
                  tmp_umstimmung -> parameterliste)  == EOF ) {
-              fatal_error(31,params->name,(*lauf)->name); /* Parameter n.dekl. */
+              fatal_error(31,mutC_STR(params->name),mutC_STR((*lauf)->name)); /* Parameter n.dekl. */
             }
         }
     }
@@ -1354,8 +1362,9 @@ void get_umstimmung_umstimmungs_bund (void)
 	                     argument_lauf->argument.u.parameter.parameter_name,
 	                         tmp_umstimmung -> parameter_liste);
 	            if (i == EOF ) {
-	              fatal_error(31,argument_lauf->argument.u.parameter.parameter_name,
-	                             tmp_umstimmung -> name); /* Parameter n.dekl. */
+	              fatal_error(31,
+				  mutC_STR(argument_lauf->argument.u.parameter.parameter_name),
+				  mutC_STR(tmp_umstimmung -> name)); /* Parameter n.dekl. */
 	            }
 	            else {
                   argument_lauf->argument.u.parameter.parameter_nummer = i;
@@ -1395,7 +1404,7 @@ static struct umstimmung * get_last_umstimmungs_case_aufrufs_liste (void)
 }
 
 
-void get_umstimmungs_case_aufrufs_element (char * aktion)
+void get_umstimmungs_case_aufrufs_element (const char * aktion)
 {
     struct aufruf_liste * * lauf;
     for (lauf= & tmp_umstimmungs_case_aufrufs_liste;
@@ -1418,8 +1427,9 @@ void get_umstimmungs_case_aufrufs_element (char * aktion)
           if (params -> argument.argument_typ == parameter) {
             if (parameter_nummer (0,params->argument.u.parameter.parameter_name,
                  tmp_umstimmung -> parameter_liste)  == EOF ) {
-              fatal_error(31,params->argument.u.parameter.parameter_name,
-                             (*lauf)->name); /* Parameter n.dekl. */
+              fatal_error(31,
+			  mutC_STR(params->argument.u.parameter.parameter_name),
+			  mutC_STR((*lauf)->name)); /* Parameter n.dekl. */
             }
           }
         }
@@ -1503,8 +1513,9 @@ void get_umstimmung_umstimm_case_zahl (int selector)
 	                      argument_lauf->argument.u.parameter.parameter_name,
             	                 tmp_umstimmung -> parameter_liste);
             	if (i == EOF ) {
-	              fatal_error(31,argument_lauf->argument.u.parameter.parameter_name,
-	                             tmp_umstimmung -> name); /* Parameter n.dekl. */
+	              fatal_error(31,
+				  mutC_STR(argument_lauf->argument.u.parameter.parameter_name),
+				  mutC_STR(tmp_umstimmung -> name)); /* Parameter n.dekl. */
 	            }
 	            else {
 	              argument_lauf->argument.u.parameter.parameter_nummer = i;
@@ -1520,7 +1531,7 @@ void get_umstimmung_umstimm_case_zahl (int selector)
 }
 
 
-void get_umstimmung_umstimm_case_parameter (char * selector)
+void get_umstimmung_umstimm_case_parameter (const char * selector)
 {
     tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
     tmp_umstimmung -> u.umstimmung_umstimmungs_case
@@ -1535,7 +1546,9 @@ void get_umstimmung_umstimm_case_parameter (char * selector)
     {
        int i = parameter_nummer (0,selector, tmp_umstimmung -> parameter_liste);
        if (i == EOF ) {
-          fatal_error(31,selector,tmp_umstimmung->name); /* Parameter n.dekl. */
+          fatal_error(31,
+		      mutC_STR(selector),
+		      mutC_STR(tmp_umstimmung->name)); /* Parameter n.dekl. */
        }
        else {
            tmp_umstimmung -> u.umstimmung_umstimmungs_case
@@ -1574,8 +1587,9 @@ void get_umstimmung_umstimm_case_parameter (char * selector)
 	                        argument_lauf->argument.u.parameter.parameter_name,
             	                 tmp_umstimmung -> parameter_liste);
             	if (i == EOF ) {
-	              fatal_error(31,argument_lauf->argument.u.parameter.parameter_name,
-	                             tmp_umstimmung -> name); /* Parameter n.dekl. */
+	              fatal_error(31,
+				  mutC_STR(argument_lauf->argument.u.parameter.parameter_name),
+				  mutC_STR(tmp_umstimmung -> name)); /* Parameter n.dekl. */
 	            }
 	            else {
 	              argument_lauf->argument.u.parameter.parameter_nummer = i;
@@ -1626,12 +1640,12 @@ void get_new_taste (int taste, char stern)
 
 }
 
-void get_new_harmonie (char * name, int bezugstaste)
+void get_new_harmonie (const char * name, int bezugstaste)
 {
     struct harmonie * * lauf;
     for (lauf= & list_of_harmonien; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(14,name); /* Harmoniename doppelt */
+	  fatal_error(14, mutC_STR(name)); /* Harmoniename doppelt */
         }
     }
 
@@ -1664,7 +1678,7 @@ void get_aktion_midi_out (void)
     tmp_aktion -> u.aktion_midi_out.midi_code   = get_last_integersequenz ();
 }
 
-void get_aktion_aufruf (char * name)
+void get_aktion_aufruf (const char * name)
 {
     tmp_aktion = xmalloc (sizeof (struct aktion));
     tmp_aktion -> aktions_typ = aktion_aufruf;
@@ -1679,11 +1693,11 @@ void get_aktion_aufruf (char * name)
 
 
 static int        tmp_vor_taste;
-static char *     tmp_name;
+static const char *     tmp_name;
 static int        tmp_nach_taste;
 
 void get_harmoniebezeichner (int vor_taste,
-                             char * name,
+                             const char * name,
                              int nach_taste)
 {
     tmp_vor_taste   = vor_taste;
@@ -1727,14 +1741,14 @@ void get_ausloeser_harmonie_form (void)
     tmp_ausloeser -> u.ausloeser_harmonie_form.nachtaste = tmp_nach_taste;
 }
 
-void get_ausloeser_taste (char * name)
+void get_ausloeser_taste (const char * name)
 {
     tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
     tmp_ausloeser -> ausloeser_typ = ausloeser_taste;
     tmp_ausloeser -> u.ausloeser_taste.taste  = name;
 
     if (strlen (name) != 1) {
-        fatal_error (52, name);
+      fatal_error (52, mutC_STR(name));
     }
 
 }
@@ -1779,12 +1793,12 @@ void get_new_anweisung (void)
 
 }
 
-void get_new_logik (char * name, char * einstimmung)
+void get_new_logik (const char * name, const char * einstimmung)
 {
     struct logik * * lauf;
     for (lauf= & list_of_logiken; * lauf; lauf= & (*lauf)->next) {
         if ( ! strcmp (name, (*lauf)->name)) {
-            fatal_error(15,name); /* Logikname doppelt */
+	  fatal_error(15, mutC_STR(name)); /* Logikname doppelt */
         }
     }
 
@@ -1817,7 +1831,7 @@ void get_instrument_dekl (int midi_in, int midi_von, int midi_bis, int midi_umle
          * list_to_insert;
          list_to_insert = & (*list_to_insert)->next) {
         if ( midi_in == (*list_to_insert)->midi_in) {
-            fatal_error(18,midi_in); /* MIDI-Instrument doppelt */
+	  fatal_error(18, midi_in); /* MIDI-Instrument doppelt */
         }
     }
 
@@ -1894,13 +1908,13 @@ static void belege_toene (struct ton **toene, struct ton * liste)
   }
 }
 
-static int ton_nummer (char *name)
+static int ton_nummer (const char *name)
 { int i;
 
   for (i=0; i<anzahl_toene; i++)
       if ( ! strcmp (name, toene[i]->name)) return i;
 
-  fatal_error(27,name); /* Ton n.dekl. */
+  fatal_error(27, mutC_STR(name)); /* Ton n.dekl. */
 
   return 0; /* to prevent warnings */
 }
@@ -1911,7 +1925,9 @@ static void test_zyklen (int startknoten)
     for (i=0; i<anzahl_toene; i++) {
         if (adjazent (startknoten, i)) {
             if (visited [i]) {
-                fatal_error(65,toene [startknoten]->name,toene [i]->name);
+	      fatal_error(65, 
+			  mutC_STR(toene [startknoten]->name),
+			  mutC_STR(toene [i]->name));
             }
             visited [i] = 1;
             test_zyklen (i);
@@ -1941,7 +1957,7 @@ static void berechne_ton_endgueltig (int k)
       break;
 
     default:
-      fatal_error(0,"schleife");
+      fatal_error(0,_("loop"));
   }
 }
 
@@ -1975,7 +1991,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
           adjazent (i, ton_nummer (toene[i]->u.ton_komplex.bezugston)) = 1;
       }
       else {
-          fatal_error(0,"schleife");
+	fatal_error(0,_("loop"));
       }
   }
 
@@ -2066,7 +2082,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 }
 
 
-static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
+static void check_ausloeser (struct ausloeser * ausloeser, const char * name) {
 
           struct harmonie * help_harmonie;
 
@@ -2076,8 +2092,8 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
               help_harmonie = get_harmonie (ausloeser->u.ausloeser_harmonie_form.name, list_of_harmonien);
               if (help_harmonie == NULL) {
                   fatal_error (30,
-                               ausloeser->u.ausloeser_harmonie_form.name,
-                               name);
+                               mutC_STR(ausloeser->u.ausloeser_harmonie_form.name),
+                               mutC_STR(name));
               }
               if (enthalten_in_tastenliste
                     (ausloeser->u.ausloeser_harmonie_form.vortaste,
@@ -2087,7 +2103,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
                 /* OK */
               }
               else {
-                  compiler_warning (2, name);
+		compiler_warning (2, mutC_STR(name));
 /* Markierung setzen, fuer unmoeglichen Ausloeser */
                   ausloeser->u.ausloeser_harmonie_form.vortaste = -2;
               }
@@ -2099,7 +2115,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
                 /* OK */
               }
               else {
-                  compiler_warning (2, name);
+		compiler_warning (2, mutC_STR(name));
 /* Markierung setzen, fuer unmoeglichen Ausloeser */
                   ausloeser->u.ausloeser_harmonie_form.vortaste = -2;
               }
@@ -2110,8 +2126,8 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
               help_harmonie = get_harmonie (ausloeser->u.ausloeser_harmonie.name, list_of_harmonien);
               if (help_harmonie == NULL) {
                   fatal_error (30,
-                               ausloeser->u.ausloeser_harmonie.name,
-                               name);
+                               mutC_STR(ausloeser->u.ausloeser_harmonie.name),
+                               mutC_STR(name));
               }
               if (enthalten_in_tastenliste
                        (ausloeser->u.ausloeser_harmonie.vortaste,
@@ -2121,7 +2137,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
                 /* OK */
               }
               else {
-                  compiler_warning (2, name);
+		compiler_warning (2, mutC_STR(name));
 /* Markierung setzen, fuer unmoeglichen Ausloeser */
                   ausloeser->u.ausloeser_harmonie.vortaste = -2;
               }
@@ -2133,7 +2149,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
                 /* OK */
               }
               else {
-                  compiler_warning (2, name);
+		compiler_warning (2, mutC_STR(name));
 /* Markierung setzen, fuer unmoeglichen Ausloeser */
                   ausloeser->u.ausloeser_harmonie.vortaste = -2;
               }
@@ -2144,17 +2160,17 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
                    = ausloeser->u.ausloeser_midi_in.midi_code;
               if (midi_lauf -> midi_code < 128 ||
                   midi_lauf -> midi_code > 255 ) {
-                    fatal_error (50, name,"Statusbyte");
+		fatal_error (50, mutC_STR(name), _("status byte"));
               }
               if (midi_lauf -> midi_code & 0x000F ) {
                     midi_lauf -> midi_code &= 0xFFF0;
-                    compiler_warning(1,name);
+                    compiler_warning(1,mutC_STR(name));
               }
               midi_lauf = midi_lauf -> next;
               while (midi_lauf) {
                   if (midi_lauf -> midi_code < 0 ||
                       midi_lauf -> midi_code > 127 ) {
-                      fatal_error (50, name,"Datenbyte");
+		    fatal_error (50, mutC_STR(name), _("data byte"));
                   }
                   else
                       midi_lauf = midi_lauf -> next;
@@ -2165,7 +2181,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, char * name) {
 
 
 
-static void check_aktionen (struct aktions_liste * aktionen, char * name) {
+static void check_aktionen (struct aktions_liste * aktionen, const char * name) {
 
     for ( ; aktionen ; aktionen = aktionen -> next ) {
 	    if (aktionen->aktions_typ == aktion_midi_out) {
@@ -2173,12 +2189,12 @@ static void check_aktionen (struct aktions_liste * aktionen, char * name) {
 	                   = aktionen->u.aktion_midi_out.midi_code;
 	              if (midi_lauf -> midi_code < 128 ||
 	                  midi_lauf -> midi_code > 255 ) {
-	                    compiler_warning (1, name);
+			compiler_warning (1, mutC_STR(name));
 	              }
 	              while (midi_lauf) {
 	                  if (midi_lauf -> midi_code < 0 ||
 	                      midi_lauf -> midi_code > 255 ) {
-	                      fatal_error (50, name);
+			    fatal_error (50, mutC_STR(name), _("byte"));
 	                  }
                       midi_lauf = midi_lauf -> next;
 	              }
@@ -2202,18 +2218,20 @@ static void check_aktionen (struct aktions_liste * aktionen, char * name) {
 	        if (help_logik)      i++;
 
 	        if (i == 0) {
-	            fatal_error (38, aktionen->u.aktion_aufruf.name, name);
+		  fatal_error (38,
+			       mutC_STR(aktionen->u.aktion_aufruf.name), 
+			       mutC_STR(name));
 	        }
 
 	        if (i > 1) {
-	            compiler_warning (3, aktionen->u.aktion_aufruf.name, name);
+		  compiler_warning (3, mutC_STR(aktionen->u.aktion_aufruf.name), mutC_STR(name));
 	        }
 
 	        if (help_umstimmung) {
 	            if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 	                != parameter_list_laenge (help_umstimmung->parameter_liste)) {
 
-	                fatal_error (61, name, aktionen->u.aktion_aufruf.name);
+		      fatal_error (61, mutC_STR(name), mutC_STR(aktionen->u.aktion_aufruf.name));
 	            }
 	        }
 
@@ -2221,7 +2239,7 @@ static void check_aktionen (struct aktions_liste * aktionen, char * name) {
 	            if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 	                != 0 ) {
 
-	                fatal_error (61, name, aktionen->u.aktion_aufruf.name);
+		      fatal_error (61, mutC_STR(name), mutC_STR(aktionen->u.aktion_aufruf.name));
 	            }
 	        }
 
@@ -2230,7 +2248,7 @@ static void check_aktionen (struct aktions_liste * aktionen, char * name) {
 	            if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 	                != 0 ) {
 
-	                fatal_error (61, name, aktionen->u.aktion_aufruf.name);
+		      fatal_error (61, mutC_STR(name), mutC_STR(aktionen->u.aktion_aufruf.name));
 	            }
 	        }
 
@@ -2296,7 +2314,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
   }
 }
 
-static int test_zyklen_nummer (char *name)
+static int test_zyklen_nummer (const char *name)
 { int i;
 
   for (i=0; i<anzahl_umstimmungen_und_logiken; i++)
@@ -2307,7 +2325,7 @@ static int test_zyklen_nummer (char *name)
            (! strcmp (name, zyklen_feld[i].u.logik->name))
          ) return i;
 
-  fatal_error(29,name); /* Umst.n.dekl. */
+  fatal_error(29,mutC_STR(name)); /* Umst.n.dekl. */
 
   return 0; /* to prevent warnings */
 }
@@ -2319,12 +2337,12 @@ static void u_test_zyklen (int startknoten)
         if (u_adjazent (startknoten, i)) {
             if (u_visited [i]) {
                 fatal_error(66,
-                    zyklen_feld [startknoten].umst_oder_logik_typ == typ_umstimmung ?
-                    zyklen_feld [startknoten].u.umstimmung->name :
-                    zyklen_feld [startknoten].u.logik->name,
-                    zyklen_feld [i].umst_oder_logik_typ == typ_umstimmung ?
-                    zyklen_feld [i].u.umstimmung->name :
-                    zyklen_feld [i].u.logik->name);
+			    zyklen_feld [startknoten].umst_oder_logik_typ == typ_umstimmung ?
+			    mutC_STR(zyklen_feld [startknoten].u.umstimmung->name) :
+			    mutC_STR(zyklen_feld [startknoten].u.logik->name),
+			    zyklen_feld [i].umst_oder_logik_typ == typ_umstimmung ?
+			    mutC_STR(zyklen_feld [i].u.umstimmung->name) :
+			    mutC_STR(zyklen_feld [i].u.logik->name));
             }
             u_visited [i] = 1;
             u_test_zyklen (i);
@@ -2351,14 +2369,14 @@ static void check_konsistenz (void)
       for (lauf = list_of_tonsysteme; lauf; lauf = lauf->next) {
           check_komplex_intervall (lauf->periode, lauf->name);
           if (lauf->taste < 24  ||  lauf->taste > 108) {
-              fatal_error(47,lauf->taste,lauf->name); /* UngÅlt. Taste */
+	    fatal_error(47,lauf->taste,mutC_STR(lauf->name)); /* UngÅlt. Taste */
           }
           for (ton_lauf = lauf->toene;
                ton_lauf;
                ton_lauf = ton_lauf->next) {
               if ((ton_lauf->name != NULL) &&
                   (get_ton (ton_lauf->name, list_of_toene) == NULL)) {
-                  fatal_error(33,ton_lauf->name,lauf->name);
+		fatal_error(33,mutC_STR(ton_lauf->name),mutC_STR(lauf->name));
               }
           }
       }
@@ -2378,7 +2396,7 @@ static void check_konsistenz (void)
         switch (lauf -> umstimmung_typ) {
 
         default :
-            fatal_error (0, __FILE__, __LINE__);
+	  fatal_error (0, _T(__FILE__), __LINE__);
         break;
 
         case umstimmung_taste_abs :
@@ -2407,18 +2425,18 @@ static void check_konsistenz (void)
                     /*  break geht hier wegen Bug in TURBO-C nicht! break for the next tone */
 
                 if (lauf_ton -> ton_typ == ton_absolut) {
-                    fatal_error(48,lauf->name, lauf_ton->name);
+		  fatal_error(48,mutC_STR(lauf->name), mutC_STR(lauf_ton->name));
                         /* nicht komplexer Ton */
                 }
 
                 if (strcmp (lauf_ton->name,
                     lauf_ton->u.ton_komplex.bezugston)) {
-                    fatal_error(0,"umstimmung");
+		  fatal_error(0,_T(__FILE__),__LINE__,_("retuning"));
                 }
 
                 if ((lauf_ton->name[0] != '@') &&
                     (get_ton (lauf_ton->name, list_of_toene) == NULL)) {
-                    fatal_error(34,lauf_ton->name,lauf->name);
+		  fatal_error(34,mutC_STR(lauf_ton->name),mutC_STR(lauf->name));
                           /* Undekl. Ton in Umst. */
                 }
 
@@ -2453,26 +2471,27 @@ static void check_konsistenz (void)
                         help_logik = get_logik (help_aktionen -> u.aktion_aufruf.name,
                                                 list_of_logiken);
                         if (help_logik == NULL) {
-                            fatal_error(36,help_aktionen -> u.aktion_aufruf.name
-                                        ,lauf->name);
+			  fatal_error(36,mutC_STR(help_aktionen -> u.aktion_aufruf.name)
+				      ,mutC_STR(lauf->name));
                               /* Umst. in Bund */
                         }
                         else {
                             if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
-                                fatal_error (63, lauf -> name , help_aktionen -> u.aktion_aufruf.name);
+			      fatal_error (63, mutC_STR(lauf -> name) ,
+					   mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                             }
                         }
                     }
                     else {
-                        if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
-                            fatal_error (63, lauf -> name , help_aktionen -> u.aktion_aufruf.name);
+		      if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
+			fatal_error (63, mutC_STR(lauf -> name), mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                         }
                     }
                 }
                 else {
                     if (argument_list_laenge (help_aktionen -> u.aktion_aufruf.argument_liste)
                        != parameter_list_laenge (umst -> parameter_liste)) {
-                       fatal_error(60,lauf->name,help_aktionen -> u.aktion_aufruf.name);
+		      fatal_error(60,mutC_STR(lauf->name),mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                     }
                 }
               }
@@ -2498,7 +2517,7 @@ static void check_konsistenz (void)
                    case_label_enthalten_in_case_liste (case_lauf -> case_label,
                                 case_lauf -> next ) ) {
                   fatal_error (22, (int)(case_lauf -> case_label),
-                                   lauf -> name);
+			       mutC_STR(lauf -> name));
               }
           }
 
@@ -2511,7 +2530,7 @@ static void check_konsistenz (void)
             if (case_lauf -> is_default) {
                 anzahl_defaults ++;
                 if (anzahl_defaults > 1) {
-                    fatal_error (21, lauf -> name);
+		  fatal_error (21, mutC_STR(lauf -> name));
                 }
                 if (case_lauf -> next != NULL) {
                  /* compiler_warning ( ?? ANSONSTEN ist nicht letztes
@@ -2535,26 +2554,29 @@ static void check_konsistenz (void)
                         help_logik = get_logik (help_aktionen -> u.aktion_aufruf.name,
                                                 list_of_logiken);
                         if (help_logik == NULL) {
-                            fatal_error(36,help_aktionen -> u.aktion_aufruf.name
+			  fatal_error(36,mutC_STR(help_aktionen -> u.aktion_aufruf.name)
                                         ,lauf->name);
                               /* Umst. in Bund */
                         }
                         else {
                             if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
-                                fatal_error (64, lauf -> name , help_aktionen -> u.aktion_aufruf.name);
+			      fatal_error (64, mutC_STR(lauf -> name) , 
+					   mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                             }
                         }
                     }
                     else {
                         if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
-                            fatal_error (64, lauf -> name , help_aktionen -> u.aktion_aufruf.name);
+			  fatal_error (64, mutC_STR(lauf -> name) , 
+				       mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                         }
                     }
                 }
                 else {
                     if (argument_list_laenge (help_aktionen -> u.aktion_aufruf.argument_liste)
                        != parameter_list_laenge (umst -> parameter_liste)) {
-                       fatal_error(60,lauf->name,help_aktionen -> u.aktion_aufruf.name);
+		      fatal_error(60, mutC_STR(lauf->name), 
+				  mutC_STR(help_aktionen -> u.aktion_aufruf.name));
                     }
                 }
               }
@@ -2740,19 +2762,21 @@ static void check_konsistenz (void)
 
           if (lauf->ausloeser) {
               if (lauf->ausloeser->ausloeser_typ == ausloeser_default) {
-                  fatal_error (51, lauf->name);
+		fatal_error (51, mutC_STR(lauf->name));
               }
           }
 
           if (lauf->einstimmungs_name!=NULL) {
             if (parser_get_tonsystem (lauf->einstimmungs_name, list_of_tonsysteme) == NULL) {
               if ((help_umstimmung=get_umstimmung (lauf->einstimmungs_name, list_of_umstimmungen)) == NULL) {
-                fatal_error(37,lauf->einstimmungs_name,lauf->name);
+                fatal_error(37,mutC_STR(lauf->einstimmungs_name),
+			    mutC_STR(lauf->name));
                      /* Einst. in Logik */
               }
               else {
                 if (parameter_list_laenge (help_umstimmung -> parameter_liste) != 0) {
-                  fatal_error(62,lauf->name, lauf->einstimmungs_name);
+                  fatal_error(62, mutC_STR(lauf->name),
+			      mutC_STR(lauf->einstimmungs_name));
                 }
               }
             }
@@ -2766,17 +2790,17 @@ static void check_konsistenz (void)
               check_ausloeser (anweisungs_lauf->ausloeser, lauf->name);
 
               if (anweisungs_lauf->ausloeser == NULL)
-                  fatal_error (0, __FILE__, __LINE__);
+		fatal_error (0, _T(__FILE__), __LINE__);
               else {
                   if (anweisungs_lauf->ausloeser->ausloeser_typ
                             == ausloeser_default) {
                       anzahl_default_ausloeser ++;
                       if (anzahl_default_ausloeser > 1) {
-                          fatal_error (20, lauf -> name);
+			fatal_error (20, mutC_STR(lauf -> name));
                       }
                       else {
                           if (anweisungs_lauf -> next != NULL)
-                              compiler_warning (4, lauf -> name);
+			    compiler_warning (4, mutC_STR(lauf -> name));
                       }
                   }
               }

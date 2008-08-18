@@ -2,12 +2,15 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.6 2008/07/22 07:57:06 keinstein Exp $
+ * $Id: GrafKern.h,v 1.7 2008/08/18 15:05:29 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/07/22 07:57:06 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/08/18 15:05:29 $
+ * \version $Revision: 1.7 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.7  2008/08/18 15:05:29  keinstein
+ * fixed some const char * warnings and charset issues
+ *
  * Revision 1.6  2008/07/22 07:57:06  keinstein
  * solved some valgrind issues
  *
@@ -32,22 +35,19 @@
 
 #if defined(WX)
 #include <wx/wx.h>
-extern wxString Error_text[]; /* Liste der Fehlermeldungen */
-extern wxString Warning_text[]; /* Liste der Warnungen */
-#else
-extern char * Error_text[]; /* Liste der Fehlermeldungen */
-extern char * Warning_text[]; /* Liste der Warnungen */
 #endif
+extern const mutChar * Error_text[]; /* Liste der Fehlermeldungen */
+extern const mutChar * Warning_text[]; /* Liste der Warnungen */
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();
-void AktionenMessage(int box, char *meldung );
+void AktionenMessage(int box, const char *meldung );
 void fatal_error( int nummer, ... );
 void compiler_warning( int nummer, ... );
-void laufzeit_protokoll( char * formatstring , ... );
+void laufzeit_protokoll(const char * formatstring , ... );
 void init_laufzeit_protokoll( void );
 void exit_laufzeit_protokoll( void );
-void protokoll_aktion(char * name);
+void protokoll_aktion(const char * name);
 void clear_protokoll_screen( void );
 
 void calc_declaration_numbers(char withNames = 0);
