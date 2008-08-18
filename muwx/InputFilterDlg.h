@@ -1,13 +1,23 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        InputFilterDlg.h
-// Purpose:     
-// Author:      R. Krauﬂe
-// Modified by: 
-// Created:     10/21/05 18:28:56
-// RCS-ID:      
-// Copyright:   (c) R. Krauﬂe, TU Dresden
-// Licence:     
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * MIDI Input filter configuration dialog
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.h,v 1.4 2008/08/18 15:07:41 keinstein Exp $
+ * Copyright:   (c) 2005,2006,2007,2008 TU Dresden
+ * \author R. Krau√üe
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/21 18:28:56
+ * $Date: 2008/08/18 15:07:41 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: InputFilterDlg.h,v $
+ * Revision 1.4  2008/08/18 15:07:41  keinstein
+ * Changed Input filter dialog to wxResources
+ *
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #ifndef _INPUTFILTERDLG_H_
 #define _INPUTFILTERDLG_H_
@@ -20,17 +30,16 @@
  * Includes
  */
 
-////@begin includes
-#include "wx/valgen.h"
-////@end includes
+#include "Defs.h"
+#include "wx/xrc/xmlres.h"
+#include "wx/html/htmlwin.h"
+#include "wx/statline.h"
+#include "wx/filepicker.h"
+#include "wxresource.h"
+#include "Device.h"
 
-/*!
- * Forward declarations
- */
 
-////@begin forward declarations
-////@end forward declarations
-
+#if 0
 /*!
  * Control identifiers
  */
@@ -58,68 +67,66 @@
 #define wxFIXED_MINSIZE 0
 #endif
 
+#endif
+
 /*!
  * InputFilterDlg class declaration
  */
 
-class InputFilterDlg: public wxDialog
+class InputFilterDlg: public InputFilterDlgBase
 {    
+    int type;
+    long from;
+    long to;
+
     DECLARE_DYNAMIC_CLASS( InputFilterDlg )
     DECLARE_EVENT_TABLE()
 
 public:
     /// Constructors
-    InputFilterDlg( );
-    InputFilterDlg( wxWindow* parent, wxWindowID id = SYMBOL_INPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_INPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_INPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_INPUTFILTERDLG_SIZE, long style = SYMBOL_INPUTFILTERDLG_STYLE );
-
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_INPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_INPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_INPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_INPUTFILTERDLG_SIZE, long style = SYMBOL_INPUTFILTERDLG_STYLE );
-
-    /// Creates the controls and sizers
-    void CreateControls();
-
-////@begin InputFilterDlg event handler declarations
+    InputFilterDlg( wxWindow* parent=NULL, DevType type = DTUnknown);
 
     /// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX
     void OnRadioboxSelected( wxCommandEvent& event );
-	void UpdateLayout(int type);
+    void UpdateLayout(int type);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE
     void OnRemoveClick( wxCommandEvent& event );
+    
+    void SetDeviceType(DevType type);
 
-////@end InputFilterDlg event handler declarations
 
-////@begin InputFilterDlg member function declarations
+    int GetType() const { DEBUGLOG(_T("%d"),type); return type ; }
+    void SetType(int value) {
+      DEBUGLOG(_T("%d"),value);
+      type = value ; 
+      Update();
+    }
 
-    int GetType() const { return Type ; }
-    void SetType(int value) { Type = value ; }
+    long GetFrom() const { DEBUGLOG(_T("%d"),from);return from ; }
+    void SetFrom(long value) { 
+      DEBUGLOG(_T("%d"),value); 
+      from = value ; 
+      Update();
+    }
 
-    long GetFrom() const { return From ; }
-    void SetFrom(long value) { From = value ; }
-
-    long GetTo() const { return To ; }
-    void SetTo(long value) { To = value ; }
+    long GetTo() const { DEBUGLOG(_T("%d"),to);return to ; }
+    void SetTo(long value) { 
+      DEBUGLOG(_T("%d"),value); 
+      to = value ; 
+      Update();
+    }
 
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
     /// Retrieves icon resources
     wxIcon GetIconResource( const wxString& name );
-////@end InputFilterDlg member function declarations
 
     /// Should we show tooltips?
     static bool ShowToolTips();
-
-////@begin InputFilterDlg member variables
-    wxRadioBox* ctrlType;
-    wxTextCtrl* ctrlFrom;
-    wxTextCtrl* ctrlTo;
-    int Type;
-    long From;
-    long To;
-////@end InputFilterDlg member variables
 };
 
 #endif
     // _INPUTFILTERDLG_H_
 
+///\}

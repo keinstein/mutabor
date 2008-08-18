@@ -1,13 +1,23 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        InputFilterDlg.cpp
-// Purpose:     
-// Author:      R. Krauße
-// Modified by: 
-// Created:     10/21/05 18:28:56
-// RCS-ID:      
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * MIDI Input filter configuration dialog
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.cpp,v 1.4 2008/08/18 15:07:41 keinstein Exp $
+ * Copyright:   (c) 2005,2006,2007,2008 TU Dresden
+ * \author R. Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/21 18:28:56
+ * $Date: 2008/08/18 15:07:41 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: InputFilterDlg.cpp,v $
+ * Revision 1.4  2008/08/18 15:07:41  keinstein
+ * Changed Input filter dialog to wxResources
+ *
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma implementation "InputFilterDlg.h"
@@ -28,6 +38,7 @@
 ////@end includes
 
 #include "InputFilterDlg.h"
+#include "wx/valgen.h"
 #include "valNum.h"
 
 ////@begin XPM images
@@ -43,118 +54,53 @@ IMPLEMENT_DYNAMIC_CLASS( InputFilterDlg, wxDialog )
  * InputFilterDlg event table definition
  */
 
-BEGIN_EVENT_TABLE( InputFilterDlg, wxDialog )
-
-////@begin InputFilterDlg event table entries
-    EVT_RADIOBOX( ID_RADIOBOX, InputFilterDlg::OnRadioboxSelected )
-
-    EVT_BUTTON( wxID_REMOVE, InputFilterDlg::OnRemoveClick )
-
-////@end InputFilterDlg event table entries
-
+BEGIN_EVENT_TABLE( InputFilterDlg, InputFilterDlgBase )
+EVT_BUTTON( ::wxID_REMOVE, InputFilterDlg::OnRemoveClick )
 END_EVENT_TABLE()
 
 /*!
  * InputFilterDlg constructors
  */
 
-InputFilterDlg::InputFilterDlg( )
+InputFilterDlg::InputFilterDlg( wxWindow* parent, DevType t)
+:InputFilterDlgBase(parent)
 {
+  from = to = 0;
+  Type->SetValidator( wxGenericValidator((int*) (& type) ) );
+  From->SetValidator( wxNumValidator(& from, NV_NNEG) );
+  To->SetValidator( wxNumValidator(& to, NV_NNEG) );
+
+  DEBUGLOG(_T("Type.id:%d"),Type->GetId());
+  Type->Connect( wxEVT_COMMAND_RADIOBOX_SELECTED, 
+		 wxCommandEventHandler( InputFilterDlg::OnRadioboxSelected ), 
+		 NULL, 
+		 this );
+
+  SetDeviceType(t);
 }
 
-InputFilterDlg::InputFilterDlg( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
-    Create(parent, id, caption, pos, size, style);
+void InputFilterDlg::SetDeviceType(DevType type) {
+  switch(type) {
+  case DTGis:
+    Type->SetString(RTchannel,_("&box tag"));
+    break;
+  case DTMidiPort:
+    Type->SetString(RTstaff,_("&key range"));
+    break;
+  case DTMidiFile:
+    Type->SetString(RTstaff,_("&track"));
+    break;
+  case DTNotSet:
+    wxLogWarning(_("Unexpected value: DTNotSet"));
+    break;
+  case DTUnknown:
+    break;
+  default:
+    wxLogError(_("Unexpected device type: %d"), type); 
+  }
+  UpdateLayout(type);
 }
 
-/*!
- * InputFilterDlg creator
- */
-
-bool InputFilterDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
-{
-////@begin InputFilterDlg member initialisation
-    ctrlType = NULL;
-    ctrlFrom = NULL;
-    ctrlTo = NULL;
-////@end InputFilterDlg member initialisation
-
-////@begin InputFilterDlg creation
-    SetExtraStyle(GetExtraStyle()|wxWS_EX_BLOCK_EVENTS);
-    wxDialog::Create( parent, id, caption, pos, size, style );
-
-    CreateControls();
-    GetSizer()->Fit(this);
-    GetSizer()->SetSizeHints(this);
-    Centre();
-////@end InputFilterDlg creation
-    return TRUE;
-}
-
-/*!
- * Control creation for InputFilterDlg
- */
-
-void InputFilterDlg::CreateControls()
-{    
-////@begin InputFilterDlg content construction
-    InputFilterDlg* itemDialog1 = this;
-
-    wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
-    itemDialog1->SetSizer(itemBoxSizer2);
-
-    wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
-    itemBoxSizer2->Add(itemBoxSizer3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    wxBoxSizer* itemBoxSizer4 = new wxBoxSizer(wxVERTICAL);
-    itemBoxSizer3->Add(itemBoxSizer4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-    wxString ctrlTypeStrings[] = {
-        _("&all"),
-        _("&else"),
-        _("&channel"),
-        _("&staff")
-    };
-    ctrlType = new wxRadioBox( itemDialog1, ID_RADIOBOX, _("Type"), wxDefaultPosition, wxDefaultSize, 4, ctrlTypeStrings, 1, 0 );
-    itemBoxSizer4->Add(ctrlType, 0, wxGROW|wxALL, 0);
-
-    wxStaticBox* itemStaticBoxSizer6Static = new wxStaticBox(itemDialog1, wxID_ANY, _("Range"));
-    wxStaticBoxSizer* itemStaticBoxSizer6 = new wxStaticBoxSizer(itemStaticBoxSizer6Static, wxHORIZONTAL);
-    itemBoxSizer4->Add(itemStaticBoxSizer6, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP, 5);
-
-    wxStaticText* itemStaticText7 = new wxStaticText( itemDialog1, wxID_STATIC, _("from"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemStaticBoxSizer6->Add(itemStaticText7, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxADJUST_MINSIZE, 5);
-
-    ctrlFrom = new wxTextCtrl( itemDialog1, ID_TEXTCTRL6, _T(""), wxDefaultPosition, wxSize(40, -1), 0 );
-    itemStaticBoxSizer6->Add(ctrlFrom, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT, 5);
-
-    wxStaticText* itemStaticText9 = new wxStaticText( itemDialog1, wxID_STATIC, _("to"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemStaticBoxSizer6->Add(itemStaticText9, 0, wxALIGN_CENTER_VERTICAL|wxADJUST_MINSIZE, 5);
-
-    ctrlTo = new wxTextCtrl( itemDialog1, ID_TEXTCTRL7, _T(""), wxDefaultPosition, wxSize(40, -1), 0 );
-    itemStaticBoxSizer6->Add(ctrlTo, 0, wxALIGN_CENTER_VERTICAL|wxLEFT, 5);
-
-    wxBoxSizer* itemBoxSizer11 = new wxBoxSizer(wxVERTICAL);
-    itemBoxSizer3->Add(itemBoxSizer11, 0, wxALIGN_TOP|wxALL, 5);
-
-    wxButton* itemButton12 = new wxButton( itemDialog1, wxID_OK, _("&OK"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton12, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    wxButton* itemButton13 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton13, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    wxButton* itemButton14 = new wxButton( itemDialog1, wxID_REMOVE, _("Remove"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton14, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    wxButton* itemButton15 = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton15, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
-
-    // Set validators
-    ctrlType->SetValidator( wxGenericValidator(& Type) );
-    ctrlFrom->SetValidator( wxNumValidator(& From, NV_NNEG) );
-    ctrlTo->SetValidator( wxNumValidator(& To, NV_NNEG) );
-////@end InputFilterDlg content construction
-}
 
 /*!
  * Should we show tooltips?
@@ -171,10 +117,7 @@ bool InputFilterDlg::ShowToolTips()
 
 wxBitmap InputFilterDlg::GetBitmapResource( const wxString& name )
 {
-    // Bitmap retrieval
-////@begin InputFilterDlg bitmap retrieval
     return wxNullBitmap;
-////@end InputFilterDlg bitmap retrieval
 }
 
 /*!
@@ -183,10 +126,7 @@ wxBitmap InputFilterDlg::GetBitmapResource( const wxString& name )
 
 wxIcon InputFilterDlg::GetIconResource( const wxString& name )
 {
-    // Icon retrieval
-////@begin InputFilterDlg icon retrieval
     return wxNullIcon;
-////@end InputFilterDlg icon retrieval
 }
 /*!
  * wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX
@@ -194,26 +134,24 @@ wxIcon InputFilterDlg::GetIconResource( const wxString& name )
 
 void InputFilterDlg::OnRadioboxSelected( wxCommandEvent& event )
 {
-    UpdateLayout(ctrlType->GetSelection());
-////@begin wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX in InputFilterDlg.
-    // Before editing this code, remove the block markers.
+    UpdateLayout(Type->GetSelection());
     event.Skip();
-////@end wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX in InputFilterDlg. 
 }
 
 void InputFilterDlg::UpdateLayout(int type)
 {
-    ctrlFrom->Enable(type >=2);
-    ctrlTo->Enable(type >= 2);
+  DEBUGLOG(_T("%d"),type);
+  From->Enable(type >=2);
+  To->Enable(type >= 2);
+  fromlabel->Enable(type >=2);
+  tolabel->Enable(type >=2);
+  //  TransferDataToWindow();
 }
-
-/*!
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_REMOVE
- */
 
 void InputFilterDlg::OnRemoveClick( wxCommandEvent& event )
 {
-    EndModal(wxID_REMOVE);
+  EndModal(::wxID_REMOVE);
 }
 
+///\}
 
