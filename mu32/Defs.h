@@ -55,19 +55,24 @@
 #define mutChar   wxChar
 #define mutString wxString
 #define mutEmptyString wxEmptyString
-#define mutDelString(string) string = mutEmptyString
+#define mutDelString(string) (string = mutEmptyString)
 #define mutFreeString(string)
 #define mutFopen  wxFopen
-#define mutCopyString(left,right) left = right
-#define mutCopyIntoString(left,right) left = right
+#define mutCopyString(left,right) (left = right)
+#define mutCopyIntoString(left,right) (left = right)
 #define mutStrdup wxStrdup
 #define mutStrCmp(left, right) (left.Cmp (right))
 #define mutStrEq(left, right) (left == right)
-#define mutStrLast(x) (x.Last())
-#define mutLen(x) (x.Len())
+#define mutStrEq2(left, right) (left.IsSameAs(right))
+#define mutStrLast(x) ((x).Last())
+#define mutLen(x) ((x).Len())
+#define C_STR(x) ((x).c_str())
+#define mutC_STR(x) (C_STR(muT(x)))
 
 #define mutStrLen wxStrlen_
 #define mutStrChr wxStrchr
+#define mutIsspace wxIsspace
+#define mutIsdigit wxIsdigit
 #define mutFileName(name) (name.fn_str())
 
 #define mutOFstream wxOutputStream
@@ -108,6 +113,9 @@
 #define mutStrCmp(left,right) strcmp (left, right)
 #define mutStrEq(left,right)  (!strcmp (left, right))
 #define mutStrLast(x) (x[strlen(x)])
+#define C_STR(x) (x)
+#define mutC_STR(x) (x)
+
 
 #define mutStrLen strlen
 #define mutStrChr strchr
