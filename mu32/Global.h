@@ -40,8 +40,8 @@ void init_yylex (void);
 /****** Allgemeine Strukturen *******/
 
 struct parameter_liste {
-    char * name;
-    struct parameter_liste * next;
+  const char * name;
+  struct parameter_liste * next;
 };
 
 typedef int parameter_typ;
@@ -54,9 +54,9 @@ struct argument {
                  int zahl;
              } zahl;
              struct {
-                 int parameter_nummer;   /* Der soundsovielte ,
+	       int parameter_nummer;   /* Der soundsovielte ,
                                             der deklariert ist. */
-                 char * parameter_name;
+	       const char * parameter_name;
              } parameter;
          } u;
 };
@@ -75,7 +75,7 @@ struct midiliste {
 
 enum intervall_typ {intervall_absolut, intervall_komplex};
 struct intervall {
-    char * name;
+  const char * name;
     enum intervall_typ intervall_typ;
     union {
         struct {
@@ -99,12 +99,12 @@ struct komplex_anteil {
     union {
         struct {
             double faktor;
-            char * linke_grenze;
-            char * rechte_grenze;
+            const char * linke_grenze;
+            const char * rechte_grenze;
         } komplex_anteil_relativ;
         struct {
             double faktor;
-            char * name;
+            const char * name;
         } komplex_anteil_faktor;
     } u;
     struct komplex_anteil * next;
@@ -113,20 +113,20 @@ struct komplex_anteil {
 
 struct komplex_intervall {
     double faktor;
-    char * name;
+  const char * name;
     struct komplex_intervall * next;
 };
 
 enum ton_typ {ton_absolut, ton_komplex};
 struct ton {
-    char * name;
+  const char * name;
     enum ton_typ ton_typ;
     union {
         struct {
             double ton_wert;
         } ton_absolut;
         struct {
-            char * bezugston;
+            const char * bezugston;
             struct komplex_intervall * komplex_liste;
         } ton_komplex;
     } u;
@@ -141,7 +141,7 @@ struct ton {
 
 
 struct tonsystem {
-    char *name;
+    const char *name;
     int taste;
     struct komplex_intervall *periode;
     struct ton *toene;
@@ -165,7 +165,7 @@ enum umstimmung_typ {
 
 /********
 struct aufruf_liste {
-    char * name;
+    const char * name;
     struct argument_liste * argument_liste;
     struct aufruf_liste * next;
 };
@@ -178,7 +178,7 @@ struct case_liste {
 };
 
 struct umstimmung {
-    char *name;
+  const char *name;
     struct parameter_liste * parameter_liste;
     enum umstimmung_typ umstimmung_typ;
     union {
@@ -228,10 +228,10 @@ struct taste {
 };
 
 struct harmonie {
-    char * name;
-    struct taste * tastenliste;
-    int bezugstaste;
-    struct harmonie * next;
+  const char * name;
+  struct taste * tastenliste;
+  int bezugstaste;
+  struct harmonie * next;
 };
 
 /*********  Definition der Logiken als verkettete Liste ********/
@@ -245,16 +245,16 @@ struct ausloeser {
     union {
         struct {
             int vortaste;
-            char * name;
+	  const char * name;
             int nachtaste;
         } ausloeser_harmonie;
         struct {
             int vortaste;
-            char * name;
+            const char * name;
             int nachtaste;
         } ausloeser_harmonie_form;
         struct {
-            char * taste;
+            const char * taste;
         } ausloeser_taste;
         struct {
             struct midiliste * midi_code;
@@ -271,7 +271,7 @@ struct aktions_liste {
             struct midiliste * midi_code;
         } aktion_midi_out;
         struct {
-            char * name;
+            const char * name;
             struct argument_liste * argument_liste;
         } aktion_aufruf;
     } u;
@@ -290,9 +290,9 @@ struct anweisung {
 
 
 struct logik {
-    char * name;
+    const char * name;
     struct ausloeser * ausloeser;
-    char * einstimmungs_name;
+    const char * einstimmungs_name;
     struct anweisung * anweisungsliste;
     struct logik * next;
 };
@@ -316,97 +316,97 @@ void * xcalloc (size_t anzahl, size_t size);
 /* Gemeinsame Funktionen zwischen Compiler und Parser */
 
 int yylex();
-void yyerror(char *);
+void yyerror(const char *);
 int yyparse ();
 
 void mutabor_programm_einlesen (const wxChar * filename) ;
 void mutabor_tabellen_generator (void);
-void mutabor_codegenerator(char * filename);
+void mutabor_codegenerator(const char * filename);
 void write_kompletten_code (FILE * zieldatei);
 
-void get_new_intervall (char * name, double wert);
-void get_new_intervall_komplex (char * name);
+void get_new_intervall (const char * name, double wert);
+void get_new_intervall_komplex (const char * name);
 double get_wert_komplex_intervall (struct komplex_intervall * intervall);
 
-void get_new_ton_absolut (char * name, double wert);
+void get_new_ton_absolut (const char * name, double wert);
 void init_komplex_ton_list (void);
-void get_new_faktor_anteil (double f, char *name);
+void get_new_faktor_anteil (double f, const char *name);
 /**
 void get_new_relativ_anteil (double f,
                           char *linke_grenze, char *rechte_grenze);
 *******/
-void get_new_ton_komplex_positive (char *name, char *bezugston);
-void get_new_ton_komplex_negative (char *name, char *bezugston);
+void get_new_ton_komplex_positive (const char *name, const char *bezugston);
+void get_new_ton_komplex_negative (const char *name, const char *bezugston);
 
 void init_ton_liste (void);
-void get_new_ton_in_tonsystem (char *name);
-void get_new_tonsystem (char *name, int taste);
-void get_new_tonsystem_negative (char *name, int taste);
+void get_new_ton_in_tonsystem (const char *name);
+void get_new_tonsystem (const char *name, int taste);
+void get_new_tonsystem_negative (const char *name, int taste);
 
 
 void init_parameter_liste (void);
-void get_new_name_in_parameterlist (char * name);
+void get_new_name_in_parameterlist (const char * name);
 void get_new_number_in_parameterlist (double wert);
 
 void init_argument_liste (void);
-void get_new_name_in_argument_list (char * parameter);
+void get_new_name_in_argument_list (const char * parameter);
 void get_new_number_in_argument_list (double parameter);
 
 void init_aktions_liste (void);
-void get_new_aktion_aufruf_element (char * name);
+void get_new_aktion_aufruf_element (const char * name);
 void get_new_aktion_midi_out_element (void);
 
-void init_umstimmung (char * name);
+void init_umstimmung (const char * name);
 void eintrage_parameterliste_in_umstimmung (void);
 void get_new_umstimmung (void);
 
 void get_umstimmung_taste_abs (
      enum argument_typ argument, //zahl_oder_parameter_typ zahl_oder_parameter,
-     double zahl_wert, char * parameter);
+     double zahl_wert, const char * parameter);
 void get_umstimmung_taste_rel (
      enum argument_typ argument,
-     double zahl_wert, char * parameter, char vorzeichen);
+     double zahl_wert, const char * parameter, char vorzeichen);
 void get_umstimmung_breite_abs (
      enum argument_typ argument,
-     double zahl_wert, char * parameter);
+     double zahl_wert, const char * parameter);
 void get_umstimmung_breite_rel (
      enum argument_typ argument,
-     double zahl_wert, char * parameter, char vorzeichen);
+     double zahl_wert, const char * parameter, char vorzeichen);
 void init_umstimm_expression_list (void);
 void get_umstimmung_tonhoehe_veraendert (void);
-void get_new_umstimm_expression (char * bezugston);
-void get_new_umstimm_expression_positive (char * bezugston);
-void get_new_umstimm_expression_negative (char * bezugston);
+void get_new_umstimm_expression (const char * bezugston);
+void get_new_umstimm_expression_positive (const char * bezugston);
+void get_new_umstimm_expression_negative (const char * bezugston);
 void get_umstimmung_wiederholung_abs (void);
 void get_umstimmung_wiederholung_abs_negative (void);
 void get_umstimmung_wiederholung_rel_positive (void);
 void get_umstimmung_wiederholung_rel_negative (void);
 /* void init_umstimmungs_bund_liste (void); */
 void get_umstimmung_umstimmungs_bund (void);
-/* void get_umstimmungs_bund_element (char * name); */
+/* void get_umstimmungs_bund_element (const char * name); */
 
 void init_umstimmungs_case_liste (void);
 void get_umstimmung_umstimm_case_zahl (int selector);
-void get_umstimmung_umstimm_case_parameter (char * selector);
+void get_umstimmung_umstimm_case_parameter (const char * selector);
 void init_umstimmungs_case_aktions_liste (void);
 void get_umstimmungs_case_zahl_element (int konstante);
 void get_umstimmungs_case_default_element (void);
-void get_umstimmungs_case_aktions_element (char * aktion);
+void get_umstimmungs_case_aktions_element (const char * aktion);
 void get_umstimmung_midi_out (void);
 
 
 void init_tastenliste (void);
-void get_new_harmonie (char * name, int bezugstaste);
+void get_new_harmonie (const char * name, int bezugstaste);
 void get_new_taste (int taste, char stern);
 
 void init_ausloeser (void);
 void get_aktion_midi_out (void);
-void get_aktion_aufruf (char * name);
+void get_aktion_aufruf (const char * name);
 void init_ausloeser (void);
 void get_ausloeser_default (void);
 void get_ausloeser_harmonie (void);
 void get_ausloeser_harmonie_form (void);
-void get_ausloeser_taste (char * name);
+void get_ausloeser_taste (const char * name);
 void get_ausloeser_midi_in (void);
 void init_anweisungs_liste (void);
 void vervollstaendige_logik (void);
@@ -415,10 +415,10 @@ void get_new_integer_in_integersequenz (int wert);
 
 
 void init_anweisungs_liste (void);
-void get_new_logik (char * name, char * einstimmung);
+void get_new_logik (const char * name, const char * einstimmung);
 void get_new_anweisung (void);
 void get_harmoniebezeichner (int vor_taste,
-                             char * name,
+                             const char * name,
                              int nach_taste);
 
 void get_instrument_dekl (int midi_in, int midi_von, int midi_bis, int midi_umleit,
@@ -431,14 +431,14 @@ int tonsystem_list_laenge (struct tonsystem *list);
 int umstimmungs_list_laenge (struct umstimmung *list);
 int logik_list_laenge (struct logik *list);
 int midi_list_laenge (struct midiliste *list);
-int get_logik_nummer (char * name, struct logik * liste);
-struct ton * get_ton (char * name, struct ton * liste);
-struct intervall * get_intervall (char * name,
+int get_logik_nummer (const char * name, struct logik * liste);
+struct ton * get_ton (const char * name, struct ton * liste);
+struct intervall * get_intervall (const char * name,
                                       struct intervall * liste);
-struct tonsystem * parser_get_tonsystem (char * name, struct tonsystem * liste);
-struct umstimmung * get_umstimmung (char * name, struct umstimmung * liste);
-struct harmonie * get_harmonie (char * name, struct harmonie * liste);
-struct logik * get_logik (char * name, struct logik * liste);
+struct tonsystem * parser_get_tonsystem (const char * name, struct tonsystem * liste);
+struct umstimmung * get_umstimmung (const char * name, struct umstimmung * liste);
+struct harmonie * get_harmonie (const char * name, struct harmonie * liste);
+struct logik * get_logik (const char * name, struct logik * liste);
 
 int  intern_fgetc( FILE *stream );
 int  intern_ungetc( int c, FILE *stream );
