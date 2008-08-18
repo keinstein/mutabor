@@ -8,7 +8,7 @@
 #include "GSP.h"
 
 extern mutString CurrentLine; //[GSP_MAX_LINE];
-extern int  CurrentPos;
+extern size_t  CurrentPos;
 extern int  Eof;
 
 int OpenFile(const mutString &Name);

@@ -39,6 +39,7 @@ char GetMidiInstrument(GisToken *token)
    DEBUGLOG2(_T("t= %s"), t.c_str());
    if (t.StartsWith(mutT("MIDI"),&v)) {
      v.ToLong(&value);
+     DEBUGLOG2(_T("v= %s"), v.c_str());
      return (char) value;
    }
 #else
@@ -54,27 +55,30 @@ char GetMidiInstrument(GisToken *token)
 #define ZIFFER (mutT('0') <= t[i] && t[i] <= mutT('9'))
 int GetTheSpeedFactor(GisToken *token)
 {
+  DEBUGLOG2(_T("%p"),token);
   if ( token && GetGisType(token) == GTParaStr )
   {
-	const mutString &t = ((GisParaStr*) token) -> s;
-   int i = 0;
-   long n=0, d=0, bpm=0;
-   while ( !ZIFFER && t[i] )
-     i++;
-   while ( ZIFFER )
-     n = n*10 + (t[i++]-mutT('0'));
-   while ( !ZIFFER && t[i] )
-     i++;
-   while ( ZIFFER )
-     d = d*10 + (t[i++]-mutT('0'));
-   while ( !ZIFFER && t[i] )
-     i++;
-   while ( ZIFFER )
-     bpm = bpm*10 + (t[i++]-mutT('0'));
-   if ( !n || !d || bpm < 4 )
-     return 2000;
-   else
-	   return d * 30000 / n / bpm;
+    const mutString &t = ((GisParaStr*) token) -> s;
+    DEBUGLOG2(_T("%s"),t.c_str());
+    int i = 0;
+    long n=0, d=0, bpm=0;
+    while ( !ZIFFER && t[i] )
+      i++;
+    while ( ZIFFER )
+      n = n*10 + (t[i++]-mutT('0'));
+    while ( !ZIFFER && t[i] )
+      i++;
+    while ( ZIFFER )
+      d = d*10 + (t[i++]-mutT('0'));
+    while ( !ZIFFER && t[i] )
+      i++;
+    while ( ZIFFER )
+      bpm = bpm*10 + (t[i++]-mutT('0'));
+    DEBUGLOG2(_T("%d * 30000 / %d / %d"),d,n,bpm);
+    if ( !n || !d || bpm < 4 )
+      return 2000;
+    else
+      return d * 30000 / n / bpm;
   }
   return 2000;
 }
@@ -84,36 +88,36 @@ int GetTheSpeedFactor(GisToken *token)
 
 GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 {
-  DEBUGLOG(_T("pos = %p"),position);
+  DEBUGLOG(_T("pos = %p; this = %p"),position,this);
   if ( !position )
   {
 	 Next = NULL;
-	 Prev = NULL;
+	 Prev = this;
 	 return this;
   }
 #if 1
   // *(position->Prev) == position
-  if ( *((GisReadHead**)(position->Prev)) == position ) { // first position
+  if ( *(position->PrevPtr) == position ) { // first position
       DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
 	       position,
 	       position->Prev,
 	       position->Next,
-	       *((GisReadHead**)(position->Prev))
+	       *((position->PrevPtr))
 	       );
-	*((GisReadHead**)(position->Prev)) = this;
-  } else { // normal position in list
+      *(position->PrevPtr) = this;
+    } else { // normal position in list
       DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
 	       position,
 	       position->Prev,
 	       position->Next,
-	       *((GisReadHead**)(position->Prev))
+	       *((GisReadHead**)(position->PrevPtr))
 	       );
-    position->Prev->Next = this;
-  }
-  Prev = position->Prev;
-  Next = position;
-  position->Prev = this;
-  return this;
+      (*(position->PrevPtr))->Next = this;
+    }
+    PrevPtr = position->PrevPtr;
+    Next = position;
+    *(position->PrevPtr) = this;
+    return this;
 #else
   DEBUGLOG(_T("pos = %p, prev = %p"),position, position->Prev);
   if ( (position -> Prev) == position) {
@@ -131,17 +135,17 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 GisReadHead* GisReadHead::CutOut()
 {
 #if 1
-  if ( *(GisReadHead**)Prev == this ) // first of list
+  if ( *(PrevPtr) == this ) // first of list
   {
-	 *(GisReadHead**)Prev = Next;
+    *PrevPtr = Next;
   }
   else // normal list postition
   {
-	 Prev->Next = Next;
+    (*PrevPtr)->Next = Next;
   }
-  if ( Next ) Next->Prev = Prev;
-  Next = 0;
-  Prev = 0;
+  if ( Next ) Next->PrevPtr = PrevPtr;
+  Next = NULL;
+  PrevPtr = &Prev;
   return this;
 #else
   if ( Prev == this ) // first of list
@@ -174,6 +178,7 @@ void GisReadHead::CreateSegmentSubs()
   {
 	 nSub++;
 	 id[mutLen(Id)] = nSub;
+	 DEBUGLOG(_T("Creating Sub for %p (%d, %s)"),Cont,nSub,id.c_str());
 	 
 	 GisReadHead *Sub = Build(this, Cont, id, 1);
 	 Cont = Cont->Next;
@@ -207,15 +212,32 @@ void GisReadHead::CreateSequenzSubs()
 // reading the token at the cursor
 void GisReadHead::Read()
 {
+  DEBUGLOG(_T("Cursor: %p"),Cursor);
   if ( !Cursor ) return;
   switch ( Cursor->Type() )
   {
 	 case GTSegment: CreateSegmentSubs(); break;
 	 case GTSequenz: CreateSequenzSubs(); break;
-	 case GTNote: Time = ((GisNote*)Cursor)->Duration; break;
+	 case GTNote: 
+	   DEBUGLOG(_T("Setting time"));
+	   Time = ((GisNote*)Cursor)->Duration; 
+	   break;
   }
   // the other tokens dont influenz the way of reading
 }
+
+#ifdef WX
+wxString GisReadHead::ToString() {
+  wxString ret = wxString::Format(_T("GisReadHead: {\nthis: %p; Boss: %p; Next: %p; Prev: %p; PrevPtr: %p; *PrevPtr: %p;\n"
+				     "nSub: %d; Cursor: {\n"),
+				  this, Boss, Next, Prev, 
+				  PrevPtr, *PrevPtr, nSub) +
+    (Cursor?((wxString) *Cursor):wxString(_T(""))) + _T("}\nTime: ") + ((wxString) Time) + 
+    wxString::Format(_T("; Id: '%s'; Turn: %d; SingleToken: %d\n}\n"),
+		     Id.c_str(), Turn, SingleToken);
+  return ret;
+}
+#endif
 
 // ##################################################################
 // procedures with GisReadHead
@@ -349,80 +371,107 @@ TagList *EndTag(TagList **list, GisTagEnd *tagEnd)
 void GisReadArtHead::Read()
 {
   int Id = 0;
+  DEBUGLOG(_T("Id: %d; Cursor: %p"), Id, Cursor);
   if ( !Cursor ) return;
   Turn = 3;
+  DEBUGLOG(_T("Cursor->Type %d"), Cursor->Type());
   switch ( Cursor->Type() )
-  {
-	 case GTSegment: CreateSegmentSubs(); Turn = 2; break;
-	 case GTSequenz: CreateSequenzSubs(); Turn = 2; break;
-	 case GTNote:
+    {
+    case GTSegment: CreateSegmentSubs(); Turn = 2; break;
+    case GTSequenz: CreateSequenzSubs(); Turn = 2; break;
+    case GTNote:
       Time2 = ((GisNote*)Cursor)->Duration;
-		Time = Time2 * frac(ArticulationHold[GetArticulation()], 100);
-		Time2 -= Time;
-		Turn = 1;
-		break;
-	 case GTTag:
-	 case GTTagBegin:
-		Id = TAG->Id;
-		if ( Id == TTintens )
-		{
-		  if ( TAG->GetParaType(2) == GTParaInt || TAG->GetParaType(2) == GTParaReal)
-		    AddTag(&Intensity, TAG)->Data.ch = (char) (GetReal(TAG->GetPara(2)) * 127);
-		}
-		else if ( Id == TTaccent )
-		{
-		  AddTag(&Intensity, TAG)->Data.ch = 120; // ???  what value
-		}
-		else if ( Id == TTstacc )
-		{
-		  AddTag(&Articulation, TAG)->Data.ch = ARStaccatto;
-		}
-		else if ( Id == TTten )
-		{
-		  AddTag(&Articulation, TAG)->Data.ch = ARTenuto;
-		}
-		else if ( Id == TToct )
-		{
-		  if ( TAG->GetParaType(1) == GTParaInt )
-			 AddTag(&Octave, TAG)->Data.i = ((GisParaInt*)TAG->GetPara(1))->i;
-		}
-		else if ( Id == TTalter )
-		{
-		  if ( TAG->GetParaType(1) != GTParaStr )
-		    AddTag(&Alter, TAG)->Data.i = (int) (GetReal(TAG->GetPara(1)) * 0x1FFF) ;
-		}
-		else if ( Id == TTinstr )
-		{
-		  if ( TAG->GetParaType(2) == GTParaStr )
-			 AddTag(&Instr, TAG)->Data.ch = GetMidiInstrument(TAG->GetPara(2));
-		}
-		else if ( Id == TTtempo )
-		{
-		  if ( TAG->GetParaType(2) == GTParaStr ) {
-		    int speed = (AddTag(&Tempo, TAG)->Data.i = GetTheSpeedFactor(TAG->GetPara(2)));
-		    DEBUGLOG(_T("Got speed factor %d"),speed); 
-		  }
-		}
-		break;
-	 case GTTagEnd:
-		if ( !TAGEND->Begin )
-		  break;
-		Id = TAGEND->Begin->Id;
-		if ( Id == TTintens || Id == TTaccent )
-		  EndTag(&Intensity, TAGEND);
-		else if ( Id == TTstacc || Id == TTten )
-		  EndTag(&Articulation, TAGEND);
-		else if ( Id == TToct )
-		  EndTag(&Octave, TAGEND);
-		else if ( Id == TTalter )
-		  EndTag(&Alter, TAGEND);
-		else if ( Id == TTinstr )
-		  EndTag(&Instr, TAGEND);
-		else if ( Id == TTtempo )
-		  EndTag(&Tempo, TAGEND);
-  }
+      Time = Time2 * frac(ArticulationHold[GetArticulation()], 100);
+      DEBUGLOG(_T("Time: %d/%d; Time2: %d/%d"),
+	       Time.n,Time.d,Time2.n,Time2.d);
+      Time2 -= Time;
+      DEBUGLOG(_T("Time: %d/%d; Time2: %d/%d"),
+	       Time.n,Time.d,Time2.n,Time2.d);
+      Turn = 1;
+      break;
+    case GTTag:
+    case GTTagBegin:
+      Id = TAG->Id;
+      if ( Id == TTintens )
+	{
+	  if ( TAG->GetParaType(2) == GTParaInt || TAG->GetParaType(2) == GTParaReal)
+	    AddTag(&Intensity, TAG)->Data.ch = (char) (GetReal(TAG->GetPara(2)) * 127);
+	}
+      else if ( Id == TTaccent )
+	{
+	  AddTag(&Intensity, TAG)->Data.ch = 120; // ???  what value
+	}
+      else if ( Id == TTstacc )
+	{
+	  AddTag(&Articulation, TAG)->Data.ch = ARStaccatto;
+	}
+      else if ( Id == TTten )
+	{
+	  AddTag(&Articulation, TAG)->Data.ch = ARTenuto;
+	}
+      else if ( Id == TToct )
+	{
+	  if ( TAG->GetParaType(1) == GTParaInt )
+	    AddTag(&Octave, TAG)->Data.i = ((GisParaInt*)TAG->GetPara(1))->i;
+	}
+      else if ( Id == TTalter )
+	{
+	  if ( TAG->GetParaType(1) != GTParaStr )
+	    AddTag(&Alter, TAG)->Data.i = (int) (GetReal(TAG->GetPara(1)) * 0x1FFF) ;
+	}
+      else if ( Id == TTinstr )
+	{
+	  if ( TAG->GetParaType(2) == GTParaStr )
+	    AddTag(&Instr, TAG)->Data.ch = GetMidiInstrument(TAG->GetPara(2));
+	}
+      else if ( Id == TTtempo )
+	{
+	  if ( TAG->GetParaType(2) == GTParaStr ) {
+	    long int speed = 
+	      (AddTag(&Tempo, TAG)->Data.i = 
+	       GetTheSpeedFactor(TAG->GetPara(2)));
+	    DEBUGLOG(_T("Got speed factor %ld"),speed); 
+	  }
+	}
+      break;
+    case GTTagEnd:
+      DEBUGLOG(_T("Ended tag."));
+      if ( !TAGEND->Begin )
+	break;
+      DEBUGLOG(_T("Tag Id was %d."),TAGEND->Begin->Id);
+      Id = TAGEND->Begin->Id;
+      if ( Id == TTintens || Id == TTaccent )
+	EndTag(&Intensity, TAGEND);
+      else if ( Id == TTstacc || Id == TTten )
+	EndTag(&Articulation, TAGEND);
+      else if ( Id == TToct )
+	EndTag(&Octave, TAGEND);
+      else if ( Id == TTalter )
+	EndTag(&Alter, TAGEND);
+      else if ( Id == TTinstr )
+	EndTag(&Instr, TAGEND);
+      else if ( Id == TTtempo )
+	EndTag(&Tempo, TAGEND);
+    }
   // the other tokens don't influenz the way of reading
 }
+
+#ifdef WX
+wxString GisReadArtHead::ToString() {
+  wxString ret = _T("GisReadArtHead: {\n") ;
+  ret += GisReadHead::ToString();
+  ret += _T("Time2: ") + ((wxString) Time2);
+  ret += 
+    wxString::Format(_T("; Delta: %ld; Box: %d\n"
+			"Intensity: %p; Articulation: %p; Octave: %p\n"
+			"Alter: %p; Instr: %p; Tempo: %p\n"
+			"}\n"),
+		     Delta,Box,
+		     Intensity,Articulation,Octave,Alter,Instr,Tempo);
+  return ret;
+}
+#endif
+
 
 // ##################################################################
 // procedures with GisReadHead
@@ -441,70 +490,70 @@ frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proc
   beginloop:
   while ( *Head )
   {
-	 GisReadArtHead *h = *Head;
-	 if ( h->nSub > 0 ) // header has subs
-	 {
-		Head = (GisReadArtHead**)&(h->Next);
-		continue;
-	 }
-	 if ( h->nSub == 0 ) // all subs has finished
-	 {
-		proceed(h, h->Turn++);   // end of segment or sequenz
-		h->CursorNext();
-		h->Time = 0;
-	 }
-	 if ( h->Time != frac(0, 1) ) // header in normal state
-	 {
-		h->Time -= dTime;
-		if ( h->Time <= frac(0, 1) )
-		{
-		  proceed(h, h->Turn++);
-        if ( h->Turn == 2 )
-		  {
-          h->Time = h->Time2;
-          h->Time2 = 0;
-        }
-		  if ( h->Turn > 2 )
-			 h->CursorNext();
+    GisReadArtHead *h = *Head;
+    if ( h->nSub > 0 ) // header has subs
+      {
+	Head = (GisReadArtHead**)&(h->Next);
+	continue;
       }
-	 }
-	 h->nSub = -1; // normal header
-	 // now check, wether count down Time is 0
-	 // if h->time = 0 then h->Cursor points to the GisToken next to proceed
-	 while ( h->Time.n == 0 ) // read next tokens
-	 {
-      if ( h->Turn)
-		{
-		  proceed(h, h->Turn++);
-        if ( h->Turn == 2 )
-		  {
-          h->Time = h->Time2;
-          h->Time2 = 0;
-        }
-		  if ( h->Turn > 2 )
-			 h->CursorNext();
-        else
-			 continue;
+    if ( h->nSub == 0 ) // all subs has finished
+      {
+	proceed(h, h->Turn++);   // end of segment or sequenz
+	h->CursorNext();
+	h->Time = 0;
       }
-		if ( !h->Cursor ) // header finished, kick away
-		{
-		  h->CutOut();
-		  if ( h->Boss ) h->Boss->nSub--; // inform the boss
-		  delete h;
-		  goto beginloop;
-		}
-		// proceed
-		proceed(h, 0);
-		h->Read();
-		if ( h->nSub != -1 ) goto beginloop;
-		if ( h->Time.n == 0 ) // token without duration
-		  h->CursorNext();
-	 }
-	 // check MinTime
-	 if ( MinTime == frac(-1,1) || h->Time < MinTime )
-		MinTime = h->Time;
-	 // next Header
-	 Head = (GisReadArtHead**)&(h->Next);
+    if ( h->Time != frac(0, 1) ) // header in normal state
+      {
+	h->Time -= dTime;
+	if ( h->Time <= frac(0, 1) )
+	  {
+	    proceed(h, h->Turn++);
+	    if ( h->Turn == 2 )
+	      {
+		h->Time = h->Time2;
+		h->Time2 = 0;
+	      }
+	    if ( h->Turn > 2 )
+	      h->CursorNext();
+	  }
+      }
+    h->nSub = -1; // normal header
+    // now check, wether count down Time is 0
+    // if h->time = 0 then h->Cursor points to the GisToken next to proceed
+    while ( h->Time.n == 0 ) // read next tokens
+      {
+	if ( h->Turn)
+	  {
+	    proceed(h, h->Turn++);
+	    if ( h->Turn == 2 )
+	      {
+		h->Time = h->Time2;
+		h->Time2 = 0;
+	      }
+	    if ( h->Turn > 2 )
+	      h->CursorNext();
+	    else
+	      continue;
+	  }
+	if ( !h->Cursor ) // header finished, kick away
+	  {
+	    h->CutOut();
+	    if ( h->Boss ) h->Boss->nSub--; // inform the boss
+	    delete h;
+	    goto beginloop;
+	  }
+	// proceed
+	proceed(h, 0);
+	h->Read();
+	if ( h->nSub != -1 ) goto beginloop;
+	if ( h->Time.n == 0 ) // token without duration
+	  h->CursorNext();
+      }
+    // check MinTime
+    if ( MinTime == frac(-1,1) || h->Time < MinTime )
+      MinTime = h->Time;
+    // next Header
+    Head = (GisReadArtHead**)&(h->Next);
   }
   return MinTime;
 }

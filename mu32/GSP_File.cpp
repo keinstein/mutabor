@@ -17,7 +17,7 @@ mutString CurrentLine;//[GSP_MAX_LINE];
 #else
 mutChar CurrentLine[GSP_MAX_LINE];
 #endif
-int  CurrentPos;
+size_t  CurrentPos;
 int  Eof;
 
 mutTextStream* File;  // the file

@@ -424,6 +424,7 @@ int BuildTag()
 
 int StartSep()
 {
+  DEBUGLOG2(_T("saving Sep %s"),Sep.c_str());
   *Current = new GisToken(Sep, 0);
   Current = &((*Current)->Next);
   return 0;
@@ -641,7 +642,6 @@ int GetTagId(const mutString &name, mutString &registered)
 	// check normal form
 	int i;
 	for (i = 0; i < NTAGS; i++) {
-	  std::cout << (char *) name.c_str() << std::endl;
 	  if ( mutStrEq2(wxString(name), Tags[i]) ) {
 			registered = Tags[i];
 			return i;
@@ -695,3 +695,22 @@ GisToken *GisParse(const mutString FileName)
   }
   return Root;
 }
+
+#ifdef WX
+wxString GISPrettyPrint(wxString s) {
+  wxString ret = wxEmptyString;
+  wxString pre = wxEmptyString;
+  for (size_t start = 0, current = 0 ; current < s.Len(); current++) {
+    wxChar c = s[current];
+    if (c == _T('{')) {
+      pre += _T("  ");
+    } else if (c == _T('}')) {
+      if (pre.Len() >= 2) pre = pre.Left(pre.Len()-2);
+    } else if (c == _T('\n')) {
+      ret += s (start, current - start + 1) + pre;
+      start = current + 1;
+    }
+  }
+  return ret;
+}
+#endif
