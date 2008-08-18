@@ -13,9 +13,9 @@ class frac
   public:
 	 long n, d;
 	 frac() { n = 0; d = 1; }
-	 frac(long nominator, long denominator)
+	 frac(long numerator, long denominator)
 	 {
-		n = nominator;
+		n = numerator;
 		d = denominator;
 	 }
 	 frac& operator =(const frac& f);
@@ -39,6 +39,12 @@ class frac
 	 long gcd(long a, long b);
 
 	 friend STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f);
+
+#ifdef WX
+	 operator wxString() {
+	   return wxString::Format(_T("%d/%d"),n,d);
+	 }
+#endif
 };
 
 #endif
