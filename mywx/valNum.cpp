@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     04/01/98
-// RCS-ID:      $Id: valNum.cpp,v 1.4 2005/11/07 14:51:08 keinstein Exp $
+// RCS-ID:      $Id: valNum.cpp,v 1.5 2008/08/18 15:12:57 keinstein Exp $
 // Copyright:   (c) Julian Smart and Markus Holzem
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -14,6 +14,7 @@
 #endif
 
 // For compilers that support precompilation, includes "wx.h".
+#include "Defs.h"
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -49,15 +50,16 @@ END_EVENT_TABLE()
 //static bool wxIsNumeric(const wxString& val);
 
 wxNumValidator::wxNumValidator(long *val, int style, int min, int max, wxCheckBox* enabler)
-: wxTextValidator(wxFILTER_NUMERIC, 0) 
+: wxTextValidator(wxFILTER_NUMERIC, &bufferString) 
 {
-    Style = style ;
-	Min = min;
-	Max = max;
-	Enabler = enabler;
-    m_intValue = val ;
-	bufferString = _T("");
-	m_stringValue = &bufferString;
+  DEBUGLOG(_T("val: %p, style: %d, min: %d, max: %d, enabler: %p"),
+	   val,style,min,max,enabler);
+  Style = style ;
+  Min = min;
+  Max = max;
+  Enabler = enabler;
+  m_intValue = val ;
+  bufferString = _T("");
 /*
     m_refData = new wxVTextRefData;
 
@@ -67,14 +69,18 @@ wxNumValidator::wxNumValidator(long *val, int style, int min, int max, wxCheckBo
 }
 
 wxNumValidator::wxNumValidator(const wxNumValidator& val)
-    : wxTextValidator()
+    : wxTextValidator(wxFILTER_NUMERIC, &bufferString)
 {
-    Copy(val);
+  DEBUGLOG(_T(""));
+  Copy(val);
 }
 
 bool wxNumValidator::Copy(const wxNumValidator& val)
 {
+  DEBUGLOG(_T("%p"),m_stringValue);
     wxTextValidator::Copy(val);
+  DEBUGLOG(_T("%p"),m_stringValue);
+    m_stringValue = &bufferString;
 
     Style = val.Style ;
     m_intValue = val.m_intValue ;
@@ -87,12 +93,14 @@ bool wxNumValidator::Copy(const wxNumValidator& val)
 
 wxNumValidator::~wxNumValidator()
 {
+  DEBUGLOG(_T("value: %s"),bufferString.c_str());
 }
 
 // Called when the value in the window must be validated.
 // This function can pop up an error message.
 bool wxNumValidator::Validate(wxWindow *parent)
 {
+  DEBUGLOG(_T(""));
     if ( !wxTextValidator::Validate(parent) )
 		return FALSE;
 
@@ -113,14 +121,14 @@ bool wxNumValidator::Validate(wxWindow *parent)
 		if ( !Enabler || Enabler->GetValue() )
 		{
 			ok = FALSE;
-			errormsg = _("'%s' ist keine Zahl.");
+			errormsg = _("'%s' is not a number.");
 		}
     }
     else if ( (Style & NV_MIN) && i < Min )
     {
         ok = FALSE;
 
-        errormsg = _("'%s' ist zu klein.");
+        errormsg = _("'%s' is too small.");
     }
     else if ( (Style & NV_MAX) && i > Max )
     {
@@ -148,6 +156,7 @@ bool wxNumValidator::Validate(wxWindow *parent)
 // Called to transfer data to the window
 bool wxNumValidator::TransferToWindow(void)
 {
+  DEBUGLOG(_T(""));
     if( !CheckValidator() )
         return FALSE;
 
@@ -162,6 +171,7 @@ bool wxNumValidator::TransferToWindow(void)
 // Called to transfer data to the window
 bool wxNumValidator::TransferFromWindow(void)
 {
+  DEBUGLOG(_T(""));
     if( !CheckValidator() )
         return FALSE;
 
@@ -173,8 +183,10 @@ bool wxNumValidator::TransferFromWindow(void)
 
     bool res = m_stringValue->ToLong(m_intValue);
 	
+    DEBUGLOG(_T("before enabler"));
 	if ( !Enabler || Enabler->GetValue() )
 		return res;
+    DEBUGLOG(_T("after enabler"));
 
 	if ( !res ) 
 		(*m_intValue) = 0;
