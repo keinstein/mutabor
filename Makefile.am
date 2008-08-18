@@ -6,7 +6,8 @@ INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(top_srcdir)/xrc \
 	@NETINET_INC@
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
-BUILT_SOURCES = @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
+BUILT_SOURCES += @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 EXTRA_DIST = config.rpath mkinstalldirs m4/ChangeLog  debian/changelog debian/compat debian/control debian/copyright \
@@ -50,6 +51,7 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mywx/myContextHelpButton.h \
 		mywx/myContextHelpButton.cpp \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
+		$(top_srcdir)/xrc/wxresource.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 #
@@ -148,7 +150,7 @@ Mutabor.app:all Mutabor.xrc mutabor
 		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
 	done
 
-wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
+$(top_srcdir)/xrc/wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
 
