@@ -95,46 +95,63 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 	 Prev = this;
 	 return this;
   }
-#if 1
+#if 0
   // *(position->Prev) == position
   if ( *(position->PrevPtr) == position ) { // first position
-      DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
-	       position,
-	       position->Prev,
-	       position->Next,
-	       *((position->PrevPtr))
-	       );
-      *(position->PrevPtr) = this;
-    } else { // normal position in list
-      DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
-	       position,
-	       position->Prev,
-	       position->Next,
-	       *((GisReadHead**)(position->PrevPtr))
-	       );
-      (*(position->PrevPtr))->Next = this;
-    }
-    PrevPtr = position->PrevPtr;
-    Next = position;
+    DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	     position,
+	     position->Prev,
+	     position->Next,
+	     *((position->PrevPtr))
+	     );
     *(position->PrevPtr) = this;
-    return this;
-#else
-  DEBUGLOG(_T("pos = %p, prev = %p"),position, position->Prev);
-  if ( (position -> Prev) == position) {
-    Prev = this;
-  } else {
-    Prev = position -> Prev; 
-    position->Prev->Next = this;
+  } else { // normal position in list
+    DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	     position,
+	     position->Prev,
+	     position->Next,
+	     *((GisReadHead**)(position->PrevPtr))
+	     );
+    (*(position->PrevPtr))->Next = this;
   }
+  PrevPtr = position->PrevPtr;
   Next = position;
-  Next->Prev = this;
+  *(position->PrevPtr) = this;
+  return this;
+#else
+  // *(position->Prev) == position
+  if ( *(position->PrevPtr) == position ) { // first position
+    DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	     position,
+	     position->Prev,
+	     position->Next,
+	     *((position->PrevPtr))
+	     );
+    *(position->PrevPtr) = this;
+    PrevPtr = position->PrevPtr;
+    position->PrevPtr = &(position->Prev);
+  } else { // normal position in list
+    DEBUGLOG(_T("first position %p, Prev: %p, Next: %p, cmp: %p"),
+	     position,
+	     position->Prev,
+	     position->Next,
+	     *((GisReadHead**)(position->PrevPtr))
+	     );
+    
+    position->Prev->Next = this;
+    wxASSERT(position->PrevPtr == &(position->Prev));
+  }
+  Prev = position->Prev;
+  Next = position;
+  position->Prev = this;
+  
   return this;
 #endif
 }
 
 GisReadHead* GisReadHead::CutOut()
 {
-#if 1
+#if 0
   if ( *(PrevPtr) == this ) // first of list
   {
     *PrevPtr = Next;
@@ -148,15 +165,25 @@ GisReadHead* GisReadHead::CutOut()
   PrevPtr = &Prev;
   return this;
 #else
-  if ( Prev == this ) // first of list
+  if ( *(PrevPtr) == this ) // first of list
   {
-    if (Next) Next->Prev = Next;
-  } else {  // normal list postition
-    Prev->Next = Next;
-    if ( Next ) Next->Prev = Prev;
+    *PrevPtr = Next;
+    if (Next) {
+      Next->PrevPtr = PrevPtr;
+      Next->Prev = NULL;
+    }
   }
-  Next = 0;
-  Prev = 0;
+  else // normal list postition
+  {
+    Prev->Next = Next;
+    if (Next) {
+      Next->Prev = Prev;
+      wxASSERT(Next->PrevPtr == &(Next->Prev));
+    }
+  }
+  Next = NULL;
+  PrevPtr = &Prev;
+  Prev = NULL;
   return this;
 #endif
 }
