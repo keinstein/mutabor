@@ -420,8 +420,8 @@ long InGis::ReadOn(long delta)
       continue;
     }
     
-    printHeadChain(DEBUGLOG(_T("Working Chain:")), *H);
-    DEBUGLOG(_T("Reading on with %p\n%s"), *H, (GISPrettyPrint(*Head).c_str()));
+    // printHeadChain(DEBUGLOG(_T("Working Chain:")), *H);
+    //DEBUGLOG(_T("Reading on with %p\n%s"), *H, (GISPrettyPrint(*Head).c_str()));
 
     if ( h->nSub == 0 ) { // all subs has finished
       ProceedRoute(h, h->Turn++);   // end of segment or sequenz
