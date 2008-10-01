@@ -22,6 +22,8 @@
 
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
+#else
+#include "wx/filedlg.h"
 #endif
 
 ////@begin includes
@@ -283,7 +285,7 @@ void OutputDevDlg::OnButton2Click( wxCommandEvent& event )
 #ifdef __WXCOCOA__
 		0);
 #else
-		wxOPEN | wxFILE_MUST_EXIST);
+		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 #endif
     if ( !NewFileName.empty() )
 		ctrlMidiFile->SetValue(NewFileName);
@@ -304,7 +306,7 @@ void OutputDevDlg::OnButton3Click( wxCommandEvent& event )
 #ifdef __WXCOCOA__
         0);
 #else
-		wxOPEN | wxFILE_MUST_EXIST);
+		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 #endif
     if ( !NewFileName.empty() )
 		ctrlMidiFile->SetValue(NewFileName);
