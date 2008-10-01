@@ -73,10 +73,9 @@ class OutMidiFile : public OutDevice
     int DevId;
     int bending_range;
     OutMidiFile(wxString name, int devId, int bendingRange = 1)
-	  : OutDevice(),Name(name)
+	  : OutDevice(devId),Name(name)
 	  {
-	    DevId = devId;
-      bending_range = bendingRange;
+	    bending_range = bendingRange;
 	  }
 	  virtual ~OutMidiFile() {};
 	  virtual bool Open();
