@@ -19,7 +19,7 @@ const mutChar *GspErrorText[] =
   /*  9 */ N_(""),
   // 10-19: Parameterfehler
   /* 10 */ N_("Parameter expected."),
-  /* 11 */ N_("'>' oder ',' erwartet."),
+  /* 11 */ N_("'>' or ',' expected."),
   /* 12 */ N_(""),
   /* 13 */ N_(""),
   /* 14 */ N_(""),
@@ -52,6 +52,6 @@ const mutChar *GspErrorText[] =
   /* 39 */ N_(""),
   // 40- 49: Strict-GMN-Fehler
   /* 40 */ N_("The file must begin with '[' or '{'."),
-  /* 41 */ N_("Range range without preceeding tag.")
+  /* 41 */ N_("Range without preceeding tag.")
 
 };
