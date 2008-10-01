@@ -124,9 +124,11 @@ class Route
 class OutDevice
 {
   public:
+    int DevId;
     OutDevice *Next;
-    OutDevice()
+    OutDevice(int devId)
     {
+      DevId=devId;
       Next = 0;
     };
     virtual ~OutDevice()
@@ -136,8 +138,10 @@ class OutDevice
 
     virtual bool Open() = 0;
     virtual void Close() = 0;
-    virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd) = 0;
-    virtual void NoteOff(int box, int taste, int velo, Route *r, int channel) = 0;
+    virtual void NoteOn(int box, int taste, int velo, Route *r, 
+			int channel, ChannelData *cd) = 0;
+    virtual void NoteOff(int box, int taste, int velo, Route *r, 
+			 int channel) = 0;
     virtual void NotesCorrect(int box) = 0;
     virtual void Sustain(char on, int channel) = 0;
     virtual int  GetChannel(int taste) = 0;
