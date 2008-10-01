@@ -2,13 +2,16 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.11 2008/07/22 07:57:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.12 2008/10/01 09:26:10 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/07/22 07:57:06 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2008/10/01 09:26:10 $
+ * \version $Revision: 1.12 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.12  2008/10/01 09:26:10  keinstein
+ * fix midi file playing
+ *
  * Revision 1.11  2008/07/22 07:57:06  keinstein
  * solved some valgrind issues
  *
@@ -574,7 +577,6 @@ void InMidiFile::Pause()
 void InMidiFile::IncDelta()
 {
   actDelta++;
-  DEBUGLOG(_T("actDelta: %d"),actDelta);
   if ( Busy )
     return;
   if ( actDelta < minDelta )
@@ -688,64 +690,63 @@ long InMidiFile::ReadMidiProceed(size_t nr, long time)
 }
 
 #define MIDICODE(i) \
-  (((BYTE*)(&midiCode))[i])
+  (0xff & (midiCode >> (8*i)))
+  //(((BYTE*)(&midiCode))[i])
 
 // f¸r bestimmte Route Codeverarbeitung
 void InMidiFile::ProceedRoute(DWORD midiCode, Route *route)
 {
+  DEBUGLOG(_T("Code: %x, Active: %d, Out: %x"),midiCode, 
+	   route->Active, 
+	   route->Out);
   int Box = route->Box;
   BYTE MidiChannel = MIDICODE(0) & 0x0F;
   BYTE MidiStatus = MIDICODE(0) & 0xF0;
+  DEBUGLOG(_T("Status: %x"), MidiStatus);
   switch ( MidiStatus )
   {
-	  case 0x90: // Note On
-		  if ( MIDICODE(2) > 0 )
-      {
-        if ( route->Active )
-          AddKey(Box, MIDICODE(1), route->Id);
-        if ( route->Out )
-          route->Out->NoteOn(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel, &Cd[MidiChannel]);
-        break;
-      }
- 	  case 0x80: // Note Off
+  case 0x90: // Note On
+    if ( MIDICODE(2) > 0 ) {
       if ( route->Active )
-  		  DeleteKey(Box, MIDICODE(1), route->Id);
+	AddKey(Box, MIDICODE(1), route->Id);
       if ( route->Out )
-        route->Out->NoteOff(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel);
-		  break;
- 	  case 0xC0: // Programm Change
-      Cd[MidiChannel].Sound = MIDICODE(1);
-  		break;
-	  case 0xB0:
-      if ( MIDICODE(1) == 64 )
-      {
-        Cd[MidiChannel].Sustain = MIDICODE(2);
-        if ( route->Out )
-          route->Out->Sustain(Cd[MidiChannel].Sustain, MidiChannel);
-        break;
-      }
-      else if ( MIDICODE(1) == 0 ) // BankSelectMSB
-      {
-        Cd[MidiChannel].BankSelectMSB = MIDICODE(2);
-        break;
-      }
-      else if ( MIDICODE(1) == 32 ) // BankSelectLSB
-      {
-        Cd[MidiChannel].BankSelectLSB = MIDICODE(2);
-        break;
-      }
-	  case 0xA0:
-	  case 0xD0: // Key Pressure, Controler, Channel Pressure
-      //3 ??
-  		break;
-	  case 0xF0:
+	route->Out->NoteOn(Box, MIDICODE(1), MIDICODE(2), route,
+			   MidiChannel, &Cd[MidiChannel]);
+      break;
+    }
+  case 0x80: // Note Off
+    if ( route->Active )
+      DeleteKey(Box, MIDICODE(1), route->Id);
+    if ( route->Out )
+      route->Out->NoteOff(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel);
+    break;
+  case 0xC0: // Programm Change
+    Cd[MidiChannel].Sound = MIDICODE(1);
+    break;
+  case 0xB0:
+    if ( MIDICODE(1) == 64 ) {
+      Cd[MidiChannel].Sustain = MIDICODE(2);
       if ( route->Out )
-        route->Out->MidiOut(pData, nData);
+	route->Out->Sustain(Cd[MidiChannel].Sustain, MidiChannel);
+      break;
+    } else if ( MIDICODE(1) == 0 ) { // BankSelect MSB
+      Cd[MidiChannel].BankSelectMSB = MIDICODE(2);
+      break;
+    } else if ( MIDICODE(1) == 32 ) {// BankSelectLSB
+      Cd[MidiChannel].BankSelectLSB = MIDICODE(2);
+      break;
+    }
+  case 0xA0:
+  case 0xD0: // Key Pressure, Controler, Channel Pressure
+    //3 ??
+    break;
+  case 0xF0:
+    if ( route->Out )
+      route->Out->MidiOut(pData, nData);
 
   }
   if ( Box >= 0 && route->Active )
-    for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++)
-    {
+    for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
       MidiAnalysis(Box, MIDICODE(0));
       midiCode >>= 8;
     }
@@ -759,7 +760,7 @@ void InMidiFile::Proceed(DWORD midiCode, int track)
  	  switch ( R->Type )
 	  {
 		  case RTchannel:
-		    if ( R->Check(((BYTE*)&midiCode)[0] & 0x0F) )
+		    if ( R->Check(midiCode & 0x0F) )
 		    {
 			    ProceedRoute(midiCode, R);
 			    DidOut = 1;
