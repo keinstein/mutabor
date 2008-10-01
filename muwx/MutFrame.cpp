@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.19 2008/08/18 15:10:37 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.20 2008/10/01 09:33:49 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/08/18 15:10:37 $
- * \version $Revision: 1.19 $
+ * \date $Date: 2008/10/01 09:33:49 $
+ * \version $Revision: 1.20 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.20  2008/10/01 09:33:49  keinstein
+ * fixed inclution for XCode build
+ *
  * Revision 1.19  2008/08/18 15:10:37  keinstein
  * Fix subwindow creation when on other window
  *
@@ -153,14 +156,14 @@
 #include "bitmaps/print.xpm"
 #include "bitmaps/help.xpm"
 
-#include <wx/filename.h>
-#include <wx/config.h>
-#include <wx/confbase.h>
-#include <wx/fileconf.h>
+#include "wx/filename.h"
+#include "wx/config.h"
+#include "wx/confbase.h"
+#include "wx/fileconf.h"
 #ifdef __WXMSW__
 #  include <wx/msw/regconf.h>
 #endif
-#include <wx/ffile.h>
+#include "wx/ffile.h"
 #include "MutFrame.h"
 #include "MutChild.h"
 //#include "Mutabor.rh"
@@ -779,10 +782,11 @@ void MutFrame::RaiseLogic(wxCommandEvent& event) {
     wxFrame * win = 
       dynamic_cast<wxFrame *>(WinAttrs[WK_LOGIC][i].Win->GetParent());
     if (win) win->Raise();
+#ifdef DEBUG
     DEBUGLOG(_T("Parent type: ")) 
       << typeid(*( WinAttrs[WK_LOGIC][i].Win->GetParent())).name()
       << std::endl;
-
+#endif
     GetMenuBar()->Check(event.GetId(),true);
   }
 }
@@ -1631,8 +1635,10 @@ void MutFrame::CloseAll(WinKind kind) {
     WinAttr &win = WinAttrs[kind].Item(i-1);
     if ( win.Win )
       {
+#ifdef DEBUG
 	DEBUGLOG(_("Closing window of class "))
 	  << typeid(*(win.Win)).name() << std::endl;
+#endif
 	win.Wanted = 2;
 
 	CloseClientWindow(win.Win);

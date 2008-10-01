@@ -1,7 +1,7 @@
 #ifndef mhARRAY_H
 #define mhARRAY_H
 
-#include <wx/dynarray.h>
+#include "wx/dynarray.h"
 
 #define DEF_MHARRAY(T, name, baseType)								\
 class name															\

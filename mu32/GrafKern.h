@@ -2,12 +2,15 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.7 2008/08/18 15:05:29 keinstein Exp $
+ * $Id: GrafKern.h,v 1.8 2008/10/01 09:30:47 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/08/18 15:05:29 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2008/10/01 09:30:47 $
+ * \version $Revision: 1.8 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.8  2008/10/01 09:30:47  keinstein
+ * fixed inclution for XCode build
+ *
  * Revision 1.7  2008/08/18 15:05:29  keinstein
  * fixed some const char * warnings and charset issues
  *
@@ -34,7 +37,7 @@
 
 
 #if defined(WX)
-#include <wx/wx.h>
+#include "wx/wx.h"
 #endif
 extern const mutChar * Error_text[]; /* Liste der Fehlermeldungen */
 extern const mutChar * Warning_text[]; /* Liste der Warnungen */

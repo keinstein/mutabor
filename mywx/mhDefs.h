@@ -36,7 +36,7 @@ extern wxHtmlHelpController * HelpController;
 
 #ifdef WX
 #if defined(WX) && defined(UNICODE)
-  #include <wx/strconv.h>
+  #include "wx/strconv.h"
   extern wxCSConv muCSConv;
   #define muT(x)  (wxString(x, muCSConv))
   #define mumT(x) _T(x)

@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.8 2008/08/01 16:24:30 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.9 2008/10/01 09:32:49 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/08/01 16:24:30 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/10/01 09:32:49 $
+ * \version $Revision: 1.9 $
  * \license wxWindows license
  * 
  * $Log: MutChild.h,v $
+ * Revision 1.9  2008/10/01 09:32:49  keinstein
+ * fixed inclution for XCode build
+ *
  * Revision 1.8  2008/08/01 16:24:30  keinstein
  * Fix some segfaults on stopping Mutabor
  *
@@ -36,9 +39,9 @@
 #ifndef MUTCHILD_H
 #define MUTCHILD_H
 
-#include <wx/toolbar.h>
-#include <wx/dynarray.h>
-#include <wx/arrimpl.cpp> // this is a magic incantation which must be done!
+#include "wx/toolbar.h"
+#include "wx/dynarray.h"
+#include "wx/arrimpl.cpp" // this is a magic incantation which must be done!
 #include "mhDefs.h"
 #include "wx/aui/aui.h"
 #include "MutTextBox.h"
