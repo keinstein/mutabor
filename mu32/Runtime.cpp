@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.10 2008/07/21 09:03:11 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.11 2008/10/01 09:31:07 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/07/21 09:03:11 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2008/10/01 09:31:07 $
+ * \version $Revision: 1.11 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.11  2008/10/01 09:31:07  keinstein
+ * Routing broken
+ *
  * Revision 1.10  2008/07/21 09:03:11  keinstein
  * Use symbolic enum values for device modes and device actions
  * move FlushUpdateUI() to Execute.cpp
@@ -347,15 +350,17 @@ bool GetLine(char **p, char *s)
 
 
 // das nr-ste Output Device
+// TODO Nr from 0 or 1?
 OutDevice *GetOut(int nr)
 {
+  DEBUGLOG2(_T("Nr.: %d"),nr);
   if ( nr < 0 )
     return 0;
   OutDevice *Out = OutDevices;
-  while ( Out && nr )
-  {
+  while ( Out ) {
+    if (Out->DevId == nr) break;
     Out = Out->Next;
-    nr--;
+    DEBUGLOG2(_T("Nr.: %d, Out: %x"),nr, Out);
   }
   return Out;
 }
@@ -390,7 +395,7 @@ void pascal _export ScanDevices(const wxString &config)
   {
     wxChar Type[80], Name[400];
     int DevId, BendingRange;
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 	int test = SSCANF (s, _T("%ls \"%l[^\"]\" %d %d"), Type, Name, &DevId, &BendingRange);
     if ( test < 2 )
 		test = SSCANF (s, _T("%ls %ls %d %d"), Type, Name, &DevId, &BendingRange);
@@ -431,7 +436,7 @@ void pascal _export ScanDevices(const wxString &config)
     // Device lesen
     wxChar Type[80], Name[400];
     int DevId = -1;
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 	int test = SSCANF (s, _T("%ls \"%l[^\"]\" %d"), Type, Name, &DevId);
     if ( test < 2 )
 		test = SSCANF (s, _T("%ls %ls %d"), Type, Name, &DevId);
@@ -468,7 +473,7 @@ void pascal _export ScanDevices(const wxString &config)
       // Route lesen
       wxChar Type[40];
       int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
       test = SSCANF(s, _("%ls %d %d %d %d %d %d %d %d"),
 			Type, &IFrom, &ITo, &Box, &BoxActive, &OutDev, &OFrom, &OTo, &ONoDrum);
 #else
