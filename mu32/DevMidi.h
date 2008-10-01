@@ -30,12 +30,11 @@ class OutMidiPort : public OutDevice
 {
  public:
   wxString Name;
-  int DevId;
   int bending_range;
  OutMidiPort(wxString name, int devId, int bendingRange = 1)
-   : OutDevice(),Name(name)
+   : OutDevice(devId),Name(name)
   {
-    DevId = devId;
+    DEBUGLOG(_T(""));
     bending_range = bendingRange;
   }
   ~OutMidiPort() {};
@@ -52,7 +51,9 @@ class OutMidiPort : public OutDevice
   };
   virtual void AddTime(frac time) {};
   virtual void MidiOut(DWORD data, char n);
-  virtual void MidiOut(BYTE *p, char n) {};
+  virtual void MidiOut(BYTE *p, char n) {
+    DEBUGLOG(_T(""));
+  };
   virtual void Quite(Route *r);
   virtual void Panic();
   virtual bool NeedsRealTime() { return true; }

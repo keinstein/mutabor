@@ -32,8 +32,8 @@
                    (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
 
 #define ZWZ 1.059463094 /* 12.Wurzel 2 */
-#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((float)x)/(double)16777216.0))-69))
-#define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
+#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/16777216.0l))-69))
+#define LONG_TO_CENT( x ) ( ((double)x)/167772.13l  )
 
 #ifdef RTMIDI
   #include "RtMidi.h"
@@ -77,9 +77,26 @@
 #define zgf  ((unsigned char*) &pb)
 
 // Pitch
+/* zugriff: 00000000111111112222222233333333
+22222222000000 + 111111
+
+zugriff: 0 1 2 3 4 5 6 7 | 8 9 10 11 12 13 14 15 | 
+        16 17 18 19 20 21 22 23 | 24 25 26 27 28 29 30 31
+zugriff[2] << 6 =  0  0  0  0  0  0 16 17 18 19 20 21 22 23
+zugriff[1] >> 2 = 10 11 12 13 14 15
+pb            = ( 10 11 12 13 14 15 16 17 18 19 20 21 22 23 ) / bending_range;
+zgf0 >> 1 =          11 12 13 14 16 16 17
+zgf1 +64 =                                18 19 20 21 22 23 "1"
+pb & 0xff >> 1  =    11 12 13 14 15 16 17
+(pb>>8+0x4000)&0x7f00 =                   18 19 20 21 22 23 "1"
+
+ */
 #define MIDI_PITCH(i) \
-	int pb = ( (((int)zugriff[2])<<6) + (zugriff[1]>>2) ) / bending_range; \
-	MIDI_OUT3(0xE0+i, zgf[0] >> 1 , 64+zgf[1])
+  { unsigned int pb = ( ((freq & 0xffffff) / bending_range) >> 11) ;	\
+  MIDI_OUT3 (0xE0 + i, pb & 0x7f, (0x40 + (pb >> 7) ) & 0x7f) }
+  
+//	int pb = ( (((int)zugriff[2])<<6) + (zugriff[1]>>2) ) / bending_range; \
+//	MIDI_OUT3(0xE0+i, zgf[0] >> 1 , 64+zgf[1])
 
 // Sound
 #define MIDI_SOUND(i, sound) \
@@ -91,6 +108,7 @@
 
 bool OutMidiPort::Open()
 {
+  DEBUGLOG(_T(""));
   int i;
   for (i = 0; i < 16; i++)
   {
@@ -133,6 +151,7 @@ bool OutMidiPort::Open()
 
 void OutMidiPort::Close()
 {
+  DEBUGLOG(_T(""));
   // alle liegenden Tˆne ausschalten
   for (int i = 0; i < 16; i++)
     if ( KeyDir[i] >= 16 )  // benutzt
@@ -263,8 +282,10 @@ void OutMidiPort::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
 
 void OutMidiPort::NoteOff(int box, int taste, int velo, Route *r, int channel)
 {
+  DEBUGLOG(_T("box %d, key %d, velo %d, channel %d"),
+	   box, taste, velo, channel);
   if ( box == -2 )
-    box = 255;
+    box = MAX_BOX+1;
   DWORD id = MAKE_ID(r, box, taste, channel);
   if ( !velo ) //3 ?? notwendig?
     velo = 64;
@@ -291,6 +312,7 @@ inline long LongAbs(long x)
 
 void OutMidiPort::NotesCorrect(int box)
 {
+  DEBUGLOG(_T(""));
   for (int i = 0; i < 16; i++)
     if ( (KeyDir[i] >= 16 && ton_auf_kanal[i].id) || Cd[i].Sustain )
     {
@@ -323,9 +345,11 @@ void OutMidiPort::NotesCorrect(int box)
         continue;
       // Spezialbending (groﬂer Range)
       Cd[i].Pitch = Delta;
-      Delta /= (4*bending_range);
-      Delta +=  0x400000; // lieber hier addieren //9
-      MIDI_OUT3(0xE0+i, ((BYTE*)&Delta)[1] >> 1, (((BYTE*)&Delta)[2]));
+      Delta /= bending_range;
+      Delta = Delta >> 11;
+      Delta +=  0x4000; // lieber hier addieren //9
+      //      MIDI_OUT3(0xE0+i, ((BYTE*)&Delta)[1] >> 1, (((BYTE*)&Delta)[2]));
+      MIDI_OUT3(0xE0+i, Delta & 0x7f, (Delta >> 7) & 0x7f );
       // evtl. Ton einschalten
       if ( SwitchTone )
         MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, 64);  //3 velo speichern ??
@@ -334,6 +358,7 @@ void OutMidiPort::NotesCorrect(int box)
 
 void OutMidiPort::Sustain(char on, int channel)
 {
+  DEBUGLOG(_T(""));
   DWORD chan = channel; // Midi has unsigned channels
   for (int i = 0; i < 16; i++)
     if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].id >> 24) == chan )
@@ -345,6 +370,7 @@ void OutMidiPort::Sustain(char on, int channel)
 
 int OutMidiPort::GetChannel(int taste)
 {
+  DEBUGLOG(_T(""));
   for (int i = 0; i < 16; i++)
     if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].taste == taste) )
       return i;
@@ -356,6 +382,7 @@ int OutMidiPort::GetChannel(int taste)
 #ifdef RTMIDI
 void OutMidiPort::MidiOut(DWORD data, char n)
 {
+  DEBUGLOG(_T("RtMidi"));
   std::vector<unsigned char> message;
   while ( n-- )
   {
@@ -369,12 +396,14 @@ void OutMidiPort::MidiOut(DWORD data, char n)
 #else
 void OutMidiPort::MidiOut(DWORD data, char n)
 {
+  DEBUGLOG(_T("without RtMidi"));
   midiOutShortMsg(hMidiOut, data);
 }
 #endif
 
 void OutMidiPort::Quite(Route *r)
 {
+  DEBUGLOG(_T(""));
   for (int i = 0; i < 16; i++)
     if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->Id )
       NoteOff(r->Box, ton_auf_kanal[i].id % 256, 64, r,  ton_auf_kanal[i].id >> 24);
@@ -382,9 +411,10 @@ void OutMidiPort::Quite(Route *r)
 
 void OutMidiPort::Panic()
 {
+  DEBUGLOG(_T(""));
   for (int i = 0; i < 16; i++)
   {
-	  MIDI_OUT3(176+i, 123, 0);  // All notes off */
+    MIDI_OUT3(176+i, 123, 0);  // All notes off */
     MIDI_OUT3(0xB0+i, 7, 127);  // main volume
     // sound piano
     MIDI_OUT2(0xC0+i, 0);
