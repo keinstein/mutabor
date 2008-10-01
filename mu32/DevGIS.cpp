@@ -125,8 +125,7 @@ void OutGis::NotesCorrect(int instr, TONSYSTEM * tonsys)
 		}
 }
 */
-void OutGis::Gis(GisToken *token, char turn)
-{
+void OutGis::Gis(GisToken *token, char turn) {
   GisWriteHeadGis(&Head, CurrentId, token, turn);
 }
 

@@ -17,39 +17,38 @@ extern mutString CurrentSep;
 
 class OutGis : public OutDevice
 {
-  protected:
-		mutString Name;
-  public:
-		GisWriteHead *Head;
+protected:
+  mutString Name;
+public:
+  GisWriteHead *Head;
 
-		OutGis(mutString Id) : OutDevice(), Name(Id)
-		{
-			Head = new GisWriteHead(0, Id);
-		}	
-		~OutGis()
-		{
-			delete Head;
-		}
-		virtual bool Open() { return true; }
-		virtual void Close()
-	   {
-	    	CloseAllSubs(Head);
-	   };
-	   virtual void NoteOn(int box, int taste, int velo, Route *r, int channel, ChannelData *cd){};
-	   virtual void NoteOff(int box, int taste, int velo, Route *r, int channel){};
-	   virtual void NotesCorrect(int box){};
- 	   virtual void Sustain(char on, int channel) {};
-		virtual int  GetChannel(int taste) { return -1; }
-	   virtual void Gis(GisToken *token, char turn);
- 	   virtual void MidiOut(DWORD data, char n) {};
-		virtual void MidiOut(BYTE *p, char n) {};
-	   virtual void AddTime(frac time)
-	   {
-	    	Head->AddTime(time);
-	   }
-     virtual void Quite(Route *r) {};
-	   virtual wxString & GetName() { return Name; }
-	   virtual DevType GetType() const { return DTGis; }
+ OutGis(mutString Id, int devId) : OutDevice(devId), Name(Id) {
+    Head = new GisWriteHead(0, Id);
+  }	
+  ~OutGis() {
+    delete Head;
+  }
+
+  virtual bool Open() { return true; }
+  virtual void Close() {
+    CloseAllSubs(Head);
+  };
+  virtual void NoteOn(int box, int taste, int velo, 
+		      Route *r, int channel, ChannelData *cd){};
+  virtual void NoteOff(int box, int taste, 
+		       int velo, Route *r, int channel){};
+  virtual void NotesCorrect(int box){};
+  virtual void Sustain(char on, int channel) {};
+  virtual int  GetChannel(int taste) { return -1; }
+  virtual void Gis(GisToken *token, char turn);
+  virtual void MidiOut(DWORD data, char n) {};
+  virtual void MidiOut(BYTE *p, char n) {};
+  virtual void AddTime(frac time) {
+    Head->AddTime(time);
+  }
+  virtual void Quite(Route *r) {};
+  virtual wxString & GetName() { return Name; }
+  virtual DevType GetType() const { return DTGis; }
 };
 
 // InGis ------------------------------------------------------------
