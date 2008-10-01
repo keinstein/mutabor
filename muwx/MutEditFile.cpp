@@ -23,6 +23,7 @@
 #include <iostream>
 
 #include "wx/wxprec.h"
+#include "wx/ffile.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -32,7 +33,6 @@
     #include "wx/wx.h"
     #include "wx/mdi.h"
     #include "wx/filename.h"
-	#include "wx/ffile.h"
 	#include "wx/textfile.h"
 #endif
 
@@ -336,7 +336,7 @@ void MutEditFile::CmHelpContext(wxCommandEvent& WXUNUSED(event))
     WinHelp(HlpFile, HELP_CONTEXT, SX_BASICS);*/
 }
 
-#if defined(__WXMSW__) && !(wxUSE_UNICODE)
+#if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 
 wxString MutEditFile::GetValue() const
 {
@@ -367,7 +367,7 @@ wxString MutEditFile::GetRange(long from, long to) const
                 to = len;
 		std::cout << "MutEditFile::GetRange: to  = "<< to << std::endl;
 
-#if !wxUSE_UNICODE
+#if !(wxUSE_UNICODE || wxUSE_WCHAR_T)
             // we must use EM_STREAMOUT if we don't want to lose all characters
             // not representable in the current character set (EM_GETTEXTRANGE
             // simply replaces them with question marks...)
@@ -474,7 +474,7 @@ wxString MutEditFile::GetRange(long from, long to) const
 }
 
 
-#if wxUSE_RICHEDIT && (!wxUSE_UNICODE || wxUSE_UNICODE_MSLU)
+#if wxUSE_RICHEDIT && (!(wxUSE_UNICODE || wxUSE_WCHAR_T) || wxUSE_UNICODE_MSLU)
 
 // a small class used to set m_updatesCount to 0 (to filter duplicate events if
 // necessary) and to reset it back to -1 afterwards

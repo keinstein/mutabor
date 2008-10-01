@@ -2,12 +2,15 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.8 2008/07/21 08:59:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.9 2008/10/01 09:28:25 keinstein Exp $
  * \author R¸diger Krauﬂe <krausze@mail.berlios.de>
- * \date $Date: 2008/07/21 08:59:38 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/10/01 09:28:25 $
+ * \version $Revision: 1.9 $
  *
  * $Log: EDevice.h,v $
+ * Revision 1.9  2008/10/01 09:28:25  keinstein
+ * Better multibyte wxString support
+ *
  * Revision 1.8  2008/07/21 08:59:38  keinstein
  * recoded
  * Use symbolic enum values for device modes.
@@ -48,8 +51,8 @@
 #include "wx/wx.h"
 #include "Global.h"
 
-#include <wx/string.h>
-#include <wx/config.h>
+#include "wx/string.h"
+#include "wx/config.h"
 #include "Device.h"
 #include "DevGIS.h"
 #include "DevMidi.h"
@@ -224,6 +227,7 @@ class EDevice
   /** This function creates an output device according to the 
       current configuration */
   OutDevice * newOutDevice() {
+    DEBUGLOG(_T("Device Type: %d"),DT);
     switch (DT) {
     case DTNotSet: 
       wxLogError(_("Device type not set"));
@@ -234,7 +238,8 @@ class EDevice
       break;
       //3 ??
     case DTGis:
-      return new OutGis(Name);
+      wxASSERT(false);
+      return new OutGis(Name,0);
       break;
     case DTMidiPort:
       return new OutMidiPort(Name, DevId, BendingRange);
@@ -287,6 +292,9 @@ inline Route * ERoute::newRoute()
   OutDevice * o;
   if (Out) o = GetOut(Out->DevId);
   else o = NULL;
+#ifdef DEBUG
+  DEBUGLOG(_T("Out: %x, o: %x"),Out,o);
+#endif
   return new Route(Type, 
 		   IFrom, ITo, 
 		   Box, Active, 

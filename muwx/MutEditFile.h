@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.6 2008/08/18 15:09:39 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.7 2008/10/01 09:33:22 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2008/08/18 15:09:39 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/10/01 09:33:22 $
+ * \version $Revision: 1.7 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.7  2008/10/01 09:33:22  keinstein
+ * Better multibyte wxString support
+ *
  * Revision 1.6  2008/08/18 15:09:39  keinstein
  * Moved temp file handling a little bit around
  *
@@ -57,7 +60,7 @@ class MutEditFile : public wxTextCtrl
 	void CmGetLine(wxCommandEvent& WXUNUSED(event));
 	void CmHelpContext(wxCommandEvent& WXUNUSED(event));
 	void GoErrorLine();
-#if defined(__WXMSW__) && !(wxUSE_UNICODE)
+#if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 	wxString GetValue() const;
 	wxString GetRange(long from, long to) const;
 #if wxUSE_RICHEDIT && (!wxUSE_UNICODE || wxUSE_UNICODE_MSLU)

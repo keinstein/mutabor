@@ -314,7 +314,7 @@ void ScanRoutes(const wxString& config)
 		std::cout << "a" << (s.fn_str()) << std::endl;
 		std::cout << "=" << (s.ToUTF8()) << std::endl;
 #endif
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 		int test = SSCANF(s.c_str(), _T("%ls \"%l[^\"]\" %d %d"),
 				  Type, Name, &DevId, &BendingRange);
 		if ( test < 2 )
@@ -354,7 +354,7 @@ void ScanRoutes(const wxString& config)
 		wxChar Type[40], Name[400];
 		//wxString Type, Name;
 		int DevId = -1;
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 		int test = SSCANF(s, _T("%ls \"%l[^\"]\" %d"), 
 				  Type, Name, &DevId);
 		if ( test < 2 )
@@ -388,7 +388,7 @@ void ScanRoutes(const wxString& config)
 			wxChar Type[40];
 			int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0, 
 			  OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
-#if (wxUSE_UNICODE)
+#if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 			test = SSCANF(s.c_str(),
 				      _T("%ls %d %d %d %d %d %d %d %d"),
 				      Type, &IFrom, &ITo, &Box, &BoxActive, 
@@ -556,6 +556,7 @@ void ScanRoutes(wxConfigBase * config)
     config->SetPath(_T("../.."));
   }
   config->SetPath(_T(".."));
+  ScanDevices();
 }
 #else // no WX
 
@@ -1044,14 +1045,12 @@ void ScanDevices()
   */
 
   // clean device lists
-  if ( InDevices )
-  {
+  if ( InDevices ) {
     delete InDevices;
     InDevices = NULL;
   }
 
-  if ( OutDevices )
-  {
+  if ( OutDevices ) {
     delete OutDevices;
     OutDevices = NULL;
   }
@@ -1059,6 +1058,7 @@ void ScanDevices()
   // handle output devices
   OutDevice **PreOut = &OutDevices;
   for (EDevice * oute = OutEDevices; oute ; oute = oute->Next) {
+    DEBUGLOG2(_T("oute: %x"), oute);
     OutDevice *Out = oute->newOutDevice();
     *PreOut = Out;
     PreOut = &(Out->Next);
@@ -1074,6 +1074,7 @@ void ScanDevices()
 
     // handle routes
     for (ERoute * routee = ine->Routes; routee; routee = routee->Next) {
+      DEBUGLOG2(_T("routee: %x"), routee);      
       In->AddRoute(routee->newRoute());
     }
   }
