@@ -2,12 +2,15 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.7 2008/08/18 15:02:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.8 2008/10/01 09:30:47 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2008/08/18 15:02:41 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2008/10/01 09:30:47 $
+ * \version $Revision: 1.8 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.8  2008/10/01 09:30:47  keinstein
+ * fixed inclution for XCode build
+ *
  * Revision 1.7  2008/08/18 15:02:41  keinstein
  * fixed some const char * warnings
  *
@@ -39,7 +42,7 @@
 
 #ifdef MUTWIN
 #ifdef WX
-	#include <wx/msgdlg.h>
+	#include "wx/msgdlg.h"
 	wxStaticText* CompDiaLine = NULL;
 #else
 	HWND CompDiaLine;
