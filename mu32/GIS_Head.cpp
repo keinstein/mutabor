@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #if defined(WX)
-  #include <wx/string.h>
+  #include "wx/string.h"
 #else
   #include <string.h>
   #define muT(x) x
