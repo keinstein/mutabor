@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.19 2008/08/18 15:08:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.20 2008/10/09 15:14:02 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/08/18 15:08:42 $
- * \version $Revision: 1.19 $
+ * $Date: 2008/10/09 15:14:02 $
+ * \version $Revision: 1.20 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.20  2008/10/09 15:14:02  keinstein
+ * make compile on mingw
+ *
  * Revision 1.19  2008/08/18 15:08:42  keinstein
  * Exit Main loop if no window is open
  *
@@ -74,13 +77,13 @@
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include <wx/wxprec.h>
-#include <wx/xrc/xmlres.h>
-#include <wx/xrc/xh_all.h>
-#include <wx/fs_zip.h>
-#include <wx/cshelp.h>
-#include <wx/aboutdlg.h>
-#include <wx/generic/aboutdlgg.h>
+#include "wx/wxprec.h"
+#include "wx/xrc/xmlres.h"
+#include "wx/xrc/xh_all.h"
+#include "wx/fs_zip.h"
+#include "wx/cshelp.h"
+#include "wx/aboutdlg.h"
+#include "wx/generic/aboutdlgg.h"
 
 
 #ifdef __BORLANDC__
@@ -182,49 +185,49 @@ bool MutApp::OnInit()
 
 #ifdef DEBUG
   std::cout << "ConfigDir:        "
-	    << sp.GetConfigDir().ToUTF8() << std::endl
+	    << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
 	    << "DataDir:          " 
-	    << sp.GetDataDir().ToUTF8() << std::endl
+	    << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
 	    << "DocumentsDir:     "
-	    << sp.GetDocumentsDir().ToUTF8() << std::endl
+	    << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
 	    << "ExecutablePath:   " 
-	    << sp.GetExecutablePath().ToUTF8() << std::endl
+	    << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
     
 #if defined(__UNIX__) && !defined(__WXMAC__)
-	    << "InstallPrefix:    " << sp.GetInstallPrefix().ToUTF8() 
+	    << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8()) 
 	    << std::endl
 #endif
-	    << "LocalDataDir:     " << sp.GetLocalDataDir().ToUTF8() 
+	    << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
 	    << std::endl
-	    << "PluginsDir:       " << sp.GetPluginsDir().ToUTF8() 
+	    << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8()) 
 	    << std::endl
-	    << "ResourcesDir:     " << sp.GetResourcesDir().ToUTF8() 
+	    << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8()) 
 	    << std::endl
-	    << "TempDir:          " << sp.GetTempDir().ToUTF8() 
+	    << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8()) 
 	    << std::endl
-	    << "UserConfigDir:    " << sp.GetUserConfigDir().ToUTF8() 
+	    << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8()) 
 	    << std::endl
-	    << "UserDataDir:      " << sp.GetUserDataDir().ToUTF8() 
+	    << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8()) 
 	    << std::endl
-	    << "UserLocalDataDir: " << sp.GetUserLocalDataDir().ToUTF8() 
+	    << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8()) 
 	    << std::endl;
     
   std::cout 
             << "LocalizedResourcesDir(Can): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(), 
-					   sp.ResourceCat_None).ToUTF8()
+	    << (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(), 
+					   sp.ResourceCat_None).ToUTF8())
 	    << std::endl
             << "LocalizedResourcesDir(Can,Messages): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
-					   sp.ResourceCat_Messages).ToUTF8()
+	    << (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+					   sp.ResourceCat_Messages).ToUTF8())
 	    << std::endl
             << "LocalizedResourcesDir(): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetName(), 
-					   sp.ResourceCat_None).ToUTF8()
+	    << (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(), 
+					   sp.ResourceCat_None).ToUTF8())
 	    << std::endl
             << "LocalizedResourcesDir(Messages): " 
-	    << sp.GetLocalizedResourcesDir(m_locale.GetName(),
-					   sp.ResourceCat_Messages).ToUTF8()
+	    << (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
+					   sp.ResourceCat_Messages).ToUTF8())
 	    << std::endl;
 #endif 
  
@@ -249,7 +252,7 @@ bool MutApp::OnInit()
   // we want to name the help files according to the lanuage.
   if (!HelpController->Initialize(GetResourceName(_("Help.zip")))) 
     std::cerr << "Warning: could not initialize Help system: " 
-	      << wxString(_("manual.zip")).ToUTF8() << std::endl;
+	      << (const char *)(wxString(_("manual.zip")).ToUTF8()) << std::endl;
   //  HelpController->AddBook(_("manual.zip"));
   //  HelpController->DisplayIndex();
 
@@ -278,6 +281,7 @@ bool MutApp::OnInit()
   RestoreState();
   ((MutFrame*)frame)->RestoreState();
   
+  wxOGLInitialize();
 
   return true;
 }
@@ -533,12 +537,13 @@ void MutApp::CmFileNew (wxCommandEvent& event) {
 
 void MutApp::CmFileOpen (wxCommandEvent& event) {
   wxWindow * topwindow=GetTopWindow();
-  frame = dynamic_cast<MutFrame*>(topwindow);
   
   event.Skip(false);
   
   wxString path = FileNameDialog(topwindow);
   
+  frame = dynamic_cast<MutFrame*>(topwindow);
+
   if ( !path )
     return;
 	
@@ -657,8 +662,10 @@ void MutApp::CmQuit (wxCommandEvent& event) {
   wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 
   while ((window = GetTopWindow())) {
+#ifdef DEBUG
     DEBUGLOG(_("Closing window of class "))
       << typeid(*(window)).name();
+#endif
 
     if (!window->Close()) {
       wxIdleEvent::SetMode(imode);
@@ -699,23 +706,15 @@ wxString MutApp::GetResourceName(const wxString & file){
   wxString localename = m_locale->GetCanonicalName();
   wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
 
-#ifdef DEBUG
-  std::cerr << "Trying do load resources..." << std::endl
-	    << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl
-	    << (sp.GetResourcesDir().ToUTF8()) << std::endl;
-#endif
+  DEBUGLOGTYPE(MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
 
   if (!rcname.IsFileReadable()) {
     rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
-#ifdef DEBUG
-    std::cerr << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl;
-#endif
+    DEBUGLOGTYPE(MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
 
     if (!rcname.IsFileReadable()){
       rcname.SetPath(sp.GetResourcesDir());
-#ifdef DEBUG
-      std::cerr << "Trying " << rcname.GetFullPath().ToUTF8() << std::endl;
-#endif
+      DEBUGLOGTYPE(MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
     }
 
   }
@@ -856,6 +855,24 @@ int MutApp::OnExit() {
   wxXmlResource::Get()->ClearHandlers();
   return wxApp::OnExit();
 }
+
+#ifdef __WXMAC__
+void MutApp::MacOpenFile(const wxString &fileName) {
+  //  wxApp::MacOpenFile(fileName);
+
+  DEBUGLOG(_T("Filename: %s"),fileName.c_str());
+
+  frame = dynamic_cast<MutFrame*>(GetTopWindow());
+
+  if ( !fileName )
+    return;
+	
+  if (MustOpenFrame(frame))
+    frame = CreateMainFrame(EditorMenu);
+
+  frame->OpenFile(fileName);
+}
+#endif
 
 void MutApp::SaveState()
 {
