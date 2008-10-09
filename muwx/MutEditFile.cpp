@@ -181,10 +181,7 @@ void MutEditFile::CmFileSaveAs(wxCommandEvent& event)
 void MutEditFile::CmCompile(wxCommandEvent& event)
 {
 
-#ifdef DEBUG
-  std::cerr << "MutEditFile::CmCompile(Event(" << event.GetId() << "))" << std::endl;
-  std::cerr << m_filename.ToUTF8() << std::endl;
-#endif
+  DEBUGLOG(_T("MutEditFile::CmCompile(Event(%d)); filename = %s"),event.GetId(),m_filename.c_str());
   wxString origfilename = m_filename;
   wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 	if ( SaveEditor )
@@ -233,9 +230,7 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
 		wxRemoveFile(TmpFile);
 	}
 	m_filename = origfilename;
-#ifdef DEBUG
-  std::cerr << m_filename.ToUTF8() << std::endl;
-#endif
+	DEBUGLOG(_T("filename (at end) = '%s'"),m_filename.c_str());
 	event.Skip(false);
 }
 

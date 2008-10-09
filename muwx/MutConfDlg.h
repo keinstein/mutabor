@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor Configuration Dialog.
  *
- * $Id: MutConfDlg.h,v 1.2 2008/06/02 16:12:15 keinstein Exp $
+ * $Id: MutConfDlg.h,v 1.3 2008/10/09 15:14:02 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/06/02 16:12:15 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2008/10/09 15:14:02 $
+ * \version $Revision: 1.3 $
  *
  * $Log: MutConfDlg.h,v $
+ * Revision 1.3  2008/10/09 15:14:02  keinstein
+ * make compile on mingw
+ *
  * Revision 1.2  2008/06/02 16:12:15  keinstein
  * Implement Help
  *
@@ -23,6 +26,7 @@
 #include "wx/statline.h"
 #include "wx/filepicker.h"
 #include "wx/html/htmlwin.h"
+#include "wx/html/helpctrl.h"
 #include "wx/valgen.h"
 #include "wxresource.h"
 #include "MutFrame.h"

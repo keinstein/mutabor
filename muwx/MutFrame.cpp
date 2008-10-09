@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.20 2008/10/01 09:33:49 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.21 2008/10/09 15:14:02 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/01 09:33:49 $
- * \version $Revision: 1.20 $
+ * \date $Date: 2008/10/09 15:14:02 $
+ * \version $Revision: 1.21 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
+ * Revision 1.21  2008/10/09 15:14:02  keinstein
+ * make compile on mingw
+ *
  * Revision 1.20  2008/10/01 09:33:49  keinstein
  * fixed inclution for XCode build
  *
@@ -722,8 +725,7 @@ void MutFrame::ClearSubMenu(wxMenuItem * item) {
 
   wxMenu * menu = item->GetSubMenu();
 #ifdef DEBUG
-  std::cout << "MutFrame::ClearSubMenu: " 
-	    << (item->GetText()).ToUTF8()
+  DEBUGLOG(_T("item: %s\n"),(item->GetText()).c_str())
 	    << " (" << item << ")"
 	    << std::endl;
 #endif
@@ -732,26 +734,14 @@ void MutFrame::ClearSubMenu(wxMenuItem * item) {
   
 
   wxMenuItemList& l = menu->GetMenuItems();
-#ifdef DEBUG
-  std::cout << l.GetCount() << " items"
-	    << std::endl;
-#endif
+  DEBUGLOG(_T(" %d items"),l.GetCount());
   while (wxMenuItemList::Node * node = l.GetFirst()) {
     wxMenuItem * i = node->GetData();
-#ifdef DEBUG
-    std::cout << "MutFrame::ClearSubMenu: ptr" << i << std::endl;
-    std::cout << "MutFrame::ClearSubMenu: handling " 
-	      << (i->GetText()).ToUTF8()
-	      << std::endl;
-#endif
+    DEBUGLOG(_T("ptr %x handling %s"), i,(i->GetText()).c_str());
     if (i->IsSubMenu()) 
       ClearSubMenu(i);
     Disconnect(i->GetId(),wxEVT_COMMAND_MENU_SELECTED);
-#ifdef DEBUG
-    std::cout << "MutFrame:: ClearSubMenu: destroying " 
-	      << (i->GetText()).ToUTF8()
-	      << std::endl;
-#endif
+    DEBUGLOG(_T("destroying %s"),(i->GetText()).c_str());
     //    node->GetNext();
     menu->Destroy(i);
   }
@@ -856,9 +846,7 @@ void MutFrame::CeStop(wxUpdateUIEvent& event)
 void MutFrame::CmRoutes(wxCommandEvent& event)
 {
   if ( GetId()== WK_ROUTE ) {
-#ifdef DEBUG
-    std::cerr << "MutFrame::CmRoutes: setting Focus" << std::endl;
-#endif
+    DEBUGLOG(_T("setting Focus"));
     auimanager.Update();
     Raise();
     return;
@@ -910,12 +898,7 @@ void MutFrame::LogicWinOpen(int box)
 					  wxSize(width,height));
     wxString Name;
     Name.Printf(_("Logic -- Box %d"),box);
-#ifdef DEBUG
-    std::cout << "Adding pane '" 
-	      << Name.Format(_T("Logic%d"),box).ToUTF8()
-	      << "' with caption '" << Name.ToUTF8() << "'"
-	      << std::endl;
-#endif
+    DEBUGLOG(_T("Adding pane '%s' with caption '%s'"), Name.Format(_T("Logic%d"),box).c_str(),Name.c_str());
     auimanager.AddPane(client,
 		       wxAuiPaneInfo().Name(Name.Format(_T("Logic%d"),box))
 		       .Caption(Name)

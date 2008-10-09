@@ -36,12 +36,12 @@
 #include "MutFrame.h"
 #include "MutRouteWnd.h"
 
-#if !defined(__WXMSW__)
+//#if !defined(__WXMSW__)
     #include "Icon/Logic.xpm"
     #include "Icon/LogicOpen.xpm"
     #include "Icon/Tonesyst.xpm"
     #include "Icon/TonesystOpen.xpm"
-#endif
+//#endif
 
 int pubTaste; // Taste aus anderen Fenstern f¸r MutWin
 extern bool UseColorBars;

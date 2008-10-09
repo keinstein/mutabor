@@ -7,6 +7,7 @@
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
 #include <iostream>
+#include <typeinfo>
 
 #include "Mutabor.rh"
 
@@ -52,10 +53,10 @@ wxString FileNameDialog(wxWindow * parent,
 			wxString Filename = wxEmptyString);
 
 #ifdef DEBUG
-# define DEBUGLOGBASE(type, ...)			   \
+# define DEBUGLOGBASE(type, ...)		   \
   std::cout << __FILE__ << ":" << __LINE__ << ": " \
-  << (type) << "::" << __WXFUNCTION__ << ": "			\
-  << (wxString::Format(__VA_ARGS__)).ToUTF8() << std::endl
+  << ((const char *) type) << "::" << __WXFUNCTION__ << ": "	\
+  << (const char *)((wxString::Format(__VA_ARGS__)).ToUTF8()) << std::endl
 
 #else
 # define DEBUGLOGBASE(...)

@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.11 2008/06/30 08:27:10 keinstein Exp $
+ * $Id: MutApp.h,v 1.12 2008/10/09 15:14:02 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/06/30 08:27:10 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2008/10/09 15:14:02 $
+ * \version $Revision: 1.12 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.12  2008/10/09 15:14:02  keinstein
+ * make compile on mingw
+ *
  * Revision 1.11  2008/06/30 08:27:10  keinstein
  * New Variable: routewindow
  * OnInit(): Register Ids from Mutabor.rh
@@ -217,6 +220,10 @@ class MutApp : public wxApp {
   /** While quitting wxWidgets calls this virtual function. We use it
       to save the current setup.*/
   virtual int OnExit();
+
+#ifdef __WXMAC__
+  virtual void MacOpenFile(const wxString &fileName);
+#endif
 
   /// Save global state.
   /** Save the current global settings in the registry or configuration file.
