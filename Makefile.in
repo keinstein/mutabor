@@ -148,7 +148,7 @@ top_distdir = $(distdir)
 am__remove_distdir = \
   { test ! -d $(distdir) \
     || { find $(distdir) -type d ! -perm -200 -exec chmod u+w {} ';' \
-         && rm -fr $(distdir); }; }
+	 && rm -fr $(distdir); }; }
 DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
@@ -1308,11 +1308,11 @@ distdir: $(DISTFILES)
 	    top_distdir=`$(am__cd) $(top_distdir) && pwd`; \
 	    (cd $$subdir && \
 	      $(MAKE) $(AM_MAKEFLAGS) \
-	        top_distdir="$$top_distdir" \
-	        distdir="$$distdir/$$subdir" \
+		top_distdir="$$top_distdir" \
+		distdir="$$distdir/$$subdir" \
 		am__remove_distdir=: \
 		am__skip_length_check=: \
-	        distdir) \
+		distdir) \
 	      || exit 1; \
 	  fi; \
 	done
@@ -1385,14 +1385,14 @@ distcheck: dist
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
 	  && $(MAKE) $(AM_MAKEFLAGS) uninstall \
 	  && $(MAKE) $(AM_MAKEFLAGS) distuninstallcheck_dir="$$dc_install_base" \
-	        distuninstallcheck \
+		distuninstallcheck \
 	  && chmod -R a-w "$$dc_install_base" \
 	  && ({ \
 	       (cd ../.. && umask 077 && mkdir "$$dc_destdir") \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" install \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" uninstall \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" \
-	            distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+		    distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
 	      } || { rm -rf "$$dc_destdir"; exit 1; }) \
 	  && rm -rf "$$dc_destdir" \
 	  && $(MAKE) $(AM_MAKEFLAGS) dist \
@@ -1406,11 +1406,11 @@ distuninstallcheck:
 	@cd $(distuninstallcheck_dir) \
 	&& test `$(distuninstallcheck_listfiles) | wc -l` -le 1 \
 	   || { echo "ERROR: files left after uninstall:" ; \
-	        if test -n "$(DESTDIR)"; then \
-	          echo "  (check DESTDIR support)"; \
-	        fi ; \
-	        $(distuninstallcheck_listfiles) ; \
-	        exit 1; } >&2
+		if test -n "$(DESTDIR)"; then \
+		  echo "  (check DESTDIR support)"; \
+		fi ; \
+		$(distuninstallcheck_listfiles) ; \
+		exit 1; } >&2
 distcleancheck: distclean
 	@if test '$(srcdir)' = . ; then \
 	  echo "ERROR: distcleancheck can only run from a VPATH build" ; \
@@ -1640,8 +1640,8 @@ $(top_srcdir)/xrc/wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
 	if test -f y.tab.h; then \
 	  to=`echo "$*_H" | sed \
-                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
-                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
+		-e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
+		-e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
 	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
 	  rm -f y.tab.h; \
 	  if cmp -s $*.ht $*.h; then \
@@ -1667,3 +1667,27 @@ copymac: Mutabor.app
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
+installwin: mutabor.exe
+	mkdir -p Mutabor
+	
+	cp mutabor.exe Mutabor
+	for datei in $(top_srcdir)/po/*.gmo ; \
+	do \
+		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
+		mkdir -p Mutabor/$$shortname/LC_MESSAGES ; \
+		cp "$$datei" Mutabor/$$shortname/LC_MESSAGES/mutabor.mo ; \
+	done
+	for d in $(dist_pkgdata_DATA) ; do \
+		cp $(top_srcdir)/$$d Mutabor ; \
+	done
+	test -z "$(WX_LOCALE_DIRS)" || ( ls "$(WX_LOCALE_DIRS)"/* | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor/$$lang/LC_MESSAGES ; \
+		cp $$file Mutabor/$$lang/LC_MESSAGES ; \
+	done )
+	WXLIBDIR=`$(WX_CONFIG_PATH) --exec-prefix`
+	for d in `$(WX_CONFIG_PATH) --exec-prefix`/lib/wx*{msw,base}*.dll ; \
+	do \
+		cp $$d Mutabor ; \
+	done
