@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.20 2008/10/09 15:14:02 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.21 2008/10/10 08:25:42 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/10/09 15:14:02 $
- * \version $Revision: 1.20 $
+ * $Date: 2008/10/10 08:25:42 $
+ * \version $Revision: 1.21 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.21  2008/10/10 08:25:42  keinstein
+ * Call OGLInitialize if OGL is used
+ *
  * Revision 1.20  2008/10/09 15:14:02  keinstein
  * make compile on mingw
  *
@@ -281,7 +284,9 @@ bool MutApp::OnInit()
   RestoreState();
   ((MutFrame*)frame)->RestoreState();
   
+#ifdef WXDLLIMPEXP_OGL
   wxOGLInitialize();
+#endif
 
   return true;
 }
