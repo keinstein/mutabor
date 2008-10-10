@@ -238,3 +238,26 @@ operates.
 `configure' also accepts some other, not widely useful, options.  Run
 `configure --help' for more details.
 
+Compilation using XCode
+=======================
+
+Requirements wxWidgets source Code.
+
+There is an XCode project ins the source code root directory. This can be used to compile Mutabor using XCode.
+This can be done in the following Steps:
+
+1. Open the Project settings for each projects (Alt++E) and check that the architecture settings for 
+wxWidgets and Mutabor match. In wxWidgets set GCC_VERSION_ppc to "4.0" (or as you want to use) and 
+MACOSX_DEPLOYMENT_TARGET_ppc to "10.4". These settings can be found in the User-Defined section.
+2. Set WX_PATH in the Mutabor project settings to the root directory of wxWidgets source.
+3. Build wxWidgets
+4. Build Mutabor
+
+It is recommended to build wxWidgets in unicode mode. For that edit the file include/setup.h after the 
+first build (or setup0.h before) and change the line 
+    #define wxUSE_UNICODE 0
+to
+    #define wxUSE_UNICODE 1
+
+
+
