@@ -173,8 +173,8 @@ YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
 	if test -f y.tab.h; then \
 	  to=`echo "$*_H" | sed \
-                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
-                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
+		-e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
+		-e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
 	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
 	  rm -f y.tab.h; \
 	  if cmp -s $*.ht $*.h; then \
@@ -198,3 +198,27 @@ mac: copymac
 
 
 copymac: Mutabor.app
+installwin: mutabor.exe
+	mkdir -p Mutabor
+	
+	cp mutabor.exe Mutabor
+	for datei in $(top_srcdir)/po/*.gmo ; \
+	do \
+		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
+		mkdir -p Mutabor/$$shortname/LC_MESSAGES ; \
+		cp "$$datei" Mutabor/$$shortname/LC_MESSAGES/mutabor.mo ; \
+	done
+	for d in $(dist_pkgdata_DATA) ; do \
+		cp $(top_srcdir)/$$d Mutabor ; \
+	done
+	test -z "$(WX_LOCALE_DIRS)" || ( ls "$(WX_LOCALE_DIRS)"/* | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor/$$lang/LC_MESSAGES ; \
+		cp $$file Mutabor/$$lang/LC_MESSAGES ; \
+	done )
+	WXLIBDIR=`$(WX_CONFIG_PATH) --exec-prefix`
+	for d in `$(WX_CONFIG_PATH) --exec-prefix`/lib/wx*{msw,base}*.dll ; \
+	do \
+		cp $$d Mutabor ; \
+	done
