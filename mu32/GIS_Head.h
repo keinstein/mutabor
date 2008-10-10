@@ -252,11 +252,12 @@ class GisWriteHead
 			Cursor = &Data;
 			CHECKDUP(Id, id);
 			Boss = boss;
-			if ( boss )
-			if ( boss->nSub == -1 )
-				boss->nSub = 1;
-			else
-				boss->nSub++;
+			if ( boss ) {
+			  if ( boss->nSub == -1 )
+			    boss->nSub = 1;
+			  else
+			    boss->nSub++;
+			}
 			nSub = -1;
 			TotalTime = frac(0, 1);
 			CurrentTime = frac(0, 1);

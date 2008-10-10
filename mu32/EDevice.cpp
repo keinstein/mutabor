@@ -83,14 +83,7 @@ EDevice* NewDevice(EDevice **List,
 		   EDevice *oldPos, 
 		   EDevice *newPos)
 {
-#ifdef DEBUG
-  std::cerr << "test" << std::endl <<
-    (wxString(_T("::NewDevice(")).ToUTF8()) << List << ", " 
-	    << dt << ", " 
-	    << (name.ToUTF8()) << ", " 
-	    << oldPos << ", " 
-	    << newPos << ")" << std::endl;
-#endif
+  DEBUGLOG2(_T("(%x, %d, %s, %x, %x)"), List, dt, (name.c_str()), oldPos,  newPos);
 
   // Position finden zum Daten abladen
   EDevice *Pos = 0;
@@ -185,13 +178,9 @@ DevType Str2DT(const wxString& type)
 {
 	wxString DTName[] =  { _T(""), _T("MIDIPORT"), _T("MIDIFILE"), _T("GMN") };
 	int i;
-#ifdef DEBUG
-	std::cerr << "Comparing " << ( type.ToUTF8() ) << std::endl;
-#endif
+	DEBUGLOG2(_T("Comparing %s"),type.c_str());
 	for (i = 3; i > 0; i--) {
-#ifdef DEBUG
-		std::cerr << "Testing " << ( DTName[i].ToUTF8() ) << std::endl;
-#endif
+		DEBUGLOG2(_T("Testing %s"), DTName[i].c_str() );
 		if ( type.StartsWith(DTName[i]) )
 			break;
 	}
@@ -286,21 +275,16 @@ void ScanRoutes(const wxString& config)
 	wxString s;
 	size_t i = 0;
 	GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+	DEBUGLOG2(_T("+%s"),s.c_str());
 
 	while ( !s.StartsWith(_T("OUTPUT")) )
 	{
 		GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+		DEBUGLOG2(_T("+%s"),s.c_str());
 	}
 	GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+
+	DEBUGLOG2(_T("+%s"),s.c_str());
 	// Output lesen
 	while ( !s.StartsWith(_T("INPUT")) )
 	{
@@ -308,12 +292,7 @@ void ScanRoutes(const wxString& config)
 		//wxString Type, Name;
 		int DevId, BendingRange;
 		
-#ifdef DEBUG
-		std::cout << (sizeof(char)) << " "
-			  << sizeof(wxChar) << std::endl;
-		std::cout << "a" << (s.fn_str()) << std::endl;
-		std::cout << "=" << (s.ToUTF8()) << std::endl;
-#endif
+		DEBUGLOG2(_T("a%s"),s.c_str());
 #if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 		int test = SSCANF(s.c_str(), _T("%ls \"%l[^\"]\" %d %d"),
 				  Type, Name, &DevId, &BendingRange);
@@ -335,19 +314,15 @@ void ScanRoutes(const wxString& config)
 		  //3 ??
 		}
 #endif
-		std::cout << (wxString(Name).ToUTF8()) << std::endl;
+		DEBUGLOG2(_T("Name = '%s'"),(wxString(Name).c_str()));
 		EDevice *Out = NewDevice(&OutEDevices, Str2DT(muT(Type)), Name, DevId);
 		if ( test == 4 )
 			Out->BendingRange = BendingRange;
 		GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+		DEBUGLOG2(_T("+%s"),s.c_str());
 	}
 	GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+	DEBUGLOG2(_T("+%s"),s.c_str());
 	// Input lesen
 	while ( 1 ) {
 		// Device lesen
@@ -377,10 +352,7 @@ void ScanRoutes(const wxString& config)
 #endif
 		EDevice *In = NewDevice(&InEDevices, Str2DT(muT(Type)), Name, DevId);
 		GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-
-#endif
+		DEBUGLOG2(_T("+%s"),s.c_str());
 		// Routen lesen
 		while ( Str2DT(s) == DTUnknown )
 		{
@@ -413,9 +385,7 @@ void ScanRoutes(const wxString& config)
 						BoxActive, GetEOut(OutDev), 
 						OFrom, OTo, ONoDrum));
 			GETLINE;
-#ifdef DEBUG
-	std::cerr << "+" << s.ToUTF8() << std::endl;
-#endif
+			DEBUGLOG2(_T("+%s"),s.c_str());
 		}
 	}
 }
@@ -726,9 +696,7 @@ void WriteRoutes(wxString &config)
 	    wxLogWarning(_("Device found, but device type not set."));
 	  }
 	}
-#ifdef DEBUG
-	std::cerr << "WriteConfig: " << (config.ToUTF8()) << std::endl;
-#endif
+	DEBUGLOG2(_T("WriteConfig: %s"), (config.c_str()));
 	// Input schreiben
 	nr = 0;
 	config << _T("INPUT\n");
@@ -766,9 +734,7 @@ void WriteRoutes(wxString &config)
 			       R->OFrom, R->OTo, R->ONoDrum ? 1 : 0);
 	  }
 	}
-#ifdef DEBUG
-	std::cout << "WriteRoutes: " << (config.ToUTF8()) << std::endl;
-#endif
+	DEBUGLOG2(_T("WriteRoutes: %s"), (config.c_str()));
 }
 
 // Routen schreiben
@@ -804,10 +770,7 @@ void WriteRoutes(wxConfigBase *config)
 	{
 		Out->Nr = nr++; 
 		// Nummerierung zur bequemen Referenzierung beim Input schreiben
-#ifdef DEBUG
-		std::cerr << "Trying to save output device Nr. " 
-			  << Out->Nr << std::endl;
-#endif
+		DEBUGLOG2(_T("Trying to save output device Nr. %d"), Out->Nr);
 		config->SetPath(wxString(_T("")) << Out->Nr);
 		
 		config->Write(_T("Name"), Out->Name);
@@ -855,9 +818,7 @@ void WriteRoutes(wxConfigBase *config)
 			_("Internal Error: Forbidden input device type."));
 
 		config->Write(_T("Type"), In->DT);
-#ifdef DEBUG
-		std::cerr << "Type Name, " << std::endl;
-#endif
+		DEBUGLOG2(_T("Type Name, "));
 		config->Write(_T("Type_Name"), wxGetTranslation(DevTypeName[In->DT]));
 
 		switch ( In->DT ) {
@@ -867,9 +828,7 @@ void WriteRoutes(wxConfigBase *config)
 		case DTUnknown:
 		  break;
 		case DTMidiPort:
-#ifdef DEBUG
-		  std::cerr << "Device Id " << std::endl;
-#endif
+		  DEBUGLOG2(_T("Device Id "));
 		  config -> Write(_T("Device_Id"), In->DevId);
 		  break;
 		default:
@@ -881,9 +840,7 @@ void WriteRoutes(wxConfigBase *config)
 		int routenr=0;
 		for (ERoute *R = In->Routes; R; R = R->Next, routenr++)
 		{
-#ifdef DEBUG
-			std::cerr << "Trying to save Route Nr: " << routenr << std::endl;
-#endif
+			DEBUGLOG2(_T("Trying to save Route Nr: %d"), routenr);
 			config -> SetPath(wxString(_T("")) << routenr);
 			config -> Write(_T("Type"), R->Type);
 			config -> Write(_T("Type_Name"), muT(RTName[R->Type]));
@@ -902,9 +859,7 @@ void WriteRoutes(wxConfigBase *config)
 		config -> SetPath(_T("..")); // Input dev Counter
 	}
 	config -> SetPath(_T(".."));
-#ifdef DEBUG
-	std::cerr << "Done." << std::endl;
-#endif
+	DEBUGLOG2(_T("Done."));
 }
 #else // no WX
 
