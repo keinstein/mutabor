@@ -49,7 +49,7 @@
 #include "Device.h"
 #include "MidiKern.h"
 
-#if !defined(__WXMSW__)
+//#if !defined(__WXMSW__)
 #include "Icon/DevUnknown.xpm"
 #include "Icon/DevMidiPort.xpm"
 #include "Icon/DevMidiFile.xpm"
@@ -62,7 +62,7 @@
 #include "Icon/AddPlay.xpm"
 #include "Icon/AddPause.xpm"
 #include "Icon/AddStopDis.xpm"
-#endif
+//#endif
 
 #ifdef RTMIDI
   #include "RtMidi.h"
