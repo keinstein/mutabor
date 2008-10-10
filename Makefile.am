@@ -48,8 +48,6 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
-		mywx/myContextHelpButton.h \
-		mywx/myContextHelpButton.cpp \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
 		$(top_srcdir)/xrc/wxresource.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
