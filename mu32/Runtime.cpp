@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.11 2008/10/01 09:31:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.12 2008/10/10 08:33:19 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/01 09:31:07 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2008/10/10 08:33:19 $
+ * \version $Revision: 1.12 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.12  2008/10/10 08:33:19  keinstein
+ * make compile on windws
+ *
  * Revision 1.11  2008/10/01 09:31:07  keinstein
  * Routing broken
  *
@@ -97,7 +100,7 @@ char pascal _export Compile(CompDlg *compDia, const wxChar *name)
     compDia->SetButtonText(_("Translation interrupted !"));
 
 #ifdef DEBUG
-	 std::cout << (Fmeldung.ToUTF8()) << std::endl;
+    std::cout << ((const char *)Fmeldung.ToUTF8()) << std::endl;
 #endif
 	 compDia->SetMessage(Fmeldung);
 	 compDia->Refresh();

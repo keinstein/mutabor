@@ -149,7 +149,7 @@
 #ifdef DEBUG
 #define mutAssertMsg(cond,msg) \
    if (!(cond)) \
-	 std::cerr << (wxString(msg).ToUTF8()) << std::endl; \
+	 std::cerr << (const char *)(wxString(msg).ToUTF8()) << std::endl; \
    assert(cond)
 #else
 #define mutAssertMsg(cond,msg)   

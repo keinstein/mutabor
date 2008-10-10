@@ -2,12 +2,15 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.8 2008/10/01 09:30:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.9 2008/10/10 08:33:19 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2008/10/01 09:30:47 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/10/10 08:33:19 $
+ * \version $Revision: 1.9 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.9  2008/10/10 08:33:19  keinstein
+ * make compile on windws
+ *
  * Revision 1.8  2008/10/01 09:30:47  keinstein
  * fixed inclution for XCode build
  *
@@ -209,9 +212,7 @@ void show_line_number( int n )
 #endif 
   wxString s = _T("");
   if ( n != -1 ) s << n;
-#ifdef DEBUG
-  std::cerr << s.ToUTF8() << std::endl;
-#endif 
+  DEBUGLOG2(_T("s = %s"), s.c_str());
   CompDiaLine->SetLabel(s);
   CompDiaLine->Refresh();
 #else
