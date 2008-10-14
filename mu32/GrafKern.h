@@ -2,12 +2,15 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.8 2008/10/01 09:30:47 keinstein Exp $
+ * $Id: GrafKern.h,v 1.9 2008/10/14 08:07:59 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/10/01 09:30:47 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2008/10/14 08:07:59 $
+ * \version $Revision: 1.9 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.9  2008/10/14 08:07:59  keinstein
+ * added Errors.h and started to define Error symbols
+ *
  * Revision 1.8  2008/10/01 09:30:47  keinstein
  * fixed inclution for XCode build
  *
@@ -39,8 +42,7 @@
 #if defined(WX)
 #include "wx/wx.h"
 #endif
-extern const mutChar * Error_text[]; /* Liste der Fehlermeldungen */
-extern const mutChar * Warning_text[]; /* Liste der Warnungen */
+#include "Errors.h"
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();

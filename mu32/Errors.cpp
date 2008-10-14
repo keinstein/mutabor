@@ -2,13 +2,16 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.cpp,v 1.6 2008/08/18 14:59:41 keinstein Exp $
+ * $Id: Errors.cpp,v 1.7 2008/10/14 08:07:59 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/08/18 14:59:41 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2008/10/14 08:07:59 $
+ * \version $Revision: 1.7 $
  *
  * $Log: Errors.cpp,v $
+ * Revision 1.7  2008/10/14 08:07:59  keinstein
+ * added Errors.h and started to define Error symbols
+ *
  * Revision 1.6  2008/08/18 14:59:41  keinstein
  * added License header
  * added const to string arrays
@@ -17,6 +20,7 @@
  *
  */
 #include "GrafKern.h"
+#include "Errors.h"
 
 #if defined(WX)
 #else
@@ -157,7 +161,7 @@ const mutChar * Error_text[] =
     /* 1 */ N_("Syntax error, not specified. (line %d)"),
     N_("Non-valid character: asc=%d (line %d)"),
     N_("Can't open file: %s"),
-    N_("Not enough memory or to few datas for mutabor in source file"),
+    N_("Not enough memory or too few data for mutabor in source file"),
     N_(" "),
     N_(" "),
     N_(" "),
