@@ -2904,6 +2904,17 @@ yyreturn:
 
 #line 648 "../mu32/mut.y"
 
+/// \todo check whether this function is necessary for any system but windows
+#ifdef __WXMSW__
+inline int mutabor_toupper(int c) {
+	if (c == EOF) return c;
+	else return toupper(c);
+}
+#ifdef toupper
+#undef toupper
+#endif
+#define toupper mutabor_toupper
+#endif
 
 int yylex(void) 
 {
@@ -2915,10 +2926,13 @@ start_lex:
     while ( anzahl_eingelesene_zeichen ++,
 
             isspace(c = toupper( intern_fgetc(quelldatei) ))) {
+	DEBUGLOG2(_T("char %x"),c);
 
-      if (c == '\n') 
+      if (c == '\n') {
+	DEBUGLOG2(_T("New line"));
 	if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
 	  show_line_number(yylloc.first_line);
+      }
     }
     
     if (c == '"') {
@@ -3066,10 +3080,14 @@ static struct {
             }
 
             symbuffer[i++] = c;
-            c = toupper(intern_fgetc (quelldatei));
+	    DEBUGLOG2(_T("character #%d = %x"),i,c);
+	    c = intern_fgetc(quelldatei);
+	    DEBUGLOG2(_T("character #%d = %x"),i,c);
+            c = toupper(c);
+	    DEBUGLOG2(_T("character #%d = %x"),i,c);
             anzahl_eingelesene_zeichen ++;
 
-        } while (c != EOF                && 
+        } while ((c != EOF) && 
                  (isalnum (c) || (c == '_') || (c == '\'') ) );
         
         intern_ungetc (c, quelldatei);
