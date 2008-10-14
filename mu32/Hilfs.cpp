@@ -19,9 +19,11 @@ int  intern_fgetc( FILE *stream )
 { int zeichen;
   if (is_valid) {
       is_valid = 0;
+DEBUGLOG2(_T("old character: %x"),the_character);
 		return  the_character;
   }
   zeichen = fgetc(stream);
+DEBUGLOG2(_T("new character: %x, EOF %d"),zeichen,feof(stream));
   return zeichen;
 }
 
@@ -48,6 +50,7 @@ void * xalloca (size_t size) {
     void * help = malloc (size);
 #endif
 if (help == NULL) {
+		DEBUGLOG2(_T("malloc(%d) failed."),size);
 		  fatal_error (MUT_ERR_MALLOC_FAILED);
 		  return NULL;
 	 }
@@ -97,6 +100,7 @@ void xfree (void * pointer)
 void * xmalloc (size_t size)
 {  
     if (size + OFFSET > HEAP_PORTION_SYNTAX) {
+	DEBUGLOG2(_T("Error: %d + %d > %d"),size,OFFSET, HEAP_PORTION_SYNTAX);
         fatal_error (4);
         return NULL;
     }
@@ -109,6 +113,8 @@ void * xmalloc (size_t size)
 		  syntax_heap = (heap_element*) calloc (1,sizeof (struct heap_element));
 #endif
 		  if (syntax_heap == NULL) {
+				DEBUGLOG2(_T("calloc(1,%d) failed"),
+				          sizeof (struct heap_element));
 				fatal_error (4);
 				return NULL;
 		  }
@@ -135,6 +141,7 @@ void * xmalloc (size_t size)
         heap_to_use_syntax -> next = (heap_element*) calloc (1,sizeof (struct heap_element));
 #endif
         if (heap_to_use_syntax -> next == NULL) {
+	    DEBUGLOG2(_T("heap_to_use_syntax -> nex == NULL"));
             fatal_error (4);
             return NULL;
         }
@@ -169,6 +176,7 @@ void * xrealloc (void * block, size_t newsize)
            return help;
        }
        else {
+	   DEBUGLOG2(_T("xmalloc (%d) failed"),newsize);
            fatal_error (4);
            return NULL;
        }
@@ -183,6 +191,7 @@ void * xcalloc (size_t anzahl, size_t size)
        return help;
    }
    else {
+ 	DEBUGLOG2(_T("xmalloc(%d * %d) failed"),anzahl,size);
        fatal_error (4);
        return NULL;
    }
@@ -240,6 +249,8 @@ void * ymalloc (size_t size) {
     struct mini_heap * help2 = (mini_heap*) malloc (sizeof (struct mini_heap));
     
     if (help1 == NULL || help2 == NULL) {
+	DEBUGLOG2(_T("help1 == %x(%d) ; help2 == %x(%d)"),
+		  help1,size,help2,sizeof(struct mini_heap)); 
         fatal_error (4);
         return NULL;
     }
