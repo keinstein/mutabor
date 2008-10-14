@@ -48,7 +48,7 @@ void * xalloca (size_t size) {
     void * help = malloc (size);
 #endif
 if (help == NULL) {
-		  fatal_error (4);
+		  fatal_error (MUT_ERR_MALLOC_FAILED);
 		  return NULL;
 	 }
 	 return help;
