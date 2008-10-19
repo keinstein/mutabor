@@ -178,6 +178,10 @@ public:
 void StartCurrentTime();
 void StopCurrentTime();
 
+#ifdef VC8
+  extern CurrentTimer CurrentTime;
+#endif
+
 #endif
 
 /* 

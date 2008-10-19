@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.12 2008/10/10 08:33:19 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.13 2008/10/19 23:08:32 krausze Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/10 08:33:19 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2008/10/19 23:08:32 $
+ * \version $Revision: 1.13 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.13  2008/10/19 23:08:32  krausze
+ * Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
+ *
  * Revision 1.12  2008/10/10 08:33:19  keinstein
  * make compile on windws
  *
@@ -108,7 +111,12 @@ char pascal _export Compile(CompDlg *compDia, const wxChar *name)
   }
 }
 
-extern DWORD CurrentTime;
+#ifdef VC8
+  extern CurrentTimer CurrentTime;
+#else
+  extern DWORD CurrentTime;
+#endif
+
 UpdateUICallback* updateUIcallback;
 
 bool pascal _export Activate(bool realTime, UpdateUICallback* callback)
@@ -176,7 +184,11 @@ void NRT_Play()
         ((InMidiFile*)In)->IncDelta();
         Working = true;
       }
-    CurrentTime++;
+#ifdef VC8
+      CurrentTime.Notify();
+#else
+      CurrentTime++;
+#endif
   }
   // alles schlieﬂen
   for (InDevice *In1 = InDevices; In1; In1 = In1->Next)
