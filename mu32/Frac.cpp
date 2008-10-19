@@ -4,7 +4,7 @@
 
 #include "Frac.h"
 
-long abs(const long x)
+long absLong(const long x)
 {
   if ( x >= 0 ) return x;
   else return -x;
@@ -212,7 +212,7 @@ frac& frac::operator =(const int &i)
 long frac::gcd(long a, long b)
 {
   long p, q, r = 1;
-  a = abs(a); b = abs(b);
+  a = absLong(a); b = absLong(b);
   if ( a > b ) { p = a; q = b; }
   else { p = b; q = a; }
   if ( !q ) return 1;
