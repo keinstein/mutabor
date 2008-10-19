@@ -2,12 +2,15 @@
  ********************************************************************
  * Ausgabe-Funktionen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.9 2008/10/10 08:33:19 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.10 2008/10/19 23:08:32 krausze Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2008/10/10 08:33:19 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2008/10/19 23:08:32 $
+ * \version $Revision: 1.10 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.10  2008/10/19 23:08:32  krausze
+ * Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
+ *
  * Revision 1.9  2008/10/10 08:33:19  keinstein
  * make compile on windws
  *
@@ -42,6 +45,9 @@
 //#include "Mutabor.rh"
 #include "Execute.h"
 #include <setjmp.h>
+#ifdef VC8
+  #include "Runtime.h"
+#endif
 
 #ifdef MUTWIN
 #ifdef WX

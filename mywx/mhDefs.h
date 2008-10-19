@@ -32,7 +32,11 @@
 #define SSCANF sscanf
 #endif
 
-class wxHtmlHelpController;
+#ifdef VC8
+  #include <wx/html/helpctrl.h>
+#else
+  class wxHtmlHelpController;
+#endif
 extern wxHtmlHelpController * HelpController;
 
 #ifdef WX

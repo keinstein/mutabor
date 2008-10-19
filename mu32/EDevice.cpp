@@ -985,7 +985,11 @@ int SmallestBoxUsed()
   for (EDevice *In = InEDevices; In; In = In->Next)
     for (ERoute *R = In->Routes; R; R = R->Next)
       if ( R->Box >= 0 )
+#ifdef VC8
+        Box = min(Box, R->Box);
+#else
         Box = STD_PRE::min(Box, R->Box);
+#endif
   if ( Box == 256 )
     return 0;
   else
