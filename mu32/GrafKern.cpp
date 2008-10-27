@@ -1,13 +1,16 @@
 /** \file
  ********************************************************************
- * Ausgabe-Funktionen.
+ * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.10 2008/10/19 23:08:32 krausze Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.11 2008/10/27 15:00:16 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2008/10/19 23:08:32 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2008/10/27 15:00:16 $
+ * \version $Revision: 1.11 $
  *
  * $Log: GrafKern.cpp,v $
+ * Revision 1.11  2008/10/27 15:00:16  keinstein
+ * Adopted VC8-changes to any
+ *
  * Revision 1.10  2008/10/19 23:08:32  krausze
  * Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
  *
@@ -45,9 +48,9 @@
 //#include "Mutabor.rh"
 #include "Execute.h"
 #include <setjmp.h>
-#ifdef VC8
-  #include "Runtime.h"
-#endif
+
+// Needed at least for Visual C++ 8
+#include "Runtime.h"
 
 #ifdef MUTWIN
 #ifdef WX
