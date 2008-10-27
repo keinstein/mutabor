@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.7 2008/10/01 09:33:22 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.8 2008/10/27 15:51:26 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2008/10/01 09:33:22 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2008/10/27 15:51:26 $
+ * \version $Revision: 1.8 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.8  2008/10/27 15:51:26  keinstein
+ * fixes for non-Unicode
+ *
  * Revision 1.7  2008/10/01 09:33:22  keinstein
  * Better multibyte wxString support
  *
@@ -63,7 +66,7 @@ class MutEditFile : public wxTextCtrl
 #if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 	wxString GetValue() const;
 	wxString GetRange(long from, long to) const;
-#if wxUSE_RICHEDIT && (!wxUSE_UNICODE || wxUSE_UNICODE_MSLU)
+#if wxUSE_RICHEDIT && (!(wxUSE_UNICODE || wxUSE_WCHAR_T) || wxUSE_UNICODE_MSLU)
     // replace the selection or the entire control contents with the given text
     // in the specified encoding
     bool StreamIn(const wxString& value, wxFontEncoding encoding, bool selOnly);
