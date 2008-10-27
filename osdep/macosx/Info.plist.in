@@ -22,5 +22,71 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>@VERSION@</string>
+
+	<key>CFBundleDocumentTypes</key>
+	<array>
+	  <dict>
+	    <key>CFBundleTypeExtensions</key>
+	    <array>
+	      <string>mat</string>
+	    </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>Mutfile</string>
+            <key>CFBundleTypeName</key>
+            <string>Mutabor tuning logic</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <!-- The LSItemContentTypes key is ignored in Mac OS X v10.4 -->
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>com.apple.sketch2</string>
+            </array>
+            <key>NSDocumentClass</key>
+            <string>MutLogic</string>
+            <!-- This key is ignored in Mac OS X 10.5 because of the presence of the LSItemContentTypes key. -->
+	    <!--
+            <key>NSExportableAs</key>
+            <array>
+                <string>NSPDFPboardType</string>
+                <string>NSTIFFPboardType</string>
+            </array>
+	    -->
+            <!-- The NSExportableTypes key is ignored in Mac OS X 10.4 -->
+	    <!--
+            <key>NSExportableTypes</key>
+            <array>
+                <string>com.adobe.pdf</string>
+                <string>public.tiff</string>
+            </array>
+	    -->
+	  </dict>
+
+	  <!-- These keys are for compatibility with Mac OS X v10.4. -->
+	  <!--
+	  <dict>
+	    <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>pdf</string>
+            </array>
+            <key>CFBundleTypeName</key>
+            <string>NSPDFPboardType</string>
+            <key>CFBundleTypeRole</key>
+            <string>None</string>
+        </dict>
+
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>tiff</string>
+                <string>tif</string>
+            </array>
+
+            <key>CFBundleTypeName</key>
+            <string>NSTIFFPboardType</string>
+            <key>CFBundleTypeRole</key>
+            <string>None</string>
+        </dict>
+	  -->
+	</array>
 </dict>
 </plist>
