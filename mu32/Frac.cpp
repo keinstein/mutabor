@@ -4,6 +4,9 @@
 
 #include "Frac.h"
 
+#ifndef HAVE_BOOST_RATIONAL_HPP
+
+
 long absLong(const long x)
 {
   if ( x >= 0 ) return x;
@@ -229,3 +232,5 @@ STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f)
 {
 	 return os << "(" << f.n << "/" << f.d << ")";
 }
+
+#endif

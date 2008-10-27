@@ -259,7 +259,7 @@ wxString GisReadHead::ToString() {
 				     "nSub: %d; Cursor: {\n"),
 				  this, Boss, Next, Prev, 
 				  PrevPtr, *PrevPtr, nSub) +
-    (Cursor?((wxString) *Cursor):wxString(_T(""))) + _T("}\nTime: ") + ((wxString) Time) + 
+    (Cursor?((wxString) *Cursor):wxString(_T(""))) + _T("}\nTime: ") + (TowxString(Time)) + 
     wxString::Format(_T("; Id: '%s'; Turn: %d; SingleToken: %d\n}\n"),
 		     Id.c_str(), Turn, SingleToken);
   return ret;
@@ -306,7 +306,7 @@ frac GisReadHeadOn(GisReadHead **Head, frac dTime, GisReadProceed *proceed)
 	 h->nSub = -1; // normal header
 	 // now check, wether count down Time is 0
 	 // if h->time = 0 then h->Cursor points to the GisToken next to proceed
-	 while ( h->Time.n == 0 ) // read next tokens
+	 while ( !(h->Time) ) // read next tokens
 	 {
 		if ( !h->Cursor ) // header finished, kick away
 		{
@@ -319,7 +319,7 @@ frac GisReadHeadOn(GisReadHead **Head, frac dTime, GisReadProceed *proceed)
 		proceed(h, 0);
 		h->Read();
 		if ( h->nSub != -1 ) goto beginloop;
-		if ( h->Time.n == 0 ) // token without duration
+		if ( !(h->Time) ) // token without duration
 		  h->CursorNext();
 	 }
 	 // check MinTime
@@ -410,10 +410,10 @@ void GisReadArtHead::Read()
       Time2 = ((GisNote*)Cursor)->Duration;
       Time = Time2 * frac(ArticulationHold[GetArticulation()], 100);
       DEBUGLOG(_T("Time: %d/%d; Time2: %d/%d"),
-	       Time.n,Time.d,Time2.n,Time2.d);
+	       Time.numerator(),Time.denominator(),Time2.numerator(),Time2.denominator());
       Time2 -= Time;
       DEBUGLOG(_T("Time: %d/%d; Time2: %d/%d"),
-	       Time.n,Time.d,Time2.n,Time2.d);
+	       Time.numerator(),Time.denominator(),Time2.numerator(),Time2.denominator());
       Turn = 1;
       break;
     case GTTag:
@@ -487,7 +487,7 @@ void GisReadArtHead::Read()
 wxString GisReadArtHead::ToString() {
   wxString ret = _T("GisReadArtHead: {\n") ;
   ret += GisReadHead::ToString();
-  ret += _T("Time2: ") + ((wxString) Time2);
+  ret += _T("Time2: ") + (TowxString(Time2));
   ret += 
     wxString::Format(_T("; Delta: %ld; Box: %d\n"
 			"Intensity: %p; Articulation: %p; Octave: %p\n"
@@ -547,7 +547,7 @@ frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proc
     h->nSub = -1; // normal header
     // now check, wether count down Time is 0
     // if h->time = 0 then h->Cursor points to the GisToken next to proceed
-    while ( h->Time.n == 0 ) // read next tokens
+    while ( !(h->Time) ) // read next tokens
       {
 	if ( h->Turn)
 	  {
@@ -573,7 +573,7 @@ frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proc
 	proceed(h, 0);
 	h->Read();
 	if ( h->nSub != -1 ) goto beginloop;
-	if ( h->Time.n == 0 ) // token without duration
+	if ( !(h->Time) ) // token without duration
 	  h->CursorNext();
       }
     // check MinTime
@@ -635,7 +635,7 @@ ChordNote::ChordNote(ChordNote *first) // not the first ChordNote
   Data = 0;
   Cursor = &Data;
   TotalTime = Boss->TotalTime;
-  if ( TotalTime.n )
+  if ( TotalTime )
 	 AddGis(new GisNote(mutT("_"), mutEmptyString, 0, TotalTime, mutT(" "), 0));
   CurrentTime = 0;
   Boss->ChordPos = Boss->Cursor;
@@ -773,7 +773,7 @@ int ChordNote::MutNoteOff()
 	 return 1;
   if ( GetGisType(*Cursor) != GTNote )
 	 return 1;
-  if ( CurrentTime.n )
+  if ( CurrentTime )
   {
 	 ((GisNote*)(*Cursor))->Duration = CurrentTime;
 	 Cursor = &(*Cursor)->Next;
@@ -845,7 +845,7 @@ ChordNote *GisWriteHead::GetFreeNote()
   {
 	 if ( !((*ANote)->Status & CNNoteOn) )
 	 {
-		if ( (*ANote)->CurrentTime.n )
+		if ( (*ANote)->CurrentTime )
 		  (*ANote)->AddGis(new GisNote(mutT("_"), mutEmptyString, 0, (*ANote)->CurrentTime, mutT(" "), 0));
 		return *ANote;
 	 }
@@ -965,7 +965,7 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
   switch ( State() )
   {
 	 case GTNull:
-		if ( insertRest && CurrentTime.n ) // write a rest
+		if ( insertRest && CurrentTime ) // write a rest
 		{
 		  *Cursor = new GisNote(mutT("_"), mutT(""), 0, CurrentTime, mutT(" "));
 		  Cursor = &((*Cursor)->Next);

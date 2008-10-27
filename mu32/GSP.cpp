@@ -457,8 +457,8 @@ int ReadNote()
   {
 	 DurOk = 1;
 	 CurrentPos++;
-	 duration.n = ReadLong(0);
-	 if ( !duration.n )
+	 duration = frac(ReadLong(0));
+	 if ( !duration )
 		return DoError(21); // error: nominator expected
   }
 
@@ -469,8 +469,8 @@ int ReadNote()
   {
 	 DurOk = 1;
 	 CurrentPos++;
-	 duration.d = ReadLong(0);
-	 if ( !duration.d )
+	 duration /= ReadLong(0);
+	 if ( !duration )
 		return DoError(22); // error: denominator expected
   }
 

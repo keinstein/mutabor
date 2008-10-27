@@ -360,7 +360,7 @@ class ChordNote
 			TotalTime = Boss->CurrentTime;
 			Data = 0;
 			Cursor = &Data;
-			if ( TotalTime.n )
+			if ( (bool) TotalTime )
 			  AddGis(new GisNote(mutT("_"), 
 					     mutEmptyString, 
 					     0, 
