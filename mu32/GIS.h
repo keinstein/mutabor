@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include "Frac.h"
 
+
 #ifdef WX
 #define CHECKDUP(target, source) target = source;
 #else
@@ -319,7 +320,7 @@ class GisNote : public GisToken
     return _T("GisNote: {\n") + GisToken::ToString() + 
       wxString::Format(_T("Name: '%s'; Accedentials: '%s'; Octave: %d; Duration: "),
 		       Name.c_str(),Accedentials.c_str(),Octave) +
-      ((wxString) Duration) + _T("\n}\n");
+      (TowxString(Duration)) + _T("\n}\n");
   }
 #endif
 };

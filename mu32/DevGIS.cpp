@@ -434,7 +434,7 @@ long InGis::ReadOn(long delta)
 
     if ( h->Delta > 0 ) {// header in normal state
       DEBUGLOG(_T("Time: %d/%d, delta: %d, speed: %d"),
-	       h->Time.n,h->Time.d, delta,
+	       h->Time.numerator(),h->Time.denominator(), delta,
 	       h->GetSpeedFactor());
       h->Time -= frac(delta, h->GetSpeedFactor());
       h->Delta -= delta;
@@ -449,10 +449,11 @@ long InGis::ReadOn(long delta)
 	  h->CursorNext();
 	}
       }
-      h->Delta = (h->GetSpeedFactor() * h->Time.n) / h->Time.d;
+      h->Delta = (h->GetSpeedFactor() * h->Time.numerator()) 
+	/ h->Time.denominator();
       DEBUGLOG(_T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
-	       h->Time.n,h->Time.d, 
-	       h->Time2.n,h->Time2.d, 
+	       h->Time.numerator(),h->Time.denominator(), 
+	       h->Time2.numerator(),h->Time2.denominator(), 
 	       delta,
 	       h->GetSpeedFactor());
     }
@@ -470,9 +471,10 @@ long InGis::ReadOn(long delta)
 	if ( h->Turn == 2 ) {
 	  h->Time = h->Time2;
 	  h->Time2 = 0;
-	  h->Delta = (h->GetSpeedFactor() * h->Time.n) / h->Time.d;
+	  h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
+	    / h->Time.denominator();
 	  DEBUGLOG(_T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(), 
-		   h->Time.n, h->Time.d, h->Delta);
+		   h->Time.numerator(), h->Time.denominator(), h->Delta);
 	}
 	if ( h->Turn > 2 ) {
 	  h->CursorNext();
@@ -495,22 +497,23 @@ long InGis::ReadOn(long delta)
       DEBUGLOG(_T("h->Read()"));
       h->Read();
       DEBUGLOG(_T("Time: %d/%d, Time2: %d/%d, delta: %d"),
-	       h->Time.n,h->Time.d, 
-	       h->Time2.n,h->Time2.d, 
+	       h->Time.numerator(),h->Time.denominator(), 
+	       h->Time2.numerator(),h->Time2.denominator(),
 	       delta);
-      h->Delta = (h->GetSpeedFactor() * h->Time.n) / h->Time.d;
+      h->Delta = (h->GetSpeedFactor() * h->Time.numerator()) 
+	/ h->Time.denominator();
       DEBUGLOG(_T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(), 
-	       h->Time.n, h->Time.d, h->Delta);
+	       h->Time.numerator(), h->Time.denominator(), h->Delta);
       DEBUGLOG(_T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
-	       h->Time.n,h->Time.d, 
-	       h->Time2.n,h->Time2.d, 
+	       h->Time.numerator(),h->Time.denominator(), 
+	       h->Time2.numerator(),h->Time2.denominator(),
 	       delta,
 	       h->GetSpeedFactor());
       if ( h->nSub != -1 ) {
 	DEBUGLOG2(_T("goto beginloop"));
 	goto beginloop;
       }
-      if ( h->Time.n == 0 ) {// token without duration
+      if ( !(h->Time) ) {// token without duration
 	DEBUGLOG(_T("CursorNext()"));
 	h->CursorNext();
       }
