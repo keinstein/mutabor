@@ -192,7 +192,30 @@ class InDevice
   virtual DevType GetType() const { return DTUnknown; }
 };
 
+class CurrentTimer: public wxTimer {
+  unsigned int time;
+public:
+  CurrentTimer(unsigned int t = 0):wxTimer(),time(t) {
+  }
+  void Notify() {
+    time++;
+  }
+  void Set(unsigned int t = 0) { time = t; }
+  CurrentTimer& operator = (unsigned int t) { 
+    time = t; 
+    return * this;
+  }
+  operator unsigned int () { return time; }
+};
+
+extern CurrentTimer CurrentTime;
+
+void StartCurrentTime();
+void StopCurrentTime();
+
 // functions --------------------------------------------------------
+
+
 
 void OutNotesCorrect(int box);
 bool OutOpen();
