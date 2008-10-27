@@ -10,6 +10,34 @@ InDevice* InDevices = 0;
 
 char InDevChanged = 0;
 
+// CurrentTime ------------------------------------------------------
+
+//DWORD CurrentTime;
+CurrentTimer CurrentTime;
+//UINT CurrentTimeId;
+
+/* Obsoleted by CurrentTime Class
+// CallBack Funktion
+void CALLBACK _export CurrentTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
+{
+  CurrentTime++;
+}
+*/
+// Timer setzen
+void StartCurrentTime()
+{
+  CurrentTime = 0;
+  CurrentTime.Start(2,wxTIMER_CONTINUOUS);
+  //  CurrentTimeId = timeSetEvent(2, 1, CurrentTimeFunc, 0, TIME_PERIODIC);
+}
+
+// Timer lˆschen
+void StopCurrentTime()
+{
+  CurrentTime.Stop();
+}
+
+
 // Route ------------------------------------------------------------
 
 int RouteIds = 1;
