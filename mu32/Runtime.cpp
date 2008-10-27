@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.13 2008/10/19 23:08:32 krausze Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.14 2008/10/27 14:57:51 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/19 23:08:32 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2008/10/27 14:57:51 $
+ * \version $Revision: 1.14 $
  * \license wxWindows license
  *
  * $Log: Runtime.cpp,v $
+ * Revision 1.14  2008/10/27 14:57:51  keinstein
+ * Moved CurrentTimer stuff to Device
+ *
  * Revision 1.13  2008/10/19 23:08:32  krausze
  * Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
  *
@@ -111,12 +114,6 @@ char pascal _export Compile(CompDlg *compDia, const wxChar *name)
   }
 }
 
-#ifdef VC8
-  extern CurrentTimer CurrentTime;
-#else
-  extern DWORD CurrentTime;
-#endif
-
 UpdateUICallback* updateUIcallback;
 
 bool pascal _export Activate(bool realTime, UpdateUICallback* callback)
@@ -184,11 +181,7 @@ void NRT_Play()
         ((InMidiFile*)In)->IncDelta();
         Working = true;
       }
-#ifdef VC8
       CurrentTime.Notify();
-#else
-      CurrentTime++;
-#endif
   }
   // alles schlieﬂen
   for (InDevice *In1 = InDevices; In1; In1 = In1->Next)
