@@ -82,19 +82,26 @@ am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
 	mutabor-MutApp.$(OBJEXT) mutabor-MutChild.$(OBJEXT) \
 	mutabor-MutEditFile.$(OBJEXT) mutabor-MutFrame.$(OBJEXT) \
 	mutabor-OutputDevDlg.$(OBJEXT) mutabor-MutLogicWnd.$(OBJEXT) \
-	mutabor-MutRouteWnd.$(OBJEXT) mutabor-MutTextBox.$(OBJEXT) \
-	mutabor-CompDlg.$(OBJEXT) mutabor-Action.$(OBJEXT) \
-	mutabor-InputDevDlg.$(OBJEXT) mutabor-DevGIS.$(OBJEXT) \
-	mutabor-Device.$(OBJEXT) mutabor-DevMidF.$(OBJEXT) \
-	mutabor-DevMidi.$(OBJEXT) mutabor-EDevice.$(OBJEXT) \
-	mutabor-Errors.$(OBJEXT) mutabor-Execute.$(OBJEXT) \
-	mutabor-Frac.$(OBJEXT) mutabor-GrafKern.$(OBJEXT) \
-	mutabor-valNum.$(OBJEXT) mutabor-GIS_Head.$(OBJEXT) \
-	mutabor-GIS.$(OBJEXT) mutabor-GSP_Err.$(OBJEXT) \
-	mutabor-GSP_File.$(OBJEXT) mutabor-GSP.$(OBJEXT) \
-	mutabor-InputFilterDlg.$(OBJEXT) mutabor-BoxDlg.$(OBJEXT) \
-	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-valRadio.$(OBJEXT) \
-	mutabor-muconvauto.$(OBJEXT)
+	mutabor-MutRouteShapes.$(OBJEXT) mutabor-MutRouteWnd.$(OBJEXT) \
+	mutabor-MutTextBox.$(OBJEXT) mutabor-CompDlg.$(OBJEXT) \
+	mutabor-Action.$(OBJEXT) mutabor-InputDevDlg.$(OBJEXT) \
+	mutabor-DevGIS.$(OBJEXT) mutabor-Device.$(OBJEXT) \
+	mutabor-DevMidF.$(OBJEXT) mutabor-DevMidi.$(OBJEXT) \
+	mutabor-EDevice.$(OBJEXT) mutabor-Errors.$(OBJEXT) \
+	mutabor-Execute.$(OBJEXT) mutabor-Frac.$(OBJEXT) \
+	mutabor-GrafKern.$(OBJEXT) mutabor-valNum.$(OBJEXT) \
+	mutabor-GIS_Head.$(OBJEXT) mutabor-GIS.$(OBJEXT) \
+	mutabor-GSP_Err.$(OBJEXT) mutabor-GSP_File.$(OBJEXT) \
+	mutabor-GSP.$(OBJEXT) mutabor-InputFilterDlg.$(OBJEXT) \
+	mutabor-BoxDlg.$(OBJEXT) mutabor-OutputFilterDlg.$(OBJEXT) \
+	mutabor-valRadio.$(OBJEXT) mutabor-mutNamedIcon.$(OBJEXT) \
+	mutabor-muconvauto.$(OBJEXT) mutabor-basic.$(OBJEXT) \
+	mutabor-basic2.$(OBJEXT) mutabor-bmpshape.$(OBJEXT) \
+	mutabor-iconshape.$(OBJEXT) mutabor-canvas.$(OBJEXT) \
+	mutabor-composit.$(OBJEXT) mutabor-constrnt.$(OBJEXT) \
+	mutabor-divided.$(OBJEXT) mutabor-drawn.$(OBJEXT) \
+	mutabor-lines.$(OBJEXT) mutabor-mfutils.$(OBJEXT) \
+	mutabor-ogldiag.$(OBJEXT) mutabor-oglmisc.$(OBJEXT)
 mutabor_OBJECTS = $(am_mutabor_OBJECTS)
 mutabor_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(mutabor_CXXFLAGS) $(CXXFLAGS) \
@@ -148,7 +155,7 @@ top_distdir = $(distdir)
 am__remove_distdir = \
   { test ! -d $(distdir) \
     || { find $(distdir) -type d ! -perm -200 -exec chmod u+w {} ';' \
-	 && rm -fr $(distdir); }; }
+         && rm -fr $(distdir); }; }
 DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
@@ -179,6 +186,7 @@ CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DSYMUTIL = @DSYMUTIL@
 ECHO = @ECHO@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
@@ -231,6 +239,7 @@ MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
 MSGMERGE = @MSGMERGE@
 NETINET_INC = @NETINET_INC@
+NMEDIT = @NMEDIT@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
@@ -319,6 +328,7 @@ target_alias = @target_alias@
 target_cpu = @target_cpu@
 target_os = @target_os@
 target_vendor = @target_vendor@
+top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
@@ -326,7 +336,7 @@ distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc intl po wxintl includes . doc # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
-	-I $(top_srcdir)/xrc \
+	-I $(top_srcdir)/xrc -I $(top_srcdir)/libs/includes \
 	@NETINET_INC@
 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res .h
@@ -342,7 +352,11 @@ debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
 
-dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png
+dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
+	Icons/png/NewInputDevice.png \
+	Icons/png/InputDevice.png \
+	Icons/png/MidiFile.png
+
 mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp \
 		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
@@ -351,6 +365,7 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
 		muwx/MutLogicWnd.cpp \
+		muwx/MutRouteShapes.cpp \
 		muwx/MutRouteWnd.cpp  \
 		muwx/MutTextBox.cpp \
 		muwx/CompDlg.cpp muwx/Action.cpp \
@@ -366,17 +381,33 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/OutputDevDlg.h muwx/Mutabor.rh \
 		muwx/MutRouteWnd.h muwx/MutTextBox.h muwx/CompDlg.h muwx/Action.h \
 		muwx/InputDevDlg.h mu32/DevGIS.h mu32/Device.h mu32/DevMidF.h \
-		mu32/DevMidi.h mu32/EDevice.h mu32/Execute.h \
+		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
 		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
+		muwx/mutNamedIcon.h muwx/mutNamedIcon.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
+		libs/ogl/basic.cpp \
+		libs/ogl/basic2.cpp \
+		libs/ogl/bmpshape.cpp \
+		libs/ogl/iconshape.cpp \
+		libs/ogl/canvas.cpp \
+		libs/ogl/composit.cpp \
+		libs/ogl/constrnt.cpp \
+		libs/ogl/divided.cpp \
+		libs/ogl/drawn.cpp \
+		libs/ogl/lines.cpp \
+		libs/ogl/mfutils.cpp \
+		libs/ogl/ogldiag.cpp \
+		libs/ogl/oglmisc.cpp \
 		$(top_srcdir)/xrc/wxresource.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 
+#		mywx/myContextHelpButton.h \
+#		mywx/myContextHelpButton.cpp \
 #
 mutabordir = $(datadir)/mutabor
 mutabor_LDFLAGS = $(LDFLAGS) $(ALSA_LIBS) $(WX_LIBS)
@@ -517,6 +548,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutEditFile.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutFrame.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutLogicWnd.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutRouteShapes.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutRouteWnd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-MutTextBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputDevDlg.Po@am__quote@
@@ -525,9 +557,23 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-RtMidi.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-Runtime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-TabGen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-basic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-basic2.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-bmpshape.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-canvas.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-composit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-constrnt.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-divided.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-drawn.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-iconshape.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-lines.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mfutils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-muconvauto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mut.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mutNamedIcon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-ogldiag.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-oglmisc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valNum.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-valRadio.Po@am__quote@
 
@@ -747,6 +793,20 @@ mutabor-MutLogicWnd.obj: muwx/MutLogicWnd.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/MutLogicWnd.cpp' object='mutabor-MutLogicWnd.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-MutLogicWnd.obj `if test -f 'muwx/MutLogicWnd.cpp'; then $(CYGPATH_W) 'muwx/MutLogicWnd.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/MutLogicWnd.cpp'; fi`
+
+mutabor-MutRouteShapes.o: muwx/MutRouteShapes.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-MutRouteShapes.o -MD -MP -MF $(DEPDIR)/mutabor-MutRouteShapes.Tpo -c -o mutabor-MutRouteShapes.o `test -f 'muwx/MutRouteShapes.cpp' || echo '$(srcdir)/'`muwx/MutRouteShapes.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-MutRouteShapes.Tpo $(DEPDIR)/mutabor-MutRouteShapes.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/MutRouteShapes.cpp' object='mutabor-MutRouteShapes.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-MutRouteShapes.o `test -f 'muwx/MutRouteShapes.cpp' || echo '$(srcdir)/'`muwx/MutRouteShapes.cpp
+
+mutabor-MutRouteShapes.obj: muwx/MutRouteShapes.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-MutRouteShapes.obj -MD -MP -MF $(DEPDIR)/mutabor-MutRouteShapes.Tpo -c -o mutabor-MutRouteShapes.obj `if test -f 'muwx/MutRouteShapes.cpp'; then $(CYGPATH_W) 'muwx/MutRouteShapes.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/MutRouteShapes.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-MutRouteShapes.Tpo $(DEPDIR)/mutabor-MutRouteShapes.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/MutRouteShapes.cpp' object='mutabor-MutRouteShapes.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-MutRouteShapes.obj `if test -f 'muwx/MutRouteShapes.cpp'; then $(CYGPATH_W) 'muwx/MutRouteShapes.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/MutRouteShapes.cpp'; fi`
 
 mutabor-MutRouteWnd.o: muwx/MutRouteWnd.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-MutRouteWnd.o -MD -MP -MF $(DEPDIR)/mutabor-MutRouteWnd.Tpo -c -o mutabor-MutRouteWnd.o `test -f 'muwx/MutRouteWnd.cpp' || echo '$(srcdir)/'`muwx/MutRouteWnd.cpp
@@ -1084,6 +1144,20 @@ mutabor-valRadio.obj: mywx/valRadio.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`
 
+mutabor-mutNamedIcon.o: muwx/mutNamedIcon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mutNamedIcon.o -MD -MP -MF $(DEPDIR)/mutabor-mutNamedIcon.Tpo -c -o mutabor-mutNamedIcon.o `test -f 'muwx/mutNamedIcon.cpp' || echo '$(srcdir)/'`muwx/mutNamedIcon.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mutNamedIcon.Tpo $(DEPDIR)/mutabor-mutNamedIcon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/mutNamedIcon.cpp' object='mutabor-mutNamedIcon.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mutNamedIcon.o `test -f 'muwx/mutNamedIcon.cpp' || echo '$(srcdir)/'`muwx/mutNamedIcon.cpp
+
+mutabor-mutNamedIcon.obj: muwx/mutNamedIcon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mutNamedIcon.obj -MD -MP -MF $(DEPDIR)/mutabor-mutNamedIcon.Tpo -c -o mutabor-mutNamedIcon.obj `if test -f 'muwx/mutNamedIcon.cpp'; then $(CYGPATH_W) 'muwx/mutNamedIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/mutNamedIcon.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mutNamedIcon.Tpo $(DEPDIR)/mutabor-mutNamedIcon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/mutNamedIcon.cpp' object='mutabor-mutNamedIcon.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mutNamedIcon.obj `if test -f 'muwx/mutNamedIcon.cpp'; then $(CYGPATH_W) 'muwx/mutNamedIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/mutNamedIcon.cpp'; fi`
+
 mutabor-muconvauto.o: mywx/muconvauto.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-muconvauto.o -MD -MP -MF $(DEPDIR)/mutabor-muconvauto.Tpo -c -o mutabor-muconvauto.o `test -f 'mywx/muconvauto.cpp' || echo '$(srcdir)/'`mywx/muconvauto.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-muconvauto.Tpo $(DEPDIR)/mutabor-muconvauto.Po
@@ -1097,6 +1171,188 @@ mutabor-muconvauto.obj: mywx/muconvauto.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/muconvauto.cpp' object='mutabor-muconvauto.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-muconvauto.obj `if test -f 'mywx/muconvauto.cpp'; then $(CYGPATH_W) 'mywx/muconvauto.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/muconvauto.cpp'; fi`
+
+mutabor-basic.o: libs/ogl/basic.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-basic.o -MD -MP -MF $(DEPDIR)/mutabor-basic.Tpo -c -o mutabor-basic.o `test -f 'libs/ogl/basic.cpp' || echo '$(srcdir)/'`libs/ogl/basic.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-basic.Tpo $(DEPDIR)/mutabor-basic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/basic.cpp' object='mutabor-basic.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-basic.o `test -f 'libs/ogl/basic.cpp' || echo '$(srcdir)/'`libs/ogl/basic.cpp
+
+mutabor-basic.obj: libs/ogl/basic.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-basic.obj -MD -MP -MF $(DEPDIR)/mutabor-basic.Tpo -c -o mutabor-basic.obj `if test -f 'libs/ogl/basic.cpp'; then $(CYGPATH_W) 'libs/ogl/basic.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/basic.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-basic.Tpo $(DEPDIR)/mutabor-basic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/basic.cpp' object='mutabor-basic.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-basic.obj `if test -f 'libs/ogl/basic.cpp'; then $(CYGPATH_W) 'libs/ogl/basic.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/basic.cpp'; fi`
+
+mutabor-basic2.o: libs/ogl/basic2.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-basic2.o -MD -MP -MF $(DEPDIR)/mutabor-basic2.Tpo -c -o mutabor-basic2.o `test -f 'libs/ogl/basic2.cpp' || echo '$(srcdir)/'`libs/ogl/basic2.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-basic2.Tpo $(DEPDIR)/mutabor-basic2.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/basic2.cpp' object='mutabor-basic2.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-basic2.o `test -f 'libs/ogl/basic2.cpp' || echo '$(srcdir)/'`libs/ogl/basic2.cpp
+
+mutabor-basic2.obj: libs/ogl/basic2.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-basic2.obj -MD -MP -MF $(DEPDIR)/mutabor-basic2.Tpo -c -o mutabor-basic2.obj `if test -f 'libs/ogl/basic2.cpp'; then $(CYGPATH_W) 'libs/ogl/basic2.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/basic2.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-basic2.Tpo $(DEPDIR)/mutabor-basic2.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/basic2.cpp' object='mutabor-basic2.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-basic2.obj `if test -f 'libs/ogl/basic2.cpp'; then $(CYGPATH_W) 'libs/ogl/basic2.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/basic2.cpp'; fi`
+
+mutabor-bmpshape.o: libs/ogl/bmpshape.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-bmpshape.o -MD -MP -MF $(DEPDIR)/mutabor-bmpshape.Tpo -c -o mutabor-bmpshape.o `test -f 'libs/ogl/bmpshape.cpp' || echo '$(srcdir)/'`libs/ogl/bmpshape.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-bmpshape.Tpo $(DEPDIR)/mutabor-bmpshape.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/bmpshape.cpp' object='mutabor-bmpshape.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-bmpshape.o `test -f 'libs/ogl/bmpshape.cpp' || echo '$(srcdir)/'`libs/ogl/bmpshape.cpp
+
+mutabor-bmpshape.obj: libs/ogl/bmpshape.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-bmpshape.obj -MD -MP -MF $(DEPDIR)/mutabor-bmpshape.Tpo -c -o mutabor-bmpshape.obj `if test -f 'libs/ogl/bmpshape.cpp'; then $(CYGPATH_W) 'libs/ogl/bmpshape.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/bmpshape.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-bmpshape.Tpo $(DEPDIR)/mutabor-bmpshape.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/bmpshape.cpp' object='mutabor-bmpshape.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-bmpshape.obj `if test -f 'libs/ogl/bmpshape.cpp'; then $(CYGPATH_W) 'libs/ogl/bmpshape.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/bmpshape.cpp'; fi`
+
+mutabor-iconshape.o: libs/ogl/iconshape.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-iconshape.o -MD -MP -MF $(DEPDIR)/mutabor-iconshape.Tpo -c -o mutabor-iconshape.o `test -f 'libs/ogl/iconshape.cpp' || echo '$(srcdir)/'`libs/ogl/iconshape.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-iconshape.Tpo $(DEPDIR)/mutabor-iconshape.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/iconshape.cpp' object='mutabor-iconshape.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-iconshape.o `test -f 'libs/ogl/iconshape.cpp' || echo '$(srcdir)/'`libs/ogl/iconshape.cpp
+
+mutabor-iconshape.obj: libs/ogl/iconshape.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-iconshape.obj -MD -MP -MF $(DEPDIR)/mutabor-iconshape.Tpo -c -o mutabor-iconshape.obj `if test -f 'libs/ogl/iconshape.cpp'; then $(CYGPATH_W) 'libs/ogl/iconshape.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/iconshape.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-iconshape.Tpo $(DEPDIR)/mutabor-iconshape.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/iconshape.cpp' object='mutabor-iconshape.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-iconshape.obj `if test -f 'libs/ogl/iconshape.cpp'; then $(CYGPATH_W) 'libs/ogl/iconshape.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/iconshape.cpp'; fi`
+
+mutabor-canvas.o: libs/ogl/canvas.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-canvas.o -MD -MP -MF $(DEPDIR)/mutabor-canvas.Tpo -c -o mutabor-canvas.o `test -f 'libs/ogl/canvas.cpp' || echo '$(srcdir)/'`libs/ogl/canvas.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-canvas.Tpo $(DEPDIR)/mutabor-canvas.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/canvas.cpp' object='mutabor-canvas.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-canvas.o `test -f 'libs/ogl/canvas.cpp' || echo '$(srcdir)/'`libs/ogl/canvas.cpp
+
+mutabor-canvas.obj: libs/ogl/canvas.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-canvas.obj -MD -MP -MF $(DEPDIR)/mutabor-canvas.Tpo -c -o mutabor-canvas.obj `if test -f 'libs/ogl/canvas.cpp'; then $(CYGPATH_W) 'libs/ogl/canvas.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/canvas.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-canvas.Tpo $(DEPDIR)/mutabor-canvas.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/canvas.cpp' object='mutabor-canvas.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-canvas.obj `if test -f 'libs/ogl/canvas.cpp'; then $(CYGPATH_W) 'libs/ogl/canvas.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/canvas.cpp'; fi`
+
+mutabor-composit.o: libs/ogl/composit.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-composit.o -MD -MP -MF $(DEPDIR)/mutabor-composit.Tpo -c -o mutabor-composit.o `test -f 'libs/ogl/composit.cpp' || echo '$(srcdir)/'`libs/ogl/composit.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-composit.Tpo $(DEPDIR)/mutabor-composit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/composit.cpp' object='mutabor-composit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-composit.o `test -f 'libs/ogl/composit.cpp' || echo '$(srcdir)/'`libs/ogl/composit.cpp
+
+mutabor-composit.obj: libs/ogl/composit.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-composit.obj -MD -MP -MF $(DEPDIR)/mutabor-composit.Tpo -c -o mutabor-composit.obj `if test -f 'libs/ogl/composit.cpp'; then $(CYGPATH_W) 'libs/ogl/composit.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/composit.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-composit.Tpo $(DEPDIR)/mutabor-composit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/composit.cpp' object='mutabor-composit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-composit.obj `if test -f 'libs/ogl/composit.cpp'; then $(CYGPATH_W) 'libs/ogl/composit.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/composit.cpp'; fi`
+
+mutabor-constrnt.o: libs/ogl/constrnt.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-constrnt.o -MD -MP -MF $(DEPDIR)/mutabor-constrnt.Tpo -c -o mutabor-constrnt.o `test -f 'libs/ogl/constrnt.cpp' || echo '$(srcdir)/'`libs/ogl/constrnt.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-constrnt.Tpo $(DEPDIR)/mutabor-constrnt.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/constrnt.cpp' object='mutabor-constrnt.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-constrnt.o `test -f 'libs/ogl/constrnt.cpp' || echo '$(srcdir)/'`libs/ogl/constrnt.cpp
+
+mutabor-constrnt.obj: libs/ogl/constrnt.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-constrnt.obj -MD -MP -MF $(DEPDIR)/mutabor-constrnt.Tpo -c -o mutabor-constrnt.obj `if test -f 'libs/ogl/constrnt.cpp'; then $(CYGPATH_W) 'libs/ogl/constrnt.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/constrnt.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-constrnt.Tpo $(DEPDIR)/mutabor-constrnt.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/constrnt.cpp' object='mutabor-constrnt.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-constrnt.obj `if test -f 'libs/ogl/constrnt.cpp'; then $(CYGPATH_W) 'libs/ogl/constrnt.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/constrnt.cpp'; fi`
+
+mutabor-divided.o: libs/ogl/divided.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-divided.o -MD -MP -MF $(DEPDIR)/mutabor-divided.Tpo -c -o mutabor-divided.o `test -f 'libs/ogl/divided.cpp' || echo '$(srcdir)/'`libs/ogl/divided.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-divided.Tpo $(DEPDIR)/mutabor-divided.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/divided.cpp' object='mutabor-divided.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-divided.o `test -f 'libs/ogl/divided.cpp' || echo '$(srcdir)/'`libs/ogl/divided.cpp
+
+mutabor-divided.obj: libs/ogl/divided.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-divided.obj -MD -MP -MF $(DEPDIR)/mutabor-divided.Tpo -c -o mutabor-divided.obj `if test -f 'libs/ogl/divided.cpp'; then $(CYGPATH_W) 'libs/ogl/divided.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/divided.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-divided.Tpo $(DEPDIR)/mutabor-divided.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/divided.cpp' object='mutabor-divided.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-divided.obj `if test -f 'libs/ogl/divided.cpp'; then $(CYGPATH_W) 'libs/ogl/divided.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/divided.cpp'; fi`
+
+mutabor-drawn.o: libs/ogl/drawn.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-drawn.o -MD -MP -MF $(DEPDIR)/mutabor-drawn.Tpo -c -o mutabor-drawn.o `test -f 'libs/ogl/drawn.cpp' || echo '$(srcdir)/'`libs/ogl/drawn.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-drawn.Tpo $(DEPDIR)/mutabor-drawn.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/drawn.cpp' object='mutabor-drawn.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-drawn.o `test -f 'libs/ogl/drawn.cpp' || echo '$(srcdir)/'`libs/ogl/drawn.cpp
+
+mutabor-drawn.obj: libs/ogl/drawn.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-drawn.obj -MD -MP -MF $(DEPDIR)/mutabor-drawn.Tpo -c -o mutabor-drawn.obj `if test -f 'libs/ogl/drawn.cpp'; then $(CYGPATH_W) 'libs/ogl/drawn.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/drawn.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-drawn.Tpo $(DEPDIR)/mutabor-drawn.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/drawn.cpp' object='mutabor-drawn.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-drawn.obj `if test -f 'libs/ogl/drawn.cpp'; then $(CYGPATH_W) 'libs/ogl/drawn.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/drawn.cpp'; fi`
+
+mutabor-lines.o: libs/ogl/lines.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-lines.o -MD -MP -MF $(DEPDIR)/mutabor-lines.Tpo -c -o mutabor-lines.o `test -f 'libs/ogl/lines.cpp' || echo '$(srcdir)/'`libs/ogl/lines.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-lines.Tpo $(DEPDIR)/mutabor-lines.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/lines.cpp' object='mutabor-lines.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-lines.o `test -f 'libs/ogl/lines.cpp' || echo '$(srcdir)/'`libs/ogl/lines.cpp
+
+mutabor-lines.obj: libs/ogl/lines.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-lines.obj -MD -MP -MF $(DEPDIR)/mutabor-lines.Tpo -c -o mutabor-lines.obj `if test -f 'libs/ogl/lines.cpp'; then $(CYGPATH_W) 'libs/ogl/lines.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/lines.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-lines.Tpo $(DEPDIR)/mutabor-lines.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/lines.cpp' object='mutabor-lines.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-lines.obj `if test -f 'libs/ogl/lines.cpp'; then $(CYGPATH_W) 'libs/ogl/lines.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/lines.cpp'; fi`
+
+mutabor-mfutils.o: libs/ogl/mfutils.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mfutils.o -MD -MP -MF $(DEPDIR)/mutabor-mfutils.Tpo -c -o mutabor-mfutils.o `test -f 'libs/ogl/mfutils.cpp' || echo '$(srcdir)/'`libs/ogl/mfutils.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mfutils.Tpo $(DEPDIR)/mutabor-mfutils.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/mfutils.cpp' object='mutabor-mfutils.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mfutils.o `test -f 'libs/ogl/mfutils.cpp' || echo '$(srcdir)/'`libs/ogl/mfutils.cpp
+
+mutabor-mfutils.obj: libs/ogl/mfutils.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mfutils.obj -MD -MP -MF $(DEPDIR)/mutabor-mfutils.Tpo -c -o mutabor-mfutils.obj `if test -f 'libs/ogl/mfutils.cpp'; then $(CYGPATH_W) 'libs/ogl/mfutils.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/mfutils.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mfutils.Tpo $(DEPDIR)/mutabor-mfutils.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/mfutils.cpp' object='mutabor-mfutils.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mfutils.obj `if test -f 'libs/ogl/mfutils.cpp'; then $(CYGPATH_W) 'libs/ogl/mfutils.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/mfutils.cpp'; fi`
+
+mutabor-ogldiag.o: libs/ogl/ogldiag.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-ogldiag.o -MD -MP -MF $(DEPDIR)/mutabor-ogldiag.Tpo -c -o mutabor-ogldiag.o `test -f 'libs/ogl/ogldiag.cpp' || echo '$(srcdir)/'`libs/ogl/ogldiag.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-ogldiag.Tpo $(DEPDIR)/mutabor-ogldiag.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/ogldiag.cpp' object='mutabor-ogldiag.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-ogldiag.o `test -f 'libs/ogl/ogldiag.cpp' || echo '$(srcdir)/'`libs/ogl/ogldiag.cpp
+
+mutabor-ogldiag.obj: libs/ogl/ogldiag.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-ogldiag.obj -MD -MP -MF $(DEPDIR)/mutabor-ogldiag.Tpo -c -o mutabor-ogldiag.obj `if test -f 'libs/ogl/ogldiag.cpp'; then $(CYGPATH_W) 'libs/ogl/ogldiag.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/ogldiag.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-ogldiag.Tpo $(DEPDIR)/mutabor-ogldiag.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/ogldiag.cpp' object='mutabor-ogldiag.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-ogldiag.obj `if test -f 'libs/ogl/ogldiag.cpp'; then $(CYGPATH_W) 'libs/ogl/ogldiag.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/ogldiag.cpp'; fi`
+
+mutabor-oglmisc.o: libs/ogl/oglmisc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-oglmisc.o -MD -MP -MF $(DEPDIR)/mutabor-oglmisc.Tpo -c -o mutabor-oglmisc.o `test -f 'libs/ogl/oglmisc.cpp' || echo '$(srcdir)/'`libs/ogl/oglmisc.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-oglmisc.Tpo $(DEPDIR)/mutabor-oglmisc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/oglmisc.cpp' object='mutabor-oglmisc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-oglmisc.o `test -f 'libs/ogl/oglmisc.cpp' || echo '$(srcdir)/'`libs/ogl/oglmisc.cpp
+
+mutabor-oglmisc.obj: libs/ogl/oglmisc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-oglmisc.obj -MD -MP -MF $(DEPDIR)/mutabor-oglmisc.Tpo -c -o mutabor-oglmisc.obj `if test -f 'libs/ogl/oglmisc.cpp'; then $(CYGPATH_W) 'libs/ogl/oglmisc.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/oglmisc.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-oglmisc.Tpo $(DEPDIR)/mutabor-oglmisc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='libs/ogl/oglmisc.cpp' object='mutabor-oglmisc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-oglmisc.obj `if test -f 'libs/ogl/oglmisc.cpp'; then $(CYGPATH_W) 'libs/ogl/oglmisc.cpp'; else $(CYGPATH_W) '$(srcdir)/libs/ogl/oglmisc.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -1308,11 +1564,11 @@ distdir: $(DISTFILES)
 	    top_distdir=`$(am__cd) $(top_distdir) && pwd`; \
 	    (cd $$subdir && \
 	      $(MAKE) $(AM_MAKEFLAGS) \
-		top_distdir="$$top_distdir" \
-		distdir="$$distdir/$$subdir" \
+	        top_distdir="$$top_distdir" \
+	        distdir="$$distdir/$$subdir" \
 		am__remove_distdir=: \
 		am__skip_length_check=: \
-		distdir) \
+	        distdir) \
 	      || exit 1; \
 	  fi; \
 	done
@@ -1385,14 +1641,14 @@ distcheck: dist
 	  && $(MAKE) $(AM_MAKEFLAGS) installcheck \
 	  && $(MAKE) $(AM_MAKEFLAGS) uninstall \
 	  && $(MAKE) $(AM_MAKEFLAGS) distuninstallcheck_dir="$$dc_install_base" \
-		distuninstallcheck \
+	        distuninstallcheck \
 	  && chmod -R a-w "$$dc_install_base" \
 	  && ({ \
 	       (cd ../.. && umask 077 && mkdir "$$dc_destdir") \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" install \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" uninstall \
 	       && $(MAKE) $(AM_MAKEFLAGS) DESTDIR="$$dc_destdir" \
-		    distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
+	            distuninstallcheck_dir="$$dc_destdir" distuninstallcheck; \
 	      } || { rm -rf "$$dc_destdir"; exit 1; }) \
 	  && rm -rf "$$dc_destdir" \
 	  && $(MAKE) $(AM_MAKEFLAGS) dist \
@@ -1406,11 +1662,11 @@ distuninstallcheck:
 	@cd $(distuninstallcheck_dir) \
 	&& test `$(distuninstallcheck_listfiles) | wc -l` -le 1 \
 	   || { echo "ERROR: files left after uninstall:" ; \
-		if test -n "$(DESTDIR)"; then \
-		  echo "  (check DESTDIR support)"; \
-		fi ; \
-		$(distuninstallcheck_listfiles) ; \
-		exit 1; } >&2
+	        if test -n "$(DESTDIR)"; then \
+	          echo "  (check DESTDIR support)"; \
+	        fi ; \
+	        $(distuninstallcheck_listfiles) ; \
+	        exit 1; } >&2
 distcleancheck: distclean
 	@if test '$(srcdir)' = . ; then \
 	  echo "ERROR: distcleancheck can only run from a VPATH build" ; \
@@ -1611,7 +1867,9 @@ Mutabor.app:all Mutabor.xrc mutabor
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
-	cp $(top_srcdir)/Images/about.png Mutabor.xrc Mutabor.app/Contents/Resources
+	for d in $(dist_pkgdata_DATA) ; do \
+		cp $(top_srcdir)/$$d Mutabor.app/Contents/Resources ; \
+	done
 	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
 	while read file ; do \
 		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
@@ -1664,12 +1922,9 @@ mac: copymac
 	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
 
 copymac: Mutabor.app
-# Tell versions [3.59,3.63) of GNU make to not export all variables.
-# Otherwise a system limit (for SysV at least) may be exceeded.
-.NOEXPORT:
+
 installwin: mutabor.exe
 	mkdir -p Mutabor
-	
 	cp mutabor.exe Mutabor
 	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
@@ -1691,3 +1946,12 @@ installwin: mutabor.exe
 	do \
 		cp $$d Mutabor ; \
 	done
+
+count:
+	cd $(top_srcdir) ; sloccount $(SUBDIRS)
+
+cvstagdate:
+	cd $(top_srcdir); cvs tag `date '+date_%Y-%m-%d_%H%M'`
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:
