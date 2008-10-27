@@ -2,8 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 cache_file=config.cache
+version=`cat VERSION`
 AC_PREREQ(2.59)
-AC_INIT(Mutabor, 3.1.0-0pre1, mutabor@math.tu-dresden.de)
+AC_INIT(Mutabor, 3.1beta0, mutabor@math.tu-dresden.de)
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 echo target_os: $target_os
@@ -246,12 +247,13 @@ AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
 # Checks for header files.
 AC_HEADER_STDBOOL
 AC_HEADER_TIME
-AC_CHECK_HEADERS([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h mcheck.h])
+AC_CHECK_HEADERS_ONCE([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h mcheck.h])
 ac_includes_default="$ac_includes_default 
 #if HAVE_MALLOC_H
 #  include <malloc.h>
 #endif
 "
+
 echo \|$HAVE_NETINET_IN_H\|
 if test "$ac_cv_header_netinet_in_h" = no ; then
 	AC_SUBST(NETINET_INC,"-I\$(top_srcdir)/includes/netinet")
@@ -323,6 +325,9 @@ if test $ac_cv_cxx_scope_reuse = inside
 then
 	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 fi
+
+AC_CHECK_HEADERS([boost/rational.hpp])
+
 
 AC_LANG_POP(C++)
 
