@@ -159,28 +159,6 @@ public:
 
 // Function ---------------------------------------------------------
 
-class CurrentTimer: public wxTimer {
-  unsigned int time;
-public:
-  CurrentTimer(unsigned int t = 0):wxTimer(),time(t) {
-  }
-  void Notify() {
-    time++;
-  }
-  void Set(unsigned int t = 0) { time = t; }
-  CurrentTimer& operator = (unsigned int t) { 
-    time = t; 
-    return * this;
-  }
-  operator unsigned int () { return time; }
-};
-
-void StartCurrentTime();
-void StopCurrentTime();
-
-#ifdef VC8
-  extern CurrentTimer CurrentTime;
-#endif
 
 #endif
 

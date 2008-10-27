@@ -2,13 +2,16 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.12 2008/10/01 09:26:10 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Attic/DevMidF.cpp,v 1.13 2008/10/27 15:02:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/01 09:26:10 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2008/10/27 15:02:58 $
+ * \version $Revision: 1.13 $
  *
  * $Log: DevMidF.cpp,v $
+ * Revision 1.13  2008/10/27 15:02:58  keinstein
+ * moved CurrentTimer to Device
+ *
  * Revision 1.12  2008/10/01 09:26:10  keinstein
  * fix midi file playing
  *
@@ -141,33 +144,7 @@ void WriteLength(mutOFstream &os, DWORD l)
   mutPutC(os,(BYTE) (l & 0xFF));
 }
 
-// CurrentTime ------------------------------------------------------
 
-//DWORD CurrentTime;
-CurrentTimer CurrentTime;
-//UINT CurrentTimeId;
-
-
-/* Obsoleted by CurrentTime Class
-// CallBack Funktion
-void CALLBACK _export CurrentTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
-{
-  CurrentTime++;
-}
-*/
-// Timer setzen
-void StartCurrentTime()
-{
-  CurrentTime = 0;
-  CurrentTime.Start(2,wxTIMER_CONTINUOUS);
-  //  CurrentTimeId = timeSetEvent(2, 1, CurrentTimeFunc, 0, TIME_PERIODIC);
-}
-
-// Timer lˆschen
-void StopCurrentTime()
-{
-  CurrentTime.Stop();
-}
 
 // Tracks -----------------------------------------------------------
 
