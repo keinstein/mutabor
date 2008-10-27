@@ -3,7 +3,7 @@ distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc intl po wxintl includes . doc # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
-	-I $(top_srcdir)/xrc \
+	-I $(top_srcdir)/xrc -I $(top_srcdir)/libs/includes \
 	@NETINET_INC@
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
@@ -15,7 +15,10 @@ debian/dirs debian/docs debian/libmutabor-dev.install \
 debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
 debian/mutabor.install debian/README.Debian debian/rules \
  libasprintf
-dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png
+dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
+	Icons/png/NewInputDevice.png \
+	Icons/png/InputDevice.png \
+	Icons/png/MidiFile.png
 #RECURSIVE_TARGETS += mac-recursive
 BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
 bin_PROGRAMS = mutabor
@@ -27,6 +30,7 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
 		muwx/MutLogicWnd.cpp \
+		muwx/MutRouteShapes.cpp \
 		muwx/MutRouteWnd.cpp  \
 		muwx/MutTextBox.cpp \
 		muwx/CompDlg.cpp muwx/Action.cpp \
@@ -42,16 +46,32 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/OutputDevDlg.h muwx/Mutabor.rh \
 		muwx/MutRouteWnd.h muwx/MutTextBox.h muwx/CompDlg.h muwx/Action.h \
 		muwx/InputDevDlg.h mu32/DevGIS.h mu32/Device.h mu32/DevMidF.h \
-		mu32/DevMidi.h mu32/EDevice.h mu32/Execute.h \
+		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
 		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
+		muwx/mutNamedIcon.h muwx/mutNamedIcon.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
 		mywx/muconvauto.cpp mywx/muconvauto.h \
+		libs/ogl/basic.cpp \
+		libs/ogl/basic2.cpp \
+		libs/ogl/bmpshape.cpp \
+		libs/ogl/iconshape.cpp \
+		libs/ogl/canvas.cpp \
+		libs/ogl/composit.cpp \
+		libs/ogl/constrnt.cpp \
+		libs/ogl/divided.cpp \
+		libs/ogl/drawn.cpp \
+		libs/ogl/lines.cpp \
+		libs/ogl/mfutils.cpp \
+		libs/ogl/ogldiag.cpp \
+		libs/ogl/oglmisc.cpp \
 		$(top_srcdir)/xrc/wxresource.h \
 		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
+#		mywx/myContextHelpButton.h \
+#		mywx/myContextHelpButton.cpp \
 #
 mutabordir=$(datadir)/mutabor
 
@@ -140,7 +160,9 @@ Mutabor.app:all Mutabor.xrc mutabor
 		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
 		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
 	done
-	cp $(top_srcdir)/Images/about.png Mutabor.xrc Mutabor.app/Contents/Resources
+	for d in $(dist_pkgdata_DATA) ; do \
+		cp $(top_srcdir)/$$d Mutabor.app/Contents/Resources ; \
+	done
 	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
 	while read file ; do \
 		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
@@ -198,9 +220,9 @@ mac: copymac
 
 
 copymac: Mutabor.app
+
 installwin: mutabor.exe
 	mkdir -p Mutabor
-	
 	cp mutabor.exe Mutabor
 	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
@@ -222,3 +244,10 @@ installwin: mutabor.exe
 	do \
 		cp $$d Mutabor ; \
 	done
+
+count:
+	cd $(top_srcdir) ; sloccount $(SUBDIRS)
+
+cvstagdate:
+	cd $(top_srcdir); cvs tag `date '+date_%Y-%m-%d_%H%M'`
+
