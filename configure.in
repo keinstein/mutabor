@@ -43,14 +43,6 @@ AH_BOTTOM([
 #  define YYDEBUG 1
 #endif
 
-/*
-#ifdef MUST_REUSE
-#  define REUSE(x) x
-#else
-#  define REUSE(x)
-#endif
-*/
-
 #ifdef MUST_REUSE_C
 #  define REUSE_C(x) x
 #else
@@ -114,7 +106,7 @@ AS_IF(test -z "$PERL",
 ]))
 
 CXX_FOR_SCOPING
-AS_IF(test "$cxx_iso_for_loop_scope" = yes,
+AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
   AC_DEFINE(REUSE(x), x, [Define if variables must be declared again in for loops]),
   AC_DEFINE(REUSE(x), , [Define if variables must be declared again in for loops]))
 #./  AC_DEFINE_UNQUOTED(MUST_REUSE, [$cxx_iso_for_loop_scope]))
@@ -312,19 +304,19 @@ fi
 
 AC_LANG(C++)
 
-AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
-[
- AC_COMPILE_IFELSE([
-	AC_LANG_PROGRAM([],[
-	for (int i=1; i<3; i++) ;
-	for (int i=1; i<4; i++) ; 
-	exit(0);
-	])],[ac_cv_cxx_scope_reuse=inside],[ac_cv_cxx_scope_reuse=outside])
-])
-if test $ac_cv_cxx_scope_reuse = inside
-then
-	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
-fi
+dnl AC_CACHE_CHECK([for variable scope in for loops in C++ mode], ac_cv_cxx_scope_reuse,
+dnl [
+dnl AC_COMPILE_IFELSE([
+dnl	AC_LANG_PROGRAM([],[
+dnl	for (int i=1; i<3; i++) ;
+dnl	for (int i=1; i<4; i++) ; 
+dnl	exit(0);
+dnl	])],[ac_cv_cxx_scope_reuse=inside],[ac_cv_cxx_scope_reuse=outside])
+dnl ])
+dnl if test $ac_cv_cxx_scope_reuse = inside
+dnl then
+dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
+dnl fi
 
 AC_CHECK_HEADERS([boost/rational.hpp])
 
