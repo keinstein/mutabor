@@ -327,9 +327,6 @@
 /* Define if integer division by zero raises signal SIGFPE. */
 #undef INTDIV0_RAISES_SIGFPE
 
-/* Define to x if the scope of C++ loop variables is inside the loop */
-#undef MUST_REUSE
-
 /* Define to x if the scope of C loop variables is inside the loop */
 #undef MUST_REUSE_C
 
@@ -464,14 +461,6 @@
 /* #  define __WXDEBUG__ */
 #  define YYDEBUG 1
 #endif
-
-/*
-#ifdef MUST_REUSE
-#  define REUSE(x) x
-#else
-#  define REUSE(x)
-#endif
-*/
 
 #ifdef MUST_REUSE_C
 #  define REUSE_C(x) x
