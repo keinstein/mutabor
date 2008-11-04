@@ -34,9 +34,13 @@ public:
     n = numerator;
     d = denominator;
   }
+  frac(long numerator){
+    n = numerator;
+    d = 1;
+  }          
 
-  long numerator() const (return n);
-  long denominator() const (return d);
+  long numerator() const {return n;}
+  long denominator() const {return d;}
   frac& operator =(const frac& f);
   frac& operator +=(const frac& f);
   frac& operator -=(const frac& f);
@@ -62,14 +66,14 @@ public:
   friend STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f);
 
 #ifdef WX
-  operator wxString() {
+  operator wxString() const {
     return wxString::Format(_T("%d/%d"),n,d);
   }
 #endif
 };
 
-inline wxString TowxString(frac f) {
-  return (wxString) f;
+inline wxString TowxString(const frac f) {
+  return f;
 }
 
 #endif /* HAVE_BOOST_RATIONAL_H */
