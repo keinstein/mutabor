@@ -94,14 +94,14 @@ am_mutabor_OBJECTS = mutabor-Hilfs.$(OBJEXT) mutabor-mxDefs.$(OBJEXT) \
 	mutabor-GSP_Err.$(OBJEXT) mutabor-GSP_File.$(OBJEXT) \
 	mutabor-GSP.$(OBJEXT) mutabor-InputFilterDlg.$(OBJEXT) \
 	mutabor-BoxDlg.$(OBJEXT) mutabor-OutputFilterDlg.$(OBJEXT) \
-	mutabor-valRadio.$(OBJEXT) mutabor-mutNamedIcon.$(OBJEXT) \
-	mutabor-muconvauto.$(OBJEXT) mutabor-basic.$(OBJEXT) \
-	mutabor-basic2.$(OBJEXT) mutabor-bmpshape.$(OBJEXT) \
-	mutabor-iconshape.$(OBJEXT) mutabor-canvas.$(OBJEXT) \
-	mutabor-composit.$(OBJEXT) mutabor-constrnt.$(OBJEXT) \
-	mutabor-divided.$(OBJEXT) mutabor-drawn.$(OBJEXT) \
-	mutabor-lines.$(OBJEXT) mutabor-mfutils.$(OBJEXT) \
-	mutabor-ogldiag.$(OBJEXT) mutabor-oglmisc.$(OBJEXT)
+	mutabor-valRadio.$(OBJEXT) mutabor-muconvauto.$(OBJEXT) \
+	mutabor-basic.$(OBJEXT) mutabor-basic2.$(OBJEXT) \
+	mutabor-bmpshape.$(OBJEXT) mutabor-iconshape.$(OBJEXT) \
+	mutabor-canvas.$(OBJEXT) mutabor-composit.$(OBJEXT) \
+	mutabor-constrnt.$(OBJEXT) mutabor-divided.$(OBJEXT) \
+	mutabor-drawn.$(OBJEXT) mutabor-lines.$(OBJEXT) \
+	mutabor-mfutils.$(OBJEXT) mutabor-ogldiag.$(OBJEXT) \
+	mutabor-oglmisc.$(OBJEXT)
 mutabor_OBJECTS = $(am_mutabor_OBJECTS)
 mutabor_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(mutabor_CXXFLAGS) $(CXXFLAGS) \
@@ -384,7 +384,6 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
 		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
-		muwx/mutNamedIcon.h muwx/mutNamedIcon.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
@@ -570,7 +569,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mfutils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-muconvauto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mut.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mutNamedIcon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-mxDefs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-ogldiag.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-oglmisc.Po@am__quote@
@@ -1143,20 +1141,6 @@ mutabor-valRadio.obj: mywx/valRadio.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mywx/valRadio.cpp' object='mutabor-valRadio.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-valRadio.obj `if test -f 'mywx/valRadio.cpp'; then $(CYGPATH_W) 'mywx/valRadio.cpp'; else $(CYGPATH_W) '$(srcdir)/mywx/valRadio.cpp'; fi`
-
-mutabor-mutNamedIcon.o: muwx/mutNamedIcon.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mutNamedIcon.o -MD -MP -MF $(DEPDIR)/mutabor-mutNamedIcon.Tpo -c -o mutabor-mutNamedIcon.o `test -f 'muwx/mutNamedIcon.cpp' || echo '$(srcdir)/'`muwx/mutNamedIcon.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mutNamedIcon.Tpo $(DEPDIR)/mutabor-mutNamedIcon.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/mutNamedIcon.cpp' object='mutabor-mutNamedIcon.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mutNamedIcon.o `test -f 'muwx/mutNamedIcon.cpp' || echo '$(srcdir)/'`muwx/mutNamedIcon.cpp
-
-mutabor-mutNamedIcon.obj: muwx/mutNamedIcon.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-mutNamedIcon.obj -MD -MP -MF $(DEPDIR)/mutabor-mutNamedIcon.Tpo -c -o mutabor-mutNamedIcon.obj `if test -f 'muwx/mutNamedIcon.cpp'; then $(CYGPATH_W) 'muwx/mutNamedIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/mutNamedIcon.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/mutabor-mutNamedIcon.Tpo $(DEPDIR)/mutabor-mutNamedIcon.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/mutNamedIcon.cpp' object='mutabor-mutNamedIcon.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-mutNamedIcon.obj `if test -f 'muwx/mutNamedIcon.cpp'; then $(CYGPATH_W) 'muwx/mutNamedIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/mutNamedIcon.cpp'; fi`
 
 mutabor-muconvauto.o: mywx/muconvauto.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-muconvauto.o -MD -MP -MF $(DEPDIR)/mutabor-muconvauto.Tpo -c -o mutabor-muconvauto.o `test -f 'mywx/muconvauto.cpp' || echo '$(srcdir)/'`mywx/muconvauto.cpp

@@ -49,7 +49,6 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
 		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
-		muwx/mutNamedIcon.h muwx/mutNamedIcon.cpp \
 		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
 		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
 		muwx/Mutabor.rc \
