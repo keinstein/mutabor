@@ -468,7 +468,7 @@ void ScanRoutes(wxConfigBase * config)
 
     config->Read(_T("Type"), &type, 1);
 
-    if (type <= 0 || type >= DeviceMaxType) {
+    if (type <= DTUnknown || type >= DeviceMaxType) {
       // Bad device type; try to recover
       wxString type_name;
       config->Read(_T("Type_Name"), &type_name, _("Midi Port"));
@@ -1028,13 +1028,21 @@ void ScanDevices()
   for (EDevice * ine = InEDevices; ine ; ine = ine->Next) {
     
     InDevice *In = ine->newInDevice();
+    DEBUGLOG2(_T("ine: %x; In: %x"), ine, In);
+    if (!In) continue; // Permit unknown devices
+    /// \todo Check if this is ok.
+
+    wxASSERT(In);
     *PreIn = In;
     PreIn = &(In->Next);
 
     // handle routes
     for (ERoute * routee = ine->Routes; routee; routee = routee->Next) {
-      DEBUGLOG2(_T("routee: %x"), routee);      
-      In->AddRoute(routee->newRoute());
+      DEBUGLOG2(_T("routee: %x"), routee);
+      Route * r = routee->newRoute();
+      wxASSERT(r);
+      DEBUGLOG2(_T("route: %x"), r);
+      In->AddRoute(r);
     }
   }
 }
