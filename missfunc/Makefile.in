@@ -70,7 +70,7 @@ LIBRARIES = $(lib_LIBRARIES)
 ARFLAGS = cru
 libmissfunc_a_AR = $(AR) $(ARFLAGS)
 libmissfunc_a_LIBADD =
-am_libmissfunc_a_OBJECTS = stpcpy.$(OBJEXT)
+am_libmissfunc_a_OBJECTS = stpcpy.$(OBJEXT) missfunc.$(OBJEXT)
 libmissfunc_a_OBJECTS = $(am_libmissfunc_a_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -261,7 +261,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 lib_LIBRARIES = libmissfunc.a
-libmissfunc_a_SOURCES = stpcpy.c
+libmissfunc_a_SOURCES = stpcpy.c missfunc.c
 all: all-am
 
 .SUFFIXES:
@@ -335,6 +335,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/missfunc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stpcpy.Po@am__quote@
 
 .c.o:
