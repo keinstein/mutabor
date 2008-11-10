@@ -67,7 +67,7 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		libs/ogl/ogldiag.cpp \
 		libs/ogl/oglmisc.cpp \
 		$(top_srcdir)/xrc/wxresource.h \
-		muwx/Icon muwx/bitmaps @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+		@COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 
 #		mywx/myContextHelpButton.h \
 #		mywx/myContextHelpButton.cpp \
@@ -250,3 +250,8 @@ count:
 cvstagdate:
 	cd $(top_srcdir); cvs tag `date '+date_%Y-%m-%d_%H%M'`
 
+
+indent:
+	cd $(top_srcdir) ; for d in $(mutabor_SOURCES) ; do \
+		astyle --style=linux --indent=tab=8 --break-blocks $$d ; \
+	done
