@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 --install
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc intl po wxintl includes . doc # libmutabor .
 INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
