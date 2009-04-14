@@ -10,6 +10,7 @@ BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
 BUILT_SOURCES += @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
+INDENT = astyle --style=linux --indent=tab=8
 EXTRA_DIST = config.rpath mkinstalldirs m4/ChangeLog  debian/changelog debian/compat debian/control debian/copyright \
 debian/dirs debian/docs debian/libmutabor-dev.install \
 debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
@@ -18,19 +19,25 @@ debian/mutabor.install debian/README.Debian debian/rules \
 dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/NewInputDevice.png \
 	Icons/png/InputDevice.png \
-	Icons/png/MidiFile.png
+	Icons/png/NewOutputDevice.png \
+	Icons/png/OutputDevice.png \
+	Icons/png/MidiFile.png \
+	Icons/png/ActiveChannel.png \
+	Icons/png/PassiveChannel.png \
+	Icons/png/TuningBox.png
 #RECURSIVE_TARGETS += mac-recursive
-BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
+BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
+	$(top_srcdir)/xrc/wxresource.h
 bin_PROGRAMS = mutabor
-mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
+mutabor_INDENTS = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		mu32/Interval.cpp \
-		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
 		mu32/Parser.cpp mu32/Runtime.cpp \
 		mu32/TabGen.cpp rtmidi/RtMidi.cpp muwx/MutApp.cpp muwx/MutChild.cpp \
 		muwx/MutEditFile.cpp muwx/MutFrame.cpp \
 		muwx/OutputDevDlg.cpp \
 		muwx/MutLogicWnd.cpp \
 		muwx/MutRouteShapes.cpp \
+		muwx/MutRouteShapes.h \
 		muwx/MutRouteWnd.cpp  \
 		muwx/MutTextBox.cpp \
 		muwx/CompDlg.cpp muwx/Action.cpp \
@@ -44,7 +51,8 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		rtmidi/RtMidi.h muwx/MutApp.h muwx/MutChild.h \
 		muwx/MutEditFile.h muwx/MutFrame.h muwx/MutLogicWnd.h \
 		muwx/OutputDevDlg.h muwx/Mutabor.rh \
-		muwx/MutRouteWnd.h muwx/MutTextBox.h muwx/CompDlg.h muwx/Action.h \
+		muwx/MutRouteWnd.h muwx/MutTextBox.h \
+		muwx/MutIcon.h muwx/CompDlg.h muwx/Action.h \
 		muwx/InputDevDlg.h mu32/DevGIS.h mu32/Device.h mu32/DevMidF.h \
 		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
 		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
@@ -68,6 +76,12 @@ mutabor_SOURCES = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		libs/ogl/oglmisc.cpp \
 		$(top_srcdir)/xrc/wxresource.h \
 		@COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+
+INDENTS = $(mutabor_INDENTS)
+
+mutabor_SOURCES = $(mutabor_INDENTS) \
+		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
+
 
 #		mywx/myContextHelpButton.h \
 #		mywx/myContextHelpButton.cpp \
@@ -190,6 +204,10 @@ SUFFIXES += .h
 
 YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 
+.y.cpp: 
+	rm -f $*.h
+	$(MAKE) $@
+
 .y.h:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
 	if test -f y.tab.h; then \
@@ -251,7 +269,25 @@ cvstagdate:
 	cd $(top_srcdir); cvs tag `date '+date_%Y-%m-%d_%H%M'`
 
 
+# mostly copied from distdir target of Makefile.in
 indent:
-	cd $(top_srcdir) ; for d in $(mutabor_SOURCES) ; do \
-		astyle --style=linux --indent=tab=8 --break-blocks $$d ; \
+	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
+	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
+	list='$(INDENTS)'; \
+	  dist_sources=`for file in $$list; do echo $$file; done | \
+	  sed -e "s|^$$srcdirstrip/||;t" \
+	      -e "s|^$$topsrcdirstrip/|$(top_builddir)/|;t"`; \
+	for file in $$dist_sources ; do \
+	  if test -f $$file || test -d $$file; then d=.; else d=$(srcdir); fi; \
+	  if test -d $$d/$$file; then \
+	    dir=`echo "/$$file" | sed -e 's,/[^/]*$$,,'`; \
+	    if test -d $(srcdir)/$$file && test $$d != $(srcdir); then \
+	      $(INDENT) $(srcdir)/$$file || exit 1; \
+	    fi; \
+	    $(INDENT) $$d/$$file || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || $(INDENT) $$d/$$file \
+	    || exit 1; \
+	  fi; \
 	done
