@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        OutputFilterDlg.h
-// Purpose:     
+// Purpose:
 // Author:      R. Krauße
-// Modified by: 
+// Modified by:
 // Created:     10/22/05 16:09:37
-// RCS-ID:      
+// RCS-ID:
 // Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
+// Licence:
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _OUTPUTFILTERDLG_H_
@@ -63,20 +63,21 @@
  */
 
 class OutputFilterDlg: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( OutputFilterDlg )
-    DECLARE_EVENT_TABLE()
+{
+	DECLARE_DYNAMIC_CLASS( OutputFilterDlg )
+	DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    OutputFilterDlg( );
-    OutputFilterDlg( wxWindow* parent, wxWindowID id = SYMBOL_OUTPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_OUTPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_OUTPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_OUTPUTFILTERDLG_SIZE, long style = SYMBOL_OUTPUTFILTERDLG_STYLE );
+	/// Constructors
+	OutputFilterDlg( );
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_OUTPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_OUTPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_OUTPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_OUTPUTFILTERDLG_SIZE, long style = SYMBOL_OUTPUTFILTERDLG_STYLE );
+	OutputFilterDlg( wxWindow* parent, wxWindowID id = SYMBOL_OUTPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_OUTPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_OUTPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_OUTPUTFILTERDLG_SIZE, long style = SYMBOL_OUTPUTFILTERDLG_STYLE );
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creation
+	bool Create( wxWindow* parent, wxWindowID id = SYMBOL_OUTPUTFILTERDLG_IDNAME, const wxString& caption = SYMBOL_OUTPUTFILTERDLG_TITLE, const wxPoint& pos = SYMBOL_OUTPUTFILTERDLG_POSITION, const wxSize& size = SYMBOL_OUTPUTFILTERDLG_SIZE, long style = SYMBOL_OUTPUTFILTERDLG_STYLE );
+
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin OutputFilterDlg event handler declarations
 
@@ -84,32 +85,61 @@ public:
 
 ////@begin OutputFilterDlg member function declarations
 
-    long GetFrom() const { return From ; }
-    void SetFrom(long value) { From = value ; }
+	long GetFrom() const
+	{
+		return From ;
+	}
 
-    long GetTo() const { return To ; }
-    void SetTo(long value) { To = value ; }
+	void SetFrom(long value)
 
-    bool GetAvoidDrumChannel() const { return AvoidDrumChannel ; }
-    void SetAvoidDrumChannel(bool value) { AvoidDrumChannel = value ; }
+	{
+		From = value ;
+	}
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+	long GetTo() const
+	{
+		return To ;
+	}
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	void SetTo(long value)
+
+	{
+		To = value ;
+	}
+
+	bool GetAvoidDrumChannel() const
+	{
+		return AvoidDrumChannel ;
+	}
+
+	void SetAvoidDrumChannel(bool value)
+
+	{
+		AvoidDrumChannel = value ;
+	}
+
+	/// Retrieves bitmap resources
+
+	wxBitmap GetBitmapResource( const wxString& name );
+
+	/// Retrieves icon resources
+	wxIcon GetIconResource( const wxString& name );
+
 ////@end OutputFilterDlg member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+	/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin OutputFilterDlg member variables
-    long From;
-    long To;
-    bool AvoidDrumChannel;
+	long From;
+
+	long To;
+
+	bool AvoidDrumChannel;
+
 ////@end OutputFilterDlg member variables
 };
 
 #endif
-    // _OUTPUTFILTERDLG_H_
+// _OUTPUTFILTERDLG_H_
 

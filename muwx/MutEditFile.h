@@ -2,12 +2,15 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.8 2008/10/27 15:51:26 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.9 2009/08/10 11:15:46 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2008/10/27 15:51:26 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.9 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.9  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.8  2008/10/27 15:51:26  keinstein
  * fixes for non-Unicode
  *
@@ -49,36 +52,52 @@
 
 class MutEditFile : public wxTextCtrl
 {
-  public:
+
+public:
+
 	MutEditFile(wxWindow* parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxString& value = wxEmptyString, const wxString& name = wxTextCtrlNameStr)
-	 : wxTextCtrl(parent, wxID_ANY, value, pos, size, wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 | wxTE_NOHIDESEL | wxHSCROLL , wxDefaultValidator, name) {};
-  protected:
+			: wxTextCtrl(parent, wxID_ANY, value, pos, size, wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 | wxTE_NOHIDESEL | wxHSCROLL , wxDefaultValidator, name)
+	{};
+
+protected:
 //	void SetupWindow();
 	bool DoLoadFile(const wxString &filename, int WXUNUSED(fileType));
+
 	bool DoSaveFile(const wxString& filename, int WXUNUSED(fileType));
+
 	void CmFileSave(wxCommandEvent& WXUNUSED(event));
+
 	void CmFileSaveAs(wxCommandEvent& event);
+
 	void CmCompile(wxCommandEvent& WXUNUSED(event));
+
 	void CmCompAct(wxCommandEvent& WXUNUSED(event));
+
 	void CmGetLine(wxCommandEvent& WXUNUSED(event));
+
 	void CmHelpContext(wxCommandEvent& WXUNUSED(event));
+
 	void GoErrorLine();
+
 #if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 	wxString GetValue() const;
-	wxString GetRange(long from, long to) const;
-#if wxUSE_RICHEDIT && (!(wxUSE_UNICODE || wxUSE_WCHAR_T) || wxUSE_UNICODE_MSLU)
-    // replace the selection or the entire control contents with the given text
-    // in the specified encoding
-    bool StreamIn(const wxString& value, wxFontEncoding encoding, bool selOnly);
 
-    // get the contents of the control out as text in the given encoding
-    wxString StreamOut(wxFontEncoding encoding, bool selOnly = false) const;
+	wxString GetRange(long from, long to) const;
+
+#if wxUSE_RICHEDIT && (!(wxUSE_UNICODE || wxUSE_WCHAR_T) || wxUSE_UNICODE_MSLU)
+	// replace the selection or the entire control contents with the given text
+	// in the specified encoding
+	bool StreamIn(const wxString& value, wxFontEncoding encoding, bool selOnly);
+
+	// get the contents of the control out as text in the given encoding
+	wxString StreamOut(wxFontEncoding encoding, bool selOnly = false) const;
+
 #endif // wxUSE_RICHEDIT
 #endif
-    
+
 
 	muConvAuto autoConverter;
-	
+
 	DECLARE_EVENT_TABLE()
 };
 

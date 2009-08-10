@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.5 2008/08/18 15:12:57 keinstein Exp $
+// RCS-ID:      $Id: valNum.h,v 1.6 2009/08/10 11:15:47 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -33,74 +33,81 @@
 
 class wxNumValidator: public wxTextValidator
 {
-  DECLARE_DYNAMIC_CLASS(wxNumValidator)
-    protected:
-  int Style;
-  long *m_intValue;
-  wxString bufferString;
-  int Min, Max;
-  wxCheckBox* Enabler;
+	DECLARE_DYNAMIC_CLASS(wxNumValidator)
+
+protected:
+	int Style;
+	long *m_intValue;
+	wxString bufferString;
+	int Min, Max;
+	wxCheckBox* Enabler;
 
 public:
 
-    wxNumValidator(long *val = 0, int style = 0, int min = 0, int max = 12, wxCheckBox* enabler = 0);
-    wxNumValidator(const wxNumValidator& val);
+	wxNumValidator(long *val = 0, int style = 0, int min = 0, int max = 12, wxCheckBox* enabler = 0);
 
-    ~wxNumValidator();
+	wxNumValidator(const wxNumValidator& val);
 
-    // Make a clone of this validator (or return NULL) - currently necessary
-    // if you're passing a reference to a validator.
-    // Another possibility is to always pass a pointer to a new validator
-    // (so the calling code can use a copy constructor of the relevant class).
-    virtual wxObject *Clone() const { return new wxNumValidator(*this); }
-    bool Copy(const wxNumValidator& val);
+	~wxNumValidator();
 
-    // Called when the value in the window must be validated.
-    // This function can pop up an error message.
-    virtual bool Validate(wxWindow *parent);
+	// Make a clone of this validator (or return NULL) - currently necessary
+	// if you're passing a reference to a validator.
+	// Another possibility is to always pass a pointer to a new validator
+	// (so the calling code can use a copy constructor of the relevant class).
+	virtual wxObject *Clone() const
+	{
+		return new wxNumValidator(*this);
+	}
 
-    // Called to transfer data to the window
-    virtual bool TransferToWindow();
+	bool Copy(const wxNumValidator& val);
 
-    // Called to transfer data to the window
-    virtual bool TransferFromWindow();
+	// Called when the value in the window must be validated.
+	// This function can pop up an error message.
+	virtual bool Validate(wxWindow *parent);
 
-/*    // ACCESSORS
-    inline long GetStyle() const { return m_validatorStyle; }
-    inline void SetStyle(long style) { m_validatorStyle = style; }
+	// Called to transfer data to the window
+	virtual bool TransferToWindow();
 
-    void SetIncludeList(const wxStringList& list);
-    inline wxStringList& GetIncludeList() { return m_includeList; }
+	// Called to transfer data to the window
+	virtual bool TransferFromWindow();
 
-    void SetExcludeList(const wxStringList& list);
-    inline wxStringList& GetExcludeList() { return m_excludeList; }
+	/*    // ACCESSORS
+	    inline long GetStyle() const { return m_validatorStyle; }
+	    inline void SetStyle(long style) { m_validatorStyle = style; }
 
-    // Filter keystrokes
-    void OnChar(wxKeyEvent& event);
+	    void SetIncludeList(const wxStringList& list);
+	    inline wxStringList& GetIncludeList() { return m_includeList; }
 
-    bool IsInCharIncludeList(const wxString& val);
-    bool IsNotInCharExcludeList(const wxString& val);
+	    void SetExcludeList(const wxStringList& list);
+	    inline wxStringList& GetExcludeList() { return m_excludeList; }
 
-DECLARE_EVENT_TABLE()
-*/
+	    // Filter keystrokes
+	    void OnChar(wxKeyEvent& event);
+
+	    bool IsInCharIncludeList(const wxString& val);
+	    bool IsNotInCharExcludeList(const wxString& val);
+
+	DECLARE_EVENT_TABLE()
+	*/
+
 protected:
 
-/*    bool CheckValidator() const
-    {
-        wxCHECK_MSG( m_validatorWindow, FALSE,
-                     _T("No window associated with validator") );
-        wxCHECK_MSG( m_validatorWindow->IsKindOf(CLASSINFO(wxTextCtrl)), FALSE,
-                     _T("wxTextValidator is only for wxTextCtrl's") );
-        wxCHECK_MSG( m_stringValue, FALSE,
-                     _T("No variable storage for validator") );
+	/*    bool CheckValidator() const
+	    {
+	        wxCHECK_MSG( m_validatorWindow, FALSE,
+	                     _T("No window associated with validator") );
+	        wxCHECK_MSG( m_validatorWindow->IsKindOf(CLASSINFO(wxTextCtrl)), FALSE,
+	                     _T("wxTextValidator is only for wxTextCtrl's") );
+	        wxCHECK_MSG( m_stringValue, FALSE,
+	                     _T("No variable storage for validator") );
 
-        return TRUE;
-    }*/
+	        return TRUE;
+	    }*/
 };
 
 #endif
-  // wxUSE_VALIDATORS
+// wxUSE_VALIDATORS
 
 #endif
-  // _WX_VALTEXTH__
+// _WX_VALTEXTH__
 
