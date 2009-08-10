@@ -2,15 +2,18 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.6 2008/08/18 15:06:35 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.7 2009/08/10 11:15:46 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2008/08/18 15:06:35 $
- * \version $Revision: 1.6 $
+ * $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.7 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
+ * Revision 1.7  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.6  2008/08/18 15:06:35  keinstein
  * Changed Input dev dialog to wxResources
  *
@@ -49,12 +52,13 @@
 ////@end includes
 
 
-#if 0 
+#if 0
 /*!
  * Forward declarations
  */
 
 ////@begin forward declarations
+
 class wxBoxSizer;
 ////@end forward declarations
 
@@ -65,7 +69,7 @@ class wxBoxSizer;
 ////@begin control identifiers
 #define ID_INPDIALOG 10010
 #define SYMBOL_INPUTDEVDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
-#define SYMBOL_INPUTDEVDLG_TITLE _("Inut Device")
+#define SYMBOL_INPUTDEVDLG_TITLE _("Input Device")
 #define SYMBOL_INPUTDEVDLG_IDNAME ID_INPDIALOG
 #define SYMBOL_INPUTDEVDLG_SIZE wxSize(400, 300)
 #define SYMBOL_INPUTDEVDLG_POSITION wxDefaultPosition
@@ -95,100 +99,132 @@ class wxBoxSizer;
 #endif
 
 class InputDevDlg: public InputDevDlgBase
-{    
-    DECLARE_DYNAMIC_CLASS( InputDevDlg )
-    DECLARE_EVENT_TABLE()
+{
+	DECLARE_DYNAMIC_CLASS( InputDevDlg )
+	DECLARE_EVENT_TABLE()
 
- protected:
-    int MidiDevice;
-    unsigned int Type;
+protected:
+	wxSizer *Container,* TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
 
-    wxSizer *Container,* TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
+struct TypeData:wxClientData
+	{
+		DevType nr;
+		TypeData(DevType i):wxClientData()
+		{
+			nr=i;
+		}
 
-    wxGenericValidator typeVal, deviceVal;
+		bool operator == (DevType i)
+		{
+			if (this)
+				return i == nr;
+			else return false;
+		}
 
-    struct TypeData:wxClientData {
-      DevType nr;
-      TypeData(DevType i):wxClientData()
-      {
-	nr=i;
-      }
+		operator DevType()
+		{
+			if (this) return nr;
+			else return DTNotSet;
+		}
+	};
 
-      bool operator == (DevType i) {
-	if (this)
-	  return i == nr;
-	else return false;
-      }
+	int FindType (DevType t);
 
-      operator DevType() { if (this) return nr; else return DTNotSet; }
-    };
-
-  int FindType (DevType t);
 public:
-    /// Constructors
-    InputDevDlg( wxWindow* parent = NULL);
+	/// Constructors
+	InputDevDlg( wxWindow* parent = NULL);
 
-    /// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
-    void OnChoiceSelected( wxCommandEvent& event );
+	/// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
+	void OnChoiceSelected( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
-    void OnRemoveClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
+	void OnRemoveClick( wxCommandEvent& event );
 
-    void UpdateLayout(DevType type);
+        void OnFileChanged ( wxFileDirPickerEvent & event );
 
-    int GetMidiDevice() const { return MidiDevice ; }
-    void SetMidiDevice(int value) { 
-      DEBUGLOG(_T("%d"),value);
-      MidiDevice = value ;
-      Update();
-    }
+	void UpdateLayout(DevType type);
 
-  wxString GetMidiFile() const { return MidiFilePicker->GetPath() ; }
-  void SetMidiFile(wxString value) { 
-      DEBUGLOG(value);
-      MidiFilePicker->SetPath(value);
-      Update();
-      DEBUGLOG(_T("done"));
-    }
+	int GetMidiDevice() const
+	{
+		return PortChoice->GetSelection() ;
+	}
 
-  wxString GetGUIDOFile() const { return GuidoFilePicker->GetPath() ; }
-    void SetGUIDOFile(wxString value) { 
-      DEBUGLOG(value);
-      GuidoFilePicker->SetPath(value);
-      Update();
-    }
+	void SetMidiDevice(int value)
 
-  DevType GetType() const {
-    if (Type > DeviceChoice->GetCount()) return DTNotSet;
-    TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
-    if (obj) return  *obj; else return DTNotSet; 
-  }
-  
-    void SetType(DevType value) { 
-      DEBUGLOG(_T("%d"),value);
-      Type = FindType(value) ; 
-      UpdateLayout(value);
-      Update();
-    }
+	{
+		DEBUGLOG(_T("%d"),value);
+		PortChoice->SetSelection (value) ;
+		Update();
+	}
 
-    wxString GetPortString(int i) {
-      return PortChoice->GetString (i);
-    }
-    void AppendPortChoice (const wxString &s) {
-      PortChoice->Append (s);
-    }
+	wxString GetMidiFile() const
+	{
+		return MidiFilePicker->GetPath() ;
+	}
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource (const wxString& name );
+	void SetMidiFile(wxString value)
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource (const wxString& name );
+	{
+		DEBUGLOG(value);
+		MidiFilePicker->SetPath(value);
+		Update();
+		DEBUGLOG(_T("done"));
+	}
 
-    /// Should we show tooltips?
-    static bool ShowToolTips ();
+	wxString GetGUIDOFile() const
+	{
+		return GuidoFilePicker->GetPath() ;
+	}
+
+	void SetGUIDOFile(wxString value)
+
+	{
+		DEBUGLOG(value);
+		GuidoFilePicker->SetPath(value);
+		Update();
+	}
+
+	DevType GetType() const
+	{
+                int Type = DeviceChoice->GetSelection();
+		if (Type == wxNOT_FOUND) return DTNotSet;
+
+                wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
+		TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
+
+		if (obj) return  *obj;
+		else return DTNotSet;
+	}
+
+	void SetType(DevType value)
+
+	{
+		DEBUGLOG(_T("%d"),value);
+		UpdateLayout(value);
+		Update();
+	}
+
+	wxString GetPortString(int i)
+	{
+		return PortChoice->GetString (i);
+	}
+
+	void AppendPortChoice (const wxString &s)
+	{
+		PortChoice->Append (s);
+	}
+
+	/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource (const wxString& name );
+
+	/// Retrieves icon resources
+	wxIcon GetIconResource (const wxString& name );
+
+	/// Should we show tooltips?
+	static bool ShowToolTips ();
 
 };
 
 #endif
-    // _INPUTDEVDLG_H_
+// _INPUTDEVDLG_H_
 

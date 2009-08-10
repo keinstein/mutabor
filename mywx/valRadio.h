@@ -4,7 +4,7 @@
 // Author:      Rüdiger Krauße
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valRadio.h,v 1.3 2006/01/18 15:39:17 keinstein Exp $
+// RCS-ID:      $Id: valRadio.h,v 1.4 2009/08/10 11:15:47 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -29,69 +29,77 @@
 
 class  wxRadioValidator: public wxValidator
 {
-DECLARE_DYNAMIC_CLASS(wxRadioValidator)
+	DECLARE_DYNAMIC_CLASS(wxRadioValidator)
+
 public:
 
-    wxRadioValidator(int *val = 0, int id = 0);
-    wxRadioValidator(const wxRadioValidator& val);
+	wxRadioValidator(int *val = 0, int id = 0);
 
-    ~wxRadioValidator();
+	wxRadioValidator(const wxRadioValidator& val);
 
-    // Make a clone of this validator (or return NULL) - currently necessary
-    // if you're passing a reference to a validator.
-    // Another possibility is to always pass a pointer to a new validator
-    // (so the calling code can use a copy constructor of the relevant class).
-    virtual wxObject *Clone() const { return new wxRadioValidator(*this); }
-    bool Copy(const wxRadioValidator& val);
+	~wxRadioValidator();
 
-    // Called when the value in the window must be validated.
-    // This function can pop up an error message.
-    virtual bool Validate(wxWindow *parent);
+	// Make a clone of this validator (or return NULL) - currently necessary
+	// if you're passing a reference to a validator.
+	// Another possibility is to always pass a pointer to a new validator
+	// (so the calling code can use a copy constructor of the relevant class).
+	virtual wxObject *Clone() const
+	{
+		return new wxRadioValidator(*this);
+	}
 
-    // Called to transfer data to the window
-    virtual bool TransferToWindow();
+	bool Copy(const wxRadioValidator& val);
 
-    // Called to transfer data to the window
-    virtual bool TransferFromWindow();
+	// Called when the value in the window must be validated.
+	// This function can pop up an error message.
+	virtual bool Validate(wxWindow *parent);
 
-/*    // ACCESSORS
-    inline long GetStyle() const { return m_validatorStyle; }
-    inline void SetStyle(long style) { m_validatorStyle = style; }
+	// Called to transfer data to the window
+	virtual bool TransferToWindow();
 
-    void SetIncludeList(const wxStringList& list);
-    inline wxStringList& GetIncludeList() { return m_includeList; }
+	// Called to transfer data to the window
+	virtual bool TransferFromWindow();
 
-    void SetExcludeList(const wxStringList& list);
-    inline wxStringList& GetExcludeList() { return m_excludeList; }
+	/*    // ACCESSORS
+	    inline long GetStyle() const { return m_validatorStyle; }
+	    inline void SetStyle(long style) { m_validatorStyle = style; }
 
-    // Filter keystrokes
-    void OnChar(wxKeyEvent& event);
+	    void SetIncludeList(const wxStringList& list);
+	    inline wxStringList& GetIncludeList() { return m_includeList; }
 
-    bool IsInCharIncludeList(const wxString& val);
-    bool IsNotInCharExcludeList(const wxString& val);
+	    void SetExcludeList(const wxStringList& list);
+	    inline wxStringList& GetExcludeList() { return m_excludeList; }
 
-DECLARE_EVENT_TABLE()
-*/
+	    // Filter keystrokes
+	    void OnChar(wxKeyEvent& event);
+
+	    bool IsInCharIncludeList(const wxString& val);
+	    bool IsNotInCharExcludeList(const wxString& val);
+
+	DECLARE_EVENT_TABLE()
+	*/
+
 protected:
-    int Id;
-    int *m_intValue;
+	int Id;
 
-    bool CheckValidator() const
-    {
-        wxCHECK_MSG( m_validatorWindow, FALSE,
-                     _T("No window associated with validator") );
-        wxCHECK_MSG( m_validatorWindow->IsKindOf(CLASSINFO(wxRadioButton)), FALSE,
-                     _T("wxTextValidator is only for wxRadioButton's") );
-        wxCHECK_MSG( m_intValue, FALSE,
-                     _T("No variable storage for validator") );
+	int *m_intValue;
 
-        return TRUE;
-    }
+	bool CheckValidator() const
+	{
+		wxCHECK_MSG( m_validatorWindow, FALSE,
+		             _T("No window associated with validator") );
+		wxCHECK_MSG( m_validatorWindow->IsKindOf(CLASSINFO(wxRadioButton)), FALSE,
+		             _T("wxTextValidator is only for wxRadioButton's") );
+		wxCHECK_MSG( m_intValue, FALSE,
+		             _T("No variable storage for validator") );
+
+		return TRUE;
+	}
 };
 
 #endif
-  // wxUSE_VALIDATORS
+// wxUSE_VALIDATORS
 
 #endif
-  // _WX_VALTEXTH__
+// _WX_VALTEXTH__
 

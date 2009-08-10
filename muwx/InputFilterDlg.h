@@ -1,17 +1,20 @@
-/** \file 
+/** \file
  ********************************************************************
  * MIDI Input filter configuration dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.h,v 1.4 2008/08/18 15:07:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.h,v 1.5 2009/08/10 11:15:46 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007,2008 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/10/21 18:28:56
- * $Date: 2008/08/18 15:07:41 $
- * \version $Revision: 1.4 $
+ * $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: InputFilterDlg.h,v $
+ * Revision 1.5  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.4  2008/08/18 15:07:41  keinstein
  * Changed Input filter dialog to wxResources
  *
@@ -74,59 +77,81 @@
  */
 
 class InputFilterDlg: public InputFilterDlgBase
-{    
-    int type;
-    long from;
-    long to;
+{
+	int type;
+	long from;
+	long to;
 
-    DECLARE_DYNAMIC_CLASS( InputFilterDlg )
-    DECLARE_EVENT_TABLE()
+	DECLARE_DYNAMIC_CLASS( InputFilterDlg )
+	DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    InputFilterDlg( wxWindow* parent=NULL, DevType type = DTUnknown);
+	/// Constructors
+	InputFilterDlg( wxWindow* parent=NULL, DevType type = DTUnknown);
 
-    /// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX
-    void OnRadioboxSelected( wxCommandEvent& event );
-    void UpdateLayout(int type);
+	/// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_RADIOBOX
+	void OnRadioboxSelected( wxCommandEvent& event );
+	void UpdateLayout(int type);
 
-    void OnRemoveClick( wxCommandEvent& event );
-    
-    void SetDeviceType(DevType type);
+	void OnRemoveClick( wxCommandEvent& event );
+
+	void SetDeviceType(DevType type);
 
 
-    int GetType() const { DEBUGLOG(_T("%d"),type); return type ; }
-    void SetType(int value) {
-      DEBUGLOG(_T("%d"),value);
-      type = value ; 
-      Update();
-    }
+	int GetType() const
+	{
+		DEBUGLOG(_T("%d"),type);
+		return type ;
+	}
 
-    long GetFrom() const { DEBUGLOG(_T("%d"),from);return from ; }
-    void SetFrom(long value) { 
-      DEBUGLOG(_T("%d"),value); 
-      from = value ; 
-      Update();
-    }
+	void SetType(int value)
 
-    long GetTo() const { DEBUGLOG(_T("%d"),to);return to ; }
-    void SetTo(long value) { 
-      DEBUGLOG(_T("%d"),value); 
-      to = value ; 
-      Update();
-    }
+	{
+		DEBUGLOG(_T("%d"),value);
+		type = value ;
+		Update();
+	}
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+	long GetFrom() const
+	{
+		DEBUGLOG(_T("%d"),from);
+		return from ;
+	}
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	void SetFrom(long value)
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+	{
+		DEBUGLOG(_T("%d"),value);
+		from = value ;
+		Update();
+	}
+
+	long GetTo() const
+	{
+		DEBUGLOG(_T("%d"),to);
+		return to ;
+	}
+
+	void SetTo(long value)
+
+	{
+		DEBUGLOG(_T("%d"),value);
+		to = value ;
+		Update();
+	}
+
+	/// Retrieves bitmap resources
+
+	wxBitmap GetBitmapResource( const wxString& name );
+
+	/// Retrieves icon resources
+	wxIcon GetIconResource( const wxString& name );
+
+	/// Should we show tooltips?
+	static bool ShowToolTips();
 };
 
 #endif
-    // _INPUTFILTERDLG_H_
+// _INPUTFILTERDLG_H_
 
 ///\}

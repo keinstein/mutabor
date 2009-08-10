@@ -3,12 +3,15 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.5 2008/06/30 08:16:30 keinstein Exp $
+ * $Id: CompDlg.h,v 1.6 2009/08/10 11:15:46 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/06/30 08:16:30 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.6 $
  *
  * $Log: CompDlg.h,v $
+ * Revision 1.6  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.5  2008/06/30 08:16:30  keinstein
  * Check if childs exist, when updating data.
  *
@@ -21,13 +24,13 @@
  */
 /////////////////////////////////////////////////////////////////////////////
 // Name:        CompDlg.h
-// Purpose:     
+// Purpose:
 // Author:      R. Krauße
-// Modified by: 
+// Modified by:
 // Created:     08/14/05 21:41:59
-// RCS-ID:      
+// RCS-ID:
 // Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
+// Licence:
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _COMPDLG_H_
@@ -71,91 +74,110 @@
  */
 
 class CompDlg: public CompileDlg
-{    
-  //DECLARE_DYNAMIC_CLASS( CompDlg )
-  //DECLARE_EVENT_TABLE()
+{
+	//DECLARE_DYNAMIC_CLASS( CompDlg )
+	//DECLARE_EVENT_TABLE()
 
-  public:
-  /// Constructors
-  //  CompDlg():CompileDlg() {}
-  CompDlg(wxWindow * parent = NULL): CompileDlg(parent) {}
-  ~CompDlg() {}
+public:
+	/// Constructors
+	//  CompDlg():CompileDlg() {}
+	CompDlg(wxWindow * parent = NULL): CompileDlg(parent)
+	{}
 
-  wxStaticText * GetLine() { return line; }
-  void SetStatus(wxString l, wxString to, wxString tu, 
-		 wxString ts, wxString i, wxString ch) {
-    if (logic) 
-      logic->SetLabel(l);
-    if (tones)
-      tones->SetLabel(to);
-    if (tunes) 
-      tunes->SetLabel(tu);
-    if (tone_system)
-      tone_system->SetLabel(ts);
-    if (intervals)
-      intervals->SetLabel(i);
-    if (chars)
-      chars->SetLabel(ch);
-    Layout();
-  }
+	~CompDlg()
+	{}
 
-  void SetFileName(wxString s) {
-    if (filename)
-      filename->SetLabel(s);
-  }
+	wxStaticText * GetLine()
+	{
+		return line;
+	}
 
-  void SetButtonText(wxString s) {
-    if (wxID_OK)
-      wxID_OK->SetLabel(s);
-  }
+	void SetStatus(wxString l, wxString to, wxString tu,
+	               wxString ts, wxString i, wxString ch)
+	{
+		if (logic)
+			logic->SetLabel(l);
 
-  void SetMessage(wxString s) {
-    if (message)
-      message->SetLabel(s);
-  }
+		if (tones)
+			tones->SetLabel(to);
 
-  void EnableButton(bool enable = true) {
-    if (wxID_OK)
-      wxID_OK->Enable(enable);
-  }
-  /*
-    CompDlg( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );
+		if (tunes)
+			tunes->SetLabel(tu);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );
+		if (tone_system)
+			tone_system->SetLabel(ts);
 
-    /// Creates the controls and sizers
-    void CreateControls();
+		if (intervals)
+			intervals->SetLabel(i);
 
-////@begin CompDlg event handler declarations
+		if (chars)
+			chars->SetLabel(ch);
 
-////@end CompDlg event handler declarations
+		Layout();
+	}
 
-////@begin CompDlg member function declarations
+	void SetFileName(wxString s)
+	{
+		if (filename)
+			filename->SetLabel(s);
+	}
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+	void SetButtonText(wxString s)
+	{
+		if (wxID_OK)
+			wxID_OK->SetLabel(s);
+	}
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
-////@end CompDlg member function declarations
-	void SetText(wxWindowID id1, const wxString& s) {  
-		this->FindWindow(id1)->SetLabel(s);
-		wxSafeYield(this);
+	void SetMessage(wxString s)
+	{
+		if (message)
+			message->SetLabel(s);
+	}
+
+	void EnableButton(bool enable = true)
+	{
+		if (wxID_OK)
+			wxID_OK->Enable(enable);
+	}
+
+	/*
+	  CompDlg( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );
+
+	  /// Creation
+	  bool Create( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );
+
+	  /// Creates the controls and sizers
+	  void CreateControls();
+
+	////@begin CompDlg event handler declarations
+
+	////@end CompDlg event handler declarations
+
+	////@begin CompDlg member function declarations
+
+	  /// Retrieves bitmap resources
+	  wxBitmap GetBitmapResource( const wxString& name );
+
+	  /// Retrieves icon resources
+	  wxIcon GetIconResource( const wxString& name );
+	////@end CompDlg member function declarations
+	void SetText(wxWindowID id1, const wxString& s) { 
+	this->FindWindow(id1)->SetLabel(s);
+	wxSafeYield(this);
 	}
 
 	void SetNumber(wxWindowID id1, int n) {
-		SetText(id1, wxString::Format(_T("%d"), n));
+	SetText(id1, wxString::Format(_T("%d"), n));
 	}
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+	  /// Should we show tooltips?
+	  static bool ShowToolTips();
 
-////@begin CompDlg member variables
-////@end CompDlg member variables
-*/
+	////@begin CompDlg member variables
+	////@end CompDlg member variables
+	*/
 };
 
 #endif
-    // _COMPDLG_H_
+// _COMPDLG_H_
 

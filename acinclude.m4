@@ -154,21 +154,24 @@ m4_define([AX_COMPILER_PCH_C],
 
 m4_define([AX_COMPILER_PCH_CXX_],
 [
-  rm -f conftest{.h,}{,.pch,.gch}
-  cat >conftest.h <<_ACEOF
+  rm -f conftesth{.h,}{,.pch,.gch}
+  cat >conftesth.h <<_ACEOF
 #define pchtest 1
 _ACEOF
-  AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS -xc++-header $CPPFLAGS -Winvalid-pch conftest.h >&AS_MESSAGE_LOG_FD)],[
-    rm -f conftest.h
+  AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS -xc++-header $CPPFLAGS -Winvalid-pch conftesth.h >&AS_MESSAGE_LOG_FD)],[
+    rm -f conftesth.h
     AC_LANG_CONFTEST([AC_LANG_PROGRAM([
-#include "conftest.h"
+#ifdef pchtest
+#else
+#error Test
+#endif
 ],[])])
     rm -f conftest.o conftest.obj
-    ls conftest.*
-    AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS $CPPFLAGS -Winvalid-pch -include conftest.h conftest.$ac_ext)],
+    ls conftest*
+    AS_IF([AC_TRY_COMMAND($CXX -c $CXXFLAGS $CPPFLAGS -Winvalid-pch --include conftesth.h conftest.$ac_ext)],
     [ac_cv_cxx_header_precompile="yes"
-		ls conftest.*
-      for ac_file in ` ( ls conftest.h.gch conftest.h.* ; ls conftest.* )` ; do
+		ls conftest*
+      for ac_file in ` ( ls conftesth.h.gch conftesth.h.* ; ls conftesth.* )` ; do
         case $ac_file in
           _AC_COMPILER_PCHEXT_REJECT ) ;;
           *) ac_cxx_pchext=[`expr "$ac_file" : '[^.]*\.\(.*\)'`]

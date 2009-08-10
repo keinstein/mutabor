@@ -50,40 +50,42 @@
 
 class RtMidi
 {
- public:
 
-  //! Pure virtual openPort() function.
-  virtual void openPort( unsigned int portNumber = 0 ) = 0;
+public:
 
-  //! Pure virtual openVirtualPort() function.
-  virtual void openVirtualPort() = 0;
+	//! Pure virtual openPort() function.
+	virtual void openPort( unsigned int portNumber = 0 ) = 0;
 
-  //! Pure virtual getPortCount() function.
-  virtual unsigned int getPortCount() = 0;
+	//! Pure virtual openVirtualPort() function.
+	virtual void openVirtualPort() = 0;
 
-  //! Pure virtual getPortName() function.
+	//! Pure virtual getPortCount() function.
+	virtual unsigned int getPortCount() = 0;
+
+	//! Pure virtual getPortName() function.
 #ifdef __WXMSW__
-  virtual wxString getPortName(unsigned int portNumber = 0 ) = 0;
+	virtual wxString getPortName(unsigned int portNumber = 0 ) = 0;
 #else
-  virtual std::string getPortName( unsigned int portNumber = 0 ) = 0;
+	virtual std::string getPortName( unsigned int portNumber = 0 ) = 0;
 #endif
 
-  //! Pure virtual closePort() function.
-  virtual void closePort( void ) = 0;
+	//! Pure virtual closePort() function.
+	virtual void closePort( void ) = 0;
 
- protected:
+protected:
 
-  RtMidi();
-  virtual ~RtMidi() {};
+	RtMidi();
+	virtual ~RtMidi()
+	{};
 
-  // A basic error reporting function for internal use in the RtMidi
-  // subclasses.  The behavior of this function can be modified to
-  // suit specific needs.
-  void error( RtError::Type type );
+	// A basic error reporting function for internal use in the RtMidi
+	// subclasses.  The behavior of this function can be modified to
+	// suit specific needs.
+	void error( RtError::Type type );
 
-  void *apiData_;
-  bool connected_;
-  std::string errorString_;
+	void *apiData_;
+	bool connected_;
+	std::string errorString_;
 };
 
 /**********************************************************************/
@@ -109,129 +111,138 @@ class RtMidi
 
 class RtMidiIn : public RtMidi
 {
- public:
 
-  //! User callback function type definition.
-  typedef void (*RtMidiCallback)( double timeStamp, std::vector<unsigned char> *message, void *userData);
+public:
 
-  //! Default constructor.
-  /*!
-      An exception will be thrown if a MIDI system initialization error occurs.
-  */
-  RtMidiIn();
+	//! User callback function type definition.
+	typedef void (*RtMidiCallback)( double timeStamp, std::vector<unsigned char> *message, void *userData);
 
-  //! If a MIDI connection is still open, it will be closed by the destructor.
-  ~RtMidiIn();
+	//! Default constructor.
+	/*!
+	    An exception will be thrown if a MIDI system initialization error occurs.
+	*/
+	RtMidiIn();
 
-  //! Open a MIDI input connection.
-  /*!
-      An optional port number greater than 0 can be specified.
-      Otherwise, the default or first port found is opened.
-  */
-  void openPort( unsigned int portNumber = 0 );
+	//! If a MIDI connection is still open, it will be closed by the destructor.
+	~RtMidiIn();
 
-  //! Create a virtual input port to allow software connections (OS X and ALSA only).
-  /*!
-      This function creates a virtual MIDI input port to which other
-      software applications can connect.  This type of functionality
-      is currently only supported by the Macintosh OS-X and Linux ALSA
-      APIs (the function does nothing for the other APIs).
-  */
-  void openVirtualPort();
+	//! Open a MIDI input connection.
+	/*!
+	    An optional port number greater than 0 can be specified.
+	    Otherwise, the default or first port found is opened.
+	*/
+	void openPort( unsigned int portNumber = 0 );
 
-  //! Set a callback function to be invoked for incoming MIDI messages.
-  /*!
-      The callback function will be called whenever an incoming MIDI
-      message is received.  While not absolutely necessary, it is best
-      to set the callback function before opening a MIDI port to avoid
-      leaving some messages in the queue.
-  */
-  void setCallback( RtMidiCallback callback, void *userData = 0 );
+	//! Create a virtual input port to allow software connections (OS X and ALSA only).
+	/*!
+	    This function creates a virtual MIDI input port to which other
+	    software applications can connect.  This type of functionality
+	    is currently only supported by the Macintosh OS-X and Linux ALSA
+	    APIs (the function does nothing for the other APIs).
+	*/
+	void openVirtualPort();
 
-  //! Cancel use of the current callback function (if one exists).
-  /*!
-      Subsequent incoming MIDI messages will be written to the queue
-      and can be retrieved with the \e getMessage function.
-  */
-  void cancelCallback();
+	//! Set a callback function to be invoked for incoming MIDI messages.
+	/*!
+	    The callback function will be called whenever an incoming MIDI
+	    message is received.  While not absolutely necessary, it is best
+	    to set the callback function before opening a MIDI port to avoid
+	    leaving some messages in the queue.
+	*/
+	void setCallback( RtMidiCallback callback, void *userData = 0 );
 
-  //! Close an open MIDI connection (if one exists).
-  void closePort( void );
+	//! Cancel use of the current callback function (if one exists).
+	/*!
+	    Subsequent incoming MIDI messages will be written to the queue
+	    and can be retrieved with the \e getMessage function.
+	*/
+	void cancelCallback();
 
-  //! Return the number of available MIDI input ports.
-  unsigned int getPortCount();
+	//! Close an open MIDI connection (if one exists).
+	void closePort( void );
 
-  //! Return a string identifier for the specified MIDI input port number.
-  /*!
-      An exception is thrown if an invalid port specifier is provided.
-  */
+	//! Return the number of available MIDI input ports.
+	unsigned int getPortCount();
+
+	//! Return a string identifier for the specified MIDI input port number.
+	/*!
+	    An exception is thrown if an invalid port specifier is provided.
+	*/
 #ifdef __WXMSW__
-  wxString getPortName( unsigned int portNumber = 0 );
+	wxString getPortName( unsigned int portNumber = 0 );
 #else
-  std::string getPortName( unsigned int portNumber = 0 );
+	std::string getPortName( unsigned int portNumber = 0 );
 #endif
 
-  //! Set the maximum number of MIDI messages to be saved in the queue.
-  /*!
-      If the queue size limit is reached, incoming messages will be
-      ignored.  The default limit is 1024.
-  */
-  void setQueueSizeLimit( unsigned int queueSize );
+	//! Set the maximum number of MIDI messages to be saved in the queue.
+	/*!
+	    If the queue size limit is reached, incoming messages will be
+	    ignored.  The default limit is 1024.
+	*/
+	void setQueueSizeLimit( unsigned int queueSize );
 
-  //! Specify whether certain MIDI message types should be queued or ignored during input.
-  /*!
-      By default, MIDI timing and active sensing messages are ignored
-      during message input because of their relative high data rates.
-      MIDI sysex messages are ignored by default as well.  Variable
-      values of "true" imply that the respective message type will be
-      ignored.
-  */
-  void ignoreTypes( bool midiSysex = true, bool midiTime = true, bool midiSense = true );
+	//! Specify whether certain MIDI message types should be queued or ignored during input.
+	/*!
+	    By default, MIDI timing and active sensing messages are ignored
+	    during message input because of their relative high data rates.
+	    MIDI sysex messages are ignored by default as well.  Variable
+	    values of "true" imply that the respective message type will be
+	    ignored.
+	*/
+	void ignoreTypes( bool midiSysex = true, bool midiTime = true, bool midiSense = true );
 
-  //! Fill the user-provided vector with the data bytes for the next available MIDI message in the input queue and return the event delta-time in seconds.
-  /*!
-      This function returns immediately whether a new message is
-      available or not.  A valid message is indicated by a non-zero
-      vector size.  An exception is thrown if an error occurs during
-      message retrieval or an input connection was not previously
-      established.
-  */
-  double getMessage( std::vector<unsigned char> *message );
+	//! Fill the user-provided vector with the data bytes for the next available MIDI message in the input queue and return the event delta-time in seconds.
+	/*!
+	    This function returns immediately whether a new message is
+	    available or not.  A valid message is indicated by a non-zero
+	    vector size.  An exception is thrown if an error occurs during
+	    message retrieval or an input connection was not previously
+	    established.
+	*/
+	double getMessage( std::vector<unsigned char> *message );
 
-  // A MIDI structure used internally by the class to store incoming
-  // messages.  Each message represents one and only one MIDI message.
-  struct MidiMessage {
-    std::vector<unsigned char> bytes;
-    double timeStamp;
+	// A MIDI structure used internally by the class to store incoming
+	// messages.  Each message represents one and only one MIDI message.
 
-    // Default constructor.
-    MidiMessage()
-      :bytes(3), timeStamp(0.0) {}
-  };
+	struct MidiMessage
+	{
+		std::vector<unsigned char> bytes;
+		double timeStamp;
 
-  // The RtMidiInData structure is used to pass private class data to
-  // the MIDI input handling function or thread.
-  struct RtMidiInData {
-    std::queue<MidiMessage, std::deque<MidiMessage> > queue;
-    unsigned int queueLimit;
-    unsigned char ignoreFlags;
-    bool doInput;
-    bool firstMessage;
-    void *apiData;
-    bool usingCallback;
-    void *userCallback;
-    void *userData;
+		// Default constructor.
+		MidiMessage()
+				:bytes(3), timeStamp(0.0)
+		{}
 
-    // Default constructor.
-    RtMidiInData()
-      : queueLimit(1024), ignoreFlags(7), doInput(false), firstMessage(true),
-        apiData(0), usingCallback(false), userCallback(0), userData(0) {}
-  };
+	};
 
- private:
+	// The RtMidiInData structure is used to pass private class data to
+	// the MIDI input handling function or thread.
 
-  void initialize( void );
-  RtMidiInData inputData_;
+	struct RtMidiInData
+	{
+		std::queue<MidiMessage, std::deque<MidiMessage> > queue;
+		unsigned int queueLimit;
+		unsigned char ignoreFlags;
+		bool doInput;
+		bool firstMessage;
+		void *apiData;
+		bool usingCallback;
+		void *userCallback;
+		void *userData;
+
+		// Default constructor.
+		RtMidiInData()
+				: queueLimit(1024), ignoreFlags(7), doInput(false), firstMessage(true),
+				apiData(0), usingCallback(false), userCallback(0), userData(0)
+		{}
+
+	};
+
+private:
+
+	void initialize( void );
+	RtMidiInData inputData_;
 
 };
 
@@ -251,63 +262,64 @@ class RtMidiIn : public RtMidi
 
 class RtMidiOut : public RtMidi
 {
- public:
 
-  //! Default constructor.
-  /*!
-      An exception will be thrown if a MIDI system initialization error occurs.
-  */
-  RtMidiOut();
+public:
 
-  //! The destructor closes any open MIDI connections.
-  ~RtMidiOut();
+	//! Default constructor.
+	/*!
+	    An exception will be thrown if a MIDI system initialization error occurs.
+	*/
+	RtMidiOut();
 
-  //! Open a MIDI output connection.
-  /*!
-      An optional port number greater than 0 can be specified.
-      Otherwise, the default or first port found is opened.  An
-      exception is thrown if an error occurs while attempting to make
-      the port connection.
-  */
-  void openPort( unsigned int portNumber = 0 );
+	//! The destructor closes any open MIDI connections.
+	~RtMidiOut();
 
-  //! Close an open MIDI connection (if one exists).
-  void closePort();
+	//! Open a MIDI output connection.
+	/*!
+	    An optional port number greater than 0 can be specified.
+	    Otherwise, the default or first port found is opened.  An
+	    exception is thrown if an error occurs while attempting to make
+	    the port connection.
+	*/
+	void openPort( unsigned int portNumber = 0 );
 
-  //! Create a virtual output port to allow software connections (OS X and ALSA only).
-  /*!
-      This function creates a virtual MIDI output port to which other
-      software applications can connect.  This type of functionality
-      is currently only supported by the Macintosh OS-X and Linux ALSA
-      APIs (the function does nothing with the other APIs).  An
-      exception is thrown if an error occurs while attempting to create
-      the virtual port.
-  */
-  void openVirtualPort();
+	//! Close an open MIDI connection (if one exists).
+	void closePort();
 
-  //! Return the number of available MIDI output ports.
-  unsigned int getPortCount();
+	//! Create a virtual output port to allow software connections (OS X and ALSA only).
+	/*!
+	    This function creates a virtual MIDI output port to which other
+	    software applications can connect.  This type of functionality
+	    is currently only supported by the Macintosh OS-X and Linux ALSA
+	    APIs (the function does nothing with the other APIs).  An
+	    exception is thrown if an error occurs while attempting to create
+	    the virtual port.
+	*/
+	void openVirtualPort();
 
-  //! Return a string identifier for the specified MIDI port type and number.
-  /*!
-      An exception is thrown if an invalid port specifier is provided.
-  */
+	//! Return the number of available MIDI output ports.
+	unsigned int getPortCount();
+
+	//! Return a string identifier for the specified MIDI port type and number.
+	/*!
+	    An exception is thrown if an invalid port specifier is provided.
+	*/
 #ifdef __WXMSW__
-  wxString getPortName( unsigned int portNumber );
+	wxString getPortName( unsigned int portNumber );
 #else
-  std::string getPortName( unsigned int portNumber );
+	std::string getPortName( unsigned int portNumber );
 #endif
 
-  //! Immediately send a single message out an open MIDI output port.
-  /*!
-      An exception is thrown if an error occurs during output or an
-      output connection was not previously established.
-  */
-  void sendMessage( std::vector<unsigned char> *message );
+	//! Immediately send a single message out an open MIDI output port.
+	/*!
+	    An exception is thrown if an error occurs during output or an
+	    output connection was not previously established.
+	*/
+	void sendMessage( std::vector<unsigned char> *message );
 
- private:
+private:
 
-  void initialize( void );
+	void initialize( void );
 };
 
 #endif

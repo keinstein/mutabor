@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        InputDevDlg.cpp
-// Purpose:     
+// Purpose:
 // Author:      R. Krauße
-// Modified by: 
+// Modified by:
 // Created:     10/12/05 14:22:47
-// RCS-ID:      
+// RCS-ID:
 // Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
+// Licence:
 /////////////////////////////////////////////////////////////////////////////
 
 #if defined(__GNUG__) && !defined(__APPLE__)
@@ -36,8 +36,12 @@
 IMPLEMENT_DYNAMIC_CLASS( InputDevDlg, InputDevDlgBase )
 
 BEGIN_EVENT_TABLE( InputDevDlg, InputDevDlgBase )
-    EVT_CHOICE( XRCID("DeviceChoice"), InputDevDlg::OnChoiceSelected )
-    EVT_BUTTON( ::wxID_REMOVE, InputDevDlg::OnRemoveClick )
+	EVT_CHOICE( XRCID("DeviceChoice"), InputDevDlg::OnChoiceSelected )
+	EVT_BUTTON( ::wxID_REMOVE, InputDevDlg::OnRemoveClick )
+        EVT_FILEPICKER_CHANGED(XRCID ("MidiFilePicker"), 
+                               InputDevDlg::OnFileChanged)
+        EVT_FILEPICKER_CHANGED(XRCID ("GuidoFilePicker"), 
+                               InputDevDlg::OnFileChanged)
 END_EVENT_TABLE()
 
 /*!
@@ -45,32 +49,29 @@ END_EVENT_TABLE()
  */
 /* \todo: find out, how we can reuse a file Picker for different file types */
 
-InputDevDlg::InputDevDlg( wxWindow* parent):InputDevDlgBase(parent),
-  MidiDevice(0),
-  Type(0),
-  typeVal((int *)&Type),
-  deviceVal(&MidiDevice)
+InputDevDlg::InputDevDlg( wxWindow* parent):InputDevDlgBase(parent)
 {
-  DeviceChoice->Clear();
-  DeviceChoice->Append(_("MIDI Device"),new TypeData(DTMidiPort));
-  DeviceChoice->Append(_("MIDI file"),new TypeData(DTMidiFile));
-  DeviceChoice->Append(_("GUIDO file"),new TypeData(DTGis));
-  
+	DeviceChoice->Clear();
+	DeviceChoice->Append(_("MIDI Device"),new TypeData(DTMidiPort));
+	DeviceChoice->Append(_("MIDI file"),new TypeData(DTMidiFile));
+	DeviceChoice->Append(_("GUIDO file"),new TypeData(DTGis));
 
-  //  DeviceChoice->SetID(ID_CHOICE);
-  DeviceChoice->SetValidator(typeVal);
-  PortChoice->SetValidator(deviceVal);
-  // MidiFilePicker->SetValidator(midifileVal);
-  // GuidoFilePicker->SetValidator(guidofileVal);
+	TypeBox = DeviceChoice->GetContainingSizer();
+	PortBox = PortChoice->GetContainingSizer();
+	MidiFileBox = MidiFilePicker->GetContainingSizer();
+        DEBUGLOG (_T ("MidiFilePicker Growable: %d"), MidiFilePicker->IsPickerCtrlGrowable());
+        if (MidiFilePicker->HasTextCtrl()) {
+                DEBUGLOG (_T ("MidiFileTextCtrl Growable: %d"), 
+                          MidiFilePicker->IsTextCtrlGrowable());
+                MidiFilePicker->SetTextCtrlGrowable(true);
+                DEBUGLOG (_T ("MidiFileTextCtrl Growable: %d"), 
+                          MidiFilePicker->IsTextCtrlGrowable());
+        }
+	GuidoFileBox = GuidoFilePicker->GetContainingSizer();
 
-  TypeBox = DeviceChoice->GetContainingSizer();
-  PortBox = PortChoice->GetContainingSizer();
-  MidiFileBox = MidiFilePicker->GetContainingSizer();
-  GuidoFileBox = GuidoFilePicker->GetContainingSizer();
-
-  GetSizer()->Fit(this);
-  GetSizer()->SetSizeHints(this);
-  Centre();
+//	GetSizer()->Fit(this);
+//	GetSizer()->SetSizeHints(this);
+//	Centre();
 }
 
 /*!
@@ -79,7 +80,7 @@ InputDevDlg::InputDevDlg( wxWindow* parent):InputDevDlgBase(parent),
 
 bool InputDevDlg::ShowToolTips()
 {
-    return TRUE;
+	return TRUE;
 }
 
 /*!
@@ -88,9 +89,9 @@ bool InputDevDlg::ShowToolTips()
 
 wxBitmap InputDevDlg::GetBitmapResource( const wxString& name )
 {
-    // Bitmap retrieval
+	// Bitmap retrieval
 ////@begin InputDevDlg bitmap retrieval
-    return wxNullBitmap;
+	return wxNullBitmap;
 ////@end InputDevDlg bitmap retrieval
 }
 
@@ -100,38 +101,60 @@ wxBitmap InputDevDlg::GetBitmapResource( const wxString& name )
 
 wxIcon InputDevDlg::GetIconResource( const wxString& name )
 {
-    // Icon retrieval
+	// Icon retrieval
 ////@begin InputDevDlg icon retrieval
-    return wxNullIcon;
+	return wxNullIcon;
 ////@end InputDevDlg icon retrieval
 }
+
 /*!
  * wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
  */
 
 void InputDevDlg::OnChoiceSelected( wxCommandEvent& event )
 {
-  int i = DeviceChoice->GetSelection();
-  TypeData * data =(TypeData *)DeviceChoice->GetClientObject(i); 
-  UpdateLayout(*data);
-    event.Skip();
+	int i = DeviceChoice->GetSelection();
+	TypeData * data =(TypeData *)DeviceChoice->GetClientObject(i);
+	UpdateLayout(*data);
+	event.Skip();
 }
 
 void InputDevDlg::UpdateLayout(DevType type)
 {
-  DEBUGLOG(_T("%d"),type);
-  wxSizer * sizer = GetSizer();
-  
-  DEBUGLOG(_T("%d"),DTMidiPort);
-  sizer->Show(PortBox, type == DTMidiPort, true);
-  DEBUGLOG(_T("%d"),DTMidiFile);
-  sizer->Show(MidiFileBox, (type == DTMidiFile), true);
-  DEBUGLOG(_T("%d"),DTGis);
-  sizer->Show(GuidoFileBox, (type == DTGis) , true);
+        if (type == DTNotSet) {
+                if (FindType (type) == wxNOT_FOUND)
+                        DeviceChoice->Insert (_ ("Choose device type"),
+                                              0,
+                                              new TypeData (type));
+        } else {
+                int notset = FindType (DTNotSet);
+                if (notset != wxNOT_FOUND) {
+                        DeviceChoice->Delete (notset);
+                }
 
-  Layout();
-  GetSizer()->SetSizeHints(this);
-  Fit();
+                if (type == DTUnknown) {
+                        if (FindType (type) == wxNOT_FOUND)
+                                DeviceChoice->Insert (_ ("Unknown device type"),
+                                                      0,
+                                                      new TypeData (type));
+                }
+        }
+        int Type = FindType (type);
+        DeviceChoice -> SetSelection (Type);
+
+	DEBUGLOG(_T("%d"),type);
+	wxSizer * sizer = GetSizer();
+
+	DEBUGLOG(_T("%d"),DTMidiPort);
+	sizer->Show(PortBox, type == DTMidiPort, true);
+	DEBUGLOG(_T("%d"),DTMidiFile);
+	sizer->Show(MidiFileBox, (type == DTMidiFile), true);
+	DEBUGLOG(_T("%d"),DTGis);
+	sizer->Show(GuidoFileBox, (type == DTGis) , true);
+
+//	Layout();
+//	GetSizer()->SetSizeHints(this);
+	Fit();
 }
 
 
@@ -141,11 +164,25 @@ void InputDevDlg::UpdateLayout(DevType type)
 
 void InputDevDlg::OnRemoveClick( wxCommandEvent& event )
 {
-  EndModal(::wxID_REMOVE);
+	EndModal(::wxID_REMOVE);
 }
 
-int InputDevDlg::FindType (DevType t) {
-  for (unsigned int i = 0; i < DeviceChoice->GetCount(); i++) 
-    if (*((TypeData *)DeviceChoice->GetClientObject(i)) == t) return i;
-  return wxNOT_FOUND;
+void InputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
+{
+        DEBUGLOG (_T ("Path changed: %s"),event.GetPath().c_str());
+        Fit();
+}
+
+
+int InputDevDlg::FindType (DevType t)
+{
+        TypeData * Data;
+	for (unsigned int i = 0; i < DeviceChoice->GetCount(); i++) {
+                DEBUGLOG (_T ("Choice #%d of %d"),i, DeviceChoice->GetCount());
+                Data = (TypeData *)DeviceChoice->GetClientObject(i);
+                if (Data) {
+                        if (*Data == t) return i;
+                }
+        }
+	return wxNOT_FOUND;
 }

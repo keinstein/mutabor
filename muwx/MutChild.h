@@ -2,15 +2,18 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.9 2008/10/01 09:32:49 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.10 2009/08/10 11:15:46 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/01 09:32:49 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.10 $
  * \license wxWindows license
- * 
+ *
  * $Log: MutChild.h,v $
+ * Revision 1.10  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.9  2008/10/01 09:32:49  keinstein
  * fixed inclution for XCode build
  *
@@ -82,16 +85,19 @@ class MutFrame;
 
 class MutChild: public MutTextBox
 {
-public:
-  MutChild (WinKind winkind, 
-	    WinAttr *winAttr, 
-	    wxWindow * parent= NULL, 
-	    wxWindowID id = -1,
-	    const wxPoint& pos = wxDefaultPosition,
-	    const wxSize & size = wxDefaultSize);
-  ~MutChild();
 
-  void OnActivate(wxActivateEvent& event);
+public:
+	MutChild (WinKind winkind,
+	          WinAttr *winAttr,
+	          wxWindow * parent= NULL,
+	          wxWindowID id = -1,
+
+	          const wxPoint& pos = wxDefaultPosition,
+	          const wxSize & size = wxDefaultSize);
+
+	~MutChild();
+
+	void OnActivate(wxActivateEvent& event);
 
 //    void OnRefresh(wxCommandEvent& event);
 //    void OnUpdateRefresh(wxUpdateUIEvent& event);
@@ -99,71 +105,88 @@ public:
 //    void OnSize(wxSizeEvent& event);
 //    void OnMove(wxMoveEvent& event);
 
-  void deleteFromWinAttrs();
+	void deleteFromWinAttrs();
 
-  void OnClose(wxCloseEvent& event) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+	void OnClose(wxCloseEvent& event)
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 #ifdef DEBUG
-    std::cerr << "MutChild::OnClose" << std::endl;
+		std::cerr << "MutChild::OnClose" << std::endl;
 #endif
-    MutTextBox::OnClose(event);
-  }
+		MutTextBox::OnClose(event);
+	}
 
 
-  void OnAuiClose(wxAuiManagerEvent& event) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+	void OnAuiClose(wxAuiManagerEvent& event)
+
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 #ifdef DEBUG
-    std::cerr << "MutChild::OnAuiClose" << std::endl;
+		std::cerr << "MutChild::OnAuiClose" << std::endl;
 #endif
-    deleteFromWinAttrs();
-  }
+		deleteFromWinAttrs();
+	}
 
-  // Override sizing for drawing the color
+	// Override sizing for drawing the color
 
-  void GetClientSize(int * width, int * height) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-    MutTextBox::GetClientSize(width,height);
-    if ((width -= 2) < 0) width = 0;
-    if ((height -=2) < 0) height =0; 
-  }
+	void GetClientSize(int * width, int * height)
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		MutTextBox::GetClientSize(width,height);
 
-  void SetClientSize(int width, int height) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-    MutTextBox::SetClientSize(width+2, height+3);
-  }
+		if ((width -= 2) < 0) width = 0;
 
-  void SetClientSize(const wxSize& size) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-    wxSize s = size;
-    s.IncBy(2);
-    MutTextBox::SetClientSize(s);
-  }
+		if ((height -=2) < 0) height =0;
+	}
 
-  void ClientToScreen(int * x, int * y ) {
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-    MutTextBox::ClientToScreen(x,y);
-    x+=1; y+=1;
-  }
-  
-  wxPoint ClientToScreen(const wxPoint& pt) const{
-    wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-    return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
-  }
+	void SetClientSize(int width, int height)
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		MutTextBox::SetClientSize(width+2, height+3);
+	}
 
-    
+	void SetClientSize(const wxSize& size)
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		wxSize s = size;
+		s.IncBy(2);
+		MutTextBox::SetClientSize(s);
+	}
+
+	void ClientToScreen(int * x, int * y )
+
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		MutTextBox::ClientToScreen(x,y);
+		x+=1;
+		y+=1;
+	}
+
+	wxPoint ClientToScreen(const wxPoint& pt) const
+	{
+		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
+	}
+
+
 //	void MenuPassOn(wxCommandEvent& event);
 //	void MenuPassToParent(wxCommandEvent& event);
 
-  DECLARE_EVENT_TABLE()
+	DECLARE_EVENT_TABLE()
 };
 
 extern int gs_nFrames;
 
 WinAttr* GetWinAttr(WinKind kind, int box = 0);
+
 WinAttr* Get(WinKind kind, int box = 0);
+
 bool IsOpen(WinKind kind, int box = 0);
+
 bool IsWanted(WinKind kind, int box = 0);
+
 void DontWant(WinKind kind, int box = 0);
+
 int NumberOfOpen(WinKind kind);
 
 #endif

@@ -379,6 +379,34 @@ AC_DEFUN([AM_OUTPUT_DEPENDENCY_COMMANDS],
      [AMDEP_TRUE="$AMDEP_TRUE" ac_aux_dir="$ac_aux_dir"])
 ])
 
+
+# Copyright (C) 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2005
+# Free Software Foundation, Inc.
+#
+# This file is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# serial 3
+
+AC_DEFUN([AM_WITH_DMALLOC],
+[AC_MSG_CHECKING([if malloc debugging is wanted])
+AC_ARG_WITH(dmalloc,
+[  --with-dmalloc          use dmalloc, as in
+			  http://www.dmalloc.com/dmalloc.tar.gz],
+[if test "$withval" = yes; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(WITH_DMALLOC,1,
+	    [Define if using the dmalloc debugging malloc package])
+  LIBS="$LIBS -ldmalloc"
+  LDFLAGS="$LDFLAGS -g"
+else
+  AC_MSG_RESULT(no)
+fi], [AC_MSG_RESULT(no)])
+])
+
+AU_DEFUN([fp_WITH_DMALLOC], [AM_WITH_DMALLOC])
+
 # Do all the work for Automake.                             -*- Autoconf -*-
 
 # Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
@@ -933,17 +961,17 @@ m4_include([m4/glibc2.m4])
 m4_include([m4/glibc21.m4])
 m4_include([m4/iconv.m4])
 m4_include([m4/intdiv0.m4])
+m4_include([m4/intl.m4])
+m4_include([m4/intlmacosx.m4])
 m4_include([m4/intmax.m4])
 m4_include([m4/inttypes-pri.m4])
-m4_include([m4/inttypes.m4])
 m4_include([m4/inttypes_h.m4])
-m4_include([m4/isc-posix.m4])
 m4_include([m4/lcmessage.m4])
 m4_include([m4/lib-ld.m4])
 m4_include([m4/lib-link.m4])
 m4_include([m4/lib-prefix.m4])
 m4_include([m4/libtool.m4])
-m4_include([m4/longdouble.m4])
+m4_include([m4/lock.m4])
 m4_include([m4/longlong.m4])
 m4_include([m4/ltoptions.m4])
 m4_include([m4/ltsugar.m4])
@@ -953,11 +981,10 @@ m4_include([m4/nls.m4])
 m4_include([m4/po.m4])
 m4_include([m4/printf-posix.m4])
 m4_include([m4/progtest.m4])
-m4_include([m4/signed.m4])
 m4_include([m4/size_max.m4])
 m4_include([m4/stdint_h.m4])
 m4_include([m4/uintmax_t.m4])
-m4_include([m4/ulonglong.m4])
+m4_include([m4/visibility.m4])
 m4_include([m4/wchar_t.m4])
 m4_include([m4/wint_t.m4])
 m4_include([m4/wxwin.m4])

@@ -1,12 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        BoxDlg.h
-// Purpose:     
+// Purpose:
 // Author:      R. Krauße
-// Modified by: 
+// Modified by:
 // Created:     10/22/05 16:16:24
-// RCS-ID:      
+// RCS-ID:
 // Copyright:   (c) R. Krauße, TU Dresden
-// Licence:     
+// Licence:
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _BOXDLG_H_
@@ -65,62 +65,98 @@
  */
 
 class BoxDlg: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( BoxDlg )
-    DECLARE_EVENT_TABLE()
+{
+	DECLARE_DYNAMIC_CLASS( BoxDlg )
+	DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    BoxDlg( );
-    BoxDlg( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
+	/// Constructors
+	BoxDlg( );
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
+	BoxDlg( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creation
+	bool Create( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
+
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin BoxDlg event handler declarations
 
-    /// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON
-    void UpdateEnable( wxCommandEvent& event );
+	/// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON
+	void UpdateEnable( wxCommandEvent& event );
+
 	void UpdateLayout(int type);
 
 ////@end BoxDlg event handler declarations
 
 ////@begin BoxDlg member function declarations
 
-    int GetBoxType() const { return Type ; }
-    void SetBoxType(int value) { Type = value ; }
+	int GetBoxType() const
+	{
+		return Type ;
+	}
 
-    long GetBoxNr() const { return BoxNr ; }
-    void SetBoxNr(long value) { BoxNr = value ; }
+	void SetBoxType(int value)
 
-    int GetMode() const { return Mode ; }
-    void SetMode(int value) { Mode = value ; }
+	{
+		Type = value ;
+	}
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+	long GetBoxNr() const
+	{
+		return BoxNr ;
+	}
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	void SetBoxNr(long value)
+
+	{
+		BoxNr = value ;
+	}
+
+	int GetMode() const
+	{
+		return Mode ;
+	}
+
+	void SetMode(int value)
+
+	{
+		Mode = value ;
+	}
+
+	/// Retrieves bitmap resources
+
+	wxBitmap GetBitmapResource( const wxString& name );
+
+	/// Retrieves icon resources
+	wxIcon GetIconResource( const wxString& name );
+
 ////@end BoxDlg member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+	/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin BoxDlg member variables
-    wxRadioButton* ctrlBox1;
-    wxTextCtrl* ctrlBoxNr;
-    wxRadioButton* ctrlBox2;
-    wxRadioButton* ctrlBox3;
-    wxRadioBox* ctrlMode;
-    int Type;
-    long BoxNr;
-    int Mode;
+	wxRadioButton* ctrlBox1;
+
+	wxTextCtrl* ctrlBoxNr;
+
+	wxRadioButton* ctrlBox2;
+
+	wxRadioButton* ctrlBox3;
+
+	wxRadioBox* ctrlMode;
+
+	int Type;
+
+	long BoxNr;
+
+	int Mode;
+
 ////@end BoxDlg member variables
 };
 
 #endif
-    // _BOXDLG_H_
+// _BOXDLG_H_
 

@@ -6,16 +6,33 @@ INCLUDES = -I $(srcdir)/mu32  -I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(top_srcdir)/xrc -I $(top_srcdir)/libs/includes \
 	@NETINET_INC@
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
+
 BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
-BUILT_SOURCES += @COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+if COND_PRECOMP_CXX
+BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
+endif
+
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 INDENT = astyle --style=linux --indent=tab=8
-EXTRA_DIST = config.rpath mkinstalldirs m4/ChangeLog  debian/changelog debian/compat debian/control debian/copyright \
-debian/dirs debian/docs debian/libmutabor-dev.install \
-debian/libmutabor.install debian/mutabor-doc.docs debian/mutabor-doc.install \
-debian/mutabor.install debian/README.Debian debian/rules \
- libasprintf
+EXTRA_DIST = config.rpath \
+	mkinstalldirs \
+	m4/ChangeLog  \
+	debian/changelog \
+	debian/compat \
+	debian/control \
+	debian/copyright \
+	debian/dirs \
+	debian/docs \
+	debian/libmutabor-dev.install \
+	debian/libmutabor.install \
+	debian/mutabor-doc.docs \
+	debian/mutabor-doc.install \
+	debian/mutabor.install \
+	debian/README.Debian \
+	debian/rules \
+	libasprintf
+
 dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/NewInputDevice.png \
 	Icons/png/InputDevice.png \
@@ -41,46 +58,87 @@ mutabor_INDENTS = mu32/Hilfs.cpp mywx/mxDefs.cpp \
 		muwx/MutRouteWnd.cpp  \
 		muwx/MutTextBox.cpp \
 		muwx/CompDlg.cpp muwx/Action.cpp \
-		muwx/InputDevDlg.cpp mu32/DevGIS.cpp mu32/Device.cpp mu32/DevMidF.cpp \
-		mu32/DevMidi.cpp mu32/EDevice.cpp mu32/Errors.cpp mu32/Execute.cpp \
-		mu32/Frac.cpp mu32/GrafKern.cpp mywx/valNum.cpp mu32/GIS_Head.cpp mu32/GIS.cpp \
-		mu32/GSP_Err.cpp mu32/GSP_File.cpp mu32/GSP.cpp muwx/InputFilterDlg.cpp \
-		muwx/BoxDlg.cpp muwx/OutputFilterDlg.cpp mywx/valRadio.cpp \
-		mu32/Hilfs.h mywx/mhDefs.h mu32/Defs.h mu32/Interpre.h \
-		mu32/Interval.h mu32/Runtime.h mu32/Global.h \
-		rtmidi/RtMidi.h muwx/MutApp.h muwx/MutChild.h \
-		muwx/MutEditFile.h muwx/MutFrame.h muwx/MutLogicWnd.h \
-		muwx/OutputDevDlg.h muwx/Mutabor.rh \
-		muwx/MutRouteWnd.h muwx/MutTextBox.h \
-		muwx/MutIcon.h muwx/CompDlg.h muwx/Action.h \
-		muwx/InputDevDlg.h mu32/DevGIS.h mu32/Device.h mu32/DevMidF.h \
-		mu32/DevMidi.h mu32/EDevice.h mu32/Errors.h mu32/Execute.h \
-		mu32/Frac.h mu32/GrafKern.h mywx/valNum.h mu32/GIS_Head.h mu32/GIS.h \
-		mu32/GSP_File.h mu32/GSP.h muwx/InputFilterDlg.h \
-		muwx/BoxDlg.h muwx/OutputFilterDlg.h mywx/valRadio.h \
-		mywx/mhArray.h rtmidi/RtError.h mu32/MidiKern.h \
-		muwx/Mutabor.rc \
-		mywx/muconvauto.cpp mywx/muconvauto.h \
-		libs/ogl/basic.cpp \
-		libs/ogl/basic2.cpp \
-		libs/ogl/bmpshape.cpp \
-		libs/ogl/iconshape.cpp \
-		libs/ogl/canvas.cpp \
-		libs/ogl/composit.cpp \
-		libs/ogl/constrnt.cpp \
-		libs/ogl/divided.cpp \
-		libs/ogl/drawn.cpp \
-		libs/ogl/lines.cpp \
-		libs/ogl/mfutils.cpp \
-		libs/ogl/ogldiag.cpp \
-		libs/ogl/oglmisc.cpp \
-		$(top_srcdir)/xrc/wxresource.h \
-		@COND_PRECOMP_CXX_TRUE@mutabor-cxxprecompiled.$(PCHEXT_CXX)
+		mu32/Route.cpp \
+		mu32/Route.h \
+		muwx/InputDevDlg.cpp \
+		mu32/DevGIS.cpp \
+		mu32/Device.cpp \
+		mu32/DevMidF.cpp \
+		mu32/DevMidi.cpp \
+		mu32/EDevice.cpp \
+		mu32/Errors.cpp \
+		mu32/Execute.cpp \
+		mu32/Frac.cpp \
+		mu32/GrafKern.cpp \
+		mywx/valNum.cpp \
+		mu32/GIS_Head.cpp \
+		mu32/GIS.cpp \
+		mu32/GSP_Err.cpp \
+		mu32/GSP_File.cpp \
+		mu32/GSP.cpp \
+		muwx/InputFilterDlg.cpp \
+		muwx/BoxDlg.cpp \
+		muwx/OutputFilterDlg.cpp \
+		mywx/valRadio.cpp \
+		mu32/Hilfs.h \
+		mywx/mhDefs.h \
+		mu32/Defs.h \
+		mu32/Interpre.h \
+		mu32/Interval.h \
+		mu32/Runtime.h \
+		mu32/Global.h \
+		rtmidi/RtMidi.h \
+		muwx/MutApp.h \
+		muwx/MutChild.h \
+		muwx/MutEditFile.h \
+		muwx/MutFrame.h \
+		muwx/MutLogicWnd.h \
+		muwx/OutputDevDlg.h \
+		muwx/Mutabor.rh \
+		muwx/MutRouteWnd.h \
+		muwx/MutTextBox.h \
+		muwx/MutIcon.h \
+		muwx/CompDlg.h \
+		muwx/Action.h \
+		muwx/InputDevDlg.h \
+		mu32/DevGIS.h \
+		mu32/Device.h \
+		mu32/DevMidF.h \
+		mu32/DevMidi.h \
+		mu32/EDevice.h \
+		mu32/Errors.h \
+		mu32/Execute.h \
+		mu32/Frac.h \
+		mu32/GrafKern.h \
+		mywx/valNum.h \
+		mu32/GIS_Head.h \
+		mu32/GIS.h \
+		mu32/GSP_File.h \
+		mu32/GSP.h \
+		muwx/InputFilterDlg.h \
+		muwx/BoxDlg.h \
+		muwx/OutputFilterDlg.h \
+		mywx/valRadio.h \
+		mywx/mhArray.h \
+		rtmidi/RtError.h \
+		mu32/MidiKern.h \
+		mywx/muconvauto.cpp \
+		mywx/muconvauto.h \
+		$(top_srcdir)/xrc/wxresource.h
+
+if COND_WINRC
+mutabor_INDENTS += muwx/Mutabor.rc
+endif
 
 INDENTS = $(mutabor_INDENTS)
 
 mutabor_SOURCES = $(mutabor_INDENTS) \
-		$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h
+		$(top_srcdir)/mu32/mut.cpp \
+		 $(top_srcdir)/mu32/mut.h
+
+if COND_PRECOMP_CXX
+mutabor_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
+endif
 
 
 #		mywx/myContextHelpButton.h \
@@ -94,26 +152,53 @@ mutabor_CFLAGS = $(mutabor_CallFLAGS)
 mutabor_CXXFLAGS = $(mutabor_CallFLAGS)
 mutabor_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 mutabor_CPPFLAGS = $(WX_CPPFLAGS) 
-mutabor_CFLAGS += @COND_PRECOMP_C_TRUE@-include mutabor-precompiled.h
-mutabor_CXXFLAGS += @COND_PRECOMP_CXX_TRUE@-include mutabor-cxxprecompiled.h
+
+if COND_PRECOMP_C
+mutabor_CFLAGS += -include mutabor-precompiled.h
+endif
+
+if COND_PRECOMP_CXX
+mutabor_CXXFLAGS += -include mutabor-cxxprecompiled.h
+endif
+
 mutabor_SHORTNAME = mutabor
-mutabor_DEPENDENCIES = @COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
-mutabor_LDADD = $(LDADD) @COND_WINRC_TRUE@ $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+
+if COND_WINRC
+mutabor_DEPENDENCIES = $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+endif
+
+mutabor_LDADD = $(LDADD)
+if COND_WINRC
+mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+endif
 mutabor_DATA = Images/about.png Mutabor.xrc
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+if AMDEP
+@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+endif
 
 .PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled mac mac-recursive
 
-@COND_WINRC_TRUE@.rc.$(OBJEXT):
-@COND_WINRC_TRUE@	 $(RCCOMPILE) $< $@
+if COND_WINRC
+.rc.$(OBJEXT):
+	$(RCCOMPILE) $< $@
+endif
 
 .h.$(PCHEXT_CXX):
-@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -o $@ -c `test -f '$<' || echo '$(srcdir)/'`$<; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi 
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(mutabor_CPPFLAGS) $(CPPFLAGS) $(mutabor_CallFLAGS) $(CXXFLAGS) -c  `test -f '$<' || echo '$(srcdir)/'`$<
+if am__fastdepCXX
+	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ \
+		-MD -MP -MF "$(DEPDIR)/$*.Tpo" -o $@ \
+		-c `test -f '$<' || echo '$(srcdir)/'`$<; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
+	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi 
+else
+if AMDEP
+	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+endif
+	$(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) \
+		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
+endif
 
 cvs_dist: Makefile
 	chmod -R u+w  cvsdist
@@ -135,34 +220,40 @@ cvs_distcheck: Makefile
 	./configure && \
 	$(MAKE)  distcheck
 
-@COND_PRECOMP_CXX_TRUE@$(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
 
 mutabor-cxxprecompiled.stamp:mutabor-cxxprecompiled.$(PCHEXT_CXX)
 	if test \! -f mutabor-cxxprecompiled.stamp ; then touch mutabor-cxxprecompiled.stamp ; fi
 
 
-mutabor-cxxprecompiled.h:
-@COND_PRECOMP_CXX_TRUE@	echo '#define PRECOMPILE 1' >$@
-@COND_PRECOMP_CXX_TRUE@	echo '#ifdef HAVE_CONFIG_H' >>$@
-@COND_PRECOMP_CXX_TRUE@	echo '#include "config.h"' >>$@
-@COND_PRECOMP_CXX_TRUE@	echo '#endif' >>$@
-@COND_PRECOMP_CXX_TRUE@	for datei in $(mutabor_SOURCES) ; \
-@COND_PRECOMP_CXX_TRUE@	do  \
-@COND_PRECOMP_CXX_TRUE@		echo -n $$datei | $(EGREP) '\.r?h$$' && echo '#include "'"$$datei"'"' >>$@ ; \
-@COND_PRECOMP_CXX_TRUE@ done ; true
-@COND_PRECOMP_CXX_TRUE@	echo '#undef PRECOMPILE' >>$@
+if COND_PRECOMP_CXX
+$(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
 
+mutabor-cxxprecompiled.h: Makefile
+	echo '#define PRECOMPILE 1' >$@
+	echo '#ifdef HAVE_CONFIG_H' >>$@
+	echo '#include "config.h"' >>$@
+	echo '#endif' >>$@
+	for datei in $(mutabor_INDENTS) ; \
+	do  \
+		echo $$datei | $(EGREP) '\.h$$' && \
+		echo '#include "'"$$datei"'"' >>$@ ; \
+	done ; true
+	echo '#undef PRECOMPILE' >>$@
 
-@COND_WINRC_TRUE@$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
-@COND_WINRC_TRUE@	 $(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
+endif
+
+if COND_WINRC
+$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
+	$(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
+endif
 
 Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
 	cp $< $@
 #	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
 
 Mutabor.app:all Mutabor.xrc mutabor
-	mkdir -p Mutabor.app/Contents/MacOS
-	mkdir -p Mutabor.app/Contents/Resources
+	$(MKDIR_P) Mutabor.app/Contents/MacOS
+	$(MKDIR_P) Mutabor.app/Contents/Resources
 	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns

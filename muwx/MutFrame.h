@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.14 2008/08/01 16:24:30 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.15 2009/08/10 11:15:46 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2008/08/01 16:24:30 $
- * \version $Revision: 1.14 $
+ * $Date: 2009/08/10 11:15:46 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.15  2009/08/10 11:15:46  keinstein
+ * some steps towards new route window
+ *
  * Revision 1.14  2008/08/01 16:24:30  keinstein
  * Fix some segfaults on stopping Mutabor
  *
@@ -95,180 +98,239 @@
 /// Main mutabor frame class
 /** This class is used to create the main windows
  */
+
 class MutFrame : public wxFrame
 {
+
 public:
-  /// Constructor 
-  /** This constructor creates a new main window. 
-   */
-    MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
-            const wxPoint& pos, const wxSize& size,
-			 const long style);
-			 
-    /// Destructor
-    ~MutFrame();
+	/// Constructor
+	/** This constructor creates a new main window.
+	 */
+
+	MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
+	         const wxPoint& pos, const wxSize& size,
+	         const long style);
+
+	/// Destructor
+	~MutFrame();
 
 #if wxUSE_TOOLBAR
-    /// initialize the toolbar
-    /** Initializes the toolbar. 
+	/// initialize the toolbar
+	/** Initializes the toolbar.
 	\param toolBar Toolbar to which the tools shall be added
-    */
-    void InitToolBar(wxToolBar* toolBar);
+	*/
+	void InitToolBar(wxToolBar* toolBar);
+
 #endif
-    
-    /// passes an event to the editor.
-    /** This function is used to pass one event to the 
+
+	/// passes an event to the editor.
+	/** This function is used to pass one event to the
 	client window. 
 	\param event Event to be passed */
-    void PassEventToEditor(wxCommandEvent &event);
+	void PassEventToEditor(wxCommandEvent &event);
 
-    /// passes an event to the MDI client window.
-    /** \deprecated This function was formerly used to pass one event
+	/// passes an event to the MDI client window.
+	/** \deprecated This function was formerly used to pass one event
 	to the client MDI window.
 
 	\param event Event to be passed */
-    void EventPassOn(wxCommandEvent& event);
+	void EventPassOn(wxCommandEvent& event);
 
-    /// Handles close event.
-    /** This function tries to determine, if we can close the current window.
-     */
-    void OnClose(wxCloseEvent& event);
-    
-    /// This function creates a new file editor
-    /** Handle new file event if we don't have a client yet. */
-    void CmFileNew(wxCommandEvent& WXUNUSED(event));
+	/// Handles close event.
+	/** This function tries to determine, if we can close the current window.
+	 */
+	void OnClose(wxCloseEvent& event);
 
-    /// Open an existing file if we don't have a client yet.
-    void CmFileOpen(wxCommandEvent& WXUNUSED(event));
-    
-    /// Opens the given file, if we don't have a client yet.
-    bool OpenFile(wxString path, bool newfile=false);
+	/// This function creates a new file editor
+	/** Handle new file event if we don't have a client yet. */
+	void CmFileNew(wxCommandEvent& WXUNUSED(event));
 
-    /// Get a file name to open
-    ///    static wxString FileNameDialog(wxWindow * parent);
-    
-    void CmDoActivate(wxCommandEvent& event);
-    void RaiseLogic(wxCommandEvent& event);
-    wxMenuItem* ClearMenuItem(int id);
-    void ClearSubMenu(wxMenuItem * item);
-    void DoStop();
-    void CmStop(wxCommandEvent& WXUNUSED(event));
-    void CmPanic(wxCommandEvent& WXUNUSED(event));
-    void CeExecute(wxUpdateUIEvent& event);
-    void CeActivate(wxUpdateUIEvent& event);
-    void CeStop(wxUpdateUIEvent& event);
+	/// Open an existing file if we don't have a client yet.
+	void CmFileOpen(wxCommandEvent& WXUNUSED(event));
 
-    void CmRoutes(wxCommandEvent& event);
-    static void CmRouteLoad(wxCommandEvent& event);
-    static void CmRouteSave(wxCommandEvent& event);
-    static void CmRouteSaveAs(wxCommandEvent& event);
+	/// Opens the given file, if we don't have a client yet.
+	bool OpenFile(wxString path, bool newfile=false);
 
-    void CmToggleKey(wxCommandEvent& WXUNUSED(event));
-    void CmToggleTS(wxCommandEvent& WXUNUSED(event));
-    void CmToggleAct(wxCommandEvent& WXUNUSED(event));
-    void CmToggleOWM(wxCommandEvent& WXUNUSED(event));
-    void CmToggleCAW(wxCommandEvent& WXUNUSED(event));
-    void CeToggleKey(wxUpdateUIEvent& event);
-    void CeToggleTS(wxUpdateUIEvent& event);
-    void CeToggleAct(wxUpdateUIEvent& event);
-    void CeToggleOWM(wxUpdateUIEvent& event);
-    void CeToggleCAW(wxUpdateUIEvent& event);
+	/// Get a file name to open
+	///    static wxString FileNameDialog(wxWindow * parent);
 
-    // Recorder-Knˆpfe
-    void CmInDevStop(wxCommandEvent& WXUNUSED(event));
-    void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
-    void CmInDevPause(wxCommandEvent& WXUNUSED(event));
-    void StopInDev();
-    void CeInDevStop(wxUpdateUIEvent& event);
-    void CeInDevPlay(wxUpdateUIEvent& event);
-    void CeInDevPause(wxUpdateUIEvent& event);
-    void CmSetTitle(wxCommandEvent& event);
+	void CmDoActivate(wxCommandEvent& event);
 
-    // Idle
-    void UpdateUI(wxCommandEvent& WXUNUSED(event));
-    void OnIdle(wxIdleEvent& WXUNUSED(event));
-    //    void OnActivate(wxActivateEvent& event);
-    void OnEraseBackground(wxEraseEvent& event);
-    void OnSize(wxSizeEvent& event);
-    wxAuiDockArt* GetDockArt();
-    
-    void WindowSize(MutChild *win);
-    void SaveState();
-    void RestoreState();
+	void RaiseLogic(wxCommandEvent& event);
 
-    void LogicWinOpen(int box);
-    void ToggleTextBox(WinKind kind);
-    void TextBoxOpen(WinKind kind, int box);
-    void CmSelectBox();
-    void CmCloseChild();
-    void CloseAll(WinKind kind);
+	wxMenuItem* ClearMenuItem(int id);
 
-    void SetStatus(int WXUNUSED(imgNr))
-    {
-      //StatusGadget->SelectImage(curStatusImg = imgNr, true);
-    }
-	
-    wxRect DetermineFrameSize ();
+	void ClearSubMenu(wxMenuItem * item);
 
-    /// retrun true if we have already a client
-    bool HasClient() { return (bool) client; }
+	void DoStop();
 
-    void UpdateBoxMenu();
-    bool RaiseTheFrame();
+	void CmStop(wxCommandEvent& WXUNUSED(event));
 
-    static void repaint_route() {
-      MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
-      if (routewin) {
-	MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
-	if (route) route->Refresh();
-      }
-    }
+	void CmPanic(wxCommandEvent& WXUNUSED(event));
 
-    
- private:
+	void CeExecute(wxUpdateUIEvent& event);
 
-    void CloseClientWindow(wxWindow * w) {
-	auimanager.ClosePane(auimanager.GetPane(w));
-	DEBUGLOG(_T("Detaching pane."));
-	auimanager.DetachPane(w);
-	auimanager.Update();
+	void CeActivate(wxUpdateUIEvent& event);
 
-	DEBUGLOG(_T("Closing window."));
-	w->Close(); // win should be invalid now.
-    }
+	void CeStop(wxUpdateUIEvent& event);
 
-    int curStatusImg;
+	void CmRoutes(wxCommandEvent& event);
 
-    wxAuiManager auimanager;
-    
-    wxWindow *keywindows[MAX_BOX];
-    wxWindow *tswindows[MAX_BOX];
-    wxWindow *actionwindows[MAX_BOX];
-    
-    wxWindow *client;
+	static void CmRouteLoad(wxCommandEvent& event);
 
-    static MutFrame * ActiveWindow;
+	static void CmRouteSave(wxCommandEvent& event);
 
-    static int boxCommandIds[MAX_BOX];
-    
-    DECLARE_EVENT_TABLE()
+	static void CmRouteSaveAs(wxCommandEvent& event);
+
+	void CmToggleKey(wxCommandEvent& WXUNUSED(event));
+
+	void CmToggleTS(wxCommandEvent& WXUNUSED(event));
+
+	void CmToggleAct(wxCommandEvent& WXUNUSED(event));
+
+	void CmToggleOWM(wxCommandEvent& WXUNUSED(event));
+
+	void CmToggleCAW(wxCommandEvent& WXUNUSED(event));
+
+	void CeToggleKey(wxUpdateUIEvent& event);
+
+	void CeToggleTS(wxUpdateUIEvent& event);
+
+	void CeToggleAct(wxUpdateUIEvent& event);
+
+	void CeToggleOWM(wxUpdateUIEvent& event);
+
+	void CeToggleCAW(wxUpdateUIEvent& event);
+
+	// Recorder-Knˆpfe
+	void CmInDevStop(wxCommandEvent& WXUNUSED(event));
+
+	void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
+
+	void CmInDevPause(wxCommandEvent& WXUNUSED(event));
+
+	void StopInDev();
+
+	void CeInDevStop(wxUpdateUIEvent& event);
+
+	void CeInDevPlay(wxUpdateUIEvent& event);
+
+	void CeInDevPause(wxUpdateUIEvent& event);
+
+	void CmSetTitle(wxCommandEvent& event);
+
+	// Idle
+	void UpdateUI(wxCommandEvent& WXUNUSED(event));
+
+	void OnIdle(wxIdleEvent& WXUNUSED(event));
+
+	//    void OnActivate(wxActivateEvent& event);
+	void OnEraseBackground(wxEraseEvent& event);
+
+	void OnSize(wxSizeEvent& event);
+
+	wxAuiDockArt* GetDockArt();
+
+	void WindowSize(MutChild *win);
+
+	void SaveState();
+
+	void RestoreState();
+
+	void LogicWinOpen(int box);
+
+	void ToggleTextBox(WinKind kind);
+
+	void TextBoxOpen(WinKind kind, int box);
+
+	void CmSelectBox();
+
+	void CmCloseChild();
+
+	void CloseAll(WinKind kind);
+
+	void SetStatus(int WXUNUSED(imgNr))
+	{
+		//StatusGadget->SelectImage(curStatusImg = imgNr, true);
+	}
+
+	wxRect DetermineFrameSize ();
+
+	/// retrun true if we have already a client
+	bool HasClient()
+	{
+		return (bool) client;
+	}
+
+	void UpdateBoxMenu();
+	bool RaiseTheFrame();
+
+	static void repaint_route()
+	{
+		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+
+		if (routewin) {
+			MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
+
+			if (route) route->Refresh();
+		}
+	}
+
+
+private:
+
+	void CloseClientWindow(wxWindow * w)
+	{
+		auimanager.ClosePane(auimanager.GetPane(w));
+		DEBUGLOG(_T("Detaching pane."));
+		auimanager.DetachPane(w);
+		auimanager.Update();
+
+		DEBUGLOG(_T("Closing window."));
+		w->Close(); // win should be invalid now.
+	}
+
+	int curStatusImg;
+
+	wxAuiManager auimanager;
+
+	wxWindow *keywindows[MAX_BOX];
+	wxWindow *tswindows[MAX_BOX];
+	wxWindow *actionwindows[MAX_BOX];
+
+	wxWindow *client;
+
+	static MutFrame * ActiveWindow;
+
+	static int boxCommandIds[MAX_BOX];
+
+	DECLARE_EVENT_TABLE()
 };
 
 // globals
 
 extern bool asTS;
+
 extern bool SaveEditor;
+
 extern bool UseColorBars;
+
 extern bool OWM; // One Window Mode
+
 extern bool CAW; // Common Action Window
+
 extern bool LogicOn;
+
 extern int curBox;
 
 extern wxString CompiledFile;
 
 extern wxString curLogic[MAX_BOX];
+
 extern wxString curTS[MAX_BOX];
+
 extern int curTaste[MAX_BOX][2];
+
 extern bool TextBoxWanted[][3];
 
 #endif
