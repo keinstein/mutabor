@@ -2,16 +2,35 @@
  ********************************************************************
  * MIDI Input filter configuration dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.h,v 1.5 2009/08/10 11:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.h,v 1.6 2010/11/21 13:15:47 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007,2008 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/10/21 18:28:56
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.5 $
+ * $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: InputFilterDlg.h,v $
+ * Revision 1.6  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.4.2.4  2010-03-30 08:38:27  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.4.2.3  2010/02/15 12:08:20  keinstein
+ * intermediate update for backup progress
+ *
+ * Revision 1.4.2.2  2009/11/03 15:07:07  keinstein
+ * Compile on Ubuntu 9.10
+ * remove several interface and implementation pragmas
+ * fixed some file names for case insensitive filesystems
+ *
+ * Revision 1.4.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.5  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -25,10 +44,6 @@
 #ifndef _INPUTFILTERDLG_H_
 #define _INPUTFILTERDLG_H_
 
-#if defined(__GNUG__) && !defined(__APPLE__)
-#pragma interface "InputFilterDlg.cpp"
-#endif
-
 /*!
  * Includes
  */
@@ -38,7 +53,7 @@
 #include "wx/html/htmlwin.h"
 #include "wx/statline.h"
 #include "wx/filepicker.h"
-#include "wxresource.h"
+#include "resourceload.h"
 #include "Device.h"
 
 
@@ -100,42 +115,42 @@ public:
 
 	int GetType() const
 	{
-		DEBUGLOG(_T("%d"),type);
+		DEBUGLOG(other, _T("%d"),type);
 		return type ;
 	}
 
 	void SetType(int value)
 
 	{
-		DEBUGLOG(_T("%d"),value);
+		DEBUGLOG(other, _T("%d"),value);
 		type = value ;
 		Update();
 	}
 
 	long GetFrom() const
 	{
-		DEBUGLOG(_T("%d"),from);
+		DEBUGLOG(other, _T("%d"),from);
 		return from ;
 	}
 
 	void SetFrom(long value)
 
 	{
-		DEBUGLOG(_T("%d"),value);
+		DEBUGLOG(other, _T("%d"),value);
 		from = value ;
 		Update();
 	}
 
 	long GetTo() const
 	{
-		DEBUGLOG(_T("%d"),to);
+		DEBUGLOG(other, _T("%d"),to);
 		return to ;
 	}
 
 	void SetTo(long value)
 
 	{
-		DEBUGLOG(_T("%d"),value);
+		DEBUGLOG(other, _T("%d"),value);
 		to = value ;
 		Update();
 	}

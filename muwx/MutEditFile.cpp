@@ -92,39 +92,30 @@ END_EVENT_TABLE()
 
 bool MutEditFile::DoLoadFile(const wxString &filename, int WXUNUSED(fileType))
 {
-#ifdef DEBUG
-	std::cout << "MutEditFile::DoLoadFile" << std::endl;
-#endif
+	DEBUGLOG(mutparser,_T(""));
 	wxFFile file(filename);
 
 	if ( file.IsOpened() ) {
 		wxString text;
 
 		if ( file.ReadAll(&text, autoConverter) ) {
-#ifdef DEBUG
-			std::cout << "MutEditFile::DoLoadFile:"
-			<< text.mb_str(*wxConvFileName) << std::endl;
-#endif
+			DEBUGLOG(mutparser,_T("%s"),text.c_str());
+
 			SetValue(text);
-
 			DiscardEdits();
-
 			m_filename = filename;
-
 			file.Close();
-
 			return true;
 		}
 
 #ifdef DEBUG
 		else
-			std::cout << "File opened, but couldn't be loaded." << std::endl;
+			DEBUGLOG (mutparser,_T("File opened, but couldn't be loaded."));
 
 #endif
 	}
 
 	wxLogError(_("File couldn't be loaded."));
-
 	return false;
 }
 
@@ -192,7 +183,7 @@ void MutEditFile::CmFileSaveAs(wxCommandEvent& event)
 void MutEditFile::CmCompile(wxCommandEvent& event)
 {
 
-	DEBUGLOG(_T("MutEditFile::CmCompile(Event(%d)); filename = %s"),event.GetId(),m_filename.c_str());
+	DEBUGLOG (other, _T("MutEditFile::CmCompile(Event(%d)); filename = %s"),event.GetId(),m_filename.c_str());
 	wxString origfilename = m_filename;
 	wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 
@@ -250,7 +241,7 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
 
 	m_filename = origfilename;
 
-	DEBUGLOG(_T("filename (at end) = '%s'"),m_filename.c_str());
+	DEBUGLOG (other, _T("filename (at end) = '%s'"),m_filename.c_str());
 	event.Skip(false);
 }
 

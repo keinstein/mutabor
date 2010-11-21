@@ -2,16 +2,64 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.22 2009/08/10 11:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.23 2010/11/21 13:15:47 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.22 $
+ * $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.23 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
+ * Revision 1.23  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.21.2.11  2010-11-19 10:06:32  keinstein
+ * remove MutFrame OnIdle
+ *
+ * Revision 1.21.2.10  2010-11-14 22:29:53  keinstein
+ * Remvoed EDevice.cpp and EDevice.h from the sources list
+ * They still reside in the source tree, since they have been used for Midi/GMN
+ * file playing. That funcitonality has been disabled so far.
+ * After reimplementation the files can be removed.
+ *
+ * Revision 1.21.2.9  2010-09-30 16:26:26  keinstein
+ * remove global variables routewindow and frame
+ * move route loading and route saving into MutRouteWnd
+ * implement MutRouteWnd::InitShapes.
+ * Destroy Route children before loading new route configuration (still some crashes)
+ *
+ * Revision 1.21.2.8  2010-09-15 17:58:01  keinstein
+ * old configuration can be loaded again.
+ *
+ * Revision 1.21.2.7  2010-08-10 15:54:29  keinstein
+ * new, direct route configuration on init
+ *
+ * Revision 1.21.2.6  2010/03/30 08:38:26  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.21.2.5  2010/02/15 12:08:20  keinstein
+ * intermediate update for backup progress
+ *
+ * Revision 1.21.2.4  2010/01/14 18:14:20  keinstein
+ * fix usage of installation prefix
+ * MutInputDeviceShape/MutOutputDeviceShape:
+ *     use GetType for type checking in OnChoiceSelected
+ *     make InitalizeDialog const
+ * MutNewOutputDeviceShape: add InitializeDialog and ReplaceSelfBy
+ *
+ * Revision 1.21.2.3  2010/01/14 15:43:44  keinstein
+ * trying to get mutabor work on local install
+ *
+ * Revision 1.21.2.2  2009/11/16 20:07:10  keinstein
+ * make “make distcheck” happy
+ *
+ * Revision 1.21.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.22  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -115,11 +163,13 @@
 #include "MutFrame.h"
 #include "DevMidi.h"
 #include "MutConfDlg.h"
-#include "EDevice.h"
-#include "wxresource.h"
+#include "resourceload.h"
 #include "Action.h"
 
-MutFrame *frame = (MutFrame *) NULL;
+#ifdef __WXMAC__
+#include <ApplicationServices/ApplicationServices.h>
+#endif
+
 wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
 
 IMPLEMENT_APP(MutApp)
@@ -162,7 +212,13 @@ bool MutApp::OnInit()
 
 	SetAppName(_T(PACKAGE));
 	SetClassName(_T(PACKAGE_NAME));
-	routewindow = NULL;
+        
+        wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
+
+#ifdef __LINUX__
+        sp.SetInstallPrefix(_T(PREFIX));
+#endif
+
 	quitting = false;
 
 	// initialize the languages
@@ -187,9 +243,10 @@ bool MutApp::OnInit()
 	}
 #endif
 
-	wxStandardPaths & sp = (wxStandardPaths &) (wxStandardPaths::Get());
 
 #ifdef DEBUG
+	std::cout << muT(__FUNCTION__).ToUTF8() << std::endl;
+	std::cout << muT(typeid(m_locale).name()).ToUTF8() << std::endl;
 	std::cout << "ConfigDir:        "
 
 	<< (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
@@ -239,80 +296,71 @@ bool MutApp::OnInit()
 
 #endif
 
+	if (!wxApp::OnInit()) return false;
+	
 	// We are using .png files for some extra bitmaps.
 	wxImageHandler * pnghandler = new wxPNGHandler;
-
 	wxImage::AddHandler(pnghandler);
-
 	wxImage::AddHandler(new wxGIFHandler);
-
+	
 	wxFileSystem::AddHandler(new wxZipFSHandler);
 
 	wxXmlResource::Get()->InitAllHandlers();
-
 	wxString resfilename = GetResourceName(_T("Mutabor.xrc"));
-
 	wxXmlResource::Get()->Load(resfilename);
 
 	wxHelpControllerHelpProvider* provider = new wxHelpControllerHelpProvider;
-
 	wxHelpProvider::Set(provider);
-
 	HelpController = new wxHtmlHelpController();
-
 	provider->SetHelpController(HelpController);
 
 	// we want to name the help files according to the lanuage.
 	if (!HelpController->Initialize(GetResourceName(_("Help.zip"))))
 		std::cerr << "Warning: could not initialize Help system: "
-		<< (const char *)(wxString(_("manual.zip")).ToUTF8()) << std::endl;
+		<< (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
 
-	//  HelpController->AddBook(_("manual.zip"));
-	//  HelpController->DisplayIndex();
 
 #if defined(__WXMAC__)
 	// || defined(__WXCOCOA__)
 	// Make a common menubar
 
 	wxApp::SetExitOnFrameDelete(false);
-
 	wxApp::s_macAboutMenuItemId = CM_ABOUT;
-
 	wxApp::s_macPreferencesMenuItemId = CM_SETUP;
-
 	wxApp::s_macExitMenuItemId = CM_EXIT;
-
 	wxApp::s_macHelpMenuTitleName = _("&Help");
-
 	wxMenuBar *menuBar = new wxMenuBar;
-
 	MakeFileMenu(menuBar,ProgramMenu);
-
 	MakeViewMenu(menuBar,ProgramMenu);
-
 	MakeHelpMenu(menuBar);
-
 	wxMenuBar::MacSetCommonMenuBar(menuBar);
-
+	
 #endif
 
 
-  frame = CreateMainFrame(EditorMenu);
-  MidiInit();
-  RestoreState();
-  ((MutFrame*)frame)->RestoreState();
-  
-  /* #ifdef WXDLLIMPEXP_OGL
-  wxOGLInitialize();
-#endif
-  */
-
+	MutFrame * frame = CreateMainFrame(EditorMenu);
+	MidiInit();
 	RestoreState();
-
 	((MutFrame*)frame)->RestoreState();
+	wxCommandEvent event(CM_ROUTES);
+	((MutFrame*)frame)->CmRoutes(event);
 
-//	wxOGLInitialize();
+	return true;
+}
 
+void MutApp::OnInitCmdLine(wxCmdLineParser&  parser) {
+	wxApp::OnInitCmdLine(parser);
+#ifdef DEBUG
+	debugFlags::InitCommandLine(parser);
+#endif
+}
+
+bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
+	if (!wxApp::OnCmdLineParsed(parser)) return false;
+#ifdef DEBUG
+	debugFlags::ProcessCommandLine(parser);
+#endif
+	DEBUGLOG (other, _T("Command line parsed."));
 	return true;
 }
 
@@ -499,7 +547,8 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 
 	/*    EVT_CLOSE(MutFrame::OnClose)
 	    EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
-	*/	EVT_IDLE(MutFrame::OnIdle)
+		EVT_IDLE(MutFrame::OnIdle)
+        */
 	//    EVT_SIZE(MutFrame::OnSize)
 END_EVENT_TABLE()
 
@@ -553,7 +602,7 @@ void MutApp::CmFileNew (wxCommandEvent& event)
 #ifdef DEBUG
 	printf("MutApp::CmFileNew\n");
 #endif
-	frame = dynamic_cast<MutFrame*>(GetTopWindow());
+	MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
 
 	if (MustOpenFrame(frame))
 		frame = CreateMainFrame(EditorMenu);
@@ -580,7 +629,7 @@ void MutApp::CmFileOpen (wxCommandEvent& event)
 
 	wxString path = FileNameDialog(topwindow);
 
-	frame = dynamic_cast<MutFrame*>(topwindow);
+	MutFrame * frame = dynamic_cast<MutFrame*>(topwindow);
 
 	if ( !path )
 		return;
@@ -621,7 +670,7 @@ void MutApp::CmRoutes (wxCommandEvent& event)
 	<< std::endl;
 #endif
 
-	frame = dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
+	MutFrame * frame = dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
 
 	if (!frame) {
 		frame = dynamic_cast<MutFrame*>(GetTopWindow());
@@ -633,7 +682,6 @@ void MutApp::CmRoutes (wxCommandEvent& event)
 	frame->CmRoutes(event);
 
 	frame->Show(true);
-	routewindow = frame;
 	event.Skip(false);
 }
 
@@ -698,7 +746,7 @@ void MutApp::ShowHelp(int commandId)
 
 void MutApp::CmQuit (wxCommandEvent& event)
 {
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 
 	SetExitOnFrameDelete(true);
 	//		Exit();
@@ -716,7 +764,7 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 	//	if (frames.empty()) {
 	if ((window = GetTopWindow()) == NULL) {
-		DEBUGLOG(_T("No Frames."));
+		DEBUGLOG (other, _T("No Frames."));
 		quitting = false;
 		ExitMainLoop();
 		return;
@@ -724,12 +772,12 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 	FrameHash::iterator it;
 
-	DEBUGLOG(_T("Starting Loop"));
+	DEBUGLOG (other, _T("Starting Loop"));
 
 	while (Pending())
 		Dispatch();
 
-	DEBUGLOG(_T("Dispatched all events"));
+	DEBUGLOG (other, _T("Dispatched all events"));
 
 	wxIdleMode imode = wxIdleEvent::GetMode();
 
@@ -737,8 +785,7 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 	while ((window = GetTopWindow())) {
 #ifdef DEBUG
-		DEBUGLOG(_("Closing window of class "))
-		<< typeid(*(window)).name();
+		DEBUGLOG (other, _("Closing window of class %s"), muT(typeid(*(window)).name()).c_str());
 #endif
 
 		if (!window->Close()) {
@@ -747,7 +794,7 @@ void MutApp::CmQuit (wxCommandEvent& event)
 			return;
 		}
 
-		DEBUGLOG(_T("Closed window"));
+		DEBUGLOG (other, _T("Closed window"));
 
 		// empty queue and process idle event to delete the frame
 
@@ -760,11 +807,11 @@ void MutApp::CmQuit (wxCommandEvent& event)
 		//  Dispatch();
 		DeletePendingObjects();
 
-		DEBUGLOG(_T("Dispatched all events"));
+		DEBUGLOG (other, _T("Dispatched all events"));
 	}
 
 
-	DEBUGLOG(_T("finished loop"));
+	DEBUGLOG (other, _T("finished loop"));
 }
 
 
@@ -782,28 +829,19 @@ void MutApp::UnregisterFrame (wxFrame * f)
 wxString MutApp::GetResourceName(const wxString & file)
 {
 	const wxLocale * m_locale = wxGetLocale();
-
 	wxStandardPathsBase & sp = wxStandardPaths::Get();
-
 	wxString localename = m_locale->GetCanonicalName();
-
 	wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
-
-	DEBUGLOGTYPE(MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
-
+	DEBUGLOGTYPE(other,MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
 	if (!rcname.IsFileReadable()) {
 		rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
-		DEBUGLOGTYPE(MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
-
+		DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
 		if (!rcname.IsFileReadable()) {
 			rcname.SetPath(sp.GetResourcesDir());
-			DEBUGLOGTYPE(MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+			DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
 		}
-
 	}
-
 	localename = rcname.GetFullPath();
-
 	return localename;
 }
 
@@ -959,9 +997,9 @@ void MutApp::MacOpenFile(const wxString &fileName)
 {
 	//  wxApp::MacOpenFile(fileName);
 
-	DEBUGLOG(_T("Filename: %s"),fileName.c_str());
+	DEBUGLOG (other, _T("Filename: %s"),fileName.c_str());
 
-	frame = dynamic_cast<MutFrame*>(GetTopWindow());
+	MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
 
 	if ( !fileName )
 		return;
@@ -998,7 +1036,7 @@ void MutApp::SaveState()
 
 	config->SetPath(_T(".."));
 
-	WriteRoutes(config);
+	SaveRoutes(config);
 	config->SetPath(oldpath);
 }
 
@@ -1027,7 +1065,7 @@ void MutApp::RestoreState()
 
 	config->SetPath(_T(".."));
 
-	ScanRoutes(config);
+	LoadRoutes(config);
 	config->SetPath(oldpath);
 }
 

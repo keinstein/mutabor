@@ -69,7 +69,7 @@ libmutabor_la_SOURCES = object.c identifier.c \
 			$(top_srcdir)/libasprintf/lib-asprintf.c
 #			parser.c
 
-libmutabor_la_LDFLAGS = -version-info 0:0:0 @INTLLIBS@ \
+libmutabor_la_LDFLAGS = -version-info 0:0:0 @LTLIBINTL@ \
 	$(top_builddir)/missfunc/libmissfunc.a
 
 SUFFIXES = .h
@@ -111,6 +111,3 @@ SUFFIXES = .h
 mutlex.h: mutlex.l
 mut.h: mut.y
 
-@INTLLIBS@:
-	$(MAKE) -C $(top_srcdir)/intl $@
-	$(MAKE) -C $(top_srcdir)/wxintl $@

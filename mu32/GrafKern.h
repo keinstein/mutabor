@@ -2,12 +2,18 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.9 2008/10/14 08:07:59 keinstein Exp $
+ * $Id: GrafKern.h,v 1.10 2010/11/21 13:15:45 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2008/10/14 08:07:59 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2010/11/21 13:15:45 $
+ * \version $Revision: 1.10 $
  *
  * $Log: GrafKern.h,v $
+ * Revision 1.10  2010/11/21 13:15:45  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.9.2.1  2009-08-04 11:30:49  keinstein
+ * removed mut.h
+ *
  * Revision 1.9  2008/10/14 08:07:59  keinstein
  * added Errors.h and started to define Error symbols
  *
@@ -46,28 +52,40 @@
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();
+
 void AktionenMessage(int box, const char *meldung );
+
 void fatal_error( int nummer, ... );
+
 void compiler_warning( int nummer, ... );
+
 void laufzeit_protokoll(const char * formatstring , ... );
+
 void init_laufzeit_protokoll( void );
+
 void exit_laufzeit_protokoll( void );
+
 void protokoll_aktion(const char * name);
+
 void clear_protokoll_screen( void );
 
 void calc_declaration_numbers(char withNames = 0);
+
 void show_line_number( int n );
 
 #ifdef MUTWIN
 #ifdef WX
 #include "CompDlg.h"
 void InitCompDia(CompDlg *compDia, wxString filename);
+
 #else
-  void InitCompDia(HWND compDiaLine);
+void InitCompDia(HWND compDiaLine);
+
 #endif
 #endif
 
 void drucke_keyboard_liste( int instr );
+
 void update_keyboard_liste( int instr );
 
 void enable_protokoll_frame( void );
@@ -77,23 +95,28 @@ extern int scanner_echo;
 #ifdef MUTWIN
 extern "C"
 {
-  int pascal GetActString(unsigned char **box, int **l, char **s);
-  char* pascal GetKeyString(int box, char asTS);
-  char* pascal GetTSString(int box, char asTS);
-  int pascal GetLineNumbers();
-  int pascal GetErrorLine();
+	int pascal GetActString(unsigned char **box, int **l, char **s);
+	char* pascal GetKeyString(int box, char asTS);
+	char* pascal GetTSString(int box, char asTS);
+	int pascal GetLineNumbers();
+	int pascal GetErrorLine();
 }
+
 #endif
 
 #ifdef WX
 extern wxString sd1, sd2, sd3, sd4, sd5, sd6;
+
 extern wxString Fmeldung;
+
 #define LAUFZEIT_ERROR0(format) Fmeldung = format
 #define LAUFZEIT_ERROR1(format, a) Fmeldung = wxString::Format(format, a)
 #define LAUFZEIT_ERROR2(format, a, b) Fmeldung = wxString::Format(format, a, b)
 #else
 extern char sd1[100], sd2[100];
+
 extern char Fmeldung[255];
+
 #define LAUFZEIT_ERROR0(format, a) strcpy(Fmeldung, format)
 #define LAUFZEIT_ERROR1(format, a) sprintf(Fmeldung, format, a)
 #define LAUFZEIT_ERROR2(format, a, b) sprintf(Fmeldung, format, a, b)

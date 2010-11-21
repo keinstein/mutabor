@@ -7,7 +7,7 @@
 #define	INTERVALL	261
 #define	WURZEL	262
 #define	TON	263
-#define	TONSYSTEM	264
+#define	ton_system	264
 #define	UMSTIMMUNG	265
 #define	HARMONIE	266
 #define	LOGIK	267
@@ -140,7 +140,7 @@ static const short yyrline[] = {     0,
 };
 
 static const char * const yytname[] = {     0,
-"error","$illegal.","IDENTIFIER","F_NUMBER","INTEGER","INTERVALL","WURZEL","TON","TONSYSTEM","UMSTIMMUNG",
+"error","$illegal.","IDENTIFIER","F_NUMBER","INTEGER","INTERVALL","WURZEL","TON","ton_system","UMSTIMMUNG",
 "HARMONIE","LOGIK","FORM","INSTRUMENT","TASTE","MIDI_IN","MIDI_OUT","ANSONSTEN","'='","':'",
 "'-'","'+'","'/'","'['","']'","','","'('","')'","'@'","'<'",
 "'>'","'*'","'{'","'}'","'.'","'~'","start"
@@ -1708,7 +1708,7 @@ static struct {
 { "INTERVALL"  , INTERVALL  },
 { "WURZEL"     , WURZEL     },
 { "TON"        , TON        },
-{ "TONSYSTEM"  , TONSYSTEM  },
+{ "ton_system"  , ton_system  },
 { "UMSTIMMUNG" , UMSTIMMUNG },
 { "HARMONIE"   , HARMONIE   },
 { "LOGIK"      , LOGIK      },
@@ -1722,7 +1722,7 @@ static struct {
 { "INTERVAL"  , INTERVALL  },
 { "ROOT"     , WURZEL     },
 { "TONE"        , TON        },
-{ "TONESYSTEM"  , TONSYSTEM  },
+{ "TONESYSTEM"  , ton_system  },
 { "RETUNING" , UMSTIMMUNG },
 { "PATTERN"   , HARMONIE   },
 { "LOGIC"      , LOGIK      },

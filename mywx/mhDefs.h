@@ -1,9 +1,10 @@
 #ifndef mhDEFS_H
 #define mhDEFS_H
 
-#ifndef WX_PRECOMP
+#include "Defs.h"
 #include "wx/wx.h"
-#endif
+
+
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
 #include <iostream>
@@ -43,11 +44,11 @@
 extern wxHtmlHelpController * HelpController;
 
 #ifdef WX
-#if defined(WX) && defined(UNICODE)
+#if defined(WX) && (defined(UNICODE) || wxUSE_WCHAR_T)
 #include "wx/strconv.h"
 extern wxCSConv muCSConv;
 
-#define muT(x)  (wxString(x, muCSConv))
+#define muT(x)  (wxString(x, wxConvISO8859_1))
 #define mumT(x) _T(x)
 #else
 #define muT(x) wxString(x)
@@ -60,21 +61,39 @@ wxString FileNameDialog(wxWindow * parent,
                         int Command = CM_FILEOPEN,
                         wxString Filename = wxEmptyString);
 
-#ifdef DEBUG
-# define DEBUGLOGBASE(type, ...)		   \
-  std::cout << __FILE__ << ":" << __LINE__ << ": " \
-  << ((const char *) type) << "::" << __WXFUNCTION__ << ": "	\
-  << (const char *)((wxString::Format(__VA_ARGS__)).ToUTF8()) << std::endl
+#include "mutDebug.h"
+
+// STUBs should generate error messages even in non-debug mode
+#define STUBBASE(stubtype,typestr) \
+do { \
+	std::cerr << stubtype << " in " ; \
+        std::cerr << __FILE__ << ":" << __LINE__ << ": " ;\
+	std::cerr << typestr << "::" ;\
+	std::cerr << __WXFUNCTION__ << std::endl;\
+	wxFAIL_MSG(wxString::Format(_T("\n\n%s\n\nin %s:%d:\n\n%s::%s\n\n"), \
+				    muT(stubtype).c_str(), \
+				    _T(__FILE__), \
+				    __LINE__, \
+				    muT(typestr).c_str(), \
+				    muT(__WXFUNCTION__).c_str())); \
+} while (0)
+
+/// functions or code that has to be written -- simple function
+#define STUB STUBBASE("stub function","")
+/// functions or code that has to be written -- use for static class members
+#define STUBCT(type) STUBBASE("stub function",((const char *) (typeid(type).name())))
+/// functions or code that has to be written -- use for normal class members
+#define STUBC STUBCT(*this)
+
+#define UNREACHABLE STUBBASE("unreachable code","")
+#define UNREACHABLECT(type) STUBBASE("unreachable code",((const char *) (typeid(type).name())))
+#define UNREACHABLEC UNREACHABLECT(*this)
+
+#define ABSTRACT_FUNCTION STUBBASE("unreachable function","")
+#define ABSTRACT_FUNCTIONCT(type) STUBBASE("unreachable function",((const char *) (typeid(type).name())))
+#define ABSTRACT_FUNCTIONC ABSTRACT_FUNCTIONCT(*this)
 
 
-#else
-# define DEBUGLOGBASE(...) do {} while (0)
-# define PRINTSIZER (X) do {} while (0)
-#endif
-
-#define DEBUGLOG(...) DEBUGLOGBASE(typeid(*this).name(),__VA_ARGS__)
-#define DEBUGLOG2(...) DEBUGLOGBASE(_T(""),__VA_ARGS__)
-#define DEBUGLOGTYPE(type, ...) DEBUGLOGBASE(typeid(type).name(), __VA_ARGS__)
 
 #ifdef DEBUG
 void PRINTSIZER (wxSizer * sizer, const wxString & offset = _T (""));
@@ -82,7 +101,6 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset = _T (""));
 //#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
 //#endif
-
 
 #endif
 

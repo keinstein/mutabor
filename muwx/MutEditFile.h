@@ -2,12 +2,18 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.9 2009/08/10 11:15:46 keinstein Exp $
+ * $Id: MutEditFile.h,v 1.10 2010/11/21 13:15:47 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.10 $
  *
  * $Log: MutEditFile.h,v $
+ * Revision 1.10  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.8.2.1  2009-08-10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.9  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *

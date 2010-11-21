@@ -4,7 +4,11 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     12/07/98
-// RCS-ID:      $Id: basic.cpp,v 1.2 2009/08/10 11:15:46 keinstein Exp $
+<<<<<<< basic.cpp
+// RCS-ID:      $Id: basic.cpp,v 1.3 2010/11/21 13:15:41 keinstein Exp $
+=======
+// RCS-ID:      $Id: basic.cpp,v 1.3 2010/11/21 13:15:41 keinstein Exp $
+>>>>>>> 1.1.2.1
 // Copyright:   (c) Julian Smart
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////

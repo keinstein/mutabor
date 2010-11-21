@@ -300,10 +300,8 @@ Charset=UTF-8^^J}%
     \loadwxindex 
 %    \catcode`\#11
     \InputIfFileExists{\jobname.4ct}{}{}%
-\typeout{finished}%
     \HCode{</ul>^^J}%
     \special{t4ht<\jobname.hhk}%
-\typeout{closed}%
 %
     \let\toclikesection\tstocsection
     \let\toclikechapter\tstocchapter
@@ -359,14 +357,6 @@ Charset=UTF-8^^J}%
 \fi
 % Überschriften als Referenzen einfügen.
 \usepackage{nameref}
-\usepackage{color}
-%\ifhtml
-%\input nameref.4ht
-%\fi
-% Papierformat a4weit wird nicht empfohlen
-%\usepackage{a4wide}
-%
-% Die üblichen Pakete für Grafik und Farben 
 \usepackage{graphicx}
 \usepackage{color}
 %
@@ -595,6 +585,5 @@ Charset=UTF-8^^J}%
 }
 
 \newcommand\translate[1]{\textcolor{red}{#1}}
-
 \endinput
 

@@ -5,7 +5,7 @@ AM_LDFLAGS = -static
 check_PROGRAMS = testmutfile
 bin_PROGRAMS = testobject testidentifier testinterval testchkobject testidlist \
 	testplaceholder testptrlist
-LDADD = @INTLLIBS@
+LDADD = @LTLIBINTL@
 
 #testparser_SOURCES = testparser.c
 #testparser_LDADD = ../libmutabor.la
@@ -38,7 +38,3 @@ testmutfile_LDFLAGS = -static
 
 TESTS=testobject$(EXEEXT) testidentifier$(EXEEXT) testinterval$(EXEEXT) testidlist$(EXEEXT) testplaceholder$(EXEEXT) testmutfile$(EXEEXT) testptrlist$(EXEEXT)
 
-@INTLLIBS@:
-	$(MAKE) -C $(top_srcdir)/intl $@
-	$(MAKE) -C $(top_srcdir)/wxintl $@
-		

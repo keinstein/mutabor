@@ -3,14 +3,28 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.2 2009/08/10 11:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.3 2010/11/21 13:15:47 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.2 $
+ * $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.3 $
  *
  * $Log: MutIcon.h,v $
+ * Revision 1.3  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.3  2010-03-30 08:38:26  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.1.2.2  2009/11/30 12:08:57  keinstein
+ * split MutRouteShapes into several files into directory Routing
+ *
+ * Revision 1.1.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.2  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -94,7 +108,7 @@ public:
 		int m = std::max(width,height);
 		int newsize;
 
-		DEBUGLOG(_T("max: %d"),m);
+		DEBUGLOG(other, _T("max: %d"),m);
 		if ((m == 16) || (m == 32) || (m == 48) || (m >= 128)) {
 			// if >128  I don't know, what to do
 			newsize = m;
@@ -108,23 +122,23 @@ public:
 				newsize = 32;
 			else newsize = 16;
 		}
-		DEBUGLOG(_T("newsize: %d"), newsize);
+		DEBUGLOG(other, _T("newsize: %d"), newsize);
 
 		wxBitmap bitmap;
 		wxImage image;
 		image.LoadFile(name,type);
 		image.ConvertAlphaToMask();
-		DEBUGLOG(_T("Mask: %d; Alpha: %d"),
+		DEBUGLOG(other, _T("Mask: %d; Alpha: %d"),
 		         (int)image.HasMask(),
 		         (int)image.HasAlpha());
 		image.Resize(wxSize(newsize,newsize),wxPoint(0,0));
 		bitmap = image;
 		CopyFromBitmap(bitmap);
-		DEBUGLOG(_T("Real size: %dx%d"),wxIcon::GetWidth(),wxIcon::GetHeight());
+		DEBUGLOG(other, _T("Real size: %dx%d"),wxIcon::GetWidth(),wxIcon::GetHeight());
 
 		SetWidth(width);
 		SetHeight(height);
-		DEBUGLOG(_T("Set size: %dx%d (%d,%d)"),GetWidth(),GetHeight(),width,height);
+		DEBUGLOG(other, _T("Set size: %dx%d (%d,%d)"),GetWidth(),GetHeight(),width,height);
 
 		return true;
 	}
@@ -149,5 +163,12 @@ public:
 #else
 #define MutIcon wxIcon
 #endif /* __WXMAC__ */
+
+#ifdef __WXMAC__
+extern MutIcon MutNullIcon; 
+#else
+#define MutNullIcon wxNullIcon;
+#endif
+
 #endif /* MUTROUTESHAPES_H */
 /* \} */

@@ -12,10 +12,6 @@
 #ifndef _OUTPUTFILTERDLG_H_
 #define _OUTPUTFILTERDLG_H_
 
-#if defined(__GNUG__) && !defined(__APPLE__)
-#pragma interface "OutputFilterDlg.cpp"
-#endif
-
 /*!
  * Includes
  */

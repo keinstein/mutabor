@@ -3,7 +3,7 @@
 // Purpose:     wxConvAuto class declaration
 // Author:      Vadim Zeitlin
 // Created:     2006-04-03
-// RCS-ID:      $Id: muconvauto.h,v 1.2 2009/08/10 11:15:47 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.h,v 1.3 2010/11/21 13:15:50 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,8 +27,9 @@ class muConvAuto : public wxMBConv
 
 public:
 	// default ctor, the real conversion will be created on demand
-	muConvAuto()
+	muConvAuto() : wxMBConv()
 	{
+		DEBUGLOG(other,_T(""));
 		m_conv = NULL;
 		m_fallback = muConvAutoFallback;
 		m_ownsFallback = false;
@@ -40,6 +41,7 @@ public:
 
 	muConvAuto(const muConvAuto& other) : wxMBConv()
 	{
+		DEBUGLOG(other,_T(""));
 		m_conv = NULL;
 		m_fallback = other.m_fallback->Clone();
 		m_ownsFallback = true;
@@ -48,14 +50,13 @@ public:
 	virtual ~muConvAuto()
 
 	{
+		DEBUGLOG(other,_T(""));
 		if ( m_conv && m_ownsConv ) delete m_conv;
-
 		if ( m_fallback && m_ownsFallback ) delete m_fallback;
 	}
 
 	// override the base class virtual function(s) to use our m_conv
 	virtual size_t ToWChar(wchar_t *dst, size_t dstLen,
-
 	                       const char *src, size_t srcLen = wxNO_LEN) const;
 
 	virtual size_t FromWChar(char *dst, size_t dstLen,
@@ -63,12 +64,13 @@ public:
 
 	virtual size_t GetMBNulLen() const
 	{
+		DEBUGLOG(other,_T(""));
 		return m_conv->GetMBNulLen();
 	}
 
 	virtual wxMBConv *Clone() const
-
 	{
+		DEBUGLOG(other,_T(""));
 		return new muConvAuto(*this);
 	}
 
@@ -92,6 +94,7 @@ private:
 	// initialize m_conv with the conversion to use by default (UTF-8)
 	void InitWithDefault()
 	{
+		DEBUGLOG(other,_T(""));
 		m_conv = &wxConvUTF8;
 		m_ownsConv = false;
 	}

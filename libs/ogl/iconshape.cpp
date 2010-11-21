@@ -4,7 +4,11 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     12/07/98
-// RCS-ID:      $Id: iconshape.cpp,v 1.2 2009/08/10 11:15:46 keinstein Exp $
+<<<<<<< iconshape.cpp
+// RCS-ID:      $Id: iconshape.cpp,v 1.3 2010/11/21 13:15:42 keinstein Exp $
+=======
+// RCS-ID:      $Id: iconshape.cpp,v 1.3 2010/11/21 13:15:42 keinstein Exp $
+>>>>>>> 1.1.2.1
 // Copyright:   (c) Julian Smart, Tobias Schlemmer
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////

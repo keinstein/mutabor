@@ -110,30 +110,30 @@ MutChild::MutChild (WinKind k,
 //                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title)
 //#endif
 {
-	DEBUGLOG(_T("winKind=%d"),winKind);
+	DEBUGLOG (other, _T("winKind=%d"),winKind);
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	winAttr->Win = this;
-	DEBUGLOG(_T("winKind=%d"),winKind);
+	DEBUGLOG (other, _T("winKind=%d"),winKind);
 }
 
 MutChild::~MutChild()
 
 {
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 	deleteFromWinAttrs();
 }
 
 void MutChild::OnActivate(wxActivateEvent& event)
 {
 	wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 	curBox = winAttr->Box;
 }
 
 void MutChild::deleteFromWinAttrs()
 {
-	DEBUGLOG(_T("winKind: %d"),winKind);
+	DEBUGLOG (other, _T("winKind: %d"),winKind);
 	wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
 	int i = WinAttrs[winKind].Index(*winAttr);
 	wxASSERT(WK_KEY <= winKind &&i != wxNOT_FOUND);

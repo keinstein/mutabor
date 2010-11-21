@@ -1,3 +1,4 @@
-SUBDIRS=mutabor
+#SUBDIRS=mutabor
+
 
 mac:

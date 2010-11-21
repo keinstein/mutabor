@@ -8,16 +8,23 @@
 #include "Interpre.h"
 
 void KeyboardIn(int box, const mutChar *keys);
+
 void GlobalReset();
+
 void AddKey(int box, int taste, int id);
+
 void DeleteKey(int box, int taste, int id);
+
 void MidiAnalysis(int box, BYTE midiByte);
 
-extern TONSYSTEM *tonsystem[MAX_BOX];
+extern ton_system *tonsystem[MAX_BOX];
 
 void protokoll_aktuelles_tonsystem( int instr );
+
 void protokoll_liegende_frequenzen( int instr );
+
 void protokoll_aktuelle_relationen( int instr );
+
 void protokoll_liegende_relationen( int instr );
 
 void FlushUpdateUI();
