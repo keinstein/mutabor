@@ -58,7 +58,7 @@ MutTextBox::MutTextBox(WinKind k,
 		winKind(k),
 		winAttr(a)
 {
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 	/*  Attr.Style &= ~LBS_SORT;
 	  Attr.Style |= LBS_NOINTEGRALHEIGHT | WS_CLIPCHILDREN | WS_HSCROLL | WS_VSCROLL | LBS_NOSEL;
 	  ColorBar1 = new TControl(this, 0, "", 1, 1, 1000, 1);
@@ -71,7 +71,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 
 {
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	DEBUGLOG(_T("winKind: %d"), winKind);
+	DEBUGLOG (other, _T("winKind: %d"), winKind);
 	//	if ( LogicOn )
 	TextBoxWanted[curBox][winKind] = false;
 	//       	event.Skip(true);
@@ -81,7 +81,7 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 void MutTextBox::NewText(char *s, bool newTitle)
 {
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 	// Text in Liste
 	Clear();
 	char s1[2000];
@@ -140,7 +140,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
 
 void MutTextBox::NewText(wxString s, bool newTitle)
 {
-	DEBUGLOG(_T("s=%s; newTitle=%d; winKind=%d"),s.c_str(),newTitle,winKind);
+	DEBUGLOG (other, _T("s=%s; newTitle=%d; winKind=%d"),s.c_str(),newTitle,winKind);
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	// Text in Liste
 	Clear();

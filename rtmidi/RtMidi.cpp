@@ -517,10 +517,55 @@ void RtMidiOut :: initialize( void )
 {
 	// Set up our client.
 	MIDIClientRef client;
+	DEBUGLOG(midiio,_T("client: %d"),client);
 	OSStatus result = MIDIClientCreate( CFSTR("RtMidi Output Client"), NULL, NULL, &client );
+	DEBUGLOG(midiio,_T("client: %d"),client);
 
 	if ( result != noErr ) {
-		errorString_ = "RtMidiOut::initialize: error creating OS-X MIDI client object.";
+		errorString_ = "RtMidiOut::initialize: error creating OS-X MIDI client object.\n\t";
+		switch (result) {
+			case kMIDIInvalidClient: 
+				errorString_ += "An invalid MIDIClientRef was passed.";
+				break;
+			case kMIDIInvalidPort:
+				errorString_ += "An invalid MIDIPortRef was passed.";
+				break;
+			case kMIDIWrongEndpointType:
+				errorString_ += "A source endpoint was passed to a function expecting a destination, or vice versa.";
+				break;
+			case kMIDINoConnection:
+				errorString_ += "Attempt to close a non-existant connection.";
+				break;
+			case kMIDIUnknownEndpoint:
+				errorString_ += "An invalid MIDIEndpointRef was passed.";
+				break;
+			case kMIDIUnknownProperty:
+				errorString_ += "Attempt to query a property not set on the object.";
+				break;
+			case kMIDIWrongPropertyType:
+				errorString_ += "Attempt to set a property with a value not of the correct type.";
+				break;
+			case kMIDINoCurrentSetup:
+				errorString_ += "Internal error; there is no current MIDI setup object.";
+				break;
+			case kMIDIMessageSendErr:
+				errorString_ += "Communication with MIDIServer failed.";
+				break;
+			case kMIDIServerStartErr:
+				errorString_ += "Unable to start MIDIServer.";
+				break;
+			case kMIDISetupFormatErr:
+				errorString_ += "Unable to read the saved state.";
+				break;
+			case kMIDIWrongThread:
+				errorString_ += "A driver is calling a non-I/O function in the server from a thread other than the server's main thread.";
+				break;
+			case kMIDIObjectNotFound:
+				errorString_ += "The requested object does not exist.";
+				break;
+			case kMIDIIDNotUnique:
+				errorString_ += "Attempt to set a non-unique kMIDIPropertyUniqueID on an object.";
+		}
 		error( RtError::DRIVER_ERROR );
 	}
 

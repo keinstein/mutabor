@@ -3,22 +3,21 @@
 #ifndef	MU32_DEFS_H
 #define MU32_DEFS_H
 
-
-// definitions
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #else
 #define MUTWIN
 //#define MUTMIDI
 #endif
 
 #ifdef WX
-  #include "mhDefs.h"
-  #include "wx/wxchar.h"
+#include "mhDefs.h"
+#include "wx/wxchar.h"
 #endif
 
+
 #if defined(MUTWIN) && (!defined(WX) || defined(__WXMSW__))
-  #include <windows.h>
+#include <windows.h>
 #endif
 
 #ifdef WX
@@ -26,26 +25,26 @@
 #  include "wx/setup.h"
 #  include "wx/wxchar.h"
 #  if !defined(__WXMSW__)
-  #define UINT unsigned int
-  #define WORD uint16_t
-  #define DWORD uint32_t
-  #define BYTE uint8_t
-  #define BOOL bool
-  #define pascal
-  #define CALLBACK 
+#define UINT unsigned int
+#define WORD uint16_t
+#define DWORD uint32_t
+#define BYTE uint8_t
+#define BOOL bool
+#define pascal
+#define CALLBACK
 #endif
-  #define _export
+#define _export
 #if defined(__VISUALC__)
-  #define min(a, b) wxMin(a, b)
+#define min(a, b) wxMin(a, b)
 #endif
 #else // not WX
-  #define REUSE(type) type
-#endif 
+#define REUSE(type) type
+#endif
 
 #if defined(WX)
-  #define STD_PRE std
+#define STD_PRE std
 #else
-  #define STD_PRE
+#define STD_PRE
 #endif
 
 #define mutT _T
@@ -54,7 +53,8 @@
 
 #define mutChar   wxChar
 #define mutString wxString
-#define mutEmptyString wxEmptyString
+#define mutStringRef mutString &
+#define mutEmptyString (wxString) wxEmptyString
 #define mutDelString(string) (string = mutEmptyString)
 #define mutFreeString(string)
 #define mutFopen  wxFopen
@@ -90,7 +90,7 @@
 	(stream).Write(data,count)
 #define mutReadStream(stream,data,count) \
 	(stream).Read(data,count)
-#define mutCloseStream(stream) 
+#define mutCloseStream(stream)
 
 #define mutPutC(stream,data) (stream).PutC(data)
 #define mutGetC(stream) (stream).GetC()
@@ -103,6 +103,7 @@
 
 #define mutChar char
 #define mutString (char*)
+#define mutStringRef mutString
 #define mutEmptyString ((char *) NULL)
 #define mutFreeString(string) if (string) free (string)
 #define mutDelString(string) (mutFreeString(string), string = mutEmptyString)
@@ -139,7 +140,7 @@
 
 #define mutPutC(stream,data) stream.putc(data)
 #define mutGetC(stream) stream.getc()
-   
+
 #define mutStreamBad(stream) (stream.bad())
 #define mutStreamGood(stream) (!stream.bad())
 #define mutStreamEOF(stream) (stream.eof())
@@ -152,15 +153,21 @@
 	 std::cerr << (const char *)(wxString(msg).ToUTF8()) << std::endl; \
    assert(cond)
 #else
-#define mutAssertMsg(cond,msg)   
+#define mutAssertMsg(cond,msg)
 #endif
-   
-inline wxString getContextLocal(const wxString & s) {
-  wxString ret = s.AfterFirst('|');
-  if (ret == wxEmptyString) return s;
-  else return ret;
+
+inline wxString getContextLocal(const wxString & s)
+{
+	wxString ret = s.AfterFirst('|');
+
+	if (ret == wxEmptyString) return s;
+	else return ret;
 }
 
+#define MIDI_MIN_CHANNEL 0
+#define MIDI_MAX_CHANNEL 15
+#define MIDI_MIN_KEY 0
+#define MIDI_MAX_KEY 0x7f
 #endif /* MU32_DEFS_H */
 
 

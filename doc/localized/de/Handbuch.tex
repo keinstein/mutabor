@@ -2,7 +2,7 @@
 \subject{Programmier- und Bedienungshandbuch}
 \externaldocument{Referenz}
 \externaldocument{Bedienung}
-\begin{document}
+\begin{document}%
 \ifhtml
 \setcounter{tocdepth}{1}
 \fi
@@ -769,16 +769,16 @@ zugewiesen, die beim Anschlagen derselben erklingen soll
 (einschließlich der Möglichkeit, dass eine Taste keinen Ton
 erzeugt, also stumm geschaltet ist).
 
-\subsection{Die Breite der FT}\label{sec:die-breite-der}
+\subsection{Die Breite der Fundamentaltonleiter}\label{sec:die-breite-der}
 \index{Fundamentaltonleiter!Breite}
 
 Die Anzahl an Tasten, welche die Fundamentaltonleiter  darstellen,
-nennen wir Breite der FT.
+nennen wir Breite der Fundamentaltonleiter.
 
 \subsection{Die Verankerungstaste}\label{sec:die-verank}
 \index{Fundamentaltonleiter!Anker}
 \index{Verankerungstaste}
-Die Taste der Klaviatur, auf der die FT beginnt, nennen wir
+Die Taste der Klaviatur, auf der die Fundamentaltonleiter beginnt, nennen wir
 Verankerungstaste (Es ist natürlich auch möglich, dass die
 Verankerungstaste keinen Ton erzeugt). Der MIDI-Standard hat alle
 Tasten der Klaviatur nummeriert. Das eingestrichene c' hat die
@@ -790,7 +790,7 @@ Tasten bzw. Halbtöne über c').
 
 Bisher haben wir nur einen kleinen Ausschnitt der Klaviatur mit Tönen,
 d.\,h. Frequenzen belegt. Wir benötigen also noch eine Art
-Reproduktionsvorschrift, wie man aus der FT die komplette
+Reproduktionsvorschrift, wie man aus der Fundamentaltonleiter die komplette
 Frequenzbelegung der Klaviatur\index{Klaviatur!Frequenzbelegung}
 berechnen kann. Dies geschieht mit einem einzigen Parameter, dem
 "`Periodenintervall"'. Gewöhnlicherweise soll die Struktur der
@@ -838,14 +838,14 @@ schreiben lässt:
 \[ y= \xi ((t-\alpha) \bmod \delta ) \cdot \psi ^ {\;(t-\alpha )
 \mbox{\rm div}\;\; \delta } \]
 $ (t-\alpha ) \/{\rm div}\/ \delta $ entspricht dem Abstand der Taste
-von der FT\footnote{$mod$ bedeutet hier den Rest bei der Teilung, z.\,B.
+von der Fundamentaltonleiter\footnote{$mod$ bedeutet hier den Rest bei der Teilung, z.\,B.
 24 $mod$ 7 = 3; $div$ bedeutet ganzzahliger Quotient der 
 Teilung, z.\,B. 14 $div$ 5 =
-2}, gemessen in Einheiten der FT-Breite und
-$(t-\alpha) \bmod \delta $ steht für die Taste der FT, die der
+2}, gemessen in Einheiten der Fundamentaltonleiter-Breite und
+$(t-\alpha) \bmod \delta $ steht für die Taste der Fundamentaltonleiter, die der
 angeschlagenen entspricht, also eine Art Tonigkeit.
 Anschaulicher lässt sich die Formel schreiben als:
-\[ y= \xi ( {\rm Bezugston} ) \cdot \psi ^ {\/{\rm Abstand\;zur\;FT}} \]
+\[ y= \xi ( {\rm Bezugston} ) \cdot \psi ^ {\/{\rm Abstand\;zur\;Fundamentaltonleiter}} \]
 
 Die intervallischen Zusammenhänge zwischen den Tönen der
 \index{Intervallstruktur}Fundamentaltonleiter nennen wir \emph{Intervallstruktur}.
@@ -863,7 +863,7 @@ wichtige Hilfsmittel zur Verfügung:
 \subsection{Intervalldeklarationen}\label{sec:interv}
 \index{Intervalle}
 
-In einem Tonsystem stehen die Töne der Fundamentaltonleiter (FT)
+In einem Tonsystem stehen die Töne der Fundamentaltonleiter (Fundamentaltonleiter)
 in einer bestimmten Intervallbeziehung zueinander. Die Aussage "`G
 liegt um eine Quinte höher als C"' bedeutet, dass man die Frequenz
 von "`C"' mit dem Faktor "`Quinte"' multiplizieren muss, um die
@@ -1006,15 +1006,15 @@ Nachdem mit der Deklaration von Tönen das Fundament des
 Tonsystems gelegt wurde, kommen wir nun zu dessen Deklaration:
 Jedes Tonsystem bekommt -- genauso wie Intervalle und 
 Töne -- einen Namen. Auf diesen folgen
-die Parameter Verankerungstaste, Töne der FT und zuletzt das
-Periodenintervall (Die Breite der FT ist implizit durch die Anzahl
-der Tasten in der FT gegeben.). Ein Beispiel:
+die Parameter Verankerungstaste, Töne der Fundamentaltonleiter und zuletzt das
+Periodenintervall (Die Breite der Fundamentaltonleiter ist implizit durch die Anzahl
+der Tasten in der Fundamentaltonleiter gegeben.). Ein Beispiel:
 \begin{verbatim}
 TONSYSTEM
     C_Dur = 60 [ c,des,d,es,e,f,fis,g,as,a,b,h ] Oktave
 \end{verbatim}
 Dieses Tonsystem ist auf der Taste 60 (=eingestrichenes c')
-verankert, die FT enthält die Töne c,des,d, \dots, h und das
+verankert, die Fundamentaltonleiter enthält die Töne c, des, d, \dots, h und das
 Periodenintervall ist die Oktave. Alle Töne und das Periodenintervall
 müssen irgendwo im Programm definiert werden; die Benutzung eines
 nicht definierten Bezeichners führt zu einer Fehlermeldung des
@@ -1143,7 +1143,7 @@ Platz vor der geschlossenen eckigen Klammer. Hätten wir einfach
 \begin{verbatim}
     Penta2 = 60 [,a,,next1,,,next2,,next3,,next4] Oktave
 \end{verbatim}
-geschrieben, so würde sich die FT bereits auf der Taste h' um eine
+geschrieben, so würde sich die Fundamentaltonleiter bereits auf der Taste h' um eine
 Oktave versetzt wiederholen und wir hätten noch mehr Chaos als bei
 der Logik "`\sourcecode{PENTA1}"'. Wenn Sie also eine spezielle Tastenbelegung
 für Ihr Tonsystem wünschen, so ist es wichtig, genau zu
@@ -1200,7 +1200,7 @@ unterscheidet die zwei grundlegenden Umstimmtypen bei \mutabor{}:
 \item \index{Umstimmung!absolut}Absolute Umstimmungen.  Hier wird der
   alte Zustand des Tonsystems nicht berücksichtigt, und ohne jeden
   Zusammenhang einfach alle (bzw. ein) Parameter neu gesetzt. Eine
-  absolute Umstimmung wäre es z.\,B., wenn der dritte Ton der FT auf
+  absolute Umstimmung wäre es z.\,B., wenn der dritte Ton der Fundamentaltonleiter auf
   $375{,}8\,\mathrm{Hz}$ gestimmt, oder das Periodenintervall auf
   "`Septime"' gesetzt wird. Dabei spielt es keine Rolle, welchen Wert
   der Parameter vor der Umstimmung hatte. (Daher der Begriff
@@ -1210,7 +1210,7 @@ unterscheidet die zwei grundlegenden Umstimmtypen bei \mutabor{}:
   Zuweisung ist also nicht absolut oder kontextfrei. Der neue Zustand
   lässt sich als "`relativ"' zum alten beschreiben. Eine relative
   Umstimmung wäre es z.\,B., wenn die Verankerungstaste um eine Taste
-  angehoben wird, oder der fünfte Ton der FT um ein syntonisches Komma
+  angehoben wird, oder der fünfte Ton der Fundamentaltonleiter um ein syntonisches Komma
   erniedrigt wird.  Relative Umstimmungen er\-mög\-lichen es Ihnen,
   "`auf endlich vielen Tasten unendlich viele Töne spielen zu können"'
 \end{itemize}
@@ -1218,12 +1218,12 @@ unterscheidet die zwei grundlegenden Umstimmtypen bei \mutabor{}:
 \section{Absolute Umstimmungen}\label{sec:absol-umst}
 Die Syntax der Umstimmungen ist an die Deklaration des Tonsystems
 angelehnt. Dort steht \emph{vor} den eckigen Klammern die
-Verankerungstaste, \emph{in } den Klammern die Töne der FT und {\em
+Verankerungstaste, \emph{in } den Klammern die Töne der Fundamentaltonleiter und {\em
 hinter} den Klammern das Periodenintervall. Wenn Sie in einer
 Umstimmung die Verankerungstaste verändern wollen, so schreiben Sie
 den Umstimmausdruck \emph{vor} eckige Klammern; Veränderungen der Töne
 gehören \emph{zwischen} eckige Klammern, ebenso eine Veränderung der
-Breite der FT; soll das Periodenintervall geändert werden, so steht der
+Breite der Fundamentaltonleiter; soll das Periodenintervall geändert werden, so steht der
 Ausdruck \emph{hinter} eckigen Klammern. (Dies gilt für absolute und
 relative Umstimmungen gleichermaßen.)
 
@@ -1234,9 +1234,9 @@ Abschnitten.
 
 \subsection{Verändern des Periodenintervalls}\label{sec:verand-des-peri}
 \index{Umstimmung!Periodenintervall} Eine Änderung des
-Periodenintervalls hat keine Auswirkungen auf die Töne der FT, es
+Periodenintervalls hat keine Auswirkungen auf die Töne der Fundamentaltonleiter, es
 werden also nur diejenigen gedrückten Tasten umgestimmt, die nicht im
-Bereich der FT liegen.  Probieren Sie folgende Logiken einmal
+Bereich der Fundamentaltonleiter liegen.  Probieren Sie folgende Logiken einmal
 aus\footnote{D.\,h. Eingabe mit dem Editor, Speichern (Text-Datei), vom
   Compiler übersetzen lassen und aufrufen.} und schalten Sie während
 des Spiels zwischen ihnen hin und her\footnote{Indem Sie die Tasten
@@ -1280,8 +1280,8 @@ In unserem Beispiel mit den Logiken Eins, Zwei und Drei, welche
 bei Drücken der entsprechenden Taste die Umstimmungen E, Z bzw. D
 durchführen wird das Periodenintervall verändert. Bei einer solchen
 Veränderung müssen
-alle liegenden Tasten, außer Tasten im FT-Bereich, neu gestimmt
-werden. Da der FT-Bereich hier nur eine Taste (69) umfasst, bleibt
+alle liegenden Tasten, außer Tasten im Fundamentaltonleiter-Bereich, neu gestimmt
+werden. Da der Fundamentaltonleiter-Bereich hier nur eine Taste (69) umfasst, bleibt
 nur diese Taste (=a') von den Umstimmungen unberührt.
 
 
@@ -1304,7 +1304,7 @@ wird, so wird die Verankerungstaste auf 57 gesetzt, alle anderen
 Tonsystemparameter behalten ihren alten Wert. Obwohl scheinbar nur ein
 Parameter verändert wird, handelt es sich hierbei um den komplexesten
 Umstimmungstyp. Eine Veränderung des Ankers impliziert nämlich eine
-Veränderung fast aller Töne der FT, da nicht nur die Verankerungstaste
+Veränderung fast aller Töne der Fundamentaltonleiter, da nicht nur die Verankerungstaste
 neu gesetzt wird, sondern die komplette Intervallstruktur des alten
 Tonsystems auf die neue Verankerungstaste verschoben wird. Hier
 wird\index{Verankerungstaste} also die Struktur des alten Tonsystems
@@ -1314,20 +1314,20 @@ Zentrum) wird.
 Eine Veränderung der Verankerungstaste geht folgendermaßen vonstatten:
 \begin{itemize}
 \item Der Computer merkt sich die Intervallstruktur des aktuellen
-  Tonsystems, also das Intervall zwischen 1. und 2. Ton der FT,
-  zwischen 1. und 3. Ton der FT. usw\dots
+  Tonsystems, also das Intervall zwischen 1. und 2. Ton der Fundamentaltonleiter,
+  zwischen 1. und 3. Ton der Fundamentaltonleiter. usw\dots
 \item Der Parameter 'Verankerungstaste' bekommt den in der Umstimmung
   angegebenen neuen Wert zugewiesen.
 \item Die Frequenz, die im alten Tonsystem ertönen würde, wenn die
   neue Verankerungstaste ge\-drückt würde, wird als Frequenz des 1.
-  Tons der neuen FT eingetragen.
+  Tons der neuen Fundamentaltonleiter eingetragen.
 \item Die Intervallstruktur des alten Tonsystems, die der Rechner sich
-  gemerkt hat, bestimmt nun die Töne der neuen FT, unter Bezugnahme
-  auf den neuen Grundton (=1. Ton) der FT. Somit erhält z.\,B. der 6.
-  Ton der neuen FT die Frequenz, welche sich berechnet, wenn man die
+  gemerkt hat, bestimmt nun die Töne der neuen Fundamentaltonleiter, unter Bezugnahme
+  auf den neuen Grundton (=1. Ton) der Fundamentaltonleiter. Somit erhält z.\,B. der 6.
+  Ton der neuen Fundamentaltonleiter die Frequenz, welche sich berechnet, wenn man die
   Frequenz der neuen Verankerungstaste mit dem Intervallfaktor
   multipliziert, den sich der Rechner als Intervall zwischen dem 1.
-  und dem 6. Ton der alten FT gemerkt hat.
+  und dem 6. Ton der alten Fundamentaltonleiter gemerkt hat.
 \end{itemize}
 
 Am besten lässt sich dieser Vorgang an einem Beispiel erklären. Das
@@ -1397,12 +1397,12 @@ Doch hier noch eine Randbemerkung: Bei Tonsystemen der Breite 1
 hat eine Veränderung der Verankerungstaste keine hörbare
 Auswirkung. (Man überlege sich, warum!)
 
-\subsection{Verändern der Breite der FT}\label{sec:verandern-der-breite}
+\subsection{Verändern der Breite der Fundamentaltonleiter}\label{sec:verandern-der-breite}
 \index{Umstimmung!Breite}
 
 Eine recht seltene Umstimmungsart ist die Veränderung der Breite 
 der Fundamentaltonleiter. Sie können mit diesem Umstimmungstyp 
-die Breite der FT auf einen beliebigen neuen Wert setzen. 
+die Breite der Fundamentaltonleiter auf einen beliebigen neuen Wert setzen. 
 Es gibt deshalb drei verschiedene Fälle:
 
 \begin{itemize}
@@ -1412,20 +1412,20 @@ Es gibt deshalb drei verschiedene Fälle:
 
 \item Wenn die neue Breite kleiner ist als die aktuelle Breite, so
   wird das Periodenintervall neu gesetzt, und zwar auf den Wert des
-  Intervalls zwischen dem ersten Ton der FT und der ersten Taste nach
-  der neuen Breite. Dann werden alle Töne der FT vergessen, die
+  Intervalls zwischen dem ersten Ton der Fundamentaltonleiter und der ersten Taste nach
+  der neuen Breite. Dann werden alle Töne der Fundamentaltonleiter vergessen, die
   jenseits der neuen Breite lagen.
 
 \item Wenn die neue Breite größer ist als die aktuelle Breite, so wird
   ebenfalls das Periodenintervall auf das Intervall zwischen dem
-  ersten Ton der FT und dem ersten Ton nach der neuen Breite gesetzt.
-  Dann werden die Töne, um die die FT erweitert wurde, gemäß dem alten
+  ersten Ton der Fundamentaltonleiter und dem ersten Ton nach der neuen Breite gesetzt.
+  Dann werden die Töne, um die die Fundamentaltonleiter erweitert wurde, gemäß dem alten
   Tonsystem berechnet und eingetragen.
 
 \end{itemize} 
 
-Man kann also sagen, dass eine Veränderung der Breite der FT 
-im allgemeinen auch eine Veränderung der Töne der FT und 
+Man kann also sagen, dass eine Veränderung der Breite der Fundamentaltonleiter 
+im allgemeinen auch eine Veränderung der Töne der Fundamentaltonleiter und 
 des Periodenintervalls nach sich zieht.
 
 
@@ -1437,13 +1437,13 @@ UMSTIMMUNG
 (Die doppelten Kleiner-als- bzw.\ Größer-als-Zeichen (\sourcecode{<<} bzw.
 \sourcecode{>>} sollen an eine Breitenangabe in Zeichnungen, wie z.\,B.
 \mbox{$\longleftarrow 4 cm \longrightarrow$} erinnern.) In diesem
-Beispiel wurde die Breite der FT auf den neuen Wert 7 gesetzt.
+Beispiel wurde die Breite der Fundamentaltonleiter auf den neuen Wert 7 gesetzt.
 
 Eine praktische Bedeutung der Breitenänderung ist das {\em
   Expandieren} \index{Expandieren} von Tonsystemen zur Benutzung von
-Harmonie-Auslösern, die eine größere Breite der FT voraussetzen. Da
+Harmonie-Auslösern, die eine größere Breite der Fundamentaltonleiter voraussetzen. Da
 der Begriff des Harmonieauslösers noch nicht erklärt wurde, sei hier
-nur soviel bemerkt, dass gewisse Konstruktionen eine FT der Breite 12
+nur soviel bemerkt, dass gewisse Konstruktionen eine Fundamentaltonleiter der Breite 12
 verlangen. Wenn Sie ein gleichstufig temperiertes Halbtonsystem
 programmieren, das die Breite 12 hat, so würden Sie bisher
 \begin{verbatim}
@@ -1465,10 +1465,10 @@ TONSYSTEM
 schreiben müssen.
 
 Eine starke Vereinfachung dieser Stimmung stellt nun eine auf 
-12 expandierte FT der (alten) Breite 1 dar. Programmieren 
+12 expandierte Fundamentaltonleiter der (alten) Breite 1 dar. Programmieren 
 Sie einfach ein Halbtonsystem mit der Breite 1, wie Sie es 
 im Beispiel auf Seite \pageref{GLEICHSCH} kennen gelernt haben. Wenn Sie 
-nun die Breite der FT auf 12 setzen, das Tonsystem also expandieren, 
+nun die Breite der Fundamentaltonleiter auf 12 setzen, das Tonsystem also expandieren, 
 so stellt sich keinerlei hörbarer Effekt ein, da das Periodenintervall 
 dieser Änderung angeglichen wird\footnote{Eine solche Expansion funktioniert 
 auf nichtveränderunde Weise nur bei einer Vergrößerung um 
@@ -1497,11 +1497,11 @@ eines gleichstufigen Halbtonsystems mit der Breite
 kennen, mit dem man diese beiden Schritte in einer 
 einzigen Umstimmung zusammenfassen kann (Umstimmungsbund).}. 
 
-\subsection{Verändern der Töne der FT}\label{sec:verandern-der-tone}
+\subsection{Verändern der Töne der Fundamentaltonleiter}\label{sec:verandern-der-tone}
 \index{Umstimmung!Töne}
 
 Dies ist die wohl vielfältigste Umstimmungsart. Während die bisher
-er\-klär\-ten Umstimmungstypen die Töne der FT zumindest in ihrem
+er\-klär\-ten Umstimmungstypen die Töne der Fundamentaltonleiter zumindest in ihrem
 intervallischen Zusammenhang nicht manipuliert haben, so können
 Sie mit diesem Umstimmungstyp die Struktur des aktuellen Tonsystems
 gezielt verändern.
@@ -1614,20 +1614,20 @@ Parameter    &  gültige Rechenzeichen \\ \hline
 Anker        &  +   -                 \\
 Breite       &  +   -   *   /         \\
 Periode      &  +   -                 \\
-Töne der FT  &  wie bei TON-Deklaration   \\ \hline
+Töne der Fundamentaltonleiter  &  wie bei TON-Deklaration   \\ \hline
 \end{tabular}
 \end{center}
 
 \vspace{3 mm}
 Bereichsüber- bzw. Unterschreitungen werden im Laufzeitmodul
-abgefangen und ignoriert. Wenn z.\,B. die Breite der FT~$1$ beträgt
+abgefangen und ignoriert. Wenn z.\,B. die Breite der Fundamentaltonleiter~$1$ beträgt
 und die Umstimmung
 \begin{verbatim}
 UMSTIMMUNG
     Halbieren = [ << @/2 >> ]
 \end{verbatim}
 aufgerufen wird, so wird die angegebene Umstimmung ignoriert, da die
-Breite der FT mindestens 1 betragen muss. Der Anschauung halber folgt
+Breite der Fundamentaltonleiter mindestens 1 betragen muss. Der Anschauung halber folgt
 nun noch einmal eine Liste gültiger relativer Umstimmungen:
 
 \begin{verbatim}
@@ -1866,8 +1866,8 @@ zum d'' \dots{} in Blöcke unterschiedlicher Tastenstruktur unterteilt ist!
 
 Die Projektionstonleiter enthält nun keine Frequenz- oder Tonwerte,
 sondern die Information, welche Tasten der Klaviatur momentan
-gedrückt sind, und zwar \emph{in die FT projiziert}. Ein Beispiel: Ihre
-FT ist auf Taste c' (=60) verankert und habe die Breite 12, also
+gedrückt sind, und zwar \emph{in die Fundamentaltonleiter projiziert}. Ein Beispiel: Ihre
+Fundamentaltonleiter ist auf Taste c' (=60) verankert und habe die Breite 12, also
 eine ganz normale C-Dur-Tonleiter. Bezeichnen wir den Zustand
 "`Taste gedrückt"' mit '*' und den Zustand "`Taste nicht gedrückt"'
 mit '+'. Solange wir keine Taste auf der Klaviatur anschlagen, hat die\index{Tasten!Muster}
@@ -1881,7 +1881,7 @@ enthält die PT das Muster "`*+++*++*++++"'.
 Warum heißt dieses Gebilde Projektionstonleiter? Weil es ohne
 Bedeutung ist, in welcher Tonleiter (oder Lage) eine Taste
 angeschlagen wird,\index{Tonleiter}\index{Lage}\index{Tonigkeit} alles
-wird in die FT hineinprojiziert. Musikalisch gesprochen ist die
+wird in die Fundamentaltonleiter hineinprojiziert. Musikalisch gesprochen ist die
 Projektionstonleiter also nichts anderes als die Menge der momentan
 gedrückten \emph{Tonigkeiten}. So ist der Zustand der PT gleich
 "`++*+++*++*++"', wenn man die Tasten d'(=62),fis'(=66) und a'(=69)
@@ -1898,18 +1898,18 @@ mögliche Zustände einer PT.
 Ein zweites, etwas seltsames Beispiel: Betrachten wir ein Tonsystem,
 wie wir es für die Einstimmung von gleichstufig temperierten
 Tonsystemen benutzt haben. Setzen wir den Anker auf die Taste a' (=69)
-und die Breite der FT auf 1 (Die Töne und des Periodenintervalls sind
+und die Breite der Fundamentaltonleiter auf 1 (Die Töne und des Periodenintervalls sind
 für diese Betrachtung nicht von Bedeutung).  Überlegen wir uns einmal,
 welche verschiedenen Zustände die PT haben kann. Ein seltsames
 Ergebnis: nur zwei. Wenn keine Taste auf der gesamten Klaviatur
 gedrückt ist, so bekommt die PT den Inhalt "`+"'. Und sobald irgend
 eine oder mehrere Tasten gedrückt werden bekommt die PT den Inhalt
-"`*"'. Warum? Nun, weil alles in die FT projiziert wird, und die FT
+"`*"'. Warum? Nun, weil alles in die Fundamentaltonleiter projiziert wird, und die Fundamentaltonleiter
 hat nur die Breite eins.
 
 Fassen wir zusammen: \emph{die PT enthält die gleiche Anzahl
-"`Tasten"', wie die FT breit ist. In ihr wird der in den Bereich
-der FT projizierte Zustand der Klaviatur festgehalten.}
+"`Tasten"', wie die Fundamentaltonleiter breit ist. In ihr wird der in den Bereich
+der Fundamentaltonleiter projizierte Zustand der Klaviatur festgehalten.}
 
 \section{Harmoniedeklarationen}\index{Harmonie!Deklaration}\label{sec:harm}
 Nach dieser etwas komplizierten Einführung des Begriffes der
@@ -2070,7 +2070,7 @@ C-Dur programmiert, wie Sie es aus dem Kapitel "`Tonsysteme"'
 bereits kennen. Zusätzlich wird das Intervall Naturseptime als \sourcecode{7:4}
 und der Ton \sourcecode{b2} als \sourcecode{c+Naturseptime} deklariert. Nun folgt eine
 Umstimmung: die Umstimmung \sourcecode{Natur} setzt die Taste b auf den Ton
-\sourcecode{b2}, also eine Naturseptime über c. Alle anderen Töne der FT
+\sourcecode{b2}, also eine Naturseptime über c. Alle anderen Töne der Fundamentaltonleiter
 bleiben bei der Umstimmung unverändert (Klammeraffensymbol).
 Zum Umschalten wurden hier einfach zwei aktionslose Logiken
 deklariert, die die beiden Zustände \sourcecode{Natur} und \sourcecode{C\_Dur\_Rein} als
@@ -2205,9 +2205,9 @@ Informationen können als zusätzliche Bedingungen bei der
 Harmonieerkennung benutzt werden.
 
 Allerdings haben Sie keinen Zugriff auf die absolute Tastennummer,
-sondern auf die Nummer der entsprechenden FT-Taste, also die Tonigkeit. Wie alle
+sondern auf die Nummer der entsprechenden Fundamentaltonleiter-Taste, also die Tonigkeit. Wie alle
 anderen Tasten bei der Harmonieerkennung werden auch die beiden
-"`Randtasten"' als in die FT projiziert angegeben. Sie können also
+"`Randtasten"' als in die Fundamentaltonleiter projiziert angegeben. Sie können also
 nicht abfragen, ob die tiefste gedrückte Taste ein dis'' ($=75$)
 ist, sondern nur, ob der soundsovielte Ton des Projektionstonleiter
 gedrückt ist\footnote{Was auch bedeutend mehr Sinn ergibt}
@@ -2226,7 +2226,7 @@ Periodenintervall auf \sourcecode{MiniOktave} verändert. Hierbei spielen Lage\i
 und Umkehrung des Akkordes keine Rolle\footnote{Die Logik benötigt,
 falls Sie sie ausprobieren wollen, irgendein 12-stufiges Tonsystem
 mit Verankerungstaste 60 als Einstimmung, da sonst die Harmonieerkennung nicht
-funktioniert, siehe Abschnitt "`Verändern der Breite der FT"', und
+funktioniert, siehe Abschnitt "`Verändern der Breite der Fundamentaltonleiter"', und
 außerdem eine Definition des Intervalls "`MiniOktave"'.}. Hauptsache
 ist, dass die Tasten d, fis und a irgendwo gedrückt sind.
 
@@ -2891,7 +2891,7 @@ welcher dann im Platzhalter 'wert' vermerkt wird;
 und laut Vorschrift wird die Verankerungstaste auf eben diesen Wert gesetzt. 
 Wenn dies geschehen ist, so ist nun gemäß unseres Umstimmungsbundes die 
 Umstimmung \sourcecode{Breite\_fest\_setzen} an der Reihe. Diese setzt 
-die Breite der FT absolut auf den Wert 9.
+die Breite der Fundamentaltonleiter absolut auf den Wert 9.
 
 Dieses Prinzip lässt sich nun um noch eine Stufe erweitern. 
 Ein Umstimmungsbund kann auch \emph{mehrere} Platzhalter verwenden. 
@@ -3673,7 +3673,7 @@ TON
 TONSYSTEM
       Drittel = 69 [ a ] Drittelton
          "Das Tonsystem Drittel beginnt beim
-          eingestrichenen a' (=69), die FT besteht aus
+          eingestrichenen a' (=69), die Fundamentaltonleiter besteht aus
           einem Ton (dem Ton a=440Hz) und diese Struktur
           wird um einen Drittelton verschoben wiederholt."
 
@@ -4707,7 +4707,7 @@ xantippe.mut & \pageref{XANTIPPE} \\
 \item[{Fundamentaltonleiter}] Dieser im Handbuch vielleicht am
   häufigsten erwähnte Begriff bezeichnet einen bestimmten Blockbereich
   der Klaviatur, beginnend bei der Verankerungstaste, welcher
-  genauso viele Tasten umfasst, wie die FT breit ist. In der
+  genauso viele Tasten umfasst, wie die Fundamentaltonleiter breit ist. In der
   Fundamentaltonleiter sind alle Informationen enthalten, die nötig
   sind, um den gesamten Klaviaturtasten Frequenzen zuweisen zu können.
 
@@ -4759,7 +4759,7 @@ xantippe.mut & \pageref{XANTIPPE} \\
 
 \item[{Töne der Fundamentaltonleiter}] Die Töne der
   Fundamentaltonleiter enthalten die Information, welche Frequenzen
-  den Tasten der FT zugeordnet sind, bzw. welche Tasten gesperrt sind.
+  den Tasten der Fundamentaltonleiter zugeordnet sind, bzw. welche Tasten gesperrt sind.
 
 \item[{Verankerungstaste}] Die unterste Taste der Fundamentaltonleiter
   wird Verankerungstaste genannt. Sie muss nicht notwendigerweise einen
@@ -4949,12 +4949,12 @@ vordefinierten Bedeutung verwendet werden:
 %\vspace{1cm}
 \begin{center}
 \begin{tabular}{|llll|}
-	      \hline
-   ANSONSTEN & FORM   & HARMONIE & INTERVALL \\
-   LOGIK  & MIDIIN   & MIDIKANAL & MIDIOUT    \\
-   TASTE     & TON    & TONSYSTEM &   UMSTIMMUNG \\
-   WURZEL    &        &           &              \\
- \hline
+  \hline
+  ANSONSTEN & FORM   & HARMONIE  & INTERVALL  \\
+  LOGIK     & MIDIIN & MIDIKANAL & MIDIOUT    \\
+  TASTE     & TON    & TONSYSTEM & UMSTIMMUNG \\
+  WURZEL    &        &           &            \\
+  \hline
 \end{tabular}
 \end{center}
 %\vspace{1cm}

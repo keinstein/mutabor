@@ -15,9 +15,9 @@
 
 #include <ctype.h>
 #include <limits.h>
-#include "global.h"
-#include "grafkern.h"
-#include "hilfs.h"
+#include "Global.h"
+#include "GrafKern.h"
+#include "Hilfs.h"
 
 #define MAX_IDENTIFIER_LEN 80
 
@@ -668,10 +668,10 @@ start_lex:
     while ( anzahl_eingelesene_zeichen ++,
 
             isspace(c = toupper( intern_fgetc(quelldatei) ))) {
-	DEBUGLOG2(_T("char %x"),c);
+	DEBUGLOG2(other,_T("char %x"),c);
 
       if (c == '\n') {
-	DEBUGLOG2(_T("New line"));
+	DEBUGLOG2(other,_T("New line"));
 	if (!(yylloc.first_line ++ % LINE_DRAW_QUANTUM)) 
 	  show_line_number(yylloc.first_line);
       }
@@ -822,11 +822,11 @@ static struct {
             }
 
             symbuffer[i++] = c;
-	    DEBUGLOG2(_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
 	    c = intern_fgetc(quelldatei);
-	    DEBUGLOG2(_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
             c = toupper(c);
-	    DEBUGLOG2(_T("character #%d = %x"),i,c);
+	    DEBUGLOG2(other,_T("character #%d = %x"),i,c);
             anzahl_eingelesene_zeichen ++;
 
         } while ((c != EOF) && 

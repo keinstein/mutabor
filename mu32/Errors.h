@@ -2,13 +2,22 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.h,v 1.1 2008/10/14 08:13:45 keinstein Exp $
- * \author R. Krauﬂe <krausze@users.berlios.de>
+ * $Id: Errors.h,v 1.2 2010/11/21 13:15:44 keinstein Exp $
+ * \author R. Krau√üe <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/14 08:13:45 $
- * \version $Revision: 1.1 $
+ * \date $Date: 2010/11/21 13:15:44 $
+ * \version $Revision: 1.2 $
  *
  * $Log: Errors.h,v $
+ * Revision 1.2  2010/11/21 13:15:44  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.2  2010-01-14 09:34:24  keinstein
+ * Checkin searching for a bug
+ *
+ * Revision 1.1.2.1  2009/08/04 11:30:49  keinstein
+ * removed mut.h
+ *
  * Revision 1.1  2008/10/14 08:13:45  keinstein
  * provide symbolic error constants
  *
@@ -24,25 +33,28 @@
 
 
 extern const mutChar * Error_text[];
+
 extern const mutChar * Warning_text[];
+
 #define MUT_ERR_MALLOC_FAILED MUT_ERR_UNFINISHED_TRANSLATION
 
-enum {
-	MUT_ERR_UNKNOWN=0,
-	MUT_ERR_SYNTAX_ERROR,
-	MUT_ERR_INVALID_CHAR,
-	MUT_ERR_FILE_OPEN_FAILED,
-	MUT_ERR_UNFINISHED_TRANSLATION, /* Memory exhausted or insufficient source file */	
-	};
+enum
+{
+        MUT_ERR_UNKNOWN=0,
+        MUT_ERR_SYNTAX_ERROR,
+        MUT_ERR_INVALID_CHAR,
+        MUT_ERR_FILE_OPEN_FAILED,
+        MUT_ERR_UNFINISHED_TRANSLATION, /* Memory exhausted or insufficient source file */
+};
 
 /*
 const mutChar * Error_text[] =
   {
 
-    /* 0 * / N_("Unknown error in %s , line %d !"), /* allgemeinster Fehler * /
+    / * 0 * / N_("Unknown error in %s , line %d !"), / * allgemeinster Fehler * /
 
-    /* Datei- und Systemfehler * /
-    /* 1 * / N_("Syntax error, not specified. (line %d)"),
+    / * Datei- und Systemfehler * /
+    / * 1 * / N_("Syntax error, not specified. (line %d)"),
     N_("Non-valid character: asc=%d (line %d)"),
     N_("Can't open file: %s"),
     N_("Not enough memory or too few data for mutabor in source file"),
@@ -52,8 +64,8 @@ const mutChar * Error_text[] =
     N_(" "),
     N_(" "),
 
-    /* Doppeldeklarationen * /
-    /* 10 * / N_("The interval name %s was used twice"),
+    / * Doppeldeklarationen * /
+    / * 10 * / N_("The interval name %s was used twice"),
     N_("The tone name %s was used twice"),
     N_("The tonesystem name %s was used twice"),
     N_("The retuning name %s was used twice"),
@@ -69,8 +81,8 @@ const mutChar * Error_text[] =
     N_(" "),
     N_(" "),
 
-    /* Undefinierte Symbole * /
-    /* 25 * / N_("Undefined symbol: %s"),
+    / * Undefinierte Symbole * /
+    / * 25 * / N_("Undefined symbol: %s"),
     N_("Undefined interval: %s"),
     N_("Undefined tone: %s"),
     N_("Undefined tonesystem: %s"),
@@ -80,7 +92,7 @@ const mutChar * Error_text[] =
     N_("Undefined interval: %s (in %s)"),
     N_("Undefined tone: %s (in tone system %s)"),
     N_("Undefined tone: %s (in retuning %s)"),
-    /* 35 * / N_("(to be reused)"),
+    / * 35 * / N_("(to be reused)"),
     N_("Undefined retuning: %s (in retuning %s)"),
     N_("Undefined initial tuning: %s (in logic %s)"),
     N_("Undefined action: %s (in logic %s)"),
@@ -91,13 +103,13 @@ const mutChar * Error_text[] =
     N_(" "),
     N_(" "),
 
-    /* Range violations * /
-    /* 45 * / 
+    / * Range violations * /
+    / * 45 * /
     N_("Bad MIDI channel (valid: 1...16)"),
     N_("Bad interval value in %s"),
     N_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
     N_("Not-complex tone in retuning %s ( %s )"),
-    N_("Bad value in %s"), /* (allgemein) * /
+    N_("Bad value in %s"), / * (allgemein) * /
     N_("Bad MIDI-Code in logic %s (expecting %s )"),
     N_("Logic %s must not be called by ELSE"),
     N_("A Key needs to be a single character ( %s )"),
@@ -109,22 +121,22 @@ const mutChar * Error_text[] =
     N_(" "),
     N_(" "),
 
-    /* Parameterfehler * /
-    /* 60 * / N_("In retuning %s and %s : Bad parameters"),
+    / * Parameterfehler * /
+    / * 60 * / N_("In retuning %s and %s : Bad parameters"),
     N_("In logic %s : Bad number of parameters ( %s )"),
     N_("In logik %s : initial tuning %s mustn't have parameters"),
     N_("In collection %s : call to %s mustn't have parameters"),
     N_("In case %s : call to %s mustn't have parameters"),
-    
-    /* Dependencies * /
-    /* 65 * / N_("Tones %s and %s are dependent"),
+
+    / * Dependencies * /
+    / * 65 * / N_("Tones %s and %s are dependent"),
     N_("Retunings/logics %s and %s are dependent"),
     N_("Intervals %s and %s are dependent"),
     N_("MIDI-channels are dependent"),
     N_(" "),
 
-    /* Syntaxfehler (vom BISON-Parser aufgerufen) * /
-    /* 70 * / N_("Wrong character ! Expecting %s (line %d)"),
+    / * Syntaxfehler (vom BISON-Parser aufgerufen) * /
+    / * 70 * / N_("Wrong character ! Expecting %s (line %d)"),
     N_("Bad interval declaration of intervall %s"),
     N_("Bad tone declaration of tone %s"),
     N_("Bad tonesystem declaration. (line %d)"),
@@ -139,12 +151,12 @@ const mutChar * Error_text[] =
 
 const mutChar * Warning_text[] =
   {
-    /*  0 * / N_("Undefined compiler warning"),
+    / *  0 * / N_("Undefined compiler warning"),
     N_("MIDI event in logic %s does not start with channel 0 status byte. Value corrected."),
     N_("Non existent harmony event in logic %s"),
     N_("Non well defined event %s in logic %s"),
     N_("Event ELSE is last in %s"),
-    /*  5 * / N_("MIDI channels wasted in channel assotiation"),
+    / *  5 * / N_("MIDI channels wasted in channel assotiation"),
     N_("No file given, trying test.mut"),
     N_("Invalid configuration file"),
     N_("Intersection of MIDI channels %d und %d"),

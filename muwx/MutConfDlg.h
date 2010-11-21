@@ -2,12 +2,18 @@
  ***********************************************************************
  * Mutabor Configuration Dialog.
  *
- * $Id: MutConfDlg.h,v 1.3 2008/10/09 15:14:02 keinstein Exp $
+ * $Id: MutConfDlg.h,v 1.4 2010/11/21 13:15:47 keinstein Exp $
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2008/10/09 15:14:02 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.4 $
  *
  * $Log: MutConfDlg.h,v $
+ * Revision 1.4  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.3.2.1  2010-02-15 12:08:21  keinstein
+ * intermediate update for backup progress
+ *
  * Revision 1.3  2008/10/09 15:14:02  keinstein
  * make compile on mingw
  *
@@ -28,7 +34,7 @@
 #include "wx/html/htmlwin.h"
 #include "wx/html/helpctrl.h"
 #include "wx/valgen.h"
-#include "wxresource.h"
+#include "resourceload.h"
 #include "MutFrame.h"
 
 class MutConfigDialog : public ConfigDlg {

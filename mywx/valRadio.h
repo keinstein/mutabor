@@ -4,7 +4,7 @@
 // Author:      Rüdiger Krauße
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valRadio.h,v 1.4 2009/08/10 11:15:47 keinstein Exp $
+// RCS-ID:      $Id: valRadio.h,v 1.5 2010/11/21 13:15:50 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////

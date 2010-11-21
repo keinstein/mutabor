@@ -3,7 +3,7 @@
 // Purpose:     implementation of wxConvAuto
 // Author:      Vadim Zeitlin
 // Created:     2006-04-04
-// RCS-ID:      $Id: muconvauto.cpp,v 1.2 2009/08/10 11:15:47 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.cpp,v 1.3 2010/11/21 13:15:50 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin <vadim@wxwindows.org>
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,7 @@
 
 muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 {
+	DEBUGLOGTYPE(other,muConvAuto,_T(""));
 	if ( srcLen < 2 ) {
 		// minimal BOM is 2 bytes so bail out immediately and simplify the code
 		// below which wouldn't need to check for length for UTF-16 cases
@@ -48,7 +49,6 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 	//
 	// see http://www.unicode.org/faq/utf_bom.html#BOM
 	switch ( *src++ ) {
-
 	case '\0':
 		// could only be big endian UTF-32 (00 00 FE FF)
 		if ( srcLen >= 4 &&
@@ -57,7 +57,6 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 		                src[2] == '\xff' ) {
 			return BOM_UTF32BE;
 		}
-
 		break;
 
 	case '\xfe':
@@ -65,7 +64,6 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 		if ( *src++ == '\xff' ) {
 			return BOM_UTF16BE;
 		}
-
 		break;
 
 	case '\xff':
@@ -76,7 +74,6 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 			       ? BOM_UTF32LE
 			       : BOM_UTF16LE;
 		}
-
 		break;
 
 	case '\xef':
@@ -84,7 +81,6 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 		if ( srcLen >= 3 && src[0] == '\xbb' && src[1] == '\xbf' ) {
 			return BOM_UTF8;
 		}
-
 		break;
 	}
 
@@ -92,87 +88,67 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 }
 
 void muConvAuto::InitFromBOM(BOMType bomType)
-
 {
+	DEBUGLOG(other,_T(""));
 	m_consumedBOM = false;
 
 	switch ( bomType ) {
-
 	case BOM_UTF32BE:
 		m_conv = new wxMBConvUTF32BE;
-
 		m_ownsConv = true;
-
 		break;
 
 	case BOM_UTF32LE:
 		m_conv = new wxMBConvUTF32LE;
-
 		m_ownsConv = true;
-
 		break;
 
 	case BOM_UTF16BE:
 		m_conv = new wxMBConvUTF16BE;
-
 		m_ownsConv = true;
-
 		break;
 
 	case BOM_UTF16LE:
 		m_conv = new wxMBConvUTF16LE;
-
 		m_ownsConv = true;
-
 		break;
 
 	case BOM_UTF8:
 		m_conv = &wxConvUTF8;
-
 		m_ownsConv = false;
-
 		break;
 
 	default:
 		wxFAIL_MSG( _T("unexpected BOM type") );
-
 		// fall through: still need to create something
 
 	case BOM_None:
 		InitWithDefault();
-
 		m_consumedBOM = true; // as there is nothing to consume
 	}
 }
 
 void muConvAuto::SkipBOM(const char **src, size_t *len) const
 {
+	DEBUGLOG(other,_T(""));
 	int ofs;
-
 	switch ( m_bomType ) {
-
 	case BOM_UTF32BE:
-
 	case BOM_UTF32LE:
 		ofs = 4;
-
 		break;
 
 	case BOM_UTF16BE:
-
 	case BOM_UTF16LE:
 		ofs = 2;
-
 		break;
 
 	case BOM_UTF8:
 		ofs = 3;
-
 		break;
 
 	default:
 		wxFAIL_MSG( _T("unexpected BOM type") );
-
 		// fall through: still need to create something
 
 	case BOM_None:
@@ -180,7 +156,6 @@ void muConvAuto::SkipBOM(const char **src, size_t *len) const
 	}
 
 	*src += ofs;
-
 	if ( *len != (size_t)-1 )
 		*len -= ofs;
 }
@@ -188,27 +163,24 @@ void muConvAuto::SkipBOM(const char **src, size_t *len) const
 void muConvAuto::InitFromInput(const char **src, size_t *len)
 
 {
+	DEBUGLOG(other,_T(""));
 	m_bomType = DetectBOM(*src, *len);
 	InitFromBOM(m_bomType);
 	SkipBOM(src, len);
 }
 
-size_t
-
-muConvAuto::ToWChar(wchar_t *dst, size_t dstLen,
-
+size_t muConvAuto::ToWChar(wchar_t *dst, size_t dstLen,
                     const char *src, size_t srcLen) const
 {
+	DEBUGLOG(other,_T(""));
 	// we check BOM and create the appropriate conversion the first time we're
 	// called but we also need to ensure that the BOM is skipped not only
 	// during this initial call but also during the first call with non-NULL
 	// dst as typically we're first called with NULL dst to calculate the
 	// needed buffer size
 	muConvAuto *self = wx_const_cast(muConvAuto *, this);
-
 	if ( !m_conv ) {
 		self->InitFromInput(&src, &srcLen);
-
 		if ( dst )
 			self->m_consumedBOM = true;
 	}
@@ -219,27 +191,21 @@ muConvAuto::ToWChar(wchar_t *dst, size_t dstLen,
 	}
 
 	size_t result = m_conv->ToWChar(dst, dstLen, src, srcLen);
-
 	if (result != wxCONV_FAILED) return result;
 
 	self->m_conv = m_fallback; // save for further use.
-
 	self->m_ownsConv = false; // if we own fallback, it will be destroyed as fallback.
-
 	return m_conv->ToWChar(dst, dstLen, src, srcLen);
 }
 
-size_t
-
-muConvAuto::FromWChar(char *dst, size_t dstLen,
-
+size_t muConvAuto::FromWChar(char *dst, size_t dstLen,
                       const wchar_t *src, size_t srcLen) const
 {
+	DEBUGLOG(other,_T(""));
 	if ( !m_conv ) {
 		// default to UTF-8 for the multibyte output
 		wx_const_cast(muConvAuto *, this)->InitWithDefault();
 	}
-
 	return m_conv->FromWChar(dst, dstLen, src, srcLen);
 }
 

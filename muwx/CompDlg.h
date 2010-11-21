@@ -3,12 +3,21 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.6 2009/08/10 11:15:46 keinstein Exp $
+ * $Id: CompDlg.h,v 1.7 2010/11/21 13:15:47 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.7 $
  *
  * $Log: CompDlg.h,v $
+ * Revision 1.7  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.5.2.2  2010-01-14 09:34:24  keinstein
+ * Checkin searching for a bug
+ *
+ * Revision 1.5.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.6  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -50,7 +59,7 @@
 #include "wx/filepicker.h"
 #include "wx/xrc/xmlres.h"
 #include "wx/html/htmlwin.h"
-#include "wxresource.h"
+#include "resourceload.h"
 ////@begin includes
 ////@end includes
 

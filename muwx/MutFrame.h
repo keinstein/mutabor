@@ -2,16 +2,43 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.15 2009/08/10 11:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.16 2010/11/21 13:15:47 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.15 $
+ * $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
+ * Revision 1.16  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.14.2.5  2010-11-18 21:46:14  keinstein
+ * MutFrame: get rid of OnIdle (this may break something, but saves much more CPU cycles
+ * Some further steps to get rid of EDevice*
+ *
+ * Revision 1.14.2.4  2010-11-14 22:29:53  keinstein
+ * Remvoed EDevice.cpp and EDevice.h from the sources list
+ * They still reside in the source tree, since they have been used for Midi/GMN
+ * file playing. That funcitonality has been disabled so far.
+ * After reimplementation the files can be removed.
+ *
+ * Revision 1.14.2.3  2010-09-30 16:26:26  keinstein
+ * remove global variables routewindow and frame
+ * move route loading and route saving into MutRouteWnd
+ * implement MutRouteWnd::InitShapes.
+ * Destroy Route children before loading new route configuration (still some crashes)
+ *
+ * Revision 1.14.2.2  2010/03/30 08:38:26  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.14.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.15  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -176,12 +203,6 @@ public:
 
 	void CmRoutes(wxCommandEvent& event);
 
-	static void CmRouteLoad(wxCommandEvent& event);
-
-	static void CmRouteSave(wxCommandEvent& event);
-
-	static void CmRouteSaveAs(wxCommandEvent& event);
-
 	void CmToggleKey(wxCommandEvent& WXUNUSED(event));
 
 	void CmToggleTS(wxCommandEvent& WXUNUSED(event));
@@ -219,10 +240,10 @@ public:
 
 	void CmSetTitle(wxCommandEvent& event);
 
-	// Idle
+	/// Update GUI when the mutabor kernel or file players have acted
 	void UpdateUI(wxCommandEvent& WXUNUSED(event));
 
-	void OnIdle(wxIdleEvent& WXUNUSED(event));
+	//	void OnIdle(wxIdleEvent& WXUNUSED(event));
 
 	//    void OnActivate(wxActivateEvent& event);
 	void OnEraseBackground(wxEraseEvent& event);
@@ -282,11 +303,11 @@ private:
 	void CloseClientWindow(wxWindow * w)
 	{
 		auimanager.ClosePane(auimanager.GetPane(w));
-		DEBUGLOG(_T("Detaching pane."));
+		DEBUGLOG(other, _T("Detaching pane."));
 		auimanager.DetachPane(w);
 		auimanager.Update();
 
-		DEBUGLOG(_T("Closing window."));
+		DEBUGLOG(other, _T("Closing window."));
 		w->Close(); // win should be invalid now.
 	}
 
@@ -322,6 +343,12 @@ extern bool CAW; // Common Action Window
 extern bool LogicOn;
 
 extern int curBox;
+
+/// which mutabor boxes are used at all?
+extern bool BoxUsed[MAX_BOX];
+
+/// synchronizes \c BoxUsed with the routes
+void CheckBoxesUsed();
 
 extern wxString CompiledFile;
 

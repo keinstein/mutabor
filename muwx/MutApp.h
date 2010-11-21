@@ -2,12 +2,29 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.13 2009/08/10 11:15:46 keinstein Exp $
+ * $Id: MutApp.h,v 1.14 2010/11/21 13:15:47 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.14 $
  *
  * $Log: MutApp.h,v $
+ * Revision 1.14  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.12.2.3  2010-09-30 16:26:26  keinstein
+ * remove global variables routewindow and frame
+ * move route loading and route saving into MutRouteWnd
+ * implement MutRouteWnd::InitShapes.
+ * Destroy Route children before loading new route configuration (still some crashes)
+ *
+ * Revision 1.12.2.2  2010/03/30 08:38:27  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.12.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.13  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -143,8 +160,6 @@ private:
 	        RouteMenu, ///< Route editor menu
 	};
 
-	MutFrame * routewindow;
-
 public:
 	/// Initialization
 	/** This function does the common setup.
@@ -155,6 +170,11 @@ public:
 	    \li Main window 
 	*/
 	bool OnInit();
+	
+	/// Initialize command line arguments
+	void OnInitCmdLine(wxCmdLineParser&  parser);
+	/// Process command line arguments
+	bool OnCmdLineParsed(wxCmdLineParser&  parser);
 
 	/// Display an about dialog box
 	void CmAbout (wxCommandEvent& event);
@@ -169,19 +189,19 @@ public:
 	/// Load a Route
 	void CmRouteLoad(wxCommandEvent& event)
 	{
-		MutFrame::CmRouteLoad(event);
+		MutRouteWnd::CmRouteLoad(event);
 	}
 
 	/// Save a Route
 	void CmRouteSave(wxCommandEvent& event)
 	{
-		MutFrame::CmRouteSave(event);
+		MutRouteWnd::CmRouteSave(event);
 	}
 
 	/// Save a Route under a new name
 	void CmRouteSaveAs(wxCommandEvent& event)
 	{
-		MutFrame::CmRouteSaveAs(event);
+		MutRouteWnd::CmRouteSaveAs(event);
 	}
 
 	/// Read help about a certain topic

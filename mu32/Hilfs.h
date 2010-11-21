@@ -1,5 +1,5 @@
 #ifndef MU32_HILFS_H
-#define MU32_HILFS_H 
+#define MU32_HILFS_H
 
 #include <cstdio>
 

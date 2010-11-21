@@ -1,21 +1,26 @@
 #       -*- Makefile-automake -*-
 top_docdir = $(srcdir)/$(rel_docdir)
 macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
+override pkgdatadir +=/$(DOCLOCALE)
+#pkgdatadir := $(localpkgdatadir)
 
-.PHONY: mac copymac install-data-mutabor
+.PHONY: mac copymac install-data-mutabor zipfile
 
-html: $(srcdir)/$(ZIPFILE)
-$(ZIPFILE): Makefile $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
-	$(top_docdir)/preamble.tex
+html: $(ZIPFILE)
+$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
+	$(top_docdir)/preamble.tex \
+	$(TEX_DEPS)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 	htmldecode='$(rel_docdir)/htmldecode' \
 	fixhhp='$(rel_docdir)/fixhhp' \
 	srcdir='$(srcdir)' \
 	top_docdir='$(top_docdir)' \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 
-	mv help.zip $(srcdir)/$(ZIPFILE)
+	cp help.zip $(srcdir)/$(ZIPFILE)
 
-mac: $(ZIPFILE) copymac
+dist: $(srcdir)/$(ZIPFILE)
+
+mac: $(srcdir)/$(ZIPFILE) copymac
 
 copymac:
 	mkdir -p $(macdocdir)
@@ -26,9 +31,10 @@ copymac:
 		cp '$(srcdir)/$(ZIPFILE)' '$(macdocdir)/$(DOCLOCALE).lproj' ; \
 	fi
 
-install-data-local: install-data-mutabor
-	test -z '$(pkgdatadir)/$(DOCLOCALE)' || \
-		$(MKDIR_P) '$(pkgdatadir)/$(DOCLOCALE)'
-	$(INSTALL_DATA) '$(srcdir)/$(ZIPFILE)' '$(pkgdatadir)/$(DOCLOCALE)/'
+install-data-local: install-data-mutabor html
+#	test -z '$(pkgdatadir)/$(DOCLOCALE)' || \
+#		$(MKDIR_P) '$(pkgdatadir)/$(DOCLOCALE)'
+#	$(INSTALL_DATA) '$(srcdir)/$(ZIPFILE)' '$(pkgdatadir)/$(DOCLOCALE)/'
 
 install-data-mutabor:
+

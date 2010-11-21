@@ -36,7 +36,7 @@ public:
 
 	~MutLogicWnd()
 	{
-		DEBUGLOG(_T(""));
+		DEBUGLOG(other, _T(""));
 		int i = WinAttrs[WK_LOGIC].Index(*winAttr);
 
 		if (i == wxNOT_FOUND) {
@@ -47,7 +47,7 @@ public:
 		WinAttrs[WK_LOGIC][i].Win=NULL;
 
 		WinAttrs[WK_LOGIC].RemoveAt(i,1);
-		DEBUGLOG(_T("Finished"));
+		DEBUGLOG(other, _T("Finished"));
 	}
 
 	void OnSize(wxSizeEvent& event);

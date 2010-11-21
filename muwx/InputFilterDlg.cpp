@@ -2,16 +2,32 @@
  ********************************************************************
  * MIDI Input filter configuration dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.cpp,v 1.5 2009/08/10 11:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/InputFilterDlg.cpp,v 1.6 2010/11/21 13:15:47 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007,2008 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/10/21 18:28:56
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.5 $
+ * $Date: 2010/11/21 13:15:47 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: InputFilterDlg.cpp,v $
+ * Revision 1.6  2010/11/21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.4.2.3  2010-03-30 08:38:26  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.4.2.2  2009/11/03 15:07:07  keinstein
+ * Compile on Ubuntu 9.10
+ * remove several interface and implementation pragmas
+ * fixed some file names for case insensitive filesystems
+ *
+ * Revision 1.4.2.1  2009/08/10 11:23:12  keinstein
+ * merged from wrong tree
+ *
  * Revision 1.5  2009/08/10 11:15:46  keinstein
  * some steps towards new route window
  *
@@ -21,10 +37,6 @@
  * \addtogroup muwx
  * \{
  ********************************************************************/
-
-#if defined(__GNUG__) && !defined(__APPLE__)
-#pragma implementation "InputFilterDlg.h"
-#endif
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
@@ -73,7 +85,7 @@ InputFilterDlg::InputFilterDlg( wxWindow* parent, DevType t)
 	From->SetValidator( wxNumValidator(& from, NV_NNEG) );
 	To->SetValidator( wxNumValidator(& to, NV_NNEG) );
 
-	DEBUGLOG(_T("Type.id:%d"),Type->GetId());
+	DEBUGLOG (other, _T("Type.id:%d"),Type->GetId());
 	Type->Connect( wxEVT_COMMAND_RADIOBOX_SELECTED,
 	               wxCommandEventHandler( InputFilterDlg::OnRadioboxSelected ),
 	               NULL,
@@ -157,7 +169,7 @@ void InputFilterDlg::OnRadioboxSelected( wxCommandEvent& event )
 void InputFilterDlg::UpdateLayout(int type)
 
 {
-	DEBUGLOG(_T("%d"),type);
+	DEBUGLOG (other, _T("%d"),type);
 	From->Enable(type >=2);
 	To->Enable(type >= 2);
 	fromlabel->Enable(type >=2);

@@ -77,13 +77,9 @@ public:
 
 private:
 	bool IsLogic;
-
 	int Key;
-
 	wxIcon Icon;
-
 	wxString Text;
-
 	int TPos;
 
 public:
@@ -394,7 +390,7 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
 
 void MutLogicWnd::doClose(wxEvent& event)
 {
-	DEBUGLOG(_T(""));
+	DEBUGLOG (other, _T(""));
 	wxWindow * parent;
 	bool stop;
 	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
@@ -403,7 +399,7 @@ void MutLogicWnd::doClose(wxEvent& event)
 		parent = GetParent();
 
 		while (!(dynamic_cast<MutFrame *>(parent))) {
-			DEBUGLOG(_T("Searching for MutFrame: %p..."),parent);
+			DEBUGLOG (other, _T("Searching for MutFrame: %p..."),parent);
 			parent = parent->GetParent();
 		}
 
@@ -415,11 +411,11 @@ void MutLogicWnd::doClose(wxEvent& event)
 
 	Destroy();
 
-	DEBUGLOGBASE("MutLogicWnd",_T("Destroyed Window"));
+	DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 
 	if (stop) parent->AddPendingEvent(event1);
 
-	DEBUGLOGBASE("MutLogicWnd",_T("Destroyed Window"));
+	DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 }
 
 
@@ -521,10 +517,11 @@ void MutLogicWnd::DoLayout()
 
 	GetViewStart(&xv, &yv);
 
-	for (wxWindowListNode *Win = GetChildren().GetFirst(); Win; Win = Win->GetNext()) {
-		if ( Win->GetData()->GetId() == CM_MUTTAG ) {
+	for (wxWindowList::iterator i = GetChildren().begin(); i!=GetChildren().end(); i++) {
+                wxWindow * Win= *i;
+		if ( Win->GetId() == CM_MUTTAG ) {
 			//			Win->Move(x - Scroller->XPos*Scroller->XUnit, y - Scroller->YPos*Scroller->YUnit, MUTTAGX, MUTTAGY, true);
-			Win->GetData()->Move(x-xv*10, y-yv*10);
+			Win->Move(x-xv*10, y-yv*10);
 			x += MUTTAGX;
 			xi++;
 
@@ -680,7 +677,7 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 // Reaktion auf neues aktuelles Instrument
 void MutLogicWnd::CmBox()
 {
-	DEBUGLOG(_T("%s at box %d"),CompiledFile.c_str(),boxnumber );
+	DEBUGLOG (other, _T("%s at box %d"),CompiledFile.c_str(),boxnumber );
 	// Titel setzen
 	GetParent()->SetName(wxString::Format(_("Logic: %s - Box %d"),
 	                                      CompiledFile.c_str(), boxnumber));
