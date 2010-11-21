@@ -4,15 +4,18 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.2 2010/11/21 13:15:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.3 2010/11/21 23:39:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.2 $
+ * $Date: 2010/11/21 23:39:00 $
+ * \version $Revision: 1.3 $
  *
  * $Log: Device.h,v $
- * Revision 1.2  2010/11/21 13:15:45  keinstein
+ * Revision 1.3  2010/11/21 23:39:00  keinstein
+ * some corrections for allowing debuild to complete
+ *
+ * Revision 1.2  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.7  2010-11-18 21:46:14  keinstein
@@ -88,6 +91,8 @@
 
 #ifndef DEVICE_H
 #define DEVICE_H
+
+#include "Defs.h"
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 

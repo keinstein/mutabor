@@ -35,9 +35,9 @@
 #include "mhDefs.h"
 #include "MutRouteWnd.h"
 #include "InputDevDlg.h"
-#include "InputFilterDlg.h"
+//#include "InputFilterDlg.h"
 #include "BoxDlg.h"
-#include "OutputFilterDlg.h"
+//#include "OutputFilterDlg.h"
 #include "OutputDevDlg.h"
 #include "NewInputDeviceShape.h"
 #include "NewBoxShape.h"
@@ -1248,9 +1248,9 @@ bool MutRouteWnd::CheckPoint(wxPoint point, EDevice **in, ERoute **r, int &token
 	return 0;
 }
 #endif
+#if 0
 void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
 {
-#if 0
 	EDevice *In=0;
 	ERoute *R=0;
 	bool NeedNew;
@@ -1295,12 +1295,12 @@ void MutRouteWnd::OnLeftDown(wxMouseEvent &event)
 			Refresh(); // Reicht das auch?
 		}
 	}
-#endif
 }
+#endif
 
+#if 0 
 void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 {
-#if 0 
 	EDevice *In=NULL;
 	ERoute *R=NULL, **R1 = NULL;
 	bool NeedNew;
@@ -1711,8 +1711,8 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
 	// evtl. neu zeichnen
 	if ( Res == wxID_OK || Res == wxID_REMOVE || NeedNew )
 		Refresh();//RePaint();
-#endif
 }
+#endif
 
 /*
   void TRouteWin::EvRButtonDown(uint, TPoint& point)
@@ -1722,47 +1722,3 @@ void MutRouteWnd::OnLeftDClick(wxMouseEvent &event)
   }
 */
 
-
-class RouteTestDialog : public wxDialog
-{
-
-private:
-
-protected:
-	//MutNamedIcon * m_staticText3;
-
-public:
-
-	RouteTestDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
-
-	~RouteTestDialog();
-
-};
-
-RouteTestDialog::RouteTestDialog( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
-{
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
-
-	wxBoxSizer* bSizer3;
-	bSizer3 = new wxBoxSizer( wxVERTICAL );
-
-	//m_staticText3 = new MutNamedIcon( this, wxID_ANY, ICON(devmidiport), wxT("Tbel"), wxDefaultPosition, wxDefaultSize, 0 );
-	//bSizer3->Add( m_staticText3, 0, wxALL, 5 );
-
-	this->SetSizer( bSizer3 );
-	this->Layout();
-	bSizer3->Fit( this );
-	//	SetClientSize(m_staticText3->DoGetBestSize());
-	//	m_staticText3->SetClientSize(m_staticText3->DoGetBestSize());
-	Layout();
-}
-
-RouteTestDialog::~RouteTestDialog()
-
-{}
-
-void testdialog()
-{
-	RouteTestDialog * dia = new RouteTestDialog(NULL);
-	dia -> Show();
-}

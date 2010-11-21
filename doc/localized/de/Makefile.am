@@ -4,7 +4,7 @@ TEXSOURCES = $(srcdir)/Handbuch.tex \
 ZIPFILE = Hilfe.zip
 rel_docdir = ../..
 
-DOCLOCALE = de
+DOCLOCALE=de
 
 pkgdata_DATA =$(ZIPFILE)
 

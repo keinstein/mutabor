@@ -56,7 +56,7 @@ struct debugFlags {
 #define mutPtrCast(type,value) static_cast<type *>(value)
 #define mutPtrDynCast(type,value) dynamic_cast<type *>(value)
 
-#define WATCHEDPTR(T,f,P) watchedPtr<T,debugFlags::f,P>
+#define WATCHEDPTR(T,f,P) watchedPtr<T,-1,P>
 #define DEFWATCHEDPTR
 #endif
 
