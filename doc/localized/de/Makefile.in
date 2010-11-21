@@ -548,7 +548,7 @@ uninstall-am: uninstall-pkgdataDATA
 	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
 	ps ps-am uninstall uninstall-am uninstall-pkgdataDATA
 
-override pkgdatadir +=/$(DOCLOCALE)
+override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 #pkgdatadir := $(localpkgdatadir)
 
 .PHONY: mac copymac install-data-mutabor zipfile

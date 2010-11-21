@@ -1,7 +1,7 @@
 #       -*- Makefile-automake -*-
 top_docdir = $(srcdir)/$(rel_docdir)
 macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
-override pkgdatadir +=/$(DOCLOCALE)
+override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 #pkgdatadir := $(localpkgdatadir)
 
 .PHONY: mac copymac install-data-mutabor zipfile

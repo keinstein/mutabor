@@ -36,6 +36,8 @@ EXTRA_DIST = config.rpath \
 	debian/mutabor.install \
 	debian/README.Debian \
 	debian/rules \
+	debian/source \
+	debian/menu \
 	libasprintf \
 	muwx/Icon \
 	muwx/bitmaps \
@@ -100,6 +102,7 @@ mutabor_INDENTS = \
 		mu32/Runtime.cpp \
 		mu32/Runtime.h \
 		mu32/TabGen.cpp \
+		mu32/treestorage.h \
 		muwx/Routing/BoxChannelShape.cpp \
 		muwx/Routing/BoxChannelShape.h \
 		muwx/Routing/BoxDlg.cpp \
@@ -148,8 +151,6 @@ mutabor_INDENTS = \
 		muwx/configtree.h \
 		muwx/IconShape.cpp \
 		muwx/IconShape.h \
-		muwx/InputFilterDlg.cpp \
-		muwx/InputFilterDlg.h \
 		muwx/Mutabor.rh \
 		muwx/MutApp.cpp \
 		muwx/MutApp.h \
@@ -168,8 +169,6 @@ mutabor_INDENTS = \
 		muwx/MutRouteWnd.h \
 		muwx/MutTextBox.cpp \
 		muwx/MutTextBox.h \
-		muwx/OutputFilterDlg.cpp \
-		muwx/OutputFilterDlg.h \
 		muwx/Panel.cpp \
 		muwx/Panel.h \
 		muwx/resourceload.h \
@@ -188,6 +187,13 @@ mutabor_INDENTS = \
 		rtmidi/RtMidi.cpp \
 		rtmidi/RtMidi.h \
 		$(top_srcdir)/xrc/wxresource.h
+
+
+#		muwx/InputFilterDlg.cpp \
+#		muwx/InputFilterDlg.h \
+#		muwx/OutputFilterDlg.cpp \
+#		muwx/OutputFilterDlg.h \
+#
 
 CLEANFILES = \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \

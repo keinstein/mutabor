@@ -103,7 +103,8 @@ am__mutabor_SOURCES_DIST = mu32/Defs.h mu32/routing/gmn/DevGIS.cpp \
 	mu32/GrafKern.h mu32/Hilfs.cpp mu32/Hilfs.h mu32/Interpre.h \
 	mu32/Interval.cpp mu32/Interval.h mu32/MidiKern.h \
 	mu32/Parser.cpp mu32/Runtime.cpp mu32/Runtime.h \
-	mu32/TabGen.cpp muwx/Routing/BoxChannelShape.cpp \
+	mu32/TabGen.cpp mu32/treestorage.h \
+	muwx/Routing/BoxChannelShape.cpp \
 	muwx/Routing/BoxChannelShape.h muwx/Routing/BoxDlg.cpp \
 	muwx/Routing/BoxDlg.h muwx/Routing/BoxIconShape.cpp \
 	muwx/Routing/BoxIconShape.h muwx/Routing/BoxShape.cpp \
@@ -135,20 +136,18 @@ am__mutabor_SOURCES_DIST = mu32/Defs.h mu32/routing/gmn/DevGIS.cpp \
 	muwx/Routing/RouteIcons.cpp muwx/Routing/RouteIcons.h \
 	muwx/Action.cpp muwx/Action.h muwx/CompDlg.cpp muwx/CompDlg.h \
 	muwx/configtree.cpp muwx/configtree.h muwx/IconShape.cpp \
-	muwx/IconShape.h muwx/InputFilterDlg.cpp muwx/InputFilterDlg.h \
-	muwx/Mutabor.rh muwx/MutApp.cpp muwx/MutApp.h \
+	muwx/IconShape.h muwx/Mutabor.rh muwx/MutApp.cpp muwx/MutApp.h \
 	muwx/MutChild.cpp muwx/MutChild.h muwx/MutConfDlg.h \
 	muwx/MutEditFile.cpp muwx/MutEditFile.h muwx/MutFrame.cpp \
 	muwx/MutFrame.h muwx/MutIcon.cpp muwx/MutIcon.h \
 	muwx/MutLogicWnd.cpp muwx/MutLogicWnd.h muwx/MutRouteWnd.cpp \
 	muwx/MutRouteWnd.h muwx/MutTextBox.cpp muwx/MutTextBox.h \
-	muwx/OutputFilterDlg.cpp muwx/OutputFilterDlg.h muwx/Panel.cpp \
-	muwx/Panel.h muwx/resourceload.h mywx/mhArray.h mywx/mhDefs.h \
-	mywx/muconvauto.cpp mywx/muconvauto.h mywx/mutDebug.h \
-	mywx/mutDebug.cpp mywx/mxDefs.cpp mywx/valNum.cpp \
-	mywx/valNum.h mywx/valRadio.cpp mywx/valRadio.h \
-	rtmidi/RtError.h rtmidi/RtMidi.cpp rtmidi/RtMidi.h \
-	$(top_srcdir)/xrc/wxresource.h muwx/Mutabor.rc \
+	muwx/Panel.cpp muwx/Panel.h muwx/resourceload.h mywx/mhArray.h \
+	mywx/mhDefs.h mywx/muconvauto.cpp mywx/muconvauto.h \
+	mywx/mutDebug.h mywx/mutDebug.cpp mywx/mxDefs.cpp \
+	mywx/valNum.cpp mywx/valNum.h mywx/valRadio.cpp \
+	mywx/valRadio.h rtmidi/RtError.h rtmidi/RtMidi.cpp \
+	rtmidi/RtMidi.h $(top_srcdir)/xrc/wxresource.h muwx/Mutabor.rc \
 	$(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
 	mywx/mutDebugFlags.h mutabor-cxxprecompiled.$(PCHEXT_CXX)
 am__dirstamp = $(am__leading_dot)dirstamp
@@ -181,12 +180,11 @@ am__objects_2 = mutabor-DevGIS.$(OBJEXT) mutabor-GIS_Head.$(OBJEXT) \
 	mutabor-OutputMidiFileDeviceShape.$(OBJEXT) \
 	mutabor-RouteIcons.$(OBJEXT) mutabor-Action.$(OBJEXT) \
 	mutabor-CompDlg.$(OBJEXT) mutabor-configtree.$(OBJEXT) \
-	mutabor-IconShape.$(OBJEXT) mutabor-InputFilterDlg.$(OBJEXT) \
-	mutabor-MutApp.$(OBJEXT) mutabor-MutChild.$(OBJEXT) \
-	mutabor-MutEditFile.$(OBJEXT) mutabor-MutFrame.$(OBJEXT) \
-	mutabor-MutIcon.$(OBJEXT) mutabor-MutLogicWnd.$(OBJEXT) \
-	mutabor-MutRouteWnd.$(OBJEXT) mutabor-MutTextBox.$(OBJEXT) \
-	mutabor-OutputFilterDlg.$(OBJEXT) mutabor-Panel.$(OBJEXT) \
+	mutabor-IconShape.$(OBJEXT) mutabor-MutApp.$(OBJEXT) \
+	mutabor-MutChild.$(OBJEXT) mutabor-MutEditFile.$(OBJEXT) \
+	mutabor-MutFrame.$(OBJEXT) mutabor-MutIcon.$(OBJEXT) \
+	mutabor-MutLogicWnd.$(OBJEXT) mutabor-MutRouteWnd.$(OBJEXT) \
+	mutabor-MutTextBox.$(OBJEXT) mutabor-Panel.$(OBJEXT) \
 	mutabor-muconvauto.$(OBJEXT) mutabor-mutDebug.$(OBJEXT) \
 	mutabor-mxDefs.$(OBJEXT) mutabor-valNum.$(OBJEXT) \
 	mutabor-valRadio.$(OBJEXT) mutabor-RtMidi.$(OBJEXT) \
@@ -559,7 +557,8 @@ mutabor_INDENTS = mu32/Defs.h mu32/routing/gmn/DevGIS.cpp \
 	mu32/GrafKern.h mu32/Hilfs.cpp mu32/Hilfs.h mu32/Interpre.h \
 	mu32/Interval.cpp mu32/Interval.h mu32/MidiKern.h \
 	mu32/Parser.cpp mu32/Runtime.cpp mu32/Runtime.h \
-	mu32/TabGen.cpp muwx/Routing/BoxChannelShape.cpp \
+	mu32/TabGen.cpp mu32/treestorage.h \
+	muwx/Routing/BoxChannelShape.cpp \
 	muwx/Routing/BoxChannelShape.h muwx/Routing/BoxDlg.cpp \
 	muwx/Routing/BoxDlg.h muwx/Routing/BoxIconShape.cpp \
 	muwx/Routing/BoxIconShape.h muwx/Routing/BoxShape.cpp \
@@ -591,20 +590,24 @@ mutabor_INDENTS = mu32/Defs.h mu32/routing/gmn/DevGIS.cpp \
 	muwx/Routing/RouteIcons.cpp muwx/Routing/RouteIcons.h \
 	muwx/Action.cpp muwx/Action.h muwx/CompDlg.cpp muwx/CompDlg.h \
 	muwx/configtree.cpp muwx/configtree.h muwx/IconShape.cpp \
-	muwx/IconShape.h muwx/InputFilterDlg.cpp muwx/InputFilterDlg.h \
-	muwx/Mutabor.rh muwx/MutApp.cpp muwx/MutApp.h \
+	muwx/IconShape.h muwx/Mutabor.rh muwx/MutApp.cpp muwx/MutApp.h \
 	muwx/MutChild.cpp muwx/MutChild.h muwx/MutConfDlg.h \
 	muwx/MutEditFile.cpp muwx/MutEditFile.h muwx/MutFrame.cpp \
 	muwx/MutFrame.h muwx/MutIcon.cpp muwx/MutIcon.h \
 	muwx/MutLogicWnd.cpp muwx/MutLogicWnd.h muwx/MutRouteWnd.cpp \
 	muwx/MutRouteWnd.h muwx/MutTextBox.cpp muwx/MutTextBox.h \
-	muwx/OutputFilterDlg.cpp muwx/OutputFilterDlg.h muwx/Panel.cpp \
-	muwx/Panel.h muwx/resourceload.h mywx/mhArray.h mywx/mhDefs.h \
-	mywx/muconvauto.cpp mywx/muconvauto.h mywx/mutDebug.h \
-	mywx/mutDebug.cpp mywx/mxDefs.cpp mywx/valNum.cpp \
-	mywx/valNum.h mywx/valRadio.cpp mywx/valRadio.h \
-	rtmidi/RtError.h rtmidi/RtMidi.cpp rtmidi/RtMidi.h \
-	$(top_srcdir)/xrc/wxresource.h $(am__append_2)
+	muwx/Panel.cpp muwx/Panel.h muwx/resourceload.h mywx/mhArray.h \
+	mywx/mhDefs.h mywx/muconvauto.cpp mywx/muconvauto.h \
+	mywx/mutDebug.h mywx/mutDebug.cpp mywx/mxDefs.cpp \
+	mywx/valNum.cpp mywx/valNum.h mywx/valRadio.cpp \
+	mywx/valRadio.h rtmidi/RtError.h rtmidi/RtMidi.cpp \
+	rtmidi/RtMidi.h $(top_srcdir)/xrc/wxresource.h $(am__append_2)
+
+#		muwx/InputFilterDlg.cpp \
+#		muwx/InputFilterDlg.h \
+#		muwx/OutputFilterDlg.cpp \
+#		muwx/OutputFilterDlg.h \
+#
 CLEANFILES = \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
 	mutabor-cxxprecompiled.h \
@@ -782,7 +785,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-IconShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputDevDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputDeviceShape.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputFilterDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputGuidoFileDeviceShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputMidiDeviceShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-InputMidiFileDeviceShape.Po@am__quote@
@@ -800,7 +802,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-NewOutputDeviceShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputDevDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputDeviceShape.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputFilterDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputGuidoFileDeviceShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputMidiDeviceShape.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutabor-OutputMidiFileDeviceShape.Po@am__quote@
@@ -1457,20 +1458,6 @@ mutabor-IconShape.obj: muwx/IconShape.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-IconShape.obj `if test -f 'muwx/IconShape.cpp'; then $(CYGPATH_W) 'muwx/IconShape.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/IconShape.cpp'; fi`
 
-mutabor-InputFilterDlg.o: muwx/InputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-InputFilterDlg.o -MD -MP -MF $(DEPDIR)/mutabor-InputFilterDlg.Tpo -c -o mutabor-InputFilterDlg.o `test -f 'muwx/InputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/InputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/mutabor-InputFilterDlg.Tpo $(DEPDIR)/mutabor-InputFilterDlg.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/InputFilterDlg.cpp' object='mutabor-InputFilterDlg.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-InputFilterDlg.o `test -f 'muwx/InputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/InputFilterDlg.cpp
-
-mutabor-InputFilterDlg.obj: muwx/InputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-InputFilterDlg.obj -MD -MP -MF $(DEPDIR)/mutabor-InputFilterDlg.Tpo -c -o mutabor-InputFilterDlg.obj `if test -f 'muwx/InputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/InputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/InputFilterDlg.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/mutabor-InputFilterDlg.Tpo $(DEPDIR)/mutabor-InputFilterDlg.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/InputFilterDlg.cpp' object='mutabor-InputFilterDlg.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-InputFilterDlg.obj `if test -f 'muwx/InputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/InputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/InputFilterDlg.cpp'; fi`
-
 mutabor-MutApp.o: muwx/MutApp.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-MutApp.o -MD -MP -MF $(DEPDIR)/mutabor-MutApp.Tpo -c -o mutabor-MutApp.o `test -f 'muwx/MutApp.cpp' || echo '$(srcdir)/'`muwx/MutApp.cpp
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/mutabor-MutApp.Tpo $(DEPDIR)/mutabor-MutApp.Po
@@ -1582,20 +1569,6 @@ mutabor-MutTextBox.obj: muwx/MutTextBox.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/MutTextBox.cpp' object='mutabor-MutTextBox.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-MutTextBox.obj `if test -f 'muwx/MutTextBox.cpp'; then $(CYGPATH_W) 'muwx/MutTextBox.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/MutTextBox.cpp'; fi`
-
-mutabor-OutputFilterDlg.o: muwx/OutputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-OutputFilterDlg.o -MD -MP -MF $(DEPDIR)/mutabor-OutputFilterDlg.Tpo -c -o mutabor-OutputFilterDlg.o `test -f 'muwx/OutputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/OutputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/mutabor-OutputFilterDlg.Tpo $(DEPDIR)/mutabor-OutputFilterDlg.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/OutputFilterDlg.cpp' object='mutabor-OutputFilterDlg.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-OutputFilterDlg.o `test -f 'muwx/OutputFilterDlg.cpp' || echo '$(srcdir)/'`muwx/OutputFilterDlg.cpp
-
-mutabor-OutputFilterDlg.obj: muwx/OutputFilterDlg.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-OutputFilterDlg.obj -MD -MP -MF $(DEPDIR)/mutabor-OutputFilterDlg.Tpo -c -o mutabor-OutputFilterDlg.obj `if test -f 'muwx/OutputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/OutputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/OutputFilterDlg.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/mutabor-OutputFilterDlg.Tpo $(DEPDIR)/mutabor-OutputFilterDlg.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='muwx/OutputFilterDlg.cpp' object='mutabor-OutputFilterDlg.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -c -o mutabor-OutputFilterDlg.obj `if test -f 'muwx/OutputFilterDlg.cpp'; then $(CYGPATH_W) 'muwx/OutputFilterDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/muwx/OutputFilterDlg.cpp'; fi`
 
 mutabor-Panel.o: muwx/Panel.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mutabor_CXXFLAGS) $(CXXFLAGS) -MT mutabor-Panel.o -MD -MP -MF $(DEPDIR)/mutabor-Panel.Tpo -c -o mutabor-Panel.o `test -f 'muwx/Panel.cpp' || echo '$(srcdir)/'`muwx/Panel.cpp

@@ -12,7 +12,7 @@
 #define MUTROUTEWND_H
 
 #include "wx/scrolwin.h"
-#include "EDevice.h"
+//#include "EDevice.h"
 
 #define xz 5 // Zwischenräume
 #define yz 5
@@ -176,13 +176,12 @@ public:
 	}
 
 	int CalcYl();
-	*/
 
 	bool CheckPoint(wxPoint point, EDevice **in, ERoute **r, 
 			int &token, bool &needNew);
 	void OnLeftDown(wxMouseEvent &event);
 	void OnLeftDClick(wxMouseEvent &event);
-	/*    void EvLButtonDblClk(UINT modKeys, TPoint& point);
+	    void EvLButtonDblClk(UINT modKeys, TPoint& point);
 	    void EvRButtonDown(uint modKeys, TPoint& point);*/
 
 public:

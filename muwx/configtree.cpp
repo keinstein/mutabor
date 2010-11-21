@@ -2,13 +2,16 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.2 2010/11/21 13:15:47 keinstein Exp $
+ * $Id: configtree.cpp,v 1.3 2010/11/21 23:39:00 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2010/11/21 23:39:00 $
+ * \version $Revision: 1.3 $
  *
  * $Log: configtree.cpp,v $
- * Revision 1.2  2010/11/21 13:15:47  keinstein
+ * Revision 1.3  2010/11/21 23:39:00  keinstein
+ * some corrections for allowing debuild to complete
+ *
+ * Revision 1.2  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.3  2010-09-29 13:03:30  keinstein
@@ -130,10 +133,13 @@ int configtree::toFirstLeaf(const mutStringRef name,mutStringRef id)
 	}
 	config->SetPath(id);
 	newstate.chdepth++;
+#ifdef DEBUG
 	newstate.group=name;
+#endif
 	states.pop();
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+	DEBUGLOG(config,
+		 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
 		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, 
 		 newstate.leafid, newstate.group.c_str());
 	return newstate.leafid;
@@ -146,16 +152,21 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 	DEBUGLOG(config,_T("going to next leaf of group '%s'"),name.c_str());
 	state oldstate=states.top();
 	wxASSERT(oldstate.group==name);
-	DEBUGLOG(config,_T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), oldstate.oldpath.c_str(), oldstate.chdepth, 
+	DEBUGLOG(config,
+		 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+		 config->GetPath().c_str(), 
+		 oldstate.oldpath.c_str(), oldstate.chdepth, 
 		 oldstate.leafid, oldstate.group.c_str());
 #endif
 	toParent(1);
 	toLeaf(name);
 	state newstate = states.top();
 #ifdef DEBUG
-	DEBUGLOG(config,_T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, newstate.leafid, newstate.group.c_str());
+	DEBUGLOG(config,
+		 _T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
+		 config->GetPath().c_str(), 
+		 newstate.oldpath.c_str(), 
+		 newstate.chdepth, newstate.leafid, newstate.group.c_str());
 	wxASSERT(oldstate.oldpath == newstate.oldpath);
 	newstate.group = oldstate.group;
 #endif
@@ -166,8 +177,11 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 	} else newstate.leafid=wxNOT_FOUND;
 	states.pop();
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, newstate.leafid,
+	DEBUGLOG(config,
+		 _T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
+		 config->GetPath().c_str(), 
+		 newstate.oldpath.c_str(), 
+		 newstate.chdepth, newstate.leafid,
 		 newstate.group.c_str());
 	return newstate.leafid;
 }
@@ -190,8 +204,12 @@ void configtree::toParent(unsigned int count)
 			config -> SetPath(_T(".."));
 		states.pop();
 		wxASSERT(config->GetPath() == oldstate.oldpath);
-		DEBUGLOG(config,_T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
-			 config->GetPath().c_str(), oldstate.oldpath.c_str(), oldstate.chdepth, oldstate.leafid, oldstate.group.c_str());
+		DEBUGLOG(config,
+			 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+			 config->GetPath().c_str(), 
+			 oldstate.oldpath.c_str(), 
+			 oldstate.chdepth, oldstate.leafid, 
+			 oldstate.group.c_str());
 	}
 } 
 
