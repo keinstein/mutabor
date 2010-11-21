@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # prerm script for mutabor
 #
 # see: dh_installdeb(1)
@@ -19,9 +19,11 @@ set -e
 
 case "$1" in
     remove|upgrade|deconfigure)
-        ;;
+    ;;
+
     failed-upgrade)
-        ;;
+    ;;
+
     *)
         echo "prerm called with unknown argument \`$1'" >&2
         exit 1
@@ -34,5 +36,3 @@ esac
 #DEBHELPER#
 
 exit 0
-
-

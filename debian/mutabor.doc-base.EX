@@ -18,5 +18,3 @@ Files: /usr/share/doc/mutabor/mutabor.text.gz
 Format: HTML
 Index: /usr/share/doc/mutabor/html/index.html
 Files: /usr/share/doc/mutabor/html/*.html
-
-  

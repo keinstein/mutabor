@@ -1,10 +1,11 @@
 ;; -*-emacs-lisp-*-
 ;;
-;; Emacs startup file for the Debian mutabor package
+;; Emacs startup file, e.g.  /etc/emacs/site-start.d/50mutabor.el
+;; for the Debian mutabor package
 ;;
 ;; Originally contributed by Nils Naumann <naumann@unileoben.ac.at>
 ;; Modified by Dirk Eddelbuettel <edd@debian.org>
-;; Adapted for dh-make by Jim Van Zandt <jrv@vanzandt.mv.com>
+;; Adapted for dh-make by Jim Van Zandt <jrv@debian.org>
 
 ;; The mutabor package follows the Debian/GNU Linux 'emacsen' policy and
 ;; byte-compiles its elisp files for each 'emacs flavor' (emacs19,
@@ -14,6 +15,11 @@
 (let ((package-dir (concat "/usr/share/"
                            (symbol-name flavor)
                            "/site-lisp/mutabor")))
+;; If package-dir does not exist, the mutabor package must have
+;; removed but not purged, and we should skip the setup.
   (when (file-directory-p package-dir)
-        (setq load-path (cons package-dir load-path))))
+    (setq load-path (cons package-dir load-path))
+    (autoload 'mutabor-mode "mutabor-mode"
+      "Major mode for editing mutabor files." t)
+    (add-to-list 'auto-mode-alist '("\\.mutabor$" . mutabor-mode))))
 

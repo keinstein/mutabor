@@ -1,9 +1,12 @@
 Source: mutabor
 Section: unknown
-Priority: optional
+Priority: extra
 Maintainer: Tobias Schlemmer <keinstein@users.berlios.de>
-Build-Depends: debhelper (>= 4.0.0), autotools-dev
-Standards-Version: 3.6.1
+Build-Depends:  debhelper (>= 7.0.50~), autotools-dev, libasound2-dev
+Standards-Version: 3.8.4
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/mutabor.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/mutabor.git;a=summary
 
 Package: mutabor
 Architecture: any
@@ -16,10 +19,10 @@ Description: Retuning MIDI instruments for complex microtonal tunings
  logics, which change the tuning according chords, forms of chords, keys and
  other events. It is faster and more powerful than most equipment on the
  market, exspecially in the low cost segment.
-Description:
+ .
  The pitchbend functinality allows a precition of the 8192th part (factor
  0.000122) of the pitch bend range. In GM standard this is about 0.0244 cents.
-Description:
+ .
  This package contains the main program.
 
 Package: libmutabor
@@ -33,12 +36,13 @@ Description: Retuning MIDI instruments for complex microtonal tunings
  logics, which change the tuning according chords, forms of chords, keys and
  other events. It is faster and more powerful than most equipment on the
  market, exspecially in the low cost segment.
-Description:
+ .
  The pitchbend functinality allows a precition of the 8192th part (factor
  0.000122) of the pitch bend range. In GM standard this is about 0.0244 cents.
-Description:
+ .
  This package contains the kernel library of the program. It is extracted to
  allow programmers to write other applications using this nice technology.
+ .
  The header files can be found in the libmutabor-dev package.
 
 Package: libmutabor-dev
@@ -52,10 +56,10 @@ Description: Retuning MIDI instruments for complex microtonal tunings
  logics, which change the tuning according chords, forms of chords, keys and
  other events. It is faster and more powerful than most equipment on the
  market, exspecially in the low cost segment.
-Description:
+ .
  The pitchbend functinality allows a precition of the 8192th part (factor
  0.000122) of the pitch bend range. In GM standard this is about 0.0244 cents.
-Description:
+ .
  This package contains the header files for the kernel library of the program.
  It is extracted to allow programmers to write other applications using this
  nice technology.
@@ -70,10 +74,8 @@ Description: Documentation for mutabor
  logics, which change the tuning according chords, forms of chords, keys and
  other events. It is faster and more powerful than most equipment on the
  market, exspecially in the low cost segment.
-Description:
+ .
  The pitchbend functinality allows a precition of the 8192th part (factor
  0.000122) of the pitch bend range. In GM standard this is about 0.0244 cents.
-Description:
- This package contains the header files for the kernel library of the program.
- It is extracted to allow programmers to write other applications using this
- nice technology.
+ .
+ This package contains the documentation.
