@@ -6,7 +6,7 @@
 # Compulsory line, this is a version 3 file
 version=3
 
-# Uncomment to examine a Webpage 
+# Uncomment to examine a Webpage
 # <Webpage URL> <string match>
 #http://www.example.com/downloads.php mutabor-(.*)\.tar\.gz
 
@@ -16,7 +16,8 @@ version=3
 # Uncommment to examine a FTP server
 #ftp://ftp.example.com/pub/mutabor-(.*)\.tar\.gz debian uupdate
 
-# Uncomment to use Roland's hack for sourceforge based projects - YMMV!
-#http://people.debian.org/~lolando/sfdlr.php?project=mutabor mutabor-([\d.]*).tar.gz
+# Uncomment to find new files on sourceforge, for devscripts >= 2.9
+# http://sf.net/mutabor/mutabor-(.*)\.tar\.gz
 
-
+# Uncomment to find new files on GooglePages
+# http://example.googlepages.com/foo.html mutabor-(.*)\.tar\.gz

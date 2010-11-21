@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # postrm script for mutabor
 #
 # see: dh_installdeb(1)
@@ -13,21 +13,20 @@ set -e
 #        * <new-postrm> `abort-install'
 #        * <new-postrm> `abort-install' <old-version>
 #        * <new-postrm> `abort-upgrade' <old-version>
-#        * <disappearer's-postrm> `disappear' <r>overwrit>r> <new-version>
+#        * <disappearer's-postrm> `disappear' <overwriter>
+#          <overwriter-version>
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
 
 case "$1" in
-       purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-
-
-        ;;
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
 
     *)
         echo "postrm called with unknown argument \`$1'" >&2
         exit 1
-
+    ;;
 esac
 
 # dh_installdeb will replace this with shell code automatically

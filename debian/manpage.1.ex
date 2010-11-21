@@ -2,7 +2,7 @@
 .\" First parameter, NAME, should be all caps
 .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
 .\" other parameters are allowed: see man(7), man(1)
-.TH MUTABOR SECTION "Juli 11, 2005"
+.TH MUTABOR SECTION "November 21, 2010"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -31,7 +31,7 @@ and
 commands.
 .PP
 .\" TeX users may be more comfortable with the \fB<whatever>\fP and
-.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
 .\" respectively.
 \fBmutabor\fP is a program that...
 .SH OPTIONS
@@ -55,5 +55,5 @@ available via the Info system.
 .SH AUTHOR
 mutabor was written by <upstream author>.
 .PP
-This manual page was written by Tobias Schlemmer <tobias@laptop.example.com>,
-for the Debian project (but may be used by others).
+This manual page was written by tobias <tobias@tobias2>,
+for the Debian project (and may be used by others).

@@ -8,7 +8,7 @@
 manpage.1: manpage.sgml
 	docbook-to-man $< > $@
 
-    
+
 	The docbook-to-man binary is found in the docbook-to-man package.
 	Please remember that if you create the nroff version in one of the
 	debian/rules file targets (such as build), you will need to include
@@ -20,12 +20,12 @@ manpage.1: manpage.sgml
   <!ENTITY dhfirstname "<firstname>FIRSTNAME</firstname>">
   <!ENTITY dhsurname   "<surname>SURNAME</surname>">
   <!-- Please adjust the date whenever revising the manpage. -->
-  <!ENTITY dhdate      "<date>Juli 11, 2005</date>">
+  <!ENTITY dhdate      "<date>November 21, 2010</date>">
   <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
        allowed: see man(7), man(1). -->
   <!ENTITY dhsection   "<manvolnum>SECTION</manvolnum>">
-  <!ENTITY dhemail     "<email>tobias@laptop.example.com</email>">
-  <!ENTITY dhusername  "Tobias Schlemmer">
+  <!ENTITY dhemail     "<email>tobias@tobias2</email>">
+  <!ENTITY dhusername  "tobias">
   <!ENTITY dhucpackage "<refentrytitle>MUTABOR</refentrytitle>">
   <!ENTITY dhpackage   "mutabor">
 
@@ -123,15 +123,15 @@ manpage.1: manpage.sgml
     <title>AUTHOR</title>
 
     <para>This manual page was written by &dhusername; &dhemail; for
-      the &debian; system (but may be used by others).  Permission is
+      the &debian; system (and may be used by others).  Permission is
       granted to copy, distribute and/or modify this document under
-      the terms of the &gnu; General Public License, Version 2 any 
-	  later version published by the Free Software Foundation.
+      the terms of the &gnu; General Public License, Version 2 any
+      later version published by the Free Software Foundation.
     </para>
-	<para>
-	  On Debian systems, the complete text of the GNU General Public
-	  License can be found in /usr/share/common-licenses/GPL.
-	</para>
+    <para>
+      On Debian systems, the complete text of the GNU General Public
+      License can be found in /usr/share/common-licenses/GPL.
+    </para>
 
   </refsect1>
 </refentry>
@@ -152,5 +152,3 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
-
-
