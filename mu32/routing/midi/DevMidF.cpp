@@ -2,14 +2,17 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.2 2010/11/21 13:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.3 2010/11/23 21:19:22 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:46 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2010/11/23 21:19:22 $
+ * \version $Revision: 1.3 $
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.2  2010/11/21 13:15:46  keinstein
+ * Revision 1.3  2010/11/23 21:19:22  keinstein
+ * make automatic stopping working again
+ *
+ * Revision 1.2  2010-11-21 13:15:46  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
@@ -145,7 +148,7 @@
 #define MAKE_ID(route, box, taste, channel) \
  ((((DWORD)channel) << 24) + (((DWORD)route->GetId()) << 16) + ((DWORD)box << 8) + taste)
 
-#define NO_DELTA 16000 //2147483647  // long max-Zahl
+#define NO_DELTA 0x7fffffffl //2147483647  // long max-Zahl
 
 int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
 
@@ -758,16 +761,14 @@ void InMidiFile::Close()
 		free(Track[i]);
 
 	free(Track);
-
 	free(TrackPos);
-
 	free(curDelta);
-
 	free(StatusByte);
 }
 
 void InMidiFile::Stop()
 {
+  DEBUGLOG(routing,_T("old mode = %d"),Mode);
 	if ( Mode == MutaborDevicePlay || Mode == MutaborDeviceTimingError )
 		Pause();
 
@@ -780,7 +781,7 @@ void InMidiFile::Stop()
 
 	long NewMinDelta = NO_DELTA;
 
-	MMSPerQuater = (long)1000000;
+	MMSPerQuater = 1000000l;
 
 	for (size_t i = 0; i < nTrack; i++ ) {
 		TrackPos[i] = 0;
@@ -850,12 +851,18 @@ void InMidiFile::IncDelta()
 	}
 
 	if ( NewMinDelta == NO_DELTA ) {
-		Mode = MutaborDeviceTimingError;
-		InDevChanged = 1;
+	  // we have reached the end of all tracks
+	  InDevChanged = 1;
+	  Stop();
+	  //		Mode = MutaborDeviceTimingError;
 	}
 
-	minDelta = NewMinDelta;
+#if (DEBUG && WX)
+	wxASSERT(NewMinDelta > 0);
+	DEBUGLOG(midifile,_T("old mindelta = %d, new mindelta = %d"),minDelta,NewMinDelta);
+#endif
 
+	minDelta = NewMinDelta;
 	Busy = FALSE;
 }
 
