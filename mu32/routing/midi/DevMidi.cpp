@@ -14,7 +14,7 @@
 
 /* berechnet die Tonigkeit einer Taste bzgl. tonsystem */
 #define GET_INDEX(taste,tonsystem)                \
- ((int)((taste)-( (tonsystem)->anker % (tonsystem)->breite )) \
+ ((int)( (taste)-( (tonsystem)->anker % (tonsystem)->breite )) \
 			  % (tonsystem)->breite )
 
 
@@ -52,7 +52,7 @@ extern RtMidiIn *rtmidiin;
     message.push_back(code1);			\
     message.push_back(code2);			\
     message.push_back(code3);			\
-    DEBUGLOG2(other,_T("MIDI OUT %x %x %x"),		\
+    DEBUGLOG2(midiio,_T("MIDI OUT %x %x %x"),	\
 	      code1,code2,code3);		\
     hMidiOut->sendMessage(&message); }
 
@@ -60,7 +60,7 @@ extern RtMidiIn *rtmidiin;
   { std::vector<unsigned char> message;		\
     message.push_back(code1);			\
     message.push_back(code2);			\
-    DEBUGLOG2(other,_T("MIDI OUT %x %x"),		\
+    DEBUGLOG2(midiio,_T("MIDI OUT %x %x"),	\
 	      code1,code2);			\
     hMidiOut->sendMessage(&message); }
 #else
@@ -77,8 +77,8 @@ extern RtMidiIn *rtmidiin;
 #endif
 
 // Zugriffe
-#define zugriff  ((unsigned char*) &freq)
-#define zgf  ((unsigned char*) &pb)
+//#define zugriff  ((unsigned char*) &freq)
+//#define zgf  ((unsigned char*) &pb)
 
 // Pitch
 /* zugriff: 00000000111111112222222233333333
@@ -95,9 +95,12 @@ pb & 0xff >> 1  =    11 12 13 14 15 16 17
 (pb>>8+0x4000)&0x7f00 =                   18 19 20 21 22 23 "1"
 
  */
-#define MIDI_PITCH(i) \
+#define MIDI_PITCH(i,freq)                                                  \
   { unsigned int pb = ( ((freq & 0xffffff) / bending_range) >> 11) ;	\
-  MIDI_OUT3 (0xE0 + i, pb & 0x7f, (0x40 + (pb >> 7) ) & 0x7f) }
+  DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"), \
+            i,i,freq,freq,pb,pb,0xE0 + i,0xE0 + i, pb & 0x7f, pb & 0x7f,  (0x40 + (pb >> 7) ) & 0x7f, \
+            (0x40 + (pb >> 7) ) & 0x7f );  \
+    MIDI_OUT3 (0xE0 + i, pb & 0x7f, (0x40 + (pb >> 7) ) & 0x7f) }
 
 //	int pb = ( (((int)zugriff[2])<<6) + (zugriff[1]>>2) ) / bending_range; 
 //	MIDI_OUT3(0xE0+i, zgf[0] >> 1 , 64+zgf[1])
@@ -108,7 +111,7 @@ pb & 0xff >> 1  =    11 12 13 14 15 16 17
 
 // ID errechnen
 #define MAKE_ID(route, box, taste, channel) \
- ((((DWORD)channel) << 24) + (((DWORD)route->GetId()) << 16) + ((DWORD)box << 8) + taste)
+ ((((DWORD)channel) << 24) + (((DWORD)route->GetId()&0xff) << 16) + ((DWORD)box << 8) + taste)
 
 
 /// Save current device settings in a tree storage
@@ -345,12 +348,12 @@ void OutMidiPort::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
 	}
 
 	// Pitch testen
-	if ( (long)(p = freq & 0xFFFFFF) != Cd[free].Pitch ) {
-		MIDI_PITCH(free);
+	if ( (long)(p = (freq & 0xFFFFFF)) != Cd[free].Pitch ) {
+		MIDI_PITCH(free, freq);
 		Cd[free].Pitch = p;
 	}
 
-	ton_auf_kanal[free].key = zugriff[3] & 0x7f;
+	ton_auf_kanal[free].key = (freq >> 24) & 0x7f;
 
 	ton_auf_kanal[free].taste = taste;
 	ton_auf_kanal[free].id = MAKE_ID(r, box, taste, channel);
@@ -364,7 +367,7 @@ void OutMidiPort::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
 
 void OutMidiPort::NoteOff(int box, int taste, int velo, Route *r, int channel)
 {
-	DEBUGLOG (other, _T("box %d, key %d, velo %d, channel %d"),
+	DEBUGLOG (midiio, _T("box %d, key %d, velo %d, channel %d"),
 	         box, taste, velo, channel);
 
 	if ( box == -2 )
@@ -400,7 +403,7 @@ inline long LongAbs(long x)
 
 void OutMidiPort::NotesCorrect(int box)
 {
-	DEBUGLOG (other, _T(""));
+	DEBUGLOG (midiio, _T(""));
 
 	for (int i = 0; i < 16; i++)
 		if ( (KeyDir[i] >= 16 && ton_auf_kanal[i].id) || Cd[i].Sustain ) {
@@ -409,13 +412,18 @@ void OutMidiPort::NotesCorrect(int box)
 			if ( Box != box )
 				break;
 
+                        DEBUGLOG(midiio,_T("old(hex/dec): channel = %01x/%d, Taste = %02x/%d, key = %02x/%d, pitch = %06x/%d"), 
+                                 i,i,ton_auf_kanal[i].taste,ton_auf_kanal[i].taste, 
+                                 ton_auf_kanal[i].key,ton_auf_kanal[i].key,Cd[i].Pitch,Cd[i].Pitch);
+
 			long freq = GET_FREQ(ton_auf_kanal[i].taste, tonsystem[Box]);
 
 			// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 			// Ton aus und einschalten zu vermeiden
-			if ( ton_auf_kanal[i].key == (zugriff[3] & 0x7f) &&
+			if ( ton_auf_kanal[i].key == ((freq >> 24) & 0x7f) &&
 			                Cd[i].Pitch == ((long)freq & 0xFFFFFF) )
 				continue;
+
 
 			long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
 
@@ -432,8 +440,7 @@ void OutMidiPort::NotesCorrect(int box)
 				}
 
 				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-
-				ton_auf_kanal[i].key = zugriff[3] & 0x7F;
+				ton_auf_kanal[i].key = (freq >> 24) & 0x7F;
 				Delta = freq - ((long)ton_auf_kanal[i].key << 24);
 			} else if ( Delta == Cd[i].Pitch )
 				continue;
@@ -442,11 +449,10 @@ void OutMidiPort::NotesCorrect(int box)
 			Cd[i].Pitch = Delta;
 
 			Delta /= bending_range;
-
 			Delta = Delta >> 11;
-
-			Delta +=  0x4000; // lieber hier addieren //9
-
+			Delta +=  0x40 << 7; // we have to add here as Delta can be negative
+                        DEBUGLOG(midiio,_T("new freq = %08x/%d, Pitch= %06x/%d, Delta = %06x/%d, i=%d"), 
+                                 freq, freq, Cd[i].Pitch, Cd[i].Pitch, Delta, Delta, i);
 			//      MIDI_OUT3(0xE0+i, ((BYTE*)&Delta)[1] >> 1, (((BYTE*)&Delta)[2]));
 			MIDI_OUT3(0xE0+i, Delta & 0x7f, (Delta >> 7) & 0x7f );
 
@@ -484,7 +490,6 @@ int OutMidiPort::GetChannel(int taste)
 #ifdef RTMIDI
 void OutMidiPort::MidiOut(DWORD data, char n)
 {
-	DEBUGLOG (other, _T("RtMidi"));
 	std::vector<unsigned char> message;
 
 	while ( n-- ) {
@@ -718,61 +723,70 @@ void InMidiPort::Close()
 	Quite();
 };
 
-#define MIDICODE(i) \
+/*#define MIDICODE(i)                           \
   (((BYTE*)(&midiCode))[i])
-
+*/
 // f¸r bestimmte Route Codeverarbeitung
 void InMidiPort::ProceedRoute(DWORD midiCode, Route *route)
 {
+#ifdef DEBUG
+        if (midiCode != 0xf8)
+                DEBUGLOG(midiio,_T("midiCode = %x"), midiCode);
+#endif
 	int Box = route->Box;
-	BYTE MidiChannel = MIDICODE(0) & 0x0F;
-	BYTE MidiStatus = MIDICODE(0) & 0xF0;
+	BYTE MidiChannel = midiCode & 0x0F;
+	BYTE MidiStatus = midiCode & 0xF0;
 
 	switch ( MidiStatus ) {
 
 	case 0x90: // Note On
-		if ( MIDICODE(2) > 0 ) {
+		if ( (midiCode & 0x7f0000) > 0 ) {
 			if ( route->Active )
-				AddKey(Box, MIDICODE(1), route->GetId());
+				AddKey(Box, (midiCode >> 8) & 0xff, route->GetId());
 
 			if ( route->GetOutDevice() )
-				route->GetOutDevice()->NoteOn(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel, &Cd[MidiChannel]);
+				route->GetOutDevice()->NoteOn(Box, 
+                                                              (midiCode >> 8) & 0xff, 
+                                                              (midiCode >> 16) & 0xff,
+                                                              route, MidiChannel, &Cd[MidiChannel]);
 
 			break;
 		}
 
 	case 0x80: // Note Off
 		if ( route->Active )
-			DeleteKey(Box, MIDICODE(1), route->GetId());
+			DeleteKey(Box,(midiCode >> 8) & 0xff, route->GetId());
 
 		if ( route->GetOutDevice() )
-			route->GetOutDevice()->NoteOff(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel);
+			route->GetOutDevice()->NoteOff(Box, (midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff, route, MidiChannel);
 
 		break;
 
 	case 0xC0: // Programm Change
-		Cd[MidiChannel].Sound = MIDICODE(1);
+		Cd[MidiChannel].Sound = (midiCode >> 8) & 0xff;
 
 		break;
 
-	case 0xB0:
-		if ( MIDICODE(1) == 64 ) {
-			Cd[MidiChannel].Sustain = MIDICODE(2);
+	case 0xB0: // Control Change
+        { int control = (midiCode >> 8) & 0xff;
+                        int data = (midiCode >> 16) & 0xff;
+		if ( control == 64 ) {
+			Cd[MidiChannel].Sustain = data;
 
 			if ( route->GetOutDevice() )
 				route->GetOutDevice()->Sustain(Cd[MidiChannel].Sustain, MidiChannel);
 
 			break;
-		} else if ( MIDICODE(1) == 0 ) // BankSelectMSB
+		} else if ( control == 0 ) // BankSelectMSB
 		{
-			Cd[MidiChannel].BankSelectMSB = MIDICODE(2);
+			Cd[MidiChannel].BankSelectMSB = data;
 			break;
-		} else if ( MIDICODE(1) == 32 ) // BankSelectLSB
+		} else if ( control == 32 ) // BankSelectLSB
 		{
-			Cd[MidiChannel].BankSelectLSB = MIDICODE(2);
+			Cd[MidiChannel].BankSelectLSB =data;
 			break;
 		}
-
+        }
 	case 0xA0:
 
 	case 0xD0: // Key Pressure, Controler, Channel Pressure
@@ -787,7 +801,7 @@ void InMidiPort::ProceedRoute(DWORD midiCode, Route *route)
 
 	if ( Box >= 0 && route->Active )
 		for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-			MidiAnalysis(Box, MIDICODE(0));
+			MidiAnalysis(Box,midiCode & 0xff);
 			midiCode >>= 8;
 		}
 }
