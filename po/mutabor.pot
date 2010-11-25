@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2010-11-24 18:24+0100\n"
+"POT-Creation-Date: 2010-11-25 20:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,13 +101,13 @@ msgid ""
 msgstr ""
 
 #: mu32/routing/midi/DevMidF.cpp:276 mu32/routing/midi/DevMidF.cpp:618
-#: mu32/routing/midi/DevMidF.cpp:638 mu32/routing/midi/DevMidi.cpp:175
-#: mu32/routing/midi/DevMidi.cpp:650 mu32/routing/midi/DevMidi.cpp:670
+#: mu32/routing/midi/DevMidF.cpp:638 mu32/routing/midi/DevMidi.cpp:178
+#: mu32/routing/midi/DevMidi.cpp:654 mu32/routing/midi/DevMidi.cpp:674
 msgid "Warning loading route"
 msgstr ""
 
 #: mu32/routing/midi/DevMidF.cpp:515 mu32/routing/midi/DevMidF.cpp:521
-#: mu32/routing/midi/DevMidi.cpp:539 mu32/routing/midi/DevMidi.cpp:545
+#: mu32/routing/midi/DevMidi.cpp:543 mu32/routing/midi/DevMidi.cpp:549
 #: mu32/EDevice.cpp:476
 msgid "Bending_Range"
 msgstr ""
@@ -142,46 +142,46 @@ msgstr ""
 msgid "MIDI input file"
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:146 mu32/routing/midi/DevMidi.cpp:620
+#: mu32/routing/midi/DevMidi.cpp:149 mu32/routing/midi/DevMidi.cpp:624
 #: mu32/routing/Route.cpp:170 mu32/routing/Route.cpp:216 mu32/EDevice.cpp:440
 msgid "Unknown"
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:173
+#: mu32/routing/midi/DevMidi.cpp:176
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
 "The current route had to be corrected."
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:200
+#: mu32/routing/midi/DevMidi.cpp:203
 msgid "Can not open ouput Midi devices."
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:207
+#: mu32/routing/midi/DevMidi.cpp:210
 #, c-format
 msgid "Can not open output Midi device nr. %d (%s)"
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:648
+#: mu32/routing/midi/DevMidi.cpp:652
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
 "The current route had to be corrected."
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:668
+#: mu32/routing/midi/DevMidi.cpp:672
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:688
+#: mu32/routing/midi/DevMidi.cpp:692
 msgid "Can not open Midi input devices."
 msgstr ""
 
-#: mu32/routing/midi/DevMidi.cpp:695
+#: mu32/routing/midi/DevMidi.cpp:699
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr ""
@@ -258,355 +258,355 @@ msgstr ""
 msgid "Unknown device type %d."
 msgstr ""
 
-#: mu32/Errors.cpp:168
+#: mu32/Errors.cpp:171
 #, c-format
 msgid "Unknown error in %s , line %d !"
 msgstr ""
 
-#: mu32/Errors.cpp:171
+#: mu32/Errors.cpp:174
 #, c-format
 msgid "Syntax error in line %d"
 msgstr ""
 
-#: mu32/Errors.cpp:172
+#: mu32/Errors.cpp:175
 #, c-format
 msgid "Non-valid character: asc=%x (line %d)"
 msgstr ""
 
-#: mu32/Errors.cpp:173
+#: mu32/Errors.cpp:176
 #, c-format
 msgid "Can't open file: %s"
 msgstr ""
 
-#: mu32/Errors.cpp:174
+#: mu32/Errors.cpp:177
 msgid "Not enough memory or too few data for mutabor in source file"
 msgstr ""
 
-#: mu32/Errors.cpp:175 mu32/Errors.cpp:176 mu32/Errors.cpp:177
-#: mu32/Errors.cpp:178 mu32/Errors.cpp:179 mu32/Errors.cpp:195
-#: mu32/Errors.cpp:196 mu32/Errors.cpp:214 mu32/Errors.cpp:215
-#: mu32/Errors.cpp:216 mu32/Errors.cpp:217 mu32/Errors.cpp:218
-#: mu32/Errors.cpp:231 mu32/Errors.cpp:232 mu32/Errors.cpp:233
+#: mu32/Errors.cpp:178 mu32/Errors.cpp:179 mu32/Errors.cpp:180
+#: mu32/Errors.cpp:181 mu32/Errors.cpp:182 mu32/Errors.cpp:198
+#: mu32/Errors.cpp:199 mu32/Errors.cpp:217 mu32/Errors.cpp:218
+#: mu32/Errors.cpp:219 mu32/Errors.cpp:220 mu32/Errors.cpp:221
 #: mu32/Errors.cpp:234 mu32/Errors.cpp:235 mu32/Errors.cpp:236
-#: mu32/Errors.cpp:250 mu32/Errors.cpp:262
+#: mu32/Errors.cpp:237 mu32/Errors.cpp:238 mu32/Errors.cpp:239
+#: mu32/Errors.cpp:253 mu32/Errors.cpp:265
 msgid " "
-msgstr ""
-
-#: mu32/Errors.cpp:182
-#, c-format
-msgid "The interval name %s was used twice"
-msgstr ""
-
-#: mu32/Errors.cpp:183
-#, c-format
-msgid "The tone name %s was used twice"
-msgstr ""
-
-#: mu32/Errors.cpp:184
-#, c-format
-msgid "The tonesystem name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:185
 #, c-format
-msgid "The retuning name %s was used twice"
+msgid "The interval name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:186
 #, c-format
-msgid "The pattern name %s was used twice"
+msgid "The tone name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:187
 #, c-format
-msgid "The logic name %s was used twice"
+msgid "The tonesystem name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:188
-msgid "(unused)"
+#, c-format
+msgid "The retuning name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:189
 #, c-format
-msgid "The parameter name %s was used twice"
+msgid "The pattern name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:190
 #, c-format
-msgid "The MIDI-Instrument %d was used twice"
+msgid "The logic name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:191
-#, c-format
-msgid "MIDI-Mapping: Channel %d was used twice"
+msgid "(unused)"
 msgstr ""
 
 #: mu32/Errors.cpp:192
 #, c-format
-msgid "Logik %s contains more than one ELSE statement"
+msgid "The parameter name %s was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:193
 #, c-format
-msgid "Retuning %s contains more than one ELSE statement"
+msgid "The MIDI-Instrument %d was used twice"
 msgstr ""
 
 #: mu32/Errors.cpp:194
 #, c-format
+msgid "MIDI-Mapping: Channel %d was used twice"
+msgstr ""
+
+#: mu32/Errors.cpp:195
+#, c-format
+msgid "Logik %s contains more than one ELSE statement"
+msgstr ""
+
+#: mu32/Errors.cpp:196
+#, c-format
+msgid "Retuning %s contains more than one ELSE statement"
+msgstr ""
+
+#: mu32/Errors.cpp:197
+#, c-format
 msgid "The alternative %d is ued twice in %s"
-msgstr ""
-
-#: mu32/Errors.cpp:199
-#, c-format
-msgid "Undefined symbol: %s"
-msgstr ""
-
-#: mu32/Errors.cpp:200
-#, c-format
-msgid "Undefined interval: %s"
-msgstr ""
-
-#: mu32/Errors.cpp:201
-#, c-format
-msgid "Undefined tone: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:202
 #, c-format
-msgid "Undefined tonesystem: %s"
+msgid "Undefined symbol: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:203
 #, c-format
-msgid "Undefined retuning: %s"
+msgid "Undefined interval: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:204
 #, c-format
-msgid "Undefined pattern: %s (in logic %s)"
+msgid "Undefined tone: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:205
 #, c-format
-msgid "Undefined parameter name: %s in %s"
+msgid "Undefined tonesystem: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:206
 #, c-format
-msgid "Undefined interval: %s (in %s)"
+msgid "Undefined retuning: %s"
 msgstr ""
 
 #: mu32/Errors.cpp:207
 #, c-format
-msgid "Undefined tone: %s (in tone system %s)"
+msgid "Undefined pattern: %s (in logic %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:208
 #, c-format
-msgid "Undefined tone: %s (in retuning %s)"
+msgid "Undefined parameter name: %s in %s"
 msgstr ""
 
 #: mu32/Errors.cpp:209
-msgid "(to be reused)"
+#, c-format
+msgid "Undefined interval: %s (in %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:210
 #, c-format
-msgid "Undefined retuning: %s (in retuning %s)"
+msgid "Undefined tone: %s (in tone system %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:211
 #, c-format
-msgid "Undefined initial tuning: %s (in logic %s)"
+msgid "Undefined tone: %s (in retuning %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:212
-#, c-format
-msgid "Undefined action: %s (in logic %s)"
+msgid "(to be reused)"
 msgstr ""
 
 #: mu32/Errors.cpp:213
 #, c-format
+msgid "Undefined retuning: %s (in retuning %s)"
+msgstr ""
+
+#: mu32/Errors.cpp:214
+#, c-format
+msgid "Undefined initial tuning: %s (in logic %s)"
+msgstr ""
+
+#: mu32/Errors.cpp:215
+#, c-format
+msgid "Undefined action: %s (in logic %s)"
+msgstr ""
+
+#: mu32/Errors.cpp:216
+#, c-format
 msgid "Undefined parameter: %s (in call %s from logic %s)"
 msgstr ""
 
-#: mu32/Errors.cpp:222
-msgid "Bad MIDI channel (valid: 1...16)"
-msgstr ""
-
-#: mu32/Errors.cpp:223
-#, c-format
-msgid "Bad interval value in %s"
-msgstr ""
-
-#: mu32/Errors.cpp:224
-#, c-format
-msgid "Bad key %d (valid: 36..96 (in tonesystem %s)"
-msgstr ""
-
 #: mu32/Errors.cpp:225
-#, c-format
-msgid "Not-complex tone in retuning %s ( %s )"
+msgid "Bad MIDI channel (valid: 1...16)"
 msgstr ""
 
 #: mu32/Errors.cpp:226
 #, c-format
-msgid "Bad value in %s"
+msgid "Bad interval value in %s"
 msgstr ""
 
 #: mu32/Errors.cpp:227
 #, c-format
-msgid "Bad MIDI-Code in logic %s (expecting %s )"
+msgid "Bad key %d (valid: 36..96 (in tonesystem %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:228
 #, c-format
-msgid "Logic %s must not be called by ELSE"
+msgid "Not-complex tone in retuning %s ( %s )"
 msgstr ""
 
 #: mu32/Errors.cpp:229
 #, c-format
-msgid "A Key needs to be a single character ( %s )"
+msgid "Bad value in %s"
 msgstr ""
 
 #: mu32/Errors.cpp:230
 #, c-format
+msgid "Bad MIDI-Code in logic %s (expecting %s )"
+msgstr ""
+
+#: mu32/Errors.cpp:231
+#, c-format
+msgid "Logic %s must not be called by ELSE"
+msgstr ""
+
+#: mu32/Errors.cpp:232
+#, c-format
+msgid "A Key needs to be a single character ( %s )"
+msgstr ""
+
+#: mu32/Errors.cpp:233
+#, c-format
 msgid "Division by (nearly) 0 in line %d"
-msgstr ""
-
-#: mu32/Errors.cpp:239
-#, c-format
-msgid "In retuning %s and %s : Bad parameters"
-msgstr ""
-
-#: mu32/Errors.cpp:240
-#, c-format
-msgid "In logic %s : Bad number of parameters ( %s )"
-msgstr ""
-
-#: mu32/Errors.cpp:241
-#, c-format
-msgid "In logik %s : initial tuning %s mustn't have parameters"
 msgstr ""
 
 #: mu32/Errors.cpp:242
 #, c-format
-msgid "In collection %s : call to %s mustn't have parameters"
+msgid "In retuning %s and %s : Bad parameters"
 msgstr ""
 
 #: mu32/Errors.cpp:243
 #, c-format
-msgid "In case %s : call to %s mustn't have parameters"
+msgid "In logic %s : Bad number of parameters ( %s )"
+msgstr ""
+
+#: mu32/Errors.cpp:244
+#, c-format
+msgid "In logik %s : initial tuning %s mustn't have parameters"
+msgstr ""
+
+#: mu32/Errors.cpp:245
+#, c-format
+msgid "In collection %s : call to %s mustn't have parameters"
 msgstr ""
 
 #: mu32/Errors.cpp:246
 #, c-format
+msgid "In case %s : call to %s mustn't have parameters"
+msgstr ""
+
+#: mu32/Errors.cpp:249
+#, c-format
 msgid "Tones %s and %s are dependent"
 msgstr ""
 
-#: mu32/Errors.cpp:247
+#: mu32/Errors.cpp:250
 #, c-format
 msgid "Retunings/logics %s and %s are dependent"
 msgstr ""
 
-#: mu32/Errors.cpp:248
+#: mu32/Errors.cpp:251
 #, c-format
 msgid "Intervals %s and %s are dependent"
 msgstr ""
 
-#: mu32/Errors.cpp:249
+#: mu32/Errors.cpp:252
 msgid "MIDI-channels are dependent"
-msgstr ""
-
-#: mu32/Errors.cpp:253
-#, c-format
-msgid "Wrong character ! Expecting %s (line %d)"
-msgstr ""
-
-#: mu32/Errors.cpp:254
-#, c-format
-msgid "Bad interval declaration of intervall %s"
-msgstr ""
-
-#: mu32/Errors.cpp:255
-#, c-format
-msgid "Bad tone declaration of tone %s"
 msgstr ""
 
 #: mu32/Errors.cpp:256
 #, c-format
-msgid "Bad tonesystem declaration. (line %d)"
+msgid "Wrong character ! Expecting %s (line %d)"
 msgstr ""
 
 #: mu32/Errors.cpp:257
 #, c-format
-msgid "Bad parameter list in call to %s in line %d"
+msgid "Bad interval declaration of intervall %s"
 msgstr ""
 
 #: mu32/Errors.cpp:258
 #, c-format
-msgid "Bad retuning in line %d"
+msgid "Bad tone declaration of tone %s"
 msgstr ""
 
 #: mu32/Errors.cpp:259
 #, c-format
-msgid "bad pattern decl. at %s"
+msgid "Bad tonesystem declaration. (line %d)"
 msgstr ""
 
 #: mu32/Errors.cpp:260
 #, c-format
-msgid "Bad MIDI list in line %d"
+msgid "Bad parameter list in call to %s in line %d"
 msgstr ""
 
 #: mu32/Errors.cpp:261
 #, c-format
+msgid "Bad retuning in line %d"
+msgstr ""
+
+#: mu32/Errors.cpp:262
+#, c-format
+msgid "bad pattern decl. at %s"
+msgstr ""
+
+#: mu32/Errors.cpp:263
+#, c-format
+msgid "Bad MIDI list in line %d"
+msgstr ""
+
+#: mu32/Errors.cpp:264
+#, c-format
 msgid "No hex number after # (line %d)"
 msgstr ""
 
-#: mu32/Errors.cpp:268
+#: mu32/Errors.cpp:271
 msgid "Undefined compiler warning"
 msgstr ""
 
-#: mu32/Errors.cpp:269
+#: mu32/Errors.cpp:272
 #, c-format
 msgid ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
 msgstr ""
 
-#: mu32/Errors.cpp:270
+#: mu32/Errors.cpp:273
 #, c-format
 msgid "Non existent harmony event in logic %s"
 msgstr ""
 
-#: mu32/Errors.cpp:271
+#: mu32/Errors.cpp:274
 #, c-format
 msgid "Non well defined event %s in logic %s"
 msgstr ""
 
-#: mu32/Errors.cpp:272
+#: mu32/Errors.cpp:275
 #, c-format
 msgid "Event ELSE is last in %s"
 msgstr ""
 
-#: mu32/Errors.cpp:273
+#: mu32/Errors.cpp:276
 msgid "MIDI channels wasted in channel assotiation"
 msgstr ""
 
-#: mu32/Errors.cpp:274
+#: mu32/Errors.cpp:277
 msgid "No file given, trying test.mut"
 msgstr ""
 
-#: mu32/Errors.cpp:275
+#: mu32/Errors.cpp:278
 msgid "Invalid configuration file"
 msgstr ""
 
-#: mu32/Errors.cpp:276
+#: mu32/Errors.cpp:279
 #, c-format
 msgid "Intersection of MIDI channels %d und %d"
 msgstr ""
 
-#: mu32/Errors.cpp:277
+#: mu32/Errors.cpp:280
 #, c-format
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr ""
@@ -620,11 +620,11 @@ msgstr ""
 msgid "Unexpected action type: %d"
 msgstr ""
 
-#: mu32/GrafKern.cpp:304
+#: mu32/GrafKern.cpp:307
 msgid "Compiler warning"
 msgstr ""
 
-#: mu32/GrafKern.cpp:383 mu32/GrafKern.cpp:386
+#: mu32/GrafKern.cpp:386 mu32/GrafKern.cpp:389
 msgid "line"
 msgstr ""
 
@@ -687,23 +687,23 @@ msgstr ""
 msgid "No output device"
 msgstr ""
 
-#: muwx/Routing/BoxDlg.cpp:274
+#: muwx/Routing/BoxDlg.cpp:277
 msgid "Remove Route"
 msgstr ""
 
-#: muwx/Routing/BoxDlg.cpp:274
+#: muwx/Routing/BoxDlg.cpp:277
 msgid "Undelete Route"
 msgstr ""
 
-#: muwx/Routing/BoxDlg.cpp:310
+#: muwx/Routing/BoxDlg.cpp:313
 msgid "No box / thru mode"
 msgstr ""
 
-#: muwx/Routing/BoxDlg.cpp:314
+#: muwx/Routing/BoxDlg.cpp:317
 msgid "Mutabor box"
 msgstr ""
 
-#: muwx/Routing/BoxDlg.cpp:318
+#: muwx/Routing/BoxDlg.cpp:321
 msgid "GUIDO file box"
 msgstr ""
 
@@ -724,31 +724,31 @@ msgstr ""
 msgid "Box %d"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.cpp:49 muwx/Routing/OutputDevDlg.cpp:79
+#: muwx/Routing/InputDevDlg.cpp:49 muwx/Routing/OutputDevDlg.cpp:82
 msgid "MIDI Device"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.cpp:50 muwx/Routing/OutputDevDlg.cpp:80
+#: muwx/Routing/InputDevDlg.cpp:50 muwx/Routing/OutputDevDlg.cpp:83
 #: xrc/reslocale.cpp:67 xrc/reslocale.cpp:70 xrc/reslocale.cpp:82
 #: xrc/reslocale.cpp:87
 msgid "MIDI file"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.cpp:51 muwx/Routing/OutputDevDlg.cpp:81
+#: muwx/Routing/InputDevDlg.cpp:51 muwx/Routing/OutputDevDlg.cpp:84
 #: xrc/reslocale.cpp:68 xrc/reslocale.cpp:72 xrc/reslocale.cpp:83
 #: xrc/reslocale.cpp:91
 msgid "GUIDO file"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.cpp:114 muwx/Routing/OutputDevDlg.cpp:151
+#: muwx/Routing/InputDevDlg.cpp:114 muwx/Routing/OutputDevDlg.cpp:154
 msgid "Choose device type"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.cpp:125 muwx/Routing/OutputDevDlg.cpp:162
+#: muwx/Routing/InputDevDlg.cpp:125 muwx/Routing/OutputDevDlg.cpp:165
 msgid "Unknown device type"
 msgstr ""
 
-#: muwx/Routing/InputDevDlg.h:92
+#: muwx/Routing/InputDevDlg.h:95
 msgid "Input Device"
 msgstr ""
 
@@ -758,15 +758,15 @@ msgstr ""
 msgid "no device"
 msgstr ""
 
-#: muwx/Routing/NewBoxShape.cpp:124
+#: muwx/Routing/NewBoxShape.cpp:127
 msgid "Create Box"
 msgstr ""
 
-#: muwx/Routing/NewInputDeviceShape.h:71
+#: muwx/Routing/NewInputDeviceShape.h:74
 msgid "New Input device"
 msgstr ""
 
-#: muwx/Routing/NewOutputDeviceShape.h:83
+#: muwx/Routing/NewOutputDeviceShape.h:86
 msgid "New Output device"
 msgstr ""
 
@@ -935,7 +935,7 @@ msgstr ""
 msgid "help.html"
 msgstr ""
 
-#: muwx/MutApp.cpp:709 muwx/MutConfDlg.h:58
+#: muwx/MutApp.cpp:709 muwx/MutConfDlg.h:61
 msgid "The setup dialog"
 msgstr ""
 
