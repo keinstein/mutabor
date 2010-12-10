@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.23 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.24 2010/12/10 09:28:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.23 $
+ * $Date: 2010/12/10 09:28:23 $
+ * \version $Revision: 1.24 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.23  2010/11/21 13:15:47  keinstein
+ * Revision 1.24  2010/12/10 09:28:23  keinstein
+ * add menu item to help menu, which calls exit(0).
+ *
+ * Revision 1.23  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.21.2.11  2010-11-19 10:06:32  keinstein
@@ -544,6 +547,8 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_MENU(CM_ABOUT, MutApp::CmAbout)
 	//    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
 	EVT_MENU(CM_EXIT, MutApp::CmQuit)
+	EVT_MENU(cmCallExitId, MutApp::CmCallExit)
+
 
 	/*    EVT_CLOSE(MutFrame::OnClose)
 	    EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
@@ -870,6 +875,11 @@ void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
 
 	MENUITEM(_("&About"), CM_ABOUT,
 	         _("Show information about the program"));
+#ifdef DEBUG
+	MENUITEM_SEPARATOR;
+	MENUITEM(_("Stop"), cmCallExitId,
+	         _("Stop the current program"));
+#endif
 	CLOSEMENU(_("&Help"));
 }
 
