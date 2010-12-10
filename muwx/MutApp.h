@@ -2,13 +2,16 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.14 2010/11/21 13:15:47 keinstein Exp $
+ * $Id: MutApp.h,v 1.15 2010/12/10 09:28:23 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.14 $
+ * \date $Date: 2010/12/10 09:28:23 $
+ * \version $Revision: 1.15 $
  *
  * $Log: MutApp.h,v $
- * Revision 1.14  2010/11/21 13:15:47  keinstein
+ * Revision 1.15  2010/12/10 09:28:23  keinstein
+ * add menu item to help menu, which calls exit(0).
+ *
+ * Revision 1.14  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.12.2.3  2010-09-30 16:26:26  keinstein
@@ -213,6 +216,15 @@ public:
 	void ShowHelp(int commandId);
 	/// Exit the program
 	void CmQuit (wxCommandEvent& event);
+#ifdef DEBUG
+	/// Exit immediately with exit()
+	/** This function meight be helpful in compiling */
+	void CmCallExit(wxCommandEvent& event)
+	{
+	  exit(0);
+	}
+#endif
+
 	/// Create a main frame
 	/** This function create a new Top Level Frame.
 	    \param type Flag indicating which parts the menu bar shall contain.
