@@ -202,7 +202,7 @@ void MutTag::OnPaint(wxPaintEvent& WXUNUSED(event))
 {
 	wxPaintDC dc(this);
 
-	dc.SetMapMode(MM_TEXT);
+	dc.SetMapMode(wxMM_TEXT);
 	// evtl. erst noch Abteilung des Textes berechnen
 
 	if ( TPos == -1 ) InitText(dc);
@@ -296,7 +296,7 @@ void MutTag::OnChar(wxKeyEvent& event)
 //  TButton::EvChar(key, repeatCount, flags);
 
 	if ( ('A' < event.GetKeyCode() && event.GetKeyCode() <= 'z') || event.GetKeyCode() == WXK_TAB || event.GetKeyCode() == WXK_RETURN || event.GetKeyCode() == WXK_SPACE )
-		GetParent()->AddPendingEvent(event);
+		wxPostEvent(GetParent(),event);
 }
 
 void MutTag::OnLeftUp(wxMouseEvent& event)
@@ -307,7 +307,7 @@ void MutTag::OnLeftUp(wxMouseEvent& event)
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
 		event1.SetEventObject(this);
 		//((MutLogicWnd*)GetParent())->UpDate(GetKey(), GetIsLogic());
-		GetParent()->AddPendingEvent(event1);
+		wxPostEvent(GetParent(),event1);
 	}
 }
 
@@ -413,7 +413,7 @@ void MutLogicWnd::doClose(wxEvent& event)
 
 	DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 
-	if (stop) parent->AddPendingEvent(event1);
+	if (stop) wxPostEvent(parent,event1);
 
 	DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 }

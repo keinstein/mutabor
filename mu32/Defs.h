@@ -13,6 +13,7 @@
 #ifdef WX
 #include "mhDefs.h"
 #include "wx/wxchar.h"
+#include "wx/intl.h"
 #endif
 
 
@@ -66,10 +67,10 @@
 #define mutStrEq2(left, right) (left.IsSameAs(right))
 #define mutStrLast(x) ((x).Last())
 #define mutLen(x) ((x).Len())
-#define C_STR(x) ((x).c_str())
+#define C_STR(x) ((const wxChar *)(x).c_str())
 #define mutC_STR(x) (C_STR(muT(x)))
 
-#define mutStrLen wxStrlen_
+#define mutStrLen wxStrlen
 #define mutStrChr wxStrchr
 #define mutIsspace wxIsspace
 #define mutIsdigit wxIsdigit
@@ -98,6 +99,16 @@
 #define mutStreamBad(stream) (!(stream).IsOk())
 #define mutStreamGood(stream) ((stream).IsOk())
 #define mutStreamEOF(stream) ((stream).Eof())
+
+#if (wxMAJOR_VERSION > 2 || wxMINOR_VERSION >= 9)
+#define mutTranslationChar char
+#define N_T(s) (s)
+#define _C_STR(s) C_STR(s)
+#else
+#define mutTranslationChar mutChar
+#define N_T(s) _T(s)
+#define _C_STR(s) (s)
+#endif
 
 #else
 

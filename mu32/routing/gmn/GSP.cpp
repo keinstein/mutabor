@@ -636,7 +636,7 @@ int DoParse()
 					              Brackets[Brackets.Len()-1]);
 
 					if ( Brackets[Brackets.Len()-1] != i-1 )
-						return DoError(2 + Brackets[BracketDeep-1]/2);
+						return DoError(2 + (int) Brackets[BracketDeep-1]/2);
 
 					Brackets = Brackets.Left(Brackets.Len()-1);
 

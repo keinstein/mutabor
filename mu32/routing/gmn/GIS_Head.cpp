@@ -833,12 +833,12 @@ void ChordNote::CheckCloseAlter()
 		AddGis(new GisTagEnd((GisTagBegin*)*AlterBegin, *Sep));
 
 #ifdef WX
-		if ( *Sep ) {
+		if ( Sep->size() ) {
 			*Sep = wxEmptyString;
 		}
 
 #else
-		if ( *Sep ) {
+		if ( *Sep.length() ) {
 			free(*Sep);
 			*Sep = 0;
 		}
@@ -866,7 +866,7 @@ void ChordNote::CheckCloseTie()
 		AddGis(new GisTagEnd((GisTagBegin*)*TieBegin, *Sep));
 
 #ifdef WX
-		if ( *Sep ) {
+		if ( Sep->size() ) {
 			*Sep=mutEmptyString;
 		}
 

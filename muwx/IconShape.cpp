@@ -4,15 +4,18 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.2 2010/11/21 13:15:47 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.3 2010/12/11 02:10:09 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2010/11/21 13:15:47 $
-* \version $Revision: 1.2 $
+* $Date: 2010/12/11 02:10:09 $
+* \version $Revision: 1.3 $
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.2  2010/11/21 13:15:47  keinstein
+* Revision 1.3  2010/12/11 02:10:09  keinstein
+* make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+*
+* Revision 1.2  2010-11-21 13:15:47  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.7  2010-06-15 14:30:14  keinstein
@@ -163,7 +166,7 @@ wxSize MutIconShape::DoGetBestSize() const
 		int h = Icon.GetHeight();
 		s.y += h;
 	}
-	s = GetWindowSizeForVirtualSize(s);
+
 	if (GetSizer()) {
 		s1 = GetSizer()->CalcMin();
 		DEBUGLOG (other, _T("our %p sizer best size: %dx%d"),this,s1.x,s1.y);

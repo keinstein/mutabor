@@ -4,7 +4,7 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     29/01/98
-// RCS-ID:      $Id: valNum.h,v 1.6 2009/08/10 11:15:47 keinstein Exp $
+// RCS-ID:      $Id: valNum.h,v 1.7 2010/12/11 02:10:09 keinstein Exp $
 // Copyright:   (c) 1998 Julian Smart
 // Licence:   	wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -92,7 +92,7 @@ public:
 
 protected:
 
-	/*    bool CheckValidator() const
+	    bool CheckValidator() const
 	    {
 	        wxCHECK_MSG( m_validatorWindow, FALSE,
 	                     _T("No window associated with validator") );
@@ -102,7 +102,7 @@ protected:
 	                     _T("No variable storage for validator") );
 
 	        return TRUE;
-	    }*/
+	    }
 };
 
 #endif

@@ -2292,7 +2292,7 @@ static void berechne_ton_endgueltig (int k)
 		break;
 
 	default:
-		fatal_error(0,_("loop"));
+		fatal_error(0,_C_STR(_("loop")));
 	}
 }
 
@@ -2328,7 +2328,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 		else if (toene[i]->ton_typ == ton_komplex) {
 			adjazent (i, ton_nummer (toene[i]->u.ton_komplex.bezugston)) = 1;
 		} else {
-			fatal_error(0,_("loop"));
+			fatal_error(0,_C_STR(_("loop")));
 		}
 	}
 
@@ -2518,7 +2518,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, const char * name)
 
 		if (midi_lauf -> midi_code < 128 ||
 		                midi_lauf -> midi_code > 255 ) {
-			fatal_error (50, mutC_STR(name), _("status byte"));
+			fatal_error (50, mutC_STR(name), _C_STR(_("status byte")));
 		}
 
 		if (midi_lauf -> midi_code & 0x000F ) {
@@ -2531,7 +2531,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, const char * name)
 		while (midi_lauf) {
 			if (midi_lauf -> midi_code < 0 ||
 			                midi_lauf -> midi_code > 127 ) {
-				fatal_error (50, mutC_STR(name), _("data byte"));
+				fatal_error (50, mutC_STR(name), _C_STR(_("data byte")));
 			} else
 				midi_lauf = midi_lauf -> next;
 		}
@@ -2559,7 +2559,7 @@ static void check_aktionen (struct aktions_liste * aktionen, const char * name)
 			while (midi_lauf) {
 				if (midi_lauf -> midi_code < 0 ||
 				                midi_lauf -> midi_code > 255 ) {
-					fatal_error (50, mutC_STR(name), _("byte"));
+					fatal_error (50, mutC_STR(name), _C_STR(_("byte")));
 				}
 
 				midi_lauf = midi_lauf -> next;
@@ -2830,7 +2830,7 @@ static void check_konsistenz (void)
 
 						if (strcmp (lauf_ton->name,
 						                lauf_ton->u.ton_komplex.bezugston)) {
-							fatal_error(0,_T(__FILE__),__LINE__,_("retuning"));
+							fatal_error(0,_T(__FILE__),__LINE__,_C_STR(_("retuning")));
 						}
 
 						if ((lauf_ton->name[0] != '@') &&

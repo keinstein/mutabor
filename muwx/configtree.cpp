@@ -2,13 +2,16 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.3 2010/11/21 23:39:00 keinstein Exp $
+ * $Id: configtree.cpp,v 1.4 2010/12/11 02:10:09 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 23:39:00 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2010/12/11 02:10:09 $
+ * \version $Revision: 1.4 $
  *
  * $Log: configtree.cpp,v $
- * Revision 1.3  2010/11/21 23:39:00  keinstein
+ * Revision 1.4  2010/12/11 02:10:09  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.3  2010-11-21 23:39:00  keinstein
  * some corrections for allowing debuild to complete
  *
  * Revision 1.2  2010-11-21 13:15:47  keinstein
@@ -203,7 +206,9 @@ void configtree::toParent(unsigned int count)
 		while (oldstate.chdepth--) 
 			config -> SetPath(_T(".."));
 		states.pop();
+#ifdef DEBUG
 		wxASSERT(config->GetPath() == oldstate.oldpath);
+#endif
 		DEBUGLOG(config,
 			 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
 			 config->GetPath().c_str(), 

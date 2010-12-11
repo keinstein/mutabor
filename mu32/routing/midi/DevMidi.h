@@ -136,9 +136,13 @@ public:
 		s.Printf(_T("\n  KeyDir = [ %d"), KeyDir[0]);
 		for (int i = 1; i<16; i++)
 			s.Printf(_T(", %d"),KeyDir[i]);
-		s.Printf(_T("]\n  ton_auf_kanal = [ %d"), ton_auf_kanal[0]);
+		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d"), 
+			 ton_auf_kanal[0].taste,
+			 ton_auf_kanal[0].key);
 		for (int i = 1; i<16; i++)
-			s.Printf(_T(", %d"), ton_auf_kanal[i]);
+			s.Printf(_T("; t=%d,k=%d"), 
+				 ton_auf_kanal[i].taste,
+				 ton_auf_kanal[i].key);
 		s+=_T("]");
 		return s;
 	}

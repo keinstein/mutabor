@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.23 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.24 2010/12/11 02:10:09 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.23 $
+ * \date $Date: 2010/12/11 02:10:09 $
+ * \version $Revision: 1.24 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.23  2010/11/21 13:15:47  keinstein
+ * Revision 1.24  2010/12/11 02:10:09  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.23  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.21.2.10  2010-11-20 21:58:16  keinstein
@@ -438,11 +441,11 @@ void MutFrame::InitToolBar(wxToolBar* toolBar)
 	toolBar->AddTool(CM_FILEOPEN, _("Open"), *bitmaps[1], _("Open file"));
 	toolBar->AddTool(CM_FILESAVE, _("Save"), *bitmaps[2], _("Save file"));
 	toolBar->AddSeparator();
-	toolBar->AddTool(3, _("Copy"), *bitmaps[3], _("Copy"));
-	toolBar->AddTool(4, _("Cut"), *bitmaps[4],  _("Cut"));
-	toolBar->AddTool(5, _("Paste"), *bitmaps[5], _("Paste"));
+	toolBar->AddTool(wxID_COPY, _("Copy"), *bitmaps[3], _("Copy"));
+	toolBar->AddTool(wxID_CUT, _("Cut"), *bitmaps[4],  _("Cut"));
+	toolBar->AddTool(wxID_PASTE, _("Paste"), *bitmaps[5], _("Paste"));
 	toolBar->AddSeparator();
-	toolBar->AddTool(6, _("Print"), *bitmaps[6], _("Print"));
+	toolBar->AddTool(wxID_PRINT, _("Print"), *bitmaps[6], _("Print"));
 	toolBar->AddSeparator();
 	toolBar->AddTool( CM_ABOUT, _("About"), *bitmaps[7], _("Help"));
 	toolBar->AddSeparator();
@@ -461,7 +464,7 @@ void MutFrame::PassEventToEditor(wxCommandEvent &event)
 	event.Skip(false);
 
 	if (dynamic_cast<MutEditFile*>(client)) {
-		client->ProcessEvent(event);
+		wxPostEvent(client,event);
 	}
 }
 
@@ -490,7 +493,7 @@ void MutFrame::EventPassOn(wxCommandEvent& event)
 	wxWindow * frame = auimanager.GetManagedWindow();
 
 	if (frame) {
-		frame->ProcessEvent(event);
+		wxPostEvent(frame,event);
 		std::cout << "Event " << event.ShouldPropagate() << " war da:"
 		<< (frame->GetName().fn_str()) << std::endl;
 	}
@@ -659,11 +662,9 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 void UpdateUIcallback()
 {
 	if ( theFrame ) {
-		wxCommandEvent *event1 =
-		        new wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED,
+		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
 		                           CM_UPDATEUI);
-		theFrame->AddPendingEvent(*event1);
-		delete (event1);
+		wxPostEvent(theFrame,event1);
 	}
 }
 

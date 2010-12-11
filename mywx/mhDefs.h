@@ -10,7 +10,6 @@
 #include <iostream>
 #include <typeinfo>
 
-#include "Defs.h"
 
 #include "Mutabor.rh"
 

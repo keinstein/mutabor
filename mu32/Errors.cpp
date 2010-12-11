@@ -2,14 +2,17 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.cpp,v 1.8 2010/11/21 13:15:44 keinstein Exp $
+ * $Id: Errors.cpp,v 1.9 2010/12/11 02:10:08 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:44 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2010/12/11 02:10:08 $
+ * \version $Revision: 1.9 $
  *
  * $Log: Errors.cpp,v $
- * Revision 1.8  2010/11/21 13:15:44  keinstein
+ * Revision 1.9  2010/12/11 02:10:08  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.8  2010-11-21 13:15:44  keinstein
  * merged experimental_tobias
  *
  * Revision 1.7.2.3  2010-05-07 11:40:27  keinstein
@@ -165,7 +168,7 @@ const mutChar * Warning_text[] =
 
 #else
 
-const mutChar * Error_text[] =
+const mutTranslationChar * Error_text[] =
         {
 
                 /* 0 */ N_("Unknown error in %s , line %d !"), /* allgemeinster Fehler */
@@ -266,7 +269,7 @@ const mutChar * Error_text[] =
 
         };
 
-const mutChar * Warning_text[] =
+const mutTranslationChar * Warning_text[] =
         {
                 /*  0 */ N_("Undefined compiler warning"),
                 N_("MIDI event in logic %s does not start with channel 0 status byte. Value corrected."),

@@ -169,7 +169,7 @@ static void berechne_intervall_endgueltig (int k)
 	break;
 
 	default:
-		fatal_error(0,_("loop"));
+		fatal_error(0,_C_STR(_("loop")));
 	}
 }
 
@@ -213,7 +213,7 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 				adjazent (i, intervall_nummer (lauf -> name)) = 1;
 			}
 		} else {
-			fatal_error(0,_("loop"));
+			fatal_error(0,_C_STR(_("loop")));
 		}
 	}
 
