@@ -34,7 +34,7 @@ extern int  SepPos;
 
 #endif
 
-extern const mutChar *GspErrorText[];
+extern const mutTranslationChar *GspErrorText[];
 
 int GspParse(const mutString &FileName);
 

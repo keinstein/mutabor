@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.24 2010/12/10 09:28:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.25 2010/12/11 02:10:09 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2010/12/10 09:28:23 $
- * \version $Revision: 1.24 $
+ * $Date: 2010/12/11 02:10:09 $
+ * \version $Revision: 1.25 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.24  2010/12/10 09:28:23  keinstein
+ * Revision 1.25  2010/12/11 02:10:09  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.24  2010-12-10 09:28:23  keinstein
  * add menu item to help menu, which calls exit(0).
  *
  * Revision 1.23  2010-11-21 13:15:47  keinstein
@@ -547,7 +550,9 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_MENU(CM_ABOUT, MutApp::CmAbout)
 	//    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
 	EVT_MENU(CM_EXIT, MutApp::CmQuit)
+#ifdef DEBUG
 	EVT_MENU(cmCallExitId, MutApp::CmCallExit)
+#endif
 
 
 	/*    EVT_CLOSE(MutFrame::OnClose)
@@ -655,7 +660,7 @@ void MutApp::CmFileOpen (wxCommandEvent& event)
 	case CM_EXECUTE:
 		wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_ACTIVATE);
 
-		frame->ProcessEvent(e);
+		wxPostEvent(frame,e);
 
 		break;
 	}

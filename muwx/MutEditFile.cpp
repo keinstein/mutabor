@@ -194,7 +194,7 @@ void MutEditFile::CmCompile(wxCommandEvent& event)
 
 	if ( LogicOn ) {
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-		GetParent()->ProcessEvent(event1);
+		wxPostEvent(GetParent(),event1);
 	}
 
 	if ( !SaveFile(TmpFile) ) {
@@ -256,7 +256,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& event)
 
 	if ( LogicOn ) {
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-		GetParent()->ProcessEvent(event1);
+		wxPostEvent(GetParent(),event1);
 	}
 
 	if ( !SaveFile(TmpFile) ) {
@@ -280,7 +280,7 @@ void MutEditFile::CmCompAct(wxCommandEvent& event)
 			//CompDia->SendMessage(WM_CLOSE);
 			CompDia->Destroy();
 			wxCommandEvent event2(wxEVT_COMMAND_MENU_SELECTED, CM_DOACTIVATE);
-			GetParent()->AddPendingEvent(event2);
+			wxPostEvent(GetParent(),event2);
 		} else {
 			CompiledFile = wxEmptyString;
 			GoErrorLine();

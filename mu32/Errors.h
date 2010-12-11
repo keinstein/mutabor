@@ -2,14 +2,17 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.h,v 1.2 2010/11/21 13:15:44 keinstein Exp $
+ * $Id: Errors.h,v 1.3 2010/12/11 02:10:08 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:44 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2010/12/11 02:10:08 $
+ * \version $Revision: 1.3 $
  *
  * $Log: Errors.h,v $
- * Revision 1.2  2010/11/21 13:15:44  keinstein
+ * Revision 1.3  2010/12/11 02:10:08  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.2  2010-11-21 13:15:44  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.2  2010-01-14 09:34:24  keinstein
@@ -32,9 +35,9 @@
 #define MUTABOR_ERRORS_H
 
 
-extern const mutChar * Error_text[];
+extern const mutTranslationChar * Error_text[];
 
-extern const mutChar * Warning_text[];
+extern const mutTranslationChar * Warning_text[];
 
 #define MUT_ERR_MALLOC_FAILED MUT_ERR_UNFINISHED_TRANSLATION
 

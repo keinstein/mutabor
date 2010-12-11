@@ -4,15 +4,18 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.2 2010/11/21 13:15:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.3 2010/12/11 02:10:08 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.2 $
+ * $Date: 2010/12/11 02:10:08 $
+ * \version $Revision: 1.3 $
  *
  * $Log: Device.cpp,v $
- * Revision 1.2  2010/11/21 13:15:45  keinstein
+ * Revision 1.3  2010/12/11 02:10:08  keinstein
+ * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+ *
+ * Revision 1.2  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.5  2010-09-30 16:26:26  keinstein
@@ -145,7 +148,7 @@ void OutDevice::LoadDevices(tree_storage & config)
 		if (!out) continue;
 		out -> Device::SetId(i);
 		wxString name = config.Read(_T("Type Name"),_T("Midi output device"));
-		wxASSERT(name = out->GetTypeName());
+		wxASSERT(name == out->GetTypeName());
 		out -> Load(config);
 		i = config.toNextLeaf(_T("Device"));
 	}
@@ -372,7 +375,7 @@ void InDevice::LoadDevices(tree_storage & config)
 		InDevice * in = InDevice::CreateDevice(type);
 		in -> Device::SetId(i);
 		wxString name = config.Read(_T("Type Name"),_T("Midi input device"));
-		wxASSERT(name = in -> GetTypeName());
+		wxASSERT(name == in -> GetTypeName());
 		in -> Load(config);
 		i = config.toNextLeaf(_T("Device"));
 	}

@@ -752,7 +752,7 @@ void UnRavel()
 	}
 
 	// clear TagName
-	if ( TagName ) Clear(&TagName);
+	if ( TagName.size() ) Clear(&TagName);
 
 	// clear Para
 	if ( Para ) delete Para;
