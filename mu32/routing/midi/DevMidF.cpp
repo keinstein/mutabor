@@ -2,14 +2,17 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.3 2010/11/23 21:19:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.4 2010/12/13 00:27:53 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/23 21:19:22 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2010/12/13 00:27:53 $
+ * \version $Revision: 1.4 $
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.3  2010/11/23 21:19:22  keinstein
+ * Revision 1.4  2010/12/13 00:27:53  keinstein
+ * compiles in linux as well as in mingw
+ *
+ * Revision 1.3  2010-11-23 21:19:22  keinstein
  * make automatic stopping working again
  *
  * Revision 1.2  2010-11-21 13:15:46  keinstein
@@ -182,7 +185,7 @@ void Track::WriteDelta()
 	BYTE w[5];
 	int i = 0;
 	DWORD Delta = (unsigned int)CurrentTime - Time;
-	Time = CurrentTime;
+	Time = (unsigned int) CurrentTime;
 	w[0] = Delta & 0x7F;
 	Delta >>= 7;
 
