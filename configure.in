@@ -142,7 +142,7 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
 
-case "$target_os" in 
+case "$host_os" in 
 
 dnl GNU/Linux on an Intel or compatible
 *linux*)

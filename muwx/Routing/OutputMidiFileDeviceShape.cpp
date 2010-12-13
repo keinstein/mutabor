@@ -4,15 +4,18 @@
 ********************************************************************
 * Midi fiele input device shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.cpp,v 1.2 2010/11/21 13:15:50 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.cpp,v 1.3 2010/12/13 00:27:53 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2010/11/21 13:15:50 $
-* \version $Revision: 1.2 $
+* $Date: 2010/12/13 00:27:53 $
+* \version $Revision: 1.3 $
 *
 * $Log: OutputMidiFileDeviceShape.cpp,v $
-* Revision 1.2  2010/11/21 13:15:50  keinstein
+* Revision 1.3  2010/12/13 00:27:53  keinstein
+* compiles in linux as well as in mingw
+*
+* Revision 1.2  2010-11-21 13:15:50  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.5  2010-06-22 15:05:45  keinstein
@@ -63,6 +66,7 @@
 ********************************************************************/
 #include "OutputMidiFileDeviceShape.h"
 #include "DevMidF.h"
+#include <limits>
 
 class MidiFileOutputFilterPanel : public MidiFileOutputFilterPanelBase {
 public:

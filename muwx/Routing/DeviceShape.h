@@ -4,15 +4,18 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.2 2010/11/21 13:15:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.3 2010/12/13 00:27:53 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:48 $
- * \version $Revision: 1.2 $
+ * $Date: 2010/12/13 00:27:53 $
+ * \version $Revision: 1.3 $
  *
  * $Log: DeviceShape.h,v $
- * Revision 1.2  2010/11/21 13:15:48  keinstein
+ * Revision 1.3  2010/12/13 00:27:53  keinstein
+ * compiles in linux as well as in mingw
+ *
+ * Revision 1.2  2010-11-21 13:15:48  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.5  2010-03-30 08:38:27  keinstein
@@ -123,6 +126,7 @@ public:
 		DoLeftDblClick();
 	}
 
+#if 0
 protected:
 	void RemoveFromStringMap(stringmaptype & sm) {
 		std::pair<stringmapiterator,stringmapiterator> 
@@ -140,7 +144,7 @@ protected:
 	void InsertSelfToStringMap(stringmaptype & sm) {
 		sm.insert(std::make_pair(&m_label,this)); 
 	}
-
+#endif
 private:
   DECLARE_DYNAMIC_CLASS(MutIconShape);
   DECLARE_EVENT_TABLE();

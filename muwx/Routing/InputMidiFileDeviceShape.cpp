@@ -4,15 +4,18 @@
 ********************************************************************
 * Midi fiele input device shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiFileDeviceShape.cpp,v 1.2 2010/11/21 13:15:49 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiFileDeviceShape.cpp,v 1.3 2010/12/13 00:27:53 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2010/11/21 13:15:49 $
-* \version $Revision: 1.2 $
+* $Date: 2010/12/13 00:27:53 $
+* \version $Revision: 1.3 $
 *
 * $Log: InputMidiFileDeviceShape.cpp,v $
-* Revision 1.2  2010/11/21 13:15:49  keinstein
+* Revision 1.3  2010/12/13 00:27:53  keinstein
+* compiles in linux as well as in mingw
+*
+* Revision 1.2  2010-11-21 13:15:49  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.5  2010-03-30 15:57:58  keinstein
@@ -60,7 +63,7 @@
 *\{
 ********************************************************************/
 #include "InputMidiFileDeviceShape.h"
-
+#include <limits>
 
 void MutInputMidiFileDeviceShape::InitializeDialog(InputDevDlg * in) const
 {

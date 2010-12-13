@@ -4,11 +4,14 @@
 // Author:      Julian Smart, Tobias Schlemmer
 // Modified by:
 // Created:     01/02/97
-// RCS-ID:      $Id: Panel.h,v 1.2 2010/11/21 13:15:47 keinstein Exp $
+// RCS-ID:      $Id: Panel.h,v 1.3 2010/12/13 00:27:53 keinstein Exp $
 // Copyright:   (c) Julian Smart, Tobias sclhemmer
 // Licence:     wxWindows licence
 // $Log: Panel.h,v $
-// Revision 1.2  2010/11/21 13:15:47  keinstein
+// Revision 1.3  2010/12/13 00:27:53  keinstein
+// compiles in linux as well as in mingw
+//
+// Revision 1.2  2010-11-21 13:15:47  keinstein
 // merged experimental_tobias
 //
 // Revision 1.1.2.1  2010-02-15 12:08:21  keinstein
@@ -37,7 +40,7 @@ extern WXDLLEXPORT_DATA(const wxChar) MutPanelNameStr[];
 // wxPanel contains other controls and implements TAB traversal between them
 // ----------------------------------------------------------------------------
 
-class WXDLLEXPORT MutPanel : public wxControl
+class MutPanel : public wxControl
 {
 public:
 	MutPanel() { Init(); }

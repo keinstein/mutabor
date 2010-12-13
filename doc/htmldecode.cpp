@@ -16,6 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //#include <boost/spirit/core.hpp>
 //#include <boost/spirit/actor/push_back_actor.hpp>
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <string>

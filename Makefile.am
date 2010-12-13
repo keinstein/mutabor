@@ -222,7 +222,7 @@ endif
 #
 mutabordir=$(datadir)/mutabor
 
-AM_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS) -lexpat
+AM_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
 AM_CFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
