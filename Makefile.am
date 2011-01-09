@@ -1,4 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4 --install
+DLLCOPYPATTERN = \(wx\|mingw\)
+DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc po wxintl includes . doc intl# libmutabor .
 DIST_SUBDIRS = $(SUBDIRS)
@@ -44,7 +46,9 @@ EXTRA_DIST = config.rpath \
 	$(top_srcdir)/mu32/mut.y \
 	xrc/wxresource.cpp \
 	xrc/wxresource.h \
-	xrc/reslocale.cpp
+	xrc/reslocale.cpp \
+	osdep/win/Mutabor.rc \
+	muwx/Mutabor.rc
 
 dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/NewInputDevice.png \
@@ -240,14 +244,15 @@ endif
 
 mutabor_SHORTNAME = mutabor
 
-if COND_WINRC
-mutabor_DEPENDENCIES = $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
-endif
-
 mutabor_LDADD = $(LDADD)
 if COND_WINRC
-mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor.$(OBJEXT)
+mutabor_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
+	$(RCCOMPILE) $< $@
 endif
+
 mutabor_DATA = Images/about.png Mutabor.xrc
 
 if AMDEP
@@ -312,20 +317,24 @@ if COND_PRECOMP_CXX
 $(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
 
 mutabor-cxxprecompiled.h: Makefile
-	@echo 'creating $<'
-	@echo '#define PRECOMPILE 1' >$@
-	@echo '#include "Defs.h"' >>$@
+	@echo 'creating $@'
+	@echo '#define PRECOMPILE 1' >$@.tmp
+	@echo '#include "Defs.h"' >>$@.tmp
 	@for datei in $(mutabor_INDENTS) ; \
 	do  \
-		echo $$datei | $(EGREP) '\.h$$' && \
-		echo '#include "'"$$datei"'"' >>$@ ; \
+		echo $$datei | $(EGREP) '\.h$$' >/dev/null && \
+		echo '#include "'"$$datei"'"' >>$@.tmp ; \
 	done ; true
-	@echo '#undef PRECOMPILE' >>$@
-
+	@echo '#undef PRECOMPILE' >>$@.tmp
+	if cmp -s $@.tmp $@ ; then \
+        	rm -f $@.tmp ;\
+        else \
+        	mv $@.tmp $@; \
+        fi 
 endif
 
 if COND_WINRC
-$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
+$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(top_srcdir)/muwx/Mutabor.rc
 	$(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
 endif
 
@@ -453,6 +462,45 @@ installwin: mutabor.exe
 	for d in `$(WX_CONFIG_PATH) --exec-prefix`/lib/wx*{msw,base}*.dll ; \
 	do \
 		cp $$d Mutabor ; \
+	done
+
+installdll:
+	@echo 'solving references for $(DLLLINKFILE)'
+	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
+	for d in `LANG=C $(OBJDUMP) -p  Mutabor/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(wx\|mingw\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
+	do \
+		echo -n checking "$$d" ; \
+		if [ ! -f Mutabor/$$d ] ; then \
+			echo -n search ; \
+			f=`( find $$DLLSEARCHPATH -name "$$d" ; \
+			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
+			echo -n install "$$f" ; \
+			test -f "$$f" && $(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "`pwd`/Mutabor" ; \
+			case "$$f" in \
+			*.gz)  GZIP=$(GZIP_ENV) gzip -dc Mutabor/`basename "$$f"` >Mutabor/"$$d" ;; \
+			esac ; \
+			echo -n check "$$d" ; \
+			$(MAKE) DLLLINKFILE="$$d" installdll ; \
+		fi ; \
+		echo done ;\
+	done
+	
+
+installwin2: 
+	$(MAKE) "prefix=`pwd`/Mutabor" 'bindir=$$(prefix)' 'datarootdir=$$(prefix)' 'libdir=$$(prefix)' \
+		'libexecdir=$$(prefix)' 'localedir=$$(prefix)' 'pkgdatadir=$$(prefix)' install
+	$(MAKE) DLLLINKFILE="mutabor.exe" installdll
+
+installwinbackup:
+	WXLIBDIR=`$(WX_CONFIG_PATH) --exec-prefix`/lib ;\
+	for d in `LANG=C $(OBJDUMP) -p  Mutabor/mutabor.exe |sed '/^\s*DLL Name:.*\(wx\|mingw\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
+	do \
+		f=`( find "$$WXLIBDIR" /lib /usr/lib /usr/share/doc/mingw32-runtime -name "$$d" ; \
+		find "$$WXLIBDIR" /lib /usr/lib /usr/share/doc/mingw32-runtime -name "$$d.*")|head -n 1` ; \
+		test -f "$$f" && $(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "`pwd`/Mutabor" ; \
+		case "$$f" in \
+		*.gz)  GZIP=$(GZIP_ENV) gzip -dc Mutabor/`basename "$$f"` >Mutabor/"$$d" ;; \
+		esac ; \
 	done
 
 count:
