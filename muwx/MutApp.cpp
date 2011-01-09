@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.25 2010/12/11 02:10:09 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.26 2011/01/09 16:26:37 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2010/12/11 02:10:09 $
- * \version $Revision: 1.25 $
+ * $Date: 2011/01/09 16:26:37 $
+ * \version $Revision: 1.26 $
  * \license wxWindows license
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.25  2010/12/11 02:10:09  keinstein
+ * Revision 1.26  2011/01/09 16:26:37  keinstein
+ * make building in wine environment using unix shell
+ *
+ * Revision 1.25  2010-12-11 02:10:09  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.24  2010-12-10 09:28:23  keinstein
@@ -251,8 +254,8 @@ bool MutApp::OnInit()
 
 
 #ifdef DEBUG
-	std::cout << muT(__FUNCTION__).ToUTF8() << std::endl;
-	std::cout << muT(typeid(m_locale).name()).ToUTF8() << std::endl;
+	std::cout << (muT(__FUNCTION__).ToUTF8()) << std::endl;
+	std::cout << (muT(typeid(m_locale).name()).ToUTF8()) << std::endl;
 	std::cout << "ConfigDir:        "
 
 	<< (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
