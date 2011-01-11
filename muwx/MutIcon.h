@@ -3,15 +3,18 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.3 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.4 2011/01/11 00:42:27 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/01/11 00:42:27 $
+ * \version $Revision: 1.4 $
  *
  * $Log: MutIcon.h,v $
- * Revision 1.3  2010/11/21 13:15:47  keinstein
+ * Revision 1.4  2011/01/11 00:42:27  keinstein
+ * Fix a bug preventing Mutabor from starting on Win32 due to wrong usage of wxIcon/wxICON
+ *
+ * Revision 1.3  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.3  2010-03-30 08:38:26  keinstein
@@ -159,9 +162,10 @@ public:
     return *this;
   }    
 };
-
+#define MutICON MutIcon
 #else
 #define MutIcon wxIcon
+#define MutICON(x) x
 #endif /* __WXMAC__ */
 
 #ifdef __WXMAC__

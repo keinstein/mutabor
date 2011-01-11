@@ -831,6 +831,7 @@ void MutRouteWnd::OnDraw(wxDC& dc)
         wxScrolledWindow::OnDraw(dc);
         PRINTSIZER(GetSizer());
         dc.SetDeviceOrigin(0,0);
+	wxASSERT(BoxSizer);
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
