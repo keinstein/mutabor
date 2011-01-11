@@ -4,15 +4,18 @@
 ********************************************************************
 * Devices base classes. Icons used in route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.2 2010/11/21 13:15:50 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.3 2011/01/11 00:42:27 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2010/11/21 13:15:50 $
-* \version $Revision: 1.2 $
+* $Date: 2011/01/11 00:42:27 $
+* \version $Revision: 1.3 $
 *
 * $Log: RouteIcons.cpp,v $
-* Revision 1.2  2010/11/21 13:15:50  keinstein
+* Revision 1.3  2011/01/11 00:42:27  keinstein
+* Fix a bug preventing Mutabor from starting on Win32 due to wrong usage of wxIcon/wxICON
+*
+* Revision 1.2  2010-11-21 13:15:50  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.3  2010-02-15 12:08:21  keinstein
@@ -76,7 +79,7 @@ static void initMutIcon(MutIcon & icon,
 
 bool initMutIconShapes() 
 {
-	DevUnknownBitmap = MutIcon(wxICON(devunknown));
+	DevUnknownBitmap = MutICON(wxIcon(devunknown_xpm));
 	if (!DevUnknownBitmap.IsOk()) return false;
   
 	initMutIcon(MidiInputDevBitmap,
