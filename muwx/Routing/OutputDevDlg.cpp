@@ -4,15 +4,18 @@
 ********************************************************************
 * MIDI input device shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.2 2010/11/21 13:15:49 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.3 2011/01/13 21:13:03 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/01/11
-* $Date: 2010/11/21 13:15:49 $
-* \version $Revision: 1.2 $
+* $Date: 2011/01/13 21:13:03 $
+* \version $Revision: 1.3 $
 *
 * $Log: OutputDevDlg.cpp,v $
-* Revision 1.2  2010/11/21 13:15:49  keinstein
+* Revision 1.3  2011/01/13 21:13:03  keinstein
+* Fix some layout bugs.
+*
+* Revision 1.2  2010-11-21 13:15:49  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.6  2010-03-30 08:38:27  keinstein
@@ -182,10 +185,10 @@ void OutputDevDlg::UpdateLayout(DevType type)
 
         // We need Layout here, since otherwise the output boxex are not
         // shown in certain circumstances
-	sizer->Layout();
-	sizer->SetSizeHints(this);
-	SetSize(-1, -1, 0, 0);
 	//CenterOnScreen();
+	Layout();
+	GetSizer()->SetSizeHints(this);
+	Fit();
 }
 
 
