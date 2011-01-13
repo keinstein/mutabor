@@ -2,16 +2,19 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.3 2011/01/13 21:13:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.4 2011/01/13 21:44:47 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/01/13 21:13:03 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/01/13 21:44:47 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.3  2011/01/13 21:13:03  keinstein
+ * Revision 1.4  2011/01/13 21:44:47  keinstein
+ * Some steps towards a fix for BoxDlg layout errors
+ *
+ * Revision 1.3  2011-01-13 21:13:03  keinstein
  * Fix some layout bugs.
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -248,11 +251,11 @@ void RoutePanel::EnableRoute(bool enable)
 	Show(enable);
 	if (inPanel) inPanel -> Show(enable);
 	if (outPanel) outPanel -> Show(enable);
-	Layout();
-	GetSizer()->SetSizeHints(this);
-	Fit();
-	GetParent()->GetSizer()->SetSizeHints(GetParent());
-	GetParent()->FitInside();
+//	Layout();
+//	GetSizer()->SetSizeHints(this);
+//	Fit();
+//	GetParent()->GetSizer()->SetSizeHints(GetParent());
+//	GetParent()->FitInside();
 }
 
 BEGIN_EVENT_TABLE( RouteRemoveButton, wxButton )
@@ -386,6 +389,14 @@ void BoxDlg::AddButtonPressed( wxCommandEvent& event )
 	MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *> (m_parent);
 	if (!parentwin || !routeWindow) UNREACHABLEC;
 	MutBoxChannelShape::CreateRoutePanel(NULL, parentwin, routeWindow, GetBoxType()==Box0?GetBoxNumber():GetBoxType());
+	routeWindow->Layout();
+	routeWindow->InvalidateBestSize();
+	routeWindow->GetSizer()->SetSizeHints(routeWindow);
+	routeWindow->FitInside();
+	Layout();
+	InvalidateBestSize();
+	GetSizer()->SetSizeHints(this);
+	Fit();
 }
 
 void BoxDlg::OnRemoveClick( wxCommandEvent& event )
