@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.24 2010/12/11 02:10:09 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.25 2011/01/13 21:12:37 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/12/11 02:10:09 $
- * \version $Revision: 1.24 $
+ * \date $Date: 2011/01/13 21:12:37 $
+ * \version $Revision: 1.25 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.24  2010/12/11 02:10:09  keinstein
+ * Revision 1.25  2011/01/13 21:12:37  keinstein
+ * reactivate config restore on Activate in debug mode
+ *
+ * Revision 1.24  2010-12-11 02:10:09  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.23  2010-11-21 13:15:47  keinstein
@@ -683,9 +686,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 #ifdef DEBUG
 	DEBUGLOG (other, _T("Restoring state for debugging"));
-	/// \TODO reenable RestoreState once it is implemented correctly.
-	wxFAIL_MSG(_T("Can't check correct saving of state, since restoring is not implemented correctly. Please fix and Reenable it."));
-	//wxGetApp().RestoreState();
+	wxGetApp().RestoreState();
 #endif
 
 //	ScanDevices(); 
