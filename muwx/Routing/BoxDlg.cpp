@@ -2,16 +2,19 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.2 2010/11/21 13:15:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.3 2011/01/13 21:13:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2010/11/21 13:15:48 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/01/13 21:13:03 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.2  2010/11/21 13:15:48  keinstein
+ * Revision 1.3  2011/01/13 21:13:03  keinstein
+ * Fix some layout bugs.
+ *
+ * Revision 1.2  2010-11-21 13:15:48  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.11  2010-06-15 14:30:14  keinstein
@@ -245,6 +248,10 @@ void RoutePanel::EnableRoute(bool enable)
 	Show(enable);
 	if (inPanel) inPanel -> Show(enable);
 	if (outPanel) outPanel -> Show(enable);
+	Layout();
+	GetSizer()->SetSizeHints(this);
+	Fit();
+	GetParent()->GetSizer()->SetSizeHints(GetParent());
 	GetParent()->FitInside();
 }
 

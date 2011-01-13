@@ -143,7 +143,7 @@ void InputDevDlg::UpdateLayout(DevType type)
         // We need Layout here, since otherwise the input boxex are not
         // shown in certain circumstances
 	Layout();
-//	GetSizer()->SetSizeHints(this);
+	GetSizer()->SetSizeHints(this);
 	Fit();
 }
 
@@ -160,6 +160,7 @@ void InputDevDlg::OnRemoveClick( wxCommandEvent& event )
 void InputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 {
         DEBUGLOG (other,_T ("Path changed: %s"),event.GetPath().c_str());
+	GetSizer()->SetSizeHints(this);
         Fit();
 }
 
