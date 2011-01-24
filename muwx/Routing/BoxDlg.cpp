@@ -2,16 +2,19 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.4 2011/01/13 21:44:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.5 2011/01/24 08:40:54 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/01/13 21:44:47 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/01/24 08:40:54 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.4  2011/01/13 21:44:47  keinstein
+ * Revision 1.5  2011/01/24 08:40:54  keinstein
+ * fix an issue with box dialog, preventing the scollbars to take effect in channel subwindow
+ *
+ * Revision 1.4  2011-01-13 21:44:47  keinstein
  * Some steps towards a fix for BoxDlg layout errors
  *
  * Revision 1.3  2011-01-13 21:13:03  keinstein
@@ -391,8 +394,8 @@ void BoxDlg::AddButtonPressed( wxCommandEvent& event )
 	MutBoxChannelShape::CreateRoutePanel(NULL, parentwin, routeWindow, GetBoxType()==Box0?GetBoxNumber():GetBoxType());
 	routeWindow->Layout();
 	routeWindow->InvalidateBestSize();
-	routeWindow->GetSizer()->SetSizeHints(routeWindow);
-	routeWindow->FitInside();
+// routeWindow->GetSizer()->SetSizeHints(routeWindow);
+//	routeWindow->FitInside();
 	Layout();
 	InvalidateBestSize();
 	GetSizer()->SetSizeHints(this);
