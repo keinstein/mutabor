@@ -376,13 +376,12 @@ AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strs
 AC_CHECK_FUNC(strdup)
 
 
-AC_CONFIG_FILES([  intl/Makefile
+AC_CONFIG_FILES([  
 po/Makefile.in 
 Makefile
 includes/Makefile 
 wxintl/Makefile 
 missfunc/Makefile
-intl/libgnuintl.h 
 osdep/macosx/Info.plist
 doc/Makefile
 doc/localized/Makefile

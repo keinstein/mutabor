@@ -2,17 +2,17 @@ ACLOCAL_AMFLAGS = -I m4 --install
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
-SUBDIRS = missfunc po wxintl includes . doc intl# libmutabor .
-DIST_SUBDIRS = $(SUBDIRS)
+SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
+#DIST_SUBDIRS = $(SUBDIRS)
 AM_CPPFLAGS = -I $(srcdir)/mu32 \
 	-I $(srcdir)/mu32/routing \
 	-I $(srcdir)/mu32/routing/midi \
 	-I $(srcdir)/mu32/routing/gmn \
 	-I $(srcdir)/muwx -I $(srcdir)/rtmidi \
 	-I $(srcdir)/muwx/Routing \
-	-I $(srcdir)/mywx -I $(top_builddir)/intl -I $(top_srcdir)/intl \
+	-I $(srcdir)/mywx -I \
 	-I $(top_srcdir)/xrc -I $(top_srcdir)/libs/includes \
-	@NETINET_INC@
+	@NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 
 BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
@@ -246,11 +246,13 @@ mutabor_SHORTNAME = mutabor
 
 mutabor_LDADD = $(LDADD)
 if COND_WINRC
-mutabor_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+mutabor.$(EXEEXT):$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 	$(RCCOMPILE) $< $@
+else
+$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 endif
 
 mutabor_DATA = Images/about.png Mutabor.xrc
@@ -282,6 +284,8 @@ endif
 		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
 endif
 
+muwx/resourceload.h:$(top_srcdir)/xrc/wxresource.h
+
 cvs_dist: Makefile
 	touch cvsdist
 	chmod -R u+w  cvsdist
@@ -297,11 +301,19 @@ cvs_distcheck: Makefile
 	touch cvsdist
 	chmod -R u+w  cvsdist
 	rm -rf cvsdist
-	tag=`sed -e s/^T// <$(top_srcdir)/CVS/Tag` ; \
+	cvstag="check_`echo $(PACKAGE_VERSION)| sed -e 's/[$,.:; 	@]/_/g'`" ; \
+	(cd $(top_srcdir) && cvs tag -F "$$cvstag" ) ; \
+	test -f $(top_srcdir)/CVS/Tag && tag=" -r `sed -e s/^T// <$(top_srcdir)/CVS/Tag`" || tag=" -r $$cvstag" ; \
 	repo=`cat $(top_srcdir)/CVS/Repository` ; \
 	mkdir -p cvsdist cvsdistm ; \
-	CVSROOT=`cat $(top_srcdir)/CVS/Root` \
-	$(CVS) export -r "$$tag" -d "cvsdistm" "$$repo" && \
+	CVSROOT=`cat $(top_srcdir)/CVS/Root` ; \
+	export CVSROOT ; \
+	if test "" = "$$tag"  ; then \
+	  $(CVS) export -d "cvsdistm" "$$repo" ; \
+	else \
+	  echo $(CVS) export $$tag -d "cvsdistm" "$$repo" ; \
+	  $(CVS) export $$tag -d "cvsdistm" "$$repo" ; \
+	fi && \
 	mv cvsdistm "cvsdist/$$repo" && \
 	cd "cvsdist/$$repo" && \
 	autoreconf -i && \
