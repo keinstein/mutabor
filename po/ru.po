@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2010-12-11 01:18+0100\n"
+"POT-Creation-Date: 2011-01-26 11:47+0100\n"
 "PO-Revision-Date: 2010-11-21 15:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: Russian\n"
@@ -26,7 +26,7 @@ msgstr "Выходный GIS-файл."
 msgid "GIS input file."
 msgstr "Входный GIS-файл."
 
-#: mu32/routing/gmn/GSP_Err.cpp:9 muwx/MutApp.cpp:495 xrc/reslocale.cpp:13
+#: mu32/routing/gmn/GSP_Err.cpp:9 muwx/MutApp.cpp:501 xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
 
@@ -94,43 +94,42 @@ msgstr "Файл должен начинаться с скобкой »[« ил�
 msgid "Range without preceeding tag."
 msgstr ""
 
-#: mu32/routing/midi/DevMidF.cpp:274 mu32/routing/midi/DevMidF.cpp:616
+#: mu32/routing/midi/DevMidF.cpp:277 mu32/routing/midi/DevMidF.cpp:619
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: mu32/routing/midi/DevMidF.cpp:276 mu32/routing/midi/DevMidF.cpp:618
-#: mu32/routing/midi/DevMidF.cpp:638 mu32/routing/midi/DevMidi.cpp:178
+#: mu32/routing/midi/DevMidF.cpp:279 mu32/routing/midi/DevMidF.cpp:621
+#: mu32/routing/midi/DevMidF.cpp:641 mu32/routing/midi/DevMidi.cpp:178
 #: mu32/routing/midi/DevMidi.cpp:655 mu32/routing/midi/DevMidi.cpp:675
 msgid "Warning loading route"
 msgstr "Предупреждение при открытия маршрута"
 
-#: mu32/routing/midi/DevMidF.cpp:515 mu32/routing/midi/DevMidF.cpp:521
+#: mu32/routing/midi/DevMidF.cpp:518 mu32/routing/midi/DevMidF.cpp:524
 #: mu32/routing/midi/DevMidi.cpp:544 mu32/routing/midi/DevMidi.cpp:550
-#: mu32/EDevice.cpp:476
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: mu32/routing/midi/DevMidF.cpp:636
+#: mu32/routing/midi/DevMidF.cpp:639
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 msgstr ""
 
-#: mu32/routing/midi/DevMidF.cpp:665
+#: mu32/routing/midi/DevMidF.cpp:668
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Не удалось открыть входной Midi-файл «%s»."
 
-#: mu32/routing/midi/DevMidF.cpp:715
+#: mu32/routing/midi/DevMidF.cpp:718
 #, c-format
 msgid "Midi input file '%s' is to long."
 msgstr ""
 
-#: mu32/routing/midi/DevMidF.cpp:729 mu32/routing/midi/DevMidF.cpp:733
+#: mu32/routing/midi/DevMidF.cpp:732 mu32/routing/midi/DevMidF.cpp:736
 #, c-format
 msgid "Midi input file '%s' produces errors."
 msgstr ""
@@ -144,7 +143,7 @@ msgid "MIDI input file"
 msgstr "Входной MIDI-файл"
 
 #: mu32/routing/midi/DevMidi.cpp:149 mu32/routing/midi/DevMidi.cpp:625
-#: mu32/routing/Route.cpp:170 mu32/routing/Route.cpp:216 mu32/EDevice.cpp:440
+#: mu32/routing/Route.cpp:170 mu32/routing/Route.cpp:216
 msgid "Unknown"
 msgstr "Неизвестен"
 
@@ -197,24 +196,23 @@ msgstr "Сбросить устройство вывода"
 msgid "Midi input device"
 msgstr "Другие устройства _ввода:"
 
-#: mu32/routing/Device.h:243
+#: mu32/routing/Device.h:246
 #, fuzzy
 msgid "Device base class"
 msgstr "базовый класс C++ не определен"
 
-#: mu32/routing/Device.h:334
+#: mu32/routing/Device.h:337
 #, fuzzy
 msgid "Undefined output device"
 msgstr "Сбросить устройство вывода"
 
-#: mu32/routing/Device.h:482
+#: mu32/routing/Device.h:485
 #, fuzzy
 msgid "Undefined input device"
 msgstr "Другие устройства _ввода:"
 
 #: mu32/routing/Route.cpp:171 mu32/routing/Route.cpp:237
-#: mu32/routing/Route.cpp:281 mu32/routing/Route.cpp:317 mu32/EDevice.cpp:461
-#: mu32/EDevice.cpp:501 mu32/EDevice.cpp:532
+#: mu32/routing/Route.cpp:281 mu32/routing/Route.cpp:317
 #, fuzzy
 msgid "Midi Port"
 msgstr "Добавить новый порт MIDI"
@@ -229,295 +227,263 @@ msgstr "Выбрать MIDI-файл..."
 msgid "GUIDO .gmn File"
 msgstr "Ошибка открытия файла %s!"
 
-#: mu32/EDevice.cpp:472 mu32/EDevice.cpp:511
+#: mu32/routing/RouteCompat.cpp:373
 #, fuzzy
-msgid "Device_Id"
-msgstr "Идентификатор входящего устройства MMC"
-
-#: mu32/EDevice.cpp:782
 msgid "Device found, but device type not set."
-msgstr ""
-
-#: mu32/EDevice.cpp:824
-msgid "Device found but device type not set."
-msgstr ""
-
-#: mu32/EDevice.cpp:890
-#, fuzzy
-msgid "Internal Error: Forbidden output device type: "
-msgstr "внутренняя ошибка: на выход передан неверный тип заплаты"
-
-#: mu32/EDevice.cpp:940
-msgid "Internal Error: Forbidden input device type."
-msgstr ""
-
-#: mu32/EDevice.cpp:965
-#, fuzzy, c-format
-msgid "Undefined device type %d."
-msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
-
-#: mu32/EDevice.h:265 mu32/EDevice.h:302
-#, fuzzy
-msgid "Device type not set"
 msgstr "распакован, но не настроен"
 
-#: mu32/EDevice.h:269 mu32/EDevice.h:307
+#: mu32/routing/RouteCompat.cpp:411
 #, fuzzy
-msgid "Unknown device."
-msgstr "Неизвестное устройство"
+msgid "Device found but device type not set."
+msgstr "распакован, но не настроен"
 
-#: mu32/EDevice.h:289 mu32/EDevice.h:333
-#, fuzzy, c-format
-msgid "Unknown device type %d."
-msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
-
-#: mu32/Errors.cpp:171
+#: mu32/Errors.cpp:174
 #, fuzzy, c-format
 msgid "Unknown error in %s , line %d !"
 msgstr "ошибка в строке дополнения\n"
 
-#: mu32/Errors.cpp:174
+#: mu32/Errors.cpp:177
 #, fuzzy, c-format
 msgid "Syntax error in line %d"
 msgstr "Синтаксическая ошибка в строке %s"
 
-#: mu32/Errors.cpp:175
+#: mu32/Errors.cpp:178
 #, c-format
 msgid "Non-valid character: asc=%x (line %d)"
 msgstr ""
 
-#: mu32/Errors.cpp:176
+#: mu32/Errors.cpp:179
 #, fuzzy, c-format
 msgid "Can't open file: %s"
 msgstr "Не открывается файл '%s' (%s)"
 
-#: mu32/Errors.cpp:177
+#: mu32/Errors.cpp:180
 msgid "Not enough memory or too few data for mutabor in source file"
 msgstr ""
 
-#: mu32/Errors.cpp:178 mu32/Errors.cpp:179 mu32/Errors.cpp:180
-#: mu32/Errors.cpp:181 mu32/Errors.cpp:182 mu32/Errors.cpp:198
-#: mu32/Errors.cpp:199 mu32/Errors.cpp:217 mu32/Errors.cpp:218
-#: mu32/Errors.cpp:219 mu32/Errors.cpp:220 mu32/Errors.cpp:221
-#: mu32/Errors.cpp:234 mu32/Errors.cpp:235 mu32/Errors.cpp:236
+#: mu32/Errors.cpp:181 mu32/Errors.cpp:182 mu32/Errors.cpp:183
+#: mu32/Errors.cpp:184 mu32/Errors.cpp:185 mu32/Errors.cpp:201
+#: mu32/Errors.cpp:202 mu32/Errors.cpp:220 mu32/Errors.cpp:221
+#: mu32/Errors.cpp:222 mu32/Errors.cpp:223 mu32/Errors.cpp:224
 #: mu32/Errors.cpp:237 mu32/Errors.cpp:238 mu32/Errors.cpp:239
-#: mu32/Errors.cpp:253 mu32/Errors.cpp:265
+#: mu32/Errors.cpp:240 mu32/Errors.cpp:241 mu32/Errors.cpp:242
+#: mu32/Errors.cpp:256 mu32/Errors.cpp:268
 #, fuzzy
 msgid " "
 msgstr " "
 
-#: mu32/Errors.cpp:185
+#: mu32/Errors.cpp:188
 #, c-format
 msgid "The interval name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:186
+#: mu32/Errors.cpp:189
 #, c-format
 msgid "The tone name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:187
+#: mu32/Errors.cpp:190
 #, c-format
 msgid "The tonesystem name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:188
+#: mu32/Errors.cpp:191
 #, c-format
 msgid "The retuning name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:189
+#: mu32/Errors.cpp:192
 #, c-format
 msgid "The pattern name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:190
+#: mu32/Errors.cpp:193
 #, c-format
 msgid "The logic name %s was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:191
+#: mu32/Errors.cpp:194
 #, fuzzy
 msgid "(unused)"
 msgstr "Не использовано"
 
-#: mu32/Errors.cpp:192
+#: mu32/Errors.cpp:195
 #, fuzzy, c-format
 msgid "The parameter name %s was used twice"
 msgstr "Предоставленный параметр target_name сформирован неверно."
 
-#: mu32/Errors.cpp:193
+#: mu32/Errors.cpp:196
 #, c-format
 msgid "The MIDI-Instrument %d was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:194
+#: mu32/Errors.cpp:197
 #, c-format
 msgid "MIDI-Mapping: Channel %d was used twice"
 msgstr ""
 
-#: mu32/Errors.cpp:195
+#: mu32/Errors.cpp:198
 #, c-format
 msgid "Logik %s contains more than one ELSE statement"
 msgstr ""
 
-#: mu32/Errors.cpp:196
+#: mu32/Errors.cpp:199
 #, c-format
 msgid "Retuning %s contains more than one ELSE statement"
 msgstr ""
 
-#: mu32/Errors.cpp:197
+#: mu32/Errors.cpp:200
 #, c-format
 msgid "The alternative %d is ued twice in %s"
 msgstr ""
 
-#: mu32/Errors.cpp:202
+#: mu32/Errors.cpp:205
 #, fuzzy, c-format
 msgid "Undefined symbol: %s"
 msgstr "начальный символ %s неопределен"
 
-#: mu32/Errors.cpp:203
+#: mu32/Errors.cpp:206
 #, fuzzy, c-format
 msgid "Undefined interval: %s"
 msgstr "Интервал автосохранения"
 
-#: mu32/Errors.cpp:204
+#: mu32/Errors.cpp:207
 #, fuzzy, c-format
 msgid "Undefined tone: %s"
 msgstr "Генератор сигналов: "
 
-#: mu32/Errors.cpp:205
+#: mu32/Errors.cpp:208
 #, fuzzy, c-format
 msgid "Undefined tonesystem: %s"
 msgstr "Неопределенный символ"
 
-#: mu32/Errors.cpp:206
+#: mu32/Errors.cpp:209
 #, fuzzy, c-format
 msgid "Undefined retuning: %s"
 msgstr "Неопределенный символ"
 
-#: mu32/Errors.cpp:207
+#: mu32/Errors.cpp:210
 #, fuzzy, c-format
 msgid "Undefined pattern: %s (in logic %s)"
 msgstr "ошибка в образце: %s"
 
-#: mu32/Errors.cpp:208
+#: mu32/Errors.cpp:211
 #, fuzzy, c-format
 msgid "Undefined parameter name: %s in %s"
 msgstr "в виде \"<имя> <значение>\""
 
-#: mu32/Errors.cpp:209
+#: mu32/Errors.cpp:212
 #, fuzzy, c-format
 msgid "Undefined interval: %s (in %s)"
 msgstr "Интервал (в минутах):"
 
-#: mu32/Errors.cpp:210
+#: mu32/Errors.cpp:213
 #, fuzzy, c-format
 msgid "Undefined tone: %s (in tone system %s)"
 msgstr "Ошибка в неизвестной системе ошибок: "
 
-#: mu32/Errors.cpp:211
+#: mu32/Errors.cpp:214
 #, fuzzy, c-format
 msgid "Undefined tone: %s (in retuning %s)"
 msgstr "неопределенная переменная в ATN"
 
-#: mu32/Errors.cpp:212
+#: mu32/Errors.cpp:215
 #, fuzzy
 msgid "(to be reused)"
 msgstr ""
 "\n"
 "%s необходимо получить."
 
-#: mu32/Errors.cpp:213
+#: mu32/Errors.cpp:216
 #, fuzzy, c-format
 msgid "Undefined retuning: %s (in retuning %s)"
 msgstr "неопределенная переменная в ATN"
 
-#: mu32/Errors.cpp:214
+#: mu32/Errors.cpp:217
 #, c-format
 msgid "Undefined initial tuning: %s (in logic %s)"
 msgstr ""
 
-#: mu32/Errors.cpp:215
+#: mu32/Errors.cpp:218
 #, fuzzy, c-format
 msgid "Undefined action: %s (in logic %s)"
 msgstr "неопределенная переменная в ATN"
 
-#: mu32/Errors.cpp:216
+#: mu32/Errors.cpp:219
 #, c-format
 msgid "Undefined parameter: %s (in call %s from logic %s)"
 msgstr ""
 
-#: mu32/Errors.cpp:225
-msgid "Bad MIDI channel (valid: 1...16)"
-msgstr ""
-
-#: mu32/Errors.cpp:226
-#, fuzzy, c-format
-msgid "Bad interval value in %s"
-msgstr "в виде \"<имя> <значение>\""
-
-#: mu32/Errors.cpp:227
-#, c-format
-msgid "Bad key %d (valid: 36..96 (in tonesystem %s)"
-msgstr ""
-
 #: mu32/Errors.cpp:228
-#, c-format
-msgid "Not-complex tone in retuning %s ( %s )"
+msgid "Bad MIDI channel (valid: 1...16)"
 msgstr ""
 
 #: mu32/Errors.cpp:229
 #, fuzzy, c-format
-msgid "Bad value in %s"
-msgstr "Значение из списка"
+msgid "Bad interval value in %s"
+msgstr "в виде \"<имя> <значение>\""
 
 #: mu32/Errors.cpp:230
 #, c-format
-msgid "Bad MIDI-Code in logic %s (expecting %s )"
+msgid "Bad key %d (valid: 36..96 (in tonesystem %s)"
 msgstr ""
 
 #: mu32/Errors.cpp:231
 #, c-format
-msgid "Logic %s must not be called by ELSE"
+msgid "Not-complex tone in retuning %s ( %s )"
 msgstr ""
 
 #: mu32/Errors.cpp:232
 #, fuzzy, c-format
+msgid "Bad value in %s"
+msgstr "Значение из списка"
+
+#: mu32/Errors.cpp:233
+#, c-format
+msgid "Bad MIDI-Code in logic %s (expecting %s )"
+msgstr ""
+
+#: mu32/Errors.cpp:234
+#, c-format
+msgid "Logic %s must not be called by ELSE"
+msgstr ""
+
+#: mu32/Errors.cpp:235
+#, fuzzy, c-format
 msgid "A Key needs to be a single character ( %s )"
 msgstr "аргумент для <%s> должен быть одним знаком"
 
-#: mu32/Errors.cpp:233
+#: mu32/Errors.cpp:236
 #, fuzzy, c-format
 msgid "Division by (nearly) 0 in line %d"
 msgstr "Ожидалось ключевое слово 'by' в подстановке в строке %d у %s"
 
-#: mu32/Errors.cpp:242
+#: mu32/Errors.cpp:245
 #, c-format
 msgid "In retuning %s and %s : Bad parameters"
 msgstr ""
 
-#: mu32/Errors.cpp:243
+#: mu32/Errors.cpp:246
 #, fuzzy, c-format
 msgid "In logic %s : Bad number of parameters ( %s )"
 msgstr "Неправильное число в строке формата: %ls"
 
-#: mu32/Errors.cpp:244
+#: mu32/Errors.cpp:247
 #, c-format
 msgid "In logik %s : initial tuning %s mustn't have parameters"
 msgstr ""
 
-#: mu32/Errors.cpp:245
+#: mu32/Errors.cpp:248
 #, c-format
 msgid "In collection %s : call to %s mustn't have parameters"
 msgstr ""
 
-#: mu32/Errors.cpp:246
+#: mu32/Errors.cpp:249
 #, c-format
 msgid "In case %s : call to %s mustn't have parameters"
 msgstr ""
 
-#: mu32/Errors.cpp:249
+#: mu32/Errors.cpp:252
 #, fuzzy, c-format
 msgid "Tones %s and %s are dependent"
 msgstr ""
@@ -526,12 +492,12 @@ msgstr ""
 " `%s' \n"
 " один и тот же каталог "
 
-#: mu32/Errors.cpp:250
+#: mu32/Errors.cpp:253
 #, c-format
 msgid "Retunings/logics %s and %s are dependent"
 msgstr ""
 
-#: mu32/Errors.cpp:251
+#: mu32/Errors.cpp:254
 #, fuzzy, c-format
 msgid "Intervals %s and %s are dependent"
 msgstr ""
@@ -540,101 +506,101 @@ msgstr ""
 " `%s' \n"
 " один и тот же каталог "
 
-#: mu32/Errors.cpp:252
+#: mu32/Errors.cpp:255
 msgid "MIDI-channels are dependent"
 msgstr ""
 
-#: mu32/Errors.cpp:256
+#: mu32/Errors.cpp:259
 #, fuzzy, c-format
 msgid "Wrong character ! Expecting %s (line %d)"
 msgstr "Неверный параметр командной строки."
 
-#: mu32/Errors.cpp:257
+#: mu32/Errors.cpp:260
 #, fuzzy, c-format
 msgid "Bad interval declaration of intervall %s"
 msgstr "Неверный синтаксис объявления: ~S~%Игнорируется."
 
-#: mu32/Errors.cpp:258
+#: mu32/Errors.cpp:261
 #, fuzzy, c-format
 msgid "Bad tone declaration of tone %s"
 msgstr "Неверный синтаксис объявления: ~S~%Игнорируется."
 
-#: mu32/Errors.cpp:259
+#: mu32/Errors.cpp:262
 #, fuzzy, c-format
 msgid "Bad tonesystem declaration. (line %d)"
 msgstr "недопустимый отпечаток в `%s', строка %d\n"
 
-#: mu32/Errors.cpp:260
+#: mu32/Errors.cpp:263
 #, c-format
 msgid "Bad parameter list in call to %s in line %d"
 msgstr ""
 
-#: mu32/Errors.cpp:261
+#: mu32/Errors.cpp:264
 #, fuzzy, c-format
 msgid "Bad retuning in line %d"
 msgstr "недопустимый отпечаток в `%s', строка %d\n"
 
-#: mu32/Errors.cpp:262
+#: mu32/Errors.cpp:265
 #, fuzzy, c-format
 msgid "bad pattern decl. at %s"
 msgstr "ошибка в образце: %s"
 
-#: mu32/Errors.cpp:263
+#: mu32/Errors.cpp:266
 #, fuzzy, c-format
 msgid "Bad MIDI list in line %d"
 msgstr "неверная строка в файле-каркасе"
 
-#: mu32/Errors.cpp:264
+#: mu32/Errors.cpp:267
 #, c-format
 msgid "No hex number after # (line %d)"
 msgstr ""
 
-#: mu32/Errors.cpp:271
+#: mu32/Errors.cpp:274
 #, fuzzy
 msgid "Undefined compiler warning"
 msgstr "предупреждение: неопределенная переменная `%.*s'"
 
-#: mu32/Errors.cpp:272
+#: mu32/Errors.cpp:275
 #, c-format
 msgid ""
 "MIDI event in logic %s does not start with channel 0 status byte. Value "
 "corrected."
 msgstr ""
 
-#: mu32/Errors.cpp:273
+#: mu32/Errors.cpp:276
 #, c-format
 msgid "Non existent harmony event in logic %s"
 msgstr ""
 
-#: mu32/Errors.cpp:274
+#: mu32/Errors.cpp:277
 #, c-format
 msgid "Non well defined event %s in logic %s"
 msgstr ""
 
-#: mu32/Errors.cpp:275
+#: mu32/Errors.cpp:278
 #, c-format
 msgid "Event ELSE is last in %s"
 msgstr ""
 
-#: mu32/Errors.cpp:276
+#: mu32/Errors.cpp:279
 msgid "MIDI channels wasted in channel assotiation"
 msgstr ""
 
-#: mu32/Errors.cpp:277
+#: mu32/Errors.cpp:280
 msgid "No file given, trying test.mut"
 msgstr ""
 
-#: mu32/Errors.cpp:278
+#: mu32/Errors.cpp:281
 #, fuzzy
 msgid "Invalid configuration file"
 msgstr "главный конфигурационный файл"
 
-#: mu32/Errors.cpp:279
+#: mu32/Errors.cpp:282
 #, c-format
 msgid "Intersection of MIDI channels %d und %d"
 msgstr ""
 
-#: mu32/Errors.cpp:280
+#: mu32/Errors.cpp:283
 #, fuzzy, c-format
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Ошибка в файле кисти GIMP \"%s\""
@@ -724,27 +690,27 @@ msgstr "Другие устройства _ввода:"
 msgid "No output device"
 msgstr "Сбросить устройство вывода"
 
-#: muwx/Routing/BoxDlg.cpp:277
+#: muwx/Routing/BoxDlg.cpp:290
 #, fuzzy
 msgid "Remove Route"
 msgstr "Маршрут по умолчанию"
 
-#: muwx/Routing/BoxDlg.cpp:277
+#: muwx/Routing/BoxDlg.cpp:290
 #, fuzzy
 msgid "Undelete Route"
 msgstr "Маршрут по умолчанию"
 
-#: muwx/Routing/BoxDlg.cpp:313
+#: muwx/Routing/BoxDlg.cpp:326
 #, fuzzy
 msgid "No box / thru mode"
 msgstr "\"%mode:1\": нет доступного выражения magic для magic \"%magic:2\"."
 
-#: muwx/Routing/BoxDlg.cpp:317
+#: muwx/Routing/BoxDlg.cpp:330
 #, fuzzy
 msgid "Mutabor box"
 msgstr "Площадка (BB)"
 
-#: muwx/Routing/BoxDlg.cpp:321
+#: muwx/Routing/BoxDlg.cpp:334
 #, fuzzy
 msgid "GUIDO file box"
 msgstr "Информация о файле"
@@ -769,31 +735,31 @@ msgstr "Площадка (BB)"
 msgid "Box %d"
 msgstr "Параллелепипед"
 
-#: muwx/Routing/InputDevDlg.cpp:49 muwx/Routing/OutputDevDlg.cpp:82
+#: muwx/Routing/InputDevDlg.cpp:49 muwx/Routing/OutputDevDlg.cpp:85
 #, fuzzy
 msgid "MIDI Device"
 msgstr "блочное устройство"
 
-#: muwx/Routing/InputDevDlg.cpp:50 muwx/Routing/OutputDevDlg.cpp:83
+#: muwx/Routing/InputDevDlg.cpp:50 muwx/Routing/OutputDevDlg.cpp:86
 #: xrc/reslocale.cpp:67 xrc/reslocale.cpp:70 xrc/reslocale.cpp:82
 #: xrc/reslocale.cpp:87
 #, fuzzy
 msgid "MIDI file"
 msgstr "Выбрать MIDI-файл..."
 
-#: muwx/Routing/InputDevDlg.cpp:51 muwx/Routing/OutputDevDlg.cpp:84
+#: muwx/Routing/InputDevDlg.cpp:51 muwx/Routing/OutputDevDlg.cpp:87
 #: xrc/reslocale.cpp:68 xrc/reslocale.cpp:72 xrc/reslocale.cpp:83
 #: xrc/reslocale.cpp:91
 #, fuzzy
 msgid "GUIDO file"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: muwx/Routing/InputDevDlg.cpp:114 muwx/Routing/OutputDevDlg.cpp:154
+#: muwx/Routing/InputDevDlg.cpp:114 muwx/Routing/OutputDevDlg.cpp:157
 #, fuzzy
 msgid "Choose device type"
 msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 
-#: muwx/Routing/InputDevDlg.cpp:125 muwx/Routing/OutputDevDlg.cpp:165
+#: muwx/Routing/InputDevDlg.cpp:125 muwx/Routing/OutputDevDlg.cpp:168
 #, fuzzy
 msgid "Unknown device type"
 msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
@@ -804,8 +770,8 @@ msgid "Input Device"
 msgstr "Устройство входа"
 
 #: muwx/Routing/InputDeviceShape.cpp:248
-#: muwx/Routing/OutputDeviceShape.cpp:259 muwx/MutRouteWnd.cpp:1362
-#: muwx/MutRouteWnd.cpp:1615
+#: muwx/Routing/OutputDeviceShape.cpp:259 muwx/MutRouteWnd.cpp:1363
+#: muwx/MutRouteWnd.cpp:1616
 #, fuzzy
 msgid "no device"
 msgstr "Ни одно устройство не настроено"
@@ -890,69 +856,69 @@ msgstr "Сообщение"
 msgid "Reading Source ..."
 msgstr "Исходный файл"
 
-#: muwx/MutApp.cpp:321 muwx/MutApp.cpp:323
+#: muwx/MutApp.cpp:327 muwx/MutApp.cpp:329
 #, fuzzy
 msgid "Help.zip"
 msgstr "Индекс"
 
-#: muwx/MutApp.cpp:334 muwx/MutApp.cpp:885 xrc/reslocale.cpp:48
+#: muwx/MutApp.cpp:340 muwx/MutApp.cpp:891 xrc/reslocale.cpp:48
 #: xrc/reslocale.cpp:103
 msgid "&Help"
 msgstr "&Справка"
 
-#: muwx/MutApp.cpp:406
+#: muwx/MutApp.cpp:412
 msgid "(c) 2005-2008 TU Dresden"
 msgstr ""
 
-#: muwx/MutApp.cpp:413
+#: muwx/MutApp.cpp:419
 msgid ""
 "An application to implement different tuning logics.\n"
 " Both fixed, adaptive and mutable tunings are supported."
 msgstr ""
 
-#: muwx/MutApp.cpp:414
+#: muwx/MutApp.cpp:420
 msgid "Rudolf Wille (mathematical foundation)"
 msgstr ""
 
-#: muwx/MutApp.cpp:415
+#: muwx/MutApp.cpp:421
 msgid "Tobias Schlemmer (new icon/splash)"
 msgstr ""
 
-#: muwx/MutApp.cpp:416
+#: muwx/MutApp.cpp:422
 msgid "Bernhard Ganter"
 msgstr ""
 
-#: muwx/MutApp.cpp:417 muwx/MutApp.cpp:421
+#: muwx/MutApp.cpp:423 muwx/MutApp.cpp:427
 msgid "Volker Abel"
 msgstr ""
 
-#: muwx/MutApp.cpp:418 muwx/MutApp.cpp:422
+#: muwx/MutApp.cpp:424 muwx/MutApp.cpp:428
 #, fuzzy
 msgid "Peter Reiss"
 msgstr "Питер Миллер"
 
-#: muwx/MutApp.cpp:419 muwx/MutApp.cpp:423
+#: muwx/MutApp.cpp:425 muwx/MutApp.cpp:429
 msgid "Ruediger Krausze <krausze@mail.berlios.de>"
 msgstr ""
 
-#: muwx/MutApp.cpp:420 muwx/MutApp.cpp:424
+#: muwx/MutApp.cpp:426 muwx/MutApp.cpp:430
 msgid "Tobias Schlemmer <keinstein@mail.berlios.de>"
 msgstr ""
 
-#: muwx/MutApp.cpp:443
+#: muwx/MutApp.cpp:449
 msgid "About ..."
 msgstr "&О программе..."
 
-#: muwx/MutApp.cpp:447
+#: muwx/MutApp.cpp:453
 msgid "Version: "
 msgstr "Версия: "
 
-#: muwx/MutApp.cpp:449
+#: muwx/MutApp.cpp:455
 #, fuzzy
 msgid "Written by: "
 msgstr "Авторы"
 
-#: muwx/MutApp.cpp:450
+#: muwx/MutApp.cpp:456
 msgid ""
 "Bernhard Ganter\n"
 "Volker Abel\n"
@@ -961,391 +927,391 @@ msgid ""
 "Tobias Schlemmer <keinstein@mail.berlios.de>"
 msgstr ""
 
-#: muwx/MutApp.cpp:455
+#: muwx/MutApp.cpp:461
 #, fuzzy
 msgid ""
 "Mathematical\n"
 "modelling:"
 msgstr "Математические символы из греческого алфавита"
 
-#: muwx/MutApp.cpp:456
+#: muwx/MutApp.cpp:462
 msgid "Rudolf Wille"
 msgstr ""
 
-#: muwx/MutApp.cpp:457
+#: muwx/MutApp.cpp:463
 #, fuzzy
 msgid "Licence type: "
 msgstr "Тип картинки"
 
-#: muwx/MutApp.cpp:458
+#: muwx/MutApp.cpp:464
 msgid "GPL"
 msgstr "Лицензия GPL"
 
-#: muwx/MutApp.cpp:459
+#: muwx/MutApp.cpp:465
 msgid "wxWidgets: "
 msgstr ""
 
-#: muwx/MutApp.cpp:461
+#: muwx/MutApp.cpp:467
 #, fuzzy
 msgid "Copyright: "
 msgstr "%r: Авторское право"
 
-#: muwx/MutApp.cpp:462
+#: muwx/MutApp.cpp:468
 msgid "(c) 2007 TU Dresden, Institut fuer Algebra"
 msgstr ""
 
-#: muwx/MutApp.cpp:486
+#: muwx/MutApp.cpp:492
 #, fuzzy
 msgid "Mutabor tuning"
 msgstr "Настройка жёсткого диска"
 
-#: muwx/MutApp.cpp:711
+#: muwx/MutApp.cpp:717
 #, fuzzy
 msgid "help.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: muwx/MutApp.cpp:716 muwx/MutConfDlg.h:61
+#: muwx/MutApp.cpp:722 muwx/MutConfDlg.h:61
 #, fuzzy
 msgid "The setup dialog"
 msgstr "Диалог настройки..."
 
-#: muwx/MutApp.cpp:721
+#: muwx/MutApp.cpp:727
 #, fuzzy
 msgid "manual.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: muwx/MutApp.cpp:726
+#: muwx/MutApp.cpp:732
 #, fuzzy
 msgid "reference.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: muwx/MutApp.cpp:731
+#: muwx/MutApp.cpp:737
 #, fuzzy
 msgid "Help window"
 msgstr "/Помощь/Окно _отладки"
 
-#: muwx/MutApp.cpp:741
+#: muwx/MutApp.cpp:747
 #, fuzzy
 msgid "Search for?"
 msgstr "_Искать: "
 
-#: muwx/MutApp.cpp:742
+#: muwx/MutApp.cpp:748
 #, fuzzy
 msgid "Search help for keyword"
 msgstr "искать точное совпадения каждого ключа"
 
-#: muwx/MutApp.cpp:795 muwx/MutFrame.cpp:1743
+#: muwx/MutApp.cpp:801 muwx/MutFrame.cpp:1747
 #, fuzzy, c-format
 msgid "Closing window of class %s"
 msgstr "При &закрытии последнего окна завершается работа с программой"
 
-#: muwx/MutApp.cpp:859
+#: muwx/MutApp.cpp:865
 #, fuzzy
 msgid "Online &Help\tF1"
 msgstr "Справка Freeciv"
 
-#: muwx/MutApp.cpp:860
+#: muwx/MutApp.cpp:866
 #, fuzzy
 msgid "Open the help Window"
 msgstr "Открыть окно справки GnuCash"
 
-#: muwx/MutApp.cpp:861
+#: muwx/MutApp.cpp:867
 #, fuzzy
 msgid "&Manual"
 msgstr "Ручное"
 
-#: muwx/MutApp.cpp:862
+#: muwx/MutApp.cpp:868
 #, fuzzy
 msgid "Open the manual"
 msgstr "Открыть справку"
 
-#: muwx/MutApp.cpp:863
+#: muwx/MutApp.cpp:869
 #, fuzzy
 msgid "Language &reference"
 msgstr "Неправильная ссылка"
 
-#: muwx/MutApp.cpp:864
+#: muwx/MutApp.cpp:870
 msgid "Open the Mutabor language reference"
 msgstr ""
 
-#: muwx/MutApp.cpp:866
+#: muwx/MutApp.cpp:872
 #, fuzzy
 msgid "&Index"
 msgstr "_Индекс"
 
-#: muwx/MutApp.cpp:867
+#: muwx/MutApp.cpp:873
 #, fuzzy
 msgid "Open the help index"
 msgstr "Открыть помощь по GnuCash"
 
-#: muwx/MutApp.cpp:868
+#: muwx/MutApp.cpp:874
 msgid "&Search"
 msgstr "&Поиск"
 
-#: muwx/MutApp.cpp:869
+#: muwx/MutApp.cpp:875
 msgid "Search the help system for a specific keyword"
 msgstr ""
 
-#: muwx/MutApp.cpp:871
+#: muwx/MutApp.cpp:877
 #, fuzzy
 msgid "Help &on help"
 msgstr ", помощь по "
 
-#: muwx/MutApp.cpp:872
+#: muwx/MutApp.cpp:878
 #, fuzzy
 msgid "Show Help about the help system"
 msgstr "_Показывать значок системного лотка:"
 
-#: muwx/MutApp.cpp:878
+#: muwx/MutApp.cpp:884
 msgid "&About"
 msgstr "&О программе..."
 
-#: muwx/MutApp.cpp:879
+#: muwx/MutApp.cpp:885
 #, fuzzy
 msgid "Show information about the program"
 msgstr "Показать информацию о программе Evolution"
 
-#: muwx/MutApp.cpp:882
+#: muwx/MutApp.cpp:888
 #, fuzzy
 msgid "Stop"
 msgstr "Остановить поиск..."
 
-#: muwx/MutApp.cpp:883
+#: muwx/MutApp.cpp:889
 #, fuzzy
 msgid "Stop the current program"
 msgstr "Сохранить текущий файл"
 
-#: muwx/MutApp.cpp:891
+#: muwx/MutApp.cpp:897
 #, fuzzy
 msgid "&Play"
 msgstr "_Воспроизвести"
 
-#: muwx/MutApp.cpp:892
+#: muwx/MutApp.cpp:898
 msgid "Start playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:893
+#: muwx/MutApp.cpp:899
 #, fuzzy
 msgid "St&op"
 msgstr "_Остановить анимацию"
 
-#: muwx/MutApp.cpp:894
+#: muwx/MutApp.cpp:900
 msgid "Stop playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:895
+#: muwx/MutApp.cpp:901
 #, fuzzy
 msgid "P&ause"
 msgstr "_Приостановить"
 
-#: muwx/MutApp.cpp:896
+#: muwx/MutApp.cpp:902
 msgid "Pause plaing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:897
+#: muwx/MutApp.cpp:903
 msgid "&Sequencer"
-msgstr ""
-
-#: muwx/MutApp.cpp:909
-#, fuzzy
-msgid "&Routes\tF11"
-msgstr "Торговые пути"
-
-#: muwx/MutApp.cpp:910
-#, fuzzy
-msgid "Open route configuration window"
-msgstr "Открыть окно главной книги"
-
-#: muwx/MutApp.cpp:914
-msgid "Current ke&ys\tF5"
 msgstr ""
 
 #: muwx/MutApp.cpp:915
 #, fuzzy
+msgid "&Routes\tF11"
+msgstr "Торговые пути"
+
+#: muwx/MutApp.cpp:916
+#, fuzzy
+msgid "Open route configuration window"
+msgstr "Открыть окно главной книги"
+
+#: muwx/MutApp.cpp:920
+msgid "Current ke&ys\tF5"
+msgstr ""
+
+#: muwx/MutApp.cpp:921
+#, fuzzy
 msgid "Show current keys window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: muwx/MutApp.cpp:916
+#: muwx/MutApp.cpp:922
 #, fuzzy
 msgid "&Tone system\tF6"
 msgstr "Корень файловой системы"
 
-#: muwx/MutApp.cpp:917
+#: muwx/MutApp.cpp:923
 #, fuzzy
 msgid "Show tone system window"
 msgstr "Система X Window (без расширения Xv)"
 
-#: muwx/MutApp.cpp:918
+#: muwx/MutApp.cpp:924
 #, fuzzy
 msgid "&Actions\tF7"
 msgstr "Действия каравана"
 
-#: muwx/MutApp.cpp:919
+#: muwx/MutApp.cpp:925
 #, fuzzy
 msgid "Show current actions window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: muwx/MutApp.cpp:927
+#: muwx/MutApp.cpp:933
 #, fuzzy
 msgid "Select &Box"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutApp.cpp:928
+#: muwx/MutApp.cpp:934
 #, fuzzy
 msgid "Select current Box"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutApp.cpp:931
+#: muwx/MutApp.cpp:937
 msgid "&View"
 msgstr "&Вид"
 
-#: muwx/MutApp.cpp:937
+#: muwx/MutApp.cpp:943
 #, fuzzy
 msgid "&Load routes"
 msgstr "Торговые пути"
 
-#: muwx/MutApp.cpp:938
+#: muwx/MutApp.cpp:944
 msgid "Load the current route configuration from a file"
 msgstr ""
 
-#: muwx/MutApp.cpp:939
+#: muwx/MutApp.cpp:945
 #, fuzzy
 msgid "&Save routes"
 msgstr "Торговые пути"
 
-#: muwx/MutApp.cpp:940
+#: muwx/MutApp.cpp:946
 #, fuzzy
 msgid "Save current route configuration to a file."
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
 
-#: muwx/MutApp.cpp:941
+#: muwx/MutApp.cpp:947
 #, fuzzy
 msgid "Save routes &as"
 msgstr "Сохранить игру как... (_A)"
 
-#: muwx/MutApp.cpp:942
+#: muwx/MutApp.cpp:948
 msgid "Save current route configuration to a file with a new name."
 msgstr ""
 
-#: muwx/MutApp.cpp:943
+#: muwx/MutApp.cpp:949
 #, fuzzy
 msgid "&Routes"
 msgstr "Торговые пути"
 
-#: muwx/MutApp.cpp:949
+#: muwx/MutApp.cpp:955
 #, fuzzy
 msgid "&Compile\tAlt+F9"
 msgstr "Убрать сообщения (F9)"
 
-#: muwx/MutApp.cpp:949
+#: muwx/MutApp.cpp:955
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr ""
 
-#: muwx/MutApp.cpp:950
+#: muwx/MutApp.cpp:956
 #, fuzzy
 msgid "&Activate\tF9"
 msgstr "Активные соединения"
 
-#: muwx/MutApp.cpp:950
+#: muwx/MutApp.cpp:956
 #, fuzzy
 msgid "Activate the Mutabor Kernel."
 msgstr "Длина единицы ядра:"
 
-#: muwx/MutApp.cpp:951
+#: muwx/MutApp.cpp:957
 #, fuzzy
 msgid "&Stop\tF8"
 msgstr "Остановить поиск..."
 
-#: muwx/MutApp.cpp:951
+#: muwx/MutApp.cpp:957
 #, fuzzy
 msgid "Stop the Mutabor Kernel."
 msgstr "Длина единицы ядра:"
 
-#: muwx/MutApp.cpp:953
+#: muwx/MutApp.cpp:959
 #, fuzzy
 msgid "&Panic\tF12"
 msgstr "%s: паника: Недопустимое l_value %d\n"
 
-#: muwx/MutApp.cpp:953
+#: muwx/MutApp.cpp:959
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr ""
 
-#: muwx/MutApp.cpp:954
+#: muwx/MutApp.cpp:960
 #, fuzzy
 msgid "&Logic"
 msgstr "Логика"
 
-#: muwx/MutApp.cpp:960
+#: muwx/MutApp.cpp:966
 #, fuzzy
 msgid "&New\tCtrl+N"
 msgstr "Создать к&аталог..."
 
-#: muwx/MutApp.cpp:961
+#: muwx/MutApp.cpp:967
 #, fuzzy
 msgid "Create a new logic file."
 msgstr "%s: не удалось создать новый файл значений по умолчанию\n"
 
-#: muwx/MutApp.cpp:962
+#: muwx/MutApp.cpp:968
 #, fuzzy
 msgid "&Open...\tCtrl+O"
 msgstr "Открыть каталог"
 
-#: muwx/MutApp.cpp:963
+#: muwx/MutApp.cpp:969
 #, fuzzy
 msgid "Open a logic file in editor window"
 msgstr "Открывать исходные файлы в редакторе, а не в программе просмотра"
 
-#: muwx/MutApp.cpp:966
+#: muwx/MutApp.cpp:972
 #, fuzzy
 msgid "&Save\tCtrl+S"
 msgstr "Сохранить &как..."
 
-#: muwx/MutApp.cpp:967
+#: muwx/MutApp.cpp:973
 msgid "Save the current file."
 msgstr "Сохранить текущий файл"
 
-#: muwx/MutApp.cpp:968
+#: muwx/MutApp.cpp:974
 #, fuzzy
 msgid "Save &As...\tShift+Ctrl+S"
 msgstr "Правая клавиша Ctrl работает как правая клавиша Alt"
 
-#: muwx/MutApp.cpp:969
+#: muwx/MutApp.cpp:975
 #, fuzzy
 msgid "Save the current file with a new file name"
 msgstr "Сохранить текущий файл под другим именем"
 
-#: muwx/MutApp.cpp:974
+#: muwx/MutApp.cpp:980
 #, fuzzy
 msgid "&Execute\tCtrl+F9"
 msgstr "Убрать сообщения (F9)"
 
-#: muwx/MutApp.cpp:975
+#: muwx/MutApp.cpp:981
 msgid "Load a logic file an immediately activate it"
 msgstr ""
 
-#: muwx/MutApp.cpp:981
+#: muwx/MutApp.cpp:987
 msgid "&Preferences"
 msgstr "&Установки"
 
-#: muwx/MutApp.cpp:981
+#: muwx/MutApp.cpp:987
 #, fuzzy
 msgid "Edit program settings"
 msgstr "Изменить автоматически запускаемую программу"
 
-#: muwx/MutApp.cpp:985
+#: muwx/MutApp.cpp:991
 msgid "E&xit"
 msgstr "&Выход"
 
-#: muwx/MutApp.cpp:985 muwx/MutApp.cpp:988
+#: muwx/MutApp.cpp:991 muwx/MutApp.cpp:994
 #, fuzzy
 msgid "Quit Mutabor"
 msgstr "Завер_шить"
 
-#: muwx/MutApp.cpp:986
+#: muwx/MutApp.cpp:992
 msgid "&File"
 msgstr "&Файл"
 
-#: muwx/MutApp.cpp:989
+#: muwx/MutApp.cpp:995
 #, fuzzy
 msgid "@MAC|&File"
 msgstr "Файл HTML (*.html)|*.html"
@@ -1380,86 +1346,86 @@ msgstr "Ошибка"
 msgid "The compile dialog could not be loaded."
 msgstr "Указанный URL не может быть загружен."
 
-#: muwx/MutFrame.cpp:399
+#: muwx/MutFrame.cpp:405
 #, fuzzy
 msgid "Toolbar"
 msgstr "Панель инструментов"
 
-#: muwx/MutFrame.cpp:437
+#: muwx/MutFrame.cpp:443
 msgid "New"
 msgstr "Новый"
 
-#: muwx/MutFrame.cpp:437
+#: muwx/MutFrame.cpp:443
 msgid "New file"
 msgstr "Создать файл"
 
-#: muwx/MutFrame.cpp:438
+#: muwx/MutFrame.cpp:444
 msgid "Open"
 msgstr "Открыть"
 
-#: muwx/MutFrame.cpp:438
+#: muwx/MutFrame.cpp:444
 msgid "Open file"
 msgstr "Открыть файл"
 
-#: muwx/MutFrame.cpp:439
+#: muwx/MutFrame.cpp:445
 msgid "Save"
 msgstr "Сохранить"
 
-#: muwx/MutFrame.cpp:439
+#: muwx/MutFrame.cpp:445
 msgid "Save file"
 msgstr "Сохранить файл"
 
-#: muwx/MutFrame.cpp:441
+#: muwx/MutFrame.cpp:447
 msgid "Copy"
 msgstr "Копировать"
 
-#: muwx/MutFrame.cpp:442
+#: muwx/MutFrame.cpp:448
 msgid "Cut"
 msgstr "Вырезать"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:449
 msgid "Paste"
 msgstr "Вставить"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:451
 msgid "Print"
 msgstr "Печать"
 
-#: muwx/MutFrame.cpp:447
+#: muwx/MutFrame.cpp:453
 msgid "About"
 msgstr "О программе"
 
-#: muwx/MutFrame.cpp:447 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
+#: muwx/MutFrame.cpp:453 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
 #: xrc/reslocale.cpp:77 xrc/reslocale.cpp:96
 msgid "Help"
 msgstr "Справка"
 
-#: muwx/MutFrame.cpp:514
+#: muwx/MutFrame.cpp:520
 msgid ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
 msgstr ""
 
-#: muwx/MutFrame.cpp:516
+#: muwx/MutFrame.cpp:522
 #, fuzzy
 msgid "Please confirm closing."
 msgstr "Требовать подтверждение при закрытии несохраненных _изображений"
 
-#: muwx/MutFrame.cpp:615
+#: muwx/MutFrame.cpp:621
 #, c-format
 msgid "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:629
+#: muwx/MutFrame.cpp:635
 msgid "noname.mut"
 msgstr "Неназванный.mut"
 
-#: muwx/MutFrame.cpp:648 muwx/MutFrame.cpp:1587
+#: muwx/MutFrame.cpp:654 muwx/MutFrame.cpp:1591
 #, c-format
 msgid "%s -- %s"
 msgstr ""
 
-#: muwx/MutFrame.cpp:701
+#: muwx/MutFrame.cpp:705
 msgid ""
 "There are no realtime \t\t                           instruments in the "
 "routes.\n"
@@ -1470,106 +1436,106 @@ msgid ""
 "tunings \t\t                           while playing by computer keyboard.)"
 msgstr ""
 
-#: muwx/MutFrame.cpp:707
+#: muwx/MutFrame.cpp:711
 #, fuzzy
 msgid "No realtime => batch mode?"
 msgstr "пакетный режим: ничего не запрашивать"
 
-#: muwx/MutFrame.cpp:976
+#: muwx/MutFrame.cpp:980
 #, fuzzy
 msgid "Routes"
 msgstr "Торговые пути"
 
-#: muwx/MutFrame.cpp:1013
+#: muwx/MutFrame.cpp:1017
 #, fuzzy, c-format
 msgid "Logic -- Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutFrame.cpp:1079
+#: muwx/MutFrame.cpp:1083
 #, fuzzy, c-format
 msgid "Current keys at Box %d"
 msgstr "Флажок подсветки текущего стиха"
 
-#: muwx/MutFrame.cpp:1086
+#: muwx/MutFrame.cpp:1090
 #, c-format
 msgid "Current tone system at Box %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:1093
+#: muwx/MutFrame.cpp:1097
 #, fuzzy
 msgid "Action log"
 msgstr "П&росмотреть отчет..."
 
-#: muwx/MutFrame.cpp:1096
+#: muwx/MutFrame.cpp:1100
 #, fuzzy, c-format
 msgid "Actions at Box %d"
 msgstr "Группирующая рамка"
 
-#: muwx/MutFrame.cpp:1102
+#: muwx/MutFrame.cpp:1106
 #, fuzzy
 msgid "Unexpected value: WK_LOGIC"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1107
+#: muwx/MutFrame.cpp:1111
 #, fuzzy
 msgid "Unexpected value: WK_ROUTE"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1112
+#: muwx/MutFrame.cpp:1116
 #, fuzzy
 msgid "Unexpected value: WK_EDIT"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1117
+#: muwx/MutFrame.cpp:1121
 #, fuzzy
 msgid "Unexpected value: WK_NULL"
 msgstr "Внутренняя ошибка: неожиданно нет решения."
 
-#: muwx/MutFrame.cpp:1122
+#: muwx/MutFrame.cpp:1126
 #, fuzzy, c-format
 msgid "Unexpected window kind: %d"
 msgstr "4 одинаковых [25 + сумма]"
 
-#: muwx/MutFrame.cpp:1294
+#: muwx/MutFrame.cpp:1298
 #, fuzzy
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "Новый счет (не реализовано)"
 
-#: muwx/MutFrame.cpp:1661
+#: muwx/MutFrame.cpp:1665
 msgid "Translation in batch mode completed. Output was generated."
 msgstr ""
 
-#: muwx/MutFrame.cpp:1662
+#: muwx/MutFrame.cpp:1666
 #, fuzzy
 msgid "Batch translation finished"
 msgstr "Завершено с ошибкой"
 
-#: muwx/MutFrame.cpp:1771
+#: muwx/MutFrame.cpp:1775
 #, fuzzy, c-format
 msgid "Box %d got id %d"
 msgstr "Недопустимый ID фрейма"
 
-#: muwx/MutFrame.cpp:1774
+#: muwx/MutFrame.cpp:1778
 #, fuzzy, c-format
 msgid "Currently %d items in box menu"
 msgstr "В этом меню нет %d пунктов."
 
-#: muwx/MutFrame.cpp:1776
+#: muwx/MutFrame.cpp:1780
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:1777
+#: muwx/MutFrame.cpp:1781
 #, fuzzy, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutFrame.cpp:1778
+#: muwx/MutFrame.cpp:1782
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr ""
 
-#: muwx/MutFrame.cpp:1788
+#: muwx/MutFrame.cpp:1792
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr ""
@@ -1620,52 +1586,52 @@ msgstr ""
 msgid "The string '%s' is not a valid file name."
 msgstr "%s: \"%s\" не является верной кодировкой сервера\n"
 
-#: muwx/MutRouteWnd.cpp:946 xrc/reslocale.cpp:111 xrc/reslocale.cpp:123
+#: muwx/MutRouteWnd.cpp:947 xrc/reslocale.cpp:111 xrc/reslocale.cpp:123
 #: xrc/reslocale.cpp:137
 #, fuzzy
 msgid "all"
 msgstr "прочие"
 
-#: muwx/MutRouteWnd.cpp:951
+#: muwx/MutRouteWnd.cpp:952
 msgid "else"
 msgstr ""
 
-#: muwx/MutRouteWnd.cpp:957
+#: muwx/MutRouteWnd.cpp:958
 #, fuzzy, c-format
 msgid "box: %s"
 msgstr "Параллелепипед"
 
-#: muwx/MutRouteWnd.cpp:959 muwx/MutRouteWnd.cpp:984
+#: muwx/MutRouteWnd.cpp:960 muwx/MutRouteWnd.cpp:985
 #, fuzzy, c-format
 msgid "channel: %s"
 msgstr "Канал #%d:"
 
-#: muwx/MutRouteWnd.cpp:966
+#: muwx/MutRouteWnd.cpp:967
 #, c-format
 msgid "staff: %s"
 msgstr ""
 
-#: muwx/MutRouteWnd.cpp:968
+#: muwx/MutRouteWnd.cpp:969
 #, fuzzy, c-format
 msgid "keys: %s"
 msgstr "Клавиши"
 
-#: muwx/MutRouteWnd.cpp:970
+#: muwx/MutRouteWnd.cpp:971
 #, fuzzy, c-format
 msgid "track: %s"
 msgstr "%n: Дорожка"
 
-#: muwx/MutRouteWnd.cpp:1409 muwx/MutRouteWnd.cpp:1671
+#: muwx/MutRouteWnd.cpp:1410 muwx/MutRouteWnd.cpp:1672
 #, fuzzy
 msgid "Unexpected value: DTNotSet"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutRouteWnd.cpp:1417 muwx/MutRouteWnd.cpp:1679
+#: muwx/MutRouteWnd.cpp:1418 muwx/MutRouteWnd.cpp:1680
 #, fuzzy, c-format
 msgid "Unexpected device type: %d"
 msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 
-#: muwx/MutRouteWnd.cpp:1452
+#: muwx/MutRouteWnd.cpp:1453
 #, fuzzy, c-format
 msgid "Unexpected value: %d"
 msgstr "Значение _гаммы"
@@ -2120,6 +2086,26 @@ msgstr "не удалось открыть отладочный файл `%.255s
 #, fuzzy
 msgid "Debug the config file parser"
 msgstr "--config-file требует указания аргумента\n"
+
+#, fuzzy
+#~ msgid "Device_Id"
+#~ msgstr "Идентификатор входящего устройства MMC"
+
+#, fuzzy
+#~ msgid "Internal Error: Forbidden output device type: "
+#~ msgstr "внутренняя ошибка: на выход передан неверный тип заплаты"
+
+#, fuzzy
+#~ msgid "Undefined device type %d."
+#~ msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
+
+#, fuzzy
+#~ msgid "Unknown device."
+#~ msgstr "Неизвестное устройство"
+
+#, fuzzy
+#~ msgid "Unknown device type %d."
+#~ msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 
 #, fuzzy
 #~ msgid "&box tag"
