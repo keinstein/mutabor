@@ -15,11 +15,6 @@ AM_CPPFLAGS = -I$(srcdir)/mu32 \
 	@NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 
-BUILT_SOURCES = $(top_srcdir)/xrc/wxresource.h
-if COND_PRECOMP_CXX
-BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
-endif
-
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 INDENT = astyle --style=linux --indent=tab=8
@@ -61,136 +56,146 @@ dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/PassiveChannel.png \
 	Icons/png/TuningBox.png
 #RECURSIVE_TARGETS += mac-recursive
-BUILT_SOURCES += $(top_srcdir)/mu32/mut.cpp $(top_srcdir)/mu32/mut.h \
+BUILT_SOURCES = \
+	$(top_srcdir)/mu32/mut.cpp \
+	$(top_srcdir)/mu32/mut.h \
 	$(top_srcdir)/xrc/wxresource.h
+
+if COND_PRECOMP_CXX
+BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
+nodist_mutabor_SOURCES = mutabor-cxxprecompiled.$(PCHEXT_CXX)
+endif
+
 bin_PROGRAMS = mutabor
-mutabor_INDENTS = \
+
+INDENTHEADERS = \
 		mu32/Defs.h \
-		mu32/routing/gmn/DevGIS.cpp \
 		mu32/routing/gmn/DevGIS.h \
-		mu32/routing/gmn/GIS_Head.cpp \
 		mu32/routing/gmn/GIS_Head.h \
-		mu32/routing/gmn/GIS.cpp \
 		mu32/routing/gmn/GIS.h \
-		mu32/routing/gmn/GSP_Err.cpp \
-		mu32/routing/gmn/GSP_File.cpp \
 		mu32/routing/gmn/GSP_File.h \
-		mu32/routing/gmn/GSP.cpp \
 		mu32/routing/gmn/GSP.h \
-		mu32/routing/midi/DevMidF.cpp \
 		mu32/routing/midi/DevMidF.h \
-		mu32/routing/midi/DevMidi.cpp \
 		mu32/routing/midi/DevMidi.h \
-		mu32/routing/Device.cpp \
 		mu32/routing/Device.h \
-		mu32/routing/Route.cpp \
 		mu32/routing/Route.h \
-		mu32/routing/RouteCompat.cpp \
 		mu32/routing/RouteCompat.h \
-		mu32/Errors.cpp \
 		mu32/Errors.h \
-		mu32/Execute.cpp \
 		mu32/Execute.h \
-		mu32/Frac.cpp \
 		mu32/Frac.h \
 		mu32/Global.h \
-		mu32/GrafKern.cpp \
 		mu32/GrafKern.h \
-		mu32/Hilfs.cpp \
 		mu32/Hilfs.h \
 		mu32/Interpre.h \
-		mu32/Interval.cpp \
 		mu32/Interval.h \
 		mu32/MidiKern.h \
-		mu32/Parser.cpp \
-		mu32/Runtime.cpp \
 		mu32/Runtime.h \
-		mu32/TabGen.cpp \
 		mu32/treestorage.h \
-		muwx/Routing/BoxChannelShape.cpp \
 		muwx/Routing/BoxChannelShape.h \
-		muwx/Routing/BoxDlg.cpp \
 		muwx/Routing/BoxDlg.h \
-		muwx/Routing/BoxIconShape.cpp \
 		muwx/Routing/BoxIconShape.h \
-		muwx/Routing/BoxShape.cpp \
 		muwx/Routing/BoxShape.h \
-		muwx/Routing/DebugRoute.cpp \
 		muwx/Routing/DebugRoute.h \
-		muwx/Routing/DeviceShape.cpp \
 		muwx/Routing/DeviceShape.h \
-		muwx/Routing/InputDevDlg.cpp \
 		muwx/Routing/InputDevDlg.h \
-		muwx/Routing/InputDeviceShape.cpp \
 		muwx/Routing/InputDeviceShape.h \
-		muwx/Routing/InputGuidoFileDeviceShape.cpp \
 		muwx/Routing/InputGuidoFileDeviceShape.h \
-		muwx/Routing/InputMidiDeviceShape.cpp \
 		muwx/Routing/InputMidiDeviceShape.h \
-		muwx/Routing/InputMidiFileDeviceShape.cpp \
 		muwx/Routing/InputMidiFileDeviceShape.h \
-		muwx/Routing/NewBoxShape.cpp \
 		muwx/Routing/NewBoxShape.h \
-		muwx/Routing/NewInputDeviceShape.cpp \
 		muwx/Routing/NewInputDeviceShape.h \
-		muwx/Routing/NewOutputDeviceShape.cpp \
 		muwx/Routing/NewOutputDeviceShape.h \
-		muwx/Routing/OutputDevDlg.cpp \
 		muwx/Routing/OutputDevDlg.h \
-		muwx/Routing/OutputDeviceShape.cpp \
 		muwx/Routing/OutputDeviceShape.h \
-		muwx/Routing/OutputGuidoFileDeviceShape.cpp \
 		muwx/Routing/OutputGuidoFileDeviceShape.h \
-		muwx/Routing/OutputMidiDeviceShape.cpp \
 		muwx/Routing/OutputMidiDeviceShape.h \
-		muwx/Routing/OutputMidiFileDeviceShape.cpp \
 		muwx/Routing/OutputMidiFileDeviceShape.h \
-		muwx/Routing/RouteIcons.cpp \
 		muwx/Routing/RouteIcons.h \
-		muwx/Action.cpp \
 		muwx/Action.h \
-		muwx/CompDlg.cpp \
-		muwx/CompDlg.h \
-		muwx/configtree.cpp \
-		muwx/configtree.h \
-		muwx/IconShape.cpp \
-		muwx/IconShape.h \
 		muwx/Mutabor.rh \
-		muwx/MutApp.cpp \
+		muwx/CompDlg.h \
+		muwx/configtree.h \
+		muwx/IconShape.h \
 		muwx/MutApp.h \
-		muwx/MutChild.cpp \
 		muwx/MutChild.h \
 		muwx/MutConfDlg.h \
-		muwx/MutEditFile.cpp \
 		muwx/MutEditFile.h \
-		muwx/MutFrame.cpp \
 		muwx/MutFrame.h \
-		muwx/MutIcon.cpp \
 		muwx/MutIcon.h \
-		muwx/MutLogicWnd.cpp \
 		muwx/MutLogicWnd.h \
-		muwx/MutRouteWnd.cpp  \
 		muwx/MutRouteWnd.h \
-		muwx/MutTextBox.cpp \
 		muwx/MutTextBox.h \
-		muwx/Panel.cpp \
 		muwx/Panel.h \
 		muwx/resourceload.h \
 		mywx/mhArray.h \
 		mywx/mhDefs.h \
-		mywx/muconvauto.cpp \
 		mywx/muconvauto.h \
 		mywx/mutDebug.h \
+		mywx/valNum.h \
+		mywx/valRadio.h \
+		rtmidi/RtError.h \
+		rtmidi/RtMidi.h
+
+mutabor_INDENTS = \
+		mu32/routing/gmn/DevGIS.cpp \
+		mu32/routing/gmn/GIS_Head.cpp \
+		mu32/routing/gmn/GIS.cpp \
+		mu32/routing/gmn/GSP_Err.cpp \
+		mu32/routing/gmn/GSP_File.cpp \
+		mu32/routing/gmn/GSP.cpp \
+		mu32/routing/midi/DevMidF.cpp \
+		mu32/routing/midi/DevMidi.cpp \
+		mu32/routing/Device.cpp \
+		mu32/routing/Route.cpp \
+		mu32/routing/RouteCompat.cpp \
+		mu32/Errors.cpp \
+		mu32/Execute.cpp \
+		mu32/Frac.cpp \
+		mu32/GrafKern.cpp \
+		mu32/Hilfs.cpp \
+		mu32/Interval.cpp \
+		mu32/Parser.cpp \
+		mu32/Runtime.cpp \
+		mu32/TabGen.cpp \
+		muwx/Routing/BoxChannelShape.cpp \
+		muwx/Routing/BoxDlg.cpp \
+		muwx/Routing/BoxIconShape.cpp \
+		muwx/Routing/BoxShape.cpp \
+		muwx/Routing/DebugRoute.cpp \
+		muwx/Routing/DeviceShape.cpp \
+		muwx/Routing/InputDevDlg.cpp \
+		muwx/Routing/InputDeviceShape.cpp \
+		muwx/Routing/InputGuidoFileDeviceShape.cpp \
+		muwx/Routing/InputMidiDeviceShape.cpp \
+		muwx/Routing/InputMidiFileDeviceShape.cpp \
+		muwx/Routing/NewBoxShape.cpp \
+		muwx/Routing/NewInputDeviceShape.cpp \
+		muwx/Routing/NewOutputDeviceShape.cpp \
+		muwx/Routing/OutputDevDlg.cpp \
+		muwx/Routing/OutputDeviceShape.cpp \
+		muwx/Routing/OutputGuidoFileDeviceShape.cpp \
+		muwx/Routing/OutputMidiDeviceShape.cpp \
+		muwx/Routing/OutputMidiFileDeviceShape.cpp \
+		muwx/Routing/RouteIcons.cpp \
+		muwx/Action.cpp \
+		muwx/CompDlg.cpp \
+		muwx/configtree.cpp \
+		muwx/IconShape.cpp \
+		muwx/MutApp.cpp \
+		muwx/MutChild.cpp \
+		muwx/MutEditFile.cpp \
+		muwx/MutFrame.cpp \
+		muwx/MutIcon.cpp \
+		muwx/MutLogicWnd.cpp \
+		muwx/MutRouteWnd.cpp  \
+		muwx/MutTextBox.cpp \
+		muwx/Panel.cpp \
+		mywx/muconvauto.cpp \
 		mywx/mutDebug.cpp \
 		mywx/mxDefs.cpp \
 		mywx/valNum.cpp \
-		mywx/valNum.h \
 		mywx/valRadio.cpp \
-		mywx/valRadio.h \
-		rtmidi/RtError.h \
-		rtmidi/RtMidi.cpp \
-		rtmidi/RtMidi.h \
-		$(top_srcdir)/xrc/wxresource.h
+		rtmidi/RtMidi.cpp
 
 
 #		muwx/InputFilterDlg.cpp \
@@ -203,18 +208,21 @@ CLEANFILES = \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
 	mutabor-cxxprecompiled.h \
 	mutabor-cxxprecompiled.stamp \
-	Mutabor.xrc
+	Mutabor.xrc \
+	$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 
-if COND_WINRC
-mutabor_INDENTS += muwx/Mutabor.rc
-endif
+INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS)
 
-INDENTS = $(mutabor_INDENTS)
+noinst_HEADERS =  mu32/mut.h \
+		  mywx/mutDebugFlags.h \
+		  $(INDENTHEADERS)
 
 mutabor_SOURCES = $(mutabor_INDENTS) \
-		  $(top_srcdir)/mu32/mut.cpp \
-		  $(top_srcdir)/mu32/mut.h \
-		  mywx/mutDebugFlags.h 
+		  mu32/mut.cpp
+
+if COND_WINRC
+mutabor_SOURCES += muwx/Mutabor.rc
+endif
 
 if COND_PRECOMP_CXX
 mutabor_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
@@ -332,7 +340,7 @@ mutabor-cxxprecompiled.h: Makefile
 	@echo 'creating $@'
 	@echo '#define PRECOMPILE 1' >$@.tmp
 	@echo '#include "Defs.h"' >>$@.tmp
-	@for datei in $(mutabor_INDENTS) ; \
+	@for datei in $(INDENTHEADERS) ; \
 	do  \
 		echo $$datei | $(EGREP) '\.h$$' >/dev/null && \
 		echo '#include "'"$$datei"'"' >>$@.tmp ; \

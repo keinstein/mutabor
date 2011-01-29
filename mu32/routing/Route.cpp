@@ -1,18 +1,20 @@
 // -*- C++ -*-
-
 /** \file
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.2 2010/11/21 13:15:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.3 2011/01/29 20:00:14 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/01/29 20:00:14 $
+ * \version $Revision: 1.3 $
  *
  * $Log: Route.cpp,v $
- * Revision 1.2  2010/11/21 13:15:45  keinstein
+ * Revision 1.3  2011/01/29 20:00:14  keinstein
+ * include Device.h
+ *
+ * Revision 1.2  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.5  2010-09-29 15:06:40  keinstein
@@ -44,6 +46,7 @@
 #endif
 
 #include "Route.h"
+#include "Device.h"
 
 // Route ------------------------------------------------------------
 
