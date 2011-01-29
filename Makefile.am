@@ -4,14 +4,14 @@ DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mi
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
-AM_CPPFLAGS = -I $(srcdir)/mu32 \
-	-I $(srcdir)/mu32/routing \
-	-I $(srcdir)/mu32/routing/midi \
-	-I $(srcdir)/mu32/routing/gmn \
-	-I $(srcdir)/muwx -I $(srcdir)/rtmidi \
-	-I $(srcdir)/muwx/Routing \
-	-I $(srcdir)/mywx -I \
-	-I $(top_srcdir)/xrc -I $(top_srcdir)/libs/includes \
+AM_CPPFLAGS = -I$(srcdir)/mu32 \
+	-I$(srcdir)/mu32/routing \
+	-I$(srcdir)/mu32/routing/midi \
+	-I$(srcdir)/mu32/routing/gmn \
+	-I$(srcdir)/muwx -I$(srcdir)/rtmidi \
+	-I$(srcdir)/muwx/Routing \
+	-I$(srcdir)/mywx \
+	-I$(top_srcdir)/xrc -I$(top_srcdir)/libs/includes \
 	@NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 
