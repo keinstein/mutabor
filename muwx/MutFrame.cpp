@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.25 2011/01/13 21:12:37 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.26 2011/02/13 17:20:46 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/01/13 21:12:37 $
- * \version $Revision: 1.25 $
+ * \date $Date: 2011/02/13 17:20:46 $
+ * \version $Revision: 1.26 $
  * \license wxWindows license
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.25  2011/01/13 21:12:37  keinstein
+ * Revision 1.26  2011/02/13 17:20:46  keinstein
+ * Implemented missing toolbar icons (except search and edit funcitons)
+ *
+ * Revision 1.25  2011-01-13 21:12:37  keinstein
  * reactivate config restore on Activate in debug mode
  *
  * Revision 1.24  2010-12-11 02:10:09  keinstein
@@ -231,6 +234,7 @@
 #include "MutRouteWnd.h"
 #include "MutLogicWnd.h"
 #include "MutTextBox.h"
+#include "MutBitmaps.h"
 
 #define OPENMENU \
 	menu = new wxMenu;
@@ -398,7 +402,7 @@ MutFrame::MutFrame(wxWindow *parent,
 	                                wxID_ANY,
 	                                wxDefaultPosition,
 	                                wxDefaultSize,
-	                                wxTB_FLAT | wxTB_NODIVIDER);
+	                                wxTB_DOCKABLE);
 	InitToolBar(tb);
 
 	auimanager.AddPane(tb, wxAuiPaneInfo().
@@ -428,36 +432,41 @@ MutFrame::~MutFrame()
 #if wxUSE_TOOLBAR
 void MutFrame::InitToolBar(wxToolBar* toolBar)
 {
-	wxBitmap* bitmaps[8];
+	MutToolBarBitmaps::Init();
 
-	/* \todo use PNG images from resources */
-	bitmaps[0] = new wxBitmap( new_xpm );
-	bitmaps[1] = new wxBitmap( open_xpm );
-	bitmaps[2] = new wxBitmap( save_xpm );
-	bitmaps[3] = new wxBitmap( copy_xpm );
-	bitmaps[4] = new wxBitmap( cut_xpm );
-	bitmaps[5] = new wxBitmap( paste_xpm );
-	bitmaps[6] = new wxBitmap( print_xpm );
-	bitmaps[7] = new wxBitmap( help_xpm );
-
-	toolBar->AddTool(CM_FILENEW, _("New"), *(bitmaps[0]), _("New file"));
-	toolBar->AddTool(CM_FILEOPEN, _("Open"), *bitmaps[1], _("Open file"));
-	toolBar->AddTool(CM_FILESAVE, _("Save"), *bitmaps[2], _("Save file"));
+	toolBar->AddTool(CM_FILENEW, _("New"), MutToolBarBitmaps::New, _("New file"));
+	toolBar->AddTool(CM_FILEOPEN, _("Open"), MutToolBarBitmaps::Open , _("Open file"));
+	toolBar->AddTool(CM_FILESAVE, _("Save"), MutToolBarBitmaps::Save, _("Save file"));
+	toolBar->AddTool(CM_FILESAVEAS, _("Save as"), MutToolBarBitmaps::SaveAs, _("Save file with new name"));
+	toolBar->AddTool(wxID_PRINT, _("Print"), MutToolBarBitmaps::Print, _("Print"));
 	toolBar->AddSeparator();
-	toolBar->AddTool(wxID_COPY, _("Copy"), *bitmaps[3], _("Copy"));
-	toolBar->AddTool(wxID_CUT, _("Cut"), *bitmaps[4],  _("Cut"));
-	toolBar->AddTool(wxID_PASTE, _("Paste"), *bitmaps[5], _("Paste"));
+	toolBar->AddTool(CM_ACTIVATE, _("Activate"), MutToolBarBitmaps::LogicActivate, _("Activate the logic"));	
+	toolBar->AddTool(CM_STOP, _("Stop"), MutToolBarBitmaps::LogicStop, _("Stop the logic"));	
+	toolBar->AddTool(CM_PANIC, _("Panic"), MutToolBarBitmaps::LogicPanic, _("Panic: switch all notes off"));	
 	toolBar->AddSeparator();
-	toolBar->AddTool(wxID_PRINT, _("Print"), *bitmaps[6], _("Print"));
+	toolBar->AddTool(wxID_UNDO, _("Undo"), MutToolBarBitmaps::Undo, _("Undo last changes"));
+	toolBar->AddTool(wxID_REDO, _("Redo"), MutToolBarBitmaps::Redo,  _("Redo last undone changes"));
+	toolBar->AddTool(wxID_COPY, _("Copy"), MutToolBarBitmaps::Copy, _("Copy"));
+	toolBar->AddTool(wxID_CUT, _("Cut"), MutToolBarBitmaps::Cut,  _("Cut"));
+	toolBar->AddTool(wxID_PASTE, _("Paste"), MutToolBarBitmaps::Paste, _("Paste"));
 	toolBar->AddSeparator();
-	toolBar->AddTool( CM_ABOUT, _("About"), *bitmaps[7], _("Help"));
+	// \todo implement search and replace and corresponding toolbar buttons
+	// toolBar->AddSeparator();
+       	toolBar->AddTool(CM_ROUTELOAD,_("&Load routes"), MutToolBarBitmaps::RouteLoad,
+                 _("Load the current route configuration from a file"));
+        toolBar->AddTool(CM_ROUTESAVE,_("&Save routes"), MutToolBarBitmaps::RouteSave,
+                 _("Save current route configuration to a file."));
+	toolBar->AddSeparator();
+        toolBar->AddTool(CM_INDEVPLAY,_("&Play"), MutToolBarBitmaps::IndevsPlay,
+                 _("Start playing the music from input file devices"));
+        toolBar->AddTool(CM_INDEVSTOP,_("St&op"), MutToolBarBitmaps::IndevsStop,
+                 _("Stop playing the music from input file devices"));
+        toolBar->AddTool(CM_INDEVPAUSE,_("P&ause"), MutToolBarBitmaps::IndevsPause,
+                 _("Pause plaing the music from input file devices"));
+  	toolBar->AddSeparator();
+	toolBar->AddTool( CM_ABOUT, _("About"), MutToolBarBitmaps::About, _("Help"));
 	toolBar->AddSeparator();
 	toolBar->Realize();
-
-	int i;
-
-	for (i = 0; i < 8; i++)
-		delete bitmaps[i];
 }
 
 #endif // wxUSE_TOOLBAR
