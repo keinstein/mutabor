@@ -45,6 +45,8 @@ EXTRA_DIST = config.rpath \
 	osdep/win/Mutabor.rc \
 	muwx/Mutabor.rc
 
+# Please use Tango names for new files
+# http://tango.freedesktop.org/Tango_Desktop_Project
 dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/NewInputDevice.png \
 	Icons/png/InputDevice.png \
@@ -54,7 +56,26 @@ dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 	Icons/png/GuidoFile.png \
 	Icons/png/ActiveChannel.png \
 	Icons/png/PassiveChannel.png \
-	Icons/png/TuningBox.png
+	Icons/png/TuningBox.png \
+	Icons/png/document-new.png \
+	Icons/png/document-open.png \
+	Icons/png/document-save.png \
+	Icons/png/document-save-as.png \
+	Icons/png/document-print.png \
+	Icons/png/ActivateMutabor.png \
+	Icons/png/StopMutabor.png \
+	Icons/png/Panic.png \
+	Icons/png/edit-copy.png \
+	Icons/png/edit-cut.png \
+	Icons/png/edit-paste.png \
+	Icons/png/edit-undo.png \
+	Icons/png/edit-redo.png \
+	Icons/png/RouteLoad.png \
+	Icons/png/RouteSave.png \
+	Icons/png/InDevPlay.png \
+	Icons/png/InDevStop.png \
+	Icons/png/InDevPause.png \
+	Icons/png/help-browser.png
 #RECURSIVE_TARGETS += mac-recursive
 BUILT_SOURCES = \
 	$(top_srcdir)/mu32/mut.cpp \
@@ -112,6 +133,7 @@ INDENTHEADERS = \
 		muwx/Routing/OutputMidiFileDeviceShape.h \
 		muwx/Routing/RouteIcons.h \
 		muwx/Action.h \
+		muwx/MutBitmaps.h \
 		muwx/Mutabor.rh \
 		muwx/CompDlg.h \
 		muwx/configtree.h \
@@ -178,6 +200,7 @@ mutabor_INDENTS = \
 		muwx/Routing/OutputMidiFileDeviceShape.cpp \
 		muwx/Routing/RouteIcons.cpp \
 		muwx/Action.cpp \
+		muwx/MutBitmaps.cpp \
 		muwx/CompDlg.cpp \
 		muwx/configtree.cpp \
 		muwx/IconShape.cpp \
