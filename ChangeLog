@@ -1,10 +1,289 @@
+2011-02-19  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure.in, muwx/MutApp.h: change version number
+
+2011-02-18  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* osdep/macosx/DS_Store: save Mac OS X dmg info
+
+	* osdep/macosx/background.png, osdep/macosx/background.svg: New files
+
+2011-02-16  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutBitmaps.cpp, muwx/MutBitmaps.h:
+	added files for global bitmap storage
+
+2011-02-13  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/png/document-new.png, Icons/png/document-open.png, Icons/png/document-print.png, Icons/png/document-save-as.png, Icons/png/document-save.png, Icons/png/edit-copy.png, Icons/png/edit-cut.png, Icons/png/edit-find-replace.png, Icons/png/edit-find.png, Icons/png/edit-paste.png, Icons/png/edit-redo.png, Icons/png/edit-undo.png, Icons/png/help-browser.png, Icons/svg/document-new.svg, Icons/svg/document-open.svg, Icons/svg/document-print.svg, Icons/svg/document-save-as.svg, Icons/svg/document-save.svg, Icons/svg/edit-copy.svg, Icons/svg/edit-cut.svg, Icons/svg/edit-find-replace.svg, Icons/svg/edit-find.svg, Icons/svg/edit-paste.svg, Icons/svg/edit-redo.svg, Icons/svg/edit-undo.svg, Icons/svg/help-browser.svg, Makefile.am, muwx/MutFrame.cpp:
+	Implemented missing toolbar icons (except search and edit funcitons)
+
+	* main.def, mididll.def, mididll.dll, mididll.lib, mididll.map:
+	removed unused files
+
+2011-01-29  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure.in, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Updated version number since 3.1.0alpha0 is fixed
+
+	* ltmain.sh, m4/libtool.m4, m4/ltversion.m4, muwx/Panel.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po, wxintl/Makefile.in:
+	compiles on mac 
+
+	* Makefile.am, mu32/routing/Route.cpp: include Device.h
+
+	* Makefile.am: fixed include path
+
+	* configure.in: fixed resources for Mac OS X
+
+2011-01-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* ChangeLog, Makefile.am, configure.in, muwx/resourceload.h, po/POTFILES.in, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	satisfy distcheck on Ubuntu 10.10
+
 2011-01-26  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.in (AM_GNU_GETTEXT_VERSION): Bump to 0.18.1.
 
+2011-01-24  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxDlg.cpp:
+	fix an issue with box dialog, preventing the scollbars to take effect in channel subwindow
+
+2011-01-13  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxDlg.cpp:
+	Some steps towards a fix for BoxDlg layout errors
+
+	* muwx/Routing/BoxDlg.cpp, muwx/Routing/InputDevDlg.cpp, muwx/Routing/OutputDevDlg.cpp:
+	Fix some layout bugs.
+
+	* muwx/MutFrame.cpp:
+	reactivate config restore on Activate in debug mode
+
+2011-01-11  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutIcon.h, muwx/MutRouteWnd.cpp, muwx/Routing/RouteIcons.cpp:
+	Fix a bug preventing Mutabor from starting on Win32 due to wrong usage of wxIcon/wxICON
+
+2011-01-09  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, configure.in, muwx/MutApp.cpp, muwx/Mutabor.rc, ylwrap:
+	make building in wine environment using unix shell
+
+2010-12-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/png/EditFind.png, Icons/png/RouteIcon.png, Icons/png/TonSystIcon.png, Icons/png/TonsystOpenIcon.png, Icons/svg/MutaborFile.svg, Icons/svg/RouteIcon.svg, Icons/svg/TonSystIcon.svg, Icons/svg/TonsystOpenIcon.svg, Icons/svg/open_folder-vollfarbe.svg:
+	repainted some icons
+
+	* Icons/svg/Logo_ts-2-portabel.svg, Icons/svg/Logo_ts-2.svg, Icons/svg/Logo_ts-3.svg, Icons/svg/Logo_ts-hks12.svg, Icons/svg/Logo_ts-hks16N.svg, Icons/svg/Logo_ts.svg:
+	added some logo files
+
+	* Icons/svg/86815-play,record,stop.svg, Icons/svg/ActivateMutabor.svg, Icons/svg/Blob-New.svg, Icons/svg/Logo mehrfarbig.odg, Icons/svg/OutputDevice.svg, Icons/svg/StopMutabor.svg:
+	added new Icons
+
+2010-12-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/svg/Stimmungsboxen-kasten.svg, Icons/svg/open_folder.svg:
+	Make Box and open folder blue (RGB 0,0,255) + Grey (saved in r/g channels),
+	so that we can change the color afterwards in mutabor coloring the boxes according to the chosen number.
+	The Idea is to colour the images according to the following algorithm.
+	get the grey level from the bitmap. Get the colour level from the bitmap (blue channel)
+	Total calculate the difference between grey and color level.
+	Choose weights c for colour level and g for grey level.
+	channel value is c * colour level * channel value from box color + g * grey level.
+
+	This Idea is not finished yet.
+
+2010-12-13  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, configure.in, doc/htmldecode.cpp, mu32/routing/Device.h, mu32/routing/midi/DevMidF.cpp, muwx/IconShape.h, muwx/Panel.h, muwx/Routing/DeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.cpp:
+	compiles in linux as well as in mingw
+
+2010-12-11  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* acinclude.m4, configure.in, doc/htmldecode.cpp, doc/localized/de/Hilfe.zip, m4/wxwin.m4, main.rc, mu32/Defs.h, mu32/Errors.cpp, mu32/Errors.h, mu32/Interval.cpp, mu32/Parser.cpp, mu32/routing/Device.cpp, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.h, muwx/IconShape.cpp, muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/configtree.cpp, mywx/mhDefs.h, mywx/valNum.h, wxintl/Makefile.in:
+	make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
+
+	* po/LINGUAS, po/de.gmo, po/de.po, po/en.gmo, po/en.mo, po/en.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.mo, po/en@quot.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	removed
+	@…quot-languages and added gb, en
+
+2010-12-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/Mutabor.rh:
+	add menu item to help menu, which calls exit(0).
+
+2010-12-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/png/200.png, Icons/png/AboutBitmap.png, Icons/png/AboutIcon.png, Icons/png/ActTextBoxIcon.png, Icons/png/ActivateMutabor.png, Icons/png/Cursor.png, Icons/png/DocIcon.png, Icons/png/EditCopy.png, Icons/png/EditCut.png, Icons/png/EditFind.png, Icons/png/EditFindNext.png, Icons/png/EditPaste.png, Icons/png/EditReplace.png, Icons/png/EditUndo.png, Icons/png/ErrorPlopIcon.png, Icons/png/FileNew.png, Icons/png/FileOpen.png, Icons/png/FileSave.png, Icons/png/FileSaveAs.png, Icons/png/InDevPause.png, Icons/png/InDevPlay.png, Icons/png/InDevStop.png, Icons/png/KeyTextBoxIcon.png, Icons/png/Logic.png, Icons/png/LogicOpen.png, Icons/png/MutaborIcon.png, Icons/png/NewPlopIcon.png, Icons/png/NoteBitmap.png, Icons/png/Panic.png, Icons/png/PauseBitmap.png, Icons/png/PausePlopIcon.png, Icons/png/PlayBitmap.png, Icons/png/PlayPlopIcon.png, Icons/png/RGMNIcon.png, Icons/png/RMidiFileIcon.png, Icons/png/RMidiPortIcon.png, Icons/png/RUnknownIcon.png, Icons/png/RouteIcon.png, Icons/png/RouteLoad.png, Icons/png/RouteSave.png, Icons/png/Setup.png, Icons/png/Stimungsboxen-kasten.png, Icons/png/StopBitmap.png, Icons/png/StopDisBitmap.png, Icons/png/StopMutabor.png, Icons/png/TSTextBoxIcon.png, Icons/png/TonSystIcon.png, Icons/png/TonsystOpenIcon.png, Icons/png/bmp24337.png, Icons/png/bmp3200.png, Icons/png/bmp32001.png, Icons/png/bmp99.png, Icons/png/g7555.png:
+	converted icons and bitmaps from old mutabor resources
+
+2010-11-25  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/routing/midi/DevMidi.cpp, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	fixed an error where Mutabor sent a wrong retuning parameter to the MIDI Equipment
+	Changed byte manipulations to use bit operations instead of pointer arithmetics for
+	short MIDI messages.
+
+2010-11-24  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, doc/Makefile.in, doc/localized/Makefile.in, doc/localized/de/Makefile.in, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, missfunc/Makefile.in:
+	removed generated autoconf stuff
+
+	* mu32/mut.cpp, mu32/mut.h: new bison
+
+	* po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	added debug flag for Midi files
+
+2010-11-23  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.in, mu32/routing/midi/DevMidF.cpp, mywx/mutDebugFlags.h:
+	make automatic stopping working again
+
+2010-11-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* debian/control, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	meet maximum build dependencies on Debian 5.0
+
+	* doc/localized/de/Makefile.in, mu32/routing/Device.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/configtree.cpp, mywx/mutDebug.h, po/POTFILES.in, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, po/ru.gmo, Makefile.am, Makefile.in, debian/changelog, debian/control, debian/libmutabor-dev.install, debian/libmutabor.install, debian/rules, doc/Makefile.cmn, doc/localized/de/Hilfe.zip, doc/localized/de/Makefile.am, doc/preamble.tex:
+	some corrections for allowing debuild to complete
+
+	* po/ru.po: automatic initialization of ru.po
+
+2010-11-21  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* debian/source/format: new file
+
+	* debian/README.source, debian/changelog, debian/control, debian/copyright, debian/emacsen-install.ex, debian/emacsen-remove.ex, debian/emacsen-startup.ex, debian/info, debian/manpage.1.ex, debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu, debian/mutabor.cron.d.ex, debian/mutabor.default.ex, debian/mutabor.doc-base.EX, debian/postinst.ex, debian/postrm.ex, debian/preinst.ex, debian/prerm.ex, debian/watch.ex:
+	made dh_make
+
+	* muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h:
+	remove unused files
+
+	* muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, mywx/.cvsignore, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valRadio.h, po/.cvsignore, po/ChangeLog, po/LINGUAS, po/Makefile.in.in, po/Makevars, po/POTFILES.in, po/Rules-quot, po/de.gmo, po/de.mo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.mo, po/en@quot.po, po/mutabor.pot, po/quot.sed, po/ru.gmo, po/ru.po, rtmidi/RtMidi.cpp, templates/template.cpp, wxintl/.cvsignore, wxintl/Makefile.in, xrc/.cvsignore, xrc/Mutabor.xrc, xrc/reslocale.cpp, xrc/wxresource.cpp, xrc/wxresource.h, intl/eval-plural.h, intl/explodename.c, intl/export.h, intl/finddomain.c, intl/gettextP.h, intl/gmo.h, intl/hash-string.c, intl/hash-string.h, intl/intl-compat.c, intl/intl-exports.c, intl/l10nflist.c, intl/langprefs.c, intl/libgnuintl.h.in, intl/libgnuintl.h.msvc-shared, intl/libgnuintl.h.msvc-static, intl/libgnuintl.h_vms, intl/libintl.glibc, intl/libintl.rc, intl/loadinfo.h, intl/loadmsgcat.c, intl/localcharset.c, intl/locale.alias, intl/localealias.c, intl/localename.c, intl/lock.c, intl/lock.h, intl/log.c, intl/os2compat.h, intl/osdep.c, intl/plural-exp.c, intl/plural-exp.h, intl/plural.c, intl/plural.y, intl/printf-args.c, intl/printf-args.h, intl/printf-parse.c, intl/printf-parse.h, intl/printf.c, intl/relocatable.c, intl/relocatable.h, intl/setlocale.c, intl/textdomain.c, intl/threadlib.c, intl/tsearch.c, intl/tsearch.h, intl/vasnprintf.c, intl/vasnprintf.h, intl/vasnwprintf.h, intl/version.c, intl/wprintf-parse.h, intl/xsize.h, libasprintf/Makefile.in, libmutabor/.cvsignore, libmutabor/Makefile.am, libmutabor/tests/.cvsignore, libmutabor/tests/Makefile.am, libs/ogl/basic.cpp, libs/ogl/basic2.cpp, libs/ogl/bmpshape.cpp, libs/ogl/canvas.cpp, libs/ogl/composit.cpp, libs/ogl/constrnt.cpp, libs/ogl/divided.cpp, libs/ogl/drawn.cpp, libs/ogl/iconshape.cpp, libs/ogl/lines.cpp, libs/ogl/mfutils.cpp, libs/ogl/ogldiag.cpp, libs/ogl/oglmisc.cpp, m4/ChangeLog, m4/codeset.m4, m4/fcntl-o.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intl.m4, m4/intldir.m4, m4/intlmacosx.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes_h.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/libtool.m4, m4/lock.m4, m4/longlong.m4, m4/ltoptions.m4, m4/ltversion.m4, m4/lt~obsolete.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/progtest.m4, m4/size_max.m4, m4/stdint_h.m4, m4/threadlib.m4, m4/uintmax_t.m4, m4/visibility.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4, missfunc/.cvsignore, missfunc/Makefile.am, missfunc/Makefile.in, missfunc/missfunc.c, mu32/Defs.h, mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Errors.h, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_Err.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/MidiKern.h, mu32/Mut_Tab.cpp, mu32/Parser.cpp, mu32/Route.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, mu32/mut.cpp, mu32/mut.h, mu32/mut.y, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muwx/.cvsignore, muwx/CompDlg.h, muwx/Icon/.cvsignore, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.cpp, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/Mutabor.rh, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/configtree.cpp, muwx/configtree.h, muwx/resourceload.h, .cvsignore, ABOUT-NLS, ChangeLog, Doxyfile.in, INSTALL, Icons/.cvsignore, Icons/png/GuidoFile.png, Icons/png/OutputDevice.png, Icons/png/TuningBox.png, Icons/svg/GuidoFile.svg, Makefile.am, Makefile.in, Mutabor.fbp, Mutabor.xcodeproj/.cvsignore, Mutabor.xcodeproj/project.pbxproj, aclocal.m4, config.guess, config.h.in, config.rpath, config.sub, configure, configure.in, doc/.cvsignore, doc/Makefile.am, doc/Makefile.cmn, doc/Makefile.in, doc/Mutabor-Logo.png, doc/Mutabor16.png, doc/Mutabor255.png, doc/internals/Routing.odg, doc/localized/.cvsignore, doc/localized/Makefile.in, doc/localized/de/.cvsignore, doc/localized/de/Handbuch.tex, doc/localized/de/Hilfe.zip, doc/localized/de/Makefile.am, doc/localized/de/Makefile.in, doc/localized/en/reference.tex, doc/mutabor.cfg, doc/preamble.tex, findwxlocale.sh, includes/.cvsignore, includes/Makefile.am, includes/Makefile.in, includes/mutabor/.cvsignore, install-sh, intl/COPYING.LIB-2.0, intl/COPYING.LIB-2.1, intl/ChangeLog, intl/Makefile.in, intl/Makefile.msvc, intl/Makefile.vms, intl/README.woe32, intl/VERSION, intl/bindtextdom.c, intl/config.charset, intl/dcigettext.c, ltmain.sh:
+	merged experimental_tobias
+
+	* muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h: remove unused files
+
+	* xrc/Mutabor.cpp, xrc/Mutabor.h: removd unused files
+
+2010-11-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* doc/localized/de/Handbuch.tex, doc/localized/de/Hilfe.zip, mu32/Runtime.cpp, muwx/MutFrame.cpp:
+	reactivate midi playback
+
+2010-11-19  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutApp.cpp: remove MutFrame OnIdle
+
+2010-11-18  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/routing/Device.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.cpp:
+	MutFrame: get rid of OnIdle (this may break something, but saves much more CPU cycles
+	Some further steps to get rid of EDevice*
+
+	* mu32/routing/midi/DevMidi.h:
+	Fix bug, where mutabor tried to get the name of an input device for an id of an output device
+
+2010-11-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, mu32/Runtime.cpp, muwx/MutApp.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h:
+	Remvoed EDevice.cpp and EDevice.h from the sources list
+	They still reside in the source tree, since they have been used for Midi/GMN
+	file playing. That funcitonality has been disabled so far.
+	After reimplementation the files can be removed.
+
+	* Makefile.am, mu32/routing/Device.h, mu32/routing/RouteCompat.cpp, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Routing/BoxShape.h, muwx/Routing/InputDeviceShape.h, muwx/Routing/OutputDeviceShape.h:
+	implement loading and saving old files with new routing system
+
+2010-10-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/svg/GuidoFile.svg: New file.
+
+	* Icons/svg/GuidoFile.svg: added GuidoFile.svg
+
+	* po/ru.gmo: New file.
+
+	* po/ru.gmo: added ru.gmo
+
+	* Makefile.am, Mutabor.xcodeproj/project.pbxproj, configure.in, doc/internals/Routing.odg, findwxlocale.sh, intl/setlocale.c, intl/threadlib.c, m4/fcntl-o.m4, m4/threadlib.m4, mu32/Defs.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/GIS.h, mywx/mhDefs.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, po/ru.po:
+	Add commandline option --enable-xcode and XCode detection to configure
+
+	* doc/internals/Routing.odg, findwxlocale.sh, intl/setlocale.c, intl/threadlib.c, m4/fcntl-o.m4, m4/threadlib.m4, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, po/ru.po:
+	New file.
+
+2010-09-30  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Mutabor.xcodeproj/project.pbxproj, mu32/routing/Device.cpp, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Routing/BoxShape.cpp, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	remove global variables routewindow and frame
+	move route loading and route saving into MutRouteWnd
+	implement MutRouteWnd::InitShapes.
+	Destroy Route children before loading new route configuration (still some crashes)
+
+2010-09-29  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/treestorage.h, muwx/Routing/BoxShape.cpp, muwx/configtree.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	Reset config before saving routing information and fix two bugs concerned with the deletion of boxes
+
+	* mu32/Defs.h, mu32/EDevice.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, muwx/Routing/BoxShape.cpp, muwx/Routing/InputMidiDeviceShape.cpp, muwx/configtree.cpp, muwx/configtree.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	config can be stored and restored with new treeconfig
+
+2010-09-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* m4/intlmacosx.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes_h.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/lock.m4, m4/longlong.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/progtest.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4, m4/visibility.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4, mu32/Defs.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muwx/MutApp.cpp, muwx/Routing/BoxShape.cpp, muwx/configtree.cpp, muwx/configtree.h, mywx/mutDebug.h, po/ChangeLog, po/LINGUAS, po/Makefile.in.in, po/POTFILES.in, po/Rules-quot, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, ABOUT-NLS, ChangeLog, Makefile.am, Mutabor.xcodeproj/project.pbxproj, configure.in, intl/ChangeLog, intl/Makefile.in, intl/VERSION, intl/bindtextdom.c, intl/config.charset, intl/dcigettext.c, intl/gettextP.h, intl/intl-compat.c, intl/intl-exports.c, intl/l10nflist.c, intl/langprefs.c, intl/libgnuintl.h.in, intl/libintl.rc, intl/loadmsgcat.c, intl/localcharset.c, intl/localename.c, intl/lock.c, intl/lock.h, intl/log.c, intl/os2compat.h, intl/printf-args.c, intl/printf-args.h, intl/printf-parse.c, intl/printf-parse.h, intl/printf.c, intl/relocatable.c, intl/relocatable.h, intl/tsearch.c, intl/tsearch.h, intl/vasnprintf.c, intl/vasnwprintf.h, intl/wprintf-parse.h, intl/xsize.h, m4/ChangeLog, m4/codeset.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intl.m4, m4/intldir.m4:
+	old configuration can be loaded again.
+
+
 2010-08-17  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.in (AM_GNU_GETTEXT_VERSION): Bump to 0.18.1.
+
+2010-08-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/treestorage.h, muwx/configtree.cpp, muwx/configtree.h: New file.
+
+	* mu32/treestorage.h, muwx/configtree.cpp, muwx/configtree.h:
+	added simple wrapper for config and XML like files
+
+	* muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, mywx/mutDebugFlags.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, Makefile.am, Mutabor.xcodeproj/project.pbxproj, mu32/EDevice.cpp, mu32/EDevice.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, muwx/MutApp.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp:
+	new, direct route configuration on init
+
+	* Makefile.am: Fixed makefile to respect changes in directory structure
+
+	* mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h:
+	New file.
+
+	* mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_Err.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Route.cpp, mu32/Route.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h:
+	Structure mu32 into directories
+
+2010-07-06  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Defs.h, mu32/DevGIS.cpp, mu32/DevMidF.cpp, mu32/DevMidi.cpp, mu32/Device.cpp, mu32/Device.h, mu32/Route.cpp, mu32/Route.h, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxShape.cpp, muwx/Routing/DebugRoute.cpp, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp, mywx/mhDefs.h, mywx/mutDebug.cpp, mywx/mutDebug.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	allow empty input and output devices in routes
+
+2010-06-29  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxDlg.h: hunting for errors
+
+	* muwx/Routing/DebugRoute.cpp, muwx/Routing/OutputDeviceShape.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	searching
+
+2010-06-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Mutabor.xcodeproj/project.pbxproj, mu32/Device.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/DebugRoute.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	debugging segfault in route check after replacement of MutOutputDevice
+
+2010-06-21  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Device.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	implement deletion of output devices
+
+2010-06-16  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutRouteWnd.cpp, muwx/Routing/BoxShape.cpp, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	make deletion of boxes in box window work
+
+	* po/Makevars: set copyright holder
 
 2010-06-15  gettextize  <bug-gnu-gettext@gnu.org>
 
@@ -15,10 +294,1308 @@
 	* Makefile.am (SUBDIRS): Remove intl.
 	(DIST_SUBDIRS): Remove intl.
 
+2010-06-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/Makefile.in.in: make autopoint happy
+
+	* ChangeLog, Makefile.am, configure.in, muwx/MutRouteWnd.h, muwx/Routing/DebugRoute.cpp, mywx/mutDebug.cpp, po/ChangeLog, po/Makefile.in.in, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	make distcheck happy
+
+	* mu32/Device.cpp, mu32/Device.h, mu32/Route.h, muwx/IconShape.cpp, muwx/MutChild.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, po/de.gmo, po/de.mo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, xrc/Mutabor.xrc, xrc/reslocale.cpp, xrc/wxresource.cpp, xrc/wxresource.h:
+	allow deleting of input devices in route window
+	several bug fixes
+	rudimentary box deletion support
+
+	* Makefile.am, ltmain.sh, m4/libtool.m4, m4/ltoptions.m4, m4/ltversion.m4, m4/lt~obsolete.m4:
+	Update.
+	rudimentary Makefile support for creating a disributable .dmg on Mac OS X
+
+2010-06-02  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Mutabor.xcodeproj/project.pbxproj, mu32/Route.h, muwx/IconShape.cpp, muwx/MutChild.h, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	Route.h:
+		new enum BoxType
+		new box type NewBox
+
+	IconShape.cpp:
+		Hide shape in MutIconShape::DeleteSelf
+
+	MutChild.h:
+		Changes on the increment value for Clientsize
+
+	MutLogicWnd:
+		smaller whitespace fixes
+
+	MutRouteWnd.cpp:
+		save sizerflags for MutBoxShape too
+
+	BoxChannelShape.cpp:
+		rename CreateRouteShape to CreateRoutePanel
+		replace some wxDynamicCast by dynamic_cast
+		add Box “New Box“ if current box is not found
+		delete Route if route panel is disabled
+
+	BoxChannelShape.h:
+		Update BoxShape layout  if necessary
+
+	BoxDlg.cpp:
+		RoutePanel::AddBox: allow NULL boxShape
+		Fix Bug that didn't preselect GUIDO boxes and Through mode
+
+	BoxShape.cpp:
+		fix color mapping for box numbers (shift right by 1 bit).
+		Add MutBoxShape::sizerFlags
+		SetBoxId: New function
+		Use SetBoxId for setting Box Id an Label in sync
+		AddChannel: call Layout()
+		implement replacement in DoLeftDblClick (enables New Box)
+		ShowBoxDialog: use dynamic_cast
+		ReadDialog: Add Channel only if new route is enabled (not deleted)
+		ReplaceSelfBy: new function (Unreachable as only needed for
+			class NewMutBoxShape)
+
+	NewBoxShape.cpp/.h:
+		replaceSelfBy: new function
+		initialize Box id as NewBox
+
+	*.po/mutabor.pot/*.gmo
+	 	Sync with sources
+
+2010-05-07  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/en@quot.po, po/mutabor.pot, xrc/Mutabor.xrc, xrc/reslocale.cpp, xrc/wxresource.cpp, xrc/wxresource.h, Makefile.am, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/Errors.cpp, mu32/GIS.h, mu32/GSP_Err.cpp, mu32/Runtime.cpp, muwx/IconShape.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.cpp, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, po/POTFILES.in, po/de.gmo, po/de.mo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo:
+	actual_settings
+
+2010-04-27  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h:
+	Remove old implementation
+
+2010-04-26  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Device.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.cpp, xrc/Mutabor.xrc, xrc/wxresource.cpp:
+	BoxDlg reacts on “Remove Route”. Implementation of routing must be checked.;
+
+2010-04-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/DevMidF.h, mu32/DevMidi.h, mu32/Device.h, mu32/EDevice.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/OutputDeviceShape.cpp, mywx/mutDebugFlags.h, rtmidi/RtMidi.cpp:
+	One step towards using Mutabor: Activation of a logic now honours the state of the Device Editor.
+
+2010-04-19  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Mutabor.xcodeproj/project.pbxproj, mu32/DevMidi.cpp, rtmidi/RtMidi.cpp:
+	curious MIDI errors
+
+2010-04-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h: New file.
+
+	* Makefile.am, Mutabor.xcodeproj/project.pbxproj, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h, muwx/MutFrame.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.cpp, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, mywx/mutDebugFlags.h:
+	changing routes works, but is not honoured by MIDI, yet
+
+2010-03-30  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Route.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxDlg.cpp, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, mywx/mutDebugFlags.h:
+	added editing of existing routes to boxDlg
+
+	* configure.in, mu32/DevMidF.h, mu32/Device.h, mu32/Route.h, muwx/MutRouteWnd.h, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, xrc/Mutabor.xrc, xrc/reslocale.cpp, xrc/wxresource.cpp, xrc/wxresource.h:
+	added rudimentary command line support
+	changed debug system to allow selection of messages via command line
+	further enhancements to the route dialogs
+
+	* mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h: New file.
+
+	* Makefile.am, Mutabor.xcodeproj/project.pbxproj, mu32/DevGIS.cpp, mu32/DevMidF.cpp, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/EDevice.cpp, mu32/EDevice.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GrafKern.cpp, mu32/Hilfs.cpp, mu32/Runtime.cpp, mu32/mut.cpp, mu32/mut.h, mu32/mut.y, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutTextBox.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h, mywx/mxDefs.cpp, mywx/valNum.cpp:
+	added rudimentary command line support
+	changed debug system to allow selection of messages via command line
+	further enhancements to the route dialogs
+
+2010-02-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxShape.cpp, muwx/Routing/InputDevDlg.cpp, muwx/Routing/OutputDeviceShape.cpp, xrc/Mutabor.xrc, xrc/wxresource.cpp, xrc/wxresource.h:
+	transfer files to other computer
+
+2010-02-15  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Panel.cpp, muwx/Panel.h: New file.
+
+	* Makefile.am, Mutabor.xcodeproj/project.pbxproj, configure.in, mu32/DevGIS.h, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.h, mu32/Frac.cpp, mu32/Frac.h, mu32/Route.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutConfDlg.h, muwx/MutFrame.cpp, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Mutabor.rh, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/RouteIcons.cpp, muwx/resourceload.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/mxDefs.cpp, po/POTFILES.in, xrc/Mutabor.xrc, xrc/wxresource.cpp, xrc/wxresource.h:
+	intermediate update for backup progress
+
+2010-01-26  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h:
+	Moved BoxDlg to Routing
+
+	* muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h: New file.
+
+2010-01-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, muwx/MutApp.cpp, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h:
+	fix usage of installation prefix
+	MutInputDeviceShape/MutOutputDeviceShape:
+	    use GetType for type checking in OnChoiceSelected
+	    make InitalizeDialog const
+	MutNewOutputDeviceShape: add InitializeDialog and ReplaceSelfBy
+
+	* Makefile.am, muwx/MutApp.cpp:
+	trying to get mutabor work on local install
+
+	* muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h:
+	New file.
+
+	* muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h:
+	added output device shapes
+
+	* muwx/resourceload.h: New file.
+
+	* muwx/resourceload.h:
+	muwx/resourceload.h: new file to preload other header files for wxresource.h
+
+	* Makefile.am, configure.in, doc/Makefile.cmn, ltmain.sh, m4/ltversion.m4, mu32/DevGIS.h, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/Errors.h, mu32/Execute.cpp, mu32/Parser.cpp, mu32/Route.h, mu32/Runtime.cpp, muwx/CompDlg.h, muwx/IconShape.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/DeviceShape.h, muwx/Routing/InputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.h, po/POTFILES.in, xrc/Mutabor.xrc, xrc/wxresource.cpp, xrc/wxresource.h:
+	Checkin searching for a bug
+
+	* muwx/Routing/OutputMidiDeviceShape.h: New file.
+
+2010-01-11  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Mutabor.fbp, doc/localized/en/reference.tex, muwx/MutRouteShapes.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/RouteIcons.cpp, xrc/Mutabor.xrc:
+	fix some problems due to splitting MutRouteShapes.{cpp,h}
+
+	* libtool:
+	removed due to problems mixing autotools on different platforms
+
+	* .cvsignore, Icons/.cvsignore, Mutabor.xcodeproj/.cvsignore, doc/.cvsignore, doc/Mutabor-Logo.png, doc/Mutabor16.png, doc/Mutabor255.png, doc/localized/.cvsignore, doc/localized/de/.cvsignore, includes/.cvsignore, includes/mutabor/.cvsignore, libmutabor/.cvsignore, libmutabor/tests/.cvsignore, missfunc/.cvsignore, muwx/.cvsignore, muwx/Icon/.cvsignore, mywx/.cvsignore, po/.cvsignore, po/de.mo, po/en@quot.mo, templates/template.cpp, wxintl/.cvsignore, xrc/.cvsignore:
+	New file.
+
+	* .cvsignore, Icons/.cvsignore, Mutabor.xcodeproj/.cvsignore, doc/.cvsignore, doc/Mutabor-Logo.png, doc/Mutabor16.png, doc/Mutabor255.png, doc/localized/.cvsignore, doc/localized/de/.cvsignore, includes/.cvsignore, includes/mutabor/.cvsignore, libmutabor/.cvsignore, libmutabor/tests/.cvsignore, missfunc/.cvsignore, muwx/.cvsignore, muwx/Icon/.cvsignore, mywx/.cvsignore, po/.cvsignore, po/de.mo, po/en@quot.mo, templates/template.cpp, wxintl/.cvsignore, xrc/.cvsignore:
+	added some .cvsignore files
+
+2009-11-30  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h:
+	New file.
+
+	* muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, Makefile.am, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h:
+	moved InputDevDlg.h InputDevDlg.cpp OutputDevDlg.h OutputDevDlg.cpp into subdirectory Routing.
+
+	* muwx/MutRouteShapes.cpp: revert changes
+
+	* muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutIcon.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h:
+	New file.
+
+	* Makefile.am, mu32/Errors.cpp, mu32/Frac.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutIcon.cpp, muwx/MutIcon.h, muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	split MutRouteShapes into several files into directory Routing
+
+2009-11-17  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/Makefile.in.in: upgrade to make autopoint happy
+
+2009-11-16  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* doc/localized/de/Makefile.am, doc/localized/en/reference.tex, includes/Makefile.am, muwx/MutApp.cpp, mywx/mhDefs.h, mywx/mxDefs.cpp, po/ChangeLog, po/Makefile.in.in, po/Makevars, po/POTFILES.in, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, xrc/reslocale.cpp, ChangeLog, Makefile.am, configure.in, doc/Makefile.am, doc/Makefile.cmn, doc/localized/de/Handbuch.tex, doc/localized/de/Hilfe.zip, doc/mutabor.cfg, doc/preamble.tex:
+	make “make distcheck” happy
+
 2009-11-16  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (SUBDIRS): Add intl.
 	* configure.in (AC_CONFIG_FILES): Add intl/Makefile.
+
+2009-11-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am: fix for cvs_distcheck Makefile.am
+
+2009-11-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/mut.cpp, mu32/mut.h, mu32/mut.y, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutRouteShapes.cpp, muwx/MutRouteWnd.cpp, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, po/de.gmo:
+	Compile on Ubuntu 9.10
+	remove several interface and implementation pragmas
+	fixed some file names for case insensitive filesystems
+
+	* Icons/png/GuidoFile.png, Icons/png/OutputDevice.png, Icons/png/TuningBox.png:
+	Added.
+
+	* Icons/png/GuidoFile.png, Icons/png/OutputDevice.png, Icons/png/TuningBox.png:
+	New file.
+
+	* mu32/DevGIS.h, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/Runtime.cpp, muwx/InputDevDlg.cpp, muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h, muwx/MutRouteWnd.cpp, xrc/Mutabor.cpp, xrc/Mutabor.xrc, xrc/wxresource.cpp, Makefile.am, Mutabor.fbp, doc/localized/de/Hilfe.zip:
+	input device dialog: Allow to edit input devices
+	fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
+
+	* Doxyfile.in, intl/VERSION, intl/export.h, intl/hash-string.c, intl/intl-exports.c, intl/lock.c, intl/lock.h, intl/tsearch.c, intl/tsearch.h, intl/version.c, libtool:
+	New file.
+
+	* Doxyfile.in, config.guess, config.rpath, config.sub, doc/localized/de/Makefile.in, includes/Makefile.in, includes/mutabor/Makefile.in, install-sh, intl/Makefile, intl/VERSION, intl/export.h, intl/hash-string.c, intl/intl-exports.c, intl/lock.c, intl/lock.h, intl/tsearch.c, intl/tsearch.h, intl/version.c, libtool:
+	next step in upgrade of gettext and libtool
+
+2009-11-02  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libasprintf/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, missfunc/Makefile.in, missfunc/missfunc.c, wxintl/Makefile.in:
+	trying some further changes
+
+	* intl/bindtextdom.c, intl/dcigettext.c, intl/eval-plural.h, intl/explodename.c, intl/finddomain.c, intl/gettextP.h, intl/gmo.h, intl/hash-string.h, intl/intl-compat.c, intl/l10nflist.c, intl/langprefs.c, intl/loadinfo.h, intl/loadmsgcat.c, intl/localcharset.c, intl/localealias.c, intl/localename.c, intl/log.c, intl/osdep.c, intl/plural-exp.c, intl/plural-exp.h, intl/plural.c, intl/printf-args.c, intl/printf-args.h, intl/printf-parse.c, intl/printf.c, intl/relocatable.c, intl/relocatable.h, intl/textdomain.c, intl/vasnprintf.c, intl/vasnprintf.h, ltmain.sh, m4/ChangeLog, m4/libtool.m4, missfunc/Makefile.am:
+	Update to libtool 2.2 and gettext 0.17
+	try to make git happy
+
+2009-11-01  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure:
+	removed autoconf and automake output -- use autoreconf instead
+
+2009-10-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* ABOUT-NLS, Doxyfile, INSTALL, Makefile.in, aclocal.m4, config.h.in, configure.in, doc/Makefile.in, doc/localized/Makefile.in, intl/COPYING.LIB-2.0, intl/COPYING.LIB-2.1, intl/ChangeLog, intl/Makefile, intl/Makefile.in, intl/Makefile.msvc, intl/Makefile.vms, intl/README.woe32, intl/config.charset, intl/libgnuintl.h.in, intl/libgnuintl.h.msvc-shared, intl/libgnuintl.h.msvc-static, intl/libgnuintl.h_vms, intl/libintl.glibc, intl/libintl.rc, intl/locale.alias, intl/plural.y, libmutabor/Makefile.am, libmutabor/tests/Makefile.am, mu32/mut.cpp, mu32/mut.h, po/Makefile.in.in, po/Makevars, po/Rules-quot, po/quot.sed:
+	Further steps to commit changes to make the branch compile-clean
+
+
+	Author: Mutabor <mutabor@nalp15.(none)>
+
+	* intl/Makefile, intl/libintl.rc: New file.
+
+2009-08-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* doc/localized/de/Makefile.in, doxygen/html-footer, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, libs/ogl/basic.cpp, libs/ogl/basic2.cpp, libs/ogl/bmpshape.cpp, libs/ogl/canvas.cpp, libs/ogl/composit.cpp, libs/ogl/constrnt.cpp, libs/ogl/divided.cpp, libs/ogl/drawn.cpp, libs/ogl/iconshape.cpp, libs/ogl/lines.cpp, libs/ogl/mfutils.cpp, libs/ogl/ogldiag.cpp, libs/ogl/oglmisc.cpp, missfunc/Makefile.in, muwx/Action.cpp, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/Mutabor.rh, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h, rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h, wxintl/Makefile.in, xrc/Mutabor.cpp, xrc/Mutabor.h, xrc/Mutabor.xrc, xrc/wxresource.cpp, Doxyfile, Makefile.am, Makefile.in, Mutabor.fbp, acinclude.m4, aclocal.m4, config.h.in, configure, configure.in, doc/Makefile.in, doc/localized/Makefile.in, doc/localized/de/Hilfe.zip, ltmain.sh:
+	merged from wrong tree
+
+	* Doxyfile, Makefile.am, Makefile.in, Mutabor.fbp, acinclude.m4, aclocal.m4, config.h.in, configure, configure.in, doc/Makefile.in, doc/localized/Makefile.in, doc/localized/de/Hilfe.zip, doc/localized/de/Makefile.in, doxygen/html-footer, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, libs/ogl/basic.cpp, libs/ogl/basic2.cpp, libs/ogl/bmpshape.cpp, libs/ogl/canvas.cpp, libs/ogl/composit.cpp, libs/ogl/constrnt.cpp, libs/ogl/divided.cpp, libs/ogl/drawn.cpp, libs/ogl/iconshape.cpp, libs/ogl/lines.cpp, libs/ogl/mfutils.cpp, libs/ogl/ogldiag.cpp, libs/ogl/oglmisc.cpp, ltmain.sh, missfunc/Makefile.in, mu32/DevGIS.cpp, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.h, mu32/Global.h, mu32/Interpre.h, mu32/MidiKern.h, mu32/Mut_Tab.cpp, mu32/Runtime.cpp, mu32/TabGen.cpp, mu32/mut.cpp, muwx/Action.cpp, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/Mutabor.rh, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h, rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h, wxintl/Makefile.in, xrc/Mutabor.cpp, xrc/Mutabor.h, xrc/Mutabor.xrc, xrc/wxresource.cpp:
+	some steps towards new route window
+
+2009-08-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Defs.h, mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Errors.h, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_Err.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/MidiKern.h, mu32/Parser.cpp, mu32/Route.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, mu32/mut.h:
+	removed mut.h
+
+2009-06-23  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/png/ActiveChannel.png, Icons/png/NewInputDevice.png, Icons/png/NewOutputDevice.png, Icons/png/PassiveChannel.png, Icons/svg/NewInputDevice.svg, Icons/svg/NewOutputDevice.svg, Icons/svg/Stimmungsboxen-gesamt.svg, Icons/svg/Stimmungsboxen-kasten.svg, Icons/svg/open_folder.svg:
+	Upqdated png/ActiveChannel.png
+	Modified Files:
+	 	png/ActiveChannel.png png/NewInputDevice.png
+	 	png/PassiveChannel.png svg/NewInputDevice.svg
+	Added Files:
+	 	png/NewOutputDevice.png svg/NewOutputDevice.svg
+	 	svg/Stimmungsboxen-gesamt.svg svg/Stimmungsboxen-kasten.svg
+	 	svg/open_folder.svg
+
+2009-04-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* m4/ChangeLog, m4/codeset.m4, m4/gettext.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intl.m4, m4/intldir.m4, m4/intlmacosx.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes_h.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/libtool.m4, m4/lock.m4, m4/longlong.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4, m4/visibility.m4, m4/wint_t.m4:
+	update and added missing files using --install option from aclocal
+
+	* Makefile.am: fixed some issues with indentation
+	added some further files
+
+2009-03-23  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.in, doc/Makefile.in, doc/localized/Makefile.in, doc/localized/de/Makefile.in, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, m4/ltoptions.m4, m4/ltsugar.m4, m4/ltversion.m4, m4/lt~obsolete.m4, m4/wxwin.m4, missfunc/Makefile.in, mkinstalldirs, wxintl/Makefile.in, ylwrap:
+	updated build system for automatic installation of m4 files
+
+2008-12-08  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Icons/png/ActiveChannel.png, Icons/png/PassiveChannel.png: new files
+
+2008-11-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, Makefile.in: New Target: indent
+
+2008-11-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure, configure.in, doc/localized/de/Hilfe.zip, missfunc/Makefile.am, missfunc/Makefile.in, missfunc/missfunc.c:
+	fix error building libmissfunc
+
+	* muwx/MutRouteWnd.cpp: first steps towards new route patchbay
+
+	* mu32/EDevice.cpp:
+	ScanRoutes: create InDevice only if it has a known type
+
+2008-11-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Frac.h: fix some errors adaptitng Frac to boost syntax
+
+	* Icons/png/InputDevice.png, Icons/png/MidiDevice.png, Icons/png/MidiFile.png, Icons/png/NewInputDevice.png, Icons/svg/InputDevice.svg, Icons/svg/MidiFile.svg, Icons/svg/NewInputDevice.svg, libs/ogl/iconshape.cpp:
+	new file
+
+	* Makefile.am, Makefile.in: removed mutNamedIcon
+
+	* missfunc/missfunc.c: new file.
+	Add a symbol to missfunc.a in case it will be needed
+
+	* muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h:
+	some steps towards a new Routing window
+
+	* muwx/MutIcon.h: new file
+
+	* libs/includes/wx/ogl/basic.h, libs/includes/wx/ogl/basicp.h, libs/includes/wx/ogl/bmpshape.h, libs/includes/wx/ogl/canvas.h, libs/includes/wx/ogl/composit.h, libs/includes/wx/ogl/constrnt.h, libs/includes/wx/ogl/divided.h, libs/includes/wx/ogl/drawn.h, libs/includes/wx/ogl/drawnp.h, libs/includes/wx/ogl/iconshape.h, libs/includes/wx/ogl/lines.h, libs/includes/wx/ogl/linesp.h, libs/includes/wx/ogl/mfutils.h, libs/includes/wx/ogl/misc.h, libs/includes/wx/ogl/ogl.h, libs/includes/wx/ogl/ogldiag.h:
+	moved to allow original files be copied
+
+2008-11-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutRouteShapes.cpp, muwx/MutRouteShapes.h: Added to the system
+
+	* config.h.in, configure, configure.in:
+	configure C++ for loop scoping by CXX_FOR_SCOPING
+
+2008-10-27  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* wxintl/Makefile.in: upgraded autotools
+
+	* osdep/macosx/Info.plist.in: rudimentary changes for File type support
+
+	* muwx/MutEditFile.h: fixes for non-Unicode
+
+	* missfunc/Makefile.in: upgraded autotools
+
+	* config.h.in: added boost, upgraded autotools
+
+	* doc/Makefile.in, doc/localized/Makefile.in, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, doc/localized/de/Makefile.in:
+	new autoconf/automake
+
+	* aclocal.m4: new autoconf
+
+	* Mutabor.fbp, xrc/wxresource.cpp: typo
+
+	* Makefile.am: added ogl
+
+	* Makefile.in, configure, m4/forstyle.m4: fixed cache warning
+
+	* configure, configure.in: check for boost/rational.hpp
+
+	* libs/ogl/basic.cpp, libs/ogl/basic2.cpp, libs/ogl/bmpshape.cpp, libs/ogl/canvas.cpp, libs/ogl/composit.cpp, libs/ogl/constrnt.cpp, libs/ogl/divided.cpp, libs/ogl/drawn.cpp, libs/ogl/lines.cpp, libs/ogl/mfutils.cpp, libs/ogl/ogldiag.cpp, libs/ogl/oglmisc.cpp:
+	added
+
+	* mu32/DevGIS.cpp: Use Boost rational class if availlable
+
+	* mu32/DevMidF.cpp, mu32/DevMidF.h: moved CurrentTimer to Device
+
+	* mu32/Frac.cpp, mu32/Frac.h, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp:
+	Use Boost rational class if availlable
+
+	* mu32/GrafKern.cpp: Adopted VC8-changes to any
+
+	* mu32/Device.cpp: moved CurrentTimer to Device
+
+	* mu32/Device.h, mu32/Runtime.cpp: Moved CurrentTimer stuff to Device
+
+2008-10-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mywx/mhDefs.h, mu32/DevMidF.h, mu32/EDevice.cpp, mu32/GrafKern.cpp, mu32/Runtime.cpp, vc8/config.h, vc8/muwx.vcproj, vc8/stdint.h:
+	Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
+
+	* mu32/Frac.cpp:
+	Das private abs() klemmt in VC8, daher in absLong() umbenannt.
+
+2008-10-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Errors.h: provide symbolic error constants
+
+	* mu32/Hilfs.cpp: added debug message
+
+	* mu32/Errors.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp:
+	added Errors.h and started to define Error symbols
+
+	* mu32/mut.cpp, mu32/mut.h, mu32/mut.y:
+	workaround for toupper(EOF) in Windows using locales
+
+2008-10-13  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/de.po: Rechtschreibfehler
+
+2008-10-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, Makefile.in: rudimentary make installwin
+
+	* Makefile.am, Makefile.in, includes/mutabor/identifier.h, includes/mutabor/idlist.h, includes/mutabor/intervalDiff.h, includes/mutabor/intervalInv.h, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalStretch.h, includes/mutabor/intervalSum.h, includes/mutabor/mutfile.h, includes/mutabor/object.h, includes/mutabor/ptrlist.h:
+	myContextHelpButton is still not needed
+
+	* AUTHORS, INSTALL: Updated documentation
+
+	* mu32/Defs.h, mu32/EDevice.cpp, mu32/GIS_Head.h, mu32/GrafKern.cpp, mu32/Runtime.cpp:
+	make compile on windws
+
+	* muwx/MutRouteWnd.cpp: load xpms even on Windows
+
+	* muwx/MutApp.cpp: Call OGLInitialize if OGL is used
+
+2008-10-09  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/ChangeLog, po/LINGUAS, po/Makefile.in.in, po/Makevars, po/Makevars.template, po/POTFILES.in, po/Rules-quot, po/boldquot.sed, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.header, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.header, po/en@quot.po, po/insert-header.sin, po/macrotrans.h, po/mutabor.pot, po/mutabor.pot.autosave, po/quot.sed, po/remove-potcdate.sin:
+	*** empty log message ***
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutConfDlg.h, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/Mutabor.rh, mywx/mhDefs.h:
+	make compile on mingw
+
+	* po/LINGUAS: removed wxstd-de
+
+2008-10-08  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* intl/localename.c: make compile on MinGW
+
+2008-10-07  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/GIS_Head.cpp: change include for XCode
+
+	* po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po:
+	update
+
+2008-10-01  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* xrc/reslocale.cpp: updated to Mutabor.xrc
+
+	* xrc/Mutabor.cpp, xrc/Mutabor.xrc: further dialog changes
+
+	* po/mutabor.pot, po/de.gmo, po/de.po: updated
+
+	* mywx/mxDefs.cpp: Better multibyte wxString support
+
+	* mywx/mhArray.h, mywx/mhDefs.h: fixed inclution for XCode build
+
+	* muwx/OutputDevDlg.cpp: changed constants to new names
+
+	* muwx/MutTextBox.h, muwx/MutFrame.cpp: fixed inclution for XCode build
+
+	* muwx/MutEditFile.cpp, muwx/MutEditFile.h:
+	Better multibyte wxString support
+
+	* muwx/MutChild.h: fixed inclution for XCode build
+
+	* mu32/Runtime.cpp: Routing broken
+
+	* mu32/GrafKern.cpp, mu32/GrafKern.h: fixed inclution for XCode build
+
+	* mu32/GSP_Err.cpp: fixed some typing errors
+
+	* mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h:
+	Better multibyte wxString support
+
+	* mu32/DevMidi.cpp, mu32/DevMidi.h:
+	some changes according byte order issues
+
+	* mu32/DevMidF.cpp, mu32/DevMidF.h: fix midi file playing
+
+	* mu32/DevGIS.cpp, mu32/DevGIS.h: *** empty log message ***
+
+	* Mutabor.xcodeproj/project.pbxproj: Preparing for release
+
+2008-08-25  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* doc/localized/de/Hilfe.zip, mu32/DevGIS.cpp, mu32/GIS_Head.cpp:
+	Make GMN Play work.
+
+2008-08-18  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* xrc/Mutabor.cpp, xrc/Mutabor.h, xrc/Mutabor.xrc, xrc/wxresource.cpp, xrc/wxresource.h:
+	Added InputDevDlg and InputFilterDlg
+
+	* mywx/valNum.cpp, mywx/valNum.h:
+	tie wxTextValidator a little bit closer to wxNumValidator
+
+	* mywx/mhDefs.h: Added DEBUGLOG2
+
+	* muwx/Icon/ActTextBox.xpm, muwx/Icon/AddPause.xpm, muwx/Icon/AddPlay.xpm, muwx/Icon/AddStop.xpm, muwx/Icon/AddStopDis.xpm, muwx/Icon/DevGMN.xpm, muwx/Icon/DevMidiFile.xpm, muwx/Icon/DevMidiPort.xpm, muwx/Icon/DevUnknown.xpm, muwx/Icon/Document.xpm, muwx/Icon/ErrorPlop.xpm, muwx/Icon/KeyTextBox.xpm, muwx/Icon/Logic.xpm, muwx/Icon/LogicOpen.xpm, muwx/Icon/Mutabor.xpm, muwx/Icon/NewPlop.xpm, muwx/Icon/PausePlop.xpm, muwx/Icon/PlayPlop.xpm, muwx/Icon/Route.xpm, muwx/Icon/TSTextBox.xpm, muwx/Icon/Tonesyst.xpm, muwx/Icon/TonesystOpen.xpm, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/Mutabor.rh, muwx/OutputFilterDlg.h, muwx/bitmaps/copy.xpm, muwx/bitmaps/cut.xpm, muwx/bitmaps/help.xpm, muwx/bitmaps/new.xpm, muwx/bitmaps/open.xpm, muwx/bitmaps/paste.xpm, muwx/bitmaps/preview.xpm, muwx/bitmaps/print.xpm, muwx/bitmaps/save.xpm:
+	Fix subwindow creation when on other window
+
+	* muwx/MutEditFile.cpp, muwx/MutEditFile.h:
+	Moved temp file handling a little bit around
+
+	* muwx/MutApp.cpp: Exit Main loop if no window is open
+
+	* muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h:
+	Changed Input filter dialog to wxResources
+
+	* muwx/InputDevDlg.cpp, muwx/InputDevDlg.h:
+	Changed Input dev dialog to wxResources
+
+	* mu32/GrafKern.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/Parser.cpp, mu32/TabGen.cpp, mu32/mut.cpp, mu32/mut.h, mu32/mut.y:
+	fixed some const char * warnings and charset issues
+
+	* mu32/GrafKern.cpp: fixed some const char * warnings
+
+	* mu32/Global.h: fixed some const char *
+
+	* mu32/Frac.h: added operator wxString
+
+	* mu32/Errors.cpp: added License header
+	added const to string arrays
+	some reformatting
+
+	* mu32/EDevice.cpp: fixed const declaration of string arrays
+	Fixed saving of routes
+
+	* mu32/Device.h: Fixed DeviceMaxType to DTGis+1
+
+	* mu32/DevMidi.cpp: some debug logging
+	fixed initialization of Pitchbend (was -8192, now 0)
+
+	* mu32/DevMidi.h: some debug logging
+
+	* mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h:
+	make GUIDO playing work
+
+	* mu32/Defs.h: some missing parentheses
+	New macros: mutStrEq2 C_STR mutC_STR mutIsspace mutIsdigit
+
+	* Mutabor.fbp: InputFilterDialog
+
+	* Makefile.am, Makefile.in: make wxresource.h BUILT_SOURCE
+
+2008-08-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_Err.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h:
+	saved for further experiments
+
+2008-08-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutRouteWnd.cpp:
+	removed annoying warning about DTUnknown on new devices
+
+	* muwx/MutApp.cpp: CmQuit Use DeletePendingObjects to delete frames
+
+2008-08-01  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutTextBox.cpp, muwx/MutTextBox.h:
+	Fix some segfaults on stopping Mutabor
+
+	* muwx/MutRouteWnd.cpp: Fix some invalid pen issue in OnPaint()
+
+	* muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h:
+	Fix some segfaults on stopping Mutabor
+
+	* muwx/MutApp.cpp: OnExit: uninit MIDI
+	CmQuit: try to fix endless loop on Linux
+
+	* mu32/DevMidi.cpp, mu32/DevMidi.h: first try to uninit MIDI stuff
+
+2008-07-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, Makefile.in, doc/Makefile.cmn, doc/localized/de/Makefile.am, doc/localized/de/Makefile.in, mu32/DevMidF.cpp, mu32/Global.h, mu32/GrafKern.h, mu32/Runtime.h, muwx/MutApp.cpp, muwx/MutChild.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, mywx/mxDefs.cpp:
+	solved some valgrind issues
+
+2008-07-21  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mywx/mxDefs.cpp: New file selector function
+
+	* mywx/mhDefs.h: Sort out some issue with mumT(x)
+	define DEBUGLOGBASE, DEBUGLOG and DEBUGLOGTYPE macros
+
+	* muwx/bitmaps/copy.xpm, muwx/bitmaps/cut.xpm, muwx/bitmaps/help.xpm, muwx/bitmaps/new.xpm, muwx/bitmaps/open.xpm, muwx/bitmaps/paste.xpm, muwx/bitmaps/print.xpm, muwx/bitmaps/save.xpm:
+	added newline at end (quiets gcc)
+
+	* muwx/Mutabor.rh: new constant: CM_SELECT_BOXWINDOW
+
+	* muwx/MutTextBox.cpp, muwx/MutTextBox.h: some reformatting
+	WinKind, WinAttr: moved to this file
+
+	* muwx/MutRouteWnd.cpp: move playback control icons to xpm
+	use symbolic namesdevice modes
+
+	* muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h:
+	some reformatting of source code
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h: RcfFile: removed
+	TextBoxWanted: one variable per box and type
+	removed ROUTE_WIN and REPAINT_ROUTE definitions
+	reformatted debug logging
+	Implement box selection Menu
+	MutFrame::repaint_route(): New function
+
+	* muwx/MutChild.cpp, muwx/MutChild.h:
+	changed parent signalling according to current window loayout
+	moved WinAttr
+
+	* muwx/MutApp.cpp: some reformatting of white space and debug logging
+	Changed window deletion on Quit.
+	Changed window Variables to one per Box and type
+
+	* muwx/InputFilterDlg.cpp:
+	Rename "stuff" to "Staff" as in the windows version.
+
+	* muwx/InputDevDlg.cpp:
+	change file mask for midi files to work on mac too.
+
+	* mu32/Runtime.cpp, mu32/Runtime.h:
+	Use symbolic enum values for device modes and device actions
+	move FlushUpdateUI() to Execute.cpp
+
+	* mu32/GIS_Head.h: some reformatting
+
+	* mu32/Execute.cpp: moved FlushUpdateUI from Runtime.cpp to this file
+
+	* mu32/EDevice.cpp, mu32/EDevice.h: recoded
+	Use symbolic enum values for device modes.
+
+	* mu32/Device.cpp, mu32/Device.h: Log Opening errors in debug mode
+	Define enum for device modes.
+
+	* mu32/DevMidF.cpp, mu32/DevMidF.h:
+	Changed numeric device modes into an enum
+	use wxTimer instead of obsolete WinXP timers
+
+	* mu32/DevGIS.cpp: Changed numeric device modes into Enum
+
+2008-07-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Icon/AddPause.png, muwx/Icon/AddPause.xpm, muwx/Icon/AddPlay.png, muwx/Icon/AddPlay.xpm, muwx/Icon/AddStop.png, muwx/Icon/AddStop.xpm, muwx/Icon/AddStopDis.png, muwx/Icon/AddStopDis.xpm, muwx/Icon/PlayPlop.xpm:
+	Created .xpm and .png from Bitmap
+
+2008-06-30  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mywx/mxDefs.cpp: Add support for selecting route files
+
+	* mywx/mhDefs.h: define muT to wxString to make non-Unicode build happy
+
+	* muwx/Mutabor.rh: Frame ID enum by MUT_FIRST and MUT_LAST
+
+	* muwx/MutTextBox.cpp, muwx/MutTextBox.h: Destroy() window on close
+
+	* muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h: Some Debug logging
+	OnActivate(): New Function
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h:
+	Fix UPDATE_UI for CM_PANIC and CM_EXECUTE
+	MurFileData: new struct
+	theFrame: new variable
+	~MutFrame(): empty event loop
+	PassEventToEditor(): Runtime Class check for client
+	OnClose(): implement Veto if logic is active
+		stop logic if running
+		close all clients before deletion to make AUI on reopening happy
+	CmDoActivate(): Separate Logic window creation from other windows
+		Create box selection submenu
+	ClearMenuItem(), ClearSubMenu(), RaiseLogic(), CmStop(), CeActivate(): New functions.
+	CmRoutes(): Raise window and return if we have a route window already.
+		Set window ID.
+	LogicWinOpen(): remove close button
+		Set unique name
+	TextBoxOpen(): don't destroy on close
+		set unique window name
+	StopInDev(): new function.
+	CmInDevStop(): sooutsourcing to StopInDev().
+	CmRouteLoad(): New function.
+	CmRouteSave(), CmRouteSaveAs(): New funcitons.
+	CloseAll(): Some reorganization.
+	ActiveWindow, BoxCommandIds: new Attributes.
+
+	* muwx/MutEditFile.cpp: DoSaveFile: Log only in Debug mode
+	CmCompile: Add Debug statement
+		let CompDlg Class enable the OK button
+
+	* muwx/MutChild.cpp, muwx/MutChild.h: removed MutChildren.
+	~MutChild: outcourcing WinAttrs logic
+	OnClose: removed WinAttrs code
+
+	* muwx/MutApp.cpp, muwx/MutApp.h: New Variable: routewindow
+	OnInit(): Register Ids from Mutabor.rh
+	Implement Loading and Saving routes
+	MustOpenFrame(): New function.
+	On window open: use MustOpenFrame() to determine if new frame must be created
+	CmRoutes(): Implement correct window opening.
+	CmQuit(): Reimplemented Frame deletion to prevent crashes and endless loops on quitting
+
+	* muwx/CompDlg.h: Check if childs exist, when updating data.
+
+	* mu32/mut.cpp, mu32/mut.h, mu32/mut.y:
+	use isspace to check for whitespace (fixes #14060)
+
+	* mu32/EDevice.cpp, mu32/EDevice.h:
+	Get default port name only if midi devices are attached on startup to prevent crashes
+	Check for device existence when routes are created.
+
+	* doc/preamble.tex: Load color package
+	New command: \translate
+
+	* doc/localized/de/Hilfe.zip, doc/localized/en/reference.tex:
+	Upgraded German documentation
+	added prototype for english language reference
+
+2008-06-02  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/mutabor.pot: update
+
+	* muwx/CompDlg.h: Use CompieleDlg from resource system now
+
+	* xrc/wxresource.cpp, xrc/wxresource.h: OK button added.
+
+	* xrc/reslocale.cpp: usual upgrades.
+
+	* xrc/Mutabor.xrc:
+	Updated Config dialog and compile dialog (latter is used now by Mutabor).
+
+	* xrc/Mutabor.cpp, xrc/Mutabor.h: *** empty log message ***
+
+	* po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po:
+	Usual updates
+
+	* mywx/mxDefs.cpp: FileNameDialog(): new Function
+
+	* mywx/mhDefs.h: include Mutabor.rh
+	define FileNameDialog class-independent
+
+	* muwx/Mutabor.rh: CM_SETTITLE: new id
+
+	* muwx/MutTextBox.cpp, muwx/MutRouteWnd.cpp, muwx/MutLogicWnd.cpp:
+	don't include Mutabor.rh
+
+	* muwx/MutFrame.h: Chenged FileNameDialog
+	CmSetTitle(), HasClient(): new functions
+
+	* muwx/MutFrame.cpp: don't include Mutabor.rh
+	implement CM_EXECUTE action
+	disable CM_COMPILE, CM_EXECUTE, CM_DOACTIVATE if logic is active
+	implement CM_SETTITLE for setting the window title
+	FileNameDialog(): reimplemented
+	CmFileOpen() and other: correct Event Skipping.
+	MutFrame::ToggleTextBox(), CloseAll():
+	use DetachPane and Close instead of ClosePane
+
+	* muwx/MutEditFile.h: CmFileSaveAs: new function
+
+	* muwx/MutEditFile.cpp:
+	Don't include Mutabor.rh (included with headers).
+	use DEBUG macro to make some messages debug messages
+	MutEditFile::CmFileSaveAs() new function
+	MutEditFile::CmCompile() fix wrong file name in compilation dialog,
+		new way to display compilation window.
+	MutEditFile::CmCompAct() currently unused
+
+	* muwx/MutConfDlg.h: Implement Help
+
+	* muwx/MutChild.cpp: don't include Mutabor.rh
+
+	* muwx/MutApp.cpp:
+	Don't include Mutabor.rh, since it is included with headers.
+	Implement Help for config dialog
+	MutApp::CmAbout(): Remove newlines from People list.
+	Implement CM_EXECUTE
+	MutApp::CmFileOpen(), MutApp::CmFileNew(): Open new windows only when really necessary
+
+	* muwx/CompDlg.cpp: UTF-8
+	Use CompileDlg class from Resources.
+
+	* mu32/mut.cpp, mu32/mut.h, mu32/mut.y:
+	Update line numbers generally in lexer even at the end of input.
+
+	* mu32/Runtime.h: Compile() new Interface
+
+	* mu32/Runtime.cpp:
+	dont include Mutabor.rh since it is already included now
+	New interfache for InitCompDia
+	Set status dialog fields directly
+
+	* mu32/GrafKern.h: InitCompDia: new interface
+
+	* mu32/GrafKern.cpp: UTF-8
+	don't include Mutabor.rh (already included)
+	access compile dialog static text directly to display line number
+	fix formatting of line numbers
+
+	* mu32/EDevice.cpp: fixed typo
+
+	* Mutabor.fbp: dialog updates
+
+	* Makefile.am, Makefile.in: change wxFormBuilder bug correction rule
+
+	* doc/localized/de/Bedienung.tex, doc/localized/de/Hilfe.zip, doc/localized/de/Hilfefenster.png, doc/localized/de/Hilfeindex.png, doc/localized/de/Hilfesuchformular.png:
+	new files
+
+2008-04-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libmutabor/tests/Makefile.in: added WX_LOCALE_DIRS
+
+	* po/mutabor.pot: updated
+
+	* includes/mutabor/Makefile.in, intl/Makefile.in, libmutabor/Makefile.in, wxintl/Makefile.am, wxintl/Makefile.in:
+	added target mac; WX_LOCALE_DIRS
+
+	* doc/localized/de/Makefile.in, doc/localized/de/Makefile.am: new files
+
+	* po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po:
+	updated
+
+	* po/Makefile.in.in: add target mac
+
+	* muwx/Mutabor.rh: add CM_HELPREFERENCE
+
+	* muwx/MutRouteWnd.cpp: silence some warnings inside of comments
+	Add some missing cases to switch statements
+
+	* muwx/MutLogicWnd.cpp: Silence a type conversion warning
+
+	* muwx/MutFrame.cpp:
+	Silence a warning since it is issued every normal start.
+
+	* muwx/MutApp.cpp: Use one single file Help.zip for online help.
+	MutApp::ShowHelp: Implement the other Help commands.
+	MutApp::CmQuit: remove unused variable frame
+		silence a warning about paren scoping
+	MutApp::MakeHelpMenu: Add missing menu items.
+
+	* mu32/mut.y: Add locations support to mut.y
+	Make shure alloca is not defined
+	use xmalloc as alloc for Bison
+	some whitespace modifications
+
+	* mu32/TabGen.cpp:
+	comment out enthaelt_nur_konstante_toene, which is not used
+
+	* mu32/Runtime.h: define UINT only if undefined
+
+	* mu32/Parser.cpp:
+	comment out drucke_ton, drucke_harmonie, drucke_argument, print_ausloeser, since they are not used currently.
+
+	* mu32/Mut_Tab.cpp: Try to silence some warnings -> result: use mut.cpp
+
+	* mu32/Hilfs.cpp: comment out #pragma wark in Order to silence gcc
+
+	* mu32/Execute.cpp: whitespace fixes
+	add missing directives to switch statements
+
+	* mu32/Device.cpp, mu32/Device.h: charset conversion
+	source code formatting
+
+	* mu32/DevMidi.cpp, mu32/DevMidi.h: fix some size warnings
+
+	* mu32/DevMidF.cpp, mu32/DevMidF.h: Fix some size warnings
+
+	* missfunc/Makefile.am, missfunc/Makefile.in, includes/Makefile.am, includes/Makefile.in:
+	add phony target mac
+
+	* configure, configure.in: find wxWidgets locale data
+	add documentation directories.
+
+	* Makefile.am, Makefile.in:
+	Automatically generate parser (using bison).
+	Add target mac
+
+	* doc/Makefile.am, doc/Makefile.cmn, doc/Makefile.in, doc/addbookm.png, doc/back.png, doc/delbookm.png, doc/dir_up.png, doc/down.png, doc/emlines.sty, doc/fixhhp.cpp, doc/forward.png, doc/helptoolbar.png, doc/htmbook.png, doc/htmfoldr.png, doc/htmldecode.cpp, doc/htmoptns.png, doc/htmpage.png, doc/htmsidep.png, doc/keystroke.4ht, doc/localized/Makefile.am, doc/localized/Makefile.in, doc/localized/de/Bedienung.tex, doc/localized/de/Handbuch.tex, doc/localized/de/Hilfe.zip, doc/localized/de/Hilfefenster.png, doc/localized/de/Hilfeinhaltsbaum.png, doc/localized/de/Hilfetextfenster.png, doc/localized/de/Referenz.tex, doc/localized/de/abhaeng.pic, doc/localized/de/anker1.pic, doc/localized/de/anker2.pic, doc/localized/de/ft.pic, doc/localized/de/netz.pic, doc/localized/de/pt.pic, doc/localized/de/syn1.pic, doc/localized/de/syn10.pic, doc/localized/de/syn11.pic, doc/localized/de/syn12.pic, doc/localized/de/syn13.pic, doc/localized/de/syn14.pic, doc/localized/de/syn15.pic, doc/localized/de/syn16.pic, doc/localized/de/syn17.pic, doc/localized/de/syn18.pic, doc/localized/de/syn19.pic, doc/localized/de/syn2.pic, doc/localized/de/syn20.pic, doc/localized/de/syn21.pic, doc/localized/de/syn22.pic, doc/localized/de/syn23.pic, doc/localized/de/syn24.pic, doc/localized/de/syn25.pic, doc/localized/de/syn26.pic, doc/localized/de/syn27.pic, doc/localized/de/syn28.pic, doc/localized/de/syn3.pic, doc/localized/de/syn4.pic, doc/localized/de/syn5.pic, doc/localized/de/syn6.pic, doc/localized/de/syn7.pic, doc/localized/de/syn8.pic, doc/localized/de/syn9.pic, doc/mkhtml, doc/mutabor.cfg, doc/preamble.tex, doc/print.png, doc/toparent.png, doc/up.png, doc/wxdin.ist, doc/xr-hyper.4ht:
+	Implemented german help system
+
+	* mu32/mut.cpp, mu32/mut.h: replacement for muttab
+
+2008-03-31  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/mut.y: moved from ..
+
+2008-03-11  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Doxyfile, INSTALL, Makefile.am, Makefile.in, aclocal.m4, config.h.in, configure, configure.in, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in, missfunc/Makefile.in, mu32/Defs.h, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.h, mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/GIS.h, mu32/GIS_Head.h, mu32/Runtime.cpp, mu32/Runtime.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/Mutabor.rh, po/LINGUAS, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, wxintl/Makefile.in, xrc/reslocale.cpp:
+	Holyday edition
+	put CM_xxx in an enum
+	use wx constants
+	document mutframe
+	some white space formattings
+	make route saving more system specific
+	many other fixes
+
+2008-02-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure: Substitute SED
+
+	* po/mutabor.pot, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po:
+	Updated to current source tree
+
+	* po/de.gmo, po/de.po: Updated to current source
+
+	* muwx/MutFrame.h: Fix typo in MutFrame::GetDockArt declaration
+
+	* muwx/MutApp.cpp: Add help controller
+	SetAppName - use normalized name  -- fixes date path names
+	Fix installprefix debug output on wxGTK
+
+	* Makefile.in, Makefile.am:
+	install about.png and Mutabor.xrc in GTK build
+	Globally fix Mutabor.xrc
+
+	* Doxyfile: updated
+
+2008-01-25  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Images/about.png: new file
+
+	* Mutabor.xcodeproj/project.pbxproj, m4/smpeg.m4, muwx/MutConfDlg.h, mywx/muconvauto.cpp, mywx/muconvauto.h, po/macrotrans.h, xrc/Mutabor.cpp, xrc/Mutabor.h, xrc/Mutabor.xrc, xrc/reslocale.cpp, xrc/wxresource.cpp, xrc/wxresource.h, Mutabor.fbp:
+	New file.
+
+	* m4/alsa.m4, mu32/Gray.h, po/POTFILES.in, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot, routes.cfg:
+	po/POTFILES.in
+
+	* po/Makefile.in.in: add rule to process Mutabor.xrc
+
+	* osdep/macosx/Info.plist.in:
+	Add CFBundleName to set Main Program Name in menu bar.
+
+	* mywx/mhDefs.h: Add a help controller
+
+	* muwx/MutTextBox.cpp, muwx/MutTextBox.h: Add window id to constructor
+
+	* muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h: Add some Registration code.
+	MutLogicWnd::OnAuiClose, MutLogic::doClose: New functions.
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h:
+	Enable CM_ACTIVATE, CM_FILENEW and CM_FILEOPEN in event table
+	Inherit wxFrame
+	Use AUIManager
+	Let Application handle CM_FILENEW/CM_FILEOPEN if we have already a client
+	New titles for Subframes
+	Some Debug output
+	use wxConfig
+
+	MutFrame::CloseAll,
+	MutFrame::OnSize,
+	MutFrame::OnEraseBackground,
+	MutFrame::OnActivate:        New Functions.
+
+	* muwx/MutChild.cpp, muwx/MutChild.h: MutChild: Inherit MutTextBox
+	Add EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose) event handler
+	Reduce functionality to management of the window lists.
+	Implement WinKind as enum with (pre- and postfix) operator ++.
+	Removed unused Coordinates from WinAttr.
+	Move CloseAll to MutFrame
+
+	* muwx/MutApp.cpp, muwx/MutApp.h: MutApp::OnInit:
+		Remove unused i18n demo code.
+		output directory constants in Debug compilation
+		Add PNG and GIF image handlers.
+		Add ZIP filesystem handler
+		Load Resource file Mutabor.xrc
+
+	MutApp::GetResourceName:
+	MutApp::CmSetup:
+		New function.
+
+	Add CM_SETUP event handler.
+
+
+	First steps towards a help system
+
+	* muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h:
+	charset conversion
+
+	* mu32/EDevice.cpp, mu32/EDevice.h:
+	Make route file reading/writing wchar compatible
+	charset conversion
+	Read and write routes to wxConfigBase compatible config files
+
+	* Makefile.am, Makefile.in:
+	Add preprocessed Mutabor.xrc to Mac OS X Application
+	Add rule to generate wxresource.h
+
+2007-12-17  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po, po/mutabor.pot:
+	Sync with current code.
+
+	* rtmidi/RtMidi.cpp, rtmidi/RtMidi.h:
+	Add wxString GetPortName to the classes.
+
+	* po/quot.sed:
+	add ; to end of each line. That fixes some issues with MacOS X sed.
+
+	* po/Makefile.in.in, po/Rules-quot:
+	Use $SED variable instead of hardcoded sed command. That fixes some issues with mac os X sed.
+
+	* osdep/macosx/Info.plist.in: set the binary name to the compiled name.
+
+	* mywx/mhDefs.h, mywx/mxDefs.cpp:
+	wxUSE_UNICODE is always defined (either 0 or 1).
+	use UNICODE instead of _UNICODE
+
+	* muwx/MutTextBox.cpp, muwx/MutTextBox.h: Fix unicode compilation.
+	MutTextBox::NewText(wxString,bool): new function.
+
+	* muwx/MutRouteWnd.cpp: Fix Unicode compilation
+
+	* muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h: Fix Unicode compilation.
+
+	* muwx/MutFrame.h: Pass compile and Activation events to editor
+	Use wxAUI for Frame management
+	Set title on TextBoxOpen
+	Use wxConfig for general and route configuration.
+	Let WX choose the right function for data conversion.
+
+	* muwx/MutEditFile.cpp, muwx/MutEditFile.h:
+	MutEditFile::DoLoadFile, MutEditFile::DoSaveFile: New functions.
+	Fix compilation in Unicode mode.
+	Copy Some Routines from wxRichEdit to try to circumvent wx/wine incompatibility
+		in non-Unicode build
+
+	* muwx/MutChild.cpp, muwx/MutChild.h:
+	MDI Child frame is not used anymore.
+
+	* muwx/MutApp.cpp, muwx/MutApp.h: Fix Unicode compilation
+	Catch CM_ROUTES
+	MutApp::CmRoutes: New function.
+	MuttApp::CreateMainFrame: Accept window id as argument.
+
+	* mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.h, mu32/Execute.cpp, mu32/Execute.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Global.h, mu32/Parser.cpp, mu32/Route.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h:
+	Make the file compile in WX Unicode mode
+
+	* mu32/DevGIS.h:
+	Use #defined Interface types for compilation in WX Unicode mode
+
+	* mu32/DevGIS.cpp: Make the file to compile in WX Unicode mode
+
+	* mu32/Defs.h: use c99 integer types for fixed size integers
+	New definitions: mutChar, mutString, mutEmptyString, mutDelString, mutFreeString, mutCopyString, mutCopyIntoString,
+		mutStrdup, mutStrCmp, mutStrEq, mutStrLast, mutLen, mutStrLen,mutStrChr, mutFileName, mutOFstream, mutIFStream,
+		mutTextStream, mutOpen{OF,IF,IText}Stream, mutWriteStream, mutReadStream, mutCloseStream, mutPutC, mutGetC,
+		mutStreamBad, mutStreamGood, mutStreamEOF
+		mutAssertMsg
+
+	* configure, configure.in: compile debug information for GDB
+
+	* Makefile.am, Makefile.in: Add Logo for Aboutbox to installation data
+	MacOS: don't rename executable
+
+2007-10-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Help/Help.rh: moved file
+
+2007-10-09  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutApp.cpp, muwx/MutApp.h: AppAbout: New class.
+	MutApp::CmAbout: Use AppAbout for displaying about window.
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h:
+	MutFrame::DetermineFrameSize: New Function.
+	MutFrame::MutFrame: Automagic Frame size detection.
+
+2007-10-08  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutFrame.cpp:
+	Moved major Handling of file opening and new file to MutApp event handler.
+
+	* muwx/MutApp.cpp, muwx/MutApp.h:
+	Move FileNew and FileOpen from MutFrame to MutApp
+	Enable multiple main windows
+	MutApp:
+		CmFileNew(),
+		CmFileOpen()
+		CmQuit(),
+		RegisterFrame(),
+		UnregisterFrame(): New functions.
+		Rename OnAbout -> CmAbout
+
+		frames, quitting: New Member variables
+
+	New Class: FrameHash;
+
+	* configure, configure.in:
+	Add -g to CFLAGS and CXXFLAGS in case of --enable-debug
+
+2007-10-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutLogicWnd.cpp: cmBox: s/SetTitle/SetName/
+
+	* includes/mutabor/Makefile.in, libmutabor/tests/Makefile.in:
+	regenerated with automake 1.10
+
+	* po/mutabor.pot: regenerated
+
+	* po/en@boldquot.gmo, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.po:
+	regenerated due to changes in message texts
+
+	* po/de.gmo, po/de.po:
+	regenerated, some small changes in english messages
+
+	* po/POTFILES.in: remove two non existing files
+
+	* osdep/macosx/Info.plist.in:
+	add Icon and change company and add BundleInfoString
+
+	* mywx/mhDefs.h: some whitespace fixes
+
+	* muwx/Icon/Mutabor.icns: some stuff to correct the Icon file
+
+	* muwx/OutputDevDlg.cpp: some experimental cocoa stuff
+
+	* muwx/MutTextBox.cpp: use SetName instead of SetTitle
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h:
+	first steps towards a real mac version:
+	 - move OnAbout to MutApp
+	 - set ext on frame delete on Quitting, so that program quits too
+
+	* muwx/MutApp.cpp, muwx/MutApp.h:
+	first steps towards a real mac version:
+	 - automagic locale selection
+	 - dont exit on fram delete on Mac
+	 - install own event table
+	 - CreateMainFrame: new function
+	 - move OnAbout from MutFrame
+
+	* mu32/Route.cpp: no OWL headers to include
+
+	* mu32/Hilfs.h: prevent from duplicate inclusion
+	include cstdio
+
+	* mu32/Errors.cpp: Correct an error message
+
+	* mu32/DevMidF.h: Correct definition of TByteBase1
+
+	* mu32/Defs.h: prevent header file from douplicate inclusion
+
+	* includes/Makefile.in, libmutabor/Makefile.in, missfunc/Makefile.in, wxintl/Makefile.in:
+	Rebuilt using automake 1.10
+
+	* configure, configure.in:
+	New test to find out for loop scope in C++ sources
+	set LDFLAGS for dawin
+	guess malloc/realloc for windows for mingw32 cross compiler
+
+	* config.h.in, m4/forstyle.m4:
+	added Test to find out for loop variable scope
+
+	* acinclude.m4, aclocal.m4: fixed test for precompiled C++ headers
+
+	* Makefile.in, Makefile.am: disabled libmutabor subdir for now
+	fixed building of precompiled superheader
+	new target: Mutabor.app
+
+2007-10-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutEditFile.cpp: Added iostream header
+
+2007-10-01  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Icon/Mutabor.icns: initial submission
+
+	* osdep/macosx/Info.plist.in: Initial submit.
+
+2007-05-18  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/mut.y, mutwin/editfile.rc, mutwin/main.def, mutwin/main.rc, mutwin/mididll.def:
+	New file.
+
+	* editfile.rc, handbook.cnt, handbook.hpj, main.def, main.rc, mididll.def, mu32/mut.y, mutabor.cnt, mutabor.hpj, mutwin/editfile.rc, mutwin/main.def, mutwin/main.rc, mutwin/mididll.def:
+	moved to subdirectory
+
+	* Help/handbook.cnt, Help/handbook.hpj, Help/mutabor.cnt, Help/mutabor.hpj:
+	New file.
+
+	* Help/handbook.cnt, Help/handbook.hpj, Help/mutabor.cnt, Help/mutabor.hpj:
+	moved to subdirectory
+
+	* Help/handbook.gid, Help/mutabor.gid: New file.
+
+	* Help/handbook.gid, Help/mutabor.gid, handbook.gid, mutabor.gid:
+	moved to subdirectory
+
+	* Help/HandBook.rh, Help/Handbook.rtf, Help/Mutabor.rtf, Help/NoHelp.rtf, Help/handbook.hlp, Help/help.rh, Help/muhlp.rtf, Help/mutabor.hlp, Help/mutabor.rh:
+	New file.
+
+	* HandBook.rh, Handbook.rtf, Help/HandBook.rh, Help/Handbook.rtf, Help/Mutabor.rtf, Help/NoHelp.rtf, Help/handbook.hlp, Help/help.rh, Help/muhlp.rtf, Help/mutabor.hlp, Help/mutabor.rh, Mutabor.rtf, NoHelp.rtf, handbook.hlp, muhlp.rtf, mutabor.hlp, Route.bmp, S125.bmp, S28.bmp, S31.bmp, S41.bmp, S42.bmp, S53.bmp, cc_midiin.bmp, cc_midiout.bmp, cc_midioutpara.bmp, cc_route.bmp, face.bmp:
+	moved to subdirectory
+
+	* Kopie von main.rc, README: not in win32 release
+
+	* mutwin/barray.cpp, mutwin/diahlp.h, mutwin/gray.h, mutwin/main.cpp, mutwin/mdimutch.cpp, mutwin/mdimutch.h, mutwin/mididll.cpp, mutwin/muhlp.h, mutwin/mutwin.cpp, mutwin/mutwin.h:
+	New file.
+
+	* mutwin/barray.cpp, mutwin/diahlp.h, mutwin/gray.h, mutwin/main.cpp, mutwin/mdimutch.cpp, mutwin/mdimutch.h, mutwin/mididll.cpp, mutwin/muhlp.h, mutwin/mutwin.cpp, mutwin/mutwin.h:
+	moved everything win dependent to mutwin directory
+
+	* mu32/Defs.h, mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Gray.cpp, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/MidiKern.h, mu32/Mut_Tab.cpp, mu32/Parser.cpp, mu32/Route.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, tabgen.cpp:
+	moved mu32 files into directory
+
+	* NEWS, missfunc/Makefile.am, missfunc/Makefile.in, missfunc/stpcpy.c, missfunc/stpcpy.h, make_x11/Makefile, includes/mutabor/Makefile.am, includes/mutabor/Makefile.in, includes/mutabor/aktion.h, includes/mutabor/anweisung.h, includes/mutabor/argument.h, includes/mutabor/ausloeser.h, includes/mutabor/bad_decl.h, includes/mutabor/case_liste.h, includes/mutabor/errors.h, includes/mutabor/global.h, includes/mutabor/harmonie.h, includes/mutabor/heap.h, includes/mutabor/identifier.def, includes/mutabor/identifier.h, includes/mutabor/identifier.hh, includes/mutabor/idlist.def, includes/mutabor/idlist.h, includes/mutabor/idlist.hh, includes/mutabor/instrument.h, includes/mutabor/interpreter.h, includes/mutabor/interval.def, includes/mutabor/interval.h, includes/mutabor/interval.hh, includes/mutabor/intervalDiff.def, includes/mutabor/intervalDiff.h, includes/mutabor/intervalDiff.hh, includes/mutabor/intervalInv.def, includes/mutabor/intervalInv.h, includes/mutabor/intervalInv.hh, includes/mutabor/intervalPlaceholder.def, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalPlaceholder.hh, includes/mutabor/intervalStretch.def, includes/mutabor/intervalStretch.h, includes/mutabor/intervalStretch.hh, includes/mutabor/intervalSum.def, includes/mutabor/intervalSum.h, includes/mutabor/intervalSum.hh, includes/mutabor/logik.h, includes/mutabor/makeclass.pl, includes/mutabor/midicalc.h, includes/mutabor/mut_tab.h, includes/mutabor/mutfile.def, includes/mutabor/mutfile.h, includes/mutabor/mutfile.hh, includes/mutabor/object.def, includes/mutabor/object.h, includes/mutabor/object.hh, includes/mutabor/parameter.h, includes/mutabor/parser.h, includes/mutabor/ptrlist.def, includes/mutabor/ptrlist.h, includes/mutabor/ptrlist.hh, includes/mutabor/tabgen.h, includes/mutabor/taste.h, includes/mutabor/ton.h, includes/mutabor/tonsystem.h, includes/mutabor/umstimmung.h, includes/netinet/netinet/in.h, rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h, wxintl/Makefile.am, wxintl/Makefile.in, wxintl/gettext.c, wxintl/libintl.h, mywx/mhArray.h, mywx/mhDefs.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h, ABOUT-NLS, AUTHORS, COPYING, ChangeLog, INSTALL, LGPL-2.1, Makefile.am, Makefile.in, acinclude.m4, aclocal.m4, compile, config.guess, config.h.in, config.rpath, config.sub, configure, configure.in, depcomp, install-sh, ltmain.sh, m4/ChangeLog, m4/codeset.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes.m4, m4/inttypes_h.m4, m4/isc-posix.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/longdouble.m4, m4/longlong.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/progtest.m4, m4/signed.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4, m4/ulonglong.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4, missing:
+	not in win32 release
+
+	* intl/COPYING.LIB-2.0, intl/COPYING.LIB-2.1, intl/ChangeLog, intl/Makefile.in, intl/Makefile.msvc, intl/Makefile.vms, intl/README.woe32, intl/bindtextdom.c, intl/config.charset, intl/dcgettext.c, intl/dcigettext.c, intl/dcngettext.c, intl/dgettext.c, intl/dngettext.c, intl/eval-plural.h, intl/explodename.c, intl/finddomain.c, intl/gettext.c, intl/gettextP.h, intl/gmo.h, intl/hash-string.h, intl/intl-compat.c, intl/l10nflist.c, intl/langprefs.c, intl/libgnuintl.h.in, intl/libgnuintl.h.msvc-shared, intl/libgnuintl.h.msvc-static, intl/libgnuintl.h_vms, intl/libintl.glibc, intl/loadinfo.h, intl/loadmsgcat.c, intl/localcharset.c, intl/localcharset.h, intl/locale.alias, intl/localealias.c, intl/localename.c, intl/log.c, intl/ngettext.c, intl/os2compat.c, intl/os2compat.h, intl/osdep.c, intl/plural-exp.c, intl/plural-exp.h, intl/plural.c, intl/plural.y, intl/printf-args.c, intl/printf-args.h, intl/printf-parse.c, intl/printf-parse.h, intl/printf.c, intl/ref-add.sin, intl/ref-del.sin, intl/relocatable.c, intl/relocatable.h, intl/textdomain.c, intl/vasnprintf.c, intl/vasnprintf.h, intl/vasnwprintf.h, intl/wprintf-parse.h, intl/xsize.h, libasprintf/AUTHORS, libasprintf/COPYING, libasprintf/COPYING.LIB, libasprintf/ChangeLog, libasprintf/INSTALL, libasprintf/Makefile.am, libasprintf/Makefile.in, libasprintf/Makefile.msvc, libasprintf/Makefile.vms, libasprintf/NEWS, libasprintf/README, libasprintf/README.woe32, libasprintf/aclocal.m4, libasprintf/alloca_.h, libasprintf/asnprintf.c, libasprintf/asprintf.c, libasprintf/autosprintf.cc, libasprintf/autosprintf.h.in, libasprintf/autosprintf.h.msvc-shared, libasprintf/autosprintf.info, libasprintf/autosprintf.texi, libasprintf/autosprintf_all.html, libasprintf/config.h.in, libasprintf/config.h.msvc, libasprintf/config.h_vms, libasprintf/configure, libasprintf/configure.ac, libasprintf/lib-asprintf.c, libasprintf/lib-asprintf.h, libasprintf/printf-args.c, libasprintf/printf-args.h, libasprintf/printf-parse.c, libasprintf/printf-parse.h, libasprintf/texi2html, libasprintf/vasnprintf.c, libasprintf/vasnprintf.h, libasprintf/vasprintf.c, libasprintf/vasprintf.h, libasprintf/windows/asprintf.rc, libasprintf/windows/dllexport.h, libasprintf/xsize.h, libmutabor/Makefile.am, libmutabor/Makefile.in, libmutabor/aktion.c, libmutabor/anweisung.c, libmutabor/argument.c, libmutabor/ausloeser.c, libmutabor/case_liste.c, libmutabor/cmutlex.c, libmutabor/errors.c, libmutabor/harmonie.c, libmutabor/heap.c, libmutabor/identifier.c, libmutabor/idlist.c, libmutabor/instrument.c, libmutabor/interpreter.c, libmutabor/interval.c, libmutabor/intervalDiff.c, libmutabor/intervalInv.c, libmutabor/intervalPlaceholder.c, libmutabor/intervalStretch.c, libmutabor/intervalSum.c, libmutabor/lextables/lex-en.sed, libmutabor/lextables/lex-ru.sed, libmutabor/lextables/mutlex-en.l, libmutabor/lextables/mutlex-ru.l, libmutabor/logik.c, libmutabor/midicalc.c, libmutabor/mut.c, libmutabor/mut.h, libmutabor/mut.y, libmutabor/mutfile.c, libmutabor/mutlex.c, libmutabor/mutlex.h, libmutabor/mutlex.l, libmutabor/mutlex_de.tab, libmutabor/object.c, libmutabor/parameter.c, libmutabor/parser.c, libmutabor/ptrlist.c, libmutabor/taste.c, libmutabor/tests/Demo.mut, libmutabor/tests/Makefile.am, libmutabor/tests/Makefile.in, libmutabor/tests/testchkobject.c, libmutabor/tests/testidentifier.c, libmutabor/tests/testidlist.c, libmutabor/tests/testinterval.c, libmutabor/tests/testmutfile.c, libmutabor/tests/testobject.c, libmutabor/tests/testparser.c, libmutabor/tests/testparser.sh, libmutabor/tests/testplaceholder.c, libmutabor/tests/testptrlist.c, libmutabor/ton.c, libmutabor/tonsystem.c, libmutabor/umstimmung.c, muwx/Action.cpp, muwx/Action.h, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/Icon/ActTextBox.ico, muwx/Icon/ActTextBox.xpm, muwx/Icon/AddPause.bmp, muwx/Icon/AddPlay.bmp, muwx/Icon/AddStop.bmp, muwx/Icon/AddStopDis.bmp, muwx/Icon/DevGMN.ico, muwx/Icon/DevGMN.xpm, muwx/Icon/DevMidiFile.ico, muwx/Icon/DevMidiFile.xpm, muwx/Icon/DevMidiPort.ico, muwx/Icon/DevMidiPort.xpm, muwx/Icon/DevUnknown.ico, muwx/Icon/DevUnknown.xpm, muwx/Icon/Document.ico, muwx/Icon/Document.xpm, muwx/Icon/ErrorPlop.ico, muwx/Icon/ErrorPlop.xpm, muwx/Icon/KeyTextBox.ico, muwx/Icon/KeyTextBox.xpm, muwx/Icon/Logic.ico, muwx/Icon/Logic.xpm, muwx/Icon/LogicOpen.ico, muwx/Icon/LogicOpen.xpm, muwx/Icon/Mutabor.ico, muwx/Icon/Mutabor.xpm, muwx/Icon/NewPlop.ico, muwx/Icon/NewPlop.xpm, muwx/Icon/PausePlop.ico, muwx/Icon/PausePlop.xpm, muwx/Icon/PlayPlop.ico, muwx/Icon/PlayPlop.xpm, muwx/Icon/Route.ico, muwx/Icon/Route.xpm, muwx/Icon/TSTextBox.ico, muwx/Icon/TSTextBox.xpm, muwx/Icon/Tonesyst.ico, muwx/Icon/Tonesyst.xpm, muwx/Icon/TonesystOpen.ico, muwx/Icon/TonesystOpen.xpm, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/MutTextBox_2.cpp, muwx/MutTextBox_2.h, muwx/Mutabor.rc, muwx/Mutabor.rh, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, muwx/bitmaps/copy.xpm, muwx/bitmaps/cut.xpm, muwx/bitmaps/help.xpm, muwx/bitmaps/new.xpm, muwx/bitmaps/open.xpm, muwx/bitmaps/paste.xpm, muwx/bitmaps/preview.xpm, muwx/bitmaps/print.xpm, muwx/bitmaps/save.xpm, po/ChangeLog, po/LINGUAS, po/Makefile.in.in, po/Makevars, po/Makevars.template, po/POTFILES.in, po/Rules-quot, po/boldquot.sed, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.header, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.header, po/en@quot.po, po/insert-header.sin, po/mutabor.pot, po/mutabor.pot.autosave, po/quot.sed, po/remove-potcdate.sin:
+	not in win32-branch
+
+	* debian/README.Debian, debian/changelog, debian/compat, debian/conffiles.ex, debian/control, debian/copyright, debian/dirs, debian/docs, debian/emacsen-install.ex, debian/emacsen-remove.ex, debian/emacsen-startup.ex, debian/libmutabor-dev.install, debian/libmutabor.install, debian/manpage.1.ex, debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu.ex, debian/mutabor-doc.docs, debian/mutabor-doc.install, debian/mutabor.doc-base.EX, debian/mutabor.install, debian/postinst.ex, debian/postrm.ex, debian/preinst.ex, debian/prerm.ex, debian/rules, debian/watch.ex:
+	not in win32 branch
+
+2006-03-27  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mywx/valRadio.cpp:
+	pragma interface and implementation on __GNUG__ lead me into trouble
+
+	* mywx/valNum.h: WXDLLEXPORT should not be used as we import wx.
+	If needed use another constant.
+
+	* muwx/MutApp.h: Preliminary localization support
+
+	* muwx/MutApp.cpp: Add preliminary Localization support.
+	The Languange chooser should be moved to the options dialog.
+	    The startup language should be System default and changed
+	    	to the stored settings afterwards
+		and if those change
+
+	* mu32/Runtime.cpp: Copy Error messages to stdout (Remove me\!)
+
+	* mu32/Parser.cpp: Fix compiler warnings
+
+	* mu32/Interpre.h: Fix compiler warning
+
+	* mu32/GIS_Head.cpp: fix two compiler warnigs
+
+	* mu32/EDevice.cpp: get rid of this anoying min (a,b) definition
+
+	* libmutabor/tests/testchkobject.c, libmutabor/tests/testidentifier.c, libmutabor/tests/testidlist.c, libmutabor/tests/testinterval.c, libmutabor/tests/testmutfile.c, libmutabor/tests/testobject.c, libmutabor/tests/testparser.c, libmutabor/tests/testplaceholder.c, libmutabor/tests/testptrlist.c:
+	compile with and without mcheck Memory traces
+
+	* libmutabor/tests/Makefile.am, libmutabor/tests/Makefile.in:
+	Make compilation possible on Windows
+	let configure decide, if we can use -lmcheck
+
+	* libmutabor/object.c, libmutabor/ptrlist.c: added lib-asprintf.h
+
+	* libmutabor/mutlex.c, libmutabor/mutlex.h, libmutabor/mutlex.l:
+	make mutlex compile for Windows (mingw32)
+
+	* libmutabor/mutfile.c: added lib-asprintf.h
+	      libintl.h
+
+	* libmutabor/mut.c, libmutabor/mut.h, libmutabor/mut.y:
+	get rid of heap.h and mutlex.h
+
+	* libmutabor/intervalStretch.c, libmutabor/intervalSum.c:
+	added lab-asprintf.h to headers
+
+	* libmutabor/intervalPlaceholder.c, libmutabor/idlist.c, libmutabor/interval.c:
+	added lab-asprintf.h to headers and stpcpy if necessary
+
+	* libmutabor/identifier.c: added lab-asprintf.h to headers
+
+	* libmutabor/Makefile.am, libmutabor/Makefile.in:
+	solve some isues with different build and source directories
+	Prerequisits for building (crossbuilt) windows and linux versions in parallel
+	Added dependencies to internationalization libs
+
+	* includes/mutabor/mut_tab.h:
+	headers reorganized, so that mutlex.h is no longer needed by muttab.{y,c}
+
+	* includes/mutabor/interpreter.h: Charset conversion to UTF8
+	prevent warning about comments
+
+	* includes/mutabor/anweisung.h, includes/mutabor/ausloeser.h:
+	insert_in_lokale_liste moved from ausloeser to anweisung
+
+	* aclocal.m4, config.h.in, configure.in, includes/Makefile.in, includes/mutabor/Makefile.in:
+	Making mingw32 compile Mutabor
+
+	* acinclude.m4, configure: making mingw32 compile mutabor
+
+	* Makefile.am, Makefile.in: Making mingw32 compile Mutabor
+
+	* config.rpath: first submit
+
+	* ChangeLog: *** empty log message ***
+
+	* muwx/Icon/ActTextBox.ico: First submit
+
+	* libmutabor/cmutlex.c, includes/netinet/netinet/in.h: first submit
+
+	* wxintl/Makefile.am, wxintl/Makefile.in, wxintl/gettext.c, wxintl/libintl.h, po/ChangeLog, po/LINGUAS, po/Makefile.in.in, po/Makevars, po/Makevars.template, po/POTFILES.in, po/Rules-quot, po/boldquot.sed, po/de.gmo, po/de.po, po/en@boldquot.gmo, po/en@boldquot.header, po/en@boldquot.po, po/en@quot.gmo, po/en@quot.header, po/en@quot.po, po/insert-header.sin, po/mutabor.pot, po/mutabor.pot.autosave, po/quot.sed, po/remove-potcdate.sin, mutabor.nis, missfunc/Makefile.am, missfunc/Makefile.in, missfunc/stpcpy.c, missfunc/stpcpy.h:
+	first commit
+
+	* m4/ChangeLog, m4/codeset.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes.m4, m4/inttypes_h.m4, m4/isc-posix.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/longdouble.m4, m4/longlong.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/progtest.m4, m4/signed.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4, m4/ulonglong.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4:
+	*** empty log message ***
+
+	* libasprintf/AUTHORS, libasprintf/COPYING, libasprintf/COPYING.LIB, libasprintf/ChangeLog, libasprintf/INSTALL, libasprintf/Makefile.am, libasprintf/Makefile.in, libasprintf/Makefile.msvc, libasprintf/Makefile.vms, libasprintf/NEWS, libasprintf/README, libasprintf/README.woe32, libasprintf/aclocal.m4, libasprintf/alloca_.h, libasprintf/asnprintf.c, libasprintf/asprintf.c, libasprintf/autosprintf.cc, libasprintf/autosprintf.h.in, libasprintf/autosprintf.h.msvc-shared, libasprintf/autosprintf.info, libasprintf/autosprintf.texi, libasprintf/autosprintf_all.html, libasprintf/config.h.in, libasprintf/config.h.msvc, libasprintf/config.h_vms, libasprintf/configure, libasprintf/configure.ac, libasprintf/lib-asprintf.c, libasprintf/lib-asprintf.h, libasprintf/printf-args.c, libasprintf/printf-args.h, libasprintf/printf-parse.c, libasprintf/printf-parse.h, libasprintf/texi2html, libasprintf/vasnprintf.c, libasprintf/vasnprintf.h, libasprintf/vasprintf.c, libasprintf/vasprintf.h, libasprintf/windows/asprintf.rc, libasprintf/windows/dllexport.h, libasprintf/xsize.h, intl/COPYING.LIB-2.0, intl/COPYING.LIB-2.1, intl/ChangeLog, intl/Makefile.in, intl/Makefile.msvc, intl/Makefile.vms, intl/README.woe32, intl/bindtextdom.c, intl/config.charset, intl/dcgettext.c, intl/dcigettext.c, intl/dcngettext.c, intl/dgettext.c, intl/dngettext.c, intl/eval-plural.h, intl/explodename.c, intl/finddomain.c, intl/gettext.c, intl/gettextP.h, intl/gmo.h, intl/hash-string.h, intl/intl-compat.c, intl/l10nflist.c, intl/langprefs.c, intl/libgnuintl.h.in, intl/libgnuintl.h.msvc-shared, intl/libgnuintl.h.msvc-static, intl/libgnuintl.h_vms, intl/libintl.glibc, intl/loadinfo.h, intl/loadmsgcat.c, intl/localcharset.c, intl/localcharset.h, intl/locale.alias, intl/localealias.c, intl/localename.c, intl/log.c, intl/ngettext.c, intl/os2compat.c, intl/os2compat.h, intl/osdep.c, intl/plural-exp.c, intl/plural-exp.h, intl/plural.c, intl/plural.y, intl/printf-args.c, intl/printf-args.h, intl/printf-parse.c, intl/printf-parse.h, intl/printf.c, intl/ref-add.sin, intl/ref-del.sin, intl/relocatable.c, intl/relocatable.h, intl/textdomain.c, intl/vasnprintf.c, intl/vasnprintf.h, intl/vasnwprintf.h, intl/wprintf-parse.h, intl/xsize.h:
+	first commit
+
+	* ABOUT-NLS: *** empty log message ***
 
 2006-01-20  gettextize  <bug-gnu-gettext@gnu.org>
 
@@ -29,6 +1606,71 @@
 	* Makefile.am (SUBDIRS): Remove intl.
 	* configure.in (AC_CONFIG_FILES): Remove intl/Makefile.
 
+2006-01-18  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mywx/valRadio.h: WXDLLEXPORT removed
+
+	* mywx/mhDefs.h: No MDI in GTK environment
+
+	* muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h:
+	no MDI Windows in some environments
+
+	* muwx/MutApp.h: Prevent from double inclusion
+
+	* muwx/InputDevDlg.h: Doxygen header
+
+	ID definition conflict solved
+
+	* muwx/CompDlg.h: Doxygen header
+
+	* mu32/Parser.cpp: *** empty log message ***
+
+	* mu32/Mut_Tab.cpp: check spaces using isspace()
+
+	* mu32/GrafKern.h: New header and translations at display time
+
+	* mu32/GrafKern.cpp: Get translations of error strings
+
+	* mu32/Global.h:
+	GERMAN only defined if not wxWidgets (otherwise we use it's Gettext functionality)
+
+	* mu32/Errors.cpp: using config.h
+	calling Translations only at compile time.
+
+	* mu32/Defs.h: Typo
+
+	* config.h.in: winmm.dll support
+
+	* mu32/EDevice.cpp: Namespace std::
+
+	* mu32/DevMidi.cpp, mu32/DevMidF.cpp: 3 translation calls
+
+	* mu32/Defs.h: some formatting
+
+	* libmutabor/Makefile.in, libmutabor/tests/Makefile.in:
+	malloc and precompiled header tests
+
+	* includes/mutabor/Makefile.am, includes/mutabor/Makefile.in:
+	Dependencies support for built headers
+
+	* includes/Makefile.in: malloc tests
+	precompiled headers tests
+
+	* acinclude.m4:
+	cross compilation without cross compile mode for wxWidgets
+	precompiled headers with gcc
+
+	* rtmidi/RtMidi.cpp: strstream introduced again
+
+	* compile: *** empty log message ***
+
+	* config.h.in: malloc operation checks and defs
+
+	* configure, configure.in: (cross) compilation for MingW32 environment
+	precompiled header support
+
+	* Makefile.am, Makefile.in: precompiled headers
+
 2006-01-18  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (SUBDIRS): Add intl, po.
@@ -36,7 +1678,240 @@
 	(EXTRA_DIST): Add config.rpath, mkinstalldirs, m4/ChangeLog.
 	* configure.in (AC_CONFIG_FILES): Add intl/Makefile, po/Makefile.in.
 
+2005-11-14  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* includes/mutabor/Makefile.am, includes/mutabor/Makefile.in, includes/mutabor/identifier.h, includes/mutabor/idlist.h, includes/mutabor/interval.h, includes/mutabor/intervalDiff.h, includes/mutabor/intervalInv.h, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalStretch.h, includes/mutabor/intervalSum.h, includes/mutabor/mutfile.h, includes/mutabor/object.h, includes/mutabor/ptrlist.h:
+	make distcheck happy
+
+	* debian/libmutabor.install, debian/mutabor.install, debian/libmutabor-dev.install:
+	new file
+
+	* Makefile.am, Makefile.in: make distcheck work
+
+2005-11-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* debian/control, debian/mutabor-doc.docs, debian/mutabor-doc.install, debian/rules, mu32/Defs.h, mu32/DevGIS.h, mu32/DevMidF.h, mu32/DevMidi.h, mu32/Device.h, mu32/EDevice.h, mu32/Execute.h, mu32/Frac.h, mu32/GIS.h, mu32/GIS_Head.h, mu32/GSP.h, mu32/GSP_File.h, mu32/Global.h, mu32/GrafKern.h, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.h, mu32/MidiKern.h, mu32/Route.h, mu32/Runtime.h, muwx/Action.h, muwx/BoxDlg.h, muwx/CompDlg.h, muwx/InputDevDlg.h, muwx/InputFilterDlg.h, muwx/MutApp.h, muwx/MutChild.h, muwx/MutEditFile.h, muwx/MutFrame.h, muwx/MutLogicWnd.h, muwx/MutRouteWnd.h, muwx/MutTextBox.h, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.h, mywx/mhArray.h, mywx/mhDefs.h, mywx/valNum.h, mywx/valRadio.h:
+	created debian installer
+
+	* config.h.in, configure, configure.in, includes/mutabor/identifier.h, includes/mutabor/idlist.h, includes/mutabor/interval.h, includes/mutabor/intervalDiff.h, includes/mutabor/intervalInv.h, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalStretch.h, includes/mutabor/intervalSum.h, includes/mutabor/mutfile.h, includes/mutabor/ptrlist.h:
+	define _GNU_SOURCE again
+
+	* libmutabor/mutfile.c, libmutabor/tests/Makefile.am, libmutabor/tests/Makefile.in, Makefile.am, Makefile.in, configure, configure.in, includes/Makefile.in, includes/mutabor/Makefile.am, includes/mutabor/Makefile.in, includes/mutabor/global.h, includes/mutabor/identifier.def, includes/mutabor/identifier.h, includes/mutabor/idlist.def, includes/mutabor/idlist.h, includes/mutabor/interval.def, includes/mutabor/interval.h, includes/mutabor/interval.hh, includes/mutabor/intervalDiff.def, includes/mutabor/intervalDiff.h, includes/mutabor/intervalInv.def, includes/mutabor/intervalInv.h, includes/mutabor/intervalPlaceholder.def, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalStretch.def, includes/mutabor/intervalStretch.h, includes/mutabor/intervalSum.def, includes/mutabor/intervalSum.h, includes/mutabor/makeclass.pl, includes/mutabor/mutfile.def, includes/mutabor/mutfile.h, includes/mutabor/object.h, includes/mutabor/ptrlist.def, includes/mutabor/ptrlist.h, includes/mutabor/tonsystem.h, includes/mutabor/umstimmung.h, libmutabor/Makefile.am, libmutabor/Makefile.in:
+	working distcheck
+
+2005-11-09  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* config.h.in, configure, configure.in: working REUSE definitions
+
+	* configure, configure.in: typo corrections
+
+	* Makefile.am, Makefile.in, config.h.in, configure, configure.in:
+	Some corrections for REUSE macros.
+
+	* Makefile.am, Makefile.in, includes/Makefile.in, includes/mutabor/Makefile.in, libmutabor/Makefile.in, libmutabor/tests/Makefile.in:
+	configuration for crosscompilation
+	new Packagename
+
+	* config.h.in, configure, configure.in:
+	Better configurations on Windows and on Darwin (Mac OS X) systems.
+
+2005-11-07  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, configure, configure.in, includes/mutabor/Makefile.am, includes/mutabor/Makefile.in, includes/mutabor/intervalDiff.h, includes/mutabor/intervalDiff.hh, includes/mutabor/intervalInv.h, includes/mutabor/intervalInv.hh, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalStretch.h, includes/mutabor/intervalSum.h, includes/mutabor/mutfile.h, includes/mutabor/object.h, includes/mutabor/ptrlist.h, libmutabor/mut.c, libmutabor/mut.h, mu32/Defs.h, mu32/DevMidF.cpp, mu32/EDevice.h, mu32/GrafKern.cpp, mu32/Runtime.cpp, muwx/MutApp.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/MutTextBox.cpp, mywx/mhDefs.h, rtmidi/RtError.h:
+	Some additional changes
+
+	* mu32/Global.h, mu32/Parser.cpp, mu32/Runtime.cpp, mu32/Runtime.h, muwx/MutEditFile.cpp:
+	Fix Some Bugs in Unicode Build to make Mutabor work on a simple Level
+
+	* mywx/mhDefs.h: Macro for using _T with Macros
+
+	* muwx/MutFrame.cpp: New About Box ;-)
+
+	* mu32/EDevice.cpp: saving propor formatted routes
+
+	* Makefile.am, Makefile.in, mu32/EDevice.cpp, muwx/MutTextBox.cpp, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, rtmidi/RtMidi.cpp:
+	some small changes for compiling in Unicode mode
+
+	* config.sub: *** empty log message ***
+
+	* mu32/Defs.h, mu32/DevMidF.cpp, mu32/Errors.cpp, mu32/Execute.cpp, mu32/Runtime.cpp, mu32/Runtime.h, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp:
+	Changes for compiling on Linux (GTK+Unicode)
+
+	* mywx/valNum.cpp: kleinere �nderungen
+
+	* mu32/Defs.h, mu32/DevMidF.cpp, mu32/DevMidi.cpp, mu32/EDevice.cpp, mu32/GrafKern.cpp, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutChild.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h:
+	kleinere Probleme behoben
+
+	* compile, ltmain.sh, depcomp: *** empty log message ***
+
+	* config.guess, install-sh, missing: config.sub
+
+2005-11-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* libmutabor/tests/Demo.mut, libmutabor/tests/Makefile.am, libmutabor/tests/Makefile.in, libmutabor/tests/testchkobject.c, libmutabor/tests/testidentifier.c, libmutabor/tests/testidlist.c, libmutabor/tests/testinterval.c, libmutabor/tests/testmutfile.c, libmutabor/tests/testobject.c, libmutabor/tests/testparser.c, libmutabor/tests/testparser.sh, libmutabor/tests/testplaceholder.c, libmutabor/tests/testptrlist.c, libmutabor/mutfile.c, libmutabor/object.c, libmutabor/ptrlist.c:
+	initial release
+
+	* libmutabor/ton.c: interpreter functions
+
+	* libmutabor/parser.c: type in printf call
+
+	* libmutabor/parameter.c: includes
+	interpreter functions
+
+	* libmutabor/mutlex.c, libmutabor/mutlex.h, libmutabor/mutlex.l:
+	position tracking
+
+	* libmutabor/mut.c, libmutabor/mut.h, libmutabor/mut.y:
+	*** empty log message ***
+
+	* libmutabor/midicalc.c: interpreter group for doxygen
+	interpreter functions
+
+	* libmutabor/logik.c: new includes
+	interpreter functions
+
+	* libmutabor/interval.c: utf8 source
+	interval class
+	old interpreter functions
+
+	* libmutabor/harmonie.c: parser and interpreter groups for doxygen
+	interpreter functions
+
+	* libmutabor/case_liste.c: interpreter group for doxygen
+	interpreter functions
+
+	* libmutabor/ausloeser.c: email to berlios
+	new includes
+	interpreter functions and data
+
+	* libmutabor/argument.c: new includes
+	interpreter functions
+
+	* libmutabor/aktion.c: parser and interpreter groups for doxygen
+	includes corrected
+	interpreter functions
+
+	* libmutabor/Makefile.am, libmutabor/Makefile.in:
+	enhanced debugging flags for bison
+	built sources
+	new headers and sources for object identifier intervalSum idlist ptrlist
+				    intervalPlaceholder intervalStretch intervalInv
+				    mutfile interval
+	parser.c desn't get compiled any more
+	corrected rule for .l.h
+
+	* includes/mutabor/umstimmung.h:
+	umstimmung: circular dependencies with struct prototype resolved
+
+	* includes/mutabor/tonsystem.h: new file header
+	includes corrected
+	interpreter data structures
+
+	* includes/mutabor/ton.h: interpreter data structures and functions
+
+	* includes/mutabor/tabgen.h: new file header
+
+	* includes/mutabor/parameter.h: new file header
+	includes corrected
+	interpreter data structures and functions
+
+	* includes/mutabor/mut_tab.h: new parser calling convention
+
+	* includes/mutabor/midicalc.h: new header
+	includes corrected
+	interpreter data structures and functions
+
+	* includes/mutabor/logik.h: new header
+	expandiere_logik
+
+	* includes/mutabor/harmonie.h: new file header
+	includes corrected
+	interpreter data structures
+
+	* includes/mutabor/errors.h: whitespace corrections
+
+	* includes/mutabor/case_liste.h: interpeter data structures
+
+	* includes/mutabor/intervalSum.def, includes/mutabor/intervalSum.h, includes/mutabor/intervalSum.hh:
+	initial revision
+
+	* includes/mutabor/bad_decl.h: new file header
+	includes corrected
+	MUTABOR_FLOAT
+	isnan asprintf strdup stpcpy fileno defined if strict ANSI on GCC
+
+	* includes/mutabor/ausloeser.h, includes/mutabor/argument.h: new Header
+	includes corrected
+	interpreter functions and data structures
+
+	* includes/mutabor/aktion.h: new file header
+	interpreter structures etc.
+
+	* debian/README.Debian: correct email address
+
+	* configure, configure.in: wxWidgets support
+	basic definitions for compiling Mutabor with old kernel on Linux
+	alsa support
+
+	* config.h.in: Alsa support
+	Basic definitions for building Mutabor on Linux
+
+	* aclocal.m4: *** empty log message ***
+
+	* Makefile.am, Makefile.in:
+	Support for built headers in includes and for building mutabor in wxWidgets
+	version with old kernel.
+
+	* libmutabor/intervalSum.c, libmutabor/intervalStretch.c, libmutabor/intervalPlaceholder.c, libmutabor/intervalInv.c, libmutabor/intervalDiff.c, libmutabor/interpreter.c:
+	initial revision
+
+	* libmutabor/idlist.c: Identifier list class
+
+	* libmutabor/identifier.c, libmutabor/errors.c, includes/mutabor/object.def, includes/mutabor/object.h, includes/mutabor/object.hh, includes/mutabor/ptrlist.def, includes/mutabor/ptrlist.h, includes/mutabor/ptrlist.hh, includes/mutabor/mutfile.def, includes/mutabor/mutfile.h, includes/mutabor/mutfile.hh, includes/mutabor/makeclass.pl, includes/mutabor/intervalStretch.def, includes/mutabor/intervalStretch.h, includes/mutabor/intervalStretch.hh, includes/mutabor/intervalPlaceholder.def, includes/mutabor/intervalPlaceholder.h, includes/mutabor/intervalPlaceholder.hh:
+	initial revision
+
+	* includes/mutabor/interval.def, includes/mutabor/interval.h, includes/mutabor/interval.hh:
+	basic interval class
+
+	* includes/mutabor/intervalInv.def, includes/mutabor/intervalInv.h, includes/mutabor/intervalInv.hh:
+	New file.
+
+	* includes/mutabor/intervalDiff.def, includes/mutabor/intervalDiff.h, includes/mutabor/intervalDiff.hh:
+	Initial release
+
+	* includes/mutabor/interpreter.h: New file.
+
+	* includes/mutabor/idlist.h, includes/mutabor/idlist.hh, includes/mutabor/idlist.def:
+	Identifier list class
+
+	* includes/mutabor/identifier.def, includes/mutabor/identifier.h, includes/mutabor/identifier.hh:
+	Identifier Class file
+
+	* includes/mutabor/Makefile.am, includes/mutabor/Makefile.in, includes/Makefile.am, includes/Makefile.in:
+	New files
+
+2005-10-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* make_x11/Makefile:
+	Unicodevariante von RK, compiliert zwar, geht aber noch nicht
+
+	* mywx/mxDefs.cpp: enth�lt Unicode Converter
+
+	* mu32/Defs.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Execute.cpp, mu32/Frac.cpp, mu32/Frac.h, mu32/GIS_Head.cpp, mu32/GSP_File.cpp, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Runtime.cpp, muwx/MutApp.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/MutTextBox.cpp, mywx/mhDefs.h, mywx/valNum.cpp, rtmidi/RtMidi.cpp:
+	Unicodevariante von RK, compiliert zwar, geht aber noch nicht
+
+2005-10-26  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutTextBox_2.cpp, muwx/MutTextBox_2.h: Test-Files
+
+	* muwx/Icon/ActTextBox.xpm, muwx/Icon/AddPause.bmp, muwx/Icon/AddPlay.bmp, muwx/Icon/AddStop.bmp, muwx/Icon/AddStopDis.bmp, muwx/Icon/DevGMN.ico, muwx/Icon/DevGMN.xpm, muwx/Icon/DevMidiFile.ico, muwx/Icon/DevMidiFile.xpm, muwx/Icon/DevMidiPort.ico, muwx/Icon/DevMidiPort.xpm, muwx/Icon/DevUnknown.ico, muwx/Icon/DevUnknown.xpm, muwx/Icon/Document.ico, muwx/Icon/Document.xpm, muwx/Icon/ErrorPlop.ico, muwx/Icon/ErrorPlop.xpm, muwx/Icon/KeyTextBox.ico, muwx/Icon/KeyTextBox.xpm, muwx/Icon/Logic.ico, muwx/Icon/Logic.xpm, muwx/Icon/LogicOpen.ico, muwx/Icon/LogicOpen.xpm, muwx/Icon/Mutabor.ico, muwx/Icon/Mutabor.xpm, muwx/Icon/NewPlop.ico, muwx/Icon/NewPlop.xpm, muwx/Icon/PausePlop.ico, muwx/Icon/PausePlop.xpm, muwx/Icon/PlayPlop.ico, muwx/Icon/PlayPlop.xpm, muwx/Icon/Route.ico, muwx/Icon/Route.xpm, muwx/Icon/TSTextBox.ico, muwx/Icon/TSTextBox.xpm, muwx/Icon/Tonesyst.ico, muwx/Icon/Tonesyst.xpm, muwx/Icon/TonesystOpen.ico, muwx/Icon/TonesystOpen.xpm, muwx/bitmaps/copy.xpm, muwx/bitmaps/cut.xpm, muwx/bitmaps/help.xpm, muwx/bitmaps/new.xpm, muwx/bitmaps/open.xpm, muwx/bitmaps/paste.xpm, muwx/bitmaps/preview.xpm, muwx/bitmaps/print.xpm, muwx/bitmaps/save.xpm, mu32/Defs.h, mu32/DevGIS.cpp, mu32/DevGIS.h, mu32/DevMidF.cpp, mu32/DevMidF.h, mu32/DevMidi.cpp, mu32/DevMidi.h, mu32/Device.cpp, mu32/Device.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h, mu32/GIS.cpp, mu32/GIS.h, mu32/GIS_Head.cpp, mu32/GIS_Head.h, mu32/GSP.cpp, mu32/GSP.h, mu32/GSP_Err.cpp, mu32/GSP_File.cpp, mu32/GSP_File.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Gray.cpp, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/MidiKern.h, mu32/Mut_Tab.cpp, mu32/Parser.cpp, mu32/Route.cpp, mu32/Route.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, muwx/Action.cpp, muwx/Action.h, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/InputFilterDlg.cpp, muwx/InputFilterDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/MutTextBox_2.cpp, muwx/MutTextBox_2.h, muwx/Mutabor.rc, muwx/Mutabor.rh, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/OutputFilterDlg.cpp, muwx/OutputFilterDlg.h, make_x11/Makefile, rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h, mywx/mhDefs.h, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h, mywx/mhArray.h, tabgen.cpp:
+	*** empty log message ***
+
 2005-07-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* acinclude.m4: neu
+
+	* ChangeLog: *** empty log message ***
 
 	* includes/mutabor/errors.h: Fehlerkonstanten
 
@@ -136,7 +2011,7 @@
 
 	* GPL-2, LGPL-2.1: Licences
 
-	* debian/preinst.ex, debian/prerm.ex, debian/rules, debian/watch.ex, debian/README.Debian, debian/changelog, debian/compat, debian/conffiles.ex, debian/control, debian/copyright, debian/dirs, debian/docs, debian/emacsen-install.ex, debian/emacsen-remove.ex, debian/emacsen-startup.ex, debian/manpage.1.ex, debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu.ex, debian/mutabor-doc.docs, debian/mutabor-doc.install, debian/mutabor.doc-base.EX, debian/postinst.ex, debian/postrm.ex:
+	* debian/README.Debian, debian/changelog, debian/compat, debian/conffiles.ex, debian/control, debian/copyright, debian/dirs, debian/docs, debian/emacsen-install.ex, debian/emacsen-remove.ex, debian/emacsen-startup.ex, debian/manpage.1.ex, debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu.ex, debian/mutabor-doc.docs, debian/mutabor-doc.install, debian/mutabor.doc-base.EX, debian/postinst.ex, debian/postrm.ex, debian/preinst.ex, debian/prerm.ex, debian/rules, debian/watch.ex:
 	Neu, Basis für Debian-Paket
 
 	* doxygen/doxygen.sty, doxygen/html-footer, doxygen/html-header, doxygen/html-style, doxygen/latex-header, doxygen/rtf-style:
@@ -344,22 +2219,11 @@
 	gsp_file.h, interval.cpp, interval.h, mdimutch.cpp, mdimutch.h,
 	mididll.cpp, mut_tab.cpp, mutwin.cpp, mutwin.h, route.h,
 	runtime.h: 
+
+	* MUT_ENG/midi.mus, MUT_ENG/nix.mus, MUT_ENG/demo.mus, MUT_ENG/demos.mus, MUT_ENG/extern.mus, MUT_ENG/instr.mus, MUT_ENG/cdur.mus, MUT_ENG/cohen.mus, handbook.hlp, midscrip.exe, mutabor.hlp, mutabor.wav, handbook.gid, mutabor.gid, old/setup.h, old/midiauto.h, old/midiwin.h, old/playwin.h, old/dllexp.h, old/midiauto.cpp, old/midiwin.cpp, old/playwin.cpp, gmut/mutgis.h, old/devmidi2.cpp, gmut/infile.h, gmut/mis.h, gmut/mutgis.cpp, gmut/gmn2midi.cpp, gmut/infile.cpp, gmut/mis.cpp, mididll.def, mididll.map, mutabor.cfg, routes.cfg, handbook.hpj, main.def:
 	Umbenannt
 
-	* bison/bison.1, bison/bison.cld, bison/bison.hai,
-	bison/bison.inf, bison/bison.log, bison/bison.sim,
-	bison/bison.tex, bison/changelo, bison/closure.c,
-	bison/conflict.c, bison/copying, bison/derives.c,
-	bison/dviscr.dlg, bison/files.c, bison/files.h, bison/getargs.c,
-	bison/getopt.c, bison/gram.c, bison/gram.h, bison/lalr.c,
-	bison/lex.c, bison/lex.h, bison/lr0.c, bison/machine.h,
-	bison/main.c, bison/makefile, bison/new.h, bison/nullable.c,
-	bison/output.c, bison/print.c, bison/reader.c, bison/readme,
-	bison/reduce.c, bison/referenc, bison/state.h, bison/symtab.c,
-	bison/symtab.h, bison/system.h, bison/texinfo.log,
-	bison/texinfo.tex, bison/texshell.dsk, bison/types.h,
-	bison/version.c, bison/vmsgetar.c, bison/vmshlp.mar,
-	bison/warshall.c, bison/allocate.c: 
+	* bison/allocate.c, bison/bison.1, bison/bison.cld, bison/bison.hai, bison/bison.inf, bison/bison.log, bison/bison.sim, bison/bison.tex, bison/changelo, bison/closure.c, bison/conflict.c, bison/copying, bison/derives.c, bison/dviscr.dlg, bison/files.c, bison/files.h, bison/getargs.c, bison/getopt.c, bison/gram.c, bison/gram.h, bison/lalr.c, bison/lex.c, bison/lex.h, bison/lr0.c, bison/machine.h, bison/main.c, bison/makefile, bison/new.h, bison/nullable.c, bison/output.c, bison/print.c, bison/reader.c, bison/readme, bison/reduce.c, bison/referenc, bison/state.h, bison/symtab.c, bison/symtab.h, bison/system.h, bison/texinfo.log, bison/texinfo.tex, bison/texshell.dsk, bison/types.h, bison/version.c, bison/vmsgetar.c, bison/vmshlp.mar, bison/warshall.c:
 	Umbenannt.
 
 	* bison/bison.exe, bison/build.com: Umbenannt
@@ -411,6 +2275,8 @@
 	Doku mit Doxygen
 
 	* DEFS.H, defs.h: Umbenannt.
+
+	* gmut/gmut.cpp: Umbenannt und Includes bereinigt.
 
 2005-06-15  Tobias Schlemmer  <keinstein@users.berlios.de>
 
@@ -471,16 +2337,15 @@
 	test_na1.mid, test_na2.mid, test_naz.mid: 
 	Import.
 
-	* Kopie von main.rc: 
-	Importiert
+	* Kopie von main.rc: Importiert
 
 	* MUT_GER/Demo.mut, MUT_GER/Demos.mut, MUT_GER/Extern.mut,
 	MUT_GER/Instr.mut, MUT_GER/Midi.mut, MUT_GER/Nix.mut,
 	gmut/GMN2MIDI.CPP, gmut/GMUT.CPP, gmut/GMUTDOS.CPP,
 	gmut/INFILE.CPP, gmut/INFILE.H, gmut/MIS.CPP, gmut/MIS.H,
 	gmut/MUTGIS.CPP, gmut/MUTGIS.H, gmut/ext.cpp, gmut/ext.h,
-	guide/guide_-Dateien/filelist.xml, m ll/main_.cpp,
-	m ll/main__.cpp, old/DEVMIDI2.CPP, old/DLLEXP.H,
+	guide/guide_-Dateien/filelist.xml, müll/main_.cpp,
+	müll/main__.cpp, old/DEVMIDI2.CPP, old/DLLEXP.H,
 	old/MIDIAUTO.CPP, old/MIDIAUTO.H, old/MIDIWIN.CPP, old/MIDIWIN.H,
 	old/PLAYWIN.CPP, old/PLAYWIN.H, old/SETUP.H, MUT_ENG/CDUR.MUS,
 	MUT_ENG/COHEN.MUS, MUT_ENG/DEMO.MUS, MUT_ENG/DEMOS.MUS,
@@ -507,6 +2372,12 @@
 	Demo_en.mut, EDEVICE.CPP, EDEVICE.H, ERRORS.CPP, EXECUTE.CPP,
 	EXECUTE.H, FRAC.CPP, FRAC.H, GIS.CPP, GIS.H, GIS_HEAD.CPP,
 	GIS_HEAD.H, GLOBAL.H, GRAFKERN.CPP, GRAFKERN.H, GRAY.CPP, GRAY.H,
-	GSP.CPP, GSP.H: 
+	GSP.CPP, GSP.H, MUT_GER/Cdur.mut, MUT_GER/Cohen.mut,
+	MUT_GER/Demo.mut, MUT_GER/Demos.mut, MUT_GER/Extern.mut,
+	MUT_GER/Instr.mut, MUT_GER/Midi.mut, MUT_GER/Nix.mut,
+	gmut/ext.cpp, gmut/ext.h, guide/guide_-Dateien/filelist.xml,
+	HandBook.rh, Handbook.rtf, Mutabor.rtf, NoHelp.rtf, cl.bat,
+	editfile.rc, handbook.cnt, main.rc, muhlp.rtf, mutabor.cnt,
+	mutabor.hpj, upx.bat: 
 	Importiert.
 
