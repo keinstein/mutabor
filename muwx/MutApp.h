@@ -2,13 +2,17 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.15 2010/12/10 09:28:23 keinstein Exp $
+ * $Id: MutApp.h,v 1.16 2011/02/19 00:21:19 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2010/12/10 09:28:23 $
- * \version $Revision: 1.15 $
+ *         T. Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2011/02/19 00:21:19 $
+ * \version $Revision: 1.16 $
  *
  * $Log: MutApp.h,v $
- * Revision 1.15  2010/12/10 09:28:23  keinstein
+ * Revision 1.16  2011/02/19 00:21:19  keinstein
+ * change version number
+ *
+ * Revision 1.15  2010-12-10 09:28:23  keinstein
  * add menu item to help menu, which calls exit(0).
  *
  * Revision 1.14  2010-11-21 13:15:47  keinstein
@@ -178,6 +182,12 @@ public:
 	void OnInitCmdLine(wxCmdLineParser&  parser);
 	/// Process command line arguments
 	bool OnCmdLineParsed(wxCmdLineParser&  parser);
+#ifdef __WIN32__
+	void OnUnhandledException() { throw; }
+	bool OnExceptionInMainLoop() { throw; }
+	void OnFatalException() { throw; }
+#endif 
+	/// 
 
 	/// Display an about dialog box
 	void CmAbout (wxCommandEvent& event);
