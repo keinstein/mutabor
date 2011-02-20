@@ -1,13 +1,26 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        OutputDevDlg.cpp
-// Purpose:
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     10/19/05 12:10:52
-// RCS-ID:
-// Copyright:   (c) R. Krauﬂe, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/OutputDevDlg.cpp,v 1.6 2011/02/20 22:35:58 keinstein Exp $
+ * Copyright:   (c) 2005 TU Dresden
+ * \author R. Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/19 12:10:52
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.6 $
+ * \license GPL
+ *
+ * $Log: OutputDevDlg.cpp,v $
+ * Revision 1.6  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma implementation "OutputDevDlg.h"
@@ -321,3 +334,6 @@ void OutputDevDlg::OnButton3Click( wxCommandEvent& event )
 }
 
 
+
+
+///\}

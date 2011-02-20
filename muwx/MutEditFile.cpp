@@ -1,12 +1,29 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutEditFile.cpp
-// Purpose:     Mutabor Edit window for Mutabor-files
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Mutabor Edit window for Mutabor-files
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.14 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author R. Krauﬂe
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/12
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.14 $
+ * \license GPL
+ *
+ * $Log: MutEditFile.cpp,v $
+ * Revision 1.14  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 // ===========================================================================
 // declarations
@@ -779,3 +796,5 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 #endif // wxUSE_RICHEDIT
 
 #endif // __WXMSW__ && !wxUSE_UNICODE
+
+///\}

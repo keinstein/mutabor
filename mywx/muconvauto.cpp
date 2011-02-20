@@ -1,9 +1,31 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: muconvauto.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 ///////////////////////////////////////////////////////////////////////////////
 // Name:        src/common/convauto.cpp
 // Purpose:     implementation of wxConvAuto
 // Author:      Vadim Zeitlin
 // Created:     2006-04-04
-// RCS-ID:      $Id: muconvauto.cpp,v 1.3 2010/11/21 13:15:50 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin <vadim@wxwindows.org>
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -212,3 +234,5 @@ size_t muConvAuto::FromWChar(char *dst, size_t dstLen,
 #endif // wxUSE_WCHAR_T
 
 wxMBConv * muConvAutoFallback = &wxConvISO8859_1;
+
+///\}

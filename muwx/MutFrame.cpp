@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.26 2011/02/13 17:20:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.27 2011/02/20 22:35:57 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/13 17:20:46 $
- * \version $Revision: 1.26 $
- * \license wxWindows license
+ * \date $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.27 $
+ * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.26  2011/02/13 17:20:46  keinstein
+ * Revision 1.27  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.26  2011-02-13 17:20:46  keinstein
  * Implemented missing toolbar icons (except search and edit funcitons)
  *
  * Revision 1.25  2011-01-13 21:12:37  keinstein

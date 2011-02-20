@@ -2,14 +2,18 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.cpp,v 1.9 2010/12/11 02:10:08 keinstein Exp $
+ * $Id: Errors.cpp,v 1.10 2011/02/20 22:35:55 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/12/11 02:10:08 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.10 $
+ * \license GPL
  *
  * $Log: Errors.cpp,v $
- * Revision 1.9  2010/12/11 02:10:08  keinstein
+ * Revision 1.10  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.9  2010-12-11 02:10:08  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.8  2010-11-21 13:15:44  keinstein
@@ -33,7 +37,10 @@
  * some reformatting
  *
  *
- */
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 #include "GrafKern.h"
 #include "Errors.h"
 
@@ -284,3 +291,5 @@ const mutTranslationChar * Warning_text[] =
         };
 
 #endif
+
+///\}

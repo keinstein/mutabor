@@ -1,17 +1,20 @@
-/** \file MutChild.h
+/** \file
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.11 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.12 2011/02/20 22:35:57 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.11 $
- * \license wxWindows license
+ * \date $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.12 $
+ * \license GPL
  *
  * $Log: MutChild.h,v $
- * Revision 1.11  2010/11/21 13:15:47  keinstein
+ * Revision 1.12  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.11  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.9.2.3  2010-06-15 14:30:14  keinstein
@@ -250,3 +253,5 @@ void DontWant(WinKind kind, int box = 0);
 int NumberOfOpen(WinKind kind);
 
 #endif
+
+///\}

@@ -2,13 +2,18 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.10 2010/11/21 13:15:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.11 2011/02/20 22:35:55 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2010/11/21 13:15:44 $
- * \version $Revision: 1.10 $
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.11 $
+ * \license GPL
  *
  * $Log: EDevice.h,v $
- * Revision 1.10  2010/11/21 13:15:44  keinstein
+ * Revision 1.11  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.10  2010-11-21 13:15:44  keinstein
  * merged experimental_tobias
  *
  * Revision 1.9.2.5  2010-09-29 13:03:30  keinstein
@@ -417,4 +422,4 @@ void CheckBoxesUsed();
 void ScanDevices();
 
 #endif /* EDEVICE_H */
-/* \} */
+/** \} */

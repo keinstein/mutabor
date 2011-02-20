@@ -4,15 +4,19 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.3 2010/12/11 02:10:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/12/11 02:10:08 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.4 $
+ * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.3  2010/12/11 02:10:08  keinstein
+ * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2010-12-11 02:10:08  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.2  2010-11-21 13:15:45  keinstein

@@ -4,15 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.3 2010/12/13 00:27:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.4 2011/02/20 22:35:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/12/13 00:27:53 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.4 $
+ * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.3  2010/12/13 00:27:53  keinstein
+ * Revision 1.4  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2010-12-13 00:27:53  keinstein
  * compiles in linux as well as in mingw
  *
  * Revision 1.2  2010-11-21 13:15:47  keinstein

@@ -1,3 +1,25 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: valRadio.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 // Name:        valradio.cpp
 // Purpose:     wxRadioValidator
@@ -101,3 +123,5 @@ bool wxRadioValidator::TransferFromWindow(void)
 
 #endif
 // wxUSE_VALIDATORS
+
+///\}

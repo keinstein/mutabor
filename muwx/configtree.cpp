@@ -2,13 +2,17 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.4 2010/12/11 02:10:09 keinstein Exp $
+ * $Id: configtree.cpp,v 1.5 2011/02/20 22:35:58 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/12/11 02:10:09 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.5 $
+ * \license GPL
  *
  * $Log: configtree.cpp,v $
- * Revision 1.4  2010/12/11 02:10:09  keinstein
+ * Revision 1.5  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2010-12-11 02:10:09  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.3  2010-11-21 23:39:00  keinstein
@@ -27,8 +31,10 @@
  * added simple wrapper for config and XML like files
  *
  *
- *
- */
+ ********************************************************************
+ * \addtogroup config
+ * \{
+ ********************************************************************/
 #include "Defs.h"
 #include "configtree.h"
 
@@ -230,3 +236,6 @@ void configtree::SetPath(const mutStringRef path)
 }
 
 
+
+
+///\}

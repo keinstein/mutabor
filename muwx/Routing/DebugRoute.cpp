@@ -1,11 +1,31 @@
-/*
- *  DebugRoute.cpp
- *  Mutabor
+/** \file 
+ ********************************************************************
+ * Debug functions for routing system
  *
- *  Created by Tobias Schlemmer on 13.04.10.
- *  Copyright 2010 TU Dresden. All rights reserved.
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * Copyright:   (c) 2010 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2010/04/13
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.3 $
+ * \license GPL
  *
- */
+ * $Log: DebugRoute.cpp,v $
+ * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ *
+ ********************************************************************
+ * \addtogroup route
+ * \{
+ ********************************************************************/
+
 #include "Defs.h"
 #ifdef DEBUG
 #include "DebugRoute.h"
@@ -77,3 +97,5 @@ void DebugCheckRoutes() {
 		CheckInputDevice(In);
 }
 #endif
+
+///\}

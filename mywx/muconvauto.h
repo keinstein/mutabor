@@ -1,9 +1,31 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.h,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: muconvauto.h,v $
+ * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 ///////////////////////////////////////////////////////////////////////////////
 // Name:        wx/convauto.h
 // Purpose:     wxConvAuto class declaration
 // Author:      Vadim Zeitlin
 // Created:     2006-04-03
-// RCS-ID:      $Id: muconvauto.h,v 1.3 2010/11/21 13:15:50 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.h,v 1.4 2011/02/20 22:35:59 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -150,3 +172,6 @@ typedef wxMBConv muConvAuto;
 
 #endif // _MYWX_CONVAUTO_H_
 
+
+
+///\}

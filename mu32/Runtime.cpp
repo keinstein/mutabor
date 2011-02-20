@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.15 2010/11/21 13:15:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.16 2011/02/20 22:35:55 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.15 $
- * \license wxWindows license
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.16 $
+ * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.15  2010/11/21 13:15:45  keinstein
+ * Revision 1.16  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.15  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.14.2.9  2010-11-20 21:58:16  keinstein

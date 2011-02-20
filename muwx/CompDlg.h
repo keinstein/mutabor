@@ -3,13 +3,17 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.7 2010/11/21 13:15:47 keinstein Exp $
+ * $Id: CompDlg.h,v 1.8 2011/02/20 22:35:57 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.7 $
+ * \date 05/08/14 21:41:59
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.8 $
  *
  * $Log: CompDlg.h,v $
- * Revision 1.7  2010/11/21 13:15:47  keinstein
+ * Revision 1.8  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.7  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.5.2.2  2010-01-14 09:34:24  keinstein
@@ -30,17 +34,9 @@
  * Revision 1.3  2006/01/18 15:33:42  keinstein
  * Doxygen header
  *
+ * \addtogroup GUI
+ * \{
  */
-/////////////////////////////////////////////////////////////////////////////
-// Name:        CompDlg.h
-// Purpose:
-// Author:      R. Krauße
-// Modified by:
-// Created:     08/14/05 21:41:59
-// RCS-ID:
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
 
 #ifndef _COMPDLG_H_
 #define _COMPDLG_H_
@@ -190,3 +186,4 @@ public:
 #endif
 // _COMPDLG_H_
 
+///\}

@@ -1,12 +1,27 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutLogicWnd.cpp
-// Purpose:     Logic window
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     01.09.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Logic window
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.10 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2005 TU Dresden
+ * \author  R. Krauﬂe
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/09/01
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.10 $
+ * \license GPL
+ *
+ * $Log: MutLogicWnd.h,v $
+ * Revision 1.10  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
+
 
 #ifndef MUTLOGICWND_H
 #define MUTLOGICWND_H
@@ -75,3 +90,6 @@ public:
 };
 
 #endif
+
+
+///\}

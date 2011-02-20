@@ -1,13 +1,32 @@
 // -*- C++ -*-
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutTextBox.h
-// Purpose:     Textbox for Lists
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     01.09.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Textbox for Lists
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.11 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  R. Krauﬂe
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/09/01
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.11 $
+ * \license GPL
+ *
+ * $Log: MutTextBox.h,v $
+ * Revision 1.11  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ *
+ ********************************************************************
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #ifndef MUTTEXTBOX_H
 #define MUTTEXTBOX_H
@@ -91,3 +110,5 @@ protected:
 };
 
 #endif
+
+///\}

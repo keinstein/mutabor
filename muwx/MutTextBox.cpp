@@ -1,12 +1,27 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MuMutTextBox.cpp
-// Purpose:     Textbox for Lists
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Textbox for Lists
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.15 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author   R. Krauﬂe
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/12
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.15 $
+ * \license GPL
+ *
+ * $Log: MutTextBox.cpp,v $
+ * Revision 1.15  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
+
 
 // ===========================================================================
 // declarations
@@ -223,3 +238,6 @@ MutTextBox::EvRButtonDown(uint, TPoint& point)
 }*/
 
 
+
+
+///\}

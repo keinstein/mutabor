@@ -2,13 +2,19 @@
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Id: MutEditFile.h,v 1.10 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.11 2011/02/20 22:35:57 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.10 $
+ * T. Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/12
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.11 $
+ * \license GPL
  *
  * $Log: MutEditFile.h,v $
- * Revision 1.10  2010/11/21 13:15:47  keinstein
+ * Revision 1.11  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.10  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.8.2.1  2009-08-10 11:23:12  keinstein
@@ -38,20 +44,13 @@
  * Revision 1.3  2006/01/18 15:37:02  keinstein
  * no MDI Windows in some environments
  *
- */
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
+
 
 #ifndef __MUTEDITFILE_H_INCLUDED__
 #define __MUTEDITFILE_H_INCLUDED__
-
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutChild.h
-// Purpose:     Mutabor MDI-Child
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
 
 #include "wx/textctrl.h"
 #include "muconvauto.h"
@@ -109,3 +108,5 @@ protected:
 
 
 #endif // __MUTEDITFILE_H_INCLUDED__
+
+///\}

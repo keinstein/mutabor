@@ -1,17 +1,21 @@
 /** \file 
  ********************************************************************
- * Description
+ * Wrapper around wxcresource.h since wxrc doesn't prevent multiple 
+ * inclusion
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/resourceload.h,v 1.3 2011/01/28 20:59:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/resourceload.h,v 1.4 2011/02/20 22:35:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/01/28 20:59:45 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: resourceload.h,v $
- * Revision 1.3  2011/01/28 20:59:45  keinstein
+ * Revision 1.4  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2011-01-28 20:59:45  keinstein
  * satisfy distcheck on Ubuntu 10.10
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -26,7 +30,7 @@
  * Revision 1.1.2.1  2010/01/11 10:12:59  keinstein
  * added some .cvsignore files
  *
- * \addtogroup templates
+ * \addtogroup muwx
  * \{
  ********************************************************************/
 

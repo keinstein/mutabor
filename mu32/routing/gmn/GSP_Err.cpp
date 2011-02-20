@@ -1,7 +1,29 @@
-#include "Defs.h"
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GSP_Err.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: GSP_Err.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 // ##################################################################
 // error messages of gsp (GMN Soft Parser)
 // ##################################################################
+#include "Defs.h"
 
 const mutTranslationChar *GspErrorText[] =
         {
@@ -55,3 +77,5 @@ const mutTranslationChar *GspErrorText[] =
                 /* 41 */ N_("Range without preceeding tag.")
 
         };
+
+///\}

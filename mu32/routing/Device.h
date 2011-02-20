@@ -4,15 +4,19 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.4 2010/12/13 00:27:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.5 2011/02/20 22:35:56 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/12/13 00:27:53 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.5 $
+ * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.4  2010/12/13 00:27:53  keinstein
+ * Revision 1.5  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2010-12-13 00:27:53  keinstein
  * compiles in linux as well as in mingw
  *
  * Revision 1.3  2010-11-21 23:39:00  keinstein

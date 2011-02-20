@@ -4,15 +4,19 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.h,v 1.2 2010/11/21 13:15:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.h,v 1.3 2011/02/20 22:35:56 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/11/21 13:15:46 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.3 $
+ * \license GPL
  *
  * $Log: RouteCompat.h,v $
- * Revision 1.2  2010/11/21 13:15:46  keinstein
+ * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:46  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.1  2010-10-15 18:15:16  keinstein

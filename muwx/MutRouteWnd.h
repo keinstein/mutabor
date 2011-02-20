@@ -1,12 +1,26 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        Action.cpp
-// Purpose:     Actions at UI
-// Author:      R. Krauße
-// Modified by:
-// Created:     01.09.05
-// Copyright:   (c) R. Krauße
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Routing window
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.5 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2005 TU Dresden
+ * \author R. Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/09/01
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.5 $
+ * \license GPL
+ *
+ * $Log: MutRouteWnd.h,v $
+ * Revision 1.5  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 
 #ifndef MUTROUTEWND_H
 #define MUTROUTEWND_H
@@ -192,3 +206,5 @@ extern bool LogicOn;
 
 
 #endif
+
+///\}

@@ -1,13 +1,26 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        OutputDevDlg.h
-// Purpose:
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     10/19/05 12:10:52
-// RCS-ID:
-// Copyright:   (c) R. Krauﬂe, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/OutputDevDlg.h,v 1.5 2011/02/20 22:35:58 keinstein Exp $
+ * Copyright:   (c) 2005 TU Dresden
+ * \author  R. Krauﬂe, 
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/19  12:10:52
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.5 $
+ * \license GPL
+ *
+ * $Log: OutputDevDlg.h,v $
+ * Revision 1.5  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 
 #ifndef _OUTPUTDEVDLG_H_
 #define _OUTPUTDEVDLG_H_
@@ -220,3 +233,5 @@ public:
 #endif
 // _OUTPUTDEVDLG_H_
 
+
+///\}

@@ -1,3 +1,25 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: GIS.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 // #################################################################
 // main file of GIS (GMN Intern Structur)
 // ##################################################################
@@ -863,3 +885,5 @@ wxString GISPrettyPrint(wxString s)
 }
 
 #endif
+
+///\}

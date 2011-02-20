@@ -1,13 +1,23 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        BoxDlg.cpp
-// Purpose:
-// Author:      R. Krauße
-// Modified by:
-// Created:     10/22/05 16:16:24
-// RCS-ID:
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/BoxDlg.cpp,v 1.5 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/22 16:16:24
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.5 $
+ * \license GPL
+ *
+ * $Log: BoxDlg.cpp,v $
+ * Revision 1.5  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma implementation "BoxDlg.h"
@@ -216,3 +226,5 @@ void BoxDlg::UpdateLayout(int type)
 	ctrlMode->Enable(type != 2);
 }
 
+
+///\}

@@ -1,3 +1,30 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/mut.y,v 1.9 2011/02/20 22:35:56 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.9 $
+ * \license GPL
+ *
+ * $Log: mut.y,v $
+ * Revision 1.9  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 /* Mutabor Tonsysteme */
 %locations
 
@@ -896,3 +923,7 @@ void yyerror(const char *s) {
 
 
 /* END MUT_TAB.C */
+
+/* 
+ * \}
+ */

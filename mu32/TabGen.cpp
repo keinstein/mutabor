@@ -1,5 +1,32 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/TabGen.cpp,v 1.5 2011/02/20 22:35:55 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.5 $
+ * \license GPL
+ *
+ * $Log: TabGen.cpp,v $
+ * Revision 1.5  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ *
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauﬂe
+// Mutabor 2.win, 1997, R.Krau√üe
 // Tabellengenerator
 // ------------------------------------------------------------------
 
@@ -34,7 +61,7 @@ long anzahl_eingelesene_zeichen;
 
 /***** Dies ist die Hauptprozedur um eine Aktion in die
        Laufzeit-Tabellen einzutragen. Liefert Zeiger auf
-       neu allokierte Aktion zurÅck.
+       neu allokierte Aktion zur√ºck.
 *****/
 
 static struct do_aktion * expandiere_name (
@@ -139,7 +166,7 @@ struct interpreter_parameter_liste * start_parameter_liste =
 
 
 
-/**** cache_konstanten enthÑlt alle jemals als Wert benutzten
+/**** cache_konstanten enth√§lt alle jemals als Wert benutzten
       Konstanten (ohne doppelte)
 *******/
 
@@ -806,7 +833,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 
 		case ausloeser_harmonie:
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
-				/* Dann unmîglicher Harmonieauslîser */
+				/* Dann unm√∂glicher Harmonieausl√∂ser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
@@ -837,7 +864,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 
 		case ausloeser_harmonie_form:
 			if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == -2)
-				/* Dann unmîglicher Harmonieauslîser */
+				/* Dann unm√∂glicher Harmonieausl√∂ser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
@@ -935,7 +962,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 
 		case ausloeser_harmonie:
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
-				/* Dann unmîglicher Harmonieauslîser */
+				/* Dann unm√∂glicher Harmonieausl√∂ser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
@@ -965,7 +992,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 
 		case ausloeser_harmonie_form:
 			if (lauf->ausloeser->u.ausloeser_harmonie_form.vortaste == -2)
-				/* Dann unmîglicher Harmonieauslîser */
+				/* Dann unm√∂glicher Harmonieausl√∂ser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
@@ -1006,7 +1033,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 
 			(*temp_harmonie) -> ist_harmonieform=2;
 
-			/* 2 als Wert fÅr ANSONSTEN */
+			/* 2 als Wert f√ºr ANSONSTEN */
 
 			(*temp_harmonie) -> vortaste=0 ;
 
@@ -1175,7 +1202,7 @@ static struct midi_ereignis **
 
 void mutabor_tabellen_generator (void)
 {
-	//Neu:  extra Lˆschungen
+	//Neu:  extra L√∂schungen
 	cache_konstanten = NULL;
 
 	/* Ausgabe der Pointer-Setz-Prozeduren */
@@ -1197,7 +1224,7 @@ void mutabor_tabellen_generator (void)
 
 		/* Die globalen Listen werden initialisiert: */
 
-		/* Die globalen Auslîser werden in die vorbereiteten Listen eingetragen: */
+		/* Die globalen Ausl√∂ser werden in die vorbereiteten Listen eingetragen: */
 
 		for (lauf = list_of_logiken; lauf; lauf = lauf -> next) {
 
@@ -1212,7 +1239,7 @@ void mutabor_tabellen_generator (void)
 
 	/* Die lokalen Listen werden erzeugt: */
 	/* Es wird ein Array mit Anfangszeigern  auf die lokalen
-	   Auslîser angelegt. Die Nummer der Logik ist index */
+	   Ausl√∂ser angelegt. Die Nummer der Logik ist index */
 
 	i = logik_list_laenge (list_of_logiken);
 
@@ -1221,8 +1248,8 @@ void mutabor_tabellen_generator (void)
 	first_lokal_keyboard = (keyboard_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_keyboard[0]));
 
 	first_lokal_midi     = (midi_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_midi[0]));
-
-	/* #### Wichtig ist, daû calloc alles auf 0 setzt (NULL)  */
+	
+	/* #### Wichtig ist, da√ü calloc alles auf 0 setzt (NULL)  */
 
 	for (lauf=list_of_logiken, i=0;
 	                lauf;
@@ -1242,3 +1269,5 @@ void mutabor_tabellen_generator (void)
 
 
 
+
+///\}
