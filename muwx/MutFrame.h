@@ -1,18 +1,21 @@
-/** \file MutFrame.cpp
+/** \file 
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.16 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.17 2011/02/20 22:35:57 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.16 $
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.17 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.16  2010/11/21 13:15:47  keinstein
+ * Revision 1.17  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.16  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.14.2.5  2010-11-18 21:46:14  keinstein

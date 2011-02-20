@@ -1,18 +1,21 @@
 // -*- C++ -*-
-
 /** \file
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.3 2010/12/13 00:27:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.4 2011/02/20 22:35:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2010/12/13 00:27:53 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.4 $
+ * \license GPL
  *
  * $Log: DeviceShape.h,v $
- * Revision 1.3  2010/12/13 00:27:53  keinstein
+ * Revision 1.4  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2010-12-13 00:27:53  keinstein
  * compiles in linux as well as in mingw
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein

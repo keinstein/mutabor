@@ -1,13 +1,23 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        BoxDlg.h
-// Purpose:
-// Author:      R. Krauße
-// Modified by:
-// Created:     10/22/05 16:16:24
-// RCS-ID:
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/BoxDlg.h,v 1.6 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/22 16:16:24
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.6 $
+ * \license GPL
+ *
+ * $Log: BoxDlg.h,v $
+ * Revision 1.6  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ * \addtogroup route
+ * \{
+ ********************************************************************/
 
 #ifndef _BOXDLG_H_
 #define _BOXDLG_H_
@@ -160,3 +170,5 @@ public:
 #endif
 // _BOXDLG_H_
 
+
+///\}

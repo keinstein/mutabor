@@ -1,3 +1,30 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.8 2011/02/20 22:35:55 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.8 $
+ * \license GPL
+ *
+ * $Log: Execute.cpp,v $
+ * Revision 1.8  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ *
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 // ------------------------------------------------------------------
 // Mutabor 3, 1998, R.Krauﬂe
 // Berechnungen der Stimmungen in den Boxen
@@ -759,3 +786,7 @@ void FlushUpdateUI()
 	}
 }
 
+
+
+
+///\}

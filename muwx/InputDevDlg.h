@@ -2,16 +2,19 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.7 2009/08/10 11:15:46 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.8 2011/02/20 22:35:57 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2009/08/10 11:15:46 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.8 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
- * Revision 1.7  2009/08/10 11:15:46  keinstein
+ * Revision 1.8  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.7  2009-08-10 11:15:46  keinstein
  * some steps towards new route window
  *
  * Revision 1.6  2008/08/18 15:06:35  keinstein
@@ -25,6 +28,9 @@
  *
  * ID definition conflict solved
  *
+ * \addtogroup route
+ * \{
+ ********************************************************************/
  */
 
 #ifndef _INPUTDEVDLG_H_
@@ -228,3 +234,5 @@ public:
 #endif
 // _INPUTDEVDLG_H_
 
+
+///\}

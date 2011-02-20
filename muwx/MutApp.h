@@ -2,14 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.16 2011/02/19 00:21:19 keinstein Exp $
+ * $Id: MutApp.h,v 1.17 2011/02/20 22:35:57 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/19 00:21:19 $
- * \version $Revision: 1.16 $
+ * \date  2005/08/12
+ *  $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.17 $
+ * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.16  2011/02/19 00:21:19  keinstein
+ * Revision 1.17  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.16  2011-02-19 00:21:19  keinstein
  * change version number
  *
  * Revision 1.15  2010-12-10 09:28:23  keinstein

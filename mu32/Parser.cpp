@@ -1,3 +1,25 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Parser.cpp,v 1.10 2011/02/20 22:35:55 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.10 $
+ * \license GPL
+ *
+ * $Log: Parser.cpp,v $
+ * Revision 1.10  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 // ------------------------------------------------------------------
 // Mutabor 2.win, 1997, R.Krauﬂe
 // Fileparser
@@ -3238,3 +3260,5 @@ static void check_konsistenz (void)
 	}
 #endif
 }
+
+///\}

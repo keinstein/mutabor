@@ -2,15 +2,19 @@
 /********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.2 2010/11/21 13:15:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.3 2011/02/20 22:35:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2010/11/21 13:15:50 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.3 $
+ * \license GPL
  *
  * $Log: OutputDeviceShape.h,v $
- * Revision 1.2  2010/11/21 13:15:50  keinstein
+ * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:50  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.12  2010-11-14 21:28:38  keinstein

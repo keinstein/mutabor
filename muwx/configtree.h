@@ -3,13 +3,17 @@
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.2 2010/11/21 13:15:48 keinstein Exp $
+ * $Id: configtree.h,v 1.3 2011/02/20 22:35:58 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:48 $
- * \version $Revision: 1.2 $
+ * \date $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.3 $
+ * \license GPL
  *
  * $Log: configtree.h,v $
- * Revision 1.2  2010/11/21 13:15:48  keinstein
+ * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:48  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.4  2010-09-29 15:06:40  keinstein
@@ -25,8 +29,10 @@
  * added simple wrapper for config and XML like files
  *
  *
- *
- */
+ ********************************************************************
+ * \addtogroup config
+ * \{
+ ********************************************************************/
 #ifndef MUTABOR_CONFIGTREE_H
 #define MUTABOR_CONFIGTREE_H
 
@@ -133,3 +139,5 @@ inline void SaveRoutes(wxConfigBase * config)
 
 #endif //MUTABOR_CONFIGTREE_H
 
+
+///\}

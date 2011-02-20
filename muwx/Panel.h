@@ -1,26 +1,40 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        wx/generic/panelg.h
-// Purpose:     wxPanel: a container for child controls based on wxControl
-// Author:      Julian Smart, Tobias Schlemmer
-// Modified by:
-// Created:     01/02/97
-// RCS-ID:      $Id: Panel.h,v 1.4 2011/01/29 20:09:31 keinstein Exp $
-// Copyright:   (c) Julian Smart, Tobias sclhemmer
-// Licence:     wxWindows licence
-// $Log: Panel.h,v $
-// Revision 1.4  2011/01/29 20:09:31  keinstein
-// compiles on mac 
-//
-// Revision 1.3  2010-12-13 00:27:53  keinstein
-// compiles in linux as well as in mingw
-//
-// Revision 1.2  2010-11-21 13:15:47  keinstein
-// merged experimental_tobias
-//
-// Revision 1.1.2.1  2010-02-15 12:08:21  keinstein
-// intermediate update for backup progress
-//
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Mutabor Panel. Panel based on wxControl and wxPanel
+ * Most code comes from wxPanel and has been rewritten in order to 
+ * be a subclass of wxControl.
+ *
+ * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.5 2011/02/20 22:35:58 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.5 $
+ * \license GPL
+ *
+ * $Log: Panel.h,v $
+ * Revision 1.5  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2011-01-29 20:09:31  keinstein
+ * compiles on mac 
+ *
+ * Revision 1.3  2010-12-13 00:27:53  keinstein
+ * compiles in linux as well as in mingw
+ *
+ * Revision 1.2  2010-11-21 13:15:47  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-02-15 12:08:21  keinstein
+ * intermediate update for backup progress
+ *
+ *
+ ********************************************************************
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #ifndef _MUTABOR_PANEL_H_
 #define _MUTABOR_PANEL_H_
@@ -108,3 +122,6 @@ private:
 
 #endif
 // _MUTABOR_PANEL_H_
+
+
+///\}

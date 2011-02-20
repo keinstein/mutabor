@@ -1,14 +1,18 @@
-/** \file
- ***********************************************************************
- * Mutabor Configuration Dialog.
+/** \file 
+ ********************************************************************
+ * Description
  *
- * $Id: MutConfDlg.h,v 1.4 2010/11/21 13:15:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.5 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:47 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.5 $
  *
  * $Log: MutConfDlg.h,v $
- * Revision 1.4  2010/11/21 13:15:47  keinstein
+ * Revision 1.5  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2010-11-21 13:15:47  keinstein
  * merged experimental_tobias
  *
  * Revision 1.3.2.1  2010-02-15 12:08:21  keinstein
@@ -23,8 +27,9 @@
  * Revision 1.1  2008/01/25 10:04:30  keinstein
  * New file.
  *
- *
- */
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 #ifndef MUT_CONF_DLG_H
 #define MUT_CONF_DLG_H
@@ -66,3 +71,5 @@ class MutConfigDialog : public ConfigDlg {
 };
 
 #endif /* MUT_CONF_DLG_H */
+
+///\}

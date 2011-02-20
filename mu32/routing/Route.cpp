@@ -3,15 +3,19 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.3 2011/01/29 20:00:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/01/29 20:00:14 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.4 $
+ * \license GPL
  *
  * $Log: Route.cpp,v $
- * Revision 1.3  2011/01/29 20:00:14  keinstein
+ * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2011-01-29 20:00:14  keinstein
  * include Device.h
  *
  * Revision 1.2  2010-11-21 13:15:45  keinstein

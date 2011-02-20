@@ -1,10 +1,32 @@
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.8 2011/02/20 22:35:59 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.8 $
+ * \license GPL
+ *
+ * $Log: valNum.cpp,v $
+ * Revision 1.8  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup templates
+ * \{
+ ********************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 // Name:        valtext.cpp
 // Purpose:     wxTextValidator
 // Author:      Julian Smart
 // Modified by:
 // Created:     04/01/98
-// RCS-ID:      $Id: valNum.cpp,v 1.7 2010/11/21 13:15:50 keinstein Exp $
+// RCS-ID:      $Id: valNum.cpp,v 1.8 2011/02/20 22:35:59 keinstein Exp $
 // Copyright:   (c) Julian Smart and Markus Holzem
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
@@ -205,3 +227,5 @@ bool wxNumValidator::TransferFromWindow(void)
 
 #endif
 // wxUSE_VALIDATORS
+
+///\}

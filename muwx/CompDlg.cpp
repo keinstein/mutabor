@@ -1,13 +1,30 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        CompDlg.cpp
-// Purpose:
-// Author:      R. Krauße
-// Modified by:
-// Created:     08/14/05 21:41:59
-// RCS-ID:
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Compile dialog
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/CompDlg.cpp,v 1.4 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2005, 2008 TU Dresden
+ * \author R. Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/14
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: CompDlg.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:51  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+ * added some .cvsignore files
+ *
+ * \addtogroup GUI
+ * \{
+ ********************************************************************/
+
 /// not used anymore
 #if 0
 #if defined(__GNUG__) && !defined(__APPLE__)
@@ -217,3 +234,5 @@ wxIcon CompDlg::GetIconResource( const wxString& name )
 }
 
 #endif
+
+///\}

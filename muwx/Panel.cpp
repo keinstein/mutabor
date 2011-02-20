@@ -1,13 +1,29 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        src/generic/panelg.cpp
-// Purpose:     wxPanel and the keyboard handling code
-// Author:      Julian Smart, Robert Roebling, Vadim Zeitlin
-// Modified by:
-// Created:     04/01/98
-// RCS-ID:      $Id: Panel.cpp,v 1.2 2010/11/21 13:15:47 keinstein Exp $
-// Copyright:   (c) Julian Smart
-// Licence:     wxWindows licence
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Mutabor Panel. Panel based on wxControl and wxPanel
+ * Most code comes from wxPanel and has been rewritten in order to 
+ * be a subclass of wxControl.
+ *
+ * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * Copyright:   (c) 2008 TU Dresden
+ * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 
+ * $Date: 2011/02/20 22:35:58 $
+ * \version $Revision: 1.3 $
+ * \license GPL
+ *
+ * $Log: Panel.cpp,v $
+ * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ *
+ ********************************************************************
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 // ============================================================================
 // declarations
@@ -183,3 +199,6 @@ void MutPanel::OnSize(wxSizeEvent& event)
 
     event.Skip();
 }
+
+
+///\}

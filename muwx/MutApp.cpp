@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.26 2011/01/09 16:26:37 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.27 2011/02/20 22:35:57 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/01/09 16:26:37 $
- * \version $Revision: 1.26 $
- * \license wxWindows license
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.27 $
+ * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.26  2011/01/09 16:26:37  keinstein
+ * Revision 1.27  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.26  2011-01-09 16:26:37  keinstein
  * make building in wine environment using unix shell
  *
  * Revision 1.25  2010-12-11 02:10:09  keinstein

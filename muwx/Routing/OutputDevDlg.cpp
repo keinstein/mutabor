@@ -1,47 +1,50 @@
 // -*-C++ -*-
-
 /** \file
-********************************************************************
-* MIDI input device shape for route window.
-*
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.3 2011/01/13 21:13:03 keinstein Exp $
-* \author Rüdiger Krauße <krausze@mail.berlios.de>,
-* Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 2009/01/11
-* $Date: 2011/01/13 21:13:03 $
-* \version $Revision: 1.3 $
-*
-* $Log: OutputDevDlg.cpp,v $
-* Revision 1.3  2011/01/13 21:13:03  keinstein
-* Fix some layout bugs.
-*
-* Revision 1.2  2010-11-21 13:15:49  keinstein
-* merged experimental_tobias
-*
-* Revision 1.1.2.6  2010-03-30 08:38:27  keinstein
-* added rudimentary command line support
-* changed debug system to allow selection of messages via command line
-* further enhancements to the route dialogs
-*
-* Revision 1.1.2.5  2010/02/15 12:08:21  keinstein
-* intermediate update for backup progress
-*
-* Revision 1.1.2.4  2010/01/14 18:14:20  keinstein
-* fix usage of installation prefix
-* MutInputDeviceShape/MutOutputDeviceShape:
-*     use GetType for type checking in OnChoiceSelected
-*     make InitalizeDialog const
-* MutNewOutputDeviceShape: add InitializeDialog and ReplaceSelfBy
-*
-* Revision 1.1.2.3  2010/01/14 09:34:24  keinstein
-* Checkin searching for a bug
-*
-*
-*
-********************************************************************
-*\addtogroup route
-*\{
-********************************************************************/
+ ********************************************************************
+ * MIDI input device shape for route window.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>,
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2009/01/11
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.4 $
+ * \license GPL
+ *
+ * $Log: OutputDevDlg.cpp,v $
+ * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2011-01-13 21:13:03  keinstein
+ * Fix some layout bugs.
+ *
+ * Revision 1.2  2010-11-21 13:15:49  keinstein
+ * merged experimental_tobias
+ *
+ * Revision 1.1.2.6  2010-03-30 08:38:27  keinstein
+ * added rudimentary command line support
+ * changed debug system to allow selection of messages via command line
+ * further enhancements to the route dialogs
+ *
+ * Revision 1.1.2.5  2010/02/15 12:08:21  keinstein
+ * intermediate update for backup progress
+ *
+ * Revision 1.1.2.4  2010/01/14 18:14:20  keinstein
+ * fix usage of installation prefix
+ * MutInputDeviceShape/MutOutputDeviceShape:
+ *     use GetType for type checking in OnChoiceSelected
+ *     make InitalizeDialog const
+ * MutNewOutputDeviceShape: add InitializeDialog and ReplaceSelfBy
+ *
+ * Revision 1.1.2.3  2010/01/14 09:34:24  keinstein
+ * Checkin searching for a bug
+ *
+ *
+ *
+ ********************************************************************
+ *\addtogroup route
+ *\{
+ ********************************************************************/
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
@@ -222,3 +225,5 @@ int OutputDevDlg::FindType (DevType t)
         }
 	return wxNOT_FOUND;
 }
+
+///\}

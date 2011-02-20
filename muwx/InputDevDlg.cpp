@@ -1,13 +1,25 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        InputDevDlg.cpp
-// Purpose:
-// Author:      R. Krauße
-// Modified by:
-// Created:     10/12/05 14:22:47
-// RCS-ID:
-// Copyright:   (c) R. Krauße, TU Dresden
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
+/** \file 
+ ********************************************************************
+ * Description
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/InputDevDlg.cpp,v 1.7 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2005,2011 TU Dresden
+ * \author R. Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/10/12 14:22:47
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.7 $
+ * \license GPL
+ *
+ * $Log: InputDevDlg.cpp,v $
+ * Revision 1.7  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ * \addtogroup route
+ * \{
+ ********************************************************************/
+
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma implementation "InputDevDlg.h"
@@ -186,3 +198,6 @@ int InputDevDlg::FindType (DevType t)
         }
 	return wxNOT_FOUND;
 }
+
+
+///\}

@@ -1,18 +1,21 @@
 // -*- C++ -*-
-
 /** \file
  ********************************************************************
  * New input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.h,v 1.2 2010/11/21 13:15:49 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.h,v 1.3 2011/02/20 22:35:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2010/11/21 13:15:49 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/02/20 22:35:59 $
+ * \version $Revision: 1.3 $
+ * \license GPL
  *
  * $Log: NewInputDeviceShape.h,v $
- * Revision 1.2  2010/11/21 13:15:49  keinstein
+ * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.2  2010-11-21 13:15:49  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.2  2010-01-14 18:14:20  keinstein

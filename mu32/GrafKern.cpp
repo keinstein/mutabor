@@ -2,13 +2,17 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.12 2010/11/21 13:15:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.13 2011/02/20 22:35:55 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.13 $
+ * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.12  2010/11/21 13:15:45  keinstein
+ * Revision 1.13  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.12  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.11.2.2  2010-03-30 08:38:27  keinstein
@@ -23,7 +27,7 @@
  * Adopted VC8-changes to any
  *
  * Revision 1.10  2008/10/19 23:08:32  krausze
- * Dateien und Anpassungen f�r Microsoft Visual Studio 8 (VC8)
+ * Dateien und Anpassungen für Microsoft Visual Studio 8 (VC8)
  *
  * Revision 1.9  2008/10/10 08:33:19  keinstein
  * make compile on windws
@@ -46,6 +50,10 @@
  * Revision 1.4  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
+ *
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
  ********************************************************************/
 // ------------------------------------------------------------------
 // Mutabor 2.win, 1997, R.Krauße
@@ -401,3 +409,5 @@ int pascal _export GetErrorLine()
 #endif
 }
 
+
+///\}

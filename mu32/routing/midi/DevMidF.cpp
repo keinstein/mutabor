@@ -2,14 +2,18 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.4 2010/12/13 00:27:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.5 2011/02/20 22:35:56 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/12/13 00:27:53 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2011/02/20 22:35:56 $
+ * \version $Revision: 1.5 $
+ * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.4  2010/12/13 00:27:53  keinstein
+ * Revision 1.5  2011/02/20 22:35:56  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2010-12-13 00:27:53  keinstein
  * compiles in linux as well as in mingw
  *
  * Revision 1.3  2010-11-23 21:19:22  keinstein
@@ -75,6 +79,9 @@
  * Revision 1.5  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
+ ********************************************************************
+ * \addtogroup route
+ * \{
  ********************************************************************/
 // ------------------------------------------------------------------
 // Mutabor 3, 1998, R.Krauße
@@ -1070,3 +1077,5 @@ void InMidiFile::Proceed(DWORD midiCode, int track)
 
 	FLUSH_UPDATE_UI;
 }
+
+///\}

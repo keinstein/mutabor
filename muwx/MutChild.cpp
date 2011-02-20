@@ -1,12 +1,24 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutChild.cpp
-// Purpose:     Mutabor MDI-Child
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
+/** \file MutChild.h
+ ********************************************************************
+ * Mutabor Mutabor Child Frame management.
+ *
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.13 2011/02/20 22:35:57 keinstein Exp $
+ * Copyright:   (c) 2005,2006,2007 TU Dresden
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ * Tobias Schlemmer <keinstein@users.berlios.de>
+ * \date 2005/08/12
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.13 $
+ * \license GPL
+ *
+ * $Log: MutChild.cpp,v $
+ * Revision 1.13  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ *
+ * \addtogroup muwx
+ * \{
+ ********************************************************************/
 
 // ===========================================================================
 // declarations

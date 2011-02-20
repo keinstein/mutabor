@@ -2,13 +2,16 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.10 2010/11/21 13:15:45 keinstein Exp $
+ * $Id: GrafKern.h,v 1.11 2011/02/20 22:35:55 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2010/11/21 13:15:45 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.11 $
  *
  * $Log: GrafKern.h,v $
- * Revision 1.10  2010/11/21 13:15:45  keinstein
+ * Revision 1.11  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.10  2010-11-21 13:15:45  keinstein
  * merged experimental_tobias
  *
  * Revision 1.9.2.1  2009-08-04 11:30:49  keinstein
@@ -32,7 +35,11 @@
  * Revision 1.4  2006/01/18 15:29:56  keinstein
  * New header and translations at display time
  *
- */
+ *
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 
 // ------------------------------------------------------------------
 // Mutabor 2.win, 1997, R.Krauße
@@ -124,3 +131,5 @@ extern char Fmeldung[255];
 
 #endif
 
+
+///\}

@@ -2,14 +2,18 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.h,v 1.3 2010/12/11 02:10:08 keinstein Exp $
+ * $Id: Errors.h,v 1.4 2011/02/20 22:35:55 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2010/12/11 02:10:08 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2011/02/20 22:35:55 $
+ * \version $Revision: 1.4 $
+ * \license GPL
  *
  * $Log: Errors.h,v $
- * Revision 1.3  2010/12/11 02:10:08  keinstein
+ * Revision 1.4  2011/02/20 22:35:55  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.3  2010-12-11 02:10:08  keinstein
  * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
  *
  * Revision 1.2  2010-11-21 13:15:44  keinstein
@@ -30,7 +34,10 @@
  * some reformatting
  *
  *
- */
+ ********************************************************************
+ * \addtogroup kernel
+ * \{
+ ********************************************************************/
 #ifndef MUTABOR_ERRORS_H
 #define MUTABOR_ERRORS_H
 
@@ -167,3 +174,6 @@ const mutChar * Warning_text[] =
   };
 */
 #endif
+
+
+///\}

@@ -1,17 +1,21 @@
 // -*- C++ -*-
 /** \file
  ********************************************************************
- * Devices Basisklassen.
+ * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.4 2011/01/11 00:42:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.5 2011/02/20 22:35:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/01/11 00:42:27 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/02/20 22:35:57 $
+ * \version $Revision: 1.5 $
+ * \license GPL
  *
  * $Log: MutIcon.h,v $
- * Revision 1.4  2011/01/11 00:42:27  keinstein
+ * Revision 1.5  2011/02/20 22:35:57  keinstein
+ * updated license information; some file headers have to be revised, though
+ *
+ * Revision 1.4  2011-01-11 00:42:27  keinstein
  * Fix a bug preventing Mutabor from starting on Win32 due to wrong usage of wxIcon/wxICON
  *
  * Revision 1.3  2010-11-21 13:15:47  keinstein
@@ -175,4 +179,5 @@ extern MutIcon MutNullIcon;
 #endif
 
 #endif /* MUTROUTESHAPES_H */
-/* \} */
+
+/** \} */
