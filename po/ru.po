@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-01-29 21:10+0100\n"
+"POT-Creation-Date: 2011-03-04 19:25+0100\n"
 "PO-Revision-Date: 2010-11-21 15:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: Russian\n"
@@ -605,11 +605,11 @@ msgstr ""
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Ошибка в файле кисти GIMP \"%s\""
 
-#: mu32/Execute.cpp:347
+#: mu32/Execute.cpp:337
 msgid "Unhandled case path: aufruf_umst_umst_bund"
 msgstr ""
 
-#: mu32/Execute.cpp:352
+#: mu32/Execute.cpp:341
 #, fuzzy, c-format
 msgid "Unexpected action type: %d"
 msgstr "Неизвестный тип действия: %s"
@@ -645,37 +645,37 @@ msgstr "байт"
 msgid "retuning"
 msgstr ""
 
-#: mu32/Runtime.cpp:125
+#: mu32/Runtime.cpp:126
 #, fuzzy
 msgid "Generating tables"
 msgstr "<b>Таблицы налогов</b>"
 
-#: mu32/Runtime.cpp:131
+#: mu32/Runtime.cpp:132
 #, fuzzy
 msgid "Translation successful !"
 msgstr "Регистрация завершена успешно"
 
-#: mu32/Runtime.cpp:132
+#: mu32/Runtime.cpp:133
 #, fuzzy
 msgid "No error occured !"
 msgstr "При запуске %s произошла ошибка"
 
-#: mu32/Runtime.cpp:138
+#: mu32/Runtime.cpp:139
 #, fuzzy
 msgid "Translation interrupted !"
 msgstr "Соединение прервано."
 
-#: mu32/Runtime.cpp:172
+#: mu32/Runtime.cpp:173
 #, fuzzy
 msgid "Activation error"
 msgstr "Ошибка Системы активации объектов (OAF)"
 
-#: mu32/Runtime.cpp:585
+#: mu32/Runtime.cpp:591
 #, fuzzy, c-format
 msgid "%ls %d %d %d %d %d %d %d %d"
 msgstr "%ls: Применить"
 
-#: mu32/Runtime.cpp:588
+#: mu32/Runtime.cpp:594
 #, c-format
 msgid "%s %d %d %d %d %d %d %d %d"
 msgstr ""
@@ -1000,7 +1000,7 @@ msgstr "_Искать: "
 msgid "Search help for keyword"
 msgstr "искать точное совпадения каждого ключа"
 
-#: muwx/MutApp.cpp:801 muwx/MutFrame.cpp:1747
+#: muwx/MutApp.cpp:801 muwx/MutFrame.cpp:1757
 #, fuzzy, c-format
 msgid "Closing window of class %s"
 msgstr "При &закрытии последнего окна завершается работа с программой"
@@ -1071,7 +1071,7 @@ msgstr "&О программе..."
 msgid "Show information about the program"
 msgstr "Показать информацию о программе Evolution"
 
-#: muwx/MutApp.cpp:888
+#: muwx/MutApp.cpp:888 muwx/MutFrame.cpp:444
 #, fuzzy
 msgid "Stop"
 msgstr "Остановить поиск..."
@@ -1081,30 +1081,30 @@ msgstr "Остановить поиск..."
 msgid "Stop the current program"
 msgstr "Сохранить текущий файл"
 
-#: muwx/MutApp.cpp:897
+#: muwx/MutApp.cpp:897 muwx/MutFrame.cpp:460
 #, fuzzy
 msgid "&Play"
 msgstr "_Воспроизвести"
 
-#: muwx/MutApp.cpp:898
+#: muwx/MutApp.cpp:898 muwx/MutFrame.cpp:461
 msgid "Start playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:899
+#: muwx/MutApp.cpp:899 muwx/MutFrame.cpp:462
 #, fuzzy
 msgid "St&op"
 msgstr "_Остановить анимацию"
 
-#: muwx/MutApp.cpp:900
+#: muwx/MutApp.cpp:900 muwx/MutFrame.cpp:463
 msgid "Stop playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:901
+#: muwx/MutApp.cpp:901 muwx/MutFrame.cpp:464
 #, fuzzy
 msgid "P&ause"
 msgstr "_Приостановить"
 
-#: muwx/MutApp.cpp:902
+#: muwx/MutApp.cpp:902 muwx/MutFrame.cpp:465
 msgid "Pause plaing the music from input file devices"
 msgstr ""
 
@@ -1165,21 +1165,21 @@ msgstr "Установка или снятие флажка"
 msgid "&View"
 msgstr "&Вид"
 
-#: muwx/MutApp.cpp:943
+#: muwx/MutApp.cpp:943 muwx/MutFrame.cpp:455
 #, fuzzy
 msgid "&Load routes"
 msgstr "Торговые пути"
 
-#: muwx/MutApp.cpp:944
+#: muwx/MutApp.cpp:944 muwx/MutFrame.cpp:456
 msgid "Load the current route configuration from a file"
 msgstr ""
 
-#: muwx/MutApp.cpp:945
+#: muwx/MutApp.cpp:945 muwx/MutFrame.cpp:457
 #, fuzzy
 msgid "&Save routes"
 msgstr "Торговые пути"
 
-#: muwx/MutApp.cpp:946
+#: muwx/MutApp.cpp:946 muwx/MutFrame.cpp:458
 #, fuzzy
 msgid "Save current route configuration to a file."
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
@@ -1346,86 +1346,135 @@ msgstr "Ошибка"
 msgid "The compile dialog could not be loaded."
 msgstr "Указанный URL не может быть загружен."
 
-#: muwx/MutFrame.cpp:405
+#: muwx/MutFrame.cpp:409
 #, fuzzy
 msgid "Toolbar"
 msgstr "Панель инструментов"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:437
 msgid "New"
 msgstr "Новый"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:437
 msgid "New file"
 msgstr "Создать файл"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:438
 msgid "Open"
 msgstr "Открыть"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:438
 msgid "Open file"
 msgstr "Открыть файл"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:439
 msgid "Save"
 msgstr "Сохранить"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:439
 msgid "Save file"
 msgstr "Сохранить файл"
 
-#: muwx/MutFrame.cpp:447
-msgid "Copy"
-msgstr "Копировать"
+#: muwx/MutFrame.cpp:440
+#, fuzzy
+msgid "Save as"
+msgstr "Сохранить"
 
-#: muwx/MutFrame.cpp:448
-msgid "Cut"
-msgstr "Вырезать"
+#: muwx/MutFrame.cpp:440
+#, fuzzy
+msgid "Save file with new name"
+msgstr "Сохранить текущий файл под другим именем"
 
-#: muwx/MutFrame.cpp:449
-msgid "Paste"
-msgstr "Вставить"
-
-#: muwx/MutFrame.cpp:451
+#: muwx/MutFrame.cpp:441
 msgid "Print"
 msgstr "Печать"
 
-#: muwx/MutFrame.cpp:453
+#: muwx/MutFrame.cpp:443
+#, fuzzy
+msgid "Activate"
+msgstr "Активные соединения"
+
+#: muwx/MutFrame.cpp:443
+#, fuzzy
+msgid "Activate the logic"
+msgstr "Длина единицы ядра:"
+
+#: muwx/MutFrame.cpp:444
+msgid "Stop the logic"
+msgstr ""
+
+#: muwx/MutFrame.cpp:445
+#, fuzzy
+msgid "Panic"
+msgstr "%s: паника: Недопустимое l_value %d\n"
+
+#: muwx/MutFrame.cpp:445
+msgid "Panic: switch all notes off"
+msgstr ""
+
+#: muwx/MutFrame.cpp:447
+msgid "Undo"
+msgstr ""
+
+#: muwx/MutFrame.cpp:447
+msgid "Undo last changes"
+msgstr ""
+
+#: muwx/MutFrame.cpp:448
+msgid "Redo"
+msgstr ""
+
+#: muwx/MutFrame.cpp:448
+msgid "Redo last undone changes"
+msgstr ""
+
+#: muwx/MutFrame.cpp:449
+msgid "Copy"
+msgstr "Копировать"
+
+#: muwx/MutFrame.cpp:450
+msgid "Cut"
+msgstr "Вырезать"
+
+#: muwx/MutFrame.cpp:451
+msgid "Paste"
+msgstr "Вставить"
+
+#: muwx/MutFrame.cpp:467
 msgid "About"
 msgstr "О программе"
 
-#: muwx/MutFrame.cpp:453 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
+#: muwx/MutFrame.cpp:467 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
 #: xrc/reslocale.cpp:77 xrc/reslocale.cpp:96
 msgid "Help"
 msgstr "Справка"
 
-#: muwx/MutFrame.cpp:520
+#: muwx/MutFrame.cpp:529
 msgid ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
 msgstr ""
 
-#: muwx/MutFrame.cpp:522
+#: muwx/MutFrame.cpp:531
 #, fuzzy
 msgid "Please confirm closing."
 msgstr "Требовать подтверждение при закрытии несохраненных _изображений"
 
-#: muwx/MutFrame.cpp:621
+#: muwx/MutFrame.cpp:630
 #, c-format
 msgid "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:635
+#: muwx/MutFrame.cpp:644
 msgid "noname.mut"
 msgstr "Неназванный.mut"
 
-#: muwx/MutFrame.cpp:654 muwx/MutFrame.cpp:1591
+#: muwx/MutFrame.cpp:663 muwx/MutFrame.cpp:1601
 #, c-format
 msgid "%s -- %s"
 msgstr ""
 
-#: muwx/MutFrame.cpp:705
+#: muwx/MutFrame.cpp:715
 msgid ""
 "There are no realtime \t\t                           instruments in the "
 "routes.\n"
@@ -1436,106 +1485,106 @@ msgid ""
 "tunings \t\t                           while playing by computer keyboard.)"
 msgstr ""
 
-#: muwx/MutFrame.cpp:711
+#: muwx/MutFrame.cpp:721
 #, fuzzy
 msgid "No realtime => batch mode?"
 msgstr "пакетный режим: ничего не запрашивать"
 
-#: muwx/MutFrame.cpp:980
+#: muwx/MutFrame.cpp:990
 #, fuzzy
 msgid "Routes"
 msgstr "Торговые пути"
 
-#: muwx/MutFrame.cpp:1017
+#: muwx/MutFrame.cpp:1027
 #, fuzzy, c-format
 msgid "Logic -- Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutFrame.cpp:1083
+#: muwx/MutFrame.cpp:1093
 #, fuzzy, c-format
 msgid "Current keys at Box %d"
 msgstr "Флажок подсветки текущего стиха"
 
-#: muwx/MutFrame.cpp:1090
+#: muwx/MutFrame.cpp:1100
 #, c-format
 msgid "Current tone system at Box %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:1097
+#: muwx/MutFrame.cpp:1107
 #, fuzzy
 msgid "Action log"
 msgstr "П&росмотреть отчет..."
 
-#: muwx/MutFrame.cpp:1100
+#: muwx/MutFrame.cpp:1110
 #, fuzzy, c-format
 msgid "Actions at Box %d"
 msgstr "Группирующая рамка"
 
-#: muwx/MutFrame.cpp:1106
+#: muwx/MutFrame.cpp:1116
 #, fuzzy
 msgid "Unexpected value: WK_LOGIC"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1111
+#: muwx/MutFrame.cpp:1121
 #, fuzzy
 msgid "Unexpected value: WK_ROUTE"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1116
+#: muwx/MutFrame.cpp:1126
 #, fuzzy
 msgid "Unexpected value: WK_EDIT"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutFrame.cpp:1121
+#: muwx/MutFrame.cpp:1131
 #, fuzzy
 msgid "Unexpected value: WK_NULL"
 msgstr "Внутренняя ошибка: неожиданно нет решения."
 
-#: muwx/MutFrame.cpp:1126
+#: muwx/MutFrame.cpp:1136
 #, fuzzy, c-format
 msgid "Unexpected window kind: %d"
 msgstr "4 одинаковых [25 + сумма]"
 
-#: muwx/MutFrame.cpp:1298
+#: muwx/MutFrame.cpp:1308
 #, fuzzy
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "Новый счет (не реализовано)"
 
-#: muwx/MutFrame.cpp:1665
+#: muwx/MutFrame.cpp:1675
 msgid "Translation in batch mode completed. Output was generated."
 msgstr ""
 
-#: muwx/MutFrame.cpp:1666
+#: muwx/MutFrame.cpp:1676
 #, fuzzy
 msgid "Batch translation finished"
 msgstr "Завершено с ошибкой"
 
-#: muwx/MutFrame.cpp:1775
+#: muwx/MutFrame.cpp:1785
 #, fuzzy, c-format
 msgid "Box %d got id %d"
 msgstr "Недопустимый ID фрейма"
 
-#: muwx/MutFrame.cpp:1778
+#: muwx/MutFrame.cpp:1788
 #, fuzzy, c-format
 msgid "Currently %d items in box menu"
 msgstr "В этом меню нет %d пунктов."
 
-#: muwx/MutFrame.cpp:1780
+#: muwx/MutFrame.cpp:1790
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:1781
+#: muwx/MutFrame.cpp:1791
 #, fuzzy, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutFrame.cpp:1782
+#: muwx/MutFrame.cpp:1792
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr ""
 
-#: muwx/MutFrame.cpp:1792
+#: muwx/MutFrame.cpp:1802
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr ""

@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.16 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.17 2011/03/06 13:15:41 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.16 $
+ * \date $Date: 2011/03/06 13:15:41 $
+ * \version $Revision: 1.17 $
  * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.16  2011/02/20 22:35:55  keinstein
+ * Revision 1.17  2011/03/06 13:15:41  keinstein
+ * some rearrangement for update callback kernel->GUI
+ *
+ * Revision 1.16  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.15  2010-11-21 13:15:45  keinstein
@@ -103,9 +106,10 @@
 #include "DevMidi.h"
 #include "DevMidF.h"
 
+#ifdef __cplusplus
 extern "C"
 {
-
+#endif
 	bool RealTime = false;
 
 	jmp_buf weiter_gehts_nach_compilerfehler;
@@ -147,13 +151,13 @@ extern "C"
 		}
 	}
 
-	UpdateUICallback* updateUIcallback;
+	UpdateCallback* updatecallback;
 
-	bool pascal _export Activate(bool realTime, UpdateUICallback* callback) {
+	bool pascal _export Activate(bool realTime, UpdateCallback* callback) {
 		RealTime = realTime;
 		GlobalReset();
 		AktionenInit();
-		updateUIcallback = callback;
+		updatecallback = callback;
 #if !defined(WX) || defined(__WXMSW__)
 
 		if ( RealTime )
@@ -280,6 +284,11 @@ extern "C"
 			Out->Panic();
 			Out = Out->GetNext();
 		}
+                MutResetKeys();
+                for (int i = 0; i<MAX_BOX ; i++) 
+                {
+                        updatecallback(i,false);
+                }
 	}
 
 	bool pascal _export CheckNeedsRealTime() {
@@ -312,7 +321,7 @@ extern "C"
 
 	char pascal _export IsLogicKey(char key) {
 
-		struct keyboard_ereignis *last = first_keyboard[aktuelles_keyboard_instrument];
+		struct keyboard_ereignis *last = first_keyboard[aktuelle_keyboard_box];
 
 		while ( last ) {
 			if ( key == last->taste )
@@ -381,11 +390,11 @@ extern "C"
 	}
 
 	void pascal _export SetAktuellesKeyboardInstrument(int instr) {
-		aktuelles_keyboard_instrument = instr;
+		aktuelle_keyboard_box = instr;
 	}
 
 	int pascal _export GetAktuellesKeyboardInstrument() {
-		return aktuelles_keyboard_instrument;
+		return aktuelle_keyboard_box;
 	}
 
 // scan-Hilfsfunktionen ---------------------------------------------

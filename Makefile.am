@@ -476,10 +476,14 @@ pydmg: dylibbundler
 	wget --no-check-certificate https://anon:@scm.wilcoxd.com:8081/svn/OpenSource/Scripts/sane_build_disk_image/sane_build_disk_image.py
 
 dmg: dylibbundler
-	mkdir -p dmg/Mutabor
+	mkdir -p dmg/Mutabor/.background
 	cp -r Mutabor.app dmg/Mutabor
+	cp $(top_srcdir)/osdep/macosx/DS_Store dmg/Mutabor/.DS_Store
+	cp $(top_srcdir)/osdep/macosx/background.png dmg/Mutabor/.background
+	cp $(top_srcdir)/muwx/Icon/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
 	ln -s /Applications dmg/Mutabor
-	hdiutil create -srcfolder dmg/Mutabor -volname "$(PACKAGE_STRING)" "$(PACKAGE_NAME)-$(PACKAGE_VERSION)"
+	rm -f "$(PACKAGE_NAME)-$(PACKAGE_VERSION).dmg"
+	hdiutil create -srcfolder dmg/Mutabor -volname "$(PACKAGE_NAME)" "$(PACKAGE_NAME)-$(PACKAGE_VERSION)"
 	rm -r dmg/Mutabor
 
 

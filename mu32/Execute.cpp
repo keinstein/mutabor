@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.8 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.9 2011/03/06 13:15:40 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/03/06 13:15:40 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Execute.cpp,v $
- * Revision 1.8  2011/02/20 22:35:55  keinstein
+ * Revision 1.9  2011/03/06 13:15:40  keinstein
+ * some rearrangement for update callback kernel->GUI
+ *
+ * Revision 1.8  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -47,8 +50,8 @@ int zeige_aktuelles_tonsystem=0;
 
 //#define KEY_WATCH  //protokoll in keys_changed // alte Vaiante
 
-// wenn kein Protokoll gew¸nscht, dann diese Definition auf "Leer" setzen
-#define KEY_CHANGED(instrument) { keys_changed[instrument]=1; keys_changed_sum = 1; }
+// if no protocol wanted, set this macro to empty
+#define KEY_CHANGED(box) { keys_changed[box]=1; keys_changed_sum = 1; }
 
 // in device.h :
 void MidiOut(int box, DWORD data, char n);
@@ -73,13 +76,14 @@ ton_system *tonsystem[MAX_BOX]       /* Verweise auf die aktuellen
          tonsystem_memory + 11,tonsystem_memory + 12,
          tonsystem_memory + 13,tonsystem_memory + 14,
          tonsystem_memory + 15 }*/;
-ton_system * freies_tonsystem    /* Freizeiger auf das */
-= tonsystem_memory + MAX_BOX;     /*   "17'te" tonsystem zum Rechnen */
-/*   als Ringspeicher */
+
+/** Free pointer to the first empty tone system as ring memory */
+ton_system * freies_tonsystem = tonsystem_memory + MAX_BOX;  
 
 int liegende_tasten[MAX_BOX][64];
 int liegende_tasten_max[MAX_BOX];
 long last_note_id[MAX_BOX];           // (outinstr. << 8) + taste
+bool logic_changed[MAX_BOX];
 
 int laufzeit_abstand[MAX_BOX];
 int laufzeit_zentrum[MAX_BOX];
@@ -87,18 +91,12 @@ int laufzeit_zentrum[MAX_BOX];
 int laufzeit_meldungen_erlaubt=0;
 
 int aktuelles_midi_instrument=0;
-int aktuelles_keyboard_instrument=0;
+int aktuelle_keyboard_box=0;
 char tempstring[255];
 
-// Boxen zur¸cksetzen
-void GlobalReset()
+void MutResetKeys()
 {
-	int i;
-
-	for (i = 0; i <= MAX_BOX; i++)
-		tonsystem_memory[i] = tonsystem_init;
-
-	for (i = 0; i<MAX_BOX; i++) {
+	for (int i = 0; i<MAX_BOX; i++) {
 		if ( last_global_harmonie[i] && *last_global_harmonie[i] )
 			*last_global_harmonie[i] = NULL;
 
@@ -113,14 +111,23 @@ void GlobalReset()
 		for (int j = 0; j < MAX_BREITE; j++)
 			pattern[i].tonigkeit[j] = 0;
 
-//9    tonsystem[i] = tonsystem_memory + i;
-		tonsystem[i] = &(tonsystem_memory[i]);
-
 		keys_changed[i] = 0;
-	}
+                logic_changed[i] = 0;
+        }
 
 	keys_changed_sum = 0;
+}
 
+/* reset boxes */
+void GlobalReset()
+{
+	for (int i = 0; i <= MAX_BOX; i++) {
+		tonsystem_memory[i] = tonsystem_init;
+//    tonsystem[i] = tonsystem_memory + i;
+		tonsystem[i] = &(tonsystem_memory[i]);
+	}
+
+        MutResetKeys();
 	freies_tonsystem = &(tonsystem_memory[MAX_BOX]);
 }
 
@@ -131,160 +138,152 @@ void change_anker(int instr, int neu);
 void keyboard_analyse( int taste );
 void HarmonyAnalysis(int box, PATTERNN * pattern );
 
-void execute_aktion (int instrument, struct do_aktion * aktion)
+void execute_aktion (int box, struct do_aktion * aktion)
 {
 	bool WasNewLogic = false;
 
 	for ( ; aktion; aktion = aktion -> next)
 	{
-		AktionenMessage(instrument, aktion->name);
-
+		AktionenMessage(box, aktion->name);
 		switch (aktion->aufruf_typ) {
-
 		case aufruf_logik:
-			execute_aktion (instrument, aktion->u.aufruf_logik.einstimmung);
-
-			* last_global_keyboard[instrument] =
+			execute_aktion (box, aktion->u.aufruf_logik.einstimmung);
+			* last_global_keyboard[box] =
 			        * aktion->u.aufruf_logik.lokal_keyboard;
-
-			* last_global_harmonie[instrument] =
+			* last_global_harmonie[box] =
 			        * aktion->u.aufruf_logik.lokal_harmonie;
-
-			* last_global_midi[instrument] =
+			* last_global_midi[box] =
 			        * aktion->u.aufruf_logik.lokal_midi;
-
 			WasNewLogic = true;
-
 			break;
 
 		case aufruf_tonsystem:
-			* tonsystem[instrument] =
+			* tonsystem[box] =
 			        * aktion->u.aufruf_tonsystem.tonsystem;
-
-			update_pattern(instrument);
+			update_pattern(box);
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 
 			break;
 
 		case aufruf_umst_taste_abs:
-			change_anker(instrument,
-			             aktion->u.aufruf_umst_taste_abs.wert[instrument]);
+			change_anker(box,
+			             aktion->u.aufruf_umst_taste_abs.wert[box]);
 
-			update_pattern(instrument);
+			update_pattern(box);
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 
 			break;
 
 		case aufruf_umst_breite_abs:
-			change_breite(instrument,
-			              aktion->u.aufruf_umst_breite_abs.wert[instrument]);
+			change_breite(box,
+			              aktion->u.aufruf_umst_breite_abs.wert[box]);
 
-			update_pattern(instrument);
+			update_pattern(box);
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 
 			break;
 
 		case aufruf_umst_wiederholung_abs:
-			tonsystem[instrument]->periode =
+			tonsystem[box]->periode =
 			        aktion->u.aufruf_umst_wiederholung_abs.faktor;
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 
 			break;
 
 		case aufruf_umst_wiederholung_rel:
-			tonsystem[instrument]->periode +=
+			tonsystem[box]->periode +=
 			        aktion->u.aufruf_umst_wiederholung_rel.faktor;
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 
 			break;
 
 		case aufruf_umst_taste_rel: {
 			int help;
-			help = tonsystem[instrument]->anker;
+			help = tonsystem[box]->anker;
 
 			switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
 
 			case '+':
-				help += aktion->u.aufruf_umst_taste_rel.wert[instrument];
+				help += aktion->u.aufruf_umst_taste_rel.wert[box];
 
 				break;
 
 			case '-':
-				help -= aktion->u.aufruf_umst_taste_rel.wert[instrument];
+				help -= aktion->u.aufruf_umst_taste_rel.wert[box];
 
 				break;
 			}
 
-			change_anker(instrument, help);
+			change_anker(box, help);
 
-			update_pattern(instrument);
+			update_pattern(box);
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 		}
 
 		break;
 
 		case aufruf_umst_breite_rel: {
 			int help;
-			help = tonsystem[instrument]->breite;
+			help = tonsystem[box]->breite;
 
 			switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
 
 			case '+':
-				help += aktion->u.aufruf_umst_breite_rel.wert[instrument];
+				help += aktion->u.aufruf_umst_breite_rel.wert[box];
 
 				break;
 
 			case '-':
-				help -= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+				help -= aktion->u.aufruf_umst_breite_rel.wert[box];
 
 				break;
 
 			case '*':
-				help *= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+				help *= aktion->u.aufruf_umst_breite_rel.wert[box];
 
 				break;
 
 			case '/':
-				help /= aktion->u.aufruf_umst_breite_rel.wert[instrument];
+				help /= aktion->u.aufruf_umst_breite_rel.wert[box];
 
 				break;
 			}
 
-			change_breite(instrument, help);
+			change_breite(box, help);
 
-			update_pattern(instrument);
+			update_pattern(box);
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 		}
 
 		break;
@@ -294,7 +293,7 @@ void execute_aktion (int instrument, struct do_aktion * aktion)
 
 			struct ton_einstell * lauf;
 
-			for (ton_zeiger = tonsystem[instrument]->ton,
+			for (ton_zeiger = tonsystem[box]->ton,
 			                lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
 			                lauf;
 			                lauf = lauf->next, ton_zeiger ++) {
@@ -325,34 +324,30 @@ void execute_aktion (int instrument, struct do_aktion * aktion)
 			}
 
 #ifdef NOTES_CORRECT_SOFORT
-			NotesCorrect(instrument);
+			NotesCorrect(box);
 
 #endif
-			KEY_CHANGED(instrument);
+			KEY_CHANGED(box);
 		}
-
 		break;
 
 		case aufruf_umst_umst_case: {
-
 			struct case_element * lauf;
 			int i;
-			i=aktion->u.aufruf_umst_umst_case.wert[instrument];
+			i=aktion->u.aufruf_umst_umst_case.wert[box];
 
 			for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
 			                lauf;
 			                lauf = lauf->next) {
 				if ( (i == lauf->case_wert) || (lauf->is_default)) {
-					execute_aktion (instrument, lauf->case_aktion);
+					execute_aktion (box, lauf->case_aktion);
 					return;
 				}
 			}
 		}
-
 		break;
 
 		case aufruf_midi_out: {
-
 			struct midiliste * lauf;
 			unsigned long data = 0, faktor = 1, n = 0;
 			;
@@ -364,15 +359,12 @@ void execute_aktion (int instrument, struct do_aktion * aktion)
 				faktor *= 0x100;
 				n++;
 			}
-
-			MidiOut(instrument, data, n);
+			MidiOut(box, data, n);
 		}
-
 		break;
 
 		case aufruf_umst_umst_bund:
 			wxLogWarning(_("Unhandled case path: aufruf_umst_umst_bund"));
-
 			break;
 
 		default:
@@ -380,13 +372,15 @@ void execute_aktion (int instrument, struct do_aktion * aktion)
 		}
 	}
 
-	// evtl gleich HArmonien checken
-	if ( WasNewLogic )
-		HarmonyAnalysis(instrument, &pattern[instrument]);
+	// check harmonies instantly
+	if ( WasNewLogic ) {
+                // \todo Check, if this is necessary or used
+		HarmonyAnalysis(box, &pattern[box]);
+                logic_changed[box] = true;
+        }
 
 #ifndef NOTES_CORRECT_SOFORT
-	NotesCorrect(instrument);
-
+	NotesCorrect(box);
 #endif
 }
 
@@ -428,13 +422,9 @@ void change_anker(int instr, int neu)
 		        freies_tonsystem->ton[0] + tonsys->ton[i]-tonsys->ton[0];
 
 	freies_tonsystem->anker=neu;
-
 	freies_tonsystem->breite=tonsys->breite;
-
 	freies_tonsystem->periode=tonsys->periode;
-
 	tonsystem[instr]=freies_tonsystem;
-
 	freies_tonsystem=temp;
 }
 
@@ -447,10 +437,8 @@ void change_breite(int instr, int neu)
 		if ( neu > tonsys->breite )
 			for (i = tonsys->breite; i < neu; i++)
 				tonsys->ton[i]=GET_FREQ((tonsys->anker+i),tonsys);
-
 		tonsys->periode =
 		        GET_FREQ(tonsys->anker+neu,tonsys) - GET_FREQ(tonsys->anker,tonsys);
-
 		tonsys->breite=neu;
 	}
 }
@@ -475,7 +463,6 @@ int hoechste_taste(int instr)
 	for (i = 0; i<liegende_tasten_max[instr]; i++)
 		if ( liegende_tasten[instr][i] > max )
 			max = liegende_tasten[instr][i];
-
 	return max;
 }
 
@@ -487,7 +474,6 @@ int compare_harmonie(int breite, int startindex, PATTERNN * laufzeit, PATTERNN *
 
 	for (i=0;i<breite; i++,startindex++) {
 		if ( vergleich->tonigkeit[i] ) {
-
 			/* Bedeutung: vergleich: 0(egal) 1(off)   2(on)
 			              laufzeit:          0(off)  >0(on)   */
 
@@ -495,15 +481,12 @@ int compare_harmonie(int breite, int startindex, PATTERNN * laufzeit, PATTERNN *
 			                laufzeit->tonigkeit[startindex%breite] )
 				/* vergleich = off, aber laufzeit != off */
 				return 0 ;
-
 			if ( vergleich->tonigkeit[i]!=1 &&
 			                laufzeit->tonigkeit[startindex%breite]==0 )
 				/* vergleich = on , aber laufzeit = off */
 				return 0 ;
-
 		}
 	}
-
 	return 1;
 }
 
@@ -600,7 +583,7 @@ void DeleteKey( int box, int taste, int id)
 
 void KeyboardIn(int box, const mutChar *keys)
 {
-	aktuelles_keyboard_instrument = box;
+	aktuelle_keyboard_box = box;
 	char TonSystem = 0;
 
 	for (size_t i= 0; i < mutStrLen(keys); i++) {
@@ -622,9 +605,7 @@ void KeyboardIn(int box, const mutChar *keys)
 }
 
 void MidiAnalysis(int box, BYTE midiByte)
-
 {
-
 	struct midi_ereignis * lauf;
 
 	if ( midiByte & 0x80 )
@@ -635,7 +616,6 @@ void MidiAnalysis(int box, BYTE midiByte)
 			lauf->scan_pos = lauf->first_pos;
 		else {
 			lauf->scan_pos++;
-
 			if ( *(lauf->scan_pos) == -1 )
 				break;
 		}
@@ -647,7 +627,6 @@ void MidiAnalysis(int box, BYTE midiByte)
 
 void pascal _export KeyboardAnalyse(int box, int taste, char isLogic)
 {
-
 	for (struct keyboard_ereignis *help = first_keyboard[box]; help ; help=help->next)
 		if ( toupper(taste)==help->taste && isLogic == ( help->the_logik_to_expand != NULL ) ) {
 			execute_aktion(box, help->aktion);
@@ -657,7 +636,7 @@ void pascal _export KeyboardAnalyse(int box, int taste, char isLogic)
 
 void keyboard_analyse( int taste )
 {
-	KeyboardAnalyseSimple(aktuelles_keyboard_instrument, taste);
+	KeyboardAnalyseSimple(aktuelle_keyboard_box, taste);
 }
 
 void pascal _export KeyboardAnalyseSimple(int box, int taste)
@@ -780,9 +759,15 @@ void protokoll_liegende_relationen( int instr )
 
 void FlushUpdateUI()
 {
-	if ( keys_changed_sum && updateUIcallback ) {
-		keys_changed_sum = 0;
-		updateUIcallback();
+	if ( keys_changed_sum && updatecallback ) {
+                for (int i=0; i<MAX_BOX; i++) {
+                        if (keys_changed[i]) {
+                                updatecallback(i,logic_changed[i]);
+                                keys_changed[i]=0;
+                                logic_changed[i]=0;
+                        }
+                }
+                keys_changed_sum = 0;
 	}
 }
 
