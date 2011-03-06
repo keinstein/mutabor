@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-01-29 21:10+0100\n"
+"POT-Creation-Date: 2011-03-04 19:25+0100\n"
 "PO-Revision-Date: 2010-06-15 14:51+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -587,11 +587,11 @@ msgstr "Die MIDI-Kanäle %d und %d überschneiden sich"
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Fehler in der GMN-Datei „%s“ an der Position (%d, %d): %s"
 
-#: mu32/Execute.cpp:347
+#: mu32/Execute.cpp:337
 msgid "Unhandled case path: aufruf_umst_umst_bund"
 msgstr "Unhandled case path: aufruf_umst_umst_bund"
 
-#: mu32/Execute.cpp:352
+#: mu32/Execute.cpp:341
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unerwarteter Aktionstyp: %d"
@@ -625,32 +625,32 @@ msgstr "Byte"
 msgid "retuning"
 msgstr "Umstimmung"
 
-#: mu32/Runtime.cpp:125
+#: mu32/Runtime.cpp:126
 msgid "Generating tables"
 msgstr "Erzeuge Tabellen"
 
-#: mu32/Runtime.cpp:131
+#: mu32/Runtime.cpp:132
 msgid "Translation successful !"
 msgstr "Übersetzung war erfolgreich."
 
-#: mu32/Runtime.cpp:132
+#: mu32/Runtime.cpp:133
 msgid "No error occured !"
 msgstr "Es tauchte kein Fehler auf."
 
-#: mu32/Runtime.cpp:138
+#: mu32/Runtime.cpp:139
 msgid "Translation interrupted !"
 msgstr "Übersetzung wurde abgebrochen."
 
-#: mu32/Runtime.cpp:172
+#: mu32/Runtime.cpp:173
 msgid "Activation error"
 msgstr "Fehler beim Aktivieren"
 
-#: mu32/Runtime.cpp:585
+#: mu32/Runtime.cpp:591
 #, c-format
 msgid "%ls %d %d %d %d %d %d %d %d"
 msgstr "%ls %d %d %d %d %d %d %d %d"
 
-#: mu32/Runtime.cpp:588
+#: mu32/Runtime.cpp:594
 #, c-format
 msgid "%s %d %d %d %d %d %d %d %d"
 msgstr "%s %d %d %d %d %d %d %d %d"
@@ -947,7 +947,7 @@ msgstr "Suche nach?"
 msgid "Search help for keyword"
 msgstr "Hilfe nach einem Schlüsselwort durchsuchen"
 
-#: muwx/MutApp.cpp:801 muwx/MutFrame.cpp:1747
+#: muwx/MutApp.cpp:801 muwx/MutFrame.cpp:1757
 #, c-format
 msgid "Closing window of class %s"
 msgstr "Schließe Fenster der Klasse %s"
@@ -1008,7 +1008,7 @@ msgstr "Ü&ber"
 msgid "Show information about the program"
 msgstr "Informationen über das Programm anzeigen"
 
-#: muwx/MutApp.cpp:888
+#: muwx/MutApp.cpp:888 muwx/MutFrame.cpp:444
 #, fuzzy
 msgid "Stop"
 msgstr "An&halten\tF8"
@@ -1018,27 +1018,27 @@ msgstr "An&halten\tF8"
 msgid "Stop the current program"
 msgstr "Programm beenden"
 
-#: muwx/MutApp.cpp:897
+#: muwx/MutApp.cpp:897 muwx/MutFrame.cpp:460
 msgid "&Play"
 msgstr "Ab&spielen"
 
-#: muwx/MutApp.cpp:898
+#: muwx/MutApp.cpp:898 muwx/MutFrame.cpp:461
 msgid "Start playing the music from input file devices"
 msgstr "Musik der Datei-Geräte starten"
 
-#: muwx/MutApp.cpp:899
+#: muwx/MutApp.cpp:899 muwx/MutFrame.cpp:462
 msgid "St&op"
 msgstr "St&op"
 
-#: muwx/MutApp.cpp:900
+#: muwx/MutApp.cpp:900 muwx/MutFrame.cpp:463
 msgid "Stop playing the music from input file devices"
 msgstr "Musik der Datei-Geräte stoppen"
 
-#: muwx/MutApp.cpp:901
+#: muwx/MutApp.cpp:901 muwx/MutFrame.cpp:464
 msgid "P&ause"
 msgstr "&Pause"
 
-#: muwx/MutApp.cpp:902
+#: muwx/MutApp.cpp:902 muwx/MutFrame.cpp:465
 msgid "Pause plaing the music from input file devices"
 msgstr "Musik der Datei-Geräte anhalten."
 
@@ -1090,19 +1090,19 @@ msgstr "aktuellen Kasten &Auswählen"
 msgid "&View"
 msgstr "&Anzeigen"
 
-#: muwx/MutApp.cpp:943
+#: muwx/MutApp.cpp:943 muwx/MutFrame.cpp:455
 msgid "&Load routes"
 msgstr "Route laden"
 
-#: muwx/MutApp.cpp:944
+#: muwx/MutApp.cpp:944 muwx/MutFrame.cpp:456
 msgid "Load the current route configuration from a file"
 msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei."
 
-#: muwx/MutApp.cpp:945
+#: muwx/MutApp.cpp:945 muwx/MutFrame.cpp:457
 msgid "&Save routes"
 msgstr "Route &speichern"
 
-#: muwx/MutApp.cpp:946
+#: muwx/MutApp.cpp:946 muwx/MutFrame.cpp:458
 msgid "Save current route configuration to a file."
 msgstr "Speichert die aktuellen Routeneinstellungen."
 
@@ -1249,60 +1249,109 @@ msgstr "Fehler"
 msgid "The compile dialog could not be loaded."
 msgstr "Der Compiler-Dialog konnte nicht geladen werden."
 
-#: muwx/MutFrame.cpp:405
+#: muwx/MutFrame.cpp:409
 msgid "Toolbar"
 msgstr "&Werkzeugleiste"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:437
 msgid "New"
 msgstr "Neu"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:437
 msgid "New file"
 msgstr "Neue Datei"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:438
 msgid "Open"
 msgstr "Öffnen"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:438
 msgid "Open file"
 msgstr "Datei öffnen"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:439
 msgid "Save"
 msgstr "Speichern"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:439
 msgid "Save file"
 msgstr "Datei speichern"
 
-#: muwx/MutFrame.cpp:447
-msgid "Copy"
-msgstr "Kopieren"
+#: muwx/MutFrame.cpp:440
+#, fuzzy
+msgid "Save as"
+msgstr "Speichern"
 
-#: muwx/MutFrame.cpp:448
-msgid "Cut"
-msgstr "Ausschneiden"
+#: muwx/MutFrame.cpp:440
+#, fuzzy
+msgid "Save file with new name"
+msgstr "Speichert die aktuelle Datei unter einem neuen Namen"
 
-#: muwx/MutFrame.cpp:449
-msgid "Paste"
-msgstr "Einfügen"
-
-#: muwx/MutFrame.cpp:451
+#: muwx/MutFrame.cpp:441
 msgid "Print"
 msgstr "Drucken"
 
-#: muwx/MutFrame.cpp:453
+#: muwx/MutFrame.cpp:443
+#, fuzzy
+msgid "Activate"
+msgstr "&Aktivieren\tF9"
+
+#: muwx/MutFrame.cpp:443
+#, fuzzy
+msgid "Activate the logic"
+msgstr "Aktiviert den Mutabor-Kern."
+
+#: muwx/MutFrame.cpp:444
+msgid "Stop the logic"
+msgstr ""
+
+#: muwx/MutFrame.cpp:445
+#, fuzzy
+msgid "Panic"
+msgstr "&Panik\tF12"
+
+#: muwx/MutFrame.cpp:445
+msgid "Panic: switch all notes off"
+msgstr ""
+
+#: muwx/MutFrame.cpp:447
+msgid "Undo"
+msgstr ""
+
+#: muwx/MutFrame.cpp:447
+msgid "Undo last changes"
+msgstr ""
+
+#: muwx/MutFrame.cpp:448
+msgid "Redo"
+msgstr ""
+
+#: muwx/MutFrame.cpp:448
+msgid "Redo last undone changes"
+msgstr ""
+
+#: muwx/MutFrame.cpp:449
+msgid "Copy"
+msgstr "Kopieren"
+
+#: muwx/MutFrame.cpp:450
+msgid "Cut"
+msgstr "Ausschneiden"
+
+#: muwx/MutFrame.cpp:451
+msgid "Paste"
+msgstr "Einfügen"
+
+#: muwx/MutFrame.cpp:467
 msgid "About"
 msgstr "Über"
 
-#: muwx/MutFrame.cpp:453 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
+#: muwx/MutFrame.cpp:467 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
 #: xrc/reslocale.cpp:77 xrc/reslocale.cpp:96
 msgid "Help"
 msgstr "Hilfe"
 
-#: muwx/MutFrame.cpp:520
+#: muwx/MutFrame.cpp:529
 msgid ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
@@ -1310,25 +1359,25 @@ msgstr ""
 "Diese Logik ist momentan aktiv. Beim Schließen wird sie deaktiviert. Dieses "
 "Fenster wirklich schließen?"
 
-#: muwx/MutFrame.cpp:522
+#: muwx/MutFrame.cpp:531
 msgid "Please confirm closing."
 msgstr "Bitte bestätigen sie, das Fenster zu schließen."
 
-#: muwx/MutFrame.cpp:621
+#: muwx/MutFrame.cpp:630
 #, c-format
 msgid "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgstr "Unerwartetes Ereignis in MutFrame::CmFileOpen: %d"
 
-#: muwx/MutFrame.cpp:635
+#: muwx/MutFrame.cpp:644
 msgid "noname.mut"
 msgstr "Unbenannt.mut"
 
-#: muwx/MutFrame.cpp:654 muwx/MutFrame.cpp:1591
+#: muwx/MutFrame.cpp:663 muwx/MutFrame.cpp:1601
 #, c-format
 msgid "%s -- %s"
 msgstr "%s – %s"
 
-#: muwx/MutFrame.cpp:705
+#: muwx/MutFrame.cpp:715
 msgid ""
 "There are no realtime \t\t                           instruments in the "
 "routes.\n"
@@ -1344,97 +1393,97 @@ msgstr ""
 "(Das bedeutet auch, dass die Stimmungen zur Laufzeit nicht geändert werden "
 "können.)"
 
-#: muwx/MutFrame.cpp:711
+#: muwx/MutFrame.cpp:721
 msgid "No realtime => batch mode?"
 msgstr "Keine Echtzeit => Stapelmodus?"
 
-#: muwx/MutFrame.cpp:980
+#: muwx/MutFrame.cpp:990
 msgid "Routes"
 msgstr "Routen"
 
-#: muwx/MutFrame.cpp:1017
+#: muwx/MutFrame.cpp:1027
 #, c-format
 msgid "Logic -- Box %d"
 msgstr "Logik - Kasten %d"
 
-#: muwx/MutFrame.cpp:1083
+#: muwx/MutFrame.cpp:1093
 #, c-format
 msgid "Current keys at Box %d"
 msgstr "Aktuelle Tasten im Kasten %d"
 
-#: muwx/MutFrame.cpp:1090
+#: muwx/MutFrame.cpp:1100
 #, c-format
 msgid "Current tone system at Box %d"
 msgstr "Aktuelles Tonsystem in Kasten %d"
 
-#: muwx/MutFrame.cpp:1097
+#: muwx/MutFrame.cpp:1107
 msgid "Action log"
 msgstr "Aktionen"
 
-#: muwx/MutFrame.cpp:1100
+#: muwx/MutFrame.cpp:1110
 #, c-format
 msgid "Actions at Box %d"
 msgstr "Aktionen - in Kasten %d"
 
-#: muwx/MutFrame.cpp:1106
+#: muwx/MutFrame.cpp:1116
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unerwarteter Wert: WK_LOGIC"
 
-#: muwx/MutFrame.cpp:1111
+#: muwx/MutFrame.cpp:1121
 msgid "Unexpected value: WK_ROUTE"
 msgstr "Unerwarteter Wert: WK_ROUTE"
 
-#: muwx/MutFrame.cpp:1116
+#: muwx/MutFrame.cpp:1126
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unerwarteter Wert: WK_EDIT"
 
-#: muwx/MutFrame.cpp:1121
+#: muwx/MutFrame.cpp:1131
 msgid "Unexpected value: WK_NULL"
 msgstr "Unerwarteter Wert: WK_NULL"
 
-#: muwx/MutFrame.cpp:1126
+#: muwx/MutFrame.cpp:1136
 #, c-format
 msgid "Unexpected window kind: %d"
 msgstr "Unerwarteter Fenstertyp: %d"
 
-#: muwx/MutFrame.cpp:1298
+#: muwx/MutFrame.cpp:1308
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize: nicht implementiert"
 
-#: muwx/MutFrame.cpp:1665
+#: muwx/MutFrame.cpp:1675
 msgid "Translation in batch mode completed. Output was generated."
 msgstr "Die Umwandlung im Stapelmodus wurde beendet und die Ausgabe generiert."
 
-#: muwx/MutFrame.cpp:1666
+#: muwx/MutFrame.cpp:1676
 msgid "Batch translation finished"
 msgstr "Stapelverarbeitung beendet"
 
-#: muwx/MutFrame.cpp:1775
+#: muwx/MutFrame.cpp:1785
 #, c-format
 msgid "Box %d got id %d"
 msgstr "Kasten %d bekam die Identifikationsnummer %d"
 
-#: muwx/MutFrame.cpp:1778
+#: muwx/MutFrame.cpp:1788
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Momentan gibt es %d Punkte im Kastenmenü"
 
-#: muwx/MutFrame.cpp:1780
+#: muwx/MutFrame.cpp:1790
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an."
 
-#: muwx/MutFrame.cpp:1781
+#: muwx/MutFrame.cpp:1791
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Kasten %d auswählen\tCtrl+%d"
 
-#: muwx/MutFrame.cpp:1782
+#: muwx/MutFrame.cpp:1792
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Kasten %d als aktiven Kasten für Kommandos auswählen."
 
-#: muwx/MutFrame.cpp:1792
+#: muwx/MutFrame.cpp:1802
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten %d"

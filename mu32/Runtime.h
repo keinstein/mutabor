@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.h,v 1.12 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.h,v 1.13 2011/03/06 13:15:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/03/06 13:15:41 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: Runtime.h,v $
- * Revision 1.12  2011/02/20 22:35:55  keinstein
+ * Revision 1.13  2011/03/06 13:15:41  keinstein
+ * some rearrangement for update callback kernel->GUI
+ *
+ * Revision 1.12  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -47,14 +50,14 @@
 
 #include "Device.h"
 
-typedef void UpdateUICallback();
+typedef void UpdateCallback(int Box, bool Logic);
 
 extern "C"
 {
 	extern bool RealTime;
 
 	extern jmp_buf weiter_gehts_nach_compilerfehler;
-	extern UpdateUICallback* updateUIcallback;
+	extern UpdateCallback* updatecallback;
 
 #ifndef WX
 	char pascal Compile( TDialog *compWin, const char *name );
@@ -63,7 +66,7 @@ extern "C"
 	char pascal Compile( CompDlg *compDia, const wxChar *name );
 
 #endif
-	bool pascal Activate(bool realTime, UpdateUICallback* callback = 0);
+	bool pascal Activate(bool realTime, UpdateCallback* callback);
 	void pascal Stop();
 	void pascal Panic();
 

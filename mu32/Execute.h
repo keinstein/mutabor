@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.h,v 1.5 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.h,v 1.6 2011/03/06 13:15:40 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/03/06 13:15:40 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Execute.h,v $
- * Revision 1.5  2011/02/20 22:35:55  keinstein
+ * Revision 1.6  2011/03/06 13:15:40  keinstein
+ * some rearrangement for update callback kernel->GUI
+ *
+ * Revision 1.5  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -36,6 +39,7 @@
 
 void KeyboardIn(int box, const mutChar *keys);
 
+void MutResetKeys();
 void GlobalReset();
 
 void AddKey(int box, int taste, int id);

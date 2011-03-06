@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.27 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.28 2011/03/06 13:15:41 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.27 $
+ * \date $Date: 2011/03/06 13:15:41 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.27  2011/02/20 22:35:57  keinstein
+ * Revision 1.28  2011/03/06 13:15:41  keinstein
+ * some rearrangement for update callback kernel->GUI
+ *
+ * Revision 1.27  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.26  2011-02-13 17:20:46  keinstein
@@ -674,8 +677,9 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 // Logic-Arbeit: CmDoActivate, CmStop, CmPanic, CmExecute
 
 
-void UpdateUIcallback()
+void UpdateUIcallback(int box,bool logic_changed)
 {
+        // todo Update UI
 	if ( theFrame ) {
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
 		                           CM_UPDATEUI);
@@ -776,7 +780,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 	DEBUGLOG (other, _T("Open other than logic; One window mode: %d"),OWM);
 
-	// Fenster außer curBox setzen
+	// set windows except curBox setzen
 	if ( !OWM )
 		for (WinKind kind = WK_KEY; kind < WK_LOGIC; kind++)
 			for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
