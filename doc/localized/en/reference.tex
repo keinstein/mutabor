@@ -88,11 +88,22 @@ You can read and print this reference in the following formats:
 \chapter{language reference}\label{cha:sprachreferenz}
 \label{eins}
 
-On the one hand this booklet can be considered as a short
-reference manual. On the other hand it is a basic
-description of the logic language of \mutabor{}. It is not intended to
-be 
-
+On the one hand this reference manual shall be a short
+is reference book, on the other hand, it provides the basic
+description of 
+the logic language of \mutabor{} dar. It is not suitable for the
+Logical language to learn, for this we direct the reader to the
+Operation manual, but it provides exact information for dubious
+questions.
+The reference manual is designed to
+determine the functionality of the logic language. When a user
+ of \mutabor{} encounters that a programmed logic 
+doesn't work the way he wants it to, then this
+reference manual will be the decision-making body, against which he
+can check whether the program logic is wrong, or whether
+\mutabor{} not work correctly.
+This section describes the logic language \mutabor{} in version 3.0.
+\iffalse
 Das Referenzhandbuch soll einerseits ein kurzes
 Nachschlagewerk sein, andererseits stellt es die Basisbeschreibung
 der Logiksprache \mutabor{} dar. Es ist nicht dafür geeignet, die
@@ -105,50 +116,69 @@ nicht so funktioniert, wie er es wünscht, so ist dieses
 Referenzhandbuch die Entscheidungsinstanz, anhand derer man
 feststellen kann, ob das Logikprogramm falsch ist, oder ob
 \mutabor{} nicht korrekt funktioniert.
-Dieser Abschnitt beschreibt die Logiksprache \mutabor{} in der Version 3.0.
+Dieser Abschnitt beschreibt die Logiksprache \mutabor{} in der Version
+3.0.
+\fi
 
 
-\chapter{Lexikalische Konventionen}\label{cha:lexik-konv}
+\chapter{Lexical conventions}\label{cha:lexik-konv}
 \label{zwei}
 
+A program consists of a text, that is saved in a file. It will be
+compiled in one single phase.
+\iffalse
 Ein Programm besteht aus einem Text, der in einer Datei gespeichert ist.
 Es wird in einer einzigen Phase übersetzt.
+\fi
 
-\section{Eingabesymbole}\label{sec:eingabesymbole}
-\index{Eingabesymbole}
+\section{Input symbols}\label{sec:eingabesymbole}
+\index{input symbols}
 \label{zweieins}
 
-Es  gibt fünf Klassen\index{Wortklassen} von Eingabesymbolen:
-Namen\index{Namen},  reservierte  Worte\index{Worte!reservierte},
-Zahlen,
- Operatoren  und  andere
-Trenner.  Leerzeichen,\index{Leerzeichen} Tabulatorzeichen,
-Vertikal-Tabulatoren,
-Zeilentrenner,\index{Zeilentrenner} Seitenvorschub\index{Seitenvorschub}
-sowie Kommentare\index{Kommentare},
-allgemein mit Zwischenraum  bezeichnet,  werden
-ignoriert,  abgesehen davon,  daß sie zur Trennung direkt
-benachbarter Namen, Zahlen oder reservierter Worte nötig sind.
+There are five classees \index{word class} of input symbols:
+Names\index{Name}, reserved words\index{word!reserved},
+numbers,
+operators  and  other
+delimiters.  Spaces,\index{space} tabulators,
+vertical tabulators,
+line feeds,\index{line feed} page feeds\index{page feed}
+as well as comments\index{comments},
+usually denoted as white space,  will be ignored, with the exception
+that they are necessery to distinguish direct neigbouring names,
+numbers or reserved words.
 
-Wenn  die Eingabe bis zu einem bestimmten Zeichen schon in Eingabesymbole
-zerlegt  wurde,  wird als nächstes
-Eingabesymbol die längstmögliche  Kette
-von Zeichen aufgefasst, die ein Eingabesymbol darstellen kann.
+If the input been already dissambled up to a certain character, the
+next symbol will be the most possible string of characters, which can
+be interpreted as an input symbol.
 
-
-\section{Kommentare}\label{sec:kommentare}
-\index{Kommentare}
+\section{Comments}\label{sec:kommentare}
+\index{comment}
 \label{zweizwei}
 
-Kommentare\index{Kommentar} werden in doppelte Anführungszeichen ({\tt \dq})
-\index{\dq (Anführungszeichen)}eingeschlossen.
-Kommentare  können  nicht
-verschachtelt\index{Verschachtelung} werden.
-Kommentare dürfen sich über mehrere Zeilen erstrecken.
+Comments\index{comment} an entailed in douple quotes ({\tt
+  \dq})\index{\dq (double quote)}.
+Comments cannot be nested, but can span multiple lines.
 
-\section{Namen}\label{sec:namen}
+\section{Names}\label{sec:namen}
 \label{zweidrei}
 
+A name \index{name} is a sequence of
+letters and numerals; the
+first character must be alphabetic. This includes
+the underscore (\_) \index {\_ (underscore)} and the apostrophe
+({\bf'}) \index {' (apostrophe)}.\footnote {The underscore is one of the letters, so
+you can write meaningful names legibly, e.\,g.,
+{\tt LOGIC third\_tone\_mutating} is better than
+{\tt LOGIC thirdtonemutating},
+and the apostrophe counts as a letter
+so that tone with a simple or multiple apostrophies can
+provide the name, e.\,g {\tt TONE e${}'''$}}
+Large and small letters are treated the same.
+Names can be at any length.
+To distinguish names of the entire name is used,
+and not just the first few letters, as it is commen in other
+programming laguages\index{significance}.
+\iffalse
 Ein Name\index{Namen} besteht aus einer Folge von
 Buchstaben und Ziffern;  das
 erste Zeichen muss ein Buchstabe sein.  Dabei zählen
@@ -166,7 +196,20 @@ Namen können beliebig lang sein.
 Zur  Unterscheidung von Namen wird der gesamte Name herangezogen,
 und nicht nur die ersten paar Buchstaben, wie dies bei anderen
 Programmiersprachen üblich ist\index{Signifikanz}.
+\fi
 
+In the books of \mutabor{} the terms {\it name} \index{name}
+and {\it identifier}\index{identifier} are
+used in parallel and with equal meaning. Furthermore, in some
+syntax graphs also terms of the type {\it interval name}, {\it tone
+  name}, \ldots are
+used. These terms are considered syntactically as simple names.
+Such a name describes that a particular type of
+Objects are meant. In principle, this does not belong to the syntax
+of the logic language, but will be checked later semantically. However, it increases
+the understanding of the examples when seen directly, what kind of name
+comes into question.
+\iffalse
 In den Büchern von \mutabor{} werden die Begriffe {\it Name}\index{Namen}
 und {\it Bezeichner}\index{Bezeichner}
 parallel und mit gleicher Bedeutung verwendet. Ferner werden bei einigen
@@ -177,13 +220,27 @@ Objekten gemeint sind. Dies gehört prinzipiell nicht zur Syntax der
 Logiksprache, sondern wird erst später semantisch überprüft. Es erhöht
 jedoch das Verständnis, wenn direkt erkennbar ist, welche Art von Namen
 in Frage kommt.
+\fi
 
-\section{Reservierte Worte}\label{sec:reservierte-worte}
+\section{Reserved words}\label{sec:reservierte-worte}
 \label{zweivier}
 
-Die  folgenden  Worte sind reserviert\index{Worte!reservierte}
- und können  nur  mit  ihrer
-vordefinierten Bedeutung verwendet werden:
+The following words are reserved\index{Worte!reservierte}
+and can be used only in their predefined meaning:
+
+\begin{center}
+\begin{tabular}{|llll|}
+	      \hline
+   ELSE & SHIFTED   & PATTERN & INTERVAL \\
+   LOGIC  & MIDIIN   & MIDICHANNEL & MIDIOUT    \\
+   KEY     & TONE    & TONESYSTEM &  RETUNING \\
+   ROOT    &        &           &              \\
+ \hline
+\end{tabular}
+\end{center}
+
+Likewise, the folloging German key words can be used. They are also
+reserved and must not be used as names.
 
 %\vspace{1cm}
 \begin{center}
@@ -198,27 +255,21 @@ vordefinierten Bedeutung verwendet werden:
 \end{center}
 %\vspace{1cm}
 
-Ebenso dürfen die folgenden englischen Schlüsselworte
-benutzt werden. Sie sind ebenfalls reserviert und
-dürfen nicht als Namen benutzt werden.
+All other words can be used as names or identifiers.
 
-\begin{center}
-\begin{tabular}{|llll|}
-	      \hline
-   ELSE & SHIFTED   & PATTERN & INTERVAL \\
-   LOGIC  & MIDIIN   & MIDICHANNEL & MIDIOUT    \\
-   KEY     & TONE    & TONESYSTEM &  RETUNING \\
-   ROOT    &        &           &              \\
- \hline
-\end{tabular}
-\end{center}
-
-Alle anderen Wörter dürfen als Namen oder Bezeichner verwendet werden.
-
-\section{Zahlen}\label{sec:zahlen}
-\index{Zahlen}
+\section{Numbers}\label{sec:zahlen}
+\index{number}
 \label{zweifuenf}
 
+Numbers can be integers or reals written with a decimal point. A
+notation using decimal exponents is not allowed.\index{number}
+Furthermore a number can start with the symbol \textbf{\#}\index{\#}
+and contain further hexadecimal digits\index{hex digit}. This notation
+means, that the number will be evaluated as number with basis 16. In
+the hexadecimal notation no decimal point is allowed, consequently,
+only integers can be noted in this system.
+
+\iffalse
 Zahlen können ganzzahlig oder mit Dezimalpunkt geschrieben werden.
 Eine Schreibweise mit Zehnerexponent ist nicht
 zugelassen.\index{Zahlen} Ferner kann eine Zahl auch mit dem Zeichen
@@ -226,23 +277,41 @@ zugelassen.\index{Zahlen} Ferner kann eine Zahl auch mit dem Zeichen
 enthalten. Diese Schreibweise bedeutet, daß die Zahl zur Basis 16
 ausgewertet wird. In dieser Hex-Schreibweise ist kein Dezimalpunkt
 erlaubt, folglich sind nur ganzzahlige Werte darstellbar.
+\fi
 
+Similar to names, numbers can be denoted in syntax diagrams like
+of \textit{factor} or \textit{anchor key} in order to emphasize their
+semantic meaning. Syntactically these are usual numbers.
+\iffalse
 Ähnlich wie bei Namen werden Zahlen im Syntaxdiagramm auch als {\it Faktor}
 oder {\it Verankerungs-Taste} bezeichnet,
 um ihre jeweilige semantische Bedeutung
 hervorzuheben. Es handelt sich aber syntaktisch gesehen um ganz gewöhnliche
 Zahlen.
+\fi
 
+At certain places only integers are allowed (e.\,g. as anchor key,
+width of a tone system,\ldots) and at other places also decimal
+fractions are allowed (tone frequency, interval size,\ldots).
+\iffalse
 An einigen Stellen sind nur ganze Zahlen zugelassen (z.\,B. als
 Verankerungs-Taste, Tonsystem-Breite,\ldots) und an anderen Stellen
 sind auch Komma-Zahlen zugelassen, (Tonfrequenz,
 In\-ter\-vall\-gr"o"se,\ldots).
+\fi
 
 
 
-\chapter{Syntax Schreibweise}\label{cha:syntax-schreibweise}
+\chapter{Syntax description}\label{cha:syntax-schreibweise}
 \label{drei}
 
+In the description of the syntax in this book the notions of grammar
+will be drawen in \emph{in rectangular boxes} and reserved words and
+characters \emph{in boxes with rounded corners}. The syntax can be
+derived by going along the arrows in the syntax diagram. Alternatives
+can bee seen as branching points and repeating parts occure when the
+diagram contains cycles. An Example:
+\iffalse
 In der Syntax-Darstellung in diesem Buch werden die Grammatikbegriffe
 {\it in eckigen Kästchen} und reservierte Worte und Zeichen {\it in
 ovalen Kästchen} geschrieben. Die Syntax erhält man, indem man auf den
@@ -250,6 +319,7 @@ Pfeilen entlang durch das Syntaxdiagramm läuft.
 Alternative Formulierungen erscheinen dabei als Verzweigungen
 und Wiederholungen ergeben sich, indem das Syntaxdiagramm Zyklen enthält.
 Ein Beispiel:
+\fi
 
 \input{syn1.pic}
 
