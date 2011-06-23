@@ -2,14 +2,17 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: treestorage.h,v 1.3 2011/02/20 22:35:56 keinstein Exp $
+ * $Id: treestorage.h,v 1.4 2011/06/23 07:41:30 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2011/06/23 07:41:30 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: treestorage.h,v $
- * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * Revision 1.4  2011/06/23 07:41:30  keinstein
+ * fix compile errors
+ *
+ * Revision 1.3  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:45  keinstein
@@ -31,7 +34,6 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
- */
 #ifndef MUTABOR_TREESTORAGE_H
 #define MUTABOR_TREESTORAGE_H
 
