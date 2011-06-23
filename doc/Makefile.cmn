@@ -5,6 +5,10 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 #pkgdatadir := $(localpkgdatadir)
 
 .PHONY: mac copymac install-data-mutabor zipfile
+%.pdf:%.tex $(TEXSOURCES) $(top_docdir)/preamble.tex \
+	$(TEX_DEPS)
+	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
+	pdflatex --synctex=1 '$*'
 
 html: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
@@ -17,6 +21,9 @@ $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	top_docdir='$(top_docdir)' \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 
 	cp help.zip $(srcdir)/$(ZIPFILE)
+
+pdf: $(PDFFILES)
+
 
 dist: $(srcdir)/$(ZIPFILE)
 

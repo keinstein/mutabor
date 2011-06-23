@@ -19,6 +19,7 @@ for seq in 1 2 3 4
 do 
   for datei in "$@"
   do
+      dateiname=`basename "$datei"`
     echo 
     echo $seq $datei
     echo $TEXINPUTS
@@ -26,9 +27,9 @@ do
 	latex '\def\outputformat{help}\input '"$datei"
 	if [ -f "${datei%.tex}".idx ] 
 	then
-  	  tex '\def\filename{{'"${datei%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht' 
-	  makeindex -o ${datei%.tex}.ind ${datei%.tex}.4dx 
-	  makeindex -s wxdin.ist -o ${datei%.tex}.wxi ${datei%.tex}.4dx
+  	  tex '\def\filename{{'"${dateiname%.tex}"'}{idx}{4dx}{ind}} \input  idxmake.4ht' 
+	  makeindex -o ${datei%.tex}.ind ${dateiname%.tex}.4dx 
+	  makeindex -s wxdin.ist -o ${datei%.tex}.wxi ${dateiname%.tex}.4dx
         fi
   done
 done
