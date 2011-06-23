@@ -2,7 +2,7 @@
 	$(srcdir)/Referenz.tex \
 	$(srcdir)/Bedienung.tex
 TEXSOURCES = $(srcdir)/reference.tex
-PDFFILES = reference.pdf
+PDFFILES = $(srcdir)/reference.pdf
 ZIPFILE = Help.zip
 rel_docdir = ../..
 
