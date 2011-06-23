@@ -1,0 +1,288 @@
+\setcounter{tocdepth}{1}
+% Grundeinstellungen liegen in der Datei „tshtml.cfg“
+\usepackage[%tshtml,
+mutabor,
+% Es folgt das Hauptformat: hier xhtml
+            html,
+% CSS2 verwenden
+%            css2,
+% in der Log-Datei Informationen zur Konfiguration von tex4ht ausgeben
+          info,
+% Fußnoten (und Literaturzitate) erscheinen beim überfahren der Marke
+%            mouseover,
+% Auf der ersten Seite wird auch ein „Weiter“-Pfeil angezeigt
+            next,
+            sections+,
+% HTML-Dateien möglichst kurz -- maximale Aufsplittungstiefe
+            4,
+ %            nominitoc,
+% Index 2-Spaltig
+            index=2,
+            Gin-dim+,
+% HTML-Zeichensatz: UTF-8
+            charset=utf-8,
+            hyperref,
+            NoFonts,
+%            fonts+
+%            fonts,
+]{tex4ht}
+\makeatletter
+\edef\ts@savecatcode{\noexpand\catcode`\noexpand\:\the\catcode`\:\relax} 
+%\catcode`\:11\relax
+\AtEndDocument{\makehhk}
+\newcommand\tshhkentry{}
+\newcommand\tsatoclink{}
+
+%\:::HRefTag=macro:
+%#1#2->\if \relax #2\relax \else \:TagHTag {#2}\fi \HCode {<\tag:A \:newlnch \if
+% \relax #1\relax \NOHREF: {#2}\else \HREF: "\get:hfile {#1}\:sharp #1"\fi \if \
+%relax #2\relax \else \space \NAME: "#2"\fi \:attr \empty:lnk >}.
+%<insert>    \show\:::HRefTag
+
+\expandafter\def\expandafter\mut@sharp\expandafter{\csname :sharp\endcsname}
+
+\newif\ifwx@inrange
+\wx@inrangefalse
+\def\wx@item#1{%
+  \def\wx@item@{#1}%
+  \let\wx@indextext\wx@item@
+}
+\def\wx@subitem#1{%
+  \def\wx@subitem@{\wx@item@{}: #1}
+  \let\wx@indextext\wx@subitem@
+}
+\def\wx@subsubitem#1{%
+  \def\wx@subsubitem@{\wx@subitem@{} -- #1}%
+  \let\wx@indextext\wx@subsubitem@
+}
+\def\wx@LNK#1#2#3#4{%
+  \ifwx@inrange
+  \wx@inrangefalse
+  \else
+  \HCode{<li>^^J}%
+  \HCode{<object type="text/sitemap" >^^J%
+\space<param name="Name" value="}\wx@indextext\HCode{" >^^J%
+\space<param name="Local" value="}#1\mut@sharp #2\HCode{" >^^J%
+</object>^^J}% 
+  \HCode{</li>^^J}%
+  \fi
+}
+\def\loadwxindex{%
+  {%
+    \let\item\wx@item
+    \let\subitem\wx@subitem
+    \let\subsubitem\wx@subsubitem
+    \let\LNK\wx@LNK
+    \let\rangeto\wx@inrangetrue
+    \InputIfFileExists{\jobname.wxi}{}{}%
+  }%
+}
+
+
+
+\def\tsatoclink#1#2#3#4{%
+  \typeout{Setting: \csname get:hfile\endcsname{#2} at \csname :sharp\endcsname #2}%
+  \HCode{%
+\tslinestart<object type="text/sitemap" >^^J
+\tslinestart\space<param name="Name" value="}#4\HCode{" >^^J
+\tslinestart\space<param name="Local" value="}\csname get:hfile\endcsname{#2}\csname :sharp\endcsname #2\HCode{" >^^J
+\tslinestart</object>^^J}% "<
+%   \expandafter\ifx \csname #3-def\endcsname\relax
+%      \global \expandafter\let \csname #3-def\endcsname\def
+%      \Link {#2}{#3}
+%   \else
+%      \Link {#2}{}
+%   \fi 
+%   {\Configure {ref}{}{}{}%
+%     \let \EndLink =\empty
+%     \let \H:Tag:attr \:gobbleII
+%     \let \:::HRef \empty
+%     \def \::hRef [##1]##2{}%
+%     \def \::hRefTag [##1]##2##3{}%
+%     \def \:::HRefTag ##1##2{}%
+%     \Configure {cite}{}{}{}{}%
+%     #4}%
+%   \EndLink
+}
+\def\ts@hhkentry#1#2#3#4{%
+  \def\tslinestart{#1\space}%
+  \HCode{#1<li>^^J}%
+  #3%
+  \HCode{#1</li>^^J}%
+}
+\def\tshhkentry{\ts@hhkentry{}}
+\def\tstocendsubparagraph{}
+\def\tstocendparagraph{\endsubparagraph}
+
+\def\deftocmacro#1#2#3{
+  \expandafter\def\csname tstocstart#1\endcsname{%
+    \HCode{#3\space<ul><!-- u#1 -->^^J}%
+    \expandafter\let\csname tocstart#1\endcsname\relax
+    \expandafter\def\csname tocstop#1\expandafter\endcsname{\csname tstocstop#1\endcsname}
+  }
+
+  \expandafter\def\csname tstocskip#1\endcsname{\csname tocstop#2\endcsname}
+
+  \expandafter\def\csname tstocstop#1\endcsname{%
+    \csname tocstop#2\endcsname
+    \HCode{#3\space</ul><!-- i#1 -->^^J}%
+    \expandafter\def\csname tocstop#1\endcsname{\csname tstocskip#1\endcsname}
+  }
+
+  \expandafter\def\csname tstoc#2\endcsname{%
+    \csname tocstop#2\endcsname
+    \csname tocstart#1\endcsname
+    \expandafter\def\csname tocstart#2\endcsname{\csname tstocstart#2\endcsname}
+    \HCode{#3\space\space<!-- a#2 -->^^J}%
+    \ts@hhkentry{#3\space\space}%
+  }%
+}
+
+\def\tstocpart{
+  \tocstoppart
+  \ts@hhkentry{}%
+}
+
+\deftocmacro{part}{chapter}{}
+\deftocmacro{chapter}{section}{\space}
+\deftocmacro{section}{subsection}{\space\space}
+\deftocmacro{subsection}{subsubsection}{\space\space\space}
+\deftocmacro{subsubsection}{paragraph}{\space\space\space\space}
+\deftocmacro{paragraph}{subparagraph}{\space\space\space\space\space}
+\def\tocstopsubparagraph{}
+
+\def\gobblenl{\@ifnextchar[\@gobblenl{}}
+\def\@gobblenl[#1]{}
+{\catcode`\^^J=\active
+  \gdef\mknlsp{%
+    \def^^J{ }}%
+}
+\def\@nl@end{nl@end}
+\def\@removenl#1#2\@nl@end{%
+  \ifx#1^^J
+  \ 
+  \else
+  #1
+  \fi
+  \ifx#2\relax
+  \else
+  \expandafter\@removenl
+  \fi
+}
+
+\newcommand\removenewline[1]{%
+  \ifx#1\relax
+  \else
+    \@removenl#1\@nl@end
+  \fi
+}
+
+\newcommand\mutabortitle{}
+\ifhelp
+  \let\mutaborsavesubject\subject
+  \def\subject#1{%
+    \def\mutabortitle{#1}%
+    \mutaborsavesubject{#1}%
+  }
+\else
+  \let\mutaborsavetitle\title
+  \def\title#1{%
+    \def\mutabortitle{#1}%
+    \mutaborsavetitle{#1}%
+  }
+\fi
+\def\mutabordefaulttopic{\jobname.html}
+\newcommand\tsarg{}
+\def\tsarg#1{#1}
+\let\tsdotocentry\tsarg
+\expandafter\let\expandafter\mut@gobbleIV\csname :gobbleIV\endcsname
+\expandafter\let\expandafter\mut@gobbleIII\csname :gobbleIII\endcsname
+\expandafter\let\expandafter\mut@gobble\csname :gobble\endcsname
+\newcommand\makehhk{%
+  {\ignorespaces
+    \let\par\relax
+    \def\showname##1{\expandafter\show\csname ##1\endcsname}%
+    \let\@gnewline\space
+    \def\@newline{\space\mut@gobbleIII}%
+    \let\texorpdfstring\@secondoftwo%
+    \let\fontencoding\mut@gobble
+    \let\fontfamily\mut@gobble
+    \let\fontseries\mut@gobble
+    \let\fontshape\mut@gobble
+    \let\fontsize\mut@gobble
+    \let\@setfontsize\mut@gobbleIII
+    \let\usefont\mut@gobbleIV 
+    \let\selectfont\relax
+    \let\LARGE\relax
+    \let\normalsize\relax
+    % .hhp-Datei erstellen.
+    \special{t4ht>\jobname.hhp}%
+    \HCode{%
+Contents file=\jobname.hhc^^J%
+Index file=\jobname.hhk^^J%
+Title=}{%
+      \removenewline\expandafter{\mutabortitle}}%
+    \HCode{^^J%
+Default Topic=\mutabordefaulttopic^^J
+Charset=UTF-8^^J}%
+\special{t4ht<\jobname.hhp}%
+\typeout{done}%
+%\expandafter\show\csname a:TocLink\endcsname
+    \let\doTocEntry\tsdotocentry
+    \expandafter\let\csname a:TocLink\endcsname\tsatoclink
+    \let\toclikesection\tshhkentry
+    \let\toclikechapter\tshhkentry
+    \let\tocaddchap\tshhkentry
+    \let\tocpart\tshhkentry
+    \let\tocsection\tshhkentry
+    \let\tocchapter\tshhkentry
+    \let\tocsubsection\tshhkentry
+    \let\tocparagraph\tshhkentry
+    \let\tocappendix\tshhkentry
+    \let\tocminisec\tshhkentry
+    \let\textsc\tsarg%
+    \special{t4ht>\jobname.hhk}%
+    \HCode{<ul>^^J}%
+    \loadwxindex 
+%    \catcode`\#11
+    \InputIfFileExists{\jobname.4ct}{}{}%
+    \HCode{</ul>^^J}%
+    \special{t4ht<\jobname.hhk}%
+%
+    \let\toclikesection\tstocsection
+    \let\toclikechapter\tstocchapter
+    \let\tocaddchap\tstocchapter
+    \let\tocpart\tstocpart
+    \let\tocsection\tstocsection
+    \let\tocchapter\tstocchapter
+    \let\tocsubsection\tstocsubsection
+    \let\tocparagraph\tstocparagraph
+    \let\tocappendix\tstocchapter
+    \def\tocminisec{\tocparagraph}%
+%
+    \let\tocstartpart\relax
+    \let\tocstoppart\tstocskippart
+    \let\tocstartchapter\relax
+    \let\tocstopchapter\tstocskipchapter
+    \let\tocstartsection\relax
+    \let\tocstopsection\tstocskipsection
+    \let\tocstartsubsection\relax
+    \let\tocstopsubsection\tstocskipsubsection
+    \let\tocstartsubsubsection\relax
+    \let\tocstopsubsubsection\tstocskipsubsubsection
+    \let\tocstartparagraph\relax
+    \let\tocstopparagraph\tstocskipparagraph
+    \let\tocstartsubparagraph\relax
+    \let\tocstopsubparagraph\tstocskipsubparagraph
+%
+    \special{t4ht>\jobname.hhc}%
+    \HCode{<ul>^^J}%
+%    \catcode`\#11
+    \InputIfFileExists{\jobname.4ct}{}{}%
+    \HCode{</ul>^^J}%
+    \special{t4ht<\jobname.hhc}%
+  }%
+  \relax
+}
+\endinput
+
