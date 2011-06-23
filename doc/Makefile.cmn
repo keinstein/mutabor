@@ -7,8 +7,15 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 .PHONY: mac copymac install-data-mutabor zipfile
 %.pdf:%.tex $(TEXSOURCES) $(top_docdir)/preamble.tex \
 	$(TEX_DEPS)
-	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
-	pdflatex --synctex=1 '$*'
+	rm $*.out $*.aux $*.ind; \
+	for i in 0 1 2 ; \
+	do \
+		TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
+		pdflatex --synctex=1 '$*' ; \
+		makeindex `basename "$*"` ; \
+		makeglossaries `basename "$*"` ; \
+	done ; \
+	mv `basename $*.pdf` $@
 
 html: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
@@ -22,7 +29,7 @@ $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 
 	cp help.zip $(srcdir)/$(ZIPFILE)
 
-pdf: $(PDFFILES)
+pdf-am: $(PDFFILES)
 
 
 dist: $(srcdir)/$(ZIPFILE)
