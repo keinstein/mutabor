@@ -1,4 +1,4 @@
-SUBDIRS = de
+SUBDIRS = de en
 
 mac: mac-recursive
 
