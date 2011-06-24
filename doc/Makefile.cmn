@@ -7,13 +7,12 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 .PHONY: mac copymac install-data-mutabor zipfile
 %.pdf:%.tex $(TEXSOURCES) $(top_docdir)/preamble.tex \
 	$(TEX_DEPS)
-	rm $*.out $*.aux $*.ind; \
+	rm *.out *.aux *.ind; \
 	for i in 0 1 2 ; \
 	do \
 		TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 		pdflatex --synctex=1 '$*' ; \
 		makeindex `basename "$*"` ; \
-		makeglossaries `basename "$*"` ; \
 	done ; \
 	mv `basename $*.pdf` $@
 

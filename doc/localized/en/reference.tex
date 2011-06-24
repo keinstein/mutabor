@@ -323,13 +323,19 @@ Ein Beispiel:
 
 \input{syn1.pic}
 
-Das Wort {\it TON} muss genau so geschrieben werden, während das Konstrukt
-{\it EinzelTon} noch genauer aufgelöst werden muss. Ferner ergibt sich durch
-die Schleife, daß mehrere Konstrukte von der Art {\it EinzelTon}
-aufeinander folgen können.
+The word \textit{TONE} must be written exactyly as is, while the
+construct \textit{simple tone} has to be further dissolved. The loop
+has the effect, that multiple constructs of the form \textit{single
+  tone} can follow each other.
 
 
-\chapter{Das Logikprogramm}\label{cha:das-logikprogramm}
+\chapter{The  logik program}\label{cha:das-logikprogramm}
+The logic is the top concept and corresponds to the complete
+program. The logic program is an arbitrary sequence of
+declarations\index{declaration}. Especially must be emphasized that
+even an empty file is a permissible program. In this case no logic is
+present and the 12 tone equal temperament\index{12tet}  will be used.
+\iffalse
 Das Logikprogramm ist der oberste Grammatikbegriff und entspricht
 dem gesamten Programm. Das Logikprogramm selbst ist eine beliebige
 Folge von Deklarationen\index{Deklarationen}.
@@ -337,16 +343,34 @@ Insbesondere ist hervorzuheben, daß auch
 gar nichts, also ein leeres File, ein zulässiges Programm ist.
 In diesem Fall ist keine Logik vorhanden und die normale
 gleichstufig temperierte Stimmung eingestellt.
+\fi
 
+Intervals, tones, tone systems, retunings, harmonies, logics und MIDI
+channels can be declared. The different elements can be declared in an
+arbitrary order. In particular, elements can be referenced before they
+are used.
+\iffalse
 Es können Intervalle, Töne, Tonsysteme, Umstimmungen, Harmonien,
 Logiken und MIDI-Kanäle deklariert werden. Die einzelnen Elemente können
 in beliebiger Reihenfolge deklariert werden. Insbesondere kann auf
 Elemente Bezug genommen werden, die erst später deklariert werden.
+\fi
 
 \input{syn2.pic}
 
-\chapter{Intervall}\index{Intervall}\label{cha:intervall}
+\chapter{Interval}\index{Interval}\label{cha:intervall}
 
+An interval declaration defines individual intervals and the
+corresponding values. Interval names must not be defined twice, but
+can have the same name as objects of another kind. The value of an
+interval ist its frequency proportion. It can be specified in one of
+the three ways:
+\begin{itemize}
+\item as number ratio,
+\item as root expression\index{root} or
+\item as combination of other intervals.
+\end{itemize}
+\iffalse
 Eine Intervalldeklaration definiert einzelne Intervalle und die
 dazugehörenden Werte. Intervallnamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -358,6 +382,33 @@ Der Wert eines Intervalls kann auf eine von drei Arten angegeben werden:
   \item als Wurzelausdruck\index{Wurzel} oder
   \item als Kombination aus anderen Intervallen.
 \ei
+\fi
+Here \texttt{Number1 : Number2} denotes the ratio
+\begin{align*}
+\frac{\text{\texttt{Number1}}}{\text{\texttt{Number2}}},
+\end{align*}
+and \texttt{A ROOT B} is  the \texttt
+Ath root of \texttt B:
+\begin{align*}
+  \sqrt[\text{\texttt{A}}]{\text{\texttt B}}.
+\end{align*}
+Whenever intervals are combined from other intervals, so these
+intervals must not have circular dependencies, but the values of the
+intervals must be computable in a consistent form. Each interval that
+is used to form another one must be declared in of the same logic
+program. An interval can optionally be preceeded by a
+factor\index{factor}. Then the value of this interval will be counted
+multiple times. Since the intervals are frequency ratios, the value of
+the value of the combined interval is determined multiplicative. For
+example, the interval 
+\begin{lstlisting}
+  INTERVAL I = 3 octave - 5 third + 17 cent
+\end{lstlisting}
+will be calculated according to the following scheme:
+\begin{align*}
+  \mathtt I = \texttt{octave}^3 * \texttt{third}^{-5} * \texttt{cent}^{17}.
+\end{align*}
+\iffalse
 Es bedeutet dabei
 {\tt Zahl1 : Zahl2} das Verhältnis von Zahl1 zu Zahl2 und
 {\tt A WURZEL B} ist die \texttt{A}te Wurzel aus \texttt{B}.
@@ -376,14 +427,29 @@ INTERVALL I = 3 oktave - 5 terz + 17 cent
 \end{verbatim}
  nach folgendem Schema
 berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
+\fi
 
 \input{syn3.pic}
 
 \input{syn5.pic}
 
-\chapter{Ton}\label{cha:ton}
-\index{Ton}
+\chapter{Tone}\label{cha:ton}
+\index{Tone}
 
+A tone declaration defines individual tones and the corresponding
+values. Tone names must not defined twice, but they can have the same
+name as object of another kind. The value of the tone is a number,
+which corresponds to the frequency of the pitch of the tone. It can be
+a simple number or it can be calculated accordung to a reference
+tone\index{tone!reference tone}, which can be moved by given
+intervals. In the first case the frequency\index{frequency} is denoted
+directly. In the other cases, after the sign of equality a name of a
+reference tone follows together with a sequence of intervals, which
+will be multiplied to the reference tone until the requested tone will
+be reached. In principle, each tone must be defined in the logic
+program, if it shall be used as a reference tone. Furthermore the
+definitions of all tones must not contain circular dependencies.
+\iffalse
 Eine Tondeklaration definiert einzelne Töne und die
 dazugehörenden Werte. Tonnamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -401,22 +467,60 @@ Bezugstons multipliziert wird, bis sie den gewünschten Ton ergibt.
 Grundsätzlich müssen alle Töne, die als Bezugston herangezogen werden,
 im Logikprogramm definiert sein. Ferner darf die Definition aller Töne
 keine gegenseitigen Abhängigkeiten enthalten.
+\fi
 
+After it has been calculated each tone has a fixed
+frequency. Correspondingly, the tone name is synonyme for an absolute
+frequency\index{frequency!absolute}, whose value will be obtained
+multiplicatively. Example:
+\begin{lstlisting} 
+TONE  bes = c - 2 fifth + octave 
+\end{lstlisting}
+will be calculated as 
+\[
+\text{frequency}(\texttt{b}) = \text{frequency}(\texttt{c}) *
+\texttt{fifth}^{-2} * \texttt{octave}.
+\]
+\iffalse
 Sämtliche Töne ergeben nach deren Berechnung immer eine feste Frequenz.
 Ein Tonname steht also als Synonym für eine
 absolute Frequenz\index{Frequenz!absolute}, deren
 Wert sich multiplikativ ergibt. Beispiel:
-\begin{verbatim} 
+\begin{lstlisting} 
 TON  b = c - 2 quint + oktave 
-\end{verbatim}
-wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) * \mathtt{quint}^{-2} * \mathtt{oktave}\].
+\end{lstlisting}
+wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) *
+\mathtt{quint}^{-2} * \mathtt{oktave}\].
+\fi
 
 \input{syn4.pic}
 
 
 
-\chapter{Tonsystem}\label{cha:tonsystem}
-\index{Tonsystem}
+\chapter{Tone system}\label{cha:tonsystem}
+\index{tone system} A tone system declaration defines individual tone
+systems and the corresponding vlues. Names of tone systems must not be
+defined twice. However, they can have the same name as objects of
+another kind. A tone system consists of an anchor key\index{anchor
+  key}, a set of tones, which is called fundamental scale, and an
+period interval\index{interval!period interval}. The period interval
+can be combined from other intervals. The fundamental scale consists
+of a sequence of tones, wich must be eclosed by brackets
+\textbf{[]}\index{[] (brackets)} and which have to be separated by
+commas. It corresponds to a range on the piano keyboard. The
+correspondence of the tone arises from the anchor key. This key
+coresponds to the MIDI number\index{MIDI!number} of the first tone of
+the fundamental scale.\footnote{The tone $c'$ corresponds to the MIDI
+  number $60$.}
+Starting at this position, the tones will be assigned to the piano
+keys rightwards. The key right of the anchor key corresponds to the
+second tone of the fundamental scale, etc\ldots\ . After all tones
+have been assigned to the fundamental scale, the whole fundamental
+scale is repeted above the assigned keys transposed by the period
+interval\label{period interval} until the border of the claviature is
+reached.
+
+\iffalse
 Eine Tonsystemdeklaration definiert einzelne Tonsysteme und die
 dazugehörenden Werte. Tonsystemnamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -443,7 +547,14 @@ alle Töne der Fundamentaltonleiter zugeordnet sind, wird die gesamte
 Fundamentaltonleiter sowohl nach unten, wie nach oben wiederholt und
 dabei um das Periodenintervall\label{Periodenintervall}
 verschoben, bis die Grenzen der Klaviatur erreicht sind.
+\fi
 
+In the declaration of the fundamental scale\index{fundamental scale}
+several tones cab be omitted, but not the separating commas. The
+ommited tones cause the effect, that the corresponding keys will
+produce no sound. Omitted tones will counted as nomal tons in the mapping $piano
+key \rightarrow tone$ as if they were present.
+\iffalse
 Bei der Deklaration der Fundamentaltonleiter\index{Fundamentaltonleiter}
 dürfen einzelne Töne fehlen, nicht jedoch die trennenden Kommata.
 Diese fehlenden Töne bewirken,
@@ -451,14 +562,28 @@ daß die entsprechende Taste keinen Ton erzeugt.
 Fehlende Töne werden bei der Zuordnung
 $Klaviaturtaste \rightarrow Ton$ normal
 mitgezählt, als wären sie vorhanden.
+\fi
 
 
 
 \input{syn6.pic}
 
 
-\chapter{Umstimmung}\label{cha:umstimmung}
-\index{Umstimmung}
+\chapter{Retuning}\label{cha:umstimmung}
+\index{retuning}
+A retuning declaration defines individual retunings and the
+corresponding values. Retuning names must not be defined twice, but
+they can have the same name as objects of another kind. A retuning
+contains rules, how to change the current
+tuning\index{tuning!current}. The value that tchanges can be absolute
+as well as relative to the current state. For an absolute change a
+number or a symbolic parameter is provided, which denotes the new
+value regardles of the old one. For a relative change the actual value
+is used as a reference value and changed by a certain value. The
+symbol \textbf{\@}\index{\@ (at)} means semantically “\textit{the old
+  value}”, which shall be referenced.
+
+\iffalse
 Eine Umstimmungsdeklaration definiert einzelne Umstimmungen und die
 dazugehörenden Werte. Umstimmungsnamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -471,24 +596,43 @@ wird eine Zahl oder ein symbolischer Parameter angegeben, der den
 neuen Wert darstellt, ohne Rücksicht auf den vorherigen Zustand.
 Bei einer relativen Änderung wird der bisherige Wert als Bezugswert
 genommen und um einen gewissen Betrag verändert. Semantisch bedeutet das
-Symbol {\bf @}\index{\sourcecode{@}} `{\it der alte Wert}',
+Symbol {\bf @}\index{\@ (at)} `{\it der alte Wert}',
 auf den Bezug genommen werden soll.
+\fi
 
+If the retuning shall depend on one or more
+parameters\index{parameter}, a symolic name mustbe provided for each
+parameter\index{parameter!symbolic name}. This praameter name can be
+used later in the retuning expression.
+\iffalse
 Falls die Umstimmung von einem oder mehreren Parametern\index{Parameter}
  abhängig sein soll,
 so ist für jeden Parameter\index{Parameter!symbolischer Name}
  ein symbolischer Parameter-Name anzugeben.
 Ein Parameter-Name kann später im Umstimmungs-Ausdruck benutzt werden.
+\fi
 
 \input{syn8.pic}
 
-
+There are seven kinds of retuning expressions, which change different
+properties of the actual tuning:
+\iffalse
 Es gibt sieben Arten von Umstimmungs-Ausdrücken, die jeweils einzelne
 Merkmale der aktuellen Stimmung ver\-än\-dern:
+\fi
 
 \input{syn7.pic}
 
 \begin{description}
+\item[Retuning anchor]\index{retuning!anchor}
+  corresponds to a movement of the fundamental scale. In such a tuning
+  the new anchor key is defined. This new anchor key remains at its
+  frequency and oll other tones are derived in such a way that the
+  complete interval structure will be retained.
+
+  In general from a change of the anchor key also a change of the
+  tones results.
+\iffalse
   \item[Umstimmung-Verankerung]\index{Umstimmung!Verankerung}
       entspricht einer Verschiebung
       der Fundamentaltonleiter. Dabei wird angegeben, wo sich die
@@ -500,11 +644,22 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
 
       Im allgemeinen folgt aus einer Veränderung der Verankerungstaste auch
       eine Veränderung der Töne.
+\fi
 
       \input{syn9.pic}
 
       \input{syn26.pic}
-
+      
+    \item[Retuning width]\index{retuning!width}
+      corresponds to a change in the width of the fundamental
+      scale. The first tone of the fundamental scale remaines at its
+      current value, and all tones right of it remain also at their
+      current state. Then they are counted, how many of them will be
+      needed, to reach the new width of the fundamental scale. These
+      form the new fundamental scale. The interval from the anchor key
+      to the first key after the fundamental scale is treated as the
+      new period interval.
+\iffalse
   \item[Umstimmung-Breite]\index{Umstimmung!Breite}
       entspricht einer Veränderung der Breite
       der Fundamentaltonleiter.\index{Fundamentaltonleiter!Breite der}
@@ -515,15 +670,36 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       Diese Töne bilden dann die neue Fundamentaltonleiter.
       Das Intervall von der Verankerungstaste zur ersten Taste nach der
       Fundamentaltonleiter ergibt das neue Periodenintervall.
+\fi
 
+      In general, a change of the width leads also to a change of the
+      period interval. A change of the period interval will be
+      ignored, if it leeds to a value smaller than 1. A shortening of
+      the width will be ignered too, if it leads to a width smaller
+      than 1 or to a width greater than 60.
+\iffalse
       Im allgemeinen folgt aus der Veränderung der Breite auch eine Veränderung
       des Periodenintervalls. Eine Verkürzung der Breite, die zu einer
       Breite kleiner 1 führt, wird ignoriert. Eine Verbreiterung, die
       zu einer Breite von mehr als 60 Tasten führt, wird ignoriert.
+\fi
 
       \input{syn10.pic}
 
-
+      
+    \item[Retuning tones]\index{retuning!tones} corresponds to a
+      change of individual tones in the fundamental scale. For each
+      tone a calculation expression is provided, which denotes how the
+      tone changes. These expressions are devided by commas and
+      correspond to the tones in the same way, as they are denoted by
+      tone systems. In case of a constant tone the symbol
+      \texttt{\@}\index{{\@ (at)}} must be used, sine \emph{nothing}
+      means that the tone will be muted. If the number of expressions
+      is smaller than the width of the fundamental scale the remaining
+      tones are not changed. If the width of the fundamental scale is
+      smaller than the number of expressions, the remaining
+      expressions have no effect.
+\iffalse
   \item[Umstimmung-Töne]\index{Umstimmung!Töne}
       entspricht einer Änderung einzelner Töne
       innerhalb der Fundamentaltonleiter.
@@ -533,7 +709,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       auf die entsprechenden Töne, wie sie bei einem Tonsystem
       angegeben werden.
       Soll ein Ton unverändert
-      erhalten bleiben, so ist dafür das Symbol {\tt @}\index{\sourcecode{@}}
+      erhalten bleiben, so ist dafür das Symbol \texttt{\@}\index{{\@ (at)}}
       zu schreiben, weil
       `{\it nichts}' bedeutet, daß der Ton stumm geschaltet wird.
       Falls die Anzahl der Rechenausdrücke kleiner ist, als die
@@ -541,11 +717,18 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       unverändert. Falls die Breite der Fundamentaltonleiter kleiner ist,
       als die Anzahl der Rechenausdrücke, so bleiben die
       überzähligen Rechenausdrücke ohne Effekt.
+\fi
 
       \input{syn11.pic}
 
       \input{syn12.pic}
-
+    \item[Retuning period]\index{retuning!period} 
+      corresponds to a change of the period interval\index{period
+        interval}. Here, the value of the period interval is changed
+      such that the tones of the fundamental scale remain constant,
+      but all other tones are recalculated, as they arise from the
+      fundamental scale and the period interval.
+\iffalse
   \item[Umstimmung-Periode]\index{Umstimmung!Periode}
       entspricht einer Änderung des
       Periodenintervalls\index{Periodenintervall}.
@@ -554,11 +737,23 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       erhalten bleiben, aber alle anderen Töne neu berechnet werden,
       da sie sich aus der Fundamentaltonleiter und der Periodenverschiebung
       ergeben.
+\fi
 
       \input{syn13.pic}
 
 
-
+    \item[Retuning bundle]\index{retuning!bundle}
+      A retuning bundle contains a sequence of actions.\index{action}
+      The different actions can call other retunings, tone systems or
+      logics, or they can send MIDI messages. Also here, no circular
+      dependencies are allowed. The individual actions will be
+      executed in the given order. The parameters\index{parameter} of
+      a retuning bundle can be passed to the individal calls, as long
+      the action is a retuning an it accepts sufficiently many
+      parameters. The given parameters will be assigned in the same
+      order to the parameters of the called retuning as they are
+      provided.
+\iffalse
   \item[Umstimmungs-Bund]\index{Umstimmung!Bund}
       Ein Umstimmungsbund umfasst eine Folge von
       Aktionen.\index{Aktionen} Die einzelnen
@@ -573,6 +768,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       diese Umstimmung auch entsprechend viele Parameter akzeptiert.
       Die mitgegebenen Parameter werden in der gleichen Reihenfolge
       den Parameter-Namen der Umstimmung zugeordnet.
+\fi
 
 
       \input{syn14.pic}
@@ -583,7 +779,25 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
 
       \input{syn17.pic}
 
-
+    \item[Retuning alternative]\index{retuning!alternative} A retuning
+      alternative allows the selection of one alternative from a set
+      of choices in dependency of a parameter\index{parameter} of the
+      retuning (the selector\index{selector}). Each alternative consists
+      of a constant, which determines the case, and a sequence of
+      action, which will be executed if the choice selects this
+      alternative. The individual actions of an alternative are
+      delimited by commas (\texttt{,}), while complete alternatives
+      are not seperated by any special delimiter. The constants of the
+      alternatives must be unique integers. At the end of an
+      alternative a special constant \texttt{else}\index{else} can be
+      used. If the selector coinsides with a constant the
+      corresponding alternative is executed. If it is not equals to
+      any constant and the constant \texttt{else} is given the
+      alternative of the \texttt{else} branch is used. If the selector
+      is different from any constant and the special constant \texttt{else} is
+      not given, no alternative will be executed. The call of the
+      retuning has no effect in this case.
+\iffalse
     \item[Umstimmungs-Alternative]\index{Umstimmung!Alternative} Eine
       Umstimmungs-Alternative ermöglicht die Auswahl einer von
       mehreren Alternativen in Abhängigkeit eines
@@ -606,9 +820,17 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       Spezialkonstante {\tt ansonsten} nicht vorhanden ist, wird keine
       der Alternativen durchgeführt, der Aufruf dieser Umstimmung
       bleibt in diesem Fall folgenlos.
+\fi
 
       \input{syn16.pic}
-
+    \item[Action MIDI out]\index{action!MIDI out} a MIDI output is
+      started with the word \texttt{MIDIOUT}\index{MIDIOUT} and is a
+      sequence of numbers which are seperated by commas and entailed
+      in parentheses. For number the hexadecima writing
+      (\#\emph{digits})\index{\#} is allowed. The numbers bust be in
+      the range from 0 to 255, as they must fit in a bye each. There
+      is no control if the MIDI message is correct or meaningful.
+\iffalse
       \item[Aktion-MIDI-Out]\index{Aktion!MIDI-Out}
 	MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
 	 eingeleitet und
@@ -617,6 +839,7 @@ und durch Kommata getrennte Folge von Zahlen. Bei Zahlen ist die sedezimale
 Schreibweise zulässig (\#{\it ziffern}).\index{\#} Die Zahlen
 müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
 Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
+\fi
 
       \input{syn22.pic}
 

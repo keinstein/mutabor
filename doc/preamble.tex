@@ -61,6 +61,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[german]{babel}
+% Some mathematics
+\usepackage{amsmath}
 % Exteren Referenzen und Hyperref laden. 
 % Das kann unterschiedlich ablaufen.
 \ifhtml
@@ -76,11 +78,13 @@
 % Überschriften als Referenzen einfügen.
 \usepackage{nameref}
 \usepackage{graphicx}
-\usepackage{color}
+\usepackage{tikz}
+\usepackage{listings}
+\input{mutaborlst}
 %
 % Das Handbuch wurde mit emTeX geschrieben. TeTeX versteht die emTeX
 % specials. Also verwenden wir sie.
-\usepackage{emlines}
+\usepackage{tsemlines}
 % Makeindex laden
 \usepackage{makeidx}
 %
@@ -104,7 +108,7 @@
   \publishers{\includegraphics[width=0.5\linewidth]{Mutabor-Logo}}
 \fi
 \lowertitleback{\footnotesize\copyright 1991, 1992 Volker Abel \& Peter Reiss\\
-\copyright 2006 TU Dresden, Institut für Algebra}
+\copyright 2006–\the\year TU Dresden, Institut für Algebra}
 %
 % Index-Datei öffnen
 %
