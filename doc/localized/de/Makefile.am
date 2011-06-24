@@ -1,6 +1,9 @@
 TEXSOURCES = $(srcdir)/Handbuch.tex \
 	$(srcdir)/Referenz.tex \
 	$(srcdir)/Bedienung.tex
+PDFFILES = $(srcdir)/Handbuch.pdf \
+	$(srcdir)/Referenz.pdf \
+	$(srcdir)/Bedienung.pdf
 ZIPFILE = Hilfe.zip
 rel_docdir = ../..
 
