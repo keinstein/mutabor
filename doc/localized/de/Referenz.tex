@@ -135,7 +135,7 @@ von Zeichen aufgefasst, die ein Eingabesymbol darstellen kann.
 \index{Kommentare}
 \label{zweizwei}
 
-Kommentare\index{Kommentar} werden in doppelte Anführungszeichen ({\tt \dq})
+Kommentare\index{Kommentar} werden in doppelte Anführungszeichen (\texttt{\dq})
 \index{\dq (Anführungszeichen)}eingeschlossen.
 Kommentare  können  nicht
 verschachtelt\index{Verschachtelung} werden.
@@ -148,24 +148,24 @@ Ein Name\index{Namen} besteht aus einer Folge von
 Buchstaben und Ziffern;  das
 erste Zeichen muss ein Buchstabe sein.  Dabei zählen
 der Unterstrich  (\_)\index{\_ (Unterstrich)} und der Apostroph
-({\bf '})\index{' (Apostroph)}
+(\textbf{'})\index{' (Apostroph)}
 zu den Buchstaben.\footnote{Der Unterstrich zählt zu den Buchstaben, damit
 man aussagekräftige Namen gut lesbar schreiben kann, z.\,B.
-{\tt LOGIK Drittel\_Ton\_Mutierend} ist besser als
-{\tt LOGIK dritteltonmutierend}
+\texttt{LOGIK Drittel\_Ton\_Mutierend} ist besser als
+\texttt{LOGIK dritteltonmutierend}
 und der Apostroph zählt als Buchstabe,
 damit man Töne mit einfach oder mehrfach gestrichenen
-Namen versehen kann, z.\,B. {\tt TON e${}'''$ }}
+Namen versehen kann, z.\,B. \texttt{TON e${}'''$ }}
 Große und kleine Buchstaben werden gleich behandelt.
 Namen können beliebig lang sein.
 Zur  Unterscheidung von Namen wird der gesamte Name herangezogen,
 und nicht nur die ersten paar Buchstaben, wie dies bei anderen
 Programmiersprachen üblich ist\index{Signifikanz}.
 
-In den Büchern von \mutabor{} werden die Begriffe {\it Name}\index{Namen}
-und {\it Bezeichner}\index{Bezeichner}
+In den Büchern von \mutabor{} werden die Begriffe \emph{Name}\index{Namen}
+und \emph{Bezeichner}\index{Bezeichner}
 parallel und mit gleicher Bedeutung verwendet. Ferner werden bei einigen
-Syntaxgraphen auch Begriffe der Art {\it Intervallname}, {\it Tonname},\ldots
+Syntaxgraphen auch Begriffe der Art \emph{Intervallname}, \emph{Tonname},\ldots
 verwendet. Diese Begriffe sind syntaktisch gesehen einfache Namen.
 Es soll damit zum Ausdruck kommen, daß Namen einer bestimmten Art von
 Objekten gemeint sind. Dies gehört prinzipiell nicht zur Syntax der
@@ -217,13 +217,13 @@ Alle anderen Wörter dürfen als Namen oder Bezeichner verwendet werden.
 Zahlen können ganzzahlig oder mit Dezimalpunkt geschrieben werden.
 Eine Schreibweise mit Zehnerexponent ist nicht
 zugelassen.\index{Zahlen} Ferner kann eine Zahl auch mit dem Zeichen
-{\bf \#}\index{\#} beginnen und weitere Hex-Ziffern\index{Hex-Ziffern}
+\textbf{\#}\index{\#} beginnen und weitere Hex-Ziffern\index{Hex-Ziffern}
 enthalten. Diese Schreibweise bedeutet, daß die Zahl zur Basis 16
 ausgewertet wird. In dieser Hex-Schreibweise ist kein Dezimalpunkt
 erlaubt, folglich sind nur ganzzahlige Werte darstellbar.
 
-Ähnlich wie bei Namen werden Zahlen im Syntaxdiagramm auch als {\it Faktor}
-oder {\it Verankerungs"=Taste} bezeichnet,
+Ähnlich wie bei Namen werden Zahlen im Syntaxdiagramm auch als \emph{Faktor}
+oder \emph{Verankerungs"=Taste} bezeichnet,
 um ihre jeweilige semantische Bedeutung
 hervorzuheben. Es handelt sich aber syntaktisch gesehen um ganz gewöhnliche
 Zahlen.
@@ -239,7 +239,7 @@ In\-ter\-vall\-gr"o"se,\ldots).
 \label{drei}
 
 In der Syntax-Darstellung in diesem Buch werden die Grammatikbegriffe
-{\it in eckigen Kästchen} und reservierte Worte und Zeichen {\it in
+\emph{in eckigen Kästchen} und reservierte Worte und Zeichen \emph{in
 ovalen Kästchen} geschrieben. Die Syntax erhält man, indem man auf den
 Pfeilen entlang durch das Syntaxdiagramm läuft.
 Alternative Formulierungen erscheinen dabei als Verzweigungen
@@ -248,9 +248,9 @@ Ein Beispiel:
 
 \input{syn1.pic}
 
-Das Wort {\it TON} muss genau so geschrieben werden, während das Konstrukt
-{\it EinzelTon} noch genauer aufgelöst werden muss. Ferner ergibt sich durch
-die Schleife, daß mehrere Konstrukte von der Art {\it EinzelTon}
+Das Wort \emph{TON} muss genau so geschrieben werden, während das Konstrukt
+\emph{EinzelTon} noch genauer aufgelöst werden muss. Ferner ergibt sich durch
+die Schleife, daß mehrere Konstrukte von der Art \emph{EinzelTon}
 aufeinander folgen können.
 
 
@@ -284,8 +284,8 @@ Der Wert eines Intervalls kann auf eine von drei Arten angegeben werden:
   \item als Kombination aus anderen Intervallen.
 \ei
 Es bedeutet dabei
-{\tt Zahl1 : Zahl2} das Verhältnis von Zahl1 zu Zahl2 und
-{\tt A WURZEL B} ist die \texttt{A}te Wurzel aus \texttt{B}.
+\texttt{Zahl1 : Zahl2} das Verhältnis von Zahl1 zu Zahl2 und
+\texttt{A WURZEL B} ist die \texttt{A}te Wurzel aus \texttt{B}.
 Wenn Intervalle aus anderen Intervallen zusammengesetzt werden,
 so dürfen keine gegenseitigen Abhängigkeiten entstehen, sondern
 die Werte der Intervalle müssen in konsistenter Form berechenbar sein.
@@ -296,9 +296,9 @@ Optional kann einem Intervall auch ein Faktor\index{Faktor}
 entsprechend mehrfach. Da es sich bei Intervallen eigentlich um
 Frequenzverhältnisse handelt, ergibt sich der Wert eines zusammengesetzten
 Intervalles multiplikativ. Zum Beispiel wird das Intervall
-\begin{verbatim} 
+\begin{lstlisting} 
 INTERVALL I = 3 oktave - 5 terz + 17 cent 
-\end{verbatim}
+\end{lstlisting}
  nach folgendem Schema
 berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
 
@@ -331,9 +331,9 @@ Sämtliche Töne ergeben nach deren Berechnung immer eine feste Frequenz.
 Ein Tonname steht also als Synonym für eine
 absolute Frequenz\index{Frequenz!absolute}, deren
 Wert sich multiplikativ ergibt. Beispiel:
-\begin{verbatim} 
+\begin{lstlisting} 
 TON  b = c - 2 quint + oktave 
-\end{verbatim}
+\end{lstlisting}
 wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) * \mathtt{quint}^{-2} * \mathtt{oktave}\].
 
 \input{syn4.pic}
@@ -353,7 +353,7 @@ Das Periodenintervall kann auch aus mehreren Intervallen
 kombiniert werden.
 Die Fundamentaltonleiter wiederum
 besteht aus einer Folge von Tönen, die in eckigen Klammern
-``{\bf [ ]}''\index{[ ] (eckige Klammern)}
+``\textbf{[ ]}''\index{[ ] (eckige Klammern)}
  stehen und durch Kommata getrennt sind.
 Sie entspricht einem Bereich auf der Klaviatur. Die Zuordnung der Töne
 zu den Tasten ergibt sich durch die Verankerungstaste.
@@ -396,7 +396,7 @@ wird eine Zahl oder ein symbolischer Parameter angegeben, der den
 neuen Wert darstellt, ohne Rücksicht auf den vorherigen Zustand.
 Bei einer relativen Änderung wird der bisherige Wert als Bezugswert
 genommen und um einen gewissen Betrag verändert. Semantisch bedeutet das
-Symbol {\bf @}\index{\sourcecode{@}} „{\it der alte Wert}“,
+Symbol \textbf{@}\index{\sourcecode{@}} „\emph{der alte Wert}“,
 auf den Bezug genommen werden soll.
 
 Falls die Umstimmung von einem oder mehreren Parametern\index{Parameter}
@@ -458,9 +458,9 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       auf die entsprechenden Töne, wie sie bei einem Tonsystem
       angegeben werden.
       Soll ein Ton unverändert
-      erhalten bleiben, so ist dafür das Symbol {\tt @}\index{\sourcecode{@}}
+      erhalten bleiben, so ist dafür das Symbol \texttt{@}\index{\sourcecode{@}}
       zu schreiben, weil
-      `{\it nichts}' bedeutet, daß der Ton stumm geschaltet wird.
+      `\emph{nichts}' bedeutet, daß der Ton stumm geschaltet wird.
       Falls die Anzahl der Rechenausdrücke kleiner ist, als die
       Breite der Fundamentaltonleiter, so bleiben die überzähligen Töne
       unverändert. Falls die Breite der Fundamentaltonleiter kleiner ist,
@@ -521,25 +521,25 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       komplette Alternativen nicht durch ein besonderes Trennzeichen
       getrennt sind. Die Konstanten der einzelnen Alternativen müssen
       ganzzahlig und eindeutig sein. Am Ende der Alternativen darf
-      einmalig die Spezialkonstante {\tt ansonsten}\index{Ansonsten}
+      einmalig die Spezialkonstante \texttt{ansonsten}\index{Ansonsten}
       stehen. Falls der Selektor mit einer der Konstanten
       übereinstimmt, wird diese Alternative durchgeführt. Falls der
       Selektor mit keiner Konstanten übereinstimmt und die
-      Spezialkonstante {\tt ansonsten} vorhanden ist, wird die
-      Alternative des {\tt ansonsten}-Zweigs durchgeführt. Falls der
+      Spezialkonstante \texttt{ansonsten} vorhanden ist, wird die
+      Alternative des \texttt{ansonsten}-Zweigs durchgeführt. Falls der
       Selektor mit keiner Konstanten übereinstimmt und die
-      Spezialkonstante {\tt ansonsten} nicht vorhanden ist, wird keine
+      Spezialkonstante \texttt{ansonsten} nicht vorhanden ist, wird keine
       der Alternativen durchgeführt, der Aufruf dieser Umstimmung
       bleibt in diesem Fall folgenlos.
 
       \input{syn16.pic}
 
       \item[Aktion MIDI"=Ausgabe]\index{Aktion!MIDI"=Ausgabe}
-	MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
+	MIDI-Ausgaben werden mit dem Wort \emph{MIDIOUT}\index{MIDIOUT}
 	 eingeleitet und
 sind eine in runde Klammern eingeklammerte
 und durch Kommata getrennte Folge von Zahlen. Bei Zahlen ist die sedezimale
-Schreibweise zulässig (\#{\it ziffern}).\index{\#} Die Zahlen
+Schreibweise zulässig (\#\emph{ziffern}).\index{\#} Die Zahlen
 müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
 Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
@@ -601,8 +601,8 @@ oder einer Logik sein, oder das Senden einer MIDI-Nachricht.
 Grundsätzlich existieren zwei Mengen von Auslösern: Die Auslöser, welche
 eine der Logiken aktivieren, und die Auslöser, die innerhalb der
 gerade aktiven Logik die Anweisungen anwählen. Erstere nennen wir
-{\it globale Auslöser}\index{Auslöser!globale}
- und letztere {\it lokale Auslöser}\index{Auslöser!lokale}. Beim Eintreffen
+\emph{globale Auslöser}\index{Auslöser!globale}
+ und letztere \emph{lokale Auslöser}\index{Auslöser!lokale}. Beim Eintreffen
 eines Ereignisses wird zuerst die Menge der globalen Auslöser
 und dann die Menge der lokalen Auslöser überprüft, ob das Ereignis
 den Auslöser auslöst. Innerhalb der globalen und lokalen Auslöser wird
@@ -612,7 +612,7 @@ Wenn ein globaler Auslöser zutrifft, so wird in die entsprechende Logik
 gewechselt. Wenn ein lokaler Auslöser zutrifft, so werden die entsprechenden
 Aktionen innerhalb der aktuellen Logik aufgerufen.
 Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
-{\tt ansonsten}\index{ansonsten} nicht erlaubt.
+\texttt{ANSONSTEN}\index{ANSONSTEN} nicht erlaubt.
 
 \input{syn24.pic}
 
@@ -623,19 +623,22 @@ Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
 
 Auslöser können wahlweise eine der 26 Buchstabentasten, eine Harmonie,
 eine Harmonieform,
-ein MIDI-Ereignis oder der Spezialauslöser {\tt ansonsten} sein.
+ein MIDI-Ereignis oder der Spezialauslöser \texttt{ansonsten} sein.
 
 \input{syn18.pic}
 
 \subsection{Tasten}\index{Tasten}\label{sec:tasten}
 
 Dieser Auslöser\index{Auslöser!Taste}
- besteht aus dem Wort {\it Taste}\index{Tasten}, gefolgt von einem der
+ besteht aus dem Wort \emph{Taste}\index{Tasten}, gefolgt von einem der
 26 Buchstaben. Wenn innerhalb von \mutabor{} die angegebene Taste auf der
 Tastatur gedrückt wird, so gilt dieser Auslöser als erfüllt.
-Der Auslöser bezieht sich jeweils auf das Instrument bzw.\ MIDI-Kanal,
-das vorher
-mit den Zifferntasten angewählt wurde. Man kann also nur die
+Der Auslöser bezieht sich jeweils auf die \mutabor"=Box, das Instrument bzw.\ MIDI-Kanal,
+das zuletzt aktiv war. Die ersten zehn Boxen können
+mit den Zifferntasten \Ctrl+\keystroke{0} bis \Ctrl+\keystroke{9}
+angewählt wurden. Die Instrumente/MIDI-Kanäle 1–9 können mit den
+Zifferntasten \keystroke{1} bis \keystroke 9 ausgewählt werden.
+Man kann also nur die
 Instrumente/MIDI-Kanäle 1--9 mit einem Tasten-Auslöser steuern.
 
       \input{syn19.pic}
@@ -665,7 +668,7 @@ der aktuellen Fundamentaltonleiter.\footnote{Diese Breite ist nicht
 auf 12 festgelegt, sondern in weiten Grenzen frei wählbar.}
 Wenn Vortaste oder Nachtaste eine Tonigkeit haben, die nicht in der
 Harmonie vorkommt, so kann diese Harmonie nicht gespielt werden, da sie
-sich selbst widerspricht. Solche Harmonien sind '{\it unmögliche}'
+sich selbst widerspricht. Solche Harmonien sind „\emph{unmögliche}“
 Auslöser\index{Auslöser!unmögliche}
  und werden mit einer Warnung gekennzeichnet. Praktisch
 bleiben sie ohne Effekt, da sie nie zutreffen können.
@@ -683,10 +686,10 @@ die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
     \input{syn20.pic}
 
 \subsection{MIDI-Ereignisse}\index{Auslöser!MIDI-Ereignis}\label{sec:midi-ereignisse}
-MIDI-Ereignisse werden mit dem Wort {\it MIDIIN}\index{MIDIIN}
+MIDI-Ereignisse werden mit dem Wort \emph{MIDIIN}\index{MIDIIN}
 eingeleitet und
 sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
-Schreibweise zulässig (\#{\it ziffern}).\index{\#}
+Schreibweise zulässig (\#\emph{ziffern}).\index{\#}
 Die erste Zahl muss im Bereich von
 128 bis 255 liegen, also ein Status-Byte sein. Alle weiteren Zahlen
 müssen im Bereich von 0 bis 127 liegen, also Daten-Bytes sein.
@@ -696,9 +699,9 @@ Instrument/MIDI-Kanal zugeordnet,
 so daß ein MIDI-Ereignis sich jeweils auf das richtige
 Instrument/MIDI-Kanal bezieht.
 Die Status-Bytes\index{Status-Byte}
- {\it Note-On\index{Note-On} (\#90)}, {\it Note-Off\index{Note-Off}
+ \emph{Note-On\index{Note-On} (\#90)}, \emph{Note-Off\index{Note-Off}
   (\#80)} und
-{\it System-Byte\index{System-Byte}
+\emph{System-Byte\index{System-Byte}
  (\#F0 - \#FF)} werden nicht in die MIDI-Analyse
 einbezogen.
 
@@ -713,7 +716,7 @@ senden. Beim Aufruf einer Umstimmung müssen genau so viele Parameter\index{Para
 mitgegeben werden, wie die aufgerufene Umstimmung benötigt. Die mitgegebenen
 Parameter werden in der gleichen Reihenfolge den Parameter-Namen
 der Umstimmung zugeordnet. Als Parameter können Zahlen angegeben werden,
-sowie der Wert {\it ABSTAND}\index{ABSTAND}.
+sowie der Wert \emph{ABSTAND}\index{ABSTAND}.
 Der Wert ABSTAND entspricht den Gegebenheiten der
 zuletzt durchgeführten Harmonie-FORM-Analyse, wobei der Wert
 ABSTAND bis zur nächsten Harmonie-FORM-Analyse beibehalten wird.
@@ -725,12 +728,12 @@ Reihenfolge ausgeführt.
 
 
 \subsection{MIDI-Ausgaben}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
-\index{Aktion!MIDI Ausgabe}
+\index{Aktion!MIDI-Ausgabe}
 
-MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
+MIDI-Ausgaben werden mit dem Wort \emph{MIDIOUT}\index{MIDIOUT}
  eingeleitet und
 sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
-Schreibweise zulässig (\#{\it ziffern}). Die Zahlen
+Schreibweise zulässig (\#\emph{ziffern}). Die Zahlen
 müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
 Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
@@ -744,10 +747,13 @@ Eine MIDI-Kanal-Deklaration definiert die Zuordnung, auf welchen
 MIDI-In-Kanal \mutabor{} reagieren soll, und wieviele MIDI-Out-Kanäle
 den einzelnen Eingabekanälen zugeordnet werden. Dies ist für die
 Tonerzeugung nach dem Multi-16-Verfahren\index{Multi-16-Verfahren}
- nötig. Wird als
+ nötig. 
+\iffalse
+Wird als
 Synthesizer-Treiber das Modell FB-01\index{FB-01} eingestellt, so gilt nur
 die Angabe des MIDI-In-Kanals, der Ausgabekanal wird ignoriert.
-Die MIDI-In-Kanäle werden auch als {\it Instrumente} bezeichnet, da
+\fi
+Die MIDI-In-Kanäle werden auch als \emph{Instrumente} bezeichnet, da
 für jeden MIDI-In-Kanal separat das gesamte Logikprogramm gilt.
 Es können bis zu 16 Instrumente gleichzeitig und in
 verschiedenen Logiken spielen.
@@ -755,10 +761,13 @@ Werden alle 16 Instrumente/MIDI-Kanäle
 und das Multi-16-Verfahren benutzt, so kann jedes Instrument nur
 noch einen einzigen
 Ton gleichzeitig spielen, da nicht mehr als eben diese 16 Midikanäle
-auch als Ausgabe-Kanäle verfügbar sind. Beim Modell FB-01 von Yamaha wird
+auch als Ausgabe-Kanäle verfügbar sind. 
+\iffalse
+Beim Modell FB-01 von Yamaha wird
 eine spezielle System-exklusive Ansteuerungsmethode verwendet,
 so daß hier bis zu 16 Instrumente zu je 16 gleichzeitigen Tönen
 spielbar sind.
+\fi
 
 Beim Multi-16-Verfahren wird
 jedem Eingabekanal ein Bereich von MIDI-Out-Kanälen zugeordnet. Die Größe
@@ -776,9 +785,9 @@ bezieht sich immer auf den am Bildschirm angezeigten Eingabekanal.
 Falls keine MIDI-Kanäle deklariert werden, und auch keine Kanalzuordnung
 in der Konfigurationsdatei angegeben ist,
 gilt die Deklaration
-\begin{verbatim}
+\begin{lstlisting}
 	MIDIKANAL  1  ->  1 - 16
-\end{verbatim}
+\end{lstlisting}
 als automatisch gegeben.
 
 \input{syn25.pic}
@@ -817,7 +826,7 @@ als automatisch gegeben.
   diesem einen Namen geben, den Sie später als Referenz in anderen
   Deklarationen angeben können.
 
-\item[Zahlen] Zahlen können in Mutabor als Ganze Zahlen oder
+\item[Zahlen] Zahlen können in \mutabor{} als Ganze Zahlen oder
   Dezimalzahlen (mit Punkt als Komma) angegeben werden.
 
 \item[MIDI-Werte] MIDI-Werte sind ganze Zahlen zwischen 0 und 255, die
@@ -830,7 +839,7 @@ als automatisch gegeben.
 %\chapter{Konfiguration}
 %\index{Konfiguration}
 %
-%Die Datei {\tt MUTABOR.CFG} enthält die globalen Voreinstellungen bezüglich
+%Die Datei \texttt{MUTABOR.CFG} enthält die globalen Voreinstellungen bezüglich
 %der an den Instrumenten angeschlossenen Synthesizer-Treiber und
 %der Voreinstellungen der Kanalzuordnung bei den MIDI-Kanälen.
 %Als Treibernummern sind bisher vorgesehen:
@@ -841,7 +850,7 @@ als automatisch gegeben.
 %Falls hier MIDI-Kanäle deklariert sind, so gilt deren Kanal-Zuordnung,
 %es sei denn, das Logikprogramm gibt eine eigene Kanal-Zuordnung vor.
 %Falls keinerlei Kanalzuordnung getroffen wird, so gilt die Zuordnung
-%{\tt 1 -> 1 - 16} als gegeben.
+%\texttt{1 -> 1 - 16} als gegeben.
 
 
 
