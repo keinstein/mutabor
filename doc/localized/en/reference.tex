@@ -156,7 +156,7 @@ be interpreted as an input symbol.
 \label{zweizwei}
 
 Comments\index{comment} an entailed in douple quotes ({\tt
-  \dq})\index{\dq (double quote)}.
+  \dq})\index{*''@\dq (double quote)}.
 Comments cannot be nested, but can span multiple lines.
 
 \section{Names}\label{sec:namen}
@@ -165,8 +165,8 @@ Comments cannot be nested, but can span multiple lines.
 A name \index{name} is a sequence of
 letters and numerals; the
 first character must be alphabetic. This includes
-the underscore (\_) \index {\_ (underscore)} and the apostrophe
-({\bf'}) \index {' (apostrophe)}.\footnote {The underscore is one of the letters, so
+the underscore (\_) \index{*_@\_ (underscore)} and the apostrophe
+({\bf'}) \index{*'@\textapostrophe\ (apostrophe)}.\footnote {The underscore is one of the letters, so
 you can write meaningful names legibly, e.\,g.,
 {\tt LOGIC third\_tone\_mutating} is better than
 {\tt LOGIC thirdtonemutating},
@@ -183,7 +183,7 @@ Ein Name\index{Namen} besteht aus einer Folge von
 Buchstaben und Ziffern;  das
 erste Zeichen muss ein Buchstabe sein.  Dabei zählen
 der Unterstrich  (\_)\index{\_ (Unterstrich)} und der Apostroph
-({\bf '})\index{' (Apostroph)}
+({\bf '})\index{#' (Apostroph)}
 zu den Buchstaben.\footnote{Der Unterstrich zählt zu den Buchstaben, damit
 man aussagekräftige Namen gut lesbar schreiben kann, z.\,B.
 {\tt LOGIK Drittel\_Ton\_Mutierend} ist besser als
@@ -263,7 +263,7 @@ All other words can be used as names or identifiers.
 
 Numbers can be integers or reals written with a decimal point. A
 notation using decimal exponents is not allowed.\index{number}
-Furthermore a number can start with the symbol \textbf{\#}\index{\#}
+Furthermore a number can start with the symbol \textbf{\#}\index{*#@\#}
 and contain further hexadecimal digits\index{hex digit}. This notation
 means, that the number will be evaluated as number with basis 16. In
 the hexadecimal notation no decimal point is allowed, consequently,
@@ -273,7 +273,7 @@ only integers can be noted in this system.
 Zahlen können ganzzahlig oder mit Dezimalpunkt geschrieben werden.
 Eine Schreibweise mit Zehnerexponent ist nicht
 zugelassen.\index{Zahlen} Ferner kann eine Zahl auch mit dem Zeichen
-{\bf \#}\index{\#} beginnen und weitere Hex-Ziffern\index{Hex-Ziffern}
+{\bf \#}\index{*#@\#} beginnen und weitere Hex-Ziffern\index{Hex-Ziffern}
 enthalten. Diese Schreibweise bedeutet, daß die Zahl zur Basis 16
 ausgewertet wird. In dieser Hex-Schreibweise ist kein Dezimalpunkt
 erlaubt, folglich sind nur ganzzahlige Werte darstellbar.
@@ -383,14 +383,14 @@ Der Wert eines Intervalls kann auf eine von drei Arten angegeben werden:
   \item als Kombination aus anderen Intervallen.
 \ei
 \fi
-Here \texttt{Number1 : Number2} denotes the ratio
+Here \keyword{Number1 : Number2} denotes the ratio
 \begin{align*}
-\frac{\text{\texttt{Number1}}}{\text{\texttt{Number2}}},
+\frac{\text{\keyword{Number1}}}{\text{\keyword{Number2}}},
 \end{align*}
-and \texttt{A ROOT B} is  the \texttt
-Ath root of \texttt B:
+and \keyword{A ROOT B} is  the \keyword
+Ath root of \keyword B:
 \begin{align*}
-  \sqrt[\text{\texttt{A}}]{\text{\texttt B}}.
+  \sqrt[\text{\keyword{A}}]{\text{\keyword B}}.
 \end{align*}
 Whenever intervals are combined from other intervals, so these
 intervals must not have circular dependencies, but the values of the
@@ -406,12 +406,12 @@ example, the interval
 \end{lstlisting}
 will be calculated according to the following scheme:
 \begin{align*}
-  \mathtt I = \texttt{octave}^3 * \texttt{third}^{-5} * \texttt{cent}^{17}.
+  \mathtt I = \keyword{octave}^3 * \keyword{third}^{-5} * \keyword{cent}^{17}.
 \end{align*}
 \iffalse
 Es bedeutet dabei
 {\tt Zahl1 : Zahl2} das Verhältnis von Zahl1 zu Zahl2 und
-{\tt A WURZEL B} ist die \texttt{A}te Wurzel aus \texttt{B}.
+{\tt A WURZEL B} ist die \keyword{A}te Wurzel aus \keyword{B}.
 Wenn Intervalle aus anderen Intervallen zusammengesetzt werden,
 so dürfen keine gegenseitigen Abhängigkeiten entstehen, sondern
 die Werte der Intervalle müssen in konsistenter Form berechenbar sein.
@@ -422,9 +422,9 @@ Optional kann einem Intervall auch ein Faktor\index{Faktor}
 entsprechend mehrfach. Da es sich bei Intervallen eigentlich um
 Frequenzverhältnisse handelt, ergibt sich der Wert eines zusammengesetzten
 Intervalles multiplikativ. Zum Beispiel wird das Intervall
-\begin{verbatim} 
+\begin{lstlisting} 
 INTERVALL I = 3 oktave - 5 terz + 17 cent 
-\end{verbatim}
+\end{lstlisting}
  nach folgendem Schema
 berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
 \fi
@@ -478,8 +478,8 @@ TONE  bes = c - 2 fifth + octave
 \end{lstlisting}
 will be calculated as 
 \[
-\text{frequency}(\texttt{b}) = \text{frequency}(\texttt{c}) *
-\texttt{fifth}^{-2} * \texttt{octave}.
+\text{frequency}(\keyword{b}) = \text{frequency}(\keyword{c}) *
+\keyword{fifth}^{-2} * \keyword{octave}.
 \]
 \iffalse
 Sämtliche Töne ergeben nach deren Berechnung immer eine feste Frequenz.
@@ -506,7 +506,7 @@ another kind. A tone system consists of an anchor key\index{anchor
 period interval\index{interval!period interval}. The period interval
 can be combined from other intervals. The fundamental scale consists
 of a sequence of tones, wich must be eclosed by brackets
-\textbf{[]}\index{[] (brackets)} and which have to be separated by
+\textbf{[]}\index{*[]@[] (brackets)} and which have to be separated by
 commas. It corresponds to a range on the piano keyboard. The
 correspondence of the tone arises from the anchor key. This key
 coresponds to the MIDI number\index{MIDI!number} of the first tone of
@@ -580,7 +580,7 @@ as well as relative to the current state. For an absolute change a
 number or a symbolic parameter is provided, which denotes the new
 value regardles of the old one. For a relative change the actual value
 is used as a reference value and changed by a certain value. The
-symbol \textbf{\@}\index{\@ (at)} means semantically “\textit{the old
+symbol \textbf{\@}\index{*A@\textat\ (at)} means semantically “\textit{the old
   value}”, which shall be referenced.
 
 \iffalse
@@ -596,7 +596,7 @@ wird eine Zahl oder ein symbolischer Parameter angegeben, der den
 neuen Wert darstellt, ohne Rücksicht auf den vorherigen Zustand.
 Bei einer relativen Änderung wird der bisherige Wert als Bezugswert
 genommen und um einen gewissen Betrag verändert. Semantisch bedeutet das
-Symbol {\bf @}\index{\@ (at)} `{\it der alte Wert}',
+Symbol {\bf @}\index{at@\textat\ (at)} `{\it der alte Wert}',
 auf den Bezug genommen werden soll.
 \fi
 
@@ -693,7 +693,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       tone changes. These expressions are devided by commas and
       correspond to the tones in the same way, as they are denoted by
       tone systems. In case of a constant tone the symbol
-      \texttt{\@}\index{{\@ (at)}} must be used, sine \emph{nothing}
+      \keyword{\@}\index{*A@\textat\ (at)} must be used, sine \emph{nothing}
       means that the tone will be muted. If the number of expressions
       is smaller than the width of the fundamental scale the remaining
       tones are not changed. If the width of the fundamental scale is
@@ -709,7 +709,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       auf die entsprechenden Töne, wie sie bei einem Tonsystem
       angegeben werden.
       Soll ein Ton unverändert
-      erhalten bleiben, so ist dafür das Symbol \texttt{\@}\index{{\@ (at)}}
+      erhalten bleiben, so ist dafür das Symbol \keyword{\@}\index{{\@ (at)}}
       zu schreiben, weil
       `{\it nichts}' bedeutet, daß der Ton stumm geschaltet wird.
       Falls die Anzahl der Rechenausdrücke kleiner ist, als die
@@ -786,15 +786,15 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       of a constant, which determines the case, and a sequence of
       action, which will be executed if the choice selects this
       alternative. The individual actions of an alternative are
-      delimited by commas (\texttt{,}), while complete alternatives
+      delimited by commas (\keyword{,}), while complete alternatives
       are not seperated by any special delimiter. The constants of the
       alternatives must be unique integers. At the end of an
-      alternative a special constant \texttt{else}\index{else} can be
+      alternative a special constant \keyword{else}\index{else} can be
       used. If the selector coinsides with a constant the
       corresponding alternative is executed. If it is not equals to
-      any constant and the constant \texttt{else} is given the
-      alternative of the \texttt{else} branch is used. If the selector
-      is different from any constant and the special constant \texttt{else} is
+      any constant and the constant \keyword{else} is given the
+      alternative of the \keyword{else} branch is used. If the selector
+      is different from any constant and the special constant \keyword{else} is
       not given, no alternative will be executed. The call of the
       retuning has no effect in this case.
 \iffalse
@@ -806,7 +806,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
       aus der Konstanten, die einen der möglichen Fälle bestimmt, und
       einer Folge von Aktionen, welche durchgeführt werden, falls die
       Auswahl für diese Alternative zutrifft. Die einzelnen Aktionen
-      einer Alternative sind mit Komma (\texttt{,}) getrennt, während
+      einer Alternative sind mit Komma (\keyword{,}) getrennt, während
       komplette Alternativen nicht durch ein besonderes Trennzeichen
       getrennt sind. Die Konstanten der einzelnen Alternativen müssen
       ganzzahlig und eindeutig sein. Am Ende der Alternativen darf
@@ -824,10 +824,10 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
 
       \input{syn16.pic}
     \item[Action MIDI out]\index{action!MIDI out} a MIDI output is
-      started with the word \texttt{MIDIOUT}\index{MIDIOUT} and is a
+      started with the word \keyword{MIDIOUT}\index{MIDIOUT} and is a
       sequence of numbers which are seperated by commas and entailed
       in parentheses. For number the hexadecima writing
-      (\#\emph{digits})\index{\#} is allowed. The numbers bust be in
+      (\#\emph{digits})\index{*#@\#} is allowed. The numbers bust be in
       the range from 0 to 255, as they must fit in a bye each. There
       is no control if the MIDI message is correct or meaningful.
 \iffalse
@@ -836,7 +836,7 @@ Merkmale der aktuellen Stimmung ver\-än\-dern:
 	 eingeleitet und
 sind eine in runde Klammern eingeklammerte
 und durch Kommata getrennte Folge von Zahlen. Bei Zahlen ist die sedezimale
-Schreibweise zulässig (\#{\it ziffern}).\index{\#} Die Zahlen
+Schreibweise zulässig (\#{\it ziffern}).\index{*#@\#} Die Zahlen
 müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
 Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 \fi
@@ -845,9 +845,32 @@ Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
 \end{description}
 
-\chapter{Harmonie}\label{cha:harmonie}
-\index{Harmonie}
+\chapter{Harmony}\label{cha:harmonie}
+\index{harmony}
 
+A harmony declaration defines individual harmonies and the
+corresponding values. Harmony names must not be used twice, but they
+can have the same name as objects of another kind. The value of a
+harmony is a sequence of key numbers\index{key!number}, which identify
+individual keys within the fundamental scale. Keys on the keyboard,
+which are outside of the fundamental scale are projected into the
+fundamental scale and form the projection scale\index{projection
+  scale}, which has the same width as the fundamental scale, but
+contains the information which (projected) keys
+(chromas\index{chroma}) are currently held down. A harmony will be
+recognised, if in the projection scale exactly the given keys are held
+down. Hereby some keys can be ignored. The corresponding key numbers
+must be preceeded by an asterisk (*)\index{#*@*
+  (asterisk)}. Optionally, a reference key\index{key!reference
+  key}\index{reference key}
+can be used. It's value doesn't change the pattern for harmnoy
+recognition, but defines a relative transposition of the reference
+chroma\index{chroma!reference chroma} in the parameter
+\keyword{DISTANCE}\index{DISTANCE}. If no reference key is given, its
+value will be assumed as $0$, which means no transposition of the
+reference chroma.
+
+\iffalse
 Eine Harmoniedeklaration definiert einzelne Harmonien und die
 dazugehörenden Werte. Harmonienamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -864,22 +887,39 @@ gerade gedrückt sind.
 Eine Harmonie wiederum wird erkannt, wenn in der Projektionstonleiter genau
 die angegebenen Tastennummern gedrückt sind. Dabei können einzelne
 Tasten unberücksichtigt bleiben. Die entsprechenden Tastennummern sind
-durch einen Stern (*)\index{*} gekennzeichnet.
+durch einen Stern (*)\index{**@*} gekennzeichnet.
 Optional kann eine Bezugstaste\index{Bezugstaste}\index{Tasten!Bezugs-}
 mit angegeben werden.
 Ihr Wert ändert nicht das Harmonie-Erkennungsmuster, sondern gibt
 bei der Harmonieform-Analyse eine relative Verschiebung
 der Bezugstonigkeit\index{Bezugstonigkeit}
- in dem Wert \texttt{ABSTAND}\index{ABSTAND} an.
+ in dem Wert \keyword{ABSTAND}\index{ABSTAND} an.
 Falls keine Bezugstaste angegeben ist, so wird ihr Wert als $0$ angenommen,
 also ohne Verschiebung der Bezugstonigkeit.
+\fi
 
 \input{syn15.pic}
 
 
 
-\chapter{Logik}\label{cha:logik}
-\index{Logik}
+\chapter{Logic}\label{cha:logik}
+\index{logic}
+
+A logic declaration defines individual tuning logics and the
+corresponding values. Logic names must not be defined twice, but can
+be the same as names of objects of another kind. Logics are activatied
+by a trigger\index{trigger} and consist of an initial
+tuning\index{tuning!initial}\index{initial tuning} and set of
+instructions\index{instruction!set of}. An initial tuning can be a
+tone system\index{tone system} or a retuning\index{retuning}. It can
+be omitted, in this case the prior tuning will be retained. Similar,
+the set of instructions can be empty. In this case the actual tuning
+will be a static tuning that doesn't change automatically. An
+instruction consists of a trigger and a list of actions. An action 
+can be a call to a retuning, a tone system or a logic, or it can send
+a MIDI message.
+
+\iffalse
 Eine Logikdeklaration definiert einzelne Logiken und die
 dazugehörenden Werte. Logiknamen dürfen nicht doppelt definiert
 werden, sie dürfen jedoch gleiche Namen tragen,
@@ -895,7 +935,22 @@ Eine Anweisung wiederum besteht ebenfalls aus einem Auslöser, sowie einer
 Liste von Aktionen.
 Die Aktionen dürfen der Aufruf einer Umstimmung, eines Tonsystems
 oder einer Logik sein, oder das Senden einer MIDI-Nachricht.
+\fi
 
+In principle, two sets of triggers exist: The triggers, which activate
+one of the logics, and the triggers, which select an instruction in
+the currently active logic. Ther former are called \emph{global
+  triggers}\index{trigger!global} and the latter ones \emph{local
+  triggers}\index{trigger!local}. When an event occurs first the set
+of global triggers is checked, afterwards the set of local triggers is
+checked, if the event fits to one of them. In each of these two sets
+the triggers are tested in the same order as they were declared in the
+tuning logic. If a global trigger is found, the corresponding logic
+will be activated. If a local trigger is found, the corresponding
+action will be called inside the logic. Inside the set of the global
+triggers the special trigger \keyword{ELSE} is not allowed.
+
+\iffalse
 Grundsätzlich existieren zwei Mengen von Auslösern: Die Auslöser, welche
 eine der Logiken aktivieren, und die Auslöser, die innerhalb der
 gerade aktiven Logik die Anweisungen anwählen. Erstere nennen wir
@@ -911,22 +966,36 @@ gewechselt. Wenn ein lokaler Auslöser zutrifft, so werden die entsprechenden
 Aktionen innerhalb der aktuellen Logik aufgerufen.
 Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
 {\tt ansonsten}\index{ansonsten} nicht erlaubt.
+\fi
 
 \input{syn24.pic}
 
 \input{syn27.pic}
 
-\section{Auslöser}\label{sec:ausloser}
-\index{Auslöser}
+\section{Trigger}\label{sec:ausloser}
+\index{trigger}
 
-Auslöser können wahlweise eine der 26 Buchstabentasten, eine Harmonie,
-eine Harmonieform,
-ein MIDI-Ereignis oder der Spezialauslöser {\tt ansonsten} sein.
+Each of the 26 latin (ASCII)\index{ASCII} letters, a
+harmony, a harmonic form, a MIDI event or the special trigger
+\keyword{ELSE} can be chosen as trigger.
 
 \input{syn18.pic}
 
-\subsection{Tasten}\index{Tasten}\label{sec:tasten}
+\subsection{Keys}\index{key}\label{sec:tasten}
 
+This trigger\index{trigger!key} consists of the word \keyword{KEY},
+followed by one of the 26 latin letters. Whenever inside one of the
+\mutabor{} window the
+given key is pressed on the computer keyboard, this trigger is matched
+as long as the window has no special meaning for it. The trigger
+corresponds always to the \mutabor{} box that corresponds to the last
+active window with an associated box. The first ten boxes can be 
+selected using the number keys
+\Ctrl+\keystroke{0} to \Ctrl+\keystroke{9}. The instruments/MIDI
+channels 1–9 can be chosen by the keys \keystroke 1 to \keystroke
+9. Thus, only instruments/MIDI channels 1–9 as defined below can be
+controled by key triggers.
+\iffalse
 Dieser Auslöser\index{Auslöser!Taste}
  besteht aus dem Wort {\it Taste}\index{Tasten}, gefolgt von einem der
 26 Buchstaben. Wenn innerhalb von \mutabor{} die angegebene Taste auf der
@@ -935,11 +1004,37 @@ Der Auslöser bezieht sich jeweils auf das Instrument bzw.\ MIDI-Kanal,
 das vorher
 mit den Zifferntasten angewählt wurde. Man kann also nur die
 Instrumente/MIDI-Kanäle 1--9 mit einem Tasten-Auslöser steuern.
+\fi
 
-      \input{syn19.pic}
+\input{syn19.pic}
 
-\subsection{Harmonien}\label{sec:harmonien}
-\index{Harmonien}
+\subsection{Harmonies}\label{sec:harmonien}
+\index{Harmonies}
+Harmony or pattern trigger\index{trigger!harmony}\index{trigger!pattern} can recognize either a
+harmony (pattern) or a harmonic form\index{trigger!harmonic form} (shifted
+pattern)\index{trigger!shifted pattern}. The harmony is called by the
+name of its pattern and the contained key numbers are treated with
+respect to the fundamental scale\index{fundamental scale}. All pressed
+keys are projected into the fundamental scale and the resulting
+key pattern is compared with the harmony. If they coicide the harmony
+is treated as recognized. Optional keys must be marked by an asterisk
+(*)\index{**@* (asterisk)}. They will not be conidered for comparison.
+
+In order to further restrict the recognition of certain harmonys a
+pre-key\index{pre-key} can be given. It describes which chroma the
+lowest pitch must have to be recognized as the given harmony. Equally
+a post-key can be given which denotes the chroma of the higest
+tone. If pre-key and post-key are given, both must be matched. The
+chroma corresponds to the width of the actual fundamental
+scale.\footnote{This width is not fixed to 12, but can be freely
+  choosen inside wide margins.} If pre-key and post-key have a chroma
+that is not contained within the current fundamental scale, this
+harmony cannot be played as it is contradictory. Such harmonies are
+„\textit{impossible}“ trigger\index{trigger!impossible} and will issue
+a warning during compilation. Practically, they have no effect, since
+they cannot be true.
+
+\iffalse
 Harmonie-Auslöser\index{Auslöser!Harmonie}
  können wahlweise eine Harmonie oder eine Harmonieform
 \index{Auslöser!Harmonie-Form}
@@ -950,7 +1045,7 @@ Alle gedrückten Tasten werden in die
 Fundamentaltonleiter hineinprojiziert und das entstehende Tastenmuster
 wird mit der Harmonie verglichen. Bei Übereinstimmung gilt die
 Harmonie als erkannt. Tasten, die in der Harmonie mit einem
-Stern (*)\index{*} gekennzeichnet sind, werden bei diesem
+Stern (*)\index{**@*} gekennzeichnet sind, werden bei diesem
 Vergleich nicht berücksichtigt.
 Einschränkenderweise kann man mit der Vortaste\index{Vortaste} angeben,
 welche Tonigkeit\index{Tonigkeit}
@@ -967,24 +1062,58 @@ sich selbst widerspricht. Solche Harmonien sind '{\it unmögliche}'
 Auslöser\index{Auslöser!unmögliche}
  und werden mit einer Warnung gekennzeichnet. Praktisch
 bleiben sie ohne Effekt, da sie nie zutreffen können.
+\fi
 
+For a harmonic form\index{harmonic form} for the pattern will be
+checked, if the harmony is true, relatively to each tone of the
+fundamental scale. If such a shifted harmony is recognised, the
+trigger is treated as matched and the value \keyword{DISTANCE} is set
+according to the analysis of the harmony.
+
+
+\iffalse
 Bei einer Harmonieform\index{Harmonieform} wird überprüft,
 ob die Harmonie relativ zu jedem
 Ton der Fundamentaltonleiter zutrifft. Wird eine solchermaßen
 verschobene Harmonie erkannt, gilt der Auslöser als erfüllt
-und der Wert \texttt{ABSTAND}\index{ABSTAND} wird entsprechend der Harmonieanalyse gesetzt.
+und der Wert \keyword{ABSTAND}\index{ABSTAND} wird entsprechend der
+Harmonieanalyse gesetzt.
+\fi
 
+If for the harmony a reference key\index{reference key} has been
+given, then the harmony analysis will be executed relative to the
+reference key.
+
+\iffalse
 Wenn bei der Harmonie eine Bezugstaste\index{Bezugstaste}
  angegeben wurde, dann wird
-die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
+die Harmonie-Analyse relativ um die Bezugstaste verschoben
+durchgeführt.
+\fi
 
-    \input{syn20.pic}
+\input{syn20.pic}
 
-\subsection{MIDI-Ereignisse}\index{Auslöser!MIDI-Ereignis}\label{sec:midi-ereignisse}
+\subsection{MIDI trigger}\index{trigger!MIDI
+  event}\label{sec:midi-ereignisse}
+MIDI events are started by the word \textit{MIDIIN}\index{MIDIIN} and
+are sequences of numbers contained in parentheses. For the numbers the
+hexadecimal writing can be used (\#\textit{hex-digits}).\index{*#@\#}
+The first number must be in the range from 128 to 255, since it must
+be a status byte. All following numbers must be in the range from 0 to
+127, which is the range of data bytes. In the status byte the lower
+four bits (channel number) must be zeros. The channel number will be
+filled in according to the chosen instrument/MIDI channel such that
+the MIDI event corresponds to that instrument/MIDI channel.
+
+The status bytes\index{status byte} \textit{note on (\#90)},
+\textit{note off (\#80)} and \textit{system byte (\#F0 --- \#FF)} are
+not considered in the MIDI analysis.
+
+\iffalse
 MIDI-Ereignisse werden mit dem Wort {\it MIDIIN}\index{MIDIIN}
 eingeleitet und
 sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
-Schreibweise zulässig (\#{\it ziffern}).\index{\#}
+Schreibweise zulässig (\#{\it ziffern}).\index{*#@\#}
 Die erste Zahl muss im Bereich von
 128 bis 255 liegen, also ein Status-Byte sein. Alle weiteren Zahlen
 müssen im Bereich von 0 bis 127 liegen, also Daten-Bytes sein.
@@ -999,11 +1128,24 @@ Die Status-Bytes\index{Status-Byte}
 {\it System-Byte\index{System-Byte}
  (\#F0 - \#FF)} werden nicht in die MIDI-Analyse
 einbezogen.
+\fi
 
     \input{syn21.pic}
 
-\section{Aktionen}\index{Aktionen}\label{sec:aktionen}
+\section{Actions}\index{Actions}\label{sec:aktionen}
 
+Actions are triggered inside a logic and can call either a
+tone system or a retuning, change to another logic or send a MIDI
+message. On the call of a retuning exactly the same number of
+parameters\index{parameter} must be given in the same order as the
+called retuning needs. The given parameters are assigned to the
+parameter names in the same order as they are given in the
+definition. The parameters can be numbers as well as the value
+\textit{DISTANCE}\index{DISTANCE}. The value DISTANCE corresponds to
+the result of the last analysis of harmonic forms, where the value of
+DISTANCE will be retained until the next analysis of harmonic forms.
+
+\iffalse
 Aktionen werden innerhalb einer Logik ausgelöst und können wahlweise
 ein Tonsystem aufrufen, eine Umstimmung aufrufen,
 zu einer Logik wechseln oder eine MIDI-Nachricht
@@ -1015,29 +1157,62 @@ sowie der Wert {\it ABSTAND}\index{ABSTAND}.
 Der Wert ABSTAND entspricht den Gegebenheiten der
 zuletzt durchgeführten Harmonie-FORM-Analyse, wobei der Wert
 ABSTAND bis zur nächsten Harmonie-FORM-Analyse beibehalten wird.
+\fi
 
+A logic can execute a single action or an action list, which is
+denoted in braces. In the case of an action list all actions are
+executed in the given order.
+
+\iffalse
 Eine Logik kann eine einzelne Aktion ausführen oder eine in geschweiften
 Klammern stehende Aktions-Liste aus\-füh\-ren. Im Falle der Aktions-Liste
 werden die einzelnen Aktionen der Liste in genau der angegebenen
 Reihenfolge ausgeführt.
+\fi
 
+\subsection{MIDI output}\index{MIDI!output}\label{sec:midi-ausgaben}
+\index{action!MIDI output}
 
-\subsection{MIDI-Ausgaben}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
-\index{Aktion!MIDI Ausgabe}
+A MIDI output is started with the word \textit{MIDIOUT}\index{MIDIOUT}
+and is a sequence of numbers delimited by parentheses. For the numbers
+the hexadecimal notation (\#\textit{hex digits}) can be used. The
+numbers must be in the range from 0 (\#00) to 255 (\#FF) as they must
+be single bytes. There is not check, whether the resulting message is
+a correct MIDI message.\footnote{Currently (2011-07-03) in each message at most 4 bytes are possible.}
 
+\iffalse
 MIDI-Ausgaben werden mit dem Wort {\it MIDIOUT}\index{MIDIOUT}
  eingeleitet und
 sind eine eingeklammerte Folge von Zahlen. Bei Zahlen ist die sedezimale
 Schreibweise zulässig (\#{\it ziffern}). Die Zahlen
 müssen im Bereich von 0 bis 255 liegen, also Bytes sein. Es erfolgt keine
 Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
+\fi
 
-    \input{syn22.pic}
+\input{syn22.pic}
 
-\chapter{MIDI-Kanäle}\label{cha:midi-kanale}
-\index{MIDI!Kanal}
-\label{MIDIKANAL}
+\chapter{MIDI channels}\label{cha:midi-kanale}
+\index{MIDI!channel}
+\label{MIDICHANNEL}
 
+The midi channel declaration has been superseded by the routing system
+introduced in \mutabor{} 3.0. The following descriptions is retained
+for compatibility.
+
+A MIDI channel declaration defines the correspondence, which MIDI
+channel shall be recognised by \mutabor{}, and how much MIDI output
+channels are assigned to the different input channels. This is
+imported for the multi 16 processing\index{multi 16 processing}. The
+MIDI in channels are called “\textit{instruments}”, since for each separate
+MIDI in channel the corresponding logic program is used
+exclusively. Up to 16 instruments can play at the same time in
+different logics.\footnote{Since \mutabor{} 3.0 this limit can be
+  exceeded by the usage of the routing system.} If all 16
+instruments/MIDI channels are used and \mutabor{} is instructed to use
+the multi 16 processing, so each instrument can play only a single
+tone, since only 16 MIDI channels are available as output channels. 
+
+\iffalse
 Eine MIDI-Kanal-Deklaration definiert die Zuordnung, auf welchen
 MIDI-In-Kanal \mutabor{} reagieren soll, und wieviele MIDI-Out-Kanäle
 den einzelnen Eingabekanälen zugeordnet werden. Dies ist für die
@@ -1057,7 +1232,26 @@ auch als Ausgabe-Kanäle verfügbar sind. Beim Modell FB-01 von Yamaha wird
 eine spezielle System-exklusive Ansteuerungsmethode verwendet,
 so daß hier bis zu 16 Instrumente zu je 16 gleichzeitigen Tönen
 spielbar sind.
+\fi
 
+For the multi 16 processing each input channel is assigned a range of
+output channels. The size of this range corresponds to the number of
+tones, that can be played simultaneously using this input channel. The
+channel information of the received status byte defines, for which
+input channel the message is used. Each input channel can use the
+complete logic program and works independently from the other input
+channels. During harmonic analysis or the analysis of a MIDI input
+message the channel of the message will honoured. On the screen the
+user can switch between the input channels 1 to 9 by pressing the keys
+\keystroke 1 to \keystroke 9. A key trigger will be considered with
+respect to the currently shown input channel. If no MIDI channels have
+been declared, ind if no channel assignment has been described in the
+routing panel, the declaration 
+\begin{lstlisting}
+	MIDICHANNEL  1  ->  1 - 16
+\end{lstlisting}
+will be used automatically.
+\iffalse
 Beim Multi-16-Verfahren wird
 jedem Eingabekanal ein Bereich von MIDI-Out-Kanälen zugeordnet. Die Größe
 dieses Bereichs entspricht der Anzahl Töne,
@@ -1074,55 +1268,101 @@ bezieht sich immer auf den am Bildschirm angezeigten Eingabekanal.
 Falls keine MIDI-Kanäle deklariert werden, und auch keine Kanalzuordnung
 in der Konfigurationsdatei angegeben ist,
 gilt die Deklaration
-\begin{verbatim}
+\begin{lstlisting}
 	MIDIKANAL  1  ->  1 - 16
-\end{verbatim}
+\end{lstlisting}
 als automatisch gegeben.
+\fi
 
 \input{syn25.pic}
 
-\section{Worterklärungen}\label{sec:worterklarungen}
+\section{Glossary}\label{sec:worterklarungen}
 \begin{description}
+\item[key] The piano keys are given as distances in half tones to the
+  anchor key. The anchor key has number 0, the next key right of it
+  number 1, the following 2 and so on.
+\iffalse
 \item[Taste] Die Klaviatur-Tasten werden als Abstand in
   Tastatur-Halbtönen zur Verankerungstaste angegeben. Die
   Verankerungstaste hat somit die Nummer 0, die nächste Taste weiter
   rechts die Nummer 1, die nächste die 2 usw.
+\fi
 
+\item[selector] The selector of a retuning alternative is the
+  parameter, which chooses the alternative. Generally, this is a
+  parameter (i.\,e. the parameter name) of the retuning and represents
+  an integer.
+\iffalse
 \item[Selektor] Der Selektor einer Umstimmungs-Alternative ist der
   Parameter, nach dem sich die Alternativen ausrichteten. In der Regel
   ist dies ein Parameter (d.\,h. der Parametername) der Umstimmung und
   repräsentiert so eine ganze Zahl.
+\fi
 
+\item[letter] Here, each of the 26 Latin ASCII letters can be given
+  (no accents or umlauts). If you press the corresponding key on the
+  computer keyboard, the corresponding event will be triggered. The
+  letters are treated case insensitive.
+\iffalse
 \item[Buchstabe] Hier können sie einen der 26 Standard-Buchstaben des
   lateinischen Alphabets angeben (also keine Umlaute). Wenn Sie dann
   auf der Computer"=Tastatur diese Taste drücken wird das zugeordnete
   Ereignis ausgelöst. Es wird dabei nicht zwischen Klein- und
   Großbuchstaben unterschieden.
+\fi
 
+\item[anchor key] The anchor key is the piano key, at which the
+  fundamental scale starts and is denoted as MIDI number of the
+  key. The middle c (c') has number 60, the other keys are numbered
+  increasing, and decreasing, respectively, i.\,e. c\#' has number 61,
+  d' number 62 and so on.
+\iffalse 
 \item[Verankerungs-Taste] Die Verankerungs-Taste ist die
   Klaviatur-Taste, bei der die Fundamentaltonleiter beginnt und wird
   als MIDI-Nummer der Taste angegeben (also als Zahl). Das
   eingestrichene c (c') hat die Nummer 60, die anderen Tasten sind
   aufsteigend bzw. absteigend durchnummeriert, d.\,h.  c\#' hat die
   Nummer 61, d' die 62 usw.
+\fi
 
+\item[constants] The constants are integers, which denote at which
+  value of the selector the logic will switch into the following
+  retuning.
+\iffalse
 \item[Konstanten] Die Konstanten ganze Zahlen, die festlegen, bei
   welchem Wert des Selektors in die
   darauf folgende Umstimmung verzweigt wird.
+\fi
 
+\item[names] Many calls and assignments are done in \mutabor{} using
+  names. In the declaration of each object you must give it a name,
+  which can be used later as reference in other declarations
+\iffalse
 \item[Namen] Viele Aufrufe und Zuordnungen laufen in \mutabor{}
   über die Namen ab. Beim deklarieren eines jeden Objektes müssen Sie
   diesem einen Namen geben, den Sie später als Referenz in anderen
   Deklarationen angeben können.
+\fi
 
+\item[numbers] Numbers can be denoted in \mutabor{} by integers or
+  decimals with decimal point.
+\iffalse
 \item[Zahlen] Zahlen können in Mutabor als Ganze Zahlen oder
   Dezimalzahlen (mit Punkt als Komma) angegeben werden.
+\fi
 
+
+\item[MIDI values] MIDI values are integers between 0 and 2555, which
+  are considered by MIDI devices as commands and data. Additionally,
+  here a hexadecimal notation is allowed, which must be preceded by a
+  leading hash sing (\#), e.\,g. \#9C, \#A0, \#78, \#E0, \dots 
+\iffalse
 \item[MIDI-Werte] MIDI-Werte sind ganze Zahlen zwischen 0 und 255, die
   von MIDI-Geräten als Befehle und Daten ausgewertet werden.
   Zusätzlich ist hier die hexadezimale Schreibweise erlaubt, der ein
   Gatterzeichen (\#) voran zu stellen ist, also z.\,B. \#9C, \#A0, \#78,
   \#E0 \dots
+\fi
 \end{description}
 
 %\chapter{Konfiguration}
