@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.3 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.4 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * Revision 1.4  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.3  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -49,7 +52,7 @@ mutString CurrentSep;
 #define ROUND(x) x = (floor(x*ROUND_FACTOR+0.5)) / ROUND_FACTOR
 //#define ROUND(x) x=x
 
-void GetKeyPitch(int taste, ton_system *tonsystem, int &key, double &pitch)
+void GetKeyPitch(int taste, tone_system *tonsystem, int &key, double &pitch)
 {
 	int Index = (taste - tonsystem->anker) % tonsystem->breite;
 	int Abstand = (taste - tonsystem->anker) / tonsystem->breite;

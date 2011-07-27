@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Interpre.h,v 1.7 2011/03/06 13:15:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Interpre.h,v 1.8 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/03/06 13:15:41 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Interpre.h,v $
- * Revision 1.7  2011/03/06 13:15:41  keinstein
+ * Revision 1.8  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.7  2011-03-06 13:15:41  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.6  2011-02-20 22:35:55  keinstein
@@ -53,16 +56,12 @@ typedef struct TSYS
 	int breite;
 	long periode;
 	long ton[MAX_BREITE];
-}
-
-ton_system;
+} tone_system;
 
 typedef struct PTRN
 {
 	int tonigkeit[MAX_BREITE];
-}
-
-PATTERNN;
+} PATTERNN;
 
 /*****************************
 struct midiereignis { struct midiereignis * next;
@@ -101,7 +100,7 @@ void MAUS_analyse(int mx, int my);
 void Add_Key(int instr, int key, int velo);
 void Delete_Key(int instr, int key);
 
-ton_system * lz_get_tonsystem(int instr);
+tone_system * lz_get_tonsystem(int instr);
 PATTERNN * get_pattern(int instr);
 
 
@@ -192,7 +191,7 @@ struct do_aktion
 		aufruf_logik;
 
 		struct {
-			ton_system * tonsystem;
+			tone_system * tonsystem;
 		}
 
 		aufruf_tonsystem;

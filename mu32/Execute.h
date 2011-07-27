@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.h,v 1.6 2011/03/06 13:15:40 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.h,v 1.7 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/03/06 13:15:40 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Execute.h,v $
- * Revision 1.6  2011/03/06 13:15:40  keinstein
+ * Revision 1.7  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.6  2011-03-06 13:15:40  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.5  2011-02-20 22:35:55  keinstein
@@ -35,7 +38,7 @@
 #ifndef EXECUTE_H
 #define EXECUTE_H
 
-#include "Interpre.h"
+#include "box.h"
 
 void KeyboardIn(int box, const mutChar *keys);
 
@@ -47,8 +50,6 @@ void AddKey(int box, int taste, int id);
 void DeleteKey(int box, int taste, int id);
 
 void MidiAnalysis(int box, BYTE midiByte);
-
-extern ton_system *tonsystem[MAX_BOX];
 
 void protokoll_aktuelles_tonsystem( int instr );
 

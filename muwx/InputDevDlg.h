@@ -2,16 +2,19 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.8 2011/02/20 22:35:57 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.9 2011/07/27 20:48:32 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.9 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
- * Revision 1.8  2011/02/20 22:35:57  keinstein
+ * Revision 1.9  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.8  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.7  2009-08-10 11:15:46  keinstein
@@ -31,7 +34,6 @@
  * \addtogroup route
  * \{
  ********************************************************************/
- */
 
 #ifndef _INPUTDEVDLG_H_
 #define _INPUTDEVDLG_H_
