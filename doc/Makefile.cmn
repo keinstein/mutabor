@@ -14,7 +14,7 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 		pdflatex --synctex=1 '$*' ; \
 		makeindex `basename "$*"` ; \
 	done ; \
-	mv `basename $*.pdf` $@
+	cp `basename $*.pdf` $@
 
 html: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \

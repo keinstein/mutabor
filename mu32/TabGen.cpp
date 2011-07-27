@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/TabGen.cpp,v 1.5 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/TabGen.cpp,v 1.6 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: TabGen.cpp,v $
- * Revision 1.5  2011/02/20 22:35:55  keinstein
+ * Revision 1.6  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.5  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -365,13 +368,13 @@ static struct do_aktion * expandiere_tonsystem (
 {
 
 	struct do_aktion * help;
-	ton_system * help_tonsystem;
+	tone_system * help_tonsystem;
 
 	help = (do_aktion*) xmalloc (sizeof (struct do_aktion));
 	help -> name = the_tonsystem -> name;
 	help -> aufruf_typ = aufruf_tonsystem;
 
-	help_tonsystem = (TSYS*) xmalloc (sizeof (ton_system));
+	help_tonsystem = (TSYS*) xmalloc (sizeof (tone_system));
 	help_tonsystem -> anker = the_tonsystem -> taste;
 	help_tonsystem -> breite = ton_list_laenge (the_tonsystem -> toene);
 	help_tonsystem -> periode =

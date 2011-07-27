@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.9 2011/03/06 13:15:40 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.10 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/03/06 13:15:40 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: Execute.cpp,v $
- * Revision 1.9  2011/03/06 13:15:40  keinstein
+ * Revision 1.10  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.9  2011-03-06 13:15:40  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.8  2011-02-20 22:35:55  keinstein
@@ -39,7 +42,7 @@
 #endif
 
 #include "Global.h"
-#include "Interpre.h"
+#include "box.h"
 #include "GrafKern.h"
 #include "MidiKern.h"
 #include "Runtime.h"
@@ -58,27 +61,11 @@ void MidiOut(int box, DWORD data, char n);
 void NotesCorrect(int box);
 int  GetChannel(int box, int taste);
 
-PATTERNN pattern[MAX_BOX];         /* Die momentan gespielte Harmonie */
-ton_system tonsystem_memory[MAX_BOX+1];  /* Der Platz fÅr die tatsÑchlichen
-												tonsysteme */
+tone_system tonesystem_memory[MAX_BOX+1];  /* save memory for extra data */
 
-ton_system tonsystem_init =
+tone_system tonesystem_init =
         {60, 1, DOUBLE_TO_LONG(1), { DOUBLE_TO_LONG(60) }} ;
 
-ton_system *tonsystem[MAX_BOX]       /* Verweise auf die aktuellen
-                                    Tonsysteme (in tonsystem_memory) */
-/*	  = { tonsystem_memory + 0,
-         tonsystem_memory + 1,tonsystem_memory + 2,
-         tonsystem_memory + 3,tonsystem_memory + 4,
-         tonsystem_memory + 5,tonsystem_memory + 6,
-         tonsystem_memory + 7,tonsystem_memory + 8,
-         tonsystem_memory + 9,tonsystem_memory + 10,
-         tonsystem_memory + 11,tonsystem_memory + 12,
-         tonsystem_memory + 13,tonsystem_memory + 14,
-         tonsystem_memory + 15 }*/;
-
-/** Free pointer to the first empty tone system as ring memory */
-ton_system * freies_tonsystem = tonsystem_memory + MAX_BOX;  
 
 int liegende_tasten[MAX_BOX][64];
 int liegende_tasten_max[MAX_BOX];
@@ -88,10 +75,6 @@ bool logic_changed[MAX_BOX];
 int laufzeit_abstand[MAX_BOX];
 int laufzeit_zentrum[MAX_BOX];
 
-int laufzeit_meldungen_erlaubt=0;
-
-int aktuelles_midi_instrument=0;
-int aktuelle_keyboard_box=0;
 char tempstring[255];
 
 void MutResetKeys()
@@ -109,7 +92,7 @@ void MutResetKeys()
 		liegende_tasten_max[i] = 0;
 
 		for (int j = 0; j < MAX_BREITE; j++)
-			pattern[i].tonigkeit[j] = 0;
+			mut_box[i].pattern.tonigkeit[j] = 0;
 
 		keys_changed[i] = 0;
                 logic_changed[i] = 0;
@@ -121,14 +104,14 @@ void MutResetKeys()
 /* reset boxes */
 void GlobalReset()
 {
-	for (int i = 0; i <= MAX_BOX; i++) {
-		tonsystem_memory[i] = tonsystem_init;
-//    tonsystem[i] = tonsystem_memory + i;
-		tonsystem[i] = &(tonsystem_memory[i]);
+	for (int i = 0; i < MAX_BOX; i++) {
+		tonesystem_memory[i] = tonesystem_init;
+		mut_box[i].tonesystem = tonesystem_memory + i;
 	}
+	tonesystem_memory[MAX_BOX] = tonesystem_init;
+	free_tonesystem = tonesystem_memory+MAX_BOX;
 
-        MutResetKeys();
-	freies_tonsystem = &(tonsystem_memory[MAX_BOX]);
+        MutResetKeys ();
 }
 
 // forwards
@@ -158,7 +141,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_tonsystem:
-			* tonsystem[box] =
+			* mut_box[box].tonesystem =
 			        * aktion->u.aufruf_tonsystem.tonsystem;
 			update_pattern(box);
 
@@ -199,7 +182,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_wiederholung_abs:
-			tonsystem[box]->periode =
+			mut_box[box].tonesystem->periode =
 			        aktion->u.aufruf_umst_wiederholung_abs.faktor;
 
 #ifdef NOTES_CORRECT_SOFORT
@@ -211,7 +194,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_wiederholung_rel:
-			tonsystem[box]->periode +=
+			mut_box[box].tonesystem->periode +=
 			        aktion->u.aufruf_umst_wiederholung_rel.faktor;
 
 #ifdef NOTES_CORRECT_SOFORT
@@ -224,7 +207,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 		case aufruf_umst_taste_rel: {
 			int help;
-			help = tonsystem[box]->anker;
+			help = mut_box[box].tonesystem->anker;
 
 			switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
 
@@ -252,7 +235,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 		case aufruf_umst_breite_rel: {
 			int help;
-			help = tonsystem[box]->breite;
+			help = mut_box[box].tonesystem->breite;
 
 			switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
 
@@ -293,7 +276,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 			struct ton_einstell * lauf;
 
-			for (ton_zeiger = tonsystem[box]->ton,
+			for (ton_zeiger = mut_box[box].tonesystem->ton,
 			                lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
 			                lauf;
 			                lauf = lauf->next, ton_zeiger ++) {
@@ -375,7 +358,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 	// check harmonies instantly
 	if ( WasNewLogic ) {
                 // \todo Check, if this is necessary or used
-		HarmonyAnalysis(box, &pattern[box]);
+		HarmonyAnalysis(box, &(mut_box[box].pattern));
                 logic_changed[box] = true;
         }
 
@@ -384,30 +367,30 @@ void execute_aktion (int box, struct do_aktion * aktion)
 #endif
 }
 
-void update_pattern(int instr)
+void update_pattern(int box)
 {
-	PATTERNN * temp_pattern = &pattern[instr];
-	ton_system * tonsys = tonsystem[instr];
+	PATTERNN * temp_pattern = &(mut_box[box].pattern);
+	tone_system * tonsys = mut_box[box].tonesystem;
 	int i;
 
 	for (i=0;i<tonsys->breite;i++) temp_pattern->tonigkeit[i]=0;
 
-	for (i=0;i<liegende_tasten_max[instr];i++)
-		(temp_pattern->tonigkeit[GET_INDEX( liegende_tasten[instr][i]
+	for (i=0;i<liegende_tasten_max[box];i++)
+		(temp_pattern->tonigkeit[GET_INDEX( liegende_tasten[box][i]
 		                                    ,tonsys )])++;
 }
 
-void change_anker(int instr, int neu)
+void change_anker(int box, int neu)
 {
-	ton_system * tonsys = tonsystem[instr];
-	ton_system * temp = tonsys;
+	tone_system * tonsys = mut_box[box].tonesystem;
+	tone_system * temp = tonsys;
 	int i;
-	laufzeit_zentrum[instr]-=neu-tonsys->anker;
+	laufzeit_zentrum[box]-=neu-tonsys->anker;
 
-	while ( laufzeit_zentrum[instr] < 0 )
-		laufzeit_zentrum[instr] += tonsys->breite;
+	while ( laufzeit_zentrum[box] < 0 )
+		laufzeit_zentrum[box] += tonsys->breite;
 
-	laufzeit_zentrum[instr]%=tonsys->breite;
+	laufzeit_zentrum[box]%=tonsys->breite;
 
 	while (neu<36)
 		neu += tonsys->breite;
@@ -415,22 +398,22 @@ void change_anker(int instr, int neu)
 	while (neu>96)
 		neu -= tonsys->breite;
 
-	freies_tonsystem->ton[0]=GET_FREQ(neu,tonsys);
+	free_tonesystem->ton[0]=GET_FREQ(neu,tonsys);
 
 	for (i=1; i<tonsys->breite; i++)
-		freies_tonsystem->ton[i] =
-		        freies_tonsystem->ton[0] + tonsys->ton[i]-tonsys->ton[0];
+		free_tonesystem->ton[i] =
+		        free_tonesystem->ton[0] + tonsys->ton[i]-tonsys->ton[0];
 
-	freies_tonsystem->anker=neu;
-	freies_tonsystem->breite=tonsys->breite;
-	freies_tonsystem->periode=tonsys->periode;
-	tonsystem[instr]=freies_tonsystem;
-	freies_tonsystem=temp;
+	free_tonesystem->anker=neu;
+	free_tonesystem->breite=tonsys->breite;
+	free_tonesystem->periode=tonsys->periode;
+	mut_box[box].tonesystem=free_tonesystem;
+	free_tonesystem=temp;
 }
 
-void change_breite(int instr, int neu)
+void change_breite(int box, int neu)
 {
-	ton_system * tonsys = tonsystem[instr];
+	tone_system * tonsys = mut_box[box].tonesystem;
 	int i;
 
 	if ( neu>0 && neu < MAX_BREITE ) {
@@ -443,26 +426,26 @@ void change_breite(int instr, int neu)
 	}
 }
 
-// ermittelt die tiefste liegende Taste bei instr
-int tiefste_taste(int instr)
+// ermittelt die tiefste liegende Taste bei box
+int tiefste_taste(int box)
 {
 	int i, min = 9999;
 
-	for (i = 0; i < liegende_tasten_max[instr]; i++)
-		if ( liegende_tasten[instr][i] < min )
-			min = liegende_tasten[instr][i];
+	for (i = 0; i < liegende_tasten_max[box]; i++)
+		if ( liegende_tasten[box][i] < min )
+			min = liegende_tasten[box][i];
 
 	return min;
 }
 
-// ermittelt die hˆchste liegende Taste bei instr
-int hoechste_taste(int instr)
+// ermittelt die hˆchste liegende Taste bei box
+int hoechste_taste(int box)
 {
 	int i, max = 0;
 
-	for (i = 0; i<liegende_tasten_max[instr]; i++)
-		if ( liegende_tasten[instr][i] > max )
-			max = liegende_tasten[instr][i];
+	for (i = 0; i<liegende_tasten_max[box]; i++)
+		if ( liegende_tasten[box][i] > max )
+			max = liegende_tasten[box][i];
 	return max;
 }
 
@@ -495,7 +478,7 @@ void HarmonyAnalysis(int box, PATTERNN * pattern )
 {
 
 	struct harmonie_ereignis *help;
-	ton_system *tonsys = tonsystem[box];
+	tone_system *tonsys = mut_box[box].tonesystem;
 	int i;
 
 	for (help = first_harmonie[box]; help; help=help->next ) {
@@ -558,9 +541,9 @@ void HarmonyAnalysis(int box, PATTERNN * pattern )
 void AddKey( int box, int taste, int id)
 {
 	liegende_tasten[box][liegende_tasten_max[box]++] = taste;
-	pattern[box].tonigkeit[GET_INDEX(taste,tonsystem[box])]++;
+	mut_box[box].pattern.tonigkeit[GET_INDEX(taste,mut_box[box].tonesystem)]++;
 	last_note_id[box] = (id << 16) + (box << 8) + taste;
-	HarmonyAnalysis(box, &pattern[box]);
+	HarmonyAnalysis(box, &mut_box[box].pattern);
 	last_note_id[box] = 0;
 	KEY_CHANGED(box);
 }
@@ -572,9 +555,9 @@ void DeleteKey( int box, int taste, int id)
 		if ( liegende_tasten[box][i] == taste ) {
 			liegende_tasten[box][i] =
 			        liegende_tasten[box][--liegende_tasten_max[box]];
-			pattern[box].tonigkeit[GET_INDEX(taste,tonsystem[box])]--;
+			mut_box[box].pattern.tonigkeit[GET_INDEX(taste,mut_box[box].tonesystem)]--;
 			last_note_id[box] = (id << 16) + (box << 8) +  taste;
-			HarmonyAnalysis(box, &pattern[box]);
+			HarmonyAnalysis(box, &mut_box[box].pattern);
 			last_note_id[box] = 0;
 			KEY_CHANGED(box);
 			break;
@@ -651,14 +634,14 @@ void pascal _export KeyboardAnalyseSimple(int box, int taste)
 
 /************ Protokoll - Funktionen ****************/
 
-void protokoll_aktuelles_tonsystem( int instr )
+void protokoll_aktuelles_tonsystem( int box )
 {
-	ton_system * tonsys = tonsystem[instr];
+	tone_system * tonsys = mut_box[box].tonesystem;
 	long freq;
 	unsigned char * zugriff = (unsigned char*) & freq;
 	int i;
 	init_laufzeit_protokoll();
-//  laufzeit_protokoll("Tonsystem: (#%d)",instr);
+//  laufzeit_protokoll("Tonsystem: (#%d)",box);
 	laufzeit_protokoll("Anker= %d",tonsys->anker);
 	laufzeit_protokoll("Breite= %d",tonsys->breite);
 	laufzeit_protokoll("Periode= %.1f cent",
@@ -678,14 +661,14 @@ void protokoll_aktuelles_tonsystem( int instr )
 }
 
 #define SHOW_CHANNEL
-void protokoll_liegende_frequenzen( int instr )
+void protokoll_liegende_frequenzen( int box )
 {
-	ton_system * tonsys = tonsystem[instr];
+	tone_system * tonsys = mut_box[box].tonesystem;
 	int i, imax, lts[64], lt;
 	long freq;
 	unsigned char * zugriff = (unsigned char*) & freq;
-	imax = liegende_tasten_max[instr];
-	bcopy(liegende_tasten[instr], lts, imax*sizeof(int));
+	imax = liegende_tasten_max[box];
+	bcopy(liegende_tasten[box], lts, imax*sizeof(int));
 	init_laufzeit_protokoll();
 
 	for (i = 0; i < imax; i++) {
@@ -701,7 +684,7 @@ void protokoll_liegende_frequenzen( int instr )
 			laufzeit_protokoll("%2d : %8.1f Hz (%6.2f)[ch: %d]",
 			                   lt,
 			                   LONG_TO_HERTZ(freq),
-			                   (zugriff[3]+(((float)zugriff[2])/256.0)), GetChannel(instr, lt));
+			                   (zugriff[3]+(((float)zugriff[2])/256.0)), GetChannel(box, lt));
 #endif
 		} else {
 			laufzeit_protokoll("%2d : %%",lt);
@@ -711,9 +694,9 @@ void protokoll_liegende_frequenzen( int instr )
 	exit_laufzeit_protokoll();
 }
 
-void protokoll_aktuelle_relationen( int instr )
+void protokoll_aktuelle_relationen( int box )
 {
-	ton_system * tonsys = tonsystem[instr];
+	tone_system * tonsys = mut_box[box].tonesystem;
 	int i,j;
 	init_laufzeit_protokoll();
 
@@ -735,18 +718,18 @@ void protokoll_aktuelle_relationen( int instr )
 	exit_laufzeit_protokoll( );
 }
 
-void protokoll_liegende_relationen( int instr )
+void protokoll_liegende_relationen( int box )
 {
-	ton_system * tonsys = tonsystem[instr];
+	tone_system * tonsys = mut_box[box].tonesystem;
 	int i;
 	init_laufzeit_protokoll();
-//  laufzeit_protokoll("Liegende Relationen (#%d):",instr);
+//  laufzeit_protokoll("Liegende Relationen (#%d):",box);
 
-	for (i=0;i<(liegende_tasten_max[instr]-1);i++) {
-		if ( (GET_FREQ( liegende_tasten[instr][i+1] , tonsys )) !=0 ) {
+	for (i=0;i<(liegende_tasten_max[box]-1);i++) {
+		if ( (GET_FREQ( liegende_tasten[box][i+1] , tonsys )) !=0 ) {
 			laufzeit_protokoll("%.2f cent",
-			                   LONG_TO_CENT( GET_FREQ(liegende_tasten[instr][i+1], tonsys ) -
-			                                 GET_FREQ(liegende_tasten[instr][i], tonsys) ));
+			                   LONG_TO_CENT( GET_FREQ(liegende_tasten[box][i+1], tonsys ) -
+			                                 GET_FREQ(liegende_tasten[box][i], tonsys) ));
 		} else {
 			laufzeit_protokoll("  %%");
 		}

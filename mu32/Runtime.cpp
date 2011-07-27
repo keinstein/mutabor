@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.17 2011/03/06 13:15:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.18 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/03/06 13:15:41 $
- * \version $Revision: 1.17 $
+ * \date $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.18 $
  * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.17  2011/03/06 13:15:41  keinstein
+ * Revision 1.18  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.17  2011-03-06 13:15:41  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.16  2011-02-20 22:35:55  keinstein
@@ -339,15 +342,15 @@ extern "C"
 		return flag;
 	}
 
-	ton_system last_tonsystem[MAX_BOX];
+	tone_system last_tonsystem[MAX_BOX];
 
 	bool pascal _export TSChanged(int box) {
 		int flag = memcmp(&(last_tonsystem[box]),
-		                  tonsystem[box],
+		                  mut_box[box].tonesystem,
 		                  (2*sizeof(int)) + sizeof(long) +
-		                  (tonsystem[box]->breite*
+		                  (mut_box[box].tonesystem->breite*
 		                   sizeof(long)) );
-		last_tonsystem[box] = *tonsystem[box];
+		last_tonsystem[box] = *(mut_box[box].tonesystem);
 		return flag;
 	}
 

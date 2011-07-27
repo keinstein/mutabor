@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/MidiKern.h,v 1.4 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/MidiKern.h,v 1.5 2011/07/27 20:48:32 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: MidiKern.h,v $
- * Revision 1.4  2011/02/20 22:35:55  keinstein
+ * Revision 1.5  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.4  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -33,12 +36,10 @@
 #ifndef MIDIKERN_H
 #define MIDIKERN_H
 
-#include "Interpre.h"
+#include "box.h"
 #include "Defs.h"
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
-
-extern ton_system *tonsystem[MAX_BOX];
 
 extern "C"
 {

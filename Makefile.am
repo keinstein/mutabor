@@ -101,6 +101,7 @@ INDENTHEADERS = \
 		mu32/routing/Device.h \
 		mu32/routing/Route.h \
 		mu32/routing/RouteCompat.h \
+		mu32/box.h \
 		mu32/Errors.h \
 		mu32/Execute.h \
 		mu32/Frac.h \
@@ -170,6 +171,7 @@ mutabor_INDENTS = \
 		mu32/routing/Device.cpp \
 		mu32/routing/Route.cpp \
 		mu32/routing/RouteCompat.cpp \
+		mu32/box.cpp \
 		mu32/Errors.cpp \
 		mu32/Execute.cpp \
 		mu32/Frac.cpp \

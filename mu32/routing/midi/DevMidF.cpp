@@ -2,15 +2,18 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.5 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.6 2011/07/27 20:48:32 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2011/07/27 20:48:32 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.5  2011/02/20 22:35:56  keinstein
+ * Revision 1.6  2011/07/27 20:48:32  keinstein
+ * started to move arrays using MAX_BOX into struct mutabor_box_type
+ *
+ * Revision 1.5  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.4  2010-12-13 00:27:53  keinstein
@@ -329,7 +332,7 @@ void OutMidiFile::NoteOn(int box, int taste, int velo, Route *r, int channel, Ch
 		freq = ((long)taste) << 24;
 		box = 255;
 	} else
-		freq = GET_FREQ (taste, tonsystem[box]);
+		freq = GET_FREQ (taste, mut_box[box].tonesystem);
 
 	// testen, ob nicht belegte Taste
 	if ( !freq )
@@ -454,7 +457,7 @@ void OutMidiFile::NotesCorrect(int box)
 			if ( Box != box )
 				break;
 
-			long freq = GET_FREQ(ton_auf_kanal[i].taste, tonsystem[Box]);
+			long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[box].tonesystem);
 
 			// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 			// Ton aus und einschalten zu vermeiden
