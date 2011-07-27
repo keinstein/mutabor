@@ -3,16 +3,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.3 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.4 2011/07/27 19:47:25 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/07/27 19:47:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: GIS_Head.h,v $
- * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * Revision 1.4  2011/07/27 19:47:25  keinstein
+ * avoid compiler warning due to intialisaton with NULL
+ *
+ * Revision 1.3  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -177,13 +180,13 @@ public:
 			Alter = NULL;
 			Instr = NULL;
 			Tempo = NULL;
-			Box = NULL;
+			Box = 0;
 		}
 
-		Time2 = NULL;
+		Time2 = 0;
 
-		Delta = NULL;
-		Turn = NULL;
+		Delta = 0;
+		Turn = 0;
 	}
 
 	~GisReadArtHead()
