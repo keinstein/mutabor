@@ -2,17 +2,21 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.20 2011/07/30 12:06:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.21 2011/07/30 12:58:49 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/30 12:06:20 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/07/30 12:58:49 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.20  2011/07/30 12:06:20  keinstein
+ * Revision 1.21  2011/07/30 12:58:49  keinstein
+ * Fix bug introduced before last commit.
+ * Change MutTag::OnLefUp into MutTag::OnLeftDown
+ *
+ * Revision 1.20  2011-07-30 12:06:20  keinstein
  * Change tone system status window when changing the tuning logic by hand
  *
  * Revision 1.19  2011-02-20 22:35:57  keinstein
@@ -118,7 +122,7 @@ public:
 	void ODASelect(DRAWITEMSTRUCT far& drawInfo);*/
 	void OnPaint(wxPaintEvent& WXUNUSED(event));
 	void OnChar(wxKeyEvent& event);
-	void OnLeftUp(wxMouseEvent& event);
+	void OnLeftDown(wxMouseEvent& event);
 	void OnFocus(wxFocusEvent& event);
 
 private:
@@ -136,7 +140,7 @@ public:
 BEGIN_EVENT_TABLE(MutTag, wxWindow)
 	EVT_PAINT(MutTag::OnPaint)
 	EVT_CHAR(MutTag::OnChar)
-	EVT_LEFT_UP(MutTag::OnLeftUp)
+	EVT_LEFT_DOWN(MutTag::OnLeftDown)
 	EVT_SET_FOCUS(MutTag::OnFocus)
 	EVT_KILL_FOCUS(MutTag::OnFocus)
 END_EVENT_TABLE()
@@ -311,21 +315,20 @@ void MutTag::OnChar(wxKeyEvent& event)
 		wxPostEvent(GetParent(),event);
 }
 
-void MutTag::OnLeftUp(wxMouseEvent& event)
+void MutTag::OnLeftDown(wxMouseEvent& event)
 {
-	if ( wxWindow::FindFocus() == this ) {
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
-		event1.SetEventObject(this);
-		//((MutLogicWnd*)GetParent())->UpDate(GetKey(), GetIsLogic());
-		wxPostEvent(GetParent(),event1);
-	}
+	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
+	event1.SetEventObject(this);
+	//((MutLogicWnd*)GetParent())->UpDate(GetKey(), GetIsLogic());
+	wxPostEvent(GetParent(),event1);
+	event.Skip();
 }
 
 void MutTag::OnFocus(wxFocusEvent& event)
 {
-	event.Skip();
 	Refresh();
 	((MutLogicWnd*)GetParent())->CorrectScroller();
+	event.Skip();
 }
 
 /*LRESULT TMutTag::EvCommand(UINT id, HWND hWndCtl, UINT notifyCode)
@@ -657,10 +660,10 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	// Color Bars
 	if ( UseColorBars ) {
 		wxColour BarColor = BoxColor(boxnumber);
-		ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(1,1));
+		ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
 		ColorBar1->SetBackgroundColour(BarColor);
 		ColorBar1->Disable();
-		ColorBar2 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(1,1));
+		ColorBar2 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
 		ColorBar2->SetBackgroundColour(BarColor);
 		ColorBar2->Disable();
 	} else {
@@ -671,19 +674,20 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	// neue TMutTag-s aktivieren
 	//CreateChildren();
 	// Fokus setzen
+#if 0
 	if ( !ToFocus )
 		ToFocus = GetChildren().GetFirst()->GetData();
+#endif
 
-	ToFocus->SetFocus();
+	if ( ToFocus && FindFocus() != ToFocus)
+		ToFocus->SetFocus();
 
 	// Tags anordnen
 	DoLayout();
 
-	if (!Ok) {
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
-				      CM_UPDATEUI);
-		GetParent()->GetEventHandler()->ProcessEvent(event1);
-	}
+	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
+			      CM_UPDATEUI);
+	GetParent()->GetEventHandler()->ProcessEvent(event1);
 	Ok = true;
 }
 
