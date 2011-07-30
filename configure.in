@@ -89,8 +89,8 @@ AC_ARG_ENABLE(debug,
 	[AS_IF(test "$enableval" = yes,
 	       AC_DEFINE(DEBUG,1,[Define to 1 for compiling in debug mode.]),
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
-	       CFLAGS="$CFLAGS -ggdb -g"
-	       CXXFLAGS="$CXXFLAGS -ggdb -g -D_GLIBCXX_DEBUG"
+	       CFLAGS="$CFLAGS -g"
+	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG"
 	       wxflags="--debug"
 ])
 

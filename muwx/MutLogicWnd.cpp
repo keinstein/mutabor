@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.19 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.20 2011/07/30 12:06:20 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/07/30 12:06:20 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.19  2011/02/20 22:35:57  keinstein
+ * Revision 1.20  2011/07/30 12:06:20  keinstein
+ * Change tone system status window when changing the tuning logic by hand
+ *
+ * Revision 1.19  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -49,6 +52,7 @@
 #include "MutChild.h"
 #include "MutFrame.h"
 #include "MutRouteWnd.h"
+
 
 //#if !defined(__WXMSW__)
 #include "Icon/Logic.xpm"
@@ -158,13 +162,9 @@ MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 	                            };
 
 	Icon = wxIcon(TagIcon[isLogic + 2*isOpen]);
-
 	Text = text;
-
 	TPos = -1;
-
 	IsLogic = isLogic;
-
 	Key = key;
 
 //TODO  Attr.AccelTable = IDA_MUTWIN;
@@ -182,10 +182,8 @@ void MutTag::InitText(wxDC& dc)
 	while ( i >= 0 ) {
 		if ( Text[i] == '_' ) {
 			Text[i] = '-';
-
 			if ( TPos == -1 ) {
 				dc.GetTextExtent(Text.Left(i+1), &w, &h);
-
 				if ( w <= MUTTAGX-4 ) TPos = i+1;
 			}
 		}
@@ -315,8 +313,6 @@ void MutTag::OnChar(wxKeyEvent& event)
 
 void MutTag::OnLeftUp(wxMouseEvent& event)
 {
-	event.Skip();
-
 	if ( wxWindow::FindFocus() == this ) {
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_MUTTAG);
 		event1.SetEventObject(this);
@@ -683,8 +679,11 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	// Tags anordnen
 	DoLayout();
 
-	/*
-	  Parent->SendMessage(WM_COMMAND, CM_SBREFRESH);*/
+	if (!Ok) {
+		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
+				      CM_UPDATEUI);
+		GetParent()->GetEventHandler()->ProcessEvent(event1);
+	}
 	Ok = true;
 }
 
