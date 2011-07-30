@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.27 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.28 2011/07/30 21:36:46 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.27 $
+ * $Date: 2011/07/30 21:36:46 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.27  2011/02/20 22:35:57  keinstein
+ * Revision 1.28  2011/07/30 21:36:46  keinstein
+ * allow file open from command line
+ *
+ * Revision 1.27  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.26  2011-01-09 16:26:37  keinstein
@@ -308,7 +311,6 @@ bool MutApp::OnInit()
 
 #endif
 
-	if (!wxApp::OnInit()) return false;
 	
 	// We are using .png files for some extra bitmaps.
 	wxImageHandler * pnghandler = new wxPNGHandler;
@@ -349,22 +351,33 @@ bool MutApp::OnInit()
 	
 #endif
 
+	if (!wxApp::OnInit()) return false;
 
 	MutFrame * frame = CreateMainFrame(EditorMenu);
 	MidiInit();
 	RestoreState();
-	((MutFrame*)frame)->RestoreState();
+	frame->RestoreState();
 	wxCommandEvent event(CM_ROUTES);
-	((MutFrame*)frame)->CmRoutes(event);
+	frame->CmRoutes(event);
 
 	return true;
 }
 
 void MutApp::OnInitCmdLine(wxCmdLineParser&  parser) {
+	const wxCmdLineEntryDesc cmdLineDesc[] = {
+		{ wxCMD_LINE_PARAM,  NULL, NULL, _("logic file"), 
+		  wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
+		{ wxCMD_LINE_NONE }
+	};
+
 	wxApp::OnInitCmdLine(parser);
+	parser.SetDesc(cmdLineDesc);
+
 #ifdef DEBUG
 	debugFlags::InitCommandLine(parser);
 #endif
+
+	
 }
 
 bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
@@ -372,6 +385,21 @@ bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 #ifdef DEBUG
 	debugFlags::ProcessCommandLine(parser);
 #endif
+	wxString str;
+	int count = parser.GetParamCount();
+	for (int i = 0; i<count;i++)
+	{
+		// we have a document to open
+		str = parser.GetParam(i);
+		printf("cmd line param: %ls\n", WXSTRINGCAST(str));
+		// this will probably see if the file exists, and has the right extension
+
+		MutFrame * frame = CreateMainFrame(EditorMenu);
+		frame->OpenFile(str);
+
+//		m_DocManager.CreateDocument(str, wxDOC_SILENT);
+	}
+
 	DEBUGLOG (other, _T("Command line parsed."));
 	return true;
 }
@@ -834,11 +862,13 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 void MutApp::RegisterFrame (wxFrame * f)
 {
+	DEBUGLOG (other, _T("Registered frame %x"),f);
 	frames[f] = f;
 }
 
 void MutApp::UnregisterFrame (wxFrame * f)
 {
+	DEBUGLOG (other, _T("Unregistered frame %x"),f);
 	frames.erase(f);
 }
 
