@@ -1,18 +1,21 @@
-/** \file 
+/** \file  -*- C++ -*-
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.17 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.18 2011/07/31 12:40:42 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.17 $
+ * $Date: 2011/07/31 12:40:42 $
+ * \version $Revision: 1.18 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.17  2011/02/20 22:35:57  keinstein
+ * Revision 1.18  2011/07/31 12:40:42  keinstein
+ * Added classes and functions for Document/View support
+ *
+ * Revision 1.17  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.16  2010-11-21 13:15:47  keinstein
@@ -124,12 +127,13 @@
 #include "MutRouteWnd.h"
 #include "wx/aui/aui.h"
 #include "wx/toolbar.h"
+#include "wx/docview.h"
 
 /// Main mutabor frame class
 /** This class is used to create the main windows
  */
 
-class MutFrame : public wxFrame
+class MutFrame : public wxDocChildFrame
 {
 
 public:
@@ -137,12 +141,23 @@ public:
 	/** This constructor creates a new main window.
 	 */
 
-	MutFrame(wxWindow *parent, const wxWindowID id, const wxString& title,
+	MutFrame(wxFrame *parent, const wxWindowID id, const wxString& title,
 	         const wxPoint& pos, const wxSize& size,
 	         const long style);
 
+	MutFrame(wxDocument *doc,
+		 wxView *view,
+		 wxFrame *frame,
+		 wxWindowID id,
+		 const wxString& title,
+		 const wxPoint& pos = wxDefaultPosition,
+		 const wxSize& size = wxDefaultSize,
+		 long type = wxDEFAULT_FRAME_STYLE,
+		 const wxString& name = wxT("Mutabor frame"));
+
+
 	/// Destructor
-	~MutFrame();
+	virtual ~MutFrame();
 
 #if wxUSE_TOOLBAR
 	/// initialize the toolbar
@@ -170,6 +185,10 @@ public:
 	/** This function tries to determine, if we can close the current window.
 	 */
 	void OnClose(wxCloseEvent& event);
+
+	/// Hande paint events for Document/View framework
+	/** This function call the paint function */
+	void OnPaint(wxPaintEvent& event);
 
 	/// This function creates a new file editor
 	/** Handle new file event if we don't have a client yet. */
