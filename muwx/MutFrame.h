@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.18 2011/07/31 12:40:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.19 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/31 12:40:42 $
- * \version $Revision: 1.18 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.18  2011/07/31 12:40:42  keinstein
+ * Revision 1.19  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.18  2011-07-31 12:40:42  keinstein
  * Added classes and functions for Document/View support
  *
  * Revision 1.17  2011-02-20 22:35:57  keinstein
@@ -199,6 +202,9 @@ public:
 
 	/// Opens the given file, if we don't have a client yet.
 	bool OpenFile(wxString path, bool newfile=false);
+
+	/// Attach a client to the Frame
+	bool SetClient (wxWindow * win, const wxString &title);
 
 	/// Get a file name to open
 	///    static wxString FileNameDialog(wxWindow * parent);

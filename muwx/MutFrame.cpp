@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.29 2011/07/31 12:40:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.30 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/07/31 12:40:42 $
- * \version $Revision: 1.29 $
+ * \date $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.30 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.29  2011/07/31 12:40:42  keinstein
+ * Revision 1.30  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.29  2011-07-31 12:40:42  keinstein
  * Added classes and functions for Document/View support
  *
  * Revision 1.28  2011-03-06 13:15:41  keinstein
@@ -719,8 +722,6 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 
 	MutEditFile * editor = new MutEditFile(this, wxPoint(0, 0), wxDefaultSize);
 
-	client = editor;
-
 #ifdef DEBUG
 	std::cout << "MutFrame::OpenFile(): Loading " << (path.fn_str()) << std::endl;
 
@@ -728,15 +729,25 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 	if (!(!path))
 		editor->LoadFile(path);
 
-	auimanager.AddPane(client,wxAuiPaneInfo().
-	                   Caption(filename).CenterPane().PaneBorder(false));
-
 	editor->SetSelection(0, 0);
-
 	SetTitle(wxString().Format(_("%s -- %s"),APPNAME,filename.c_str()));
 
-	auimanager.Update();
+	return SetClient(editor,filename);
+}
+/**
+ * Attach a client
+ * \param window to  be attached as the client.
+ * */
 
+bool MutFrame::SetClient (wxWindow * win, const wxString &title)
+{
+	if (client) return false;
+
+
+	client = win;
+	auimanager.AddPane(client,wxAuiPaneInfo().
+	                   Caption(title).CenterPane().PaneBorder(false));
+	auimanager.Update();
 	return true;
 }
 

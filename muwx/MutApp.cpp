@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.29 2011/07/31 12:40:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.30 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/31 12:40:41 $
- * \version $Revision: 1.29 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.30 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.29  2011/07/31 12:40:41  keinstein
+ * Revision 1.30  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.29  2011-07-31 12:40:41  keinstein
  * Added classes and functions for Document/View support
  *
  * Revision 1.28  2011-07-30 21:36:46  keinstein
@@ -337,7 +340,18 @@ bool MutApp::OnInit()
 		<< (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
 
 
-	document_manager = NULL;
+	//  restrict to having <= 1 doc open at any time
+	document_manager.SetMaxDocsOpen(1);
+	//  establish a doc template for the doc,view pair
+	new wxDocTemplate(&document_manager, 
+			  _("Mutabor logic file"), 
+			  wxT("*.mut"), 
+			  wxT("") /*dir*/, 
+			  wxT("mut"), 
+			  wxT("mutabor_logic_document"), 
+			  wxT("mutabor_logic_view"), 
+			  CLASSINFO(mutaborGUI::MutDocument), 
+			  CLASSINFO(mutaborGUI::MutView) );
 
 #if defined(__WXMAC__)
 	// || defined(__WXCOCOA__)
@@ -400,10 +414,10 @@ bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 		printf("cmd line param: %ls\n", WXSTRINGCAST(str));
 		// this will probably see if the file exists, and has the right extension
 
-		MutFrame * frame = CreateMainFrame(EditorMenu);
-		frame->OpenFile(str);
+//		MutFrame * frame = CreateMainFrame(EditorMenu);
+//		frame->OpenFile(str);
 
-//		m_DocManager.CreateDocument(str, wxDOC_SILENT);
+		document_manager.CreateDocument(str, wxDOC_SILENT);
 	}
 
 	DEBUGLOG (other, _T("Command line parsed."));
@@ -413,27 +427,28 @@ bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 // Extend event processing to search the view's event table
 bool MutApp::ProcessEvent(wxEvent& event)
 {
-    // Try the document manager, then do default processing
-    if (!document_manager || !document_manager->ProcessEvent(event))
-        return wxApp::ProcessEvent(event);
-    else
-        return true;
+	bool retval =  wxApp::ProcessEvent(event);
+#ifdef DEBUG
+	if (!retval)
+		DEBUGLOG(eventqueue,_T("Unhandled event: Type %d"), event.GetEventType());
+#endif
+	return retval;
 }
 
 void MutApp::OnMRUFile(wxCommandEvent& event)
 {
     int n = event.GetId() - wxID_FILE1;  // the index in MRU list
-    wxString filename(document_manager->GetHistoryFile(n));
+    wxString filename(document_manager.GetHistoryFile(n));
     if ( !filename.empty() )
     {
         // verify that the file exists before doing anything else
         if ( wxFile::Exists(filename) )
         {
             // try to open it
-            if (!document_manager->CreateDocument(filename, wxDOC_SILENT))
+            if (!document_manager.CreateDocument(filename, wxDOC_SILENT))
             {
                 // remove the file from the MRU list. The user should already be notified.
-                document_manager->RemoveFileFromHistory(n);
+                document_manager.RemoveFileFromHistory(n);
 
                 wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
                        filename.c_str());
@@ -443,7 +458,7 @@ void MutApp::OnMRUFile(wxCommandEvent& event)
         {
             // remove the bogus filename from the MRU list and notify the user
             // about it
-            document_manager->RemoveFileFromHistory(n);
+            document_manager.RemoveFileFromHistory(n);
 
             wxLogError(_("The file '%s' doesn't exist and couldn't be opened.\nIt has been removed from the most recently used files list."),
                        filename.c_str());
@@ -463,11 +478,10 @@ void MutApp::CmSetup (wxCommandEvent& event)
 	MutConfigDialog * config;
 	config = new MutConfigDialog((wxFrame *) NULL);
 
-	int value = config->ShowModal();
-
-	config->Destroy();
-
-	event.Skip();
+	if (config) {
+		int value = config->ShowModal();
+		config->Destroy();
+	}
 }
 
 void MutApp::CmAbout (wxCommandEvent& event)
@@ -489,7 +503,7 @@ void MutApp::CmAbout (wxCommandEvent& event)
 	// setup path
 	wxStandardPathsBase &path = wxStandardPaths::Get();
 	wxAboutDialogInfo info;
-	info.SetCopyright(_("(c) 2005-2008 TU Dresden"));
+	info.SetCopyright(_("(c) 2005-2011 TU Dresden"));
 	info.SetVersion(_T(PACKAGE_VERSION));
 	info.SetWebSite(_T("http://www.math.tu-dresden.de/~mutabor/"));
 	info.SetIcon(wxIcon(wxFileName(path.GetResourcesDir(),
@@ -508,10 +522,9 @@ void MutApp::CmAbout (wxCommandEvent& event)
 	info.AddDocWriter(_("Peter Reiss"));
 	info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>"));
 	info.AddDocWriter(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
-	//  info.AddTranslator(_("English: N.N."));
+	info.AddTranslator(_("English: Tobias Schlemmer"));
 
 	wxGenericAboutBox(info);
-	//  event.Skip(false);
 }
 
 
@@ -652,16 +665,13 @@ MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
 	MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
 	                               wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
 	                               wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
-#ifdef __WXMSW__
-#if 0
-	// Experimental: change the window menu
-	wxMenu* windowMenu = new wxMenu;
-	windowMenu->Append(5000, _T("My menu item!"));
-	frame->SetWindowMenu(windowMenu);
-#endif
-#endif
+	return InitMainFrame(type,frame);
+}
+
 
 	// Give it an icon
+MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame) 
+{
 #ifdef __WXMSW__
 	frame->SetIcon(wxIcon(_T("mutabor_icn")));
 #else
@@ -864,7 +874,7 @@ void MutApp::CmQuit (wxCommandEvent& event)
 	}
 
 	// first check whether docmanager allows quitting
-	if (document_manager && !document_manager->Clear(false))
+	if (!document_manager.Clear(false))
 	{
 		quitting = false;
 		return;
@@ -1108,6 +1118,10 @@ void MutApp::SaveState()
 {
 	/* \todo save Parameters of all open windows */
 	wxConfigBase *config = wxConfig::Get();
+	if (!config) {
+		wxLogError(_("Could not get configuration storage"));
+		return;
+	}
 
 	wxString oldpath = config->GetPath();
 
@@ -1128,6 +1142,10 @@ void MutApp::SaveState()
 
 	config->SetPath(_T(".."));
 
+	config->SetPath(_T("DocManager"));
+	document_manager.FileHistoryLoad(*config);
+	config->SetPath(_T(".."));
+
 	SaveRoutes(config);
 	config->SetPath(oldpath);
 }
@@ -1137,6 +1155,10 @@ void MutApp::RestoreState()
 {
 	/* \todo restore Windows of last session. */
 	wxConfigBase *config = wxConfig::Get();
+	if (!config) {
+		wxLogError(_("Could not get configuration storage"));
+		return;
+	}
 
 	wxString oldpath = config->GetPath();
 
@@ -1155,6 +1177,10 @@ void MutApp::RestoreState()
 		config->SetPath(_T(".."));
 	}
 
+	config->SetPath(_T(".."));
+
+	config->SetPath(_T("DocManager"));
+	document_manager.FileHistoryLoad(*config);
 	config->SetPath(_T(".."));
 
 	LoadRoutes(config);

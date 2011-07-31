@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.5 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -41,5 +44,7 @@ DEBUGFLAG(midiio, _("Debug the MIDI input/output system"))
 DEBUGFLAG(midifile, _("Debug the MIDI file devices"))
 DEBUGFLAG(mutparser, _("Debug the Mutabor file parser"))
 DEBUGFLAG(config, _("Debug the config file parser"))
+DEBUGFLAG(docview, _("Debug the Document/View framework"))
+DEBUGFLAG(eventqueue, _("Print unhandled events in the queue"))
 
 ///\}

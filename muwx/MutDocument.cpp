@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.1 2011/07/31 12:40:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.2 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/31 12:40:41 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  * $Log: MutDocument.cpp,v $
- * Revision 1.1  2011/07/31 12:40:41  keinstein
+ * Revision 1.2  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.1  2011-07-31 12:40:41  keinstein
  * Added classes and functions for Document/View support
  *
  *
@@ -66,6 +69,25 @@ MutDocument::~MutDocument()
 
 #if wxUSE_STD_IOSTREAM
 
+bool MutDocument::DoSaveDocument(const wxString& filename)
+{
+    MutView *view = (MutView *)GetFirstView();
+
+    if (!view->GetTextsw()->SaveFile(filename))
+        return false;
+
+    return true;
+}
+
+bool MutDocument::DoOpenDocument(const wxString& filename)
+{
+    MutView *view = (MutView *)GetFirstView();
+    if (!view->GetTextsw()->LoadFile(filename))
+        return false;
+
+    return true;
+}
+
 wxSTD ostream& MutDocument::SaveObject(wxSTD ostream& stream)
 {
 	printf("cmydoc::saveobject\n");
@@ -76,7 +98,7 @@ wxSTD ostream& MutDocument::SaveObject(wxSTD ostream& stream)
 
 wxSTD istream& MutDocument::LoadObject(wxSTD istream& stream)
 {
-	printf("cmydoc::loadobject\n");
+	DEBUGLOG(docview,_T(""));
 	bool bOK(false);
 	int nA(0);
 	char ch(0);
@@ -86,13 +108,13 @@ wxSTD istream& MutDocument::LoadObject(wxSTD istream& stream)
 
 	if(stream.good())
 	{
-		printf("num is %d and char is %c\n", nA, ch);
+		DEBUGLOG(docview,_T("num is %d and char is %c"), nA, ch);
 		bOK = true;
 	}
 
 	if(bOK == false)
 	{
-		printf("load error\n");
+		DEBUGLOG(docview,_T("load error"));
 		// tell the framework to abort the load procedure
 		stream.clear(std::ios_base::badbit);
 	}
