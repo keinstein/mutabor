@@ -1,17 +1,20 @@
-/** \file
+/** \file -*- C++ -*-
  ***********************************************************************
  * Mutabor MDI-Child.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.11 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.12 2011/07/31 20:16:04 keinstein Exp $
  * \author R. Krauﬂe <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: MutEditFile.h,v $
- * Revision 1.11  2011/02/20 22:35:57  keinstein
+ * Revision 1.12  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.11  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.10  2010-11-21 13:15:47  keinstein
@@ -53,6 +56,7 @@
 #define __MUTEDITFILE_H_INCLUDED__
 
 #include "wx/textctrl.h"
+#include "wx/docview.h"
 #include "muconvauto.h"
 
 class MutEditFile : public wxTextCtrl
@@ -60,9 +64,37 @@ class MutEditFile : public wxTextCtrl
 
 public:
 
-	MutEditFile(wxWindow* parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxString& value = wxEmptyString, const wxString& name = wxTextCtrlNameStr)
-			: wxTextCtrl(parent, wxID_ANY, value, pos, size, wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 | wxTE_NOHIDESEL | wxHSCROLL , wxDefaultValidator, name)
-	{};
+	MutEditFile(wxWindow* parent, 
+		    const wxPoint& pos = wxDefaultPosition, 
+		    const wxSize& size = wxDefaultSize, 
+		    const wxString& value = wxEmptyString, 
+		    const wxString& name = wxTextCtrlNameStr)
+		: wxTextCtrl(parent, 
+			     wxID_ANY, 
+			     value, 
+			     pos, 
+			     size, 
+			     wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
+			     | wxTE_NOHIDESEL | wxHSCROLL, 
+			     wxDefaultValidator, 
+			     name)
+	{}
+	
+	MutEditFile(wxView * v,
+		    wxWindow* parent, 
+		    const wxPoint& pos = wxDefaultPosition, 
+		    const wxSize& size = wxDefaultSize, 
+		    const wxString& value = wxEmptyString, 
+		    const wxString& name = wxTextCtrlNameStr)
+		: wxTextCtrl(parent, 
+			     wxID_ANY, 
+			     value, 
+			     pos, 
+			     size, 
+			     wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
+			     | wxTE_NOHIDESEL | wxHSCROLL , wxDefaultValidator, name),
+		  view(v)
+	{}
 
 protected:
 //	void SetupWindow();
@@ -101,6 +133,7 @@ protected:
 #endif
 
 
+	wxView * view;
 	muConvAuto autoConverter;
 
 	DECLARE_EVENT_TABLE()

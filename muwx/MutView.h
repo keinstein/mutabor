@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.1 2011/07/31 12:40:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.2 2011/07/31 20:16:04 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/31 12:40:42 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.1  2011/07/31 12:40:42  keinstein
+ * Revision 1.2  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.1  2011-07-31 12:40:42  keinstein
  * Added classes and functions for Document/View support
  *
  *
@@ -39,6 +42,7 @@
 #endif
 #include <wx/wx.h>
 #include <wx/docview.h>
+#include "MutFrame.h"
 
 
 namespace mutaborGUI {
@@ -54,9 +58,11 @@ namespace mutaborGUI {
  */
 	class MutView : public wxView
 	{
+
+		friend class MutDocument;
 		DECLARE_DYNAMIC_CLASS(MutView)
-			DECLARE_EVENT_TABLE()
-			public:
+		DECLARE_EVENT_TABLE()
+		public:
 		MutView();
 		~MutView();
 
@@ -69,6 +75,11 @@ namespace mutaborGUI {
 		virtual void OnDraw(wxDC* dc);
 		// virtual override
 		virtual void OnUpdate(wxView* sender, wxObject* hint = NULL);
+		
+		MutEditFile * GetTextsw() { return textsw; }
+	protected:
+		MutFrame * frame;
+		MutEditFile * textsw;
 
 	};
 

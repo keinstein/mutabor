@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.18 2011/07/31 12:40:41 keinstein Exp $
+ * $Id: MutApp.h,v 1.19 2011/07/31 20:16:04 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/07/31 12:40:41 $
- * \version $Revision: 1.18 $
+ *  $Date: 2011/07/31 20:16:04 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.18  2011/07/31 12:40:41  keinstein
+ * Revision 1.19  2011/07/31 20:16:04  keinstein
+ * Implemented opening files from command line using Document/View framework
+ *
+ * Revision 1.18  2011-07-31 12:40:41  keinstein
  * Added classes and functions for Document/View support
  *
  * Revision 1.17  2011-02-20 22:35:57  keinstein
@@ -167,7 +170,7 @@ class MutApp : public wxApp
 
 	friend class AppAbout;
 
-private:
+public:
 	/// Some configuration help for Menu generation
 	enum MenuType {
 	        ProgramMenu, ///< Mac: common application menu
@@ -175,7 +178,6 @@ private:
 	        RouteMenu, ///< Route editor menu
 	};
 
-public:
 	/// Initialization
 	/** This function does the common setup.
 	    \li Application name
@@ -254,6 +256,13 @@ public:
 	    \param id Window id
 	*/
 	MutFrame* CreateMainFrame(MenuType type, wxWindowID id = wxID_ANY);
+
+	/// Initialize a main frame
+	/** This function initialises a freshly created Top Level Frame.
+	    \param frame frame that will be created
+	*/
+	MutFrame* InitMainFrame(MenuType type, MutFrame * frame);
+
 	/// Registers a frame
 	/** Register the frame in the application specific frame list.
 	    Though wxWidgets handles its own \c wxTopLevelWindows,
@@ -359,7 +368,10 @@ private:
 
 
 	/// Allow access to the document manager
-	wxDocManager *GetDocumentManager() const { return document_manager; }
+	const wxDocManager *GetDocumentManager() const { return &document_manager; }
+
+	/// Allow write access to the document manager
+	wxDocManager *GetDocumentManager() { return &document_manager; }
     
 protected:
 
@@ -374,7 +386,7 @@ protected:
 #endif
 
 	/// Document manager.
-	wxDocManager * document_manager;
+	wxDocManager document_manager;
 
 	/// flag indicating, that we are in quitting mode.
 	bool quitting;
