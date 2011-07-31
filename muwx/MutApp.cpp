@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.30 2011/07/31 20:16:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.31 2011/07/31 21:32:21 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.30 $
+ * $Date: 2011/07/31 21:32:21 $
+ * \version $Revision: 1.31 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.30  2011/07/31 20:16:04  keinstein
+ * Revision 1.31  2011/07/31 21:32:21  keinstein
+ * Slightly improved window positioning
+ * Suppress route window, when a Window is opened from the command line
+ *
+ * Revision 1.30  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.29  2011-07-31 12:40:41  keinstein
@@ -373,12 +377,15 @@ bool MutApp::OnInit()
 	// This call parses the command line
 	if (!wxApp::OnInit()) return false;
 
-	MutFrame * frame = CreateMainFrame(EditorMenu);
 	MidiInit();
 	RestoreState();
-	frame->RestoreState();
-	wxCommandEvent event(CM_ROUTES);
-	frame->CmRoutes(event);
+		
+	if (!GetTopWindow()) {
+		MutFrame * frame = CreateMainFrame(EditorMenu);
+		frame->RestoreState();
+		wxCommandEvent event(CM_ROUTES);
+		frame->CmRoutes(event);
+	}
 
 	return true;
 }
