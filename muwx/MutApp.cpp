@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.28 2011/07/30 21:36:46 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.29 2011/07/31 12:40:41 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/30 21:36:46 $
- * \version $Revision: 1.28 $
+ * $Date: 2011/07/31 12:40:41 $
+ * \version $Revision: 1.29 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.28  2011/07/30 21:36:46  keinstein
+ * Revision 1.29  2011/07/31 12:40:41  keinstein
+ * Added classes and functions for Document/View support
+ *
+ * Revision 1.28  2011-07-30 21:36:46  keinstein
  * allow file open from command line
  *
  * Revision 1.27  2011-02-20 22:35:57  keinstein
@@ -334,6 +337,8 @@ bool MutApp::OnInit()
 		<< (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
 
 
+	document_manager = NULL;
+
 #if defined(__WXMAC__)
 	// || defined(__WXCOCOA__)
 	// Make a common menubar
@@ -351,6 +356,7 @@ bool MutApp::OnInit()
 	
 #endif
 
+	// This call parses the command line
 	if (!wxApp::OnInit()) return false;
 
 	MutFrame * frame = CreateMainFrame(EditorMenu);
@@ -403,6 +409,49 @@ bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 	DEBUGLOG (other, _T("Command line parsed."));
 	return true;
 }
+
+// Extend event processing to search the view's event table
+bool MutApp::ProcessEvent(wxEvent& event)
+{
+    // Try the document manager, then do default processing
+    if (!document_manager || !document_manager->ProcessEvent(event))
+        return wxApp::ProcessEvent(event);
+    else
+        return true;
+}
+
+void MutApp::OnMRUFile(wxCommandEvent& event)
+{
+    int n = event.GetId() - wxID_FILE1;  // the index in MRU list
+    wxString filename(document_manager->GetHistoryFile(n));
+    if ( !filename.empty() )
+    {
+        // verify that the file exists before doing anything else
+        if ( wxFile::Exists(filename) )
+        {
+            // try to open it
+            if (!document_manager->CreateDocument(filename, wxDOC_SILENT))
+            {
+                // remove the file from the MRU list. The user should already be notified.
+                document_manager->RemoveFileFromHistory(n);
+
+                wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
+                       filename.c_str());
+            }
+        }
+        else
+        {
+            // remove the bogus filename from the MRU list and notify the user
+            // about it
+            document_manager->RemoveFileFromHistory(n);
+
+            wxLogError(_("The file '%s' doesn't exist and couldn't be opened.\nIt has been removed from the most recently used files list."),
+                       filename.c_str());
+        }
+    }
+}
+
+
 
 BEGIN_EVENT_TABLE(MutConfigDialog, ConfigDlg)
 	EVT_BUTTON(::wxID_HELP, MutConfigDialog::CmHelp)
@@ -550,7 +599,9 @@ BEGIN_EVENT_TABLE(MutApp, wxApp)
 		EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
 		EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
 
-	*/	EVT_MENU(CM_ROUTES, MutApp::CmRoutes)
+	*/
+        EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
+        EVT_MENU(CM_ROUTES, MutApp::CmRoutes)
 	EVT_MENU(CM_ROUTELOAD, MutApp::CmRouteLoad)
 	EVT_MENU(CM_ROUTESAVE, MutApp::CmRouteSave)
 	EVT_MENU(CM_ROUTESAVEAS, MutApp::CmRouteSaveAs)
@@ -635,8 +686,6 @@ MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
 #endif // wxUSE_STATUSBAR
 
 	frame->Show(true);
-
-	RegisterFrame(frame);
 
 	return frame;
 }
@@ -814,7 +863,13 @@ void MutApp::CmQuit (wxCommandEvent& event)
 		return;
 	}
 
-	FrameHash::iterator it;
+	// first check whether docmanager allows quitting
+	if (document_manager && !document_manager->Clear(false))
+	{
+		quitting = false;
+		return;
+	}
+
 
 	DEBUGLOG (other, _T("Starting Loop"));
 
@@ -824,13 +879,11 @@ void MutApp::CmQuit (wxCommandEvent& event)
 	DEBUGLOG (other, _T("Dispatched all events"));
 
 	wxIdleMode imode = wxIdleEvent::GetMode();
-
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 
 	while ((window = GetTopWindow())) {
-#ifdef DEBUG
-		DEBUGLOG (other, _("Closing window of class %s"), muT(typeid(*(window)).name()).c_str());
-#endif
+		DEBUGLOG (other, _("Closing window of class %s"), 
+			  muT(typeid(*(window)).name()).c_str());
 
 		if (!window->Close()) {
 			wxIdleEvent::SetMode(imode);
@@ -859,18 +912,6 @@ void MutApp::CmQuit (wxCommandEvent& event)
 }
 
 
-
-void MutApp::RegisterFrame (wxFrame * f)
-{
-	DEBUGLOG (other, _T("Registered frame %x"),f);
-	frames[f] = f;
-}
-
-void MutApp::UnregisterFrame (wxFrame * f)
-{
-	DEBUGLOG (other, _T("Unregistered frame %x"),f);
-	frames.erase(f);
-}
 
 wxString MutApp::GetResourceName(const wxString & file)
 {

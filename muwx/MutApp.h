@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.17 2011/02/20 22:35:57 keinstein Exp $
+ * $Id: MutApp.h,v 1.18 2011/07/31 12:40:41 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.17 $
+ *  $Date: 2011/07/31 12:40:41 $
+ * \version $Revision: 1.18 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.17  2011/02/20 22:35:57  keinstein
+ * Revision 1.18  2011/07/31 12:40:41  keinstein
+ * Added classes and functions for Document/View support
+ *
+ * Revision 1.17  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.16  2011-02-19 00:21:19  keinstein
@@ -192,7 +195,12 @@ public:
 	bool OnExceptionInMainLoop() { throw; }
 	void OnFatalException() { throw; }
 #endif 
-	/// 
+
+	// Extend event processing to search the document manager's event table
+	virtual bool ProcessEvent(wxEvent& event);
+	
+	/// add handling of last files.
+	void OnMRUFile(wxCommandEvent& event);
 
 	/// Display an about dialog box
 	void CmAbout (wxCommandEvent& event);
@@ -349,17 +357,30 @@ private:
 	*/
 	void MakeHelpMenu(wxMenuBar * menuBar);
 
+
+	/// Allow access to the document manager
+	wxDocManager *GetDocumentManager() const { return document_manager; }
+    
+protected:
+
 	/// locale data to be used inside the application
 	wxLocale m_locale;
 
+#if 0
 	/// list of main frames in the application
 	/** \deprecated \see RegisterFrame(), UnregisterFrame()
 	 */
 	FrameHash frames;
+#endif
+
+	/// Document manager.
+	wxDocManager * document_manager;
 
 	/// flag indicating, that we are in quitting mode.
 	bool quitting;
 
+	
+private:
 	DECLARE_EVENT_TABLE()
 };
 

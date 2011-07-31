@@ -142,12 +142,14 @@ INDENTHEADERS = \
 		muwx/MutApp.h \
 		muwx/MutChild.h \
 		muwx/MutConfDlg.h \
+		muwx/MutDocument.h \
 		muwx/MutEditFile.h \
 		muwx/MutFrame.h \
 		muwx/MutIcon.h \
 		muwx/MutLogicWnd.h \
 		muwx/MutRouteWnd.h \
 		muwx/MutTextBox.h \
+		muwx/MutView.h \
 		muwx/Panel.h \
 		muwx/resourceload.h \
 		mywx/mhArray.h \
@@ -208,12 +210,14 @@ mutabor_INDENTS = \
 		muwx/IconShape.cpp \
 		muwx/MutApp.cpp \
 		muwx/MutChild.cpp \
+		muwx/MutDocument.cpp \
 		muwx/MutEditFile.cpp \
 		muwx/MutFrame.cpp \
 		muwx/MutIcon.cpp \
 		muwx/MutLogicWnd.cpp \
 		muwx/MutRouteWnd.cpp  \
 		muwx/MutTextBox.cpp \
+		muwx/MutView.cpp \
 		muwx/Panel.cpp \
 		mywx/muconvauto.cpp \
 		mywx/mutDebug.cpp \
@@ -372,9 +376,9 @@ mutabor-cxxprecompiled.h: Makefile
 	done ; true
 	@echo '#undef PRECOMPILE' >>$@.tmp
 	if cmp -s $@.tmp $@ ; then \
-        	rm -f $@.tmp ;\
+		rm -f $@.tmp ;\
         else \
-        	mv $@.tmp $@; \
+		mv $@.tmp $@; \
         fi 
 endif
 
@@ -533,7 +537,6 @@ installdll:
 		fi ; \
 		echo done ;\
 	done
-	
 
 installwin2: 
 	$(MAKE) "prefix=`pwd`/Mutabor" 'bindir=$$(prefix)' 'datarootdir=$$(prefix)' 'libdir=$$(prefix)' \

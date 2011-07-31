@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.28 2011/03/06 13:15:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.29 2011/07/31 12:40:42 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/03/06 13:15:41 $
- * \version $Revision: 1.28 $
+ * \date $Date: 2011/07/31 12:40:42 $
+ * \version $Revision: 1.29 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.28  2011/03/06 13:15:41  keinstein
+ * Revision 1.29  2011/07/31 12:40:42  keinstein
+ * Added classes and functions for Document/View support
+ *
+ * Revision 1.28  2011-03-06 13:15:41  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.27  2011-02-20 22:35:57  keinstein
@@ -325,7 +328,7 @@ int MutFrame::boxCommandIds[MAX_BOX];
 // event tables
 // ---------------------------------------------------------------------------
 
-BEGIN_EVENT_TABLE(MutFrame, wxFrame)
+BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_ERASE_BACKGROUND(MutFrame::OnEraseBackground)
 	EVT_SIZE(MutFrame::OnSize)
 
@@ -384,16 +387,21 @@ END_EVENT_TABLE()
 // ---------------------------------------------------------------------------
 
 // Define my frame constructor
-MutFrame::MutFrame(wxWindow *parent,
+MutFrame::MutFrame(wxFrame *parent,
 
                    const wxWindowID id,
                    const wxString& title,
                    const wxPoint& pos,
                    const wxSize& size,
-                   const long style)
-		: wxFrame(parent, id, title, pos, size,
-		          style | wxNO_FULL_REPAINT_ON_RESIZE),
-		curStatusImg(0)
+                   const long style): wxDocChildFrame(NULL, 
+						      NULL, 
+						      parent, 
+						      id, 
+						      title, 
+						      pos, 
+						      size,
+						      style | wxNO_FULL_REPAINT_ON_RESIZE),
+	curStatusImg(0)
 {
 
 	SetSize (DetermineFrameSize ());
@@ -426,6 +434,53 @@ MutFrame::MutFrame(wxWindow *parent,
 	    wxAcceleratorTable accel(3, entries);
 	    SetAcceleratorTable(accel);*/
 }
+
+MutFrame::MutFrame(wxDocument *doc,
+		   wxView *view,
+		   wxFrame *frame,
+		   wxWindowID id,
+		   const wxString& title,
+		   const wxPoint& pos,
+		   const wxSize& size,
+		   long type,
+		   const wxString& name):
+	wxDocChildFrame(doc,view,frame,id,title,pos,size,type,name),
+	curStatusImg(0)
+{
+
+	SetSize (DetermineFrameSize ());
+	SetMinSize(wxSize(200,200));
+	client = NULL;
+
+	auimanager.SetManagedWindow(this);
+
+
+#if wxUSE_TOOLBAR
+	wxToolBar * tb = new  wxToolBar(this,
+	                                wxID_ANY,
+	                                wxDefaultPosition,
+	                                wxDefaultSize,
+	                                wxTB_DOCKABLE);
+	InitToolBar(tb);
+
+	auimanager.AddPane(tb, wxAuiPaneInfo().
+	                   Name(_T("tb")).Caption(_("Toolbar")).
+	                   ToolbarPane().Top().
+	                   LeftDockable(false).RightDockable(false));
+#endif // wxUSE_TOOLBAR
+
+
+	// Accelerators
+	/*    wxAcceleratorEntry entries[3];
+	    entries[0].Set(wxACCEL_CTRL, (int) 'N', MDI_NEW_WINDOW);
+	    entries[1].Set(wxACCEL_CTRL, (int) 'X', MDI_QUIT);
+	    entries[2].Set(wxACCEL_CTRL, (int) 'A', MDI_ABOUT);
+	    wxAcceleratorTable accel(3, entries);
+	    SetAcceleratorTable(accel);*/
+}
+
+
+
 
 MutFrame::~MutFrame()
 
@@ -555,19 +610,31 @@ void MutFrame::OnClose(wxCloseEvent& event)
 	//while (wxGetApp().Pending()) wxGetApp().Dispatch();
 
 	DEBUGLOG (other, _T("Saving State"));
-
 	SaveState();
 
-	DEBUGLOG (other, _T("Unregistering"));
-
-	wxGetApp().UnregisterFrame(this);
 
 	DEBUGLOG (other, _T("Delete"));
-
 	Destroy();
 
 	event.Skip(false);
 }
+
+void MutFrame::OnPaint(wxPaintEvent& event)
+{
+    wxPaintDC dc(this);
+
+    STUBC; 
+/* this code is just copied and must be changed 
+  to paint into the subwindow which is managed by 
+  the AUI manager.
+
+  Propably it must be simply moved to the client window.
+*/
+    
+    if (m_childView) 
+	    m_childView->OnDraw(&dc);
+}
+
 
 
 
