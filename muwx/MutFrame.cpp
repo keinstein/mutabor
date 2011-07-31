@@ -2,16 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.30 2011/07/31 20:16:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.31 2011/07/31 21:32:21 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.30 $
+ * \date $Date: 2011/07/31 21:32:21 $
+ * \version $Revision: 1.31 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.30  2011/07/31 20:16:04  keinstein
+ * Revision 1.31  2011/07/31 21:32:21  keinstein
+ * Slightly improved window positioning
+ * Suppress route window, when a Window is opened from the command line
+ *
+ * Revision 1.30  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.29  2011-07-31 12:40:42  keinstein
@@ -408,7 +412,6 @@ MutFrame::MutFrame(wxFrame *parent,
 {
 
 	SetSize (DetermineFrameSize ());
-	SetMinSize(wxSize(200,200));
 	client = NULL;
 
 	auimanager.SetManagedWindow(this);
@@ -452,7 +455,6 @@ MutFrame::MutFrame(wxDocument *doc,
 {
 
 	SetSize (DetermineFrameSize ());
-	SetMinSize(wxSize(200,200));
 	client = NULL;
 
 	auimanager.SetManagedWindow(this);
@@ -741,10 +743,10 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 
 bool MutFrame::SetClient (wxWindow * win, const wxString &title)
 {
-	if (client) return false;
-
-
+	if (client || !win) return false;
+	
 	client = win;
+	SetTitle(title);
 	auimanager.AddPane(client,wxAuiPaneInfo().
 	                   Caption(title).CenterPane().PaneBorder(false));
 	auimanager.Update();
@@ -1801,21 +1803,22 @@ wxRect MutFrame::DetermineFrameSize ()
 
 	// determine default frame position/size
 	wxRect normal;
+	wxPoint currpos = GetPosition();
 
-	if (scr.x <= 640) {
+	if (scr.x <= 800) {
 		normal.x = 40 / 2;
 		normal.width = scr.x - 40;
 	} else {
-		normal.x = (scr.x - 640) / 2;
-		normal.width = 640;
+		normal.x = currpos.x;
+		normal.width = 800;			
 	}
 
-	if (scr.y <= 480) {
+	if (scr.y <= 600) {
 		normal.y = 80 / 2;
 		normal.height = scr.y - 80;
 	} else {
-		normal.y = (scr.y - 400) / 2;
-		normal.height = 400;
+		normal.y = currpos.y;
+		normal.height = 600;
 	}
 
 	return normal;
