@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.2 2011/07/31 20:16:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.3 2011/08/06 09:20:16 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/08/06 09:20:16 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: MutDocument.h,v $
- * Revision 1.2  2011/07/31 20:16:04  keinstein
+ * Revision 1.3  2011/08/06 09:20:16  keinstein
+ * documentation fixes
+ *
+ * Revision 1.2  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.1  2011-07-31 12:40:42  keinstein
@@ -20,10 +23,9 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup docview
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug
 
 // ---------------------------------------------------------------------------
 // headers
