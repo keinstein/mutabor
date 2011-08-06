@@ -142,6 +142,7 @@ INDENTHEADERS = \
 		muwx/MutApp.h \
 		muwx/MutChild.h \
 		muwx/MutConfDlg.h \
+		muwx/MutDocManager.h \
 		muwx/MutDocument.h \
 		muwx/MutEditFile.h \
 		muwx/MutFrame.h \
@@ -210,6 +211,7 @@ mutabor_INDENTS = \
 		muwx/IconShape.cpp \
 		muwx/MutApp.cpp \
 		muwx/MutChild.cpp \
+		muwx/MutDocManager.cpp \
 		muwx/MutDocument.cpp \
 		muwx/MutEditFile.cpp \
 		muwx/MutFrame.cpp \
