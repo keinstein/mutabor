@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.3 2011/07/31 21:32:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.4 2011/08/06 09:20:16 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/31 21:32:21 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/08/06 09:20:16 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: MutDocument.cpp,v $
- * Revision 1.3  2011/07/31 21:32:21  keinstein
+ * Revision 1.4  2011/08/06 09:20:16  keinstein
+ * documentation fixes
+ *
+ * Revision 1.3  2011-07-31 21:32:21  keinstein
  * Slightly improved window positioning
  * Suppress route window, when a Window is opened from the command line
  *
@@ -24,7 +27,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup docview
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug
