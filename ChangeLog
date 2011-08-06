@@ -1,3 +1,118 @@
+2011-08-06  author  <author@tobias2>
+
+	* MutDocManager.cpp, MutDocManager.h:
+	added mutabor document manager class
+
+	* MutApp.cpp, MutApp.h, MutFrame.cpp, MutFrame.h:
+	activated and debugged document manager
+
+	* MutDocument.cpp, MutDocument.h, MutView.cpp, MutView.h:
+	documentation fixes
+
+2011-07-31  author  <author@tobias2>
+
+	* MutApp.cpp, MutDocument.cpp, MutFrame.cpp, MutView.h:
+	Slightly improved window positioning
+	Suppress route window, when a Window is opened from the command line
+
+	* MutApp.cpp, MutApp.h, MutDocument.cpp, MutDocument.h, MutEditFile.h, MutFrame.cpp, MutFrame.h, MutView.cpp, MutView.h:
+	Implemented opening files from command line using Document/View framework
+
+	* MutApp.cpp, MutApp.h, MutDocument.cpp, MutDocument.h, MutFrame.cpp, MutFrame.h, MutView.cpp, MutView.h:
+	Added classes and functions for Document/View support
+
+2011-07-31  author  <author@tobias2>
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h, mywx/mutDebugFlags.h:
+	Implemented opening files from command line using Document/View framework
+
+	* Makefile.am, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h:
+	Added classes and functions for Document/View support
+
+2011-07-30  author  <author@tobias2>
+
+	* muwx/MutApp.cpp: allow file open from command line
+
+	* muwx/MutLogicWnd.cpp: Fix bug introduced before last commit.
+	Change MutTag::OnLefUp into MutTag::OnLeftDown
+
+	* configure.in, muwx/MutLogicWnd.cpp:
+	Change tone system status window when changing the tuning logic by hand
+
+2011-07-27  author  <author@tobias2>
+
+	* Makefile.am, doc/Makefile.cmn, doc/localized/de/Hilfe.zip, doc/preamble.tex, mu32/Execute.cpp, mu32/Execute.h, mu32/Interpre.h, mu32/MidiKern.h, mu32/Runtime.cpp, mu32/TabGen.cpp, mu32/box.cpp, mu32/box.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidi.cpp, muwx/InputDevDlg.h:
+	started to move arrays using MAX_BOX into struct mutabor_box_type
+
+	* mu32/routing/gmn/GIS_Head.h:
+	avoid compiler warning due to intialisaton with NULL
+
+2011-07-08  author  <author@tobias2>
+
+	* doc/localized/en/Help.zip, doc/localized/en/box-configured-full.png, doc/localized/en/box-nonconfigured-full.png, doc/localized/en/inputdevice-full.png, doc/localized/en/minimal-window.png, doc/localized/en/newbox-configured.png, doc/localized/en/outputdevice-full.png, doc/localized/en/routewindow-configured.png, doc/localized/en/routewindow.png, doc/localized/en/tutorial-tuning1-logic-select-open.png, doc/localized/en/tutorial-tuning1-logic-select.png, doc/localized/en/tutorial-tuning2-logic-select-open.png:
+	add some images which are used in the online tutorial
+
+2011-07-04  author  <author@tobias2>
+
+	* doc/localized/de/Referenz.tex:
+	some fixes found during translation of Referenz.tex into english
+
+2011-07-03  author  <author@tobias2>
+
+	* doc/localized/en/Help.zip, doc/localized/en/reference.tex:
+	finished first translation into English of the reference
+
+2011-06-24  author  <author@tobias2>
+
+	* doc/Makefile.cmn, doc/localized/de/Makefile.am, doc/localized/de/Referenz.tex, doc/localized/en/Makefile.am, doc/localized/en/reference.tex, doc/localized/en/syn26.pic, doc/preamble.tex:
+	Added english translation of retunig section to the reference book
+
+	* doc/tsemlines.sty: documented emlines
+
+	* doc/emlines.sty, doc/tsemlines.sty:
+	moved emlines.sty to tsemlines.sty and implemented it in TikZ
+
+	* doc/Makefile.cmn, doc/preamble.tex: enable pdf output
+
+	* doc/localized/en/Makefile.am, doc/localized/en/reference.tex, doc/localized/en/syn10.pic, doc/localized/en/syn11.pic, doc/localized/en/syn12.pic, doc/localized/en/syn13.pic, doc/localized/en/syn14.pic, doc/localized/en/syn15.pic, doc/localized/en/syn16.pic, doc/localized/en/syn17.pic, doc/localized/en/syn18.pic, doc/localized/en/syn19.pic, doc/localized/en/syn2.pic, doc/localized/en/syn20.pic, doc/localized/en/syn21.pic, doc/localized/en/syn22.pic, doc/localized/en/syn23.pic, doc/localized/en/syn24.pic, doc/localized/en/syn25.pic, doc/localized/en/syn26.pic, doc/localized/en/syn27.pic, doc/localized/en/syn28.pic, doc/localized/en/syn3.pic, doc/localized/en/syn4.pic, doc/localized/en/syn5.pic, doc/localized/en/syn6.pic, doc/localized/en/syn7.pic, doc/localized/en/syn8.pic, doc/localized/en/syn9.pic:
+	added all pictures
+
+2011-06-23  author  <author@tobias2>
+
+	* doc/htmlpreamble.tex, doc/localized/en/Makefile.am: commit new files
+
+	* doc/Makefile.cmn, doc/localized/en/Help.zip, doc/localized/en/reference.tex, doc/mkhtml, doc/preamble.tex:
+	some preparation for new TeXLive versions
+
+	* configure.in, doc/localized/Makefile.am:
+	generate rudimentary English reference
+
+	* doc/localized/de/Hilfe.zip, doc/localized/de/Referenz.tex:
+	small orthographic corrections
+
+	* doc/localized/en/reference.tex, doc/localized/en/syn1.pic, doc/localized/en/Help.zip:
+	translation of some sections
+
+	* debian/changelog, debian/control, mu32/treestorage.h, muwx/Routing/OutputMidiDeviceShape.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	fix compile errors
+
+2011-03-06  author  <author@tobias2>
+
+	* Makefile.am, mu32/Execute.cpp, mu32/Execute.h, mu32/Interpre.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/mut.cpp, mu32/mut.h, mu32/mut.y, muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	some rearrangement for update callback kernel->GUI
+
+2011-02-20  author  <author@tobias2>
+
+	* templates/template.cpp, mu32/Defs.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Errors.h, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/MidiKern.h, mu32/Parser.cpp, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, mu32/mut.y, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muwx/Action.cpp, muwx/Action.h, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.cpp, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, muwx/configtree.cpp, muwx/configtree.h, muwx/resourceload.h, mywx/mhArray.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h:
+	updated license information; some file headers have to be revised, though
+
+2011-02-19  author  <author@tobias2>
+
+	* ChangeLog:
+	Merged in main branch from CVS experimental_tobias branch still missing
+
+	* configure.in, muwx/MutApp.h: change version number
+
 2011-02-19  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* configure.in, muwx/MutApp.h: change version number

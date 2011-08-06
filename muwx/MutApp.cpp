@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.32 2011/08/06 09:21:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.33 2011/08/06 11:36:16 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/06 09:21:23 $
- * \version $Revision: 1.32 $
+ * $Date: 2011/08/06 11:36:16 $
+ * \version $Revision: 1.33 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.32  2011/08/06 09:21:23  keinstein
+ * Revision 1.33  2011/08/06 11:36:16  keinstein
+ * allow multiple open documents
+ *
+ * Revision 1.32  2011-08-06 09:21:23  keinstein
  * activated and debugged document manager
  *
  * Revision 1.31  2011-07-31 21:32:21  keinstein
@@ -348,7 +351,7 @@ bool MutApp::OnInit()
 
 
 	//  restrict to having <= 1 doc open at any time
-	document_manager.SetMaxDocsOpen(1);
+	document_manager.SetMaxDocsOpen(5);
 	//  establish a doc template for the doc,view pair
 	new wxDocTemplate(&document_manager, 
 			  _("Mutabor logic file"), 
