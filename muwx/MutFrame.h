@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.19 2011/07/31 20:16:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.20 2011/08/06 09:21:23 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/08/06 09:21:23 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.19  2011/07/31 20:16:04  keinstein
+ * Revision 1.20  2011/08/06 09:21:23  keinstein
+ * activated and debugged document manager
+ *
+ * Revision 1.19  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.18  2011-07-31 12:40:42  keinstein
@@ -307,7 +310,7 @@ public:
 
 	/// retrun true if we have already a client
 	bool HasClient()
-	{
+ 	{
 		return (bool) client;
 	}
 
@@ -325,8 +328,12 @@ public:
 		}
 	}
 
-
+	void SetFileMenu(wxMenu * f) { filemenu = f; }
+	void SetEditMenu(wxMenu * e) { editmenu = e; }
 private:
+
+	wxMenu * editmenu;
+	wxMenu * filemenu;
 
 	void CloseClientWindow(wxWindow * w)
 	{

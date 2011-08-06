@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.31 2011/07/31 21:32:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.32 2011/08/06 09:21:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/07/31 21:32:21 $
- * \version $Revision: 1.31 $
+ * \date $Date: 2011/08/06 09:21:23 $
+ * \version $Revision: 1.32 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.31  2011/07/31 21:32:21  keinstein
+ * Revision 1.32  2011/08/06 09:21:23  keinstein
+ * activated and debugged document manager
+ *
+ * Revision 1.31  2011-07-31 21:32:21  keinstein
  * Slightly improved window positioning
  * Suppress route window, when a Window is opened from the command line
  *
@@ -339,8 +342,8 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_ERASE_BACKGROUND(MutFrame::OnEraseBackground)
 	EVT_SIZE(MutFrame::OnSize)
 
-	EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
-	EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
+//	EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
+//	EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
 	EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
 	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
@@ -413,6 +416,7 @@ MutFrame::MutFrame(wxFrame *parent,
 
 	SetSize (DetermineFrameSize ());
 	client = NULL;
+	editmenu = filemenu = NULL;
 
 	auimanager.SetManagedWindow(this);
 
@@ -490,6 +494,8 @@ MutFrame::MutFrame(wxDocument *doc,
 MutFrame::~MutFrame()
 
 {
+	if (filemenu) 
+		wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
 	auimanager.UnInit();
 
 	while (wxGetApp().Pending()) wxGetApp().Dispatch();
