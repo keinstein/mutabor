@@ -1,17 +1,20 @@
-/** \file
+/** \file   -*- C++ -*-
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.19 2011/07/31 20:16:04 keinstein Exp $
+ * $Id: MutApp.h,v 1.20 2011/08/06 09:21:23 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.19 $
+ *  $Date: 2011/08/06 09:21:23 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.19  2011/07/31 20:16:04  keinstein
+ * Revision 1.20  2011/08/06 09:21:23  keinstein
+ * activated and debugged document manager
+ *
+ * Revision 1.19  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.18  2011-07-31 12:40:41  keinstein
@@ -152,6 +155,7 @@
 //#include "Defs.h"
 //#include "wx/intl.h"
 #include "MutFrame.h"
+#include "MutDocManager.h"
 
 /// Declare a frame array as an hash table
 WX_DECLARE_HASH_MAP( wxFrame *,      // type of the keys
@@ -201,6 +205,10 @@ public:
 	// Extend event processing to search the document manager's event table
 	virtual bool ProcessEvent(wxEvent& event);
 	
+	/// Pass event to document manager
+	void PassEventToDocManager(wxCommandEvent& event);
+	void PassEventToDocManager(wxUpdateUIEvent& event);
+
 	/// add handling of last files.
 	void OnMRUFile(wxCommandEvent& event);
 
@@ -326,6 +334,13 @@ public:
 		} else return true;
 	}
 
+	/// Allow access to the document manager
+	const wxDocManager *GetDocumentManager() const { return &document_manager; }
+
+	/// Allow write access to the document manager
+	wxDocManager *GetDocumentManager() { return &document_manager; }
+    
+
 private:
 
 	/// Creates a file menu
@@ -333,7 +348,7 @@ private:
 	    \param menuBar Menu bar, where the file menu is to be appended
 	    \param type Flags indicating, which menus shall be created. 
 	*/
-	void MakeFileMenu(wxMenuBar * menuBar, MenuType type);
+	wxMenu *  MakeFileMenu(wxMenuBar * menuBar, MenuType type);
 
 	/// Creates a mutabor logic menu
 	/** This function creates the logic menu.
@@ -367,26 +382,13 @@ private:
 	void MakeHelpMenu(wxMenuBar * menuBar);
 
 
-	/// Allow access to the document manager
-	const wxDocManager *GetDocumentManager() const { return &document_manager; }
-
-	/// Allow write access to the document manager
-	wxDocManager *GetDocumentManager() { return &document_manager; }
-    
 protected:
 
 	/// locale data to be used inside the application
 	wxLocale m_locale;
 
-#if 0
-	/// list of main frames in the application
-	/** \deprecated \see RegisterFrame(), UnregisterFrame()
-	 */
-	FrameHash frames;
-#endif
-
 	/// Document manager.
-	wxDocManager document_manager;
+	mutabor::MutDocManager document_manager;
 
 	/// flag indicating, that we are in quitting mode.
 	bool quitting;

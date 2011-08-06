@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.31 2011/07/31 21:32:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.32 2011/08/06 09:21:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/31 21:32:21 $
- * \version $Revision: 1.31 $
+ * $Date: 2011/08/06 09:21:23 $
+ * \version $Revision: 1.32 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.31  2011/07/31 21:32:21  keinstein
+ * Revision 1.32  2011/08/06 09:21:23  keinstein
+ * activated and debugged document manager
+ *
+ * Revision 1.31  2011-07-31 21:32:21  keinstein
  * Slightly improved window positioning
  * Suppress route window, when a Window is opened from the command line
  *
@@ -208,30 +211,30 @@ IMPLEMENT_APP(MutApp)
 // ---------------------------------------------------------------------------
 
 
-#define OPENMENU \
-  { wxMenu * menu = new wxMenu;
+#define OPENMENU				\
+	{ wxMenu * menu = new wxMenu;
 
-#define CLOSEMENU(name) \
-  menuBar->Append(menu, name); }
+#define CLOSEMENU(name)				\
+	menuBar->Append(menu, name); }
 
-#define MENUITEM(name, id, help) \
+#define MENUITEM(name, id, help)		\
 	menu->Append(id, name, help)
 
-#define MENUCHECKITEM(name, id, help) \
+#define MENUCHECKITEM(name, id, help)		\
 	menu->AppendCheckItem(id, name, help)
 
-#define MENUITEM_ADD(name, id, help, add) \
+#define MENUITEM_ADD(name, id, help, add)	\
 	menu->Append(id, name, help, add)
 
-#define MENUITEM_SEPARATOR \
-    menu->AppendSeparator()
+#define MENUITEM_SEPARATOR			\
+	menu->AppendSeparator()
 
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
 	/* Short form for
-	for (int i = MUT_FIRST; i < MUT_LAST; i++) 
-	  wxRegisterId(i);
+	   for (int i = MUT_FIRST; i < MUT_LAST; i++) 
+	   wxRegisterId(i);
 	*/
 	wxRegisterId(MUT_LAST);
 
@@ -274,50 +277,50 @@ bool MutApp::OnInit()
 	std::cout << (muT(typeid(m_locale).name()).ToUTF8()) << std::endl;
 	std::cout << "ConfigDir:        "
 
-	<< (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
-	<< "DataDir:          "
-	<< (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
-	<< "DocumentsDir:     "
-	<< (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
-	<< "ExecutablePath:   "
-	<< (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
+		  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
+		  << "DataDir:          "
+		  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
+		  << "DocumentsDir:     "
+		  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
+		  << "ExecutablePath:   "
+		  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
 
 #if defined(__UNIX__) && !defined(__WXMAC__)
-	<< "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
-	<< std::endl
+		  << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
+		  << std::endl
 #endif
-	<< "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
-	<< std::endl
-	<< "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
-	<< std::endl
-	<< "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
-	<< std::endl
-	<< "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
-	<< std::endl
-	<< "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
-	<< std::endl
-	<< "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
-	<< std::endl
-	<< "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
-	<< std::endl;
+		  << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
+		  << std::endl
+		  << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
+		  << std::endl
+		  << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
+		  << std::endl
+		  << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
+		  << std::endl
+		  << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
+		  << std::endl
+		  << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
+		  << std::endl
+		  << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
+		  << std::endl;
 
 	std::cout
-	<< "LocalizedResourcesDir(Can): "
-	<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
-	                  sp.ResourceCat_None).ToUTF8())
-	<< std::endl
-	<< "LocalizedResourcesDir(Can,Messages): "
-	<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
-	                  sp.ResourceCat_Messages).ToUTF8())
-	<< std::endl
-	<< "LocalizedResourcesDir(): "
-	<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
-	                  sp.ResourceCat_None).ToUTF8())
-	<< std::endl
-	<< "LocalizedResourcesDir(Messages): "
-	<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
-	                  sp.ResourceCat_Messages).ToUTF8())
-	<< std::endl;
+		<< "LocalizedResourcesDir(Can): "
+		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+							      sp.ResourceCat_None).ToUTF8())
+		<< std::endl
+		<< "LocalizedResourcesDir(Can,Messages): "
+		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+							      sp.ResourceCat_Messages).ToUTF8())
+		<< std::endl
+		<< "LocalizedResourcesDir(): "
+		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
+							      sp.ResourceCat_None).ToUTF8())
+		<< std::endl
+		<< "LocalizedResourcesDir(Messages): "
+		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
+							      sp.ResourceCat_Messages).ToUTF8())
+		<< std::endl;
 
 #endif
 
@@ -341,7 +344,7 @@ bool MutApp::OnInit()
 	// we want to name the help files according to the lanuage.
 	if (!HelpController->Initialize(GetResourceName(_("Help.zip"))))
 		std::cerr << "Warning: could not initialize Help system: "
-		<< (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
+			  << (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
 
 
 	//  restrict to having <= 1 doc open at any time
@@ -356,6 +359,9 @@ bool MutApp::OnInit()
 			  wxT("mutabor_logic_view"), 
 			  CLASSINFO(mutaborGUI::MutDocument), 
 			  CLASSINFO(mutaborGUI::MutView) );
+#ifdef __WXMAC__
+	wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
+#endif
 
 #if defined(__WXMAC__)
 	// || defined(__WXCOCOA__)
@@ -440,6 +446,19 @@ bool MutApp::ProcessEvent(wxEvent& event)
 		DEBUGLOG(eventqueue,_T("Unhandled event: Type %d"), event.GetEventType());
 #endif
 	return retval;
+}
+
+void MutApp::PassEventToDocManager(wxCommandEvent& event)
+{
+	DEBUGLOG(docview,_T(""));
+	if (!document_manager.ProcessEvent(event)) 
+		event.Skip();
+}
+void MutApp::PassEventToDocManager(wxUpdateUIEvent& event)
+{
+	DEBUGLOG(docview,_T(""));
+	if (!document_manager.ProcessEvent(event)) 
+		event.Skip();
 }
 
 void MutApp::OnMRUFile(wxCommandEvent& event)
@@ -610,8 +629,37 @@ AppAbout::AppAbout (wxWindow *parent, long style)
 
 BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_MENU(CM_SETUP, MutApp::CmSetup)
-	EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
-	EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
+EVT_MENU(wxID_OPEN, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_CLOSE, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_CLOSE_ALL, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_REVERT, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_NEW, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_SAVE, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_SAVEAS, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_UNDO, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_REDO, MutApp::PassEventToDocManager)
+
+EVT_UPDATE_UI(wxID_OPEN, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_CLOSE, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_CLOSE_ALL, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_REVERT, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_NEW, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_SAVE, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_SAVEAS, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_UNDO, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_REDO, MutApp::PassEventToDocManager)
+
+#if wxUSE_PRINTING_ARCHITECTURE
+EVT_MENU(wxID_PRINT, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_PREVIEW, MutApp::PassEventToDocManager)
+
+EVT_UPDATE_UI(wxID_PRINT, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_PREVIEW, MutApp::PassEventToDocManager)
+#endif
+//        EVT_MENU(CM_FILENEW, MutApp::PassEventToDocManager)	
+//       EVT_MENU(CM_FILEOPEN, MutApp::PassEventToDocManager)	
+//	EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
+//	EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
 	EVT_MENU(CM_EXECUTE, MutApp::CmFileOpen)
 	/*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
 	    EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
@@ -688,7 +736,7 @@ MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 	// Make a menubar
 
 	wxMenuBar *menuBar = new wxMenuBar;
-	MakeFileMenu(menuBar, type);
+	frame->SetFileMenu(MakeFileMenu(menuBar, type));
 	MakeLogicMenu(menuBar);
 	MakeRoutesMenu(menuBar);
 	MakeViewMenu(menuBar, type);
@@ -1051,9 +1099,11 @@ void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
 	CLOSEMENU(_("&Logic"));
 }
 
-void MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
+wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 {
+	wxMenu * retval;
 	OPENMENU;
+	retval = menu;
 	MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
 	         _("Create a new logic file."));
 	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
@@ -1079,12 +1129,19 @@ void MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
+#endif
 	MENUITEM(_("E&xit"), CM_EXIT, _("Quit Mutabor"));
+	DEBUGLOG(docview,_T("Adding file history menu"));
+	document_manager.FileHistoryUseMenu(menu);
+	document_manager.GetFileHistory()->AddFilesToMenu(menu);
+
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	CLOSEMENU(_("&File"));
 #else
-	MENUITEM(_T("E&xit"), CM_EXIT, _("Quit Mutabor"));
 	CLOSEMENU(getContextLocal(_("@MAC|&File")));
 #endif
+	return retval;
+	
 }
 
 int MutApp::OnExit()
@@ -1150,7 +1207,7 @@ void MutApp::SaveState()
 	config->SetPath(_T(".."));
 
 	config->SetPath(_T("DocManager"));
-	document_manager.FileHistoryLoad(*config);
+	document_manager.FileHistorySave(*config);
 	config->SetPath(_T(".."));
 
 	SaveRoutes(config);
