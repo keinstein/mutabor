@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.1 2011/08/06 09:22:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.2 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/06 09:22:27 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,11 @@
  *
  *
  * $Log: MutDocManager.cpp,v $
- * Revision 1.1  2011/08/06 09:22:27  keinstein
+ * Revision 1.2  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.1  2011-08-06 09:22:27  keinstein
  * added mutabor document manager class
  *
  *
@@ -85,5 +89,25 @@ namespace mutabor {
 		}
 		return true;
 	}
+
+
+	// Make a frame title (override this to do something different)
+        // If docName is empty, a document is not currently active.
+	wxString MutDocManager::MakeFrameTitle(wxDocument* doc)
+	{
+		wxString appName = wxTheApp->GetAppName();
+		wxString title;
+		if (!doc)
+			title = appName;
+		else
+		{
+			wxString docName;
+			doc->GetPrintableName(docName);
+			title = docName + wxString(_(" - ")) + _T(PACKAGE_NAME);
+		}
+		return title;
+	}
+
+
 }
 ///\}

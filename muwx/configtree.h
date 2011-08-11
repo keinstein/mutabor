@@ -3,14 +3,18 @@
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Id: configtree.h,v 1.4 2011/08/11 19:00:48 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * \date $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: configtree.h,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -48,6 +52,10 @@ class configtree:public tree_storage
 	
 	/// structure describing the current state
 	struct state {
+		state() {
+			chdepth = 0;
+			leafid = wxNOT_FOUND;
+		}
 		int chdepth; ///< depth of last toLeaf... command
 		long leafid; ///< id from wxWidgets for sequential access
 #ifdef DEBUG

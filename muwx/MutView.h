@@ -2,16 +2,20 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.4 2011/08/06 09:19:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.5 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/06 09:19:45 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.4  2011/08/06 09:19:45  keinstein
+ * Revision 1.5  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.4  2011-08-06 09:19:45  keinstein
  * documentation fixes
  *
  * Revision 1.3  2011-07-31 21:32:21  keinstein
@@ -66,11 +70,9 @@ namespace mutaborGUI {
 	{
 
 		friend class MutDocument;
-		DECLARE_DYNAMIC_CLASS(MutView)
-		DECLARE_EVENT_TABLE()
-		public:
+	public:
 		MutView();
-		~MutView();
+		virtual ~MutView();
 
 		// message handler methods go here
 		// virtual override
@@ -82,12 +84,24 @@ namespace mutaborGUI {
 		// virtual override
 		virtual void OnUpdate(wxView* sender, wxObject* hint = NULL);
 		
-		MutEditFile * GetTextsw() { return textsw; }
-		MutFrame * GetFrame() { return frame; }
-	protected:
-		MutFrame * frame;
-		MutEditFile * textsw;
+		virtual void OnActivateView(bool activate, wxView * activeView, wxView * deactiveView);
 
+
+		MutEditFile * GetTextsw() { return textsw; }
+		void SetTextsw(MutEditFile * t) { textsw = t; }
+		MutFrame * GetMutFrame() { 
+			wxWindow * f = GetFrame();
+			if (f) {
+				wxASSERT(dynamic_cast<MutFrame *>(f));
+			}
+			return (MutFrame *) f; 
+		}
+		
+		DECLARE_EVENT_TABLE()
+	protected:
+		MutEditFile * textsw;
+		
+		DECLARE_DYNAMIC_CLASS(MutView)
 	};
 
 }

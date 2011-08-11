@@ -2,16 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.32 2011/08/06 09:21:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.33 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/06 09:21:23 $
- * \version $Revision: 1.32 $
+ * \date $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.33 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.32  2011/08/06 09:21:23  keinstein
+ * Revision 1.33  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.32  2011-08-06 09:21:23  keinstein
  * activated and debugged document manager
  *
  * Revision 1.31  2011-07-31 21:32:21  keinstein
@@ -255,6 +259,8 @@
 #include "MutTextBox.h"
 #include "MutBitmaps.h"
 
+using mutaborGUI::MutEditFile;
+
 #define OPENMENU \
 	menu = new wxMenu;
 
@@ -417,6 +423,7 @@ MutFrame::MutFrame(wxFrame *parent,
 	SetSize (DetermineFrameSize ());
 	client = NULL;
 	editmenu = filemenu = NULL;
+	view = NULL;
 
 	auimanager.SetManagedWindow(this);
 
@@ -445,8 +452,8 @@ MutFrame::MutFrame(wxFrame *parent,
 	    SetAcceleratorTable(accel);*/
 }
 
-MutFrame::MutFrame(wxDocument *doc,
-		   wxView *view,
+MutFrame::MutFrame(MutDocument *doc,
+		   MutView *v,
 		   wxFrame *frame,
 		   wxWindowID id,
 		   const wxString& title,
@@ -454,12 +461,14 @@ MutFrame::MutFrame(wxDocument *doc,
 		   const wxSize& size,
 		   long type,
 		   const wxString& name):
-	wxDocChildFrame(doc,view,frame,id,title,pos,size,type,name),
+	wxDocChildFrame(doc,v,frame,id,title,pos,size,type,name),
 	curStatusImg(0)
 {
 
 	SetSize (DetermineFrameSize ());
 	client = NULL;
+	editmenu = filemenu = NULL;
+	view = v;
 
 	auimanager.SetManagedWindow(this);
 
@@ -494,11 +503,17 @@ MutFrame::MutFrame(wxDocument *doc,
 MutFrame::~MutFrame()
 
 {
-	if (filemenu) 
-		wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
+	if (filemenu) {
+		if (wxGetApp().GetDocumentManager()) 
+			wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
+	}
+	if (view) {
+		view->SetFrame(NULL);
+		view->SetTextsw(NULL);
+	}
 	auimanager.UnInit();
 
-	while (wxGetApp().Pending()) wxGetApp().Dispatch();
+//	while (wxGetApp().Pending()) wxGetApp().Dispatch();
 }
 
 #if wxUSE_TOOLBAR
@@ -749,8 +764,17 @@ bool MutFrame::OpenFile (wxString path, bool newfile)
 
 bool MutFrame::SetClient (wxWindow * win, const wxString &title)
 {
-	if (client || !win) return false;
+	if (client || !win) {
+		wxASSERT(!client);
+		wxASSERT(win);
+		return false;
+	}
 	
+	DEBUGLOG(docview,_T("Setting client of %x to %x with title '%s'"),
+		 this,
+		 win,
+		 (char *)title.c_str());
+
 	client = win;
 	SetTitle(title);
 	auimanager.AddPane(client,wxAuiPaneInfo().

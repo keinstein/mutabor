@@ -2,16 +2,20 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.3 2011/08/06 09:19:45 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.4 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/06 09:19:45 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.3  2011/08/06 09:19:45  keinstein
+ * Revision 1.4  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.3  2011-08-06 09:19:45  keinstein
  * documentation fixes
  *
  * Revision 1.2  2011-07-31 20:16:04  keinstein
@@ -59,15 +63,18 @@ namespace mutaborGUI {
  	MutView::MutView()
 	{
 		DEBUGLOG(docview,_T(""));
-		frame = (MutFrame *) NULL;
 		textsw = (MutEditFile *) NULL;
 	}
 
 	MutView::~MutView()
 	{
 		DEBUGLOG(docview,_T(""));
-		
-		
+		if (textsw) textsw->SetView(NULL);
+		MutFrame * f = GetMutFrame();
+		if (f) {
+			f->SetView(NULL);
+			f->Destroy();
+		}
 	}
 
 /** this function will create a frame window, child of the mainframe,
@@ -78,10 +85,14 @@ namespace mutaborGUI {
 	bool MutView::OnCreate(wxDocument* doc, long flags)
 	{
 		DEBUGLOG(docview,_T(""));
+		if (doc) {
+			wxASSERT(dynamic_cast<MutDocument *>(doc));
+		}
+
 		// create a new MutViewFrame for this view to draw into. The ChildFrame is
 		// told about the view, and the mainframe. It does not need to know about
 		// the document. The constructor of the Frame will call View::SetFrame(this)
-		frame = new MutFrame(doc, this, NULL, wxID_ANY, wxT(""));
+		MutFrame * frame  = new MutFrame((MutDocument *)doc, this, NULL, wxID_ANY, wxT(""));
 		wxGetApp().InitMainFrame(MutApp::EditorMenu,frame);
 
 		textsw = new MutEditFile(this,
@@ -90,7 +101,8 @@ namespace mutaborGUI {
 					 wxDefaultSize);
 	
 
-		frame->SetClient(textsw,wxT(""));
+		if (textsw)
+			frame->SetClient(textsw,doc->GetTitle());
 #ifdef __X__
 		// X seems to require a forced resize
 		int x, y;
@@ -98,6 +110,8 @@ namespace mutaborGUI {
 		frame->SetSize(wxDefaultCoord, wxDefaultCoord, x, y);
 #endif
 
+		frame->SetView(this);
+		SetFrame(frame);
 		frame->Show(true);	
 		// The doc manager maintains an active view, which is used to
 		// discern the active document which could be meaningful in MDI apps.
@@ -116,7 +130,6 @@ namespace mutaborGUI {
     
 		if (deleteWindow)
 		{
-			delete frame;
 			return true;
 		}
 		return true;
@@ -149,6 +162,22 @@ namespace mutaborGUI {
 		wxMessageBox(wxT("onupdate"), _T("onupdate"), wxOK | wxICON_INFORMATION);
 #endif
 	}
+
+	void MutView::OnActivateView(bool activate, 
+				     wxView *activeView, 
+				     wxView *deactiveView)
+	{
+		DEBUGLOG(docview,_T("Activate: %d && %x == %x"),
+			 activate, activeView, this);
+#if 0
+		if (activate && activeView == this && activeView != deactiveView) {
+			MutFrame * frame = (MutFrame *) GetFrame();
+			if (frame && frame->IsShown() && wxGetApp().GetTopWindow() != frame)
+				frame->Raise();
+		}
+#endif
+	}
+
 
 }
 ///\}

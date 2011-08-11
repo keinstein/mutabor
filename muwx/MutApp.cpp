@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.33 2011/08/06 11:36:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.34 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/06 11:36:16 $
- * \version $Revision: 1.33 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.34 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.33  2011/08/06 11:36:16  keinstein
+ * Revision 1.34  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.33  2011-08-06 11:36:16  keinstein
  * allow multiple open documents
  *
  * Revision 1.32  2011-08-06 09:21:23  keinstein
@@ -394,6 +398,7 @@ bool MutApp::OnInit()
 		frame->RestoreState();
 		wxCommandEvent event(CM_ROUTES);
 		frame->CmRoutes(event);
+		frame->Show(true);
 	}
 
 	return true;
@@ -453,13 +458,13 @@ bool MutApp::ProcessEvent(wxEvent& event)
 
 void MutApp::PassEventToDocManager(wxCommandEvent& event)
 {
-	DEBUGLOG(docview,_T(""));
+	DEBUGLOG(eventqueue,_T("Command"));
 	if (!document_manager.ProcessEvent(event)) 
 		event.Skip();
 }
 void MutApp::PassEventToDocManager(wxUpdateUIEvent& event)
 {
-	DEBUGLOG(docview,_T(""));
+	DEBUGLOG(eventqueue,_T("UpdateUI"));
 	if (!document_manager.ProcessEvent(event)) 
 		event.Skip();
 }
@@ -753,8 +758,6 @@ MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 	frame->CreateStatusBar();
 #endif // wxUSE_STATUSBAR
 
-	frame->Show(true);
-
 	return frame;
 }
 
@@ -773,6 +776,7 @@ void MutApp::CmFileNew (wxCommandEvent& event)
 
 #endif
 	frame->CmFileNew(event);
+	frame->Show();
 
 #ifdef DEBUG
 	printf("MutApp::CmFileNew: file new: done.\n");
@@ -795,7 +799,7 @@ void MutApp::CmFileOpen (wxCommandEvent& event)
 	if ( !path )
 		return;
 
-	if (MustOpenFrame(frame))
+	if (MustOpenFrame(frame)) 
 		frame = CreateMainFrame(EditorMenu);
 
 	frame->OpenFile(path);
@@ -815,6 +819,7 @@ void MutApp::CmFileOpen (wxCommandEvent& event)
 
 		break;
 	}
+	frame->Show();
 
 }
 
@@ -1177,6 +1182,7 @@ void MutApp::MacOpenFile(const wxString &fileName)
 		frame = CreateMainFrame(EditorMenu);
 
 	frame->OpenFile(fileName);
+	frame->Show();
 }
 
 #endif
