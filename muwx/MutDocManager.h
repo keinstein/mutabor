@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.1 2011/08/06 09:22:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.2 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/06 09:22:27 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,11 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.1  2011/08/06 09:22:27  keinstein
+ * Revision 1.2  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.1  2011-08-06 09:22:27  keinstein
  * added mutabor document manager class
  *
  *
@@ -57,6 +61,11 @@ namespace mutabor {
 	public:
 		/// Extend event processing to search the view's event table
 		bool ProcessEvent(wxEvent& event);
+
+		/// calculate the frame title
+		virtual wxString MakeFrameTitle(wxDocument* doc);
+    
+
 	protected:
 		/// Pass certain events to the Application.
 		/** MutDocManager::ProcessEvent is called directly from MutApp event handlers.

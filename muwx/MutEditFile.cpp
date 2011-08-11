@@ -1,29 +1,33 @@
 /** \file 
- ********************************************************************
- * Mutabor Edit window for Mutabor-files
- *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.14 2011/02/20 22:35:57 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author R. Krauﬂe
- * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.14 $
- * \license GPL
- *
- * $Log: MutEditFile.cpp,v $
- * Revision 1.14  2011/02/20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
- *
- * \addtogroup muwx
- * \{
- ********************************************************************/
+********************************************************************
+* Mutabor Edit window for Mutabor-files
+*
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.15 2011/08/11 19:00:48 keinstein Exp $
+* Copyright:   (c) 2008 TU Dresden
+* \author R. Krauﬂe
+* Tobias Schlemmer <keinstein@users.berlios.de>
+* \date 2005/08/12
+* $Date: 2011/08/11 19:00:48 $
+* \version $Revision: 1.15 $
+* \license GPL
+*
+* $Log: MutEditFile.cpp,v $
+* Revision 1.15  2011/08/11 19:00:48  keinstein
+* get Document/View running.
+* Needs further testing (possible segfaults).
+*
+* Revision 1.14  2011-02-20 22:35:57  keinstein
+* updated license information; some file headers have to be revised, though
+*
+* Revision 1.2  2010-11-21 13:15:51  keinstein
+* merged experimental_tobias
+*
+* Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
+* added some .cvsignore files
+*
+* \addtogroup muwx
+* \{
+********************************************************************/
 
 // ===========================================================================
 // declarations
@@ -80,24 +84,26 @@
 #include "MutEditFile.h"
 #include "CompDlg.h"
 #include "Runtime.h"
+#include "MutView.h"
 
 CompDlg *CompDia = NULL;
 
 // ---------------------------------------------------------------------------
 // event tables
 // ---------------------------------------------------------------------------
-
+using mutaborGUI::MutEditFile;
 BEGIN_EVENT_TABLE(MutEditFile, wxTextCtrl)
-	//    EVT_MOUSE_EVENTS(MyCanvas::OnEvent)
-	EVT_MENU(CM_FILESAVE, MutEditFile::CmFileSave)
-	EVT_MENU(CM_FILESAVEAS, MutEditFile::CmFileSaveAs)
-	EVT_MENU(CM_COMPILE, MutEditFile::CmCompile)
-	EVT_MENU(CM_COMPACT, MutEditFile::CmCompAct)
-	EVT_MENU(CM_ACTIVATE, MutEditFile::CmCompAct)
-	EVT_MENU(CM_GETLINE, MutEditFile::CmGetLine)
-	EVT_MENU(CM_HELPCONTEXT, MutEditFile::CmHelpContext)
+//    EVT_MOUSE_EVENTS(MyCanvas::OnEvent)
+EVT_MENU(CM_FILESAVE, MutEditFile::CmFileSave)
+EVT_MENU(CM_FILESAVEAS, MutEditFile::CmFileSaveAs)
+EVT_MENU(CM_COMPILE, MutEditFile::CmCompile)
+EVT_MENU(CM_COMPACT, MutEditFile::CmCompAct)
+EVT_MENU(CM_ACTIVATE, MutEditFile::CmCompAct)
+EVT_MENU(CM_GETLINE, MutEditFile::CmGetLine)
+EVT_MENU(CM_HELPCONTEXT, MutEditFile::CmHelpContext)
 END_EVENT_TABLE()
 
+namespace mutaborGUI {
 // ===========================================================================
 // implementation
 // ===========================================================================
@@ -106,395 +112,401 @@ END_EVENT_TABLE()
 
 //SETUPWINDOW_FONT(TEditFileMut, TEditFile, EditFont)
 
+	MutEditFile::~MutEditFile()
+	{
+		if (view) {
+			view->SetTextsw(NULL);
+		}
+	}
 
-bool MutEditFile::DoLoadFile(const wxString &filename, int WXUNUSED(fileType))
-{
-	DEBUGLOG(mutparser,_T(""));
-	wxFFile file(filename);
+	bool MutEditFile::DoLoadFile(const wxString &filename, int WXUNUSED(fileType))
+	{
+		DEBUGLOG(mutparser,_T(""));
+		wxFFile file(filename);
 
-	if ( file.IsOpened() ) {
-		wxString text;
+		if ( file.IsOpened() ) {
+			wxString text;
 
-		if ( file.ReadAll(&text, autoConverter) ) {
-			DEBUGLOG(mutparser,_T("%s"),text.c_str());
+			if ( file.ReadAll(&text, autoConverter) ) {
+				DEBUGLOG(mutparser,_T("%s"),text.c_str());
 
-			SetValue(text);
-			DiscardEdits();
+				SetValue(text);
+				DiscardEdits();
+				m_filename = filename;
+				file.Close();
+				return true;
+			}
+
+#ifdef DEBUG
+			else
+				DEBUGLOG (mutparser,_T("File opened, but couldn't be loaded."));
+
+#endif
+		}
+
+		wxLogError(_("File couldn't be loaded."));
+		return false;
+	}
+
+	bool MutEditFile::DoSaveFile(const wxString& filename, int WXUNUSED(fileType))
+
+	{
+#if wxUSE_FFILE
+#ifdef DEBUG
+		std::cerr << "MutEditFile::DoSaveFile" << std::endl
+			  << (GetValue().fn_str()) << std::endl;
+#endif
+		wxFFile file(filename, _T("w"));
+
+		if ( file.IsOpened() && file.Write(GetValue(), autoConverter) ) {
+			// if it worked, save for future calls
 			m_filename = filename;
+
+			// it's not modified any longer
+			DiscardEdits();
+
 			file.Close();
+
 			return true;
 		}
 
-#ifdef DEBUG
-		else
-			DEBUGLOG (mutparser,_T("File opened, but couldn't be loaded."));
-
-#endif
-	}
-
-	wxLogError(_("File couldn't be loaded."));
-	return false;
-}
-
-bool MutEditFile::DoSaveFile(const wxString& filename, int WXUNUSED(fileType))
-
-{
-#if wxUSE_FFILE
-#ifdef DEBUG
-	std::cerr << "MutEditFile::DoSaveFile" << std::endl
-	<< (GetValue().fn_str()) << std::endl;
-#endif
-	wxFFile file(filename, _T("w"));
-
-	if ( file.IsOpened() && file.Write(GetValue(), autoConverter) ) {
-		// if it worked, save for future calls
-		m_filename = filename;
-
-		// it's not modified any longer
-		DiscardEdits();
-
-		file.Close();
-
-		return true;
-	}
-
 #endif // wxUSE_FFILE
 
-	wxLogError(_("The text couldn't be saved."));
+		wxLogError(_("The text couldn't be saved."));
 
-	return false;
-}
-
-
-void MutEditFile::CmFileSave(wxCommandEvent& WXUNUSED(event))
-
-{
-	SaveFile(m_filename);
-#ifdef DEBUG
-	std::cerr << "File saved: " << m_filename.fn_str() << std::endl;
-#endif
-}
-
-void MutEditFile::CmFileSaveAs(wxCommandEvent& event)
-{
-	wxString newname = FileNameDialog(GetParent(), event.GetId(), m_filename);
-
-	if (newname.IsEmpty()) return;
-
-	m_filename = newname;
-
-	CmFileSave(event);
-
-	// Überschrift in MutWin setzen
-	wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_SETTITLE);
-
-	//  e.ResumePropagation(wxEVENT_PROPAGATE_MAX);
-	wxFileName s(m_filename);
-
-	e.SetString(s.GetFullName());
-
-	AddPendingEvent(e);
-}
-
-
-void MutEditFile::CmCompile(wxCommandEvent& event)
-{
-
-	DEBUGLOG (other, _T("MutEditFile::CmCompile(Event(%d)); filename = %s"),event.GetId(),m_filename.c_str());
-	wxString origfilename = m_filename;
-	wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
-
-	if ( SaveEditor )
-		SaveFile(m_filename);
-
-	bool modified = IsModified();
-
-	if ( LogicOn ) {
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-		wxPostEvent(GetParent(),event1);
+		return false;
 	}
 
-	if ( !SaveFile(TmpFile) ) {
-		wxMessageBox(_("Can't write temporary file."), _("Error"), wxOK | wxICON_HAND);
-		CompiledFile = wxEmptyString;
-	} else {
-		if ( modified )
-			MarkDirty();
 
-		CompDia = new CompDlg(this);
+	void MutEditFile::CmFileSave(wxCommandEvent& WXUNUSED(event))
 
-		CompDia->SetFileName(origfilename);
-
+	{
+		SaveFile(m_filename);
 #ifdef DEBUG
-		std::cout << "MutEditile::CmCompile: Parent"
-		<< CompDia->GetParent() << std::endl;
-
+		std::cerr << "File saved: " << m_filename.fn_str() << std::endl;
 #endif
-		if (CompDia->GetParent())
-			CompDia->Centre();
+	}
 
-		CompDia->Show();
+	void MutEditFile::CmFileSaveAs(wxCommandEvent& event)
+	{
+		wxString newname = FileNameDialog(GetParent(), event.GetId(), m_filename);
 
-		CompDia->MakeModal(true);
+		if (newname.IsEmpty()) return;
 
-		if ( Compile(CompDia, TmpFile.c_str()) )
-			CompiledFile = origfilename;
-		else {
-			CompiledFile = wxEmptyString;
-			GoErrorLine();
+		m_filename = newname;
+
+		CmFileSave(event);
+
+		// Überschrift in MutWin setzen
+		wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_SETTITLE);
+
+		//  e.ResumePropagation(wxEVENT_PROPAGATE_MAX);
+		wxFileName s(m_filename);
+
+		e.SetString(s.GetFullName());
+
+		AddPendingEvent(e);
+	}
+
+
+	void MutEditFile::CmCompile(wxCommandEvent& event)
+	{
+
+		DEBUGLOG (other, _T("MutEditFile::CmCompile(Event(%d)); filename = %s"),event.GetId(),m_filename.c_str());
+		wxString origfilename = m_filename;
+		wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
+
+		if ( SaveEditor )
+			SaveFile(m_filename);
+
+		bool modified = IsModified();
+
+		if ( LogicOn ) {
+			wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
+			wxPostEvent(GetParent(),event1);
 		}
 
-		CompDia->MakeModal(false);
-
-		CompDia->EnableButton(true);
-		CompDia->Hide();
-		int r = CompDia->ShowModal();
-#ifdef DEBUG
-		std::cerr << "MutEditFile::CmCompile return code: "
-		<< r << std::endl;
-#endif
-		wxRemoveFile(TmpFile);
-	}
-
-	m_filename = origfilename;
-
-	DEBUGLOG (other, _T("filename (at end) = '%s'"),m_filename.c_str());
-	event.Skip(false);
-}
-
-void MutEditFile::CmCompAct(wxCommandEvent& event)
-{
-	wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
-
-	if ( SaveEditor )
-		SaveFile(m_filename);
-
-	bool modified = IsModified();
-
-	if ( LogicOn ) {
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
-		wxPostEvent(GetParent(),event1);
-	}
-
-	if ( !SaveFile(TmpFile) ) {
-		wxMessageBox(_("Can't write temporary file."),
-		             _("Error"), wxOK | wxICON_HAND);
-		CompiledFile = wxEmptyString;
-	} else {
-		if ( modified )
-			MarkDirty();
-
-		CompDia = new CompDlg(this);
-
-		if (!CompDia->Show()) {
-			wxLogError(_("The compile dialog could not be loaded."));
-		};
-
-		CompDia->SetFileName(GetName());
-
-		if ( Compile(CompDia, TmpFile.c_str()) ) {
-			CompiledFile = m_filename;
-			//CompDia->SendMessage(WM_CLOSE);
-			CompDia->Destroy();
-			wxCommandEvent event2(wxEVT_COMMAND_MENU_SELECTED, CM_DOACTIVATE);
-			wxPostEvent(GetParent(),event2);
+		if ( !SaveFile(TmpFile) ) {
+			wxMessageBox(_("Can't write temporary file."), _("Error"), wxOK | wxICON_HAND);
+			CompiledFile = wxEmptyString;
 		} else {
-			CompiledFile = wxEmptyString;
-			GoErrorLine();
+			if ( modified )
+				MarkDirty();
+
+			CompDia = new CompDlg(this);
+
+			CompDia->SetFileName(origfilename);
+
+#ifdef DEBUG
+			std::cout << "MutEditile::CmCompile: Parent"
+				  << CompDia->GetParent() << std::endl;
+
+#endif
+			if (CompDia->GetParent())
+				CompDia->Centre();
+
+			CompDia->Show();
+
+			CompDia->MakeModal(true);
+
+			if ( Compile(CompDia, TmpFile.c_str()) )
+				CompiledFile = origfilename;
+			else {
+				CompiledFile = wxEmptyString;
+				GoErrorLine();
+			}
+
+			CompDia->MakeModal(false);
+
+			CompDia->EnableButton(true);
+			CompDia->Hide();
+			int r = CompDia->ShowModal();
+#ifdef DEBUG
+			std::cerr << "MutEditFile::CmCompile return code: "
+				  << r << std::endl;
+#endif
+			wxRemoveFile(TmpFile);
 		}
 
-		CompDia->EnableButton(true);
+		m_filename = origfilename;
 
-		wxRemoveFile(TmpFile);
+		DEBUGLOG (other, _T("filename (at end) = '%s'"),m_filename.c_str());
+		event.Skip(false);
 	}
 
-	event.Skip(false);
-}
+	void MutEditFile::CmCompAct(wxCommandEvent& event)
+	{
+		wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 
-void MutEditFile::CmGetLine(wxCommandEvent& WXUNUSED(event))
-{
-	/*  int LineFirstPos = GetLineIndex(-1);
-	  EditLine = GetLineFromPos(LineFirstPos) + 1;
-	  uint Sel1, Sel2;
-	  GetSelection(Sel1, Sel2);
-	  EditRow = Sel2 - LineFirstPos + 1;*/
-}
+		if ( SaveEditor )
+			SaveFile(m_filename);
 
-void MutEditFile::GoErrorLine()
-{
-	/*  int Line = GetErrorLine();
-	  if ( Line == -1 ) return;
-	  uint pos = GetLineIndex(Line-1);
-	  SetSelection(pos, pos);*/
-}
+		bool modified = IsModified();
 
-void MutEditFile::CmHelpContext(wxCommandEvent& WXUNUSED(event))
-{
-	/*  char s[1000], s1[1000];
-	  uint a, e, i;
-	  GetSelection(a, e);
-	  if ( !GetLine(s, 999, GetLineFromPos(a)) ) return;
-	  i = a - GetLineIndex(GetLineFromPos(a));
-	  // nun Wortanfang und ende finden
-	  if ( a == e )
-	  {
-	    while ( i > 0 && !strchr(" ,[]()", s[i-1]) )
-	      i--;
-	    a = i;
-	    while ( s[i] != 0 && !strchr(" ,[]()", s[i]) )
-	      i++;
-	    e = i;
-	  }
-	  else
-	  {
-	    e = e - a + i;
-	    a = i;
-	  }
-	  strncpy(s1, &(s[a]), e - a);
-	  s1[e-a] = 0;
-	  strupr(s1);
-	  int HelpContext = 0;
-	  for (i = 0; i < 2 * nKeyWords; i++)
-	    if ( !strcmp(s1, KeyWords[i]) )
-	      HelpContext = (i % nKeyWords) + SX_INTERVAL;
-	  if ( HelpContext )
-	    WinHelp(HlpFile, HELP_CONTEXT, HelpContext);
-	  else
-	    WinHelp(HlpFile, HELP_CONTEXT, SX_BASICS);*/
-}
+		if ( LogicOn ) {
+			wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
+			wxPostEvent(GetParent(),event1);
+		}
+
+		if ( !SaveFile(TmpFile) ) {
+			wxMessageBox(_("Can't write temporary file."),
+				     _("Error"), wxOK | wxICON_HAND);
+			CompiledFile = wxEmptyString;
+		} else {
+			if ( modified )
+				MarkDirty();
+
+			CompDia = new CompDlg(this);
+
+			if (!CompDia->Show()) {
+				wxLogError(_("The compile dialog could not be loaded."));
+			};
+
+			CompDia->SetFileName(GetName());
+
+			if ( Compile(CompDia, TmpFile.c_str()) ) {
+				CompiledFile = m_filename;
+				//CompDia->SendMessage(WM_CLOSE);
+				CompDia->Destroy();
+				wxCommandEvent event2(wxEVT_COMMAND_MENU_SELECTED, CM_DOACTIVATE);
+				wxPostEvent(GetParent(),event2);
+			} else {
+				CompiledFile = wxEmptyString;
+				GoErrorLine();
+			}
+
+			CompDia->EnableButton(true);
+
+			wxRemoveFile(TmpFile);
+		}
+
+		event.Skip(false);
+	}
+
+	void MutEditFile::CmGetLine(wxCommandEvent& WXUNUSED(event))
+	{
+		/*  int LineFirstPos = GetLineIndex(-1);
+		    EditLine = GetLineFromPos(LineFirstPos) + 1;
+		    uint Sel1, Sel2;
+		    GetSelection(Sel1, Sel2);
+		    EditRow = Sel2 - LineFirstPos + 1;*/
+	}
+
+	void MutEditFile::GoErrorLine()
+	{
+		/*  int Line = GetErrorLine();
+		    if ( Line == -1 ) return;
+		    uint pos = GetLineIndex(Line-1);
+		    SetSelection(pos, pos);*/
+	}
+
+	void MutEditFile::CmHelpContext(wxCommandEvent& WXUNUSED(event))
+	{
+		/*  char s[1000], s1[1000];
+		    uint a, e, i;
+		    GetSelection(a, e);
+		    if ( !GetLine(s, 999, GetLineFromPos(a)) ) return;
+		    i = a - GetLineIndex(GetLineFromPos(a));
+		    // nun Wortanfang und ende finden
+		    if ( a == e )
+		    {
+		    while ( i > 0 && !strchr(" ,[]()", s[i-1]) )
+		    i--;
+		    a = i;
+		    while ( s[i] != 0 && !strchr(" ,[]()", s[i]) )
+		    i++;
+		    e = i;
+		    }
+		    else
+		    {
+		    e = e - a + i;
+		    a = i;
+		    }
+		    strncpy(s1, &(s[a]), e - a);
+		    s1[e-a] = 0;
+		    strupr(s1);
+		    int HelpContext = 0;
+		    for (i = 0; i < 2 * nKeyWords; i++)
+		    if ( !strcmp(s1, KeyWords[i]) )
+		    HelpContext = (i % nKeyWords) + SX_INTERVAL;
+		    if ( HelpContext )
+		    WinHelp(HlpFile, HELP_CONTEXT, HelpContext);
+		    else
+		    WinHelp(HlpFile, HELP_CONTEXT, SX_BASICS);*/
+	}
 
 #if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 
-wxString MutEditFile::GetValue() const
-{
-	std::cout << "MutEditFile::GetValue()" << std::endl;
-	// range 0..-1 is special for GetRange() and means to retrieve all text
-	return GetRange(0, -1);
-}
-
-wxString MutEditFile::GetRange(long from, long to) const
-
-{
-	std::cout << "MutEditFile::GetRange ("<< from << ", " << to << ")" << std::endl;
-	wxString str;
-
-	if ( from >= to && to != -1 ) {
-		// nothing to retrieve
-		return str;
+	wxString MutEditFile::GetValue() const
+	{
+		std::cout << "MutEditFile::GetValue()" << std::endl;
+		// range 0..-1 is special for GetRange() and means to retrieve all text
+		return GetRange(0, -1);
 	}
 
-#if wxUSE_RICHEDIT
-	if ( IsRich() ) {
-		int len = GetWindowTextLength(GetHwnd());
-		std::cout << "MutEditFile::GetRange: len = "<< len << std::endl;
+	wxString MutEditFile::GetRange(long from, long to) const
 
-		if ( len > from ) {
-			if ( to == -1 )
-				to = len;
+	{
+		std::cout << "MutEditFile::GetRange ("<< from << ", " << to << ")" << std::endl;
+		wxString str;
 
-			std::cout << "MutEditFile::GetRange: to  = "<< to << std::endl;
-
-#if !(wxUSE_UNICODE || wxUSE_WCHAR_T)
-			// we must use EM_STREAMOUT if we don't want to lose all characters
-			// not representable in the current character set (EM_GETTEXTRANGE
-			// simply replaces them with question marks...)
-			if ( GetRichVersion() > 1 ) {
-				// we must have some encoding, otherwise any 8bit chars in the
-				// control are simply *lost* (replaced by '?')
-				wxFontEncoding encoding = wxFONTENCODING_SYSTEM;
-
-				wxFont font = m_defaultStyle.GetFont();
-
-				if ( !font.Ok() )
-					font = GetFont();
-
-				if ( font.Ok() ) {
-					encoding = font.GetEncoding();
-				}
-
-				if ( encoding == wxFONTENCODING_SYSTEM ) {
-					encoding = wxLocale::GetSystemEncoding();
-				}
-
-				if ( encoding == wxFONTENCODING_SYSTEM ) {
-					encoding = wxFONTENCODING_ISO8859_1;
-				}
-
-				str = StreamOut(encoding);
-
-				std::cout << "str = StreamOut(encoding);" << std::endl;
-
-				std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
-
-				if ( !str.empty() ) {
-					// we have to manually extract the required part, luckily
-					// this is easy in this case as EOL characters in str are
-					// just LFs because we remove CRs in mutRichEditStreamOut
-					str = str.Mid(from, to - from);
-					std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
-				}
-			}
-
-			// StreamOut() wasn't used or failed, try to do it in normal way
-			if ( str.empty() )
-#endif // !wxUSE_UNICODE
-			{
-				// alloc one extra WORD as needed by the control
-				wxStringBuffer tmp(str, ++len);
-				wxChar *p = tmp;
-
-				TEXTRANGE textRange;
-				textRange.chrg.cpMin = from;
-				textRange.chrg.cpMax = to;
-				textRange.lpstrText = p;
-
-				(void)::SendMessage(GetHwnd(), EM_GETTEXTRANGE,
-				                    0, (LPARAM)&textRange);
-
-				if ( m_verRichEdit > 1 )
-				{
-					// RichEdit 2.0 uses just CR ('\r') for the
-					// newlines which is neither Unix nor Windows
-					// style - convert it to something reasonable
-
-					for ( ; *p; p++ ) {
-						if ( *p == _T('\r') )
-							*p = _T('\n');
-					}
-				}
-			}
-
-			if ( m_verRichEdit == 1 ) {
-				// convert to the canonical form - see comment below
-				str = wxTextFile::Translate(str, wxTextFileType_Unix);
-			}
+		if ( from >= to && to != -1 ) {
+			// nothing to retrieve
+			return str;
 		}
 
-		//else: no text at all, leave the string empty
-	} else
+#if wxUSE_RICHEDIT
+		if ( IsRich() ) {
+			int len = GetWindowTextLength(GetHwnd());
+			std::cout << "MutEditFile::GetRange: len = "<< len << std::endl;
+
+			if ( len > from ) {
+				if ( to == -1 )
+					to = len;
+
+				std::cout << "MutEditFile::GetRange: to  = "<< to << std::endl;
+
+#if !(wxUSE_UNICODE || wxUSE_WCHAR_T)
+				// we must use EM_STREAMOUT if we don't want to lose all characters
+				// not representable in the current character set (EM_GETTEXTRANGE
+				// simply replaces them with question marks...)
+				if ( GetRichVersion() > 1 ) {
+					// we must have some encoding, otherwise any 8bit chars in the
+					// control are simply *lost* (replaced by '?')
+					wxFontEncoding encoding = wxFONTENCODING_SYSTEM;
+
+					wxFont font = m_defaultStyle.GetFont();
+
+					if ( !font.Ok() )
+						font = GetFont();
+
+					if ( font.Ok() ) {
+						encoding = font.GetEncoding();
+					}
+
+					if ( encoding == wxFONTENCODING_SYSTEM ) {
+						encoding = wxLocale::GetSystemEncoding();
+					}
+
+					if ( encoding == wxFONTENCODING_SYSTEM ) {
+						encoding = wxFONTENCODING_ISO8859_1;
+					}
+
+					str = StreamOut(encoding);
+
+					std::cout << "str = StreamOut(encoding);" << std::endl;
+
+					std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+
+					if ( !str.empty() ) {
+						// we have to manually extract the required part, luckily
+						// this is easy in this case as EOL characters in str are
+						// just LFs because we remove CRs in mutRichEditStreamOut
+						str = str.Mid(from, to - from);
+						std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+					}
+				}
+
+				// StreamOut() wasn't used or failed, try to do it in normal way
+				if ( str.empty() )
+#endif // !wxUSE_UNICODE
+				{
+					// alloc one extra WORD as needed by the control
+					wxStringBuffer tmp(str, ++len);
+					wxChar *p = tmp;
+
+					TEXTRANGE textRange;
+					textRange.chrg.cpMin = from;
+					textRange.chrg.cpMax = to;
+					textRange.lpstrText = p;
+
+					(void)::SendMessage(GetHwnd(), EM_GETTEXTRANGE,
+							    0, (LPARAM)&textRange);
+
+					if ( m_verRichEdit > 1 )
+					{
+						// RichEdit 2.0 uses just CR ('\r') for the
+						// newlines which is neither Unix nor Windows
+						// style - convert it to something reasonable
+
+						for ( ; *p; p++ ) {
+							if ( *p == _T('\r') )
+								*p = _T('\n');
+						}
+					}
+				}
+
+				if ( m_verRichEdit == 1 ) {
+					// convert to the canonical form - see comment below
+					str = wxTextFile::Translate(str, wxTextFileType_Unix);
+				}
+			}
+
+			//else: no text at all, leave the string empty
+		} else
 #endif // wxUSE_RICHEDIT {
-		// retrieve all text
-		str = wxGetWindowText(GetHWND());
+			// retrieve all text
+			str = wxGetWindowText(GetHWND());
 
-	std::cout << "str = wxGetWindowText(GetHWND());" << std::endl;
+		std::cout << "str = wxGetWindowText(GetHWND());" << std::endl;
 
-	std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+		std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
 
-	// need only a range?
-	if ( from < to ) {
-		str = str.Mid(from, to - from);
+		// need only a range?
+		if ( from < to ) {
+			str = str.Mid(from, to - from);
+			std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+		}
+
+		// WM_GETTEXT uses standard DOS CR+LF (\r\n) convention - convert to the
+		// canonical one (same one as above) for consistency with the other kinds
+		// of controls and, more importantly, with the other ports
+		str = wxTextFile::Translate(str, wxTextFileType_Unix);
+
 		std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
 	}
 
-	// WM_GETTEXT uses standard DOS CR+LF (\r\n) convention - convert to the
-	// canonical one (same one as above) for consistency with the other kinds
-	// of controls and, more importantly, with the other ports
-	str = wxTextFile::Translate(str, wxTextFileType_Unix);
-
-	std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
-}
-
-return str;
+	return str;
 }
 
 
@@ -508,29 +520,29 @@ class UpdatesCountFilter
 
 public:
 	UpdatesCountFilter(int& count)
-			: m_count(count)
-	{
-		wxASSERT_MSG( m_count == -1 || m_count == -2,
-		              _T("wrong initial m_updatesCount value") );
+		: m_count(count)
+		{
+			wxASSERT_MSG( m_count == -1 || m_count == -2,
+				      _T("wrong initial m_updatesCount value") );
 
-		if (m_count != -2)
-			m_count = 0;
+			if (m_count != -2)
+				m_count = 0;
 
-		//else: we don't want to count how many update events we get as we're going
-		//      to ignore all of them
-	}
+			//else: we don't want to count how many update events we get as we're going
+			//      to ignore all of them
+		}
 
 	~UpdatesCountFilter()
-	{
-		m_count = -1;
-	}
+		{
+			m_count = -1;
+		}
 
 	// return true if an event has been received
 
 	bool GotUpdate() const
-	{
-		return m_count == 1;
-	}
+		{
+			return m_count == 1;
+		}
 
 private:
 
@@ -578,8 +590,8 @@ DWORD CALLBACK
 mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 {
 	std::cout << "::mutRichEditStreamOut: dwCookie = " << dwCookie <<
-	" buf = " << buf <<
-	" cb = " << cb << " pcb = " << pcb << std::endl;
+		" buf = " << buf <<
+		" cb = " << cb << " pcb = " << pcb << std::endl;
 	*pcb = 0;
 
 	wxStreamOutData *data = (wxStreamOutData *)dwCookie;
@@ -725,12 +737,12 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 	eds.pfnCallback = mutRichEditStreamOut;
 
 	::SendMessage
-	(
-	        GetHwnd(),
-	        EM_STREAMOUT,
-	        SF_TEXT | SF_UNICODE | (selectionOnly ? SFF_SELECTION : 0),
-	        (LPARAM)&eds
-	);
+		  (
+			  GetHwnd(),
+			  EM_STREAMOUT,
+			  SF_TEXT | SF_UNICODE | (selectionOnly ? SFF_SELECTION : 0),
+			  (LPARAM)&eds
+			  );
 
 	if ( eds.dwError ) {
 		wxLogLastError(_T("EM_STREAMOUT"));
@@ -797,4 +809,5 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 
 #endif // __WXMSW__ && !wxUSE_UNICODE
 
+}
 ///\}

@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.20 2011/08/06 09:21:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.21 2011/08/11 19:00:48 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/06 09:21:23 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/08/11 19:00:48 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.20  2011/08/06 09:21:23  keinstein
+ * Revision 1.21  2011/08/11 19:00:48  keinstein
+ * get Document/View running.
+ * Needs further testing (possible segfaults).
+ *
+ * Revision 1.20  2011-08-06 09:21:23  keinstein
  * activated and debugged document manager
  *
  * Revision 1.19  2011-07-31 20:16:04  keinstein
@@ -139,6 +143,14 @@
 /** This class is used to create the main windows
  */
 
+namespace mutaborGUI {
+	class MutView; // see MutView.h
+	class MutDocument; // see MutDocument.h
+}
+
+using mutaborGUI::MutView;
+using mutaborGUI::MutDocument;
+
 class MutFrame : public wxDocChildFrame
 {
 
@@ -151,8 +163,8 @@ public:
 	         const wxPoint& pos, const wxSize& size,
 	         const long style);
 
-	MutFrame(wxDocument *doc,
-		 wxView *view,
+	MutFrame(MutDocument *doc,
+		 MutView *v,
 		 wxFrame *frame,
 		 wxWindowID id,
 		 const wxString& title,
@@ -334,9 +346,15 @@ private:
 
 	wxMenu * editmenu;
 	wxMenu * filemenu;
+	
+	MutView * view;
 
 	void CloseClientWindow(wxWindow * w)
 	{
+		wxASSERT(w);
+		if (!w) return;
+
+		w->Disable();
 		auimanager.ClosePane(auimanager.GetPane(w));
 		DEBUGLOG(other, _T("Detaching pane."));
 		auimanager.DetachPane(w);
