@@ -2,16 +2,20 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.4 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.5 2011/08/12 09:49:11 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/12 09:49:11 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.4  2011/08/11 19:00:48  keinstein
+ * Revision 1.5  2011/08/12 09:49:11  keinstein
+ * act on some additional errors
+ * delete Frame in OnClose if requested
+ *
+ * Revision 1.4  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -64,6 +68,7 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG(docview,_T(""));
 		textsw = (MutEditFile *) NULL;
+		SetFrame(NULL);
 	}
 
 	MutView::~MutView()
@@ -93,6 +98,7 @@ namespace mutaborGUI {
 		// told about the view, and the mainframe. It does not need to know about
 		// the document. The constructor of the Frame will call View::SetFrame(this)
 		MutFrame * frame  = new MutFrame((MutDocument *)doc, this, NULL, wxID_ANY, wxT(""));
+		if (!frame) return false;
 		wxGetApp().InitMainFrame(MutApp::EditorMenu,frame);
 
 		textsw = new MutEditFile(this,
@@ -101,8 +107,11 @@ namespace mutaborGUI {
 					 wxDefaultSize);
 	
 
-		if (textsw)
-			frame->SetClient(textsw,doc->GetTitle());
+		if (!textsw) {
+			delete frame;
+			return false;
+		}
+		frame->SetClient(textsw,doc->GetTitle());
 #ifdef __X__
 		// X seems to require a forced resize
 		int x, y;
@@ -130,7 +139,10 @@ namespace mutaborGUI {
     
 		if (deleteWindow)
 		{
-			return true;
+			MutFrame * f = GetMutFrame();
+			SetFrame(NULL);
+			f->SetView(NULL);
+			f->Destroy();
 		}
 		return true;
 	}
@@ -167,15 +179,9 @@ namespace mutaborGUI {
 				     wxView *activeView, 
 				     wxView *deactiveView)
 	{
+		// don't implement this function before looking at the debug output
 		DEBUGLOG(docview,_T("Activate: %d && %x == %x"),
 			 activate, activeView, this);
-#if 0
-		if (activate && activeView == this && activeView != deactiveView) {
-			MutFrame * frame = (MutFrame *) GetFrame();
-			if (frame && frame->IsShown() && wxGetApp().GetTopWindow() != frame)
-				frame->Raise();
-		}
-#endif
 	}
 
 
