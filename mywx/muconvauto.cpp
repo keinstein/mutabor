@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.cpp,v 1.5 2011/08/12 09:45:19 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/12 09:45:19 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: muconvauto.cpp,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/08/12 09:45:19  keinstein
+ * fix BOM detection in case no length is providet by wxWidgets
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -25,7 +28,7 @@
 // Purpose:     implementation of wxConvAuto
 // Author:      Vadim Zeitlin
 // Created:     2006-04-04
-// RCS-ID:      $Id: muconvauto.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.cpp,v 1.5 2011/08/12 09:45:19 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin <vadim@wxwindows.org>
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -60,7 +63,10 @@
 
 muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 {
-	DEBUGLOGTYPE(other,muConvAuto,_T(""));
+	DEBUGLOGTYPE(other,muConvAuto,_T("Detecting BOM at length %d"),srcLen);
+	if (srcLen == wxNO_LEN) { // zero terminated string
+		for (srcLen = 0; src[srcLen] && srcLen <= 4; srcLen++); 
+	}
 	if ( srcLen < 2 ) {
 		// minimal BOM is 2 bytes so bail out immediately and simplify the code
 		// below which wouldn't need to check for length for UTF-16 cases
@@ -70,7 +76,7 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 	// examine the buffer for BOM presence
 	//
 	// see http://www.unicode.org/faq/utf_bom.html#BOM
-	switch ( *src++ ) {
+	switch ( *(src++) ) {
 	case '\0':
 		// could only be big endian UTF-32 (00 00 FE FF)
 		if ( srcLen >= 4 &&
@@ -91,7 +97,7 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 	case '\xff':
 		// could be either little endian UTF-16 or UTF-32, both start
 		// with FF FE
-		if ( *src++ == '\xfe' ) {
+		if ( *(src++) == '\xfe' ) {
 			return srcLen >= 4 && src[0] == '\0' && src[1] == '\0'
 			       ? BOM_UTF32LE
 			       : BOM_UTF16LE;
@@ -178,7 +184,7 @@ void muConvAuto::SkipBOM(const char **src, size_t *len) const
 	}
 
 	*src += ofs;
-	if ( *len != (size_t)-1 )
+	if ( *len != wxNO_LEN )
 		*len -= ofs;
 }
 
