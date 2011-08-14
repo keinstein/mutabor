@@ -2,17 +2,22 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.21 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.22 2011/08/14 18:32:18 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/08/14 18:32:18 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.21  2011/08/11 19:00:48  keinstein
+ * Revision 1.22  2011/08/14 18:32:18  keinstein
+ * Use of m_childView of wxDocChildFrame instead of own view fixes a bad access.
+ * Use wxDocChildFrame::OnCloseWindow
+ * remove some unneeded code
+ *
+ * Revision 1.21  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -347,8 +352,6 @@ private:
 	wxMenu * editmenu;
 	wxMenu * filemenu;
 	
-	MutView * view;
-
 	void CloseClientWindow(wxWindow * w)
 	{
 		wxASSERT(w);
