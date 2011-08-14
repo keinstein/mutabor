@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.33 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.34 2011/08/14 18:32:18 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.33 $
+ * \date $Date: 2011/08/14 18:32:18 $
+ * \version $Revision: 1.34 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.33  2011/08/11 19:00:48  keinstein
+ * Revision 1.34  2011/08/14 18:32:18  keinstein
+ * Use of m_childView of wxDocChildFrame instead of own view fixes a bad access.
+ * Use wxDocChildFrame::OnCloseWindow
+ * remove some unneeded code
+ *
+ * Revision 1.33  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -423,7 +428,6 @@ MutFrame::MutFrame(wxFrame *parent,
 	SetSize (DetermineFrameSize ());
 	client = NULL;
 	editmenu = filemenu = NULL;
-	view = NULL;
 
 	auimanager.SetManagedWindow(this);
 
@@ -468,7 +472,6 @@ MutFrame::MutFrame(MutDocument *doc,
 	SetSize (DetermineFrameSize ());
 	client = NULL;
 	editmenu = filemenu = NULL;
-	view = v;
 
 	auimanager.SetManagedWindow(this);
 
@@ -507,9 +510,11 @@ MutFrame::~MutFrame()
 		if (wxGetApp().GetDocumentManager()) 
 			wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
 	}
-	if (view) {
-		view->SetFrame(NULL);
-		view->SetTextsw(NULL);
+	if (m_childView) {
+		wxASSERT(dynamic_cast<MutView *>(m_childView));
+		MutView * v = (MutView *) m_childView;
+		v->SetFrame(NULL);
+		v->SetTextsw(NULL);
 	}
 	auimanager.UnInit();
 
@@ -625,24 +630,15 @@ void MutFrame::OnClose(wxCloseEvent& event)
 		DoStop();
 	}
 
-	DEBUGLOG (other, _T("Closing actual window"));
 
-	if (client) {
-		DEBUGLOG (other, _T("Deleting Client"));
-		CloseClientWindow(client);
-		client = NULL;
-	}
-
-	//while (wxGetApp().Pending()) wxGetApp().Dispatch();
-
-	DEBUGLOG (other, _T("Saving State"));
 	SaveState();
 
 
-	DEBUGLOG (other, _T("Delete"));
-	Destroy();
-
-	event.Skip(false);
+	// wxDocChildFrame will veto if there is no View associated
+	if (m_childView)
+		wxDocChildFrame::OnCloseWindow(event);
+	else 
+		Destroy();
 }
 
 void MutFrame::OnPaint(wxPaintEvent& event)
