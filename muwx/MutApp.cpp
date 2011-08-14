@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.34 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.35 2011/08/14 19:12:53 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.34 $
+ * $Date: 2011/08/14 19:12:53 $
+ * \version $Revision: 1.35 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.34  2011/08/11 19:00:48  keinstein
+ * Revision 1.35  2011/08/14 19:12:53  keinstein
+ * raise frame after “opening” an already open file
+ *
+ * Revision 1.34  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -486,7 +489,15 @@ void MutApp::OnMRUFile(wxCommandEvent& event)
 
                 wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
                        filename.c_str());
-            }
+            } else {
+		    wxView * v = document_manager.GetCurrentView();
+		    if (v) {
+			    wxWindow * w = v->GetFrame();
+			    if (w) {
+				    w->Raise();
+			    }
+		    }
+	    }
         }
         else
         {
