@@ -7,7 +7,7 @@ EXTRA_DIST = \
 	delbookm.png \
 	dir_up.png \
 	down.png \
-	emlines.sty \
+	tsemlines.sty \
 	fixhhp.cpp \
 	forward.png \
 	helptoolbar.png \
