@@ -1,0 +1,56 @@
+\usepackage{listingsutf8}
+
+\lstdefinelanguage{Mutabor}{%
+%otherkeywords={:,=,:=,+,-,*,\(,\),[,],.,\,,;},
+%morekeywords=[1]{},%
+%Befehle
+morekeywords=[1]{INTERVALL,TON,TONSYSTEM,UMSTIMMUNG,HARMONIE,LOGIK,%
+INTERVAL,TONE,TONESYSTEM,RETUNING,PATTERN,LOGIC,SHIFTED},%
+%Funktionen
+morekeywords=[2]{MIDIKANAL,WURZEL,TASTE,MIDIIN,MIDIOUT,ANSONSTEN,%
+FORM,ROOT,MIDICHANNEL,KEY,ELSE},
+%morekeywords=[3]{=,-},
+%Datentypen
+%morekeywords=[4]{},%
+   sensitive=false,%
+   %alsoletter={=,-},
+%   alsoletter={+,-,*,/,.,:,=,<,>}, %(,),[,],.,\,,:,;,^,@,
+%   morecomment=[s]{(*}{*)},%
+%   morecomment=[s]{\{}{\}},%
+%   morecomment=[l]{//},%
+   morecomment=[s]{"}{"},%
+%   moredelim=*[s]{\[}{\]},%
+%   moredelim=*[s]{(}{)}
+%   moredelim=*[s]{\{}{\}}
+%   morestring=[d]'%
+  }%[keywords,comments,strings]%
+
+\lstloadlanguages{Mutabor}
+\lstset{%
+  tabsize=8,
+  language=Mutabor,
+  defaultdialect=Mutabor,
+  basicstyle=\ttfamily\color[rgb]{0.5,0,0},
+  identifierstyle=\color{black},
+  keywordstyle=[1]{\color[rgb]{0,0.5,0}\bfseries},
+  keywordstyle=[2]{\color[rgb]{0,0,0.5}\bfseries},
+  keywordstyle=[4]{\color{black}},
+  keywordstyle=[3]{\color[rgb]{0.5,0,0}},
+  stringstyle=\color{blue},
+  commentstyle=\color[rgb]{0.5,0.5,0.5}\textit,
+  inputencoding=utf8,
+  extendedchars=false,
+  showtabs=false,
+  showspaces=false,%
+  texcl=true,%
+  escapechar=",
+  escapebegin={\color[rgb]{0.5,0.5,0.5}\expandafter\textit\bgroup%
+    \obeylines\obeyspaces
+    \dq},
+  escapeend={\dq\egroup}
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
