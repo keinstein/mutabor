@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-05-14 15:35+0200\n"
+"POT-Creation-Date: 2011-08-15 21:31+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: English <mutabor@mailbox.tu-dresden.de>\n"
@@ -50,7 +50,7 @@ msgstr "GIS output file."
 msgid "GIS input file."
 msgstr "GIS input file."
 
-#: mu32/routing/gmn/GSP_Err.cpp:31 muwx/MutApp.cpp:504 xrc/reslocale.cpp:13
+#: mu32/routing/gmn/GSP_Err.cpp:31 muwx/MutApp.cpp:642 xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
 
@@ -118,7 +118,7 @@ msgstr "The file must begin with â[â or '{'."
 msgid "Range without preceeding tag."
 msgstr "Range without preceeding tag."
 
-#: mu32/routing/midi/DevMidF.cpp:284 mu32/routing/midi/DevMidF.cpp:626
+#: mu32/routing/midi/DevMidF.cpp:287 mu32/routing/midi/DevMidF.cpp:629
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -127,18 +127,18 @@ msgstr ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: mu32/routing/midi/DevMidF.cpp:286 mu32/routing/midi/DevMidF.cpp:628
-#: mu32/routing/midi/DevMidF.cpp:648 mu32/routing/midi/DevMidi.cpp:200
-#: mu32/routing/midi/DevMidi.cpp:677 mu32/routing/midi/DevMidi.cpp:697
+#: mu32/routing/midi/DevMidF.cpp:289 mu32/routing/midi/DevMidF.cpp:631
+#: mu32/routing/midi/DevMidF.cpp:651 mu32/routing/midi/DevMidi.cpp:203
+#: mu32/routing/midi/DevMidi.cpp:680 mu32/routing/midi/DevMidi.cpp:700
 msgid "Warning loading route"
 msgstr "Warning loading route"
 
-#: mu32/routing/midi/DevMidF.cpp:525 mu32/routing/midi/DevMidF.cpp:531
-#: mu32/routing/midi/DevMidi.cpp:566 mu32/routing/midi/DevMidi.cpp:572
+#: mu32/routing/midi/DevMidF.cpp:528 mu32/routing/midi/DevMidF.cpp:534
+#: mu32/routing/midi/DevMidi.cpp:569 mu32/routing/midi/DevMidi.cpp:575
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: mu32/routing/midi/DevMidF.cpp:646
+#: mu32/routing/midi/DevMidF.cpp:649
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -147,17 +147,17 @@ msgstr ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: mu32/routing/midi/DevMidF.cpp:675
+#: mu32/routing/midi/DevMidF.cpp:678
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Can not open Midi input file '%s'."
 
-#: mu32/routing/midi/DevMidF.cpp:725
+#: mu32/routing/midi/DevMidF.cpp:728
 #, c-format
 msgid "Midi input file '%s' is to long."
 msgstr "Midi input file â%sâ is to long."
 
-#: mu32/routing/midi/DevMidF.cpp:739 mu32/routing/midi/DevMidF.cpp:743
+#: mu32/routing/midi/DevMidF.cpp:742 mu32/routing/midi/DevMidF.cpp:746
 #, c-format
 msgid "Midi input file '%s' produces errors."
 msgstr "Midi input file â%sâ produces errors."
@@ -170,12 +170,12 @@ msgstr "MIDI output file"
 msgid "MIDI input file"
 msgstr "MIDI input file"
 
-#: mu32/routing/midi/DevMidi.cpp:171 mu32/routing/midi/DevMidi.cpp:647
+#: mu32/routing/midi/DevMidi.cpp:174 mu32/routing/midi/DevMidi.cpp:650
 #: mu32/routing/Route.cpp:177 mu32/routing/Route.cpp:223
 msgid "Unknown"
 msgstr "Unknown"
 
-#: mu32/routing/midi/DevMidi.cpp:198
+#: mu32/routing/midi/DevMidi.cpp:201
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -184,16 +184,16 @@ msgstr ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
 "The current route had to be corrected."
 
-#: mu32/routing/midi/DevMidi.cpp:225
+#: mu32/routing/midi/DevMidi.cpp:228
 msgid "Can not open ouput Midi devices."
 msgstr "Can not open ouput Midi devices."
 
-#: mu32/routing/midi/DevMidi.cpp:232
+#: mu32/routing/midi/DevMidi.cpp:235
 #, c-format
 msgid "Can not open output Midi device nr. %d (%s)"
 msgstr "Can not open output Midi device nr. %d (%s)"
 
-#: mu32/routing/midi/DevMidi.cpp:675
+#: mu32/routing/midi/DevMidi.cpp:678
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -202,7 +202,7 @@ msgstr ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
 "The current route had to be corrected."
 
-#: mu32/routing/midi/DevMidi.cpp:695
+#: mu32/routing/midi/DevMidi.cpp:698
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -211,11 +211,11 @@ msgstr ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: mu32/routing/midi/DevMidi.cpp:715
+#: mu32/routing/midi/DevMidi.cpp:718
 msgid "Can not open Midi input devices."
 msgstr "Can not open Midi input devices."
 
-#: mu32/routing/midi/DevMidi.cpp:722
+#: mu32/routing/midi/DevMidi.cpp:725
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Can not open Midi input device no. %d (%s)."
@@ -616,11 +616,11 @@ msgstr "Intersection of MIDI channels %d und %d"
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Error in GMN-File %s position(%d, %d): %s"
 
-#: mu32/Execute.cpp:367
+#: mu32/Execute.cpp:350
 msgid "Unhandled case path: aufruf_umst_umst_bund"
 msgstr "Unhandled case path: aufruf_umst_umst_bund"
 
-#: mu32/Execute.cpp:371
+#: mu32/Execute.cpp:354
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unexpected action type: %d"
@@ -654,32 +654,32 @@ msgstr "byte"
 msgid "retuning"
 msgstr "retuning"
 
-#: mu32/Runtime.cpp:132
+#: mu32/Runtime.cpp:135
 msgid "Generating tables"
 msgstr "Generating tables"
 
-#: mu32/Runtime.cpp:138
+#: mu32/Runtime.cpp:141
 msgid "Translation successful !"
 msgstr "Translation successful !"
 
-#: mu32/Runtime.cpp:139
+#: mu32/Runtime.cpp:142
 msgid "No error occured !"
 msgstr "No error occured !"
 
-#: mu32/Runtime.cpp:145
+#: mu32/Runtime.cpp:148
 msgid "Translation interrupted !"
 msgstr "Translation interrupted !"
 
-#: mu32/Runtime.cpp:179
+#: mu32/Runtime.cpp:182
 msgid "Activation error"
 msgstr "Activation error"
 
-#: mu32/Runtime.cpp:597
+#: mu32/Runtime.cpp:600
 #, c-format
 msgid "%ls %d %d %d %d %d %d %d %d"
 msgstr "%ls %d %d %d %d %d %d %d %d"
 
-#: mu32/Runtime.cpp:600
+#: mu32/Runtime.cpp:603
 #, c-format
 msgid "%s %d %d %d %d %d %d %d %d"
 msgstr "%s %d %d %d %d %d %d %d %d"
@@ -834,20 +834,45 @@ msgstr "Message"
 msgid "Reading Source ..."
 msgstr "Reading Source ..."
 
-#: muwx/MutApp.cpp:330 muwx/MutApp.cpp:332
+#: muwx/MutApp.cpp:358 muwx/MutApp.cpp:360
 msgid "Help.zip"
 msgstr "Help.zip"
 
-#: muwx/MutApp.cpp:343 muwx/MutApp.cpp:894 xrc/reslocale.cpp:48
+#: muwx/MutApp.cpp:367
+#, fuzzy
+msgid "Mutabor logic file"
+msgstr "Mutabor box"
+
+#: muwx/MutApp.cpp:387 muwx/MutApp.cpp:1052 xrc/reslocale.cpp:48
 #: xrc/reslocale.cpp:103
 msgid "&Help"
 msgstr "&Help"
 
 #: muwx/MutApp.cpp:415
-msgid "(c) 2005-2008 TU Dresden"
+#, fuzzy
+msgid "logic file"
+msgstr "No file."
+
+#: muwx/MutApp.cpp:493
+#, c-format
+msgid ""
+"The file '%s' couldn't be opened.\n"
+"It has been removed from the most recently used files list."
+msgstr ""
+
+#: muwx/MutApp.cpp:511
+#, c-format
+msgid ""
+"The file '%s' doesn't exist and couldn't be opened.\n"
+"It has been removed from the most recently used files list."
+msgstr ""
+
+#: muwx/MutApp.cpp:554
+#, fuzzy
+msgid "(c) 2005-2011 TU Dresden"
 msgstr "(c) 2005-2008 TU Dresden"
 
-#: muwx/MutApp.cpp:422
+#: muwx/MutApp.cpp:561
 #, fuzzy
 msgid ""
 "An application to implement different tuning logics.\n"
@@ -856,47 +881,51 @@ msgstr ""
 "An application to implement different tuning logics. Both fixed, adaptive "
 "and mutable tunings are supported."
 
-#: muwx/MutApp.cpp:423
+#: muwx/MutApp.cpp:562
 msgid "Rudolf Wille (mathematical foundation)"
 msgstr "Rudolf Wille (mathematical foundation)"
 
-#: muwx/MutApp.cpp:424
+#: muwx/MutApp.cpp:563
 msgid "Tobias Schlemmer (new icon/splash)"
 msgstr "Tobias Schlemmer (new icon/splash)"
 
-#: muwx/MutApp.cpp:425
+#: muwx/MutApp.cpp:564
 msgid "Bernhard Ganter"
 msgstr "Bernhard Ganter"
 
-#: muwx/MutApp.cpp:426 muwx/MutApp.cpp:430
+#: muwx/MutApp.cpp:565 muwx/MutApp.cpp:569
 msgid "Volker Abel"
 msgstr "Volker Abel"
 
-#: muwx/MutApp.cpp:427 muwx/MutApp.cpp:431
+#: muwx/MutApp.cpp:566 muwx/MutApp.cpp:570
 msgid "Peter Reiss"
 msgstr "Peter Reiss"
 
-#: muwx/MutApp.cpp:428 muwx/MutApp.cpp:432
+#: muwx/MutApp.cpp:567 muwx/MutApp.cpp:571
 msgid "Ruediger Krausze <krausze@mail.berlios.de>"
 msgstr "Ruediger Krausze <krausze@mail.berlios.de>"
 
-#: muwx/MutApp.cpp:429 muwx/MutApp.cpp:433
+#: muwx/MutApp.cpp:568 muwx/MutApp.cpp:572
 msgid "Tobias Schlemmer <keinstein@mail.berlios.de>"
 msgstr "Tobias Schlemmer <keinstein@mail.berlios.de>"
 
-#: muwx/MutApp.cpp:452
+#: muwx/MutApp.cpp:573
+msgid "English: Tobias Schlemmer"
+msgstr ""
+
+#: muwx/MutApp.cpp:590
 msgid "About ..."
 msgstr "About ..."
 
-#: muwx/MutApp.cpp:456
+#: muwx/MutApp.cpp:594
 msgid "Version: "
 msgstr "Version: "
 
-#: muwx/MutApp.cpp:458
+#: muwx/MutApp.cpp:596
 msgid "Written by: "
 msgstr "Written by: "
 
-#: muwx/MutApp.cpp:459
+#: muwx/MutApp.cpp:597
 #, fuzzy
 msgid ""
 "Bernhard Ganter\n"
@@ -908,337 +937,342 @@ msgstr ""
 "Bernhard GanterVolker AbelPeter ReissRuediger Krausze <krausze@mail.berlios."
 "de>Tobias Schlemmer <keinstein@mail.berlios.de>"
 
-#: muwx/MutApp.cpp:464
+#: muwx/MutApp.cpp:602
 #, fuzzy
 msgid ""
 "Mathematical\n"
 "modelling:"
 msgstr "Mathematicalmodelling:"
 
-#: muwx/MutApp.cpp:465
+#: muwx/MutApp.cpp:603
 msgid "Rudolf Wille"
 msgstr "Rudolf Wille"
 
-#: muwx/MutApp.cpp:466
+#: muwx/MutApp.cpp:604
 msgid "Licence type: "
 msgstr "Licence type: "
 
-#: muwx/MutApp.cpp:467
+#: muwx/MutApp.cpp:605
 msgid "GPL"
 msgstr "GPL"
 
-#: muwx/MutApp.cpp:468
+#: muwx/MutApp.cpp:606
 msgid "wxWidgets: "
 msgstr "wxWidgets: "
 
-#: muwx/MutApp.cpp:470
+#: muwx/MutApp.cpp:608
 msgid "Copyright: "
 msgstr "Copyright: "
 
-#: muwx/MutApp.cpp:471
+#: muwx/MutApp.cpp:609
 msgid "(c) 2007 TU Dresden, Institut fuer Algebra"
 msgstr "(c) 2007 TU Dresden, Institut fuer Algebra"
 
-#: muwx/MutApp.cpp:495
+#: muwx/MutApp.cpp:633
 msgid "Mutabor tuning"
 msgstr "Mutabor tuning"
 
-#: muwx/MutApp.cpp:720
+#: muwx/MutApp.cpp:884
 msgid "help.html"
 msgstr "help.html"
 
-#: muwx/MutApp.cpp:725 muwx/MutConfDlg.h:66
+#: muwx/MutApp.cpp:889 muwx/MutConfDlg.h:66
 msgid "The setup dialog"
 msgstr "The setup dialog"
 
-#: muwx/MutApp.cpp:730
+#: muwx/MutApp.cpp:894
 msgid "manual.html"
 msgstr "manual.html"
 
-#: muwx/MutApp.cpp:735
+#: muwx/MutApp.cpp:899
 msgid "reference.html"
 msgstr "reference.html"
 
-#: muwx/MutApp.cpp:740
+#: muwx/MutApp.cpp:904
 msgid "Help window"
 msgstr "Help window"
 
-#: muwx/MutApp.cpp:750
+#: muwx/MutApp.cpp:914
 msgid "Search for?"
 msgstr "Search for?"
 
-#: muwx/MutApp.cpp:751
+#: muwx/MutApp.cpp:915
 msgid "Search help for keyword"
 msgstr "Search help for keyword"
 
-#: muwx/MutApp.cpp:804 muwx/MutFrame.cpp:1763
+#: muwx/MutApp.cpp:972 muwx/MutFrame.cpp:1870
 #, c-format
 msgid "Closing window of class %s"
 msgstr "Closing window of class %s"
 
-#: muwx/MutApp.cpp:868
+#: muwx/MutApp.cpp:1026
 msgid "Online &Help\tF1"
 msgstr "Online &Help\tF1"
 
-#: muwx/MutApp.cpp:869
+#: muwx/MutApp.cpp:1027
 msgid "Open the help Window"
 msgstr "Open the help Window"
 
-#: muwx/MutApp.cpp:870
+#: muwx/MutApp.cpp:1028
 msgid "&Manual"
 msgstr "&Manual"
 
-#: muwx/MutApp.cpp:871
+#: muwx/MutApp.cpp:1029
 msgid "Open the manual"
 msgstr "Open the manual"
 
-#: muwx/MutApp.cpp:872
+#: muwx/MutApp.cpp:1030
 msgid "Language &reference"
 msgstr "Language &reference"
 
-#: muwx/MutApp.cpp:873
+#: muwx/MutApp.cpp:1031
 msgid "Open the Mutabor language reference"
 msgstr "Open the Mutabor language reference"
 
-#: muwx/MutApp.cpp:875
+#: muwx/MutApp.cpp:1033
 msgid "&Index"
 msgstr "&Index"
 
-#: muwx/MutApp.cpp:876
+#: muwx/MutApp.cpp:1034
 msgid "Open the help index"
 msgstr "Open the help index"
 
-#: muwx/MutApp.cpp:877
+#: muwx/MutApp.cpp:1035
 msgid "&Search"
 msgstr "&Search"
 
-#: muwx/MutApp.cpp:878
+#: muwx/MutApp.cpp:1036
 msgid "Search the help system for a specific keyword"
 msgstr "Search the help system for a specific keyword"
 
-#: muwx/MutApp.cpp:880
+#: muwx/MutApp.cpp:1038
 msgid "Help &on help"
 msgstr "Help &on help"
 
-#: muwx/MutApp.cpp:881
+#: muwx/MutApp.cpp:1039
 msgid "Show Help about the help system"
 msgstr "Show Help about the help system"
 
-#: muwx/MutApp.cpp:887
+#: muwx/MutApp.cpp:1045
 msgid "&About"
 msgstr "&About"
 
-#: muwx/MutApp.cpp:888
+#: muwx/MutApp.cpp:1046
 msgid "Show information about the program"
 msgstr "Show information about the program"
 
-#: muwx/MutApp.cpp:891 muwx/MutFrame.cpp:450
+#: muwx/MutApp.cpp:1049 muwx/MutFrame.cpp:536
 msgid "Stop"
 msgstr "Stop"
 
-#: muwx/MutApp.cpp:892
+#: muwx/MutApp.cpp:1050
 msgid "Stop the current program"
 msgstr "Stop the current program"
 
-#: muwx/MutApp.cpp:900 muwx/MutFrame.cpp:466
+#: muwx/MutApp.cpp:1058 muwx/MutFrame.cpp:552
 msgid "&Play"
 msgstr "&Play"
 
-#: muwx/MutApp.cpp:901 muwx/MutFrame.cpp:467
+#: muwx/MutApp.cpp:1059 muwx/MutFrame.cpp:553
 msgid "Start playing the music from input file devices"
 msgstr "Start playing the music from input file devices"
 
-#: muwx/MutApp.cpp:902 muwx/MutFrame.cpp:468
+#: muwx/MutApp.cpp:1060 muwx/MutFrame.cpp:554
 msgid "St&op"
 msgstr "St&op"
 
-#: muwx/MutApp.cpp:903 muwx/MutFrame.cpp:469
+#: muwx/MutApp.cpp:1061 muwx/MutFrame.cpp:555
 msgid "Stop playing the music from input file devices"
 msgstr "Stop playing the music from input file devices"
 
-#: muwx/MutApp.cpp:904 muwx/MutFrame.cpp:470
+#: muwx/MutApp.cpp:1062 muwx/MutFrame.cpp:556
 msgid "P&ause"
 msgstr "P&ause"
 
-#: muwx/MutApp.cpp:905 muwx/MutFrame.cpp:471
+#: muwx/MutApp.cpp:1063 muwx/MutFrame.cpp:557
 msgid "Pause plaing the music from input file devices"
 msgstr "Pause plaing the music from input file devices"
 
-#: muwx/MutApp.cpp:906
+#: muwx/MutApp.cpp:1064
 msgid "&Sequencer"
 msgstr "&Sequencer"
 
-#: muwx/MutApp.cpp:918
+#: muwx/MutApp.cpp:1076
 msgid "&Routes\tF11"
 msgstr "&Routes\tF11"
 
-#: muwx/MutApp.cpp:919
+#: muwx/MutApp.cpp:1077
 msgid "Open route configuration window"
 msgstr "Open route configuration window"
 
-#: muwx/MutApp.cpp:923
+#: muwx/MutApp.cpp:1081
 msgid "Current ke&ys\tF5"
 msgstr "Current ke&ys\tF5"
 
-#: muwx/MutApp.cpp:924
+#: muwx/MutApp.cpp:1082
 msgid "Show current keys window"
 msgstr "Show current keys window"
 
-#: muwx/MutApp.cpp:925
+#: muwx/MutApp.cpp:1083
 msgid "&Tone system\tF6"
 msgstr "&Tone system\tF6"
 
-#: muwx/MutApp.cpp:926
+#: muwx/MutApp.cpp:1084
 msgid "Show tone system window"
 msgstr "Show tone system window"
 
-#: muwx/MutApp.cpp:927
+#: muwx/MutApp.cpp:1085
 msgid "&Actions\tF7"
 msgstr "&Actions\tF7"
 
-#: muwx/MutApp.cpp:928
+#: muwx/MutApp.cpp:1086
 msgid "Show current actions window"
 msgstr "Show current actions window"
 
-#: muwx/MutApp.cpp:936
+#: muwx/MutApp.cpp:1094
 msgid "Select &Box"
 msgstr "Select &Box"
 
-#: muwx/MutApp.cpp:937
+#: muwx/MutApp.cpp:1095
 msgid "Select current Box"
 msgstr "Select current Box"
 
-#: muwx/MutApp.cpp:940
+#: muwx/MutApp.cpp:1098
 msgid "&View"
 msgstr "&View"
 
-#: muwx/MutApp.cpp:946 muwx/MutFrame.cpp:461
+#: muwx/MutApp.cpp:1104 muwx/MutFrame.cpp:547
 msgid "&Load routes"
 msgstr "&Load routes"
 
-#: muwx/MutApp.cpp:947 muwx/MutFrame.cpp:462
+#: muwx/MutApp.cpp:1105 muwx/MutFrame.cpp:548
 msgid "Load the current route configuration from a file"
 msgstr "Load the current route configuration from a file"
 
-#: muwx/MutApp.cpp:948 muwx/MutFrame.cpp:463
+#: muwx/MutApp.cpp:1106 muwx/MutFrame.cpp:549
 msgid "&Save routes"
 msgstr "&Save routes"
 
-#: muwx/MutApp.cpp:949 muwx/MutFrame.cpp:464
+#: muwx/MutApp.cpp:1107 muwx/MutFrame.cpp:550
 msgid "Save current route configuration to a file."
 msgstr "Save current route configuration to a file."
 
-#: muwx/MutApp.cpp:950
+#: muwx/MutApp.cpp:1108
 msgid "Save routes &as"
 msgstr "Save routes &as"
 
-#: muwx/MutApp.cpp:951
+#: muwx/MutApp.cpp:1109
 msgid "Save current route configuration to a file with a new name."
 msgstr "Save current route configuration to a file with a new name."
 
-#: muwx/MutApp.cpp:952
+#: muwx/MutApp.cpp:1110
 msgid "&Routes"
 msgstr "&Routes"
 
-#: muwx/MutApp.cpp:958
+#: muwx/MutApp.cpp:1116
 msgid "&Compile\tAlt+F9"
 msgstr "&Compile\tAlt+F9"
 
-#: muwx/MutApp.cpp:958
+#: muwx/MutApp.cpp:1116
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr "Load the actual file into the Mutabor Kernel."
 
-#: muwx/MutApp.cpp:959
+#: muwx/MutApp.cpp:1117
 msgid "&Activate\tF9"
 msgstr "&Activate\tF9"
 
-#: muwx/MutApp.cpp:959
+#: muwx/MutApp.cpp:1117
 msgid "Activate the Mutabor Kernel."
 msgstr "Activate the Mutabor Kernel."
 
-#: muwx/MutApp.cpp:960
+#: muwx/MutApp.cpp:1118
 msgid "&Stop\tF8"
 msgstr "&Stop\tF8"
 
-#: muwx/MutApp.cpp:960
+#: muwx/MutApp.cpp:1118
 msgid "Stop the Mutabor Kernel."
 msgstr "Stop the Mutabor Kernel."
 
-#: muwx/MutApp.cpp:962
+#: muwx/MutApp.cpp:1120
 msgid "&Panic\tF12"
 msgstr "&Panic\tF12"
 
-#: muwx/MutApp.cpp:962
+#: muwx/MutApp.cpp:1120
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr "Send âall notes offâ signal to on all MIDI Channels."
 
-#: muwx/MutApp.cpp:963
+#: muwx/MutApp.cpp:1121
 msgid "&Logic"
 msgstr "&Logic"
 
-#: muwx/MutApp.cpp:969
+#: muwx/MutApp.cpp:1129
 msgid "&New\tCtrl+N"
 msgstr "&New\tCtrl+N"
 
-#: muwx/MutApp.cpp:970
+#: muwx/MutApp.cpp:1130
 msgid "Create a new logic file."
 msgstr "Create a new logic file."
 
-#: muwx/MutApp.cpp:971
+#: muwx/MutApp.cpp:1131
 msgid "&Open...\tCtrl+O"
 msgstr "&Open...\tCtrl+O"
 
-#: muwx/MutApp.cpp:972
+#: muwx/MutApp.cpp:1132
 msgid "Open a logic file in editor window"
 msgstr "Open a logic file in editor window"
 
-#: muwx/MutApp.cpp:975
+#: muwx/MutApp.cpp:1135
 msgid "&Save\tCtrl+S"
 msgstr "&Save\tCtrl+S"
 
-#: muwx/MutApp.cpp:976
+#: muwx/MutApp.cpp:1136
 msgid "Save the current file."
 msgstr "Save the current file."
 
-#: muwx/MutApp.cpp:977
+#: muwx/MutApp.cpp:1137
 msgid "Save &As...\tShift+Ctrl+S"
 msgstr "Save &As...\tShift+Ctrl+S"
 
-#: muwx/MutApp.cpp:978
+#: muwx/MutApp.cpp:1138
 msgid "Save the current file with a new file name"
 msgstr "Save the current file with a new file name"
 
-#: muwx/MutApp.cpp:983
+#: muwx/MutApp.cpp:1143
 msgid "&Execute\tCtrl+F9"
 msgstr "&Execute\tCtrl+F9"
 
-#: muwx/MutApp.cpp:984
+#: muwx/MutApp.cpp:1144
 msgid "Load a logic file an immediately activate it"
 msgstr "Load a logic file an immediately activate it"
 
-#: muwx/MutApp.cpp:990
+#: muwx/MutApp.cpp:1150
 msgid "&Preferences"
 msgstr "&Preferences"
 
-#: muwx/MutApp.cpp:990
+#: muwx/MutApp.cpp:1150
 msgid "Edit program settings"
 msgstr "Edit program settings"
 
-#: muwx/MutApp.cpp:994
+#: muwx/MutApp.cpp:1155
 msgid "E&xit"
 msgstr "E&xit"
 
-#: muwx/MutApp.cpp:994 muwx/MutApp.cpp:997
+#: muwx/MutApp.cpp:1155
 msgid "Quit Mutabor"
 msgstr "Quit Mutabor"
 
-#: muwx/MutApp.cpp:995
+#: muwx/MutApp.cpp:1161
 msgid "&File"
 msgstr "&File"
 
-#: muwx/MutApp.cpp:998
+#: muwx/MutApp.cpp:1163
 msgid "@MAC|&File"
 msgstr "@MAC|&File"
+
+#: muwx/MutApp.cpp:1209 muwx/MutApp.cpp:1246
+#, fuzzy
+msgid "Could not get configuration storage"
+msgstr "Save current route configuration to a file."
 
 #: muwx/MutChild.cpp:154 muwx/MutLogicWnd.h:58
 #, c-format
@@ -1247,129 +1281,129 @@ msgid ""
 msgstr ""
 "Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"
 
-#: muwx/MutEditFile.cpp:135
+#: muwx/MutEditFile.cpp:147
 msgid "File couldn't be loaded."
 msgstr "File couldn't be loaded."
 
-#: muwx/MutEditFile.cpp:163
+#: muwx/MutEditFile.cpp:175
 msgid "The text couldn't be saved."
 msgstr "The text couldn't be saved."
 
-#: muwx/MutEditFile.cpp:218 muwx/MutEditFile.cpp:280
+#: muwx/MutEditFile.cpp:230 muwx/MutEditFile.cpp:292
 msgid "Can't write temporary file."
 msgstr "Can't write temporary file."
 
-#: muwx/MutEditFile.cpp:218 muwx/MutEditFile.cpp:281
+#: muwx/MutEditFile.cpp:230 muwx/MutEditFile.cpp:293
 msgid "Error"
 msgstr "Error"
 
-#: muwx/MutEditFile.cpp:290
+#: muwx/MutEditFile.cpp:302
 msgid "The compile dialog could not be loaded."
 msgstr "The compile dialog could not be loaded."
 
-#: muwx/MutFrame.cpp:415
+#: muwx/MutFrame.cpp:444 muwx/MutFrame.cpp:488
 msgid "Toolbar"
 msgstr "Toolbar"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:529
 msgid "New"
 msgstr "New"
 
-#: muwx/MutFrame.cpp:443
+#: muwx/MutFrame.cpp:529
 msgid "New file"
 msgstr "New file"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:530
 msgid "Open"
 msgstr "Open"
 
-#: muwx/MutFrame.cpp:444
+#: muwx/MutFrame.cpp:530
 msgid "Open file"
 msgstr "Open file"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:531
 msgid "Save"
 msgstr "Save"
 
-#: muwx/MutFrame.cpp:445
+#: muwx/MutFrame.cpp:531
 msgid "Save file"
 msgstr "Save file"
 
-#: muwx/MutFrame.cpp:446
+#: muwx/MutFrame.cpp:532
 #, fuzzy
 msgid "Save as"
 msgstr "Save"
 
-#: muwx/MutFrame.cpp:446
+#: muwx/MutFrame.cpp:532
 #, fuzzy
 msgid "Save file with new name"
 msgstr "Save the current file with a new file name"
 
-#: muwx/MutFrame.cpp:447
+#: muwx/MutFrame.cpp:533
 msgid "Print"
 msgstr "Print"
 
-#: muwx/MutFrame.cpp:449
+#: muwx/MutFrame.cpp:535
 #, fuzzy
 msgid "Activate"
 msgstr "&Activate\tF9"
 
-#: muwx/MutFrame.cpp:449
+#: muwx/MutFrame.cpp:535
 #, fuzzy
 msgid "Activate the logic"
 msgstr "Activate the Mutabor Kernel."
 
-#: muwx/MutFrame.cpp:450
+#: muwx/MutFrame.cpp:536
 msgid "Stop the logic"
 msgstr ""
 
-#: muwx/MutFrame.cpp:451
+#: muwx/MutFrame.cpp:537
 #, fuzzy
 msgid "Panic"
 msgstr "&Panic\tF12"
 
-#: muwx/MutFrame.cpp:451
+#: muwx/MutFrame.cpp:537
 msgid "Panic: switch all notes off"
 msgstr ""
 
-#: muwx/MutFrame.cpp:453
+#: muwx/MutFrame.cpp:539
 msgid "Undo"
 msgstr ""
 
-#: muwx/MutFrame.cpp:453
+#: muwx/MutFrame.cpp:539
 msgid "Undo last changes"
 msgstr ""
 
-#: muwx/MutFrame.cpp:454
+#: muwx/MutFrame.cpp:540
 msgid "Redo"
 msgstr ""
 
-#: muwx/MutFrame.cpp:454
+#: muwx/MutFrame.cpp:540
 msgid "Redo last undone changes"
 msgstr ""
 
-#: muwx/MutFrame.cpp:455
+#: muwx/MutFrame.cpp:541
 msgid "Copy"
 msgstr "Copy"
 
-#: muwx/MutFrame.cpp:456
+#: muwx/MutFrame.cpp:542
 msgid "Cut"
 msgstr "Cut"
 
-#: muwx/MutFrame.cpp:457
+#: muwx/MutFrame.cpp:543
 msgid "Paste"
 msgstr "Paste"
 
-#: muwx/MutFrame.cpp:473
+#: muwx/MutFrame.cpp:559
 msgid "About"
 msgstr "About"
 
-#: muwx/MutFrame.cpp:473 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
+#: muwx/MutFrame.cpp:559 xrc/reslocale.cpp:16 xrc/reslocale.cpp:62
 #: xrc/reslocale.cpp:77 xrc/reslocale.cpp:96
 msgid "Help"
 msgstr "Help"
 
-#: muwx/MutFrame.cpp:535
+#: muwx/MutFrame.cpp:621
 msgid ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
@@ -1377,25 +1411,25 @@ msgstr ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
 
-#: muwx/MutFrame.cpp:537
+#: muwx/MutFrame.cpp:623
 msgid "Please confirm closing."
 msgstr "Please confirm closing."
 
-#: muwx/MutFrame.cpp:636
+#: muwx/MutFrame.cpp:725
 #, c-format
 msgid "Unexpected Event in MutFrame::CmFileOpen: %d"
 msgstr "Unexpected Event in MutFrame::CmFileOpen: %d"
 
-#: muwx/MutFrame.cpp:650
+#: muwx/MutFrame.cpp:739
 msgid "noname.mut"
 msgstr "noname.mut"
 
-#: muwx/MutFrame.cpp:669 muwx/MutFrame.cpp:1607
+#: muwx/MutFrame.cpp:752 muwx/MutFrame.cpp:1713
 #, c-format
 msgid "%s -- %s"
 msgstr "%s -- %s"
 
-#: muwx/MutFrame.cpp:721
+#: muwx/MutFrame.cpp:827
 #, fuzzy
 msgid ""
 "There are no realtime \t\t                           instruments in the "
@@ -1413,106 +1447,106 @@ msgstr ""
 "you can't modify the tunings \t\t                           while playing by "
 "computer keyboard.)"
 
-#: muwx/MutFrame.cpp:727
+#: muwx/MutFrame.cpp:833
 msgid "No realtime => batch mode?"
 msgstr "No realtime => batch mode?"
 
-#: muwx/MutFrame.cpp:996
+#: muwx/MutFrame.cpp:1102
 msgid "Routes"
 msgstr "Routes"
 
-#: muwx/MutFrame.cpp:1033
+#: muwx/MutFrame.cpp:1139
 #, c-format
 msgid "Logic -- Box %d"
 msgstr "Logic -- Box %d"
 
-#: muwx/MutFrame.cpp:1099
+#: muwx/MutFrame.cpp:1205
 #, c-format
 msgid "Current keys at Box %d"
 msgstr "Current keys at Box %d"
 
-#: muwx/MutFrame.cpp:1106
+#: muwx/MutFrame.cpp:1212
 #, c-format
 msgid "Current tone system at Box %d"
 msgstr "Current tone system at Box %d"
 
-#: muwx/MutFrame.cpp:1113
+#: muwx/MutFrame.cpp:1219
 msgid "Action log"
 msgstr "Action log"
 
-#: muwx/MutFrame.cpp:1116
+#: muwx/MutFrame.cpp:1222
 #, c-format
 msgid "Actions at Box %d"
 msgstr "Actions at Box %d"
 
-#: muwx/MutFrame.cpp:1122
+#: muwx/MutFrame.cpp:1228
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unexpected value: WK_LOGIC"
 
-#: muwx/MutFrame.cpp:1127
+#: muwx/MutFrame.cpp:1233
 msgid "Unexpected value: WK_ROUTE"
 msgstr "Unexpected value: WK_ROUTE"
 
-#: muwx/MutFrame.cpp:1132
+#: muwx/MutFrame.cpp:1238
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unexpected value: WK_EDIT"
 
-#: muwx/MutFrame.cpp:1137
+#: muwx/MutFrame.cpp:1243
 msgid "Unexpected value: WK_NULL"
 msgstr "Unexpected value: WK_NULL"
 
-#: muwx/MutFrame.cpp:1142
+#: muwx/MutFrame.cpp:1248
 #, c-format
 msgid "Unexpected window kind: %d"
 msgstr "Unexpected window kind: %d"
 
-#: muwx/MutFrame.cpp:1314
+#: muwx/MutFrame.cpp:1420
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize:  not implemented"
 
-#: muwx/MutFrame.cpp:1681
+#: muwx/MutFrame.cpp:1787
 msgid "Translation in batch mode completed. Output was generated."
 msgstr "Translation in batch mode completed. Output was generated."
 
-#: muwx/MutFrame.cpp:1682
+#: muwx/MutFrame.cpp:1788
 msgid "Batch translation finished"
 msgstr "Batch translation finished"
 
-#: muwx/MutFrame.cpp:1791
+#: muwx/MutFrame.cpp:1898
 #, c-format
 msgid "Box %d got id %d"
 msgstr "Box %d got id %d"
 
-#: muwx/MutFrame.cpp:1794
+#: muwx/MutFrame.cpp:1901
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Currently %d items in box menu"
 
-#: muwx/MutFrame.cpp:1796
+#: muwx/MutFrame.cpp:1903
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Appending menu for box %d with id %d"
 
-#: muwx/MutFrame.cpp:1797
+#: muwx/MutFrame.cpp:1904
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Select box %d\tCtrl+%d"
 
-#: muwx/MutFrame.cpp:1798
+#: muwx/MutFrame.cpp:1905
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Select box %d as the active Box for box specific commands."
 
-#: muwx/MutFrame.cpp:1808
+#: muwx/MutFrame.cpp:1915
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr "Connecting command with id %d for box %d"
 
-#: muwx/MutLogicWnd.cpp:649
+#: muwx/MutLogicWnd.cpp:648
 msgid "(INITIAL)"
 msgstr "(INITIAL)"
 
-#: muwx/MutLogicWnd.cpp:696
+#: muwx/MutLogicWnd.cpp:699
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Logic: %s - Box %d"
@@ -1965,33 +1999,41 @@ msgstr "avoid drum channel"
 msgid "track"
 msgstr "track"
 
-#: mywx/mutDebugFlags.h:37
+#: mywx/mutDebugFlags.h:40
 msgid "Unspecified debug information"
 msgstr "Unspecified debug information"
 
-#: mywx/mutDebugFlags.h:38
+#: mywx/mutDebugFlags.h:41
 msgid "Debug configuration and postprocessing of dialogs"
 msgstr "Debug configuration and postprocessing of dialogs"
 
-#: mywx/mutDebugFlags.h:39
+#: mywx/mutDebugFlags.h:42
 msgid "Debug the routing system"
 msgstr "Debug the routing system"
 
-#: mywx/mutDebugFlags.h:40
+#: mywx/mutDebugFlags.h:43
 msgid "Debug the MIDI input/output system"
 msgstr "Debug the MIDI input/output system"
 
-#: mywx/mutDebugFlags.h:41
+#: mywx/mutDebugFlags.h:44
 msgid "Debug the MIDI file devices"
 msgstr "Debug the MIDI file devices"
 
-#: mywx/mutDebugFlags.h:42
+#: mywx/mutDebugFlags.h:45
 msgid "Debug the Mutabor file parser"
 msgstr "Debug the Mutabor file parser"
 
-#: mywx/mutDebugFlags.h:43
+#: mywx/mutDebugFlags.h:46
 msgid "Debug the config file parser"
 msgstr "Debug the config file parser"
+
+#: mywx/mutDebugFlags.h:47
+msgid "Debug the Document/View framework"
+msgstr ""
+
+#: mywx/mutDebugFlags.h:48
+msgid "Print unhandled events in the queue"
+msgstr ""
 
 #~ msgid "Device_Id"
 #~ msgstr "Device_Id"

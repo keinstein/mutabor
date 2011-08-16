@@ -399,7 +399,7 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
-	echo -n APPL???? >Mutabor.app/Contents/PkgInfo
+	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
 	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
 		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
