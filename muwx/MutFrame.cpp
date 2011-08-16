@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.34 2011/08/14 18:32:18 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.35 2011/08/16 20:20:03 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/14 18:32:18 $
- * \version $Revision: 1.34 $
+ * \date $Date: 2011/08/16 20:20:03 $
+ * \version $Revision: 1.35 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.34  2011/08/14 18:32:18  keinstein
+ * Revision 1.35  2011/08/16 20:20:03  keinstein
+ * Fix compiling on Mac OS X 10.5
+ *
+ * Revision 1.34  2011-08-14 18:32:18  keinstein
  * Use of m_childView of wxDocChildFrame instead of own view fixes a bad access.
  * Use wxDocChildFrame::OnCloseWindow
  * remove some unneeded code
@@ -250,6 +253,8 @@
 #endif
 #include "wx/ffile.h"
 #include "MutFrame.h"
+#include "MutDocument.h"
+#include "MutView.h"
 #include "MutChild.h"
 //#include "Mutabor.rh"
 #include "MutApp.h"
@@ -265,6 +270,8 @@
 #include "MutBitmaps.h"
 
 using mutaborGUI::MutEditFile;
+using mutaborGUI::MutDocument;
+using mutaborGUI::MutView;
 
 #define OPENMENU \
 	menu = new wxMenu;
