@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.35 2011/08/14 19:12:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.36 2011/08/16 07:13:54 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/14 19:12:53 $
- * \version $Revision: 1.35 $
+ * $Date: 2011/08/16 07:13:54 $
+ * \version $Revision: 1.36 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.35  2011/08/14 19:12:53  keinstein
+ * Revision 1.36  2011/08/16 07:13:54  keinstein
+ * added Creator code to .app meta data
+ *
+ * Revision 1.35  2011-08-14 19:12:53  keinstein
  * raise frame after “opening” an already open file
  *
  * Revision 1.34  2011-08-11 19:00:48  keinstein
@@ -176,6 +179,9 @@
 #include "wx/cshelp.h"
 #include "wx/aboutdlg.h"
 #include "wx/generic/aboutdlgg.h"
+#include "wx/cmdline.h"
+#include "wx/file.h"
+#include "wx/event.h"
 
 
 #ifdef __BORLANDC__
@@ -459,13 +465,13 @@ bool MutApp::ProcessEvent(wxEvent& event)
 	return retval;
 }
 
-void MutApp::PassEventToDocManager(wxCommandEvent& event)
+void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 {
 	DEBUGLOG(eventqueue,_T("Command"));
 	if (!document_manager.ProcessEvent(event)) 
 		event.Skip();
 }
-void MutApp::PassEventToDocManager(wxUpdateUIEvent& event)
+void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
 {
 	DEBUGLOG(eventqueue,_T("UpdateUI"));
 	if (!document_manager.ProcessEvent(event)) 
@@ -648,32 +654,32 @@ AppAbout::AppAbout (wxWindow *parent, long style)
 
 BEGIN_EVENT_TABLE(MutApp, wxApp)
 	EVT_MENU(CM_SETUP, MutApp::CmSetup)
-EVT_MENU(wxID_OPEN, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_CLOSE, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_CLOSE_ALL, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_REVERT, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_NEW, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_SAVE, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_SAVEAS, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_UNDO, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_REDO, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_OPEN, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_CLOSE, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_CLOSE_ALL, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_REVERT, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_NEW, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_SAVE, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_SAVEAS, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_UNDO, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_REDO, MutApp::PassEventToDocManagerCMD)
 
-EVT_UPDATE_UI(wxID_OPEN, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_CLOSE, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_CLOSE_ALL, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_REVERT, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_NEW, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_SAVE, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_SAVEAS, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_UNDO, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_REDO, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_OPEN, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_CLOSE, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_CLOSE_ALL, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_REVERT, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_NEW, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_SAVE, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_SAVEAS, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_UNDO, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_REDO, MutApp::PassEventToDocManagerUPD)
 
 #if wxUSE_PRINTING_ARCHITECTURE
-EVT_MENU(wxID_PRINT, MutApp::PassEventToDocManager)
-EVT_MENU(wxID_PREVIEW, MutApp::PassEventToDocManager)
+EVT_MENU(wxID_PRINT, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_PREVIEW, MutApp::PassEventToDocManagerCMD)
 
-EVT_UPDATE_UI(wxID_PRINT, MutApp::PassEventToDocManager)
-EVT_UPDATE_UI(wxID_PREVIEW, MutApp::PassEventToDocManager)
+EVT_UPDATE_UI(wxID_PRINT, MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_PREVIEW, MutApp::PassEventToDocManagerUPD)
 #endif
 //        EVT_MENU(CM_FILENEW, MutApp::PassEventToDocManager)	
 //       EVT_MENU(CM_FILEOPEN, MutApp::PassEventToDocManager)	

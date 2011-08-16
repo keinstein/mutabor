@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.20 2011/08/06 09:21:23 keinstein Exp $
+ * $Id: MutApp.h,v 1.21 2011/08/16 07:13:54 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/08/06 09:21:23 $
- * \version $Revision: 1.20 $
+ *  $Date: 2011/08/16 07:13:54 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.20  2011/08/06 09:21:23  keinstein
+ * Revision 1.21  2011/08/16 07:13:54  keinstein
+ * added Creator code to .app meta data
+ *
+ * Revision 1.20  2011-08-06 09:21:23  keinstein
  * activated and debugged document manager
  *
  * Revision 1.19  2011-07-31 20:16:04  keinstein
@@ -206,8 +209,9 @@ public:
 	virtual bool ProcessEvent(wxEvent& event);
 	
 	/// Pass event to document manager
-	void PassEventToDocManager(wxCommandEvent& event);
-	void PassEventToDocManager(wxUpdateUIEvent& event);
+	// some compilers do not support overloading in event tables
+	void PassEventToDocManagerCMD(wxCommandEvent& event);
+	void PassEventToDocManagerUPD(wxUpdateUIEvent& event);
 
 	/// add handling of last files.
 	void OnMRUFile(wxCommandEvent& event);
