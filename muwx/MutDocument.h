@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.4 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.5 2011/08/16 20:20:03 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/16 20:20:03 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: MutDocument.h,v $
- * Revision 1.4  2011/08/11 19:00:48  keinstein
+ * Revision 1.5  2011/08/16 20:20:03  keinstein
+ * Fix compiling on Mac OS X 10.5
+ *
+ * Revision 1.4  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -56,7 +59,7 @@ namespace mutaborGUI {
 		DECLARE_DYNAMIC_CLASS(MutDocument)
 			public:
 		MutDocument();
-		~MutDocument();
+		virtual ~MutDocument();
 
 		bool DoSaveDocument(const wxString& filename);
 

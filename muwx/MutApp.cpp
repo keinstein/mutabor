@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.36 2011/08/16 07:13:54 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.37 2011/08/16 20:20:03 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/16 07:13:54 $
- * \version $Revision: 1.36 $
+ * $Date: 2011/08/16 20:20:03 $
+ * \version $Revision: 1.37 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.36  2011/08/16 07:13:54  keinstein
+ * Revision 1.37  2011/08/16 20:20:03  keinstein
+ * Fix compiling on Mac OS X 10.5
+ *
+ * Revision 1.36  2011-08-16 07:13:54  keinstein
  * added Creator code to .app meta data
  *
  * Revision 1.35  2011-08-14 19:12:53  keinstein
@@ -205,6 +208,8 @@
 //#include "Mutabor.rh"
 #include "MutApp.h"
 #include "MutFrame.h"
+#include "MutDocument.h"
+#include "MutView.h"
 #include "DevMidi.h"
 #include "MutConfDlg.h"
 #include "resourceload.h"
