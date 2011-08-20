@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.21 2011/08/16 07:13:54 keinstein Exp $
+ * $Id: MutApp.h,v 1.22 2011/08/20 17:50:39 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/08/16 07:13:54 $
- * \version $Revision: 1.21 $
+ *  $Date: 2011/08/20 17:50:39 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.21  2011/08/16 07:13:54  keinstein
+ * Revision 1.22  2011/08/20 17:50:39  keinstein
+ * use  wxSTC for the editor windows
+ *
+ * Revision 1.21  2011-08-16 07:13:54  keinstein
  * added Creator code to .app meta data
  *
  * Revision 1.20  2011-08-06 09:21:23  keinstein
@@ -166,6 +169,13 @@ WX_DECLARE_HASH_MAP( wxFrame *,      // type of the keys
                      wxPointerHash,     // hasher
                      wxPointerEqual,   // key equality predicate
                      FrameHash); // name of the class
+
+#if wxUSE_PRINTING_ARCHITECTURE
+//! global print data, to remember settings during the session
+	extern wxPrintData *g_printData;
+	extern wxPageSetupData *g_pageSetupData;
+#endif // wxUSE_PRINTING_ARCHITECTURE
+
 
 /// Mutabor application class
 /** This class is the main application class of Mutabor. It handles

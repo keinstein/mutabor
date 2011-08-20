@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.37 2011/08/16 20:20:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.38 2011/08/20 17:50:39 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/16 20:20:03 $
- * \version $Revision: 1.37 $
+ * $Date: 2011/08/20 17:50:39 $
+ * \version $Revision: 1.38 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.37  2011/08/16 20:20:03  keinstein
+ * Revision 1.38  2011/08/20 17:50:39  keinstein
+ * use  wxSTC for the editor windows
+ *
+ * Revision 1.37  2011-08-16 20:20:03  keinstein
  * Fix compiling on Mac OS X 10.5
  *
  * Revision 1.36  2011-08-16 07:13:54  keinstein
@@ -220,6 +223,13 @@
 #endif
 
 wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
+#if wxUSE_PRINTING_ARCHITECTURE
+
+//! global print data, to remember settings during the session
+wxPrintData *g_printData = (wxPrintData*) NULL;
+wxPageSetupData *g_pageSetupData = (wxPageSetupData*) NULL;
+
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 IMPLEMENT_APP(MutApp)
 
