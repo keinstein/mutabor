@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.35 2011/08/16 20:20:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.36 2011/08/20 17:50:39 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/16 20:20:03 $
- * \version $Revision: 1.35 $
+ * \date $Date: 2011/08/20 17:50:39 $
+ * \version $Revision: 1.36 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.35  2011/08/16 20:20:03  keinstein
+ * Revision 1.36  2011/08/20 17:50:39  keinstein
+ * use  wxSTC for the editor windows
+ *
+ * Revision 1.35  2011-08-16 20:20:03  keinstein
  * Fix compiling on Mac OS X 10.5
  *
  * Revision 1.34  2011-08-14 18:32:18  keinstein
@@ -360,9 +363,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_ERASE_BACKGROUND(MutFrame::OnEraseBackground)
 	EVT_SIZE(MutFrame::OnSize)
 
-//	EVT_MENU(CM_FILENEW, MutFrame::CmFileNew)
-//	EVT_MENU(CM_FILEOPEN, MutFrame::CmFileOpen)
-	EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
+        EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
 	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
 	EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
@@ -378,6 +379,43 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_MENU(CM_COMPACT, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_ACTIVATE, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_GETLINE, MutFrame::PassEventToEditor)
+EVT_MENU (wxID_CLEAR,            MutFrame::PassEventToEditor)
+EVT_MENU (wxID_CUT,              MutFrame::PassEventToEditor)
+EVT_MENU (wxID_COPY,             MutFrame::PassEventToEditor)
+EVT_MENU (wxID_PASTE,            MutFrame::PassEventToEditor)
+    EVT_MENU (CM_INDENTINC,        MutFrame::PassEventToEditor)
+    EVT_MENU (CM_INDENTRED,        MutFrame::PassEventToEditor)
+    EVT_MENU (wxID_SELECTALL,        MutFrame::PassEventToEditor)
+    EVT_MENU (CM_SELECTLINE,       MutFrame::PassEventToEditor)
+    EVT_MENU (wxID_REDO,             MutFrame::PassEventToEditor)
+    EVT_MENU (wxID_UNDO,             MutFrame::PassEventToEditor)
+    // find
+    EVT_MENU (wxID_FIND,             MutFrame::PassEventToEditor)
+    EVT_MENU (CM_FINDNEXT,         MutFrame::PassEventToEditor)
+    EVT_MENU (CM_REPLACE,          MutFrame::PassEventToEditor)
+    EVT_MENU (CM_REPLACENEXT,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_BRACEMATCH,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_GOTO,             MutFrame::PassEventToEditor)
+    // view
+    EVT_MENU_RANGE (CM_HILIGHTFIRST, CM_HILIGHTLAST,
+                                     MutFrame::PassEventToEditor)
+    EVT_MENU (CM_DISPLAYEOL,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_INDENTGUIDE,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_LINENUMBER,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_LONGLINEON,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_WHITESPACE,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_FOLDTOGGLE,       MutFrame::PassEventToEditor)
+    EVT_MENU (CM_OVERTYPE,         MutFrame::PassEventToEditor)
+    EVT_MENU (CM_READONLY,         MutFrame::PassEventToEditor)
+    EVT_MENU (CM_WRAPMODEON,       MutFrame::PassEventToEditor)
+    // extra
+    EVT_MENU (CM_CHANGELOWER,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CHANGEUPPER,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CONVERTCR,        MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CONVERTCRLF,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CONVERTLF,        MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CHARSETANSI,      MutFrame::PassEventToEditor)
+    EVT_MENU (CM_CHARSETMAC,       MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
 	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
@@ -669,6 +707,9 @@ void MutFrame::OnPaint(wxPaintEvent& event)
 
 void MutFrame::CmFileNew(wxCommandEvent& event)
 {
+	STUBC;
+	return;
+
 #ifdef DEBUG
 	printf("MutFrame::CmFileNew\n");
 #endif
@@ -686,6 +727,9 @@ void MutFrame::CmFileNew(wxCommandEvent& event)
 
 void MutFrame::CmFileOpen(wxCommandEvent& event)
 {
+	STUBC;
+	return;
+
 	if (client) {
 		event . Skip (true);
 		return;
@@ -741,6 +785,9 @@ void MutFrame::CmFileOpen(wxCommandEvent& event)
 
 bool MutFrame::OpenFile (wxString path, bool newfile)
 {
+	STUBC;
+	return false;
+
 	if (client) return false;
 
 	wxString filename = !path ? wxString(_("noname.mut"))

@@ -153,6 +153,7 @@ INDENTHEADERS = \
 		muwx/MutView.h \
 		muwx/Panel.h \
 		muwx/resourceload.h \
+		muwx/stclanguage.h \
 		mywx/mhArray.h \
 		mywx/mhDefs.h \
 		mywx/muconvauto.h \
@@ -221,6 +222,7 @@ mutabor_INDENTS = \
 		muwx/MutTextBox.cpp \
 		muwx/MutView.cpp \
 		muwx/Panel.cpp \
+		muwx/stclanguage.cpp \
 		mywx/muconvauto.cpp \
 		mywx/mutDebug.cpp \
 		mywx/mxDefs.cpp \

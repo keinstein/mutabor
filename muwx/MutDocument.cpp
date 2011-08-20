@@ -2,16 +2,19 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.6 2011/08/16 20:20:03 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.7 2011/08/20 17:50:39 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/08/16 20:20:03 $
-* \version $Revision: 1.6 $
+* $Date: 2011/08/20 17:50:39 $
+* \version $Revision: 1.7 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.6  2011/08/16 20:20:03  keinstein
+* Revision 1.7  2011/08/20 17:50:39  keinstein
+* use  wxSTC for the editor windows
+*
+* Revision 1.6  2011-08-16 20:20:03  keinstein
 * Fix compiling on Mac OS X 10.5
 *
 * Revision 1.5  2011-08-11 19:00:48  keinstein
@@ -196,7 +199,7 @@ namespace mutaborGUI {
 		wxDocument::Modify(mod);
 
 		if (!mod && view && view->GetTextsw())
-			view->GetTextsw()->DiscardEdits();
+			view->GetTextsw()->SetSavePoint();
 	}
 
 	void MutDocument::CmdNewView(wxCommandEvent& event)

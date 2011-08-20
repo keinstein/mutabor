@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.13 2011/08/11 19:00:48 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.14 2011/08/20 17:50:39 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/11 19:00:48 $
-* \version $Revision: 1.13 $
+* $Date: 2011/08/20 17:50:39 $
+* \version $Revision: 1.14 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.13  2011/08/11 19:00:48  keinstein
+* Revision 1.14  2011/08/20 17:50:39  keinstein
+* use  wxSTC for the editor windows
+*
+* Revision 1.13  2011-08-11 19:00:48  keinstein
 * get Document/View running.
 * Needs further testing (possible segfaults).
 *
@@ -59,57 +62,104 @@
 #ifndef __MUTEDITFILE_H_INCLUDED__
 #define __MUTEDITFILE_H_INCLUDED__
 
+#include "Defs.h"
 #include "wx/textctrl.h"
 #include "wx/docview.h"
+#include "wx/stc/stc.h"
+#include "muwx/stclanguage.h"
 #include "muconvauto.h"
 
 namespace mutaborGUI {
 
 	class MutView;
 
-	class MutEditFile : public wxTextCtrl
-	{
+	class MutEditPrint;
+	class MutEditProperties;
 
+	class MutEditFile : public wxStyledTextCtrl
+	{
+		friend class MutEditProperties;
+		friend class MutEditPrint;
 	public:
 
 		MutEditFile(wxWindow* parent, 
 			    const wxPoint& pos = wxDefaultPosition, 
 			    const wxSize& size = wxDefaultSize, 
 			    const wxString& value = wxEmptyString, 
-			    const wxString& name = wxTextCtrlNameStr)
-			: wxTextCtrl(parent, 
-				     wxID_ANY, 
-				     value, 
-				     pos, 
-				     size, 
-				     wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				     | wxTE_NOHIDESEL | wxHSCROLL, 
-				     wxDefaultValidator, 
-				     name)
-			{}
+			    const wxString& name = wxTextCtrlNameStr);
 	
 		MutEditFile(MutView * v,
 			    wxWindow* parent, 
 			    const wxPoint& pos = wxDefaultPosition, 
 			    const wxSize& size = wxDefaultSize, 
 			    const wxString& value = wxEmptyString, 
-			    const wxString& name = wxTextCtrlNameStr)
-			: wxTextCtrl(parent, 
-				     wxID_ANY, 
-				     value, 
-				     pos, 
-				     size, 
-				     wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				     | wxTE_NOHIDESEL | wxHSCROLL , wxDefaultValidator, name),
-			  view(v)
-			{}
+			    const wxString& name = wxTextCtrlNameStr);
 
 
 		virtual ~MutEditFile();
 
 		void SetView(MutView * v) { view = v; }
+
+
+		void OnSize( wxSizeEvent &event );
+		// edit
+		void OnEditRedo (wxCommandEvent &event);
+		void OnEditUndo (wxCommandEvent &event);
+		void OnEditClear (wxCommandEvent &event);
+		void OnEditCut (wxCommandEvent &event);
+		void OnEditCopy (wxCommandEvent &event);
+		void OnEditPaste (wxCommandEvent &event);
+		// find
+		void OnFind (wxCommandEvent &event);
+		void OnFindNext (wxCommandEvent &event);
+		void OnReplace (wxCommandEvent &event);
+		void OnReplaceNext (wxCommandEvent &event);
+		void OnBraceMatch (wxCommandEvent &event);
+		void OnGoto (wxCommandEvent &event);
+		void OnEditIndentInc (wxCommandEvent &event);
+		void OnEditIndentRed (wxCommandEvent &event);
+		void OnEditSelectAll (wxCommandEvent &event);
+		void OnEditSelectLine (wxCommandEvent &event);
+		//! view
+		void OnHilightLang (wxCommandEvent &event);
+		void OnDisplayEOL (wxCommandEvent &event);
+		void OnIndentGuide (wxCommandEvent &event);
+		void OnLineNumber (wxCommandEvent &event);
+		void OnLongLineOn (wxCommandEvent &event);
+		void OnWhiteSpace (wxCommandEvent &event);
+		void OnFoldToggle (wxCommandEvent &event);
+		void OnSetOverType (wxCommandEvent &event);
+		void OnSetReadOnly (wxCommandEvent &event);
+		void OnWrapmodeOn (wxCommandEvent &event);
+		void OnUseCharset (wxCommandEvent &event);
+		//! extra
+		void OnChangeCase (wxCommandEvent &event);
+		void OnConvertEOL (wxCommandEvent &event);
+		// stc
+		void OnMarginClick (wxStyledTextEvent &event);
+		void OnCharAdded  (wxStyledTextEvent &event);
+
+		//! language/lexer
+		wxString DeterminePrefs (const wxString &filename);
+		bool InitializePrefs (const wxString &filename);
+		bool UserSettings (const wxString &filename);
+		LanguageInfo const* GetLanguageInfo () {return m_language;};
+
+		//! load/save file
+		bool LoadFile ();
+		bool LoadFile (const wxString &filename);
+		bool SaveFile ();
+		bool SaveFile (const wxString &filename);
+		bool IsModified ();
+		wxString GetFilename () {return m_filename;};
+		void SetFilename (const wxString &filename) {m_filename = filename;};
+
+		
 	protected:
 //	void SetupWindow();
+
+		bool Compile(bool activate);
+		
 		bool DoLoadFile(const wxString &filename, int WXUNUSED(fileType));
 
 		bool DoSaveFile(const wxString& filename, int WXUNUSED(fileType));
@@ -128,6 +178,8 @@ namespace mutaborGUI {
 
 		void GoErrorLine();
 
+
+#if 0
 #if defined(__WXMSW__) && !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 		wxString GetValue() const;
 
@@ -143,13 +195,81 @@ namespace mutaborGUI {
 
 #endif // wxUSE_RICHEDIT
 #endif
+#endif
+
+		
+		// file
+		wxString m_filename;
+
+		// lanugage properties
+		LanguageInfo const* m_language;
+
+		// margin variables
+		int m_LineNrID;
+		int m_LineNrMargin;
+		int m_FoldingID;
+		int m_FoldingMargin;
+		int m_DividerID;
 
 
 		MutView * view;
 		muConvAuto autoConverter;
 
 		DECLARE_EVENT_TABLE()
+	private:
+		void Init();
 	};
+
+	
+        //---------------------------------------------------------------------
+        //! MutEditProperties
+	class MutEditProperties: public wxDialog {
+
+	public:
+
+		//! constructor
+		MutEditProperties (MutEditFile *edit, long style = 0);
+
+	private:
+
+	};
+
+#if wxUSE_PRINTING_ARCHITECTURE
+
+        //---------------------------------------------------------------------
+        //! MutEditPrint
+	class MutEditPrint: public wxPrintout {
+
+	public:
+
+		//! constructor
+		MutEditPrint (MutEditFile *edit, wxChar *title = _T(""));
+
+		//! event handlers
+		bool OnPrintPage (int page);
+		bool OnBeginDocument (int startPage, int endPage);
+
+		//! print functions
+		bool HasPage (int page);
+		void GetPageInfo (int *minPage, 
+				  int *maxPage, 
+				  int *selPageFrom, 
+				  int *selPageTo);
+
+	private:
+		MutEditFile *m_edit;
+		int m_printed;
+		wxRect m_pageRect;
+		wxRect m_printRect;
+
+		bool PrintScaling (wxDC *dc);
+	};
+
+
+
+#endif // wxUSE_PRINTING_ARCHITECTURE#endif // wxUSE_PRINTING_ARCHITECTURE
+
+
 
 }
 #endif // __MUTEDITFILE_H_INCLUDED__
