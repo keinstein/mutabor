@@ -3,7 +3,7 @@ dnl Author:          wxWidgets development team,
 dnl                  Francesco Montorsi,
 dnl                  Bob McCown (Mac-testing)
 dnl Creation date:   24/11/2001
-dnl RCS-ID:          $Id: wxwin.m4,v 1.2 2010/12/11 02:10:08 keinstein Exp $
+dnl RCS-ID:          $Id: wxwin.m4,v 1.3 2011/08/20 13:29:44 keinstein Exp $
 dnl ---------------------------------------------------------------------------
 
 dnl ===========================================================================
@@ -65,7 +65,7 @@ dnl If you want to support standard --enable-debug/unicode/shared options, you
 dnl may do the following:
 dnl
 dnl     ...
-dnl     AC_CANONICAL_SYSTEM
+dnl     AC_CANONICAL_TARGET
 dnl
 dnl     # define configure options
 dnl     WX_CONFIG_OPTIONS
@@ -506,7 +506,7 @@ dnl $5 = additional action to do in case option is given with "yes" value
 dnl ---------------------------------------------------------------------------
 AC_DEFUN([WX_ARG_ENABLE_YESNOAUTO],
          [AC_ARG_ENABLE($1,
-            AC_HELP_STRING([--enable-$1], [$3 (default is $4)]),
+            AS_HELP_STRING([--enable-$1],[$3 (default is $4)]),
             [], [enableval="$4"])
 
             dnl Show a message to the user about this option
@@ -530,7 +530,7 @@ AC_DEFUN([WX_ARG_ENABLE_YESNOAUTO],
 
 AC_DEFUN([WX_ARG_WITH_YESNOAUTO],
          [AC_ARG_WITH($1,
-            AC_HELP_STRING([--with-$1], [$3 (default is $4)]),
+            AS_HELP_STRING([--with-$1],[$3 (default is $4)]),
             [], [withval="$4"])
 
             dnl Show a message to the user about this option
@@ -590,8 +590,7 @@ AC_DEFUN([WX_STANDARD_OPTIONS],
         ifelse(index([$1], [toolkit]), [-1],,
                [
                 AC_ARG_WITH([toolkit],
-                            AC_HELP_STRING([--with-toolkit],
-                                           [Build against a specific wxWidgets toolkit (default is auto)]),
+                            AS_HELP_STRING([--with-toolkit],[Build against a specific wxWidgets toolkit (default is auto)]),
                             [], [withval="auto"])
 
                 dnl Show a message to the user about this option
@@ -664,8 +663,7 @@ AC_DEFUN([WX_STANDARD_OPTIONS],
         ifelse(index([$1], [wxversion]), [-1],,
                [
                 AC_ARG_WITH([wxversion],
-                            AC_HELP_STRING([--with-wxversion],
-                                           [Build against a specific version of wxWidgets (default is auto)]),
+                            AS_HELP_STRING([--with-wxversion],[Build against a specific version of wxWidgets (default is auto)]),
                             [], [withval="auto"])
 
                 dnl Show a message to the user about this option
