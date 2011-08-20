@@ -11,13 +11,13 @@ dnl Prerequisite: AC_PROG_CXX
 AC_DEFUN([CXX_FOR_SCOPING],
 [
   AC_CACHE_CHECK([for ISO C++ for loop variable scoping], cxx_cv_iso_for_loop_scope,
-    [AC_LANG_PUSH(C++)
-	AC_COMPILE_IFELSE(AC_LANG_PROGRAM([],[
+    [ AC_LANG_PUSH(C++)
+      AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[
 		for (int i = 1; i < 3; i++);
 		for (int i = 1; i < 4; i++);
-	]), cxx_cv_iso_for_loop_scope=yes, cxx_cv_iso_for_loop_scope=no)
-	AC_LANG_POP(C++)
-	])
+      ]])], cxx_cv_iso_for_loop_scope=yes, cxx_cv_iso_for_loop_scope=no)
+      AC_LANG_POP(C++)
+  ])
   if test $cxx_cv_iso_for_loop_scope = yes; then
     AC_DEFINE(CXX_ISO_FOR_LOOP_SCOPE, 1, [Define if your C++ compiler accepts ISO for loop soping.])
   fi
