@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.36 2011/08/20 17:50:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.37 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/20 17:50:39 $
- * \version $Revision: 1.36 $
+ * \date $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.37 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.36  2011/08/20 17:50:39  keinstein
+ * Revision 1.37  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.36  2011-08-20 17:50:39  keinstein
  * use  wxSTC for the editor windows
  *
  * Revision 1.35  2011-08-16 20:20:03  keinstein
@@ -229,15 +232,18 @@
 
 #include "wx/toolbar.h"
 
-#if !defined(__WXMSW__)
+#if !defined(__WXMSW__) && 0
 #include "Icon/Mutabor.xpm"
 #include "Icon/Document.xpm"
-#include "Icon/Route.xpm"
 #include "Icon/KeyTextBox.xpm"
 #include "Icon/TSTextBox.xpm"
 #include "Icon/ActTextBox.xpm"
 #endif
 
+#include "Icon/Route.xpm"
+
+
+#if 0
 #include "bitmaps/new.xpm"
 #include "bitmaps/open.xpm"
 #include "bitmaps/save.xpm"
@@ -246,6 +252,7 @@
 #include "bitmaps/paste.xpm"
 #include "bitmaps/print.xpm"
 #include "bitmaps/help.xpm"
+#endif
 
 #include "wx/filename.h"
 #include "wx/config.h"
@@ -364,7 +371,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_SIZE(MutFrame::OnSize)
 
         EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
-	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
+//	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
 	EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
 	EVT_MENU(CM_STOP, MutFrame::CmStop)
@@ -375,6 +382,8 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_UPDATE_UI(CM_DOACTIVATE, MutFrame::CeActivate)
 	EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
 	EVT_UPDATE_UI(CM_PANIC, MutFrame::CeStop)
+EVT_UPDATE_UI(wxID_UNDO, MutFrame::PassEventToEditorUI)
+EVT_UPDATE_UI(wxID_REDO, MutFrame::PassEventToEditorUI)
 	EVT_MENU(CM_COMPILE, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_COMPACT, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_ACTIVATE, MutFrame::PassEventToEditor)
@@ -392,10 +401,16 @@ EVT_MENU (wxID_PASTE,            MutFrame::PassEventToEditor)
     // find
     EVT_MENU (wxID_FIND,             MutFrame::PassEventToEditor)
     EVT_MENU (CM_FINDNEXT,         MutFrame::PassEventToEditor)
+
     EVT_MENU (CM_REPLACE,          MutFrame::PassEventToEditor)
     EVT_MENU (CM_REPLACENEXT,      MutFrame::PassEventToEditor)
     EVT_MENU (CM_BRACEMATCH,       MutFrame::PassEventToEditor)
     EVT_MENU (CM_GOTO,             MutFrame::PassEventToEditor)
+EVT_FIND(wxID_ANY,               MutFrame::PassEventToEditorFind)
+EVT_FIND_NEXT(wxID_ANY,          MutFrame::PassEventToEditorFind)
+EVT_FIND_REPLACE(wxID_ANY,       MutFrame::PassEventToEditorFind)
+EVT_FIND_REPLACE_ALL(wxID_ANY,   MutFrame::PassEventToEditorFind)
+EVT_FIND_CLOSE(wxID_ANY,         MutFrame::PassEventToEditorFind)
     // view
     EVT_MENU_RANGE (CM_HILIGHTFIRST, CM_HILIGHTLAST,
                                      MutFrame::PassEventToEditor)
@@ -418,29 +433,29 @@ EVT_MENU (wxID_PASTE,            MutFrame::PassEventToEditor)
     EVT_MENU (CM_CHARSETMAC,       MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
-	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
-	EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
-	EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
-	EVT_MENU(CM_OWM, MutFrame::CmToggleOWM)
-	EVT_MENU(CM_CAW, MutFrame::CmToggleCAW)
-	EVT_UPDATE_UI(CM_TOGGLEKEY, MutFrame::CeToggleKey)
-	EVT_UPDATE_UI(CM_TOGGLETS, MutFrame::CeToggleTS)
-	EVT_UPDATE_UI(CM_TOGGLEACT, MutFrame::CeToggleAct)
-	EVT_UPDATE_UI(CM_OWM, MutFrame::CeToggleOWM)
-	EVT_UPDATE_UI(CM_CAW, MutFrame::CeToggleCAW)
+EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
+EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
+EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
+EVT_MENU(CM_OWM, MutFrame::CmToggleOWM)
+EVT_MENU(CM_CAW, MutFrame::CmToggleCAW)
+EVT_UPDATE_UI(CM_TOGGLEKEY, MutFrame::CeToggleKey)
+EVT_UPDATE_UI(CM_TOGGLETS, MutFrame::CeToggleTS)
+EVT_UPDATE_UI(CM_TOGGLEACT, MutFrame::CeToggleAct)
+EVT_UPDATE_UI(CM_OWM, MutFrame::CeToggleOWM)
+EVT_UPDATE_UI(CM_CAW, MutFrame::CeToggleCAW)
 
-	EVT_MENU(CM_INDEVSTOP, MutFrame::CmInDevStop)
-	EVT_MENU(CM_INDEVPLAY, MutFrame::CmInDevPlay)
-	EVT_MENU(CM_INDEVPAUSE, MutFrame::CmInDevPause)
-	EVT_UPDATE_UI(CM_INDEVSTOP, MutFrame::CeInDevStop)
-	EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
-	EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
-	//    EVT_ACTIVATE(MutFrame::OnActivate)
+EVT_MENU(CM_INDEVSTOP, MutFrame::CmInDevStop)
+EVT_MENU(CM_INDEVPLAY, MutFrame::CmInDevPlay)
+EVT_MENU(CM_INDEVPAUSE, MutFrame::CmInDevPause)
+EVT_UPDATE_UI(CM_INDEVSTOP, MutFrame::CeInDevStop)
+EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
+EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
+//    EVT_ACTIVATE(MutFrame::OnActivate)
 
-	EVT_CLOSE(MutFrame::OnClose)
-	EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
+EVT_CLOSE(MutFrame::OnClose)
+EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
 //	EVT_IDLE(MutFrame::OnIdle)
-	EVT_MENU(CM_SETTITLE, MutFrame::CmSetTitle)
+EVT_MENU(CM_SETTITLE, MutFrame::CmSetTitle)
 	//    EVT_SIZE(MutFrame::OnSize)
 END_EVENT_TABLE()
 
@@ -614,6 +629,24 @@ void MutFrame::PassEventToEditor(wxCommandEvent &event)
 
 	if (dynamic_cast<MutEditFile*>(client)) {
 		wxPostEvent(client,event);
+	}
+}
+
+void MutFrame::PassEventToEditorUI(wxUpdateUIEvent &event)
+{
+	event.Skip(false);
+
+	if (dynamic_cast<MutEditFile*>(client)) {
+		client->GetEventHandler()->ProcessEvent(event);
+	}
+}
+
+void MutFrame::PassEventToEditorFind(wxFindDialogEvent &event)
+{
+	event.Skip(false);
+
+	if (dynamic_cast<MutEditFile*>(client)) {
+		client->GetEventHandler()->ProcessEvent(event);
 	}
 }
 
@@ -1117,12 +1150,15 @@ void MutFrame::CeExecute(wxUpdateUIEvent& event)
 void MutFrame::CeActivate(wxUpdateUIEvent& event)
 {
 	//	event.Enable(!LogicOn && (Compiled || ActiveWinKind == WK_EDIT));
-	event.Enable(!LogicOn && (dynamic_cast<MutEditFile *>(client)));
+	bool enable = !LogicOn && (dynamic_cast<MutEditFile *>(client)); 
+	event.Enable(enable);
+	event.Show(enable);
 }
 
 void MutFrame::CeStop(wxUpdateUIEvent& event)
 {
 	event.Enable(LogicOn);
+	event.Show(LogicOn);
 }
 
 // Routenfenster anzeigen

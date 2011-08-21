@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.14 2011/08/20 17:50:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.15 2011/08/21 16:52:05 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/20 17:50:39 $
-* \version $Revision: 1.14 $
+* $Date: 2011/08/21 16:52:05 $
+* \version $Revision: 1.15 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.14  2011/08/20 17:50:39  keinstein
+* Revision 1.15  2011/08/21 16:52:05  keinstein
+* Integrate a more sophisticated editor menu based on the stc sample
+*
+* Revision 1.14  2011-08-20 17:50:39  keinstein
 * use  wxSTC for the editor windows
 *
 * Revision 1.13  2011-08-11 19:00:48  keinstein
@@ -68,6 +71,10 @@
 #include "wx/stc/stc.h"
 #include "muwx/stclanguage.h"
 #include "muconvauto.h"
+#include "wx/fontdlg.h"
+#if wxUSE_FINDREPLDLG
+    #include "wx/fdrepdlg.h"
+#endif // wxUSE_FINDREPLDLG
 
 namespace mutaborGUI {
 
@@ -109,9 +116,12 @@ namespace mutaborGUI {
 		void OnEditCut (wxCommandEvent &event);
 		void OnEditCopy (wxCommandEvent &event);
 		void OnEditPaste (wxCommandEvent &event);
+		void OnEditRedoUI (wxUpdateUIEvent& event);
+		void OnEditUndoUI (wxUpdateUIEvent& event);
 		// find
 		void OnFind (wxCommandEvent &event);
 		void OnFindNext (wxCommandEvent &event);
+		void OnFindDialog (wxFindDialogEvent& event);
 		void OnReplace (wxCommandEvent &event);
 		void OnReplaceNext (wxCommandEvent &event);
 		void OnBraceMatch (wxCommandEvent &event);
@@ -211,6 +221,12 @@ namespace mutaborGUI {
 		int m_FoldingMargin;
 		int m_DividerID;
 
+#if wxUSE_FINDREPLDLG
+		wxFindReplaceData m_findData;
+		
+		wxFindReplaceDialog *m_dlgFind,
+                        *m_dlgReplace;
+#endif // wxUSE_FINDREPLDLG
 
 		MutView * view;
 		muConvAuto autoConverter;

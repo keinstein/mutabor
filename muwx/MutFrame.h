@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.22 2011/08/14 18:32:18 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.23 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/14 18:32:18 $
- * \version $Revision: 1.22 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.22  2011/08/14 18:32:18  keinstein
+ * Revision 1.23  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.22  2011-08-14 18:32:18  keinstein
  * Use of m_childView of wxDocChildFrame instead of own view fixes a bad access.
  * Use wxDocChildFrame::OnCloseWindow
  * remove some unneeded code
@@ -196,6 +199,18 @@ public:
 	client window. 
 	\param event Event to be passed */
 	void PassEventToEditor(wxCommandEvent &event);
+
+	/// passes an UpdateUIEvent to the editor.
+	/** This function is used to pass one event to the
+	client window. 
+	\param event Event to be passed */
+	void PassEventToEditorUI(wxUpdateUIEvent& event);
+
+	/// passes a FindDialogEvent to the editor.
+	/** This function is used to pass one event to the
+	client window. 
+	\param event Event to be passed */
+	void PassEventToEditorFind(wxFindDialogEvent& event);
 
 	/// passes an event to the MDI client window.
 	/** \deprecated This function was formerly used to pass one event

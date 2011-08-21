@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.2 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.3 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.cpp,v $
- * Revision 1.2  2011/08/11 19:00:48  keinstein
+ * Revision 1.3  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.2  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -49,6 +52,7 @@
 #include "Defs.h"
 #include <wx/wxprec.h>
 #include "MutDocManager.h"
+#include "MutView.h"
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
@@ -57,6 +61,8 @@ namespace mutabor {
 
 	bool MutDocManager::TryParent(wxEvent& event)
 	{
+
+		DEBUGLOG(eventqueue,_T(""));
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
 #if 0
@@ -74,7 +80,7 @@ namespace mutabor {
 		}
 #endif
 
-		return false;
+		return true;
 	}
 
         // Extend event processing to search the view's event table
@@ -83,6 +89,8 @@ namespace mutabor {
 		if (!wxEvtHandler::ProcessEvent(event))
 		{
 			wxView* view = GetCurrentView();
+			DEBUGLOG(eventqueue,_T("View: %x"),
+				 dynamic_cast<MutView *>(view));
 			if (view && view->ProcessEvent(event))
 				return true;
 			else return false;

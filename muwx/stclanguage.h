@@ -2,12 +2,12 @@
  ********************************************************************
  * Language definitions for wxStyledTextControl (wxScintilla)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.h,v 1.1 2011/08/20 18:15:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.h,v 1.2 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/20 18:15:36 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: stclanguage.h,v $
- * Revision 1.1  2011/08/20 18:15:36  keinstein
+ * Revision 1.2  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.1  2011-08-20 18:15:36  keinstein
  * new files
  *
  *
@@ -131,6 +134,24 @@ namespace mutaborGUI {
 #define MutSTC_FLAG_WRAPMODE 16
 
 //----------------------------------------------------------------------------
+//! Lexers
+#define MutSTC_LEX_MUTABOR 900
+
+//----------------------------------------------------------------------------
+//! Lexer stats
+#define MutSTC_MUTABOR_DEFAULT 0
+#define MutSTC_MUTABOR_SECTION 1
+#define MutSTC_MUTABOR_PARAMETER 2
+#define MutSTC_MUTABOR_COMMENT 3
+#define MutSTC_MUTABOR_IDENTIFIER 4
+#define MutSTC_MUTABOR_DEFNAME 5
+#define MutSTC_MUTABOR_OPERATOR 6
+#define MutSTC_MUTABOR_PAREN 6
+#define MutSTC_MUTABOR_BRACKET 7
+#define MutSTC_MUTABOR_BRACE 8
+#define MutSTC_MUTABOR_NUMBER 9
+
+//----------------------------------------------------------------------------
 // CommonInfo
 
 	struct CommonInfo {
@@ -170,10 +191,10 @@ namespace mutaborGUI {
 //----------------------------------------------------------------------------
 // StyleInfo
 	struct StyleInfo {
-		wxChar *name;
-		wxChar *foreground;
-		wxChar *background;
-		wxChar *fontname;
+		const wxChar *name;
+		const wxChar *foreground;
+		const wxChar *background;
+		const wxChar *fontname;
 		int fontsize;
 		int fontstyle;
 		int lettercase;

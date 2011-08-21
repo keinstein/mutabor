@@ -2,12 +2,12 @@
 ********************************************************************
 * Language definitions for wxStyledTextControl (wxScintilla)
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.cpp,v 1.1 2011/08/20 18:15:36 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.cpp,v 1.2 2011/08/21 16:52:05 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/08/20 18:15:36 $
-* \version $Revision: 1.1 $
+* $Date: 2011/08/21 16:52:05 $
+* \version $Revision: 1.2 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
 *
 *
 * $Log: stclanguage.cpp,v $
-* Revision 1.1  2011/08/20 18:15:36  keinstein
+* Revision 1.2  2011/08/21 16:52:05  keinstein
+* Integrate a more sophisticated editor menu based on the stc sample
+*
+* Revision 1.1  2011-08-20 18:15:36  keinstein
 * new files
 *
 *
@@ -63,17 +66,17 @@ namespace mutaborGUI {
 //----------------------------------------------------------------------------
 // keywordlists
 // Mutabor
-	wxChar* MutWordlist1 =
+	const wxChar* MutWordlist1 =
 		_T("interval intervall logic logik midiin midiout tonsystem tonesystem ")
 		_T("tone ton retuning umstimmung pattern harmonie ");
-	wxChar* MutWordlist2 =
+	const wxChar* MutWordlist2 =
 		_T("shifted form key taste root wurzel");
-	wxChar* MutWordlist3 =
+	const wxChar* MutWordlist3 =
 		_T("distance abstand ");
 //----------------------------------------------------------------------------
 // keywordlists
 // C++
-	wxChar* CppWordlist1 =
+	const wxChar* CppWordlist1 =
 		_T("asm auto bool break case catch char class const const_cast ")
 		_T("continue default delete do double dynamic_cast else enum explicit ")
 		_T("export extern false float for friend goto if inline int long ")
@@ -82,9 +85,9 @@ namespace mutaborGUI {
 		_T("struct switch template this throw true try typedef typeid ")
 		_T("typename union unsigned using virtual void volatile wchar_t ")
 		_T("while");
-	wxChar* CppWordlist2 =
+	const wxChar* CppWordlist2 =
 		_T("file");
-	wxChar* CppWordlist3 =
+	const wxChar* CppWordlist3 =
 		_T("a addindex addtogroup anchor arg attention author b brief bug c ")
 		_T("class code date def defgroup deprecated dontinclude e em endcode ")
 		_T("endhtmlonly endif endlatexonly endlink endverbatim enum example ")
@@ -97,11 +100,11 @@ namespace mutaborGUI {
 		_T("verbinclude version warning weakgroup $ @ \"\" & < > # { }");
 
 // Python
-	wxChar* PythonWordlist1 =
+	const wxChar* PythonWordlist1 =
 		_T("and assert break class continue def del elif else except exec ")
 		_T("finally for from global if import in is lambda None not or pass ")
 		_T("print raise return try while yield");
-	wxChar* PythonWordlist2 =
+	const wxChar* PythonWordlist2 =
 		_T("ACCELERATORS ALT AUTO3STATE AUTOCHECKBOX AUTORADIOBUTTON BEGIN ")
 		_T("BITMAP BLOCK BUTTON CAPTION CHARACTERISTICS CHECKBOX CLASS ")
 		_T("COMBOBOX CONTROL CTEXT CURSOR DEFPUSHBUTTON DIALOG DIALOGEX ")

@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.5 2011/08/12 09:49:11 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.6 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/12 09:49:11 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.5  2011/08/12 09:49:11  keinstein
+ * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.5  2011-08-12 09:49:11  keinstein
  * act on some additional errors
  * delete Frame in OnClose if requested
  *
@@ -60,6 +63,7 @@ using mutaborGUI::MutView;
 IMPLEMENT_DYNAMIC_CLASS(MutView, wxView)
 
 BEGIN_EVENT_TABLE(MutView, wxView)
+
 END_EVENT_TABLE()
 
 namespace mutaborGUI {
@@ -184,6 +188,30 @@ namespace mutaborGUI {
 			 activate, activeView, this);
 	}
 
+
+	bool MutView::TryParent(wxEvent& event)
+	{
+
+		DEBUGLOG(eventqueue,_T(""));
+		// if we must pass some events to the Application, 
+		// they must be handled here somehow replacing false
+#if 0
+		// Implementation in Event.cpp:
+		if ( wxTheApp && false )
+		{
+			// Special case: don't pass wxEVT_IDLE to wxApp, since it'll always
+			// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be
+			// processed appropriately via SearchEventTable.
+			if ( event.GetEventType() != wxEVT_IDLE )
+			{
+				if ( wxTheApp->ProcessEvent(event) )
+					return true;
+			}
+		}
+#endif
+
+		return false;
+	}
 
 }
 ///\}

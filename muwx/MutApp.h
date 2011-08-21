@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.22 2011/08/20 17:50:39 keinstein Exp $
+ * $Id: MutApp.h,v 1.23 2011/08/21 16:52:04 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/08/20 17:50:39 $
- * \version $Revision: 1.22 $
+ *  $Date: 2011/08/21 16:52:04 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.22  2011/08/20 17:50:39  keinstein
+ * Revision 1.23  2011/08/21 16:52:04  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.22  2011-08-20 17:50:39  keinstein
  * use  wxSTC for the editor windows
  *
  * Revision 1.21  2011-08-16 07:13:54  keinstein
@@ -363,6 +366,13 @@ private:
 	    \param type Flags indicating, which menus shall be created. 
 	*/
 	wxMenu *  MakeFileMenu(wxMenuBar * menuBar, MenuType type);
+
+	/// Creates an edit menu
+	/** This function creates the editor menu.
+	    \param menuBar Menu bar, where the file menu is to be appended
+	    \param type Flags indicating, which menus shall be created. 
+	*/
+	void MakeEditMenu(wxMenuBar * menuBar, MenuType type);
 
 	/// Creates a mutabor logic menu
 	/** This function creates the logic menu.

@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.38 2011/08/20 17:50:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.39 2011/08/21 16:52:04 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/20 17:50:39 $
- * \version $Revision: 1.38 $
+ * $Date: 2011/08/21 16:52:04 $
+ * \version $Revision: 1.39 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.38  2011/08/20 17:50:39  keinstein
+ * Revision 1.39  2011/08/21 16:52:04  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.38  2011-08-20 17:50:39  keinstein
  * use  wxSTC for the editor windows
  *
  * Revision 1.37  2011-08-16 20:20:03  keinstein
@@ -217,10 +220,13 @@
 #include "MutConfDlg.h"
 #include "resourceload.h"
 #include "Action.h"
+#include "stclanguage.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>
 #endif
+
+using namespace mutaborGUI;
 
 wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
 #if wxUSE_PRINTING_ARCHITECTURE
@@ -418,7 +424,7 @@ bool MutApp::OnInit()
 	RestoreState();
 		
 	if (!GetTopWindow()) {
-		MutFrame * frame = CreateMainFrame(EditorMenu);
+		MutFrame * frame = CreateMainFrame(RouteMenu);
 		frame->RestoreState();
 		wxCommandEvent event(CM_ROUTES);
 		frame->CmRoutes(event);
@@ -475,20 +481,32 @@ bool MutApp::ProcessEvent(wxEvent& event)
 	bool retval =  wxApp::ProcessEvent(event);
 #ifdef DEBUG
 	if (!retval)
-		DEBUGLOG(eventqueue,_T("Unhandled event: Type %d"), event.GetEventType());
+		DEBUGLOG(eventqueue,_T("Undhandled event %x, id=%d, type=%d"),
+			 &event,
+			 event.GetId(),
+			 (int)event.GetEventType()
+			);
 #endif
 	return retval;
 }
 
 void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 {
-	DEBUGLOG(eventqueue,_T("Command"));
+	DEBUGLOG(eventqueue,_T("Command %x, id=%d, type=%d"),
+		 &event,
+		 event.GetId(),
+		 (int)event.GetEventType()
+		);
 	if (!document_manager.ProcessEvent(event)) 
 		event.Skip();
 }
 void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
 {
-	DEBUGLOG(eventqueue,_T("UpdateUI"));
+	DEBUGLOG(eventqueue,_T("UpdateUI: %x, id=%d, type=%d"),
+		 &event,
+		 event.GetId(),
+		 (int)event.GetEventType()
+		);
 	if (!document_manager.ProcessEvent(event)) 
 		event.Skip();
 }
@@ -777,6 +795,7 @@ MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 
 	wxMenuBar *menuBar = new wxMenuBar;
 	frame->SetFileMenu(MakeFileMenu(menuBar, type));
+	MakeEditMenu(menuBar, type);
 	MakeLogicMenu(menuBar);
 	MakeRoutesMenu(menuBar);
 	MakeViewMenu(menuBar, type);
@@ -1037,6 +1056,226 @@ wxString MutApp::GetResourceName(const wxString & file)
 	return localename;
 }
 
+wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
+{
+	wxMenu * retval;
+	OPENMENU;
+	retval = menu;
+	MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
+	         _("Create a new logic file."));
+	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
+	         _("Open a logic file in editor window"));
+
+	if (type == EditorMenu || type == RouteMenu) {
+		MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE,
+		         _("Save the current file."));
+		MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS,
+		         _("Save the current file with a new file name"));
+		menu->Append (wxID_CLOSE, 
+				  _("&Close\tCtrl+W"),
+				  _("Closes the currently active window"));
+		menu->AppendSeparator();
+	}
+
+	MENUITEM_SEPARATOR;
+
+	MENUITEM(_("&Execute\tCtrl+F9"), CM_EXECUTE,
+	         _("Load a logic file an immediately activate it"));
+
+#if (defined(__WXMAC__) || defined(__WXCOCOA__))
+	if (type == EditorMenu)
+#endif
+	MENUITEM_SEPARATOR;
+
+	if (type == EditorMenu) {
+		menu->Append (CM_PROPERTIES,
+			      _("Proper&ties ..\tCtrl+I"),
+			      _("Get some information about the currently edited file"));
+	} 
+	MENUITEM(_("&Preferences"), CM_SETUP, _("Edit program settings"));
+
+
+	if (type == EditorMenu) {
+		menu->AppendSeparator();
+		menu->Append (wxID_PRINT_SETUP,
+			      _("Print Set&up ..."),
+			      _("Configure the printer settings"));
+		menu->Append (wxID_PREVIEW, 
+			      _("Print Pre&view\tCtrl+Shift+P"),
+			      _("Show document as it would be printed"));
+		menu->Append (wxID_PRINT,
+			      _("&Print ..\tCtrl+P"),
+			      _("Print current document on a printer"));
+	}
+
+
+
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
+	MENUITEM_SEPARATOR;
+#endif
+	MENUITEM(_("E&xit"), CM_EXIT, _("Quit Mutabor"));
+	DEBUGLOG(docview,_T("Adding file history menu"));
+	document_manager.FileHistoryUseMenu(menu);
+	document_manager.GetFileHistory()->AddFilesToMenu(menu);
+
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
+	CLOSEMENU(_("&File"));
+#else
+	CLOSEMENU(getContextLocal(_("@MAC|&File")));
+#endif
+	return retval;
+
+}
+
+void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
+{
+	if (type != EditorMenu) return;
+
+	OPENMENU;
+	menu->Append (wxID_UNDO, _("&Undo\tCtrl+Z"));
+	menu->Append (wxID_REDO, _("&Redo\tCtrl+Shift+Z"));
+	menu->AppendSeparator();
+	menu->Append (wxID_CUT, _("Cu&t\tCtrl+X"));
+	menu->Append (wxID_COPY, _("&Copy\tCtrl+C"));
+	menu->Append (wxID_PASTE, _("&Paste\tCtrl+V"));
+	menu->Append (wxID_CLEAR, _("&Delete\tDel"));
+	menu->AppendSeparator();
+	menu->Append (wxID_SELECTALL, _("&Select all\tCtrl+A"));
+	menu->Append (CM_SELECTLINE, _("Select &line\tCtrl+L"));
+	menu->AppendSeparator();
+	menu->Append (wxID_FIND, _("&Find\tCtrl+F"));
+	menu->Append (CM_FINDNEXT, _("Find &next\tCtrl+G"));
+	menu->Append (CM_REPLACE, _("&Replace\tCtrl+H"));
+	menu->Append (CM_REPLACENEXT, _("Replace &again\tShift+F4"));
+	menu->AppendSeparator();
+	menu->Append (CM_BRACEMATCH, _("&Match brace\tCtrl+M"));
+	menu->Append (CM_GOTO, _("&Goto\tCtrl+G"));
+	menu->AppendSeparator();
+	menu->Append (CM_INDENTINC, _("&Indent increase\tTab"));
+	menu->Append (CM_INDENTRED, _("I&ndent reduce\tBksp"));
+
+	// change case submenu
+	wxMenu *menuChangeCase = new wxMenu;
+	menuChangeCase->Append (CM_CHANGEUPPER, _("&Upper case"));
+	menuChangeCase->Append (CM_CHANGELOWER, _("&Lower case"));
+
+	// convert EOL submenu
+	wxMenu *menuConvertEOL = new wxMenu;
+	menuConvertEOL->Append (CM_CONVERTCR, _("CR (&Linux)"));
+	menuConvertEOL->Append (CM_CONVERTCRLF, _("CR+LF (&Windows)"));
+	menuConvertEOL->Append (CM_CONVERTLF, _("LF (&Macintosh)"));
+
+	menu->AppendCheckItem (CM_READONLY, _("&Readonly mode"));
+	menu->Append (CM_CHANGECASE, _("Change &case to ..."), menuChangeCase);
+	menu->Append (CM_CONVERTEOL, _("Convert line &endings to ..."), 
+		      menuConvertEOL);
+
+	CLOSEMENU(_("&Edit"));
+}
+
+	
+void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
+{
+	OPENMENU;
+	MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
+	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
+	MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
+	MENUITEM_SEPARATOR;
+	MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
+	CLOSEMENU(_("&Logic"));
+}
+
+void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
+{
+	OPENMENU;
+	MENUITEM(_("&Load routes"), CM_ROUTELOAD,
+	         _("Load the current route configuration from a file"));
+	MENUITEM(_("&Save routes"), CM_ROUTESAVE,
+	         _("Save current route configuration to a file."));
+	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
+	         _("Save current route configuration to a file with a new name."));
+	CLOSEMENU(_("&Routes"));
+}
+
+void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
+{
+	
+
+	OPENMENU;
+	if (type == EditorMenu) {
+		// hilight submenu
+		wxMenu *menuHilight = new wxMenu;
+		int Nr;
+		for (Nr = 0; Nr < g_LanguagePrefsSize; Nr++) {
+			menuHilight->Append (CM_HILIGHTFIRST + Nr,
+					     g_LanguagePrefs [Nr].name);
+		}
+
+		// charset submenu
+		wxMenu *menuCharset = new wxMenu;
+		menuCharset->Append (CM_CHARSETANSI, _("&ANSI (Windows)"));
+		menuCharset->Append (CM_CHARSETMAC, _("&MAC (Macintosh)"));
+
+		menu->Append (CM_HILIGHTLANG, _("&Hilight language .."), menuHilight);
+		menu->AppendSeparator();
+		menu->AppendCheckItem (CM_FOLDTOGGLE, _("&Toggle current fold\tCtrl+T"));
+		menu->AppendCheckItem (CM_OVERTYPE, _("&Overwrite mode\tIns"));
+		menu->AppendCheckItem (CM_WRAPMODEON, _("&Wrap mode\tCtrl+U"));
+		menu->AppendSeparator();
+		menu->AppendCheckItem (CM_DISPLAYEOL, _("Show line &endings"));
+		menu->AppendCheckItem (CM_INDENTGUIDE, _("Show &indent guides"));
+		menu->AppendCheckItem (CM_LINENUMBER, _("Show line &numbers"));
+		menu->AppendCheckItem (CM_LONGLINEON, _("Show &long line marker"));
+		menu->AppendCheckItem (CM_WHITESPACE, _("Show white&space"));
+		menu->AppendSeparator();
+		menu->Append (CM_USECHARSET, _("Use &code page of .."), menuCharset);
+		menu->AppendSeparator();
+	}
+	
+	/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
+	   _("Toggle status bar on/off"));
+	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
+	   _("Toggle tool bar on/off"));
+	MENUITEM_SEPARATOR;
+	*/
+	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
+	              _("Open route configuration window"));
+
+	if (type != ProgramMenu) {
+		MENUITEM_SEPARATOR;
+		MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
+		              _("Show current keys window"));
+		MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
+		              _("Show tone system window"));
+		MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
+		              _("Show current actions window"));
+		/*	  MENUITEM_SEPARATOR;
+		MENUCHECKITEM(_("&One window mode"), CM_OWM,
+		_("Toggle logic satus window: one each or one common"));
+		MENUCHECKITEM(_("One &common action window"), CM_CAW,
+		_("Toggle action window mode: one each or one common"));
+		*/
+		MENUITEM_SEPARATOR;
+		menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
+		             _("Select current Box"));
+	}
+
+	CLOSEMENU(_("&View"));
+}
+
+void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
+{
+	OPENMENU;
+	MENUITEM(_("&Play"), CM_INDEVPLAY,
+	         _("Start playing the music from input file devices"));
+	MENUITEM(_("St&op"), CM_INDEVSTOP,
+	         _("Stop playing the music from input file devices"));
+	MENUITEM(_("P&ause"), CM_INDEVPAUSE,
+	         _("Pause plaing the music from input file devices"));
+	CLOSEMENU(_("&Sequencer"));
+}
+
+
 void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
 
 {
@@ -1070,120 +1309,6 @@ void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
 	CLOSEMENU(_("&Help"));
 }
 
-void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
-{
-	OPENMENU;
-	MENUITEM(_("&Play"), CM_INDEVPLAY,
-	         _("Start playing the music from input file devices"));
-	MENUITEM(_("St&op"), CM_INDEVSTOP,
-	         _("Stop playing the music from input file devices"));
-	MENUITEM(_("P&ause"), CM_INDEVPAUSE,
-	         _("Pause plaing the music from input file devices"));
-	CLOSEMENU(_("&Sequencer"));
-}
-
-void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
-{
-	OPENMENU;
-	/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
-	   _("Toggle status bar on/off"));
-	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
-	   _("Toggle tool bar on/off"));
-	MENUITEM_SEPARATOR;
-	*/
-	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
-	              _("Open route configuration window"));
-
-	if (type != ProgramMenu) {
-		MENUITEM_SEPARATOR;
-		MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
-		              _("Show current keys window"));
-		MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
-		              _("Show tone system window"));
-		MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
-		              _("Show current actions window"));
-		/*	  MENUITEM_SEPARATOR;
-		MENUCHECKITEM(_("&One window mode"), CM_OWM,
-		_("Toggle logic satus window: one each or one common"));
-		MENUCHECKITEM(_("One &common action window"), CM_CAW,
-		_("Toggle action window mode: one each or one common"));
-		*/
-		MENUITEM_SEPARATOR;
-		menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
-		             _("Select current Box"));
-	}
-
-	CLOSEMENU(_("&View"));
-}
-
-void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
-{
-	OPENMENU;
-	MENUITEM(_("&Load routes"), CM_ROUTELOAD,
-	         _("Load the current route configuration from a file"));
-	MENUITEM(_("&Save routes"), CM_ROUTESAVE,
-	         _("Save current route configuration to a file."));
-	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
-	         _("Save current route configuration to a file with a new name."));
-	CLOSEMENU(_("&Routes"));
-}
-
-void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
-{
-	OPENMENU;
-	MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
-	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
-	MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
-	CLOSEMENU(_("&Logic"));
-}
-
-wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
-{
-	wxMenu * retval;
-	OPENMENU;
-	retval = menu;
-	MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
-	         _("Create a new logic file."));
-	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
-	         _("Open a logic file in editor window"));
-
-	if (type == EditorMenu || type == RouteMenu) {
-		MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE,
-		         _("Save the current file."));
-		MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS,
-		         _("Save the current file with a new file name"));
-	}
-
-	MENUITEM_SEPARATOR;
-
-	MENUITEM(_("&Execute\tCtrl+F9"), CM_EXECUTE,
-	         _("Load a logic file an immediately activate it"));
-
-#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	MENUITEM_SEPARATOR;
-#endif
-
-	MENUITEM(_("&Preferences"), CM_SETUP, _("Edit program settings"));
-
-#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	MENUITEM_SEPARATOR;
-#endif
-	MENUITEM(_("E&xit"), CM_EXIT, _("Quit Mutabor"));
-	DEBUGLOG(docview,_T("Adding file history menu"));
-	document_manager.FileHistoryUseMenu(menu);
-	document_manager.GetFileHistory()->AddFilesToMenu(menu);
-
-#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	CLOSEMENU(_("&File"));
-#else
-	CLOSEMENU(getContextLocal(_("@MAC|&File")));
-#endif
-	return retval;
-	
-}
-
 int MutApp::OnExit()
 {
 	SaveState();
@@ -1201,6 +1326,9 @@ int MutApp::OnExit()
 
 void MutApp::MacOpenFile(const wxString &fileName)
 {
+	///\todo use the some as the command line functions
+	STUBC;
+	return;
 	//  wxApp::MacOpenFile(fileName);
 
 	DEBUGLOG (other, _T("Filename: %s"),fileName.c_str());
