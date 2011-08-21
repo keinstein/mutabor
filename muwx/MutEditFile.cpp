@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.16 2011/08/20 17:50:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.17 2011/08/21 16:52:05 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/20 17:50:39 $
-* \version $Revision: 1.16 $
+* $Date: 2011/08/21 16:52:05 $
+* \version $Revision: 1.17 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.16  2011/08/20 17:50:39  keinstein
+* Revision 1.17  2011/08/21 16:52:05  keinstein
+* Integrate a more sophisticated editor menu based on the stc sample
+*
+* Revision 1.16  2011-08-20 17:50:39  keinstein
 * use  wxSTC for the editor windows
 *
 * Revision 1.15  2011-08-11 19:00:48  keinstein
@@ -88,6 +91,7 @@
 #include "CompDlg.h"
 #include "Runtime.h"
 #include "MutView.h"
+#include "stclanguage.h"
 
 CompDlg *CompDia = NULL;
 
@@ -97,8 +101,8 @@ CompDlg *CompDia = NULL;
 using mutaborGUI::MutEditFile;
 BEGIN_EVENT_TABLE(MutEditFile, wxStyledTextCtrl)
 //    EVT_MOUSE_EVENTS(MyCanvas::OnEvent)
-EVT_MENU(CM_FILESAVE,            MutEditFile::CmFileSave)
-EVT_MENU(CM_FILESAVEAS,          MutEditFile::CmFileSaveAs)
+//EVT_MENU(CM_FILESAVE,            MutEditFile::CmFileSave)
+//EVT_MENU(CM_FILESAVEAS,          MutEditFile::CmFileSaveAs)
 EVT_MENU(CM_COMPILE,             MutEditFile::CmCompile)
 EVT_MENU(CM_COMPACT,             MutEditFile::CmCompAct)
 EVT_MENU(CM_ACTIVATE,            MutEditFile::CmCompAct)
@@ -117,6 +121,9 @@ EVT_MENU (wxID_SELECTALL,        MutEditFile::OnEditSelectAll)
 EVT_MENU (CM_SELECTLINE,         MutEditFile::OnEditSelectLine)
 EVT_MENU (wxID_REDO,             MutEditFile::OnEditRedo)
 EVT_MENU (wxID_UNDO,             MutEditFile::OnEditUndo)
+EVT_UPDATE_UI(wxID_REDO,         MutEditFile::OnEditRedoUI)
+EVT_UPDATE_UI(wxID_UNDO,         MutEditFile::OnEditUndoUI)
+
 // find
 EVT_MENU (wxID_FIND,             MutEditFile::OnFind)
 EVT_MENU (CM_FINDNEXT,           MutEditFile::OnFindNext)
@@ -124,6 +131,11 @@ EVT_MENU (CM_REPLACE,            MutEditFile::OnReplace)
 EVT_MENU (CM_REPLACENEXT,        MutEditFile::OnReplaceNext)
 EVT_MENU (CM_BRACEMATCH,         MutEditFile::OnBraceMatch)
 EVT_MENU (CM_GOTO,               MutEditFile::OnGoto)
+EVT_FIND(wxID_ANY,               MutEditFile::OnFindDialog)
+EVT_FIND_NEXT(wxID_ANY,          MutEditFile::OnFindDialog)
+EVT_FIND_REPLACE(wxID_ANY,       MutEditFile::OnFindDialog)
+EVT_FIND_REPLACE_ALL(wxID_ANY,   MutEditFile::OnFindDialog)
+EVT_FIND_CLOSE(wxID_ANY,         MutEditFile::OnFindDialog)
 // view
 EVT_MENU_RANGE (CM_HILIGHTFIRST, CM_HILIGHTLAST,
 		MutEditFile::OnHilightLang)
@@ -166,10 +178,14 @@ namespace mutaborGUI {
 				   pos, 
 				   size, 
 				   wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				   | wxTE_NOHIDESEL | wxHSCROLL | wxVSCROLL, 
+				   | wxTE_NOHIDESEL | wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN, 
 				   name)
 	{
 		Init();
+#if wxUSE_FINDREPLDLG
+		m_dlgFind = m_dlgReplace = NULL;
+#endif
+		
 	}
 	
 	MutEditFile::MutEditFile(MutView * v,
@@ -184,11 +200,14 @@ namespace mutaborGUI {
 				   size, 
 				   wxTE_PROCESS_TAB | 
 				   wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				   | wxTE_NOHIDESEL | wxHSCROLL , 
+				   | wxTE_NOHIDESEL | wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN , 
 				   name),
 		  view(v)
 	{
 		Init();
+#if wxUSE_FINDREPLDLG
+		m_dlgFind = m_dlgReplace = NULL;
+#endif
 	}
 
 
@@ -492,6 +511,14 @@ namespace mutaborGUI {
 	}
 
 // edit event handlers
+	void MutEditFile::OnEditUndoUI (wxUpdateUIEvent &event) {
+		event.Enable(CanUndo());
+	}
+
+	void MutEditFile::OnEditRedoUI (wxUpdateUIEvent &event) {
+		event.Enable(CanRedo());
+	}
+
 	void MutEditFile::OnEditRedo (wxCommandEvent &WXUNUSED(event)) {
 		if (!CanRedo()) return;
 		Redo ();
@@ -508,7 +535,8 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnEditCut (wxCommandEvent &WXUNUSED(event)) {
-		if (GetReadOnly() || (GetSelectionEnd()-GetSelectionStart() <= 0)) return;
+		if (GetReadOnly() || (GetSelectionEnd()-GetSelectionStart() <= 0))
+			return;
 		Cut ();
 	}
 
@@ -522,13 +550,135 @@ namespace mutaborGUI {
 		Paste ();
 	}
 
-	void MutEditFile::OnFind (wxCommandEvent &WXUNUSED(event)) {
+	void MutEditFile::OnFind (wxCommandEvent &event) {
+		SearchAnchor();
+		if ( m_dlgFind )
+		{
+			delete m_dlgFind;
+			m_dlgFind = NULL;
+		}
+		m_dlgFind = new wxFindReplaceDialog (this,
+						     &m_findData,
+						     _T("Find dialog"),
+						     // just for testing
+						     //wxFR_NOWHOLEWORD
+						     0);
+		if (m_dlgFind)
+			m_dlgFind->Show(true);
 	}
 
 	void MutEditFile::OnFindNext (wxCommandEvent &WXUNUSED(event)) {
 	}
 
-	void MutEditFile::OnReplace (wxCommandEvent &WXUNUSED(event)) {
+	void MutEditFile::OnFindDialog (wxFindDialogEvent& event)
+	{
+		DEBUGLOG(editor,_T("Find (flags=%x,%s)"),
+			 event.GetFlags(),
+			 (const wxChar*)event.GetFindString());
+		wxEventType type = event.GetEventType();
+
+		if ( type == wxEVT_COMMAND_FIND || type == wxEVT_COMMAND_FIND_NEXT )
+		{
+			
+			int flags = 0;
+			if (event.GetFlags() & wxFR_WHOLEWORD) 
+				flags |= wxSTC_FIND_WHOLEWORD;
+			if (event.GetFlags() & wxFR_MATCHCASE) 
+				flags |=  wxSTC_FIND_WHOLEWORD;
+
+			SetSearchFlags(flags);
+			if (event.GetFlags() & wxFR_DOWN) {
+				int i = GetTargetEnd();
+				SetTargetEnd(GetLength());
+				SetTargetStart(i);
+			} else {
+				int i = GetTargetStart();
+				SetTargetEnd(0);
+				SetTargetStart(i);
+			}
+			int result = SearchInTarget(event.GetFindString());
+			if (result < 0) {
+				// \todo restart search.
+				STUBC;
+			}
+			else  {
+				SetCurrentPos(GetTargetStart());
+				SetSelection(GetTargetStart(),GetTargetEnd());
+			}
+			
+			DEBUGLOG(other,_(""));
+			DEBUGLOG(editor,_(""));
+			DEBUGLOG(editor,_T("Find (flags=%x,%s) = %d"),
+				 event.GetFlags(),
+				 (const wxChar*)event.GetFindString(),result);
+		}
+		else if ( type == wxEVT_COMMAND_FIND_REPLACE ||
+			  type == wxEVT_COMMAND_FIND_REPLACE_ALL )
+		{
+			wxString s = event.GetFindString();
+			wxString replace =  event.GetReplaceString();
+			bool down = event.GetFlags() & wxFR_DOWN;
+			bool wholeword = event.GetFlags() & wxFR_WHOLEWORD;
+			bool matchcase =  event.GetFlags() & wxFR_MATCHCASE;
+			if (type == wxEVT_COMMAND_FIND_REPLACE_ALL) { 
+				SearchAnchor();
+			}
+		}
+		else if ( type == wxEVT_COMMAND_FIND_CLOSE )
+		{
+			wxFindReplaceDialog *dlg = event.GetDialog();
+
+			int idMenu = wxID_ANY;
+			const wxChar *txt;
+			if ( dlg == m_dlgFind )
+			{
+				idMenu = wxID_FIND;
+				m_dlgFind = NULL;
+			}
+			else if ( dlg == m_dlgReplace )
+			{
+				idMenu = CM_REPLACE;
+				m_dlgReplace = NULL;
+			}
+			else
+			{
+				UNREACHABLEC;
+			}
+
+#if 0
+			if ( idMenu != wxID_ANY )
+			{
+				GetMenuBar()->Check(idMenu, false);
+			}
+#endif
+
+			dlg->Destroy();
+		}
+		else
+		{
+			wxLogError(wxT("Unknown find dialog event!"));
+			UNREACHABLEC;
+		}
+	}
+
+	void MutEditFile::OnReplace (wxCommandEvent & event) {
+		SearchAnchor();
+		OnReplaceNext(event);
+		if ( m_dlgReplace )
+		{
+			delete m_dlgReplace;
+			m_dlgReplace = NULL;
+		}
+		else
+		{
+			m_dlgReplace = new wxFindReplaceDialog(this,
+							       &m_findData,
+							       _T("Find and replace dialog"),
+							       wxFR_REPLACEDIALOG
+				);
+
+			m_dlgReplace->Show(true);
+		}
 	}
 
 	void MutEditFile::OnReplaceNext (wxCommandEvent &WXUNUSED(event)) {

@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.2 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.3 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.2  2011/08/11 19:00:48  keinstein
+ * Revision 1.3  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.2  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -68,11 +71,10 @@ namespace mutabor {
 
 	protected:
 		/// Pass certain events to the Application.
-		/** MutDocManager::ProcessEvent is called directly from MutApp event handlers.
-		    this leads to endless loops. To prevent these loops, we must be very careful,
-		    which kind of events get passed back.
-	    
-		    Probably no events should be propagatetd.
+		/** MutDocManager::ProcessEvent is called directly from MutApp 
+		    event handlers. This leads to endless loops. To prevent these
+		    loops, we must be very careful, which kind of events get 
+		    passed back. Probably no events should be propagated.
 		*/
 		virtual bool TryParent(wxEvent& event);	
 	};

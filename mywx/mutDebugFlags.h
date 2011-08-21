@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.5 2011/07/31 20:16:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.6 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/31 20:16:04 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.5  2011/07/31 20:16:04  keinstein
+ * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.5  2011-07-31 20:16:04  keinstein
  * Implemented opening files from command line using Document/View framework
  *
  * Revision 1.4  2011-02-20 22:35:59  keinstein
@@ -46,5 +49,6 @@ DEBUGFLAG(mutparser, _("Debug the Mutabor file parser"))
 DEBUGFLAG(config, _("Debug the config file parser"))
 DEBUGFLAG(docview, _("Debug the Document/View framework"))
 DEBUGFLAG(eventqueue, _("Print unhandled events in the queue"))
+DEBUGFLAG(editor, _("Debug editor related functionality"))
 
 ///\}

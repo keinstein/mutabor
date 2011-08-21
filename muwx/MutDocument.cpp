@@ -2,16 +2,19 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.7 2011/08/20 17:50:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.8 2011/08/21 16:52:05 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/08/20 17:50:39 $
-* \version $Revision: 1.7 $
+* $Date: 2011/08/21 16:52:05 $
+* \version $Revision: 1.8 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.7  2011/08/20 17:50:39  keinstein
+* Revision 1.8  2011/08/21 16:52:05  keinstein
+* Integrate a more sophisticated editor menu based on the stc sample
+*
+* Revision 1.7  2011-08-20 17:50:39  keinstein
 * use  wxSTC for the editor windows
 *
 * Revision 1.6  2011-08-16 20:20:03  keinstein
@@ -62,7 +65,9 @@
 #include <cstdio>
 #include <iostream>
 
+using mutaborGUI::MutCommandProcessor;
 using mutaborGUI::MutDocument;
+IMPLEMENT_DYNAMIC_CLASS(MutCommandProcessor, wxCommandProcessor)
 IMPLEMENT_DYNAMIC_CLASS(MutDocument, wxDocument)
 
 BEGIN_EVENT_TABLE(MutDocument, wxDocument)
@@ -72,6 +77,101 @@ BEGIN_EVENT_TABLE(MutDocument, wxDocument)
 END_EVENT_TABLE()
 
 namespace mutaborGUI {
+	MutCommandProcessor::MutCommandProcessor(MutDocument * doc,int maxCommands):
+		wxCommandProcessor(maxCommands)
+	{
+		m_undoAccelerator = wxT("\tCtrl+Z");
+		m_redoAccelerator = wxT("\tShift+Ctrl+Z");
+		document = doc;
+	}
+
+	MutCommandProcessor::~MutCommandProcessor()
+	{
+	}
+
+
+	bool MutCommandProcessor::DoCommand(wxCommand& cmd)
+	{
+		DEBUGLOG(editor,_T("doing Command: %s"),
+			 (const wxChar*)cmd.GetName().c_str());
+		return cmd.Do();
+	}
+
+	bool MutCommandProcessor::UndoCommand(wxCommand& cmd)
+	{
+		DEBUGLOG(editor,_T("undoing Command: %s"),
+			 (const wxChar*)cmd.GetName().c_str());
+		return cmd.Undo();
+	}
+
+// Pass a command to the processor. The processor calls Do();
+// if successful, is appended to the command history unless
+// storeIt is false.
+	bool MutCommandProcessor::Submit(wxCommand *command, bool storeIt)
+	{
+
+		DEBUGLOG(editor,_T("Submitted command (storeIt = %d): %s"),
+			 storeIt,
+			 (command?(const wxChar*)command->GetName().c_str():_T(""))
+			);
+		return wxCommandProcessor::Submit(command,false);
+	}
+
+	void MutCommandProcessor::Store(wxCommand *command)
+	{
+		DEBUGLOG(editor,_T("storing command: %s"),
+			 (command?(const wxChar*)command->GetName().c_str():_T(""))
+			);
+		wxCommandProcessor::Store(command);
+	}
+
+	bool MutCommandProcessor::Undo()
+	{
+		DEBUGLOG(editor,_T(""));
+		STUBC;
+		return wxCommandProcessor::Undo();
+	}
+
+	bool MutCommandProcessor::Redo()
+	{
+		DEBUGLOG(editor,_T(""));
+		STUBC;
+		return wxCommandProcessor::Redo();
+	}
+
+	bool MutCommandProcessor::CanUndo() const
+	{
+		DEBUGLOG(editor,_T("Can undo?"));
+		STUBC;
+		return true;
+	}
+
+	bool MutCommandProcessor::CanRedo() const
+	{
+		DEBUGLOG(editor,_T("Can redo?"));
+		STUBC;
+		return true;
+	}
+
+	void MutCommandProcessor::Initialize()
+	{
+		DEBUGLOG(editor,_T(""));
+		wxCommandProcessor::Initialize();
+	}
+
+	void MutCommandProcessor::SetMenuStrings()
+	{
+		DEBUGLOG(editor,_T(""));
+		wxCommandProcessor::SetMenuStrings();
+	}
+
+	void MutCommandProcessor::ClearCommands()
+	{
+		DEBUGLOG(editor,_T(""));
+		wxCommandProcessor::ClearCommands();
+	}
+
+
 
 	MutDocument::MutDocument():wxDocument()
 	{
@@ -82,6 +182,11 @@ namespace mutaborGUI {
 	MutDocument::~MutDocument()
 	{
 
+	}
+
+	wxCommandProcessor* MutDocument::OnCreateCommandProcessor()
+	{
+		return NULL;
 	}
 
 
@@ -241,6 +346,32 @@ namespace mutaborGUI {
 	{
 		event.Enable(true);
 		// printf("MutDocument::OnNewViewUpdateUI\n");
+	}
+
+
+	bool MutDocument::TryParent(wxEvent& event)
+	{
+
+		DEBUGLOG(eventqueue,_T(""));
+		// if we must pass some events to the Application, 
+		// they must be handled here somehow replacing false
+		return false;
+#if 0
+		// Implementation in Event.cpp:
+		if ( wxTheApp && false )
+		{
+			// Special case: don't pass wxEVT_IDLE to wxApp, since it'll always
+			// swallow it. wxEVT_IDLE is sent explicitly to wxApp so it will be
+			// processed appropriately via SearchEventTable.
+			if ( event.GetEventType() != wxEVT_IDLE )
+			{
+				if ( wxTheApp->ProcessEvent(event) )
+					return true;
+			}
+		}
+#endif
+
+		return false;
 	}
 
 	

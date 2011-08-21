@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.5 2011/08/11 19:00:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.6 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.5  2011/08/11 19:00:48  keinstein
+ * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.5  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -99,6 +102,15 @@ namespace mutaborGUI {
 		
 		DECLARE_EVENT_TABLE()
 	protected:
+		/// Pass certain events to the Application.
+		/** MutView::ProcessEvent is called indirectly from MutApp event 
+		    handlers. This leads to endless loops. To prevent these loops, 
+		    we must be very careful, which kind of events get passed back.
+	    
+		    Probably no events should be propagated.
+		*/
+		bool TryParent(wxEvent& event);	
+
 		MutEditFile * textsw;
 		
 		DECLARE_DYNAMIC_CLASS(MutView)

@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.13 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.14 2011/08/21 16:52:05 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.13 $
+ * $Date: 2011/08/21 16:52:05 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.13  2011/02/20 22:35:57  keinstein
+ * Revision 1.14  2011/08/21 16:52:05  keinstein
+ * Integrate a more sophisticated editor menu based on the stc sample
+ *
+ * Revision 1.13  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -43,6 +46,7 @@
 
 #include "wx/toolbar.h"
 
+#if 0
 #include "bitmaps/new.xpm"
 #include "bitmaps/open.xpm"
 #include "bitmaps/save.xpm"
@@ -51,6 +55,7 @@
 #include "bitmaps/paste.xpm"
 #include "bitmaps/print.xpm"
 #include "bitmaps/help.xpm"
+#endif
 
 
 //#include "Mutabor.rh"
