@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.37 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.38 2011/08/24 21:19:36 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.37 $
+ * \date $Date: 2011/08/24 21:19:36 $
+ * \version $Revision: 1.38 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.37  2011/08/21 16:52:05  keinstein
+ * Revision 1.38  2011/08/24 21:19:36  keinstein
+ * first run with 2.9.2+
+ *
+ * Revision 1.37  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.36  2011-08-20 17:50:39  keinstein
@@ -713,9 +716,14 @@ void MutFrame::OnClose(wxCloseEvent& event)
 
 
 	// wxDocChildFrame will veto if there is no View associated
-	if (m_childView)
+	if (m_childView) {
+#if wxCHECK_VERSION(2,9,0)
+		STUBC;
+		event.Skip();	
+#else	
 		wxDocChildFrame::OnCloseWindow(event);
-	else 
+#endif
+	} else 
 		Destroy();
 }
 
@@ -856,7 +864,7 @@ bool MutFrame::SetClient (wxWindow * win, const wxString &title)
 	DEBUGLOG(docview,_T("Setting client of %x to %x with title '%s'"),
 		 this,
 		 win,
-		 (char *)title.c_str());
+		 (const wxChar *)title.c_str());
 
 	client = win;
 	SetTitle(title);

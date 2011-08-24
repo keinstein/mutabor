@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.3 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.4 2011/08/24 21:19:36 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/08/24 21:19:36 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.3  2011/08/21 16:52:05  keinstein
+ * Revision 1.4  2011/08/24 21:19:36  keinstein
+ * first run with 2.9.2+
+ *
+ * Revision 1.3  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.2  2011-08-11 19:00:48  keinstein
@@ -59,7 +62,7 @@
     #pragma hdrstop
 #endif
 
-namespace mutabor {
+namespace mutaborGUI {
 	class MutDocManager:public wxDocManager {
 	public:
 		/// Extend event processing to search the view's event table

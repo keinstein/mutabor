@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.18 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.19 2011/08/24 21:19:36 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.18 $
+ * $Date: 2011/08/24 21:19:36 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.18  2011/08/21 16:52:05  keinstein
+ * Revision 1.19  2011/08/24 21:19:36  keinstein
+ * first run with 2.9.2+
+ *
+ * Revision 1.18  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.17  2011-02-20 22:35:57  keinstein
@@ -136,7 +139,7 @@ extern RtMidiIn *rtmidiin;
 #define POINT_IN(p, x1, y1, xl, yl)                             \
         (x1 <= p.x && p.x < x1+xl && y1 < p.y && p.y < y1+yl)
 
-DevType IsDT;  // Info f¸r Inputfilter
+//DevType IsDT;  // Info f¸r Inputfilter
 
 extern int curBox;
 
@@ -456,7 +459,7 @@ END_EVENT_TABLE()
   DEFAULT_QUALITY, DEFAULT_PITCH|FF_DONTCARE, "MS Sans Serif");
 */
 
-wxFont RouteFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+//wxFont RouteFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 
 void testdialog();
 

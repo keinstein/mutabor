@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.23 2011/08/21 16:52:04 keinstein Exp $
+ * $Id: MutApp.h,v 1.24 2011/08/24 21:19:36 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/08/21 16:52:04 $
- * \version $Revision: 1.23 $
+ *  $Date: 2011/08/24 21:19:36 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.23  2011/08/21 16:52:04  keinstein
+ * Revision 1.24  2011/08/24 21:19:36  keinstein
+ * first run with 2.9.2+
+ *
+ * Revision 1.23  2011-08-21 16:52:04  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.22  2011-08-20 17:50:39  keinstein
@@ -352,10 +355,10 @@ public:
 	}
 
 	/// Allow access to the document manager
-	const wxDocManager *GetDocumentManager() const { return &document_manager; }
+	const wxDocManager *GetDocumentManager() const { return document_manager; }
 
 	/// Allow write access to the document manager
-	wxDocManager *GetDocumentManager() { return &document_manager; }
+	wxDocManager *GetDocumentManager() { return document_manager; }
     
 
 private:
@@ -412,7 +415,7 @@ protected:
 	wxLocale m_locale;
 
 	/// Document manager.
-	mutabor::MutDocManager document_manager;
+	mutaborGUI::MutDocManager * document_manager;
 
 	/// flag indicating, that we are in quitting mode.
 	bool quitting;
