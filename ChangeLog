@@ -1,3 +1,58 @@
+2011-08-16  author  <author@nalp15>
+
+	* doc/localized/de/Hilfe.zip, mu32/mut.cpp, mu32/mut.h, muwx/MutApp.cpp, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Fix compiling on Mac OS X 10.5
+
+	* Makefile.am, muwx/MutApp.cpp, muwx/MutApp.h, osdep/macosx/Info.plist.in, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	added Creator code to .app meta data
+
+2011-08-15  author  <author@nalp15>
+
+	* doc/mutaborlst.tex: added mutabor syntax for LaTeX listings package
+
+	* doc/Makefile.am: changed emlines.sty to tsemlines.sty
+
+2011-08-14  author  <author@nalp15>
+
+	* muwx/MutApp.cpp: raise frame after “opening” an already open file
+
+	* muwx/MutFrame.cpp, muwx/MutFrame.h:
+	Use of m_childView of wxDocChildFrame instead of own view fixes a bad access.
+	Use wxDocChildFrame::OnCloseWindow
+	remove some unneeded code
+
+2011-08-12  author  <author@nalp15>
+
+	* muwx/MutView.cpp: act on some additional errors
+	delete Frame in OnClose if requested
+
+	* mywx/muconvauto.cpp:
+	fix BOM detection in case no length is providet by wxWidgets
+
+2011-08-11  author  <author@nalp15>
+
+	* muwx/MutApp.cpp, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h, muwx/configtree.h:
+	get Document/View running.
+	Needs further testing (possible segfaults).
+
+2011-08-06  author  <author@nalp15>
+
+	* ChangeLog, muwx/MutApp.cpp: allow multiple open documents
+
+	* Makefile.am, muwx/MutDocManager.cpp, muwx/MutDocManager.h:
+	added mutabor document manager class
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutFrame.cpp, muwx/MutFrame.h:
+	activated and debugged document manager
+
+	* muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutView.cpp, muwx/MutView.h:
+	documentation fixes
+
+	* osdep/macosx/Application_Code.txt:
+	registered application code with Apple
+
+	* templates/template.cpp: added “official” license descripiton
+
 2011-08-06  author  <author@tobias2>
 
 	* MutDocManager.cpp, MutDocManager.h:

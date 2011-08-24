@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.39 2011/08/21 16:52:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.40 2011/08/24 21:19:36 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/21 16:52:04 $
- * \version $Revision: 1.39 $
+ * $Date: 2011/08/24 21:19:36 $
+ * \version $Revision: 1.40 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.39  2011/08/21 16:52:04  keinstein
+ * Revision 1.40  2011/08/24 21:19:36  keinstein
+ * first run with 2.9.2+
+ *
+ * Revision 1.39  2011-08-21 16:52:04  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.38  2011-08-20 17:50:39  keinstein
@@ -221,6 +224,7 @@
 #include "resourceload.h"
 #include "Action.h"
 #include "stclanguage.h"
+#include "MutDocManager.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>
@@ -384,10 +388,12 @@ bool MutApp::OnInit()
 			  << (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
 
 
+	if (!(document_manager=new MutDocManager()))
+		return false;
 	//  restrict to having <= 1 doc open at any time
-	document_manager.SetMaxDocsOpen(5);
+	document_manager->SetMaxDocsOpen(5);
 	//  establish a doc template for the doc,view pair
-	new wxDocTemplate(&document_manager, 
+	new wxDocTemplate(document_manager, 
 			  _("Mutabor logic file"), 
 			  wxT("*.mut"), 
 			  wxT("") /*dir*/, 
@@ -468,7 +474,8 @@ bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
 //		MutFrame * frame = CreateMainFrame(EditorMenu);
 //		frame->OpenFile(str);
 
-		document_manager.CreateDocument(str, wxDOC_SILENT);
+		if (document_manager)
+			document_manager->CreateDocument(str, wxDOC_SILENT);
 	}
 
 	DEBUGLOG (other, _T("Command line parsed."));
@@ -497,7 +504,7 @@ void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 		 event.GetId(),
 		 (int)event.GetEventType()
 		);
-	if (!document_manager.ProcessEvent(event)) 
+	if (!(document_manager->ProcessEvent(event))) 
 		event.Skip();
 }
 void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
@@ -507,29 +514,29 @@ void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
 		 event.GetId(),
 		 (int)event.GetEventType()
 		);
-	if (!document_manager.ProcessEvent(event)) 
+	if (!(document_manager->ProcessEvent(event)))
 		event.Skip();
 }
 
 void MutApp::OnMRUFile(wxCommandEvent& event)
 {
     int n = event.GetId() - wxID_FILE1;  // the index in MRU list
-    wxString filename(document_manager.GetHistoryFile(n));
+    wxString filename(document_manager->GetHistoryFile(n));
     if ( !filename.empty() )
     {
         // verify that the file exists before doing anything else
         if ( wxFile::Exists(filename) )
         {
             // try to open it
-            if (!document_manager.CreateDocument(filename, wxDOC_SILENT))
+            if (!document_manager->CreateDocument(filename, wxDOC_SILENT))
             {
                 // remove the file from the MRU list. The user should already be notified.
-                document_manager.RemoveFileFromHistory(n);
+                document_manager->RemoveFileFromHistory(n);
 
                 wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
                        filename.c_str());
             } else {
-		    wxView * v = document_manager.GetCurrentView();
+		    wxView * v = document_manager->GetCurrentView();
 		    if (v) {
 			    wxWindow * w = v->GetFrame();
 			    if (w) {
@@ -542,7 +549,7 @@ void MutApp::OnMRUFile(wxCommandEvent& event)
         {
             // remove the bogus filename from the MRU list and notify the user
             // about it
-            document_manager.RemoveFileFromHistory(n);
+            document_manager->RemoveFileFromHistory(n);
 
             wxLogError(_("The file '%s' doesn't exist and couldn't be opened.\nIt has been removed from the most recently used files list."),
                        filename.c_str());
@@ -988,7 +995,7 @@ void MutApp::CmQuit (wxCommandEvent& event)
 	}
 
 	// first check whether docmanager allows quitting
-	if (!document_manager.Clear(false))
+	if (!document_manager->Clear(false))
 	{
 		quitting = false;
 		return;
@@ -1115,8 +1122,8 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 #endif
 	MENUITEM(_("E&xit"), CM_EXIT, _("Quit Mutabor"));
 	DEBUGLOG(docview,_T("Adding file history menu"));
-	document_manager.FileHistoryUseMenu(menu);
-	document_manager.GetFileHistory()->AddFilesToMenu(menu);
+	document_manager->FileHistoryUseMenu(menu);
+	document_manager->GetFileHistory()->AddFilesToMenu(menu);
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	CLOSEMENU(_("&File"));
@@ -1314,6 +1321,7 @@ int MutApp::OnExit()
 	SaveState();
 	AktionTraceReset();
 	MidiUninit();
+	delete document_manager;
 #if defined(__WXMAC__)
 	wxMenuBar::MacSetCommonMenuBar(NULL);
 #endif
@@ -1376,7 +1384,7 @@ void MutApp::SaveState()
 	config->SetPath(_T(".."));
 
 	config->SetPath(_T("DocManager"));
-	document_manager.FileHistorySave(*config);
+	document_manager->FileHistorySave(*config);
 	config->SetPath(_T(".."));
 
 	SaveRoutes(config);
@@ -1413,7 +1421,7 @@ void MutApp::RestoreState()
 	config->SetPath(_T(".."));
 
 	config->SetPath(_T("DocManager"));
-	document_manager.FileHistoryLoad(*config);
+	document_manager->FileHistoryLoad(*config);
 	config->SetPath(_T(".."));
 
 	LoadRoutes(config);

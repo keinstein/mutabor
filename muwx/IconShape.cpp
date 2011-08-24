@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.4 2011/02/20 22:35:57 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.5 2011/08/24 21:19:36 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/02/20 22:35:57 $
-* \version $Revision: 1.4 $
+* $Date: 2011/08/24 21:19:36 $
+* \version $Revision: 1.5 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.4  2011/02/20 22:35:57  keinstein
+* Revision 1.5  2011/08/24 21:19:36  keinstein
+* first run with 2.9.2+
+*
+* Revision 1.4  2011-02-20 22:35:57  keinstein
 * updated license information; some file headers have to be revised, though
 *
 * Revision 1.3  2010-12-11 02:10:09  keinstein
@@ -204,7 +207,6 @@ void MutIconShape::SetFocus() {
 void MutIconShape::OnGetFocus(wxFocusEvent & event)
 {
 	DEBUGLOG (other, _T(""));
-	OnFocus(event);
 	SetFocus();
 }
 
