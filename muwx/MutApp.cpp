@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.40 2011/08/24 21:19:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.41 2011/08/27 17:44:44 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.40 $
+ * $Date: 2011/08/27 17:44:44 $
+ * \version $Revision: 1.41 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.40  2011/08/24 21:19:36  keinstein
+ * Revision 1.41  2011/08/27 17:44:44  keinstein
+ * Implemented Search and Search/Replace
+ *
+ * Revision 1.40  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.39  2011-08-21 16:52:04  keinstein
@@ -1074,14 +1077,9 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 	         _("Open a logic file in editor window"));
 
 	if (type == EditorMenu || type == RouteMenu) {
-		MENUITEM(_("&Save\tCtrl+S"), CM_FILESAVE,
-		         _("Save the current file."));
-		MENUITEM(_("Save &As...\tShift+Ctrl+S"), CM_FILESAVEAS,
-		         _("Save the current file with a new file name"));
-		menu->Append (wxID_CLOSE, 
-				  _("&Close\tCtrl+W"),
-				  _("Closes the currently active window"));
-		menu->AppendSeparator();
+		menu->Append (wxID_SAVE);
+		menu->Append (wxID_SAVEAS);
+		menu->Append (wxID_CLOSE);
 	}
 
 	MENUITEM_SEPARATOR;
@@ -1099,20 +1097,15 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 			      _("Proper&ties ..\tCtrl+I"),
 			      _("Get some information about the currently edited file"));
 	} 
-	MENUITEM(_("&Preferences"), CM_SETUP, _("Edit program settings"));
+	menu->Append (wxID_PREFERENCES);
 
 
 	if (type == EditorMenu) {
 		menu->AppendSeparator();
-		menu->Append (wxID_PRINT_SETUP,
-			      _("Print Set&up ..."),
-			      _("Configure the printer settings"));
-		menu->Append (wxID_PREVIEW, 
-			      _("Print Pre&view\tCtrl+Shift+P"),
-			      _("Show document as it would be printed"));
-		menu->Append (wxID_PRINT,
-			      _("&Print ..\tCtrl+P"),
-			      _("Print current document on a printer"));
+		menu->Append (wxID_PRINT_SETUP,_("Print setup..."),
+			      _("Configure how the pages will be printed"));
+		menu->Append (wxID_PREVIEW);
+		menu->Append (wxID_PRINT);
 	}
 
 
@@ -1120,7 +1113,7 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
 	MENUITEM_SEPARATOR;
 #endif
-	MENUITEM(_("E&xit"), CM_EXIT, _("Quit Mutabor"));
+	menu->Append(wxID_EXIT);
 	DEBUGLOG(docview,_T("Adding file history menu"));
 	document_manager->FileHistoryUseMenu(menu);
 	document_manager->GetFileHistory()->AddFilesToMenu(menu);
@@ -1139,27 +1132,27 @@ void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
 	if (type != EditorMenu) return;
 
 	OPENMENU;
-	menu->Append (wxID_UNDO, _("&Undo\tCtrl+Z"));
-	menu->Append (wxID_REDO, _("&Redo\tCtrl+Shift+Z"));
+	menu->Append (wxID_UNDO);
+	menu->Append (wxID_REDO);
 	menu->AppendSeparator();
-	menu->Append (wxID_CUT, _("Cu&t\tCtrl+X"));
-	menu->Append (wxID_COPY, _("&Copy\tCtrl+C"));
-	menu->Append (wxID_PASTE, _("&Paste\tCtrl+V"));
-	menu->Append (wxID_CLEAR, _("&Delete\tDel"));
+	menu->Append (wxID_CUT);
+	menu->Append (wxID_COPY);
+	menu->Append (wxID_PASTE);
+	menu->Append (wxID_CLEAR);
 	menu->AppendSeparator();
-	menu->Append (wxID_SELECTALL, _("&Select all\tCtrl+A"));
-	menu->Append (CM_SELECTLINE, _("Select &line\tCtrl+L"));
+	menu->Append (wxID_SELECTALL);
+	menu->Append (CM_SELECTLINE, _("Select &line\tCtrl+Shift+L"));
 	menu->AppendSeparator();
-	menu->Append (wxID_FIND, _("&Find\tCtrl+F"));
+	menu->Append (wxID_FIND);
 	menu->Append (CM_FINDNEXT, _("Find &next\tCtrl+G"));
-	menu->Append (CM_REPLACE, _("&Replace\tCtrl+H"));
+	menu->Append (wxID_REPLACE);
 	menu->Append (CM_REPLACENEXT, _("Replace &again\tShift+F4"));
 	menu->AppendSeparator();
 	menu->Append (CM_BRACEMATCH, _("&Match brace\tCtrl+M"));
-	menu->Append (CM_GOTO, _("&Goto\tCtrl+G"));
+	menu->Append (CM_GOTO, _("&Goto Line...\tCtrl+L"));
 	menu->AppendSeparator();
-	menu->Append (CM_INDENTINC, _("&Indent increase\tTab"));
-	menu->Append (CM_INDENTRED, _("I&ndent reduce\tBksp"));
+	menu->Append (wxID_INDENT);
+	menu->Append (wxID_UNINDENT);
 
 	// change case submenu
 	wxMenu *menuChangeCase = new wxMenu;

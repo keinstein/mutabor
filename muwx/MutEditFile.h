@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.15 2011/08/21 16:52:05 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.16 2011/08/27 17:44:44 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/21 16:52:05 $
-* \version $Revision: 1.15 $
+* $Date: 2011/08/27 17:44:44 $
+* \version $Revision: 1.16 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.15  2011/08/21 16:52:05  keinstein
+* Revision 1.16  2011/08/27 17:44:44  keinstein
+* Implemented Search and Search/Replace
+*
+* Revision 1.15  2011-08-21 16:52:05  keinstein
 * Integrate a more sophisticated editor menu based on the stc sample
 *
 * Revision 1.14  2011-08-20 17:50:39  keinstein
@@ -88,6 +91,45 @@ namespace mutaborGUI {
 		friend class MutEditProperties;
 		friend class MutEditPrint;
 	public:
+		struct FindFlags 
+		{
+			bool down:1;
+			bool askCircular:1;
+			bool showNotFound:1;
+			bool useCaret:1;
+
+			FindFlags() 
+			{
+				down = askCircular = showNotFound = useCaret = true;
+			}
+			
+			FindFlags & Down(bool d = true) 
+		        { 
+				down = d;  
+				return *this;
+			}
+			FindFlags & Up (bool up = true) 
+                        { 
+				down = !up; 
+				return *this;
+			}
+			FindFlags & AskCircular (bool a = true) 
+			{ 
+				askCircular = a; 
+				return *this;
+			}
+			FindFlags & ShowNotFound (bool s = true) 
+			{ 
+				showNotFound = s;
+				return *this;
+			}
+			FindFlags & UseCaret (bool s = true) 
+			{ 
+				useCaret = s;
+				return *this;
+			}
+		};
+
 
 		MutEditFile(wxWindow* parent, 
 			    const wxPoint& pos = wxDefaultPosition, 
@@ -122,6 +164,7 @@ namespace mutaborGUI {
 		void OnFind (wxCommandEvent &event);
 		void OnFindNext (wxCommandEvent &event);
 		void OnFindDialog (wxFindDialogEvent& event);
+		int DoFind(const wxString & pattern, FindFlags flags);
 		void OnReplace (wxCommandEvent &event);
 		void OnReplaceNext (wxCommandEvent &event);
 		void OnBraceMatch (wxCommandEvent &event);
@@ -166,6 +209,8 @@ namespace mutaborGUI {
 
 		
 	protected:
+		void Init();
+		void SaveSearchData();
 //	void SetupWindow();
 
 		bool Compile(bool activate);
@@ -232,8 +277,6 @@ namespace mutaborGUI {
 		muConvAuto autoConverter;
 
 		DECLARE_EVENT_TABLE()
-	private:
-		void Init();
 	};
 
 	

@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.17 2011/08/21 16:52:05 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.18 2011/08/27 17:44:44 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/21 16:52:05 $
-* \version $Revision: 1.17 $
+* $Date: 2011/08/27 17:44:44 $
+* \version $Revision: 1.18 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.17  2011/08/21 16:52:05  keinstein
+* Revision 1.18  2011/08/27 17:44:44  keinstein
+* Implemented Search and Search/Replace
+*
+* Revision 1.17  2011-08-21 16:52:05  keinstein
 * Integrate a more sophisticated editor menu based on the stc sample
 *
 * Revision 1.16  2011-08-20 17:50:39  keinstein
@@ -127,7 +130,7 @@ EVT_UPDATE_UI(wxID_UNDO,         MutEditFile::OnEditUndoUI)
 // find
 EVT_MENU (wxID_FIND,             MutEditFile::OnFind)
 EVT_MENU (CM_FINDNEXT,           MutEditFile::OnFindNext)
-EVT_MENU (CM_REPLACE,            MutEditFile::OnReplace)
+EVT_MENU (wxID_REPLACE,          MutEditFile::OnReplace)
 EVT_MENU (CM_REPLACENEXT,        MutEditFile::OnReplaceNext)
 EVT_MENU (CM_BRACEMATCH,         MutEditFile::OnBraceMatch)
 EVT_MENU (CM_GOTO,               MutEditFile::OnGoto)
@@ -449,6 +452,25 @@ namespace mutaborGUI {
 
 	void MutEditFile::Init() 
 	{
+		
+		wxConfigBase *config = wxConfig::Get();
+		if (config) {
+			wxString old = config->GetPath();
+			config->SetPath(_T("/Editor/Search"));
+			wxUint32 flags = 0;
+			if (config -> Read(_T("Downwards"),1l))
+				flags |= wxFR_DOWN;
+			if (config -> Read(_T("Whole words"),0l))
+				flags |= wxFR_WHOLEWORD;
+			if (config -> Read(_T("Case sensitive"),0l))
+				flags |= wxFR_MATCHCASE;
+			m_findData.SetFlags(flags);
+			m_findData.SetFindString(config -> Read(_T("Find"),
+								wxEmptyString));
+			m_findData.SetReplaceString(config -> Read(_T("Replace to"),
+								wxEmptyString));
+			config -> SetPath(old);
+		}
 		m_filename = wxEmptyString;
 
 		m_LineNrID = 0;
@@ -497,6 +519,28 @@ namespace mutaborGUI {
 		m_FoldingMargin = 16;
 		CmdKeyClear (wxSTC_KEY_TAB, 0); // this is done by the menu accelerator key
 		SetLayoutCache (wxSTC_CACHE_PAGE);
+	}
+
+
+	void MutEditFile::SaveSearchData () 
+	{
+		wxConfigBase *config = wxConfig::Get();
+		if (config) {
+			wxString old = config->GetPath();
+			config->SetPath(_T("/Editor/Search"));
+			wxUint32 flags = m_findData.GetFlags();
+
+			config -> Write(_T("Downwards"),
+					(bool) (flags & wxFR_DOWN));
+			config -> Write(_T("Whole words"),
+					(bool)(flags & wxFR_WHOLEWORD));
+			config -> Write(_T("Case sensitive"),
+					(bool)(flags & wxFR_MATCHCASE));
+			config -> Write(_T("Find"),m_findData.GetFindString());
+			config -> Write(_T("Replace to"),
+					m_findData.GetReplaceString());
+			config -> SetPath(old);
+		}
 	}
 
 
@@ -551,7 +595,6 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnFind (wxCommandEvent &event) {
-		SearchAnchor();
 		if ( m_dlgFind )
 		{
 			delete m_dlgFind;
@@ -568,6 +611,8 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnFindNext (wxCommandEvent &WXUNUSED(event)) {
+		DoFind(m_findData.GetFindString(),
+			 FindFlags().Down(m_findData.GetFlags() & wxFR_DOWN));
 	}
 
 	void MutEditFile::OnFindDialog (wxFindDialogEvent& event)
@@ -577,54 +622,7 @@ namespace mutaborGUI {
 			 (const wxChar*)event.GetFindString());
 		wxEventType type = event.GetEventType();
 
-		if ( type == wxEVT_COMMAND_FIND || type == wxEVT_COMMAND_FIND_NEXT )
-		{
-			
-			int flags = 0;
-			if (event.GetFlags() & wxFR_WHOLEWORD) 
-				flags |= wxSTC_FIND_WHOLEWORD;
-			if (event.GetFlags() & wxFR_MATCHCASE) 
-				flags |=  wxSTC_FIND_WHOLEWORD;
-
-			SetSearchFlags(flags);
-			if (event.GetFlags() & wxFR_DOWN) {
-				int i = GetTargetEnd();
-				SetTargetEnd(GetLength());
-				SetTargetStart(i);
-			} else {
-				int i = GetTargetStart();
-				SetTargetEnd(0);
-				SetTargetStart(i);
-			}
-			int result = SearchInTarget(event.GetFindString());
-			if (result < 0) {
-				// \todo restart search.
-				STUBC;
-			}
-			else  {
-				SetCurrentPos(GetTargetStart());
-				SetSelection(GetTargetStart(),GetTargetEnd());
-			}
-			
-			DEBUGLOG(other,_(""));
-			DEBUGLOG(editor,_(""));
-			DEBUGLOG(editor,_T("Find (flags=%x,%s) = %d"),
-				 event.GetFlags(),
-				 (const wxChar*)event.GetFindString(),result);
-		}
-		else if ( type == wxEVT_COMMAND_FIND_REPLACE ||
-			  type == wxEVT_COMMAND_FIND_REPLACE_ALL )
-		{
-			wxString s = event.GetFindString();
-			wxString replace =  event.GetReplaceString();
-			bool down = event.GetFlags() & wxFR_DOWN;
-			bool wholeword = event.GetFlags() & wxFR_WHOLEWORD;
-			bool matchcase =  event.GetFlags() & wxFR_MATCHCASE;
-			if (type == wxEVT_COMMAND_FIND_REPLACE_ALL) { 
-				SearchAnchor();
-			}
-		}
-		else if ( type == wxEVT_COMMAND_FIND_CLOSE )
+		if ( type == wxEVT_COMMAND_FIND_CLOSE )
 		{
 			wxFindReplaceDialog *dlg = event.GetDialog();
 
@@ -637,7 +635,7 @@ namespace mutaborGUI {
 			}
 			else if ( dlg == m_dlgReplace )
 			{
-				idMenu = CM_REPLACE;
+				idMenu = wxID_REPLACE;
 				m_dlgReplace = NULL;
 			}
 			else
@@ -645,20 +643,155 @@ namespace mutaborGUI {
 				UNREACHABLEC;
 			}
 
-#if 0
-			if ( idMenu != wxID_ANY )
-			{
-				GetMenuBar()->Check(idMenu, false);
-			}
-#endif
 
 			dlg->Destroy();
+			return;
+		}
+
+		SaveSearchData();
+
+		int flags = 0;
+		if (event.GetFlags() & wxFR_WHOLEWORD) 
+			flags |= wxSTC_FIND_WHOLEWORD;
+		if (event.GetFlags() & wxFR_MATCHCASE) 
+			flags |=  wxSTC_FIND_WHOLEWORD;
+		SetSearchFlags(flags);
+
+		
+		
+		wxString findString = event.GetFindString();
+		if ( type == wxEVT_COMMAND_FIND_REPLACE && 
+		     GetSelectionStart() == GetTargetStart()) {
+			int result = SearchInTarget(findString); // should not change anything
+			if (result < 0) {
+				return;
+			}
+			if (GetSelectionStart() != GetTargetStart() || 
+			    GetSelectionEnd() != GetTargetEnd()) {
+				SetCurrentPos(GetTargetStart());
+				SetSelection(GetTargetStart(),
+					     GetTargetEnd());
+				return ; 
+			}
+			ReplaceTarget(event.GetReplaceString());
+		}
+
+		if ( type == wxEVT_COMMAND_FIND || type == wxEVT_COMMAND_FIND_NEXT ||
+			type == wxEVT_COMMAND_FIND_REPLACE)
+		{
+			
+#ifdef DEBUG
+			int result =
+#endif
+				DoFind(findString,
+				 FindFlags().Down(event.GetFlags() & wxFR_DOWN));
+			DEBUGLOG(editor,_T("Find (flags=%x,%s) = %d"),
+				 event.GetFlags(),
+				 (const wxChar*)findString,result);
+		} else if (type == wxEVT_COMMAND_FIND_REPLACE_ALL )
+		{
+			// first search is treated different 
+			// (e.g. reuse current target)
+			if (event.GetFlags() & wxFR_DOWN) {
+				if (GetTargetEnd() < GetTargetStart())
+					SetTargetStart(GetTargetEnd());
+				SetTargetEnd(GetLength());
+			} else {
+				if (GetTargetEnd() > GetTargetStart()) 
+					SetTargetStart(GetTargetEnd());
+				SetTargetEnd(0);
+			}
+			
+			int result = SearchInTarget(findString);
+			
+			if (result < 0) {
+				wxMessageBox(
+					_("The search string was not found."),
+					_("Replace all"),
+					wxOK | wxICON_INFORMATION);
+				return;
+			}
+
+			FindFlags ff;
+			ff.Down(event.GetFlags() & wxFR_DOWN).AskCircular(false)
+				.ShowNotFound(false).UseCaret(false);
+			int count = 0;
+			while (result >= 0) {
+				count++;
+				ReplaceTarget(event.GetReplaceString());
+				result = DoFind(findString,ff);
+			}
+			
+			wxMessageBox(
+				wxString::Format(_("Replaced %d occurrences of `%s' by `%s'.\n\n"), count,(const wxChar*)findString,(const wxChar*)event.GetReplaceString())
+				+ (ff.down?
+				   _("Note: Occurences before the current cursor positions are not changed."):
+				   _("Note: Occurences after the current cursor positions are not changed.")),
+				_("Replace all"),
+				wxOK | wxICON_INFORMATION);
 		}
 		else
 		{
 			wxLogError(wxT("Unknown find dialog event!"));
 			UNREACHABLEC;
 		}
+	}
+
+	int MutEditFile::DoFind(const wxString & pattern, FindFlags flags) 
+	{
+		if (flags.useCaret && GetCurrentPos() != GetTargetStart()) {
+			SetTargetStart(GetCurrentPos());
+			SetTargetEnd(flags.down?GetLength():0);
+		} else {
+			if (flags.down) {
+				int i = GetTargetEnd();
+				SetTargetEnd(GetLength());
+				SetTargetStart(i);
+			} else {
+				int i = GetTargetStart();
+				SetTargetEnd(0);
+				SetTargetStart(i);
+			}
+		}
+		int result = SearchInTarget(pattern);
+		if (result < 0 && flags.askCircular) {
+			int dlgresult;
+			if (flags.down) {
+				dlgresult = 
+					wxMessageBox(
+						_("Search reached the end of the file.\nProceed from the beginning?"),
+						_("Search"),
+						wxYES_NO | wxICON_QUESTION);
+				SetTargetEnd(GetLength());
+				SetTargetStart(0);
+			} else {
+				dlgresult = 
+					wxMessageBox(
+						_("Search reached the beginning of the file.\nProceed from the end?"),
+						_("Search"),
+						wxYES_NO | wxICON_QUESTION);
+				SetTargetEnd(0);
+				SetTargetStart(GetLength());
+			}
+			if (dlgresult == wxNO) return result;
+			result = SearchInTarget(pattern);
+		}
+		if (result < 0 && flags.showNotFound) {
+			wxMessageBox(
+				_("The search string was not found."),
+				_("Search"),
+				wxOK | wxICON_INFORMATION);
+		} else  {
+			if (flags.useCaret) {
+				SetCurrentPos(GetTargetStart());
+				SetSelection(GetTargetStart(),GetTargetEnd());
+			}
+		}
+			
+		DEBUGLOG(other,_(""));
+		DEBUGLOG(editor,_(""));
+		return result;
+		
 	}
 
 	void MutEditFile::OnReplace (wxCommandEvent & event) {

@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.38 2011/08/24 21:19:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.39 2011/08/27 17:44:44 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.38 $
+ * \date $Date: 2011/08/27 17:44:44 $
+ * \version $Revision: 1.39 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.38  2011/08/24 21:19:36  keinstein
+ * Revision 1.39  2011/08/27 17:44:44  keinstein
+ * Implemented Search and Search/Replace
+ *
+ * Revision 1.38  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.37  2011-08-21 16:52:05  keinstein
@@ -405,7 +408,7 @@ EVT_MENU (wxID_PASTE,            MutFrame::PassEventToEditor)
     EVT_MENU (wxID_FIND,             MutFrame::PassEventToEditor)
     EVT_MENU (CM_FINDNEXT,         MutFrame::PassEventToEditor)
 
-    EVT_MENU (CM_REPLACE,          MutFrame::PassEventToEditor)
+    EVT_MENU (wxID_REPLACE,          MutFrame::PassEventToEditor)
     EVT_MENU (CM_REPLACENEXT,      MutFrame::PassEventToEditor)
     EVT_MENU (CM_BRACEMATCH,       MutFrame::PassEventToEditor)
     EVT_MENU (CM_GOTO,             MutFrame::PassEventToEditor)
@@ -587,6 +590,8 @@ MutFrame::~MutFrame()
 #if wxUSE_TOOLBAR
 void MutFrame::InitToolBar(wxToolBar* toolBar)
 {
+
+	// Stock Id's are currently not availlable for wxToolBar() :-(
 	MutToolBarBitmaps::Init();
 
 	toolBar->AddTool(CM_FILENEW, _("New"), MutToolBarBitmaps::New, _("New file"));
