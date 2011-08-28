@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.21 2011/08/28 20:09:11 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.22 2011/08/28 21:24:55 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/28 20:09:11 $
-* \version $Revision: 1.21 $
+* $Date: 2011/08/28 21:24:55 $
+* \version $Revision: 1.22 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.21  2011/08/28 20:09:11  keinstein
+* Revision 1.22  2011/08/28 21:24:55  keinstein
+* added file properties dialog
+*
+* Revision 1.21  2011-08-28 20:09:11  keinstein
 * several impovements for opening and saving files
 *
 * Revision 1.20  2011-08-28 13:47:39  keinstein
@@ -122,6 +125,7 @@ EVT_MENU(CM_COMPACT,             MutEditFile::CmCompAct)
 EVT_MENU(CM_ACTIVATE,            MutEditFile::CmCompAct)
 EVT_MENU(CM_GETLINE,             MutEditFile::CmGetLine)
 EVT_MENU(CM_HELPCONTEXT,         MutEditFile::CmHelpContext)
+EVT_MENU(CM_PROPERTIES,          MutEditFile::OnProperties)
 // common
 EVT_SIZE (                       MutEditFile::OnSize)
 // edit
@@ -1187,6 +1191,10 @@ namespace mutaborGUI {
 
 		// return modified state
 		return (GetModify() && !GetReadOnly());
+	}
+
+	void MutEditFile::OnProperties (wxCommandEvent &WXUNUSED(event)) {
+		MutEditProperties dlg(this, 0);
 	}
 
 //----------------------------------------------------------------------------
