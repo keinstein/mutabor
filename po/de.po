@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-08-28 12:30+0200\n"
-"PO-Revision-Date: 2011-08-28 13:10+0100\n"
+"POT-Creation-Date: 2011-08-28 16:36+0200\n"
+"PO-Revision-Date: 2011-08-28 16:37+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -30,7 +30,7 @@ msgstr "GIS-Eingabedate"
 
 #: mu32/routing/gmn/GSP_Err.cpp:31
 #: muwx/MutApp.cpp:688
-#: muwx/MutEditFile.cpp:1308
+#: muwx/MutEditFile.cpp:1316
 #: xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
@@ -752,8 +752,6 @@ msgstr "Eingabegerät"
 
 #: muwx/Routing/InputDeviceShape.cpp:251
 #: muwx/Routing/OutputDeviceShape.cpp:263
-#: muwx/MutRouteWnd.cpp:1394
-#: muwx/MutRouteWnd.cpp:1647
 msgid "no device"
 msgstr "Kein Gerät"
 
@@ -785,12 +783,11 @@ msgid "Line:"
 msgstr "Zeile"
 
 #: muwx/CompDlg.cpp:135
-#: muwx/MutRouteWnd.cpp:181
 msgid "..."
 msgstr "…"
 
 #: muwx/CompDlg.cpp:138
-#: muwx/MutEditFile.cpp:1295
+#: muwx/MutEditFile.cpp:1303
 #: xrc/reslocale.cpp:25
 msgid "Statistics"
 msgstr "Statistik"
@@ -859,7 +856,7 @@ msgid "Mutabor logic file"
 msgstr "Mutabor-Logik-Datei"
 
 #: muwx/MutApp.cpp:420
-#: muwx/MutApp.cpp:1309
+#: muwx/MutApp.cpp:1343
 #: xrc/reslocale.cpp:48
 #: xrc/reslocale.cpp:103
 msgid "&Help"
@@ -1028,371 +1025,427 @@ msgstr "Hilfe nach einem Schlüsselwort durchsuchen"
 msgid "Closing window of class %s"
 msgstr "Schließe Fenster der Klasse %s"
 
-#: muwx/MutApp.cpp:1074
+#: muwx/MutApp.cpp:1072
 msgid "&New\tCtrl+N"
 msgstr "&Neu\tCtrl+N"
 
-#: muwx/MutApp.cpp:1075
+#: muwx/MutApp.cpp:1073
 msgid "Create a new logic file."
 msgstr "Erzeuge eine neue Logikdatei."
 
-#: muwx/MutApp.cpp:1076
+#: muwx/MutApp.cpp:1074
 msgid "&Open...\tCtrl+O"
 msgstr "Ö&ffnen...\tCtrl+O"
 
-#: muwx/MutApp.cpp:1077
+#: muwx/MutApp.cpp:1075
 msgid "Open a logic file in editor window"
 msgstr "Öffnet eine Logikdatei im Editorfenster"
 
-#: muwx/MutApp.cpp:1087
+#: muwx/MutApp.cpp:1085
 msgid "&Execute\tCtrl+F9"
 msgstr "S&tarten\tCtrl+F9"
 
-#: muwx/MutApp.cpp:1088
+#: muwx/MutApp.cpp:1086
 msgid "Load a logic file an immediately activate it"
 msgstr "Logikdatei laden und sofort aktivieren"
 
-#: muwx/MutApp.cpp:1097
-msgid "Proper&ties ..\tCtrl+I"
+#: muwx/MutApp.cpp:1095
+msgid "Proper&ties ...\tCtrl+I"
 msgstr "Dokumenteigenschaften…\tCtrl+I"
 
-#: muwx/MutApp.cpp:1098
+#: muwx/MutApp.cpp:1096
 msgid "Get some information about the currently edited file"
 msgstr "Informationen über aktuell bearbeitete Datei anzeigen"
 
-#: muwx/MutApp.cpp:1105
+#: muwx/MutApp.cpp:1103
 msgid "Print setup..."
 msgstr "Druckeinstellungen…"
 
-#: muwx/MutApp.cpp:1106
+#: muwx/MutApp.cpp:1104
 msgid "Configure how the pages will be printed"
 msgstr "Einstellen, wie Seiten gedruckt werden"
 
-#: muwx/MutApp.cpp:1122
+#: muwx/MutApp.cpp:1120
 msgid "&File"
 msgstr "&Datei"
 
-#: muwx/MutApp.cpp:1124
+#: muwx/MutApp.cpp:1122
 msgid "@MAC|&File"
 msgstr "&Ablage"
 
-#: muwx/MutApp.cpp:1144
+#: muwx/MutApp.cpp:1142
 msgid "Select &line\tCtrl+Shift+L"
 msgstr "&Zeile auswählen\tCtrl+Shift+L"
+
+#: muwx/MutApp.cpp:1143
+msgid "Select the complete line at cursor position"
+msgstr "Gesamte Zeile an Cursorposition auswählen"
 
 #: muwx/MutApp.cpp:1147
 msgid "Find &next\tCtrl+G"
 msgstr "&Weitersuchen\tCtrl+G"
 
-#: muwx/MutApp.cpp:1149
+#: muwx/MutApp.cpp:1148
+msgid "Continue last search"
+msgstr "Letzte Suche fortsetzen"
+
+#: muwx/MutApp.cpp:1151
 msgid "Replace &again\tShift+F4"
 msgstr "&Nochmal ersetzen\tShift+F4"
 
-#: muwx/MutApp.cpp:1151
+#: muwx/MutApp.cpp:1152
+msgid "Go on with replacement"
+msgstr "Suchen/Ersetzen fortsetzen"
+
+#: muwx/MutApp.cpp:1155
 msgid "&Match brace\tCtrl+M"
 msgstr "&Klammer finden\tCtrl+M"
 
-#: muwx/MutApp.cpp:1152
+#: muwx/MutApp.cpp:1156
+msgid "Find matching brace and select all contained characters"
+msgstr "Finde die passende Klammer und markiere den Text zwischen beiden"
+
+#: muwx/MutApp.cpp:1158
 msgid "&Goto Line...\tCtrl+L"
 msgstr "Gehe zu &Zeile…\tCtrl+L"
 
 #: muwx/MutApp.cpp:1159
-msgid "&Upper case"
-msgstr "In &Großbuchstaben umwandeln"
-
-#: muwx/MutApp.cpp:1160
-msgid "&Lower case"
-msgstr "In Klei&nbuchstaben umwandeln"
-
-#: muwx/MutApp.cpp:1164
-msgid "CR (&Linux)"
-msgstr "CR (&Linux)"
-
-#: muwx/MutApp.cpp:1165
-msgid "CR+LF (&Windows)"
-msgstr "CR+LF (&Windows)"
+msgid "Jump to a specific line"
+msgstr "Gehe zu einer bestimmten Zeile"
 
 #: muwx/MutApp.cpp:1166
-msgid "LF (&Macintosh)"
-msgstr "LF (&Macintosh)"
+msgid "&Overwrite mode\tIns"
+msgstr "Übersch&reiben\tIns"
 
-#: muwx/MutApp.cpp:1168
+#: muwx/MutApp.cpp:1167
+msgid "Replace the caracters at the caret position by the ones you type in"
+msgstr "Überschreibe den Text an der Cursorposition mit der neuen Eingabe"
+
+#: muwx/MutApp.cpp:1169
+msgid "&Wrap mode\tCtrl+U"
+msgstr "&Automatischer Zeilenumbruch\tCtrl+U"
+
+#: muwx/MutApp.cpp:1170
+msgid "Automatic line breaking while inserting text"
+msgstr "Automatischer Zeilenumbruch beim Eingeben des textes"
+
+#: muwx/MutApp.cpp:1172
 msgid "&Readonly mode"
 msgstr "Schreib&geschützt"
 
-#: muwx/MutApp.cpp:1169
-msgid "Change &case to ..."
-msgstr "Ändere Groß-/Klenbuchstaben…"
+#: muwx/MutApp.cpp:1173
+msgid "Disallow changing the document"
+msgstr "Verbiete Änderungen am Dokument"
 
-#: muwx/MutApp.cpp:1170
+#: muwx/MutApp.cpp:1178
+msgid "&Upper case"
+msgstr "In &Großbuchstaben umwandeln"
+
+#: muwx/MutApp.cpp:1179
+msgid "Change the current selection to upper case"
+msgstr "Aktuelle Auswahl in Großbuchstaben umwandeln"
+
+#: muwx/MutApp.cpp:1181
+msgid "&Lower case"
+msgstr "In Klei&nbuchstaben umwandeln"
+
+#: muwx/MutApp.cpp:1182
+msgid "Change the current selection to lower case"
+msgstr "Aktuelle Auswahl in Kleinbuchstaben umwandeln"
+
+#: muwx/MutApp.cpp:1187
+msgid "CR (&Linux/MAC OS X)"
+msgstr "CR (&Linux/MAC OS X)"
+
+#: muwx/MutApp.cpp:1188
+msgid "Change line endings to carrage return only (Unix style)"
+msgstr "Zeilenenden durch Wagenrücklauf-Zeichen markieren (Unix-Stil)"
+
+#: muwx/MutApp.cpp:1190
+msgid "CR+LF (&Windows)"
+msgstr "CR+LF (&Windows)"
+
+#: muwx/MutApp.cpp:1191
+msgid "Change line endigs to carrage return + line feed (DOS/Windows style)"
+msgstr "Zelenenden durch Wagenrücklauf/Zeilenschaltung markieren (DOS/Windows-Stil)"
+
+#: muwx/MutApp.cpp:1193
+msgid "LF (&Macintosh)"
+msgstr "LF (&Macintosh)"
+
+#: muwx/MutApp.cpp:1194
+msgid "Change line endings to line feed only (old Macintosh style)"
+msgstr "Zeilenenden durch Zeilenschaltungszeichen markieren (alter Macintosh-Stil)"
+
+#: muwx/MutApp.cpp:1196
+msgid "Edit options ..."
+msgstr "Bearbeitungsoptionen"
+
+#: muwx/MutApp.cpp:1197
+msgid "Change &case to ..."
+msgstr "Ändere Groß-/Kleinbuchstaben…"
+
+#: muwx/MutApp.cpp:1199
 msgid "Convert line &endings to ..."
 msgstr "&Zeilenenden umwandeln…"
 
-#: muwx/MutApp.cpp:1173
+#: muwx/MutApp.cpp:1202
 msgid "&Edit"
 msgstr "&Bearbeiten"
 
-#: muwx/MutApp.cpp:1180
+#: muwx/MutApp.cpp:1209
 msgid "&Compile\tAlt+F9"
 msgstr "&Übersetzen\tAlt+F9"
 
-#: muwx/MutApp.cpp:1180
+#: muwx/MutApp.cpp:1209
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr "Lädt die aktuelle Datei in den Mutabor-Kern."
 
-#: muwx/MutApp.cpp:1181
+#: muwx/MutApp.cpp:1210
 msgid "&Activate\tF9"
 msgstr "&Aktivieren\tF9"
 
-#: muwx/MutApp.cpp:1181
+#: muwx/MutApp.cpp:1210
 msgid "Activate the Mutabor Kernel."
 msgstr "Aktiviert den Mutabor-Kern."
 
-#: muwx/MutApp.cpp:1182
+#: muwx/MutApp.cpp:1211
 msgid "&Stop\tF8"
 msgstr "An&halten\tF8"
 
-#: muwx/MutApp.cpp:1182
+#: muwx/MutApp.cpp:1211
 msgid "Stop the Mutabor Kernel."
 msgstr "Hält den Mutaborkern an."
 
-#: muwx/MutApp.cpp:1184
+#: muwx/MutApp.cpp:1213
 msgid "&Panic\tF12"
 msgstr "&Panik\tF12"
 
-#: muwx/MutApp.cpp:1184
+#: muwx/MutApp.cpp:1213
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr "Sendet das Signal „all notes off (alle Noten aus)“ auf allen MIDI-Kanälen."
 
-#: muwx/MutApp.cpp:1185
+#: muwx/MutApp.cpp:1214
 msgid "&Logic"
 msgstr "&Logik"
 
-#: muwx/MutApp.cpp:1191
+#: muwx/MutApp.cpp:1220
 #: muwx/MutFrame.cpp:615
 msgid "&Load routes"
 msgstr "Route laden"
 
-#: muwx/MutApp.cpp:1192
+#: muwx/MutApp.cpp:1221
 #: muwx/MutFrame.cpp:616
 msgid "Load the current route configuration from a file"
 msgstr "Lädt die aktuellen Routeneinstellungen aus einer Datei."
 
-#: muwx/MutApp.cpp:1193
+#: muwx/MutApp.cpp:1222
 #: muwx/MutFrame.cpp:617
 msgid "&Save routes"
 msgstr "Route &speichern"
 
-#: muwx/MutApp.cpp:1194
+#: muwx/MutApp.cpp:1223
 #: muwx/MutFrame.cpp:618
 msgid "Save current route configuration to a file."
 msgstr "Speichert die aktuellen Routeneinstellungen."
 
-#: muwx/MutApp.cpp:1195
+#: muwx/MutApp.cpp:1224
 msgid "Save routes &as"
 msgstr "Speichere Routen &unter..."
 
-#: muwx/MutApp.cpp:1196
+#: muwx/MutApp.cpp:1225
 msgid "Save current route configuration to a file with a new name."
 msgstr "Speichert die aktuellen Routeneinstellungen in einer Datei unter einem neuen Namen."
 
-#: muwx/MutApp.cpp:1197
+#: muwx/MutApp.cpp:1226
 msgid "&Routes"
 msgstr "&Routen"
 
-#: muwx/MutApp.cpp:1216
+#: muwx/MutApp.cpp:1245
 msgid "&ANSI (Windows)"
 msgstr "&ANSI (Windows)"
 
-#: muwx/MutApp.cpp:1217
+#: muwx/MutApp.cpp:1246
 msgid "&MAC (Macintosh)"
 msgstr "&MAC (Macintosh)"
 
-#: muwx/MutApp.cpp:1219
-msgid "&Hilight language .."
+#: muwx/MutApp.cpp:1249
+msgid "&Hilight language..."
 msgstr "Hervorhebungen für Sprache…"
 
-#: muwx/MutApp.cpp:1221
+#: muwx/MutApp.cpp:1253
 msgid "&Toggle current fold\tCtrl+T"
 msgstr "Umgebung &Falten/Entfalten\tCtrl+T"
 
-#: muwx/MutApp.cpp:1222
-msgid "&Overwrite mode\tIns"
-msgstr "Übersch&reiben\tIns"
-
-#: muwx/MutApp.cpp:1223
-msgid "&Wrap mode\tCtrl+U"
-msgstr "&Automatischer Zeilenumbruch\tCtrl+U"
-
-#: muwx/MutApp.cpp:1225
+#: muwx/MutApp.cpp:1255
 msgid "Show line &endings"
 msgstr "Zeilenenden &anzeigen"
 
-#: muwx/MutApp.cpp:1226
+#: muwx/MutApp.cpp:1256
 msgid "Show &indent guides"
 msgstr "Einrückungs&hilfe anzeigen"
 
-#: muwx/MutApp.cpp:1227
+#: muwx/MutApp.cpp:1257
 msgid "Show line &numbers"
 msgstr "Zeilen&nummern anzeigen"
 
-#: muwx/MutApp.cpp:1228
+#: muwx/MutApp.cpp:1258
 msgid "Show &long line marker"
 msgstr "Text&breite anzeigen"
 
-#: muwx/MutApp.cpp:1229
+#: muwx/MutApp.cpp:1259
 msgid "Show white&space"
 msgstr "&Leerzeichen anzeigen"
 
-#: muwx/MutApp.cpp:1231
-msgid "Use &code page of .."
+#: muwx/MutApp.cpp:1261
+msgid "Use &code page of..."
 msgstr "Zeichen&kodierung…"
 
-#: muwx/MutApp.cpp:1241
-msgid "&Routes\tF11"
-msgstr "&Routen\tF11"
-
-#: muwx/MutApp.cpp:1242
-msgid "Open route configuration window"
-msgstr "Öffne die Routeneinstellungen"
-
-#: muwx/MutApp.cpp:1246
+#: muwx/MutApp.cpp:1275
 msgid "Current ke&ys\tF5"
 msgstr "Aktuelle &Tasten\tF5"
 
-#: muwx/MutApp.cpp:1247
+#: muwx/MutApp.cpp:1276
 msgid "Show current keys window"
 msgstr "Zeige aktuelle Tasten"
 
-#: muwx/MutApp.cpp:1248
+#: muwx/MutApp.cpp:1277
 msgid "&Tone system\tF6"
 msgstr "Ton&system\tF6"
 
-#: muwx/MutApp.cpp:1249
+#: muwx/MutApp.cpp:1278
 msgid "Show tone system window"
 msgstr "Zeige Tonsystem-Fenster"
 
-#: muwx/MutApp.cpp:1250
+#: muwx/MutApp.cpp:1279
 msgid "&Actions\tF7"
 msgstr "&Aktionen\tF7"
 
-#: muwx/MutApp.cpp:1251
+#: muwx/MutApp.cpp:1280
 msgid "Show current actions window"
 msgstr "Zeigt das Fenster für aktuelle Aktionen"
 
-#: muwx/MutApp.cpp:1259
+#: muwx/MutApp.cpp:1282
+msgid "&Routes\tF11"
+msgstr "&Routen\tF11"
+
+#: muwx/MutApp.cpp:1283
+msgid "Open route configuration window"
+msgstr "Öffne die Routeneinstellungen"
+
+#: muwx/MutApp.cpp:1293
 msgid "Select &Box"
 msgstr "Kasten &Auswählen"
 
-#: muwx/MutApp.cpp:1260
+#: muwx/MutApp.cpp:1294
 msgid "Select current Box"
 msgstr "aktuellen Kasten &Auswählen"
 
-#: muwx/MutApp.cpp:1263
+#: muwx/MutApp.cpp:1297
 msgid "&View"
 msgstr "&Anzeigen"
 
-#: muwx/MutApp.cpp:1269
+#: muwx/MutApp.cpp:1303
 #: muwx/MutFrame.cpp:620
 msgid "&Play"
 msgstr "Ab&spielen"
 
-#: muwx/MutApp.cpp:1270
+#: muwx/MutApp.cpp:1304
 #: muwx/MutFrame.cpp:621
 msgid "Start playing the music from input file devices"
 msgstr "Musik der Datei-Geräte starten"
 
-#: muwx/MutApp.cpp:1271
+#: muwx/MutApp.cpp:1305
 #: muwx/MutFrame.cpp:622
 msgid "St&op"
 msgstr "St&op"
 
-#: muwx/MutApp.cpp:1272
+#: muwx/MutApp.cpp:1306
 #: muwx/MutFrame.cpp:623
 msgid "Stop playing the music from input file devices"
 msgstr "Musik der Datei-Geräte stoppen"
 
-#: muwx/MutApp.cpp:1273
+#: muwx/MutApp.cpp:1307
 #: muwx/MutFrame.cpp:624
 msgid "P&ause"
 msgstr "&Pause"
 
-#: muwx/MutApp.cpp:1274
+#: muwx/MutApp.cpp:1308
 #: muwx/MutFrame.cpp:625
 msgid "Pause plaing the music from input file devices"
 msgstr "Musik der Datei-Geräte anhalten."
 
-#: muwx/MutApp.cpp:1275
+#: muwx/MutApp.cpp:1309
 msgid "&Sequencer"
 msgstr "&Sequencer"
 
-#: muwx/MutApp.cpp:1283
+#: muwx/MutApp.cpp:1317
 msgid "Online &Help\tF1"
 msgstr "Online-&Hilfe\tF1"
 
-#: muwx/MutApp.cpp:1284
+#: muwx/MutApp.cpp:1318
 msgid "Open the help Window"
 msgstr "Das Hilfefenster öffnen"
 
-#: muwx/MutApp.cpp:1285
+#: muwx/MutApp.cpp:1319
 msgid "&Manual"
 msgstr "&Handbuch"
 
-#: muwx/MutApp.cpp:1286
+#: muwx/MutApp.cpp:1320
 msgid "Open the manual"
 msgstr "Handbuch öffnen"
 
-#: muwx/MutApp.cpp:1287
+#: muwx/MutApp.cpp:1321
 msgid "Language &reference"
 msgstr "Sprach&referenz"
 
-#: muwx/MutApp.cpp:1288
+#: muwx/MutApp.cpp:1322
 msgid "Open the Mutabor language reference"
 msgstr "Mutabor-Sprachreferenz öffnen"
 
-#: muwx/MutApp.cpp:1290
+#: muwx/MutApp.cpp:1324
 msgid "&Index"
 msgstr "&Register"
 
-#: muwx/MutApp.cpp:1291
+#: muwx/MutApp.cpp:1325
 msgid "Open the help index"
 msgstr "Hilfeindex öffnen"
 
-#: muwx/MutApp.cpp:1292
+#: muwx/MutApp.cpp:1326
 msgid "&Search"
 msgstr "&Suchen"
 
-#: muwx/MutApp.cpp:1293
+#: muwx/MutApp.cpp:1327
 msgid "Search the help system for a specific keyword"
 msgstr "Hilfesystem nach einem speziellen Suchwort durchsuchen"
 
-#: muwx/MutApp.cpp:1295
+#: muwx/MutApp.cpp:1329
 msgid "Help &on help"
 msgstr "H&ilfe über Hilfe"
 
-#: muwx/MutApp.cpp:1296
+#: muwx/MutApp.cpp:1330
 msgid "Show Help about the help system"
 msgstr "Zeigt Hilfe über das Hilfesystem"
 
-#: muwx/MutApp.cpp:1302
+#: muwx/MutApp.cpp:1336
 msgid "&About"
 msgstr "Ü&ber"
 
-#: muwx/MutApp.cpp:1303
+#: muwx/MutApp.cpp:1337
 msgid "Show information about the program"
 msgstr "Informationen über das Programm anzeigen"
 
-#: muwx/MutApp.cpp:1306
+#: muwx/MutApp.cpp:1340
 #: muwx/MutFrame.cpp:604
 msgid "Stop"
 msgstr "An&halten"
 
-#: muwx/MutApp.cpp:1307
+#: muwx/MutApp.cpp:1341
 msgid "Stop the current program"
 msgstr "Programm verlassen, ohne es ordnungsgemäß zu beenden"
 
-#: muwx/MutApp.cpp:1356
-#: muwx/MutApp.cpp:1393
+#: muwx/MutApp.cpp:1390
+#: muwx/MutApp.cpp:1427
 msgid "Could not get configuration storage"
 msgstr "Konnte Konfigurationsspeicher nicht finden"
 
@@ -1402,37 +1455,37 @@ msgstr "Konnte Konfigurationsspeicher nicht finden"
 msgid "Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"
 msgstr "Das Unterfenster ist nicht mehr in der Liste. Melden Sie bitte diesen Fehler! %s in %s : %d"
 
-#: muwx/MutEditFile.cpp:242
+#: muwx/MutEditFile.cpp:249
 msgid "Can't write temporary file."
 msgstr "Kann temporäre Datei nicht anlegen"
 
-#: muwx/MutEditFile.cpp:243
+#: muwx/MutEditFile.cpp:250
 msgid "Error"
 msgstr "Fehler"
 
-#: muwx/MutEditFile.cpp:251
+#: muwx/MutEditFile.cpp:258
 msgid "The compile dialog could not be loaded."
 msgstr "Der Compiler-Dialog konnte nicht geladen werden."
 
-#: muwx/MutEditFile.cpp:309
+#: muwx/MutEditFile.cpp:316
 msgid "File couldn't be loaded."
 msgstr "Die Datei konnte nicht geladen werden."
 
-#: muwx/MutEditFile.cpp:340
+#: muwx/MutEditFile.cpp:347
 msgid "The text couldn't be saved."
 msgstr "Der Text konnte nicht gespeichert werden."
 
-#: muwx/MutEditFile.cpp:710
-#: muwx/MutEditFile.cpp:782
+#: muwx/MutEditFile.cpp:717
+#: muwx/MutEditFile.cpp:790
 msgid "The search string was not found."
 msgstr "Die Zeichenkette wurde nicht gefunden."
 
-#: muwx/MutEditFile.cpp:711
-#: muwx/MutEditFile.cpp:731
+#: muwx/MutEditFile.cpp:718
+#: muwx/MutEditFile.cpp:739
 msgid "Replace all"
 msgstr "Alle ersetzen"
 
-#: muwx/MutEditFile.cpp:727
+#: muwx/MutEditFile.cpp:735
 #, c-format
 msgid ""
 "Replaced %d occurrences of `%s' by `%s'.\n"
@@ -1441,15 +1494,15 @@ msgstr ""
 "Ich konnte an %d Stellen `%s' durch `%s' ersetzen.\n"
 "\n"
 
-#: muwx/MutEditFile.cpp:729
+#: muwx/MutEditFile.cpp:737
 msgid "Note: Occurences before the current cursor positions are not changed."
 msgstr "Hinweis: Auftretende Stellen vor der aktuellen Cursor-Position wurden nicht geändert."
 
-#: muwx/MutEditFile.cpp:730
+#: muwx/MutEditFile.cpp:738
 msgid "Note: Occurences after the current cursor positions are not changed."
 msgstr "Hinweis: Auftretende Stellen nach der aktuellen Cursor-Position wurden nicht geändert."
 
-#: muwx/MutEditFile.cpp:763
+#: muwx/MutEditFile.cpp:771
 msgid ""
 "Search reached the end of the file.\n"
 "Proceed from the beginning?"
@@ -1457,13 +1510,13 @@ msgstr ""
 "Die Suche erreichte das Ende der Datei.\n"
 "Am Anfang fortsetzen?"
 
-#: muwx/MutEditFile.cpp:764
 #: muwx/MutEditFile.cpp:772
-#: muwx/MutEditFile.cpp:783
+#: muwx/MutEditFile.cpp:780
+#: muwx/MutEditFile.cpp:791
 msgid "Search"
 msgstr "Suche"
 
-#: muwx/MutEditFile.cpp:771
+#: muwx/MutEditFile.cpp:779
 msgid ""
 "Search reached the beginning of the file.\n"
 "Proceed from the end?"
@@ -1471,55 +1524,55 @@ msgstr ""
 "Die Suche erreichte den Anfang der Datei.\n"
 "Von hinten fortsetzen?"
 
-#: muwx/MutEditFile.cpp:833
+#: muwx/MutEditFile.cpp:841
 msgid "Where shall we jump to?"
 msgstr "Wohin wollen Sie Springen?"
 
-#: muwx/MutEditFile.cpp:834
+#: muwx/MutEditFile.cpp:842
 msgid "Line No.:"
 msgstr "Zeilennummer:"
 
-#: muwx/MutEditFile.cpp:835
+#: muwx/MutEditFile.cpp:843
 msgid "Goto"
 msgstr "Gehe zu"
 
-#: muwx/MutEditFile.cpp:1222
+#: muwx/MutEditFile.cpp:1230
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: muwx/MutEditFile.cpp:1228
+#: muwx/MutEditFile.cpp:1236
 msgid "Full filename"
 msgstr "Vollständiger Dateiname"
 
-#: muwx/MutEditFile.cpp:1236
+#: muwx/MutEditFile.cpp:1244
 msgid "Language"
 msgstr "Sprache"
 
-#: muwx/MutEditFile.cpp:1241
+#: muwx/MutEditFile.cpp:1249
 msgid "Lexer-ID: "
 msgstr "Lexer-ID:"
 
-#: muwx/MutEditFile.cpp:1253
+#: muwx/MutEditFile.cpp:1261
 msgid "Line endings"
 msgstr "Zeilenumbrüche"
 
-#: muwx/MutEditFile.cpp:1261
+#: muwx/MutEditFile.cpp:1269
 msgid "Informations"
 msgstr "Informationen"
 
-#: muwx/MutEditFile.cpp:1268
+#: muwx/MutEditFile.cpp:1276
 msgid "Total lines"
 msgstr "Anzahl Zeilen"
 
-#: muwx/MutEditFile.cpp:1274
+#: muwx/MutEditFile.cpp:1282
 msgid "Total chars"
 msgstr "Zeichen insgesamt"
 
-#: muwx/MutEditFile.cpp:1280
+#: muwx/MutEditFile.cpp:1288
 msgid "Current line"
 msgstr "Aktuelle Zeile"
 
-#: muwx/MutEditFile.cpp:1286
+#: muwx/MutEditFile.cpp:1294
 msgid "Current pos"
 msgstr "Aktuelle Position"
 
@@ -1761,92 +1814,30 @@ msgstr "(INITIAL)"
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
 
-#: muwx/MutRouteWnd.cpp:202
-#, c-format
-msgid "%d -- %d"
-msgstr "%d – %d"
-
-#: muwx/MutRouteWnd.cpp:204
-msgid "--"
-msgstr "–"
-
-#: muwx/MutRouteWnd.cpp:720
+#: muwx/MutRouteWnd.cpp:397
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "Die Datei „%s“ konnte nicht geladen werden."
 
-#: muwx/MutRouteWnd.cpp:725
+#: muwx/MutRouteWnd.cpp:402
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "Die Datei „%s“ konnte zwar geöffnet, aber nicht geladen werden."
 
-#: muwx/MutRouteWnd.cpp:776
+#: muwx/MutRouteWnd.cpp:453
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Kann Routendatei „%s“ nicht zum Schreiben öffnen."
 
-#: muwx/MutRouteWnd.cpp:792
+#: muwx/MutRouteWnd.cpp:469
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Fehler beim Schreiben der Datei „%s“."
 
-#: muwx/MutRouteWnd.cpp:814
+#: muwx/MutRouteWnd.cpp:491
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "Die Zeichenkette „%s“ ist kein gültiger Dateiname."
-
-#: muwx/MutRouteWnd.cpp:978
-#: xrc/reslocale.cpp:111
-#: xrc/reslocale.cpp:123
-#: xrc/reslocale.cpp:137
-msgid "all"
-msgstr "alle"
-
-#: muwx/MutRouteWnd.cpp:983
-msgid "else"
-msgstr "sonstige"
-
-#: muwx/MutRouteWnd.cpp:989
-#, c-format
-msgid "box: %s"
-msgstr "Kasten: %s"
-
-#: muwx/MutRouteWnd.cpp:991
-#: muwx/MutRouteWnd.cpp:1016
-#, c-format
-msgid "channel: %s"
-msgstr "Kanal: %s"
-
-#: muwx/MutRouteWnd.cpp:998
-#, c-format
-msgid "staff: %s"
-msgstr "Notensystem: %s"
-
-#: muwx/MutRouteWnd.cpp:1000
-#, c-format
-msgid "keys: %s"
-msgstr "Tasten: %s"
-
-#: muwx/MutRouteWnd.cpp:1002
-#, c-format
-msgid "track: %s"
-msgstr "Spur: %s"
-
-#: muwx/MutRouteWnd.cpp:1441
-#: muwx/MutRouteWnd.cpp:1703
-msgid "Unexpected value: DTNotSet"
-msgstr "Unerwarteter Wert: DTNotSet"
-
-#: muwx/MutRouteWnd.cpp:1449
-#: muwx/MutRouteWnd.cpp:1711
-#, c-format
-msgid "Unexpected device type: %d"
-msgstr "Unerwarteter Gerätetyp: %d"
-
-#: muwx/MutRouteWnd.cpp:1484
-#, c-format
-msgid "Unexpected value: %d"
-msgstr "Unerwarteter Wert: %d"
 
 #: muwx/MutTextBox.cpp:53
 msgid "Current keys"
@@ -2199,6 +2190,12 @@ msgstr "&aktiv"
 msgid "&passive"
 msgstr "&passiv"
 
+#: xrc/reslocale.cpp:111
+#: xrc/reslocale.cpp:123
+#: xrc/reslocale.cpp:137
+msgid "all"
+msgstr "alle"
+
 #: xrc/reslocale.cpp:112
 msgid "box tag"
 msgstr "Box-Tag"
@@ -2283,6 +2280,39 @@ msgstr "Unbehandelte Ereignisse des Programmes anzeigen"
 #: mywx/mutDebugFlags.h:52
 msgid "Debug editor related functionality"
 msgstr "Fehler im Editor finden"
+
+#~ msgid "%d -- %d"
+#~ msgstr "%d – %d"
+
+#~ msgid "--"
+#~ msgstr "–"
+
+#~ msgid "else"
+#~ msgstr "sonstige"
+
+#~ msgid "box: %s"
+#~ msgstr "Kasten: %s"
+
+#~ msgid "channel: %s"
+#~ msgstr "Kanal: %s"
+
+#~ msgid "staff: %s"
+#~ msgstr "Notensystem: %s"
+
+#~ msgid "keys: %s"
+#~ msgstr "Tasten: %s"
+
+#~ msgid "track: %s"
+#~ msgstr "Spur: %s"
+
+#~ msgid "Unexpected value: DTNotSet"
+#~ msgstr "Unerwarteter Wert: DTNotSet"
+
+#~ msgid "Unexpected device type: %d"
+#~ msgstr "Unerwarteter Gerätetyp: %d"
+
+#~ msgid "Unexpected value: %d"
+#~ msgstr "Unerwarteter Wert: %d"
 
 #~ msgid "Save the current file."
 #~ msgstr "Speichere die aktuelle Datei."
