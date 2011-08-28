@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.4 2011/08/24 21:19:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.5 2011/08/28 20:09:11 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/28 20:09:11 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.4  2011/08/24 21:19:36  keinstein
+ * Revision 1.5  2011/08/28 20:09:11  keinstein
+ * several impovements for opening and saving files
+ *
+ * Revision 1.4  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.3  2011-08-21 16:52:05  keinstein
@@ -70,6 +73,7 @@ namespace mutaborGUI {
 
 		/// calculate the frame title
 		virtual wxString MakeFrameTitle(wxDocument* doc);
+		void CmExecuteLogic(wxCommandEvent& event);
     
 
 	protected:
@@ -80,6 +84,7 @@ namespace mutaborGUI {
 		    passed back. Probably no events should be propagated.
 		*/
 		virtual bool TryParent(wxEvent& event);	
+		DECLARE_EVENT_TABLE()
 	};
 }
 

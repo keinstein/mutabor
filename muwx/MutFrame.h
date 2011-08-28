@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.23 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.24 2011/08/28 20:09:11 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.23 $
+ * $Date: 2011/08/28 20:09:11 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.23  2011/08/21 16:52:05  keinstein
+ * Revision 1.24  2011/08/28 20:09:11  keinstein
+ * several impovements for opening and saving files
+ *
+ * Revision 1.23  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.22  2011-08-14 18:32:18  keinstein
@@ -240,6 +243,9 @@ public:
 
 	/// Attach a client to the Frame
 	bool SetClient (wxWindow * win, const wxString &title);
+
+	/// Set the window name, i.e. frame title
+	virtual void SetLabel (const wxString &label) { SetTitle(label); }
 
 	/// Get a file name to open
 	///    static wxString FileNameDialog(wxWindow * parent);
