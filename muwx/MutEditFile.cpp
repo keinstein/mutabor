@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.19 2011/08/28 11:38:17 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.20 2011/08/28 13:47:39 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/28 11:38:17 $
-* \version $Revision: 1.19 $
+* $Date: 2011/08/28 13:47:39 $
+* \version $Revision: 1.20 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.19  2011/08/28 11:38:17  keinstein
+* Revision 1.20  2011/08/28 13:47:39  keinstein
+* group replace all into one undo action
+*
+* Revision 1.19  2011-08-28 11:38:17  keinstein
 * Fix brace hilighting
 * Implement Goto line
 *
@@ -721,12 +724,13 @@ namespace mutaborGUI {
 			ff.Down(event.GetFlags() & wxFR_DOWN).AskCircular(false)
 				.ShowNotFound(false).UseCaret(false);
 			int count = 0;
+			BeginUndoAction();
 			while (result >= 0) {
 				count++;
 				ReplaceTarget(event.GetReplaceString());
 				result = DoFind(findString,ff);
 			}
-			
+			EndUndoAction();
 			wxMessageBox(
 				wxString::Format(_("Replaced %d occurrences of `%s' by `%s'.\n\n"), count,(const wxChar*)findString,(const wxChar*)event.GetReplaceString())
 				+ (ff.down?
