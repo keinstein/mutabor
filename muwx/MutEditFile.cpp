@@ -2,17 +2,21 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.18 2011/08/27 17:44:44 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.19 2011/08/28 11:38:17 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/27 17:44:44 $
-* \version $Revision: 1.18 $
+* $Date: 2011/08/28 11:38:17 $
+* \version $Revision: 1.19 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.18  2011/08/27 17:44:44  keinstein
+* Revision 1.19  2011/08/28 11:38:17  keinstein
+* Fix brace hilighting
+* Implement Goto line
+*
+* Revision 1.18  2011-08-27 17:44:44  keinstein
 * Implemented Search and Search/Replace
 *
 * Revision 1.17  2011-08-21 16:52:05  keinstein
@@ -54,6 +58,7 @@
 
 #include "wx/wxprec.h"
 #include "wx/ffile.h"
+#include "wx/numdlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -821,7 +826,7 @@ namespace mutaborGUI {
 		int min = GetCurrentPos ();
 		int max = BraceMatch (min);
 		if (max > (min+1)) {
-			BraceHighlight (min+1, max);
+			BraceHighlight (min, max);
 			SetSelection (min+1, max);
 		}else{
 			BraceBadLight (min);
@@ -829,6 +834,15 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnGoto (wxCommandEvent &WXUNUSED(event)) {
+		long linenr = wxGetNumberFromUser(_("Where shall we jump to?"),
+						  _("Line No.:"),
+						  _("Goto"),
+						  -1,
+						  1,
+						  GetLineCount(),
+						  this);
+		if (linenr > 0)
+			GotoLine(linenr-1);
 	}
 
 	void MutEditFile::OnEditIndentInc (wxCommandEvent &WXUNUSED(event)) {
