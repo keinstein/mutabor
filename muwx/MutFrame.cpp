@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.40 2011/08/28 20:09:11 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.41 2011/08/28 21:24:56 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/28 20:09:11 $
- * \version $Revision: 1.40 $
+ * \date $Date: 2011/08/28 21:24:56 $
+ * \version $Revision: 1.41 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.40  2011/08/28 20:09:11  keinstein
+ * Revision 1.41  2011/08/28 21:24:56  keinstein
+ * added file properties dialog
+ *
+ * Revision 1.40  2011-08-28 20:09:11  keinstein
  * several impovements for opening and saving files
  *
  * Revision 1.39  2011-08-27 17:44:44  keinstein
@@ -395,7 +398,8 @@ EVT_UPDATE_UI(wxID_UNDO, MutFrame::PassEventToEditorUI)
 EVT_UPDATE_UI(wxID_REDO, MutFrame::PassEventToEditorUI)
 	EVT_MENU(CM_COMPILE, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_COMPACT, MutFrame::PassEventToEditor)
-	EVT_MENU(CM_ACTIVATE, MutFrame::PassEventToEditor)
+	EVT_MENU(CM_ACTIVATE,MutFrame::PassEventToEditor)
+        EVT_MENU(CM_PROPERTIES, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_GETLINE, MutFrame::PassEventToEditor)
 EVT_MENU (wxID_CLEAR,            MutFrame::PassEventToEditor)
 EVT_MENU (wxID_CUT,              MutFrame::PassEventToEditor)

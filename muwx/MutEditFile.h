@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.16 2011/08/27 17:44:44 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.17 2011/08/28 21:24:56 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/27 17:44:44 $
-* \version $Revision: 1.16 $
+* $Date: 2011/08/28 21:24:56 $
+* \version $Revision: 1.17 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.16  2011/08/27 17:44:44  keinstein
+* Revision 1.17  2011/08/28 21:24:56  keinstein
+* added file properties dialog
+*
+* Revision 1.16  2011-08-27 17:44:44  keinstein
 * Implemented Search and Search/Replace
 *
 * Revision 1.15  2011-08-21 16:52:05  keinstein
@@ -191,6 +194,7 @@ namespace mutaborGUI {
 		// stc
 		void OnMarginClick (wxStyledTextEvent &event);
 		void OnCharAdded  (wxStyledTextEvent &event);
+		void OnProperties (wxCommandEvent &WXUNUSED(event));
 
 		//! language/lexer
 		wxString DeterminePrefs (const wxString &filename);
