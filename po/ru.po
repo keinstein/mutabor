@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the mutabor package.
 # Tobias Schlemmer <keinstein@users.berlios.de>, 2010.
 #
-#: muwx/MutEditFile.cpp:792 muwx/MutEditFile.cpp:793
+#: muwx/MutEditFile.cpp:800 muwx/MutEditFile.cpp:801
 msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-08-28 12:30+0200\n"
+"POT-Creation-Date: 2011-08-28 16:36+0200\n"
 "PO-Revision-Date: 2010-11-21 15:18+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: Russian\n"
@@ -28,7 +28,7 @@ msgid "GIS input file."
 msgstr "Входный GIS-файл."
 
 #: mu32/routing/gmn/GSP_Err.cpp:31 muwx/MutApp.cpp:688
-#: muwx/MutEditFile.cpp:1308 xrc/reslocale.cpp:13
+#: muwx/MutEditFile.cpp:1316 xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
 
@@ -772,8 +772,7 @@ msgid "Input Device"
 msgstr "Устройство входа"
 
 #: muwx/Routing/InputDeviceShape.cpp:251
-#: muwx/Routing/OutputDeviceShape.cpp:263 muwx/MutRouteWnd.cpp:1394
-#: muwx/MutRouteWnd.cpp:1647
+#: muwx/Routing/OutputDeviceShape.cpp:263
 #, fuzzy
 msgid "no device"
 msgstr "Ни одно устройство не настроено"
@@ -806,12 +805,12 @@ msgstr "Файл:"
 msgid "Line:"
 msgstr "Строка"
 
-#: muwx/CompDlg.cpp:135 muwx/MutRouteWnd.cpp:181
+#: muwx/CompDlg.cpp:135
 #, fuzzy
 msgid "..."
 msgstr "..."
 
-#: muwx/CompDlg.cpp:138 muwx/MutEditFile.cpp:1295 xrc/reslocale.cpp:25
+#: muwx/CompDlg.cpp:138 muwx/MutEditFile.cpp:1303 xrc/reslocale.cpp:25
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -868,7 +867,7 @@ msgstr "Индекс"
 msgid "Mutabor logic file"
 msgstr "Площадка (BB)"
 
-#: muwx/MutApp.cpp:420 muwx/MutApp.cpp:1309 xrc/reslocale.cpp:48
+#: muwx/MutApp.cpp:420 muwx/MutApp.cpp:1343 xrc/reslocale.cpp:48
 #: xrc/reslocale.cpp:103
 msgid "&Help"
 msgstr "&Справка"
@@ -1035,406 +1034,463 @@ msgstr "искать точное совпадения каждого ключа
 msgid "Closing window of class %s"
 msgstr "При &закрытии последнего окна завершается работа с программой"
 
-#: muwx/MutApp.cpp:1074
+#: muwx/MutApp.cpp:1072
 #, fuzzy
 msgid "&New\tCtrl+N"
 msgstr "Создать к&аталог..."
 
-#: muwx/MutApp.cpp:1075
+#: muwx/MutApp.cpp:1073
 #, fuzzy
 msgid "Create a new logic file."
 msgstr "%s: не удалось создать новый файл значений по умолчанию\n"
 
-#: muwx/MutApp.cpp:1076
+#: muwx/MutApp.cpp:1074
 #, fuzzy
 msgid "&Open...\tCtrl+O"
 msgstr "Открыть каталог"
 
-#: muwx/MutApp.cpp:1077
+#: muwx/MutApp.cpp:1075
 #, fuzzy
 msgid "Open a logic file in editor window"
 msgstr "Открывать исходные файлы в редакторе, а не в программе просмотра"
 
-#: muwx/MutApp.cpp:1087
+#: muwx/MutApp.cpp:1085
 #, fuzzy
 msgid "&Execute\tCtrl+F9"
 msgstr "Убрать сообщения (F9)"
 
-#: muwx/MutApp.cpp:1088
+#: muwx/MutApp.cpp:1086
 msgid "Load a logic file an immediately activate it"
 msgstr ""
 
-#: muwx/MutApp.cpp:1097
-msgid "Proper&ties ..\tCtrl+I"
-msgstr ""
+#: muwx/MutApp.cpp:1095
+#, fuzzy
+msgid "Proper&ties ...\tCtrl+I"
+msgstr "Открыть каталог"
 
-#: muwx/MutApp.cpp:1098
+#: muwx/MutApp.cpp:1096
 #, fuzzy
 msgid "Get some information about the currently edited file"
 msgstr "Показать информацию о программе Evolution"
 
-#: muwx/MutApp.cpp:1105
+#: muwx/MutApp.cpp:1103
 msgid "Print setup..."
 msgstr ""
 
-#: muwx/MutApp.cpp:1106
+#: muwx/MutApp.cpp:1104
 msgid "Configure how the pages will be printed"
 msgstr ""
 
-#: muwx/MutApp.cpp:1122
+#: muwx/MutApp.cpp:1120
 msgid "&File"
 msgstr "&Файл"
 
-#: muwx/MutApp.cpp:1124
+#: muwx/MutApp.cpp:1122
 #, fuzzy
 msgid "@MAC|&File"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: muwx/MutApp.cpp:1144
+#: muwx/MutApp.cpp:1142
 msgid "Select &line\tCtrl+Shift+L"
+msgstr ""
+
+#: muwx/MutApp.cpp:1143
+msgid "Select the complete line at cursor position"
 msgstr ""
 
 #: muwx/MutApp.cpp:1147
 msgid "Find &next\tCtrl+G"
 msgstr ""
 
-#: muwx/MutApp.cpp:1149
-msgid "Replace &again\tShift+F4"
+#: muwx/MutApp.cpp:1148
+msgid "Continue last search"
 msgstr ""
 
 #: muwx/MutApp.cpp:1151
-msgid "&Match brace\tCtrl+M"
+msgid "Replace &again\tShift+F4"
 msgstr ""
 
 #: muwx/MutApp.cpp:1152
+msgid "Go on with replacement"
+msgstr ""
+
+#: muwx/MutApp.cpp:1155
+msgid "&Match brace\tCtrl+M"
+msgstr ""
+
+#: muwx/MutApp.cpp:1156
+msgid "Find matching brace and select all contained characters"
+msgstr ""
+
+#: muwx/MutApp.cpp:1158
 #, fuzzy
 msgid "&Goto Line...\tCtrl+L"
 msgstr "Открыть каталог"
 
 #: muwx/MutApp.cpp:1159
-msgid "&Upper case"
+msgid "Jump to a specific line"
 msgstr ""
-
-#: muwx/MutApp.cpp:1160
-msgid "&Lower case"
-msgstr ""
-
-#: muwx/MutApp.cpp:1164
-msgid "CR (&Linux)"
-msgstr ""
-
-#: muwx/MutApp.cpp:1165
-#, fuzzy
-msgid "CR+LF (&Windows)"
-msgstr "Windows"
 
 #: muwx/MutApp.cpp:1166
-msgid "LF (&Macintosh)"
-msgstr ""
-
-#: muwx/MutApp.cpp:1168
-msgid "&Readonly mode"
-msgstr ""
-
-#: muwx/MutApp.cpp:1169
-msgid "Change &case to ..."
-msgstr ""
-
-#: muwx/MutApp.cpp:1170
-msgid "Convert line &endings to ..."
-msgstr ""
-
-#: muwx/MutApp.cpp:1173
-msgid "&Edit"
-msgstr ""
-
-#: muwx/MutApp.cpp:1180
-#, fuzzy
-msgid "&Compile\tAlt+F9"
-msgstr "Убрать сообщения (F9)"
-
-#: muwx/MutApp.cpp:1180
-msgid "Load the actual file into the Mutabor Kernel."
-msgstr ""
-
-#: muwx/MutApp.cpp:1181
-#, fuzzy
-msgid "&Activate\tF9"
-msgstr "Активные соединения"
-
-#: muwx/MutApp.cpp:1181
-#, fuzzy
-msgid "Activate the Mutabor Kernel."
-msgstr "Длина единицы ядра:"
-
-#: muwx/MutApp.cpp:1182
-#, fuzzy
-msgid "&Stop\tF8"
-msgstr "Остановить поиск..."
-
-#: muwx/MutApp.cpp:1182
-#, fuzzy
-msgid "Stop the Mutabor Kernel."
-msgstr "Длина единицы ядра:"
-
-#: muwx/MutApp.cpp:1184
-#, fuzzy
-msgid "&Panic\tF12"
-msgstr "%s: паника: Недопустимое l_value %d\n"
-
-#: muwx/MutApp.cpp:1184
-msgid "Send \"all notes off\" signal to on all MIDI Channels."
-msgstr ""
-
-#: muwx/MutApp.cpp:1185
-#, fuzzy
-msgid "&Logic"
-msgstr "Логика"
-
-#: muwx/MutApp.cpp:1191 muwx/MutFrame.cpp:615
-#, fuzzy
-msgid "&Load routes"
-msgstr "Торговые пути"
-
-#: muwx/MutApp.cpp:1192 muwx/MutFrame.cpp:616
-msgid "Load the current route configuration from a file"
-msgstr ""
-
-#: muwx/MutApp.cpp:1193 muwx/MutFrame.cpp:617
-#, fuzzy
-msgid "&Save routes"
-msgstr "Торговые пути"
-
-#: muwx/MutApp.cpp:1194 muwx/MutFrame.cpp:618
-#, fuzzy
-msgid "Save current route configuration to a file."
-msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
-
-#: muwx/MutApp.cpp:1195
-#, fuzzy
-msgid "Save routes &as"
-msgstr "Сохранить игру как... (_A)"
-
-#: muwx/MutApp.cpp:1196
-msgid "Save current route configuration to a file with a new name."
-msgstr ""
-
-#: muwx/MutApp.cpp:1197
-#, fuzzy
-msgid "&Routes"
-msgstr "Торговые пути"
-
-#: muwx/MutApp.cpp:1216
-#, fuzzy
-msgid "&ANSI (Windows)"
-msgstr "Windows"
-
-#: muwx/MutApp.cpp:1217
-msgid "&MAC (Macintosh)"
-msgstr ""
-
-#: muwx/MutApp.cpp:1219
-msgid "&Hilight language .."
-msgstr ""
-
-#: muwx/MutApp.cpp:1221
-msgid "&Toggle current fold\tCtrl+T"
-msgstr ""
-
-#: muwx/MutApp.cpp:1222
 msgid "&Overwrite mode\tIns"
 msgstr ""
 
-#: muwx/MutApp.cpp:1223
+#: muwx/MutApp.cpp:1167
+msgid "Replace the caracters at the caret position by the ones you type in"
+msgstr ""
+
+#: muwx/MutApp.cpp:1169
 #, fuzzy
 msgid "&Wrap mode\tCtrl+U"
 msgstr "Сохранить &как..."
 
+#: muwx/MutApp.cpp:1170
+msgid "Automatic line breaking while inserting text"
+msgstr ""
+
+#: muwx/MutApp.cpp:1172
+msgid "&Readonly mode"
+msgstr ""
+
+#: muwx/MutApp.cpp:1173
+msgid "Disallow changing the document"
+msgstr ""
+
+#: muwx/MutApp.cpp:1178
+msgid "&Upper case"
+msgstr ""
+
+#: muwx/MutApp.cpp:1179
+msgid "Change the current selection to upper case"
+msgstr ""
+
+#: muwx/MutApp.cpp:1181
+msgid "&Lower case"
+msgstr ""
+
+#: muwx/MutApp.cpp:1182
+msgid "Change the current selection to lower case"
+msgstr ""
+
+#: muwx/MutApp.cpp:1187
+msgid "CR (&Linux/MAC OS X)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1188
+msgid "Change line endings to carrage return only (Unix style)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1190
+#, fuzzy
+msgid "CR+LF (&Windows)"
+msgstr "Windows"
+
+#: muwx/MutApp.cpp:1191
+msgid "Change line endigs to carrage return + line feed (DOS/Windows style)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1193
+msgid "LF (&Macintosh)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1194
+msgid "Change line endings to line feed only (old Macintosh style)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1196
+msgid "Edit options ..."
+msgstr ""
+
+#: muwx/MutApp.cpp:1197
+msgid "Change &case to ..."
+msgstr ""
+
+#: muwx/MutApp.cpp:1199
+msgid "Convert line &endings to ..."
+msgstr ""
+
+#: muwx/MutApp.cpp:1202
+msgid "&Edit"
+msgstr ""
+
+#: muwx/MutApp.cpp:1209
+#, fuzzy
+msgid "&Compile\tAlt+F9"
+msgstr "Убрать сообщения (F9)"
+
+#: muwx/MutApp.cpp:1209
+msgid "Load the actual file into the Mutabor Kernel."
+msgstr ""
+
+#: muwx/MutApp.cpp:1210
+#, fuzzy
+msgid "&Activate\tF9"
+msgstr "Активные соединения"
+
+#: muwx/MutApp.cpp:1210
+#, fuzzy
+msgid "Activate the Mutabor Kernel."
+msgstr "Длина единицы ядра:"
+
+#: muwx/MutApp.cpp:1211
+#, fuzzy
+msgid "&Stop\tF8"
+msgstr "Остановить поиск..."
+
+#: muwx/MutApp.cpp:1211
+#, fuzzy
+msgid "Stop the Mutabor Kernel."
+msgstr "Длина единицы ядра:"
+
+#: muwx/MutApp.cpp:1213
+#, fuzzy
+msgid "&Panic\tF12"
+msgstr "%s: паника: Недопустимое l_value %d\n"
+
+#: muwx/MutApp.cpp:1213
+msgid "Send \"all notes off\" signal to on all MIDI Channels."
+msgstr ""
+
+#: muwx/MutApp.cpp:1214
+#, fuzzy
+msgid "&Logic"
+msgstr "Логика"
+
+#: muwx/MutApp.cpp:1220 muwx/MutFrame.cpp:615
+#, fuzzy
+msgid "&Load routes"
+msgstr "Торговые пути"
+
+#: muwx/MutApp.cpp:1221 muwx/MutFrame.cpp:616
+msgid "Load the current route configuration from a file"
+msgstr ""
+
+#: muwx/MutApp.cpp:1222 muwx/MutFrame.cpp:617
+#, fuzzy
+msgid "&Save routes"
+msgstr "Торговые пути"
+
+#: muwx/MutApp.cpp:1223 muwx/MutFrame.cpp:618
+#, fuzzy
+msgid "Save current route configuration to a file."
+msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
+
+#: muwx/MutApp.cpp:1224
+#, fuzzy
+msgid "Save routes &as"
+msgstr "Сохранить игру как... (_A)"
+
 #: muwx/MutApp.cpp:1225
-msgid "Show line &endings"
+msgid "Save current route configuration to a file with a new name."
 msgstr ""
 
 #: muwx/MutApp.cpp:1226
+#, fuzzy
+msgid "&Routes"
+msgstr "Торговые пути"
+
+#: muwx/MutApp.cpp:1245
+#, fuzzy
+msgid "&ANSI (Windows)"
+msgstr "Windows"
+
+#: muwx/MutApp.cpp:1246
+msgid "&MAC (Macintosh)"
+msgstr ""
+
+#: muwx/MutApp.cpp:1249
+msgid "&Hilight language..."
+msgstr ""
+
+#: muwx/MutApp.cpp:1253
+msgid "&Toggle current fold\tCtrl+T"
+msgstr ""
+
+#: muwx/MutApp.cpp:1255
+msgid "Show line &endings"
+msgstr ""
+
+#: muwx/MutApp.cpp:1256
 msgid "Show &indent guides"
 msgstr ""
 
-#: muwx/MutApp.cpp:1227
+#: muwx/MutApp.cpp:1257
 msgid "Show line &numbers"
 msgstr ""
 
-#: muwx/MutApp.cpp:1228
+#: muwx/MutApp.cpp:1258
 msgid "Show &long line marker"
 msgstr ""
 
-#: muwx/MutApp.cpp:1229
+#: muwx/MutApp.cpp:1259
 msgid "Show white&space"
 msgstr ""
 
-#: muwx/MutApp.cpp:1231
-msgid "Use &code page of .."
+#: muwx/MutApp.cpp:1261
+msgid "Use &code page of..."
 msgstr ""
 
-#: muwx/MutApp.cpp:1241
-#, fuzzy
-msgid "&Routes\tF11"
-msgstr "Торговые пути"
-
-#: muwx/MutApp.cpp:1242
-#, fuzzy
-msgid "Open route configuration window"
-msgstr "Открыть окно главной книги"
-
-#: muwx/MutApp.cpp:1246
+#: muwx/MutApp.cpp:1275
 msgid "Current ke&ys\tF5"
 msgstr ""
 
-#: muwx/MutApp.cpp:1247
+#: muwx/MutApp.cpp:1276
 #, fuzzy
 msgid "Show current keys window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: muwx/MutApp.cpp:1248
+#: muwx/MutApp.cpp:1277
 #, fuzzy
 msgid "&Tone system\tF6"
 msgstr "Корень файловой системы"
 
-#: muwx/MutApp.cpp:1249
+#: muwx/MutApp.cpp:1278
 #, fuzzy
 msgid "Show tone system window"
 msgstr "Система X Window (без расширения Xv)"
 
-#: muwx/MutApp.cpp:1250
+#: muwx/MutApp.cpp:1279
 #, fuzzy
 msgid "&Actions\tF7"
 msgstr "Действия каравана"
 
-#: muwx/MutApp.cpp:1251
+#: muwx/MutApp.cpp:1280
 #, fuzzy
 msgid "Show current actions window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: muwx/MutApp.cpp:1259
+#: muwx/MutApp.cpp:1282
+#, fuzzy
+msgid "&Routes\tF11"
+msgstr "Торговые пути"
+
+#: muwx/MutApp.cpp:1283
+#, fuzzy
+msgid "Open route configuration window"
+msgstr "Открыть окно главной книги"
+
+#: muwx/MutApp.cpp:1293
 #, fuzzy
 msgid "Select &Box"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutApp.cpp:1260
+#: muwx/MutApp.cpp:1294
 #, fuzzy
 msgid "Select current Box"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutApp.cpp:1263
+#: muwx/MutApp.cpp:1297
 msgid "&View"
 msgstr "&Вид"
 
-#: muwx/MutApp.cpp:1269 muwx/MutFrame.cpp:620
+#: muwx/MutApp.cpp:1303 muwx/MutFrame.cpp:620
 #, fuzzy
 msgid "&Play"
 msgstr "_Воспроизвести"
 
-#: muwx/MutApp.cpp:1270 muwx/MutFrame.cpp:621
+#: muwx/MutApp.cpp:1304 muwx/MutFrame.cpp:621
 msgid "Start playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:1271 muwx/MutFrame.cpp:622
+#: muwx/MutApp.cpp:1305 muwx/MutFrame.cpp:622
 #, fuzzy
 msgid "St&op"
 msgstr "_Остановить анимацию"
 
-#: muwx/MutApp.cpp:1272 muwx/MutFrame.cpp:623
+#: muwx/MutApp.cpp:1306 muwx/MutFrame.cpp:623
 msgid "Stop playing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:1273 muwx/MutFrame.cpp:624
+#: muwx/MutApp.cpp:1307 muwx/MutFrame.cpp:624
 #, fuzzy
 msgid "P&ause"
 msgstr "_Приостановить"
 
-#: muwx/MutApp.cpp:1274 muwx/MutFrame.cpp:625
+#: muwx/MutApp.cpp:1308 muwx/MutFrame.cpp:625
 msgid "Pause plaing the music from input file devices"
 msgstr ""
 
-#: muwx/MutApp.cpp:1275
+#: muwx/MutApp.cpp:1309
 msgid "&Sequencer"
 msgstr ""
 
-#: muwx/MutApp.cpp:1283
+#: muwx/MutApp.cpp:1317
 #, fuzzy
 msgid "Online &Help\tF1"
 msgstr "Справка Freeciv"
 
-#: muwx/MutApp.cpp:1284
+#: muwx/MutApp.cpp:1318
 #, fuzzy
 msgid "Open the help Window"
 msgstr "Открыть окно справки GnuCash"
 
-#: muwx/MutApp.cpp:1285
+#: muwx/MutApp.cpp:1319
 #, fuzzy
 msgid "&Manual"
 msgstr "Ручное"
 
-#: muwx/MutApp.cpp:1286
+#: muwx/MutApp.cpp:1320
 #, fuzzy
 msgid "Open the manual"
 msgstr "Открыть справку"
 
-#: muwx/MutApp.cpp:1287
+#: muwx/MutApp.cpp:1321
 #, fuzzy
 msgid "Language &reference"
 msgstr "Неправильная ссылка"
 
-#: muwx/MutApp.cpp:1288
+#: muwx/MutApp.cpp:1322
 msgid "Open the Mutabor language reference"
 msgstr ""
 
-#: muwx/MutApp.cpp:1290
+#: muwx/MutApp.cpp:1324
 #, fuzzy
 msgid "&Index"
 msgstr "_Индекс"
 
-#: muwx/MutApp.cpp:1291
+#: muwx/MutApp.cpp:1325
 #, fuzzy
 msgid "Open the help index"
 msgstr "Открыть помощь по GnuCash"
 
-#: muwx/MutApp.cpp:1292
+#: muwx/MutApp.cpp:1326
 msgid "&Search"
 msgstr "&Поиск"
 
-#: muwx/MutApp.cpp:1293
+#: muwx/MutApp.cpp:1327
 msgid "Search the help system for a specific keyword"
 msgstr ""
 
-#: muwx/MutApp.cpp:1295
+#: muwx/MutApp.cpp:1329
 #, fuzzy
 msgid "Help &on help"
 msgstr ", помощь по "
 
-#: muwx/MutApp.cpp:1296
+#: muwx/MutApp.cpp:1330
 #, fuzzy
 msgid "Show Help about the help system"
 msgstr "_Показывать значок системного лотка:"
 
-#: muwx/MutApp.cpp:1302
+#: muwx/MutApp.cpp:1336
 msgid "&About"
 msgstr "&О программе..."
 
-#: muwx/MutApp.cpp:1303
+#: muwx/MutApp.cpp:1337
 #, fuzzy
 msgid "Show information about the program"
 msgstr "Показать информацию о программе Evolution"
 
-#: muwx/MutApp.cpp:1306 muwx/MutFrame.cpp:604
+#: muwx/MutApp.cpp:1340 muwx/MutFrame.cpp:604
 #, fuzzy
 msgid "Stop"
 msgstr "Остановить поиск..."
 
-#: muwx/MutApp.cpp:1307
+#: muwx/MutApp.cpp:1341
 #, fuzzy
 msgid "Stop the current program"
 msgstr "Сохранить текущий файл"
 
-#: muwx/MutApp.cpp:1356 muwx/MutApp.cpp:1393
+#: muwx/MutApp.cpp:1390 muwx/MutApp.cpp:1427
 #, fuzzy
 msgid "Could not get configuration storage"
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
@@ -1445,122 +1501,122 @@ msgid ""
 "Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:242
+#: muwx/MutEditFile.cpp:249
 #, fuzzy
 msgid "Can't write temporary file."
 msgstr "Ошибка записи заголовка во временный файл!"
 
-#: muwx/MutEditFile.cpp:243
+#: muwx/MutEditFile.cpp:250
 msgid "Error"
 msgstr "Ошибка"
 
-#: muwx/MutEditFile.cpp:251
+#: muwx/MutEditFile.cpp:258
 #, fuzzy
 msgid "The compile dialog could not be loaded."
 msgstr "Указанный URL не может быть загружен."
 
-#: muwx/MutEditFile.cpp:309
+#: muwx/MutEditFile.cpp:316
 #, fuzzy
 msgid "File couldn't be loaded."
 msgstr "%d выбранный файл может быть добавлен (%s)"
 
-#: muwx/MutEditFile.cpp:340
+#: muwx/MutEditFile.cpp:347
 #, fuzzy
 msgid "The text couldn't be saved."
 msgstr "Состояние не может быть сохранено"
 
-#: muwx/MutEditFile.cpp:710 muwx/MutEditFile.cpp:782
+#: muwx/MutEditFile.cpp:717 muwx/MutEditFile.cpp:790
 msgid "The search string was not found."
 msgstr ""
 
-#: muwx/MutEditFile.cpp:711 muwx/MutEditFile.cpp:731
+#: muwx/MutEditFile.cpp:718 muwx/MutEditFile.cpp:739
 msgid "Replace all"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:727
+#: muwx/MutEditFile.cpp:735
 #, c-format
 msgid ""
 "Replaced %d occurrences of `%s' by `%s'.\n"
 "\n"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:729
+#: muwx/MutEditFile.cpp:737
 msgid "Note: Occurences before the current cursor positions are not changed."
 msgstr ""
 
-#: muwx/MutEditFile.cpp:730
+#: muwx/MutEditFile.cpp:738
 msgid "Note: Occurences after the current cursor positions are not changed."
 msgstr ""
 
-#: muwx/MutEditFile.cpp:763
+#: muwx/MutEditFile.cpp:771
 msgid ""
 "Search reached the end of the file.\n"
 "Proceed from the beginning?"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:764 muwx/MutEditFile.cpp:772 muwx/MutEditFile.cpp:783
+#: muwx/MutEditFile.cpp:772 muwx/MutEditFile.cpp:780 muwx/MutEditFile.cpp:791
 #, fuzzy
 msgid "Search"
 msgstr "&Поиск"
 
-#: muwx/MutEditFile.cpp:771
+#: muwx/MutEditFile.cpp:779
 msgid ""
 "Search reached the beginning of the file.\n"
 "Proceed from the end?"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:833
+#: muwx/MutEditFile.cpp:841
 msgid "Where shall we jump to?"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:834
+#: muwx/MutEditFile.cpp:842
 #, fuzzy
 msgid "Line No.:"
 msgstr "Строка"
 
-#: muwx/MutEditFile.cpp:835
+#: muwx/MutEditFile.cpp:843
 msgid "Goto"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1222
+#: muwx/MutEditFile.cpp:1230
 msgid "Properties"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1228
+#: muwx/MutEditFile.cpp:1236
 msgid "Full filename"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1236
+#: muwx/MutEditFile.cpp:1244
 msgid "Language"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1241
+#: muwx/MutEditFile.cpp:1249
 msgid "Lexer-ID: "
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1253
+#: muwx/MutEditFile.cpp:1261
 msgid "Line endings"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1261
+#: muwx/MutEditFile.cpp:1269
 msgid "Informations"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1268
+#: muwx/MutEditFile.cpp:1276
 msgid "Total lines"
 msgstr ""
 
-#: muwx/MutEditFile.cpp:1274
+#: muwx/MutEditFile.cpp:1282
 #, fuzzy
 msgid "Total chars"
 msgstr "не удалось прочитать %s"
 
-#: muwx/MutEditFile.cpp:1280
+#: muwx/MutEditFile.cpp:1288
 #, fuzzy
 msgid "Current line"
 msgstr "Клавиши Emacs"
 
-#: muwx/MutEditFile.cpp:1286
+#: muwx/MutEditFile.cpp:1294
 #, fuzzy
 msgid "Current pos"
 msgstr "Клавиши Emacs"
@@ -1818,91 +1874,32 @@ msgstr "Начальное состояние"
 msgid "Logic: %s - Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutRouteWnd.cpp:202
-#, c-format
-msgid "%d -- %d"
-msgstr ""
-
-#: muwx/MutRouteWnd.cpp:204
-msgid "--"
-msgstr ""
-
-#: muwx/MutRouteWnd.cpp:720
+#: muwx/MutRouteWnd.cpp:397
 #, fuzzy, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "%d выбранный файл может быть добавлен (%s)"
 
-#: muwx/MutRouteWnd.cpp:725
+#: muwx/MutRouteWnd.cpp:402
 #, fuzzy, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "isoquery: Не удалось открыть файл %(filename)s.\n"
 
-#: muwx/MutRouteWnd.cpp:776
+#: muwx/MutRouteWnd.cpp:453
 #, fuzzy, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "ошибка открытия резервного файла \"%s\" для записи"
 
-#: muwx/MutRouteWnd.cpp:792
+#: muwx/MutRouteWnd.cpp:469
 #, fuzzy, c-format
 msgid "Error writing file '%s'."
 msgstr ""
 "Ошибка сохранения файла '%s':\n"
 "%s"
 
-#: muwx/MutRouteWnd.cpp:814
+#: muwx/MutRouteWnd.cpp:491
 #, fuzzy, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "%s: \"%s\" не является верной кодировкой сервера\n"
-
-#: muwx/MutRouteWnd.cpp:978 xrc/reslocale.cpp:111 xrc/reslocale.cpp:123
-#: xrc/reslocale.cpp:137
-#, fuzzy
-msgid "all"
-msgstr "прочие"
-
-#: muwx/MutRouteWnd.cpp:983
-msgid "else"
-msgstr ""
-
-#: muwx/MutRouteWnd.cpp:989
-#, fuzzy, c-format
-msgid "box: %s"
-msgstr "Параллелепипед"
-
-#: muwx/MutRouteWnd.cpp:991 muwx/MutRouteWnd.cpp:1016
-#, fuzzy, c-format
-msgid "channel: %s"
-msgstr "Канал #%d:"
-
-#: muwx/MutRouteWnd.cpp:998
-#, c-format
-msgid "staff: %s"
-msgstr ""
-
-#: muwx/MutRouteWnd.cpp:1000
-#, fuzzy, c-format
-msgid "keys: %s"
-msgstr "Клавиши"
-
-#: muwx/MutRouteWnd.cpp:1002
-#, fuzzy, c-format
-msgid "track: %s"
-msgstr "%n: Дорожка"
-
-#: muwx/MutRouteWnd.cpp:1441 muwx/MutRouteWnd.cpp:1703
-#, fuzzy
-msgid "Unexpected value: DTNotSet"
-msgstr "непредвиденные данные после значения переменной"
-
-#: muwx/MutRouteWnd.cpp:1449 muwx/MutRouteWnd.cpp:1711
-#, fuzzy, c-format
-msgid "Unexpected device type: %d"
-msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
-
-#: muwx/MutRouteWnd.cpp:1484
-#, fuzzy, c-format
-msgid "Unexpected value: %d"
-msgstr "Значение _гаммы"
 
 #: muwx/MutTextBox.cpp:53
 #, fuzzy
@@ -2273,6 +2270,11 @@ msgstr "Активных"
 msgid "&passive"
 msgstr "Использовать пассивный режим"
 
+#: xrc/reslocale.cpp:111 xrc/reslocale.cpp:123 xrc/reslocale.cpp:137
+#, fuzzy
+msgid "all"
+msgstr "прочие"
+
 #: xrc/reslocale.cpp:112
 #, fuzzy
 msgid "box tag"
@@ -2366,6 +2368,34 @@ msgstr ""
 #: mywx/mutDebugFlags.h:52
 msgid "Debug editor related functionality"
 msgstr ""
+
+#, fuzzy
+#~ msgid "box: %s"
+#~ msgstr "Параллелепипед"
+
+#, fuzzy
+#~ msgid "channel: %s"
+#~ msgstr "Канал #%d:"
+
+#, fuzzy
+#~ msgid "keys: %s"
+#~ msgstr "Клавиши"
+
+#, fuzzy
+#~ msgid "track: %s"
+#~ msgstr "%n: Дорожка"
+
+#, fuzzy
+#~ msgid "Unexpected value: DTNotSet"
+#~ msgstr "непредвиденные данные после значения переменной"
+
+#, fuzzy
+#~ msgid "Unexpected device type: %d"
+#~ msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
+
+#, fuzzy
+#~ msgid "Unexpected value: %d"
+#~ msgstr "Значение _гаммы"
 
 #~ msgid "Save the current file."
 #~ msgstr "Сохранить текущий файл"

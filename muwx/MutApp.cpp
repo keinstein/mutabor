@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.41 2011/08/27 17:44:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.42 2011/08/28 14:38:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/27 17:44:44 $
- * \version $Revision: 1.41 $
+ * $Date: 2011/08/28 14:38:23 $
+ * \version $Revision: 1.42 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.41  2011/08/27 17:44:44  keinstein
+ * Revision 1.42  2011/08/28 14:38:23  keinstein
+ * Some menu impovements
+ *
+ * Revision 1.41  2011-08-27 17:44:44  keinstein
  * Implemented Search and Search/Replace
  *
  * Revision 1.40  2011-08-24 21:19:36  keinstein
@@ -806,9 +809,9 @@ MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 	wxMenuBar *menuBar = new wxMenuBar;
 	frame->SetFileMenu(MakeFileMenu(menuBar, type));
 	MakeEditMenu(menuBar, type);
+	MakeViewMenu(menuBar, type);
 	MakeLogicMenu(menuBar);
 	MakeRoutesMenu(menuBar);
-	MakeViewMenu(menuBar, type);
 	MakeSequencerMenu(menuBar);
 	MakeHelpMenu(menuBar);
 
@@ -1068,9 +1071,7 @@ wxString MutApp::GetResourceName(const wxString & file)
 
 wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 {
-	wxMenu * retval;
-	OPENMENU;
-	retval = menu;
+	wxMenu * menu = new wxMenu;
 	MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
 	         _("Create a new logic file."));
 	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
@@ -1094,7 +1095,7 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 
 	if (type == EditorMenu) {
 		menu->Append (CM_PROPERTIES,
-			      _("Proper&ties ..\tCtrl+I"),
+			      _("Proper&ties ...\tCtrl+I"),
 			      _("Get some information about the currently edited file"));
 	} 
 	menu->Append (wxID_PREFERENCES);
@@ -1119,19 +1120,18 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 	document_manager->GetFileHistory()->AddFilesToMenu(menu);
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	CLOSEMENU(_("&File"));
+	menuBar->Append(menu, _("&File"));
 #else
-	CLOSEMENU(getContextLocal(_("@MAC|&File")));
+	menuBar->Append(menu, getContextLocal(_("@MAC|&File")));
 #endif
-	return retval;
-
+	return menu;
 }
 
 void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
 {
 	if (type != EditorMenu) return;
 
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	menu->Append (wxID_UNDO);
 	menu->Append (wxID_REDO);
 	menu->AppendSeparator();
@@ -1141,67 +1141,99 @@ void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
 	menu->Append (wxID_CLEAR);
 	menu->AppendSeparator();
 	menu->Append (wxID_SELECTALL);
-	menu->Append (CM_SELECTLINE, _("Select &line\tCtrl+Shift+L"));
+	menu->Append (CM_SELECTLINE, 
+		      _("Select &line\tCtrl+Shift+L"),
+		      _("Select the complete line at cursor position"));
 	menu->AppendSeparator();
 	menu->Append (wxID_FIND);
-	menu->Append (CM_FINDNEXT, _("Find &next\tCtrl+G"));
+	menu->Append (CM_FINDNEXT, 
+		      _("Find &next\tCtrl+G"),
+		      _("Continue last search"));
 	menu->Append (wxID_REPLACE);
-	menu->Append (CM_REPLACENEXT, _("Replace &again\tShift+F4"));
+	menu->Append (CM_REPLACENEXT,
+		      _("Replace &again\tShift+F4"),
+		      _("Go on with replacement"));
 	menu->AppendSeparator();
-	menu->Append (CM_BRACEMATCH, _("&Match brace\tCtrl+M"));
-	menu->Append (CM_GOTO, _("&Goto Line...\tCtrl+L"));
+	menu->Append (CM_BRACEMATCH, 
+		      _("&Match brace\tCtrl+M"),
+		      _("Find matching brace and select all contained characters"));
+	menu->Append (CM_GOTO, 
+		      _("&Goto Line...\tCtrl+L"),
+		      _("Jump to a specific line"));
 	menu->AppendSeparator();
 	menu->Append (wxID_INDENT);
 	menu->Append (wxID_UNINDENT);
 
+	wxMenu *menuOptions = new wxMenu;
+	menuOptions->AppendCheckItem (CM_OVERTYPE, 
+				      _("&Overwrite mode\tIns"),
+				      _("Replace the caracters at the caret position by the ones you type in"));
+	menuOptions->AppendCheckItem (CM_WRAPMODEON, 
+				      _("&Wrap mode\tCtrl+U"),
+				      _("Automatic line breaking while inserting text"));
+	menuOptions->AppendCheckItem (CM_READONLY,
+				      _("&Readonly mode"),
+				      _("Disallow changing the document"));
+
 	// change case submenu
 	wxMenu *menuChangeCase = new wxMenu;
-	menuChangeCase->Append (CM_CHANGEUPPER, _("&Upper case"));
-	menuChangeCase->Append (CM_CHANGELOWER, _("&Lower case"));
+	menuChangeCase->Append (CM_CHANGEUPPER, 
+				_("&Upper case"),
+				_("Change the current selection to upper case"));
+	menuChangeCase->Append (CM_CHANGELOWER, 
+				_("&Lower case"),
+				_("Change the current selection to lower case"));
 
 	// convert EOL submenu
 	wxMenu *menuConvertEOL = new wxMenu;
-	menuConvertEOL->Append (CM_CONVERTCR, _("CR (&Linux)"));
-	menuConvertEOL->Append (CM_CONVERTCRLF, _("CR+LF (&Windows)"));
-	menuConvertEOL->Append (CM_CONVERTLF, _("LF (&Macintosh)"));
+	menuConvertEOL->Append (CM_CONVERTCR, 
+				_("CR (&Linux/MAC OS X)"),
+				_("Change line endings to carrage return only (Unix style)"));
+	menuConvertEOL->Append (CM_CONVERTCRLF,
+				_("CR+LF (&Windows)"),
+				_("Change line endigs to carrage return + line feed (DOS/Windows style)"));
+	menuConvertEOL->Append (CM_CONVERTLF,
+				_("LF (&Macintosh)"),
+				_("Change line endings to line feed only (old Macintosh style)"));
 
-	menu->AppendCheckItem (CM_READONLY, _("&Readonly mode"));
+	menu->Append (wxID_ANY, _("Edit options ..."), menuOptions);
 	menu->Append (CM_CHANGECASE, _("Change &case to ..."), menuChangeCase);
-	menu->Append (CM_CONVERTEOL, _("Convert line &endings to ..."), 
+	menu->Append (CM_CONVERTEOL, 
+		      _("Convert line &endings to ..."), 
 		      menuConvertEOL);
 
-	CLOSEMENU(_("&Edit"));
+	menuBar->Append(menu, _("&Edit"));
 }
 
 	
 void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
 {
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
 	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
 	MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
 	MENUITEM_SEPARATOR;
 	MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
-	CLOSEMENU(_("&Logic"));
+	menuBar->Append(menu, _("&Logic"));
 }
 
 void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
 {
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	MENUITEM(_("&Load routes"), CM_ROUTELOAD,
 	         _("Load the current route configuration from a file"));
 	MENUITEM(_("&Save routes"), CM_ROUTESAVE,
 	         _("Save current route configuration to a file."));
 	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
 	         _("Save current route configuration to a file with a new name."));
-	CLOSEMENU(_("&Routes"));
+	menuBar->Append(menu, _("&Routes"));
 }
 
 void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 {
 	
 
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	if (type == EditorMenu) {
 		// hilight submenu
 		wxMenu *menuHilight = new wxMenu;
@@ -1216,11 +1248,12 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 		menuCharset->Append (CM_CHARSETANSI, _("&ANSI (Windows)"));
 		menuCharset->Append (CM_CHARSETMAC, _("&MAC (Macintosh)"));
 
-		menu->Append (CM_HILIGHTLANG, _("&Hilight language .."), menuHilight);
+		menu->Append (CM_HILIGHTLANG, 
+			      _("&Hilight language..."), 
+			      menuHilight);
 		menu->AppendSeparator();
-		menu->AppendCheckItem (CM_FOLDTOGGLE, _("&Toggle current fold\tCtrl+T"));
-		menu->AppendCheckItem (CM_OVERTYPE, _("&Overwrite mode\tIns"));
-		menu->AppendCheckItem (CM_WRAPMODEON, _("&Wrap mode\tCtrl+U"));
+		menu->AppendCheckItem (CM_FOLDTOGGLE, 
+				       _("&Toggle current fold\tCtrl+T"));
 		menu->AppendSeparator();
 		menu->AppendCheckItem (CM_DISPLAYEOL, _("Show line &endings"));
 		menu->AppendCheckItem (CM_INDENTGUIDE, _("Show &indent guides"));
@@ -1228,7 +1261,7 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 		menu->AppendCheckItem (CM_LONGLINEON, _("Show &long line marker"));
 		menu->AppendCheckItem (CM_WHITESPACE, _("Show white&space"));
 		menu->AppendSeparator();
-		menu->Append (CM_USECHARSET, _("Use &code page of .."), menuCharset);
+		menu->Append (CM_USECHARSET, _("Use &code page of..."), menuCharset);
 		menu->AppendSeparator();
 	}
 	
@@ -1238,17 +1271,21 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 	   _("Toggle tool bar on/off"));
 	MENUITEM_SEPARATOR;
 	*/
-	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
-	              _("Open route configuration window"));
-
 	if (type != ProgramMenu) {
-		MENUITEM_SEPARATOR;
+		if (type != EditorMenu) {
+			MENUITEM_SEPARATOR;
+		}
 		MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
 		              _("Show current keys window"));
 		MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
 		              _("Show tone system window"));
 		MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
 		              _("Show current actions window"));
+	}
+	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
+	              _("Open route configuration window"));
+
+	if (type != ProgramMenu) {
 		/*	  MENUITEM_SEPARATOR;
 		MENUCHECKITEM(_("&One window mode"), CM_OWM,
 		_("Toggle logic satus window: one each or one common"));
@@ -1260,26 +1297,26 @@ void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
 		             _("Select current Box"));
 	}
 
-	CLOSEMENU(_("&View"));
+	menuBar->Append(menu, _("&View"));
 }
 
 void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
 {
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	MENUITEM(_("&Play"), CM_INDEVPLAY,
 	         _("Start playing the music from input file devices"));
 	MENUITEM(_("St&op"), CM_INDEVSTOP,
 	         _("Stop playing the music from input file devices"));
 	MENUITEM(_("P&ause"), CM_INDEVPAUSE,
 	         _("Pause plaing the music from input file devices"));
-	CLOSEMENU(_("&Sequencer"));
+	menuBar->Append(menu, _("&Sequencer"));
 }
 
 
 void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
 
 {
-	OPENMENU;
+	wxMenu * menu = new wxMenu;
 	MENUITEM(_("Online &Help\tF1"), CM_HELP,
 	         _("Open the help Window"));
 	MENUITEM(_("&Manual"), CM_HELPHANDBOOK,
@@ -1306,7 +1343,7 @@ void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
 	MENUITEM(_("Stop"), cmCallExitId,
 	         _("Stop the current program"));
 #endif
-	CLOSEMENU(_("&Help"));
+	menuBar->Append(menu, _("&Help"));
 }
 
 int MutApp::OnExit()
