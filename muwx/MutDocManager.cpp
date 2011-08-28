@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.4 2011/08/24 21:19:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.5 2011/08/28 20:09:10 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/08/28 20:09:10 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.cpp,v $
- * Revision 1.4  2011/08/24 21:19:36  keinstein
+ * Revision 1.5  2011/08/28 20:09:10  keinstein
+ * several impovements for opening and saving files
+ *
+ * Revision 1.4  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.3  2011-08-21 16:52:05  keinstein
@@ -59,6 +62,13 @@
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
+
+
+using mutaborGUI::MutDocManager;
+
+BEGIN_EVENT_TABLE(MutDocManager, wxDocManager)
+EVT_MENU(CM_EXECUTE, MutDocManager::CmExecuteLogic)
+END_EVENT_TABLE()
 
 namespace mutaborGUI {
 
@@ -117,6 +127,33 @@ namespace mutaborGUI {
 			title = docName + wxString(_(" - ")) + _T(PACKAGE_NAME);
 		}
 		return title;
+	}
+
+	void MutDocManager::CmExecuteLogic(wxCommandEvent& event) 
+	{
+		wxDocument * doc = CreateDocument( wxEmptyString, 0);
+		if ( !doc )
+		{
+			OnOpenFileFailure();
+			return;
+		}
+
+		/** \todo correct command processing */
+
+		wxASSERT(dynamic_cast<MutDocument *>(doc));
+		wxView * view = doc->GetFirstView();
+		if (!view) {
+			UNREACHABLEC;
+			return;
+		}
+		wxWindow * f = view->GetFrame();
+		if (!f) {
+			UNREACHABLEC;
+		}
+		wxASSERT(dynamic_cast<MutFrame *>(f));
+		wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,
+				  CM_ACTIVATE);
+		f->GetEventHandler()->ProcessEvent(ev);
 	}
 
 

@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.20 2011/08/28 13:47:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.21 2011/08/28 20:09:11 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/28 13:47:39 $
-* \version $Revision: 1.20 $
+* $Date: 2011/08/28 20:09:11 $
+* \version $Revision: 1.21 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.20  2011/08/28 13:47:39  keinstein
+* Revision 1.21  2011/08/28 20:09:11  keinstein
+* several impovements for opening and saving files
+*
+* Revision 1.20  2011-08-28 13:47:39  keinstein
 * group replace all into one undo action
 *
 * Revision 1.19  2011-08-28 11:38:17  keinstein
@@ -288,8 +291,6 @@ namespace mutaborGUI {
 				     int WXUNUSED(fileType))
 	{
 		DEBUGLOG(mutparser,_T(""));
-		STUBC;
-#if 0
 		wxFFile file(filename);
 
 		if ( file.IsOpened() ) {
@@ -298,10 +299,13 @@ namespace mutaborGUI {
 			if ( file.ReadAll(&text, autoConverter) ) {
 				DEBUGLOG(mutparser,_T("%s"),text.c_str());
 
-				SetValue(text);
-				DiscardEdits();
+				SetText(text);
+				EmptyUndoBuffer();
+				SetSavePoint();
 				m_filename = filename;
 				file.Close();
+				wxFileName fname (m_filename);
+				InitializePrefs (DeterminePrefs (fname.GetFullName()));
 				return true;
 			}
 
@@ -314,23 +318,19 @@ namespace mutaborGUI {
 		}
 
 		wxLogError(_("File couldn't be loaded."));
-#endif
 		return false;
 	}
 
 	bool MutEditFile::DoSaveFile(const wxString& filename, int WXUNUSED(fileType))
 
 	{
-		STUBC;
-#if 0
 #if wxUSE_FFILE
-#ifdef DEBUG
-		std::cerr << "MutEditFile::DoSaveFile" << std::endl
-			  << (GetValue().fn_str()) << std::endl;
-#endif
+		DEBUGLOG(mutparser,_T("File contents:\n%s"),
+			 (const wxChar *)GetText());
+
 		wxFFile file(filename, _T("w"));
 
-		if ( file.IsOpened() && file.Write(GetValue(), autoConverter) ) {
+		if ( file.IsOpened() && file.Write(GetText(), autoConverter) ) {
 			// if it worked, save for future calls
 			m_filename = filename;
 
@@ -343,7 +343,6 @@ namespace mutaborGUI {
 		}
 
 #endif // wxUSE_FFILE
-#endif
 		wxLogError(_("The text couldn't be saved."));
 
 		return false;
@@ -1140,21 +1139,9 @@ namespace mutaborGUI {
 	}
 
 	bool MutEditFile::LoadFile (const wxString &filename) {
-
-		// load file in edit and clear undo
+		return DoLoadFile(filename,0);
 		if (!filename.empty()) m_filename = filename;
-//     wxFile file (m_filename);
-//     if (!file.IsOpened()) return false;
 		ClearAll ();
-//     long lng = file.Length ();
-//     if (lng > 0) {
-//         wxString buf;
-//         wxChar *buff = buf.GetWriteBuf (lng);
-//         file.Read (buff, lng);
-//         buf.UngetWriteBuf ();
-//         InsertText (0, buf);
-//     }
-//     file.Close();
 
 		wxStyledTextCtrl::LoadFile(m_filename);
 
@@ -1189,24 +1176,10 @@ namespace mutaborGUI {
 	}
 
 	bool MutEditFile::SaveFile (const wxString &filename) {
+		// \todo check whether this works with wxWidgets >2.9.0
 
-		// return if no change
-		if (!IsModified()) return true;
-
-//     // save edit in file and clear undo
-//     if (!filename.empty()) m_filename = filename;
-//     wxFile file (m_filename, wxFile::write);
-//     if (!file.IsOpened()) return false;
-//     wxString buf = GetText();
-//     bool okay = file.Write (buf);
-//     file.Close();
-//     if (!okay) return false;
-//     EmptyUndoBuffer();
-//     SetSavePoint();
-
-//     return true;
-
-		return wxStyledTextCtrl::SaveFile(filename);
+		return DoSaveFile(filename,0);
+//		return wxStyledTextCtrl::SaveFile(filename);
 
 	}
 

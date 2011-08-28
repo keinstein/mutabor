@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.42 2011/08/28 14:38:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.43 2011/08/28 20:09:10 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/28 14:38:23 $
- * \version $Revision: 1.42 $
+ * $Date: 2011/08/28 20:09:10 $
+ * \version $Revision: 1.43 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.42  2011/08/28 14:38:23  keinstein
+ * Revision 1.43  2011/08/28 20:09:10  keinstein
+ * several impovements for opening and saving files
+ *
+ * Revision 1.42  2011-08-28 14:38:23  keinstein
  * Some menu impovements
  *
  * Revision 1.41  2011-08-27 17:44:44  keinstein
@@ -397,7 +400,7 @@ bool MutApp::OnInit()
 	if (!(document_manager=new MutDocManager()))
 		return false;
 	//  restrict to having <= 1 doc open at any time
-	document_manager->SetMaxDocsOpen(5);
+//	document_manager->SetMaxDocsOpen(5);
 	//  establish a doc template for the doc,view pair
 	new wxDocTemplate(document_manager, 
 			  _("Mutabor logic file"), 
@@ -429,11 +432,14 @@ bool MutApp::OnInit()
 	
 #endif
 
+	// RestoreState needs initialized MIDI
+	MidiInit();
+	RestoreState();
+
+	// Command line files must be opened after the file history has been read
 	// This call parses the command line
 	if (!wxApp::OnInit()) return false;
 
-	MidiInit();
-	RestoreState();
 		
 	if (!GetTopWindow()) {
 		MutFrame * frame = CreateMainFrame(RouteMenu);
@@ -709,6 +715,7 @@ EVT_MENU(wxID_SAVE, MutApp::PassEventToDocManagerCMD)
 EVT_MENU(wxID_SAVEAS, MutApp::PassEventToDocManagerCMD)
 EVT_MENU(wxID_UNDO, MutApp::PassEventToDocManagerCMD)
 EVT_MENU(wxID_REDO, MutApp::PassEventToDocManagerCMD)
+EVT_MENU(CM_EXECUTE, MutApp::PassEventToDocManagerCMD)
 
 EVT_UPDATE_UI(wxID_OPEN, MutApp::PassEventToDocManagerUPD)
 EVT_UPDATE_UI(wxID_CLOSE, MutApp::PassEventToDocManagerUPD)
@@ -731,7 +738,7 @@ EVT_UPDATE_UI(wxID_PREVIEW, MutApp::PassEventToDocManagerUPD)
 //       EVT_MENU(CM_FILEOPEN, MutApp::PassEventToDocManager)	
 //	EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
 //	EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
-	EVT_MENU(CM_EXECUTE, MutApp::CmFileOpen)
+//	EVT_MENU(CM_EXECUTE, MutApp::CmFileOpen)
 	/*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
 	    EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
 	    EVT_MENU(CM_STOP, MutFrame::CmStop)
@@ -827,6 +834,8 @@ MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame)
 
 void MutApp::CmFileNew (wxCommandEvent& event)
 {
+	STUBC;
+	return;
 #ifdef DEBUG
 	printf("MutApp::CmFileNew\n");
 #endif
@@ -852,6 +861,9 @@ void MutApp::CmFileNew (wxCommandEvent& event)
 
 void MutApp::CmFileOpen (wxCommandEvent& event)
 {
+
+	STUBC;
+	return;
 	wxWindow * topwindow=GetTopWindow();
 
 	event.Skip(false);
@@ -1430,6 +1442,17 @@ void MutApp::RestoreState()
 		wxLogError(_("Could not get configuration storage"));
 		return;
 	}
+
+
+	// up to Version 2.9.3 the file history does not cleanup menus
+	if (document_manager) {
+		int max = document_manager->GetHistoryFilesCount();
+		wxFileHistory * h = document_manager->GetFileHistory();
+		if (h)
+			for (int i = max-1; i >= 0; i--) 
+				h -> RemoveFileFromHistory(i);
+	}
+
 
 	wxString oldpath = config->GetPath();
 

@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.39 2011/08/27 17:44:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.40 2011/08/28 20:09:11 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/27 17:44:44 $
- * \version $Revision: 1.39 $
+ * \date $Date: 2011/08/28 20:09:11 $
+ * \version $Revision: 1.40 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.39  2011/08/27 17:44:44  keinstein
+ * Revision 1.40  2011/08/28 20:09:11  keinstein
+ * several impovements for opening and saving files
+ *
+ * Revision 1.39  2011-08-27 17:44:44  keinstein
  * Implemented Search and Search/Replace
  *
  * Revision 1.38  2011-08-24 21:19:36  keinstein
@@ -376,7 +379,7 @@ BEGIN_EVENT_TABLE(MutFrame, wxDocChildFrame)
 	EVT_ERASE_BACKGROUND(MutFrame::OnEraseBackground)
 	EVT_SIZE(MutFrame::OnSize)
 
-        EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
+//        EVT_MENU(CM_EXECUTE, MutFrame::CmFileOpen)
 //	EVT_MENU(CM_FILESAVE, MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_FILESAVEAS, MutFrame::CmFileOpen)
 	EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)

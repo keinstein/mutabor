@@ -2,16 +2,19 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.8 2011/08/21 16:52:05 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.9 2011/08/28 20:09:11 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/08/21 16:52:05 $
-* \version $Revision: 1.8 $
+* $Date: 2011/08/28 20:09:11 $
+* \version $Revision: 1.9 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.8  2011/08/21 16:52:05  keinstein
+* Revision 1.9  2011/08/28 20:09:11  keinstein
+* several impovements for opening and saving files
+*
+* Revision 1.8  2011-08-21 16:52:05  keinstein
 * Integrate a more sophisticated editor menu based on the stc sample
 *
 * Revision 1.7  2011-08-20 17:50:39  keinstein
@@ -197,18 +200,21 @@ namespace mutaborGUI {
 		if (!view->GetTextsw()->SaveFile(filename))
 			return false;
 
+		SetTitle(GetDocumentManager()->MakeFrameTitle(this));
+		SetFilename(filename,true);
+
 		return true;
 	}
 
 	bool MutDocument::DoOpenDocument(const wxString& filename)
 	{
 		MutView *view = (MutView *)GetFirstView();
+		wxASSERT(view);
 		if (!view->GetTextsw()->LoadFile(filename))
 			return false;
 		DEBUGLOG(docview,_T("New title: ")+GetDocumentManager()->MakeFrameTitle(this));
-		MutFrame * frame = view->GetMutFrame();
-		if (frame)
-			frame->SetTitle(GetDocumentManager()->MakeFrameTitle(this));
+		SetTitle(GetDocumentManager()->MakeFrameTitle(this));
+		SetFilename(filename,true);
 		return true;
 	}
 
