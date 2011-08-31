@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.22 2011/08/28 21:24:55 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.23 2011/08/31 20:18:16 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/28 21:24:55 $
-* \version $Revision: 1.22 $
+* $Date: 2011/08/31 20:18:16 $
+* \version $Revision: 1.23 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.22  2011/08/28 21:24:55  keinstein
+* Revision 1.23  2011/08/31 20:18:16  keinstein
+* some work on printing the editor file
+*
+* Revision 1.22  2011-08-28 21:24:55  keinstein
 * added file properties dialog
 *
 * Revision 1.21  2011-08-28 20:09:11  keinstein
@@ -195,8 +198,7 @@ namespace mutaborGUI {
 				   wxID_ANY, 
 				   pos, 
 				   size, 
-				   wxTE_PROCESS_TAB | wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				   | wxTE_NOHIDESEL | wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN, 
+				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN, 
 				   name)
 	{
 		Init();
@@ -216,9 +218,7 @@ namespace mutaborGUI {
 				   wxID_ANY, 
 				   pos, 
 				   size, 
-				   wxTE_PROCESS_TAB | 
-				   wxTE_MULTILINE | wxTE_RICH | wxTE_RICH2 
-				   | wxTE_NOHIDESEL | wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN , 
+				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN , 
 				   name),
 		  view(v)
 	{
@@ -1309,11 +1309,9 @@ namespace mutaborGUI {
 // MutEditPrint
 //----------------------------------------------------------------------------
 
-	MutEditPrint::MutEditPrint (MutEditFile *edit, wxChar *title)
-		: wxPrintout(title) {
+	MutEditPrint::MutEditPrint (MutView * view, MutEditFile *edit, wxChar *title)
+		: wxDocPrintout(view,title) {
 		m_edit = edit;
-		m_printed = 0;
-
 	}
 
 	bool MutEditPrint::OnPrintPage (int page) {
@@ -1325,16 +1323,24 @@ namespace mutaborGUI {
 		PrintScaling (dc);
 
 		// print page
-		if (page == 1) m_printed = 0;
-		m_printed = m_edit->FormatRange (1, m_printed, m_edit->GetLength(),
-						 dc, dc, m_printRect, m_pageRect);
+/*
+		if (page == 1) 
+			m_printed = page;
+*/
+		
+		wxASSERT(0 < page);
+		wxASSERT(page <= (int)m_ranges.size());
+		std::pair <int,int> positions = m_ranges[page-1];
+
+		m_edit->FormatRange (1, positions.first, positions.second,
+				     dc, dc, m_printRect, m_pageRect);
 
 		return true;
 	}
 
 	bool MutEditPrint::OnBeginDocument (int startPage, int endPage) {
 
-		if (!wxPrintout::OnBeginDocument (startPage, endPage)) {
+		if (!wxDocPrintout::OnBeginDocument (startPage, endPage)) {
 			return false;
 		}
 
@@ -1384,9 +1390,15 @@ namespace mutaborGUI {
 				      page.y - (top + bottom));
 
 		// count pages
+		int currpos = 0;
 		while (HasPage (*maxPage)) {
-			m_printed = m_edit->FormatRange (0, m_printed, m_edit->GetLength(),
+			// print from m_printed to GetLength 
+			// (returning the positon for next page)
+			//* \todo save the page ranges and use in OnPrintPage
+			int oldpos = currpos;
+			currpos = m_edit->FormatRange (0, oldpos, m_edit->GetLength(),
 							 dc, dc, m_printRect, m_pageRect);
+			m_ranges.push_back(std::pair<int,int>(oldpos, currpos));
 			*maxPage += 1;
 		}
 		if (*maxPage > 0) *minPage = 1;
@@ -1394,9 +1406,8 @@ namespace mutaborGUI {
 		*selPageTo = *maxPage;
 	}
 
-	bool MutEditPrint::HasPage (int WXUNUSED(page)) {
-
-		return (m_printed < m_edit->GetLength());
+	bool MutEditPrint::HasPage (int page) {
+		return page <= m_ranges.size();
 	}
 
 	bool MutEditPrint::PrintScaling (wxDC *dc){
