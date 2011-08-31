@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.23 2011/08/31 20:18:16 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.24 2011/08/31 20:47:29 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/31 20:18:16 $
-* \version $Revision: 1.23 $
+* $Date: 2011/08/31 20:47:29 $
+* \version $Revision: 1.24 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.23  2011/08/31 20:18:16  keinstein
+* Revision 1.24  2011/08/31 20:47:29  keinstein
+* Enabled printing, but page setup must be still reworked
+*
+* Revision 1.23  2011-08-31 20:18:16  keinstein
 * some work on printing the editor file
 *
 * Revision 1.22  2011-08-28 21:24:55  keinstein
@@ -1391,13 +1394,14 @@ namespace mutaborGUI {
 
 		// count pages
 		int currpos = 0;
-		while (HasPage (*maxPage)) {
-			// print from m_printed to GetLength 
+		int maxpos = m_edit->GetLength();
+		while (currpos < maxpos) {
+			// print from oldpos to maxpos 
 			// (returning the positon for next page)
-			//* \todo save the page ranges and use in OnPrintPage
 			int oldpos = currpos;
-			currpos = m_edit->FormatRange (0, oldpos, m_edit->GetLength(),
-							 dc, dc, m_printRect, m_pageRect);
+			currpos = m_edit->FormatRange (0, oldpos, maxpos,
+						       dc, dc, 
+						       m_printRect, m_pageRect);
 			m_ranges.push_back(std::pair<int,int>(oldpos, currpos));
 			*maxPage += 1;
 		}
