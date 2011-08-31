@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.43 2011/08/28 20:09:10 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.44 2011/08/31 20:18:16 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/28 20:09:10 $
- * \version $Revision: 1.43 $
+ * $Date: 2011/08/31 20:18:16 $
+ * \version $Revision: 1.44 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.43  2011/08/28 20:09:10  keinstein
+ * Revision 1.44  2011/08/31 20:18:16  keinstein
+ * some work on printing the editor file
+ *
+ * Revision 1.43  2011-08-28 20:09:10  keinstein
  * several impovements for opening and saving files
  *
  * Revision 1.42  2011-08-28 14:38:23  keinstein
@@ -279,6 +282,55 @@ IMPLEMENT_APP(MutApp)
 #define MENUITEM_SEPARATOR			\
 	menu->AppendSeparator()
 
+BEGIN_EVENT_TABLE(MutApp, wxApp)
+EVT_MENU(CM_SETUP,                     MutApp::CmSetup)
+EVT_MENU(wxID_OPEN,                    MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_CLOSE,                   MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_CLOSE_ALL,               MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_REVERT,                  MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_NEW,                     MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_SAVE,                    MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_SAVEAS,                  MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_UNDO,                    MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_REDO,                    MutApp::PassEventToDocManagerCMD)
+EVT_MENU(CM_EXECUTE,                   MutApp::PassEventToDocManagerCMD)
+
+EVT_UPDATE_UI(wxID_OPEN,               MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_CLOSE,              MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_CLOSE_ALL,          MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_REVERT,             MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_NEW,                MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_SAVE,               MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_SAVEAS,             MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_UNDO,               MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_REDO,               MutApp::PassEventToDocManagerUPD)
+
+#if wxUSE_PRINTING_ARCHITECTURE
+EVT_MENU (wxID_PRINT_SETUP,            MutApp::OnPrintSetup)
+EVT_MENU(wxID_PRINT,                   MutApp::PassEventToDocManagerCMD)
+EVT_MENU(wxID_PREVIEW,                 MutApp::PassEventToDocManagerCMD)
+
+EVT_UPDATE_UI(wxID_PRINT,              MutApp::PassEventToDocManagerUPD)
+EVT_UPDATE_UI(wxID_PREVIEW,            MutApp::PassEventToDocManagerUPD)
+#endif
+EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
+EVT_MENU(CM_ROUTES,                    MutApp::CmRoutes)
+EVT_MENU(CM_ROUTELOAD,                 MutApp::CmRouteLoad)
+EVT_MENU(CM_ROUTESAVE,                 MutApp::CmRouteSave)
+EVT_MENU(CM_ROUTESAVEAS,               MutApp::CmRouteSaveAs)
+EVT_MENU(CM_HELP,                      MutApp::CmHelp)
+EVT_MENU(CM_HELPHANDBOOK,              MutApp::CmHelp)
+EVT_MENU(CM_HELPREFERENCE,             MutApp::CmHelp)
+EVT_MENU(CM_HELPINDEX,                 MutApp::CmHelp)
+EVT_MENU(CM_HELPSEARCH,                MutApp::CmHelp)
+EVT_MENU(CM_HELPONHELP,                MutApp::CmHelp)
+EVT_MENU(CM_ABOUT,                     MutApp::CmAbout) 
+EVT_MENU(CM_EXIT,                      MutApp::CmQuit)
+#ifdef DEBUG
+EVT_MENU(cmCallExitId,                 MutApp::CmCallExit)
+#endif
+END_EVENT_TABLE()
+
 // Initialise this in OnInit, not statically
 bool MutApp::OnInit()
 {
@@ -448,6 +500,12 @@ bool MutApp::OnInit()
 		frame->CmRoutes(event);
 		frame->Show(true);
 	}
+
+#if wxUSE_PRINTING_ARCHITECTURE
+	// initialize print data and setup
+	g_printData = new wxPrintData;
+	g_pageSetupData = new wxPageSetupDialogData;
+#endif // wxUSE_PRINTING_ARCHITECTURE
 
 	return true;
 }
@@ -704,94 +762,6 @@ AppAbout::AppAbout (wxWindow *parent, long style)
 }
 
 
-BEGIN_EVENT_TABLE(MutApp, wxApp)
-	EVT_MENU(CM_SETUP, MutApp::CmSetup)
-EVT_MENU(wxID_OPEN, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_CLOSE, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_CLOSE_ALL, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_REVERT, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_NEW, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_SAVE, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_SAVEAS, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_UNDO, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_REDO, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(CM_EXECUTE, MutApp::PassEventToDocManagerCMD)
-
-EVT_UPDATE_UI(wxID_OPEN, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_CLOSE, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_CLOSE_ALL, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_REVERT, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_NEW, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_SAVE, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_SAVEAS, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_UNDO, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_REDO, MutApp::PassEventToDocManagerUPD)
-
-#if wxUSE_PRINTING_ARCHITECTURE
-EVT_MENU(wxID_PRINT, MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_PREVIEW, MutApp::PassEventToDocManagerCMD)
-
-EVT_UPDATE_UI(wxID_PRINT, MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_PREVIEW, MutApp::PassEventToDocManagerUPD)
-#endif
-//        EVT_MENU(CM_FILENEW, MutApp::PassEventToDocManager)	
-//       EVT_MENU(CM_FILEOPEN, MutApp::PassEventToDocManager)	
-//	EVT_MENU(CM_FILENEW, MutApp::CmFileNew)
-//	EVT_MENU(CM_FILEOPEN, MutApp::CmFileOpen)
-//	EVT_MENU(CM_EXECUTE, MutApp::CmFileOpen)
-	/*    EVT_MENU(CM_FILESAVE, MutFrame::EventPassOn)
-	    EVT_MENU(CM_DOACTIVATE, MutFrame::CmDoActivate)
-	    EVT_MENU(CM_STOP, MutFrame::CmStop)
-		EVT_UPDATE_UI(CM_ACTIVATE, MutFrame::CeActivate)
-		EVT_UPDATE_UI(CM_STOP, MutFrame::CeStop)
-
-	*/
-        EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
-        EVT_MENU(CM_ROUTES, MutApp::CmRoutes)
-	EVT_MENU(CM_ROUTELOAD, MutApp::CmRouteLoad)
-	EVT_MENU(CM_ROUTESAVE, MutApp::CmRouteSave)
-	EVT_MENU(CM_ROUTESAVEAS, MutApp::CmRouteSaveAs)
-	/*
-		EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)
-		EVT_MENU(CM_TOGGLETS, MutFrame::CmToggleTS)
-		EVT_MENU(CM_TOGGLEACT, MutFrame::CmToggleAct)
-		EVT_MENU(CM_OWM, MutFrame::CmToggleOWM)
-		EVT_MENU(CM_CAW, MutFrame::CmToggleCAW)
-		EVT_UPDATE_UI(CM_TOGGLEKEY, MutFrame::CeToggleKey)
-		EVT_UPDATE_UI(CM_TOGGLETS, MutFrame::CeToggleTS)
-		EVT_UPDATE_UI(CM_TOGGLEACT, MutFrame::CeToggleAct)
-		EVT_UPDATE_UI(CM_OWM, MutFrame::CeToggleOWM)
-		EVT_UPDATE_UI(CM_CAW, MutFrame::CeToggleCAW)
-
-		EVT_MENU(CM_INDEVSTOP, MutFrame::CmInDevStop)
-		EVT_MENU(CM_INDEVPLAY, MutFrame::CmInDevPlay)
-		EVT_MENU(CM_INDEVPAUSE, MutFrame::CmInDevPause)
-		EVT_UPDATE_UI(CM_INDEVSTOP, MutFrame::CeInDevStop)
-		EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
-		EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
-
-	*/
-
-	EVT_MENU(CM_HELP, MutApp::CmHelp)
-	EVT_MENU(CM_HELPHANDBOOK, MutApp::CmHelp)
-	EVT_MENU(CM_HELPREFERENCE, MutApp::CmHelp)
-	EVT_MENU(CM_HELPINDEX, MutApp::CmHelp)
-	EVT_MENU(CM_HELPSEARCH, MutApp::CmHelp)
-	EVT_MENU(CM_HELPONHELP, MutApp::CmHelp)
-	EVT_MENU(CM_ABOUT, MutApp::CmAbout)
-	//    EVT_MENU(MDI_NEW_WINDOW, MutFrame::OnNewWindow)
-	EVT_MENU(CM_EXIT, MutApp::CmQuit)
-#ifdef DEBUG
-	EVT_MENU(cmCallExitId, MutApp::CmCallExit)
-#endif
-
-
-	/*    EVT_CLOSE(MutFrame::OnClose)
-	    EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
-		EVT_IDLE(MutFrame::OnIdle)
-        */
-	//    EVT_SIZE(MutFrame::OnSize)
-END_EVENT_TABLE()
 
 MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
 {
@@ -897,6 +867,17 @@ void MutApp::CmFileOpen (wxCommandEvent& event)
 	}
 	frame->Show();
 
+}
+
+// print event handlers
+void MutApp::OnPrintSetup (wxCommandEvent &WXUNUSED(event)) {
+#if wxUSE_PRINTING_ARCHITECTURE
+    (*g_pageSetupData) = * g_printData;
+    wxPageSetupDialog pageSetupDialog(GetTopWindow(), g_pageSetupData);
+    pageSetupDialog.ShowModal();
+    (*g_printData) = pageSetupDialog.GetPageSetupData().GetPrintData();
+    (*g_pageSetupData) = pageSetupDialog.GetPageSetupData();
+#endif // wxUSE_PRINTING_ARCHITECTURE
 }
 
 void MutApp::CmRoutes (wxCommandEvent& event)

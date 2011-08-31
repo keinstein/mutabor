@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.6 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.7 2011/08/31 20:18:16 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/08/31 20:18:16 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Revision 1.7  2011/08/31 20:18:16  keinstein
+ * some work on printing the editor file
+ *
+ * Revision 1.6  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.5  2011-08-11 19:00:48  keinstein
@@ -82,6 +85,11 @@ namespace mutaborGUI {
 		virtual bool OnCreate(wxDocument* doc, long flags);
 		// virtual override
 		virtual bool OnClose(bool deleteWindow = true);
+
+#if wxUSE_PRINTING_ARCHITECTURE
+		// virtual override
+		virtual wxPrintout* OnCreatePrintout();
+#endif
 		// virtual override
 		virtual void OnDraw(wxDC* dc);
 		// virtual override

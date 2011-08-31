@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.6 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.7 2011/08/31 20:18:16 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/08/31 20:18:16 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Revision 1.7  2011/08/31 20:18:16  keinstein
+ * some work on printing the editor file
+ *
+ * Revision 1.6  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.5  2011-08-12 09:49:11  keinstein
@@ -151,15 +154,20 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	void MutView::OnDraw(wxDC* WXUNUSED(dc))
-	{
-#if 0
-// handled by MutEditWindow
-		MutDocument* pDoc = dynamic_cast<MutDocument*>(GetDocument());
-		// just a bit of doc-independent test code
-		wxSize s = GetFrame()->GetClientSize();
-		pdc->DrawCircle(0,0,s.GetWidth());
+
+#if wxUSE_PRINTING_ARCHITECTURE
+	wxPrintout* MutView::OnCreatePrintout() {
+		if (textsw) {
+			return new MutEditPrint(this,textsw);
+		} else {
+			return wxView::OnCreatePrintout();
+		}
+	}
 #endif
+
+	void MutView::OnDraw(wxDC* dc)
+	{
+                // handled by MutEditWindow
 	}
 
 	void MutView::OnUpdate(wxView* WXUNUSED(sender), wxObject* WXUNUSED(hint))

@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.24 2011/08/24 21:19:36 keinstein Exp $
+ * $Id: MutApp.h,v 1.25 2011/08/31 20:18:16 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.24 $
+ *  $Date: 2011/08/31 20:18:16 $
+ * \version $Revision: 1.25 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.24  2011/08/24 21:19:36  keinstein
+ * Revision 1.25  2011/08/31 20:18:16  keinstein
+ * some work on printing the editor file
+ *
+ * Revision 1.24  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.23  2011-08-21 16:52:04  keinstein
@@ -240,6 +243,9 @@ public:
 	void CmFileNew (wxCommandEvent& event);
 	/// Open a new editor file
 	void CmFileOpen (wxCommandEvent& event);
+	/// Edit printing settings
+	void OnPrintSetup (wxCommandEvent & event);
+	
 	/// Open a new route editor
 	void CmRoutes (wxCommandEvent& event);
 	/// Load a Route
