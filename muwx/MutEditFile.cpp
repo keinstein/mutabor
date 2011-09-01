@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.24 2011/08/31 20:47:29 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.25 2011/09/01 20:56:54 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/31 20:47:29 $
-* \version $Revision: 1.24 $
+* $Date: 2011/09/01 20:56:54 $
+* \version $Revision: 1.25 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.24  2011/08/31 20:47:29  keinstein
+* Revision 1.25  2011/09/01 20:56:54  keinstein
+* allow printing page correctly, still wastes paper
+*
+* Revision 1.24  2011-08-31 20:47:29  keinstein
 * Enabled printing, but page setup must be still reworked
 *
 * Revision 1.23  2011-08-31 20:18:16  keinstein
@@ -1366,31 +1369,48 @@ namespace mutaborGUI {
 		// get print page informations and convert to printer pixels
 		wxSize ppiScr;
 		GetPPIScreen (&ppiScr.x, &ppiScr.y);
-		wxSize page = g_pageSetupData->GetPaperSize();
-		page.x = static_cast<int> (page.x * ppiScr.x / 25.4);
-		page.y = static_cast<int> (page.y * ppiScr.y / 25.4);
-		m_pageRect = wxRect (0,
-				     0,
-				     page.x,
-				     page.y);
+		wxSize ppiPrint;
+		GetPPIPrinter (&ppiPrint.x, &ppiPrint.y);
+		wxRect page = GetPaperRectPixels();
 
-		// get margins informations and convert to printer pixels
-		wxPoint pt = g_pageSetupData->GetMarginTopLeft();
-		int left = pt.x;
-		int top = pt.y;
-		pt = g_pageSetupData->GetMarginBottomRight();
-		int right = pt.x;
-		int bottom = pt.y;
+		DEBUGLOG(editor,_T("x=%d, y=%d, w=%d, h=%d, scale = %dx%d"),
+			 page.x,
+			 page.y,
+			 page.width,
+			 page.height,
+			 ppiScr.x,
+			 ppiScr.y);
+
+/* 		page.x = static_cast<int> (page.x * ppiScr.x / 25.4);
+		page.y = static_cast<int> (page.y * ppiScr.y / 25.4);
+		page.width = static_cast<int> (page.width * ppiScr.x / 25.4);
+		page.height = static_cast<int> (page.height * ppiScr.y / 25.4);
+ 		page.x = static_cast<int> (page.x / 25.4 * ppiScr.x);
+		page.y = static_cast<int> (page.y / 25.4 * ppiScr.y);
+		page.width = static_cast<int> (page.width / 25.4 * ppiScr.x);
+		page.height = static_cast<int> (page.height / 25.4 * ppiScr.y);
+*/
+
+		m_pageRect = page;
+
+		// 10mm margin
+		int left = 10;
+		int top = 10;
+		int right = 10;
+		int bottom = 10;
+
 
 		top = static_cast<int> (top * ppiScr.y / 25.4);
 		bottom = static_cast<int> (bottom * ppiScr.y / 25.4);
 		left = static_cast<int> (left * ppiScr.x / 25.4);
 		right = static_cast<int> (right * ppiScr.x / 25.4);
 
-		m_printRect = wxRect (left,
-				      top,
-				      page.x - (left + right),
-				      page.y - (top + bottom));
+
+
+		m_printRect = wxRect (page.x + left,
+				      page.y + top,
+				      page.width - (left + right),
+				      page.height - (top + bottom));
 
 		// count pages
 		int currpos = 0;
