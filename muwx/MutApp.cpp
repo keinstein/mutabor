@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.45 2011/09/04 12:02:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.46 2011/09/04 15:35:08 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/04 12:02:08 $
- * \version $Revision: 1.45 $
+ * $Date: 2011/09/04 15:35:08 $
+ * \version $Revision: 1.46 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.45  2011/09/04 12:02:08  keinstein
+ * Revision 1.46  2011/09/04 15:35:08  keinstein
+ * disable print preview on OS X and when using libgnomeprint as they proviede their own means
+ *
+ * Revision 1.45  2011-09-04 12:02:08  keinstein
  * require wxWidgets 2.8.5 configure.in
  *
  * Revision 1.44  2011-08-31 20:18:16  keinstein
@@ -1115,9 +1118,14 @@ wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 
 	if (type == EditorMenu) {
 		menu->AppendSeparator();
+#if 0
 		menu->Append (wxID_PRINT_SETUP,_("Print setup..."),
 			      _("Configure how the pages will be printed"));
+#endif
+#if !defined(__WXMAC__) && !defined(__WXOSX__) \
+	&& !defined(wxUSE_LIBGNOMEPRINT)
 		menu->Append (wxID_PREVIEW);
+#endif
 		menu->Append (wxID_PRINT);
 	}
 

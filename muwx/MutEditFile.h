@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.19 2011/09/04 12:02:08 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.20 2011/09/04 15:35:08 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/04 12:02:08 $
-* \version $Revision: 1.19 $
+* $Date: 2011/09/04 15:35:08 $
+* \version $Revision: 1.20 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.19  2011/09/04 12:02:08  keinstein
+* Revision 1.20  2011/09/04 15:35:08  keinstein
+* disable print preview on OS X and when using libgnomeprint as they proviede their own means
+*
+* Revision 1.19  2011-09-04 12:02:08  keinstein
 * require wxWidgets 2.8.5 configure.in
 *
 * Revision 1.18  2011-08-31 20:18:16  keinstein
@@ -316,7 +319,7 @@ namespace mutaborGUI {
 	public:
 
 		//! constructor
-		MutEditPrint (MutView * view, MutEditFile *edit, wxChar *title = _T(""));
+		MutEditPrint (MutView * view, MutEditFile *edit, const wxString & title = _T(""));
 
 		//! event handlers
 		bool OnPrintPage (int page);
