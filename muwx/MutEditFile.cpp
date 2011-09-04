@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.27 2011/09/04 13:50:36 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.28 2011/09/04 15:35:08 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/04 13:50:36 $
-* \version $Revision: 1.27 $
+* $Date: 2011/09/04 15:35:08 $
+* \version $Revision: 1.28 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.27  2011/09/04 13:50:36  keinstein
+* Revision 1.28  2011/09/04 15:35:08  keinstein
+* disable print preview on OS X and when using libgnomeprint as they proviede their own means
+*
+* Revision 1.27  2011-09-04 13:50:36  keinstein
 * Print scaling works on Mac OS X
 *
 * Revision 1.26  2011-09-04 12:02:08  keinstein
@@ -1323,7 +1326,7 @@ namespace mutaborGUI {
 // MutEditPrint
 //----------------------------------------------------------------------------
 
-	MutEditPrint::MutEditPrint (MutView * view, MutEditFile *edit, wxChar *title)
+	MutEditPrint::MutEditPrint (MutView * view, MutEditFile *edit, const wxString & title)
 		: wxDocPrintout(view,title) {
 		m_edit = edit;
 	}
