@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.26 2011/09/04 12:02:08 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.27 2011/09/04 13:50:36 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/04 12:02:08 $
-* \version $Revision: 1.26 $
+* $Date: 2011/09/04 13:50:36 $
+* \version $Revision: 1.27 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.26  2011/09/04 12:02:08  keinstein
+* Revision 1.27  2011/09/04 13:50:36  keinstein
+* Print scaling works on Mac OS X
+*
+* Revision 1.26  2011-09-04 12:02:08  keinstein
 * require wxWidgets 2.8.5 configure.in
 *
 * Revision 1.25  2011-09-01 20:56:54  keinstein
@@ -1332,6 +1335,9 @@ namespace mutaborGUI {
 
 		// scale DC
 		PrintScaling (dc);
+#ifdef DEBUG
+		wxSize dcSize = dc->GetSize();
+#endif
 
 		// print page
 /*
@@ -1374,52 +1380,92 @@ namespace mutaborGUI {
 		// get print page informations and convert to printer pixels
 		wxSize ppiScr;
 		GetPPIScreen (&ppiScr.x, &ppiScr.y);
+                DEBUGLOG(editor,_T("Screen resolution %dx%d ppi"),ppiScr.x,ppiScr.y);
+
 		wxSize ppiPrint;
 		GetPPIPrinter (&ppiPrint.x, &ppiPrint.y);
-		wxRect page = GetPaperRectPixels();
+                DEBUGLOG(editor,_T("Printer resolution %dx%d ppi"),
+                         ppiPrint.x,
+                         ppiPrint.y);
 
-		DEBUGLOG(editor,_T("x=%d, y=%d, w=%d, h=%d, scale = %dx%d"),
+                wxRect paper = GetPaperRectPixels();
+		DEBUGLOG(editor,_T("Paper rect in pixels: x=%d, y=%d, w=%d, h=%d"),
+			 paper.x,
+			 paper.y,
+			 paper.width,
+			 paper.height);
+
+                wxSize page;
+		GetPageSizePixels(&page.x,&page.y);
+		DEBUGLOG(editor,_T("Page size in pixels: %dx%d"),
 			 page.x,
-			 page.y,
-			 page.width,
-			 page.height,
-			 ppiScr.x,
-			 ppiScr.y);
+			 page.y);
 
-/* 		page.x = static_cast<int> (page.x * ppiScr.x / 25.4);
-		page.y = static_cast<int> (page.y * ppiScr.y / 25.4);
-		page.width = static_cast<int> (page.width * ppiScr.x / 25.4);
-		page.height = static_cast<int> (page.height * ppiScr.y / 25.4);
- 		page.x = static_cast<int> (page.x / 25.4 * ppiScr.x);
-		page.y = static_cast<int> (page.y / 25.4 * ppiScr.y);
-		page.width = static_cast<int> (page.width / 25.4 * ppiScr.x);
-		page.height = static_cast<int> (page.height / 25.4 * ppiScr.y);
-*/
+
+ 		page.x = static_cast<int> ((page.x * ppiScr.x) / ppiPrint.x);
+		page.y = static_cast<int> ((page.y * ppiScr.y) / ppiPrint.y);
+ 		paper.x = static_cast<int> ((paper.x * ppiScr.x) / ppiPrint.x);
+		paper.y = static_cast<int> ((paper.y * ppiScr.y)/ ppiPrint.y);
+		paper.width = static_cast<int> (paper.width * ppiScr.x
+		/ ppiPrint.x);
+		paper.height = static_cast<int> (paper.height *
+		ppiScr.y / ppiPrint.y);
+		DEBUGLOG(editor,_T("Page size in pixels: %dx%d"),
+			 page.x,
+			 page.y);
+		DEBUGLOG(editor,_T("Paper rect in pixels: x=%d, y=%d, w=%d, h=%d"),
+			 paper.x,
+			 paper.y,
+			 paper.width,
+			 paper.height);
 
 		m_pageRect = page;
 
-		// 10mm margin
-		int left = 10;
-		int top = 10;
-		int right = 10;
-		int bottom = 10;
+                int left = 15; // mm
+                int top = 15; // mm
+                int right = 15; // mm
+                int bottom = 15; // mm
+
 
 
 		top = static_cast<int> (top * ppiScr.y / 25.4);
 		bottom = static_cast<int> (bottom * ppiScr.y / 25.4);
 		left = static_cast<int> (left * ppiScr.x / 25.4);
 		right = static_cast<int> (right * ppiScr.x / 25.4);
+		DEBUGLOG(editor,
+                         _T("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
+			 top,
+			 bottom,
+			 left,
+			 right);
 
+                // adapat margin to correct results paper.x/paper.y is
+                // negative if print area is provided
+                left = std::max(paper.x + left,0);
+                right = std::max(right - (paper.width + paper.x - page.x),0);
+                top = std::max(paper.y + top,0);
+                bottom = std::max(bottom - (paper.height + paper.y - page.y),0);
+		DEBUGLOG(editor,
+                         _T("Margins (pixels): top=%d, bottom=%d, left=%d, right=%d"),
+			 top,
+			 bottom,
+			 left,
+			 right);
 
-
-		m_printRect = wxRect (page.x + left,
-				      page.y + top,
-				      page.width - (left + right),
-				      page.height - (top + bottom));
+		m_printRect = wxRect (left,
+				      top,
+				      page.x - (left + right),
+				      page.y - (top + bottom));
+		DEBUGLOG(editor,_T("Print rect (pixels): x=%d, y=%d, w=%d, h=%d"),
+			 m_printRect.x,
+			 m_printRect.y,
+			 m_printRect.width,
+			 m_printRect.height);
 
 		// count pages
 		int currpos = 0;
 		int maxpos = m_edit->GetLength();
+                *maxPage = 0;
 		while (currpos < maxpos) {
 			// print from oldpos to maxpos 
 			// (returning the positon for next page)
@@ -1429,10 +1475,17 @@ namespace mutaborGUI {
 						       m_printRect, m_pageRect);
 			m_ranges.push_back(std::pair<int,int>(oldpos, currpos));
 			*maxPage += 1;
+                        DEBUGLOG(editor,_T("Page %d: %d–%d"),*maxPage,oldpos,currpos);
 		}
 		if (*maxPage > 0) *minPage = 1;
 		*selPageFrom = *minPage;
 		*selPageTo = *maxPage;
+                DEBUGLOG(editor,
+                         _T("pages %d-%d, selected pages %d-%d"),
+                         (*minPage),
+                         (*maxPage),
+                         (*selPageFrom),
+                         (*selPageTo));
 	}
 
 	bool MutEditPrint::HasPage (int page) {
@@ -1458,6 +1511,7 @@ namespace mutaborGUI {
 			ppiPrt.y = ppiScr.y;
 		}
 		wxSize dcSize = dc->GetSize();
+                DEBUGLOG(editor,_T("DC size: %dx%d"),dcSize.x,dcSize.y);
 		wxSize pageSize;
 		GetPageSizePixels (&pageSize.x, &pageSize.y);
 
@@ -1467,6 +1521,7 @@ namespace mutaborGUI {
 		float scale_y = (float)(ppiPrt.y * dcSize.y) /
 			(float)(ppiScr.y * pageSize.y);
 		dc->SetUserScale (scale_x, scale_y);
+                DEBUGLOG(editor,_T("Scaled page by %gx%g"),scale_x,scale_y);
 
 		return true;
 	}
