@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.42 2011/09/04 12:02:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.43 2011/09/04 16:25:05 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/04 12:02:08 $
- * \version $Revision: 1.42 $
+ * \date $Date: 2011/09/04 16:25:05 $
+ * \version $Revision: 1.43 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.42  2011/09/04 12:02:08  keinstein
+ * Revision 1.43  2011/09/04 16:25:05  keinstein
+ * Do not manage ToolBar from AUI manager -- fixes Toolbar on Mac OS X and wx 2.9.2
+ *
+ * Revision 1.42  2011-09-04 12:02:08  keinstein
  * require wxWidgets 2.8.5 configure.in
  *
  * Revision 1.41  2011-08-28 21:24:56  keinstein
@@ -509,16 +512,22 @@ MutFrame::MutFrame(wxFrame *parent,
 
 
 #if wxUSE_TOOLBAR
+#if 0
 	wxToolBar * tb = new  wxToolBar(this,
 	                                wxID_ANY,
 	                                wxDefaultPosition,
 	                                wxDefaultSize);
+#else
+        wxToolBar * tb = CreateToolBar(wxTB_DOCKABLE);
+#endif
 	InitToolBar(tb);
 
+#if 0
 	auimanager.AddPane(tb, wxAuiPaneInfo().
 	                   Name(_T("tb")).Caption(_("Toolbar")).
 	                   ToolbarPane().Top().
 	                   LeftDockable(false).RightDockable(false));
+#endif
 #endif // wxUSE_TOOLBAR
 
 
@@ -552,17 +561,23 @@ MutFrame::MutFrame(MutDocument *doc,
 
 
 #if wxUSE_TOOLBAR
+#if 0
 	wxToolBar * tb = new  wxToolBar(this,
 	                                wxID_ANY,
 	                                wxDefaultPosition,
 	                                wxDefaultSize,
-	                                wxTB_DOCKABLE);
+                0);
+#else
+        wxToolBar * tb = CreateToolBar(wxTB_DOCKABLE);
+#endif
 	InitToolBar(tb);
 
+#if 0
 	auimanager.AddPane(tb, wxAuiPaneInfo().
 	                   Name(_T("tb")).Caption(_("Toolbar")).
 	                   ToolbarPane().Top().
 	                   LeftDockable(false).RightDockable(false));
+#endif
 #endif // wxUSE_TOOLBAR
 
 
@@ -602,7 +617,7 @@ void MutFrame::InitToolBar(wxToolBar* toolBar)
 
 	// Stock Id's are currently not availlable for wxToolBar() :-(
 	MutToolBarBitmaps::Init();
-
+        toolBar->SetToolBitmapSize(wxSize(16,16));
 	toolBar->AddTool(CM_FILENEW, _("New"), MutToolBarBitmaps::New, _("New file"));
 	toolBar->AddTool(CM_FILEOPEN, _("Open"), MutToolBarBitmaps::Open , _("Open file"));
 	toolBar->AddTool(CM_FILESAVE, _("Save"), MutToolBarBitmaps::Save, _("Save file"));
