@@ -4,16 +4,19 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.5 2011/09/04 12:02:08 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/04 12:02:08 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * Revision 1.5  2011/09/04 12:02:08  keinstein
+ * require wxWidgets 2.8.5 configure.in
+ *
+ * Revision 1.4  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2010-12-11 02:10:08  keinstein
@@ -151,7 +154,13 @@ void OutDevice::LoadDevices(tree_storage & config)
 		OutDevice * out = OutDevice::CreateDevice(type);
 		if (!out) continue;
 		out -> Device::SetId(i);
-		wxString name = config.Read(_T("Type Name"),_T("Midi output device"));
+		wxString name = config.Read(_T("Type Name"),
+					    _T("Midi output device"));
+		DEBUGLOGTYPE(config,
+			     OutDevice,
+			     _T("device type name '%s' == '%s'?"),
+			     (const mutChar *)name,
+			     (const mutChar *)(out->GetTypeName()));
 		wxASSERT(name == out->GetTypeName());
 		out -> Load(config);
 		i = config.toNextLeaf(_T("Device"));
@@ -378,7 +387,13 @@ void InDevice::LoadDevices(tree_storage & config)
 		DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
 		InDevice * in = InDevice::CreateDevice(type);
 		in -> Device::SetId(i);
-		wxString name = config.Read(_T("Type Name"),_T("Midi input device"));
+		wxString name = config.Read(_T("Type Name"),
+					    _T("Midi input device"));
+		DEBUGLOGTYPE(config,
+			     InDevice,
+			     _T("device type name '%s' == '%s'?"),
+			     (const mutChar *)name,
+			     (const mutChar *)(in->GetTypeName()));
 		wxASSERT(name == in -> GetTypeName());
 		in -> Load(config);
 		i = config.toNextLeaf(_T("Device"));

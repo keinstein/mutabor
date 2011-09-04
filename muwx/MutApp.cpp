@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.44 2011/08/31 20:18:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.45 2011/09/04 12:02:08 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/31 20:18:16 $
- * \version $Revision: 1.44 $
+ * $Date: 2011/09/04 12:02:08 $
+ * \version $Revision: 1.45 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.44  2011/08/31 20:18:16  keinstein
+ * Revision 1.45  2011/09/04 12:02:08  keinstein
+ * require wxWidgets 2.8.5 configure.in
+ *
+ * Revision 1.44  2011-08-31 20:18:16  keinstein
  * some work on printing the editor file
  *
  * Revision 1.43  2011-08-28 20:09:10  keinstein
@@ -463,7 +466,7 @@ bool MutApp::OnInit()
 			  wxT("mutabor_logic_view"), 
 			  CLASSINFO(mutaborGUI::MutDocument), 
 			  CLASSINFO(mutaborGUI::MutView) );
-#ifdef __WXMAC__
+#if defined(__WXMAC__) && defined(__WXCARBON__) 
 	wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
 #endif
 
@@ -486,6 +489,9 @@ bool MutApp::OnInit()
 
 	// RestoreState needs initialized MIDI
 	MidiInit();
+#ifdef DEBUG
+        debugFlags::flags[debugFlags::config] = true;
+#endif
 	RestoreState();
 
 	// Command line files must be opened after the file history has been read
@@ -557,20 +563,22 @@ bool MutApp::ProcessEvent(wxEvent& event)
 {
 	bool retval =  wxApp::ProcessEvent(event);
 #ifdef DEBUG
-	if (!retval)
-		DEBUGLOG(eventqueue,_T("Undhandled event %x, id=%d, type=%d"),
-			 &event,
-			 event.GetId(),
-			 (int)event.GetEventType()
+	if (!retval) {
+		DEBUGLOG(eventqueue,
+                         _T("Undhandled event %p, id=%d, type=%d"),
+			 static_cast<void *>(&event),
+			 (int)(event.GetId()),
+			 (int)(event.GetEventType())
 			);
+        }
 #endif
 	return retval;
 }
 
 void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 {
-	DEBUGLOG(eventqueue,_T("Command %x, id=%d, type=%d"),
-		 &event,
+	DEBUGLOG(eventqueue,_T("Command %p, id=%d, type=%d"),
+		 static_cast<void *>(&event),
 		 event.GetId(),
 		 (int)event.GetEventType()
 		);
@@ -579,8 +587,8 @@ void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
 }
 void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
 {
-	DEBUGLOG(eventqueue,_T("UpdateUI: %x, id=%d, type=%d"),
-		 &event,
+	DEBUGLOG(eventqueue,_T("UpdateUI: %p, id=%d, type=%d"),
+		 static_cast<void *>(&event),
 		 event.GetId(),
 		 (int)event.GetEventType()
 		);
@@ -977,12 +985,10 @@ void MutApp::CmQuit (wxCommandEvent& event)
 	if (quitting) return;
 
 	quitting = true;
-
 	event.Skip(false);
 
 
 	wxWindow * window;
-
 	SetTopWindow(NULL);
 
 	//	if (frames.empty()) {
@@ -1003,14 +1009,27 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 	DEBUGLOG (other, _T("Starting Loop"));
 
-	while (Pending())
+/*	while (Pending())
 		Dispatch();
+
 
 	DEBUGLOG (other, _T("Dispatched all events"));
 
 	wxIdleMode imode = wxIdleEvent::GetMode();
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
+*/
 
+        for (wxWindowList::iterator i = wxTopLevelWindows.begin();
+             i!= wxTopLevelWindows.end();
+             i++) {
+                if (!window->Close()) {
+//			wxIdleEvent::SetMode(imode);
+			quitting = false;
+			return;
+		}
+                
+        }
+#if 0
 	while ((window = GetTopWindow())) {
 		DEBUGLOG (other, _("Closing window of class %s"), 
 			  muT(typeid(*(window)).name()).c_str());
@@ -1025,18 +1044,18 @@ void MutApp::CmQuit (wxCommandEvent& event)
 
 		// empty queue and process idle event to delete the frame
 
-		while (Pending())
+/*		while (Pending())
 			Dispatch();
-
+*/
 		//   wxIdleEvent idle;
 		//ProcessEvent(idle);
 		//while(Pending())
 		//  Dispatch();
-		DeletePendingObjects();
+//		DeletePendingObjects();
 
 		DEBUGLOG (other, _T("Dispatched all events"));
 	}
-
+#endif
 
 	DEBUGLOG (other, _T("finished loop"));
 }

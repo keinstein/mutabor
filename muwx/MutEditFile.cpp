@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.25 2011/09/01 20:56:54 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.26 2011/09/04 12:02:08 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/01 20:56:54 $
-* \version $Revision: 1.25 $
+* $Date: 2011/09/04 12:02:08 $
+* \version $Revision: 1.26 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.25  2011/09/01 20:56:54  keinstein
+* Revision 1.26  2011/09/04 12:02:08  keinstein
+* require wxWidgets 2.8.5 configure.in
+*
+* Revision 1.25  2011-09-01 20:56:54  keinstein
 * allow printing page correctly, still wastes paper
 *
 * Revision 1.24  2011-08-31 20:47:29  keinstein
@@ -336,17 +339,16 @@ namespace mutaborGUI {
 	{
 #if wxUSE_FFILE
 		DEBUGLOG(mutparser,_T("File contents:\n%s"),
-			 (const wxChar *)GetText());
+			 (const wxChar *)GetValue());
 
 		wxFFile file(filename, _T("w"));
 
-		if ( file.IsOpened() && file.Write(GetText(), autoConverter) ) {
+
+		if ( file.IsOpened() && file.Write(GetValue(), autoConverter) ) {
 			// if it worked, save for future calls
 			m_filename = filename;
-
 			// it's not modified any longer
 			SetSavePoint();
-
 			file.Close();
 
 			return true;
@@ -1188,8 +1190,11 @@ namespace mutaborGUI {
 	bool MutEditFile::SaveFile (const wxString &filename) {
 		// \todo check whether this works with wxWidgets >2.9.0
 
+#if 0 && wxUSE_TEXTCTRL
+		return wxStyledTextCtrl::SaveFile(filename);
+#else 
 		return DoSaveFile(filename,0);
-//		return wxStyledTextCtrl::SaveFile(filename);
+#endif
 
 	}
 
