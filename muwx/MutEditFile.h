@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.18 2011/08/31 20:18:16 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.19 2011/09/04 12:02:08 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/08/31 20:18:16 $
-* \version $Revision: 1.18 $
+* $Date: 2011/09/04 12:02:08 $
+* \version $Revision: 1.19 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.18  2011/08/31 20:18:16  keinstein
+* Revision 1.19  2011/09/04 12:02:08  keinstein
+* require wxWidgets 2.8.5 configure.in
+*
+* Revision 1.18  2011-08-31 20:18:16  keinstein
 * some work on printing the editor file
 *
 * Revision 1.17  2011-08-28 21:24:56  keinstein
@@ -214,6 +217,10 @@ namespace mutaborGUI {
 		wxString GetFilename () {return m_filename;};
 		void SetFilename (const wxString &filename) {m_filename = filename;};
 
+                //! compatibility with wx2.8
+#if !wxCHECK_VERSION(2,9,0)
+		virtual wxString GetValue() { return GetText(); }
+#endif
 		
 	protected:
 		void Init();

@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.5 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.6 2011/09/04 12:02:08 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/04 12:02:08 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.5  2011/02/20 22:35:56  keinstein
+ * Revision 1.6  2011/09/04 12:02:08  keinstein
+ * require wxWidgets 2.8.5 configure.in
+ *
+ * Revision 1.5  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.4  2010-12-13 00:27:53  keinstein
@@ -175,6 +178,7 @@ class Device
 private:
         void * userdata;
 	int Id;
+	bool dirty;
 protected:
 	int DevId;
 	mutString Name;
@@ -249,6 +253,9 @@ public:
         virtual mutString GetTypeName () const {
                 return _("Device base class");
         }
+
+	bool IsDirty() const { return dirty; }
+	void Dirty(bool d=true) { dirty = d; }
 
 #ifdef WX
 	virtual wxString TowxString() const {

@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.41 2011/08/28 21:24:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.42 2011/09/04 12:02:08 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/28 21:24:56 $
- * \version $Revision: 1.41 $
+ * \date $Date: 2011/09/04 12:02:08 $
+ * \version $Revision: 1.42 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.41  2011/08/28 21:24:56  keinstein
+ * Revision 1.42  2011/09/04 12:02:08  keinstein
+ * require wxWidgets 2.8.5 configure.in
+ *
+ * Revision 1.41  2011-08-28 21:24:56  keinstein
  * added file properties dialog
  *
  * Revision 1.40  2011-08-28 20:09:11  keinstein
@@ -509,8 +512,7 @@ MutFrame::MutFrame(wxFrame *parent,
 	wxToolBar * tb = new  wxToolBar(this,
 	                                wxID_ANY,
 	                                wxDefaultPosition,
-	                                wxDefaultSize,
-	                                wxTB_DOCKABLE);
+	                                wxDefaultSize);
 	InitToolBar(tb);
 
 	auimanager.AddPane(tb, wxAuiPaneInfo().
@@ -1051,7 +1053,7 @@ void MutFrame::ClearSubMenu(wxMenuItem * item)
 
 	wxMenu * menu = item->GetSubMenu();
 #ifdef DEBUG
-	DEBUGLOG (other, _T("item: %s\n"),(item->GetText()).c_str())
+	DEBUGLOG (other, _T("item: %s\n"),(item->GetItemLabel()).c_str())
 	std::cerr << " (" << item << ")" << std::endl;
 #endif
 
@@ -1066,14 +1068,14 @@ void MutFrame::ClearSubMenu(wxMenuItem * item)
 
 	for (wxMenuItemList::iterator i = l.begin(); i!=l.end(); i=l.begin()) {
 		wxMenuItem * node = *i;
-		DEBUGLOG (other, _T("ptr %x handling %s"), node,(node->GetText()).c_str());
+		DEBUGLOG (other, _T("ptr %x handling %s"), node,(node->GetItemLabel()).c_str());
 
 		if (node->IsSubMenu())
 			ClearSubMenu(node);
 
 		Disconnect(node->GetId(),wxEVT_COMMAND_MENU_SELECTED);
 
-		DEBUGLOG (other, _T("destroying %s"),(node->GetText()).c_str());
+		DEBUGLOG (other, _T("destroying %s"),(node->GetItemLabel()).c_str());
 
 		//    node->GetNext();
 		menu->Destroy(node);
