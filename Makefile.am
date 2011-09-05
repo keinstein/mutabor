@@ -134,6 +134,7 @@ INDENTHEADERS = \
 		muwx/Routing/OutputMidiFileDeviceShape.h \
 		muwx/Routing/RouteIcons.h \
 		muwx/Action.h \
+		muwx/GUIBoxData.h \
 		muwx/MutBitmaps.h \
 		muwx/Mutabor.rh \
 		muwx/CompDlg.h \
