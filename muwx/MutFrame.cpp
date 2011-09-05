@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.44 2011/09/05 06:30:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.45 2011/09/05 06:42:47 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/05 06:30:15 $
- * \version $Revision: 1.44 $
+ * \date $Date: 2011/09/05 06:42:47 $
+ * \version $Revision: 1.45 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.44  2011/09/05 06:30:15  keinstein
+ * Revision 1.45  2011/09/05 06:42:47  keinstein
+ * Added GUIBoxData.h
+ *
+ * Revision 1.44  2011-09-05 06:30:15  keinstein
  * Save AUI data
  *
  * Revision 1.43  2011-09-04 16:25:05  keinstein
@@ -924,9 +927,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 {
 	if (LogicOn) return;
 
-#ifdef DEBUG
-	std::cout << "MutFrame::CmDoActivate" << std::endl;
-#endif
+        DEBUGLOG (gui, _T(""));
 
 	if ( !Compiled )
 		return;
@@ -934,11 +935,9 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 	wxGetApp().SaveState();
 
 #ifdef DEBUG
-	DEBUGLOG (other, _T("Restoring state for debugging"));
+	DEBUGLOG (gui, _T("Restoring state for debugging"));
 	wxGetApp().RestoreState();
 #endif
-
-//	ScanDevices(); 
 
 	AktionTraceReset();
 
@@ -1001,7 +1000,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 	SetAktuellesKeyboardInstrument(curBox);
 
 	// WinAttrs säubern
-	DEBUGLOG (other, _T("Clear window attributes"));
+	DEBUGLOG (gui, _T("Clear window attributes"));
 
 	for (WinKind kind = WK_KEY; kind < WK_NULL; kind++) {
 		size_t i;
@@ -1011,7 +1010,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 				WinAttrs[kind].RemoveAt(i);
 	}
 
-	DEBUGLOG (other, _T("Open other than logic; One window mode: %d"),OWM);
+	DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
 
 	// set windows except curBox setzen
 	if ( !OWM )
@@ -1024,7 +1023,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 	UpdateBoxMenu();
 	MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
 	if ( routewin ) routewin->UpdateBoxMenu();
-	DEBUGLOG (other, _T("Open Logic window"));
+	DEBUGLOG (gui, _T("Open Logic window"));
 	// curBox-Fenstersetzen
 	//  LogicWinOpen(curBox);
 	LogicOn = true;

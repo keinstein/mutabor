@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.6 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.7 2011/09/05 06:42:47 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/05 06:42:47 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Revision 1.7  2011/09/05 06:42:47  keinstein
+ * Added GUIBoxData.h
+ *
+ * Revision 1.6  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.5  2011-07-31 20:16:04  keinstein
@@ -41,6 +44,7 @@
  */
 
 DEBUGFLAG(other, _("Unspecified debug information"))
+DEBUGFLAG(gui,   _("Other gui related debug information"))
 DEBUGFLAG(dialog, _("Debug configuration and postprocessing of dialogs"))
 DEBUGFLAG(routing, _("Debug the routing system"))
 DEBUGFLAG(midiio, _("Debug the MIDI input/output system"))
