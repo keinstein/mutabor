@@ -207,6 +207,7 @@ mutabor_INDENTS = \
 		muwx/Routing/OutputMidiFileDeviceShape.cpp \
 		muwx/Routing/RouteIcons.cpp \
 		muwx/Action.cpp \
+		muwx/GUIBoxData.cpp \
 		muwx/MutBitmaps.cpp \
 		muwx/CompDlg.cpp \
 		muwx/configtree.cpp \
