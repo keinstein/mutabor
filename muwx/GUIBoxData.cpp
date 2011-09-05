@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.2 2011/09/05 06:56:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.1 2011/09/05 06:56:44 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/09/05 06:56:44 $
- * \version $Revision: 1.2 $
+ * \version $Revision: 1.1 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,8 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: GUIBoxData.h,v $
- * Revision 1.2  2011/09/05 06:56:44  keinstein
+ * $Log: GUIBoxData.cpp,v $
+ * Revision 1.1  2011/09/05 06:56:44  keinstein
  * Added GUIBoxData.cpp
  *
  * Revision 1.1  2011-09-05 06:42:47  keinstein
@@ -50,17 +50,14 @@
 #include "Defs.h"
 #include <wx/wxprec.h>
 
+#include "GUIBoxData.h"
+
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 namespace mutaborGUI {
-	class BoxData {
-	public:
-		typedef std::vector<BoxData> BoxVector;
-	protected: 
-		static BoxVector vector;		
-	};
+	BoxVector BoxData::vector(MAX_BOX);
 }
  
 #endif
