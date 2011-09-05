@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.43 2011/09/04 16:25:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.44 2011/09/05 06:30:15 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/04 16:25:05 $
- * \version $Revision: 1.43 $
+ * \date $Date: 2011/09/05 06:30:15 $
+ * \version $Revision: 1.44 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.43  2011/09/04 16:25:05  keinstein
+ * Revision 1.44  2011/09/05 06:30:15  keinstein
+ * Save AUI data
+ *
+ * Revision 1.43  2011-09-04 16:25:05  keinstein
  * Do not manage ToolBar from AUI manager -- fixes Toolbar on Mac OS X and wx 2.9.2
  *
  * Revision 1.42  2011-09-04 12:02:08  keinstein
@@ -1044,6 +1047,17 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 					DontWant(kind, i);
 			}
 
+        wxConfigBase *config = wxConfig::Get();
+        if (config) {
+                wxString oldpath = config -> GetPath();
+                config->SetPath(_T("/Window Layout"));
+                wxString auidata;
+                auidata = config->Read(_T("AUI data"),wxEmptyString);
+                if (!auidata.empty())
+                        auimanager.LoadPerspective(auidata,true);
+                config->SetPath(oldpath);
+        }
+
 
 	DEBUGLOG (other, _T("Repaint route"));
 
@@ -1137,6 +1151,14 @@ void MutFrame::RaiseLogic(wxCommandEvent& event)
 void MutFrame::DoStop()
 {
 	if ( LogicOn ) {
+                wxConfigBase *config = wxConfig::Get();
+                if (config) {
+                        wxString oldpath = config -> GetPath();
+                        config->SetPath(_T("/Window Layout"));
+                        config->Write(_T("AUI data"),
+                        auimanager.SavePerspective());
+                        config->SetPath(oldpath);
+                }
 		LogicOn = false;
 		StopInDev();
 		Stop();
