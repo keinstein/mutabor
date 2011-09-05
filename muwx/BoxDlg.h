@@ -2,16 +2,20 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/BoxDlg.h,v 1.6 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Attic/BoxDlg.h,v 1.7 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/10/22 16:16:24
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxDlg.h,v $
- * Revision 1.6  2011/02/20 22:35:57  keinstein
+ * Revision 1.7  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.6  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -26,26 +30,8 @@
 #pragma interface "BoxDlg.cpp"
 #endif
 
-/*!
- * Includes
- */
-
-////@begin includes
 #include "wx/valgen.h"
-////@end includes
 
-/*!
- * Forward declarations
- */
-
-////@begin forward declarations
-////@end forward declarations
-
-/*!
- * Control identifiers
- */
-
-////@begin control identifiers
 #define ID_MYDIALOG3 10034
 #define SYMBOL_BOXDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_BOXDLG_TITLE _("Mutabor-Box")
@@ -57,11 +43,6 @@
 #define ID_RADIOBUTTON1 10038
 #define ID_RADIOBUTTON2 10039
 #define ID_RADIOBOX1 10035
-////@end control identifiers
-
-/*!
- * Compatibility
- */
 
 #ifndef wxCLOSE_BOX
 #define wxCLOSE_BOX 0x1000
@@ -83,24 +64,29 @@ public:
 	/// Constructors
 	BoxDlg( );
 
-	BoxDlg( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
+	BoxDlg( wxWindow* parent, 
+                wxWindowID id = SYMBOL_BOXDLG_IDNAME, 
+                const wxString& caption = SYMBOL_BOXDLG_TITLE, 
+                const wxPoint& pos = SYMBOL_BOXDLG_POSITION, 
+                const wxSize& size = SYMBOL_BOXDLG_SIZE, 
+                long style = SYMBOL_BOXDLG_STYLE );
 
 	/// Creation
-	bool Create( wxWindow* parent, wxWindowID id = SYMBOL_BOXDLG_IDNAME, const wxString& caption = SYMBOL_BOXDLG_TITLE, const wxPoint& pos = SYMBOL_BOXDLG_POSITION, const wxSize& size = SYMBOL_BOXDLG_SIZE, long style = SYMBOL_BOXDLG_STYLE );
+	bool Create( wxWindow* parent, 
+                     wxWindowID id = SYMBOL_BOXDLG_IDNAME, 
+                     const wxString& caption = SYMBOL_BOXDLG_TITLE,
+                     const wxPoint& pos = SYMBOL_BOXDLG_POSITION, 
+                     const wxSize& size = SYMBOL_BOXDLG_SIZE, 
+                     long style = SYMBOL_BOXDLG_STYLE );
 
 	/// Creates the controls and sizers
 	void CreateControls();
 
-////@begin BoxDlg event handler declarations
 
 	/// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RADIOBUTTON
 	void UpdateEnable( wxCommandEvent& event );
 
 	void UpdateLayout(int type);
-
-////@end BoxDlg event handler declarations
-
-////@begin BoxDlg member function declarations
 
 	int GetBoxType() const
 	{
@@ -119,7 +105,6 @@ public:
 	}
 
 	void SetBoxNr(long value)
-
 	{
 		BoxNr = value ;
 	}
@@ -130,7 +115,6 @@ public:
 	}
 
 	void SetMode(int value)
-
 	{
 		Mode = value ;
 	}
@@ -142,29 +126,19 @@ public:
 	/// Retrieves icon resources
 	wxIcon GetIconResource( const wxString& name );
 
-////@end BoxDlg member function declarations
 
 	/// Should we show tooltips?
 	static bool ShowToolTips();
 
-////@begin BoxDlg member variables
 	wxRadioButton* ctrlBox1;
-
 	wxTextCtrl* ctrlBoxNr;
-
 	wxRadioButton* ctrlBox2;
-
 	wxRadioButton* ctrlBox3;
-
 	wxRadioBox* ctrlMode;
 
 	int Type;
-
 	long BoxNr;
-
 	int Mode;
-
-////@end BoxDlg member variables
 };
 
 #endif

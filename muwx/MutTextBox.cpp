@@ -2,17 +2,21 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.15 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.16 2011/09/05 11:30:08 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.15 $
+ * $Date: 2011/09/05 11:30:08 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: MutTextBox.cpp,v $
- * Revision 1.15  2011/02/20 22:35:57  keinstein
+ * Revision 1.16  2011/09/05 11:30:08  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.15  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -48,6 +52,9 @@
 #include "wx/tokenzr.h"
 #include "MutTextBox.h"
 #include "MutFrame.h"
+#include "GUIBoxData.h"
+using mutaborGUI::BoxData;
+using mutaborGUI::GetCurrentBox;
 
 wxString TextBoxTitle[] =
         { _("Current keys"), _("Tone system"), _("Actions") };
@@ -87,10 +94,35 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 {
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T("winKind: %d"), winKind);
-	//	if ( LogicOn )
-	TextBoxWanted[curBox][winKind] = false;
-	//       	event.Skip(true);
-	Destroy();
+        BoxData & box = GetCurrentBox();
+	if ( LogicOn ) {
+                switch (winKind) {
+                case WK_KEY: 
+                        box.WantKeyWindow(false);
+                        break;
+                case WK_TS: 
+                        box.WantTonesystemWindow(false);
+                        break;
+                case WK_ACT: 
+                        box.WantActionsWindow(false);
+                        break;
+                case WK_LOGIC:
+                        wxLogWarning(_("Unexpected value: WK_LOGIC"));
+                        break;
+                case WK_ROUTE:
+                        wxLogWarning(_("Unexpected value: WK_ROUTE"));
+                        break;
+                case WK_EDIT:
+                        wxLogWarning(_("Unexpected value: WK_EDIT"));
+                        break;
+                case WK_NULL:
+                        wxLogWarning(_("Unexpected value: WK_NULL"));
+                        break;
+                default:
+                        wxLogError(_("Unexpected window kind: %d"), winKind);
+                }
+        } 
+        Destroy();
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)

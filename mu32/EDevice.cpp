@@ -2,16 +2,20 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.cpp,v 1.19 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.cpp,v 1.20 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: EDevice.cpp,v $
- * Revision 1.19  2011/02/20 22:35:55  keinstein
+ * Revision 1.20  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.19  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -1162,17 +1166,17 @@ void WriteRoutes(char **config)
 
 // Boxes used
 
-bool BoxUsed[MAX_BOX];
+bool mut_box[MAX_BOX].used;
 
 void CheckBoxesUsed()
 {
 	for (int i = 0; i < MAX_BOX; i++)
-		BoxUsed[i] = false;
+		mut_box[i].used = false;
 
 	for (EDevice *In = InEDevices; In; In = In->Next)
 		for (ERoute *R = In->Routes; R; R = R->Next)
 			if ( R->Box >= 0 )
-				BoxUsed[R->Box] = true;
+				mut_box[R->Box].used = true;
 }
 
 

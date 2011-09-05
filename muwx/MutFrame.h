@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.25 2011/09/04 12:02:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.26 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/04 12:02:08 $
- * \version $Revision: 1.25 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.26 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.25  2011/09/04 12:02:08  keinstein
+ * Revision 1.26  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.25  2011-09-04 12:02:08  keinstein
  * require wxWidgets 2.8.5 configure.in
  *
  * Revision 1.24  2011-08-28 20:09:11  keinstein
@@ -336,7 +340,9 @@ public:
 
 	void ToggleTextBox(WinKind kind);
 
-	void TextBoxOpen(WinKind kind, int box);
+	void TextBoxOpen(WinKind kind,
+			 int box, 
+			 bool update_auimanager	= true);
 
 	void CmSelectBox();
 
@@ -404,42 +410,21 @@ private:
 	wxWindow *client;
 
 	static MutFrame * ActiveWindow;
-
 	static int boxCommandIds[MAX_BOX];
-
 	DECLARE_EVENT_TABLE()
 };
 
 // globals
 
 extern bool asTS;
-
 extern bool SaveEditor;
-
 extern bool UseColorBars;
-
 extern bool OWM; // One Window Mode
-
 extern bool CAW; // Common Action Window
-
 extern bool LogicOn;
 
-extern int curBox;
-
-/// which mutabor boxes are used at all?
-extern bool BoxUsed[MAX_BOX];
-
-/// synchronizes \c BoxUsed with the routes
+/// synchronizes \c used flag of \c mut_box with the routes
 void CheckBoxesUsed();
 
 extern wxString CompiledFile;
-
-extern wxString curLogic[MAX_BOX];
-
-extern wxString curTS[MAX_BOX];
-
-extern int curTaste[MAX_BOX][2];
-
-extern bool TextBoxWanted[][3];
-
 #endif

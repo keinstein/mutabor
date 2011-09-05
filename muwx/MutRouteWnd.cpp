@@ -2,17 +2,21 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.20 2011/08/28 11:36:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.21 2011/09/05 11:30:08 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/28 11:36:04 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/09/05 11:30:08 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.20  2011/08/28 11:36:04  keinstein
+ * Revision 1.21  2011/09/05 11:30:08  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.20  2011-08-28 11:36:04  keinstein
  * Remove handcrafted painting code. It is unused since the sizer based positioning and object oriented shapes are used.
  * Do not set Background color to be light gray use the system default instead.
  *
@@ -538,59 +542,58 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 
 
 
-/*
-  /wx*
+#if 0
 // keyboardanalyse, Fenster aufr‰umen, Logiken lesen und anzeigen
 void TRouteWin::UpDate(int thekey, bool isLogicKey)
 {
 // Analyse zuerst
-keyboard_analyse(thekey, isLogicKey);
-curTaste[curInstr][isLogicKey] = thekey;
-TWindow *ToFocus = NULL;
-if ( isLogicKey )
-curTaste[curInstr][0] = 0;
+        keyboard_analyse(thekey, isLogicKey);
+        curTaste[curInstr][isLogicKey] = thekey;
+        TWindow *ToFocus = NULL;
+        if ( isLogicKey )
+                curTaste[curInstr][0] = 0;
 // alte TMutTag-s lˆschen
-ChildBroadcastMessage(WM_CLOSE);
+        ChildBroadcastMessage(WM_CLOSE);
 // neue erstellen
-char isLogic, s[100], s1[100], key, isOpen;
-TWindow *aWin;
-nTags = 0;
-if ( GetMutTag(isLogic, s, s1, key, true) )
-do
-{
-nTags++;
-if ( (isOpen = (key == curTaste[curInstr][isLogic])) != 0 )
-if ( isLogic )
-{
-SetString(&(curLogic[curInstr]), s);
-if ( !s1[0] )
-if ( !curTS[curInstr] )
-sprintf(s1, "(INITIAL)");
-else if ( curTS[curInstr][0] != '[' )
-sprintf(s1, "[%s]", curTS[curInstr]);
-else strcpy(s1, curTS[curInstr]);
-SetString(&(curTS[curInstr]), s1);
-}
-else
-SetString(&(curTS[curInstr]), s);
-aWin = new TMutTag(this, isLogic, isOpen,	10, 10, key, s, GetModule());
-if ( isOpen ) ToFocus = aWin;
-}
-while ( GetMutTag(isLogic, s, s1, key, false) );
+        char isLogic, s[100], s1[100], key, isOpen;
+        TWindow *aWin;
+        nTags = 0;
+        if ( GetMutTag(isLogic, s, s1, key, true) )
+                do
+                {
+                        nTags++;
+                        if ( (isOpen = (key == curTaste[curInstr][isLogic])) != 0 )
+                                if ( isLogic )
+                                {
+                                        SetString(&(curLogic[curInstr]), s);
+                                        if ( !s1[0] )
+                                                if ( !curTS[curInstr] )
+                                                        sprintf(s1, "(INITIAL)");
+                                                else if ( curTS[curInstr][0] != '[' )
+                                                        sprintf(s1, "[%s]", curTS[curInstr]);
+                                                else strcpy(s1, curTS[curInstr]);
+                                        SetString(&(curTS[curInstr]), s1);
+                                }
+                                else
+                                        SetString(&(curTS[curInstr]), s);
+                        aWin = new TMutTag(this, isLogic, isOpen,	10, 10, key, s, GetModule());
+                        if ( isOpen ) ToFocus = aWin;
+                }
+                while ( GetMutTag(isLogic, s, s1, key, false) );
 // neue TMutTag-s aktivieren
-CreateChildren();
+        CreateChildren();
 // Fokus setzen
-if ( !ToFocus )
-ToFocus = GetFirstChild();
-ToFocus->SetFocus();
+        if ( !ToFocus )
+                ToFocus = GetFirstChild();
+        ToFocus->SetFocus();
 // Tags anordnen
-SendMessage(WM_SIZE);
-SetFocusPos();
-Parent->SendMessage(WM_COMMAND, CM_SBREFRESH);
-MutWinOk = true;
+        SendMessage(WM_SIZE);
+        SetFocusPos();
+        Parent->SendMessage(WM_COMMAND, CM_SBREFRESH);
+        MutWinOk = true;
 }
 
-*/
+#endif
 
 
 ///\}

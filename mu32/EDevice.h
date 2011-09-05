@@ -2,15 +2,19 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.11 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.12 2011/09/05 11:30:07 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: EDevice.h,v $
- * Revision 1.11  2011/02/20 22:35:55  keinstein
+ * Revision 1.12  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.11  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.10  2010-11-21 13:15:44  keinstein
@@ -413,7 +417,7 @@ void WriteRoutes(wxString &config);
 void WriteRoutes(wxConfigBase *config);
 
 /// which mutabor boxes are used at all?
-extern bool BoxUsed[MAX_BOX];
+extern bool mut_box[MAX_BOX].used;
 
 /// synchronizes \c BoxUsed with the routes
 void CheckBoxesUsed();
