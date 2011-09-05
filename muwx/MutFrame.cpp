@@ -2,16 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.45 2011/09/05 06:42:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.46 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/05 06:42:47 $
- * \version $Revision: 1.45 $
+ * \date $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.46 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.45  2011/09/05 06:42:47  keinstein
+ * Revision 1.46  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.45  2011-09-05 06:42:47  keinstein
  * Added GUIBoxData.h
  *
  * Revision 1.44  2011-09-05 06:30:15  keinstein
@@ -286,6 +290,7 @@
 #  include <wx/msw/regconf.h>
 #endif
 #include "wx/ffile.h"
+#include "GUIBoxData.h"
 #include "MutFrame.h"
 #include "MutDocument.h"
 #include "MutView.h"
@@ -306,6 +311,8 @@
 using mutaborGUI::MutEditFile;
 using mutaborGUI::MutDocument;
 using mutaborGUI::MutView;
+using mutaborGUI::BoxData;
+using mutaborGUI::curBox;
 
 #define OPENMENU \
 	menu = new wxMenu;
@@ -345,33 +352,10 @@ bool UseColorBars = true;
 bool OWM = false; // One Window Mode
 bool CAW = false; // Common Action Window
 bool LogicOn = false;
-int curBox = 0;
 wxWindow *ChildToClose = NULL;
 
 wxString CompiledFile;
 
-wxString curLogic[MAX_BOX];
-wxString curTS[MAX_BOX];
-int curTaste[MAX_BOX][2]; // [0] ... ToneSyst, [1] ... Logic
-
-bool TextBoxWanted[MAX_BOX][3] = {
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false },
-                                         { false, false, false }
-                                 };
 char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEWIN" };
 
 int MutFrame::boxCommandIds[MAX_BOX];
@@ -507,15 +491,14 @@ MutFrame::MutFrame(wxFrame *parent,
 						      pos, 
 						      size,
 						      style | wxNO_FULL_REPAINT_ON_RESIZE),
-	curStatusImg(0)
+	curStatusImg(0),
+        auimanager(this,wxAUI_MGR_DEFAULT |
+                   wxAUI_MGR_ALLOW_ACTIVE_PANE | wxAUI_MGR_LIVE_RESIZE)
 {
 
 	SetSize (DetermineFrameSize ());
 	client = NULL;
 	editmenu = filemenu = NULL;
-
-	auimanager.SetManagedWindow(this);
-
 
 #if wxUSE_TOOLBAR
 #if 0
@@ -974,24 +957,21 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 	// Variablen initialisieren
 	for (int instr = 0; instr < MAX_BOX; instr++) {
-		curLogic[instr] = _T("(INITIAL)");
-		curTS[instr] = _T("0");
-		curTaste[instr][0] = 0;
-		curTaste[instr][1] = 0;
+                BoxData & box = BoxData::GetBox(instr);
+                box.reset();
 	}
 
 #ifdef DEBUG
 	std::cout << "MutFrame::CmDoActivate: Check used boxes" << std::endl;
-
 #endif
 	// curBox checken
 	CheckBoxesUsed();
 
-	if ( !BoxUsed[curBox] ) {
+	if ( !mut_box[curBox].used ) {
 		curBox = 0;
 
 		for (int i = 0; i < MAX_BOX; i++)
-			if ( BoxUsed[i] ) {
+			if ( mut_box[i].used ) {
 				curBox = i;
 				break;
 			}
@@ -1006,7 +986,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 		size_t i;
 
 		while ( (i = WinAttrs[kind].GetCount()) > 0)
-			if ( !BoxUsed[WinAttrs[kind][i].Box] )
+			if ( !mut_box[WinAttrs[kind][i].Box].used )
 				WinAttrs[kind].RemoveAt(i);
 	}
 
@@ -1037,15 +1017,25 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 	DEBUGLOG (other, _T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
 
-	for (size_t i = 0; i < MAX_BOX; i++)
-		if (BoxUsed[i])
-			for (WinKind kind = WK_KEY; kind <= WK_ACT; kind++) {
-				if ( TextBoxWanted[i][kind] )
-					TextBoxOpen(kind, i);
-				else
-					DontWant(kind, i);
-			}
+	for (size_t i = 0; i < MAX_BOX; i++) {
+		if (mut_box[i].used) {
+                        BoxData & box = BoxData::GetBox(i);
+                        if (box.WantKeyWindow())
+                                TextBoxOpen(WK_KEY,i,false);
+                        else 
+                                DontWant(WK_KEY, i);
 
+                        if (box.WantTonesystemWindow())
+                                TextBoxOpen(WK_TS,i,false);
+                        else 
+                                DontWant(WK_TS, i);
+
+                        if (box.WantActionsWindow())
+                                TextBoxOpen(WK_ACT,i,false);
+                        else 
+                                DontWant(WK_ACT, i);
+                }
+        }
         wxConfigBase *config = wxConfig::Get();
         if (config) {
                 wxString oldpath = config -> GetPath();
@@ -1053,8 +1043,18 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
                 wxString auidata;
                 auidata = config->Read(_T("AUI data"),wxEmptyString);
                 if (!auidata.empty())
-                        auimanager.LoadPerspective(auidata,true);
+                        auimanager.LoadPerspective(auidata,false);
                 config->SetPath(oldpath);
+
+                // some panes might still be hidden
+                wxAuiPaneInfoArray & panes = auimanager.GetAllPanes();
+                int pane_i, pane_count = panes.GetCount();
+                for (pane_i = 0; pane_i < pane_count; ++pane_i)
+                {
+                        wxAuiPaneInfo& p = panes.Item(pane_i);
+                        p.Show();
+                }
+                auimanager.Update();
         }
 
 
@@ -1300,33 +1300,48 @@ void MutFrame::LogicWinOpen(int box)
 
 void MutFrame::ToggleTextBox(WinKind kind)
 {
-#ifdef DEBUG
-	std::cerr << "MutFrame::ToggleTextBox: kind: " << kind << std::endl
-	<< "MutFrame::ToggleTextBox: TextBoxWanted:"
-	<< TextBoxWanted[curBox][kind] << std::endl;
-#endif
 
 	if (theFrame && (theFrame != this)) {
 		theFrame->ToggleTextBox(kind);
 		return;
 	}
 
+        BoxData & box = BoxData::GetBox(curBox);
+        bool openclose;
+        switch (kind) {
+        case WK_KEY: 
+                openclose = box.ToggleKeyWindow();
+                break;
+        case WK_TS: 
+                openclose = box.ToggleTonesystemWindow();
+                break;
+        case WK_ACT: 
+                openclose = box.ToggleActionsWindow();
+                break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), kind);
+        }
 
-	TextBoxWanted[curBox][kind] = !TextBoxWanted[curBox][kind];
-
-#ifdef DEBUG
-	std::cerr << "MutFrame::ToggleTextBox: LogicOn"
-	<< LogicOn << std::endl;
-#endif
+        DEBUGLOG(gui,_T("LogicOn %d"),LogicOn);
 
 	if ( !LogicOn ) return;
 
-#ifdef DEBUG
-	std::cerr << "MutFrame::ToggleTextBox: IsOpen(kind, curBox)"
-	<< IsOpen(kind, curBox) << std::endl;
+        DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,curBox,IsOpen(kind, curBox));
+        wxASSERT(IsOpen(kind,curBox) == openclose);
 
-#endif
-	if ( IsOpen(kind, curBox) ) {
+	if ( IsOpen(kind, curBox) && !openclose ) {
 		wxWindow *win = Get(kind, curBox)->Win;
 		//Get(kind, curBox)->Win->SendMessage(WM_CLOSE);
 		auimanager.DetachPane(win);
@@ -1334,11 +1349,11 @@ void MutFrame::ToggleTextBox(WinKind kind)
 		auimanager.Update();
 		//win->Close();
 		//win->Destroy();
-	} else
+	} else if (openclose)
 		TextBoxOpen(kind, curBox);
 }
 
-void MutFrame::TextBoxOpen(WinKind kind, int box)
+void MutFrame::TextBoxOpen(WinKind kind, int box, bool update_auimanager)
 {
 	DEBUGLOG (other, _T("%d,%d"),kind,box);
 
@@ -1349,16 +1364,12 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 
 	case WK_KEY:
 		s = GetKeyString(box, asTS);
-
 		title.Printf(_("Current keys at Box %d"),box);
-
 		break;
 
 	case WK_TS:
 		s = GetTSString(box, asTS);
-
 		title.Printf(_("Current tone system at Box %d"),box);
-
 		break;
 
 	case WK_ACT:
@@ -1369,29 +1380,20 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 			s = GenerateACTString(box);
 			title.Printf(_("Actions at Box %d"),box);
 		}
-
 		break;
 
 	case WK_LOGIC:
 		wxLogWarning(_("Unexpected value: WK_LOGIC"));
-
 		break;
-
 	case WK_ROUTE:
 		wxLogWarning(_("Unexpected value: WK_ROUTE"));
-
 		break;
-
 	case WK_EDIT:
 		wxLogWarning(_("Unexpected value: WK_EDIT"));
-
 		break;
-
 	case WK_NULL:
 		wxLogWarning(_("Unexpected value: WK_NULL"));
-
 		break;
-
 	default:
 		wxLogError(_("Unexpected window kind: %d"), kind);
 	}
@@ -1433,7 +1435,8 @@ void MutFrame::TextBoxOpen(WinKind kind, int box)
 
 	DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
 
-	auimanager.Update();
+        if (update_auimanager)
+                auimanager.Update();
 }
 
 void MutFrame::CmToggleKey(wxCommandEvent& WXUNUSED(event))
@@ -1505,17 +1508,17 @@ void MutFrame::CmToggleCAW(wxCommandEvent& WXUNUSED(event))
 
 void MutFrame::CeToggleKey(wxUpdateUIEvent& event)
 {
-	event.Check(TextBoxWanted[curBox][WK_KEY]);
+	event.Check(BoxData::GetBox(curBox).WantKeyWindow());
 }
 
 void MutFrame::CeToggleTS(wxUpdateUIEvent& event)
 {
-	event.Check(TextBoxWanted[curBox][WK_TS]);
+	event.Check(BoxData::GetBox(curBox).WantTonesystemWindow());
 }
 
 void MutFrame::CeToggleAct(wxUpdateUIEvent& event)
 {
-	event.Check(TextBoxWanted[curBox][WK_ACT]);
+	event.Check(BoxData::GetBox(curBox).WantActionsWindow());
 }
 
 void MutFrame::CeToggleOWM(wxUpdateUIEvent& event)
@@ -1534,7 +1537,7 @@ void MutFrame::CmSelectBox()
 	  Menu->AppendMenu(0, -1, "Select a box");
 	  Menu->AppendMenu(MF_SEPARATOR	, -1, "");
 	  for (int box = 0; box < MAX_BOX; box++)
-	    if ( BoxUsed[box] )
+	    if ( mut_box[box].used )
 	    {
 	      char s[80];
 	      sprintf(s, "Box %d", box);
@@ -2038,7 +2041,7 @@ void MutFrame::UpdateBoxMenu()
 	//  wxMenu *
 
 	for (int i = 0, j=0; i < MAX_BOX; i++) {
-		if (BoxUsed[i]) {
+		if (mut_box[i].used) {
 			if (theFrame == this) LogicWinOpen(i);
 
 			if (!boxCommandIds[i]) {
@@ -2080,21 +2083,18 @@ bool MutFrame::RaiseTheFrame()
 	return false;
 }
 
-// Boxes used
-
-bool BoxUsed[MAX_BOX];
 
 void CheckBoxesUsed()
 {
 	for (int i = 0; i < MAX_BOX; i++)
-		BoxUsed[i] = false;
+		mut_box[i].used = false;
 
 	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext())
 	  for (Route *R = In->GetRoutes(); R; R = R->GetNext())
 	    if ( R->Box >= 0 ) {
 	      if (R->Box >= MAX_BOX) UNREACHABLE;
 	      else
-		BoxUsed[R->Box] = true;
+		mut_box[R->Box].used = true;
 	    }
 }
 

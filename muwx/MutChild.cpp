@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.14 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.15 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.14 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.14  2011/08/21 16:52:05  keinstein
+ * Revision 1.15  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.14  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.13  2011-02-20 22:35:57  keinstein
@@ -145,7 +149,7 @@ void MutChild::OnActivate(wxActivateEvent& event)
 {
 	wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
 	DEBUGLOG (other, _T(""));
-	curBox = winAttr->Box;
+        mutaborGUI::curBox = winAttr->Box;
 }
 
 void MutChild::deleteFromWinAttrs()
@@ -224,9 +228,7 @@ bool IsWanted(WinKind kind, int box)
 void DontWant(WinKind kind, int box)
 {
 	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-
 	WinAttr *Help;
-
 	if ( (Help = Get(kind, box)) )
 		Help->Wanted = 0;
 }

@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.1 2011/09/05 06:56:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.2 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 06:56:44 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,11 @@
  *
  *
  * $Log: GUIBoxData.cpp,v $
- * Revision 1.1  2011/09/05 06:56:44  keinstein
+ * Revision 1.2  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.1  2011-09-05 06:56:44  keinstein
  * Added GUIBoxData.cpp
  *
  * Revision 1.1  2011-09-05 06:42:47  keinstein
@@ -39,26 +43,68 @@
  * \{
  ********************************************************************/
 
-#ifndef MUWX_GUIBOXDATA_H
-#define MUWX_GUIBOXDATA_H
-
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "Defs.h"
-#include <wx/wxprec.h>
-
 #include "GUIBoxData.h"
 
-#ifdef __BORLANDC__
-    #pragma hdrstop
-#endif
-
 namespace mutaborGUI {
-	BoxVector BoxData::vector(MAX_BOX);
+	int curBox = 0;
+
+	BoxData::BoxVector BoxData::vector(MAX_BOX);
+	BoxData::BoxData():current_logic(),
+			   current_tonesystem(),
+			   current_key_tonesystem(0),
+			   current_key_logic(0),
+			   want_key_window(false),
+			   want_tonesystem_window(false),
+			   want_actions_window(false)	
+	{		
+	}
+
+	void BoxData::reset() 
+	{
+		current_logic = _("(INITIAL)");
+		current_tonesystem = _T("0");
+		current_key_tonesystem = current_key_logic = 0;
+	}
+
+
+	bool BoxData::Save(wxConfigBase * config) {
+		config->Write(_T("KeyWindow"), want_key_window);
+		config->Write(_T("ToneSystemWindow"), want_tonesystem_window);
+		config->Write(_T("ActionsWindow"), want_actions_window);
+	}
+
+	bool BoxData::Load(wxConfigBase * config) {
+		want_key_window = config->Read(_T("KeyWindow"), 
+					       (long int)false);
+		want_tonesystem_window =
+			config->Read(_T("ToneSystemWindow"),
+				     (long int)false);
+		want_actions_window =
+			config->Read(_T("ActionsWindow"), 
+				     (long int)false);
+	}
+
+	bool BoxData::SaveAll(wxConfigBase * config) 
+	{
+		for (size_t box = 0 ; box < vector.size() ; box++) {
+			config->SetPath(wxString::Format(_T("%d"),box));
+			vector[box].Save(config);
+			config->SetPath(_T(".."));
+		}
+	}
+
+	bool BoxData::LoadAll(wxConfigBase * config) 
+	{
+		for (size_t box = 0 ; box < vector.size() ; box++) {
+			config->SetPath(wxString::Format(_T("%d"),box));
+			vector[box].Load(config);
+			config->SetPath(_T(".."));
+		}
+	}
+
 }
- 
-#endif
 ///\}

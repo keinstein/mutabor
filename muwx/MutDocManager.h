@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.5 2011/08/28 20:09:11 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.6 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/28 20:09:11 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,11 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.5  2011/08/28 20:09:11  keinstein
+ * Revision 1.6  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.5  2011-08-28 20:09:11  keinstein
  * several impovements for opening and saving files
  *
  * Revision 1.4  2011-08-24 21:19:36  keinstein
@@ -60,10 +64,6 @@
 #include "Defs.h"
 #include <wx/wx.h>
 #include "wx/event.h"
-
-#ifdef __BORLANDC__
-    #pragma hdrstop
-#endif
 
 namespace mutaborGUI {
 	class MutDocManager:public wxDocManager {

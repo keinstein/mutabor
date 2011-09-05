@@ -2,17 +2,21 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.46 2011/09/04 15:35:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.47 2011/09/05 11:30:07 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/04 15:35:08 $
- * \version $Revision: 1.46 $
+ * $Date: 2011/09/05 11:30:07 $
+ * \version $Revision: 1.47 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.46  2011/09/04 15:35:08  keinstein
+ * Revision 1.47  2011/09/05 11:30:07  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.46  2011-09-04 15:35:08  keinstein
  * disable print preview on OS X and when using libgnomeprint as they proviede their own means
  *
  * Revision 1.45  2011-09-04 12:02:08  keinstein
@@ -1422,15 +1426,7 @@ void MutApp::SaveState()
 	config->Write(_T("Color bars"), UseColorBars);
 
 	config->SetPath(_T("Box settings"));
-
-	for (size_t box = 0 ; box < MAX_BOX ; box++) {
-		config->SetPath(wxString::Format(_T("%d"),box));
-		config->Write(_T("KeyWindow"), TextBoxWanted[box][WK_KEY]);
-		config->Write(_T("ToneSystemWindow"), TextBoxWanted[box][WK_TS]);
-		config->Write(_T("ActionsWindow"), TextBoxWanted[box][WK_ACT]);
-		config->SetPath(_T(".."));
-	}
-
+        BoxData::SaveAll(config);
 	config->SetPath(_T(".."));
 
 	config->SetPath(_T("DocManager"));
@@ -1470,15 +1466,7 @@ void MutApp::RestoreState()
 	config->Read(_T("ColorBars"), &UseColorBars, true);
 
 	config->SetPath(_T("Box settings"));
-
-	for (size_t box = 0 ; box < MAX_BOX ; box++) {
-		config->SetPath(wxString::Format(_T("%d"),box));
-		config->Read(_T("KeyWindow"), &TextBoxWanted[box][WK_KEY], false);
-		config->Read(_T("ToneSystemWindow"), &TextBoxWanted[box][WK_TS], false);
-		config->Read(_T("ActionsWindow"), &TextBoxWanted[box][WK_ACT], false);
-		config->SetPath(_T(".."));
-	}
-
+        BoxData::LoadAll(config);
 	config->SetPath(_T(".."));
 
 	config->SetPath(_T("DocManager"));

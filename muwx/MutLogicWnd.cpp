@@ -2,17 +2,21 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.21 2011/07/30 12:58:49 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.22 2011/09/05 11:30:08 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/07/30 12:58:49 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/09/05 11:30:08 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.21  2011/07/30 12:58:49  keinstein
+ * Revision 1.22  2011/09/05 11:30:08  keinstein
+ * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+ * Restore perspective on logic start
+ *
+ * Revision 1.21  2011-07-30 12:58:49  keinstein
  * Fix bug introduced before last commit.
  * Change MutTag::OnLefUp into MutTag::OnLeftDown
  *
@@ -64,6 +68,8 @@
 #include "Icon/Tonesyst.xpm"
 #include "Icon/TonesystOpen.xpm"
 //#endif
+
+using mutaborGUI::BoxData;
 
 int pubTaste; // Taste aus anderen Fenstern f¸r MutWin
 
@@ -614,22 +620,22 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 {
 	// Analyse zuerst
 	KeyboardAnalyse(boxnumber, thekey, isLogicKey);
-	curTaste[boxnumber][isLogicKey] = thekey;
+        BoxData & box = BoxData::GetBox(boxnumber);
+        if (isLogicKey) {
+                box.SetKeyTonesystem(0);
+                box.SetKeyLogic(thekey);
+        }
 	wxWindow *ToFocus = NULL;
 
-	if ( isLogicKey )
-		curTaste[boxnumber][0] = 0;
-
 	// alte TMutTag-s lˆschen
+        //* \todo we must reuse old entries rendering can be expensive
 	DestroyChildren();
 
 	// neue erstellen
 	char isLogic, s[200], s1[200], key, isOpen;
 
 	wxString sText, sEinst;
-
 	wxWindow *aWin;
-
 	nTags = 0;
 
 	if ( GetMutTag(isLogic, s, s1, key, boxnumber) )
@@ -638,18 +644,22 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 			sText = muT(s);
 			sEinst = muT(s1);
 
-			if ( (isOpen = (key == curTaste[boxnumber][(size_t)isLogic])) != 0 ) {
+			if ( (isOpen = (key == thekey)) != 0 ) {
 				if ( isLogic ) {
-					curLogic[boxnumber] = sText;
+					box.SetLogic(sText);
 
 					if ( !sEinst.IsEmpty() )
-						curTS[boxnumber] = sEinst;
-					else if ( !curTS[boxnumber] )
-						curTS[boxnumber] = _("(INITIAL)");
-					else if ( curTS[boxnumber][0] != '[' )
-						curTS[boxnumber] = wxString::Format(_T("[%s]"), curTS[boxnumber].c_str());
+						box.SetTonesystem(sEinst);
+					else if ( box.GetTonesystem().empty() )
+						box.SetTonesystem(_("(INITIAL)"));
+					else if ( box.GetTonesystem()[0] != '[' )
+						box.SetTonesystem(
+                                                        _T("[")
+                                                        + box.GetTonesystem()
+                                                        + _T("]")
+                                                        );
 				} else
-					curTS[boxnumber] = sText;
+					box.SetTonesystem(sText);
                         }
 
 			aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
