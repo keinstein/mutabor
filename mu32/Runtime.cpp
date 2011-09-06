@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.18 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.19 2011/09/06 08:09:20 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.18 $
+ * \date $Date: 2011/09/06 08:09:20 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.18  2011/07/27 20:48:32  keinstein
+ * Revision 1.19  2011/09/06 08:09:20  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.18  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.17  2011-03-06 13:15:41  keinstein
@@ -138,14 +141,14 @@ extern "C"
 			mutabor_tabellen_generator();
 
 
-			compDia->SetButtonText(_("Translation successful !"));
-			compDia->SetMessage(_("No error occured !"));
+			compDia->SetButtonText(_("Translation successful"));
+			compDia->SetMessage(_("No error occured."));
 			compDia->Refresh();
 
 			return 1;
 		} else {
 			//show_line_number(-1);
-			compDia->SetButtonText(_("Translation interrupted !"));
+			compDia->SetButtonText(_("Translation interrupted."));
 
 			compDia->SetMessage(Fmeldung);
 			compDia->Refresh();

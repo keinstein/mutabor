@@ -449,7 +449,7 @@ YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 
 .y.cpp: 
 	rm -f $*.h
-	$(MAKE) $@
+	$(MAKE) $*.h
 
 .y.h:
 	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
@@ -472,6 +472,7 @@ YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 	mv y.tab.c $*.cpp
 
 mutlex.h: mutlex.l
+mu32/mut.cpp mu32/mut.h: $(top_srcdir)/mu32/mut.h
 $(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
 $(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
 

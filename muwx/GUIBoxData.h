@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.3 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.4 2011/09/06 08:09:21 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/06 08:09:21 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.h,v $
- * Revision 1.3  2011/09/05 11:30:07  keinstein
+ * Revision 1.4  2011/09/06 08:09:21  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.3  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -117,16 +120,19 @@ namespace mutaborGUI {
 		bool ToggleKeyWindow () {
 			bool retval = want_key_window;
 			want_key_window = !want_key_window;
+			return retval;
 		}
 		
 		bool ToggleTonesystemWindow () {
 			bool retval = want_tonesystem_window;
 			want_tonesystem_window = !want_tonesystem_window;
+			return retval;
 		}
 		
 		bool ToggleActionsWindow () {
 			bool retval = want_actions_window;
 			want_actions_window = !want_actions_window;
+			return retval;
 		}
 		
 		static BoxData & GetBox(size_t nr) 
