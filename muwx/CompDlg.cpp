@@ -2,17 +2,20 @@
  ********************************************************************
  * Compile dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/CompDlg.cpp,v 1.4 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/CompDlg.cpp,v 1.5 2011/09/06 08:09:21 keinstein Exp $
  * Copyright:   (c) 2005, 2008 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/14
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/06 08:09:21 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: CompDlg.cpp,v $
- * Revision 1.4  2011/02/20 22:35:57  keinstein
+ * Revision 1.5  2011/09/06 08:09:21  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.4  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -86,10 +89,6 @@ CompDlg::CompDlg( wxWindow* parent, wxWindowID id, const wxString& caption, cons
 
 bool CompDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
-////@begin CompDlg member initialisation
-////@end CompDlg member initialisation
-
-////@begin CompDlg creation
 	SetExtraStyle(GetExtraStyle()|wxWS_EX_BLOCK_EVENTS);
 	wxDialog::Create( parent, id, caption, pos, size, style );
 
@@ -97,7 +96,6 @@ bool CompDlg::Create( wxWindow* parent, wxWindowID id, const wxString& caption, 
 	GetSizer()->Fit(this);
 	GetSizer()->SetSizeHints(this);
 	Centre();
-////@end CompDlg creation
 	return TRUE;
 }
 

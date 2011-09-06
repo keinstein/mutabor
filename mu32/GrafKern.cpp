@@ -2,14 +2,17 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.13 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.14 2011/09/06 08:09:20 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2011/09/06 08:09:20 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.13  2011/02/20 22:35:55  keinstein
+ * Revision 1.14  2011/09/06 08:09:20  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.13  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.12  2010-11-21 13:15:45  keinstein
@@ -253,18 +256,12 @@ void show_line_number( int n )
 
 	if ( !CompDiaLine ) return;
 
-#ifdef DEBUG
-	std::cerr << "setting number ";
-
-#endif
 	wxString s = _T("");
-
 	if ( n != -1 ) s << n;
 
 	DEBUGLOG2(other,_T("s = %s"), s.c_str());
 
 	CompDiaLine->SetLabel(s);
-
 	CompDiaLine->Refresh();
 
 #else
@@ -289,8 +286,9 @@ void fatal_error( int nr, ... )
 {
 	va_list arglist;
 	va_start(arglist,nr);
-#if defined(WX)
-	Fmeldung = wxString::FormatV(wxGetTranslation(Error_text[nr]), arglist);
+#ifdef WX
+	Fmeldung = wxString::Format(_("Error %d:"),nr) +
+		wxString::FormatV(wxGetTranslation(Error_text[nr]), arglist);
 #else
 	vsprintf( Fmeldung, Error_text[nr], arglist );
 #endif

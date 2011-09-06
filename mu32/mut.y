@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/mut.y,v 1.10 2011/03/06 13:15:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/mut.y,v 1.11 2011/09/06 08:09:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/03/06 13:15:41 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/06 08:09:21 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: mut.y,v $
- * Revision 1.10  2011/03/06 13:15:41  keinstein
+ * Revision 1.11  2011/09/06 08:09:21  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.10  2011-03-06 13:15:41  keinstein
  * some rearrangement for update callback kernel->GUI
  *
  * Revision 1.9  2011-02-20 22:35:56  keinstein
@@ -137,7 +140,7 @@ intervalldekl2 :
 	| IDENTIFIER '=' KOMPLEX_TON_LIST
 			 { get_new_intervall_komplex ($1); }
         | IDENTIFIER '=' error { fatal_error(71, mutC_STR($1)); }
-        | IDENTIFIER error { fatal_error(70,"'='",FEHLERZEILE); }
+        | IDENTIFIER error { fatal_error(70,mutT("="),FEHLERZEILE); }
       ;
 
 tondeklaration :

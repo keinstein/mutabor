@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.16 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.17 2011/09/06 08:09:20 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.16 $
+ * $Date: 2011/09/06 08:09:20 $
+ * \version $Revision: 1.17 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.16  2011/02/20 22:35:55  keinstein
+ * Revision 1.17  2011/09/06 08:09:20  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.16  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -94,7 +97,7 @@
 #define mutStrEq2(left, right) (left.IsSameAs(right))
 #define mutStrLast(x) ((x).Last())
 #define mutLen(x) ((x).Len())
-#define C_STR(x) ((const wxChar *)(x).c_str())
+#define C_STR(x) ((const wxChar *)(x))
 #define mutC_STR(x) (C_STR(muT(x)))
 
 #define mutStrLen wxStrlen
@@ -127,7 +130,7 @@
 #define mutStreamGood(stream) ((stream).IsOk())
 #define mutStreamEOF(stream) ((stream).Eof())
 
-#if (wxMAJOR_VERSION > 2 || wxMINOR_VERSION >= 9)
+#if wxCHECK_VERSION(2,9,0)
 #define mutTranslationChar char
 #define N_T(s) (s)
 #define _C_STR(s) C_STR(s)

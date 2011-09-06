@@ -1,24 +1,23 @@
-/* A Bison parser, made by GNU Bison 2.3.  */
+
+/* A Bison parser, made by GNU Bison 2.4.1.  */
 
 /* Skeleton implementation for Bison's Yacc-like parsers in C
-
-   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   
+      Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
-
-   This program is free software; you can redistribute it and/or modify
+   
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
-
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
+   
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -29,7 +28,7 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-
+   
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
@@ -47,7 +46,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.3"
+#define YYBISON_VERSION "2.4.1"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -55,9 +54,74 @@
 /* Pure parsers.  */
 #define YYPURE 0
 
+/* Push parsers.  */
+#define YYPUSH 0
+
+/* Pull parsers.  */
+#define YYPULL 1
+
 /* Using locations.  */
 #define YYLSP_NEEDED 1
 
+
+
+/* Copy the first part of user declarations.  */
+
+/* Line 189 of yacc.c  */
+#line 34 "../mu32/mut.y"
+
+
+/* BEGIN MUT_TAB.C */
+
+/* MUTABOR / Version 2.1 */
+
+//#pragma warn -cln
+//#pragma warn -aus
+//#pragma warn -sig
+//#pragma warn -par
+
+
+#include <ctype.h>
+#include <limits.h>
+#include "Global.h"
+#include "GrafKern.h"
+#include "Hilfs.h"
+
+#define MAX_IDENTIFIER_LEN 80
+
+#define FEHLERZEILE yylloc.first_line+1
+
+#ifdef alloca
+#undef alloca
+#define alloca make_an_error ---
+#endif
+#define YYMALLOC xmalloc
+#define YYFREE(X) do { /* empty */; } while (YYID (0))
+#define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
+                   /* wegen fehlendem alloca in PUREC */
+
+
+
+/* Line 189 of yacc.c  */
+#line 107 "y.tab.c"
+
+/* Enabling traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+
+/* Enabling verbose error messages.  */
+#ifdef YYERROR_VERBOSE
+# undef YYERROR_VERBOSE
+# define YYERROR_VERBOSE 1
+#else
+# define YYERROR_VERBOSE 0
+#endif
+
+/* Enabling the token table.  */
+#ifndef YYTOKEN_TABLE
+# define YYTOKEN_TABLE 0
+#endif
 
 
 /* Tokens.  */
@@ -105,73 +169,25 @@
 
 
 
-/* Copy the first part of user declarations.  */
-#line 34 "../mu32/mut.y"
-
-
-/* BEGIN MUT_TAB.C */
-
-/* MUTABOR / Version 2.1 */
-
-//#pragma warn -cln
-//#pragma warn -aus
-//#pragma warn -sig
-//#pragma warn -par
-
-
-#include <ctype.h>
-#include <limits.h>
-#include "Global.h"
-#include "GrafKern.h"
-#include "Hilfs.h"
-
-#define MAX_IDENTIFIER_LEN 80
-
-#define FEHLERZEILE yylloc.first_line+1
-
-#ifdef alloca
-#undef alloca
-#define alloca make_an_error ---
-#endif
-#define YYMALLOC xmalloc
-#define YYFREE(X) do { /* empty */; } while (YYID (0))
-#define YYMAXLIMIT (HEAP_PORTION_SYNTAX / sizeof(YYLTYPE) - 1)
-                   /* wegen fehlendem alloca in PUREC */
-
-
-
-/* Enabling traces.  */
-#ifndef YYDEBUG
-# define YYDEBUG 0
-#endif
-
-/* Enabling verbose error messages.  */
-#ifdef YYERROR_VERBOSE
-# undef YYERROR_VERBOSE
-# define YYERROR_VERBOSE 1
-#else
-# define YYERROR_VERBOSE 0
-#endif
-
-/* Enabling the token table.  */
-#ifndef YYTOKEN_TABLE
-# define YYTOKEN_TABLE 0
-#endif
-
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 67 "../mu32/mut.y"
 {
+
+/* Line 214 of yacc.c  */
+#line 67 "../mu32/mut.y"
+
     double      f_value;        /* fÅr Gleitkommazahlen */
     int         integer;        /* FÅr integers */
     char        *identifier;    /* FÅr Namen */
-}
-/* Line 193 of yacc.c.  */
-#line 171 "y.tab.c"
-	YYSTYPE;
+
+
+
+/* Line 214 of yacc.c  */
+#line 187 "y.tab.c"
+} YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
-# define YYSTYPE_IS_TRIVIAL 1
 #endif
 
 #if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
@@ -191,8 +207,8 @@ typedef struct YYLTYPE
 /* Copy the second part of user declarations.  */
 
 
-/* Line 216 of yacc.c.  */
-#line 196 "y.tab.c"
+/* Line 264 of yacc.c  */
+#line 212 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -242,7 +258,7 @@ typedef short int yytype_int16;
 #define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
 
 #ifndef YY_
-# if defined YYENABLE_NLS && YYENABLE_NLS
+# if YYENABLE_NLS
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
 #   define YY_(msgid) dgettext ("bison-runtime", msgid)
@@ -267,14 +283,14 @@ typedef short int yytype_int16;
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static int
-YYID (int i)
+YYID (int yyi)
 #else
 static int
-YYID (i)
-    int i;
+YYID (yyi)
+    int yyi;
 #endif
 {
-  return i;
+  return yyi;
 }
 #endif
 
@@ -356,9 +372,9 @@ void free (void *); /* INFRINGES ON USER NAME SPACE */
 /* A type that is properly aligned for any stack member.  */
 union yyalloc
 {
-  yytype_int16 yyss;
-  YYSTYPE yyvs;
-    YYLTYPE yyls;
+  yytype_int16 yyss_alloc;
+  YYSTYPE yyvs_alloc;
+  YYLTYPE yyls_alloc;
 };
 
 /* The size of the maximum gap between one aligned stack and the next.  */
@@ -393,12 +409,12 @@ union yyalloc
    elements in the stack, and YYPTR gives the new location of the
    stack.  Advance YYPTR to a properly aligned location for the next
    stack.  */
-# define YYSTACK_RELOCATE(Stack)					\
+# define YYSTACK_RELOCATE(Stack_alloc, Stack)				\
     do									\
       {									\
 	YYSIZE_T yynewbytes;						\
-	YYCOPY (&yyptr->Stack, Stack, yysize);				\
-	Stack = &yyptr->Stack;						\
+	YYCOPY (&yyptr->Stack_alloc, Stack, yysize);			\
+	Stack = &yyptr->Stack_alloc;					\
 	yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
 	yyptr += yynewbytes / sizeof (*yyptr);				\
       }									\
@@ -604,28 +620,29 @@ static const char *const yytname[] =
   "ANSONSTEN", "'='", "':'", "'-'", "'+'", "'/'", "'['", "']'", "','",
   "'('", "')'", "'@'", "'<'", "'>'", "'*'", "'{'", "'}'", "'.'", "'~'",
   "$accept", "start", "intervalldeklaration", "intervalldekl1",
-  "intervalldekl2_1", "@1", "intervalldekl2", "tondeklaration", "tondekl1",
-  "tondekl2_1", "@2", "tondekl2", "KOMPLEX_TON_LIST", "KOMPLEX_TON_LIST_2",
-  "KOMPLEX_TON_1", "KOMPLEX_TON_START", "tonsystemdeklaration",
-  "tonsystemdekl1", "tonsystemdekl2_1", "@3", "tonsystemdekl2", "@4", "@5",
-  "tonliste", "ton_element", "parameter_liste", "argument_liste",
-  "argument_listenelement", "umstimmungdeklaration", "umstimmungs_dekl_1",
-  "umstimmungs_dekl_2", "@6", "@7", "@8", "@9", "umstimmungs_dekl_3",
+  "intervalldekl2_1", "$@1", "intervalldekl2", "tondeklaration",
+  "tondekl1", "tondekl2_1", "$@2", "tondekl2", "KOMPLEX_TON_LIST",
+  "KOMPLEX_TON_LIST_2", "KOMPLEX_TON_1", "KOMPLEX_TON_START",
+  "tonsystemdeklaration", "tonsystemdekl1", "tonsystemdekl2_1", "$@3",
+  "tonsystemdekl2", "$@4", "$@5", "tonliste", "ton_element",
+  "parameter_liste", "argument_liste", "argument_listenelement",
+  "umstimmungdeklaration", "umstimmungs_dekl_1", "umstimmungs_dekl_2",
+  "$@6", "$@7", "$@8", "$@9", "umstimmungs_dekl_3",
   "umstimmungs_dekl_taste_abs", "umstimmungs_dekl_taste_rel",
   "umstimmungs_dekl_breite_abs", "umstimmungs_dekl_breite_rel",
-  "umstimmungs_dekl_tonhoehe_veraendert", "@10",
-  "nonempty_umstimm_expression_list", "@11", "umstimm_expression_list",
-  "umstimm_expression", "nonempty_umstimm_expression", "@12", "@13", "@14",
-  "@15", "umstimmungs_dekl_wiederholung_abs", "@16", "@17",
-  "umstimmungs_dekl_wiederholung_rel", "@18", "@19",
-  "umstimmungs_dekl_umstimmungs_bund", "@20", "aktions_liste", "aktion",
-  "@21", "@22", "umstimmungs_dekl_umstimmungs_case", "@23", "@24",
-  "umstimmungs_case_liste", "umstimmungs_case_element", "@25", "@26",
-  "@27", "umstimmungs_dekl_midi_out", "@28", "harmoniedeklaration",
-  "harmonie_dekl_1", "harmonie_dekl_2", "@29", "bezugs_taste",
-  "tasten_liste", "taste", "logikdeklaration", "logik_dekl_1", "@30",
-  "logik_dekl_2", "@31", "@32", "anweisungs_liste", "anweisung", "@33",
-  "@34", "harmoniebezeichner", "ausloeser", "@35", "integersequenz",
+  "umstimmungs_dekl_tonhoehe_veraendert", "$@10",
+  "nonempty_umstimm_expression_list", "$@11", "umstimm_expression_list",
+  "umstimm_expression", "nonempty_umstimm_expression", "$@12", "$@13",
+  "$@14", "$@15", "umstimmungs_dekl_wiederholung_abs", "$@16", "$@17",
+  "umstimmungs_dekl_wiederholung_rel", "$@18", "$@19",
+  "umstimmungs_dekl_umstimmungs_bund", "$@20", "aktions_liste", "aktion",
+  "$@21", "$@22", "umstimmungs_dekl_umstimmungs_case", "$@23", "$@24",
+  "umstimmungs_case_liste", "umstimmungs_case_element", "$@25", "$@26",
+  "$@27", "umstimmungs_dekl_midi_out", "$@28", "harmoniedeklaration",
+  "harmonie_dekl_1", "harmonie_dekl_2", "$@29", "bezugs_taste",
+  "tasten_liste", "taste", "logikdeklaration", "logik_dekl_1", "$@30",
+  "logik_dekl_2", "$@31", "$@32", "anweisungs_liste", "anweisung", "$@33",
+  "$@34", "harmoniebezeichner", "ausloeser", "$@35", "integersequenz",
   "instrumentdeklaration", "instrument_dekl_1", "instrument_dekl_2",
   "GLEITKOMMA_ZAHL", 0
 };
@@ -1013,7 +1030,7 @@ while (YYID (0))
    we won't break user code: when these are the locations we know.  */
 
 #ifndef YY_LOCATION_PRINT
-# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+# if YYLTYPE_IS_TRIVIAL
 #  define YY_LOCATION_PRINT(File, Loc)			\
      fprintf (File, "%d.%d-%d.%d",			\
 	      (Loc).first_line, (Loc).first_column,	\
@@ -1129,17 +1146,20 @@ yy_symbol_print (yyoutput, yytype, yyvaluep, yylocationp)
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 static void
-yy_stack_print (yytype_int16 *bottom, yytype_int16 *top)
+yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
 #else
 static void
-yy_stack_print (bottom, top)
-    yytype_int16 *bottom;
-    yytype_int16 *top;
+yy_stack_print (yybottom, yytop)
+    yytype_int16 *yybottom;
+    yytype_int16 *yytop;
 #endif
 {
   YYFPRINTF (stderr, "Stack now");
-  for (; bottom <= top; ++bottom)
-    YYFPRINTF (stderr, " %d", *bottom);
+  for (; yybottom <= yytop; yybottom++)
+    {
+      int yybot = *yybottom;
+      YYFPRINTF (stderr, " %d", yybot);
+    }
   YYFPRINTF (stderr, "\n");
 }
 
@@ -1174,11 +1194,11 @@ yy_reduce_print (yyvsp, yylsp, yyrule)
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
-      fprintf (stderr, "   $%d = ", yyi + 1);
+      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
 		       &(yyvsp[(yyi + 1) - (yynrhs)])
 		       , &(yylsp[(yyi + 1) - (yynrhs)])		       );
-      fprintf (stderr, "\n");
+      YYFPRINTF (stderr, "\n");
     }
 }
 
@@ -1460,10 +1480,8 @@ yydestruct (yymsg, yytype, yyvaluep, yylocationp)
 	break;
     }
 }
-
 
 /* Prevent warnings from -Wmissing-prototypes.  */
-
 #ifdef YYPARSE_PARAM
 #if defined __STDC__ || defined __cplusplus
 int yyparse (void *YYPARSE_PARAM);
@@ -1479,23 +1497,23 @@ int yyparse ();
 #endif /* ! YYPARSE_PARAM */
 
 
-
-/* The look-ahead symbol.  */
+/* The lookahead symbol.  */
 int yychar;
 
-/* The semantic value of the look-ahead symbol.  */
+/* The semantic value of the lookahead symbol.  */
 YYSTYPE yylval;
+
+/* Location data for the lookahead symbol.  */
+YYLTYPE yylloc;
 
 /* Number of syntax errors so far.  */
 int yynerrs;
-/* Location data for the look-ahead symbol.  */
-YYLTYPE yylloc;
 
 
 
-/*----------.
-| yyparse.  |
-`----------*/
+/*-------------------------.
+| yyparse or yypush_parse.  |
+`-------------------------*/
 
 #ifdef YYPARSE_PARAM
 #if (defined __STDC__ || defined __C99__FUNC__ \
@@ -1519,14 +1537,49 @@ yyparse ()
 #endif
 #endif
 {
-  
-  int yystate;
+
+
+    int yystate;
+    /* Number of tokens to shift before error messages enabled.  */
+    int yyerrstatus;
+
+    /* The stacks and their tools:
+       `yyss': related to states.
+       `yyvs': related to semantic values.
+       `yyls': related to locations.
+
+       Refer to the stacks thru separate pointers, to allow yyoverflow
+       to reallocate them elsewhere.  */
+
+    /* The state stack.  */
+    yytype_int16 yyssa[YYINITDEPTH];
+    yytype_int16 *yyss;
+    yytype_int16 *yyssp;
+
+    /* The semantic value stack.  */
+    YYSTYPE yyvsa[YYINITDEPTH];
+    YYSTYPE *yyvs;
+    YYSTYPE *yyvsp;
+
+    /* The location stack.  */
+    YYLTYPE yylsa[YYINITDEPTH];
+    YYLTYPE *yyls;
+    YYLTYPE *yylsp;
+
+    /* The locations where the error started and ended.  */
+    YYLTYPE yyerror_range[2];
+
+    YYSIZE_T yystacksize;
+
   int yyn;
   int yyresult;
-  /* Number of tokens to shift before error messages enabled.  */
-  int yyerrstatus;
-  /* Look-ahead token as an internal (translated) token number.  */
-  int yytoken = 0;
+  /* Lookahead token as an internal (translated) token number.  */
+  int yytoken;
+  /* The variables used to return semantic value and location from the
+     action routines.  */
+  YYSTYPE yyval;
+  YYLTYPE yyloc;
+
 #if YYERROR_VERBOSE
   /* Buffer for error messages, and its allocated size.  */
   char yymsgbuf[128];
@@ -1534,63 +1587,37 @@ yyparse ()
   YYSIZE_T yymsg_alloc = sizeof yymsgbuf;
 #endif
 
-  /* Three stacks and their tools:
-     `yyss': related to states,
-     `yyvs': related to semantic values,
-     `yyls': related to locations.
-
-     Refer to the stacks thru separate pointers, to allow yyoverflow
-     to reallocate them elsewhere.  */
-
-  /* The state stack.  */
-  yytype_int16 yyssa[YYINITDEPTH];
-  yytype_int16 *yyss = yyssa;
-  yytype_int16 *yyssp;
-
-  /* The semantic value stack.  */
-  YYSTYPE yyvsa[YYINITDEPTH];
-  YYSTYPE *yyvs = yyvsa;
-  YYSTYPE *yyvsp;
-
-  /* The location stack.  */
-  YYLTYPE yylsa[YYINITDEPTH];
-  YYLTYPE *yyls = yylsa;
-  YYLTYPE *yylsp;
-  /* The locations where the error started and ended.  */
-  YYLTYPE yyerror_range[2];
-
 #define YYPOPSTACK(N)   (yyvsp -= (N), yyssp -= (N), yylsp -= (N))
-
-  YYSIZE_T yystacksize = YYINITDEPTH;
-
-  /* The variables used to return semantic value and location from the
-     action routines.  */
-  YYSTYPE yyval;
-  YYLTYPE yyloc;
 
   /* The number of symbols on the RHS of the reduced rule.
      Keep to zero when no symbol should be popped.  */
   int yylen = 0;
+
+  yytoken = 0;
+  yyss = yyssa;
+  yyvs = yyvsa;
+  yyls = yylsa;
+  yystacksize = YYINITDEPTH;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
 
   yystate = 0;
   yyerrstatus = 0;
   yynerrs = 0;
-  yychar = YYEMPTY;		/* Cause a token to be read.  */
+  yychar = YYEMPTY; /* Cause a token to be read.  */
 
   /* Initialize stack pointers.
      Waste one element of value and location stack
      so that they stay on the same level as the state stack.
      The wasted elements are never initialized.  */
-
   yyssp = yyss;
   yyvsp = yyvs;
   yylsp = yyls;
-#if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+
+#if YYLTYPE_IS_TRIVIAL
   /* Initialize the default location before parsing starts.  */
   yylloc.first_line   = yylloc.last_line   = 1;
-  yylloc.first_column = yylloc.last_column = 0;
+  yylloc.first_column = yylloc.last_column = 1;
 #endif
 
   goto yysetstate;
@@ -1629,6 +1656,7 @@ yyparse ()
 		    &yyvs1, yysize * sizeof (*yyvsp),
 		    &yyls1, yysize * sizeof (*yylsp),
 		    &yystacksize);
+
 	yyls = yyls1;
 	yyss = yyss1;
 	yyvs = yyvs1;
@@ -1650,9 +1678,9 @@ yyparse ()
 	  (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
 	if (! yyptr)
 	  goto yyexhaustedlab;
-	YYSTACK_RELOCATE (yyss);
-	YYSTACK_RELOCATE (yyvs);
-	YYSTACK_RELOCATE (yyls);
+	YYSTACK_RELOCATE (yyss_alloc, yyss);
+	YYSTACK_RELOCATE (yyvs_alloc, yyvs);
+	YYSTACK_RELOCATE (yyls_alloc, yyls);
 #  undef YYSTACK_RELOCATE
 	if (yyss1 != yyssa)
 	  YYSTACK_FREE (yyss1);
@@ -1673,6 +1701,9 @@ yyparse ()
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
 
+  if (yystate == YYFINAL)
+    YYACCEPT;
+
   goto yybackup;
 
 /*-----------.
@@ -1681,16 +1712,16 @@ yyparse ()
 yybackup:
 
   /* Do appropriate processing given the current state.  Read a
-     look-ahead token if we need one and don't already have one.  */
+     lookahead token if we need one and don't already have one.  */
 
-  /* First try to decide what to do without reference to look-ahead token.  */
+  /* First try to decide what to do without reference to lookahead token.  */
   yyn = yypact[yystate];
   if (yyn == YYPACT_NINF)
     goto yydefault;
 
-  /* Not known => get a look-ahead token if don't already have one.  */
+  /* Not known => get a lookahead token if don't already have one.  */
 
-  /* YYCHAR is either YYEMPTY or YYEOF or a valid look-ahead symbol.  */
+  /* YYCHAR is either YYEMPTY or YYEOF or a valid lookahead symbol.  */
   if (yychar == YYEMPTY)
     {
       YYDPRINTF ((stderr, "Reading a token: "));
@@ -1722,20 +1753,16 @@ yybackup:
       goto yyreduce;
     }
 
-  if (yyn == YYFINAL)
-    YYACCEPT;
-
   /* Count tokens shifted since error; after three, turn off error
      status.  */
   if (yyerrstatus)
     yyerrstatus--;
 
-  /* Shift the look-ahead token.  */
+  /* Shift the lookahead token.  */
   YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
 
-  /* Discard the shifted token unless it is eof.  */
-  if (yychar != YYEOF)
-    yychar = YYEMPTY;
+  /* Discard the shifted token.  */
+  yychar = YYEMPTY;
 
   yystate = yyn;
   *++yyvsp = yylval;
@@ -1776,16 +1803,22 @@ yyreduce:
   switch (yyn)
     {
         case 10:
+
+/* Line 1455 of yacc.c  */
 #line 106 "../mu32/mut.y"
     {  fatal_error(1,FEHLERZEILE); }
     break;
 
   case 14:
+
+/* Line 1455 of yacc.c  */
 #line 118 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 16:
+
+/* Line 1455 of yacc.c  */
 #line 123 "../mu32/mut.y"
     { if ( fabs((yyvsp[(5) - (5)].f_value)) > 0.001 )
                          get_new_intervall ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].f_value) / (yyvsp[(5) - (5)].f_value));
@@ -1794,6 +1827,8 @@ yyreduce:
     break;
 
   case 17:
+
+/* Line 1455 of yacc.c  */
 #line 129 "../mu32/mut.y"
     { if ( fabs ((yyvsp[(3) - (5)].f_value)) > 0.001 )
                           get_new_intervall ((yyvsp[(1) - (5)].identifier), pow ((yyvsp[(5) - (5)].f_value), 1 / (yyvsp[(3) - (5)].f_value)));
@@ -1802,71 +1837,99 @@ yyreduce:
     break;
 
   case 18:
+
+/* Line 1455 of yacc.c  */
 #line 138 "../mu32/mut.y"
     { get_new_intervall_komplex ((yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 19:
+
+/* Line 1455 of yacc.c  */
 #line 139 "../mu32/mut.y"
     { fatal_error(71, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 20:
+
+/* Line 1455 of yacc.c  */
 #line 140 "../mu32/mut.y"
-    { fatal_error(70,"'='",FEHLERZEILE); }
+    { fatal_error(70,mutT("'='"),FEHLERZEILE); }
     break;
 
   case 24:
+
+/* Line 1455 of yacc.c  */
 #line 152 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 26:
+
+/* Line 1455 of yacc.c  */
 #line 157 "../mu32/mut.y"
     { get_new_ton_absolut ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].f_value)); }
     break;
 
   case 27:
+
+/* Line 1455 of yacc.c  */
 #line 161 "../mu32/mut.y"
     { get_new_ton_komplex_negative ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 28:
+
+/* Line 1455 of yacc.c  */
 #line 165 "../mu32/mut.y"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 29:
+
+/* Line 1455 of yacc.c  */
 #line 169 "../mu32/mut.y"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 30:
+
+/* Line 1455 of yacc.c  */
 #line 171 "../mu32/mut.y"
     { fatal_error( 72, mutC_STR((yyvsp[(1) - (3)].identifier)) ); }
     break;
 
   case 34:
+
+/* Line 1455 of yacc.c  */
 #line 185 "../mu32/mut.y"
     { get_new_faktor_anteil ( (double) 1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 35:
+
+/* Line 1455 of yacc.c  */
 #line 188 "../mu32/mut.y"
     { get_new_faktor_anteil ( (double) -1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 36:
+
+/* Line 1455 of yacc.c  */
 #line 191 "../mu32/mut.y"
     { get_new_faktor_anteil ( (yyvsp[(2) - (3)].f_value), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 37:
+
+/* Line 1455 of yacc.c  */
 #line 194 "../mu32/mut.y"
     { get_new_faktor_anteil ( -((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 38:
+
+/* Line 1455 of yacc.c  */
 #line 197 "../mu32/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -1875,6 +1938,8 @@ yyreduce:
     break;
 
   case 39:
+
+/* Line 1455 of yacc.c  */
 #line 203 "../mu32/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) -1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -1883,6 +1948,8 @@ yyreduce:
     break;
 
   case 40:
+
+/* Line 1455 of yacc.c  */
 #line 209 "../mu32/mut.y"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
@@ -1891,6 +1958,8 @@ yyreduce:
     break;
 
   case 41:
+
+/* Line 1455 of yacc.c  */
 #line 215 "../mu32/mut.y"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( -((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
@@ -1899,16 +1968,22 @@ yyreduce:
     break;
 
   case 42:
+
+/* Line 1455 of yacc.c  */
 #line 236 "../mu32/mut.y"
     { get_new_faktor_anteil ( (double) 1.0 , (yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 43:
+
+/* Line 1455 of yacc.c  */
 #line 244 "../mu32/mut.y"
     { get_new_faktor_anteil ( (yyvsp[(1) - (2)].f_value), (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 44:
+
+/* Line 1455 of yacc.c  */
 #line 247 "../mu32/mut.y"
     { if ( fabs((yyvsp[(2) - (3)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier));
@@ -1917,6 +1992,8 @@ yyreduce:
     break;
 
   case 45:
+
+/* Line 1455 of yacc.c  */
 #line 253 "../mu32/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(1) - (4)].f_value)) / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -1925,278 +2002,388 @@ yyreduce:
     break;
 
   case 49:
+
+/* Line 1455 of yacc.c  */
 #line 286 "../mu32/mut.y"
     { init_ton_liste (); }
     break;
 
   case 51:
+
+/* Line 1455 of yacc.c  */
 #line 291 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 52:
+
+/* Line 1455 of yacc.c  */
 #line 293 "../mu32/mut.y"
     { get_new_tonsystem ((yyvsp[(1) - (8)].identifier), (yyvsp[(3) - (8)].integer)); }
     break;
 
   case 53:
+
+/* Line 1455 of yacc.c  */
 #line 295 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 54:
+
+/* Line 1455 of yacc.c  */
 #line 297 "../mu32/mut.y"
     { get_new_tonsystem_negative ((yyvsp[(1) - (9)].identifier), (yyvsp[(3) - (9)].integer)); }
     break;
 
   case 57:
+
+/* Line 1455 of yacc.c  */
 #line 303 "../mu32/mut.y"
     { get_new_ton_in_tonsystem ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 58:
+
+/* Line 1455 of yacc.c  */
 #line 304 "../mu32/mut.y"
     { get_new_ton_in_tonsystem (NULL); }
     break;
 
   case 59:
+
+/* Line 1455 of yacc.c  */
 #line 305 "../mu32/mut.y"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 60:
+
+/* Line 1455 of yacc.c  */
 #line 309 "../mu32/mut.y"
     { get_new_name_in_parameterlist ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 61:
+
+/* Line 1455 of yacc.c  */
 #line 311 "../mu32/mut.y"
     { get_new_name_in_parameterlist ((yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 62:
+
+/* Line 1455 of yacc.c  */
 #line 312 "../mu32/mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 63:
+
+/* Line 1455 of yacc.c  */
 #line 317 "../mu32/mut.y"
     {}
     break;
 
   case 64:
+
+/* Line 1455 of yacc.c  */
 #line 318 "../mu32/mut.y"
     {}
     break;
 
   case 65:
+
+/* Line 1455 of yacc.c  */
 #line 319 "../mu32/mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 66:
+
+/* Line 1455 of yacc.c  */
 #line 324 "../mu32/mut.y"
     { get_new_name_in_argument_list ((yyvsp[(1) - (1)].identifier)) ;  }
     break;
 
   case 67:
+
+/* Line 1455 of yacc.c  */
 #line 325 "../mu32/mut.y"
     { get_new_number_in_argument_list ((yyvsp[(1) - (1)].integer)) ;  }
     break;
 
   case 68:
+
+/* Line 1455 of yacc.c  */
 #line 326 "../mu32/mut.y"
     { get_new_number_in_argument_list (-((yyvsp[(2) - (2)].integer))); }
     break;
 
   case 72:
+
+/* Line 1455 of yacc.c  */
 #line 341 "../mu32/mut.y"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
 
   case 73:
+
+/* Line 1455 of yacc.c  */
 #line 343 "../mu32/mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 74:
+
+/* Line 1455 of yacc.c  */
 #line 345 "../mu32/mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 75:
+
+/* Line 1455 of yacc.c  */
 #line 348 "../mu32/mut.y"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
 
   case 76:
+
+/* Line 1455 of yacc.c  */
 #line 351 "../mu32/mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 77:
+
+/* Line 1455 of yacc.c  */
 #line 353 "../mu32/mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 78:
+
+/* Line 1455 of yacc.c  */
 #line 357 "../mu32/mut.y"
     {}
     break;
 
   case 79:
+
+/* Line 1455 of yacc.c  */
 #line 358 "../mu32/mut.y"
     {}
     break;
 
   case 80:
+
+/* Line 1455 of yacc.c  */
 #line 359 "../mu32/mut.y"
     {}
     break;
 
   case 81:
+
+/* Line 1455 of yacc.c  */
 #line 360 "../mu32/mut.y"
     {}
     break;
 
   case 82:
+
+/* Line 1455 of yacc.c  */
 #line 361 "../mu32/mut.y"
     {}
     break;
 
   case 83:
+
+/* Line 1455 of yacc.c  */
 #line 362 "../mu32/mut.y"
     {}
     break;
 
   case 84:
+
+/* Line 1455 of yacc.c  */
 #line 363 "../mu32/mut.y"
     {}
     break;
 
   case 85:
+
+/* Line 1455 of yacc.c  */
 #line 364 "../mu32/mut.y"
     {}
     break;
 
   case 86:
+
+/* Line 1455 of yacc.c  */
 #line 365 "../mu32/mut.y"
     {}
     break;
 
   case 87:
+
+/* Line 1455 of yacc.c  */
 #line 366 "../mu32/mut.y"
     {}
     break;
 
   case 88:
+
+/* Line 1455 of yacc.c  */
 #line 367 "../mu32/mut.y"
     {fatal_error(75,FEHLERZEILE);}
     break;
 
   case 89:
+
+/* Line 1455 of yacc.c  */
 #line 373 "../mu32/mut.y"
     { get_umstimmung_taste_abs (zahl, (yyvsp[(1) - (3)].integer), NULL); }
     break;
 
   case 90:
+
+/* Line 1455 of yacc.c  */
 #line 375 "../mu32/mut.y"
     { get_umstimmung_taste_abs (parameter, 0.0, (yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 91:
+
+/* Line 1455 of yacc.c  */
 #line 380 "../mu32/mut.y"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '+'); }
     break;
 
   case 92:
+
+/* Line 1455 of yacc.c  */
 #line 382 "../mu32/mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '+'); }
     break;
 
   case 93:
+
+/* Line 1455 of yacc.c  */
 #line 384 "../mu32/mut.y"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '-'); }
     break;
 
   case 94:
+
+/* Line 1455 of yacc.c  */
 #line 386 "../mu32/mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '-'); }
     break;
 
   case 95:
+
+/* Line 1455 of yacc.c  */
 #line 391 "../mu32/mut.y"
     { get_umstimmung_breite_abs (zahl, (yyvsp[(4) - (7)].integer), NULL); }
     break;
 
   case 96:
+
+/* Line 1455 of yacc.c  */
 #line 393 "../mu32/mut.y"
     { get_umstimmung_breite_abs (parameter, 0.0, (yyvsp[(4) - (7)].identifier)); }
     break;
 
   case 97:
+
+/* Line 1455 of yacc.c  */
 #line 398 "../mu32/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '+'); }
     break;
 
   case 98:
+
+/* Line 1455 of yacc.c  */
 #line 400 "../mu32/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '+'); }
     break;
 
   case 99:
+
+/* Line 1455 of yacc.c  */
 #line 402 "../mu32/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '-'); }
     break;
 
   case 100:
+
+/* Line 1455 of yacc.c  */
 #line 404 "../mu32/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '-'); }
     break;
 
   case 101:
+
+/* Line 1455 of yacc.c  */
 #line 406 "../mu32/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '*'); }
     break;
 
   case 102:
+
+/* Line 1455 of yacc.c  */
 #line 408 "../mu32/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '*'); }
     break;
 
   case 103:
+
+/* Line 1455 of yacc.c  */
 #line 410 "../mu32/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '/'); }
     break;
 
   case 104:
+
+/* Line 1455 of yacc.c  */
 #line 412 "../mu32/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '/'); }
     break;
 
   case 105:
+
+/* Line 1455 of yacc.c  */
 #line 417 "../mu32/mut.y"
     { init_umstimm_expression_list (); }
     break;
 
   case 106:
+
+/* Line 1455 of yacc.c  */
 #line 419 "../mu32/mut.y"
     { get_umstimmung_tonhoehe_veraendert (); }
     break;
 
   case 107:
+
+/* Line 1455 of yacc.c  */
 #line 426 "../mu32/mut.y"
     {}
     break;
 
   case 108:
+
+/* Line 1455 of yacc.c  */
 #line 427 "../mu32/mut.y"
     {}
     break;
 
   case 109:
+
+/* Line 1455 of yacc.c  */
 #line 429 "../mu32/mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
@@ -2204,21 +2391,29 @@ yyreduce:
     break;
 
   case 110:
+
+/* Line 1455 of yacc.c  */
 #line 432 "../mu32/mut.y"
     {}
     break;
 
   case 111:
+
+/* Line 1455 of yacc.c  */
 #line 436 "../mu32/mut.y"
     {}
     break;
 
   case 112:
+
+/* Line 1455 of yacc.c  */
 #line 437 "../mu32/mut.y"
     {}
     break;
 
   case 113:
+
+/* Line 1455 of yacc.c  */
 #line 442 "../mu32/mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
@@ -2226,282 +2421,394 @@ yyreduce:
     break;
 
   case 115:
+
+/* Line 1455 of yacc.c  */
 #line 450 "../mu32/mut.y"
     { get_new_umstimm_expression ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 116:
+
+/* Line 1455 of yacc.c  */
 #line 451 "../mu32/mut.y"
     { get_new_umstimm_expression ("@"); }
     break;
 
   case 117:
+
+/* Line 1455 of yacc.c  */
 #line 453 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 118:
+
+/* Line 1455 of yacc.c  */
 #line 455 "../mu32/mut.y"
     { get_new_umstimm_expression_positive ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 119:
+
+/* Line 1455 of yacc.c  */
 #line 456 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 120:
+
+/* Line 1455 of yacc.c  */
 #line 458 "../mu32/mut.y"
     { get_new_umstimm_expression_positive ( "@" ); }
     break;
 
   case 121:
+
+/* Line 1455 of yacc.c  */
 #line 459 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 122:
+
+/* Line 1455 of yacc.c  */
 #line 461 "../mu32/mut.y"
     { get_new_umstimm_expression_negative ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 123:
+
+/* Line 1455 of yacc.c  */
 #line 462 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 124:
+
+/* Line 1455 of yacc.c  */
 #line 464 "../mu32/mut.y"
     { get_new_umstimm_expression_negative ( "@" ); }
     break;
 
   case 125:
+
+/* Line 1455 of yacc.c  */
 #line 469 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 126:
+
+/* Line 1455 of yacc.c  */
 #line 471 "../mu32/mut.y"
     { get_umstimmung_wiederholung_abs (); }
     break;
 
   case 127:
+
+/* Line 1455 of yacc.c  */
 #line 472 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 128:
+
+/* Line 1455 of yacc.c  */
 #line 474 "../mu32/mut.y"
     { get_umstimmung_wiederholung_abs_negative (); }
     break;
 
   case 129:
+
+/* Line 1455 of yacc.c  */
 #line 478 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 130:
+
+/* Line 1455 of yacc.c  */
 #line 480 "../mu32/mut.y"
     { get_umstimmung_wiederholung_rel_positive (); }
     break;
 
   case 131:
+
+/* Line 1455 of yacc.c  */
 #line 481 "../mu32/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 132:
+
+/* Line 1455 of yacc.c  */
 #line 483 "../mu32/mut.y"
     { get_umstimmung_wiederholung_rel_negative (); }
     break;
 
   case 133:
+
+/* Line 1455 of yacc.c  */
 #line 487 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 134:
+
+/* Line 1455 of yacc.c  */
 #line 489 "../mu32/mut.y"
     { get_umstimmung_umstimmungs_bund (); }
     break;
 
   case 135:
+
+/* Line 1455 of yacc.c  */
 #line 493 "../mu32/mut.y"
     {}
     break;
 
   case 136:
+
+/* Line 1455 of yacc.c  */
 #line 494 "../mu32/mut.y"
     {}
     break;
 
   case 137:
+
+/* Line 1455 of yacc.c  */
 #line 498 "../mu32/mut.y"
     { init_argument_liste (); 
                        get_new_aktion_aufruf_element ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 138:
+
+/* Line 1455 of yacc.c  */
 #line 500 "../mu32/mut.y"
     { init_argument_liste (); }
     break;
 
   case 139:
+
+/* Line 1455 of yacc.c  */
 #line 502 "../mu32/mut.y"
     { get_new_aktion_aufruf_element ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 140:
+
+/* Line 1455 of yacc.c  */
 #line 504 "../mu32/mut.y"
     { init_integersequenz ();}
     break;
 
   case 141:
+
+/* Line 1455 of yacc.c  */
 #line 506 "../mu32/mut.y"
     { get_new_aktion_midi_out_element (); }
     break;
 
   case 142:
+
+/* Line 1455 of yacc.c  */
 #line 510 "../mu32/mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 143:
+
+/* Line 1455 of yacc.c  */
 #line 512 "../mu32/mut.y"
     { get_umstimmung_umstimm_case_zahl ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 144:
+
+/* Line 1455 of yacc.c  */
 #line 513 "../mu32/mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 145:
+
+/* Line 1455 of yacc.c  */
 #line 515 "../mu32/mut.y"
     { get_umstimmung_umstimm_case_parameter ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 146:
+
+/* Line 1455 of yacc.c  */
 #line 519 "../mu32/mut.y"
     {}
     break;
 
   case 147:
+
+/* Line 1455 of yacc.c  */
 #line 520 "../mu32/mut.y"
     {}
     break;
 
   case 148:
+
+/* Line 1455 of yacc.c  */
 #line 525 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 149:
+
+/* Line 1455 of yacc.c  */
 #line 527 "../mu32/mut.y"
     { get_umstimmungs_case_zahl_element ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 150:
+
+/* Line 1455 of yacc.c  */
 #line 529 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 151:
+
+/* Line 1455 of yacc.c  */
 #line 531 "../mu32/mut.y"
     { get_umstimmungs_case_zahl_element (-((yyvsp[(2) - (6)].integer))); }
     break;
 
   case 152:
+
+/* Line 1455 of yacc.c  */
 #line 533 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 153:
+
+/* Line 1455 of yacc.c  */
 #line 535 "../mu32/mut.y"
     { get_umstimmungs_case_default_element (); }
     break;
 
   case 154:
+
+/* Line 1455 of yacc.c  */
 #line 540 "../mu32/mut.y"
     { init_integersequenz ();}
     break;
 
   case 155:
+
+/* Line 1455 of yacc.c  */
 #line 542 "../mu32/mut.y"
     { get_umstimmung_midi_out (); }
     break;
 
   case 156:
+
+/* Line 1455 of yacc.c  */
 #line 547 "../mu32/mut.y"
     {}
     break;
 
   case 157:
+
+/* Line 1455 of yacc.c  */
 #line 551 "../mu32/mut.y"
     {}
     break;
 
   case 158:
+
+/* Line 1455 of yacc.c  */
 #line 552 "../mu32/mut.y"
     {}
     break;
 
   case 159:
+
+/* Line 1455 of yacc.c  */
 #line 557 "../mu32/mut.y"
     { init_tastenliste (); }
     break;
 
   case 160:
+
+/* Line 1455 of yacc.c  */
 #line 559 "../mu32/mut.y"
     { get_new_harmonie ((yyvsp[(1) - (7)].identifier), (yyvsp[(7) - (7)].integer)); }
     break;
 
   case 161:
+
+/* Line 1455 of yacc.c  */
 #line 561 "../mu32/mut.y"
     { fatal_error(76, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 162:
+
+/* Line 1455 of yacc.c  */
 #line 565 "../mu32/mut.y"
     { (yyval.integer) = -1; }
     break;
 
   case 163:
+
+/* Line 1455 of yacc.c  */
 #line 566 "../mu32/mut.y"
     { (yyval.integer) = (yyvsp[(2) - (2)].integer); }
     break;
 
   case 164:
+
+/* Line 1455 of yacc.c  */
 #line 570 "../mu32/mut.y"
     {}
     break;
 
   case 165:
+
+/* Line 1455 of yacc.c  */
 #line 571 "../mu32/mut.y"
     {}
     break;
 
   case 166:
+
+/* Line 1455 of yacc.c  */
 #line 575 "../mu32/mut.y"
     { get_new_taste ( (yyvsp[(1) - (1)].integer), '+'); }
     break;
 
   case 167:
+
+/* Line 1455 of yacc.c  */
 #line 576 "../mu32/mut.y"
     { get_new_taste ( (yyvsp[(2) - (2)].integer), '*'); }
     break;
 
   case 168:
+
+/* Line 1455 of yacc.c  */
 #line 580 "../mu32/mut.y"
     {}
     break;
 
   case 169:
+
+/* Line 1455 of yacc.c  */
 #line 584 "../mu32/mut.y"
     {}
     break;
 
   case 170:
+
+/* Line 1455 of yacc.c  */
 #line 585 "../mu32/mut.y"
     { init_ausloeser ();
                          /* fÅr die Anfangsausloesung der Logik */
@@ -2509,180 +2816,249 @@ yyreduce:
     break;
 
   case 171:
+
+/* Line 1455 of yacc.c  */
 #line 588 "../mu32/mut.y"
     {}
     break;
 
   case 172:
+
+/* Line 1455 of yacc.c  */
 #line 593 "../mu32/mut.y"
     { get_new_logik ((yyvsp[(1) - (4)].identifier), NULL);
                 init_anweisungs_liste (); }
     break;
 
   case 173:
+
+/* Line 1455 of yacc.c  */
 #line 596 "../mu32/mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 174:
+
+/* Line 1455 of yacc.c  */
 #line 598 "../mu32/mut.y"
     { get_new_logik ((yyvsp[(1) - (5)].identifier), (yyvsp[(4) - (5)].identifier));
                 init_anweisungs_liste (); }
     break;
 
   case 175:
+
+/* Line 1455 of yacc.c  */
 #line 601 "../mu32/mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 176:
+
+/* Line 1455 of yacc.c  */
 #line 605 "../mu32/mut.y"
     {}
     break;
 
   case 177:
+
+/* Line 1455 of yacc.c  */
 #line 606 "../mu32/mut.y"
     {}
     break;
 
   case 178:
+
+/* Line 1455 of yacc.c  */
 #line 611 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 179:
+
+/* Line 1455 of yacc.c  */
 #line 613 "../mu32/mut.y"
     { get_new_anweisung (); }
     break;
 
   case 180:
+
+/* Line 1455 of yacc.c  */
 #line 615 "../mu32/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 181:
+
+/* Line 1455 of yacc.c  */
 #line 617 "../mu32/mut.y"
     { get_new_anweisung (); }
     break;
 
   case 182:
+
+/* Line 1455 of yacc.c  */
 #line 622 "../mu32/mut.y"
     { get_harmoniebezeichner (  (yyvsp[(1) - (5)].integer), (yyvsp[(3) - (5)].identifier),  (yyvsp[(5) - (5)].integer)); }
     break;
 
   case 183:
+
+/* Line 1455 of yacc.c  */
 #line 624 "../mu32/mut.y"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (3)].identifier),  (yyvsp[(3) - (3)].integer)); }
     break;
 
   case 184:
+
+/* Line 1455 of yacc.c  */
 #line 626 "../mu32/mut.y"
     { get_harmoniebezeichner (  (yyvsp[(1) - (3)].integer), (yyvsp[(3) - (3)].identifier), -1); }
     break;
 
   case 185:
+
+/* Line 1455 of yacc.c  */
 #line 628 "../mu32/mut.y"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (1)].identifier), -1); }
     break;
 
   case 186:
+
+/* Line 1455 of yacc.c  */
 #line 632 "../mu32/mut.y"
     { get_ausloeser_default (); }
     break;
 
   case 187:
+
+/* Line 1455 of yacc.c  */
 #line 633 "../mu32/mut.y"
     { get_ausloeser_harmonie (); }
     break;
 
   case 188:
+
+/* Line 1455 of yacc.c  */
 #line 634 "../mu32/mut.y"
     { get_ausloeser_harmonie_form (); }
     break;
 
   case 189:
+
+/* Line 1455 of yacc.c  */
 #line 635 "../mu32/mut.y"
     { get_ausloeser_taste ((yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 190:
+
+/* Line 1455 of yacc.c  */
 #line 636 "../mu32/mut.y"
     { init_integersequenz (); }
     break;
 
   case 191:
+
+/* Line 1455 of yacc.c  */
 #line 638 "../mu32/mut.y"
     { get_ausloeser_midi_in (); }
     break;
 
   case 192:
+
+/* Line 1455 of yacc.c  */
 #line 643 "../mu32/mut.y"
     { get_new_integer_in_integersequenz ((yyvsp[(1) - (1)].integer));}
     break;
 
   case 193:
+
+/* Line 1455 of yacc.c  */
 #line 645 "../mu32/mut.y"
     { get_new_integer_in_integersequenz ((yyvsp[(3) - (3)].integer));}
     break;
 
   case 194:
+
+/* Line 1455 of yacc.c  */
 #line 646 "../mu32/mut.y"
     { fatal_error( 77, FEHLERZEILE ); }
     break;
 
   case 195:
+
+/* Line 1455 of yacc.c  */
 #line 651 "../mu32/mut.y"
     {}
     break;
 
   case 196:
+
+/* Line 1455 of yacc.c  */
 #line 655 "../mu32/mut.y"
     {}
     break;
 
   case 197:
+
+/* Line 1455 of yacc.c  */
 #line 656 "../mu32/mut.y"
     {}
     break;
 
   case 198:
+
+/* Line 1455 of yacc.c  */
 #line 661 "../mu32/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (4)].integer), (yyvsp[(4) - (4)].integer), (yyvsp[(4) - (4)].integer), 0, & list_of_instrumente); }
     break;
 
   case 199:
+
+/* Line 1455 of yacc.c  */
 #line 663 "../mu32/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), (yyvsp[(4) - (6)].integer), (yyvsp[(6) - (6)].integer), 0, & list_of_instrumente); }
     break;
 
   case 200:
+
+/* Line 1455 of yacc.c  */
 #line 665 "../mu32/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), 0, 0, (yyvsp[(5) - (6)].integer), & list_of_instrumente); }
     break;
 
   case 201:
+
+/* Line 1455 of yacc.c  */
 #line 667 "../mu32/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(6) - (7)].integer), & list_of_instrumente); }
     break;
 
   case 202:
+
+/* Line 1455 of yacc.c  */
 #line 669 "../mu32/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (9)].integer), (yyvsp[(4) - (9)].integer), (yyvsp[(6) - (9)].integer), (yyvsp[(8) - (9)].integer), & list_of_instrumente); }
     break;
 
   case 203:
+
+/* Line 1455 of yacc.c  */
 #line 673 "../mu32/mut.y"
     { (yyval.f_value) = (yyvsp[(1) - (1)].f_value) ; }
     break;
 
   case 204:
+
+/* Line 1455 of yacc.c  */
 #line 674 "../mu32/mut.y"
     { (yyval.f_value) = (double) (yyvsp[(1) - (1)].integer) ; }
     break;
 
 
-/* Line 1267 of yacc.c.  */
-#line 2686 "y.tab.c"
+
+/* Line 1455 of yacc.c  */
+#line 3062 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2758,7 +3134,7 @@ yyerrlab:
 
   if (yyerrstatus == 3)
     {
-      /* If just tried and failed to reuse look-ahead token after an
+      /* If just tried and failed to reuse lookahead token after an
 	 error, discard it.  */
 
       if (yychar <= YYEOF)
@@ -2775,7 +3151,7 @@ yyerrlab:
 	}
     }
 
-  /* Else will try to reuse look-ahead token after shifting the error
+  /* Else will try to reuse lookahead token after shifting the error
      token.  */
   goto yyerrlab1;
 
@@ -2833,14 +3209,11 @@ yyerrlab1:
       YY_STACK_PRINT (yyss, yyssp);
     }
 
-  if (yyn == YYFINAL)
-    YYACCEPT;
-
   *++yyvsp = yylval;
 
   yyerror_range[1] = yylloc;
   /* Using YYLLOC is tempting, but would change the location of
-     the look-ahead.  YYLOC is available though.  */
+     the lookahead.  YYLOC is available though.  */
   YYLLOC_DEFAULT (yyloc, (yyerror_range - 1), 2);
   *++yylsp = yyloc;
 
@@ -2865,7 +3238,7 @@ yyabortlab:
   yyresult = 1;
   goto yyreturn;
 
-#ifndef yyoverflow
+#if !defined(yyoverflow) || YYERROR_VERBOSE
 /*-------------------------------------------------.
 | yyexhaustedlab -- memory exhaustion comes here.  |
 `-------------------------------------------------*/
@@ -2876,7 +3249,7 @@ yyexhaustedlab:
 #endif
 
 yyreturn:
-  if (yychar != YYEOF && yychar != YYEMPTY)
+  if (yychar != YYEMPTY)
      yydestruct ("Cleanup: discarding lookahead",
 		 yytoken, &yylval, &yylloc);
   /* Do not reclaim the symbols of the rule which action triggered
@@ -2902,6 +3275,8 @@ yyreturn:
 }
 
 
+
+/* Line 1675 of yacc.c  */
 #line 678 "../mu32/mut.y"
 
 /// \todo check whether this function is necessary for any system but windows

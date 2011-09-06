@@ -3,14 +3,17 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.8 2011/02/20 22:35:57 keinstein Exp $
+ * $Id: CompDlg.h,v 1.9 2011/09/06 08:09:21 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date 05/08/14 21:41:59
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/06 08:09:21 $
+ * \version $Revision: 1.9 $
  *
  * $Log: CompDlg.h,v $
- * Revision 1.8  2011/02/20 22:35:57  keinstein
+ * Revision 1.9  2011/09/06 08:09:21  keinstein
+ * fix a compiler error showing a corruped error message
+ *
+ * Revision 1.8  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.7  2010-11-21 13:15:47  keinstein
@@ -100,43 +103,76 @@ public:
 	void SetStatus(wxString l, wxString to, wxString tu,
 	               wxString ts, wxString i, wxString ch)
 	{
-		if (logic)
+		if (logic && !l.empty()) {
 			logic->SetLabel(l);
+			logic->InvalidateBestSize();
+		}
 
-		if (tones)
+		if (tones && !to.empty()) {
 			tones->SetLabel(to);
+			tones->InvalidateBestSize();
+		}
 
-		if (tunes)
+		if (tunes && !tu.empty()) {
 			tunes->SetLabel(tu);
+			tunes->InvalidateBestSize();
+		}
 
-		if (tone_system)
+		if (tone_system && !ts.empty()) {
 			tone_system->SetLabel(ts);
+			tone_system->InvalidateBestSize();
+		}
 
-		if (intervals)
+		if (intervals && !i.empty()) {
 			intervals->SetLabel(i);
+			intervals->InvalidateBestSize();
+		}
 
-		if (chars)
+		if (chars && !ch.empty()) {
 			chars->SetLabel(ch);
+			chars->InvalidateBestSize();
+		}
 
 		Layout();
+		InvalidateBestSize();
+		GetSizer()->SetSizeHints(this);
+		Fit();
 	}
 
 	void SetFileName(wxString s)
 	{
-		if (filename)
+		if (filename) {
 			filename->SetLabel(s);
+			filename->InvalidateBestSize();
+		}
+		Layout();
+		InvalidateBestSize();
+		GetSizer()->SetSizeHints(this);
+		Fit();
 	}
 
 	void SetButtonText(wxString s)
 	{
-		if (wxID_OK)
+		if (wxID_OK) {
 			wxID_OK->SetLabel(s);
+			wxID_OK->InvalidateBestSize();
+		}
+		Layout();
+		InvalidateBestSize();
+		GetSizer()->SetSizeHints(this);
+		Fit();
 	}
 
 	void SetMessage(wxString s)
 	{
-		if (message)
+		if (message) {
 			message->SetLabel(s);
+			message->InvalidateBestSize();
+		}
+		Layout();
+		InvalidateBestSize();
+		GetSizer()->SetSizeHints(this);
+		Fit();
 	}
 
 	void EnableButton(bool enable = true)
