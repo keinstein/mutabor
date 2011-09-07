@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.47 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.48 2011/09/07 15:58:56 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.47 $
+ * $Date: 2011/09/07 15:58:56 $
+ * \version $Revision: 1.48 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.47  2011/09/05 11:30:07  keinstein
+ * Revision 1.48  2011/09/07 15:58:56  keinstein
+ * fix compilation on MinGW
+ *
+ * Revision 1.47  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -352,6 +355,8 @@ bool MutApp::OnInit()
 
 	SetAppName(_T(PACKAGE));
 	SetClassName(_T(PACKAGE_NAME));
+
+	std::cerr << "Starting Mutabor..." << std::endl;
         
         wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
 
@@ -435,6 +440,28 @@ bool MutApp::OnInit()
 		<< std::endl;
 
 #endif
+
+	// init global objects
+	// -------------------
+
+	g_printData = new wxPrintData;
+
+	// You could set an initial paper size here
+#if 0
+	g_printData->SetPaperId(wxPAPER_LETTER); // for Americans
+	g_printData->SetPaperId(wxPAPER_A4);    // for everyone else
+#endif
+
+	g_pageSetupData = new wxPageSetupDialogData;
+
+	// copy over initial paper size from print record
+	(*g_pageSetupData) = *g_printData;
+
+	// Set some initial page margins in mm.
+	g_pageSetupData->SetMarginTopLeft(wxPoint(15, 15));
+	g_pageSetupData->SetMarginBottomRight(wxPoint(15, 15));
+
+
 
 	
 	// We are using .png files for some extra bitmaps.
@@ -1457,7 +1484,6 @@ void MutApp::RestoreState()
 				h -> RemoveFileFromHistory(i);
 	}
 
-
 	wxString oldpath = config->GetPath();
 
 	config->SetPath(_T("/Settings"));
@@ -1473,7 +1499,40 @@ void MutApp::RestoreState()
 	document_manager->FileHistoryLoad(*config);
 	config->SetPath(_T(".."));
 
+	MutRouteWnd * routewnd=NULL;
+	MutFrame * frame = 
+	  dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
+	if (frame) {
+	  wxWindowList & list = frame->GetChildren();
+	  for (wxWindowList::iterator i = list.begin();i!= list.end();i++) {
+	    routewnd = dynamic_cast<MutRouteWnd *> (*i);
+	    if (routewnd) break;
+	  }
+	}
+	if (routewnd) {
+	  routewnd->ClearDevices();
+	}
+	
+	// emty lists
+	InDevice * InDevices = InDevice::GetDeviceList();
+	if ( InDevices) {
+	  delete InDevices;
+	  InDevices = NULL;
+	}
+	OutDevice * OutDevices = OutDevice::GetDeviceList();
+	if ( OutDevices ) {
+	  delete OutDevices;
+	  OutDevices = NULL;
+	}
+	while (Route * routes = Route::GetRouteList())
+	  delete routes;
+
 	LoadRoutes(config);
+
+	if (routewnd) {
+	  routewnd->InitDevices();
+	}
+
 	config->SetPath(oldpath);
 }
 

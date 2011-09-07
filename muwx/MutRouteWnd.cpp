@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.21 2011/09/05 11:30:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.22 2011/09/07 15:58:56 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/05 11:30:08 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/09/07 15:58:56 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.21  2011/09/05 11:30:08  keinstein
+ * Revision 1.22  2011/09/07 15:58:56  keinstein
+ * fix compilation on MinGW
+ *
+ * Revision 1.21  2011-09-05 11:30:08  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -410,13 +413,15 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	
 	// Activate the Route window
 	wxGetApp().CmRoutes(event);
+	MutRouteWnd * routewnd=NULL;
 	MutFrame * frame = 
 	  dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
-	wxWindowList & list = frame->GetChildren();
-	MutRouteWnd * routewnd=NULL;
-	for (wxWindowList::iterator i = list.begin();i!= list.end();i++) {
-		routewnd = dynamic_cast<MutRouteWnd *> (*i);
-		if (routewnd) break;
+	if (frame) {
+	  wxWindowList & list = frame->GetChildren();
+	  for (wxWindowList::iterator i = list.begin();i!= list.end();i++) {
+	    routewnd = dynamic_cast<MutRouteWnd *> (*i);
+	    if (routewnd) break;
+	  }
 	}
 	wxASSERT(routewnd);
 	if (routewnd) {

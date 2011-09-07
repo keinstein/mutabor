@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 DLLCOPYPATTERN = \(wx\|mingw\)
-DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime
+DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin /bin /usr/bin
 distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
@@ -298,8 +298,6 @@ else
 $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 endif
 
-mutabor_DATA = Images/about.png Mutabor.xrc
-
 if AMDEP
 @am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 endif
@@ -397,29 +395,6 @@ Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
 	cp $< $@
 #	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
 
-Mutabor.app:all Mutabor.xrc mutabor update-gmo
-	$(MKDIR_P) Mutabor.app/Contents/MacOS
-	$(MKDIR_P) Mutabor.app/Contents/Resources
-	cp mutabor Mutabor.app/Contents/MacOS
-	cp osdep/macosx/Info.plist Mutabor.app/Contents
-	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
-	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
-	for datei in $(top_srcdir)/po/*.gmo ; \
-	do \
-		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
-		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
-		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
-	done
-	for d in $(dist_pkgdata_DATA) ; do \
-		cp $(top_srcdir)/$$d Mutabor.app/Contents/Resources ; \
-	done
-	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
-	while read file ; do \
-		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
-		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
-		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
-	done
-
 $(top_srcdir)/xrc/wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
@@ -500,7 +475,43 @@ dmg: dylibbundler
 	rm -r dmg/Mutabor
 
 
-installwin: mutabor.exe
+Mutabor.appold:all Mutabor.xrc mutabor update-gmo
+	$(MKDIR_P) Mutabor.app/Contents/MacOS
+	$(MKDIR_P) Mutabor.app/Contents/Resources
+	cp mutabor Mutabor.app/Contents/MacOS
+	cp osdep/macosx/Info.plist Mutabor.app/Contents
+	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
+	for datei in $(top_srcdir)/po/*.gmo ; \
+	do \
+		shortname=`basename "$$datei" | sed -e 's/\.gmo$$//'` ; \
+		mkdir -p Mutabor.app/Contents/Resources/$$shortname.lproj ; \
+		cp "$$datei" Mutabor.app/Contents/Resources/$$shortname.lproj/mutabor.mo ; \
+	done
+	for d in $(dist_pkgdata_DATA) ; do \
+		cp $(top_srcdir)/$$d Mutabor.app/Contents/Resources ; \
+	done
+	ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
+		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
+	done
+
+Mutabor.app:all Mutabor.xrc mutabor update-gmo
+	$(MAKE) "prefix=`pwd`/Mutabor.app/Contents" 'bindir=$$(prefix)/MacOS' 'datarootdir=$$(prefix)/Resources' 'libdir=$$(prefix)' \
+		'libexecdir=$$(prefix)/libs' 'localedir=$$(prefix)/locales' 'pkgdatadir=$$(prefix)/Resources' install installwxlocale
+	ls Mutabor.app/Contents/locales/*/LC_MESSAGES/*.mo | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/.*\.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
+		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
+	done
+	cp osdep/macosx/Info.plist Mutabor.app/Contents
+	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
+
+installwinold: mutabor.exe
 	mkdir -p Mutabor
 	cp mutabor.exe Mutabor
 	for datei in $(top_srcdir)/po/*.gmo ; \
@@ -512,12 +523,6 @@ installwin: mutabor.exe
 	for d in $(dist_pkgdata_DATA) ; do \
 		cp $(top_srcdir)/$$d Mutabor ; \
 	done
-	test -z "$(WX_LOCALE_DIRS)" || ( ls "$(WX_LOCALE_DIRS)"/* | \
-	while read file ; do \
-		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
-		mkdir -p Mutabor/$$lang/LC_MESSAGES ; \
-		cp $$file Mutabor/$$lang/LC_MESSAGES ; \
-	done )
 	WXLIBDIR=`$(WX_CONFIG_PATH) --exec-prefix`
 	for d in `$(WX_CONFIG_PATH) --exec-prefix`/lib/wx*{msw,base}*.dll ; \
 	do \
@@ -527,7 +532,7 @@ installwin: mutabor.exe
 installdll:
 	@echo 'solving references for $(DLLLINKFILE)'
 	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
-	for d in `LANG=C $(OBJDUMP) -p  Mutabor/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(wx\|mingw\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
+	for d in `LANG=C $(OBJDUMP) -p  Mutabor/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(wx\|mingw\|gcc\|stdc++\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
 	do \
 		echo -n checking "$$d" ; \
 		if [ ! -f Mutabor/$$d ] ; then \
@@ -545,9 +550,24 @@ installdll:
 		echo done ;\
 	done
 
-installwin2: 
-	$(MAKE) "prefix=`pwd`/Mutabor" 'bindir=$$(prefix)' 'datarootdir=$$(prefix)' 'libdir=$$(prefix)' \
-		'libexecdir=$$(prefix)' 'localedir=$$(prefix)' 'pkgdatadir=$$(prefix)' install
+installwxlocale:
+	test -z "$(WX_LOCALE_DIRS)" || ( ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
+	while read file ; do \
+		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+		mkdir -p $(localedir)/$$lang/LC_MESSAGES ; \
+		cp $$file $(localedir)/$$lang/LC_MESSAGES ; \
+	done )
+
+installwin:
+	$(MAKE) "prefix=`pwd`/Mutabor" \
+		'bindir=$$(prefix)' \
+		'datarootdir=$$(prefix)' \
+		'libdir=$$(prefix)' \
+		'libexecdir=$$(prefix)' \
+		'localedir=$$(prefix)' \
+		'pkgdatadir=$$(prefix)' \
+		'mutabordir=$$(prefix)' \
+		install installwxlocale
 	$(MAKE) DLLLINKFILE="mutabor.exe" installdll
 
 installwinbackup:

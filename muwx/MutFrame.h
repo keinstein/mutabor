@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.27 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.28 2011/09/07 15:58:56 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.27 $
+ * $Date: 2011/09/07 15:58:56 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.27  2011/09/07 13:06:50  keinstein
+ * Revision 1.28  2011/09/07 15:58:56  keinstein
+ * fix compilation on MinGW
+ *
+ * Revision 1.27  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.26  2011-09-05 11:30:07  keinstein
@@ -235,7 +238,7 @@ public:
 	/// Handles close event.
 	/** This function tries to determine, if we can close the current window.
 	 */
-	void OnClose(wxCloseEvent& event);
+	void OnCloseWindow(wxCloseEvent& event);
 
 	/// Hande paint events for Document/View framework
 	/** This function call the paint function */
@@ -254,7 +257,7 @@ public:
 	/// Attach a client to the Frame
 	bool SetClient (wxWindow * win, const wxString &title);
 
-#if !defined(__WXMAC__) || defined(__WXCOCOA__)
+#if (!defined(__WXMAC__) || defined(__WXCOCOA__)) && !defined(__WXMSW__)
 	/// Set the window name, i.e. frame title
 	virtual void SetLabel (const wxString &label) { SetTitle(label); }
 #endif
