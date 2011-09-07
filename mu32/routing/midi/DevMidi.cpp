@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.5 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.6 2011/09/07 15:54:40 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/07 15:54:40 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.5  2011/07/27 20:48:32  keinstein
+ * Revision 1.6  2011/09/07 15:54:40  keinstein
+ * fix some compilation issues
+ *
+ * Revision 1.5  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.4  2011-02-20 22:35:56  keinstein
@@ -171,7 +174,7 @@ void OutMidiPort::Load (tree_storage & config)
 {
 	DevId = config.Read(_T("Device Id"),0);
 	Name = config.Read(_T("Device Name"), rtmidiout->getPortCount()?
-			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
+			    muT(rtmidiout->getPortName(0).char_str()):wxString(_("Unknown")));
 	bending_range = config.Read(_T("Bending Range"),2);
 }
 
@@ -647,7 +650,7 @@ void InMidiPort::Load (tree_storage & config)
 	DevId = config.Read(_T("Device Id"), 0);
 	Name  = config.Read(_T("Device Name"), 	
 			    rtmidiout->getPortCount()?
-			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
+			    muT(rtmidiout->getPortName(0).char_str()):wxString(_("Unknown")));
 }
 
 /// Loade route settings (filter settings) for a given route

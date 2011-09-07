@@ -3,16 +3,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.h,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.h,v 1.5 2011/09/07 15:54:40 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/07 15:54:40 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: DevMidi.h,v $
- * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * Revision 1.5  2011/09/07 15:54:40  keinstein
+ * fix some compilation issues
+ *
+ * Revision 1.4  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -126,7 +129,7 @@ public:
 
 	virtual void SetDevId (int id) {
 		DevId = id;            
-		Name = muT (rtmidiout->getPortName (DevId).c_str());
+		Name = muT (rtmidiout->getPortName (DevId).char_str());
 	}
 		
         void SetBendingRange (int r) {
@@ -255,7 +258,7 @@ public:
 
         virtual void SetDevId (int id) {
                 DevId = id;            
-                Name = muT (rtmidiin->getPortName (DevId).c_str());
+                Name = muT (rtmidiin->getPortName (DevId).char_str());
         }
 
         virtual int GetDevId() 
