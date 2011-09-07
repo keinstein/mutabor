@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.15 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.16 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.15 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.15  2011/09/05 11:30:07  keinstein
+ * Revision 1.16  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.15  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -67,21 +70,8 @@
 #include "MutEditFile.h"
 #include "MutFrame.h"
 
+using namespace mutaborGUI;
 
-WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
-
-// ---------------------------------------------------------------------------
-// global variables
-// ---------------------------------------------------------------------------
-
-int gs_nFrames = 0;
-
-//WinKind ActiveWinKind = WK_NULL;
-
-ArrayOfWinAttr WinAttrs[WK_NULL] = {
-                                           ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr(),
-                                           ArrayOfWinAttr(), ArrayOfWinAttr(), ArrayOfWinAttr()
-                                   };
 
 // ---------------------------------------------------------------------------
 // event tables
@@ -116,29 +106,51 @@ END_EVENT_TABLE()
 // ===========================================================================
 
 MutChild::MutChild (WinKind k,
-                    WinAttr * attr,
+                    int boxId,
                     wxWindow * parent,
                     wxWindowID id,
 
                     const wxPoint& pos,
                     const wxSize & size):
-		MutTextBox(k,attr,parent,id,pos,size)
-//#ifdef MDI_FORCE_EXTERN
-//       : wxAuiPaneInfo()
-
-//#else
-//       : wxMDIChildFrame(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize,
-//                         wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE,title)
-//#endif
+		MutTextBox(k,boxId,parent,id,pos,size)
 {
-	DEBUGLOG (other, _T("winKind=%d"),winKind);
+	DEBUGLOG (other, _T("winKind=%d"),k);
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	winAttr->Win = this;
-	DEBUGLOG (other, _T("winKind=%d"),winKind);
+	BoxData & boxdata = BoxData::GetBox(boxId);
+        switch (k) {
+        case WK_KEY: 
+                boxdata.SetKeyWindow(this);
+                break;
+        case WK_TS: 
+                boxdata.SetTonesystemWindow(this);
+                break;
+        case WK_ACT: 
+                boxdata.SetActionsWindow(this);
+                break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		UNREACHABLEC;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLEC;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLEC;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLEC;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), k);
+		UNREACHABLEC;
+        }
+	DEBUGLOG (other, _T("winKind=%d"),k);
 }
 
 MutChild::~MutChild()
-
 {
 	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T(""));
@@ -147,102 +159,214 @@ MutChild::~MutChild()
 
 void MutChild::OnActivate(wxActivateEvent& event)
 {
-	wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
+	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T(""));
-        mutaborGUI::curBox = winAttr->Box;
+        mutaborGUI::curBox = box;
 }
 
 void MutChild::deleteFromWinAttrs()
 {
 	DEBUGLOG (other, _T("winKind: %d"),winKind);
-	wxASSERT(WK_KEY <= winKind &&winKind < WK_NULL);
-	int i = WinAttrs[winKind].Index(*winAttr);
-	wxASSERT(WK_KEY <= winKind &&i != wxNOT_FOUND);
-
-	if (i == wxNOT_FOUND) {
-		wxLogWarning(_("Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"),__WXFUNCTION__,_T(__FILE__),__LINE__);
-		return;
-	}
-
-	WinAttrs[winKind][i].Win = NULL;
-
-	WinAttrs[winKind].RemoveAt(i,1);
-	//    delete winAttr;
-}
-
-
-WinAttr* GetWinAttr (WinKind kind, int box)
-{
-	wxASSERT(WK_KEY <= kind &&kind < WK_NULL);
-	WinAttr * attr;
-
-	if ( kind != WK_EDIT ) {
-		attr = Get (kind, box);
-
-		if (attr) return attr;
-	}
-
-	attr = new WinAttr(true, box);
-
-	WinAttrs[kind].Add(attr);
-	return attr;
-}
-
-WinAttr* Get (WinKind kind, int box)
-{
-	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-
-	for (size_t i = 0; i < WinAttrs[kind].GetCount(); i++)
-		if ( WinAttrs[kind][i].Box == box )
-			return &WinAttrs[kind][i];
-
-	return 0;
+	
+        BoxData & boxdata = BoxData::GetBox(box);
+	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+        switch (winKind) {
+        case WK_KEY: 
+                boxdata.SetKeyWindow(NULL);
+                break;
+        case WK_TS: 
+                boxdata.SetTonesystemWindow(NULL);
+                break;
+        case WK_ACT: 
+                boxdata.SetActionsWindow(NULL);
+                break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		UNREACHABLEC;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLEC;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLEC;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLEC;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), winKind);
+		UNREACHABLEC;
+        }	
 }
 
 bool IsOpen (WinKind kind, int box)
 {
 	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+	wxASSERT(0 <= box && box <= MAX_BOX);
 
-	WinAttr *Help;
-
-	if ( (Help = Get(kind, box)) )
-		if ( Help->Win )
-			return true;
-
+        BoxData & boxdata = BoxData::GetBox(box);
+        switch (kind) {
+        case WK_KEY: 
+                return boxdata.GetKeyWindow();
+                break;
+        case WK_TS: 
+                return boxdata.GetTonesystemWindow();
+                break;
+        case WK_ACT: 
+                return boxdata.GetActionsWindow();
+                break;
+	case WK_LOGIC:
+                return boxdata.GetLogicWindow();
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLE;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLE;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLE;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), kind);
+		UNREACHABLE;
+        }
 	return false;
 }
 
 bool IsWanted(WinKind kind, int box)
 {
 	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+	wxASSERT(0 <= box && box <= MAX_BOX);
 
-	WinAttr *Help;
-
-	if ( (Help = Get(kind, box)) )
-		if ( Help->Wanted )
-			return true;
-
+        BoxData & boxdata = BoxData::GetBox(box);
+        switch (kind) {
+        case WK_KEY: 
+                return boxdata.WantKeyWindow();
+                break;
+        case WK_TS: 
+                return boxdata.WantTonesystemWindow();
+                break;
+        case WK_ACT: 
+                return boxdata.WantActionsWindow();
+                break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		UNREACHABLE;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLE;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLE;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLE;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), kind);
+		UNREACHABLE;
+        }	
 	return false;
 }
 
 void DontWant(WinKind kind, int box)
 {
 	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-	WinAttr *Help;
-	if ( (Help = Get(kind, box)) )
-		Help->Wanted = 0;
+	wxASSERT(0 <= box && box <= MAX_BOX);
+
+        BoxData & boxdata = BoxData::GetBox(box);
+        switch (kind) {
+        case WK_KEY: 
+                boxdata.WantKeyWindow(false);
+                break;
+        case WK_TS: 
+                boxdata.WantTonesystemWindow(false);
+                break;
+        case WK_ACT: 
+                boxdata.WantActionsWindow(false);
+                break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		UNREACHABLE;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLE;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLE;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLE;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), kind);
+		UNREACHABLE;
+        }	
 }
 
 int NumberOfOpen(WinKind kind)
 {
 	wxASSERT(WK_KEY <= kind && kind < WK_NULL);
 
-	int n = 0;
-
-	for (size_t i = 0; i < WinAttrs[kind].Count(); i++)
-		if ( WinAttrs[kind][i].Win )
-			n++;
-
+	int n = wxNOT_FOUND;
+        switch (kind) {
+        case WK_KEY:
+		n = 0;
+		for(size_t i = 0 ; i < MAX_BOX; i++) {
+			if (BoxData::GetBox(i).GetKeyWindow()) 
+				n++;
+		}
+                break;
+        case WK_TS: 
+		n = 0 ;
+		for(size_t i = 0 ; i < MAX_BOX; i++) {
+			if (BoxData::GetBox(i).GetTonesystemWindow()) 
+				n++;
+		}
+                break;
+        case WK_ACT: 
+		n = 0 ;
+		for(size_t i = 0 ; i < MAX_BOX; i++) {
+			if (BoxData::GetBox(i).GetActionsWindow()) 
+				n++;
+		}
+                break;
+	case WK_LOGIC:
+		n = 0 ;
+		for(size_t i = 0 ; i < MAX_BOX; i++) {
+			if (BoxData::GetBox(i).GetLogicWindow()) 
+				n++;
+		}
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLE;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLE;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLE;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), kind);
+		UNREACHABLE;
+        }	
 	return n;
 }
 

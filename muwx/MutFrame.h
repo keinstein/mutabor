@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.26 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.27 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.26 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.27 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.26  2011/09/05 11:30:07  keinstein
+ * Revision 1.27  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.26  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -348,7 +351,7 @@ public:
 
 	void CmCloseChild();
 
-	void CloseAll(WinKind kind);
+	void CloseAll(WinKind kind = WK_NULL);
 
 	void SetStatus(int WXUNUSED(imgNr))
 	{

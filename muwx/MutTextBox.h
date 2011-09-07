@@ -3,17 +3,20 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.11 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.12 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: MutTextBox.h,v $
- * Revision 1.11  2011/02/20 22:35:57  keinstein
+ * Revision 1.12  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.11  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -50,6 +53,7 @@ inline WinKind operator++(WinKind & k,int)
 }
 
 
+/*
 class WinAttr
 {
 
@@ -66,20 +70,18 @@ public:
 		Win = NULL;
 	}
 };
-
-WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
-
+*/
 
 class MutTextBox : public wxListBox
 {
 
 protected:
 	WinKind winKind;
-	WinAttr *winAttr;
+	int box;
 
 public:
 	MutTextBox(  WinKind k,
-	             WinAttr *a,
+	             int boxId,
 	             wxWindow* parent = NULL,
 	             wxWindowID id=-1,
 
@@ -88,11 +90,14 @@ public:
 
 	void NewText(char *s, bool newTitle = false);
 
-	void NewText(wxString s, bool newTitle = false);
+	void NewText(const wxString &s, bool newTitle = false);
+
+	wxString MakeTitle() const;
 
 	int ColorBox;
 
 	void OnClose(wxCloseEvent& event);
+
 
 	WinKind GetKind()
 	{
@@ -103,7 +108,7 @@ protected:
 
 	int Box()
 	{
-		return winAttr->Box;
+		return box;
 	}
 
 	DECLARE_EVENT_TABLE()
