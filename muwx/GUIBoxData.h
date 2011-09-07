@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.4 2011/09/06 08:09:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.5 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/06 08:09:21 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.h,v $
- * Revision 1.4  2011/09/06 08:09:21  keinstein
+ * Revision 1.5  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.4  2011-09-06 08:09:21  keinstein
  * fix a compiler error showing a corruped error message
  *
  * Revision 1.3  2011-09-05 11:30:07  keinstein
@@ -61,9 +64,11 @@
     #pragma hdrstop
 #endif
 
+class MutChild;
+class MutLogicWnd;
 
 namespace mutaborGUI {
-	extern int curBox;
+	extern size_t curBox;
 
 	class BoxData {
 	public:
@@ -106,35 +111,72 @@ namespace mutaborGUI {
 		 */
 		int GetKeyLogic() const { return current_key_logic; }
 
-		bool WantKeyWindow() const { return want_key_window; }
-		bool WantTonesystemWindow() const { return want_tonesystem_window; }
-		bool WantActionsWindow() const { return want_actions_window; }
+		bool WantKeyWindow() const { 
+			return winattr.want_key_window; 
+		}
+		void SetKeyWindow(MutChild * w, bool reset = false) { 
+			winattr.key_window = w; 
+			if (w || reset)
+				WantKeyWindow(w);
+		}
+		MutChild * GetKeyWindow() const {
+			return winattr.key_window; 
+		}
+		bool WantTonesystemWindow() const { 
+			return winattr.want_tonesystem_window; 
+		}
+		void SetTonesystemWindow(MutChild * w, bool reset = false) { 
+			winattr.tonesystem_window = w; 
+			if (w || reset)
+				WantTonesystemWindow(w);
+		}
+		MutChild * GetTonesystemWindow() const { 
+			return winattr.tonesystem_window; 
+		}
+		bool WantActionsWindow() const { 
+			return winattr.want_actions_window; 
+		}
+		void SetActionsWindow(MutChild * w, bool reset = false) { 
+			winattr.actions_window = w; 
+			if (w || reset)
+				WantActionsWindow(w);
+		}
+		MutChild * GetActionsWindow() const { 
+			return winattr.actions_window; 
+		}
 
-		void WantKeyWindow (bool yesno) { want_key_window = yesno; }
-		void WantTonesystemWindow (bool yesno) 
-			{ 
-				want_tonesystem_window = yesno; 
-			}
-		void WantActionsWindow (bool yesno) { want_actions_window = yesno; }
+		void WantKeyWindow (bool yesno) { 
+			winattr.want_key_window = yesno; 
+		}
+		void WantTonesystemWindow (bool yesno) { 
+			winattr.want_tonesystem_window = yesno; 
+		}
+		void WantActionsWindow (bool yesno) { 
+			winattr.want_actions_window = yesno; 
+		}
 
 		bool ToggleKeyWindow () {
-			bool retval = want_key_window;
-			want_key_window = !want_key_window;
-			return retval;
+			return winattr.want_key_window = !winattr.want_key_window;
 		}
 		
 		bool ToggleTonesystemWindow () {
-			bool retval = want_tonesystem_window;
-			want_tonesystem_window = !want_tonesystem_window;
-			return retval;
+			return winattr.want_tonesystem_window 
+				= !winattr.want_tonesystem_window;
 		}
 		
 		bool ToggleActionsWindow () {
-			bool retval = want_actions_window;
-			want_actions_window = !want_actions_window;
-			return retval;
+			return winattr.want_actions_window 
+				= !winattr.want_actions_window;
 		}
 		
+		void SetLogicWindow(MutLogicWnd * w) { 
+			winattr.logic_window = w; 
+		}
+
+		MutLogicWnd * GetLogicWindow() const { 
+			return winattr.logic_window; 
+		}
+
 		static BoxData & GetBox(size_t nr) 
 		{ 
 			return vector[nr]; 
@@ -159,15 +201,32 @@ namespace mutaborGUI {
 
 		static BoxVector vector;
 
-		bool want_key_window:1;
-		bool want_tonesystem_window:1;
-		bool want_actions_window:1;
+		struct WinAttr {
+			WinAttr():
+				key_window(NULL),
+				tonesystem_window(NULL),
+				actions_window(NULL),
+				logic_window(NULL),
+				want_key_window(false),
+				want_tonesystem_window(false),
+				want_actions_window(false)
+				{}
+
+			MutChild * key_window;
+			MutChild * tonesystem_window;
+			MutChild * actions_window;
+			MutLogicWnd * logic_window;
+
+			bool want_key_window:1;
+			bool want_tonesystem_window:1;
+			bool want_actions_window:1;
+		} winattr;
+
 	};
 
 	inline BoxData & GetCurrentBox() {
 		return BoxData::GetBox(curBox);
 	}
-
 }
  
 #endif

@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.10 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.11 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: MutLogicWnd.h,v $
- * Revision 1.10  2011/02/20 22:35:57  keinstein
+ * Revision 1.11  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.10  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -38,7 +41,6 @@ class MutLogicWnd : public wxScrolledWindow
 {
 
 private:
-	WinAttr * winAttr;
 	void DoLayout();
 	bool Ok;
 	int nTags;
@@ -51,17 +53,8 @@ public:
 
 	~MutLogicWnd()
 	{
-		DEBUGLOG(other, _T(""));
-		int i = WinAttrs[WK_LOGIC].Index(*winAttr);
-
-		if (i == wxNOT_FOUND) {
-			wxLogWarning(_("Subwindow is not in the list anymore. Please report this bug! %s in %s : %d"),__WXFUNCTION__,_T(__FILE__),__LINE__);
-			return;
-		}
-
-		WinAttrs[WK_LOGIC][i].Win=NULL;
-
-		WinAttrs[WK_LOGIC].RemoveAt(i,1);
+		mutaborGUI::BoxData & boxdata = mutaborGUI::BoxData::GetBox(boxnumber);
+		boxdata.SetLogicWindow(NULL);
 		DEBUGLOG(other, _T("Finished"));
 	}
 

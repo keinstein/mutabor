@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.12 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.13 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: MutChild.h,v $
- * Revision 1.12  2011/02/20 22:35:57  keinstein
+ * Revision 1.13  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.12  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.11  2010-11-21 13:15:47  keinstein
@@ -113,45 +116,14 @@
 #include "MutTextBox.h"
 
 
-/*
-typedef int WinKind;
-#define WK_KEY 0
-#define WK_TS  1
-#define WK_ACT 2
-#define WK_LOGIC 3
-#define WK_ROUTE 4
-#define WK_EDIT 5
-#define WK_NULL 6
-*/
-
-//extern WinKind ActiveWinKind;
-
-//#define PARENT_KIND (PARENT->winKind)
-//#define PARENT_BOX (PARENT->winAttr->Box)
-//#define PARENT ((MutChild*)GetParent())
-
-
-//class WinAttr;
-//WX_DECLARE_OBJARRAY(WinAttr, ArrayOfWinAttr);
-
-//WX_DEFINE_OBJARRAY(ArrayOfWinAttr);
-
-extern ArrayOfWinAttr WinAttrs[WK_NULL];
-
 class MutFrame;
-
-//#ifdef MDI_FORCE_EXTERN
-//class MutChild: public wxAuiPaneInfo, private wxObject
-//#else
-//class MutChild: public wxMDIChildFrame
-//#endif
 
 class MutChild: public MutTextBox
 {
 
 public:
 	MutChild (WinKind winkind,
-	          WinAttr *winAttr,
+	          int boxId,
 	          wxWindow * parent= NULL,
 	          wxWindowID id = -1,
 
@@ -173,9 +145,7 @@ public:
 	void OnClose(wxCloseEvent& event)
 	{
 		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-#ifdef DEBUG
-		std::cerr << "MutChild::OnClose" << std::endl;
-#endif
+		DEBUGLOG(other,_T(""));
 		MutTextBox::OnClose(event);
 	}
 
@@ -184,9 +154,7 @@ public:
 
 	{
 		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-#ifdef DEBUG
-		std::cerr << "MutChild::OnAuiClose" << std::endl;
-#endif
+		DEBUGLOG(other,_T(""));
 		deleteFromWinAttrs();
 	}
 
@@ -237,12 +205,6 @@ public:
 
 	DECLARE_EVENT_TABLE()
 };
-
-extern int gs_nFrames;
-
-WinAttr* GetWinAttr(WinKind kind, int box = 0);
-
-WinAttr* Get(WinKind kind, int box = 0);
 
 bool IsOpen(WinKind kind, int box = 0);
 

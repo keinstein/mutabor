@@ -2,16 +2,19 @@
  ********************************************************************
  * Description: Collect all properties, which are used by boxes
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.2 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.3 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: box.h,v $
- * Revision 1.2  2011/09/05 11:30:07  keinstein
+ * Revision 1.3  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.2  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -34,6 +37,8 @@
 /** Mutabor box type. */
 typedef struct {
         int id;
+	int next_used;
+	void * userdata;
 	/** pattern structure in current box */
 	PATTERNN pattern;
 	/** tone system.  
@@ -52,6 +57,7 @@ extern mutabor_box_type mut_box[MAX_BOX];
 extern int laufzeit_meldungen_erlaubt;
 extern int aktuelles_midi_instrument;
 extern int aktuelle_keyboard_box;
+extern size_t minimal_box_used;
 
 
 #endif

@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.2 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.3 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.cpp,v $
- * Revision 1.2  2011/09/05 11:30:07  keinstein
+ * Revision 1.3  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.2  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -50,16 +53,14 @@
 #include "GUIBoxData.h"
 
 namespace mutaborGUI {
-	int curBox = 0;
+	size_t curBox = 0;
 
 	BoxData::BoxVector BoxData::vector(MAX_BOX);
 	BoxData::BoxData():current_logic(),
 			   current_tonesystem(),
 			   current_key_tonesystem(0),
 			   current_key_logic(0),
-			   want_key_window(false),
-			   want_tonesystem_window(false),
-			   want_actions_window(false)	
+			   winattr()
 	{		
 	}
 
@@ -68,42 +69,55 @@ namespace mutaborGUI {
 		current_logic = _("(INITIAL)");
 		current_tonesystem = _T("0");
 		current_key_tonesystem = current_key_logic = 0;
+		wxASSERT(!winattr.key_window);
+		wxASSERT(!winattr.tonesystem_window);
+		wxASSERT(!winattr.actions_window);
+		wxASSERT(!winattr.logic_window);
 	}
 
 
 	bool BoxData::Save(wxConfigBase * config) {
-		config->Write(_T("KeyWindow"), want_key_window);
-		config->Write(_T("ToneSystemWindow"), want_tonesystem_window);
-		config->Write(_T("ActionsWindow"), want_actions_window);
+		config->Write(_T("KeyWindow"), 
+			      winattr.want_key_window);
+		config->Write(_T("ToneSystemWindow"), 
+			      winattr.want_tonesystem_window);
+		config->Write(_T("ActionsWindow"), 
+			      winattr.want_actions_window);
+		return true;
 	}
 
 	bool BoxData::Load(wxConfigBase * config) {
-		want_key_window = config->Read(_T("KeyWindow"), 
-					       (long int)false);
-		want_tonesystem_window =
+		winattr.want_key_window = config->Read(_T("KeyWindow"), 
+						       (long int)false);
+		winattr.want_tonesystem_window =
 			config->Read(_T("ToneSystemWindow"),
 				     (long int)false);
-		want_actions_window =
+		winattr.want_actions_window =
 			config->Read(_T("ActionsWindow"), 
 				     (long int)false);
+		return true;
 	}
 
 	bool BoxData::SaveAll(wxConfigBase * config) 
 	{
+		bool retval = true;
 		for (size_t box = 0 ; box < vector.size() ; box++) {
 			config->SetPath(wxString::Format(_T("%d"),box));
-			vector[box].Save(config);
+			retval &= vector[box].Save(config);
 			config->SetPath(_T(".."));
 		}
+		return retval;
 	}
 
 	bool BoxData::LoadAll(wxConfigBase * config) 
 	{
+		bool retval = true;
 		for (size_t box = 0 ; box < vector.size() ; box++) {
 			config->SetPath(wxString::Format(_T("%d"),box));
-			vector[box].Load(config);
+			retval &= vector[box].Load(config);
 			config->SetPath(_T(".."));
 		}
+		return retval;
 	}
 
 }

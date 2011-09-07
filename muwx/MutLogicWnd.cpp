@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.22 2011/09/05 11:30:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.23 2011/09/07 13:06:50 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/05 11:30:08 $
- * \version $Revision: 1.22 $
+ * $Date: 2011/09/07 13:06:50 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.22  2011/09/05 11:30:08  keinstein
+ * Revision 1.23  2011/09/07 13:06:50  keinstein
+ * Get rid of WinAttr and Fix window opening and closing
+ *
+ * Revision 1.22  2011-09-05 11:30:08  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -165,7 +168,7 @@ MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 	  Attr.Style |= BS_OWNERDRAW | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
 				 | WS_GROUP | WS_TABSTOP;
 	  Icon = new TIcon(GetModule()->GetInstance(), (TResId)Types[isLogic + 2*isOpen]);*/
-	//	SetBackgroundColour(*wxWHITE);
+	SetBackgroundColour(*wxWHITE);
 
 	const char  ** TagIcon[4] = {
 	                                    tonesyst_xpm, logic_xpm, tonesystopen_xpm, logicopen_xpm
@@ -379,33 +382,23 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
                          const wxSize& size)
 		: wxScrolledWindow(parent, -1, pos, size, wxHSCROLL | wxVSCROLL | wxTAB_TRAVERSAL)
 {
-#ifdef DEBUG
-	std::cout << "MutLogicWnd::MutLogicWnd: Box " <<  box << std::endl;
-#endif
-	/*  TWindow::Attr.Style |= WS_GROUP | WS_CLIPCHILDREN|
-					WS_CLIPSIBLINGS | WS_VSCROLL | WS_HSCROLL | WS_BORDER;
-	  Scroller = new TScroller(this, 8, 7, 8, 7);*/
+
+	DEBUGLOG(other,_T("box %d"), box);
 	boxnumber = box;
 	ColorBar1 = 0;
 	ColorBar2 = 0;
-	/*  Attr.AccelTable = IDA_MUTWIN;*/
+
+	BoxData & boxdata = BoxData::GetBox(box);
+	wxASSERT(!boxdata.GetLogicWindow());
+	boxdata.SetLogicWindow(this);
+
 	SetScrollRate( 10, 10 );
-	SetBackgroundColour(*wxWHITE);
+//	SetBackgroundColour(*wxWHITE);
+	SetBackgroundColour(BoxColor(box));
 	Ok = false;
 	CmBox();
-
-	winAttr = GetWinAttr(WK_LOGIC,box);
-	wxASSERT(!winAttr->Win);
-	winAttr->Win = this;
 }
 
-/*void MutLogicWnd::SetupWindow()
-{
-  TWindow::SetupWindow();
-  SetWindowFont(HFONT(MutFont), false);
-  CmBox();
-}
-*/
 
 void MutLogicWnd::doClose(wxEvent& event)
 {
