@@ -250,7 +250,7 @@ else
 	enable_nls="no"
 fi
 
-AC_CACHE_CHECK([for wxWidgets locale directories], ac_cv_wx_locale_dirs,
+AC_CACHE_CHECK([for wxWidgets locale directories], [ac_cv_wx_locale_dirs],
 [
 	for dir in `$WX_CONFIG_WITH_ARGS --prefix` \
 	    /usr /usr/local /opt /opt/local ; 

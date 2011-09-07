@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.47 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.48 2011/09/07 15:58:56 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.47 $
+ * \date $Date: 2011/09/07 15:58:56 $
+ * \version $Revision: 1.48 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.47  2011/09/07 13:06:50  keinstein
+ * Revision 1.48  2011/09/07 15:58:56  keinstein
+ * fix compilation on MinGW
+ *
+ * Revision 1.47  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.46  2011-09-05 11:30:07  keinstein
@@ -466,7 +469,7 @@ EVT_UPDATE_UI(CM_INDEVPLAY, MutFrame::CeInDevPlay)
 EVT_UPDATE_UI(CM_INDEVPAUSE, MutFrame::CeInDevPause)
 //    EVT_ACTIVATE(MutFrame::OnActivate)
 
-EVT_CLOSE(MutFrame::OnClose)
+EVT_CLOSE(MutFrame::OnCloseWindow)
 EVT_MENU(CM_UPDATEUI, MutFrame::UpdateUI)
 //	EVT_IDLE(MutFrame::OnIdle)
 EVT_MENU(CM_SETTITLE, MutFrame::CmSetTitle)
@@ -713,7 +716,7 @@ void MutFrame::EventPassOn(wxCommandEvent& event)
 
 }
 
-void MutFrame::OnClose(wxCloseEvent& event)
+void MutFrame::OnCloseWindow(wxCloseEvent& event)
 {
 	DEBUGLOG (other, _T("%x == %x"),this,theFrame);
 
@@ -741,10 +744,9 @@ void MutFrame::OnClose(wxCloseEvent& event)
 	// wxDocChildFrame will veto if there is no View associated
 	if (m_childView) {
 #if wxCHECK_VERSION(2,9,0)
-		STUBC;
-		event.Skip();	
-#else	
-		wxDocChildFrame::OnCloseWindow(event);
+	  wxDocChildFrame::CloseView(event);
+#else
+	  wxDocChildFrame::OnCloseWindow(event);
 #endif
 	} else 
 		Destroy();
