@@ -4,7 +4,7 @@
 
     The RtError class is quite simple but it does allow errors to be
     "caught" by RtError::Type. See the RtAudio and RtMidi
-    documentation to know which methods can "throw" an RtError.
+    documentation to know which methods can throw an RtError.
 
 */
 /************************************************************************/
@@ -12,62 +12,49 @@
 #ifndef RTERROR_H
 #define RTERROR_H
 
+#include <exception>
 #include <iostream>
 #include <string>
 
-class RtError
+class RtError : public std::exception
 {
+ public:
+  //! Defined RtError types.
+  enum Type {
+    WARNING,           /*!< A non-critical error. */
+    DEBUG_WARNING,     /*!< A non-critical error which might be useful for debugging. */
+    UNSPECIFIED,       /*!< The default, unspecified error type. */
+    NO_DEVICES_FOUND,  /*!< No devices found on system. */
+    INVALID_DEVICE,    /*!< An invalid device ID was specified. */
+    MEMORY_ERROR,      /*!< An error occured during memory allocation. */
+    INVALID_PARAMETER, /*!< An invalid parameter was specified to a function. */
+    INVALID_USE,       /*!< The function was called incorrectly. */
+    DRIVER_ERROR,      /*!< A system driver error occured. */
+    SYSTEM_ERROR,      /*!< A system error occured. */
+    THREAD_ERROR       /*!< A thread error occured. */
+  };
 
-public:
-	//! Defined RtError types.
-	enum Type {
-	        WARNING,
-	        DEBUG_WARNING,
-	        UNSPECIFIED,
-	        NO_DEVICES_FOUND,
-	        INVALID_DEVICE,
-	        INVALID_STREAM,
-	        MEMORY_ERROR,
-	        INVALID_PARAMETER,
-	        DRIVER_ERROR,
-	        SYSTEM_ERROR,
-	        THREAD_ERROR
-	};
+  //! The constructor.
+  RtError( const std::string& message, Type type = RtError::UNSPECIFIED ) throw() : message_(message), type_(type) {}
+ 
+  //! The destructor.
+  virtual ~RtError( void ) throw() {}
 
-protected:
-	std::string message_;
-	Type type_;
+  //! Prints thrown error message to stderr.
+  virtual void printMessage( void ) const throw() { std::cerr << '\n' << message_ << "\n\n"; }
 
-public:
-	//! The constructor.
+  //! Returns the thrown error message type.
+  virtual const Type& getType(void) const throw() { return type_; }
 
-	RtError(const std::string& message, Type type = RtError::UNSPECIFIED) : message_(message), type_(type)
-	{}
+  //! Returns the thrown error message string.
+  virtual const std::string& getMessage(void) const throw() { return message_; }
 
-	//! The destructor.
-	virtual ~RtError(void)
-	{}
+  //! Returns the thrown error message as a c-style string.
+  virtual const char* what( void ) const throw() { return message_.c_str(); }
 
-	//! Prints "thrown" error message to stdout.
-	virtual void printMessage(void)
-	{
-#ifndef WX
-		std::cout << '\n' << message_.c_str() << "\n\n"
-#endif
-		;
-	}
-
-	//! Returns the "thrown" error message type.
-	virtual const Type& getType(void)
-	{
-		return type_;
-	}
-
-	//! Returns the "thrown" error message string.
-	virtual const std::string& getMessage(void)
-	{
-		return message_;
-	}
+ protected:
+  std::string message_;
+  Type type_;
 };
 
 #endif
