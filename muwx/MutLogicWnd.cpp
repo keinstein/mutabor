@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.24 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.25 2011/09/08 18:50:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.24 $
+ * $Date: 2011/09/08 18:50:41 $
+ * \version $Revision: 1.25 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.24  2011/09/08 16:51:21  keinstein
+ * Revision 1.25  2011/09/08 18:50:41  keinstein
+ * Fix some further update bug
+ *
+ * Revision 1.24  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -697,6 +700,13 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
 			      CM_UPDATEUI);
 	GetParent()->GetEventHandler()->ProcessEvent(event1);
+        BoxData & boxdata = BoxData::GetBox(boxnumber);
+        wxWindow * win = boxdata.GetActionsWindow();
+        if (win) 
+                wxPostEvent(win,event1);
+        win = boxdata.GetTonesystemWindow();
+        if (win) 
+                wxPostEvent(win,event1);
 	Ok = true;
 }
 

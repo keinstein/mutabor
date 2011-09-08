@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.11 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.12 2011/09/08 18:50:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/09/08 18:50:41 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: Execute.cpp,v $
- * Revision 1.11  2011/09/08 16:51:21  keinstein
+ * Revision 1.12  2011/09/08 18:50:41  keinstein
+ * Fix some further update bug
+ *
+ * Revision 1.11  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -154,7 +157,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
-
+                        mut_box[box].logic_changed = 1;
 			break;
 
 		case aufruf_umst_taste_abs:
@@ -168,7 +171,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
-
+                        mut_box[box].logic_changed = true;
 			break;
 
 		case aufruf_umst_breite_abs:
@@ -182,7 +185,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
-
+                        mut_box[box].logic_changed = true;
 			break;
 
 		case aufruf_umst_wiederholung_abs:
@@ -194,7 +197,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
-
+                        mut_box[box].logic_changed = true;
 			break;
 
 		case aufruf_umst_wiederholung_rel:
@@ -206,7 +209,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
-
+                        mut_box[box].logic_changed = true;
 			break;
 
 		case aufruf_umst_taste_rel: {
@@ -233,6 +236,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 			NotesCorrect(box);
 #endif
 			KEY_CHANGED(box);
+                        mut_box[box].logic_changed = true;
 		}
 
 		break;
@@ -272,7 +276,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 #endif
 			KEY_CHANGED(box);
 		}
-
+                        mut_box[box].logic_changed = true;
 		break;
 
 		case aufruf_umst_toene_veraendert: {
@@ -315,6 +319,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 
 #endif
 			KEY_CHANGED(box);
+                        mut_box[box].logic_changed = true;
 		}
 		break;
 
@@ -363,7 +368,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 	if ( WasNewLogic ) {
                 // \todo Check, if this is necessary or used
 		HarmonyAnalysis(box, &(mut_box[box].pattern));
-                logic_changed[box] = true;
+                mut_box[box].logic_changed = true;
         }
 
 #ifndef NOTES_CORRECT_SOFORT
