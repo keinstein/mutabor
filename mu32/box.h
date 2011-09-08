@@ -2,16 +2,21 @@
  ********************************************************************
  * Description: Collect all properties, which are used by boxes
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.3 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.4 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: box.h,v $
- * Revision 1.3  2011/09/07 13:06:50  keinstein
+ * Revision 1.4  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.3  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.2  2011-09-05 11:30:07  keinstein
@@ -49,7 +54,8 @@ typedef struct {
 	tone_system * tonesystem;
         // flags
         int used:1; //< box currently in use or wasting memory
-        
+        int keys_changed:1;
+        int logic_changed:1;
 } mutabor_box_type;
 
 extern tone_system * free_tonesystem;
@@ -59,6 +65,7 @@ extern int aktuelles_midi_instrument;
 extern int aktuelle_keyboard_box;
 extern size_t minimal_box_used;
 
+extern int keys_changed_sum;
 
 #endif
 

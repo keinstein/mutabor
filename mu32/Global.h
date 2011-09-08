@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.10 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.11 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Global.h,v $
- * Revision 1.10  2011/02/20 22:35:55  keinstein
+ * Revision 1.11  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.10  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -747,10 +752,6 @@ void show_line_number( int n );
 ///#define MAXLINE_ton_system 18
 ///#define MAXLINE_AKTIONEN 18
 #define LINE_DRAW_QUANTUM 17
-
-extern int keys_changed[MAX_BOX];
-
-extern int keys_changed_sum;
 
 extern char KeepSound;
 

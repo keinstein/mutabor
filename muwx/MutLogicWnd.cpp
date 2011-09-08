@@ -2,17 +2,22 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.23 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.24 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.23 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.23  2011/09/07 13:06:50  keinstein
+ * Revision 1.24  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.23  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.22  2011-09-05 11:30:08  keinstein
@@ -394,7 +399,8 @@ MutLogicWnd::MutLogicWnd(wxWindow *parent,
 
 	SetScrollRate( 10, 10 );
 //	SetBackgroundColour(*wxWHITE);
-	SetBackgroundColour(BoxColor(box));
+	SetForegroundColour(BoxTextColour(box));
+	SetBackgroundColour(BoxColour(box));
 	Ok = false;
 	CmBox();
 }
@@ -662,7 +668,7 @@ void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 
 	// Color Bars
 	if ( UseColorBars ) {
-		wxColour BarColor = BoxColor(boxnumber);
+		wxColour BarColor = BoxColour(boxnumber);
 		ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
 		ColorBar1->SetBackgroundColour(BarColor);
 		ColorBar1->Disable();

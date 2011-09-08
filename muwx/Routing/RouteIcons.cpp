@@ -3,16 +3,21 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.5 2011/09/08 16:51:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: RouteIcons.cpp,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2011-01-11 00:42:27  keinstein
@@ -115,7 +120,7 @@ bool initMutIconShapes()
 	initMutIcon(NewBoxBitmap,
 		    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
 		    wxBITMAP_TYPE_PNG);
-	initBoxColors();	
+	initBoxColours();	
 	return true;
 }
 

@@ -2,14 +2,19 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.14 2011/09/06 08:09:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.15 2011/09/08 16:51:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2011/09/06 08:09:20 $
- * \version $Revision: 1.14 $
+ * \date $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.14  2011/09/06 08:09:20  keinstein
+ * Revision 1.15  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.14  2011-09-06 08:09:20  keinstein
  * fix a compiler error showing a corruped error message
  *
  * Revision 1.13  2011-02-20 22:35:55  keinstein
@@ -101,10 +106,6 @@ unsigned char boxAktionen[AKTIONEN_MAX];
 int lAktionen[AKTIONEN_MAX];
 
 int nAktionen = 0;
-
-int keys_changed[MAX_BOX];
-
-int keys_changed_sum;
 
 #ifdef WX
 wxString sd1, sd2, sd3, sd4, sd5, sd6;

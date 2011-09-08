@@ -3,16 +3,21 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.4 2011/09/08 16:51:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -127,8 +132,9 @@
 
 #include "wx/colour.h"
 
-wxColor BoxColor(int nr);
-void initBoxColors();
+const wxColour & BoxColour(int nr);
+const wxColour & BoxTextColour(int nr);
+void initBoxColours();
 
 class MutBoxShape:public MutBoxIconShape
 {

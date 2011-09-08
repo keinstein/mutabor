@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.6 2011/09/07 15:54:40 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.7 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/07 15:54:40 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.6  2011/09/07 15:54:40  keinstein
+ * Revision 1.7  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.6  2011-09-07 15:54:40  keinstein
  * fix some compilation issues
  *
  * Revision 1.5  2011-07-27 20:48:32  keinstein
@@ -174,7 +179,7 @@ void OutMidiPort::Load (tree_storage & config)
 {
 	DevId = config.Read(_T("Device Id"),0);
 	Name = config.Read(_T("Device Name"), rtmidiout->getPortCount()?
-			    muT(rtmidiout->getPortName(0).char_str()):wxString(_("Unknown")));
+			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
 	bending_range = config.Read(_T("Bending Range"),2);
 }
 
@@ -233,7 +238,7 @@ bool OutMidiPort::Open()
 	}
 
 	try {
-		hMidiOut->openPort(DevId);
+		hMidiOut->openPort(DevId,PACKAGE_STRING);
 	} catch (RtError &error) {
 		LAUFZEIT_ERROR2(_("Can not open output Midi device nr. %d (%s)"), DevId, (GetName().c_str()));
 		return false;
@@ -650,7 +655,7 @@ void InMidiPort::Load (tree_storage & config)
 	DevId = config.Read(_T("Device Id"), 0);
 	Name  = config.Read(_T("Device Name"), 	
 			    rtmidiout->getPortCount()?
-			    muT(rtmidiout->getPortName(0).char_str()):wxString(_("Unknown")));
+			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
 }
 
 /// Loade route settings (filter settings) for a given route
@@ -723,7 +728,7 @@ bool InMidiPort::Open()
 	}
 
 	try {
-		hMidiIn->openPort(DevId);
+		hMidiIn->openPort(DevId,PACKAGE_STRING);
 	} catch (RtError &error) {
 		LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
 		return false;

@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.19 2011/09/06 08:09:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.20 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/06 08:09:20 $
- * \version $Revision: 1.19 $
+ * \date $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.19  2011/09/06 08:09:20  keinstein
+ * Revision 1.20  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.19  2011-09-06 08:09:20  keinstein
  * fix a compiler error showing a corruped error message
  *
  * Revision 1.18  2011-07-27 20:48:32  keinstein
@@ -340,8 +345,8 @@ extern "C"
 	}
 
 	bool pascal _export KeyChanged(int box) {
-		int flag = keys_changed[box];
-		keys_changed[box] = 0;
+                int flag = mut_box[box].keys_changed;
+                mut_box[box].keys_changed = 0;
 		return flag;
 	}
 
