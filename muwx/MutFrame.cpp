@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.48 2011/09/07 15:58:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.49 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/07 15:58:56 $
- * \version $Revision: 1.48 $
+ * \date $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.49 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.48  2011/09/07 15:58:56  keinstein
+ * Revision 1.49  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.48  2011-09-07 15:58:56  keinstein
  * fix compilation on MinGW
  *
  * Revision 1.47  2011-09-07 13:06:50  keinstein
@@ -906,12 +911,23 @@ bool MutFrame::SetClient (wxWindow * win, const wxString &title)
 
 void UpdateUIcallback(int box,bool logic_changed)
 {
-        // todo Update UI
-	if ( theFrame ) {
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
-		                           CM_UPDATEUI);
-		wxPostEvent(theFrame,event1);
-	}
+        BoxData & boxdata = BoxData::GetBox(box);
+
+        wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
+                              CM_UPDATEUI);
+
+        wxWindow * win = boxdata.GetKeyWindow();
+        if (win) {
+                if (win) wxPostEvent(win,event);
+        }
+
+        if (logic_changed) {
+                win = boxdata.GetActionsWindow();
+                if (win) wxPostEvent(win,event);
+
+                win = boxdata.GetTonesystemWindow();
+                if (win) wxPostEvent(win,event);
+        }
 }
 
 void MutFrame::CmDoActivate(wxCommandEvent& event)
@@ -934,10 +950,8 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 	// aktivieren
 #ifndef NOACTIVATE
-#ifdef DEBUG
-	std::cerr << "MutFrame::CmDoActivate: Activate" << std::endl;
+        DEBUGLOG(other,"Activate");
 
-#endif
 	RealTime = true;
 
 	if ( !CheckNeedsRealTime() )
@@ -958,10 +972,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 #endif
 
-#ifdef DEBUG
-	std::cerr << "MutFrame::CmDoActivate: Initialize state" << std::endl;
-
-#endif
+        DEBUGLOG(other,"MutFrame::CmDoActivate: Initialize state");
 
 	// Variablen initialisieren
 	for (int box = 0; box < MAX_BOX; box++) {
@@ -1369,12 +1380,12 @@ void MutFrame::TextBoxOpen(WinKind kind, int box, bool update_auimanager)
 
 	case WK_KEY:
 		s = GetKeyString(box, asTS);
-		title.Printf(_("Keys –– Box %d"),box);
+		title.Printf(_("Keys -- Box %d"),box);
 		break;
 
 	case WK_TS:
 		s = GetTSString(box, asTS);
-		title.Printf(_("Tone system –– Box %d"),box);
+		title.Printf(_("Tone system -- Box %d"),box);
 		break;
 
 	case WK_ACT:
@@ -1383,7 +1394,7 @@ void MutFrame::TextBoxOpen(WinKind kind, int box, bool update_auimanager)
 			title=_("Action log");
 		} else {
 			s = GenerateACTString(box);
-			title.Printf(_("Actions –– Box %d"),box);
+			title.Printf(_("Actions -- Box %d"),box);
 		}
 		break;
 
@@ -1889,6 +1900,7 @@ void MutFrame::CmSetTitle(wxCommandEvent& event)
 void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 {
 
+#if 0
 	bool takeoveractions = TakeOverActions();
 	bool update_per_box = takeoveractions && !CAW;
 
@@ -1901,7 +1913,6 @@ void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 		if (boxdata) {
 			MutChild * win = boxdata -> GetKeyWindow();
 			if (KeyChanged(box) && win) 
-				win ->	NewText(GetKeyString(box, asTS));
 			win = boxdata -> GetTonesystemWindow();
 			if (TSChanged(box) && win)
 				win -> NewText(GetTSString(box, asTS));
@@ -1923,7 +1934,7 @@ void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 		if (win)
 			win ->NewText(GenerateCAWString());
         }
-
+#endif
 	// Zeilen/Spalte
 	/*  if ( ActiveWinKind == WK_EDIT )
 	    {
@@ -2089,9 +2100,7 @@ void MutFrame::CloseAll(WinKind kind)
 
 void MutFrame::UpdateBoxMenu()
 {
-#ifdef DEBUG
-	std::cout << "MutFrame::CmDoActivate: Set Box selection menu" << std::endl;
-#endif
+        DEBUGLOG(other,"MutFrame::CmDoActivate: Set Box selection menu");
 	wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 	wxASSERT(boxSelector->IsSubMenu());
 	wxMenu * boxMenu = boxSelector->GetSubMenu();

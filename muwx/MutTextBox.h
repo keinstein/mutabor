@@ -3,17 +3,22 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.12 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.13 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: MutTextBox.h,v $
- * Revision 1.12  2011/09/07 13:06:50  keinstein
+ * Revision 1.13  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.12  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.11  2011-02-20 22:35:57  keinstein
@@ -87,6 +92,8 @@ public:
 
 	             const wxPoint& pos = wxDefaultPosition,
 	             const wxSize& size = wxDefaultSize);
+
+	void UpdateUI(wxCommandEvent& event);
 
 	void NewText(char *s, bool newTitle = false);
 

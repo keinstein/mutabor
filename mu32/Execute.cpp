@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.10 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.11 2011/09/08 16:51:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/08 16:51:21 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Execute.cpp,v $
- * Revision 1.10  2011/07/27 20:48:32  keinstein
+ * Revision 1.11  2011/09/08 16:51:21  keinstein
+ * Set foreground color in box status windows
+ * Fix updating box status windows
+ * update RtMidi (includes Jack compilation mode)
+ *
+ * Revision 1.10  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.9  2011-03-06 13:15:40  keinstein
@@ -54,7 +59,7 @@ int zeige_aktuelles_tonsystem=0;
 //#define KEY_WATCH  //protokoll in keys_changed // alte Vaiante
 
 // if no protocol wanted, set this macro to empty
-#define KEY_CHANGED(box) { keys_changed[box]=1; keys_changed_sum = 1; }
+#define KEY_CHANGED(box) { mut_box[box].keys_changed=1; keys_changed_sum = 1; }
 
 // in device.h :
 void MidiOut(int box, DWORD data, char n);
@@ -70,7 +75,6 @@ tone_system tonesystem_init =
 int liegende_tasten[MAX_BOX][64];
 int liegende_tasten_max[MAX_BOX];
 long last_note_id[MAX_BOX];           // (outinstr. << 8) + taste
-bool logic_changed[MAX_BOX];
 
 int laufzeit_abstand[MAX_BOX];
 int laufzeit_zentrum[MAX_BOX];
@@ -94,8 +98,8 @@ void MutResetKeys()
 		for (int j = 0; j < MAX_BREITE; j++)
 			mut_box[i].pattern.tonigkeit[j] = 0;
 
-		keys_changed[i] = 0;
-                logic_changed[i] = 0;
+		mut_box[i].keys_changed = 0;
+                mut_box[i].logic_changed = 0;
         }
 
 	keys_changed_sum = 0;
@@ -742,14 +746,19 @@ void protokoll_liegende_relationen( int box )
 
 void FlushUpdateUI()
 {
+        int i = minimal_box_used;
+        mutabor_box_type * box;
 	if ( keys_changed_sum && updatecallback ) {
-                for (int i=0; i<MAX_BOX; i++) {
-                        if (keys_changed[i]) {
-                                updatecallback(i,logic_changed[i]);
-                                keys_changed[i]=0;
-                                logic_changed[i]=0;
+                do {
+                        box = &mut_box[i];
+                        if (box->keys_changed) {
+                                updatecallback(i,box -> logic_changed);
+                                box -> keys_changed = 0;
+                                box -> logic_changed = 0;
                         }
-                }
+                        mut_box[i].next_used;
+                } while(i);
+
                 keys_changed_sum = 0;
 	}
 }

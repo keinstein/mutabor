@@ -4,15 +4,20 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.2 2010/11/21 13:15:48 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.3 2011/09/08 16:51:21 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2010/11/21 13:15:48 $
-* \version $Revision: 1.2 $
+* $Date: 2011/09/08 16:51:21 $
+* \version $Revision: 1.3 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.2  2010/11/21 13:15:48  keinstein
+* Revision 1.3  2011/09/08 16:51:21  keinstein
+* Set foreground color in box status windows
+* Fix updating box status windows
+* update RtMidi (includes Jack compilation mode)
+*
+* Revision 1.2  2010-11-21 13:15:48  keinstein
 * merged experimental_tobias
 *
 * Revision 1.1.2.17  2010-09-30 16:26:26  keinstein
@@ -154,9 +159,10 @@
 //#include "InputDevDlg.h"
 //#include "Device.h"
 
-wxColour BoxColors[MAX_BOX];
+wxColour BoxColours[MAX_BOX];
+const wxColour * BoxTextColours[MAX_BOX];
 
-void initBoxColors() {
+void initBoxColours() {
 	for (int i = 1; i<= MAX_BOX; i++) {
 		int r = ((i & 0x01) << 7 ) | ((i & 0x08) << 3) | ((i & 0x40) >> 1);
 		r = r?r-1:0;
@@ -165,7 +171,11 @@ void initBoxColors() {
 		int b = ((i & 0x04) << 5 ) | ((i & 0x20) << 1) | ((i & 0x100) >> 3);
 		b = b?b-1:0;
 		DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),i-1,r,g,b);
-		BoxColors[i-1]=wxColour(r,g,b);
+		if (r+b+g < 0x180) 
+			BoxTextColours[i-1] = wxWHITE;
+		else
+			BoxTextColours[i-1] = wxBLACK;
+		BoxColours[i-1]=wxColour(r,g,b);
 	}
 }
 
@@ -185,10 +195,10 @@ void initBoxColors() {
   wxColour(0xFF, 0xFF, 0x80),
   };
 */
-wxColour BoxColor(int nr)
+const wxColour & BoxColour(int nr)
 {
 
-	DEBUGLOG2(other,_T("Color for box %d requested"),nr);
+	DEBUGLOG2(other,_T("Colour for box %d requested"),nr);
 	if ( nr == GmnBox )
 		return wxNullColour;
 	else if (nr == NoBox) 
@@ -196,11 +206,22 @@ wxColour BoxColor(int nr)
 	//	nr %= 11;
 	nr %= MAX_BOX;
 	if (nr < 0) nr += MAX_BOX;
-	DEBUGLOG2(other,_T("Returning Color for Box number %d"),nr);
-	return BoxColors[nr];
+	DEBUGLOG2(other,_T("Returning colour for Box number %d"),nr);
+	return BoxColours[nr];
 
 }
 
+const wxColour & BoxTextColour(int nr)
+{
+	DEBUGLOG2(other,_T("Text colour for box %d requested"),nr);
+	if ( nr == GmnBox )
+		return *wxBLACK;
+	//	nr %= 11;
+	nr %= MAX_BOX;
+	if (nr < 0) nr += MAX_BOX;
+	DEBUGLOG2(other,_T("Returning text colour for Box number %d"),nr);
+	return *(BoxTextColours[nr]);
+}
 
 
 static inline wxSize GetStaticBoxSize( MutBoxIconShape *box )
@@ -253,12 +274,14 @@ void MutBoxShape::SetBoxId(int Id, bool layout) {
 				break;
 			case GmnBox:
 				m_icon->SetLabel(_("GUIDO Box"));
-				m_icon->SetBackgroundColour(BoxColor(boxId));
+				m_icon->SetForegroundColour(BoxTextColour(boxId));
+				m_icon->SetBackgroundColour(BoxColour(boxId));
 				break;
 			default:
 				m_icon->SetLabel(wxString::Format(_("Box %d"),
 								  boxId));
-				m_icon->SetBackgroundColour(BoxColor(boxId));
+				m_icon->SetForegroundColour(BoxTextColour(boxId));
+				m_icon->SetBackgroundColour(BoxColour(boxId));
 				break;
 		}
 		if (layout) {

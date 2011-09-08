@@ -505,8 +505,9 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	while read file ; do \
 		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/.*\.mo,\1,g'` ; echo $$lang ;\
 		mkdir -p Mutabor.app/Contents/Resources/$$lang.lproj ; \
-		cp $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
+		mv $$file Mutabor.app/Contents/Resources/$$lang.lproj ; \
 	done
+	rm -rf Mutabor.app/Contents/locales
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
 	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
