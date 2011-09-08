@@ -2,17 +2,20 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.18 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.19 2011/09/08 18:50:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.18 $
+ * $Date: 2011/09/08 18:50:41 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: MutTextBox.cpp,v $
- * Revision 1.18  2011/09/08 16:51:21  keinstein
+ * Revision 1.19  2011/09/08 18:50:41  keinstein
+ * Fix some further update bug
+ *
+ * Revision 1.18  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -148,12 +151,11 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                         NewText(GetTSString(box, asTS));
                         break;
                 case WK_ACT:
-                        if (TakeOverActions()) {
-                                if (CAW) {
-                                        NewText(GenerateCAWString());
-                                } else {
-                                        NewText(GenerateACTString(box));
-                                }
+                        TakeOverActions();
+                        if (CAW) {
+                                NewText(GenerateCAWString());
+                        } else {
+                                NewText(GenerateACTString(box));
                         }
                         break;
                 case WK_LOGIC:
