@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.49 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.50 2011/09/08 20:35:29 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.49 $
+ * \date $Date: 2011/09/08 20:35:29 $
+ * \version $Revision: 1.50 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.49  2011/09/08 16:51:21  keinstein
+ * Revision 1.50  2011/09/08 20:35:29  keinstein
+ * fix some compile errors
+ *
+ * Revision 1.49  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -950,7 +953,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 	// aktivieren
 #ifndef NOACTIVATE
-        DEBUGLOG(other,"Activate");
+        DEBUGLOG(other,_T("Activate"));
 
 	RealTime = true;
 
@@ -972,7 +975,7 @@ void MutFrame::CmDoActivate(wxCommandEvent& event)
 
 #endif
 
-        DEBUGLOG(other,"MutFrame::CmDoActivate: Initialize state");
+        DEBUGLOG(other,_T("Initialize state"));
 
 	// Variablen initialisieren
 	for (int box = 0; box < MAX_BOX; box++) {
@@ -2100,7 +2103,7 @@ void MutFrame::CloseAll(WinKind kind)
 
 void MutFrame::UpdateBoxMenu()
 {
-        DEBUGLOG(other,"MutFrame::CmDoActivate: Set Box selection menu");
+        DEBUGLOG(other,_T("MutFrame::CmDoActivate: Set Box selection menu"));
 	wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 	wxASSERT(boxSelector->IsSubMenu());
 	wxMenu * boxMenu = boxSelector->GetSubMenu();
