@@ -2,15 +2,18 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.6 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.7 2011/09/09 09:29:10 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.6  2011/07/27 20:48:32  keinstein
+ * Revision 1.7  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.6  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.5  2011-02-20 22:35:56  keinstein
@@ -233,8 +236,12 @@ void Track::Save(mutOFstream &os)
  */
 void OutMidiFile::Save (tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("Bending Range"),bending_range);
 	config.Write(_T("File Name"),Name);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Save route settings (filter settings) for a given route
@@ -245,10 +252,14 @@ void OutMidiFile::Save (tree_storage & config)
  */
 void OutMidiFile::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	wxASSERT(route);
 	config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
 	config.Write(_T("Channel Range From"), route->OFrom);
 	config.Write(_T("Channel Range To"), route->OTo);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -257,8 +268,12 @@ void OutMidiFile::Save (tree_storage & config, const Route * route)
  */
 void OutMidiFile::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	bending_range=config.Read(_T("Bending Range"), bending_range);
 	Name = config.Read(_T("File Name"),mutEmptyString);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Loade route settings (filter settings) for a given route
@@ -269,6 +284,9 @@ void OutMidiFile::Load (tree_storage & config)
  */
 void OutMidiFile::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	wxASSERT(route);
 	route->ONoDrum = config.Read (_T("Avoid Drum Channel"), true);
 	int oldfrom, oldto;
@@ -287,6 +305,7 @@ void OutMidiFile::Load (tree_storage & config, Route * route)
 		wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
 					      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
 			     _("Warning loading route"),wxICON_EXCLAMATION);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -563,7 +582,11 @@ long ReadDelta(BYTE *data, DWORD *i)
  */
 void InMidiFile::Save (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("File Name"),Name);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Save route settings (filter settings) for a given route
@@ -574,6 +597,9 @@ void InMidiFile::Save (tree_storage & config)
  */
 void InMidiFile::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("Filter Type"), route->Type);
 	switch(route->Type) {
 		case RTchannel: 
@@ -589,6 +615,7 @@ void InMidiFile::Save (tree_storage & config, const Route * route)
 			break;
 	}
 			
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -597,7 +624,11 @@ void InMidiFile::Save (tree_storage & config, const Route * route)
  */
 void InMidiFile::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	Name = config.Read(_T("File Name"),mutEmptyString);
+	wxASSERT(oldpath == config.GetPath());
 }
 	
 
@@ -609,6 +640,9 @@ void InMidiFile::Load (tree_storage & config)
  */
 void InMidiFile::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	route -> Type = (RouteType) config.Read(_T("Filter Type"), (int)RTchannel);
 	switch(route->Type) {
 		case RTchannel: 
@@ -655,6 +689,7 @@ void InMidiFile::Load (tree_storage & config, Route * route)
 		case RTall:
 			break;
 	}
+	wxASSERT(oldpath == config.GetPath());
 }
 
 

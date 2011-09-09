@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.4 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.5 2011/09/09 09:29:10 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.4  2011/07/27 20:48:32  keinstein
+ * Revision 1.5  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.4  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.3  2011-02-20 22:35:56  keinstein
@@ -171,7 +174,11 @@ void CALLBACK _export GisTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD 
  */
 void OutGis::Save (tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("File Name"),Name);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Save route settings (filter settings) for a given route
@@ -182,7 +189,11 @@ void OutGis::Save (tree_storage & config)
  */
 void OutGis::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	STUBC;
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -191,7 +202,11 @@ void OutGis::Save (tree_storage & config, const Route * route)
  */
 void OutGis::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	Name = config.Read(_T("File Name"), mutEmptyString);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Load route settings (filter settings) for a given route
@@ -202,7 +217,11 @@ void OutGis::Load (tree_storage & config)
  */
 void OutGis::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	STUBC;
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -211,7 +230,11 @@ void OutGis::Load (tree_storage & config, Route * route)
  */
 void InGis::Save (tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("File Name"),Name);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Save route settings (filter settings) for a given route
@@ -222,6 +245,11 @@ void InGis::Save (tree_storage & config)
  */
 void InGis::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
+	
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -230,7 +258,11 @@ void InGis::Save (tree_storage & config, const Route * route)
  */
 void InGis::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	Name = config.Read(_T("File Name"),mutEmptyString);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Loade route settings (filter settings) for a given route
@@ -241,6 +273,10 @@ void InGis::Load (tree_storage & config)
  */
 void InGis::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
+	wxASSERT(oldpath == config.GetPath());
 }
 
 

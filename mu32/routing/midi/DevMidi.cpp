@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.7 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.8 2011/09/09 09:29:10 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.7  2011/09/08 16:51:21  keinstein
+ * Revision 1.8  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.7  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -165,10 +168,14 @@ void OutMidiPort::Save (tree_storage & config)
  */
 void OutMidiPort::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	wxASSERT(route);
 	config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
 	config.Write(_T("Channel Range From"), route->OFrom);
 	config.Write(_T("Channel Range To"), route->OTo);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -177,10 +184,14 @@ void OutMidiPort::Save (tree_storage & config, const Route * route)
  */
 void OutMidiPort::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	DevId = config.Read(_T("Device Id"),0);
 	Name = config.Read(_T("Device Name"), rtmidiout->getPortCount()?
 			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
 	bending_range = config.Read(_T("Bending Range"),2);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Loade route settings (filter settings) for a given route
@@ -191,6 +202,9 @@ void OutMidiPort::Load (tree_storage & config)
  */
 void OutMidiPort::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	wxASSERT(route);
 	route->ONoDrum = config.Read(_T("Avoid Drum Channel"), true);
 	int oldfrom, oldto;
@@ -209,6 +223,7 @@ void OutMidiPort::Load (tree_storage & config, Route * route)
 		wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected."),
 					      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
 			     _("Warning loading route"),wxICON_EXCLAMATION);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -618,8 +633,12 @@ void CALLBACK _export MidiInPortFunc(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstanc
  */
 void InMidiPort::Save (tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("Device Id"),   DevId);
 	config.Write(_T("Device Name"), Name);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Save route settings (filter settings) for a given route
@@ -630,6 +649,9 @@ void InMidiPort::Save (tree_storage & config)
  */
 void InMidiPort::Save (tree_storage & config, const Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("Filter Type"), route->Type);
 	switch(route->Type) {
 		case RTchannel: 
@@ -644,6 +666,7 @@ void InMidiPort::Save (tree_storage & config, const Route * route)
 		case RTall:
 			break;
 	}
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -652,10 +675,14 @@ void InMidiPort::Save (tree_storage & config, const Route * route)
  */
 void InMidiPort::Load (tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	DevId = config.Read(_T("Device Id"), 0);
 	Name  = config.Read(_T("Device Name"), 	
 			    rtmidiout->getPortCount()?
 			    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
+	wxASSERT(oldpath == config.GetPath());
 }
 
 /// Loade route settings (filter settings) for a given route
@@ -666,6 +693,9 @@ void InMidiPort::Load (tree_storage & config)
  */
 void InMidiPort::Load (tree_storage & config, Route * route)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	route->Type = (RouteType) config.Read(_T("Filter Type"), (int) RTchannel);
 	switch(route->Type) {
 		case RTchannel: 
@@ -712,6 +742,7 @@ void InMidiPort::Load (tree_storage & config, Route * route)
 		case RTall:
 			break;
 	}
+	wxASSERT(oldpath == config.GetPath());
 }
 
 bool InMidiPort::Open()

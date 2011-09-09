@@ -4,16 +4,19 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.5 2011/09/04 12:02:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.6 2011/09/09 09:29:10 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/04 12:02:08 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.5  2011/09/04 12:02:08  keinstein
+ * Revision 1.6  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.5  2011-09-04 12:02:08  keinstein
  * require wxWidgets 2.8.5 configure.in
  *
  * Revision 1.4  2011-02-20 22:35:56  keinstein
@@ -130,6 +133,9 @@ void OutDevice::InitializeIds()
 
 void OutDevice::SaveDevices(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("OutDevices"));
 	
 	for (OutDevice * out = GetDeviceList(); out; out = out->GetNext()) {
@@ -141,10 +147,14 @@ void OutDevice::SaveDevices(tree_storage & config)
 	}
 	
 	config.toParent();
+	wxASSERT(oldpath == config.GetPath());
 }
 
 void OutDevice::LoadDevices(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("OutDevices"));
 	
 	int i = config.toFirstLeaf(_T("Device"));
@@ -167,6 +177,7 @@ void OutDevice::LoadDevices(tree_storage & config)
 	}
 	
 	config.toParent(2);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 OutDevice * OutDevice::GetDevice(int id)
@@ -365,6 +376,9 @@ void InDevice::InitializeIds()
 
 void InDevice::SaveDevices(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("InDevices"));
 	
 	for (InDevice * in = GetDeviceList(); in; in = in->GetNext()) {
@@ -376,10 +390,14 @@ void InDevice::SaveDevices(tree_storage & config)
 	}
 	
 	config.toParent();
+	wxASSERT(oldpath == config.GetPath());
 }
 
 void InDevice::LoadDevices(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("InDevices"));
 	
 	int i = config.toFirstLeaf(_T("Device"));
@@ -400,6 +418,7 @@ void InDevice::LoadDevices(tree_storage & config)
 	}
 	
 	config.toParent(2);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 InDevice * InDevice::GetDevice(int id)
