@@ -2,14 +2,17 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.5 2011/02/20 22:35:58 keinstein Exp $
+ * $Id: configtree.cpp,v 1.6 2011/09/09 09:29:10 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: configtree.cpp,v $
- * Revision 1.5  2011/02/20 22:35:58  keinstein
+ * Revision 1.6  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.5  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.4  2010-12-11 02:10:09  keinstein
@@ -111,7 +114,7 @@ void configtree::toLeaf(const mutStringRef subdir)
 	config -> SetPath(subdir);
 	newstate.chdepth = 1;
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+	DEBUGLOG(config,_T("current path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, 
 		 newstate.leafid, newstate.group.c_str());
 }
@@ -125,32 +128,41 @@ void configtree::toLeaf(const mutStringRef name, int id)
 	newstate.chdepth++;
 	states.pop();
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, 
-		 newstate.leafid, newstate.group.c_str());
+	DEBUGLOG(config,_T("current path = '%s',nowstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s'"),
+		 config->GetPath().c_str(), 
+		 newstate.oldpath.c_str(), 
+		 newstate.chdepth, 
+		 newstate.leafid, 
+		 newstate.group.c_str());
 }
 
 int configtree::toFirstLeaf(const mutStringRef name,mutStringRef id) 
 {
 	DEBUGLOG(config,_T("going to first leaf of group '%s'"),name.c_str());
 	toLeaf(name);
-	state newstate = states.top();
-	bool found = config->GetFirstGroup(id,newstate.leafid);
+	state & newstate = states.top();
+	long int leafid;
+	bool found = config->GetFirstGroup(id,leafid);
 	if (!found) {
 		id = _T("0");
-		newstate.leafid = wxNOT_FOUND;
-	}
+		newstate.leafid =  wxNOT_FOUND;
+	} else {
+		newstate.leafid = leafid;
+	}		
+
 	config->SetPath(id);
 	newstate.chdepth++;
 #ifdef DEBUG
 	newstate.group=name;
-#endif
-	states.pop();
-	states.push(newstate);
+	wxASSERT(newstate == states.top());
 	DEBUGLOG(config,
-		 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, 
-		 newstate.leafid, newstate.group.c_str());
+		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+		 config->GetPath().c_str(), 
+		 newstate.oldpath.c_str(), 
+		 newstate.chdepth, 
+		 newstate.leafid, 
+		 newstate.group.c_str());
+#endif
 	return newstate.leafid;
 }
 
@@ -162,32 +174,30 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 	state oldstate=states.top();
 	wxASSERT(oldstate.group==name);
 	DEBUGLOG(config,
-		 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+		 _T("path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), 
 		 oldstate.oldpath.c_str(), oldstate.chdepth, 
 		 oldstate.leafid, oldstate.group.c_str());
 #endif
-	toParent(1);
-	toLeaf(name);
-	state newstate = states.top();
-#ifdef DEBUG
-	DEBUGLOG(config,
-		 _T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
-		 config->GetPath().c_str(), 
-		 newstate.oldpath.c_str(), 
-		 newstate.chdepth, newstate.leafid, newstate.group.c_str());
-	wxASSERT(oldstate.oldpath == newstate.oldpath);
-	newstate.group = oldstate.group;
-#endif
+	state & newstate = states.top();
+	wxASSERT(newstate.leafid != wxNOT_FOUND);
+	if (newstate.leafid == wxNOT_FOUND) 
+		return wxNOT_FOUND;
+
+	config -> SetPath(_T(".."));
 	bool found = config->GetNextGroup(id, newstate.leafid);
 	if (found) {
 		config->SetPath(id);
-		newstate.chdepth++;
-	} else newstate.leafid=wxNOT_FOUND;
-	states.pop();
-	states.push(newstate);
+#ifdef DEBUG
+		DEBUGLOG(config,_T("New leaf id = %ld"),newstate.leafid);
+		wxASSERT(oldstate.oldpath == newstate.oldpath);
+#endif
+	} else {
+		newstate.chdepth--;
+	}
+	wxASSERT(newstate == states.top());
 	DEBUGLOG(config,
-		 _T("current path = '%s', new old path = '%s', depth = %d, id = %d, name = '%s'"),
+		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), 
 		 newstate.oldpath.c_str(), 
 		 newstate.chdepth, newstate.leafid,
@@ -209,14 +219,19 @@ void configtree::toParent(unsigned int count)
 		}
 		state oldstate = states.top();
 		DEBUGLOG(config,_T("going up for %d levels"),oldstate.chdepth);
-		while (oldstate.chdepth--) 
-			config -> SetPath(_T(".."));
+		wxASSERT(oldstate.chdepth >= 0);
+		if (oldstate.chdepth) {
+			wxString setpath = _T("..");
+			while (--(oldstate.chdepth))
+				setpath << _T("/..");
+			config -> SetPath(setpath);
+		}
 		states.pop();
 #ifdef DEBUG
 		wxASSERT(config->GetPath() == oldstate.oldpath);
 #endif
 		DEBUGLOG(config,
-			 _T("current path = '%s', old path = '%s', depth = %d, id = %d, name = '%s'"),
+			 _T("current path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 			 config->GetPath().c_str(), 
 			 oldstate.oldpath.c_str(), 
 			 oldstate.chdepth, oldstate.leafid, 

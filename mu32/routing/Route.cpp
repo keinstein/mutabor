@@ -3,16 +3,19 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.5 2011/09/09 09:29:10 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: Route.cpp,v $
- * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * Revision 1.5  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.4  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2011-01-29 20:00:14  keinstein
@@ -65,22 +68,30 @@ _T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF")
 
 void Route::Save(tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.Write(_T("Box"),Box);
 	config.Write(_T("Active"),Active);
 	if (In)
 		((InDevice *)In)->Save(config,this);
 	if (Out)
 		((OutDevice *) Out)->Save(config,this);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 void Route::Load(tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	Box = config.Read(_T("Box"),NoBox);
 	Active = config.Read(_T("Active"),true);
 	if (In)
 		((InDevice *) In)->Load(config,this);
 	if (Out)
 		((OutDevice *) Out)->Load(config,this);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -101,9 +112,13 @@ void Route::InitializeIds()
 
 void Route::SaveRoutes(tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("Routes"));
 	
-	for (Route * route = GetRouteList(); route; route = route->GetGlobalNext()) {
+	for (Route * route = GetRouteList(); route; 
+	     route = route->GetGlobalNext()) {
 		config.toLeaf(_T("Route"),route->GetId());
 		config.Write(_T("Input Device"), route->inputid);
 		config.Write(_T("Output Device"), route->outputid);
@@ -112,10 +127,14 @@ void Route::SaveRoutes(tree_storage & config)
 	}
 	
 	config.toParent();	
+	wxASSERT(oldpath == config.GetPath());
 }
 
 void Route::LoadRoutes(tree_storage & config) 
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("Routes"));
 	
 	int i = config.toFirstLeaf(_T("Route"));
@@ -135,6 +154,7 @@ void Route::LoadRoutes(tree_storage & config)
 	}
 	
 	config.toParent(2);
+	wxASSERT(oldpath == config.GetPath());
 }
 
 
@@ -263,7 +283,7 @@ void LoadRoutes(tree_storage & config)
 		out->Load(config);
 	}
 	
-	config.toParent(2);
+	config.toParent(3);
 	DEBUGLOG2(config,_T("Path: %s"),config.GetPath().c_str());
 	
 	// read input devices
@@ -348,11 +368,11 @@ void LoadRoutes(tree_storage & config)
 			DEBUGLOG2(config,_T("Path: %s"),config.GetPath().c_str());
 		}
 
-		config.toParent(2);
+		config.toParent(3);
 		DEBUGLOG2(config,_T("Path: %s"),config.GetPath().c_str());
 	}
 	
-	config.toParent();
+	config.toParent(2);
 	DEBUGLOG2(config,_T("Path: %s"),config.GetPath().c_str());
 	
 }
@@ -361,6 +381,9 @@ void LoadRoutes(tree_storage & config)
 
 void LoadRoutes(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.toLeaf(_T("Routing"));
 	
 	InDevice::LoadDevices(config);
@@ -368,12 +391,16 @@ void LoadRoutes(tree_storage & config)
 	Route::LoadRoutes(config);
 	
 	config.toParent();
+	wxASSERT(oldpath == config.GetPath());
 }
 
 void  SaveRoutes(tree_storage & config)
 {
+#ifdef DEBUG
+	wxString oldpath = config.GetPath();
+#endif
 	config.DeleteGroup(_T("Routing"));
-	
+
 	config.toLeaf(_T("Routing"));
 	
 	// clean configuration
@@ -385,6 +412,7 @@ void  SaveRoutes(tree_storage & config)
 	Route::SaveRoutes(config);
 	
 	config.toParent();
+	wxASSERT(oldpath == config.GetPath());
 }
 
 

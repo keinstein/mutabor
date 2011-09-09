@@ -3,14 +3,17 @@
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.4 2011/08/11 19:00:48 keinstein Exp $
+ * $Id: configtree.h,v 1.5 2011/09/09 09:29:10 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/08/11 19:00:48 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2011/09/09 09:29:10 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: configtree.h,v $
- * Revision 1.4  2011/08/11 19:00:48  keinstein
+ * Revision 1.5  2011/09/09 09:29:10  keinstein
+ * fix loading of routing configuration
+ *
+ * Revision 1.4  2011-08-11 19:00:48  keinstein
  * get Document/View running.
  * Needs further testing (possible segfaults).
  *
@@ -62,6 +65,16 @@ class configtree:public tree_storage
 		wxString oldpath; ///< back up old path, so that we can check consistency
 		wxString group;
 #endif
+		bool operator == (const state & s) const 
+			{
+				bool retval = chdepth == s.chdepth 
+				&& leafid == s.leafid; 
+#ifdef DEBUG
+				retval = retval && oldpath == s.oldpath
+				&& group == s.group;
+#endif
+				return retval;
+			}
 	};
 	std::stack<state> states;
 public:
