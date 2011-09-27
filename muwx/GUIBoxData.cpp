@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.3 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.4 2011/09/27 20:13:22 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:22 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,14 @@
  *
  *
  * $Log: GUIBoxData.cpp,v $
- * Revision 1.3  2011/09/07 13:06:50  keinstein
+ * Revision 1.4  2011/09/27 20:13:22  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.2  2011-09-05 11:30:07  keinstein
@@ -55,8 +62,12 @@
 namespace mutaborGUI {
 	size_t curBox = 0;
 
-	BoxData::BoxVector BoxData::vector(MAX_BOX);
-	BoxData::BoxData():current_logic(),
+	BoxData::BoxVector BoxData::vector = BoxData::BoxVector(MAX_BOX);
+	BoxData BoxData::GmnBoxData;
+	BoxData BoxData::NoBoxData;
+	BoxData BoxData::NewBoxData;
+	BoxData::BoxData():shapes(),
+			   current_logic(),
 			   current_tonesystem(),
 			   current_key_tonesystem(0),
 			   current_key_logic(0),

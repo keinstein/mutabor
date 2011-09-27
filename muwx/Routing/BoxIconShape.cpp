@@ -3,16 +3,23 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -56,9 +63,9 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-//#include "Defs.h"
-//#include "wx/wx.h"
+#include "Defs.h"
 #include "BoxIconShape.h"
+#include "wx/dc.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -66,66 +73,66 @@
 //#include "Device.h"
 
 
+namespace mutaborGUI {
+	void MutBoxIconShape::GetBordersForSizer(int &borderTop, int &borderOther) const
+	{
+		const int BORDER = 5; // FIXME: hardcoded value
 
-void MutBoxIconShape::GetBordersForSizer(int &borderTop, int &borderOther) const
-{
-	const int BORDER = 5; // FIXME: hardcoded value
+		wxSize s = DoGetBestSize();
+		DEBUGLOG (other, _T("Best Size: %dx%d"),s.x,s.y);
+		/*	if (GetIcon().IsOk()) {
+			s.x = std::max (GetIcon().GetWidth(), s.x);
+			s.y += GetIcon().GetHeight();
+			}
+			return s;
+		*/
+		borderTop = s.y;
+		borderOther = 0;
+	}
 
-	wxSize s = DoGetBestSize();
-	DEBUGLOG (other, _T("Best Size: %dx%d"),s.x,s.y);
-	/*	if (GetIcon().IsOk()) {
-		s.x = std::max (GetIcon().GetWidth(), s.x);
-		s.y += GetIcon().GetHeight();
+	void MutBoxIconShape::OnDraw (wxDC & dc) 
+	{
+		DEBUGLOG (other, _T("Checking icon"));
+
+		if (!GetIcon().IsOk()) {
+			SetIcon(GetMutIcon());
+			DEBUGLOG (other, _T("Checking icon again"));
+
 		}
-		return s;
-	*/
-	borderTop = s.y;
-	borderOther = 0;
+		DEBUGLOG (other, _T("Icon ok."));
+
+		int x, y;
+		x = 0;
+		y = 0;
+		wxRect size = GetRect();
+		if (staticText) y += staticText->GetSize().y;
+		if (GetIcon().IsOk()) {
+			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
+				  GetIcon().GetWidth());
+			x = (size.width-GetIcon().GetWidth())/2;
+			dc.DrawIcon(GetIcon(), x, y);
+		}
+
+		DEBUGLOG (other, _T("Focus %p and this %p"),FindFocus(),this);
+		if (FindFocus() == this) {
+			DEBUGLOG (other, _T("Painting Box"));
+			dc.SetPen(*wxBLACK_PEN);
+			dc.SetBrush(*wxTRANSPARENT_BRUSH);
+			dc.DrawRectangle(0,0,size.width,size.height);
+		}
+	}
+
+	bool MutBoxIconShape::Layout() {
+		if (!MutIconShape::Layout()) return false;
+		DEBUGLOG (other, _T(""));
+		if (staticText) {
+			staticText->Move(0,0);
+			staticText->CentreOnParent(wxHORIZONTAL);
+		}
+		return true;
+	}
+
 }
-
-void MutBoxIconShape::OnDraw (wxDC & dc) 
-{
-	DEBUGLOG (other, _T("Checking icon"));
-
-	if (!GetIcon().IsOk()) {
-		SetIcon(GetMutIcon());
-		DEBUGLOG (other, _T("Checking icon again"));
-
-	}
-	DEBUGLOG (other, _T("Icon ok."));
-
-	int x, y;
-	x = 0;
-	y = 0;
-	wxRect size = GetRect();
-	if (staticText) y += staticText->GetSize().y;
-	if (GetIcon().IsOk()) {
-		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
-			 GetIcon().GetWidth());
-		x = (size.width-GetIcon().GetWidth())/2;
-		dc.DrawIcon(GetIcon(), x, y);
-	}
-
-	DEBUGLOG (other, _T("Focus %p and this %p"),FindFocus(),this);
-	if (FindFocus() == this) {
-		DEBUGLOG (other, _T("Painting Box"));
-		dc.SetPen(*wxBLACK_PEN);
-		dc.SetBrush(*wxTRANSPARENT_BRUSH);
-		dc.DrawRectangle(0,0,size.width,size.height);
-	}
-}
-
-bool MutBoxIconShape::Layout() {
-	if (!MutIconShape::Layout()) return false;
-	DEBUGLOG (other, _T(""));
-	if (staticText) {
-		staticText->Move(0,0);
-		staticText->CentreOnParent(wxHORIZONTAL);
-	}
-	return true;
-}
-
-
 
 /*
  * \}

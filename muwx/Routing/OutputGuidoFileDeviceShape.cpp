@@ -3,16 +3,23 @@
  ********************************************************************
  * Input device shape for reading GUIDO files in the route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.cpp,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: OutputGuidoFileDeviceShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:50  keinstein
@@ -59,61 +66,65 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-//#include "Defs.h"
-//#include "wx/wx.h"
+#include "Defs.h"
 #include "OutputGuidoFileDeviceShape.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "OutputDevDlg.h"
 //#include "Device.h"
 
-void MutOutputGuidoFileDeviceShape::InitializeDialog(OutputDevDlg * out) const
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTGis);
-	wxASSERT(out);
-	out -> SetType(DTGis);
-	out -> SetGUIDOFile(device->GetName());
-}
+using namespace mutabor;
 
-bool MutOutputGuidoFileDeviceShape::readDialog (OutputDevDlg * out)
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTGis);
-	wxASSERT(out);
-	wxASSERT (out -> GetType() == DTGis);
-	DEBUGLOG (other,_T ("File %s"),  (out -> GetGUIDOFile()).c_str());
-	device->SetName (out -> GetGUIDOFile());
-	SetLabel (device->GetName());
-	return true;
-}
+namespace mutaborGUI {
 
-wxPanel * MutOutputGuidoFileDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
-							    Route * route) const
-{
-	GisOutputFilterPanel * panel = new GisOutputFilterPanel(parent);
-	if (!panel) return NULL;
-	// Room for actions
-	return panel;
-}
-
-
-void MutOutputGuidoFileDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route * route)
-{
-	GisOutputFilterPanel * pan = dynamic_cast<GisOutputFilterPanel *> (panel);
-	if (!pan) {
-		UNREACHABLEC;
-		return;
+	void MutOutputGuidoFileDeviceShape::InitializeDialog(OutputDevDlg * out) const
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTGis);
+		wxASSERT(out);
+		out -> SetType(DTGis);
+		out -> SetGUIDOFile(device->GetName());
 	}
-	// Room for actions
+
+	bool MutOutputGuidoFileDeviceShape::readDialog (OutputDevDlg * out)
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTGis);
+		wxASSERT(out);
+		wxASSERT (out -> GetType() == DTGis);
+		DEBUGLOG (other,_T ("File %s"),  (out -> GetGUIDOFile()).c_str());
+		device->SetName (out -> GetGUIDOFile());
+		SetLabel (device->GetName());
+		return true;
+	}
+
+	wxPanel * MutOutputGuidoFileDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
+								      Route  route) const
+	{
+		GisOutputFilterPanel * panel = new GisOutputFilterPanel(parent);
+		if (!panel) return NULL;
+		// Room for actions
+		return panel;
+	}
+
+
+	void MutOutputGuidoFileDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route  route)
+	{
+		GisOutputFilterPanel * pan = dynamic_cast<GisOutputFilterPanel *> (panel);
+		if (!pan) {
+			UNREACHABLEC;
+			return;
+		}
+		// Room for actions
 	
+	}
+
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape, MutOutputDeviceShape)
 }
-
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape, MutOutputDeviceShape)
-
 /*
  * \}
  */

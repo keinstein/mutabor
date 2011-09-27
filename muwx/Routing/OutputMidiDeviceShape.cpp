@@ -3,16 +3,23 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: OutputMidiDeviceShape.cpp,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2010-12-13 00:27:53  keinstein
@@ -71,109 +78,115 @@
  ********************************************************************/
 #include "OutputMidiDeviceShape.h"
 #include "DevMidi.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
 #include <limits>
 
-class MidiOutputFilterPanel : public MidiOutputFilterPanelBase {
-public:
-	MidiOutputFilterPanel(wxWindow * parent):MidiOutputFilterPanelBase(parent) {}
-	/**
-	 * TODO: set limits according to changes: min.max = max.value and max.min = min.value
-	 */
-	void SetFromChannel(int current, int min, int max) {
-		from_channel->SetRange(min,max);
-		from_channel->SetValue(current);
-	}
-	int GetFromChannel() const 
-	{
-		return from_channel->GetValue();
-	}
+using namespace mutabor;
+
+namespace mutaborGUI {
+
+	class MidiOutputFilterPanel : public MidiOutputFilterPanelBase {
+	public:
+		MidiOutputFilterPanel(wxWindow * parent):MidiOutputFilterPanelBase(parent) {}
+		/**
+		 * TODO: set limits according to changes: min.max = max.value and max.min = min.value
+		 */
+		void SetFromChannel(int current, int min, int max) {
+			from_channel->SetRange(min,max);
+			from_channel->SetValue(current);
+		}
+		int GetFromChannel() const 
+			{
+				return from_channel->GetValue();
+			}
 	
-	void SetToChannel(int current, int min, int max) {
-		to_channel->SetRange(min,max);
-		to_channel->SetValue(current);
-	}
-	int GetToChannel() const
-	{
-		return to_channel->GetValue();
-	}
+		void SetToChannel(int current, int min, int max) {
+			to_channel->SetRange(min,max);
+			to_channel->SetValue(current);
+		}
+		int GetToChannel() const
+			{
+				return to_channel->GetValue();
+			}
 	
-	void SetAvoidDrumChannel(bool avoid) {
-		avoid_drum_channel->SetValue(avoid);
-	}
-	bool GetAvoidDrumChannel() const
+		void SetAvoidDrumChannel(bool avoid) {
+			avoid_drum_channel->SetValue(avoid);
+		}
+		bool GetAvoidDrumChannel() const
+			{
+				return avoid_drum_channel->GetValue();
+			}
+	};
+
+
+	void MutOutputMidiDeviceShape::InitializeDialog(OutputDevDlg * out) const
 	{
-		return avoid_drum_channel->GetValue();
+		DEBUGLOG (other, _T("Type: %d"),DTMidiPort);
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiPort);
+		wxASSERT(out);
+		OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
+		wxASSERT (dev);
+		out -> SetType(DTMidiPort);
+		out -> SetMidiDevice(dev->GetDevId());
+		out -> SetMidiBendingRange (dev-> GetBendingRange());
 	}
-};
 
+	bool MutOutputMidiDeviceShape::readDialog (OutputDevDlg * out)
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiPort);
+		wxASSERT(out);
+		wxASSERT (out -> GetType() == DTMidiPort);
+		OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
+		if (!dev) return false;
+		wxASSERT (dev);
+		DEBUGLOG(routing,_T("New midi device: %d"),out -> GetMidiDevice());
+		dev->SetDevId (out -> GetMidiDevice());
+		dev->SetBendingRange (out->GetMidiBendingRange());
+		SetLabel (dev->GetName());
+		return true;
+	}
 
-void MutOutputMidiDeviceShape::InitializeDialog(OutputDevDlg * out) const
-{
-	DEBUGLOG (other, _T("Type: %d"),DTMidiPort);
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiPort);
-	wxASSERT(out);
-	OutMidiPort * dev = dynamic_cast<OutMidiPort *> (device);
-	wxASSERT (dev);
-	out -> SetType(DTMidiPort);
-	out -> SetMidiDevice(dev->GetDevId());
-	out -> SetMidiBendingRange (dev-> GetBendingRange());
-}
-
-bool MutOutputMidiDeviceShape::readDialog (OutputDevDlg * out)
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiPort);
-	wxASSERT(out);
-	wxASSERT (out -> GetType() == DTMidiPort);
-	OutMidiPort * dev = dynamic_cast<OutMidiPort *> (device);
-	if (!dev) return false;
-	wxASSERT (dev);
-	DEBUGLOG(routing,_T("New midi device: %d"),out -> GetMidiDevice());
-	dev->SetDevId (out -> GetMidiDevice());
-	dev->SetBendingRange (out->GetMidiBendingRange());
-	SetLabel (dev->GetName());
-	return true;
-}
-
-wxPanel * MutOutputMidiDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
-						       Route * route) const
-{
-	const int maxint = std::numeric_limits<int>().max();
-	MidiOutputFilterPanel * panel = new MidiOutputFilterPanel(parent);
-	if (!panel) return NULL;
-	OutMidiPort * dev = dynamic_cast<OutMidiPort *> (device);
-	const int maxchannel = dev?dev->GetMaxChannel():maxint;
-	const int minchannel = dev?dev->GetMinChannel():0;
-	if (!route) {
-		panel->SetFromChannel(minchannel, minchannel, maxchannel);
-		panel->SetToChannel(maxchannel, minchannel, maxchannel);
-		panel->SetAvoidDrumChannel(true);
+	wxPanel * MutOutputMidiDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
+								 Route  route) const
+	{
+		const int maxint = std::numeric_limits<int>().max();
+		MidiOutputFilterPanel * panel = new MidiOutputFilterPanel(parent);
+		if (!panel) return NULL;
+		OutputMidiPort * dev = dynamic_cast<OutputMidiPort *> (device.get());
+		const int maxchannel = dev?dev->GetMaxChannel():maxint;
+		const int minchannel = dev?dev->GetMinChannel():0;
+		if (!route) {
+			panel->SetFromChannel(minchannel, minchannel, maxchannel);
+			panel->SetToChannel(maxchannel, minchannel, maxchannel);
+			panel->SetAvoidDrumChannel(true);
+			return panel;
+		}
+		panel->SetFromChannel(route->OFrom, minchannel, maxchannel);
+		panel->SetToChannel(route->OTo, minchannel, maxchannel);
+		panel->SetAvoidDrumChannel(route->ONoDrum);
 		return panel;
 	}
-	panel->SetFromChannel(route->OFrom, minchannel, maxchannel);
-	panel->SetToChannel(route->OTo, minchannel, maxchannel);
-	panel->SetAvoidDrumChannel(route->ONoDrum);
-	return panel;
-}
 
-void MutOutputMidiDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route * route)
-{
-	wxASSERT(route);
-	MidiOutputFilterPanel * pan = dynamic_cast<MidiOutputFilterPanel *> (panel);
-	if (!pan) {
-		UNREACHABLEC;
-		return;
-	}
+	void MutOutputMidiDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route  route)
+	{
+		wxASSERT(route);
+		MidiOutputFilterPanel * pan = dynamic_cast<MidiOutputFilterPanel *> (panel);
+		if (!pan) {
+			UNREACHABLEC;
+			return;
+		}
 	
-	route->SetOutputFrom(pan->GetFromChannel());
-	route->SetOutputTo(pan->GetToChannel());
-	route->OutputAvoidDrumChannel(pan->GetAvoidDrumChannel());
+		route->SetOutputFrom(pan->GetFromChannel());
+		route->SetOutputTo(pan->GetToChannel());
+		route->OutputAvoidDrumChannel(pan->GetAvoidDrumChannel());
+	}
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutOutputMidiDeviceShape, MutOutputDeviceShape)
+
 }
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutOutputMidiDeviceShape, MutOutputDeviceShape)
-
 /*
  * \}
  */

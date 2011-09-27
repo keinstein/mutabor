@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Interpre.h,v 1.8 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Interpre.h,v 1.9 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Interpre.h,v $
- * Revision 1.8  2011/07/27 20:48:32  keinstein
+ * Revision 1.9  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.8  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.7  2011-03-06 13:15:41  keinstein
@@ -36,10 +43,27 @@
 // Interpretation der Logiken zur Laufzeit
 // ------------------------------------------------------------------
 
-#if ! defined (__INTERPRE_H_INCLUDED)
-#define __INTERPRE_H_INCLUDED
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
+#if (!defined(MU32_INTERPRE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_INTERPRE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_INTERPRE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
 #include "Global.h"
+
+#ifndef MU32_INTERPRE_H_PRECOMPILED
+#define MU32_INTERPRE_H_PRECOMPILED
+
+// system headers which do seldom change
+
 
 /* Zur Umrechnung in die Midi-Darstellung
    als Gleitpunktzahl in long.
@@ -351,6 +375,7 @@ extern int liegende_tasten_max[MAX_BOX];
 #define SYNTHESIZER_TYP_GIS       3
 /* jedem Kanal seinen Synthesizer */
 
+#endif /* precompiled */
 #endif
 
 

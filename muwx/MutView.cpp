@@ -2,16 +2,23 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.8 2011/09/04 15:35:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.9 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/04 15:35:08 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.8  2011/09/04 15:35:08  keinstein
+ * Revision 1.9  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.8  2011-09-04 15:35:08  keinstein
  * disable print preview on OS X and when using libgnomeprint as they proviede their own means
  *
  * Revision 1.7  2011-08-31 20:18:16  keinstein
@@ -51,15 +58,12 @@
 // --------------------------------------------------------------------------
 
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include <wx/wxprec.h>
 
 #include "MutView.h"
 #include "MutFrame.h"
 #include "MutApp.h"
 #include "MutDocument.h"
-#include <wx/wx.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop

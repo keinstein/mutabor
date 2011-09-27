@@ -1,16 +1,23 @@
-/** \file
+/** \file  -*- C++ -*-
  ***********************************************************************
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.5 2011/09/09 09:29:10 keinstein Exp $
+ * $Id: configtree.h,v 1.6 2011/09/27 20:13:24 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/09 09:29:10 $
- * \version $Revision: 1.5 $
+ * \date $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: configtree.h,v $
- * Revision 1.5  2011/09/09 09:29:10  keinstein
+ * Revision 1.6  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-09-09 09:29:10  keinstein
  * fix loading of routing configuration
  *
  * Revision 1.4  2011-08-11 19:00:48  keinstein
@@ -40,12 +47,23 @@
  * \addtogroup config
  * \{
  ********************************************************************/
-#ifndef MUTABOR_CONFIGTREE_H
-#define MUTABOR_CONFIGTREE_H
+#if (!defined(MUWX_CONFIGTREE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_CONFIGTREE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_CONFIGTREE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
 #include "Route.h"
 #include "treestorage.h"
+
+#ifndef MUWX_CONFIGTREE_H_PRECOMPILED
+#define MUWX_CONFIGTREE_H_PRECOMPILED
+
 #include <stack>
 
 class configtree:public tree_storage 
@@ -149,15 +167,16 @@ public:
 inline void LoadRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
-	LoadRoutes(conf);
+	mutabor::RouteFactory::LoadRoutes(conf);
 }
 
 inline void SaveRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
-	SaveRoutes(conf);
+	mutabor::RouteFactory::SaveRoutes(conf);
 }
 
+#endif //MUTABOR_CONFIGTREE_H_PRECOMPILED
 #endif //MUTABOR_CONFIGTREE_H
 
 

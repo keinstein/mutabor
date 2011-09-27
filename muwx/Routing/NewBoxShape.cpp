@@ -4,16 +4,23 @@
  ********************************************************************
  * New box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: NewBoxShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -105,43 +112,48 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-//#include "Defs.h"
-//#include "wx/wx.h"
+#include "Defs.h"
 #include "NewBoxShape.h"
+#include "muwx/Routing/BoxDlg.h"
+#include "MutRouteWnd.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
-//#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
 
-IMPLEMENT_CLASS(NewMutBoxShape, MutBoxShape)
+using namespace mutabor;
 
-MutIcon& NewMutBoxShape::GetMutIcon()
-{
+namespace mutaborGUI {
 
-	DEBUGLOG (other, _T("Checking icon"));
-	wxASSERT(NewBoxBitmap.IsOk ());
-	return NewBoxBitmap;
+	IMPLEMENT_CLASS(NewMutBoxShape, MutBoxShape)
+
+	MutIcon& NewMutBoxShape::GetMutIcon()
+	{
+
+		DEBUGLOG (other, _T("Checking icon"));
+		wxASSERT(NewBoxBitmap.IsOk ());
+		return NewBoxBitmap;
+	}
+
+	void NewMutBoxShape::InitializeDialog(BoxDlg * dlg) const {
+		wxASSERT(dlg);
+		dlg->SetBoxType(Box0);
+		dlg->SetBoxNumber(0);
+		dlg->SetTitle(_("Create Box"));
+		dlg->DisableRemove(true);
+	}
+
+	bool NewMutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
+	{
+		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+		wxASSERT(p);
+		// the "New device" icon won't be replaced, so we just append the device
+		p->AddBox(newshape,sizerFlags);
+		return false;
+	}
+
 }
-
-void NewMutBoxShape::InitializeDialog(BoxDlg * dlg) const {
-	wxASSERT(dlg);
-	dlg->SetBoxType(Box0);
-	dlg->SetBoxNumber(0);
-	dlg->SetTitle(_("Create Box"));
-	dlg->DisableRemove(true);
-}
-
-bool NewMutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
-{
-	MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
-	wxASSERT(p);
-	// the "New device" icon won't be replaced, so we just append the device
-	p->AddBox(newshape,sizerFlags);
-	return false;
-}
-
-
 
 /*
  * \}

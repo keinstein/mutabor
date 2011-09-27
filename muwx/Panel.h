@@ -1,4 +1,4 @@
-/** \file 
+/** \file         -*- C++ -*-
  ********************************************************************
  * Mutabor Panel. Panel based on wxControl and wxPanel
  * Most code comes from wxPanel and has been rewritten in order to 
@@ -6,16 +6,23 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.5 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.6 2011/09/27 20:13:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Panel.h,v $
- * Revision 1.5  2011/02/20 22:35:58  keinstein
+ * Revision 1.6  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.4  2011-01-29 20:09:31  keinstein
@@ -36,14 +43,22 @@
  * \{
  ********************************************************************/
 
-#ifndef _MUTABOR_PANEL_H_
-#define _MUTABOR_PANEL_H_
+#if (!defined(MUWX_PANEL_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_PANEL_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_PANEL_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
 
-// ----------------------------------------------------------------------------
-// headers and forward declarations
-// ----------------------------------------------------------------------------
+#ifndef MUWX_PANEL_H_PRECOMPILED
+#define MUWX_PANEL_H_PRECOMPILED
+
+// system headers which do seldom change
 
 #include "wx/panel.h"
 #include "wx/control.h"
@@ -96,6 +111,8 @@ public:
 	
 	virtual ~MutPanel();
 	
+	virtual bool Destroy();
+
 	// implementation from now on
 	// --------------------------
 	
@@ -120,6 +137,8 @@ private:
 	DECLARE_EVENT_TABLE()
 };
 
+#endif
+// _MUTABOR_PANEL_H_PRECOMPILED
 #endif
 // _MUTABOR_PANEL_H_
 

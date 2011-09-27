@@ -1,17 +1,24 @@
-/** \file
+/** \file               -*- C++ -*-
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.9 2011/07/27 20:48:32 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.10 2011/09/27 20:13:22 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/09/27 20:13:22 $
+ * \version $Revision: 1.10 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
- * Revision 1.9  2011/07/27 20:48:32  keinstein
+ * Revision 1.10  2011/09/27 20:13:22  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.9  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.8  2011-02-20 22:35:57  keinstein
@@ -35,26 +42,33 @@
  * \{
  ********************************************************************/
 
-#ifndef _INPUTDEVDLG_H_
-#define _INPUTDEVDLG_H_
+#if (!defined(MUWX_INPUTDEVDLG_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_INPUTDEVDLG_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_INPUTDEVDLG_H
+#endif
 
+// our dedendencies
+#include "Defs.h"
+#include "wxresource.h"
+#include "Device.h"
 
 #if defined(__GNUG__) && !defined(__APPLE__)
 #pragma interface "InputDevDlg.cpp"
 #endif
 
+
+#ifndef MUWX_INPUTDEVDLG_H_PRECOMPILED
+#define MUWX_INPUTDEVDLG_H_PRECOMPILED
 /*!
- * Includes
+ * system includes
  */
 
 ////@begin includes
-#include "Defs.h"
 #include "wx/xrc/xmlres.h"
 #include "wx/html/htmlwin.h"
 #include "wx/statline.h"
 #include "wx/filepicker.h"
-#include "wxresource.h"
-#include "Device.h"
 #include "wx/valgen.h"
 #include "wx/valtext.h"
 ////@end includes
@@ -116,27 +130,27 @@ protected:
 
 struct TypeData:wxClientData
 	{
-		DevType nr;
-		TypeData(DevType i):wxClientData()
+		mutabor::DevType nr;
+		TypeData(mutabor::DevType i):wxClientData()
 		{
 			nr=i;
 		}
 
-		bool operator == (DevType i)
+		bool operator == (mutabor::DevType i)
 		{
 			if (this)
 				return i == nr;
 			else return false;
 		}
 
-		operator DevType()
+		operator mutabor::DevType()
 		{
 			if (this) return nr;
-			else return DTNotSet;
+			else return mutabor::DTNotSet;
 		}
 	};
 
-	int FindType (DevType t);
+	int FindType (mutabor::DevType t);
 
 public:
 	/// Constructors
@@ -150,7 +164,7 @@ public:
 
         void OnFileChanged ( wxFileDirPickerEvent & event );
 
-	void UpdateLayout(DevType type);
+	void UpdateLayout(mutabor::DevType type);
 
 	int GetMidiDevice() const
 	{
@@ -160,7 +174,7 @@ public:
 	void SetMidiDevice(int value)
 
 	{
-		DEBUGLOG(_T("%d"),value);
+		DEBUGLOG(other,_T("%d"),value);
 		PortChoice->SetSelection (value) ;
 		Update();
 	}
@@ -173,10 +187,10 @@ public:
 	void SetMidiFile(wxString value)
 
 	{
-		DEBUGLOG(value);
+		DEBUGLOG(other,value);
 		MidiFilePicker->SetPath(value);
 		Update();
-		DEBUGLOG(_T("done"));
+		DEBUGLOG(other,_T("done"));
 	}
 
 	wxString GetGUIDOFile() const
@@ -187,27 +201,27 @@ public:
 	void SetGUIDOFile(wxString value)
 
 	{
-		DEBUGLOG(value);
+		DEBUGLOG(other,_T("%s"),(const wxChar*)value);
 		GuidoFilePicker->SetPath(value);
 		Update();
 	}
 
-	DevType GetType() const
+	mutabor::DevType GetType() const
 	{
                 int Type = DeviceChoice->GetSelection();
-		if (Type == wxNOT_FOUND) return DTNotSet;
+		if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
 
                 wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
 		TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
 
 		if (obj) return  *obj;
-		else return DTNotSet;
+		else return mutabor::DTNotSet;
 	}
 
-	void SetType(DevType value)
+	void SetType(mutabor::DevType value)
 
 	{
-		DEBUGLOG(_T("%d"),value);
+		DEBUGLOG(other,_T("%d"),value);
 		UpdateLayout(value);
 		Update();
 	}
@@ -233,6 +247,7 @@ public:
 
 };
 
+#endif // precompiled
 #endif
 // _INPUTDEVDLG_H_
 

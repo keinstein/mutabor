@@ -2,12 +2,12 @@
  ********************************************************************
  * Language definitions for wxStyledTextControl (wxScintilla)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.h,v 1.2 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.h,v 1.3 2011/09/27 20:13:24 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,14 @@
  *
  *
  * $Log: stclanguage.h,v $
- * Revision 1.2  2011/08/21 16:52:05  keinstein
+ * Revision 1.3  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.2  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.1  2011-08-20 18:15:36  keinstein
@@ -40,15 +47,24 @@
  ********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug, docview
 
-#ifndef MUWX_STCLANGUAGE_H_INCLUDED
-#define MUWX_STCLANGUAGE_H_INCLUDED
+#if (!defined(MUWX_STCLANGUAGE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_STCLANGUAGE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_STCLANGUAGE_H
+#endif
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
+
+#ifndef MUWX_STCLANGUAGE_H_PRECOMPILED
+#define MUWX_STCLANGUAGE_H_PRECOMPILED
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 //! wxWidgets/contrib headers
 #include "wx/stc/stc.h"  // styled text control
@@ -206,6 +222,6 @@ namespace mutaborGUI {
 
 }
 
-
-#endif
+#endif // precompiled
+#endif // full header inclusion
 ///\}

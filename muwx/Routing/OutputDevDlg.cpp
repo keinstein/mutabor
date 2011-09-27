@@ -3,16 +3,23 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/01/11
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: OutputDevDlg.cpp,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2011-01-13 21:13:03  keinstein
@@ -46,21 +53,15 @@
  *\{
  ********************************************************************/
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
+#include "Defs.h"
+
+#include "OutputDevDlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
 #endif
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-
-
-
-#include "OutputDevDlg.h"
+using namespace mutabor;
 
 /*!
  * OutputDevDlg type definition

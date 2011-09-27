@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install
+MAKEFILE_DEPS = remove-podeps.stamp
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin /bin /usr/bin
-distdir = $(PACKAGE_TARNAME)-$(VERSION)
 SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 AM_CPPFLAGS = -I$(srcdir)/mu32 \
@@ -89,6 +89,11 @@ endif
 
 bin_PROGRAMS = mutabor
 
+INLINEHEADERS = \
+		muwx/Routing/GUIRoute.h \
+		muwx/GUIBoxData-inlines.h 
+
+
 INDENTHEADERS = \
 		mu32/Defs.h \
 		mu32/routing/gmn/DevGIS.h \
@@ -100,6 +105,7 @@ INDENTHEADERS = \
 		mu32/routing/midi/DevMidi.h \
 		mu32/routing/Device.h \
 		mu32/routing/Route.h \
+		mu32/routing/Route-inlines.h \
 		mu32/routing/RouteCompat.h \
 		mu32/box.h \
 		mu32/Errors.h \
@@ -119,6 +125,7 @@ INDENTHEADERS = \
 		muwx/Routing/BoxShape.h \
 		muwx/Routing/DebugRoute.h \
 		muwx/Routing/DeviceShape.h \
+		muwx/Routing/GUIRoute.h \
 		muwx/Routing/InputDevDlg.h \
 		muwx/Routing/InputDeviceShape.h \
 		muwx/Routing/InputGuidoFileDeviceShape.h \
@@ -133,6 +140,7 @@ INDENTHEADERS = \
 		muwx/Routing/OutputMidiDeviceShape.h \
 		muwx/Routing/OutputMidiFileDeviceShape.h \
 		muwx/Routing/RouteIcons.h \
+		muwx/Routing/RouteLists.h \
 		muwx/Action.h \
 		muwx/GUIBoxData.h \
 		muwx/MutBitmaps.h \
@@ -192,6 +200,7 @@ mutabor_INDENTS = \
 		muwx/Routing/BoxShape.cpp \
 		muwx/Routing/DebugRoute.cpp \
 		muwx/Routing/DeviceShape.cpp \
+		muwx/Routing/GUIRoute.cpp \
 		muwx/Routing/InputDevDlg.cpp \
 		muwx/Routing/InputDeviceShape.cpp \
 		muwx/Routing/InputGuidoFileDeviceShape.cpp \
@@ -232,7 +241,6 @@ mutabor_INDENTS = \
 		mywx/valRadio.cpp \
 		rtmidi/RtMidi.cpp
 
-
 #		muwx/InputFilterDlg.cpp \
 #		muwx/InputFilterDlg.h \
 #		muwx/OutputFilterDlg.cpp \
@@ -246,17 +254,18 @@ CLEANFILES = \
 	Mutabor.xrc \
 	$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 
-INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS)
+INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS) $(INLINEHEADERS)
 
 noinst_HEADERS =  mu32/mut.h \
 		  mywx/mutDebugFlags.h \
 		  $(INDENTHEADERS)
 
-mutabor_SOURCES = $(mutabor_INDENTS) \
-		  mu32/mut.cpp
+mutabor_COMPILESOURCES = $(mutabor_INDENTS) \
+			  mu32/mut.cpp
 
+mutabor_SOURCES = $(mutabor_COMPILESOURCES)
 if COND_WINRC
-mutabor_SOURCES += muwx/Mutabor.rc
+mutabor_COMPILESOURCES += muwx/Mutabor.rc
 endif
 
 if COND_PRECOMP_CXX
@@ -278,11 +287,11 @@ AM_CPPFLAGS += $(WX_CPPFLAGS) -DPREFIX='"$(prefix)"'
 mutabor_CXXLD=$(CXX)
 
 if COND_PRECOMP_C
-mutabor_CFLAGS = -include mutabor-precompiled.h -fpch-deps
+mutabor_CFLAGS = -include mutabor-precompiled.h # -fpch-deps
 endif
 
 if COND_PRECOMP_CXX
-mutabor_CXXFLAGS = -include mutabor-cxxprecompiled.h -fpch-deps
+mutabor_CXXFLAGS = -include mutabor-cxxprecompiled.h # -fpch-deps
 endif
 
 mutabor_SHORTNAME = mutabor
@@ -302,7 +311,10 @@ if AMDEP
 @am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
 endif
 
-.PHONY: cvs_dist cvs_distcheck mutabor-cxxprecompiled mac mac-recursive
+.PHONY: cvs_dist cvs_distcheck \
+	mutabor-cxxprecompiled mutabor-cxxprecompiled.h.shuffle \
+	mac mac-recursive \
+	fixdependencies
 
 if COND_WINRC
 .rc.$(OBJEXT):
@@ -324,6 +336,53 @@ endif
 	$(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) \
 		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
 endif
+
+
+if COND_PRECOMP_CXX
+
+#./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
+
+podeps.stamp:
+	touch $@
+
+
+Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
+        @case '$?' in \
+          *config.status*) \
+            echo ' $(SHELL) ./config.status'; \
+            $(SHELL) ./config.status;; \
+          *) \
+            echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
+            cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
+        esac;
+remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
+	rm -f podeps.stamp
+	touch $@
+
+./$(DEPDIR)/podeps.dep:$(mutabor_COMPILESOURCES) podeps.stamp
+	$(MKDIR_P) `dirname $@`
+	echo >$@
+	for obj in $(mutabor_OBJECTS) ; do \
+		base=`basename "$$obj"` ; \
+		dir=`dirname "$$obj"` ; \
+		pofilebase=`echo "$$base" | sed 's/\.$(OBJEXT)\$$/.Po/g'` ; \
+		pofile="$$dir/\$$(DEPDIR)/$$pofilebase" ; \
+		echo >>$@ ; \
+		echo >>$@ ; \
+		echo "$$pofile: $$pofile.stamp" >>$@ ; \
+		echo "$$pofile.stamp:" >>$@ ; \
+		echo "	-$(SED) -i 's/ mutabor-cxxprecompiled\.[a-zA-Z0-9]* / /g' $$pofile" >>$@ ; \
+		echo '	touch $$@' >>$@ ; \
+		echo >>$@ ; \
+		echo "$$obj:$$pofile.stamp-remove" >>$@ ; \
+		echo "$$pofile.stamp-remove:" >>$@ ; \
+		echo "	rm -f '$$pofile.stamp'" >>$@ ; \
+		echo '	touch $$@' >>$@ ; \
+	done
+@am__include@ @am__quote@./$(DEPDIR)/podeps.dep@am__quote@
+
+endif
+
 
 muwx/resourceload.h:$(top_srcdir)/xrc/wxresource.h
 
@@ -364,26 +423,40 @@ cvs_distcheck: Makefile
 
 mutabor-cxxprecompiled.stamp:mutabor-cxxprecompiled.$(PCHEXT_CXX)
 	if test \! -f mutabor-cxxprecompiled.stamp ; then touch mutabor-cxxprecompiled.stamp ; fi
+	touch -d '2001-01-01 00:00:00' mutabor-cxxprecompiled.$(PCHEXT_CXX)
+	touch -d '2002-01-01 00:00:00' $@
+
+mutabor-cxxprecompiled:mutabor-cxxprecompiled.stamp
 
 
 if COND_PRECOMP_CXX
 $(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
 
-mutabor-cxxprecompiled.h: Makefile
+
+mutabor-cxxprecompiled.sorted: Makefile
 	@echo 'creating $@'
-	@echo '#define PRECOMPILE 1' >$@.tmp
-	@echo '#include "Defs.h"' >>$@.tmp
 	@for datei in $(INDENTHEADERS) ; \
 	do  \
 		echo $$datei | $(EGREP) '\.h$$' >/dev/null && \
 		echo '#include "'"$$datei"'"' >>$@.tmp ; \
 	done ; true
-	@echo '#undef PRECOMPILE' >>$@.tmp
-	if cmp -s $@.tmp $@ ; then \
+	@if cmp -s $@.tmp $@ ; then \
 		rm -f $@.tmp ;\
         else \
 		mv $@.tmp $@; \
         fi 
+
+mutabor-cxxprecompiled.h:mutabor-cxxprecompiled.h.shuffle
+
+mutabor-cxxprecompiled.h.shuffle: mutabor-cxxprecompiled.sorted
+	$(MAKE) mutabor-cxxprecompiled.sorted
+	@echo 'Shuffling mutabor-cxxprecompiled.h ...'
+	echo '#define PRECOMPILE 1' >mutabor-cxxprecompiled.h
+	echo '#include "Defs.h"' >> mutabor-cxxprecompiled.h
+	$(SHUFFLE) <$< >> mutabor-cxxprecompiled.h
+	echo '#undef PRECOMPILE' >> mutabor-cxxprecompiled.h
+	touch -d '2000-01-01 00:00:00' mutabor-cxxprecompiled.h
+	rm -f mutabor-cxxprecompiled.$(PCHEXT_CXX)
 endif
 
 if COND_WINRC

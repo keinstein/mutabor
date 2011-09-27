@@ -3,7 +3,7 @@ libintl_la_HEADRES = libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h
 libintl_la_SOURCES = gettext.c
 
-INCLUDES = -I $(top_srcdir)/intl
+AM_CPPFLAGS = -I $(top_srcdir)/intl
 DEFS = -DLOCALEDIR=\"$(localedir)\" -DLOCALE_ALIAS_PATH=\"$(aliaspath)\" \
 -DLIBDIR=\"$(libdir)\" -DIN_LIBINTL \
 -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"$(libdir)\" -DNO_XMALLOC \

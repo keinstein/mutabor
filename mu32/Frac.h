@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Frac.h,v 1.8 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Frac.h,v 1.9 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Frac.h,v $
- * Revision 1.8  2011/02/20 22:35:55  keinstein
+ * Revision 1.9  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.8  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -29,10 +36,26 @@
 // frac ... calculating with fractions
 // ##################################################################
 
-#ifndef FRAC_H
-#define FRAC_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MU32_FRAC_H) && !defined(PRECOMPILE))	\
+	|| (!defined(MU32_FRAC_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_FRAC_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
+
+#ifndef MU32_FRAC_H_PRECOMPILED
+#define MU32_FRAC_H_PRECOMPILED
+
+// system headers which do seldom change
+
 #include "wx/string.h"
 
 #ifdef HAVE_BOOST_RATIONAL_HPP
@@ -150,8 +173,8 @@ inline STD_PRE::ostream& operator<<(STD_PRE::ostream& os, const frac f)
 
 #endif /* HAVE_BOOST_RATIONAL_H */
 
-#endif
-
+#endif // PRECOMPILED
+#endif 
 
 
 ///\}

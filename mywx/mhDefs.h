@@ -1,17 +1,24 @@
-/** \file 
+/** \file  -*- C++ -*-
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.20 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.21 2011/09/27 20:13:25 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: mhDefs.h,v $
- * Revision 1.20  2011/02/20 22:35:59  keinstein
+ * Revision 1.21  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.20  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -24,9 +31,8 @@
 #define mhDEFS_H
 
 #include "Defs.h"
-#include "wx/wx.h"
 
-
+#include "wx/window.h"
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
 #include <iostream>

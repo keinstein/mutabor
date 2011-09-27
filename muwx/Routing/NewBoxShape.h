@@ -3,16 +3,23 @@
  ********************************************************************
  * New box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.h,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: NewBoxShape.h,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -103,8 +110,29 @@
  *\{
  ********************************************************************/
 
-#ifndef NEWBOXSHAPE_H
-#define NEWBOXSHAPE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MUWX_ROUTING_NEWBOXSHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_NEWBOXSHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_NEWBOXSHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "MutIcon.h"
+#include "BoxShape.h"
+//#include "Device.h"
+
+
+#ifndef MUWX_ROUTING_NEWBOXSHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_NEWBOXSHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
 
 //#include <map>
 
@@ -112,42 +140,45 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-#include "MutIcon.h"
-#include "BoxShape.h"
-//#include "Device.h"
+namespace mutaborGUI {
 
-class NewMutBoxShape:public MutBoxShape
-{
-	virtual MutIcon& GetMutIcon();
 
-public:
-	NewMutBoxShape(wxWindow * parent, wxWindowID wid):MutBoxShape()
-		{
-			Create (parent, wid);
-		}
+	class NewMutBoxShape:public MutBoxShape
+	{
+		virtual MutIcon& GetMutIcon();
 
-	bool Create (wxWindow * parent, wxWindowID wid)
-	{ 
-		if (!MutBoxShape::Create(parent, wid, NewBox)) return false;
-		return true;
-	}
+	public:
+		NewMutBoxShape(wxWindow * parent, wxWindowID wid):MutBoxShape()
+			{
+				Create (parent, wid);
+			}
 
-	virtual ~NewMutBoxShape() {}
+		bool Create (wxWindow * parent, wxWindowID wid)
+			{ 
+				if (!MutBoxShape::Create(parent, 
+							 wid, 
+							 NewBox)) return false;
+				return true;
+			}
+
+		virtual ~NewMutBoxShape() {}
 	
-	virtual bool CanHandleType (int  type) { return false; }
-	virtual bool replaceSelfBy (MutBoxShape  * newshape);
-	virtual void InitializeDialog(BoxDlg * dlg) const;
-	virtual bool readDialog (BoxDlg * box) 
-	{ 
-		UNREACHABLEC;
-		return false; 
-	}	
-private:
-	DECLARE_CLASS(NewMutBoxShape)
-	DECLARE_NO_COPY_CLASS(NewMutBoxShape)
-};
+		virtual bool CanHandleType (int  type) { return false; }
+		virtual bool replaceSelfBy (MutBoxShape  * newshape);
+		virtual void InitializeDialog(BoxDlg * dlg) const;
+		virtual bool readDialog (BoxDlg * box) 
+			{ 
+				UNREACHABLEC;
+				return false; 
+			}	
+	private:
+		DECLARE_CLASS(NewMutBoxShape)
+		DECLARE_NO_COPY_CLASS(NewMutBoxShape)
+	};
 
+}
+#endif				/* NEWBOXSHAPE_H_PRECMPILED */
 #endif				/* NEWBOXSHAPE_H */
-/*
+/**
  * \}
  */

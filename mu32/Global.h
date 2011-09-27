@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.11 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.12 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: Global.h,v $
- * Revision 1.11  2011/09/08 16:51:21  keinstein
+ * Revision 1.12  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.11  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -39,15 +46,31 @@
 #define GERMAN
 #endif
 
-#if ! defined (__GLOBAL_H_INCLUDED)
-#define __GLOBAL_H_INCLUDED
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MU32_GLOBAL_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_GLOBAL_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_GLOBAL_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
+#ifndef MU32_GLOBAL_H_PRECOMPILED
+#define MU32_GLOBAL_H_PRECOMPILED
+
+// system headers which do seldom change
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string>
 #include <math.h>
-#include "Defs.h"
 
 /* #define alloca xmalloc */
 #define bcopy(from,to,n) memcpy((to),(from),(n))
@@ -771,6 +794,7 @@ extern char laufzeit_tonsystem_string[MAXLINE_AKTIONEN][30];
 extern char aktionen_puffer[MAXLINE_AKTIONEN][30];
 extern int aktionen_puffer_in;
 extern int aktionen_puffer_out; */
+#endif // precompiled
 #endif
 
 

@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.17 2011/09/06 08:09:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.18 2011/09/27 20:13:20 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/06 08:09:20 $
- * \version $Revision: 1.17 $
+ * $Date: 2011/09/27 20:13:20 $
+ * \version $Revision: 1.18 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.17  2011/09/06 08:09:20  keinstein
+ * Revision 1.18  2011/09/27 20:13:20  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.17  2011-09-06 08:09:20  keinstein
  * fix a compiler error showing a corruped error message
  *
  * Revision 1.16  2011-02-20 22:35:55  keinstein
@@ -81,6 +88,11 @@
 #define mutT _T
 
 #ifdef WX
+#define mut_thread_mutex(name)
+#define mut_thread_locker(name)
+#define mut_thread_lock(name) do {} while (0)
+#define mut_thread_release(name) do {} while (0)
+
 
 #define mutChar   wxChar
 #define mutString wxString
@@ -204,6 +216,52 @@ inline wxString getContextLocal(const wxString & s)
 	if (ret == wxEmptyString) return s;
 	else return ret;
 }
+
+
+
+struct intrusive_ptr_refcount_type {				
+	size_t value;
+	intrusive_ptr_refcount_type():value(0) {}
+};			
+
+template <class T>
+inline void intrusive_ptr_add_ref(T * obj)
+{
+	if (!obj) return;
+	mut_thread_lock(obj->mutex);
+	obj->intrusive_ptr_refcount.value++;
+	mut_thread_release(obj->mutex);
+}
+template <class T>
+inline void intrusive_ptr_release(T * obj)
+{
+	if (!obj) return;
+	mut_thread_lock(obj->mutex);
+	obj->intrusive_ptr_refcount.value--;
+	mut_thread_release(obj->mutex);
+	if (!obj->intrusive_ptr_refcount.value) delete obj;
+}
+template <class T>
+inline size_t intrusive_ptr_get_refcount(T * obj)
+{
+	if (!obj) return 0;
+	return obj->intrusive_ptr_refcount.value;
+}
+							      
+#define REFPTR_INTERFACE						\
+	private:							\
+	template<class intrusive_ptr_T>					\
+	friend void ::intrusive_ptr_add_ref(intrusive_ptr_T * obj);	\
+	template<class intrusive_ptr_T>					\
+	friend void ::intrusive_ptr_release(intrusive_ptr_T * obj);	\
+	template <class intrusive_ptr_T>				\
+	friend size_t ::intrusive_ptr_get_refcount(intrusive_ptr_T * obj); \
+	intrusive_ptr_refcount_type intrusive_ptr_refcount;		\
+	mut_thread_mutex(mutex)						
+
+
+#define CHECK_REFPTR_NULL(class_data)				\
+	wxASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
 
 #define MIDI_MIN_CHANNEL 0
 #define MIDI_MAX_CHANNEL 15

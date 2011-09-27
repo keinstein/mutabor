@@ -1,17 +1,24 @@
-/** \file 
+/** \file  -*- C -*-
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.12 2011/09/08 18:50:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.13 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/08 18:50:41 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: Execute.cpp,v $
- * Revision 1.12  2011/09/08 18:50:41  keinstein
+ * Revision 1.13  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.12  2011-09-08 18:50:41  keinstein
  * Fix some further update bug
  *
  * Revision 1.11  2011-09-08 16:51:21  keinstein
@@ -54,6 +61,8 @@
 #include "GrafKern.h"
 #include "MidiKern.h"
 #include "Runtime.h"
+#include "mu32/routing/Device.h"
+#include "wx/log.h"
 
 int protokollfunktionen_aktiv=0;
 int protokollfunktion_aktionsausgabe=0;
@@ -64,10 +73,6 @@ int zeige_aktuelles_tonsystem=0;
 // if no protocol wanted, set this macro to empty
 #define KEY_CHANGED(box) { mut_box[box].keys_changed=1; keys_changed_sum = 1; }
 
-// in device.h :
-void MidiOut(int box, DWORD data, char n);
-void NotesCorrect(int box);
-int  GetChannel(int box, int taste);
 
 tone_system tonesystem_memory[MAX_BOX+1];  /* save memory for extra data */
 
@@ -351,7 +356,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
 				faktor *= 0x100;
 				n++;
 			}
-			MidiOut(box, data, n);
+			mutabor::MidiOut(box, data, n);
 		}
 		break;
 
@@ -372,7 +377,7 @@ void execute_aktion (int box, struct do_aktion * aktion)
         }
 
 #ifndef NOTES_CORRECT_SOFORT
-	NotesCorrect(box);
+	mutabor::NotesCorrect(box);
 #endif
 }
 
@@ -693,7 +698,7 @@ void protokoll_liegende_frequenzen( int box )
 			laufzeit_protokoll("%2d : %8.1f Hz (%6.2f)[ch: %d]",
 			                   lt,
 			                   LONG_TO_HERTZ(freq),
-			                   (zugriff[3]+(((float)zugriff[2])/256.0)), GetChannel(box, lt));
+			                   (zugriff[3]+(((float)zugriff[2])/256.0)), mutabor::GetChannel(box, lt));
 #endif
 		} else {
 			laufzeit_protokoll("%2d : %%",lt);
@@ -761,7 +766,7 @@ void FlushUpdateUI()
                                 box -> keys_changed = 0;
                                 box -> logic_changed = 0;
                         }
-                        mut_box[i].next_used;
+                        i = box -> next_used;
                 } while(i);
 
                 keys_changed_sum = 0;

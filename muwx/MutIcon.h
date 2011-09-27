@@ -3,16 +3,23 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.5 2011/02/20 22:35:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.6 2011/09/27 20:13:23 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:57 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: MutIcon.h,v $
- * Revision 1.5  2011/02/20 22:35:57  keinstein
+ * Revision 1.6  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-02-20 22:35:57  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.4  2011-01-11 00:42:27  keinstein
@@ -44,11 +51,22 @@
  *\{
  ********************************************************************/
 
-#ifndef MUTICON_H
-#define MUTICON_H
+#if (!defined(MUWX_MUTICON_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTICON_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTICON_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
+#ifndef MUWX_MUTICON_H_PRECOMPILED
+#define MUWX_MUTICON_H_PRECOMPILED
 
 #if defined(__WXMAC__)
-#include "Defs.h"
 #include <limits>
 
 /// redefine the icon class to circumvent Icon restrictions
@@ -178,6 +196,7 @@ extern MutIcon MutNullIcon;
 #define MutNullIcon wxNullIcon;
 #endif
 
-#endif /* MUTROUTESHAPES_H */
+#endif /* precompiled */
+#endif /* MUTICON_H */
 
 /** \} */

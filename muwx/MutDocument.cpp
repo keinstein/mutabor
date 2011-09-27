@@ -2,16 +2,23 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.9 2011/08/28 20:09:11 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.10 2011/09/27 20:13:23 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/08/28 20:09:11 $
-* \version $Revision: 1.9 $
+* $Date: 2011/09/27 20:13:23 $
+* \version $Revision: 1.10 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.9  2011/08/28 20:09:11  keinstein
+* Revision 1.10  2011/09/27 20:13:23  keinstein
+* * Reworked route editing backend
+* * rewireing is done by RouteClass/GUIRoute now
+* * other classes forward most requests to this pair
+* * many bugfixes
+* * Version change: We are reaching beta phase now
+*
+* Revision 1.9  2011-08-28 20:09:11  keinstein
 * several impovements for opening and saving files
 *
 * Revision 1.8  2011-08-21 16:52:05  keinstein
@@ -52,13 +59,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include <wx/wxprec.h>
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
 
 #include "MutDocument.h"
 #include "MutView.h"
@@ -67,6 +68,10 @@
 
 #include <cstdio>
 #include <iostream>
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
 
 using mutaborGUI::MutCommandProcessor;
 using mutaborGUI::MutDocument;

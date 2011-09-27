@@ -2,16 +2,23 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.6 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.7 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: MutDocument.h,v $
- * Revision 1.6  2011/08/21 16:52:05  keinstein
+ * Revision 1.7  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.6  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.5  2011-08-16 20:20:03  keinstein
@@ -41,19 +48,22 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#ifndef MUTABOR_MUT_DOCUMENT_H
-#define MUTABOR_MUT_DOCUMENT_H
-
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "Defs.h"
-#include <wx/wxprec.h>
-
-#ifdef __BORLANDC__
-    #pragma hdrstop
+#if (!defined(MUWX_MUTDOCUMENT_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTDOCUMENT_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTDOCUMENT_H
 #endif
 
-#include <wx/wx.h>
-#include <wx/docview.h>
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
+#ifndef MUWX_MUTDOCUMENT_H_PRECOMPILED
+#define MUWX_MUTDOCUMENT_H_PRECOMPILED
+
+#include "wx/docview.h"
 #include "wx/cmdproc.h"
 
 namespace mutaborGUI {
@@ -162,6 +172,7 @@ namespace mutaborGUI {
 
 }
 
+#endif
 #endif
 
 ///\}

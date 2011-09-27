@@ -3,16 +3,23 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -139,321 +146,530 @@
 //#include "Device.h"
 #include "OutputDeviceShape.h"
 #include "BoxDlg.h"
+#include "muwx/Routing/RouteIcons.h"
+#include "muwx/MutRouteWnd.h"
+#include "GUIRoute-inlines.h"
+#include "GUIBoxData-inlines.h"
+#include "muwx/Routing/DebugRoute.h"
 
+#include "wx/dc.h"
+using namespace mutabor;
 
-MutIcon& MutBoxChannelShape::GetMutIcon()
-{
+namespace mutaborGUI {
 
-	DEBUGLOG (other, _T("Checking icons"));
-
-	wxASSERT(ActiveChannelBitmap.IsOk () && PassiveChannelBitmap.IsOk ());
-
-	if (route && (route -> GetActive())) {
-		return ActiveChannelBitmap;
-	} else {
-		return PassiveChannelBitmap;
-	}
-}
-
-void MutBoxChannelShape::SetInput(MutInputDeviceShape * device) 
-{
-	input = device;
-}
-
-void MutBoxChannelShape::SetOutput(MutOutputDeviceShape * device, 
-				   bool changeRoute) 
-{
-	DEBUGLOG(routing,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route, changeRoute);
-	if (changeRoute) {
-		wxASSERT(route);
-		OutDevice * dev = device ? device -> GetDevice() : NULL;
-		route -> SetOutDevice(dev);
-	}
-#ifdef DEBUG
-	if (device && route) {
-		wxASSERT(device->GetDevice() == route->GetOutDevice());
-	}
-#endif
-	output = device;
-}
-
-
-void MutBoxChannelShape::AddPossibleOutput(MutOutputDeviceShape * device) {
-	OutDevice * out;
-	if (route) out = route->GetOutDevice(); else out = NULL;
-	if (!out) return;
-	if (device->GetDevice() == out) {
-		SetOutput(device);
-		device->AddRoute(route);
-	}
-}
-
-
-void MutBoxChannelShape::DrawLines(wxDC & dc, const wxPoint & parentPosition) const
-{
-	wxRect m_rect = GetRect();
-	m_rect.x += parentPosition.x;
-	m_rect.y += parentPosition.y;
+	BEGIN_EVENT_TABLE(MutBoxChannelShape, MutIconShape)
+	EVT_LEFT_DCLICK(MutBoxChannelShape::LeftDblClickEvent)
+	//	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutBoxChannelShape::CmLeftDblClick)
+	END_EVENT_TABLE()
 	
-	wxPoint center(m_rect.x + m_rect.width/2, m_rect.y + m_rect.height/2);
 
-	if (input) {
-		wxRect rect = input->GetRect();
-		wxPoint p2(center.x, 
-			   m_rect.y + Icon.GetHeight()/2);
-		wxPoint p1(input->GetPerimeterPoint(wxPoint(rect.x+rect.width/2,rect.y + rect.height/2), p2));
-		p2 = GetPerimeterPoint(p2,p1,parentPosition);
-		input -> LineTo(dc,p1);
-		dc.DrawLine(p1,p2);
-		dc.DrawLine(p2,center);
+	bool MutBoxChannelShape::Destroy() {
+/*
+		if (m_parent) {
+			wxSizer * sizer = GetContainingSizer();
+			if (sizer) 
+				sizer -> Detach (this);
+			wxWindow * parent = m_parent;
+			parent->RemoveChild(this);
+			SetParent(NULL);
+			parent->InvalidateBestSize();
+			parent->SetInitialSize(wxDefaultSize);
+			parent->Layout();		
+		}
+*/
+		return MutIconShape::Destroy();
 	}
 
-	if (output) {
-#ifdef DEBUG
-		DEBUGLOG (other, _T("Drawing output line to device %x"),output->GetDevice());
-		wxASSERT(output->GetDevice());
-		DEBUGLOG (other, _T("Lines for device:\n%s"), output->GetDevice()->TowxString().c_str());
-#endif
-		wxRect rect = output->GetRect();
-		DEBUGLOG (other, _T("Output rect: (%d,%d) -- (%d,%d)"),rect.x,rect.y,rect.x+rect.width, rect.y+rect.height);
-		wxPoint p2(center.x, m_rect.y + Icon.GetHeight()/2);
-		wxPoint p1(output->GetPerimeterPoint(wxPoint(rect.x+rect.width/2,rect.y + rect.height/2), p2));
-		p2 = GetPerimeterPoint(p2,p1,parentPosition);
-		output -> LineTo(dc,p1);
-		dc.DrawLine(p1,p2);
-		dc.DrawLine(p2,center);
+	MutIcon& MutBoxChannelShape::GetMutIcon()
+	{
+
+		DEBUGLOG (other, _T("Checking icons"));
+
+		wxASSERT(ActiveChannelBitmap.IsOk () 
+			 && PassiveChannelBitmap.IsOk ());
+
+		if (route && (route -> GetActive())) {
+			return ActiveChannelBitmap;
+		} else {
+			return PassiveChannelBitmap;
+		}
 	}
-}
+	void MutBoxChannelShape::Add(MutInputDeviceShape * device) 
+	{
+		if (input) UNREACHABLEC;
+		input = device;
+	}
 
-wxPoint MutBoxChannelShape::GetPerimeterPoint(const wxPoint &i,const wxPoint &o, const wxPoint & parentPosition) const {
-	wxRect r = GetRect();
-	DEBUGLOG (other, _T("Rect: (%d,%d) -- (%d,%d)"),r.x,r.y,r.x+r.width,r.y+r.height);
-	DEBUGLOG (other, _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
-//	wxRect ir = GetIconRect();
+	void MutBoxChannelShape::Add(MutOutputDeviceShape * device)
+	{
+		if (output) UNREACHABLEC;
+		output = device;
+	}
 
-	r.x += parentPosition.x;
-	r.y += parentPosition.y;
+	void MutBoxChannelShape::Add(mutabor::Route r)
+	{
+		if (route) UNREACHABLEC;
+		route = r;
+	}
 
-#ifdef DEBUG
-	wxASSERT(r.Contains(i));
-#endif
-	wxPoint p(r.x + r.width/2, r.y + r.height/2);
-		
-	if (r.x + r.width < o.x) {
-		p.x = r.x + r.width;
-	} else if (p.x > o.x) {
-		p.x = r.x;
-	} else p = o;
+	      
+	/// replace an existing output device
+	bool MutBoxChannelShape::Replace (MutOutputDeviceShape * olddev, 
+					  MutOutputDeviceShape * newdev) {
+		bool retval = olddev == output;
+		if (retval)
+			output = newdev;
+		else
+			wxASSERT(retval);
+		return retval;
+	}
 	
-	return p;
-}
+	/// replace an existing input device
+	bool MutBoxChannelShape::Replace (MutInputDeviceShape * olddev, 
+			    MutInputDeviceShape * newdev) {
+		bool retval = olddev == input;
+		if (retval)
+			input = newdev;
+		else
+			wxASSERT(retval);
+		return retval;
+	}
 
-void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel, MutRouteWnd * parentwin, wxWindow * routeWindow, int selectBox) {
-	wxSizer * routeSizer = routeWindow->GetSizer();
-	if (!routeSizer) UNREACHABLECT(MutBoxChannelShape);
-	
-	InputFilterPanel * inputfilter = new InputFilterPanel(routeWindow);
-	MutBoxChannelShape::InitializeInputFilter(inputfilter,parentwin,channel);
-	
-	RoutePanel * routePanel = new RoutePanel(routeWindow);
-	MutBoxChannelShape::InitializeRoute(routePanel,parentwin,channel,selectBox);
-	
-	OutputFilterPanel * outputfilter = new OutputFilterPanel(routeWindow);
-	MutBoxChannelShape::InitializeOutputFilter(outputfilter,parentwin,channel);
-	
-	routePanel->SetInput(inputfilter);
-	routePanel->SetOutput(outputfilter);
-	routePanel->SetChannel(channel);
-	
-	RouteRemoveButton * removeButton = new RouteRemoveButton(routePanel,routeWindow);
-	
-	routeSizer->Add(inputfilter,0,wxEXPAND);
-	routeSizer->Add(routePanel,0,wxEXPAND);
-	routeSizer->Add(outputfilter,0,wxEXPAND);
-	routeSizer->Add(removeButton,0,wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL,5);
-	removeButton->EnableRoute();	
-}
+	/// replace an existing route
+	bool MutBoxChannelShape::Replace (mutabor::Route oldroute,
+					  mutabor::Route newroute) {
+		bool retval = oldroute == route;
+		if (retval)
+			route = newroute;
+		else
+			wxASSERT(retval);
+		return retval;
+	}
 
+	/// remove an existing output device
+	bool MutBoxChannelShape::Remove (MutOutputDeviceShape * out) {
+		bool retval = out == output;
+		if (retval)
+			output = NULL;
+		else 
+			UNREACHABLEC;
+		return retval;
+	}
+	/// remove an existing input device
+	bool MutBoxChannelShape::Remove (MutInputDeviceShape * in) {
+		bool retval = in == input;
+		if (retval)
+			input = NULL;
+		else 
+			UNREACHABLEC;
+		return retval;
+	}
+	/// remove an attatched route
+	bool MutBoxChannelShape::Remove (mutabor::Route r) {
+		bool retval = route == r
+			&& input == NULL && output == NULL;
+		if (!retval)
+			UNREACHABLEC;
+		return retval;
+	}
 
-
-void MutBoxChannelShape::InitializeInputFilter(InputFilterPanel * panel, 
-					       MutRouteWnd * par,
-					       MutBoxChannelShape * shape)
-{
-	wxASSERT(par);
-	wxChoicebook * choiceBook = panel->GetInputDeviceBook();
-	
-	MutInputDeviceShape * input;
-	if (shape)
-		input = shape->input;
-	else
-		input = NULL;
-	Route * route;
-	if (shape)
-		route = shape->route;
-	else
+	void MutBoxChannelShape::Attatch(mutabor::Route r) {
+		if (route) UNREACHABLEC;
+		else route = r;
+	}
+	void MutBoxChannelShape::Detatch(mutabor::Route r) {
+		if (route != r) UNREACHABLEC;
 		route = NULL;
-	
-	panel->AddPage(new wxPanel(choiceBook),_("No input device"),!input,NULL);
-	wxSizer *inputs = par->GetInputDevices();
-	const wxSizerItemList &list = inputs->GetChildren();
-	for (wxSizerItemList::const_iterator i = list.begin(); 
-	     i != (list.end()); i++) {
-		MutInputDeviceShape * device = dynamic_cast<MutInputDeviceShape *> ((*i)->GetWindow());
-		
-		if (!device) continue;
-		wxPanel * devicePanel = device -> GetInputFilterPanel(choiceBook, route);
-		panel -> AddPage(devicePanel, device->GetLabel(), input == device, device);
 	}
-}
 
-void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
-					 MutRouteWnd * par,
-					 MutBoxChannelShape * shape,
-					 int selectBox)
-{
-	wxASSERT(par);
-	wxASSERT(panel);
+	void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel, 
+						  MutRouteWnd * parentwin, 
+						  wxWindow * routeWindow, 
+						  int selectBox) {
+		wxSizer * routeSizer = routeWindow->GetSizer();
+		if (!routeSizer) UNREACHABLECT(MutBoxChannelShape);
 	
-	if (!par || !panel) return;
-	Route * route;
-	if (shape)
-		route = shape->route;
-	else
-		route = NULL;
+		InputFilterPanel * inputfilter = new InputFilterPanel(routeWindow);
+		MutBoxChannelShape::InitializeInputFilter(inputfilter,
+							  parentwin,
+							  channel);
 	
-	if (route)
-		panel->SetActive(route->GetActive());
-	else
-		panel->SetActive(true);
+		RoutePanel * routePanel = new RoutePanel(routeWindow);
+		MutBoxChannelShape::InitializeRoute(routePanel,
+						    parentwin,
+						    channel,
+						    selectBox);
 	
-	wxSizer *boxes = par->GetBoxes();
+		OutputFilterPanel * outputfilter = 
+			new OutputFilterPanel(routeWindow);
+		MutBoxChannelShape::InitializeOutputFilter(outputfilter,
+							   parentwin,
+							   channel);
 
 	
-	bool found = false;
+		routePanel->SetInput(inputfilter);
+		routePanel->SetOutput(outputfilter);
+		routePanel->SetChannel(channel);
 	
-	const wxSizerItemList &list = boxes->GetChildren();
-	for (wxSizerItemList::const_iterator i = list.begin(); 
-	     i != (list.end()); i++) {
-		MutBoxShape * box = dynamic_cast<MutBoxShape *> ((*i)->GetWindow());
-		if (box) {
-			bool select = box->GetBoxId() == selectBox;
-			panel->AddBox(box, select);
-			found |= select;
+		RouteRemoveButton * removeButton = 
+			new RouteRemoveButton(routePanel,routeWindow);
+	
+		routeSizer->Add(inputfilter,0,wxEXPAND);
+		routeSizer->Add(routePanel,0,wxEXPAND);
+		routeSizer->Add(outputfilter,0,wxEXPAND);
+		routeSizer->Add(removeButton,0,
+				wxALL|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL,5);
+		removeButton->EnableRoute();	
+	}
+
+
+
+	void MutBoxChannelShape::InitializeInputFilter(InputFilterPanel * panel, 
+						       MutRouteWnd * par,
+						       MutBoxChannelShape * shape)
+	{
+		wxASSERT(par);
+		wxChoicebook * choiceBook = panel->GetInputDeviceBook();
+	
+		MutInputDeviceShape * input;
+		if (shape)
+			input = shape->input;
+		else
+			input = NULL;
+		Route  route;
+		if (shape)
+			route = shape->route;
+		else
+			route = NULL;
+	
+		panel->AddPage(new wxPanel(choiceBook),
+			       _("No input device"),
+			       !input,
+			       NULL);
+		wxSizer *inputs = par->GetInputDevices();
+		const wxSizerItemList &list = inputs->GetChildren();
+		for (wxSizerItemList::const_iterator i = list.begin(); 
+		     i != (list.end()); i++) {
+			MutInputDeviceShape * device = 
+				dynamic_cast<MutInputDeviceShape *> 
+				((*i)->GetWindow());
+		
+			if (!device) continue;
+			wxPanel * devicePanel = 
+				device -> GetInputFilterPanel(choiceBook, route);
+			panel -> AddPage(devicePanel, 
+					 device->GetLabel(), 
+					 input == device,
+					 device);
 		}
 	}
 
-	if (!found)
-		panel->AddBox(NULL, true);
-}
+	void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
+						 MutRouteWnd * par,
+						 MutBoxChannelShape * shape,
+						 int selectBox)
+	{
+		wxASSERT(par);
+		wxASSERT(panel);
+	
+		if (!par || !panel) return;
+		Route  route;
+		if (shape)
+			route = shape->route;
+		else
+			route = NULL;
+	
+		if (route)
+			panel->SetActive(route->GetActive());
+		else
+			panel->SetActive(true);
+	
+		wxSizer *boxes = par->GetBoxes();
 
-void MutBoxChannelShape::InitializeOutputFilter(OutputFilterPanel * panel, 
-					       MutRouteWnd * par,
-					       MutBoxChannelShape * shape) {
-	wxASSERT(par);
-	wxASSERT(panel);
-	if (!par || !panel) return;
+	
+		bool found = false;
+	
+		const wxSizerItemList &list = boxes->GetChildren();
+		for (wxSizerItemList::const_iterator i = list.begin(); 
+		     i != (list.end()); i++) {
+			MutBoxShape * box = 
+				dynamic_cast<MutBoxShape *> ((*i)->GetWindow());
+			if (box) {
+				bool select = box->GetBoxId() == selectBox;
+				panel->AddBox(box, select);
+				found |= select;
+			}
+		}
 
-	// parent for child elements
-	wxChoicebook * choiceBook = panel->GetOutputDeviceBook();
-	
-	MutOutputDeviceShape * output;
-	if (shape)
-		output = shape->output;
-	else
-		output = NULL;
-	Route * route;
-	if (shape)
-		route = shape->route;
-	else
-		route = NULL;
-	
-	panel -> AddPage(new wxPanel(choiceBook), _("No output device"), !output, NULL);
-	
-	wxSizer *outputs = par->GetOutputDevices();
-	const wxSizerItemList &list = outputs->GetChildren();
-	for (wxSizerItemList::const_iterator i = list.begin(); 
-	     i != (list.end()); i++) {
-		MutOutputDeviceShape * device = wxDynamicCast((*i)->GetWindow(),
-							     MutOutputDeviceShape);
-		if (!device) continue;
-		wxPanel * devicePanel = device -> GetOutputFilterPanel (choiceBook, route);
-		panel -> AddPage (devicePanel, device->GetLabel(), output == device, device);
-	}
-}
-
-void MutBoxChannelShape::ReadPanel(RoutePanel * panel) 
-{
-	wxASSERT(panel);
-	wxASSERT(route);
-	if (!panel) return;
-	if (!route) return;
-	
-	if (!panel->IsEnabled()) {
-		DetachChannel();
-		DeleteSelf();
-		return;
+		if (!found)
+			panel->AddBox(NULL, true);
 	}
 
-	DEBUGLOG (dialog, _T("Setting route channel: old: %d; new: %d"),route->GetActive(),panel->GetActive());
-	route->SetActive(panel->GetActive());
+	void MutBoxChannelShape::InitializeOutputFilter(OutputFilterPanel * panel, 
+							MutRouteWnd * par,
+							MutBoxChannelShape * shape) {
+		wxASSERT(par);
+		wxASSERT(panel);
+		if (!par || !panel) return;
+
+		// parent for child elements
+		wxChoicebook * choiceBook = panel->GetOutputDeviceBook();
 	
-	MutBoxShape * box = panel->GetBox();
-	if (!box) {
-		box = dynamic_cast<MutBoxShape *> (GetParent());
-		if (!box) UNREACHABLEC;
-	} else if (box != GetParent()) {
-		/**
-		 * \todo reparent box channel
-		 */
-		MutBoxShape * parent = dynamic_cast<MutBoxShape *> (GetParent());
-		parent->Detach(this);
-		box->AddChannel(this);
+		MutOutputDeviceShape * output;
+		if (shape)
+			output = shape->output;
+		else
+			output = NULL;
+		Route  route;
+		if (shape)
+			route = shape->route;
+		else
+			route = NULL;
+	
+		panel -> AddPage(new wxPanel(choiceBook),
+				 _("No output device"), 
+				 !output, 
+				 NULL);
+	
+		wxSizer *outputs = par->GetOutputDevices();
+		const wxSizerItemList &list = outputs->GetChildren();
+		for (wxSizerItemList::const_iterator i = list.begin(); 
+		     i != (list.end()); i++) {
+			MutOutputDeviceShape * device = 
+				wxDynamicCast((*i)->GetWindow(),
+					      MutOutputDeviceShape);
+			if (!device) continue;
+			wxPanel * devicePanel = 
+				device -> GetOutputFilterPanel (choiceBook, route);
+	 		panel -> AddPage (devicePanel, 
+					  device->GetLabel(), 
+					  output == device, 
+					  device);
+		}
+	}
+
+	void MutBoxChannelShape::ReadPanel(RoutePanel * panel) 
+	{
+		wxASSERT(panel);
+		wxASSERT(route);
+		if (!panel) return;
+		if (!route) return;
+	
+		if (!panel->IsEnabled()) {
+			route->Destroy();
+			/*
+			DetachChannel();
+			DeleteSelf();
+			*/
+			return;
+		}
+
+		DEBUGLOG (dialog, _T("Setting route channel: old: %d; new: %d"),
+			  route->GetActive(),
+			  panel->GetActive());
+		route->SetActive(panel->GetActive());
+	
+		MutBoxShape * box = panel->GetBox();
+		if (!box) {
+			box = dynamic_cast<MutBoxShape *> (GetParent());
+			if (!box) UNREACHABLEC;
+		}  if (box != GetParent()) {
+			MutBoxShape * oldbox = 
+				dynamic_cast<MutBoxShape *>(GetParent());
+			wxASSERT(oldbox);
+			ToGUIBase(route).Reconnect(oldbox,box);
+		}
 		
-		STUBC;
-		return;
-	}
 	
-	InputFilterPanel * inputPanel = panel->GetInput();
-	if (!inputPanel) UNREACHABLEC;
-	else if (inputPanel && !input) {
-		input = inputPanel->GetCurrentSelection();
-		if (input) input -> AddRoute(route);
- 	}
-	wxASSERT(inputPanel);
-	if (input)
-		input->ReadPanel(inputPanel,this);
+		OutputFilterPanel * outputPanel = panel->GetOutput();
+		if (!outputPanel) UNREACHABLEC;
+		else if (outputPanel) {
+			MutOutputDeviceShape * newoutput = 
+				outputPanel->GetCurrentSelection();
+			if (newoutput) {
+				if (newoutput != output) {
+					if (output) 
+						Reconnect(output,newoutput);
+					else {
+						Attatch(newoutput);
+					}
+				}
+				output->ReadPanel(outputPanel,this);
+				output->Refresh();
+			} else if (output) {
+				Detatch(output);
+			}
+		}
+
 	
-	OutputFilterPanel * outputPanel = panel->GetOutput();
-	if (!outputPanel) UNREACHABLEC;
-	else if (outputPanel && !output) {
-		SetOutput(outputPanel->GetCurrentSelection(),true);
-		if (output) output->AddRoute(this);
+		InputFilterPanel * inputPanel = panel->GetInput();
+		if (!inputPanel) UNREACHABLEC;
+		else if (inputPanel) {
+			MutInputDeviceShape * newinput = 
+				inputPanel->GetCurrentSelection();
+			if (newinput) {
+				if (newinput != input) {
+					if (input) 
+						Reconnect(input,newinput);
+					else {
+						Attatch(newinput);
+					}
+				}
+				input->ReadPanel(inputPanel,this);
+				input->Refresh();
+			} else if (input) {
+				Detatch(input);
+			}
+		}
+
+	
+
+
+		DebugCheckRoutes();
+		if (input)
+			input->Refresh();
+		if (output)
+			output->Refresh();
+		Refresh();
 	}
-	if (output)
-		output->ReadPanel(outputPanel,this);
-	/// TODO: consistency check
-	Refresh();
-}
 
-void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
-	if (!rect) {
-		SetIcon(GetMutIcon());
+#if 0
+
+
+					   bool changeRoute) 
+	{
+		DEBUGLOG(routing,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
+		if (changeRoute) {
+			wxASSERT(route);
+			OutputDevice dev = device ? device -> GetDevice() : NULL;
+			route -> Attatch(dev);
+		}
+#ifdef DEBUG
+		if (device && route) {
+			wxASSERT(device->GetDevice() == route->GetOutputDevice());
+		}
+#endif
+		output = device;
 	}
-	MutIconShape::Refresh(eraseBackground,rect);
+#endif
+
+	void MutBoxChannelShape::DrawLines(wxDC & dc, 
+					   const wxPoint & parentPosition,
+					   const wxRect & screenpos) const
+	{
+		wxRect m_rect = GetRect();
+		m_rect.x += parentPosition.x;
+		m_rect.y += parentPosition.y;
+	
+		wxPoint center(m_rect.x + m_rect.width/2, 
+			       m_rect.y + m_rect.height/2);
+		wxPoint origin (screenpos.x,screenpos.y);
+
+		if (input) {
+			wxRect rect = input->GetRect();
+			// we do not know the position of the perimeter
+			// point exactly thus we consider the whole box
+			// for visibility
+			if (!( (rect.x + rect.width < 0 && 
+				m_rect.x + m_rect.width < 0) ||
+			       (rect.y + rect.height < 0 && 
+				m_rect.y + m_rect.height < 0) ||
+			       (rect.x > screenpos.width 
+				&& m_rect.x > screenpos.width) ||
+			       (rect.y > screenpos.height 
+				&& m_rect.y > screenpos.height) ) ) {
+				wxPoint p2(center.x, 
+					   m_rect.y + Icon.GetHeight()/2);
+				wxPoint p1(rect.x+rect.width/2,
+				       rect.y + rect.height/2);
+				p1 = input->GetPerimeterPoint(p1, p2);
+				p2 = GetPerimeterPoint(p2,p1,parentPosition);
+				input -> LineTo(dc,p1,screenpos);
+				dc.DrawLine(p1+origin,p2+origin);
+				dc.DrawLine(p2+origin,center+origin);
+			}
+		}
+
+		if (output) {
+#ifdef DEBUG
+			DEBUGLOG (other, _T("Drawing output line to device %x"),
+				  output->GetDevice().get());
+			wxASSERT(output->GetDevice());
+			DEBUGLOG (other, 
+				  _T("Lines for device:\n%s"), 
+				  output->GetDevice()->TowxString().c_str());
+#endif
+			wxRect rect = output->GetRect();
+			DEBUGLOG (other,
+				  _T("Output rect: (%d,%d) -- (%d,%d)"),
+				  rect.x,rect.y,rect.x+rect.width, 
+				  rect.y+rect.height);
+			// we do not know the position of the perimeter
+			// point exactly thus we consider the whole box
+			// for visibility
+			if (!( (rect.x + rect.width < 0 && 
+				m_rect.x + m_rect.width < 0) ||
+			       (rect.y + rect.height < 0 && 
+				m_rect.y + m_rect.height < 0) ||
+			       (rect.x > screenpos.width 
+				&& m_rect.x > screenpos.width) ||
+			       (rect.y > screenpos.height 
+				&& m_rect.y > screenpos.height) ) ) {
+
+				wxPoint p2(center.x, m_rect.y + Icon.GetHeight()/2);
+				wxPoint p1(rect.x+rect.width/2,
+				   rect.y + rect.height/2);
+				p1 = output->GetPerimeterPoint(p1, p2);
+				p2 = GetPerimeterPoint(p2,p1,parentPosition);
+				output -> LineTo(dc,p1,screenpos);
+				dc.DrawLine(p1+origin, p2+origin);
+				dc.DrawLine(p2+origin, center+origin);
+			}
+		}
+	}
+
+	wxPoint MutBoxChannelShape::GetPerimeterPoint(const wxPoint &i,
+						      const wxPoint &o, 
+						      const wxPoint & parentPosition)
+		const {
+		wxRect r = GetRect();
+		DEBUGLOG (other, 
+			  _T("Rect: (%d,%d) -- (%d,%d)"),
+			  r.x,r.y,r.x+r.width,r.y+r.height);
+		DEBUGLOG (other, 
+			  _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
+//	wxRect ir = GetIconRect();
+
+		r.x += parentPosition.x;
+		r.y += parentPosition.y;
+
+#ifdef DEBUG
+		wxASSERT(r.Contains(i));
+#endif
+		wxPoint p(r.x + r.width/2, r.y + r.height/2);
+		
+		if (p.x <= o.x) {
+			p.x = r.x + r.width;
+		} else if (p.x > o.x) {
+			p.x = r.x;
+		}
+	
+		return p;
+	}
+
+	void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
+		if (!rect) {
+			SetIcon(GetMutIcon());
+		}
+		MutIconShape::Refresh(eraseBackground,rect);
+	}
+
+
+	void MutBoxChannelShape::DetachChannel() {
+		if (input) Detatch(input);
+		if (output) Detatch(output);
+	}
 }
-
-void MutBoxChannelShape::DetachChannel() {
-	if (input) input->RemoveRoute(route);
-	if (output) output->RemoveRoute(route);
-	delete route;
-	route = NULL;
-}
-
-
-#include "wx/listimpl.cpp"
-
-WX_DEFINE_LIST (MutBoxChannelShapeList);
 
 /*
  * \}

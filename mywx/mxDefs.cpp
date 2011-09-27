@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mxDefs.cpp,v 1.11 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mxDefs.cpp,v 1.12 2011/09/27 20:13:26 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/09/27 20:13:26 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: mxDefs.cpp,v $
- * Revision 1.11  2011/02/20 22:35:59  keinstein
+ * Revision 1.12  2011/09/27 20:13:26  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.11  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -27,6 +34,10 @@
  ********************************************************************/
 #include "Defs.h"
 #include "mhDefs.h"
+
+#include "wx/filedlg.h"
+#include "wx/log.h"
+#include "wx/sizer.h"
 
 #if defined(WX) && (wxUSE_UNICODE || wxUSE_WCHAR_T)
 wxCSConv muCSConv(wxT("ISO-8859-1"));

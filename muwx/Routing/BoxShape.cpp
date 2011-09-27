@@ -4,15 +4,22 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.3 2011/09/08 16:51:21 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/09/08 16:51:21 $
-* \version $Revision: 1.3 $
+* $Date: 2011/09/27 20:13:24 $
+* \version $Revision: 1.4 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.3  2011/09/08 16:51:21  keinstein
+* Revision 1.4  2011/09/27 20:13:24  keinstein
+* * Reworked route editing backend
+* * rewireing is done by RouteClass/GUIRoute now
+* * other classes forward most requests to this pair
+* * many bugfixes
+* * Version change: We are reaching beta phase now
+*
+* Revision 1.3  2011-09-08 16:51:21  keinstein
 * Set foreground color in box status windows
 * Fix updating box status windows
 * update RtMidi (includes Jack compilation mode)
@@ -150,34 +157,42 @@
 ********************************************************************/
 #include "Defs.h"
 #include "Global.h"
-//#include "wx/wx.h"
 #include "BoxShape.h"
 #include "DebugRoute.h"
+#include "muwx/Routing/OutputDeviceShape.h"
+#include "muwx/Routing/InputDeviceShape.h"
+#include "muwx/Routing/BoxDlg.h"
+#include "muwx/MutRouteWnd.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
+#include "muwx/GUIBoxData-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
+using namespace mutabor;
 
-wxColour BoxColours[MAX_BOX];
-const wxColour * BoxTextColours[MAX_BOX];
+namespace mutaborGUI {
 
-void initBoxColours() {
-	for (int i = 1; i<= MAX_BOX; i++) {
-		int r = ((i & 0x01) << 7 ) | ((i & 0x08) << 3) | ((i & 0x40) >> 1);
-		r = r?r-1:0;
-		int g = ((i & 0x02) << 6 ) | ((i & 0x10) << 2) | ((i & 0x80) >> 2);
-		g = g?g-1:0;
-		int b = ((i & 0x04) << 5 ) | ((i & 0x20) << 1) | ((i & 0x100) >> 3);
-		b = b?b-1:0;
-		DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),i-1,r,g,b);
-		if (r+b+g < 0x180) 
-			BoxTextColours[i-1] = wxWHITE;
-		else
-			BoxTextColours[i-1] = wxBLACK;
-		BoxColours[i-1]=wxColour(r,g,b);
+	wxColour BoxColours[MAX_BOX];
+	const wxColour * BoxTextColours[MAX_BOX];
+
+	void initBoxColours() {
+		for (int i = 1; i<= MAX_BOX; i++) {
+			int r = ((i & 0x01) << 7 ) | ((i & 0x08) << 3) | ((i & 0x40) >> 1);
+			r = r?r-1:0;
+			int g = ((i & 0x02) << 6 ) | ((i & 0x10) << 2) | ((i & 0x80) >> 2);
+			g = g?g-1:0;
+			int b = ((i & 0x04) << 5 ) | ((i & 0x20) << 1) | ((i & 0x100) >> 3);
+			b = b?b-1:0;
+			DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),i-1,r,g,b);
+			if (r+b+g < 0x180) 
+				BoxTextColours[i-1] = wxWHITE;
+			else
+				BoxTextColours[i-1] = wxBLACK;
+			BoxColours[i-1]=wxColour(r,g,b);
+		}
 	}
-}
 
 /*
   wxColour BoxColors[MAX_BOX]  =
@@ -195,75 +210,76 @@ void initBoxColours() {
   wxColour(0xFF, 0xFF, 0x80),
   };
 */
-const wxColour & BoxColour(int nr)
-{
+	const wxColour & BoxColour(int nr)
+	{
 
-	DEBUGLOG2(other,_T("Colour for box %d requested"),nr);
-	if ( nr == GmnBox )
-		return wxNullColour;
-	else if (nr == NoBox) 
-		return wxNullColour;
-	//	nr %= 11;
-	nr %= MAX_BOX;
-	if (nr < 0) nr += MAX_BOX;
-	DEBUGLOG2(other,_T("Returning colour for Box number %d"),nr);
-	return BoxColours[nr];
+		DEBUGLOG2(other,_T("Colour for box %d requested"),nr);
+		if ( nr == GmnBox )
+			return wxNullColour;
+		else if (nr == NoBox) 
+			return wxNullColour;
+		//	nr %= 11;
+		nr %= MAX_BOX;
+		if (nr < 0) nr += MAX_BOX;
+		DEBUGLOG2(other,_T("Returning colour for Box number %d"),nr);
+		return BoxColours[nr];
 
-}
+	}
 
-const wxColour & BoxTextColour(int nr)
-{
-	DEBUGLOG2(other,_T("Text colour for box %d requested"),nr);
-	if ( nr == GmnBox )
-		return *wxBLACK;
-	//	nr %= 11;
-	nr %= MAX_BOX;
-	if (nr < 0) nr += MAX_BOX;
-	DEBUGLOG2(other,_T("Returning text colour for Box number %d"),nr);
-	return *(BoxTextColours[nr]);
-}
+	const wxColour & BoxTextColour(int nr)
+	{
+		DEBUGLOG2(other,_T("Text colour for box %d requested"),nr);
+		if ( nr == GmnBox )
+			return *wxBLACK;
+		//	nr %= 11;
+		nr %= MAX_BOX;
+		if (nr < 0) nr += MAX_BOX;
+		DEBUGLOG2(other,_T("Returning text colour for Box number %d"),nr);
+		return *(BoxTextColours[nr]);
+	}
 
 
-static inline wxSize GetStaticBoxSize( MutBoxIconShape *box )
-{
-	// this has to be done platform by platform as there is no way to
-	// guess the thickness of a wxStaticBox border
-	wxSize s  = box->DoGetBestSize();
-	DEBUGLOGTYPE(other,*box,_T("Best Size: %dx%d"),s.x,s.y);
-	return s;
-}
+	static inline wxSize GetStaticBoxSize( MutBoxIconShape *box )
+	{
+		// this has to be done platform by platform as there is no way to
+		// guess the thickness of a wxStaticBox border
+		wxSize s  = box->DoGetBestSize();
+		DEBUGLOGTYPE(other,*box,_T("Best Size: %dx%d"),s.x,s.y);
+		return s;
+	}
 
-IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape)
+	IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape)
 
-BEGIN_EVENT_TABLE(MutBoxShape, MutBoxIconShape)
-EVT_LEFT_DCLICK(MutBoxShape::LeftDblClickEvent)
-//EVT_CLOSE(MutDeviceShape::DeleteSelfEvent)
-END_EVENT_TABLE()
+	BEGIN_EVENT_TABLE(MutBoxShape, MutBoxIconShape)
+	EVT_LEFT_DCLICK(MutBoxShape::LeftDblClickEvent)
+	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutBoxShape::CmLeftDblClick)
+	//EVT_CLOSE(MutDeviceShape::DeleteSelfEvent)
+	END_EVENT_TABLE()
 
-wxSizerFlags MutBoxShape::sizerFlags;
-int MutBoxShape::maxBoxId = Box0 - 1;
-
+	wxSizerFlags MutBoxShape::sizerFlags;
+	int MutBoxShape::maxBoxId = Box0 - 1;
 
 /// TODO: fix tab order
-bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, int Id)
-{
-	MutBoxIconShape::Create(parent,wid);
-	channels = new wxBoxSizer(wxVERTICAL);
-	SetSizer(channels);
-	SetAutoLayout(true);
+	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, int Id)
+	{
+		MutBoxIconShape::Create(parent,wid);
+		channels = new wxBoxSizer(wxVERTICAL);
+		SetSizer(channels);
+		SetAutoLayout(true);
 //	m_icon = new MutBoxIconShape(this,-1);
-	m_icon = this;
-	SetBoxId(Id,false);
-	if (!m_icon) return false;
-	return true;
-}
+		m_icon = this;
+		SetBoxId(Id,false);
+		BoxData::GetBox(Id).Attatch(this);
+		if (!m_icon) return false;
+		return true;
+	}
 
 
-void MutBoxShape::SetBoxId(int Id, bool layout) {
-	boxId = Id;
-	if (boxId >= maxBoxId) maxBoxId = boxId + 1;
-	if (m_icon) {
-		switch (boxId) {
+	void MutBoxShape::SetBoxId(int Id, bool layout) {
+		boxId = Id;
+		if (boxId >= maxBoxId) maxBoxId = boxId + 1;
+		if (m_icon) {
+			switch (boxId) {
 			case NewBox:
 				m_icon->SetLabel(_("New Box"));
 				m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
@@ -283,213 +299,282 @@ void MutBoxShape::SetBoxId(int Id, bool layout) {
 				m_icon->SetForegroundColour(BoxTextColour(boxId));
 				m_icon->SetBackgroundColour(BoxColour(boxId));
 				break;
+			}
+			if (layout) {
+				InvalidateBestSize();
+				SetInitialSize(wxDefaultSize);
+				m_parent->Layout();
+			}
 		}
-		if (layout) {
+	
+	}
+
+
+	MutBoxChannelShape * MutBoxShape::Add(MutBoxChannelShape * channel) {
+		if (channel) {
+			channels->Add(channel,0,wxALIGN_CENTER_HORIZONTAL | wxEXPAND);
+			if (channel->GetParent() != this) {
+				wxASSERT(!channel->GetParent());
+				AddChild(channel);
+			}
+#ifdef DEBUG
+			wxASSERT(channel->GetContainingSizer() == channels);
+			wxSize s = channel->GetBestSize();
+			DEBUGLOG (other, _T("channel best size: %dx%d"),s.x,s.y);
+#endif		
 			InvalidateBestSize();
 			SetInitialSize(wxDefaultSize);
 			m_parent->Layout();
 		}
+		return channel;
 	}
+
+	MutBoxChannelShape * MutBoxShape::AddChannel(RoutePanel * panel) {
+		Route  route  = RouteFactory::Create();
+		wxASSERT(route);
+		if (!route) return NULL;
+		route -> Attatch(boxId); // this might be ovewritten by ReadPanel
 	
-}
 
-
-MutBoxChannelShape * MutBoxShape::AddChannel(MutBoxChannelShape * channel) {
-	if (channel) {
-		channels->Add(channel,0,wxALIGN_CENTER_HORIZONTAL | wxEXPAND);
+		MutBoxChannelShape * channel = 
 #ifdef DEBUG
-		wxSize s = channel->GetBestSize();
-		DEBUGLOG (other, _T("channel best size: %dx%d"),s.x,s.y);
-#endif		
-		InvalidateBestSize();
-		SetInitialSize(wxDefaultSize);
-		m_parent->Layout();
+			ToGUIBase(route).GetShape(GetParent());
+		wxASSERT(!channel);
+#endif
+		channel = 
+			GUIRouteFactory::CreateBoxChannelShape(route,this);
+		if (channel) {
+			Add(channel);
+			channel->ReadPanel(panel);
+		}
+		return channel;
 	}
-	return channel;
-}
 
-MutBoxChannelShape * MutBoxShape::AddChannel(Route * route)
-{
-	DEBUGLOG (other, _T("Adding route %p to window %p"),route, m_parent);
-	MutBoxChannelShape * channel = 
-		new MutBoxChannelShape(this, wxID_ANY, route);
-	
-	return AddChannel(channel);
-}
-
-MutBoxChannelShape * MutBoxShape::AddChannel(RoutePanel * panel) {
-	Route * route  = new Route (NULL,NULL, RTall, -1,-1, boxId, false);
-	
-# if 0
-	MutBoxChannelShape * channel = new MutBoxChannelShape(this, wxID_ANY, route);
-	channel -> ReadPanel(panel);
-
-
-	return AddChannel(channel);
-# endif
-	MutBoxChannelShape * channel = AddChannel(route);
-	if (channel) channel->ReadPanel(panel);
-	return channel;
-}
-
-bool MutBoxShape::HasChannel(Route * route) {
-	wxSizerItemList & list = channels->GetChildren();
-	for (wxSizerItemList::iterator i = list.begin() ; i!= list.end() ; i++) {
-		MutBoxChannelShape * channel = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-		if (channel->GetRoute() == route) return true;
-	}
-	return false;
-}
-
-void MutBoxShape::AddPossibleOutput(MutOutputDeviceShape * device) {
-	wxSizerItemList list = channels->GetChildren();
-	for (wxSizerItemList::iterator i = list.begin(); 
-	     i != (list.end()); i++)
+	MutBoxChannelShape * MutBoxShape::AddChannel(Route  route)
 	{
+		DEBUGLOG (other, _T("Adding route %p to window %p"),route.get(), m_parent);
+		MutBoxChannelShape * channel = 
+			GUIRouteFactory::CreateBoxChannelShape(route,this);
+		return Add(channel);
+	}
+
+	bool MutBoxShape::Remove(MutBoxChannelShape * shape) {
+		return Detach(shape);
+	}
+
+	bool MutBoxShape::HasChannel(Route  route) {
+		wxSizerItemList & list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin() ; i!= list.end() ; i++) {
+			MutBoxChannelShape * channel = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			if (channel->GetRoute() == route) return true;
+		}
+		return false;
+	}
+
+	void MutBoxShape::AddPossibleOutput(MutOutputDeviceShape * device) {
+		wxSizerItemList list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin(); 
+		     i != (list.end()); i++)
+		{
       
-		MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-		channel->AddPossibleOutput(device);
+			MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			channel->Attatch(device);
+		}
 	}
-}
 
 
-void MutBoxShape::DrawLines(wxDC & dc) 
-{
-	wxSizerItemList list = channels->GetChildren();
-	for (wxSizerItemList::iterator i = list.begin(); 
-	     i != (list.end()); i++)
+	void MutBoxShape::DrawLines(wxDC & dc, const wxRect & screenpos) 
 	{
+		wxSizerItemList list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin(); 
+		     i != (list.end()); i++)
+		{
       
-		MutBoxChannelShape * channel = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-		channel->DrawLines(dc, GetPosition());
+			MutBoxChannelShape * channel = 
+				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			channel->DrawLines(dc, GetPosition(), screenpos);
+		}
 	}
-}
 
-bool MutBoxShape::Detach( wxWindow *window )
-{
-	// avoid deleting m_staticBox in our dtor if it's being detached from the
-	// sizer (which can happen because it's being already destroyed for
-	// example)
-	if ( window == m_icon )
+
+	void MutBoxShape::Add(BoxData * box) {
+		SetBoxId(box->GetId());
+	}
+	bool MutBoxShape::Remove(BoxData * box){
+		if (boxId == box->GetId()) {
+			SetBoxId(NoBox);
+			return true;
+		}
+		return false;
+	}
+
+	bool MutBoxShape::Detach( wxWindow *window )
 	{
-		UNREACHABLEC;
-		m_icon = NULL;
-	}
+		// avoid deleting m_staticBox in our dtor if it's being detached from the
+		// sizer (which can happen because it's being already destroyed for
+		// example)
+		if ( window == m_icon )
+		{
+			UNREACHABLEC;
+			m_icon = NULL;
+		}
 
-	return channels -> Detach( window );
-}
-
-void MutBoxShape::DoLeftDblClick() {
-	BoxDlg * box = ShowBoxDialog();
-	wxASSERT(box);
-	
-	if (!box) return;
-	int Res = box->ShowModal();
-	bool destroySelf = false;
-	
-	if (Res == wxID_OK) {
-		int type = box->GetBoxType();
+		bool ok = true;
 		
-		if (CanHandleType (type)) {
-			readDialog (box);
-		} else {
-			// MutBoxShape newbox = MutInputDeviceShape::CreateShape (type);
-			MutBoxShape * newbox = new MutBoxShape(m_parent, wxID_ANY, type);
-			if (newbox) {
-				newbox->readDialog(box);
-				destroySelf = replaceSelfBy(newbox);
+		// reset the top-level parent's default item if it is this widget
+		wxTopLevelWindow *tlw = 
+			wxDynamicCast(wxGetTopLevelParent((wxWindow*)this),
+				      wxTopLevelWindow);
+
+		if ( tlw )
+		{
+			wxWindow* tmpDefaultItem = tlw->GetTmpDefaultItem();
+			if ( tmpDefaultItem == this )
+				tlw->SetTmpDefaultItem(NULL);
+			else if ( tmpDefaultItem )
+			{
+				// A temporary default item masks the real 
+				// default item, so
+				// temporarily unset the temporary default
+				// item so we can access the
+
+				// real default item.
+				tlw->SetTmpDefaultItem(NULL);
+
+				if ( tlw->GetDefaultItem() == this )
+					tlw->SetDefaultItem(NULL);
+
+				// Set the temporary default item back.
+				tlw->SetTmpDefaultItem(tmpDefaultItem);
+			}
+			else if ( tlw->GetDefaultItem() == this )
+				tlw->SetDefaultItem(NULL);
+		}
+		
+		RemoveChild(window);
+		return ok && channels -> Detach( window );
+	}
+
+	void MutBoxShape::DoLeftDblClick() {
+		BoxDlg * box = ShowBoxDialog();
+		wxASSERT(box);
+	
+		if (!box) return;
+		int Res = box->ShowModal();
+		bool destroySelf = false;
+	
+		if (Res == wxID_OK) {
+			int type = box->GetBoxType();
+		
+			if (CanHandleType (type)) {
+				readDialog (box);
+			} else {
+				MutBoxShape * newbox = 
+					new MutBoxShape(m_parent, wxID_ANY, type);
+				if (newbox) {
+					newbox->readDialog(box);
+					destroySelf = replaceSelfBy(newbox);
 //				m_parent->SetInitialSize(wxDefaultSize);
 //				m_parent->InvalidateBestSize();
+				}
 			}
+		} else if (Res == wxID_REMOVE) {
+			destroySelf = DetachBox();
 		}
-	} else if (Res == wxID_REMOVE) {
-		destroySelf = DetachBox();
+	
+		box->Destroy();
+	
+		DebugCheckRoutes();
+
+		Layout();
+		InvalidateBestSize();
+		Fit();
+		Refresh();
+		if (m_parent) {
+			m_parent->Layout();
+			m_parent->InvalidateBestSize();
+			m_parent->FitInside();
+			m_parent->Refresh();
+			m_parent->Update();
+		} else Update();
+	
+		// Signalize to delete this control
+		// Unfortunately WXMAC segfaults if we use Destroy(), here.
+		if (destroySelf) DeleteSelf();
+	
 	}
-	
-	box->Destroy();
-	
-	// Signalize to delete this control
-	// Unfortunately WXMAC segfaults if we use Destroy(), here.
-	if (destroySelf) DeleteSelf();
-	
-	if (m_parent) {
-		m_parent->Layout();
-		Refresh(true);
-		m_parent->Refresh(true);
-	} else 	Refresh(true);
-	
-	DebugCheckRoutes();
-}
 
 /// Constructs the box configuration dialog.
 /**
  * \todo use value “unknown” for dynamic dialog creation
  *
  */
-BoxDlg * MutBoxShape::ShowBoxDialog() const{
-	MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *>(GetParent());
-	wxASSERT(parentwin);
-	if (!parentwin) return NULL;
+	BoxDlg * MutBoxShape::ShowBoxDialog() const{
+		MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *>(GetParent());
+		wxASSERT(parentwin);
+		if (!parentwin) return NULL;
 	
-	BoxDlg * box = new BoxDlg (parentwin);
-	wxASSERT(box);
-	if (!box) return NULL;
+		BoxDlg * box = new BoxDlg (parentwin);
+		wxASSERT(box);
+		if (!box) return NULL;
 
-	wxWindow * routeWindow = box->GetRouteWindow();
-	wxASSERT(routeWindow);
-	if (!routeWindow) {
-		box->Destroy();
-		return NULL;
-	}
-	wxGridSizer * routeSizer = dynamic_cast<wxGridSizer *> (routeWindow->GetSizer());
+		wxWindow * routeWindow = box->GetRouteWindow();
+		wxASSERT(routeWindow);
+		if (!routeWindow) {
+			box->Destroy();
+			return NULL;
+		}
+		wxGridSizer * routeSizer = dynamic_cast<wxGridSizer *> (routeWindow->GetSizer());
 	
-	if (!routeSizer) {
-		if (routeWindow->GetSizer()) UNREACHABLEC;
+		if (!routeSizer) {
+			if (routeWindow->GetSizer()) UNREACHABLEC;
 		
-		routeSizer = new wxGridSizer(4);
-		if (!routeSizer) box->Destroy(); return NULL;
-		routeWindow->SetSizer(routeSizer);		
-	}
+			routeSizer = new wxGridSizer(4);
+			if (!routeSizer) box->Destroy(); return NULL;
+			routeWindow->SetSizer(routeSizer);		
+		}
 	
-	wxSizerItemList list = channels->GetChildren();
-	for (wxSizerItemList::iterator i = list.begin(); 
-	     i != (list.end()); i++) {
-		wxASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
-		MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
-						     parentwin, routeWindow, GetBoxId());
-	}
+		wxSizerItemList list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin(); 
+		     i != (list.end()); i++) {
+			wxASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
+			MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
+							     parentwin, 
+							     routeWindow, 
+							     GetBoxId());
+		}
 	 
-	InitializeDialog(box);
+		InitializeDialog(box);
 
-	routeWindow->Layout();
-	routeWindow->FitInside();
-	box->Layout();
-	box->Fit();
-	box->CenterOnParent(wxBOTH);
+		routeWindow->Layout();
+		routeWindow->FitInside();
+		box->Layout();
+		box->Fit();
+		box->CenterOnParent(wxBOTH);
 	
-	return box;
-}
+		return box;
+	}
 
-void MutBoxShape::InitializeDialog(BoxDlg * dlg) const {
-	wxASSERT(dlg);
-	dlg->SetBoxType(boxId);
-	if (boxId >= Box0) 
-		dlg->SetBoxNumber(boxId);
-	else
-		dlg->SetBoxNumber(maxBoxId);
-}
+	void MutBoxShape::InitializeDialog(BoxDlg * dlg) const {
+		wxASSERT(dlg);
+		dlg->SetBoxType(boxId);
+		if (boxId >= Box0) 
+			dlg->SetBoxNumber(boxId);
+		else
+			dlg->SetBoxNumber(maxBoxId);
+	}
 
-bool MutBoxShape::readDialog (BoxDlg * box) {
-	wxASSERT(box);
-	if (!box) return false;
-	int type = box->GetBoxType();
-	switch (type) {
+	bool MutBoxShape::readDialog (BoxDlg * box) {
+		wxASSERT(box);
+		if (!box) return false;
+		int type = box->GetBoxType();
+		switch (type) {
 		case NoBox:
 		case GmnBox:
 			SetBoxId(type);
@@ -497,89 +582,87 @@ bool MutBoxShape::readDialog (BoxDlg * box) {
 		default:
 			SetBoxId(box->GetBoxNumber());
 			break;
-	}
-	
-	wxWindow * routeWindow = box->GetRouteWindow();
-	wxASSERT(routeWindow);
-	if (!routeWindow) {
-		return false;
-	}
-	
-	wxWindowList & routePanels = routeWindow->GetChildren();
-	for (wxWindowList::iterator i = routePanels.begin(); 
-	     i != routePanels.end(); i++) {
-		RoutePanel * panel = dynamic_cast<RoutePanel *> (*i);
-		if (!panel) continue;
-		wxASSERT(dynamic_cast<RoutePanel *> (*i));
-		MutBoxChannelShape * channel = panel -> GetChannel();
-		if (!channel && panel->IsEnabled()) 
-			channel = AddChannel(panel);
-		if (channel) {
-			channel -> ReadPanel(panel);
 		}
-	}
-	return true;
-}
-
-bool MutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
-{
-	wxASSERT (newshape);
 	
-	// this is only used in NewMutBoxShape so far.
-	// But we need it, when we implement other Box types
-	UNREACHABLEC;
+		wxWindow * routeWindow = box->GetRouteWindow();
+		wxASSERT(routeWindow);
+		if (!routeWindow) {
+			return false;
+		}
+	
+		wxWindowList & routePanels = routeWindow->GetChildren();
+		for (wxWindowList::iterator i = routePanels.begin(); 
+		     i != routePanels.end(); i++) {
+			RoutePanel * panel = dynamic_cast<RoutePanel *> (*i);
+			if (!panel) continue;
+			wxASSERT(dynamic_cast<RoutePanel *> (*i));
+			MutBoxChannelShape * channel = panel -> GetChannel();
+			if (!channel && panel->IsEnabled()) 
+				channel = AddChannel(panel);
+			if (channel) {
+				channel -> ReadPanel(panel);
+			}
+		}
+		return true;
+	}
+
+	bool MutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
+	{
+		wxASSERT (newshape);
+	
+		// this is only used in NewMutBoxShape so far.
+		// But we need it, when we implement other Box types
+		UNREACHABLEC;
 	
 /*
-	for(Route * route = newshape->device->ReplaceDevice (device);
-	    route; route = route->Next) 
-	{
-		void * p = route->getUserData();
-		wxASSERT (wxDynamicCast (p,MutBoxChannelShape));
-		MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
+  for(Route  route = newshape->device->ReplaceDevice (device);
+  route; route = route->Next) 
+  {
+  void * p = route->getUserData();
+  wxASSERT (wxDynamicCast (p,MutBoxChannelShape));
+  MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
 		
-		wxASSERT (channel->GetInput() == this);
-		channel->SetInput (newshape);
+  wxASSERT (channel->GetInput() == this);
+  channel->SetInput (newshape);
 		
 		
+  }
+	
+  delete device;
+  device = NULL;
+	
+  newshape->MoveBeforeInTabOrder (this);
+	
+  wxSizer * sizer = GetContainingSizer();
+  sizer -> Replace (this, newshape, false);
+	
+  if (FindFocus()==this) {
+  m_parent->Layout();
+  m_parent->FitInside();
+  m_parent->SetVirtualSize(wxDefaultSize);
+  newshape->SetFocus();
+  }
+	
+  Hide();	
+  return true;
+*/
+		return false;
 	}
-	
-	delete device;
-	device = NULL;
-	
-	newshape->MoveBeforeInTabOrder (this);
-	
-	wxSizer * sizer = GetContainingSizer();
-	sizer -> Replace (this, newshape, false);
-	
-	if (FindFocus()==this) {
-		m_parent->Layout();
-		m_parent->FitInside();
-		m_parent->SetVirtualSize(wxDefaultSize);
-		newshape->SetFocus();
+
+	bool MutBoxShape::DetachBox() {
+		wxSizerItemList &list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin(); 
+		     i != (list.end()); i++) {
+			MutBoxChannelShape * channel = dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow());
+			wxASSERT(channel);
+			channel->DetachChannel();
+		}
+		return true;
 	}
-	
-	Hide();	
-	return true;
- */
-	return false;
+
+
 }
 
-bool MutBoxShape::DetachBox() {
-	wxSizerItemList &list = channels->GetChildren();
-	for (wxSizerItemList::iterator i = list.begin(); 
-	     i != (list.end()); i++) {
-		MutBoxChannelShape * channel = dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow());
-		wxASSERT(channel);
-		channel->DetachChannel();
-	}
-	return true;
-}
-
-
-
-
-#include "wx/listimpl.cpp"
-WX_DEFINE_LIST (MutBoxShapeList);
 
 /*
  * \}

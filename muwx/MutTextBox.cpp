@@ -2,17 +2,24 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.19 2011/09/08 18:50:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.20 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/08 18:50:41 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: MutTextBox.cpp,v $
- * Revision 1.19  2011/09/08 18:50:41  keinstein
+ * Revision 1.20  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.19  2011-09-08 18:50:41  keinstein
  * Fix some further update bug
  *
  * Revision 1.18  2011-09-08 16:51:21  keinstein
@@ -45,26 +52,25 @@
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
 #include <iostream>
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
-#include "Defs.h"
-//#include "Mutabor.rh"
+#include "wx/tokenzr.h"
+
+#include "MutTextBox.h"
+#include "MutFrame.h"
+#include "GUIBoxData.h"
+#include "BoxShape.h"
+#include "GrafKern.h"
+#include "muwx/Action.h"
+
 
 #ifdef __BORLANDC__
 #pragma hdrstop
 #endif
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-#include "wx/tokenzr.h"
-#include "MutTextBox.h"
-#include "MutFrame.h"
-#include "GUIBoxData.h"
-#include "BoxShape.h"
 using mutaborGUI::BoxData;
 using namespace mutaborGUI;
 

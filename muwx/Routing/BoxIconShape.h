@@ -4,16 +4,23 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.4 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.5 2011/09/27 20:13:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxIconShape.h,v $
- * Revision 1.4  2011/09/08 16:51:21  keinstein
+ * Revision 1.5  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -53,8 +60,24 @@
  *\{
  ********************************************************************/
 
-#ifndef BOXICONSHAPE_H
-#define BOXICONSHAPE_H
+#if (!defined(MUWX_ROUTING_BOXICONSHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_BOXICONSHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "IconShape.h"
+#include "RouteIcons.h"
+
+#ifndef MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
 
 //#include <map>
 
@@ -62,65 +85,64 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-#include "IconShape.h"
-#include "RouteIcons.h"
 //#include "Device.h"
 
-
-class MutBoxIconShape:public MutIconShape
-{
-public:
-	MutBoxIconShape():MutIconShape() {}
-	
-	MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
-		MutIconShape() 
+namespace mutaborGUI {
+	class MutBoxIconShape:public MutIconShape
 	{
-		Create (parent, id);
-	}
-
-	virtual ~MutBoxIconShape() {}
+	public:
+		MutBoxIconShape():MutIconShape() {}
 	
-	bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
-	{
-		return MutIconShape::Create(parent, id);
-	}
+		MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
+			MutIconShape() 
+			{
+				Create (parent, id);
+			}
 
-	virtual bool SetForegroundColour (const wxColour & colour) 
-		{
-			if (staticText)
-				staticText->SetForegroundColour(colour);
-			return MutIconShape::SetForegroundColour(colour);
+		virtual ~MutBoxIconShape() {}
+	
+		bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
+			{
+				return MutIconShape::Create(parent, id);
+			}
+
+		virtual bool SetForegroundColour (const wxColour & colour) 
+			{
+				if (staticText)
+					staticText->SetForegroundColour(colour);
+				return MutIconShape::SetForegroundColour(colour);
+			}
+
+		/*  bool Create( wxWindow *parent,
+		    wxWindowID id,
+		    const wxString &label,
+		    const wxPoint &pos = wxDefaultPosition,
+		    const wxSize &size = wxDefaultSize,
+		    long style = 0,
+		    const wxString &name = wxStaticBoxNameStr );
+		*/
+
+		void GetBordersForSizer(int &borderTop, int &borderOther) const;
+ 
+		virtual void OnDraw (wxDC & dc);
+		virtual bool Layout();
+
+		MutIcon & GetMutIcon () {
+			wxASSERT(BoxBitmap.IsOk());
+			return BoxBitmap;
 		}
 
-	/*  bool Create( wxWindow *parent,
-	    wxWindowID id,
-	    const wxString &label,
-	    const wxPoint &pos = wxDefaultPosition,
-	    const wxSize &size = wxDefaultSize,
-	    long style = 0,
-	    const wxString &name = wxStaticBoxNameStr );
-	*/
-
-	void GetBordersForSizer(int &borderTop, int &borderOther) const;
- 
-	virtual void OnDraw (wxDC & dc);
-	virtual bool Layout();
-
-	MutIcon & GetMutIcon () {
-		wxASSERT(BoxBitmap.IsOk());
-		return BoxBitmap;
-	}
 
 
-
-	// returning true from here ensures that we act as a container window for
-	// our children
-	//virtual bool IsStaticBox() const { return true; }
+		// returning true from here ensures that we act as a container window for
+		// our children
+		//virtual bool IsStaticBox() const { return true; }
 	
-private: 
-};
+	private: 
+	};
 
-
+}
+#endif				/* BOXICONSHAPE_H_PRECOMPILED */
 #endif				/* BOXICONSHAPE_H */
 /*
  * \}

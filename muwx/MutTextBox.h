@@ -3,17 +3,24 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.13 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.14 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.13 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: MutTextBox.h,v $
- * Revision 1.13  2011/09/08 16:51:21  keinstein
+ * Revision 1.14  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.13  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -36,12 +43,24 @@
  * \{
  ********************************************************************/
 
-#ifndef MUTTEXTBOX_H
-#define MUTTEXTBOX_H
+#if (!defined(MUWX_MUTTEXTBOX_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTTEXTBOX_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTTEXTBOX_H
+#endif
 
-#include "wx/listbox.h"
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
 #include "Global.h"
 // #include "MutChild.h"
+
+#ifndef MUWX_MUTTEXTBOX_H_PRECOMPILED
+#define MUWX_MUTTEXTBOX_H_PRECOMPILED
+
+#include "wx/listbox.h"
 
 enum WinKind { WK_KEY = 0, WK_TS, WK_ACT, WK_LOGIC, WK_ROUTE, WK_EDIT, WK_NULL };
 
@@ -121,6 +140,7 @@ protected:
 	DECLARE_EVENT_TABLE()
 };
 
-#endif
+#endif // precompiled
+#endif // header loaded
 
 ///\}

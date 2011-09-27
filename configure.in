@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([Mutabor],[3.1.0alpha3],[mutabor@mailbox.tu-dresden.de])
+AC_INIT([Mutabor],[3.1.0beta0],[mutabor@mailbox.tu-dresden.de])
 
 AC_ARG_ENABLE(XCode,
 	AS_HELP_STRING([--enable-XCode],[Enable XCode compilation mode]),
@@ -30,7 +30,8 @@ AC_CONFIG_SRCDIR([README])
 AC_CONFIG_MACRO_DIR([m4])
 
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([dist-bzip2 silent-rules subdir-objects -Wall])
+AM_SILENT_RULES
 LT_INIT
 
 AC_CONFIG_HEADER([config.h])
@@ -84,13 +85,14 @@ AH_BOTTOM([
 
 wxflags=""
 AM_MAINTAINER_MODE
+dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
 	AS_HELP_STRING([--enable-debug],[Enable extra debugging functionality]),
 	[AS_IF(test "$enableval" = yes,
 	       AC_DEFINE(DEBUG,1,[Define to 1 for compiling in debug mode.]),
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
 	       CFLAGS="$CFLAGS -g"
-	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
+	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__ -fvisibility-inlines-hidden"
 	       wxflags="--debug"
 ])
 
@@ -132,6 +134,9 @@ AS_IF(test -z "$PERL",
 	     $PACKAGE_BUGREPORT 
 	  please.
 ]))
+dnl this test must be implemented if necessary
+AC_SUBST(SHUFFLE,["sort -R"])
+
 
 CXX_FOR_SCOPING
 AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
@@ -383,8 +388,14 @@ AC_CHECK_HEADERS([boost/spirit/actor/push_back_actor.hpp])
 AC_LANG_POP(C++)
 
 AC_CACHE_SAVE
-AX_COMPILER_PCH_CXX
-AX_COMPILER_PCH_C
+AC_ARG_ENABLE(precompile,
+	AS_HELP_STRING([--enable-precompile],[use precompiled headers]),
+	[ AX_COMPILER_PCH_CXX
+	  AX_COMPILER_PCH_C
+	  ],[
+		AM_CONDITIONAL(COND_PRECOMP_C,false)
+		AM_CONDITIONAL(COND_PRECOMP_CXX,false)
+	  ])
 
 # Checks for library functions.
 AM_INTL_SUBDIR

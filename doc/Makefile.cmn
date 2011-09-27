@@ -5,7 +5,7 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 #pkgdatadir := $(localpkgdatadir)
 
 .PHONY: mac copymac install-data-mutabor zipfile
-%.pdf:%.tex $(TEXSOURCES) $(top_docdir)/preamble.tex \
+.tex.pdf:
 	$(TEX_DEPS)
 	rm *.out *.aux *.ind; \
 	for i in 0 1 2 ; \
@@ -16,10 +16,13 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 	done ; \
 	cp `basename $*.pdf` $@
 
-html: $(ZIPFILE)
+$(PDFFILES): $(TEXSOURCES) $(top_docdir)/preamble.tex
+
+html-local: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	$(top_docdir)/preamble.tex \
 	$(TEX_DEPS)
+	$(MAKE) -C '$(reldocdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 	htmldecode='$(rel_docdir)/htmldecode' \
 	fixhhp='$(rel_docdir)/fixhhp' \
@@ -28,7 +31,7 @@ $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 
 	cp help.zip $(srcdir)/$(ZIPFILE)
 
-pdf-am: $(PDFFILES)
+pdf-local: $(PDFFILES)
 
 
 dist: $(srcdir)/$(ZIPFILE)
