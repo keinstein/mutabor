@@ -1,17 +1,24 @@
-/** \file 
+/** \file   -*- C++ -*-
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.2 2010/11/21 13:15:48 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.3 2011/09/27 20:13:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2010/11/21 13:15:48 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: BoxDlg.h,v $
- * Revision 1.2  2010/11/21 13:15:48  keinstein
+ * Revision 1.3  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.2  2010-11-21 13:15:48  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.10  2010-06-29 08:26:26  keinstein
@@ -57,204 +64,214 @@
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "Defs.h"
-#include <wx/wxprec.h>
-
-#ifdef __BORLANDC__
-#pragma hdrstop
+#if (!defined(MUWX_ROUTING_BOXDLG_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_BOXDLG_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_BOXDLG_H
 #endif
 
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
+#include "Defs.h"
+#include "resourceload.h"
+#include "InputDeviceShape.h"
+#include "OutputDeviceShape.h"
 
+#ifndef MUWX_ROUTING_BOXDLG_H_PRECOMPILED
+#define MUWX_ROUTING_BOXDLG_H_PRECOMPILED
 
-#ifndef _BOXDLG_H_
-#define _BOXDLG_H_
+// system headers which do seldom change
 
-typedef NoBoxSettingsBase NoBoxSettings;
-typedef GuidoFileBoxSettingsBase GuidoFileBoxSettings;
+namespace mutaborGUI {
 
-class MutaborBoxSettings: public MutaborBoxSettingsBase {
-public:
+	typedef NoBoxSettingsBase NoBoxSettings;
+	typedef GuidoFileBoxSettingsBase GuidoFileBoxSettings;
+
+	class MutaborBoxSettings: public MutaborBoxSettingsBase {
+	public:
 	MutaborBoxSettings(wxWindow * parent):MutaborBoxSettingsBase(parent) {}
-	virtual ~MutaborBoxSettings() {}
-	void SetBoxNumber(int nr);
-	int GetBoxNumber() const 
-	{ 
-		wxASSERT(boxNumber);
-		if (!boxNumber) return -99;
-		return boxNumber -> GetValue(); 
-	}
-};
+		virtual ~MutaborBoxSettings() {}
+		void SetBoxNumber(int nr);
+		int GetBoxNumber() const 
+		{ 
+			wxASSERT(boxNumber);
+			if (!boxNumber) return -99;
+			return boxNumber -> GetValue(); 
+		}
+	};
 
-class InputFilterPanel : public InputFilterPanelBase {
-	class InputShapeData: public wxClientData {
-		MutInputDeviceShape * device;
-	public:
+	class InputFilterPanel : public InputFilterPanelBase {
+		class InputShapeData: public wxClientData {
+			MutInputDeviceShape * device;
+		public:
 		InputShapeData(MutInputDeviceShape * b):wxClientData() { device = b; }
-		MutInputDeviceShape * GetDevice() { return device; }
-	};
+			MutInputDeviceShape * GetDevice() { return device; }
+		};
 	
-public:
+	public:
 	InputFilterPanel(wxWindow * parent):InputFilterPanelBase(parent) {}
-	wxChoicebook * GetInputDeviceBook() { return inputDevice; }
-	void AddPage(wxPanel * panel, const wxString &label, bool selected, MutInputDeviceShape * shape);
-	wxWindow * GetCurrentDevicePage() ;
-	MutInputDeviceShape * GetCurrentSelection();
-};
+		wxChoicebook * GetInputDeviceBook() { return inputDevice; }
+		void AddPage(wxPanel * panel, const wxString &label, bool selected, MutInputDeviceShape * shape);
+		wxWindow * GetCurrentDevicePage() ;
+		MutInputDeviceShape * GetCurrentSelection();
+	};
 
-class OutputFilterPanel : public OutputFilterPanelBase {
-	class OutputShapeData: public wxClientData {
-		MutOutputDeviceShape * device;
-	public:
+	class OutputFilterPanel : public OutputFilterPanelBase {
+		class OutputShapeData: public wxClientData {
+			MutOutputDeviceShape * device;
+		public:
 		OutputShapeData(MutOutputDeviceShape * b):wxClientData() { device = b; }
-		MutOutputDeviceShape * GetDevice() { return device; }
-	};
-public:
-	OutputFilterPanel(wxWindow * parent):OutputFilterPanelBase(parent) {}
-	wxChoicebook * GetOutputDeviceBook() { return outputDevice; }
-	void AddPage(wxPanel * panel, const wxString &label, bool selected, MutOutputDeviceShape * shape);
-	wxWindow * GetCurrentDevicePage() ;
-	MutOutputDeviceShape * GetCurrentSelection();
-};
-
-class MutBoxShape;
-class MutBoxChannelShape;
-
-class RoutePanel:public RoutePanelBase {
-	DECLARE_DYNAMIC_CLASS( RoutePanel )
-		
-protected:
-	class BoxShapeData: public wxClientData {
-		MutBoxShape * box;
+			MutOutputDeviceShape * GetDevice() { return device; }
+		};
 	public:
-		BoxShapeData(MutBoxShape * b):wxClientData() { box = b; }
-		MutBoxShape * GetBox() { return box; }
+	OutputFilterPanel(wxWindow * parent):OutputFilterPanelBase(parent) {}
+		wxChoicebook * GetOutputDeviceBook() { return outputDevice; }
+		void AddPage(wxPanel * panel, const wxString &label, bool selected, MutOutputDeviceShape * shape);
+		wxWindow * GetCurrentDevicePage() ;
+		MutOutputDeviceShape * GetCurrentSelection();
 	};
-	InputFilterPanel * inPanel;
-	OutputFilterPanel * outPanel;
-	MutBoxChannelShape * channel;
-public:
+
+	class MutBoxShape;
+	class MutBoxChannelShape;
+
+	class RoutePanel:public RoutePanelBase {
+		DECLARE_DYNAMIC_CLASS( RoutePanel )
+		
+			protected:
+		class BoxShapeData: public wxClientData {
+			MutBoxShape * box;
+		public:
+		BoxShapeData(MutBoxShape * b):wxClientData() { box = b; }
+			MutBoxShape * GetBox() { return box; }
+		};
+		InputFilterPanel * inPanel;
+		OutputFilterPanel * outPanel;
+		MutBoxChannelShape * channel;
+	public:
 	RoutePanel():RoutePanelBase()
-	{
-		inPanel = NULL;
-		outPanel = NULL;
-		channel = NULL;
-	}
+		{
+			inPanel = NULL;
+			outPanel = NULL;
+			channel = NULL;
+		}
 	
 	RoutePanel(wxWindow * parent):RoutePanelBase(parent) 
-	{
-		inPanel = NULL;
-		outPanel = NULL;
-		channel = NULL;
-	}
+		{
+			inPanel = NULL;
+			outPanel = NULL;
+			channel = NULL;
+		}
 	
-	bool GetActive() {
-		return active->GetValue();
-	}
-	void SetActive(bool val) {
-		active->SetValue(val);
-		passive->SetValue(!val);
-	}
-	bool GetPassive() {
-		return passive->GetValue();
-	}
-	void SetPassive(bool val) {
-		passive->SetValue(val);
-		active->SetValue(!val);
-	}
+		bool GetActive() {
+			return active->GetValue();
+		}
+		void SetActive(bool val) {
+			active->SetValue(val);
+			passive->SetValue(!val);
+		}
+		bool GetPassive() {
+			return passive->GetValue();
+		}
+		void SetPassive(bool val) {
+			passive->SetValue(val);
+			active->SetValue(!val);
+		}
 	
-	void SetBox(MutBoxShape * box) { STUBC; }
-	MutBoxShape * GetBox();
-	void SetInput(InputFilterPanel * in) { inPanel = in; }
-	InputFilterPanel * GetInput() const { return inPanel; }
-	void SetOutput(OutputFilterPanel * out) { outPanel = out; }
-	OutputFilterPanel * GetOutput() const { return outPanel; }
-	void SetChannel(MutBoxChannelShape * ch) { channel = ch; }
-	MutBoxChannelShape * GetChannel() const { return channel; }
-	wxChoice * GetBoxChoice() { return box; }
-	int AddBox(MutBoxShape * boxShape, bool selected = false);
+		void SetBox(MutBoxShape * box);
+		MutBoxShape * GetBox();
+		void SetInput(InputFilterPanel * in) { inPanel = in; }
+		InputFilterPanel * GetInput() const { return inPanel; }
+		void SetOutput(OutputFilterPanel * out) { outPanel = out; }
+		OutputFilterPanel * GetOutput() const { return outPanel; }
+		void SetChannel(MutBoxChannelShape * ch) { channel = ch; }
+		MutBoxChannelShape * GetChannel() const { return channel; }
+		wxChoice * GetBoxChoice() { return box; }
+		int AddBox(MutBoxShape * boxShape, bool selected = false);
 	
-	void EnableRoute(bool enable = true);
+		void EnableRoute(bool enable = true);
 	
-};
+	};
 
-class RouteRemoveButton: public wxButton {
-public:
+	class RouteRemoveButton: public wxButton {
+	public:
 	RouteRemoveButton():wxButton() { panel = NULL; }
 	RouteRemoveButton(RoutePanel * route, wxWindow* parent, wxWindowID id = wxID_REMOVE, const wxString&  label = wxEmptyString, 
-		 const wxPoint&  pos = wxDefaultPosition, const wxSize&  size = wxDefaultSize, 
-			  long style = 0, const wxValidator&  validator = wxDefaultValidator, const wxString&  name = wxButtonNameStr):wxButton() {
-		Create(route, parent, id, label, pos, size, style, validator, name);
-	}
-
-	bool Create(RoutePanel * route, wxWindow* parent, wxWindowID id = wxID_REMOVE, const wxString&  label = wxEmptyString, 
 			  const wxPoint&  pos = wxDefaultPosition, const wxSize&  size = wxDefaultSize, 
-		    long style = 0, const wxValidator&  validator = wxDefaultValidator, const wxString&  name = wxButtonNameStr);
+			  long style = 0, const wxValidator&  validator = wxDefaultValidator, const wxString&  name = wxButtonNameStr):wxButton() {
+			Create(route, parent, id, label, pos, size, style, validator, name);
+		}
+
+		bool Create(RoutePanel * route, wxWindow* parent, wxWindowID id = wxID_REMOVE, const wxString&  label = wxEmptyString, 
+			    const wxPoint&  pos = wxDefaultPosition, const wxSize&  size = wxDefaultSize, 
+			    long style = 0, const wxValidator&  validator = wxDefaultValidator, const wxString&  name = wxButtonNameStr);
 	
-	void EnableRoute(bool enable = true);
+		void EnableRoute(bool enable = true);
 		
-protected:
-	RoutePanel * panel;
-	void RemoveButtonPressed( wxCommandEvent& event );
-	DECLARE_DYNAMIC_CLASS( RouteRemoveButton )
-	DECLARE_EVENT_TABLE()
-};
+	protected:
+		RoutePanel * panel;
+		void RemoveButtonPressed( wxCommandEvent& event );
+		DECLARE_DYNAMIC_CLASS( RouteRemoveButton )
+			DECLARE_EVENT_TABLE()
+			};
 
-class BoxDlg:public BoxDlgBase {
-	wxChoice * boxTypeChoice;
-public:
+	class BoxDlg:public BoxDlgBase {
+		wxChoice * boxTypeChoice;
+	public:
 	BoxDlg():BoxDlgBase(),noBoxPanel(NULL),mutaborBoxPanel(NULL),guidoFileBoxPanel(NULL) { }
-	BoxDlg(wxWindow * parent);
+		BoxDlg(wxWindow * parent);
 
-	void InitializeBoxTypes();
+		void InitializeBoxTypes();
 	
-	wxWindow * GetRouteWindow() 
-	{
-		return routeWindow;
-	}
+		wxWindow * GetRouteWindow() 
+		{
+			return routeWindow;
+		}
 
-	virtual wxSize DoGetBestSize() const;
+		virtual wxSize DoGetBestSize() const;
 	
-	int GetBoxType() const;
-	bool SetBoxType(int type);
+		int GetBoxType() const;
+		bool SetBoxType(int type);
 	
-	void SetBoxNumber(int nr) 
-	{ 
-		wxASSERT(mutaborBoxPanel);
-		if (!mutaborBoxPanel) return;
-		mutaborBoxPanel->SetBoxNumber(nr); 
-	}
+		void SetBoxNumber(int nr) 
+		{ 
+			wxASSERT(mutaborBoxPanel);
+			if (!mutaborBoxPanel) return;
+			mutaborBoxPanel->SetBoxNumber(nr); 
+		}
 
-	int GetBoxNumber() const 
-	{ 
-		wxASSERT(mutaborBoxPanel);
-		if (!mutaborBoxPanel) return -99;
-		return mutaborBoxPanel->GetBoxNumber(); 
-	}
+		int GetBoxNumber() const 
+		{ 
+			wxASSERT(mutaborBoxPanel);
+			if (!mutaborBoxPanel) return -99;
+			return mutaborBoxPanel->GetBoxNumber(); 
+		}
 	
-	void DisableRemove (bool disable=true) 
-	{
-		if (!wxID_REMOVE) UNREACHABLEC;
-		wxID_REMOVE->Show(!disable);
-		wxID_REMOVE->Enable(!disable);
-	}
+		void DisableRemove (bool disable=true) 
+		{
+			if (!wxID_REMOVE) UNREACHABLEC;
+			wxID_REMOVE->Show(!disable);
+			wxID_REMOVE->Enable(!disable);
+		}
 	
-	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
+		/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
 	
-protected:
-	void OnRemoveClick( wxCommandEvent& event );	
-	void AddButtonPressed(wxCommandEvent &event);
+	protected:
+		void OnRemoveClick( wxCommandEvent& event );	
+		void AddButtonPressed(wxCommandEvent &event);
 	
-	NoBoxSettings * noBoxPanel;
-	MutaborBoxSettings * mutaborBoxPanel;
-	GuidoFileBoxSettings * guidoFileBoxPanel;
-	DECLARE_DYNAMIC_CLASS( BoxDlg )
-	DECLARE_EVENT_TABLE()
-};
+		NoBoxSettings * noBoxPanel;
+		MutaborBoxSettings * mutaborBoxPanel;
+		GuidoFileBoxSettings * guidoFileBoxPanel;
+		DECLARE_DYNAMIC_CLASS( BoxDlg )
+			DECLARE_EVENT_TABLE()
+			};
 
 
-
+}
+#endif
+// _BOXDLG_H_PRECOMPILED
 #endif
 // _BOXDLG_H_
 

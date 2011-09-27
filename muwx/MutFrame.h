@@ -2,17 +2,24 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.28 2011/09/07 15:58:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.29 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/07 15:58:56 $
- * \version $Revision: 1.28 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.29 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.28  2011/09/07 15:58:56  keinstein
+ * Revision 1.29  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.28  2011-09-07 15:58:56  keinstein
  * fix compilation on MinGW
  *
  * Revision 1.27  2011-09-07 13:06:50  keinstein
@@ -152,13 +159,26 @@
  * \{
  ********************************************************************/
 
-#ifndef MUTFRAME_H
-#define MUTFRAME_H
+#if (!defined(MUWX_MUTFRAME_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTFRAME_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTFRAME_H
+#endif
 
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
 #include "Global.h"
 #include "MutChild.h"
 #include "MutEditFile.h"
 #include "MutRouteWnd.h"
+
+#ifndef MUWX_MUTFRAME_H_PRECOMPILED
+#define MUWX_MUTFRAME_H_PRECOMPILED
+
+
 #include "wx/aui/aui.h"
 #include "wx/toolbar.h"
 #include "wx/docview.h"
@@ -170,267 +190,266 @@
 namespace mutaborGUI {
 	class MutView; // see MutView.h
 	class MutDocument; // see MutDocument.h
-}
 
-using mutaborGUI::MutView;
-using mutaborGUI::MutDocument;
+	class MutFrame : public wxDocChildFrame
+	{
 
-class MutFrame : public wxDocChildFrame
-{
+	public:
+		/// Constructor
+		/** This constructor creates a new main window.
+		 */
 
-public:
-	/// Constructor
-	/** This constructor creates a new main window.
-	 */
+		MutFrame(wxFrame *parent, const wxWindowID id, const wxString& title,
+			 const wxPoint& pos, const wxSize& size,
+			 const long style);
 
-	MutFrame(wxFrame *parent, const wxWindowID id, const wxString& title,
-	         const wxPoint& pos, const wxSize& size,
-	         const long style);
-
-	MutFrame(MutDocument *doc,
-		 MutView *v,
-		 wxFrame *frame,
-		 wxWindowID id,
-		 const wxString& title,
-		 const wxPoint& pos = wxDefaultPosition,
-		 const wxSize& size = wxDefaultSize,
-		 long type = wxDEFAULT_FRAME_STYLE,
-		 const wxString& name = wxT("Mutabor frame"));
+		MutFrame(MutDocument *doc,
+			 MutView *v,
+			 wxFrame *frame,
+			 wxWindowID id,
+			 const wxString& title,
+			 const wxPoint& pos = wxDefaultPosition,
+			 const wxSize& size = wxDefaultSize,
+			 long type = wxDEFAULT_FRAME_STYLE,
+			 const wxString& name = wxT("Mutabor frame"));
 
 
-	/// Destructor
-	virtual ~MutFrame();
+		/// Destructor
+		virtual ~MutFrame();
 
 #if wxUSE_TOOLBAR
-	/// initialize the toolbar
-	/** Initializes the toolbar.
-	\param toolBar Toolbar to which the tools shall be added
-	*/
-	void InitToolBar(wxToolBar* toolBar);
+		/// initialize the toolbar
+		/** Initializes the toolbar.
+		    \param toolBar Toolbar to which the tools shall be added
+		*/
+		void InitToolBar(wxToolBar* toolBar);
 
 #endif
 
-	/// passes an event to the editor.
-	/** This function is used to pass one event to the
-	client window. 
-	\param event Event to be passed */
-	void PassEventToEditor(wxCommandEvent &event);
+		/// passes an event to the editor.
+		/** This function is used to pass one event to the
+		    client window. 
+		    \param event Event to be passed */
+		void PassEventToEditor(wxCommandEvent &event);
 
-	/// passes an UpdateUIEvent to the editor.
-	/** This function is used to pass one event to the
-	client window. 
-	\param event Event to be passed */
-	void PassEventToEditorUI(wxUpdateUIEvent& event);
+		/// passes an UpdateUIEvent to the editor.
+		/** This function is used to pass one event to the
+		    client window. 
+		    \param event Event to be passed */
+		void PassEventToEditorUI(wxUpdateUIEvent& event);
 
-	/// passes a FindDialogEvent to the editor.
-	/** This function is used to pass one event to the
-	client window. 
-	\param event Event to be passed */
-	void PassEventToEditorFind(wxFindDialogEvent& event);
+		/// passes a FindDialogEvent to the editor.
+		/** This function is used to pass one event to the
+		    client window. 
+		    \param event Event to be passed */
+		void PassEventToEditorFind(wxFindDialogEvent& event);
 
-	/// passes an event to the MDI client window.
-	/** \deprecated This function was formerly used to pass one event
-	to the client MDI window.
+		/// passes an event to the MDI client window.
+		/** \deprecated This function was formerly used to pass one event
+		    to the client MDI window.
 
-	\param event Event to be passed */
-	void EventPassOn(wxCommandEvent& event);
+		    \param event Event to be passed */
+		void EventPassOn(wxCommandEvent& event);
 
-	/// Handles close event.
-	/** This function tries to determine, if we can close the current window.
-	 */
-	void OnCloseWindow(wxCloseEvent& event);
+		/// Handles close event.
+		/** This function tries to determine, if we can close the current window.
+		 */
+		void OnCloseWindow(wxCloseEvent& event);
 
-	/// Hande paint events for Document/View framework
-	/** This function call the paint function */
-	void OnPaint(wxPaintEvent& event);
+		/// Hande paint events for Document/View framework
+		/** This function call the paint function */
+		void OnPaint(wxPaintEvent& event);
 
-	/// This function creates a new file editor
-	/** Handle new file event if we don't have a client yet. */
-	void CmFileNew(wxCommandEvent& WXUNUSED(event));
+		/// This function creates a new file editor
+		/** Handle new file event if we don't have a client yet. */
+		void CmFileNew(wxCommandEvent& WXUNUSED(event));
 
-	/// Open an existing file if we don't have a client yet.
-	void CmFileOpen(wxCommandEvent& WXUNUSED(event));
+		/// Open an existing file if we don't have a client yet.
+		void CmFileOpen(wxCommandEvent& WXUNUSED(event));
 
-	/// Opens the given file, if we don't have a client yet.
-	bool OpenFile(wxString path, bool newfile=false);
+		/// Opens the given file, if we don't have a client yet.
+		bool OpenFile(wxString path, bool newfile=false);
 
-	/// Attach a client to the Frame
-	bool SetClient (wxWindow * win, const wxString &title);
+		/// Attach a client to the Frame
+		bool SetClient (wxWindow * win, const wxString &title);
 
 #if (!defined(__WXMAC__) || defined(__WXCOCOA__)) && !defined(__WXMSW__)
-	/// Set the window name, i.e. frame title
-	virtual void SetLabel (const wxString &label) { SetTitle(label); }
+		/// Set the window name, i.e. frame title
+		virtual void SetLabel (const wxString &label) { SetTitle(label); }
 #endif
 
-	/// Get a file name to open
-	///    static wxString FileNameDialog(wxWindow * parent);
+		/// Get a file name to open
+		///    static wxString FileNameDialog(wxWindow * parent);
 
-	void CmDoActivate(wxCommandEvent& event);
+		void CmDoActivate(wxCommandEvent& event);
 
-	void RaiseLogic(wxCommandEvent& event);
+		void RaiseLogic(wxCommandEvent& event);
 
-	wxMenuItem* ClearMenuItem(int id);
+		wxMenuItem* ClearMenuItem(int id);
 
-	void ClearSubMenu(wxMenuItem * item);
+		void ClearSubMenu(wxMenuItem * item);
 
-	void DoStop();
+		void DoStop();
 
-	void CmStop(wxCommandEvent& WXUNUSED(event));
+		void CmStop(wxCommandEvent& WXUNUSED(event));
 
-	void CmPanic(wxCommandEvent& WXUNUSED(event));
+		void CmPanic(wxCommandEvent& WXUNUSED(event));
 
-	void CeExecute(wxUpdateUIEvent& event);
+		void CeExecute(wxUpdateUIEvent& event);
 
-	void CeActivate(wxUpdateUIEvent& event);
+		void CeActivate(wxUpdateUIEvent& event);
 
-	void CeStop(wxUpdateUIEvent& event);
+		void CeStop(wxUpdateUIEvent& event);
 
-	void CmRoutes(wxCommandEvent& event);
+		void CmRoutes(wxCommandEvent& event);
 
-	void CmToggleKey(wxCommandEvent& WXUNUSED(event));
+		void CmToggleKey(wxCommandEvent& WXUNUSED(event));
 
-	void CmToggleTS(wxCommandEvent& WXUNUSED(event));
+		void CmToggleTS(wxCommandEvent& WXUNUSED(event));
 
-	void CmToggleAct(wxCommandEvent& WXUNUSED(event));
+		void CmToggleAct(wxCommandEvent& WXUNUSED(event));
 
-	void CmToggleOWM(wxCommandEvent& WXUNUSED(event));
+		void CmToggleOWM(wxCommandEvent& WXUNUSED(event));
 
-	void CmToggleCAW(wxCommandEvent& WXUNUSED(event));
+		void CmToggleCAW(wxCommandEvent& WXUNUSED(event));
 
-	void CeToggleKey(wxUpdateUIEvent& event);
+		void CeToggleKey(wxUpdateUIEvent& event);
 
-	void CeToggleTS(wxUpdateUIEvent& event);
+		void CeToggleTS(wxUpdateUIEvent& event);
 
-	void CeToggleAct(wxUpdateUIEvent& event);
+		void CeToggleAct(wxUpdateUIEvent& event);
 
-	void CeToggleOWM(wxUpdateUIEvent& event);
+		void CeToggleOWM(wxUpdateUIEvent& event);
 
-	void CeToggleCAW(wxUpdateUIEvent& event);
+		void CeToggleCAW(wxUpdateUIEvent& event);
 
-	// Recorder-Knˆpfe
-	void CmInDevStop(wxCommandEvent& WXUNUSED(event));
+		// Recorder-Knˆpfe
+		void CmInDevStop(wxCommandEvent& WXUNUSED(event));
 
-	void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
+		void CmInDevPlay(wxCommandEvent& WXUNUSED(event));
 
-	void CmInDevPause(wxCommandEvent& WXUNUSED(event));
+		void CmInDevPause(wxCommandEvent& WXUNUSED(event));
 
-	void StopInDev();
+		void StopInDev();
 
-	void CeInDevStop(wxUpdateUIEvent& event);
+		void CeInDevStop(wxUpdateUIEvent& event);
 
-	void CeInDevPlay(wxUpdateUIEvent& event);
+		void CeInDevPlay(wxUpdateUIEvent& event);
 
-	void CeInDevPause(wxUpdateUIEvent& event);
+		void CeInDevPause(wxUpdateUIEvent& event);
 
-	void CmSetTitle(wxCommandEvent& event);
+		void CmSetTitle(wxCommandEvent& event);
 
-	/// Update GUI when the mutabor kernel or file players have acted
-	void UpdateUI(wxCommandEvent& WXUNUSED(event));
+		/// Update GUI when the mutabor kernel or file players have acted
+		void UpdateUI(wxCommandEvent& WXUNUSED(event));
 
-	//	void OnIdle(wxIdleEvent& WXUNUSED(event));
+		//	void OnIdle(wxIdleEvent& WXUNUSED(event));
 
-	//    void OnActivate(wxActivateEvent& event);
-	void OnEraseBackground(wxEraseEvent& event);
+		//    void OnActivate(wxActivateEvent& event);
+		void OnEraseBackground(wxEraseEvent& event);
 
-	void OnSize(wxSizeEvent& event);
+		void OnSize(wxSizeEvent& event);
 
-	wxAuiDockArt* GetDockArt();
+		wxAuiDockArt* GetDockArt();
 
-	void WindowSize(MutChild *win);
+		void WindowSize(MutChild *win);
 
-	void SaveState();
+		void SaveState();
 
-	void RestoreState();
+		void RestoreState();
 
-	void LogicWinOpen(int box);
+		void LogicWinOpen(int box);
 
-	void ToggleTextBox(WinKind kind);
+		void ToggleTextBox(WinKind kind);
 
-	void TextBoxOpen(WinKind kind,
-			 int box, 
-			 bool update_auimanager	= true);
+		void TextBoxOpen(WinKind kind,
+				 int box, 
+				 bool update_auimanager	= true);
 
-	void CmSelectBox();
+		void CmSelectBox();
 
-	void CmCloseChild();
+		void CmCloseChild();
 
-	void CloseAll(WinKind kind = WK_NULL);
+		void CloseAll(WinKind kind = WK_NULL);
 
-	void SetStatus(int WXUNUSED(imgNr))
-	{
-		//StatusGadget->SelectImage(curStatusImg = imgNr, true);
-	}
+		void SetStatus(int WXUNUSED(imgNr))
+			{
+				//StatusGadget->SelectImage(curStatusImg = imgNr, true);
+			}
 
-	wxRect DetermineFrameSize ();
+		wxRect DetermineFrameSize ();
 
-	/// retrun true if we have already a client
-	bool HasClient()
- 	{
-		return (bool) client;
-	}
+		/// retrun true if we have already a client
+		bool HasClient()
+			{
+				return (bool) client;
+			}
 
-	void UpdateBoxMenu();
-	bool RaiseTheFrame();
+		void UpdateBoxMenu();
+		bool RaiseTheFrame();
 
-	static void repaint_route()
-	{
-		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+		static void repaint_route()
+			{
+				MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
 
-		if (routewin) {
-			MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
+				if (routewin) {
+					MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
 
-			if (route) route->Refresh();
-		}
-	}
+					if (route) route->Refresh();
+				}
+			}
 
-	void SetFileMenu(wxMenu * f) { filemenu = f; }
-	void SetEditMenu(wxMenu * e) { editmenu = e; }
-private:
+		void SetFileMenu(wxMenu * f) { filemenu = f; }
+		void SetEditMenu(wxMenu * e) { editmenu = e; }
+	private:
 
-	wxMenu * editmenu;
-	wxMenu * filemenu;
+		wxMenu * editmenu;
+		wxMenu * filemenu;
 	
-	void CloseClientWindow(wxWindow * w)
-	{
-		wxASSERT(w);
-		if (!w) return;
+		void CloseClientWindow(wxWindow * w)
+			{
+				wxASSERT(w);
+				if (!w) return;
 
-		w->Disable();
-		auimanager.ClosePane(auimanager.GetPane(w));
-		DEBUGLOG(other, _T("Detaching pane."));
-		auimanager.DetachPane(w);
-		auimanager.Update();
+				w->Disable();
+				auimanager.ClosePane(auimanager.GetPane(w));
+				DEBUGLOG(other, _T("Detaching pane."));
+				auimanager.DetachPane(w);
+				auimanager.Update();
 
-		DEBUGLOG(other, _T("Closing window."));
-		w->Close(); // win should be invalid now.
-	}
+				DEBUGLOG(other, _T("Closing window."));
+				w->Close(); // win should be invalid now.
+			}
 
-	int curStatusImg;
+		int curStatusImg;
 
-	wxAuiManager auimanager;
+		wxAuiManager auimanager;
 
-	wxWindow *keywindows[MAX_BOX];
-	wxWindow *tswindows[MAX_BOX];
-	wxWindow *actionwindows[MAX_BOX];
+		wxWindow *keywindows[MAX_BOX];
+		wxWindow *tswindows[MAX_BOX];
+		wxWindow *actionwindows[MAX_BOX];
 
-	wxWindow *client;
+		wxWindow *client;
 
-	static MutFrame * ActiveWindow;
-	static int boxCommandIds[MAX_BOX];
-	DECLARE_EVENT_TABLE()
-};
+		static MutFrame * ActiveWindow;
+		static int boxCommandIds[MAX_BOX];
+		DECLARE_EVENT_TABLE()
+	};
 
 // globals
 
-extern bool asTS;
-extern bool SaveEditor;
-extern bool UseColorBars;
-extern bool OWM; // One Window Mode
-extern bool CAW; // Common Action Window
-extern bool LogicOn;
+	extern bool asTS;
+	extern bool SaveEditor;
+	extern bool UseColorBars;
+	extern bool OWM; // One Window Mode
+	extern bool CAW; // Common Action Window
+	extern bool LogicOn;
 
 /// synchronizes \c used flag of \c mut_box with the routes
-void CheckBoxesUsed();
+	void CheckBoxesUsed();
 
-extern wxString CompiledFile;
+	extern wxString CompiledFile;
+
+}
+#endif
 #endif

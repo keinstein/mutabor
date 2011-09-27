@@ -4,16 +4,23 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.6 2011/09/09 09:29:10 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.7 2011/09/27 20:13:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/09 09:29:10 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.6  2011/09/09 09:29:10  keinstein
+ * Revision 1.7  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.6  2011-09-09 09:29:10  keinstein
  * fix loading of routing configuration
  *
  * Revision 1.5  2011-09-04 12:02:08  keinstein
@@ -48,557 +55,543 @@
 #include "DevMidi.h"
 #include "DevMidF.h"
 #include "DevGIS.h"
+#include <algorithm>
+#include "Device-inlines.h"
+#include "Route.h"
 
 
-WATCHEDPTR(OutDevice,routing,OutDevice) OutDevice::deviceList(NULL,_T("OutDevice::deviceList"));
+namespace mutabor {
+#ifdef WX
+	wxString Device::TowxString() const {
+		wxString routeString;
+		for (routeListType::const_iterator r = routes.begin();
+		     r != routes.end(); r++)
+			routeString += wxString::Format(_T(" %d:(%d->%d->%d)"),
+							(*r)->GetId(),
+							(*r)->GetDeviceId(InputDevice()),
+							(*r)->GetBox(),
+							(*r)->GetDeviceId(OutputDevice()));
+		
 
-
-char InDevChanged = 0;
-
-// CurrentTime ------------------------------------------------------
-
-//DWORD CurrentTime;
-CurrentTimer CurrentTime;
-//UINT CurrentTimeId;
-
-/* Obsoleted by CurrentTime Class
-// CallBack Funktion
-void CALLBACK _export CurrentTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
-{
-  CurrentTime++;
-}
-*/
-// set timer
-void StartCurrentTime()
-{
-	CurrentTime.Start(0);
-	//  CurrentTimeId = timeSetEvent(2, 1, CurrentTimeFunc, 0, TIME_PERIODIC);
-}
-
-// reset timer
-void StopCurrentTime()
-{
-	// not needed any more
-	//CurrentTime.Stop();
-}
-
-// OutDevice
-OutDevice * OutDevice::CreateDevice (DevType type)
-{
-        switch (type) {
-        case DTMidiPort:
-                return new OutMidiPort();
-                break;
-        case DTMidiFile:
-                return new OutMidiFile();
-                break; 
-        case DTGis:
-                return new OutGis();
-                break;
-        case DTNotSet:
-        case DTUnknown:
-        default:
-                return NULL;
-        }
-}
-
-OutDevice * OutDevice::CreateDevice(DevType type, const mutString & name, int id)
-{
-        switch (type) {
-		case DTMidiPort:
-			return new OutMidiPort(name, id);
-			break;
-		case DTMidiFile:
-			return new OutMidiFile(name, id);
-			break; 
-		case DTGis:
-			return new OutGis(name, id);
-			break;
-		case DTNotSet:
-		case DTUnknown:
-		default:
-			return NULL;
-        }
-}
-
-void OutDevice::InitializeIds()
-{
-	OutDevice * out = GetDeviceList();
-	int i = 0;
-	while (out) {
-		out->Device::SetId(i++);
-		out = out->GetNext();
+		return wxString::Format(_T("\nDevice:\n\
+   id       = %d\n\
+   userdata = %p\n\
+   DevId    = %d\n\
+   Name     = '%s'\n\
+   Flags:     dirty:%d, isOpen:%d\n\
+   Routes:   %s\n"),
+					Id,
+					userdata,
+					DevId,
+					(const wxChar *) Name,
+					dirty,isOpen,
+					(const wxChar *) routeString);
 	}
-}
-
-void OutDevice::SaveDevices(tree_storage & config)
-{
-#ifdef DEBUG
-	wxString oldpath = config.GetPath();
 #endif
-	config.toLeaf(_T("OutDevices"));
 	
-	for (OutDevice * out = GetDeviceList(); out; out = out->GetNext()) {
-		config.toLeaf(_T("Device"),static_cast<Device *>(out)->GetId());
-		config.Write(_T("Type"),out->GetType());
-		config.Write(_T("Type Name"),out->GetTypeName());
-		out -> Save (config);
-		config.toParent();
-	}
-	
-	config.toParent();
-	wxASSERT(oldpath == config.GetPath());
-}
 
-void OutDevice::LoadDevices(tree_storage & config)
-{
-#ifdef DEBUG
-	wxString oldpath = config.GetPath();
-#endif
-	config.toLeaf(_T("OutDevices"));
-	
-	int i = config.toFirstLeaf(_T("Device"));
-	while (i != wxNOT_FOUND) {
-		DEBUGLOGTYPE(config,OutDevice,_T("Loading output device with id %d"),i);
-		DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
-		OutDevice * out = OutDevice::CreateDevice(type);
-		if (!out) continue;
-		out -> Device::SetId(i);
-		wxString name = config.Read(_T("Type Name"),
-					    _T("Midi output device"));
-		DEBUGLOGTYPE(config,
-			     OutDevice,
-			     _T("device type name '%s' == '%s'?"),
-			     (const mutChar *)name,
-			     (const mutChar *)(out->GetTypeName()));
-		wxASSERT(name == out->GetTypeName());
-		out -> Load(config);
-		i = config.toNextLeaf(_T("Device"));
-	}
-	
-	config.toParent(2);
-	wxASSERT(oldpath == config.GetPath());
-}
-
-OutDevice * OutDevice::GetDevice(int id)
-{
-	OutDevice * out = GetDeviceList();
-	while (out && out->Device::GetId() != id) 
-		out = out->Next;
-	return out;
-}
-
-void OutDevice::AppendToDeviceList (OutDevice * dev) 
-{
-        if (!deviceList) {
-                deviceList = dev; 
-                return;
-        }
-	
-        OutDevice * d = GetDeviceList() ;
-	OutDevice * d2;
-        while ((d2 = d->GetNext())) d = d2;
-        d->SetNext(dev);
-}
-
-void OutDevice::RemoveFromDeviceList (OutDevice * dev) 
-{
-        if (!deviceList) return;
-        
-        if (deviceList == dev) {
-                deviceList = dev -> GetNext(); 
-                dev -> SetNext(NULL);
-                return;
-        }
-	
-        OutDevice * d = deviceList ;
-        while (d -> GetNext() != dev && d -> GetNext()) d = d -> GetNext();
-        if (d -> GetNext()) {
-                d -> SetNext(dev -> GetNext());
-                dev -> SetNext(NULL);
-        }
-}
-
-void OutDevice::TruncateDeviceList (OutDevice * dev) 
-{
-        if (!deviceList) return;
-        
-        if (deviceList == dev) {
-                deviceList = NULL; 
-                return;
-        }
-	
-        OutDevice * d = deviceList ;
-        while (d->GetNext() && d->GetNext() != dev) {
-                d = d->GetNext();
-        }
-        if (d->GetNext()) {
-                d -> SetNext(NULL);
-        }
-}
-
-OutDevice * OutDevice::GetInDeviceList(int devid) 
-{	
-	OutDevice * dev = deviceList;
-	while (dev && dev->GetDevId() != devid) dev = dev->GetNext();
-	return dev;
-}
-
-
-// InDevice ---------------------------------------------------------
-
-WATCHEDPTR(InDevice,routing,InDevice) InDevice::deviceList(NULL, _T("InDevice::deviceList"),NULL);
-
-InDevice * InDevice::CreateDevice (DevType type)
-{
-        switch (type) {
-        case DTMidiPort:
-                return new InMidiPort();
-                break;
-        case DTMidiFile:
-                return new InMidiFile();
-                break; 
-        case DTGis:
-                return new InGis();
-                break;
-        case DTNotSet:
-        case DTUnknown:
-        default:
-                return NULL;
-        }
-}
-InDevice * InDevice::CreateDevice(DevType type, const mutString & name, int id)
-{
-	DEBUGLOGTYPE(routing,InDevice,_T("Creating device `%s´ (Type = %d, id = %d)"),name.c_str(), type,id);
-        switch (type) {
-		case DTMidiPort:
-			return new InMidiPort(name, id);
-			break;
-		case DTMidiFile:
-			return new InMidiFile(name, id);
-			break; 
-		case DTGis:
-			return new InGis(name, id);
-			break;
-		case DTNotSet:
-		case DTUnknown:
-		default:
-			return NULL;
-        }
-}
-
-
-Route* InDevice::GetMoveRoutes()
-{
-	Route *R = GetRoutes();
-	SetRoute(NULL);
-	return R;
-};
-
-Route *InDevice::GetRoute(int nr)   // Nummern beginnen mit 0
-{
-
-	for (Route *R = Routes; R; R = R->GetNext())
+	template <class T, class P, class L>
+	CommonTypedDeviceAPI<T,P,L>::~CommonTypedDeviceAPI()
 	{
-		if ( !nr ) return R;
-
-		nr--;
+		DEBUGLOG(routing,_T("this = %p"),this);
+		if ( !routes.empty() ) Destroy();
+#ifdef Debug
+		listttype::iterator i = FindInDeviceList(this);
+		if (i != deviceList.end()) {
+			UNREACHABLEC;
+			deviceList.erase(i);
+		}
+#endif		
 	}
 
-	return 0;
-}
+	template <class T, class P, class L>
+	void CommonTypedDeviceAPI<T,P,L>::Add(Route route) {
+#ifdef DEBUG
+		routeListType::const_iterator i = 
+			find(routes.begin(),routes.end(),route);
+		wxASSERT(i == routes.end());
+		wxASSERT(IsInDeviceList(static_cast<thistype *>(this)));
+#endif
+		routes.push_back(route);
+	}
 
-// Anzahl der Routen
-int InDevice::nRoutes()
-{
-	int n = 0;
+	template <class T, class P, class L>
+	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route oldroute, 
+						     Route newroute) {
+		bool found = Remove(oldroute);
+		wxASSERT(found);
+		if (found) 
+			Add(newroute);
+		return found;
+	}
 
-	for (Route *R = Routes; R; R = R->GetNext())
-		n++;
+	template <class T, class P, class L>
+	bool CommonTypedDeviceAPI<T,P,L>::Remove(Route route) {
+		routeListType::iterator i = 
+			std::find(routes.begin(),routes.end(),route);
+		bool found = i != routes.end();
+		wxASSERT(found);
+		routes.erase(i);
+		return found;
+	}
 
-	return n;
-}
+	template <class T, class P, class L>
+	bool CommonTypedDeviceAPI<T,P,L>::MoveRoutes (DevicePtr newclass) {
+		if (!newclass->routes.empty()) {
+			UNREACHABLEC;
+			return false;
+		}
+		bool open = IsOpen();
+		if (open) {
+			if (!newclass->IsOpen()) newclass->Open();
+		}
+		routeListType::iterator i;
+		while ((i = routes.begin()) != routes.end()) {
+			boost::const_pointer_cast<RouteClass>(*i)
+				->Reconnect(static_cast<thistype *>(this),
+					    newclass);
+		}
+		return true;
+	}
+		
+#if 0
+	template <class T, class P, class L>
+	Route CommonTypedDeviceAPI<T,P,L>::GetRoute(int nr)// Nummern beginnen mit 0
+	{
+		wxASSERT(nr >= 0);
+		routeTypeList::iterator i = routes.begin();
+		while (nr--) {
+			if (i++ == routes.end()) return NULL;
+		}
+		return *i;
+	}
+#endif
 
-// Neue Route am Ende anhängen (damit RTelse O.K. geht)
-void InDevice::AddRoute(Route *route)
-{
+	template <class T, class P, class L>
+	void CommonTypedDeviceAPI<T,P,L>::InitializeIds()
+	{
+		size_t nr = 0;
+		for (typename listtype::iterator i = deviceList.begin();
+		     i != deviceList.end();
+		     i++) {
+			(*i)->Device::SetId(nr);
+			routeListType & list = (*i)->routes;
+			for (routeListType::iterator j = list.begin();
+			     j != list.end();
+			     j++) {
+				thistype * ptr = NULL;
+				(*j)->SetDeviceId(nr, ptr);
+			}
+			nr++;
+		}
+	}
 
-	if (!Routes) {
-		Routes = route;
-		route->SetInDevice(this);
+	template <class T, class P, class L>
+	typename CommonTypedDeviceAPI<T,P,L>::DevicePtr 
+	CommonTypedDeviceAPI<T,P,L>::GetDevice(int id)
+	{
+		for (typename listtype::iterator i = deviceList.begin();
+		     i != deviceList.end();
+		     i++) {
+			if ((*i)->Device::GetId() == id) {
+				return (*i);
+			}
+		}
+		return NULL;
+	}
+
+	template <class T, class P, class L>
+	void CommonTypedDeviceAPI<T,P,L>::AppendToDeviceList (DevicePtr dev) 
+	{
+#ifdef DEBUG
+		typename listtype::iterator i = 
+			std::find(deviceList.begin(),
+				  deviceList.end(),
+				  dev);
+		if (i != deviceList.end()) {
+			UNREACHABLECT(listtype);
+		}
+#endif
+		deviceList.push_back(dev);
+	}
+
+	template <class T, class P, class L>
+	void CommonTypedDeviceAPI<T,P,L>::RemoveFromDeviceList (DevicePtr dev) 
+	{
+		typename listtype::iterator i = 
+			std::find(deviceList.begin(),
+				  deviceList.end(),
+				  dev);
+		if (i == deviceList.end()) {
+			UNREACHABLECT(listtype);
+		} else 	
+			deviceList.erase(i);
+	}
+
+	template <class T, class P, class L>
+	void CommonTypedDeviceAPI<T,P,L>::TruncateDeviceList (DevicePtr dev) 
+	{
+		STUB;
 		return;
-	}
+#if 0
+		if (!deviceList) return;
+        
+		if (deviceList == dev) {
+			deviceList = NULL; 
+			return;
+		}
 	
-	Route *R = Routes;
-	wxASSERT(R->GetInDevice() == this);
-	Route * next;
-	while ( (next = R -> GetNext()) )
-		R = next;
+		DevicePtr d = deviceList ;
+		while (d->GetNext() && d->GetNext() != dev) {
+			d = d->GetNext();
+		}
+		if (d->GetNext()) {
+			d -> SetNext(NULL);
+		}
+#endif
+	}
 
-	R -> SetNext(route);
-}
 
-void InDevice::Quite()
-{
-	for (Route *R = Routes; R; R = R->GetNext())
-		if ( R->GetOutDevice() )
-			R->GetOutDevice()->Quite(R);
-}
 
-Route * InDevice::ReplaceDevice (InDevice * dev) 
-{
-	// we don't replace the position in the device list since it is
-	// already appended and we don't rely on the order in this list.
-#ifdef DEBUG
-	if (debugFlags::flags[debugFlags::routing]) {
-		InDevice * test = GetDeviceList();
-		while (test && test != dev) test = test->GetNext();
-		wxASSERT(test);
+#ifdef WX
+	template <class T, class P, class L>
+	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {
+		return Device::TowxString() 
+			+ wxString::Format(_T("\
+CommonTypedDeviceAPI:\n\
+   ptrct    = %d\n\
+"),intrusive_ptr_get_refcount(this));
 	}
 #endif
-        SetRoute(dev->GetRoutes());
-        dev -> SetRoute(NULL);
-        return GetRoutes();
-}
 
-void InDevice::InitializeIds()
-{
-	InDevice * in = GetDeviceList();
-	int i = 0;
-	while (in) {
-		int id = i++;
-		in->Device::SetId(id);
-		for (Route * route = in->GetRoutes(); route; route = route->GetNext())
-			route -> SetInputId(id);
-		in = in->GetNext();
+	template class CommonTypedDeviceAPI<OutputDeviceClass>;
+	template class CommonTypedDeviceAPI<InputDeviceClass>;
+
+        // CurrentTime ------------------------------------------------------
+	CurrentTimer CurrentTime;
+
+#ifdef WX
+	wxString OutputDeviceClass::TowxString() const {
+		return CommonTypedDeviceAPI<OutputDeviceClass>::
+			TowxString() + wxString::Format(_T("\
+OutputDeviceClass:\n\
+   no data.\n\
+"));
+
 	}
-}
-
-void InDevice::SaveDevices(tree_storage & config)
-{
-#ifdef DEBUG
-	wxString oldpath = config.GetPath();
 #endif
-	config.toLeaf(_T("InDevices"));
 	
-	for (InDevice * in = GetDeviceList(); in; in = in->GetNext()) {
-		config.toLeaf(_T("Device"),in->Device::GetId());
-		config.Write(_T("Type"),in->GetType());
-		config.Write(_T("Type Name"),in->GetTypeName());
-		in -> Save (config);
+	void InputDeviceClass::Destroy() {
+		for (routeListType::iterator R = routes.begin();
+		     R!= routes.end(); R++) {
+			(*R)->Remove(DevicePtr(this));
+		}
+		CommonTypedDeviceAPI<InputDeviceClass>::Destroy();
+	}
+
+	void InputDeviceClass::Quite()
+	{
+		for (routeListType::iterator R = routes.begin(); 
+		     R != routes.end(); R++)
+			if ((*R)->GetOutputDevice() )
+				(*R)->GetOutputDevice()->Quite(*R);
+	}
+
+#ifdef WX
+	wxString InputDeviceClass::TowxString() const {
+		return (CommonTypedDeviceAPI<InputDeviceClass>::
+			TowxString()) + wxString::Format(_T("\
+InputDeviceClass:\n\
+   Mode     = %d\n\
+"),Mode);
+
+	}
+#endif
+
+	DeviceFactory::factorylist DeviceFactory::factories;
+
+	DeviceFactory::DeviceFactory(size_t type) {
+		if (factories.size() <= type) {
+			factories.resize(type+1,NULL);
+		}
+		if (factories[type]) {
+			UNREACHABLEC;
+			return;
+		}
+		factories[type] = this;
+		
+	}
+
+	DeviceFactory::~DeviceFactory() {}
+
+	void DeviceFactory::LoadOutputDevices(tree_storage & config)
+	{
+#ifdef DEBUG
+		wxString oldpath = config.GetPath();
+#endif
+		config.toLeaf(_T("OutputDevices"));
+	
+		int i = config.toFirstLeaf(_T("Device"));
+		while (i != wxNOT_FOUND) {
+			DEBUGLOGTYPE(config,OutputDeviceClass,_T("Loading output device with id %d"),i);
+			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
+			OutputDevice out = DeviceFactory::CreateOutput(type);
+			if (!out) continue;
+			out -> Device::SetId(i);
+			wxString name = config.Read(_T("Type Name"),
+						    _T("Midi output device"));
+			DEBUGLOGTYPE(config,
+				     OutputDeviceClass,
+				     _T("device type name '%s' == '%s'?"),
+				     (const mutChar *)name,
+				     (const mutChar *)(out->GetTypeName()));
+			wxASSERT(name == out->GetTypeName());
+			out -> Load(config);
+			i = config.toNextLeaf(_T("Device"));
+		}
+	
+		config.toParent(2);
+		wxASSERT(oldpath == config.GetPath());
+	}
+
+	void DeviceFactory::SaveOutputDevices(tree_storage & config)
+	{
+#ifdef DEBUG
+		wxString oldpath = config.GetPath();
+#endif
+		config.toLeaf(_T("OutputDevices"));
+	
+		const OutputDeviceList & list = 
+			OutputDeviceClass::GetDeviceList();
+		for (OutputDeviceList::const_iterator out = list.begin(); 
+		     out != list.end(); out++) {
+			config.toLeaf(_T("Device"),
+				      static_cast<Device *>((*out).get())->GetId());
+			config.Write(_T("Type"),(*out)->GetType());
+			config.Write(_T("Type Name"),(*out)->GetTypeName());
+			(*out) -> Save (config);
+			config.toParent();
+		}
+	
 		config.toParent();
+		wxASSERT(oldpath == config.GetPath());
 	}
-	
-	config.toParent();
-	wxASSERT(oldpath == config.GetPath());
-}
 
-void InDevice::LoadDevices(tree_storage & config)
-{
+	void DeviceFactory::LoadInputDevices(tree_storage & config)
+	{
 #ifdef DEBUG
-	wxString oldpath = config.GetPath();
+		wxString oldpath = config.GetPath();
 #endif
-	config.toLeaf(_T("InDevices"));
+		config.toLeaf(_T("InputDevices"));
 	
-	int i = config.toFirstLeaf(_T("Device"));
-	while (i != wxNOT_FOUND) {
-		DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
-		InDevice * in = InDevice::CreateDevice(type);
-		in -> Device::SetId(i);
-		wxString name = config.Read(_T("Type Name"),
-					    _T("Midi input device"));
-		DEBUGLOGTYPE(config,
-			     InDevice,
-			     _T("device type name '%s' == '%s'?"),
-			     (const mutChar *)name,
-			     (const mutChar *)(in->GetTypeName()));
-		wxASSERT(name == in -> GetTypeName());
-		in -> Load(config);
-		i = config.toNextLeaf(_T("Device"));
+		int i = config.toFirstLeaf(_T("Device"));
+		while (i != wxNOT_FOUND) {
+			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
+			InputDevice in = CreateInput(type);
+			in -> Device::SetId(i);
+#ifdef DEBUG
+			wxString name = config.Read(_T("Type Name"),
+						    _T("Midi input device"));
+			DEBUGLOGTYPE(config,
+				     InputDeviceClass,
+				     _T("device type name '%s' == '%s'?"),
+				     (const mutChar *)name,
+				     (const mutChar *)(in->GetTypeName()));
+			wxASSERT(name == in -> GetTypeName());
+#endif
+			in -> Load(config);
+			i = config.toNextLeaf(_T("Device"));
+		}
+	
+		config.toParent(2);
+		wxASSERT(oldpath == config.GetPath());
 	}
+
+	void DeviceFactory::SaveInputDevices(tree_storage & config)
+	{
+#ifdef DEBUG
+		wxString oldpath = config.GetPath();
+#endif
+		config.toLeaf(_T("InputDevices"));
 	
-	config.toParent(2);
-	wxASSERT(oldpath == config.GetPath());
-}
 
-InDevice * InDevice::GetDevice(int id)
-{
-	InDevice * in = GetDeviceList();
-	while (in && in->Device::GetId() != id) 
-		in = in->Next;
-	return in;
-}
-
-
-void InDevice::AppendToDeviceList (InDevice * dev) 
-{
-        if (!GetDeviceList()) {
-                deviceList = dev; 
-                return;
-        }
-
-        InDevice * d = deviceList ;
-	InDevice * next;
-        while ( (next = d->GetNext()) ) d = next;
-        d->SetNext(dev);
-}
-
-void InDevice::RemoveFromDeviceList (InDevice * dev) 
-{
-        if (!deviceList) return;
-        
-        if (deviceList == dev) {
-                deviceList = dev -> GetNext(); 
-                dev -> SetNext(NULL);
-                return;
-        }
-
-        InDevice * d = deviceList, *next ;
-        while ((next = d->GetNext()) != dev && next) d = next;
-        if (next) {
-                d->SetNext(dev -> GetNext());
-                dev -> SetNext(NULL);
-        }
-}
-
-void InDevice::TruncateDeviceList (InDevice * dev) 
-{
-        if (!deviceList) return;
-        
-        if (deviceList == dev) {
-                deviceList = NULL; 
-                return;
-        }
-
-        InDevice * d = deviceList;
-	InDevice * next = d->GetNext();
-        while (next && next != dev) {
-                d = next;
-		next = d -> GetNext();
-        }
-        if (next) {
-                d -> SetNext(NULL);
-        }
-}
-
-
-// functions --------------------------------------------------------
-
-void OutNotesCorrect(int box)
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		Out->NotesCorrect(box);
-}
-
-bool OutOpen()
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		if ( !Out->Open() ) {
-			for (OutDevice *Out1 = OutDevice::GetDeviceList(); Out1 && Out1 != Out; Out1 = Out1->GetNext())
-				Out1->Close();
-
-			return false;
+		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
+		for (InputDeviceList::const_iterator in = list.begin();
+		     in != list.end(); in++) {
+			config.toLeaf(_T("Device"),(*in)->Device::GetId());
+			config.Write(_T("Type"),(*in)->GetType());
+			config.Write(_T("Type Name"),(*in)->GetTypeName());
+			(*in) -> Save (config);
+			config.toParent();
 		}
+	
+		config.toParent();
+		wxASSERT(oldpath == config.GetPath());
+	}
 
-	return true;
-}
+	void DeviceFactory::DoLoadOutputDevices(tree_storage & config) const
+	{
+		STUBC;
+	}
 
-void OutClose()
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		Out->Close();
-}
+	void DeviceFactory::DoSaveOutputDevices(tree_storage & config) const
+	{
+		STUBC;
+	}
 
-void OutAddTime(frac time)
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		Out->AddTime(time);
-}
+	void DeviceFactory::DoLoadInputDevices(tree_storage & config) const
+	{
+		STUBC;
+	}
 
-bool InOpen()
-{
-	DEBUGLOGBASE(other,"",_T(""));
-
-	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext())
-		if ( !In->Open() ) {
-			for (InDevice *In1 = InDevice::GetDeviceList(); In1 && In1 != In; 
-                             In1 = In1->GetNext())
-				In1->Close();
-
-			DEBUGLOGBASE(other,"",_T("Opening failed"));
-
-			return false;
-		}
-
-	return true;
-}
-
-void InClose()
-{
-	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext())
-		In->Close();
-}
-
-bool NeedsRealTime()
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		if ( Out->NeedsRealTime() )
-			return true;
-
-	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext())
-		if ( In->NeedsRealTime() )
-			return true;
-
-	return false;
-}
+	void DeviceFactory::DoSaveInputDevices(tree_storage & config) const
+	{
+		STUBC;
+	}
 
 
-/*
-frac InReadOn(frac time)
-{
-  frac z = frac(-1, 1);
-  for (InDevice *In = InDevices; In; In = In->Next)
-  {
-	  frac z1 = In->ReadOn(time);
-	  if ( z == frac(-1, 1) || z1 < z )
-		  z = z1;
-  }
-  return z;
-}
-*/
 
-void MidiOut(int box, DWORD data, char n)
-{
-	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext()) {
-		for (Route *R = In->GetRoutes(); R; R = R->GetNext()) {
-			OutDevice * out;
-			if ( R->Box == box && (out = R->GetOutDevice())) {
+
+
+	// functions --------------------------------------------------------
+	// set timer
+	void StartCurrentTime()
+	{
+		CurrentTime.Start(0);
+	}
+
+        // reset timer
+	void StopCurrentTime()
+	{
+		// not needed any more
+		//CurrentTime.Stop();
+	}
+
+	void OutNotesCorrect(int box)
+	{
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = list.begin();
+		     Out != list.end(); Out++)
+			(*Out)->NotesCorrect(box);
+	}
+
+	bool OutOpen()
+	{
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = list.begin();
+		     Out != list.end(); Out++)
+			if ( !(*Out)->Open() ) {
+				for (OutputDeviceList::const_iterator Out1 
+					     = list.begin();
+				     Out1 != Out; Out1++)
+					(*Out1)->Close();
+
+				return false;
+			}
+
+		return true;
+	}
+
+	void OutClose()
+	{
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = list.begin();
+		     Out != list.end(); Out++)
+			(*Out)->Close();
+	}
+
+	void OutAddTime(frac time)
+	{
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = list.begin();
+		     Out != list.end(); Out++)
+			(*Out)->AddTime(time);
+	}
+
+	bool InOpen()
+	{
+		DEBUGLOGBASE(other,"",_T(""));
+
+		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
+		for (InputDeviceList::const_iterator In = list.begin();
+		     In != list.end(); In++)
+			if ( !(*In)->Open() ) {
+				for (InputDeviceList::const_iterator In1 = list.begin();
+				     In1 != In; In1++)
+					(*In1)->Close();
+
+				DEBUGLOGBASE(other,"",_T("Opening failed"));
+
+				return false;
+			}
+
+		return true;
+	}
+
+	void InClose()
+	{
+		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
+		for (InputDeviceList::const_iterator In = list.begin();
+		     In != list.end(); In++)
+			(*In)->Close();
+	}
+
+	bool NeedsRealTime()
+	{
+		const OutputDeviceList& listo = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = listo.begin();
+		     Out != listo.end(); Out++)
+			if ( (*Out)->NeedsRealTime() )
+				return true;
+
+		const InputDeviceList& listi = InputDeviceClass::GetDeviceList(); 
+		for (InputDeviceList::const_iterator In = listi.begin();
+		     In != listi.end(); In++)
+			if ( (*In)->NeedsRealTime() )
+				return true;
+
+		return false;
+	}
+
+
+	void MidiOut(int box, DWORD data, char n)
+	{
+		const routeListType & list = RouteClass::GetRouteList();
+		for (routeListType::const_iterator R = list.begin(); 
+		     R != list.end(); R++) {
+			OutputDevice out;
+			if ( (*R)->GetBox() == box && 
+			     (out = (*R)->GetOutputDevice())) {
 				out -> MidiOut(data, n);
 			}
 		}
 	}
-}
 
-void NotesCorrect(int box)
-{
-	for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext())
-		Out->NotesCorrect(box);
-}
+	void NotesCorrect(int box)
+	{
+		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		for (OutputDeviceList::const_iterator Out = list.begin();
+		     Out != list.end(); Out++)
+			(*Out)->NotesCorrect(box);
+	}
 
-int GetChannel(int box, int taste)
-{
-	for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext()) {
-		for (Route *R = In->GetRoutes(); R; R = R->GetNext()) {
-			OutDevice * out;
-			if ( R->Box == box && (out = R->GetOutDevice())) {
+	int GetChannel(int box, int taste)
+	{
+		const routeListType & list = RouteClass::GetRouteList();
+		for (routeListType::const_iterator R = list.begin(); 
+		     R != list.end(); R++) {
+			OutputDevice out;
+			if ( (*R)->GetBox() == box
+			     && (out = (*R)->GetOutputDevice())) {
 				int c = out->GetChannel(taste);
-
+				
 				if ( c != -1 )
 					return c;
 			}
 		}
+		return -1;
 	}
-	return -1;
+
 }
 
 /// \}

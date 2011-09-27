@@ -2,17 +2,24 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.22 2011/09/07 15:58:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.23 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/07 15:58:56 $
- * \version $Revision: 1.22 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.22  2011/09/07 15:58:56  keinstein
+ * Revision 1.23  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.22  2011-09-07 15:58:56  keinstein
  * fix compilation on MinGW
  *
  * Revision 1.21  2011-09-05 11:30:08  keinstein
@@ -52,38 +59,27 @@
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-//    #include "wx/mdi.h"
-#endif
-
 #include "Defs.h"
 #include <stdio.h>
 #include "wx/list.h"
 #include "wx/ffile.h"
+#include "wx/log.h"
+#include "wx/dc.h"
 
 #include "Runtime.h"
-//#include "edevice.h"
-//#include "Help.rh"
 #include "mhDefs.h"
 #include "MutRouteWnd.h"
 #include "InputDevDlg.h"
-//#include "InputFilterDlg.h"
 #include "BoxDlg.h"
-//#include "OutputFilterDlg.h"
 #include "OutputDevDlg.h"
 #include "NewInputDeviceShape.h"
 #include "NewBoxShape.h"
 #include "NewOutputDeviceShape.h"
 #include "DebugRoute.h"
 #include "RouteCompat.h"
+#include "muwx/MutApp.h"
+#include "muwx/MutFrame.h"
+#include "GUIBoxData-inlines.h"
 
 #ifndef RTMIDI
 #ifndef MMSYSTEM_H
@@ -114,14 +110,12 @@
 #endif
 //#endif
 
-#ifdef RTMIDI
-#include "RtMidi.h"
-
-extern RtMidiOut *rtmidiout;
-
-extern RtMidiIn *rtmidiin;
-
+#ifdef __BORLANDC__
+#pragma hdrstop
 #endif
+
+using namespace mutabor;
+using namespace mutaborGUI;
 
 extern int curBox;
 
@@ -191,6 +185,7 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 
 void MutRouteWnd::InitShapes()
 {
+	DebugCheckRoutes();
 	wxASSERT(GetSizer());
         wxSizerFlags flags;
         flags.Align(wxALIGN_CENTER_VERTICAL | wxALIGN_CENTER_HORIZONTAL);
@@ -200,17 +195,21 @@ void MutRouteWnd::InitShapes()
 	wxASSERT(InputDevices.empty());
 	MutInputDeviceShape * newin = new MutNewInputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newin, flags);
-	InputDevices.Append(newin);
+	InputDevices.push_back(newin);
 	
 	wxASSERT(Boxes.empty());
+	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
+			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
 	GetSizer()->Add(boxShape, flags);
-	Boxes.Append(boxShape);
+	Boxes.push_back(boxShape);
+	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d now)"),
+			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
 
 	wxASSERT(OutputDevices.empty());
 	MutOutputDeviceShape * newout = new MutNewOutputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newout, flags);
-	OutputDevices.Append(newout);
+	OutputDevices.push_back(newout);
 
 	createInputDevices(flags);
 	createBoxes(flags);
@@ -223,9 +222,9 @@ void MutRouteWnd::InitShapes()
 
 void MutRouteWnd::InitDevices() 
 {
-  createInputDevices(MutInputDeviceShape::GetSizerFlags());
-  createBoxes(MutBoxShape::GetSizerFlags());
-  createOutputDevices(MutOutputDeviceShape::GetSizerFlags());
+	createInputDevices(MutInputDeviceShape::GetSizerFlags());
+	createBoxes(MutBoxShape::GetSizerFlags());
+	createOutputDevices(MutOutputDeviceShape::GetSizerFlags());
         FitInside();
 
         PRINTSIZER(GetSizer());
@@ -247,19 +246,23 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 
 	GetSizer()->Add(InputSizer, 0, wxEXPAND);
   
-        for (InDevice *In = InDevice::GetDeviceList(); In; In = In->GetNext()) {
-                wxASSERT (In != In -> GetNext());
-                DEBUGLOG (other, _T("In the loop %p -> %p"), In, In->GetNext());
-                MutInputDeviceShape * newin = MutInputDeviceShape::CreateShape(this,wxID_ANY, In);
+	const InputDeviceList & list = 
+		InputDeviceClass::GetDeviceList();
+	for ( InputDeviceList::const_iterator In = list.begin(); 
+	      In != list.end(); In++) {
+                DEBUGLOG (other, _T("In the loop %p"), 
+			  (*In).get());
+                MutInputDeviceShape * newin = 
+			GUIDeviceFactory::CreateShape((*In),this);
                 wxASSERT(newin);
                 InputSizer->Add(newin, flags);
-                InputDevices.Append(newin);
+                InputDevices.push_back(newin);
         }
 }
 
 void MutRouteWnd::ClearInputDevices()
 {
-  InputDevices.Clear();
+  InputDevices.clear();
   InputSizer->Clear(true);
 }
 
@@ -270,20 +273,40 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 	MutBoxShape * boxShape;
 
 
-        for (int i = 0; i< MAX_BOX; i++) {
-                BoxPTRs[i] = NULL;
-        }
-
 	GetSizer()->Add(BoxSizer, 0, wxEXPAND);
 
-        for (MutDeviceShapeList::iterator iter = InputDevices.begin();
+	const routeListType & list = RouteClass::GetRouteList();
+        for (routeListType::const_iterator Route = list.begin();
+             Route != list.end(); ++Route) {
+
+		wxASSERT(MIN_BOX <= (*Route)->GetBox()
+			 && (*Route)->GetBox() < MAX_BOX);
+		BoxData & Box = BoxData::GetBox((*Route)->GetBox());
+		boxShape = Box.GetBoxShape(this);
+		if (!boxShape) {
+			boxShape = 
+				GUIRouteFactory::CreateBoxShape((*Route)->GetBox(),
+								this);
+			AddBox(boxShape, flags);
+		}
+
+
+		MutBoxChannelShape * channel =
+			GUIRouteFactory::CreateBoxChannelShape((*Route),
+							       boxShape);
+		boxShape->Add(channel);
+        }
+	
+/*
+        for (MutInputDeviceShapeList::iterator iter = InputDevices.begin();
              iter != InputDevices.end(); ++iter) {
 
-                MutInputDeviceShape * device = dynamic_cast<MutInputDeviceShape*>(*iter);
+                MutInputDeviceShape * device = 
+			dynamic_cast<MutInputDeviceShape*>(*iter);
 		wxASSERT(device);
                 if (!device) continue;
 
-                Route * Route = device->getRoutes();
+                Route  Route = device->getRoutes();
                 while (Route) {
                         wxASSERT(0<= Route->Box && Route->Box < MAX_BOX);
                         if (!BoxPTRs[Route->Box]) {
@@ -302,14 +325,14 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
                         DEBUGLOG (other, _T("Adding Route to Box %p on window %p"),boxShape,this);
                         MutBoxChannelShape * channel =
                                 boxShape->AddChannel(Route);
-                        channel->SetInput(device);
+                        channel->Attatch(device);
 
                         Route = Route->GetNext();
                 }
         }
 	
 	// Adding routes without input device
-	Route * route = Route::GetRouteList();
+	Route  route = RouteClass::GetRouteList();
 	while (route) {
 		wxASSERT(0<= route->Box && route->Box < MAX_BOX);
 		
@@ -347,11 +370,11 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 		
 		route = route->GetGlobalNext();
 	}
-	
+*/	
 }
 void MutRouteWnd::ClearBoxes()
 {
-  Boxes.Clear();
+  Boxes.clear();
   BoxSizer->Clear(true);
 }
 
@@ -364,23 +387,22 @@ void MutRouteWnd::createOutputDevices(wxSizerFlags flags)
 	
 	GetSizer()->Add(OutputSizer, 0, wxEXPAND | wxALL,0);
 
-        for (OutDevice *Out = OutDevice::GetDeviceList(); Out; Out = Out->GetNext()) {
-                MutOutputDeviceShape * newout =  MutOutputDeviceShape::CreateShape(this,wxID_ANY,Out);
+	const OutputDeviceList & list = 
+		OutputDeviceClass::GetDeviceList();
+	for ( OutputDeviceList::const_iterator Out = list.begin(); 
+	      Out != list.end(); Out++) {
+                MutOutputDeviceShape * newout =  
+			GUIDeviceFactory::CreateShape(*Out,this);
 
                 OutputSizer->Add(newout, flags);
-                OutputDevices.Append(newout);
-
-                for (MutBoxShapeList::iterator i = Boxes.begin(); i != Boxes.end(); i++) {
-                        MutBoxShape * box = *i;
-      
-                        box->AddPossibleOutput(newout);
-                }
+                OutputDevices.push_back(newout);
 
         }
 }
+
 void MutRouteWnd::ClearOutputDevices()
 {
-  OutputDevices.Clear();
+  OutputDevices.clear();
   OutputSizer->Clear(true);
 }
 
@@ -533,15 +555,18 @@ KeyboardAnalyseSimple(curBox, key);
 void MutRouteWnd::OnDraw(wxDC& dc)
 {
         wxScrolledWindow::OnDraw(dc);
+	wxRect screenpos;
+	GetViewStart(&screenpos.x,&screenpos.y);
+	GetClientSize(&screenpos.width,&screenpos.height);
         PRINTSIZER(GetSizer());
-        dc.SetDeviceOrigin(0,0);
+//        dc.SetDeviceOrigin(0,0);
 	wxASSERT(BoxSizer);
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
 		wxASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
 		if (box)
-			box->DrawLines(dc);
+			box->DrawLines(dc,screenpos);
         }
 }
 

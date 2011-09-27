@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.8 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.9 2011/09/27 20:13:26 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/27 20:13:26 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: valNum.cpp,v $
- * Revision 1.8  2011/02/20 22:35:59  keinstein
+ * Revision 1.9  2011/09/27 20:13:26  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.8  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -26,22 +33,15 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     04/01/98
-// RCS-ID:      $Id: valNum.cpp,v 1.8 2011/02/20 22:35:59 keinstein Exp $
+// RCS-ID:      $Id: valNum.cpp,v 1.9 2011/09/27 20:13:26 keinstein Exp $
 // Copyright:   (c) Julian Smart and Markus Holzem
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
-#ifdef __GNUG__
-#pragma implementation "valNum.h"
-#endif
 
 // For compilers that support precompilation, includes "wx.h".
 #include "Defs.h"
-#include "wx/wxprec.h"
 
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
 
 #if wxUSE_VALIDATORS
 
@@ -54,15 +54,11 @@
 #endif
 
 #include "valNum.h"
-/*
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
 
-#ifdef __SALFORDC__
-    #include <clib.h>
+#ifdef __BORLANDC__
+#pragma hdrstop
 #endif
-*/
+
 IMPLEMENT_DYNAMIC_CLASS(wxNumValidator, wxTextValidator)
 
 /*BEGIN_EVENT_TABLE(wxTextValidator, wxValidator)

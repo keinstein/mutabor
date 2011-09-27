@@ -6,16 +6,23 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -33,21 +40,18 @@
 // headers
 // ----------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx.h".
-#include "wx/wxprec.h"
+
+#include "muwx/Panel.h"
+#include "wx/object.h"
+#include "wx/font.h"
+#include "wx/colour.h"
+#include "wx/settings.h"
+#include "wx/log.h"
+#include "wx/panel.h"
+#include "wx/containr.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-    #include "wx/object.h"
-    #include "wx/font.h"
-    #include "wx/colour.h"
-    #include "wx/settings.h"
-    #include "wx/log.h"
-    #include "wx/panel.h"
-    #include "wx/containr.h"
 #endif
 
 // ----------------------------------------------------------------------------
@@ -152,6 +156,17 @@ bool MutPanel::Create(wxWindow *parent,
 MutPanel::~MutPanel()
 {
 }
+
+bool MutPanel::Destroy() 
+{
+	Hide();
+
+	if ( !wxPendingDelete.Member(this) )
+        wxPendingDelete.Append(this);
+	
+	return true;
+}
+
 
 void MutPanel::InitDialog()
 {

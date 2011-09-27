@@ -1,17 +1,22 @@
-/** \file
- ********************************************************************
- * Mutabor Mutabor Child Frame management.
+/** \file                 -*- C++ -*-
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.13 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.14 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: MutChild.h,v $
- * Revision 1.13  2011/09/07 13:06:50  keinstein
+ * Revision 1.14  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.13  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.12  2011-02-20 22:35:57  keinstein
@@ -105,34 +110,47 @@
  *
  ********************************************************************/
 
-#ifndef MUTCHILD_H
-#define MUTCHILD_H
+#if (!defined(MUWX_MUT_CHILD_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUT_CHILD_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUT_CHILD_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "mhDefs.h"
+#include "MutTextBox.h"
+
+#ifndef MUWX_MUT_CHILD_H_PRECOMPILED
+#define MUWX_MUT_CHILD_H_PRECOMPILED
 
 #include "wx/toolbar.h"
 #include "wx/dynarray.h"
 #include "wx/arrimpl.cpp" // this is a magic incantation which must be done!
-#include "mhDefs.h"
 #include "wx/aui/aui.h"
-#include "MutTextBox.h"
 
+namespace mutaborGUI {
 
-class MutFrame;
+	class MutFrame;
 
-class MutChild: public MutTextBox
-{
+	class MutChild: public MutTextBox
+	{
 
-public:
-	MutChild (WinKind winkind,
-	          int boxId,
-	          wxWindow * parent= NULL,
-	          wxWindowID id = -1,
+	public:
+		MutChild (WinKind winkind,
+			  int boxId,
+			  wxWindow * parent= NULL,
+			  wxWindowID id = -1,
 
-	          const wxPoint& pos = wxDefaultPosition,
-	          const wxSize & size = wxDefaultSize);
+			  const wxPoint& pos = wxDefaultPosition,
+			  const wxSize & size = wxDefaultSize);
 
-	~MutChild();
+		~MutChild();
 
-	void OnActivate(wxActivateEvent& event);
+		void OnActivate(wxActivateEvent& event);
 
 //    void OnRefresh(wxCommandEvent& event);
 //    void OnUpdateRefresh(wxUpdateUIEvent& event);
@@ -140,80 +158,81 @@ public:
 //    void OnSize(wxSizeEvent& event);
 //    void OnMove(wxMoveEvent& event);
 
-	void deleteFromWinAttrs();
+		void deleteFromWinAttrs();
 
-	void OnClose(wxCloseEvent& event)
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		DEBUGLOG(other,_T(""));
-		MutTextBox::OnClose(event);
-	}
+		void OnClose(wxCloseEvent& event)
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			DEBUGLOG(other,_T(""));
+			MutTextBox::OnClose(event);
+		}
 
 
-	void OnAuiClose(wxAuiManagerEvent& event)
+		void OnAuiClose(wxAuiManagerEvent& event)
 
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		DEBUGLOG(other,_T(""));
-		deleteFromWinAttrs();
-	}
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			DEBUGLOG(other,_T(""));
+			deleteFromWinAttrs();
+		}
 
-	// Override sizing for drawing the color
+		// Override sizing for drawing the color
 
-	void GetClientSize(int * width, int * height)
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		MutTextBox::GetClientSize(width,height);
+		void GetClientSize(int * width, int * height)
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			MutTextBox::GetClientSize(width,height);
 
-		if ((width += 2) < 0) width = 0;
+			if ((width += 2) < 0) width = 0;
 
-		if ((height +=2) < 0) height =0;
-	}
+			if ((height +=2) < 0) height =0;
+		}
 
-	void SetClientSize(int width, int height)
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		MutTextBox::SetClientSize(width-2, height-3);
-	}
+		void SetClientSize(int width, int height)
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			MutTextBox::SetClientSize(width-2, height-3);
+		}
 
-	void SetClientSize(const wxSize& size)
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		wxSize s = size;
-		s.IncBy(-2);
-		MutTextBox::SetClientSize(s);
-	}
+		void SetClientSize(const wxSize& size)
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			wxSize s = size;
+			s.IncBy(-2);
+			MutTextBox::SetClientSize(s);
+		}
 
-	void ClientToScreen(int * x, int * y )
+		void ClientToScreen(int * x, int * y )
 
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		MutTextBox::ClientToScreen(x,y);
-		x+=1;
-		y+=1;
-	}
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			MutTextBox::ClientToScreen(x,y);
+			x+=1;
+			y+=1;
+		}
 
-	wxPoint ClientToScreen(const wxPoint& pt) const
-	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
-	}
+		wxPoint ClientToScreen(const wxPoint& pt) const
+		{
+			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
+		}
 
 
 //	void MenuPassOn(wxCommandEvent& event);
 //	void MenuPassToParent(wxCommandEvent& event);
 
-	DECLARE_EVENT_TABLE()
-};
+		DECLARE_EVENT_TABLE()
+			};
 
-bool IsOpen(WinKind kind, int box = 0);
+	bool IsOpen(WinKind kind, int box = 0);
 
-bool IsWanted(WinKind kind, int box = 0);
+	bool IsWanted(WinKind kind, int box = 0);
 
-void DontWant(WinKind kind, int box = 0);
+	void DontWant(WinKind kind, int box = 0);
 
-int NumberOfOpen(WinKind kind);
-
+	int NumberOfOpen(WinKind kind);
+}
+#endif
 #endif
 
 ///\}

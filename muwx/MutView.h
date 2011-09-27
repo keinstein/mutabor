@@ -2,16 +2,23 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.8 2011/09/05 11:30:08 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.9 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:08 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.8  2011/09/05 11:30:08  keinstein
+ * Revision 1.9  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.8  2011-09-05 11:30:08  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -46,18 +53,28 @@
  ********************************************************************/
 
 
-#ifndef MUTABOR_MUT_VIEW_H
-#define MUTABOR_MUT_VIEW_H
+#if (!defined(MUWX_MUTVIEW_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTVIEW_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTVIEW_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "MutFrame.h"
+
+#ifndef MUWX_MUTVIEW_H_PRECOMPILED
+#define MUWX_MUTVIEW_H_PRECOMPILED
 // ---------------------------------------------------------------------------
 // headers
 // --------------------------------------------------------------------------
 
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "Defs.h"
 #include <wx/wx.h>
 #include <wx/docview.h>
-#include "MutFrame.h"
 
 
 namespace mutaborGUI {
@@ -124,6 +141,7 @@ namespace mutaborGUI {
 	};
 
 }
-#endif
+#endif //precompiled
+#endif // header loaded
 
 ///\}

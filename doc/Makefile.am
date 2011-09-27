@@ -1,6 +1,6 @@
 SUBDIRS = localized
 #RECURSIVE_TARGETS += mac-recursive
-bin_PROGRAMS = fixhhp htmldecode
+noinst_PROGRAMS = fixhhp htmldecode
 EXTRA_DIST = \
 	addbookm.png \
 	back.png \
@@ -34,7 +34,7 @@ htmldecode_SOURCES = htmldecode.cpp
 
 fixhhp_SOURCES = fixhhp.cpp
 
-html: html-recursive
+html-local: html-recursive
 html-recursive: htmldecode fixhhp 
 
 mac: mac-recursive

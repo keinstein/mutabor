@@ -1,13 +1,13 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Description
+ * Forward declarations for several lists used in the code base.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/templates/template.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteLists.h,v 1.1 2011/09/27 20:13:25 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.1 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,8 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: template.cpp,v $
- * Revision 1.5  2011/09/27 20:13:26  keinstein
+ * $Log: RouteLists.h,v $
+ * Revision 1.1  2011/09/27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -47,7 +47,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup GUI
  * \{
  ********************************************************************/
 // availlable groups: GUI, route, kernel, muwx, debug, docview
@@ -55,10 +55,10 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(HEADERFILENAME) && !defined(PRECOMPILE)) \
-	|| (!defined(HEADERFILENAME_PRECOMPILED))
+#if (!defined(MUWX_ROUTING_ROUTELISTS_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED))
 #ifndef PRECOMPILE
-#define HEADERFILENAME
+#define MUWX_ROUTING_ROUTELISTS_H
 #endif
 
 // ---------------------------------------------------------------------------
@@ -67,18 +67,31 @@
 
 #include "Defs.h"
 
-#ifndef HEADERFILENAME_PRECOMPILED
-#define HEADERFILENAME_PRECOMPILED
+#ifndef MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED
+#define MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED
 
 // system headers which do seldom change
+#include <list>
 
-/// not for headers
-#ifdef __BORLANDC__
-    #pragma hdrstop
+namespace mutaborGUI {
+	class MutBoxShape;
+	typedef std::list <MutBoxShape *> MutBoxShapeList;
+
+	class MutInputDeviceShape;
+	typedef std::list<MutInputDeviceShape *> MutInputDeviceShapeList;
+
+	class MutOutputDeviceShape;
+	typedef std::list<MutOutputDeviceShape *>  MutOutputDeviceShapeList;
+
+	class MutBoxShape;
+	typedef std::list<MutBoxShape *> MutBoxShapeList;
+
+	class MutBoxChannelShape;
+	typedef std::list<MutBoxChannelShape *> MutBoxChannelShapeList;
+}
+
+#endif /* PRECOMPILED */
 #endif
-
-#endif // precompiled
-#endif // header loaded
 
 
 ///\}

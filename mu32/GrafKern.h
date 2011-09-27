@@ -2,13 +2,20 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.11 2011/02/20 22:35:55 keinstein Exp $
+ * $Id: GrafKern.h,v 1.12 2011/09/27 20:13:21 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.12 $
  *
  * $Log: GrafKern.h,v $
- * Revision 1.11  2011/02/20 22:35:55  keinstein
+ * Revision 1.12  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.11  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.10  2010-11-21 13:15:45  keinstein
@@ -41,21 +48,27 @@
  * \{
  ********************************************************************/
 
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
-// Ausgabe-Funktionen
-// ------------------------------------------------------------------
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
-#ifndef GRAFKERN_H
-#define GRAFKERN_H
+#if (!defined(MU32_GRAFKERN_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_GRAFKERN_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_GRAFKERN_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
-
-
-#if defined(WX)
-#include "wx/wx.h"
-#endif
 #include "Errors.h"
+
+#ifndef MU32_GRAFKERN_H_PRECOMPILED
+#define MU32_GRAFKERN_H_PRECOMPILED
+
+
+
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();
@@ -83,7 +96,7 @@ void show_line_number( int n );
 #ifdef MUTWIN
 #ifdef WX
 #include "CompDlg.h"
-void InitCompDia(CompDlg *compDia, wxString filename);
+void InitCompDia(mutaborGUI::CompDlg *compDia, wxString filename);
 
 #else
 void InitCompDia(HWND compDiaLine);
@@ -129,6 +142,7 @@ extern char Fmeldung[255];
 #define LAUFZEIT_ERROR2(format, a, b) sprintf(Fmeldung, format, a, b)
 #endif
 
+#endif // precompiled
 #endif
 
 

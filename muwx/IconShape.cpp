@@ -4,16 +4,23 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.5 2011/08/24 21:19:36 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.6 2011/09/27 20:13:22 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/08/24 21:19:36 $
-* \version $Revision: 1.5 $
+* $Date: 2011/09/27 20:13:22 $
+* \version $Revision: 1.6 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.5  2011/08/24 21:19:36  keinstein
+* Revision 1.6  2011/09/27 20:13:22  keinstein
+* * Reworked route editing backend
+* * rewireing is done by RouteClass/GUIRoute now
+* * other classes forward most requests to this pair
+* * many bugfixes
+* * Version change: We are reaching beta phase now
+*
+* Revision 1.5  2011-08-24 21:19:36  keinstein
 * first run with 2.9.2+
 *
 * Revision 1.4  2011-02-20 22:35:57  keinstein
@@ -121,9 +128,11 @@
 ********************************************************************/
 
 #include "Defs.h"
-#include "wx/defs.h"
-//#include "wx/wx.h"
 #include "IconShape.h"
+#include "wx/defs.h"
+#include "wx/sizer.h"
+#include "wx/dc.h"
+#include "wx/dcclient.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -200,7 +209,7 @@ void MutIconShape::SetFocus() {
 	MutPanel::SetFocus();
 	DEBUGLOG (other, _T(""));
 	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_RAISED)| wxBORDER_SUNKEN);
-	GetContainingSizer()->Layout();
+	GetParent()->Layout();
 	Refresh();
 }
 
@@ -215,7 +224,7 @@ void MutIconShape::OnKillFocus(wxFocusEvent & event)
 	DEBUGLOG (other, _T(""));
 	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_SUNKEN) | wxBORDER_RAISED);
 	wxSizer * sizer = GetContainingSizer();
-	if (sizer) sizer->Layout();
+	m_parent->Layout();
 	Refresh();
 }
 
@@ -287,11 +296,13 @@ wxPoint MutIconShape::GetPerimeterPoint(const wxPoint &i,const wxPoint &o) const
 	return p;
 }
 
-void MutIconShape::LineTo(wxDC &dc, const wxPoint & p)  const
+void MutIconShape::LineTo(wxDC &dc, const wxPoint & p,
+	const wxRect & screenpos)  const
 {
 	wxRect rect = GetRect();
 	wxPoint p1(rect.x + rect.width/2, rect.y + Icon.GetHeight()/2);
-	dc.DrawLine(p1,p);
+	wxPoint origin(screenpos.x,screenpos.y);
+	dc.DrawLine(p1+origin,p+origin);
 }
 
 
@@ -329,13 +340,22 @@ bool MutIconShape::Layout() {
 
 void MutIconShape::DeleteSelf()
 {
+	Destroy();
+	return;
+
+#if 0 
+	// old mouse event proof implementation
+	// has been used as long as we handled the event
+	// inside the mouse event handler;
 	Hide();
 	wxCloseEvent event(wxEVT_CLOSE_WINDOW, m_windowId);
 	event.SetEventObject(this);
 	event.SetCanVeto(false);
 	
 	GetEventHandler()->AddPendingEvent(event);
+#endif
 }
+
 
 /*
  * \}

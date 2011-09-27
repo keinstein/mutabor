@@ -2,16 +2,23 @@
  ********************************************************************
  * Description: Collect all properties, which are used by boxes
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.5 2011/09/08 18:50:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/box.h,v 1.6 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/08 18:50:41 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: box.h,v $
- * Revision 1.5  2011/09/08 18:50:41  keinstein
+ * Revision 1.6  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-09-08 18:50:41  keinstein
  * Fix some further update bug
  *
  * Revision 1.4  2011-09-08 16:51:21  keinstein
@@ -36,11 +43,40 @@
  * \{
  ********************************************************************/
 
-#ifndef MUTABOR_MU32_BOUX_H
-#define MUTABOR_MU32_BOUX_H
 
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MU32_BOX_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_BOX_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_BOX_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
 #include "Global.h"
 #include "Interpre.h"
+
+#ifndef MU32_BOX_H_PRECOMPILED
+#define MU32_BOX_H_PRECOMPILED
+
+// system headers which do seldom change
+
+
+enum BoxType
+{
+	NewBox = -3,
+	NoBox,
+	GmnBox,
+	Box0 = 0
+};
+	
+
+#define MIN_BOX NewBox
 
 /** Mutabor box type. */
 typedef struct {
@@ -62,6 +98,8 @@ typedef struct {
         int action_changed:1;
 } mutabor_box_type;
 
+
+
 extern tone_system * free_tonesystem;
 extern mutabor_box_type mut_box[MAX_BOX];
 extern int laufzeit_meldungen_erlaubt;
@@ -71,8 +109,11 @@ extern size_t minimal_box_used;
 
 extern int keys_changed_sum;
 
-#endif
+void initialize_boxes();
 
+
+#endif
+#endif
 
 
 ///\}

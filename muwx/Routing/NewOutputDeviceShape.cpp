@@ -4,16 +4,23 @@
  ********************************************************************
  * New output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewOutputDeviceShape.cpp,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewOutputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: NewOutputDeviceShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -62,24 +69,31 @@
  *\{
  ********************************************************************/
 #include "NewOutputDeviceShape.h"
+#include "muwx/MutRouteWnd.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
 
-void MutNewOutputDeviceShape::InitializeDialog(OutputDevDlg * out) const
-{
-	out -> SetType(DTNotSet);
+using namespace mutabor;
+namespace mutaborGUI {
+
+	void MutNewOutputDeviceShape::InitializeDialog(OutputDevDlg * out) const
+	{
+		out -> SetType(DTNotSet);
+	}
+
+	bool MutNewOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
+	{
+		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+		if (!p) UNREACHABLEC;
+		// the "New device" icon won't be replaced, so we just append the device
+		p->AddOutputDevice(newshape,sizerFlags);
+		return false;
+	}
+
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutNewOutputDeviceShape, MutOutputDeviceShape)
+
 }
-
-bool MutNewOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
-{
-	MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
-	if (!p) UNREACHABLEC;
-	// the "New device" icon won't be replaced, so we just append the device
-	p->AddOutputDevice(newshape,sizerFlags);
-	return false;
-}
-
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutNewOutputDeviceShape, MutOutputDeviceShape)
 /*
  * \}
  */

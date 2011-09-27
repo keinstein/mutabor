@@ -2,17 +2,24 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.28 2011/09/04 15:35:08 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.29 2011/09/27 20:13:23 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/04 15:35:08 $
-* \version $Revision: 1.28 $
+* $Date: 2011/09/27 20:13:23 $
+* \version $Revision: 1.29 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.28  2011/09/04 15:35:08  keinstein
+* Revision 1.29  2011/09/27 20:13:23  keinstein
+* * Reworked route editing backend
+* * rewireing is done by RouteClass/GUIRoute now
+* * other classes forward most requests to this pair
+* * many bugfixes
+* * Version change: We are reaching beta phase now
+*
+* Revision 1.28  2011-09-04 15:35:08  keinstein
 * disable print preview on OS X and when using libgnomeprint as they proviede their own means
 *
 * Revision 1.27  2011-09-04 13:50:36  keinstein
@@ -77,34 +84,22 @@
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
 #include "mhDefs.h"
 
 #include <iostream>
 
-#include "wx/wxprec.h"
 #include "wx/ffile.h"
 #include "wx/numdlg.h"
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#include "wx/mdi.h"
 #include "wx/filename.h"
 #include "wx/textfile.h"
-#endif
-
 #include "wx/toolbar.h"
 
 
 #ifdef __WXMSW__
 #include "wx/msw/private.h"
 
-#if wxUSE_RICHEDIT
+#if (wxUSE_RICHEDIT) && 0
 
 #if wxUSE_INKEDIT
 #include "wx/dynlib.h"
@@ -127,8 +122,15 @@
 #include "Runtime.h"
 #include "MutView.h"
 #include "stclanguage.h"
+#include "GrafKern.h"
 
-CompDlg *CompDia = NULL;
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+
+
+mutaborGUI::CompDlg *CompDia = NULL;
 
 // ---------------------------------------------------------------------------
 // event tables
@@ -651,16 +653,12 @@ namespace mutaborGUI {
 		{
 			wxFindReplaceDialog *dlg = event.GetDialog();
 
-			int idMenu = wxID_ANY;
-			const wxChar *txt;
 			if ( dlg == m_dlgFind )
 			{
-				idMenu = wxID_FIND;
 				m_dlgFind = NULL;
 			}
 			else if ( dlg == m_dlgReplace )
 			{
-				idMenu = wxID_REPLACE;
 				m_dlgReplace = NULL;
 			}
 			else
@@ -1338,15 +1336,6 @@ namespace mutaborGUI {
 
 		// scale DC
 		PrintScaling (dc);
-#ifdef DEBUG
-		wxSize dcSize = dc->GetSize();
-#endif
-
-		// print page
-/*
-		if (page == 1) 
-			m_printed = page;
-*/
 		
 		wxASSERT(0 < page);
 		wxASSERT(page <= (int)m_ranges.size());
@@ -1367,7 +1356,10 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	void MutEditPrint::GetPageInfo (int *minPage, int *maxPage, int *selPageFrom, int *selPageTo) {
+	void MutEditPrint::GetPageInfo (int *minPage,
+					int *maxPage, 
+					int *selPageFrom, 
+					int *selPageTo) {
 
 		// initialize values
 		*minPage = 0;
@@ -1492,7 +1484,7 @@ namespace mutaborGUI {
 	}
 
 	bool MutEditPrint::HasPage (int page) {
-		return page <= m_ranges.size();
+		return page <= (int)m_ranges.size();
 	}
 
 	bool MutEditPrint::PrintScaling (wxDC *dc){

@@ -3,16 +3,23 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.5 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.6 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: RouteIcons.cpp,v $
- * Revision 1.5  2011/09/08 16:51:21  keinstein
+ * Revision 1.6  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -63,67 +70,71 @@
 #include "BoxShape.h"
 #include "MutApp.h"
 
-MutIcon DevUnknownBitmap;
-MutIcon MidiInputDevBitmap;
-MutIcon NewInputDevBitmap;
-MutIcon MidiOutputDevBitmap;
-MutIcon NewOutputDevBitmap;
-MutIcon MidiFileBitmap;
-MutIcon GuidoFileBitmap;
-MutIcon BoxBitmap;
-MutIcon NewBoxBitmap;
-MutIcon ActiveChannelBitmap;
-MutIcon PassiveChannelBitmap;
 #include "Icon/DevUnknown.xpm"
 
-static void initMutIcon(MutIcon & icon, 
-			const wxString & filename,
-			const wxBitmapType type) 
-{
-	if (!icon.IsOk())
-		if(!icon.LoadFile(filename,type))
-			icon = DevUnknownBitmap;
-}
+namespace mutaborGUI {
 
-bool initMutIconShapes() 
-{
-	DevUnknownBitmap = MutICON(wxIcon(devunknown_xpm));
-	if (!DevUnknownBitmap.IsOk()) return false;
+	MutIcon DevUnknownBitmap;
+	MutIcon MidiInputDevBitmap;
+	MutIcon NewInputDevBitmap;
+	MutIcon MidiOutputDevBitmap;
+	MutIcon NewOutputDevBitmap;
+	MutIcon MidiFileBitmap;
+	MutIcon GuidoFileBitmap;
+	MutIcon BoxBitmap;
+	MutIcon NewBoxBitmap;
+	MutIcon ActiveChannelBitmap;
+	MutIcon PassiveChannelBitmap;
+
+
+	static void initMutIcon(MutIcon & icon, 
+				const wxString & filename,
+				const wxBitmapType type) 
+	{
+		if (!icon.IsOk())
+			if(!icon.LoadFile(filename,type))
+				icon = DevUnknownBitmap;
+	}
+
+	bool initMutIconShapes() 
+	{
+		DevUnknownBitmap = MutICON(wxIcon(devunknown_xpm));
+		if (!DevUnknownBitmap.IsOk()) return false;
   
-	initMutIcon(MidiInputDevBitmap,
-		    wxGetApp().GetResourceName (_T ("InputDevice.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(NewInputDevBitmap,
-		    wxGetApp ().GetResourceName (_T ("NewInputDevice.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(MidiOutputDevBitmap,
-		    wxGetApp ().GetResourceName (_T ("OutputDevice.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(NewOutputDevBitmap,
-		    wxGetApp ().GetResourceName (_T ("NewOutputDevice.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(MidiFileBitmap,
-		    wxGetApp ().GetResourceName (_T ("MidiFile.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(GuidoFileBitmap,
-		    wxGetApp ().GetResourceName (_T ("GuidoFile.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(BoxBitmap,
-		    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(ActiveChannelBitmap,
-		    wxGetApp ().GetResourceName (_T ("ActiveChannel.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(PassiveChannelBitmap,
-		    wxGetApp ().GetResourceName (_T ("PassiveChannel.png")),
-		    wxBITMAP_TYPE_PNG);
-	initMutIcon(NewBoxBitmap,
-		    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
-		    wxBITMAP_TYPE_PNG);
-	initBoxColours();	
-	return true;
+		initMutIcon(MidiInputDevBitmap,
+			    wxGetApp().GetResourceName (_T ("InputDevice.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(NewInputDevBitmap,
+			    wxGetApp ().GetResourceName (_T ("NewInputDevice.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(MidiOutputDevBitmap,
+			    wxGetApp ().GetResourceName (_T ("OutputDevice.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(NewOutputDevBitmap,
+			    wxGetApp ().GetResourceName (_T ("NewOutputDevice.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(MidiFileBitmap,
+			    wxGetApp ().GetResourceName (_T ("MidiFile.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(GuidoFileBitmap,
+			    wxGetApp ().GetResourceName (_T ("GuidoFile.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(BoxBitmap,
+			    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(ActiveChannelBitmap,
+			    wxGetApp ().GetResourceName (_T ("ActiveChannel.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(PassiveChannelBitmap,
+			    wxGetApp ().GetResourceName (_T ("PassiveChannel.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(NewBoxBitmap,
+			    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
+			    wxBITMAP_TYPE_PNG);
+		initBoxColours();	
+		return true;
+	}
 }
-
 
 /*
  * \}

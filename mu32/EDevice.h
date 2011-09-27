@@ -2,15 +2,22 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.12 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.h,v 1.13 2011/09/27 20:13:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: EDevice.h,v $
- * Revision 1.12  2011/09/05 11:30:07  keinstein
+ * Revision 1.13  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.12  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -77,7 +84,6 @@
 #define EDEVICE_H
 
 #include <cstring>
-#include "wx/wx.h"
 #include "Global.h"
 
 #include "wx/string.h"

@@ -4,16 +4,23 @@
  ********************************************************************
  * Midi fiele input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiFileDeviceShape.cpp,v 1.4 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiFileDeviceShape.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: InputMidiFileDeviceShape.cpp,v $
- * Revision 1.4  2011/02/20 22:35:58  keinstein
+ * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2010-12-13 00:27:53  keinstein
@@ -69,62 +76,65 @@
 #include "InputMidiFileDeviceShape.h"
 #include <limits>
 
-void MutInputMidiFileDeviceShape::InitializeDialog(InputDevDlg * in) const
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiFile);
-	wxASSERT(in);
-	in -> SetType(DTMidiFile);
-	in -> SetMidiFile(device->GetName());
-}
+using namespace mutabor;
 
-bool MutInputMidiFileDeviceShape::readDialog (InputDevDlg * in)
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiFile);
-	wxASSERT(in);
-	wxASSERT (in -> GetType() == DTMidiFile);
-	device->SetName (in -> GetMidiFile());
-	SetLabel (device->GetName());
-	return true;
-}
+namespace mutaborGUI {
+	void MutInputMidiFileDeviceShape::InitializeDialog(InputDevDlg * in) const
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiFile);
+		wxASSERT(in);
+		in -> SetType(DTMidiFile);
+		in -> SetMidiFile(device->GetName());
+	}
 
-wxPanel * MutInputMidiFileDeviceShape::GetInputFilterPanel(wxWindow * parent, 
-						       Route * route) const
-{
-	const int maxint = std::numeric_limits<int>().max();
-	MidiFileInputFilterPanel * panel = new MidiFileInputFilterPanel(parent);
-	if (!panel) return NULL;
-	InMidiFile * dev = dynamic_cast<InMidiFile *> (device);
-	const int maxchannel = dev?dev->GetMaxChannel():maxint;
-	const int minchannel = dev?dev->GetMinChannel():0;
-	const int maxtrack = dev?dev->GetMaxTrack():maxint;
-	const int mintrack = dev?dev->GetMinTrack():0;
-	if (!route) {
-		panel->SetFromChannel(minchannel, minchannel, maxchannel);
-		panel->SetToChannel(maxchannel, minchannel, maxchannel);
-		panel->SetFromTrack(mintrack, mintrack, maxtrack);
-		panel->SetToTrack(maxtrack, mintrack, maxtrack);
-		panel->SetRouteType(RTall);
+	bool MutInputMidiFileDeviceShape::readDialog (InputDevDlg * in)
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiFile);
+		wxASSERT(in);
+		wxASSERT (in -> GetType() == DTMidiFile);
+		device->SetName (in -> GetMidiFile());
+		SetLabel (device->GetName());
+		return true;
+	}
+
+	wxPanel * MutInputMidiFileDeviceShape::GetInputFilterPanel(wxWindow * parent, 
+								   Route route) const
+	{
+		const int maxint = std::numeric_limits<int>().max();
+		MidiFileInputFilterPanel * panel = new MidiFileInputFilterPanel(parent);
+		if (!panel) return NULL;
+		InputMidiFile * dev = dynamic_cast<InputMidiFile *> (device.get());
+		const int maxchannel = dev?dev->GetMaxChannel():maxint;
+		const int minchannel = dev?dev->GetMinChannel():0;
+		const int maxtrack = dev?dev->GetMaxTrack():maxint;
+		const int mintrack = dev?dev->GetMinTrack():0;
+		if (!route) {
+			panel->SetFromChannel(minchannel, minchannel, maxchannel);
+			panel->SetToChannel(maxchannel, minchannel, maxchannel);
+			panel->SetFromTrack(mintrack, mintrack, maxtrack);
+			panel->SetToTrack(maxtrack, mintrack, maxtrack);
+			panel->SetRouteType(RTall);
+			return panel;
+		}
+		panel->SetFromChannel(route->IFrom, minchannel, maxchannel);
+		panel->SetToChannel(route->ITo, minchannel, maxchannel);
+		panel->SetFromTrack(route->IFrom, mintrack, maxtrack);
+		panel->SetToTrack(route->ITo, mintrack, maxtrack);
+		panel->SetRouteType(route->GetType());
 		return panel;
 	}
-	panel->SetFromChannel(route->IFrom, minchannel, maxchannel);
-	panel->SetToChannel(route->ITo, minchannel, maxchannel);
-	panel->SetFromTrack(route->IFrom, mintrack, maxtrack);
-	panel->SetToTrack(route->ITo, mintrack, maxtrack);
-	panel->SetRouteType(route->GetType());
-	return panel;
-}
 
-void MutInputMidiFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route * route)
-{
-	MidiFileInputFilterPanel * pan = dynamic_cast<MidiFileInputFilterPanel *> (panel);
-	if (!pan) {
-		UNREACHABLEC;
-		return;
-	}
-	route->SetType(pan->GetRouteType());
-	switch (route->GetType()) {
+	void MutInputMidiFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route route)
+	{
+		MidiFileInputFilterPanel * pan = dynamic_cast<MidiFileInputFilterPanel *> (panel);
+		if (!pan) {
+			UNREACHABLEC;
+			return;
+		}
+		route->SetType(pan->GetRouteType());
+		switch (route->GetType()) {
 		case RTall:
 		case RTelse:
 			// those have no data
@@ -140,13 +150,13 @@ void MutInputMidiFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route *
 		default:
 			UNREACHABLEC;
 			break;
+		}
+		return;
 	}
-	return;
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutInputMidiFileDeviceShape, MutInputDeviceShape)
 }
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutInputMidiFileDeviceShape, MutInputDeviceShape)
-
 /*
  * \}
  */

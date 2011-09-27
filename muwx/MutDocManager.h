@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.6 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.h,v 1.7 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,14 @@
  *
  *
  * $Log: MutDocManager.h,v $
- * Revision 1.6  2011/09/05 11:30:07  keinstein
+ * Revision 1.7  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.6  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -53,16 +60,26 @@
  * \{
  ********************************************************************/
 
-#ifndef MUTABOR_MUTDOCMANAGER_H
-#define MUTABOR_MUTDOCMANAGER_H
+#if (!defined(MUWX_MUTDOCMANAGER_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTDOCMANAGER_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTDOCMANAGER_H
+#endif
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include <wx/wx.h>
+
+#ifndef MUWX_MUTDOCMANAGER_H_PRECOMPILED
+#define MUWX_MUTDOCMANAGER_H_PRECOMPILED
+#include "wx/docview.h"
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
 #include "wx/event.h"
 
 namespace mutaborGUI {
@@ -88,6 +105,7 @@ namespace mutaborGUI {
 	};
 }
 
+#endif
 #endif
 
 ///\}

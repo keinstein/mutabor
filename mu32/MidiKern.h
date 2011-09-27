@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/MidiKern.h,v 1.5 2011/07/27 20:48:32 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/MidiKern.h,v 1.6 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/07/27 20:48:32 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: MidiKern.h,v $
- * Revision 1.5  2011/07/27 20:48:32  keinstein
+ * Revision 1.6  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-07-27 20:48:32  keinstein
  * started to move arrays using MAX_BOX into struct mutabor_box_type
  *
  * Revision 1.4  2011-02-20 22:35:55  keinstein
@@ -33,11 +40,27 @@
 // MIDI-Makros
 // ------------------------------------------------------------------
 
-#ifndef MIDIKERN_H
-#define MIDIKERN_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
-#include "box.h"
+#if (!defined(MU32_MIDIKERN_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_MIDIKERN_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_MIDIKERN_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
 #include "Defs.h"
+#include "box.h"
+
+#ifndef MU32_MIDIKERN_H_PRECOMPILED
+#define MU32_MIDIKERN_H_PRECOMPILED
+
+// system headers which do seldom change
+
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 
@@ -71,6 +94,7 @@ extern "C"
 #define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((float)x)/(double)16777216.0))-69))
 #define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
 
+#endif /* precompiled */
 #endif
 
 

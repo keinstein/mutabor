@@ -2,16 +2,23 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.20 2011/09/04 15:35:08 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.21 2011/09/27 20:13:23 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/04 15:35:08 $
-* \version $Revision: 1.20 $
+* $Date: 2011/09/27 20:13:23 $
+* \version $Revision: 1.21 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.20  2011/09/04 15:35:08  keinstein
+* Revision 1.21  2011/09/27 20:13:23  keinstein
+* * Reworked route editing backend
+* * rewireing is done by RouteClass/GUIRoute now
+* * other classes forward most requests to this pair
+* * many bugfixes
+* * Version change: We are reaching beta phase now
+*
+* Revision 1.20  2011-09-04 15:35:08  keinstein
 * disable print preview on OS X and when using libgnomeprint as they proviede their own means
 *
 * Revision 1.19  2011-09-04 12:02:08  keinstein
@@ -77,15 +84,27 @@
 ********************************************************************/
 
 
-#ifndef __MUTEDITFILE_H_INCLUDED__
-#define __MUTEDITFILE_H_INCLUDED__
+#if (!defined(MUWX_MUTEDITFILE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_MUTEDITFILE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_MUTEDITFILE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
+#include "muwx/stclanguage.h"
+#include "muconvauto.h"
+
+#ifndef MUWX_MUTEDITFILE_H_PRECOMPILED
+#define MUWX_MUTEDITFILE_H_PRECOMPILED
+
+#include <vector>
 #include "wx/textctrl.h"
 #include "wx/docview.h"
 #include "wx/stc/stc.h"
-#include "muwx/stclanguage.h"
-#include "muconvauto.h"
 #include "wx/fontdlg.h"
 #if wxUSE_FINDREPLDLG
     #include "wx/fdrepdlg.h"
@@ -348,6 +367,7 @@ namespace mutaborGUI {
 
 
 }
+#endif // __MUTEDITFILE_H precompiled
 #endif // __MUTEDITFILE_H_INCLUDED__
 
 ///\}

@@ -1,17 +1,24 @@
-/** \file
+/** \file   -*- C++ -*-
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: OutputDevDlg.h,v 1.2 2010/11/21 13:15:49 keinstein Exp $
+ * $Id: OutputDevDlg.h,v 1.3 2011/09/27 20:13:25 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2010/11/21 13:15:49 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.3 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: OutputDevDlg.h,v $
- * Revision 1.2  2010/11/21 13:15:49  keinstein
+ * Revision 1.3  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.2  2010-11-21 13:15:49  keinstein
  * merged experimental_tobias
  *
  * Revision 1.1.2.5  2010-06-22 15:05:45  keinstein
@@ -55,21 +62,36 @@
  *
  */
 
-#ifndef _OUTPUTDEVDLG_H_
-#define _OUTPUTDEVDLG_H_
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
+#if (!defined(MUWX_ROUTING_OUTPUTDEVDLG_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_OUTPUTDEVDLG_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "resourceload.h"
+#include "Device.h"
+
+#ifndef MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
+#define MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
+
+// system headers which do seldom change
 
 /*!
  * Includes
  */
 
-#include "Defs.h"
 #include "wx/xrc/xmlres.h"
 #include "wx/html/htmlwin.h"
 #include "wx/statline.h"
 #include "wx/filepicker.h"
-#include "resourceload.h"
-#include "Device.h"
 #include "wx/valgen.h"
 #include "wx/valtext.h"
 
@@ -84,27 +106,27 @@ protected:
 
 struct TypeData:wxClientData
 	{
-		DevType nr;
-		TypeData(DevType i):wxClientData()
+		mutabor::DevType nr;
+		TypeData(mutabor::DevType i):wxClientData()
 		{
 			nr=i;
 		}
 
-		bool operator == (DevType i)
+		bool operator == (mutabor::DevType i)
 		{
 			if (this)
 				return i == nr;
 			else return false;
 		}
 
-		operator DevType()
+		operator mutabor::DevType()
 		{
 			if (this) return nr;
-			else return DTNotSet;
+			else return mutabor::DTNotSet;
 		}
 	};
 
-	int FindType (DevType t);
+	int FindType (mutabor::DevType t);
 
 public:
 	/// Constructors
@@ -118,7 +140,7 @@ public:
 
         void OnFileChanged ( wxFileDirPickerEvent & event );
 
-	void UpdateLayout(DevType type);
+	void UpdateLayout(mutabor::DevType type);
 
 	int GetMidiDevice() const
 	{
@@ -162,19 +184,19 @@ public:
 		Update();
 	}
 
-	DevType GetType() const
+	mutabor::DevType GetType() const
 	{
                 int Type = DeviceChoice->GetSelection();
-		if (Type == wxNOT_FOUND) return DTNotSet;
+		if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
 
                 wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
 		TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
 
 		if (obj) return  *obj;
-		else return DTNotSet;
+		else return mutabor::DTNotSet;
 	}
 
-	void SetType(DevType value)
+	void SetType(mutabor::DevType value)
 
 	{
 		DEBUGLOG(other, _T("%d"),value);
@@ -218,6 +240,8 @@ public:
 	static bool ShowToolTips ();
 };
 
+#endif
+// _OUTPUTDEVDLG_H_PRECOMPILED
 #endif
 // _OUTPUTDEVDLG_H_
 

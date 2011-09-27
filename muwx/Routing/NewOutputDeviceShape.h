@@ -3,16 +3,23 @@
  ********************************************************************
  * New output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewOutputDeviceShape.h,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewOutputDeviceShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: NewOutputDeviceShape.h,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -56,8 +63,27 @@
  *\{
  ********************************************************************/
 
-#ifndef NEWOUTPUTDEVICESHAPE_H
-#define NEWOUTPUTDEVICESHAPE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MUWX_ROUTING_NEWOITPUTDEVICESHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_NEWOITPUTDEVICESHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_NEWOITPUTDEVICESHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "OutputDeviceShape.h"
+//#include "Device.h"
+
+#ifndef MUWX_ROUTING_NEWOITPUTDEVICESHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_NEWOITPUTDEVICESHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
 
 //#include <map>
 
@@ -65,44 +91,44 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-#include "OutputDeviceShape.h"
-//#include "Device.h"
+namespace mutaborGUI {
 
-class MutNewOutputDeviceShape:public MutOutputDeviceShape
-{
+
+	class MutNewOutputDeviceShape:public MutOutputDeviceShape
+	{
 	
-public:
-	MutNewOutputDeviceShape():MutOutputDeviceShape() {}
+	public:
+		MutNewOutputDeviceShape():MutOutputDeviceShape() {}
 
-	MutNewOutputDeviceShape (wxWindow * parent, wxWindowID id):
-		MutOutputDeviceShape() 
-	{
-		Create (parent,id);
-	}
-
-
-	bool Create (wxWindow * parent, 
-		     wxWindowID id)
-	{
-		return MutOutputDeviceShape::Create (parent,
-						     id,
-						     _("New Output device"));
-	}
+		MutNewOutputDeviceShape (wxWindow * parent, wxWindowID id):
+			MutOutputDeviceShape() 
+			{
+				Create (parent,id);
+			}
 
 
-	MutIcon & GetMutIcon ()
-	{
-		return NewOutputDevBitmap;
-	}
-protected:
-	virtual void InitializeDialog(OutputDevDlg * out) const;
-	virtual bool replaceSelfBy (MutOutputDeviceShape  * newshape);
-	virtual bool CanHandleType (DevType  type) { return false; }
+		bool Create (wxWindow * parent, 
+			     wxWindowID id)
+			{
+				return MutOutputDeviceShape::Create (parent,
+								     id,
+								     _("New Output device"));
+			}
+
+
+		MutIcon & GetMutIcon ()
+			{
+				return NewOutputDevBitmap;
+			}
+	protected:
+		virtual void InitializeDialog(OutputDevDlg * out) const;
+		virtual bool replaceSelfBy (MutOutputDeviceShape  * newshape);
 	
-private:
-	DECLARE_DYNAMIC_CLASS(MutOutputDeviceShape);
-};
-
+	private:
+		DECLARE_DYNAMIC_CLASS(MutOutputDeviceShape);
+	};
+}
+#endif				/* NEWOUTPUTDEVICESHAPE_H_PRECOMPILED */
 #endif				/* NEWOUTPUTDEVICESHAPE_H */
 /*
  * \}

@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.cpp,v 1.5 2011/08/12 09:45:19 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/muconvauto.cpp,v 1.6 2011/09/27 20:13:25 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/12 09:45:19 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: muconvauto.cpp,v $
- * Revision 1.5  2011/08/12 09:45:19  keinstein
+ * Revision 1.6  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-08-12 09:45:19  keinstein
  * fix BOM detection in case no length is providet by wxWidgets
  *
  * Revision 1.4  2011-02-20 22:35:59  keinstein
@@ -28,7 +35,7 @@
 // Purpose:     implementation of wxConvAuto
 // Author:      Vadim Zeitlin
 // Created:     2006-04-04
-// RCS-ID:      $Id: muconvauto.cpp,v 1.5 2011/08/12 09:45:19 keinstein Exp $
+// RCS-ID:      $Id: muconvauto.cpp,v 1.6 2011/09/27 20:13:25 keinstein Exp $
 // Copyright:   (c) 2006 Vadim Zeitlin <vadim@wxwindows.org>
 // Licence:     wxWindows licence
 ///////////////////////////////////////////////////////////////////////////////
@@ -41,12 +48,7 @@
 // headers
 // ----------------------------------------------------------------------------
 
-// for compilers that support precompilation, includes "wx.h".
-#include "wx/wxprec.h"
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
+#include "Defs.h"
 
 #if wxUSE_WCHAR_T
 
@@ -54,6 +56,10 @@
 #endif //WX_PRECOMP
 
 #include "muconvauto.h"
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
 
 // ============================================================================
 // implementation

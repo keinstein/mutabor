@@ -4,16 +4,23 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.3 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.4 2011/09/27 20:13:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: RouteCompat.cpp,v $
- * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * Revision 1.4  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:46  keinstein
@@ -31,8 +38,13 @@
  *\{
  ********************************************************************/
 
-#include "Route.h"
+#include "mu32/routing/Route-inlines.h"
+#include "mu32/routing/Device.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "mu32/routing/midi/DevMidF.h"
+#include "wx/log.h"
 
+using namespace mutabor;
 namespace compat30 {
 
   /**\todo: implement a converter to TreeConfig */
@@ -40,11 +52,11 @@ namespace compat30 {
 	
 #define GETLINE if ( !GetLine(config, i, s) ) return
 	
-	static OutDevice * GetOut(int nr)
+	static OutputDevice GetOut(int nr)
 	{
 		if ( nr < 0 )
 			return 0;
-		OutDevice *Out = OutDevice::GetDevice(nr);
+		OutputDevice Out = OutputDeviceClass::GetDevice(nr);
 		return Out;
 	}
 	
@@ -121,21 +133,12 @@ namespace compat30 {
 	  bool error = false;
 
 		DEBUGLOG2(routing,_T(""));
-		InDevice * InDevices = InDevice::GetDeviceList();
-		OutDevice * OutDevices = OutDevice::GetDeviceList();
 
 		// emty lists
-		if ( InDevices) {
-			delete InDevices;
-			InDevices = NULL;
-		}
-		if ( OutDevices ) {
-			delete OutDevices;
-			OutDevices = NULL;
-		}
-		while (Route * routes = Route::GetRouteList())
-		  delete routes;
-		
+		InputDeviceClass::ClearDeviceList();
+		OutputDeviceClass::ClearDeviceList();
+		RouteClass::ClearRouteList();
+ 		
 		// Zerlegen von config
 		wxString s;
 		size_t i = 0;
@@ -178,46 +181,47 @@ namespace compat30 {
 #endif
 			DEBUGLOG2(routing,_T("%d parameters read: Type = '%s', Name = '%s', devid = %d, bendingrange = %d"),test,Type,Name,DevId,BendingRange);
 			DEBUGLOG2(routing,_T("Name = '%s'"),(wxString(Name).c_str()));
-			OutDevice *Out = 
-			  OutDevice::CreateDevice(Str2DT(muT(Type)),
-						  Name, DevId);
+			OutputDevice Out = 
+				DeviceFactory::CreateOutput(Str2DT(muT(Type)), 
+							    DevId,
+							    Name);
 			
 			switch (Str2DT(muT(Type))) {
 			case DTMidiPort:
-			  if (test < 4)
-			    error = true;
-			  else {
-			    OutMidiPort * dev = 
-			      dynamic_cast<OutMidiPort *>(Out);
-			    if (!dev) 
-			      UNREACHABLE;
-			    else 
-			      dev -> SetBendingRange (BendingRange);
-			  }
-			  break;
+				if (test < 4)
+					error = true;
+				else {
+					OutputMidiPort * dev = 
+						dynamic_cast<OutputMidiPort *>(Out.get());
+					if (!dev) 
+						UNREACHABLE;
+					else 
+						dev -> SetBendingRange (BendingRange);
+				}
+				break;
 			case DTMidiFile:
-			  if (test < 4)
-			    error = true;
-			  else {
-			    OutMidiFile * dev = 
-			      dynamic_cast<OutMidiFile *>(Out);
-			    if (!dev) 
-			      UNREACHABLE;
-			    else 
-			      dev -> SetBendingRange (BendingRange);
-			  }
-			  break;
+				if (test < 4)
+					error = true;
+				else {
+					OutputMidiFile * dev = 
+						dynamic_cast<OutputMidiFile *>(Out.get());
+					if (!dev) 
+						UNREACHABLE;
+					else 
+						dev -> SetBendingRange (BendingRange);
+				}
+				break;
 			case DTUnknown:
 			case DTGis:
 			default:
-			  if (test >= 4) error = true;
+				if (test >= 4) error = true;
 			}
  
 			GETLINE;
 			DEBUGLOG2(other,_T("+%s"),s.c_str());
 		}
 
-		OutDevice::InitializeIds();
+		OutputDeviceClass::InitializeIds();
 		
 		GETLINE;
 		DEBUGLOG2(routing,_T("+%s"),s.c_str());
@@ -251,8 +255,10 @@ namespace compat30 {
 			
 #endif
 			DEBUGLOG2(routing,_T("%d input parameters read: Type = '%s', Name = '%s', DevId = %d"), test, Type, Name, DevId);
-			InDevice *In = InDevice::CreateDevice(Str2DT(muT(Type)), 
-							    Name, DevId);
+			InputDevice In = 
+				DeviceFactory::CreateInput(Str2DT(muT(Type)), 
+							   DevId, 
+							   (mutString)Name);
 			GETLINE;
 			DEBUGLOG2(routing,_T("+%s"),s.c_str());
 			
@@ -287,7 +293,7 @@ namespace compat30 {
 				DEBUGLOG2(routing,_T("%d parameters read: Type = '%s', IFrom = %d, ITo = %d"),test, Type, IFrom, ITo);
 				DEBUGLOG2(routing,_T("    Box = %d, BoxActive= %d, OutDev = %d, OFrom = %d, OTo = %d, ONoDrum = %d"), Box, BoxActive, OutDev, OFrom, OTo, ONoDrum);
 
-				In->AddRoute(new Route(In,GetOut(OutDev),
+				In->Add(RouteFactory::Create(In,GetOut(OutDev),
 						       Str2RT(Type),
 						       IFrom, ITo, Box,
 						       BoxActive, 
@@ -296,6 +302,10 @@ namespace compat30 {
 				DEBUGLOG2(routing,_T("+%s"),s.c_str());
 			}
 		}
+		if (error) {
+			STUB;
+		}
+		return;
 	}
 	
 	
@@ -313,68 +323,71 @@ namespace compat30 {
 		/// \TODO reimplement WriteRoutes
 		STUB;
 
-		Route::InitializeIds();
+		RouteClass::InitializeIds();
 	
 		// clean config
 		config = wxEmptyString;
 		// remove unused output devices
-		OutDevice *Out;
-		InDevice *In;
+		OutputDevice Out;
+		InputDevice In;
 	
 		// Output schreiben
 		config << _T("OUTPUT\n");
-	
-		for ( Out = OutDevice::GetDeviceList(); Out; 
-		      Out = Out->GetNext()) {
+		
+		const OutputDeviceList & OutDevices =
+			OutputDeviceClass::GetDeviceList();
 
-		  wxString sName = Out->GetName();
+		for ( OutputDeviceList::const_iterator Out = OutDevices.begin();
+		      Out != OutDevices.end(); Out++) {
+
+			wxString sName = (*Out)->GetName();
 			
 			if ( sName.Find(_T(" ")) )
 				sName.Prepend(_T("\"")) << _T("\"");
 		
-			switch ( Out->GetType() ) {
+			switch ( (*Out)->GetType() ) {
 					
-				case DTUnknown:
-				  config << wxString::Format(_T("  UNKNOWN %s\n"),
-							     sName.c_str());
+			case DTUnknown:
+				config << wxString::Format(_T("  UNKNOWN %s\n"),
+							   sName.c_str());
 					
-					break;
+				break;
 					
-				case DTMidiPort:
-				  {
-				    OutMidiPort * MidiOut = 
-				      dynamic_cast <OutMidiPort *>(Out);
-				    if (MidiOut)
-				      config << wxString::Format(_T("  MIDIPORT %s %d %d\n"),
-								 sName.c_str(), 
-								 Out->Device::GetId(),
-								 MidiOut->GetBendingRange());
-				  else 
-				    UNREACHABLE;
-				  }
-				  break;
+			case DTMidiPort:
+			{
+				OutputMidiPort * MidiOut = 
+					dynamic_cast <OutputMidiPort *>((*Out).get());
+				if (MidiOut)
+					config << wxString::Format(_T("  MIDIPORT %s %d %d\n"),
+								   sName.c_str(), 
+								   (*Out)->Device::GetId(),
+								   MidiOut->GetBendingRange());
+				else 
+					UNREACHABLE;
+			}
+			break;
 					
-				case DTMidiFile:
-				  {
-				    OutMidiFile * MidiFile = 
-				      dynamic_cast <OutMidiFile *>(Out);
-				    if (MidiFile)
-				      config << wxString::Format(_T("  MIDIFILE %s %d %d\n"),
-								 sName.c_str(), 
-								 0,
-								 MidiFile->GetBendingRange());
-				    else
-				      UNREACHABLE;
-				  }
-				  break;
+			case DTMidiFile:
+			{
+				OutputMidiFile * MidiFile = 
+					dynamic_cast <OutputMidiFile *>((*Out).get());
+				if (MidiFile)
+					config << wxString::Format(_T("  MIDIFILE %s %d %d\n"),
+								   sName.c_str(), 
+								   0,
+								   MidiFile->GetBendingRange());
+				else
+					UNREACHABLE;
+			}
+			break;
 					
-				case DTGis:
-					config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
+			case DTGis:
+				config << wxString::Format(_T("  GMN %s\n"), sName.c_str());
 					
-					break;
+				break;
 					
-				case DTNotSet:
-					wxLogWarning(_("Device found, but device type not set."));
+			case DTNotSet:
+				wxLogWarning(_("Device found, but device type not set."));
 			}
 		}
 	
@@ -383,13 +396,16 @@ namespace compat30 {
 		// Input schreiben
 		config << _T("INPUT\n");
 		
-		for ( In = InDevice::GetDeviceList(); In; In = In->GetNext()) {
-		  wxString sName = In->GetName();
+		const InputDeviceList & InDevices = 
+			InputDeviceClass::GetDeviceList();
+		for ( InputDeviceList::const_iterator In = InDevices.begin(); 
+		      In != InDevices.end(); In++) {
+			wxString sName = (*In)->GetName();
 			
 			if ( sName.Find(_T(" ")) )
 				sName.Prepend(_T("\"")) << _T("\"");
 		
-			switch ( In->GetType() ) {
+			switch ( (*In)->GetType() ) {
 					
 				case DTUnknown:
 					config << wxString::Format(_T("  UNKNOWN %s\n"), sName.c_str());
@@ -402,7 +418,7 @@ namespace compat30 {
 					break;
 				
 				case DTMidiPort:
-				  config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), In->GetDevId());
+				  config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), (*In)->GetDevId());
 					
 					break;
 				
@@ -418,20 +434,22 @@ namespace compat30 {
 			}
 		
 			// Routen schreiben
-			for (Route *R = In->GetRoutes(); R; R = R->GetNext()) {
-			  Device * dev = R->GetOutDevice();
-			  int OutNr;
-			  OutNr = (dev ? dev->GetId(): -1);
-			  config << wxT("    ") << RTName[R->Type]  <<
-			    wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
-					     R->IFrom, 
-					     R->ITo, 
-					     R->Box, 
-					     R->Active, 
-					     OutNr,
-					     R->OFrom, 
-					     R->OTo, 
-					     R->ONoDrum ? 1 : 0);
+			routeListType & routes = (*In)->GetRoutes();
+			for (routeListType::iterator R = routes.begin();
+			     R!= routes.end(); R++) {
+				Device * dev = (*R)->GetOutputDevice().get();
+				int OutNr;
+				OutNr = (dev ? dev->GetId(): -1);
+				config << wxT("    ") << RTName[(*R)->Type]  <<
+					wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
+							 (*R)->IFrom, 
+							 (*R)->ITo, 
+							 (*R)->GetBox(), 
+							 (*R)->Active, 
+							 OutNr,
+							 (*R)->OFrom, 
+							 (*R)->OTo, 
+							 (*R)->ONoDrum ? 1 : 0);
 			}
 		}
 		

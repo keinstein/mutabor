@@ -2,15 +2,22 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.h,v 1.4 2011/02/20 22:35:55 keinstein Exp $
+ * $Id: Errors.h,v 1.5 2011/09/27 20:13:21 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.4 $
+ * \date $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: Errors.h,v $
- * Revision 1.4  2011/02/20 22:35:55  keinstein
+ * Revision 1.5  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2010-12-11 02:10:08  keinstein
@@ -38,9 +45,26 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
-#ifndef MUTABOR_ERRORS_H
-#define MUTABOR_ERRORS_H
 
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MU32_ERRORS_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_ERRORS_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_ERRORS_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
+#ifndef MU32_ERRORS_H_PRECOMPILED
+#define MU32_ERRORS_H_PRECOMPILED
+
+// system headers which do seldom change
 
 extern const mutTranslationChar * Error_text[];
 
@@ -173,7 +197,7 @@ const mutChar * Warning_text[] =
     N_("Error in GMN-File %s position(%d, %d): %s")
   };
 */
+#endif //PRECOMPILED
 #endif
-
 
 ///\}

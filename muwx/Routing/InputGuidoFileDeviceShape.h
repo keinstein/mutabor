@@ -1,18 +1,25 @@
 // -*- C++ -*-
 /** \file
  ********************************************************************
- * Devices Basisklassen.
+ * Guido/Salieri file input device class.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputGuidoFileDeviceShape.h,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputGuidoFileDeviceShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: InputGuidoFileDeviceShape.h,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -58,8 +65,28 @@
  *\{
  ********************************************************************/
 
-#ifndef INPUTGUIDOFILEDEVICESHAPE_H
-#define INPUTGUIDOFILEDEVICESHAPE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MUWX_ROUTING_INPUTGUIDOFILEDEVICESHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_INPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_INPUTGUIDOFILEDEVICESHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "MutIcon.h"
+#include "InputMidiDeviceShape.h"
+//#include "Device.h"
+
+#ifndef MUWX_ROUTING_INPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_INPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
 
 //#include <map>
 
@@ -67,51 +94,57 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-#include "MutIcon.h"
-#include "InputMidiDeviceShape.h"
-//#include "Device.h"
 
-class MutInputGuidoFileDeviceShape:public MutInputDeviceShape
-{
-public:
-	MutInputGuidoFileDeviceShape():MutInputDeviceShape() {}
-	MutInputGuidoFileDeviceShape (wxWindow * parent,
-				     wxWindowID id, 
-				     InDevice * d):
-		MutInputDeviceShape() {
-		Create (parent,id,d);
-	}
-	bool Create (wxWindow * parent, wxWindowID id, InDevice * d)
-		{
-			return MutInputDeviceShape::Create(parent,id,d);
+namespace mutaborGUI {
+
+	class MutInputGuidoFileDeviceShape:public MutInputDeviceShape
+	{
+		friend class GUIGisFactory;
+	protected:
+		MutInputGuidoFileDeviceShape():MutInputDeviceShape() {}
+		MutInputGuidoFileDeviceShape (wxWindow * parent,
+					      wxWindowID id, 
+					      mutabor::InputDevice d):
+			MutInputDeviceShape() {
+			Create (parent,id,d);
+		}
+	public:
+		bool Create (wxWindow * parent, wxWindowID id, mutabor::InputDevice d)
+			{
+				return MutInputDeviceShape::Create(parent,id,d);
+			}
+
+		virtual MutIcon & GetMutIcon () 
+			{
+				DEBUGLOG(other, _T(""));
+				return GuidoFileBitmap;
+			}
+
+		void SetLabel(const wxString & st ) {
+			fileName = st;
+			fileName.Normalize();
+			MutInputDeviceShape::SetLabel (fileName.GetFullName());
 		}
 
-	virtual MutIcon & GetMutIcon () 
-		{
-			DEBUGLOG(other, _T(""));
-			return GuidoFileBitmap;
-		}
-
-	void SetLabel(const wxString & st ) {
-		fileName = st;
-		fileName.Normalize();
-		MutInputDeviceShape::SetLabel (fileName.GetFullName());
-	}
-
-	virtual wxPanel * GetInputFilterPanel(wxWindow * parent, Route * route) const;
-	virtual void ReadInputFilterPanel(wxWindow * panel, Route * route);
+		virtual wxPanel * GetInputFilterPanel(wxWindow * parent, 
+						      mutabor::Route route) const;
+		virtual void ReadInputFilterPanel(wxWindow * panel, 
+						  mutabor::Route route);
 	
-protected: 
-	virtual void InitializeDialog(InputDevDlg * in) const;
-	virtual bool readDialog (InputDevDlg * in);
-	virtual bool CanHandleType (DevType  type) { return type == DTGis; }
+	protected: 
+		virtual void InitializeDialog(InputDevDlg * in) const;
+		virtual bool readDialog (InputDevDlg * in);
+		virtual bool CanHandleType (mutabor::DevType  type) 
+			{ return type == mutabor::DTGis; }
 
-	wxFileName fileName;
+		wxFileName fileName;
 
-private:
-	DECLARE_DYNAMIC_CLASS(MutInputGuidoFileDeviceShape);
+	private:
+		DECLARE_DYNAMIC_CLASS(MutInputGuidoFileDeviceShape);
 
-};
+	};
+}
+#endif				/* INPUTGUIDOFILEDEVICESHAPE_H_PRECOMPILED */
 #endif				/* INPUTGUIDOFILEDEVICESHAPE_H */
 /*
  * \}

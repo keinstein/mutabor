@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.cpp,v 1.5 2011/09/27 20:13:22 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:22 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: GIS_Head.cpp,v $
- * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * Revision 1.5  2011/09/27 20:13:22  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:51  keinstein
@@ -268,7 +275,8 @@ void GisReadHead::CreateSegmentSubs()
 		id[mutLen(Id)] = nSub;
 		DEBUGLOG (other, _T("Creating Sub for %p (%d, %s)"),Cont,nSub,id.c_str());
 
-		GisReadHead *Sub = Build(this, Cont, id, 1);
+//		GisReadHead *Sub = // unused variable
+			Build(this, Cont, id, 1);
 		Cont = Cont->Next;
 
 		while ( Cont ) // read until end or comma
@@ -297,7 +305,8 @@ void GisReadHead::CreateSequenzSubs()
 	strcat(id, "\x01");
 #endif
 	nSub = 1;
-	GisReadHead *Sub = Build(this, Seq->Contents, id);
+//	GisReadHead *Sub = // unused varible;
+		Build(this, Seq->Contents, id);
 }
 
 // reading the token at the cursor
@@ -325,6 +334,10 @@ void GisReadHead::Read()
 		Time = ((GisNote*)Cursor)->Duration;
 
 		break;
+	case GTNull:case GTUnknown:case GTTag:case GTTagBegin:case GTTagEnd:
+	case GTParaInt:case GTParaReal:case GTParaStr:case GTComma:
+		;
+		
 	}
 
 	// the other tokens dont influenz the way of reading
@@ -600,6 +613,11 @@ void GisReadArtHead::Read()
 			EndTag(&Instr, TAGEND);
 		else if ( Id == TTtempo )
 			EndTag(&Tempo, TAGEND);
+	case GTNull:case GTUnknown:
+	case GTParaInt:case GTParaReal:case GTParaStr:case GTComma:
+		;
+		
+
 	}
 
 	// the other tokens don't influenz the way of reading
@@ -1224,6 +1242,8 @@ int GisWriteHead::CloseCurrentToken(char insertRest)
 
 	case GTParaStr:
 		return 1; // impossible
+	case GTNote:case GTComma:
+		;
 	}
 
 	return 0;

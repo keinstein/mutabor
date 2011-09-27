@@ -4,16 +4,23 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -97,298 +104,384 @@
 #include "OutputGuidoFileDeviceShape.h"
 #include "BoxChannelShape.h"
 #include "DevMidi.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
+#include "muwx/Routing/DebugRoute.h"
+#include "muwx/Routing/BoxDlg.h"
 
 #if defined(__WXMAC__) && defined(__WXMAC_CARBON__)
 #	include "wx/mac/carbon/private.h"
 #endif
 
-IMPLEMENT_ABSTRACT_CLASS(MutOutputDeviceShape, MutDeviceShape)
-//MutOutputDeviceShape::stringmaptype MutOutputDeviceShape::stringmap;
-wxSizerFlags MutOutputDeviceShape::sizerFlags;
+using namespace mutabor;
 
-bool MutOutputDeviceShape:: Create (wxWindow * parent, wxWindowID id, OutDevice * d)
-{
-	device = d;
-	if (!d) return false;
+namespace mutaborGUI {
 
-	d->setUserData (this);
+	IMPLEMENT_ABSTRACT_CLASS(MutOutputDeviceShape, MutDeviceShape)
+	//MutOutputDeviceShape::stringmaptype MutOutputDeviceShape::stringmap;
+	wxSizerFlags MutOutputDeviceShape::sizerFlags;
 
-	DEBUGLOG (other,_T ("Checking icon"));
-	wxASSERT(MidiOutputDevBitmap.IsOk());
-	
-	return MutDeviceShape::Create (parent, id, d->GetName());
-}
+	bool MutOutputDeviceShape:: Create (wxWindow * parent, wxWindowID id, OutputDevice d)
+	{
+		if (!d) return false;
 
-MutOutputDeviceShape * MutOutputDeviceShape::CreateShape(wxWindow * parent,
-						       wxWindowID id,
-						       OutDevice * d)
-{
-	DEBUGLOGTYPE(routing,MutOutputDeviceShape,_T("Creating device shape"));
-        wxASSERT (d);
-	if (!d) return NULL;
+		DEBUGLOG (other,_T ("Checking icon"));
+		wxASSERT(MidiOutputDevBitmap.IsOk());
 
-	DEBUGLOGTYPE(routing,*d,_T("Device Type for device %p"), d);
-	switch (d->GetType()) {
-	case DTMidiPort:
-		DEBUGLOGTYPE(routing,MutOutputDeviceShape,
-			     _T("Creating MIDI device shape"));
-		return new MutOutputMidiDeviceShape(parent,id,d);
-	case DTMidiFile:
-		DEBUGLOGTYPE(routing,MutOutputDeviceShape,
-			     _T("Creating MIDI  file device shape"));
-		return new MutOutputMidiFileDeviceShape(parent,id,d);
-	case DTGis:
-		DEBUGLOGTYPE(routing,MutOutputDeviceShape,
-			     _T("Creating MIDI  file device shape"));
-		return new MutOutputGuidoFileDeviceShape(parent,id,d);
-	default:
-		return NULL; 
+		bool fine =  MutDeviceShape::Create (parent, id, d->GetName());
+
+		if (fine)
+			ToGUIBase(d).Attatch(this);
+
+		return fine;
 	}
-}
 
-void MutOutputDeviceShape::SetLabel(const wxString & st ) 
-{
-	MutDeviceShape::SetLabel(st);
-}
+#if 0
+	MutOutputDeviceShape * MutOutputDeviceShape::CreateShape(wxWindow * parent,
+								 wxWindowID id,
+								 OutputDevice d)
+	{
+		DEBUGLOGTYPE(routing,MutOutputDeviceShape,_T("Creating device shape"));
+		wxASSERT (d);
+		if (!d) return NULL;
 
-void MutOutputDeviceShape::AddRoute(Route * route) 
-{
-	wxASSERT(route);
-	wxASSERT(device);
-	wxASSERT(route->GetOutDevice() == device);
-	MutBoxChannelShape * channel = (MutBoxChannelShape *) route->getUserData();
-	wxASSERT(dynamic_cast<MutIconShape *>(channel));
-
-	// Check for duplicate route insertion.
-	for (MutBoxChannelShapeList::const_iterator i = routes.begin() ; i != routes.end() ; i++) {
-		if ((*i)->GetRoute() == route) {
-			UNREACHABLEC; // maybe just STUB?
-			return;
+		DEBUGLOGTYPE(routing,*d,_T("Device Type for device %p"), d.get());
+		switch (d->GetType()) {
+		case DTMidiPort:
+			DEBUGLOGTYPE(routing,MutOutputDeviceShape,
+				     _T("Creating MIDI device shape"));
+			return new MutOutputMidiDeviceShape(parent,id,d);
+		case DTMidiFile:
+			DEBUGLOGTYPE(routing,MutOutputDeviceShape,
+				     _T("Creating MIDI  file device shape"));
+			return new MutOutputMidiFileDeviceShape(parent,id,d);
+		case DTGis:
+			DEBUGLOGTYPE(routing,MutOutputDeviceShape,
+				     _T("Creating MIDI  file device shape"));
+			return new MutOutputGuidoFileDeviceShape(parent,id,d);
+		default:
+			return NULL; 
 		}
 	}
-
-	if (channel) {
-		wxASSERT(channel->GetRoute()==route);
-		channel->SetOutput(this);
-		routes.push_back(channel);
+#endif
+	void MutOutputDeviceShape::SetLabel(const wxString & st ) 
+	{
+		MutDeviceShape::SetLabel(st);
 	}
-}
 
-void MutOutputDeviceShape::RemoveRoute(Route * route)
-{
-	wxASSERT(route);
-	MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
-	wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-	wxASSERT(channel->GetRoute() == route);
-	wxASSERT(channel->GetOutput() == this);
-	
-	channel->SetOutput(NULL, channel->GetOutput()==this);
-	MutBoxChannelShapeList::iterator i;
-	for (i = routes.begin(); i != routes.end(); i++) if (*i == channel) break;
-//	if (i == routes.end()) return;
-	routes.erase(i);
-}
+	/// add a route
+	void MutOutputDeviceShape::Add(mutabor::OutputDevice  dev)
+	{
+		if (device)
+			UNREACHABLEC;
+		else 
+			device = dev;
+	}
+	/// replace a dev
+	bool MutOutputDeviceShape::Replace(mutabor::OutputDevice olddev,
+						  mutabor::OutputDevice newdev) 
+	{
+		if (device != olddev) {
+			UNREACHABLEC;
+			return false;
+		} else 
+			device = newdev;
+		return true;
+	}
+	/// remove a dev
+	bool MutOutputDeviceShape::Remove(mutabor::OutputDevice dev)
+	{
+		if (device != dev) {
+			UNREACHABLEC;
+			return false;
+		} else 
+			device = NULL;
+		return true;
+	}
+#if 0
+	void MutOutputDeviceShape::Connect(Route  route) 
+	{
 
+		wxASSERT(route);
+		wxASSERT(device);
+		wxASSERT(route->GetOutputDevice() == device);
+		MutBoxChannelShape * channel = (MutBoxChannelShape *) route->getUserData();
+		wxASSERT(dynamic_cast<MutIconShape *>(channel));
 
-void MutOutputDeviceShape::DoLeftDblClick() 
-{
-	OutputDevDlg * out = ShowDeviceDialog();
-	int Res = out->ShowModal();
-	bool destroySelf = false;
-
-	if (Res == wxID_OK) {
-		DevType type = out->GetType();
-
-		if (CanHandleType (type)) {
-			readDialog (out);
-		} else {
-			OutDevice * outdev = OutDevice::CreateDevice (type);
-			if (outdev) {
-				DEBUGLOG (dialog, _T("%s"),outdev->TowxString().c_str());
-				MutOutputDeviceShape * newdev = CreateShape (outdev);
-				DEBUGLOG (dialog, _T(""));
-				newdev -> readDialog (out);
-				DEBUGLOG (dialog, _T(""));
-				destroySelf = replaceSelfBy (newdev);
-				DEBUGLOG (dialog, _T(""));
-
-				m_parent->Layout();
-				m_parent->FitInside();
-				m_parent->SetVirtualSize(wxDefaultSize);
-				m_parent->Refresh();
+		// Check for duplicate route insertion.
+		for (MutBoxChannelShapeList::const_iterator i = routes.begin() ; i != routes.end() ; i++) {
+			if ((*i)->GetRoute() == route) {
+				UNREACHABLEC; // maybe just STUB?
+				return;
 			}
 		}
-	} else if (Res == ::wxID_REMOVE) {
-		destroySelf = DetachDevice();
+
+		if (channel) {
+			wxASSERT(channel->GetRoute()==route);
+			channel->SetOutput(this);
+			routes.push_back(channel);
+		}
 	}
 
-	out->Destroy();
-	DebugCheckRoutes();
+	void MutOutputDeviceShape::Disconnect(Route  route)
+	{
+		wxASSERT(route);
+		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
+		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+		wxASSERT(channel->GetRoute() == route);
+		wxASSERT(channel->GetOutput() == this);
+	
+		channel->SetOutput(NULL, channel->GetOutput()==this);
+		MutBoxChannelShapeList::iterator i;
+		for (i = routes.begin(); i != routes.end(); i++) if (*i == channel) break;
+//	if (i == routes.end()) return;
+		routes.erase(i);
+	}
 
-	// Signalize to delete this control
-	// Unfortunately WXMAC segfaults if we use Destroy(), here.
-	if (destroySelf) DeleteSelf();
-}
+	void MutOutputDeviceShape::Disconnect(MutBoxChannelShape * route) {
+		wxASSERT(route->GetRoute()->getUserData() == route);
+		RemoveRoute(route->GetRoute());
+	}
 
-OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
-{
-	OutputDevDlg * out = new OutputDevDlg (m_parent);
-	int nMidi = rtmidiout->getPortCount();
-	DEBUGLOG (other, _T("Midi ports %d"),nMidi);
+	void MutOutputDeviceShape::AddRoute(Route  route) 
+	{
+		wxASSERT(route);
+		wxASSERT(device);
+		wxASSERT(route->GetOutputDevice() == device);
+		MutBoxChannelShape * channel = (MutBoxChannelShape *) route->getUserData();
+		wxASSERT(dynamic_cast<MutIconShape *>(channel));
+
+		// Check for duplicate route insertion.
+		for (MutBoxChannelShapeList::const_iterator i = routes.begin() ; i != routes.end() ; i++) {
+			if ((*i)->GetRoute() == route) {
+				UNREACHABLEC; // maybe just STUB?
+				return;
+			}
+		}
+
+		if (channel) {
+			wxASSERT(channel->GetRoute()==route);
+			channel->SetOutput(this);
+			routes.push_back(channel);
+		}
+	}
+
+	void MutOutputDeviceShape::RemoveRoute(Route  route)
+	{
+		wxASSERT(route);
+		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
+		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+		wxASSERT(channel->GetRoute() == route);
+		wxASSERT(channel->GetOutput() == this);
+	
+		channel->SetOutput(NULL, channel->GetOutput()==this);
+		MutBoxChannelShapeList::iterator i;
+		for (i = routes.begin(); i != routes.end(); i++) if (*i == channel) break;
+//	if (i == routes.end()) return;
+		routes.erase(i);
+	}
+
+#endif
+
+	void MutOutputDeviceShape::DoLeftDblClick() 
+	{
+		OutputDevDlg * out = ShowDeviceDialog();
+		int Res = out->ShowModal();
+		bool destroySelf = false;
+		wxWindow * parent = m_parent; // to be availlable after deleten.
+
+		if (Res == wxID_OK) {
+			DevType type = out->GetType();
+
+			if (CanHandleType (type)) {
+				readDialog (out);
+			} else {
+				OutputDevice outdev = DeviceFactory::CreateOutput (type);
+				if (outdev) {
+					MutOutputDeviceShape * newdev = 
+						GUIDeviceFactory::CreateShape (outdev,
+									       GetParent());
+					DEBUGLOG (dialog, _T(""));
+ 					newdev -> readDialog (out);
+					DEBUGLOG (dialog, _T(""));
+					destroySelf = replaceSelfBy (newdev);
+				}
+			}
+		} else if (Res == ::wxID_REMOVE) {
+			device->Destroy();
+		}
+
+		// Now, we may be deleted.
+
+		out->Destroy();
+		DebugCheckRoutes();
+
+		if (Res != ::wxID_REMOVE) {
+			Layout();
+			InvalidateBestSize();
+			Fit();
+			Refresh();
+		}
+		if (parent) {
+			parent->Layout();
+			parent->InvalidateBestSize();
+			parent->FitInside();
+			parent->Refresh();
+			parent->Update();
+		} else if (Res != ::wxID_REMOVE) Update();
+		// Signalize to delete this control
+		// Unfortunately WXMAC segfaults if we use Destroy(), here.
+		if (destroySelf) DeleteSelf();
+	}
+
+	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
+	{
+		OutputDevDlg * out = new OutputDevDlg (m_parent);
+		int nMidi = rtmidiout->getPortCount();
+		DEBUGLOG (other, _T("Midi ports %d"),nMidi);
 
 #ifdef RTMIDI
-	nMidi = rtmidiout->getPortCount();
+		nMidi = rtmidiout->getPortCount();
 
-	if ( nMidi )  {
+		if ( nMidi )  {
 #ifdef __WXMSW__
-		wxString portName;
+			wxString portName;
 #else
-		std::string portName;
+			std::string portName;
 #endif
 
-		for (int i = 0; i < nMidi; i++) {
-			try {
-				portName = rtmidiout->getPortName(i);
-			} catch (RtError &error) {
-				error.printMessage();
-				break;
+			for (int i = 0; i < nMidi; i++) {
+				try {
+					portName = rtmidiout->getPortName(i);
+				} catch (RtError &error) {
+					error.printMessage();
+					break;
+				}
+#ifdef __WXMSW__
+				out->AppendPortChoice(portName);
+#else
+				out->AppendPortChoice(muT(portName.c_str()));
+#endif
 			}
-#ifdef __WXMSW__
-			out->AppendPortChoice(portName);
+		} else
+			out->AppendPortChoice(_("no device"));
 #else
-			out->AppendPortChoice(muT(portName.c_str()));
+		/*    nMidi = midiInGetNumDevs();
+		      if ( nMidi )
+		      {
+		      for (int i = 0; i < nMidi; i++)
+		      {
+		      MIDIINCAPS miin;
+		      midiInGetDevCaps(i, &miin, sizeof(MIDIINCAPS));
+		      DataR0.Device.AddString(miin.szPname);
+		      }
+		      }
+		      else
+		      DataR0.Device.AddString("no device");*/
 #endif
-		}
-	} else
-		out->AppendPortChoice(_("no device"));
-#else
-	/*    nMidi = midiInGetNumDevs();
-	      if ( nMidi )
-	      {
-	      for (int i = 0; i < nMidi; i++)
-	      {
-	      MIDIINCAPS miin;
-	      midiInGetDevCaps(i, &miin, sizeof(MIDIINCAPS));
-	      DataR0.Device.AddString(miin.szPname);
-	      }
-	      }
-	      else
-	      DataR0.Device.AddString("no device");*/
-#endif
-	//		in->SetType(DTUnknown);
-	out->SetMidiDevice(0);
-	out->SetMidiFile(wxEmptyString);
-	out->SetGUIDOFile(wxEmptyString);
-	out->SetMidiBendingRange(2);
-	out->SetMidiFileBendingRange(2);
+		//		in->SetType(DTUnknown);
+		out->SetMidiDevice(0);
+		out->SetMidiFile(wxEmptyString);
+		out->SetGUIDOFile(wxEmptyString);
+		out->SetMidiBendingRange(2);
+		out->SetMidiFileBendingRange(2);
 
-	InitializeDialog(out);
+		InitializeDialog(out);
 		
-	out->Fit();
+		out->Fit();
 
-	return out;
-}
-
-bool MutOutputDeviceShape::DetachDevice ()
-{
-	
-	for (MutBoxChannelShapeList::iterator i = routes.begin(); i!= routes.end(); i = routes.begin()) {
-		MutBoxChannelShape *channel = *i;
-		wxASSERT(channel);
-		RemoveRoute(channel->GetRoute());
+		return out;
 	}
-	
-	device->Destroy();
-	device = NULL;
-	
-	wxWindow * parent = m_parent;
-	wxSizer * sizer = GetContainingSizer();
-	if (sizer) {
-		sizer -> Detach(this);
-	}
-	if (parent) {
-		parent->Layout();
-		parent->FitInside();
-		parent->SetVirtualSize(wxDefaultSize);
-		parent->Refresh();
-	}
-	
-	return true;
-}
 
-bool MutOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
-{
-        wxASSERT (newshape);
-	wxASSERT (newshape->device);
-
-	DEBUGLOG (routing, _T(""));
-	
-	for(MutBoxChannelShapeList::iterator i = routes.begin(); i!=routes.end(); i = routes.begin())
+	bool MutOutputDeviceShape::DetachDevice ()
 	{
-		DEBUGLOG (routing, _T("this = %p ; newshape = %p ; device = %p ; newshape->device = %p ; boxchannel = %p"),
-			  this,newshape,device, newshape->device, (*i));
-		MutBoxChannelShape * channel = *i;
-		wxASSERT(channel->GetRoute()->GetOutDevice() == device);
-		RemoveRoute(channel);
-		channel->SetOutput(newshape,true);
-		wxASSERT(channel->GetRoute()->GetOutDevice() == newshape->device);
-		wxASSERT(channel->GetRoute()->GetOutDevice()->getUserData() == newshape);
-		newshape->AddRoute(channel);
+	
+		for (MutBoxChannelShapeList::iterator i = routes.begin(); i!= routes.end(); i = routes.begin()) {
+			MutBoxChannelShape *channel = *i;
+			wxASSERT(channel);
+			Detatch(channel);
+		}
+	
+		device->Destroy();
+		device = NULL;
+	
+		wxWindow * parent = m_parent;
+		wxSizer * sizer = GetContainingSizer();
+		if (sizer) {
+			sizer -> Detach(this);
+		}
+		if (parent) {
+			parent->Layout();
+			parent->FitInside();
+			parent->SetVirtualSize(wxDefaultSize);
+			parent->Refresh();
+		}
+	
+		return true;
 	}
 
-	DEBUGLOG (routing, _T(""));
-	device -> Destroy();
-	device = NULL;
-       
-	newshape->MoveBeforeInTabOrder (this);
+	bool MutOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
+	{
+		wxASSERT (newshape);
+		wxASSERT (newshape->device);
 
-	wxSizer * sizer = GetContainingSizer();
-	sizer -> Replace (this, newshape, false);
+		DEBUGLOG (routing, _T(""));
 	
-	if (FindFocus()==this) {
+		for(MutBoxChannelShapeList::iterator i = routes.begin(); i!=routes.end(); i = routes.begin())
+		{
+			DEBUGLOG (routing, _T("this = %p ; newshape = %p ; device = %p ; newshape->device = %p ; boxchannel = %p"),
+				  this,newshape,device.get(), newshape->device.get(), (*i));
+			MutBoxChannelShape * channel = *i;
+			wxASSERT(channel->GetRoute()->GetOutputDevice() == device);
+			channel->Reconnect(this,newshape);
+		}
+
+		DEBUGLOG (routing, _T(""));
+       
+		newshape->MoveBeforeInTabOrder (this);
+
+		wxSizer * sizer = GetContainingSizer();
+		sizer -> Replace (this, newshape, false);
+	
+  		Hide();
 		m_parent->Layout();
 		m_parent->FitInside();
 		m_parent->SetVirtualSize(wxDefaultSize);
 		newshape->SetFocus();
+
+		device -> Destroy();
+		device = NULL;
+		return true;
 	}
 
-	Hide();
-	return true;
-}
-
-void MutOutputDeviceShape::ReadPanel(OutputFilterPanel * panel, MutBoxChannelShape * channel)
-{
-	wxASSERT(panel);
-	wxASSERT(channel);
-	if (!panel || !channel) return;
-	DEBUGLOG(dialog,_T("Reading output device dialog"));
+	void MutOutputDeviceShape::ReadPanel(OutputFilterPanel * panel, MutBoxChannelShape * channel)
+	{
+		wxASSERT(panel);
+		wxASSERT(channel);
+		if (!panel || !channel) return;
+		DEBUGLOG(dialog,_T("Reading output device dialog"));
 	
-	bool active = panel->IsShown();
+		bool active = panel->IsShown();
 	
-	// newShape may be NULL if the route ends at the box
-	MutOutputDeviceShape * newShape = panel->GetCurrentSelection();
-	Route * route = channel->GetRoute();
-	if (!active) {
-		RemoveRoute(route);
-		channel->SetOutput(NULL);
-		return;
-	} else if (newShape != this) {
-		RemoveRoute(route);
-		channel->SetOutput(newShape,true);
-		if (newShape)
-			newShape->AddRoute(route);
-	}
-	if (newShape) {
-		wxWindow * FilterPanel = panel->GetCurrentDevicePage();
-		if (!panel) {
-			UNREACHABLEC;
+		// newShape may be NULL if the route ends at the box
+		MutOutputDeviceShape * newShape = panel->GetCurrentSelection();
+		Route  route = channel->GetRoute();
+		if (!active) {
+			Detatch(route);
 			return;
+		} else if (newShape != this) {
+			channel->Reconnect(this,newShape);
 		}
-		newShape->ReadOutputFilterPanel(FilterPanel,route);
-	}
+		if (newShape) {
+			wxWindow * FilterPanel = panel->GetCurrentDevicePage();
+			if (!panel) {
+				UNREACHABLEC;
+				return;
+			}
+			newShape->ReadOutputFilterPanel(FilterPanel,route);
+		}
 	
+	}
 }
-
 
 /*
  * \}

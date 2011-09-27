@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.5 2011/09/07 13:06:50 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.6 2011/09/27 20:13:22 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/07 13:06:50 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/27 20:13:22 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,14 @@
  *
  *
  * $Log: GUIBoxData.h,v $
- * Revision 1.5  2011/09/07 13:06:50  keinstein
+ * Revision 1.6  2011/09/27 20:13:22  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.5  2011-09-07 13:06:50  keinstein
  * Get rid of WinAttr and Fix window opening and closing
  *
  * Revision 1.4  2011-09-06 08:09:21  keinstein
@@ -49,32 +56,72 @@
  * \{
  ********************************************************************/
 
-#ifndef MUWX_GUIBOXDATA_H
+#if (!defined(MUWX_GUIBOXDATA_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_GUIBOXDATA_H_PRECOMPILED))
+#ifndef PRECOMPILE
 #define MUWX_GUIBOXDATA_H
+#endif
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include <wx/wxprec.h>
+#include "box.h"
+#include "muwx/Routing/RouteLists.h"
 
-#ifdef __BORLANDC__
-    #pragma hdrstop
-#endif
 
-class MutChild;
-class MutLogicWnd;
+#ifndef MUWX_GUIBOXDATA_H_PRECOMPILED
+#define MUWX_GUIBOXDATA_H_PRECOMPILED
+
+#include <vector>
+
+// system headers change not so often
+#include "wx/config.h"
 
 namespace mutaborGUI {
+	class MutChild;
+	class MutLogicWnd;
 	extern size_t curBox;
 
 	class BoxData {
+	protected:
+		struct WinAttr {
+			WinAttr():
+				key_window(NULL),
+				tonesystem_window(NULL),
+				actions_window(NULL),
+				logic_window(NULL),
+				want_key_window(false),
+				want_tonesystem_window(false),
+				want_actions_window(false)
+				{}
+
+			MutChild * key_window;
+			MutChild * tonesystem_window;
+			MutChild * actions_window;
+			MutLogicWnd * logic_window;
+
+			bool want_key_window:1;
+			bool want_tonesystem_window:1;
+			bool want_actions_window:1;
+		};
 	public:
 		BoxData();
 
+		int GetId() {
+			if (box) return box->id;
+			if (this == &NewBoxData) 
+				return NewBox;
+			if (this == &GmnBoxData)
+				return GmnBox;
+			return NoBox;
+		}
+
 		void reset();
+
+		MutBoxShape * GetBoxShape(wxWindow * parent);
+
 		/// Sets the name of the currently active logic
 		/** \param s wxString name of the logic
 		*/
@@ -177,10 +224,45 @@ namespace mutaborGUI {
 			return winattr.logic_window; 
 		}
 
-		static BoxData & GetBox(size_t nr) 
+		const MutBoxShapeList & GetBoxShapes() {
+			return shapes;
+		}
+
+		void Add(MutBoxShape * shape);
+		bool Remove(MutBoxShape * shape);
+		
+		void Attatch(MutBoxShape * shape);
+		bool Detatch(MutBoxShape * shape);
+		bool Delete(MutBoxShape * shape);
+		
+		static BoxData & GetBox(int nr) 
 		{ 
+			if (nr < Box0) {
+				switch(nr) {
+				case NewBox: 
+					return NewBoxData;
+					break;
+				case NoBox:
+					return NoBoxData;
+					break;
+				case GmnBox:
+					return GmnBoxData;
+					break;
+				case Box0:
+				default:
+					UNREACHABLECT(BoxData);
+				}
+			}
 			return vector[nr]; 
 		}
+
+		static void InitializeBoxes() {
+			for (size_t i = 0 ; i < vector.size() ; i++) {
+				vector[i].box = &(mut_box[i]);
+				mut_box[i].userdata = &(vector[i]);
+			}
+		}
+
 
 		bool Save(wxConfigBase * config);
 		bool Load(wxConfigBase * config);
@@ -188,39 +270,31 @@ namespace mutaborGUI {
 		static bool SaveAll(wxConfigBase * config);
 		static bool LoadAll(wxConfigBase * config);
 
+
 	protected: 
 		/** \todo curent_logic and current_tonesystem are set
 		 *  but unused as well as current_key_tonesystem and 
 		 *  current_key_logic
 		 */
+		mutabor_box_type * box;
+		MutBoxShapeList shapes;
 		wxString current_logic;
 		wxString current_tonesystem;
 		int current_key_tonesystem; // 0
 		int current_key_logic; // 1
-		typedef std::vector<BoxData> BoxVector;
 
+		class  BoxVector: public std::vector<BoxData> {
+		public:
+			BoxVector(size_t count):std::vector<BoxData>(count) {
+				BoxData::InitializeBoxes();
+			}
+		};
 		static BoxVector vector;
+		static BoxData GmnBoxData;
+		static BoxData NoBoxData;
+		static BoxData NewBoxData;
 
-		struct WinAttr {
-			WinAttr():
-				key_window(NULL),
-				tonesystem_window(NULL),
-				actions_window(NULL),
-				logic_window(NULL),
-				want_key_window(false),
-				want_tonesystem_window(false),
-				want_actions_window(false)
-				{}
-
-			MutChild * key_window;
-			MutChild * tonesystem_window;
-			MutChild * actions_window;
-			MutLogicWnd * logic_window;
-
-			bool want_key_window:1;
-			bool want_tonesystem_window:1;
-			bool want_actions_window:1;
-		} winattr;
+		WinAttr winattr;
 
 	};
 
@@ -230,4 +304,6 @@ namespace mutaborGUI {
 }
  
 #endif
+#endif
+
 ///\}

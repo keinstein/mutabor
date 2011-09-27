@@ -2,14 +2,21 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.15 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.16 2011/09/27 20:13:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.15 $
+ * \date $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.15  2011/09/08 16:51:21  keinstein
+ * Revision 1.16  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.15  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -175,7 +182,7 @@ int pascal _export GetActString(unsigned char **box, int **l, char **s)
 // Compiler-Dialog --------------------------------------------------
 
 #ifdef WX
-void InitCompDia(CompDlg *compDia, wxString filename)
+void InitCompDia(mutaborGUI::CompDlg *compDia, wxString filename)
 {
 	wxASSERT(compDia);
 	CompDiaLine = compDia->GetLine();

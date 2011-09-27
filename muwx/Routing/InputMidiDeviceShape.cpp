@@ -3,16 +3,23 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiDeviceShape.cpp,v 1.4 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiDeviceShape.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: InputMidiDeviceShape.cpp,v $
- * Revision 1.4  2011/02/20 22:35:58  keinstein
+ * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.3  2010-12-13 00:27:53  keinstein
@@ -76,68 +83,70 @@
 #include "DevMidi.h"
 #include <limits>
 
+using namespace mutabor;
 
-void MutInputMidiDeviceShape::InitializeDialog(InputDevDlg * in) const
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiPort);
-	wxASSERT(in);
-	InMidiPort * dev = dynamic_cast<InMidiPort *> (device);
-	wxASSERT (dev);
-	in -> SetType(DTMidiPort);
-	in -> SetMidiDevice(dev->GetDevId());
-}
+namespace mutaborGUI {
+	void MutInputMidiDeviceShape::InitializeDialog(InputDevDlg * in) const
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiPort);
+		wxASSERT(in);
+		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
+		wxASSERT (dev);
+		in -> SetType(DTMidiPort);
+		in -> SetMidiDevice(dev->GetDevId());
+	}
 
-bool MutInputMidiDeviceShape::readDialog (InputDevDlg * in)
-{
-	wxASSERT(device);
-	wxASSERT(device->GetType() == DTMidiPort);
-	wxASSERT(in);
-	wxASSERT (in -> GetType() == DTMidiPort);
-	InMidiPort * dev = dynamic_cast<InMidiPort *> (device);
-	if (!dev) return false;
-	wxASSERT (dev);
-	dev->SetDevId (in -> GetMidiDevice());
-	SetLabel (dev->GetName());
-	return true;
-}
+	bool MutInputMidiDeviceShape::readDialog (InputDevDlg * in)
+	{
+		wxASSERT(device);
+		wxASSERT(device->GetType() == DTMidiPort);
+		wxASSERT(in);
+		wxASSERT (in -> GetType() == DTMidiPort);
+		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
+		if (!dev) return false;
+		wxASSERT (dev);
+		dev->SetDevId (in -> GetMidiDevice());
+		SetLabel (dev->GetName());
+		return true;
+	}
 
-wxPanel * MutInputMidiDeviceShape::GetInputFilterPanel(wxWindow * parent, 
-						   Route * route) const
-{
-	const int maxint = std::numeric_limits<int>().max();
-	MidiInputFilterPanel * panel = new MidiInputFilterPanel(parent);
-	if (!panel) return NULL;
-	InMidiPort * dev = dynamic_cast<InMidiPort *> (device);
-	const int maxchannel = dev?dev->GetMaxChannel():MIDI_MAX_CHANNEL;
-	const int minchannel = dev?dev->GetMinChannel():MIDI_MIN_CHANNEL;
-	const int maxkey = dev?dev->GetMaxKey():MIDI_MAX_KEY;
-	const int minkey = dev?dev->GetMinKey():MIDI_MIN_KEY;
-	if (!route) {
-		panel->SetFromChannel(minchannel, minchannel, maxchannel);
-		panel->SetToChannel(maxchannel, minchannel, maxchannel);
-		panel->SetFromKey(minkey, minkey, maxkey);
-		panel->SetToKey(maxkey, minkey, maxkey);
-		panel->SetRouteType(RTall);
+	wxPanel * MutInputMidiDeviceShape::GetInputFilterPanel(wxWindow * parent, 
+							       Route  route) const
+	{
+		//const int maxint = std::numeric_limits<int>().max();
+		MidiInputFilterPanel * panel = new MidiInputFilterPanel(parent);
+		if (!panel) return NULL;
+		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
+		const int maxchannel = dev?dev->GetMaxChannel():MIDI_MAX_CHANNEL;
+		const int minchannel = dev?dev->GetMinChannel():MIDI_MIN_CHANNEL;
+		const int maxkey = dev?dev->GetMaxKey():MIDI_MAX_KEY;
+		const int minkey = dev?dev->GetMinKey():MIDI_MIN_KEY;
+		if (!route) {
+			panel->SetFromChannel(minchannel, minchannel, maxchannel);
+			panel->SetToChannel(maxchannel, minchannel, maxchannel);
+			panel->SetFromKey(minkey, minkey, maxkey);
+			panel->SetToKey(maxkey, minkey, maxkey);
+			panel->SetRouteType(RTall);
+			return panel;
+		}
+		panel->SetFromChannel(route->IFrom, minchannel, maxchannel);
+		panel->SetToChannel(route->ITo, minchannel, maxchannel);
+		panel->SetFromKey(route->IFrom, minkey, maxkey);
+		panel->SetToKey(route->ITo, minkey, maxkey);
+		panel->SetRouteType(route->GetType());
 		return panel;
 	}
-	panel->SetFromChannel(route->IFrom, minchannel, maxchannel);
-	panel->SetToChannel(route->ITo, minchannel, maxchannel);
-	panel->SetFromKey(route->IFrom, minkey, maxkey);
-	panel->SetToKey(route->ITo, minkey, maxkey);
-	panel->SetRouteType(route->GetType());
-	return panel;
-}
 
-void MutInputMidiDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route * route)
-{
-	MidiInputFilterPanel * pan = dynamic_cast<MidiInputFilterPanel *> (panel);
-	if (!pan) {
-		UNREACHABLEC;
-		return;
-	}
-	route->SetType(pan->GetRouteType());
-	switch (route->GetType()) {
+	void MutInputMidiDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route  route)
+	{
+		MidiInputFilterPanel * pan = dynamic_cast<MidiInputFilterPanel *> (panel);
+		if (!pan) {
+			UNREACHABLEC;
+			return;
+		}
+		route->SetType(pan->GetRouteType());
+		switch (route->GetType()) {
 		case RTall:
 		case RTelse:
 			// those have no data
@@ -153,14 +162,15 @@ void MutInputMidiDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route * rou
 		default:
 			UNREACHABLEC;
 			break;
+		}
+		return;
 	}
-	return;
+
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutInputMidiDeviceShape, MutInputDeviceShape)
+
 }
-
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutInputMidiDeviceShape, MutInputDeviceShape)
-
 /*
  * \}
  */

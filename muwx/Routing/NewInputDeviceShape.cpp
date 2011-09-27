@@ -4,16 +4,23 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.cpp,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: NewInputDeviceShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:49  keinstein
@@ -65,25 +72,32 @@
  *\{
  ********************************************************************/
 #include "NewInputDeviceShape.h"
+#include "muwx/MutRouteWnd.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
+using namespace mutabor;
 
-void MutNewInputDeviceShape::InitializeDialog(InputDevDlg * in) const
-{
-	in -> SetType(DTNotSet);
-	in -> DisableRemove();
+namespace mutaborGUI {
+
+	void MutNewInputDeviceShape::InitializeDialog(InputDevDlg * in) const
+	{
+		in -> SetType(DTNotSet);
+		in -> DisableRemove();
+	}
+
+	bool MutNewInputDeviceShape::replaceSelfBy (MutInputDeviceShape  * newshape)
+	{
+		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
+		wxASSERT(p);
+		// the "New device" icon won't be replaced, so we just append the device
+		p->AddInputDevice(newshape,sizerFlags);
+		return false;
+	}
+
+
+
+	IMPLEMENT_DYNAMIC_CLASS(MutNewInputDeviceShape, MutInputDeviceShape)
+
 }
-
-bool MutNewInputDeviceShape::replaceSelfBy (MutInputDeviceShape  * newshape)
-{
-	MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
-	wxASSERT(p);
-	// the "New device" icon won't be replaced, so we just append the device
-	p->AddInputDevice(newshape,sizerFlags);
-	return false;
-}
-
-
-
-IMPLEMENT_DYNAMIC_CLASS(MutNewInputDeviceShape, MutInputDeviceShape)
 /*
  * \}
  */

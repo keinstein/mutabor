@@ -3,16 +3,23 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: DeviceShape.cpp,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -53,34 +60,71 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-//#include "Defs.h"
-//#include "wx/wx.h"
+#include "Defs.h"
 #include "DeviceShape.h"
+#include <algorithm>
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
 
+namespace mutaborGUI {
+	IMPLEMENT_ABSTRACT_CLASS(MutDeviceShape, MutIconShape)
+	
+	BEGIN_EVENT_TABLE(MutDeviceShape, MutIconShape)
+	EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
+	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
+	END_EVENT_TABLE()
 
-IMPLEMENT_ABSTRACT_CLASS(MutDeviceShape, MutIconShape)
+	void MutDeviceShape::Add(MutBoxChannelShape *  route) 
+	{
+#ifdef DEBUG
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),route);
+		wxASSERT(pos == routes.end());
+#endif 
+		routes.push_back(route);
+		Update();
+	}
 
-BEGIN_EVENT_TABLE(MutDeviceShape, MutIconShape)
-EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
-END_EVENT_TABLE()
+	bool MutDeviceShape::Replace(MutBoxChannelShape * oldroute,
+					  MutBoxChannelShape * newroute)
+	{
+		bool retval = Remove(oldroute);
+		Add(newroute);
+		Recompute();
+		return retval;
+	}
+	bool MutDeviceShape::Remove(MutBoxChannelShape * route)
+	{
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),route);
+		if (pos == routes.end()) {
+			UNREACHABLEC;
+			return false;
+		} else { 
+			routes.erase(pos);
+		}
+		Recompute();
+		return true;
+	}
+	bool MutDeviceShape::MoveRoutes (MutDeviceShape * newclass) 
+	{
+		routes.swap(newclass->routes);
+		Recompute();
+		return true;
+	}
 
-bool MutDeviceShape::Recompute() 
-{
-	SetIcon(GetMutIcon());
-	//  SetLabel (filename.GetFullName());
-	return GetIcon().IsOk();
+	bool MutDeviceShape::Recompute() 
+	{
+		SetIcon(GetMutIcon());
+		//  SetLabel (filename.GetFullName());
+		return GetIcon().IsOk();
+	}
 }
 
 
-
-
-#include "wx/listimpl.cpp"
-WX_DEFINE_LIST (MutDeviceShapeList);
 
 /*
  * \}

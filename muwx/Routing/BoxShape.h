@@ -3,16 +3,23 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.4 2011/09/08 16:51:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.5 2011/09/27 20:13:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/08 16:51:21 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.4  2011/09/08 16:51:21  keinstein
+ * Revision 1.5  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-09-08 16:51:21  keinstein
  * Set foreground color in box status windows
  * Fix updating box status windows
  * update RtMidi (includes Jack compilation mode)
@@ -116,76 +123,119 @@
  *\{
  ********************************************************************/
 
-#ifndef BOXSHAPE_H
-#define BOXSHAPE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
+#if (!defined(MUWX_ROUTING_BOXSHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_BOXSHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "GUIBoxData.h"
+#include "GUIRoute.h"
+#include "muwx/Routing/BoxChannelShape.h"
+#include "BoxIconShape.h"
+#include "Device.h"
+
+#ifndef MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
+// we must break some recursion
 //#include <map>
 
 //#include "wx/defs.h"
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
-#include "Defs.h"
-
-#include "BoxChannelShape.h"
-#include "BoxIconShape.h"
-#include "Device.h"
 
 #include "wx/colour.h"
+#include "wx/sizer.h"
 
-const wxColour & BoxColour(int nr);
-const wxColour & BoxTextColour(int nr);
-void initBoxColours();
+namespace mutaborGUI {
+	class BoxDlg;
+	class MutBoxChannelShape;
+	class MutOutputDeviceShape;
+	class RoutePanel;
 
-class MutBoxShape:public MutBoxIconShape
-{
-protected:
-	MutBoxIconShape * m_icon;
-	wxSizer * channels;
-	static wxSizerFlags sizerFlags;
-	int boxId;
-	static int maxBoxId;
+	const wxColour & BoxColour(int nr);
+	const wxColour & BoxTextColour(int nr);
+	void initBoxColours();
+
+	class MutBoxShape:public MutBoxIconShape
+	{
+	protected:
+		MutBoxIconShape * m_icon;
+		wxSizer * channels;
+		static wxSizerFlags sizerFlags;
+		int boxId;
+		static int maxBoxId;
 	
-public:
-	MutBoxShape():MutBoxIconShape(),m_icon(NULL),channels(NULL),boxId(NoBox) {}
+	public:
+		MutBoxShape():MutBoxIconShape(),m_icon(NULL),channels(NULL),
+			      boxId(NoBox) {}
 
-	MutBoxShape(wxStaticBox *box, int orient):
-		MutBoxIconShape()
-	{
-		STUBC;
-	}
+		MutBoxShape(wxStaticBox *box, int orient):
+			MutBoxIconShape()
+			{
+				STUBC;
+			}
 
-	MutBoxShape(wxWindow * parent,wxWindowID wid, int Id=NoBox):
-		MutBoxIconShape()
-	{
-		Create(parent,wid,Id);
-	}
+		MutBoxShape(wxWindow * parent,wxWindowID wid, int Id = NoBox):
+			MutBoxIconShape()
+			{
+				Create(parent,wid,Id);
+			}
   
-	virtual ~MutBoxShape()
-	{ 
+		virtual ~MutBoxShape()
+			{ 
 //		delete channels; 
-	}
+			}
 	
-	bool Create(wxWindow * parent,wxWindowID wid, int Id=NoBox);
+		bool Create(wxWindow * parent,wxWindowID wid, int Id = NoBox);
 
-	static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
-  static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
+		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
+		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
 
-	virtual void DoLeftDblClick();
-	void LeftDblClickEvent (wxMouseEvent & event) {
-		DoLeftDblClick();
-	}
+		virtual void DoLeftDblClick();
+
+		/// Get a double click and prepare for execution of the command
+		/** Since programs might produce segmentation faults
+		    when the object is deleted during processing of mouse
+		    events, we send us a new event using the event queue.
+		*/
+		void LeftDblClickEvent (wxMouseEvent & event) { 
+			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
+					       CM_LEFT_DOUBLE_CLICK); 
+			wxPostEvent(this,command); 
+		}
+		/// Process a double click
+		/** Since programs might produce segmentation faults
+		    when the object is deleted during processing of mouse
+		    events, we send us a new event using the event queue.
+		*/
+		void CmLeftDblClick (wxCommandEvent& event) {
+			DoLeftDblClick(); 
+		}
 	
-	BoxDlg * ShowBoxDialog() const;
-	virtual void InitializeDialog(BoxDlg * dlg) const;
+		BoxDlg * ShowBoxDialog() const;
+		virtual void InitializeDialog(BoxDlg * dlg) const;
 
 		
-	virtual MutBoxChannelShape * AddChannel(MutBoxChannelShape * channel);
-	virtual MutBoxChannelShape * AddChannel(Route * route);
-	virtual MutBoxChannelShape * AddChannel(RoutePanel * panel);
-	
-	virtual bool HasChannel(Route * route);
+		virtual MutBoxChannelShape * AddChannel(mutabor::Route route);
+		virtual MutBoxChannelShape * AddChannel(RoutePanel * panel);
 
-	virtual void AddPossibleOutput(MutOutputDeviceShape * device);
+		virtual MutBoxChannelShape * Add(MutBoxChannelShape * channel);
+		virtual bool Remove(MutBoxChannelShape * shape);
+	
+		virtual bool HasChannel(mutabor::Route route);
+
+		virtual void AddPossibleOutput(MutOutputDeviceShape * device);
 	
 
 //	virtual void SetLabel(const wxString &s);
@@ -193,40 +243,56 @@ public:
 //	virtual void RecalcSizes();
 //	virtual wxSize CalcMin();
 
-	//  override to hide/show the static box as well
+		//  override to hide/show the static box as well
 //	virtual void ShowItems (bool show);
-	virtual void DrawLines(wxDC & dc);
+
+		virtual void Add(BoxData * box);
+		virtual bool Remove(BoxData * box);
+		
+		void Attatch(BoxData * box) {
+			box->Attatch(this);
+		}
+		bool Detatch(BoxData * box) {
+			return box->Detatch(this);
+		}
+		bool Delete(BoxData * box) {
+			return box->Delete(this);
+		}
+
+		virtual void DrawLines(wxDC & dc, const wxRect & screenpos);
   
-	virtual bool Detach( wxWindow *window );
-	virtual bool Detach( wxSizer *sizer ) 
-	{
-		if (channels) 
-			return channels -> Detach(sizer); 
-		else 
-			return false;
-	}
-	virtual bool Detach( int index ) 
-	{ 
-		if (channels) 
-			return channels -> Detach(index);
-		else 
-			return false;
-	}
-	virtual bool replaceSelfBy (MutBoxShape  * newshape);
-	virtual bool DetachBox ();
+		virtual bool Detach( wxWindow *window );
+		virtual bool Detach( wxSizer *sizer ) 
+			{
+				if (channels) 
+					return channels -> Detach(sizer); 
+				else 
+					return false;
+			}
+		virtual bool Detach( int index ) 
+			{ 
+				if (channels) 
+					return channels -> Detach(index);
+				else 
+					return false;
+			}
+		virtual bool replaceSelfBy (MutBoxShape  * newshape);
+		virtual bool DetachBox ();
 	
-	virtual bool readDialog (BoxDlg * box);
-	virtual bool CanHandleType (int  type) { return true; }
-	int GetBoxId() const { return boxId; }
-private:
-	void SetBoxId(int Id, bool layout=true);
-	DECLARE_CLASS(MutBoxShape)
-	DECLARE_EVENT_TABLE();
-};
+		virtual bool readDialog (BoxDlg * box);
+		virtual bool CanHandleType (int  type) { return true; }
+		int GetBoxId() const { return boxId; }
+		wxSizer * GetChannels() { return channels; }
+	private:
+		void SetBoxId(int Id, bool layout=true);
+		DECLARE_CLASS(MutBoxShape)
+		DECLARE_EVENT_TABLE();
+	};
 
-WX_DECLARE_LIST (MutBoxShape, MutBoxShapeList);
+	typedef std::list <MutBoxShape *> MutBoxShapeList;
 
-
+}
+#endif				/* BOXSHAPE_H_PRECOMPILED */
 #endif				/* BOXSHAPE_H */
 /*
  * \}

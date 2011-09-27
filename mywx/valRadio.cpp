@@ -2,16 +2,23 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.4 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/27 20:13:26 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: valRadio.cpp,v $
- * Revision 1.4  2011/02/20 22:35:59  keinstein
+ * Revision 1.5  2011/09/27 20:13:26  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.4  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -28,16 +35,9 @@
 // Created:     20/04/2004
 /////////////////////////////////////////////////////////////////////////////
 
-//#ifdef __GNUG__
-//#pragma implementation "valRadio.h"
-//#endif
 
 // For compilers that support precompilation, includes "wx.h".
-#include "wx/wxprec.h"
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
+#include "Defs.h"
 
 #if wxUSE_VALIDATORS
 
@@ -50,6 +50,14 @@
 #endif
 
 #include "valRadio.h"
+
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+//#ifdef __GNUG__
+//#pragma implementation "valRadio.h"
+//#endif
 
 IMPLEMENT_DYNAMIC_CLASS(wxRadioValidator, wxValidator)
 

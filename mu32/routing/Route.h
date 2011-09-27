@@ -4,16 +4,23 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.3 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.4 2011/09/27 20:13:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:21 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: Route.h,v $
- * Revision 1.3  2011/02/20 22:35:56  keinstein
+ * Revision 1.4  2011/09/27 20:13:21  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:46  keinstein
@@ -111,306 +118,550 @@
  *\{
  ********************************************************************/
 
-#ifndef MUTABOR_ROUTE_H
-#define MUTABOR_ROUTE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MU32_ROUTING_ROUTE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MU32_ROUTING_ROUTE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MU32_ROUTING_ROUTE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
 #include "Defs.h"
+#include "mu32/box.h"
+
+#include "treestorage.h"
+
+#ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
+#define MU32_ROUTING_ROUTE_H_PRECOMPILED
+
+// system headers which do seldom change
+#include <boost/intrusive_ptr.hpp>
+#include <list>
 
 #ifdef WX
 #include "wx/config.h"
 #endif
-
-#include "treestorage.h"
 // Route ------------------------------------------------------------
 
-
-enum BoxType
-{
-	NewBox = -3,
-	NoBox,
-	GmnBox,
-	Box0
-};
-
-/// Type of route input filter
-enum RouteType
-{
-        RTall, RTelse, RTchannel, RTstaff
-};
-
-extern const mutString RTName[];
-
-class OutDevice;
-class InDevice;
-
-class Route
-{
-	// private members: access only via access functions for debugging purposes
-	/*
-        void * userdata;
-	Route *Next;
-	OutDevice *Out;
-	 */
-	WATCHEDPTR(void,routing,Route) userdata;
-	WATCHEDPTR(Route,routing,Route) Next;
-	WATCHEDPTR(OutDevice,routing,Route) Out;
-	WATCHEDPTR(InDevice,routing,Route) In;
-	WATCHEDPTR(Route,routing,Route) globalNext;
-	static WATCHEDPTR(Route,routing,Route) routeList;
-	int Id;
-	int inputid;
-	int outputid;
-public:
-	RouteType Type;
-	int IFrom, ITo;
-	int Box;
-	bool Active;
-	int OFrom, OTo;
-	bool ONoDrum;
-        static int maxRouteId;
-
-
-
-	Route(
-	      InDevice * in = NULL,
-	      OutDevice *out = NULL,
-	      RouteType type = RTall,
-	      int iFrom = -1,
-	      int iTo = -1,
-	      int box = -1,
-	      bool active = false,
-	      int oFrom = -1,
-	      int oTo = -1,
-	      bool oNoDrum = true,
-	      Route *next = 0):userdata(this,_T("userdata")),
-	Next(this,_T("Next"),next),
-	Out(this,_T("Out"),out),
-	In(this,_T("In"),in),
-	globalNext(this,_T("Global Next"),NULL)
+namespace mutabor {
+        /// Type of route input filter
+	enum RouteType
 	{
-		Type = type;
-		IFrom = iFrom;
-		ITo = iTo;
-		Box = box;
-		Active = active;
-		OFrom = oFrom;
-		OTo = oTo;
-		ONoDrum = oNoDrum;
-		Id = NextRouteId();
-		AppendToRouteList(this);
-	}
-
-	virtual ~Route()
-	{
-		DEBUGLOG(routing,_T("deleting chain from %p"));
-		if ( Next ) delete Next;
-		DEBUGLOG(routing,_T("deleting %p"));
-		RemoveFromRouteList(this);
-	}
-
-	/// Write the route settings into a tree based configuration.
-	/** \argument config (tree_storage &) configuration where the route settings will be stored
-	 */
-	virtual void Save(tree_storage & config);
-
-	/// Read the route into from a tree based configuration.
-	/** \argument config (tree_storage &) configuration where the route settings will be read from
-	 */
-	virtual void Load(tree_storage & config);
+		RTall, RTelse, RTchannel, RTstaff
+	};
 	
-        static unsigned int NextRouteId() {
-                return maxRouteId++;
-        }
+	extern const mutString RTName[];
+	
+	class OutputDeviceClass;
+	typedef boost::intrusive_ptr<OutputDeviceClass> OutputDevice;
+	class InputDeviceClass;
+	typedef boost::intrusive_ptr<InputDeviceClass> InputDevice;	
+	
+	class RouteFactory;
+	
+	/// Class for managing routing
+	/**
+	* As we are using smart pointers the Route gets deleted, when no pointers
+	* point to it any more. As we want to interactively manage routes,
+	* We must allow routes to have no input device attached to it.
+	*/
+	template <class I=InputDevice, class O = OutputDevice>
+	class TRouteClass
+	{
+		friend class RouteFactory;
+		typedef TRouteClass thistype;
+		typedef I InputDevice;
+		typedef O OutputDevice;
+	public:
+		// To gain a little speed in realtime we use intrusive_ptr
+		typedef boost::intrusive_ptr<TRouteClass> Route;
+		typedef std::list<Route> routeListType;
+	protected:
+		// private members: access only via access functions for debugging purposes
+
+		WATCHEDPTR(void,routing,TRouteClass) userdata;
+		OutputDevice Out;
+		InputDevice In;
+	
+		//Route Next;
+
+		// This list is managed automatically and availlable 
+		// only to not forget about routes. These references must not be counted
+//		Route globalNext;
+		static routeListType routeList;
+		int Id;
+		int inputid;
+		int outputid;
+		int Box;
 
 
-	char Check(int i)
-	{
-		return (IFrom <= i && i <= ITo);
-	}
-        
-        void setUserData (void * data) 
-	{ 
-		userdata = data; 
-	}
+		TRouteClass(
+			InputDevice in = NULL,
+			OutputDevice out = NULL,
+			RouteType type = RTall,
+			int iFrom = -1,
+			int iTo = -1,
+			int box = -1,
+			bool active = false,
+			int oFrom = -1,
+			int oTo = -1,
+			bool oNoDrum = true/*,
+					     Route next = NULL*/):
+			userdata(this,_T("userdata"))/*,
+						       globalNext(NULL)*/
+			{
+				AppendToRouteList(this);
+				Create(in,out,type,
+				       iFrom,iTo,
+				       box,active,
+				       oFrom,oTo,oNoDrum/*,
+							  next*/);
+			}
 
-        void * getUserData() const 
-	{ 
-		return userdata; 
-	}
+		void Create(
+			InputDevice in = NULL,
+			OutputDevice out = NULL,
+			RouteType type = RTall,
+			int iFrom = -1,
+			int iTo = -1,
+			int box = NoBox,
+			bool active = false,
+			int oFrom = -1,
+			int oTo = -1,
+			bool oNoDrum = true/*,
+					     Route next = NULL*/)
+			{
+				if (in) 
+					Attatch(in);
+				else 
+					In = NULL;
+				if (out)
+					Attatch(out);
+				else 
+					Out = NULL;
+				Type = type;
+				IFrom = iFrom;
+				ITo = iTo;
+				Box = box;
+				Active = active;
+				OFrom = oFrom;
+				OTo = oTo;
+				ONoDrum = oNoDrum;
+				Id = NextRouteId();
+				// Next=next;
+			}
 
-	OutDevice  * GetOutDevice() const {
-		return Out;
-	}
+		
+	public:
+		RouteType Type;
+		int IFrom, ITo;
+		bool Active;
+		int OFrom, OTo;
+		bool ONoDrum;
+		static int maxRouteId;
 
-	void SetOutDevice (OutDevice * out) 
-	{
-		Out = out;
-	}
-	
-	InDevice  * GetInDevice() const {
-		return In;
-	}
-	
-	void SetInDevice (InDevice * in) 
-	{
-		In = in;
-		for (Route * route = GetNext(); route; route=route->GetNext())
-			route -> In = in;
-	}
-	
-	void SetInputId(int Id)
-	{
-		inputid = Id;
-	}
-	
-	
-	bool GetActive() const 
-	{
-		return Active;
-	}
-	
-	void SetActive(bool active) 
-	{
-		Active = active;
-	}
-	
-	int GetBox() const
-	{
-		return Box;
-	}
-	
-	void SetBox(int box)
-	{
-		Box = box;
-	}
-	
-	RouteType GetType() const
-	{
-		return Type;
-	}
-	
-	void SetType(RouteType type)
-	{
-		Type = type;
-	}
-	
-	const mutString & GetTypeName()
-	{
-		return RTName[Type];
-	}
-	
-	int GetInputFrom() const
-	{
-		return IFrom;
-	}
-	
-	void SetInputFrom(int i)
-	{
-		IFrom = i;
-	}
-	
-	int GetOutputFrom() const
-	{
-		return OFrom;
-	}
-	
-	void SetOutputFrom(int o)
-	{
-		OFrom = o;
-	}
-	
-	int GetInputTo() const
-	{
-		return ITo;
-	}
-	
-	void SetInputTo(int i)
-	{
-		ITo = i;
-	}
-	
-	int GetOutputTo() const
-	{
-		return OTo;
-	}
-	
-	void SetOutputTo(int o)
-	{
-		OTo = o;
-	}
-	
-	
-	bool OutputAvoidDrumChannel() const
-	{
-		return ONoDrum;
-	}
-	void OutputAvoidDrumChannel(bool avoid) 
-	{
-		ONoDrum = avoid;
-	}
-	
-	Route * GetNext() const
-	{
-		return Next;
-	}
-	void SetNext(Route * route)
-	{
-		Next = route;
-		for (Route * r = GetNext(); r; r=r->GetNext())
-			r -> In = In;
-	}
-	
-	int GetId() const
-	{
-		return Id;
-	}
-	
-	static Route * GetRouteList() 
-	{
-		return routeList;
-	}
-	
-	Route * GetGlobalNext()
-	{
-		return globalNext;
-	}
-	
-	/// Initialize the internal device identifiers.
-	/** This function sets the internal device ids of 
-	 *  all input devices, starting from 0 and 
-	 *  incrementing by 1
-	 */
-	static void InitializeIds();
+		virtual ~TRouteClass();
 
-	/// Save the current routes in a tree storage.
-	/** This function saves all routes in a tree based storage.
-	 *  \argument config (tree_storage *) storage driver to use for saving.
-	 */
-	static void SaveRoutes(tree_storage & config);
+		/// Write the route settings into a tree based configuration.
+		/** \argument config (tree_storage &) configuration where 
+		 * the route settings will be stored
+		 */
+		virtual void Save(tree_storage & config);
 
-	/// Load the current routes from a tree storage.
-	/** This function loads all routs from a tree based storage.
-	 *  \argument config (tree_storage *) storage driver to use for saving.
-	 */
-	static void LoadRoutes(tree_storage & config);
-protected:
-	static void AppendToRouteList (Route * route);
-	static void RemoveFromRouteList (Route * route);
-};
-
-extern const mutString DevTypeName[];
-
-/// load the routes from a tree based configuration
-/** \param config conifiguration to be read from
- */
-void LoadRoutes(tree_storage & config);
-
-/// write the routes to the configuration
-/** \param config configuration to be written to
- */
-void SaveRoutes(tree_storage & config);
+		/// Read the route into from a tree based configuration.
+		/** \argument config (tree_storage &) configuration 
+		 * where the route settings will be read from
+		 */
+		virtual void Load(tree_storage & config);
+	
+		static unsigned int NextRouteId() {
+			return maxRouteId++;
+		}
 
 
+		char Check(int i) {
+			return (IFrom <= i && i <= ITo);
+		}
+        protected:
+		virtual void setUserData (void * data);
+
+		virtual void * getUserData() const;
+	public:
+
+		OutputDevice GetOutputDevice() const {
+			return Out;
+		}
+
+		InputDevice GetInputDevice() const {
+			return In;
+		}
+
+		/// add a new output device
+		virtual void Add (OutputDevice out);
+		/// add a new input device
+		virtual void Add (InputDevice in);
+		/// add a new box
+		virtual void Add(int id);
+		/// replace an existing output device
+		virtual bool Replace (OutputDevice olddev, 
+				      OutputDevice newdev);
+		/// replace an existing input device
+		virtual bool Replace (InputDevice olddev, 
+				      InputDevice newdev);
+		/// replace an existing box
+		virtual bool Replace (int oldbox, int newbox);
+		/// remove an existing output device
+		virtual bool Remove (OutputDevice out);
+		/// remove an existing input device
+		virtual bool Remove (InputDevice in);
+		/// remov an existing box
+		virtual bool Remove (int id);
+
+		/// Attatch a new output device
+		virtual void Attatch (OutputDevice dev) {
+			Add(dev);
+			dev->Add(this);
+		}
+		/// Attatch a new input device
+		virtual void Attatch (InputDevice dev) {
+			Add(dev);
+			dev->Add(this);
+		}
+		/// Attach a new box
+		virtual void Attatch (int boxid) {
+			Add(boxid);
+		}
+
+		/// Replace current output device with a new one
+		virtual bool Reconnect(OutputDevice olddev, OutputDevice newdev) {
+			bool retval = Replace(olddev,newdev);
+			if (retval) {
+				retval = retval && olddev->Remove(this);
+			}
+			if (retval) {
+				newdev->Add(this);
+			} else
+				wxASSERT(false);
+				// Check taht olddev is correcty disconnected
+			return retval;
+		}
+		/// Replace current input device with a new one
+		virtual bool Reconnect(InputDevice olddev, InputDevice newdev) {
+			bool retval = Replace(olddev,newdev);
+			if (retval) {
+				retval = retval && olddev->Remove(this);
+			}
+			if (retval) {
+				newdev->Add(this);
+			} else 
+				wxASSERT(false);
+			return retval;
+		}
+		/// Replace current box with a new one
+		virtual bool Reconnect(int oldboxid,
+			       int newboxid) {
+			return Replace(oldboxid,newboxid);
+		}
+
+		/// Detatch current output device
+		virtual bool Detatch(OutputDevice dev) {
+			bool retval = Remove(dev);
+			if (retval) {
+				retval = retval && dev->Remove(this);
+			}
+			return retval;
+		}
+		/// Detatch current input device
+		virtual bool Detatch(InputDevice dev) {
+			bool retval = Remove(dev);
+			if (retval) {
+				retval = dev->Remove(this);
+			}
+			return retval;
+		}
+		/// Detach a current box
+		virtual bool Detatch(int boxid) {
+			return Remove(boxid);
+		}
+
+	
+		void SetDeviceId(int Id,I) {
+			inputid = Id;
+		}
+
+		void SetDeviceId(int Id,O) {
+			outputid = Id;
+		}
+		int GetDeviceId(I) {
+			return inputid;
+		}
+
+		int GetDeviceId(O) {
+			return outputid;
+		}
+
+	
+		bool GetActive() const 
+			{
+				return Active;
+			}
+	
+		void SetActive(bool active) 
+			{
+				Active = active;
+			}
+	
+		int GetBox() const
+			{
+				return Box;
+			}
+	
+		virtual void SetBox(int box)
+			{
+				Box = box;
+			}
+	
+		RouteType GetType() const
+			{
+				return Type;
+			}
+	
+		void SetType(RouteType type)
+			{
+				Type = type;
+			}
+	
+		const mutString & GetTypeName()
+			{
+				return RTName[Type];
+			}
+	
+		int GetInputFrom() const
+			{
+				return IFrom;
+			}
+	
+		void SetInputFrom(int i)
+			{
+				IFrom = i;
+			}
+	
+		int GetOutputFrom() const
+			{
+				return OFrom;
+			}
+	
+		void SetOutputFrom(int o)
+			{
+				OFrom = o;
+			}
+	
+		int GetInputTo() const
+			{
+				return ITo;
+			}
+	
+		void SetInputTo(int i)
+			{
+				ITo = i;
+			}
+	
+		int GetOutputTo() const
+			{
+				return OTo;
+			}
+	
+		void SetOutputTo(int o)
+			{
+				OTo = o;
+			}
+	
+	
+		bool OutputAvoidDrumChannel() const
+			{
+				return ONoDrum;
+			}
+		void OutputAvoidDrumChannel(bool avoid) 
+			{
+				ONoDrum = avoid;
+			}
+	
+#if 0
+		Route  GetNext() const {
+			return Next;
+		}
+
+		void SetNext(Route  route) {
+			Next = route;
+		}
+#endif	
+		int GetId() const {
+			return Id;
+		}
+	
+		static const  routeListType & GetRouteList() {
+			return routeList;
+		}
+#if 0	
+		Route  GetGlobalNext() {
+			return globalNext;
+		}
+#endif
+
+
+		/// Remove from Route list to be deleted, when it becomes free.
+		/**
+		 * As we are using smart pointers the Route gets deleted, when no pointers
+		 * point to it any more. As we want to interactively manage routes,
+		 * We must allow routes to have no input device attached to it. This
+		 * function explicitely allows to delete the object when it is not used 
+		 * any more.
+		 */
+		virtual void Destroy() {
+			RemoveFromRouteList(this);
+			if (In) Detatch(In);
+			if (Out) Detatch(Out);
+		}
+	
+		/// Initialize the internal device identifiers.
+		/** This function sets the internal device ids of 
+		 *  all input devices, starting from 0 and 
+		 *  incrementing by 1
+		 */
+		static void InitializeIds();
+
+		/// Save the current routes in a tree storage.
+		/** This function saves all routes in a tree based storage.
+		 *  \argument config (tree_storage *) storage driver to use for saving.
+		 */
+		static void SaveRoutes(tree_storage & config);
+
+		/// Load the current routes from a tree storage.
+		/** This function loads all routs from a tree based storage.
+		 *  \argument config (tree_storage *) storage driver to use for saving.
+		 */
+		static void LoadRoutes(tree_storage & config);
+
+		static void ClearRouteList() {
+			while (!routeList.empty()) {
+#ifdef DEBUG
+				Route d = routeList.front();
+#endif
+				routeList.front()->Destroy();
+#ifdef DEBUG
+				wxASSERT(routeList.empty() || 
+					 d != routeList.front());
+#endif
+			}
+		}
+#ifdef WX
+		virtual wxString TowxString() const;
+#endif
+	protected:
+		static void AppendToRouteList (Route  route);
+		static void RemoveFromRouteList (Route  route);
+	
+		REFPTR_INTERFACE
+	};
+
+	template<class I, class O> 
+	typename TRouteClass<I,O>::routeListType TRouteClass<I,O>::routeList;
+
+	typedef TRouteClass<InputDevice,OutputDevice>::Route Route;
+	typedef TRouteClass<InputDevice,OutputDevice> RouteClass;
+	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
+
+	class RouteFactory { 
+	protected:
+		static RouteFactory * factory;
+	
+		RouteFactory();
+		virtual ~RouteFactory();
+
+		virtual Route DoCreate() const;
+		virtual Route DoCreate(
+			InputDevice in,
+			OutputDevice out,
+			RouteType type,
+			int iFrom,
+			int iTo,
+			int box,
+			bool active,
+			int oFrom,
+			int oTo,
+			bool oNoDrum /*,
+				       Route next*/) const;
+	
+		/// load the routes from a tree based configuration
+		/** \param config conifiguration to be read from
+		 */
+		virtual void DoLoadRoutes(tree_storage & config) const;
+
+		/// write the routes to the configuration
+		/** \param config configuration to be written to
+		 */ 
+		virtual void DoSaveRoutes(tree_storage & config) const;
+	
+	public:
+		static Route Create() {
+			if (factory)
+				return factory->DoCreate();
+			else
+				UNREACHABLECT(RouteFactory);
+			return NULL;
+		}
+		static Route Create(
+			InputDevice in,
+			OutputDevice out = NULL,
+			RouteType type = RTall,
+			int iFrom = -1,
+			int iTo = -1,
+			int box = -1,
+			bool active = false,
+			int oFrom = -1,
+			int oTo = -1,
+			bool oNoDrum = true,
+			Route next = 0);
+		static void Destroy() {
+			if (factory)
+				delete factory;
+			else 
+				UNREACHABLECT(RouteFactory);
+		}
+
+
+		/// load the routes from a tree based configuration
+		/** \param config conifiguration to be read from
+		 */
+		static void LoadRoutes(tree_storage & config) {
+			if (factory)
+				factory->DoLoadRoutes(config);
+			else 
+				UNREACHABLECT(RouteFactory);
+		}
+
+		/// write the routes to the configuration
+		/** \param config configuration to be written to
+		 */ 
+		static void SaveRoutes(tree_storage & config) {
+			if (factory)
+				factory->DoSaveRoutes(config);
+			else 
+				UNREACHABLECT(RouteFactory);
+		}
+	};
+
+
+	extern const mutString DevTypeName[];
+
+
+}
+#endif /* PRECOMPILED */
 #endif
 
 /*

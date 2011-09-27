@@ -3,16 +3,23 @@
  ********************************************************************
  * MIDI file input device shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.h,v 1.3 2011/02/20 22:35:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/02/20 22:35:59 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:25 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: OutputMidiFileDeviceShape.h,v $
- * Revision 1.3  2011/02/20 22:35:59  keinstein
+ * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:59  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:50  keinstein
@@ -51,8 +58,27 @@
  *\{
  ********************************************************************/
 
-#ifndef OUTPUTMIDIFILEDEVICESHAPE_H
-#define OUTPUTMIDIFILEDEVICESHAPE_H
+/* we guard a little bit complicated to ensure the references are set right
+ */
+
+#if (!defined(MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+#include "OutputDeviceShape.h"
+//#include "Device.h"
+
+#ifndef MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED
+#define MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED
+
+// system headers which do seldom change
 
 //#include <map>
 
@@ -60,56 +86,61 @@
 //#include "wx/icon.h"
 //#include "wx/stattext.h"
 
-#include "OutputDeviceShape.h"
-//#include "Device.h"
+namespace mutaborGUI {
 
+	class MutOutputMidiFileDeviceShape:public MutOutputDeviceShape
+	{
+		friend class GUIMidiFileFactory;
+	protected:
+		MutOutputMidiFileDeviceShape():MutOutputDeviceShape() {}
+		MutOutputMidiFileDeviceShape (wxWindow * parent,
+					      wxWindowID id, 
+					      mutabor::OutputDevice d):
+			MutOutputDeviceShape() 
+			{
+				Create (parent,id,d);
+			}
+	public:
+		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice d)
+			{
+				DEBUGLOG (other,_T (""));
+				bool ret = MutOutputDeviceShape::Create(parent,id,d);
+				DEBUGLOG (other,_T (""));
+				return ret;
+			}
 
-class MutOutputMidiFileDeviceShape:public MutOutputDeviceShape
-{
-public:
-	MutOutputMidiFileDeviceShape():MutOutputDeviceShape() {}
-	MutOutputMidiFileDeviceShape (wxWindow * parent,
-				     wxWindowID id, 
-				     OutDevice * d):
-		MutOutputDeviceShape() 
-		{
-			Create (parent,id,d);
+		virtual MutIcon & GetMutIcon () 
+			{
+				DEBUGLOG(other, _T(""));
+				return MidiFileBitmap;
+			}
+
+		void SetLabel(const wxString & st ) {
+			fileName = st;
+			fileName.Normalize();
+			MutOutputDeviceShape::SetLabel (fileName.GetFullName());
 		}
 
-	bool Create (wxWindow * parent, wxWindowID id, OutDevice * d)
-		{
-			DEBUGLOG (other,_T (""));
-			bool ret = MutOutputDeviceShape::Create(parent,id,d);
-			DEBUGLOG (other,_T (""));
-			return ret;
+		virtual wxPanel * GetOutputFilterPanel(wxWindow * parent, 
+						       mutabor::Route route) const;
+		virtual void ReadOutputFilterPanel(wxWindow * panel, 
+						   mutabor::Route route);
+
+	protected: 
+		virtual void InitializeDialog(OutputDevDlg * out) const;
+		virtual bool readDialog (OutputDevDlg * out);
+		virtual bool CanHandleType (mutabor::DevType  type) { 
+			return type == mutabor::DTMidiFile;
 		}
 
-	virtual MutIcon & GetMutIcon () 
-		{
-			DEBUGLOG(other, _T(""));
-			return MidiFileBitmap;
-		}
+		wxFileName fileName;
 
-	void SetLabel(const wxString & st ) {
-		fileName = st;
-		fileName.Normalize();
-		MutOutputDeviceShape::SetLabel (fileName.GetFullName());
-	}
+	private:
+		DECLARE_DYNAMIC_CLASS(MutOutputMidiFileDeviceShape);
 
-	virtual wxPanel * GetOutputFilterPanel(wxWindow * parent, Route * route) const;
-	virtual void ReadOutputFilterPanel(wxWindow * panel, Route * route);
-
-protected: 
-	virtual void InitializeDialog(OutputDevDlg * out) const;
-	virtual bool readDialog (OutputDevDlg * out);
-	virtual bool CanHandleType (DevType  type) { return type == DTMidiFile; }
-
-	wxFileName fileName;
-
-private:
-	DECLARE_DYNAMIC_CLASS(MutOutputMidiFileDeviceShape);
-
-};
+	};
+}
+#endif				/* OutputMidiFileDeviceShape_H_PRECOMPILED */
 #endif				/* OutputMidiFileDeviceShape_H */
 /*
  * \}

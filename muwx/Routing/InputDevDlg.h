@@ -1,17 +1,24 @@
-/** \file
+/** \file  -*- C++ -*-
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.3 2011/02/20 22:35:58 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.4 2011/09/27 20:13:24 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/02/20 22:35:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/27 20:13:24 $
+ * \version $Revision: 1.4 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
- * Revision 1.3  2011/02/20 22:35:58  keinstein
+ * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.3  2011-02-20 22:35:58  keinstein
  * updated license information; some file headers have to be revised, though
  *
  * Revision 1.2  2010-11-21 13:15:48  keinstein
@@ -61,42 +68,43 @@
  * \{
  ********************************************************************/
 
-#ifndef _INPUTDEVDLG_H_
-#define _INPUTDEVDLG_H_
-
-
-/*!
- * Includes
+/* we guard a little bit complicated to ensure the references are set right
  */
 
-////@begin includes
+#if (!defined(MUWX_ROUTING_INPUTDEVDLG_H) && !defined(PRECOMPILE)) \
+	|| (!defined(MUWX_ROUTING_INPUTDEVDLG_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define MUWX_ROUTING_INPUTDEVDLG_H
+#endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
 #include "Defs.h"
+#include "resourceload.h"
+#include "Device.h"
+
+#ifndef MUWX_ROUTING_INPUTDEVDLG_H_PRECOMPILED
+#define MUWX_ROUTING_INPUTDEVDLG_H_PRECOMPILED
+
+// system headers which do seldom change
+
 #include "wx/xrc/xmlres.h"
 #include "wx/html/htmlwin.h"
 #include "wx/statline.h"
 #include "wx/filepicker.h"
-#include "resourceload.h"
-#include "Device.h"
 #include "wx/valgen.h"
 #include "wx/valtext.h"
-////@end includes
+
+namespace mutaborGUI {
 
 
 #if 0
 /*!
- * Forward declarations
- */
-
-////@begin forward declarations
-
-class wxBoxSizer;
-////@end forward declarations
-
-/*!
  * Control identifiers
  */
 
-////@begin control identifiers
 #define ID_INPDIALOG 10010
 #define SYMBOL_INPUTDEVDLG_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_INPUTDEVDLG_TITLE _("Input Device")
@@ -109,158 +117,144 @@ class wxBoxSizer;
 #define ID_BUTTON 10014
 #define ID_TEXTCTRL1 10015
 #define ID_BUTTON1 10016
-////@end control identifiers
-
-/*!
- * Compatibility
- */
-
-#ifndef wxCLOSE_BOX
-#define wxCLOSE_BOX 0x1000
-#endif
-#ifndef wxFIXED_MINSIZE
-#define wxFIXED_MINSIZE 0
-#endif
-
-/*!
- * InputDevDlg class declaration
- */
 
 #endif
 
-class InputDevDlg: public InputDevDlgBase
-{
-	DECLARE_DYNAMIC_CLASS( InputDevDlg )
-	DECLARE_EVENT_TABLE()
-
-protected:
-	wxSizer *Container,* TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
-
-struct TypeData:wxClientData
+	class InputDevDlg: public InputDevDlgBase
 	{
-		DevType nr;
-		TypeData(DevType i):wxClientData()
+		DECLARE_DYNAMIC_CLASS( InputDevDlg )
+		DECLARE_EVENT_TABLE()
+
+		protected:
+		wxSizer *Container,* TypeBox, *PortBox, *MidiFileBox, *GuidoFileBox;
+
+		struct TypeData:wxClientData
 		{
-			nr=i;
-		}
+			mutabor::DevType nr;
+			TypeData(mutabor::DevType i):wxClientData()
+				{
+					nr=i;
+				}
 
-		bool operator == (DevType i)
-		{
-			if (this)
-				return i == nr;
-			else return false;
-		}
+			bool operator == (mutabor::DevType i)
+				{
+					if (this)
+						return i == nr;
+					else return false;
+				}
 
-		operator DevType()
-		{
-			if (this) return nr;
-			else return DTNotSet;
-		}
-	};
+			operator mutabor::DevType()
+				{
+					if (this) return nr;
+					else return mutabor::DTNotSet;
+				}
+		};
 
-	int FindType (DevType t);
+		int FindType (mutabor::DevType t);
 
-public:
-	/// Constructors
-	InputDevDlg( wxWindow* parent = NULL);
+	public:
+		/// Constructors
+		InputDevDlg( wxWindow* parent = NULL);
 
-	/// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
-	void OnChoiceSelected( wxCommandEvent& event );
+		/// wxEVT_COMMAND_CHOICE_SELECTED event handler for ID_CHOICE
+		void OnChoiceSelected( wxCommandEvent& event );
 
-	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
-	void OnRemoveClick( wxCommandEvent& event );
+		/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
+		void OnRemoveClick( wxCommandEvent& event );
 
-        void OnFileChanged ( wxFileDirPickerEvent & event );
+		void OnFileChanged ( wxFileDirPickerEvent & event );
 
-	void UpdateLayout(DevType type);
+		void UpdateLayout(mutabor::DevType type);
 
-	int GetMidiDevice() const
-	{
-		return PortChoice->GetSelection() ;
-	}
+		int GetMidiDevice() const
+			{
+				return PortChoice->GetSelection() ;
+			}
 
-	void SetMidiDevice(int value)
+		void SetMidiDevice(int value)
 
-	{
-		DEBUGLOG(other, _T("%d"),value);
-		PortChoice->SetSelection (value) ;
-		Update();
-	}
+			{
+				DEBUGLOG(other, _T("%d"),value);
+				PortChoice->SetSelection (value) ;
+				Update();
+			}
 
-	wxString GetMidiFile() const
-	{
-		return MidiFilePicker->GetPath() ;
-	}
+		wxString GetMidiFile() const
+			{
+				return MidiFilePicker->GetPath() ;
+			}
 
-	void SetMidiFile(wxString value)
+		void SetMidiFile(wxString value)
 
-	{
-		DEBUGLOG(other, value);
-		MidiFilePicker->SetPath(value);
-		Update();
-		DEBUGLOG(other, _T("done"));
-	}
+			{
+				DEBUGLOG(other, value);
+				MidiFilePicker->SetPath(value);
+				Update();
+				DEBUGLOG(other, _T("done"));
+			}
 
-	wxString GetGUIDOFile() const
-	{
-		return GuidoFilePicker->GetPath() ;
-	}
+		wxString GetGUIDOFile() const
+			{
+				return GuidoFilePicker->GetPath() ;
+			}
 
-	void SetGUIDOFile(wxString value)
+		void SetGUIDOFile(wxString value)
 
-	{
-		DEBUGLOG(other, value);
-		GuidoFilePicker->SetPath(value);
-		Update();
-	}
+			{
+				DEBUGLOG(other, value);
+				GuidoFilePicker->SetPath(value);
+				Update();
+			}
 
-	DevType GetType() const
-	{
-                int Type = DeviceChoice->GetSelection();
-		if (Type == wxNOT_FOUND) return DTNotSet;
+		mutabor::DevType GetType() const
+			{
+				int Type = DeviceChoice->GetSelection();
+				if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
 
-                wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
-		TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
+				wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
+				TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
 
-		if (obj) return  *obj;
-		else return DTNotSet;
-	}
+				if (obj) return  *obj;
+				else return mutabor::DTNotSet;
+			}
 
-	void SetType(DevType value)
+		void SetType(mutabor::DevType value)
 
-	{
-		DEBUGLOG(other, _T("%d"),value);
-		UpdateLayout(value);
-		Update();
-	}
+			{
+				DEBUGLOG(other, _T("%d"),value);
+				UpdateLayout(value);
+				Update();
+			}
 
-	wxString GetPortString(int i)
-	{
-		return PortChoice->GetString (i);
-	}
+		wxString GetPortString(int i)
+			{
+				return PortChoice->GetString (i);
+			}
 
-	void AppendPortChoice (const wxString &s)
-	{
-		PortChoice->Append (s);
-	}
+		void AppendPortChoice (const wxString &s)
+			{
+				PortChoice->Append (s);
+			}
 	
-	void DisableRemove (bool disable=true) 
-	{
-		wxID_REMOVE->Show(!disable);
-		wxID_REMOVE->Enable(!disable);
-	}
+		void DisableRemove (bool disable=true) 
+			{
+				wxID_REMOVE->Show(!disable);
+				wxID_REMOVE->Enable(!disable);
+			}
 
-	/// Retrieves bitmap resources
-	wxBitmap GetBitmapResource (const wxString& name );
+		/// Retrieves bitmap resources
+		wxBitmap GetBitmapResource (const wxString& name );
 
-	/// Retrieves icon resources
-	wxIcon GetIconResource (const wxString& name );
+		/// Retrieves icon resources
+		wxIcon GetIconResource (const wxString& name );
 
-	/// Should we show tooltips?
-	static bool ShowToolTips ();
+		/// Should we show tooltips?
+		static bool ShowToolTips ();
 
-};
-
+	};
+}
+#endif
+// _INPUTDEVDLG_H_PRECOMPILED
 #endif
 // _INPUTDEVDLG_H_
 

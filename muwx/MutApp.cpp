@@ -2,17 +2,24 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.48 2011/09/07 15:58:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.49 2011/09/27 20:13:23 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/07 15:58:56 $
- * \version $Revision: 1.48 $
+ * $Date: 2011/09/27 20:13:23 $
+ * \version $Revision: 1.49 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.48  2011/09/07 15:58:56  keinstein
+ * Revision 1.49  2011/09/27 20:13:23  keinstein
+ * * Reworked route editing backend
+ * * rewireing is done by RouteClass/GUIRoute now
+ * * other classes forward most requests to this pair
+ * * many bugfixes
+ * * Version change: We are reaching beta phase now
+ *
+ * Revision 1.48  2011-09-07 15:58:56  keinstein
  * fix compilation on MinGW
  *
  * Revision 1.47  2011-09-05 11:30:07  keinstein
@@ -207,9 +214,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "Defs.h"
-#include "wx/wxprec.h"
+#include "wx/image.h"
+#include "wx/stdpaths.h"
+#include "wx/filename.h"
+#include "wx/imagpng.h"
 #include "wx/xrc/xmlres.h"
 #include "wx/xrc/xh_all.h"
 #include "wx/fs_zip.h"
@@ -220,20 +229,6 @@
 #include "wx/file.h"
 #include "wx/event.h"
 
-
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-//    #include "wx/mdi.h"
-#include "wx/stdpaths.h"
-#include "wx/filename.h"
-#include "wx/imagpng.h"
-#endif
-
-//#include "wx/toolbar.h"
 
 #if !defined(__WXMSW__)
 #include "Icon/Mutabor.xpm"
@@ -250,24 +245,34 @@
 #include "Action.h"
 #include "stclanguage.h"
 #include "MutDocManager.h"
+#include "muwx/Routing/GUIRoute.h"
+#include "muwx/configtree.h"
+#include "mu32/box.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
+#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+using namespace mutabor;
 using namespace mutaborGUI;
 
-wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
-#if wxUSE_PRINTING_ARCHITECTURE
-
-//! global print data, to remember settings during the session
-wxPrintData *g_printData = (wxPrintData*) NULL;
-wxPageSetupData *g_pageSetupData = (wxPageSetupData*) NULL;
-
-#endif // wxUSE_PRINTING_ARCHITECTURE
 
 IMPLEMENT_APP(MutApp)
 
+namespace mutaborGUI {
+
+	wxHtmlHelpController * HelpController = (wxHtmlHelpController *) NULL;
+#if wxUSE_PRINTING_ARCHITECTURE
+
+//! global print data, to remember settings during the session
+	wxPrintData *g_printData = (wxPrintData*) NULL;
+	wxPageSetupData *g_pageSetupData = (wxPageSetupData*) NULL;
+
+#endif // wxUSE_PRINTING_ARCHITECTURE
 // ===========================================================================
 // implementation
 // ===========================================================================
@@ -295,756 +300,752 @@ IMPLEMENT_APP(MutApp)
 #define MENUITEM_SEPARATOR			\
 	menu->AppendSeparator()
 
-BEGIN_EVENT_TABLE(MutApp, wxApp)
-EVT_MENU(CM_SETUP,                     MutApp::CmSetup)
-EVT_MENU(wxID_OPEN,                    MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_CLOSE,                   MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_CLOSE_ALL,               MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_REVERT,                  MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_NEW,                     MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_SAVE,                    MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_SAVEAS,                  MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_UNDO,                    MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_REDO,                    MutApp::PassEventToDocManagerCMD)
-EVT_MENU(CM_EXECUTE,                   MutApp::PassEventToDocManagerCMD)
+	BEGIN_EVENT_TABLE(MutApp, wxApp)
+	EVT_MENU(CM_SETUP,                     MutApp::CmSetup)
+	EVT_MENU(wxID_OPEN,                    MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_CLOSE,                   MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_CLOSE_ALL,               MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_REVERT,                  MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_NEW,                     MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_SAVE,                    MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_SAVEAS,                  MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_UNDO,                    MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_REDO,                    MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(CM_EXECUTE,                   MutApp::PassEventToDocManagerCMD)
 
-EVT_UPDATE_UI(wxID_OPEN,               MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_CLOSE,              MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_CLOSE_ALL,          MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_REVERT,             MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_NEW,                MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_SAVE,               MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_SAVEAS,             MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_UNDO,               MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_REDO,               MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_OPEN,               MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_CLOSE,              MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_CLOSE_ALL,          MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_REVERT,             MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_NEW,                MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_SAVE,               MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_SAVEAS,             MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_UNDO,               MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_REDO,               MutApp::PassEventToDocManagerUPD)
 
 #if wxUSE_PRINTING_ARCHITECTURE
-EVT_MENU (wxID_PRINT_SETUP,            MutApp::OnPrintSetup)
-EVT_MENU(wxID_PRINT,                   MutApp::PassEventToDocManagerCMD)
-EVT_MENU(wxID_PREVIEW,                 MutApp::PassEventToDocManagerCMD)
+	EVT_MENU (wxID_PRINT_SETUP,            MutApp::OnPrintSetup)
+	EVT_MENU(wxID_PRINT,                   MutApp::PassEventToDocManagerCMD)
+	EVT_MENU(wxID_PREVIEW,                 MutApp::PassEventToDocManagerCMD)
 
-EVT_UPDATE_UI(wxID_PRINT,              MutApp::PassEventToDocManagerUPD)
-EVT_UPDATE_UI(wxID_PREVIEW,            MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_PRINT,              MutApp::PassEventToDocManagerUPD)
+	EVT_UPDATE_UI(wxID_PREVIEW,            MutApp::PassEventToDocManagerUPD)
 #endif
-EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
-EVT_MENU(CM_ROUTES,                    MutApp::CmRoutes)
-EVT_MENU(CM_ROUTELOAD,                 MutApp::CmRouteLoad)
-EVT_MENU(CM_ROUTESAVE,                 MutApp::CmRouteSave)
-EVT_MENU(CM_ROUTESAVEAS,               MutApp::CmRouteSaveAs)
-EVT_MENU(CM_HELP,                      MutApp::CmHelp)
-EVT_MENU(CM_HELPHANDBOOK,              MutApp::CmHelp)
-EVT_MENU(CM_HELPREFERENCE,             MutApp::CmHelp)
-EVT_MENU(CM_HELPINDEX,                 MutApp::CmHelp)
-EVT_MENU(CM_HELPSEARCH,                MutApp::CmHelp)
-EVT_MENU(CM_HELPONHELP,                MutApp::CmHelp)
-EVT_MENU(CM_ABOUT,                     MutApp::CmAbout) 
-EVT_MENU(CM_EXIT,                      MutApp::CmQuit)
+	EVT_MENU_RANGE(wxID_FILE1, wxID_FILE9, MutApp::OnMRUFile)	
+	EVT_MENU(CM_ROUTES,                    MutApp::CmRoutes)
+	EVT_MENU(CM_ROUTELOAD,                 MutApp::CmRouteLoad)
+	EVT_MENU(CM_ROUTESAVE,                 MutApp::CmRouteSave)
+	EVT_MENU(CM_ROUTESAVEAS,               MutApp::CmRouteSaveAs)
+	EVT_MENU(CM_HELP,                      MutApp::CmHelp)
+	EVT_MENU(CM_HELPHANDBOOK,              MutApp::CmHelp)
+	EVT_MENU(CM_HELPREFERENCE,             MutApp::CmHelp)
+	EVT_MENU(CM_HELPINDEX,                 MutApp::CmHelp)
+	EVT_MENU(CM_HELPSEARCH,                MutApp::CmHelp)
+	EVT_MENU(CM_HELPONHELP,                MutApp::CmHelp)
+	EVT_MENU(CM_ABOUT,                     MutApp::CmAbout) 
+	EVT_MENU(CM_EXIT,                      MutApp::CmQuit)
 #ifdef DEBUG
-EVT_MENU(cmCallExitId,                 MutApp::CmCallExit)
+	EVT_MENU(cmCallExitId,                 MutApp::CmCallExit)
 #endif
-END_EVENT_TABLE()
+	END_EVENT_TABLE()
 
-// Initialise this in OnInit, not statically
-bool MutApp::OnInit()
-{
-	/* Short form for
-	   for (int i = MUT_FIRST; i < MUT_LAST; i++) 
-	   wxRegisterId(i);
-	*/
-	wxRegisterId(MUT_LAST);
-
-	SetAppName(_T(PACKAGE));
-	SetClassName(_T(PACKAGE_NAME));
-
-	std::cerr << "Starting Mutabor..." << std::endl;
-        
-        wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
-
-#ifdef __LINUX__
-        sp.SetInstallPrefix(_T(PREFIX));
-#endif
-
-	quitting = false;
-
-	// initialize the languages
-	m_locale.Init(wxLANGUAGE_DEFAULT);
-
-	// TODO: Check this!
-	// normally this wouldn't be necessary as the catalog files would be found
-	// in the default locations, but under Windows then the program is not
-	// installed the catalogs are in the parent directory (because the binary
-	// is in a subdirectory of samples/internat) where we wouldn't find them by
-	// default
-	wxLocale::AddCatalogLookupPathPrefix(_T("."));
-	wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
-
-	// Initialize the catalogs we'll be using
-	m_locale.AddCatalog(wxT("mutabor"));
-	m_locale.AddCatalog(wxT("wxstd"));
-#ifdef __LINUX__
+	// Initialise this in OnInit, not statically
+	bool MutApp::OnInit()
 	{
-		wxLogNull noLog;
-		m_locale.AddCatalog(_T("fileutils"));
-	}
+		/* Short form for
+		   for (int i = MUT_FIRST; i < MUT_LAST; i++) 
+		   wxRegisterId(i);
+		*/
+		wxRegisterId(MUT_LAST);
+
+		SetAppName(_T(PACKAGE));
+		SetClassName(_T(PACKAGE_NAME));
+
+		std::cerr << "Starting Mutabor..." << std::endl;
+        
+		wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
+
+#ifdef __LINUX__
+		sp.SetInstallPrefix(_T(PREFIX));
+#endif
+
+		quitting = false;
+
+		// initialize the languages
+		m_locale.Init(wxLANGUAGE_DEFAULT);
+
+		// TODO: Check this!
+		// normally this wouldn't be necessary as the catalog files would be found
+		// in the default locations, but under Windows then the program is not
+		// installed the catalogs are in the parent directory (because the binary
+		// is in a subdirectory of samples/internat) where we wouldn't find them by
+		// default
+		wxLocale::AddCatalogLookupPathPrefix(_T("."));
+		wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
+
+		// Initialize the catalogs we'll be using
+		m_locale.AddCatalog(wxT("mutabor"));
+		m_locale.AddCatalog(wxT("wxstd"));
+#ifdef __LINUX__
+		{
+			wxLogNull noLog;
+			m_locale.AddCatalog(_T("fileutils"));
+		}
 #endif
 
 
 #ifdef DEBUG
-	std::cout << (muT(__FUNCTION__).ToUTF8()) << std::endl;
-	std::cout << (muT(typeid(m_locale).name()).ToUTF8()) << std::endl;
-	std::cout << "ConfigDir:        "
+		std::cout << (muT(__FUNCTION__).ToUTF8()) << std::endl;
+		std::cout << (muT(typeid(m_locale).name()).ToUTF8()) << std::endl;
+		std::cout << "ConfigDir:        "
 
-		  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
-		  << "DataDir:          "
-		  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
-		  << "DocumentsDir:     "
-		  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
-		  << "ExecutablePath:   "
-		  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
+			  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
+			  << "DataDir:          "
+			  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
+			  << "DocumentsDir:     "
+			  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
+			  << "ExecutablePath:   "
+			  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
 
 #if defined(__UNIX__) && !defined(__WXMAC__)
-		  << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
-		  << std::endl
+			  << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
+			  << std::endl
 #endif
-		  << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
-		  << std::endl
-		  << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
-		  << std::endl
-		  << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
-		  << std::endl
-		  << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
-		  << std::endl
-		  << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
-		  << std::endl
-		  << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
-		  << std::endl
-		  << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
-		  << std::endl;
+			  << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
+			  << std::endl
+			  << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
+			  << std::endl
+			  << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
+			  << std::endl
+			  << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
+			  << std::endl
+			  << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
+			  << std::endl
+			  << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
+			  << std::endl
+			  << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
+			  << std::endl;
 
-	std::cout
-		<< "LocalizedResourcesDir(Can): "
-		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
-							      sp.ResourceCat_None).ToUTF8())
-		<< std::endl
-		<< "LocalizedResourcesDir(Can,Messages): "
-		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
-							      sp.ResourceCat_Messages).ToUTF8())
-		<< std::endl
-		<< "LocalizedResourcesDir(): "
-		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
-							      sp.ResourceCat_None).ToUTF8())
-		<< std::endl
-		<< "LocalizedResourcesDir(Messages): "
-		<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
-							      sp.ResourceCat_Messages).ToUTF8())
-		<< std::endl;
+		std::cout
+			<< "LocalizedResourcesDir(Can): "
+			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+								      sp.ResourceCat_None).ToUTF8())
+			<< std::endl
+			<< "LocalizedResourcesDir(Can,Messages): "
+			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
+								      sp.ResourceCat_Messages).ToUTF8())
+			<< std::endl
+			<< "LocalizedResourcesDir(): "
+			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
+								      sp.ResourceCat_None).ToUTF8())
+			<< std::endl
+			<< "LocalizedResourcesDir(Messages): "
+			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
+								      sp.ResourceCat_Messages).ToUTF8())
+			<< std::endl;
 
 #endif
 
-	// init global objects
-	// -------------------
+		// init global objects
+		// -------------------
 
-	g_printData = new wxPrintData;
+		g_printData = new wxPrintData;
 
-	// You could set an initial paper size here
+		// You could set an initial paper size here
 #if 0
-	g_printData->SetPaperId(wxPAPER_LETTER); // for Americans
-	g_printData->SetPaperId(wxPAPER_A4);    // for everyone else
+		g_printData->SetPaperId(wxPAPER_LETTER); // for Americans
+		g_printData->SetPaperId(wxPAPER_A4);    // for everyone else
 #endif
 
-	g_pageSetupData = new wxPageSetupDialogData;
+		g_pageSetupData = new wxPageSetupDialogData;
 
-	// copy over initial paper size from print record
-	(*g_pageSetupData) = *g_printData;
+		// copy over initial paper size from print record
+		(*g_pageSetupData) = *g_printData;
 
-	// Set some initial page margins in mm.
-	g_pageSetupData->SetMarginTopLeft(wxPoint(15, 15));
-	g_pageSetupData->SetMarginBottomRight(wxPoint(15, 15));
+		// Set some initial page margins in mm.
+		g_pageSetupData->SetMarginTopLeft(wxPoint(15, 15));
+		g_pageSetupData->SetMarginBottomRight(wxPoint(15, 15));
 
-
-
+		// We are using .png files for some extra bitmaps.
+		wxImageHandler * pnghandler = new wxPNGHandler;
+		wxImage::AddHandler(pnghandler);
+		wxImage::AddHandler(new wxGIFHandler);
 	
-	// We are using .png files for some extra bitmaps.
-	wxImageHandler * pnghandler = new wxPNGHandler;
-	wxImage::AddHandler(pnghandler);
-	wxImage::AddHandler(new wxGIFHandler);
-	
-	wxFileSystem::AddHandler(new wxZipFSHandler);
+		wxFileSystem::AddHandler(new wxZipFSHandler);
 
-	wxXmlResource::Get()->InitAllHandlers();
-	wxString resfilename = GetResourceName(_T("Mutabor.xrc"));
-	wxXmlResource::Get()->Load(resfilename);
+		wxXmlResource::Get()->InitAllHandlers();
+		wxString resfilename = GetResourceName(_T("Mutabor.xrc"));
+		wxXmlResource::Get()->Load(resfilename);
 
-	wxHelpControllerHelpProvider* provider = new wxHelpControllerHelpProvider;
-	wxHelpProvider::Set(provider);
-	HelpController = new wxHtmlHelpController();
-	provider->SetHelpController(HelpController);
+		wxHelpControllerHelpProvider* provider = new wxHelpControllerHelpProvider;
+		wxHelpProvider::Set(provider);
+		HelpController = new wxHtmlHelpController();
+		provider->SetHelpController(HelpController);
 
-	// we want to name the help files according to the lanuage.
-	if (!HelpController->Initialize(GetResourceName(_("Help.zip"))))
-		std::cerr << "Warning: could not initialize Help system: "
-			  << (const char *)(wxString(_("Help.zip")).ToUTF8()) << std::endl;
+		// we want to name the help files according to the lanuage.
+		if (!HelpController->Initialize(GetResourceName(_("Help.zip"))))
+			std::cerr << "Warning: could not initialize Help system: "
+				  << (const char *)(wxString(_("Help.zip")).ToUTF8())
+				  << std::endl;
 
 
-	if (!(document_manager=new MutDocManager()))
-		return false;
-	//  restrict to having <= 1 doc open at any time
+		if (!(document_manager=new MutDocManager()))
+			return false;
+		//  restrict to having <= 1 doc open at any time
 //	document_manager->SetMaxDocsOpen(5);
-	//  establish a doc template for the doc,view pair
-	new wxDocTemplate(document_manager, 
-			  _("Mutabor logic file"), 
-			  wxT("*.mut"), 
-			  wxT("") /*dir*/, 
-			  wxT("mut"), 
-			  wxT("mutabor_logic_document"), 
-			  wxT("mutabor_logic_view"), 
-			  CLASSINFO(mutaborGUI::MutDocument), 
-			  CLASSINFO(mutaborGUI::MutView) );
+		//  establish a doc template for the doc,view pair
+		new wxDocTemplate(document_manager, 
+				  _("Mutabor logic file"), 
+				  wxT("*.mut"), 
+				  wxT("") /*dir*/, 
+				  wxT("mut"), 
+				  wxT("mutabor_logic_document"), 
+				  wxT("mutabor_logic_view"), 
+				  CLASSINFO(mutaborGUI::MutDocument), 
+				  CLASSINFO(mutaborGUI::MutView) );
 #if defined(__WXMAC__) && defined(__WXCARBON__) 
-	wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
+		wxFileName::MacRegisterDefaultTypeAndCreator( wxT("mut") , 'MUTA' , 'MUTA' ) ;
 #endif
 
 #if defined(__WXMAC__)
-	// || defined(__WXCOCOA__)
-	// Make a common menubar
+		// || defined(__WXCOCOA__)
+		// Make a common menubar
 
-	wxApp::SetExitOnFrameDelete(false);
-	wxApp::s_macAboutMenuItemId = CM_ABOUT;
-	wxApp::s_macPreferencesMenuItemId = CM_SETUP;
-	wxApp::s_macExitMenuItemId = CM_EXIT;
-	wxApp::s_macHelpMenuTitleName = _("&Help");
-	wxMenuBar *menuBar = new wxMenuBar;
-	MakeFileMenu(menuBar,ProgramMenu);
-	MakeViewMenu(menuBar,ProgramMenu);
-	MakeHelpMenu(menuBar);
-	wxMenuBar::MacSetCommonMenuBar(menuBar);
+		wxApp::SetExitOnFrameDelete(false);
+		wxApp::s_macAboutMenuItemId = CM_ABOUT;
+		wxApp::s_macPreferencesMenuItemId = CM_SETUP;
+		wxApp::s_macExitMenuItemId = CM_EXIT;
+		wxApp::s_macHelpMenuTitleName = _("&Help");
+		wxMenuBar *menuBar = new wxMenuBar;
+		MakeFileMenu(menuBar,ProgramMenu);
+		MakeViewMenu(menuBar,ProgramMenu);
+		MakeHelpMenu(menuBar);
+		wxMenuBar::MacSetCommonMenuBar(menuBar);
 	
 #endif
 
-	// RestoreState needs initialized MIDI
-	MidiInit();
+		// RestoreState needs initialized MIDI
+		initialize_boxes();
+		MidiInit();
+		InitGUIRouteFactories();
 #ifdef DEBUG
-        debugFlags::flags[debugFlags::config] = true;
+		debugFlags::flags[debugFlags::config] = true;
 #endif
-	RestoreState();
+		RestoreState();
 
-	// Command line files must be opened after the file history has been read
-	// This call parses the command line
-	if (!wxApp::OnInit()) return false;
+		// Command line files must be opened after the file history has been read
+		// This call parses the command line
+		if (!wxApp::OnInit()) return false;
 
 		
-	if (!GetTopWindow()) {
-		MutFrame * frame = CreateMainFrame(RouteMenu);
-		frame->RestoreState();
-		wxCommandEvent event(CM_ROUTES);
-		frame->CmRoutes(event);
-		frame->Show(true);
-	}
+		if (!GetTopWindow()) {
+			MutFrame * frame = CreateMainFrame(RouteMenu);
+			frame->RestoreState();
+			wxCommandEvent event(CM_ROUTES);
+			frame->CmRoutes(event);
+			frame->Show(true);
+		}
 
 #if wxUSE_PRINTING_ARCHITECTURE
-	// initialize print data and setup
-	g_printData = new wxPrintData;
-	g_pageSetupData = new wxPageSetupDialogData;
+		// initialize print data and setup
+		g_printData = new wxPrintData;
+		g_pageSetupData = new wxPageSetupDialogData;
 #endif // wxUSE_PRINTING_ARCHITECTURE
 
-	return true;
-}
+		return true;
+	}
 
-void MutApp::OnInitCmdLine(wxCmdLineParser&  parser) {
-	const wxCmdLineEntryDesc cmdLineDesc[] = {
-		{ wxCMD_LINE_PARAM,  NULL, NULL, _("logic file"), 
-		  wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
-		{ wxCMD_LINE_NONE }
-	};
+	void MutApp::OnInitCmdLine(wxCmdLineParser&  parser) {
+		const wxCmdLineEntryDesc cmdLineDesc[] = {
+			{ wxCMD_LINE_PARAM,  NULL, NULL, _("logic file"), 
+			  wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE|wxCMD_LINE_PARAM_OPTIONAL },
+			{ wxCMD_LINE_NONE }
+		};
 
-	wxApp::OnInitCmdLine(parser);
-	parser.SetDesc(cmdLineDesc);
+		wxApp::OnInitCmdLine(parser);
+		parser.SetDesc(cmdLineDesc);
 
 #ifdef DEBUG
-	debugFlags::InitCommandLine(parser);
+		debugFlags::InitCommandLine(parser);
 #endif
 
 	
-}
+	}
 
-bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
-	if (!wxApp::OnCmdLineParsed(parser)) return false;
+	bool MutApp::OnCmdLineParsed(wxCmdLineParser&  parser) {
+		if (!wxApp::OnCmdLineParsed(parser)) return false;
 #ifdef DEBUG
-	debugFlags::ProcessCommandLine(parser);
+		debugFlags::ProcessCommandLine(parser);
 #endif
-	wxString str;
-	int count = parser.GetParamCount();
-	for (int i = 0; i<count;i++)
-	{
-		// we have a document to open
-		str = parser.GetParam(i);
-		printf("cmd line param: %ls\n", WXSTRINGCAST(str));
-		// this will probably see if the file exists, and has the right extension
+		wxString str;
+		int count = parser.GetParamCount();
+		for (int i = 0; i<count;i++)
+		{
+			// we have a document to open
+			str = parser.GetParam(i);
+			printf("cmd line param: %ls\n", WXSTRINGCAST(str));
+			// this will probably see if the file exists, and has the right extension
 
 //		MutFrame * frame = CreateMainFrame(EditorMenu);
 //		frame->OpenFile(str);
 
-		if (document_manager)
-			document_manager->CreateDocument(str, wxDOC_SILENT);
-	}
+			if (document_manager)
+				document_manager->CreateDocument(str, wxDOC_SILENT);
+		}
 
-	DEBUGLOG (other, _T("Command line parsed."));
-	return true;
-}
+		DEBUGLOG (other, _T("Command line parsed."));
+		return true;
+	}
 
 // Extend event processing to search the view's event table
-bool MutApp::ProcessEvent(wxEvent& event)
-{
-	bool retval =  wxApp::ProcessEvent(event);
+	bool MutApp::ProcessEvent(wxEvent& event)
+	{
+		bool retval =  wxApp::ProcessEvent(event);
 #ifdef DEBUG
-	if (!retval) {
-		DEBUGLOG(eventqueue,
-                         _T("Undhandled event %p, id=%d, type=%d"),
-			 static_cast<void *>(&event),
-			 (int)(event.GetId()),
-			 (int)(event.GetEventType())
-			);
-        }
+		if (!retval) {
+			DEBUGLOG(eventqueue,
+				 _T("Undhandled event %p, id=%d, type=%d"),
+				 static_cast<void *>(&event),
+				 (int)(event.GetId()),
+				 (int)(event.GetEventType())
+				);
+		}
 #endif
-	return retval;
-}
-
-void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
-{
-	DEBUGLOG(eventqueue,_T("Command %p, id=%d, type=%d"),
-		 static_cast<void *>(&event),
-		 event.GetId(),
-		 (int)event.GetEventType()
-		);
-	if (!(document_manager->ProcessEvent(event))) 
-		event.Skip();
-}
-void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
-{
-	DEBUGLOG(eventqueue,_T("UpdateUI: %p, id=%d, type=%d"),
-		 static_cast<void *>(&event),
-		 event.GetId(),
-		 (int)event.GetEventType()
-		);
-	if (!(document_manager->ProcessEvent(event)))
-		event.Skip();
-}
-
-void MutApp::OnMRUFile(wxCommandEvent& event)
-{
-    int n = event.GetId() - wxID_FILE1;  // the index in MRU list
-    wxString filename(document_manager->GetHistoryFile(n));
-    if ( !filename.empty() )
-    {
-        // verify that the file exists before doing anything else
-        if ( wxFile::Exists(filename) )
-        {
-            // try to open it
-            if (!document_manager->CreateDocument(filename, wxDOC_SILENT))
-            {
-                // remove the file from the MRU list. The user should already be notified.
-                document_manager->RemoveFileFromHistory(n);
-
-                wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
-                       filename.c_str());
-            } else {
-		    wxView * v = document_manager->GetCurrentView();
-		    if (v) {
-			    wxWindow * w = v->GetFrame();
-			    if (w) {
-				    w->Raise();
-			    }
-		    }
-	    }
-        }
-        else
-        {
-            // remove the bogus filename from the MRU list and notify the user
-            // about it
-            document_manager->RemoveFileFromHistory(n);
-
-            wxLogError(_("The file '%s' doesn't exist and couldn't be opened.\nIt has been removed from the most recently used files list."),
-                       filename.c_str());
-        }
-    }
-}
-
-
-
-BEGIN_EVENT_TABLE(MutConfigDialog, ConfigDlg)
-	EVT_BUTTON(::wxID_HELP, MutConfigDialog::CmHelp)
-END_EVENT_TABLE()
-
-void MutApp::CmSetup (wxCommandEvent& event)
-{
-
-	MutConfigDialog * config;
-	config = new MutConfigDialog((wxFrame *) NULL);
-
-	if (config) {
-		int value = config->ShowModal();
-		config->Destroy();
+		return retval;
 	}
-}
 
-void MutApp::CmAbout (wxCommandEvent& event)
-{
+	void MutApp::PassEventToDocManagerCMD(wxCommandEvent& event)
+	{
+		DEBUGLOG(eventqueue,_T("Command %p, id=%d, type=%d"),
+			 static_cast<void *>(&event),
+			 event.GetId(),
+			 (int)event.GetEventType()
+			);
+		if (!(document_manager->ProcessEvent(event))) 
+			event.Skip();
+	}
+	void MutApp::PassEventToDocManagerUPD(wxUpdateUIEvent& event)
+	{
+		DEBUGLOG(eventqueue,_T("UpdateUI: %p, id=%d, type=%d"),
+			 static_cast<void *>(&event),
+			 event.GetId(),
+			 (int)event.GetEventType()
+			);
+		if (!(document_manager->ProcessEvent(event)))
+			event.Skip();
+	}
 
-	/*
-	  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
-					      mumT(PACKAGE_STRING),
-					      _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
-					      _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
-					      mumT(PACKAGE)),
-			     wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
-	*/
-	/*	AppAbout * about;
-		about = new AppAbout((wxFrame *) NULL);
-		about->Destroy();
+	void MutApp::OnMRUFile(wxCommandEvent& event)
+	{
+		int n = event.GetId() - wxID_FILE1;  // the index in MRU list
+		wxString filename(document_manager->GetHistoryFile(n));
+		if ( !filename.empty() )
+		{
+			// verify that the file exists before doing anything else
+			if ( wxFile::Exists(filename) )
+			{
+				// try to open it
+				if (!document_manager->CreateDocument(filename, wxDOC_SILENT))
+				{
+					// remove the file from the MRU list. The user should already be notified.
+					document_manager->RemoveFileFromHistory(n);
 
-	*/
-	// setup path
-	wxStandardPathsBase &path = wxStandardPaths::Get();
-	wxAboutDialogInfo info;
-	info.SetCopyright(_("(c) 2005-2011 TU Dresden"));
-	info.SetVersion(_T(PACKAGE_VERSION));
-	info.SetWebSite(_T("http://www.math.tu-dresden.de/~mutabor/"));
-	info.SetIcon(wxIcon(wxFileName(path.GetResourcesDir(),
-	                               _T("about"),
-	                               _T("png")).GetFullPath(),
-	                    wxBITMAP_TYPE_PNG));
-	info.SetDescription(_("An application to implement different tuning logics.\n Both fixed, adaptive and mutable tunings are supported."));
-	info.AddArtist(_("Rudolf Wille (mathematical foundation)"));
-	info.AddArtist(_("Tobias Schlemmer (new icon/splash)"));
-	info.AddDeveloper(_("Bernhard Ganter"));
-	info.AddDeveloper(_("Volker Abel"));
-	info.AddDeveloper(_("Peter Reiss"));
-	info.AddDeveloper(_("Ruediger Krausze <krausze@mail.berlios.de>"));
-	info.AddDeveloper(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
-	info.AddDocWriter(_("Volker Abel"));
-	info.AddDocWriter(_("Peter Reiss"));
-	info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>"));
-	info.AddDocWriter(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
-	info.AddTranslator(_("English: Tobias Schlemmer"));
+					wxLogError(_("The file '%s' couldn't be opened.\nIt has been removed from the most recently used files list."),
+						   filename.c_str());
+				} else {
+					wxView * v = document_manager->GetCurrentView();
+					if (v) {
+						wxWindow * w = v->GetFrame();
+						if (w) {
+							w->Raise();
+						}
+					}
+				}
+			}
+			else
+			{
+				// remove the bogus filename from the MRU list and notify the user
+				// about it
+				document_manager->RemoveFileFromHistory(n);
 
-	wxGenericAboutBox(info);
-}
+				wxLogError(_("The file '%s' doesn't exist and couldn't be opened.\nIt has been removed from the most recently used files list."),
+					   filename.c_str());
+			}
+		}
+	}
 
 
-AppAbout::AppAbout (wxWindow *parent, long style)
+
+	BEGIN_EVENT_TABLE(MutConfigDialog, ConfigDlg)
+	EVT_BUTTON(::wxID_HELP, MutConfigDialog::CmHelp)
+	END_EVENT_TABLE()
+
+	void MutApp::CmSetup (wxCommandEvent& event)
+	{
+
+		MutConfigDialog * config;
+		config = new MutConfigDialog((wxFrame *) NULL);
+
+		if (config) {
+			//we don't need the return value as we are using validators
+			//int value = 
+			config->ShowModal();
+			config->Destroy();
+		}
+	}
+
+	void MutApp::CmAbout (wxCommandEvent& event)
+	{
+
+		/*
+		  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
+		  mumT(PACKAGE_STRING),
+		  _T("Ruediger Krausze <krausze@mail.berlios.de>\n")
+		  _T("Tobias Schlemmer <keinstein@mail.berlios.de>\n"),
+		  mumT(PACKAGE)),
+		  wxString::Format(_("About %s"),mumT(PACKAGE_NAME)));
+		*/
+		/*	AppAbout * about;
+			about = new AppAbout((wxFrame *) NULL);
+			about->Destroy();
+
+		*/
+		// setup path
+		wxStandardPathsBase &path = wxStandardPaths::Get();
+		wxAboutDialogInfo info;
+		info.SetCopyright(_("(c) 2005-2011 TU Dresden"));
+		info.SetVersion(_T(PACKAGE_VERSION));
+		info.SetWebSite(_T("http://www.math.tu-dresden.de/~mutabor/"));
+		info.SetIcon(wxIcon(wxFileName(path.GetResourcesDir(),
+					       _T("about"),
+					       _T("png")).GetFullPath(),
+				    wxBITMAP_TYPE_PNG));
+		info.SetDescription(_("An application to implement different tuning logics.\n Both fixed, adaptive and mutable tunings are supported."));
+		info.AddArtist(_("Rudolf Wille (mathematical foundation)"));
+		info.AddArtist(_("Tobias Schlemmer (new icon/splash)"));
+		info.AddDeveloper(_("Bernhard Ganter"));
+		info.AddDeveloper(_("Volker Abel"));
+		info.AddDeveloper(_("Peter Reiss"));
+		info.AddDeveloper(_("Ruediger Krausze <krausze@mail.berlios.de>"));
+		info.AddDeveloper(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
+		info.AddDocWriter(_("Volker Abel"));
+		info.AddDocWriter(_("Peter Reiss"));
+		info.AddDocWriter(_("Ruediger Krausze <krausze@mail.berlios.de>"));
+		info.AddDocWriter(_("Tobias Schlemmer <keinstein@mail.berlios.de>"));
+		info.AddTranslator(_("English: Tobias Schlemmer"));
+
+		wxGenericAboutBox(info);
+	}
+
+
+	AppAbout::AppAbout (wxWindow *parent, long style)
 		: wxDialog (parent, -1, wxEmptyString,
 		            wxDefaultPosition, wxDefaultSize,
 		            wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
-{
+	{
 
-	// setup path
-	wxStandardPathsBase &path = wxStandardPaths::Get();
+		// setup path
+		wxStandardPathsBase &path = wxStandardPaths::Get();
 
 
-	// sets the application icon
-	SetTitle (_("About ..."));
+		// sets the application icon
+		SetTitle (_("About ..."));
 
-	// about info
-	wxGridSizer *aboutinfo = new wxFlexGridSizer (2, 5, 5);
-	aboutinfo->Add (new wxStaticText(this, -1, _("Version: ")));
-	aboutinfo->Add (new wxStaticText(this, -1, _T(PACKAGE_VERSION)));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Written by: ")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter\n"
-	                                 "Volker Abel\n"
-	                                 "Peter Reiss\n"
-	                                 "Ruediger Krausze <krausze@mail.berlios.de>\n"
-	                                 "Tobias Schlemmer <keinstein@mail.berlios.de>")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical\nmodelling:")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Rudolf Wille")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Licence type: ")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("GPL")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("wxWidgets: ")));
-	aboutinfo->Add (new wxStaticText(this, -1, wxVERSION_STRING));
-	aboutinfo->Add (new wxStaticText(this, -1, _("Copyright: ")));
-	aboutinfo->Add (new wxStaticText(this, -1, _("(c) 2007 TU Dresden, Institut fuer Algebra")));
+		// about info
+		wxGridSizer *aboutinfo = new wxFlexGridSizer (2, 5, 5);
+		aboutinfo->Add (new wxStaticText(this, -1, _("Version: ")));
+		aboutinfo->Add (new wxStaticText(this, -1, _T(PACKAGE_VERSION)));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Written by: ")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Bernhard Ganter\n"
+							     "Volker Abel\n"
+							     "Peter Reiss\n"
+							     "Ruediger Krausze <krausze@mail.berlios.de>\n"
+							     "Tobias Schlemmer <keinstein@mail.berlios.de>")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Mathematical\nmodelling:")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Rudolf Wille")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Licence type: ")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("GPL")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("wxWidgets: ")));
+		aboutinfo->Add (new wxStaticText(this, -1, wxVERSION_STRING));
+		aboutinfo->Add (new wxStaticText(this, -1, _("Copyright: ")));
+		aboutinfo->Add (new wxStaticText(this, -1, _("(c) 2007 TU Dresden, Institut fuer Algebra")));
 
-	// about title/info
-	wxBoxSizer *abouttext = new wxBoxSizer (wxVERTICAL);
+		// about title/info
+		wxBoxSizer *abouttext = new wxBoxSizer (wxVERTICAL);
 //    wxStaticText *appname = new wxStaticText (this, -1, g_appname);
-	wxStaticText * appname = new wxStaticText (this, -1, mumT(PACKAGE_NAME));
-	appname->SetFont (wxFont (10, wxDEFAULT, wxNORMAL, wxBOLD));
-	abouttext->Add (appname, 0, wxALIGN_LEFT);
-	abouttext->Add (0, 10);
-	abouttext->Add (aboutinfo, 1, wxEXPAND);
+		wxStaticText * appname = new wxStaticText (this, -1, mumT(PACKAGE_NAME));
+		appname->SetFont (wxFont (10, wxDEFAULT, wxNORMAL, wxBOLD));
+		abouttext->Add (appname, 0, wxALIGN_LEFT);
+		abouttext->Add (0, 10);
+		abouttext->Add (aboutinfo, 1, wxEXPAND);
 
-	// about icontitle//info
-	wxBoxSizer *aboutpane = new wxBoxSizer (wxHORIZONTAL);
+		// about icontitle//info
+		wxBoxSizer *aboutpane = new wxBoxSizer (wxHORIZONTAL);
 //    wxBitmap bitmap = wxBitmap(wxICON (mutabor));
-	wxBitmap bitmap = wxBitmap(wxFileName(path.GetResourcesDir(),_T("about"),_T("png")).GetFullPath(),
-	                           wxBITMAP_TYPE_PNG);
-	aboutpane->Add (new wxStaticBitmap (this, -1, bitmap),
-	                0, wxALIGN_LEFT);
-	aboutpane->Add (10, 0);
-	aboutpane->Add (abouttext, 1, wxEXPAND);
+		wxBitmap bitmap = wxBitmap(wxFileName(path.GetResourcesDir(),_T("about"),_T("png")).GetFullPath(),
+					   wxBITMAP_TYPE_PNG);
+		aboutpane->Add (new wxStaticBitmap (this, -1, bitmap),
+				0, wxALIGN_LEFT);
+		aboutpane->Add (10, 0);
+		aboutpane->Add (abouttext, 1, wxEXPAND);
 
-	// about complete
-	wxBoxSizer *totalpane = new wxBoxSizer (wxVERTICAL);
-	totalpane->Add (aboutpane, 0, wxEXPAND | wxALL, 10);
-	totalpane->Add (new wxStaticText(this, -1, _("Mutabor tuning")),
-	                0, wxALIGN_CENTER | wxLEFT | wxRIGHT, 10);
-	totalpane->Add (0, 6);
+		// about complete
+		wxBoxSizer *totalpane = new wxBoxSizer (wxVERTICAL);
+		totalpane->Add (aboutpane, 0, wxEXPAND | wxALL, 10);
+		totalpane->Add (new wxStaticText(this, -1, _("Mutabor tuning")),
+				0, wxALIGN_CENTER | wxLEFT | wxRIGHT, 10);
+		totalpane->Add (0, 6);
 //    myHyperLink *website = new myHyperLink (this, -1, APP_WEBSITE);
 //    wxString url = APP_WEBSITE;
 //    url.Append ("/indexedit.html");
 //    website->SetURL (url);
 //    totalpane->Add (website, 0, wxALIGN_CENTER);
 //	totalpane->Add (new wxStaticLine(this, -1), 0, wxEXPAND | wxALL, 10);
-	wxButton *okButton = new wxButton (this, wxID_OK, _("OK"));
-	okButton->SetDefault();
-	totalpane->Add (okButton, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM, 10);
+		wxButton *okButton = new wxButton (this, wxID_OK, _("OK"));
+		okButton->SetDefault();
+		totalpane->Add (okButton, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM, 10);
 
-	SetSizerAndFit (totalpane);
+		SetSizerAndFit (totalpane);
 
-	ShowModal();
-}
+		ShowModal();
+	}
 
 
 
-MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
-{
-	MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
-	                               wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
-	                               wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
-	return InitMainFrame(type,frame);
-}
+	MutFrame* MutApp::CreateMainFrame(MenuType type, wxWindowID id)
+	{
+		MutFrame* frame = new MutFrame((wxFrame *)NULL, wxID_ANY, _T("Mutabor"),
+					       wxDefaultPosition, wxDefaultSize, //wxSize(500, 400),
+					       wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
+		return InitMainFrame(type,frame);
+	}
 
 
 	// Give it an icon
-MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame) 
-{
+	MutFrame* MutApp::InitMainFrame(MenuType type, MutFrame * frame) 
+	{
 #ifdef __WXMSW__
-	frame->SetIcon(wxIcon(_T("mutabor_icn")));
+		frame->SetIcon(wxIcon(_T("mutabor_icn")));
 #else
-	frame->SetIcon(wxIcon( mutabor_xpm ));
+		frame->SetIcon(wxIcon( mutabor_xpm ));
 #endif
 
-	// Make a menubar
+		// Make a menubar
 
-	wxMenuBar *menuBar = new wxMenuBar;
-	frame->SetFileMenu(MakeFileMenu(menuBar, type));
-	MakeEditMenu(menuBar, type);
-	MakeViewMenu(menuBar, type);
-	MakeLogicMenu(menuBar);
-	MakeRoutesMenu(menuBar);
-	MakeSequencerMenu(menuBar);
-	MakeHelpMenu(menuBar);
+		wxMenuBar *menuBar = new wxMenuBar;
+		frame->SetFileMenu(MakeFileMenu(menuBar, type));
+		MakeEditMenu(menuBar, type);
+		MakeViewMenu(menuBar, type);
+		MakeLogicMenu(menuBar);
+		MakeRoutesMenu(menuBar);
+		MakeSequencerMenu(menuBar);
+		MakeHelpMenu(menuBar);
 
-	// Associate the menu bar with the frame
-	frame->SetMenuBar(menuBar);
+		// Associate the menu bar with the frame
+		frame->SetMenuBar(menuBar);
 
 #if wxUSE_STATUSBAR
-	frame->CreateStatusBar();
+		frame->CreateStatusBar();
 #endif // wxUSE_STATUSBAR
 
-	return frame;
-}
-
-void MutApp::CmFileNew (wxCommandEvent& event)
-{
-	STUBC;
-	return;
-#ifdef DEBUG
-	printf("MutApp::CmFileNew\n");
-#endif
-	MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
-
-	if (MustOpenFrame(frame))
-		frame = CreateMainFrame(EditorMenu);
-
-#ifdef DEBUG
-	printf("MutApp::CmFileNew: created main frame\n");
-
-#endif
-	frame->CmFileNew(event);
-	frame->Show();
-
-#ifdef DEBUG
-	printf("MutApp::CmFileNew: file new: done.\n");
-
-#endif
-	event.Skip(false);
-}
-
-
-void MutApp::CmFileOpen (wxCommandEvent& event)
-{
-
-	STUBC;
-	return;
-	wxWindow * topwindow=GetTopWindow();
-
-	event.Skip(false);
-
-	wxString path = FileNameDialog(topwindow);
-
-	MutFrame * frame = dynamic_cast<MutFrame*>(topwindow);
-
-	if ( !path )
-		return;
-
-	if (MustOpenFrame(frame)) 
-		frame = CreateMainFrame(EditorMenu);
-
-	frame->OpenFile(path);
-
-#ifdef DEBUG
-	std::cerr << "MutApp:CmFileOpen " << CM_EXECUTE << " == "
-	<< event.GetId() << "?" << std::endl;
-
-#endif
-
-	switch (event.GetId()) {
-
-	case CM_EXECUTE:
-		wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_ACTIVATE);
-
-		wxPostEvent(frame,e);
-
-		break;
+		return frame;
 	}
-	frame->Show();
 
-}
-
-// print event handlers
-void MutApp::OnPrintSetup (wxCommandEvent &WXUNUSED(event)) {
-#if wxUSE_PRINTING_ARCHITECTURE
-    (*g_pageSetupData) = * g_printData;
-    wxPageSetupDialog pageSetupDialog(GetTopWindow(), g_pageSetupData);
-    pageSetupDialog.ShowModal();
-    (*g_printData) = pageSetupDialog.GetPageSetupData().GetPrintData();
-    (*g_pageSetupData) = pageSetupDialog.GetPageSetupData();
-#endif // wxUSE_PRINTING_ARCHITECTURE
-}
-
-void MutApp::CmRoutes (wxCommandEvent& event)
-{
-
-	wxWindow * topwindow=GetTopWindow();
-
+	void MutApp::CmFileNew (wxCommandEvent& event)
+	{
+		STUBC;
+		return;
 #ifdef DEBUG
-	std::cerr << "MutApp::CmRoutes: window "
-	<< wxWindow::FindWindowById(WK_ROUTE)
-	<< " casted "
-	<< dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE))
-	<< std::endl;
+		printf("MutApp::CmFileNew\n");
 #endif
-
-	MutFrame * frame = dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
-
-	if (!frame) {
-		frame = dynamic_cast<MutFrame*>(GetTopWindow());
+		MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
 
 		if (MustOpenFrame(frame))
-			frame = CreateMainFrame(RouteMenu);
+			frame = CreateMainFrame(EditorMenu);
+
+#ifdef DEBUG
+		printf("MutApp::CmFileNew: created main frame\n");
+
+#endif
+		frame->CmFileNew(event);
+		frame->Show();
+
+#ifdef DEBUG
+		printf("MutApp::CmFileNew: file new: done.\n");
+
+#endif
+		event.Skip(false);
 	}
 
-	frame->CmRoutes(event);
 
-	frame->Show(true);
-	event.Skip(false);
-}
-
-void MutApp::CmHelp (wxCommandEvent& event)
-{
-	ShowHelp(event.GetId());
-	event.Skip();
-}
-
-void MutApp::ShowHelp(int commandId)
-{
-	switch (commandId) {
-
-	case CM_HELPINDEX:
-		HelpController->DisplayContents();
-
-		break;
-
-	case CM_HELP:
-		HelpController->Display(_("help.html"));
-
-		break;
-
-	case CM_SETUP:
-		HelpController->Display(_("The setup dialog"));
-
-		break;
-
-	case CM_HELPHANDBOOK:
-		HelpController->Display(_("manual.html"));
-
-		break;
-
-	case CM_HELPREFERENCE:
-		HelpController->Display(_("reference.html"));
-
-		break;
-
-	case CM_HELPONHELP:
-		HelpController->Display(_("Help window"));
-
-		break;
-
-	case CM_HELPCOMMON:
-		HelpController->DisplayContents();
-
-		break;
-
-	case CM_HELPSEARCH: {
-		wxString key = wxGetTextFromUser(_("Search for?"),
-		                                 _("Search help for keyword"),
-		                                 wxEmptyString,
-		                                 GetTopWindow());
-
-		if (! key.IsEmpty())
-			HelpController->KeywordSearch(key);
-	}
-
-	break;
-	}
-}
-
-void MutApp::CmQuit (wxCommandEvent& event)
-{
-	DEBUGLOG (other, _T(""));
-
-	SetExitOnFrameDelete(true);
-	//		Exit();
-
-	if (quitting) return;
-
-	quitting = true;
-	event.Skip(false);
-
-
-	wxWindow * window;
-	SetTopWindow(NULL);
-
-	//	if (frames.empty()) {
-	if ((window = GetTopWindow()) == NULL) {
-		DEBUGLOG (other, _T("No Frames."));
-		quitting = false;
-		ExitMainLoop();
-		return;
-	}
-
-	// first check whether docmanager allows quitting
-	if (!document_manager->Clear(false))
+	void MutApp::CmFileOpen (wxCommandEvent& event)
 	{
-		quitting = false;
+
+		STUBC;
 		return;
+		wxWindow * topwindow=GetTopWindow();
+
+		event.Skip(false);
+
+		wxString path = FileNameDialog(topwindow);
+
+		MutFrame * frame = dynamic_cast<MutFrame*>(topwindow);
+
+		if ( !path )
+			return;
+
+		if (MustOpenFrame(frame)) 
+			frame = CreateMainFrame(EditorMenu);
+
+		frame->OpenFile(path);
+
+#ifdef DEBUG
+		std::cerr << "MutApp:CmFileOpen " << CM_EXECUTE << " == "
+			  << event.GetId() << "?" << std::endl;
+
+#endif
+
+		switch (event.GetId()) {
+
+		case CM_EXECUTE:
+			wxCommandEvent e(wxEVT_COMMAND_MENU_SELECTED,CM_ACTIVATE);
+
+			wxPostEvent(frame,e);
+
+			break;
+		}
+		frame->Show();
+
 	}
 
+// print event handlers
+	void MutApp::OnPrintSetup (wxCommandEvent &WXUNUSED(event)) {
+#if wxUSE_PRINTING_ARCHITECTURE
+		(*g_pageSetupData) = * g_printData;
+		wxPageSetupDialog pageSetupDialog(GetTopWindow(), g_pageSetupData);
+		pageSetupDialog.ShowModal();
+		(*g_printData) = pageSetupDialog.GetPageSetupData().GetPrintData();
+		(*g_pageSetupData) = pageSetupDialog.GetPageSetupData();
+#endif // wxUSE_PRINTING_ARCHITECTURE
+	}
 
-	DEBUGLOG (other, _T("Starting Loop"));
+	void MutApp::CmRoutes (wxCommandEvent& event)
+	{
+		DEBUGLOG(other,_T("window %p is casted %p"),
+			 wxWindow::FindWindowById(WK_ROUTE),
+			 dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)));
+
+		MutFrame * frame = 
+			dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
+
+		if (!frame) {
+			frame = dynamic_cast<MutFrame*>(GetTopWindow());
+
+			if (MustOpenFrame(frame))
+				frame = CreateMainFrame(RouteMenu);
+		}
+
+		frame->CmRoutes(event);
+
+		frame->Show(true);
+		event.Skip(false);
+	}
+
+	void MutApp::CmHelp (wxCommandEvent& event)
+	{
+		ShowHelp(event.GetId());
+		event.Skip();
+	}
+
+	void MutApp::ShowHelp(int commandId)
+	{
+		switch (commandId) {
+
+		case CM_HELPINDEX:
+			HelpController->DisplayContents();
+
+			break;
+
+		case CM_HELP:
+			HelpController->Display(_("help.html"));
+
+			break;
+
+		case CM_SETUP:
+			HelpController->Display(_("The setup dialog"));
+
+			break;
+
+		case CM_HELPHANDBOOK:
+			HelpController->Display(_("manual.html"));
+
+			break;
+
+		case CM_HELPREFERENCE:
+			HelpController->Display(_("reference.html"));
+
+			break;
+
+		case CM_HELPONHELP:
+			HelpController->Display(_("Help window"));
+
+			break;
+
+		case CM_HELPCOMMON:
+			HelpController->DisplayContents();
+
+			break;
+
+		case CM_HELPSEARCH: {
+			wxString key = wxGetTextFromUser(_("Search for?"),
+							 _("Search help for keyword"),
+							 wxEmptyString,
+							 GetTopWindow());
+
+			if (! key.IsEmpty())
+				HelpController->KeywordSearch(key);
+		}
+
+			break;
+		}
+	}
+
+	void MutApp::CmQuit (wxCommandEvent& event)
+	{
+		DEBUGLOG (other, _T(""));
+
+		SetExitOnFrameDelete(true);
+		//		Exit();
+
+		if (quitting) return;
+
+		quitting = true;
+		event.Skip(false);
+
+
+		wxWindow * window;
+		SetTopWindow(NULL);
+
+		//	if (frames.empty()) {
+		if ((window = GetTopWindow()) == NULL) {
+			DEBUGLOG (other, _T("No Frames."));
+			quitting = false;
+			ExitMainLoop();
+			return;
+		}
+
+		// first check whether docmanager allows quitting
+		if (!document_manager->Clear(false))
+		{
+			quitting = false;
+			return;
+		}
+
+
+		DEBUGLOG (other, _T("Starting Loop"));
 
 /*	while (Pending())
-		Dispatch();
+	Dispatch();
 
 
 	DEBUGLOG (other, _T("Dispatched all events"));
@@ -1053,487 +1054,480 @@ void MutApp::CmQuit (wxCommandEvent& event)
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 */
 
-        for (wxWindowList::iterator i = wxTopLevelWindows.begin();
-             i!= wxTopLevelWindows.end();
-             i++) {
-                if (!window->Close()) {
+		for (wxWindowList::iterator i = wxTopLevelWindows.begin();
+		     i!= wxTopLevelWindows.end();
+		     i++) {
+			if (!window->Close()) {
 //			wxIdleEvent::SetMode(imode);
-			quitting = false;
-			return;
-		}
+				quitting = false;
+				return;
+			}
                 
-        }
-#if 0
-	while ((window = GetTopWindow())) {
-		DEBUGLOG (other, _("Closing window of class %s"), 
-			  muT(typeid(*(window)).name()).c_str());
-
-		if (!window->Close()) {
-			wxIdleEvent::SetMode(imode);
-			quitting = false;
-			return;
 		}
+#if 0
+		while ((window = GetTopWindow())) {
+			DEBUGLOG (other, _("Closing window of class %s"), 
+				  muT(typeid(*(window)).name()).c_str());
 
-		DEBUGLOG (other, _T("Closed window"));
+			if (!window->Close()) {
+				wxIdleEvent::SetMode(imode);
+				quitting = false;
+				return;
+			}
 
-		// empty queue and process idle event to delete the frame
+			DEBUGLOG (other, _T("Closed window"));
+
+			// empty queue and process idle event to delete the frame
 
 /*		while (Pending())
-			Dispatch();
+		Dispatch();
 */
-		//   wxIdleEvent idle;
-		//ProcessEvent(idle);
-		//while(Pending())
-		//  Dispatch();
+			//   wxIdleEvent idle;
+			//ProcessEvent(idle);
+			//while(Pending())
+			//  Dispatch();
 //		DeletePendingObjects();
 
-		DEBUGLOG (other, _T("Dispatched all events"));
-	}
+			DEBUGLOG (other, _T("Dispatched all events"));
+		}
 #endif
 
-	DEBUGLOG (other, _T("finished loop"));
-}
+		DEBUGLOG (other, _T("finished loop"));
+	}
 
 
 
-wxString MutApp::GetResourceName(const wxString & file)
-{
-	const wxLocale * m_locale = wxGetLocale();
-	wxStandardPathsBase & sp = wxStandardPaths::Get();
-	wxString localename = m_locale->GetCanonicalName();
-	wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
-	DEBUGLOGTYPE(other,MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
-	if (!rcname.IsFileReadable()) {
-		rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
-		DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+	wxString MutApp::GetResourceName(const wxString & file)
+	{
+		const wxLocale * m_locale = wxGetLocale();
+		wxStandardPathsBase & sp = wxStandardPaths::Get();
+		wxString localename = m_locale->GetCanonicalName();
+		wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
+		DEBUGLOGTYPE(other,MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
 		if (!rcname.IsFileReadable()) {
-			rcname.SetPath(sp.GetResourcesDir());
+			rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
 			DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+			if (!rcname.IsFileReadable()) {
+				rcname.SetPath(sp.GetResourcesDir());
+				DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
+			}
 		}
-	}
-	localename = rcname.GetFullPath();
-	return localename;
-}
-
-wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
-{
-	wxMenu * menu = new wxMenu;
-	MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
-	         _("Create a new logic file."));
-	MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
-	         _("Open a logic file in editor window"));
-
-	if (type == EditorMenu || type == RouteMenu) {
-		menu->Append (wxID_SAVE);
-		menu->Append (wxID_SAVEAS);
-		menu->Append (wxID_CLOSE);
+		localename = rcname.GetFullPath();
+		return localename;
 	}
 
-	MENUITEM_SEPARATOR;
+	wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
+	{
+		wxMenu * menu = new wxMenu;
+		MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
+			 _("Create a new logic file."));
+		MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
+			 _("Open a logic file in editor window"));
 
-	MENUITEM(_("&Execute\tCtrl+F9"), CM_EXECUTE,
-	         _("Load a logic file an immediately activate it"));
+		if (type == EditorMenu || type == RouteMenu) {
+			menu->Append (wxID_SAVE);
+			menu->Append (wxID_SAVEAS);
+			menu->Append (wxID_CLOSE);
+		}
+
+		MENUITEM_SEPARATOR;
+
+		MENUITEM(_("&Execute\tCtrl+F9"), CM_EXECUTE,
+			 _("Load a logic file an immediately activate it"));
 
 #if (defined(__WXMAC__) || defined(__WXCOCOA__))
-	if (type == EditorMenu)
+		if (type == EditorMenu)
 #endif
-	MENUITEM_SEPARATOR;
-
-	if (type == EditorMenu) {
-		menu->Append (CM_PROPERTIES,
-			      _("Proper&ties ...\tCtrl+I"),
-			      _("Get some information about the currently edited file"));
-	} 
-	menu->Append (wxID_PREFERENCES);
-
-
-	if (type == EditorMenu) {
-		menu->AppendSeparator();
-#if 0
-		menu->Append (wxID_PRINT_SETUP,_("Print setup..."),
-			      _("Configure how the pages will be printed"));
-#endif
-#if !defined(__WXMAC__) && !defined(__WXOSX__) \
-	&& !defined(wxUSE_LIBGNOMEPRINT)
-		menu->Append (wxID_PREVIEW);
-#endif
-		menu->Append (wxID_PRINT);
-	}
-
-
-
-#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	MENUITEM_SEPARATOR;
-#endif
-	menu->Append(wxID_EXIT);
-	DEBUGLOG(docview,_T("Adding file history menu"));
-	document_manager->FileHistoryUseMenu(menu);
-	document_manager->GetFileHistory()->AddFilesToMenu(menu);
-
-#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	menuBar->Append(menu, _("&File"));
-#else
-	menuBar->Append(menu, getContextLocal(_("@MAC|&File")));
-#endif
-	return menu;
-}
-
-void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
-{
-	if (type != EditorMenu) return;
-
-	wxMenu * menu = new wxMenu;
-	menu->Append (wxID_UNDO);
-	menu->Append (wxID_REDO);
-	menu->AppendSeparator();
-	menu->Append (wxID_CUT);
-	menu->Append (wxID_COPY);
-	menu->Append (wxID_PASTE);
-	menu->Append (wxID_CLEAR);
-	menu->AppendSeparator();
-	menu->Append (wxID_SELECTALL);
-	menu->Append (CM_SELECTLINE, 
-		      _("Select &line\tCtrl+Shift+L"),
-		      _("Select the complete line at cursor position"));
-	menu->AppendSeparator();
-	menu->Append (wxID_FIND);
-	menu->Append (CM_FINDNEXT, 
-		      _("Find &next\tCtrl+G"),
-		      _("Continue last search"));
-	menu->Append (wxID_REPLACE);
-	menu->Append (CM_REPLACENEXT,
-		      _("Replace &again\tShift+F4"),
-		      _("Go on with replacement"));
-	menu->AppendSeparator();
-	menu->Append (CM_BRACEMATCH, 
-		      _("&Match brace\tCtrl+M"),
-		      _("Find matching brace and select all contained characters"));
-	menu->Append (CM_GOTO, 
-		      _("&Goto Line...\tCtrl+L"),
-		      _("Jump to a specific line"));
-	menu->AppendSeparator();
-	menu->Append (wxID_INDENT);
-	menu->Append (wxID_UNINDENT);
-
-	wxMenu *menuOptions = new wxMenu;
-	menuOptions->AppendCheckItem (CM_OVERTYPE, 
-				      _("&Overwrite mode\tIns"),
-				      _("Replace the caracters at the caret position by the ones you type in"));
-	menuOptions->AppendCheckItem (CM_WRAPMODEON, 
-				      _("&Wrap mode\tCtrl+U"),
-				      _("Automatic line breaking while inserting text"));
-	menuOptions->AppendCheckItem (CM_READONLY,
-				      _("&Readonly mode"),
-				      _("Disallow changing the document"));
-
-	// change case submenu
-	wxMenu *menuChangeCase = new wxMenu;
-	menuChangeCase->Append (CM_CHANGEUPPER, 
-				_("&Upper case"),
-				_("Change the current selection to upper case"));
-	menuChangeCase->Append (CM_CHANGELOWER, 
-				_("&Lower case"),
-				_("Change the current selection to lower case"));
-
-	// convert EOL submenu
-	wxMenu *menuConvertEOL = new wxMenu;
-	menuConvertEOL->Append (CM_CONVERTCR, 
-				_("CR (&Linux/MAC OS X)"),
-				_("Change line endings to carrage return only (Unix style)"));
-	menuConvertEOL->Append (CM_CONVERTCRLF,
-				_("CR+LF (&Windows)"),
-				_("Change line endigs to carrage return + line feed (DOS/Windows style)"));
-	menuConvertEOL->Append (CM_CONVERTLF,
-				_("LF (&Macintosh)"),
-				_("Change line endings to line feed only (old Macintosh style)"));
-
-	menu->Append (wxID_ANY, _("Edit options ..."), menuOptions);
-	menu->Append (CM_CHANGECASE, _("Change &case to ..."), menuChangeCase);
-	menu->Append (CM_CONVERTEOL, 
-		      _("Convert line &endings to ..."), 
-		      menuConvertEOL);
-
-	menuBar->Append(menu, _("&Edit"));
-}
-
-	
-void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
-{
-	wxMenu * menu = new wxMenu;
-	MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
-	MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
-	MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
-	menuBar->Append(menu, _("&Logic"));
-}
-
-void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
-{
-	wxMenu * menu = new wxMenu;
-	MENUITEM(_("&Load routes"), CM_ROUTELOAD,
-	         _("Load the current route configuration from a file"));
-	MENUITEM(_("&Save routes"), CM_ROUTESAVE,
-	         _("Save current route configuration to a file."));
-	MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
-	         _("Save current route configuration to a file with a new name."));
-	menuBar->Append(menu, _("&Routes"));
-}
-
-void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
-{
-	
-
-	wxMenu * menu = new wxMenu;
-	if (type == EditorMenu) {
-		// hilight submenu
-		wxMenu *menuHilight = new wxMenu;
-		int Nr;
-		for (Nr = 0; Nr < g_LanguagePrefsSize; Nr++) {
-			menuHilight->Append (CM_HILIGHTFIRST + Nr,
-					     g_LanguagePrefs [Nr].name);
-		}
-
-		// charset submenu
-		wxMenu *menuCharset = new wxMenu;
-		menuCharset->Append (CM_CHARSETANSI, _("&ANSI (Windows)"));
-		menuCharset->Append (CM_CHARSETMAC, _("&MAC (Macintosh)"));
-
-		menu->Append (CM_HILIGHTLANG, 
-			      _("&Hilight language..."), 
-			      menuHilight);
-		menu->AppendSeparator();
-		menu->AppendCheckItem (CM_FOLDTOGGLE, 
-				       _("&Toggle current fold\tCtrl+T"));
-		menu->AppendSeparator();
-		menu->AppendCheckItem (CM_DISPLAYEOL, _("Show line &endings"));
-		menu->AppendCheckItem (CM_INDENTGUIDE, _("Show &indent guides"));
-		menu->AppendCheckItem (CM_LINENUMBER, _("Show line &numbers"));
-		menu->AppendCheckItem (CM_LONGLINEON, _("Show &long line marker"));
-		menu->AppendCheckItem (CM_WHITESPACE, _("Show white&space"));
-		menu->AppendSeparator();
-		menu->Append (CM_USECHARSET, _("Use &code page of..."), menuCharset);
-		menu->AppendSeparator();
-	}
-	
-	/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
-	   _("Toggle status bar on/off"));
-	MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
-	   _("Toggle tool bar on/off"));
-	MENUITEM_SEPARATOR;
-	*/
-	if (type != ProgramMenu) {
-		if (type != EditorMenu) {
 			MENUITEM_SEPARATOR;
+
+		if (type == EditorMenu) {
+			menu->Append (CM_PROPERTIES,
+				      _("Proper&ties ...\tCtrl+I"),
+				      _("Get some information about the currently edited file"));
+		} 
+		menu->Append (wxID_PREFERENCES);
+
+
+		if (type == EditorMenu) {
+			menu->AppendSeparator();
+#if 0
+			menu->Append (wxID_PRINT_SETUP,_("Print setup..."),
+				      _("Configure how the pages will be printed"));
+#endif
+#if !defined(__WXMAC__) && !defined(__WXOSX__)	\
+	&& !defined(wxUSE_LIBGNOMEPRINT)
+			menu->Append (wxID_PREVIEW);
+#endif
+			menu->Append (wxID_PRINT);
 		}
-		MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
-		              _("Show current keys window"));
-		MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
-		              _("Show tone system window"));
-		MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
-		              _("Show current actions window"));
-	}
-	MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
-	              _("Open route configuration window"));
-
-	if (type != ProgramMenu) {
-		/*	  MENUITEM_SEPARATOR;
-		MENUCHECKITEM(_("&One window mode"), CM_OWM,
-		_("Toggle logic satus window: one each or one common"));
-		MENUCHECKITEM(_("One &common action window"), CM_CAW,
-		_("Toggle action window mode: one each or one common"));
-		*/
-		MENUITEM_SEPARATOR;
-		menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
-		             _("Select current Box"));
-	}
-
-	menuBar->Append(menu, _("&View"));
-}
-
-void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
-{
-	wxMenu * menu = new wxMenu;
-	MENUITEM(_("&Play"), CM_INDEVPLAY,
-	         _("Start playing the music from input file devices"));
-	MENUITEM(_("St&op"), CM_INDEVSTOP,
-	         _("Stop playing the music from input file devices"));
-	MENUITEM(_("P&ause"), CM_INDEVPAUSE,
-	         _("Pause plaing the music from input file devices"));
-	menuBar->Append(menu, _("&Sequencer"));
-}
 
 
-void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
-
-{
-	wxMenu * menu = new wxMenu;
-	MENUITEM(_("Online &Help\tF1"), CM_HELP,
-	         _("Open the help Window"));
-	MENUITEM(_("&Manual"), CM_HELPHANDBOOK,
-	         _("Open the manual"));
-	MENUITEM(_("Language &reference"), CM_HELPREFERENCE,
-	         _("Open the Mutabor language reference"));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("&Index"), CM_HELPINDEX,
-	         _("Open the help index"));
-	MENUITEM(_("&Search"), CM_HELPSEARCH,
-	         _("Search the help system for a specific keyword"));
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("Help &on help"), CM_HELPONHELP,
-	         _("Show Help about the help system"));
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-	MENUITEM_SEPARATOR;
+		MENUITEM_SEPARATOR;
+#endif
+		menu->Append(wxID_EXIT);
+		DEBUGLOG(docview,_T("Adding file history menu"));
+		document_manager->FileHistoryUseMenu(menu);
+		document_manager->GetFileHistory()->AddFilesToMenu(menu);
+
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
+		menuBar->Append(menu, _("&File"));
+#else
+		menuBar->Append(menu, getContextLocal(_("@MAC|&File")));
+#endif
+		return menu;
+	}
+
+	void MutApp::MakeEditMenu(wxMenuBar * menuBar, MenuType type)
+	{
+		if (type != EditorMenu) return;
+
+		wxMenu * menu = new wxMenu;
+		menu->Append (wxID_UNDO);
+		menu->Append (wxID_REDO);
+		menu->AppendSeparator();
+		menu->Append (wxID_CUT);
+		menu->Append (wxID_COPY);
+		menu->Append (wxID_PASTE);
+		menu->Append (wxID_CLEAR);
+		menu->AppendSeparator();
+		menu->Append (wxID_SELECTALL);
+		menu->Append (CM_SELECTLINE, 
+			      _("Select &line\tCtrl+Shift+L"),
+			      _("Select the complete line at cursor position"));
+		menu->AppendSeparator();
+		menu->Append (wxID_FIND);
+		menu->Append (CM_FINDNEXT, 
+			      _("Find &next\tCtrl+G"),
+			      _("Continue last search"));
+		menu->Append (wxID_REPLACE);
+		menu->Append (CM_REPLACENEXT,
+			      _("Replace &again\tShift+F4"),
+			      _("Go on with replacement"));
+		menu->AppendSeparator();
+		menu->Append (CM_BRACEMATCH, 
+			      _("&Match brace\tCtrl+M"),
+			      _("Find matching brace and select all contained characters"));
+		menu->Append (CM_GOTO, 
+			      _("&Goto Line...\tCtrl+L"),
+			      _("Jump to a specific line"));
+		menu->AppendSeparator();
+		menu->Append (wxID_INDENT);
+		menu->Append (wxID_UNINDENT);
+
+		wxMenu *menuOptions = new wxMenu;
+		menuOptions->AppendCheckItem (CM_OVERTYPE, 
+					      _("&Overwrite mode\tIns"),
+					      _("Replace the caracters at the caret position by the ones you type in"));
+		menuOptions->AppendCheckItem (CM_WRAPMODEON, 
+					      _("&Wrap mode\tCtrl+U"),
+					      _("Automatic line breaking while inserting text"));
+		menuOptions->AppendCheckItem (CM_READONLY,
+					      _("&Readonly mode"),
+					      _("Disallow changing the document"));
+
+		// change case submenu
+		wxMenu *menuChangeCase = new wxMenu;
+		menuChangeCase->Append (CM_CHANGEUPPER, 
+					_("&Upper case"),
+					_("Change the current selection to upper case"));
+		menuChangeCase->Append (CM_CHANGELOWER, 
+					_("&Lower case"),
+					_("Change the current selection to lower case"));
+
+		// convert EOL submenu
+		wxMenu *menuConvertEOL = new wxMenu;
+		menuConvertEOL->Append (CM_CONVERTCR, 
+					_("CR (&Linux/MAC OS X)"),
+					_("Change line endings to carrage return only (Unix style)"));
+		menuConvertEOL->Append (CM_CONVERTCRLF,
+					_("CR+LF (&Windows)"),
+					_("Change line endigs to carrage return + line feed (DOS/Windows style)"));
+		menuConvertEOL->Append (CM_CONVERTLF,
+					_("LF (&Macintosh)"),
+					_("Change line endings to line feed only (old Macintosh style)"));
+
+		menu->Append (wxID_ANY, _("Edit options ..."), menuOptions);
+		menu->Append (CM_CHANGECASE, _("Change &case to ..."), menuChangeCase);
+		menu->Append (CM_CONVERTEOL, 
+			      _("Convert line &endings to ..."), 
+			      menuConvertEOL);
+
+		menuBar->Append(menu, _("&Edit"));
+	}
+
+	
+	void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
+	{
+		wxMenu * menu = new wxMenu;
+		MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
+		MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
+		MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
+		MENUITEM_SEPARATOR;
+		MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
+		menuBar->Append(menu, _("&Logic"));
+	}
+
+	void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
+	{
+		wxMenu * menu = new wxMenu;
+		MENUITEM(_("&Load routes"), CM_ROUTELOAD,
+			 _("Load the current route configuration from a file"));
+		MENUITEM(_("&Save routes"), CM_ROUTESAVE,
+			 _("Save current route configuration to a file."));
+		MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
+			 _("Save current route configuration to a file with a new name."));
+		menuBar->Append(menu, _("&Routes"));
+	}
+
+	void MutApp::MakeViewMenu(wxMenuBar * menuBar, MenuType type)
+	{
+	
+
+		wxMenu * menu = new wxMenu;
+		if (type == EditorMenu) {
+			// hilight submenu
+			wxMenu *menuHilight = new wxMenu;
+			int Nr;
+			for (Nr = 0; Nr < g_LanguagePrefsSize; Nr++) {
+				menuHilight->Append (CM_HILIGHTFIRST + Nr,
+						     g_LanguagePrefs [Nr].name);
+			}
+
+			// charset submenu
+			wxMenu *menuCharset = new wxMenu;
+			menuCharset->Append (CM_CHARSETANSI, _("&ANSI (Windows)"));
+			menuCharset->Append (CM_CHARSETMAC, _("&MAC (Macintosh)"));
+
+			menu->Append (CM_HILIGHTLANG, 
+				      _("&Hilight language..."), 
+				      menuHilight);
+			menu->AppendSeparator();
+			menu->AppendCheckItem (CM_FOLDTOGGLE, 
+					       _("&Toggle current fold\tCtrl+T"));
+			menu->AppendSeparator();
+			menu->AppendCheckItem (CM_DISPLAYEOL, _("Show line &endings"));
+			menu->AppendCheckItem (CM_INDENTGUIDE, _("Show &indent guides"));
+			menu->AppendCheckItem (CM_LINENUMBER, _("Show line &numbers"));
+			menu->AppendCheckItem (CM_LONGLINEON, _("Show &long line marker"));
+			menu->AppendCheckItem (CM_WHITESPACE, _("Show white&space"));
+			menu->AppendSeparator();
+			menu->Append (CM_USECHARSET, _("Use &code page of..."), menuCharset);
+			menu->AppendSeparator();
+		}
+	
+		/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
+			_("Toggle status bar on/off"));
+			MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
+			_("Toggle tool bar on/off"));
+			MENUITEM_SEPARATOR;
+		*/
+		if (type != ProgramMenu) {
+			if (type != EditorMenu) {
+				MENUITEM_SEPARATOR;
+			}
+			MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
+				      _("Show current keys window"));
+			MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
+				      _("Show tone system window"));
+			MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
+				      _("Show current actions window"));
+		}
+		MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
+			      _("Open route configuration window"));
+
+		if (type != ProgramMenu) {
+			/*	  MENUITEM_SEPARATOR;
+				  MENUCHECKITEM(_("&One window mode"), CM_OWM,
+				  _("Toggle logic satus window: one each or one common"));
+				  MENUCHECKITEM(_("One &common action window"), CM_CAW,
+				  _("Toggle action window mode: one each or one common"));
+			*/
+			MENUITEM_SEPARATOR;
+			menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
+				     _("Select current Box"));
+		}
+
+		menuBar->Append(menu, _("&View"));
+	}
+
+	void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
+	{
+		wxMenu * menu = new wxMenu;
+		MENUITEM(_("&Play"), CM_INDEVPLAY,
+			 _("Start playing the music from input file devices"));
+		MENUITEM(_("St&op"), CM_INDEVSTOP,
+			 _("Stop playing the music from input file devices"));
+		MENUITEM(_("P&ause"), CM_INDEVPAUSE,
+			 _("Pause plaing the music from input file devices"));
+		menuBar->Append(menu, _("&Sequencer"));
+	}
+
+
+	void MutApp::MakeHelpMenu(wxMenuBar * menuBar)
+
+	{
+		wxMenu * menu = new wxMenu;
+		MENUITEM(_("Online &Help\tF1"), CM_HELP,
+			 _("Open the help Window"));
+		MENUITEM(_("&Manual"), CM_HELPHANDBOOK,
+			 _("Open the manual"));
+		MENUITEM(_("Language &reference"), CM_HELPREFERENCE,
+			 _("Open the Mutabor language reference"));
+		MENUITEM_SEPARATOR;
+		MENUITEM(_("&Index"), CM_HELPINDEX,
+			 _("Open the help index"));
+		MENUITEM(_("&Search"), CM_HELPSEARCH,
+			 _("Search the help system for a specific keyword"));
+		MENUITEM_SEPARATOR;
+		MENUITEM(_("Help &on help"), CM_HELPONHELP,
+			 _("Show Help about the help system"));
+
+#if !(defined(__WXMAC__) || defined(__WXCOCOA__))
+		MENUITEM_SEPARATOR;
 #endif
 
-	MENUITEM(_("&About"), CM_ABOUT,
-	         _("Show information about the program"));
+		MENUITEM(_("&About"), CM_ABOUT,
+			 _("Show information about the program"));
 #ifdef DEBUG
-	MENUITEM_SEPARATOR;
-	MENUITEM(_("Stop"), cmCallExitId,
-	         _("Stop the current program"));
+		MENUITEM_SEPARATOR;
+		MENUITEM(_("Stop"), cmCallExitId,
+			 _("Stop the current program"));
 #endif
-	menuBar->Append(menu, _("&Help"));
-}
+		menuBar->Append(menu, _("&Help"));
+	}
 
-int MutApp::OnExit()
-{
-	SaveState();
-	AktionTraceReset();
-	MidiUninit();
-	delete document_manager;
+	int MutApp::OnExit()
+	{
+		SaveState();
+		AktionTraceReset();
+		MidiUninit();
+		delete document_manager;
 #if defined(__WXMAC__)
-	wxMenuBar::MacSetCommonMenuBar(NULL);
+		wxMenuBar::MacSetCommonMenuBar(NULL);
 #endif
-	delete HelpController;
-	wxXmlResource::Get()->ClearHandlers();
-	return wxApp::OnExit();
-}
+		delete HelpController;
+		wxXmlResource::Get()->ClearHandlers();
+		return wxApp::OnExit();
+	}
 
 #ifdef __WXMAC__
 
-void MutApp::MacOpenFile(const wxString &fileName)
-{
-	///\todo use the some as the command line functions
-	STUBC;
-	return;
-	//  wxApp::MacOpenFile(fileName);
-
-	DEBUGLOG (other, _T("Filename: %s"),fileName.c_str());
-
-	MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
-
-	if ( !fileName )
+	void MutApp::MacOpenFile(const wxString &fileName)
+	{
+		///\todo use the some as the command line functions
+		STUBC;
 		return;
+		//  wxApp::MacOpenFile(fileName);
 
-	if (MustOpenFrame(frame))
-		frame = CreateMainFrame(EditorMenu);
+		DEBUGLOG (other, _T("Filename: %s"),fileName.c_str());
 
-	frame->OpenFile(fileName);
-	frame->Show();
-}
+		MutFrame * frame = dynamic_cast<MutFrame*>(GetTopWindow());
+
+		if ( !fileName )
+			return;
+
+		if (MustOpenFrame(frame))
+			frame = CreateMainFrame(EditorMenu);
+
+		frame->OpenFile(fileName);
+		frame->Show();
+	}
 
 #endif
 
-void MutApp::SaveState()
-{
-	/* \todo save Parameters of all open windows */
-	wxConfigBase *config = wxConfig::Get();
-	if (!config) {
-		wxLogError(_("Could not get configuration storage"));
-		return;
+	void MutApp::SaveState()
+	{
+		/* \todo save Parameters of all open windows */
+		wxConfigBase *config = wxConfig::Get();
+		if (!config) {
+			wxLogError(_("Could not get configuration storage"));
+			return;
+		}
+
+		wxString oldpath = config->GetPath();
+
+		config->SetPath(_T("/Settings"));
+		config->Write(_T("Tone system"), asTS);
+		config->Write(_T("Save editor"), SaveEditor);
+		config->Write(_T("Color bars"), UseColorBars);
+
+		config->SetPath(_T("Box settings"));
+		BoxData::SaveAll(config);
+		config->SetPath(_T(".."));
+
+		config->SetPath(_T("DocManager"));
+		document_manager->FileHistorySave(*config);
+		config->SetPath(_T(".."));
+
+		SaveRoutes(config);
+		config->SetPath(oldpath);
 	}
 
-	wxString oldpath = config->GetPath();
+	void MutApp::RestoreState()
 
-	config->SetPath(_T("/Settings"));
-	config->Write(_T("Tone system"), asTS);
-	config->Write(_T("Save editor"), SaveEditor);
-	config->Write(_T("Color bars"), UseColorBars);
-
-	config->SetPath(_T("Box settings"));
-        BoxData::SaveAll(config);
-	config->SetPath(_T(".."));
-
-	config->SetPath(_T("DocManager"));
-	document_manager->FileHistorySave(*config);
-	config->SetPath(_T(".."));
-
-	SaveRoutes(config);
-	config->SetPath(oldpath);
-}
-
-void MutApp::RestoreState()
-
-{
-	/* \todo restore Windows of last session. */
-	wxConfigBase *config = wxConfig::Get();
-	if (!config) {
-		wxLogError(_("Could not get configuration storage"));
-		return;
-	}
+	{
+		/* \todo restore Windows of last session. */
+		wxConfigBase *config = wxConfig::Get();
+		if (!config) {
+			wxLogError(_("Could not get configuration storage"));
+			return;
+		}
 
 
-	// up to Version 2.9.3 the file history does not cleanup menus
-	if (document_manager) {
-		int max = document_manager->GetHistoryFilesCount();
-		wxFileHistory * h = document_manager->GetFileHistory();
-		if (h)
-			for (int i = max-1; i >= 0; i--) 
-				h -> RemoveFileFromHistory(i);
-	}
+		// up to Version 2.9.3 the file history does not cleanup menus
+		if (document_manager) {
+			int max = document_manager->GetHistoryFilesCount();
+			wxFileHistory * h = document_manager->GetFileHistory();
+			if (h)
+				for (int i = max-1; i >= 0; i--) 
+					h -> RemoveFileFromHistory(i);
+		}
 
-	wxString oldpath = config->GetPath();
+		wxString oldpath = config->GetPath();
 
-	config->SetPath(_T("/Settings"));
-	config->Read(_T("ToneSystem"), &asTS, true);
-	config->Read(_T("SaveEditor"), &SaveEditor, true);
-	config->Read(_T("ColorBars"), &UseColorBars, true);
+		config->SetPath(_T("/Settings"));
+		config->Read(_T("ToneSystem"), &asTS, true);
+		config->Read(_T("SaveEditor"), &SaveEditor, true);
+		config->Read(_T("ColorBars"), &UseColorBars, true);
 
-	config->SetPath(_T("Box settings"));
-        BoxData::LoadAll(config);
-	config->SetPath(_T(".."));
+		config->SetPath(_T("Box settings"));
+		BoxData::LoadAll(config);
+		config->SetPath(_T(".."));
 
-	config->SetPath(_T("DocManager"));
-	document_manager->FileHistoryLoad(*config);
-	config->SetPath(_T(".."));
+		config->SetPath(_T("DocManager"));
+		document_manager->FileHistoryLoad(*config);
+		config->SetPath(_T(".."));
 
-	MutRouteWnd * routewnd=NULL;
-	MutFrame * frame = 
-	  dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
-	if (frame) {
-	  wxWindowList & list = frame->GetChildren();
-	  for (wxWindowList::iterator i = list.begin();i!= list.end();i++) {
-	    routewnd = dynamic_cast<MutRouteWnd *> (*i);
-	    if (routewnd) break;
-	  }
-	}
-	if (routewnd) {
-	  routewnd->ClearDevices();
-	}
+		MutRouteWnd * routewnd=NULL;
+		MutFrame * frame = 
+			dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
+		if (frame) {
+			wxWindowList & list = frame->GetChildren();
+			for (wxWindowList::iterator i = list.begin();i!= list.end();i++) {
+				routewnd = dynamic_cast<MutRouteWnd *> (*i);
+				if (routewnd) break;
+			}
+		}
+		if (routewnd) {
+			routewnd->ClearDevices();
+		}
 	
-	// emty lists
-	InDevice * InDevices = InDevice::GetDeviceList();
-	if ( InDevices) {
-	  delete InDevices;
-	  InDevices = NULL;
-	}
-	OutDevice * OutDevices = OutDevice::GetDeviceList();
-	if ( OutDevices ) {
-	  delete OutDevices;
-	  OutDevices = NULL;
-	}
-	while (Route * routes = Route::GetRouteList())
-	  delete routes;
+		// emty lists
+		InputDeviceClass::ClearDeviceList();
+		OutputDeviceClass::ClearDeviceList();
+		RouteClass::ClearRouteList();
 
-	LoadRoutes(config);
+		LoadRoutes(config);
 
-	if (routewnd) {
-	  routewnd->InitDevices();
+		if (routewnd) {
+			routewnd->InitDevices();
+		}
+
+		config->SetPath(oldpath);
 	}
 
-	config->SetPath(oldpath);
 }
 
 ///\}
