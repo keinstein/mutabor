@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.26 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.27 2011/09/28 05:35:47 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.26 $
+ * $Date: 2011/09/28 05:35:47 $
+ * \version $Revision: 1.27 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.26  2011/09/27 20:13:23  keinstein
+ * Revision 1.27  2011/09/28 05:35:47  keinstein
+ * fix compiling on ubuntu
+ *
+ * Revision 1.26  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -64,6 +67,7 @@
 #include "MutChild.h"
 #include "MutFrame.h"
 #include "MutRouteWnd.h"
+#include "wx/dcclient.h"
 
 
 //#if !defined(__WXMSW__)

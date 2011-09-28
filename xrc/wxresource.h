@@ -15,7 +15,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("ConfigDlg"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("ConfigDlg"), wxT("wxDialog"));
   ToneSystem = XRCCTRL(*this,"ToneSystem",wxRadioBox);
   SaveEditor = XRCCTRL(*this,"SaveEditor",wxCheckBox);
   ColorBars = XRCCTRL(*this,"ColorBars",wxCheckBox);
@@ -35,7 +35,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("AboutDlg"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("AboutDlg"), wxT("wxDialog"));
   m_htmlWin2 = XRCCTRL(*this,"m_htmlWin2",wxHtmlWindow);
   wxID_OK = XRCCTRL(*this,"wxID_OK",wxButton);
  }
@@ -60,7 +60,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("CompileDlg"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("CompileDlg"), wxT("wxDialog"));
   filename = XRCCTRL(*this,"filename",wxStaticText);
   line = XRCCTRL(*this,"line",wxStaticText);
   logic = XRCCTRL(*this,"logic",wxStaticText);
@@ -91,7 +91,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("mutabor_box"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("mutabor_box"), wxT("wxDialog"));
   use_box = XRCCTRL(*this,"use_box",wxRadioButton);
   m_textCtrl2 = XRCCTRL(*this,"m_textCtrl2",wxTextCtrl);
   guido_box = XRCCTRL(*this,"guido_box",wxRadioButton);
@@ -120,7 +120,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("InputFilterDlgBase"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("InputFilterDlgBase"), wxT("wxDialog"));
   Type = XRCCTRL(*this,"Type",wxRadioBox);
   fromlabel = XRCCTRL(*this,"fromlabel",wxStaticText);
   From = XRCCTRL(*this,"From",wxTextCtrl);
@@ -149,7 +149,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("InputDevDlgBase"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("InputDevDlgBase"), wxT("wxDialog"));
   DeviceChoice = XRCCTRL(*this,"DeviceChoice",wxChoice);
   PortChoice = XRCCTRL(*this,"PortChoice",wxChoice);
   MidiFilePicker = XRCCTRL(*this,"MidiFilePicker",wxFilePickerCtrl);
@@ -181,7 +181,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("OutputDevDlgBase"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("OutputDevDlgBase"), wxT("wxDialog"));
   DeviceChoice = XRCCTRL(*this,"DeviceChoice",wxChoice);
   PortChoice = XRCCTRL(*this,"PortChoice",wxChoice);
   MidiBendingRangeLabel = XRCCTRL(*this,"MidiBendingRangeLabel",wxStaticText);
@@ -212,7 +212,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("BoxDlgBase"), _T("wxDialog"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("BoxDlgBase"), wxT("wxDialog"));
   boxType = XRCCTRL(*this,"boxType",wxChoicebook);
   wxID_REMOVE = XRCCTRL(*this,"wxID_REMOVE",wxButton);
   routeWindow = XRCCTRL(*this,"routeWindow",wxScrolledWindow);
@@ -233,7 +233,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MutaborBoxSettingsBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("MutaborBoxSettingsBase"), wxT("wxPanel"));
   boxNumberLabel = XRCCTRL(*this,"boxNumberLabel",wxStaticText);
   boxNumber = XRCCTRL(*this,"boxNumber",wxSpinCtrl);
  }
@@ -247,7 +247,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("GuidoFileBoxSettingsBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("GuidoFileBoxSettingsBase"), wxT("wxPanel"));
  }
 public:
 GuidoFileBoxSettingsBase(wxWindow *parent=NULL){
@@ -259,7 +259,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("NoBoxSettingsBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("NoBoxSettingsBase"), wxT("wxPanel"));
  }
 public:
 NoBoxSettingsBase(wxWindow *parent=NULL){
@@ -272,7 +272,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("InputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("InputFilterPanelBase"), wxT("wxPanel"));
   inputDevice = XRCCTRL(*this,"inputDevice",wxChoicebook);
  }
 public:
@@ -286,7 +286,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("OutputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("OutputFilterPanelBase"), wxT("wxPanel"));
   outputDevice = XRCCTRL(*this,"outputDevice",wxChoicebook);
  }
 public:
@@ -302,7 +302,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("RoutePanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("RoutePanelBase"), wxT("wxPanel"));
   box = XRCCTRL(*this,"box",wxChoice);
   active = XRCCTRL(*this,"active",wxRadioButton);
   passive = XRCCTRL(*this,"passive",wxRadioButton);
@@ -326,7 +326,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("GisInputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("GisInputFilterPanelBase"), wxT("wxPanel"));
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   box_tag_panel = XRCCTRL(*this,"box_tag_panel",wxPanel);
@@ -347,7 +347,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("GisOutputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("GisOutputFilterPanelBase"), wxT("wxPanel"));
  }
 public:
 GisOutputFilterPanelBase(wxWindow *parent=NULL){
@@ -368,7 +368,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MidiInputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiInputFilterPanelBase"), wxT("wxPanel"));
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   channel_panel = XRCCTRL(*this,"channel_panel",wxPanel);
@@ -392,7 +392,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MidiOutputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiOutputFilterPanelBase"), wxT("wxPanel"));
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   avoid_drum_channel = XRCCTRL(*this,"avoid_drum_channel",wxCheckBox);
@@ -416,7 +416,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MidiFileInputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiFileInputFilterPanelBase"), wxT("wxPanel"));
   type = XRCCTRL(*this,"type",wxChoicebook);
   all_panel = XRCCTRL(*this,"all_panel",wxPanel);
   channel_panel = XRCCTRL(*this,"channel_panel",wxPanel);
@@ -440,7 +440,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("MidiFileOutputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("MidiFileOutputFilterPanelBase"), wxT("wxPanel"));
   from_channel = XRCCTRL(*this,"from_channel",wxSpinCtrl);
   to_channel = XRCCTRL(*this,"to_channel",wxSpinCtrl);
   avoid_drum_channel = XRCCTRL(*this,"avoid_drum_channel",wxCheckBox);
@@ -455,7 +455,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("UnknownInputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("UnknownInputFilterPanelBase"), wxT("wxPanel"));
  }
 public:
 UnknownInputFilterPanelBase(wxWindow *parent=NULL){
@@ -467,7 +467,7 @@ protected:
 
 private:
  void InitWidgetsFromXRC(wxWindow *parent){
-  wxXmlResource::Get()->LoadObject(this,parent,_T("UnknownOutputFilterPanelBase"), _T("wxPanel"));
+  wxXmlResource::Get()->LoadObject(this,parent,wxT("UnknownOutputFilterPanelBase"), wxT("wxPanel"));
  }
 public:
 UnknownOutputFilterPanelBase(wxWindow *parent=NULL){
