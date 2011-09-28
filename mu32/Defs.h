@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.18 2011/09/27 20:13:20 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.19 2011/09/28 05:35:47 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:20 $
- * \version $Revision: 1.18 $
+ * $Date: 2011/09/28 05:35:47 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.18  2011/09/27 20:13:20  keinstein
+ * Revision 1.19  2011/09/28 05:35:47  keinstein
+ * fix compiling on ubuntu
+ *
+ * Revision 1.18  2011-09-27 20:13:20  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -219,45 +222,83 @@ inline wxString getContextLocal(const wxString & s)
 
 
 
-struct intrusive_ptr_refcount_type {				
+class intrusive_ptr_refcount_type {
+private:
 	size_t value;
+
+	template<class intrusive_ptr_T>
+		friend void ::intrusive_ptr_add_ref(intrusive_ptr_T * obj);	
+	template<class intrusive_ptr_T>
+		friend void ::intrusive_ptr_release(intrusive_ptr_T * obj);
+	template <class intrusive_ptr_T>
+		friend size_t ::intrusive_ptr_get_refcount(intrusive_ptr_T * obj);
+public:
+	mut_thread_mutex(mutex)						
 	intrusive_ptr_refcount_type():value(0) {}
+
+	void lock () {
+		mut_thread_lock(mutex);
+	}
+
+	void unlock () {
+		mut_thread_release(mutex);
+	}
+
+	size_t operator ++() {
+		size_t retval = value;
+		++(*this);
+		return retval;
+	}
+
+	size_t operator ++(int) {
+		lock();
+		value++;
+		unlock();
+		return value;
+	}
+
+	size_t operator --() {
+		size_t retval = value;
+		--(*this);
+		return retval;
+	}
+
+	size_t operator --(int) {
+		lock();
+		value--;
+		unlock();
+		return value;
+	}
+
+	operator size_t () const {
+		return value;
+	}
 };			
 
-template <class T>
-inline void intrusive_ptr_add_ref(T * obj)
+template <class intrusive_ptr_T>
+inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
-	mut_thread_lock(obj->mutex);
-	obj->intrusive_ptr_refcount.value++;
-	mut_thread_release(obj->mutex);
+	++(obj->intrusive_ptr_refcount);
 }
-template <class T>
-inline void intrusive_ptr_release(T * obj)
+
+template <class intrusive_ptr_T>
+inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
-	mut_thread_lock(obj->mutex);
-	obj->intrusive_ptr_refcount.value--;
-	mut_thread_release(obj->mutex);
-	if (!obj->intrusive_ptr_refcount.value) delete obj;
+	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
 }
-template <class T>
-inline size_t intrusive_ptr_get_refcount(T * obj)
+
+template <class intrusive_ptr_T>
+inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)
 {
 	if (!obj) return 0;
-	return obj->intrusive_ptr_refcount.value;
+	return obj->intrusive_ptr_refcount;
 }
 							      
 #define REFPTR_INTERFACE						\
-	private:							\
-	template<class intrusive_ptr_T>					\
-	friend void ::intrusive_ptr_add_ref(intrusive_ptr_T * obj);	\
-	template<class intrusive_ptr_T>					\
-	friend void ::intrusive_ptr_release(intrusive_ptr_T * obj);	\
-	template <class intrusive_ptr_T>				\
-	friend size_t ::intrusive_ptr_get_refcount(intrusive_ptr_T * obj); \
-	intrusive_ptr_refcount_type intrusive_ptr_refcount;		\
-	mut_thread_mutex(mutex)						
+	public:								\
+	intrusive_ptr_refcount_type intrusive_ptr_refcount;		
 
 
 #define CHECK_REFPTR_NULL(class_data)				\
