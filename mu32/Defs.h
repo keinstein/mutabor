@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.19 2011/09/28 05:35:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.20 2011/09/28 07:35:53 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/28 05:35:47 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/09/28 07:35:53 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.19  2011/09/28 05:35:47  keinstein
+ * Revision 1.20  2011/09/28 07:35:53  keinstein
+ * Make distclean happy
+ *
+ * Revision 1.19  2011-09-28 05:35:47  keinstein
  * fix compiling on ubuntu
  *
  * Revision 1.18  2011-09-27 20:13:20  keinstein
@@ -245,29 +248,29 @@ public:
 	}
 
 	size_t operator ++() {
-		size_t retval = value;
-		++(*this);
-		return retval;
-	}
-
-	size_t operator ++(int) {
 		lock();
 		value++;
 		unlock();
 		return value;
 	}
 
-	size_t operator --() {
+	size_t operator ++(int) {
 		size_t retval = value;
-		--(*this);
+		++(*this);
 		return retval;
 	}
 
-	size_t operator --(int) {
+	size_t operator --() {
 		lock();
 		value--;
 		unlock();
 		return value;
+	}
+
+	size_t operator --(int) {
+		size_t retval = value;
+		--(*this);
+		return retval;
 	}
 
 	operator size_t () const {

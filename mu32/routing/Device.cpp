@@ -4,16 +4,19 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.7 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.8 2011/09/28 07:35:53 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/28 07:35:53 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.7  2011/09/27 20:13:21  keinstein
+ * Revision 1.8  2011/09/28 07:35:53  keinstein
+ * Make distclean happy
+ *
+ * Revision 1.7  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -56,7 +59,7 @@
 #include "DevMidF.h"
 #include "DevGIS.h"
 #include <algorithm>
-#include "Device-inlines.h"
+#include "mu32/routing/Device-inlines.h"
 #include "Route.h"
 
 

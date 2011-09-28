@@ -2,16 +2,19 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.h,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.h,v 1.5 2011/09/28 07:35:54 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2010/04/13
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/28 07:35:54 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: DebugRoute.h,v $
- * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * Revision 1.5  2011/09/28 07:35:54  keinstein
+ * Make distclean happy
+ *
+ * Revision 1.4  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -59,7 +62,9 @@ namespace mutaborGUI{
 	void DebugCheckRoutes();
 }
 #else
-#define DebugCheckRoutes()
+namespace mutaborGUI {
+	inline void DebugCheckRoutes() {}
+}
 #endif
 
  

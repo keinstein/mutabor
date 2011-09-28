@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4 --install
+CLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin /bin /usr/bin
@@ -90,8 +90,10 @@ endif
 bin_PROGRAMS = mutabor
 
 INLINEHEADERS = \
-		muwx/Routing/GUIRoute.h \
-		muwx/GUIBoxData-inlines.h 
+		mu32/routing/Device-inlines.h \
+		mu32/routing/Route-inlines.h \
+		muwx/GUIBoxData-inlines.h \
+		muwx/Routing/GUIRoute-inlines.h 
 
 
 INDENTHEADERS = \
@@ -105,7 +107,6 @@ INDENTHEADERS = \
 		mu32/routing/midi/DevMidi.h \
 		mu32/routing/Device.h \
 		mu32/routing/Route.h \
-		mu32/routing/Route-inlines.h \
 		mu32/routing/RouteCompat.h \
 		mu32/box.h \
 		mu32/Errors.h \
@@ -258,7 +259,8 @@ INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS) $(INLINEHEADERS)
 
 noinst_HEADERS =  mu32/mut.h \
 		  mywx/mutDebugFlags.h \
-		  $(INDENTHEADERS)
+		  $(INDENTHEADERS) \
+		  $(INLINEHEADERS)
 
 mutabor_COMPILESOURCES = $(mutabor_INDENTS) \
 			  mu32/mut.cpp
@@ -267,11 +269,6 @@ mutabor_SOURCES = $(mutabor_COMPILESOURCES)
 if COND_WINRC
 mutabor_COMPILESOURCES += muwx/Mutabor.rc
 endif
-
-if COND_PRECOMP_CXX
-mutabor_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
-endif
-
 
 #		mywx/myContextHelpButton.h \
 #		mywx/myContextHelpButton.cpp \
@@ -307,8 +304,10 @@ else
 $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
 endif
 
+if COND_PRECOMP_CXX
 if AMDEP
 @am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+endif
 endif
 
 .PHONY: cvs_dist cvs_distcheck \
