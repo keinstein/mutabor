@@ -2,16 +2,24 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.7 2011/09/05 06:42:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.8 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 06:42:47 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.7  2011/09/05 06:42:47  keinstein
+ * Revision 1.8  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.7  2011-09-05 06:42:47  keinstein
  * Added GUIBoxData.h
  *
  * Revision 1.6  2011-08-21 16:52:05  keinstein
@@ -54,5 +62,6 @@ DEBUGFLAG(config, _("Debug the config file parser"))
 DEBUGFLAG(docview, _("Debug the Document/View framework"))
 DEBUGFLAG(eventqueue, _("Print unhandled events in the queue"))
 DEBUGFLAG(editor, _("Debug editor related functionality"))
+DEBUGFLAG(smartptr, _("Debug smart pointer related functionality"))
 
 ///\}

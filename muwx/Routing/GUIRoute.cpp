@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.1 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.2 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,15 @@
  *
  *
  * $Log: GUIRoute.cpp,v $
- * Revision 1.1  2011/09/27 20:13:24  keinstein
+ * Revision 1.2  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.1  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -64,7 +72,7 @@
 #include "muwx/GUIBoxData-inlines.h"
 #include "muwx/Routing/GUIRoute-inlines.h"
 #include "muwx/MutRouteWnd.h"
-
+#include "muwx/MutFrame.h"
 
 
 using namespace mutabor;
@@ -385,11 +393,8 @@ namespace mutaborGUI {
 	}
 
 	void GUIRouteBase::Destroy() {
-		// fast disconnection
-		MutBoxChannelShapeList list;
-		list.swap(shapes);
-		for (MutBoxChannelShapeList::iterator i = list.begin();
-		     i != list.end(); i++) {
+		MutBoxChannelShapeList::iterator i;
+		while ( (i = shapes.begin()) != shapes.end()) {
 			MutBoxChannelShape * shape = *i;
 			shape -> Detatch(route);
 			shape -> Destroy();
@@ -406,8 +411,8 @@ namespace mutaborGUI {
 		GUIRouteBase * gui = &GetGUIRoute();
 		Route self(this); // prevent us from beeing deleted
 		wxASSERT(gui);
-		T::Destroy();
 		gui->Destroy();    //
+		T::Destroy();
 		SetGUIRoute(NULL); //
 		delete gui;
 		wxASSERT(intrusive_ptr_get_refcount(this) <= 2);
@@ -601,9 +606,12 @@ namespace mutaborGUI {
 	mutabor::OutputDevice GUIMidiPortFactory::DoCreateOutput () const
 	{
 		GUIOutputMidiPort * port = new GUIOutputMidiPort();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port) {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -612,9 +620,12 @@ namespace mutaborGUI {
 							  int id) const
 	{
 		GUIOutputMidiPort * port = new GUIOutputMidiPort(devId,name,id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -649,9 +660,12 @@ namespace mutaborGUI {
 		
 	{
 		GUIInputMidiPort * port = new GUIInputMidiPort();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port) { 
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -662,9 +676,12 @@ namespace mutaborGUI {
 		GUIInputMidiPort * port = 
 			new GUIInputMidiPort(devId,name,
 					     mutabor::DeviceStop,id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -714,9 +731,12 @@ namespace mutaborGUI {
 	mutabor::OutputDevice GUIMidiFileFactory::DoCreateOutput () const
 	{
 		GUIOutputMidiFile * port = new GUIOutputMidiFile();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -725,9 +745,12 @@ namespace mutaborGUI {
 							   int id) const
 	{
 		GUIOutputMidiFile * port = new GUIOutputMidiFile(devId,name,id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -762,9 +785,12 @@ namespace mutaborGUI {
 		
 	{
 		GUIInputMidiFile * port = new GUIInputMidiFile();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -774,9 +800,12 @@ namespace mutaborGUI {
 	{
 		GUIInputMidiFile * port = new GUIInputMidiFile(devId,name,
 							       mutabor::DeviceStop,id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -822,9 +851,12 @@ namespace mutaborGUI {
 	mutabor::OutputDevice GUIGisFactory::DoCreateOutput () const
 	{
 		GUIOutputGis * port = new GUIOutputGis();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -833,9 +865,12 @@ namespace mutaborGUI {
 						int id) const
 	{
 		GUIOutputGis * port = new GUIOutputGis(devId,name,id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			OutputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -870,9 +905,12 @@ namespace mutaborGUI {
 		
 	{
 		GUIInputGis * port = new GUIInputGis();
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 
@@ -883,9 +921,12 @@ namespace mutaborGUI {
 		GUIInputGis * port = new GUIInputGis(devId,name,
 						     mutabor::DeviceStop,
 						     id);
-		if (port) 
-			return port->GetDevice();
-		else 
+		if (port)  {
+			InputDevice dev = port->GetDevice();
+			if (LogicOn && !(dev->IsOpen())) 
+				dev->Open();
+			return dev;
+		} else 
 			return NULL;
 	}
 

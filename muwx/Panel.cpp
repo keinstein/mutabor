@@ -6,16 +6,24 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.5 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * Revision 1.5  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.4  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -49,6 +57,7 @@
 #include "wx/log.h"
 #include "wx/panel.h"
 #include "wx/containr.h"
+#include "wx/sizer.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -160,6 +169,11 @@ MutPanel::~MutPanel()
 bool MutPanel::Destroy() 
 {
 	Hide();
+	wxSizer * sizer = GetContainingSizer();
+	if (sizer) {
+		sizer->Detach(this);
+		SetSizer(NULL);
+	}
 
 	if ( !wxPendingDelete.Member(this) )
         wxPendingDelete.Append(this);

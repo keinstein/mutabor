@@ -4,16 +4,24 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.5 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.6 2011/09/29 05:26:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/29 05:26:58 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.5  2011/09/27 20:13:22  keinstein
+ * Revision 1.6  2011/09/29 05:26:58  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.5  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -93,6 +101,7 @@ protected:
         /// the icon
         MutIcon Icon;
 	wxStaticText * staticText;
+	wxSize maxBorderSize, borderOffset;
 	
 public:
 	
@@ -119,11 +128,12 @@ public:
 	}
 
 	void SetLabel(const wxString & st ) {
-	  if (!staticText) staticText = new wxStaticText(this,wxID_ANY,_T(""));
-	  wxASSERT(staticText);
-	  if (!staticText) return;
-	  wxControl::SetLabel(st);
-	  staticText->SetLabel(st);
+		if (!staticText) 
+			staticText = new wxStaticText(this,wxID_ANY,_T(""));
+		wxASSERT(staticText);
+		if (!staticText) return;
+		wxControl::SetLabel(st);
+		staticText->SetLabel(st);
 	}
 	/// Calculates the Icon to be used.
 	virtual MutIcon & GetMutIcon ()  { return MutNullIcon; }
@@ -142,8 +152,10 @@ public:
 	{
 		wxRect r = GetRect();
 		int iw = Icon.GetWidth();
-		return wxRect(r.x + (r.width - iw)/2, r.y,
-			      iw,Icon.GetHeight());
+		return wxRect(r.x + (r.width - iw)/2, 
+			      r.y+borderOffset.y,
+			      iw,
+			      Icon.GetHeight());
 	}
 	
 	virtual void LineTo (wxDC & dc , 

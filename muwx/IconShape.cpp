@@ -4,16 +4,24 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.6 2011/09/27 20:13:22 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.7 2011/09/29 05:26:58 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/09/27 20:13:22 $
-* \version $Revision: 1.6 $
+* $Date: 2011/09/29 05:26:58 $
+* \version $Revision: 1.7 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.6  2011/09/27 20:13:22  keinstein
+* Revision 1.7  2011/09/29 05:26:58  keinstein
+* debug intrusive_ptr
+* fix storage and retrieving of input/output devices in treestorage
+* save maximum border size in icons
+* Apply the calculated offset in IconShape (box and box channels still missing)
+* Fix debug saving and restoring route information/route window on activation
+* Add wxWANTS_CHARS to MutEditWindow
+*
+* Revision 1.6  2011-09-27 20:13:22  keinstein
 * * Reworked route editing backend
 * * rewireing is done by RouteClass/GUIRoute now
 * * other classes forward most requests to this pair
@@ -154,13 +162,28 @@ bool MutIconShape::Create (wxWindow * parent, wxWindowID id)
 	DEBUGLOG (other,_T (""));
 	//    Enable(true);
 	//		  SetBackgroundColour(BoxColor(GetId()));
-	if (!MutPanel::Create(parent,id,wxDefaultPosition,wxDefaultSize,wxBORDER_RAISED | wxTAB_TRAVERSAL)) return false;
+	if (!MutPanel::Create(parent,
+			      id,
+			      wxDefaultPosition,
+			      wxDefaultSize,
+			      wxBORDER_RAISED | wxTAB_TRAVERSAL)) return false;
 	Icon = GetMutIcon();
 	wxASSERT(Icon.IsOk());
 	SetAutoLayout(true);
+
+	maxBorderSize = GetWindowBorderSize();
+	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_SUNKEN);
+	wxSize tmpBorderSize = GetWindowBorderSize();
+	maxBorderSize.IncTo(tmpBorderSize);
+
+	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_NONE);
+	tmpBorderSize = GetWindowBorderSize();
+	maxBorderSize.IncTo(tmpBorderSize);
+	maxBorderSize.IncTo(wxSize(0,0));
+	maxBorderSize.IncBy(wxSize(1,1));
+	borderOffset = maxBorderSize - tmpBorderSize;
+
 	//	Layout();
-	
-	
 	return true;
 }
 
@@ -189,16 +212,23 @@ wxSize MutIconShape::DoGetBestSize() const
 		s.x = std::max(s.x,s1.x);
 		s.y += std::max(s1.y,0);
 	}
+#ifdef DEBUG
 	s1 = GetSize() - GetClientSize();
-	s.x += wxMax(0, s1.x);
-	s.y += wxMax(0, s1.y);
+	s1.IncTo(wxSize(0,0));
+
+	DEBUGLOG(gui,_T("s1: (%d,%d), maxBorderSize: (%d,%d)"),
+		 s1.x,s1.y,2*maxBorderSize.x,2*maxBorderSize.y);
+	wxASSERT(s1.x <= 2*maxBorderSize.x);
+	wxASSERT(s1.y <= 2*maxBorderSize.y);
+#endif
+
+	s += maxBorderSize + maxBorderSize;
 	
 	s1 = MutPanel::DoGetBestSize();
 	DEBUGLOG (other, _T("our %p parent best size: %dx%d"),this,s1.x,s1.y);
 	
-	s1.x = std::max(s.x,s1.x);
-	s1.y = std::max(s.y,s1.y);
-	
+	s1.IncTo(s);
+
 	DEBUGLOG (other, _T("our %p best size: %dx%d"),this,s.x,s.y);
 	wxConstCast(this,MutIconShape)->SetMinSize(s1);
 	return s1;
@@ -208,7 +238,8 @@ wxSize MutIconShape::DoGetBestSize() const
 void MutIconShape::SetFocus() {
 	MutPanel::SetFocus();
 	DEBUGLOG (other, _T(""));
-	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_RAISED)| wxBORDER_SUNKEN);
+	SetWindowStyle((GetWindowStyle() & ~wxBORDER_MASK)| wxBORDER_SUNKEN);
+	borderOffset = maxBorderSize - GetWindowBorderSize();
 	GetParent()->Layout();
 	Refresh();
 }
@@ -222,8 +253,9 @@ void MutIconShape::OnGetFocus(wxFocusEvent & event)
 void MutIconShape::OnKillFocus(wxFocusEvent & event)
 {
 	DEBUGLOG (other, _T(""));
-	SetWindowStyle((GetWindowStyle() & ~ wxBORDER_SUNKEN) | wxBORDER_RAISED);
-	wxSizer * sizer = GetContainingSizer();
+	SetWindowStyle((GetWindowStyle() & ~wxBORDER_MASK)| wxBORDER_NONE);
+	borderOffset = maxBorderSize - GetWindowBorderSize();
+//	wxSizer * sizer = GetContainingSizer();
 	m_parent->Layout();
 	Refresh();
 }
@@ -248,7 +280,7 @@ void MutIconShape::OnDraw (wxDC & dc)
 	}
 	DEBUGLOG (other, _T("Icon ok."));
 
-	int x = 0, y = 0;
+	int x = 0, y = borderOffset.y;
 	if (GetIcon().IsOk()) {
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
@@ -279,6 +311,7 @@ wxPoint MutIconShape::GetPerimeterPoint(const wxPoint &i,const wxPoint &o) const
 
 	wxPoint p;
 
+	r.y += borderOffset.y;
 	if (r.x+r.width <= o.x) {
 		p.x = r.x + r.width;
 		p.y = r.y + ir.height/2;
@@ -300,7 +333,8 @@ void MutIconShape::LineTo(wxDC &dc, const wxPoint & p,
 	const wxRect & screenpos)  const
 {
 	wxRect rect = GetRect();
-	wxPoint p1(rect.x + rect.width/2, rect.y + Icon.GetHeight()/2);
+	wxPoint p1(rect.x + rect.width/2, 
+		   rect.y + Icon.GetHeight()/2 + borderOffset.y);
 	wxPoint origin(screenpos.x,screenpos.y);
 	dc.DrawLine(p1+origin,p+origin);
 }
@@ -312,7 +346,7 @@ bool MutIconShape::Recompute()
 }
 
 bool MutIconShape::Layout() {
-	int w = 0, h = 0, y = Icon.GetHeight();
+	int w = 0, h = 0, y = Icon.GetHeight() + borderOffset.y;
 	GetVirtualSize(&w, &h);
 	if (staticText) {
 		staticText->Move(0,y);

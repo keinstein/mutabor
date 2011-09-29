@@ -2,16 +2,24 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.51 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.52 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.51 $
+ * \date $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.52 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.51  2011/09/27 20:13:23  keinstein
+ * Revision 1.52  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.51  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -322,6 +330,7 @@
 #include "MutTextBox.h"
 #include "MutBitmaps.h"
 #include "GUIBoxData.h"
+#include "DebugRoute.h"
 
 using namespace mutabor;
 using namespace mutaborGUI;
@@ -945,6 +954,8 @@ namespace mutaborGUI {
 #ifdef DEBUG
 		DEBUGLOG (gui, _T("Restoring state for debugging"));
 		wxGetApp().RestoreState();
+
+		DebugCheckRoutes();
 #endif
 
 		AktionTraceReset();

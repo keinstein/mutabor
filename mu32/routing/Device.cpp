@@ -4,16 +4,24 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.8 2011/09/28 07:35:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.9 2011/09/29 05:26:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/28 07:35:53 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/29 05:26:58 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.8  2011/09/28 07:35:53  keinstein
+ * Revision 1.9  2011/09/29 05:26:58  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.8  2011-09-28 07:35:53  keinstein
  * Make distclean happy
  *
  * Revision 1.7  2011-09-27 20:13:21  keinstein
@@ -134,6 +142,8 @@ namespace mutabor {
 			std::find(routes.begin(),routes.end(),route);
 		bool found = i != routes.end();
 		wxASSERT(found);
+		(*i) = NULL;// list can save some memory for reuse,
+		            // but route must be deleted
 		routes.erase(i);
 		return found;
 	}

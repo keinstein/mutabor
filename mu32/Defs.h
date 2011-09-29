@@ -2,16 +2,24 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.20 2011/09/28 07:35:53 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.21 2011/09/29 05:26:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/28 07:35:53 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/09/29 05:26:58 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.20  2011/09/28 07:35:53  keinstein
+ * Revision 1.21  2011/09/29 05:26:58  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.20  2011-09-28 07:35:53  keinstein
  * Make distclean happy
  *
  * Revision 1.19  2011-09-28 05:35:47  keinstein
@@ -279,25 +287,30 @@ public:
 };			
 
 template <class intrusive_ptr_T>
+inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)
+{
+	if (!obj) return 0;
+	return obj->intrusive_ptr_refcount;
+}
+
+template <class intrusive_ptr_T>
 inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
 	++(obj->intrusive_ptr_refcount);
+	DEBUGLOGTYPE(smartptr,*obj,_T("Incrementing %p to %d"),
+		  obj,intrusive_ptr_get_refcount(obj));
 }
 
 template <class intrusive_ptr_T>
 inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
+	DEBUGLOGTYPE(smartptr,*obj,_T("Decrementing %p from %d"),
+		  obj,intrusive_ptr_get_refcount(obj));
 	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
 }
 
-template <class intrusive_ptr_T>
-inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)
-{
-	if (!obj) return 0;
-	return obj->intrusive_ptr_refcount;
-}
 							      
 #define REFPTR_INTERFACE						\
 	public:								\
