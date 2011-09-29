@@ -2,16 +2,24 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.6 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.7 2011/09/29 05:26:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/29 05:26:58 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.6  2011/09/27 20:13:22  keinstein
+ * Revision 1.7  2011/09/29 05:26:58  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.6  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -202,7 +210,9 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Guido File Output"));
 		STUBC;
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -230,7 +240,9 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Guido File Output"));
 		STUBC;
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -258,7 +270,9 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-	
+		config.toLeaf(_T("Guido File Input"));
+		// ...
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -275,7 +289,7 @@ namespace mutabor {
 		wxASSERT(oldpath == config.GetPath());
 	}
 
-/// Loade route settings (filter settings) for a given route
+/// Load route settings (filter settings) for a given route
 /** Some route settings (e.g. filter settings) are device type 
  * specific. This function loads them from a tree storage.
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
@@ -286,6 +300,9 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Guido File Input"));
+		// ...
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 

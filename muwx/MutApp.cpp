@@ -2,17 +2,25 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.49 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.50 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.49 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.50 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.49  2011/09/27 20:13:23  keinstein
+ * Revision 1.50  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.49  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -248,6 +256,7 @@
 #include "muwx/Routing/GUIRoute.h"
 #include "muwx/configtree.h"
 #include "mu32/box.h"
+#include "muwx/Routing/DebugRoute.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>
@@ -1510,19 +1519,29 @@ namespace mutaborGUI {
 				if (routewnd) break;
 			}
 		}
-		if (routewnd) {
+/*		if (routewnd) {
 			routewnd->ClearDevices();
 		}
-	
+*/	
 		// emty lists
 		InputDeviceClass::ClearDeviceList();
 		OutputDeviceClass::ClearDeviceList();
 		RouteClass::ClearRouteList();
 
+		DebugCheckRoutes();
+
 		LoadRoutes(config);
+
+		DebugCheckRoutes();
 
 		if (routewnd) {
 			routewnd->InitDevices();
+			routewnd->Layout();
+			routewnd->FitInside();
+			routewnd->Refresh();
+			routewnd->Update();
+
+			DebugCheckRoutes();
 		}
 
 		config->SetPath(oldpath);

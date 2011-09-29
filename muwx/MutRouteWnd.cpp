@@ -2,17 +2,25 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.23 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.24 2011/09/29 05:26:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.23 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.23  2011/09/27 20:13:23  keinstein
+ * Revision 1.24  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.23  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -152,7 +160,10 @@ MutRouteWnd::MurFileDataType MutRouteWnd::MurFileData;
 
 MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& size)
         : wxScrolledWindow(parent, wxID_ANY, pos, size, 
-                           wxVSCROLL|wxHSCROLL|wxTAB_TRAVERSAL, wxT("Route"))
+                           wxVSCROLL|wxHSCROLL|wxTAB_TRAVERSAL, wxT("Route")),
+	  InputSizer(NULL),
+	  OutputSizer(NULL),
+	  BoxSizer(NULL)
 {
 	DevIcon[DTUnknown] = new ICON(devunknown);
 	DevIcon[DTMidiPort] = new ICON(devmidiport);
@@ -233,18 +244,20 @@ void MutRouteWnd::InitDevices()
 
 void MutRouteWnd::ClearDevices()
 {
-  ClearInputDevices();
-  ClearBoxes();
-  ClearOutputDevices();
+	ClearInputDevices();
+	ClearBoxes();
+	ClearOutputDevices();
 }
 
 void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 
 {
         MutInputDeviceShape::SetSizerFlags(flags);
-        InputSizer = new wxGridSizer(1);
 
-	GetSizer()->Add(InputSizer, 0, wxEXPAND);
+	if (!InputSizer) {
+		InputSizer = new wxGridSizer(1);
+		GetSizer()->Add(InputSizer, 0, wxEXPAND);
+	}
   
 	const InputDeviceList & list = 
 		InputDeviceClass::GetDeviceList();
@@ -269,12 +282,13 @@ void MutRouteWnd::ClearInputDevices()
 void MutRouteWnd::createBoxes(wxSizerFlags flags)
 {
         MutBoxShape::SetSizerFlags(flags);
-	BoxSizer = new wxGridSizer (1);			
+
+	if (!BoxSizer) {
+		BoxSizer = new wxGridSizer (1);			
+		GetSizer()->Add(BoxSizer, 0, wxEXPAND);
+	}
+
 	MutBoxShape * boxShape;
-
-
-	GetSizer()->Add(BoxSizer, 0, wxEXPAND);
-
 	const routeListType & list = RouteClass::GetRouteList();
         for (routeListType::const_iterator Route = list.begin();
              Route != list.end(); ++Route) {
@@ -383,9 +397,11 @@ void MutRouteWnd::createOutputDevices(wxSizerFlags flags)
 
 {
 	MutOutputDeviceShape::SetSizerFlags(flags);
-	OutputSizer = new wxGridSizer (1);
 	
-	GetSizer()->Add(OutputSizer, 0, wxEXPAND | wxALL,0);
+	if (!OutputSizer) {
+		OutputSizer = new wxGridSizer (1);
+		GetSizer()->Add(OutputSizer, 0, wxEXPAND | wxALL,0);
+	}
 
 	const OutputDeviceList & list = 
 		OutputDeviceClass::GetDeviceList();

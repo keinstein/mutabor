@@ -3,16 +3,24 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.5 2011/09/29 05:26:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/29 05:26:59 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * Revision 1.5  2011/09/29 05:26:59  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.4  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -278,7 +286,9 @@ namespace mutaborGUI {
 		else route = r;
 	}
 	void MutBoxChannelShape::Detatch(mutabor::Route r) {
-		if (route != r) UNREACHABLEC;
+		wxASSERT (route == r);
+		if (route) 
+			ToGUIBase(route).Detatch(this);
 		route = NULL;
 	}
 

@@ -2,15 +2,23 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.8 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.9 2011/09/29 05:26:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.8 $
+ * \date $Date: 2011/09/29 05:26:58 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.8  2011/09/27 20:13:22  keinstein
+ * Revision 1.9  2011/09/29 05:26:58  keinstein
+ * debug intrusive_ptr
+ * fix storage and retrieving of input/output devices in treestorage
+ * save maximum border size in icons
+ * Apply the calculated offset in IconShape (box and box channels still missing)
+ * Fix debug saving and restoring route information/route window on activation
+ * Add wxWANTS_CHARS to MutEditWindow
+ *
+ * Revision 1.8  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -266,10 +274,12 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Midi File Output"));
 		wxASSERT(route);
 		config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
 		config.Write(_T("Channel Range From"), route->OFrom);
 		config.Write(_T("Channel Range To"), route->OTo);
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -298,11 +308,12 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Midi File Output"));
 		wxASSERT(route);
 		route->ONoDrum = config.Read (_T("Avoid Drum Channel"), true);
 		int oldfrom, oldto;
-		oldfrom = route->OFrom = config.Read(_T("Channel From"), GetMinChannel());
-		oldto = route->OTo = config.Read(_T("Channel To"), GetMaxChannel());
+		oldfrom = route->OFrom = config.Read(_T("Channel Range From"), GetMinChannel());
+		oldto = route->OTo = config.Read(_T("Channel Range To"), GetMaxChannel());
 		bool correct = true;
 		if (route->OFrom < GetMinChannel()) {
 			correct = false;
@@ -316,6 +327,7 @@ namespace mutabor {
 			wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
 						      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
 				     _("Warning loading route"),wxICON_EXCLAMATION);
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -639,6 +651,7 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Midi File Input"));
 		config.Write(_T("Filter Type"), route->Type);
 		switch(route->Type) {
 		case RTchannel: 
@@ -653,7 +666,7 @@ namespace mutabor {
 		case RTall:
 			break;
 		}
-			
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
@@ -682,6 +695,7 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
+		config.toLeaf(_T("Midi File Input"));
 		route -> Type = (RouteType) config.Read(_T("Filter Type"), (int)RTchannel);
 		switch(route->Type) {
 		case RTchannel: 
@@ -728,6 +742,7 @@ namespace mutabor {
 		case RTall:
 			break;
 		}
+		config.toParent();
 		wxASSERT(oldpath == config.GetPath());
 	}
 
