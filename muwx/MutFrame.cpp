@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.52 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.53 2011/09/30 09:10:25 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.52 $
+ * \date $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.53 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.52  2011/09/29 05:26:59  keinstein
+ * Revision 1.53  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.52  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -366,7 +369,6 @@ namespace mutaborGUI {
 #define APPNAME _(PACKAGE_NAME)
 
 //wxString RcfFile = wxT("Routes.cfg");
-	MutFrame* theFrame = 0;
 	bool demo = false;
 
 	bool asTS = true;
@@ -491,13 +493,15 @@ namespace mutaborGUI {
 	//    EVT_SIZE(MutFrame::OnSize)
 	END_EVENT_TABLE()
 
-	// ===========================================================================
+	// ========================================================================
 	// implementation
-	// ===========================================================================
+	// ========================================================================
 
-	// ---------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
 	// MutFrame
-	// ---------------------------------------------------------------------------
+	// ------------------------------------------------------------------------
+
+	MutFrame * MutFrame::ActiveWindow = NULL;
 
 	// Define my frame constructor
 	MutFrame::MutFrame(wxFrame *parent,
@@ -709,8 +713,9 @@ namespace mutaborGUI {
 
 			}
 		*/
-		std::cout << "Skippen? " << event.GetSkipped() <<
-			" Propagate? " << event.ShouldPropagate() << std::endl;
+		DEBUGLOG(eventqueue,_T("Skippen? %d, Propagate? %d"),
+			 event.GetSkipped(), event.ShouldPropagate());
+		       
 
 		//        if (!GetClientWindow()->ProcessEvent(event)) {
 		//	std::cout << "Event ignoriert von:" << GetClientWindow()->GetName().fn_str() << std::endl;
@@ -725,7 +730,7 @@ namespace mutaborGUI {
 		}
 
 		//	}text.mb_str(*wxConvFileName)
-		std::cout << frame << std::endl;
+		DEBUGLOG(other,_T("frame: %p"),frame);
 
 		event.Skip();
 
@@ -733,9 +738,9 @@ namespace mutaborGUI {
 
 	void MutFrame::OnCloseWindow(wxCloseEvent& event)
 	{
-		DEBUGLOG (other, _T("%x == %x"),this,theFrame);
+		DEBUGLOG (other, _T("%x == %x"),this,ActiveWindow);
 
-		if (theFrame == this) {
+		if (ActiveWindow == this) {
 			DEBUGLOG (other, _T("We are the active window."));
 
 			if ( event.CanVeto() ) {
@@ -824,12 +829,7 @@ namespace mutaborGUI {
 			return;
 
 
-#ifdef DEBUG
-		std::cerr << "MutFrame:CmFileOpen " << CM_EXECUTE << " == "
-			  << event . GetId () << "?" << std::endl;
-
-#endif
-
+		DEBUGLOG(other,_T("%d == %d?"),CM_EXECUTE, event.GetId());
 
 		switch (event.GetId()) {
 
@@ -877,10 +877,8 @@ namespace mutaborGUI {
 
 		MutEditFile * editor = new MutEditFile(this, wxPoint(0, 0), wxDefaultSize);
 
-#ifdef DEBUG
-		std::cout << "MutFrame::OpenFile(): Loading " << (path.fn_str()) << std::endl;
+		DEBUGLOG(other,_T("Loading %s"),(const wxChar *)path);
 
-#endif
 		if (!(!path))
 			editor->LoadFile(path);
 
@@ -977,7 +975,7 @@ namespace mutaborGUI {
 						 wxYES_NO | wxICON_QUESTION
 						 /*| MB_DEFBUTTON2*/) == wxNO);
 
-		theFrame = this;
+		ActiveWindow = this;
 
 		if ( !Activate(RealTime, &UpdateUIcallback) )
 			return;
@@ -986,7 +984,9 @@ namespace mutaborGUI {
 
 		DEBUGLOG(other,_T("Initialize state"));
 
-		// Variablen initialisieren
+		// Initialize boxes
+		// assure that all boxes are initialized as we might activeate 
+		// them during operation later
 		for (int box = 0; box < MAX_BOX; box++) {
 			BoxData & boxdata = BoxData::GetBox(box);
 			boxdata.reset();
@@ -1041,18 +1041,8 @@ namespace mutaborGUI {
 //	if ( !OWM ) {
 		size_t i = minimal_box_used;
 		do {
-			mutabor_box_type & b = mut_box[i];
-			BoxData * boxdata = static_cast<BoxData *> 
-				(b.userdata);
-			if (boxdata) {
-				if (boxdata->WantKeyWindow())
-					TextBoxOpen(WK_KEY, i);
-				if (boxdata->WantTonesystemWindow())
-					TextBoxOpen(WK_TS, i);
-				if (boxdata->WantActionsWindow())
-					TextBoxOpen(WK_ACT, i);
-			}
-			i = b.next_used;
+			BoxWindowsOpen(i,false);
+			i = mut_box[i].next_used;
 		} while (i);
 //	}
 
@@ -1100,10 +1090,9 @@ namespace mutaborGUI {
 	{
 
 		wxMenu * menu = item->GetSubMenu();
-#ifdef DEBUG
-		DEBUGLOG (other, _T("item: %s\n"),(item->GetItemLabel()).c_str())
-			std::cerr << " (" << item << ")" << std::endl;
-#endif
+		DEBUGLOG (other, _T("item: '%s' on %p\n"),
+			  (item->GetItemLabel()).c_str(),
+			  item);
 
 		if (! menu) return;
 
@@ -1134,13 +1123,13 @@ namespace mutaborGUI {
 	{
 		if (!RaiseTheFrame()) {
 			DEBUGLOG (other, _T("Calling Logic frame for id %d"), event.GetId());
-			theFrame -> RaiseLogic(event);
+			ActiveWindow -> RaiseLogic(event);
 			return;
 		}
 
 		DEBUGLOG (other, _T("Reached logic frame"));
 
-		wxASSERT(theFrame == this);
+		wxASSERT(ActiveWindow == this);
 		DEBUGLOG (other, _T("%d"),event.GetId());
 
 		size_t i = 0;
@@ -1198,12 +1187,12 @@ namespace mutaborGUI {
 			wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
 			wxASSERT(boxSelector->IsSubMenu());
 
-			theFrame -> CloseAll();
+			ActiveWindow -> CloseAll();
 
 			AktionTraceReset();
 
 			repaint_route();
-			theFrame = NULL;
+			ActiveWindow = NULL;
 		}
 	}
 
@@ -1255,20 +1244,18 @@ namespace mutaborGUI {
 			return;
 		}
 
-//	MutFrame *subframe = new MutFrame((wxFrame *) NULL,WK_ROUTE, wxString().Format(_("%s -- Routes"),_(PACKAGE_NAME)),
-//		wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxHSCROLL | wxVSCROLL);
-//	subframe->SetIcon(ICON(route));
-
 		SetId(WK_ROUTE);
 
 		int width, height;
-
 		GetClientSize(&width, &height);
 
-		client = new MutRouteWnd(this, wxPoint(0, 0), wxSize(width, height));
+		client = new MutRouteWnd(this, 
+					 wxPoint(0, 0), 
+					 wxSize(width, height));
 
-		auimanager.AddPane(client,wxAuiPaneInfo().Caption(_("Routes")).CenterPane().PaneBorder(false));
-
+		auimanager.AddPane(client,
+				   wxAuiPaneInfo().Caption(_("Routes"))
+				   .CenterPane().PaneBorder(false));
 		auimanager.Update();
 
 		SetIcon(ICON(route));
@@ -1276,26 +1263,12 @@ namespace mutaborGUI {
 		if (LogicOn) UpdateBoxMenu();
 	
 		SetSize(wxDefaultSize);
-
-//	subframe->Show(true);
-
 	}
 
 // TextBox-Arbeit: ToggleTextBox, TextBoxOpen, CmToggleKey, CmToggleTS
 
 	void MutFrame::LogicWinOpen(int box)
 	{
-//  TMDIChild* curChild = Client->GetActiveMDIChild();
-		/*  TMDIMutChild *Win = new TMDIMutChild(WK_LOGIC, GeWinAttr(WK_LOGIC, box), *Client, "", new TMutWin(0, Module));
-		    Win->SetIcon(this, IDI_MUTABOR);
-		    Win->SetIconSm(this, IDI_MUTABOR);
-		    if (curChild && (curChild->GetWindowLong(GWL_STYLE) & WS_MAXIMIZE))
-		    Win->Attr.Style |= WS_MAXIMIZE;
-		    Win->Create();*/
-//	MutChild *subframe = NewFrame(WK_LOGIC, box, _("Logic"), ICON(mutabor));
-
-
-
 		int width, height;
 		GetClientSize(&width, &height);
 		width /= 2;
@@ -1305,9 +1278,12 @@ namespace mutaborGUI {
 						      wxSize(width,height));
 		wxString Name;
 		Name.Printf(_("Logic -- Box %d"),box);
-		DEBUGLOG (other, _T("Adding pane '%s' with caption '%s'"), Name.Format(_T("Logic%d"),box).c_str(),Name.c_str());
+		DEBUGLOG (other, _T("Adding pane '%s' with caption '%s'"), 
+			  Name.Format(_T("Logic%d"),box).c_str(),Name.c_str());
 		auimanager.AddPane(client,
-				   wxAuiPaneInfo().Name(Name.Format(_T("Logic%d"),box))
+				   wxAuiPaneInfo().Name(Name.Format(_T("Logic%d"),
+								    box)
+					   )
 				   .Bottom()
 				   .Floatable(true)
 				   .CloseButton(false)
@@ -1321,8 +1297,8 @@ namespace mutaborGUI {
 	void MutFrame::ToggleTextBox(WinKind kind)
 	{
 
-		if (theFrame && (theFrame != this)) {
-			theFrame->ToggleTextBox(kind);
+		if (ActiveWindow && (ActiveWindow != this)) {
+			ActiveWindow->ToggleTextBox(kind);
 			return;
 		}
 
@@ -1370,16 +1346,65 @@ namespace mutaborGUI {
 		DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,curBox,IsOpen(kind, curBox));
 		wxASSERT(IsOpen(kind,curBox) == !openclose);
 
-		if ( win && !openclose ) {
-			//Get(kind, curBox)->Win->SendMessage(WM_CLOSE);
+		if (openclose) {
+			TextBoxOpen(kind, curBox);
+		} else if (win) {
 			auimanager.DetachPane(win);
 			win->Close();
 			auimanager.Update();
-			//win->Close();
-			//win->Destroy();
-		} else if (openclose)
-			TextBoxOpen(kind, curBox);
+		} 
 	}
+
+
+	void MutFrame::DoBoxWindowsOpen(int box, bool update) {
+		mutabor_box_type & b = mut_box[box];
+		BoxData * boxdata = static_cast<BoxData *> 
+			(b.userdata);
+		if (boxdata) {
+			if (boxdata->WantKeyWindow())
+				TextBoxOpen(WK_KEY, box);
+			if (boxdata->WantTonesystemWindow())
+				TextBoxOpen(WK_TS, box);
+			if (boxdata->WantActionsWindow())
+				TextBoxOpen(WK_ACT, box);
+		}
+
+		LogicWinOpen(box); // updates already
+
+		// if (!update) return;
+
+		// we do not save the window properties on 
+		// a per box state so we cannot just load the 
+		// data from the config.
+		// auimanager.Update();
+	}
+		
+	void MutFrame::DoBoxWindowsClose(int box,bool update) {
+		if (MIN_BOX> box || box >= MAX_BOX) {
+			UNREACHABLEC;
+			return;
+		}
+			
+		BoxData & boxdata = BoxData::GetBox(box);
+		wxWindow * win;
+		win = boxdata.GetLogicWindow();
+		if (win) 
+			CloseClientWindow(win);
+		win = boxdata.GetKeyWindow();
+		if (win) 
+			CloseClientWindow(win);
+		win = boxdata.GetTonesystemWindow();
+		if (win) 
+			CloseClientWindow(win);
+		win = boxdata.GetActionsWindow();
+		if (win) 
+			CloseClientWindow(win);
+
+		if (update)
+			auimanager.Update();
+	}
+
+
 
 	void MutFrame::TextBoxOpen(WinKind kind, int box, bool update_auimanager)
 	{
@@ -1599,8 +1624,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			ChildToClose->Close();
 	}
 
-// Windowsize -------------------------------------------------------
+#if 0
 
+// Windowsize -------------------------------------------------------
 	wxSize subSize = wxDefaultSize;
 
 	int WSize[4][3] =
@@ -1613,7 +1639,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	{
 		wxLogWarning(_("MutFrame::WindowSize:  not implemented" ));
 		STUBC;
-#if 0
 
 		if ( !subSize.IsFullySpecified() ) {
 			wxScreenDC *sdc = new wxScreenDC();
@@ -1703,8 +1728,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				};
 		}
 
-#endif
 	}
+#endif
 
 //
 // Save the the position and contents of the windows to the "desktop" file.
@@ -2144,7 +2169,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 		for (size_t i = 0; i < MAX_BOX; i++) {
 			if (mut_box[i].used) {
-				if (theFrame == this) LogicWinOpen(i);
+				//if (ActiveWindow == this) LogicWinOpen(i);
 
 				if (!boxCommandIds[i]) {
 					boxCommandIds[i]=wxNewId();
@@ -2178,9 +2203,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	bool MutFrame::RaiseTheFrame()
 	{
-		if (this == theFrame) return true;
+		if (this == ActiveWindow) return true;
 
-		theFrame->Raise();
+		ActiveWindow->Raise();
 
 		return false;
 	}

@@ -2,16 +2,19 @@
 ********************************************************************
 * Description
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.h,v 1.4 2011/09/27 20:13:22 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.h,v 1.5 2011/09/30 09:10:24 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/09/27 20:13:22 $
-* \version $Revision: 1.4 $
+* $Date: 2011/09/30 09:10:24 $
+* \version $Revision: 1.5 $
 * \license GPL
 *
 * $Log: DevGIS.h,v $
-* Revision 1.4  2011/09/27 20:13:22  keinstein
+* Revision 1.5  2011/09/30 09:10:24  keinstein
+* Further improvements in the routing system.
+*
+* Revision 1.4  2011-09-27 20:13:22  keinstein
 * * Reworked route editing backend
 * * rewireing is done by RouteClass/GUIRoute now
 * * other classes forward most requests to this pair
@@ -102,7 +105,7 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route) Route whos data shall be saved.
 		 */
-		virtual void Save (tree_storage & config, const Route route);
+		virtual void Save (tree_storage & config, const RouteClass * route);
 	
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
@@ -115,7 +118,7 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
-		virtual void Load (tree_storage & config, Route route);
+		virtual void Load (tree_storage & config, RouteClass * route);
 
 	
 		virtual bool Open()
@@ -133,11 +136,11 @@ namespace mutabor {
 			};
 
 		virtual void NoteOn(int box, int taste, int velo,
-				    Route r, int channel, ChannelData *cd)
+				    RouteClass * r, int channel, ChannelData *cd)
 			{};
 
 		virtual void NoteOff(int box, int taste,
-				     int velo, Route r, int channel)
+				     int velo, RouteClass * r, int channel)
 			{};
 
 		virtual void NotesCorrect(int box)
@@ -163,7 +166,7 @@ namespace mutabor {
 				Head->AddTime(time);
 			}
 
-		virtual void Quite(Route r)
+		virtual void Quite(RouteClass * r)
 			{};
 
 		virtual DevType GetType() const
@@ -251,7 +254,7 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route ) Route whos data shall be saved.
 		 */
-		virtual void Save (tree_storage & config, const Route route);
+		virtual void Save (tree_storage & config, const RouteClass * route);
 	
 	
 		/// Load current device settings from a tree storage
@@ -265,7 +268,7 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
-		virtual void Load (tree_storage & config, Route route);
+		virtual void Load (tree_storage & config, RouteClass * route);
 
 	
 		virtual bool Open();

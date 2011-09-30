@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.4 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.5 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.cpp,v $
- * Revision 1.4  2011/09/27 20:13:22  keinstein
+ * Revision 1.5  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.4  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -58,6 +61,8 @@
 // ---------------------------------------------------------------------------
 
 #include "GUIBoxData.h"
+#include "mu32/routing/Route.h"
+#include "muwx/MutFrame.h"
 
 namespace mutaborGUI {
 	size_t curBox = 0;
@@ -86,6 +91,88 @@ namespace mutaborGUI {
 		wxASSERT(!winattr.logic_window);
 	}
 
+
+	void BoxData::CloseRoute(int boxid) {
+		// if logic is off we are not resposible
+		if (!LogicOn) return;
+		// check whether the windows should be closed
+		const mutabor::routeListType & list 
+			= mutabor::RouteClass::GetRouteList();
+		for (mutabor::routeListType::const_iterator i
+			     = list.begin();
+		     i != list.end(); i++) {
+			if ((*i)->GetBox() ==  boxid) return;
+		}
+		CloseBox(boxid);
+	}
+
+	void BoxData::CloseBox(int boxid) {
+		if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
+			UNREACHABLECT(BoxData);
+			return;
+		}
+		
+		if (boxid < 0) return;
+
+		int tmp = minimal_box_used;
+		if (boxid == tmp) {
+			if (mut_box[tmp].next_used) {
+				minimal_box_used = mut_box[tmp].next_used;
+			}
+		} else {
+			do {
+				tmp = mut_box[tmp].next_used;
+				wxASSERT(tmp);
+			} while (tmp && mut_box[tmp].next_used != boxid) ;
+			if (!tmp) {
+				UNREACHABLECT(BoxData);
+				return;
+			}
+			mut_box[tmp].next_used = mut_box[boxid].next_used;
+		}
+		mut_box[boxid].used = 0;
+		mut_box[boxid].next_used = 0;
+		MutFrame::BoxWindowsClose(boxid,true);
+	}
+
+	
+	void BoxData::OpenRoute(int boxid) {
+		// if logic is off we are not resposible
+		if (!LogicOn) return;
+		// in contrast to CloseRoute we do not have to precheck the routes
+		OpenBox(boxid);
+	}
+	void BoxData::OpenBox(int boxid) {
+		if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
+			UNREACHABLECT(BoxData);
+			return;
+		}
+		
+		size_t box = boxid;
+		if (boxid < 0) return;
+		if (box == minimal_box_used) {
+			if (mut_box[box].used) 
+				return;
+			mut_box[box].next_used = 0;
+		} else if (box < minimal_box_used) {
+			mut_box[box].next_used = minimal_box_used;
+			minimal_box_used = box;
+		} else {
+			size_t tmp = minimal_box_used;
+			if (!tmp) return;
+			while (mut_box[tmp].next_used 
+			       && mut_box[tmp].next_used < boxid) {
+				tmp = mut_box[tmp].next_used;
+				if (tmp == box) return;
+			}
+			if (mut_box[tmp].next_used == boxid) return;
+			mut_box[box].next_used = mut_box[tmp].next_used;
+			mut_box[tmp].next_used = box;
+			
+		}
+		mut_box[box].used = 1;
+		MutFrame::BoxWindowsOpen(box,true);
+	}
 
 	bool BoxData::Save(wxConfigBase * config) {
 		config->Write(_T("KeyWindow"), 

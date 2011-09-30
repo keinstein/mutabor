@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.29 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.30 2011/09/30 09:10:25 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.29 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.30 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.29  2011/09/27 20:13:23  keinstein
+ * Revision 1.30  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.29  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -188,6 +191,7 @@
  */
 
 namespace mutaborGUI {
+
 	class MutView; // see MutView.h
 	class MutDocument; // see MutDocument.h
 
@@ -352,15 +356,29 @@ namespace mutaborGUI {
 
 		wxAuiDockArt* GetDockArt();
 
-		void WindowSize(MutChild *win);
+
+//		void WindowSize(MutChild *win);
 
 		void SaveState();
 
 		void RestoreState();
 
 		void LogicWinOpen(int box);
-
+		
 		void ToggleTextBox(WinKind kind);
+
+		static void BoxWindowsOpen(int box, bool update = true) {
+			if (ActiveWindow)
+				ActiveWindow -> DoBoxWindowsOpen(box,update);
+		}
+
+		static void BoxWindowsClose(int box, bool update = true) {
+			if (ActiveWindow)
+				ActiveWindow -> DoBoxWindowsClose(box,update);
+		}
+
+		void DoBoxWindowsOpen(int box, bool update = true);
+		void DoBoxWindowsClose(int box, bool update = true);
 
 		void TextBoxOpen(WinKind kind,
 				 int box, 

@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.30 2011/09/29 05:26:59 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.31 2011/09/30 09:10:25 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/29 05:26:59 $
-* \version $Revision: 1.30 $
+* $Date: 2011/09/30 09:10:25 $
+* \version $Revision: 1.31 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.30  2011/09/29 05:26:59  keinstein
+* Revision 1.31  2011/09/30 09:10:25  keinstein
+* Further improvements in the routing system.
+*
+* Revision 1.30  2011-09-29 05:26:59  keinstein
 * debug intrusive_ptr
 * fix storage and retrieving of input/output devices in treestorage
 * save maximum border size in icons
@@ -479,7 +482,8 @@ namespace mutaborGUI {
 
 	wxString MutEditFile::GetValue() const
 	{
-		std::cout << "MutEditFile::GetValue()" << std::endl;
+
+		DEBUGLOG(other,_T(""));
 		// range 0..-1 is special for GetRange() and means to retrieve all text
 		return GetRange(0, -1);
 	}
@@ -1539,7 +1543,8 @@ namespace mutaborGUI {
 	wxString MutEditFile::GetRange(long from, long to) const
 
 	{
-		std::cout << "MutEditFile::GetRange ("<< from << ", " << to << ")" << std::endl;
+		
+		DEBUGLOG(other,_T("(from %ld, to %ld)"),from,to);
 		wxString str;
 
 		if ( from >= to && to != -1 ) {
@@ -1550,13 +1555,14 @@ namespace mutaborGUI {
 #if wxUSE_RICHEDIT
 		if ( IsRich() ) {
 			int len = GetWindowTextLength(GetHwnd());
-			std::cout << "MutEditFile::GetRange: len = "<< len << std::endl;
+
+			DEBUGLOG(other,_T("len = %d"),len);
 
 			if ( len > from ) {
 				if ( to == -1 )
 					to = len;
 
-				std::cout << "MutEditFile::GetRange: to  = "<< to << std::endl;
+				DEBUGLOG(other,_T("to = %d"), to);
 
 #if !(wxUSE_UNICODE || wxUSE_WCHAR_T)
 				// we must use EM_STREAMOUT if we don't want to lose all characters
@@ -1586,16 +1592,17 @@ namespace mutaborGUI {
 
 					str = StreamOut(encoding);
 
-					std::cout << "str = StreamOut(encoding);" << std::endl;
 
-					std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+					DEBUGLOG(other,_T("str.Len() = %d"),
+						 str.Len());
 
 					if ( !str.empty() ) {
 						// we have to manually extract the required part, luckily
 						// this is easy in this case as EOL characters in str are
 						// just LFs because we remove CRs in mutRichEditStreamOut
 						str = str.Mid(from, to - from);
-						std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+						DEBUGLOG(other,_T("str.Len() = %d"),
+							 str.Len());
 					}
 				}
 
@@ -1640,14 +1647,12 @@ namespace mutaborGUI {
 			// retrieve all text
 			str = wxGetWindowText(GetHWND());
 
-		std::cout << "str = wxGetWindowText(GetHWND());" << std::endl;
-
-		std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+		DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
 
 		// need only a range?
 		if ( from < to ) {
 			str = str.Mid(from, to - from);
-			std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+			DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
 		}
 
 		// WM_GETTEXT uses standard DOS CR+LF (\r\n) convention - convert to the
@@ -1655,7 +1660,7 @@ namespace mutaborGUI {
 		// of controls and, more importantly, with the other ports
 		str = wxTextFile::Translate(str, wxTextFileType_Unix);
 
-		std::cout << "MutEditFile::GetRange: str.Len  = "<< (str.Len()) << std::endl;
+		DEBUGLOG(other,_T("str.Len() = %d"), str.Len());
 	}
 
 	return str;
@@ -1741,9 +1746,8 @@ struct wxStreamOutData
 DWORD CALLBACK
 mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 {
-	std::cout << "::mutRichEditStreamOut: dwCookie = " << dwCookie <<
-		" buf = " << buf <<
-		" cb = " << cb << " pcb = " << pcb << std::endl;
+	DEBUGLOG(other,_T("dwCookie = %p, buf = %p, cb = %ld, pcb = %p"),
+		 dwCookie, buf, cb, pcb);
 	*pcb = 0;
 
 	wxStreamOutData *data = (wxStreamOutData *)dwCookie;
@@ -1752,7 +1756,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 
 	wchar_t *wpc = data->wpc;
 
-	std::cout << "::mutRichEditStreamOut: wpc = " << wpc << std::endl;
+	DEBUGLOG(other,_T("wpc = %ld"), wpc);
 
 	while ( cb ) {
 		wchar_t wch = *wbuf++;
@@ -1760,7 +1764,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 		string[sizeof(wchar_t)] = 0;
 		(wchar_t &)*string = wch;
 
-		std::cout << string;
+		DEBUGLOG(other,_T("%s"),(const wxChar *)wxString(string));
 
 		// turn "\r\n" into "\n" on the fly
 //        if ( wch != L'\r' ) {
@@ -1774,7 +1778,7 @@ mutRichEditStreamOut(DWORD_PTR dwCookie, BYTE *buf, LONG cb, LONG *pcb)
 
 	data->wpc = wpc;
 
-	std::cout << "::mutRichEditStreamOut: wpc = " << wpc << std::endl;
+	DEBUGLOG(other,_T("wpc = %ld"), wpc);
 
 	return 0;
 }
@@ -1862,7 +1866,7 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 
 	const int len = GetWindowTextLength(GetHwnd());
 
-	std::cout << "MutEditFile::StreamOut: len = " << len << std::endl;
+	DEBUGLOG(other,_T("len = %d"), len);
 
 //#if wxUSE_WCHAR_T
 //    wxWCharBuffer wchBuf(len+1);
@@ -1907,7 +1911,8 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 //#else
 		wchBuf[data.len] = 0;
 //#endif
-		std::cout << "MutEditFile::StreamOut: data.len = " << (data.len) << std::endl;
+
+		DEBUGLOG(other,_T("len = %d"), len);
 		wxString test("test");
 
 		// now convert to the given encoding (this is a possibly lossful
@@ -1915,11 +1920,10 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 		wxCSConv conv(encoding);
 		size_t lenNeeded = conv.WC2MB(NULL, wchBuf, 0);
 //        size_t lenNeeded = conv.MB2WC( wchBuf, NULL,0);
-		std::cout << "MutEditFile::StreamOut: lenNeeded = " << lenNeeded << std::endl;
-		std::cout << wchBuf[len] << " " << std:: endl;
-		std::cout << wchBuf[lenNeeded] << " " << std::endl;
-//		std::cout << (wxStringBuffer(out,lenNeeded+1)[lenNeeded]) << std::endl;
-		std::cout << "MutEditFile::StreamOut: len = " << len << std::endl;
+		DEBUGLOG(other,_T("len = %d"), len);
+		DEBUGLOG(other,_T("lenNeeded = %d"), lenNeeded);
+		DEBUGLOG(other,_T("wchBuf[len] = %d"), wchBuf[len]);
+		DEBUGLOG(other,_T("wchBuf[lenNeeded] = %d"), wchBuf[lenNeeded]);
 		out.Alloc(lenNeeded+1);
 		//wxStringBuffer buf(out, lenNeeded+1);
 
@@ -1930,8 +1934,11 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 			for (int i=0; i<= len; i++) {
 				(wchar_t &)*string = wchBuf[i];
 
-				std::cout << i << ": " << string << std::endl;
+				DEBUGLOG(other,_T("%d: %s"),
+					 i,(const wxChar *) wxString(string));
 				out[i] = *string;
+				DEBUGLOG(other,_T(" %s"),
+					 (const wxChar *) wxString(out));
 				std::cout<< out<<std::endl;
 			}
 
@@ -1939,11 +1946,7 @@ MutEditFile::StreamOut(wxFontEncoding encoding, bool selectionOnly) const
 //			conv.MB2WC(wchBuf,wxStringBuffer(out,lenNeeded+1),lenNeeded/2);
 		}
 
-		std::cout << "MutEditFile::StreamOut: lenNeeded = " << lenNeeded << std::endl;
-
-
-//		std::cout << "MutEditFile::StreamOut: test.Len() = " << (test.Len()) << std::endl;
-//		out = test;
+		DEBUGLOG(other,_T("lenNeeded = %d"), lenNeeded);
 	}
 
 

@@ -2,14 +2,17 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.16 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.17 2011/09/30 09:10:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.16 $
+ * \date $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.17 $
  * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.16  2011/09/27 20:13:21  keinstein
+ * Revision 1.17  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.16  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -75,6 +78,8 @@
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
+#include "Defs.h"
+#include "mutDebug.h"
 #include "Global.h"
 #include "Interpre.h"
 #include "GrafKern.h"
@@ -258,9 +263,7 @@ void show_line_number( int n )
 
 {
 #ifdef WX
-#ifdef DEBUG
-	std::cerr << "show_line_number(" << n << ") in WX mode " << std::endl;
-#endif
+	DEBUGLOG2(other,_T("No. %d in WX mode"),n);
 
 	if ( !CompDiaLine ) return;
 
@@ -273,10 +276,7 @@ void show_line_number( int n )
 	CompDiaLine->Refresh();
 
 #else
-#ifdef DEBUG
-	std::cerr << "show_line_number(" << n << ") in non-WX mode " << std::endl;
-
-#endif
+	DEBUGLOG2(other,_T("No. %d in non-WX mode"),n);
 #ifdef MUTWIN
 	if ( !CompDiaLine ) return;
 

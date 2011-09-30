@@ -2,14 +2,17 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.6 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.7 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.7 $
  *
  * $Log: MutConfDlg.h,v $
- * Revision 1.6  2011/09/27 20:13:23  keinstein
+ * Revision 1.7  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.6  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -83,7 +86,7 @@ namespace mutaborGUI {
 		~MutConfigDialog() {}
 
 		void CmHelp(wxCommandEvent& event) {
-			std::cerr << "MutConfigDialog::CmHelp" << std::endl;
+			DEBUGLOG(other,_T(""));
 			HelpController->Display(_("The setup dialog"));
 			event.Skip();
 		}

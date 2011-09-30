@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.50 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.51 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.50 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.51 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.50  2011/09/29 05:26:59  keinstein
+ * Revision 1.51  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.50  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -370,7 +373,9 @@ namespace mutaborGUI {
 		SetAppName(_T(PACKAGE));
 		SetClassName(_T(PACKAGE_NAME));
 
+#ifdef DEBUG
 		std::cerr << "Starting Mutabor..." << std::endl;
+#endif
         
 		wxStandardPaths& sp = (wxStandardPaths &) wxStandardPaths::Get();
 
@@ -908,11 +913,7 @@ namespace mutaborGUI {
 
 		frame->OpenFile(path);
 
-#ifdef DEBUG
-		std::cerr << "MutApp:CmFileOpen " << CM_EXECUTE << " == "
-			  << event.GetId() << "?" << std::endl;
-
-#endif
+		DEBUGLOG(other,_T("%d == %d?"),CM_EXECUTE,event.GetId());
 
 		switch (event.GetId()) {
 

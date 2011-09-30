@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.5 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.6 2011/09/30 09:10:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.5  2011/09/29 05:26:59  keinstein
+ * Revision 1.6  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.5  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -217,6 +220,7 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::Add(mutabor::Route r)
 	{
 		if (route) UNREACHABLEC;
+		DEBUGLOG(smartptr,_T("Adding route %p"),r.get());
 		route = r;
 	}
 
@@ -247,9 +251,12 @@ namespace mutaborGUI {
 	bool MutBoxChannelShape::Replace (mutabor::Route oldroute,
 					  mutabor::Route newroute) {
 		bool retval = oldroute == route;
-		if (retval)
+		if (retval) {
+			DEBUGLOG(smartptr,_T("Replacing route %p by %p"),
+				 oldroute.get(), newroute.get());
+
 			route = newroute;
-		else
+		} else
 			wxASSERT(retval);
 		return retval;
 	}
@@ -278,17 +285,26 @@ namespace mutaborGUI {
 			&& input == NULL && output == NULL;
 		if (!retval)
 			UNREACHABLEC;
+		if (retval) {
+			DEBUGLOG(smartptr,_T("removing route %p"),r.get());
+			route = NULL;
+		}
 		return retval;
 	}
 
 	void MutBoxChannelShape::Attatch(mutabor::Route r) {
 		if (route) UNREACHABLEC;
-		else route = r;
+		else {
+			DEBUGLOG(smartptr,_T("Atta(t)ching route %p"),r.get());
+			route = r;
+		}
+
 	}
 	void MutBoxChannelShape::Detatch(mutabor::Route r) {
 		wxASSERT (route == r);
 		if (route) 
 			ToGUIBase(route).Detatch(this);
+		DEBUGLOG(smartptr,_T("Deta(t)ching route %p"),r.get());
 		route = NULL;
 	}
 
@@ -347,9 +363,12 @@ namespace mutaborGUI {
 		else
 			input = NULL;
 		Route  route;
-		if (shape)
+		if (shape) {
+			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("setting intermediete route %p"),
+				 shape->route.get());
 			route = shape->route;
-		else
+		} else
 			route = NULL;
 	
 		panel->AddPage(new wxPanel(choiceBook),
@@ -372,6 +391,9 @@ namespace mutaborGUI {
 					 input == device,
 					 device);
 		}
+		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("End of function destruct pointer to  %p"),
+			 route.get());
 	}
 
 	void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
@@ -384,9 +406,12 @@ namespace mutaborGUI {
 	
 		if (!par || !panel) return;
 		Route  route;
-		if (shape)
+		if (shape) {
+			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("setting intermediete route %p"),
+				 shape->route.get());
 			route = shape->route;
-		else
+		} else
 			route = NULL;
 	
 		if (route)
@@ -413,6 +438,9 @@ namespace mutaborGUI {
 
 		if (!found)
 			panel->AddBox(NULL, true);
+		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("End of function destruct pointer to  %p"),
+			 route.get());
 	}
 
 	void MutBoxChannelShape::InitializeOutputFilter(OutputFilterPanel * panel, 
@@ -431,9 +459,12 @@ namespace mutaborGUI {
 		else
 			output = NULL;
 		Route  route;
-		if (shape)
+		if (shape) {
+			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("setting intermediete route %p"),
+				 shape->route.get());
 			route = shape->route;
-		else
+		} else
 			route = NULL;
 	
 		panel -> AddPage(new wxPanel(choiceBook),
@@ -456,6 +487,9 @@ namespace mutaborGUI {
 					  output == device, 
 					  device);
 		}
+		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("End of function destruct pointer to  %p"),
+			 route.get());
 	}
 
 	void MutBoxChannelShape::ReadPanel(RoutePanel * panel) 
@@ -466,6 +500,7 @@ namespace mutaborGUI {
 		if (!route) return;
 	
 		if (!panel->IsEnabled()) {
+			BoxData::CloseBox(route->GetBox());
 			route->Destroy();
 			/*
 			DetachChannel();
@@ -479,17 +514,25 @@ namespace mutaborGUI {
 			  panel->GetActive());
 		route->SetActive(panel->GetActive());
 	
+		int oldbox = route -> GetBox();
 		MutBoxShape * box = panel->GetBox();
 		if (!box) {
 			box = dynamic_cast<MutBoxShape *> (GetParent());
 			if (!box) UNREACHABLEC;
-		}  if (box != GetParent()) {
+		} else if (box != GetParent()) {
 			MutBoxShape * oldbox = 
 				dynamic_cast<MutBoxShape *>(GetParent());
 			wxASSERT(oldbox);
 			ToGUIBase(route).Reconnect(oldbox,box);
+			BoxData::CloseBox(oldbox->GetBoxId());
+			
 		}
-		
+		int newbox = box->GetBoxId();
+		if (oldbox != newbox) {
+			route -> SetBox(newbox);
+			BoxData::OpenBox(newbox);
+			BoxData::CloseBox(oldbox);
+		}
 	
 		OutputFilterPanel * outputPanel = panel->GetOutput();
 		if (!outputPanel) UNREACHABLEC;
