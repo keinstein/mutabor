@@ -1,4 +1,4 @@
-# forstyle.m4 serial 1 (mutabor)
+# forstyle.m4 serial 2 (mutabor)
 dnl Copyright (C) 2008 Tobias Schlemmer.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -15,7 +15,7 @@ AC_DEFUN([CXX_FOR_SCOPING],
       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[
 		for (int i = 1; i < 3; i++);
 		for (int i = 1; i < 4; i++);
-      ]])], cxx_cv_iso_for_loop_scope=yes, cxx_cv_iso_for_loop_scope=no)
+      ]])], [cxx_cv_iso_for_loop_scope=yes], [cxx_cv_iso_for_loop_scope=no])
       AC_LANG_POP(C++)
   ])
   if test $cxx_cv_iso_for_loop_scope = yes; then

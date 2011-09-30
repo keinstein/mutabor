@@ -1,4 +1,4 @@
-CLOCAL_AMFLAGS = -I m4 --install
+ACLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin /bin /usr/bin
