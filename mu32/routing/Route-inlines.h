@@ -2,12 +2,12 @@
  ********************************************************************
  * Inline functions from Route.h
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.1 2011/09/27 20:18:30 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.2 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:18:30 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: Route-inlines.h,v $
- * Revision 1.1  2011/09/27 20:18:30  keinstein
+ * Revision 1.2  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.1  2011-09-27 20:18:30  keinstein
  * add a file missed during last commit
  *
  ********************************************************************
@@ -71,11 +74,15 @@ namespace mutabor {
 		int oTo,
 		bool oNoDrum,
 		Route next) {
-		if (factory) 
-			return factory->DoCreate(in,out,type,iFrom,iTo,
+		if (factory) {
+			Route r = factory->DoCreate(in,out,type,iFrom,iTo,
 						 box,active,
-						 oFrom,oTo,oNoDrum/*,next*/);
-		else {
+						    oFrom,oTo,oNoDrum/*,next*/);
+			DEBUGLOGTYPE(smartptr,RouteFactory,
+				     _T("Shipping %p from factory"),
+				     r.get());
+			return r;
+		} else {
 			UNREACHABLECT(RouteFactory);
 			return NULL;
 		}

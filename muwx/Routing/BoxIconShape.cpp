@@ -3,16 +3,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.5 2011/09/30 09:10:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * Revision 1.5  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.4  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -105,6 +108,7 @@ namespace mutaborGUI {
 		x = 0;
 		y = 0;
 		wxRect size = GetRect();
+		y += borderOffset.y;
 		if (staticText) y += staticText->GetSize().y;
 		if (GetIcon().IsOk()) {
 			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
@@ -112,13 +116,19 @@ namespace mutaborGUI {
 			x = (size.width-GetIcon().GetWidth())/2;
 			dc.DrawIcon(GetIcon(), x, y);
 		}
+		
+		size.width -= 2* borderOffset.x;
+		size.height -= 2* borderOffset.y;
 
 		DEBUGLOG (other, _T("Focus %p and this %p"),FindFocus(),this);
 		if (FindFocus() == this) {
 			DEBUGLOG (other, _T("Painting Box"));
 			dc.SetPen(*wxBLACK_PEN);
 			dc.SetBrush(*wxTRANSPARENT_BRUSH);
-			dc.DrawRectangle(0,0,size.width,size.height);
+			dc.DrawRectangle(borderOffset.x,
+					 borderOffset.y,
+					 size.width,
+					 size.height);
 		}
 	}
 
@@ -126,7 +136,7 @@ namespace mutaborGUI {
 		if (!MutIconShape::Layout()) return false;
 		DEBUGLOG (other, _T(""));
 		if (staticText) {
-			staticText->Move(0,0);
+			staticText->Move(borderOffset.x,borderOffset.y);
 			staticText->CentreOnParent(wxHORIZONTAL);
 		}
 		return true;

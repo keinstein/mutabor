@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.27 2011/09/28 05:35:47 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.28 2011/09/30 09:10:25 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/28 05:35:47 $
- * \version $Revision: 1.27 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.27  2011/09/28 05:35:47  keinstein
+ * Revision 1.28  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.27  2011-09-28 05:35:47  keinstein
  * fix compiling on ubuntu
  *
  * Revision 1.26  2011-09-27 20:13:23  keinstein
@@ -524,7 +527,7 @@ namespace mutaborGUI {
 
 			if ( quer ) nx = (nTags + ny -1) / ny;
 		}
-		std::cout << nTags << nx << std::endl;
+		DEBUGLOG(other, _T("nTags = %d, nx = %d"),nTags,nx);
 
 		if  ( nx < 1 ) nx = 1;
 
@@ -532,7 +535,9 @@ namespace mutaborGUI {
 
 		int x = 4, y = 4, xi = 0;
 
-		std::cout << nx << MUTTAGX << ny << MUTTAGY << std::endl;
+		DEBUGLOG(other, 
+			 _T("nx = %d,  MUTTAGX = %d,  ny == %d,  MUTTAGY = %d"),
+			 nx, MUTTAGX, ny, MUTTAGY);
 
 		SetVirtualSize(nx*MUTTAGX+8, ny*MUTTAGY+8);
 
@@ -540,7 +545,8 @@ namespace mutaborGUI {
 
 		GetViewStart(&xv, &yv);
 
-		for (wxWindowList::iterator i = GetChildren().begin(); i!=GetChildren().end(); i++) {
+		for (wxWindowList::iterator i = GetChildren().begin(); 
+		     i!=GetChildren().end(); i++) {
 			wxWindow * Win= *i;
 			if ( Win->GetId() == CM_MUTTAG ) {
 				//			Win->Move(x - Scroller->XPos*Scroller->XUnit, y - Scroller->YPos*Scroller->YUnit, MUTTAGX, MUTTAGY, true);

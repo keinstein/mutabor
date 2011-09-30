@@ -3,16 +3,19 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.6 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.7 2011/09/30 09:10:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Route.cpp,v $
- * Revision 1.6  2011/09/27 20:13:21  keinstein
+ * Revision 1.7  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.6  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -83,7 +86,7 @@ namespace mutabor {
 	template <class I, class O>
 	TRouteClass<I,O>::~TRouteClass() 
 	{
-		DEBUGLOG(routing,_T("deleting %p"),this);
+		DEBUGLOG(smartptr,_T("deleting %p"),this);
 #ifdef DEBUG
 		typename routeListType::iterator r = 
 			std::find(routeList.begin(),

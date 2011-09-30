@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.4 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.5 2011/09/30 09:10:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: Route.h,v $
- * Revision 1.4  2011/09/27 20:13:21  keinstein
+ * Revision 1.5  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.4  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -181,6 +184,7 @@ namespace mutabor {
 		// To gain a little speed in realtime we use intrusive_ptr
 		typedef boost::intrusive_ptr<TRouteClass> Route;
 		typedef std::list<Route> routeListType;
+		typedef std::list<thistype *> routePtrList;
 	protected:
 		// private members: access only via access functions for debugging purposes
 
@@ -548,16 +552,17 @@ namespace mutabor {
 		static void LoadRoutes(tree_storage & config);
 
 		static void ClearRouteList() {
+			Route d;
 			while (!routeList.empty()) {
-#ifdef DEBUG
-				Route d = routeList.front();
-#endif
-				routeList.front()->Destroy();
-#ifdef DEBUG
+				wxASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
+
+				d = routeList.front();
+				d->Destroy();
+
 				wxASSERT(routeList.empty() || 
 					 d != routeList.front());
-#endif
 			}
+			wxASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
 		}
 #ifdef WX
 		virtual wxString TowxString() const;
@@ -575,6 +580,7 @@ namespace mutabor {
 	typedef TRouteClass<InputDevice,OutputDevice>::Route Route;
 	typedef TRouteClass<InputDevice,OutputDevice> RouteClass;
 	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
+	typedef TRouteClass<InputDevice,OutputDevice>::routePtrList routePtrList;
 
 	class RouteFactory { 
 	protected:

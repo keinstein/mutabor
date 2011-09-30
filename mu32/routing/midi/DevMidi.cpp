@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.10 2011/09/29 05:26:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.11 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:58 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.10  2011/09/29 05:26:58  keinstein
+ * Revision 1.11  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.10  2011-09-29 05:26:58  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -179,7 +182,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
  */
-	void OutputMidiPort::Save (tree_storage & config, const Route route)
+	void OutputMidiPort::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -216,7 +219,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route) Route whos data shall be loaded.
  */
-	void OutputMidiPort::Load (tree_storage & config, Route route)
+	void OutputMidiPort::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -319,7 +322,8 @@ namespace mutabor {
 		isOpen = false;
 	}
 
-	void OutputMidiPort::NoteOn(int box, int taste, int velo, Route r, int channel, ChannelData *cd)
+	void OutputMidiPort::NoteOn(int box, int taste, int velo, 
+				    RouteClass * r, int channel, ChannelData *cd)
 	{
 		DEBUGLOG (other, _T("box %d, key %d, velo %d, channel %d"),
 			  box, taste, velo, channel);
@@ -435,7 +439,8 @@ namespace mutabor {
 		}
 	};
 
-	void OutputMidiPort::NoteOff(int box, int taste, int velo, Route r, int channel)
+	void OutputMidiPort::NoteOff(int box, int taste, int velo, 
+				     RouteClass * r, int channel)
 	{
 		DEBUGLOG (midiio, _T("box %d, key %d, velo %d, channel %d"),
 			  box, taste, velo, channel);
@@ -580,7 +585,7 @@ namespace mutabor {
 
 #endif
 
-	void OutputMidiPort::Quite(Route r)
+	void OutputMidiPort::Quite(RouteClass * r)
 	{
 		DEBUGLOG (other, _T(""));
 
@@ -696,7 +701,7 @@ OutputMidiPort:\n\
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
  */
-	void InputMidiPort::Save (tree_storage & config, const Route route)
+	void InputMidiPort::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -742,7 +747,7 @@ OutputMidiPort:\n\
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
  */
-	void InputMidiPort::Load (tree_storage & config, Route route)
+	void InputMidiPort::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -898,10 +903,13 @@ InputMidiPort:\n\
 					AddKey(Box, (midiCode >> 8) & 0xff, route->GetId());
 
 				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()->NoteOn(Box, 
-									 (midiCode >> 8) & 0xff, 
-									 (midiCode >> 16) & 0xff,
-									 route, MidiChannel, &Cd[MidiChannel]);
+					route->GetOutputDevice()
+						->NoteOn(Box, 
+							 (midiCode >> 8) & 0xff, 
+							 (midiCode >> 16) & 0xff,
+							 route.get(),
+							 MidiChannel, 
+							 &Cd[MidiChannel]);
 
 				break;
 			}
@@ -911,7 +919,12 @@ InputMidiPort:\n\
 				DeleteKey(Box,(midiCode >> 8) & 0xff, route->GetId());
 
 			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->NoteOff(Box, (midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff, route, MidiChannel);
+				route->GetOutputDevice()
+					->NoteOff(Box, 
+						  (midiCode >> 8) & 0xff, 
+						  (midiCode >> 16) & 0xff, 
+						  route.get(), 
+						  MidiChannel);
 
 			break;
 

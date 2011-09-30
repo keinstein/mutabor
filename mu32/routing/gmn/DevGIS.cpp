@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.7 2011/09/29 05:26:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.8 2011/09/30 09:10:24 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:58 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.7  2011/09/29 05:26:58  keinstein
+ * Revision 1.8  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.7  2011-09-29 05:26:58  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -205,7 +208,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
  */
-	void OutputGis::Save (tree_storage & config, const Route route)
+	void OutputGis::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -235,7 +238,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
  */
-	void OutputGis::Load (tree_storage & config, Route route)
+	void OutputGis::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -265,7 +268,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
  */
-	void InputGis::Save (tree_storage & config, const Route route)
+	void InputGis::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -295,7 +298,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
  */
-	void InputGis::Load (tree_storage & config, Route route)
+	void InputGis::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -538,10 +541,21 @@ namespace mutabor {
 
 			if ( turn != 2 && route->GetOutputDevice() ) {
 				if ( turn )
-					route->GetOutputDevice()->NoteOff(Box, Key, h->GetIntensity(turn), route, 0); //4 ?? channelid aus staff
+					route->GetOutputDevice()
+						->NoteOff(Box, 
+							  Key, 
+							  h->GetIntensity(turn), 
+							  route.get(), 
+							  0); //4 ?? channelid aus staff
 				else {
 					Cd.Sound = h->GetInstr();
-					route->GetOutputDevice()->NoteOn(Box, Key, h->GetIntensity(turn), route, 0, &Cd);
+					route->GetOutputDevice()
+						->NoteOn(Box, 
+							 Key, 
+							 h->GetIntensity(turn), 
+							 route.get(), 
+							 0, 
+							 &Cd);
 				}
 			}
 

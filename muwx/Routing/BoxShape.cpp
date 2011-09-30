@@ -4,15 +4,18 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.5 2011/09/30 09:10:25 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/09/27 20:13:24 $
-* \version $Revision: 1.4 $
+* $Date: 2011/09/30 09:10:25 $
+* \version $Revision: 1.5 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.4  2011/09/27 20:13:24  keinstein
+* Revision 1.5  2011/09/30 09:10:25  keinstein
+* Further improvements in the routing system.
+*
+* Revision 1.4  2011-09-27 20:13:24  keinstein
 * * Reworked route editing backend
 * * rewireing is done by RouteClass/GUIRoute now
 * * other classes forward most requests to this pair
@@ -334,6 +337,8 @@ namespace mutaborGUI {
 		wxASSERT(route);
 		if (!route) return NULL;
 		route -> Attatch(boxId); // this might be ovewritten by ReadPanel
+		BoxData::OpenBox(boxId);
+					
 	
 
 		MutBoxChannelShape * channel = 
@@ -597,8 +602,9 @@ namespace mutaborGUI {
 			if (!panel) continue;
 			wxASSERT(dynamic_cast<RoutePanel *> (*i));
 			MutBoxChannelShape * channel = panel -> GetChannel();
-			if (!channel && panel->IsEnabled()) 
+			if (!channel && panel->IsEnabled()) {
 				channel = AddChannel(panel);
+			}
 			if (channel) {
 				channel -> ReadPanel(panel);
 			}

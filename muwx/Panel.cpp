@@ -6,16 +6,19 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.5 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.6 2011/09/30 09:10:25 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.5  2011/09/29 05:26:59  keinstein
+ * Revision 1.6  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.5  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -103,14 +106,27 @@ wxEND_FLAGS( MutPanelStyle )
 IMPLEMENT_DYNAMIC_CLASS_XTI(MutPanel, wxControl,"Panel.h")
 
 wxBEGIN_PROPERTIES_TABLE(MutPanel)
-    wxPROPERTY_FLAGS( WindowStyle , MutPanelStyle , long , SetWindowStyleFlag , GetWindowStyleFlag , EMPTY_MACROVALUE, 0 /*flags*/ , wxT("Helpstring") , wxT("group")) // style
+    wxPROPERTY_FLAGS( WindowStyle , 
+		      MutPanelStyle , long , 
+		      SetWindowStyleFlag , GetWindowStyleFlag , 
+		      EMPTY_MACROVALUE, 0 /*flags*/ , 
+		      wxT("Helpstring") , wxT("group")) // style
 // style wxTAB_TRAVERSAL
 wxEND_PROPERTIES_TABLE()
 
 wxBEGIN_HANDLERS_TABLE(MutPanel)
 wxEND_HANDLERS_TABLE()
 
-wxCONSTRUCTOR_5( MutPanel , wxWindow* , Parent , wxWindowID , Id , wxPoint , Position , wxSize , Size , long , WindowStyle )
+wxCONSTRUCTOR_5( MutPanel , 
+		 wxWindow* , 
+		 Parent , 
+		 wxWindowID , 
+		 Id , 
+		 wxPoint , 
+		 Position , 
+		 wxSize , Size , 
+		 long , 
+		 WindowStyle )
 
 #else
 IMPLEMENT_DYNAMIC_CLASS(MutPanel, wxControl)

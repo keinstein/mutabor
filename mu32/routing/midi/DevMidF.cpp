@@ -2,15 +2,18 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.9 2011/09/29 05:26:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.10 2011/09/30 09:10:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/29 05:26:58 $
- * \version $Revision: 1.9 $
+ * \date $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.9  2011/09/29 05:26:58  keinstein
+ * Revision 1.10  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.9  2011-09-29 05:26:58  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -269,7 +272,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route ) Route whos data shall be saved.
  */
-	void OutputMidiFile::Save (tree_storage & config, const Route route)
+	void OutputMidiFile::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -303,7 +306,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
  */
-	void OutputMidiFile::Load (tree_storage & config, Route route)
+	void OutputMidiFile::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -368,7 +371,12 @@ namespace mutabor {
 		Tracks.Save(os);
 	}
 
-	void OutputMidiFile::NoteOn(int box, int taste, int velo, Route r, int channel, ChannelData *cd)
+	void OutputMidiFile::NoteOn(int box, 
+				    int taste, 
+				    int velo, 
+				    RouteClass * r, 
+				    int channel, 
+				    ChannelData *cd)
 	{
 		int i = 0, s;
 		DWORD p;
@@ -461,7 +469,11 @@ namespace mutabor {
 		MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, velo);
 	}
 
-	void OutputMidiFile::NoteOff(int box, int taste, int velo, Route r, int channel)
+	void OutputMidiFile::NoteOff(int box, 
+				     int taste, 
+				     int velo, 
+				     RouteClass * r, 
+				     int channel)
 	{
 		if ( box == -2 )
 			box = 255;
@@ -562,7 +574,7 @@ namespace mutabor {
 			Tracks.Add(p[i]);
 	}
 
-	void OutputMidiFile::Quite(Route r)
+	void OutputMidiFile::Quite(RouteClass * r)
 	{
 		for (int i = 0; i < 16; i++)
 			if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->GetId() )
@@ -646,7 +658,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be saved.
  * \argument route (Route) Route whos data shall be saved.
  */
-	void InputMidiFile::Save (tree_storage & config, const Route route)
+	void InputMidiFile::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -690,7 +702,7 @@ namespace mutabor {
  * \argument config (tree_storage *) Storage class, where the data will be restored from.
  * \argument route (Route ) Route whos data shall be loaded.
  */
-	void InputMidiFile::Load (tree_storage & config, Route  route)
+	void InputMidiFile::Load (tree_storage & config, RouteClass *  route)
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -1088,8 +1100,13 @@ namespace mutabor {
 					AddKey(Box, MIDICODE(1), route->GetId());
 
 				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()->NoteOn(Box, MIDICODE(1), MIDICODE(2), route,
-								      MidiChannel, &Cd[MidiChannel]);
+					route->GetOutputDevice()
+						->NoteOn(Box, 
+							 MIDICODE(1), 
+							 MIDICODE(2), 
+							 route.get(),
+							 MidiChannel, 
+							 &Cd[MidiChannel]);
 
 				break;
 			}
@@ -1099,7 +1116,12 @@ namespace mutabor {
 				DeleteKey(Box, MIDICODE(1), route->GetId());
 
 			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->NoteOff(Box, MIDICODE(1), MIDICODE(2), route, MidiChannel);
+				route->GetOutputDevice()
+					->NoteOff(Box, 
+						  MIDICODE(1), 
+						  MIDICODE(2), 
+						  route.get(), 
+						  MidiChannel);
 
 			break;
 
@@ -1113,7 +1135,9 @@ namespace mutabor {
 				Cd[MidiChannel].Sustain = MIDICODE(2);
 
 				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()->Sustain(Cd[MidiChannel].Sustain, MidiChannel);
+					route->GetOutputDevice()
+						->Sustain(Cd[MidiChannel].Sustain,
+							  MidiChannel);
 
 				break;
 			} else if ( MIDICODE(1) == 0 ) { // BankSelect MSB

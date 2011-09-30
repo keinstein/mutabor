@@ -3,16 +3,19 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.6 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.7 2011/09/30 09:10:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 09:10:25 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: MutIcon.h,v $
- * Revision 1.6  2011/09/27 20:13:23  keinstein
+ * Revision 1.7  2011/09/30 09:10:25  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.6  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -104,17 +107,17 @@ public:
 	/** \retval Integer of the height of the icon.
 	 */
 	virtual int GetHeight() const
-	{
-		return height;
-	}
+		{
+			return height;
+		}
 
 	/// Return the height of the icon.
 	/** \retval Integer of the width of the icon.
 	 */
 	virtual int GetWidth() const
-	{
-		return width;
-	}
+		{
+			return width;
+		}
 
 	/// Loads the icon and possibly resizes it.
 	/**
@@ -123,66 +126,68 @@ public:
 	 * \retval true if succeeded, else otherwise
 	 */
 	bool LoadFile(const wxString& name, wxBitmapType type)
-	{
-		bool ret = wxIcon::LoadFile(name,type);
-		if (!ret) return false;
-		if (!IsOk ()) return false;
+		{
+			bool ret = wxIcon::LoadFile(name,type);
+			if (!ret) return false;
+			if (!IsOk ()) return false;
 
-		width = wxIcon::GetWidth();
-		height = wxIcon::GetHeight();
-		int m = std::max(width,height);
-		int newsize;
+			width = wxIcon::GetWidth();
+			height = wxIcon::GetHeight();
+			int m = std::max(width,height);
+			int newsize;
 
-		DEBUGLOG(other, _T("max: %d"),m);
-		if ((m == 16) || (m == 32) || (m == 48) || (m >= 128)) {
-			// if >128  I don't know, what to do
-			newsize = m;
-			//return ret;
+			DEBUGLOG(other, _T("max: %d"),m);
+			if ((m == 16) || (m == 32) || (m == 48) || (m >= 128)) {
+				// if >128  I don't know, what to do
+				newsize = m;
+				//return ret;
+			}
+			if (m > 32) {
+				if (m > 48) newsize = 128;
+				else newsize = 48;
+			} else {
+				if (m > 16)
+					newsize = 32;
+				else newsize = 16;
+			}
+			DEBUGLOG(other, _T("newsize: %d"), newsize);
+
+			wxBitmap bitmap;
+			wxImage image;
+			image.LoadFile(name,type);
+			image.ConvertAlphaToMask();
+			DEBUGLOG(other, _T("Mask: %d; Alpha: %d"),
+				 (int)image.HasMask(),
+				 (int)image.HasAlpha());
+			image.Resize(wxSize(newsize,newsize),wxPoint(0,0));
+			bitmap = image;
+			CopyFromBitmap(bitmap);
+			DEBUGLOG(other, _T("Real size: %dx%d"),
+				 wxIcon::GetWidth(),wxIcon::GetHeight());
+
+			SetWidth(width);
+			SetHeight(height);
+			DEBUGLOG(other, _T("Set size: %dx%d (%d,%d)"),
+				 GetWidth(),GetHeight(),width,height);
+
+			return true;
 		}
-		if (m > 32) {
-			if (m > 48) newsize = 128;
-			else newsize = 48;
-		} else {
-			if (m > 16)
-				newsize = 32;
-			else newsize = 16;
-		}
-		DEBUGLOG(other, _T("newsize: %d"), newsize);
-
-		wxBitmap bitmap;
-		wxImage image;
-		image.LoadFile(name,type);
-		image.ConvertAlphaToMask();
-		DEBUGLOG(other, _T("Mask: %d; Alpha: %d"),
-		         (int)image.HasMask(),
-		         (int)image.HasAlpha());
-		image.Resize(wxSize(newsize,newsize),wxPoint(0,0));
-		bitmap = image;
-		CopyFromBitmap(bitmap);
-		DEBUGLOG(other, _T("Real size: %dx%d"),wxIcon::GetWidth(),wxIcon::GetHeight());
-
-		SetWidth(width);
-		SetHeight(height);
-		DEBUGLOG(other, _T("Set size: %dx%d (%d,%d)"),GetWidth(),GetHeight(),width,height);
-
-		return true;
-	}
   
 
-  /// Allow assignment of normal icons
-  /**
-   * \param icon icon to be copied.
-   * \return self reference
-   */
-  MutIcon & operator = (wxIcon & icon) 
-  {
-    *(static_cast<wxIcon *>(this)) = icon;
-    if (IsOk()) {
-      width = wxIcon::GetWidth();
-      height = wxIcon::GetHeight();
-    }
-    return *this;
-  }    
+	/// Allow assignment of normal icons
+	/**
+	 * \param icon icon to be copied.
+	 * \return self reference
+	 */
+	MutIcon & operator = (wxIcon & icon) 
+		{
+			*(static_cast<wxIcon *>(this)) = icon;
+			if (IsOk()) {
+				width = wxIcon::GetWidth();
+				height = wxIcon::GetHeight();
+			}
+			return *this;
+		}    
 };
 #define MutICON MutIcon
 #else

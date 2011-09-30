@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.7 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.8 2011/09/30 09:10:24 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/30 09:10:24 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.7  2011/09/27 20:13:21  keinstein
+ * Revision 1.8  2011/09/30 09:10:24  keinstein
+ * Further improvements in the routing system.
+ *
+ * Revision 1.7  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -235,7 +238,8 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route) Route whos data shall be saved.
 		 */
-		virtual void Save (tree_storage & config, const Route route) = 0;
+		virtual void Save (tree_storage & config, 
+				   const RouteClass * route) = 0;
 	
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
@@ -248,7 +252,8 @@ namespace mutabor {
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
-		virtual void Load (tree_storage & config, Route route) = 0;
+		virtual void Load (tree_storage & config, 
+				   RouteClass * route) = 0;
 	
 
 		/// add a route
@@ -363,21 +368,29 @@ namespace mutabor {
         
 		/// Attatch to a given route
 		void Attatch(Route & route) {
+			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 			route -> Attatch(DevicePtr(thisptr()));
+			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 		}
 
 		/// Replace a given route 
 		void Reconnect(Route & oldroute, Route & newroute) {
+			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
+				 oldroute.get(),newroute.get());
 			bool ok = Replace(oldroute,newroute);
 			if (ok) {
 				oldroute->Remove(thisptr());
 				newroute->Add(thisptr());
 			}
+			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
+				 oldroute.get(),newroute.get());
 		}
 
 		/// Detatch a given route
 		void Detatch(Route & route) {
+			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 			route -> Detatch(DevicePtr(thisptr()));
+			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 		}
 
 	
@@ -484,9 +497,11 @@ namespace mutabor {
 
 	public:
 		virtual ~OutputDeviceClass() {}
-		virtual void NoteOn(int box, int taste, int velo, Route r,
+		virtual void NoteOn(int box, int taste, int velo, 
+				    RouteClass * r,
 				    int channel, ChannelData *cd) = 0;
-		virtual void NoteOff(int box, int taste, int velo, Route r,
+		virtual void NoteOff(int box, int taste, int velo, 
+				     RouteClass * r,
 				     int channel) = 0;
 		virtual void NotesCorrect(int box) = 0;
 		virtual void Sustain(char on, int channel) = 0;
@@ -495,7 +510,7 @@ namespace mutabor {
 		virtual void AddTime(frac time) = 0;
 		virtual void MidiOut(DWORD data, char n) = 0;
 		virtual void MidiOut(BYTE *p, char n) = 0;
-		virtual void Quite(Route r) = 0;
+		virtual void Quite(RouteClass * r) = 0;
 		virtual void Panic() {};
 
 		virtual bool NeedsRealTime() {
