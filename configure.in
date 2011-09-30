@@ -381,6 +381,7 @@ dnl then
 dnl	AC_DEFINE(MUST_REUSE,1,[Define to x if the scope of C++ loop variables is inside the loop])
 dnl fi
 
+AC_CHECK_HEADERS([boost/intrusive_ptr.hpp])
 AC_CHECK_HEADERS([boost/rational.hpp])
 AC_CHECK_HEADERS([boost/spirit/core.hpp])
 AC_CHECK_HEADERS([boost/spirit/actor/push_back_actor.hpp])
