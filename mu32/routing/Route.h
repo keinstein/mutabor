@@ -4,16 +4,21 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.5 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.6 2011/09/30 18:07:04 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: Route.h,v $
- * Revision 1.5  2011/09/30 09:10:24  keinstein
+ * Revision 1.6  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.5  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.4  2011-09-27 20:13:21  keinstein
@@ -350,7 +355,7 @@ namespace mutabor {
 			if (retval) {
 				newdev->Add(this);
 			} else
-				wxASSERT(false);
+				mutASSERT(false);
 				// Check taht olddev is correcty disconnected
 			return retval;
 		}
@@ -363,7 +368,7 @@ namespace mutabor {
 			if (retval) {
 				newdev->Add(this);
 			} else 
-				wxASSERT(false);
+				mutASSERT(false);
 			return retval;
 		}
 		/// Replace current box with a new one
@@ -554,15 +559,15 @@ namespace mutabor {
 		static void ClearRouteList() {
 			Route d;
 			while (!routeList.empty()) {
-				wxASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
+				mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
 
 				d = routeList.front();
 				d->Destroy();
 
-				wxASSERT(routeList.empty() || 
+				mutASSERT(routeList.empty() || 
 					 d != routeList.front());
 			}
-			wxASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
+			mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
 		}
 #ifdef WX
 		virtual wxString TowxString() const;

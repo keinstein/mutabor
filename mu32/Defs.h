@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.21 2011/09/29 05:26:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.22 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:58 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.21  2011/09/29 05:26:58  keinstein
+ * Revision 1.22  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.21  2011-09-29 05:26:58  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -70,6 +75,7 @@
 
 #if defined(MUTWIN) && (!defined(WX) || defined(__WXMSW__))
 #include <windows.h>
+#include "wx/msw/winundef.h"
 #endif
 
 #ifdef WX
@@ -219,8 +225,10 @@
    if (!(cond)) \
 	 std::cerr << (const char *)(wxString(msg).ToUTF8()) << std::endl; \
    assert(cond)
+#define mutASSERT wxASSERT
 #else
 #define mutAssertMsg(cond,msg)
+#define mutASSERT(cond)
 #endif
 
 inline wxString getContextLocal(const wxString & s)
@@ -318,7 +326,7 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 
 
 #define CHECK_REFPTR_NULL(class_data)				\
-	wxASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
+	mutASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
 
 #define MIDI_MIN_CHANNEL 0
 #define MIDI_MAX_CHANNEL 15

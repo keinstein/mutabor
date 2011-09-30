@@ -2,16 +2,21 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.10 2011/09/27 20:13:22 keinstein Exp $
+ * $Id: InputDevDlg.h,v 1.11 2011/09/30 18:07:04 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.11 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: InputDevDlg.h,v $
- * Revision 1.10  2011/09/27 20:13:22  keinstein
+ * Revision 1.11  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.10  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -211,7 +216,7 @@ public:
                 int Type = DeviceChoice->GetSelection();
 		if (Type == wxNOT_FOUND) return mutabor::DTNotSet;
 
-                wxASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
+                mutASSERT (dynamic_cast<TypeData *>(DeviceChoice->GetClientObject(Type)));
 		TypeData * obj = (TypeData *)DeviceChoice->GetClientObject(Type);
 
 		if (obj) return  *obj;

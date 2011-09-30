@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data. Inline functions that must not be defined at class declaration time
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.1 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.2 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,12 @@
  *
  *
  * $Log: GUIBoxData-inlines.h,v $
- * Revision 1.1  2011/09/27 20:13:22  keinstein
+ * Revision 1.2  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.1  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -103,7 +108,7 @@ namespace mutaborGUI {
 				typename MutBoxShapeList::iterator pos = 
 					std::find(shapes.begin(),shapes.end(),shape);
 				ok = (shape != *(shapes.end())); 
-				wxASSERT(ok);
+				mutASSERT(ok);
 				if (ok)
 					shapes.erase(pos);
 			} else {

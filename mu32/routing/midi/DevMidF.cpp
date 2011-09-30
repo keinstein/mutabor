@@ -2,15 +2,20 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.10 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.10 $
+ * \date $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.10  2011/09/30 09:10:24  keinstein
+ * Revision 1.11  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.10  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.9  2011-09-29 05:26:58  keinstein
@@ -263,7 +268,7 @@ namespace mutabor {
 #endif
 		config.Write(_T("Bending Range"),bending_range);
 		config.Write(_T("File Name"),Name);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Save route settings (filter settings) for a given route
@@ -278,12 +283,12 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi File Output"));
-		wxASSERT(route);
+		mutASSERT(route);
 		config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
 		config.Write(_T("Channel Range From"), route->OFrom);
 		config.Write(_T("Channel Range To"), route->OTo);
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -297,7 +302,7 @@ namespace mutabor {
 #endif
 		bending_range=config.Read(_T("Bending Range"), bending_range);
 		Name = config.Read(_T("File Name"),mutEmptyString);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Loade route settings (filter settings) for a given route
@@ -312,7 +317,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi File Output"));
-		wxASSERT(route);
+		mutASSERT(route);
 		route->ONoDrum = config.Read (_T("Avoid Drum Channel"), true);
 		int oldfrom, oldto;
 		oldfrom = route->OFrom = config.Read(_T("Channel Range From"), GetMinChannel());
@@ -331,13 +336,13 @@ namespace mutabor {
 						      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
 				     _("Warning loading route"),wxICON_EXCLAMATION);
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
 	bool OutputMidiFile::Open()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		Tracks.Data->Flush();
 		isOpen = true;
 		return isOpen;
@@ -345,7 +350,7 @@ namespace mutabor {
 
 	void OutputMidiFile::Close()
 	{
-		wxASSERT(isOpen);
+		mutASSERT(isOpen);
 		isOpen = false;
 		// alle liegenden Tˆne ausschalten
 
@@ -649,7 +654,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.Write(_T("File Name"),Name);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Save route settings (filter settings) for a given route
@@ -679,7 +684,7 @@ namespace mutabor {
 			break;
 		}
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -692,7 +697,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		Name = config.Read(_T("File Name"),mutEmptyString);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 	
 
@@ -755,13 +760,13 @@ namespace mutabor {
 			break;
 		}
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
 	bool InputMidiFile::Open()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		DEBUGLOG (other, _T("start"));
 		Track = 0;
 		curDelta = 0;
@@ -870,7 +875,7 @@ namespace mutabor {
 
 	void InputMidiFile::Close()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		Stop();
 		// Speicher freigeben
 
@@ -980,7 +985,7 @@ namespace mutabor {
 		}
 
 #if (DEBUG && WX)
-		wxASSERT(NewMinDelta > 0);
+		mutASSERT(NewMinDelta > 0);
 		DEBUGLOG(midifile,_T("old mindelta = %d, new mindelta = %d"),minDelta,NewMinDelta);
 #endif
 

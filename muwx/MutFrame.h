@@ -2,17 +2,22 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.30 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.31 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.30 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.31 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.30  2011/09/30 09:10:25  keinstein
+ * Revision 1.31  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.30  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.29  2011-09-27 20:13:23  keinstein
@@ -426,7 +431,7 @@ namespace mutaborGUI {
 	
 		void CloseClientWindow(wxWindow * w)
 			{
-				wxASSERT(w);
+				mutASSERT(w);
 				if (!w) return;
 
 				w->Disable();

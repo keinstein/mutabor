@@ -4,16 +4,21 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 18:07:06 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.4  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -125,7 +130,7 @@ namespace mutaborGUI {
 		if (!d) return false;
 
 		DEBUGLOG (other,_T ("Checking icon"));
-		wxASSERT(MidiOutputDevBitmap.IsOk());
+		mutASSERT(MidiOutputDevBitmap.IsOk());
 
 		bool fine =  MutDeviceShape::Create (parent, id, d->GetName());
 
@@ -141,7 +146,7 @@ namespace mutaborGUI {
 								 OutputDevice d)
 	{
 		DEBUGLOGTYPE(routing,MutOutputDeviceShape,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		DEBUGLOGTYPE(routing,*d,_T("Device Type for device %p"), d.get());
@@ -201,11 +206,11 @@ namespace mutaborGUI {
 	void MutOutputDeviceShape::Connect(Route  route) 
 	{
 
-		wxASSERT(route);
-		wxASSERT(device);
-		wxASSERT(route->GetOutputDevice() == device);
+		mutASSERT(route);
+		mutASSERT(device);
+		mutASSERT(route->GetOutputDevice() == device);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *) route->getUserData();
-		wxASSERT(dynamic_cast<MutIconShape *>(channel));
+		mutASSERT(dynamic_cast<MutIconShape *>(channel));
 
 		// Check for duplicate route insertion.
 		for (MutBoxChannelShapeList::const_iterator i = routes.begin() ; i != routes.end() ; i++) {
@@ -216,7 +221,7 @@ namespace mutaborGUI {
 		}
 
 		if (channel) {
-			wxASSERT(channel->GetRoute()==route);
+			mutASSERT(channel->GetRoute()==route);
 			channel->SetOutput(this);
 			routes.push_back(channel);
 		}
@@ -224,11 +229,11 @@ namespace mutaborGUI {
 
 	void MutOutputDeviceShape::Disconnect(Route  route)
 	{
-		wxASSERT(route);
+		mutASSERT(route);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-		wxASSERT(channel->GetRoute() == route);
-		wxASSERT(channel->GetOutput() == this);
+		mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+		mutASSERT(channel->GetRoute() == route);
+		mutASSERT(channel->GetOutput() == this);
 	
 		channel->SetOutput(NULL, channel->GetOutput()==this);
 		MutBoxChannelShapeList::iterator i;
@@ -238,17 +243,17 @@ namespace mutaborGUI {
 	}
 
 	void MutOutputDeviceShape::Disconnect(MutBoxChannelShape * route) {
-		wxASSERT(route->GetRoute()->getUserData() == route);
+		mutASSERT(route->GetRoute()->getUserData() == route);
 		RemoveRoute(route->GetRoute());
 	}
 
 	void MutOutputDeviceShape::AddRoute(Route  route) 
 	{
-		wxASSERT(route);
-		wxASSERT(device);
-		wxASSERT(route->GetOutputDevice() == device);
+		mutASSERT(route);
+		mutASSERT(device);
+		mutASSERT(route->GetOutputDevice() == device);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *) route->getUserData();
-		wxASSERT(dynamic_cast<MutIconShape *>(channel));
+		mutASSERT(dynamic_cast<MutIconShape *>(channel));
 
 		// Check for duplicate route insertion.
 		for (MutBoxChannelShapeList::const_iterator i = routes.begin() ; i != routes.end() ; i++) {
@@ -259,7 +264,7 @@ namespace mutaborGUI {
 		}
 
 		if (channel) {
-			wxASSERT(channel->GetRoute()==route);
+			mutASSERT(channel->GetRoute()==route);
 			channel->SetOutput(this);
 			routes.push_back(channel);
 		}
@@ -267,11 +272,11 @@ namespace mutaborGUI {
 
 	void MutOutputDeviceShape::RemoveRoute(Route  route)
 	{
-		wxASSERT(route);
+		mutASSERT(route);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
-		wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-		wxASSERT(channel->GetRoute() == route);
-		wxASSERT(channel->GetOutput() == this);
+		mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+		mutASSERT(channel->GetRoute() == route);
+		mutASSERT(channel->GetOutput() == this);
 	
 		channel->SetOutput(NULL, channel->GetOutput()==this);
 		MutBoxChannelShapeList::iterator i;
@@ -397,7 +402,7 @@ namespace mutaborGUI {
 	
 		for (MutBoxChannelShapeList::iterator i = routes.begin(); i!= routes.end(); i = routes.begin()) {
 			MutBoxChannelShape *channel = *i;
-			wxASSERT(channel);
+			mutASSERT(channel);
 			Detatch(channel);
 		}
 	
@@ -421,8 +426,8 @@ namespace mutaborGUI {
 
 	bool MutOutputDeviceShape::replaceSelfBy (MutOutputDeviceShape  * newshape)
 	{
-		wxASSERT (newshape);
-		wxASSERT (newshape->device);
+		mutASSERT (newshape);
+		mutASSERT (newshape->device);
 
 		DEBUGLOG (routing, _T(""));
 	
@@ -431,7 +436,7 @@ namespace mutaborGUI {
 			DEBUGLOG (routing, _T("this = %p ; newshape = %p ; device = %p ; newshape->device = %p ; boxchannel = %p"),
 				  this,newshape,device.get(), newshape->device.get(), (*i));
 			MutBoxChannelShape * channel = *i;
-			wxASSERT(channel->GetRoute()->GetOutputDevice() == device);
+			mutASSERT(channel->GetRoute()->GetOutputDevice() == device);
 			channel->Reconnect(this,newshape);
 		}
 
@@ -455,8 +460,8 @@ namespace mutaborGUI {
 
 	void MutOutputDeviceShape::ReadPanel(OutputFilterPanel * panel, MutBoxChannelShape * channel)
 	{
-		wxASSERT(panel);
-		wxASSERT(channel);
+		mutASSERT(panel);
+		mutASSERT(channel);
 		if (!panel || !channel) return;
 		DEBUGLOG(dialog,_T("Reading output device dialog"));
 	

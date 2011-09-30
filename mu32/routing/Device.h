@@ -4,16 +4,21 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.8 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.9 2011/09/30 18:07:04 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.8  2011/09/30 09:10:24  keinstein
+ * Revision 1.9  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.8  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.7  2011-09-27 20:13:21  keinstein
@@ -441,7 +446,7 @@ namespace mutabor {
 #endif
 				deviceList.front()->Destroy();
 #ifdef DEBUG
-				wxASSERT(deviceList.empty() || 
+				mutASSERT(deviceList.empty() || 
 					 d != deviceList.front());
 #endif
 			}
@@ -619,13 +624,13 @@ namespace mutabor {
 
 #if 0	
 		InputDevice GetNext() const {
-			wxASSERT(Next != this);
+			mutASSERT(Next != this);
 			return Next; 
 		}
 	
 		void SetNext(InputDevice n) 
 			{
-				wxASSERT(n != this);
+				mutASSERT(n != this);
 				Next = n;
 			}
 #endif
@@ -645,7 +650,7 @@ namespace mutabor {
 		virtual ~DeviceFactory();
 
 		static OutputDevice CreateOutput (int type) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
@@ -656,7 +661,7 @@ namespace mutabor {
 						  int devId,
 						  const mutStringRef name, 
 						  int id = -1) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
@@ -668,7 +673,7 @@ namespace mutabor {
 						 const mutStringRef name, 
 						 MutaborModeType mode, 
 						 int id = -1) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
@@ -677,7 +682,7 @@ namespace mutabor {
 		}
 
 		static InputDevice CreateInput (int type) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
@@ -688,7 +693,7 @@ namespace mutabor {
 						int devId,
 						const mutStringRef name, 
 						int id = -1) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
@@ -700,7 +705,7 @@ namespace mutabor {
 					       const mutStringRef name, 
 					       MutaborModeType mode, 
 					       int id = -1) {
-			wxASSERT(type >= 0);
+			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;

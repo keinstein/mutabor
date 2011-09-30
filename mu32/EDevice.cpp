@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.cpp,v 1.20 2011/09/05 11:30:07 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.cpp,v 1.21 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/05 11:30:07 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: EDevice.cpp,v $
- * Revision 1.20  2011/09/05 11:30:07  keinstein
+ * Revision 1.21  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.20  2011-09-05 11:30:07  keinstein
  * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
  * Restore perspective on logic start
  *
@@ -1243,13 +1248,13 @@ void ScanDevices()
 
 		/// \todo Check if this is ok.
 
-		wxASSERT(In);
+		mutASSERT(In);
 
 		// handle routes
 		for (ERoute * routee = ine->Routes; routee; routee = routee->Next) {
 			DEBUGLOG2(other,_T("routee: %x"), routee);
 			Route * r = routee->newRoute();
-			wxASSERT(r);
+			mutASSERT(r);
 			DEBUGLOG2(other,_T("route: %x"), r);
 			In->AddRoute(r);
 		}

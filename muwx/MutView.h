@@ -2,16 +2,21 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.9 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.10 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.9  2011/09/27 20:13:23  keinstein
+ * Revision 1.10  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.9  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -119,7 +124,7 @@ namespace mutaborGUI {
 		MutFrame * GetMutFrame() { 
 			wxWindow * f = GetFrame();
 			if (f) {
-				wxASSERT(dynamic_cast<MutFrame *>(f));
+				mutASSERT(dynamic_cast<MutFrame *>(f));
 			}
 			return (MutFrame *) f; 
 		}

@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.53 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.54 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.53 $
+ * \date $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.54 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.53  2011/09/30 09:10:25  keinstein
+ * Revision 1.54  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.53  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.52  2011-09-29 05:26:59  keinstein
@@ -617,7 +622,7 @@ namespace mutaborGUI {
 				wxGetApp().GetDocumentManager()->FileHistoryRemoveMenu(filemenu);
 		}
 		if (m_childView) {
-			wxASSERT(dynamic_cast<MutView *>(m_childView));
+			mutASSERT(dynamic_cast<MutView *>(m_childView));
 			MutView * v = (MutView *) m_childView;
 			v->SetFrame(NULL);
 			v->SetTextsw(NULL);
@@ -895,8 +900,8 @@ namespace mutaborGUI {
 	bool MutFrame::SetClient (wxWindow * win, const wxString &title)
 	{
 		if (client || !win) {
-			wxASSERT(!client);
-			wxASSERT(win);
+			mutASSERT(!client);
+			mutASSERT(win);
 			return false;
 		}
 	
@@ -1129,14 +1134,14 @@ namespace mutaborGUI {
 
 		DEBUGLOG (other, _T("Reached logic frame"));
 
-		wxASSERT(ActiveWindow == this);
+		mutASSERT(ActiveWindow == this);
 		DEBUGLOG (other, _T("%d"),event.GetId());
 
 		size_t i = 0;
 
 		while (i < MAX_BOX && boxCommandIds[i] != event.GetId()) i++;
 
-		wxASSERT(i!=MAX_BOX);
+		mutASSERT(i!=MAX_BOX);
 
 		DEBUGLOG (other, _T("%d"),i);
 
@@ -1185,7 +1190,7 @@ namespace mutaborGUI {
 			//    SetTitle(APPNAME);
 			// alle Fenser schlieﬂen
 			wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
-			wxASSERT(boxSelector->IsSubMenu());
+			mutASSERT(boxSelector->IsSubMenu());
 
 			ActiveWindow -> CloseAll();
 
@@ -1344,7 +1349,7 @@ namespace mutaborGUI {
 		if ( !LogicOn ) return;
 
 		DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,curBox,IsOpen(kind, curBox));
-		wxASSERT(IsOpen(kind,curBox) == !openclose);
+		mutASSERT(IsOpen(kind,curBox) == !openclose);
 
 		if (openclose) {
 			TextBoxOpen(kind, curBox);
@@ -2160,9 +2165,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	{
 		DEBUGLOG(other,_T("MutFrame::CmDoActivate: Set Box selection menu"));
 		wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
-		wxASSERT(boxSelector->IsSubMenu());
+		mutASSERT(boxSelector->IsSubMenu());
 		wxMenu * boxMenu = boxSelector->GetSubMenu();
-		wxASSERT(boxMenu);
+		mutASSERT(boxMenu);
 		DEBUGLOG (other, _T("boxMenu = %p"),boxMenu);
 		//  wxID_HIGHEST
 		//  wxMenu *
@@ -2181,7 +2186,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				DEBUGLOG (other, _("Appending menu for box %d with id %d"),i,boxCommandIds[i]);
 				wxString name = wxString::Format(_("Select box %d\tCtrl+%d"),i,i);
 				wxString description = wxString::Format(_("Select box %d as the active Box for box specific commands."),i);
-				wxASSERT(!(GetMenuBar()->FindItem(boxCommandIds[i])));
+				mutASSERT(!(GetMenuBar()->FindItem(boxCommandIds[i])));
 				wxMenuItem * item = new wxMenuItem(boxMenu,boxCommandIds[i],
 								   name,
 								   description,

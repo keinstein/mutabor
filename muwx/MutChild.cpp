@@ -2,17 +2,22 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.17 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.18 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.17 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.18 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.17  2011/09/27 20:13:23  keinstein
+ * Revision 1.18  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.17  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -116,7 +121,7 @@ namespace mutaborGUI {
 	MutTextBox(k,boxId,parent,id,pos,size)
 	{
 		DEBUGLOG (other, _T("winKind=%d"),k);
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		BoxData & boxdata = BoxData::GetBox(boxId);
 		switch (k) {
 		case WK_KEY: 
@@ -153,14 +158,14 @@ namespace mutaborGUI {
 
 	MutChild::~MutChild()
 	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		DEBUGLOG (other, _T(""));
 		deleteFromWinAttrs();
 	}
 
 	void MutChild::OnActivate(wxActivateEvent& event)
 	{
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		DEBUGLOG (other, _T(""));
 		mutaborGUI::curBox = box;
 	}
@@ -170,7 +175,7 @@ namespace mutaborGUI {
 		DEBUGLOG (other, _T("winKind: %d"),winKind);
 	
 		BoxData & boxdata = BoxData::GetBox(box);
-		wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		switch (winKind) {
 		case WK_KEY: 
 			boxdata.SetKeyWindow(NULL);
@@ -205,8 +210,8 @@ namespace mutaborGUI {
 
 	bool IsOpen (WinKind kind, int box)
 	{
-		wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-		wxASSERT(0 <= box && box <= MAX_BOX);
+		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
+		mutASSERT(0 <= box && box <= MAX_BOX);
 
 		BoxData & boxdata = BoxData::GetBox(box);
 		switch (kind) {
@@ -243,8 +248,8 @@ namespace mutaborGUI {
 
 	bool IsWanted(WinKind kind, int box)
 	{
-		wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-		wxASSERT(0 <= box && box <= MAX_BOX);
+		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
+		mutASSERT(0 <= box && box <= MAX_BOX);
 
 		BoxData & boxdata = BoxData::GetBox(box);
 		switch (kind) {
@@ -282,8 +287,8 @@ namespace mutaborGUI {
 
 	void DontWant(WinKind kind, int box)
 	{
-		wxASSERT(WK_KEY <= kind && kind < WK_NULL);
-		wxASSERT(0 <= box && box <= MAX_BOX);
+		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
+		mutASSERT(0 <= box && box <= MAX_BOX);
 
 		BoxData & boxdata = BoxData::GetBox(box);
 		switch (kind) {
@@ -320,7 +325,7 @@ namespace mutaborGUI {
 
 	int NumberOfOpen(WinKind kind)
 	{
-		wxASSERT(WK_KEY <= kind && kind < WK_NULL);
+		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
 
 		int n = wxNOT_FOUND;
 		switch (kind) {

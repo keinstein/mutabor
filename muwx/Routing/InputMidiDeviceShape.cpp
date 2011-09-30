@@ -3,16 +3,21 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiDeviceShape.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiDeviceShape.cpp,v 1.6 2011/09/30 18:07:05 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: InputMidiDeviceShape.cpp,v $
- * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * Revision 1.6  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.5  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -88,24 +93,24 @@ using namespace mutabor;
 namespace mutaborGUI {
 	void MutInputMidiDeviceShape::InitializeDialog(InputDevDlg * in) const
 	{
-		wxASSERT(device);
-		wxASSERT(device->GetType() == DTMidiPort);
-		wxASSERT(in);
+		mutASSERT(device);
+		mutASSERT(device->GetType() == DTMidiPort);
+		mutASSERT(in);
 		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
-		wxASSERT (dev);
+		mutASSERT (dev);
 		in -> SetType(DTMidiPort);
 		in -> SetMidiDevice(dev->GetDevId());
 	}
 
 	bool MutInputMidiDeviceShape::readDialog (InputDevDlg * in)
 	{
-		wxASSERT(device);
-		wxASSERT(device->GetType() == DTMidiPort);
-		wxASSERT(in);
-		wxASSERT (in -> GetType() == DTMidiPort);
+		mutASSERT(device);
+		mutASSERT(device->GetType() == DTMidiPort);
+		mutASSERT(in);
+		mutASSERT (in -> GetType() == DTMidiPort);
 		InputMidiPort * dev = dynamic_cast<InputMidiPort *> (device.get());
 		if (!dev) return false;
-		wxASSERT (dev);
+		mutASSERT (dev);
 		dev->SetDevId (in -> GetMidiDevice());
 		SetLabel (dev->GetName());
 		return true;

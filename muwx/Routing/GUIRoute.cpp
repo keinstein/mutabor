@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.2 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.3 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,12 @@
  *
  *
  * $Log: GUIRoute.cpp,v $
- * Revision 1.2  2011/09/29 05:26:59  keinstein
+ * Revision 1.3  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.2  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -82,7 +87,7 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(dev);
+		mutASSERT(dev);
 		MutOutputDeviceShapeList & outshapes = ToGUIBase(dev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -106,7 +111,7 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(dev);
+		mutASSERT(dev);
 		MutInputDeviceShapeList & inshapes = ToGUIBase(dev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -131,7 +136,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 		
 
-		wxASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
+		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		const MutBoxShapeList & boxshapes = 
 			BoxData::GetBox(boxid).GetBoxShapes();
 		for (MutBoxChannelShapeList::const_iterator i = shapes.begin();
@@ -161,7 +166,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 		
 		bool retval = true;
-		wxASSERT(olddev && newdev);
+		mutASSERT(olddev && newdev);
 		MutOutputDeviceShapeList & oldoutshapes = 
 			ToGUIBase(olddev).GetShapes();
 		MutOutputDeviceShapeList & newoutshapes = 
@@ -213,7 +218,7 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(olddev && newdev);
+		mutASSERT(olddev && newdev);
 		bool retval = true;
 		MutInputDeviceShapeList & oldinshapes = 
 			ToGUIBase(olddev).GetShapes();
@@ -224,7 +229,7 @@ namespace mutaborGUI {
 		     i++) {
 			bool oldfound = false;
 			wxWindow * parent = (*i)->GetGrandParent();
-			wxASSERT(dynamic_cast<MutRouteWnd *>(parent));
+			mutASSERT(dynamic_cast<MutRouteWnd *>(parent));
 			MutInputDeviceShapeList::iterator oldin;
 			for (oldin = oldinshapes.begin();
 			     oldin != oldinshapes.end();
@@ -265,8 +270,8 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(MIN_BOX <= oldboxid && oldboxid < MAX_BOX);
-		wxASSERT(MIN_BOX <= newboxid && newboxid < MAX_BOX);
+		mutASSERT(MIN_BOX <= oldboxid && oldboxid < MAX_BOX);
+		mutASSERT(MIN_BOX <= newboxid && newboxid < MAX_BOX);
 		bool retval = true;
 		const MutBoxShapeList & oldboxshapes = 
 			BoxData::GetBox(oldboxid).GetBoxShapes();
@@ -318,7 +323,7 @@ namespace mutaborGUI {
 		// according to thir parents.
 		
 		bool retval = true;
-		wxASSERT(dev);
+		mutASSERT(dev);
 		MutOutputDeviceShapeList & outshapes = ToGUIBase(dev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -343,7 +348,7 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(dev);
+		mutASSERT(dev);
 		bool retval = true;
 		MutInputDeviceShapeList & inshapes = ToGUIBase(dev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
@@ -370,7 +375,7 @@ namespace mutaborGUI {
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		wxASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
+		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		bool retval = true;
 		const MutBoxShapeList & boxshapes =
 			BoxData::GetBox(boxid).GetBoxShapes();
@@ -410,12 +415,12 @@ namespace mutaborGUI {
 	{ 
 		GUIRouteBase * gui = &GetGUIRoute();
 		Route self(this); // prevent us from beeing deleted
-		wxASSERT(gui);
+		mutASSERT(gui);
 		gui->Destroy();    //
 		T::Destroy();
 		SetGUIRoute(NULL); //
 		delete gui;
-		wxASSERT(intrusive_ptr_get_refcount(this) <= 2);
+		mutASSERT(intrusive_ptr_get_refcount(this) <= 2);
 	}
 
 	Route GUIRouteFactory::DoCreate() const
@@ -477,7 +482,7 @@ namespace mutaborGUI {
 				std::find(list.begin(),
 					  list.end(),
 					  shape);
-			wxASSERT(pos == list.end());
+			mutASSERT(pos == list.end());
 #endif
 			BoxData::GetBox(box).Attatch(shape);
 		}
@@ -701,7 +706,7 @@ namespace mutaborGUI {
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutOutputMidiDeviceShape * shape = 
@@ -716,7 +721,7 @@ namespace mutaborGUI {
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutInputMidiDeviceShape * shape = 
@@ -824,7 +829,7 @@ namespace mutaborGUI {
 					  wxWindow * parent) const
 	{
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutInputMidiFileDeviceShape * shape = 
@@ -837,7 +842,7 @@ namespace mutaborGUI {
 					  wxWindow * parent) const
 	{
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutOutputMidiFileDeviceShape * shape = 
@@ -944,7 +949,7 @@ namespace mutaborGUI {
 				     wxWindow * parent) const
 	{
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutInputGuidoFileDeviceShape * shape = 
@@ -957,7 +962,7 @@ namespace mutaborGUI {
 				     wxWindow * parent) const
 	{
 		DEBUGLOG(routing,_T("Creating device shape"));
-		wxASSERT (d);
+		mutASSERT (d);
 		if (!d) return NULL;
 
 		MutOutputGuidoFileDeviceShape * shape = 

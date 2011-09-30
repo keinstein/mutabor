@@ -2,17 +2,22 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.28 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.29 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.28 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.29 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.28  2011/09/30 09:10:25  keinstein
+ * Revision 1.29  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.28  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.27  2011-09-28 05:35:47  keinstein
@@ -402,7 +407,7 @@ namespace mutaborGUI {
 		ColorBar2 = 0;
 
 		BoxData & boxdata = BoxData::GetBox(box);
-		wxASSERT(!boxdata.GetLogicWindow());
+		mutASSERT(!boxdata.GetLogicWindow());
 		boxdata.SetLogicWindow(this);
 
 		SetScrollRate( 10, 10 );
