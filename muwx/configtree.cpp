@@ -2,14 +2,19 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.6 2011/09/09 09:29:10 keinstein Exp $
+ * $Id: configtree.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/09 09:29:10 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: configtree.cpp,v $
- * Revision 1.6  2011/09/09 09:29:10  keinstein
+ * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.6  2011-09-09 09:29:10  keinstein
  * fix loading of routing configuration
  *
  * Revision 1.5  2011-02-20 22:35:58  keinstein
@@ -100,8 +105,8 @@ bool configtree::HasGroup(const mutStringRef subdir) const
 void configtree::toLeaf(const mutStringRef subdir)
 {
 	DEBUGLOG(config,_T("going to group '%s'"),subdir.c_str());
-	wxASSERT(subdir.Find('/') == wxNOT_FOUND);
-	wxASSERT(subdir != _T(".."));
+	mutASSERT(subdir.Find('/') == wxNOT_FOUND);
+	mutASSERT(subdir != _T(".."));
 	if (subdir.Find('/') != wxNOT_FOUND || subdir == _T("..")) {
 		UNREACHABLEC;
 		return;
@@ -154,7 +159,7 @@ int configtree::toFirstLeaf(const mutStringRef name,mutStringRef id)
 	newstate.chdepth++;
 #ifdef DEBUG
 	newstate.group=name;
-	wxASSERT(newstate == states.top());
+	mutASSERT(newstate == states.top());
 	DEBUGLOG(config,
 		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), 
@@ -172,7 +177,7 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 #ifdef DEBUG
 	DEBUGLOG(config,_T("going to next leaf of group '%s'"),name.c_str());
 	state oldstate=states.top();
-	wxASSERT(oldstate.group==name);
+	mutASSERT(oldstate.group==name);
 	DEBUGLOG(config,
 		 _T("path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), 
@@ -180,7 +185,7 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 		 oldstate.leafid, oldstate.group.c_str());
 #endif
 	state & newstate = states.top();
-	wxASSERT(newstate.leafid != wxNOT_FOUND);
+	mutASSERT(newstate.leafid != wxNOT_FOUND);
 	if (newstate.leafid == wxNOT_FOUND) 
 		return wxNOT_FOUND;
 
@@ -190,12 +195,12 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 		config->SetPath(id);
 #ifdef DEBUG
 		DEBUGLOG(config,_T("New leaf id = %ld"),newstate.leafid);
-		wxASSERT(oldstate.oldpath == newstate.oldpath);
+		mutASSERT(oldstate.oldpath == newstate.oldpath);
 #endif
 	} else {
 		newstate.chdepth--;
 	}
-	wxASSERT(newstate == states.top());
+	mutASSERT(newstate == states.top());
 	DEBUGLOG(config,
 		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
 		 config->GetPath().c_str(), 
@@ -211,7 +216,7 @@ void configtree::toParent(unsigned int count)
 	DEBUGLOG(config,_T("going up %d level groups"),count);
 	while (count--) {
 #ifdef DEBUG
-		wxASSERT(states.size());
+		mutASSERT(states.size());
 #endif
 		if (!states.size()) {
 			UNREACHABLEC;
@@ -219,7 +224,7 @@ void configtree::toParent(unsigned int count)
 		}
 		state oldstate = states.top();
 		DEBUGLOG(config,_T("going up for %d levels"),oldstate.chdepth);
-		wxASSERT(oldstate.chdepth >= 0);
+		mutASSERT(oldstate.chdepth >= 0);
 		if (oldstate.chdepth) {
 			wxString setpath = _T("..");
 			while (--(oldstate.chdepth))
@@ -228,7 +233,7 @@ void configtree::toParent(unsigned int count)
 		}
 		states.pop();
 #ifdef DEBUG
-		wxASSERT(config->GetPath() == oldstate.oldpath);
+		mutASSERT(config->GetPath() == oldstate.oldpath);
 #endif
 		DEBUGLOG(config,
 			 _T("current path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),

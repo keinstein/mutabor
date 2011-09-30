@@ -2,17 +2,22 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.6 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.7 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: MutRouteWnd.h,v $
- * Revision 1.6  2011/09/27 20:13:23  keinstein
+ * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.6  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -138,7 +143,7 @@ namespace mutaborGUI {
 		   \param flags (wxSizerFlages &) Sizer flags, which shall be applied
 		*/
 		bool AddInputDevice(MutInputDeviceShape * device, const wxSizerFlags & flags) {
-			wxASSERT(InputSizer);
+			mutASSERT(InputSizer);
 			InputSizer -> Add(device,flags);
 			Layout();
 			FitInside();
@@ -155,7 +160,7 @@ namespace mutaborGUI {
 		   \param flags (wxSizerFlages &) Sizer flags, which shall be applied
 		*/
 		bool AddOutputDevice(MutOutputDeviceShape * device, const wxSizerFlags & flags) {
-			wxASSERT(OutputSizer);
+			mutASSERT(OutputSizer);
 			OutputSizer -> Add(device, flags);
 			Layout();
 			FitInside();
@@ -171,7 +176,7 @@ namespace mutaborGUI {
 		   \param flags (wxSizerFlages &) Sizer flags, which shall be applied
 		*/
 		bool AddBox(MutBoxShape * box, const wxSizerFlags & flags) {
-			wxASSERT(BoxSizer);
+			mutASSERT(BoxSizer);
 			BoxSizer -> Add(box,flags);
 			Layout();
 			SetVirtualSize(wxDefaultSize);

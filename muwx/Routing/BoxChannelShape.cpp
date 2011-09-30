@@ -3,16 +3,21 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.6 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.6  2011/09/30 09:10:25  keinstein
+ * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.6  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.5  2011-09-29 05:26:59  keinstein
@@ -196,7 +201,7 @@ namespace mutaborGUI {
 
 		DEBUGLOG (other, _T("Checking icons"));
 
-		wxASSERT(ActiveChannelBitmap.IsOk () 
+		mutASSERT(ActiveChannelBitmap.IsOk () 
 			 && PassiveChannelBitmap.IsOk ());
 
 		if (route && (route -> GetActive())) {
@@ -232,7 +237,7 @@ namespace mutaborGUI {
 		if (retval)
 			output = newdev;
 		else
-			wxASSERT(retval);
+			mutASSERT(retval);
 		return retval;
 	}
 	
@@ -243,7 +248,7 @@ namespace mutaborGUI {
 		if (retval)
 			input = newdev;
 		else
-			wxASSERT(retval);
+			mutASSERT(retval);
 		return retval;
 	}
 
@@ -257,7 +262,7 @@ namespace mutaborGUI {
 
 			route = newroute;
 		} else
-			wxASSERT(retval);
+			mutASSERT(retval);
 		return retval;
 	}
 
@@ -301,7 +306,7 @@ namespace mutaborGUI {
 
 	}
 	void MutBoxChannelShape::Detatch(mutabor::Route r) {
-		wxASSERT (route == r);
+		mutASSERT (route == r);
 		if (route) 
 			ToGUIBase(route).Detatch(this);
 		DEBUGLOG(smartptr,_T("Deta(t)ching route %p"),r.get());
@@ -354,7 +359,7 @@ namespace mutaborGUI {
 						       MutRouteWnd * par,
 						       MutBoxChannelShape * shape)
 	{
-		wxASSERT(par);
+		mutASSERT(par);
 		wxChoicebook * choiceBook = panel->GetInputDeviceBook();
 	
 		MutInputDeviceShape * input;
@@ -401,8 +406,8 @@ namespace mutaborGUI {
 						 MutBoxChannelShape * shape,
 						 int selectBox)
 	{
-		wxASSERT(par);
-		wxASSERT(panel);
+		mutASSERT(par);
+		mutASSERT(panel);
 	
 		if (!par || !panel) return;
 		Route  route;
@@ -446,8 +451,8 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::InitializeOutputFilter(OutputFilterPanel * panel, 
 							MutRouteWnd * par,
 							MutBoxChannelShape * shape) {
-		wxASSERT(par);
-		wxASSERT(panel);
+		mutASSERT(par);
+		mutASSERT(panel);
 		if (!par || !panel) return;
 
 		// parent for child elements
@@ -494,8 +499,8 @@ namespace mutaborGUI {
 
 	void MutBoxChannelShape::ReadPanel(RoutePanel * panel) 
 	{
-		wxASSERT(panel);
-		wxASSERT(route);
+		mutASSERT(panel);
+		mutASSERT(route);
 		if (!panel) return;
 		if (!route) return;
 	
@@ -522,7 +527,7 @@ namespace mutaborGUI {
 		} else if (box != GetParent()) {
 			MutBoxShape * oldbox = 
 				dynamic_cast<MutBoxShape *>(GetParent());
-			wxASSERT(oldbox);
+			mutASSERT(oldbox);
 			ToGUIBase(route).Reconnect(oldbox,box);
 			BoxData::CloseBox(oldbox->GetBoxId());
 			
@@ -593,13 +598,13 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG(routing,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
 		if (changeRoute) {
-			wxASSERT(route);
+			mutASSERT(route);
 			OutputDevice dev = device ? device -> GetDevice() : NULL;
 			route -> Attatch(dev);
 		}
 #ifdef DEBUG
 		if (device && route) {
-			wxASSERT(device->GetDevice() == route->GetOutputDevice());
+			mutASSERT(device->GetDevice() == route->GetOutputDevice());
 		}
 #endif
 		output = device;
@@ -647,7 +652,7 @@ namespace mutaborGUI {
 #ifdef DEBUG
 			DEBUGLOG (other, _T("Drawing output line to device %x"),
 				  output->GetDevice().get());
-			wxASSERT(output->GetDevice());
+			mutASSERT(output->GetDevice());
 			DEBUGLOG (other, 
 				  _T("Lines for device:\n%s"), 
 				  output->GetDevice()->TowxString().c_str());
@@ -697,7 +702,7 @@ namespace mutaborGUI {
 		r.y += parentPosition.y;
 
 #ifdef DEBUG
-		wxASSERT(r.Contains(i));
+		mutASSERT(r.Contains(i));
 #endif
 		wxPoint p(r.x + r.width/2, r.y + r.height/2);
 		

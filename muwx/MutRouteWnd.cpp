@@ -2,17 +2,22 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.24 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.25 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.24 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.25 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.24  2011/09/29 05:26:59  keinstein
+ * Revision 1.25  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.24  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -197,18 +202,18 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 void MutRouteWnd::InitShapes()
 {
 	DebugCheckRoutes();
-	wxASSERT(GetSizer());
+	mutASSERT(GetSizer());
         wxSizerFlags flags;
         flags.Align(wxALIGN_CENTER_VERTICAL | wxALIGN_CENTER_HORIZONTAL);
         flags.Proportion(1);
         flags.TripleBorder();
 	
-	wxASSERT(InputDevices.empty());
+	mutASSERT(InputDevices.empty());
 	MutInputDeviceShape * newin = new MutNewInputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newin, flags);
 	InputDevices.push_back(newin);
 	
-	wxASSERT(Boxes.empty());
+	mutASSERT(Boxes.empty());
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
 			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
@@ -217,7 +222,7 @@ void MutRouteWnd::InitShapes()
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d now)"),
 			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
 
-	wxASSERT(OutputDevices.empty());
+	mutASSERT(OutputDevices.empty());
 	MutOutputDeviceShape * newout = new MutNewOutputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newout, flags);
 	OutputDevices.push_back(newout);
@@ -267,7 +272,7 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 			  (*In).get());
                 MutInputDeviceShape * newin = 
 			GUIDeviceFactory::CreateShape((*In),this);
-                wxASSERT(newin);
+                mutASSERT(newin);
                 InputSizer->Add(newin, flags);
                 InputDevices.push_back(newin);
         }
@@ -293,7 +298,7 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
         for (routeListType::const_iterator Route = list.begin();
              Route != list.end(); ++Route) {
 
-		wxASSERT(MIN_BOX <= (*Route)->GetBox()
+		mutASSERT(MIN_BOX <= (*Route)->GetBox()
 			 && (*Route)->GetBox() < MAX_BOX);
 		BoxData & Box = BoxData::GetBox((*Route)->GetBox());
 		boxShape = Box.GetBoxShape(this);
@@ -317,23 +322,23 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 
                 MutInputDeviceShape * device = 
 			dynamic_cast<MutInputDeviceShape*>(*iter);
-		wxASSERT(device);
+		mutASSERT(device);
                 if (!device) continue;
 
                 Route  Route = device->getRoutes();
                 while (Route) {
-                        wxASSERT(0<= Route->Box && Route->Box < MAX_BOX);
+                        mutASSERT(0<= Route->Box && Route->Box < MAX_BOX);
                         if (!BoxPTRs[Route->Box]) {
                                 DEBUGLOG (other, _T("Creating box"));
                                 BoxPTRs[Route->Box] = boxShape = 
                                         new MutBoxShape(this,wxID_ANY, Route->Box);
                                 DEBUGLOG (other, _T("Box shape: %p"),boxShape);
-                                wxASSERT(boxShape);
+                                mutASSERT(boxShape);
                                 if (!boxShape) continue;
                                 AddBox(boxShape, flags);
                         } else {
                                 boxShape = BoxPTRs[Route->Box];
-                                wxASSERT(wxDynamicCast(boxShape,MutBoxShape));
+                                mutASSERT(wxDynamicCast(boxShape,MutBoxShape));
                         }
 
                         DEBUGLOG (other, _T("Adding Route to Box %p on window %p"),boxShape,this);
@@ -348,14 +353,14 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 	// Adding routes without input device
 	Route  route = RouteClass::GetRouteList();
 	while (route) {
-		wxASSERT(0<= route->Box && route->Box < MAX_BOX);
+		mutASSERT(0<= route->Box && route->Box < MAX_BOX);
 		
 		bool found = false;
 		
 		wxSizerItemList & list = BoxSizer->GetChildren();
 		for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
 			MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
-			wxASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
+			mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
 			if (box && box->HasChannel(route)) {
 				found = true;
 				break;
@@ -371,12 +376,12 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 			BoxPTRs[route->Box] = boxShape = 
 			new MutBoxShape(this,wxID_ANY, route->Box);
 			DEBUGLOG (other, _T("Box shape: %p"),boxShape);
-			wxASSERT(boxShape);
+			mutASSERT(boxShape);
 			if (!boxShape) continue;
 			AddBox(boxShape, flags);
 		} else {
 			boxShape = BoxPTRs[route->Box];
-			wxASSERT(wxDynamicCast(boxShape,MutBoxShape));
+			mutASSERT(wxDynamicCast(boxShape,MutBoxShape));
 		}
 		
 		DEBUGLOG (other, _T("Adding Route to Box %p on window %p"),boxShape,this);
@@ -461,7 +466,7 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	    if (routewnd) break;
 	  }
 	}
-	wxASSERT(routewnd);
+	mutASSERT(routewnd);
 	if (routewnd) {
 	  routewnd->ClearDevices();
 	}
@@ -576,11 +581,11 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 	GetClientSize(&screenpos.width,&screenpos.height);
         PRINTSIZER(GetSizer());
 //        dc.SetDeviceOrigin(0,0);
-	wxASSERT(BoxSizer);
+	mutASSERT(BoxSizer);
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
-		wxASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
+		mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
 		if (box)
 			box->DrawLines(dc,screenpos);
         }

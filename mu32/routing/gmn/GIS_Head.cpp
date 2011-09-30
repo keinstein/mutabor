@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.cpp,v 1.6 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.cpp,v 1.7 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: GIS_Head.cpp,v $
- * Revision 1.6  2011/09/30 09:10:24  keinstein
+ * Revision 1.7  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.6  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.5  2011-09-27 20:13:22  keinstein
@@ -198,7 +203,7 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 		        );
 
 		position->Prev->Next = this;
-		wxASSERT(position->PrevPtr == &(position->Prev));
+		mutASSERT(position->PrevPtr == &(position->Prev));
 	}
 
 	Prev = position->Prev;
@@ -246,7 +251,7 @@ GisReadHead* GisReadHead::CutOut()
 
 		if (Next) {
 			Next->Prev = Prev;
-			wxASSERT(Next->PrevPtr == &(Next->Prev));
+			mutASSERT(Next->PrevPtr == &(Next->Prev));
 		}
 	}
 

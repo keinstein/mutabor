@@ -3,16 +3,21 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.5 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.6 2011/09/30 18:07:05 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.5  2011/09/30 09:10:25  keinstein
+ * Revision 1.6  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.5  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.4  2011-09-27 20:13:24  keinstein
@@ -221,7 +226,7 @@ namespace mutaborGUI {
 		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
 			     mutabor::Route r=NULL)
 			{ 
-				wxASSERT(!route || !r);
+				mutASSERT(!route || !r);
 				if (route && r) {
 					UNREACHABLEC;
 					return false;

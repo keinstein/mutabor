@@ -4,16 +4,21 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.10 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.10  2011/09/30 09:10:24  keinstein
+ * Revision 1.11  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.10  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.9  2011-09-29 05:26:58  keinstein
@@ -124,8 +129,8 @@ namespace mutabor {
 #ifdef DEBUG
 		routeListType::const_iterator i = 
 			find(routes.begin(),routes.end(),route);
-		wxASSERT(i == routes.end());
-		wxASSERT(IsInDeviceList(static_cast<thistype *>(this)));
+		mutASSERT(i == routes.end());
+		mutASSERT(IsInDeviceList(static_cast<thistype *>(this)));
 #endif
 		routes.push_back(route);
 		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
@@ -137,7 +142,7 @@ namespace mutabor {
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
 			 oldroute.get(),newroute.get());
 		bool found = Remove(oldroute);
-		wxASSERT(found);
+		mutASSERT(found);
 		if (found) 
 			Add(newroute);
 
@@ -152,7 +157,7 @@ namespace mutabor {
 		routeListType::iterator i = 
 			std::find(routes.begin(),routes.end(),route);
 		bool found = i != routes.end();
-		wxASSERT(found);
+		mutASSERT(found);
 		(*i) = NULL;// list can save some memory for reuse,
 		            // but route must be deleted
 		routes.erase(i);
@@ -185,7 +190,7 @@ namespace mutabor {
 	template <class T, class P, class L>
 	Route CommonTypedDeviceAPI<T,P,L>::GetRoute(int nr)// Nummern beginnen mit 0
 	{
-		wxASSERT(nr >= 0);
+		mutASSERT(nr >= 0);
 		routeTypeList::iterator i = routes.begin();
 		while (nr--) {
 			if (i++ == routes.end()) return NULL;
@@ -378,13 +383,13 @@ InputDeviceClass:\n\
 				     _T("device type name '%s' == '%s'?"),
 				     (const mutChar *)name,
 				     (const mutChar *)(out->GetTypeName()));
-			wxASSERT(name == out->GetTypeName());
+			mutASSERT(name == out->GetTypeName());
 			out -> Load(config);
 			i = config.toNextLeaf(_T("Device"));
 		}
 	
 		config.toParent(2);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	void DeviceFactory::SaveOutputDevices(tree_storage & config)
@@ -407,7 +412,7 @@ InputDeviceClass:\n\
 		}
 	
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	void DeviceFactory::LoadInputDevices(tree_storage & config)
@@ -430,14 +435,14 @@ InputDeviceClass:\n\
 				     _T("device type name '%s' == '%s'?"),
 				     (const mutChar *)name,
 				     (const mutChar *)(in->GetTypeName()));
-			wxASSERT(name == in -> GetTypeName());
+			mutASSERT(name == in -> GetTypeName());
 #endif
 			in -> Load(config);
 			i = config.toNextLeaf(_T("Device"));
 		}
 	
 		config.toParent(2);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	void DeviceFactory::SaveInputDevices(tree_storage & config)
@@ -459,7 +464,7 @@ InputDeviceClass:\n\
 		}
 	
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	void DeviceFactory::DoLoadOutputDevices(tree_storage & config) const

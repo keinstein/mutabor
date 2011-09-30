@@ -2,16 +2,21 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.3 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.4 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: BoxDlg.h,v $
- * Revision 1.3  2011/09/27 20:13:24  keinstein
+ * Revision 1.4  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.3  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -96,7 +101,7 @@ namespace mutaborGUI {
 		void SetBoxNumber(int nr);
 		int GetBoxNumber() const 
 		{ 
-			wxASSERT(boxNumber);
+			mutASSERT(boxNumber);
 			if (!boxNumber) return -99;
 			return boxNumber -> GetValue(); 
 		}
@@ -236,14 +241,14 @@ namespace mutaborGUI {
 	
 		void SetBoxNumber(int nr) 
 		{ 
-			wxASSERT(mutaborBoxPanel);
+			mutASSERT(mutaborBoxPanel);
 			if (!mutaborBoxPanel) return;
 			mutaborBoxPanel->SetBoxNumber(nr); 
 		}
 
 		int GetBoxNumber() const 
 		{ 
-			wxASSERT(mutaborBoxPanel);
+			mutASSERT(mutaborBoxPanel);
 			if (!mutaborBoxPanel) return -99;
 			return mutaborBoxPanel->GetBoxNumber(); 
 		}

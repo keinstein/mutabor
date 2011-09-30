@@ -2,16 +2,21 @@
 /********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.5 2011/09/30 18:07:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 18:07:06 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.h,v $
- * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.4  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -204,7 +209,7 @@ namespace mutaborGUI {
 
 		/// attach a device to the shape
 		void Attatch(mutabor::OutputDevice & dev) {
-			wxASSERT(device.get() == NULL);
+			mutASSERT(device.get() == NULL);
 			device = dev;
 		}
 		/// Attatch to a given route
@@ -231,7 +236,7 @@ namespace mutaborGUI {
 		    deletion of the window
 		 */
 		void Detatch(mutabor::OutputDevice & dev) {
-			wxASSERT(device == dev);
+			mutASSERT(device == dev);
 			if (device)
 				ToGUIBase(device).Detatch(this);
 			device = NULL;
@@ -283,7 +288,7 @@ namespace mutaborGUI {
 			}
 
 		virtual bool readDialog (OutputDevDlg * out) { 
-			wxASSERT (false);
+			mutASSERT (false);
 			return false; 
 		}
 

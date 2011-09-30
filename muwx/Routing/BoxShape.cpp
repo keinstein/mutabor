@@ -4,15 +4,20 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.5 2011/09/30 09:10:25 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.6 2011/09/30 18:07:05 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/09/30 09:10:25 $
-* \version $Revision: 1.5 $
+* $Date: 2011/09/30 18:07:05 $
+* \version $Revision: 1.6 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.5  2011/09/30 09:10:25  keinstein
+* Revision 1.6  2011/09/30 18:07:05  keinstein
+* * make compile on windows
+* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+* * add ax_boost_base for boost detection
+*
+* Revision 1.5  2011-09-30 09:10:25  keinstein
 * Further improvements in the routing system.
 *
 * Revision 1.4  2011-09-27 20:13:24  keinstein
@@ -317,11 +322,11 @@ namespace mutaborGUI {
 		if (channel) {
 			channels->Add(channel,0,wxALIGN_CENTER_HORIZONTAL | wxEXPAND);
 			if (channel->GetParent() != this) {
-				wxASSERT(!channel->GetParent());
+				mutASSERT(!channel->GetParent());
 				AddChild(channel);
 			}
 #ifdef DEBUG
-			wxASSERT(channel->GetContainingSizer() == channels);
+			mutASSERT(channel->GetContainingSizer() == channels);
 			wxSize s = channel->GetBestSize();
 			DEBUGLOG (other, _T("channel best size: %dx%d"),s.x,s.y);
 #endif		
@@ -334,7 +339,7 @@ namespace mutaborGUI {
 
 	MutBoxChannelShape * MutBoxShape::AddChannel(RoutePanel * panel) {
 		Route  route  = RouteFactory::Create();
-		wxASSERT(route);
+		mutASSERT(route);
 		if (!route) return NULL;
 		route -> Attatch(boxId); // this might be ovewritten by ReadPanel
 		BoxData::OpenBox(boxId);
@@ -344,7 +349,7 @@ namespace mutaborGUI {
 		MutBoxChannelShape * channel = 
 #ifdef DEBUG
 			ToGUIBase(route).GetShape(GetParent());
-		wxASSERT(!channel);
+		mutASSERT(!channel);
 #endif
 		channel = 
 			GUIRouteFactory::CreateBoxChannelShape(route,this);
@@ -371,8 +376,8 @@ namespace mutaborGUI {
 		wxSizerItemList & list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin() ; i!= list.end() ; i++) {
 			MutBoxChannelShape * channel = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
 			if (channel->GetRoute() == route) return true;
 		}
 		return false;
@@ -385,8 +390,8 @@ namespace mutaborGUI {
 		{
       
 			MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
 			channel->Attatch(device);
 		}
 	}
@@ -401,8 +406,8 @@ namespace mutaborGUI {
       
 			MutBoxChannelShape * channel = 
 				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			wxASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
 			channel->DrawLines(dc, GetPosition(), screenpos);
 		}
 	}
@@ -468,7 +473,7 @@ namespace mutaborGUI {
 
 	void MutBoxShape::DoLeftDblClick() {
 		BoxDlg * box = ShowBoxDialog();
-		wxASSERT(box);
+		mutASSERT(box);
 	
 		if (!box) return;
 		int Res = box->ShowModal();
@@ -522,15 +527,15 @@ namespace mutaborGUI {
  */
 	BoxDlg * MutBoxShape::ShowBoxDialog() const{
 		MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *>(GetParent());
-		wxASSERT(parentwin);
+		mutASSERT(parentwin);
 		if (!parentwin) return NULL;
 	
 		BoxDlg * box = new BoxDlg (parentwin);
-		wxASSERT(box);
+		mutASSERT(box);
 		if (!box) return NULL;
 
 		wxWindow * routeWindow = box->GetRouteWindow();
-		wxASSERT(routeWindow);
+		mutASSERT(routeWindow);
 		if (!routeWindow) {
 			box->Destroy();
 			return NULL;
@@ -548,7 +553,7 @@ namespace mutaborGUI {
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++) {
-			wxASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
 			MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
 							     parentwin, 
 							     routeWindow, 
@@ -567,7 +572,7 @@ namespace mutaborGUI {
 	}
 
 	void MutBoxShape::InitializeDialog(BoxDlg * dlg) const {
-		wxASSERT(dlg);
+		mutASSERT(dlg);
 		dlg->SetBoxType(boxId);
 		if (boxId >= Box0) 
 			dlg->SetBoxNumber(boxId);
@@ -576,7 +581,7 @@ namespace mutaborGUI {
 	}
 
 	bool MutBoxShape::readDialog (BoxDlg * box) {
-		wxASSERT(box);
+		mutASSERT(box);
 		if (!box) return false;
 		int type = box->GetBoxType();
 		switch (type) {
@@ -590,7 +595,7 @@ namespace mutaborGUI {
 		}
 	
 		wxWindow * routeWindow = box->GetRouteWindow();
-		wxASSERT(routeWindow);
+		mutASSERT(routeWindow);
 		if (!routeWindow) {
 			return false;
 		}
@@ -600,7 +605,7 @@ namespace mutaborGUI {
 		     i != routePanels.end(); i++) {
 			RoutePanel * panel = dynamic_cast<RoutePanel *> (*i);
 			if (!panel) continue;
-			wxASSERT(dynamic_cast<RoutePanel *> (*i));
+			mutASSERT(dynamic_cast<RoutePanel *> (*i));
 			MutBoxChannelShape * channel = panel -> GetChannel();
 			if (!channel && panel->IsEnabled()) {
 				channel = AddChannel(panel);
@@ -614,7 +619,7 @@ namespace mutaborGUI {
 
 	bool MutBoxShape::replaceSelfBy (MutBoxShape  * newshape)
 	{
-		wxASSERT (newshape);
+		mutASSERT (newshape);
 	
 		// this is only used in NewMutBoxShape so far.
 		// But we need it, when we implement other Box types
@@ -625,10 +630,10 @@ namespace mutaborGUI {
   route; route = route->Next) 
   {
   void * p = route->getUserData();
-  wxASSERT (wxDynamicCast (p,MutBoxChannelShape));
+  mutASSERT (wxDynamicCast (p,MutBoxChannelShape));
   MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
 		
-  wxASSERT (channel->GetInput() == this);
+  mutASSERT (channel->GetInput() == this);
   channel->SetInput (newshape);
 		
 		
@@ -660,7 +665,7 @@ namespace mutaborGUI {
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++) {
 			MutBoxChannelShape * channel = dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow());
-			wxASSERT(channel);
+			mutASSERT(channel);
 			channel->DetachChannel();
 		}
 		return true;

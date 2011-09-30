@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute-inlines.h,v 1.1 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute-inlines.h,v 1.2 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,12 @@
  *
  *
  * $Log: GUIRoute-inlines.h,v $
- * Revision 1.1  2011/09/27 20:13:24  keinstein
+ * Revision 1.2  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.1  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -69,8 +74,8 @@ namespace mutaborGUI {
 
 	inline bool GUIRouteBase::Reconnect(MutBoxShape * oldshape,
 					    MutBoxShape * newshape) {
-		wxASSERT(oldshape);
-		wxASSERT(newshape);
+		mutASSERT(oldshape);
+		mutASSERT(newshape);
 		return route->Reconnect(oldshape->GetBoxId(),
 					newshape->GetBoxId());
 	}
@@ -89,7 +94,7 @@ namespace mutaborGUI {
 			MutBoxChannelShapeList::iterator pos = 
 				std::find(shapes.begin(),shapes.end(),shape);
 			ok = (pos != shapes.end()); 
-			wxASSERT(ok);
+			mutASSERT(ok);
 			if (ok)
 				shapes.erase(pos);
 		} else {
@@ -108,7 +113,7 @@ namespace mutaborGUI {
 		shape->Add(route);
 		
 		wxWindow * parent = shape->GetGrandParent();
-		wxASSERT(route);
+		mutASSERT(route);
 		mutabor::OutputDevice out = route->GetOutputDevice();
 		if (out) {
 			MutOutputDeviceShape * outshape =
@@ -295,7 +300,7 @@ namespace mutaborGUI {
 			MutOutputDeviceShapeList::iterator pos = 
 				std::find(shapes.begin(),shapes.end(),shape);
 			ok = (pos != shapes.end()); 
-			wxASSERT(ok);
+			mutASSERT(ok);
 			if (ok)
 				shapes.erase(pos);
 		} else {
@@ -314,7 +319,7 @@ namespace mutaborGUI {
 		shape->Add(device);
 
 		wxWindow * parent = shape->GetParent();
-		wxASSERT(device);
+		mutASSERT(device);
 		const mutabor::routeListType & routes = device -> GetRoutes();
 		for (typename mutabor::routeListType::const_iterator 
 			     route = routes.begin();
@@ -425,7 +430,7 @@ namespace mutaborGUI {
 			MutInputDeviceShapeList::iterator pos = 
 				std::find(shapes.begin(),shapes.end(),shape);
 			ok = (pos != shapes.end()); 
-			wxASSERT(ok);
+			mutASSERT(ok);
 			if (ok)
 				shapes.erase(pos);
 		} else {
@@ -445,7 +450,7 @@ namespace mutaborGUI {
 
 		/** see output device */
 		wxWindow * parent = shape->GetParent();
-		wxASSERT(device);
+		mutASSERT(device);
 		const mutabor::routeListType & routes = device -> GetRoutes();
 		for (typename mutabor::routeListType::const_iterator 
 			     route = routes.begin();
@@ -516,8 +521,8 @@ namespace mutaborGUI {
 		
 
 	inline  GUIInputDeviceBase & ToGUIBase(mutabor::InputDevice d) {
-		wxASSERT((GUIfiedInputDevice *)(d.get()));
-		wxASSERT((((GUIfiedInputDevice *)(d.get()))
+		mutASSERT((GUIfiedInputDevice *)(d.get()));
+		mutASSERT((((GUIfiedInputDevice *)(d.get()))
 			  -> GetGUIDevice()).IsDevice(d));
 		
 		return ((GUIfiedInputDevice *)(d.get()))
@@ -525,8 +530,8 @@ namespace mutaborGUI {
 	}
 
 	inline  GUIOutputDeviceBase & ToGUIBase(mutabor::OutputDevice d) {
-		wxASSERT((GUIfiedOutputDevice *)(d.get()));
-		wxASSERT((((GUIfiedOutputDevice *)(d.get()))
+		mutASSERT((GUIfiedOutputDevice *)(d.get()));
+		mutASSERT((((GUIfiedOutputDevice *)(d.get()))
 			  -> GetGUIDevice()).IsDevice(d));
 		
 		return ((GUIfiedOutputDevice *)(d.get()))
@@ -536,7 +541,7 @@ namespace mutaborGUI {
 	inline MutOutputDeviceShape * GUIDeviceFactory::CreateShape(
 		mutabor::OutputDevice device, wxWindow * parent) {
 		int type = device->GetType();
-		wxASSERT(type >= 0);
+		mutASSERT(type >= 0);
 		if (factories.size() <= (size_t)type) {
 			UNREACHABLECT(DeviceFactory);
 			return NULL;
@@ -554,7 +559,7 @@ namespace mutaborGUI {
 	inline MutInputDeviceShape * GUIDeviceFactory::CreateShape(
 		mutabor::InputDevice device, wxWindow * parent) {
 		int type = device->GetType();
-		wxASSERT(type >= 0);
+		mutASSERT(type >= 0);
 		if (factories.size() <= (size_t)type) {
 			UNREACHABLECT(DeviceFactory);
 			return NULL;

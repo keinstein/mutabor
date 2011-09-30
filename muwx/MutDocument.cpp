@@ -2,16 +2,21 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.10 2011/09/27 20:13:23 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/09/27 20:13:23 $
-* \version $Revision: 1.10 $
+* $Date: 2011/09/30 18:07:04 $
+* \version $Revision: 1.11 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.10  2011/09/27 20:13:23  keinstein
+* Revision 1.11  2011/09/30 18:07:04  keinstein
+* * make compile on windows
+* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+* * add ax_boost_base for boost detection
+*
+* Revision 1.10  2011-09-27 20:13:23  keinstein
 * * Reworked route editing backend
 * * rewireing is done by RouteClass/GUIRoute now
 * * other classes forward most requests to this pair
@@ -214,7 +219,7 @@ namespace mutaborGUI {
 	bool MutDocument::DoOpenDocument(const wxString& filename)
 	{
 		MutView *view = (MutView *)GetFirstView();
-		wxASSERT(view);
+		mutASSERT(view);
 		if (!view->GetTextsw()->LoadFile(filename))
 			return false;
 		DEBUGLOG(docview,_T("New title: ")+GetDocumentManager()->MakeFrameTitle(this));

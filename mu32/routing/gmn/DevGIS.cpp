@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.8 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.9 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.8  2011/09/30 09:10:24  keinstein
+ * Revision 1.9  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.8  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.7  2011-09-29 05:26:58  keinstein
@@ -199,7 +204,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.Write(_T("File Name"),Name);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Save route settings (filter settings) for a given route
@@ -216,7 +221,7 @@ namespace mutabor {
 		config.toLeaf(_T("Guido File Output"));
 		STUBC;
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -229,7 +234,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		Name = config.Read(_T("File Name"), mutEmptyString);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Load route settings (filter settings) for a given route
@@ -246,7 +251,7 @@ namespace mutabor {
 		config.toLeaf(_T("Guido File Output"));
 		STUBC;
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -259,7 +264,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.Write(_T("File Name"),Name);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Save route settings (filter settings) for a given route
@@ -276,7 +281,7 @@ namespace mutabor {
 		config.toLeaf(_T("Guido File Input"));
 		// ...
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -289,7 +294,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		Name = config.Read(_T("File Name"),mutEmptyString);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Load route settings (filter settings) for a given route
@@ -306,13 +311,13 @@ namespace mutabor {
 		config.toLeaf(_T("Guido File Input"));
 		// ...
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
 	bool InputGis::Open()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		DEBUGLOG (other, _T(""));
 		Data = GisParse(Name);
 
@@ -352,7 +357,7 @@ namespace mutabor {
 
 	void InputGis::Close()
 	{
-		wxASSERT(isOpen);
+		mutASSERT(isOpen);
 		Stop();
 		// Speicher freigeben
 
@@ -478,7 +483,7 @@ namespace mutabor {
 
 	void InputGis::Proceed(GisReadArtHead *h, char turn, Route route)
 	{
-		wxASSERT(h->Cursor);
+		mutASSERT(h->Cursor);
 		CurrentId = h->Id;
 		CurrentSep = h->Cursor->Sep;
 		// calculate box
@@ -568,8 +573,8 @@ namespace mutabor {
 
 	void InputGis::ProceedRoute(GisReadArtHead *h, char turn)
 	{
-		wxASSERT(h);
-		wxASSERT(h->Cursor);
+		mutASSERT(h);
+		mutASSERT(h->Cursor);
 		DEBUGLOG (other, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
 			  (h->Id).c_str(),(h->Id).Len(), Id.c_str(), Id.Len());
 		mutChar staff = h->Id[mutLen(Id)];
@@ -658,7 +663,7 @@ namespace mutabor {
 			DEBUGLOG (other, _T("H = %p; h = %p"),H,
 				  dynamic_cast<GisReadArtHead *>(*H));
 
-			wxASSERT(h);
+			mutASSERT(h);
 			DEBUGLOG (other, _T("h->nSub = %d"),h->nSub);
 
 			if ( h->nSub > 0) { // header has subsGisReadHead

@@ -3,16 +3,21 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.4 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.5 2011/09/30 18:07:05 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.4  2011/09/27 20:13:24  keinstein
+ * Revision 1.5  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.4  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -126,7 +131,7 @@ namespace mutaborGUI {
 		if (!d) return false;
 		
 		DEBUGLOG (other,_T ("Checking icon"));
-		wxASSERT(MidiInputDevBitmap.IsOk());
+		mutASSERT(MidiInputDevBitmap.IsOk());
 		
 		bool fine = 
 			MutDeviceShape::Create (parent, id, d->GetName());
@@ -193,7 +198,7 @@ namespace mutaborGUI {
 				return;
 			}
 		} while ((r = r->GetNext()));
-		wxASSERT(!r);
+		mutASSERT(!r);
 	}
 
 	void MutInputDeviceShape::AddRoute(Route  route)
@@ -203,7 +208,7 @@ namespace mutaborGUI {
 			UNREACHABLEC;
 			return;
 		}
-		wxASSERT(!route->GetNext());
+		mutASSERT(!route->GetNext());
 		route->SetNext(device->GetRoutes());
 		device->SetRoute(route);
 	}
@@ -316,10 +321,10 @@ namespace mutaborGUI {
 		    route; route = getRoutes()) 
 		{
 			void * p = route->getUserData();
-			wxASSERT (wxDynamicCast (p,MutBoxChannelShape));
+			mutASSERT (wxDynamicCast (p,MutBoxChannelShape));
 			MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
 		
-			wxASSERT (channel->GetInput() == this);
+			mutASSERT (channel->GetInput() == this);
 			Detatch (channel);
 		}
 		device->Destroy();
@@ -350,8 +355,8 @@ namespace mutaborGUI {
 	{
 		/** \todo transfer this function to GUIRoute */
 		
-		wxASSERT (newshape);
-		wxASSERT (newshape->device);
+		mutASSERT (newshape);
+		mutASSERT (newshape->device);
 
 		DEBUGLOG (routing, _T(""));
 	
@@ -389,8 +394,8 @@ namespace mutaborGUI {
 	void MutInputDeviceShape::ReadPanel(InputFilterPanel * panel, 
 					    MutBoxChannelShape * channel)
 	{
-		wxASSERT(panel);
-		wxASSERT(channel);
+		mutASSERT(panel);
+		mutASSERT(channel);
 		if (!panel || !channel) return;
 	
 		bool active = panel->IsShown();

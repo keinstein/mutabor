@@ -2,16 +2,21 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.9 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.10 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.9  2011/09/27 20:13:23  keinstein
+ * Revision 1.10  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.9  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -105,7 +110,7 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG(docview,_T(""));
 		if (doc) {
-			wxASSERT(dynamic_cast<MutDocument *>(doc));
+			mutASSERT(dynamic_cast<MutDocument *>(doc));
 		}
 
 		// create a new MutViewFrame for this view to draw into. The ChildFrame is
@@ -165,7 +170,7 @@ namespace mutaborGUI {
 #if wxUSE_PRINTING_ARCHITECTURE
 	wxPrintout* MutView::OnCreatePrintout() {
 		if (textsw) {
-			wxASSERT(GetDocument());
+			mutASSERT(GetDocument());
 			wxString name;
 			GetDocument()->GetPrintableName(name);
 			return new MutEditPrint(this,textsw,name);

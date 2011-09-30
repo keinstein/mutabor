@@ -2,17 +2,22 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.31 2011/09/30 09:10:25 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.32 2011/09/30 18:07:04 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/30 09:10:25 $
-* \version $Revision: 1.31 $
+* $Date: 2011/09/30 18:07:04 $
+* \version $Revision: 1.32 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.31  2011/09/30 09:10:25  keinstein
+* Revision 1.32  2011/09/30 18:07:04  keinstein
+* * make compile on windows
+* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+* * add ax_boost_base for boost detection
+*
+* Revision 1.31  2011-09-30 09:10:25  keinstein
 * Further improvements in the routing system.
 *
 * Revision 1.30  2011-09-29 05:26:59  keinstein
@@ -1351,8 +1356,8 @@ namespace mutaborGUI {
 		// scale DC
 		PrintScaling (dc);
 		
-		wxASSERT(0 < page);
-		wxASSERT(page <= (int)m_ranges.size());
+		mutASSERT(0 < page);
+		mutASSERT(page <= (int)m_ranges.size());
 		std::pair <int,int> positions = m_ranges[page-1];
 
 		m_edit->FormatRange (1, positions.first, positions.second,
@@ -1679,7 +1684,7 @@ public:
 	UpdatesCountFilter(int& count)
 		: m_count(count)
 		{
-			wxASSERT_MSG( m_count == -1 || m_count == -2,
+			mutASSERT_MSG( m_count == -1 || m_count == -2,
 				      _T("wrong initial m_updatesCount value") );
 
 			if (m_count != -2)
@@ -1842,7 +1847,7 @@ MutEditFile::StreamIn(const wxString& value,
 
 	// It's okay for EN_UPDATE to not be sent if the selection is empty and
 	// the text is empty, otherwise warn the programmer about it.
-	wxASSERT_MSG( ucf.GotUpdate() || ( !HasSelection() && value.empty() ),
+	mutASSERT_MSG( ucf.GotUpdate() || ( !HasSelection() && value.empty() ),
 	              _T("EM_STREAMIN didn't send EN_UPDATE?") );
 
 	if ( eds.dwError ) {

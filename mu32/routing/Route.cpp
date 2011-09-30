@@ -3,16 +3,21 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.7 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.8 2011/09/30 18:07:04 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Route.cpp,v $
- * Revision 1.7  2011/09/30 09:10:24  keinstein
+ * Revision 1.8  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.7  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.6  2011-09-27 20:13:21  keinstein
@@ -92,7 +97,7 @@ namespace mutabor {
 			std::find(routeList.begin(),
 				  routeList.end(),
 				  this);
-		wxASSERT(r == routeList.end());
+		mutASSERT(r == routeList.end());
 #endif
 	}
 
@@ -109,7 +114,7 @@ namespace mutabor {
 			In->Save(config,this);
 		if (Out)
 			Out->Save(config,this);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	template <class I, class O>
@@ -124,7 +129,7 @@ namespace mutabor {
 			In->Load(config,this);
 		if (Out)
 			Out->Load(config,this);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	template <class I, class O>
@@ -244,7 +249,7 @@ namespace mutabor {
 		}
 	
 		config.toParent();	
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	template <class I, class O>
@@ -270,7 +275,7 @@ namespace mutabor {
 		}
 	
 		config.toParent(2);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -282,7 +287,7 @@ namespace mutabor {
 			std::find(routeList.begin(),
 				  routeList.end(),
 				  route);
-		wxASSERT(r == routeList.end());
+		mutASSERT(r == routeList.end());
 #endif
 		routeList.push_back(route);
 	}
@@ -294,7 +299,7 @@ namespace mutabor {
 			std::find(routeList.begin(),
 				  routeList.end(),
 				  route);
-		wxASSERT(r != routeList.end());
+		mutASSERT(r != routeList.end());
 		if (r != routeList.end()) {
 			routeList.erase(r);
 		}
@@ -558,7 +563,7 @@ TRouteClass<I,O>:\n\
 		RouteClass::LoadRoutes(config);
 	
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	void  RouteFactory::DoSaveRoutes(tree_storage & config) const
@@ -580,7 +585,7 @@ TRouteClass<I,O>:\n\
 		RouteClass::SaveRoutes(config);
 	
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 }

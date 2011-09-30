@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.1 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.2 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,12 @@
  *
  *
  * $Log: GUIRoute.h,v $
- * Revision 1.1  2011/09/27 20:13:24  keinstein
+ * Revision 1.2  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.1  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -417,8 +422,8 @@ namespace mutaborGUI {
 	};
 
 	inline  GUIRouteBase & ToGUIBase(mutabor::Route r) {
-		wxASSERT(dynamic_cast<GUIfiedRoute *>(r.get()));
-		wxASSERT(((static_cast<GUIfiedRoute *>(r.get()))
+		mutASSERT(dynamic_cast<GUIfiedRoute *>(r.get()));
+		mutASSERT(((static_cast<GUIfiedRoute *>(r.get()))
 			  -> GetGUIRoute()).IsRoute(r));
 		
 		return static_cast<GUIfiedRoute *>(r.get()) -> GetGUIRoute();
@@ -451,7 +456,7 @@ namespace mutaborGUI {
 	public:
 		static MutBoxShape * CreateBoxShape(int box,
 						    wxWindow * parent) {
-			wxASSERT(dynamic_cast<GUIRouteFactory *> (factory));
+			mutASSERT(dynamic_cast<GUIRouteFactory *> (factory));
 			return ((GUIRouteFactory *)factory)->
 				DoCreateBoxShape(box,parent);
 		}

@@ -3,16 +3,21 @@
  ********************************************************************
  * Input device shape for reading GUIDO files in the route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/09/30 18:07:06 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: OutputGuidoFileDeviceShape.cpp,v $
- * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.4  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -81,19 +86,19 @@ namespace mutaborGUI {
 
 	void MutOutputGuidoFileDeviceShape::InitializeDialog(OutputDevDlg * out) const
 	{
-		wxASSERT(device);
-		wxASSERT(device->GetType() == DTGis);
-		wxASSERT(out);
+		mutASSERT(device);
+		mutASSERT(device->GetType() == DTGis);
+		mutASSERT(out);
 		out -> SetType(DTGis);
 		out -> SetGUIDOFile(device->GetName());
 	}
 
 	bool MutOutputGuidoFileDeviceShape::readDialog (OutputDevDlg * out)
 	{
-		wxASSERT(device);
-		wxASSERT(device->GetType() == DTGis);
-		wxASSERT(out);
-		wxASSERT (out -> GetType() == DTGis);
+		mutASSERT(device);
+		mutASSERT(device->GetType() == DTGis);
+		mutASSERT(out);
+		mutASSERT (out -> GetType() == DTGis);
 		DEBUGLOG (other,_T ("File %s"),  (out -> GetGUIDOFile()).c_str());
 		device->SetName (out -> GetGUIDOFile());
 		SetLabel (device->GetName());

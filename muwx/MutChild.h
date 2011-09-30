@@ -1,15 +1,20 @@
 /** \file                 -*- C++ -*-
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.14 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.15 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.14 $
+ * \date $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: MutChild.h,v $
- * Revision 1.14  2011/09/27 20:13:23  keinstein
+ * Revision 1.15  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.14  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -162,7 +167,7 @@ namespace mutaborGUI {
 
 		void OnClose(wxCloseEvent& event)
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			DEBUGLOG(other,_T(""));
 			MutTextBox::OnClose(event);
 		}
@@ -171,7 +176,7 @@ namespace mutaborGUI {
 		void OnAuiClose(wxAuiManagerEvent& event)
 
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			DEBUGLOG(other,_T(""));
 			deleteFromWinAttrs();
 		}
@@ -180,7 +185,7 @@ namespace mutaborGUI {
 
 		void GetClientSize(int * width, int * height)
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			MutTextBox::GetClientSize(width,height);
 
 			if ((width += 2) < 0) width = 0;
@@ -190,13 +195,13 @@ namespace mutaborGUI {
 
 		void SetClientSize(int width, int height)
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			MutTextBox::SetClientSize(width-2, height-3);
 		}
 
 		void SetClientSize(const wxSize& size)
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			wxSize s = size;
 			s.IncBy(-2);
 			MutTextBox::SetClientSize(s);
@@ -205,7 +210,7 @@ namespace mutaborGUI {
 		void ClientToScreen(int * x, int * y )
 
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			MutTextBox::ClientToScreen(x,y);
 			x+=1;
 			y+=1;
@@ -213,7 +218,7 @@ namespace mutaborGUI {
 
 		wxPoint ClientToScreen(const wxPoint& pt) const
 		{
-			wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			return MutTextBox::ClientToScreen(pt)+wxPoint(1,1);
 		}
 

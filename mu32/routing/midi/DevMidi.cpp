@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.11 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.12 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/09/30 18:07:04 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.11  2011/09/30 09:10:24  keinstein
+ * Revision 1.12  2011/09/30 18:07:04  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.11  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.10  2011-09-29 05:26:58  keinstein
@@ -187,14 +192,14 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		wxASSERT(route);
+		mutASSERT(route);
 		
 		config.toLeaf(_T("Midi Output"));
 		config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
 		config.Write(_T("Channel Range From"), route->OFrom);
 		config.Write(_T("Channel Range To"), route->OTo);
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -210,7 +215,7 @@ namespace mutabor {
 		Name = config.Read(_T("Device Name"), rtmidiout->getPortCount()?
 				   muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
 		bending_range = config.Read(_T("Bending Range"),2);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Loade route settings (filter settings) for a given route
@@ -224,7 +229,7 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		wxASSERT(route);
+		mutASSERT(route);
 		config.toLeaf(_T("Midi Output"));
 		route->ONoDrum = config.Read(_T("Avoid Drum Channel"), true);
 		int oldfrom, oldto;
@@ -244,13 +249,13 @@ namespace mutabor {
 						      oldfrom,oldto,GetName().c_str(),GetMinChannel(),GetMaxChannel()),
 				     _("Warning loading route"),wxICON_EXCLAMATION);
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
 	bool OutputMidiPort::Open()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		DEBUGLOG (other, _T(""));
 		int i;
 
@@ -299,7 +304,7 @@ namespace mutabor {
 	void OutputMidiPort::Close()
 
 	{
-		wxASSERT(isOpen);
+		mutASSERT(isOpen);
 		DEBUGLOG (other, _T(""));
 		// alle liegenden Tˆne ausschalten
 
@@ -692,7 +697,7 @@ OutputMidiPort:\n\
 #endif
 		config.Write(_T("Device Id"),   DevId);
 		config.Write(_T("Device Name"), Name);
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Save route settings (filter settings) for a given route
@@ -722,7 +727,7 @@ OutputMidiPort:\n\
 			break;
 		}
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 
@@ -738,7 +743,7 @@ OutputMidiPort:\n\
 		Name  = config.Read(_T("Device Name"), 	
 				    rtmidiout->getPortCount()?
 				    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 /// Loade route settings (filter settings) for a given route
@@ -800,12 +805,12 @@ OutputMidiPort:\n\
 			break;
 		}
 		config.toParent();
-		wxASSERT(oldpath == config.GetPath());
+		mutASSERT(oldpath == config.GetPath());
 	}
 
 	bool InputMidiPort::Open()
 	{
-		wxASSERT(!isOpen);
+		mutASSERT(!isOpen);
 		for (int i = 0; i < 16; i++)
 			Cd[i].Reset();
 
@@ -836,7 +841,7 @@ OutputMidiPort:\n\
 
 	void InputMidiPort::Close()
 	{
-		wxASSERT(isOpen);
+		mutASSERT(isOpen);
 #ifdef RTMIDI
 		hMidiIn->closePort();
 		delete hMidiIn;

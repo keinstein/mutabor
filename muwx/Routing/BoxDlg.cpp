@@ -2,16 +2,21 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.6 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.6  2011/09/27 20:13:24  keinstein
+ * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.6  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -140,7 +145,7 @@ using namespace mutabor;
 namespace mutaborGUI {
 
 	void MutaborBoxSettings::SetBoxNumber (int nr) {
-		wxASSERT(boxNumber);
+		mutASSERT(boxNumber);
 		if (!boxNumber) return;
 		int m;
 		if (nr > (m = boxNumber->GetMax())) nr = m;
@@ -346,7 +351,7 @@ namespace mutaborGUI {
 
 	void BoxDlg::InitializeBoxTypes() {
 //	int i = 0;
-		wxASSERT(boxType);
+		mutASSERT(boxType);
 		if (!boxType) {
 			noBoxPanel = NULL;
 			mutaborBoxPanel = NULL;
@@ -392,7 +397,7 @@ namespace mutaborGUI {
 	}
 
 	bool BoxDlg::SetBoxType(int type) {
-		wxASSERT(boxType && boxTypeChoice);
+		mutASSERT(boxType && boxTypeChoice);
 		if (!boxType || !boxTypeChoice) return false;
 		DEBUGLOG(dialog,_T("Setting box type number %d"), type);
 		if (0<= type && type < MAX_BOX) type = Box0;

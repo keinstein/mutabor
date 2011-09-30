@@ -4,16 +4,21 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.8 2011/09/30 09:10:24 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.9 2011/09/30 18:07:04 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/09/30 09:10:24 $
-* \version $Revision: 1.8 $
+* $Date: 2011/09/30 18:07:04 $
+* \version $Revision: 1.9 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.8  2011/09/30 09:10:24  keinstein
+* Revision 1.9  2011/09/30 18:07:04  keinstein
+* * make compile on windows
+* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+* * add ax_boost_base for boost detection
+*
+* Revision 1.8  2011-09-30 09:10:24  keinstein
 * Further improvements in the routing system.
 *
 * Revision 1.7  2011-09-29 05:26:58  keinstein
@@ -171,7 +176,7 @@ bool MutIconShape::Create (wxWindow * parent, wxWindowID id)
 			      wxDefaultSize,
 			      wxBORDER_RAISED | wxTAB_TRAVERSAL)) return false;
 	Icon = GetMutIcon();
-	wxASSERT(Icon.IsOk());
+	mutASSERT(Icon.IsOk());
 	SetAutoLayout(true);
 
 	maxBorderSize = GetWindowBorderSize();
@@ -221,8 +226,8 @@ wxSize MutIconShape::DoGetBestSize() const
 
 	DEBUGLOG(gui,_T("s1: (%d,%d), maxBorderSize: (%d,%d)"),
 		 s1.x,s1.y,2*maxBorderSize.x,2*maxBorderSize.y);
-	wxASSERT(!maxBorderSize.x || s1.x <= 2*maxBorderSize.x);
-	wxASSERT(!maxBorderSize.y || s1.y <= 2*maxBorderSize.y);
+	mutASSERT(!maxBorderSize.x || s1.x <= 2*maxBorderSize.x);
+	mutASSERT(!maxBorderSize.y || s1.y <= 2*maxBorderSize.y);
 #endif
 
 	s += maxBorderSize + maxBorderSize;
@@ -315,7 +320,7 @@ wxPoint MutIconShape::GetPerimeterPoint(const wxPoint &i,const wxPoint &o) const
 	wxRect ir = GetIconRect();
 #ifdef DEBUG
 	std::cerr.flush();
-	wxASSERT(r.Contains(i));
+	mutASSERT(r.Contains(i));
 #endif
 
 	wxPoint p;

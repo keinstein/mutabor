@@ -2,17 +2,22 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.20 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.21 2011/09/30 18:07:05 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.20 $
+ * $Date: 2011/09/30 18:07:05 $
+ * \version $Revision: 1.21 $
  * \license GPL
  *
  * $Log: MutTextBox.cpp,v $
- * Revision 1.20  2011/09/27 20:13:23  keinstein
+ * Revision 1.21  2011/09/30 18:07:05  keinstein
+ * * make compile on windows
+ * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
+ * * add ax_boost_base for boost detection
+ *
+ * Revision 1.20  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -107,7 +112,7 @@ MutTextBox::MutTextBox(WinKind k,
 void MutTextBox::OnClose(wxCloseEvent& event)
 
 {
-	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T("winKind: %d"), winKind);
         BoxData & boxdata = BoxData::GetBox(box);
 	if ( LogicOn ) {
@@ -188,7 +193,7 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
 
 void MutTextBox::NewText(char *s, bool newTitle)
 {
-	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T(""));
 	// Text in Liste
 	Clear();
@@ -229,7 +234,7 @@ void MutTextBox::NewText(char *s, bool newTitle)
 void MutTextBox::NewText(const wxString &s, bool newTitle)
 {
 	DEBUGLOG (other, _T("s=%s; newTitle=%d; winKind=%d"),s.c_str(),newTitle,winKind);
-	wxASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 
 	Freeze();
 	// Text in Liste
