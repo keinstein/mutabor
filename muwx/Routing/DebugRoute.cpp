@@ -2,16 +2,25 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.5 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2010/04/13
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: DebugRoute.cpp,v $
- * Revision 1.5  2011/09/30 18:07:05  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -89,11 +98,12 @@ namespace mutaborGUI {
 			  Out->TowxString().c_str());
 	}
 
-	static void CheckRoute(const Route  route,const MutInputDeviceShape * In) 
+	static void CheckRoute(const RouteClass * route,
+			       const MutInputDeviceShape * In) 
 	{
 		DEBUGLOG2(routing,
 			  _T("Route %p id %d, Type %d, Input range %d -- %d"),
-			  route.get(),
+			  route,
 			  route->GetId(),
 			  route->GetType(),
 			  route->GetInputFrom(), 
@@ -133,7 +143,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	static void CheckInputDevice(const InputDevice In)
+	static void CheckInputDevice(const InputDeviceClass *  In)
 	{
 		DEBUGLOG2(routing,
 			  _T("Input device %p '%s' %d:\n%s"), 
@@ -179,8 +189,8 @@ namespace mutaborGUI {
 	}
 
 
-	static void Check(MutInputDeviceShape * input,
-			  MutBoxChannelShape * route) {
+	static void Check(const MutInputDeviceShape * input,
+			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
 		mutASSERT(route->GetInput() == input);
 		
@@ -195,7 +205,8 @@ namespace mutaborGUI {
 
 
 
-	static void Check(MutInputDeviceShape * input, Route route) {
+	static void Check(const MutInputDeviceShape * input,
+			  const  RouteClass * route) {
 		// input has shape search for route shape
 		const MutBoxChannelShapeList & routelist = 
 			ToGUIBase(route).GetBoxChannelShapes();
@@ -211,7 +222,8 @@ namespace mutaborGUI {
 		mutASSERT(false);
 	}
 
-	static void Check(InputDevice input, MutBoxChannelShape * route) {
+	static void Check(const InputDeviceClass * input, 
+			  const MutBoxChannelShape * route) {
 		// route has shape search for input shape
 		const MutInputDeviceShapeList & inputlist = 
 			ToGUIBase(input).GetShapes();
@@ -227,9 +239,10 @@ namespace mutaborGUI {
 	}
 
 
-	static void Check(InputDevice input, Route route) {
+	static void Check(const InputDeviceClass * input,
+			  const  RouteClass * route) {
 		// input and route are associated searching for shapes
-		MutInputDeviceShapeList & inputlist = 
+		const MutInputDeviceShapeList & inputlist = 
 			ToGUIBase(input).GetShapes();
 		for (MutInputDeviceShapeList::const_iterator i = inputlist.begin();
 		     i != inputlist.end(); i++) {
@@ -250,7 +263,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	static void Check(InputDevice input) {
+	static void Check(const InputDeviceClass * input) {
 		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(input->TowxString()));
 		// associated routes for input device
 		const routeListType & routes = input->GetRoutes();
@@ -258,7 +271,7 @@ namespace mutaborGUI {
 		for (routeListType::const_iterator i = routes.begin();
 		     i != routes.end(); i++) {
 			mutASSERT((*i)->GetInputDevice() == input);
-			Check(input, *i);
+			Check(input, (*i).get());
 		}
 		
 		CheckList(ToGUIBase(input).GetShapes());
@@ -270,20 +283,21 @@ namespace mutaborGUI {
 		CheckList(inputlist);
 		for (InputDeviceList::const_iterator i = inputlist.begin();
 		     i != inputlist.end(); i++) {
-			Check(*i);
+			Check((*i).get());
 		}
 			
 	}
 
 
-	static void Check(MutOutputDeviceShape * output,
-			  MutBoxChannelShape * route) {
+	static void Check(const MutOutputDeviceShape * output,
+			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
 		mutASSERT(route->GetOutput() == output);
 		
 		const MutBoxChannelShapeList & routelist = 
 			output->GetChannels();
-		for (MutBoxChannelShapeList::const_iterator i = routelist.begin();
+		for (MutBoxChannelShapeList::const_iterator i = 
+			     routelist.begin();
 		     i != routelist.end(); i++) {
 			if ((*i) == route) return;
 		}
@@ -292,7 +306,8 @@ namespace mutaborGUI {
 
 
 
-	static void Check(MutOutputDeviceShape * output, Route route) {
+	static void Check(const MutOutputDeviceShape * output,
+			  const RouteClass * route) {
 		// output has shape search for route shape
 		const MutBoxChannelShapeList & routelist = 
 			ToGUIBase(route).GetBoxChannelShapes();
@@ -308,7 +323,8 @@ namespace mutaborGUI {
 		mutASSERT(false);
 	}
 
-	static void Check(OutputDevice output, MutBoxChannelShape * route) {
+	static void Check(const OutputDeviceClass * output, 
+			  const MutBoxChannelShape * route) {
 		// route has shape search for input shape
 		const MutOutputDeviceShapeList & outputlist = 
 			ToGUIBase(output).GetShapes();
@@ -325,11 +341,13 @@ namespace mutaborGUI {
 	}
 
 
-	static void Check(OutputDevice output, Route route) {
+	static void Check(const OutputDeviceClass * output,
+			  const RouteClass * route) {
 		// input and route are associated searching for shapes
-		MutOutputDeviceShapeList & outputlist = 
+		const MutOutputDeviceShapeList & outputlist = 
 			ToGUIBase(output).GetShapes();
-		for (MutOutputDeviceShapeList::const_iterator i = outputlist.begin();
+		for (MutOutputDeviceShapeList::const_iterator i = 
+			     outputlist.begin();
 		     i != outputlist.end(); i++) {
 			Check(*i,route);
 			MutRouteWnd * parent = 
@@ -348,15 +366,15 @@ namespace mutaborGUI {
 		}
 	}
 
-	static void Check(OutputDevice output) {
+	static void Check(const OutputDeviceClass * output) {
 		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(output->TowxString()));
 		// associated routes for output device
-		routeListType & routes = output->GetRoutes();
+		const routeListType & routes = output->GetRoutes();
 		CheckList(routes);
 		for (routeListType::const_iterator i = routes.begin();
 		     i != routes.end(); i++) {
 			mutASSERT((*i)->GetOutputDevice() == output);
-			Check(output, *i);
+			Check(output, (*i).get());
 		}
 		
 		CheckList(ToGUIBase(output).GetShapes());
@@ -368,13 +386,14 @@ namespace mutaborGUI {
 		CheckList(outputlist);
 		for (OutputDeviceList::const_iterator i = outputlist.begin();
 		     i != outputlist.end(); i++) {
-			Check(*i);
+			Check((*i).get());
 		}
 			
 	}
 
 
-	static void Check(Route route, MutBoxChannelShape * channel) {
+	static void Check(const RouteClass * route, 
+			  const MutBoxChannelShape * channel) {
 		MutRouteWnd * grandparent = 
 			dynamic_cast<MutRouteWnd *>(channel->GetGrandParent());
 		mutASSERT(grandparent);
@@ -391,7 +410,7 @@ namespace mutaborGUI {
 			  &list,
 			  &(BoxData::GetBox(route->GetBox()).GetBoxShapes()),
 			  list.size());
-		BoxData * routeboxdata = ToGUIBase(route).GetBoxData();
+		const BoxData * routeboxdata = ToGUIBase(route).GetBoxData();
 		int i;
 		for (i = MIN_BOX; i < MAX_BOX && 
 			     routeboxdata != &(BoxData::GetBox(route->GetBox())); 
@@ -413,7 +432,7 @@ namespace mutaborGUI {
 		mutASSERT(pos != list.end());
 	}
 
-	static void Check(Route route) {
+	static void Check(const RouteClass * route) {
 		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(route->TowxString()));
 		const MutBoxChannelShapeList & channels = 
 			ToGUIBase(route).GetBoxChannelShapes();
@@ -425,10 +444,13 @@ namespace mutaborGUI {
 		     i != channels.end(); i++) {
 			Check(route,*i);
 		}
+		TRACE;
 		if (route->GetInputDevice())
-			Check (route->GetInputDevice(), route);
+			Check ((route->GetInputDevice()).get(), route);
+		TRACE;
 		if (route->GetOutputDevice())
-			Check (route->GetOutputDevice(), route);
+			Check ((route->GetOutputDevice()).get(), route);
+		TRACE;
 	}
 
 	static void CheckRoutes() {
@@ -437,21 +459,21 @@ namespace mutaborGUI {
 		CheckList(routelist);
 		for (routeListType::const_iterator i = routelist.begin();
 		     i != routelist.end(); i++) {
-			Check(*i);
+			Check((*i).get());
 		}
 			
 	}
 
 
-	static void Check(MutInputDeviceShape * shape) {
+	static void Check(const MutInputDeviceShape * shape) {
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
-		InputDevice dev = shape->GetDevice();
+		const InputDevice & dev = shape->GetDevice();
 		mutASSERT(dev);
 		InputDeviceList::const_iterator pos = 
-			std::find(list.begin(),list.end(),dev);
+			std::find(list.begin(),list.end(),dev.get());
 		mutASSERT(pos != list.end());
 		const MutInputDeviceShapeList & shapelist = 
-			ToGUIBase(dev).GetShapes();
+			ToGUIBase(dev.get()).GetShapes();
 		MutInputDeviceShapeList::const_iterator pos2 = 
 			std::find(shapelist.begin(),
 				  shapelist.end(),
@@ -459,12 +481,13 @@ namespace mutaborGUI {
 		mutASSERT(pos2 != shapelist.end());
 	}
 
-	static void Check(MutOutputDeviceShape * shape) {
-		const OutputDeviceList & list = OutputDeviceClass::GetDeviceList();
-		OutputDevice dev = shape->GetDevice();
+	static void Check(const MutOutputDeviceShape * shape) {
+		const OutputDeviceList & list = 
+			OutputDeviceClass::GetDeviceList();
+		const OutputDevice & dev = shape->GetDevice();
 		mutASSERT(dev);
 		OutputDeviceList::const_iterator pos = 
-			std::find(list.begin(),list.end(),dev);
+			std::find(list.begin(),list.end(),dev.get());
 		mutASSERT(pos != list.end());
 		const MutOutputDeviceShapeList & shapelist = 
 			ToGUIBase(dev).GetShapes();
@@ -475,8 +498,8 @@ namespace mutaborGUI {
 		mutASSERT(pos2 != shapelist.end());
 	}
 
-	static void Check(MutBoxChannelShape * shape) {
-		Route route = shape->GetRoute();
+	static void Check(const MutBoxChannelShape * shape) {
+		const Route & route = shape->GetRoute();
 		const MutBoxChannelShapeList & list =
 			ToGUIBase(route).GetBoxChannelShapes();
 		MutBoxChannelShapeList::const_iterator pos = 
@@ -484,7 +507,7 @@ namespace mutaborGUI {
 		mutASSERT(pos != list.end());
 	}
 
-	static void Check(MutBoxShape * shape) {
+	static void Check(const MutBoxShape * shape) {
 		int id = shape->GetBoxId();
 		BoxData & data = BoxData::GetBox(id);
 		const MutBoxShapeList & list = data.GetBoxShapes();
@@ -513,7 +536,7 @@ namespace mutaborGUI {
 
 	}
 
-	static void Check(MutRouteWnd * win) {
+	static void Check(const MutRouteWnd * win) {
 		if (!win) {
 			UNREACHABLE;
 			return;
@@ -564,11 +587,13 @@ namespace mutaborGUI {
 	}
 
 	void DebugCheckRoutes() {
+		mutASSERT(!NullRoute);
 		rwdtoplevels.clear();
 		CheckInputDevices();
 		CheckOutputDevices();
 		CheckRoutes();
 		CheckWindows();
+		mutASSERT(!NullRoute);
 	}
 }
 #endif

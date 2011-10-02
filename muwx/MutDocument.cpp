@@ -2,16 +2,25 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.12 2011/10/02 16:58:41 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/09/30 18:07:04 $
-* \version $Revision: 1.11 $
+* $Date: 2011/10/02 16:58:41 $
+* \version $Revision: 1.12 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.11  2011/09/30 18:07:04  keinstein
+* Revision 1.12  2011/10/02 16:58:41  keinstein
+* * generate Class debug information when compile in debug mode
+* * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+* * Reenable confirmation dialog when closing document while the logic is active
+* * Change debug flag management to be more debugger friendly
+* * implement automatic route/device deletion check
+* * new debug flag --debug-trace
+* * generate lots of tracing output
+*
+* Revision 1.11  2011-09-30 18:07:04  keinstein
 * * make compile on windows
 * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
 * * add ax_boost_base for boost detection
@@ -242,6 +251,30 @@ namespace mutaborGUI {
 				frame -> SetTitle(GetDocumentManager()->MakeFrameTitle(this));
 		} 
 		return true;
+	}
+
+	bool MutDocument::CheckLogic() {
+		if (!LogicOn) return true;
+		MutFrame * frame = MutFrame::GetActiveWindow();
+		if (frame && frame->GetDocument() == this) {
+			DEBUGLOG (other, _T("We are the active window."));
+
+			wxString msg;
+			msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
+
+			if ( wxMessageBox(msg, _("Please confirm closing."),
+					  wxICON_QUESTION | wxYES_NO) != wxYES ) {
+				return false;
+			}
+			frame -> DoStop();
+		}
+
+		return true;
+	}
+
+	bool MutDocument::OnSaveModified() {
+		if (!CheckLogic()) return false;
+		else return wxDocument::OnSaveModified();
 	}
 
 #if wxUSE_STD_IOSTREAM

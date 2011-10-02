@@ -4,16 +4,25 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.12 2011/10/02 16:58:40 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/10/02 16:58:40 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.11  2011/09/30 18:07:04  keinstein
+ * Revision 1.12  2011/10/02 16:58:40  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.11  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -112,8 +121,8 @@ namespace mutabor {
 	template <class T, class P, class L>
 	CommonTypedDeviceAPI<T,P,L>::~CommonTypedDeviceAPI()
 	{
+		// if there are remaining pointers we have other problems.
 		DEBUGLOG(routing,_T("this = %p"),this);
-		if ( !routes.empty() ) Destroy();
 #ifdef Debug
 		listttype::iterator i = FindInDeviceList(this);
 		if (i != deviceList.end()) {
@@ -121,24 +130,27 @@ namespace mutabor {
 			deviceList.erase(i);
 		}
 #endif		
+		debug_destruct_class(this);
+		TRACEC;
 	}
 
 	template <class T, class P, class L>
-	void CommonTypedDeviceAPI<T,P,L>::Add(Route route) {
+	void CommonTypedDeviceAPI<T,P,L>::Add(Route & route) {
 		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i = 
-			find(routes.begin(),routes.end(),route);
+			find(routes.begin(),routes.end(),route.get());
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInDeviceList(static_cast<thistype *>(this)));
 #endif
+		TRACEC;
 		routes.push_back(route);
-		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
+		DEBUGLOG(smartptr,_T("Route; %p saved"),route.get());
 	}
 
 	template <class T, class P, class L>
-	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route oldroute, 
-						     Route newroute) {
+	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route & oldroute, 
+						  Route & newroute) {
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
 			 oldroute.get(),newroute.get());
 		bool found = Remove(oldroute);
@@ -152,21 +164,24 @@ namespace mutabor {
 	}
 
 	template <class T, class P, class L>
-	bool CommonTypedDeviceAPI<T,P,L>::Remove(Route route) {
-		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
+	bool CommonTypedDeviceAPI<T,P,L>::Remove(Route & route) {
+		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
+			 route.get(),
+			 intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i = 
-			std::find(routes.begin(),routes.end(),route);
+			std::find(routes.begin(),routes.end(),route.get());
 		bool found = i != routes.end();
 		mutASSERT(found);
 		(*i) = NULL;// list can save some memory for reuse,
 		            // but route must be deleted
 		routes.erase(i);
-		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
+		DEBUGLOG(smartptr,_T("Route; %p (%d)"),route.get(),
+			 intrusive_ptr_get_refcount(route.get()));
 		return found;
 	}
 
 	template <class T, class P, class L>
-	bool CommonTypedDeviceAPI<T,P,L>::MoveRoutes (DevicePtr newclass) {
+	bool CommonTypedDeviceAPI<T,P,L>::MoveRoutes (DevicePtr & newclass) {
 		DEBUGLOG(smartptr,_T(""));
 		if (!newclass->routes.empty()) {
 			UNREACHABLEC;
@@ -176,11 +191,11 @@ namespace mutabor {
 		if (open) {
 			if (!newclass->IsOpen()) newclass->Open();
 		}
+		DevicePtr thisptr(static_cast<thistype *>(this));
 		routeListType::iterator i;
 		while ((i = routes.begin()) != routes.end()) {
 			boost::const_pointer_cast<RouteClass>(*i)
-				->Reconnect(static_cast<thistype *>(this),
-					    newclass);
+				->Reconnect(thisptr, newclass);
 		}
 		DEBUGLOG(smartptr,_T(""));
 		return true;
@@ -316,13 +331,11 @@ OutputDeviceClass:\n\
 #endif
 	
 	void InputDeviceClass::Destroy() {
-		DEBUGLOG(smartptr,_T(""));
-		for (routeListType::iterator R = routes.begin();
-		     R!= routes.end(); R++) {
-			(*R)->Remove(DevicePtr(this));
-		}
+		TRACEC;
+		if (IsOpen()) Close();
+		TRACEC;
 		CommonTypedDeviceAPI<InputDeviceClass>::Destroy();
-		DEBUGLOG(smartptr,_T(""));
+		TRACEC;
 	}
 
 	void InputDeviceClass::Quite()
@@ -425,7 +438,9 @@ InputDeviceClass:\n\
 		int i = config.toFirstLeaf(_T("Device"));
 		while (i != wxNOT_FOUND) {
 			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
+			TRACE;
 			InputDevice in = CreateInput(type);
+			TRACE;
 			in -> Device::SetId(i);
 #ifdef DEBUG
 			wxString name = config.Read(_T("Type Name"),
@@ -438,6 +453,7 @@ InputDeviceClass:\n\
 			mutASSERT(name == in -> GetTypeName());
 #endif
 			in -> Load(config);
+			TRACE;
 			i = config.toNextLeaf(_T("Device"));
 		}
 	
@@ -453,6 +469,7 @@ InputDeviceClass:\n\
 		config.toLeaf(_T("InputDevices"));
 	
 
+		TRACE;
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator in = list.begin();
 		     in != list.end(); in++) {
@@ -462,6 +479,7 @@ InputDeviceClass:\n\
 			(*in) -> Save (config);
 			config.toParent();
 		}
+		TRACE;
 	
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
@@ -548,8 +566,7 @@ InputDeviceClass:\n\
 
 	bool InOpen()
 	{
-		DEBUGLOGBASE(other,"",_T(""));
-
+		TRACE;
 		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
 		for (InputDeviceList::const_iterator In = list.begin();
 		     In != list.end(); In++)
@@ -563,31 +580,40 @@ InputDeviceClass:\n\
 				return false;
 			}
 
+		TRACE;
 		return true;
 	}
 
 	void InClose()
 	{
+		TRACE;
 		const InputDeviceList& list = InputDeviceClass::GetDeviceList(); 
 		for (InputDeviceList::const_iterator In = list.begin();
 		     In != list.end(); In++)
 			(*In)->Close();
+		TRACE;
 	}
 
 	bool NeedsRealTime()
 	{
+		TRACE;
 		const OutputDeviceList& listo = OutputDeviceClass::GetDeviceList(); 
 		for (OutputDeviceList::const_iterator Out = listo.begin();
 		     Out != listo.end(); Out++)
-			if ( (*Out)->NeedsRealTime() )
+			if ( (*Out)->NeedsRealTime() ) {
+				TRACE;
 				return true;
+			}
 
 		const InputDeviceList& listi = InputDeviceClass::GetDeviceList(); 
 		for (InputDeviceList::const_iterator In = listi.begin();
 		     In != listi.end(); In++)
-			if ( (*In)->NeedsRealTime() )
+			if ( (*In)->NeedsRealTime() ) {
+				TRACE;
 				return true;
+			}
 
+		TRACE;
 		return false;
 	}
 

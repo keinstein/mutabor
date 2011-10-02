@@ -3,16 +3,25 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.5 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: DeviceShape.h,v $
- * Revision 1.5  2011/09/27 20:13:24  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -142,7 +151,7 @@ namespace mutaborGUI {
 				if (state) SetLabel(name);
 				return state;
 			}
-		const MutBoxChannelShapeList & GetChannels() {
+		const MutBoxChannelShapeList & GetChannels() const {
 			return routes;
 		}
 	

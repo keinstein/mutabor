@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.5 2011/08/21 16:52:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/21 16:52:05 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: mutDebug.h,v $
- * Revision 1.5  2011/08/21 16:52:05  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-08-21 16:52:05  keinstein
  * Integrate a more sophisticated editor menu based on the stc sample
  *
  * Revision 1.4  2011-02-20 22:35:59  keinstein
@@ -40,37 +49,91 @@
 
 #include <bitset>
 #include <iostream>
+#include <cstdio>
 #include "wx/cmdline.h"
+#include "wx/string.h"
+#include "wx/debug.h"
 
-#define DEBUGFLAG(flag,description) flag,
 
 struct debugFlags {
-	enum {
-#include "mutDebugFlags.h"
-		debugFlagCount
+	struct flagtype {
+
+		flagtype();
+
+#       define DEBUGFLAG(flag,description) bool flag:1;
+#       include "mutDebugFlags.h"
+#       undef DEBUGFLAG
 	};
-	typedef std::bitset<debugFlagCount> debugFlagSet;
-	static debugFlagSet flags;
+
+	struct nogetflag {
+		bool operator()() const { return false; }
+	};
+	struct nosetflag {
+		void operator()(bool value=true) {
+		}
+	};
+
+#       define DEBUGFLAG(flag,description)			\
+	struct get ## flag {					\
+		bool operator()() const { return flags.flag; }	\
+	};							\
+	struct set ## flag {					\
+		void operator()(bool value=true) const {	\
+			flags.flag = value;			\
+		}						\
+	};
+#       include "mutDebugFlags.h"
+#       undef DEBUGFLAG
+	
+	static flagtype flags;
+
+
 	static void InitCommandLine(wxCmdLineParser&  parser);
 	static void ProcessCommandLine(wxCmdLineParser&  parser);
 };
-#undef DEBUGFLAG
 
-#define isDebugFlag(level) (debugFlags::flags[debugFlags::level])
-# define DEBUGLOGBASEINT(level,type, ...) \
-        if (debugFlags::flags[level]) { \
-                 std::cerr << __FILE__ << ":" << __LINE__ << ": " \
-                           << ((const char *) type) << "::" << __WXFUNCTION__ << ": "	\
-                           << (const char *)((wxString::Format(__VA_ARGS__)).ToUTF8()) << std::endl; \
-	}
-#define DEBUGLOGBASE(level,...) DEBUGLOGBASEINT(debugFlags::level,__VA_ARGS__)
+
+
+#define isDebugFlag(level) (debugFlags::flags.level)
+# define DEBUGLOGBASEINT(level,type, ...)				\
+	do {								\
+		wxASSERT(std::cerr.good());				\
+		if (level) {						\
+			std::fprintf(stderr,"[Debug] ");		\
+			wxASSERT(std::clog.good());			\
+			std::clog << __FILE__ << ":" << __LINE__	\
+				  << ": " << ((const char *) type)	\
+				  << "::" << __WXFUNCTION__ << ": ";	\
+			std::clog.flush();				\
+			std::clog << (const char *)((wxString::Format(__VA_ARGS__)).ToUTF8()) << std::endl; \
+			std::clog.flush();				\
+			if (std::clog.eof()) {				\
+				std::clog.clear();			\
+				std::clog << "Error: std::clog.eof()";	\
+				abort();				\
+			}						\
+			if (std::clog.fail()) {				\
+				std::clog.clear();			\
+				std::clog << "Error: std::clog.fail()";	\
+				abort();				\
+			}						\
+			if (std::clog.bad()) {				\
+				std::clog.clear();			\
+				std::clog << "Error: std::clog.eof()";	\
+				abort();				\
+			}						\
+			if (!std::clog.good()) {			\
+				std::clog.clear();			\
+				std::clog << "Error: std::clog.eof()";	\
+				abort();				\
+			}						\
+									\
+		}							\
+	} while (false)
+#define DEBUGLOGBASE(level,...) DEBUGLOGBASEINT(debugFlags::flags.level,__VA_ARGS__)
 #define mutRefCast(type,value) dynamic_cast<type &>(value)
 #define mutPtrCast(type,value) (wxASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
 #define mutPtrDynCast mutPtrCast
-#define WATCHEDPTR(T,f,P) watchedPtr<T,debugFlags::f,P>
-#define DEFWATCHEDPTR \
-        template <class T,int flag, class P> \
-        const int watchedPtr<T,flag,P>::myflag = flag;
 #else
 
 #define isDebugFlag(level) false
@@ -82,16 +145,17 @@ struct debugFlags {
 #define mutPtrCast(type,value) static_cast<type *>(value)
 #define mutPtrDynCast(type,value) dynamic_cast<type *>(value)
 
-#define WATCHEDPTR(T,f,P) watchedPtr<T,-1,P>
-#define DEFWATCHEDPTR
 #endif
 
 #define DEBUGLOG(level, ...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
 #define DEBUGLOG2(level, ...) DEBUGLOGBASE(level, _T(""),__VA_ARGS__)
 #define DEBUGLOGTYPE(level, type, ...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
 #define DEBUGLOGTYPEINT(level, type, ...) DEBUGLOGBASEINT(level, typeid(type).name(), __VA_ARGS__)
+#define TRACE DEBUGLOGBASE(trace,_T(""),_T(""))
+#define TRACEC DEBUGLOG(trace,_T(""))
+#define TRACET(type) DEBUGLOGTYPE(trace,type,_T(""))
 
-template <class T,int flag, class P>
+template <class T,class flag, class P>
 class watchedPtr {
 private:
 	typedef T datatype;
@@ -99,7 +163,7 @@ private:
 	typedef P parenttype;
 	datatype * data;
 #ifdef DEBUG
-	static const int myflag;
+	static const flag myflag;
 	parenttype * parent;
 	wxString name;
 #endif
@@ -115,7 +179,7 @@ public:
 	
 	watchedPtr<T,flag,P> &operator= (datatype * d)
 	{
-		DEBUGLOGTYPEINT(myflag,parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
+		DEBUGLOGTYPEINT(myflag(),parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
 		data = d;
 		return *this;
 	}
@@ -139,9 +203,34 @@ public:
 #endif
 };
 
-DEFWATCHEDPTR
+
+#ifdef DEBUG
+
+template <class T,class flag, class P>
+        const flag watchedPtr<T,flag,P>::myflag;
+
+#define WATCHEDPTR(T,f,P) watchedPtr<T,debugFlags::get##f,P>
+#define DEFWATCHEDPTR \
+        template <class T,class flag, class P> \
+        const flag watchedPtr<T,flag,P>::myflag;
+
+#else
+#define WATCHEDPTR(T,f,P) watchedPtr<T,nogetflag,P>
+#define DEFWATCHEDPTR
+#endif
 
 
+#ifdef DEBUG
+void debug_destroy_class(void * ptr);
+void debug_destruct_class(void * ptr);
+void debug_print_pointers();
+bool debug_is_all_deleted();
+#else 
+inline void debug_destroy_class(void * ptr) {}
+inline void debug_destruct_class(void * ptr) {}
+inline void debug_print_pointers() {}
+inline bool debug_is_all_deleted() { return true; }
+#endif
 
 #endif
 

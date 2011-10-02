@@ -4,16 +4,25 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.9 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.10 2011/10/02 16:58:40 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/02 16:58:40 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.9  2011/09/30 18:07:04  keinstein
+ * Revision 1.10  2011/10/02 16:58:40  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.9  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -230,7 +239,7 @@ namespace mutabor {
 				    routes() {}
 	
 	public:
-		virtual ~Device() {	}
+		virtual ~Device() { TRACEC; }
 	
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -262,11 +271,11 @@ namespace mutabor {
 	
 
 		/// add a route
-		virtual void Add(Route route) = 0;
+		virtual void Add(Route & route) = 0;
 		/// replace a route
-		virtual bool Replace(Route oldRoute, Route newRoute) = 0;
+		virtual bool Replace(Route & oldRoute, Route & newRoute) = 0;
                 /// remove a route
-		virtual bool Remove(Route route) = 0;
+		virtual bool Remove(Route & route) = 0;
 	protected: /** \todo lift this restrection afer GUI is working again */
 		friend class GUIOutputDeviceBase;
 		friend class GUIInputDeviceBase;
@@ -353,54 +362,83 @@ namespace mutabor {
 				AppendToDeviceList(static_cast<thistype *>(this));
 			}
 
-
 	public:
 		virtual ~CommonTypedDeviceAPI();
 
 		virtual void Destroy() {
+			TRACEC;
+			DevicePtr self(static_cast<thistype *>(this));
+			TRACEC;
+
+			Route route (NULL);
+			routeListType::iterator R;
+			
+			while ( (R = routes.begin()) != routes.end() ) {
+				TRACEC;
+				route = (*R);
+				TRACEC;
+				route->Detatch(self);
+				TRACEC;
+			}
+			
+			route = NULL;
+			TRACEC;
+			debug_destroy_class(this);
 			RemoveFromDeviceList(static_cast<thistype *>(this));
+			TRACEC;
 		}
 
 		/// add a route
-		virtual void Add(Route route);
+		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route oldroute, Route newroute);
+		virtual bool Replace(Route & oldroute, 
+				     Route & newroute);
                 /// remove a route
-		virtual bool Remove(Route route);
+		virtual bool Remove(Route & route);
 		/// Move routes to another device 
-		virtual bool MoveRoutes (DevicePtr newclass);
+		virtual bool MoveRoutes (DevicePtr & newclass);
 
         
 		/// Attatch to a given route
 		void Attatch(Route & route) {
 			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-			route -> Attatch(DevicePtr(thisptr()));
+			DevicePtr self(thisptr());
+			route -> Attatch(self);
 			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 		}
 
 		/// Replace a given route 
-		void Reconnect(Route & oldroute, Route & newroute) {
+		void Reconnect(Route & oldroute, 
+			       Route & newroute) {
 			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
 				 oldroute.get(),newroute.get());
 			bool ok = Replace(oldroute,newroute);
 			if (ok) {
-				oldroute->Remove(thisptr());
-				newroute->Add(thisptr());
+				DevicePtr self(thisptr());
+				oldroute->Remove(self);
+				newroute->Add(self);
 			}
 			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
-				 oldroute.get(),newroute.get());
+				 oldroute.get(),
+				 newroute.get());
 		}
 
 		/// Detatch a given route
 		void Detatch(Route & route) {
 			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-			route -> Detatch(DevicePtr(thisptr()));
+			DevicePtr self(thisptr());
+			route -> Detatch(self);
 			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
 		}
 
 	
 //		Route GetRoute(int nr);   // counting starts with 0
 		size_t nRoutes() { return routes.size(); };
+
+		const routeListType & GetRoutes() const {
+			return routes;
+		}
+
 		routeListType & GetRoutes() {
 			return routes;
 		}
@@ -501,7 +539,16 @@ namespace mutabor {
 			}
 
 	public:
-		virtual ~OutputDeviceClass() {}
+		virtual ~OutputDeviceClass() { 
+			TRACEC;
+			wxASSERT(!IsOpen());
+			TRACEC;
+		}
+		virtual void Destroy() {
+			TRACEC;
+			CommonTypedDeviceAPI<OutputDeviceClass>::Destroy();
+			TRACEC;
+		}
 		virtual void NoteOn(int box, int taste, int velo, 
 				    RouteClass * r,
 				    int channel, ChannelData *cd) = 0;
@@ -574,8 +621,7 @@ namespace mutabor {
 			}
 
 	public:
-		virtual ~InputDeviceClass() {}
-	
+		virtual ~InputDeviceClass() { TRACEC; }
 		/// Remove from the input device list to be deleted, when it becomes free.
 		/**
 		 * As we are using smart pointers the Route gets deleted, when no pointers
@@ -649,7 +695,7 @@ namespace mutabor {
 		DeviceFactory(size_t id = 0);
 		virtual ~DeviceFactory();
 
-		static OutputDevice CreateOutput (int type) {
+		static OutputDevice  CreateOutput (int type) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
 				UNREACHABLECT(DeviceFactory);
@@ -753,23 +799,23 @@ namespace mutabor {
 	
 		virtual size_t GetType() const = 0;
 
-		virtual OutputDevice DoCreateOutput() const = 0;
+		virtual OutputDeviceClass * DoCreateOutput() const = 0;
 		
-		virtual InputDevice DoCreateInput() const = 0;
-		virtual OutputDevice DoCreateOutput(int devId,
+		virtual InputDeviceClass * DoCreateInput() const = 0;
+		virtual OutputDeviceClass * DoCreateOutput(int devId,
 						    const mutStringRef name, 
 						    int id = -1) const = 0;
 		
-		virtual InputDevice DoCreateInput(int devId,
+		virtual InputDeviceClass * DoCreateInput(int devId,
 						  const mutStringRef name, 
 						  int id = -1) const = 0;
 
-		virtual OutputDevice DoCreateOutput(int devId,
+		virtual OutputDeviceClass * DoCreateOutput(int devId,
 						    const mutStringRef name, 
 						    MutaborModeType mode, 
 						    int id = -1) const = 0;
 		
-		virtual InputDevice DoCreateInput(int devId,
+		virtual InputDeviceClass * DoCreateInput(int devId,
 						  const mutStringRef name, 
 						  MutaborModeType mode, 
 						  int id = -1) const = 0;

@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.9 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.10 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: DevGIS.cpp,v $
- * Revision 1.9  2011/09/30 18:07:04  keinstein
+ * Revision 1.10  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.9  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -813,19 +822,19 @@ namespace mutabor {
 
 	GisFactory::~GisFactory() {}
 
-	OutputDevice GisFactory::DoCreateOutput () const
+	OutputDeviceClass * GisFactory::DoCreateOutput () const
 	{
 		return new OutputGis();
 	}
 
-	OutputDevice GisFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * GisFactory::DoCreateOutput (int devId,
 						 const mutStringRef name, 
 						 int id) const
 	{
 		return new OutputGis(devId,name,id);
 	}
 
-	OutputDevice GisFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * GisFactory::DoCreateOutput (int devId,
 						 const mutStringRef name, 
 						 MutaborModeType mode, 
 						 int id) const
@@ -850,20 +859,20 @@ namespace mutabor {
 	}
 
 
-	InputDevice GisFactory::DoCreateInput () const
+	InputDeviceClass * GisFactory::DoCreateInput () const
 		
 	{
 		return new InputGis();
 	}
 
-	InputDevice GisFactory::DoCreateInput (int devId,
+	InputDeviceClass * GisFactory::DoCreateInput (int devId,
 					       const mutStringRef name, 
 					       int id) const
 	{
 		return new InputGis(devId, name, DeviceStop,id);
 	}
 
-	InputDevice GisFactory::DoCreateInput (int devId,
+	InputDeviceClass * GisFactory::DoCreateInput (int devId,
 					   const mutStringRef name, 
 					   MutaborModeType mode, 
 					   int id) const

@@ -3,16 +3,25 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.6 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.6  2011/09/30 18:07:05  keinstein
+ * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.6  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -157,6 +166,7 @@
 
 
 namespace mutaborGUI {
+	using mutabor::NullRoute;
 	class MutRouteWnd;
 	class InputFilterPanel;
 	class RoutePanel;
@@ -179,7 +189,7 @@ namespace mutaborGUI {
 		    corresponding attatch function.
 		*/
 		MutBoxChannelShape (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
-				    mutabor::Route r=NULL):MutIconShape(),
+				    mutabor::Route & r=NullRoute):MutIconShape(),
 							   route(NULL), 
 							   input(NULL),
 							   output(NULL)
@@ -224,7 +234,7 @@ namespace mutaborGUI {
 		    \retval false if an error has occured
 		*/
 		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
-			     mutabor::Route r=NULL)
+			     mutabor::Route & r=NullRoute)
 			{ 
 				mutASSERT(!route || !r);
 				if (route && r) {
@@ -278,7 +288,7 @@ namespace mutaborGUI {
 		/// add a new input device
 		virtual void Add (MutInputDeviceShape * in);
 		/// add a new route 
-		virtual void Add (mutabor::Route r);
+		virtual void Add (mutabor::Route & r);
 		/// add a new box shape
 		virtual void Add (MutBoxShape * box) { /* handled by box */ }
 	      
@@ -289,8 +299,8 @@ namespace mutaborGUI {
 		virtual bool Replace (MutInputDeviceShape * olddev, 
 				      MutInputDeviceShape * newdev);
 		/// replace an existing route 
-		virtual bool Replace (mutabor::Route oldroute,
-				      mutabor::Route newroute);
+		virtual bool Replace (mutabor::Route & oldroute,
+				      mutabor::Route & newroute);
 		/// replace a box shape 
 		virtual bool Replace (MutBoxShape * oldbox,
 				      MutBoxShape * newbox) {
@@ -303,7 +313,7 @@ namespace mutaborGUI {
 		/// replace an existing input device
 		virtual bool Remove (MutInputDeviceShape * in);
 		/// remove a Route
-		virtual bool Remove (mutabor::Route r);
+		virtual bool Remove (mutabor::Route & r);
 		/// remove a box from the route shape
 		virtual bool Remove (MutBoxShape * box) {
 			/* handled by box */
@@ -346,8 +356,8 @@ namespace mutaborGUI {
 		}
 		/// Replace current input or output device with a new one
 		template <class device>
-		bool Reconnect(boost::intrusive_ptr<device> olddev, 
-			       boost::intrusive_ptr<device> newdev) {
+		bool Reconnect(boost::intrusive_ptr<device> & olddev, 
+			       boost::intrusive_ptr<device> & newdev) {
 			if (route) 
 				return route->Reconnect(olddev,newdev);
 			else {
@@ -360,9 +370,10 @@ namespace mutaborGUI {
 		/// Detatch current device shape
 		template <class deviceshape>
 		bool Detatch (deviceshape * dev) {
-			if (dev)
-				return Detatch(dev->GetDevice());
-			else {
+			if (dev) {
+				typename deviceshape::devicetype d(dev->GetDevice());
+				return Detatch(d);
+			}else {
 				UNREACHABLEC;
 				return false;
 			}
@@ -370,7 +381,7 @@ namespace mutaborGUI {
 		}
 		/// Detatch current device
 		template <class device>
-		bool Detatch(boost::intrusive_ptr<device> dev) {
+		bool Detatch(boost::intrusive_ptr<device> & dev) {
 			if (route)
 				return route->Detatch(dev);
 			else {
@@ -378,13 +389,25 @@ namespace mutaborGUI {
 				return false;
 			}
 		}
-		void Attatch(mutabor::Route r);
-		void Detatch(mutabor::Route r);
+		void Attatch(mutabor::Route & r);
+		void Detatch(mutabor::Route & r);
 		
 		
-		mutabor::Route GetRoute() const { return route; }
-		MutInputDeviceShape * GetInput() const { return input; }
-		MutOutputDeviceShape * GetOutput() const { return output; }
+		mutabor::Route & GetRoute() const { 
+			return const_cast<mutabor::Route &>(route); 
+		}
+		const MutInputDeviceShape * GetInput() const { 
+			return input; 
+		}
+		MutInputDeviceShape * GetInput() { 
+			return input; 
+		}
+		const MutOutputDeviceShape * GetOutput() const { 
+			return output; 
+		}
+		MutOutputDeviceShape * GetOutput() { 
+			return output; 
+		}
 
 		GUIfiedRoute * GetGUIfiedRoute() const { 
 			return static_cast<GUIfiedRoute *>(route.get()); 

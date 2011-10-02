@@ -2,12 +2,12 @@
  ********************************************************************
  * Inline functions from Route.h
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.2 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.3 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,16 @@
  *
  *
  * $Log: Route-inlines.h,v $
- * Revision 1.2  2011/09/30 09:10:24  keinstein
+ * Revision 1.3  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.2  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.1  2011-09-27 20:18:30  keinstein
@@ -63,8 +72,8 @@
 
 namespace mutabor {
 	inline Route RouteFactory::Create(
-		InputDevice in,
-		OutputDevice out,
+		InputDevice & in,
+		OutputDevice & out,
 		RouteType type,
 		int iFrom,
 		int iTo,
@@ -72,15 +81,15 @@ namespace mutabor {
 		bool active,
 		int oFrom,
 		int oTo,
-		bool oNoDrum,
-		Route next) {
+		bool oNoDrum /*,
+			       Route next*/) {
 		if (factory) {
-			Route r = factory->DoCreate(in,out,type,iFrom,iTo,
+			RouteClass * r = factory->DoCreate(in,out,type,iFrom,iTo,
 						 box,active,
 						    oFrom,oTo,oNoDrum/*,next*/);
 			DEBUGLOGTYPE(smartptr,RouteFactory,
 				     _T("Shipping %p from factory"),
-				     r.get());
+				     r);
 			return r;
 		} else {
 			UNREACHABLECT(RouteFactory);

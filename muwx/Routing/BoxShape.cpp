@@ -4,15 +4,24 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.6 2011/09/30 18:07:05 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.7 2011/10/02 16:58:41 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/09/30 18:07:05 $
-* \version $Revision: 1.6 $
+* $Date: 2011/10/02 16:58:41 $
+* \version $Revision: 1.7 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.6  2011/09/30 18:07:05  keinstein
+* Revision 1.7  2011/10/02 16:58:41  keinstein
+* * generate Class debug information when compile in debug mode
+* * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+* * Reenable confirmation dialog when closing document while the logic is active
+* * Change debug flag management to be more debugger friendly
+* * implement automatic route/device deletion check
+* * new debug flag --debug-trace
+* * generate lots of tracing output
+*
+* Revision 1.6  2011-09-30 18:07:05  keinstein
 * * make compile on windows
 * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
 * * add ax_boost_base for boost detection
@@ -360,7 +369,7 @@ namespace mutaborGUI {
 		return channel;
 	}
 
-	MutBoxChannelShape * MutBoxShape::AddChannel(Route  route)
+	MutBoxChannelShape * MutBoxShape::AddChannel(Route & route)
 	{
 		DEBUGLOG (other, _T("Adding route %p to window %p"),route.get(), m_parent);
 		MutBoxChannelShape * channel = 
@@ -372,10 +381,12 @@ namespace mutaborGUI {
 		return Detach(shape);
 	}
 
-	bool MutBoxShape::HasChannel(Route  route) {
+	bool MutBoxShape::HasChannel(const Route & route) {
 		wxSizerItemList & list = channels->GetChildren();
-		for (wxSizerItemList::iterator i = list.begin() ; i!= list.end() ; i++) {
-			MutBoxChannelShape * channel = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+		for (wxSizerItemList::iterator i = 
+			     list.begin() ; i!= list.end() ; i++) {
+			MutBoxChannelShape * channel = 
+				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
 			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
 			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
 			if (channel->GetRoute() == route) return true;

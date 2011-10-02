@@ -3,16 +3,25 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.5 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.5  2011/09/30 18:07:05  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -119,26 +128,33 @@ namespace mutaborGUI {
 
 
 	MutInputDeviceShape::~MutInputDeviceShape() {
+		TRACEC;
 		if (device) {
 			ToGUIBase(device).Detatch(this);
+			TRACEC;
 		}
+		TRACEC;
 	}
 
 	bool MutInputDeviceShape::Create (wxWindow * parent,
 					  wxWindowID id, 
-					  InputDevice d)
+					  InputDevice & d)
 	{
 		if (!d) return false;
 		
 		DEBUGLOG (other,_T ("Checking icon"));
 		mutASSERT(MidiInputDevBitmap.IsOk());
 		
+		TRACEC;
+
 		bool fine = 
 			MutDeviceShape::Create (parent, id, d->GetName());
 
+		TRACEC;
 		if (fine) 
 			ToGUIBase(d).Attatch(this);
 
+		TRACEC;
 		return fine;
 	}
 
@@ -148,39 +164,45 @@ namespace mutaborGUI {
 	}
 
 	/// add a route
-	void MutInputDeviceShape::Add(mutabor::InputDevice  dev)
+	void MutInputDeviceShape::Add(mutabor::InputDevice & dev)
 	{
+		TRACEC;
 		if (device)
 			UNREACHABLEC;
 		else 
 			device = dev;
+		TRACEC;
 	}
 	/// replace a dev
-	bool MutInputDeviceShape::Replace(mutabor::InputDevice olddev,
-						  mutabor::InputDevice newdev) 
+	bool MutInputDeviceShape::Replace(mutabor::InputDevice & olddev,
+					  mutabor::InputDevice & newdev) 
 	{
+		TRACEC;
 		if (device != olddev) {
 			UNREACHABLEC;
 			return false;
 		} else 
 			device = newdev;
+		TRACEC;
 		return true;
 	}
 	/// remove a dev
-	bool MutInputDeviceShape::Remove(mutabor::InputDevice dev)
+	bool MutInputDeviceShape::Remove(mutabor::InputDevice & dev)
 	{
+		TRACEC;
 		if (device != dev) {
 			UNREACHABLEC;
 			return false;
 		} else 
 			device = NULL;
+		TRACEC;
 		return true;
 	}
 
 
 
 #if 0
-	void MutInputDeviceShape::RemoveRoute(Route  route) {
+	void MutInputDeviceShape::RemoveRoute(Route & route) {
 		if (!route) return;
 		Route  r = getRoutes();
 		if (!r) return;
@@ -201,7 +223,7 @@ namespace mutaborGUI {
 		mutASSERT(!r);
 	}
 
-	void MutInputDeviceShape::AddRoute(Route  route)
+	void MutInputDeviceShape::AddRoute(Route & route)
 	{
 		if (!device) return;
 		if (!route) {
@@ -217,20 +239,26 @@ namespace mutaborGUI {
 
 	void MutInputDeviceShape::DoLeftDblClick() {
 		/** \todo replace by command handler and emit command event */
+		TRACEC;
 		InputDevDlg * in = ShowDeviceDialog();
 		int Res = in->ShowModal();
+		TRACEC;
 		bool destroySelf = false;
 		wxWindow * parent = m_parent; // to be availlable after deleten.
 
+		TRACEC;
 		if (Res == wxID_OK) {
 			DevType type = in->GetType();
 
 			if (CanHandleType (type)) {
+				TRACEC;
 				readDialog (in);
 			} else {
+				TRACEC;
 				InputDevice indev = 
 					DeviceFactory::CreateInput (type);
 				if (indev) {
+					TRACEC;
 					MutInputDeviceShape * newdev = 
 						GUIDeviceFactory::CreateShape (indev,
 									       GetParent());
@@ -242,6 +270,7 @@ namespace mutaborGUI {
 				}
 			}
 		} else if (Res == ::wxID_REMOVE) {
+			TRACEC;
 			device -> Destroy();
 		}
 
@@ -249,7 +278,8 @@ namespace mutaborGUI {
 
 		in->Destroy();
 		DebugCheckRoutes();
-	
+		TRACEC;
+
 		if (Res != ::wxID_REMOVE) {
 			Layout();
 			InvalidateBestSize();
@@ -267,6 +297,7 @@ namespace mutaborGUI {
 		// Unfortunately WXMAC segfaults if we use Destroy(), here.
 		// note: this should not be necessary anymore
 		if (destroySelf) DeleteSelf();
+		TRACE;
 	}
 
 	InputDevDlg * MutInputDeviceShape::ShowDeviceDialog() {
@@ -345,7 +376,9 @@ namespace mutaborGUI {
 			parent->SetVirtualSize(wxDefaultSize);
 			parent->Refresh();
 		}
+		TRACEC;
 		device->Destroy();
+		TRACEC;
 
 		return true;
 	}
@@ -361,8 +394,10 @@ namespace mutaborGUI {
 		DEBUGLOG (routing, _T(""));
 	
 		
+		TRACEC;
 		if (device) // might be zero as in MutNewInputDeviceShape
 			device->MoveRoutes(newshape->GetDevice());
+		TRACEC;
 /*
 		for(MutBoxChannelShapeList::iterator i = routes.begin();
 		    i != routes.end();
@@ -386,8 +421,11 @@ namespace mutaborGUI {
 		m_parent->SetVirtualSize(wxDefaultSize);
 		newshape->SetFocus();
 
+		TRACEC;
 		device->Destroy();
+		TRACEC;
 		device = NULL;
+		TRACEC;
 		return true;
 	}
 
@@ -402,12 +440,16 @@ namespace mutaborGUI {
 	
 		MutInputDeviceShape * newShape = panel->GetCurrentSelection();
 
-		Route  route = channel->GetRoute();
+		Route & route = channel->GetRoute();
 		if (!active) {
+			TRACEC;
 			Detatch(route);
+			TRACEC;
 			return;
 		} else if (newShape != this) {
+			TRACEC;
 			channel->Reconnect(this,newShape);
+			TRACEC;
 		}
 		if (newShape) {
 			wxWindow * FilterPanel = panel->GetCurrentDevicePage();
@@ -415,8 +457,10 @@ namespace mutaborGUI {
 				UNREACHABLEC;
 				return;
 			}
+			TRACEC;
 			newShape->ReadInputFilterPanel(FilterPanel,route);
 		}
+		TRACEC;
 	}
 
 }

@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.h,v 1.6 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DevMidF.h,v $
- * Revision 1.6  2011/09/30 09:10:24  keinstein
+ * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.6  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.5  2011-09-27 20:13:22  keinstein
@@ -380,23 +389,23 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDevice DoCreateOutput() const = 0;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
 		
-		virtual mutabor::InputDevice DoCreateInput() const = 0;
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     int id = -1) const = 0;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   int id = -1) const = 0;
 
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
 							     int id = -1) const = 0;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
 							   int id = -1) const = 0;

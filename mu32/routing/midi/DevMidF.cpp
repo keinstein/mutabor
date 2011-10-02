@@ -2,15 +2,24 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.11 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.12 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.11 $
+ * \date $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.11  2011/09/30 18:07:04  keinstein
+ * Revision 1.12  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.11  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -1229,19 +1238,19 @@ namespace mutabor {
 
 	MidiFileFactory::~MidiFileFactory() {}
 
-	OutputDevice MidiFileFactory::DoCreateOutput () const
+	OutputDeviceClass * MidiFileFactory::DoCreateOutput () const
 	{
 		return new OutputMidiFile();
 	}
 
-	OutputDevice MidiFileFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * MidiFileFactory::DoCreateOutput (int devId,
 						      const mutStringRef name, 
 						      int id) const
 	{
 		return new OutputMidiFile(devId,name,id);
 	}
 
-	OutputDevice MidiFileFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * MidiFileFactory::DoCreateOutput (int devId,
 						      const mutStringRef name, 
 						      MutaborModeType mode, 
 						      int id) const
@@ -1253,23 +1262,23 @@ namespace mutabor {
 	}
 
 
-	InputDevice MidiFileFactory::DoCreateInput () const
+	InputDeviceClass * MidiFileFactory::DoCreateInput () const
 		
 	{
 		return new InputMidiFile();
 	}
 
-	InputDevice MidiFileFactory::DoCreateInput (int devId,
-					    const mutStringRef name, 
-					    int id) const
+	InputDeviceClass * MidiFileFactory::DoCreateInput (int devId,
+							   const mutStringRef name, 
+							   int id) const
 	{
 		return new InputMidiFile(devId,name,DeviceStop,id);
 	}
 
-	InputDevice MidiFileFactory::DoCreateInput (int devId,
-					   const mutStringRef name, 
-					   MutaborModeType mode, 
-					   int id) const
+	InputDeviceClass * MidiFileFactory::DoCreateInput (int devId,
+							   const mutStringRef name, 
+							   MutaborModeType mode, 
+							   int id) const
 	{
 		return new InputMidiFile(devId,name,mode,id);
 	}

@@ -2,16 +2,25 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.54 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.55 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.54 $
+ * \date $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.55 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.54  2011/09/30 18:07:05  keinstein
+ * Revision 1.55  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.54  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -743,25 +752,17 @@ namespace mutaborGUI {
 
 	void MutFrame::OnCloseWindow(wxCloseEvent& event)
 	{
+
+		TRACEC;
 		DEBUGLOG (other, _T("%x == %x"),this,ActiveWindow);
 
-		if (ActiveWindow == this) {
-			DEBUGLOG (other, _T("We are the active window."));
-
-			if ( event.CanVeto() ) {
-				wxString msg;
-				msg.Printf(_("This logic is currently active. On closing it will be deactivated. Really close this window?"));
-
-				if ( wxMessageBox(msg, _("Please confirm closing."),
-						  wxICON_QUESTION | wxYES_NO) != wxYES ) {
-					event.Veto();
-					return;
-				}
+		if ( event.CanVeto() ) {
+			if (!static_cast<MutDocument *>(GetDocument())
+			    ->CheckLogic()) {
+				event.Veto();
+				return;
 			}
-
-			DoStop();
 		}
-
 
 		SaveState();
 
@@ -1166,6 +1167,7 @@ namespace mutaborGUI {
 
 	void MutFrame::DoStop()
 	{
+		TRACEC;
 		if ( LogicOn ) {
 			wxConfigBase *config = wxConfig::Get();
 			if (config) {

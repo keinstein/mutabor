@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.12 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.13 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.12  2011/09/30 18:07:04  keinstein
+ * Revision 1.13  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.12  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -1017,19 +1026,19 @@ InputMidiPort:\n\
 
 	MidiPortFactory::~MidiPortFactory() {}
 
-	OutputDevice MidiPortFactory::DoCreateOutput () const
+	OutputDeviceClass * MidiPortFactory::DoCreateOutput () const
 	{
 		return new OutputMidiPort();
 	}
 
-	OutputDevice MidiPortFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * MidiPortFactory::DoCreateOutput (int devId,
 						      const mutStringRef name, 
 						      int id) const
 	{
 		return new OutputMidiPort(devId,name,id);
 	}
 
-	OutputDevice MidiPortFactory::DoCreateOutput (int devId,
+	OutputDeviceClass * MidiPortFactory::DoCreateOutput (int devId,
 						      const mutStringRef name, 
 						      MutaborModeType mode, 
 						      int id) const
@@ -1052,20 +1061,20 @@ InputMidiPort:\n\
 	}
 
 
-	InputDevice MidiPortFactory::DoCreateInput () const
+	InputDeviceClass * MidiPortFactory::DoCreateInput () const
 		
 	{
 		return new InputMidiPort();
 	}
 
-	InputDevice MidiPortFactory::DoCreateInput ( int devId,
+	InputDeviceClass * MidiPortFactory::DoCreateInput ( int devId,
 					   const mutStringRef name, 
 					    int id) const
 	{
 		return new InputMidiPort(devId,name,DeviceStop,id);
 	}
 
-	InputDevice MidiPortFactory::DoCreateInput (int devId,
+	InputDeviceClass * MidiPortFactory::DoCreateInput (int devId,
 					   const mutStringRef name, 
 					   MutaborModeType mode, 
 					   int id) const

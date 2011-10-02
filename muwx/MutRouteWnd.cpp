@@ -2,17 +2,26 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.25 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.26 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.25 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.26 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.25  2011/09/30 18:07:05  keinstein
+ * Revision 1.26  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.25  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -263,29 +272,37 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 		InputSizer = new wxGridSizer(1);
 		GetSizer()->Add(InputSizer, 0, wxEXPAND);
 	}
-  
+
 	const InputDeviceList & list = 
 		InputDeviceClass::GetDeviceList();
 	for ( InputDeviceList::const_iterator In = list.begin(); 
 	      In != list.end(); In++) {
                 DEBUGLOG (other, _T("In the loop %p"), 
 			  (*In).get());
+		TRACEC;
                 MutInputDeviceShape * newin = 
-			GUIDeviceFactory::CreateShape((*In),this);
+			GUIDeviceFactory::CreateShape(const_cast<InputDevice &>(*In),
+						      this);
+		TRACEC;
                 mutASSERT(newin);
                 InputSizer->Add(newin, flags);
                 InputDevices.push_back(newin);
+		TRACEC;
         }
 }
 
 void MutRouteWnd::ClearInputDevices()
 {
-  InputDevices.clear();
-  InputSizer->Clear(true);
+	TRACEC;
+	InputDevices.clear();
+	TRACEC;
+	InputSizer->Clear(true);
+	TRACEC;
 }
 
 void MutRouteWnd::createBoxes(wxSizerFlags flags)
 {
+	TRACEC;
         MutBoxShape::SetSizerFlags(flags);
 
 	if (!BoxSizer) {
@@ -295,25 +312,29 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 
 	MutBoxShape * boxShape;
 	const routeListType & list = RouteClass::GetRouteList();
-        for (routeListType::const_iterator Route = list.begin();
-             Route != list.end(); ++Route) {
+        for (routeListType::const_iterator route = list.begin();
+             route != list.end(); ++route) {
 
-		mutASSERT(MIN_BOX <= (*Route)->GetBox()
-			 && (*Route)->GetBox() < MAX_BOX);
-		BoxData & Box = BoxData::GetBox((*Route)->GetBox());
+		mutASSERT(MIN_BOX <= (*route)->GetBox()
+			 && (*route)->GetBox() < MAX_BOX);
+		BoxData & Box = BoxData::GetBox((*route)->GetBox());
 		boxShape = Box.GetBoxShape(this);
 		if (!boxShape) {
 			boxShape = 
-				GUIRouteFactory::CreateBoxShape((*Route)->GetBox(),
+				GUIRouteFactory::CreateBoxShape((*route)->GetBox(),
 								this);
 			AddBox(boxShape, flags);
 		}
 
-
+		TRACEC;
+		Route & r = const_cast<Route &>(*route);
+		TRACEC;
 		MutBoxChannelShape * channel =
-			GUIRouteFactory::CreateBoxChannelShape((*Route),
+			GUIRouteFactory::CreateBoxChannelShape(r,
 							       boxShape);
+		TRACEC;
 		boxShape->Add(channel);
+		TRACEC;
         }
 	
 /*
@@ -393,14 +414,18 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 }
 void MutRouteWnd::ClearBoxes()
 {
-  Boxes.clear();
-  BoxSizer->Clear(true);
+	TRACEC;
+	Boxes.clear();
+	TRACEC;
+	BoxSizer->Clear(true);
+	TRACEC;
 }
 
 
 void MutRouteWnd::createOutputDevices(wxSizerFlags flags)
 
 {
+	TRACEC;
 	MutOutputDeviceShape::SetSizerFlags(flags);
 	
 	if (!OutputSizer) {
@@ -412,19 +437,26 @@ void MutRouteWnd::createOutputDevices(wxSizerFlags flags)
 		OutputDeviceClass::GetDeviceList();
 	for ( OutputDeviceList::const_iterator Out = list.begin(); 
 	      Out != list.end(); Out++) {
+		TRACEC;
                 MutOutputDeviceShape * newout =  
-			GUIDeviceFactory::CreateShape(*Out,this);
+			GUIDeviceFactory::CreateShape(
+				const_cast<OutputDevice &>(*Out),this);
 
+		TRACEC;
                 OutputSizer->Add(newout, flags);
+		TRACEC;
                 OutputDevices.push_back(newout);
-
+		TRACEC;
         }
 }
 
 void MutRouteWnd::ClearOutputDevices()
 {
-  OutputDevices.clear();
-  OutputSizer->Clear(true);
+	TRACEC;
+	OutputDevices.clear();
+	TRACEC;
+	OutputSizer->Clear(true);
+	TRACEC;
 }
 
 

@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.2 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.3 2011/10/02 16:58:42 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,16 @@
  *
  *
  * $Log: GUIRoute.h,v $
- * Revision 1.2  2011/09/30 18:07:05  keinstein
+ * Revision 1.3  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.2  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -82,9 +91,11 @@ namespace mutaborGUI {
 	template<class T> class TGUIRoute;
 
  	class GUIInputDeviceBase;
-	GUIInputDeviceBase & ToGUIBase(mutabor::InputDevice d);
+	const GUIInputDeviceBase & ToGUIBase(const mutabor::InputDevice & d);
+	GUIInputDeviceBase & ToGUIBase(mutabor::InputDevice & d);
  	class GUIOutputDeviceBase;
-	GUIOutputDeviceBase & ToGUIBase(mutabor::OutputDevice d);
+	const GUIOutputDeviceBase & ToGUIBase(const mutabor::OutputDevice & d);
+	GUIOutputDeviceBase & ToGUIBase(mutabor::OutputDevice & d);
 
 
 	template<class T> 
@@ -106,7 +117,18 @@ namespace mutaborGUI {
 			mutabor::RouteClass::setUserData(r);
 		}
 	public:
+		virtual ~GUIfyRoute() { 
+			GUIRouteBase * gui = &GetGUIRoute();
+			mutASSERT(gui);
+			delete gui;
+			TRACEC; 
+		}
 		GUIData & GetGUIRoute() 
+			{
+				void * d = mutabor::RouteClass::getUserData();
+				return *((GUIData *)d);
+			}
+		const GUIData & GetGUIRoute() const
 			{
 				void * d = mutabor::RouteClass::getUserData();
 				return *((GUIData *)d);
@@ -134,19 +156,19 @@ namespace mutaborGUI {
 
 		
 		/// Attatch a new output device
-		virtual void Attatch (mutabor::OutputDevice dev);
+		virtual void Attatch (mutabor::OutputDevice & dev);
 		/// Attatch a new input device
-		virtual void Attatch (mutabor::InputDevice dev);
+		virtual void Attatch (mutabor::InputDevice & dev);
 		/// Replace current output device with a new one
-		virtual bool Reconnect(mutabor::OutputDevice olddev, 
-				       mutabor::OutputDevice newdev);
+		virtual bool Reconnect(mutabor::OutputDevice & olddev, 
+				       mutabor::OutputDevice & newdev);
 		/// Replace current input device with a new one
-		virtual bool Reconnect(mutabor::InputDevice olddev,
-				       mutabor::InputDevice newdev);
+		virtual bool Reconnect(mutabor::InputDevice & olddev,
+				       mutabor::InputDevice & newdev);
 		/// Detatch current output device
-		virtual bool Detatch(mutabor::OutputDevice dev);
+		virtual bool Detatch(mutabor::OutputDevice & dev);
 		/// Detatch current input device
-		virtual bool Detatch(mutabor::InputDevice dev);
+		virtual bool Detatch(mutabor::InputDevice & dev);
 
 
 		// Handle the box
@@ -193,6 +215,9 @@ namespace mutaborGUI {
 		}
 
 		bool Detatch(MutBoxChannelShape * shape) {
+			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+				 this, 
+				 intrusive_ptr_get_refcount(this));
 			return GetGUIRoute().Detatch(shape);
 		}
 
@@ -207,13 +232,14 @@ namespace mutaborGUI {
 
 	class GUIRouteBase {
 	protected:
-		mutabor::Route route;
+		mutabor::RouteClass * route;
 		void * userdata;
 		BoxData * box;
 		MutBoxChannelShapeList shapes;
 	public:
 //		GUIRouteBase():Route(),userdata(NULL),boxShapes(),shapes() {}
  		virtual ~GUIRouteBase() {
+			TRACEC;
 			Destroy();
 		}
 
@@ -224,11 +250,11 @@ namespace mutaborGUI {
 			userdata = data;
 		}
 
-		bool IsRoute(mutabor::Route r) {
+		bool IsRoute(const mutabor::RouteClass * r) const {
 			return route == r;
 		}
 
-		mutabor::Route & GetRoute() {
+		mutabor::RouteClass * GetRoute() {
 			return route;
 		}
 
@@ -242,11 +268,15 @@ namespace mutaborGUI {
 				 box, route->GetBox());
 		}
 
+		const BoxData * GetBoxData() const {
+			return box;
+		}
+
 		BoxData * GetBoxData() {
 			return box;
 		}
 
-		const MutBoxShapeList & GetBoxShapes() {
+		const MutBoxShapeList & GetBoxShapes() const {
 			if (!box) {
 				UNREACHABLECT(GUIRouteBase);
 			}
@@ -269,19 +299,19 @@ namespace mutaborGUI {
 		}
 
 		/// Attatch a new output device
-		virtual void Attatch (mutabor::OutputDevice dev);
+		virtual void Attatch (mutabor::OutputDevice & dev);
 		/// Attatch a new input device
-		virtual void Attatch (mutabor::InputDevice dev);
+		virtual void Attatch (mutabor::InputDevice & dev);
 		/// Replace current output device with a new one
-		virtual bool Reconnect(mutabor::OutputDevice olddev, 
-				       mutabor::OutputDevice newdev);
+		virtual bool Reconnect(mutabor::OutputDevice & olddev, 
+				       mutabor::OutputDevice & newdev);
 		/// Replace current input device with a new one
-		virtual bool Reconnect(mutabor::InputDevice olddev,
-				       mutabor::InputDevice newdev);
+		virtual bool Reconnect(mutabor::InputDevice & olddev,
+				       mutabor::InputDevice & newdev);
 		/// Detatch current output device
-		virtual bool Detatch(mutabor::OutputDevice dev);
+		virtual bool Detatch(mutabor::OutputDevice & dev);
 		/// Detatch current input device
-		virtual bool Detatch(mutabor::InputDevice dev);
+		virtual bool Detatch(mutabor::InputDevice & dev);
 
 		/// Attatch a new box
 		virtual void Attatch (int boxid);
@@ -318,7 +348,8 @@ namespace mutaborGUI {
 			       MutBoxShape * newshape);
 			     
 
-		const MutBoxChannelShapeList & GetBoxChannelShapes() {
+		const MutBoxChannelShapeList & 
+		GetBoxChannelShapes() const {
 			return shapes;
 		}
 		void Add(MutBoxChannelShape * shape);
@@ -346,7 +377,7 @@ namespace mutaborGUI {
 		void InitializeRoute() {
 			if (route) 
 				static_cast<GUIfyRoute
-					<mutabor::RouteClass> *>(route.get())
+					<mutabor::RouteClass> *>(route)
 					-> SetGUIRoute (this);
 			ReconfigureBox();
 		}
@@ -360,6 +391,8 @@ namespace mutaborGUI {
 		operator RouteType & () {
 			return *static_cast<RouteType *>(route);
 		}
+
+		virtual ~TGUIRoute() { TRACEC; }
 	};
 
 	/// Prototype of any GUI based route class
@@ -374,8 +407,8 @@ namespace mutaborGUI {
 		friend class GUIRouteFactory;
 	protected:
 		GUIfiedRoute(void * gui,
-			     mutabor::InputDevice in,
-			     mutabor::OutputDevice out = NULL,
+			     mutabor::InputDevice & in,
+			     mutabor::OutputDevice & out,
 			     mutabor::RouteType type = mutabor::RTall,
 			     int iFrom = -1,
 			     int iTo = -1,
@@ -385,20 +418,48 @@ namespace mutaborGUI {
 			     int oTo = -1,
 			     bool oNoDrum = true/*,
 						  mutabor::Route next = NULL*/):GUIfyRoute() {
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 this, 
+				 intrusive_ptr_get_refcount(this));
+
 			TRouteClass::setUserData(gui);
 			TRouteClass::Create(in,out,type,
 					    iFrom,iTo,
 					    box,active,
 					    oFrom, oTo, oNoDrum/*,
 								 next*/);
+			DEBUGLOG(smartptr,_T("Route; %p (%d), after create"),
+				 this, 
+				 intrusive_ptr_get_refcount(this));
 		}
+		
+		virtual ~GUIfiedRoute() { TRACEC; }
 	};
 
 	class GUIRoute:public TGUIRoute<GUIfiedRoute> {
 		friend class GUIRouteFactory;
 	protected:
-		GUIRoute(mutabor::InputDevice in = NULL,
-			 mutabor::OutputDevice out = NULL,
+
+		GUIRoute():TGUIRoute() {
+			mutabor::InputDevice in;
+			mutabor::OutputDevice out;
+
+			route = new GUIfiedRoute(this,
+						 in,out);
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
+			InitializeRoute();
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
+			ReconfigureBox();
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
+		}
+		GUIRoute(mutabor::InputDevice & in,
+			 mutabor::OutputDevice & out,
 			 mutabor::RouteType type = mutabor::RTall,
 			 int iFrom = -1,
 			 int iTo = -1,
@@ -408,25 +469,55 @@ namespace mutaborGUI {
 			 int oTo = -1,
 			 bool oNoDrum = true/*,
 					      mutabor::Route next = NULL*/):TGUIRoute() {
+			DEBUGLOG(smartptr,_T("Route: %8p (%d), entering create"),
+				 (void *)route, 
+				 intrusive_ptr_get_refcount(route));
 			route = new GUIfiedRoute(this,
 						 in,out,type,
 						 iFrom,iTo,box,active,
 						 oFrom,oTo,oNoDrum/*,next*/);
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
 			InitializeRoute();
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
 			ReconfigureBox();
+			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
+				 route, 
+				 intrusive_ptr_get_refcount(route));
 		}
 		
 	public:
-		virtual ~GUIRoute() { }
+		virtual ~GUIRoute() { TRACEC; }
 
 	};
 
-	inline  GUIRouteBase & ToGUIBase(mutabor::Route r) {
-		mutASSERT(dynamic_cast<GUIfiedRoute *>(r.get()));
-		mutASSERT(((static_cast<GUIfiedRoute *>(r.get()))
+	inline  const GUIRouteBase & ToGUIBase(
+		const mutabor::RouteClass * r) {
+		mutASSERT(dynamic_cast<const GUIfiedRoute *>(r));
+		mutASSERT(((static_cast<const GUIfiedRoute *>(r))
 			  -> GetGUIRoute()).IsRoute(r));
 		
-		return static_cast<GUIfiedRoute *>(r.get()) -> GetGUIRoute();
+		return static_cast<const GUIfiedRoute *>(r) 
+			-> GetGUIRoute();
+	}
+
+	inline  GUIRouteBase & ToGUIBase(mutabor::RouteClass * r) {
+		mutASSERT(dynamic_cast<GUIfiedRoute *>(r));
+		mutASSERT(((static_cast<GUIfiedRoute *>(r))
+			  -> GetGUIRoute()).IsRoute(r));
+		
+		return static_cast<GUIfiedRoute *>(r) 
+			-> GetGUIRoute();
+	}
+
+	inline  const GUIRouteBase & ToGUIBase(const mutabor::Route & r) {
+		return ToGUIBase(r.get());
+	}
+	inline  GUIRouteBase & ToGUIBase(mutabor::Route & r) {
+		return ToGUIBase(r.get());
 	}
 
 	class GUIRouteFactory:public mutabor::RouteFactory { 
@@ -435,10 +526,11 @@ namespace mutaborGUI {
 		virtual ~GUIRouteFactory() {};
 
 	protected:
-		virtual mutabor::Route DoCreate() const;
-		virtual mutabor::Route DoCreate(
-			mutabor::InputDevice in,
-			mutabor::OutputDevice out,
+		virtual mutabor::RouteClass * DoCreate() const
+			__attribute__ ((malloc));
+		virtual mutabor::RouteClass * DoCreate(
+			mutabor::InputDevice & in,
+			mutabor::OutputDevice & out,
 			mutabor::RouteType type,
 			int iFrom,
 			int iTo,
@@ -447,12 +539,13 @@ namespace mutaborGUI {
 			int oFrom,
 			int oTo,
 			bool oNoDrum /*,
-				       mutabor::Route next*/) const;
+				       Route next*/) const __attribute__ ((malloc));
 		virtual MutBoxShape * DoCreateBoxShape(int box,
 			wxWindow * parent) const;
-		virtual MutBoxChannelShape * DoCreateBoxChannelShape (
-			mutabor::Route route,
-			wxWindow * parent) const;
+
+		virtual MutBoxChannelShape * 
+		DoCreateBoxChannelShape (mutabor::Route & route,
+					 wxWindow * parent) const;
 	public:
 		static MutBoxShape * CreateBoxShape(int box,
 						    wxWindow * parent) {
@@ -462,7 +555,7 @@ namespace mutaborGUI {
 		}
 			
 		static MutBoxChannelShape * CreateBoxChannelShape(
-			mutabor::Route route,
+			mutabor::Route & route,
 			wxWindow * parent) {
 			return ((GUIRouteFactory *)factory)->
 				DoCreateBoxChannelShape(route,parent);
@@ -524,6 +617,10 @@ namespace mutaborGUI {
 		}
 		
 	public:
+		const GUIData & GetGUIDevice() const {
+			void * d = mutabor::OutputDeviceClass::getUserData();
+			return *((const TGUIOutputDevice<T> *)d);
+		}
 		GUIData & GetGUIDevice() {
 			void * d = mutabor::OutputDeviceClass::getUserData();
 			return *((TGUIOutputDevice<T> *)d);
@@ -531,11 +628,11 @@ namespace mutaborGUI {
 
 #if 0
 		/// add a route
-		virtual void Add(Route route);
+		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route oldroute, Route newroute);
+		virtual bool Replace(Route & oldroute, Route & newroute);
                 /// remove a route
-		virtual bool Remove(Route route);
+		virtual bool Remove(Route & route);
 //		/// Move routes to another device 
 //		virtual bool MoveRoutes (DevicePtr newclass);
 #endif
@@ -565,7 +662,7 @@ namespace mutaborGUI {
 
 	class GUIOutputDeviceBase {
 	protected:
-		mutabor::OutputDevice device;
+		mutabor::OutputDeviceClass * device;
 		void * userdata;
 		MutOutputDeviceShapeList shapes;
 	public:
@@ -577,7 +674,7 @@ namespace mutaborGUI {
 			userdata = data;
 		}
 
-		bool IsDevice(mutabor::OutputDevice d) {
+		bool IsDevice(const mutabor::OutputDeviceClass * d) const {
 			return device == d;
 		}
 
@@ -585,19 +682,22 @@ namespace mutaborGUI {
 			return *device;
 		}
 
-		mutabor::OutputDevice & GetDevice () { return device; }
+		mutabor::OutputDeviceClass * GetDevice () { return device; }
 
+		const MutOutputDeviceShapeList & GetShapes() const {
+			return shapes;
+		}
 		MutOutputDeviceShapeList & GetShapes() {
 			return shapes;
 		}
 
 #if 0
 		/// add a route
-		virtual void Add(Route route);
+		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route oldroute, Route newroute);
+		virtual bool Replace(Route & oldroute, Route & newroute);
                 /// remove a route
-		virtual bool Remove(Route route);
+		virtual bool Remove(Route & route);
 		/// Move routes to another device 
 		//virtual bool MoveRoutes (DevicePtr newclass);
 #endif
@@ -616,7 +716,7 @@ namespace mutaborGUI {
 		void InitializeOutputDevice() {
 			if (device) 
 				static_cast<GUIfyOutputDevice 
-					<mutabor::OutputDeviceClass> *>(device.get())
+					<mutabor::OutputDeviceClass> *>(device)
 					-> SetGUIDevice (this);
 		}
 	};
@@ -656,7 +756,7 @@ namespace mutaborGUI {
 		}
 
 	public:
-		virtual ~GUIfiedOutputDevice() {}
+		virtual ~GUIfiedOutputDevice() { TRACEC; }
 	};
 
 	class GUIOutputDevice:public TGUIOutputDevice<GUIfiedOutputDevice> {
@@ -675,7 +775,7 @@ namespace mutaborGUI {
 			}
 		
 	public:
-		virtual ~GUIOutputDevice() { }
+		virtual ~GUIOutputDevice() { TRACEC; }
 
 	};
 
@@ -739,6 +839,11 @@ namespace mutaborGUI {
 		}
 		
 	public:
+		const GUIData & GetGUIDevice() const {
+			void * d = mutabor::InputDeviceClass::getUserData();
+			return *((const GUIData *)d);
+		}
+
 		GUIData & GetGUIDevice() {
 			void * d = mutabor::InputDeviceClass::getUserData();
 			return *((GUIData *)d);
@@ -746,11 +851,11 @@ namespace mutaborGUI {
 
 #if 0
 		/// add a route
-		virtual void Add(Route route);
+		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route oldroute, Route newroute);
+		virtual bool Replace(Route & oldroute, Route & newroute);
                 /// remove a route
-		virtual bool Remove(Route route);
+		virtual bool Remove(Route & route);
 		/// Move routes to another device 
 //		virtual bool MoveRoutes (DevicePtr newclass);
 #endif
@@ -782,7 +887,7 @@ namespace mutaborGUI {
 
 	class GUIInputDeviceBase {
 	protected:
-		mutabor::InputDevice device;
+		mutabor::InputDeviceClass * device;
 		void * userdata;
 		MutInputDeviceShapeList shapes;
 	public:
@@ -793,27 +898,30 @@ namespace mutaborGUI {
 			userdata = data;
 		}
 
-		bool IsDevice(mutabor::InputDevice d) {
+		bool IsDevice(const mutabor::InputDeviceClass * d) const {
 			return device == d;
 		}
 
-		mutabor::InputDevice & GetDevice () { return device; }
+		mutabor::InputDeviceClass * GetDevice () { return device; }
 
 		operator mutabor::InputDeviceClass &() {
 			return *device;
 		}
 
+		const MutInputDeviceShapeList & GetShapes() const {
+			return shapes;
+		}
 		MutInputDeviceShapeList & GetShapes() {
 			return shapes;
 		}
 
 #if 0
 		/// add a route
-		virtual void Add(Route route);
+		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route oldroute, Route newroute);
+		virtual bool Replace(Route & oldroute, Route & newroute);
                 /// remove a route
-		virtual bool Remove(Route route);
+		virtual bool Remove(Route &  route);
 		/// Move routes to another device 
 //		virtual bool MoveRoutes (DevicePtr newclass);
 #endif
@@ -835,7 +943,7 @@ namespace mutaborGUI {
 			if (device) {
 				
 				static_cast<GUIfyInputDevice 
-					<mutabor::InputDeviceClass> *>(device.get())
+					<mutabor::InputDeviceClass> *>(device)
 					-> SetGUIDevice (this);
 			}
 		}
@@ -893,7 +1001,7 @@ namespace mutaborGUI {
 			{}
 		
 	public:
-		virtual ~GUIInputDevice() { }
+		virtual ~GUIInputDevice() { TRACEC; }
 
 	};
 
@@ -910,17 +1018,17 @@ namespace mutaborGUI {
 		// see DeviceFactory for additional pure virtual functions
 
 		virtual MutOutputDeviceShape * DoCreateShape(
-			mutabor::OutputDevice device,
+			mutabor::OutputDevice & device,
 			wxWindow * parent) const = 0;
 		virtual MutInputDeviceShape * DoCreateShape(
-			mutabor::InputDevice device,
+			mutabor::InputDevice & device,
 			wxWindow * parent) const = 0;
 	public:
 		static MutOutputDeviceShape * CreateShape(
-			mutabor::OutputDevice device, wxWindow * parent);
+			mutabor::OutputDevice & device, wxWindow * parent);
 
 		static MutInputDeviceShape * CreateShape(
-			mutabor::InputDevice device, wxWindow * parent);
+			mutabor::InputDevice & device, wxWindow * parent);
 			
 	};
 
@@ -942,7 +1050,7 @@ namespace mutaborGUI {
 			OutputMidiPort::setUserData(gui);
 		}
 
-		virtual ~GUIfiedOutputMidiPort() {}
+		virtual ~GUIfiedOutputMidiPort() { TRACEC;}
 	};
 
 	class GUIOutputMidiPort:public TGUIOutputDevice<GUIfiedOutputMidiPort> {
@@ -962,7 +1070,7 @@ namespace mutaborGUI {
 								   id))
 			{}
 		
-		virtual ~GUIOutputMidiPort() { }
+		virtual ~GUIOutputMidiPort() {  TRACEC;}
 
 	};
 
@@ -986,7 +1094,7 @@ namespace mutaborGUI {
 			InputMidiPort::setUserData(gui);
 		}
 		
-		virtual ~GUIfiedInputMidiPort() {}
+		virtual ~GUIfiedInputMidiPort() { TRACEC;}
 	};
 
 	class GUIInputMidiPort:public TGUIInputDevice<GUIfiedInputMidiPort> {
@@ -1008,7 +1116,7 @@ namespace mutaborGUI {
 								 mode,id))
 			{}
 		
-		virtual ~GUIInputMidiPort() { }
+		virtual ~GUIInputMidiPort() { TRACEC; }
 
 	};
 
@@ -1025,32 +1133,32 @@ namespace mutaborGUI {
 			}
 
 
-		virtual mutabor::OutputDevice DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDevice DoCreateInput() const;
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   int id = -1) const;
 
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
 							   int id = -1) const;
 
 		virtual MutOutputDeviceShape * DoCreateShape(
-			mutabor::OutputDevice device,
+			mutabor::OutputDevice & device,
 			wxWindow * parent) const;
 		virtual MutInputDeviceShape * DoCreateShape(
-			mutabor::InputDevice device,
+			mutabor::InputDevice & device,
 			wxWindow * parent) const;
 	};
 
@@ -1075,7 +1183,7 @@ namespace mutaborGUI {
 			OutputMidiFile::setUserData(gui);
 		}
 
-		virtual ~GUIfiedOutputMidiFile() {}
+		virtual ~GUIfiedOutputMidiFile() { TRACEC;}
 	};
 
 	class GUIOutputMidiFile:public TGUIOutputDevice<GUIfiedOutputMidiFile> {
@@ -1095,7 +1203,7 @@ namespace mutaborGUI {
 								   id))
 			{}
 		
-		virtual ~GUIOutputMidiFile() { }
+		virtual ~GUIOutputMidiFile() { TRACEC; }
 
 	};
 
@@ -1117,7 +1225,7 @@ namespace mutaborGUI {
 			InputMidiFile::setUserData(gui);
 		}
 
-		virtual ~GUIfiedInputMidiFile() {}
+		virtual ~GUIfiedInputMidiFile() { TRACEC;}
 	};
 
 	class GUIInputMidiFile:public TGUIInputDevice<GUIfiedInputMidiFile> {
@@ -1138,7 +1246,7 @@ namespace mutaborGUI {
 								 id))
 			{}
 		
-		virtual ~GUIInputMidiFile() {}
+		virtual ~GUIInputMidiFile() { TRACEC;}
 
 	};
 
@@ -1156,31 +1264,31 @@ namespace mutaborGUI {
 			}
 
 
-		virtual mutabor::OutputDevice DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDevice DoCreateInput() const;
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   int id = -1) const;
 
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
 							   int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
-			mutabor::OutputDevice device,
+			mutabor::OutputDevice & device,
 			wxWindow * parent) const;
 		virtual MutInputDeviceShape * DoCreateShape(
-			mutabor::InputDevice device,
+			mutabor::InputDevice & device,
 			wxWindow * parent) const;
 	};
 
@@ -1203,7 +1311,7 @@ namespace mutaborGUI {
 			OutputGis::setUserData(gui);
 		}
 
-		virtual ~GUIfiedOutputGis() {}
+		virtual ~GUIfiedOutputGis() { TRACEC;}
 	};
 
 	class GUIOutputGis:public TGUIOutputDevice<GUIfiedOutputGis> {
@@ -1222,7 +1330,7 @@ namespace mutaborGUI {
 							      id))
 			{}
 		
-		virtual ~GUIOutputGis() { }
+		virtual ~GUIOutputGis() { TRACEC; }
 
 	};
 
@@ -1245,7 +1353,7 @@ namespace mutaborGUI {
 			InputGis::setUserData(gui);
 		}
 
-		virtual ~GUIfiedInputGis() {}
+		virtual ~GUIfiedInputGis() { TRACEC;}
 	};
 
 	class GUIInputGis:public TGUIInputDevice<GUIfiedInputGis> {
@@ -1267,7 +1375,7 @@ namespace mutaborGUI {
 							    id))
 			{}
 		
-		virtual ~GUIInputGis() { }
+		virtual ~GUIInputGis() { TRACEC; }
 
 	};
 
@@ -1286,31 +1394,31 @@ namespace mutaborGUI {
 			}
 
 
-		virtual mutabor::OutputDevice DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDevice DoCreateInput() const;
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   int id = -1) const;
 
-		virtual mutabor::OutputDevice DoCreateOutput(int devId,
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
 							     int id = -1) const;
 		
-		virtual mutabor::InputDevice DoCreateInput(int devId,
+		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
 							   int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
-			mutabor::OutputDevice device,
+			mutabor::OutputDevice & device,
 			wxWindow * parent) const;
 		virtual MutInputDeviceShape * DoCreateShape(
-			mutabor::InputDevice device,
+			mutabor::InputDevice & device,
 			wxWindow * parent) const;
 	};
 

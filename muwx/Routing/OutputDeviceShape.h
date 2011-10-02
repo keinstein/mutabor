@@ -2,16 +2,25 @@
 /********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.5 2011/09/30 18:07:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 18:07:06 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.h,v $
- * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-30 18:07:06  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -147,6 +156,8 @@ namespace mutaborGUI {
 		}
 
 	public:
+		typedef mutabor::OutputDevice devicetype;
+
 		virtual ~MutOutputDeviceShape() 
 			{
 				if (device) {
@@ -213,7 +224,7 @@ namespace mutaborGUI {
 			device = dev;
 		}
 		/// Attatch to a given route
-		void Attatch(mutabor::Route route) {
+		void Attatch(mutabor::Route & route) {
 			device -> Attatch(route);
 		}
 		/// Attatch to a given route
@@ -222,7 +233,8 @@ namespace mutaborGUI {
 		}
 
 		/// Replace a given route 
-		void Reconnect(mutabor::Route oldroute, mutabor::Route newroute) {
+		void Reconnect(mutabor::Route & oldroute, 
+			       mutabor::Route & newroute) {
 			device->Reconnect(oldroute,newroute);
 		}
 		/// Replace a given route 
@@ -242,7 +254,7 @@ namespace mutaborGUI {
 			device = NULL;
 		}
 		/// Detatch a given route
-		void Detatch(mutabor::Route route) {
+		void Detatch(mutabor::Route & route) {
 			device -> Detatch(route);
 		}
 		/// Detatch a given route
@@ -260,7 +272,11 @@ namespace mutaborGUI {
 				return routes;
 			}
 	
-		mutabor::OutputDevice GetDevice() 
+		const mutabor::OutputDevice & GetDevice() const 
+			{
+				return device;
+			}
+		mutabor::OutputDevice & GetDevice() 
 			{
 				return device;
 			}
@@ -269,13 +285,14 @@ namespace mutaborGUI {
 
 		OutputDevDlg * ShowDeviceDialog();
 
-		virtual wxPanel * GetOutputFilterPanel(wxWindow * parent, mutabor::Route route) const
+		virtual wxPanel * GetOutputFilterPanel(wxWindow * parent, 
+						       mutabor::Route& route) const
 			{ 
 				ABSTRACT_FUNCTIONC;
 				return NULL; 
 			}
 	
-		virtual void ReadOutputFilterPanel(wxWindow * panel, mutabor::Route route)
+		virtual void ReadOutputFilterPanel(wxWindow * panel, mutabor::Route & route)
 			{
 				ABSTRACT_FUNCTIONC;
 			}	

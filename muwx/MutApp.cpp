@@ -2,17 +2,26 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.51 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.52 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.51 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.52 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.51  2011/09/30 09:10:24  keinstein
+ * Revision 1.52  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.51  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.50  2011-09-29 05:26:59  keinstein
@@ -542,9 +551,7 @@ namespace mutaborGUI {
 		initialize_boxes();
 		MidiInit();
 		InitGUIRouteFactories();
-#ifdef DEBUG
-		debugFlags::flags[debugFlags::config] = true;
-#endif
+
 		RestoreState();
 
 		// Command line files must be opened after the file history has been read
@@ -565,6 +572,7 @@ namespace mutaborGUI {
 		g_printData = new wxPrintData;
 		g_pageSetupData = new wxPageSetupDialogData;
 #endif // wxUSE_PRINTING_ARCHITECTURE
+
 
 		return true;
 	}
@@ -1411,14 +1419,29 @@ namespace mutaborGUI {
 	int MutApp::OnExit()
 	{
 		SaveState();
+
 		AktionTraceReset();
+
+		TRACEC;
+		InputDeviceClass::ClearDeviceList();
+		TRACEC;
+		OutputDeviceClass::ClearDeviceList();
+		TRACEC;
+		RouteClass::ClearRouteList();
+		TRACEC;
+
 		MidiUninit();
+
 		delete document_manager;
 #if defined(__WXMAC__)
 		wxMenuBar::MacSetCommonMenuBar(NULL);
 #endif
 		delete HelpController;
 		wxXmlResource::Get()->ClearHandlers();
+
+		debug_print_pointers();
+		wxASSERT(debug_is_all_deleted());
+
 		return wxApp::OnExit();
 	}
 
@@ -1525,9 +1548,13 @@ namespace mutaborGUI {
 		}
 */	
 		// emty lists
+		TRACE;
 		InputDeviceClass::ClearDeviceList();
+		TRACE;
 		OutputDeviceClass::ClearDeviceList();
+		TRACE;
 		RouteClass::ClearRouteList();
+		TRACE;
 
 		DebugCheckRoutes();
 

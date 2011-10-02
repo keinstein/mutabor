@@ -4,16 +4,25 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.6 2011/10/02 16:58:42 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:06 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-30 18:07:06  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -203,7 +212,7 @@ namespace mutaborGUI {
 		return true;
 	}
 #if 0
-	void MutOutputDeviceShape::Connect(Route  route) 
+	void MutOutputDeviceShape::Connect(Route & route) 
 	{
 
 		mutASSERT(route);
@@ -227,7 +236,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	void MutOutputDeviceShape::Disconnect(Route  route)
+	void MutOutputDeviceShape::Disconnect(Route & route)
 	{
 		mutASSERT(route);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
@@ -247,7 +256,7 @@ namespace mutaborGUI {
 		RemoveRoute(route->GetRoute());
 	}
 
-	void MutOutputDeviceShape::AddRoute(Route  route) 
+	void MutOutputDeviceShape::AddRoute(Route & route) 
 	{
 		mutASSERT(route);
 		mutASSERT(device);
@@ -270,7 +279,7 @@ namespace mutaborGUI {
 		}
 	}
 
-	void MutOutputDeviceShape::RemoveRoute(Route  route)
+	void MutOutputDeviceShape::RemoveRoute(Route & route)
 	{
 		mutASSERT(route);
 		MutBoxChannelShape * channel = (MutBoxChannelShape *)route->getUserData();
