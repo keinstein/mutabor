@@ -3,16 +3,25 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.6 2011/09/30 18:07:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.7 2011/10/02 16:58:42 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 18:07:06 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: OutputMidiDeviceShape.cpp,v $
- * Revision 1.6  2011/09/30 18:07:06  keinstein
+ * Revision 1.7  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.6  2011-09-30 18:07:06  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -154,7 +163,7 @@ namespace mutaborGUI {
 	}
 
 	wxPanel * MutOutputMidiDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
-								 Route  route) const
+								 Route & route) const
 	{
 		const int maxint = std::numeric_limits<int>().max();
 		MidiOutputFilterPanel * panel = new MidiOutputFilterPanel(parent);
@@ -174,7 +183,7 @@ namespace mutaborGUI {
 		return panel;
 	}
 
-	void MutOutputMidiDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route  route)
+	void MutOutputMidiDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route & route)
 	{
 		mutASSERT(route);
 		MidiOutputFilterPanel * pan = dynamic_cast<MidiOutputFilterPanel *> (panel);

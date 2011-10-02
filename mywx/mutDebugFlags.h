@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.8 2011/09/29 05:26:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.9 2011/10/02 16:58:43 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/29 05:26:59 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/02 16:58:43 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.8  2011/09/29 05:26:59  keinstein
+ * Revision 1.9  2011/10/02 16:58:43  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.8  2011-09-29 05:26:59  keinstein
  * debug intrusive_ptr
  * fix storage and retrieving of input/output devices in treestorage
  * save maximum border size in icons
@@ -63,5 +72,6 @@ DEBUGFLAG(docview, _("Debug the Document/View framework"))
 DEBUGFLAG(eventqueue, _("Print unhandled events in the queue"))
 DEBUGFLAG(editor, _("Debug editor related functionality"))
 DEBUGFLAG(smartptr, _("Debug smart pointer related functionality"))
+DEBUGFLAG(trace, _("Output some tracepoints"))
 
 ///\}

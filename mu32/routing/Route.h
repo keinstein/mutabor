@@ -4,16 +4,25 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.6 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Route.h,v $
- * Revision 1.6  2011/09/30 18:07:04  keinstein
+ * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.6  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -208,22 +217,34 @@ namespace mutabor {
 		int outputid;
 		int Box;
 
+		TRouteClass():
+			userdata(this,_T("userdata")) {
+			TRACEC;
+			AppendToRouteList(this);
+			InputDevice in (NULL);
+			OutputDevice out (NULL);
+			Create(in,out,RTall,
+			       -1,-1,
+			       -1,false,
+			       -1,-1,true);
+		}
 
 		TRouteClass(
-			InputDevice in = NULL,
-			OutputDevice out = NULL,
+			InputDevice & in,
+			OutputDevice & out,
 			RouteType type = RTall,
 			int iFrom = -1,
 			int iTo = -1,
-			int box = -1,
+			int box = NoBox,
 			bool active = false,
 			int oFrom = -1,
 			int oTo = -1,
 			bool oNoDrum = true/*,
 					     Route next = NULL*/):
-			userdata(this,_T("userdata"))/*,
-						       globalNext(NULL)*/
+			userdata(this,_T("userdata"))
+			/*,  globalNext(NULL)*/
 			{
+				TRACEC;
 				AppendToRouteList(this);
 				Create(in,out,type,
 				       iFrom,iTo,
@@ -233,8 +254,8 @@ namespace mutabor {
 			}
 
 		void Create(
-			InputDevice in = NULL,
-			OutputDevice out = NULL,
+			InputDevice & in,
+			OutputDevice & out,
 			RouteType type = RTall,
 			int iFrom = -1,
 			int iTo = -1,
@@ -302,44 +323,51 @@ namespace mutabor {
 		virtual void * getUserData() const;
 	public:
 
-		OutputDevice GetOutputDevice() const {
+		const OutputDevice & GetOutputDevice() const {
 			return Out;
 		}
 
-		InputDevice GetInputDevice() const {
+		const InputDevice & GetInputDevice() const {
 			return In;
 		}
 
 		/// add a new output device
-		virtual void Add (OutputDevice out);
+		virtual void Add (OutputDevice & out);
 		/// add a new input device
-		virtual void Add (InputDevice in);
+		virtual void Add (InputDevice & in);
 		/// add a new box
 		virtual void Add(int id);
 		/// replace an existing output device
-		virtual bool Replace (OutputDevice olddev, 
-				      OutputDevice newdev);
+		virtual bool Replace (OutputDevice & olddev, 
+				      OutputDevice & newdev);
 		/// replace an existing input device
-		virtual bool Replace (InputDevice olddev, 
-				      InputDevice newdev);
+		virtual bool Replace (InputDevice & olddev, 
+				      InputDevice & newdev);
 		/// replace an existing box
 		virtual bool Replace (int oldbox, int newbox);
 		/// remove an existing output device
-		virtual bool Remove (OutputDevice out);
+		virtual bool Remove (OutputDevice & out);
 		/// remove an existing input device
-		virtual bool Remove (InputDevice in);
+		virtual bool Remove (InputDevice & in);
 		/// remov an existing box
 		virtual bool Remove (int id);
 
 		/// Attatch a new output device
-		virtual void Attatch (OutputDevice dev) {
+		virtual void Attatch (OutputDevice & dev) {
+			TRACEC;
 			Add(dev);
-			dev->Add(this);
+			TRACEC;
+			Route r(this);
+			TRACEC;
+			dev->Add(r);
+			TRACEC;
 		}
 		/// Attatch a new input device
-		virtual void Attatch (InputDevice dev) {
+		virtual void Attatch (InputDevice & dev) {
+			TRACEC;
 			Add(dev);
-			dev->Add(this);
+			Route r(this);
+			dev->Add(r);
 		}
 		/// Attach a new box
 		virtual void Attatch (int boxid) {
@@ -347,26 +375,30 @@ namespace mutabor {
 		}
 
 		/// Replace current output device with a new one
-		virtual bool Reconnect(OutputDevice olddev, OutputDevice newdev) {
+		virtual bool Reconnect(OutputDevice & olddev, 
+				       OutputDevice & newdev) {
 			bool retval = Replace(olddev,newdev);
+ 			Route r(this);
 			if (retval) {
-				retval = retval && olddev->Remove(this);
+				retval = retval && olddev->Remove(r);
 			}
 			if (retval) {
-				newdev->Add(this);
+				newdev->Add(r);
 			} else
 				mutASSERT(false);
 				// Check taht olddev is correcty disconnected
 			return retval;
 		}
 		/// Replace current input device with a new one
-		virtual bool Reconnect(InputDevice olddev, InputDevice newdev) {
+		virtual bool Reconnect(InputDevice & olddev, 
+				       InputDevice & newdev) {
 			bool retval = Replace(olddev,newdev);
+			Route r(this);
 			if (retval) {
-				retval = retval && olddev->Remove(this);
+				retval = retval && olddev->Remove(r);
 			}
 			if (retval) {
-				newdev->Add(this);
+				newdev->Add(r);
 			} else 
 				mutASSERT(false);
 			return retval;
@@ -378,18 +410,22 @@ namespace mutabor {
 		}
 
 		/// Detatch current output device
-		virtual bool Detatch(OutputDevice dev) {
-			bool retval = Remove(dev);
+		virtual bool Detatch(OutputDevice & dev) {
+			Route r (this);
+			bool retval = dev->Remove(r);
 			if (retval) {
-				retval = retval && dev->Remove(this);
+				// this might delete dev
+				retval = Remove(dev);
 			}
 			return retval;
 		}
 		/// Detatch current input device
-		virtual bool Detatch(InputDevice dev) {
-			bool retval = Remove(dev);
+		virtual bool Detatch(InputDevice & dev) {
+			Route r(this);
+			bool retval = dev->Remove(r);
 			if (retval) {
-				retval = dev->Remove(this);
+				// this might delete dev
+				retval = Remove(dev);
 			}
 			return retval;
 		}
@@ -532,6 +568,7 @@ namespace mutabor {
 		 * any more.
 		 */
 		virtual void Destroy() {
+			debug_destroy_class(this);
 			RemoveFromRouteList(this);
 			if (In) Detatch(In);
 			if (Out) Detatch(Out);
@@ -557,24 +594,29 @@ namespace mutabor {
 		static void LoadRoutes(tree_storage & config);
 
 		static void ClearRouteList() {
+			TRACET(thistype);
 			Route d;
 			while (!routeList.empty()) {
 				mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
-
+				TRACET(thistype);
 				d = routeList.front();
+				TRACET(thistype);
 				d->Destroy();
 
 				mutASSERT(routeList.empty() || 
 					 d != routeList.front());
 			}
 			mutASSERT(intrusive_ptr_get_refcount(d.get()) <= 1);
+			TRACET(thistype);
+			d = NULL;
+			TRACET(thistype);
 		}
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
 	protected:
-		static void AppendToRouteList (Route  route);
-		static void RemoveFromRouteList (Route  route);
+		static void AppendToRouteList (Route route);
+		static void RemoveFromRouteList (Route route);
 	
 		REFPTR_INTERFACE
 	};
@@ -594,10 +636,10 @@ namespace mutabor {
 		RouteFactory();
 		virtual ~RouteFactory();
 
-		virtual Route DoCreate() const;
-		virtual Route DoCreate(
-			InputDevice in,
-			OutputDevice out,
+		virtual RouteClass * DoCreate() const __attribute__ ((malloc));
+		virtual RouteClass * DoCreate(
+			InputDevice & in,
+			OutputDevice & out,
 			RouteType type,
 			int iFrom,
 			int iTo,
@@ -606,7 +648,7 @@ namespace mutabor {
 			int oFrom,
 			int oTo,
 			bool oNoDrum /*,
-				       Route next*/) const;
+				       Route next*/) const __attribute__ ((malloc));
 	
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from
@@ -627,8 +669,8 @@ namespace mutabor {
 			return NULL;
 		}
 		static Route Create(
-			InputDevice in,
-			OutputDevice out = NULL,
+			InputDevice & in,
+			OutputDevice & out,
 			RouteType type = RTall,
 			int iFrom = -1,
 			int iTo = -1,
@@ -636,8 +678,8 @@ namespace mutabor {
 			bool active = false,
 			int oFrom = -1,
 			int oTo = -1,
-			bool oNoDrum = true,
-			Route next = 0);
+			bool oNoDrum = true /*,
+					      Route next = 0*/);
 		static void Destroy() {
 			if (factory)
 				delete factory;
@@ -669,6 +711,12 @@ namespace mutabor {
 
 
 	extern const mutString DevTypeName[];
+
+	/// An empty route to be passed by reference
+	/** somtimes we need to pass NULL to a function
+	    expecting (Route &). This we define NullRoute
+	    that can be used in such situations */
+	extern Route NullRoute; 
 
 
 }

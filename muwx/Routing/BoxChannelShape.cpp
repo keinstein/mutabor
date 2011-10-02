@@ -3,16 +3,25 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.8 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * Revision 1.8  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.7  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -195,7 +204,7 @@ namespace mutaborGUI {
 */
 		return MutIconShape::Destroy();
 	}
-
+	
 	MutIcon& MutBoxChannelShape::GetMutIcon()
 	{
 
@@ -213,7 +222,9 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::Add(MutInputDeviceShape * device) 
 	{
 		if (input) UNREACHABLEC;
+		TRACEC;
 		input = device;
+		TRACEC;
 	}
 
 	void MutBoxChannelShape::Add(MutOutputDeviceShape * device)
@@ -222,7 +233,7 @@ namespace mutaborGUI {
 		output = device;
 	}
 
-	void MutBoxChannelShape::Add(mutabor::Route r)
+	void MutBoxChannelShape::Add(mutabor::Route & r)
 	{
 		if (route) UNREACHABLEC;
 		DEBUGLOG(smartptr,_T("Adding route %p"),r.get());
@@ -244,17 +255,21 @@ namespace mutaborGUI {
 	/// replace an existing input device
 	bool MutBoxChannelShape::Replace (MutInputDeviceShape * olddev, 
 			    MutInputDeviceShape * newdev) {
+		TRACEC;
 		bool retval = olddev == input;
-		if (retval)
+		TRACEC;
+		if (retval) {
 			input = newdev;
-		else
+			TRACEC;
+		} else
 			mutASSERT(retval);
+		TRACEC;
 		return retval;
 	}
 
 	/// replace an existing route
-	bool MutBoxChannelShape::Replace (mutabor::Route oldroute,
-					  mutabor::Route newroute) {
+	bool MutBoxChannelShape::Replace (mutabor::Route & oldroute,
+					  mutabor::Route & newroute) {
 		bool retval = oldroute == route;
 		if (retval) {
 			DEBUGLOG(smartptr,_T("Replacing route %p by %p"),
@@ -277,15 +292,19 @@ namespace mutaborGUI {
 	}
 	/// remove an existing input device
 	bool MutBoxChannelShape::Remove (MutInputDeviceShape * in) {
+		TRACEC;
 		bool retval = in == input;
-		if (retval)
+		TRACEC;
+		if (retval) {
 			input = NULL;
-		else 
+			TRACEC;
+		} else 
 			UNREACHABLEC;
+		TRACEC;
 		return retval;
 	}
 	/// remove an attatched route
-	bool MutBoxChannelShape::Remove (mutabor::Route r) {
+	bool MutBoxChannelShape::Remove (mutabor::Route & r) {
 		bool retval = route == r
 			&& input == NULL && output == NULL;
 		if (!retval)
@@ -296,8 +315,8 @@ namespace mutaborGUI {
 		}
 		return retval;
 	}
-
-	void MutBoxChannelShape::Attatch(mutabor::Route r) {
+	
+	void MutBoxChannelShape::Attatch(mutabor::Route & r) {
 		if (route) UNREACHABLEC;
 		else {
 			DEBUGLOG(smartptr,_T("Atta(t)ching route %p"),r.get());
@@ -305,12 +324,21 @@ namespace mutaborGUI {
 		}
 
 	}
-	void MutBoxChannelShape::Detatch(mutabor::Route r) {
+	void MutBoxChannelShape::Detatch(mutabor::Route & r) {
 		mutASSERT (route == r);
+		
+		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			 route.get(), 
+			 intrusive_ptr_get_refcount(route.get()));
 		if (route) 
 			ToGUIBase(route).Detatch(this);
-		DEBUGLOG(smartptr,_T("Deta(t)ching route %p"),r.get());
+		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			 route.get(), 
+			 intrusive_ptr_get_refcount(route.get()));
 		route = NULL;
+		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
+			 route.get(), 
+			 intrusive_ptr_get_refcount(route.get()));
 	}
 
 	void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel, 
@@ -362,45 +390,59 @@ namespace mutaborGUI {
 		mutASSERT(par);
 		wxChoicebook * choiceBook = panel->GetInputDeviceBook();
 	
+		TRACET(MutBoxChannelShape);
 		MutInputDeviceShape * input;
+		TRACET(MutBoxChannelShape);
 		if (shape)
 			input = shape->input;
 		else
 			input = NULL;
-		Route  route;
+		TRACET(MutBoxChannelShape);
+		Route route;
+		TRACET(MutBoxChannelShape);
 		if (shape) {
-			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("setting intermediete route %p"),
-				 shape->route.get());
+			TRACET(MutBoxChannelShape);
 			route = shape->route;
+			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
+				     _T("set intermediete route %p (%d)"),
+				     route.get(),
+				     intrusive_ptr_get_refcount(route.get()));
 		} else
 			route = NULL;
+		TRACET(MutBoxChannelShape);
 	
 		panel->AddPage(new wxPanel(choiceBook),
 			       _("No input device"),
 			       !input,
 			       NULL);
+		TRACET(MutBoxChannelShape);
 		wxSizer *inputs = par->GetInputDevices();
 		const wxSizerItemList &list = inputs->GetChildren();
 		for (wxSizerItemList::const_iterator i = list.begin(); 
 		     i != (list.end()); i++) {
+			TRACET(MutBoxChannelShape);
 			MutInputDeviceShape * device = 
 				dynamic_cast<MutInputDeviceShape *> 
 				((*i)->GetWindow());
+			TRACET(MutBoxChannelShape);
 		
 			if (!device) continue;
 			wxPanel * devicePanel = 
 				device -> GetInputFilterPanel(choiceBook, route);
+			TRACET(MutBoxChannelShape);
 			panel -> AddPage(devicePanel, 
 					 device->GetLabel(), 
 					 input == device,
 					 device);
+			TRACET(MutBoxChannelShape);
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("End of function destruct pointer to  %p"),
-			 route.get());
+				     _T("End of function.\
+ Destruct pointer to  %p (%d)"),
+			     route.get(),
+			     intrusive_ptr_get_refcount(route.get()));
 	}
-
+			
 	void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
 						 MutRouteWnd * par,
 						 MutBoxChannelShape * shape,
@@ -563,20 +605,28 @@ namespace mutaborGUI {
 		InputFilterPanel * inputPanel = panel->GetInput();
 		if (!inputPanel) UNREACHABLEC;
 		else if (inputPanel) {
+			TRACEC;
 			MutInputDeviceShape * newinput = 
 				inputPanel->GetCurrentSelection();
+			TRACEC;
 			if (newinput) {
 				if (newinput != input) {
+					TRACEC;
 					if (input) 
 						Reconnect(input,newinput);
 					else {
 						Attatch(newinput);
 					}
 				}
+				TRACEC;
 				input->ReadPanel(inputPanel,this);
+				TRACEC;
 				input->Refresh();
+				TRACEC;
 			} else if (input) {
+				TRACEC;
 				Detatch(input);
+				TRACEC;
 			}
 		}
 
@@ -593,7 +643,7 @@ namespace mutaborGUI {
 
 #if 0
 
-
+	
 					   bool changeRoute) 
 	{
 		DEBUGLOG(routing,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
@@ -685,7 +735,7 @@ namespace mutaborGUI {
 			}
 		}
 	}
-
+	
 	wxPoint MutBoxChannelShape::GetPerimeterPoint(const wxPoint &i,
 						      const wxPoint &o, 
 						      const wxPoint & parentPosition)

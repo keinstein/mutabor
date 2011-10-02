@@ -2,16 +2,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.4 2011/08/24 21:19:36 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.5 2011/10/02 16:58:42 keinstein Exp $
+ * Copyright:   (c) 2010,2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/08/24 21:19:36 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/10/02 16:58:42 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: mutDebug.cpp,v $
- * Revision 1.4  2011/08/24 21:19:36  keinstein
+ * Revision 1.5  2011/10/02 16:58:42  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.4  2011-08-24 21:19:36  keinstein
  * first run with 2.9.2+
  *
  * Revision 1.3  2011-02-20 22:35:59  keinstein
@@ -40,11 +49,25 @@
 #include "Defs.h"
 #ifdef DEBUG
 #include "mutDebug.h"
+#include <list>
 
-debugFlags::debugFlagSet debugFlags::flags;
+debugFlags::flagtype debugFlags::flags;
 
 
-void debugFlags::InitCommandLine(wxCmdLineParser&  parser) {
+debugFlags::flagtype::flagtype() 
+{
+#define DEBUGFLAG(flag,description) \
+	flags.flag = false;
+#include "mutDebugFlags.h"
+#undef DEBUGFLAG	
+
+	// manual overrides for debug purposes
+	flags.smartptr = true;
+}
+
+
+void debugFlags::InitCommandLine(wxCmdLineParser&  parser) 
+{
 #if wxCHECK_VERSION(2,9,0)
 #define DEBUGFLAG(flag,description) \
     { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (const char *)wxString(description) },
@@ -60,12 +83,40 @@ void debugFlags::InitCommandLine(wxCmdLineParser&  parser) {
 #undef DEBUGFLAG
 	parser.SetDesc(cmdLineDesc);
 }
-void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser) {
+
+void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser) 
+{
 #define DEBUGFLAG(flag,description) \
-  debugFlags::flags[flag]=parser.Found(_T("debug-"#flag));
+  debugFlags::flags.flag = parser.Found(_T("debug-"#flag));
 #include "mutDebugFlags.h"
 #undef DEBUGFLAG	
 }
+
+typedef std::list<void *> ptrlist;
+static ptrlist debug_save_pointers;
+
+void debug_destroy_class(void * ptr) 
+{
+	debug_save_pointers.push_back(ptr);
+}
+void debug_destruct_class(void * ptr) 
+{
+	debug_save_pointers.remove(ptr);
+}
+void debug_print_pointers()
+{
+	for (ptrlist::iterator i = debug_save_pointers.begin();
+	     i != debug_save_pointers.end();
+	     i++) {
+		fprintf(stderr, "\nUndeleted pointer: %p",(void *)(*i));
+	}
+	fprintf(stderr,"\n");
+}
+bool debug_is_all_deleted()
+{
+	return debug_save_pointers.empty();
+}
+
 
 #endif
 

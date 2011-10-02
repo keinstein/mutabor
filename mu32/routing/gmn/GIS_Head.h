@@ -3,16 +3,25 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.5 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.6 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: GIS_Head.h,v $
- * Revision 1.5  2011/09/27 20:13:22  keinstein
+ * Revision 1.6  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.5  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -282,11 +291,10 @@ public:
 	{
 		DEBUGLOG(other,_T("Tempo: %p"));
 
-		if (Tempo)
+		if (Tempo) {
 			DEBUGLOG(other,_T("Tempo->Data.i: %d"),Tempo);
-
-		if ( Tempo )
 			return Tempo->Data.i;
+		}
 		else
 			return 2000;
 	}

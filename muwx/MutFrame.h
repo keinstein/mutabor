@@ -2,17 +2,26 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.31 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.32 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.31 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.32 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.31  2011/09/30 18:07:05  keinstein
+ * Revision 1.32  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.31  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -424,6 +433,14 @@ namespace mutaborGUI {
 
 		void SetFileMenu(wxMenu * f) { filemenu = f; }
 		void SetEditMenu(wxMenu * e) { editmenu = e; }
+
+		static wxDocument * GetActiveDocument() {
+			if (!ActiveWindow) return NULL;
+			return ActiveWindow->GetDocument();
+		}
+		static MutFrame * GetActiveWindow() {
+			return ActiveWindow;
+		}
 	private:
 
 		wxMenu * editmenu;

@@ -4,16 +4,25 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.4 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.5 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: RouteCompat.cpp,v $
- * Revision 1.4  2011/09/27 20:13:21  keinstein
+ * Revision 1.5  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.4  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -52,7 +61,7 @@ namespace compat30 {
 	
 #define GETLINE if ( !GetLine(config, i, s) ) return
 	
-	static OutputDevice GetOut(int nr)
+	static inline OutputDevice GetOut(int nr)
 	{
 		if ( nr < 0 )
 			return 0;
@@ -135,9 +144,13 @@ namespace compat30 {
 		DEBUGLOG2(routing,_T(""));
 
 		// emty lists
+		TRACE;
 		InputDeviceClass::ClearDeviceList();
+		TRACE;
 		OutputDeviceClass::ClearDeviceList();
+		TRACE;
 		RouteClass::ClearRouteList();
+		TRACE;
  		
 		// Zerlegen von config
 		wxString s;
@@ -293,11 +306,13 @@ namespace compat30 {
 				DEBUGLOG2(routing,_T("%d parameters read: Type = '%s', IFrom = %d, ITo = %d"),test, Type, IFrom, ITo);
 				DEBUGLOG2(routing,_T("    Box = %d, BoxActive= %d, OutDev = %d, OFrom = %d, OTo = %d, ONoDrum = %d"), Box, BoxActive, OutDev, OFrom, OTo, ONoDrum);
 
-				In->Add(RouteFactory::Create(In,GetOut(OutDev),
-						       Str2RT(Type),
-						       IFrom, ITo, Box,
-						       BoxActive, 
-						       OFrom, OTo, ONoDrum));
+				OutputDevice Out = GetOut(OutDev);
+				Route r(RouteFactory::Create(In, Out,
+							     Str2RT(Type),
+							     IFrom, ITo, Box,
+							     BoxActive, 
+							     OFrom, OTo, ONoDrum));
+				In->Add(r);
 				GETLINE;
 				DEBUGLOG2(routing,_T("+%s"),s.c_str());
 			}

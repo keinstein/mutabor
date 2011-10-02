@@ -85,6 +85,12 @@ AH_BOTTOM([
 
 wxflags=""
 AM_MAINTAINER_MODE
+
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_CXX
+
 dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
 	AS_HELP_STRING([--enable-debug],[Enable extra debugging functionality]),
@@ -93,12 +99,18 @@ AC_ARG_ENABLE(debug,
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
 	       CFLAGS="$CFLAGS -g"
 	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__ -fvisibility-inlines-hidden"
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -fdump-class-hierarchy"
+	       AC_LANG_PUSH(C++)
+	       AC_MSG_CHECKING([whether $CXX supports -fdump-class-hierarchy])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([yes])])
+      	       AC_LANG_POP(C++)	       
 	       wxflags="--debug"
 ])
 
-# Checks for programs.
-AC_PROG_CC
-AC_PROG_CXX
 AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
 	[AS_IF(test "$enableval" = yes,

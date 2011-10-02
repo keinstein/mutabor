@@ -3,16 +3,25 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.8 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.9 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Route.cpp,v $
- * Revision 1.8  2011/09/30 18:07:04  keinstein
+ * Revision 1.9  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.8  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -79,6 +88,8 @@ namespace mutabor {
 	template <class I, class O>
 	int TRouteClass<I,O>::maxRouteId = 1;
 
+	Route NullRoute(NULL); 
+
 /*
 	template <class I, class O>
 	typename TRouteClass<I,O>::Route TRouteClass<I,O>::routeList;
@@ -98,7 +109,9 @@ namespace mutabor {
 				  routeList.end(),
 				  this);
 		mutASSERT(r == routeList.end());
+		TRACEC;
 #endif
+		debug_destruct_class(this);
 	}
 
 
@@ -146,11 +159,11 @@ namespace mutabor {
 
 
 	template <class I, class O>
-	void TRouteClass<I,O>::Add (OutputDevice out) {
+	void TRouteClass<I,O>::Add (OutputDevice & out) {
 		Out = out;
 	}
 	template <class I, class O>
-	void TRouteClass<I,O>::Add (InputDevice in) {
+	void TRouteClass<I,O>::Add (InputDevice & in) {
 		In = in;
 	}
 	template <class I, class O>
@@ -159,8 +172,8 @@ namespace mutabor {
 	}
 
 	template <class I, class O>
-	bool TRouteClass<I,O>::Replace (OutputDevice olddev,
-					      OutputDevice newdev) {
+	bool TRouteClass<I,O>::Replace (OutputDevice & olddev,
+					OutputDevice & newdev) {
 		if (Out != olddev) {
 			UNREACHABLEC;
 			return false;
@@ -169,8 +182,8 @@ namespace mutabor {
 		return true;
 	}
 	template <class I, class O>
-	bool TRouteClass<I,O>::Replace (InputDevice olddev,
-					      InputDevice newdev) {
+	bool TRouteClass<I,O>::Replace (InputDevice & olddev,
+					InputDevice & newdev) {
 		if (In != olddev) {
 			UNREACHABLEC;
 			return false;
@@ -190,7 +203,7 @@ namespace mutabor {
 	}
 
 	template <class I, class O>
-	bool TRouteClass<I,O>::Remove (OutputDevice out) {
+	bool TRouteClass<I,O>::Remove (OutputDevice & out) {
 		if (out != Out) {
 			UNREACHABLEC;
 			return false;
@@ -199,7 +212,7 @@ namespace mutabor {
 		return true;
 	}
 	template <class I, class O>
-	bool TRouteClass<I,O>::Remove (InputDevice in) {
+	bool TRouteClass<I,O>::Remove (InputDevice & in) {
 		if (In != in) {
 			UNREACHABLEC;
 			return false;
@@ -266,11 +279,19 @@ namespace mutabor {
 			// \todo replace -1 by a correct default
 			int inputid = config.Read(_T("Input Device"), -1);
 			int outputid = config.Read(_T("Output Device"), -1);
+			TRACET(thistype);
 			InputDevice in = InputDeviceClass::GetDevice(inputid);
+			TRACET(thistype);
 			OutputDevice out = OutputDeviceClass::GetDevice(outputid);
+			TRACET(thistype);
 			Route route = RouteFactory::Create(in,out);
+			TRACET(thistype);
 			if (route)
 				route -> Load(config);
+			DEBUGLOGTYPE(smartptr,thistype,
+				     _T("route is %p (%d)"),
+				     route.get(),
+				     intrusive_ptr_get_refcount(route.get()));
 			i = config.toNextLeaf(_T("Route"));
 		}
 	
@@ -286,9 +307,10 @@ namespace mutabor {
 		typename TRouteClass<I, O>::routeListType::iterator r = 
 			std::find(routeList.begin(),
 				  routeList.end(),
-				  route);
+				  route.get());
 		mutASSERT(r == routeList.end());
 #endif
+		TRACET(thistype);
 		routeList.push_back(route);
 	}
 
@@ -298,8 +320,9 @@ namespace mutabor {
 		typename TRouteClass<I, O>::routeListType::iterator r = 
 			std::find(routeList.begin(),
 				  routeList.end(),
-				  route);
+				  route.get());
 		mutASSERT(r != routeList.end());
+
 		if (r != routeList.end()) {
 			routeList.erase(r);
 		}
@@ -527,21 +550,21 @@ TRouteClass<I,O>:\n\
 	}
 	RouteFactory::~RouteFactory() {}
 
-	Route RouteFactory::DoCreate() const
+	RouteClass * RouteFactory::DoCreate() const
 	{
 		return new RouteClass ();
 	}
 
-	Route RouteFactory::DoCreate(InputDevice in,
-				     OutputDevice out,
-				     RouteType type,
-				     int iFrom,
-				     int iTo,
-				     int box,
-				     bool active,
-				     int oFrom,
-				     int oTo,
-				     bool oNoDrum/*,
+	RouteClass * RouteFactory::DoCreate(InputDevice & in,
+					    OutputDevice & out,
+					    RouteType type,
+					    int iFrom,
+					    int iTo,
+					    int box,
+					    bool active,
+					    int oFrom,
+					    int oTo,
+					    bool oNoDrum/*,
 						   Route next*/) const
 	{
 		return new RouteClass (in,out,type,

@@ -2,16 +2,25 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.8 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * Revision 1.8  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.7  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -156,12 +165,18 @@ namespace mutaborGUI {
 	void InputFilterPanel::AddPage(wxPanel * panel, const wxString & label, 
 				       bool selected, MutInputDeviceShape * shape)
 	{
+		TRACEC;
 		inputDevice->InvalidateBestSize();
+		TRACEC;
 		int n = inputDevice->GetPageCount();
+		TRACEC;
 		if(inputDevice -> InsertPage(n,panel, label, selected)) {
+			TRACEC;
 			wxChoice * choice = inputDevice->GetChoiceCtrl();
+			TRACEC;
 			choice->SetClientObject(n,new InputShapeData(shape));
 		} else UNREACHABLEC;
+		TRACEC;
 	}
 
 	wxWindow * InputFilterPanel::GetCurrentDevicePage()
@@ -171,21 +186,26 @@ namespace mutaborGUI {
 
 	MutInputDeviceShape * InputFilterPanel::GetCurrentSelection()
 	{
+		TRACEC;
 		if (!inputDevice) {
 			UNREACHABLEC;
 			return NULL;
 		}
+		TRACEC;
 		wxChoice * choice = inputDevice->GetChoiceCtrl();
 		if (!choice) {
 			UNREACHABLEC;
 			return NULL;
 		}
+		TRACEC;
 		InputShapeData * data = dynamic_cast<InputShapeData *> 
 			(choice->GetClientObject(choice->GetSelection()));
+		TRACEC;
 		if (!data) {
 			UNREACHABLEC;
 			return NULL;
 		}
+		TRACEC;
 		return data->GetDevice();
 	}
 

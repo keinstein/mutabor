@@ -2,13 +2,22 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.12 2011/09/27 20:13:21 keinstein Exp $
+ * $Id: GrafKern.h,v 1.13 2011/10/02 16:58:40 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2011/10/02 16:58:40 $
+ * \version $Revision: 1.13 $
  *
  * $Log: GrafKern.h,v $
- * Revision 1.12  2011/09/27 20:13:21  keinstein
+ * Revision 1.13  2011/10/02 16:58:40  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.12  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -75,7 +84,7 @@ void AktionenInit();
 
 void AktionenMessage(int box, const char *meldung );
 
-void fatal_error( int nummer, ... );
+void fatal_error( int nummer, ... ) __attribute__ ((noreturn));
 
 void compiler_warning( int nummer, ... );
 

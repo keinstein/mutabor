@@ -2,16 +2,25 @@
  ********************************************************************
  * Document/View Document class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.7 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.h,v 1.8 2011/10/02 16:58:41 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/02 16:58:41 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: MutDocument.h,v $
- * Revision 1.7  2011/09/27 20:13:23  keinstein
+ * Revision 1.8  2011/10/02 16:58:41  keinstein
+ * * generate Class debug information when compile in debug mode
+ * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+ * * Reenable confirmation dialog when closing document while the logic is active
+ * * Change debug flag management to be more debugger friendly
+ * * implement automatic route/device deletion check
+ * * new debug flag --debug-trace
+ * * generate lots of tracing output
+ *
+ * Revision 1.7  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -140,6 +149,8 @@ namespace mutaborGUI {
 		virtual bool IsModified(void) const;
 		virtual void Modify(bool mod);
 
+		bool CheckLogic();
+		virtual bool OnSaveModified();
 
 		// save and load methods go here (backup for eventual usage)
 #if wxUSE_STD_IOSTREAM
