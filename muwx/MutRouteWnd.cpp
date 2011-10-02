@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.26 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.27 2011/10/02 19:28:55 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.26 $
+ * $Date: 2011/10/02 19:28:55 $
+ * \version $Revision: 1.27 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.26  2011/10/02 16:58:41  keinstein
+ * Revision 1.27  2011/10/02 19:28:55  keinstein
+ * changing MutRouteWnd into a container (without effect :-()
+ *
+ * Revision 1.26  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -162,12 +165,81 @@ UpDate();
 
 */
 
+
+#if wxUSE_EXTENDED_RTTI
+WX_DEFINE_FLAGS( MutRouteWndStyle )
+
+wxBEGIN_FLAGS( MutRouteWndStyle )
+    // new style border flags, we put them first to
+    // use them for streaming out
+    wxFLAGS_MEMBER(wxBORDER_SIMPLE)
+    wxFLAGS_MEMBER(wxBORDER_SUNKEN)
+    wxFLAGS_MEMBER(wxBORDER_DOUBLE)
+    wxFLAGS_MEMBER(wxBORDER_RAISED)
+    wxFLAGS_MEMBER(wxBORDER_STATIC)
+    wxFLAGS_MEMBER(wxBORDER_NONE)
+
+    // old style border flags
+    wxFLAGS_MEMBER(wxSIMPLE_BORDER)
+    wxFLAGS_MEMBER(wxSUNKEN_BORDER)
+    wxFLAGS_MEMBER(wxDOUBLE_BORDER)
+    wxFLAGS_MEMBER(wxRAISED_BORDER)
+    wxFLAGS_MEMBER(wxSTATIC_BORDER)
+    wxFLAGS_MEMBER(wxBORDER)
+
+    // standard window styles
+    wxFLAGS_MEMBER(wxTAB_TRAVERSAL)
+    wxFLAGS_MEMBER(wxCLIP_CHILDREN)
+    wxFLAGS_MEMBER(wxTRANSPARENT_WINDOW)
+    wxFLAGS_MEMBER(wxWANTS_CHARS)
+    wxFLAGS_MEMBER(wxFULL_REPAINT_ON_RESIZE)
+    wxFLAGS_MEMBER(wxALWAYS_SHOW_SB )
+    wxFLAGS_MEMBER(wxVSCROLL)
+    wxFLAGS_MEMBER(wxHSCROLL)
+
+wxEND_FLAGS( MutRouteWndStyle )
+
+IMPLEMENT_DYNAMIC_CLASS_XTI(MutRouteWnd, wxScrolledWindow,"MutRouteWnd.h")
+
+wxBEGIN_PROPERTIES_TABLE(MutRouteWnd)
+    wxPROPERTY_FLAGS( WindowStyle , 
+		      MutRouteWndStyle , long , 
+		      SetWindowStyleFlag , GetWindowStyleFlag , 
+		      EMPTY_MACROVALUE, 0 /*flags*/ , 
+		      wxT("Helpstring") , wxT("group")) // style
+// style wxTAB_TRAVERSAL
+wxEND_PROPERTIES_TABLE()
+
+wxBEGIN_HANDLERS_TABLE(MutRouteWnd)
+wxEND_HANDLERS_TABLE()
+
+wxCONSTRUCTOR_5( MutRouteWnd , 
+		 wxWindow* , 
+		 Parent , 
+		 wxWindowID , 
+		 Id , 
+		 wxPoint , 
+		 Position , 
+		 wxSize , Size , 
+		 long , 
+		 WindowStyle )
+
+#else
+IMPLEMENT_DYNAMIC_CLASS(MutRouteWnd, wxScrolledWindow)
+#endif
+
+
+
+
 BEGIN_EVENT_TABLE(MutRouteWnd, wxScrolledWindow)
 //	EVT_SIZE(MutRouteWnd::OnSize)
 //	EVT_LEFT_DOWN(MutRouteWnd::OnLeftDown)
 //	EVT_LEFT_DCLICK(MutRouteWnd::OnLeftDClick)
+WX_EVENT_TABLE_CONTROL_CONTAINER(MutRouteWnd)
 END_EVENT_TABLE()
 
+
+WX_DELEGATE_TO_CONTROL_CONTAINER(MutRouteWnd, wxScrolledWindow)
 
 
 MutRouteWnd::MurFileDataType MutRouteWnd::MurFileData;
@@ -179,6 +251,9 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 	  OutputSizer(NULL),
 	  BoxSizer(NULL)
 {
+	m_container.SetContainerWindow(this);
+
+
 	DevIcon[DTUnknown] = new ICON(devunknown);
 	DevIcon[DTMidiPort] = new ICON(devmidiport);
 	DevIcon[DTMidiFile] = new ICON(devmidifile);
@@ -602,6 +677,44 @@ KeyboardAnalyseSimple(curBox, key);
 }
 }
 */
+
+
+void MutRouteWnd::OnSize(wxSizeEvent& event)
+{
+    if (GetAutoLayout())
+        Layout();
+#if wxUSE_CONSTRAINTS
+#if defined(__WXPM__) && 0
+    else
+    {
+        // Need to properly move child windows under OS/2
+
+        PSWP                        pWinSwp = GetSwp();
+
+        if (pWinSwp->cx == 0 && pWinSwp->cy == 0 && pWinSwp->fl == 0)
+        {
+            // Uninitialized
+
+            ::WinQueryWindowPos(GetHWND(), pWinSwp);
+        }
+        else
+        {
+            SWP                     vSwp;
+            int                     nYDiff;
+
+            ::WinQueryWindowPos(GetHWND(), &vSwp);
+            nYDiff = pWinSwp->cy - vSwp.cy;
+            MoveChildren(nYDiff);
+            pWinSwp->cx = vSwp.cx;
+            pWinSwp->cy = vSwp.cy;
+        }
+    }
+#endif
+#endif // wxUSE_CONSTRAINTS
+
+    event.Skip();
+}
+
 
 
 
