@@ -3,16 +3,27 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.8 2011/10/03 15:50:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * Revision 1.8  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.7  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -149,7 +160,7 @@
 #include "Defs.h"
 #include "GUIRoute.h"
 #include "IconShape.h"
-#include "Device.h"
+//#include "Device.h"
 #include "box.h"
 
 #ifndef MUWX_ROUTING_BOXCHANNELSHAPE_H_PRECOMPILED
@@ -196,6 +207,7 @@ namespace mutaborGUI {
 			{
 				// to satisfy attatch route mus be NULL for now
 				Create (p, id, r);
+//				borderOffset = maxBorderSize;
 			}
 
 	public:
@@ -221,6 +233,13 @@ namespace mutaborGUI {
 */
 			}
 
+		// can this window have focus?
+		virtual bool AcceptsFocus() const { 
+			//return false;
+			return IsShown() && IsEnabled();
+		}
+		
+
 		virtual bool Destroy();
 
 		/// Create the window
@@ -242,6 +261,7 @@ namespace mutaborGUI {
 					return false;
 				}
 				bool fine = MutIconShape::Create(p,id);
+				borderOffset = 
 				maxBorderSize = wxSize(0,0);
 				if (fine)
 					ToGUIBase(r).Attatch(this);
@@ -252,6 +272,10 @@ namespace mutaborGUI {
 		/*****************************************/
 		// Event handlers
 		/*****************************************/
+
+		virtual void SetFocus() ;
+		virtual void KillFocus() ;
+		
 
 		void LeftDblClickEvent (wxMouseEvent & event) { 
 			GetParent()->GetEventHandler()->ProcessEvent(event);

@@ -4,15 +4,26 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.7 2011/10/02 16:58:41 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.8 2011/10/03 15:50:21 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/02 16:58:41 $
-* \version $Revision: 1.7 $
+* $Date: 2011/10/03 15:50:21 $
+* \version $Revision: 1.8 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.7  2011/10/02 16:58:41  keinstein
+* Revision 1.8  2011/10/03 15:50:21  keinstein
+* Fix focus issues in the route window. This includes:
+*  * Using templates to describe the base class of MutIconShape.
+*  * Rename MutIconShape->MutIconShapeClass.
+*  * typedef MutIconShapeClass<wxControl> MutIconShape
+*  * Expand the control container macros in MutPanel.
+*  * Disable most of the control container behaviour as we don't need it, currently
+*  * Focus NewInputDevice on window creation.
+*  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+*  * Display focused Window with sunken border
+*
+* Revision 1.7  2011-10-02 16:58:41  keinstein
 * * generate Class debug information when compile in debug mode
 * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
 * * Reenable confirmation dialog when closing document while the logic is active
@@ -282,7 +293,7 @@ namespace mutaborGUI {
 		MutBoxIconShape::Create(parent,wid);
 		channels = new wxBoxSizer(wxVERTICAL);
 		SetSizer(channels);
-		SetAutoLayout(true);
+		//	SetAutoLayout(true); done by SetSizer()
 //	m_icon = new MutBoxIconShape(this,-1);
 		m_icon = this;
 		SetBoxId(Id,false);
@@ -526,8 +537,7 @@ namespace mutaborGUI {
 		} else Update();
 	
 		// Signalize to delete this control
-		// Unfortunately WXMAC segfaults if we use Destroy(), here.
-		if (destroySelf) DeleteSelf();
+		if (destroySelf) Destroy();
 	
 	}
 

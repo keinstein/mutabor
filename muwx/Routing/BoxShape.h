@@ -3,16 +3,27 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.7 2011/10/03 15:50:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.6  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -212,6 +223,11 @@ namespace mutaborGUI {
 		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
 
 		virtual void DoLeftDblClick();
+
+		virtual void SetFocus() {
+			SetFocusIgnoringChildren();
+			UpdateBorder(wxBORDER_SUNKEN);
+		}
 
 		/// Get a double click and prepare for execution of the command
 		/** Since programs might produce segmentation faults

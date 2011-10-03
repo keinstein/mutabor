@@ -2,17 +2,28 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.27 2011/10/02 19:28:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.28 2011/10/03 15:50:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/02 19:28:55 $
- * \version $Revision: 1.27 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.27  2011/10/02 19:28:55  keinstein
+ * Revision 1.28  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.27  2011-10-02 19:28:55  keinstein
  * changing MutRouteWnd into a container (without effect :-()
  *
  * Revision 1.26  2011-10-02 16:58:41  keinstein
@@ -296,6 +307,7 @@ void MutRouteWnd::InitShapes()
 	MutInputDeviceShape * newin = new MutNewInputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newin, flags);
 	InputDevices.push_back(newin);
+	newin->SetFocus();
 	
 	mutASSERT(Boxes.empty());
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),

@@ -4,16 +4,27 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.7 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.8 2011/10/03 15:50:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.7  2011/09/30 18:07:04  keinstein
+ * Revision 1.8  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.7  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -100,8 +111,10 @@
 
 
 /// An icon control with static text
-class MutIconShape:public MutPanel
+template<class T = wxControl>
+class MutIconShapeClass:public T
 {
+public: typedef T parenttype;
 protected:
         /// the icon
         MutIcon Icon;
@@ -110,9 +123,9 @@ protected:
 	
 public:
 	
-	MutIconShape():MutPanel(),Icon(),staticText(NULL) { }
+	MutIconShapeClass():parenttype(),Icon(),staticText(NULL) { }
 
-	MutIconShape(wxWindow * parent, wxWindowID id):MutPanel(),
+	MutIconShapeClass(wxWindow * parent, wxWindowID id):parenttype(),
 								  Icon(),
 								  staticText(NULL)
 	{
@@ -121,7 +134,7 @@ public:
 	
 	bool Create (wxWindow * parent, wxWindowID id = wxID_ANY);
 	
-	virtual ~MutIconShape() {}
+	virtual ~MutIconShapeClass() {}
 	
 
 	void SetIcon(const MutIcon & icon) {
@@ -137,7 +150,8 @@ public:
 			staticText = new wxStaticText(this,wxID_ANY,_T(""));
 		mutASSERT(staticText);
 		if (!staticText) return;
-		wxControl::SetLabel(st);
+		wxControl::SetLabel(st); // stores only a string and invalidates
+		// the best size
 		staticText->SetLabel(st);
 	}
 	/// Calculates the Icon to be used.
@@ -145,9 +159,15 @@ public:
   
 	virtual wxSize DoGetBestSize() const;
 
-	void OnGetFocus(wxFocusEvent & event) ;
+	virtual void UpdateBorder(long flag);
 	virtual void SetFocus() ;
+	virtual void KillFocus() ;
+        // calls layout for layout constraints and sizers
+	void OnSize(wxSizeEvent& event);
+	void OnGetFocus(wxFocusEvent & event) ;
 	void OnKillFocus(wxFocusEvent & event); 
+	
+	void OnMouseClick(wxMouseEvent & event);
 
 	void         OnPaint (wxPaintEvent &event ) ;
 	virtual void OnDraw (wxDC & dc);
@@ -155,7 +175,7 @@ public:
 					  const wxPoint &o) const;
 	virtual wxRect GetIconRect() const 
 	{
-		wxRect r = GetRect();
+		wxRect r = static_cast<parenttype const *>(this)->GetRect();
 		int iw = Icon.GetWidth();
 		return wxRect(r.x + (r.width - iw)/2, 
 			      r.y+borderOffset.y,
@@ -170,18 +190,24 @@ public:
 	
 	virtual bool Layout();
 
+	virtual bool AcceptsFocus() const {
+		return this->IsShown() && this->IsEnabled();
+	}
+
 	//  virtual bool AcceptsFocus() const { return true; }
-	void DeleteSelf();
-	void DeleteSelfEvent(wxCloseEvent & event) {
+	void DeleteSelf() __attribute__ ((deprecated));
+	void DeleteSelfEvent(wxCloseEvent & event) __attribute__((deprecated))
+		{
 		DEBUGLOG(other, _T("Destroying"));
-		Destroy();
+		this->Destroy();
 	}	
 
 private:
-	DECLARE_DYNAMIC_CLASS_NO_COPY(MutIconShape)
+	DECLARE_DYNAMIC_CLASS_NO_COPY(MutIconShapeClass)
 	DECLARE_EVENT_TABLE() 
 };
 
+typedef MutIconShapeClass<wxControl> MutIconShape;
 
 
 #endif				/* precompiled */

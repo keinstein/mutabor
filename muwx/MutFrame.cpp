@@ -2,16 +2,27 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.55 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.56 2011/10/03 15:50:21 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.55 $
+ * \date $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.56 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.55  2011/10/02 16:58:41  keinstein
+ * Revision 1.56  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.55  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -531,7 +542,7 @@ namespace mutaborGUI {
 							      title, 
 							      pos, 
 							      size,
-							      style | wxNO_FULL_REPAINT_ON_RESIZE),
+							      style | wxNO_FULL_REPAINT_ON_RESIZE |wxTAB_TRAVERSAL),
 		curStatusImg(0),
 		auimanager(this,wxAUI_MGR_DEFAULT |
 			   wxAUI_MGR_ALLOW_ACTIVE_PANE | wxAUI_MGR_LIVE_RESIZE)
@@ -579,7 +590,7 @@ namespace mutaborGUI {
 			   const wxSize& size,
 			   long type,
 			   const wxString& name):
-		wxDocChildFrame(doc,v,frame,id,title,pos,size,type,name),
+		wxDocChildFrame(doc,v,frame,id,title,pos,size,type|wxTAB_TRAVERSAL,name),
 		curStatusImg(0)
 	{
 
@@ -1045,6 +1056,9 @@ namespace mutaborGUI {
 
 		// set windows except curBox setzen
 //	if ( !OWM ) {
+		
+		Freeze();
+
 		size_t i = minimal_box_used;
 		do {
 			BoxWindowsOpen(i,false);
@@ -1070,9 +1084,10 @@ namespace mutaborGUI {
 				wxAuiPaneInfo& p = panes.Item(pane_i);
 				p.Show();
 			}
-			auimanager.Update();
 		}
 
+		Thaw();
+		auimanager.Update();
 
 		DEBUGLOG (other, _T("Repaint route"));
 
@@ -2111,6 +2126,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 		auimanager.Update();
 
+		Freeze();
 
 		wxWindow * win; 
 		size_t box = minimal_box_used;
@@ -2161,6 +2177,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			}
 			box = b.next_used;
 		} while (box);
+		Thaw();
+		auimanager.Update();
 	}
 
 	void MutFrame::UpdateBoxMenu()
