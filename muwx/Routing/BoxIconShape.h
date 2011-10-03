@@ -4,16 +4,27 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.6 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.7 2011/10/03 15:50:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxIconShape.h,v $
- * Revision 1.6  2011/09/30 18:07:05  keinstein
+ * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.6  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -93,13 +104,13 @@
 //#include "Device.h"
 
 namespace mutaborGUI {
-	class MutBoxIconShape:public MutIconShape
+	class MutBoxIconShape:public MutIconShapeClass<MutPanel>
 	{
 	public:
-		MutBoxIconShape():MutIconShape() {}
+		MutBoxIconShape():MutIconShapeClass() {}
 	
 		MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
-			MutIconShape() 
+			MutIconShapeClass() 
 			{
 				Create (parent, id);
 			}
@@ -108,14 +119,14 @@ namespace mutaborGUI {
 	
 		bool Create (wxWindow * parent = NULL, wxWindowID id = wxID_ANY)
 			{
-				return MutIconShape::Create(parent, id);
+				return MutIconShapeClass<MutPanel>::Create(parent, id);
 			}
 
 		virtual bool SetForegroundColour (const wxColour & colour) 
 			{
 				if (staticText)
 					staticText->SetForegroundColour(colour);
-				return MutIconShape::SetForegroundColour(colour);
+				return MutIconShapeClass<MutPanel>::SetForegroundColour(colour);
 			}
 
 		/*  bool Create( wxWindow *parent,

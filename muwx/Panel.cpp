@@ -6,16 +6,27 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.6 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.7 2011/10/03 15:50:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.6  2011/09/30 09:10:25  keinstein
+ * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.6  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.5  2011-09-29 05:26:59  keinstein
@@ -135,14 +146,57 @@ IMPLEMENT_DYNAMIC_CLASS(MutPanel, wxControl)
 BEGIN_EVENT_TABLE(MutPanel, wxControl)
     EVT_SIZE(MutPanel::OnSize)
 
-    WX_EVENT_TABLE_CONTROL_CONTAINER(MutPanel)
+//    WX_EVENT_TABLE_CONTROL_CONTAINER(MutPanel)
+EVT_SET_FOCUS(MutPanel::OnFocus) 
+EVT_CHILD_FOCUS(MutPanel::OnChildFocus) 
+
+// Currently we do not need to traverse each client separately
+// so we disable this, here:
+// EVT_NAVIGATION_KEY(MutPanel::OnNavigationKey)
 END_EVENT_TABLE()
 
 // ============================================================================
 // implementation
 // ============================================================================
 
-WX_DELEGATE_TO_CONTROL_CONTAINER(MutPanel, wxControl)
+//WX_DELEGATE_TO_CONTROL_CONTAINER(MutPanel, wxControl)
+
+void MutPanel::OnNavigationKey( wxNavigationKeyEvent& event ) 
+{ 
+	m_container.HandleOnNavigationKey(event); 
+} 
+
+void MutPanel::RemoveChild(wxWindowBase *child) { 
+	m_container.HandleOnWindowDestroy(child); 
+	wxControl::RemoveChild(child); 
+} 
+
+void MutPanel::SetFocus() { 
+	wxControl::SetFocus();
+//	if ( !m_container.DoSetFocus() ) wxControl::SetFocus(); 
+} 
+void MutPanel::SetFocusIgnoringChildren() { 
+	wxControl::SetFocus(); 
+} 
+void MutPanel::OnChildFocus(wxChildFocusEvent& event) {
+	wxFocusEvent ev;
+	wxPostEvent(this,ev);
+//	m_container.SetLastFocus(event.GetWindow()); 
+//	event.Skip(); 
+} 
+
+void MutPanel::OnFocus(wxFocusEvent& event) { 
+	SetFocus();
+	event.Skip();
+	return;
+	m_container.HandleOnFocus(event); 
+} 
+bool MutPanel::AcceptsFocus() const { 
+	return IsEnabled() && IsShown();
+	return m_container.AcceptsFocus(); 
+}
+
+
 
 // ----------------------------------------------------------------------------
 // wxPanel creation
@@ -174,6 +228,10 @@ bool MutPanel::Create(wxWindow *parent,
 	// Required to get solid control backgrounds under WinCE
 	SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW));
 #endif
+
+// wxGTK
+	SetBackgroundStyle(wxBG_STYLE_COLOUR);
+	SetBackgroundColour(wxNullColour);
 
 	return true;
 }

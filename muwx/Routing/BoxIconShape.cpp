@@ -3,16 +3,27 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.5 2011/09/30 09:10:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.6 2011/10/03 15:50:21 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 09:10:25 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.5  2011/09/30 09:10:25  keinstein
+ * Revision 1.6  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.5  2011-09-30 09:10:25  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.4  2011-09-27 20:13:24  keinstein
@@ -133,7 +144,7 @@ namespace mutaborGUI {
 	}
 
 	bool MutBoxIconShape::Layout() {
-		if (!MutIconShape::Layout()) return false;
+		if (!MutIconShapeClass<MutPanel>::Layout()) return false;
 		DEBUGLOG (other, _T(""));
 		if (staticText) {
 			staticText->Move(borderOffset.x,borderOffset.y);

@@ -6,16 +6,27 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.6 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.7 2011/10/03 15:50:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Panel.h,v $
- * Revision 1.6  2011/09/27 20:13:24  keinstein
+ * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.6  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -126,7 +137,18 @@ public:
 #endif
 	
 	
-	WX_DECLARE_CONTROL_CONTAINER();
+//	WX_DECLARE_CONTROL_CONTAINER();
+public: 
+	void OnNavigationKey(wxNavigationKeyEvent& event); 
+	void OnFocus(wxFocusEvent& event); 
+	virtual void OnChildFocus(wxChildFocusEvent& event); 
+	virtual void SetFocus(); 
+	virtual void SetFocusIgnoringChildren(); 
+	virtual void RemoveChild(wxWindowBase *child); 
+	virtual bool AcceptsFocus() const; 
+protected: 
+	wxControlContainer m_container;
+
 	
 protected:
 	// common part of all ctors

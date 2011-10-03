@@ -2,17 +2,28 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.29 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.30 2011/10/03 15:50:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.29 $
+ * $Date: 2011/10/03 15:50:21 $
+ * \version $Revision: 1.30 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.29  2011/09/30 18:07:05  keinstein
+ * Revision 1.30  2011/10/03 15:50:21  keinstein
+ * Fix focus issues in the route window. This includes:
+ *  * Using templates to describe the base class of MutIconShape.
+ *  * Rename MutIconShape->MutIconShapeClass.
+ *  * typedef MutIconShapeClass<wxControl> MutIconShape
+ *  * Expand the control container macros in MutPanel.
+ *  * Disable most of the control container behaviour as we don't need it, currently
+ *  * Focus NewInputDevice on window creation.
+ *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+ *  * Display focused Window with sunken border
+ *
+ * Revision 1.29  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -150,7 +161,7 @@ namespace mutaborGUI {
 		void OnPaint(wxPaintEvent& WXUNUSED(event));
 		void OnChar(wxKeyEvent& event);
 		void OnLeftDown(wxMouseEvent& event);
-		void OnFocus(wxFocusEvent& event);
+		void OnGetFocus(wxFocusEvent& event);
 
 	private:
 		void PaintCenteredText(wxDC &dc, wxString s, int y)
@@ -168,8 +179,8 @@ namespace mutaborGUI {
 	EVT_PAINT(MutTag::OnPaint)
 	EVT_CHAR(MutTag::OnChar)
 	EVT_LEFT_DOWN(MutTag::OnLeftDown)
-	EVT_SET_FOCUS(MutTag::OnFocus)
-	EVT_KILL_FOCUS(MutTag::OnFocus)
+	EVT_SET_FOCUS(MutTag::OnGetFocus)
+	EVT_KILL_FOCUS(MutTag::OnGetFocus)
 	END_EVENT_TABLE()
 
 	/*TFont MutFont(8, 0, 0, 0, FW_NORMAL,
@@ -351,8 +362,9 @@ namespace mutaborGUI {
 		event.Skip();
 	}
 
-	void MutTag::OnFocus(wxFocusEvent& event)
+	void MutTag::OnGetFocus(wxFocusEvent& event)
 	{
+		SetFocus();
 		Refresh();
 		((MutLogicWnd*)GetParent())->CorrectScroller();
 		event.Skip();
