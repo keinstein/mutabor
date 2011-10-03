@@ -4,15 +4,19 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.8 2011/10/03 15:50:21 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.9 2011/10/03 17:42:41 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/03 15:50:21 $
-* \version $Revision: 1.8 $
+* $Date: 2011/10/03 17:42:41 $
+* \version $Revision: 1.9 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.8  2011/10/03 15:50:21  keinstein
+* Revision 1.9  2011/10/03 17:42:41  keinstein
+* Open the configuration dialog on key press in the route window
+* Accept entering nothing in the input/output device dialog
+*
+* Revision 1.8  2011-10-03 15:50:21  keinstein
 * Fix focus issues in the route window. This includes:
 *  * Using templates to describe the base class of MutIconShape.
 *  * Rename MutIconShape->MutIconShapeClass.
@@ -279,6 +283,7 @@ namespace mutaborGUI {
 	IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape)
 
 	BEGIN_EVENT_TABLE(MutBoxShape, MutBoxIconShape)
+	EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
 	EVT_LEFT_DCLICK(MutBoxShape::LeftDblClickEvent)
 	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutBoxShape::CmLeftDblClick)
 	//EVT_CLOSE(MutDeviceShape::DeleteSelfEvent)
@@ -692,6 +697,39 @@ namespace mutaborGUI {
 		return true;
 	}
 
+
+
+	void MutBoxShape::OnKeyDown (wxKeyEvent & event) {
+		if (event.HasModifiers()) {
+			event.Skip();
+			return;
+		}
+
+                /* Other inspirations:
+		   case WXK_DELETE:
+		   // cursor keys
+		   */
+		switch (event.GetKeyCode()) {
+		case WXK_NUMPAD_ENTER:
+		case WXK_RETURN:
+		case WXK_SPACE:
+		case WXK_NUMPAD_SPACE:
+		case WXK_NUMPAD_ADD:
+		case WXK_ADD:
+		case WXK_WINDOWS_MENU:
+		case WXK_MENU:
+		{
+			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
+					       CM_LEFT_DOUBLE_CLICK); 
+			wxPostEvent(this,command); 
+			return;
+		}
+		default:
+			event.Skip();
+		}
+	}
+
+	
 
 }
 

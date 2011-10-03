@@ -3,16 +3,20 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.7 2011/10/03 17:42:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/03 17:42:41 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DeviceShape.h,v $
- * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * Revision 1.7  2011/10/03 17:42:41  keinstein
+ * Open the configuration dialog on key press in the route window
+ * Accept entering nothing in the input/output device dialog
+ *
+ * Revision 1.6  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -187,6 +191,8 @@ namespace mutaborGUI {
 		void CmLeftDblClick (wxCommandEvent& event) {
 			DoLeftDblClick(); 
 		}
+
+		void OnKeyDown (wxKeyEvent & event);
 
 #if 0
 	protected:

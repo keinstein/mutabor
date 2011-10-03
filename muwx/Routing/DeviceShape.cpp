@@ -3,16 +3,20 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.5 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.6 2011/10/03 17:42:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/10/03 17:42:41 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: DeviceShape.cpp,v $
- * Revision 1.5  2011/09/30 18:07:05  keinstein
+ * Revision 1.6  2011/10/03 17:42:41  keinstein
+ * Open the configuration dialog on key press in the route window
+ * Accept entering nothing in the input/output device dialog
+ *
+ * Revision 1.5  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -78,9 +82,43 @@ namespace mutaborGUI {
 	IMPLEMENT_ABSTRACT_CLASS(MutDeviceShape, MutIconShape)
 	
 	BEGIN_EVENT_TABLE(MutDeviceShape, MutIconShape)
+	EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
 	EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
 	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
 	END_EVENT_TABLE()
+
+	void MutDeviceShape::OnKeyDown (wxKeyEvent & event) {
+		if (event.HasModifiers()) {
+			event.Skip();
+			return;
+		}
+
+                /* Other inspirations:
+		   case WXK_DELETE:
+		   // cursor keys
+		   */
+		switch (event.GetKeyCode()) {
+		case WXK_NUMPAD_ENTER:
+		case WXK_RETURN:
+		case WXK_SPACE:
+		case WXK_NUMPAD_SPACE:
+		case WXK_NUMPAD_ADD:
+		case WXK_ADD:
+		case WXK_WINDOWS_MENU:
+		case WXK_MENU:
+		{
+			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
+					       CM_LEFT_DOUBLE_CLICK); 
+			wxPostEvent(this,command); 
+			return;
+		}
+		default:
+			event.Skip();
+		}
+	}
+
+
+	
 
 	void MutDeviceShape::Add(MutBoxChannelShape *  route) 
 	{
