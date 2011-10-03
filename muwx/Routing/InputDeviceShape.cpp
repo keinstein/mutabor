@@ -3,16 +3,20 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.7 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.8 2011/10/03 17:42:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/03 17:42:41 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Revision 1.8  2011/10/03 17:42:41  keinstein
+ * Open the configuration dialog on key press in the route window
+ * Accept entering nothing in the input/output device dialog
+ *
+ * Revision 1.7  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -264,7 +268,7 @@ namespace mutaborGUI {
 			if (CanHandleType (type)) {
 				TRACEC;
 				readDialog (in);
-			} else {
+			} else if (type != DTNotSet) { // assure type is set.
 				TRACEC;
 				InputDevice indev = 
 					DeviceFactory::CreateInput (type);
@@ -299,7 +303,6 @@ namespace mutaborGUI {
 		}
 		if (parent) {
 			parent->Layout();
-			parent->InvalidateBestSize();
 			parent->FitInside();
 			parent->Refresh();
 			parent->Update();
