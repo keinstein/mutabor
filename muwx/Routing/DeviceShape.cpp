@@ -3,16 +3,19 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.6 2011/10/03 17:42:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.7 2011/10/04 05:38:44 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/03 17:42:41 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DeviceShape.cpp,v $
- * Revision 1.6  2011/10/03 17:42:41  keinstein
+ * Revision 1.7  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.6  2011-10-03 17:42:41  keinstein
  * Open the configuration dialog on key press in the route window
  * Accept entering nothing in the input/output device dialog
  *
@@ -128,6 +131,7 @@ namespace mutaborGUI {
 		mutASSERT(pos == routes.end());
 #endif 
 		routes.push_back(route);
+		ClearPerimeterPoints();
 		Update();
 	}
 
@@ -161,6 +165,7 @@ namespace mutaborGUI {
 
 	bool MutDeviceShape::Recompute() 
 	{
+		ClearPerimeterPoints();
 		SetIcon(GetMutIcon());
 		//  SetLabel (filename.GetFullName());
 		return GetIcon().IsOk();

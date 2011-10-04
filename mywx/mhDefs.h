@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.21 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.22 2011/10/04 05:38:44 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: mhDefs.h,v $
- * Revision 1.21  2011/09/27 20:13:25  keinstein
+ * Revision 1.22  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.21  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -37,6 +40,7 @@
 #include "wx/filename.h"
 #include <iostream>
 #include <typeinfo>
+#include <list>
 
 
 #include "Mutabor.rh"
@@ -128,6 +132,8 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset = _T (""));
 //#ifdef __WXGTK__
 #define MDI_FORCE_EXTERN
 //#endif
+
+typedef std::list<wxPoint> mutpointlist;
 
 #endif
 

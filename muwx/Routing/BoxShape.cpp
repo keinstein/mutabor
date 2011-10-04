@@ -4,15 +4,18 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.9 2011/10/03 17:42:41 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.10 2011/10/04 05:38:44 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/03 17:42:41 $
-* \version $Revision: 1.9 $
+* $Date: 2011/10/04 05:38:44 $
+* \version $Revision: 1.10 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.9  2011/10/03 17:42:41  keinstein
+* Revision 1.10  2011/10/04 05:38:44  keinstein
+* some configuration fixes
+*
+* Revision 1.9  2011-10-03 17:42:41  keinstein
 * Open the configuration dialog on key press in the route window
 * Accept entering nothing in the input/output device dialog
 *
@@ -307,6 +310,24 @@ namespace mutaborGUI {
 		return true;
 	}
 
+	bool MutBoxShape::SetBackgroundColour(const wxColour& colour) {
+		bool retval = MutBoxIconShape::SetBackgroundColour(colour);
+		if (!retval) return false;
+		wxSizerItemList list = channels->GetChildren();
+		for (wxSizerItemList::iterator i = list.begin(); 
+		     i != (list.end()); i++)
+		{
+      
+			MutBoxChannelShape * channel = 
+				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
+			retval = retval && channel->SetBackgroundColour(colour);
+		}
+		return retval;
+
+	}
+
 
 	void MutBoxShape::SetBoxId(int Id, bool layout) {
 		boxId = Id;
@@ -350,6 +371,8 @@ namespace mutaborGUI {
 				mutASSERT(!channel->GetParent());
 				AddChild(channel);
 			}
+
+			channel->SetBackgroundColour(GetBackgroundColour());
 #ifdef DEBUG
 			mutASSERT(channel->GetContainingSizer() == channels);
 			wxSize s = channel->GetBestSize();

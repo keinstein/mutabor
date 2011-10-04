@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.10 2011/10/03 15:50:21 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.11 2011/10/04 05:38:44 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/10/03 15:50:21 $
-* \version $Revision: 1.10 $
+* $Date: 2011/10/04 05:38:44 $
+* \version $Revision: 1.11 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.10  2011/10/03 15:50:21  keinstein
+* Revision 1.11  2011/10/04 05:38:44  keinstein
+* some configuration fixes
+*
+* Revision 1.10  2011-10-03 15:50:21  keinstein
 * Fix focus issues in the route window. This includes:
 *  * Using templates to describe the base class of MutIconShape.
 *  * Rename MutIconShape->MutIconShapeClass.
@@ -160,6 +163,7 @@
 #include "wx/sizer.h"
 #include "wx/dc.h"
 #include "wx/dcclient.h"
+#include <algorithm>
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -580,6 +584,13 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		dc.DrawIcon(GetIcon(), x, y);
 	}
 
+	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
+	wxPoint origin(size.x,size.y);
+	for (mutpointlist::iterator i = usedperimeterpoints.begin();
+	     i != usedperimeterpoints.end();i++) {
+		dc.DrawLine(center, *i-origin);
+	}
+
 	DEBUGLOG (other, _T("Focus %p and this %p"),this->FindFocus(),this);
 /*  Draw a black bock around focused item 
 	if (FindFocus() == this) {
@@ -619,6 +630,11 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 		p.y = r.y + r.height;
 	} else p = o;
 
+	mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),
+					       usedperimeterpoints.end(),
+					       p);
+	if (pos == usedperimeterpoints.end())
+		usedperimeterpoints.push_back(p);
 	return p;
 }
 

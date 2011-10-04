@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.8 2011/10/03 17:42:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 17:42:41 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.8  2011/10/03 17:42:41  keinstein
+ * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.8  2011-10-03 17:42:41  keinstein
  * Open the configuration dialog on key press in the route window
  * Accept entering nothing in the input/output device dialog
  *
@@ -233,6 +236,7 @@ namespace mutaborGUI {
 			UpdateBorder(wxBORDER_SUNKEN);
 		}
 
+		virtual bool SetBackgroundColour(const wxColour& colour);
 		/// Get a double click and prepare for execution of the command
 		/** Since programs might produce segmentation faults
 		    when the object is deleted during processing of mouse

@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.28 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.29 2011/10/04 05:38:44 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.28 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.29 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.28  2011/10/03 15:50:21  keinstein
+ * Revision 1.29  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.28  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -246,11 +249,11 @@ BEGIN_EVENT_TABLE(MutRouteWnd, wxScrolledWindow)
 //	EVT_SIZE(MutRouteWnd::OnSize)
 //	EVT_LEFT_DOWN(MutRouteWnd::OnLeftDown)
 //	EVT_LEFT_DCLICK(MutRouteWnd::OnLeftDClick)
-WX_EVENT_TABLE_CONTROL_CONTAINER(MutRouteWnd)
+//WX_EVENT_TABLE_CONTROL_CONTAINER(MutRouteWnd)
 END_EVENT_TABLE()
 
 
-WX_DELEGATE_TO_CONTROL_CONTAINER(MutRouteWnd, wxScrolledWindow)
+//WX_DELEGATE_TO_CONTROL_CONTAINER(MutRouteWnd, wxScrolledWindow)
 
 
 MutRouteWnd::MurFileDataType MutRouteWnd::MurFileData;
