@@ -4,16 +4,21 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.12 2011/10/04 17:16:13 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.13 2011/10/04 20:09:16 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/10/04 17:16:13 $
-* \version $Revision: 1.12 $
+* $Date: 2011/10/04 20:09:16 $
+* \version $Revision: 1.13 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.12  2011/10/04 17:16:13  keinstein
+* Revision 1.13  2011/10/04 20:09:16  keinstein
+* Clean up focus handling a little bit.
+* Change perimeter point handling a little bit. Need at least one night to
+* get overthought.
+*
+* Revision 1.12  2011-10-04 17:16:13  keinstein
 * make program compile on Mac (wx 2.9) and fix some memory corruption
 *
 * Revision 1.11  2011-10-04 05:38:44  keinstein
@@ -482,7 +487,7 @@ template<typename T>
 }
 
 template<typename T>
-void MutIconShapeClass<T>::SetFocus() {
+void MutIconShapeClass<T>::GotFocus() {
 #ifdef DEBUG
 	DEBUGLOG (other, _T("Current focus is at"));
 	wxWindow * focuswin =wxWindow::FindFocus();
@@ -494,6 +499,7 @@ void MutIconShapeClass<T>::SetFocus() {
 	} else
 		DEBUGLOG(other,_T("NULL pointer"));
 #endif
+/*
 	parenttype::SetFocus();
 #ifdef DEBUG
 	DEBUGLOG (other, _T("Current focus is at"));
@@ -506,14 +512,14 @@ void MutIconShapeClass<T>::SetFocus() {
 	} else
 		DEBUGLOG(other,_T("NULL pointer"));
 #endif
-
+*/
 	UpdateBorder(wxBORDER_SUNKEN);
 }
 
 
 
 template<typename T>
-void MutIconShapeClass<T>::KillFocus()
+void MutIconShapeClass<T>::LostFocus()
 {
 	DEBUGLOG (other, _T(""));
 	UpdateBorder(wxBORDER_NONE);
@@ -524,7 +530,7 @@ template<typename T>
 void MutIconShapeClass<T>::OnGetFocus(wxFocusEvent & event)
 {
 	TRACEC;
-	SetFocus();
+	GotFocus();
 	event.Skip();
 }
 
@@ -532,7 +538,7 @@ template<typename T>
 void MutIconShapeClass<T>::OnKillFocus(wxFocusEvent & event)
 {
 	TRACEC;
-	KillFocus();
+	LostFocus();
 	event.Skip();
 }
 
@@ -540,7 +546,7 @@ template<typename T>
 void MutIconShapeClass<T>::OnMouseClick(wxMouseEvent & event)
 {
 	TRACEC;
-	SetFocus();
+	this->SetFocus();
 }
 
   // not configured to use constraints
@@ -630,11 +636,17 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 		p.y = r.y + r.height;
 	} else p = o;
 
+
 	mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),
 					       usedperimeterpoints.end(),
 					       p);
 	if (pos == usedperimeterpoints.end())
 		usedperimeterpoints.push_back(p);
+
+#ifdef __WXGTK__
+	p.y += maxBorderSize.y - this->GetWindowBorderSize().y;
+#endif
+
 	return p;
 }
 

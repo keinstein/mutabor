@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.8 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.9 2011/10/04 20:09:16 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: mutDebug.h,v $
- * Revision 1.8  2011/10/04 17:16:14  keinstein
+ * Revision 1.9  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.8  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.7  2011-10-03 20:03:27  keinstein
@@ -220,10 +225,9 @@ public:
 //        const flag watchedPtr<T,flag,P>::myflag;
 
 #define WATCHEDPTR(T,f,P) watchedPtr<T,debugFlags::get##f,P>
-#define DEFWATCHEDPTR //                                \
-//        template <class T,class flag, class P>        \
-//        const flag watchedPtr<T,flag,P>::myflag;
-
+#define DEFWATCHEDPTR /* template <class T,class flag, class P> \
+			 const flag watchedPtr<T,flag,P>::myflag;
+		      */
 #else
 #define WATCHEDPTR(T,f,P) watchedPtr<T,nogetflag,P>
 #define DEFWATCHEDPTR

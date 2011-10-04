@@ -2,17 +2,22 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.30 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.31 2011/10/04 20:09:16 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.30 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.31 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.30  2011/10/03 15:50:21  keinstein
+ * Revision 1.31  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.30  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -155,9 +160,6 @@ namespace mutaborGUI {
 			}
 
 		void InitText(wxDC& dc);
-		/*    void ODADrawEntire(DRAWITEMSTRUCT far& drawInfo);
-		      void ODAFocus(DRAWITEMSTRUCT far& drawInfo);
-		      void ODASelect(DRAWITEMSTRUCT far& drawInfo);*/
 		void OnPaint(wxPaintEvent& WXUNUSED(event));
 		void OnChar(wxKeyEvent& event);
 		void OnLeftDown(wxMouseEvent& event);
@@ -293,9 +295,6 @@ namespace mutaborGUI {
 		} else
 			PaintCenteredText(dc, Text, 50);
 
-		/*  // Focus
-		    if (drawInfo.itemState & ODS_FOCUS)
-		    dc.DrawFocusRect(TRect(MUTTAGX/2-19, 7, MUTTAGX/2+19, 7+38));*/
 	}
 
 /*void TMutTag::ODADrawEntire(DRAWITEMSTRUCT far& drawInfo)
@@ -364,7 +363,7 @@ namespace mutaborGUI {
 
 	void MutTag::OnGetFocus(wxFocusEvent& event)
 	{
-		SetFocus();
+//		SetFocus();
 		Refresh();
 		((MutLogicWnd*)GetParent())->CorrectScroller();
 		event.Skip();

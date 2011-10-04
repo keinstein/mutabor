@@ -3,16 +3,21 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.10 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.11 2011/10/04 20:09:16 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.10  2011/10/04 17:16:14  keinstein
+ * Revision 1.11  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.10  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.9  2011-10-04 05:38:44  keinstein
@@ -234,10 +239,12 @@ namespace mutaborGUI {
 
 		virtual void DoLeftDblClick();
 
-		virtual void SetFocus() {
+#if 0
+		virtual void Focus() {
 			SetFocusIgnoringChildren();
 			UpdateBorder(wxBORDER_SUNKEN);
 		}
+#endif
 
 		virtual bool SetBackgroundColour(const wxColour& colour);
 		/// Get a double click and prepare for execution of the command

@@ -2,16 +2,21 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.57 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.58 2011/10/04 20:09:16 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.57 $
+ * \date $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.58 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.57  2011/10/04 17:16:14  keinstein
+ * Revision 1.58  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.57  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.56  2011-10-03 15:50:21  keinstein
@@ -1169,7 +1174,6 @@ namespace mutaborGUI {
 		BoxData & boxdata = ::GetCurrentBox();
 		MutLogicWnd * w = boxdata.GetLogicWindow();
 		if (w) {
-			w->SetFocus();
 
 			wxFrame * win =
 				dynamic_cast<wxFrame *>(w->GetParent());
@@ -1180,6 +1184,7 @@ namespace mutaborGUI {
 				  muT(typeid(*( w->GetParent())).name()).c_str());
 
 			GetMenuBar()->Check(event.GetId(),true);
+			w->SetFocus();
 		}
 	}
 
