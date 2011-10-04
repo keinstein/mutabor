@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.7 2011/10/03 20:03:27 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.8 2011/10/04 17:16:14 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/03 20:03:27 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: mutDebug.h,v $
- * Revision 1.7  2011/10/03 20:03:27  keinstein
+ * Revision 1.8  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.7  2011-10-03 20:03:27  keinstein
  * add missing struct nogetflag
  *
  * Revision 1.6  2011-10-02 16:58:42  keinstein
@@ -170,7 +173,7 @@ private:
 	typedef P parenttype;
 	datatype * data;
 #ifdef DEBUG
-	static const flag myflag;
+//	static const flag myflag;
 	parenttype * parent;
 	wxString name;
 #endif
@@ -186,7 +189,7 @@ public:
 	
 	watchedPtr<T,flag,P> &operator= (datatype * d)
 	{
-		DEBUGLOGTYPEINT(myflag(),parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
+		DEBUGLOGTYPEINT(flag()(),parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
 		data = d;
 		return *this;
 	}
@@ -213,13 +216,13 @@ public:
 
 #ifdef DEBUG
 
-template <class T,class flag, class P>
-        const flag watchedPtr<T,flag,P>::myflag;
+//template <class T,class flag, class P>
+//        const flag watchedPtr<T,flag,P>::myflag;
 
 #define WATCHEDPTR(T,f,P) watchedPtr<T,debugFlags::get##f,P>
-#define DEFWATCHEDPTR \
-        template <class T,class flag, class P> \
-        const flag watchedPtr<T,flag,P>::myflag;
+#define DEFWATCHEDPTR //                                \
+//        template <class T,class flag, class P>        \
+//        const flag watchedPtr<T,flag,P>::myflag;
 
 #else
 #define WATCHEDPTR(T,f,P) watchedPtr<T,nogetflag,P>

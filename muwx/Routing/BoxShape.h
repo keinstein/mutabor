@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.10 2011/10/04 17:16:14 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * Revision 1.10  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.9  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.8  2011-10-03 17:42:41  keinstein
@@ -208,13 +211,13 @@ namespace mutaborGUI {
 			      boxId(NoBox) {}
 
 		MutBoxShape(wxStaticBox *box, int orient):
-			MutBoxIconShape()
+			MutBoxIconShape(),m_icon(NULL),channels(NULL)
 			{
 				STUBC;
 			}
 
 		MutBoxShape(wxWindow * parent,wxWindowID wid, int Id = NoBox):
-			MutBoxIconShape()
+			MutBoxIconShape(),m_icon(NULL),channels(NULL)
 			{
 				Create(parent,wid,Id);
 			}

@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute-inlines.h,v 1.3 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute-inlines.h,v 1.4 2011/10/04 17:16:14 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIRoute-inlines.h,v $
- * Revision 1.3  2011/10/02 16:58:42  keinstein
+ * Revision 1.4  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.3  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -396,7 +399,7 @@ namespace mutaborGUI {
 		mutASSERT(device);
 		TRACEC;
 		const mutabor::routeListType & routes = device -> GetRoutes();
-		for (typename mutabor::routeListType::const_iterator 
+		for (mutabor::routeListType::const_iterator 
 			     route = routes.begin();
 		     route != routes.end(); route++) {
 			mutabor::Route & r = const_cast<mutabor::Route & >(*route);
@@ -544,7 +547,7 @@ namespace mutaborGUI {
 		wxWindow * parent = shape->GetParent();
 		mutASSERT(device);
 		const mutabor::routeListType & routes = device -> GetRoutes();
-		for (typename mutabor::routeListType::const_iterator 
+		for (mutabor::routeListType::const_iterator 
 			     route = routes.begin();
 		     route != routes.end(); route++) {
 			mutabor::Route & r = const_cast<mutabor::Route & >(*route);

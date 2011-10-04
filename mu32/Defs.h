@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.22 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.23 2011/10/04 17:16:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.22 $
+ * $Date: 2011/10/04 17:16:13 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.22  2011/09/30 18:07:04  keinstein
+ * Revision 1.23  2011/10/04 17:16:13  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.22  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -246,11 +249,11 @@ private:
 	size_t value;
 
 	template<class intrusive_ptr_T>
-		friend void ::intrusive_ptr_add_ref(intrusive_ptr_T * obj);	
+		friend void intrusive_ptr_add_ref(intrusive_ptr_T * obj);	
 	template<class intrusive_ptr_T>
-		friend void ::intrusive_ptr_release(intrusive_ptr_T * obj);
+		friend void intrusive_ptr_release(intrusive_ptr_T * obj);
 	template <class intrusive_ptr_T>
-		friend size_t ::intrusive_ptr_get_refcount(intrusive_ptr_T * obj);
+		friend size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj);
 public:
 	mut_thread_mutex(mutex)						
 	intrusive_ptr_refcount_type():value(0) {}

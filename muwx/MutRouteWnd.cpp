@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.29 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.30 2011/10/04 17:16:14 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.29 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.30 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.29  2011/10/04 05:38:44  keinstein
+ * Revision 1.30  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.29  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.28  2011-10-03 15:50:21  keinstein
@@ -265,7 +268,12 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 	  OutputSizer(NULL),
 	  BoxSizer(NULL)
 {
-	m_container.SetContainerWindow(this);
+// This leeds to “assert !m_winParent fauled in SetContainerWindow(),
+//        even if the container is commented out 
+//        -> m_container is defined elsewhere
+// that it works means that we already have a control container
+//	m_container.SetContainerWindow(this);
+//
 
 
 	DevIcon[DTUnknown] = new ICON(devunknown);

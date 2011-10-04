@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.52 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.53 2011/10/04 17:16:13 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.52 $
+ * $Date: 2011/10/04 17:16:13 $
+ * \version $Revision: 1.53 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.52  2011/10/02 16:58:41  keinstein
+ * Revision 1.53  2011/10/04 17:16:13  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.52  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -921,7 +924,7 @@ namespace mutaborGUI {
 
 		frame->OpenFile(path);
 
-		DEBUGLOG(other,_T("%d == %d?"),CM_EXECUTE,event.GetId());
+		DEBUGLOG(other,_T("%d == %d?"),(int)CM_EXECUTE,event.GetId());
 
 		switch (event.GetId()) {
 

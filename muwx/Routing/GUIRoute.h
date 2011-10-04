@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.3 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.4 2011/10/04 17:16:14 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIRoute.h,v $
- * Revision 1.3  2011/10/02 16:58:42  keinstein
+ * Revision 1.4  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.3  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -101,6 +104,7 @@ namespace mutaborGUI {
 	template<class T> 
 	class GUIfyRoute: public T {
 		friend class GUIRouteBase;
+	protected:
 		typedef TGUIRoute<T> GUIData;
 		virtual void setUserData (void * data) 
 			{ 
@@ -417,13 +421,22 @@ namespace mutaborGUI {
 			     int oFrom = -1,
 			     int oTo = -1,
 			     bool oNoDrum = true/*,
-						  mutabor::Route next = NULL*/):GUIfyRoute() {
+						  mutabor::Route next
+		= NULL*/):
+
+			GUIfyRoute<mutabor::RouteClass>() {
 			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
 				 this, 
 				 intrusive_ptr_get_refcount(this));
 
-			TRouteClass::setUserData(gui);
-			TRouteClass::Create(in,out,type,
+			mutabor::TRouteClass<
+				InputDevice,
+				OutputDevice
+				>::setUserData(gui);
+			mutabor::TRouteClass<
+				InputDevice,
+				OutputDevice
+				>::Create(in,out,type,
 					    iFrom,iTo,
 					    box,active,
 					    oFrom, oTo, oNoDrum/*,
@@ -440,7 +453,7 @@ namespace mutaborGUI {
 		friend class GUIRouteFactory;
 	protected:
 
-		GUIRoute():TGUIRoute() {
+		GUIRoute():TGUIRoute<GUIfiedRoute>() {
 			mutabor::InputDevice in;
 			mutabor::OutputDevice out;
 
@@ -467,11 +480,13 @@ namespace mutaborGUI {
 			 bool active = false,
 			 int oFrom = -1,
 			 int oTo = -1,
-			 bool oNoDrum = true/*,
-					      mutabor::Route next = NULL*/):TGUIRoute() {
-			DEBUGLOG(smartptr,_T("Route: %8p (%d), entering create"),
-				 (void *)route, 
-				 intrusive_ptr_get_refcount(route));
+			 bool oNoDrum = true
+/*, mutabor::Route next = NULL*/
+			):TGUIRoute<GUIfiedRoute>() {
+			DEBUGLOG(smartptr,_T("Route: %8p, entering create"),
+				 (void *)route//, 
+				 /* leeds to errors 
+				    intrusive_ptr_get_refcount(route)*/);
 			route = new GUIfiedRoute(this,
 						 in,out,type,
 						 iFrom,iTo,box,active,
@@ -742,16 +757,18 @@ namespace mutaborGUI {
 	class GUIfiedOutputDevice: 
 		public GUIfyOutputDevice<mutabor::OutputDeviceClass> {
 	protected:
-		GUIfiedOutputDevice(void * gui):GUIfyOutputDevice() {
+		GUIfiedOutputDevice(void * gui):
+		GUIfyOutputDevice<mutabor::OutputDeviceClass>() {
 			OutputDeviceClass::setUserData(gui);
 		}
 	
 		GUIfiedOutputDevice(void * gui,
 				    int devId, 
 				    const mutStringRef name = mutEmptyString, 
-				    int id = -1):GUIfyOutputDevice(devId,
-								   name,
-								   id) {
+				    int id = -1):
+			GUIfyOutputDevice<mutabor::OutputDeviceClass>(devId,
+								      name,
+								      id) {
 			OutputDeviceClass::setUserData(gui);
 		}
 
@@ -761,12 +778,12 @@ namespace mutaborGUI {
 
 	class GUIOutputDevice:public TGUIOutputDevice<GUIfiedOutputDevice> {
 	protected:
-		GUIOutputDevice():TGUIOutputDevice() {	}
+		GUIOutputDevice():TGUIOutputDevice<GUIfiedOutputDevice>() {	}
 	
 		GUIOutputDevice(int devId, 
 				const mutStringRef name = mutEmptyString, 
 				int id = -1):
-			TGUIOutputDevice(NULL)
+			TGUIOutputDevice<GUIfiedOutputDevice>(NULL)
 /*
 			TGUIOutputDevice(new GUIfiedOutputDevice(this,devId,name,id))
 */
@@ -967,7 +984,8 @@ namespace mutaborGUI {
 	class GUIfiedInputDevice: 
 		public GUIfyInputDevice<mutabor::InputDeviceClass> {
 	protected:
-		GUIfiedInputDevice(void * gui):GUIfyInputDevice()
+		GUIfiedInputDevice(void * gui):
+		GUIfyInputDevice<mutabor::InputDeviceClass>()
 			{
 				InputDeviceClass::setUserData(gui);
 			}
@@ -978,7 +996,10 @@ namespace mutaborGUI {
 				   mutabor::MutaborModeType mode
 				   = mutabor::DeviceStop, 
 				    int id = -1):
-			GUIfyInputDevice(devId,name,mode,id) {
+			GUIfyInputDevice<mutabor::InputDeviceClass>(devId,
+								    name,
+								    mode,
+								    id) {
 			InputDeviceClass::setUserData(gui);
 		}
 
@@ -987,14 +1008,14 @@ namespace mutaborGUI {
 	};
 
 	class GUIInputDevice:public TGUIInputDevice<GUIfiedInputDevice> {
-		GUIInputDevice():TGUIInputDevice() {	}
+		GUIInputDevice():TGUIInputDevice<GUIfiedInputDevice>() {	}
 	
 		GUIInputDevice(int devId, 
 			       const mutStringRef name = mutEmptyString, 
 			       mutabor::MutaborModeType mode
 			       = mutabor::DeviceStop, 
 			       int id = -1):
-			TGUIInputDevice(NULL)
+			TGUIInputDevice<GUIfiedInputDevice>(NULL)
 			/*
 			TGUIInputDevice(new GUIfiedInputDevice(this,devId,name,mode,id));
 			*/
@@ -1038,7 +1059,8 @@ namespace mutaborGUI {
 	class GUIfiedOutputMidiPort: 
 		public GUIfyOutputDevice<mutabor::OutputMidiPort> {
 	public:
-		GUIfiedOutputMidiPort(void * gui):GUIfyOutputDevice() {
+		GUIfiedOutputMidiPort(void * gui):
+		GUIfyOutputDevice<mutabor::OutputMidiPort>() {
 			OutputMidiPort::setUserData(gui);
 		}
 	
@@ -1046,7 +1068,7 @@ namespace mutaborGUI {
 				      int devId, 
 				      const mutStringRef name = mutEmptyString, 
 				      int id = -1):
-			GUIfyOutputDevice(devId,name,id) {
+			GUIfyOutputDevice<mutabor::OutputMidiPort>(devId,name,id) {
 			OutputMidiPort::setUserData(gui);
 		}
 
@@ -1057,14 +1079,14 @@ namespace mutaborGUI {
 	public:
 
 		GUIOutputMidiPort():
-			TGUIOutputDevice(new GUIfiedOutputMidiPort(this)) 
+			TGUIOutputDevice<GUIfiedOutputMidiPort>(new GUIfiedOutputMidiPort(this)) 
 			{	
 			}
 	
 		GUIOutputMidiPort(int devId, 
 				const mutStringRef name = mutEmptyString, 
 				int id = -1):
-			TGUIOutputDevice(new GUIfiedOutputMidiPort(this,
+			TGUIOutputDevice<GUIfiedOutputMidiPort>(new GUIfiedOutputMidiPort(this,
 								   devId,
 								   name,
 								   id))
@@ -1080,7 +1102,8 @@ namespace mutaborGUI {
 	class GUIfiedInputMidiPort: 
 		public GUIfyInputDevice<mutabor::InputMidiPort> {
 	public:
-		GUIfiedInputMidiPort(void * gui):GUIfyInputDevice() {
+		GUIfiedInputMidiPort(void * gui):
+		GUIfyInputDevice<mutabor::InputMidiPort>() {
 			InputMidiPort::setUserData(gui);
 		}
 	
@@ -1090,7 +1113,7 @@ namespace mutaborGUI {
 				     mutabor::MutaborModeType mode
 				     = mutabor::DeviceStop, 
 				     int id = -1):
-			GUIfyInputDevice(devId,name,mode,id) {
+			GUIfyInputDevice<mutabor::InputMidiPort>(devId,name,mode,id) {
 			InputMidiPort::setUserData(gui);
 		}
 		
@@ -1101,7 +1124,8 @@ namespace mutaborGUI {
 	public:
 
 		GUIInputMidiPort():
-			TGUIInputDevice(new GUIfiedInputMidiPort(this)) 
+			TGUIInputDevice<GUIfiedInputMidiPort>(
+				new GUIfiedInputMidiPort(this)) 
 			{	
 			}
 
@@ -1110,10 +1134,11 @@ namespace mutaborGUI {
 				 mutabor::MutaborModeType mode
 				 = mutabor::DeviceStop, 
 				 int id = -1):
-			TGUIInputDevice(new GUIfiedInputMidiPort(this,
-								 devId,
-								 name,
-								 mode,id))
+			TGUIInputDevice<GUIfiedInputMidiPort>(
+				new GUIfiedInputMidiPort(this,
+							 devId,
+							 name,
+							 mode,id))
 			{}
 		
 		virtual ~GUIInputMidiPort() { TRACEC; }
@@ -1171,7 +1196,8 @@ namespace mutaborGUI {
 	class GUIfiedOutputMidiFile: 
 		public GUIfyOutputDevice<mutabor::OutputMidiFile> {
 	public:
-		GUIfiedOutputMidiFile(void * gui):GUIfyOutputDevice() {
+		GUIfiedOutputMidiFile(void * gui):
+		GUIfyOutputDevice<mutabor::OutputMidiFile>() {
 			OutputMidiFile::setUserData(gui);
 		}
 	
@@ -1179,7 +1205,7 @@ namespace mutaborGUI {
 				      int devId,
 				      const mutStringRef name, 
 				      int id = -1):
-			GUIfyOutputDevice(devId,name,id) {
+			GUIfyOutputDevice<mutabor::OutputMidiFile>(devId,name,id) {
 			OutputMidiFile::setUserData(gui);
 		}
 
@@ -1190,17 +1216,19 @@ namespace mutaborGUI {
 	public:
 
 		GUIOutputMidiFile():
-			TGUIOutputDevice(new GUIfiedOutputMidiFile(this)) 
+			TGUIOutputDevice<GUIfiedOutputMidiFile>(
+				new GUIfiedOutputMidiFile(this)) 
 			{ 
 			}
 
 		GUIOutputMidiFile(int devId,
 				  const mutStringRef name, 
 				  int id = -1):
-			TGUIOutputDevice(new GUIfiedOutputMidiFile(this,
-								   devId,
-								   name,
-								   id))
+			TGUIOutputDevice<GUIfiedOutputMidiFile>(
+				new GUIfiedOutputMidiFile(this,
+							  devId,
+							  name,
+							  id))
 			{}
 		
 		virtual ~GUIOutputMidiFile() { TRACEC; }
@@ -1211,7 +1239,8 @@ namespace mutaborGUI {
 	class GUIfiedInputMidiFile: 
 		public GUIfyInputDevice<mutabor::InputMidiFile> {
 	public:
-		GUIfiedInputMidiFile(void * gui):GUIfyInputDevice() {
+		GUIfiedInputMidiFile(void * gui):
+		GUIfyInputDevice<mutabor::InputMidiFile>() {
 			InputMidiFile::setUserData(gui);
 		}
 	
@@ -1221,7 +1250,7 @@ namespace mutaborGUI {
 				     mutabor::MutaborModeType mode
 				     = mutabor::DeviceStop, 
 				     int id = -1):
-			GUIfyInputDevice(devId,name,mode,id) {
+			GUIfyInputDevice<mutabor::InputMidiFile>(devId,name,mode,id) {
 			InputMidiFile::setUserData(gui);
 		}
 
@@ -1232,18 +1261,20 @@ namespace mutaborGUI {
 	public:
 
 		GUIInputMidiFile():
-			TGUIInputDevice(new GUIfiedInputMidiFile(this)) {}
+			TGUIInputDevice<GUIfiedInputMidiFile>(
+				new GUIfiedInputMidiFile(this)) {}
 
 		GUIInputMidiFile(int devId, 
 				 const mutStringRef name = mutEmptyString, 
 				 mutabor::MutaborModeType mode
 				 = mutabor::DeviceStop, 
 				 int id = -1):
-			TGUIInputDevice(new GUIfiedInputMidiFile(this,
-								 devId,
-								 name,
-								 mode,
-								 id))
+			TGUIInputDevice<GUIfiedInputMidiFile>(
+				new GUIfiedInputMidiFile(this,
+							 devId,
+							 name,
+							 mode,
+							 id))
 			{}
 		
 		virtual ~GUIInputMidiFile() { TRACEC;}
@@ -1299,7 +1330,7 @@ namespace mutaborGUI {
 	class GUIfiedOutputGis: 
 		public GUIfyOutputDevice<mutabor::OutputGis> {
 	public:
-		GUIfiedOutputGis(void * gui):GUIfyOutputDevice() {
+		GUIfiedOutputGis(void * gui):GUIfyOutputDevice<mutabor::OutputGis>() {
 			OutputGis::setUserData(gui);
 		}
 	
@@ -1307,7 +1338,7 @@ namespace mutaborGUI {
 				 int devId,
 				 const mutStringRef name, 
 				 int id = -1):
-			GUIfyOutputDevice(devId,name,id) {
+			GUIfyOutputDevice<mutabor::OutputGis>(devId,name,id) {
 			OutputGis::setUserData(gui);
 		}
 
@@ -1317,17 +1348,19 @@ namespace mutaborGUI {
 	class GUIOutputGis:public TGUIOutputDevice<GUIfiedOutputGis> {
 	public:
 
-		GUIOutputGis():TGUIOutputDevice(new GUIfiedOutputGis(this)) 
+		GUIOutputGis():TGUIOutputDevice<GUIfiedOutputGis>(
+			new GUIfiedOutputGis(this)) 
 			{ 
 			}
 
 		GUIOutputGis(int devId,
 			     const mutStringRef name, 
 			     int id = -1):
-			TGUIOutputDevice(new GUIfiedOutputGis(this,
-							      devId,
-							      name,
-							      id))
+			TGUIOutputDevice<GUIfiedOutputGis>(
+				new GUIfiedOutputGis(this,
+						     devId,
+						     name,
+						     id))
 			{}
 		
 		virtual ~GUIOutputGis() { TRACEC; }
@@ -1339,7 +1372,7 @@ namespace mutaborGUI {
 	class GUIfiedInputGis: 
 		public GUIfyInputDevice<mutabor::InputGis> {
 	public:
-		GUIfiedInputGis(void * gui):GUIfyInputDevice() {
+		GUIfiedInputGis(void * gui):GUIfyInputDevice<mutabor::InputGis>() {
 			InputGis::setUserData(gui);
 		}
 	
@@ -1349,7 +1382,7 @@ namespace mutaborGUI {
 				mutabor::MutaborModeType mode
 				= mutabor::DeviceStop, 
 				int id = -1):
-			GUIfyInputDevice(devId,name,mode,id)  {
+			GUIfyInputDevice<mutabor::InputGis>(devId,name,mode,id)  {
 			InputGis::setUserData(gui);
 		}
 
@@ -1359,7 +1392,8 @@ namespace mutaborGUI {
 	class GUIInputGis:public TGUIInputDevice<GUIfiedInputGis> {
 	public:
 
-		GUIInputGis():TGUIInputDevice(new GUIfiedInputGis(this))
+		GUIInputGis():TGUIInputDevice<GUIfiedInputGis>(
+			new GUIfiedInputGis(this))
 			{
 			}
 
@@ -1368,11 +1402,12 @@ namespace mutaborGUI {
 			    mutabor::MutaborModeType mode
 			    = mutabor::DeviceStop, 
 			    int id = -1):
-			TGUIInputDevice(new GUIfiedInputGis(this,
-							    devId,
-							    name,
-							    mode,
-							    id))
+			TGUIInputDevice<GUIfiedInputGis>(
+				new GUIfiedInputGis(this,
+						    devId,
+						    name,
+						    mode,
+						    id))
 			{}
 		
 		virtual ~GUIInputGis() { TRACEC; }

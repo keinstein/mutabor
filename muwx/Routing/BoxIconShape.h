@@ -4,16 +4,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.7 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.8 2011/10/04 17:16:14 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: BoxIconShape.h,v $
- * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Revision 1.8  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.7  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -107,10 +110,10 @@ namespace mutaborGUI {
 	class MutBoxIconShape:public MutIconShapeClass<MutPanel>
 	{
 	public:
-		MutBoxIconShape():MutIconShapeClass() {}
+		MutBoxIconShape():MutIconShapeClass<MutPanel>() {}
 	
 		MutBoxIconShape(wxWindow * parent, wxWindowID id = wxID_ANY):
-			MutIconShapeClass() 
+			MutIconShapeClass<MutPanel>() 
 			{
 				Create (parent, id);
 			}
