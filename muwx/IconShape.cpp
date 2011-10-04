@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.11 2011/10/04 05:38:44 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.12 2011/10/04 17:16:13 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/10/04 05:38:44 $
-* \version $Revision: 1.11 $
+* $Date: 2011/10/04 17:16:13 $
+* \version $Revision: 1.12 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.11  2011/10/04 05:38:44  keinstein
+* Revision 1.12  2011/10/04 17:16:13  keinstein
+* make program compile on Mac (wx 2.9) and fix some memory corruption
+*
+* Revision 1.11  2011-10-04 05:38:44  keinstein
 * some configuration fixes
 *
 * Revision 1.10  2011-10-03 15:50:21  keinstein
@@ -185,7 +188,6 @@
 #endif
 
 
-
 /*
 // derive from MutPanel
 IMPLEMENT_DYNAMIC_CLASS(MutIconShapeClass<MutPanel>, MutPanel)
@@ -212,8 +214,6 @@ END_EVENT_TABLE()
 
 */
 
-template class MutIconShapeClass<wxControl>;
-template class MutIconShapeClass<MutPanel>;
 
 BEGIN_EVENT_TABLE_TEMPLATE1(MutIconShapeClass, T, T)
 EVT_SIZE(MutIconShapeClass::OnSize)
@@ -709,6 +709,8 @@ void MutIconShapeClass<T>::DeleteSelf()
 #endif
 }
 
+template class MutIconShapeClass<wxControl>;
+template class MutIconShapeClass<MutPanel>;
 
 
 /*

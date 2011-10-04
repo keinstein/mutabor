@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.32 2011/09/30 18:07:04 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.33 2011/10/04 17:16:13 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/30 18:07:04 $
-* \version $Revision: 1.32 $
+* $Date: 2011/10/04 17:16:13 $
+* \version $Revision: 1.33 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.32  2011/09/30 18:07:04  keinstein
+* Revision 1.33  2011/10/04 17:16:13  keinstein
+* make program compile on Mac (wx 2.9) and fix some memory corruption
+*
+* Revision 1.32  2011-09-30 18:07:04  keinstein
 * * make compile on windows
 * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
 * * add ax_boost_base for boost detection
@@ -831,8 +834,8 @@ namespace mutaborGUI {
 			}
 		}
 			
-		DEBUGLOG(other,_(""));
-		DEBUGLOG(editor,_(""));
+		DEBUGLOG(other,_T(""));
+		DEBUGLOG(editor,_T(""));
 		return result;
 		
 	}

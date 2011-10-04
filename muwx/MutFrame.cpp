@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.56 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.57 2011/10/04 17:16:14 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.56 $
+ * \date $Date: 2011/10/04 17:16:14 $
+ * \version $Revision: 1.57 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.56  2011/10/03 15:50:21  keinstein
+ * Revision 1.57  2011/10/04 17:16:14  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.56  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -846,7 +849,7 @@ namespace mutaborGUI {
 			return;
 
 
-		DEBUGLOG(other,_T("%d == %d?"),CM_EXECUTE, event.GetId());
+		DEBUGLOG(other,_T("%d == %d?"),(int)CM_EXECUTE, event.GetId());
 
 		switch (event.GetId()) {
 

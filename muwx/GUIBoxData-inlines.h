@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data. Inline functions that must not be defined at class declaration time
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.2 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.3 2011/10/04 17:16:13 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/10/04 17:16:13 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData-inlines.h,v $
- * Revision 1.2  2011/09/30 18:07:04  keinstein
+ * Revision 1.3  2011/10/04 17:16:13  keinstein
+ * make program compile on Mac (wx 2.9) and fix some memory corruption
+ *
+ * Revision 1.2  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -105,7 +108,7 @@ namespace mutaborGUI {
 		inline bool BoxData::Remove(MutBoxShape * shape) {
 			bool ok = false;
 			if (shape) {
-				typename MutBoxShapeList::iterator pos = 
+				MutBoxShapeList::iterator pos = 
 					std::find(shapes.begin(),shapes.end(),shape);
 				ok = (shape != *(shapes.end())); 
 				mutASSERT(ok);

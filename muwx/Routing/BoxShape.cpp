@@ -4,15 +4,18 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.10 2011/10/04 05:38:44 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.11 2011/10/04 17:16:14 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/04 05:38:44 $
-* \version $Revision: 1.10 $
+* $Date: 2011/10/04 17:16:14 $
+* \version $Revision: 1.11 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.10  2011/10/04 05:38:44  keinstein
+* Revision 1.11  2011/10/04 17:16:14  keinstein
+* make program compile on Mac (wx 2.9) and fix some memory corruption
+*
+* Revision 1.10  2011-10-04 05:38:44  keinstein
 * some configuration fixes
 *
 * Revision 1.9  2011-10-03 17:42:41  keinstein
@@ -295,7 +298,7 @@ namespace mutaborGUI {
 	wxSizerFlags MutBoxShape::sizerFlags;
 	int MutBoxShape::maxBoxId = Box0 - 1;
 
-/// TODO: fix tab order
+//* \todo  fix tab order
 	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, int Id)
 	{
 		MutBoxIconShape::Create(parent,wid);
@@ -313,6 +316,7 @@ namespace mutaborGUI {
 	bool MutBoxShape::SetBackgroundColour(const wxColour& colour) {
 		bool retval = MutBoxIconShape::SetBackgroundColour(colour);
 		if (!retval) return false;
+		if (!channels) return true;
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
