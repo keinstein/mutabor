@@ -3,16 +3,21 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.6 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.7 2011/10/04 20:09:16 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.6  2011/10/03 15:50:21  keinstein
+ * Revision 1.7  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.6  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -131,6 +136,7 @@ namespace mutaborGUI {
 		size.width -= 2* borderOffset.x;
 		size.height -= 2* borderOffset.y;
 
+#if 0 // done by changing border
 		DEBUGLOG (other, _T("Focus %p and this %p"),FindFocus(),this);
 		if (FindFocus() == this) {
 			DEBUGLOG (other, _T("Painting Box"));
@@ -141,6 +147,7 @@ namespace mutaborGUI {
 					 size.width,
 					 size.height);
 		}
+#endif
 	}
 
 	bool MutBoxIconShape::Layout() {

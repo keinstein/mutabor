@@ -4,16 +4,21 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.10 2011/10/04 20:09:16 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * Revision 1.10  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.9  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.8  2011-10-03 15:50:21  keinstein
@@ -164,8 +169,8 @@ public:
 	virtual wxSize DoGetBestSize() const;
 
 	virtual void UpdateBorder(long flag);
-	virtual void SetFocus() ;
-	virtual void KillFocus() ;
+	virtual void LostFocus() ;
+	virtual void GotFocus() ;
         // calls layout for layout constraints and sizers
 	void OnSize(wxSizeEvent& event);
 	void OnGetFocus(wxFocusEvent & event) ;

@@ -3,16 +3,21 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.9 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.10 2011/10/04 20:09:16 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/04 20:09:16 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.9  2011/10/03 15:50:21  keinstein
+ * Revision 1.10  2011/10/04 20:09:16  keinstein
+ * Clean up focus handling a little bit.
+ * Change perimeter point handling a little bit. Need at least one night to
+ * get overthought.
+ *
+ * Revision 1.9  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -199,17 +204,18 @@ namespace mutaborGUI {
 	END_EVENT_TABLE()
 	
 
-	void MutBoxChannelShape::SetFocus() {
+	void MutBoxChannelShape::GotFocus() {
 		m_parent->SetFocus();// we don't need the focus, currently
-		return;
-		this->MutIconShape::SetFocus();
+#if 0
+		this->MutIconShape::GotFocus();
 		DEBUGLOG (other, _T(""));
 		UpdateBorder(wxBORDER_NONE);
+#endif
 	}
 
 
 
-	void MutBoxChannelShape::KillFocus()
+	void MutBoxChannelShape::LostFocus()
 	{
 	}
 
