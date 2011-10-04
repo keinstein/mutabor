@@ -4,16 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.8 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.8  2011/10/03 15:50:21  keinstein
+ * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.8  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -120,7 +123,8 @@ protected:
         MutIcon Icon;
 	wxStaticText * staticText;
 	wxSize maxBorderSize, borderOffset;
-	
+	mutable mutpointlist usedperimeterpoints;
+
 public:
 	
 	MutIconShapeClass():parenttype(),Icon(),staticText(NULL) { }
@@ -172,7 +176,7 @@ public:
 	void         OnPaint (wxPaintEvent &event ) ;
 	virtual void OnDraw (wxDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
-					  const wxPoint &o) const;
+					   const wxPoint &o ) const;
 	virtual wxRect GetIconRect() const 
 	{
 		wxRect r = static_cast<parenttype const *>(this)->GetRect();
@@ -202,6 +206,9 @@ public:
 		this->Destroy();
 	}	
 
+	void ClearPerimeterPoints() {
+		usedperimeterpoints.clear();
+	}
 private:
 	DECLARE_DYNAMIC_CLASS_NO_COPY(MutIconShapeClass)
 	DECLARE_EVENT_TABLE() 

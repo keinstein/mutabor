@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.8 2011/10/02 19:28:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/10/02 19:28:55 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: MutRouteWnd.h,v $
- * Revision 1.8  2011/10/02 19:28:55  keinstein
+ * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.8  2011-10-02 19:28:55  keinstein
  * changing MutRouteWnd into a container (without effect :-()
  *
  * Revision 1.7  2011-09-30 18:07:05  keinstein
@@ -237,7 +240,7 @@ namespace mutaborGUI {
 		  void EvRButtonDown(uint modKeys, TPoint& point);*/
 
 	public:
-		WX_DECLARE_CONTROL_CONTAINER();
+//		WX_DECLARE_CONTROL_CONTAINER();
 	private:
 		DECLARE_DYNAMIC_CLASS_NO_COPY(MutRouteWnd)
 		DECLARE_EVENT_TABLE()

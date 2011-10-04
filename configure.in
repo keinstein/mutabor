@@ -91,6 +91,8 @@ AM_MAINTAINER_MODE
 AC_PROG_CC
 AC_PROG_CXX
 
+
+
 dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
 	AS_HELP_STRING([--enable-debug],[Enable extra debugging functionality]),
@@ -98,10 +100,10 @@ AC_ARG_ENABLE(debug,
 	       AC_DEFINE(DEBUG,1,[Define to 1 for compiling in debug mode.]),
                AC_DEFINE_UNQUOTED(DEBUG,[$enableval]))
 	       CFLAGS="$CFLAGS -g"
-	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__ -fvisibility-inlines-hidden"
+	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
+	       AC_LANG_PUSH(C++)
 	       tmpcxxflags="$CXXFLAGS"
 	       CXXFLAGS="$CXXFLAGS -fdump-class-hierarchy"
-	       AC_LANG_PUSH(C++)
 	       AC_MSG_CHECKING([whether $CXX supports -fdump-class-hierarchy])
       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
 	       			[AC_MSG_RESULT([yes])], 
@@ -167,6 +169,16 @@ AC_SUBST( midiapi, [""] )
 case "$host_os" in 
 dnl GNU/Linux on an Intel or compatible
 *linux*)
+	AC_LANG_PUSH(C++)
+	tmpcxxflags="$CXXFLAGS"
+	CXXFLAGS="$CXXFLAGS -fvisibility-inlines-hidden"
+	AC_MSG_CHECKING([whether $CXX supports -fvisibility-inlines-hidden])
+      	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	 			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([yes])])
+    	AC_LANG_POP(C++)	       
+
 	PLATFORM=linux
   	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (linux only)], 
 	[
@@ -425,6 +437,10 @@ AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr]) 
 AC_CHECK_FUNC(strdup)
 
+
+dnl non verbose
+
+AC_SUBST(V,0)
 
 AC_CONFIG_FILES([  
 po/Makefile.in 

@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.8 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.9 2011/10/04 05:38:44 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/04 05:38:44 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.8  2011/10/03 15:50:21  keinstein
+ * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * some configuration fixes
+ *
+ * Revision 1.8  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -261,11 +264,19 @@ namespace mutaborGUI {
 					return false;
 				}
 				bool fine = MutIconShape::Create(p,id);
+				if (p) {
+					SetBackgroundColour(
+						p->GetBackgroundColour()
+						);
+				}
+
+				this->SetWindowStyle(
+					(this->GetWindowStyle() & ~ wxBORDER_MASK)
+					| wxBORDER_NONE);
 				borderOffset = 
-				maxBorderSize = wxSize(0,0);
+					maxBorderSize = GetWindowBorderSize();
 				if (fine)
 					ToGUIBase(r).Attatch(this);
-				SetIcon(GetMutIcon());
 				return fine;
 			}
 
