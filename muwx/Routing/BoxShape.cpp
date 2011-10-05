@@ -4,15 +4,18 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.11 2011/10/04 17:16:14 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.12 2011/10/05 16:28:39 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/04 17:16:14 $
-* \version $Revision: 1.11 $
+* $Date: 2011/10/05 16:28:39 $
+* \version $Revision: 1.12 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.11  2011/10/04 17:16:14  keinstein
+* Revision 1.12  2011/10/05 16:28:39  keinstein
+* correct layout on mac
+*
+* Revision 1.11  2011-10-04 17:16:14  keinstein
 * make program compile on Mac (wx 2.9) and fix some memory corruption
 *
 * Revision 1.10  2011-10-04 05:38:44  keinstein
@@ -461,8 +464,14 @@ namespace mutaborGUI {
 			MutBoxChannelShape * channel = 
 				static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
 			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
-			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-			channel->DrawLines(dc, GetPosition(), screenpos);
+			mutASSERT(dynamic_cast<
+				  MutBoxChannelShape *
+				  >((*i)->GetWindow()));
+			wxPoint pos = GetPosition();
+#if __WXMAC__
+			pos += maxBorderSize - borderOffset;
+#endif
+			channel->DrawLines(dc, pos, screenpos);
 		}
 	}
 

@@ -3,16 +3,19 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.8 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.9 2011/10/05 16:28:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/05 16:28:39 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: MutIcon.h,v $
- * Revision 1.8  2011/10/04 17:16:14  keinstein
+ * Revision 1.9  2011/10/05 16:28:39  keinstein
+ * correct layout on mac
+ *
+ * Revision 1.8  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.7  2011-09-30 09:10:25  keinstein
@@ -74,6 +77,8 @@
 
 #if defined(__WXMAC__)
 #include "wx/icon.h"
+#include "wx/image.h"
+
 #include <limits>
 
 /// redefine the icon class to circumvent Icon restrictions

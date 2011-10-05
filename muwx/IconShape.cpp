@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.13 2011/10/04 20:09:16 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.14 2011/10/05 16:28:39 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/10/04 20:09:16 $
-* \version $Revision: 1.13 $
+* $Date: 2011/10/05 16:28:39 $
+* \version $Revision: 1.14 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.13  2011/10/04 20:09:16  keinstein
+* Revision 1.14  2011/10/05 16:28:39  keinstein
+* correct layout on mac
+*
+* Revision 1.13  2011-10-04 20:09:16  keinstein
 * Clean up focus handling a little bit.
 * Change perimeter point handling a little bit. Need at least one night to
 * get overthought.
@@ -405,8 +408,11 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 	maxBorderSize.IncTo(tmpBorderSize);
 	maxBorderSize.IncTo(wxSize(0,0));
 	maxBorderSize.IncBy(wxSize(1,1));
-//	borderOffset = maxBorderSize - tmpBorderSize;
+#if __WXGTK__ || 1
 	borderOffset = maxBorderSize;
+#else
+	borderOffset = maxBorderSize - tmpBorderSize;
+#endif
 	return true;
 }
 
@@ -436,6 +442,7 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 		s.x = std::max(s.x,s1.x);
 		s.y += std::max(s1.y,0);
 	}
+
 #ifdef DEBUG
 	s1 = this->GetSize() - this->GetClientSize();
 	s1.IncTo(wxSize(0,0));
@@ -463,16 +470,26 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 
 template<typename T>
   void MutIconShapeClass<T>::UpdateBorder (long flag) {
+	this->Freeze();
 	this->SetWindowStyle((this->GetWindowStyle() & ~(long)wxBORDER_MASK)|flag);
-//	borderOffset = maxBorderSize - GetWindowBorderSize();
-	borderOffset = maxBorderSize;
 //	wxSizer * sizer = GetContainingSizer();
 
 //	this->GetParent()->Layout();
 //	this->GetParent()->InvalidateBestSize();
-	this->Layout();
+#if __WXGTK__
+	borderOffset = maxBorderSize;
+#elif __WXMAC__
+	borderOffset = maxBorderSize - this->GetWindowBorderSize()/2;
+#else
+	borderOffset = maxBorderSize - this->GetWindowBorderSize();
+#endif
 	this->InvalidateBestSize();
+	if (this->GetParent())
+		this->GetParent()->Layout();
+	else
+		Layout();
 
+	Layout();
 	wxSizer * sizer = this->GetSizer();
 	if (sizer) 
 		sizer->SetSizeHints(this);
@@ -482,8 +499,15 @@ template<typename T>
 	pos -= maxBorderSize;
 	wxSize size = this->GetSize();
 	size += maxBorderSize + maxBorderSize;
+	ClearPerimeterPoints();
 	this->GetParent()->RefreshRect(wxRect(pos.x,pos.y,size.x,size.y));
-//	this->GetParent()->Update();
+	this->GetParent()->Update();
+#if __MAC__ && 0
+	ClearPerimeterPoints();
+	this->Refresh(true);
+	this->Update();
+#endif
+	this->Thaw();
 }
 
 template<typename T>
@@ -583,18 +607,24 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 	DEBUGLOG (other, _T("Icon ok."));
 
 	int x = 0, y = borderOffset.y;
+	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
+#if __WXMAC__
+	center.y += maxBorderSize.y - borderOffset.y;
+#endif
+
+	for (mutpointlist::iterator i = usedperimeterpoints.begin();
+	     i != usedperimeterpoints.end();i++) {
+		DrawPerimeterPoint(dc,center, *i);
+	}
+
 	if (GetIcon().IsOk()) {
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
+#ifdef __WXMAC__ && 0
+		x -= maxBorderSize.x - borderOffset.x;
+#endif
 		dc.DrawIcon(GetIcon(), x, y);
-	}
-
-	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
-	wxPoint origin(size.x,size.y);
-	for (mutpointlist::iterator i = usedperimeterpoints.begin();
-	     i != usedperimeterpoints.end();i++) {
-		dc.DrawLine(center, *i-origin);
 	}
 
 	DEBUGLOG (other, _T("Focus %p and this %p"),this->FindFocus(),this);
@@ -620,13 +650,18 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 #endif
 
 	wxPoint p;
+	int xoffset = 0;
+#if __WXMAC__
+	xoffset = this->GetWindowBorderSize().x;
+#endif
+
 
 	r.y += borderOffset.y;
 	if (r.x+r.width <= o.x) {
-		p.x = r.x + r.width;
+		p.x = r.x + r.width + xoffset;
 		p.y = r.y + ir.height/2;
-	} else if (r.x >= o.y) {
-		p.x = r.x;
+	} else if (r.x >= o.x) {
+		p.x = r.x - xoffset;
 		p.y = r.y + ir.height/2;
 	} else if (r.y <= o.y) {
 		p.x = r.x + r.width/2;
@@ -643,7 +678,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	if (pos == usedperimeterpoints.end())
 		usedperimeterpoints.push_back(p);
 
-#ifdef __WXGTK__
+#if __WXGTK__
 	p.y += maxBorderSize.y - this->GetWindowBorderSize().y;
 #endif
 
@@ -651,9 +686,21 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 }
 
 template<typename T>
-void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
-	const wxRect & screenpos)  const
+void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc, 
+					      const wxPoint & center, 
+					      wxPoint p) const 
 {
+	wxRect origin(this->GetRect());
+	p.x -= origin.x;
+	p.y -= origin.y;
+	dc.DrawLine(center, p);
+  }
+
+template<typename T>
+void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
+				  const wxRect & screenpos)  const
+{
+	return;
 	wxRect rect = this->GetRect();
 	wxPoint p1(rect.x + rect.width/2, 
 		   rect.y + Icon.GetHeight()/2 + borderOffset.y);
@@ -670,8 +717,10 @@ bool MutIconShapeClass<T>::Recompute()
 
 template<typename T>
 bool MutIconShapeClass<T>::Layout() {
-	int w = 0, h = 0, y = Icon.GetHeight() + borderOffset.y;
-	this->GetVirtualSize(&w, &h);
+	wxRect rect = this->GetRect();
+	int w = rect.width, h = rect.height, 
+	y = Icon.GetHeight() +	borderOffset.y;
+
 	w -= 2* borderOffset.x;
 	h -= 2* borderOffset.y;
 	if (staticText) {
@@ -685,7 +734,16 @@ bool MutIconShapeClass<T>::Layout() {
 	if ( this->GetSizer() )
 	{
 		DEBUGLOG (other, _T("sizer"));
-		this->GetSizer()->SetDimension( borderOffset.x, y, w, h );
+		wxRect sizerrect(borderOffset.x,y,w,h);
+#if __WXMAC__   //adjust the sizer to the right size inside
+		sizerrect=wxRect(0,y,rect.width,rect.height);
+		sizerrect.x -= maxBorderSize.x - borderOffset.x;
+//		sizerrect.width -= 2*sizerrect.x; 
+#endif
+		this->GetSizer()->SetDimension( sizerrect.x,
+						sizerrect.y,
+						sizerrect.width,
+						sizerrect.height );
 		PRINTSIZER(this->GetSizer());
 	}
 #if 0 // \todo implement this if it is needed

@@ -3,16 +3,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.7 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.8 2011/10/05 16:28:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/10/05 16:28:39 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.7  2011/10/04 20:09:16  keinstein
+ * Revision 1.8  2011/10/05 16:28:39  keinstein
+ * correct layout on mac
+ *
+ * Revision 1.7  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -130,6 +133,9 @@ namespace mutaborGUI {
 			DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 				  GetIcon().GetWidth());
 			x = (size.width-GetIcon().GetWidth())/2;
+#ifdef __WXMAC__ 
+			x -= maxBorderSize.x - borderOffset.x;
+#endif
 			dc.DrawIcon(GetIcon(), x, y);
 		}
 		

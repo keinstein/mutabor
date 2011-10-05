@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.30 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.31 2011/10/05 16:28:39 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.30 $
+ * $Date: 2011/10/05 16:28:39 $
+ * \version $Revision: 1.31 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.30  2011/10/04 17:16:14  keinstein
+ * Revision 1.31  2011/10/05 16:28:39  keinstein
+ * correct layout on mac
+ *
+ * Revision 1.30  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.29  2011-10-04 05:38:44  keinstein
@@ -121,7 +124,9 @@
 #include "RouteCompat.h"
 #include "muwx/MutApp.h"
 #include "muwx/MutFrame.h"
-#include "GUIBoxData-inlines.h"
+#include "muwx/GUIBoxData-inlines.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
+
 
 #ifndef RTMIDI
 #ifndef MMSYSTEM_H
