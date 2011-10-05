@@ -4,16 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.10 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.11 2011/10/05 16:28:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/10/05 16:28:39 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.10  2011/10/04 20:09:16  keinstein
+ * Revision 1.11  2011/10/05 16:28:39  keinstein
+ * correct layout on mac
+ *
+ * Revision 1.10  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -182,9 +185,12 @@ public:
 	virtual void OnDraw (wxDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
 					   const wxPoint &o ) const;
+	virtual void DrawPerimeterPoint(wxDC & dc, 
+					const wxPoint & center, 
+					wxPoint p) const;
 	virtual wxRect GetIconRect() const 
 	{
-		wxRect r = static_cast<parenttype const *>(this)->GetRect();
+		wxRect r = this->GetRect();
 		int iw = Icon.GetWidth();
 		return wxRect(r.x + (r.width - iw)/2, 
 			      r.y+borderOffset.y,

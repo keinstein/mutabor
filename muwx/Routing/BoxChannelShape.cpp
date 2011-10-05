@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.10 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.11 2011/10/05 16:28:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/10/05 16:28:39 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.10  2011/10/04 20:09:16  keinstein
+ * Revision 1.11  2011/10/05 16:28:39  keinstein
+ * correct layout on mac
+ *
+ * Revision 1.10  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -205,7 +208,7 @@ namespace mutaborGUI {
 	
 
 	void MutBoxChannelShape::GotFocus() {
-		m_parent->SetFocus();// we don't need the focus, currently
+//		m_parent->SetFocus();// we don't need the focus, currently
 #if 0
 		this->MutIconShape::GotFocus();
 		DEBUGLOG (other, _T(""));
@@ -270,6 +273,7 @@ namespace mutaborGUI {
 		if (route) UNREACHABLEC;
 		DEBUGLOG(smartptr,_T("Adding route %p"),r.get());
 		route = r;
+		Icon = GetMutIcon();
 	}
 
 	      
@@ -663,7 +667,7 @@ namespace mutaborGUI {
 		}
 
 	
-
+		Icon = GetMutIcon();
 
 		DebugCheckRoutes();
 		if (input)
@@ -780,6 +784,8 @@ namespace mutaborGUI {
 			  _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
 //	wxRect ir = GetIconRect();
 
+		wxPoint savepoint(0, r.height/2);
+
 		r.x += parentPosition.x;
 		r.y += parentPosition.y;
 
@@ -787,17 +793,34 @@ namespace mutaborGUI {
 		mutASSERT(r.Contains(i));
 #endif
 		wxPoint p(r.x + r.width/2, r.y + r.height/2);
-		
 		if (p.x <= o.x) {
 			p.x = r.x + r.width;
+			savepoint.x = r.width;
 		} else if (p.x > o.x) {
 			p.x = r.x;
 		}
+
+		mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),
+						       usedperimeterpoints.end(),
+						       savepoint);
+		if (pos == usedperimeterpoints.end())
+			usedperimeterpoints.push_back(savepoint);
+
 	
 		return p;
 	}
 
-	void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
+void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc, 
+					    const wxPoint & center, 
+					    wxPoint p) const 
+{
+	wxPoint mycenter = wxPoint()+GetSize()/2;
+	dc.DrawLine(mycenter, p);
+}
+
+
+
+void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
 		if (!rect) {
 			SetIcon(GetMutIcon());
 		}
