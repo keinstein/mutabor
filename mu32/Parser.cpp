@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Parser.cpp,v 1.10 2011/02/20 22:35:55 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Parser.cpp,v 1.11 2011/10/13 18:26:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/10/13 18:26:13 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Parser.cpp,v $
- * Revision 1.10  2011/02/20 22:35:55  keinstein
+ * Revision 1.11  2011/10/13 18:26:13  keinstein
+ * Fix a Bug in the kernel:
+ * retuning case did not execute the following statements,
+ * which lead to unexpected results
+ *
+ * Revision 1.10  2011-02-20 22:35:55  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -61,23 +66,23 @@ static void berechne_toene_absolut (struct ton *ton_liste);
 
 static void check_konsistenz (void);
 
-/*
+#ifdef DEBUG
 static void drucke_ton (struct ton * lauf);
 static void drucke_harmonie (struct harmonie * this_);
 static void drucke_argument (struct argument * z_or_p);
 
 static void print_ausloeser (struct ausloeser * this_);
-*/
-/*
-static void print_aktion (struct aktion * this);
-*/
+//static void print_aktion (struct aktion * that);
+static void print_action (struct aktions_liste * action);
+static void print_action_list(struct aktions_liste * actionlist);
+#endif
 
 
 /*********  Allgemeine Hilfsfunktionen ********/
 
 void allgemeine_initialisierungen( void )
 {
-
+	TRACE;
 	ton_ohne_namen=(ton*) xmalloc((size_t) sizeof(struct ton));
 	ton_ohne_namen->name=NULL;
 	ton_ohne_namen->ton_typ=ton_absolut;
@@ -88,6 +93,7 @@ void allgemeine_initialisierungen( void )
 int ton_list_laenge (struct ton *list)
 
 {
+	TRACE;
 	if (list) return 1 + ton_list_laenge (list -> next);
 
 	return 0;
@@ -95,6 +101,7 @@ int ton_list_laenge (struct ton *list)
 
 int tonsystem_list_laenge (struct tonsystem *list)
 {
+	TRACE;
 	if (list) return 1 + tonsystem_list_laenge (list -> next);
 
 	return 0;
@@ -102,6 +109,7 @@ int tonsystem_list_laenge (struct tonsystem *list)
 
 int umstimmungs_list_laenge (struct umstimmung *list)
 {
+	TRACE;
 	if (list) return 1 + umstimmungs_list_laenge (list -> next);
 
 	return 0;
@@ -109,6 +117,7 @@ int umstimmungs_list_laenge (struct umstimmung *list)
 
 int logik_list_laenge (struct logik *list)
 {
+	TRACE;
 	if (list) return 1 + logik_list_laenge (list -> next);
 
 	return 0;
@@ -116,6 +125,7 @@ int logik_list_laenge (struct logik *list)
 
 int midi_list_laenge (struct midiliste *list)
 {
+	TRACE;
 	if (list) return 1 + midi_list_laenge (list -> next);
 
 	return 0;
@@ -123,6 +133,7 @@ int midi_list_laenge (struct midiliste *list)
 
 int get_logik_nummer (const char * name, struct logik * liste)
 {
+	TRACE;
 	if (liste == NULL)
 	{
 		fatal_error (0, _T(__FILE__), __LINE__);
@@ -136,6 +147,7 @@ int get_logik_nummer (const char * name, struct logik * liste)
 int parameter_list_laenge (struct parameter_liste *list)
 
 {
+	TRACE;
 	if (list) return 1 + parameter_list_laenge (list -> next);
 
 	return 0;
@@ -143,6 +155,7 @@ int parameter_list_laenge (struct parameter_liste *list)
 
 int argument_list_laenge (struct argument_liste *list)
 {
+	TRACE;
 	if (list) return 1 + argument_list_laenge (list -> next);
 
 	return 0;
@@ -151,6 +164,7 @@ int argument_list_laenge (struct argument_liste *list)
 
 struct ton * get_ton (const char * name, struct ton * liste)
 {
+	TRACE;
 	if (name==NULL) return(ton_ohne_namen);
 
 	if (liste == NULL) return NULL;
@@ -162,54 +176,46 @@ struct ton * get_ton (const char * name, struct ton * liste)
 
 
 struct intervall * get_intervall (const char * name,
-
-			                                  struct intervall * liste)
+				  struct intervall * liste)
 {
+	TRACE;
 	if (liste == NULL) return NULL;
-
 	if ( ! strcmp (name, liste->name)) return liste;
-
 	return get_intervall (name, liste->next);
 }
 
 struct tonsystem * parser_get_tonsystem (const char * name,
-
 			                struct tonsystem * liste)
 {
+	TRACE;
 	if (liste == NULL) return NULL;
-
 	if ( ! strcmp (name, liste->name)) return liste;
-
 	return parser_get_tonsystem (name, liste->next);
 }
 
 struct umstimmung * get_umstimmung (const char * name,
-
-			                                    struct umstimmung * liste)
+				    struct umstimmung * liste)
 {
+	TRACE;
 	if (liste == NULL) return NULL;
-
 	if ( ! strcmp (name, liste->name)) return liste;
-
 	return get_umstimmung (name, liste->next);
 }
 
 struct harmonie * get_harmonie (const char * name, struct harmonie * liste)
 {
+	TRACE;
 	if (liste == NULL) return NULL;
-
 	if ( ! strcmp (name, liste->name)) return liste;
-
 	return get_harmonie (name, liste->next);
 }
 
 
 struct logik * get_logik (const char * name, struct logik * liste)
 {
+	TRACE;
 	if (liste == NULL) return NULL;
-
 	if ( ! strcmp (name, liste->name)) return liste;
-
 	return get_logik (name, liste->next);
 }
 
@@ -222,6 +228,7 @@ static struct midiliste * list_of_integers;
 
 void init_integersequenz (void)
 {
+	TRACE;
 	list_of_integers = NULL;
 }
 
@@ -229,8 +236,8 @@ void init_integersequenz (void)
 void get_new_integer_in_integersequenz (int wert)
 
 {
-
 	struct midiliste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_integers; * lauf; lauf= & (*lauf)->next) {}
 
@@ -241,6 +248,7 @@ void get_new_integer_in_integersequenz (int wert)
 
 static struct midiliste * get_last_integersequenz (void)
 {
+	TRACE;
 	return list_of_integers;
 }
 
@@ -254,6 +262,7 @@ static struct parameter_liste * list_of_names;
 
 void init_parameter_liste (void)
 {
+	TRACE;
 	list_of_names = NULL;
 }
 
@@ -263,6 +272,7 @@ void get_new_name_in_parameterlist (const char * name)
 {
 
 	struct parameter_liste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_names; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -285,6 +295,7 @@ static int parameter_nummer (int aktueller_index, const char * such_name,
 
                              struct parameter_liste * knoten)
 {
+	TRACE;
 	if (knoten == NULL) return EOF;
 
 	if ( ! strcmp (such_name, knoten -> name))
@@ -297,6 +308,7 @@ static int parameter_nummer (int aktueller_index, const char * such_name,
 void print_argumentliste (struct argument_liste * this_)
 
 {
+	TRACE;
 	if (this_)
 	{
 		if (this_ -> argument.argument_typ == zahl)
@@ -315,6 +327,7 @@ static struct argument_liste * list_of_argumente;
 
 void init_argument_liste (void)
 {
+	TRACE;
 	list_of_argumente = NULL;
 }
 
@@ -324,6 +337,7 @@ void get_new_number_in_argument_list (double parameter_zahl)
 {
 
 	struct argument_liste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_argumente; * lauf; lauf= & (*lauf)->next) {}
 
@@ -338,6 +352,7 @@ void get_new_name_in_argument_list (const char * parameter_name)
 {
 
 	struct argument_liste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_argumente; * lauf; lauf= & (*lauf)->next) {
 #if 0
@@ -358,6 +373,7 @@ void get_new_name_in_argument_list (const char * parameter_name)
 
 static struct argument_liste * get_last_argument_liste (void)
 {
+	TRACE;
 	return list_of_argumente;
 }
 
@@ -368,6 +384,7 @@ static struct aktions_liste * list_of_aktionen;
 
 void init_aktions_liste (void)
 {
+	TRACE;
 	list_of_aktionen = NULL;
 }
 
@@ -377,6 +394,7 @@ void get_new_aktion_aufruf_element (const char * name)
 {
 
 	struct aktions_liste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_aktionen; * lauf; lauf= & (*lauf)->next) {}
 
@@ -392,6 +410,7 @@ void get_new_aktion_midi_out_element (void)
 {
 
 	struct aktions_liste * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_aktionen; * lauf; lauf= & (*lauf)->next) {}
 
@@ -403,6 +422,7 @@ void get_new_aktion_midi_out_element (void)
 
 static struct aktions_liste * get_last_aktions_liste (void)
 {
+	TRACE;
 	return list_of_aktionen;
 }
 
@@ -412,6 +432,7 @@ static struct komplex_intervall * the_komplex_liste;
 
 void init_komplex_ton_list (void)
 {
+	TRACE;
 	the_komplex_liste = NULL;
 }
 
@@ -420,6 +441,7 @@ void get_new_faktor_anteil (double f, const char *name)
 {
 
 	struct komplex_intervall * * lauf;
+	TRACE;
 
 	for (lauf= & the_komplex_liste; * lauf; lauf= & (*lauf)->next)
 		/* nur ende der Liste finden */ ;
@@ -436,6 +458,7 @@ void get_new_faktor_anteil (double f, const char *name)
 
 struct komplex_intervall * get_last_komplex_intervall (void)
 {
+	TRACE;
 	return the_komplex_liste;
 }
 
@@ -447,6 +470,7 @@ void get_new_relativ_anteil (double f,
 
 	struct komplex_anteil * * lauf;
 
+	TRACE;
 	for (lauf= & komplex_liste; * lauf; lauf= & (*lauf)->next)
 		/* nur ende der Liste finden */ ;
 
@@ -475,12 +499,14 @@ void setze_nummer_von_abstand_und_zentrum (void)
 {
 
 	struct logik * lauf;
+	TRACE;
 
 	for (lauf=list_of_logiken; lauf; lauf=lauf->next) {
 
 		struct anweisung * lauf_anw;
 
-		for (lauf_anw=lauf->anweisungsliste; lauf_anw; lauf_anw=lauf_anw->next) {
+		for (lauf_anw=lauf->anweisungsliste; 
+		     lauf_anw; lauf_anw=lauf_anw->next) {
 			if (lauf_anw->aktion->aktions_typ == aktion_aufruf) {
 
 				struct argument_liste * lauf_arg;
@@ -491,10 +517,12 @@ void setze_nummer_von_abstand_und_zentrum (void)
 					switch (lauf_arg->argument.argument_typ) {
 
 					case zahl:
+						TRACE;
 						/* OK */
 						break;
 
 					case parameter:
+						TRACE;
 						if ( ! strcmp (lauf_arg->argument.u.parameter.parameter_name,
 						                "ABSTAND")) {
 							lauf_arg->argument.u.parameter.parameter_nummer
@@ -523,6 +551,7 @@ void setze_nummer_von_abstand_und_zentrum (void)
 						break;
 
 					default:
+						TRACE;
 						fatal_error (0, _T(__FILE__), __LINE__);
 
 						break;
@@ -533,32 +562,6 @@ void setze_nummer_von_abstand_und_zentrum (void)
 	}
 }
 
-#ifdef DEBUG_ANZEIGE
-
-void print_aktions_liste (struct aktions_liste * lauf)
-{ /*
-
-
-												                                            for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
-												                						 help_umst;
-												                                   help_umst = help_umst -> next ) {
-												                                  struct argument_liste * help;
-												                                  printf ("                Umstimmungs-name: %s, Parameter: ",
-												                                           help_umst->name ? help_umst->name : "(NULL)");
-												                                  for (help = help_umst->argument_liste; help; help = help->next ) {
-												                                      drucke_argument ( & help -> argument );
-												                                  }
-												                                  printf ("\n");
-												                              }
-
-
-												                	 */
-};
-
-
-
-#endif
-
 
 /********* Eintrittspunkt in das File ist hier !! *******/
 
@@ -566,6 +569,7 @@ FILE * quelldatei;
 
 void mutabor_programm_einlesen (const mutChar * filename )
 {
+	TRACE;
 
 	if ((quelldatei = wxFopen (filename, _T("r"))) == NULL) {
 		fatal_error(3,filename);
@@ -582,9 +586,7 @@ void mutabor_programm_einlesen (const mutChar * filename )
 	list_of_config_instrumente    = NULL;
 
 
-#ifdef DEBUG_ANZEIGE
-	printf ("\nStart parsing\n");
-#endif
+	DEBUGLOG2(kernel_parser,_T("Start parsing"));
 
 	if (yyparse()) {
 		fatal_error(1,-999); /* Wird sowieso nie aufgerufen ... */
@@ -621,268 +623,257 @@ void mutabor_programm_einlesen (const mutChar * filename )
 
 	check_konsistenz ();
 
-#ifdef DEBUG_ANZEIGE
+#ifdef DEBUG
+	
 
-	{ struct intervall * lauf;
-		printf ("\n");
-
-		for (lauf=list_of_intervalle; lauf; lauf=lauf->next) {
-			printf ("Name: %s, Wert: %lf:\n", lauf->name,
-			        lauf->intervall_wert );
-		}
-	}
-
-	{ struct ton * lauf;
-		printf ("\n");
-
-		for (lauf=list_of_toene; lauf; lauf=lauf->next) {
-			drucke_ton (lauf);
-
-		}
-	}
-
-	{ struct tonsystem * lauf;
-		printf ("\n");
-
-		for (lauf=list_of_tonsysteme; lauf; lauf=lauf->next) {
-
-			struct ton * help;
-			printf ("Name: %s, Taste: %d, Periode: %s, "
-			        "Tonleiter_breite: %d\n",
-			        lauf->name,
-			        lauf->taste,
-			        lauf->periode,
-			        ton_list_laenge (lauf->toene));
-
-			for (help = lauf->toene; help; help = help->next ) {
-				printf ("%s , ", help->name ? help->name : "(NULL)");
-			}
-
+	if (isDebugFlag(kernel_parser)) {
+		{ struct intervall * lauf;
 			printf ("\n");
-		}
-	}
-
-	printf ("Umstimmungen:\n");
-
-	{
-
-		struct umstimmung * lauf;
-		printf ("\n");
-
-		for (lauf=list_of_umstimmungen; lauf; lauf=lauf->next) {
-
-			struct parameter_liste * help;
-			printf ("\nName: %s, Parameter: ", lauf->name);
-
-			for (help = lauf->parameter_liste; help; help = help->next ) {
-				printf ("%s , ", help->name ? help->name : "(NULL)");
+			
+			for (lauf=list_of_intervalle; lauf; lauf=lauf->next) {
+				if (lauf->intervall_typ == intervall_absolut) {
+					printf ("Name: %s, Wert: %lf:\n", 
+						lauf->name,
+						lauf->u.intervall_absolut.intervall_wert );
+				} else {
+					STUB;
+				}
 			}
+		}
 
+		{ struct ton * lauf;
 			printf ("\n");
 
-			switch (lauf -> umstimmung_typ) {
+			for (lauf=list_of_toene; lauf; lauf=lauf->next) {
+				drucke_ton (lauf);
 
-			case umstimmung_taste_abs :
-				printf ("        umstimmung_taste_abs : ");
+			}
+		}
 
-				drucke_argument (
-				        & lauf -> u.umstimmung_taste_abs.argument);
+		{ struct tonsystem * lauf;
+			printf ("\n");
 
-				printf ("\n");
-
-				break;
-
-			case umstimmung_taste_rel :
-				printf ("        umstimmung_taste_rel : ");
-
-				drucke_argument (
-				        & lauf -> u.umstimmung_taste_rel.argument);
-
-				printf (" Rechenzeichen: \"%c\"\n",
-				        lauf -> u.umstimmung_taste_rel.rechenzeichen);
-
-				break;
-
-			case umstimmung_breite_abs :
-				printf ("        umstimmung_breite_abs : ");
-
-				drucke_argument (
-				        & lauf -> u.umstimmung_breite_abs.argument);
-
-				printf ("\n");
-
-				break;
-
-			case umstimmung_breite_rel :
-				printf ("        umstimmung_breite_rel : ");
-
-				drucke_argument (
-				        & lauf -> u.umstimmung_breite_rel.argument);
-
-				printf (" Rechenzeichen: \"%c\"\n",
-				        lauf -> u.umstimmung_breite_rel.rechenzeichen);
-
-				break;
-
-			case umstimmung_toene_veraendert : {
+			for (lauf=list_of_tonsysteme; lauf; lauf=lauf->next) {
 
 				struct ton * help;
-				printf ("        umstimmung_toene_veraendert : \n");
+				printf ("Name: %s, Taste: %d, Periode: %p, "
+					"Tonleiter_breite: %d\n",
+					lauf->name,
+					lauf->taste,
+					lauf->periode,
+					ton_list_laenge (lauf->toene));
 
-				for (help = lauf -> u.umstimmung_toene_veraendert.tonliste;
-				                help;
-				                help = help -> next) {
-					printf ("        ");
-					drucke_ton (help);
+				for (help = lauf->toene; help; help = help->next ) {
+					printf ("%s , ", help->name ? help->name : "(NULL)");
 				}
 
-				break;
+				printf ("\n");
 			}
+		}
 
-			case umstimmung_wiederholung_abs :
-				printf ("        umstimmung_wiederholung_abs :");
+		printf ("Umstimmungen:\n");
 
-				printf ("Name : %s \n",
-				        lauf -> u.umstimmung_wiederholung_abs.name);
+		{
 
-				break;
+			struct umstimmung * lauf;
+			printf ("\n");
 
-			case umstimmung_wiederholung_rel :
-				printf ("        umstimmung_wiederholung_rel : ");
+			for (lauf=list_of_umstimmungen; lauf; lauf=lauf->next) {
 
-				drucke_argument (
-				        & lauf -> u.umstimmung_wiederholung_rel.argument);
+				struct parameter_liste * help;
+				printf ("\nName: %s, Parameter: ", lauf->name);
 
-				printf (" R-zeichen: \"%c\"\n",
-				        lauf -> u.umstimmung_wiederholung_rel.rechenzeichen);
+				for (help = lauf->parameter_liste; help; help = help->next ) {
+					printf ("%s , ", help->name ? help->name : "(NULL)");
+				}
 
-				break;
+				printf ("\n");
 
-			case umstimmung_umstimmungsbund : {
+				switch (lauf -> umstimmung_typ) {
+				case umstimmung_midi_out:
+					STUB;
 
-				struct aktions_liste * help_umst;
-				printf ("        umstimmung_umstimmungsbund : \n");
-				print_aktions_liste (lauf->u.umstimmung_umstimmungsbund.aktions_liste);
+				case umstimmung_taste_abs :
+					printf ("        umstimmung_taste_abs : ");
 
-
-
-				for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
-				                help_umst;
-				                help_umst = help_umst -> next ) {
-
-					struct argument_liste * help;
-					printf ("                Umstimmungs-name: %s, Parameter: ",
-					        help_umst->name ? help_umst->name : "(NULL)");
-
-					for (help = help_umst->argument_liste; help; help = help->next ) {
-						drucke_argument ( & help -> argument );
-					}
+					drucke_argument (
+						& lauf -> u.umstimmung_taste_abs.argument);
 
 					printf ("\n");
-				}
 
+					break;
 
+				case umstimmung_taste_rel :
+					printf ("        umstimmung_taste_rel : ");
 
-			}
+					drucke_argument (
+						& lauf -> u.umstimmung_taste_rel.argument);
 
-			break;
+					printf (" Rechenzeichen: \"%c\"\n",
+						lauf -> u.umstimmung_taste_rel.rechenzeichen);
 
-			case umstimmung_umstimmungs_case : {
+					break;
 
-				struct case_liste * help_case;
-				printf ("        umstimmung_umstimmungs_case : \n");
-				drucke_argument (
-				        & lauf -> u.umstimmung_umstimmungs_case.argument);
+				case umstimmung_breite_abs :
+					printf ("        umstimmung_breite_abs : ");
 
-				for (help_case = lauf -> u.umstimmung_umstimmungs_case.umstimmungs_case_liste;
-				                help_case;
-				                help_case = help_case -> next) {
+					drucke_argument (
+						& lauf -> u.umstimmung_breite_abs.argument);
 
-					struct aufruf_liste * help_umst;
+					printf ("\n");
 
-					if (help_case->is_default)
-						printf ("(ANSONSTEN)");
-					else
-						printf ("%lf ", help_case->case_label);
+					break;
 
-					for (help_umst = help_case->case_aufruf;
-					                help_umst;
-					                help_umst = help_umst -> next ) {
+				case umstimmung_breite_rel :
+					printf ("        umstimmung_breite_rel : ");
 
-						struct argument_liste * help;
-						printf ("                Aktions-name: %s, Parameter: ",
-						        help_umst->name ? help_umst->name : "(NULL)");
+					drucke_argument (
+						& lauf -> u.umstimmung_breite_rel.argument);
 
-						for (help = help_umst->argument_liste; help; help = help->next ) {
-							drucke_argument ( & help->argument);
-						}
+					printf (" Rechenzeichen: \"%c\"\n",
+						lauf -> u.umstimmung_breite_rel.rechenzeichen);
 
-						printf ("\n");
+					break;
+
+				case umstimmung_toene_veraendert : {
+
+					struct ton * help;
+					printf ("        umstimmung_toene_veraendert : \n");
+
+					for (help = lauf -> u.umstimmung_toene_veraendert.tonliste;
+					     help;
+					     help = help -> next) {
+						printf ("        ");
+						drucke_ton (help);
 					}
+
+					break;
+				}
+
+				case umstimmung_wiederholung_abs :
+					printf ("        umstimmung_wiederholung_abs :");
+
+					STUB;
+/*
+					printf ("Name : %s \n",
+						lauf -> u.umstimmung_wiederholung_abs.name);
+*/
+					break;
+
+				case umstimmung_wiederholung_rel :
+					printf ("        umstimmung_wiederholung_rel : ");
+
+					STUB;
+/*					drucke_argument (
+						& lauf -> u.umstimmung_wiederholung_rel.komplex_liste);
+
+					printf (" R-zeichen: \"%c\"\n",
+						lauf -> u.umstimmung_wiederholung_rel.rechenzeichen);
+*/
+					break;
+
+				case umstimmung_umstimmungsbund : {
+
+					printf ("        umstimmung_umstimmungsbund : \n");
+					print_action_list (lauf->u.umstimmung_umstimmungsbund.aktions_liste);
+
+/*
+
+					for (help_umst = lauf->u.umstimmung_umstimmungsbund.aktions_liste;
+					     help_umst;
+					     help_umst = help_umst -> next ) {
+						print_action(help_umst);
+					}
+
+*/
+
+				}
+
+					break;
+
+				case umstimmung_umstimmungs_case : {
+
+					struct case_liste * help_case;
+					printf ("        umstimmung_umstimmungs_case : \n");
+					drucke_argument (
+						& lauf -> u.umstimmung_umstimmungs_case.argument);
+
+					for (help_case = lauf -> u.umstimmung_umstimmungs_case.umstimmungs_case_liste;
+					     help_case;
+					     help_case = help_case -> next) {
+
+						if (help_case->is_default)
+							printf ("(ANSONSTEN)");
+						else
+							printf ("%d ", 
+								help_case->case_label);
+
+						print_action_list(
+							help_case->case_aktion);
+ 					}
+				}
+
+					break;
+				} /* end of switch */
+			}
+		}
+
+		printf ("\nHarmonien:\n");
+
+		{
+
+			struct harmonie * lauf;
+
+			for (lauf=list_of_harmonien; lauf; lauf=lauf->next) {
+				printf ("\n");
+				drucke_harmonie (lauf);
+				printf ("\n");
+			}
+		}
+
+		printf ("\nLogiken:\n");
+
+		{
+
+			struct logik * lauf;
+
+			for (lauf=list_of_logiken; lauf; lauf=lauf->next) {
+
+				struct anweisung * anw_lauf;
+				print_ausloeser (lauf->ausloeser);
+				printf ("\nName: %s Einstimmung : %s\n",
+					lauf->name,
+					lauf->einstimmungs_name ?
+					lauf->einstimmungs_name :
+					"(NULL)");
+
+				for (anw_lauf = lauf->anweisungsliste;
+				     anw_lauf;
+				     anw_lauf = anw_lauf -> next) {
+					print_ausloeser (anw_lauf->ausloeser);
+					print_action (anw_lauf->aktion);
 				}
 			}
-
-			break;
-			} /* end of switch */
 		}
-	}
 
-	printf ("\nHarmonien:\n");
+		printf ("\nInstrumente:\n");
 
-	{
+		{
 
-		struct harmonie * lauf;
+			struct instrument * lauf;
 
-		for (lauf=list_of_harmonien; lauf; lauf=lauf->next) {
-			printf ("\n");
-			drucke_harmonie (lauf);
-			printf ("\n");
-		}
-	}
-
-	printf ("\nLogiken:\n");
-
-	{
-
-		struct logik * lauf;
-
-		for (lauf=list_of_logiken; lauf; lauf=lauf->next) {
-
-			struct anweisung * anw_lauf;
-			print_ausloeser (lauf->ausloeser);
-			printf ("\nName: %s Einstimmung : %s\n",
-			        lauf->name,
-			        lauf->einstimmungs_name ?
-			        lauf->einstimmungs_name :
-			        "(NULL)");
-
-			for (anw_lauf = lauf->anweisungsliste;
-			                anw_lauf;
-			                anw_lauf = anw_lauf -> next) {
-				print_ausloeser (anw_lauf->ausloeser);
-				print_aktion (anw_lauf->aktion);
+			for (lauf=list_of_instrumente; lauf; lauf=lauf->next) {
+				printf ("Instrument %d -> %d - %d\n", lauf->midi_in,
+					lauf->midi_von, lauf->midi_bis);
 			}
 		}
+
 	}
-
-	printf ("\nInstrumente:\n");
-
-	{
-
-		struct instrument * lauf;
-
-		for (lauf=list_of_instrumente; lauf; lauf=lauf->next) {
-			printf ("Instrument %d -> %d - %d\n", lauf->midi_in,
-			        lauf->midi_von, lauf->midi_bis);
-		}
-	}
-
-
 #endif
 
 }
 
-/* unused
+#ifdef DEBUG
 
 static void drucke_argument (struct argument * z_or_p)
 {
@@ -935,7 +926,7 @@ static void drucke_harmonie (struct harmonie * this_)
         printf (" %c%d ,", lauf->stern, lauf->code);
     }
 }
-*/
+#endif
 /************/
 
 void print_integersequenz (struct midiliste * this_)
@@ -947,7 +938,7 @@ void print_integersequenz (struct midiliste * this_)
 	}
 }
 
-/*
+#ifdef DEBUG
 static void print_ausloeser (struct ausloeser * this_)
 {
   if (this_) {
@@ -987,7 +978,7 @@ static void print_ausloeser (struct ausloeser * this_)
      printf ("Kein Ausloeser\n");
 }
 
-*/
+#endif
 /********
 static void print_aktions_liste (struct aktions_liste * this)
 {
@@ -1015,6 +1006,7 @@ void get_new_intervall (const char *name, double wert)
 {
 
 	struct intervall * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1042,6 +1034,7 @@ void get_new_intervall_komplex (const char *name)
 {
 
 	struct intervall * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1066,6 +1059,7 @@ void get_new_ton_absolut (const char *name, double wert)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (* lauf)->name)) {
@@ -1087,6 +1081,7 @@ void get_new_ton_komplex_positive (const char *name, const char *bezugston)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1108,6 +1103,7 @@ void get_new_ton_komplex_negative (const char *name, const char *bezugston)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1148,6 +1144,7 @@ static struct ton * ton_liste;
 
 void init_ton_liste (void)
 {
+	TRACE;
 	ton_liste = NULL;
 }
 
@@ -1156,6 +1153,7 @@ void get_new_ton_in_tonsystem (const char *name)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & ton_liste; * lauf; lauf= & (*lauf)->next) {
 		/* Hier sind doppelte Tîne zulÑssig !! */
@@ -1172,6 +1170,7 @@ void get_new_tonsystem (const char * name, int taste)
 {
 
 	struct tonsystem * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1193,6 +1192,7 @@ void get_new_tonsystem_negative (const char * name, int taste)
 {
 
 	struct tonsystem * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1235,6 +1235,7 @@ void init_umstimmung (const char * name)
 {
 
 	struct umstimmung * lauf;
+	TRACE;
 
 	for (lauf= list_of_umstimmungen; lauf; lauf= lauf -> next) {
 		if ( ! strcmp (name, lauf -> name)) {
@@ -1254,6 +1255,7 @@ void get_new_umstimmung (void)
 {
 
 	struct umstimmung * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_umstimmungen; * lauf; lauf= & (*lauf)->next) {}
 
@@ -1262,6 +1264,7 @@ void get_new_umstimmung (void)
 
 void eintrage_parameterliste_in_umstimmung (void)
 {
+	TRACE;
 	tmp_umstimmung -> parameter_liste = get_last_parameter_liste ();
 }
 
@@ -1280,6 +1283,7 @@ void get_umstimmung_taste_abs (
 
         double zahl_wert, const char * parameter)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_taste_abs;
 	tmp_umstimmung -> u.umstimmung_taste_abs.
 	argument.argument_typ
@@ -1314,6 +1318,7 @@ void get_umstimmung_taste_rel (
 
         double zahl_wert, const char * parameter, char vorzeichen)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_taste_rel;
 	tmp_umstimmung -> u.umstimmung_taste_rel.
 	argument.argument_typ
@@ -1352,6 +1357,7 @@ void get_umstimmung_breite_abs (
 
         double zahl_wert, const char * parameter)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_breite_abs;
 	tmp_umstimmung -> u.umstimmung_breite_abs.
 	argument.argument_typ
@@ -1386,6 +1392,7 @@ void get_umstimmung_breite_rel (
 
         double zahl_wert, const char * parameter, char vorzeichen)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_breite_rel;
 	tmp_umstimmung -> u.umstimmung_breite_rel.
 	argument.argument_typ
@@ -1427,6 +1434,7 @@ static struct ton * tmp_tonliste;
 
 void init_umstimm_expression_list (void)
 {
+	TRACE;
 	tmp_tonliste = NULL;
 }
 
@@ -1435,6 +1443,7 @@ void get_new_umstimm_expression (const char * bezugston)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_tonliste; * lauf; lauf= & (*lauf)->next)
 		/* Nur Ende der Liste finden */ ;
@@ -1483,6 +1492,7 @@ void get_new_umstimm_expression_negative (const char * bezugston)
 {
 
 	struct ton * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_tonliste; * lauf; lauf= & (*lauf)->next)
 		/* Nur Ende der Liste finden */ ;
@@ -1542,6 +1552,7 @@ void get_umstimmung_wiederholung_abs_negative (void)
 
 void get_umstimmung_wiederholung_rel_positive (void)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_wiederholung_rel;
 	tmp_umstimmung -> u.umstimmung_wiederholung_rel.
 	komplex_liste = get_last_komplex_intervall ();
@@ -1549,6 +1560,7 @@ void get_umstimmung_wiederholung_rel_positive (void)
 
 void get_umstimmung_wiederholung_rel_negative (void)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_wiederholung_rel;
 	tmp_umstimmung -> u.umstimmung_wiederholung_rel.
 	komplex_liste = get_last_komplex_intervall ();
@@ -1574,6 +1586,7 @@ void get_umstimmungs_bund_element (const char * name)
 {
 
 	struct umstimmung * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_umstimmungsbund_liste;
 	                * lauf;
@@ -1610,6 +1623,7 @@ void get_umstimmungs_bund_element (const char * name)
 
 void get_umstimmung_umstimmungs_bund (void)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungsbund;
 	tmp_umstimmung -> u.umstimmung_umstimmungsbund
 	.aktions_liste = get_last_aktions_liste ();
@@ -1670,11 +1684,13 @@ static struct aufruf_liste * tmp_umstimmungs_case_aufrufs_liste;
 
 void init_umstimmungs_case_aufrufs_liste (void)
 {
+	TRACE;
 	tmp_umstimmungs_case_aufrufs_liste = NULL;
 }
 
 static struct umstimmung * get_last_umstimmungs_case_aufrufs_liste (void)
 {
+	TRACE;
 	return tmp_umstimmungs_case_aufrufs_liste;
 }
 
@@ -1684,6 +1700,7 @@ void get_umstimmungs_case_aufrufs_element (const char * aktion)
 {
 
 	struct aufruf_liste * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_umstimmungs_case_aufrufs_liste;
 	                * lauf;
@@ -1726,6 +1743,7 @@ void get_umstimmungs_case_zahl_element (int konstante)
 {
 
 	struct case_liste * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_umstimmungs_case_liste;
 	                * lauf;
@@ -1748,6 +1766,7 @@ void get_umstimmungs_case_default_element (void)
 {
 
 	struct case_liste * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_umstimmungs_case_liste;
 	                * lauf;
@@ -1769,11 +1788,13 @@ void get_umstimmungs_case_default_element (void)
 
 void init_umstimmungs_case_liste (void)
 {
+	TRACE;
 	tmp_umstimmungs_case_liste = NULL;
 }
 
 void get_umstimmung_umstimm_case_zahl (int selector)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
 	tmp_umstimmung -> u.umstimmung_umstimmungs_case
 	.argument
@@ -1834,6 +1855,7 @@ void get_umstimmung_umstimm_case_zahl (int selector)
 
 void get_umstimmung_umstimm_case_parameter (const char * selector)
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
 	tmp_umstimmung -> u.umstimmung_umstimmungs_case
 	.argument
@@ -1915,6 +1937,7 @@ void get_umstimmung_umstimm_case_parameter (const char * selector)
 void get_umstimmung_midi_out (void)
 
 {
+	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_midi_out;
 	tmp_umstimmung -> u.umstimmung_midi_out.out_liste
 	= get_last_integersequenz ();
@@ -1931,6 +1954,7 @@ static struct taste * tmp_tastenliste;
 
 void init_tastenliste (void)
 {
+	TRACE;
 	tmp_tastenliste = NULL;
 }
 
@@ -1939,6 +1963,7 @@ void get_new_taste (int taste, char stern)
 {
 
 	struct taste * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_tastenliste; * lauf; lauf= & (*lauf)->next)
 		/* Nur Ende der Liste finden */ ;
@@ -1957,6 +1982,7 @@ void get_new_harmonie (const char * name, int bezugstaste)
 {
 
 	struct harmonie * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_harmonien; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -1983,13 +2009,14 @@ static struct aktion * tmp_aktion;
 
 struct aktion * get_last_aktion (void)
 {
+	TRACE;
 	return tmp_aktion;
 }
 
 void get_aktion_midi_out (void)
 
 {
-
+	TRACE;
 	tmp_aktion = xmalloc (sizeof (struct aktion));
 	tmp_aktion -> aktions_typ = aktion_midi_out;
 	tmp_aktion -> u.aktion_midi_out.midi_code   = get_last_integersequenz ();
@@ -1997,6 +2024,7 @@ void get_aktion_midi_out (void)
 
 void get_aktion_aufruf (const char * name)
 {
+	TRACE;
 
 	tmp_aktion = xmalloc (sizeof (struct aktion));
 	tmp_aktion -> aktions_typ = aktion_aufruf;
@@ -2029,17 +2057,20 @@ static struct ausloeser * tmp_ausloeser;
 
 void init_ausloeser (void)
 {
+	TRACE;
 	tmp_ausloeser = NULL;
 }
 
 struct ausloeser * get_last_ausloeser (void)
 {
+	TRACE;
 	return tmp_ausloeser;
 }
 
 void get_ausloeser_default (void)
 
 {
+	TRACE;
 
 	tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
 	tmp_ausloeser -> ausloeser_typ = ausloeser_default;
@@ -2047,6 +2078,7 @@ void get_ausloeser_default (void)
 
 void get_ausloeser_harmonie (void)
 {
+	TRACE;
 
 	tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
 	tmp_ausloeser -> ausloeser_typ = ausloeser_harmonie;
@@ -2057,6 +2089,7 @@ void get_ausloeser_harmonie (void)
 
 void get_ausloeser_harmonie_form (void)
 {
+	TRACE;
 
 	tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
 	tmp_ausloeser -> ausloeser_typ = ausloeser_harmonie_form;
@@ -2067,6 +2100,7 @@ void get_ausloeser_harmonie_form (void)
 
 void get_ausloeser_taste (const char * name)
 {
+	TRACE;
 
 	tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
 	tmp_ausloeser -> ausloeser_typ = ausloeser_taste;
@@ -2081,6 +2115,7 @@ void get_ausloeser_taste (const char * name)
 void get_ausloeser_midi_in (void)
 
 {
+	TRACE;
 
 	tmp_ausloeser = (ausloeser*) xmalloc (sizeof (struct ausloeser));
 	tmp_ausloeser -> ausloeser_typ = ausloeser_midi_in;
@@ -2099,11 +2134,13 @@ static struct anweisung * tmp_anweisungsliste;
 
 void init_anweisungs_liste (void)
 {
+	TRACE;
 	tmp_anweisungsliste = NULL;
 }
 
 struct anweisung * get_last_anweisungs_liste (void)
 {
+	TRACE;
 	return tmp_anweisungsliste ;
 }
 
@@ -2112,6 +2149,7 @@ void get_new_anweisung (void)
 {
 
 	struct anweisung * * lauf;
+	TRACE;
 
 	for (lauf= & tmp_anweisungsliste; * lauf; lauf= & (*lauf)->next)
 		/* Nur Ende der Liste finden */ ;
@@ -2130,6 +2168,7 @@ void get_new_logik (const char * name, const char * einstimmung)
 {
 
 	struct logik * * lauf;
+	TRACE;
 
 	for (lauf= & list_of_logiken; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcmp (name, (*lauf)->name)) {
@@ -2151,6 +2190,7 @@ void vervollstaendige_logik (void)
 {
 
 	struct logik * lauf;
+	TRACE;
 
 	for (lauf = list_of_logiken; lauf -> next; lauf = lauf->next) {}
 
@@ -2165,6 +2205,7 @@ void get_instrument_dekl (int midi_in, int midi_von, int midi_bis, int midi_umle
 {
 	int temp;
 
+	TRACE;
 	/**///for (list_to_insert = & list_of_instrumente;
 
 	for (;
@@ -2248,6 +2289,7 @@ static char * matrix;          /* Adjazenzmatrix (auf sie darf nur ueber
 
 static void belege_toene (struct ton **toene, struct ton * liste)
 {
+	TRACE;
 	while (liste)
 	{
 		*toene = liste;
@@ -2260,6 +2302,7 @@ static int ton_nummer (const char *name)
 {
 	int i;
 
+	TRACE;
 	for (i=0; i<anzahl_toene; i++)
 		if ( ! strcmp (name, toene[i]->name)) return i;
 
@@ -2272,6 +2315,7 @@ static void test_zyklen (int startknoten)
 {
 	int i;
 
+	TRACE;
 	for (i=0; i<anzahl_toene; i++) {
 		if (adjazent (startknoten, i)) {
 			if (visited [i]) {
@@ -2292,6 +2336,7 @@ static void berechne_ton_endgueltig (int k)
 {
 	int b;
 	double help, help2;
+	TRACE;
 
 	switch (toene[k]->ton_typ) {
 
@@ -2322,6 +2367,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 {
 	int i,j,k;
 
+	TRACE;
 	anzahl_toene = ton_list_laenge (list_of_toene);
 
 	toene = (ton* *) xalloca (sizeof(struct ton *) * anzahl_toene);
@@ -2354,24 +2400,25 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 		}
 	}
 
-#ifdef DEBUG_ANZEIGE
+#ifdef DEBUG
 	/* Adjazenzmatrix anzeigen */
+	if (isDebugFlag(kernel_parser)) {
+		printf ("Matrix:\n");
 
-	printf ("Matrix:\n");
+		for (i=0; i<anzahl_toene; i++)
+		{
+			printf ("%s -> ", toene[i]->name);
 
-	for (i=0; i<anzahl_toene; i++)
-	{
-		printf ("%s -> ", toene[i]->name);
-
-		for (j=0; j<anzahl_toene; j++) {
-			if (adjazent (i,j))
-				printf ("%s  ", toene[j]->name);
+			for (j=0; j<anzahl_toene; j++) {
+				if (adjazent (i,j))
+					printf ("%s  ", toene[j]->name);
+			}
+			
+			printf ("\n");
 		}
 
 		printf ("\n");
 	}
-
-	printf ("\n");
 
 #endif
 
@@ -2392,25 +2439,26 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 	for (k=0; k<anzahl_toene; k++)
 		berechne_ton_endgueltig (k);
 
-#ifdef DEBUG_ANZEIGE
+#ifdef DEBUG
 	/* Adjazenzmatrix anzeigen */
 
-	printf ("Matrix:\n");
+	if (isDebugFlag(kernel_parser)) {
+		printf ("Matrix:\n");
 
-	for (i=0; i<anzahl_toene; i++)
-	{
-		printf ("%s -> ", toene[i]->name);
+		for (i=0; i<anzahl_toene; i++)
+		{
+			printf ("%s -> ", toene[i]->name);
 
-		for (j=0; j<anzahl_toene; j++) {
-			if (adjazent (i,j))
-				printf ("%s  ", toene[j]->name);
+			for (j=0; j<anzahl_toene; j++) {
+				if (adjazent (i,j))
+					printf ("%s  ", toene[j]->name);
+			}
+
+			printf ("\n");
 		}
 
 		printf ("\n");
 	}
-
-	printf ("\n");
-
 #endif
 
 	xde_alloca (toene);
@@ -2431,6 +2479,7 @@ static void berechne_toene_absolut (struct ton *list_of_toene)
 
 int enthalten_in_tastenliste (int taste, struct taste * lauf)
 {
+	TRACE;
 	while (lauf)
 		if (lauf -> code == taste)
 			return 1;
@@ -2444,6 +2493,7 @@ static
 
 int case_label_enthalten_in_case_liste (double case_label, struct case_liste * lauf)
 {
+	TRACE;
 	if (lauf == NULL)
 		return 0;
 	else if ( ! lauf -> is_default  &&
@@ -2458,6 +2508,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, const char * name)
 {
 
 	struct harmonie * help_harmonie;
+	TRACE;
 
 	if (ausloeser == NULL) return;
 
@@ -2565,6 +2616,7 @@ static void check_ausloeser (struct ausloeser * ausloeser, const char * name)
 
 static void check_aktionen (struct aktions_liste * aktionen, const char * name)
 {
+	TRACE;
 
 	for ( ; aktionen ; aktionen = aktionen -> next )
 	{
@@ -2699,6 +2751,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
                                struct logik * liste2)
 {
 	int i = 0;
+	TRACE;
 
 	while (liste1)
 	{
@@ -2720,6 +2773,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
 static int test_zyklen_nummer (const char *name)
 {
 	int i;
+	TRACE;
 
 	for (i=0; i<anzahl_umstimmungen_und_logiken; i++)
 		if ( ((zyklen_feld[i].umst_oder_logik_typ == typ_umstimmung) &&
@@ -2737,6 +2791,7 @@ static int test_zyklen_nummer (const char *name)
 static void u_test_zyklen (int startknoten)
 {
 	int i;
+	TRACE;
 
 	for (i=0; i<anzahl_umstimmungen_und_logiken; i++) {
 		if (u_adjazent (startknoten, i)) {
@@ -2764,6 +2819,7 @@ static void u_test_zyklen (int startknoten)
 
 static void check_konsistenz (void)
 {
+	TRACE;
 	allgemeine_initialisierungen();
 
 	/* Tonsysteme:
@@ -2809,34 +2865,35 @@ static void check_konsistenz (void)
 			switch (lauf -> umstimmung_typ) {
 
 			default :
+				TRACE;
 				fatal_error (0, _T(__FILE__), __LINE__);
 
 				break;
 
 			case umstimmung_taste_abs :
-
 			case umstimmung_taste_rel :
-
 			case umstimmung_breite_abs :
-
 			case umstimmung_breite_rel :
+				TRACE;
 				break;
 
 			case umstimmung_wiederholung_rel :
+				TRACE;
 				check_komplex_intervall (lauf->u.umstimmung_wiederholung_rel.komplex_liste,
 				                         lauf->name);
 
 				break;
 
 			case umstimmung_wiederholung_abs :
+				TRACE;
 				check_komplex_intervall (lauf->u.umstimmung_wiederholung_abs.komplex_liste,
 				                         lauf->name);
 
 				break;
 
 			case umstimmung_toene_veraendert : {
-
 				struct ton * lauf_ton;
+				TRACE;
 
 				for (lauf_ton = lauf->u.umstimmung_toene_veraendert.tonliste;
 				                lauf_ton;
@@ -2878,6 +2935,7 @@ static void check_konsistenz (void)
 				*/
 
 				struct aktions_liste * help_aktionen;
+				TRACE;
 
 				for (help_aktionen = lauf -> u.umstimmung_umstimmungsbund.aktions_liste;
 				                help_aktionen;
@@ -2928,6 +2986,7 @@ static void check_konsistenz (void)
 			break;
 
 			case umstimmung_umstimmungs_case : {
+				TRACE;
 
 				/* Hier werden nur Eindeutigkeit der case_label
 				   und die LÑngen der Parameterlisten
@@ -3260,5 +3319,53 @@ static void check_konsistenz (void)
 	}
 #endif
 }
+
+#if defined(DEBUG_ANZEIGE) || defined(DEBUG) 
+
+static void print_action (struct aktions_liste * action) 
+{
+
+	switch (action -> aktions_typ) {
+	case aktion_midi_out:
+		STUB;
+		break;
+	case aktion_aufruf: {
+		struct argument_liste * help;
+		printf ("                Umstimmungs-name: %s, Parameter: ",
+			action->u.aktion_aufruf.name ? 
+			action->u.aktion_aufruf.name : "(NULL)");
+		
+		for (help = action->u.aktion_aufruf.argument_liste; 
+		     help; help = help->next ) {
+			drucke_argument ( & help -> argument );
+		}
+		break;
+	}
+	default:
+		UNREACHABLE;
+	}
+
+	printf ("\n");
+
+}
+
+
+static void print_action_list(struct aktions_liste * actionlist)
+{ 
+ 	TRACE;
+	printf("{\n");
+	struct aktions_liste * help_umst;
+	for (help_umst = actionlist;
+	     help_umst;
+	     help_umst = help_umst -> next ) {
+		print_action(help_umst);
+	}
+	
+	printf("}\n");
+}
+
+
+
+#endif
 
 ///\}
