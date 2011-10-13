@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.9 2011/10/02 16:58:43 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebugFlags.h,v 1.10 2011/10/13 18:26:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:43 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/13 18:26:13 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: mutDebugFlags.h,v $
- * Revision 1.9  2011/10/02 16:58:43  keinstein
+ * Revision 1.10  2011/10/13 18:26:13  keinstein
+ * Fix a Bug in the kernel:
+ * retuning case did not execute the following statements,
+ * which lead to unexpected results
+ *
+ * Revision 1.9  2011-10-02 16:58:43  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -61,6 +66,10 @@
  */
 
 DEBUGFLAG(other, _("Unspecified debug information"))
+DEBUGFLAG(kernel_exec, _("Debug Execute.cpp"))
+DEBUGFLAG(kernel_tabgen, _("Debug table generator"))
+DEBUGFLAG(kernel_runtime, _("Debug other runtime functions of the kernel"))
+DEBUGFLAG(kernel_parser, _("Debug the parser of the Mutabor kernel"))
 DEBUGFLAG(gui,   _("Other gui related debug information"))
 DEBUGFLAG(dialog, _("Debug configuration and postprocessing of dialogs"))
 DEBUGFLAG(routing, _("Debug the routing system"))

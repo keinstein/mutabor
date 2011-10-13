@@ -2,16 +2,21 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.12 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Global.h,v 1.13 2011/10/13 18:26:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/10/13 18:26:13 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: Global.h,v $
- * Revision 1.12  2011/09/27 20:13:21  keinstein
+ * Revision 1.13  2011/10/13 18:26:13  keinstein
+ * Fix a Bug in the kernel:
+ * retuning case did not execute the following statements,
+ * which lead to unexpected results
+ *
+ * Revision 1.12  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -284,9 +289,7 @@ struct case_liste
 {
 	int case_label;
 	char is_default;
-
 	struct aktions_liste * case_aktion;
-
 	struct case_liste * next;
 };
 
@@ -300,83 +303,49 @@ struct umstimmung
 
 	union
 	{
-
 		struct {
-
 			struct argument argument;
-		}
-
-		umstimmung_taste_abs;
+		} umstimmung_taste_abs;
 
 		struct {
-
 			struct argument argument;
 			char rechenzeichen;
-		}
-
-		umstimmung_taste_rel;
+		} umstimmung_taste_rel;
 
 		struct {
-
 			struct argument argument;
-		}
-
-		umstimmung_breite_abs;
+		} umstimmung_breite_abs;
 
 		struct {
-
 			struct argument argument;
 			char rechenzeichen;
-		}
-
-		umstimmung_breite_rel;
+		} umstimmung_breite_rel;
 
 		struct {
-
 			struct ton * tonliste;
-		}
-
-		umstimmung_toene_veraendert;
+		} umstimmung_toene_veraendert;
 
 		struct {
-
 			struct komplex_intervall * komplex_liste;
-		}
-
-		umstimmung_wiederholung_abs;
+		} umstimmung_wiederholung_abs;
 
 		struct {
-
 			struct komplex_intervall * komplex_liste;
-		}
-
-		umstimmung_wiederholung_rel;
+		} umstimmung_wiederholung_rel;
 
 		struct {
-
 			struct aktions_liste * aktions_liste;
-		}
-
-		umstimmung_umstimmungsbund;
+		} umstimmung_umstimmungsbund;
 
 		struct {
-
 			struct argument argument;
-
 			struct case_liste * umstimmungs_case_liste;
-		}
-
-		umstimmung_umstimmungs_case;
+		} umstimmung_umstimmungs_case;
 
 		struct {
-
 			struct midiliste * out_liste;
-		}
-
-		umstimmung_midi_out;
-	}
-
-	u;
+		} umstimmung_midi_out;
+	} u;
 
 	struct umstimmung * next;
 };
@@ -460,17 +429,12 @@ struct aktions_liste
 		struct {
 
 			struct midiliste * midi_code;
-		}
-
-		aktion_midi_out;
+		} aktion_midi_out;
 
 		struct {
 			const char * name;
-
 			struct argument_liste * argument_liste;
-		}
-
-		aktion_aufruf;
+		} aktion_aufruf;
 	} u;
 
 	struct aktions_liste * next;
@@ -494,13 +458,9 @@ struct anweisung
 struct logik
 {
 	const char * name;
-
 	struct ausloeser * ausloeser;
-
 	const char * einstimmungs_name;
-
 	struct anweisung * anweisungsliste;
-
 	struct logik * next;
 };
 
