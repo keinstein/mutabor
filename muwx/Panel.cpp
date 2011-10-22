@@ -6,16 +6,19 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.8 2011/10/03 20:34:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.9 2011/10/22 16:32:39 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/03 20:34:05 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.8  2011/10/03 20:34:05  keinstein
+ * Revision 1.9  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.8  2011-10-03 20:34:05  keinstein
  * fix compiling with wx 2.9
  *
  * Revision 1.7  2011-10-03 15:50:21  keinstein
@@ -189,7 +192,7 @@ void MutPanel::OnChildFocus(wxChildFocusEvent& event) {
 } 
 
 void MutPanel::OnFocus(wxFocusEvent& event) { 
-	SetFocus();
+	//	SetFocus();
 	event.Skip();
 	return;
 //	m_container.HandleOnFocus(event); 

@@ -632,6 +632,7 @@ installwxlocale:
 	done )
 
 installwin:
+	rm -f Mutabor/mutabor.exe
 	$(MAKE) "prefix=`pwd`/Mutabor" \
 		'bindir=$$(prefix)' \
 		'datarootdir=$$(prefix)' \

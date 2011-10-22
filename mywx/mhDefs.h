@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.22 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.23 2011/10/22 16:32:39 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.22 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.23 $
  * \license GPL
  *
  * $Log: mhDefs.h,v $
- * Revision 1.22  2011/10/04 05:38:44  keinstein
+ * Revision 1.23  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.22  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.21  2011-09-27 20:13:25  keinstein
@@ -53,6 +56,7 @@
 #  endif
 #endif
 
+#include "wx/image.h"
 #ifdef __WXMSW__
 #define ICON(s)	wxIcon(_T(#s) _T("_icn"))
 #else

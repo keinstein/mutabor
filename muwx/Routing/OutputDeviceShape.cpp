@@ -4,16 +4,19 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.8 2011/10/03 17:42:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.9 2011/10/22 16:32:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 17:42:41 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.8  2011/10/03 17:42:41  keinstein
+ * Revision 1.9  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.8  2011-10-03 17:42:41  keinstein
  * Open the configuration dialog on key press in the route window
  * Accept entering nothing in the input/output device dialog
  *
@@ -326,9 +329,13 @@ namespace mutaborGUI {
 			} else if (type != DTNotSet) {
 				OutputDevice outdev = DeviceFactory::CreateOutput (type);
 				if (outdev) {
-					MutOutputDeviceShape * newdev = 
-						GUIDeviceFactory::CreateShape (outdev,
-									       GetParent());
+				  MutOutputDeviceShape * newdev = 
+					  GUIDeviceFactory::CreateShape (outdev,
+									 GetParent());
+				  if (! newdev) {
+				    UNREACHABLEC;
+				    return;
+				  }
 					DEBUGLOG (dialog, _T(""));
  					newdev -> readDialog (out);
 					DEBUGLOG (dialog, _T(""));
@@ -344,22 +351,22 @@ namespace mutaborGUI {
 		out->Destroy();
 		DebugCheckRoutes();
 
-		if (Res != ::wxID_REMOVE) {
+		if (Res != ::wxID_REMOVE && !destroySelf) {
 			Layout();
 			InvalidateBestSize();
 			Fit();
 			Refresh();
 		}
 		if (parent) {
-			parent->Layout();
 			parent->InvalidateBestSize();
+			parent->Layout();
 			parent->FitInside();
 			parent->Refresh();
 			parent->Update();
-		} else if (Res != ::wxID_REMOVE) Update();
+		} else if (Res != ::wxID_REMOVE && !destroySelf) Update();
 		// Signalize to delete this control
 		// Unfortunately WXMAC segfaults if we use Destroy(), here.
-		if (destroySelf) Destroy();
+		// if (destroySelf) Destroy();
 	}
 
 	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
@@ -478,7 +485,8 @@ namespace mutaborGUI {
 		newshape->SetFocus();
 
 		device -> Destroy();
-		device = NULL;
+		// at this point even “this” is invalid.
+		//		device = NULL;
 		return true;
 	}
 

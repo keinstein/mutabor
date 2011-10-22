@@ -3,16 +3,19 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.6 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.7 2011/10/22 16:32:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: RouteIcons.cpp,v $
- * Revision 1.6  2011/09/27 20:13:25  keinstein
+ * Revision 1.7  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.6  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -70,6 +73,7 @@
 #include "BoxShape.h"
 #include "MutApp.h"
 
+#include "wx/image.h"
 #include "Icon/DevUnknown.xpm"
 
 namespace mutaborGUI {

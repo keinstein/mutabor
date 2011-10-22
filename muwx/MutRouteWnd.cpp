@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.31 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.32 2011/10/22 16:32:38 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.31 $
+ * $Date: 2011/10/22 16:32:38 $
+ * \version $Revision: 1.32 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.31  2011/10/05 16:28:39  keinstein
+ * Revision 1.32  2011/10/22 16:32:38  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.31  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.30  2011-10-04 17:16:14  keinstein
@@ -141,6 +144,7 @@
 #include "MidiKern.h"
 
 //#if !defined(__WXMSW__)
+#include "wx/image.h"
 #include "Icon/DevUnknown.xpm"
 #if 1
 #include "Icon/DevMidiPort.xpm"

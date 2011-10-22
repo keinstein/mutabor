@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.9 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.10 2011/10/22 16:32:39 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: mutDebug.h,v $
- * Revision 1.9  2011/10/04 20:09:16  keinstein
+ * Revision 1.10  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.9  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -108,7 +111,6 @@ struct debugFlags {
 #define isDebugFlag(level) (debugFlags::flags.level)
 # define DEBUGLOGBASEINT(level,type, ...)				\
 	do {								\
-		wxASSERT(std::cerr.good());				\
 		if (level) {						\
 			std::fprintf(stderr,"[Debug] ");		\
 			wxASSERT(std::clog.good());			\
