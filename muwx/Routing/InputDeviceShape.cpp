@@ -3,16 +3,19 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.9 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.10 2011/10/22 16:32:39 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/10/22 16:32:39 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.9  2011/10/04 05:38:44  keinstein
+ * Revision 1.10  2011/10/22 16:32:39  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.9  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.8  2011-10-03 17:42:41  keinstein
@@ -280,6 +283,10 @@ namespace mutaborGUI {
 						GUIDeviceFactory::CreateShape (indev,
 									       GetParent());
 					
+					if (! newdev) {
+					  UNREACHABLEC;
+					  return;
+					}
 					DEBUGLOG (dialog, _T(""));
 					newdev -> readDialog (in);
 					DEBUGLOG (dialog, _T(""));
@@ -297,22 +304,24 @@ namespace mutaborGUI {
 		DebugCheckRoutes();
 		TRACEC;
 
-		if (Res != ::wxID_REMOVE) {
+		if (Res != ::wxID_REMOVE && !destroySelf) {
 			Layout();
 			InvalidateBestSize();
 			Fit();
 			Refresh();
 		}
 		if (parent) {
+			parent->InvalidateBestSize();
 			parent->Layout();
 			parent->FitInside();
 			parent->Refresh();
 			parent->Update();
-		} else if (Res != ::wxID_REMOVE) Update();
+		} else if (Res != ::wxID_REMOVE && !destroySelf) Update();
 		// Signalize to delete this control
 		// Unfortunately WXMAC segfaults if we use Destroy(), here.
 		// note: this should not be necessary anymore
-		if (destroySelf) Destroy();
+		// yes: it crashes on Windows
+		// if (destroySelf) Destroy();
 		TRACE;
 	}
 
@@ -432,6 +441,7 @@ namespace mutaborGUI {
 		sizer -> Replace (this, newshape, false);
 
 		Hide();	
+		m_parent->RemoveChild(this);
 		m_parent->Layout();
 		m_parent->FitInside();
 		m_parent->SetVirtualSize(wxDefaultSize);
@@ -439,9 +449,8 @@ namespace mutaborGUI {
 
 		TRACEC;
 		device->Destroy();
-		TRACEC;
-		device = NULL;
-		TRACEC;
+		// at this moment this points to invalid memory
+		TRACET(MutInputDeviceShape);
 		return true;
 	}
 

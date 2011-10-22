@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.13 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.14 2011/10/22 16:32:38 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.13 $
+ * $Date: 2011/10/22 16:32:38 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.13  2011/10/02 16:58:41  keinstein
+ * Revision 1.14  2011/10/22 16:32:38  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.13  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -1101,14 +1104,14 @@ InputMidiPort:\n\
 			rtmidiout = new RtMidiOut();
 		} catch (RtError &error) {
 			error.printMessage();
-			abort();
+			// abort();
 		}
 
 		try {
 			rtmidiin = new RtMidiIn();
 		} catch (RtError &error) {
 			error.printMessage();
-			abort();
+			// abort();
 		}
 
 #endif

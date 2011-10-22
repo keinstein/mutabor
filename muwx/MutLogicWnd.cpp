@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.31 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.32 2011/10/22 16:32:38 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.31 $
+ * $Date: 2011/10/22 16:32:38 $
+ * \version $Revision: 1.32 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.31  2011/10/04 20:09:16  keinstein
+ * Revision 1.32  2011/10/22 16:32:38  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.31  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -92,6 +95,7 @@
 #include "MutFrame.h"
 #include "MutRouteWnd.h"
 #include "wx/dcclient.h"
+#include "wx/image.h"
 
 
 //#if !defined(__WXMSW__)

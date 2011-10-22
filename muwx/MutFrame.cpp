@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.58 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.59 2011/10/22 16:32:38 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.58 $
+ * \date $Date: 2011/10/22 16:32:38 $
+ * \version $Revision: 1.59 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.58  2011/10/04 20:09:16  keinstein
+ * Revision 1.59  2011/10/22 16:32:38  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.58  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -317,6 +320,7 @@
 #endif
 
 #include "wx/toolbar.h"
+#include "wx/image.h"
 
 #if !defined(__WXMSW__) && 0
 #include "Icon/Mutabor.xpm"

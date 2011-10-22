@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.18 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.19 2011/10/22 16:32:38 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.18 $
+ * $Date: 2011/10/22 16:32:38 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.18  2011/09/30 18:07:04  keinstein
+ * Revision 1.19  2011/10/22 16:32:38  keinstein
+ * commit to continue debugging on Linux/wine
+ *
+ * Revision 1.18  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -54,6 +57,7 @@
 #include <iostream>
 
 #include "wx/toolbar.h"
+#include "wx/image.h"
 
 #if 0
 #include "bitmaps/new.xpm"
