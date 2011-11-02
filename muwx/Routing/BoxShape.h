@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.11 2011/10/04 20:09:16 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.12 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/04 20:09:16 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: BoxShape.h,v $
- * Revision 1.11  2011/10/04 20:09:16  keinstein
+ * Revision 1.12  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.11  2011-10-04 20:09:16  keinstein
  * Clean up focus handling a little bit.
  * Change perimeter point handling a little bit. Need at least one night to
  * get overthought.
@@ -171,12 +174,12 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "GUIBoxData.h"
-#include "GUIRoute.h"
+#include "mu32/Defs.h"
+#include "muwx/GUIBoxData.h"
+#include "muwx/Routing/GUIRoute.h"
 #include "muwx/Routing/BoxChannelShape.h"
-#include "BoxIconShape.h"
-#include "Device.h"
+#include "muwx/Routing/BoxIconShape.h"
+#include "mu32/routing/Device.h"
 
 #ifndef MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED
@@ -215,7 +218,11 @@ namespace mutaborGUI {
 		MutBoxShape():MutBoxIconShape(),m_icon(NULL),channels(NULL),
 			      boxId(NoBox) {}
 
-		MutBoxShape(wxStaticBox *box, int orient):
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+		MutBoxShape(wxStaticBox * box, int orient):
 			MutBoxIconShape(),m_icon(NULL),channels(NULL)
 			{
 				STUBC;
@@ -263,6 +270,7 @@ namespace mutaborGUI {
 		    events, we send us a new event using the event queue.
 		*/
 		void CmLeftDblClick (wxCommandEvent& event) {
+			mutUnused(event);
 			DoLeftDblClick(); 
 		}
 
@@ -338,6 +346,11 @@ namespace mutaborGUI {
 	typedef std::list <MutBoxShape *> MutBoxShapeList;
 
 }
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
+
 #endif				/* BOXSHAPE_H_PRECOMPILED */
 #endif				/* BOXSHAPE_H */
 /*

@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data. Inline functions that must not be defined at class declaration time
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.3 2011/10/04 17:16:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.4 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 17:16:13 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData-inlines.h,v $
- * Revision 1.3  2011/10/04 17:16:13  keinstein
+ * Revision 1.4  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.3  2011-10-04 17:16:13  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.2  2011-09-30 18:07:04  keinstein
@@ -74,8 +77,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "box.h"
+#include "mu32/Defs.h"
+#include "mu32/box.h"
 #include "muwx/Routing/RouteLists.h"
 #include "muwx/GUIBoxData.h"
 #include "muwx/Routing/BoxShape.h"

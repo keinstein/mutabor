@@ -3,16 +3,19 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.5 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/01/11
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: OutputDevDlg.cpp,v $
- * Revision 1.5  2011/09/27 20:13:25  keinstein
+ * Revision 1.6  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -53,9 +56,9 @@
  *\{
  ********************************************************************/
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
-#include "OutputDevDlg.h"
+#include "muwx/Routing/OutputDevDlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -123,10 +126,8 @@ bool OutputDevDlg::ShowToolTips()
 
 wxBitmap OutputDevDlg::GetBitmapResource( const wxString& name )
 {
-	// Bitmap retrieval
-////@begin OutputDevDlg bitmap retrieval
+	mutUnused(name);
 	return wxNullBitmap;
-////@end OutputDevDlg bitmap retrieval
 }
 
 /*!
@@ -135,10 +136,8 @@ wxBitmap OutputDevDlg::GetBitmapResource( const wxString& name )
 
 wxIcon OutputDevDlg::GetIconResource( const wxString& name )
 {
-	// Icon retrieval
-////@begin OutputDevDlg icon retrieval
+	mutUnused(name);
 	return wxNullIcon;
-////@end OutputDevDlg icon retrieval
 }
 
 /*!
@@ -202,6 +201,7 @@ void OutputDevDlg::UpdateLayout(DevType type)
 
 void OutputDevDlg::OnRemoveClick( wxCommandEvent& event )
 {
+	mutUnused(event);
 	EndModal(::wxID_REMOVE);
 }
 

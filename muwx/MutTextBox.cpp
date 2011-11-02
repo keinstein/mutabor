@@ -2,17 +2,20 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.21 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.22 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.21 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: MutTextBox.cpp,v $
- * Revision 1.21  2011/09/30 18:07:05  keinstein
+ * Revision 1.22  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.21  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -58,17 +61,17 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #include <iostream>
 
 #include "wx/tokenzr.h"
 
-#include "MutTextBox.h"
-#include "MutFrame.h"
-#include "GUIBoxData.h"
-#include "BoxShape.h"
-#include "GrafKern.h"
+#include "muwx/MutTextBox.h"
+#include "muwx/MutFrame.h"
+#include "muwx/GUIBoxData.h"
+#include "muwx/Routing/BoxShape.h"
+#include "mu32/GrafKern.h"
 #include "muwx/Action.h"
 
 
@@ -112,6 +115,7 @@ MutTextBox::MutTextBox(WinKind k,
 void MutTextBox::OnClose(wxCloseEvent& event)
 
 {
+	mutUnused(event);
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T("winKind: %d"), winKind);
         BoxData & boxdata = BoxData::GetBox(box);

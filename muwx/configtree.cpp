@@ -2,14 +2,17 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: configtree.cpp,v 1.7 2011/09/30 18:07:05 keinstein Exp $
+ * $Id: configtree.cpp,v 1.8 2011/11/02 14:31:59 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: configtree.cpp,v $
- * Revision 1.7  2011/09/30 18:07:05  keinstein
+ * Revision 1.8  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -43,8 +46,8 @@
  * \addtogroup config
  * \{
  ********************************************************************/
-#include "Defs.h"
-#include "configtree.h"
+#include "mu32/Defs.h"
+#include "muwx/configtree.h"
 
 
 long configtree::Read(const mutStringRef key, long defval)
@@ -64,7 +67,7 @@ int configtree::Read(const mutStringRef key, int defval)
 
 bool configtree::Read(const mutStringRef key, bool defval)
 { 
-	return config -> Read(key, (long) defval);
+	return (config -> Read(key, (long) defval) != 0L);
 }
 
 mutString configtree::Read(const mutStringRef key, const mutStringRef defval)

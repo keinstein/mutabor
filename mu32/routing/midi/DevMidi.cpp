@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.14 2011/10/22 16:32:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.15 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/22 16:32:38 $
- * \version $Revision: 1.14 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.14  2011/10/22 16:32:38  keinstein
+ * Revision 1.15  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.14  2011-10-22 16:32:38  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.13  2011-10-02 16:58:41  keinstein
@@ -74,10 +77,10 @@
 // MidiPort Klassen
 // ------------------------------------------------------------------
 
-#include "DevMidi.h"
-#include "Execute.h"
-#include "GrafKern.h"
-#include "MidiKern.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "mu32/Execute.h"
+#include "mu32/GrafKern.h"
+#include "mu32/MidiKern.h"
 #include "wx/msgdlg.h"
 
 // OutputMidiPort ------------------------------------------------------
@@ -676,6 +679,7 @@ OutputMidiPort:\n\
 
 	void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData )
 	{
+		mutUnused(deltatime);
 		DWORD data = 0;
 
 		for (int i = message->size()-1; i >= 0; i--)

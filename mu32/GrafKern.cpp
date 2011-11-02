@@ -2,14 +2,17 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.18 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.19 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
- * \date $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.18 $
+ * \date $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.19 $
  * \license GPL
  *
  * $Log: GrafKern.cpp,v $
- * Revision 1.18  2011/09/30 18:07:04  keinstein
+ * Revision 1.19  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.18  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -83,18 +86,18 @@
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
-#include "Defs.h"
-#include "mutDebug.h"
-#include "Global.h"
-#include "Interpre.h"
-#include "GrafKern.h"
-#include "Interval.h"
+#include "mu32/Defs.h"
+#include "mywx/mutDebug.h"
+#include "mu32/Global.h"
+#include "mu32/Interpre.h"
+#include "mu32/GrafKern.h"
+#include "mu32/Interval.h"
 //#include "Mutabor.rh"
-#include "Execute.h"
+#include "mu32/Execute.h"
 #include <setjmp.h>
 
 // Needed at least for Visual C++ 8
-#include "Runtime.h"
+#include "mu32/Runtime.h"
 
 #ifdef MUTWIN
 #ifdef WX

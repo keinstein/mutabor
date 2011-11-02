@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GSP_Err.cpp,v 1.4 2011/02/20 22:35:56 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GSP_Err.cpp,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/02/20 22:35:56 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: GSP_Err.cpp,v $
- * Revision 1.4  2011/02/20 22:35:56  keinstein
+ * Revision 1.5  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-02-20 22:35:56  keinstein
  * updated license information; some file headers have to be revised, though
  *
  *
@@ -23,7 +26,7 @@
 // ##################################################################
 // error messages of gsp (GMN Soft Parser)
 // ##################################################################
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 const mutTranslationChar *GspErrorText[] =
         {

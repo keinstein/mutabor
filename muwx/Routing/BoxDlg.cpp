@@ -2,16 +2,19 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.8 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.9 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: BoxDlg.cpp,v $
- * Revision 1.8  2011/10/02 16:58:41  keinstein
+ * Revision 1.9  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.8  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -136,8 +139,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "BoxDlg.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/BoxDlg.h"
 #include "muwx/Routing/InputDeviceShape.h"
 #include "muwx/Routing/OutputDeviceShape.h"
 #include "muwx/Routing/BoxShape.h"
@@ -350,6 +353,7 @@ namespace mutaborGUI {
 
 	void RouteRemoveButton::RemoveButtonPressed( wxCommandEvent& event )
 	{
+		mutUnused(event);
 		if (panel) 
 			EnableRoute(!panel->IsEnabled());
 	}
@@ -448,6 +452,7 @@ namespace mutaborGUI {
 
 	void BoxDlg::AddButtonPressed( wxCommandEvent& event )
 	{
+		mutUnused(event);
 		MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *> (m_parent);
 		if (!parentwin || !routeWindow) UNREACHABLEC;
 		MutBoxChannelShape::CreateRoutePanel(NULL, 
@@ -464,6 +469,7 @@ namespace mutaborGUI {
 
 	void BoxDlg::OnRemoveClick( wxCommandEvent& event )
 	{
+		mutUnused(event);
 		EndModal(::wxID_REMOVE);
 	}
 }

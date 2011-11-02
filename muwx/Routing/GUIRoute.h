@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.4 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIRoute.h,v $
- * Revision 1.4  2011/10/04 17:16:14  keinstein
+ * Revision 1.5  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.3  2011-10-02 16:58:42  keinstein
@@ -71,7 +74,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "mu32/routing/Device.h"
 #include "mu32/routing/midi/DevMidi.h"
 #include "mu32/routing/midi/DevMidF.h"
@@ -130,11 +133,15 @@ namespace mutaborGUI {
 		GUIData & GetGUIRoute() 
 			{
 				void * d = mutabor::RouteClass::getUserData();
+				mutASSERT(d);
+				mutASSERT(((GUIData *)d)->GetRoute() == this);
 				return *((GUIData *)d);
 			}
 		const GUIData & GetGUIRoute() const
 			{
 				void * d = mutabor::RouteClass::getUserData();
+				mutASSERT(d);
+				mutASSERT(((GUIData *)d)->GetRoute() == this);
 				return *((GUIData *)d);
 			}
 
@@ -236,6 +243,7 @@ namespace mutaborGUI {
 
 	class GUIRouteBase {
 	protected:
+		friend class GUIfiedRoute;
 		mutabor::RouteClass * route;
 		void * userdata;
 		BoxData * box;
@@ -410,7 +418,7 @@ namespace mutaborGUI {
 		friend class GUIRoute;
 		friend class GUIRouteFactory;
 	protected:
-		GUIfiedRoute(void * gui,
+		GUIfiedRoute(GUIRouteBase * gui,
 			     mutabor::InputDevice & in,
 			     mutabor::OutputDevice & out,
 			     mutabor::RouteType type = mutabor::RTall,
@@ -433,6 +441,16 @@ namespace mutaborGUI {
 				InputDevice,
 				OutputDevice
 				>::setUserData(gui);
+			gui->route = this;
+			DEBUGLOG(smartptr,_T("Route %p (%d)"),
+				 this, 
+				 intrusive_ptr_get_refcount(this));
+			DEBUGLOG(smartptr,_T("input device %p (%d)"),
+				in.get(),
+				intrusive_ptr_get_refcount(in.get()));
+			DEBUGLOG(smartptr,_T("output device %p (%d)"),
+				out.get(),
+				intrusive_ptr_get_refcount(out.get()));
 			mutabor::TRouteClass<
 				InputDevice,
 				OutputDevice
@@ -483,6 +501,12 @@ namespace mutaborGUI {
 			 bool oNoDrum = true
 /*, mutabor::Route next = NULL*/
 			):TGUIRoute<GUIfiedRoute>() {
+				DEBUGLOG(smartptr,_T("input device %p (%d)"),
+					in.get(),
+					intrusive_ptr_get_refcount(in.get()));
+				DEBUGLOG(smartptr,_T("output device %p (%d)"),
+					out.get(),
+					intrusive_ptr_get_refcount(out.get()));
 			DEBUGLOG(smartptr,_T("Route: %8p, entering create"),
 				 (void *)route//, 
 				 /* leeds to errors 
@@ -776,6 +800,11 @@ namespace mutaborGUI {
 		virtual ~GUIfiedOutputDevice() { TRACEC; }
 	};
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 	class GUIOutputDevice:public TGUIOutputDevice<GUIfiedOutputDevice> {
 	protected:
 		GUIOutputDevice():TGUIOutputDevice<GUIfiedOutputDevice>() {	}
@@ -790,6 +819,9 @@ namespace mutaborGUI {
 			{
 				ABSTRACT_FUNCTIONC;
 			}
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 		
 	public:
 		virtual ~GUIOutputDevice() { TRACEC; }
@@ -1007,6 +1039,10 @@ namespace mutaborGUI {
 		virtual ~GUIfiedInputDevice() {}
 	};
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
 	class GUIInputDevice:public TGUIInputDevice<GUIfiedInputDevice> {
 		GUIInputDevice():TGUIInputDevice<GUIfiedInputDevice>() {	}
 	
@@ -1020,7 +1056,9 @@ namespace mutaborGUI {
 			TGUIInputDevice(new GUIfiedInputDevice(this,devId,name,mode,id));
 			*/
 			{}
-		
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 		
 	public:
 		virtual ~GUIInputDevice() { TRACEC; }
 

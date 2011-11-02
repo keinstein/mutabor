@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.9 2011/09/27 20:13:26 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.10 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: valNum.cpp,v $
- * Revision 1.9  2011/09/27 20:13:26  keinstein
+ * Revision 1.10  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.9  2011-09-27 20:13:26  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -33,15 +36,14 @@
 // Author:      Julian Smart
 // Modified by:
 // Created:     04/01/98
-// RCS-ID:      $Id: valNum.cpp,v 1.9 2011/09/27 20:13:26 keinstein Exp $
+// RCS-ID:      $Id: valNum.cpp,v 1.10 2011/11/02 14:32:01 keinstein Exp $
 // Copyright:   (c) Julian Smart and Markus Holzem
 // Licence:     wxWindows license
 /////////////////////////////////////////////////////////////////////////////
 
 
 // For compilers that support precompilation, includes "wx.h".
-#include "Defs.h"
-
+#include "mu32/Defs.h"
 
 #if wxUSE_VALIDATORS
 

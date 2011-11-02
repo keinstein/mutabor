@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.59 2011/10/22 16:32:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.60 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/22 16:32:38 $
- * \version $Revision: 1.59 $
+ * \date $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.60 $
  * \license GPL
  *
  * $Log: MutFrame.cpp,v $
- * Revision 1.59  2011/10/22 16:32:38  keinstein
+ * Revision 1.60  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.59  2011-10-22 16:32:38  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.58  2011-10-04 20:09:16  keinstein
@@ -313,7 +316,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -352,25 +355,24 @@
 #  include <wx/msw/regconf.h>
 #endif
 #include "wx/ffile.h"
-#include "GUIBoxData.h"
-#include "MutFrame.h"
-#include "MutDocument.h"
-#include "MutView.h"
-#include "MutChild.h"
+#include "muwx/GUIBoxData.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutDocument.h"
+#include "muwx/MutView.h"
+#include "muwx/MutChild.h"
 //#include "Mutabor.rh"
-#include "MutApp.h"
+#include "muwx/MutApp.h"
 
-#include "Defs.h"
-#include "mhDefs.h"
-#include "Runtime.h"
-#include "GrafKern.h"
-#include "Action.h"
-#include "MutRouteWnd.h"
-#include "MutLogicWnd.h"
-#include "MutTextBox.h"
-#include "MutBitmaps.h"
-#include "GUIBoxData.h"
-#include "DebugRoute.h"
+#include "mywx/mhDefs.h"
+#include "mu32/Runtime.h"
+#include "mu32/GrafKern.h"
+#include "muwx/Action.h"
+#include "muwx/MutRouteWnd.h"
+#include "muwx/MutLogicWnd.h"
+#include "muwx/MutTextBox.h"
+#include "muwx/MutBitmaps.h"
+#include "muwx/GUIBoxData.h"
+#include "muwx/Routing/DebugRoute.h"
 
 using namespace mutabor;
 using namespace mutaborGUI;
@@ -803,9 +805,11 @@ namespace mutaborGUI {
 
 	void MutFrame::OnPaint(wxPaintEvent& event)
 	{
+		
 		wxPaintDC dc(this);
 
-		STUBC; 
+		STUBC;
+		mutUnused(event);
 /* this code is just copied and must be changed 
    to paint into the subwindow which is managed by 
    the AUI manager.
@@ -824,7 +828,7 @@ namespace mutaborGUI {
 	{
 		STUBC;
 		return;
-
+#if 0
 #ifdef DEBUG
 		printf("MutFrame::CmFileNew\n");
 #endif
@@ -837,6 +841,7 @@ namespace mutaborGUI {
 		event.Skip(false); // Its our task to try create the file
 
 		OpenFile(wxEmptyString);
+#endif
 	}
 
 
@@ -844,7 +849,7 @@ namespace mutaborGUI {
 	{
 		STUBC;
 		return;
-
+#if 0
 		if (client) {
 			event . Skip (true);
 			return;
@@ -886,6 +891,7 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected Event in MutFrame::CmFileOpen: %d"),event.GetId());
 			UNREACHABLEC;
 		}
+#endif
 	}
 
 /**
@@ -897,8 +903,9 @@ namespace mutaborGUI {
 	bool MutFrame::OpenFile (wxString path, bool newfile)
 	{
 		STUBC;
+		mutUnused(newfile);
 		return false;
-
+#if 0
 		if (client) return false;
 
 		wxString filename = !path ? wxString(_("noname.mut"))
@@ -915,6 +922,7 @@ namespace mutaborGUI {
 		SetTitle(wxString().Format(_("%s -- %s"),APPNAME,filename.c_str()));
 
 		return SetClient(editor,filename);
+#endif
 	}
 /**
  * Attach a client
@@ -1232,6 +1240,7 @@ namespace mutaborGUI {
 
 	void MutFrame::CmStop(wxCommandEvent& event)
 	{
+		mutUnused(event);
 		DoStop();
 	}
 
@@ -1337,7 +1346,7 @@ namespace mutaborGUI {
 		}
 
 		BoxData & box = BoxData::GetBox(curBox);
-		bool openclose;
+		bool openclose = false;
 		MutChild * win;
 		switch (kind) {
 		case WK_KEY: 
@@ -1391,6 +1400,7 @@ namespace mutaborGUI {
 
 
 	void MutFrame::DoBoxWindowsOpen(int box, bool update) {
+		mutUnused(update);
 		mutabor_box_type & b = mut_box[box];
 		BoxData * boxdata = static_cast<BoxData *> 
 			(b.userdata);
@@ -2140,7 +2150,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 		Freeze();
 
-		wxWindow * win; 
+		wxWindow * win = NULL; 
 		size_t box = minimal_box_used;
 		do {
 			mutabor_box_type & b = mut_box[box];

@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.19 2011/10/22 16:32:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.20 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/22 16:32:38 $
- * \version $Revision: 1.19 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.20 $
  * \license GPL
  *
  * $Log: MutChild.cpp,v $
- * Revision 1.19  2011/10/22 16:32:38  keinstein
+ * Revision 1.20  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.19  2011-10-22 16:32:38  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.18  2011-09-30 18:07:04  keinstein
@@ -53,7 +56,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include <iostream>
 
 #include "wx/toolbar.h"
@@ -72,9 +75,9 @@
 
 
 //#include "Mutabor.rh"
-#include "MutChild.h"
-#include "MutEditFile.h"
-#include "MutFrame.h"
+#include "muwx/MutChild.h"
+#include "muwx/MutEditFile.h"
+#include "muwx/MutFrame.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -169,6 +172,7 @@ namespace mutaborGUI {
 
 	void MutChild::OnActivate(wxActivateEvent& event)
 	{
+		mutUnused(event);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		DEBUGLOG (other, _T(""));
 		mutaborGUI::curBox = box;
@@ -220,16 +224,16 @@ namespace mutaborGUI {
 		BoxData & boxdata = BoxData::GetBox(box);
 		switch (kind) {
 		case WK_KEY: 
-			return boxdata.GetKeyWindow();
+			return boxdata.GetKeyWindow() != NULL;
 			break;
 		case WK_TS: 
-			return boxdata.GetTonesystemWindow();
+			return boxdata.GetTonesystemWindow() != NULL;
 			break;
 		case WK_ACT: 
-			return boxdata.GetActionsWindow();
+			return boxdata.GetActionsWindow() != NULL;
 			break;
 		case WK_LOGIC:
-			return boxdata.GetLogicWindow();
+			return boxdata.GetLogicWindow() != NULL;
 			break;
 		case WK_ROUTE:
 			wxLogWarning(_("Unexpected value: WK_ROUTE"));

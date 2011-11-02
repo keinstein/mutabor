@@ -3,14 +3,17 @@
  ***********************************************************************
  *.
  *
- * $Id: CompDlg.h,v 1.10 2011/09/27 20:13:22 keinstein Exp $
+ * $Id: CompDlg.h,v 1.11 2011/11/02 14:31:58 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date 05/08/14 21:41:59
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.11 $
  *
  * $Log: CompDlg.h,v $
- * Revision 1.10  2011/09/27 20:13:22  keinstein
+ * Revision 1.11  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -58,8 +61,8 @@
  * Includes
  */
 
-#include "Defs.h"
-#include "resourceload.h"
+#include "mu32/Defs.h"
+#include "muwx/resourceload.h"
 
 #ifndef MUWX_COMPDLG_H_PRECOMPILED
 #define MUWX_COMPDLG_H_PRECOMPILED

@@ -4,16 +4,19 @@
  ********************************************************************
  * New box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/30 18:07:06 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: NewBoxShape.cpp,v $
- * Revision 1.5  2011/09/30 18:07:06  keinstein
+ * Revision 1.6  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-09-30 18:07:06  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -117,10 +120,10 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "Defs.h"
-#include "NewBoxShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/NewBoxShape.h"
 #include "muwx/Routing/BoxDlg.h"
-#include "MutRouteWnd.h"
+#include "muwx/MutRouteWnd.h"
 #include "muwx/Routing/GUIRoute-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"

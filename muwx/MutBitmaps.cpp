@@ -3,17 +3,20 @@
  * Mutabor Bitmaps. We save Bitmaps in global variables as they can be used in several contexts.
  * so their data can be shared if the underlying framework supports it.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.cpp,v 1.2 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.cpp,v 1.3 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) TU Dresden
  * \author 
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2011/02/13
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: MutBitmaps.cpp,v $
- * Revision 1.2  2011/09/27 20:13:23  keinstein
+ * Revision 1.3  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.2  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -34,6 +37,7 @@ namespace mutaborGUI {
 
 
 	bool MutToolBarBitmaps::initialized = false;
+	wxBitmap MutToolBarBitmaps::EmptyBitmap;
 	wxBitmap MutToolBarBitmaps::New;
 	wxBitmap MutToolBarBitmaps::Open;
 	wxBitmap MutToolBarBitmaps::Save;
@@ -59,8 +63,14 @@ namespace mutaborGUI {
 					 const wxBitmapType type)
 	{
 		if (!bitmap.IsOk())
-			if(!bitmap.LoadFile(filename,type))
-				bitmap = wxNullBitmap;
+			if(!bitmap.LoadFile(filename,type)) {
+				wxMessageBox(wxString::Format(_("Error: The bitmap %s could not be found."),
+					(const wxChar *)filename),
+					_("Error"),
+					wxOK | wxICON_ERROR);
+				bitmap = MutToolBarBitmaps::EmptyBitmap;
+			}
+		mutASSERT(bitmap.IsOk());
 	}
 
 // Please use Tango names for new bitmap files
@@ -68,6 +78,7 @@ namespace mutaborGUI {
 
 	bool MutToolBarBitmaps::Init() {
 		if (initialized) return(true);
+		EmptyBitmap.Create(16,16,-1);
 		initMutBitmap(New,
 			      wxGetApp().GetResourceName (_T ("document-new.png")),
 			      wxBITMAP_TYPE_PNG);

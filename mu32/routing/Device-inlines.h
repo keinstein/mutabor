@@ -2,12 +2,12 @@
  ********************************************************************
  * Inline routitnes for the device class
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device-inlines.h,v 1.1 2011/09/27 20:36:18 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device-inlines.h,v 1.2 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:36:18 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: Device-inlines.h,v $
- * Revision 1.1  2011/09/27 20:36:18  keinstein
+ * Revision 1.2  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.1  2011-09-27 20:36:18  keinstein
  * add a missed file
  *
  *
@@ -50,8 +53,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Device.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/Device.h"
 
 #ifndef HEADERFILENAME_PRECOMPILED
 #define HEADERFILENAME_PRECOMPILED

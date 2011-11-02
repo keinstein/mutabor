@@ -2,17 +2,20 @@
  ********************************************************************
  * Actions at UI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.h,v 1.6 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.h,v 1.7 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2011 TU Dresden
  * \author   R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: Action.h,v $
- * Revision 1.6  2011/09/27 20:13:22  keinstein
+ * Revision 1.7  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -39,7 +42,7 @@
 #define MUWX_ACTION_H
 #endif
 
-#include "Global.h"
+#include "mu32/Global.h"
 
 #ifndef MUWX_ACTION_H_PRECOMPILED
 #define MUWX_ACTION_H_PRECOMPILED

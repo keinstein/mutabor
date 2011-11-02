@@ -3,16 +3,19 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.7 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.8 2011/11/02 14:32:01 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: RouteIcons.cpp,v $
- * Revision 1.7  2011/10/22 16:32:39  keinstein
+ * Revision 1.8  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.6  2011-09-27 20:13:25  keinstein
@@ -69,12 +72,12 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "RouteIcons.h"
-#include "BoxShape.h"
-#include "MutApp.h"
+#include "muwx/Routing/RouteIcons.h"
+#include "muwx/Routing/BoxShape.h"
+#include "muwx/MutApp.h"
 
 #include "wx/image.h"
-#include "Icon/DevUnknown.xpm"
+#include "muwx/Icon/DevUnknown.xpm"
 
 namespace mutaborGUI {
 

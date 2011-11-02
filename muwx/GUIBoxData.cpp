@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.6 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.7 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.cpp,v $
- * Revision 1.6  2011/09/30 18:07:04  keinstein
+ * Revision 1.7  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -191,13 +194,13 @@ namespace mutaborGUI {
 
 	bool BoxData::Load(wxConfigBase * config) {
 		winattr.want_key_window = config->Read(_T("KeyWindow"), 
-						       (long int)false);
+						       (long int)false) != 0l;
 		winattr.want_tonesystem_window =
 			config->Read(_T("ToneSystemWindow"),
-				     (long int)false);
+				     (long int)false) != 0l;
 		winattr.want_actions_window =
 			config->Read(_T("ActionsWindow"), 
-				     (long int)false);
+				     (long int)false) != 0l;
 		return true;
 	}
 

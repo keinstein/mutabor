@@ -2,12 +2,12 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.8 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.9 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIBoxData.h,v $
- * Revision 1.8  2011/10/02 16:58:41  keinstein
+ * Revision 1.9  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.8  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -78,8 +81,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "box.h"
+#include "mu32/Defs.h"
+#include "mu32/box.h"
 #include "muwx/Routing/RouteLists.h"
 
 
@@ -176,7 +179,7 @@ namespace mutaborGUI {
 		void SetKeyWindow(MutChild * w, bool reset = false) { 
 			winattr.key_window = w; 
 			if (w || reset)
-				WantKeyWindow(w);
+				WantKeyWindow(w != NULL);
 		}
 		MutChild * GetKeyWindow() const {
 			return winattr.key_window; 
@@ -187,7 +190,7 @@ namespace mutaborGUI {
 		void SetTonesystemWindow(MutChild * w, bool reset = false) { 
 			winattr.tonesystem_window = w; 
 			if (w || reset)
-				WantTonesystemWindow(w);
+				WantTonesystemWindow(w != NULL);
 		}
 		MutChild * GetTonesystemWindow() const { 
 			return winattr.tonesystem_window; 
@@ -198,7 +201,7 @@ namespace mutaborGUI {
 		void SetActionsWindow(MutChild * w, bool reset = false) { 
 			winattr.actions_window = w; 
 			if (w || reset)
-				WantActionsWindow(w);
+				WantActionsWindow(w != NULL);
 		}
 		MutChild * GetActionsWindow() const { 
 			return winattr.actions_window; 

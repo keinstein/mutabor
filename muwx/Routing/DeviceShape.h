@@ -3,16 +3,19 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.7 2011/10/03 17:42:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.8 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/03 17:42:41 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: DeviceShape.h,v $
- * Revision 1.7  2011/10/03 17:42:41  keinstein
+ * Revision 1.8  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-03 17:42:41  keinstein
  * Open the configuration dialog on key press in the route window
  * Accept entering nothing in the input/output device dialog
  *
@@ -88,10 +91,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "IconShape.h"
-#include "Route.h"
-#include "RouteLists.h"
+#include "mu32/Defs.h"
+#include "muwx/IconShape.h"
+#include "mu32/routing/Route.h"
+#include "muwx/Routing/RouteLists.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_DEVICESHAPE_H_PRECOMPILED
@@ -173,6 +176,12 @@ namespace mutaborGUI {
 //		virtual mutabor::Route getRoutes() = 0;
 		virtual void DoLeftDblClick() = 0;
 
+
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 		/// Get a double click and prepare for execution of the command
 		/** Since programs might produce segmentation faults
 		    when the object is deleted during processing of mouse
@@ -191,6 +200,10 @@ namespace mutaborGUI {
 		void CmLeftDblClick (wxCommandEvent& event) {
 			DoLeftDblClick(); 
 		}
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 
 		void OnKeyDown (wxKeyEvent & event);
 

@@ -3,16 +3,19 @@
  * Wrapper around wxcresource.h since wxrc doesn't prevent multiple 
  * inclusion
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/resourceload.h,v 1.5 2011/09/27 20:13:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/resourceload.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: resourceload.h,v $
- * Revision 1.5  2011/09/27 20:13:24  keinstein
+ * Revision 1.6  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -51,7 +54,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifndef MUWX_RESOURCELOUAD_H_PRECOMPILED
 #define MUWX_RESOURCELOUAD_H_PRECOMPILED
@@ -59,8 +62,6 @@
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
-
-#include "Defs.h"
 
 #include "wx/button.h"
 #include "wx/checkbox.h"
@@ -77,7 +78,7 @@
 #include "wx/xrc/xmlres.h"
 
 
-#include "../xrc/wxresource.h"
+#include "xrc/wxresource.h"
 
 #endif // precompiled
 #endif

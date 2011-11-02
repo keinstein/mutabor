@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.32 2011/10/22 16:32:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/22 16:32:38 $
- * \version $Revision: 1.32 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.33 $
  * \license GPL
  *
  * $Log: MutLogicWnd.cpp,v $
- * Revision 1.32  2011/10/22 16:32:38  keinstein
+ * Revision 1.33  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.32  2011-10-22 16:32:38  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.31  2011-10-04 20:09:16  keinstein
@@ -85,15 +88,15 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
-#include "Global.h"
-#include "Runtime.h"
-#include "MidiKern.h"
-#include "MutLogicWnd.h"
-#include "MutChild.h"
-#include "MutFrame.h"
-#include "MutRouteWnd.h"
+#include "mu32/Global.h"
+#include "mu32/Runtime.h"
+#include "mu32/MidiKern.h"
+#include "muwx/MutLogicWnd.h"
+#include "muwx/MutChild.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutRouteWnd.h"
 #include "wx/dcclient.h"
 #include "wx/image.h"
 
@@ -212,7 +215,7 @@ namespace mutaborGUI {
 		Icon = wxIcon(TagIcon[isLogic + 2*isOpen]);
 		Text = text;
 		TPos = -1;
-		IsLogic = isLogic;
+		IsLogic = isLogic != 0;
 		Key = key;
 
 //TODO  Attr.AccelTable = IDA_MUTWIN;
@@ -437,7 +440,7 @@ namespace mutaborGUI {
 	void MutLogicWnd::doClose(wxEvent& event)
 	{
 		DEBUGLOG (other, _T(""));
-		wxWindow * parent;
+		wxWindow * parent = NULL;
 		bool stop;
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
 
@@ -459,7 +462,7 @@ namespace mutaborGUI {
 
 		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 
-		if (stop) wxPostEvent(parent,event1);
+		if (parent && stop) wxPostEvent(parent,event1);
 
 		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 	}
@@ -521,7 +524,7 @@ namespace mutaborGUI {
 			if ( isLogic == 2 ) return;
 
 			// Update aufrufen
-			UpDate(key, isLogic);
+			UpDate(key, isLogic != 0);
 		}
 	}
 
@@ -532,7 +535,9 @@ namespace mutaborGUI {
 		DoLayout();
 	}
 
+#ifndef max
 #define max(a, b) ((a) < (b) ? (b) : (a))
+#endif
 
 	void MutLogicWnd::DoLayout()
 	{

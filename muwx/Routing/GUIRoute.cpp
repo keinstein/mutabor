@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.4 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIRoute.cpp,v $
- * Revision 1.4  2011/10/02 16:58:42  keinstein
+ * Revision 1.5  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -67,7 +70,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "wx/string.h"
 #include "wx/window.h"
 #include "muwx/Routing/GUIRoute.h"
@@ -572,6 +575,12 @@ namespace mutaborGUI {
 					       bool oNoDrum/*,
 							     mutabor::Route next*/) const
 	{
+		DEBUGLOG(smartptr,_T("input device %p (%d)"),
+			in.get(),
+			intrusive_ptr_get_refcount(in.get()));
+		DEBUGLOG(smartptr,_T("output device %p (%d)"),
+			out.get(),
+			intrusive_ptr_get_refcount(out.get()));
 		GUIRoute * r = new GUIRoute (in,out,type,
 					     iFrom,iTo,
 					     box,active,
@@ -805,7 +814,7 @@ namespace mutaborGUI {
 							   MutaborModeType mode, 
 							   int id) const
 	{
- 		STUBC;
+		STUBC;
 		return NULL;
 #if 0
 		GUIOutputMidiPort * port = new GUIOutputMidiPort(name,devId);

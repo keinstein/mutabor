@@ -2,16 +2,19 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.21 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.22 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.21 $
+ * \date $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.22 $
  * \license GPL
  *
  * $Log: Runtime.cpp,v $
- * Revision 1.21  2011/09/27 20:13:21  keinstein
+ * Revision 1.22  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.21  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -107,22 +110,22 @@
  * \{
  ********************************************************************
  */
-#include "Defs.h"
+#include "mu32/Defs.h"
 
-#include "Global.h"
+#include "mu32/Global.h"
 
-#include "Hilfs.h"
-#include "GrafKern.h"
+#include "mu32/Hilfs.h"
+#include "mu32/GrafKern.h"
 
-#include "Runtime.h"
-#include "Execute.h"
+#include "mu32/Runtime.h"
+#include "mu32/Execute.h"
 //#include "Mutabor.rh"
 #include <setjmp.h>
 
-#include "Device.h"
-#include "DevGIS.h"
-#include "DevMidi.h"
-#include "DevMidF.h"
+#include "mu32/routing/Device.h"
+#include "mu32/routing/gmn/DevGIS.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "mu32/routing/midi/DevMidF.h"
 #include "wx/msgdlg.h"
 
 using namespace mutabor;

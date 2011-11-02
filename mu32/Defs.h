@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.23 2011/10/04 17:16:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.24 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/04 17:16:13 $
- * \version $Revision: 1.23 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: Defs.h,v $
- * Revision 1.23  2011/10/04 17:16:13  keinstein
+ * Revision 1.24  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.23  2011-10-04 17:16:13  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.22  2011-09-30 18:07:04  keinstein
@@ -70,7 +73,7 @@
 #endif
 
 #ifdef WX
-#include "mhDefs.h"
+#include "mywx/mhDefs.h"
 #include "wx/wxchar.h"
 #include "wx/intl.h"
 #endif
@@ -95,9 +98,6 @@
 #define CALLBACK
 #endif
 #define _export
-#if defined(__VISUALC__)
-#define min(a, b) wxMin(a, b)
-#endif
 #else // not WX
 #define REUSE(type) type
 #endif
@@ -109,6 +109,8 @@
 #endif
 
 #define mutT _T
+
+#define mutUnused(expr) do { (void)(expr); } while (0)
 
 #ifdef WX
 #define mut_thread_mutex(name)
@@ -122,7 +124,7 @@
 #define mutStringRef mutString &
 #define mutEmptyString (wxString) wxEmptyString
 #define mutDelString(string) (string = mutEmptyString)
-#define mutFreeString(string)
+#define mutFreeString(string) do {} while (0)
 #define mutFopen  wxFopen
 #define mutCopyString(left,right) (left = right)
 #define mutCopyIntoString(left,right) (left = right)
@@ -330,6 +332,14 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 
 #define CHECK_REFPTR_NULL(class_data)				\
 	mutASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
+
+// we are using std::max and std::min
+#ifdef max
+#undef max
+#endif
+#ifdef min
+#undef min
+#endif
 
 #define MIDI_MIN_CHANNEL 0
 #define MIDI_MAX_CHANNEL 15

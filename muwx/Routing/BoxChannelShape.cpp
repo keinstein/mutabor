@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.11 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.12 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.11  2011/10/05 16:28:39  keinstein
+ * Revision 1.12  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.11  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.10  2011-10-04 20:09:16  keinstein
@@ -182,18 +185,18 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "BoxChannelShape.h"
+#include "muwx/Routing/BoxChannelShape.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
-#include "OutputDeviceShape.h"
-#include "BoxDlg.h"
+#include "muwx/Routing/OutputDeviceShape.h"
+#include "muwx/Routing/BoxDlg.h"
 #include "muwx/Routing/RouteIcons.h"
 #include "muwx/MutRouteWnd.h"
-#include "GUIRoute-inlines.h"
-#include "GUIBoxData-inlines.h"
+#include "muwx/Routing/GUIRoute-inlines.h"
+#include "muwx/GUIBoxData-inlines.h"
 #include "muwx/Routing/DebugRoute.h"
 
 #include "wx/dc.h"
@@ -814,6 +817,7 @@ void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc,
 					    const wxPoint & center, 
 					    wxPoint p) const 
 {
+	mutUnused(center); // we are providing our own centre
 	wxPoint mycenter = wxPoint()+GetSize()/2;
 	dc.DrawLine(mycenter, p);
 }
@@ -824,7 +828,7 @@ void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
 		if (!rect) {
 			SetIcon(GetMutIcon());
 		}
-		MutIconShape::Refresh(false,rect);
+		MutIconShape::Refresh(eraseBackground,rect);
 	}
 
 

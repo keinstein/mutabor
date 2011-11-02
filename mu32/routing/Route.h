@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.8 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Route.h,v $
- * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * Revision 1.8  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -148,10 +151,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "mu32/box.h"
 
-#include "treestorage.h"
+#include "mu32/treestorage.h"
 
 #ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED
@@ -191,10 +194,11 @@ namespace mutabor {
 	class TRouteClass
 	{
 		friend class RouteFactory;
+	public:
 		typedef TRouteClass thistype;
 		typedef I InputDevice;
 		typedef O OutputDevice;
-	public:
+
 		// To gain a little speed in realtime we use intrusive_ptr
 		typedef boost::intrusive_ptr<TRouteClass> Route;
 		typedef std::list<Route> routeListType;
@@ -266,6 +270,15 @@ namespace mutabor {
 			bool oNoDrum = true/*,
 					     Route next = NULL*/)
 			{
+				DEBUGLOG(smartptr,_T("Route %p (%d)"),
+					 this, 
+					 intrusive_ptr_get_refcount(this));
+				DEBUGLOG(smartptr,_T("input device %p (%d)"),
+					in.get(),
+					intrusive_ptr_get_refcount(in.get()));
+				DEBUGLOG(smartptr,_T("output device %p (%d)"),
+					out.get(),
+					intrusive_ptr_get_refcount(out.get()));
 				if (in) 
 					Attatch(in);
 				else 
@@ -353,22 +366,11 @@ namespace mutabor {
 		virtual bool Remove (int id);
 
 		/// Attatch a new output device
-		virtual void Attatch (OutputDevice & dev) {
-			TRACEC;
-			Add(dev);
-			TRACEC;
-			Route r(this);
-			TRACEC;
-			dev->Add(r);
-			TRACEC;
-		}
+		virtual void Attatch (OutputDevice & dev);
+
 		/// Attatch a new input device
-		virtual void Attatch (InputDevice & dev) {
-			TRACEC;
-			Add(dev);
-			Route r(this);
-			dev->Add(r);
-		}
+		virtual void Attatch (InputDevice & dev);
+
 		/// Attach a new box
 		virtual void Attatch (int boxid) {
 			Add(boxid);
@@ -376,33 +378,12 @@ namespace mutabor {
 
 		/// Replace current output device with a new one
 		virtual bool Reconnect(OutputDevice & olddev, 
-				       OutputDevice & newdev) {
-			bool retval = Replace(olddev,newdev);
- 			Route r(this);
-			if (retval) {
-				retval = retval && olddev->Remove(r);
-			}
-			if (retval) {
-				newdev->Add(r);
-			} else
-				mutASSERT(false);
-				// Check taht olddev is correcty disconnected
-			return retval;
-		}
+				       OutputDevice & newdev);
+
 		/// Replace current input device with a new one
 		virtual bool Reconnect(InputDevice & olddev, 
-				       InputDevice & newdev) {
-			bool retval = Replace(olddev,newdev);
-			Route r(this);
-			if (retval) {
-				retval = retval && olddev->Remove(r);
-			}
-			if (retval) {
-				newdev->Add(r);
-			} else 
-				mutASSERT(false);
-			return retval;
-		}
+				       InputDevice & newdev);
+
 		/// Replace current box with a new one
 		virtual bool Reconnect(int oldboxid,
 			       int newboxid) {
@@ -410,25 +391,11 @@ namespace mutabor {
 		}
 
 		/// Detatch current output device
-		virtual bool Detatch(OutputDevice & dev) {
-			Route r (this);
-			bool retval = dev->Remove(r);
-			if (retval) {
-				// this might delete dev
-				retval = Remove(dev);
-			}
-			return retval;
-		}
+		virtual bool Detatch(OutputDevice & dev);
+
 		/// Detatch current input device
-		virtual bool Detatch(InputDevice & dev) {
-			Route r(this);
-			bool retval = dev->Remove(r);
-			if (retval) {
-				// this might delete dev
-				retval = Remove(dev);
-			}
-			return retval;
-		}
+		virtual bool Detatch(InputDevice & dev);
+
 		/// Detach a current box
 		virtual bool Detatch(int boxid) {
 			return Remove(boxid);

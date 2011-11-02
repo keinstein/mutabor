@@ -3,16 +3,19 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.h,v 1.6 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.h,v 1.7 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: InputDeviceShape.h,v $
- * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * Revision 1.7  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -107,13 +110,13 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "mu32/routing/Device.h"
-#include "GUIRoute.h"
-#include "RouteIcons.h"
-#include "DeviceShape.h"
-#include "InputDevDlg.h"
-#include "BoxChannelShape.h"
+#include "muwx/Routing/GUIRoute.h"
+#include "muwx/Routing/RouteIcons.h"
+#include "muwx/Routing/DeviceShape.h"
+#include "muwx/Routing/InputDevDlg.h"
+#include "muwx/Routing/BoxChannelShape.h"
 
 #ifndef MUWX_ROUTING_INPUTDEVICESHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_INPUTDEVICESHAPE_H_PRECOMPILED
@@ -295,6 +298,11 @@ namespace mutaborGUI {
 			return (GUIInputDeviceBase &)(device);
 		}
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 		virtual void DoLeftDblClick();
 		InputDevDlg * ShowDeviceDialog();
 		virtual wxPanel * GetInputFilterPanel(wxWindow * parent, 
@@ -326,6 +334,9 @@ namespace mutaborGUI {
 		virtual bool replaceSelfBy (MutInputDeviceShape  * newshape);
 		virtual bool CanHandleType (mutabor::DevType  type) { return false; }
 
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 	private:
 		DECLARE_DYNAMIC_CLASS(MutDeviceShape);
 	};

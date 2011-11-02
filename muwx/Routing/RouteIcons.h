@@ -3,16 +3,19 @@
  ********************************************************************
  * Devices base classes. Icons used in route Window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.h,v 1.5 2011/11/02 14:32:01 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: RouteIcons.h,v $
- * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * Revision 1.5  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -61,8 +64,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "MutIcon.h"
+#include "mu32/Defs.h"
+#include "muwx/MutIcon.h"
 
 #ifndef MUWX_ROUTING_ROUTEICONS_H_PRECOMPILED
 #define MUWX_ROUTING_ROUTEICONS_H_PRECOMPILED

@@ -4,16 +4,19 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.12 2011/10/02 16:58:40 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:40 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: Device.cpp,v $
- * Revision 1.12  2011/10/02 16:58:40  keinstein
+ * Revision 1.13  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.12  2011-10-02 16:58:40  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -79,13 +82,13 @@
 // Devices Basisklassen
 // ------------------------------------------------------------------
 
-#include "Device.h"
-#include "DevMidi.h"
-#include "DevMidF.h"
-#include "DevGIS.h"
+#include "mu32/routing/Device.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "mu32/routing/midi/DevMidF.h"
+#include "mu32/routing/gmn/DevGIS.h"
 #include <algorithm>
 #include "mu32/routing/Device-inlines.h"
-#include "Route.h"
+#include "mu32/routing/Route.h"
 
 
 namespace mutabor {

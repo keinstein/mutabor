@@ -3,16 +3,19 @@
  ********************************************************************
  * MIDI file input device shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.h,v 1.5 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiFileDeviceShape.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: OutputMidiFileDeviceShape.h,v $
- * Revision 1.5  2011/10/02 16:58:42  keinstein
+ * Revision 1.6  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -80,8 +83,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "OutputDeviceShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/OutputDeviceShape.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_OUTPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED

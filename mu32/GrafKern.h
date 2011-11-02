@@ -2,13 +2,16 @@
  ***********************************************************************
  * Output functions.
  *
- * $Id: GrafKern.h,v 1.13 2011/10/02 16:58:40 keinstein Exp $
+ * $Id: GrafKern.h,v 1.14 2011/11/02 14:31:57 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date $Date: 2011/10/02 16:58:40 $
- * \version $Revision: 1.13 $
+ * \date $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.14 $
  *
  * $Log: GrafKern.h,v $
- * Revision 1.13  2011/10/02 16:58:40  keinstein
+ * Revision 1.14  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.13  2011-10-02 16:58:40  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -104,7 +107,7 @@ void show_line_number( int n );
 
 #ifdef MUTWIN
 #ifdef WX
-#include "CompDlg.h"
+#include "muwx/CompDlg.h"
 void InitCompDia(mutaborGUI::CompDlg *compDia, wxString filename);
 
 #else

@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.h,v 1.7 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: DevMidF.h,v $
- * Revision 1.7  2011/10/02 16:58:41  keinstein
+ * Revision 1.8  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -57,11 +60,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Device.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/Device.h"
 
 #ifdef WX
-#include "mhArray.h"
+#include "mywx/mhArray.h"
 #endif
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDF_H_PRECOMPILED
@@ -192,16 +195,26 @@ namespace mutabor {
 				     RouteClass * r, int channel);
 		virtual void NotesCorrect(int box);
 		virtual void Sustain(char on, int channel);
+
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 		virtual int  GetChannel(int taste)
 			{
 				return -1;
-			} // hier kˆnnte man auch den richtigen Wett ausgeben, macht aber nixcht so viel Sinn
+			} // it would be possible to return the real value, but this is not very useful
 
-		virtual void Gis(GisToken *token, char turn)
+		virtual void Gis(GisToken * token, char turn)
 			{};
 
 		virtual void AddTime(frac time)
 			{};
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 
 		virtual void MidiOut(DWORD data, char n);
 		virtual void MidiOut(BYTE *p, char n);
@@ -331,10 +344,20 @@ namespace mutabor {
 		virtual void Pause();
 //	   void Proceed(GisReadArtHead *h, char turn, Route route) {};
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};
+
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 		virtual frac ReadOn(frac time)
 			{
 				return frac(0, 1);
 			}
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 
 		virtual DevType GetType() const
 			{

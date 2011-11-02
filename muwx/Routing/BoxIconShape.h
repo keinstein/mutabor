@@ -4,16 +4,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.8 2011/10/04 17:16:14 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.h,v 1.9 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/04 17:16:14 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: BoxIconShape.h,v $
- * Revision 1.8  2011/10/04 17:16:14  keinstein
+ * Revision 1.9  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.8  2011-10-04 17:16:14  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.7  2011-10-03 15:50:21  keinstein
@@ -89,9 +92,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "IconShape.h"
-#include "RouteIcons.h"
+#include "mu32/Defs.h"
+#include "muwx/IconShape.h"
+#include "muwx/Routing/RouteIcons.h"
 
 #ifndef MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED

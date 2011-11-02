@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.14 2011/10/05 16:28:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.15 2011/11/02 14:31:58 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/10/05 16:28:39 $
-* \version $Revision: 1.14 $
+* $Date: 2011/11/02 14:31:58 $
+* \version $Revision: 1.15 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.14  2011/10/05 16:28:39  keinstein
+* Revision 1.15  2011/11/02 14:31:58  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.14  2011-10-05 16:28:39  keinstein
 * correct layout on mac
 *
 * Revision 1.13  2011-10-04 20:09:16  keinstein
@@ -168,8 +171,8 @@
 *\{
 ********************************************************************/
 
-#include "Defs.h"
-#include "IconShape.h"
+#include "mu32/Defs.h"
+#include "muwx/IconShape.h"
 #include "wx/defs.h"
 #include "wx/sizer.h"
 #include "wx/dc.h"
@@ -417,6 +420,22 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 }
 
 
+template<typename T>
+bool MutIconShapeClass<T>::Destroy() 
+{
+	Hide();
+	wxSizer * sizer = GetContainingSizer();
+	if (sizer) {
+		sizer->Detach(this);
+		SetSizer(NULL);
+	}
+
+	if ( !wxPendingDelete.Member(this) )
+        wxPendingDelete.Append(this);
+	
+	return true;
+}
+
 
 template<typename T>
 wxSize MutIconShapeClass<T>::DoGetBestSize() const 
@@ -569,6 +588,7 @@ void MutIconShapeClass<T>::OnKillFocus(wxFocusEvent & event)
 template<typename T>
 void MutIconShapeClass<T>::OnMouseClick(wxMouseEvent & event)
 {
+	mutUnused(event);
 	TRACEC;
 	this->SetFocus();
 }
@@ -621,7 +641,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
-#ifdef __WXMAC__ && 0
+#if __WXMAC__ && 0
 		x -= maxBorderSize.x - borderOffset.x;
 #endif
 		dc.DrawIcon(GetIcon(), x, y);

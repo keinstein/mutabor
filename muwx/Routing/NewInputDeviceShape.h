@@ -3,16 +3,19 @@
  ********************************************************************
  * New input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.h,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: NewInputDeviceShape.h,v $
- * Revision 1.4  2011/09/27 20:13:25  keinstein
+ * Revision 1.5  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -68,8 +71,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "InputDeviceShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/InputDeviceShape.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_NEWINPUTDEVICESHAPE_H_PRECOMPILED

@@ -2,12 +2,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.7 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: MutDocManager.cpp,v $
- * Revision 1.7  2011/09/30 18:07:04  keinstein
+ * Revision 1.8  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -66,10 +69,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "MutDocManager.h"
-#include "MutView.h"
-#include "MutDocument.h"
+#include "mu32/Defs.h"
+#include "muwx/MutDocManager.h"
+#include "muwx/MutView.h"
+#include "muwx/MutDocument.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -86,7 +89,7 @@ namespace mutaborGUI {
 
 	bool MutDocManager::TryParent(wxEvent& event)
 	{
-
+		mutUnused(event);
 		DEBUGLOG(eventqueue,_T(""));
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
@@ -143,6 +146,7 @@ namespace mutaborGUI {
 
 	void MutDocManager::CmExecuteLogic(wxCommandEvent& event) 
 	{
+		mutUnused(event);
 		wxDocument * doc = CreateDocument( wxEmptyString, 0);
 		if ( !doc )
 		{

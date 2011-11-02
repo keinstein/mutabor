@@ -6,16 +6,19 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.7 2011/10/03 15:50:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.8 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/03 15:50:21 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Panel.h,v $
- * Revision 1.7  2011/10/03 15:50:21  keinstein
+ * Revision 1.8  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-03 15:50:21  keinstein
  * Fix focus issues in the route window. This includes:
  *  * Using templates to describe the base class of MutIconShape.
  *  * Rename MutIconShape->MutIconShapeClass.
@@ -64,7 +67,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifndef MUWX_PANEL_H_PRECOMPILED
 #define MUWX_PANEL_H_PRECOMPILED
@@ -122,8 +125,6 @@ public:
 	
 	virtual ~MutPanel();
 	
-	virtual bool Destroy();
-
 	// implementation from now on
 	// --------------------------
 	

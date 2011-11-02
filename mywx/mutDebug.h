@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.10 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.h,v 1.11 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: mutDebug.h,v $
- * Revision 1.10  2011/10/22 16:32:39  keinstein
+ * Revision 1.11  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.9  2011-10-04 20:09:16  keinstein
@@ -68,6 +71,7 @@
 #include "wx/string.h"
 #include "wx/debug.h"
 
+void MutInitConsole();
 
 struct debugFlags {
 	struct flagtype {
@@ -83,7 +87,7 @@ struct debugFlags {
 		bool operator()() const { return false; }
 	};
 	struct nosetflag {
-		void operator()(bool value=true) {
+		void operator()(bool) {
 		}
 	};
 
@@ -109,16 +113,17 @@ struct debugFlags {
 
 
 #define isDebugFlag(level) (debugFlags::flags.level)
-# define DEBUGLOGBASEINT(level,type, ...)				\
+# define DEBUGLOGBASEINT(level,type,...)					\
 	do {								\
 		if (level) {						\
 			std::fprintf(stderr,"[Debug] ");		\
+			if (!std::clog.good()) MutInitConsole(); \
 			wxASSERT(std::clog.good());			\
 			std::clog << __FILE__ << ":" << __LINE__	\
 				  << ": " << ((const char *) type)	\
 				  << "::" << __WXFUNCTION__ << ": ";	\
 			std::clog.flush();				\
-			std::clog << (const char *)((wxString::Format(__VA_ARGS__)).ToUTF8()) << std::endl; \
+			std::clog << (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) << std::endl; \
 			std::clog.flush();				\
 			if (std::clog.eof()) {				\
 				std::clog.clear();			\
@@ -143,7 +148,7 @@ struct debugFlags {
 									\
 		}							\
 	} while (false)
-#define DEBUGLOGBASE(level,...) DEBUGLOGBASEINT(debugFlags::flags.level,__VA_ARGS__)
+#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(debugFlags::flags.level,type,__VA_ARGS__)
 #define mutRefCast(type,value) dynamic_cast<type &>(value)
 #define mutPtrCast(type,value) (wxASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
 #define mutPtrDynCast mutPtrCast
@@ -164,10 +169,10 @@ struct nogetflag {
 
 #endif
 
-#define DEBUGLOG(level, ...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
-#define DEBUGLOG2(level, ...) DEBUGLOGBASE(level, _T(""),__VA_ARGS__)
-#define DEBUGLOGTYPE(level, type, ...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
-#define DEBUGLOGTYPEINT(level, type, ...) DEBUGLOGBASEINT(level, typeid(type).name(), __VA_ARGS__)
+#define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
+#define DEBUGLOG2(level,...) DEBUGLOGBASE(level, _T(""),__VA_ARGS__)
+#define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
+#define DEBUGLOGTYPEINT(level, type,...) DEBUGLOGBASEINT(level, typeid(type).name(), __VA_ARGS__)
 #define TRACE DEBUGLOGBASE(trace,_T(""),_T(""))
 #define TRACEC DEBUGLOG(trace,_T(""))
 #define TRACET(type) DEBUGLOGTYPE(trace,type,_T(""))

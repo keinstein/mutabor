@@ -2,16 +2,19 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.6 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.7 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2010/04/13
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: DebugRoute.cpp,v $
- * Revision 1.6  2011/10/02 16:58:42  keinstein
+ * Revision 1.7  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -47,12 +50,12 @@
  * \{
  ********************************************************************/
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #ifdef DEBUG
-#include "DebugRoute.h"
-#include "Device.h"
-#include "InputDeviceShape.h"
-#include "OutputDeviceShape.h"
+#include "muwx/Routing/DebugRoute.h"
+#include "mu32/routing/Device.h"
+#include "muwx/Routing/InputDeviceShape.h"
+#include "muwx/Routing/OutputDeviceShape.h"
 #include "muwx/MutRouteWnd.h"
 #include "muwx/Routing/BoxShape.h"
 #include "muwx/Routing/GUIRoute-inlines.h"

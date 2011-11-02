@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.53 2011/10/04 17:16:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.54 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/04 17:16:13 $
- * \version $Revision: 1.53 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.54 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.53  2011/10/04 17:16:13  keinstein
+ * Revision 1.54  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.53  2011-10-04 17:16:13  keinstein
  * make program compile on Mac (wx 2.9) and fix some memory corruption
  *
  * Revision 1.52  2011-10-02 16:58:41  keinstein
@@ -237,7 +240,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "wx/image.h"
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
@@ -258,16 +261,16 @@
 #endif
 
 //#include "Mutabor.rh"
-#include "MutApp.h"
-#include "MutFrame.h"
-#include "MutDocument.h"
-#include "MutView.h"
-#include "DevMidi.h"
-#include "MutConfDlg.h"
-#include "resourceload.h"
-#include "Action.h"
-#include "stclanguage.h"
-#include "MutDocManager.h"
+#include "muwx/MutApp.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutDocument.h"
+#include "muwx/MutView.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "muwx/MutConfDlg.h"
+#include "muwx/resourceload.h"
+#include "muwx/Action.h"
+#include "muwx/stclanguage.h"
+#include "muwx/MutDocManager.h"
 #include "muwx/Routing/GUIRoute.h"
 #include "muwx/configtree.h"
 #include "mu32/box.h"
@@ -707,7 +710,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmSetup (wxCommandEvent& event)
 	{
-
+		mutUnused(event);
 		MutConfigDialog * config;
 		config = new MutConfigDialog((wxFrame *) NULL);
 
@@ -721,7 +724,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmAbout (wxCommandEvent& event)
 	{
-
+		mutUnused(event);
 		/*
 		  (void)wxMessageBox(wxString::Format(_("%s\nAuthors: \n%s\nUsage: %s"),
 		  mumT(PACKAGE_STRING),
@@ -768,7 +771,7 @@ namespace mutaborGUI {
 		            wxDefaultPosition, wxDefaultSize,
 		            wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 	{
-
+		mutUnused(style);
 		// setup path
 		wxStandardPathsBase &path = wxStandardPaths::Get();
 
@@ -880,6 +883,7 @@ namespace mutaborGUI {
 	{
 		STUBC;
 		return;
+# if 0
 #ifdef DEBUG
 		printf("MutApp::CmFileNew\n");
 #endif
@@ -900,6 +904,7 @@ namespace mutaborGUI {
 
 #endif
 		event.Skip(false);
+#endif
 	}
 
 
@@ -908,6 +913,7 @@ namespace mutaborGUI {
 
 		STUBC;
 		return;
+#if 0
 		wxWindow * topwindow=GetTopWindow();
 
 		event.Skip(false);
@@ -936,7 +942,7 @@ namespace mutaborGUI {
 			break;
 		}
 		frame->Show();
-
+#endif
 	}
 
 // print event handlers
@@ -1311,9 +1317,9 @@ namespace mutaborGUI {
 			// hilight submenu
 			wxMenu *menuHilight = new wxMenu;
 			int Nr;
-			for (Nr = 0; Nr < g_LanguagePrefsSize; Nr++) {
+			for (Nr = 0; Nr < ::g_LanguagePrefsSize; Nr++) {
 				menuHilight->Append (CM_HILIGHTFIRST + Nr,
-						     g_LanguagePrefs [Nr].name);
+						     ::g_LanguagePrefs [Nr].name);
 			}
 
 			// charset submenu

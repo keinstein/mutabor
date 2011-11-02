@@ -1,15 +1,18 @@
 /** \file                 -*- C++ -*-
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.15 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.16 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.15 $
+ * \date $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: MutChild.h,v $
- * Revision 1.15  2011/09/30 18:07:04  keinstein
+ * Revision 1.16  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.15  2011-09-30 18:07:04  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -125,9 +128,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "mhDefs.h"
-#include "MutTextBox.h"
+#include "mu32/Defs.h"
+#include "mywx/mhDefs.h"
+#include "muwx/MutTextBox.h"
 
 #ifndef MUWX_MUT_CHILD_H_PRECOMPILED
 #define MUWX_MUT_CHILD_H_PRECOMPILED
@@ -176,6 +179,7 @@ namespace mutaborGUI {
 		void OnAuiClose(wxAuiManagerEvent& event)
 
 		{
+			mutUnused(event);
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			DEBUGLOG(other,_T(""));
 			deleteFromWinAttrs();

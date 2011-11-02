@@ -2,16 +2,19 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.21 2011/09/27 20:13:23 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.22 2011/11/02 14:31:59 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/09/27 20:13:23 $
-* \version $Revision: 1.21 $
+* $Date: 2011/11/02 14:31:59 $
+* \version $Revision: 1.22 $
 * \license GPL
 *
 * $Log: MutEditFile.h,v $
-* Revision 1.21  2011/09/27 20:13:23  keinstein
+* Revision 1.22  2011/11/02 14:31:59  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.21  2011-09-27 20:13:23  keinstein
 * * Reworked route editing backend
 * * rewireing is done by RouteClass/GUIRoute now
 * * other classes forward most requests to this pair
@@ -94,9 +97,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "muwx/stclanguage.h"
-#include "muconvauto.h"
+#include "mywx/muconvauto.h"
 
 #ifndef MUWX_MUTEDITFILE_H_PRECOMPILED
 #define MUWX_MUTEDITFILE_H_PRECOMPILED

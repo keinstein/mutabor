@@ -2,12 +2,12 @@
  ********************************************************************
  * Forward declarations for several lists used in the code base.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteLists.h,v 1.1 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteLists.h,v 1.2 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:25 $
- * \version $Revision: 1.1 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.2 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: RouteLists.h,v $
- * Revision 1.1  2011/09/27 20:13:25  keinstein
+ * Revision 1.2  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.1  2011-09-27 20:13:25  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -65,7 +68,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifndef MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED
 #define MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED
