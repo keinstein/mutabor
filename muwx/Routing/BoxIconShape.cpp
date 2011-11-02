@@ -3,16 +3,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.8 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.9 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.8 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.9 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.8  2011/10/05 16:28:39  keinstein
+ * Revision 1.9  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.8  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.7  2011-10-04 20:09:16  keinstein
@@ -85,8 +88,8 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "Defs.h"
-#include "BoxIconShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/BoxIconShape.h"
 #include "wx/dc.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
@@ -98,16 +101,8 @@
 namespace mutaborGUI {
 	void MutBoxIconShape::GetBordersForSizer(int &borderTop, int &borderOther) const
 	{
-		const int BORDER = 5; // FIXME: hardcoded value
-
 		wxSize s = DoGetBestSize();
 		DEBUGLOG (other, _T("Best Size: %dx%d"),s.x,s.y);
-		/*	if (GetIcon().IsOk()) {
-			s.x = std::max (GetIcon().GetWidth(), s.x);
-			s.y += GetIcon().GetHeight();
-			}
-			return s;
-		*/
 		borderTop = s.y;
 		borderOther = 0;
 	}

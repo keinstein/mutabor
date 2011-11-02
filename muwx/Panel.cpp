@@ -6,16 +6,19 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.9 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.10 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.9  2011/10/22 16:32:39  keinstein
+ * Revision 1.10  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.9  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.8  2011-10-03 20:34:05  keinstein
@@ -169,6 +172,7 @@ END_EVENT_TABLE()
 
 void MutPanel::OnNavigationKey( wxNavigationKeyEvent& event ) 
 { 
+	mutUnused(event);
 // (works on wx2.8.10)	m_container.HandleOnNavigationKey(event); 
 } 
 
@@ -185,6 +189,7 @@ void MutPanel::SetFocusIgnoringChildren() {
 	wxControl::SetFocus(); 
 } 
 void MutPanel::OnChildFocus(wxChildFocusEvent& event) {
+	mutUnused(event);
 	wxFocusEvent ev;
 	wxPostEvent(this,ev);
 //	m_container.SetLastFocus(event.GetWindow()); 
@@ -199,7 +204,7 @@ void MutPanel::OnFocus(wxFocusEvent& event) {
 } 
 bool MutPanel::AcceptsFocus() const { 
 	return IsEnabled() && IsShown();
-	return m_container.AcceptsFocus(); 
+//	return m_container.AcceptsFocus(); 
 }
 
 
@@ -244,21 +249,6 @@ bool MutPanel::Create(wxWindow *parent,
 
 MutPanel::~MutPanel()
 {
-}
-
-bool MutPanel::Destroy() 
-{
-	Hide();
-	wxSizer * sizer = GetContainingSizer();
-	if (sizer) {
-		sizer->Detach(this);
-		SetSizer(NULL);
-	}
-
-	if ( !wxPendingDelete.Member(this) )
-        wxPendingDelete.Append(this);
-	
-	return true;
 }
 
 

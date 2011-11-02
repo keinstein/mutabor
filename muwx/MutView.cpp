@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.10 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.11 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: MutView.cpp,v $
- * Revision 1.10  2011/09/30 18:07:05  keinstein
+ * Revision 1.11  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -63,12 +66,12 @@
 // --------------------------------------------------------------------------
 
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
-#include "MutView.h"
-#include "MutFrame.h"
-#include "MutApp.h"
-#include "MutDocument.h"
+#include "muwx/MutView.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutApp.h"
+#include "muwx/MutDocument.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -108,6 +111,7 @@ namespace mutaborGUI {
  */
 	bool MutView::OnCreate(wxDocument* doc, long flags)
 	{
+		mutUnused(flags);
 		DEBUGLOG(docview,_T(""));
 		if (doc) {
 			mutASSERT(dynamic_cast<MutDocument *>(doc));
@@ -182,6 +186,7 @@ namespace mutaborGUI {
 
 	void MutView::OnDraw(wxDC* dc)
 	{
+		mutUnused(dc);
                 // handled by MutEditWindow
 	}
 
@@ -206,6 +211,7 @@ namespace mutaborGUI {
 				     wxView *activeView, 
 				     wxView *deactiveView)
 	{
+			mutUnused(deactiveView);
 		// don't implement this function before looking at the debug output
 		DEBUGLOG(docview,_T("Activate: %d && %x == %x"),
 			 activate, activeView, this);
@@ -214,7 +220,7 @@ namespace mutaborGUI {
 
 	bool MutView::TryParent(wxEvent& event)
 	{
-
+		mutUnused(event);
 		DEBUGLOG(eventqueue,_T(""));
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false

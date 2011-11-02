@@ -3,16 +3,19 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.10 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.11 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.10  2011/10/22 16:32:39  keinstein
+ * Revision 1.11  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.9  2011-10-04 05:38:44  keinstein
@@ -118,14 +121,14 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "Defs.h"
-#include "InputDeviceShape.h"
-#include "InputMidiDeviceShape.h"
-#include "InputMidiFileDeviceShape.h"
-#include "InputGuidoFileDeviceShape.h"
-#include "DevMidi.h"
-#include "BoxChannelShape.h"
-#include "InputDevDlg.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/InputDeviceShape.h"
+#include "muwx/Routing/InputMidiDeviceShape.h"
+#include "muwx/Routing/InputMidiFileDeviceShape.h"
+#include "muwx/Routing/InputGuidoFileDeviceShape.h"
+#include "mu32/routing/midi/DevMidi.h"
+#include "muwx/Routing/BoxChannelShape.h"
+#include "muwx/Routing/InputDevDlg.h"
 #include "muwx/Routing/GUIRoute-inlines.h"
 #include "muwx/Routing/BoxDlg.h"
 #include "muwx/Routing/DebugRoute.h"

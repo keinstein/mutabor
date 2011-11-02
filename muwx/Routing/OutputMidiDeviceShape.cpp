@@ -3,16 +3,19 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.7 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.8 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: OutputMidiDeviceShape.cpp,v $
- * Revision 1.7  2011/10/02 16:58:42  keinstein
+ * Revision 1.8  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -90,8 +93,8 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "OutputMidiDeviceShape.h"
-#include "DevMidi.h"
+#include "muwx/Routing/OutputMidiDeviceShape.h"
+#include "mu32/routing/midi/DevMidi.h"
 #include "muwx/Routing/GUIRoute-inlines.h"
 #include <limits>
 
@@ -161,6 +164,10 @@ namespace mutaborGUI {
 		SetLabel (dev->GetName());
 		return true;
 	}
+
+#ifdef max
+#undef max
+#endif
 
 	wxPanel * MutOutputMidiDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
 								 Route & route) const

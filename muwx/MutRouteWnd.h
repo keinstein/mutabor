@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.10 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.11 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: MutRouteWnd.h,v $
- * Revision 1.10  2011/10/22 16:32:39  keinstein
+ * Revision 1.11  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.9  2011-10-04 05:38:44  keinstein
@@ -53,7 +56,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include "muwx/Routing/RouteLists.h"
 #include "mywx/muconvauto.h"
 #include "muwx/Routing/InputDeviceShape.h"

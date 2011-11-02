@@ -2,14 +2,17 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.7 2011/09/30 09:10:24 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/30 09:10:24 $
- * \version $Revision: 1.7 $
+ * \date $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.8 $
  *
  * $Log: MutConfDlg.h,v $
- * Revision 1.7  2011/09/30 09:10:24  keinstein
+ * Revision 1.8  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-09-30 09:10:24  keinstein
  * Further improvements in the routing system.
  *
  * Revision 1.6  2011-09-27 20:13:23  keinstein
@@ -51,9 +54,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "resourceload.h"
-#include "MutFrame.h"
+#include "mu32/Defs.h"
+#include "muwx/resourceload.h"
+#include "muwx/MutFrame.h"
 
 #ifndef MUWX_MUTCONFDLG_H_PRECOMPILED
 #define MUWX_MUTCONFDLG_H_PRECOMPILED

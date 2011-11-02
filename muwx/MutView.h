@@ -2,16 +2,19 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.10 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.11 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: MutView.h,v $
- * Revision 1.10  2011/09/30 18:07:05  keinstein
+ * Revision 1.11  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -68,8 +71,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "MutFrame.h"
+#include "mu32/Defs.h"
+#include "muwx/MutFrame.h"
 
 #ifndef MUWX_MUTVIEW_H_PRECOMPILED
 #define MUWX_MUTVIEW_H_PRECOMPILED

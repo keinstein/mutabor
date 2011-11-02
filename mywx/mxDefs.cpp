@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mxDefs.cpp,v 1.12 2011/09/27 20:13:26 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mxDefs.cpp,v 1.13 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: mxDefs.cpp,v $
- * Revision 1.12  2011/09/27 20:13:26  keinstein
+ * Revision 1.13  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.12  2011-09-27 20:13:26  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -32,8 +35,8 @@
  * \addtogroup templates
  * \{
  ********************************************************************/
-#include "Defs.h"
-#include "mhDefs.h"
+#include "mu32/Defs.h"
+#include "mywx/mhDefs.h"
 
 #include "wx/filedlg.h"
 #include "wx/log.h"
@@ -145,6 +148,7 @@ wxString FileNameDialog(wxWindow * parent,
 
 void PRINTWINDOW (wxWindow * window, const wxString & offset = _T ("")) 
 {
+		mutUnused(offset);
         if (!window) DEBUGLOG2 (other,_T("NULL window."));
         
 }

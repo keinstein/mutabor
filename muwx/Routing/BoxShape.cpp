@@ -4,15 +4,18 @@
 ********************************************************************
 * Box shape for route window.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.12 2011/10/05 16:28:39 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.cpp,v 1.13 2011/11/02 14:31:59 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2009/11/23
-* $Date: 2011/10/05 16:28:39 $
-* \version $Revision: 1.12 $
+* $Date: 2011/11/02 14:31:59 $
+* \version $Revision: 1.13 $
 *
 * $Log: BoxShape.cpp,v $
-* Revision 1.12  2011/10/05 16:28:39  keinstein
+* Revision 1.13  2011/11/02 14:31:59  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.12  2011-10-05 16:28:39  keinstein
 * correct layout on mac
 *
 * Revision 1.11  2011-10-04 17:16:14  keinstein
@@ -196,10 +199,10 @@
 *\addtogroup route
 *\{
 ********************************************************************/
-#include "Defs.h"
-#include "Global.h"
-#include "BoxShape.h"
-#include "DebugRoute.h"
+#include "mu32/Defs.h"
+#include "mu32/Global.h"
+#include "muwx/Routing/BoxShape.h"
+#include "muwx/Routing/DebugRoute.h"
 #include "muwx/Routing/OutputDeviceShape.h"
 #include "muwx/Routing/InputDeviceShape.h"
 #include "muwx/Routing/BoxDlg.h"
@@ -608,7 +611,10 @@ namespace mutaborGUI {
 			if (routeWindow->GetSizer()) UNREACHABLEC;
 		
 			routeSizer = new wxGridSizer(4);
-			if (!routeSizer) box->Destroy(); return NULL;
+			if (!routeSizer) {
+				box->Destroy(); 
+				return NULL;
+			}
 			routeWindow->SetSizer(routeSizer);		
 		}
 	

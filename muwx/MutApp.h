@@ -2,16 +2,19 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.27 2011/09/28 05:35:47 keinstein Exp $
+ * $Id: MutApp.h,v 1.28 2011/11/02 14:31:58 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
  * \date  2005/08/12
- *  $Date: 2011/09/28 05:35:47 $
- * \version $Revision: 1.27 $
+ *  $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.28 $
  * \license GPL
  *
  * $Log: MutApp.h,v $
- * Revision 1.27  2011/09/28 05:35:47  keinstein
+ * Revision 1.28  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.27  2011-09-28 05:35:47  keinstein
  * fix compiling on ubuntu
  *
  * Revision 1.26  2011-09-27 20:13:23  keinstein
@@ -174,9 +177,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "MutFrame.h"
-#include "MutDocManager.h"
+#include "mu32/Defs.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutDocManager.h"
 
 #ifndef MUWX_MUTAPP_H_PRECOMPILED
 #define MUWX_MUTAPP_H_PRECOMPILED
@@ -307,6 +310,7 @@ namespace mutaborGUI {
 		/** This function meight be helpful in compiling */
 		void CmCallExit(wxCommandEvent& event)
 			{
+				mutUnused(event);
 				exit(0);
 			}
 #endif

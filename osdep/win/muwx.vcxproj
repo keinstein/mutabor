@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{77C16200-04C6-49D1-83D3-95573EB322BA}</ProjectGuid>
+    <RootNamespace>muwx</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <UseOfAtl>Dynamic</UseOfAtl>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr</ExtensionsToDeleteOnClean>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EmbedManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\MinGW\msys\1.0\home\schlemme\Entwicklung\wxwidgets\WX_2_8_12\include\msvc;C:\MinGW\msys\1.0\home\schlemme\Entwicklung\wxwidgets\WX_2_8_12\contrib\include;C:\mingw\msys\1.0\home\schlemme\Entwicklung\wxwidgets\WX_2_8_12\include;C:\MinGW\msys\1.0\home\schlemme\Entwicklung\mutabor;C:\MinGW\msys\1.0\home\schlemme\Entwicklung\mutabor\rtmidi;C:\MinGW\msys\1.0\home\schlemme\Entwicklung\mutabor\osdep\win;C:\MinGW\msys\1.0\home\schlemme\Entwicklung\boost\boost_1_47_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;WINVER=0x0400;DEBUG;_DEBUG;_WINDOWS;__WXMSW__;__WXDEBUG__;WXUSINGDLL;wxUSE_GUI=1;HAVE_CONFIG_H;_VC80_UPGRADE=0x0600;NOPCH;__WINDOWS_MM__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>.\vc_mswd\Mutabor/Mutabor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PreprocessToFile>false</PreprocessToFile>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>wxbase28d.lib;wxmsw28d_adv.lib;wxmsw28d_qa.lib;wxregexd.lib;wxbase28d_net.lib;wxmsw28d_aui.lib;wxmsw28d_richtext.lib;wxtiffd.lib;wxbase28d_xml.lib;wxmsw28d_core.lib;wxmsw28d_stc.lib;wxzlibd.lib;wxexpatd.lib;wxmsw28d_html.lib;wxmsw28d_xrc.lib;wxjpegd.lib;wxmsw28d_media.lib;wxpngd.lib;winmm.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;oleacc.lib;odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\MinGW\msys\1.0\home\schlemme\Entwicklung\wxwidgets\WX_2_8_12\lib\vc_dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <OptimizeReferences>false</OptimizeReferences>
+      <ProfileGuidedDatabase>
+      </ProfileGuidedDatabase>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapExports>true</MapExports>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>C:\MinGW\msys\1.0\home\schlemme\Entwicklung\wxwidgets\WX_2_8_12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ResourceCompile>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\mu32\box.cpp" />
+    <ClCompile Include="..\mu32\Errors.cpp" />
+    <ClCompile Include="..\mu32\Execute.cpp" />
+    <ClCompile Include="..\mu32\Frac.cpp" />
+    <ClCompile Include="..\mu32\GrafKern.cpp" />
+    <ClCompile Include="..\mu32\Hilfs.cpp" />
+    <ClCompile Include="..\mu32\Interval.cpp" />
+    <ClCompile Include="..\mu32\mut.cpp" />
+    <ClCompile Include="..\mu32\Parser.cpp" />
+    <ClCompile Include="..\mu32\routing\Device.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\DevGIS.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\GIS.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\GIS_Head.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\GSP.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\GSP_Err.cpp" />
+    <ClCompile Include="..\mu32\routing\gmn\GSP_File.cpp" />
+    <ClCompile Include="..\mu32\routing\midi\DevMidF.cpp" />
+    <ClCompile Include="..\mu32\routing\midi\DevMidi.cpp" />
+    <ClCompile Include="..\mu32\routing\Route.cpp" />
+    <ClCompile Include="..\mu32\routing\RouteCompat.cpp" />
+    <ClCompile Include="..\mu32\Runtime.cpp" />
+    <ClCompile Include="..\mu32\TabGen.cpp" />
+    <ClCompile Include="..\muwx\Action.cpp" />
+    <ClCompile Include="..\muwx\CompDlg.cpp" />
+    <ClCompile Include="..\muwx\configtree.cpp" />
+    <ClCompile Include="..\muwx\GUIBoxData.cpp" />
+    <ClCompile Include="..\muwx\IconShape.cpp" />
+    <ClCompile Include="..\muwx\MutApp.cpp" />
+    <ClCompile Include="..\muwx\MutBitmaps.cpp" />
+    <ClCompile Include="..\muwx\MutChild.cpp" />
+    <ClCompile Include="..\muwx\MutDocManager.cpp" />
+    <ClCompile Include="..\muwx\MutDocument.cpp" />
+    <ClCompile Include="..\muwx\MutEditFile.cpp" />
+    <ClCompile Include="..\muwx\MutFrame.cpp" />
+    <ClCompile Include="..\muwx\MutIcon.cpp" />
+    <ClCompile Include="..\muwx\MutLogicWnd.cpp" />
+    <ClCompile Include="..\muwx\MutRouteWnd.cpp" />
+    <ClCompile Include="..\muwx\MutTextBox.cpp" />
+    <ClCompile Include="..\muwx\MutView.cpp" />
+    <ClCompile Include="..\muwx\Panel.cpp" />
+    <ClCompile Include="..\muwx\Routing\BoxChannelShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\BoxDlg.cpp" />
+    <ClCompile Include="..\muwx\Routing\BoxIconShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\BoxShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\DebugRoute.cpp" />
+    <ClCompile Include="..\muwx\Routing\DeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\GUIRoute.cpp" />
+    <ClCompile Include="..\muwx\Routing\InputDevDlg.cpp" />
+    <ClCompile Include="..\muwx\Routing\InputDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\InputGuidoFileDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\InputMidiDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\InputMidiFileDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\NewBoxShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\NewInputDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\NewOutputDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\OutputDevDlg.cpp" />
+    <ClCompile Include="..\muwx\Routing\OutputDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\OutputGuidoFileDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\OutputMidiDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\OutputMidiFileDeviceShape.cpp" />
+    <ClCompile Include="..\muwx\Routing\RouteIcons.cpp" />
+    <ClCompile Include="..\muwx\stclanguage.cpp" />
+    <ClCompile Include="..\mywx\muconvauto.cpp" />
+    <ClCompile Include="..\mywx\mutDebug.cpp" />
+    <ClCompile Include="..\mywx\mxDefs.cpp" />
+    <ClCompile Include="..\mywx\valNum.cpp" />
+    <ClCompile Include="..\mywx\valRadio.cpp" />
+    <ClCompile Include="..\rtmidi\RtMidi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mu32\box.h" />
+    <ClInclude Include="..\mu32\Defs.h" />
+    <ClInclude Include="..\mu32\Errors.h" />
+    <ClInclude Include="..\mu32\Execute.h" />
+    <ClInclude Include="..\mu32\Frac.h" />
+    <ClInclude Include="..\mu32\Global.h" />
+    <ClInclude Include="..\mu32\GrafKern.h" />
+    <ClInclude Include="..\mu32\Hilfs.h" />
+    <ClInclude Include="..\mu32\Interpre.h" />
+    <ClInclude Include="..\mu32\Interval.h" />
+    <ClInclude Include="..\mu32\MidiKern.h" />
+    <ClInclude Include="..\mu32\mut.h" />
+    <ClInclude Include="..\mu32\routing\Device-inlines.h" />
+    <ClInclude Include="..\mu32\routing\Device.h" />
+    <ClInclude Include="..\mu32\routing\gmn\DevGIS.h" />
+    <ClInclude Include="..\mu32\routing\gmn\GIS.h" />
+    <ClInclude Include="..\mu32\routing\gmn\GIS_Head.h" />
+    <ClInclude Include="..\mu32\routing\gmn\GSP.h" />
+    <ClInclude Include="..\mu32\routing\gmn\GSP_File.h" />
+    <ClInclude Include="..\mu32\routing\midi\DevMidF.h" />
+    <ClInclude Include="..\mu32\routing\midi\DevMidi.h" />
+    <ClInclude Include="..\mu32\routing\Route-inlines.h" />
+    <ClInclude Include="..\mu32\routing\Route.h" />
+    <ClInclude Include="..\mu32\routing\RouteCompat.h" />
+    <ClInclude Include="..\mu32\Runtime.h" />
+    <ClInclude Include="..\mu32\treestorage.h" />
+    <ClInclude Include="..\muwx\Action.h" />
+    <ClInclude Include="..\muwx\CompDlg.h" />
+    <ClInclude Include="..\muwx\configtree.h" />
+    <ClInclude Include="..\muwx\GUIBoxData-inlines.h" />
+    <ClInclude Include="..\muwx\GUIBoxData.h" />
+    <ClInclude Include="..\muwx\IconShape.h" />
+    <ClInclude Include="..\muwx\MutApp.h" />
+    <ClInclude Include="..\muwx\MutBitmaps.h" />
+    <ClInclude Include="..\muwx\MutChild.h" />
+    <ClInclude Include="..\muwx\MutConfDlg.h" />
+    <ClInclude Include="..\muwx\MutDocManager.h" />
+    <ClInclude Include="..\muwx\MutDocument.h" />
+    <ClInclude Include="..\muwx\MutEditFile.h" />
+    <ClInclude Include="..\muwx\MutFrame.h" />
+    <ClInclude Include="..\muwx\MutIcon.h" />
+    <ClInclude Include="..\muwx\MutLogicWnd.h" />
+    <ClInclude Include="..\muwx\MutRouteWnd.h" />
+    <ClInclude Include="..\muwx\MutTextBox.h" />
+    <ClInclude Include="..\muwx\MutView.h" />
+    <ClInclude Include="..\muwx\Panel.h" />
+    <ClInclude Include="..\muwx\resourceload.h" />
+    <ClInclude Include="..\muwx\Routing\BoxChannelShape.h" />
+    <ClInclude Include="..\muwx\Routing\BoxDlg.h" />
+    <ClInclude Include="..\muwx\Routing\BoxIconShape.h" />
+    <ClInclude Include="..\muwx\Routing\BoxShape.h" />
+    <ClInclude Include="..\muwx\Routing\DebugRoute.h" />
+    <ClInclude Include="..\muwx\Routing\DeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\GUIRoute-inlines.h" />
+    <ClInclude Include="..\muwx\Routing\GUIRoute.h" />
+    <ClInclude Include="..\muwx\Routing\InputDevDlg.h" />
+    <ClInclude Include="..\muwx\Routing\InputDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\InputGuidoFileDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\InputMidiDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\InputMidiFileDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\NewBoxShape.h" />
+    <ClInclude Include="..\muwx\Routing\NewInputDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\NewOutputDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\OutputDevDlg.h" />
+    <ClInclude Include="..\muwx\Routing\OutputDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\OutputGuidoFileDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\OutputMidiDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\OutputMidiFileDeviceShape.h" />
+    <ClInclude Include="..\muwx\Routing\RouteIcons.h" />
+    <ClInclude Include="..\muwx\Routing\RouteLists.h" />
+    <ClInclude Include="..\muwx\stclanguage.h" />
+    <ClInclude Include="..\mywx\mhArray.h" />
+    <ClInclude Include="..\mywx\mhDefs.h" />
+    <ClInclude Include="..\mywx\muconvauto.h" />
+    <ClInclude Include="..\mywx\mutDebug.h" />
+    <ClInclude Include="..\mywx\mutDebugFlags.h" />
+    <ClInclude Include="..\mywx\valNum.h" />
+    <ClInclude Include="..\mywx\valRadio.h" />
+    <ClInclude Include="..\osdep\win\config.h" />
+    <ClInclude Include="..\rtmidi\RtError.h" />
+    <ClInclude Include="..\rtmidi\RtMidi.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\mu32\mut.y" />
+    <None Include="..\muwx\Icon\ActTextBox.ico" />
+    <None Include="..\muwx\Icon\ActTextBox.xpm" />
+    <None Include="..\muwx\Icon\AddPause.bmp" />
+    <None Include="..\muwx\Icon\AddPause.png" />
+    <None Include="..\muwx\Icon\AddPause.xpm" />
+    <None Include="..\muwx\Icon\AddPlay.bmp" />
+    <None Include="..\muwx\Icon\AddPlay.png" />
+    <None Include="..\muwx\Icon\AddPlay.xpm" />
+    <None Include="..\muwx\Icon\AddStop.bmp" />
+    <None Include="..\muwx\Icon\AddStop.png" />
+    <None Include="..\muwx\Icon\AddStop.xpm" />
+    <None Include="..\muwx\Icon\AddStopDis.bmp" />
+    <None Include="..\muwx\Icon\AddStopDis.png" />
+    <None Include="..\muwx\Icon\AddStopDis.xpm" />
+    <None Include="..\muwx\Icon\DevGMN.ico" />
+    <None Include="..\muwx\Icon\DevGMN.xpm" />
+    <None Include="..\muwx\Icon\DevMidiFile.ico" />
+    <None Include="..\muwx\Icon\DevMidiFile.xpm" />
+    <None Include="..\muwx\Icon\DevMidiPort.ico" />
+    <None Include="..\muwx\Icon\DevMidiPort.xpm" />
+    <None Include="..\muwx\Icon\DevUnknown.ico" />
+    <None Include="..\muwx\Icon\DevUnknown.xpm" />
+    <None Include="..\muwx\Icon\Document.ico" />
+    <None Include="..\muwx\Icon\Document.xpm" />
+    <None Include="..\muwx\Icon\ErrorPlop.ico" />
+    <None Include="..\muwx\Icon\ErrorPlop.xpm" />
+    <None Include="..\muwx\Icon\KeyTextBox.ico" />
+    <None Include="..\muwx\Icon\KeyTextBox.xpm" />
+    <None Include="..\muwx\Icon\Logic.ico" />
+    <None Include="..\muwx\Icon\Logic.xpm" />
+    <None Include="..\muwx\Icon\LogicOpen.ico" />
+    <None Include="..\muwx\Icon\LogicOpen.xpm" />
+    <None Include="..\muwx\Icon\Mutabor.icns" />
+    <None Include="..\muwx\Icon\Mutabor.ico" />
+    <None Include="..\muwx\Icon\Mutabor.xpm" />
+    <None Include="..\muwx\Icon\NewPlop.ico" />
+    <None Include="..\muwx\Icon\NewPlop.xpm" />
+    <None Include="..\muwx\Icon\PausePlop.ico" />
+    <None Include="..\muwx\Icon\PausePlop.xpm" />
+    <None Include="..\muwx\Icon\PlayPlop.ico" />
+    <None Include="..\muwx\Icon\PlayPlop.xpm" />
+    <None Include="..\muwx\Icon\Route.ico" />
+    <None Include="..\muwx\Icon\Route.xpm" />
+    <None Include="..\muwx\Icon\Tonesyst.ico" />
+    <None Include="..\muwx\Icon\Tonesyst.xpm" />
+    <None Include="..\muwx\Icon\TonesystOpen.ico" />
+    <None Include="..\muwx\Icon\TonesystOpen.xpm" />
+    <None Include="..\muwx\Icon\TSTextBox.ico" />
+    <None Include="..\muwx\Icon\TSTextBox.xpm" />
+    <None Include="..\muwx\Mutabor.rh" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\muwx\Mutabor.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

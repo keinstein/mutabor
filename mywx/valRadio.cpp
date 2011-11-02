@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.6 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: valRadio.cpp,v $
- * Revision 1.5  2011/09/27 20:13:26  keinstein
+ * Revision 1.6  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-09-27 20:13:26  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -37,7 +40,7 @@
 
 
 // For compilers that support precompilation, includes "wx.h".
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #if wxUSE_VALIDATORS
 

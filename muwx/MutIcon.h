@@ -3,16 +3,19 @@
  ********************************************************************
  * Icon class fixing issues with Mac OS.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.9 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutIcon.h,v 1.10 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: MutIcon.h,v $
- * Revision 1.9  2011/10/05 16:28:39  keinstein
+ * Revision 1.10  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.9  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.8  2011-10-04 17:16:14  keinstein
@@ -70,7 +73,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifndef MUWX_MUTICON_H_PRECOMPILED
 #define MUWX_MUTICON_H_PRECOMPILED

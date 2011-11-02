@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.11 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.12 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.11  2011/10/05 16:28:39  keinstein
+ * Revision 1.12  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.11  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.10  2011-10-04 20:09:16  keinstein
@@ -168,11 +171,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "GUIRoute.h"
-#include "IconShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/GUIRoute.h"
+#include "muwx/IconShape.h"
 //#include "Device.h"
-#include "box.h"
+#include "mu32/box.h"
 
 #ifndef MUWX_ROUTING_BOXCHANNELSHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_BOXCHANNELSHAPE_H_PRECOMPILED
@@ -322,6 +325,11 @@ namespace mutaborGUI {
 #endif
 		
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
 		/*****************************************/
 		// Connection management
 		/*****************************************/
@@ -363,7 +371,10 @@ namespace mutaborGUI {
 			return true;
 		}
 
-		
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
+
 		// fortunately we can distinguish devices 
 		// and shapes by their pointer types
 
@@ -403,10 +414,7 @@ namespace mutaborGUI {
 			       boost::intrusive_ptr<device> & newdev) {
 			if (route) 
 				return route->Reconnect(olddev,newdev);
-			else {
-				UNREACHABLEC;
-				return false;
-			}
+			UNREACHABLEC;
 			return false;
 		}
 
@@ -416,10 +424,8 @@ namespace mutaborGUI {
 			if (dev) {
 				typename deviceshape::devicetype d(dev->GetDevice());
 				return Detatch(d);
-			}else {
-				UNREACHABLEC;
-				return false;
 			}
+			UNREACHABLEC;
 			return false;
 		}
 		/// Detatch current device

@@ -2,12 +2,12 @@
  ********************************************************************
  * Inline functions from Route.h
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.3 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.4 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: Route-inlines.h,v $
- * Revision 1.3  2011/10/02 16:58:41  keinstein
+ * Revision 1.4  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.3  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -60,8 +63,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Route.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/Route.h"
 
 #ifndef MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
@@ -71,6 +74,80 @@
 
 
 namespace mutabor {
+
+	template <class I, class O>
+	inline void TRouteClass<I,O>::Attatch (OutputDevice & dev) {
+			TRACEC;	
+			Add(dev)		;
+			TRACEC;		
+			Route r(this);
+			TRACEC;	
+			dev->Add(r);
+			TRACEC;
+	}
+	
+	template <class I, class O>
+	inline void TRouteClass<I,O>::Attatch (InputDevice & dev) {
+			TRACEC;
+			Add(dev);
+			Route r(this);
+			dev->Add(r);
+	}
+
+	template <class I, class O>
+	inline bool TRouteClass<I,O>::Reconnect(OutputDevice & olddev, 
+				       OutputDevice & newdev) {
+			bool retval = Replace(olddev,newdev);
+ 			Route r(this);
+			if (retval) {
+				retval = retval && olddev->Remove(r);
+			}
+			if (retval) {
+				newdev->Add(r);
+			} else
+				mutASSERT(false);
+				// Check taht olddev is correcty disconnected
+			return retval;
+	}
+
+	template <class I, class O>
+	inline bool TRouteClass<I,O>::Reconnect(InputDevice & olddev, 
+				       InputDevice & newdev) {
+			bool retval = Replace(olddev,newdev);
+			Route r(this);
+			if (retval) {
+				retval = retval && olddev->Remove(r);
+			}
+			if (retval) {
+				newdev->Add(r);
+			} else 
+				mutASSERT(false);
+			return retval;
+	}
+
+	/// Detatch current output device
+	template <class I, class O>
+	inline bool TRouteClass<I,O>::Detatch(OutputDevice & dev) {
+			Route r (this);
+			bool retval = dev->Remove(r);
+			if (retval) {
+				// this might delete dev
+				retval = Remove(dev);
+			}
+			return retval;
+		}
+		/// Detatch current input device
+	template <class I, class O>
+	inline bool TRouteClass<I,O>::Detatch(InputDevice & dev) {
+			Route r(this);
+			bool retval = dev->Remove(r);
+			if (retval) {
+				// this might delete dev
+				retval = Remove(dev);
+			}
+			return retval;
+		}
+
 	inline Route RouteFactory::Create(
 		InputDevice & in,
 		OutputDevice & out,
@@ -83,6 +160,12 @@ namespace mutabor {
 		int oTo,
 		bool oNoDrum /*,
 			       Route next*/) {
+		DEBUGLOGTYPE(smartptr,RouteFactory,_T("input device %p (%d)"),
+			in.get(),
+			intrusive_ptr_get_refcount(in.get()));
+		DEBUGLOGTYPE(smartptr,RouteFactory,_T("output device %p (%d)"),
+			out.get(),
+			intrusive_ptr_get_refcount(out.get()));
 		if (factory) {
 			RouteClass * r = factory->DoCreate(in,out,type,iFrom,iTo,
 						 box,active,

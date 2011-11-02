@@ -2,15 +2,18 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.12 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.12 $
+ * \date $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: DevMidF.cpp,v $
- * Revision 1.12  2011/10/02 16:58:41  keinstein
+ * Revision 1.13  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.12  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -125,7 +128,7 @@
 // Mutabor 3, 1998, R.Krauße
 // MIDI-File als Device
 // ------------------------------------------------------------------
-#include "Defs.h"
+#include "mu32/Defs.h"
 #if defined(MUTWIN) && !defined(WX)
 #include <owl/pch.h>
 #endif
@@ -140,10 +143,10 @@
 #endif
 #endif
 
-#include "DevMidF.h"
-#include "Execute.h"
-#include "GrafKern.h"
-#include "Runtime.h"
+#include "mu32/routing/midi/DevMidF.h"
+#include "mu32/Execute.h"
+#include "mu32/GrafKern.h"
+#include "mu32/Runtime.h"
 
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
@@ -565,7 +568,7 @@ namespace mutabor {
 	}
 
 	void OutputMidiFile::Sustain(char on, int channel)
-	{}
+	{ mutUnused(on); mutUnused(channel); STUBC;}
 
 	void OutputMidiFile::MidiOut(DWORD data, char n)
 	{
@@ -1257,8 +1260,9 @@ namespace mutabor {
 	{
  		STUBC;
 		return NULL;
-
+#if 0
 		return new OutputMidiFile(devId,name,id);
+#endif
 	}
 
 

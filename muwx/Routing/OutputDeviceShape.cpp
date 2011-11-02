@@ -4,16 +4,19 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.9 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.10 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.9  2011/10/22 16:32:39  keinstein
+ * Revision 1.10  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.9  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.8  2011-10-03 17:42:41  keinstein
@@ -130,12 +133,12 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "OutputDeviceShape.h"
-#include "OutputMidiDeviceShape.h"
-#include "OutputMidiFileDeviceShape.h"
-#include "OutputGuidoFileDeviceShape.h"
-#include "BoxChannelShape.h"
-#include "DevMidi.h"
+#include "muwx/Routing/OutputDeviceShape.h"
+#include "muwx/Routing/OutputMidiDeviceShape.h"
+#include "muwx/Routing/OutputMidiFileDeviceShape.h"
+#include "muwx/Routing/OutputGuidoFileDeviceShape.h"
+#include "muwx/Routing/BoxChannelShape.h"
+#include "mu32/routing/midi/DevMidi.h"
 #include "muwx/Routing/GUIRoute-inlines.h"
 #include "muwx/Routing/DebugRoute.h"
 #include "muwx/Routing/BoxDlg.h"

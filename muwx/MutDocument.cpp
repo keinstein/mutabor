@@ -2,16 +2,19 @@
 ********************************************************************
 * Document/View Document class for Mutabor source files.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.12 2011/10/02 16:58:41 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocument.cpp,v 1.13 2011/11/02 14:31:58 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/10/02 16:58:41 $
-* \version $Revision: 1.12 $
+* $Date: 2011/11/02 14:31:58 $
+* \version $Revision: 1.13 $
 * \license GPL
 *
 * $Log: MutDocument.cpp,v $
-* Revision 1.12  2011/10/02 16:58:41  keinstein
+* Revision 1.13  2011/11/02 14:31:58  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.12  2011-10-02 16:58:41  keinstein
 * * generate Class debug information when compile in debug mode
 * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
 * * Reenable confirmation dialog when closing document while the logic is active
@@ -73,11 +76,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
-#include "MutDocument.h"
-#include "MutView.h"
-#include "MutApp.h"
+#include "muwx/MutDocument.h"
+#include "muwx/MutView.h"
+#include "muwx/MutApp.h"
 #include <wx/debug.h>
 
 #include <cstdio>
@@ -358,7 +361,7 @@ namespace mutaborGUI {
 
 	void MutDocument::CmdNewView(wxCommandEvent& event)
 	{
-		printf("MutDocument::CmdNewView\n");
+		mutUnused(event);
 		//wxMessageBox(wxT("doc newview 1"), _T("dialog"), wxOK | wxICON_INFORMATION, NULL);
 
 		//  we manually create a view, and register it with the document.
@@ -388,6 +391,7 @@ namespace mutaborGUI {
 
 	void MutDocument::CmdUpdateAllViews(wxCommandEvent& event)
 	{
+		mutUnused(event);
 		UpdateAllViews();
 	}
 
@@ -400,7 +404,7 @@ namespace mutaborGUI {
 
 	bool MutDocument::TryParent(wxEvent& event)
 	{
-
+		mutUnused(event);
 		DEBUGLOG(eventqueue,_T(""));
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
@@ -418,9 +422,9 @@ namespace mutaborGUI {
 					return true;
 			}
 		}
+		return false;
 #endif
 
-		return false;
 	}
 
 	

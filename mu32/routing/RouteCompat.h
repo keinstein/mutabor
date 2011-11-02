@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.h,v 1.4 2011/09/27 20:13:22 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.h,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/09/27 20:13:22 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: RouteCompat.h,v $
- * Revision 1.4  2011/09/27 20:13:22  keinstein
+ * Revision 1.5  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-09-27 20:13:22  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -49,8 +52,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "treestorage.h"
+#include "mu32/Defs.h"
+#include "mu32/treestorage.h"
 
 #ifndef MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED
 #define MU32_ROUTING_ROUTECOMPAT_H_PRECOMPILED

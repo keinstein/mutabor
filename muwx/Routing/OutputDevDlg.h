@@ -2,16 +2,19 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: OutputDevDlg.h,v 1.4 2011/09/30 18:07:06 keinstein Exp $
+ * $Id: OutputDevDlg.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/09/30 18:07:06 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.5 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
  * $Log: OutputDevDlg.h,v $
- * Revision 1.4  2011/09/30 18:07:06  keinstein
+ * Revision 1.5  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-09-30 18:07:06  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -80,9 +83,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "resourceload.h"
-#include "Device.h"
+#include "mu32/Defs.h"
+#include "muwx/resourceload.h"
+#include "mu32/routing/Device.h"
 
 #ifndef MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
 #define MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED

@@ -3,16 +3,19 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.7 2011/10/04 05:38:44 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.cpp,v 1.8 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/10/04 05:38:44 $
- * \version $Revision: 1.7 $
+ * $Date: 2011/11/02 14:32:00 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: DeviceShape.cpp,v $
- * Revision 1.7  2011/10/04 05:38:44  keinstein
+ * Revision 1.8  2011/11/02 14:32:00  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.7  2011-10-04 05:38:44  keinstein
  * some configuration fixes
  *
  * Revision 1.6  2011-10-03 17:42:41  keinstein
@@ -72,8 +75,8 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "Defs.h"
-#include "DeviceShape.h"
+#include "mu32/Defs.h"
+#include "muwx/Routing/DeviceShape.h"
 #include <algorithm>
 //#include "MutApp.h"
 //#include "MutIcon.h"

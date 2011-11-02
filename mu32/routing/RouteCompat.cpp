@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.5 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.6 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: RouteCompat.cpp,v $
- * Revision 1.5  2011/10/02 16:58:41  keinstein
+ * Revision 1.6  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -311,7 +314,7 @@ namespace compat30 {
 							     Str2RT(Type),
 							     IFrom, ITo, Box,
 							     BoxActive, 
-							     OFrom, OTo, ONoDrum));
+							     OFrom, OTo, ONoDrum != 0));
 				In->Add(r);
 				GETLINE;
 				DEBUGLOG2(routing,_T("+%s"),s.c_str());

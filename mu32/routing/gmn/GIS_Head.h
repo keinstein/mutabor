@@ -3,16 +3,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.6 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS_Head.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: GIS_Head.h,v $
- * Revision 1.6  2011/10/02 16:58:41  keinstein
+ * Revision 1.7  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -58,8 +61,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "GIS.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/gmn/GIS.h"
 
 #ifndef MU32_ROUTING_GMN_GIS_HEAD_H_PRECOMPILED
 #define MU32_ROUTING_GMN_GIS_HEAD_H_PRECOMPILED

@@ -2,16 +2,19 @@
 ********************************************************************
 * Description
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.h,v 1.6 2011/10/02 16:58:41 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
-* $Date: 2011/10/02 16:58:41 $
-* \version $Revision: 1.6 $
+* $Date: 2011/11/02 14:31:57 $
+* \version $Revision: 1.7 $
 * \license GPL
 *
 * $Log: DevGIS.h,v $
-* Revision 1.6  2011/10/02 16:58:41  keinstein
+* Revision 1.7  2011/11/02 14:31:57  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.6  2011-10-02 16:58:41  keinstein
 * * generate Class debug information when compile in debug mode
 * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
 * * Reenable confirmation dialog when closing document while the logic is active
@@ -56,10 +59,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 //#include "Global.h"
-#include "Device.h"
-#include "GIS_Head.h"
+#include "mu32/routing/Device.h"
+#include "mu32/routing/gmn/GIS_Head.h"
 //#include "Interpre.h"
 
 #ifndef MU32_ROUTING_GMN_DEVGIS_H_PRECOMPILED
@@ -144,6 +147,10 @@ namespace mutabor {
 				CloseAllSubs(Head);
 			};
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
 		virtual void NoteOn(int box, int taste, int velo,
 				    RouteClass * r, int channel, ChannelData *cd)
 			{};
@@ -177,6 +184,10 @@ namespace mutabor {
 
 		virtual void Quite(RouteClass * r)
 			{};
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 
 		virtual DevType GetType() const
 			{

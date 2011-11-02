@@ -3,17 +3,20 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.14 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.15 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.14 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: MutTextBox.h,v $
- * Revision 1.14  2011/09/27 20:13:23  keinstein
+ * Revision 1.15  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.14  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -53,8 +56,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Global.h"
+#include "mu32/Defs.h"
+#include "mu32/Global.h"
 // #include "MutChild.h"
 
 #ifndef MUWX_MUTTEXTBOX_H_PRECOMPILED

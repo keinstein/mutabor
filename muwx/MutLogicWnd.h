@@ -2,17 +2,20 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.12 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.13 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: MutLogicWnd.h,v $
- * Revision 1.12  2011/09/27 20:13:23  keinstein
+ * Revision 1.13  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.12  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -42,8 +45,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "MutChild.h"
+#include "mu32/Defs.h"
+#include "muwx/MutChild.h"
 #include "muwx/GUIBoxData.h"
 
 #ifndef MUWX_MUTLOGICWND_H_PRECOMPILED

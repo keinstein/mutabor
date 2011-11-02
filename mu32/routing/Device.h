@@ -4,16 +4,19 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.10 2011/10/02 16:58:40 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.h,v 1.11 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/02 16:58:40 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Device.h,v $
- * Revision 1.10  2011/10/02 16:58:40  keinstein
+ * Revision 1.11  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.10  2011-10-02 16:58:40  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -134,9 +137,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "GIS.h"
-#include "Route.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/gmn/GIS.h"
+#include "mu32/routing/Route.h"
 
 #ifndef MU32_ROUTING_DEVICE_H_PRECOMPILED
 #define MU32_ROUTING_DEVICE_H_PRECOMPILED
@@ -310,9 +313,15 @@ namespace mutabor {
 				return Id;
 			}
 
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
 		virtual void ReadData(wxConfigBase * config) {};
 		virtual void WriteData(wxConfigBase * config) {};	
-	
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 		virtual mutString GetTypeName () const {
 			return N_("Device base class");
 		}

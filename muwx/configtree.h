@@ -3,14 +3,17 @@
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.6 2011/09/27 20:13:24 keinstein Exp $
+ * $Id: configtree.h,v 1.7 2011/11/02 14:31:59 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:24 $
- * \version $Revision: 1.6 $
+ * \date $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: configtree.h,v $
- * Revision 1.6  2011/09/27 20:13:24  keinstein
+ * Revision 1.7  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.6  2011-09-27 20:13:24  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -57,9 +60,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Route.h"
-#include "treestorage.h"
+#include "mu32/Defs.h"
+#include "mu32/routing/Route.h"
+#include "mu32/treestorage.h"
 
 #ifndef MUWX_CONFIGTREE_H_PRECOMPILED
 #define MUWX_CONFIGTREE_H_PRECOMPILED

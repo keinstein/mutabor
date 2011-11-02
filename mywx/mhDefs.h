@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.23 2011/10/22 16:32:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.24 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/22 16:32:39 $
- * \version $Revision: 1.23 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.24 $
  * \license GPL
  *
  * $Log: mhDefs.h,v $
- * Revision 1.23  2011/10/22 16:32:39  keinstein
+ * Revision 1.24  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.23  2011-10-22 16:32:39  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.22  2011-10-04 05:38:44  keinstein
@@ -36,7 +39,7 @@
 #ifndef mhDEFS_H
 #define mhDEFS_H
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #include "wx/window.h"
 #include "wx/stdpaths.h"
@@ -46,7 +49,7 @@
 #include <list>
 
 
-#include "Mutabor.rh"
+#include "muwx/Mutabor.rh"
 
 #ifndef HAVE_CONFIG_H
 #  ifdef __WXMSW__

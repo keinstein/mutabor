@@ -2,16 +2,19 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.4 2011/09/30 18:07:05 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.5 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
- * $Date: 2011/09/30 18:07:05 $
- * \version $Revision: 1.4 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.5 $
  * \license GPL
  *
  * $Log: BoxDlg.h,v $
- * Revision 1.4  2011/09/30 18:07:05  keinstein
+ * Revision 1.5  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.4  2011-09-30 18:07:05  keinstein
  * * make compile on windows
  * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
  * * add ax_boost_base for boost detection
@@ -79,10 +82,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "resourceload.h"
-#include "InputDeviceShape.h"
-#include "OutputDeviceShape.h"
+#include "mu32/Defs.h"
+#include "muwx/resourceload.h"
+#include "muwx/Routing/InputDeviceShape.h"
+#include "muwx/Routing/OutputDeviceShape.h"
 
 #ifndef MUWX_ROUTING_BOXDLG_H_PRECOMPILED
 #define MUWX_ROUTING_BOXDLG_H_PRECOMPILED

@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.h,v 1.14 2011/09/27 20:13:21 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.h,v 1.15 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.14 $
+ * $Date: 2011/11/02 14:31:57 $
+ * \version $Revision: 1.15 $
  * \license GPL
  *
  * $Log: Runtime.h,v $
- * Revision 1.14  2011/09/27 20:13:21  keinstein
+ * Revision 1.15  2011/11/02 14:31:57  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.14  2011-09-27 20:13:21  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -53,9 +56,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "CompDlg.h"
-#include "Device.h"
+#include "mu32/Defs.h"
+#include "muwx/CompDlg.h"
+#include "mu32/routing/Device.h"
 
 #ifndef MU32_RUNTIME_H_PRECOMPILED
 #define MU32_RUNTIME_H_PRECOMPILED

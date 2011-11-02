@@ -2,17 +2,20 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.33 2011/10/04 17:16:13 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.34 2011/11/02 14:31:59 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
-* $Date: 2011/10/04 17:16:13 $
-* \version $Revision: 1.33 $
+* $Date: 2011/11/02 14:31:59 $
+* \version $Revision: 1.34 $
 * \license GPL
 *
 * $Log: MutEditFile.cpp,v $
-* Revision 1.33  2011/10/04 17:16:13  keinstein
+* Revision 1.34  2011/11/02 14:31:59  keinstein
+* fix some errors crashing Mutabor on Windows
+*
+* Revision 1.33  2011-10-04 17:16:13  keinstein
 * make program compile on Mac (wx 2.9) and fix some memory corruption
 *
 * Revision 1.32  2011-09-30 18:07:04  keinstein
@@ -103,8 +106,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "mhDefs.h"
+#include "mu32/Defs.h"
+#include "mywx/mhDefs.h"
 
 #include <iostream>
 
@@ -135,13 +138,13 @@
 
 
 //#include "Mutabor.rh"
-#include "MutFrame.h"
-#include "MutEditFile.h"
-#include "CompDlg.h"
-#include "Runtime.h"
-#include "MutView.h"
-#include "stclanguage.h"
-#include "GrafKern.h"
+#include "muwx/MutFrame.h"
+#include "muwx/MutEditFile.h"
+#include "muwx/CompDlg.h"
+#include "mu32/Runtime.h"
+#include "muwx/MutView.h"
+#include "muwx/stclanguage.h"
+#include "mu32/GrafKern.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -580,11 +583,11 @@ namespace mutaborGUI {
 			wxUint32 flags = m_findData.GetFlags();
 
 			config -> Write(_T("Downwards"),
-					(bool) (flags & wxFR_DOWN));
+					(bool) ((flags & wxFR_DOWN) != 0));
 			config -> Write(_T("Whole words"),
-					(bool)(flags & wxFR_WHOLEWORD));
+					(bool)((flags & wxFR_WHOLEWORD) != 0));
 			config -> Write(_T("Case sensitive"),
-					(bool)(flags & wxFR_MATCHCASE));
+					(bool)((flags & wxFR_MATCHCASE)!= 0));
 			config -> Write(_T("Find"),m_findData.GetFindString());
 			config -> Write(_T("Replace to"),
 					m_findData.GetReplaceString());
@@ -644,6 +647,7 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnFind (wxCommandEvent &event) {
+		mutUnused(event);
 		if ( m_dlgFind )
 		{
 			delete m_dlgFind;
@@ -1178,6 +1182,7 @@ namespace mutaborGUI {
 
 	bool MutEditFile::LoadFile (const wxString &filename) {
 		return DoLoadFile(filename,0);
+#if 0
 		if (!filename.empty()) m_filename = filename;
 		ClearAll ();
 
@@ -1190,6 +1195,7 @@ namespace mutaborGUI {
 		InitializePrefs (DeterminePrefs (fname.GetFullName()));
 
 		return true;
+#endif
 	}
 
 	bool MutEditFile::SaveFile ()

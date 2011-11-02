@@ -4,16 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.11 2011/10/05 16:28:39 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.12 2011/11/02 14:31:58 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/10/05 16:28:39 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.11  2011/10/05 16:28:39  keinstein
+ * Revision 1.12  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.11  2011-10-05 16:28:39  keinstein
  * correct layout on mac
  *
  * Revision 1.10  2011-10-04 20:09:16  keinstein
@@ -104,9 +107,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Panel.h"
-#include "MutIcon.h"
+#include "mu32/Defs.h"
+#include "muwx/Panel.h"
+#include "muwx/MutIcon.h"
 //#include "Device.h"
 
 #ifndef MUWX_ICONSHAPE_H_PRECOMPILED
@@ -148,6 +151,7 @@ public:
 	
 	virtual ~MutIconShapeClass() {}
 	
+	virtual bool Destroy();
 
 	void SetIcon(const MutIcon & icon) {
 		Icon = icon;
@@ -212,7 +216,8 @@ public:
 	//  virtual bool AcceptsFocus() const { return true; }
 	void DeleteSelf() __attribute__ ((deprecated));
 	void DeleteSelfEvent(wxCloseEvent & event) __attribute__((deprecated))
-		{
+	{
+		mutUnused(event);
 		DEBUGLOG(other, _T("Destroying"));
 		this->Destroy();
 	}	

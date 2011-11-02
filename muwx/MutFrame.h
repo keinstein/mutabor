@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.32 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/02 16:58:41 $
- * \version $Revision: 1.32 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.33 $
  * \license GPL
  *
  * $Log: MutFrame.h,v $
- * Revision 1.32  2011/10/02 16:58:41  keinstein
+ * Revision 1.33  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.32  2011-10-02 16:58:41  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -186,11 +189,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Global.h"
-#include "MutChild.h"
-#include "MutEditFile.h"
-#include "MutRouteWnd.h"
+#include "mu32/Defs.h"
+#include "mu32/Global.h"
+#include "muwx/MutChild.h"
+#include "muwx/MutEditFile.h"
+#include "muwx/MutRouteWnd.h"
 
 #ifndef MUWX_MUTFRAME_H_PRECOMPILED
 #define MUWX_MUTFRAME_H_PRECOMPILED
@@ -414,7 +417,7 @@ namespace mutaborGUI {
 		/// retrun true if we have already a client
 		bool HasClient()
 			{
-				return (bool) client;
+				return client != NULL;
 			}
 
 		void UpdateBoxMenu();

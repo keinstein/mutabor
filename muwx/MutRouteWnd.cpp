@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.32 2011/10/22 16:32:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/10/22 16:32:38 $
- * \version $Revision: 1.32 $
+ * $Date: 2011/11/02 14:31:59 $
+ * \version $Revision: 1.33 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.32  2011/10/22 16:32:38  keinstein
+ * Revision 1.33  2011/11/02 14:31:59  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.32  2011-10-22 16:32:38  keinstein
  * commit to continue debugging on Linux/wine
  *
  * Revision 1.31  2011-10-05 16:28:39  keinstein
@@ -107,24 +110,24 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #include <stdio.h>
 #include "wx/list.h"
 #include "wx/ffile.h"
 #include "wx/log.h"
 #include "wx/dc.h"
 
-#include "Runtime.h"
-#include "mhDefs.h"
-#include "MutRouteWnd.h"
-#include "InputDevDlg.h"
-#include "BoxDlg.h"
-#include "OutputDevDlg.h"
-#include "NewInputDeviceShape.h"
-#include "NewBoxShape.h"
-#include "NewOutputDeviceShape.h"
-#include "DebugRoute.h"
-#include "RouteCompat.h"
+#include "mu32/Runtime.h"
+#include "mywx/mhDefs.h"
+#include "muwx/MutRouteWnd.h"
+#include "muwx/Routing/InputDevDlg.h"
+#include "muwx/Routing/BoxDlg.h"
+#include "muwx/Routing/OutputDevDlg.h"
+#include "muwx/Routing/NewInputDeviceShape.h"
+#include "muwx/Routing/NewBoxShape.h"
+#include "muwx/Routing/NewOutputDeviceShape.h"
+#include "muwx/Routing/DebugRoute.h"
+#include "mu32/routing/RouteCompat.h"
 #include "muwx/MutApp.h"
 #include "muwx/MutFrame.h"
 #include "muwx/GUIBoxData-inlines.h"
@@ -140,8 +143,8 @@
 #endif
 
 //#include "Mutabor.rh"
-#include "Device.h"
-#include "MidiKern.h"
+#include "mu32/routing/Device.h"
+#include "mu32/MidiKern.h"
 
 //#if !defined(__WXMSW__)
 #include "wx/image.h"

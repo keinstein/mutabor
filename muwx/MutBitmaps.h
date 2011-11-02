@@ -3,17 +3,20 @@
  * Mutabor Bitmaps. We save Bitmaps in global variables as they can be used in several contexts.
  * so their data can be shared if the underlying framework supports it.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.h,v 1.2 2011/09/27 20:13:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.h,v 1.3 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) TU Dresden
  * \author 
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2011/02/13
- * $Date: 2011/09/27 20:13:23 $
- * \version $Revision: 1.2 $
+ * $Date: 2011/11/02 14:31:58 $
+ * \version $Revision: 1.3 $
  * \license GPL
  *
  * $Log: MutBitmaps.h,v $
- * Revision 1.2  2011/09/27 20:13:23  keinstein
+ * Revision 1.3  2011/11/02 14:31:58  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.2  2011-09-27 20:13:23  keinstein
  * * Reworked route editing backend
  * * rewireing is done by RouteClass/GUIRoute now
  * * other classes forward most requests to this pair
@@ -38,7 +41,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 
 #ifndef MUWX_MUT_BITMAPS_H_PRECOMPILED
 #define MUWX_MUT_BITMAPS_H_PRECOMPILED
@@ -56,6 +59,7 @@ namespace mutaborGUI {
 		static bool initialized;
 	public:
 		static bool Init();
+		static wxBitmap EmptyBitmap;
 		static wxBitmap New;
 		static wxBitmap Open;
 		static wxBitmap Save;

@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.5 2011/10/02 16:58:42 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.6 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2010,2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/10/02 16:58:42 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/02 14:32:01 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  * $Log: mutDebug.cpp,v $
- * Revision 1.5  2011/10/02 16:58:42  keinstein
+ * Revision 1.6  2011/11/02 14:32:01  keinstein
+ * fix some errors crashing Mutabor on Windows
+ *
+ * Revision 1.5  2011-10-02 16:58:42  keinstein
  * * generate Class debug information when compile in debug mode
  * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
  * * Reenable confirmation dialog when closing document while the logic is active
@@ -46,10 +49,16 @@
  *
  */
 
-#include "Defs.h"
+#include "mu32/Defs.h"
 #ifdef DEBUG
 #include "mutDebug.h"
 #include <list>
+#if __WXMSW__
+#include <iostream>
+#include <fstream>
+#include <conio.h>
+#include <stdio.h>
+#endif
 
 debugFlags::flagtype debugFlags::flags;
 
@@ -117,6 +126,62 @@ bool debug_is_all_deleted()
 	return debug_save_pointers.empty();
 }
 
+// execute as early as possible
+class consoleinit {
+public:
+	consoleinit() {
+		MutInitConsole();
+	}
+} g_consoleinit;
+
+void MutInitConsole()
+{
+#if __WXMSW__
+	// taken from http://www.halcyon.com/~ast/dload/guicon.htm
+	static const WORD MAX_CONSOLE_LINES = 500;
+
+	int hConHandle;
+	long lStdHandle;
+	CONSOLE_SCREEN_BUFFER_INFO coninfo;
+	FILE *fp;
+
+	// allocate a console for this app
+	AllocConsole();
+
+	// set the screen buffer to be big enough to let us scroll text
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE),
+					&coninfo);
+	coninfo.dwSize.Y = MAX_CONSOLE_LINES;
+	SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE),
+					coninfo.dwSize);
+
+	// redirect unbuffered STDOUT to the console
+	lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
+	hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+	fp = _fdopen( hConHandle, "w" );
+	*stdout = *fp;
+	setvbuf( stdout, NULL, _IONBF, 0 );
+
+	// redirect unbuffered STDIN to the console
+	lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
+	hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+
+	fp = _fdopen( hConHandle, "r" );
+	*stdin = *fp;
+	setvbuf( stdin, NULL, _IONBF, 0 );
+
+	// redirect unbuffered STDERR to the console
+	lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
+	hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+	fp = _fdopen( hConHandle, "w" );
+	*stderr = *fp;
+	setvbuf( stderr, NULL, _IONBF, 0 );
+
+	// make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
+	// point to console as well
+	std::ios::sync_with_stdio();
+#endif
+}
 
 #endif
 
