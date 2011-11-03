@@ -2,12 +2,12 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.6 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/11/02 14:32:00 $
- * \version $Revision: 1.5 $
+ * $Date: 2011/11/03 17:20:15 $
+ * \version $Revision: 1.6 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,10 @@
  *
  *
  * $Log: GUIRoute.h,v $
- * Revision 1.5  2011/11/02 14:32:00  keinstein
+ * Revision 1.6  2011/11/03 17:20:15  keinstein
+ * fix some focus issues on msw
+ *
+ * Revision 1.5  2011-11-02 14:32:00  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.4  2011-10-04 17:16:14  keinstein
@@ -243,18 +246,18 @@ namespace mutaborGUI {
 
 	class GUIRouteBase {
 	protected:
+		friend class GUIfyRoute<mutabor::RouteClass>;
 		friend class GUIfiedRoute;
 		mutabor::RouteClass * route;
 		void * userdata;
 		BoxData * box;
 		MutBoxChannelShapeList shapes;
-	public:
-//		GUIRouteBase():Route(),userdata(NULL),boxShapes(),shapes() {}
  		virtual ~GUIRouteBase() {
 			TRACEC;
-			Destroy();
 		}
 
+	public:
+//		GUIRouteBase():Route(),userdata(NULL),boxShapes(),shapes() {}
 		virtual void * getUserData() {
 			return userdata;
 		}

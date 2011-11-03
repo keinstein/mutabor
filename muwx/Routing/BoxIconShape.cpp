@@ -3,16 +3,19 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.9 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.10 2011/11/03 17:20:15 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.9 $
+ * $Date: 2011/11/03 17:20:15 $
+ * \version $Revision: 1.10 $
  * \license GPL
  *
  * $Log: BoxIconShape.cpp,v $
- * Revision 1.9  2011/11/02 14:31:59  keinstein
+ * Revision 1.10  2011/11/03 17:20:15  keinstein
+ * fix some focus issues on msw
+ *
+ * Revision 1.9  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.8  2011-10-05 16:28:39  keinstein
@@ -122,6 +125,22 @@ namespace mutaborGUI {
 		x = 0;
 		y = 0;
 		wxRect size = GetRect();
+
+#if __WXMSW__ 
+		if (wxWindow::FindFocus() == this) {
+			// MSW doesn't allow to change the border
+			for (int i = 0 ; i < maxBorderSize.x - 1 ; i++) {
+				dc.DrawLine(i,i,size.width-i,i);
+				dc.DrawLine(i,size.height-i,size.width-i,size.height-i);
+			}
+			for (int i = 0 ; i < maxBorderSize.y - 1 ; i++) {
+				dc.DrawLine(size.width-i,i,size.width-i,size.height-i);
+				dc.DrawLine(i,i,i,size.height-i);
+			}
+		}
+#endif 
+
+
 		y += borderOffset.y;
 		if (staticText) y += staticText->GetSize().y;
 		if (GetIcon().IsOk()) {
