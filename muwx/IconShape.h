@@ -4,16 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.12 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.13 2011/11/03 17:20:15 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/03 17:20:15 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.12  2011/11/02 14:31:58  keinstein
+ * Revision 1.13  2011/11/03 17:20:15  keinstein
+ * fix some focus issues on msw
+ *
+ * Revision 1.12  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.11  2011-10-05 16:28:39  keinstein
@@ -124,6 +127,15 @@
 #include "wx/stattext.h"
 
 
+class NoTabStaticText:public wxStaticText {
+public:
+	NoTabStaticText(wxWindow * parent,
+		wxWindowID id,
+		const wxString & name):wxStaticText(parent,id,name) {}
+	virtual ~NoTabStaticText() {}
+	bool AcceptsFocusFromKeyboard() { return false; }
+};
+
 /// An icon control with static text
 template<class T = wxControl>
 class MutIconShapeClass:public T
@@ -163,7 +175,7 @@ public:
 
 	void SetLabel(const wxString & st ) {
 		if (!staticText) 
-			staticText = new wxStaticText(this,wxID_ANY,_T(""));
+			staticText = new NoTabStaticText(this,wxID_ANY,_T(""));
 		mutASSERT(staticText);
 		if (!staticText) return;
 		wxControl::SetLabel(st); // stores only a string and invalidates

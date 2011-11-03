@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.15 2011/11/02 14:31:58 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.16 2011/11/03 17:20:15 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/11/02 14:31:58 $
-* \version $Revision: 1.15 $
+* $Date: 2011/11/03 17:20:15 $
+* \version $Revision: 1.16 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.15  2011/11/02 14:31:58  keinstein
+* Revision 1.16  2011/11/03 17:20:15  keinstein
+* fix some focus issues on msw
+*
+* Revision 1.15  2011-11-02 14:31:58  keinstein
 * fix some errors crashing Mutabor on Windows
 *
 * Revision 1.14  2011-10-05 16:28:39  keinstein
@@ -397,17 +400,17 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 			      id,
 			      wxDefaultPosition,
 			      wxDefaultSize,
-			      wxBORDER_RAISED | wxTAB_TRAVERSAL)) return false;
+			      wxBORDER_RAISED)) return false;
 
-	maxBorderSize = this->GetWindowBorderSize();
+	maxBorderSize = this->GetWindowBorderSize()/2;
 	this->SetWindowStyle(
 		(this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_SUNKEN);
-	wxSize tmpBorderSize = this->GetWindowBorderSize();
+	wxSize tmpBorderSize = this->GetWindowBorderSize()/2;
 	maxBorderSize.IncTo(tmpBorderSize);
 
 	this->SetWindowStyle(
 		(this->GetWindowStyle() & ~ wxBORDER_MASK)| wxBORDER_NONE);
-	tmpBorderSize = this->GetWindowBorderSize();
+	tmpBorderSize = this->GetWindowBorderSize()/2;
 	maxBorderSize.IncTo(tmpBorderSize);
 	maxBorderSize.IncTo(wxSize(0,0));
 	maxBorderSize.IncBy(wxSize(1,1));
@@ -440,7 +443,7 @@ bool MutIconShapeClass<T>::Destroy()
 template<typename T>
 wxSize MutIconShapeClass<T>::DoGetBestSize() const 
 {
-	//  wxSize s(GetWindowBorderSize());
+	//  wxSize s(GetWindowBorderSize()/2);
 	wxSize s(0,0);
 	wxSize s1(0,0);
 	DEBUGLOG (other, _T("best size: %dx%d"),s.x,s.y);
@@ -463,13 +466,13 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 	}
 
 #ifdef DEBUG
-	s1 = this->GetSize() - this->GetClientSize();
-	s1.IncTo(wxSize(0,0));
+	wxSize s2 = this->GetSize() - this->GetClientSize();
+	s2.IncTo(wxSize(0,0));
 
 	DEBUGLOG(gui,_T("s1: (%d,%d), maxBorderSize: (%d,%d)"),
-		 s1.x,s1.y,2*maxBorderSize.x,2*maxBorderSize.y);
-	mutASSERT(!maxBorderSize.x || s1.x <= 2*maxBorderSize.x);
-	mutASSERT(!maxBorderSize.y || s1.y <= 2*maxBorderSize.y);
+		 s2.x,s2.y,2*maxBorderSize.x,2*maxBorderSize.y);
+	mutASSERT(!maxBorderSize.x || s2.x <= 2*maxBorderSize.x);
+	mutASSERT(!maxBorderSize.y || s2.y <= 2*maxBorderSize.y);
 #endif
 
 	s += maxBorderSize + maxBorderSize;
@@ -489,6 +492,13 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 
 template<typename T>
   void MutIconShapeClass<T>::UpdateBorder (long flag) {
+#if __WXMSW__
+	  mutUnused(flag);
+	// MS Windows does not allow to change the border syle
+	// So we handle the border in OnSize()
+	this->Refresh(true);
+	return;
+#else
 	this->Freeze();
 	this->SetWindowStyle((this->GetWindowStyle() & ~(long)wxBORDER_MASK)|flag);
 //	wxSizer * sizer = GetContainingSizer();
@@ -497,17 +507,13 @@ template<typename T>
 //	this->GetParent()->InvalidateBestSize();
 #if __WXGTK__
 	borderOffset = maxBorderSize;
-#elif __WXMAC__
-	borderOffset = maxBorderSize - this->GetWindowBorderSize()/2;
+//#elif __WXMAC__
 #else
-	borderOffset = maxBorderSize - this->GetWindowBorderSize();
+	borderOffset = maxBorderSize - this->GetWindowBorderSize()/2;
 #endif
 	this->InvalidateBestSize();
 	if (this->GetParent())
 		this->GetParent()->Layout();
-	else
-		Layout();
-
 	Layout();
 	wxSizer * sizer = this->GetSizer();
 	if (sizer) 
@@ -527,6 +533,7 @@ template<typename T>
 	this->Update();
 #endif
 	this->Thaw();
+#endif
 }
 
 template<typename T>
@@ -617,6 +624,20 @@ template<typename T>
 void MutIconShapeClass<T>::OnDraw (wxDC & dc) 
 {
 	wxRect size = this->GetRect();
+#if __WXMSW__ 
+	if (wxWindow::FindFocus() == this) {
+		// MSW doesn't allow to change the border
+		for (int i = 0 ; i < maxBorderSize.x - 1 ; i++) {
+			dc.DrawLine(i,i,size.width-i,i);
+			dc.DrawLine(i,size.height-i,size.width-i,size.height-i);
+		}
+		for (int i = 0 ; i < maxBorderSize.y - 1 ; i++) {
+			dc.DrawLine(size.width-i,i,size.width-i,size.height-i);
+			dc.DrawLine(i,i,i,size.height-i);
+		}
+	}
+#endif 
+
 	DEBUGLOG (other, _T("Checking icon"));
 
 	if (!GetIcon().IsOk()) {
@@ -672,7 +693,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	wxPoint p;
 	int xoffset = 0;
 #if __WXMAC__
-	xoffset = this->GetWindowBorderSize().x;
+	xoffset = this->GetWindowBorderSize().x/2;
 #endif
 
 
@@ -699,7 +720,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 		usedperimeterpoints.push_back(p);
 
 #if __WXGTK__
-	p.y += maxBorderSize.y - this->GetWindowBorderSize().y;
+	p.y += maxBorderSize.y - this->GetWindowBorderSize().y / 2;
 #endif
 
 	return p;

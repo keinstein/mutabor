@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.6 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.7 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2010,2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/11/02 14:32:01 $
- * \version $Revision: 1.6 $
+ * $Date: 2011/11/03 17:20:15 $
+ * \version $Revision: 1.7 $
  * \license GPL
  *
  * $Log: mutDebug.cpp,v $
- * Revision 1.6  2011/11/02 14:32:01  keinstein
+ * Revision 1.7  2011/11/03 17:20:15  keinstein
+ * fix some focus issues on msw
+ *
+ * Revision 1.6  2011-11-02 14:32:01  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.5  2011-10-02 16:58:42  keinstein
