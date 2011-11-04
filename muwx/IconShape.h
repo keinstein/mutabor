@@ -4,16 +4,19 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.13 2011/11/03 17:20:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.14 2011/11/04 15:02:03 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/03 17:20:15 $
- * \version $Revision: 1.13 $
+ * $Date: 2011/11/04 15:02:03 $
+ * \version $Revision: 1.14 $
  * \license GPL
  *
  * $Log: IconShape.h,v $
- * Revision 1.13  2011/11/03 17:20:15  keinstein
+ * Revision 1.14  2011/11/04 15:02:03  keinstein
+ * fix drawing iconshapes on Mac OS X
+ *
+ * Revision 1.13  2011-11-03 17:20:15  keinstein
  * fix some focus issues on msw
  *
  * Revision 1.12  2011-11-02 14:31:58  keinstein
@@ -208,8 +211,10 @@ public:
 	{
 		wxRect r = this->GetRect();
 		int iw = Icon.GetWidth();
+		r.x += maxBorderSize.x;
+		r.y += maxBorderSize.y;
 		return wxRect(r.x + (r.width - iw)/2, 
-			      r.y+borderOffset.y,
+			      r.y,
 			      iw,
 			      Icon.GetHeight());
 	}

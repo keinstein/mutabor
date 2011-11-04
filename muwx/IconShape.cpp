@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.16 2011/11/03 17:20:15 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.17 2011/11/04 15:02:03 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/11/03 17:20:15 $
-* \version $Revision: 1.16 $
+* $Date: 2011/11/04 15:02:03 $
+* \version $Revision: 1.17 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.16  2011/11/03 17:20:15  keinstein
+* Revision 1.17  2011/11/04 15:02:03  keinstein
+* fix drawing iconshapes on Mac OS X
+*
+* Revision 1.16  2011-11-03 17:20:15  keinstein
 * fix some focus issues on msw
 *
 * Revision 1.15  2011-11-02 14:31:58  keinstein
@@ -426,11 +429,11 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 template<typename T>
 bool MutIconShapeClass<T>::Destroy() 
 {
-	Hide();
-	wxSizer * sizer = GetContainingSizer();
+	this->Hide();
+	wxSizer * sizer = this->GetContainingSizer();
 	if (sizer) {
 		sizer->Detach(this);
-		SetSizer(NULL);
+		this->SetSizer(NULL);
 	}
 
 	if ( !wxPendingDelete.Member(this) )
@@ -649,9 +652,6 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 
 	int x = 0, y = borderOffset.y;
 	wxPoint center(size.width/2,y + GetIcon().GetHeight()/2);
-#if __WXMAC__
-	center.y += maxBorderSize.y - borderOffset.y;
-#endif
 
 	for (mutpointlist::iterator i = usedperimeterpoints.begin();
 	     i != usedperimeterpoints.end();i++) {
@@ -662,7 +662,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
-#if __WXMAC__ && 0
+#if __WXMAC__
 		x -= maxBorderSize.x - borderOffset.x;
 #endif
 		dc.DrawIcon(GetIcon(), x, y);
@@ -692,18 +692,20 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 
 	wxPoint p;
 	int xoffset = 0;
-#if __WXMAC__
+#if __WXMAC__ && 0
 	xoffset = this->GetWindowBorderSize().x/2;
 #endif
 
-
 	r.y += borderOffset.y;
+#if __WXMAC__ 
+	r.y += maxBorderSize.y - borderOffset.y;
+#endif
 	if (r.x+r.width <= o.x) {
 		p.x = r.x + r.width + xoffset;
-		p.y = r.y + ir.height/2;
+		p.y = ir.y + ir.height/2;
 	} else if (r.x >= o.x) {
 		p.x = r.x - xoffset;
-		p.y = r.y + ir.height/2;
+		p.y = ir.y + ir.height/2;
 	} else if (r.y <= o.y) {
 		p.x = r.x + r.width/2;
 		p.y = r.y;
@@ -732,8 +734,8 @@ void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
 					      wxPoint p) const 
 {
 	wxRect origin(this->GetRect());
-	p.x -= origin.x;
-	p.y -= origin.y;
+	p.x -= origin.x + maxBorderSize.x - borderOffset.x;
+	p.y -= origin.y + maxBorderSize.y - borderOffset.y;
 	dc.DrawLine(center, p);
   }
 
