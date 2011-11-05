@@ -4,16 +4,19 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.17 2011/11/04 15:02:03 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.18 2011/11/05 15:19:38 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
-* $Date: 2011/11/04 15:02:03 $
-* \version $Revision: 1.17 $
+* $Date: 2011/11/05 15:19:38 $
+* \version $Revision: 1.18 $
 * \license GPL
 *
 * $Log: IconShape.cpp,v $
-* Revision 1.17  2011/11/04 15:02:03  keinstein
+* Revision 1.18  2011/11/05 15:19:38  keinstein
+* Fix route drawing in route window on GTK
+*
+* Revision 1.17  2011-11-04 15:02:03  keinstein
 * fix drawing iconshapes on Mac OS X
 *
 * Revision 1.16  2011-11-03 17:20:15  keinstein
@@ -417,10 +420,12 @@ bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 	maxBorderSize.IncTo(tmpBorderSize);
 	maxBorderSize.IncTo(wxSize(0,0));
 	maxBorderSize.IncBy(wxSize(1,1));
-#if __WXGTK__ || 1
+#if __WXGTK__ 
+	borderOffset = wxSize(0,0);
+#else 
 	borderOffset = maxBorderSize;
-#else
-	borderOffset = maxBorderSize - tmpBorderSize;
+//#else
+//	borderOffset = maxBorderSize - tmpBorderSize;
 #endif
 	return true;
 }
@@ -509,7 +514,7 @@ template<typename T>
 //	this->GetParent()->Layout();
 //	this->GetParent()->InvalidateBestSize();
 #if __WXGTK__
-	borderOffset = maxBorderSize;
+	borderOffset = wxSize(0,0);
 //#elif __WXMAC__
 #else
 	borderOffset = maxBorderSize - this->GetWindowBorderSize()/2;
@@ -530,10 +535,9 @@ template<typename T>
 	ClearPerimeterPoints();
 	this->GetParent()->RefreshRect(wxRect(pos.x,pos.y,size.x,size.y));
 	this->GetParent()->Update();
-#if __MAC__ && 0
-	ClearPerimeterPoints();
+#if __WXGTK__ 
 	this->Refresh(true);
-	this->Update();
+//	this->Update();
 #endif
 	this->Thaw();
 #endif
@@ -627,7 +631,7 @@ template<typename T>
 void MutIconShapeClass<T>::OnDraw (wxDC & dc) 
 {
 	wxRect size = this->GetRect();
-#if __WXMSW__ 
+#if __WXMSW__
 	if (wxWindow::FindFocus() == this) {
 		// MSW doesn't allow to change the border
 		for (int i = 0 ; i < maxBorderSize.x - 1 ; i++) {
@@ -662,7 +666,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		DEBUGLOG (other, _T("Size: %dx%d"),GetIcon().GetHeight(),
 			 GetIcon().GetWidth());
 		x = (size.width-GetIcon().GetWidth())/2;
-#if __WXMAC__
+#if __WXMAC__ || __WXGTK__
 		x -= maxBorderSize.x - borderOffset.x;
 #endif
 		dc.DrawIcon(GetIcon(), x, y);
@@ -697,7 +701,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 #endif
 
 	r.y += borderOffset.y;
-#if __WXMAC__ 
+#if __WXMAC__
 	r.y += maxBorderSize.y - borderOffset.y;
 #endif
 	if (r.x+r.width <= o.x) {
@@ -721,7 +725,7 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 	if (pos == usedperimeterpoints.end())
 		usedperimeterpoints.push_back(p);
 
-#if __WXGTK__
+#if __WXGTK__ && 0
 	p.y += maxBorderSize.y - this->GetWindowBorderSize().y / 2;
 #endif
 
@@ -734,8 +738,16 @@ void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
 					      wxPoint p) const 
 {
 	wxRect origin(this->GetRect());
-	p.x -= origin.x + maxBorderSize.x - borderOffset.x;
-	p.y -= origin.y + maxBorderSize.y - borderOffset.y;
+	p.x -= origin.x;
+	p.y -= origin.y;
+#if __WXMAC__
+	p.x -= maxBorderSize.x - borderOffset.x;
+	p.y -= maxBorderSize.y - borderOffset.y;
+#elif __WXGTK__
+	p -= maxBorderSize;
+	if (p.x > center.x) p.x += maxBorderSize.x;
+	else p.x -= maxBorderSize.x;
+#endif
 	dc.DrawLine(center, p);
   }
 

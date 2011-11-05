@@ -2,17 +2,20 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.54 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.55 2011/11/05 15:19:38 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.54 $
+ * $Date: 2011/11/05 15:19:38 $
+ * \version $Revision: 1.55 $
  * \license GPL
  *
  * $Log: MutApp.cpp,v $
- * Revision 1.54  2011/11/02 14:31:58  keinstein
+ * Revision 1.55  2011/11/05 15:19:38  keinstein
+ * Fix route drawing in route window on GTK
+ *
+ * Revision 1.54  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.53  2011-10-04 17:16:13  keinstein
@@ -424,8 +427,9 @@ namespace mutaborGUI {
 
 
 #ifdef DEBUG
-		std::cout << (muT(__FUNCTION__).ToUTF8()) << std::endl;
-		std::cout << (muT(typeid(m_locale).name()).ToUTF8()) << std::endl;
+		std::cout << (const char *)(muT(__FUNCTION__).ToUTF8()) << std::endl;
+		std::cout << (const char *)(muT(typeid(m_locale).name()).ToUTF8()) 
+			  << std::endl;
 		std::cout << "ConfigDir:        "
 
 			  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl

@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.12 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.13 2011/11/05 15:19:38 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/05 15:19:38 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: BoxChannelShape.cpp,v $
- * Revision 1.12  2011/11/02 14:31:59  keinstein
+ * Revision 1.13  2011/11/05 15:19:38  keinstein
+ * Fix route drawing in route window on GTK
+ *
+ * Revision 1.12  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.11  2011-10-05 16:28:39  keinstein
@@ -819,6 +822,10 @@ void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc,
 {
 	mutUnused(center); // we are providing our own centre
 	wxPoint mycenter = wxPoint()+GetSize()/2;
+#if __WXGTK__
+	mycenter.y -= maxBorderSize.y;
+	p.y -= maxBorderSize.y;
+#endif
 	dc.DrawLine(mycenter, p);
 }
 

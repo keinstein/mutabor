@@ -3,16 +3,19 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.12 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.h,v 1.13 2011/11/05 15:19:38 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.12 $
+ * $Date: 2011/11/05 15:19:38 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: BoxChannelShape.h,v $
- * Revision 1.12  2011/11/02 14:31:59  keinstein
+ * Revision 1.13  2011/11/05 15:19:38  keinstein
+ * Fix route drawing in route window on GTK
+ *
+ * Revision 1.12  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.11  2011-10-05 16:28:39  keinstein
@@ -284,8 +287,12 @@ namespace mutaborGUI {
 				this->SetWindowStyle(
 					(this->GetWindowStyle() & ~ wxBORDER_MASK)
 					| wxBORDER_NONE);
+#if __WXGTK__
+				borderOffset = wxSize(0,0);
+#else
 				borderOffset = 
 					maxBorderSize = GetWindowBorderSize();
+#endif
 				if (fine)
 					ToGUIBase(r).Attatch(this);
 				return fine;
