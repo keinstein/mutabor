@@ -42,7 +42,16 @@ EXTRA_DIST = config.rpath \
 	xrc/wxresource.cpp \
 	xrc/wxresource.h \
 	xrc/reslocale.cpp \
+	osdep/macosx/Application_Code.txt \
+	osdep/macosx/background.png \
+	osdep/macosx/background.svg \
+	osdep/macosx/DS_Store \
+	osdep/macosx/Info.plist.in \
+	osdep/win/config.h \
+	osdep/win/config.h.in \
 	osdep/win/Mutabor.rc \
+	osdep/win/Mutabor.sln \
+	osdep/win/muwx.vcxproj \
 	muwx/Mutabor.rc
 
 # Please use Tango names for new files

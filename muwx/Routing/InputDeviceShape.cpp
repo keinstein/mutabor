@@ -3,16 +3,20 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.11 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.12 2011/11/16 14:07:03 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/02 14:32:00 $
- * \version $Revision: 1.11 $
+ * $Date: 2011/11/16 14:07:03 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.11  2011/11/02 14:32:00  keinstein
+ * Revision 1.12  2011/11/16 14:07:03  keinstein
+ * passed make distcheck on linux
+ * addedd some osdep files to the archive
+ *
+ * Revision 1.11  2011-11-02 14:32:00  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.10  2011-10-22 16:32:39  keinstein
@@ -336,20 +340,12 @@ namespace mutaborGUI {
 		nMidi = rtmidiin->getPortCount();
 
 		if ( nMidi )  {
-#ifdef __WXMSW__
 			wxString portName;
-#else
-			std::string portName;
-#endif
 
 			for (int i = 0; i < nMidi; i++) {
 				try {
-					portName = rtmidiin->getPortName(i);
-#ifdef __WXMSW__
+					portName = muT(rtmidiin->getPortName(i).c_str());
 					in->AppendPortChoice(portName);
-#else
-					in->AppendPortChoice(muT(portName.c_str()));
-#endif
 				} catch (RtError &error) {
 					error.printMessage();
 					break;
