@@ -3,17 +3,21 @@
  * Mutabor Bitmaps. We save Bitmaps in global variables as they can be used in several contexts.
  * so their data can be shared if the underlying framework supports it.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.cpp,v 1.3 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.cpp,v 1.4 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) TU Dresden
  * \author 
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2011/02/13
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.3 $
+ * $Date: 2011/11/16 14:07:03 $
+ * \version $Revision: 1.4 $
  * \license GPL
  *
  * $Log: MutBitmaps.cpp,v $
- * Revision 1.3  2011/11/02 14:31:58  keinstein
+ * Revision 1.4  2011/11/16 14:07:03  keinstein
+ * passed make distcheck on linux
+ * addedd some osdep files to the archive
+ *
+ * Revision 1.3  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.2  2011-09-27 20:13:23  keinstein
@@ -33,6 +37,7 @@
 
 #include "MutBitmaps.h"
 #include "MutApp.h"
+#include "wx/msgdlg.h"
 namespace mutaborGUI {
 
 

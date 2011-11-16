@@ -6,16 +6,20 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.10 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.11 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.10 $
+ * $Date: 2011/11/16 14:07:03 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: Panel.cpp,v $
- * Revision 1.10  2011/11/02 14:31:59  keinstein
+ * Revision 1.11  2011/11/16 14:07:03  keinstein
+ * passed make distcheck on linux
+ * addedd some osdep files to the archive
+ *
+ * Revision 1.10  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.9  2011-10-22 16:32:39  keinstein
@@ -249,6 +253,26 @@ bool MutPanel::Create(wxWindow *parent,
 
 MutPanel::~MutPanel()
 {
+}
+
+bool MutPanel::Destroy() 
+{
+	Hide();
+	wxSizer * sizer = GetContainingSizer();
+	if (sizer) {
+		sizer->Detach(this);
+		SetSizer(NULL);
+	}
+
+	wxWindow * parent = GetParent();
+	if (parent) {
+		parent->RemoveChild(this);
+	}
+
+	if ( !wxPendingDelete.Member(this) )
+        wxPendingDelete.Append(this);
+	
+	return true;
 }
 
 
