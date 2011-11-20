@@ -31,6 +31,10 @@ AC_CONFIG_MACRO_DIR([m4])
 
 
 AM_INIT_AUTOMAKE([dist-bzip2 silent-rules subdir-objects -Wall])
+AS_IF(test "${enable_silent_rules+set}" != set,
+   enable_silent_rules=yes
+   AM_DEFAULT_VERBOSITY=0)
+
 AM_SILENT_RULES
 LT_INIT
 
@@ -213,7 +217,7 @@ darwin*)
 	LDFLAGS="$LDFLAGS -framework Cocoa -framework Carbon -Wl,-Y,1455 -framework CoreAudio -framework CoreMIDI -framework CoreFoundation"
 	;;
 
-*winnt*|*interix*|cygwin*|mingw*|uwin*)
+*winnt*|*interix*|cygwin*|*mingw*|uwin*)
 	PLATFORM=windows
 	LDFLAGS="$LDFLAGS -lwinmm"
   	# Use WinMM library
@@ -316,6 +320,22 @@ AC_CACHE_CHECK([for wxWidgets locale directories], [ac_cv_wx_locale_dirs],
 	done
 ])
 AC_SUBST(WX_LOCALE_DIRS,$ac_cv_wx_locale_dirs)
+
+AC_CACHE_CHECK([where to find support dlls], [ac_cv_mingw_dll_dirs],
+[
+       SEARCHDIRS=`$WX_CONFIG_PATH --exec-prefix`/lib
+       tmpsearch=`$CXX $CXXFLAGS -print-search-dirs|\
+       			sed -e '/^libraries:/ { s/^libraries: *=\?//;s/:/ /g; p } ; d'`
+       SEARCHDIRS="$SEARCHDIRS $tmpsearch"
+       for d in /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin  /usr/lib /lib /usr/bin /bin
+       do 
+       	  AS_IF(test -d $d,
+	  [ SEARCHDIRS="$SEARCHDIRS $d" ])
+       done
+       ac_cv_mingw_dll_dirs="$SEARCHDIRS"
+])
+
+AC_SUBST(DLLSEARCHPATH,"$ac_cv_mingw_dll_dirs")
 
 AS_IF(test -n "$WX_RESCOMP",RC="$WX_RESCOMP")
 AM_CONDITIONAL(COND_WINRC,test -n "$RC")
@@ -440,7 +460,8 @@ AC_CHECK_FUNC(strdup)
 
 dnl non verbose
 
-AC_SUBST(V,0)
+dnl AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,\\\\,g'`])
+AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,/,g'`])
 
 AC_CONFIG_FILES([  
 po/Makefile.in 
@@ -449,6 +470,7 @@ includes/Makefile
 wxintl/Makefile 
 missfunc/Makefile
 osdep/macosx/Info.plist
+osdep/win/Mutabor.nsi
 doc/Makefile
 doc/localized/Makefile
 doc/localized/de/Makefile
