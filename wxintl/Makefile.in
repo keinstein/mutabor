@@ -158,6 +158,7 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" -DLOCALE_ALIAS_PATH=\"$(aliaspath)\" \
 -DDEPENDS_ON_LIBICONV=1 @DEFS@
 
 DEPDIR = @DEPDIR@
+DLLSEARCHPATH = @DLLSEARCHPATH@
 DLLTOOL = @DLLTOOL@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
@@ -254,7 +255,6 @@ STRIP = @STRIP@
 USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
 USE_INCLUDED_LIBWXINTL = @USE_INCLUDED_LIBWXINTL@
 USE_NLS = @USE_NLS@
-V = @V@
 VERSION = @VERSION@
 WINDRES = @WINDRES@
 WOE32 = @WOE32@
@@ -336,6 +336,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+top_srcdir_nsi = @top_srcdir_nsi@
 lib_LTLIBRARIES = libintl.la
 libintl_la_HEADRES = libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h

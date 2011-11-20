@@ -1,7 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 DLLCOPYPATTERN = \(wx\|mingw\)
-DLLSEARCHPATH = `$(WX_CONFIG_PATH) --exec-prefix`/lib /usr/lib /usr/share/doc/mingw32-runtime /mingw/lib /mingw/bin /bin /usr/bin
 SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 AM_CPPFLAGS = -I$(srcdir)/mu32 \
@@ -50,6 +49,8 @@ EXTRA_DIST = config.rpath \
 	osdep/win/config.h \
 	osdep/win/config.h.in \
 	osdep/win/Mutabor.rc \
+	osdep/win/Mutabor.nsi \
+	osdep/win/Mutabor.nsi.in \
 	osdep/win/Mutabor.sln \
 	osdep/win/muwx.vcxproj \
 	muwx/Mutabor.rc
@@ -89,7 +90,8 @@ dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
 BUILT_SOURCES = \
 	$(top_srcdir)/mu32/mut.cpp \
 	$(top_srcdir)/mu32/mut.h \
-	$(top_srcdir)/xrc/wxresource.h
+	$(top_srcdir)/xrc/wxresource.h \
+	$(top_srcdir)/osdep/win/Mutabor.nsi
 
 if COND_PRECOMP_CXX
 BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
@@ -531,6 +533,10 @@ mutlex.h: mutlex.l
 mu32/mut.cpp mu32/mut.h: $(top_srcdir)/mu32/mut.h
 $(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
 $(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
+$(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
+	$(top_builddir)/config.status
+	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
+	cp $(top_builddir)/osdep/win/Mutabor.nsi $@
 
 mac: copymac
 	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
@@ -613,32 +619,35 @@ installwinold: mutabor.exe
 
 installdll:
 	@echo 'solving references for $(DLLLINKFILE)'
-	DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
+	@DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
 	for d in `LANG=C $(OBJDUMP) -p  Mutabor/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(wx\|mingw\|gcc\|stdc++\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
 	do \
 		echo -n checking "$$d" ; \
 		if [ ! -f Mutabor/$$d ] ; then \
 			echo -n search ; \
-			f=`( find $$DLLSEARCHPATH -name "$$d" ; \
+			f=`( find $$DLLSEARCHPATH -name "$$d" || \
 			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
-			echo -n install "$$f" ; \
+			echo -n install " $$f " ; \
 			test -f "$$f" && $(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "`pwd`/Mutabor" ; \
 			case "$$f" in \
 			*.gz)  GZIP=$(GZIP_ENV) gzip -dc Mutabor/`basename "$$f"` >Mutabor/"$$d" ;; \
 			esac ; \
-			echo -n check "$$d" ; \
+			echo -n check " $$d " ; \
 			$(MAKE) DLLLINKFILE="$$d" installdll ; \
 		fi ; \
-		echo done ;\
+		echo " done." ;\
 	done
 
 installwxlocale:
-	test -z "$(WX_LOCALE_DIRS)" || ( ls "$(WX_LOCALE_DIRS)"/*/LC_MESSAGES/wxstd.mo | \
-	while read file ; do \
-		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
-		mkdir -p $(localedir)/$$lang/LC_MESSAGES ; \
-		cp $$file $(localedir)/$$lang/LC_MESSAGES ; \
-	done )
+	test -z "$(WX_LOCALE_DIRS)" || { for dir in  $(WX_LOCALE_DIRS) ; \
+	do \
+		ls "$$dir"/*/LC_MESSAGES/wxstd.mo | \
+		while read file ; do \
+			lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
+			mkdir -p $(localedir)/$$lang/LC_MESSAGES ; \
+			cp $$file $(localedir)/$$lang/LC_MESSAGES ; \
+		done ; \
+	done }
 
 installwin:
 	rm -f Mutabor/mutabor.exe
@@ -652,6 +661,31 @@ installwin:
 		'mutabordir=$$(prefix)' \
 		install installwxlocale
 	$(MAKE) DLLLINKFILE="mutabor.exe" installdll
+	for d in GPL-2 LGPL-2.1 ; do \
+		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
+	done
+
+nsis: installwin
+	rm -f mutabor-files.nsh
+	rm -f mutabor-dirs.nsh
+	rm -f mutabor-uninst-files.nsh
+	cd Mutabor && \
+	ls --file-type | grep -v / |  while read d ; \
+	do \
+		echo "file  \"Mutabor\\$$d\"" >>../mutabor-files.nsh ; \
+		echo "delete \"\$$INSTDIR\\$$d\"" >>../mutabor-uninst-files.nsh  ; \
+	done ; \
+	ls  --file-type | grep / |  sed 's,/,\\\\,g' | while read d ; \
+	do \
+		echo "section \"-default dir $$d\"" >> ../mutabor-dirs.nsh ;  \
+		echo "setOutPath \"\$$INSTDIR\\$$d\"" >> ../mutabor-dirs.nsh ; \
+		echo "file /r \"Mutabor\\$$d*.*\"" >> ../mutabor-dirs.nsh ; \
+		echo "sectionEnd" >> ../mutabor-dirs.nsh ; \
+		echo "RMDir /r \"\$$INSTDIR\\$$d\"" >>../mutabor-uninst-files.nsh ; \
+	done
+	cp osdep/win/Mutabor.nsi .
+	makensis Mutabor.nsi
+
 
 installwinbackup:
 	WXLIBDIR=`$(WX_CONFIG_PATH) --exec-prefix`/lib ;\
