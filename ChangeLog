@@ -1,4 +1,280 @@
-2011-08-16  author  <author@nalp15>
+2011-11-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, configure.in, ltmain.sh, m4/ltversion.m4, osdep/win/Mutabor.nsi, osdep/win/Mutabor.nsi.in, wxintl/Makefile.in:
+	* Added support for NSIS installer (script + Makefile entries)
+	* Fixed bug in detection of wxWidgets po files
+	* enhanced detection of needed dll files in case of gcc (allows mingw-w64 on Debian)
+	* updated libtool to version 2.4.2
+
+2011-11-16  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, muwx/MutBitmaps.cpp, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	passed make distcheck on linux
+	addedd some osdep files to the archive
+
+2011-11-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/IconShape.cpp, muwx/MutApp.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h:
+	Fix route drawing in route window on GTK
+
+2011-11-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/IconShape.cpp, muwx/IconShape.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	fix drawing iconshapes on Mac OS X
+
+2011-11-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/IconShape.cpp, muwx/IconShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/GUIRoute.cpp, muwx/Routing/GUIRoute.h, mywx/mutDebug.cpp:
+	fix some focus issues on msw
+
+2011-11-02  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.cpp, muwx/Routing/GUIRoute.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, muwx/Routing/RouteLists.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valRadio.cpp, osdep/win/Mutabor.sln, osdep/win/config.h, osdep/win/config.h.in, osdep/win/muwx.vcxproj, mu32/Defs.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/routing/Device-inlines.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route-inlines.h, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mutabor.DSW, muwx/Action.cpp, muwx/Action.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/GUIBoxData-inlines.h, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputDevDlg.cpp, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutBitmaps.cpp, muwx/MutBitmaps.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/MutView.cpp, muwx/MutView.h, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/configtree.cpp, muwx/configtree.h, muwx/resourceload.h, muwx/stclanguage.h:
+	fix some errors crashing Mutabor on Windows
+
+2011-10-22  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, mu32/routing/midi/DevMidi.cpp, muwx/MutChild.cpp, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Panel.cpp, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/RouteIcons.cpp, mywx/mhDefs.h, mywx/mutDebug.h:
+	commit to continue debugging on Linux/wine
+
+2011-10-13  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Execute.cpp, mu32/Global.h, mu32/Parser.cpp, mu32/TabGen.cpp, mywx/mutDebugFlags.h:
+	Fix a Bug in the kernel:
+	retuning case did not execute the following statements,
+	which lead to unexpected results
+
+2011-10-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* po/ru.gmo, po/ru.po, muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutIcon.h, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxShape.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot:
+	correct layout on mac
+
+2011-10-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxShape.h, mywx/mutDebug.h:
+	Clean up focus handling a little bit.
+	Change perimeter point handling a little bit. Need at least one night to
+	get overthought.
+
+	* mu32/Defs.h, muwx/GUIBoxData-inlines.h, muwx/IconShape.cpp, muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutIcon.h, muwx/MutRouteWnd.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.h, mywx/mutDebug.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	make program compile on Mac (wx 2.9) and fix some memory corruption
+
+	* configure.in, muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/InputDeviceShape.cpp, mywx/mhDefs.h, wxintl/Makefile.in:
+	some configuration fixes
+
+2011-10-03  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/Panel.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	fix compiling with wx 2.9
+
+	* mywx/mutDebug.h: add missing struct nogetflag
+
+	* muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp:
+	Open the configuration dialog on key press in the route window
+	Accept entering nothing in the input/output device dialog
+
+	* muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.cpp:
+	Fix focus issues in the route window. This includes:
+	 * Using templates to describe the base class of MutIconShape.
+	 * Rename MutIconShape->MutIconShapeClass.
+	 * typedef MutIconShapeClass<wxControl> MutIconShape
+	 * Expand the control container macros in MutPanel.
+	 * Disable most of the control container behaviour as we don't need it, currently
+	 * Focus NewInputDevice on window creation.
+	 * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
+	 * Display focused Window with sunken border
+
+2011-10-02  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h:
+	changing MutRouteWnd into a container (without effect :-()
+
+	* configure.in, mu32/GrafKern.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route-inlines.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS_Head.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, muwx/GUIBoxData.h, muwx/MutApp.cpp, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.cpp, muwx/Routing/GUIRoute.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h:
+	* generate Class debug information when compile in debug mode
+	* InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
+	* Reenable confirmation dialog when closing document while the logic is active
+	* Change debug flag management to be more debugger friendly
+	* implement automatic route/device deletion check
+	* new debug flag --debug-trace
+	* generate lots of tracing output
+
+2011-09-30  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* configure.in, m4/ax_boost_base.m4, mu32/Defs.h, mu32/EDevice.cpp, mu32/GrafKern.cpp, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidi.cpp, muwx/GUIBoxData-inlines.h, muwx/GUIBoxData.cpp, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputDevDlg.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutDocManager.cpp, muwx/MutDocument.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutView.cpp, muwx/MutView.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/DebugRoute.cpp, muwx/Routing/DeviceShape.cpp, muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.cpp, muwx/Routing/GUIRoute.h, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/configtree.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, wxintl/Makefile.in:
+	* make compile on windows
+	* s/wxASSERT/mutASSERT/g to get assert handler completely removed
+	* add ax_boost_base for boost detection
+
+	* Makefile.am, configure.in, m4/forstyle.m4:
+	fix autoconf and automake and search for intrusive_ptr
+
+	* mu32/GrafKern.cpp, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route-inlines.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/IconShape.cpp, muwx/MutApp.cpp, muwx/MutConfDlg.h, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/Panel.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxShape.cpp:
+	Further improvements in the routing system.
+
+2011-09-29  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/Defs.h, mu32/routing/Device.cpp, mu32/routing/gmn/DevGIS.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidi.cpp, muwx/IconShape.cpp, muwx/IconShape.h, muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutRouteWnd.cpp, muwx/Panel.cpp, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/GUIRoute.cpp, mywx/mutDebugFlags.h:
+	debug intrusive_ptr
+	fix storage and retrieving of input/output devices in treestorage
+	save maximum border size in icons
+	Apply the calculated offset in IconShape (box and box channels still missing)
+	Fix debug saving and restoring route information/route window on activation
+	Add wxWANTS_CHARS to MutEditWindow
+
+2011-09-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, mu32/Defs.h, mu32/routing/Device.cpp, muwx/Routing/DebugRoute.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Make distclean happy
+
+	* po/ru.po, po/gb.po, po/en.po, po/de.po: fixed an unwanted commit
+
+	* mu32/Defs.h, muwx/MutApp.h, muwx/MutLogicWnd.cpp, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po, xrc/wxresource.cpp, xrc/wxresource.h:
+	fix compiling on ubuntu
+
+2011-09-27  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/routing/Device-inlines.h: add a missed file
+
+	* mu32/routing/Route-inlines.h: add a file missed during last commit
+
+	* Makefile.am, configure.in, doc/Makefile.am, doc/Makefile.cmn, mu32/Defs.h, mu32/EDevice.h, mu32/Errors.h, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Gray.cpp, mu32/Gray.h, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.h, mu32/MidiKern.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/box.cpp, mu32/box.h, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muwx/Action.cpp, muwx/Action.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/GUIBoxData-inlines.h, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutBitmaps.cpp, muwx/MutBitmaps.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/MutView.cpp, muwx/MutView.h, muwx/Mutabor.rh, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.cpp, muwx/Routing/GUIRoute.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, muwx/Routing/RouteLists.h, muwx/configtree.h, muwx/resourceload.h, muwx/stclanguage.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valRadio.cpp, templates/template.cpp, wxintl/Makefile.am, wxintl/Makefile.in, xrc/Mutabor.xrc, xrc/wxresource.cpp:
+	* Reworked route editing backend
+	* rewireing is done by RouteClass/GUIRoute now
+	* other classes forward most requests to this pair
+	* many bugfixes
+	* Version change: We are reaching beta phase now
+
+2011-09-10  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/BoxDlg.cpp, muwx/BoxDlg.h: removed since they reside in Routing
+
+2011-09-09  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/routing/Device.cpp, mu32/routing/Route.cpp, mu32/routing/gmn/DevGIS.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidi.cpp, muwx/configtree.cpp, muwx/configtree.h:
+	fix loading of routing configuration
+
+2011-09-08  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutFrame.cpp: fix some compile errors
+
+	* mu32/Execute.cpp, mu32/box.cpp, mu32/box.h, muwx/Action.cpp, muwx/Action.h, muwx/MutLogicWnd.cpp, muwx/MutTextBox.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Fix some further update bug
+
+	* Makefile.am, configure.in, mu32/Execute.cpp, mu32/Global.h, mu32/GrafKern.cpp, mu32/Runtime.cpp, mu32/box.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, muwx/MutFrame.cpp, muwx/MutLogicWnd.cpp, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h, muwx/Routing/RouteIcons.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po, wxintl/Makefile.in:
+	Set foreground color in box status windows
+	Fix updating box status windows
+	update RtMidi (includes Jack compilation mode)
+
+	* rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h, rtmidi/configure, rtmidi/configure.ac, rtmidi/readme:
+	Updated rtmidi
+
+2011-09-07  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* ABOUT-NLS, INSTALL, Makefile.am, configure.in, depcomp, doc/localized/en/Help.zip, ltmain.sh, m4/codeset.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4, m4/iconv.m4, m4/intdiv0.m4, m4/intl.m4, m4/intldir.m4, m4/intlmacosx.m4, m4/intmax.m4, m4/inttypes-pri.m4, m4/inttypes_h.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4, m4/lib-prefix.m4, m4/libtool.m4, m4/lock.m4, m4/longlong.m4, m4/ltversion.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4, m4/progtest.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4, m4/visibility.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4, missing, mkinstalldirs, muwx/MutApp.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, po/Makefile.in.in, po/Rules-quot, wxintl/Makefile.in, xrc/wxresource.cpp:
+	fix compilation on MinGW
+
+	* mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h:
+	fix some compilation issues
+
+	* mu32/box.cpp, mu32/box.h, mu32/mut.cpp, mu32/mut.h, muwx/Action.cpp, muwx/Action.h, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h:
+	Get rid of WinAttr and Fix window opening and closing
+
+2011-09-06  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* Makefile.am, mu32/Defs.h, mu32/GrafKern.cpp, mu32/Runtime.cpp, mu32/mut.cpp, mu32/mut.h, mu32/mut.y, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/GUIBoxData.h:
+	fix a compiler error showing a corruped error message
+
+2011-09-05  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* mu32/EDevice.cpp, mu32/EDevice.h, mu32/box.h, muwx/BoxDlg.h, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/MutApp.cpp, muwx/MutChild.cpp, muwx/MutDocManager.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutLogicWnd.cpp, muwx/MutRouteWnd.cpp, muwx/MutTextBox.cpp, muwx/MutView.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
+	Restore perspective on logic start
+
+	* Makefile.am, muwx/GUIBoxData.cpp, muwx/GUIBoxData.h:
+	Added GUIBoxData.cpp
+
+	* Makefile.am, muwx/GUIBoxData.h, muwx/MutFrame.cpp, mywx/mutDebugFlags.h:
+	Added GUIBoxData.h
+
+	* muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po, xrc/Mutabor.xrc, xrc/wxresource.cpp, xrc/wxresource.h:
+	Save AUI data
+
+2011-09-04  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Do not manage ToolBar from AUI manager -- fixes Toolbar on Mac OS X and wx 2.9.2
+
+	* muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutView.cpp:
+	disable print preview on OS X and when using libgnomeprint as they proviede their own means
+
+	* muwx/MutEditFile.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Print scaling works on Mac OS X
+
+	* configure.in, mu32/routing/Device.cpp, mu32/routing/Device.h, muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	require wxWidgets 2.8.5 configure.in
+
+2011-09-01  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutEditFile.cpp:
+	allow printing page correctly, still wastes paper
+
+2011-08-31  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutEditFile.cpp:
+	Enabled printing, but page setup must be still reworked
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutView.cpp, muwx/MutView.h:
+	some work on printing the editor file
+
+2011-08-28  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp:
+	added file properties dialog
+
+	* muwx/MutApp.cpp, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutEditFile.cpp, muwx/MutFrame.cpp, muwx/MutFrame.h:
+	several impovements for opening and saving files
+
+	* doc/localized/de/Hilfe.zip, muwx/MutApp.cpp, po/de.gmo, po/de.mo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Some menu impovements
+
+	* muwx/MutEditFile.cpp: group replace all into one undo action
+
+	* muwx/MutEditFile.cpp: Fix brace hilighting
+	Implement Goto line
+
+	* po/de.gmo, po/de.mo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Updated German translation and pot file
+
+	* muwx/MutRouteWnd.cpp:
+	Remove handcrafted painting code. It is unused since the sizer based positioning and object oriented shapes are used.
+	Do not set Background color to be light gray use the system default instead.
+
+2011-08-27  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutApp.cpp, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/Mutabor.rh:
+	Implemented Search and Search/Replace
+
+2011-08-24  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* ChangeLog, configure.in, muwx/IconShape.cpp, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutFrame.cpp, muwx/MutRouteWnd.cpp, muwx/stclanguage.cpp, mywx/mutDebug.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	first run with 2.9.2+
+
+2011-08-21  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutRouteWnd.cpp, muwx/MutView.cpp, muwx/MutView.h, muwx/stclanguage.cpp, muwx/stclanguage.h, mywx/mutDebug.h, mywx/mutDebugFlags.h:
+	Integrate a more sophisticated editor menu based on the stc sample
+
+2011-08-20  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* muwx/stclanguage.cpp, muwx/stclanguage.h: new files
+
+	* Makefile.am, configure.in, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocument.cpp, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/Mutabor.rh:
+	use  wxSTC for the editor windows
+
+	* m4/alsa.m4, m4/forstyle.m4, m4/libtool.m4, m4/stdint_h.m4, m4/wxwin.m4:
+	silence some autoconf warnings
+
+2011-08-16  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/localized/de/Hilfe.zip, mu32/mut.cpp, mu32/mut.h, muwx/MutApp.cpp, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
 	Fix compiling on Mac OS X 10.5
@@ -6,13 +282,21 @@
 	* Makefile.am, muwx/MutApp.cpp, muwx/MutApp.h, osdep/macosx/Info.plist.in, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
 	added Creator code to .app meta data
 
-2011-08-15  author  <author@nalp15>
+2011-08-16  Tobias Schlemmer  <keinstein@users.berlios.de>
+
+	* doc/localized/de/Hilfe.zip, mu32/mut.cpp, mu32/mut.h, muwx/MutApp.cpp, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	Fix compiling on Mac OS X 10.5
+
+	* Makefile.am, muwx/MutApp.cpp, muwx/MutApp.h, osdep/macosx/Info.plist.in, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
+	added Creator code to .app meta data
+
+2011-08-15  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/mutaborlst.tex: added mutabor syntax for LaTeX listings package
 
 	* doc/Makefile.am: changed emlines.sty to tsemlines.sty
 
-2011-08-14  author  <author@nalp15>
+2011-08-14  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* muwx/MutApp.cpp: raise frame after “opening” an already open file
 
@@ -21,7 +305,7 @@
 	Use wxDocChildFrame::OnCloseWindow
 	remove some unneeded code
 
-2011-08-12  author  <author@nalp15>
+2011-08-12  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* muwx/MutView.cpp: act on some additional errors
 	delete Frame in OnClose if requested
@@ -29,13 +313,13 @@
 	* mywx/muconvauto.cpp:
 	fix BOM detection in case no length is providet by wxWidgets
 
-2011-08-11  author  <author@nalp15>
+2011-08-11  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* muwx/MutApp.cpp, muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h, muwx/configtree.h:
 	get Document/View running.
 	Needs further testing (possible segfaults).
 
-2011-08-06  author  <author@nalp15>
+2011-08-06  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* ChangeLog, muwx/MutApp.cpp: allow multiple open documents
 
@@ -53,7 +337,7 @@
 
 	* templates/template.cpp: added “official” license descripiton
 
-2011-08-06  author  <author@tobias2>
+2011-08-06  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* MutDocManager.cpp, MutDocManager.h:
 	added mutabor document manager class
@@ -64,7 +348,7 @@
 	* MutDocument.cpp, MutDocument.h, MutView.cpp, MutView.h:
 	documentation fixes
 
-2011-07-31  author  <author@tobias2>
+2011-07-31  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* MutApp.cpp, MutDocument.cpp, MutFrame.cpp, MutView.h:
 	Slightly improved window positioning
@@ -76,7 +360,7 @@
 	* MutApp.cpp, MutApp.h, MutDocument.cpp, MutDocument.h, MutFrame.cpp, MutFrame.h, MutView.cpp, MutView.h:
 	Added classes and functions for Document/View support
 
-2011-07-31  author  <author@tobias2>
+2011-07-31  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h, mywx/mutDebugFlags.h:
 	Implemented opening files from command line using Document/View framework
@@ -84,7 +368,7 @@
 	* Makefile.am, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutDocument.cpp, muwx/MutDocument.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutView.cpp, muwx/MutView.h:
 	Added classes and functions for Document/View support
 
-2011-07-30  author  <author@tobias2>
+2011-07-30  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* muwx/MutApp.cpp: allow file open from command line
 
@@ -94,7 +378,7 @@
 	* configure.in, muwx/MutLogicWnd.cpp:
 	Change tone system status window when changing the tuning logic by hand
 
-2011-07-27  author  <author@tobias2>
+2011-07-27  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* Makefile.am, doc/Makefile.cmn, doc/localized/de/Hilfe.zip, doc/preamble.tex, mu32/Execute.cpp, mu32/Execute.h, mu32/Interpre.h, mu32/MidiKern.h, mu32/Runtime.cpp, mu32/TabGen.cpp, mu32/box.cpp, mu32/box.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidi.cpp, muwx/InputDevDlg.h:
 	started to move arrays using MAX_BOX into struct mutabor_box_type
@@ -102,22 +386,22 @@
 	* mu32/routing/gmn/GIS_Head.h:
 	avoid compiler warning due to intialisaton with NULL
 
-2011-07-08  author  <author@tobias2>
+2011-07-08  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/localized/en/Help.zip, doc/localized/en/box-configured-full.png, doc/localized/en/box-nonconfigured-full.png, doc/localized/en/inputdevice-full.png, doc/localized/en/minimal-window.png, doc/localized/en/newbox-configured.png, doc/localized/en/outputdevice-full.png, doc/localized/en/routewindow-configured.png, doc/localized/en/routewindow.png, doc/localized/en/tutorial-tuning1-logic-select-open.png, doc/localized/en/tutorial-tuning1-logic-select.png, doc/localized/en/tutorial-tuning2-logic-select-open.png:
 	add some images which are used in the online tutorial
 
-2011-07-04  author  <author@tobias2>
+2011-07-04  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/localized/de/Referenz.tex:
 	some fixes found during translation of Referenz.tex into english
 
-2011-07-03  author  <author@tobias2>
+2011-07-03  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/localized/en/Help.zip, doc/localized/en/reference.tex:
 	finished first translation into English of the reference
 
-2011-06-24  author  <author@tobias2>
+2011-06-24  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/Makefile.cmn, doc/localized/de/Makefile.am, doc/localized/de/Referenz.tex, doc/localized/en/Makefile.am, doc/localized/en/reference.tex, doc/localized/en/syn26.pic, doc/preamble.tex:
 	Added english translation of retunig section to the reference book
@@ -132,7 +416,7 @@
 	* doc/localized/en/Makefile.am, doc/localized/en/reference.tex, doc/localized/en/syn10.pic, doc/localized/en/syn11.pic, doc/localized/en/syn12.pic, doc/localized/en/syn13.pic, doc/localized/en/syn14.pic, doc/localized/en/syn15.pic, doc/localized/en/syn16.pic, doc/localized/en/syn17.pic, doc/localized/en/syn18.pic, doc/localized/en/syn19.pic, doc/localized/en/syn2.pic, doc/localized/en/syn20.pic, doc/localized/en/syn21.pic, doc/localized/en/syn22.pic, doc/localized/en/syn23.pic, doc/localized/en/syn24.pic, doc/localized/en/syn25.pic, doc/localized/en/syn26.pic, doc/localized/en/syn27.pic, doc/localized/en/syn28.pic, doc/localized/en/syn3.pic, doc/localized/en/syn4.pic, doc/localized/en/syn5.pic, doc/localized/en/syn6.pic, doc/localized/en/syn7.pic, doc/localized/en/syn8.pic, doc/localized/en/syn9.pic:
 	added all pictures
 
-2011-06-23  author  <author@tobias2>
+2011-06-23  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* doc/htmlpreamble.tex, doc/localized/en/Makefile.am: commit new files
 
@@ -151,17 +435,17 @@
 	* debian/changelog, debian/control, mu32/treestorage.h, muwx/Routing/OutputMidiDeviceShape.h, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
 	fix compile errors
 
-2011-03-06  author  <author@tobias2>
+2011-03-06  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* Makefile.am, mu32/Execute.cpp, mu32/Execute.h, mu32/Interpre.h, mu32/Runtime.cpp, mu32/Runtime.h, mu32/mut.cpp, mu32/mut.h, mu32/mut.y, muwx/MutFrame.cpp, po/de.gmo, po/de.po, po/en.gmo, po/en.po, po/gb.gmo, po/gb.po, po/mutabor.pot, po/ru.gmo, po/ru.po:
 	some rearrangement for update callback kernel->GUI
 
-2011-02-20  author  <author@tobias2>
+2011-02-20  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* templates/template.cpp, mu32/Defs.h, mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Errors.h, mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h, mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp, mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h, mu32/MidiKern.h, mu32/Parser.cpp, mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, mu32/mut.y, mu32/routing/Device.cpp, mu32/routing/Device.h, mu32/routing/Route.cpp, mu32/routing/Route.h, mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h, mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h, mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h, mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h, mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h, mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp, mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp, mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp, mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muwx/Action.cpp, muwx/Action.h, muwx/BoxDlg.cpp, muwx/BoxDlg.h, muwx/CompDlg.cpp, muwx/CompDlg.h, muwx/IconShape.cpp, muwx/IconShape.h, muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/MutApp.cpp, muwx/MutApp.h, muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h, muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.cpp, muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h, muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp, muwx/MutTextBox.h, muwx/OutputDevDlg.cpp, muwx/OutputDevDlg.h, muwx/Panel.cpp, muwx/Panel.h, muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h, muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h, muwx/Routing/BoxShape.h, muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h, muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h, muwx/Routing/InputDevDlg.cpp, muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp, muwx/Routing/InputDeviceShape.h, muwx/Routing/InputGuidoFileDeviceShape.cpp, muwx/Routing/InputGuidoFileDeviceShape.h, muwx/Routing/InputMidiDeviceShape.cpp, muwx/Routing/InputMidiDeviceShape.h, muwx/Routing/InputMidiFileDeviceShape.cpp, muwx/Routing/InputMidiFileDeviceShape.h, muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h, muwx/Routing/NewInputDeviceShape.cpp, muwx/Routing/NewInputDeviceShape.h, muwx/Routing/NewOutputDeviceShape.cpp, muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp, muwx/Routing/OutputDeviceShape.cpp, muwx/Routing/OutputDeviceShape.h, muwx/Routing/OutputGuidoFileDeviceShape.cpp, muwx/Routing/OutputGuidoFileDeviceShape.h, muwx/Routing/OutputMidiDeviceShape.cpp, muwx/Routing/OutputMidiDeviceShape.h, muwx/Routing/OutputMidiFileDeviceShape.cpp, muwx/Routing/OutputMidiFileDeviceShape.h, muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h, muwx/configtree.cpp, muwx/configtree.h, muwx/resourceload.h, mywx/mhArray.h, mywx/mhDefs.h, mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mutDebug.cpp, mywx/mutDebug.h, mywx/mutDebugFlags.h, mywx/mxDefs.cpp, mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h:
 	updated license information; some file headers have to be revised, though
 
-2011-02-19  author  <author@tobias2>
+2011-02-19  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* ChangeLog:
 	Merged in main branch from CVS experimental_tobias branch still missing
