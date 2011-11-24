@@ -533,10 +533,12 @@ mutlex.h: mutlex.l
 mu32/mut.cpp mu32/mut.h: $(top_srcdir)/mu32/mut.h
 $(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
 $(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
+if MAINTAINER_MODE
 $(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
 	$(top_builddir)/config.status
 	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
 	cp $(top_builddir)/osdep/win/Mutabor.nsi $@
+endif
 
 mac: copymac
 	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
