@@ -1,16 +1,19 @@
 Source: mutabor
-Section: unknown
-Priority: extra
+Section: sound
+Priority: optional
 Maintainer: Tobias Schlemmer <keinstein@users.berlios.de>
-Build-Depends:  debhelper (>= 7.0.15), autotools-dev, libasound2-dev, libwxgtk2.8-dev, tex4ht, libboost-dev, bison, flex, libexpat-dev
-Standards-Version: 3.8.4
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, dh-autoreconf, libasound2-dev, libwxgtk2.8-dev, tex4ht, libboost-dev, bison, flex, libexpat-dev
+Standards-Version: 3.9.2
 Homepage: http://www.math.tu-dresden.de/~mutabor/
+Bugs: http://developer.berlios.de/bugs/?group_id=3845
 #Vcs-Git: git://git.debian.org/collab-maint/mutabor.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/mutabor.git;a=summary
 
 Package: mutabor
+Section: sound
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: mutabor-doc (= ${source:Version})
 Description: Retuning MIDI instruments for complex microtonal tunings
  Mutabor is a program that allows a musician to perform real time Music with
  arbitray posibly infinite tone systems. The program uses the Pitch Bend
@@ -27,6 +30,7 @@ Description: Retuning MIDI instruments for complex microtonal tunings
 
 Package: libmutabor
 Architecture: any
+Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Retuning MIDI instruments for complex microtonal tunings
  Mutabor is a program that allows a musician to perform real time Music with
@@ -46,8 +50,9 @@ Description: Retuning MIDI instruments for complex microtonal tunings
  The header files can be found in the libmutabor-dev package.
 
 Package: libmutabor-dev
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Architecture: all
+Section: libdevel
+Depends: ${misc:Depends}
 Description: Retuning MIDI instruments for complex microtonal tunings
  Mutabor is a program that allows a musician to perform real time Music with
  arbitray posibly infinite tone systems. The program uses the Pitch Bend
@@ -65,7 +70,9 @@ Description: Retuning MIDI instruments for complex microtonal tunings
  nice technology.
 
 Package: mutabor-doc
+Section: doc
 Architecture: all
+Depends: ${misc:Depends}
 Description: Documentation for mutabor
  Mutabor is a program that allows a musician to perform real time Music with
  arbitray posibly infinite tone systems. The program uses the Pitch Bend

@@ -2,10 +2,10 @@
 !define PACKAGE_NAME "Mutabor"
 !define PACKAGE_VERSION "3.1.0beta0"
 !define NAME_VERSION "${PACKAGE_NAME} ${PACKAGE_VERSION}"
-!define EXENAME "mutabor.exe"
+!define EXENAME "mutabor"
 !define MUTSHORTCUTDIR "$SMPROGRAMS\${PACKAGE_NAME}"
 !define INSTALLATIONNAME "${PACKAGE_NAME}"
-!define srcdir "../../.."
+!define srcdir "."
 
 Name "${NAME_VERSION}"
 
