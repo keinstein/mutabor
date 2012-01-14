@@ -3,8 +3,8 @@ Title: Debian mutabor Manual
 Author: <insert document author here>
 Abstract: This manual describes what mutabor is
  and how it can be used to
- manage online manuals on Debian systems.
-Section: unknown
+ write and use tuning logics.
+Section: sound
 
 Format: debiandoc-sgml
 Files: /usr/share/doc/mutabor/mutabor.sgml.gz
