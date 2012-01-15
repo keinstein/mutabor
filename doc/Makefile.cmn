@@ -22,7 +22,7 @@ html-local: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	$(top_docdir)/preamble.tex \
 	$(TEX_DEPS)
-	$(MAKE) -C '$(reldocdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
+	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 	htmldecode='$(rel_docdir)/htmldecode' \
 	fixhhp='$(rel_docdir)/fixhhp' \
