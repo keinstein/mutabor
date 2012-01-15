@@ -743,3 +743,9 @@ update-po: reslocale.cpp
 
 update-gmo: update-po
 	make -C po update-gmo
+
+dch:
+	dch -v "$(PACKAGE_VERSION)"
+
+debuild: dch
+	debuild
