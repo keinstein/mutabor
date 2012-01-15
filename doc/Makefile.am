@@ -32,6 +32,8 @@ EXTRA_DIST = \
 
 htmldecode_SOURCES = htmldecode.cpp
 
+dist_man_MANS = mutabor.1
+
 fixhhp_SOURCES = fixhhp.cpp
 
 html-local: html-recursive
