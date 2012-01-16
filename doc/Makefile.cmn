@@ -2,11 +2,12 @@
 top_docdir = $(srcdir)/$(rel_docdir)
 macdocdir = $(top_builddir)/Mutabor.app/Contents/Resources
 override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
+override docdir:=$(docdir)/$(DOCLOCALE)
+installidirs=$(docdir)
 #pkgdatadir := $(localpkgdatadir)
 
 .PHONY: mac copymac install-data-mutabor zipfile
-.tex.pdf:
-	$(TEX_DEPS)
+.tex.pdf: $(TEX_DEPS)
 	rm *.out *.aux *.ind; \
 	for i in 0 1 2 ; \
 	do \
@@ -14,7 +15,10 @@ override pkgdatadir:=$(pkgdatadir)/$(DOCLOCALE)
 		pdflatex --synctex=1 '$*' ; \
 		makeindex `basename "$*"` ; \
 	done ; \
-	cp `basename $*.pdf` $@
+	if [ "`basename $*.pdf`" != "$@" ] ;  \
+	then \
+		cp `basename $*.pdf` $@ ; \
+	fi
 
 $(PDFFILES): $(TEXSOURCES) $(top_docdir)/preamble.tex
 
@@ -47,10 +51,15 @@ copymac:
 		cp '$(srcdir)/$(ZIPFILE)' '$(macdocdir)/$(DOCLOCALE).lproj' ; \
 	fi
 
-install-data-local: install-data-mutabor html
+install-data-local: install-data-mutabor html install-pdf
 #	test -z '$(pkgdatadir)/$(DOCLOCALE)' || \
 #		$(MKDIR_P) '$(pkgdatadir)/$(DOCLOCALE)'
 #	$(INSTALL_DATA) '$(srcdir)/$(ZIPFILE)' '$(pkgdatadir)/$(DOCLOCALE)/'
 
 install-data-mutabor:
 
+install-pdf-local: pdf-local
+	for d in $(PDFFILES) ; \
+	do \
+		$(install_sh_DATA) $$d $(DESTDIR)$(docdir)/$$d ; \
+	done
