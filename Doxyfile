@@ -38,7 +38,7 @@ PROJECT_NUMBER         = 3.1.0beta1
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/docs/Doxygen
+OUTPUT_DIRECTORY       = /home/alg/schlemme/build/mutabor/docs/Doxygen
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -124,7 +124,7 @@ FULL_PATH_NAMES        = YES
 # If left blank the directory from which doxygen is run is used as the 
 # path to strip.
 
-STRIP_FROM_PATH        = /home/tobias/macbookbackup/Entwicklung/debian/mutabor
+STRIP_FROM_PATH        = /home/alg/schlemme/build/mutabor
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of 
 # the path mentioned in the documentation of a class, which tells 
@@ -574,20 +574,20 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/config.h \
-                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/mu32 \
-                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/muwx \
-                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/mywx \
-                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/rtmidi
-#                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/missfunc \
-#                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/wxintl \
-#                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/intl \
-#                         /home/tobias/macbookbackup/Entwicklung/debian/mutabor/libasprintf 
+INPUT                  = /home/alg/schlemme/build/mutabor/config.h \
+                         /home/alg/schlemme/build/mutabor/mu32 \
+                         /home/alg/schlemme/build/mutabor/muwx \
+                         /home/alg/schlemme/build/mutabor/mywx \
+                         /home/alg/schlemme/build/mutabor/rtmidi
+#                         /home/alg/schlemme/build/mutabor/missfunc \
+#                         /home/alg/schlemme/build/mutabor/wxintl \
+#                         /home/alg/schlemme/build/mutabor/intl \
+#                         /home/alg/schlemme/build/mutabor/libasprintf 
 
-# /home/tobias/macbookbackup/Entwicklung/debian/mutaborpo \
-# /home/tobias/macbookbackup/Entwicklung/debian/mutaborm4 \
-# /home/tobias/macbookbackup/Entwicklung/debian/mutaborincludes \
-# /home/tobias/macbookbackup/Entwicklung/debian/mutaborlibmutabor \
+# /home/alg/schlemme/build/mutaborpo \
+# /home/alg/schlemme/build/mutaborm4 \
+# /home/alg/schlemme/build/mutaborincludes \
+# /home/alg/schlemme/build/mutaborlibmutabor \
 
 
 # This tag can be used to specify the character encoding of the source files 
@@ -839,13 +839,13 @@ HTML_FILE_EXTENSION    = .html
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard header.
 
-HTML_HEADER            = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/doxygen/html-header
+HTML_HEADER            = /home/alg/schlemme/build/mutabor/doxygen/html-header
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for 
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard footer.
 
-HTML_FOOTER            = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/doxygen/html-footer
+HTML_FOOTER            = /home/alg/schlemme/build/mutabor/doxygen/html-footer
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading 
 # style sheet that is used by each HTML page. It can be used to 
@@ -854,7 +854,7 @@ HTML_FOOTER            = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/d
 # the style sheet file to the HTML output directory, so don't put your own 
 # stylesheet in the HTML output directory as well, or it will be erased!
 
-HTML_STYLESHEET        = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/doxygen/html-stylesheet
+HTML_STYLESHEET        = /home/alg/schlemme/build/mutabor/doxygen/html-stylesheet
 
 # If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, 
 # files or namespaces will be aligned in HTML using tables. If set to 
@@ -1079,7 +1079,7 @@ EXTRA_PACKAGES         =
 # the first chapter. If it is left blank doxygen will generate a 
 # standard header. Notice: only use this tag if you know what you are doing!
 
-LATEX_HEADER           = /home/tobias/macbookbackup/Entwicklung/debian/mutabor/doxygen/latex-header
+LATEX_HEADER           = /home/alg/schlemme/build/mutabor/doxygen/latex-header
 
 # If the PDF_HYPERLINKS tag is set to YES, the LaTeX that is generated 
 # is prepared for conversion to pdf (using ps2pdf). The pdf file will 

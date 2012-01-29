@@ -4,16 +4,19 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.11 2011/11/16 14:07:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.12 2012/01/29 22:08:36 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/16 14:07:03 $
- * \version $Revision: 1.11 $
+ * $Date: 2012/01/29 22:08:36 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: OutputDeviceShape.cpp,v $
- * Revision 1.11  2011/11/16 14:07:03  keinstein
+ * Revision 1.12  2012/01/29 22:08:36  keinstein
+ * allow to add nonexisting devices in the route editor (partly fixes #16908)
+ *
+ * Revision 1.11  2011-11-16 14:07:03  keinstein
  * passed make distcheck on linux
  * addedd some osdep files to the archive
  *
@@ -379,12 +382,12 @@ namespace mutaborGUI {
 	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
 	{
 		OutputDevDlg * out = new OutputDevDlg (m_parent);
-		int nMidi = rtmidiout->getPortCount();
-		DEBUGLOG (other, _T("Midi ports %d"),nMidi);
+		int nMidi;
 
 #ifdef RTMIDI
-		nMidi = rtmidiout->getPortCount();
+		nMidi = (rtmidiout?rtmidiout->getPortCount():0);
 
+		DEBUGLOG (other, _T("Midi ports %d"),nMidi);
 		if ( nMidi )  {
 			wxString portName;
 

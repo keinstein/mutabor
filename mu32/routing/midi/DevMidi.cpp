@@ -2,16 +2,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.15 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.16 2012/01/29 22:08:36 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.15 $
+ * $Date: 2012/01/29 22:08:36 $
+ * \version $Revision: 1.16 $
  * \license GPL
  *
  * $Log: DevMidi.cpp,v $
- * Revision 1.15  2011/11/02 14:31:58  keinstein
+ * Revision 1.16  2012/01/29 22:08:36  keinstein
+ * allow to add nonexisting devices in the route editor (partly fixes #16908)
+ *
+ * Revision 1.15  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.14  2011-10-22 16:32:38  keinstein
@@ -227,8 +230,8 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		DevId = config.Read(_T("Device Id"),0);
-		Name = config.Read(_T("Device Name"), rtmidiout->getPortCount()?
-				   muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
+		Name = config.Read(_T("Device Name"), rtmidiout?(rtmidiout->getPortCount()?
+				   muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device")));
 		bending_range = config.Read(_T("Bending Range"),2);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -756,9 +759,10 @@ OutputMidiPort:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		DevId = config.Read(_T("Device Id"), 0);
-		Name  = config.Read(_T("Device Name"), 	
-				    rtmidiout->getPortCount()?
-				    muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown")));
+		Name  = config.Read(_T("Device Name"), 
+				    (rtmidiin?(	
+				    rtmidiin->getPortCount()?
+				    muT(rtmidiin->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device"))));
 		mutASSERT(oldpath == config.GetPath());
 	}
 
