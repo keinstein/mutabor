@@ -3,16 +3,19 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.12 2011/11/16 14:07:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.13 2012/01/29 22:08:36 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
- * $Date: 2011/11/16 14:07:03 $
- * \version $Revision: 1.12 $
+ * $Date: 2012/01/29 22:08:36 $
+ * \version $Revision: 1.13 $
  * \license GPL
  *
  * $Log: InputDeviceShape.cpp,v $
- * Revision 1.12  2011/11/16 14:07:03  keinstein
+ * Revision 1.13  2012/01/29 22:08:36  keinstein
+ * allow to add nonexisting devices in the route editor (partly fixes #16908)
+ *
+ * Revision 1.12  2011-11-16 14:07:03  keinstein
  * passed make distcheck on linux
  * addedd some osdep files to the archive
  *
@@ -334,10 +337,10 @@ namespace mutaborGUI {
 
 	InputDevDlg * MutInputDeviceShape::ShowDeviceDialog() {
 		InputDevDlg * in = new InputDevDlg (m_parent);
-		int nMidi = rtmidiin->getPortCount();
+		int nMidi;
 
 #ifdef RTMIDI
-		nMidi = rtmidiin->getPortCount();
+		nMidi = (rtmidiin?rtmidiin->getPortCount():0);
 
 		if ( nMidi )  {
 			wxString portName;

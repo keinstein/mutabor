@@ -3,16 +3,19 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.h,v 1.10 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.h,v 1.11 2012/01/29 22:08:36 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.10 $
+ * $Date: 2012/01/29 22:08:36 $
+ * \version $Revision: 1.11 $
  * \license GPL
  *
  * $Log: DevMidi.h,v $
- * Revision 1.10  2011/11/02 14:31:58  keinstein
+ * Revision 1.11  2012/01/29 22:08:36  keinstein
+ * allow to add nonexisting devices in the route editor (partly fixes #16908)
+ *
+ * Revision 1.10  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.9  2011-10-02 16:58:41  keinstein
@@ -197,8 +200,11 @@ namespace mutabor {
 			}
 
 		virtual void SetDevId (int id) {
-			DevId = id;            
-			Name = muT (rtmidiout->getPortName (DevId).c_str());
+			DevId = id;
+			if (rtmidiout) 
+				Name = muT (rtmidiout->getPortName (DevId).c_str());
+			else
+				Name = _("no device");
 		}
 		
 		void SetBendingRange (int r) {
@@ -326,8 +332,11 @@ namespace mutabor {
 			}
 
 		virtual void SetDevId (int id) {
-			DevId = id;            
-			Name = muT (rtmidiin->getPortName (DevId).c_str());
+			DevId = id;
+			if (rtmidiin)
+				Name = muT (rtmidiin->getPortName (DevId).c_str());
+			else
+				Name = _("no device");
 		}
 
 		virtual int GetDevId() 
