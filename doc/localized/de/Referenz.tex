@@ -1,7 +1,7 @@
 \input{preamble.tex}
 \subject{Referenzhandbuch}
-\externaldocument{handbuch}
-\externaldocument{bedienung}
+\externaldocument{Handbuch}
+\externaldocument{Bedienung}
 \begin{document}
 \ifhtml
 \setcounter{tocdepth}{1}
@@ -85,6 +85,7 @@ Diese Dokumentation können sie in folgenden Formaten lesen und ausdrucken:
 
 \pagestyle{headings}
 
+\helpsection{Sprachreferenz}{REFERENCE_LANGUAGE_REFERENCE}
 \chapter{Sprachreferenz\label{cha:sprachreferenz}}
 \label{eins}
 
@@ -103,12 +104,14 @@ feststellen kann, ob das Logikprogramm falsch ist, oder ob
 Dieser Abschnitt beschreibt die Logiksprache \mutabor{} in der Version 3.0.
 
 
+\helpsection{Lexikalische Konventionen}{REFERENCE_LEXICAL_CONVENTIONS}
 \chapter{Lexikalische Konventionen}\label{cha:lexik-konv}
 \label{zwei}
 
 Ein Programm besteht aus einem Text, der in einer Datei gespeichert ist.
 Es wird in einer einzigen Phase übersetzt.
 
+\helpsection{Eingabesymbole}{REFERENCE_INPUT_SYMBOLS}
 \section{Eingabesymbole}\label{sec:eingabesymbole}
 \index{Eingabesymbole}
 \label{zweieins}
@@ -131,6 +134,7 @@ Eingabesymbol die längstmögliche  Kette
 von Zeichen aufgefasst, die ein Eingabesymbol darstellen kann.
 
 
+\helpsection{Kommentare}{REFERENCE_COMMENTS}
 \section{Kommentare}\label{sec:kommentare}
 \index{Kommentare}
 \label{zweizwei}
@@ -141,6 +145,7 @@ Kommentare  können  nicht
 verschachtelt\index{Verschachtelung} werden.
 Kommentare dürfen sich über mehrere Zeilen erstrecken.
 
+\helpsection{Namen}{REFERENCE_NAMES}
 \section{Namen}\label{sec:namen}
 \label{zweidrei}
 
@@ -173,7 +178,8 @@ Logiksprache, sondern wird erst später semantisch überprüft. Es erhöht
 jedoch das Verständnis, wenn direkt erkennbar ist, welche Art von Namen
 in Frage kommt.
 
-\section{Reservierte Worte}\label{sec:reservierte-worte}
+\helpsection{Reservierte Woerter}{REFERENCE_RESERVED_WORDS}
+\section{Reservierte Wörter}\label{sec:reservierte-worte}
 \label{zweivier}
 
 Die  folgenden  Worte sind reserviert\index{Worte!reservierte}
@@ -210,6 +216,7 @@ dürfen nicht als Namen benutzt werden.
 
 Alle anderen Wörter dürfen als Namen oder Bezeichner verwendet werden.
 
+\helpsection{Zahlen}{REFERENCE_NUMBERS}
 \section{Zahlen}\label{sec:zahlen}
 \index{Zahlen}
 \label{zweifuenf}
@@ -235,6 +242,7 @@ In\-ter\-vall\-gr"o"se,\ldots).
 
 
 
+\helpsection{Syntax-Schreibweise}{REFERENCE_SYNTAX_DESCRIPTION}
 \chapter{Syntax"=Schreibweise}\label{cha:syntax-schreibweise}
 \label{drei}
 
@@ -254,7 +262,8 @@ die Schleife, daß mehrere Konstrukte von der Art \emph{EinzelTon}
 aufeinander folgen können.
 
 
-\chapter{Das Logikprogramm}\label{cha:das-logikprogramm}
+\helpsection{Logikprogramm}{REFERENCE_LOGIC_PROGRAM}
+\chapter{ Logikprogramm}\label{cha:das-logikprogramm}
 Das Logikprogramm ist der oberste Grammatikbegriff und entspricht
 dem gesamten Programm. Das Logikprogramm selbst ist eine beliebige
 Folge von Deklarationen\index{Deklarationen}.
@@ -270,6 +279,7 @@ Elemente Bezug genommen werden, die erst später deklariert werden.
 
 \input{syn2.pic}
 
+\helpsection{Intervall}{REFERENCE_INTERVAL}
 \chapter{Intervall}\index{Intervall}\label{cha:intervall}
 
 Eine Intervalldeklaration definiert einzelne Intervalle und die
@@ -306,6 +316,7 @@ berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
 
 \input{syn5.pic}
 
+\helpsection{Ton}{REFERENCE_TONE}
 \chapter{Ton}\label{cha:ton}
 \index{Ton}
 
@@ -340,6 +351,7 @@ wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) * \mathtt{quint
 
 
 
+\helpsection{Tonsystem}{REFERENCE_TONESYSTEM}
 \chapter{Tonsystem}\label{cha:tonsystem}
 \index{Tonsystem}
 Eine Tonsystemdeklaration definiert einzelne Tonsysteme und die
@@ -382,6 +394,7 @@ mitgezählt, als wären sie vorhanden.
 \input{syn6.pic}
 
 
+\helpsection{Umstimmung}{REFERENCE_RETUNING}
 \chapter{Umstimmung}\label{cha:umstimmung}
 \index{Umstimmung}
 Eine Umstimmungsdeklaration definiert einzelne Umstimmungen und die
@@ -547,6 +560,7 @@ Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
 \end{description}
 
+\helpsection{Harmonie}{REFERENCE_HARMONY}
 \chapter{Harmonie}\label{cha:harmonie}
 \index{Harmonie}
 
@@ -580,6 +594,7 @@ also ohne Verschiebung der Bezugstonigkeit.
 
 
 
+\helpsection{Logik}{REFERENCE_LOGIC}
 \chapter{Logik}\label{cha:logik}
 \index{Logik}
 Eine Logikdeklaration definiert einzelne Logiken und die
@@ -618,6 +633,7 @@ Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
 
 \input{syn27.pic}
 
+\helpsection{Ausloeser}{REFERENCE_TRIGGER}
 \section{Auslöser}\label{sec:ausloser}
 \index{Auslöser}
 
@@ -627,7 +643,8 @@ ein MIDI-Ereignis oder der Spezialauslöser \texttt{ansonsten} sein.
 
 \input{syn18.pic}
 
-\subsection{Tasten}\index{Tasten}\label{sec:tasten}
+\helpsection{Ausloeser-Taste}{REFERENCE_TRIGGER_KEYS}
+\subsection{Taste}\index{Tasten}\label{sec:tasten}
 
 Dieser Auslöser\index{Auslöser!Taste}
  besteht aus dem Wort \emph{Taste}\index{Tasten}, gefolgt von einem der
@@ -643,7 +660,8 @@ Instrumente/MIDI-Kanäle 1--9 mit einem Tasten-Auslöser steuern.
 
       \input{syn19.pic}
 
-\subsection{Harmonien}\label{sec:harmonien}
+\helpsection{Ausloeser-Harmonie}{REFERENCE_TRIGGER_HARMONY}
+\subsection{Harmonie}\label{sec:harmonien}
 \index{Harmonien}
 Harmonie-Auslöser\index{Auslöser!Harmonie}
  können wahlweise eine Harmonie oder eine Harmonieform
@@ -685,6 +703,7 @@ die Harmonie-Analyse relativ um die Bezugstaste verschoben durchgeführt.
 
     \input{syn20.pic}
 
+\helpsection{Ausloeser-MIDI}{REFERENCE_TRIGGER_MIDI}
 \subsection{MIDI-Ereignisse}\index{Auslöser!MIDI-Ereignis}\label{sec:midi-ereignisse}
 MIDI-Ereignisse werden mit dem Wort \emph{MIDIIN}\index{MIDIIN}
 eingeleitet und
@@ -707,6 +726,7 @@ einbezogen.
 
     \input{syn21.pic}
 
+\helpsection{Aktionen}{REFERENCE_ACTION}
 \section{Aktionen}\index{Aktionen}\label{sec:aktionen}
 
 Aktionen werden innerhalb einer Logik ausgelöst und können wahlweise
@@ -727,7 +747,8 @@ werden die einzelnen Aktionen der Liste in genau der angegebenen
 Reihenfolge ausgeführt.
 
 
-\subsection{MIDI-Ausgaben}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
+\helpsection{MIDI-Ausgaben}{REFERENCE_ACTION_MIDI_OUTUPUT}
+\subsection{action-midi-output}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
 \index{Aktion!MIDI-Ausgabe}
 
 MIDI-Ausgaben werden mit dem Wort \emph{MIDIOUT}\index{MIDIOUT}
@@ -739,6 +760,7 @@ Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
     \input{syn22.pic}
 
+\helpsection{MIDI-Kanaele}{REFERENCE_MIDI_CHANNELS}
 \chapter{MIDI-Kanäle}\label{cha:midi-kanale}
 \index{MIDI!Kanal}
 \label{MIDIKANAL}
@@ -792,6 +814,7 @@ als automatisch gegeben.
 
 \input{syn25.pic}
 
+\helpsection{Glossar}{GLOSSARY}
 \section{Worterklärungen}\label{sec:worterklarungen}
 \begin{description}
 \item[Taste] Die Klaviatur-Tasten werden als Abstand in
@@ -855,6 +878,7 @@ als automatisch gegeben.
 
 
 
+\helpsection{Index}{REFERENCE_INDEX}
 \printindex
 %\input{handbuch.ind}
 
