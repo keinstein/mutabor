@@ -1,7 +1,7 @@
 \input{preamble.tex}
 \subject{Bedienungsanleitung der Oberfläche}
-\externaldocument{handbuch}
-\externaldocument{referenz}
+\externaldocument{Handbuch}
+\externaldocument{Referenz}
 
 \hyphenation{TON-SYS-TEM}
 \hyphenation{IN-TER-VALL}
@@ -15,6 +15,7 @@
 \maketitle
 \ifhtml
 \ifhelp\else
+\helpsection{Downloadformate}{MANUAL_DOWNLOAD_FORMATS}
 \section*{Verfügbare Formate dieses Handbuchs}
 Diese Dokumentation können sie in folgenden Formaten lesen und ausdrucken:
 
@@ -51,8 +52,10 @@ Diese Dokumentation können sie in folgenden Formaten lesen und ausdrucken:
 \tableofcontents
 \fi
 
+\helpsection{Ueberblick}{MANUAL_OVERVIEW}
 \part{Überblick}
-\chapter{Über \texorpdfstring{\mutabor}{Mutabor}}
+\helpsection{Ueber MUTABOR}{MANUAL_ABOUT_MUTABOR}
+\chapter{Über \mutabor}
 
 \begin{tabular}{l@{\ \ --\ \ \ }l}
 \mutabor{}  & Einerseits lateinisch: Ich werde verändert werden \\
@@ -111,7 +114,8 @@ Neuste Informationen finden Sie im Internet unter\\
 {\url{http://www.math.tu-dresden.de/~mutabor/}}.
 \end{center}
 
-\section{Geschichte von \texorpdfstring{\mutabor}{Mutabor}}
+\helpsection{Geschichte}{MANUAL_HISTORY}
+\section{Geschichte von \mutabor}
 
 Das Projekt \mutabor[~II] wurde im August 1987 gegründet. Das
 ursprüngliche Ziel war es, das Instrument \mutabor{}, welches im Jahre
@@ -171,6 +175,7 @@ Neuste Informationen finden Sie im Internet unter\\
 
 
 
+\helpsection{Funktionsprinzip}{MANUAL_PRINCIPLE}
 \section{Funktionsprinzip}
 
 \mutabor{} stellt eine ereignisgesteuerte Programmiersprache zur
@@ -199,6 +204,8 @@ entweder auf eine (rein gestimmte) Tonart festgelegt zu sein oder, mit
 der heute üblicheren gleichschwebenden Stimmung, in keiner Tonart ganz
 sauber zu klingen, wird so aufgehoben.
 
+
+\helpsection{Boxenprinzip}{MANUAL_BOX_PRINCIPLE}
 \section{Das Prinzip der Boxen}\label{sec:CO_BOX}
 
 In \mutabor{} kann man also Logikprogramme (Ein- und Umstimmprogramme)
@@ -235,7 +242,9 @@ den MIDI"=Kanal geknüpft. Da heutige Computer mehrere MIDI"=Ports
 verwalten können, musste dieses Prinzip als Boxen abstrahiert 
 werden.)}
 
+\helpsection{Anforderungen und Moeglichkeiten}{MANUAL_REQUIREMENTS_AND_POTENTIAL}
 \chapter{Anforderungen und Möglichkeiten}
+\helpsection{Musikalische Grenzen und Probleme}{MANUAL_MUSICAL_LIMITS_AND_PROBLEMS}
 \section{Grenzen und Probleme musikalischer Art}
 
 
@@ -265,7 +274,8 @@ So lassen sich etwa Stimmen einzeln einspielen -- unter Umständen jede
 in einer anderen Stimmung -- und zu einer MIDI"=Datei kombinieren.
 
 
-\section{Technische Voraussetzung}
+\helpsection{Technische Voraussetzungen}{MANUAL_TECHNICAL_REQUIREMENTS}
+\section{Technische Voraussetzungen}
 
 Um überhaupt mit \mutabor{} zu arbeiten benötigen Sie einen
 MIDI"=Anschluss an ihrem Computer bzw.\ eine Soundkarte mit
@@ -299,6 +309,7 @@ zu MIDI"=Verkabelung.
 
 
 
+\helpsection{Schnelleinstieg}{MANUAL_QUICKSTART}
 \chapter{Schnelleinstieg}\label{sec:CC_BASICS}
 
 Dieses Kapitel enthält eine kurze Beschreibung, die Sie befähigen
@@ -332,6 +343,7 @@ Sie allerdings gründlich die
 studieren. Viel Spaß !
 
 
+\helpsection{MIDI-Verkabelung}{MANUAL_MIDI_WIREING}
 \section{MIDI"=Verkabelung}\label{sec:CC_CABLE}
 
 Um mit \mutabor{} zu arbeiten, muss Ihr Computer einen \tsreflink{MIDI"=Anschluss}{DV_MIDI} 
@@ -405,6 +417,8 @@ abzuspeichern, die man dann anderswo wieder abspielen kann. Dazu
 benötigt man nur den Computer, die schöne live"=Benutzbarkeit die den
 Vorteil von \mutabor{} darstellt, ist dann natürlich weg.
 
+
+\helpsection{Routen einrichten}{MANUAL_CONFIGURE_ROUTES}
 \section{Routen einrichten}\label{sec:CC_ROUTES}
 
 Bevor Sie mit \mutabor{} arbeiten können, müssen Sie eine Route für
@@ -447,6 +461,7 @@ Genaueres zur Funktionsweise der Routen finden Sie im Abschnitt
 \tsciteref{sec:DE_ROUTES}.
 
 
+\helpsection{Logik starten}{MANUAL_START_LOGIC}
 \section{Logik  starten}
 \label{sec:CC_LOGIC}
 
@@ -477,6 +492,7 @@ Mausklicks aktiviert werden.
 Wenn Sie jetzt auf dem Keyboard spielen, werden die Töne entsprechende 
 der angeklickten Logik verändert und mutiert.
 
+\helpsection{MIDI- oder Guido-Datei abspielen}{MANUAL_PLAY_MIDI_OR_GUIDO_FILE}
 \section{MIDI- oder Guido"=Datei abspielen}
 \label{sec:CC_MIDIIN}
 
@@ -522,9 +538,8 @@ die Musik der Eingabedatei entsprechend der aktuellen Logik mutiert}.
 
 
 
-
-\section{Ausgabe als MIDI- oder Guido Datei
-  abspeichern}\label{sec:CC_MIDIOUT}
+\helpsection{MIDI- oder Guido-Datei speichern}{MANUAL_SAVE_MIDI_OR_GUIDO}
+\section{Ausgabe als MIDI- oder Guido"=Datei abspeichern}\label{sec:CC_MIDIOUT}
 
 
 
@@ -575,9 +590,10 @@ welche Daten in die Datei geleitet werden.
 \fi
 \end{center}
 
+\helpsection{Bedienelemente}{MANUAL_WIDGETS}
+\part{Die Bedienelemente von \mutabor}
 
-\part{Die Bedienelemente von \texorpdfstring{\mutabor}{Mutabor}}
-
+\helpsection{Hauptfenster}{MANUAL_MAINWINDOW}
 \chapter{Hauptfenster}\label{sec:DE_MAINWINDOW}
 
 Nach dem Programmstart meldet sich \mutabor{} mit dem Hauptfenster.
@@ -591,11 +607,13 @@ Darauf folgen die \reflink{sec:DE_MENU}{Menüleiste}, die
 \reflink{sec:DE_SUBWINDOW}{Unterfenster} und die
 \reflink{sec:DE_STATUS}{Statusleiste}.
 
+\helpsection{Werkzeugleiste}{MANUAL_TOOLBAR}
 \section{Werkzeugleiste}\label{sec:DE_TOOLBAR}
 Die Werkzeugleiste befindet sich unmittelbar unterhalb des Menüs.
 Durch Klicken auf ihre Piktogramme können Sie einige häufig gebrauchte
 Befehle schneller ausführen.
 
+\helpsection{Statusleiste}{MANUAL_STATUS_BAR}
 \section{Statusleiste}\label{sec:DE_STATUS}
 Die Statusleiste befindet sich am unteren Rand des Programm"=Fensters.
 Hier können Sie sehen, ob der Editor gerade im überschreiben- oder
@@ -606,6 +624,7 @@ Fall, wird hier auch die \reflink{sec:DV_CURRENTBOX}{aktuelle Box} die
 aktuelle Logik mit dem gegenwärtigen Tonsystem angezeigt.
 
 
+\helpsection{Menueleiste}{MANUAL_MENUBAR}
 \chapter{Menüleiste}
 \label{sec:DE_MENU}
 Die Umgebung von \mutabor{} bietet Ihnen alle Funktionen, die Sie zum
@@ -617,7 +636,6 @@ Die Menüzeile wird durch die Funktionstaste \keystroke{F10} oder mit der
 Maus durch Klicken auf den entsprechenden Bereich aktiviert.
 
 Die Menüzeile enthält die folgenden Befehle:
-\tracingcommands2\relax\tracingmacros2\relax
 \begin{description}
 \item[\tsreflink{File}{MS_FILE}] Dateiverwaltung, Optionen
 \item[\tsreflink{Edit}{MS_EDIT}] Editier"=Funktionen für Quelltexte
@@ -629,10 +647,9 @@ Die Menüzeile enthält die folgenden Befehle:
 \item[\tsreflink{Window}{MS_WINDOW}] Fensterverwaltung
 \item[\tsreflink{Help}{MS_HELP}] Hilfe anzeigen, Versionsinformation
 \end{description}
-\tracingcommands0\relax\tracingmacros0\relax
 
-
-\section{Datei öffnen, speichern\dots{}}
+\helpsection{Datei Oeffnen Speichern}{MANUAL_FILE_OPEN_SAVE}
+\section{Datei öffnen, speichern\texorpdfstring\dots{...}}
 \label{sec:MS_FILE}
 
 Das Menü "`Datei"' beinhaltet Befehle zum Anlegen neuer Dateien, 
@@ -641,7 +658,6 @@ von \mutabor{}"=Dateien sowie zum Verlassen von \mutabor{}.
 Außerdem kann man hier einige globale Optionen einstellen.
 
 
-\tracingcommands2\relax\tracingmacros2\relax
 \begin{description}
 \item[\reflink{sec:MI_NEW}{New}] Neue Datei
 \item[\reflink{sec:MI_OPEN}{Open}] Datei öffnen
@@ -651,9 +667,9 @@ Außerdem kann man hier einige globale Optionen einstellen.
 \item[\reflink{sec:MI_SETUP}{Options}] Globale Einstellungen
 \item[\reflink{sec:MI_EXIT}{Exit}] \mutabor{} verlassen
 \end{description}
-\tracingcommands0\relax\tracingmacros0\relax
 
 
+\helpsection{Neue Datei}{MANUAL_FILE_NEW}
 \subsection{Neue Datei}\label{sec:MI_NEW}
 Dieser Befehl öffnet ein neues Editorfenster mit dem voreingestellten
 Namen "`UNTITLED"' und aktiviert automatisch dieses neue Editorfenster.
@@ -661,7 +677,7 @@ Dort können sie dann einen neuen Programm"=Text eingeben. Diese
 UNTITLED"=Dateien dienen als temporäre Puffer des Editors.  Beim
 Speichern werden Sie aufgefordert, einen neuen Namen zu vergeben.
 
-
+\helpsection{Datei oeffnen}{MANUAL_FILE_OPEN}
 \subsection{Datei öffnen}
 \label{sec:MI_OPEN}
 
@@ -672,7 +688,7 @@ gewünschte Datei auswählen; klicken Sie danach auf "`OK"' oder brechen Sie
 den Vorgang ab.
 
 
-
+\helpsection{Datei speichern}{MANUAL_FILE_SAVE}
 \subsection{Datei abspeichern}\label{sec:MI_SAVE}
 Dieser Befehl sichert den \reflink{sec:DV_QUELLTEXT}{Quelltext} des gerade 
 aktiven \reflink{sec:DE_EDIT}{Editor"=Fensters} auf Diskette oder Festplatte. 
@@ -680,9 +696,8 @@ Wenn noch kein Name angegeben wurde, werden Sie zuvor zur Angabe
 eines Namens für die Datei aufgefordert.
 
 
-
-\subsection{Datei abspeichern 
-unter\dots{}}\label{sec:MI_SAVEAS}
+\helpsection{Datei speichern unter}{MANIAL_FILE_SAVE_AS}
+\subsection{Datei abspeichern unter\dots{}}\label{sec:MI_SAVEAS}
 
 Dieser Befehl öffnet ein Dateiauswahl"=Fenster, mit dessen Hilfe Sie
 den \reflink{sec:DV_QUELLTEXT}{Quelltext} aus dem aktiven
@@ -699,6 +714,7 @@ Wenn Sie einen vorhandenen Dateinamen verwenden, fragt \mutabor{}, ob
 die Datei überschrieben werden soll.
 
 
+\helpsection{Datei ausfuehren}{MANUAL_FILE_EXECUTE}
 \subsection{Datei direkt ausführen}
 \label{sec:MI_EXECUTE}
 
@@ -712,14 +728,15 @@ Datei wird daraufhin compiliert, es erscheint (bei fehlerfreier
 Übersetzung) das \reflink{sec:DE_LOGIC}{Logiken"=Fenster} und das
 Programm ist aktiviert.
 
+\helpsection{Datei Einstellungen}{MANUAL_FILE_SETTINGS}
 \subsection{Optionen"=Dialog aufrufen}\label{sec:MI_SETUP}
 
 Dieser Befehl öffnet den \reflink{sec:DE_SETUP}{Optionen"=Dialog}, in 
 dem Sie einige globale Parameter für \mutabor{} einstellen 
 können.
 
-
-\subsection{\texorpdfstring{\mutabor{}}{Mutabor} beenden}
+\helpsection{Beenden}{MANUAL_FILE_QUIT}
+\subsection{\mutabor{} beenden}
 \label{sec:MI_EXIT}
 
 Dieser Befehl beendet die Arbeit mit \mutabor{}. Wenn sich noch nicht
@@ -727,7 +744,7 @@ gespeicherte Quelltexte im Editor befinden, wird abgefragt, ob jene
 gespeichert werden sollen.
 
 
-
+\helpsection{Editierfunktionen}{MANUAL_EDIT_FUNCTIONS}
 \section{Editierfunktionen}\label{sec:MS_EDIT}
 Das Menü "`Edit"' beinhaltet Befehle zum Bearbeiten des Textes 
 in den \reflink{sec:DE_EDIT}{Editor"=Fenstern}.
@@ -741,6 +758,7 @@ in den \reflink{sec:DE_EDIT}{Editor"=Fenstern}.
 \item[\reflink{sec:MI_CLEAR}{Clear All}] Alles löschen
 \end{description}
 
+\helpsection{Rueckgaengig}{MANUAL_EDIT_UNDO}
 \subsection{Rückgängig}
 \label{sec:MI_UNDO}
 
@@ -752,6 +770,7 @@ erscheint Ihre Datei wie vor der Ausführung des Blockbefehls. Wenn Sie
 den Befehl wiederholt geben, werden nacheinander die Änderungen an der
 Datei zurückgenommen, die seit dem Öffnen vorgenommen wurden.
 
+\helpsection{Ausschneiden}{MANUAL_EDIT_CUT}
 \subsection{Ausschneiden}\label{sec:MI_CUT}
 Der Befehl "`Cut"' entfernt den markierten Text aus dem aktiven
 \reflink{sec:DE_EDIT}{Editor"=Fenster} und kopiert ihn in
@@ -763,6 +782,7 @@ Der Text bleibt in der Zwischenablage, so dass man ihn beliebig
 oft kopieren kann. 
 
 
+\helpsection{Kopieren}{MANUAL_EDIT_COPY}
 \subsection{Kopieren}\label{sec:MI_COPY}
 Copy kopiert den markierten Text aus dem aktiven
 \reflink{sec:DE_EDIT}{Editor"=Fenster} in die Zwischenablage, ohne ihn
@@ -779,14 +799,14 @@ um ihn in die Zwischenablage zu kopieren. Mit der Maus können
 Sie den Text selektieren und ihn anschließend an die gewünschte 
 Stelle ziehen.
 
-
+\helpsection{Einfuegen}{MANUAL_EDIT_INSERT}
 \subsection{Einfügen}
 \label{sec:MI_PASTE}
 
 Dieser Befehl fügt den in der Zwischenablage markierten Text 
 an der Cursorposition im aktiven Editor"=Fenster ein.
 
-
+\helpsection{Loeschen}{MANUAL_EDIT_DELETE}
 \subsection{Löschen}
 \label{sec:MI_DELETE}
 "`Delete"' löscht den markierten Text, ohne ihn in die Zwischenablage 
@@ -806,7 +826,7 @@ Löschen ist dann nützlich, wenn Sie Text löschen, aber
 den in der Zwischenablage befindlichen Text nicht überschreiben 
 wollen.
 
-
+\helpsection{Alles loeschen}{MANUAL_EDIT_DELETEALL}
 \subsection{Alles löschen}
 \label{sec:MI_CLEAR}
 Mit diesem Befehl löschen Sie den gesamten Inhalt des aktuellen 
@@ -814,7 +834,7 @@ Editor"=Fensters.
 
 
 
-
+\helpsection{Textsuche}{MANUAL_TEXT_SEARCH}
 \section{Suchen im Text}\label{sec:MS_SEARCH}
 Das Menü Search beinhaltet Befehle zum Suchen und Ersetzen 
 von Text in den \reflink{sec:DE_EDIT}{Editor"=Fenstern}.
@@ -825,6 +845,7 @@ von Text in den \reflink{sec:DE_EDIT}{Editor"=Fenstern}.
 \item[\reflink{sec:MI_NEXT}{Next}] Weitersuchen
 \end{description}
 
+\helpsection{Suchen}{MANUAL_EDIT_SEARCH}
 \subsection{Suchen}
 \label{sec:MI_FIND}
 
@@ -840,7 +861,7 @@ der Begriff wird als markierter Text dargestellt. Mit
 gegebenenfalls fortsetzen.
 
 
-
+\helpsection{Replace}{MANUAL_EDIT_REPLACE}
 \subsection{Ersetzen}\label{sec:MI_REPLACE}
 
 Dieser Befehl öffnet ein Dialogfenster zum Ersetzen von Text 
@@ -852,7 +873,7 @@ Wort durchsucht und dieser wird durch den angegebenen Text ersetzt.
 Mit \reflink{sec:MI_NEXT}{Suche/""Ersetzen wiederholen} können Sie den 
 Vorgang gegebenenfalls fortsetzen.
 
-
+\helpsection{Weitersuchen}{MANUAL_EDIT_SEARCH_AGAIN}
 \subsection{Suche/""Ersetzen wiederholen}
 \label{sec:MI_NEXT}
 
@@ -866,6 +887,7 @@ Text und Text ersetzen vorgenommen haben, werden bei der Ausführung
 des Befehls verwendet. 
 
 
+\helpsection{Logik compilieren starten}{MANUAL_COMPILE_START_LOGIC}
 \section{Logik compilieren, starten\dots}\label{sec:MS_LOGIC}
 
 Das Menü "`Logic"' beinhaltet Befehle zum übersetzen, Aktivieren 
@@ -882,6 +904,7 @@ und Anhalten eines Logikprogramms sowie eine All"=Note"=Off"=Funktion.
 \item[\reflink{sec:MI_PANIC}{Panic}] Alle klingenden Töne ausschalten
 \end{description}
 
+\helpsection{Logik Uebersetzen}{MANUAL_LOGIC_COMPILE}
 \subsection{Programm übersetzen}
 \label{sec:MI_COMPILE}
 
@@ -894,7 +917,7 @@ statistischen Daten zum \reflink{sec:DV_LOGIKPROGRAMM}{Logikprogramm}
 angezeigt. Wenn der Compiler Fehler im Programmtext findet, so zeigt
 er die an, ansonsten meldet er die fehlerfreie Übersetzung.
 
-
+\helpsection{Logik Ausfuehren}{MANUAL_LOGIC_EXECUTE}
 \subsection{Programm ausführen}
 \label{sec:MI_ACTIVATE}
 
@@ -910,6 +933,7 @@ Logiken arbeiten, d.\,h. auf dem angeschlossenen Keyboard spielen,
 Arbeitsmodus können Sie durch das \reflink{sec:MI_STOP}{Stoppen} der
 Logiken wieder beenden.
 
+\helpsection{Batchmodus}{MANUAL_LOGIC_BATCH_MODE}
 \subsection{Batch"=Modus}
 
 
@@ -943,7 +967,7 @@ wenn man ein befriedigendes Ergebnis erreicht hat, die Eingabedateien
 im Batch Modus in Ausgabedateien zu übernehmen (zum weiterverarbeiten).
 
 
-
+\helpsection{Programm stoppen}{MANUAL_LOGIC_STOP}
 \subsection{Programm stoppen}\label{sec:MI_STOP}
 
 
@@ -954,7 +978,7 @@ ist notwendig, wenn Sie eine andere Logik aktivieren oder sich
 eine \reflink{sec:DV_MIDIFILE}{MIDI"=Datei} \textit{unmutiert} anhören wollen.
 
 
-
+\helpsection{Panik}{MANUAL_PANIC}
 \subsection{Panik"=Funktion}\label{sec:MI_PANIC}
 
 
@@ -966,7 +990,7 @@ Töne ``hängen geblieben'' sind.
 
 
 
-
+\helpsection{Routen laden und speichern}{MANUAL_LOAD_SAVE_ROUTES}
 \section{Routen laden und speichern}\label{sec:MS_ROUTES}
 Im Menü "`Routes"' können sie Routen"=Konfigurationen laden 
 und speichern.
@@ -978,7 +1002,7 @@ und speichern.
   Dateinnamen abspeichern
 \end{description}
 
-
+\helpsection{Route laden}{MANUAL_ROUTE_LOAD}
 \subsection{Routen laden}\label{sec:MI_ROUTELOAD}
 
 
@@ -989,7 +1013,7 @@ gewünschte Datei auswählen; klicken Sie danach auf "`OK"' oder
 brechen Sie den Vorgang ab.
 
 
-
+\helpsection{Route speichern}{MANUAL_ROUTE_SAVE}
 \subsection{Routen abspeichern}\label{sec:MI_ROUTESAVE}
 
 
@@ -1000,7 +1024,7 @@ Wenn noch kein Name angegeben wurde, werden Sie zuvor zur Angabe
 eines Namens für die Datei aufgefordert.
 
 
-
+\helpsection{Route speichern unter}{MANUAL_ROUTE_SAVE_AS}
 \subsection{Routen abspeichern unter \dots}\label{sec:MI_ROUTESAVEAS}
 
 
@@ -1019,7 +1043,7 @@ Wenn Sie einen vorhandenen Dateinamen verwenden, fragt \mutabor{},
 ob die Datei überschrieben werden soll. 
 
 
-
+\helpsection{Dialogelemente anzeigen}{MANUAL_SHOW_DIALOG_ELEMENTS}
 \section{Anzeigen verschiedener Dialogelemente}\label{sec:MS_VIEW}
 Im Menü "`View"' können sie auswählen, welche Fenster und 
 Dialogelemente angezeigt werden sollen.
@@ -1046,6 +1070,7 @@ Dialogelemente angezeigt werden sollen.
   \reflink{sec:DV_CURRENTBOX}{Aktuelle Box} auswählen
 \end{description}
 
+\helpsection{Werkzeugleiste ein-ausblenden}{MANUAL_SWITCH_TOOLBAR}
 \subsection{Werkzeugleiste ein"=/""ausblenden}
 \label{sec:MI_TOOLBAR}
 
@@ -1054,6 +1079,7 @@ Mit diesem Menüeintrag können Sie auswählen, ob die
 nicht.
 
 
+\helpsection{Statusleiste ein-ausblenden}{MANUAL_SWITCH_STATUSBAR}
 \subsection{Statusleiste ein"=/""ausblenden}
 \label{sec:MI_STATUS}
 
@@ -1061,7 +1087,7 @@ Mit diesem Menüeintrag können Sie auswählen, ob die \reflink{sec:DE_STATUS}{S
 angezeigt werden soll oder nicht.
 
 
-
+\helpsection{Routenfenster anzeigen}{MANUAL_SHOW_ROUTES}
 \subsection{Routen"=Fenster anzeigen}\label{sec:MI_ROUTES}
 
 
@@ -1069,6 +1095,7 @@ Dieser Befehl zeigt das \reflink{sec:DE_ROUTES}{Routen"=Fenster} an bzw.
 zeigt es als oberstes Fenster.
 
 
+\helpsection{Aktuelle Tasten ein-ausbelenden}{MANUAL_SHOW_CURRENT_KEYS}
 \subsection{"`Aktuelle"=Tasten"'"=Fenster ein"=/""ausblenden}\label{sec:MI_KEY}
 Mit diesem Menüeintrag können Sie auswählen, ob das
 \reflink{sec:DE_KEY}{Aktuelle"=Tasten"=Fenster} der gerade
@@ -1078,8 +1105,8 @@ aktiviert ist handelt es sich dabei allgemeine
 \reflink{sec:DE_KEY}{Aktuelle"=Tasten"=Fenster} für alle Boxen
 
 
-\subsection{Tonsystem"=Fenster 
-ein"=/""ausblenden}
+\helpsection{Tonsystemfenster ein-ausblenden}{MANUAL_SHOW_TONE_SYSTEM}
+\subsection{Tonsystem"=Fenster ein"=/""ausblenden}
 \label{sec:MI_TS}
 Mit diesem Menüeintrag können Sie auswählen, ob das
 \reflink{sec:DE_TS}{Tonsystem"=Fenster} der gerade
@@ -1089,6 +1116,7 @@ aktiviert ist handelt es sich dabei allgemeine
 \reflink{sec:DE_TS}{Tonsystem"=Fenster} für alle Boxen.
 
 
+\helpsection{Aktionsfenster ein-ausblenden}{MANUAL_SHOW_ACTION_WINDOW}
 \subsection{Aktionen"=Fenster ein"=/""ausblenden}
 \label{sec:MI_ACTION}
 
@@ -1104,7 +1132,7 @@ alle Boxen, wenn der \reflink{sec:DV_CAW}{"`Gemeinsames Aktionen"=Fenster"'"=Mod
 aktiviert ist handelt es sich um das gemeinsame \reflink{sec:DE_ACTION}{Aktionen"=Fenster} 
 für alle Boxen.
 
-
+\helpsection{Ein-Fenster-Modus aktivieren}{MANUAL_ONE_WINDOW_MODE}
 \subsection{"`Ein"=Fenster"'"=Modus aktivieren/""deaktivieren}
 \label{sec:MI_OWM}
 Mit diesem Menüeintrag können den \reflink{sec:DV_OWM}{"`Ein"=Fenster"'"=Modus}
@@ -1127,8 +1155,8 @@ Boxen parallel anzeigen lassen und deren Inhalte vergleichend
 verfolgen.
 
 
-\subsection{"`Gemeinsames Aktionen"=Fenster"'"=Modus
-  aktivieren/""deaktivieren}
+\helpsection{Gemeinsame Aktionen}{MANUAL_COMMON_ACTION_WINDOW}
+\subsection{"`Gemeinsames Aktionen"=Fenster"'"=Modus aktivieren/""deaktivieren}
 \label{sec:MI_CAW}
 Mit diesem Menüeintrag können den \reflink{sec:DV_CAW}{"`Gemeinsames
   Aktionen"=Fenster"'"=Modus} ein- und ausschalten.
@@ -1148,7 +1176,7 @@ auch nur ein Aktionen"=Fenster angezeigt, dieses zeigt aber auch nur
 die Aktionen der gerade \reflink{sec:DV_CURRENTBOX}{aktuellen Box}.
 
 
-
+\helpsection{Box auswaehlen}{MANUAL_SELECT_BOX}
 \subsection{Aktuelle Box auswählen}
 \label{sec:MI_SELECTBOX}
 
@@ -1159,6 +1187,7 @@ Sie dazu auf die entsprechenden Eintrag. Die gerade aktuelle Box ist
 mit einem Haken markiert.
 
 
+\helpsection{Sequenzer bedienen}{MANUAL_SEQUENCER}
 \section{Sequenzer bedienen}\label{sec:MS_SEQUENCER}
 Das Menü "`Sequencer"' beinhaltet Befehle zum synchronen Starten 
 und Stoppen der Eingabegeräte im \reflink{sec:DE_ROUTES}{Routen"=Fenster}. 
@@ -1171,6 +1200,7 @@ neben den Dateisymbolen im \reflink{sec:DE_ROUTES}{Routen"=Fenster} .
 \item[\reflink{sec:MI_INDEVPAUSE}{Pause}] Abspielen anhalten (Pause)
 \end{description}
 
+\helpsection{Sequenzer starten}{MANUAL_START_SEQUENCER}
 \subsection{Sequenzer starten}
 \label{sec:MI_INDEVPLAY}
 
@@ -1189,7 +1219,7 @@ Datei"=Eingabegerät kleinen Knöpfe, mit denen das Abspielen gesteuert
 werden kann.
 
 
-
+\helpsection{Sequenzer stoppen}{MANUAL_STOP_SEQUENCER}
 \subsection{Sequenzer abbrechen}\label{sec:MI_INDEVSTOP}
 
 
@@ -1206,6 +1236,7 @@ Datei"=Eingabegerät kleinen Knöpfe, mit denen das Abspielen gesteuert
 werden kann.
 
 
+\helpsection{Sequenzer pausieren}{MANUAL_PAUSE_SEQUENCER}
 \subsection{Sequenzer vorübergehend anhalten}
 \label{sec:MI_INDEVPAUSE}
 
@@ -1225,7 +1256,8 @@ Alternativ dazu befinden sich im
 Datei"=Eingabegerät kleinen Knöpfe, mit denen das Abspielen gesteuert
 werden kann.
 
-
+\iffalse  % gibts nicht mehr
+\helpsection{Fensterfunktionen}{MANUAL_WINDOW_FUNCTIONS}
 \section{Fensterfunktionen}\label{sec:MS_WINDOW}
 Das Menü "`Windows"' enthält Befehle um die Fenster übereinander 
 oder nebeneinander darzustellen, die ionisierten Fenster anzuordnen 
@@ -1238,6 +1270,7 @@ oder alle Fenster zu schließen.
 \item[\reflink{sec:MI_CLOSEALL}{Clear all}] Alle Fenster schließen
 \end{description}
 
+\helpsection{
 \subsection{Fenster überlappend}
 \label{sec:MI_CASCADE}
 
@@ -1273,9 +1306,9 @@ Dieser Befehl schließt alle momentan geöffneten Fenster.
 Dabei werden Sie gegebenenfalls gefragt, ob die Inhalte der Fenster 
 gespeichert werden sollen. Wenn gerade ein \reflink{sec:DV_LOGIKPROGRAMM}{Logikprogramm} 
 aktiviert ist, so wird dieses gestoppt.
+\fi
 
-
-
+\helpsection{Hilfe}{MANUAL_HELP}
 \section{Hilfefunktionen}\label{sec:MS_HELP}
 Das Menü "`Help"' enthält Befehle, mit denen Sie die Hilfe zu
 \mutabor{} bzw. die Hilfe zur Benutzung dieser Hilfe und ein
@@ -1291,11 +1324,13 @@ können.
 \item[\reflink{sec:MI_ABOUT}{About}] über \mutabor{}
 \end{description}
 
+\helpsection{Hilfeinhalt}{MANUAL_HELP_CONTENTS}
 \subsection{Inhaltsübersicht der Hilfe}
 \label{sec:MI_HELPINDEX}
 
 Dieser Befehl öffnet die Hilfe und zeigt deren Übersicht.
 
+\helpsection{Sprachhandbuch}{MANUAL_LANGUAGE_HANDBOOK}
 \subsection{Handbuch zur Mutabor"=Programmiersprache}
 \label{sec:MI_HELPHANDBOOK}
 
@@ -1306,6 +1341,7 @@ Mutabor"=Programmiersprache.
 Die Hilfe die Sie gerade benutze enthält eine kurze, aber vollständige
 \reflink{sec:SX_BASICS}{Referenz} der Sprache.
 
+\helpsection{Hilfe verwenden}{MANUAL_USE_HELP}
 \subsection{Verwendung der Hilfe}\label{sec:MI_HELPONHELP}
 
 
@@ -1314,13 +1350,15 @@ Dieser Befehl öffnet die Hilfe mit einer Einführung, wie
 man die Hilfe verwendet.
 
 
-\subsection{Informationen über \texorpdfstring{\mutabor}{Mutabor}}
+\helpsection{Ueberfenster}{MANUAL_HELP_ABOUT}
+\subsection{Informationen über \mutabor}
 \label{sec:MI_ABOUT}
 
 Dieser Befehl zeigt das \reflink{sec:DE_ABOUT}{About"=Fenster} mit Informationen 
 über \mutabor{}.
 
-\chapter{Die Unterfenster von \texorpdfstring{\mutabor}{Mutabor}}\label{sec:DE_SUBWINDOW}
+\helpsection{Unterfenster}{MANUAL_SUBWINDOWS}
+\chapter{Die Unterfenster von \mutabor}\label{sec:DE_SUBWINDOW}
 
 Die Unterfenster werden innerhalb des
 \reflink{sec:DE_MAINWINDOW}{Hauptfensters} von \mutabor{}
@@ -1339,7 +1377,7 @@ werden sollen. Dazu gehört insbesondere das
 \reflink{sec:DE_EDIT}{Editor"=Fenster}.
 
 
-
+\helpsection{Editorfenster}{MANUAL_EDIT_WINDOW}
 \section{Editor"=Fenster}\label{sec:DE_EDIT}
 In den Editorfenstern können sie den Programmtext in der
 \tsreflink{\mutabor{}"=Sprache}{SX_BASICS} für die Logiken eingeben.
@@ -1352,7 +1390,7 @@ Quelltexte auch \reflink{sec:MI_OPEN}{laden},
 \reflink{sec:MI_ACTIVATE}{aktivieren}.
 
 
-
+\helpsection{Routenfenster}{MANUAL_ROUTE_WINDOW}
 \section{Routen"=Fenster}\label{sec:DE_ROUTES}
 \label{sec:de_routes}
 
@@ -1379,6 +1417,7 @@ Routenfenster bestimmten Funktionen zugeordnet. Diese Funktionen
 \ref{sec:ausgabegerate}{Ausgabegeräte} sollen hier noch kurz
 vorgestellt werden.
 
+\helpsection{Route Eingabegeraete}{MANUAL_ROUTE_INPUT_DEVICE}
 \subsection{Eingabegeräte}\label{sec:eingabegerate}
 
 Eingabegeräte entsprechen den Quellen, die Daten für \mutabor{} liefern 
@@ -1399,6 +1438,7 @@ dem letzten, je nach dem, wo das neue Gerät eingefügt werden
 soll.
 
 
+\helpsection{Route Eingabefilter}{MANUAL_ROUTE_INPUT_FILTER}
 \subsection{Eingabefilter}\label{sec:eingabefilter}
 
 Eingabefilter ermöglichen es, die Datenströme nach verschiedenen Kriterien 
@@ -1421,6 +1461,7 @@ mit der Maus im Routen"=Fenster in der Eingabefilterspalte zwischen
 zwei Filtern oder über dem ersten oder unter dem letzten, je 
 nach dem, wo das neue Filter eingefügt werden soll.
 
+\helpsection{Route Boxen}{MANUAL_ROUTE_BOXES}
 \subsection{Boxen}\label{sec:boxen}
 
 
@@ -1446,6 +1487,7 @@ zur \reflink{sec:DV_CURRENTBOX}{aktuellen Box} machen indem Sie auf der
 entsprechenden Box doppelklicken. (diese reagiert dann z.\,B. auf 
 die Buchstabentasten der Computer"=Tastatur).
 
+\helpsection{Route Ausgabefilter}{MANUAL_ROUTE_OUTPUT_FILTER}
 \subsection{Ausgabefilter}\label{sec:ausgabefilter}
 
 Ausgabefilter legen fest, welche MIDI"=Kanäle die Route zur Ausgabe der 
@@ -1466,6 +1508,7 @@ Kanäle und sorgt dafür, dass möglichst alle Töne erklingen und auch in
 der gewünschten Klangfarbe. Stellen Sie also im Zweifelsfalle immer
 0--15 ein.
 
+\helpsection{Route Ausgabegeraete}{MANUAL_ROUTE_OUTPUT_DEVICES}
 \subsection{Ausgabegeräte}\label{sec:ausgabegerate}
 
 Ausgabegeräte entsprechen den realen Ausgabegeräten und Tonerzeugern, die Sie
@@ -1494,6 +1537,7 @@ Dies ist im wesentlichen in zwei verschiedenen Szenarios sinnvoll:
 \end{itemize}
 
 
+\helpsection{Logikfenster}{MANUAL_LOGIC_WINDOW}
 \section{Logiken"=Fenster}\label{sec:DE_LOGIC}
 In diesem Fenster sehen Sie für eine Box die Logiken und Umstimmungen,
 die sie mit der Computertastatur auslösen können. Logiken sind als
@@ -1525,6 +1569,7 @@ einstellen können, welche \reflink{sec:DV_BOX}{Box} als
 \reflink{sec:DV_CURRENTBOX}{aktuelle Box} fungieren soll und welche
 \reflink{sec:DV_PROTOKOLL}{Protokollfenster} angezeigt werden sollen.
 
+\helpsection{Fenster Aktuelle Tasten}{MANUAL_CURRENT_KEYS_WINDOW}
 \section{Aktuelle"=Tasten"=Fenster}\label{sec:DE_KEY}
 In diesem Fenster wird angezeigt, welche Töne gerade in den
 Datenströmen der entsprechenden Box anliegen, es handelt sich somit um
@@ -1558,7 +1603,7 @@ nur ein Aktuelle"=Tasten"=Fenster, das die liegenden Töne der
 jeweils \reflink{sec:DV_CURRENTBOX}{aktuellen Box} anzeigt.
 
 
-
+\helpsection{Tonsystemfenster}{MANUAL_WINDOW_TONE_SYSTEM}
 \section{Tonsystem"=Fenster}\label{sec:DE_TS}
 In diesem Fenster wird angezeigt, mit welchem Tonsystem die
 entsprechende Box gerade arbeitet, d.\,h. in welchem Stadium sich die
@@ -1591,7 +1636,7 @@ jeweils \reflink{sec:DV_CURRENTBOX}{aktuellen Box} anzeigt.
 
 
 
-
+\helpsection{Aktionsfenster}{MANUAL_ACTIONS_WINDOW}
 \section{Aktionen"=Fenster}\label{sec:DE_ACTION}
 In diesem Fenster wird angezeigt, welche Aktionen die zugeordnete 
 Box seit \reflink{sec:MI_ACTIVATE}{Start des Logikprogramms} durchgeführt 
@@ -1628,7 +1673,7 @@ einstellen können, welche \reflink{sec:DV_BOX}{Box} als
 
 
 
-
+\helpsection{Compilerfenster}{MANUAL_WINDOW_COMPILER}
 \section{Compiler"=Fenster}\label{sec:DE_COMP}
 Dieses Fenster ist nur während und nach der Programmübersetzung 
 zu sehen.
@@ -1640,6 +1685,7 @@ angezeigt.
 Mit Hilfe des breiten Knopfes im unteren Fensterbereich lässt 
 sich das Fenster schließen.
 
+\helpsection{Hilfefenster}{MANUAL_HELP_WINDOW}
 \chapter{Das Hilfefenster}\label{sec:HELPWINDOW}
 
 Die verschiedenen Hilfe-Menüpunkte und Hilfe-Knöpfe öffnen das
@@ -1662,6 +1708,7 @@ Beispiel: \reflink{sec:HELPWINDOW}{Verknüpfung auf diese Seite}.
 
 Die folgenden Abschnitte beschreiben die einzelnen Bereiche des Hilfefensters:
 
+\helpsection{Hilfe-Symbolleiste}{MANUAL_HELP_TOOLBAR}
 \section{Die Symbolleiste}
 \label{sec:die-symbolleiste}
 
@@ -1684,6 +1731,7 @@ Am oberen Fensterrand befindet sich die Symbolleiste. Die einzelnen Symbole kön
 \item[\mutimage{{htmoptns}}{{htmoptns}}~Einstellungen-Dialog]~Hier können Sie die Einstellungen (Schrift usw.) von Ihrem Hilfefenster beeinflussen. 
 \end{description}
 
+\helpsection{Hilfe-Navigationsfenster}{MANUAL_HELP_NAVIGATION}
 \section{Das Navigationsfenster}
 \label{sec:der-suchbaum}
 
@@ -1699,13 +1747,14 @@ Das Navigationsfenster besitzt drei Reiter:
 Klicken Sie auf den gewünschten Reiter, um sich die entsprechenden
 Bedienelemente anzeigen zu lassen!
 
+\helpsection{Dokumentbaum}{MANUAL_DOCUMENT_TREE}
 \subsection{Der Dokumentbaum}
 \mutimage{{Hilfeinhaltsbaum}}{{Hilfeinhaltsbaum}}
 
 Der Dokumentbaum dient dafür, einzelne Kapitel schnell anspringen zu
 können. Dabei werden die Unterkapiteln den jeweils übergeordneten
 zugeordnet. Ein Buch (\mutimage{{htmbook}}{{htmbook}}) oder Ordner
-(\mutimage{{htmfoldr}}) kann aufgeklappt werden, um die darin
+(\mutimage{{htmfoldr}}{{htmfoldr}}) kann aufgeklappt werden, um die darin
 enthaltenen Abschnitte angzeigt zu bekommen. Dazu genügt es mit der
 linken Maustaste auf die entsprechende Zeile zu klicken. Einzelne
 Seiten werden durch ein Blatt Papier
@@ -1720,12 +1769,14 @@ jederzeit in der Auswahl links neben dem Knopf aktivieren. Ein Klick
 auf den Knopf mit dem kleinen „x“ (\mutimage{{delbookm}}{{delbookm}})
 entfernt das Lesezeichen wieder.
 
+\helpsection{Hilfeindex}{MANUAL_HELP_INDEX}
 \subsection{Der Hilfeindex}
 \mutimage{{Hilfeindex}}{{Hilfeindex}}
 
 Die Hilfe enthält ähnlich einem guten Handbuch ein
 Stichwortverzeichnis bzw. Index. Wenn Sie ein Wort suchen ist der Index zunächst einmal die richtige Anlaufstelle. Geben Sie das Wort oben in das Eingabefeld ein und drücken Sie auf „Suchen“! Es erscheint gleich darauf eine Auswahl von Stichworten, die zu Ihrer Suchanfrage passen. Alternativ können sie sich auch alle Stichworte mit dem Knopf „Alles zeigen“ anzeigen lassen.
 
+\helpsection{Suchformular}{MANUAL_SEARCH_FORM}
 \subsection{Das Suchformular}
 \mutimage{{Hilfesuchformular}}{{Hilfesuchformular}}
 
@@ -1741,6 +1792,7 @@ Textstellen angezeigt. Diese können Sie anklicken und damit im
 nebenstehenden \reflink{sec:das-textfenster}{Textfenster} anzeigen
 lassen.
 
+\helpsection{Hile-Textfenster}{MANUAL_HELP_TEXT}
 \section{Das Textfenster}
 \label{sec:das-textfenster}
 
@@ -1748,7 +1800,7 @@ lassen.
 
 Im Textfenster wird der eigentliche Hifetext angezeigt. Die wesentliche Bedienung wurde schon im Abschnitt \nameref{sec:HELPWINDOW} beschrieben und soll hier nicht wiederholt werden.
 
-
+\helpsection{Dialoge}{MANUAL_DIALOGS}
 \chapter{Dialoge}\label{sec:DE_DIALOGS}
 
 In diesem Kapitel sollen die Dialoge von \mutabor{} kurz vorgestellt
@@ -1765,12 +1817,14 @@ anderen Fenster wieder freigegeben.
 Dialoge dienen dazu, um Eingaben zu machen und Informationen
 anzuzeigen, die Sie bestätigen sollen.  
 
-\section{Eingabegerät"=Dialog}
+\helpsection{Eingabegeraetedialog}{HELP_INPUT_DEVICE_DIALOG}
+\section{Eingabegeräte"=Dialog}
 \label{sec:DE_R0}
 Dieser Dialog lässt sich für die Eingabegeräte vom \reflink{sec:DE_ROUTES}{Routen"=Fenster} 
 aus aufrufen, indem Sie auf einem Eingabegerät mit der Maus 
 Doppelklicken. In ihm wird das Gerät bzw. die Datei spezifiziert.
 
+\helpsection{Eingabegeraetetyp}{MANUAL_INPUT_DEVICE_TYPE}
 \subsection{Type (Typ des Eingabegerätes)}
 
 
@@ -1805,12 +1859,14 @@ beenden ohne gemachte Änderungen zu übernehmen.  Mit "`Löschen"'
 können Sie das Gerät samt der zugeordneten Routen aus der
 Konfiguration entfernen.
 
+\helpsection{Eingabefilterdialog}{MANUAL_INPUT_FILTER_DIALOG}
 \section{Eingabefilter"=Dialog}\label{sec:DE_R1}
 Dieser Dialog lässt sich für die Routen vom
 \reflink{sec:DE_ROUTES}{Routen"=Fenster} aus aufrufen, indem Sie auf
 einem Eingabefilter mit der Maus Doppelklicken. In ihm werden die
 Einstellungen des Filters spezifiziert.
 
+\helpsection{Eingabefiltertyp}{MANUAL_INPUT_FILTER_TYPE}
 \subsection{Type (Type des Filters)}
 
 \begin{description}
@@ -1864,7 +1920,8 @@ Einstellungen des Filters spezifiziert.
 \end{description}
 
 
-\subsection{Range:}
+\helpsection{Eingabefilterbereich}{MANUAL_INPUT_FILTER_RANGE}
+\subsection{Bereich:}
 
 Bestimmt einen Wertebereich, der je nach Typ des Filters interpretiert
 wird. Die eingestellten Randwerte zählen mit zum Wertebereich.
@@ -1885,6 +1942,7 @@ Auf diese Weise können Sie de Datenstrom im mehrere Routen
 aufspalten. Die Vielzahl der Typen der Eingabefilter erlaubt 
 ihnen einen flexiblen Umgang mit den Daten.
 
+\helpsection{Eingabefilter Hinweis}{MANUAL_INPUT_FILTER_ADVISE}
 \subsection{Tipp/""Hinweis:}
 Was tun, wenn z.\,B. die Daten der MIDI"=Kanäle 1 und 3 in eine 
 spezielle Box weitergeleitet werden sollen?
@@ -1895,12 +1953,14 @@ ist. Legen Sie in diesem Fall \emph{zwei} Routen mit Kanal"=Filtern
 an, geben Sie bei Range 1--1 und 3--3 an und leiten Sie beide 
 Routen in dieselbe gewünschte Box. 
 
+\helpsection{Boxendialog}{MANUAL_BOX_DIALOG}
 \section{Boxen"=Dialog}\label{sec:DE_R2}
 
 Dieser Dialog lässt sich für die Routen vom \reflink{sec:DE_ROUTES}{Routen"=Fenster} 
 aus aufrufen, indem Sie auf einer Box mit der Maus Doppelklicken. 
 In ihm werden die Einstellungen dieser Box spezifiziert.
 
+\helpsection{Boxtyp}{MANUAL_BOX_TYPE}
 \subsection{Box (Art der Box)} Wählen Sie hier dir gewünschte Art der
 Box aus.
 
@@ -1921,7 +1981,7 @@ Box aus.
   wird dann an dieser Stelle auch keine Box dargestellt.
 \end{description}
 
-
+\helpsection{Boxmodus}{MANUAL_BOX_MODE}
 \subsection{Mode (Modus der Box)}
 \begin{description}
 \item[active (Aktiver Modus, Steuer"=Modus)] Beim aktivem Modus werden
@@ -1948,6 +2008,7 @@ stets dieselbe Box gemeint. Es ist dann egal, auf welcher Box Sie
 doppelklicken um diesen Dialog zu öffnen, er enthält stets die
 gleichen Daten.
 
+\helpsection{Ausgabefilterdialog}{MANUAL_OUTPUT_FILTER_DIALOG}
 \section{Ausgabefilter"=Dialog}\label{sec:DE_R3}
 Dieser Dialog lässt sich für die Routen vom \reflink{sec:DE_ROUTES}{Routen"=Fenster} 
 aus aufrufen, indem Sie auf einem Ausgabefilter mit der Maus 
@@ -1955,6 +2016,7 @@ Doppelklicken. In ihm werden die Einstellungen des Filters spezifiziert.
 Die Ausgabefilter gibt es nur, wenn das Ausgabegerät ein MIDI"=Gerät 
 oder eine MIDI"=Datei ist.
 
+\helpsection{Ausgabefilter-MIDI-Kanaele}{MANUAL_OUTPUT_FILTER_MIDI_CHANNELS}
 \subsection{Channel (MIDI"=Kanäle)}
 Geben Sie an, welche MIDI"=Kanäle auf dem Ausgabegerät verwendet 
 werden dürfen. Achten Sie darauf, dass bei \mutabor{} die 
@@ -1979,7 +2041,7 @@ die aktuellen Klangfarben berücksichtigt.
 Mit "`OK"' können Sie ihre Eingaben bestätigen oder den Dialog 
 mit Abbruch beenden ohne gemachte Änderungen zu übernehmen.
 
-
+\helpsection{Ausgabegeraetedialog}{MANUAL_OUTPUT_DEVICE_DIALOG}
 \section{Ausgabegerät"=Dialog}
 \label{sec:DE_R4}
 
@@ -1987,6 +2049,7 @@ Dieser Dialog lässt sich für die Ausgabegeräte vom \reflink{sec:DE_ROUTES}{Ro
 aus aufrufen, indem Sie auf einem Ausgabegerät mit der Maus 
 Doppelklicken. In ihm wird das Gerät bzw. die Datei spezifiziert.
 
+\helpsection{Ausgabetyp}{MANUAL_OUTPUT_DEVICE_TYPE}
 \subsection{Type (Typ des Ausgabegerätes)}
 
 Hier geben Sie den Grundtyp des Gerätes an. Es gibt drei mögliche 
@@ -2033,16 +2096,18 @@ ist trotzdem stets dasselbe Gerät gemeint. Es ist dann egal,
 auf welches Gerät Sie klicken, es öffnet sich stets der selbe 
 Dialog.
 
-\section{About"=Fenster}\label{sec:DE_ABOUT}
+\helpsection{Ueber-Fenster}{MANUAL_ABOUT_WINDOW}
+\section{Über…"=Fenster}\label{sec:DE_ABOUT}
 
 Dieses Fenster zeigt lediglich, das Sie tatsächlich mit \mutabor{} 
 arbeiten und enthält kurze Informationen zum Programm und zur 
 Version.
 
+\helpsection{Eintstellungsdialog}{MANUAL_SETTINGS_DIALOG}
 \section{Der Einstellungsdialog}\label{sec:DE_SETUP}
 Hier können Sie einige globale Parameter von \mutabor{} einstellen.
 
-
+\helpsection{Einstellungen Tonsystem}{MANUAL_SETTINGS_TONE_SYSTEM}
 \subsection{Tonsytem}
 Ansicht der Tonsysteme im
 \reflink{sec:DE_KEY}{Aktuelle"=Tasten"=Fenster} und
@@ -2056,6 +2121,7 @@ Ansicht der Tonsysteme im
   angegeben.
 \end{description}
 
+\helpsection{Einstellungen Fenster}{MANUAL_SETTINGS_WINDOWS}
 \subsection{Fenster}
 \begin{description}
 \item[Speichere Editor-Dateien:] ist diese Option
@@ -2079,11 +2145,11 @@ mit Abbruch beenden ohne gemachte Änderungen zu übernehmen.
 
 
 
-
-\part{Grundlagen der 
-\texorpdfstring{\mutabor{}}{Mutabor}sprache}
+\helpsection{Sprachgrundlagen}{MANUAL_LANGUAGE_BASICS}
+\part{Grundlagen der \mutabor sprache}
 \label{sec:SX_BASICS}
 
+\helpsection{Grundlegendes}{MANUAL_BASICS}
 \chapter{Grundlegendes}
 
 \mutabor{} arbeitet mit
@@ -2141,6 +2207,7 @@ Weiterhin gibt es zu beachten:
 \reflink{sec:SX_COMMANDS}{Index der Befehle}
 
 
+\helpsection{Befehlsindex}{MANUAL_COMMAND_INDEX}
 \chapter{Befehlsindex der Mutaborsprache}\label{sec:SX_COMMANDS}
 
 Die \mutabor{}"=Programmiersprache kennt folgende Befehle:
@@ -2161,6 +2228,7 @@ Die \mutabor{}"=Programmiersprache kennt folgende Befehle:
 \item \reflink{sec:SX_ELSE}{Ansonsten}
 \end{itemize}
 
+\helpsection{Intervall}{MANUAL_INTERVAL}
 \section{Intervall}
 \label{sec:SX_INTERVAL}
 
@@ -2201,7 +2269,7 @@ von Intervallen die entsprechenden Frequenzverhältnisse multipliziert
 werden; die Multiplikation eines Intervalls mit einer Zahl ergibt die
 entsprechende Potenz des ursprünglichen Frequenzverhältnisses.
 
-
+\helpsection{Wurzel}{MANUAL_ROOT}
 \subsection{ Wurzel}
 \label{sec:SX_ROOT}
 
@@ -2233,7 +2301,7 @@ erzielen kann. Wichtig ist die Unterscheidung zwischen den Schreibweisen
 ein \reflink{sec:SX_INTERVAL}{Intervall}, letzteres steht einfach für 
 den Dezimalbruch 0,0833333.
 
-
+\helpsection{Ton}{MANUAL_TONE}
 \section{Ton}
 \label{sec:SX_TONE}
 \minisec{Syntax:}
@@ -2269,6 +2337,7 @@ eines Intervalls zu einem Ton der Multiplikation des Grundfrequenz
 mit dem zum Intervall gehörigen Frequenzverhältnis.
 
 
+\helpsection{Tonsystem}{MANUAL_TONE_SYSTEM}
 \section{Tonsystem}
 \label{sec:SX_TONESYSTEM}
 
@@ -2314,6 +2383,7 @@ Statt eines TonNamen kann in einer Tonsystem"=Definition auch eine
 Leerstelle stehen -- dann bleiben die entsprechenden Tasten des
 Keyboards stumm.
 
+\helpsection{Umstimmung}{MANUAL_RETUNING}
 \section{Umstimmung}
 \label{sec:SX_RETUNING}
 \minisec{Syntax:}
@@ -2369,6 +2439,7 @@ in einer der folgenden Weisen:
 \end{itemize}
 
 
+\helpsection{Harmonie}{MANUAL_HARMONY}
 \section{Harmonie}
 \label{sec:SX_PATTERN}
 
@@ -2413,7 +2484,7 @@ Tonsystem Fis"=DUR ebenfalls erkannt werden.
 Dies ist insbesondere für automatische Umstimmungen wichtig. 
 
 
-
+\helpsection{Logik}{MANUAL_LOGIC}
 \section{Logik}
 \label{sec:SX_LOGIC}
 
@@ -2464,6 +2535,7 @@ die Anzahl der Töne der Fundamentaltonleiter an, um die die Harmonie
 beim Abgleichen nach oben verschoben wurde.
 
 
+\helpsection{Form}{MANUAL_FORM}
 \subsection{Form}
 \label{sec:SX_SHIFTED}
 
@@ -2509,6 +2581,7 @@ die die angegebene \keyword{HARMONIE} verschoben werden muss, um zur
 Beispiel: unter \reflink{sec:SX_SHIFTED}{Form}
 
 
+\helpsection{Taste}{MANUAL_KEY}
 \subsection{Taste}
 \label{sec:SX_KEY}
 
@@ -2527,6 +2600,7 @@ Beispiel: unter \reflink{sec:SX_SHIFTED}{Form}
 \reflink{sec:SX_LOGIC}{Logiken} und Aktionen einen Buchstaben auf der
 Computertastatur.
 
+\helpsection{MIDIin}{MANUAL_MIDI_IN}
 \subsection{MIDIin}
 \label{sec:SX_MIDIIN}
 
@@ -2545,7 +2619,7 @@ Computertastatur.
 \keyword{MIDIIN} definiert in \reflink{sec:SX_LOGIC}{Logiken} einen Auslöser, der 
 auf hereinkommende MIDI"=Daten reagiert.
 
-
+\helpsection{MIDIout}{MANUAL_MIDI_OUT}
 \subsection{MIDIout}
 \label{sec:SX_MIDIOUT}
 
@@ -2556,14 +2630,11 @@ auf hereinkommende MIDI"=Daten reagiert.
     MIDIOUT(Zahl, Zahl, ... , Zahl)
 \end{verbatim}
 
-
-
 \minisec{Beschreibung:}
-
-
 \keyword{MIDIOUT} legt eine Aktion fest, die MIDI"=Daten ausgibt.
 
 
+\helpsection{Ansonsten}{MANUAL_ELSE}
 \subsection{Ansonsten}
 \label{sec:SX_ELSE}
 
@@ -2577,6 +2648,7 @@ Fälle eintritt.
 Beispiel: siehe \reflink{sec:EX_NATSEVEN}{Naturseptime}
 
 
+\helpsection{Beispiele}{MANUAL_EXAMPLES}
 \chapter{Beispiele}
 \label{sec:SX_EXAMPLES}
 Hier einige Beispielprogramme mit Erläuterungen zur Verwendung 
@@ -2592,7 +2664,7 @@ der \mutabor{}"=Befehle:
 
 
 
-
+\helpsection{Tonnetz}{MANUAL_TONNETZ}
 \section{Tonnetz}
 \label{sec:EX_TONENET}
 Das folgende Programm realisiert bereits eine recht komplizierte 
@@ -2653,6 +2725,7 @@ LOGIK
 \end{verbatim}
 
 
+\helpsection{Naturseptime}{MANUAL_JUST_SEVENTH}
 \section{Naturseptime}
 \label{sec:EX_NATSEVEN}
 
@@ -2690,7 +2763,8 @@ UMSTIMMUNG
     Nat7 = @ [@,@,@,@,@,f7,@,@,@,@,@,@]
 \end{verbatim}
 
-\section{Gleichschwebende Stimmungen}
+\helpsection{Gleichstufige Stimmungen}{MANUAL_EQUAL_TEMPERAMENTS}
+\section{Gleichstufige Stimmungen}
 \label{sec:EX_EQUAL}
 
 In gleichschwebenden Temperierungen sind alle Halbtonschritte 
@@ -2726,7 +2800,8 @@ TONSYSTEM
     t53 = 69 [a] schritt
 \end{verbatim}
 
-\section{mitteltönige Stimmung}
+\helpsection{Mitteltoenige Stimmung}{MANUAL_MEANTONE_TUNING}
+\section{Mitteltönige Stimmung}
 \label{sec:EX_MITTELTOENIG}
 
 Die mitteltönige Stimmung ist historisch interessant. Auf ihr 
@@ -2769,6 +2844,7 @@ TONSYSTEM
 
 \appendix
 
+\helpsection{Glossar}{MANUAL_GLOSSARY}
 \chapter{Glossar}
 
 \paragraph{Die Bending range}\label{sec:DV_BENDINGRANGE}gibt an,
