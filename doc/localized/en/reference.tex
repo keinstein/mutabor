@@ -85,7 +85,8 @@ You can read and print this reference in the following formats:
 
 \pagestyle{headings}
 
-\chapter{language reference}\label{cha:sprachreferenz}
+\helpsection{language-reference}{REFERENCE_LANGUAGE_REFERENCE}
+\chapter{Language reference}\label{cha:sprachreferenz}
 \label{eins}
 
 On the one hand this reference manual shall be a short
@@ -120,7 +121,7 @@ Dieser Abschnitt beschreibt die Logiksprache \mutabor{} in der Version
 3.0.
 \fi
 
-
+\helpsection{lexical-conventions}{REFERENCE_LEXICAL_CONVENTIONS}
 \chapter{Lexical conventions}\label{cha:lexik-konv}
 \label{zwei}
 
@@ -131,6 +132,7 @@ Ein Programm besteht aus einem Text, der in einer Datei gespeichert ist.
 Es wird in einer einzigen Phase übersetzt.
 \fi
 
+\helpsection{input-symbols}{REFERENCE_INPUT_SYMBOLS}
 \section{Input symbols}\label{sec:eingabesymbole}
 \index{input symbols}
 \label{zweieins}
@@ -151,6 +153,7 @@ If the input been already dissambled up to a certain character, the
 next symbol will be the most possible string of characters, which can
 be interpreted as an input symbol.
 
+\helpsection{Comments}{REFERENCE_COMMENTS}
 \section{Comments}\label{sec:kommentare}
 \index{comment}
 \label{zweizwei}
@@ -159,6 +162,7 @@ Comments\index{comment} an entailed in douple quotes ({\tt
   \dq})\index{*''@\dq (double quote)}.
 Comments cannot be nested, but can span multiple lines.
 
+\helpsection{names}{REFERENCE_NAMES}
 \section{Names}\label{sec:namen}
 \label{zweidrei}
 
@@ -222,6 +226,7 @@ jedoch das Verständnis, wenn direkt erkennbar ist, welche Art von Namen
 in Frage kommt.
 \fi
 
+\helpsection{reseverved-words}{REFERENCE_RESERVED_WORDS}
 \section{Reserved words}\label{sec:reservierte-worte}
 \label{zweivier}
 
@@ -257,6 +262,7 @@ reserved and must not be used as names.
 
 All other words can be used as names or identifiers.
 
+\helpsection{numbers}{REFERENCE_NUMBERS}
 \section{Numbers}\label{sec:zahlen}
 \index{number}
 \label{zweifuenf}
@@ -301,7 +307,7 @@ In\-ter\-vall\-gr"o"se,\ldots).
 \fi
 
 
-
+\helpsection{syntax-description}{REFERENCE_SYNTAX_DESCRIPTION}
 \chapter{Syntax description}\label{cha:syntax-schreibweise}
 \label{drei}
 
@@ -328,7 +334,7 @@ construct \textit{simple tone} has to be further dissolved. The loop
 has the effect, that multiple constructs of the form \textit{single
   tone} can follow each other.
 
-
+\helpsection{logic-program}{REFERENCE_LOGIC_PROGRAM}
 \chapter{The  logik program}\label{cha:das-logikprogramm}
 The logic is the top concept and corresponds to the complete
 program. The logic program is an arbitrary sequence of
@@ -358,6 +364,7 @@ Elemente Bezug genommen werden, die erst später deklariert werden.
 
 \input{syn2.pic}
 
+\helpsection{interval}{REFERENCE_INTERVAL}
 \chapter{Interval}\index{Interval}\label{cha:intervall}
 
 An interval declaration defines individual intervals and the
@@ -433,6 +440,7 @@ berechnet: \[I = \mathtt{oktave}^{3} * \mathtt{terz}^{-5} * \mathtt{cent}^{17}\]
 
 \input{syn5.pic}
 
+\helpsection{tone}{REFERENCE_TONE}
 \chapter{Tone}\label{cha:ton}
 \index{Tone}
 
@@ -496,7 +504,7 @@ wird berechnet als \[Frequenz(\mathtt{b}) = Frequenz(\mathtt{c}) *
 \input{syn4.pic}
 
 
-
+\helpsection{tonesystem}{REFERENCE_TONESYSTEM}
 \chapter{Tone system}\label{cha:tonsystem}
 \index{tone system} A tone system declaration defines individual tone
 systems and the corresponding vlues. Names of tone systems must not be
@@ -568,7 +576,7 @@ mitgezählt, als wären sie vorhanden.
 
 \input{syn6.pic}
 
-
+\helpsection{retuning}{REFERENCE_RETUNING}
 \chapter{Retuning}\label{cha:umstimmung}
 \index{retuning}
 A retuning declaration defines individual retunings and the
@@ -845,6 +853,7 @@ Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
 \end{description}
 
+\helpsection{harmony}{REFERENCE_HARMONY}
 \chapter{Harmony}\label{cha:harmonie}
 \index{harmony}
 
@@ -901,7 +910,7 @@ also ohne Verschiebung der Bezugstonigkeit.
 \input{syn15.pic}
 
 
-
+\helpsection{logic}{REFERENCE_LOGIC}
 \chapter{Logic}\label{cha:logik}
 \index{logic}
 
@@ -972,6 +981,7 @@ Innerhalb der Menge der globalen Auslöser ist der Spezialauslöser
 
 \input{syn27.pic}
 
+\helpsection{trigger}{REFERENCE_TRIGGER}
 \section{Trigger}\label{sec:ausloser}
 \index{trigger}
 
@@ -981,6 +991,7 @@ harmony, a harmonic form, a MIDI event or the special trigger
 
 \input{syn18.pic}
 
+\helpsection{trigger-keys}{REFERENCE_TRIGGER_KEYS}
 \subsection{Keys}\index{key}\label{sec:tasten}
 
 This trigger\index{trigger!key} consists of the word \keyword{KEY},
@@ -1008,6 +1019,7 @@ Instrumente/MIDI-Kanäle 1--9 mit einem Tasten-Auslöser steuern.
 
 \input{syn19.pic}
 
+\helpsection{trigger-harmony}{REFERENCE_TRIGGER_HARMONY}
 \subsection{Harmonies}\label{sec:harmonien}
 \index{Harmonies}
 Harmony or pattern trigger\index{trigger!harmony}\index{trigger!pattern} can recognize either a
@@ -1093,6 +1105,7 @@ durchgeführt.
 
 \input{syn20.pic}
 
+\helpsection{trigger-MIDI}{REFERENCE_TRIGGER_MIDI}
 \subsection{MIDI trigger}\index{trigger!MIDI
   event}\label{sec:midi-ereignisse}
 MIDI events are started by the word \textit{MIDIIN}\index{MIDIIN} and
@@ -1132,6 +1145,7 @@ einbezogen.
 
     \input{syn21.pic}
 
+\helpsection{action}{REFERENCE_ACTION}
 \section{Actions}\index{Actions}\label{sec:aktionen}
 
 Actions are triggered inside a logic and can call either a
@@ -1170,6 +1184,7 @@ werden die einzelnen Aktionen der Liste in genau der angegebenen
 Reihenfolge ausgeführt.
 \fi
 
+\helpsection{action-midi-output}{REFERENCE_ACTION_MIDI_OUTUPUT}
 \subsection{MIDI output}\index{MIDI!output}\label{sec:midi-ausgaben}
 \index{action!MIDI output}
 
@@ -1191,6 +1206,7 @@ Kontrolle, ob es sich um eine sinnvolle MIDI-Nachricht handelt.
 
 \input{syn22.pic}
 
+\helpsection{midi-channels}{REFERENCE_MIDI_CHANNELS}
 \chapter{MIDI channels}\label{cha:midi-kanale}
 \index{MIDI!channel}
 \label{MIDICHANNEL}
@@ -1276,6 +1292,7 @@ als automatisch gegeben.
 
 \input{syn25.pic}
 
+\helpsection{glossary}{GLOSSARY}
 \section{Glossary}\label{sec:worterklarungen}
 \begin{description}
 \item[key] The piano keys are given as distances in half tones to the
@@ -1383,7 +1400,7 @@ als automatisch gegeben.
 
 
 
-
+\helpsection{index}{REFERENCE_INDEX}
 \printindex
 %\input{handbuch.ind}
 
