@@ -64,7 +64,7 @@ mutabor,
 \space<param name="Name" value="}\wx@indextext\HCode{" >^^J%
 \space<param name="Local" value="}#1\mut@sharp #2\HCode{" >^^J%
 </object>^^J}% 
-  \HCode{</li>^^J}%
+%  \HCode{</li>^^J}%
   \fi
 }
 \def\loadwxindex{%
@@ -108,7 +108,7 @@ mutabor,
   \def\tslinestart{#1\space}%
   \HCode{#1<li>^^J}%
   #3%
-  \HCode{#1</li>^^J}%
+%  \HCode{#1</li>^^J}%
 }
 \def\tshhkentry{\ts@hhkentry{}}
 \def\tstocendsubparagraph{}
@@ -215,8 +215,21 @@ mutabor,
     \let\selectfont\relax
     \let\LARGE\relax
     \let\normalsize\relax
+    \Configure{PROLOG}{}
+    \Configure{HTML}{}{}
+    \Configure{HEAD}{}{}
+    \Configure{HEAD}{\Configure{@HEAD}{}}{}
+    \Configure{VERSION}{}
+    \Configure{DOCTYPE}{}
+    \Configure{@DOCTYPE}{}
+    \Configure{@HEAD}{}
+    \Configure{HTML}{}{}
+    \Configure{BODY}{}{}
+    \Configure{TITLE}{}{}
     % .hhp-Datei erstellen.
-    \special{t4ht>\jobname.hhp}%
+    \IgnorePar
+%    \special{t4ht>\jobname.hhp}%
+    \FileStream+{\jobname.hhp}%
     \HCode{%
 Contents file=\jobname.hhc^^J%
 Index file=\jobname.hhk^^J%
@@ -225,7 +238,8 @@ Title=}{%
     \HCode{^^J%
 Default Topic=\mutabordefaulttopic^^J
 Charset=UTF-8^^J}%
-\special{t4ht<\jobname.hhp}%
+    \EndFileStream{\jobname.hhp}%
+%\special{t4ht<\jobname.hhp}%
 \typeout{done}%
 %\expandafter\show\csname a:TocLink\endcsname
     \let\doTocEntry\tsdotocentry
@@ -241,13 +255,14 @@ Charset=UTF-8^^J}%
     \let\tocappendix\tshhkentry
     \let\tocminisec\tshhkentry
     \let\textsc\tsarg%
-    \special{t4ht>\jobname.hhk}%
+    \IgnorePar
+    \FileStream+{\jobname.hhk}%
     \HCode{<ul>^^J}%
     \loadwxindex 
 %    \catcode`\#11
     \InputIfFileExists{\jobname.4ct}{}{}%
     \HCode{</ul>^^J}%
-    \special{t4ht<\jobname.hhk}%
+    \EndFileStream{\jobname.hhk}%
 %
     \let\toclikesection\tstocsection
     \let\toclikechapter\tstocchapter
@@ -275,12 +290,13 @@ Charset=UTF-8^^J}%
     \let\tocstartsubparagraph\relax
     \let\tocstopsubparagraph\tstocskipsubparagraph
 %
-    \special{t4ht>\jobname.hhc}%
+    \IgnorePar
+    \FileStream+{\jobname.hhc}%
     \HCode{<ul>^^J}%
 %    \catcode`\#11
     \InputIfFileExists{\jobname.4ct}{}{}%
     \HCode{</ul>^^J}%
-    \special{t4ht<\jobname.hhc}%
+    \EndFileStream{\jobname.hhc}%
   }%
   \relax
 }
