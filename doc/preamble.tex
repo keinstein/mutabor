@@ -265,6 +265,23 @@
 % \tsciteref eingeführt
 \newcommand\vollref[1]{\autoref{#1} \tsciteref{#1}}
 %
+% a try to generate file names from titles
+%
+\newcommand\helpsection[2]{% 1 file name, 2 label for hhk
+        \@ifundefined{mut@b@r@file@\string#1}{%
+                \xdef\mut@bor@nextfile{\string#1}%
+		\expandafter\def\csname mut@b@r@file@\string#1 \endcsname{}
+        }{
+                \PackageError{mutabor.cfg}{Filenaeme \dq#1\dq already used.}%
+        }%
+        \@ifundefined{mut@b@r@label@\string#1}{%
+		\expandafter\def\csname mut@b@r@label@\string#1 \endcsname{}
+                %\set label for section.
+        }{
+                \PackageError{mutabor.cfg}{Help label \dq#1\dq already defined.}%
+        }%
+}
+%
 % Und hier sind wir aus den Interna heraus.
 %
 \makeatother
@@ -275,7 +292,7 @@
 %
 % Der Name unseres Programmes
 %
-\newcommand\mutabor[1][]{\textsc{Mutabor#1}}
+\newcommand\mutabor[1][]{\texorpdfstring{\textsc{Mutabor#1}}{MUTABOR#1}}
 %
 % Vorbereitung zur Verwendung des Pakets keystroke. Damit werden
 % Tasten als Piktogramme angezeigt.
@@ -309,5 +326,12 @@
 \newcommand\translate[1]{\textcolor{red}{#1}}
 \newcommand\textat{@}
 \newcommand\textapostrophe{'}
+
+% define some names:
+\AtBeginDocument{%
+	\providecommand\addchapname{\chaptername}%
+	\providecommand\likesectionname{\sectionname}%
+}
 \endinput
+
 
