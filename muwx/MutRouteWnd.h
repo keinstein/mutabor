@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.11 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.12 2012/02/18 18:14:13 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.11 $
+ * $Date: 2012/02/18 18:14:13 $
+ * \version $Revision: 1.12 $
  * \license GPL
  *
  * $Log: MutRouteWnd.h,v $
- * Revision 1.11  2011/11/02 14:31:59  keinstein
+ * Revision 1.12  2012/02/18 18:14:13  keinstein
+ * Remove some unused variables
+ *
+ * Revision 1.11  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.10  2011-10-22 16:32:39  keinstein
@@ -81,7 +84,18 @@ namespace mutaborGUI {
 	{
 
 	public:
-
+		/** Constructor for MutRouteWnd class.
+		 * This constructor sets up the Routing window. It loads
+		 * Icons, initializes sizers and creates the shapes of
+		 * the different routing elements (e.g., devices and
+		 * boxes).
+		 * 
+		 * \param parent parent Window as used in wxWidgets.
+		 * \param pos positions of the window (if unset use
+		 *           application default) 
+		 * \param size size of the window
+		 *           (if unset use the application default).
+		 */
 		MutRouteWnd(wxWindow *parent = NULL, 
 			    const wxPoint& pos = wxDefaultPosition, 
 			    const wxSize& size = wxDefaultSize);
@@ -93,11 +107,15 @@ namespace mutaborGUI {
 		      int nTags;*/
 
 	private:
-		int spacex,spacey;
-		int x1, x2, x3, x4, x5;
+		/*
+		/// horizontal spacing between the sizers components.
+		int spacex;
+		/// space spacing between the sizers components.
+		int spacey;
 		wxIcon * DevIcon[4];
 		wxBitmap *ConIcon[4];
 		wxIcon * PlopIcon[4];
+		*/
 		wxSizer * InputSizer;
 		wxSizer * OutputSizer;
 		wxSizer * BoxSizer;

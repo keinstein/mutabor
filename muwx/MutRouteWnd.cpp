@@ -2,17 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.34 2012/02/18 18:14:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.33 $
+ * $Date: 2012/02/18 18:14:13 $
+ * \version $Revision: 1.34 $
  * \license GPL
  *
  * $Log: MutRouteWnd.cpp,v $
- * Revision 1.33  2011/11/02 14:31:59  keinstein
+ * Revision 1.34  2012/02/18 18:14:13  keinstein
+ * Remove some unused variables
+ *
+ * Revision 1.33  2011-11-02 14:31:59  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.32  2011-10-22 16:32:38  keinstein
@@ -148,8 +151,8 @@
 
 //#if !defined(__WXMSW__)
 #include "wx/image.h"
+#if 0
 #include "Icon/DevUnknown.xpm"
-#if 1
 #include "Icon/DevMidiPort.xpm"
 #include "Icon/DevMidiFile.xpm"
 #include "Icon/DevGMN.xpm"
@@ -287,7 +290,7 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 //	m_container.SetContainerWindow(this);
 //
 
-
+/*
 	DevIcon[DTUnknown] = new ICON(devunknown);
 	DevIcon[DTMidiPort] = new ICON(devmidiport);
 	DevIcon[DTMidiFile] = new ICON(devmidifile);
@@ -302,11 +305,7 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 	PlopIcon[3] = new ICON(errorplop);
 	spacey = 8;
         spacex = 20;
-	x1 = 80;
-	x2 = 80;
-	x3 = 30;
-	x4 = 80;
-	x5 = 80;
+*/
 
 
         DEBUGLOG (other, _T("this is window %p"),this);
