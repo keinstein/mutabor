@@ -103,10 +103,10 @@ char const * parse_dec(char const * str) {
                         std::cerr << "Error parsing number"<< *str; 
                         exit(1);
                 }                
-                str;
+                str++;
         }
         print_char(c);
-        return ++str;
+        return str;
 }
 
 
