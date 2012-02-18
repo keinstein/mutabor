@@ -2,17 +2,20 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.cpp,v 1.7 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.cpp,v 1.8 2012/02/18 18:17:23 keinstein Exp $
  * Copyright:   (c) 2005,2010 TU Dresden
  * \author  R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.7 $
+ * $Date: 2012/02/18 18:17:23 $
+ * \version $Revision: 1.8 $
  * \license GPL
  *
  * $Log: Action.cpp,v $
- * Revision 1.7  2011/11/02 14:31:58  keinstein
+ * Revision 1.8  2012/02/18 18:17:23  keinstein
+ * reset change flag of boxes after reading it
+ *
+ * Revision 1.7  2011-11-02 14:31:58  keinstein
  * fix some errors crashing Mutabor on Windows
  *
  * Revision 1.6  2011-09-27 20:13:22  keinstein
@@ -116,7 +119,7 @@ bool TakeOverActions()
 bool ACTChanged(int box)
 {
 	bool flag = mut_box[box].action_changed != 0;
-	mut_box[box].action_changed;
+	mut_box[box].action_changed = 0;
 	return flag;
 }
 
