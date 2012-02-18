@@ -34,26 +34,26 @@ do
   done
 done
 
-mkdir -p $installpath
+mkdir -p "$installpath"
 
 
 for datei in "$@"
 do
 	instpath="$installpath"
-	mkdir -p $instpath
         tex4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidate
         t4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidatehtml ## -d~/WWW/temp/ -m644 
 
 	filebase="`basename ${datei%.tex}`"
 
-	mv ${filebase}*.{html,png,js,css} $instpath
-	pwd
-	$htmldecode <${filebase}.hhk >$instpath/${filebase}.hhk
-	$htmldecode <${filebase}.hhc >$instpath/${filebase}.hhc
-	$fixhhp <${filebase}.hhp|sed -e 's/^ *//g' -e '/^$/ d' |$htmldecode>$instpath/${filebase}.hhp
+	# for portability reasons: don't use “{html,png,js,css}”
+	mv ${filebase}*.html ${filebase}*.png ${filebase}*.js ${filebase}*.css $instpath
+
+	$htmldecode <${filebase}.hhk | sed -e '/^ *$/ d' >$instpath/${filebase}.hhk
+	$htmldecode <${filebase}.hhc | sed -e '/^ *$/ d' >$instpath/${filebase}.hhc
+	$fixhhp <${filebase}.hhp|sed -e 's/^ *//g; /^$/ d' |$htmldecode>$instpath/${filebase}.hhp
 	cp *.png $instpath
 done
-cp "$srcdir"/*.png $instpath
-cp "$top_docdir"/*.png $instpath
+cp "$srcdir"/*.png "$installpath"
+cp "$top_docdir"/*.png "$installpath"
 (cd $instpath ; zip ../help.zip *)
 
