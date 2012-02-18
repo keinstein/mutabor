@@ -25,6 +25,7 @@ $(PDFFILES): $(TEXSOURCES) $(top_docdir)/preamble.tex
 html-local: $(ZIPFILE)
 $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	$(top_docdir)/preamble.tex \
+	$(top_docdir)/htmlpreamble.tex \
 	$(TEX_DEPS)
 	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \

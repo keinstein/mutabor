@@ -60,8 +60,8 @@ mutabor,
   \wx@inrangefalse
   \else
   \HCode{<li>^^J}%
-  \HCode{<object type="text/sitemap" >^^J%
-\space<param name="Name" value="}\wx@indextext\HCode{" >^^J%
+  \HCode{\Tg<object type="text/sitemap" >^^J%
+\space\special{t4ht@_ }\HCode<param name="Name" value="}\wx@indextext\HCode{" >\special{t4ht@_}^^J%
 \space<param name="Local" value="}#1\mut@sharp #2\HCode{" >^^J%
 </object>^^J}% 
 %  \HCode{</li>^^J}%
@@ -85,7 +85,9 @@ mutabor,
   \HCode{%
 \tslinestart<object type="text/sitemap" >^^J
 \tslinestart\space<param name="Name" value="}#4\HCode{" >^^J
-\tslinestart\space<param name="Local" value="}\csname get:hfile\endcsname{#2}\csname :sharp\endcsname #2\HCode{" >^^J
+\tslinestart\space<param name="Local" value="}%
+\csname get:hfile\endcsname{#2}%\csname :sharp\endcsname #2
+\HCode{" >^^J
 \tslinestart</object>^^J}% "<
 %   \expandafter\ifx \csname #3-def\endcsname\relax
 %      \global \expandafter\let \csname #3-def\endcsname\def
@@ -120,6 +122,7 @@ mutabor,
     \expandafter\let\csname tocstart#1\endcsname\relax
     \expandafter\def\csname tocstop#1\expandafter\endcsname{\csname tstocstop#1\endcsname}
   }
+
 
   \expandafter\def\csname tstocskip#1\endcsname{\csname tocstop#2\endcsname}
 
