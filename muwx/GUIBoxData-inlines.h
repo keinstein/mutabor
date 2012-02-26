@@ -113,7 +113,7 @@ namespace mutaborGUI {
 			if (shape) {
 				MutBoxShapeList::iterator pos = 
 					std::find(shapes.begin(),shapes.end(),shape);
-				ok = (shape != *(shapes.end())); 
+				ok = (pos != shapes.end()); 
 				mutASSERT(ok);
 				if (ok)
 					shapes.erase(pos);
