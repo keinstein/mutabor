@@ -16,6 +16,9 @@ SUFFIXES = .$(PCHEXT_CXX) .rc .res
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
+GIT = git
+REPOSITORY = http://git.berlios.de/mutabor
+REPOSITORY_PATH = .
 INDENT = astyle --style=linux --indent=tab=8
 EXTRA_DIST = config.rpath \
 	m4/ChangeLog  \
@@ -402,8 +405,9 @@ cvs_dist: Makefile
 	rm -rf cvsdist
 	mkdir cvsdist
 	cd cvsdist && \
-	$(CVS) -d `cat ../CVS/Root` export -r HEAD `cat ../CVS/Repository` && \
-	cd `cat ../CVS/Repository` && \
+	$(GIT) clone $(REPOSITORY) && \
+	cd $(REPOSITORY_PATH) && \
+	autoreconf -i && \
 	./configure && \
 	$(MAKE) dist
 
@@ -412,20 +416,15 @@ cvs_distcheck: Makefile
 	chmod -R u+w  cvsdist
 	rm -rf cvsdist
 	cvstag="check_`echo $(PACKAGE_VERSION)| sed -e 's/[$,.:; 	@]/_/g'`" ; \
-	(cd $(top_srcdir) && cvs tag -F "$$cvstag" ) ; \
+	(cd $(top_srcdir) && $(GIT) tag -f "$$cvstag" ) ; \
 	test -f $(top_srcdir)/CVS/Tag && tag=" -r `sed -e s/^T// <$(top_srcdir)/CVS/Tag`" || tag=" -r $$cvstag" ; \
-	repo=`cat $(top_srcdir)/CVS/Repository` ; \
-	mkdir -p cvsdist cvsdistm ; \
-	CVSROOT=`cat $(top_srcdir)/CVS/Root` ; \
-	export CVSROOT ; \
+	repo = mutabor ; \
+	$(GIT) clone "$(REPOSITORY)" "cvsdist/$$repo" ; \
 	if test "" = "$$tag"  ; then \
-	  $(CVS) export -d "cvsdistm" "$$repo" ; \
+	  $(GIT) checkout master ; \
 	else \
-	  echo $(CVS) export $$tag -d "cvsdistm" "$$repo" ; \
-	  $(CVS) export $$tag -d "cvsdistm" "$$repo" ; \
+	  $(GIT) checkout "$$tag" ; \
 	fi && \
-	mv cvsdistm "cvsdist/$$repo" && \
-	cd "cvsdist/$$repo" && \
 	autoreconf -i && \
 	./configure && \
 	$(MAKE)  distcheck
@@ -705,7 +704,7 @@ count:
 	cd $(top_srcdir) ; sloccount $(SUBDIRS)
 
 cvstagdate:
-	cd $(top_srcdir); cvs tag `date '+date_%Y-%m-%d_%H%M'`
+	cd $(top_srcdir); $(GIT) tag `date '+date_%Y-%m-%d_%H%M'`
 
 
 # mostly copied from distdir target of Makefile.in

@@ -62,5 +62,5 @@ install-data-mutabor:
 install-pdf-local: pdf-local
 	for d in $(PDFFILES) ; \
 	do \
-		$(install_sh_DATA) $$d $(DESTDIR)$(docdir)/$$d ; \
+		$(install_sh_DATA) "$$d" "$(DESTDIR)$(docdir)/`basename "$$d"`" ; \
 	done
