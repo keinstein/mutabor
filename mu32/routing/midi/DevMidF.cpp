@@ -887,7 +887,7 @@ namespace mutabor {
 
 	void InputMidiFile::Close()
 	{
-		mutASSERT(!isOpen);
+		mutASSERT(isOpen);
 		Stop();
 		// Speicher freigeben
 
