@@ -105,6 +105,18 @@ namespace mutaborGUI {
 		in -> SetMidiFile(device->GetName());
 	}
 
+	/** configure device from dialog data
+	 * This function reads the data from a device dialog, so that the data entered 
+	 * by the user can be realized. 
+	 * The following paameters are read:
+	 *  - file name
+	 *
+	 * \todo implement return value
+	 * 
+	 * \param in Device Dialog.
+	 * 
+	 * \return true in case of success (currently don't rely on it)
+	 */
 	bool MutInputMidiFileDeviceShape::readDialog (InputDevDlg * in)
 	{
 		mutASSERT(device);
@@ -118,6 +130,20 @@ namespace mutaborGUI {
 #ifdef max
 #undef max
 #endif
+
+	/** transfers the configuration data of an input filter from a route object to a dialog panel.
+	 * Filter data is currently stored in some variables of the route class. These variables are reused for 
+	 * several purposes. depending on the corresponding input device..
+	 *
+	 * This function creates an input filter panel for a route dialog and initializes it with 
+	 * the appropriate values of the route as they are inerpred by a MIDI file input device class.
+	 * 
+	 * \param parent Parent window of the panel (usually a dialog or panel)
+	 * \param route Route to read the data from
+	 * 
+	 * \return A panel, that is correctly initialized to communicate the filter data with the user. 
+	 *           The calling function must take care of it's deletion (or delegate it)
+	 */
 	wxPanel * MutInputMidiFileDeviceShape::GetInputFilterPanel(wxWindow * parent, 
 								   Route & route) const
 	{
@@ -145,6 +171,18 @@ namespace mutaborGUI {
 		return panel;
 	}
 
+	/** transfers the configuration data of an input filter from a dialog panel to the route object
+	 * Filter data is currently stored in some variables of the route class. These varibles are reused for 
+	 * several purposes. depending on the corresponding input device..
+	 *
+	 * This function reads data from an input filter panel of the route dialog and stores them 
+	 * in the appropriate variables as they are inerpred by a MIDI file input device class.
+	 *
+	 * \todo Separate filters from route.
+	 * 
+	 * \param panel Panel with the data the user entered
+	 * \param route Route object 
+	 */
 	void MutInputMidiFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route & route)
 	{
 		MidiFileInputFilterPanel * pan = dynamic_cast<MidiFileInputFilterPanel *> (panel);
