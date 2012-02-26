@@ -1,4 +1,4 @@
-lib_LIBRARIES = libmissfunc.a
+noinst_LIBRARIES = libmissfunc.a
 libmissfunc_a_SOURCES = stpcpy.c
 
 .PHONY: mac
