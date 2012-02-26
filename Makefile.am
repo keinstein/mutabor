@@ -418,7 +418,7 @@ cvs_distcheck: Makefile
 	cvstag="check_`echo $(PACKAGE_VERSION)| sed -e 's/[$,.:; 	@]/_/g'`" ; \
 	(cd $(top_srcdir) && $(GIT) tag -f "$$cvstag" ) ; \
 	test -f $(top_srcdir)/CVS/Tag && tag=" -r `sed -e s/^T// <$(top_srcdir)/CVS/Tag`" || tag=" -r $$cvstag" ; \
-	repo = mutabor ; \
+	repo=mutabor ; \
 	$(GIT) clone "$(REPOSITORY)" "cvsdist/$$repo" ; \
 	if test "" = "$$tag"  ; then \
 	  $(GIT) checkout master ; \
