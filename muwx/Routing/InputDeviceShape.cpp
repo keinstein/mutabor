@@ -139,6 +139,7 @@
 #include "muwx/Routing/GUIRoute-inlines.h"
 #include "muwx/Routing/BoxDlg.h"
 #include "muwx/Routing/DebugRoute.h"
+#include "muwx/MutFrame.h"
 
 //#include "MutApp.h"
 //#include "MutIcon.h"
@@ -297,8 +298,12 @@ namespace mutaborGUI {
 					  UNREACHABLEC;
 					  return;
 					}
+					mutASSERT(newdev->device);
 					DEBUGLOG (dialog, _T(""));
 					newdev -> readDialog (in);
+					if (LogicOn && !(newdev->device->IsOpen())) 
+						newdev->device->Open();
+
 					DEBUGLOG (dialog, _T(""));
 					destroySelf = replaceSelfBy (newdev);
 				}
