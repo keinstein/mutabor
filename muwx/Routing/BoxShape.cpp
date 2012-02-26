@@ -408,9 +408,10 @@ namespace mutaborGUI {
 #ifdef DEBUG
 			ToGUIBase(route).GetShape(GetParent());
 		mutASSERT(!channel);
-#endif
 		channel = 
+#endif
 			GUIRouteFactory::CreateBoxChannelShape(route,this);
+
 		if (channel) {
 			Add(channel);
 			channel->ReadPanel(panel);
@@ -655,10 +656,21 @@ namespace mutaborGUI {
 		switch (type) {
 		case NoBox:
 		case GmnBox:
-			SetBoxId(type);
+			if (type != boxId) {
+				BoxData * oldboxdata = &BoxData::GetBox(boxId);
+				Detatch(oldboxdata);
+				BoxData * newboxdata = &BoxData::GetBox(type);
+				Attatch(newboxdata);
+			}
 			break;
 		default:
-			SetBoxId(box->GetBoxNumber());
+			int newBoxId = box->GetBoxNumber();
+			if (newBoxId != boxId) {
+				BoxData * oldboxdata = &BoxData::GetBox(boxId);
+				Detatch(oldboxdata);
+				BoxData * newboxdata = &BoxData::GetBox(newBoxId);
+				Attatch(newboxdata);
+			}
 			break;
 		}
 	
