@@ -147,6 +147,20 @@ namespace mutabor {
 				CloseAllSubs(Head);
 			};
 
+		virtual void SetName(const wxString & s) 
+			{
+				if (s != Name) {
+					bool reopen = IsOpen();
+					if (reopen) 
+						Close();
+
+					Name = s;
+
+					if (reopen)
+						Open();
+				}
+			}
+
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -297,6 +311,21 @@ namespace mutabor {
 		virtual void Stop();
 		virtual void Play();
 		virtual void Pause();
+
+		virtual void SetName(const wxString & s) 
+			{
+				if (s != Name) {
+					bool reopen = IsOpen();
+					if (reopen) 
+						Close();
+
+					Name = s;
+
+					if (reopen)
+						Open();
+				}
+			}
+
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);
 		virtual long ReadOn(long delta);

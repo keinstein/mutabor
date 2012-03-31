@@ -220,6 +220,21 @@ namespace mutabor {
 		virtual void MidiOut(BYTE *p, char n);
 		virtual void Quite(RouteClass * r);
 
+		virtual void SetName(const wxString & s) 
+			{
+				if (s != Name) {
+					bool reopen = IsOpen();
+					if (reopen) 
+						Close();
+
+					Name = s;
+
+					if (reopen)
+						Open();
+				}
+			}
+		
+
 		void SetBendingRange(const int i)
 			{
 				bending_range = i;
@@ -358,6 +373,19 @@ namespace mutabor {
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
+		virtual void SetName(const wxString & s) 
+			{
+				if (s != Name) {
+					bool reopen = IsOpen();
+					if (reopen) 
+						Close();
+
+					Name = s;
+
+					if (reopen) 
+						Open();
+				}
+			}
 
 		virtual DevType GetType() const
 			{
@@ -398,6 +426,7 @@ namespace mutabor {
 		void ProceedRoute(DWORD midiCode, Route route);
 		long ReadMidiProceed(size_t nr, long time);
 	};
+
 
 	class MidiFileFactory:public DeviceFactory { 
 	public:

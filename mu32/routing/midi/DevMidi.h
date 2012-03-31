@@ -200,11 +200,19 @@ namespace mutabor {
 			}
 
 		virtual void SetDevId (int id) {
-			DevId = id;
+			bool reopen = false;
+			if (id != DevId) {
+				DevId = id;
+				if ((reopen = IsOpen()))
+					Close();
+			}
 			if (rtmidiout) 
 				Name = muT (rtmidiout->getPortName (DevId).c_str());
 			else
 				Name = _("no device");
+			if (reopen) {
+				Open();
+			}
 		}
 		
 		void SetBendingRange (int r) {
@@ -332,11 +340,19 @@ namespace mutabor {
 			}
 
 		virtual void SetDevId (int id) {
-			DevId = id;
+			bool reopen = false;
+			if (id != DevId) {
+				DevId = id;
+				if ((reopen = IsOpen())) 
+					Close();
+			}
 			if (rtmidiin)
 				Name = muT (rtmidiin->getPortName (DevId).c_str());
 			else
 				Name = _("no device");
+			if (reopen) {
+				Open();
+			}
 		}
 
 		virtual int GetDevId() 
