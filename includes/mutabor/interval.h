@@ -1,9 +1,9 @@
 /** \file
  ********************************************************************
- * Intervallberechnungen
+ * Interval calculations
  *
  * $Id: interval.h,v 1.7 2005/11/14 14:35:49 keinstein Exp $
- * \author R.Krauße
+ * \author R.KrauÃŸe
  *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2005/11/14 14:35:49 $
  * \version $Revision: 1.7 $
@@ -78,7 +78,7 @@ MUTABOR_DECLARE_CLASS(interval);
 
     /*********  Definition der Intervalle als verkettete Liste ********/
 
-    /** Intervalle können absolut oder über mehrere Sprünge angegeben werden. */
+    /** Intervalle kÃ¶nnen absolut oder Ã¼ber mehrere SprÃ¼nge angegeben werden. */
     enum intervall_typ {intervall_absolut, intervall_komplex};
 
     /** Folge von Intervallen, die zum Grundton addiert werden. */
@@ -102,7 +102,7 @@ MUTABOR_DECLARE_CLASS(interval);
 	  struct komplex_intervall * komplex_liste; /**< Liste der Intervalle */
         } intervall_komplex; /**< Daten eines zusammengesetzten Intervalles */
       } u; /**< Daten des Intervalles */
-      struct intervall *next; /**< Nächstes in der Liste */
+      struct intervall *next; /**< NÃ¤chstes in der Liste */
     };
 
     void get_new_intervall (char * name, double wert);

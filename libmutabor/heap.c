@@ -3,10 +3,10 @@
  *  Heapverwaltung.
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/heap.c,v 1.5 2005/07/20 11:51:59 keinstein Exp $
- * \author R.Krauße <krausze@users.berlios.de>
+ * \author R.KrauÃŸe <krausze@users.berlios.de>
  * \date $Date: 2005/07/20 11:51:59 $
  * \version $Revision: 1.5 $
- * \bug fatal_error(...) muss von Oberfläche getrennt werden.
+ * \bug fatal_error(...) muss von OberflÃ¤che getrennt werden.
  * \todo Portabilisierung von: memmove
  *
  * $Log: heap.c,v $
@@ -21,7 +21,7 @@
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
-  /* Relevante Variablen für diese Datei:
+  /* Relevante Variablen fÃ¼r diese Datei:
    * HAVE_MEMMOVE 
    * malloc
    * size_t
@@ -45,7 +45,7 @@ static int the_character, is_valid;
 
 /** Spezielle Implementation von  \c fgetc. Es wird getestet, ob sich noch ein 
  * Zeichen im Zwischenspeicher befindet. In diesem Fall wird das Zeichen 
- * zurückgegeben und der Zwischenspeicher geleert.
+ * zurÃ¼ckgegeben und der Zwischenspeicher geleert.
  * Ansonsten wird ein neues Zeichen eingelesen.
  * \param stream Datei, von der das Zeichen eingelesen werden soll.
  * \return Ein zeichen aus dem Eingabestrom.
@@ -62,12 +62,12 @@ int  intern_fgetc( FILE *stream )
 
 /** Spezielle Implementation von \c ungetc. Das Zeichen  im Zwischenspeicher
  * wird an Position 0 vom Seriennummer-Feld geschrieben und danach wird das
- * übergebene Zeichen \a c in den Zwischenspeicher gelegt. 
- * \param c Zeichen, das ,,zurückgeschrieben`` werden soll.
- * \param stream Datei, für das das Zurückschreiben stattfinden soll.
+ * Ã¼bergebene Zeichen \a c in den Zwischenspeicher gelegt. 
+ * \param c Zeichen, das ,,zurÃ¼ckgeschrieben`` werden soll.
+ * \param stream Datei, fÃ¼r das das ZurÃ¼ckschreiben stattfinden soll.
  * \warning Das gesamte Programm kann auf diese Art und Weise maximal ein Zeichen
  * zwischenspeichern. Bei weiteren Aufrufen wird das vorher gespeicherte Zeichen 
- * einfach überschrieben.
+ * einfach Ã¼berschrieben.
  */
 #ifdef __BORLANDC__
 #pragma warn -par
@@ -90,7 +90,7 @@ nur wenn alloca nicht da ist !
 *************************************/
 
 /** Allokiert einen Speicherbereich und erzeugt im Fehlerfall einen fatalen Fehler.
- * \param size Größe des benötigten Speicherbereiches in \c chars.
+ * \param size GrÃ¶ÃŸe des benÃ¶tigten Speicherbereiches in \c chars.
  * \return Zeiger auf den Speicherbereich.
  */
 void * xalloca (size_t size) {
@@ -121,15 +121,15 @@ void xde_alloca (void * pointer) {
 /********************************************************
   
     Verwaltung von zwei eigenen Heaps,
-    die am STÜCK gelöscht werden können ! 
+    die am STÃœCK gelÃ¶scht werden kÃ¶nnen ! 
 
 *****************************************************/
 
 /** Typ eines eigenen HEAPs. */
 struct heap_element {
   char inhalt [HEAP_PORTION_SYNTAX] ; /**< Datenbereich. */
-  size_t anzahl_belegt;  /** Größe des belegten Bereiches. */
-  struct heap_element * next; /** Nächster Heap. */
+  size_t anzahl_belegt;  /** GrÃ¶ÃŸe des belegten Bereiches. */
+  struct heap_element * next; /** NÃ¤chster Heap. */
 };
 
 /** Syntax-Heap. */
@@ -138,7 +138,7 @@ static struct heap_element * syntax_heap = NULL ;
 /** Zeiger auf Syntax-Heap-Elemente. */
 static struct heap_element * heap_to_use_syntax = NULL;
 
-/** Größe eines Größentyps. */
+/** GrÃ¶ÃŸe eines GrÃ¶ÃŸentyps. */
 #define OFFSET (sizeof(size_t))
 
 
@@ -216,10 +216,10 @@ void * xmalloc (size_t size)
     }
 }
 
-/** Ändert die Größe eines aktuellen Speicherbereiches im privaten Syntax-Heap.
- * Im Fehlerfall wird ein fataler Fehler ausgelöst.
- * \param block Zeiger auf den Block, dessen Größe geändert werden soll.
- * \param newsize Neue Größe für den Block.
+/** Ã„ndert die GrÃ¶ÃŸe eines aktuellen Speicherbereiches im privaten Syntax-Heap.
+ * Im Fehlerfall wird ein fataler Fehler ausgelÃ¶st.
+ * \param block Zeiger auf den Block, dessen GrÃ¶ÃŸe geÃ¤ndert werden soll.
+ * \param newsize Neue GrÃ¶ÃŸe fÃ¼r den Block.
  */ 
 void * xrealloc (void * block, size_t newsize)
 {
@@ -251,9 +251,9 @@ void * xrealloc (void * block, size_t newsize)
 }
 
 /** Fordert einen Speicherbereich vom Syntax-Heap an, der
- * \a anzahl * \a size Zeichen enthält.
+ * \a anzahl * \a size Zeichen enthÃ¤lt.
  * \param anzahl Anzahl der Einheiten
- * \param size Größe einer Speichereinheit.
+ * \param size GrÃ¶ÃŸe einer Speichereinheit.
  */
 void * xcalloc (size_t anzahl, size_t size)
 {  void * help = xmalloc (anzahl * size);
@@ -267,7 +267,7 @@ void * xcalloc (size_t anzahl, size_t size)
    }
 }
 	
-/** Löscht den gesamten Syntax-Heap. Anschließend werden
+/** LÃ¶scht den gesamten Syntax-Heap. AnschlieÃŸend werden
  * die beiden Zeiger \c syntax_heap und \c heap_to_use 
  * auf \c NULL gesetzt.
  * \retval 0 kein Fehler 
@@ -293,7 +293,7 @@ int loesche_syntax_speicher ( void )
 }
 
 /** Initialisiert den Syntax-Heap. 
- * \retval Rückgabewert vom Löschen. Siehe \c loesche_syntax_speicher.
+ * \retval RÃ¼ckgabewert vom LÃ¶schen. Siehe \c loesche_syntax_speicher.
  */
 int init_syntax_speicher ( void )
 {
@@ -306,7 +306,7 @@ int init_syntax_speicher ( void )
    
 ***************************/
 
-/** Typ für den Laufzeit-Heap */
+/** Typ fÃ¼r den Laufzeit-Heap */
 struct mini_heap {
     void * pointer;
     struct mini_heap * next;
@@ -318,8 +318,8 @@ static struct mini_heap * laufzeit_heap = NULL;
 #ifdef __BORLANDC__
 #pragma warn -par
 #endif
-/** Löscht \a pointer nicht vom Laufzeit-Heap. ;-).
- * \param pointer Zeiger auf den zu ,,löschenden`` Speicherbreich. */
+/** LÃ¶scht \a pointer nicht vom Laufzeit-Heap. ;-).
+ * \param pointer Zeiger auf den zu ,,lÃ¶schenden`` Speicherbreich. */
 void yfree (void * pointer) {
   /* nix */
 }
@@ -329,7 +329,7 @@ void yfree (void * pointer) {
 
 /** Fordert Speicher auf dem Laufzeit-Heap an. 
  * Dabei wird auf der Liste ein neues Element angelegt.
- * \param size Größe des Speicherbereiches in \c char-Einheiten.
+ * \param size GrÃ¶ÃŸe des Speicherbereiches in \c char-Einheiten.
  * \return Zeiger auf den Speicherbereich.
  */
 void * ymalloc (size_t size) {
@@ -352,12 +352,12 @@ void * ymalloc (size_t size) {
     return help1;
 }
 
-/** Ändert die Größe eines Elementes auf dem Laufzeit-Heap. 
- * \param block Zeiger auf das zu ändernde Element.
- * \param newsize neue Größe
+/** Ã„ndert die GrÃ¶ÃŸe eines Elementes auf dem Laufzeit-Heap. 
+ * \param block Zeiger auf das zu Ã¤ndernde Element.
+ * \param newsize neue GrÃ¶ÃŸe
  * \return Zeiger auf das neue Element.
- * \warning es wird nicht geprüft, ob der neue Speicherbereich größer, als der alte ist. 
- * Das kann gegebenenfalls zu Speicherüberlauf-Fehlern führen.
+ * \warning es wird nicht geprÃ¼ft, ob der neue Speicherbereich grÃ¶ÃŸer, als der alte ist. 
+ * Das kann gegebenenfalls zu SpeicherÃ¼berlauf-Fehlern fÃ¼hren.
  */
 void * yrealloc (void * block, size_t newsize) {
     void * help = ymalloc (newsize);
@@ -367,7 +367,7 @@ void * yrealloc (void * block, size_t newsize) {
 
 /** Fordert eine Anzahl von Einheiten auf dem Laufzeit-Heap an. 
  * \param anzahl Anzahl der Speichereinheiten.
- * \param size Größe einer Einheit.
+ * \param size GrÃ¶ÃŸe einer Einheit.
  * \return Speicherbereich.
  */
 void * ycalloc (size_t anzahl, size_t size) {
@@ -378,7 +378,7 @@ void * ycalloc (size_t anzahl, size_t size) {
 
 
 
-/** Initialisiert (Löscht) den Laufzeit-Speicher. 
+/** Initialisiert (LÃ¶scht) den Laufzeit-Speicher. 
  * \retval 0 kein Fehler
  * \retval 1 Fehler
  */
@@ -387,7 +387,7 @@ int init_laufzeit_speicher ( void )
   return loesche_laufzeit_speicher ();
 }
 
-/** Löscht den Laufzeitspeicher 
+/** LÃ¶scht den Laufzeitspeicher 
  * \retval 0 kein Fehler
  * \retval 1 Fehler
  */

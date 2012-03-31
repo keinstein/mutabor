@@ -322,6 +322,13 @@ namespace mutaborGUI {
 
 	protected: 
 		virtual void InitializeDialog(InputDevDlg * in) const { }
+		/// Initialize device data from a dialog
+		/** Transfers the data from a dialog window into the corresponding 
+		 *  device object. 
+		 * \param in input device dialog
+		 * \retval true if the device has changed in a way that it must be reinitialized.
+		 * \retval false otherwise
+		 */
 		virtual bool readDialog (InputDevDlg * in) { 
 			mutASSERT (false);
 			return false; 

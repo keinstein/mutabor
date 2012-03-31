@@ -3,7 +3,7 @@
  * Mutabor Fileparser.
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/libmutabor/parser.c,v 1.4 2005/11/03 14:56:11 keinstein Exp $
- * \author R. Krauﬂe <krausze@users.berlios.de>
+ * \author R. Krau√üe <krausze@users.berlios.de>
  * \version $Revision: 1.4 $
  * \date $Date: 2005/11/03 14:56:11 $
  *
