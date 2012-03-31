@@ -146,6 +146,7 @@ namespace mutaborGUI {
 
 	void NewMutBoxShape::InitializeDialog(BoxDlg * dlg) const {
 		mutASSERT(dlg);
+		mutASSERT(boxId == NewBox);
 		dlg->SetBoxType(Box0);
 		dlg->SetBoxNumber(0);
 		dlg->SetTitle(_("Create Box"));

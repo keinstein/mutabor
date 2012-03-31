@@ -589,7 +589,7 @@ namespace mutaborGUI {
 		if (!route) return;
 	
 		if (!panel->IsEnabled()) {
-			BoxData::CloseBox(route->GetBox());
+			//		BoxData::CloseRoute(route->GetBox());
 			route->Destroy();
 			/*
 			DetachChannel();
@@ -616,6 +616,7 @@ namespace mutaborGUI {
 			BoxData::CloseBox(oldbox->GetBoxId());
 			
 		}
+
 		int newbox = box->GetBoxId();
 		if (oldbox != newbox) {
 			route -> SetBox(newbox);

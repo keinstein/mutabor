@@ -427,10 +427,10 @@ namespace mutaborGUI {
 		if (0<= type && type < MAX_BOX) type = Box0;
 		wxWindow * page;
 		switch (type) {
-		case NewBox:
 		case NoBox:
 			page = noBoxPanel;
 			break;
+		case NewBox:
 		case Box0:
 			page = mutaborBoxPanel;
 			break;

@@ -400,7 +400,7 @@ namespace mutaborGUI {
 		mutASSERT(route);
 		if (!route) return NULL;
 		route -> Attatch(boxId); // this might be ovewritten by ReadPanel
-		BoxData::OpenBox(boxId);
+		BoxData::OpenRoute(boxId);
 					
 	
 

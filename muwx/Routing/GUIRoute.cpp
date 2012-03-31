@@ -460,8 +460,8 @@ namespace mutaborGUI {
 				} else retval = false;
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ched input device\
- %p (%d)"),
+		DEBUGLOG(smartptr,
+			 _T("Route; %p (%d), deta(t)ched input device %p (%d)"),
 			 route, 
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
@@ -537,6 +537,7 @@ namespace mutaborGUI {
 	template<class T> 
 	void GUIfyRoute<T>::Destroy() 
 	{ 
+		int saveboxid = T::GetBox();
 		GUIRouteBase * gui = &GetGUIRoute();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
 			 this, 
@@ -555,6 +556,7 @@ namespace mutaborGUI {
 		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
 			 this, 
 			 intrusive_ptr_get_refcount(this));
+		BoxData::CloseRoute(saveboxid);
 	}
 
 	RouteClass * GUIRouteFactory::DoCreate() const
