@@ -227,6 +227,8 @@ namespace mutaborGUI {
 		}
 
 
+		void OnChar(wxKeyEvent& event);
+
  		void OnGetFocus(wxFocusEvent& event);
 
 //	void MenuPassOn(wxCommandEvent& event);

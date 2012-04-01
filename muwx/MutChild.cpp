@@ -114,6 +114,7 @@ namespace mutaborGUI {
 	
 	EVT_ACTIVATE(MutChild::OnActivate)
 	EVT_SET_FOCUS(MutChild::OnGetFocus)
+	EVT_CHAR(MutChild::OnChar)
 	EVT_CLOSE(MutChild::OnClose)
 	EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose)
 	END_EVENT_TABLE()
@@ -221,6 +222,26 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
 		}	
+	}
+
+	void MutChild::OnChar(wxKeyEvent& event)
+	{
+		if ( ('A' < event.GetKeyCode() && event.GetKeyCode() <= 'z') 
+		     || event.GetKeyCode() == WXK_TAB 
+		     || event.GetKeyCode() == WXK_RETURN 
+		     || event.GetKeyCode() == WXK_SPACE ){
+			MutLogicWnd * logic = BoxData::GetBox(box).GetLogicWindow();
+			if (logic)
+				wxPostEvent(logic->GetEventHandler(),event);
+			else {
+				UNREACHABLEC;
+			}
+		}
+		else event.Skip();
+		
+		mutaborGUI::curBox = box;
+		mutASSERT(mut_box[box].used);
+		DEBUGLOG (other, _T(""));
 	}
 
 	bool IsOpen (WinKind kind, int box)
