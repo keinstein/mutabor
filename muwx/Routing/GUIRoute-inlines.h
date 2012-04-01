@@ -299,30 +299,30 @@ namespace mutaborGUI {
 	template<class T> 
 	inline bool GUIfyRoute<T>::Detatch (mutabor::OutputDevice & dev) {
 		TRACEC;
-		bool retval = T::Detatch(dev);
+		bool retval = GetGUIRoute().Detatch(dev);
 		TRACEC;
 		if (retval)
-			retval = GetGUIRoute().Detatch(dev);
+			retval = T::Detatch(dev);
 		TRACEC;
 		return retval;
 	}
 	template<class T> 
 	inline bool GUIfyRoute<T>::Detatch (mutabor::InputDevice & dev) {
 		TRACEC;
-		bool retval = T::Detatch(dev);
+		bool retval = GetGUIRoute().Detatch(dev);
 		TRACEC;
 		if (retval)
-			retval = GetGUIRoute().Detatch(dev);
+			retval = T::Detatch(dev);
 		TRACEC;
 		return retval;
 	}
 	template<class T> 
 	inline bool GUIfyRoute<T>::Detatch (int boxid) {
 		TRACEC;
-		bool retval = T::Detatch(boxid);
+		bool retval = GetGUIRoute().Detatch(boxid);
 		TRACEC;
 		if (retval)
-			retval = GetGUIRoute().Detatch(boxid);
+			retval = T::Detatch(boxid);
 		TRACEC;
 		return retval;
 	}
