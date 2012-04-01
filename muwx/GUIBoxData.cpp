@@ -128,14 +128,17 @@ namespace mutaborGUI {
 				minimal_box_used = mut_box[tmp].next_used;
 			}
 		} else {
-			do {
-				tmp = mut_box[tmp].next_used;
-				mutASSERT(tmp);
-			} while (tmp && mut_box[tmp].next_used != boxid) ;
-			if (!tmp) {
-				UNREACHABLECT(BoxData);
-				return;
+			if (mut_box[tmp].next_used != boxid) {
+				do {
+					tmp = mut_box[tmp].next_used;
+					mutASSERT(tmp);
+				} while (tmp && mut_box[tmp].next_used != boxid) ;
+				if (!tmp) {
+					UNREACHABLECT(BoxData);
+					return;
+				}
 			}
+			// box 0 is valid, here
 			mut_box[tmp].next_used = mut_box[boxid].next_used;
 		}
 		mut_box[boxid].used = 0;
@@ -158,16 +161,16 @@ namespace mutaborGUI {
 		
 		size_t box = boxid;
 		if (boxid < 0) return;
-		if (box == minimal_box_used) {
-			if (mut_box[box].used) 
-				return;
+		if (!(mut_box[minimal_box_used].used)) {
+			mutASSERT(!minimal_box_used);
+			minimal_box_used=box;
 			mut_box[box].next_used = 0;
 		} else if (box < minimal_box_used) {
 			mut_box[box].next_used = minimal_box_used;
 			minimal_box_used = box;
 		} else {
 			size_t tmp = minimal_box_used;
-			if (!tmp) return;
+			if (box == tmp) return;
 			while (mut_box[tmp].next_used 
 			       && mut_box[tmp].next_used < boxid) {
 				tmp = mut_box[tmp].next_used;
@@ -180,6 +183,18 @@ namespace mutaborGUI {
 		}
 		mut_box[box].used = 1;
 		MutFrame::BoxWindowsOpen(box,true);
+	}
+
+	void BoxData::ReOpenRoute(int old_boxid, int new_boxid) {
+		// if logic is off we are not resposible
+		if (!LogicOn || old_boxid == new_boxid) return;
+		// in contrast to CloseRoute we do not have to precheck the routes
+		ReOpenBox(old_boxid, new_boxid);
+	}
+	void BoxData::ReOpenBox(int old_boxid, int new_boxid) {
+		/// \todo if possible, let windows as they are
+		CloseRoute(old_boxid);
+		OpenRoute(new_boxid);
 	}
 
 	bool BoxData::Save(wxConfigBase * config) {

@@ -562,6 +562,13 @@ namespace mutaborGUI {
 				}
 			}
 		} else if (Res == wxID_REMOVE) {
+			wxSizerItemList list = channels->GetChildren();
+			for (wxSizerItemList::iterator i = list.begin(); 
+			     i != (list.end()); i++) {
+				mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
+				static_cast<MutBoxChannelShape *> ((*i)->GetWindow())->GetRoute()->Destroy();
+			}
+
 			destroySelf = DetachBox();
 		}
 	

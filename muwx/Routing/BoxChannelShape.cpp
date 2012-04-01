@@ -620,8 +620,6 @@ namespace mutaborGUI {
 		int newbox = box->GetBoxId();
 		if (oldbox != newbox) {
 			route -> SetBox(newbox);
-			BoxData::OpenBox(newbox);
-			BoxData::CloseBox(oldbox);
 		}
 	
 		OutputFilterPanel * outputPanel = panel->GetOutput();

@@ -285,12 +285,20 @@ namespace mutaborGUI {
 		static void CloseRoute(int boxid);
 		/// Close all windows associated to the box boxid
 		static void CloseBox(int boxid);
+		
 		/// Check whether a new route means new a box
 		/** this function is the counterpart to CloseRoute(int).
 		 */
 		static void OpenRoute(int boxid);
 		/// Open all wanted windows associated to the box boxid
 		static void OpenBox(int boxid);
+
+		/// Check whether a new box id on a route means new a box
+		/** this function is the counterpart to CloseRoute(int).
+		 */
+		static void ReOpenRoute(int old_boxid, int new_boxid);
+		/// Reopen all wanted windows associated to the box boxid
+		static void ReOpenBox(int old_boxid, int new_boxid);
 
 		bool Save(wxConfigBase * config);
 		bool Load(wxConfigBase * config);

@@ -149,8 +149,9 @@ namespace mutaborGUI {
 			}
 
 		virtual void SetBox(int box) {
+			int oldbox = T::GetBox();
 			T::SetBox(box);
-			GetGUIRoute().ReconfigureBox();
+			GetGUIRoute().ReconfigureBox(oldbox, box);
 		}
 
 		static void Add(MutBoxShape * shape) {
@@ -277,10 +278,12 @@ namespace mutaborGUI {
 			return *route;
 		}
 
-		void ReconfigureBox() {
-			box = &(BoxData::GetBox(route->GetBox()));
+		void ReconfigureBox(int oldboxid, int newbox) {
+			box = &(BoxData::GetBox(newbox));
+
 			DEBUGLOG(routing, _T("Set Box data to %p from id %d"),
-				 box, route->GetBox());
+				 box, newbox);
+			BoxData::ReOpenRoute(oldboxid, newbox);
 		}
 
 		const BoxData * GetBoxData() const {
@@ -394,7 +397,7 @@ namespace mutaborGUI {
 				static_cast<GUIfyRoute
 					<mutabor::RouteClass> *>(route)
 					-> SetGUIRoute (this);
-			ReconfigureBox();
+			ReconfigureBox(NewBox, route->GetBox());
 		}
 	};
 
@@ -487,10 +490,6 @@ namespace mutaborGUI {
 			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
 				 route, 
 				 intrusive_ptr_get_refcount(route));
-			ReconfigureBox();
-			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
-				 route, 
-				 intrusive_ptr_get_refcount(route));
 		}
 		GUIRoute(mutabor::InputDevice & in,
 			 mutabor::OutputDevice & out,
@@ -522,10 +521,6 @@ namespace mutaborGUI {
 				 route, 
 				 intrusive_ptr_get_refcount(route));
 			InitializeRoute();
-			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
-				 route, 
-				 intrusive_ptr_get_refcount(route));
-			ReconfigureBox();
 			DEBUGLOG(smartptr,_T("Route; %p (%d), entering create"),
 				 route, 
 				 intrusive_ptr_get_refcount(route));

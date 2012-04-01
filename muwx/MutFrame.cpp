@@ -1080,10 +1080,12 @@ namespace mutaborGUI {
 		Freeze();
 
 		size_t i = minimal_box_used;
-		do {
-			BoxWindowsOpen(i,false);
-			i = mut_box[i].next_used;
-		} while (i);
+		if (mut_box[i].used) {
+			do {
+				BoxWindowsOpen(i,false);
+				i = mut_box[i].next_used;
+			} while (i);
+		}
 //	}
 
 		wxConfigBase *config = wxConfig::Get();
@@ -1335,6 +1337,9 @@ namespace mutaborGUI {
 				   .Caption(Name));
 		client->SetFocus();
 		auimanager.Update();
+		UpdateBoxMenu();
+		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+		if ( routewin ) routewin->UpdateBoxMenu();
 	}
 
 	void MutFrame::ToggleTextBox(WinKind kind)
@@ -1401,17 +1406,15 @@ namespace mutaborGUI {
 
 	void MutFrame::DoBoxWindowsOpen(int box, bool update) {
 		mutUnused(update);
-		mutabor_box_type & b = mut_box[box];
-		BoxData * boxdata = static_cast<BoxData *> 
-			(b.userdata);
-		if (boxdata) {
-			if (boxdata->WantKeyWindow())
-				TextBoxOpen(WK_KEY, box);
-			if (boxdata->WantTonesystemWindow())
-				TextBoxOpen(WK_TS, box);
-			if (boxdata->WantActionsWindow())
-				TextBoxOpen(WK_ACT, box);
-		}
+		mutASSERT(mut_box[box].used);
+		BoxData & boxdata = BoxData::GetBox(box);
+		
+		if (boxdata.WantKeyWindow())
+			TextBoxOpen(WK_KEY, box);
+		if (boxdata.WantTonesystemWindow())
+			TextBoxOpen(WK_TS, box);
+		if (boxdata.WantActionsWindow())
+			TextBoxOpen(WK_ACT, box);
 
 		LogicWinOpen(box); // updates already
 
@@ -1444,8 +1447,12 @@ namespace mutaborGUI {
 		if (win) 
 			CloseClientWindow(win);
 
-		if (update)
+		if (update) {
 			auimanager.Update();
+			UpdateBoxMenu();
+			MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
+			if ( routewin ) routewin->UpdateBoxMenu();
+		}
 	}
 
 
