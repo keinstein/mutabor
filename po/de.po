@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-11-21 21:37+0100\n"
+"POT-Creation-Date: 2012-04-01 20:13+0200\n"
 "PO-Revision-Date: 2011-11-21 20:48+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: mu32/routing/gmn/DevGIS.h:198
+#: mu32/routing/gmn/DevGIS.h:212
 msgid "GIS output file."
 msgstr "GIS-Ausgabe-Datei."
 
-#: mu32/routing/gmn/DevGIS.h:315
+#: mu32/routing/gmn/DevGIS.h:344
 msgid "GIS input file."
 msgstr "GIS-Eingabedatei."
 
@@ -107,13 +107,13 @@ msgstr ""
 "%d liegen. Die aktuelle Route wurde korrikgiert."
 
 #: mu32/routing/midi/DevMidF.cpp:349 mu32/routing/midi/DevMidF.cpp:747
-#: mu32/routing/midi/DevMidF.cpp:767 mu32/routing/midi/DevMidi.cpp:265
-#: mu32/routing/midi/DevMidi.cpp:796 mu32/routing/midi/DevMidi.cpp:816
+#: mu32/routing/midi/DevMidF.cpp:767 mu32/routing/midi/DevMidi.cpp:268
+#: mu32/routing/midi/DevMidi.cpp:800 mu32/routing/midi/DevMidi.cpp:820
 msgid "Warning loading route"
 msgstr "Warnung beim Laden der Route"
 
 #: mu32/routing/midi/DevMidF.cpp:626 mu32/routing/midi/DevMidF.cpp:632
-#: mu32/routing/midi/DevMidi.cpp:639 mu32/routing/midi/DevMidi.cpp:645
+#: mu32/routing/midi/DevMidi.cpp:642 mu32/routing/midi/DevMidi.cpp:648
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
@@ -141,20 +141,27 @@ msgstr "Midi-Eingabedatei „%s“ ist zu lang."
 msgid "Midi input file '%s' produces errors."
 msgstr "Midi-Eingabedatei „%s“ erzeugt Fehler."
 
-#: mu32/routing/midi/DevMidF.h:243
+#: mu32/routing/midi/DevMidF.h:258
 msgid "MIDI output file"
 msgstr "MIDI-Ausgabedatei"
 
-#: mu32/routing/midi/DevMidF.h:376
+#: mu32/routing/midi/DevMidF.h:404
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
-#: mu32/routing/midi/DevMidi.cpp:231 mu32/routing/midi/DevMidi.cpp:761
+#: mu32/routing/midi/DevMidi.cpp:234 mu32/routing/midi/DevMidi.cpp:765
 #: mu32/routing/Route.cpp:357 mu32/routing/Route.cpp:405
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: mu32/routing/midi/DevMidi.cpp:263
+#: mu32/routing/midi/DevMidi.cpp:234 mu32/routing/midi/DevMidi.cpp:765
+#: mu32/routing/midi/DevMidi.h:212 mu32/routing/midi/DevMidi.h:352
+#: muwx/Routing/InputDeviceShape.cpp:363
+#: muwx/Routing/OutputDeviceShape.cpp:404
+msgid "no device"
+msgstr "Kein Gerät"
+
+#: mu32/routing/midi/DevMidi.cpp:266
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -163,16 +170,16 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Ausgabegerätes „%s“ muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: mu32/routing/midi/DevMidi.cpp:293
+#: mu32/routing/midi/DevMidi.cpp:296
 msgid "Can not open ouput Midi devices."
 msgstr "Kann MIDI-Gerät nicht öffnen."
 
-#: mu32/routing/midi/DevMidi.cpp:300
+#: mu32/routing/midi/DevMidi.cpp:303
 #, c-format
 msgid "Can not open output Midi device nr. %d (%s)"
 msgstr "Kann Midi-Grerät Nummer %d (%s) nicht öffen."
 
-#: mu32/routing/midi/DevMidi.cpp:794
+#: mu32/routing/midi/DevMidi.cpp:798
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -181,7 +188,7 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Eingabegerätes „%s“ muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: mu32/routing/midi/DevMidi.cpp:814
+#: mu32/routing/midi/DevMidi.cpp:818
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -190,20 +197,20 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Eingabegerätes muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: mu32/routing/midi/DevMidi.cpp:837
+#: mu32/routing/midi/DevMidi.cpp:841
 msgid "Can not open Midi input devices."
 msgstr "Kann MIDI-Gerät nicht zum lesen öffenn."
 
-#: mu32/routing/midi/DevMidi.cpp:844
+#: mu32/routing/midi/DevMidi.cpp:848
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Kann MIDI-Gerät Nummer %d (%s) nicht zum Lesen öffenn."
 
-#: mu32/routing/midi/DevMidi.h:219
+#: mu32/routing/midi/DevMidi.h:233
 msgid "Midi output device"
 msgstr "MIDI-Ausgabegerät"
 
-#: mu32/routing/midi/DevMidi.h:372
+#: mu32/routing/midi/DevMidi.h:397
 msgid "Midi input device"
 msgstr "MIDI-Eingabegerät"
 
@@ -734,12 +741,7 @@ msgstr "Unbekannter Gerätetyp"
 msgid "Input Device"
 msgstr "Eingabegerät"
 
-#: muwx/Routing/InputDeviceShape.cpp:355
-#: muwx/Routing/OutputDeviceShape.cpp:401
-msgid "no device"
-msgstr "Kein Gerät"
-
-#: muwx/Routing/NewBoxShape.cpp:151
+#: muwx/Routing/NewBoxShape.cpp:152
 msgid "Create Box"
 msgstr "Neue Box"
 
@@ -1402,36 +1404,36 @@ msgstr "Programm verlassen, ohne es ordnungsgemäß zu beenden"
 msgid "Could not get configuration storage"
 msgstr "Konnte Konfigurationsspeicher nicht finden"
 
-#: muwx/MutChild.cpp:144 muwx/MutChild.cpp:198 muwx/MutChild.cpp:274
-#: muwx/MutChild.cpp:313 muwx/MutFrame.cpp:1365 muwx/MutFrame.cpp:1483
+#: muwx/MutChild.cpp:149 muwx/MutChild.cpp:206 muwx/MutChild.cpp:302
+#: muwx/MutChild.cpp:341 muwx/MutFrame.cpp:1370 muwx/MutFrame.cpp:1490
 #: muwx/MutTextBox.cpp:134 muwx/MutTextBox.cpp:177
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unerwarteter Wert: WK_LOGIC"
 
-#: muwx/MutChild.cpp:148 muwx/MutChild.cpp:202 muwx/MutChild.cpp:239
-#: muwx/MutChild.cpp:278 muwx/MutChild.cpp:317 muwx/MutChild.cpp:369
-#: muwx/MutFrame.cpp:1369 muwx/MutFrame.cpp:1487 muwx/MutFrame.cpp:2174
+#: muwx/MutChild.cpp:153 muwx/MutChild.cpp:210 muwx/MutChild.cpp:267
+#: muwx/MutChild.cpp:306 muwx/MutChild.cpp:345 muwx/MutChild.cpp:397
+#: muwx/MutFrame.cpp:1374 muwx/MutFrame.cpp:1494 muwx/MutFrame.cpp:2181
 #: muwx/MutTextBox.cpp:138 muwx/MutTextBox.cpp:181
 msgid "Unexpected value: WK_ROUTE"
 msgstr "Unerwarteter Wert: WK_ROUTE"
 
-#: muwx/MutChild.cpp:152 muwx/MutChild.cpp:206 muwx/MutChild.cpp:243
-#: muwx/MutChild.cpp:282 muwx/MutChild.cpp:321 muwx/MutChild.cpp:373
-#: muwx/MutFrame.cpp:1373 muwx/MutFrame.cpp:1491 muwx/MutFrame.cpp:2178
+#: muwx/MutChild.cpp:157 muwx/MutChild.cpp:214 muwx/MutChild.cpp:271
+#: muwx/MutChild.cpp:310 muwx/MutChild.cpp:349 muwx/MutChild.cpp:401
+#: muwx/MutFrame.cpp:1378 muwx/MutFrame.cpp:1498 muwx/MutFrame.cpp:2185
 #: muwx/MutTextBox.cpp:142 muwx/MutTextBox.cpp:185
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unerwarteter Wert: WK_EDIT"
 
-#: muwx/MutChild.cpp:156 muwx/MutChild.cpp:210 muwx/MutChild.cpp:247
-#: muwx/MutChild.cpp:286 muwx/MutChild.cpp:325 muwx/MutChild.cpp:377
-#: muwx/MutFrame.cpp:1377 muwx/MutFrame.cpp:1495 muwx/MutTextBox.cpp:146
+#: muwx/MutChild.cpp:161 muwx/MutChild.cpp:218 muwx/MutChild.cpp:275
+#: muwx/MutChild.cpp:314 muwx/MutChild.cpp:353 muwx/MutChild.cpp:405
+#: muwx/MutFrame.cpp:1382 muwx/MutFrame.cpp:1502 muwx/MutTextBox.cpp:146
 #: muwx/MutTextBox.cpp:189
 msgid "Unexpected value: WK_NULL"
 msgstr "Unerwarteter Wert: WK_NULL"
 
-#: muwx/MutChild.cpp:160 muwx/MutChild.cpp:214 muwx/MutChild.cpp:251
-#: muwx/MutChild.cpp:290 muwx/MutChild.cpp:329 muwx/MutChild.cpp:381
-#: muwx/MutFrame.cpp:1381 muwx/MutFrame.cpp:1499 muwx/MutFrame.cpp:2194
+#: muwx/MutChild.cpp:165 muwx/MutChild.cpp:222 muwx/MutChild.cpp:279
+#: muwx/MutChild.cpp:318 muwx/MutChild.cpp:357 muwx/MutChild.cpp:409
+#: muwx/MutFrame.cpp:1386 muwx/MutFrame.cpp:1506 muwx/MutFrame.cpp:2201
 #: muwx/MutTextBox.cpp:150 muwx/MutTextBox.cpp:193
 #, c-format
 msgid "Unexpected window kind: %d"
@@ -1664,7 +1666,7 @@ msgstr "Unerwartetes Ereignis in MutFrame::CmFileOpen: %d"
 msgid "noname.mut"
 msgstr "Unbenannt.mut"
 
-#: muwx/MutFrame.cpp:922 muwx/MutFrame.cpp:1992
+#: muwx/MutFrame.cpp:922 muwx/MutFrame.cpp:1999
 #, c-format
 msgid "%s -- %s"
 msgstr "%s – %s"
@@ -1689,106 +1691,106 @@ msgstr ""
 msgid "No realtime => batch mode?"
 msgstr "Keine Echtzeit => Stapelmodus?"
 
-#: muwx/MutFrame.cpp:1300
+#: muwx/MutFrame.cpp:1302
 msgid "Routes"
 msgstr "Routen"
 
-#: muwx/MutFrame.cpp:1323
+#: muwx/MutFrame.cpp:1325
 #, c-format
 msgid "Logic -- Box %d"
-msgstr "Logik - Kasten %d"
+msgstr "Logik – Kasten %d"
 
-#: muwx/MutFrame.cpp:1464
+#: muwx/MutFrame.cpp:1471
 #, c-format
 msgid "Keys -- Box %d"
-msgstr "Logik - Kasten %d"
+msgstr "Tasten – Kasten %d"
 
-#: muwx/MutFrame.cpp:1469
+#: muwx/MutFrame.cpp:1476
 #, c-format
 msgid "Tone system -- Box %d"
 msgstr "Tonsystem – Kasten %d"
 
-#: muwx/MutFrame.cpp:1475
+#: muwx/MutFrame.cpp:1482
 msgid "Action log"
 msgstr "Aktionen"
 
-#: muwx/MutFrame.cpp:1478
+#: muwx/MutFrame.cpp:1485
 #, c-format
 msgid "Actions -- Box %d"
 msgstr "Aktionen – Kasten %d"
 
-#: muwx/MutFrame.cpp:1684
+#: muwx/MutFrame.cpp:1691
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize: nicht implementiert"
 
-#: muwx/MutFrame.cpp:2072
+#: muwx/MutFrame.cpp:2079
 msgid "Translation in batch mode completed. Output was generated."
 msgstr "Die Umwandlung im Stapelmodus wurde beendet und die Ausgabe generiert."
 
-#: muwx/MutFrame.cpp:2074
+#: muwx/MutFrame.cpp:2081
 msgid "Batch translation finished"
 msgstr "Stapelverarbeitung beendet"
 
-#: muwx/MutFrame.cpp:2223
+#: muwx/MutFrame.cpp:2230
 #, c-format
 msgid "Box %d got id %d"
 msgstr "Kasten %d bekam die Identifikationsnummer %d"
 
-#: muwx/MutFrame.cpp:2226
+#: muwx/MutFrame.cpp:2233
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Momentan gibt es %d Punkte im Kastenmenü"
 
-#: muwx/MutFrame.cpp:2228
+#: muwx/MutFrame.cpp:2235
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an."
 
-#: muwx/MutFrame.cpp:2229
+#: muwx/MutFrame.cpp:2236
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Kasten %d auswählen\tCtrl+%d"
 
-#: muwx/MutFrame.cpp:2230
+#: muwx/MutFrame.cpp:2237
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Kasten %d als aktiven Kasten für Kommandos auswählen."
 
-#: muwx/MutFrame.cpp:2240
+#: muwx/MutFrame.cpp:2247
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten %d"
 
-#: muwx/MutLogicWnd.cpp:689
+#: muwx/MutLogicWnd.cpp:703
 msgid "(INITIAL)"
 msgstr "(INITIAL)"
 
-#: muwx/MutLogicWnd.cpp:751
+#: muwx/MutLogicWnd.cpp:765
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
 
-#: muwx/MutRouteWnd.cpp:589
+#: muwx/MutRouteWnd.cpp:588
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "Die Datei „%s“ konnte nicht geladen werden."
 
-#: muwx/MutRouteWnd.cpp:594
+#: muwx/MutRouteWnd.cpp:593
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "Die Datei „%s“ konnte zwar geöffnet, aber nicht geladen werden."
 
-#: muwx/MutRouteWnd.cpp:647
+#: muwx/MutRouteWnd.cpp:646
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Kann Routendatei „%s“ nicht zum Schreiben öffnen."
 
-#: muwx/MutRouteWnd.cpp:663
+#: muwx/MutRouteWnd.cpp:662
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Fehler beim Schreiben der Datei „%s“."
 
-#: muwx/MutRouteWnd.cpp:685
+#: muwx/MutRouteWnd.cpp:684
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "Die Zeichenkette „%s“ ist kein gültiger Dateiname."
