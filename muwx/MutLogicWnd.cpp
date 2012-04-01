@@ -405,10 +405,12 @@ namespace mutaborGUI {
   END_RESPONSE_TABLE;*/
 
 	BEGIN_EVENT_TABLE(MutLogicWnd, wxScrolledWindow)
+	EVT_SET_FOCUS(MutLogicWnd::OnGetFocus)
 	EVT_CHAR(MutLogicWnd::OnChar)
 	EVT_SIZE(MutLogicWnd::OnSize)
 	EVT_MENU(CM_MUTTAG, MutLogicWnd::CmMutTag)
 	EVT_CLOSE(MutLogicWnd::OnClose)
+	EVT_ACTIVATE(MutLogicWnd::OnActivate)
 	END_EVENT_TABLE()
 
 	MutLogicWnd::MutLogicWnd(wxWindow *parent,
@@ -474,6 +476,11 @@ namespace mutaborGUI {
 	{
 		pubTaste = event.GetKeyCode();
 		CmTaste();
+
+		mutaborGUI::curBox = boxnumber;
+		mutASSERT(mut_box[boxnumber].used);
+		DEBUGLOG (other, _T(""));
+
 		event.Skip();
 	}
 
@@ -606,6 +613,10 @@ namespace mutaborGUI {
 	{
 		MutTag *Tag = (MutTag*)event.GetEventObject();
 		UpDate(Tag->GetKey(), Tag->GetIsLogic());
+
+		mutaborGUI::curBox = boxnumber;
+		mutASSERT(mut_box[boxnumber].used);
+		DEBUGLOG (other, _T(""));
 	}
 
 	void MutLogicWnd::CorrectScroller()
@@ -753,6 +764,25 @@ namespace mutaborGUI {
 		// Tags updaten
 		UpDate(0, true);
 	}
+
+	void MutLogicWnd::OnActivate(wxActivateEvent& event)
+	{
+		if (event.GetActive()) {
+			mutaborGUI::curBox = boxnumber;
+			mutUnused(event);
+			mutASSERT(mut_box[boxnumber].used);
+			DEBUGLOG (other, _T(""));
+		}
+	}
+
+	void MutLogicWnd::OnGetFocus(wxFocusEvent& event)
+	{
+		mutaborGUI::curBox = boxnumber;
+		mutASSERT(mut_box[boxnumber].used);
+		DEBUGLOG (other, _T(""));
+		event.Skip();
+	}
+
 
 /*
   void MutLogicWnd::EvRButtonDown(uint, TPoint& point)

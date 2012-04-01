@@ -103,6 +103,8 @@ namespace mutaborGUI {
 		void OnChar(wxKeyEvent& event);
 		void CmTaste();
 		void OnActivate(wxActivateEvent& event);
+		void OnGetFocus(wxFocusEvent& event);
+
 
 		DECLARE_EVENT_TABLE();
 	};

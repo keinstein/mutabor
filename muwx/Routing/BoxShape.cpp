@@ -593,6 +593,15 @@ namespace mutaborGUI {
 	
 	}
 
+
+	void MutBoxShape::GotFocus() {
+		int box = GetBoxId();
+		mutASSERT(MIN_BOX <= box && box < MAX_BOX);
+		if (box>=0 && mut_box[box].used)
+			curBox = box;
+	}
+
+
 /// Constructs the box configuration dialog.
 /**
  * \todo use value “unknown” for dynamic dialog creation
@@ -701,6 +710,12 @@ namespace mutaborGUI {
 				channel -> ReadPanel(panel);
 			}
 		}
+
+		int boxid = GetBoxId();
+		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
+		if (boxid >=0 && mut_box[boxid].used)
+			curBox = boxid;
+
 		return true;
 	}
 

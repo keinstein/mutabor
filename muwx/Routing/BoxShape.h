@@ -252,6 +252,7 @@ namespace mutaborGUI {
 			UpdateBorder(wxBORDER_SUNKEN);
 		}
 #endif
+		virtual void GotFocus() ;
 
 		virtual bool SetBackgroundColour(const wxColour& colour);
 		/// Get a double click and prepare for execution of the command

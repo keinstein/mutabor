@@ -227,11 +227,13 @@ namespace mutaborGUI {
 		}
 
 
+ 		void OnGetFocus(wxFocusEvent& event);
+
 //	void MenuPassOn(wxCommandEvent& event);
 //	void MenuPassToParent(wxCommandEvent& event);
 
 		DECLARE_EVENT_TABLE()
-			};
+	};
 
 	bool IsOpen(WinKind kind, int box = 0);
 

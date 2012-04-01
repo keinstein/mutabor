@@ -78,6 +78,7 @@
 #include "muwx/MutChild.h"
 #include "muwx/MutEditFile.h"
 #include "muwx/MutFrame.h"
+#include "muwx/MutLogicWnd.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -110,6 +111,9 @@ namespace mutaborGUI {
 
 	//    EVT_SIZE(MutChild::OnSize)
 	//    EVT_MOVE(MutChild::OnMove)
+	
+	EVT_ACTIVATE(MutChild::OnActivate)
+	EVT_SET_FOCUS(MutChild::OnGetFocus)
 	EVT_CLOSE(MutChild::OnClose)
 	EVT_AUI_PANE_CLOSE(MutChild::OnAuiClose)
 	END_EVENT_TABLE()
@@ -172,10 +176,13 @@ namespace mutaborGUI {
 
 	void MutChild::OnActivate(wxActivateEvent& event)
 	{
-		mutUnused(event);
-		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		DEBUGLOG (other, _T(""));
-		mutaborGUI::curBox = box;
+		if (event.GetActive()) {
+			mutUnused(event);
+			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
+			DEBUGLOG (other, _T(""));
+			mutaborGUI::curBox = box;
+		}
+		event.Skip();
 	}
 
 	void MutChild::deleteFromWinAttrs()
@@ -382,6 +389,15 @@ namespace mutaborGUI {
 			UNREACHABLE;
 		}	
 		return n;
+	}
+
+
+	void MutChild::OnGetFocus(wxFocusEvent& event)
+	{
+		mutaborGUI::curBox = box;
+		mutASSERT(mut_box[box].used);
+		DEBUGLOG (other, _T(""));
+		event.Skip();
 	}
 
 
