@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2011-11-21 21:37+0100\n"
+"POT-Creation-Date: 2012-04-01 20:13+0200\n"
 "PO-Revision-Date: 2011-11-21 21:27+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: Russian\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: mu32/routing/gmn/DevGIS.h:198
+#: mu32/routing/gmn/DevGIS.h:212
 msgid "GIS output file."
 msgstr "Выходный GIS-файл."
 
-#: mu32/routing/gmn/DevGIS.h:315
+#: mu32/routing/gmn/DevGIS.h:344
 msgid "GIS input file."
 msgstr "Входный GIS-файл."
 
@@ -105,13 +105,13 @@ msgstr ""
 "конфигурация исправлена. Актуальная конфигурация исправлена."
 
 #: mu32/routing/midi/DevMidF.cpp:349 mu32/routing/midi/DevMidF.cpp:747
-#: mu32/routing/midi/DevMidF.cpp:767 mu32/routing/midi/DevMidi.cpp:265
-#: mu32/routing/midi/DevMidi.cpp:796 mu32/routing/midi/DevMidi.cpp:816
+#: mu32/routing/midi/DevMidF.cpp:767 mu32/routing/midi/DevMidi.cpp:268
+#: mu32/routing/midi/DevMidi.cpp:800 mu32/routing/midi/DevMidi.cpp:820
 msgid "Warning loading route"
 msgstr "Предупреждение при открытия маршрута"
 
 #: mu32/routing/midi/DevMidF.cpp:626 mu32/routing/midi/DevMidF.cpp:632
-#: mu32/routing/midi/DevMidi.cpp:639 mu32/routing/midi/DevMidi.cpp:645
+#: mu32/routing/midi/DevMidi.cpp:642 mu32/routing/midi/DevMidi.cpp:648
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
@@ -139,20 +139,28 @@ msgstr "Файл Midi „%s“ слишком длинный."
 msgid "Midi input file '%s' produces errors."
 msgstr "Файл Midi введения „%s“ ощибается."
 
-#: mu32/routing/midi/DevMidF.h:243
+#: mu32/routing/midi/DevMidF.h:258
 msgid "MIDI output file"
 msgstr "Выходной MIDI-файл"
 
-#: mu32/routing/midi/DevMidF.h:376
+#: mu32/routing/midi/DevMidF.h:404
 msgid "MIDI input file"
 msgstr "Входной MIDI-файл"
 
-#: mu32/routing/midi/DevMidi.cpp:231 mu32/routing/midi/DevMidi.cpp:761
+#: mu32/routing/midi/DevMidi.cpp:234 mu32/routing/midi/DevMidi.cpp:765
 #: mu32/routing/Route.cpp:357 mu32/routing/Route.cpp:405
 msgid "Unknown"
 msgstr "Неизвестен"
 
-#: mu32/routing/midi/DevMidi.cpp:263
+#: mu32/routing/midi/DevMidi.cpp:234 mu32/routing/midi/DevMidi.cpp:765
+#: mu32/routing/midi/DevMidi.h:212 mu32/routing/midi/DevMidi.h:352
+#: muwx/Routing/InputDeviceShape.cpp:363
+#: muwx/Routing/OutputDeviceShape.cpp:404
+#, fuzzy
+msgid "no device"
+msgstr "Ни одно устройство не настроено"
+
+#: mu32/routing/midi/DevMidi.cpp:266
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -161,16 +169,16 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI выдачи %s необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: mu32/routing/midi/DevMidi.cpp:293
+#: mu32/routing/midi/DevMidi.cpp:296
 msgid "Can not open ouput Midi devices."
 msgstr "Не могу открывать прибор Midi выдачи."
 
-#: mu32/routing/midi/DevMidi.cpp:300
+#: mu32/routing/midi/DevMidi.cpp:303
 #, c-format
 msgid "Can not open output Midi device nr. %d (%s)"
 msgstr "Не могу открывать прибор Midi выдачи № %d (%s)"
 
-#: mu32/routing/midi/DevMidi.cpp:794
+#: mu32/routing/midi/DevMidi.cpp:798
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -179,7 +187,7 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI введения %s необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: mu32/routing/midi/DevMidi.cpp:814
+#: mu32/routing/midi/DevMidi.cpp:818
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -188,21 +196,21 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI введения необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: mu32/routing/midi/DevMidi.cpp:837
+#: mu32/routing/midi/DevMidi.cpp:841
 msgid "Can not open Midi input devices."
 msgstr "Не могу открывать прибору MIDI введения."
 
-#: mu32/routing/midi/DevMidi.cpp:844
+#: mu32/routing/midi/DevMidi.cpp:848
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Не могу открывать прибору MIDI введения № %d (%s)."
 
-#: mu32/routing/midi/DevMidi.h:219
+#: mu32/routing/midi/DevMidi.h:233
 #, fuzzy
 msgid "Midi output device"
 msgstr "Сбросить устройство вывода"
 
-#: mu32/routing/midi/DevMidi.h:372
+#: mu32/routing/midi/DevMidi.h:397
 #, fuzzy
 msgid "Midi input device"
 msgstr "Другие устройства _ввода:"
@@ -775,13 +783,7 @@ msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 msgid "Input Device"
 msgstr "Устройство входа"
 
-#: muwx/Routing/InputDeviceShape.cpp:355
-#: muwx/Routing/OutputDeviceShape.cpp:401
-#, fuzzy
-msgid "no device"
-msgstr "Ни одно устройство не настроено"
-
-#: muwx/Routing/NewBoxShape.cpp:151
+#: muwx/Routing/NewBoxShape.cpp:152
 #, fuzzy
 msgid "Create Box"
 msgstr "Создание паралеллепипеда"
@@ -1499,40 +1501,40 @@ msgstr "Сохранить текущий файл"
 msgid "Could not get configuration storage"
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
 
-#: muwx/MutChild.cpp:144 muwx/MutChild.cpp:198 muwx/MutChild.cpp:274
-#: muwx/MutChild.cpp:313 muwx/MutFrame.cpp:1365 muwx/MutFrame.cpp:1483
+#: muwx/MutChild.cpp:149 muwx/MutChild.cpp:206 muwx/MutChild.cpp:302
+#: muwx/MutChild.cpp:341 muwx/MutFrame.cpp:1370 muwx/MutFrame.cpp:1490
 #: muwx/MutTextBox.cpp:134 muwx/MutTextBox.cpp:177
 #, fuzzy
 msgid "Unexpected value: WK_LOGIC"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutChild.cpp:148 muwx/MutChild.cpp:202 muwx/MutChild.cpp:239
-#: muwx/MutChild.cpp:278 muwx/MutChild.cpp:317 muwx/MutChild.cpp:369
-#: muwx/MutFrame.cpp:1369 muwx/MutFrame.cpp:1487 muwx/MutFrame.cpp:2174
+#: muwx/MutChild.cpp:153 muwx/MutChild.cpp:210 muwx/MutChild.cpp:267
+#: muwx/MutChild.cpp:306 muwx/MutChild.cpp:345 muwx/MutChild.cpp:397
+#: muwx/MutFrame.cpp:1374 muwx/MutFrame.cpp:1494 muwx/MutFrame.cpp:2181
 #: muwx/MutTextBox.cpp:138 muwx/MutTextBox.cpp:181
 #, fuzzy
 msgid "Unexpected value: WK_ROUTE"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutChild.cpp:152 muwx/MutChild.cpp:206 muwx/MutChild.cpp:243
-#: muwx/MutChild.cpp:282 muwx/MutChild.cpp:321 muwx/MutChild.cpp:373
-#: muwx/MutFrame.cpp:1373 muwx/MutFrame.cpp:1491 muwx/MutFrame.cpp:2178
+#: muwx/MutChild.cpp:157 muwx/MutChild.cpp:214 muwx/MutChild.cpp:271
+#: muwx/MutChild.cpp:310 muwx/MutChild.cpp:349 muwx/MutChild.cpp:401
+#: muwx/MutFrame.cpp:1378 muwx/MutFrame.cpp:1498 muwx/MutFrame.cpp:2185
 #: muwx/MutTextBox.cpp:142 muwx/MutTextBox.cpp:185
 #, fuzzy
 msgid "Unexpected value: WK_EDIT"
 msgstr "непредвиденные данные после значения переменной"
 
-#: muwx/MutChild.cpp:156 muwx/MutChild.cpp:210 muwx/MutChild.cpp:247
-#: muwx/MutChild.cpp:286 muwx/MutChild.cpp:325 muwx/MutChild.cpp:377
-#: muwx/MutFrame.cpp:1377 muwx/MutFrame.cpp:1495 muwx/MutTextBox.cpp:146
+#: muwx/MutChild.cpp:161 muwx/MutChild.cpp:218 muwx/MutChild.cpp:275
+#: muwx/MutChild.cpp:314 muwx/MutChild.cpp:353 muwx/MutChild.cpp:405
+#: muwx/MutFrame.cpp:1382 muwx/MutFrame.cpp:1502 muwx/MutTextBox.cpp:146
 #: muwx/MutTextBox.cpp:189
 #, fuzzy
 msgid "Unexpected value: WK_NULL"
 msgstr "Внутренняя ошибка: неожиданно нет решения."
 
-#: muwx/MutChild.cpp:160 muwx/MutChild.cpp:214 muwx/MutChild.cpp:251
-#: muwx/MutChild.cpp:290 muwx/MutChild.cpp:329 muwx/MutChild.cpp:381
-#: muwx/MutFrame.cpp:1381 muwx/MutFrame.cpp:1499 muwx/MutFrame.cpp:2194
+#: muwx/MutChild.cpp:165 muwx/MutChild.cpp:222 muwx/MutChild.cpp:279
+#: muwx/MutChild.cpp:318 muwx/MutChild.cpp:357 muwx/MutChild.cpp:409
+#: muwx/MutFrame.cpp:1386 muwx/MutFrame.cpp:1506 muwx/MutFrame.cpp:2201
 #: muwx/MutTextBox.cpp:150 muwx/MutTextBox.cpp:193
 #, fuzzy, c-format
 msgid "Unexpected window kind: %d"
@@ -1770,7 +1772,7 @@ msgstr ""
 msgid "noname.mut"
 msgstr "Неназванный.mut"
 
-#: muwx/MutFrame.cpp:922 muwx/MutFrame.cpp:1992
+#: muwx/MutFrame.cpp:922 muwx/MutFrame.cpp:1999
 #, c-format
 msgid "%s -- %s"
 msgstr ""
@@ -1791,113 +1793,113 @@ msgstr ""
 msgid "No realtime => batch mode?"
 msgstr "пакетный режим: ничего не запрашивать"
 
-#: muwx/MutFrame.cpp:1300
+#: muwx/MutFrame.cpp:1302
 #, fuzzy
 msgid "Routes"
 msgstr "Торговые пути"
 
-#: muwx/MutFrame.cpp:1323
+#: muwx/MutFrame.cpp:1325
 #, fuzzy, c-format
 msgid "Logic -- Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutFrame.cpp:1464
+#: muwx/MutFrame.cpp:1471
 #, fuzzy, c-format
 msgid "Keys -- Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutFrame.cpp:1469
+#: muwx/MutFrame.cpp:1476
 #, fuzzy, c-format
 msgid "Tone system -- Box %d"
 msgstr "Файловая система"
 
-#: muwx/MutFrame.cpp:1475
+#: muwx/MutFrame.cpp:1482
 #, fuzzy
 msgid "Action log"
 msgstr "П&росмотреть отчет..."
 
-#: muwx/MutFrame.cpp:1478
+#: muwx/MutFrame.cpp:1485
 #, fuzzy, c-format
 msgid "Actions -- Box %d"
 msgstr "Группирующая рамка"
 
-#: muwx/MutFrame.cpp:1684
+#: muwx/MutFrame.cpp:1691
 #, fuzzy
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "Новый счет (не реализовано)"
 
-#: muwx/MutFrame.cpp:2072
+#: muwx/MutFrame.cpp:2079
 msgid "Translation in batch mode completed. Output was generated."
 msgstr ""
 
-#: muwx/MutFrame.cpp:2074
+#: muwx/MutFrame.cpp:2081
 #, fuzzy
 msgid "Batch translation finished"
 msgstr "Завершено с ошибкой"
 
-#: muwx/MutFrame.cpp:2223
+#: muwx/MutFrame.cpp:2230
 #, fuzzy, c-format
 msgid "Box %d got id %d"
 msgstr "Недопустимый ID фрейма"
 
-#: muwx/MutFrame.cpp:2226
+#: muwx/MutFrame.cpp:2233
 #, fuzzy, c-format
 msgid "Currently %d items in box menu"
 msgstr "В этом меню нет %d пунктов."
 
-#: muwx/MutFrame.cpp:2228
+#: muwx/MutFrame.cpp:2235
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr ""
 
-#: muwx/MutFrame.cpp:2229
+#: muwx/MutFrame.cpp:2236
 #, fuzzy, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Установка или снятие флажка"
 
-#: muwx/MutFrame.cpp:2230
+#: muwx/MutFrame.cpp:2237
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr ""
 
-#: muwx/MutFrame.cpp:2240
+#: muwx/MutFrame.cpp:2247
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr ""
 
-#: muwx/MutLogicWnd.cpp:689
+#: muwx/MutLogicWnd.cpp:703
 #, fuzzy
 msgid "(INITIAL)"
 msgstr "Начальное состояние"
 
-#: muwx/MutLogicWnd.cpp:751
+#: muwx/MutLogicWnd.cpp:765
 #, fuzzy, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Площадка (BB)"
 
-#: muwx/MutRouteWnd.cpp:589
+#: muwx/MutRouteWnd.cpp:588
 #, fuzzy, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "%d выбранный файл может быть добавлен (%s)"
 
-#: muwx/MutRouteWnd.cpp:594
+#: muwx/MutRouteWnd.cpp:593
 #, fuzzy, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "isoquery: Не удалось открыть файл %(filename)s.\n"
 
-#: muwx/MutRouteWnd.cpp:647
+#: muwx/MutRouteWnd.cpp:646
 #, fuzzy, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "ошибка открытия резервного файла \"%s\" для записи"
 
-#: muwx/MutRouteWnd.cpp:663
+#: muwx/MutRouteWnd.cpp:662
 #, fuzzy, c-format
 msgid "Error writing file '%s'."
 msgstr ""
 "Ошибка сохранения файла '%s':\n"
 "%s"
 
-#: muwx/MutRouteWnd.cpp:685
+#: muwx/MutRouteWnd.cpp:684
 #, fuzzy, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "%s: \"%s\" не является верной кодировкой сервера\n"
