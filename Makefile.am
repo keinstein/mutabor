@@ -33,7 +33,6 @@ EXTRA_DIST = config.rpath \
 	debian/mutabor-doc.docs \
 	debian/mutabor-doc.install \
 	debian/mutabor.install \
-	debian/README.Debian \
 	debian/rules \
 	debian/source \
 	debian/menu \

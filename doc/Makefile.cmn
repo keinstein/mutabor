@@ -17,16 +17,22 @@ installidirs=$(docdir)
 	done ; \
 	if [ "`basename $*.pdf`" != "$@" ] ;  \
 	then \
-		cp `basename $*.pdf` $@ ; \
+		if diff -q `basename $*.pdf` $@ >/dev/null 2>&1; then \
+			rm -f `basename $*.pdf` ; \
+			touch $@ ; \
+			true ; \
+		else \
+			mv -f `basename $*.pdf` $@; \
+		fi ; \
 	fi
 
 $(PDFFILES): $(TEXSOURCES) $(top_docdir)/preamble.tex
 
-html-local: $(ZIPFILE)
-$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
-	$(top_docdir)/preamble.tex \
-	$(top_docdir)/htmlpreamble.tex \
-	$(TEX_DEPS)
+html-local: $(srcdir)/$(ZIPFILE)
+$(srcdir)/$(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
+			$(top_docdir)/preamble.tex \
+			$(top_docdir)/htmlpreamble.tex \
+			$(TEX_DEPS)
 	$(MAKE) -C '$(rel_docdir)' htmldecode$(EXEEXT) fixhhp$(EXEEXT)
 	TEXINPUTS=".:$(srcdir):$(top_docdir):$$TEXINPUTS" \
 	htmldecode='$(rel_docdir)/htmldecode' \
@@ -34,12 +40,16 @@ $(ZIPFILE): $(TEXSOURCES) $(top_docdir)/mutabor.cfg \
 	srcdir='$(srcdir)' \
 	top_docdir='$(top_docdir)' \
 	$(top_docdir)/mkhtml $(TEXSOURCES) 
-	cp help.zip $(srcdir)/$(ZIPFILE)
+	if diff -q help.zip $@ >/dev/null 2>&1; then \
+		rm -f help.zip; \
+		touch $@ ; \
+		true ; \
+	else \
+		mv -f help.zip $@; \
+	fi
 
 pdf-local: $(PDFFILES)
 
-
-dist: $(srcdir)/$(ZIPFILE)
 
 mac: $(srcdir)/$(ZIPFILE) copymac
 
@@ -57,10 +67,22 @@ install-data-local: install-data-mutabor html install-pdf
 #		$(MKDIR_P) '$(pkgdatadir)/$(DOCLOCALE)'
 #	$(INSTALL_DATA) '$(srcdir)/$(ZIPFILE)' '$(pkgdatadir)/$(DOCLOCALE)/'
 
+uninstall-local: uninstall-data-mutabor uninstall-pdf
+
 install-data-mutabor:
+uninstall-data-mutabor:
 
 install-pdf-local: pdf-local
 	for d in $(PDFFILES) ; \
 	do \
 		$(install_sh_DATA) "$$d" "$(DESTDIR)$(docdir)/`basename "$$d"`" ; \
 	done
+
+uninstall-pdf:
+	for d in $(PDFFILES) ; \
+	do \
+		rm -f "$(DESTDIR)$(docdir)/`basename "$$d"`" ; \
+	done
+
+# dist: $(srcdir)/$(ZIPFILE)
+dist-hook:pdf html

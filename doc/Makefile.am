@@ -17,6 +17,7 @@ EXTRA_DIST = \
 	htmoptns.png \
 	htmpage.png \
 	htmsidep.png \
+	Mutabor-Logo.png \
 	keystroke.4ht \
 	Makefile.am \
 	Makefile.cmn \
@@ -24,6 +25,8 @@ EXTRA_DIST = \
 	mkhtml \
 	mutabor.cfg \
 	preamble.tex \
+	htmlpreamble.tex \
+	mutaborlst.tex \
 	print.png \
 	toparent.png \
 	up.png \

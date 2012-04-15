@@ -77,6 +77,7 @@ TEX_DEPS = \
 
 EXTRA_DIST = $(TEXSOURCES) \
 	$(ZIPFILE) \
-	$(TEX_DEPS)
+	$(TEX_DEPS) \
+	$(PDFFILES)
 
 include $(top_srcdir)/doc/Makefile.cmn
