@@ -1,3 +1,303 @@
+2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* osdep/win/Mutabor.nsi, po/de.po, po/en.po, po/en_GB.po,
+	po/mutabor.pot, po/ru.po: Build for release 4.0.0beta1
+
+2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am, doc/Makefile.am, doc/Makefile.cmn,
+	doc/localized/de/Makefile.am, doc/localized/en/Makefile.am: Fix
+	distcheck
+
+2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* configure.in: Bump to next major version: as user experience has
+	changed and nearly everything has been rewritten or reorganized.
+
+2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* MUT_GER/Demo.mut: some formatting in Demo files
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutLogicWnd.cpp: Pass
+	keystrokes to the corresponding logic window.
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutLogicWnd.cpp,
+	muwx/MutLogicWnd.h, muwx/Routing/BoxShape.cpp,
+	muwx/Routing/BoxShape.h: Set current box corresponding to active
+	widget.
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/GUIBoxData.cpp, muwx/GUIBoxData.h, muwx/MutFrame.cpp,
+	muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxShape.cpp,
+	muwx/Routing/GUIRoute.h: Open logic and status windows on box
+	creation even when Mutabor is active.
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* po/en.po, po/en_GB.po, po/mutabor.pot, po/ru.po: update to current
+	source
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* po/de.po: Fix translation of key window title update to current
+	source
+
+2012-04-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Routing/GUIRoute-inlines.h: Exchange base/GUIRoute
+	attatch/detatch to make GUI happy
+
+2012-03-31  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxDlg.cpp,
+	muwx/Routing/BoxShape.cpp, muwx/Routing/GUIRoute.cpp,
+	muwx/Routing/NewBoxShape.cpp: When logic is activated box status and
+	control windows are opened/closed on route creation/deletion
+
+2012-03-31  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* mu32/routing/gmn/DevGIS.h, mu32/routing/midi/DevMidF.h,
+	mu32/routing/midi/DevMidi.h: reopen device/file when characteristic
+	data (device id/file name) changed
+
+2012-03-31  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* includes/mutabor/interval.def, includes/mutabor/interval.h,
+	libmutabor/errors.c, libmutabor/heap.c, libmutabor/parser.c,
+	muwx/Routing/InputDeviceShape.h: Whitespace and documentation fixes
+	as well as Charset transform ISO-8859-1 -> UTF-8
+
+2012-03-31  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* MUT_GER/Demo-utf8.mut: Add a Demo file in UTF-8 encoding
+
+2012-03-31  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* tabgen.cpp: File unused for a long time
+
+2012-03-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* libs/includes/wx/ogl/basic.h, libs/includes/wx/ogl/basicp.h,
+	libs/includes/wx/ogl/bmpshape.h, libs/includes/wx/ogl/canvas.h,
+	libs/includes/wx/ogl/composit.h, libs/includes/wx/ogl/constrnt.h,
+	libs/includes/wx/ogl/divided.h, libs/includes/wx/ogl/drawn.h,
+	libs/includes/wx/ogl/drawnp.h, libs/includes/wx/ogl/iconshape.h,
+	libs/includes/wx/ogl/lines.h, libs/includes/wx/ogl/linesp.h,
+	libs/includes/wx/ogl/mfutils.h, libs/includes/wx/ogl/misc.h,
+	libs/includes/wx/ogl/ogl.h, libs/includes/wx/ogl/ogldiag.h,
+	libs/ogl/basic.cpp, libs/ogl/basic2.cpp, libs/ogl/bmpshape.cpp,
+	libs/ogl/canvas.cpp, libs/ogl/composit.cpp, libs/ogl/constrnt.cpp,
+	libs/ogl/divided.cpp, libs/ogl/drawn.cpp, libs/ogl/iconshape.cpp,
+	libs/ogl/lines.cpp, libs/ogl/mfutils.cpp, libs/ogl/ogldiag.cpp,
+	libs/ogl/oglmisc.cpp: ogl has been added to the mutabor tree as it
+	was temporary not availlable in wxWidgets As we don't use it, and it
+	availlable again in wxWidgets, we can safely remove it.
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Routing/BoxShape.cpp: Register Box when opening a new Box
+	shape.
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* mu32/routing/midi/DevMidF.cpp: Fix assertion producing false
+	positives and false negatives
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Routing/InputMidiFileDeviceShape.cpp: Add some documentation
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am: Fix typo in git based cvs_distcheck
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Routing/GUIRoute.cpp, muwx/Routing/InputDeviceShape.cpp: Move
+	Opening of input devices into the shape as we don't have initialized
+	the device data on creation yet.
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/GUIBoxData-inlines.h: Don't access bad memory when removing a
+	box.
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* MUT_GER/Extern.mut: Fix invalid midi channel setting.
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* .gitignore: provide .gitignore
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am, doc/Makefile.cmn: fix installing of PDF documentation
+
+2012-02-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* missfunc/Makefile.am, wxintl/Makefile.am: Do not install libraries
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Doxyfile.in: Enable Generation of XML files
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/Makefile.cmn, doc/htmlpreamble.tex, doc/mkhtml,
+	doc/mutabor.cfg: Fix errors in generation of help files
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/htmldecode.cpp: Fix an error that is not active
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/localized/de/Bedienung.tex, doc/localized/de/Referenz.tex: 
+	Remove space from generated HTML file names (fixes some help browser
+	issues)
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/Action.cpp: reset change flag of boxes after reading it
+
+2012-02-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h: Remove some unused
+	variables
+
+2012-02-08  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* wxintl/Makefile.in: removed another autotools generated file
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Doxyfile, mu32/routing/midi/DevMidi.cpp,
+	mu32/routing/midi/DevMidi.h, muwx/Routing/InputDeviceShape.cpp,
+	muwx/Routing/OutputDeviceShape.cpp, wxintl/Makefile.in: allow to add
+	nonexisting devices in the route editor (partly fixes #16908)
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* : Regenerated after fixing some issues.
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/htmlpreamble.tex: * Fix last link in .hhc and .hhk which did not contain a proper file
+	name.  * Use \IgnorePar in order to prevent unneccesary white space at the
+	  begining of .hhp,.hhk and .hhc files
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/localized/de/Bedienung.tex, doc/localized/de/Handbuch.tex,
+	doc/localized/de/Referenz.tex: Create meaningful file names for
+	sections
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/localized/en/reference.tex: Generate meaningful filenames in
+	HTML output
+
+2012-01-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/mutabor.cfg, doc/preamble.tex: Add support for meaningful
+	filename generation by tex4ht
+
+2012-01-19  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* debian/mutabor-doc.doc-base, debian/mutabor-doc.doc-base.EX,
+	debian/mutabor-doc.install: add doc-base support to debian package
+
+2012-01-16  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* INSTALL, debian/mutabor-doc.install, depcomp, doc/Makefile.cmn,
+	doc/localized/de/Referenz.tex, wxintl/Makefile.in: install
+	documentation during “make install”
+
+2012-01-16  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* : added files for documentation (though they are outdated)
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/localized/de/Referenz.tex: new file
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Images/about.xpm, debian/mutabor-doc.install,
+	debian/mutabor.install, debian/reportbug/control, doc/Makefile.am,
+	doc/mutabor.1, doc/mutabor.1.in: make lintian happy (as far as it is
+	possible now)
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* configure.in, doc/mutabor.1, doc/mutabor.1.in: add rudimentary
+	manpage
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Doxyfile, configure.in, debian/changelog, osdep/win/Mutabor.nsi: 
+	increment version
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am: added dch and debuild targets
+
+2012-01-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* doc/Makefile.cmn: fixed a typo preventing to build fixhhp and
+	htmldecode
+
+2012-01-14  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* ABOUT-NLS, Doxyfile, Images/about.xpm, configure.in,
+	debian/README.Debian, debian/changelog, debian/compat,
+	debian/conffiles.ex, debian/control, debian/copyright, debian/dirs,
+	debian/emacsen-install.ex, debian/emacsen-remove.ex,
+	debian/emacsen-startup.ex, debian/manpage.1.ex,
+	debian/manpage.sgml.ex, debian/manpage.xml.ex, debian/menu,
+	debian/menu.ex, debian/mutabor-doc.doc-base.EX,
+	debian/mutabor-doc.install, debian/mutabor.cron.d.ex,
+	debian/mutabor.default.ex, debian/mutabor.doc-base.EX,
+	debian/mutabor.install, debian/postinst.ex, debian/postrm.ex,
+	debian/preinst.ex, debian/prerm.ex, debian/rules, debian/watch.ex,
+	m4/codeset.m4, m4/gettext.m4, m4/glibc2.m4, m4/glibc21.m4,
+	m4/iconv.m4, m4/intdiv0.m4, m4/intl.m4, m4/intldir.m4,
+	m4/intlmacosx.m4, m4/intmax.m4, m4/inttypes-pri.m4,
+	m4/inttypes_h.m4, m4/lcmessage.m4, m4/lib-ld.m4, m4/lib-link.m4,
+	m4/lib-prefix.m4, m4/libtool.m4, m4/lock.m4, m4/longlong.m4,
+	m4/ltoptions.m4, m4/nls.m4, m4/po.m4, m4/printf-posix.m4,
+	m4/progtest.m4, m4/size_max.m4, m4/stdint_h.m4, m4/uintmax_t.m4,
+	m4/visibility.m4, m4/wchar_t.m4, m4/wint_t.m4, m4/xsize.m4,
+	osdep/win/Mutabor.nsi, po/LINGUAS, po/Makefile.in.in,
+	po/Rules-quot, po/en_GB.po, po/gb.po, rtmidi/config/config.guess,
+	rtmidi/config/config.sub, wxintl/Makefile.in: upgrade debian
+	standard
+
+2012-01-06  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* debian/changelog, debian/mutabor.install, debian/rules,
+	debian/source/format: build usable version of 3.1.0beta0 for debian
+
+2011-11-24  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am, po/de.po, po/en.po, po/gb.po, po/mutabor.pot,
+	po/ru.po: Fix distcheck after integration of NSIS installer again
+
+2011-11-21  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* po/de.po, po/ru.po: Updated German translation and some parts of
+	the russian translation
+
+2011-11-21  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* ChangeLog: updated Changelog
+
 2011-11-20  Tobias Schlemmer  <keinstein@users.berlios.de>
 
 	* Makefile.am, configure.in, ltmain.sh, m4/ltversion.m4, osdep/win/Mutabor.nsi, osdep/win/Mutabor.nsi.in, wxintl/Makefile.in:
