@@ -22,20 +22,7 @@ REPOSITORY_PATH = .
 INDENT = astyle --style=linux --indent=tab=8
 EXTRA_DIST = config.rpath \
 	m4/ChangeLog  \
-	debian/changelog \
-	debian/compat \
-	debian/control \
-	debian/copyright \
-	debian/dirs \
-	debian/docs \
-	debian/libmutabor-dev.install \
-	debian/libmutabor.install \
-	debian/mutabor-doc.docs \
-	debian/mutabor-doc.install \
-	debian/mutabor.install \
-	debian/rules \
-	debian/source \
-	debian/menu \
+	debian \
 	libasprintf \
 	muwx/Icon \
 	muwx/bitmaps \
