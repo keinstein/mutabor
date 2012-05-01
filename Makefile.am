@@ -42,11 +42,30 @@ EXTRA_DIST = config.rpath \
 	osdep/win/Mutabor.nsi.in \
 	osdep/win/Mutabor.sln \
 	osdep/win/muwx.vcxproj \
-	muwx/Mutabor.rc
+	muwx/Mutabor.rc \
+	MUT_ENG/cdur.mus \
+	MUT_ENG/cohen.mus \
+	MUT_ENG/demo.mus \
+	MUT_ENG/demos.mus \
+	MUT_ENG/extern.mus \
+	MUT_ENG/instr.mus \
+	MUT_ENG/midi.mus \
+	MUT_ENG/nix.mus \
+	MUT_GER/Cdur.mut \
+	MUT_GER/Cohen.mut \
+	MUT_GER/Demo.mut \
+	MUT_GER/Demos.mut \
+	MUT_GER/Demo-utf8.mut \
+	MUT_GER/Extern.mut \
+	MUT_GER/Instr.mut \
+	MUT_GER/Midi.mut \
+	MUT_GER/Nix.mut
 
 # Please use Tango names for new files
 # http://tango.freedesktop.org/Tango_Desktop_Project
-dist_pkgdata_DATA = xrc/Mutabor.xrc Images/about.png \
+dist_pkgdata_DATA = xrc/Mutabor.xrc \
+	Images/about.png \
+	Images/about.xpm \
 	Icons/png/NewInputDevice.png \
 	Icons/png/InputDevice.png \
 	Icons/png/NewOutputDevice.png \
