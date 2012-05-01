@@ -9,7 +9,10 @@ mutabor (4.0.0beta1) unstable; urgency=low
   * Add support for meaningful filename generation by tex4ht
   * Generate meaningful filenames in HTML output
   * Create meaningful file names for sections
-  * * Fix last link in .hhc and .hhk which did not contain a proper file name. * Use \IgnorePar in order to prevent unneccesary white space at the begining   of .hhp,.hhk and .hhc files
+  * Fix last link in .hhc and .hhk which did not contain 
+    a proper file name. 
+  * Use \IgnorePar in order to prevent unneccesary white space a
+    t the beginning   of .hhp,.hhk and .hhc files
   * Regenerated after fixing some issues.
   * allow to add nonexisting devices in the route editor (partly fixes #16908)
   * removed another autotools generated file
@@ -24,17 +27,23 @@ mutabor (4.0.0beta1) unstable; urgency=low
   * provide .gitignore
   * Fix invalid midi channel setting.
   * Don't access bad memory when removing a box.
-  * Move Opening of input devices into the shape as we don't have initialized the device data on creation yet.
+  * Move Opening of input devices into the shape as 
+    we don't have initialized the device data on creation yet.
   * Fix typo in git based cvs_distcheck
   * Add some documentation
   * Fix assertion producing false positives and false negatives
   * Register Box when opening a new Box shape.
-  * ogl has been added to the mutabor tree as it was temporary not availlable in wxWidgets As we don't use it, and it availlable again in wxWidgets, we can safely remove it.
+  * ogl has been added to the mutabor tree 
+    as it was temporary not availlable in wxWidgets.
+    As we don't use it, and it availlable again in wxWidgets, 
+    we can safely remove it.
   * File unused for a long time
   * Add a Demo file in UTF-8 encoding
-  * Whitespace and documentation fixes as well as Charset transform ISO-8859-1 -> UTF-8
+  * Whitespace and documentation fixes as well as Charset 
+    transform ISO-8859-1 -> UTF-8
   * reopen device/file when characteristic data (device id/file name) changed
-  * When logic is activated box status and control windows are opened/closed on route creation/deletion
+  * When logic is activated box status and control windows 
+    are opened/closed on route creation/deletion
   * Exchange base/GUIRoute attatch/detatch to make GUI happy
   * Fix translation of key window title update to current source
   * update to current source
@@ -42,7 +51,8 @@ mutabor (4.0.0beta1) unstable; urgency=low
   * Set current box corresponding to active widget.
   * Pass keystrokes to the corresponding logic window.
   * some formatting in Demo files
-  * Bump to next major version: as user experience has changed and nearly everything has been rewritten or reorganized.
+  * Bump to next major version: as user experience has changed 
+    and nearly everything has been rewritten or reorganized.
   * Fix distcheck
   * Build for release 4.0.0beta1
 
