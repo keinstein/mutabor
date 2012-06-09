@@ -358,6 +358,7 @@ wxObject* MutIconShapeClass<T>::wxCreateObject()
 		return theClass::sm_eventHashTable;			\
 	}								\
 	const wxEventTableEntry theClass::sm_eventTableEntries[] = {
+#define TS_END_EVENT_TABLE }
 #endif
 
 template <class T>
