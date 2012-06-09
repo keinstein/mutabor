@@ -599,6 +599,7 @@ namespace mutaborGUI {
 		mutASSERT(MIN_BOX <= box && box < MAX_BOX);
 		if (box>=0 && mut_box[box].used)
 			curBox = box;
+		MutBoxIconShape::GotFocus();
 	}
 
 
