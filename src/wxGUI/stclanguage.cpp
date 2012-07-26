@@ -2,7 +2,7 @@
 ********************************************************************
 * Language definitions for wxStyledTextControl (wxScintilla)
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.cpp,v 1.3 2011/08/24 21:19:36 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/stclanguage.cpp,v 1.3 2011/08/24 21:19:36 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
@@ -38,10 +38,10 @@
 *
 *
 ********************************************************************
-* \addtogroup muwx
+* \addtogroup src/wxGUI
 * \{
 ********************************************************************/
-#include "muwx/stclanguage.h"       // Preferences
+#include "src/wxGUI/stclanguage.h"       // Preferences
 
 namespace mutaborGUI {
 //============================================================================

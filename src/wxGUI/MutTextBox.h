@@ -3,7 +3,7 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.h,v 1.15 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutTextBox.h,v 1.15 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -42,7 +42,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -56,8 +56,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/Global.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/Global.h"
 // #include "MutChild.h"
 
 #ifndef MUWX_MUTTEXTBOX_H_PRECOMPILED

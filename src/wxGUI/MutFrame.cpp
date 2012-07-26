@@ -2,7 +2,7 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.cpp,v 1.60 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutFrame.cpp,v 1.60 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -303,7 +303,7 @@
  * Revision 1.6  2005/11/07 19:42:54  keinstein
  * Some additional changes
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -316,7 +316,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -326,25 +326,25 @@
 #include "wx/image.h"
 
 #if !defined(__WXMSW__) && 0
-#include "Icon/Mutabor.xpm"
-#include "Icon/Document.xpm"
-#include "Icon/KeyTextBox.xpm"
-#include "Icon/TSTextBox.xpm"
-#include "Icon/ActTextBox.xpm"
+#include "Images/Icons/xpm/Mutabor.xpm"
+#include "Images/Icons/xpm/Document.xpm"
+#include "Images/Icons/xpm/KeyTextBox.xpm"
+#include "Images/Icons/xpm/TSTextBox.xpm"
+#include "Images/Icons/xpm/ActTextBox.xpm"
 #endif
 
-#include "Icon/Route.xpm"
+#include "Images/Icons/xpm/Route.xpm"
 
 
 #if 0
-#include "bitmaps/new.xpm"
-#include "bitmaps/open.xpm"
-#include "bitmaps/save.xpm"
-#include "bitmaps/copy.xpm"
-#include "bitmaps/cut.xpm"
-#include "bitmaps/paste.xpm"
-#include "bitmaps/print.xpm"
-#include "bitmaps/help.xpm"
+#include "Images/Icons/xpm/new.xpm"
+#include "Images/Icons/xpm/open.xpm"
+#include "Images/Icons/xpm/save.xpm"
+#include "Images/Icons/xpm/copy.xpm"
+#include "Images/Icons/xpm/cut.xpm"
+#include "Images/Icons/xpm/paste.xpm"
+#include "Images/Icons/xpm/print.xpm"
+#include "Images/Icons/xpm/help.xpm"
 #endif
 
 #include "wx/filename.h"
@@ -355,24 +355,24 @@
 #  include <wx/msw/regconf.h>
 #endif
 #include "wx/ffile.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutDocument.h"
-#include "muwx/MutView.h"
-#include "muwx/MutChild.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutDocument.h"
+#include "src/wxGUI/MutView.h"
+#include "src/wxGUI/MutChild.h"
 //#include "Mutabor.rh"
-#include "muwx/MutApp.h"
+#include "src/wxGUI/MutApp.h"
 
-#include "mywx/mhDefs.h"
-#include "mu32/Runtime.h"
-#include "mu32/GrafKern.h"
-#include "muwx/Action.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/MutLogicWnd.h"
-#include "muwx/MutTextBox.h"
-#include "muwx/MutBitmaps.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/Routing/DebugRoute.h"
+#include "src/wxGUI/generic/mhDefs.h"
+#include "src/kernel/Runtime.h"
+#include "src/kernel/GrafKern.h"
+#include "src/wxGUI/Action.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/MutLogicWnd.h"
+#include "src/wxGUI/MutTextBox.h"
+#include "src/wxGUI/MutBitmaps.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
 
 using namespace mutabor;
 using namespace mutaborGUI;

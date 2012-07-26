@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.cpp,v 1.11 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/DevGIS.cpp,v 1.11 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -65,11 +65,11 @@
 // Mutabor, GIS - Devices
 // #################################################################
 
-#include "mu32/routing/gmn/DevGIS.h"
-#include "mu32/routing/gmn/GSP.h"
+#include "src/kernel/routing/gmn/DevGIS.h"
+#include "src/kernel/routing/gmn/GSP.h"
 #include <math.h>
-#include "mu32/MidiKern.h"
-#include "mu32/GrafKern.h"
+#include "src/kernel/MidiKern.h"
+#include "src/kernel/GrafKern.h"
 //#include "Device-includes.h"
 
 #ifdef RTMIDI
@@ -80,7 +80,7 @@
 #include <mmsystem.h>
 #endif
 #endif
-#include "mu32/Execute.h"
+#include "src/kernel/Execute.h"
 
 //int ausgabe_instrument[16][4];
 

@@ -2,7 +2,7 @@
  ********************************************************************
  * Language definitions for wxStyledTextControl (wxScintilla)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/stclanguage.h,v 1.4 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/stclanguage.h,v 1.4 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -45,10 +45,10 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 #if (!defined(MUWX_STCLANGUAGE_H) && !defined(PRECOMPILE)) \
 	|| (!defined(MUWX_STCLANGUAGE_H_PRECOMPILED))
@@ -60,7 +60,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_STCLANGUAGE_H_PRECOMPILED
 #define MUWX_STCLANGUAGE_H_PRECOMPILED

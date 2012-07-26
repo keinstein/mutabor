@@ -2,7 +2,7 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.cpp,v 1.11 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutView.cpp,v 1.11 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -58,7 +58,7 @@
  * \addtogroup docview
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug
+// availlable groups: GUI, route, kernel, src/wxGUI, debug
 
 
 // ---------------------------------------------------------------------------
@@ -66,12 +66,12 @@
 // --------------------------------------------------------------------------
 
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "muwx/MutView.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutApp.h"
-#include "muwx/MutDocument.h"
+#include "src/wxGUI/MutView.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutApp.h"
+#include "src/wxGUI/MutDocument.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop

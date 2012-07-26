@@ -2,7 +2,7 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.cpp,v 1.7 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/DebugRoute.cpp,v 1.7 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2010/04/13
@@ -50,15 +50,15 @@
  * \{
  ********************************************************************/
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #ifdef DEBUG
-#include "muwx/Routing/DebugRoute.h"
-#include "mu32/routing/Device.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/BoxShape.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/kernel/routing/Device.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <set>
 #include <algorithm>
 

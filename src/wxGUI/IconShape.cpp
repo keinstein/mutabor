@@ -4,7 +4,7 @@
 ********************************************************************
 * Icon shape.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.cpp,v 1.18 2011/11/05 15:19:38 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/IconShape.cpp,v 1.18 2011/11/05 15:19:38 keinstein Exp $
 * \author Rüdiger Krauße <krausze@mail.berlios.de>,
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 1998
@@ -180,8 +180,8 @@
 *\{
 ********************************************************************/
 
-#include "mu32/Defs.h"
-#include "muwx/IconShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/IconShape.h"
 #include "wx/defs.h"
 #include "wx/sizer.h"
 #include "wx/dc.h"

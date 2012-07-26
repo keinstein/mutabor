@@ -2,7 +2,7 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutTextBox.cpp,v 1.22 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutTextBox.cpp,v 1.22 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -48,7 +48,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -61,18 +61,18 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #include <iostream>
 
 #include "wx/tokenzr.h"
 
-#include "muwx/MutTextBox.h"
-#include "muwx/MutFrame.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/Routing/BoxShape.h"
-#include "mu32/GrafKern.h"
-#include "muwx/Action.h"
+#include "src/wxGUI/MutTextBox.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/kernel/GrafKern.h"
+#include "src/wxGUI/Action.h"
 
 
 #ifdef __BORLANDC__

@@ -107,7 +107,7 @@ void show_line_number( int n );
 
 #ifdef MUTWIN
 #ifdef WX
-#include "muwx/CompDlg.h"
+#include "src/wxGUI/CompDlg.h"
 void InitCompDia(mutaborGUI::CompDlg *compDia, wxString filename);
 
 #else

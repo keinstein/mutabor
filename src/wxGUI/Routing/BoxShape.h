@@ -3,7 +3,7 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxShape.h,v 1.12 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxShape.h,v 1.12 2011/11/02 14:31:59 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -174,12 +174,12 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/Routing/GUIRoute.h"
-#include "muwx/Routing/BoxChannelShape.h"
-#include "muwx/Routing/BoxIconShape.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/BoxIconShape.h"
+#include "src/kernel/routing/Device.h"
 
 #ifndef MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_BOXSHAPE_H_PRECOMPILED

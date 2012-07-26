@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GIS.cpp,v 1.5 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GIS.cpp,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -31,9 +31,9 @@
 #include <iostream>
 #endif
 
-#include "mu32/Frac.h"
-#include "mu32/routing/gmn/GIS.h"
-#include "mu32/routing/gmn/GSP.h"
+#include "src/kernel/Frac.h"
+#include "src/kernel/routing/gmn/GIS.h"
+#include "src/kernel/routing/gmn/GSP.h"
 
 
 // registered tags

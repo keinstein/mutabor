@@ -2,7 +2,7 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute-inlines.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/GUIRoute-inlines.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -59,7 +59,7 @@
  * \addtogroup GUI
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -74,11 +74,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/Routing/GUIRoute.h"
-#include "muwx/Routing/BoxShape.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
 
 #ifndef MUWX_ROUTING_GUIROUTE_INLINES_H_PRECOMPILED
 #define MUWX_ROUTING_GUIROUTE_INLINES_H_PRECOMPILED

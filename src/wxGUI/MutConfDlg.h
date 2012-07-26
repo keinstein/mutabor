@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutConfDlg.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutConfDlg.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:58 $
@@ -40,7 +40,7 @@
  * Revision 1.1  2008/01/25 10:04:30  keinstein
  * New file.
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -54,9 +54,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/resourceload.h"
-#include "muwx/MutFrame.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/resourceload.h"
+#include "src/wxGUI/MutFrame.h"
 
 #ifndef MUWX_MUTCONFDLG_H_PRECOMPILED
 #define MUWX_MUTCONFDLG_H_PRECOMPILED

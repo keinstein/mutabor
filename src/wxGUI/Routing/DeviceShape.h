@@ -3,7 +3,7 @@
  ********************************************************************
  * Device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DeviceShape.h,v 1.8 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/DeviceShape.h,v 1.8 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -91,10 +91,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/IconShape.h"
-#include "mu32/routing/Route.h"
-#include "muwx/Routing/RouteLists.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/IconShape.h"
+#include "src/kernel/routing/Route.h"
+#include "src/wxGUI/Routing/RouteLists.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_DEVICESHAPE_H_PRECOMPILED

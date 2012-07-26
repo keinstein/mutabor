@@ -2,7 +2,7 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.h,v 1.9 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/GUIBoxData.h,v 1.9 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -81,9 +81,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/box.h"
-#include "muwx/Routing/RouteLists.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/box.h"
+#include "src/wxGUI/Routing/RouteLists.h"
 
 
 #ifndef MUWX_GUIBOXDATA_H_PRECOMPILED

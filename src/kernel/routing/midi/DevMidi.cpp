@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.cpp,v 1.16 2012/01/29 22:08:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.cpp,v 1.16 2012/01/29 22:08:36 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -80,10 +80,10 @@
 // MidiPort Klassen
 // ------------------------------------------------------------------
 
-#include "mu32/routing/midi/DevMidi.h"
-#include "mu32/Execute.h"
-#include "mu32/GrafKern.h"
-#include "mu32/MidiKern.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/Execute.h"
+#include "src/kernel/GrafKern.h"
+#include "src/kernel/MidiKern.h"
 #include "wx/msgdlg.h"
 
 // OutputMidiPort ------------------------------------------------------

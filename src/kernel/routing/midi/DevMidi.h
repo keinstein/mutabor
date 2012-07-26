@@ -3,7 +3,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidi.h,v 1.11 2012/01/29 22:08:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.h,v 1.11 2012/01/29 22:08:36 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -72,9 +72,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mywx/mhDefs.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
+#include "src/kernel/routing/Device.h"
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
 #define MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED

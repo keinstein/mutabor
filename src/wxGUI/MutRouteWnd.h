@@ -2,7 +2,7 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.h,v 1.12 2012/02/18 18:14:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutRouteWnd.h,v 1.12 2012/02/18 18:14:13 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -59,12 +59,12 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/Routing/RouteLists.h"
-#include "mywx/muconvauto.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/Routing/BoxShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/RouteLists.h"
+#include "src/wxGUI/generic/muconvauto.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/BoxShape.h"
 
 #ifndef MUWX_MUTROUTEWND_H_PRECOMPILED
 #define MUWX_MUTROUTEWND_H_PRECOMPILED

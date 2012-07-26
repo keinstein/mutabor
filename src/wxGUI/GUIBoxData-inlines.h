@@ -2,7 +2,7 @@
  ********************************************************************
  * GUI Box data. Inline functions that must not be defined at class declaration time
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData-inlines.h,v 1.4 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/GUIBoxData-inlines.h,v 1.4 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -77,11 +77,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/box.h"
-#include "muwx/Routing/RouteLists.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/Routing/BoxShape.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/box.h"
+#include "src/wxGUI/Routing/RouteLists.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/Routing/BoxShape.h"
 
 #ifndef MUWX_GUIBOXDATA_INLINES_H_PRECOMPILED
 #define MUWX_GUIBOXDATA_INLINES_H_PRECOMPILED

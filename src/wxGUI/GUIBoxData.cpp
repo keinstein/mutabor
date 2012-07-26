@@ -2,7 +2,7 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/GUIBoxData.cpp,v 1.7 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/GUIBoxData.cpp,v 1.7 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -69,8 +69,8 @@
 // ---------------------------------------------------------------------------
 
 #include "GUIBoxData.h"
-#include "mu32/routing/Route.h"
-#include "muwx/MutFrame.h"
+#include "src/kernel/routing/Route.h"
+#include "src/wxGUI/MutFrame.h"
 
 namespace mutaborGUI {
 	size_t curBox = 0;

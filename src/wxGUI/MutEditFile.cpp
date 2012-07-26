@@ -2,7 +2,7 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.cpp,v 1.34 2011/11/02 14:31:59 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutEditFile.cpp,v 1.34 2011/11/02 14:31:59 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author R. Krauﬂe
 * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -94,7 +94,7 @@
 * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
 * added some .cvsignore files
 *
-* \addtogroup muwx
+* \addtogroup src/wxGUI
 * \{
 ********************************************************************/
 
@@ -106,8 +106,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mywx/mhDefs.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
 
 #include <iostream>
 
@@ -138,13 +138,13 @@
 
 
 //#include "Mutabor.rh"
-#include "muwx/MutFrame.h"
-#include "muwx/MutEditFile.h"
-#include "muwx/CompDlg.h"
-#include "mu32/Runtime.h"
-#include "muwx/MutView.h"
-#include "muwx/stclanguage.h"
-#include "mu32/GrafKern.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutEditFile.h"
+#include "src/wxGUI/CompDlg.h"
+#include "src/kernel/Runtime.h"
+#include "src/wxGUI/MutView.h"
+#include "src/wxGUI/stclanguage.h"
+#include "src/kernel/GrafKern.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

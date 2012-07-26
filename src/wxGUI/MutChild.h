@@ -1,6 +1,6 @@
 /** \file                 -*- C++ -*-
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.h,v 1.16 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutChild.h,v 1.16 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -128,9 +128,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mywx/mhDefs.h"
-#include "muwx/MutTextBox.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
+#include "src/wxGUI/MutTextBox.h"
 
 #ifndef MUWX_MUT_CHILD_H_PRECOMPILED
 #define MUWX_MUT_CHILD_H_PRECOMPILED

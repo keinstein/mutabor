@@ -2,7 +2,7 @@
  ********************************************************************
  * Input device dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDevDlg.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/InputDevDlg.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author   R. Krauße,
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -32,9 +32,9 @@
  * \{
  ********************************************************************/
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "muwx/Routing/InputDevDlg.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

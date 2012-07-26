@@ -2,7 +2,7 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutRouteWnd.cpp,v 1.34 2012/02/18 18:14:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutRouteWnd.cpp,v 1.34 2012/02/18 18:14:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -113,28 +113,28 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #include <stdio.h>
 #include "wx/list.h"
 #include "wx/ffile.h"
 #include "wx/log.h"
 #include "wx/dc.h"
 
-#include "mu32/Runtime.h"
-#include "mywx/mhDefs.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/InputDevDlg.h"
-#include "muwx/Routing/BoxDlg.h"
-#include "muwx/Routing/OutputDevDlg.h"
-#include "muwx/Routing/NewInputDeviceShape.h"
-#include "muwx/Routing/NewBoxShape.h"
-#include "muwx/Routing/NewOutputDeviceShape.h"
-#include "muwx/Routing/DebugRoute.h"
-#include "mu32/routing/RouteCompat.h"
-#include "muwx/MutApp.h"
-#include "muwx/MutFrame.h"
-#include "muwx/GUIBoxData-inlines.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/kernel/Runtime.h"
+#include "src/wxGUI/generic/mhDefs.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
+#include "src/wxGUI/Routing/NewInputDeviceShape.h"
+#include "src/wxGUI/Routing/NewBoxShape.h"
+#include "src/wxGUI/Routing/NewOutputDeviceShape.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/kernel/routing/RouteCompat.h"
+#include "src/wxGUI/MutApp.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/GUIBoxData-inlines.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 
 
 #ifndef RTMIDI
@@ -146,8 +146,8 @@
 #endif
 
 //#include "Mutabor.rh"
-#include "mu32/routing/Device.h"
-#include "mu32/MidiKern.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/MidiKern.h"
 
 //#if !defined(__WXMSW__)
 #include "wx/image.h"

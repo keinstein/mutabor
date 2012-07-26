@@ -2,7 +2,7 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.h,v 1.13 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutLogicWnd.h,v 1.13 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -31,7 +31,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -45,9 +45,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutChild.h"
-#include "muwx/GUIBoxData.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutChild.h"
+#include "src/wxGUI/GUIBoxData.h"
 
 #ifndef MUWX_MUTLOGICWND_H_PRECOMPILED
 #define MUWX_MUTLOGICWND_H_PRECOMPILED

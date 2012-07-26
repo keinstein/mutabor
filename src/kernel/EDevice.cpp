@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/EDevice.cpp,v 1.21 2011/09/30 18:07:04 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/EDevice.cpp,v 1.21 2011/09/30 18:07:04 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -472,8 +472,8 @@ void ScanERoutes(wxConfigBase * config)
 
 	wxString group;
 
-	wxString defaultPortName = rtmidiout->getPortCount()?
-	                           muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"));
+	wxString defaultPortName = lib/rtmidiout->getPortCount()?
+	                           muT(lib/rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"));
 
 	long group_number;
 

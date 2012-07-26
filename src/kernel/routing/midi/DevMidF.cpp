@@ -2,7 +2,7 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
@@ -128,7 +128,7 @@
 // Mutabor 3, 1998, R.Krauße
 // MIDI-File als Device
 // ------------------------------------------------------------------
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #if defined(MUTWIN) && !defined(WX)
 #include <owl/pch.h>
 #endif
@@ -143,10 +143,10 @@
 #endif
 #endif
 
-#include "mu32/routing/midi/DevMidF.h"
-#include "mu32/Execute.h"
-#include "mu32/GrafKern.h"
-#include "mu32/Runtime.h"
+#include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/Execute.h"
+#include "src/kernel/GrafKern.h"
+#include "src/kernel/Runtime.h"
 
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
@@ -937,8 +937,11 @@ namespace mutabor {
 
 	void InputMidiFile::Play()
 	{
-		if ( RealTime )
-			timer.Start(2,wxTIMER_CONTINUOUS);
+		if ( RealTime ) {
+			if (!timer.Start(2,wxTIMER_CONTINUOUS)) {
+				return;
+			}
+		}
 
 		//    TimerId = timeSetEvent(2, 1, MidiTimeFunc, (DWORD)this, TIME_PERIODIC);
 		Busy = FALSE;
@@ -960,9 +963,9 @@ namespace mutabor {
 	void InputMidiFile::IncDelta()
 	{
 		actDelta++;
-
-		if ( Busy )
+		if ( Busy ) {
 			return;
+		}
 
 		if ( actDelta < minDelta )
 			return;

@@ -3,7 +3,7 @@
  ********************************************************************
  * Input device shape for reading GUIDO files in the route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.cpp,v 1.7 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp,v 1.7 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -83,9 +83,9 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "muwx/Routing/OutputGuidoFileDeviceShape.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/OutputGuidoFileDeviceShape.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"

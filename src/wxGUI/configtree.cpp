@@ -46,8 +46,8 @@
  * \addtogroup config
  * \{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "muwx/configtree.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/configtree.h"
 
 
 long configtree::Read(const mutStringRef key, long defval)

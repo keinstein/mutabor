@@ -60,9 +60,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/Route.h"
-#include "mu32/treestorage.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/Route.h"
+#include "src/kernel/treestorage.h"
 
 #ifndef MUWX_CONFIGTREE_H_PRECOMPILED
 #define MUWX_CONFIGTREE_H_PRECOMPILED

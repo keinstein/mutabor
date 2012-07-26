@@ -3,7 +3,7 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputGuidoFileDeviceShape.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputGuidoFileDeviceShape.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -86,9 +86,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutIcon.h"
-#include "muwx/Routing/OutputDeviceShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutIcon.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
 //#include "Device.h"
 
 

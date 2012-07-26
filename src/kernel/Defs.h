@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Defs.h,v 1.24 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Defs.h,v 1.24 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -73,15 +73,15 @@
 #endif
 
 #ifdef WX
-#include "mywx/mhDefs.h"
+#include "src/wxGUI/generic/mhDefs.h"
 #include "wx/wxchar.h"
 #include "wx/intl.h"
 #endif
 
 
 #if defined(MUTWIN) && (!defined(WX) || defined(__WXMSW__))
-#include <windows.h>
-#include "wx/msw/winundef.h"
+//#include <windows.h>
+#include "wx/msw/wrapwin.h"
 #endif
 
 #ifdef WX

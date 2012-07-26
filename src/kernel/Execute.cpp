@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Execute.cpp,v 1.14 2011/10/13 18:26:13 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Execute.cpp,v 1.14 2011/10/13 18:26:13 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -66,7 +66,7 @@
 #include "GrafKern.h"
 #include "MidiKern.h"
 #include "Runtime.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/routing/Device.h"
 #include "wx/log.h"
 
 int protokollfunktionen_aktiv=0;

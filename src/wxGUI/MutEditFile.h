@@ -2,7 +2,7 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutEditFile.h,v 1.22 2011/11/02 14:31:59 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutEditFile.h,v 1.22 2011/11/02 14:31:59 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
@@ -82,7 +82,7 @@
 * Revision 1.3  2006/01/18 15:37:02  keinstein
 * no MDI Windows in some environments
 *
-* \addtogroup muwx
+* \addtogroup src/wxGUI
 * \{
 ********************************************************************/
 
@@ -97,9 +97,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/stclanguage.h"
-#include "mywx/muconvauto.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/stclanguage.h"
+#include "src/wxGUI/generic/muconvauto.h"
 
 #ifndef MUWX_MUTEDITFILE_H_PRECOMPILED
 #define MUWX_MUTEDITFILE_H_PRECOMPILED

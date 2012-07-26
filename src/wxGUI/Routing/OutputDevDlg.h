@@ -83,9 +83,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/resourceload.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/resourceload.h"
+#include "src/kernel/routing/Device.h"
 
 #ifndef MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED
 #define MUWX_ROUTING_OUTPUTDEVDLG_H_PRECOMPILED

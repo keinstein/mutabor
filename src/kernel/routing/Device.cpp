@@ -4,7 +4,7 @@
  ********************************************************************
  * Devices for routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Device.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Device.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -82,13 +82,13 @@
 // Devices Basisklassen
 // ------------------------------------------------------------------
 
-#include "mu32/routing/Device.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "mu32/routing/midi/DevMidF.h"
-#include "mu32/routing/gmn/DevGIS.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/routing/gmn/DevGIS.h"
 #include <algorithm>
-#include "mu32/routing/Device-inlines.h"
-#include "mu32/routing/Route.h"
+#include "src/kernel/routing/Device-inlines.h"
+#include "src/kernel/routing/Route.h"
 
 
 namespace mutabor {

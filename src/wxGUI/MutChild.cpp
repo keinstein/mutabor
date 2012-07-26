@@ -2,7 +2,7 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutChild.cpp,v 1.20 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutChild.cpp,v 1.20 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -44,7 +44,7 @@
  * updated license information; some file headers have to be revised, though
  *
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -56,7 +56,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #include <iostream>
 
 #include "wx/toolbar.h"
@@ -75,10 +75,10 @@
 
 
 //#include "Mutabor.rh"
-#include "muwx/MutChild.h"
-#include "muwx/MutEditFile.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutLogicWnd.h"
+#include "src/wxGUI/MutChild.h"
+#include "src/wxGUI/MutEditFile.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutLogicWnd.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

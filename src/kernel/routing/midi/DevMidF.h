@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/midi/DevMidF.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -60,11 +60,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/Device.h"
 
 #ifdef WX
-#include "mywx/mhArray.h"
+#include "src/wxGUI/generic/mhArray.h"
 #endif
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDF_H_PRECOMPILED
@@ -277,7 +277,46 @@ namespace mutabor {
 
 
 // InMidiFile -------------------------------------------------------
-
+#if 0
+	/**
+	 * Multimedia Timer
+	 *
+	 * Timer Interrupttion per interval[ms]
+	 */
+     
+#include<windows.h>
+#include<mmsystem.h>
+     
+#pragma comment(lib, "winmm.lib")
+     
+	void CALLBACK TimeProc(UINT uTimerID, UINT uMsg,
+			       DWORD dwUser, DWORD dw1, DWORD dw2)
+	{
+		/**
+		 * Timer Interruption
+		 */
+	}
+     
+	void main()
+	{
+		UINT uDelay = 1000;
+		UINT uResolution = 1;
+		DWORD dwUser = NULL;
+		UINT fuEvent = TIME_PERIODIC; //You also choose TIME_ONESHOT;
+     
+		MMRESULT FTimerID;
+		timeBeginPeriod(1);
+		FTimerID = timeSetEvent(uDelay, uResolution, TimeProc, dwUser, fuEvent);
+		if(FTimerID==NULL){
+			printf("Failed to generate multimedia timer.\n");
+		}
+     
+		Sleep(10000);
+     
+		timeKillEvent(FTimerID);
+		timeEndPeriod(1);
+	}
+#endif
 
 
 	class InputMidiFile : public InputDeviceClass

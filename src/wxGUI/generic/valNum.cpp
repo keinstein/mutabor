@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valNum.cpp,v 1.10 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/valNum.cpp,v 1.10 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -43,7 +43,7 @@
 
 
 // For compilers that support precompilation, includes "wx.h".
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #if wxUSE_VALIDATORS
 

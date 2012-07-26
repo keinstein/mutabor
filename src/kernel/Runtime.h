@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.h,v 1.15 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Runtime.h,v 1.15 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -56,9 +56,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/CompDlg.h"
-#include "mu32/routing/Device.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/CompDlg.h"
+#include "src/kernel/routing/Device.h"
 
 #ifndef MU32_RUNTIME_H_PRECOMPILED
 #define MU32_RUNTIME_H_PRECOMPILED

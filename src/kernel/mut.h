@@ -68,7 +68,7 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 189 of yacc.c  */
-#line 37 "../mu32/mut.y"
+#line 37 "../src/kernel/mut.y"
 
 
 /* BEGIN MUT_TAB.C */
@@ -103,7 +103,7 @@
 
 
 /* Line 189 of yacc.c  */
-#line 107 "../mu32/mut.h"
+#line 107 "../src/kernel/mut.h"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -174,7 +174,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 70 "../mu32/mut.y"
+#line 70 "../src/kernel/mut.y"
 
     double      f_value;        /* fr Gleitkommazahlen */
     int         integer;        /* Fr integers */
@@ -183,7 +183,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 187 "../mu32/mut.h"
+#line 187 "../src/kernel/mut.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -208,7 +208,7 @@ typedef struct YYLTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 212 "../mu32/mut.h"
+#line 212 "../src/kernel/mut.h"
 
 #ifdef short
 # undef short
@@ -1805,21 +1805,21 @@ yyreduce:
         case 10:
 
 /* Line 1455 of yacc.c  */
-#line 109 "../mu32/mut.y"
+#line 109 "../src/kernel/mut.y"
     {  fatal_error(1,FEHLERZEILE); }
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 121 "../mu32/mut.y"
+#line 121 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 126 "../mu32/mut.y"
+#line 126 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(5) - (5)].f_value)) > 0.001 )
                          get_new_intervall ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].f_value) / (yyvsp[(5) - (5)].f_value));
                       else
@@ -1829,7 +1829,7 @@ yyreduce:
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 132 "../mu32/mut.y"
+#line 132 "../src/kernel/mut.y"
     { if ( fabs ((yyvsp[(3) - (5)].f_value)) > 0.001 )
                           get_new_intervall ((yyvsp[(1) - (5)].identifier), pow ((yyvsp[(5) - (5)].f_value), 1 / (yyvsp[(3) - (5)].f_value)));
                       else
@@ -1839,98 +1839,98 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 141 "../mu32/mut.y"
+#line 141 "../src/kernel/mut.y"
     { get_new_intervall_komplex ((yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 142 "../mu32/mut.y"
+#line 142 "../src/kernel/mut.y"
     { fatal_error(71, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 143 "../mu32/mut.y"
+#line 143 "../src/kernel/mut.y"
     { fatal_error(70,mutT("="),FEHLERZEILE); }
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 155 "../mu32/mut.y"
+#line 155 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 160 "../mu32/mut.y"
+#line 160 "../src/kernel/mut.y"
     { get_new_ton_absolut ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].f_value)); }
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 164 "../mu32/mut.y"
+#line 164 "../src/kernel/mut.y"
     { get_new_ton_komplex_negative ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 168 "../mu32/mut.y"
+#line 168 "../src/kernel/mut.y"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 172 "../mu32/mut.y"
+#line 172 "../src/kernel/mut.y"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 174 "../mu32/mut.y"
+#line 174 "../src/kernel/mut.y"
     { fatal_error( 72, mutC_STR((yyvsp[(1) - (3)].identifier)) ); }
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 188 "../mu32/mut.y"
+#line 188 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( (double) 1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 191 "../mu32/mut.y"
+#line 191 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( (double) -1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 194 "../mu32/mut.y"
+#line 194 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( (yyvsp[(2) - (3)].f_value), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 197 "../mu32/mut.y"
+#line 197 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( -((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 200 "../mu32/mut.y"
+#line 200 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
                      else
@@ -1940,7 +1940,7 @@ yyreduce:
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 206 "../mu32/mut.y"
+#line 206 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) -1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
                      else
@@ -1950,7 +1950,7 @@ yyreduce:
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 212 "../mu32/mut.y"
+#line 212 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
                      else
@@ -1960,7 +1960,7 @@ yyreduce:
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 218 "../mu32/mut.y"
+#line 218 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( -((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
                      else
@@ -1970,21 +1970,21 @@ yyreduce:
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 239 "../mu32/mut.y"
+#line 239 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( (double) 1.0 , (yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 247 "../mu32/mut.y"
+#line 247 "../src/kernel/mut.y"
     { get_new_faktor_anteil ( (yyvsp[(1) - (2)].f_value), (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 250 "../mu32/mut.y"
+#line 250 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(2) - (3)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier));
                      else
@@ -1994,7 +1994,7 @@ yyreduce:
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 256 "../mu32/mut.y"
+#line 256 "../src/kernel/mut.y"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(1) - (4)].f_value)) / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
                      else
@@ -2004,126 +2004,126 @@ yyreduce:
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 289 "../mu32/mut.y"
+#line 289 "../src/kernel/mut.y"
     { init_ton_liste (); }
     break;
 
   case 51:
 
 /* Line 1455 of yacc.c  */
-#line 294 "../mu32/mut.y"
+#line 294 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 296 "../mu32/mut.y"
+#line 296 "../src/kernel/mut.y"
     { get_new_tonsystem ((yyvsp[(1) - (8)].identifier), (yyvsp[(3) - (8)].integer)); }
     break;
 
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 298 "../mu32/mut.y"
+#line 298 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 54:
 
 /* Line 1455 of yacc.c  */
-#line 300 "../mu32/mut.y"
+#line 300 "../src/kernel/mut.y"
     { get_new_tonsystem_negative ((yyvsp[(1) - (9)].identifier), (yyvsp[(3) - (9)].integer)); }
     break;
 
   case 57:
 
 /* Line 1455 of yacc.c  */
-#line 306 "../mu32/mut.y"
+#line 306 "../src/kernel/mut.y"
     { get_new_ton_in_tonsystem ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 58:
 
 /* Line 1455 of yacc.c  */
-#line 307 "../mu32/mut.y"
+#line 307 "../src/kernel/mut.y"
     { get_new_ton_in_tonsystem (NULL); }
     break;
 
   case 59:
 
 /* Line 1455 of yacc.c  */
-#line 308 "../mu32/mut.y"
+#line 308 "../src/kernel/mut.y"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 60:
 
 /* Line 1455 of yacc.c  */
-#line 312 "../mu32/mut.y"
+#line 312 "../src/kernel/mut.y"
     { get_new_name_in_parameterlist ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 61:
 
 /* Line 1455 of yacc.c  */
-#line 314 "../mu32/mut.y"
+#line 314 "../src/kernel/mut.y"
     { get_new_name_in_parameterlist ((yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 62:
 
 /* Line 1455 of yacc.c  */
-#line 315 "../mu32/mut.y"
+#line 315 "../src/kernel/mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 63:
 
 /* Line 1455 of yacc.c  */
-#line 320 "../mu32/mut.y"
+#line 320 "../src/kernel/mut.y"
     {}
     break;
 
   case 64:
 
 /* Line 1455 of yacc.c  */
-#line 321 "../mu32/mut.y"
+#line 321 "../src/kernel/mut.y"
     {}
     break;
 
   case 65:
 
 /* Line 1455 of yacc.c  */
-#line 322 "../mu32/mut.y"
+#line 322 "../src/kernel/mut.y"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 66:
 
 /* Line 1455 of yacc.c  */
-#line 327 "../mu32/mut.y"
+#line 327 "../src/kernel/mut.y"
     { get_new_name_in_argument_list ((yyvsp[(1) - (1)].identifier)) ;  }
     break;
 
   case 67:
 
 /* Line 1455 of yacc.c  */
-#line 328 "../mu32/mut.y"
+#line 328 "../src/kernel/mut.y"
     { get_new_number_in_argument_list ((yyvsp[(1) - (1)].integer)) ;  }
     break;
 
   case 68:
 
 /* Line 1455 of yacc.c  */
-#line 329 "../mu32/mut.y"
+#line 329 "../src/kernel/mut.y"
     { get_new_number_in_argument_list (-((yyvsp[(2) - (2)].integer))); }
     break;
 
   case 72:
 
 /* Line 1455 of yacc.c  */
-#line 344 "../mu32/mut.y"
+#line 344 "../src/kernel/mut.y"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
@@ -2131,21 +2131,21 @@ yyreduce:
   case 73:
 
 /* Line 1455 of yacc.c  */
-#line 346 "../mu32/mut.y"
+#line 346 "../src/kernel/mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 74:
 
 /* Line 1455 of yacc.c  */
-#line 348 "../mu32/mut.y"
+#line 348 "../src/kernel/mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 75:
 
 /* Line 1455 of yacc.c  */
-#line 351 "../mu32/mut.y"
+#line 351 "../src/kernel/mut.y"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
@@ -2153,238 +2153,238 @@ yyreduce:
   case 76:
 
 /* Line 1455 of yacc.c  */
-#line 354 "../mu32/mut.y"
+#line 354 "../src/kernel/mut.y"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 77:
 
 /* Line 1455 of yacc.c  */
-#line 356 "../mu32/mut.y"
+#line 356 "../src/kernel/mut.y"
     { get_new_umstimmung (); }
     break;
 
   case 78:
 
 /* Line 1455 of yacc.c  */
-#line 360 "../mu32/mut.y"
+#line 360 "../src/kernel/mut.y"
     {}
     break;
 
   case 79:
 
 /* Line 1455 of yacc.c  */
-#line 361 "../mu32/mut.y"
+#line 361 "../src/kernel/mut.y"
     {}
     break;
 
   case 80:
 
 /* Line 1455 of yacc.c  */
-#line 362 "../mu32/mut.y"
+#line 362 "../src/kernel/mut.y"
     {}
     break;
 
   case 81:
 
 /* Line 1455 of yacc.c  */
-#line 363 "../mu32/mut.y"
+#line 363 "../src/kernel/mut.y"
     {}
     break;
 
   case 82:
 
 /* Line 1455 of yacc.c  */
-#line 364 "../mu32/mut.y"
+#line 364 "../src/kernel/mut.y"
     {}
     break;
 
   case 83:
 
 /* Line 1455 of yacc.c  */
-#line 365 "../mu32/mut.y"
+#line 365 "../src/kernel/mut.y"
     {}
     break;
 
   case 84:
 
 /* Line 1455 of yacc.c  */
-#line 366 "../mu32/mut.y"
+#line 366 "../src/kernel/mut.y"
     {}
     break;
 
   case 85:
 
 /* Line 1455 of yacc.c  */
-#line 367 "../mu32/mut.y"
+#line 367 "../src/kernel/mut.y"
     {}
     break;
 
   case 86:
 
 /* Line 1455 of yacc.c  */
-#line 368 "../mu32/mut.y"
+#line 368 "../src/kernel/mut.y"
     {}
     break;
 
   case 87:
 
 /* Line 1455 of yacc.c  */
-#line 369 "../mu32/mut.y"
+#line 369 "../src/kernel/mut.y"
     {}
     break;
 
   case 88:
 
 /* Line 1455 of yacc.c  */
-#line 370 "../mu32/mut.y"
+#line 370 "../src/kernel/mut.y"
     {fatal_error(75,FEHLERZEILE);}
     break;
 
   case 89:
 
 /* Line 1455 of yacc.c  */
-#line 376 "../mu32/mut.y"
+#line 376 "../src/kernel/mut.y"
     { get_umstimmung_taste_abs (zahl, (yyvsp[(1) - (3)].integer), NULL); }
     break;
 
   case 90:
 
 /* Line 1455 of yacc.c  */
-#line 378 "../mu32/mut.y"
+#line 378 "../src/kernel/mut.y"
     { get_umstimmung_taste_abs (parameter, 0.0, (yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 91:
 
 /* Line 1455 of yacc.c  */
-#line 383 "../mu32/mut.y"
+#line 383 "../src/kernel/mut.y"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '+'); }
     break;
 
   case 92:
 
 /* Line 1455 of yacc.c  */
-#line 385 "../mu32/mut.y"
+#line 385 "../src/kernel/mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '+'); }
     break;
 
   case 93:
 
 /* Line 1455 of yacc.c  */
-#line 387 "../mu32/mut.y"
+#line 387 "../src/kernel/mut.y"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '-'); }
     break;
 
   case 94:
 
 /* Line 1455 of yacc.c  */
-#line 389 "../mu32/mut.y"
+#line 389 "../src/kernel/mut.y"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '-'); }
     break;
 
   case 95:
 
 /* Line 1455 of yacc.c  */
-#line 394 "../mu32/mut.y"
+#line 394 "../src/kernel/mut.y"
     { get_umstimmung_breite_abs (zahl, (yyvsp[(4) - (7)].integer), NULL); }
     break;
 
   case 96:
 
 /* Line 1455 of yacc.c  */
-#line 396 "../mu32/mut.y"
+#line 396 "../src/kernel/mut.y"
     { get_umstimmung_breite_abs (parameter, 0.0, (yyvsp[(4) - (7)].identifier)); }
     break;
 
   case 97:
 
 /* Line 1455 of yacc.c  */
-#line 401 "../mu32/mut.y"
+#line 401 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '+'); }
     break;
 
   case 98:
 
 /* Line 1455 of yacc.c  */
-#line 403 "../mu32/mut.y"
+#line 403 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '+'); }
     break;
 
   case 99:
 
 /* Line 1455 of yacc.c  */
-#line 405 "../mu32/mut.y"
+#line 405 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '-'); }
     break;
 
   case 100:
 
 /* Line 1455 of yacc.c  */
-#line 407 "../mu32/mut.y"
+#line 407 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '-'); }
     break;
 
   case 101:
 
 /* Line 1455 of yacc.c  */
-#line 409 "../mu32/mut.y"
+#line 409 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '*'); }
     break;
 
   case 102:
 
 /* Line 1455 of yacc.c  */
-#line 411 "../mu32/mut.y"
+#line 411 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '*'); }
     break;
 
   case 103:
 
 /* Line 1455 of yacc.c  */
-#line 413 "../mu32/mut.y"
+#line 413 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '/'); }
     break;
 
   case 104:
 
 /* Line 1455 of yacc.c  */
-#line 415 "../mu32/mut.y"
+#line 415 "../src/kernel/mut.y"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '/'); }
     break;
 
   case 105:
 
 /* Line 1455 of yacc.c  */
-#line 420 "../mu32/mut.y"
+#line 420 "../src/kernel/mut.y"
     { init_umstimm_expression_list (); }
     break;
 
   case 106:
 
 /* Line 1455 of yacc.c  */
-#line 422 "../mu32/mut.y"
+#line 422 "../src/kernel/mut.y"
     { get_umstimmung_tonhoehe_veraendert (); }
     break;
 
   case 107:
 
 /* Line 1455 of yacc.c  */
-#line 429 "../mu32/mut.y"
+#line 429 "../src/kernel/mut.y"
     {}
     break;
 
   case 108:
 
 /* Line 1455 of yacc.c  */
-#line 430 "../mu32/mut.y"
+#line 430 "../src/kernel/mut.y"
     {}
     break;
 
   case 109:
 
 /* Line 1455 of yacc.c  */
-#line 432 "../mu32/mut.y"
+#line 432 "../src/kernel/mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
@@ -2393,28 +2393,28 @@ yyreduce:
   case 110:
 
 /* Line 1455 of yacc.c  */
-#line 435 "../mu32/mut.y"
+#line 435 "../src/kernel/mut.y"
     {}
     break;
 
   case 111:
 
 /* Line 1455 of yacc.c  */
-#line 439 "../mu32/mut.y"
+#line 439 "../src/kernel/mut.y"
     {}
     break;
 
   case 112:
 
 /* Line 1455 of yacc.c  */
-#line 440 "../mu32/mut.y"
+#line 440 "../src/kernel/mut.y"
     {}
     break;
 
   case 113:
 
 /* Line 1455 of yacc.c  */
-#line 445 "../mu32/mut.y"
+#line 445 "../src/kernel/mut.y"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
                    }
@@ -2423,161 +2423,161 @@ yyreduce:
   case 115:
 
 /* Line 1455 of yacc.c  */
-#line 453 "../mu32/mut.y"
+#line 453 "../src/kernel/mut.y"
     { get_new_umstimm_expression ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 116:
 
 /* Line 1455 of yacc.c  */
-#line 454 "../mu32/mut.y"
+#line 454 "../src/kernel/mut.y"
     { get_new_umstimm_expression ("@"); }
     break;
 
   case 117:
 
 /* Line 1455 of yacc.c  */
-#line 456 "../mu32/mut.y"
+#line 456 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 118:
 
 /* Line 1455 of yacc.c  */
-#line 458 "../mu32/mut.y"
+#line 458 "../src/kernel/mut.y"
     { get_new_umstimm_expression_positive ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 119:
 
 /* Line 1455 of yacc.c  */
-#line 459 "../mu32/mut.y"
+#line 459 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 120:
 
 /* Line 1455 of yacc.c  */
-#line 461 "../mu32/mut.y"
+#line 461 "../src/kernel/mut.y"
     { get_new_umstimm_expression_positive ( "@" ); }
     break;
 
   case 121:
 
 /* Line 1455 of yacc.c  */
-#line 462 "../mu32/mut.y"
+#line 462 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 122:
 
 /* Line 1455 of yacc.c  */
-#line 464 "../mu32/mut.y"
+#line 464 "../src/kernel/mut.y"
     { get_new_umstimm_expression_negative ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 123:
 
 /* Line 1455 of yacc.c  */
-#line 465 "../mu32/mut.y"
+#line 465 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 124:
 
 /* Line 1455 of yacc.c  */
-#line 467 "../mu32/mut.y"
+#line 467 "../src/kernel/mut.y"
     { get_new_umstimm_expression_negative ( "@" ); }
     break;
 
   case 125:
 
 /* Line 1455 of yacc.c  */
-#line 472 "../mu32/mut.y"
+#line 472 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 126:
 
 /* Line 1455 of yacc.c  */
-#line 474 "../mu32/mut.y"
+#line 474 "../src/kernel/mut.y"
     { get_umstimmung_wiederholung_abs (); }
     break;
 
   case 127:
 
 /* Line 1455 of yacc.c  */
-#line 475 "../mu32/mut.y"
+#line 475 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 128:
 
 /* Line 1455 of yacc.c  */
-#line 477 "../mu32/mut.y"
+#line 477 "../src/kernel/mut.y"
     { get_umstimmung_wiederholung_abs_negative (); }
     break;
 
   case 129:
 
 /* Line 1455 of yacc.c  */
-#line 481 "../mu32/mut.y"
+#line 481 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 130:
 
 /* Line 1455 of yacc.c  */
-#line 483 "../mu32/mut.y"
+#line 483 "../src/kernel/mut.y"
     { get_umstimmung_wiederholung_rel_positive (); }
     break;
 
   case 131:
 
 /* Line 1455 of yacc.c  */
-#line 484 "../mu32/mut.y"
+#line 484 "../src/kernel/mut.y"
     { init_komplex_ton_list (); }
     break;
 
   case 132:
 
 /* Line 1455 of yacc.c  */
-#line 486 "../mu32/mut.y"
+#line 486 "../src/kernel/mut.y"
     { get_umstimmung_wiederholung_rel_negative (); }
     break;
 
   case 133:
 
 /* Line 1455 of yacc.c  */
-#line 490 "../mu32/mut.y"
+#line 490 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 134:
 
 /* Line 1455 of yacc.c  */
-#line 492 "../mu32/mut.y"
+#line 492 "../src/kernel/mut.y"
     { get_umstimmung_umstimmungs_bund (); }
     break;
 
   case 135:
 
 /* Line 1455 of yacc.c  */
-#line 496 "../mu32/mut.y"
+#line 496 "../src/kernel/mut.y"
     {}
     break;
 
   case 136:
 
 /* Line 1455 of yacc.c  */
-#line 497 "../mu32/mut.y"
+#line 497 "../src/kernel/mut.y"
     {}
     break;
 
   case 137:
 
 /* Line 1455 of yacc.c  */
-#line 501 "../mu32/mut.y"
+#line 501 "../src/kernel/mut.y"
     { init_argument_liste (); 
                        get_new_aktion_aufruf_element ((yyvsp[(1) - (1)].identifier)); }
     break;
@@ -2585,231 +2585,231 @@ yyreduce:
   case 138:
 
 /* Line 1455 of yacc.c  */
-#line 503 "../mu32/mut.y"
+#line 503 "../src/kernel/mut.y"
     { init_argument_liste (); }
     break;
 
   case 139:
 
 /* Line 1455 of yacc.c  */
-#line 505 "../mu32/mut.y"
+#line 505 "../src/kernel/mut.y"
     { get_new_aktion_aufruf_element ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 140:
 
 /* Line 1455 of yacc.c  */
-#line 507 "../mu32/mut.y"
+#line 507 "../src/kernel/mut.y"
     { init_integersequenz ();}
     break;
 
   case 141:
 
 /* Line 1455 of yacc.c  */
-#line 509 "../mu32/mut.y"
+#line 509 "../src/kernel/mut.y"
     { get_new_aktion_midi_out_element (); }
     break;
 
   case 142:
 
 /* Line 1455 of yacc.c  */
-#line 513 "../mu32/mut.y"
+#line 513 "../src/kernel/mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 143:
 
 /* Line 1455 of yacc.c  */
-#line 515 "../mu32/mut.y"
+#line 515 "../src/kernel/mut.y"
     { get_umstimmung_umstimm_case_zahl ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 144:
 
 /* Line 1455 of yacc.c  */
-#line 516 "../mu32/mut.y"
+#line 516 "../src/kernel/mut.y"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 145:
 
 /* Line 1455 of yacc.c  */
-#line 518 "../mu32/mut.y"
+#line 518 "../src/kernel/mut.y"
     { get_umstimmung_umstimm_case_parameter ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 146:
 
 /* Line 1455 of yacc.c  */
-#line 522 "../mu32/mut.y"
+#line 522 "../src/kernel/mut.y"
     {}
     break;
 
   case 147:
 
 /* Line 1455 of yacc.c  */
-#line 523 "../mu32/mut.y"
+#line 523 "../src/kernel/mut.y"
     {}
     break;
 
   case 148:
 
 /* Line 1455 of yacc.c  */
-#line 528 "../mu32/mut.y"
+#line 528 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 149:
 
 /* Line 1455 of yacc.c  */
-#line 530 "../mu32/mut.y"
+#line 530 "../src/kernel/mut.y"
     { get_umstimmungs_case_zahl_element ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 150:
 
 /* Line 1455 of yacc.c  */
-#line 532 "../mu32/mut.y"
+#line 532 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 151:
 
 /* Line 1455 of yacc.c  */
-#line 534 "../mu32/mut.y"
+#line 534 "../src/kernel/mut.y"
     { get_umstimmungs_case_zahl_element (-((yyvsp[(2) - (6)].integer))); }
     break;
 
   case 152:
 
 /* Line 1455 of yacc.c  */
-#line 536 "../mu32/mut.y"
+#line 536 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 153:
 
 /* Line 1455 of yacc.c  */
-#line 538 "../mu32/mut.y"
+#line 538 "../src/kernel/mut.y"
     { get_umstimmungs_case_default_element (); }
     break;
 
   case 154:
 
 /* Line 1455 of yacc.c  */
-#line 543 "../mu32/mut.y"
+#line 543 "../src/kernel/mut.y"
     { init_integersequenz ();}
     break;
 
   case 155:
 
 /* Line 1455 of yacc.c  */
-#line 545 "../mu32/mut.y"
+#line 545 "../src/kernel/mut.y"
     { get_umstimmung_midi_out (); }
     break;
 
   case 156:
 
 /* Line 1455 of yacc.c  */
-#line 550 "../mu32/mut.y"
+#line 550 "../src/kernel/mut.y"
     {}
     break;
 
   case 157:
 
 /* Line 1455 of yacc.c  */
-#line 554 "../mu32/mut.y"
+#line 554 "../src/kernel/mut.y"
     {}
     break;
 
   case 158:
 
 /* Line 1455 of yacc.c  */
-#line 555 "../mu32/mut.y"
+#line 555 "../src/kernel/mut.y"
     {}
     break;
 
   case 159:
 
 /* Line 1455 of yacc.c  */
-#line 560 "../mu32/mut.y"
+#line 560 "../src/kernel/mut.y"
     { init_tastenliste (); }
     break;
 
   case 160:
 
 /* Line 1455 of yacc.c  */
-#line 562 "../mu32/mut.y"
+#line 562 "../src/kernel/mut.y"
     { get_new_harmonie ((yyvsp[(1) - (7)].identifier), (yyvsp[(7) - (7)].integer)); }
     break;
 
   case 161:
 
 /* Line 1455 of yacc.c  */
-#line 564 "../mu32/mut.y"
+#line 564 "../src/kernel/mut.y"
     { fatal_error(76, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 162:
 
 /* Line 1455 of yacc.c  */
-#line 568 "../mu32/mut.y"
+#line 568 "../src/kernel/mut.y"
     { (yyval.integer) = -1; }
     break;
 
   case 163:
 
 /* Line 1455 of yacc.c  */
-#line 569 "../mu32/mut.y"
+#line 569 "../src/kernel/mut.y"
     { (yyval.integer) = (yyvsp[(2) - (2)].integer); }
     break;
 
   case 164:
 
 /* Line 1455 of yacc.c  */
-#line 573 "../mu32/mut.y"
+#line 573 "../src/kernel/mut.y"
     {}
     break;
 
   case 165:
 
 /* Line 1455 of yacc.c  */
-#line 574 "../mu32/mut.y"
+#line 574 "../src/kernel/mut.y"
     {}
     break;
 
   case 166:
 
 /* Line 1455 of yacc.c  */
-#line 578 "../mu32/mut.y"
+#line 578 "../src/kernel/mut.y"
     { get_new_taste ( (yyvsp[(1) - (1)].integer), '+'); }
     break;
 
   case 167:
 
 /* Line 1455 of yacc.c  */
-#line 579 "../mu32/mut.y"
+#line 579 "../src/kernel/mut.y"
     { get_new_taste ( (yyvsp[(2) - (2)].integer), '*'); }
     break;
 
   case 168:
 
 /* Line 1455 of yacc.c  */
-#line 583 "../mu32/mut.y"
+#line 583 "../src/kernel/mut.y"
     {}
     break;
 
   case 169:
 
 /* Line 1455 of yacc.c  */
-#line 587 "../mu32/mut.y"
+#line 587 "../src/kernel/mut.y"
     {}
     break;
 
   case 170:
 
 /* Line 1455 of yacc.c  */
-#line 588 "../mu32/mut.y"
+#line 588 "../src/kernel/mut.y"
     { init_ausloeser ();
                          /* fr die Anfangsausloesung der Logik */
                        }
@@ -2818,14 +2818,14 @@ yyreduce:
   case 171:
 
 /* Line 1455 of yacc.c  */
-#line 591 "../mu32/mut.y"
+#line 591 "../src/kernel/mut.y"
     {}
     break;
 
   case 172:
 
 /* Line 1455 of yacc.c  */
-#line 596 "../mu32/mut.y"
+#line 596 "../src/kernel/mut.y"
     { get_new_logik ((yyvsp[(1) - (4)].identifier), NULL);
                 init_anweisungs_liste (); }
     break;
@@ -2833,14 +2833,14 @@ yyreduce:
   case 173:
 
 /* Line 1455 of yacc.c  */
-#line 599 "../mu32/mut.y"
+#line 599 "../src/kernel/mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 174:
 
 /* Line 1455 of yacc.c  */
-#line 601 "../mu32/mut.y"
+#line 601 "../src/kernel/mut.y"
     { get_new_logik ((yyvsp[(1) - (5)].identifier), (yyvsp[(4) - (5)].identifier));
                 init_anweisungs_liste (); }
     break;
@@ -2848,217 +2848,217 @@ yyreduce:
   case 175:
 
 /* Line 1455 of yacc.c  */
-#line 604 "../mu32/mut.y"
+#line 604 "../src/kernel/mut.y"
     { vervollstaendige_logik (); }
     break;
 
   case 176:
 
 /* Line 1455 of yacc.c  */
-#line 608 "../mu32/mut.y"
+#line 608 "../src/kernel/mut.y"
     {}
     break;
 
   case 177:
 
 /* Line 1455 of yacc.c  */
-#line 609 "../mu32/mut.y"
+#line 609 "../src/kernel/mut.y"
     {}
     break;
 
   case 178:
 
 /* Line 1455 of yacc.c  */
-#line 614 "../mu32/mut.y"
+#line 614 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 179:
 
 /* Line 1455 of yacc.c  */
-#line 616 "../mu32/mut.y"
+#line 616 "../src/kernel/mut.y"
     { get_new_anweisung (); }
     break;
 
   case 180:
 
 /* Line 1455 of yacc.c  */
-#line 618 "../mu32/mut.y"
+#line 618 "../src/kernel/mut.y"
     { init_aktions_liste (); }
     break;
 
   case 181:
 
 /* Line 1455 of yacc.c  */
-#line 620 "../mu32/mut.y"
+#line 620 "../src/kernel/mut.y"
     { get_new_anweisung (); }
     break;
 
   case 182:
 
 /* Line 1455 of yacc.c  */
-#line 625 "../mu32/mut.y"
+#line 625 "../src/kernel/mut.y"
     { get_harmoniebezeichner (  (yyvsp[(1) - (5)].integer), (yyvsp[(3) - (5)].identifier),  (yyvsp[(5) - (5)].integer)); }
     break;
 
   case 183:
 
 /* Line 1455 of yacc.c  */
-#line 627 "../mu32/mut.y"
+#line 627 "../src/kernel/mut.y"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (3)].identifier),  (yyvsp[(3) - (3)].integer)); }
     break;
 
   case 184:
 
 /* Line 1455 of yacc.c  */
-#line 629 "../mu32/mut.y"
+#line 629 "../src/kernel/mut.y"
     { get_harmoniebezeichner (  (yyvsp[(1) - (3)].integer), (yyvsp[(3) - (3)].identifier), -1); }
     break;
 
   case 185:
 
 /* Line 1455 of yacc.c  */
-#line 631 "../mu32/mut.y"
+#line 631 "../src/kernel/mut.y"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (1)].identifier), -1); }
     break;
 
   case 186:
 
 /* Line 1455 of yacc.c  */
-#line 635 "../mu32/mut.y"
+#line 635 "../src/kernel/mut.y"
     { get_ausloeser_default (); }
     break;
 
   case 187:
 
 /* Line 1455 of yacc.c  */
-#line 636 "../mu32/mut.y"
+#line 636 "../src/kernel/mut.y"
     { get_ausloeser_harmonie (); }
     break;
 
   case 188:
 
 /* Line 1455 of yacc.c  */
-#line 637 "../mu32/mut.y"
+#line 637 "../src/kernel/mut.y"
     { get_ausloeser_harmonie_form (); }
     break;
 
   case 189:
 
 /* Line 1455 of yacc.c  */
-#line 638 "../mu32/mut.y"
+#line 638 "../src/kernel/mut.y"
     { get_ausloeser_taste ((yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 190:
 
 /* Line 1455 of yacc.c  */
-#line 639 "../mu32/mut.y"
+#line 639 "../src/kernel/mut.y"
     { init_integersequenz (); }
     break;
 
   case 191:
 
 /* Line 1455 of yacc.c  */
-#line 641 "../mu32/mut.y"
+#line 641 "../src/kernel/mut.y"
     { get_ausloeser_midi_in (); }
     break;
 
   case 192:
 
 /* Line 1455 of yacc.c  */
-#line 646 "../mu32/mut.y"
+#line 646 "../src/kernel/mut.y"
     { get_new_integer_in_integersequenz ((yyvsp[(1) - (1)].integer));}
     break;
 
   case 193:
 
 /* Line 1455 of yacc.c  */
-#line 648 "../mu32/mut.y"
+#line 648 "../src/kernel/mut.y"
     { get_new_integer_in_integersequenz ((yyvsp[(3) - (3)].integer));}
     break;
 
   case 194:
 
 /* Line 1455 of yacc.c  */
-#line 649 "../mu32/mut.y"
+#line 649 "../src/kernel/mut.y"
     { fatal_error( 77, FEHLERZEILE ); }
     break;
 
   case 195:
 
 /* Line 1455 of yacc.c  */
-#line 654 "../mu32/mut.y"
+#line 654 "../src/kernel/mut.y"
     {}
     break;
 
   case 196:
 
 /* Line 1455 of yacc.c  */
-#line 658 "../mu32/mut.y"
+#line 658 "../src/kernel/mut.y"
     {}
     break;
 
   case 197:
 
 /* Line 1455 of yacc.c  */
-#line 659 "../mu32/mut.y"
+#line 659 "../src/kernel/mut.y"
     {}
     break;
 
   case 198:
 
 /* Line 1455 of yacc.c  */
-#line 664 "../mu32/mut.y"
+#line 664 "../src/kernel/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (4)].integer), (yyvsp[(4) - (4)].integer), (yyvsp[(4) - (4)].integer), 0, & list_of_instrumente); }
     break;
 
   case 199:
 
 /* Line 1455 of yacc.c  */
-#line 666 "../mu32/mut.y"
+#line 666 "../src/kernel/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), (yyvsp[(4) - (6)].integer), (yyvsp[(6) - (6)].integer), 0, & list_of_instrumente); }
     break;
 
   case 200:
 
 /* Line 1455 of yacc.c  */
-#line 668 "../mu32/mut.y"
+#line 668 "../src/kernel/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), 0, 0, (yyvsp[(5) - (6)].integer), & list_of_instrumente); }
     break;
 
   case 201:
 
 /* Line 1455 of yacc.c  */
-#line 670 "../mu32/mut.y"
+#line 670 "../src/kernel/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(6) - (7)].integer), & list_of_instrumente); }
     break;
 
   case 202:
 
 /* Line 1455 of yacc.c  */
-#line 672 "../mu32/mut.y"
+#line 672 "../src/kernel/mut.y"
     { get_instrument_dekl ((yyvsp[(1) - (9)].integer), (yyvsp[(4) - (9)].integer), (yyvsp[(6) - (9)].integer), (yyvsp[(8) - (9)].integer), & list_of_instrumente); }
     break;
 
   case 203:
 
 /* Line 1455 of yacc.c  */
-#line 676 "../mu32/mut.y"
+#line 676 "../src/kernel/mut.y"
     { (yyval.f_value) = (yyvsp[(1) - (1)].f_value) ; }
     break;
 
   case 204:
 
 /* Line 1455 of yacc.c  */
-#line 677 "../mu32/mut.y"
+#line 677 "../src/kernel/mut.y"
     { (yyval.f_value) = (double) (yyvsp[(1) - (1)].integer) ; }
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 3062 "../mu32/mut.h"
+#line 3062 "../src/kernel/mut.h"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -3277,7 +3277,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 681 "../mu32/mut.y"
+#line 681 "../src/kernel/mut.y"
 
 /// \todo check whether this function is necessary for any system but windows
 #ifdef __WXMSW__

@@ -155,11 +155,11 @@
  * Prevent from double inclusion
  *
  *************************************************************************
- * \dir muwx
- * The directory muwx contains the wxWidgets frontend classes of Mutabor.
+ * \dir src/wxGUI
+ * The directory src/wxGUI contains the wxWidgets frontend classes of Mutabor.
  *************************************************************************
  *
- * \defgroup muwx wxWidgets Mutabor GUI
+ * \defgroup src/wxGUI wxWidgets Mutabor GUI
  * While the original frontend of Mutabor was designed using Borland OWL
  * the current one uses the platform independent environment provided by
  * wxWidgets.
@@ -177,9 +177,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutDocManager.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutDocManager.h"
 
 #ifndef MUWX_MUTAPP_H_PRECOMPILED
 #define MUWX_MUTAPP_H_PRECOMPILED

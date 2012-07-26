@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/GSP_File.h,v 1.5 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GSP_File.h,v 1.5 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -47,8 +47,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/gmn/GSP.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/gmn/GSP.h"
 
 #ifndef MU32_ROUTING_GMN_GSP_FILE_H_PRECOMPILED
 #define MU32_ROUTING_GMN_GSP_FILE_H_PRECOMPILED

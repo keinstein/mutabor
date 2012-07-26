@@ -2,7 +2,7 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/GrafKern.cpp,v 1.19 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/GrafKern.cpp,v 1.19 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.19 $
@@ -86,18 +86,18 @@
 // Ausgabe-Funktionen
 // ------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mywx/mutDebug.h"
-#include "mu32/Global.h"
-#include "mu32/Interpre.h"
-#include "mu32/GrafKern.h"
-#include "mu32/Interval.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mutDebug.h"
+#include "src/kernel/Global.h"
+#include "src/kernel/Interpre.h"
+#include "src/kernel/GrafKern.h"
+#include "src/kernel/Interval.h"
 //#include "Mutabor.rh"
-#include "mu32/Execute.h"
+#include "src/kernel/Execute.h"
 #include <setjmp.h>
 
 // Needed at least for Visual C++ 8
-#include "mu32/Runtime.h"
+#include "src/kernel/Runtime.h"
 
 #ifdef MUTWIN
 #ifdef WX

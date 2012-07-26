@@ -1,17 +1,9 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 DLLCOPYPATTERN = \(wx\|mingw\)
-SUBDIRS = missfunc po wxintl includes . doc #intl# libmutabor .
+SUBDIRS = po lib src . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
-AM_CPPFLAGS = -I$(srcdir)/mu32 \
-	-I$(srcdir)/mu32/routing \
-	-I$(srcdir)/mu32/routing/midi \
-	-I$(srcdir)/mu32/routing/gmn \
-	-I$(srcdir)/muwx -I$(srcdir)/rtmidi \
-	-I$(srcdir)/muwx/Routing \
-	-I$(srcdir)/mywx \
-	-I$(top_srcdir)/xrc -I$(top_srcdir)/libs/includes \
-	@NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
+AM_CPPFLAGS = -I$(top_srcdir)/lib/rtmidi @NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
@@ -23,13 +15,12 @@ INDENT = astyle --style=linux --indent=tab=8
 EXTRA_DIST = config.rpath \
 	m4/ChangeLog  \
 	debian \
-	libasprintf \
-	muwx/Icon \
-	muwx/bitmaps \
-	$(top_srcdir)/mu32/mut.y \
-	xrc/wxresource.cpp \
-	xrc/wxresource.h \
-	xrc/reslocale.cpp \
+	lib/libasprintf \
+	Images \
+	$(top_srcdir)/src/kernel/mut.y \
+	src/xrc/wxresource.cpp \
+	src/xrc/wxresource.h \
+	src/xrc/reslocale.cpp \
 	osdep/macosx/Application_Code.txt \
 	osdep/macosx/background.png \
 	osdep/macosx/background.svg \
@@ -42,63 +33,63 @@ EXTRA_DIST = config.rpath \
 	osdep/win/Mutabor.nsi.in \
 	osdep/win/Mutabor.sln \
 	osdep/win/muwx.vcxproj \
-	muwx/Mutabor.rc \
-	MUT_ENG/cdur.mus \
-	MUT_ENG/cohen.mus \
-	MUT_ENG/demo.mus \
-	MUT_ENG/demos.mus \
-	MUT_ENG/extern.mus \
-	MUT_ENG/instr.mus \
-	MUT_ENG/midi.mus \
-	MUT_ENG/nix.mus \
-	MUT_GER/Cdur.mut \
-	MUT_GER/Cohen.mut \
-	MUT_GER/Demo.mut \
-	MUT_GER/Demos.mut \
-	MUT_GER/Demo-utf8.mut \
-	MUT_GER/Extern.mut \
-	MUT_GER/Instr.mut \
-	MUT_GER/Midi.mut \
-	MUT_GER/Nix.mut
+	src/wxGUI/Mutabor.rc \
+	Examples/english/cdur.mut \
+	Examples/english/cohen.mut \
+	Examples/english/demo.mut \
+	Examples/english/demos.mut \
+	Examples/english/extern.mut \
+	Examples/english/instr.mut \
+	Examples/english/midi.mut \
+	Examples/english/nix.mut \
+	Examples/german/Cdur.mut \
+	Examples/german/Cohen.mut \
+	Examples/german/Demo.mut \
+	Examples/german/Demos.mut \
+	Examples/german/Demo-utf8.mut \
+	Examples/german/Extern.mut \
+	Examples/german/Instr.mut \
+	Examples/german/Midi.mut \
+	Examples/german/Nix.mut
 
 # Please use Tango names for new files
 # http://tango.freedesktop.org/Tango_Desktop_Project
-dist_pkgdata_DATA = xrc/Mutabor.xrc \
+dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 	Images/about.png \
 	Images/about.xpm \
-	Icons/png/NewInputDevice.png \
-	Icons/png/InputDevice.png \
-	Icons/png/NewOutputDevice.png \
-	Icons/png/OutputDevice.png \
-	Icons/png/MidiFile.png \
-	Icons/png/GuidoFile.png \
-	Icons/png/ActiveChannel.png \
-	Icons/png/PassiveChannel.png \
-	Icons/png/TuningBox.png \
-	Icons/png/document-new.png \
-	Icons/png/document-open.png \
-	Icons/png/document-save.png \
-	Icons/png/document-save-as.png \
-	Icons/png/document-print.png \
-	Icons/png/ActivateMutabor.png \
-	Icons/png/StopMutabor.png \
-	Icons/png/Panic.png \
-	Icons/png/edit-copy.png \
-	Icons/png/edit-cut.png \
-	Icons/png/edit-paste.png \
-	Icons/png/edit-undo.png \
-	Icons/png/edit-redo.png \
-	Icons/png/RouteLoad.png \
-	Icons/png/RouteSave.png \
-	Icons/png/InDevPlay.png \
-	Icons/png/InDevStop.png \
-	Icons/png/InDevPause.png \
-	Icons/png/help-browser.png
+	Images/Icons/png/NewInputDevice.png \
+	Images/Icons/png/InputDevice.png \
+	Images/Icons/png/NewOutputDevice.png \
+	Images/Icons/png/OutputDevice.png \
+	Images/Icons/png/MidiFile.png \
+	Images/Icons/png/GuidoFile.png \
+	Images/Icons/png/ActiveChannel.png \
+	Images/Icons/png/PassiveChannel.png \
+	Images/Icons/png/TuningBox.png \
+	Images/Icons/png/document-new.png \
+	Images/Icons/png/document-open.png \
+	Images/Icons/png/document-save.png \
+	Images/Icons/png/document-save-as.png \
+	Images/Icons/png/document-print.png \
+	Images/Icons/png/ActivateMutabor.png \
+	Images/Icons/png/StopMutabor.png \
+	Images/Icons/png/Panic.png \
+	Images/Icons/png/edit-copy.png \
+	Images/Icons/png/edit-cut.png \
+	Images/Icons/png/edit-paste.png \
+	Images/Icons/png/edit-undo.png \
+	Images/Icons/png/edit-redo.png \
+	Images/Icons/png/RouteLoad.png \
+	Images/Icons/png/RouteSave.png \
+	Images/Icons/png/InDevPlay.png \
+	Images/Icons/png/InDevStop.png \
+	Images/Icons/png/InDevPause.png \
+	Images/Icons/png/help-browser.png
 #RECURSIVE_TARGETS += mac-recursive
 BUILT_SOURCES = \
-	$(top_srcdir)/mu32/mut.cpp \
-	$(top_srcdir)/mu32/mut.h \
-	$(top_srcdir)/xrc/wxresource.h \
+	$(top_srcdir)/src/kernel/mut.cpp \
+	$(top_srcdir)/src/kernel/mut.h \
+	$(top_srcdir)/src/xrc/wxresource.h \
 	$(top_srcdir)/osdep/win/Mutabor.nsi
 
 if COND_PRECOMP_CXX
@@ -109,162 +100,162 @@ endif
 bin_PROGRAMS = mutabor
 
 INLINEHEADERS = \
-		mu32/routing/Device-inlines.h \
-		mu32/routing/Route-inlines.h \
-		muwx/GUIBoxData-inlines.h \
-		muwx/Routing/GUIRoute-inlines.h 
+		src/kernel/routing/Device-inlines.h \
+		src/kernel/routing/Route-inlines.h \
+		src/wxGUI/GUIBoxData-inlines.h \
+		src/wxGUI/Routing/GUIRoute-inlines.h 
 
 
 INDENTHEADERS = \
-		mu32/Defs.h \
-		mu32/routing/gmn/DevGIS.h \
-		mu32/routing/gmn/GIS_Head.h \
-		mu32/routing/gmn/GIS.h \
-		mu32/routing/gmn/GSP_File.h \
-		mu32/routing/gmn/GSP.h \
-		mu32/routing/midi/DevMidF.h \
-		mu32/routing/midi/DevMidi.h \
-		mu32/routing/Device.h \
-		mu32/routing/Route.h \
-		mu32/routing/RouteCompat.h \
-		mu32/box.h \
-		mu32/Errors.h \
-		mu32/Execute.h \
-		mu32/Frac.h \
-		mu32/Global.h \
-		mu32/GrafKern.h \
-		mu32/Hilfs.h \
-		mu32/Interpre.h \
-		mu32/Interval.h \
-		mu32/MidiKern.h \
-		mu32/Runtime.h \
-		mu32/treestorage.h \
-		muwx/Routing/BoxChannelShape.h \
-		muwx/Routing/BoxDlg.h \
-		muwx/Routing/BoxIconShape.h \
-		muwx/Routing/BoxShape.h \
-		muwx/Routing/DebugRoute.h \
-		muwx/Routing/DeviceShape.h \
-		muwx/Routing/GUIRoute.h \
-		muwx/Routing/InputDevDlg.h \
-		muwx/Routing/InputDeviceShape.h \
-		muwx/Routing/InputGuidoFileDeviceShape.h \
-		muwx/Routing/InputMidiDeviceShape.h \
-		muwx/Routing/InputMidiFileDeviceShape.h \
-		muwx/Routing/NewBoxShape.h \
-		muwx/Routing/NewInputDeviceShape.h \
-		muwx/Routing/NewOutputDeviceShape.h \
-		muwx/Routing/OutputDevDlg.h \
-		muwx/Routing/OutputDeviceShape.h \
-		muwx/Routing/OutputGuidoFileDeviceShape.h \
-		muwx/Routing/OutputMidiDeviceShape.h \
-		muwx/Routing/OutputMidiFileDeviceShape.h \
-		muwx/Routing/RouteIcons.h \
-		muwx/Routing/RouteLists.h \
-		muwx/Action.h \
-		muwx/GUIBoxData.h \
-		muwx/MutBitmaps.h \
-		muwx/Mutabor.rh \
-		muwx/CompDlg.h \
-		muwx/configtree.h \
-		muwx/IconShape.h \
-		muwx/MutApp.h \
-		muwx/MutChild.h \
-		muwx/MutConfDlg.h \
-		muwx/MutDocManager.h \
-		muwx/MutDocument.h \
-		muwx/MutEditFile.h \
-		muwx/MutFrame.h \
-		muwx/MutIcon.h \
-		muwx/MutLogicWnd.h \
-		muwx/MutRouteWnd.h \
-		muwx/MutTextBox.h \
-		muwx/MutView.h \
-		muwx/Panel.h \
-		muwx/resourceload.h \
-		muwx/stclanguage.h \
-		mywx/mhArray.h \
-		mywx/mhDefs.h \
-		mywx/muconvauto.h \
-		mywx/mutDebug.h \
-		mywx/valNum.h \
-		mywx/valRadio.h \
-		rtmidi/RtError.h \
-		rtmidi/RtMidi.h
+		src/kernel/Defs.h \
+		src/kernel/routing/gmn/DevGIS.h \
+		src/kernel/routing/gmn/GIS_Head.h \
+		src/kernel/routing/gmn/GIS.h \
+		src/kernel/routing/gmn/GSP_File.h \
+		src/kernel/routing/gmn/GSP.h \
+		src/kernel/routing/midi/DevMidF.h \
+		src/kernel/routing/midi/DevMidi.h \
+		src/kernel/routing/Device.h \
+		src/kernel/routing/Route.h \
+		src/kernel/routing/RouteCompat.h \
+		src/kernel/box.h \
+		src/kernel/Errors.h \
+		src/kernel/Execute.h \
+		src/kernel/Frac.h \
+		src/kernel/Global.h \
+		src/kernel/GrafKern.h \
+		src/kernel/Hilfs.h \
+		src/kernel/Interpre.h \
+		src/kernel/Interval.h \
+		src/kernel/MidiKern.h \
+		src/kernel/Runtime.h \
+		src/kernel/treestorage.h \
+		src/wxGUI/Routing/BoxChannelShape.h \
+		src/wxGUI/Routing/BoxDlg.h \
+		src/wxGUI/Routing/BoxIconShape.h \
+		src/wxGUI/Routing/BoxShape.h \
+		src/wxGUI/Routing/DebugRoute.h \
+		src/wxGUI/Routing/DeviceShape.h \
+		src/wxGUI/Routing/GUIRoute.h \
+		src/wxGUI/Routing/InputDevDlg.h \
+		src/wxGUI/Routing/InputDeviceShape.h \
+		src/wxGUI/Routing/InputGuidoFileDeviceShape.h \
+		src/wxGUI/Routing/InputMidiDeviceShape.h \
+		src/wxGUI/Routing/InputMidiFileDeviceShape.h \
+		src/wxGUI/Routing/NewBoxShape.h \
+		src/wxGUI/Routing/NewInputDeviceShape.h \
+		src/wxGUI/Routing/NewOutputDeviceShape.h \
+		src/wxGUI/Routing/OutputDevDlg.h \
+		src/wxGUI/Routing/OutputDeviceShape.h \
+		src/wxGUI/Routing/OutputGuidoFileDeviceShape.h \
+		src/wxGUI/Routing/OutputMidiDeviceShape.h \
+		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
+		src/wxGUI/Routing/RouteIcons.h \
+		src/wxGUI/Routing/RouteLists.h \
+		src/wxGUI/Action.h \
+		src/wxGUI/GUIBoxData.h \
+		src/wxGUI/MutBitmaps.h \
+		src/wxGUI/Mutabor.rh \
+		src/wxGUI/CompDlg.h \
+		src/wxGUI/configtree.h \
+		src/wxGUI/IconShape.h \
+		src/wxGUI/MutApp.h \
+		src/wxGUI/MutChild.h \
+		src/wxGUI/MutConfDlg.h \
+		src/wxGUI/MutDocManager.h \
+		src/wxGUI/MutDocument.h \
+		src/wxGUI/MutEditFile.h \
+		src/wxGUI/MutFrame.h \
+		src/wxGUI/MutIcon.h \
+		src/wxGUI/MutLogicWnd.h \
+		src/wxGUI/MutRouteWnd.h \
+		src/wxGUI/MutTextBox.h \
+		src/wxGUI/MutView.h \
+		src/wxGUI/Panel.h \
+		src/wxGUI/resourceload.h \
+		src/wxGUI/stclanguage.h \
+		src/wxGUI/generic/mhArray.h \
+		src/wxGUI/generic/mhDefs.h \
+		src/wxGUI/generic/muconvauto.h \
+		src/wxGUI/generic/mutDebug.h \
+		src/wxGUI/generic/valNum.h \
+		src/wxGUI/generic/valRadio.h \
+		lib/rtmidi/RtError.h \
+		lib/rtmidi/RtMidi.h
 
 mutabor_INDENTS = \
-		mu32/routing/gmn/DevGIS.cpp \
-		mu32/routing/gmn/GIS_Head.cpp \
-		mu32/routing/gmn/GIS.cpp \
-		mu32/routing/gmn/GSP_Err.cpp \
-		mu32/routing/gmn/GSP_File.cpp \
-		mu32/routing/gmn/GSP.cpp \
-		mu32/routing/midi/DevMidF.cpp \
-		mu32/routing/midi/DevMidi.cpp \
-		mu32/routing/Device.cpp \
-		mu32/routing/Route.cpp \
-		mu32/routing/RouteCompat.cpp \
-		mu32/box.cpp \
-		mu32/Errors.cpp \
-		mu32/Execute.cpp \
-		mu32/Frac.cpp \
-		mu32/GrafKern.cpp \
-		mu32/Hilfs.cpp \
-		mu32/Interval.cpp \
-		mu32/Parser.cpp \
-		mu32/Runtime.cpp \
-		mu32/TabGen.cpp \
-		muwx/Routing/BoxChannelShape.cpp \
-		muwx/Routing/BoxDlg.cpp \
-		muwx/Routing/BoxIconShape.cpp \
-		muwx/Routing/BoxShape.cpp \
-		muwx/Routing/DebugRoute.cpp \
-		muwx/Routing/DeviceShape.cpp \
-		muwx/Routing/GUIRoute.cpp \
-		muwx/Routing/InputDevDlg.cpp \
-		muwx/Routing/InputDeviceShape.cpp \
-		muwx/Routing/InputGuidoFileDeviceShape.cpp \
-		muwx/Routing/InputMidiDeviceShape.cpp \
-		muwx/Routing/InputMidiFileDeviceShape.cpp \
-		muwx/Routing/NewBoxShape.cpp \
-		muwx/Routing/NewInputDeviceShape.cpp \
-		muwx/Routing/NewOutputDeviceShape.cpp \
-		muwx/Routing/OutputDevDlg.cpp \
-		muwx/Routing/OutputDeviceShape.cpp \
-		muwx/Routing/OutputGuidoFileDeviceShape.cpp \
-		muwx/Routing/OutputMidiDeviceShape.cpp \
-		muwx/Routing/OutputMidiFileDeviceShape.cpp \
-		muwx/Routing/RouteIcons.cpp \
-		muwx/Action.cpp \
-		muwx/GUIBoxData.cpp \
-		muwx/MutBitmaps.cpp \
-		muwx/CompDlg.cpp \
-		muwx/configtree.cpp \
-		muwx/IconShape.cpp \
-		muwx/MutApp.cpp \
-		muwx/MutChild.cpp \
-		muwx/MutDocManager.cpp \
-		muwx/MutDocument.cpp \
-		muwx/MutEditFile.cpp \
-		muwx/MutFrame.cpp \
-		muwx/MutIcon.cpp \
-		muwx/MutLogicWnd.cpp \
-		muwx/MutRouteWnd.cpp  \
-		muwx/MutTextBox.cpp \
-		muwx/MutView.cpp \
-		muwx/Panel.cpp \
-		muwx/stclanguage.cpp \
-		mywx/muconvauto.cpp \
-		mywx/mutDebug.cpp \
-		mywx/mxDefs.cpp \
-		mywx/valNum.cpp \
-		mywx/valRadio.cpp \
-		rtmidi/RtMidi.cpp
+		src/kernel/routing/gmn/DevGIS.cpp \
+		src/kernel/routing/gmn/GIS_Head.cpp \
+		src/kernel/routing/gmn/GIS.cpp \
+		src/kernel/routing/gmn/GSP_Err.cpp \
+		src/kernel/routing/gmn/GSP_File.cpp \
+		src/kernel/routing/gmn/GSP.cpp \
+		src/kernel/routing/midi/DevMidF.cpp \
+		src/kernel/routing/midi/DevMidi.cpp \
+		src/kernel/routing/Device.cpp \
+		src/kernel/routing/Route.cpp \
+		src/kernel/routing/RouteCompat.cpp \
+		src/kernel/box.cpp \
+		src/kernel/Errors.cpp \
+		src/kernel/Execute.cpp \
+		src/kernel/Frac.cpp \
+		src/kernel/GrafKern.cpp \
+		src/kernel/Hilfs.cpp \
+		src/kernel/Interval.cpp \
+		src/kernel/Parser.cpp \
+		src/kernel/Runtime.cpp \
+		src/kernel/TabGen.cpp \
+		src/wxGUI/Routing/BoxChannelShape.cpp \
+		src/wxGUI/Routing/BoxDlg.cpp \
+		src/wxGUI/Routing/BoxIconShape.cpp \
+		src/wxGUI/Routing/BoxShape.cpp \
+		src/wxGUI/Routing/DebugRoute.cpp \
+		src/wxGUI/Routing/DeviceShape.cpp \
+		src/wxGUI/Routing/GUIRoute.cpp \
+		src/wxGUI/Routing/InputDevDlg.cpp \
+		src/wxGUI/Routing/InputDeviceShape.cpp \
+		src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp \
+		src/wxGUI/Routing/InputMidiDeviceShape.cpp \
+		src/wxGUI/Routing/InputMidiFileDeviceShape.cpp \
+		src/wxGUI/Routing/NewBoxShape.cpp \
+		src/wxGUI/Routing/NewInputDeviceShape.cpp \
+		src/wxGUI/Routing/NewOutputDeviceShape.cpp \
+		src/wxGUI/Routing/OutputDevDlg.cpp \
+		src/wxGUI/Routing/OutputDeviceShape.cpp \
+		src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp \
+		src/wxGUI/Routing/OutputMidiDeviceShape.cpp \
+		src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp \
+		src/wxGUI/Routing/RouteIcons.cpp \
+		src/wxGUI/Action.cpp \
+		src/wxGUI/GUIBoxData.cpp \
+		src/wxGUI/MutBitmaps.cpp \
+		src/wxGUI/CompDlg.cpp \
+		src/wxGUI/configtree.cpp \
+		src/wxGUI/IconShape.cpp \
+		src/wxGUI/MutApp.cpp \
+		src/wxGUI/MutChild.cpp \
+		src/wxGUI/MutDocManager.cpp \
+		src/wxGUI/MutDocument.cpp \
+		src/wxGUI/MutEditFile.cpp \
+		src/wxGUI/MutFrame.cpp \
+		src/wxGUI/MutIcon.cpp \
+		src/wxGUI/MutLogicWnd.cpp \
+		src/wxGUI/MutRouteWnd.cpp  \
+		src/wxGUI/MutTextBox.cpp \
+		src/wxGUI/MutView.cpp \
+		src/wxGUI/Panel.cpp \
+		src/wxGUI/stclanguage.cpp \
+		src/wxGUI/generic/muconvauto.cpp \
+		src/wxGUI/generic/mutDebug.cpp \
+		src/wxGUI/generic/mxDefs.cpp \
+		src/wxGUI/generic/valNum.cpp \
+		src/wxGUI/generic/valRadio.cpp \
+		lib/rtmidi/RtMidi.cpp
 
-#		muwx/InputFilterDlg.cpp \
-#		muwx/InputFilterDlg.h \
-#		muwx/OutputFilterDlg.cpp \
-#		muwx/OutputFilterDlg.h \
+#		src/wxGUI/InputFilterDlg.cpp \
+#		src/wxGUI/InputFilterDlg.h \
+#		src/wxGUI/OutputFilterDlg.cpp \
+#		src/wxGUI/OutputFilterDlg.h \
 #
 
 CLEANFILES = \
@@ -276,21 +267,21 @@ CLEANFILES = \
 
 INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS) $(INLINEHEADERS)
 
-noinst_HEADERS =  mu32/mut.h \
-		  mywx/mutDebugFlags.h \
+noinst_HEADERS =  src/kernel/mut.h \
+		  src/wxGUI/generic/mutDebugFlags.h \
 		  $(INDENTHEADERS) \
 		  $(INLINEHEADERS)
 
 mutabor_COMPILESOURCES = $(mutabor_INDENTS) \
-			  mu32/mut.cpp
+			  src/kernel/mut.cpp
 
 mutabor_SOURCES = $(mutabor_COMPILESOURCES)
 if COND_WINRC
-mutabor_COMPILESOURCES += muwx/Mutabor.rc
+mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
 endif
 
-#		mywx/myContextHelpButton.h \
-#		mywx/myContextHelpButton.cpp \
+#		src/wxGUI/generic/myContextHelpButton.h \
+#		src/wxGUI/generic/myContextHelpButton.cpp \
 #
 mutabordir=$(datadir)/mutabor
 
@@ -317,10 +308,10 @@ if COND_WINRC
 BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor.$(EXEEXT):$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
-$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
+$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 	$(RCCOMPILE) $< $@
 else
-$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/muwx/Mutabor.rc
+$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 endif
 
 if COND_PRECOMP_CXX
@@ -402,7 +393,7 @@ remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
 endif
 
 
-muwx/resourceload.h:$(top_srcdir)/xrc/wxresource.h
+src/wxGUI/resourceload.h:$(top_srcdir)/src/xrc/wxresource.h
 
 cvs_dist: Makefile
 	touch cvsdist
@@ -474,21 +465,21 @@ mutabor-cxxprecompiled.h.shuffle: mutabor-cxxprecompiled.sorted
 endif
 
 if COND_WINRC
-$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(top_srcdir)/muwx/Mutabor.rc
-	$(RCCOMPILE) $(srcdir)/muwx/Mutabor.rc $@
+$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(top_srcdir)/src/wxGUI/Mutabor.rc
+	$(RCCOMPILE) $(srcdir)/src/wxGUI/Mutabor.rc $@
 endif
 
-Mutabor.xrc: $(top_srcdir)/xrc/Mutabor.xrc
+Mutabor.xrc: $(top_srcdir)/src/xrc/Mutabor.xrc
 	cp $< $@
-#	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/xrc/Mutabor.xrc >Mutabor.xrc
+#	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/src/xrc/Mutabor.xrc >Mutabor.xrc
 
-$(top_srcdir)/xrc/wxresource.h : $(top_srcdir)/xrc/Mutabor.xrc
-	(cd $(top_srcdir)/xrc; \
+$(top_srcdir)/src/xrc/wxresource.h : $(top_srcdir)/src/xrc/Mutabor.xrc
+	(cd $(top_srcdir)/src/xrc; \
 	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
 
-reslocale.cpp: $(top_srcdir)/xrc/reslocale.cpp $(top_srcdir)/xrc/Mutabor.xrc
-$(top_srcdir)/xrc/reslocale.cpp : $(top_srcdir)/xrc/Mutabor.xrc
-	(cd $(top_srcdir)/xrc; \
+reslocale.cpp: $(top_srcdir)/src/xrc/reslocale.cpp $(top_srcdir)/src/xrc/Mutabor.xrc
+$(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
+	(cd $(top_srcdir)/src/xrc; \
 	wxrc -g -o reslocale.cpp Mutabor.xrc)
 
 
@@ -534,9 +525,9 @@ YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
 	mv y.tab.c $*.cpp
 
 mutlex.h: mutlex.l
-mu32/mut.cpp mu32/mut.h: $(top_srcdir)/mu32/mut.h
-$(top_srcdir)/mu32/mut.h: $(top_srcdir)/mu32/mut.y
-$(top_srcdir)/mu32/mut.cpp: $(top_srcdir)/mu32/mut.h
+src/kernel/mut.cpp src/kernel/mut.h: $(top_srcdir)/src/kernel/mut.h
+$(top_srcdir)/src/kernel/mut.h: $(top_srcdir)/src/kernel/mut.y
+$(top_srcdir)/src/kernel/mut.cpp: $(top_srcdir)/src/kernel/mut.h
 if MAINTAINER_MODE
 $(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
 	$(top_builddir)/config.status
@@ -561,7 +552,7 @@ dmg: dylibbundler
 	cp -r Mutabor.app dmg/Mutabor
 	cp $(top_srcdir)/osdep/macosx/DS_Store dmg/Mutabor/.DS_Store
 	cp $(top_srcdir)/osdep/macosx/background.png dmg/Mutabor/.background
-	cp $(top_srcdir)/muwx/Icon/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
+	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
 	ln -s /Applications dmg/Mutabor
 	rm -f "$(PACKAGE_NAME)-$(PACKAGE_VERSION).dmg"
 	hdiutil create -srcfolder dmg/Mutabor -volname "$(PACKAGE_NAME)" "$(PACKAGE_NAME)-$(PACKAGE_VERSION)"
@@ -573,7 +564,7 @@ Mutabor.appold:all Mutabor.xrc mutabor update-gmo
 	$(MKDIR_P) Mutabor.app/Contents/Resources
 	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
-	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
 	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
@@ -602,7 +593,7 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	done
 	rm -rf Mutabor.app/Contents/locales
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
-	cp $(top_srcdir)/muwx/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
 
 installwinold: mutabor.exe

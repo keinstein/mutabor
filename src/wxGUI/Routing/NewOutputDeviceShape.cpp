@@ -4,7 +4,7 @@
  ********************************************************************
  * New output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewOutputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/NewOutputDeviceShape.cpp,v 1.4 2011/09/27 20:13:25 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -69,8 +69,8 @@
  *\{
  ********************************************************************/
 #include "NewOutputDeviceShape.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 
 using namespace mutabor;
 namespace mutaborGUI {

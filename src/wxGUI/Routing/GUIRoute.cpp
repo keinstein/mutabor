@@ -2,7 +2,7 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.cpp,v 1.6 2011/11/03 17:20:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/GUIRoute.cpp,v 1.6 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -67,32 +67,32 @@
  * \addtogroup GUI
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #include "wx/string.h"
 #include "wx/window.h"
-#include "muwx/Routing/GUIRoute.h"
-#include "muwx/Routing/BoxChannelShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/Routing/OutputMidiDeviceShape.h"
-#include "muwx/Routing/OutputMidiDeviceShape.h"
-#include "muwx/Routing/OutputMidiFileDeviceShape.h"
-#include "muwx/Routing/OutputGuidoFileDeviceShape.h"
-#include "muwx/Routing/InputMidiDeviceShape.h"
-#include "muwx/Routing/InputMidiFileDeviceShape.h"
-#include "muwx/Routing/InputGuidoFileDeviceShape.h"
-#include "muwx/Routing/NewBoxShape.h"
-#include "muwx/Routing/BoxShape.h"
-#include "muwx/Routing/RouteLists.h"
-#include "muwx/GUIBoxData-inlines.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/MutFrame.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
+#include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
+#include "src/wxGUI/Routing/OutputMidiFileDeviceShape.h"
+#include "src/wxGUI/Routing/OutputGuidoFileDeviceShape.h"
+#include "src/wxGUI/Routing/InputMidiDeviceShape.h"
+#include "src/wxGUI/Routing/InputMidiFileDeviceShape.h"
+#include "src/wxGUI/Routing/InputGuidoFileDeviceShape.h"
+#include "src/wxGUI/Routing/NewBoxShape.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/Routing/RouteLists.h"
+#include "src/wxGUI/GUIBoxData-inlines.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/MutFrame.h"
 
 
 using namespace mutabor;

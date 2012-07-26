@@ -4,7 +4,7 @@
  ********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.cpp,v 1.12 2012/01/29 22:08:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputDeviceShape.cpp,v 1.12 2012/01/29 22:08:36 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -140,15 +140,15 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/Routing/OutputMidiDeviceShape.h"
-#include "muwx/Routing/OutputMidiFileDeviceShape.h"
-#include "muwx/Routing/OutputGuidoFileDeviceShape.h"
-#include "muwx/Routing/BoxChannelShape.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
-#include "muwx/Routing/DebugRoute.h"
-#include "muwx/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
+#include "src/wxGUI/Routing/OutputMidiFileDeviceShape.h"
+#include "src/wxGUI/Routing/OutputGuidoFileDeviceShape.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
 
 #if defined(__WXMAC__) && defined(__WXMAC_CARBON__)
 #	include "wx/mac/carbon/private.h"

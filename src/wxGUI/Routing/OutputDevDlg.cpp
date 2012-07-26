@@ -3,7 +3,7 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDevDlg.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputDevDlg.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/01/11
@@ -56,9 +56,9 @@
  *\{
  ********************************************************************/
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "muwx/Routing/OutputDevDlg.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

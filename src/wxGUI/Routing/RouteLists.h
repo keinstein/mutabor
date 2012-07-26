@@ -2,7 +2,7 @@
  ********************************************************************
  * Forward declarations for several lists used in the code base.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteLists.h,v 1.2 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/RouteLists.h,v 1.2 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -53,7 +53,7 @@
  * \addtogroup GUI
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -68,7 +68,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED
 #define MUWX_ROUTING_ROUTELISTS_H_PRECOMPILED

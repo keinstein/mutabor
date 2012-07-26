@@ -2,7 +2,7 @@
  ********************************************************************
  * Debug functions for routing system
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/DebugRoute.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/DebugRoute.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2010 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2010/04/13
@@ -52,7 +52,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_ROUTING_DEBUGROUTE_H_PRECOMPILED
 #define MUWX_ROUTING_DEBUGROUTE_H_PRECOMPILED

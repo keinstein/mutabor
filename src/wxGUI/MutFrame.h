@@ -2,7 +2,7 @@
  ********************************************************************
  * Mutabor Frame.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutFrame.h,v 1.33 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutFrame.h,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005, 2006, 2007, 2008 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -175,7 +175,7 @@
  * MutFrame::OnEraseBackground,
  * MutFrame::OnActivate:        New Functions.
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -189,11 +189,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/Global.h"
-#include "muwx/MutChild.h"
-#include "muwx/MutEditFile.h"
-#include "muwx/MutRouteWnd.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/Global.h"
+#include "src/wxGUI/MutChild.h"
+#include "src/wxGUI/MutEditFile.h"
+#include "src/wxGUI/MutRouteWnd.h"
 
 #ifndef MUWX_MUTFRAME_H_PRECOMPILED
 #define MUWX_MUTFRAME_H_PRECOMPILED

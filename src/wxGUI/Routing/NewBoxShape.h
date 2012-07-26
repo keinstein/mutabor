@@ -3,7 +3,7 @@
  ********************************************************************
  * New box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/NewBoxShape.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -126,9 +126,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutIcon.h"
-#include "muwx/Routing/BoxShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutIcon.h"
+#include "src/wxGUI/Routing/BoxShape.h"
 //#include "Device.h"
 
 

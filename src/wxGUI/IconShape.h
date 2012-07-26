@@ -4,7 +4,7 @@
  ********************************************************************
  * Icon shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/IconShape.h,v 1.14 2011/11/04 15:02:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/IconShape.h,v 1.14 2011/11/04 15:02:03 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -113,9 +113,9 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/Panel.h"
-#include "muwx/MutIcon.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Panel.h"
+#include "src/wxGUI/MutIcon.h"
 //#include "Device.h"
 
 #ifndef MUWX_ICONSHAPE_H_PRECOMPILED

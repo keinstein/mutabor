@@ -4,7 +4,7 @@
  ********************************************************************
  * MIDI file input device shape.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputMidiFileDeviceShape.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/InputMidiFileDeviceShape.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -88,8 +88,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/Routing/InputDeviceShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_INPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED

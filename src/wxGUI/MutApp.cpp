@@ -2,7 +2,7 @@
  ********************************************************************
  * Mutabor Application.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutApp.cpp,v 1.55 2011/11/05 15:19:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutApp.cpp,v 1.55 2011/11/05 15:19:38 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -234,7 +234,7 @@
  * many other fixes
  *
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -243,7 +243,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #include "wx/image.h"
 #include "wx/stdpaths.h"
 #include "wx/filename.h"
@@ -260,24 +260,24 @@
 
 
 #if !defined(__WXMSW__)
-#include "Icon/Mutabor.xpm"
+#include "Images/Icons/xpm/Mutabor.xpm"
 #endif
 
 //#include "Mutabor.rh"
-#include "muwx/MutApp.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutDocument.h"
-#include "muwx/MutView.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "muwx/MutConfDlg.h"
-#include "muwx/resourceload.h"
-#include "muwx/Action.h"
-#include "muwx/stclanguage.h"
-#include "muwx/MutDocManager.h"
-#include "muwx/Routing/GUIRoute.h"
-#include "muwx/configtree.h"
-#include "mu32/box.h"
-#include "muwx/Routing/DebugRoute.h"
+#include "src/wxGUI/MutApp.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutDocument.h"
+#include "src/wxGUI/MutView.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/wxGUI/MutConfDlg.h"
+#include "src/wxGUI/resourceload.h"
+#include "src/wxGUI/Action.h"
+#include "src/wxGUI/stclanguage.h"
+#include "src/wxGUI/MutDocManager.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/configtree.h"
+#include "src/kernel/box.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>

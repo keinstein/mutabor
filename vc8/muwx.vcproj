@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="muwx"
+	Name="src/wxGUI"
 	ProjectGUID="{77C16200-04C6-49D1-83D3-95573EB322BA}"
-	RootNamespace="muwx"
+	RootNamespace="src/wxGUI"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="C:\wxWidgets\include; C:\wxWidgets\lib\vc_lib\mswd;.;C:\wxWidgets\samples;C:\mutabor_cvs\mu32;C:\mutabor_cvs\mywx;C:\mutabor_cvs\rtmidi;C:\mutabor_cvs\config_vc8;C:\mutabor_cvs\xrc;C:\mutabor_cvs\muwx;C:\mutabor_cvs\help"
+				AdditionalIncludeDirectories="C:\wxWidgets\include; C:\wxWidgets\lib\vc_lib\mswd;.;C:\wxWidgets\samples;C:\mutabor_cvs\src/kernel;C:\mutabor_cvs\src/wxGUI/generic;C:\mutabor_cvs\lib/rtmidi;C:\mutabor_cvs\config_vc8;C:\mutabor_cvs\xrc;C:\mutabor_cvs\src/wxGUI;C:\mutabor_cvs\help"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;__WXMSW__;__WXDEBUG__;HAVE_CONFIG_H;_VC80_UPGRADE=0x0600;NOPCH"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -181,59 +181,59 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\muwx\Action.cpp"
+				RelativePath="..\src/wxGUI\Action.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\BoxDlg.cpp"
+				RelativePath="..\src/wxGUI\BoxDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\CompDlg.cpp"
+				RelativePath="..\src/wxGUI\CompDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\InputDevDlg.cpp"
+				RelativePath="..\src/wxGUI\InputDevDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\InputFilterDlg.cpp"
+				RelativePath="..\src/wxGUI\InputFilterDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutApp.cpp"
+				RelativePath="..\src/wxGUI\MutApp.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutChild.cpp"
+				RelativePath="..\src/wxGUI\MutChild.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutEditFile.cpp"
+				RelativePath="..\src/wxGUI\MutEditFile.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutFrame.cpp"
+				RelativePath="..\src/wxGUI\MutFrame.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutLogicWnd.cpp"
+				RelativePath="..\src/wxGUI\MutLogicWnd.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutRouteWnd.cpp"
+				RelativePath="..\src/wxGUI\MutRouteWnd.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutTextBox.cpp"
+				RelativePath="..\src/wxGUI\MutTextBox.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\OutputDevDlg.cpp"
+				RelativePath="..\src/wxGUI\OutputDevDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\OutputFilterDlg.cpp"
+				RelativePath="..\src/wxGUI\OutputFilterDlg.cpp"
 				>
 			</File>
 			<File
@@ -247,63 +247,63 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\muwx\Action.h"
+				RelativePath="..\src/wxGUI\Action.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\BoxDlg.h"
+				RelativePath="..\src/wxGUI\BoxDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\CompDlg.h"
+				RelativePath="..\src/wxGUI\CompDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\InputDevDlg.h"
+				RelativePath="..\src/wxGUI\InputDevDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\InputFilterDlg.h"
+				RelativePath="..\src/wxGUI\InputFilterDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutApp.h"
+				RelativePath="..\src/wxGUI\MutApp.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutChild.h"
+				RelativePath="..\src/wxGUI\MutChild.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutConfDlg.h"
+				RelativePath="..\src/wxGUI\MutConfDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutEditFile.h"
+				RelativePath="..\src/wxGUI\MutEditFile.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutFrame.h"
+				RelativePath="..\src/wxGUI\MutFrame.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutLogicWnd.h"
+				RelativePath="..\src/wxGUI\MutLogicWnd.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutRouteWnd.h"
+				RelativePath="..\src/wxGUI\MutRouteWnd.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\MutTextBox.h"
+				RelativePath="..\src/wxGUI\MutTextBox.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\OutputDevDlg.h"
+				RelativePath="..\src/wxGUI\OutputDevDlg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\OutputFilterDlg.h"
+				RelativePath="..\src/wxGUI\OutputFilterDlg.h"
 				>
 			</File>
 			<File
@@ -321,51 +321,51 @@
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\Mutabor.rc"
+				RelativePath="..\src/wxGUI\Mutabor.rc"
 				>
 			</File>
 			<File
-				RelativePath="..\muwx\Mutabor.rh"
+				RelativePath="..\src/wxGUI\Mutabor.rh"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="mywx"
+			Name="src/wxGUI/generic"
 			>
 			<File
-				RelativePath="..\mywx\mhArray.h"
+				RelativePath="..\src/wxGUI/generic\mhArray.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\mhDefs.h"
+				RelativePath="..\src/wxGUI/generic\mhDefs.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\muconvauto.cpp"
+				RelativePath="..\src/wxGUI/generic\muconvauto.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\muconvauto.h"
+				RelativePath="..\src/wxGUI/generic\muconvauto.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\mxDefs.cpp"
+				RelativePath="..\src/wxGUI/generic\mxDefs.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\valNum.cpp"
+				RelativePath="..\src/wxGUI/generic\valNum.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\valNum.h"
+				RelativePath="..\src/wxGUI/generic\valNum.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\valRadio.cpp"
+				RelativePath="..\src/wxGUI/generic\valRadio.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mywx\valRadio.h"
+				RelativePath="..\src/wxGUI/generic\valRadio.h"
 				>
 			</File>
 		</Filter>
@@ -381,183 +381,183 @@
 			Name="Mutabor-Kern"
 			>
 			<File
-				RelativePath="..\mu32\Defs.h"
+				RelativePath="..\src/kernel\Defs.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevGIS.cpp"
+				RelativePath="..\src/kernel\DevGIS.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevGIS.h"
+				RelativePath="..\src/kernel\DevGIS.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Device.cpp"
+				RelativePath="..\src/kernel\Device.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Device.h"
+				RelativePath="..\src/kernel\Device.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevMidF.cpp"
+				RelativePath="..\src/kernel\DevMidF.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevMidF.h"
+				RelativePath="..\src/kernel\DevMidF.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevMidi.cpp"
+				RelativePath="..\src/kernel\DevMidi.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\DevMidi.h"
+				RelativePath="..\src/kernel\DevMidi.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\EDevice.cpp"
+				RelativePath="..\src/kernel\EDevice.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\EDevice.h"
+				RelativePath="..\src/kernel\EDevice.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Errors.cpp"
+				RelativePath="..\src/kernel\Errors.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Execute.cpp"
+				RelativePath="..\src/kernel\Execute.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Execute.h"
+				RelativePath="..\src/kernel\Execute.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Frac.cpp"
+				RelativePath="..\src/kernel\Frac.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Frac.h"
+				RelativePath="..\src/kernel\Frac.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GIS.cpp"
+				RelativePath="..\src/kernel\GIS.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GIS.h"
+				RelativePath="..\src/kernel\GIS.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GIS_Head.cpp"
+				RelativePath="..\src/kernel\GIS_Head.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GIS_Head.h"
+				RelativePath="..\src/kernel\GIS_Head.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Global.h"
+				RelativePath="..\src/kernel\Global.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GrafKern.cpp"
+				RelativePath="..\src/kernel\GrafKern.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GrafKern.h"
+				RelativePath="..\src/kernel\GrafKern.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GSP.cpp"
+				RelativePath="..\src/kernel\GSP.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GSP.h"
+				RelativePath="..\src/kernel\GSP.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GSP_Err.cpp"
+				RelativePath="..\src/kernel\GSP_Err.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GSP_File.cpp"
+				RelativePath="..\src/kernel\GSP_File.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\GSP_File.h"
+				RelativePath="..\src/kernel\GSP_File.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Hilfs.cpp"
+				RelativePath="..\src/kernel\Hilfs.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Hilfs.h"
+				RelativePath="..\src/kernel\Hilfs.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Interpre.h"
+				RelativePath="..\src/kernel\Interpre.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Interval.cpp"
+				RelativePath="..\src/kernel\Interval.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Interval.h"
+				RelativePath="..\src/kernel\Interval.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\MidiKern.h"
+				RelativePath="..\src/kernel\MidiKern.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\mut.cpp"
+				RelativePath="..\src/kernel\mut.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\mut.h"
+				RelativePath="..\src/kernel\mut.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\mut.y"
+				RelativePath="..\src/kernel\mut.y"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Parser.cpp"
+				RelativePath="..\src/kernel\Parser.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Runtime.cpp"
+				RelativePath="..\src/kernel\Runtime.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\Runtime.h"
+				RelativePath="..\src/kernel\Runtime.h"
 				>
 			</File>
 			<File
-				RelativePath="..\mu32\TabGen.cpp"
+				RelativePath="..\src/kernel\TabGen.cpp"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="rtmidi"
+			Name="lib/rtmidi"
 			>
 			<File
-				RelativePath="..\rtmidi\RtError.h"
+				RelativePath="..\lib/rtmidi\RtError.h"
 				>
 			</File>
 			<File
-				RelativePath="..\rtmidi\RtMidi.cpp"
+				RelativePath="..\lib/rtmidi\RtMidi.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\rtmidi\RtMidi.h"
+				RelativePath="..\lib/rtmidi\RtMidi.h"
 				>
 			</File>
 		</Filter>

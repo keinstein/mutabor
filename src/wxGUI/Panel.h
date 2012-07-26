@@ -6,7 +6,7 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.h,v 1.9 2011/11/16 14:07:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Panel.h,v 1.9 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Julian Smart, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -57,7 +57,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -71,7 +71,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_PANEL_H_PRECOMPILED
 #define MUWX_PANEL_H_PRECOMPILED

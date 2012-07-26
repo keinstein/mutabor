@@ -3,7 +3,7 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.cpp,v 1.9 2011/10/02 16:58:41 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Route.cpp,v 1.9 2011/10/02 16:58:41 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -76,11 +76,11 @@
 #include "config.h"
 #endif
 
-#include "mu32/routing/Route.h"
-#include "mu32/routing/Route-inlines.h"
+#include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "Device.h"
 #include <algorithm>
-#include "muwx/Routing/DebugRoute.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
 
 namespace mutabor {
 // Route ------------------------------------------------------------
@@ -401,8 +401,8 @@ TRouteClass<I,O>:\n\
 	
 		wxString group;
 	
-		wxString defaultPortName = rtmidiout->getPortCount()?
-			muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"));
+		wxString defaultPortName = lib/rtmidiout->getPortCount()?
+			muT(lib/rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"));
 	
 		long group_number;
 	

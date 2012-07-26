@@ -2,7 +2,7 @@
  ********************************************************************
  * Actions at UI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.h,v 1.7 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Action.h,v 1.7 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2011 TU Dresden
  * \author   R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -42,7 +42,7 @@
 #define MUWX_ACTION_H
 #endif
 
-#include "mu32/Global.h"
+#include "src/kernel/Global.h"
 
 #ifndef MUWX_ACTION_H_PRECOMPILED
 #define MUWX_ACTION_H_PRECOMPILED

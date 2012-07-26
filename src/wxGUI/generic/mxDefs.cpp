@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mxDefs.cpp,v 1.13 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mxDefs.cpp,v 1.13 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -35,8 +35,8 @@
  * \addtogroup templates
  * \{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "mywx/mhDefs.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/generic/mhDefs.h"
 
 #include "wx/filedlg.h"
 #include "wx/log.h"

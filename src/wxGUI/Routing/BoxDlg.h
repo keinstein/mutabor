@@ -2,7 +2,7 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.h,v 1.5 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxDlg.h,v 1.5 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
@@ -82,10 +82,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/resourceload.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/resourceload.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
 
 #ifndef MUWX_ROUTING_BOXDLG_H_PRECOMPILED
 #define MUWX_ROUTING_BOXDLG_H_PRECOMPILED

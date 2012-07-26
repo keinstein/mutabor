@@ -822,7 +822,7 @@
 				B05514600CCC94D200CB6DE2 /* Images */,
 				B06377570C8B49CD0028A7DB /* mu32 */,
 				B079B25011007B2A001CFB0E /* muwx */,
-				B06378380C8B56940028A7DB /* mywx */,
+				B06378380C8B56940028A7DB /* src/wxGUI/generic */,
 				B05A18620E6FDD9E00DEF4C9 /* osdep */,
 				B0CF1DBE0CB3C8EC004297B8 /* po */,
 				B06377470C8B49A40028A7DB /* RtMidi */,
@@ -887,7 +887,7 @@
 			path = mu32;
 			sourceTree = "<group>";
 		};
-		B06378380C8B56940028A7DB /* mywx */ = {
+		B06378380C8B56940028A7DB /* src/wxGUI/generic */ = {
 			isa = PBXGroup;
 			children = (
 				B063789B0C8B587F0028A7DB /* mhArray.h */,
@@ -903,7 +903,7 @@
 				B0CF27420CBD0120004297B8 /* muconvauto.cpp */,
 				B0CF27430CBD0120004297B8 /* muconvauto.h */,
 			);
-			path = mywx;
+			path = src/wxGUI/generic;
 			sourceTree = "<group>";
 		};
 		B0645BBF1211A33000852843 /* wx-2.9.1 */ = {
@@ -1584,7 +1584,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				PREBINDING = YES;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
-				USER_HEADER_SEARCH_PATHS = "RtMidi/** mywx/** mu32/** muwx/** $(inherited)";
+				USER_HEADER_SEARCH_PATHS = "RtMidi/** src/wxGUI/generic/** mu32/** muwx/** $(inherited)";
 			};
 			name = Development;
 		};
@@ -1727,7 +1727,7 @@
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT) mywx mu32 muwx Help xrc build/include $(WX_PATH)/include $(WX_PATH)/build/osx/setup/$(WXTOOLKIT)/include $(WX_PATH)/src/jpeg $(WX_PATH)/src/png $(WX_PATH)/src/regex $(WX_PATH)/src/expat/lib $(WX_PATH)/src/tiff/libtiff $(WX_PATH)/src/stc/scintilla/src $(WX_PATH)/src/stc/scintilla/include $(WX_PATH)/src/build/include $(WX_PATH)/src/mac/carbon/morefilex $(WX_PATH)/src/common $(WX_DIR)/lib/wx/include Help $(inherited)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT) src/wxGUI/generic mu32 muwx Help xrc build/include $(WX_PATH)/include $(WX_PATH)/build/osx/setup/$(WXTOOLKIT)/include $(WX_PATH)/src/jpeg $(WX_PATH)/src/png $(WX_PATH)/src/regex $(WX_PATH)/src/expat/lib $(WX_PATH)/src/tiff/libtiff $(WX_PATH)/src/stc/scintilla/src $(WX_PATH)/src/stc/scintilla/include $(WX_PATH)/src/build/include $(WX_PATH)/src/mac/carbon/morefilex $(WX_PATH)/src/common $(WX_DIR)/lib/wx/include Help $(inherited)";
 				VALID_ARCHS = "i386 x86_64 ppc ppc64 ppc970 ppc7400";
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -1819,7 +1819,7 @@
 				PRODUCT_NAME = Mutabor;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				STRIP_INSTALLED_PRODUCT = YES;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT) mywx mu32 muwx Help xrc build/include $(WX_PATH)/include $(WX_PATH)/build/osx/setup/$(WXTOOLKIT)/include $(WX_PATH)/src/jpeg $(WX_PATH)/src/png $(WX_PATH)/src/regex $(WX_PATH)/src/expat/lib $(WX_PATH)/src/tiff/libtiff $(WX_PATH)/src/stc/scintilla/src $(WX_PATH)/src/stc/scintilla/include $(WX_PATH)/src/build/include $(WX_PATH)/src/mac/carbon/morefilex $(WX_PATH)/src/common $(WX_DIR)/lib/wx/include Help $(inherited)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT) src/wxGUI/generic mu32 muwx Help xrc build/include $(WX_PATH)/include $(WX_PATH)/build/osx/setup/$(WXTOOLKIT)/include $(WX_PATH)/src/jpeg $(WX_PATH)/src/png $(WX_PATH)/src/regex $(WX_PATH)/src/expat/lib $(WX_PATH)/src/tiff/libtiff $(WX_PATH)/src/stc/scintilla/src $(WX_PATH)/src/stc/scintilla/include $(WX_PATH)/src/build/include $(WX_PATH)/src/mac/carbon/morefilex $(WX_PATH)/src/common $(WX_DIR)/lib/wx/include Help $(inherited)";
 				VALID_ARCHS = "i386 x86_64 ppc ppc64 ppc970 ppc7400";
 				VERSIONING_SYSTEM = "";
 				WARNING_CFLAGS = (

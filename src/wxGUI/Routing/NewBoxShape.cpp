@@ -4,7 +4,7 @@
  ********************************************************************
  * New box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewBoxShape.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/NewBoxShape.cpp,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -120,11 +120,11 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "muwx/Routing/NewBoxShape.h"
-#include "muwx/Routing/BoxDlg.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/NewBoxShape.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "InputDevDlg.h"

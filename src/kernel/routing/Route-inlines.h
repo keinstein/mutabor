@@ -2,7 +2,7 @@
  ********************************************************************
  * Inline functions from Route.h
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route-inlines.h,v 1.4 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Route-inlines.h,v 1.4 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -48,7 +48,7 @@
  * \addtogroup templates
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -63,8 +63,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/Route.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/Route.h"
 
 #ifndef MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED

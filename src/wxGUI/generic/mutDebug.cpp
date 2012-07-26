@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mutDebug.cpp,v 1.7 2011/11/03 17:20:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mutDebug.cpp,v 1.7 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2010,2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -52,7 +52,7 @@
  *
  */
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 #ifdef DEBUG
 #include "mutDebug.h"
 #include <list>

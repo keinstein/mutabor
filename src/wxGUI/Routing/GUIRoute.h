@@ -2,7 +2,7 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/GUIRoute.h,v 1.6 2011/11/03 17:20:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/GUIRoute.h,v 1.6 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -62,7 +62,7 @@
  * \addtogroup GUI
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug, docview
+// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -77,14 +77,14 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/Device.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "mu32/routing/midi/DevMidF.h"
-#include "mu32/routing/gmn/DevGIS.h"
-#include "mu32/routing/Route.h"
-#include "muwx/GUIBoxData.h"
-#include "muwx/Routing/RouteLists.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/routing/gmn/DevGIS.h"
+#include "src/kernel/routing/Route.h"
+#include "src/wxGUI/GUIBoxData.h"
+#include "src/wxGUI/Routing/RouteLists.h"
 
 #ifndef MUWX_ROUTING_GUIROUTE_H_PRECOMPILED
 #define MUWX_ROUTING_GUIROUTE_H_PRECOMPILED

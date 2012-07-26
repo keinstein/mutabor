@@ -4,7 +4,7 @@
  ********************************************************************
  * Routing. Compatibility functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/RouteCompat.cpp,v 1.6 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/RouteCompat.cpp,v 1.6 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -50,10 +50,10 @@
  *\{
  ********************************************************************/
 
-#include "mu32/routing/Route-inlines.h"
-#include "mu32/routing/Device.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "mu32/routing/midi/DevMidF.h"
+#include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/midi/DevMidF.h"
 #include "wx/log.h"
 
 using namespace mutabor;

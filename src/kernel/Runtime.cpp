@@ -2,7 +2,7 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/Runtime.cpp,v 1.22 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Runtime.cpp,v 1.22 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 1997-2007 TU Dresden
  * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -110,22 +110,22 @@
  * \{
  ********************************************************************
  */
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "mu32/Global.h"
+#include "src/kernel/Global.h"
 
-#include "mu32/Hilfs.h"
-#include "mu32/GrafKern.h"
+#include "src/kernel/Hilfs.h"
+#include "src/kernel/GrafKern.h"
 
-#include "mu32/Runtime.h"
-#include "mu32/Execute.h"
+#include "src/kernel/Runtime.h"
+#include "src/kernel/Execute.h"
 //#include "Mutabor.rh"
 #include <setjmp.h>
 
-#include "mu32/routing/Device.h"
-#include "mu32/routing/gmn/DevGIS.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "mu32/routing/midi/DevMidF.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/gmn/DevGIS.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/midi/DevMidF.h"
 #include "wx/msgdlg.h"
 
 using namespace mutabor;

@@ -3,7 +3,7 @@
  * Mutabor Bitmaps. We save Bitmaps in global variables as they can be used in several contexts.
  * so their data can be shared if the underlying framework supports it.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutBitmaps.h,v 1.3 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutBitmaps.h,v 1.3 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) TU Dresden
  * \author 
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -27,7 +27,7 @@
  * added files for global bitmap storage
  *
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -41,7 +41,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_MUT_BITMAPS_H_PRECOMPILED
 #define MUWX_MUT_BITMAPS_H_PRECOMPILED

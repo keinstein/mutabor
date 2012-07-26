@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/valRadio.cpp,v 1.6 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/valRadio.cpp,v 1.6 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -40,7 +40,7 @@
 
 
 // For compilers that support precompilation, includes "wx.h".
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #if wxUSE_VALIDATORS
 

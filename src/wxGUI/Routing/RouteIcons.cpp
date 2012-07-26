@@ -3,7 +3,7 @@
  ********************************************************************
  * Devices base classes. Icons used in route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.cpp,v 1.8 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/RouteIcons.cpp,v 1.8 2011/11/02 14:32:01 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -72,12 +72,12 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "muwx/Routing/RouteIcons.h"
-#include "muwx/Routing/BoxShape.h"
-#include "muwx/MutApp.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/MutApp.h"
 
 #include "wx/image.h"
-#include "muwx/Icon/DevUnknown.xpm"
+#include "Images/Icons/xpm/DevUnknown.xpm"
 
 namespace mutaborGUI {
 

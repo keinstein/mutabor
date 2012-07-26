@@ -6,7 +6,7 @@
  *
  * Note: License change towards (L)GPL is explicitly allowed for wxWindows license.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Panel.cpp,v 1.11 2011/11/16 14:07:03 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Panel.cpp,v 1.11 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author Julian Smart,  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -63,7 +63,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -76,7 +76,7 @@
 // ----------------------------------------------------------------------------
 
 
-#include "muwx/Panel.h"
+#include "src/wxGUI/Panel.h"
 #include "wx/object.h"
 #include "wx/font.h"
 #include "wx/colour.h"

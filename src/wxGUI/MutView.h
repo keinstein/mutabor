@@ -2,7 +2,7 @@
  ********************************************************************
  * Document/View View class for Mutabor source files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutView.h,v 1.11 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutView.h,v 1.11 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -71,8 +71,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutFrame.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutFrame.h"
 
 #ifndef MUWX_MUTVIEW_H_PRECOMPILED
 #define MUWX_MUTVIEW_H_PRECOMPILED

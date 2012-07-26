@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutDocManager.cpp,v 1.8 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutDocManager.cpp,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -63,16 +63,16 @@
  * \deftogroup docview Document/View framework
  * \{
  ********************************************************************/
-// availlable groups: GUI, route, kernel, muwx, debug
+// availlable groups: GUI, route, kernel, src/wxGUI, debug
 
 // ---------------------------------------------------------------------------
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutDocManager.h"
-#include "muwx/MutView.h"
-#include "muwx/MutDocument.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutDocManager.h"
+#include "src/wxGUI/MutView.h"
+#include "src/wxGUI/MutDocument.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop

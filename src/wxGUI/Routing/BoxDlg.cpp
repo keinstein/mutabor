@@ -2,7 +2,7 @@
  ********************************************************************
  * Box dialog
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxDlg.cpp,v 1.9 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxDlg.cpp,v 1.9 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
@@ -139,13 +139,13 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/Routing/BoxDlg.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/Routing/BoxShape.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
-#include "muwx/MutRouteWnd.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/MutRouteWnd.h"
 #include <wx/gdicmn.h>
 
 #ifdef __BORLANDC__

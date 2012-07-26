@@ -2,7 +2,7 @@
 /********************************************************************
  * Output device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputDeviceShape.h,v 1.7 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputDeviceShape.h,v 1.7 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -116,13 +116,13 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/routing/Device.h"
-#include "muwx/Routing/GUIRoute.h"
-#include "muwx/Routing/DeviceShape.h"
-#include "muwx/Routing/OutputDevDlg.h"
-#include "muwx/Routing/RouteIcons.h"
-#include "muwx/Routing/BoxChannelShape.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/routing/Device.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
 
 #ifndef MUWX_ROUTING_OUTPUTDEVICESHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_OUTPUTDEVICESHAPE_H_PRECOMPILED

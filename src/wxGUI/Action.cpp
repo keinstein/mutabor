@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Action.cpp,v 1.8 2012/02/18 18:17:23 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Action.cpp,v 1.8 2012/02/18 18:17:23 keinstein Exp $
  * Copyright:   (c) 2005,2010 TU Dresden
  * \author  R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -47,11 +47,11 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "muwx/Action.h"
-#include "mu32/GrafKern.h"
-#include "mu32/box.h"
+#include "src/wxGUI/Action.h"
+#include "src/kernel/GrafKern.h"
+#include "src/kernel/box.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

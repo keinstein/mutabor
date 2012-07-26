@@ -463,12 +463,73 @@ dnl non verbose
 dnl AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,\\\\,g'`])
 AC_SUBST(top_srcdir_nsi,[`echo "$srcdir"|sed -e 's,/,/,g'`])
 
+function abspath {
+	if [[ -d "$1" ]]
+	then
+		pushd "$1" >/dev/null
+		pwd
+		popd >/dev/null
+	elif [[ -e $1 ]]
+	then
+		pushd $(dirname $1) >/dev/null
+		echo $(pwd)/$(basename $1)
+		popd >/dev/null
+	else
+		echo $1 does not exist! >&2
+		return 127
+	fi
+}
+
+dnl preserve some variables for cross compiling
+# propagate selected configure variables to DISTCHECK_CONFIGURE_FLAGS 
+for v in CPPFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do 
+    eval s=\${$v+set}
+    if test "$s" = set
+    then 
+       eval val=\$`echo $v`
+       preserve_flags="${preserve_flags}'${v}=${val}' " 
+    fi 
+done 
+echo "$preserve_flags"
+# propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS 
+for v in host build target; do 
+    tmp="${v}_alias"
+    eval s=\${$tmp+set}
+    if test "$s" = 'set' ; then 
+       eval val=\$`echo $tmp`
+       preserve_flags="${preserve_flags}'--${v}=${val}' " 
+    fi 
+done 
+echo "$preserve_flags"
+# propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS 
+for v in with-wx-config with-wx-dir with-boost ; do 
+    tmp="`echo "$v" | sed -e 's/-/_/g'`"
+    eval s=\${$tmp+set}
+    if test "$s" = 'set' ; then 
+       eval val=\$`echo $tmp`
+       val=`abspath "$val"`
+       preserve_flags="${preserve_flags}'--${v}=${val}' " 
+       echo "$preserve_flags"
+    fi 
+done 
+echo "$preserve_flags"
+DISTCHECK_CONFIGURE_FLAGS="$preserve_flags"
+
+AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)  
+
 AC_CONFIG_FILES([  
 po/Makefile.in 
 Makefile
-includes/Makefile 
-wxintl/Makefile 
-missfunc/Makefile
+src/Makefile
+src/gmut/Makefile
+src/includes/Makefile 
+src/kernel/Makefile
+src/kernel/routing/Makefile
+src/kernel/routing/gmn/Makefile
+src/kernel/routing/midi/Makefile
+src/wxintl/Makefile 
+lib/Makefile
+lib/missfunc/Makefile
 osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile

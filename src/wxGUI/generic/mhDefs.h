@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mywx/mhDefs.h,v 1.24 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mhDefs.h,v 1.24 2011/11/02 14:32:01 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -39,7 +39,7 @@
 #ifndef mhDEFS_H
 #define mhDEFS_H
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #include "wx/window.h"
 #include "wx/stdpaths.h"
@@ -49,7 +49,7 @@
 #include <list>
 
 
-#include "muwx/Mutabor.rh"
+#include "src/wxGUI/Mutabor.rh"
 
 #ifndef HAVE_CONFIG_H
 #  ifdef __WXMSW__

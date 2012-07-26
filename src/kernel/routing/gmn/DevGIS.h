@@ -2,7 +2,7 @@
 ********************************************************************
 * Description
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/gmn/DevGIS.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
+* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/DevGIS.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
 * Copyright:   (c) 2008 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
@@ -59,10 +59,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 //#include "Global.h"
-#include "mu32/routing/Device.h"
-#include "mu32/routing/gmn/GIS_Head.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/gmn/GIS_Head.h"
 //#include "Interpre.h"
 
 #ifndef MU32_ROUTING_GMN_DEVGIS_H_PRECOMPILED

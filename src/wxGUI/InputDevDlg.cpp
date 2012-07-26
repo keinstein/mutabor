@@ -2,7 +2,7 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/InputDevDlg.cpp,v 1.9 2011/11/02 14:31:58 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/InputDevDlg.cpp,v 1.9 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2011 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -30,8 +30,8 @@
  * \{
  ********************************************************************/
 
-#include "mu32/Defs.h"
-#include "muwx/InputDevDlg.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/InputDevDlg.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop

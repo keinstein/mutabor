@@ -3,7 +3,7 @@
  ********************************************************************
  * Input device shape base class for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/InputDeviceShape.cpp,v 1.13 2012/01/29 22:08:36 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/InputDeviceShape.cpp,v 1.13 2012/01/29 22:08:36 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -128,18 +128,18 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "muwx/Routing/InputDeviceShape.h"
-#include "muwx/Routing/InputMidiDeviceShape.h"
-#include "muwx/Routing/InputMidiFileDeviceShape.h"
-#include "muwx/Routing/InputGuidoFileDeviceShape.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "muwx/Routing/BoxChannelShape.h"
-#include "muwx/Routing/InputDevDlg.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
-#include "muwx/Routing/BoxDlg.h"
-#include "muwx/Routing/DebugRoute.h"
-#include "muwx/MutFrame.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/InputMidiDeviceShape.h"
+#include "src/wxGUI/Routing/InputMidiFileDeviceShape.h"
+#include "src/wxGUI/Routing/InputGuidoFileDeviceShape.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/MutFrame.h"
 
 //#include "MutApp.h"
 //#include "MutIcon.h"

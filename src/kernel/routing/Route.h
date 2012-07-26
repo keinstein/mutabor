@@ -4,7 +4,7 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/mu32/routing/Route.h,v 1.8 2011/11/02 14:31:57 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Route.h,v 1.8 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -151,10 +151,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "mu32/box.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/box.h"
 
-#include "mu32/treestorage.h"
+#include "src/kernel/treestorage.h"
 
 #ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED

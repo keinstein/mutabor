@@ -61,8 +61,8 @@
  * Includes
  */
 
-#include "mu32/Defs.h"
-#include "muwx/resourceload.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/resourceload.h"
 
 #ifndef MUWX_COMPDLG_H_PRECOMPILED
 #define MUWX_COMPDLG_H_PRECOMPILED

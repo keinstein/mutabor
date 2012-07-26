@@ -3,7 +3,7 @@
  ********************************************************************
  * MIDI input device shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/OutputMidiDeviceShape.cpp,v 1.8 2011/11/02 14:32:00 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/OutputMidiDeviceShape.cpp,v 1.8 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -93,9 +93,9 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "muwx/Routing/OutputMidiDeviceShape.h"
-#include "mu32/routing/midi/DevMidi.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
+#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <limits>
 
 using namespace mutabor;

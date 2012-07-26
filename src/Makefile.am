@@ -1,0 +1,1 @@
+SUBDIRS=gmut includes kernel wxintl

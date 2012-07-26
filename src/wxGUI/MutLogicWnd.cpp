@@ -2,7 +2,7 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/MutLogicWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutLogicWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -80,7 +80,7 @@
  *
  *
  ********************************************************************
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -88,24 +88,24 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
-#include "mu32/Global.h"
-#include "mu32/Runtime.h"
-#include "mu32/MidiKern.h"
-#include "muwx/MutLogicWnd.h"
-#include "muwx/MutChild.h"
-#include "muwx/MutFrame.h"
-#include "muwx/MutRouteWnd.h"
+#include "src/kernel/Global.h"
+#include "src/kernel/Runtime.h"
+#include "src/kernel/MidiKern.h"
+#include "src/wxGUI/MutLogicWnd.h"
+#include "src/wxGUI/MutChild.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutRouteWnd.h"
 #include "wx/dcclient.h"
 #include "wx/image.h"
 
 
 //#if !defined(__WXMSW__)
-#include "Icon/Logic.xpm"
-#include "Icon/LogicOpen.xpm"
-#include "Icon/Tonesyst.xpm"
-#include "Icon/TonesystOpen.xpm"
+#include "Images/Icons/xpm/Logic.xpm"
+#include "Images/Icons/xpm/LogicOpen.xpm"
+#include "Images/Icons/xpm/Tonesyst.xpm"
+#include "Images/Icons/xpm/TonesystOpen.xpm"
 //#endif
 
 

@@ -3,7 +3,7 @@
  ********************************************************************
  * Devices base classes. Icons used in route Window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/RouteIcons.h,v 1.5 2011/11/02 14:32:01 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/RouteIcons.h,v 1.5 2011/11/02 14:32:01 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -64,8 +64,8 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
-#include "muwx/MutIcon.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/MutIcon.h"
 
 #ifndef MUWX_ROUTING_ROUTEICONS_H_PRECOMPILED
 #define MUWX_ROUTING_ROUTEICONS_H_PRECOMPILED

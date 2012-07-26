@@ -4,7 +4,7 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/NewInputDeviceShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/NewInputDeviceShape.cpp,v 1.5 2011/09/30 18:07:06 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -77,8 +77,8 @@
  *\{
  ********************************************************************/
 #include "NewInputDeviceShape.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 using namespace mutabor;
 
 namespace mutaborGUI {

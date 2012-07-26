@@ -3,7 +3,7 @@
  * Wrapper around wxcresource.h since wxrc doesn't prevent multiple 
  * inclusion
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/resourceload.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/resourceload.h,v 1.6 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2008/08/05
@@ -35,12 +35,12 @@
  * intermediate update for backup progress
  *
  * Revision 1.1.2.1  2010/01/14 10:13:51  keinstein
- * muwx/resourceload.h: new file to preload other header files for wxresource.h
+ * src/wxGUI/resourceload.h: new file to preload other header files for wxresource.h
  *
  * Revision 1.1.2.1  2010/01/11 10:12:59  keinstein
  * added some .cvsignore files
  *
- * \addtogroup muwx
+ * \addtogroup src/wxGUI
  * \{
  ********************************************************************/
 
@@ -54,7 +54,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "mu32/Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef MUWX_RESOURCELOUAD_H_PRECOMPILED
 #define MUWX_RESOURCELOUAD_H_PRECOMPILED
@@ -78,7 +78,7 @@
 #include "wx/xrc/xmlres.h"
 
 
-#include "xrc/wxresource.h"
+#include "src/xrc/wxresource.h"
 
 #endif // precompiled
 #endif

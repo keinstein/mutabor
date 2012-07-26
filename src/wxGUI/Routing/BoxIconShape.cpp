@@ -3,7 +3,7 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxIconShape.cpp,v 1.10 2011/11/03 17:20:15 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxIconShape.cpp,v 1.10 2011/11/03 17:20:15 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -91,8 +91,8 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "mu32/Defs.h"
-#include "muwx/Routing/BoxIconShape.h"
+#include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/BoxIconShape.h"
 #include "wx/dc.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"

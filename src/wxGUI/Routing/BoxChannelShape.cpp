@@ -3,7 +3,7 @@
  ********************************************************************
  * Box shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/muwx/Routing/BoxChannelShape.cpp,v 1.13 2011/11/05 15:19:38 keinstein Exp $
+ * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxChannelShape.cpp,v 1.13 2011/11/05 15:19:38 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2009/11/23
@@ -188,19 +188,19 @@
  *\addtogroup route
  *\{
  ********************************************************************/
-#include "muwx/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
-#include "muwx/Routing/OutputDeviceShape.h"
-#include "muwx/Routing/BoxDlg.h"
-#include "muwx/Routing/RouteIcons.h"
-#include "muwx/MutRouteWnd.h"
-#include "muwx/Routing/GUIRoute-inlines.h"
-#include "muwx/GUIBoxData-inlines.h"
-#include "muwx/Routing/DebugRoute.h"
+#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/GUIBoxData-inlines.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
 
 #include "wx/dc.h"
 using namespace mutabor;
