@@ -2,12 +2,11 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/templates/template.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
- * Copyright:   (c) 2011 TU Dresden
+ * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/09/27 20:13:26 $
- * \version $Revision: 1.5 $
+ * \version $Version$
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -23,27 +22,6 @@
  *    You should have received a copy of the GNU General Public License
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * $Log: template.cpp,v $
- * Revision 1.5  2011/09/27 20:13:26  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.4  2011-08-06 09:16:22  keinstein
- * added “official” license descripiton
- *
- * Revision 1.3  2011-02-20 22:36:00  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
  *
  *
  ********************************************************************
@@ -65,7 +43,7 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
+#include "src/kernel/Defs.h"
 
 #ifndef HEADERFILENAME_PRECOMPILED
 #define HEADERFILENAME_PRECOMPILED
