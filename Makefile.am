@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4 --install
+#AUTOMAKE_OPTIONS = dejagnu
 MAKEFILE_DEPS = remove-podeps.stamp
-DLLCOPYPATTERN = \(wx\|mingw\)
 SUBDIRS = po lib src . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 AM_CPPFLAGS = -I$(top_srcdir)/lib/rtmidi @NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 

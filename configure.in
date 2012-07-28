@@ -170,6 +170,8 @@ AC_CANONICAL_HOST
 AC_MSG_CHECKING(for MIDI API)
 AC_SUBST( midiapi, [""] )
 
+copydlls=false
+
 case "$host_os" in 
 dnl GNU/Linux on an Intel or compatible
 *linux*)
@@ -219,6 +221,7 @@ darwin*)
 
 *winnt*|*interix*|cygwin*|*mingw*|uwin*)
 	PLATFORM=windows
+	copydlls=true
 	LDFLAGS="$LDFLAGS -lwinmm"
   	# Use WinMM library
   	AC_SUBST( midiapi, [-D__WINDOWS_MM__] )
@@ -272,6 +275,7 @@ darwin*)
 
 esac
 CPPFLAGS="$CPPFLAGS $midiapi"
+AM_CONDITIONAL(COPYDLLS,$copydlls)
 
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18.1])
