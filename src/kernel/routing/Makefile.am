@@ -1,1 +1,1 @@
-SUBDIRS= gmn midi
+SUBDIRS= gmn midi tests

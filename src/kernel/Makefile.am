@@ -1,1 +1,1 @@
-SUBDIRS=routing
+SUBDIRS=routing tests

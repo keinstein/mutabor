@@ -1,1 +1,1 @@
-SUBDIRS=gmut includes kernel wxintl
+SUBDIRS=gmut includes kernel wxintl tests

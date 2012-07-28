@@ -1,3 +1,4 @@
+SUBDIRS=tests
 noinst_LTLIBRARIES = libintl.la
 libintl_la_HEADRES = libintl.h
 #BUILT_SOURCES = $(top_builddir)/intl/libintl.h

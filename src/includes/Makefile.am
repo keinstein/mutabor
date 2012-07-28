@@ -1,4 +1,1 @@
-#SUBDIRS=mutabor
-
-
-mac:
+SUBDIRS=mutabor tests

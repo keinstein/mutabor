@@ -1,5 +1,5 @@
 buildincludedir=$(top_builddir)/includes
-INCLUDES = -I$(buildincludedir)  -I$(top_srcdir)/includes \
+AM_CPPFLAGS = -I$(buildincludedir)  -I$(top_srcdir)/includes \
 	@NETINET_INC@ -I $(top_builddir)/intl
 AM_LDFLAGS = -static
 check_PROGRAMS = testmutfile

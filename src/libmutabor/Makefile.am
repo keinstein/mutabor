@@ -1,6 +1,6 @@
 SUBDIRS = . tests
 buildincludedir=$(top_builddir)/includes
-INCLUDES = -I$(buildincludedir) -I$(top_srcdir)/includes \
+AM_CPPFLAGS = -I$(buildincludedir) -I$(top_srcdir)/includes \
 	-I$(top_builddir)/$(INTLDIR) -I$(top_srcdir)/$(INTLDIR) \
 	@NETINET_INC@ -I$(top_srcdir)/libasprintf -I$(top_srcdir)/missfunc
 AUTOMAKE_OPTIONS=foreign
@@ -109,5 +109,5 @@ SUFFIXES = .h
 	rm -f y.tab.c
 
 mutlex.h: mutlex.l
-mut.h: mut.y
+#mut.h: mut.y
 

@@ -1,3 +1,5 @@
+SUBDIRS=tests
+
 SUFFIXES=.def .h .hh
 
 CLASSES=object identifier interval intervalSum intervalDiff idlist \
