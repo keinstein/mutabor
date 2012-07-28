@@ -100,6 +100,7 @@ endif
 bin_PROGRAMS = mutabor
 
 INLINEHEADERS = \
+		src/kernel/routing/CommonFileDevice-inlines.h \
 		src/kernel/routing/Device-inlines.h \
 		src/kernel/routing/Route-inlines.h \
 		src/wxGUI/GUIBoxData-inlines.h \
@@ -115,6 +116,7 @@ INDENTHEADERS = \
 		src/kernel/routing/gmn/GSP.h \
 		src/kernel/routing/midi/DevMidF.h \
 		src/kernel/routing/midi/DevMidi.h \
+		src/kernel/routing/CommonFileDevice.h \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
 		src/kernel/routing/RouteCompat.h \
@@ -192,6 +194,7 @@ mutabor_INDENTS = \
 		src/kernel/routing/gmn/GSP.cpp \
 		src/kernel/routing/midi/DevMidF.cpp \
 		src/kernel/routing/midi/DevMidi.cpp \
+		src/kernel/routing/CommonFileDevice.cpp \
 		src/kernel/routing/Device.cpp \
 		src/kernel/routing/Route.cpp \
 		src/kernel/routing/RouteCompat.cpp \
