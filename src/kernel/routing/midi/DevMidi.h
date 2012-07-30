@@ -84,7 +84,7 @@
 #include <cassert>
 
 #ifdef RTMIDI
-#include "RtMidi.h"
+#include "lib/rtmidi/RtMidi.h"
 #else
 #ifndef H_MMSYSTEM
 //  #define WINVER 0x030a

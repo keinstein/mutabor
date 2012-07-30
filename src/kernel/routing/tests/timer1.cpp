@@ -36,6 +36,8 @@
 
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/CommonFileDevice-inlines.h"
+#include <cstdlib>
 
 
 
@@ -44,29 +46,59 @@
 #pragma hdrstop
 #endif
 
-
-
-// for all others, include the necessary headers (this file is usually all you
-// need because it includes almost all "standard" wxWidgets headers)
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
+#ifdef __WXMSW__
+#define sleep(x) Sleep(1000*x)
 #endif
 
 #include <wx/app.h>
-#include <wx/cmdline.h>
 
-// ============================================================================
-// implementation
-// ============================================================================
 
-static const wxCmdLineEntryDesc cmdLineDesc[] =
-{
-	{ wxCMD_LINE_SWITCH, _T("h"), _T("help"), _T("show this help message"),
-	  wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
-	{ wxCMD_LINE_SWITCH, _T("d"), _T("dummy"), _T("a dummy switch") },
-// ... your other command line options here...
+class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
+protected:
+	wxStopWatch sw;
+public:
+	unsigned long i;
+	unsigned long max;
+	unsigned long min;
+	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw() {
+	}
+	virtual ~testCommonFileDeviceTimer() {}
+	void Play() {
+		RealTime = true;
+		max = 0; min = 100000;
+		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
+		sw.Start();
+	}
 
-	{ wxCMD_LINE_NONE }
+	void Stop() {
+		CommonFileInputDevice::Stop();
+		if (sw.Time() > 30) {
+			std::clog << "Played too long!" << std::endl;
+			exit (1);
+		}
+		sw.Pause();
+		exit(0);
+	}
+	wxLongLong PrepareNextEvent() {
+		wxLongLong tmp = wxGetLocalTimeMillis();
+		tmp = tmp - (referenceTime + wxLongLong(0,(i*(i+1))/2));
+		unsigned int tl = tmp.GetLo();
+		if (max < tl)  max = tl;
+		if (min > tl || min == 0) min = tl;
+		if (tmp.GetHi() || tmp.GetLo() > 10) {
+			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+				  << " Runtime: " << tmp.GetHi() << "," << tmp.GetLo() << "ms" << std::endl;
+			exit(3);
+		}
+		++i;
+		if (i<100) {
+			return (i*(i+1))/2;
+		}
+		return GetNO_DELTA();
+	}
+
+	void Save(tree_storage&, const mutabor::RouteClass*){}
+	void Load(tree_storage&, mutabor::RouteClass*){}
 };
 
 int main(int argc, char **argv)
@@ -80,61 +112,19 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	wxCmdLineParser parser(cmdLineDesc, argc, argv);
-	switch ( parser.Parse() )
-	{
-	case -1:
-		// help was given, terminating
-		break;
-
-	case 0:
-		// everything is ok; proceed
-		if (parser.Found(_T("d")))
-		{
-			wxPrintf(_T("Dummy switch was given...\n"));
-
-			while (1)
-			{
-				wxChar input[128];
-				wxPrintf(_T("Try to guess the magic number (type 'quit' to escape): "));
-				if ( !wxFgets(input, WXSIZEOF(input), stdin) )
-					break;
-
-				// kill the last '\n'
-				input[wxStrlen(input) - 1] = 0;
-
-				if (wxStrcmp(input, _T("quit")) == 0)
-					break;
-
-				long val;
-				if (!wxString(input).ToLong(&val))
-				{
-					wxPrintf(_T("Invalid number...\n"));
-					continue;
-				}
-
-				if (val == 42)
-					wxPrintf(_T("You guessed!\n"));
-				else
-					wxPrintf(_T("Bad luck!\n"));
-			}
-		}
-		break;
-
-	default:
-		break;
+	std::clog<< "." << std::flush;
+	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
+	if (tim == NULL) {
+		std::clog << "Class construction failed." << std::endl;
+		exit(-1);
 	}
+	mutabor::InputDevice prevent_from_deletion(tim);
+	std::clog<< "." << std::flush;
+	tim->Play();
+	std::clog<< "." << std::flush;
 
-	if ( argc == 1 )
-	{
-		// If there were no command-line options supplied, emit a message
-		// otherwise it's not obvious that the sample ran successfully
-		wxPrintf(_T("Welcome to the wxWidgets 'console' sample!\n"));
-		wxPrintf(_T("For more information, run it again with the --help option\n"));
-	}
-
-	// do something useful here
-
-	return 0;
+	wxThread::ExitCode e = tim->WaitForTimer();
+	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
+	return (intptr_t)e; 
 }
 ///\}

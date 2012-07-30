@@ -1,8 +1,8 @@
 /** \file     -*- C++ -*-
  ********************************************************************
- * File player class which solves common tasks of file related devices such as MIDI file players.
+ * File player class which solves common tasks of file related devices
+ * such as MIDI file players.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
@@ -24,8 +24,6 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log$
- *
  ********************************************************************
  * \addtogroup route
  * \{
@@ -39,14 +37,10 @@
 
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
+#include "wx/timer.h"
 
 
 namespace mutabor {
-
-
-#define NO_DELTA 0x7fffffffl //2147483647  // long max-Zahl
-	
-	unsigned long CommonFileOutputDevice::NRT_Speed=0l;
 
 
 // OutputMidiFile ------------------------------------------------------
@@ -79,21 +73,29 @@ namespace mutabor {
 
 	inline bool CommonFileOutputDevice::Open()
 	{
+		std::clog<< "O" << std::flush;
 		mutASSERT(!isOpen);
+		std::clog<< "O" << std::flush;
 		isOpen = true;
+		std::clog<< "O" << std::flush;
 		return isOpen;
+		std::clog<< "O" << std::flush;
 	}
 
 	inline void CommonFileOutputDevice::Close()
 	{
+		std::clog<< "C" << std::flush;
 		mutASSERT(isOpen);
+		std::clog<< "C" << std::flush;
 		isOpen = false;
+		std::clog<< "C" << std::flush;
 	}
 
 #ifdef WX
 	inline wxString CommonFileOutputDevice::TowxString() const {
 		wxString s = OutputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  Name = %s\n  DevId = %d"), Name.c_str(), DevId);
+			wxString::Format(_T("\n  Name = %s\n  DevId = %d"), 
+					 Name.c_str(), DevId);
 		return s;
 	}
 #endif
@@ -118,7 +120,8 @@ namespace mutabor {
 
 
 /// Load current device settings from a tree storage
-/** \argument config (tree_storage) storage class, where the data will be loaded from.
+/** \argument config (tree_storage) storage class, where the data will
+ * be loaded from.
  */
 	inline void CommonFileInputDevice::Load (tree_storage & config)
 	{
@@ -134,22 +137,33 @@ namespace mutabor {
 
 	inline bool CommonFileInputDevice::Open()
 	{
+		std::clog<< "O" << std::flush;
 		mutASSERT(!isOpen);
+		std::clog<< "O" << std::flush;
 		DEBUGLOG (other, _T("start"));
+		std::clog<< "O" << std::flush;
 		// Mode setzen
 		Mode = DeviceStop;
+		std::clog<< "O" << std::flush;
 		// initialisieren
 		Stop();
+		std::clog<< "O" << std::flush;
 		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,this);
+		std::clog<< "O" << std::flush;
 		isOpen = true;
+		std::clog<< "O" << std::flush;
 		return true;
 	}
 
 	inline void CommonFileInputDevice::Close()
 	{
+		std::clog<< "C" << std::flush;
 		mutASSERT(isOpen);
+		std::clog<< "C" << std::flush;
 		Stop();
+		std::clog<< "C" << std::flush;
 		isOpen = false;
+		std::clog<< "C" << std::flush;
 	}
 
 	inline void CommonFileInputDevice::Stop()
@@ -157,79 +171,150 @@ namespace mutabor {
 		DEBUGLOG(routing,_T("old mode = %d"),Mode);
 		if ( Mode == DevicePlay || Mode == DeviceTimingError )
 			Pause();
-
-		// OK ?
+		
 		if ( Mode == DeviceCompileError )
 			return;
+		
+		if (timer) {
+			timer -> Delete();
+		}
 
-		// Delta-Times lesen
-		minDelta = 0;
-		actDelta = -1;
+		referenceTime = 0;
+		pauseTime = 0;
 		Mode = DeviceStop;
 	}
 
-	inline void CommonFileInputDevice::Play()
+	inline void CommonFileInputDevice::Play(wxThreadKind kind)
 	{
-		if ( RealTime ) {
-			if (!timer.Start(2,wxTIMER_CONTINUOUS)) {
-				return;
+
+		switch (Mode) {
+		case DeviceCompileError:
+		case DeviceTimingError:
+			return;
+		case DeviceStop:
+			if ( RealTime ) {
+				mutASSERT(timer == NULL);
+				referenceTime = wxGetLocalTimeMillis();
+				pauseTime = 0;
+
+				timer = new FileTimer(this,kind);
+				if (!timer) return;
+				wxThreadError result = timer -> Create(1024*100); // Stack Size
+				if (result == wxTHREAD_NO_ERROR)
+					timer -> Run();
+				else {
+					delete timer;
+					timer = NULL;
+					return;
+				}
+			
 			}
+			break;
+		case DevicePause:
+			if ( RealTime ) {
+				referenceTime += wxGetLocalTimeMillis() - pauseTime;
+				pauseTime = 0;
+				if (timer) {
+					mutASSERT(timer -> IsPaused());
+					timer -> Resume();
+				}
+			}
+			break;
 		}
-
-		Busy = FALSE;
-
 		Mode = DevicePlay;
 	}
 
 	inline void CommonFileInputDevice::Pause()
 	{
-		if ( RealTime )
-			timer.Stop();
-
-		Mode = DevicePause;
-
-		Quite();
+		switch (Mode) {
+		case DeviceCompileError:
+		case DeviceTimingError:
+		case DeviceStop:
+			break;
+		case DevicePlay:
+			if ( RealTime ) {
+				mutASSERT(timer != wxThread::This());
+				if (timer) timer -> Pause();
+				pauseTime = wxGetLocalTimeMillis();
+			}
+			Mode = DevicePause;
+			Quite();
+			break;
+		case DevicePause:
+			Play(); // A mechanical Pause button usually is released if pressed twice
+			break;
+		default:
+			mutASSERT(!"Unknown value");
+		}
 	}
 
-	inline void CommonFileInputDevice::TimerCallback()
+	inline wxThread::ExitCode CommonFileInputDevice::ThreadPlay()
 	{
-		actDelta++;
-		if ( Busy ) {
-			return;
-		}
+		mutASSERT(wxThread::This() == timer);
+		mutASSERT(timer != NULL);
+		mutASSERT(Mode != DeviceCompileError );
 
-		if ( actDelta < minDelta )
-			return;
-
-		// Zeitpunkt ist ran, also verarbeiten
-		Busy = TRUE;
-
-		actDelta -= minDelta;
-
-		IncDelta();
-
-
-		if ( minDelta == NO_DELTA ) {
-			// we have reached the end of all tracks
-//			InDevChanged = 1;
-			Stop();
-			//		Mode = DeviceTimingError;
-		}
-
-#if (DEBUG && WX)
-		mutASSERT(minDelta > 0);
-		DEBUGLOG(midifile,_T("new mindelta = %d"),minDelta);
+		wxLongLong nextEvent = 0; // in ms
+		wxLongLong reference = 0;
+		wxLongLong delta;
+		wxThread::ExitCode e;
+		do {
+			mutASSERT(timer);
+			if (timer->TestDestroy()) {
+				switch (Mode) {
+				case DevicePause:
+				case DevicePlay: 
+					Mode = DeviceStop;
+				case DeviceStop:
+					e = 0;
+					break;
+				case DeviceCompileError:
+				default:
+		 			e = (void *)1;
+					mutASSERT(!"Thread should not have been run!");
+				}
+				return e;
+			}
+			nextEvent = PrepareNextEvent();
+			reference = referenceTime;
+			delta = reference + nextEvent - wxGetLocalTimeMillis();
+			if (delta > 0) {
+				unsigned long s1;
+#ifdef wxLongLong_t
+				wxLongLong_t s = delta.GetValue();
+				s1 = (s > std::numeric_limits<unsigned long>::max()) ? std::numeric_limits<unsigned long>::max(): s;
+#else
+				if (delta.GetHi()) 
+					s1 = std::numeric_limits<unsigned long>::max();
+				else 
+					s1 = delta.GetLo();
 #endif
-
-		Busy = FALSE;
+				wxThread::Sleep(s1);
+			}
+		} while (IsDelta(nextEvent));
+		switch (Mode) {
+		case DevicePlay:
+		case DevicePause: 
+			Mode = DeviceStop;
+		case DeviceStop:
+			e = 0;
+		case DeviceTimingError:
+		case DeviceCompileError:
+		default:
+			e = (void *)1;
+			break;
+		}
+		referenceTime = 0;
+		pauseTime = 0;
+		return NULL;
 	}
+
 	
 #ifdef WX
 	inline wxString CommonFileInputDevice::TowxString() const {
 		return InputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  minDelta = %ld\n  actDelta = %ld\n  Busy = %d"),
-					 minDelta, actDelta, 
-					 Busy);
+			wxString::Format(_T("\n  time zero at = %ld ms\n  paused at  = %ld msx"),
+					 referenceTime, pauseTime);
 	}
 #endif
 	

@@ -53,7 +53,8 @@
 
 // system headers which do seldom change
 
-#include "wx/timer.h"
+#include <limits>
+#include "wx/thread.h"
 
 namespace mutabor {
 
@@ -124,72 +125,41 @@ namespace mutabor {
 	class CommonFileInputDevice : public InputDeviceClass
 	{
 		friend class MidiFileFactory;
-	protected:
-#if __WXMSW__
-		// on Windows wxTimer resolution is too bad to play MIDI files so we must emulate it
-		class ostimer
-		{
-		protected:
-			static void CALLBACK Callback(PVOID lpParam, BOOLEAN TimerOrWaitFired);
-			static HANDLE TimerQueue;
-			HANDLE Timer;
-
-		public:
-			ostimer() {
-			}
-			
-			virtual void Notify() = 0;
-			
-			bool Start(int msec, bool OneShot = false) {
-				if (!TimerQueue)
-					TimerQueue = CreateTimerQueue();
-				if (!TimerQueue) 
-					return false;
-				if (!CreateTimerQueueTimer( &Timer, 
-							    TimerQueue, 
-							    (WAITORTIMERCALLBACK)Callback, 
-							    this , 
-							    msec, 
-							    OneShot?0:msec , 
-							    WT_EXECUTEDEFAULT))
-					return false;
-				return true;
-			}
-
-			void Stop() {
-				DeleteTimerQueueTimer(TimerQueue,Timer,NULL);
-			}
-		};
-#else
-		typedef wxTimer ostimer;
-#endif
-		class MidiTimer : public ostimer
+	public:
+ 		class FileTimer: public wxThread
 		{
 			CommonFileInputDevice * file;
-
 		public:
-			MidiTimer(CommonFileInputDevice * f) : ostimer(),file(f)
+			FileTimer(CommonFileInputDevice * f,
+				  wxThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
+									   file(f)
 				{}
 
-			void Notify()
-				{
-					file->TimerCallback();
-				}
+			
+			ExitCode Entry() {
+				ExitCode e = file->ThreadPlay();
+				return e;
+			}
 		};
 
-		MidiTimer timer;
+	protected:
+		FileTimer * timer;
 
 		CommonFileInputDevice(): InputDeviceClass(),
-				 timer (this) { }
+					 timer (NULL),
+					 referenceTime(0),
+					 pauseTime(0) { }
 
 		CommonFileInputDevice(int devId,
-			      wxString name, 
-			      MutaborModeType mode,
-			      int id): InputDeviceClass(devId, 
-							name, 
-							mode, 
-							id),
-					  timer(this) {}
+				      wxString name, 
+				      MutaborModeType mode,
+				      int id): InputDeviceClass(devId, 
+								name, 
+								mode, 
+								id),
+					       timer(NULL),
+					       referenceTime(0),
+					       pauseTime(0) {}
 
 	public:
 		virtual ~CommonFileInputDevice()
@@ -209,23 +179,38 @@ namespace mutabor {
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
-		virtual void Play();
+		virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED);
 		virtual void Pause();
 
-		virtual void SetName(const wxString & s) 
-			{
-				if (s != Name) {
-					bool reopen = IsOpen();
-					if (reopen) 
-						Close();
+		virtual void SetName(const wxString & s) {
+			if (s != Name) {
+				bool reopen = IsOpen();
+				if (reopen) 
+					Close();
 
-					Name = s;
+				Name = s;
 
-					if (reopen) 
-						Open();
-				}
+				if (reopen) 
+					Open();
 			}
-		void TimerCallback();
+		}
+
+		/** 
+		 * Play the file.
+		 * This function is called from the
+		 * thread object. It plays the file using sleep
+		 * operations.
+		 */
+		wxThread::ExitCode ThreadPlay();
+		wxThread::ExitCode WaitForTimer() {
+			mutASSERT(timer);
+			if (timer) {
+				mutASSERT(wxThread::This() != timer);
+				if (wxThread::This() != timer)
+					return (timer -> Wait());
+				else return timer;
+			}
+		}
 
 		virtual mutString GetTypeName () const {
 			return N_("Generic input file");
@@ -234,18 +219,18 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
+		
 	protected:
-		long minDelta;
-		long actDelta;
-		BOOL Busy;
+		wxLongLong referenceTime;
+		wxLongLong pauseTime;
 	};
 
 
-	class MidiFileFactory:public DeviceFactory { 
+	class CommonFileDeviceFactory:public DeviceFactory { 
 	public:
-		MidiFileFactory(size_t id = 0):
+		CommonFileDeviceFactory(size_t id = 0):
 			DeviceFactory(id) {}
-		virtual ~MidiFileFactory();
+		virtual ~CommonFileDeviceFactory();
 
 	protected:
 		virtual size_t GetType() const
@@ -283,72 +268,6 @@ namespace mutabor {
 
 #endif  /* precompiled */
 #endif
-
-/*
-  timeSetEvent
-
-  The timeSetEvent function starts a specified timer event. The multimedia timer runs in its own thread. After the event is activated, it calls the specified callback function or sets or pulses the specified event object.
-
-  This function is obsolete. New applications should use CreateTimerQueueTimer to create a timer-queue timer.
-
-  MMRESULT timeSetEvent(
-  UINT           uDelay,
-  UINT           uResolution,
-  LPTIMECALLBACK lpTimeProc,
-  DWORD_PTR      dwUser,
-  UINT           fuEvent
-  );
-
-Parameters
-
-uDelay
-
-Event delay, in milliseconds. If this value is not in the range of the minimum and maximum event delays supported by the timer, the function returns an error.
-
-uResolution
-
-Resolution of the timer event, in milliseconds. The resolution increases with smaller values; a resolution of 0 indicates periodic events should occur with the greatest possible accuracy. To reduce system overhead, however, you should use the maximum value appropriate for your application.
-
-lpTimeProc
-
-Pointer to a callback function that is called once upon expiration of a single event or periodically upon expiration of periodic events. If fuEvent specifies the TIME_CALLBACK_EVENT_SET or TIME_CALLBACK_EVENT_PULSE flag, then the lpTimeProc parameter is interpreted as a handle to an event object. The event will be set or pulsed upon completion of a single event or periodically upon completion of periodic events. For any other value of fuEvent, the lpTimeProc parameter is interpreted as a function pointer with the following signature: void (CALLBACK)(UINT uTimerID, UINT uMsg, DWORD_PTR dwUser, DWORD_PTR dw1, DWORD_PTR dw2);
-
-dwUser
-
-User-supplied callback data.
-
-fuEvent
-
-Timer event type. This parameter may include one of the following values.
-Value 	Meaning
-TIME_ONESHOT 	Event occurs once, after uDelay milliseconds.
-TIME_PERIODIC 	Event occurs every uDelay milliseconds.
-
-The fuEvent parameter may also include one of the following values.
-Value 	Meaning
-TIME_CALLBACK_FUNCTION 	When the timer expires, Windows calls the function pointed to by the lpTimeProc parameter. This is the default.
-TIME_CALLBACK_EVENT_SET 	When the timer expires, Windows calls the SetEvent function to set the event pointed to by the lpTimeProc parameter. The dwUser parameter is ignored.
-TIME_CALLBACK_EVENT_PULSE 	When the timer expires, Windows calls the PulseEvent function to pulse the event pointed to by the lpTimeProc parameter. The dwUser parameter is ignored.
-TIME_KILL_SYNCHRONOUS 	Passing this flag prevents an event from occurring after the timeKillEvent() function is called.
-
-Return Values
-
-Returns an identifier for the timer event if successful or an error otherwise. This function returns NULL if it fails and the timer event was not created. (This identifier is also passed to the callback function.)
-
-Remarks
-
-Each call to timeSetEvent for periodic timer events requires a corresponding call to the timeKillEvent function.
-
-Creating an event with the TIME_KILL_SYNCHRONOUS and the TIME_CALLBACK_FUNCTION flag prevents the event from occurring after the timeKillEvent function is called.
-
-Requirements
-
-  Windows XP: Included in Windows XP only.
-  Header: Declared in Mmsystem.h; include Windows.h.
-  Library: Use Winmm.lib.
-
-
- */
 
 
 ///\}

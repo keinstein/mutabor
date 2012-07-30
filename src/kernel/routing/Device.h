@@ -661,8 +661,17 @@ namespace mutabor {
 				return false;
 			}
 
-		/// Increase the time in batch conversion
-		virtual void IncDelta() {}
+		/** 
+		 * Go on to the next event. 
+		 * This function must be
+		 * provided by the device. It advices it to prepare
+		 * the next event and return the time frame in
+		 * milliseconds from the start of the piece.
+		 * 
+		 * \return wxLongLong Temporal position of the next event in the
+		 * piece.
+		 */
+		virtual wxLongLong PrepareNextEvent() {}
 
 		virtual DevType GetType() const
 			{
@@ -691,6 +700,14 @@ namespace mutabor {
 #endif
 		virtual mutString GetTypeName () const {
 			return N_("Undefined input device");
+		}
+
+		static wxLongLong GetNO_DELTA() {
+			return std::numeric_limits<wxLongLong>::min();
+		}
+
+		bool IsDelta(wxLongLong d) {
+			return d != GetNO_DELTA();
 		}
 
 #ifdef WX

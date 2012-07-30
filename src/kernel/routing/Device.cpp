@@ -322,6 +322,7 @@ CommonTypedDeviceAPI:\n\
         // CurrentTime ------------------------------------------------------
 	CurrentTimer CurrentTime;
 
+
 #ifdef WX
 	wxString OutputDeviceClass::TowxString() const {
 		return CommonTypedDeviceAPI<OutputDeviceClass>::

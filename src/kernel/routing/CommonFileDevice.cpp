@@ -44,7 +44,10 @@
 #endif
 
 namespace mutabor {
-#if __WXMSW__
+
+	unsigned long CommonFileOutputDevice::NRT_Speed=0l;
+
+#if __WXMSW__ && 0
 	void CALLBACK CommonFileInputDevice::ostimer::Callback(PVOID lpParam, BOOLEAN TimerOrWaitFired) 
 	{
 		static_cast<MidiTimer *>(lpParam)->Notify();

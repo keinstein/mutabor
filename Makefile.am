@@ -354,7 +354,7 @@ endif
 
 src/wxGUI/resourceload.h:$(top_srcdir)/src/xrc/wxresource.h
 
-cvs_dist: Makefile
+cvs_dist: Makefile.am
 	touch cvsdist
 	chmod -R u+w  cvsdist
 	rm -rf cvsdist
@@ -366,7 +366,7 @@ cvs_dist: Makefile
 	./configure && \
 	$(MAKE) dist
 
-cvs_distcheck: Makefile
+cvs_distcheck: Makefile.am
 	touch cvsdist
 	chmod -R u+w  cvsdist
 	rm -rf cvsdist
