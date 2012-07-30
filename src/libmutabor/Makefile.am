@@ -1,17 +1,10 @@
-SUBDIRS = . tests
-buildincludedir=$(top_builddir)/includes
-AM_CPPFLAGS = -I$(buildincludedir) -I$(top_srcdir)/includes \
-	-I$(top_builddir)/$(INTLDIR) -I$(top_srcdir)/$(INTLDIR) \
-	@NETINET_INC@ -I$(top_srcdir)/libasprintf -I$(top_srcdir)/missfunc
-AUTOMAKE_OPTIONS=foreign
-AM_YFLAGS = -d -v --report=itemset
-
-ACLOCAL_AMFLAGS = -I m4
+SUBDIRS = tests
+include $(top_srcdir)/common-rules.mk
+override buildincludedir=$(top_builddir)/includes
 
 BUILT_SOURCES=$(srcdir)/mutlex.h $(srcdir)/mut.h
 
 lib_LTLIBRARIES = libmutabor.la
-libmutabor_la_CFLAGS = -Wall
 libmutabor_la_includedir = $(pkgincludedir)
 libmutabor_la_include_HEADERS = $(buildincludedir)/mutabor/object.h \
 			$(buildincludedir)/mutabor/identifier.h \
@@ -70,44 +63,9 @@ libmutabor_la_SOURCES = object.c identifier.c \
 #			parser.c
 
 libmutabor_la_LDFLAGS = -version-info 0:0:0 @LTLIBINTL@ \
-	$(top_builddir)/missfunc/libmissfunc.a
+	$(top_builddir)/src/lib/missfunc/libmissfunc.a
 
-SUFFIXES = .h
-
-.l.h:
-	$(LEXCOMPILE) $<
-	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
-		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
-		$(LEX_OUTPUT_ROOT).c >$$cfilename
-	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
-	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-.l.c:
-	$(LEXCOMPILE) $<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
-	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-
-
-.y.h:
-	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
-	if test -f y.tab.h; then \
-	  to=`echo "$*_H" | sed \
-                -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
-                -e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
-	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
-	  rm -f y.tab.h; \
-	  if cmp -s $*.ht $*.h; then \
-	    rm -f $*.ht ;\
-	  else \
-	    mv $*.ht $*.h; \
-	  fi; \
-	fi
-	if test -f y.output; then \
-	  mv y.output $*.output; \
-	fi
-	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
-	rm -f y.tab.c
-
-mutlex.h: mutlex.l
-#mut.h: mut.y
-
+mutlex.h $(srcdir)/mutlex.h: mutlex.l
+$(srcdir)/mutlex.c: mutlex.l
+	rm $(srcdir)/mutlex.h
+	$(MAKE) $(AM_MAKEFLAGS) mutlex.h

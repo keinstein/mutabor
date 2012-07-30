@@ -3,15 +3,14 @@ ACLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 SUBDIRS = po lib src . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
-AM_CPPFLAGS = -I$(top_srcdir)/lib/rtmidi @NETINET_INC@ #$(top_builddir)/intl -I $(top_srcdir)/intl 
-SUFFIXES = .$(PCHEXT_CXX) .rc .res
+include common-rules.mk
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
 CVS = cvs
 GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
-INDENT = astyle --style=linux --indent=tab=8
+
 EXTRA_DIST = config.rpath \
 	m4/ChangeLog  \
 	debian \
@@ -92,10 +91,6 @@ BUILT_SOURCES = \
 	$(top_srcdir)/src/xrc/wxresource.h \
 	$(top_srcdir)/osdep/win/Mutabor.nsi
 
-if COND_PRECOMP_CXX
-BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
-nodist_mutabor_SOURCES = mutabor-cxxprecompiled.$(PCHEXT_CXX)
-endif
 
 bin_PROGRAMS = mutabor
 
@@ -283,27 +278,7 @@ if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
 endif
 
-#		src/wxGUI/generic/myContextHelpButton.h \
-#		src/wxGUI/generic/myContextHelpButton.cpp \
-#
-mutabordir=$(datadir)/mutabor
-
-AM_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
-AM_CFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
-AM_CXXFLAGS = $(AM_CFLAGS)
-AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
-AM_CPPFLAGS += $(WX_CPPFLAGS) -DPREFIX='"$(prefix)"'
-
 mutabor_CXXLD=$(CXX)
-
-if COND_PRECOMP_C
-mutabor_CFLAGS = -include mutabor-precompiled.h # -fpch-deps
-endif
-
-if COND_PRECOMP_CXX
-mutabor_CXXFLAGS = -include mutabor-cxxprecompiled.h # -fpch-deps
-endif
-
 mutabor_SHORTNAME = mutabor
 
 mutabor_LDADD = $(LDADD)
@@ -318,82 +293,13 @@ $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 endif
 
 if COND_PRECOMP_CXX
-if AMDEP
-@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+nodist_mutabor_SOURCES = mutabor-cxxprecompiled.$(PCHEXT_CXX)
 endif
-endif
+
 
 .PHONY: cvs_dist cvs_distcheck \
-	mutabor-cxxprecompiled mutabor-cxxprecompiled.h.shuffle \
-	mac mac-recursive \
 	fixdependencies
 
-if COND_WINRC
-.rc.$(OBJEXT):
-	$(RCCOMPILE) $< $@
-endif
-
-.h.$(PCHEXT_CXX):
-if am__fastdepCXX
-	if $(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) -MT $@ \
-		-MD -MP -MF "$(DEPDIR)/$*.Tpo" -o $@ \
-		-c `test -f '$<' || echo '$(srcdir)/'`$<; \
-	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
-	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi 
-else
-if AMDEP
-	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-endif
-	$(CXXCOMPILE) $(mutabor_CPPFLAGS) $(mutabor_CallFLAGS) \
-		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
-endif
-
-
-if COND_PRECOMP_CXX
-
-#./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
-
-podeps.stamp:
-	touch $@
-
-
-Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
-        @case '$?' in \
-          *config.status*) \
-            echo ' $(SHELL) ./config.status'; \
-            $(SHELL) ./config.status;; \
-          *) \
-            echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
-            cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
-        esac;
-remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
-	rm -f podeps.stamp
-	touch $@
-
-./$(DEPDIR)/podeps.dep:$(mutabor_COMPILESOURCES) podeps.stamp
-	$(MKDIR_P) `dirname $@`
-	echo >$@
-	for obj in $(mutabor_OBJECTS) ; do \
-		base=`basename "$$obj"` ; \
-		dir=`dirname "$$obj"` ; \
-		pofilebase=`echo "$$base" | sed 's/\.$(OBJEXT)\$$/.Po/g'` ; \
-		pofile="$$dir/\$$(DEPDIR)/$$pofilebase" ; \
-		echo >>$@ ; \
-		echo >>$@ ; \
-		echo "$$pofile: $$pofile.stamp" >>$@ ; \
-		echo "$$pofile.stamp:" >>$@ ; \
-		echo "	-$(SED) -i 's/ mutabor-cxxprecompiled\.[a-zA-Z0-9]* / /g' $$pofile" >>$@ ; \
-		echo '	touch $$@' >>$@ ; \
-		echo >>$@ ; \
-		echo "$$obj:$$pofile.stamp-remove" >>$@ ; \
-		echo "$$pofile.stamp-remove:" >>$@ ; \
-		echo "	rm -f '$$pofile.stamp'" >>$@ ; \
-		echo '	touch $$@' >>$@ ; \
-	done
-@am__include@ @am__quote@./$(DEPDIR)/podeps.dep@am__quote@
-
-endif
 
 
 src/wxGUI/resourceload.h:$(top_srcdir)/src/xrc/wxresource.h
@@ -429,114 +335,16 @@ cvs_distcheck: Makefile
 	$(MAKE)  distcheck
 
 
-mutabor-cxxprecompiled.stamp:mutabor-cxxprecompiled.$(PCHEXT_CXX)
-	if test \! -f mutabor-cxxprecompiled.stamp ; then touch mutabor-cxxprecompiled.stamp ; fi
-	touch -d '2001-01-01 00:00:00' mutabor-cxxprecompiled.$(PCHEXT_CXX)
-	touch -d '2002-01-01 00:00:00' $@
 
-mutabor-cxxprecompiled:mutabor-cxxprecompiled.stamp
-
-
-if COND_PRECOMP_CXX
-$(mutabor_OBJECTS):mutabor-cxxprecompiled.stamp
+#if COND_WINRC
+#$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(top_srcdir)/src/wxGUI/Mutabor.rc
+#	$(RCCOMPILE) $< $@
+#endif
 
 
-mutabor-cxxprecompiled.sorted: Makefile
-	@echo 'creating $@'
-	@for datei in $(INDENTHEADERS) ; \
-	do  \
-		echo $$datei | $(EGREP) '\.h$$' >/dev/null && \
-		echo '#include "'"$$datei"'"' >>$@.tmp ; \
-	done ; true
-	@if cmp -s $@.tmp $@ ; then \
-		rm -f $@.tmp ;\
-        else \
-		mv $@.tmp $@; \
-        fi 
-
-mutabor-cxxprecompiled.h:mutabor-cxxprecompiled.h.shuffle
-
-mutabor-cxxprecompiled.h.shuffle: mutabor-cxxprecompiled.sorted
-	$(MAKE) mutabor-cxxprecompiled.sorted
-	@echo 'Shuffling mutabor-cxxprecompiled.h ...'
-	echo '#define PRECOMPILE 1' >mutabor-cxxprecompiled.h
-	echo '#include "Defs.h"' >> mutabor-cxxprecompiled.h
-	$(SHUFFLE) <$< >> mutabor-cxxprecompiled.h
-	echo '#undef PRECOMPILE' >> mutabor-cxxprecompiled.h
-	touch -d '2000-01-01 00:00:00' mutabor-cxxprecompiled.h
-	rm -f mutabor-cxxprecompiled.$(PCHEXT_CXX)
-endif
-
-if COND_WINRC
-$(mutabor_SHORTNAME)-Mutabor.$(OBJEXT):$(top_srcdir)/src/wxGUI/Mutabor.rc
-	$(RCCOMPILE) $(srcdir)/src/wxGUI/Mutabor.rc $@
-endif
-
-Mutabor.xrc: $(top_srcdir)/src/xrc/Mutabor.xrc
-	cp $< $@
-#	sed -e 's/_amp;/\&amp;/g' <$(top_srcdir)/src/xrc/Mutabor.xrc >Mutabor.xrc
-
-$(top_srcdir)/src/xrc/wxresource.h : $(top_srcdir)/src/xrc/Mutabor.xrc
-	(cd $(top_srcdir)/src/xrc; \
-	wxrc -c -e -o wxresource.cpp Mutabor.xrc)
-
-reslocale.cpp: $(top_srcdir)/src/xrc/reslocale.cpp $(top_srcdir)/src/xrc/Mutabor.xrc
-$(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
-	(cd $(top_srcdir)/src/xrc; \
-	wxrc -g -o reslocale.cpp Mutabor.xrc)
-
-
-SUFFIXES += .h
-
-.l.h:
-	$(LEXCOMPILE) $<
-	cfilename=`echo $@|sed 's/\.h$$/.c/;t'` && \
-		sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$$cfilename|' \
-		$(LEX_OUTPUT_ROOT).c >$$cfilename
-	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $@
-	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-.l.c:
-	$(LEXCOMPILE) $<
-	sed '/^#/ s|$(LEX_OUTPUT_ROOT)\.c|$@|' $(LEX_OUTPUT_ROOT).c >$@
-	mv `sed 's,%option[ 	]\+header-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-	mv `sed 's,%option[ 	]\+tables-file="\(.*\)".*,\1,;t;d' $<` $(srcdir)
-
-YACCCOMPILE = $(YACC) $(YFLAGS) $(AM_YFLAGS)
-
-.y.cpp: 
-	rm -f $*.h
-	$(MAKE) $*.h
-
-.y.h:
-	$(YACCCOMPILE) `test -f '$<' || echo '$(srcdir)/'`$<
-	if test -f y.tab.h; then \
-	  to=`echo "$*_H" | sed \
-		-e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/' \
-		-e 's/[^ABCDEFGHIJKLMNOPQRSTUVWXYZ]/_/g'`; \
-	  sed "/^#/ s/Y_TAB_H/$$to/g" y.tab.h >$*.ht; \
-	  rm -f y.tab.h; \
-	  if cmp -s $*.ht $*.h; then \
-	    rm -f $*.ht ;\
-	  else \
-	    mv $*.ht $*.h; \
-	  fi; \
-	fi
-	if test -f y.output; then \
-	  mv y.output $*.output; \
-	fi
-	sed '/^#/ s|y\.tab\.c|$@|' y.tab.c >$@t && mv $@t $@
-	mv y.tab.c $*.cpp
 
 mutlex.h: mutlex.l
-src/kernel/mut.cpp src/kernel/mut.h: $(top_srcdir)/src/kernel/mut.h
-$(top_srcdir)/src/kernel/mut.h: $(top_srcdir)/src/kernel/mut.y
-$(top_srcdir)/src/kernel/mut.cpp: $(top_srcdir)/src/kernel/mut.h
-if MAINTAINER_MODE
-$(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
-	$(top_builddir)/config.status
-	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
-	cp $(top_builddir)/osdep/win/Mutabor.nsi $@
-endif
+
 
 mac: copymac
 	(cd doc && $(MAKE) $(AM_MAKEFLAGS) mac)
@@ -615,27 +423,6 @@ installwinold: mutabor.exe
 	for d in `$(WX_CONFIG_PATH) --exec-prefix`/lib/wx*{msw,base}*.dll ; \
 	do \
 		cp $$d Mutabor ; \
-	done
-
-installdll:
-	@echo 'solving references for $(DLLLINKFILE)'
-	@DLLSEARCHPATH="$(DLLSEARCHPATH)" ; \
-	for d in `LANG=C $(OBJDUMP) -p  Mutabor/$(DLLLINKFILE) |sed '/^\s*DLL Name:.*\(wx\|mingw\|gcc\|stdc++\)/ { s/^\s*DLL Name:\s*//; p } ; d '` ; \
-	do \
-		echo -n checking "$$d" ; \
-		if [ ! -f Mutabor/$$d ] ; then \
-			echo -n search ; \
-			f=`( find $$DLLSEARCHPATH -name "$$d" || \
-			find $$DLLSEARCHPATH -name "$$d.*")|head -n 1` ; \
-			echo -n install " $$f " ; \
-			test -f "$$f" && $(INSTALL_PROGRAM_ENV) $(INSTALL_DATA) "$$f" "`pwd`/Mutabor" ; \
-			case "$$f" in \
-			*.gz)  GZIP=$(GZIP_ENV) gzip -dc Mutabor/`basename "$$f"` >Mutabor/"$$d" ;; \
-			esac ; \
-			echo -n check " $$d " ; \
-			$(MAKE) DLLLINKFILE="$$d" installdll ; \
-		fi ; \
-		echo " done." ;\
 	done
 
 installwxlocale:
@@ -729,12 +516,9 @@ indent:
 	  fi; \
 	done
 
-POTFILESchk:
-	for d in $(mutabor_SOURCES); \
-	do \
-		echo $$d ;\
-	done | grep -e '\(.cpp\|.h\)' >POTFILES.tmp
-	diff -u $(top_srcdir)/po/POTFILES.in POTFILES.tmp 
+potfilechk-local: POTFILES.tmp $(top_srcdir)/po/POTFILES.in
+	sed -e 's,#.*$$,, ; /^$$/ d' $(top_srcdir)/po/POTFILES.in | LC_ALL=C sort -u >POTFILES.tmp2
+	diff -u POTFILES.tmp2 POTFILES.tmp 
 
 update-po: reslocale.cpp
 	make -C po update-po
@@ -747,3 +531,6 @@ dch:
 
 debuild: dch
 	debuild
+
+
+check-local: potfilechk

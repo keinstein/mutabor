@@ -1,12 +1,13 @@
 SUBDIRS=tests
+include $(top_srcdir)/common-rules.mk
 
-SUFFIXES=.def .h .hh
+SUFFIXES += .def .h .hh
 
 CLASSES=object identifier interval intervalSum intervalDiff idlist \
 	intervalPlaceholder intervalStretch intervalInv ptrlist \
 	mutfile
 
-BUILT_SOURCES=$(CLASSES:%=%.h) $(CLASSES:%=%.hh)
+BUILT_SOURCES += $(CLASSES:%=%.h) $(CLASSES:%=%.hh)
 #	object.h object.hh identifier.h identifier.hh interval.h interval.hh \
 #	intervalSum.h intervalSum.hh intervalDiff.h intervalDiff.hh idlist.h idlist.hh \
 #	intervalPlaceholder.h intervalPlaceholder.hh intervalStretch.h intervalStretch.hh \
@@ -34,3 +35,5 @@ $(BUILT_SOURCES):makeclass.pl
 @COND_PERL_TRUE@@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/idlist.Po@am__quote@
 @COND_PERL_TRUE@@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ptrlist.Po@am__quote@
 @COND_PERL_TRUE@@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutfile.Po@am__quote@
+
+

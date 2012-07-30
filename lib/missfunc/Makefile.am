@@ -1,6 +1,4 @@
 noinst_LIBRARIES = libmissfunc.a
 libmissfunc_a_SOURCES = stpcpy.c
 
-.PHONY: mac
-
-mac:
+include $(top_srcdir)/common-rules.mk
