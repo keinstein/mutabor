@@ -3,6 +3,7 @@ ACLOCAL_AMFLAGS = -I m4 --install
 MAKEFILE_DEPS = remove-podeps.stamp
 SUBDIRS = po lib src . doc #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
+precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 include common-rules.mk
 
 RCCOMPILE = $(RC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) $(RCFLAGS)
@@ -11,15 +12,19 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 
+
+NOCOMPSOURCES= \
+	src/xrc/wxresource.cpp \
+	src/xrc/wxresource.h \
+	src/xrc/reslocale.cpp
+
+
 EXTRA_DIST = config.rpath \
 	m4/ChangeLog  \
 	debian \
 	lib/libasprintf \
 	Images \
-	$(top_srcdir)/src/kernel/mut.y \
-	src/xrc/wxresource.cpp \
-	src/xrc/wxresource.h \
-	src/xrc/reslocale.cpp \
+	src/kernel/mut.y \
 	osdep/macosx/Application_Code.txt \
 	osdep/macosx/background.png \
 	osdep/macosx/background.svg \
@@ -49,7 +54,8 @@ EXTRA_DIST = config.rpath \
 	Examples/german/Extern.mut \
 	Examples/german/Instr.mut \
 	Examples/german/Midi.mut \
-	Examples/german/Nix.mut
+	Examples/german/Nix.mut \
+	$(NOCOMPSOURCES)
 
 # Please use Tango names for new files
 # http://tango.freedesktop.org/Tango_Desktop_Project
@@ -85,25 +91,18 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 	Images/Icons/png/InDevPause.png \
 	Images/Icons/png/help-browser.png
 #RECURSIVE_TARGETS += mac-recursive
-BUILT_SOURCES = \
-	$(top_srcdir)/src/kernel/mut.cpp \
-	$(top_srcdir)/src/kernel/mut.h \
-	$(top_srcdir)/src/xrc/wxresource.h \
-	$(top_srcdir)/osdep/win/Mutabor.nsi
 
 
 bin_PROGRAMS = mutabor
+noinst_LIBRARIES = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a
 
-INLINEHEADERS = \
+libmutaborrouting_a_INLINEHEADERS = \
 		src/kernel/routing/CommonFileDevice-inlines.h \
 		src/kernel/routing/Device-inlines.h \
-		src/kernel/routing/Route-inlines.h \
-		src/wxGUI/GUIBoxData-inlines.h \
-		src/wxGUI/Routing/GUIRoute-inlines.h 
+		src/kernel/routing/Route-inlines.h
 
 
-INDENTHEADERS = \
-		src/kernel/Defs.h \
+libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/gmn/DevGIS.h \
 		src/kernel/routing/gmn/GIS_Head.h \
 		src/kernel/routing/gmn/GIS.h \
@@ -115,6 +114,49 @@ INDENTHEADERS = \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
 		src/kernel/routing/RouteCompat.h \
+		lib/rtmidi/RtError.h \
+		lib/rtmidi/RtMidi.h
+
+libmutaborrouting_a_INDENTS = \
+		src/kernel/routing/gmn/DevGIS.cpp \
+		src/kernel/routing/gmn/GIS_Head.cpp \
+		src/kernel/routing/gmn/GIS.cpp \
+		src/kernel/routing/gmn/GSP_Err.cpp \
+		src/kernel/routing/gmn/GSP_File.cpp \
+		src/kernel/routing/gmn/GSP.cpp \
+		src/kernel/routing/midi/DevMidF.cpp \
+		src/kernel/routing/midi/DevMidi.cpp \
+		src/kernel/routing/CommonFileDevice.cpp \
+		src/kernel/routing/Device.cpp \
+		src/kernel/routing/Route.cpp \
+		src/kernel/routing/RouteCompat.cpp
+
+noinst_HEADERS += $(libmutaborrouting_a_INLINEHEADERS) $(libmutaborrouting_a_INDENTHEADERS)
+
+libmutaborrouting_a_POTSOURCES = $(libmutaborrouting_a_INLINEHEADERS) $(libmutaborrouting_a_INDENTHEADERS) $(libmutaborrouting_a_INDENTS)
+
+libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
+
+libmutabordebug_a_INLINEHEADERS = \
+		src/wxGUI/generic/mutDebugFlags.h
+libmutabordebug_a_INDENTHEADERS = \
+		src/wxGUI/generic/mutDebug.h
+libmutabordebug_a_INDENTS = \
+		src/wxGUI/generic/mutDebug.cpp
+
+noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS)
+
+libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS) $(libmutabordebug_a_INDENTS)
+
+libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
+
+libmutaborkernel_a_INLINEHEADERS = \
+		src/kernel/mut.cc \
+		src/kernel/mut.h
+
+
+libmutaborkernel_a_INDENTHEADERS = \
+		src/kernel/Defs.h \
 		src/kernel/box.h \
 		src/kernel/Errors.h \
 		src/kernel/Execute.h \
@@ -126,7 +168,39 @@ INDENTHEADERS = \
 		src/kernel/Interval.h \
 		src/kernel/MidiKern.h \
 		src/kernel/Runtime.h \
-		src/kernel/treestorage.h \
+		src/kernel/treestorage.h 
+
+libmutaborkernel_a_INDENTS = \
+		src/kernel/box.cpp \
+		src/kernel/Errors.cpp \
+		src/kernel/Execute.cpp \
+		src/kernel/Frac.cpp \
+		src/kernel/GrafKern.cpp \
+		src/kernel/Hilfs.cpp \
+		src/kernel/Interval.cpp \
+		src/kernel/Parser.cpp \
+		src/kernel/Runtime.cpp \
+		src/kernel/TabGen.cpp 
+
+noinst_HEADERS += $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS)
+
+libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS) $(libmutaborkernel_a_INDENTS)
+
+libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
+			src/kernel/mut.yy 
+
+INLINEHEADERS = \
+		$(libmutaborrouting_a_INLINEHEADERS) \
+		$(libmutaborkernel_a_INLINEHEADERS) \
+		$(libmutabordebug_a_INLINEHEADERS) \
+		src/wxGUI/GUIBoxData-inlines.h \
+		src/wxGUI/Routing/GUIRoute-inlines.h 
+
+
+INDENTHEADERS = \
+		$(libmutaborrouting_a_INDENTHEADERS) \
+		$(libmutaborkernel_a_INDENTHEADERS) \
+		$(libmutabordebug_a_INDENTHEADERS) \
 		src/wxGUI/Routing/BoxChannelShape.h \
 		src/wxGUI/Routing/BoxDlg.h \
 		src/wxGUI/Routing/BoxIconShape.h \
@@ -174,35 +248,10 @@ INDENTHEADERS = \
 		src/wxGUI/generic/mhArray.h \
 		src/wxGUI/generic/mhDefs.h \
 		src/wxGUI/generic/muconvauto.h \
-		src/wxGUI/generic/mutDebug.h \
 		src/wxGUI/generic/valNum.h \
-		src/wxGUI/generic/valRadio.h \
-		lib/rtmidi/RtError.h \
-		lib/rtmidi/RtMidi.h
+		src/wxGUI/generic/valRadio.h
 
 mutabor_INDENTS = \
-		src/kernel/routing/gmn/DevGIS.cpp \
-		src/kernel/routing/gmn/GIS_Head.cpp \
-		src/kernel/routing/gmn/GIS.cpp \
-		src/kernel/routing/gmn/GSP_Err.cpp \
-		src/kernel/routing/gmn/GSP_File.cpp \
-		src/kernel/routing/gmn/GSP.cpp \
-		src/kernel/routing/midi/DevMidF.cpp \
-		src/kernel/routing/midi/DevMidi.cpp \
-		src/kernel/routing/CommonFileDevice.cpp \
-		src/kernel/routing/Device.cpp \
-		src/kernel/routing/Route.cpp \
-		src/kernel/routing/RouteCompat.cpp \
-		src/kernel/box.cpp \
-		src/kernel/Errors.cpp \
-		src/kernel/Execute.cpp \
-		src/kernel/Frac.cpp \
-		src/kernel/GrafKern.cpp \
-		src/kernel/Hilfs.cpp \
-		src/kernel/Interval.cpp \
-		src/kernel/Parser.cpp \
-		src/kernel/Runtime.cpp \
-		src/kernel/TabGen.cpp \
 		src/wxGUI/Routing/BoxChannelShape.cpp \
 		src/wxGUI/Routing/BoxDlg.cpp \
 		src/wxGUI/Routing/BoxIconShape.cpp \
@@ -244,11 +293,10 @@ mutabor_INDENTS = \
 		src/wxGUI/Panel.cpp \
 		src/wxGUI/stclanguage.cpp \
 		src/wxGUI/generic/muconvauto.cpp \
-		src/wxGUI/generic/mutDebug.cpp \
 		src/wxGUI/generic/mxDefs.cpp \
 		src/wxGUI/generic/valNum.cpp \
 		src/wxGUI/generic/valRadio.cpp \
-		lib/rtmidi/RtMidi.cpp
+		lib/rtmidi/RtMidi.cpp 
 
 #		src/wxGUI/InputFilterDlg.cpp \
 #		src/wxGUI/InputFilterDlg.h \
@@ -256,32 +304,34 @@ mutabor_INDENTS = \
 #		src/wxGUI/OutputFilterDlg.h \
 #
 
-CLEANFILES = \
-	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
-	mutabor-cxxprecompiled.h \
-	mutabor-cxxprecompiled.stamp \
-	Mutabor.xrc \
-	$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+INDENTSOURCES = \
+	$(mutabor_INDENTS) \
+	$(libmutaborrouting_a_INDENTS) \
+	$(libmutaborkernel_a_INDENTS) \
+	$(libmutabordebug_a_INDENTS) 
 
-INDENTS = $(mutabor_INDENTS) $(INDENTHEADERS) $(INLINEHEADERS)
 
-noinst_HEADERS =  src/kernel/mut.h \
-		  src/wxGUI/generic/mutDebugFlags.h \
-		  $(INDENTHEADERS) \
-		  $(INLINEHEADERS)
 
-mutabor_COMPILESOURCES = $(mutabor_INDENTS) \
-			  src/kernel/mut.cpp
+mutabor_COMPILESOURCES = $(mutabor_INDENTS)
 
 mutabor_SOURCES = $(mutabor_COMPILESOURCES)
+
+POTSOURCES=$(INDENTSOURCES) \
+	$(noinst_HEADERS) \
+	$(mutabor_COMPILESOURCES) \
+	$(NOCOMPSOURCES) \
+	$(libmutaborrouting_a_POTSOURCES) \
+	$(libmutaborkernel_POTSOURCES) \
+	$(libmutabordebug_POTSOURCES)
+
 if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
 endif
 
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
+mutabor_LDADD = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a $(LDADD) $(AM_LDFLAGS)
 
-mutabor_LDADD = $(LDADD)
 if COND_WINRC
 BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
