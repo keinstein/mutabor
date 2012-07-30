@@ -19,8 +19,9 @@ linkchecks:
 	for d in `echo $(TESTS)| tr ' ' '\n' | grep -i -e '$(EXEEXT)$$'` ; \
 	do \
 		ls -l "$$d" ; \
-		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE=".libs/$$d" DLLEXEDIR="." installdll ; \
+		$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE="$$d" DLLEXEDIR="." installdll ; \
+		test -f ".libs/$$d" && \
+			$(MAKE) $(AM_MAKEFLAGS) DLLLINKFILE=".libs/$$d" DLLEXEDIR="." installdll ; \
 	done
 endif
 
-include $(top_srcdir)/common-rules.mk
