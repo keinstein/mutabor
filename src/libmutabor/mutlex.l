@@ -1,6 +1,6 @@
 %option   8bit 
 %option   warn 
-%option   outfile="lex.yy.c"
+%option   outfile="mutlex.c"
 %option   header-file="mutlex.h" 
 %option   tables-file="mutlex_de.tab"
 /* %option   tables-verify */

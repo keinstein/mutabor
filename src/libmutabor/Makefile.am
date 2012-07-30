@@ -2,7 +2,7 @@ SUBDIRS = tests
 include $(top_srcdir)/common-rules.mk
 override buildincludedir=$(top_builddir)/includes
 
-BUILT_SOURCES=$(srcdir)/mutlex.h $(srcdir)/mut.h
+BUILT_SOURCES += $(srcdir)/mutlex.h $(srcdir)/mut.h
 
 lib_LTLIBRARIES = libmutabor.la
 libmutabor_la_includedir = $(pkgincludedir)

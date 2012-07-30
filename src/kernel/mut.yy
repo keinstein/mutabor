@@ -48,9 +48,9 @@
 
 #include <ctype.h>
 #include <limits.h>
-#include "Global.h"
-#include "GrafKern.h"
-#include "Hilfs.h"
+#include "src/kernel/Global.h"
+#include "src/kernel/GrafKern.h"
+#include "src/kernel/Hilfs.h"
 
 #define MAX_IDENTIFIER_LEN 80
 
