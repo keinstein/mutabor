@@ -6,6 +6,7 @@ check_PROGRAMS=timer1
 TESTS=timer1$(EXEEXT)
 
 timer1_SOURCES=timer1.cpp
+timer1_LDADD=$(top_builddir)/libmutaborrouting.a $(top_builddir)/libmutaborkernel.a $(top_builddir)/libmutabordebug.a $(LDADD) $(AM_LDFLAGS)
 
 if COPYDLLS
 check-am: check-dll
