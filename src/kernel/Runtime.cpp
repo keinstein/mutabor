@@ -245,8 +245,10 @@ void NRT_Play() {
 		     In != list.end(); In++)
 			if ( (*In)->GetMode() == 1 
 			     && (*In)->GetType() == DTMidiFile ) {
-				boost::const_pointer_cast<InputDeviceClass>(*In)
-					->IncDelta();
+				/// \todo reimplement Non realtime playing
+				STUB;
+//				boost::const_pointer_cast<InputDeviceClass>(*In)
+//					->IncDelta();
 				Working = true;
 			}
 
