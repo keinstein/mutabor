@@ -94,7 +94,11 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 
 
 bin_PROGRAMS = mutabor
-noinst_LIBRARIES = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a
+noinst_LIBRARIES = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+
+#-------------------------------------------------------------
+# libmutaborrouting.a
+#-------------------------------------------------------------
 
 libmutaborrouting_a_INLINEHEADERS = \
 		src/kernel/routing/CommonFileDevice-inlines.h \
@@ -113,9 +117,7 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/CommonFileDevice.h \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
-		src/kernel/routing/RouteCompat.h \
-		lib/rtmidi/RtError.h \
-		lib/rtmidi/RtMidi.h
+		src/kernel/routing/RouteCompat.h
 
 libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/gmn/DevGIS.cpp \
@@ -137,18 +139,9 @@ libmutaborrouting_a_POTSOURCES = $(libmutaborrouting_a_INLINEHEADERS) $(libmutab
 
 libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 
-libmutabordebug_a_INLINEHEADERS = \
-		src/wxGUI/generic/mutDebugFlags.h
-libmutabordebug_a_INDENTHEADERS = \
-		src/wxGUI/generic/mutDebug.h
-libmutabordebug_a_INDENTS = \
-		src/wxGUI/generic/mutDebug.cpp
-
-noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS)
-
-libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS) $(libmutabordebug_a_INDENTS)
-
-libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
+#-------------------------------------------------------------
+# libmutaborkernel.a
+#-------------------------------------------------------------
 
 libmutaborkernel_a_INLINEHEADERS = \
 		src/kernel/mut.cc \
@@ -189,10 +182,52 @@ libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutabor
 libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
 			src/kernel/mut.yy 
 
+#-------------------------------------------------------------
+# libmutabordebug.a
+#-------------------------------------------------------------
+
+libmutabordebug_a_INLINEHEADERS = \
+		src/wxGUI/generic/mutDebugFlags.h
+libmutabordebug_a_INDENTHEADERS = \
+		src/wxGUI/generic/mutDebug.h
+libmutabordebug_a_INDENTS = \
+		src/wxGUI/generic/mutDebug.cpp
+
+noinst_HEADERS += $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS)
+
+libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutabordebug_a_INDENTHEADERS) $(libmutabordebug_a_INDENTS)
+
+libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
+
+
+#-------------------------------------------------------------
+# librtmidi.a
+#-------------------------------------------------------------
+
+librtmidi_a_INLINEHEADERS = \
+		lib/rtmidi/RtError.h \
+		lib/rtmidi/RtMidi.h
+
+librtmidi_a_INDENTHEADERS =
+librtmidi_a_INDENTS =
+
+noinst_HEADERS += $(librtmidi_a_INLINEHEADERS)
+
+
+librtmidi_a_SOURCES = \
+		lib/rtmidi/RtMidi.cpp 
+
+librtmidi_a_POTSOURCES = $(librtmidi_a_SOURCES)
+
+#-------------------------------------------------------------
+# Other files
+#-------------------------------------------------------------
+
 INLINEHEADERS = \
 		$(libmutaborrouting_a_INLINEHEADERS) \
 		$(libmutaborkernel_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
+		$(librtmidi_a_INLINEHEADERS) \
 		src/wxGUI/GUIBoxData-inlines.h \
 		src/wxGUI/Routing/GUIRoute-inlines.h 
 
@@ -295,8 +330,7 @@ mutabor_INDENTS = \
 		src/wxGUI/generic/muconvauto.cpp \
 		src/wxGUI/generic/mxDefs.cpp \
 		src/wxGUI/generic/valNum.cpp \
-		src/wxGUI/generic/valRadio.cpp \
-		lib/rtmidi/RtMidi.cpp 
+		src/wxGUI/generic/valRadio.cpp
 
 #		src/wxGUI/InputFilterDlg.cpp \
 #		src/wxGUI/InputFilterDlg.h \
@@ -308,6 +342,7 @@ INDENTSOURCES = \
 	$(mutabor_INDENTS) \
 	$(libmutaborrouting_a_INDENTS) \
 	$(libmutaborkernel_a_INDENTS) \
+	$(librtmidi_a_INDENTS) \
 	$(libmutabordebug_a_INDENTS) 
 
 
@@ -321,8 +356,9 @@ POTSOURCES=$(INDENTSOURCES) \
 	$(mutabor_COMPILESOURCES) \
 	$(NOCOMPSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
-	$(libmutaborkernel_POTSOURCES) \
-	$(libmutabordebug_POTSOURCES)
+	$(libmutaborkernel_a_POTSOURCES) \
+	$(librtmidi_a_POTSOURCES) \
+	$(libmutabordebug_a_POTSOURCES)
 
 if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
@@ -330,7 +366,7 @@ endif
 
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
-mutabor_LDADD = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a $(LDADD) $(AM_LDFLAGS)
+mutabor_LDADD = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a $(LDADD) $(AM_LDFLAGS)
 
 if COND_WINRC
 BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
