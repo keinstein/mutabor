@@ -113,11 +113,10 @@ struct debugFlags {
 
 
 #define isDebugFlag(level) (debugFlags::flags.level)
-# define DEBUGLOGBASEINT(level,type,...)					\
+# define DEBUGLOGBASEINT(level,type,...)				\
 	do {								\
 		if (level) {						\
-			std::fprintf(stderr,"[Debug] ");		\
-			if (!std::clog.good()) MutInitConsole(); \
+			if (!std::clog.good()) MutInitConsole();	\
 			wxASSERT(std::clog.good());			\
 			std::clog << __FILE__ << ":" << __LINE__	\
 				  << ": " << ((const char *) type)	\
@@ -125,27 +124,6 @@ struct debugFlags {
 			std::clog.flush();				\
 			std::clog << (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) << std::endl; \
 			std::clog.flush();				\
-			if (std::clog.eof()) {				\
-				std::clog.clear();			\
-				std::clog << "Error: std::clog.eof()";	\
-				abort();				\
-			}						\
-			if (std::clog.fail()) {				\
-				std::clog.clear();			\
-				std::clog << "Error: std::clog.fail()";	\
-				abort();				\
-			}						\
-			if (std::clog.bad()) {				\
-				std::clog.clear();			\
-				std::clog << "Error: std::clog.eof()";	\
-				abort();				\
-			}						\
-			if (!std::clog.good()) {			\
-				std::clog.clear();			\
-				std::clog << "Error: std::clog.eof()";	\
-				abort();				\
-			}						\
-									\
 		}							\
 	} while (false)
 #define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(debugFlags::flags.level,type,__VA_ARGS__)
