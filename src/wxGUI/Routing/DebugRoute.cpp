@@ -62,6 +62,13 @@
 #include <set>
 #include <algorithm>
 
+#ifndef no_wxGUI
+#define wxGUI 1
+#else 
+#define wxGUI 0
+#endif
+
+
 using namespace mutabor;
 namespace mutaborGUI {
 #if 0
@@ -177,8 +184,11 @@ namespace mutaborGUI {
 	}
 
 #endif
+
+#if wxGUI
 	typedef std::set<MutRouteWnd *> rwdset;
 	static rwdset rwdtoplevels;
+#endif
 	
 	template<class T> 
 	static void CheckList(const T & list) {
@@ -192,6 +202,7 @@ namespace mutaborGUI {
 	}
 
 
+#if wxGUI
 	static void Check(const MutInputDeviceShape * input,
 			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
@@ -240,10 +251,11 @@ namespace mutaborGUI {
 		}
 		mutASSERT(false);
 	}
-
+#endif
 
 	static void Check(const InputDeviceClass * input,
 			  const  RouteClass * route) {
+#if wxGUI
 		// input and route are associated searching for shapes
 		const MutInputDeviceShapeList & inputlist = 
 			ToGUIBase(input).GetShapes();
@@ -264,6 +276,7 @@ namespace mutaborGUI {
 		     i != routelist.end(); i++) {
 			Check(input, *i);
 		}
+#endif
 	}
 
 	static void Check(const InputDeviceClass * input) {
@@ -276,8 +289,9 @@ namespace mutaborGUI {
 			mutASSERT((*i)->GetInputDevice() == input);
 			Check(input, (*i).get());
 		}
-		
+#if wxGUI		
 		CheckList(ToGUIBase(input).GetShapes());
+#endif
 	}
 
 	static void CheckInputDevices() {
@@ -308,7 +322,7 @@ namespace mutaborGUI {
 	}
 
 
-
+#if wxGUI
 	static void Check(const MutOutputDeviceShape * output,
 			  const RouteClass * route) {
 		// output has shape search for route shape
@@ -343,9 +357,11 @@ namespace mutaborGUI {
 		mutASSERT(false);
 	}
 
+#endif
 
 	static void Check(const OutputDeviceClass * output,
 			  const RouteClass * route) {
+#if wxGUI
 		// input and route are associated searching for shapes
 		const MutOutputDeviceShapeList & outputlist = 
 			ToGUIBase(output).GetShapes();
@@ -367,6 +383,7 @@ namespace mutaborGUI {
 		     i != routelist.end(); i++) {
 			Check(output, *i);
 		}
+#endif
 	}
 
 	static void Check(const OutputDeviceClass * output) {
@@ -380,7 +397,9 @@ namespace mutaborGUI {
 			Check(output, (*i).get());
 		}
 		
+#if wxGUI
 		CheckList(ToGUIBase(output).GetShapes());
+#endif
 	}
 
 	static void CheckOutputDevices() {
@@ -394,7 +413,7 @@ namespace mutaborGUI {
 			
 	}
 
-
+#if wxGUI
 	static void Check(const RouteClass * route, 
 			  const MutBoxChannelShape * channel) {
 		MutRouteWnd * grandparent = 
@@ -434,9 +453,11 @@ namespace mutaborGUI {
 				  box);
 		mutASSERT(pos != list.end());
 	}
+#endif
 
 	static void Check(const RouteClass * route) {
 		DEBUGLOG2(routing,_T("%s"),(const wxChar *)(route->TowxString()));
+#if wxGUI
 		const MutBoxChannelShapeList & channels = 
 			ToGUIBase(route).GetBoxChannelShapes();
 		
@@ -447,6 +468,7 @@ namespace mutaborGUI {
 		     i != channels.end(); i++) {
 			Check(route,*i);
 		}
+#endif
 		TRACE;
 		if (route->GetInputDevice())
 			Check ((route->GetInputDevice()).get(), route);
@@ -468,6 +490,7 @@ namespace mutaborGUI {
 	}
 
 
+#if wxGUI
 	static void Check(const MutInputDeviceShape * shape) {
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
 		const InputDevice & dev = shape->GetDevice();
@@ -588,14 +611,18 @@ namespace mutaborGUI {
 			Check(*i);
 		}
 	}
-
+#endif
 	void DebugCheckRoutes() {
 		mutASSERT(!NullRoute);
+#if wxGUI
 		rwdtoplevels.clear();
+#endif
 		CheckInputDevices();
 		CheckOutputDevices();
 		CheckRoutes();
+#if wxGUI
 		CheckWindows();
+#endif
 		mutASSERT(!NullRoute);
 	}
 }
