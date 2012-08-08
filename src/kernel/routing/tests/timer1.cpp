@@ -40,6 +40,11 @@
 #include <cstdlib>
 
 
+// Skip the GUI related checks from DebugRoute.cpp
+#define no_wxGUI 1
+#include "src/wxGUI/Routing/DebugRoute.cpp"
+#undef no_wxGUI
+
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -57,42 +62,52 @@ class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 protected:
 	wxStopWatch sw;
 public:
-	unsigned long i;
-	unsigned long max;
-	unsigned long min;
+	long i;
+	long max;
+	long min;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw() {
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
 		RealTime = true;
-		max = 0; min = 100000;
+		max = 0; min = 100000; i= 0;
 		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
 		sw.Start();
 	}
 
+	bool Open() {
+		sw.Start();
+		CommonFileInputDevice::Open();
+	}
+
 	void Stop() {
 		CommonFileInputDevice::Stop();
-		if (sw.Time() > 30) {
+		std::clog << std::endl;
+		if (sw.Time() > (i*(i-1))/2+30) {
 			std::clog << "Played too long!" << std::endl;
 			exit (1);
 		}
+		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
+		if (sw.Time() < (i*(i-1))/2-30) {
+			std::clog << "Played too short!" << std::endl;
+			exit (1);
+		}
+		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
 		sw.Pause();
-		exit(0);
 	}
-	wxLongLong PrepareNextEvent() {
-		wxLongLong tmp = wxGetLocalTimeMillis();
-		tmp = tmp - (referenceTime + wxLongLong(0,(i*(i+1))/2));
-		unsigned int tl = tmp.GetLo();
+	mutint64 PrepareNextEvent() {
+		mutint64 tl = wxGetLocalTimeMillis().GetValue();
+		tl = tl - (referenceTime + (mutint64)(i*(i+1))/2);
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
-		if (tmp.GetHi() || tmp.GetLo() > 10) {
+		if (tl > 10) {
 			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
-				  << " Runtime: " << tmp.GetHi() << "," << tmp.GetLo() << "ms" << std::endl;
+				  << " Runtime: " << tl << "ms" << std::endl;
 			exit(3);
 		}
-		++i;
-		if (i<100) {
-			return (i*(i+1))/2;
+		if (++i<100) {
+			std::clog << "." << i << std::flush;
+			return (mutint64)(i * 1000);
 		}
 		return GetNO_DELTA();
 	}
@@ -104,6 +119,7 @@ public:
 int main(int argc, char **argv)
 {
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
+	debugFlags::flags.timer = true;
 
 	wxInitializer initializer;
 	if ( !initializer )
@@ -112,18 +128,16 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	std::clog<< "." << std::flush;
 	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
 	if (tim == NULL) {
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);
 	}
 	mutabor::InputDevice prevent_from_deletion(tim);
-	std::clog<< "." << std::flush;
+	tim->Open();
 	tim->Play();
-	std::clog<< "." << std::flush;
 
-	wxThread::ExitCode e = tim->WaitForTimer();
+	wxThread::ExitCode e = tim->WaitForDeviceFinish();
 	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
 	return (intptr_t)e; 
 }

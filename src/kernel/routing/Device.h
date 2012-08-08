@@ -149,6 +149,7 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include "wx/thread.h"
 #include "wx/stopwatch.h"
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
@@ -647,9 +648,39 @@ namespace mutabor {
 		virtual void Stop() { 
 			Mode = DeviceStop;
 		}
-		virtual void Play() {
+
+                /** Command the device to play music. 
+		 * This function starts playing the music of the device at the curren position.
+		 * 
+		 * \param tk Kind of thread to be created. It can be
+		 * wxTHREAD_DETACHED or wxTHREAD_JOINABLE. This parameter is used only on devices
+		 * that start a new thread for playing the music. Otherwise it is ignored.
+		 */
+		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {
 			Mode = DevicePlay;
 		}
+
+#if (!wxCHECK_VERSION(2,9,2))
+		enum wxThreadWait {
+			wxTHREAD_WAIT_BLOCK,
+			wxTHREAD_WAIT_YIELD,
+			wxTHREAD_WAIT_DEFAULT
+		};
+#endif
+
+                /** Wait for the thread started with Play().
+		 * This
+		 * function can be used to wait for the device to
+		 * finish playing. It can be used for joinable
+		 * threads, only. For detached threads its behaviour
+		 * is undefined.
+		 * 
+		 * \param flags Indicators how to wait see wxThread::Wait for more detail.
+		 * 
+		 * \return exit code from the thread after it has ended. Non-threaded devices will return NULL.
+		 */
+		virtual wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) { return NULL; }
+
 		virtual void Pause() {
 			Mode = DevicePause;
 		}
@@ -663,15 +694,23 @@ namespace mutabor {
 
 		/** 
 		 * Go on to the next event. 
-		 * This function must be
-		 * provided by the device. It advices it to prepare
-		 * the next event and return the time frame in
-		 * milliseconds from the start of the piece.
+		 *
+		 * This function must be provided by the device. It is
+		 * asked to prepare the next event and return the time
+		 * to wait in microseconds from the start of the
+		 * piece. Though the timer has only milliseconds
+		 * resolution, the errors will sum up so that we need
+		 * a much higher resolution, here.
+		 *
+		 * Here, we use the measure that is used in the SMF
+		 * standard. It has been designed to reduce the
+		 * deviation of a 4 minutes piece at 120 bpm to
+		 * 500μs. If it were 500ms it would be unusable.
 		 * 
-		 * \return wxLongLong Temporal position of the next event in the
-		 * piece.
+		 * \return uint_fast64_t Absolute temporal position of the next event in the
+		 * piece in μs.
 		 */
-		virtual wxLongLong PrepareNextEvent() {}
+		virtual mutint64 PrepareNextEvent() {}
 
 		virtual DevType GetType() const
 			{
@@ -702,11 +741,11 @@ namespace mutabor {
 			return N_("Undefined input device");
 		}
 
-		static wxLongLong GetNO_DELTA() {
-			return std::numeric_limits<wxLongLong>::min();
+		static mutint64 GetNO_DELTA() {
+			return mutint64(std::numeric_limits<mutint64>::max());
 		}
 
-		bool IsDelta(wxLongLong d) {
+		bool IsDelta(mutint64 d) {
 			return d != GetNO_DELTA();
 		}
 

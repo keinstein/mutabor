@@ -157,7 +157,7 @@ namespace mutabor {
 		if ( Mode == DeviceCompileError )
 			return;
 		
-		if (timer) {
+		if (timer && (timer != wxThread::This())) {
 			timer -> Delete();
 		}
 
@@ -172,11 +172,13 @@ namespace mutabor {
 		switch (Mode) {
 		case DeviceCompileError:
 		case DeviceTimingError:
+			DEBUGLOG(timer,_T("Returnung due to device error."));
 			return;
 		case DeviceStop:
+			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)RealTime);
 			if ( RealTime ) {
 				mutASSERT(timer == NULL);
-				referenceTime = wxGetLocalTimeMillis();
+				referenceTime = wxGetLocalTimeMillis().GetValue();
 				pauseTime = 0;
 
 				timer = new FileTimer(this,kind);
@@ -193,8 +195,9 @@ namespace mutabor {
 			}
 			break;
 		case DevicePause:
+			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)RealTime);
 			if ( RealTime ) {
-				referenceTime += wxGetLocalTimeMillis() - pauseTime;
+				referenceTime += wxGetLocalTimeMillis().GetValue() - pauseTime;
 				pauseTime = 0;
 				if (timer) {
 					mutASSERT(timer -> IsPaused());
@@ -203,6 +206,7 @@ namespace mutabor {
 			}
 			break;
 		}
+		DEBUGLOG(timer,_T("timer = %p"),timer);
 		Mode = DevicePlay;
 	}
 
@@ -215,9 +219,13 @@ namespace mutabor {
 			break;
 		case DevicePlay:
 			if ( RealTime ) {
-				mutASSERT(timer != wxThread::This());
-				if (timer) timer -> Pause();
-				pauseTime = wxGetLocalTimeMillis();
+				// we use this function for some cleanup inside Stop()
+				// which is called from inside the thread.
+				// In this case we shouldn't pause ourselves
+				if (timer != wxThread::This()) {
+					timer -> Pause();
+				}
+				pauseTime = wxGetLocalTimeMillis().GetValue();
 			}
 			Mode = DevicePause;
 			Quite();
@@ -236,9 +244,10 @@ namespace mutabor {
 		mutASSERT(timer != NULL);
 		mutASSERT(Mode != DeviceCompileError );
 
-		wxLongLong nextEvent = 0; // in ms
-		wxLongLong reference = 0;
-		wxLongLong delta;
+		mutint64 nextEvent = wxLL(0); // in μs
+		mutint64 playTime  = wxLL(0); // in μs
+		mutint64 reference = wxLL(0); // in ms
+		mutint64 delta; // in ms
 		wxThread::ExitCode e;
 		do {
 			mutASSERT(timer);
@@ -258,26 +267,30 @@ namespace mutabor {
 				return e;
 			}
 			nextEvent = PrepareNextEvent();
-			reference = referenceTime;
-			delta = reference + nextEvent - wxGetLocalTimeMillis();
-			if (delta > 0) {
-				unsigned long s1;
-#ifdef wxLongLong_t
-				wxLongLong_t s = delta.GetValue();
-				s1 = (s > std::numeric_limits<unsigned long>::max()) ? std::numeric_limits<unsigned long>::max(): s;
-#else
-				if (delta.GetHi()) 
-					s1 = std::numeric_limits<unsigned long>::max();
-				else 
-					s1 = delta.GetLo();
-#endif
-				wxThread::Sleep(s1);
+			DEBUGLOG(timer,_T("Preparing next event is at %ld (isdelta=%d)"), nextEvent,IsDelta(nextEvent));
+			DEBUGLOG(timer,_T("NoDelta = %ld"), GetNO_DELTA());
+			if (IsDelta(nextEvent)) {
+				reference = referenceTime;
+				playTime += nextEvent;
+				delta = reference + playTime/1000 - wxGetLocalTimeMillis().GetValue();
+				DEBUGLOG(timer,_T("Delta %ldms."),delta);
+				
+				if (delta > 0) {
+					if (delta > std::numeric_limits<unsigned long>::max()) {
+						nextEvent = GetNO_DELTA();
+						Mode = DeviceTimingError;
+						break;
+					}
+
+					DEBUGLOG(timer,_T("Sleeping %ld ms."),(unsigned long)delta);
+					wxThread::Sleep((unsigned long)delta);
+				}
 			}
 		} while (IsDelta(nextEvent));
 		switch (Mode) {
 		case DevicePlay:
 		case DevicePause: 
-			Mode = DeviceStop;
+			Stop();
 		case DeviceStop:
 			e = 0;
 		case DeviceTimingError:

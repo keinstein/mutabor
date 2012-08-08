@@ -82,5 +82,6 @@ DEBUGFLAG(eventqueue, _("Print unhandled events in the queue"))
 DEBUGFLAG(editor, _("Debug editor related functionality"))
 DEBUGFLAG(smartptr, _("Debug smart pointer related functionality"))
 DEBUGFLAG(trace, _("Output some tracepoints"))
+DEBUGFLAG(timer, _("Trace thread timer problems"))
 
 ///\}

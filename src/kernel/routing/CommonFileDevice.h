@@ -202,13 +202,17 @@ namespace mutabor {
 		 * operations.
 		 */
 		wxThread::ExitCode ThreadPlay();
-		wxThread::ExitCode WaitForTimer() {
+		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);
-				if (wxThread::This() != timer)
+				if (wxThread::This() != timer) {
+#if wxCHECK_VERSION(2,9,2)
+					return (timer -> Wait(flags));
+#else
 					return (timer -> Wait());
-				else return timer;
+#endif
+				} else return timer;
 			}
 		}
 
@@ -221,8 +225,11 @@ namespace mutabor {
 #endif
 		
 	protected:
-		wxLongLong referenceTime;
-		wxLongLong pauseTime;
+		/** 
+		 * Fixed offset for the relative time the file returns.
+		 */
+		mutint64 referenceTime; // ms
+		mutint64 pauseTime;     // ms
 	};
 
 
