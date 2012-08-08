@@ -191,7 +191,7 @@ namespace mutabor {
 		  (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
 
 #define ZWZ 1.059463094 /* 12.Wurzel 2 */
-#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((float)x)/(double)16777216.0))-69))
+#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/(double)16777216.0))-69))
 #define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
 
 // Midi-Ausgabe
@@ -218,7 +218,7 @@ namespace mutabor {
 #define MAKE_ID(route, box, taste, channel)				\
 	((((DWORD)channel) << 24) + (((DWORD)route->GetId()) << 16) + ((DWORD)box << 8) + taste)
 
-#define NO_DELTA 0x7fffffffl //2147483647  // long max-Zahl
+#define NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
 
 	int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
 
@@ -319,9 +319,9 @@ namespace mutabor {
 	}
 
 
-/// Load current device settings from a tree storage
-/** \argument config (tree_storage) storage class, where the data will be loaded from.
- */
+        /// Load current device settings from a tree storage
+        /** \argument config (tree_storage) storage class, where the data will be loaded from.
+	 */
 	void OutputMidiFile::Load (tree_storage & config)
 	{
 #ifdef DEBUG
@@ -332,12 +332,12 @@ namespace mutabor {
 		mutASSERT(oldpath == config.GetPath());
 	}
 
-/// Loade route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
- * specific. This function loads them from a tree storage.
- * \argument config (tree_storage *) Storage class, where the data will be restored from.
- * \argument route (Route ) Route whos data shall be loaded.
- */
+        /// Loade route settings (filter settings) for a given route
+	/** Some route settings (e.g. filter settings) are device type 
+	 * specific. This function loads them from a tree storage.
+	 * \argument config (tree_storage *) Storage class, where the data will be restored from.
+	 * \argument route (Route ) Route whos data shall be loaded.
+	 */
 	void OutputMidiFile::Load (tree_storage & config, RouteClass * route)
 	{
 #ifdef DEBUG
@@ -657,32 +657,20 @@ namespace mutabor {
   ((InputMidiFile*)dwUser)->IncDelta();
   }
 */
-
-	long ReadDelta(BYTE *data, DWORD *i)
+	/// \todo: check for array borders
+	inline unsigned long ReadDelta(BYTE * data, DWORD &position)
 	{
-		long l = 0;
+		unsigned long l = 0;
 		BYTE a;
 
 		do {
-			a = data[*i];
-			(*i)++;
+			a = data[position];
+			position++;
 			l = (l << 7) + (a & 0x7F);
-		} while ( a & 0x80 );
-
+		} while ( a & 0x80);
 		return l;
 	}
 
-/// Save current device settings in a tree storage
-/** \argument config (tree_storage) storage class, where the data will be saved.
- */
-	void InputMidiFile::Save (tree_storage & config)
-	{
-#ifdef DEBUG
-		wxString oldpath = config.GetPath();
-#endif
-		config.Write(_T("File Name"),Name);
-		mutASSERT(oldpath == config.GetPath());
-	}
 
 /// Save route settings (filter settings) for a given route
 /** Some route settings (e.g. filter settings) are device type 
@@ -715,25 +703,13 @@ namespace mutabor {
 	}
 
 
-/// Load current device settings from a tree storage
-/** \argument config (tree_storage) storage class, where the data will be loaded from.
- */
-	void InputMidiFile::Load (tree_storage & config)
-	{
-#ifdef DEBUG
-		wxString oldpath = config.GetPath();
-#endif
-		Name = config.Read(_T("File Name"),mutEmptyString);
-		mutASSERT(oldpath == config.GetPath());
-	}
-	
 
-/// Loade route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
- * specific. This function loads them from a tree storage.
- * \argument config (tree_storage *) Storage class, where the data will be restored from.
- * \argument route (Route ) Route whos data shall be loaded.
- */
+	/// Loade route settings (filter settings) for a given route
+	/** Some route settings (e.g. filter settings) are device type 
+	 * specific. This function loads them from a tree storage.
+	 * \argument config (tree_storage *) Storage class, where the data will be restored from.
+	 * \argument route (Route ) Route whos data shall be loaded.
+	 */
 	void InputMidiFile::Load (tree_storage & config, RouteClass *  route)
 	{
 #ifdef DEBUG
@@ -794,18 +770,19 @@ namespace mutabor {
 	bool InputMidiFile::Open()
 	{
 		mutASSERT(!isOpen);
-		DEBUGLOG (other, _T("start"));
+		DEBUGLOG (midifile, _T("start"));
 		Track = 0;
 		curDelta = 0;
 		TrackPos = 0;
 		StatusByte = 0;
-		TicksPerQuater = 0;
-		MMSPerQuater = (long) 1000000;
-		// Datei lesen
+		TicksPerQuarter = 0;
+		MMSPerQuarter = wxLL(500000); // Default value: 120 bpm = 0.5s/Quarter
+
+		// read file
 		mutOpenIFstream(is, Name);
 
 		if ( mutStreamBad(is) ) {
-			DEBUGLOG (other, _T("Opening Stream failed"));
+			DEBUGLOG (midifile, _T("Opening Stream failed"));
 			Mode = DeviceCompileError;
 //			InDevChanged = 1;
 //		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
@@ -815,32 +792,45 @@ namespace mutabor {
 		}
 
 		// Header Chunk
-		char Header[5];
-
+		char Header[5] = {0,0,0,0,0};
 		mutReadStream(is,Header, 4);
-
+		if (strcmp(Header,"MThd")) {
+			LAUFZEIT_ERROR1(_("File '%s' is not a valid midi file."), Name.c_str())	;
+			isOpen = false;
+			return false;
+		}
 		DWORD l = ReadLength(is);
+		if (l!=6) {
+			LAUFZEIT_ERROR2(_("Unknown header (chunk length %d) in file '%s'."),l, Name.c_str());
+			isOpen = false;
+			return false;
+		}
 
 		BYTE a, b;
 
 		// file type
 		a = mutGetC(is); //mutGetC(is,a);
-
-		FileType = mutGetC(is); //mutGetC(is,FileType);
+		FileType = ((int)a << 8) + mutGetC(is); //mutGetC(is,FileType);
+		if (FileType > 3) {
+			LAUFZEIT_ERROR2(_("Unknown file typ %d in file '%s'."), FileType, Name.c_str());
+			isOpen = false;
+			return false;
+		}
 
 		// number of tracks
 		a = mutGetC(is); //mutGetC(is,a);
-
 		b = mutGetC(is); // mutGetC(is,b);
-
 		nTrack = (((int)a) << 8) + b;
 
 		// speed info
 		a = mutGetC(is); //mutGetC(is,a);
-
 		b = mutGetC(is); //mutGetC(is,b);
-
 		Speed = (((int)a) << 8) + b;
+		DEBUGLOG(midifile, 
+			 _T("File type: %d; Tracks: %d; Speed: %dTicks/Qarter"),
+			 FileType, 
+			 nTrack, 
+			 Speed);
 
 		NRT_Speed = Speed;
 
@@ -860,8 +850,8 @@ namespace mutabor {
 			if ( l > (long) 64000 ) {
 				Mode = DeviceCompileError;
 //				InDevChanged = 1;
-				LAUFZEIT_ERROR1(_("Midi input file '%s' is to long."), Name.c_str());
-				DEBUGLOG (other, _T("Midi input file '%s' is too long."),Name.c_str());
+				LAUFZEIT_ERROR1(_("Midi input file '%s' is too long."), Name.c_str());
+				DEBUGLOG (midifile, _T("Midi input file '%s' is too long."),Name.c_str());
 				isOpen = false;
 				return false;
 			}
@@ -875,7 +865,7 @@ namespace mutabor {
 				mutReadStream(is, (char*)Track[i], l);
 
 			if ( /*is.gcount() != l ||*/ mutStreamBad(is) ) {
-				DEBUGLOG (other, _("Midi input file '%s' produces errors."),
+				DEBUGLOG (midifile, _("Midi input file '%s' produces errors."),
 					  Name.c_str());
 				Mode = DeviceCompileError;
 //				InDevChanged = 1;
@@ -888,23 +878,16 @@ namespace mutabor {
 		mutCloseStream(is);
 
 		// Daten vorbereiten
-		curDelta = (long*)malloc(nTrack*sizeof(long));
+		curDelta = (mutint64 *)malloc(nTrack*sizeof(mutint64));
 		TrackPos = (DWORD*)malloc(nTrack*sizeof(DWORD));
 		StatusByte = (BYTE*)malloc(nTrack*sizeof(BYTE));
-		// Mode setzen
-		Mode = DeviceStop;
-		// initialisieren
-		Stop();
-		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,this);
-		isOpen = true;
-		return true;
+		
+		return base::Open();
 	}
 
 	void InputMidiFile::Close()
 	{
-		mutASSERT(isOpen);
-		Stop();
-		// Speicher freigeben
+		base::Close();
 
 		if ( Mode == DeviceCompileError )
 			return;
@@ -916,83 +899,35 @@ namespace mutabor {
 		free(TrackPos);
 		free(curDelta);
 		free(StatusByte);
-		isOpen = false;
 	}
 
 	void InputMidiFile::Stop()
 	{
-		DEBUGLOG(routing,_T("old mode = %d"),Mode);
-		if ( Mode == DevicePlay || Mode == DeviceTimingError )
-			Pause();
+		base::Stop();
 
 		// OK ?
 		if ( Mode == DeviceCompileError )
 			return;
 
 		// Delta-Times lesen
-		minDelta = 0;
+		minDelta = NO_DELTA;
 
-		long NewMinDelta = NO_DELTA;
-
-		MMSPerQuater = 1000000l;
+		MMSPerQuarter = 1000000l;
 
 		for (size_t i = 0; i < nTrack; i++ ) {
 			TrackPos[i] = 0;
-			curDelta[i] = ReadDelta(Track[i], &(TrackPos[i]));
+			curDelta[i] = ReadDelta(Track[i], TrackPos[i]);
 
-			if ( curDelta[i] < NewMinDelta )
-				NewMinDelta = curDelta[i];
+			if ( curDelta[i] < minDelta )
+				minDelta = curDelta[i];
 		}
-
-		minDelta = NewMinDelta;
-
-		actDelta = -1;
-		Mode = DeviceStop;
 	}
 
-	void InputMidiFile::Play()
+	mutint64 InputMidiFile::PrepareNextEvent()
 	{
-		if ( RealTime ) {
-			if (!timer.Start(2,wxTIMER_CONTINUOUS)) {
-				return;
-			}
-		}
+		mutint64 passedDelta = minDelta;
 
-		//    TimerId = timeSetEvent(2, 1, MidiTimeFunc, (DWORD)this, TIME_PERIODIC);
-		Busy = FALSE;
-
-		Mode = DevicePlay;
-	}
-
-	void InputMidiFile::Pause()
-	{
-		if ( RealTime )
-			timer.Stop();
-
-		//    timeKillEvent(TimerId);
-		Mode = DevicePause;
-
-		Quite();
-	}
-
-	void InputMidiFile::IncDelta()
-	{
-		actDelta++;
-		if ( Busy ) {
-			return;
-		}
-
-		if ( actDelta < minDelta )
-			return;
-
-		// Zeitpunkt ist ran, also verarbeiten
-		Busy = TRUE;
-
-		actDelta -= minDelta;
-
-		long passedDelta = minDelta;
-
-		long NewMinDelta = NO_DELTA;
+		mutint64 NewMinDelta = NO_DELTA;
 
 		for (size_t i = 0; i < nTrack; i++ ) {
 			if ( curDelta[i] != NO_DELTA ) {
@@ -1002,31 +937,27 @@ namespace mutabor {
 					curDelta[i] -= passedDelta;
 
 				if ( curDelta[i] != NO_DELTA && 
-				     curDelta[i] < NewMinDelta )
+				     curDelta[i] < NewMinDelta ) {
 					NewMinDelta = curDelta[i];
+				}
 			}
+			DEBUGLOG(midifile,_T("Track: %d,delta: %ldμs"),i,curDelta[i]);
 		}
 
-		if ( NewMinDelta == NO_DELTA ) {
-			// we have reached the end of all tracks
-//			InDevChanged = 1;
-			Stop();
-			//		Mode = DeviceTimingError;
-		}
-
-#if (DEBUG && WX)
-		mutASSERT(NewMinDelta > 0);
-		DEBUGLOG(midifile,_T("old mindelta = %d, new mindelta = %d"),minDelta,NewMinDelta);
-#endif
 
 		minDelta = NewMinDelta;
-		Busy = FALSE;
+		DEBUGLOG(midifile,_T("Next event after %ldμs (NO_DELTA = %ld)"),minDelta,NO_DELTA);
+		if (NewMinDelta == NO_DELTA) {
+			return GetNO_DELTA();
+		} else  {
+			return minDelta;
+		}
 	}
 
-	long InputMidiFile::ReadMidiProceed(size_t nr, long time)
+	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 time)
 	{
-		long Delta = 0;
-		long OldPos;
+		mutint64 Delta = 0;
+		size_t OldPos;
 
 		while ( time >= Delta ) {
 			time -= Delta;
@@ -1056,32 +987,39 @@ namespace mutabor {
 			}
 			else if ( SB == 0xF0 || SB == 0xF7 ) // SysEx I, SysEx II
 			{
-				DWORD EventLength = ReadDelta(Track[nr], &(TrackPos[nr])); // length
+				DWORD EventLength = ReadDelta(Track[nr], TrackPos[nr]); // length
 				TrackPos[nr] += EventLength;
 			} else if ( SB == 0xFF ) // meta event
 			{
 				a += Track[nr][TrackPos[nr]++] << 8;         // event number
-				DWORD EventLength = ReadDelta(Track[nr], &(TrackPos[nr])); // length
+				DWORD EventLength = ReadDelta(Track[nr], TrackPos[nr]); // length
 
 				if ( (a >> 8) == 0x58 ) // Time Signature
 				{
-					TicksPerQuater = Track[nr][TrackPos[nr]+2];
+					TicksPerQuarter = Track[nr][TrackPos[nr]+2];
+					DEBUGLOG(midifile,_T("Change time signature to  %d ticks/qarter"),
+						 TicksPerQuarter);
+										
 				} else if ( (a >> 8) == 0x51 ) // Tempo
 				{
-					long NewMMSPerQuater =
+					long NewMMSPerQuarter =
 						(((DWORD)Track[nr][TrackPos[nr]]) << 16) +
 						(((DWORD)Track[nr][TrackPos[nr]+1]) << 8) +
-						((DWORD)Track[nr][TrackPos[nr]]);
+						((DWORD)Track[nr][TrackPos[nr]+2]);
 
 					for (size_t j = 0; j < nr; j++ )
 						if ( curDelta[j] != NO_DELTA )
-							curDelta[j] = curDelta[j] * NewMMSPerQuater / MMSPerQuater;
+							curDelta[j] = (curDelta[j] * NewMMSPerQuarter) / MMSPerQuarter;
 
 					for (REUSE(size_t) j = nr+1; j < nTrack; j++ )
 						if ( curDelta[j] != NO_DELTA && curDelta[j] >= minDelta)
-							curDelta[j] = (curDelta[j]-minDelta) * NewMMSPerQuater / MMSPerQuater +minDelta;
+							curDelta[j] = ((curDelta[j]-minDelta) * NewMMSPerQuarter) / MMSPerQuarter +minDelta;
+					
+					DEBUGLOG(midifile,
+						 _T("Change tempo from %ldμs to %ldμs per quarter (next event after %ld)"),
+						 MMSPerQuarter, NewMMSPerQuarter, minDelta);
 
-					MMSPerQuater = NewMMSPerQuater;
+					MMSPerQuarter = NewMMSPerQuarter;
 				}
 				TrackPos[nr] += EventLength;
 			} else if ( SB == 0xF2 ) // song position pointer
@@ -1102,10 +1040,18 @@ namespace mutabor {
 				Proceed(a, nr);
 
 			// Delta Time
-			Delta = ReadDelta(Track[nr], &(TrackPos[nr]));
+			Delta = ReadDelta(Track[nr], TrackPos[nr]);
+			
+			DEBUGLOG(midifile,
+				 _T("Next event on Track %d after %ld Ticks"),
+				 nr, Delta);
 
-			if ( RealTime )
-				Delta = MMSPerQuater / 2000 * Delta / Speed;
+			if ( RealTime ) {
+				Delta = (MMSPerQuarter * Delta) / Speed;
+				DEBUGLOG(midifile,
+					 _T("This event on Track %d after %ldμs (time = %ldμs)"),
+					 nr, Delta, time);
+			}
 		}
 
 		return Delta - time;
@@ -1119,13 +1065,13 @@ namespace mutabor {
 	void InputMidiFile::ProceedRoute(DWORD midiCode, Route route)
 	{
 	
-		DEBUGLOG (other, _T("Code: %x, Active: %d, Out: %p"),midiCode,
+		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
 			  route->Active,
 			  route->GetOutputDevice().get());
 		int Box = route->GetBox();
 		BYTE MidiChannel = MIDICODE(0) & 0x0F;
 		BYTE MidiStatus = MIDICODE(0) & 0xF0;
-		DEBUGLOG (other, _T("Status: %x"), MidiStatus);
+		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
 
 		switch ( MidiStatus ) {
 
@@ -1208,15 +1154,15 @@ namespace mutabor {
 		return InputDeviceClass::TowxString() +
 			wxString::Format(_T("\n  FileType = %d\n  nTrack = %d\n\
   Speed = %d\n  TrackPos = %d\n  curDelta = %ld\n\
-  minDelta = %ld\n  actDelta = %ld\n  StatusByte = %x\n\
-  Busy = %d\n  TicksPerQuater = %d\n  MMSPerQuater = %ld"),
+  minDelta = %ld\n  StatusByte = %x\n\
+  Busy = %d\n  TicksPerQuarter = %d\n  MMSPerQuarter = %ld"),
 					 FileType, nTrack, 
 					 Speed, (Track?(*Track?**Track:-1):-2), 
 					 (TrackPos?*TrackPos:-1),
 					 (curDelta?*curDelta:-1), 
-					 minDelta, actDelta, 
+					 minDelta,
 					 (StatusByte?*StatusByte:-1), 
-					 Busy, TicksPerQuater, MMSPerQuater);
+					 Busy, TicksPerQuarter, MMSPerQuarter);
 	}
 #endif
 	
@@ -1224,6 +1170,7 @@ namespace mutabor {
 // Routen testen und jenachdem entsprechend Codeverarbeitung
 	void InputMidiFile::Proceed(DWORD midiCode, int track)
 	{
+		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
 		char DidOut = 0;
 		
 		for (routeListType::iterator R = routes.begin(); 

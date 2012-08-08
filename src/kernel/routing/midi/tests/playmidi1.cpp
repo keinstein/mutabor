@@ -36,10 +36,15 @@
 
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include <cstdlib>
+#include <wx/app.h>
 
-
+// Skip the GUI related checks from DebugRoute.cpp
+#define no_wxGUI 1
+#include "src/wxGUI/Routing/DebugRoute.cpp"
+#undef no_wxGUI
 
 /// not for headers
 #ifdef __BORLANDC__
@@ -50,9 +55,8 @@
 #define sleep(x) Sleep(1000*x)
 #endif
 
-#include <wx/app.h>
 
-
+/*
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 protected:
 	wxStopWatch sw;
@@ -79,9 +83,9 @@ public:
 		sw.Pause();
 		exit(0);
 	}
-	wxLongLong PrepareNextEvent() {
-		wxLongLong tmp = wxGetLocalTimeMillis();
-		tmp = tmp - (referenceTime + wxLongLong(0,(i*(i+1))/2));
+	mutint64 PrepareNextEvent() {
+		mutint64 tmp = wxGetLocalTimeMillis();
+		tmp = tmp - (referenceTime + mutint64((i*(i+1))/2));
 		unsigned int tl = tmp.GetLo();
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
@@ -100,9 +104,43 @@ public:
 	void Save(tree_storage&, const mutabor::RouteClass*){}
 	void Load(tree_storage&, mutabor::RouteClass*){}
 };
+*/
+
+class myDevice: public mutabor::InputMidiFile {
+	virtual void Stop() {
+		std::clog << "Stopping..." << std::endl;
+		mutabor::InputMidiFile::Stop();
+		std::clog << "Stopped" << std::endl;
+	}	
+	virtual bool Open() {
+		std::clog << "Opening..." << std::endl;
+		bool ret = mutabor::InputMidiFile::Open();
+		std::clog << "Opened." << std::endl;
+		return ret;
+	}	
+	virtual void Close() {
+		std::clog << "Closing..." << std::endl;
+		mutabor::InputMidiFile::Close();
+		std::clog << "Closed." << std::endl;
+	}
+	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
+		std::clog << "Starting..." << std::endl;
+		RealTime = true;
+		mutabor::InputMidiFile::Play(kind);
+		std::clog << "Started." << std::endl;
+	}
+	virtual void Pause() {
+		std::clog << "Pausing..." << std::endl;
+		mutabor::InputMidiFile::Pause();
+		std::clog << "Paused." << std::endl;
+	}
+
+};
 
 int main(int argc, char **argv)
 {
+	debugFlags::flags.timer = true;
+	debugFlags::flags.midifile = true;
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
 	wxInitializer initializer;
@@ -112,19 +150,24 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
-	std::clog<< "." << std::flush;
-	testCommonFileDeviceTimer * tim = new testCommonFileDeviceTimer();
-	if (tim == NULL) {
+	mutabor::InitDeviceFactories();
+	mutabor::InputDevice in(new myDevice());
+//	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
+	if (!in) {
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);
 	}
-	mutabor::InputDevice prevent_from_deletion(tim);
-	std::clog<< "." << std::flush;
-	tim->Play();
-	std::clog<< "." << std::flush;
+	in -> SetName(_T("playmidi1.mid"));
+//	mutabor::InputDevice prevent_from_deletion(in);
+	if (!(in -> Open())) {
+		std::clog << "Open faild. Exiting." << std::endl;
+		exit(1);
+	}
+	in -> Play(wxTHREAD_JOINABLE);
 
-	wxThread::ExitCode e = tim->WaitForTimer();
-	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
+	wxThread::ExitCode e = in->WaitForDeviceFinish();
+	//int e = 0;
+//	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
 	return (intptr_t)e; 
 }
 ///\}

@@ -76,7 +76,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/CommonFileDevice.h"
 
 #ifdef WX
 #include "src/wxGUI/generic/mhArray.h"
@@ -292,70 +292,13 @@ namespace mutabor {
 
 
 // InMidiFile -------------------------------------------------------
-#if 0
-	/**
-	 * Multimedia Timer
-	 *
-	 * Timer Interrupttion per interval[ms]
-	 */
-     
-#include<windows.h>
-#include<mmsystem.h>
-     
-#pragma comment(lib, "winmm.lib")
-     
-	void CALLBACK TimeProc(UINT uTimerID, UINT uMsg,
-			       DWORD dwUser, DWORD dw1, DWORD dw2)
-	{
-		/**
-		 * Timer Interruption
-		 */
-	}
-     
-	void main()
-	{
-		UINT uDelay = 1000;
-		UINT uResolution = 1;
-		DWORD dwUser = NULL;
-		UINT fuEvent = TIME_PERIODIC; //You also choose TIME_ONESHOT;
-     
-		MMRESULT FTimerID;
-		timeBeginPeriod(1);
-		FTimerID = timeSetEvent(uDelay, uResolution, TimeProc, dwUser, fuEvent);
-		if(FTimerID==NULL){
-			printf("Failed to generate multimedia timer.\n");
-		}
-     
-		Sleep(10000);
-     
-		timeKillEvent(FTimerID);
-		timeEndPeriod(1);
-	}
-#endif
 
-
-	class InputMidiFile : public InputDeviceClass
+	class InputMidiFile : public CommonFileInputDevice
 	{
+		typedef CommonFileInputDevice base;
 		friend class MidiFileFactory;
 	protected:
-		class MidiTimer : public wxTimer
-		{
-			InputMidiFile * file;
-
-		public:
-			MidiTimer(InputMidiFile * f) : wxTimer(),file(f)
-				{}
-
-			void Notify()
-				{
-					file->IncDelta();
-				}
-		};
-
-		MidiTimer timer;
-
-		InputMidiFile(): InputDeviceClass(),
-				 timer (this),
+		InputMidiFile(): CommonFileInputDevice(),
 				 Track(NULL), 
 				 TrackPos(NULL),
 				 curDelta(NULL),
@@ -364,11 +307,10 @@ namespace mutabor {
 		InputMidiFile(int devId,
 			      wxString name, 
 			      MutaborModeType mode,
-			      int id): InputDeviceClass(devId, 
+			      int id): CommonFileInputDevice(devId, 
 							name, 
 							mode, 
 							id),
-					  timer(this),
 					  Track(NULL),
 					  TrackPos(NULL),
 					  curDelta(NULL),
@@ -377,11 +319,6 @@ namespace mutabor {
 	public:
 		virtual ~InputMidiFile()
 			{};
-	
-		/// Save current device settings in a tree storage
-		/** \argument config (tree_storage) storage class, where the data will be saved.
-		 */
-		virtual void Save (tree_storage & config);
 	
 		/// Save route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
@@ -392,11 +329,6 @@ namespace mutabor {
 		virtual void Save (tree_storage & config, const RouteClass * route);
 	
 	
-		/// Load current device settings from a tree storage
-		/** \argument config (tree_storage) storage class, where the data will be loaded from.
-		 */
-		virtual void Load (tree_storage & config);
-
 		/// Loade route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
 		 * specific. This function loads them from a tree storage.
@@ -409,8 +341,7 @@ namespace mutabor {
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
-		virtual void Play();
-		virtual void Pause();
+
 //	   void Proceed(GisReadArtHead *h, char turn, Route route) {};
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};
 
@@ -427,27 +358,24 @@ namespace mutabor {
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
-		virtual void SetName(const wxString & s) 
-			{
-				if (s != Name) {
-					bool reopen = IsOpen();
-					if (reopen) 
-						Close();
-
-					Name = s;
-
-					if (reopen) 
-						Open();
-				}
-			}
-
+	
 		virtual DevType GetType() const
 			{
 				return DTMidiFile;
 			}
 
 
-		virtual void IncDelta();
+		/** 
+		 * Go on to the next event. 
+		 * This function must be
+		 * provided by the device. It advices it to prepare
+		 * the next event and return the time frame in
+		 * milliseconds from the start of the piece.
+		 * 
+		 * \return mutint64 Temporal position of the next event in the
+		 * piece.
+		 */
+		virtual mutint64 PrepareNextEvent();
 	
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
