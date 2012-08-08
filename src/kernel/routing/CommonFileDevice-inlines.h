@@ -73,22 +73,15 @@ namespace mutabor {
 
 	inline bool CommonFileOutputDevice::Open()
 	{
-		std::clog<< "O" << std::flush;
 		mutASSERT(!isOpen);
-		std::clog<< "O" << std::flush;
 		isOpen = true;
-		std::clog<< "O" << std::flush;
 		return isOpen;
-		std::clog<< "O" << std::flush;
 	}
 
 	inline void CommonFileOutputDevice::Close()
 	{
-		std::clog<< "C" << std::flush;
 		mutASSERT(isOpen);
-		std::clog<< "C" << std::flush;
 		isOpen = false;
-		std::clog<< "C" << std::flush;
 	}
 
 #ifdef WX
@@ -137,33 +130,22 @@ namespace mutabor {
 
 	inline bool CommonFileInputDevice::Open()
 	{
-		std::clog<< "O" << std::flush;
 		mutASSERT(!isOpen);
-		std::clog<< "O" << std::flush;
 		DEBUGLOG (other, _T("start"));
-		std::clog<< "O" << std::flush;
-		// Mode setzen
+
 		Mode = DeviceStop;
-		std::clog<< "O" << std::flush;
-		// initialisieren
+		// init
 		Stop();
-		std::clog<< "O" << std::flush;
 		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,this);
-		std::clog<< "O" << std::flush;
 		isOpen = true;
-		std::clog<< "O" << std::flush;
 		return true;
 	}
 
 	inline void CommonFileInputDevice::Close()
 	{
-		std::clog<< "C" << std::flush;
 		mutASSERT(isOpen);
-		std::clog<< "C" << std::flush;
 		Stop();
-		std::clog<< "C" << std::flush;
 		isOpen = false;
-		std::clog<< "C" << std::flush;
 	}
 
 	inline void CommonFileInputDevice::Stop()

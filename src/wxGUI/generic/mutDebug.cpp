@@ -74,7 +74,7 @@ debugFlags::flagtype::flagtype()
 #undef DEBUGFLAG	
 
 	// manual overrides for debug purposes
-	flags.smartptr = true;
+//	flags.smartptr = true;
 }
 
 
