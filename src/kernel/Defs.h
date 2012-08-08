@@ -94,6 +94,7 @@
 #define DWORD uint32_t
 #define BYTE uint8_t
 #define BOOL bool
+#define mutint64 int_fast64_t
 #define pascal
 #define CALLBACK
 #endif
