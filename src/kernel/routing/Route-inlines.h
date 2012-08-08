@@ -148,34 +148,47 @@ namespace mutabor {
 			return retval;
 		}
 
-	inline Route RouteFactory::Create(
-		InputDevice & in,
-		OutputDevice & out,
-		RouteType type,
-		int iFrom,
-		int iTo,
-		int box,
-		bool active,
-		int oFrom,
-		int oTo,
-		bool oNoDrum /*,
-			       Route next*/) {
+	inline Route RouteFactory::Create(InputDevice & in,
+					  OutputDevice & out,
+					  RouteType type,
+					  int iFrom,
+					  int iTo,
+					  int box,
+					  bool active,
+					  int oFrom,
+					  int oTo,
+					  bool oNoDrum) {
+
 		DEBUGLOGTYPE(smartptr,RouteFactory,_T("input device %p (%d)"),
-			in.get(),
-			intrusive_ptr_get_refcount(in.get()));
+			     in.get(),
+			     intrusive_ptr_get_refcount(in.get()));
+
 		DEBUGLOGTYPE(smartptr,RouteFactory,_T("output device %p (%d)"),
-			out.get(),
-			intrusive_ptr_get_refcount(out.get()));
+			     out.get(),
+			     intrusive_ptr_get_refcount(out.get()));
+
 		if (factory) {
-			RouteClass * r = factory->DoCreate(in,out,type,iFrom,iTo,
-						 box,active,
-						    oFrom,oTo,oNoDrum/*,next*/);
-			DEBUGLOGTYPE(smartptr,RouteFactory,
+			RouteClass * r = factory->DoCreate(in,
+							   out,
+							   type,
+							   iFrom,
+							   iTo,
+							   box,
+							   active,
+							   oFrom,
+							   oTo,
+							   oNoDrum);
+			DEBUGLOGTYPE(smartptr,
+				     RouteFactory,
 				     _T("Shipping %p from factory"),
 				     r);
+
 			return r;
 		} else {
-			UNREACHABLECT(RouteFactory);
+
+			throw RouteFactoryNotSet();
+
+//			UNREACHABLECT(RouteFactory);
 			return NULL;
 		}
 			

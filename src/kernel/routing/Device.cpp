@@ -510,6 +510,13 @@ InputDeviceClass:\n\
 	}
 
 
+	void InitDeviceFactories() {
+		new RouteFactory;
+		new MidiPortFactory;
+		new MidiFileFactory;
+		new GisFactory;
+	}
+
 
 
 

@@ -543,9 +543,13 @@ TRouteClass<I,O>:\n\
 
 	RouteFactory::RouteFactory() {
 		if (factory) {
-			UNREACHABLEC;
-			delete factory;
-			factory = this;
+//			UNREACHABLEC;
+			throw FactoryAlreadySet(factory,this);
+			/*
+			  delete factory;
+			  factory = this;
+			*/
+			
 		} else factory = this;
 	}
 	RouteFactory::~RouteFactory() {}
@@ -564,14 +568,13 @@ TRouteClass<I,O>:\n\
 					    bool active,
 					    int oFrom,
 					    int oTo,
-					    bool oNoDrum/*,
-						   Route next*/) const
+					    bool oNoDrum) const
 	{
 		return new RouteClass (in,out,type,
 				       iFrom,iTo,
 				       box,active,
 				       oFrom,oTo,
-				       oNoDrum/*,next*/);
+				       oNoDrum);
 	}
 
 	void RouteFactory::DoLoadRoutes(tree_storage & config) const
@@ -601,7 +604,9 @@ TRouteClass<I,O>:\n\
 		// clean configuration
 		// delete unused output devices
 		RouteClass::InitializeIds();
+#ifdef DEBUG
 		mutaborGUI::DebugCheckRoutes();
+#endif
 	
 		DeviceFactory::SaveInputDevices(config);
 		DeviceFactory::SaveOutputDevices(config);

@@ -365,7 +365,7 @@ namespace mutabor {
 
 	class GisFactory:public DeviceFactory { 
 	public:
-		GisFactory(size_t id = 0):
+		GisFactory(size_t id = DTGis):
 			DeviceFactory(id) {}
 		virtual ~GisFactory();
 
@@ -376,26 +376,26 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
-							     int id = -1) const = 0;
+							     int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
-							   int id = -1) const = 0;
+							   int id = -1) const;
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
-							     int id = -1) const = 0;
+							     int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
-							   int id = -1) const = 0;
+							   int id = -1) const;
 	};
 
 }

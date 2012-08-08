@@ -172,7 +172,10 @@ namespace mutabor {
         /// Type of route input filter
 	enum RouteType
 	{
-		RTall, RTelse, RTchannel, RTstaff
+		RTall,							 /**< all events will pass */
+		RTelse,							 /**< all unhandled events will pass */
+		RTchannel,						 /**< use only a certain channel range (depends on the input device type) */
+		RTstaff							 /**< use only a certain staff/track/… range (depends on the input device type) */
 	};
 	
 	extern const mutString RTName[];
@@ -596,45 +599,75 @@ namespace mutabor {
 	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
 	typedef TRouteClass<InputDevice,OutputDevice>::routePtrList routePtrList;
 
+       /** Class for creation of Routes.   
+	* This class will create a
+	* route object corresponding to the type given to the Create function.
+	* 
+	* Though the interface is mainly prepared to provide the
+	* necessary means for adding new route types, it currently
+	* stores only one route factory.
+	*/
 	class RouteFactory { 
-	protected:
-		static RouteFactory * factory;
-	
-		RouteFactory();
-		virtual ~RouteFactory();
-
-		virtual RouteClass * DoCreate() const __attribute__ ((malloc));
-		virtual RouteClass * DoCreate(
-			InputDevice & in,
-			OutputDevice & out,
-			RouteType type,
-			int iFrom,
-			int iTo,
-			int box,
-			bool active,
-			int oFrom,
-			int oTo,
-			bool oNoDrum /*,
-				       Route next*/) const __attribute__ ((malloc));
-	
-		/// load the routes from a tree based configuration
-		/** \param config conifiguration to be read from
-		 */
-		virtual void DoLoadRoutes(tree_storage & config) const;
-
-		/// write the routes to the configuration
-		/** \param config configuration to be written to
-		 */ 
-		virtual void DoSaveRoutes(tree_storage & config) const;
 	
 	public:
+
+		/** 
+		 * Douplicate route factory exception.
+		 * This class is thrown if a routefactory is already set.
+		 * 
+		 */
+		struct FactoryAlreadySet {
+			RouteFactory * old; 
+			RouteFactory * created;
+			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): old(o), created(n) {}
+		};
+
+		struct RouteFactoryNotSet {};
+			
+                /** Creates a route Factory.  
+		 * Constructor. Should be overridden if classes inhert from Route.
+		 */		
+		RouteFactory();
+
+		/** Creates a generic route.  
+		 * This functions creates a
+		 * route object on the heap and returns a smart
+		 * pointer to it. This route will not be preconfigured.
+		 * 
+		 * \return Route smart pointer to the newly created route
+		 */
 		static Route Create() {
 			if (factory)
 				return factory->DoCreate();
 			else
-				UNREACHABLECT(RouteFactory);
+				throw RouteFactoryNotSet();
 			return NULL;
 		}
+
+
+		/** Creates a preconfigured route according to the given type. 
+		 * This functions creates a
+		 * route object on the heap and returns a smart
+		 * pointer to it. This route will be preconfigured according 
+		 * the data provided in the arguments.
+		 * 
+		 * \param in InputDevice& Reference to a smart pointer
+		 * for the input device where the route starts.
+		 * \param out OutputDevice& End point of the route.
+		 * \param type RouteType Type of the input filter. See RouteType for more information.
+		 * \param iFrom start of the range for the input filter. Its meaning depends on the input filter type.
+		 * \param iTo end of the range for the input filter. Its meaning depends on the input filter type.
+		 * \param box box to be used. Values less than 0 indicate a pass through route or a GMN box.
+		 * \param active indicates whether the events on the route may 
+		 * change the tuning of the box. Regardless of this setting the
+		 * box referenced by the box parameter will influence the 
+		 * tuning of the events in this route.
+		 * \param oFrom Start of the range of the output filter (will be interpreted by the output device.
+		 * \param oTo End of the reange of the output fileter (will be interpreted by the output device
+		 * \param oNoDrum On MIDI like devices avoid the channel usually used for percussion.
+		 * 
+		 * \return Route created by this function (smart pointer).
+		 */
 		static Route Create(
 			InputDevice & in,
 			OutputDevice & out,
@@ -645,13 +678,19 @@ namespace mutabor {
 			bool active = false,
 			int oFrom = -1,
 			int oTo = -1,
-			bool oNoDrum = true /*,
-					      Route next = 0*/);
+			bool oNoDrum = true);
+
+		/** 
+		 * Destroy the route factory. Call this function instead of deleting the factory.
+		 * 
+		 */
+
 		static void Destroy() {
 			if (factory)
 				delete factory;
 			else 
-				UNREACHABLECT(RouteFactory);
+				throw RouteFactoryNotSet();
+//				UNREACHABLECT(RouteFactory);
 		}
 
 
@@ -662,7 +701,8 @@ namespace mutabor {
 			if (factory)
 				factory->DoLoadRoutes(config);
 			else 
-				UNREACHABLECT(RouteFactory);
+				throw RouteFactoryNotSet();
+//				UNREACHABLECT(RouteFactory);
 		}
 
 		/// write the routes to the configuration
@@ -672,8 +712,79 @@ namespace mutabor {
 			if (factory)
 				factory->DoSaveRoutes(config);
 			else 
-				UNREACHABLECT(RouteFactory);
+				throw RouteFactoryNotSet();
+			// UNREACHABLECT(RouteFactory);
 		}
+	protected:
+		/** Destructor. 
+		 * This destructor will destroy the route factory. It does not touch the 
+		 * route objects that are created using this class.
+		 *
+		 * You should not delete the factory directly as it saves a pointer to 
+		 */
+		virtual ~RouteFactory();
+
+		/** Creates a generic route.  This functions creates a
+		 * route object on the heap and returns a smart
+		 * pointer to it. This route will not be preconfigured.
+		 *
+		 * Each RouteFactory class must override this function
+		 * to return a route of its type.
+		 * 
+		 * \return Route smart pointer to the newly created route
+		 */
+		virtual RouteClass * DoCreate() const __attribute__ ((malloc));
+
+		/** Creates a preconfigured route. 
+		 * This functions creates a
+		 * route object on the heap and returns a smart
+		 * pointer to it. This route will be preconfigured according 
+		 * the data provided in the arguments.
+		 *
+		 * Each RouteFactory class must override this function
+		 * to return a route of its type.
+		 * 
+		 * \param in InputDevice& Reference to a smart pointer
+		 * for the input device where the route starts.
+		 * \param out OutputDevice& End point of the route.
+		 * \param type RouteType Type of the input filter. See RouteType for more information.
+		 * \param iFrom start of the range for the input filter. Its meaning depends on the input filter type.
+		 * \param iTo end of the range for the input filter. Its meaning depends on the input filter type.
+		 * \param box box to be used. Values less than 0 indicate a pass through route or a GMN box.
+		 * \param active indicates whether the events on the route may 
+		 * change the tuning of the box. Regardless of this setting the
+		 * box referenced by the box parameter will influence the 
+		 * tuning of the events in this route.
+		 * \param oFrom Start of the range of the output filter (will be interpreted by the output device.
+		 * \param oTo End of the reange of the output fileter (will be interpreted by the output device
+		 * \param oNoDrum On MIDI like devices avoid the channel usually used for percussion.
+		 * 
+		 * \return Route created by this function (smart pointer).
+		 */
+		virtual RouteClass * DoCreate(
+			InputDevice & in,
+			OutputDevice & out,
+			RouteType type,
+			int iFrom,
+			int iTo,
+			int box,
+			bool active,
+			int oFrom,
+			int oTo,
+			bool oNoDrum) const __attribute__ ((malloc));
+	
+	
+		/// load the routes from a tree based configuration
+		/** \param config conifiguration to be read from
+		 */
+		virtual void DoLoadRoutes(tree_storage & config) const;
+
+		/// write the routes to the configuration
+		/** \param config configuration to be written to
+		 */ 
+		virtual void DoSaveRoutes(tree_storage & config) const;
+
+		static RouteFactory * factory;				 /**< Pointer to the current factory */
 	};
 
 

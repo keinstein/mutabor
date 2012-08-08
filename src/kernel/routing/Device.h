@@ -149,6 +149,7 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <sstream>
 #include "wx/thread.h"
 #include "wx/stopwatch.h"
 
@@ -757,15 +758,35 @@ namespace mutabor {
 
 	class DeviceFactory { 
 	public:
+		struct DeviceNotCreated:public std::exception {};
+		struct FactoryNotFound:public std::exception {
+			int id;
+			std::string message_;
+			FactoryNotFound(int i):std::exception(), id(i) {
+				std::ostringstream writer(message_);
+				writer << "Factory for device type " << i << " has not been registered.";
+				message_ = writer.str();
+			}
+
+			virtual ~FactoryNotFound() throw () {}
+
+			//! Returns the thrown error message as a c-style string.
+			virtual const char* what( void ) const throw() { return message_.c_str(); }
+			
+		};
 		DeviceFactory(size_t id = 0);
 		virtual ~DeviceFactory();
 
 		static OutputDevice  CreateOutput (int type) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
+
 			return factories[type]->DoCreateOutput();
 		}
 		static OutputDevice CreateOutput (int type, 
@@ -774,9 +795,12 @@ namespace mutabor {
 						  int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
 			return factories[type]->DoCreateOutput(devId,name,id);
 		}
 		static OutputDevice CreateOutput(int type,
@@ -786,18 +810,25 @@ namespace mutabor {
 						 int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
 			return factories[type]->DoCreateOutput(devId, name, mode, id);
 		}
 
 		static InputDevice CreateInput (int type) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
 			return factories[type]->DoCreateInput();
 		}
 		static InputDevice CreateInput (int type, 
@@ -806,9 +837,12 @@ namespace mutabor {
 						int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
 			return factories[type]->DoCreateInput(devId,name,id);
 		}
 		static InputDevice CreateInput(int type,
@@ -818,9 +852,12 @@ namespace mutabor {
 					       int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
+				throw FactoryNotFound(type);
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
 			return factories[type]->DoCreateInput(devId,name, mode, id);
 		}
 
@@ -908,6 +945,7 @@ namespace mutabor {
 	
 	};
 
+	void InitDeviceFactories();
 
 
 	class CurrentTimer: public wxStopWatch
@@ -946,6 +984,8 @@ namespace mutabor {
 				return Time();
 			}
 	};
+
+
 
 	extern CurrentTimer CurrentTime;
 

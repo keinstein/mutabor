@@ -1037,24 +1037,32 @@ InputMidiPort:\n\
 
 	MidiPortFactory::~MidiPortFactory() {}
 
-	OutputDeviceClass * MidiPortFactory::DoCreateOutput () const
+
+		
+
+	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput () const
 	{
-		return new OutputMidiPort();
+		OutputMidiPort * port = new OutputMidiPort();
+		if (!port) throw DeviceNotCreated();
+		return port;
 	}
 
-	OutputDeviceClass * MidiPortFactory::DoCreateOutput (int devId,
-						      const mutStringRef name, 
-						      int id) const
-	{
-		return new OutputMidiPort(devId,name,id);
-	}
-
-	OutputDeviceClass * MidiPortFactory::DoCreateOutput (int devId,
-						      const mutStringRef name, 
-						      MutaborModeType mode, 
-						      int id) const
+	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(int devId,
+							  const mutStringRef name, 
+							  int id) const
 	{
 		OutputMidiPort * port = new OutputMidiPort(devId,name,id);
+		if (!port) throw DeviceNotCreated();
+		return port;
+	}
+
+	mutabor::OutputDeviceClass *  MidiPortFactory::DoCreateOutput (int devId,
+							   const mutStringRef name, 
+							   MutaborModeType mode, 
+							   int id) const
+	{
+		OutputMidiPort * port = new OutputMidiPort(devId,name,id);
+		if (!port) throw DeviceNotCreated();
 		port->Device::SetId(id);
 		switch (mode) {
 		case DevicePause:
@@ -1071,26 +1079,33 @@ InputMidiPort:\n\
 		return port;
 	}
 
-
-	InputDeviceClass * MidiPortFactory::DoCreateInput () const
+	mutabor::InputDeviceClass * MidiPortFactory::DoCreateInput () const
 		
 	{
-		return new InputMidiPort();
+		InputMidiPort * port = new InputMidiPort();
+		if (!port) throw DeviceNotCreated();
+		return port;
 	}
 
-	InputDeviceClass * MidiPortFactory::DoCreateInput ( int devId,
-					   const mutStringRef name, 
-					    int id) const
+	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (int devId,
+								const mutStringRef name, 
+								int id) const
 	{
-		return new InputMidiPort(devId,name,DeviceStop,id);
+		InputMidiPort * port = 
+			new InputMidiPort(devId,name,
+					  mutabor::DeviceStop,id);
+		if (!port) throw DeviceNotCreated();
+		return port;
 	}
 
-	InputDeviceClass * MidiPortFactory::DoCreateInput (int devId,
-					   const mutStringRef name, 
-					   MutaborModeType mode, 
-					   int id) const
+	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (int devId,
+							 const mutStringRef name, 
+							 MutaborModeType mode, 
+							 int id) const
 	{
-		return new InputMidiPort(devId,name,mode,id);
+ 		InputMidiPort * port = new InputMidiPort(devId,name,mode,id);
+		if (!port) throw DeviceNotCreated();
+		return port;
 	}
 
 

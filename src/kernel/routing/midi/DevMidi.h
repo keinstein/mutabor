@@ -417,7 +417,7 @@ namespace mutabor {
 
 	class MidiPortFactory:public DeviceFactory { 
 	public:
-		MidiPortFactory(size_t id = 0):
+		MidiPortFactory(size_t id =  mutabor::DTMidiPort):
 			DeviceFactory(id) {}
 		virtual ~MidiPortFactory();
 
@@ -428,26 +428,26 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
-							     int id = -1) const = 0;
+							     int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 								  const mutStringRef name, 
-								  int id = -1) const = 0;
+								  int id = -1) const;
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 								    const mutStringRef name, 
 								    mutabor::MutaborModeType mode, 
-								    int id = -1) const = 0;
+								    int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 								  const mutStringRef name, 
 								  mutabor::MutaborModeType mode, 
-								  int id = -1) const = 0;
+								  int id = -1) const;
 	};
 
 

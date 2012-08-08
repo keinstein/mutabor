@@ -462,29 +462,28 @@ namespace mutabor {
 		virtual wxString TowxString() const;
 #endif
 	protected:
-		BYTE FileType;
+		int FileType;
 		size_t nTrack;
 		int Speed;
 		BYTE **Track;
 		DWORD *TrackPos;
-		long *curDelta;
-		long minDelta;
-		long actDelta;
+		mutint64 *curDelta;
+		mutint64 minDelta;
 		BYTE *StatusByte;
 		ChannelData Cd[16];
 		//  UINT TimerId;
 		BOOL Busy;
-		DWORD TicksPerQuater;
-		long MMSPerQuater;
+		DWORD TicksPerQuarter;
+		mutint64 MMSPerQuarter;
 		void Proceed(DWORD midiCode, int track);
 		void ProceedRoute(DWORD midiCode, Route route);
-		long ReadMidiProceed(size_t nr, long time);
+		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
 	};
 
 
 	class MidiFileFactory:public DeviceFactory { 
 	public:
-		MidiFileFactory(size_t id = 0):
+		MidiFileFactory(size_t id = DTMidiFile):
 			DeviceFactory(id) {}
 		virtual ~MidiFileFactory();
 
@@ -495,26 +494,26 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const = 0;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const = 0;
+		virtual mutabor::InputDeviceClass * DoCreateInput() const;
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
-							     int id = -1) const = 0;
+							     int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
-							   int id = -1) const = 0;
+							   int id = -1) const;
 
 		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
 							     const mutStringRef name, 
 							     mutabor::MutaborModeType mode, 
-							     int id = -1) const = 0;
+							     int id = -1) const;
 		
 		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
 							   const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
-							   int id = -1) const = 0;
+							   int id = -1) const;
 	};
 
 
