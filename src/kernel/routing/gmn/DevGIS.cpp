@@ -315,11 +315,11 @@ namespace mutabor {
 			 *Echo << "  Line: " << GspErrorLineNr << ", " << GspErrorPos << "\n";
 			 *Echo << "  " << GspErrorLine << "\n  "; */
 
-			DEBUGLOG (other, _T("Issuing Compiler warning 9..."));
+			DEBUGLOG (gmnfile, _T("Issuing Compiler warning 9..."));
 
 			compiler_warning(9, C_STR(Name), GspErrorLineNr, GspErrorPos, mutC_STR(GspErrorText[GspError]));
 
-			DEBUGLOG (other, _T("... done"));
+			DEBUGLOG (gmnfile, _T("... done"));
 			Mode = DeviceCompileError;
 //			InDevChanged = 1;
 			return false;
@@ -330,12 +330,12 @@ namespace mutabor {
 		    Head->Box = 0; /// hier muﬂ noch was hin
 		    Head->PrevPtr = (GisReadHead **)&Head;
 		    //  Head->Prev = Head;
-		    DEBUGLOG (other, _T("Head = %p"),Head);
+		    DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		    // Mode setzen
 		    Mode = DeviceStop; 
 		*/
 		// initialisieren
-		DEBUGLOG (other, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		return base::Open();
 	}
 
@@ -375,12 +375,12 @@ namespace mutabor {
 
 		Head = new GisReadArtHead(NULL, Data, Id);
 
-		DEBUGLOG (other, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		Head->Box = 0; /// hier muﬂ noch was hin
-		DEBUGLOG (other, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		//  Head->Prev = Head;
 		Head->PrevPtr = (GisReadHead**)&Head;
-		DEBUGLOG (other, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
 		// Delta-Times lesen
 		minDelta = 0;
 		Mode = DeviceStop;
@@ -389,17 +389,17 @@ namespace mutabor {
 // Gis arbeitet auf "tick" - Basis, ein tick = 2ms
 	mutint64 InputGis::PrepareNextEvent()
 	{
-		DEBUGLOG (other, _T("Next tone. Mindelta = %d"),minDelta);
+		DEBUGLOG (gmnfile, _T("Next tone. Mindelta = %d"),minDelta);
 
 		minDelta = ReadOn(minDelta);
 
 		// while ((minDelta = ReadOn(actDelta)) == -1)
 		//  if (!(Head->Cursor)) break;
 
-		DEBUGLOG (other, _T("Calculating next step"));
+		DEBUGLOG (gmnfile, _T("Calculating next step"));
 
 		if ( minDelta == -1 ) {
-			DEBUGLOG (other, _T("Stopping"));
+			DEBUGLOG (gmnfile, _T("Stopping"));
 			Mode = DeviceTimingError;
 			Stop();
 //			InDevChanged = 1;
@@ -441,7 +441,7 @@ namespace mutabor {
 		if ( Box == -1 )
 			Box = h->Box;
 
-		DEBUGLOG (other, _T("Id: %s, Box: %d, Sep: %s"),
+		DEBUGLOG (gmnfile, _T("Id: %s, Box: %d, Sep: %s"),
 			  CurrentId.c_str(), Box, CurrentSep.c_str());
 
 		OutputDevice out = route->GetOutputDevice();
@@ -524,15 +524,15 @@ namespace mutabor {
 	{
 		mutASSERT(h);
 		mutASSERT(h->Cursor);
-		DEBUGLOG (other, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
+		DEBUGLOG (gmnfile, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
 			  (h->Id).c_str(),(h->Id).Len(), Id.c_str(), Id.Len());
 		mutChar staff = h->Id[mutLen(Id)];
 		bool DidOut = false;
-		DEBUGLOG (other, _T("staff: %d, DidOut: %d"),staff, DidOut);
+		DEBUGLOG (gmnfile, _T("staff: %d, DidOut: %d"),staff, DidOut);
 
 		for (routeListType::iterator R = routes.begin(); 
 		     R!= routes.end(); R++) {
-			DEBUGLOG (other, _T("Route type: %d, DidOut: %d"),
+			DEBUGLOG (gmnfile, _T("Route type: %d, DidOut: %d"),
 				  (*R)->Type, DidOut);
 
 			switch ( (*R)->Type ) {
@@ -604,37 +604,37 @@ namespace mutabor {
 
 	beginloop:
 
-		//  printHeadChain(DEBUGLOG (other, _T("Head Chain:")), *H);
+		//  printHeadChain(DEBUGLOG (gmnfile, _T("Head Chain:")), *H);
 
 		while ( *H ) {
 
 			GisReadArtHead *h = dynamic_cast<GisReadArtHead *> (*H);
-			DEBUGLOG (other, _T("H = %p; h = %p"),H,
+			DEBUGLOG (gmnfile, _T("H = %p; h = %p"),H,
 				  dynamic_cast<GisReadArtHead *>(*H));
 
 			mutASSERT(h);
-			DEBUGLOG (other, _T("h->nSub = %d"),h->nSub);
+			DEBUGLOG (gmnfile, _T("h->nSub = %d"),h->nSub);
 
 			if ( h->nSub > 0) { // header has subsGisReadHead
 				H =  &(h->Next);
 				continue;
 			}
 
-			// printHeadChain(DEBUGLOG (other, _T("Working Chain:")), *H);
-			//DEBUGLOG (other, _T("Reading on with %p\n%s"), *H, (GISPrettyPrint(*Head).c_str()));
+			// printHeadChain(DEBUGLOG (gmnfile, _T("Working Chain:")), *H);
+			//DEBUGLOG (gmnfile, _T("Reading on with %p\n%s"), *H, (GISPrettyPrint(*Head).c_str()));
 
 			if ( h->nSub == 0 ) { // all subs has finished
 				ProceedRoute(h, h->Turn++);   // end of segment or sequenz
-				DEBUGLOG (other, _T("CursorNext()"));
+				DEBUGLOG (gmnfile, _T("CursorNext()"));
 				h->CursorNext();
 				h->Time = 0;
 				h->Delta = 0;
 			}
 
-			DEBUGLOG (other, _T("h->Delta = %d"),h->Delta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %d"),h->Delta);
 
 			if ( h->Delta > 0 ) {// header in normal state
-				DEBUGLOG (other, _T("Time: %d/%d, delta: %d, speed: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %d/%d, delta: %d, speed: %d"),
 					  h->Time.numerator(),h->Time.denominator(), delta,
 					  h->GetSpeedFactor());
 				h->Time -= frac(delta, h->GetSpeedFactor());
@@ -649,7 +649,7 @@ namespace mutabor {
 					}
 
 					if ( h->Turn > 2 ) {
-						DEBUGLOG (other, _T("CursorNext()"));
+						DEBUGLOG (gmnfile, _T("CursorNext()"));
 						h->CursorNext();
 					}
 				}
@@ -657,7 +657,7 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 
 					/ h->Time.denominator();
-				DEBUGLOG (other, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta,
@@ -669,28 +669,28 @@ namespace mutabor {
 			// now check, wether count down Time is 0
 			// if h->time = 0 then h->Cursor points to the GisToken next to proceed
 
-			DEBUGLOG (other, _T("h->Delta = %d"),h->Delta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %d"),h->Delta);
 
 			while ( h->Delta == 0 ) { // read next tokens
-				DEBUGLOG (other, _T("h->Turn = %d"),h->Turn);
+				DEBUGLOG (gmnfile, _T("h->Turn = %d"),h->Turn);
 
 				if ( h->Turn) {
 					ProceedRoute(h, h->Turn++);
-					DEBUGLOG (other, _T("h->Delta = %d, h->Turn = %d"),h->Delta, h->Turn);
+					DEBUGLOG (gmnfile, _T("h->Delta = %d, h->Turn = %d"),h->Delta, h->Turn);
 
 					if ( h->Turn == 2 ) {
 						h->Time = h->Time2;
 						h->Time2 = 0;
 						h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 							/ h->Time.denominator();
-						DEBUGLOG (other, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
+						DEBUGLOG (gmnfile, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
 							  h->Time.numerator(), h->Time.denominator(), h->Delta);
 					}
 
 					if ( h->Turn > 2 ) {
 						h->CursorNext();
 					} else {
-						DEBUGLOG2(other,_T("continue loop"));
+						DEBUGLOG2(gmnfile,_T("continue loop"));
 						continue;
 					}
 				}
@@ -702,21 +702,21 @@ namespace mutabor {
 
 					delete h;
 
-					DEBUGLOG2(other,_T("goto beginloop"));
+					DEBUGLOG2(gmnfile,_T("goto beginloop"));
 
 					goto beginloop;
 				}
 
 				// proceed
-				DEBUGLOG (other, _T("Proceed with Turn 0"));
+				DEBUGLOG (gmnfile, _T("Proceed with Turn 0"));
 
 				ProceedRoute(h, 0);
 
-				DEBUGLOG (other, _T("h->Read()"));
+				DEBUGLOG (gmnfile, _T("h->Read()"));
 
 				h->Read();
 
-				DEBUGLOG (other, _T("Time: %d/%d, Time2: %d/%d, delta: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta);
@@ -724,28 +724,28 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 					/ h->Time.denominator();
 
-				DEBUGLOG (other, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
+				DEBUGLOG (gmnfile, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
 					  h->Time.numerator(), h->Time.denominator(), h->Delta);
 
-				DEBUGLOG (other, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta,
 					  h->GetSpeedFactor());
 
 				if ( h->nSub != -1 ) {
-					DEBUGLOG2(other,_T("goto beginloop"));
+					DEBUGLOG2(gmnfile,_T("goto beginloop"));
 					goto beginloop;
 				}
 
 				if ( !(h->Time) ) {// token without duration
-					DEBUGLOG (other, _T("CursorNext()"));
+					DEBUGLOG (gmnfile, _T("CursorNext()"));
 					h->CursorNext();
 				}
 			}
 
 			// check MinTime
-			DEBUGLOG (other, _T("h->Delta = %d, MinDelta = %d"),h->Delta,MinDelta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %d, MinDelta = %d"),h->Delta,MinDelta);
 
 			if ( MinDelta == -1 || h->Delta < MinDelta )
 				MinDelta = h->Delta;
@@ -754,7 +754,7 @@ namespace mutabor {
 			H = &(h->Next);
 		}
 
-		DEBUGLOG2(other,_T("returning %d"),MinDelta);
+		DEBUGLOG2(gmnfile,_T("returning %d"),MinDelta);
 
 		return MinDelta * 1000;
 	}
