@@ -119,7 +119,9 @@ public:
 int main(int argc, char **argv)
 {
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
+#ifdef DEBUG
 	debugFlags::flags.timer = true;
+#endif
 
 	wxInitializer initializer;
 	if ( !initializer )
