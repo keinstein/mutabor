@@ -624,5 +624,13 @@ check-local: potfilechk
 
 
 all-local:
-	-cmp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc || cp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc
-	-cmp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h || cp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h
+	if test -f src/kernel/mut.cc ; \
+	then \
+		cmp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc || \
+		cp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc ; \
+	fi
+	if test -f src/kernel/mut.h ; \
+	then \
+		cmp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h || \
+		cp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h ; \
+	fi
