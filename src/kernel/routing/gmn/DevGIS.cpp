@@ -336,12 +336,12 @@ namespace mutabor {
 		*/
 		// initialisieren
 		DEBUGLOG (other, _T("Head = %p"),Head);
-		return base::Open;
+		return base::Open();
 	}
 
 	void InputGis::Close()
 	{
-		baes::Close();
+		base::Close();
 		
 		// Speicher freigeben
 
@@ -597,10 +597,10 @@ namespace mutabor {
 // return -1 heißt Ende der GMN
 // ein und ausgabe in ticks
 // Sinn der ticks: verschiedene Tempi in den Spuren
-	long InputGis::ReadOn(long delta)
+	mutint64 InputGis::ReadOn(mutint64 delta)
 	{
 		GisReadHead **H = (GisReadHead **)&Head;
-		long MinDelta = -1;
+		mutint64 MinDelta = -1;
 
 	beginloop:
 
@@ -756,7 +756,7 @@ namespace mutabor {
 
 		DEBUGLOG2(other,_T("returning %d"),MinDelta);
 
-		return MinDelta;
+		return MinDelta * 1000;
 	}
 
 

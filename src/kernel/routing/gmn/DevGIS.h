@@ -61,7 +61,7 @@
 
 #include "src/kernel/Defs.h"
 //#include "Global.h"
-#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/CommonFileDevice.h"
 #include "src/kernel/routing/gmn/GIS_Head.h"
 //#include "Interpre.h"
 
@@ -253,7 +253,7 @@ namespace mutabor {
 
 */
 		InputGis()
-			: InputDeviceClass(),Id(),timer(this)
+			: CommonFileInputDevice(),Id()
 			{
 				Head = 0;
 				Data = 0;
@@ -264,18 +264,20 @@ namespace mutabor {
 			 mutabor::MutaborModeType mode
 			 = mutabor::DeviceStop, 
 			 int id = -1)
-			: InputDeviceClass(devId,name,mode,id),Id(name),timer(this)
+			: CommonFileInputDevice(devId,name,mode,id),Id(name)
 			{
 				Head = 0;
 				Data = 0;
 			}
-		InputGis(const mutStringRef name, int id):InputDeviceClass(id,name),
-							 Id(name),timer(this)
+
+/*
+		InputGis(const mutStringRef name, int id):CommonFileInputDevice(id,name),
+							 Id(name)
 			{
 				Head = 0;
 				Data = 0;
 			}
-	
+*/	
 	public:
 		typedef CommonFileInputDevice base;
 
@@ -306,7 +308,7 @@ namespace mutabor {
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);
-		virtual long ReadOn(long delta);
+		virtual mutint64 ReadOn(mutint64 delta);
 		/*		{
 				return GisReadArtHeadOn(&Head, time, Proceed);
 				}*/

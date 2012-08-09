@@ -168,9 +168,7 @@ typedef struct TagListData
 		char ch;
 		int i;
 	} Data;
-}
-
-TagList;
+} TagList;
 
 TagList *Copy(TagList *tag);
 void Erase(TagList *tag);
@@ -182,7 +180,7 @@ class GisReadArtHead : public GisReadHead
 
 public:
 	frac Time2;
-	long Delta; // in 2ms-Ticks
+	mutint64 Delta; // in μs
 	int Box;
 
 private:
