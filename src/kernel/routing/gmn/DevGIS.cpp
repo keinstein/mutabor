@@ -269,17 +269,6 @@ namespace mutabor {
 	}
 
 
-/// Save current device settings in a tree storage
-/** \argument config (tree_storage) storage class, where the data will be saved.
- */
-	void InputGis::Save (tree_storage & config) 
-	{
-#ifdef DEBUG
-		wxString oldpath = config.GetPath();
-#endif
-		config.Write(_T("File Name"),Name);
-		mutASSERT(oldpath == config.GetPath());
-	}
 
 /// Save route settings (filter settings) for a given route
 /** Some route settings (e.g. filter settings) are device type 
@@ -295,19 +284,6 @@ namespace mutabor {
 		config.toLeaf(_T("Guido File Input"));
 		// ...
 		config.toParent();
-		mutASSERT(oldpath == config.GetPath());
-	}
-
-
-/// Load current device settings from a tree storage
-/** \argument config (tree_storage) storage class, where the data will be loaded from.
- */
-	void InputGis::Load (tree_storage & config)
-	{
-#ifdef DEBUG
-		wxString oldpath = config.GetPath();
-#endif
-		Name = config.Read(_T("File Name"),mutEmptyString);
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -331,8 +307,6 @@ namespace mutabor {
 
 	bool InputGis::Open()
 	{
-		mutASSERT(!isOpen);
-		DEBUGLOG (other, _T(""));
 		Data = GisParse(Name);
 
 		if ( GspError ) {
@@ -361,18 +335,14 @@ namespace mutabor {
 		    Mode = DeviceStop; 
 		*/
 		// initialisieren
-		Stop();
-
 		DEBUGLOG (other, _T("Head = %p"),Head);
-
-		isOpen = true;
-		return true;
+		return base::Open;
 	}
 
 	void InputGis::Close()
 	{
-		mutASSERT(isOpen);
-		Stop();
+		baes::Close();
+		
 		// Speicher freigeben
 
 		if ( Mode == DeviceCompileError )
@@ -387,15 +357,11 @@ namespace mutabor {
 			delete Data;
 			Data = 0;
 		}
-
-		delete Data;
-		isOpen = false;
 	}
 
 	void InputGis::Stop()
 	{
-		if ( Mode == DevicePlay || Mode == DeviceTimingError )
-			Pause();
+		base::Stop();
 
 		// OK ?
 		if ( Mode == DeviceCompileError )
@@ -417,50 +383,20 @@ namespace mutabor {
 		DEBUGLOG (other, _T("Head = %p"),Head);
 		// Delta-Times lesen
 		minDelta = 0;
-		actDelta = -1;
 		Mode = DeviceStop;
 	}
 
-/* Shall GIS support batch processing? */
-	void InputGis::Play()
-	{
-		timer.Start(2,wxTIMER_CONTINUOUS);
-		Busy = FALSE;
-		Mode = DevicePlay;
-	}
-
-	void InputGis::Pause()
-	{
-		timer.Stop();
-		Mode = DevicePause;
-		Quite();
-	}
-
-
 // Gis arbeitet auf "tick" - Basis, ein tick = 2ms
-	void InputGis::IncDelta()
+	mutint64 InputGis::PrepareNextEvent()
 	{
-		actDelta++;
-
-		if ( Busy )
-			return;
-
-		if ( actDelta < minDelta )
-			return;
-
-		// Zeitpunkt ist ran, also verarbeiten
-		Busy = TRUE;
-
 		DEBUGLOG (other, _T("Next tone. Mindelta = %d"),minDelta);
 
-		minDelta = ReadOn(actDelta);
+		minDelta = ReadOn(minDelta);
 
 		// while ((minDelta = ReadOn(actDelta)) == -1)
 		//  if (!(Head->Cursor)) break;
 
 		DEBUGLOG (other, _T("Calculating next step"));
-
-		actDelta = 0;
 
 		if ( minDelta == -1 ) {
 			DEBUGLOG (other, _T("Stopping"));
@@ -468,8 +404,7 @@ namespace mutabor {
 			Stop();
 //			InDevChanged = 1;
 		}
-
-		Busy = FALSE;
+		return minDelta;
 	}
 
 	void MutaborTag(GisReadArtHead *h, GisToken *Para, int box)

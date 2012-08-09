@@ -224,7 +224,7 @@ namespace mutabor {
 
 // InputGis ------------------------------------------------------------
 
-	class InputGis : public InputDeviceClass
+	class InputGis : public CommonFileInputDevice
 	{
 		friend class GisFactory;
 
@@ -233,6 +233,7 @@ namespace mutabor {
 		GisToken *Data;
 		GisReadArtHead *Head;
 
+/*
 		class GisTimer : public wxTimer
 		{
 			InputGis * file;
@@ -250,6 +251,7 @@ namespace mutabor {
 		GisTimer timer;
 
 
+*/
 		InputGis()
 			: InputDeviceClass(),Id(),timer(this)
 			{
@@ -275,12 +277,9 @@ namespace mutabor {
 			}
 	
 	public:
+		typedef CommonFileInputDevice base;
+
 		virtual ~InputGis() {}
-	
-		/// Save current device settings in a tree storage
-		/** \argument config (tree_storage) storage class, where the data will be saved.
-		 */
-		virtual void Save (tree_storage & config);
 	
 		/// Save route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
@@ -290,11 +289,6 @@ namespace mutabor {
 		 */
 		virtual void Save (tree_storage & config, const RouteClass * route);
 	
-	
-		/// Load current device settings from a tree storage
-		/** \argument config (tree_storage) storage class, where the data will be loaded from.
-		 */
-		virtual void Load (tree_storage & config);
 	
 		/// Loade route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
@@ -309,22 +303,6 @@ namespace mutabor {
 
 		virtual void Close();
 		virtual void Stop();
-		virtual void Play();
-		virtual void Pause();
-
-		virtual void SetName(const wxString & s) 
-			{
-				if (s != Name) {
-					bool reopen = IsOpen();
-					if (reopen) 
-						Close();
-
-					Name = s;
-
-					if (reopen)
-						Open();
-				}
-			}
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);
@@ -338,7 +316,7 @@ namespace mutabor {
 				return DTGis;
 			}
 
-		void IncDelta();
+		mutint64 PrepareNextEvent();
 
 		virtual mutString GetTypeName () const {
 			return N_("GIS input file.");
@@ -354,10 +332,8 @@ namespace mutabor {
 	
 
 	private:
-		long actDelta;  // in ticks
-		long minDelta;  // in ticks
-		UINT TimerId;
-		BOOL Busy;
+		mutint64 minDelta;  // in ticks
+//		UINT TimerId;
 //    long SpeedFactor;
 //    frac LastDelta;
 
