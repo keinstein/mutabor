@@ -1,8 +1,7 @@
 /** \file 
  ********************************************************************
- * Description
+ * Fraction class for Mutabor
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Frac.h,v 1.9 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -61,7 +60,7 @@
 #ifdef HAVE_BOOST_RATIONAL_HPP
 #include <boost/rational.hpp>
 
-typedef boost::rational<long> frac;
+typedef boost::rational<mutint64> frac;
 
 inline wxString TowxString(frac f)
 {
@@ -78,7 +77,7 @@ class frac
 {
 
 private:
-	long n, d;
+	mutint64 n, d;
 
 public:
 	frac()
@@ -87,21 +86,21 @@ public:
 		d = 1;
 	}
 
-	frac(long integerval) 
+	frac(mutint64 integerval) 
 	{
 		n = integerval;
 		d = 0;
 	}
 	
-	frac(long numerator, long denominator)
+	frac(mutint64 numerator, mutint64 denominator)
 	{
 		n = numerator;
 		d = denominator;
 	}
 
-	long numerator() const {return n;}
+	mutint64 numerator() const {return n;}
 
-	long denominator() const {return d;}
+	mutint64 denominator() const {return d;}
 
 	frac& operator =(const frac& f);
 
@@ -146,7 +145,7 @@ public:
 
 	frac& operator =(const int &i);
 
-	long gcd(long a, long b);
+	mutint64 gcd(mutint64 a, mutint64 b);
 
 	friend STD_PRE::ostream& operator << (STD_PRE::ostream& os, const frac f);
 
