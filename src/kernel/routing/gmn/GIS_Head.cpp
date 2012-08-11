@@ -369,12 +369,6 @@ wxString GisReadHead::ToString()
 // ##################################################################
 // procedures with GisReadHead
 
-// dummy procedure for GisReadHeadOn
-void GisReadDummy(GisReadHead*, char)
-{
-	// just a dummy
-}
-
 // ReadOn the GisReadHead, chained
 frac GisReadHeadOn(GisReadHead **Head, frac dTime, GisReadProceed *proceed)
 {
