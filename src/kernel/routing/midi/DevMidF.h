@@ -108,7 +108,7 @@ namespace mutabor {
 	{
 
 	public:
-		DWORD Time;
+		wxLongLong Time;
 		TByteArray *Data;
 		Track()
 			{

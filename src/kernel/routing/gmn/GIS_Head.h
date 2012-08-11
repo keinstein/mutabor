@@ -166,7 +166,7 @@ typedef struct TagListData
 	union data
 	{
 		char ch;
-		int i;
+		mutint64 i; ///\todo find a more efficient way to do this
 	} Data;
 } TagList;
 

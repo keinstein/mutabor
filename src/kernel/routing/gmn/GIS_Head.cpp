@@ -101,30 +101,42 @@ char GetMidiInstrument(GisToken *token)
 }
 
 #define ZIFFER (mutT('0') <= t[i] && t[i] <= mutT('9'))
-int GetTheSpeedFactor(GisToken *token)
+
+/** 
+ * This function returns the speed factor that must be multiplied to 
+ * the duration value in order to get a delta timestamp in μs.
+ * 
+ * \param token Token to be parsed in the form numerator/denominator = bpm.
+ * 
+ * \return fraction in μs for 1/1 duration.
+ */
+mutint64 GetTheSpeedFactor(GisToken *token)
 {
 	DEBUGLOG2(gmnfile,_T("%p"),token);
+	
+	mutint64 retval = 2l * 1000l * 1000l; // 1/4 = 120bpm => 1/1 = 2s
 
 	if ( token && GetGisType(token) == GTParaStr ) {
 		const mutString &t = ((GisParaStr*) token) -> s;
 
 		DEBUGLOG2(gmnfile,_T("%s"),t.c_str());
 
-		int i = 0;
+		size_t i = 0;
 
-		long n=0, d=0, bpm=0;
+		mutint64 numerator = 0, denominator = 0, bpm=0;
+
+		// trim value
+		while ( !ZIFFER && t[i] )
+			i++;
+
+		while ( ZIFFER )
+			numerator = numerator*10 + (t[i++]-mutT('0'));
 
 		while ( !ZIFFER && t[i] )
 			i++;
 
 		while ( ZIFFER )
-			n = n*10 + (t[i++]-mutT('0'));
-
-		while ( !ZIFFER && t[i] )
-			i++;
-
-		while ( ZIFFER )
-			d = d*10 + (t[i++]-mutT('0'));
+			denominator = denominator*10 + (t[i++]-mutT('0'));
 
 		while ( !ZIFFER && t[i] )
 			i++;
@@ -134,13 +146,14 @@ int GetTheSpeedFactor(GisToken *token)
 
 		DEBUGLOG2(gmnfile,_T("%d / %d / %d"),denominator, numerator, bpm);
 
-		if ( !n || !d || bpm < 4 )
-			return 2000;
-		else
-			return d * 30000 / n / bpm;
-	}
 
-	return 2000;
+		if ( numerator && denominator && bpm > 0 ) {
+			retval = (denominator * 60*1000*1000) / (numerator * bpm); // 1/1 = 1bpm => 60s per measure
+		}
+	}
+	DEBUGLOG2(gmnfile,_T("Returning fraction %s"), TowxString(retval).c_str());
+
+	return retval;
 }
 
 // ##################################################################
@@ -682,6 +695,7 @@ beginloop:
 			if ( h->Time <= frac(0, 1) )
 			{
 				proceed(h, h->Turn++);
+				DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
 
 				if ( h->Turn == 2 ) {
 					h->Time = h->Time2;
@@ -705,6 +719,7 @@ beginloop:
 				proceed(h, h->Turn++);
 
 				if ( h->Turn == 2 ) {
+					DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
 					h->Time = h->Time2;
 					h->Time2 = 0;
 				}

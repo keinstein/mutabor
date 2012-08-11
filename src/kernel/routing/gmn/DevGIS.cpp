@@ -2,7 +2,6 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/DevGIS.cpp,v 1.11 2011/11/02 14:31:57 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
@@ -398,12 +397,6 @@ namespace mutabor {
 
 		DEBUGLOG (gmnfile, _T("Calculating next step"));
 
-		if ( minDelta == -1 ) {
-			DEBUGLOG (gmnfile, _T("Stopping"));
-			Mode = DeviceTimingError;
-			Stop();
-//			InDevChanged = 1;
-		}
 		return minDelta;
 	}
 
@@ -594,13 +587,15 @@ namespace mutabor {
 #else
 #define printHeadChain(a,b)
 #endif
-// return -1 heißt Ende der GMN
-// ein und ausgabe in ticks
-// Sinn der ticks: verschiedene Tempi in den Spuren
+	// return -1 heißt Ende der GMN
+        // ein und ausgabe in ticks
+        // Sinn der ticks: verschiedene Tempi in den Spuren
+
+
 	mutint64 InputGis::ReadOn(mutint64 delta)
 	{
 		GisReadHead **H = (GisReadHead **)&Head;
-		mutint64 MinDelta = -1;
+		mutint64 MinDelta = GetNO_DELTA();
 
 	beginloop:
 
@@ -634,8 +629,11 @@ namespace mutabor {
 			DEBUGLOG (gmnfile, _T("h->Delta = %d"),h->Delta);
 
 			if ( h->Delta > 0 ) {// header in normal state
-				DEBUGLOG (gmnfile, _T("Time: %d/%d, delta: %d, speed: %d"),
-					  h->Time.numerator(),h->Time.denominator(), delta,
+				DEBUGLOG (gmnfile, 
+					  _T("Time: %d/%d, delta: %d, speed: %d"),
+					  h->Time.numerator(),
+					  h->Time.denominator(), 
+					  delta,
 					  h->GetSpeedFactor());
 				h->Time -= frac(delta, h->GetSpeedFactor());
 				h->Delta -= delta;
@@ -644,6 +642,7 @@ namespace mutabor {
 					ProceedRoute(h, h->Turn++);
 
 					if ( h->Turn == 2 ) {
+						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
 						h->Time = h->Time2;
 						h->Time2 = 0;
 					}
@@ -657,7 +656,7 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 
 					/ h->Time.denominator();
-				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %ld/%ld, Time2: %ld/%ld, delta: %ld, speed: %ld"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta,
@@ -679,11 +678,12 @@ namespace mutabor {
 					DEBUGLOG (gmnfile, _T("h->Delta = %d, h->Turn = %d"),h->Delta, h->Turn);
 
 					if ( h->Turn == 2 ) {
+						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
 						h->Time = h->Time2;
 						h->Time2 = 0;
 						h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 							/ h->Time.denominator();
-						DEBUGLOG (gmnfile, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
+						DEBUGLOG (gmnfile, _T("h->Delta = %d * %ld / %ld = %ld"), h->GetSpeedFactor(),
 							  h->Time.numerator(), h->Time.denominator(), h->Delta);
 					}
 
@@ -747,7 +747,7 @@ namespace mutabor {
 			// check MinTime
 			DEBUGLOG (gmnfile, _T("h->Delta = %d, MinDelta = %d"),h->Delta,MinDelta);
 
-			if ( MinDelta == -1 || h->Delta < MinDelta )
+			if ( !IsDelta(MinDelta) || (MinDelta >= 0 && h->Delta < MinDelta) )
 				MinDelta = h->Delta;
 
 			// next Header
@@ -756,7 +756,7 @@ namespace mutabor {
 
 		DEBUGLOG2(gmnfile,_T("returning %d"),MinDelta);
 
-		return MinDelta * 1000;
+		return MinDelta;
 	}
 
 
