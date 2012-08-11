@@ -92,7 +92,7 @@ public:
 	GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
 	{
 		PrevPtr = &Prev;
-		DEBUGLOG(other,_T("boss = %p"),boss);
+		DEBUGLOG(gmnfile,_T("boss = %p"),boss);
 		Next = Prev = NULL;
 		Cursor = cursor;
 		mutCopyString(Id,id);
@@ -290,10 +290,10 @@ public:
 
 	int GetSpeedFactor()
 	{
-		DEBUGLOG(other,_T("Tempo: %p"));
+		DEBUGLOG(gmnfile,_T("Tempo: %p"));
 
 		if (Tempo) {
-			DEBUGLOG(other,_T("Tempo->Data.i: %d"),Tempo);
+			DEBUGLOG(gmnfile,_T("Tempo->Data.i: %d"),Tempo);
 			return Tempo->Data.i;
 		}
 		else

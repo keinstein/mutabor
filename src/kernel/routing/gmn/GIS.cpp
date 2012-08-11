@@ -78,12 +78,6 @@ frac LastDuration;
 
 #ifdef DEBUG
 int debugcount = 0;
-
-#define GISDEBUG(para) \
-  DEBUGLOG2(other,_T("")); std::cerr << para << std::endl;
-//cout << para;
-#else
-#define GISDEBUG(para)
 #endif
 /*
 */
@@ -497,7 +491,7 @@ char *AddStr(char **s1, const char *s2, const char *s3)
 
 int BuildTag()
 {
-	DEBUGLOG2(other,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
 	GisTag *Tag = new GisTag(TagName, Para, TagSep);
 	*Current = Tag;
 	Current = &(Tag->Next);
@@ -514,7 +508,7 @@ int BuildTag()
 
 int StartSep()
 {
-	DEBUGLOG2(other,_T("saving Sep %s"),Sep.c_str());
+	DEBUGLOG2(gmnfile,_T("saving Sep %s"),Sep.c_str());
 	*Current = new GisToken(Sep, 0);
 	Current = &((*Current)->Next);
 	return 0;
@@ -522,7 +516,7 @@ int StartSep()
 
 int BeginSegment()
 {
-	GISDEBUG("{")
+	DEBUGLOG2(gmnfile,_T("{"));
 
 	if ( TagMode ) BuildTag();
 
@@ -539,7 +533,7 @@ int BeginSegment()
 
 int EndSegment()
 {
-	GISDEBUG("}\n")
+	DEBUGLOG2(gmnfile,_T("}"));
 
 	if ( TagMode ) BuildTag();
 
@@ -556,7 +550,7 @@ int EndSegment()
 
 int BeginSequenz()
 {
-	GISDEBUG("[")
+	DEBUGLOG2(gmnfile,_T("["));
 
 	if ( TagMode ) BuildTag();
 
@@ -573,7 +567,7 @@ int BeginSequenz()
 
 int EndSequenz()
 {
-	GISDEBUG("]\n")
+	DEBUGLOG2(gmnfile,_T("]"));
 
 	if ( TagMode ) BuildTag();
 
@@ -590,14 +584,14 @@ int EndSequenz()
 
 int BeginParameter()
 {
-	GISDEBUG("<")
+	DEBUGLOG2(gmnfile,_T("<"));
 	AddStr(TagSep, mutT("<"), Sep);
 	return 0;
 };
 
 int EndParameter()
 {
-	GISDEBUG(">")
+	DEBUGLOG2(gmnfile,_T(">"));
 
 	if ( Para )
 		AddStr((LastPara->Sep), mutT(">"), Sep);
@@ -609,7 +603,7 @@ int EndParameter()
 
 int BeginRange()
 {
-	GISDEBUG("( ")
+	DEBUGLOG2(gmnfile,_T("( "));
 
 	if ( LastPara )
 		AddStr(LastPara->Sep, mutT("("), Sep);
@@ -643,7 +637,7 @@ int BeginRange()
 
 int EndRange()
 {
-	GISDEBUG(")\n")
+	DEBUGLOG2(gmnfile,_T(")\n"));
 
 	if ( TagMode ) BuildTag();
 
@@ -662,7 +656,7 @@ int EndRange()
 
 int NextSequenz()
 {
-	GISDEBUG(", ");
+	DEBUGLOG2(gmnfile,_T(", "));
 
 	if ( TagMode ) BuildTag();
 
@@ -671,11 +665,15 @@ int NextSequenz()
 
 int Note(const mutString name, const mutString accedentials, int octave, frac duration)
 {
-	DEBUGLOG2(other,_T("Note '%s' %s Oktave %d "),
+	DEBUGLOG2(gmnfile,_T("%s%s%d*%s: Note '%s' %s Oktave %d, Duration: %s "),
 	          name.c_str(),
 	          accedentials.c_str(),
-	          octave);
-	GISDEBUG(name << accedentials << octave << "*" << duration << " ")
+	          octave,
+		  TowxString(duration).c_str(),
+	          name.c_str(),
+	          accedentials.c_str(),
+	          octave,
+		  TowxString(duration).c_str());
 
 	if ( TagMode ) BuildTag();
 
@@ -690,7 +688,7 @@ int Note(const mutString name, const mutString accedentials, int octave, frac du
 
 int Tag(const mutString tagName)
 {
-	GISDEBUG("\n\\" << tagName)
+	DEBUGLOG2(gmnfile,_T("\\%s"),tagName.c_str());
 
 	if ( TagMode ) BuildTag();
 
@@ -705,7 +703,7 @@ int Tag(const mutString tagName)
 
 int TagParaInt(long i)
 {
-	GISDEBUG("ParaInt: " << i << ", ")
+	DEBUGLOG2(gmnfile,_T("ParaInt: %ld"),i);
 	GisParaInt *p = new GisParaInt(i, Sep);
 
 	if ( LastPara )
@@ -720,7 +718,7 @@ int TagParaInt(long i)
 
 int TagParaReal(double x)
 {
-	GISDEBUG("ParaReal: " << x << ", ")
+	DEBUGLOG2(gmnfile,_T("ParaReal: %lg"), x);
 	GisParaReal *p = new GisParaReal(x, Sep, 0);
 
 	if ( LastPara )
@@ -735,7 +733,7 @@ int TagParaReal(double x)
 
 int TagParaStr(mutString s)
 {
-	GISDEBUG("ParaStr: " << """" << s << """" << ", ")
+	DEBUGLOG2(gmnfile,_T("ParaStr: %s"), s.c_str());
 	GisParaStr *p = new GisParaStr(s, Sep, 0);
 
 	if ( LastPara )
@@ -750,7 +748,7 @@ int TagParaStr(mutString s)
 
 int Comma()
 {
-	GISDEBUG(", ")
+	DEBUGLOG2(gmnfile,_T(","));
 
 	if ( TagMode ) BuildTag();
 
@@ -814,7 +812,7 @@ int GetTagId(const mutString &name, mutString &registered)
 
 	// check short form
 	for (i = 0; i < NTAGSHORTS; i++) {
-		DEBUGLOG2(other,_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
+		DEBUGLOG2(gmnfile,_T("comparing '%s' with tag'%s'"),name.c_str(),Tags[i]);
 
 		if ( mutStrEq2(name, TagShorts[i]) ) {
 			registered = TagShorts[i];
@@ -854,7 +852,7 @@ GisToken *GisParse(const mutString FileName)
 	TagSep = mutEmptyString;
 	Para = 0;
 	LastPara = 0;
-	DEBUGLOG2(other,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
 
 	if ( GspParse(FileName) ) {
 		UnRavel();
