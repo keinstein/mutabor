@@ -196,8 +196,8 @@ public:
 	GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, bool singleToken = false)
 			: GisReadHead(boss, cursor, id, singleToken)
 	{
-		DEBUGLOG(other,_T("boss = %p"), boss);
-		DEBUGLOG(other,_T("cursor = %p"), cursor);
+		DEBUGLOG(gmnfile,_T("boss = %p"), boss);
+		DEBUGLOG(gmnfile,_T("cursor = %p"), cursor);
 
 		if ( boss ) {
 			Intensity = Copy(boss->Intensity);
