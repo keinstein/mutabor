@@ -81,7 +81,7 @@
 
 
 
-
+extern char has_gui;
 void scanner_protokoll(int zeichen);
 void AktionenInit();
 

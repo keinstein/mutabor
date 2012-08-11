@@ -264,6 +264,7 @@
 #endif
 
 //#include "Mutabor.rh"
+#include "src/kernel/GrafKern.h"
 #include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutDocument.h"
@@ -478,6 +479,10 @@ namespace mutaborGUI {
 			<< std::endl;
 
 #endif
+		// tell the mutabor kernel that we are using a GUI
+		has_gui = 1;
+
+
 
 		// init global objects
 		// -------------------

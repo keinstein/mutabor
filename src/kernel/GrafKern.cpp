@@ -127,6 +127,9 @@ int lAktionen[AKTIONEN_MAX];
 
 int nAktionen = 0;
 
+/// \todo has_gui should be replaced by a callback variable.
+char has_gui = 0;
+
 #ifdef WX
 wxString sd1, sd2, sd3, sd4, sd5, sd6;
 
@@ -324,10 +327,16 @@ void compiler_warning( int nr, ... )
 	              nr,
 	              Warning_text[nr]);
 #if defined(WX)
-	wxMessageBox(wxString::FormatV(wxGetTranslation(Warning_text[nr]),
-	                               arglist),
-	             _("Compiler warning"),
-	             wxOK | wxICON_ASTERISK );
+	if (has_gui) {
+		wxMessageBox(wxString::FormatV(wxGetTranslation(Warning_text[nr]),
+					       arglist),
+			     _("Compiler warning"),
+			     wxOK | wxICON_ASTERISK );
+	} else {
+		wxString out = wxString::FormatV(wxGetTranslation(Warning_text[nr]),
+						 arglist);
+		std::clog << "Compiler warning: " << out.ToUTF8() << std::endl;
+	}
 #else
 	char Fmeldung[255];
 	vsprintf( Fmeldung, Warning_text[nr], arglist );
