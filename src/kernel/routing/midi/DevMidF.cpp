@@ -251,8 +251,8 @@ namespace mutabor {
 	{
 		BYTE w[5];
 		int i = 0;
-		DWORD Delta = (unsigned int)CurrentTime - Time;
-		Time = (unsigned int) CurrentTime;
+		DWORD Delta = (long)CurrentTime - Time.GetValue();
+		Time = (long)CurrentTime;
 		w[0] = Delta & 0x7F;
 		Delta >>= 7;
 
