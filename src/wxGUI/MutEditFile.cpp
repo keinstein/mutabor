@@ -293,10 +293,22 @@ namespace mutaborGUI {
 		}
 
 		wxFile file(TmpFile,wxFile::write);
-		if (!file.IsOpened() || !file.Write(GetText(), *wxConvCurrent) ) {
+		if (!file.IsOpened()) {
+			wxMessageBox(_("Can't open temporary file."),
+				     _("Error"), wxOK | wxICON_HAND);
+			CompiledFile = wxEmptyString;
+			return false;
+		} 
+
+		if (!file.Write(GetText(), wxConvUTF8) ) {
 			wxMessageBox(_("Can't write temporary file."),
 				     _("Error"), wxOK | wxICON_HAND);
 			CompiledFile = wxEmptyString;
+			if (file.IsOpened()) 
+				file.Close();
+			if (wxFile::Exists(TmpFile)) {
+				wxRemoveFile(TmpFile);
+			}
 			return false;
 		} 
 
