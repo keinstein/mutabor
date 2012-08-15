@@ -135,14 +135,22 @@ namespace mutabor {
 									   file(f)
 				{}
 
-			
+			~FileTimer() {
+				if (file) {
+					mutASSERT(file->timer == this);
+					file -> timer = NULL;
+				}
+			}
+
 			ExitCode Entry() {
 				ExitCode e = file->ThreadPlay();
 				return e;
 			}
 		};
+		friend class FileTimer;
 
 	protected:
+		
 		FileTimer * timer;
 
 		CommonFileInputDevice(): InputDeviceClass(),
