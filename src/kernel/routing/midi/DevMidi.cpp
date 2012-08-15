@@ -281,6 +281,7 @@ namespace mutabor {
 			Cd[i].Reset();
 			ton_auf_kanal[i].taste = 0;
 			ton_auf_kanal[i].id = 0;
+			ton_auf_kanal[i].key = 0;
 		}
 
 		nKeyOn = 0;
