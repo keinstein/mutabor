@@ -93,18 +93,18 @@
 // GET_INDEX is algready defined in MidiKern.h
 
 // berechnet die 'Oktavlage' einer taste bzgl. tonsystem
-#define GET_ABSTAND(taste,tonsystem) \
-     ( (int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))  \
-           / (tonsystem)->breite -((int) (tonsystem)->anker         \
-           / (tonsystem)->breite ))
+#define GET_ABSTAND(taste,tonsystem)					\
+	( (int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))	\
+	  / (tonsystem)->breite -((int) (tonsystem)->anker		\
+				  / (tonsystem)->breite ))
 
 // berechnet die Frequenz in Midi-Form
-#define GET_FREQ(taste,tonsystem)  \
-	( ( (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]==0) ?       \
-	  (long) 0 :                                       \
-     (long)( (tonsystem)->periode *                   \
-              GET_ABSTAND(taste,(tonsystem))  +                         \
-                   (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
+#define GET_FREQ(taste,tonsystem)					\
+	( ( (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]==0) ?	\
+	  (long) 0 :							\
+	  (long)( (tonsystem)->periode *				\
+		  GET_ABSTAND(taste,(tonsystem))  +			\
+		  (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
 
 #define ZWZ 1.059463094 /* 12.Wurzel 2 */
 //#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/16777216.0l))-69))
@@ -282,12 +282,10 @@ namespace mutabor {
 			ton_auf_kanal[i].taste = 0;
 			ton_auf_kanal[i].id = 0;
 			ton_auf_kanal[i].key = 0;
+			KeyDir[i] = (char)i; // alle nicht benutzt
 		}
 
 		nKeyOn = 0;
-
-		for (i = 0; i < 16; i++)
-			KeyDir[i] = (char)i; // alle nicht benutzt
 
 #ifdef RTMIDI
 		// RtMidiIn constructor
