@@ -149,7 +149,7 @@ namespace mutaborGUI {
 		mutASSERT(dlg);
 		mutASSERT(boxId == NewBox);
 		dlg->SetBoxType(Box0);
-		dlg->SetBoxNumber(0);
+		dlg->SetBoxNumber(RouteClass::GetNextFreeBox());
 		dlg->SetTitle(_("Create Box"));
 		dlg->DisableRemove(true);
 	}
