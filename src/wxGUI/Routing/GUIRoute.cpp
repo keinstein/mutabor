@@ -76,6 +76,7 @@
 #include "src/kernel/Defs.h"
 #include "wx/string.h"
 #include "wx/window.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/OutputDeviceShape.h"

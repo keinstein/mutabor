@@ -38,6 +38,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include <cstdlib>
 #include <wx/app.h>
 

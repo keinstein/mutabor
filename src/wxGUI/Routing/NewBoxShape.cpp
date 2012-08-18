@@ -121,6 +121,7 @@
  *\{
  ********************************************************************/
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/NewBoxShape.h"
 #include "src/wxGUI/Routing/BoxDlg.h"
 #include "src/wxGUI/MutRouteWnd.h"

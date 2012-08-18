@@ -54,6 +54,7 @@
 #ifdef DEBUG
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
 #include "src/wxGUI/Routing/OutputDeviceShape.h"
 #include "src/wxGUI/MutRouteWnd.h"

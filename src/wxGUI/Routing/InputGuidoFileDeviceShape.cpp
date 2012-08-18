@@ -89,6 +89,7 @@
  ********************************************************************/
 #include "src/kernel/Defs.h"
 #include <limits>
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/InputGuidoFileDeviceShape.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"

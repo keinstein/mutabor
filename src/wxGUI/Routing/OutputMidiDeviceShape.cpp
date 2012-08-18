@@ -94,6 +94,7 @@
  *\{
  ********************************************************************/
 #include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <limits>

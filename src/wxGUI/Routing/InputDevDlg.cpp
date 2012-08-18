@@ -34,6 +34,7 @@
 
 #include "src/kernel/Defs.h"
 
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/InputDevDlg.h"
 
 #ifdef __BORLANDC__

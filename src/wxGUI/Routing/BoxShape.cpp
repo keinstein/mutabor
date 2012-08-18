@@ -201,6 +201,7 @@
 ********************************************************************/
 #include "src/kernel/Defs.h"
 #include "src/kernel/Global.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/wxGUI/Routing/OutputDeviceShape.h"

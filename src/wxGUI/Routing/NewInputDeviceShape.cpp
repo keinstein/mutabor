@@ -77,6 +77,7 @@
  *\{
  ********************************************************************/
 #include "NewInputDeviceShape.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 using namespace mutabor;

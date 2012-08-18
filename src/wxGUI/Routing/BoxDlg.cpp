@@ -140,6 +140,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/BoxDlg.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
 #include "src/wxGUI/Routing/OutputDeviceShape.h"

@@ -91,6 +91,7 @@
  *\{
  ********************************************************************/
 #include "InputMidiFileDeviceShape.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include <limits>
 
 using namespace mutabor;

@@ -73,6 +73,7 @@
  *\{
  ********************************************************************/
 #include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/MutApp.h"
 
