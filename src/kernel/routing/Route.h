@@ -333,6 +333,8 @@ namespace mutabor {
 				Box = box;
 			}
 	
+		static int GetNextFreeBox();
+
 		RouteType GetType() const
 			{
 				return Type;

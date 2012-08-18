@@ -146,6 +146,30 @@ namespace mutabor {
 	}
 
 	template <class I, class O>
+	int TRouteClass<I,O>::GetNextFreeBox ()
+	{
+		int retval = 0;
+		bool changed = false;
+		const routeListType & list = GetRouteList();
+		typename routeListType::const_iterator begin = list.begin();
+		typename routeListType::const_iterator end = list.end();
+		do {
+			changed = false;
+			for (typename routeListType::const_iterator i = begin;
+			     i != end;
+			     i++) {
+				if ((*i)->GetBox() == retval) {
+					retval++;
+					changed = true;
+				}
+			}
+		} while (changed);
+		return retval;
+	}
+
+	
+
+	template <class I, class O>
 	void TRouteClass<I,O>::setUserData (void * data) 
 	{ 
 		userdata = data; 
