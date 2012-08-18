@@ -165,6 +165,7 @@
 
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
+#include <inttypes.h>
 
 
 
@@ -373,6 +374,18 @@ namespace mutabor {
 		mutASSERT(!isOpen);
 		Tracks.Data->Flush();
 		isOpen = true;
+
+		for (int i = 0; i < 16; i++) {
+			Cd[i].Reset();
+			ton_auf_kanal[i].taste = 0;
+			ton_auf_kanal[i].id = 0;
+			ton_auf_kanal[i].key = -1;
+			ton_auf_kanal[i].fine = -1;
+			KeyDir[i] = (char)i; // alle nicht benutzt
+		}
+
+		nKeyOn = 0;
+
 		return isOpen;
 	}
 
@@ -383,8 +396,10 @@ namespace mutabor {
 		// alle liegenden Tˆne ausschalten
 
 		for (int i = 0; i < 16; i++)
-			if ( KeyDir[i] >= 16 )  // benutzt
+			if ( KeyDir[i] >= 16 )  {// benutzt
+				mutASSERT(ton_auf_kanal[i].key != -1);
 				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
+			}
 
 		// Datei speichern
 		mutOpenOFstream(os,Name);
@@ -434,6 +449,8 @@ namespace mutabor {
 
 		int j;
 
+		mutASSERT(r->OFrom >= 0);
+		mutASSERT(r->OTo < 16);
 		for (j = r->OFrom; j <= r->OTo; j++ )
 			if ( j != DRUMCHANNEL || !r->ONoDrum )
 				if ( KeyDir[j] < KeyDir[i] )
@@ -456,6 +473,7 @@ namespace mutabor {
 						i = j;
 
 			// Ton auf Kanal i ausschalten
+			mutASSERT(ton_auf_kanal[i].key != -1);
 			MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
 
 			// KeyDir umsortieren
@@ -521,6 +539,7 @@ namespace mutabor {
 				if ( ton_auf_kanal[i].id == id ) {
 					ton_auf_kanal[i].taste=0;
 					ton_auf_kanal[i].id=0;
+					mutASSERT(ton_auf_kanal[i].key != -1);
 					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, velo);
 					// KeyDir umsortieren
 					int oldKeyDir = KeyDir[i];
@@ -550,6 +569,8 @@ namespace mutabor {
 
 				long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[box].tonesystem);
 
+
+				mutASSERT(ton_auf_kanal[i].key != -1);
 				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 				// Ton aus und einschalten zu vermeiden
 				if ( ton_auf_kanal[i].key == (bytenr(freq,3) & 0x7f) &&
