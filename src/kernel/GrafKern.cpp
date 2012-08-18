@@ -98,6 +98,7 @@
 
 // Needed at least for Visual C++ 8
 #include "src/kernel/Runtime.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 #ifdef MUTWIN
 #ifdef WX

@@ -67,6 +67,7 @@
 #include "MidiKern.h"
 #include "Runtime.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "wx/log.h"
 
 int protokollfunktionen_aktiv=0;

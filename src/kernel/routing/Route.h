@@ -261,10 +261,10 @@ namespace mutabor {
 		virtual bool Remove (int id);
 
 		/// Attatch a new output device
-		virtual void Attatch (OutputDevice & dev);
+		inline virtual void Attatch (OutputDevice & dev);
 
 		/// Attatch a new input device
-		virtual void Attatch (InputDevice & dev);
+		inline virtual void Attatch (InputDevice & dev);
 
 		/// Attach a new box
 		virtual void Attatch (int boxid) {
@@ -272,11 +272,11 @@ namespace mutabor {
 		}
 
 		/// Replace current output device with a new one
-		virtual bool Reconnect(OutputDevice & olddev, 
+		inline virtual bool Reconnect(OutputDevice & olddev, 
 				       OutputDevice & newdev);
 
 		/// Replace current input device with a new one
-		virtual bool Reconnect(InputDevice & olddev, 
+		inline virtual bool Reconnect(InputDevice & olddev, 
 				       InputDevice & newdev);
 
 		/// Replace current box with a new one
@@ -286,10 +286,10 @@ namespace mutabor {
 		}
 
 		/// Detatch current output device
-		virtual bool Detatch(OutputDevice & dev);
-
+		inline virtual bool Detatch(OutputDevice & dev);
+		
 		/// Detatch current input device
-		virtual bool Detatch(InputDevice & dev);
+		inline virtual bool Detatch(InputDevice & dev);
 
 		/// Detach a current box
 		virtual bool Detatch(int boxid) {
@@ -560,7 +560,7 @@ namespace mutabor {
 		 * 
 		 * \return Route created by this function (smart pointer).
 		 */
-		static Route Create(
+		inline static Route Create(
 			InputDevice & in,
 			OutputDevice & out,
 			RouteType type = RTall,

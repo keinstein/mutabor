@@ -123,6 +123,7 @@
 #include <setjmp.h>
 
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/routing/midi/DevMidF.h"
