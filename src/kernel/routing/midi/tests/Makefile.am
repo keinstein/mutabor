@@ -34,6 +34,29 @@ midiopenfail1_SOURCES = \
 	midiopenfail1.cpp
 
 
+if HAVE_CPPUNIT
+TESTS += \
+	testcppunit$(EXEEXT)
+
+check_PROGRAMS += testcppunit
+
+testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+
+testcppunit_SOURCES = \
+	main.cpp \
+	DevMidFtest.h
+
+testcppunit_LDADD = \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutabordebug.a \
+	$(top_builddir)/librtmidi.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(CPPUNIT_LIBS)
+endif
+
+
 playmidi1.mid: midi1_source.mid
 	cp `(if test -f '$<' ; then  echo '$<' ; else echo '$(top_srcdir)/$<' ; fi )` $@
 

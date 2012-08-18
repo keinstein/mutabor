@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
 MAKEFILE_DEPS = remove-podeps.stamp
-SUBDIRS = po lib src . doc #intl# libmutabor .
+SUBDIRS = po lib src . doc $(subdirs) #intl# libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 include common-rules.mk

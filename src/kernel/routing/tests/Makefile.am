@@ -13,6 +13,30 @@ timer1_LDADD=$(top_builddir)/libmutaborrouting.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
+if HAVE_CPPUNIT
+TESTS += \
+	testcppunit$(EXEEXT)
+
+check_PROGRAMS += testcppunit
+
+testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+
+testcppunit_SOURCES = \
+	main.cpp \
+	RouteTest.h
+
+testcppunit_LDADD = \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutabordebug.a \
+	$(top_builddir)/librtmidi.a \
+	$(LDADD) \
+	$(AM_LDFLAGS) \
+	$(CPPUNIT_LIBS)
+endif
+
+
+
 if COPYDLLS
 check-am: check-dll
 
