@@ -25,25 +25,6 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: Route-inlines.h,v $
- * Revision 1.4  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.3  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.2  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.1  2011-09-27 20:18:30  keinstein
- * add a file missed during last commit
- *
  ********************************************************************
  * \addtogroup templates
  * \{

@@ -4,134 +4,26 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Route.h,v 1.8 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 1998
+ * \date 1998-2012
  * $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.8 $
  * \license GPL
  *
- * $Log: Route.h,v $
- * Revision 1.8  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.7  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.6  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.5  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.4  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.3  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:46  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.3.2.9  2010-07-06 09:06:26  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.3.2.8  2010/06/15 14:30:14  keinstein
- * allow deleting of input devices in route window
- * several bug fixes
- * rudimentary box deletion support
- *
- * Revision 1.3.2.7  2010/06/02 11:20:08  keinstein
- * Route.h:
- * 	new enum BoxType
- * 	new box type NewBox
- *
- * IconShape.cpp:
- * 	Hide shape in MutIconShape::DeleteSelf
- *
- * MutChild.h:
- * 	Changes on the increment value for Clientsize
- *
- * MutLogicWnd:
- * 	smaller whitespace fixes
- *
- * MutRouteWnd.cpp:
- * 	save sizerflags for MutBoxShape too
- *
- * BoxChannelShape.cpp:
- * 	rename CreateRouteShape to CreateRoutePanel
- * 	replace some wxDynamicCast by dynamic_cast
- * 	add Box “New Box“ if current box is not found
- * 	delete Route if route panel is disabled
- *
- * BoxChannelShape.h:
- * 	Update BoxShape layout  if necessary
- *
- * BoxDlg.cpp:
- * 	RoutePanel::AddBox: allow NULL boxShape
- * 	Fix Bug that didn't preselect GUIDO boxes and Through mode
- *
- * BoxShape.cpp:
- * 	fix color mapping for box numbers (shift right by 1 bit).
- * 	Add MutBoxShape::sizerFlags
- * 	SetBoxId: New function
- * 	Use SetBoxId for setting Box Id an Label in sync
- * 	AddChannel: call Layout()
- * 	implement replacement in DoLeftDblClick (enables New Box)
- * 	ShowBoxDialog: use dynamic_cast
- * 	ReadDialog: Add Channel only if new route is enabled (not deleted)
- * 	ReplaceSelfBy: new function (Unreachable as only needed for
- * 		class NewMutBoxShape)
- *
- * NewBoxShape.cpp/.h:
- * 	replaceSelfBy: new function
- * 	initialize Box id as NewBox
- *
- * *.po/mutabor.pot/ *.gmo
- *  	Sync with sources
- *
- * Revision 1.3.2.6  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.3.2.5  2010/03/30 15:57:58  keinstein
- * added editing of existing routes to boxDlg
- *
- * Revision 1.3.2.4  2010/03/30 08:40:15  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.3.2.3  2010/02/15 12:08:20  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.3.2.2  2010/01/14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.3.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
  *\addtogroup route

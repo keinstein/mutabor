@@ -494,7 +494,6 @@ for v in CPPFLAGS CXX CXXFLAGS CXXCPP LDFLAGS LIBS; do
        preserve_flags="${preserve_flags}'${v}=${val}' " 
     fi 
 done 
-echo "$preserve_flags"
 # propagate Host triplets to DISTCHECK_CONFIGURE_FLAGS 
 for v in host build target; do 
     tmp="${v}_alias"
@@ -504,7 +503,6 @@ for v in host build target; do
        preserve_flags="${preserve_flags}'--${v}=${val}' " 
     fi 
 done 
-echo "$preserve_flags"
 # propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS 
 for v in with-wx-config with-wx-dir with-boost ; do 
     tmp="`echo "$v" | sed -e 's/-/_/g'`"
@@ -516,7 +514,6 @@ for v in with-wx-config with-wx-dir with-boost ; do
        echo "$preserve_flags"
     fi 
 done 
-echo "$preserve_flags"
 DISTCHECK_CONFIGURE_FLAGS="$preserve_flags"
 
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)  

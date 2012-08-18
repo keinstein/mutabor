@@ -90,10 +90,10 @@ namespace mutabor {
 
 	Route NullRoute(NULL); 
 
-/*
+	/*
 	template <class I, class O>
 	typename TRouteClass<I,O>::Route TRouteClass<I,O>::routeList;
-*/
+	*/
 	const mutString RTName[] =
 	{
 		_T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF")
