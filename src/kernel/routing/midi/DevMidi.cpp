@@ -123,18 +123,18 @@ namespace mutabor {
 
 // Midi-Ausgabe
 #define MIDI_OUT3(code1, code2, code3)				\
-	{ std::vector<unsigned char> message;			\
-		message.push_back(code1);			\
-		message.push_back(code2);			\
-		message.push_back(code3);			\
+	{ std::vector<unsigned char> message(3);		\
+		message[0]=code1;				\
+		message[1]=code2;				\
+		message[2]=code3;				\
 		DEBUGLOG2(midiio,_T("MIDI OUT %x %x %x"),	\
 			  code1,code2,code3);			\
 		hMidiOut->sendMessage(&message); }
 
 #define MIDI_OUT2(code1, code2)				\
-	{ std::vector<unsigned char> message;		\
-		message.push_back(code1);		\
-		message.push_back(code2);		\
+	{ std::vector<unsigned char> message(2);	\
+		message[0]=code1;		\
+		message[1]=code2;		\
 		DEBUGLOG2(midiio,_T("MIDI OUT %x %x"),	\
 			  code1,code2);			\
 		hMidiOut->sendMessage(&message); }
