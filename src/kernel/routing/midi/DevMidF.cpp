@@ -201,14 +201,15 @@ namespace mutabor {
 #define MIDI_OUT2(code1, code2)			\
 	Tracks.MidiOut2(code1, code2)
 
-// Zugriffe
-#define zugriff  ((unsigned char*) &freq)
-#define zgf  ((unsigned char*) &pb)
+	static inline uint8_t bytenr (unsigned long number, int index)
+	{
+		return (number >> index * 8) & 0xFF;
+	}
 
 // Pitch
 #define MIDI_PITCH(i)							\
-	int pb = ( (((int)zugriff[2])<<6) + (zugriff[1]>>2) ) / bending_range; \
-	MIDI_OUT3(0xE0+i, zgf[0] >> 1 , 64+(ton_auf_kanal[i].fine=(zgf[1])))
+	int pb = ( (((int)bytenr(freq,2))<<6) + (bytenr(freq,1)>>2) ) / bending_range; \
+	MIDI_OUT3(0xE0+i, bytenr(pb,0) >> 1 , 64+(ton_auf_kanal[i].fine=(bytenr(pb,1))))
 
 // Sound
 #define MIDI_SOUND(i, sound)				\
@@ -494,7 +495,7 @@ namespace mutabor {
 			Cd[i].Pitch = p;
 		}
 
-		ton_auf_kanal[i].key = zugriff[3] & 0x7f;
+		ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
 
 		ton_auf_kanal[i].taste = taste;
 		ton_auf_kanal[i].id = MAKE_ID(r, box, taste, channel);
@@ -551,7 +552,7 @@ namespace mutabor {
 
 				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 				// Ton aus und einschalten zu vermeiden
-				if ( ton_auf_kanal[i].key == (zugriff[3] & 0x7f) &&
+				if ( ton_auf_kanal[i].key == (bytenr(freq,3) & 0x7f) &&
 				     Cd[i].Pitch == (freq & 0xFFFFFF) )
 					continue;
 
@@ -562,7 +563,7 @@ namespace mutabor {
 				// evtl. Ton ausschalten
 				if ( SwitchTone ) {
 					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-					ton_auf_kanal[i].key = zugriff[3] & 0x7f;
+					ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
 					Delta = freq - ((DWORD)ton_auf_kanal[i].key << 24);
 				} else if ( Delta == Cd[i].Pitch )
 					continue;
