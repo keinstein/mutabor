@@ -642,7 +642,7 @@ namespace mutabor {
 					ProceedRoute(h, h->Turn++);
 
 					if ( h->Turn == 2 ) {
-						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
+						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),::TowxString(h->Time).c_str(), ::TowxString(h->Time2).c_str());
 						h->Time = h->Time2;
 						h->Time2 = 0;
 					}
@@ -678,7 +678,7 @@ namespace mutabor {
 					DEBUGLOG (gmnfile, _T("h->Delta = %d, h->Turn = %d"),h->Delta, h->Turn);
 
 					if ( h->Turn == 2 ) {
-						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),h->Time, h->Time2);
+						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),::TowxString(h->Time).c_str(), ::TowxString(h->Time2).c_str());
 						h->Time = h->Time2;
 						h->Time2 = 0;
 						h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
