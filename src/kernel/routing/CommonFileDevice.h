@@ -119,7 +119,7 @@ namespace mutabor {
 
 
 
-// InMidiFile -------------------------------------------------------
+// CommonFileInputDevice -------------------------------------------------------
 
 
 	class CommonFileInputDevice : public InputDeviceClass
@@ -128,23 +128,40 @@ namespace mutabor {
 	public:
  		class FileTimer: public wxThread
 		{
-			CommonFileInputDevice * file;
+	      
+			boost::intrusive_ptr<CommonFileInputDevice> file;
 		public:
 			FileTimer(CommonFileInputDevice * f,
 				  wxThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
 									   file(f)
 				{}
 
-			~FileTimer() {
+			virtual ~FileTimer() {
 				if (file) {
-					mutASSERT(file->timer == this);
-					file -> timer = NULL;
+					if (file->timer == this)
+						file -> timer = NULL;
 				}
 			}
 
 			ExitCode Entry() {
-				ExitCode e = file->ThreadPlay();
+				ExitCode e = file->ThreadPlay(this);
 				return e;
+			}
+
+			void OnExit() {
+				if (file) {
+					if (file->timer == this)
+						file -> timer = NULL;
+				}
+				file = NULL;
+			}
+			
+			void ClearFile() {
+				file = NULL;
+			}
+
+			bool HasFile(CommonFileInputDevice * f) {
+				return file == f;
 			}
 		};
 		friend class FileTimer;
@@ -170,8 +187,9 @@ namespace mutabor {
 					       pauseTime(0) {}
 
 	public:
-		virtual ~CommonFileInputDevice()
-			{};
+		virtual ~CommonFileInputDevice() {
+			mutASSERT(timer == NULL);
+		};
 	
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -209,7 +227,7 @@ namespace mutabor {
 		 * thread object. It plays the file using sleep
 		 * operations.
 		 */
-		wxThread::ExitCode ThreadPlay();
+		wxThread::ExitCode ThreadPlay(FileTimer * timer);
 		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
 			mutASSERT(timer);
 			if (timer) {
