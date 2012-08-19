@@ -357,10 +357,14 @@ void MutRouteWnd::InitShapes()
 
 void MutRouteWnd::InitDevices() 
 {
+        Freeze();
 	createInputDevices(MutInputDeviceShape::GetSizerFlags());
 	createBoxes(MutBoxShape::GetSizerFlags());
 	createOutputDevices(MutOutputDeviceShape::GetSizerFlags());
+        InvalidateBestSize();
         FitInside();
+        Layout();
+        Thaw();
 
         PRINTSIZER(GetSizer());
 	DebugCheckRoutes();  
@@ -435,6 +439,10 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 								this);
 			AddBox(boxShape, flags);
 		}
+                
+                if (!boxShape) {
+                        UNREACHABLEC;
+                }
 
 		TRACEC;
 		Route & r = const_cast<Route &>(*route);
@@ -444,6 +452,8 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 							       boxShape);
 		TRACEC;
 		boxShape->Add(channel);
+                // the box might have been initalized already
+                boxShape->Layout();
 		TRACEC;
         }
 	

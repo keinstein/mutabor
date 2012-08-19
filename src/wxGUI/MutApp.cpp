@@ -1585,8 +1585,8 @@ namespace mutaborGUI {
 			routewnd->InitDevices();
 			routewnd->Layout();
 			routewnd->FitInside();
-			routewnd->Refresh();
-			routewnd->Update();
+//			routewnd->Refresh();
+//			routewnd->Update();
 
 			DebugCheckRoutes();
 		}

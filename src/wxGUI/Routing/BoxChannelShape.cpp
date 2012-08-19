@@ -480,8 +480,7 @@ namespace mutaborGUI {
 			TRACET(MutBoxChannelShape);
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("End of function.\
- Destruct pointer to  %p (%d)"),
+			     _T("End of function. Destruct pointer to  %p (%d)"),
 			     route.get(),
 			     intrusive_ptr_get_refcount(route.get()));
 	}
@@ -710,6 +709,8 @@ namespace mutaborGUI {
 		wxRect m_rect = GetRect();
 		m_rect.x += parentPosition.x;
 		m_rect.y += parentPosition.y;
+		mutASSERT(m_rect.width > 0);
+		mutASSERT(m_rect.height > 0);
 	
 		wxPoint center(m_rect.x + m_rect.width/2, 
 			       m_rect.y + m_rect.height/2);
@@ -717,6 +718,8 @@ namespace mutaborGUI {
 
 		if (input) {
 			wxRect rect = input->GetRect();
+			mutASSERT(rect.width > 0);
+			mutASSERT(rect.height > 0);
 			// we do not know the position of the perimeter
 			// point exactly thus we consider the whole box
 			// for visibility
@@ -826,6 +829,8 @@ void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc,
 {
 	mutUnused(center); // we are providing our own centre
 	wxPoint mycenter = wxPoint()+GetSize()/2;
+	mutASSERT(mycenter.x > 0);
+	mutASSERT(mycenter.y > 0);
 #if __WXGTK__
 	mycenter.y -= maxBorderSize.y;
 	p.y -= maxBorderSize.y;

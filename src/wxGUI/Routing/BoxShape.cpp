@@ -289,6 +289,8 @@ namespace mutaborGUI {
 		// this has to be done platform by platform as there is no way to
 		// guess the thickness of a wxStaticBox border
 		wxSize s  = box->DoGetBestSize();
+		mutASSERT(s.x > 0);
+		mutASSERT(s.y > 0);
 		DEBUGLOGTYPE(other,*box,_T("Best Size: %dx%d"),s.x,s.y);
 		return s;
 	}
@@ -387,6 +389,8 @@ namespace mutaborGUI {
 #ifdef DEBUG
 			mutASSERT(channel->GetContainingSizer() == channels);
 			wxSize s = channel->GetBestSize();
+			mutASSERT(s.x > 0);
+			mutASSERT(s.y > 0);
 			DEBUGLOG (other, _T("channel best size: %dx%d"),s.x,s.y);
 #endif		
 			InvalidateBestSize();
@@ -461,6 +465,8 @@ namespace mutaborGUI {
 
 	void MutBoxShape::DrawLines(wxDC & dc, const wxRect & screenpos) 
 	{
+		mutASSERT(screenpos.width > 0);
+		mutASSERT(screenpos.height > 0);
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
