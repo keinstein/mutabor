@@ -88,6 +88,7 @@
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include <algorithm>
 #include "src/kernel/routing/Device-inlines.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/Route.h"
 
 

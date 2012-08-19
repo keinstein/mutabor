@@ -373,6 +373,7 @@
 #include "src/wxGUI/MutBitmaps.h"
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 using namespace mutabor;
 using namespace mutaborGUI;

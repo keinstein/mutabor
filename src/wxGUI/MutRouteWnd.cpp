@@ -131,6 +131,7 @@
 #include "src/wxGUI/Routing/NewOutputDeviceShape.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/kernel/routing/RouteCompat.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"

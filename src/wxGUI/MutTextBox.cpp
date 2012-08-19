@@ -71,6 +71,7 @@
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/BoxShape.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/GrafKern.h"
 #include "src/wxGUI/Action.h"
 

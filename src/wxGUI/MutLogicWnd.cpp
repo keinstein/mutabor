@@ -93,6 +93,7 @@
 #include "src/kernel/Global.h"
 #include "src/kernel/Runtime.h"
 #include "src/kernel/MidiKern.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutLogicWnd.h"
 #include "src/wxGUI/MutChild.h"
 #include "src/wxGUI/MutFrame.h"

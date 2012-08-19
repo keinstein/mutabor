@@ -270,6 +270,7 @@
 #include "src/wxGUI/MutDocument.h"
 #include "src/wxGUI/MutView.h"
 #include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutConfDlg.h"
 #include "src/wxGUI/resourceload.h"
 #include "src/wxGUI/Action.h"

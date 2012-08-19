@@ -76,6 +76,7 @@
 
 //#include "Mutabor.rh"
 #include "src/wxGUI/MutChild.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutLogicWnd.h"

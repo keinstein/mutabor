@@ -38,6 +38,7 @@
 #include "MutBitmaps.h"
 #include "MutApp.h"
 #include "wx/msgdlg.h"
+#include "src/kernel/routing/Route-inlines.h"
 namespace mutaborGUI {
 
 

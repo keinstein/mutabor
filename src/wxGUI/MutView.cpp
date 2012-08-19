@@ -72,6 +72,7 @@
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/MutDocument.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 #ifdef __BORLANDC__
     #pragma hdrstop

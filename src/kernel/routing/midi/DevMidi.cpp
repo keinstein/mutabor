@@ -84,6 +84,7 @@
 #include "src/kernel/Execute.h"
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/MidiKern.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "wx/msgdlg.h"
 
 // OutputMidiPort ------------------------------------------------------

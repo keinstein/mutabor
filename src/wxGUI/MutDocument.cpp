@@ -82,6 +82,7 @@
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/MutApp.h"
 #include <wx/debug.h>
+#include "src/kernel/routing/Route-inlines.h"
 
 #include <cstdio>
 #include <iostream>

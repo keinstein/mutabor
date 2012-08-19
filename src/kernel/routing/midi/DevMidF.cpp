@@ -162,6 +162,7 @@
 #include "src/kernel/Execute.h"
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"

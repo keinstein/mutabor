@@ -69,7 +69,7 @@
 #include <math.h>
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/GrafKern.h"
-//#include "Device-includes.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 #ifdef RTMIDI
 #else

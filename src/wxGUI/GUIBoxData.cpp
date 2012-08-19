@@ -70,6 +70,7 @@
 
 #include "GUIBoxData.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutFrame.h"
 
 namespace mutaborGUI {
