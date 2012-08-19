@@ -2,112 +2,20 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutRouteWnd.cpp,v 1.34 2012/02/18 18:14:13 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author   R. Krauﬂe
+ * Copyright:   (c) 2008-2011 TU Dresden
+ * Changes (c) 2012 Tobias Schlemmer
+ * \author   R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/08/12
  * $Date: 2012/02/18 18:14:13 $
  * \version $Revision: 1.34 $
  * \license GPL
  *
- * $Log: MutRouteWnd.cpp,v $
- * Revision 1.34  2012/02/18 18:14:13  keinstein
- * Remove some unused variables
- *
- * Revision 1.33  2011-11-02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.32  2011-10-22 16:32:38  keinstein
- * commit to continue debugging on Linux/wine
- *
- * Revision 1.31  2011-10-05 16:28:39  keinstein
- * correct layout on mac
- *
- * Revision 1.30  2011-10-04 17:16:14  keinstein
- * make program compile on Mac (wx 2.9) and fix some memory corruption
- *
- * Revision 1.29  2011-10-04 05:38:44  keinstein
- * some configuration fixes
- *
- * Revision 1.28  2011-10-03 15:50:21  keinstein
- * Fix focus issues in the route window. This includes:
- *  * Using templates to describe the base class of MutIconShape.
- *  * Rename MutIconShape->MutIconShapeClass.
- *  * typedef MutIconShapeClass<wxControl> MutIconShape
- *  * Expand the control container macros in MutPanel.
- *  * Disable most of the control container behaviour as we don't need it, currently
- *  * Focus NewInputDevice on window creation.
- *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
- *  * Display focused Window with sunken border
- *
- * Revision 1.27  2011-10-02 19:28:55  keinstein
- * changing MutRouteWnd into a container (without effect :-()
- *
- * Revision 1.26  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.25  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.24  2011-09-29 05:26:59  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.23  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.22  2011-09-07 15:58:56  keinstein
- * fix compilation on MinGW
- *
- * Revision 1.21  2011-09-05 11:30:08  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.20  2011-08-28 11:36:04  keinstein
- * Remove handcrafted painting code. It is unused since the sizer based positioning and object oriented shapes are used.
- * Do not set Background color to be light gray use the system default instead.
- *
- * Revision 1.19  2011-08-24 21:19:36  keinstein
- * first run with 2.9.2+
- *
- * Revision 1.18  2011-08-21 16:52:05  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.17  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
  *
  ********************************************************************
  * \addtogroup route
  * \{
  ********************************************************************/
-/////////////////////////////////////////////////////////////////////////////
-// Name:        MutApp.cpp
-// Purpose:     Mutabor Application
-// Author:      R. Krauﬂe
-// Modified by:
-// Created:     12.08.05
-// Copyright:   (c) R. Krauﬂe
-// Licence:     wxWindows license
-/////////////////////////////////////////////////////////////////////////////
 
 // ---------------------------------------------------------------------------
 // headers
