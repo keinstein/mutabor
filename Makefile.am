@@ -449,7 +449,7 @@ dmg: dylibbundler
 	cp -r Mutabor.app dmg/Mutabor
 	cp $(top_srcdir)/osdep/macosx/DS_Store dmg/Mutabor/.DS_Store
 	cp $(top_srcdir)/osdep/macosx/background.png dmg/Mutabor/.background
-	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
+	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
 	ln -s /Applications dmg/Mutabor
 	rm -f "$(PACKAGE_NAME)-$(PACKAGE_VERSION).dmg"
 	hdiutil create -srcfolder dmg/Mutabor -volname "$(PACKAGE_NAME)" "$(PACKAGE_NAME)-$(PACKAGE_VERSION)"
@@ -461,7 +461,7 @@ Mutabor.appold:all Mutabor.xrc mutabor update-gmo
 	$(MKDIR_P) Mutabor.app/Contents/Resources
 	cp mutabor Mutabor.app/Contents/MacOS
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
-	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
 	for datei in $(top_srcdir)/po/*.gmo ; \
 	do \
@@ -490,7 +490,7 @@ Mutabor.app:all Mutabor.xrc mutabor update-gmo
 	done
 	rm -rf Mutabor.app/Contents/locales
 	cp osdep/macosx/Info.plist Mutabor.app/Contents
-	cp $(top_srcdir)/src/wxGUI/Icon/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
+	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns Mutabor.app/Contents/Resources/Mutabor.icns
 	echo -n APPLMUTA >Mutabor.app/Contents/PkgInfo
 
 installwinold: mutabor.exe
