@@ -230,18 +230,6 @@ $(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
 
 
 #-------------------------------------------------------------------------------------
-# Certain fixed files
-#-------------------------------------------------------------------------------------
-
-
-if MAINTAINER_MODE
-$(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
-	$(top_builddir)/config.status
-	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
-	cp $(top_builddir)/osdep/win/Mutabor.nsi $@
-endif
-
-#-------------------------------------------------------------------------------------
 # Installing DLLs
 #-------------------------------------------------------------------------------------
 

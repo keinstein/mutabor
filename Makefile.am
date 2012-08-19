@@ -538,6 +538,22 @@ installwin:
 		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
 	done
 
+
+#-------------------------------------------------------------------------------------
+# Certain fixed files
+#-------------------------------------------------------------------------------------
+
+
+if MAINTAINER_MODE
+$(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
+	$(top_builddir)/config.status
+	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
+	sed -e 's:!define\s+srcdir\s+".*":!define srcdir "../..":'  $(top_builddir)/osdep/win/Mutabor.nsi >$(top_builddir)/osdep/win/Mutabor.nsi.dist
+	cmp $(top_builddir)/osdep/win/Mutabor.nsi.dist $@ || cp $(top_builddir)/osdep/win/Mutabor.nsi.dist $@
+endif
+
+
+
 nsis: installwin
 	rm -f mutabor-files.nsh
 	rm -f mutabor-dirs.nsh
