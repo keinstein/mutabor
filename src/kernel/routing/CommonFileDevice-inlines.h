@@ -170,11 +170,16 @@ namespace mutabor {
 
 	inline void CommonFileInputDevice::Play(wxThreadKind kind)
 	{
+		static bool starting = false;
 
+		if (starting) return;
+		starting = true;
+		
 		switch (Mode) {
 		case DeviceCompileError:
 		case DeviceTimingError:
 			DEBUGLOG(timer,_T("Returnung due to device error."));
+			starting = false; 
 			return;
 		case DeviceStop:
 			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)RealTime);
@@ -184,13 +189,17 @@ namespace mutabor {
 				pauseTime = 0;
 
 				timer = new FileTimer(this,kind);
-				if (!timer) return;
+				if (!timer) {
+					starting = false; 
+					return;
+				}
 				wxThreadError result = timer -> Create(1024*100); // Stack Size
 				if (result == wxTHREAD_NO_ERROR)
 					timer -> Run();
 				else {
 					delete timer;
 					timer = NULL;
+					starting = false; 
 					return;
 				}
 			
@@ -207,9 +216,13 @@ namespace mutabor {
 				}
 			}
 			break;
+		case DevicePlay:
+			starting = false; 
+			return;
 		}
 		DEBUGLOG(timer,_T("timer = %p"),timer);
 		Mode = DevicePlay;
+		starting = false;
 	}
 
 	inline void CommonFileInputDevice::Pause()
