@@ -2,97 +2,13 @@
 ********************************************************************
 * Mutabor Edit window for Mutabor-files
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutEditFile.cpp,v 1.34 2011/11/02 14:31:59 keinstein Exp $
-* Copyright:   (c) 2008 TU Dresden
-* \author R. Krauﬂe
+* Copyright:   (c) 2008-2012 TU Dresden
+* \author R. Krauße
 * Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 2005/08/12
 * $Date: 2011/11/02 14:31:59 $
 * \version $Revision: 1.34 $
 * \license GPL
-*
-* $Log: MutEditFile.cpp,v $
-* Revision 1.34  2011/11/02 14:31:59  keinstein
-* fix some errors crashing Mutabor on Windows
-*
-* Revision 1.33  2011-10-04 17:16:13  keinstein
-* make program compile on Mac (wx 2.9) and fix some memory corruption
-*
-* Revision 1.32  2011-09-30 18:07:04  keinstein
-* * make compile on windows
-* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
-* * add ax_boost_base for boost detection
-*
-* Revision 1.31  2011-09-30 09:10:25  keinstein
-* Further improvements in the routing system.
-*
-* Revision 1.30  2011-09-29 05:26:59  keinstein
-* debug intrusive_ptr
-* fix storage and retrieving of input/output devices in treestorage
-* save maximum border size in icons
-* Apply the calculated offset in IconShape (box and box channels still missing)
-* Fix debug saving and restoring route information/route window on activation
-* Add wxWANTS_CHARS to MutEditWindow
-*
-* Revision 1.29  2011-09-27 20:13:23  keinstein
-* * Reworked route editing backend
-* * rewireing is done by RouteClass/GUIRoute now
-* * other classes forward most requests to this pair
-* * many bugfixes
-* * Version change: We are reaching beta phase now
-*
-* Revision 1.28  2011-09-04 15:35:08  keinstein
-* disable print preview on OS X and when using libgnomeprint as they proviede their own means
-*
-* Revision 1.27  2011-09-04 13:50:36  keinstein
-* Print scaling works on Mac OS X
-*
-* Revision 1.26  2011-09-04 12:02:08  keinstein
-* require wxWidgets 2.8.5 configure.in
-*
-* Revision 1.25  2011-09-01 20:56:54  keinstein
-* allow printing page correctly, still wastes paper
-*
-* Revision 1.24  2011-08-31 20:47:29  keinstein
-* Enabled printing, but page setup must be still reworked
-*
-* Revision 1.23  2011-08-31 20:18:16  keinstein
-* some work on printing the editor file
-*
-* Revision 1.22  2011-08-28 21:24:55  keinstein
-* added file properties dialog
-*
-* Revision 1.21  2011-08-28 20:09:11  keinstein
-* several impovements for opening and saving files
-*
-* Revision 1.20  2011-08-28 13:47:39  keinstein
-* group replace all into one undo action
-*
-* Revision 1.19  2011-08-28 11:38:17  keinstein
-* Fix brace hilighting
-* Implement Goto line
-*
-* Revision 1.18  2011-08-27 17:44:44  keinstein
-* Implemented Search and Search/Replace
-*
-* Revision 1.17  2011-08-21 16:52:05  keinstein
-* Integrate a more sophisticated editor menu based on the stc sample
-*
-* Revision 1.16  2011-08-20 17:50:39  keinstein
-* use  wxSTC for the editor windows
-*
-* Revision 1.15  2011-08-11 19:00:48  keinstein
-* get Document/View running.
-* Needs further testing (possible segfaults).
-*
-* Revision 1.14  2011-02-20 22:35:57  keinstein
-* updated license information; some file headers have to be revised, though
-*
-* Revision 1.2  2010-11-21 13:15:51  keinstein
-* merged experimental_tobias
-*
-* Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
-* added some .cvsignore files
 *
 * \addtogroup src/wxGUI
 * \{

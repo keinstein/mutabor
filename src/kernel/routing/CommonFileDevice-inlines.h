@@ -158,9 +158,7 @@ namespace mutabor {
 			return;
 		
 		if (timer && (timer != wxThread::This())) {
-			timer -> ClearFile();
 			timer -> Delete();
-			timer = NULL;
 		}
 
 		referenceTime = 0;
@@ -240,12 +238,9 @@ namespace mutabor {
 		}
 	}
 
-	inline wxThread::ExitCode
-	CommonFileInputDevice::ThreadPlay(FileTimer * thistimer)
+	inline wxThread::ExitCode CommonFileInputDevice::ThreadPlay()
 	{
-		/// \todo clean-up race conditions
 		mutASSERT(wxThread::This() == timer);
-		
 		mutASSERT(timer != NULL);
 		mutASSERT(Mode != DeviceCompileError );
 
@@ -255,8 +250,21 @@ namespace mutabor {
 		mutint64 delta; // in ms
 		wxThread::ExitCode e;
 		do {
-			if (thistimer->TestDestroy()) {
-				break;
+			mutASSERT(timer);
+			if (timer->TestDestroy()) {
+				switch (Mode) {
+				case DevicePause:
+				case DevicePlay: 
+					Mode = DeviceStop;
+				case DeviceStop:
+					e = 0;
+					break;
+				case DeviceCompileError:
+				default:
+		 			e = (void *)1;
+					mutASSERT(!"Thread should not have been run!");
+				}
+				return e;
 			}
 			nextEvent = PrepareNextEvent();
 			DEBUGLOG(timer,_T("Preparing next event is at %ld (isdelta=%d)"), nextEvent,IsDelta(nextEvent));
@@ -279,8 +287,6 @@ namespace mutabor {
 				}
 			}
 		} while (IsDelta(nextEvent));
-
-		
 		switch (Mode) {
 		case DevicePlay:
 		case DevicePause: 
@@ -293,14 +299,9 @@ namespace mutabor {
 			e = (void *)1;
 			break;
 		}
-
-		timer = NULL;
 		referenceTime = 0;
 		pauseTime = 0;
-
-	        thistimer->ClearFile(); 
-                        // this might delete us (smartptr).
-		return e;
+		return NULL;
 	}
 
 	
