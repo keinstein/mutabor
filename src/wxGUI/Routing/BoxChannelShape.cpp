@@ -688,7 +688,7 @@ namespace mutaborGUI {
 	
 					   bool changeRoute) 
 	{
-		DEBUGLOG(routing,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
+		DEBUGLOG(routinggui,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
 		if (changeRoute) {
 			mutASSERT(route);
 			OutputDevice dev = device ? device -> GetDevice() : NULL;
@@ -742,15 +742,17 @@ namespace mutaborGUI {
 
 		if (output) {
 #ifdef DEBUG
-			DEBUGLOG (other, _T("Drawing output line to device %x"),
+			DEBUGLOG (routinggui, _T("Drawing output line to device %x"),
 				  output->GetDevice().get());
 			mutASSERT(output->GetDevice());
-			DEBUGLOG (other, 
+			DEBUGLOG (routinggui, 
 				  _T("Lines for device:\n%s"), 
 				  output->GetDevice()->TowxString().c_str());
 #endif
 			wxRect rect = output->GetRect();
-			DEBUGLOG (other,
+			mutASSERT (rect.width > 0);
+			mutASSERT (rect.height > 0);
+			DEBUGLOG (routinggui,
 				  _T("Output rect: (%d,%d) -- (%d,%d)"),
 				  rect.x,rect.y,rect.x+rect.width, 
 				  rect.y+rect.height);
@@ -783,10 +785,12 @@ namespace mutaborGUI {
 						      const wxPoint & parentPosition)
 		const {
 		wxRect r = GetRect();
-		DEBUGLOG (other, 
+		mutASSERT(r.width > 0);
+		mutASSERT(r.height > 0);
+		DEBUGLOG (routinggui, 
 			  _T("Rect: (%d,%d) -- (%d,%d)"),
 			  r.x,r.y,r.x+r.width,r.y+r.height);
-		DEBUGLOG (other, 
+		DEBUGLOG (routinggui, 
 			  _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
 //	wxRect ir = GetIconRect();
 
