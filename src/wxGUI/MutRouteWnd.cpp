@@ -238,7 +238,6 @@ void MutRouteWnd::InitShapes()
 	MutInputDeviceShape * newin = new MutNewInputDeviceShape(this,wxID_ANY);
 	GetSizer()->Add(newin, flags);
 	InputDevices.push_back(newin);
-	newin->SetFocus();
 	
 	mutASSERT(Boxes.empty());
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
@@ -258,6 +257,7 @@ void MutRouteWnd::InitShapes()
 	createBoxes(flags);
 	createOutputDevices(flags);
         FitInside();
+	newin->SetFocus();
 
         PRINTSIZER(GetSizer());
 	DebugCheckRoutes();
@@ -679,7 +679,10 @@ void MutRouteWnd::OnDraw(wxDC& dc)
 	GetClientSize(&screenpos.width,&screenpos.height);
         PRINTSIZER(GetSizer());
 //        dc.SetDeviceOrigin(0,0);
-	mutASSERT(BoxSizer);
+	if (!BoxSizer) {
+                UNREACHABLEC;
+                return;
+        }
         wxSizerItemList & list = BoxSizer->GetChildren();
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
