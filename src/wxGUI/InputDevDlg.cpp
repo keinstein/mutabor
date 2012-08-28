@@ -65,6 +65,8 @@ InputDevDlg::InputDevDlg( wxWindow* parent):InputDevDlgBase(parent)
 	DeviceChoice->Append(_("MIDI Device"),new TypeData(DTMidiPort));
 	DeviceChoice->Append(_("MIDI file"),new TypeData(DTMidiFile));
 	DeviceChoice->Append(_("GUIDO file"),new TypeData(DTGis));
+        DeviceChoice->Layout();
+        DeviceChoice->Fit();
 
 	TypeBox = DeviceChoice->GetContainingSizer();
 	PortBox = PortChoice->GetContainingSizer();
@@ -164,6 +166,7 @@ void InputDevDlg::UpdateLayout(DevType type)
 
 //	Layout();
 //	GetSizer()->SetSizeHints(this);
+        Layout();
 	Fit();
 }
 
@@ -180,6 +183,7 @@ void InputDevDlg::OnRemoveClick( wxCommandEvent& event )
 void InputDevDlg::OnFileChanged ( wxFileDirPickerEvent & event ) 
 {
         DEBUGLOG (_T ("Path changed: %s"),event.GetPath().c_str());
+        Layout();
         Fit();
 }
 
