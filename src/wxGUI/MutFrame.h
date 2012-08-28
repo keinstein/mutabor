@@ -455,13 +455,15 @@ namespace mutaborGUI {
 				if (!w) return;
 
 				w->Disable();
+				// undocumented but does what we want
 				auimanager.ClosePane(auimanager.GetPane(w));
 				DEBUGLOG(other, _T("Detaching pane."));
-				auimanager.DetachPane(w);
+                                // should be done by ClosePane: auimanager.DetachPane(w);
 				auimanager.Update();
 
 				DEBUGLOG(other, _T("Closing window."));
-				w->Close(); // win should be invalid now.
+				// should be done by ClosePane:	w->Close(); 
+                                // win should be invalid now.
 			}
 
 		int curStatusImg;
