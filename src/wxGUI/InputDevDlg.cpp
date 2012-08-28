@@ -1,30 +1,13 @@
 /** \file 
  ********************************************************************
- * Description
+ * Input device dialog.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/InputDevDlg.cpp,v 1.9 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2011 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/10/12 14:22:47
  * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.9 $
- * \license GPL
- *
- * $Log: InputDevDlg.cpp,v $
- * Revision 1.9  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.8  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.7  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
+ * \license GPL 
  *
  * \addtogroup route
  * \{
@@ -102,9 +85,7 @@ bool InputDevDlg::ShowToolTips()
 wxBitmap InputDevDlg::GetBitmapResource( const wxString& name )
 {
 	// Bitmap retrieval
-////@begin InputDevDlg bitmap retrieval
 	return wxNullBitmap;
-////@end InputDevDlg bitmap retrieval
 }
 
 /*!
@@ -114,9 +95,7 @@ wxBitmap InputDevDlg::GetBitmapResource( const wxString& name )
 wxIcon InputDevDlg::GetIconResource( const wxString& name )
 {
 	// Icon retrieval
-////@begin InputDevDlg icon retrieval
 	return wxNullIcon;
-////@end InputDevDlg icon retrieval
 }
 
 /*!

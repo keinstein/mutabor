@@ -2,46 +2,13 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.11 2011/09/30 18:07:04 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
+ *   T. Schlemmer <keinstein@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
  * $Date: 2011/09/30 18:07:04 $
- * \version $Revision: 1.11 $
  * \license: GPL
  * Copyright:   (c) R. Krauße, TU Dresden
  *
- * $Log: InputDevDlg.h,v $
- * Revision 1.11  2011/09/30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.10  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.9  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.8  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.7  2009-08-10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.6  2008/08/18 15:06:35  keinstein
- * Changed Input dev dialog to wxResources
- *
- * Revision 1.5  2008/01/25 09:08:58  keinstein
- * charset conversion
- *
- * Revision 1.4  2006/01/18 15:34:57  keinstein
- * Doxygen header
- *
- * ID definition conflict solved
  *
  * \addtogroup route
  * \{
