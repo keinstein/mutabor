@@ -482,9 +482,11 @@ namespace mutaborGUI {
 		sizer -> Replace (this, newshape, false);
 	
   		Hide();
-		m_parent->Layout();
-		m_parent->FitInside();
-		m_parent->SetVirtualSize(wxDefaultSize);
+		wxWindow * parent = m_parent;
+		parent->RemoveChild(this);
+		parent->Layout();
+		parent->FitInside();
+		parent->SetVirtualSize(wxDefaultSize);
 		newshape->SetFocus();
 
 		device -> Destroy();
