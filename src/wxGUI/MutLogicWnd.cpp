@@ -422,13 +422,16 @@ namespace mutaborGUI {
 
 				 const wxPoint& pos,
 				 const wxSize& size)
-	: wxScrolledWindow(parent, -1, pos, size, wxHSCROLL | wxVSCROLL | wxTAB_TRAVERSAL)
+	: wxScrolledWindow(parent, -1, pos, size, wxHSCROLL |
+				 wxVSCROLL | wxTAB_TRAVERSAL),
+                Ok(false),
+                nTags(-1),
+                ColorBar1(NULL),
+                ColorBar2(NULL),
+                boxnumber(box)
 	{
 
 		DEBUGLOG(other,_T("box %d"), box);
-		boxnumber = box;
-		ColorBar1 = 0;
-		ColorBar2 = 0;
 
 		BoxData & boxdata = BoxData::GetBox(box);
 		mutASSERT(!boxdata.GetLogicWindow());
@@ -438,7 +441,6 @@ namespace mutaborGUI {
 //	SetBackgroundColour(*wxWHITE);
 		SetForegroundColour(BoxTextColour(box));
 		SetBackgroundColour(BoxColour(box));
-		Ok = false;
 		CmBox();
 	}
 
