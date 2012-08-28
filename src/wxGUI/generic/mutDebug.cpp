@@ -81,8 +81,9 @@ debugFlags::flagtype::flagtype()
 void debugFlags::InitCommandLine(wxCmdLineParser&  parser) 
 {
 #if wxCHECK_VERSION(2,9,0)
+#define N_(text) text
 #define DEBUGFLAG(flag,description) \
-    { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (const char *)wxString(description) },
+        { wxCMD_LINE_SWITCH, "", ("debug-"#flag), (description) },
 #else
 #define DEBUGFLAG(flag,description) \
     { wxCMD_LINE_SWITCH, wxEmptyString, _T("debug-"#flag), description },
