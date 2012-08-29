@@ -1,9 +1,1201 @@
+2012-08-29  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Makefile.am, osdep/win/Mutabor.nsi, osdep/win/Mutabor.nsi.in: 
+	Build installer without spaces in file name (confuses Berlios).
+
+	* po/de.po, po/en.po, po/en_GB.po, po/mutabor.pot, po/ru.po: Updated
+	po files.  Updated German translation and enhanced Russian one.
+
+	* Makefile.am, common-rules.mk, configure.in, doc/Makefile.am,
+	src/Makefile.am, src/includes/Makefile.am,
+	src/includes/mutabor/Makefile.am, src/includes/netinet/Makefile.am,
+	src/kernel/routing/gmn/tests/Makefile.am,
+	src/kernel/routing/gmn/tests/playgmn1.cpp,
+	src/kernel/routing/midi/tests/DevMidFTest.h,
+	src/kernel/routing/midi/tests/Makefile.am,
+	src/kernel/routing/midi/tests/playmidi1.cpp,
+	src/kernel/routing/tests/CommonFileDeviceTest.h,
+	src/kernel/routing/tests/Makefile.am, src/libmutabor/Makefile.am,
+	src/wxGUI/Makefile.am, src/wxGUI/Routing/Makefile.am,
+	src/wxGUI/generic/Makefile.am: make distcheck happy on binfmt/wine
+	and linux
+
+	* src/kernel/routing/CommonFileDevice-inlines.h: Fix return code in
+	normal playback.
+
+2012-08-28  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* configure.in: Check for git.
+
+	* src/wxGUI/InputDevDlg.cpp, src/wxGUI/InputDevDlg.h: Change some
+	comments.
+
+	* src/wxGUI/MutFrame.h: Fix problem on closing pane, where a deleted
+	window is going to be closed (bad access).
+
+	* src/wxGUI/MutLogicWnd.cpp: Fix some access to uninitalized
+	attribute.
+
+	* src/wxGUI/MutRouteWnd.cpp: SetFocus initalizes the window. So we
+	must not call it too early.
+
+	* src/wxGUI/Routing/InputDeviceShape.cpp,
+	src/wxGUI/Routing/OutputDeviceShape.cpp: Fix crash on changing
+	device type for input and output from the GUI.
+
+	* src/wxGUI/generic/mutDebug.cpp, src/wxGUI/generic/mutDebugFlags.h: 
+	Fix bad access due to bad handling of wxWidgets changes in 2.9
+	branch (see #14612 on http://trac.wxwidgets.org).
+
+	* src/wxGUI/InputDevDlg.cpp: Update layout in certain situations
+
+	* configure.in: Add -ggdb on Mac OS X
+
+2012-08-19  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/wxGUI/MutRouteWnd.cpp: Remove outdated comments (Log etc.)
+
+	* src/kernel/routing/CommonFileDevice-inlines.h: Prevent Play from
+	beeing entered twice.
+
+	* src/kernel/routing/CommonFileDevice-inlines.h: Add some missing
+	lines to theading patch
+
+	* src/kernel/routing/CommonFileDevice-inlines.h,
+	src/wxGUI/MutApp.cpp, src/wxGUI/MutEditFile.cpp,
+	src/wxGUI/MutFrame.cpp: Clean up outdated logs.
+
+	* src/wxGUI/MutApp.cpp, src/wxGUI/MutRouteWnd.cpp,
+	src/wxGUI/Routing/BoxChannelShape.cpp,
+	src/wxGUI/Routing/BoxShape.cpp: Fix some errors with bad Box
+	display.
+
+	* src/wxGUI/Routing/BoxChannelShape.cpp,
+	src/wxGUI/generic/mutDebugFlags.h: add routinggui flag for debug
+	output
+
+	* src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/gmn/GIS_Head.cpp: fix some compiler warnings
+
+	* src/kernel/routing/CommonFileDevice-inlines.h,
+	src/kernel/routing/CommonFileDevice.h: Some cleanup for
+	Multithreading: • File Object is held using intrusiveptr to
+	prevent its deletion (removes one kind of race conditions) • The
+	timer pointer is deleted as early as possible at end of Playback to
+	reduce the propability of the other kind of race condition.  • The
+	file pointer is deleted as soon as it is not needed anymore.
+
+	* Makefile.am: Fix icon installation for Mac
+
+	* src/wxGUI/Routing/BoxDlg.cpp, src/wxGUI/Routing/BoxDlg.h: Clean up
+	comments: Replace outdated logs with license disclaimer.
+
+	* src/kernel/routing/CommonFileDevice.cpp,
+	src/kernel/routing/Device.cpp, src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/midi/DevMidF.cpp,
+	src/kernel/routing/midi/DevMidi.cpp, src/wxGUI/GUIBoxData.cpp,
+	src/wxGUI/MutApp.cpp, src/wxGUI/MutBitmaps.cpp,
+	src/wxGUI/MutChild.cpp, src/wxGUI/MutDocManager.cpp,
+	src/wxGUI/MutDocument.cpp, src/wxGUI/MutEditFile.cpp,
+	src/wxGUI/MutFrame.cpp, src/wxGUI/MutLogicWnd.cpp,
+	src/wxGUI/MutRouteWnd.cpp, src/wxGUI/MutTextBox.cpp,
+	src/wxGUI/MutView.cpp: Cleanup: Add Route-inlines.h where gcc thinks
+	it is necessary.
+
+	* Makefile.am, common-rules.mk: Generate Mutabor.nsi only from main
+	Makefile
+
+2012-08-18  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/wxGUI/Routing/DeviceShape.cpp: Clean up some comments.
+
+	* src/wxGUI/Routing/NewBoxShape.cpp: Initialize new box number to be
+	the first free number.
+
+	* src/kernel/routing/gmn/tests/playgmn1.cpp,
+	src/wxGUI/Routing/BoxChannelShape.cpp,
+	src/wxGUI/Routing/BoxDlg.cpp, src/wxGUI/Routing/BoxShape.cpp,
+	src/wxGUI/Routing/DebugRoute.cpp, src/wxGUI/Routing/GUIRoute.cpp,
+	src/wxGUI/Routing/InputDevDlg.cpp,
+	src/wxGUI/Routing/InputDeviceShape.cpp,
+	src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/NewBoxShape.cpp,
+	src/wxGUI/Routing/NewInputDeviceShape.cpp,
+	src/wxGUI/Routing/NewOutputDeviceShape.cpp,
+	src/wxGUI/Routing/OutputDevDlg.cpp,
+	src/wxGUI/Routing/OutputDeviceShape.cpp,
+	src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/RouteIcons.cpp: Some additional files that need
+	Route-inlines.h to be included
+
+	* src/kernel/routing/midi/DevMidi.cpp: preallocate byte sequence for
+	MIDI out.
+
+	* src/kernel/routing/midi/DevMidF.cpp: Preinitialize
+	ton_auf_kanal[i].key and implement some debug runtime checks.
+
+	* src/kernel/routing/midi/DevMidF.cpp: Use bit operations in order
+	to separate bytes.
+
+	* src/kernel/routing/Route.cpp, src/kernel/routing/Route.h: 
+	Implement RouteClass::GetNextFreeBox
+
+	* src/kernel/Execute.cpp, src/kernel/GrafKern.cpp,
+	src/kernel/Runtime.cpp, src/kernel/routing/Route.h,
+	src/kernel/routing/tests/timer1.cpp: Mark inlines provided in
+	Route-inlines as inline.
+
+	* Makefile.am, configure.in, m4/cppunit.m4,
+	src/kernel/routing/midi/tests/DevMidFTest.h,
+	src/kernel/routing/midi/tests/Makefile.am,
+	src/kernel/routing/midi/tests/main.cpp,
+	src/kernel/routing/tests/CommonFileDeviceTest.h,
+	src/kernel/routing/tests/Makefile.am,
+	src/kernel/routing/tests/RouteTest.h,
+	src/kernel/routing/tests/main.cpp: Start using cppunit
+
+	* configure.in, src/kernel/routing/Route-inlines.h,
+	src/kernel/routing/Route.cpp, src/kernel/routing/Route.h: Some meta
+	information formatting stuff.
+
+2012-08-17  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/routing/midi/DevMidi.cpp: Some source code formatting.
+
+2012-08-15  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/routing/midi/DevMidi.cpp: Initialize
+	ton_auf_kanal[*].key to avoid invalid access in Close()
+
+	* src/kernel/routing/CommonFileDevice.h: Clear pointer to timer when
+	timer is deleted.
+
+2012-08-13  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* configure.in, osdep/win/Mutabor.nsi: Bump version number.
+
+	* src/wxGUI/MutEditFile.cpp: Improve writing of temporary file: •
+	Close file before deletion (fixes #18687) • Close and remove file
+	on error if necessary
+
+	* src/kernel/routing/midi/DevMidF.cpp: Fix Compiling on win32.
+
+2012-08-11  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/gmn/GIS_Head.cpp,
+	src/kernel/routing/gmn/GIS_Head.h,
+	src/kernel/routing/midi/DevMidF.h: Hopefully last patch that fixes
+	Bug #18688 Remove an outdated header line.  Fix timing issues with GMN files.
+
+	* src/kernel/routing/gmn/GIS_Head.cpp: remove an unused function
+
+	* src/kernel/routing/gmn/GIS_Head.h: Another debug fix for gmnfile.
+
+	* src/kernel/routing/gmn/tests/gmn1_source.gmn: Some formatting.
+
+	* src/kernel/routing/gmn/GIS.cpp,
+	src/kernel/routing/gmn/GIS_Head.cpp,
+	src/kernel/routing/gmn/GIS_Head.h: Use gmnfile debug flag instead of
+	other for some GUIDO related stuff.
+
+	* src/kernel/GrafKern.cpp, src/kernel/GrafKern.h,
+	src/wxGUI/MutApp.cpp: Quick hack to make compile_error usable
+	without GUI.
+
+	* src/kernel/Frac.h: Use 64 bit values in fractions.
+
+2012-08-09  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/gmn/tests/gmnopenfail1.cpp,
+	src/kernel/routing/gmn/tests/playgmn1.cpp,
+	src/wxGUI/generic/mutDebugFlags.h: Add Debugflag gmnfile for GUIDO
+	files.
+
+	* src/kernel/routing/gmn/tests/Makefile.am,
+	src/kernel/routing/gmn/tests/gmn1_source.gmn,
+	src/kernel/routing/gmn/tests/gmnopenfail1.cpp,
+	src/kernel/routing/gmn/tests/playgmn1.cpp,
+	src/kernel/routing/gmn/tests/playgmn1.gmn: Add GUIDO tests: play an
+	arbitrary file try to play nonexistent file
+
+	* src/kernel/routing/gmn/tests/playgmn1.gmn: Add a demo GUIDO file
+	for testing.
+
+	* src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/gmn/DevGIS.h, src/kernel/routing/gmn/GIS_Head.h: 
+	Fix compilation.
+
+	* src/kernel/routing/gmn/DevGIS.cpp,
+	src/kernel/routing/gmn/DevGIS.h: Preprare some GIS stuff
+
+	* .gitignore: add orig files and backups of Emacs to .gitignore
+
+	* src/kernel/routing/midi/tests/playmidi1.cpp,
+	src/kernel/routing/tests/timer1.cpp: Fix compiling of tests in
+	non-debug-mode
+
+	* src/kernel/routing/midi/tests/midiopenfail1.cpp: Add test for
+	missing midi files.
+
+	* src/kernel/Defs.h: Define mutint64 regardless of architecture.
+
+	* Makefile.am: Silence some ignored errors during make.
+
+2012-08-08  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/Runtime.cpp: Disable Non-Realtime Play until the
+	function is updated.
+
+	* src/kernel/routing/midi/DevMidF.cpp,
+	src/kernel/routing/midi/DevMidF.h,
+	src/kernel/routing/midi/tests/Makefile.am,
+	src/kernel/routing/midi/tests/playmidi1.cpp: Update Midi File Class
+	to use the new timers.
+
+	* src/kernel/routing/Device.cpp, src/kernel/routing/Device.h,
+	src/kernel/routing/Route-inlines.h, src/kernel/routing/Route.cpp,
+	src/kernel/routing/Route.h, src/kernel/routing/gmn/DevGIS.h,
+	src/kernel/routing/midi/DevMidF.h,
+	src/kernel/routing/midi/DevMidi.cpp,
+	src/kernel/routing/midi/DevMidi.h: Fix non-GUI Device factories
+
+	* src/kernel/routing/CommonFileDevice-inlines.h,
+	src/kernel/routing/CommonFileDevice.h, src/kernel/routing/Device.h,
+	src/kernel/routing/tests/timer1.cpp,
+	src/wxGUI/generic/mutDebugFlags.h: Change timer and thread
+	management to be accessible bei InputMidiFile.  Calculate most
+	timing issues using 64bit (wxLongLong might be 128bit).
+
+	* Makefile.am, common-linklibs.mk,
+	src/kernel/routing/tests/Makefile.am: Move RtMidi binaries into own
+	librariy.
+
+	* src/wxGUI/Routing/DebugRoute.cpp: Prepare DebugCheckRoutes for
+	non-GUI builds.
+
+	* src/wxGUI/generic/mutDebug.h: Simplify Debugging macro and make
+	Emacs happy with the output format.
+
+	* src/kernel/routing/CommonFileDevice-inlines.h,
+	src/wxGUI/generic/mutDebug.cpp: Remove Debugging noise
+
+	* src/kernel/Defs.h: Define 64bit Integers
+
+	* src/kernel/routing/midi/tests/midi1_source.mg,
+	src/kernel/routing/midi/tests/playmidi1.cpp: Add a silent MIDI
+	player.
+
+2012-07-30  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/routing/tests/Makefile.am: Fix copying of DLLs in
+	windows checks.
+
+	* Makefile.am, src/kernel/routing/CommonFileDevice-inlines.h,
+	src/kernel/routing/CommonFileDevice.cpp,
+	src/kernel/routing/CommonFileDevice.h,
+	src/kernel/routing/Device.cpp, src/kernel/routing/Device.h,
+	src/kernel/routing/midi/DevMidF.h,
+	src/kernel/routing/midi/DevMidi.h,
+	src/kernel/routing/tests/timer1.cpp: Update CommonFileInputDevice
+	towards a working version using threads.
+
+	* po/POTFILES.in: Update POTFILES.in
+
+	* src/kernel/routing/tests/Makefile.am: Add a missing line of the
+	library patch.
+
+	* Makefile.am, configure.in, po/POTFILES.in, src/kernel/mut.cc,
+	src/kernel/mut.h, src/kernel/mut.yy, src/libmutabor/Makefile.am,
+	src/libmutabor/mutlex.l: Change the calling of bison and flex.
+
+	* src/kernel/routing/midi/Makefile.am,
+	src/kernel/routing/tests/Makefile.am: Add changes unintededly
+	omitted in the last chänges.
+
+	* Makefile.am: Collect compiled sources into certain libraries
+	(eases creation of tests; might be broken by following changes)
+
+	* m4/ax_boost_base.m4: Make boost path absolute.
+
+	* Makefile.am, common-linklibs.mk, common-rules.mk,
+	doc/Makefile.am, lib/Makefile.am, lib/missfunc/Makefile.am,
+	po/Makevars, src/Makefile.am, src/gmut/Makefile.am,
+	src/gmut/tests/Makefile.am, src/includes/Makefile.am,
+	src/includes/mutabor/Makefile.am,
+	src/includes/mutabor/tests/Makefile.am,
+	src/includes/tests/Makefile.am, src/kernel/Makefile.am,
+	src/kernel/routing/Makefile.am, src/kernel/routing/gmn/Makefile.am,
+	src/kernel/routing/gmn/tests/Makefile.am,
+	src/kernel/routing/midi/tests/Makefile.am,
+	src/kernel/tests/Makefile.am, src/libmutabor/Makefile.am,
+	src/tests/Makefile.am, src/wxintl/Makefile.am,
+	src/wxintl/tests/Makefile.am: move some definitions to common
+	makefile include files
+
+2012-07-28  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/kernel/mut.cc, src/kernel/mut.cpp, src/kernel/mut.y,
+	src/kernel/mut.yy: Rename mut.y to mut.yy to make Automake happy.
+
+	* Makefile.am, common-rules.mk, configure.in,
+	src/kernel/routing/tests/Makefile.am: Get first dummy test running
+	on cross compiled Windows (using Linux and Wine).
+
+	* Examples/english/cdur.mut, Examples/english/cohen.mut,
+	Examples/english/demo.mut, Examples/english/demos.mut,
+	Examples/english/extern.mut, Examples/english/instr.mut,
+	Examples/english/midi.mut, Examples/english/nix.mut,
+	Examples/german/Cdur.mut, Examples/german/Cohen.mut,
+	Examples/german/Demo-utf8.mut, Examples/german/Demo.mut,
+	Examples/german/Demos.mut, Examples/german/Extern.mut,
+	Examples/german/Instr.mut, Examples/german/Midi.mut,
+	Examples/german/Nix.mut,
+	Images/doc/guide/guide_-Dateien/filelist.xml,
+	doc/localized/de/abhaeng.pic, doc/localized/de/anker1.pic,
+	doc/localized/de/anker2.pic, doc/localized/de/ft.pic,
+	doc/localized/de/netz.pic, doc/localized/de/pt.pic,
+	doc/localized/de/syn1.pic, doc/localized/de/syn10.pic,
+	doc/localized/de/syn11.pic, doc/localized/de/syn12.pic,
+	doc/localized/de/syn13.pic, doc/localized/de/syn14.pic,
+	doc/localized/de/syn15.pic, doc/localized/de/syn16.pic,
+	doc/localized/de/syn17.pic, doc/localized/de/syn18.pic,
+	doc/localized/de/syn19.pic, doc/localized/de/syn2.pic,
+	doc/localized/de/syn20.pic, doc/localized/de/syn21.pic,
+	doc/localized/de/syn22.pic, doc/localized/de/syn23.pic,
+	doc/localized/de/syn24.pic, doc/localized/de/syn25.pic,
+	doc/localized/de/syn26.pic, doc/localized/de/syn27.pic,
+	doc/localized/de/syn28.pic, doc/localized/de/syn3.pic,
+	doc/localized/de/syn4.pic, doc/localized/de/syn5.pic,
+	doc/localized/de/syn6.pic, doc/localized/de/syn7.pic,
+	doc/localized/de/syn8.pic, doc/localized/de/syn9.pic,
+	doc/localized/en/syn10.pic, doc/localized/en/syn11.pic,
+	doc/localized/en/syn12.pic, doc/localized/en/syn13.pic,
+	doc/localized/en/syn14.pic, doc/localized/en/syn15.pic,
+	doc/localized/en/syn16.pic, doc/localized/en/syn17.pic,
+	doc/localized/en/syn18.pic, doc/localized/en/syn19.pic,
+	doc/localized/en/syn20.pic, doc/localized/en/syn21.pic,
+	doc/localized/en/syn22.pic, doc/localized/en/syn23.pic,
+	doc/localized/en/syn24.pic, doc/localized/en/syn25.pic,
+	doc/localized/en/syn26.pic, doc/localized/en/syn27.pic,
+	doc/localized/en/syn28.pic, doc/localized/en/syn5.pic,
+	lib/rtmidi/doc/doxygen/footer.html,
+	lib/rtmidi/doc/doxygen/header.html,
+	lib/rtmidi/doc/doxygen/tutorial.txt, lib/rtmidi/doc/release.txt,
+	lib/rtmidi/msw/rtmidilib.vcproj, old-stuff/Handbook.rtf,
+	old-stuff/Mutabor.rtf, old-stuff/bison/allocate.c,
+	old-stuff/bison/bison.1, old-stuff/bison/bison.cld,
+	old-stuff/bison/bison.hai, old-stuff/bison/bison.inf,
+	old-stuff/bison/bison.log, old-stuff/bison/bison.sim,
+	old-stuff/bison/bison.tex, old-stuff/bison/build.com,
+	old-stuff/bison/changelo, old-stuff/bison/closure.c,
+	old-stuff/bison/conflict.c, old-stuff/bison/copying,
+	old-stuff/bison/derives.c, old-stuff/bison/dviscr.dlg,
+	old-stuff/bison/files.c, old-stuff/bison/files.h,
+	old-stuff/bison/getargs.c, old-stuff/bison/getopt.c,
+	old-stuff/bison/gram.c, old-stuff/bison/gram.h,
+	old-stuff/bison/lalr.c, old-stuff/bison/lex.c,
+	old-stuff/bison/lex.h, old-stuff/bison/lr0.c,
+	old-stuff/bison/machine.h, old-stuff/bison/main.c,
+	old-stuff/bison/makefile, old-stuff/bison/new.h,
+	old-stuff/bison/nullable.c, old-stuff/bison/output.c,
+	old-stuff/bison/print.c, old-stuff/bison/reader.c,
+	old-stuff/bison/readme, old-stuff/bison/reduce.c,
+	old-stuff/bison/referenc, old-stuff/bison/state.h,
+	old-stuff/bison/symtab.c, old-stuff/bison/symtab.h,
+	old-stuff/bison/system.h, old-stuff/bison/texinfo.log,
+	old-stuff/bison/texinfo.tex, old-stuff/bison/types.h,
+	old-stuff/bison/version.c, old-stuff/bison/vmsgetar.c,
+	old-stuff/bison/vmshlp.mar, old-stuff/bison/warshall.c,
+	old-stuff/devmidi2.cpp, old-stuff/dllexp.h, old-stuff/handbook.cnt,
+	old-stuff/handbook.hpj, old-stuff/midiauto.cpp,
+	old-stuff/midiauto.h, old-stuff/midiwin.cpp, old-stuff/midiwin.h,
+	old-stuff/muhlp.rtf, old-stuff/mutabor.cfg, old-stuff/mutabor.cnt,
+	old-stuff/mutabor.hpj, old-stuff/playwin.cpp, old-stuff/playwin.h,
+	old-stuff/setup.h, po/en.po, po/en_GB.po, src/gmut/ext.cpp,
+	src/gmut/ext.h, src/gmut/gmn2midi.cpp, src/gmut/gmut.cpp,
+	src/gmut/gmutdos.cpp, src/gmut/infile.cpp, src/gmut/infile.h,
+	src/gmut/mis.cpp, src/gmut/mis.h, src/gmut/mutgis.cpp,
+	src/gmut/mutgis.h, src/kernel/routing/Device.h,
+	src/kernel/routing/gmn/DevGIS.h,
+	src/kernel/routing/midi/DevMidF.cpp,
+	src/kernel/routing/midi/DevMidF.h, src/libmutabor/tests/Demo.mut,
+	src/wxGUI/Routing/BoxChannelShape.h,
+	src/wxGUI/Routing/OutputDeviceShape.h: Normalise file endings.
+
+	* .gitattributes: Add .gitattributes
+
+	* Images/Icons/xpm/copy.xpm, Images/Icons/xpm/cut.xpm,
+	Images/Icons/xpm/help.xpm, Images/Icons/xpm/new.xpm,
+	Images/Icons/xpm/open.xpm, Images/Icons/xpm/paste.xpm,
+	Images/Icons/xpm/preview.xpm, Images/Icons/xpm/print.xpm,
+	Images/Icons/xpm/save.xpm, src/wxGUI/bitmaps/copy.xpm,
+	src/wxGUI/bitmaps/cut.xpm, src/wxGUI/bitmaps/help.xpm,
+	src/wxGUI/bitmaps/new.xpm, src/wxGUI/bitmaps/open.xpm,
+	src/wxGUI/bitmaps/paste.xpm, src/wxGUI/bitmaps/preview.xpm,
+	src/wxGUI/bitmaps/print.xpm, src/wxGUI/bitmaps/save.xpm: Move some
+	images from source tree to Images tree.
+
+	* templates/template.cpp: Update template.
+
+	* configure.in, src/Makefile.am, src/gmut/Makefile.am,
+	src/gmut/tests/Makefile.am, src/includes/Makefile.am,
+	src/includes/mutabor/Makefile.am,
+	src/includes/mutabor/tests/Makefile.am,
+	src/includes/netinet/Makefile.am, src/includes/tests/Makefile.am,
+	src/kernel/Makefile.am, src/kernel/routing/Makefile.am,
+	src/kernel/routing/gmn/Makefile.am,
+	src/kernel/routing/gmn/tests/Makefile.am,
+	src/kernel/routing/midi/Makefile.am,
+	src/kernel/routing/midi/tests/Makefile.am,
+	src/kernel/tests/Makefile.am, src/libmutabor/Makefile.am,
+	src/libmutabor/lextables/Makefile.am,
+	src/libmutabor/lextables/tests/Makefile.am,
+	src/libmutabor/tests/Makefile.am, src/tests/Makefile.am,
+	src/wxGUI/Makefile.am, src/wxGUI/Routing/Makefile.am,
+	src/wxGUI/Routing/tests/Makefile.am, src/wxGUI/generic/Makefile.am,
+	src/wxGUI/generic/tests/Makefile.am, src/wxGUI/tests/Makefile.am,
+	src/wxintl/Makefile.am, src/wxintl/tests/Makefile.am,
+	src/xrc/Makefile.am, src/xrc/tests/Makefile.am: Prepare Makefile
+	tree for unit tests.
+
+	* Makefile.am, src/kernel/routing/CommonFileDevice-inlines.h,
+	src/kernel/routing/CommonFileDevice.cpp,
+	src/kernel/routing/CommonFileDevice.h,
+	src/kernel/routing/tests/Makefile.am,
+	src/kernel/routing/tests/timer1.cpp: Provide abstract file devices.
+	This currently implements timing.
+
+2012-07-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* : Merge remote-tracking branch 'Berlios/master' to get a running
+	state.
+
+2012-06-09  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* src/wxGUI/IconShape.cpp: macro for ending event table
+
+	* src/wxGUI/Routing/BoxShape.cpp: Fix border on focusing box shapes.
+
+2012-07-26  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* Doxyfile.in, Examples/english/cdur.mut,
+	Examples/english/demos.mut, Examples/english/instr.mut,
+	Examples/english/midi.mut, Images/Icons/xpm/ActTextBox.xpm,
+	Images/Icons/xpm/AddPause.xpm, Images/Icons/xpm/AddPlay.xpm,
+	Images/Icons/xpm/AddStop.xpm, Images/Icons/xpm/AddStopDis.xpm,
+	Images/Icons/xpm/DevGMN.xpm, Images/Icons/xpm/DevMidiFile.xpm,
+	Images/Icons/xpm/DevMidiPort.xpm, Images/Icons/xpm/DevUnknown.xpm,
+	Images/Icons/xpm/Document.xpm, Images/Icons/xpm/ErrorPlop.xpm,
+	Images/Icons/xpm/KeyTextBox.xpm, Images/Icons/xpm/Logic.xpm,
+	Images/Icons/xpm/LogicOpen.xpm, Images/Icons/xpm/Mutabor.xpm,
+	Images/Icons/xpm/NewPlop.xpm, Images/Icons/xpm/PausePlop.xpm,
+	Images/Icons/xpm/PlayPlop.xpm, Images/Icons/xpm/Route.xpm,
+	Images/Icons/xpm/TSTextBox.xpm, Images/Icons/xpm/Tonesyst.xpm,
+	Images/Icons/xpm/TonesystOpen.xpm, Makefile.am,
+	Mutabor.xcodeproj/project.pbxproj, cl.bat, configure.in,
+	debian/copyright, lib/Makefile.am, make_x11/Makefile,
+	po/POTFILES.in, po/de.po, po/en.po, po/en_GB.po, po/mutabor.pot,
+	po/ru.po, src/Makefile.am, src/gmut/Makefile.am, src/kernel/Defs.h,
+	src/kernel/EDevice.cpp, src/kernel/EDevice.h,
+	src/kernel/Execute.cpp, src/kernel/Execute.h, src/kernel/Frac.cpp,
+	src/kernel/Frac.h, src/kernel/Global.h, src/kernel/GrafKern.cpp,
+	src/kernel/GrafKern.h, src/kernel/Hilfs.cpp, src/kernel/Hilfs.h,
+	src/kernel/Interpre.h, src/kernel/Interval.cpp,
+	src/kernel/Interval.h, src/kernel/Makefile.am,
+	src/kernel/MidiKern.h, src/kernel/Parser.cpp,
+	src/kernel/Runtime.cpp, src/kernel/Runtime.h,
+	src/kernel/TabGen.cpp, src/kernel/box.cpp, src/kernel/box.h,
+	src/kernel/mut.cpp, src/kernel/mut.h, src/kernel/mut.y,
+	src/kernel/routing/Device-inlines.h, src/kernel/routing/Device.cpp,
+	src/kernel/routing/Device.h, src/kernel/routing/Makefile.am,
+	src/kernel/routing/Route-inlines.h, src/kernel/routing/Route.cpp,
+	src/kernel/routing/Route.h, src/kernel/routing/RouteCompat.cpp,
+	src/kernel/routing/RouteCompat.h,
+	src/kernel/routing/gmn/DevGIS.cpp, src/kernel/routing/gmn/DevGIS.h,
+	src/kernel/routing/gmn/GIS.cpp, src/kernel/routing/gmn/GIS.h,
+	src/kernel/routing/gmn/GIS_Head.cpp,
+	src/kernel/routing/gmn/GIS_Head.h, src/kernel/routing/gmn/GSP.cpp,
+	src/kernel/routing/gmn/GSP.h, src/kernel/routing/gmn/GSP_Err.cpp,
+	src/kernel/routing/gmn/GSP_File.cpp,
+	src/kernel/routing/gmn/GSP_File.h,
+	src/kernel/routing/gmn/Makefile.am,
+	src/kernel/routing/midi/DevMidF.cpp,
+	src/kernel/routing/midi/DevMidF.h,
+	src/kernel/routing/midi/DevMidi.cpp,
+	src/kernel/routing/midi/DevMidi.h,
+	src/kernel/routing/midi/Makefile.am, src/wxGUI/Action.cpp,
+	src/wxGUI/Action.h, src/wxGUI/CompDlg.cpp, src/wxGUI/CompDlg.h,
+	src/wxGUI/GUIBoxData-inlines.h, src/wxGUI/GUIBoxData.cpp,
+	src/wxGUI/GUIBoxData.h, src/wxGUI/Icon/ActTextBox.xpm,
+	src/wxGUI/Icon/AddPause.xpm, src/wxGUI/Icon/AddPlay.xpm,
+	src/wxGUI/Icon/AddStop.xpm, src/wxGUI/Icon/AddStopDis.xpm,
+	src/wxGUI/Icon/DevGMN.xpm, src/wxGUI/Icon/DevMidiFile.xpm,
+	src/wxGUI/Icon/DevMidiPort.xpm, src/wxGUI/Icon/DevUnknown.xpm,
+	src/wxGUI/Icon/Document.xpm, src/wxGUI/Icon/ErrorPlop.xpm,
+	src/wxGUI/Icon/KeyTextBox.xpm, src/wxGUI/Icon/Logic.xpm,
+	src/wxGUI/Icon/LogicOpen.xpm, src/wxGUI/Icon/Mutabor.xpm,
+	src/wxGUI/Icon/NewPlop.xpm, src/wxGUI/Icon/PausePlop.xpm,
+	src/wxGUI/Icon/PlayPlop.xpm, src/wxGUI/Icon/Route.xpm,
+	src/wxGUI/Icon/TSTextBox.xpm, src/wxGUI/Icon/Tonesyst.xpm,
+	src/wxGUI/Icon/TonesystOpen.xpm, src/wxGUI/IconShape.cpp,
+	src/wxGUI/IconShape.h, src/wxGUI/InputDevDlg.cpp,
+	src/wxGUI/MutApp.cpp, src/wxGUI/MutApp.h, src/wxGUI/MutBitmaps.cpp,
+	src/wxGUI/MutBitmaps.h, src/wxGUI/MutChild.cpp,
+	src/wxGUI/MutChild.h, src/wxGUI/MutConfDlg.h,
+	src/wxGUI/MutDocManager.cpp, src/wxGUI/MutDocManager.h,
+	src/wxGUI/MutDocument.cpp, src/wxGUI/MutDocument.h,
+	src/wxGUI/MutEditFile.cpp, src/wxGUI/MutEditFile.h,
+	src/wxGUI/MutFrame.cpp, src/wxGUI/MutFrame.h,
+	src/wxGUI/MutIcon.cpp, src/wxGUI/MutIcon.h,
+	src/wxGUI/MutLogicWnd.cpp, src/wxGUI/MutLogicWnd.h,
+	src/wxGUI/MutRouteWnd.cpp, src/wxGUI/MutRouteWnd.h,
+	src/wxGUI/MutTextBox.cpp, src/wxGUI/MutTextBox.h,
+	src/wxGUI/MutView.cpp, src/wxGUI/MutView.h, src/wxGUI/Mutabor.rc,
+	src/wxGUI/Panel.cpp, src/wxGUI/Panel.h,
+	src/wxGUI/Routing/BoxChannelShape.cpp,
+	src/wxGUI/Routing/BoxChannelShape.h, src/wxGUI/Routing/BoxDlg.cpp,
+	src/wxGUI/Routing/BoxDlg.h, src/wxGUI/Routing/BoxIconShape.cpp,
+	src/wxGUI/Routing/BoxIconShape.h, src/wxGUI/Routing/BoxShape.cpp,
+	src/wxGUI/Routing/BoxShape.h, src/wxGUI/Routing/DebugRoute.cpp,
+	src/wxGUI/Routing/DebugRoute.h, src/wxGUI/Routing/DeviceShape.cpp,
+	src/wxGUI/Routing/DeviceShape.h,
+	src/wxGUI/Routing/GUIRoute-inlines.h,
+	src/wxGUI/Routing/GUIRoute.cpp, src/wxGUI/Routing/GUIRoute.h,
+	src/wxGUI/Routing/GUIRoute.h.orig,
+	src/wxGUI/Routing/InputDevDlg.cpp, src/wxGUI/Routing/InputDevDlg.h,
+	src/wxGUI/Routing/InputDeviceShape.cpp,
+	src/wxGUI/Routing/InputDeviceShape.h,
+	src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/InputGuidoFileDeviceShape.h,
+	src/wxGUI/Routing/InputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiDeviceShape.h,
+	src/wxGUI/Routing/InputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiFileDeviceShape.h,
+	src/wxGUI/Routing/NewBoxShape.cpp, src/wxGUI/Routing/NewBoxShape.h,
+	src/wxGUI/Routing/NewInputDeviceShape.cpp,
+	src/wxGUI/Routing/NewInputDeviceShape.h,
+	src/wxGUI/Routing/NewOutputDeviceShape.cpp,
+	src/wxGUI/Routing/NewOutputDeviceShape.h,
+	src/wxGUI/Routing/OutputDevDlg.cpp,
+	src/wxGUI/Routing/OutputDevDlg.h,
+	src/wxGUI/Routing/OutputDeviceShape.cpp,
+	src/wxGUI/Routing/OutputDeviceShape.h,
+	src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/OutputGuidoFileDeviceShape.h,
+	src/wxGUI/Routing/OutputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiDeviceShape.h,
+	src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiFileDeviceShape.h,
+	src/wxGUI/Routing/RouteIcons.cpp, src/wxGUI/Routing/RouteIcons.h,
+	src/wxGUI/Routing/RouteLists.h, src/wxGUI/configtree.cpp,
+	src/wxGUI/configtree.h, src/wxGUI/generic/mhArray.h,
+	src/wxGUI/generic/mhDefs.h, src/wxGUI/generic/muconvauto.cpp,
+	src/wxGUI/generic/muconvauto.h, src/wxGUI/generic/mutDebug.cpp,
+	src/wxGUI/generic/mutDebug.h, src/wxGUI/generic/mutDebugFlags.h,
+	src/wxGUI/generic/mxDefs.cpp, src/wxGUI/generic/valNum.cpp,
+	src/wxGUI/generic/valNum.h, src/wxGUI/generic/valRadio.cpp,
+	src/wxGUI/generic/valRadio.h, src/wxGUI/resourceload.h,
+	src/wxGUI/stclanguage.cpp, src/wxGUI/stclanguage.h, vc8/muwx.vcproj: 
+	Make distcheck happy, even if crosscompiling for windows.
+
+	* Doxyfile, Examples/english/cdur.mut, Examples/english/cohen.mut,
+	Examples/english/demo.mut, Examples/english/demos.mut,
+	Examples/english/extern.mut, Examples/english/instr.mut,
+	Examples/english/midi.mut, Examples/english/nix.mut,
+	Examples/german/Cdur.mut, Examples/german/Cohen.mut,
+	Examples/german/Demo-utf8.mut, Examples/german/Demo.mut,
+	Examples/german/Demos.mut, Examples/german/Extern.mut,
+	Examples/german/Instr.mut, Examples/german/Midi.mut,
+	Examples/german/Nix.mut, HandBook.rh, Handbook.rtf, Help/Help.rh,
+	Icons/.cvsignore, Icons/svg/86815-play,record,stop.svg,
+	Icons/svg/ActivateMutabor.svg, Icons/svg/Blob-New.svg,
+	Icons/svg/GuidoFile.svg, Icons/svg/InputDevice.svg,
+	Icons/svg/Logo_ts-2-portabel.svg, Icons/svg/Logo_ts-2.svg,
+	Icons/svg/Logo_ts-3.svg, Icons/svg/Logo_ts-hks12.svg,
+	Icons/svg/Logo_ts-hks16N.svg, Icons/svg/Logo_ts.svg,
+	Icons/svg/MidiFile.svg, Icons/svg/MutaborFile.svg,
+	Icons/svg/NewInputDevice.svg, Icons/svg/NewOutputDevice.svg,
+	Icons/svg/OutputDevice.svg, Icons/svg/RouteIcon.svg,
+	Icons/svg/Stimmungsboxen-gesamt.svg,
+	Icons/svg/Stimmungsboxen-kasten.svg, Icons/svg/StopMutabor.svg,
+	Icons/svg/TonSystIcon.svg, Icons/svg/TonsystOpenIcon.svg,
+	Icons/svg/document-new.svg, Icons/svg/document-open.svg,
+	Icons/svg/document-print.svg, Icons/svg/document-save-as.svg,
+	Icons/svg/document-save.svg, Icons/svg/edit-copy.svg,
+	Icons/svg/edit-cut.svg, Icons/svg/edit-find-replace.svg,
+	Icons/svg/edit-find.svg, Icons/svg/edit-paste.svg,
+	Icons/svg/edit-redo.svg, Icons/svg/edit-undo.svg,
+	Icons/svg/help-browser.svg, Icons/svg/open_folder-vollfarbe.svg,
+	Icons/svg/open_folder.svg, Images/Icons/.cvsignore,
+	Images/Icons/svg/86815-play,record,stop.svg,
+	Images/Icons/svg/ActivateMutabor.svg,
+	Images/Icons/svg/Blob-New.svg, Images/Icons/svg/GuidoFile.svg,
+	Images/Icons/svg/InputDevice.svg,
+	Images/Icons/svg/Logo_ts-2-portabel.svg,
+	Images/Icons/svg/Logo_ts-2.svg, Images/Icons/svg/Logo_ts-3.svg,
+	Images/Icons/svg/Logo_ts-hks12.svg,
+	Images/Icons/svg/Logo_ts-hks16N.svg, Images/Icons/svg/Logo_ts.svg,
+	Images/Icons/svg/MidiFile.svg, Images/Icons/svg/MutaborFile.svg,
+	Images/Icons/svg/NewInputDevice.svg,
+	Images/Icons/svg/NewOutputDevice.svg,
+	Images/Icons/svg/OutputDevice.svg, Images/Icons/svg/RouteIcon.svg,
+	Images/Icons/svg/Stimmungsboxen-gesamt.svg,
+	Images/Icons/svg/Stimmungsboxen-kasten.svg,
+	Images/Icons/svg/StopMutabor.svg, Images/Icons/svg/TonSystIcon.svg,
+	Images/Icons/svg/TonsystOpenIcon.svg,
+	Images/Icons/svg/document-new.svg,
+	Images/Icons/svg/document-open.svg,
+	Images/Icons/svg/document-print.svg,
+	Images/Icons/svg/document-save-as.svg,
+	Images/Icons/svg/document-save.svg, Images/Icons/svg/edit-copy.svg,
+	Images/Icons/svg/edit-cut.svg,
+	Images/Icons/svg/edit-find-replace.svg,
+	Images/Icons/svg/edit-find.svg, Images/Icons/svg/edit-paste.svg,
+	Images/Icons/svg/edit-redo.svg, Images/Icons/svg/edit-undo.svg,
+	Images/Icons/svg/help-browser.svg,
+	Images/Icons/svg/open_folder-vollfarbe.svg,
+	Images/Icons/svg/open_folder.svg,
+	Images/doc/guide/guide_-Dateien/filelist.xml, Kopie von main.rc,
+	MUT_ENG/cdur.mus, MUT_ENG/cohen.mus, MUT_ENG/demo.mus,
+	MUT_ENG/demos.mus, MUT_ENG/extern.mus, MUT_ENG/instr.mus,
+	MUT_ENG/midi.mus, MUT_ENG/nix.mus, MUT_GER/Cdur.mut,
+	MUT_GER/Cohen.mut, MUT_GER/Demo-utf8.mut, MUT_GER/Demo.mut,
+	MUT_GER/Demos.mut, MUT_GER/Extern.mut, MUT_GER/Instr.mut,
+	MUT_GER/Midi.mut, MUT_GER/Nix.mut, Mutabor.fbp, Mutabor.rtf,
+	NoHelp.rtf, bison/allocate.c, bison/bison.1, bison/bison.cld,
+	bison/bison.hai, bison/bison.inf, bison/bison.log, bison/bison.sim,
+	bison/bison.tex, bison/build.com, bison/changelo, bison/closure.c,
+	bison/conflict.c, bison/copying, bison/derives.c, bison/dviscr.dlg,
+	bison/files.c, bison/files.h, bison/getargs.c, bison/getopt.c,
+	bison/gram.c, bison/gram.h, bison/lalr.c, bison/lex.c, bison/lex.h,
+	bison/lr0.c, bison/machine.h, bison/main.c, bison/makefile,
+	bison/new.h, bison/nullable.c, bison/output.c, bison/print.c,
+	bison/reader.c, bison/readme, bison/reduce.c, bison/referenc,
+	bison/state.h, bison/symtab.c, bison/symtab.h, bison/system.h,
+	bison/texinfo.log, bison/texinfo.tex, bison/types.h,
+	bison/version.c, bison/vmsgetar.c, bison/vmshlp.mar,
+	bison/warshall.c, editfile.rc, gmut/ext.cpp, gmut/ext.h,
+	gmut/gmn2midi.cpp, gmut/gmut.cpp, gmut/gmutdos.cpp,
+	gmut/infile.cpp, gmut/infile.h, gmut/mis.cpp, gmut/mis.h,
+	gmut/mutgis.cpp, gmut/mutgis.h, guide/guide_-Dateien/filelist.xml,
+	handbook.cnt, handbook.hpj, includes/.cvsignore,
+	includes/Makefile.am, includes/mutabor/.cvsignore,
+	includes/mutabor/Makefile.am, includes/mutabor/aktion.h,
+	includes/mutabor/anweisung.h, includes/mutabor/argument.h,
+	includes/mutabor/ausloeser.h, includes/mutabor/bad_decl.h,
+	includes/mutabor/case_liste.h, includes/mutabor/errors.h,
+	includes/mutabor/global.h, includes/mutabor/harmonie.h,
+	includes/mutabor/heap.h, includes/mutabor/identifier.def,
+	includes/mutabor/identifier.h, includes/mutabor/identifier.hh,
+	includes/mutabor/idlist.def, includes/mutabor/idlist.h,
+	includes/mutabor/idlist.hh, includes/mutabor/instrument.h,
+	includes/mutabor/interpreter.h, includes/mutabor/interval.def,
+	includes/mutabor/interval.h, includes/mutabor/interval.hh,
+	includes/mutabor/intervalDiff.def, includes/mutabor/intervalDiff.h,
+	includes/mutabor/intervalDiff.hh, includes/mutabor/intervalInv.def,
+	includes/mutabor/intervalInv.h, includes/mutabor/intervalInv.hh,
+	includes/mutabor/intervalPlaceholder.def,
+	includes/mutabor/intervalPlaceholder.h,
+	includes/mutabor/intervalPlaceholder.hh,
+	includes/mutabor/intervalStretch.def,
+	includes/mutabor/intervalStretch.h,
+	includes/mutabor/intervalStretch.hh,
+	includes/mutabor/intervalSum.def, includes/mutabor/intervalSum.h,
+	includes/mutabor/intervalSum.hh, includes/mutabor/logik.h,
+	includes/mutabor/makeclass.pl, includes/mutabor/midicalc.h,
+	includes/mutabor/mut_tab.h, includes/mutabor/mutfile.def,
+	includes/mutabor/mutfile.h, includes/mutabor/mutfile.hh,
+	includes/mutabor/object.def, includes/mutabor/object.h,
+	includes/mutabor/object.hh, includes/mutabor/parameter.h,
+	includes/mutabor/parser.h, includes/mutabor/ptrlist.def,
+	includes/mutabor/ptrlist.h, includes/mutabor/ptrlist.hh,
+	includes/mutabor/tabgen.h, includes/mutabor/taste.h,
+	includes/mutabor/ton.h, includes/mutabor/tonsystem.h,
+	includes/mutabor/umstimmung.h, includes/netinet/netinet/in.h,
+	lib/libasprintf/AUTHORS, lib/libasprintf/COPYING,
+	lib/libasprintf/COPYING.LIB, lib/libasprintf/ChangeLog,
+	lib/libasprintf/INSTALL, lib/libasprintf/Makefile.am,
+	lib/libasprintf/Makefile.msvc, lib/libasprintf/Makefile.vms,
+	lib/libasprintf/NEWS, lib/libasprintf/README,
+	lib/libasprintf/README.woe32, lib/libasprintf/aclocal.m4,
+	lib/libasprintf/alloca_.h, lib/libasprintf/asnprintf.c,
+	lib/libasprintf/asprintf.c, lib/libasprintf/autosprintf.cc,
+	lib/libasprintf/autosprintf.h.in,
+	lib/libasprintf/autosprintf.h.msvc-shared,
+	lib/libasprintf/autosprintf.info, lib/libasprintf/autosprintf.texi,
+	lib/libasprintf/autosprintf_all.html, lib/libasprintf/config.h.in,
+	lib/libasprintf/config.h.msvc, lib/libasprintf/config.h_vms,
+	lib/libasprintf/configure, lib/libasprintf/configure.ac,
+	lib/libasprintf/lib-asprintf.c, lib/libasprintf/lib-asprintf.h,
+	lib/libasprintf/printf-args.c, lib/libasprintf/printf-args.h,
+	lib/libasprintf/printf-parse.c, lib/libasprintf/printf-parse.h,
+	lib/libasprintf/texi2html, lib/libasprintf/vasnprintf.c,
+	lib/libasprintf/vasnprintf.h, lib/libasprintf/vasprintf.c,
+	lib/libasprintf/vasprintf.h, lib/libasprintf/windows/asprintf.rc,
+	lib/libasprintf/windows/dllexport.h, lib/libasprintf/xsize.h,
+	lib/missfunc/.cvsignore, lib/missfunc/Makefile.am,
+	lib/missfunc/missfunc.c, lib/missfunc/stpcpy.c,
+	lib/missfunc/stpcpy.h, lib/rtmidi/RtError.h, lib/rtmidi/RtMidi.cpp,
+	lib/rtmidi/RtMidi.h, lib/rtmidi/config/config.guess,
+	lib/rtmidi/config/config.sub, lib/rtmidi/config/install.sh,
+	lib/rtmidi/configure, lib/rtmidi/configure.ac,
+	lib/rtmidi/doc/doxygen/Doxyfile,
+	lib/rtmidi/doc/doxygen/footer.html,
+	lib/rtmidi/doc/doxygen/header.html,
+	lib/rtmidi/doc/doxygen/tutorial.txt,
+	lib/rtmidi/doc/html/RtError_8h-source.html,
+	lib/rtmidi/doc/html/RtError_8h_source.html,
+	lib/rtmidi/doc/html/RtMidi_8h-source.html,
+	lib/rtmidi/doc/html/RtMidi_8h_source.html,
+	lib/rtmidi/doc/html/annotated.html,
+	lib/rtmidi/doc/html/classRtError-members.html,
+	lib/rtmidi/doc/html/classRtError.html,
+	lib/rtmidi/doc/html/classRtMidi-members.html,
+	lib/rtmidi/doc/html/classRtMidi.html,
+	lib/rtmidi/doc/html/classRtMidiIn-members.html,
+	lib/rtmidi/doc/html/classRtMidiIn.html,
+	lib/rtmidi/doc/html/classRtMidiOut-members.html,
+	lib/rtmidi/doc/html/classRtMidiOut.html,
+	lib/rtmidi/doc/html/classes.html, lib/rtmidi/doc/html/doxygen.css,
+	lib/rtmidi/doc/html/files.html, lib/rtmidi/doc/html/functions.html,
+	lib/rtmidi/doc/html/functions_enum.html,
+	lib/rtmidi/doc/html/functions_eval.html,
+	lib/rtmidi/doc/html/functions_func.html,
+	lib/rtmidi/doc/html/functions_type.html,
+	lib/rtmidi/doc/html/hierarchy.html, lib/rtmidi/doc/html/index.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1MidiMessage-members.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1MidiMessage.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1MidiQueue-members.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1MidiQueue.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1RtMidiInData-members.html,
+	lib/rtmidi/doc/html/structRtMidiIn_1_1RtMidiInData.html,
+	lib/rtmidi/doc/html/tabs.css, lib/rtmidi/doc/release.txt,
+	lib/rtmidi/msw/readme, lib/rtmidi/msw/rtmidilib.vcproj,
+	lib/rtmidi/readme, lib/rtmidi/tests/Makefile.in,
+	lib/rtmidi/tests/cmidiin.cpp, lib/rtmidi/tests/midiout.cpp,
+	lib/rtmidi/tests/midiprobe.cpp, lib/rtmidi/tests/qmidiin.cpp,
+	lib/rtmidi/tests/sysextest.cpp, libasprintf/AUTHORS,
+	libasprintf/COPYING, libasprintf/COPYING.LIB,
+	libasprintf/ChangeLog, libasprintf/INSTALL,
+	libasprintf/Makefile.am, libasprintf/Makefile.msvc,
+	libasprintf/Makefile.vms, libasprintf/NEWS, libasprintf/README,
+	libasprintf/README.woe32, libasprintf/aclocal.m4,
+	libasprintf/alloca_.h, libasprintf/asnprintf.c,
+	libasprintf/asprintf.c, libasprintf/autosprintf.cc,
+	libasprintf/autosprintf.h.in,
+	libasprintf/autosprintf.h.msvc-shared,
+	libasprintf/autosprintf.info, libasprintf/autosprintf.texi,
+	libasprintf/autosprintf_all.html, libasprintf/config.h.in,
+	libasprintf/config.h.msvc, libasprintf/config.h_vms,
+	libasprintf/configure, libasprintf/configure.ac,
+	libasprintf/lib-asprintf.c, libasprintf/lib-asprintf.h,
+	libasprintf/printf-args.c, libasprintf/printf-args.h,
+	libasprintf/printf-parse.c, libasprintf/printf-parse.h,
+	libasprintf/texi2html, libasprintf/vasnprintf.c,
+	libasprintf/vasnprintf.h, libasprintf/vasprintf.c,
+	libasprintf/vasprintf.h, libasprintf/windows/asprintf.rc,
+	libasprintf/windows/dllexport.h, libasprintf/xsize.h,
+	libmutabor/.cvsignore, libmutabor/Makefile.am, libmutabor/aktion.c,
+	libmutabor/anweisung.c, libmutabor/argument.c,
+	libmutabor/ausloeser.c, libmutabor/case_liste.c,
+	libmutabor/cmutlex.c, libmutabor/errors.c, libmutabor/harmonie.c,
+	libmutabor/heap.c, libmutabor/identifier.c, libmutabor/idlist.c,
+	libmutabor/instrument.c, libmutabor/interpreter.c,
+	libmutabor/interval.c, libmutabor/intervalDiff.c,
+	libmutabor/intervalInv.c, libmutabor/intervalPlaceholder.c,
+	libmutabor/intervalStretch.c, libmutabor/intervalSum.c,
+	libmutabor/lextables/lex-en.sed, libmutabor/lextables/lex-ru.sed,
+	libmutabor/lextables/mutlex-en.l, libmutabor/lextables/mutlex-ru.l,
+	libmutabor/logik.c, libmutabor/midicalc.c, libmutabor/mut.c,
+	libmutabor/mut.h, libmutabor/mut.y, libmutabor/mutfile.c,
+	libmutabor/mutlex.c, libmutabor/mutlex.h, libmutabor/mutlex.l,
+	libmutabor/object.c, libmutabor/parameter.c, libmutabor/parser.c,
+	libmutabor/ptrlist.c, libmutabor/taste.c,
+	libmutabor/tests/.cvsignore, libmutabor/tests/Demo.mut,
+	libmutabor/tests/Makefile.am, libmutabor/tests/testchkobject.c,
+	libmutabor/tests/testidentifier.c, libmutabor/tests/testidlist.c,
+	libmutabor/tests/testinterval.c, libmutabor/tests/testmutfile.c,
+	libmutabor/tests/testobject.c, libmutabor/tests/testparser.c,
+	libmutabor/tests/testparser.sh, libmutabor/tests/testplaceholder.c,
+	libmutabor/tests/testptrlist.c, libmutabor/ton.c,
+	libmutabor/tonsystem.c, libmutabor/umstimmung.c, main.rc,
+	missfunc/.cvsignore, missfunc/Makefile.am, missfunc/missfunc.c,
+	missfunc/stpcpy.c, missfunc/stpcpy.h, mu32/Defs.h,
+	mu32/EDevice.cpp, mu32/EDevice.h, mu32/Errors.cpp, mu32/Errors.h,
+	mu32/Execute.cpp, mu32/Execute.h, mu32/Frac.cpp, mu32/Frac.h,
+	mu32/Global.h, mu32/GrafKern.cpp, mu32/GrafKern.h, mu32/Hilfs.cpp,
+	mu32/Hilfs.h, mu32/Interpre.h, mu32/Interval.cpp, mu32/Interval.h,
+	mu32/MidiKern.h, mu32/Mut_Tab.cpp, mu32/Parser.cpp,
+	mu32/Runtime.cpp, mu32/Runtime.h, mu32/TabGen.cpp, mu32/box.cpp,
+	mu32/box.h, mu32/mut.cpp, mu32/mut.h, mu32/mut.y,
+	mu32/routing/Device-inlines.h, mu32/routing/Device.cpp,
+	mu32/routing/Device.h, mu32/routing/Route-inlines.h,
+	mu32/routing/Route.cpp, mu32/routing/Route.h,
+	mu32/routing/RouteCompat.cpp, mu32/routing/RouteCompat.h,
+	mu32/routing/gmn/DevGIS.cpp, mu32/routing/gmn/DevGIS.h,
+	mu32/routing/gmn/GIS.cpp, mu32/routing/gmn/GIS.h,
+	mu32/routing/gmn/GIS_Head.cpp, mu32/routing/gmn/GIS_Head.h,
+	mu32/routing/gmn/GSP.cpp, mu32/routing/gmn/GSP.h,
+	mu32/routing/gmn/GSP_Err.cpp, mu32/routing/gmn/GSP_File.cpp,
+	mu32/routing/gmn/GSP_File.h, mu32/routing/midi/DevMidF.cpp,
+	mu32/routing/midi/DevMidF.h, mu32/routing/midi/DevMidi.cpp,
+	mu32/routing/midi/DevMidi.h, mu32/treestorage.h, muhlp.rtf,
+	mutabor.cfg, mutabor.cnt, mutabor.hpj, mutabor.nis,
+	muwx/.cvsignore, muwx/Action.cpp, muwx/Action.h, muwx/CompDlg.cpp,
+	muwx/CompDlg.h, muwx/GUIBoxData-inlines.h, muwx/GUIBoxData.cpp,
+	muwx/GUIBoxData.h, muwx/Icon/.cvsignore, muwx/Icon/ActTextBox.xpm,
+	muwx/Icon/AddPause.xpm, muwx/Icon/AddPlay.xpm,
+	muwx/Icon/AddStop.xpm, muwx/Icon/AddStopDis.xpm,
+	muwx/Icon/DevGMN.xpm, muwx/Icon/DevMidiFile.xpm,
+	muwx/Icon/DevMidiPort.xpm, muwx/Icon/DevUnknown.xpm,
+	muwx/Icon/Document.xpm, muwx/Icon/ErrorPlop.xpm,
+	muwx/Icon/KeyTextBox.xpm, muwx/Icon/Logic.xpm,
+	muwx/Icon/LogicOpen.xpm, muwx/Icon/Mutabor.xpm,
+	muwx/Icon/NewPlop.xpm, muwx/Icon/PausePlop.xpm,
+	muwx/Icon/PlayPlop.xpm, muwx/Icon/Route.xpm,
+	muwx/Icon/TSTextBox.xpm, muwx/Icon/Tonesyst.xpm,
+	muwx/Icon/TonesystOpen.xpm, muwx/IconShape.cpp, muwx/IconShape.h,
+	muwx/InputDevDlg.cpp, muwx/InputDevDlg.h, muwx/MutApp.cpp,
+	muwx/MutApp.h, muwx/MutBitmaps.cpp, muwx/MutBitmaps.h,
+	muwx/MutChild.cpp, muwx/MutChild.h, muwx/MutConfDlg.h,
+	muwx/MutDocManager.cpp, muwx/MutDocManager.h, muwx/MutDocument.cpp,
+	muwx/MutDocument.h, muwx/MutEditFile.cpp, muwx/MutEditFile.h,
+	muwx/MutFrame.cpp, muwx/MutFrame.h, muwx/MutIcon.cpp,
+	muwx/MutIcon.h, muwx/MutLogicWnd.cpp, muwx/MutLogicWnd.h,
+	muwx/MutRouteWnd.cpp, muwx/MutRouteWnd.h, muwx/MutTextBox.cpp,
+	muwx/MutTextBox.h, muwx/MutView.cpp, muwx/MutView.h,
+	muwx/Mutabor.rc, muwx/Mutabor.rh, muwx/Panel.cpp, muwx/Panel.h,
+	muwx/Routing/BoxChannelShape.cpp, muwx/Routing/BoxChannelShape.h,
+	muwx/Routing/BoxDlg.cpp, muwx/Routing/BoxDlg.h,
+	muwx/Routing/BoxIconShape.cpp, muwx/Routing/BoxIconShape.h,
+	muwx/Routing/BoxShape.cpp, muwx/Routing/BoxShape.h,
+	muwx/Routing/DebugRoute.cpp, muwx/Routing/DebugRoute.h,
+	muwx/Routing/DeviceShape.cpp, muwx/Routing/DeviceShape.h,
+	muwx/Routing/GUIRoute-inlines.h, muwx/Routing/GUIRoute.cpp,
+	muwx/Routing/GUIRoute.h, muwx/Routing/InputDevDlg.cpp,
+	muwx/Routing/InputDevDlg.h, muwx/Routing/InputDeviceShape.cpp,
+	muwx/Routing/InputDeviceShape.h,
+	muwx/Routing/InputGuidoFileDeviceShape.cpp,
+	muwx/Routing/InputGuidoFileDeviceShape.h,
+	muwx/Routing/InputMidiDeviceShape.cpp,
+	muwx/Routing/InputMidiDeviceShape.h,
+	muwx/Routing/InputMidiFileDeviceShape.cpp,
+	muwx/Routing/InputMidiFileDeviceShape.h,
+	muwx/Routing/NewBoxShape.cpp, muwx/Routing/NewBoxShape.h,
+	muwx/Routing/NewInputDeviceShape.cpp,
+	muwx/Routing/NewInputDeviceShape.h,
+	muwx/Routing/NewOutputDeviceShape.cpp,
+	muwx/Routing/NewOutputDeviceShape.h, muwx/Routing/OutputDevDlg.cpp,
+	muwx/Routing/OutputDevDlg.h, muwx/Routing/OutputDeviceShape.cpp,
+	muwx/Routing/OutputDeviceShape.h,
+	muwx/Routing/OutputGuidoFileDeviceShape.cpp,
+	muwx/Routing/OutputGuidoFileDeviceShape.h,
+	muwx/Routing/OutputMidiDeviceShape.cpp,
+	muwx/Routing/OutputMidiDeviceShape.h,
+	muwx/Routing/OutputMidiFileDeviceShape.cpp,
+	muwx/Routing/OutputMidiFileDeviceShape.h,
+	muwx/Routing/RouteIcons.cpp, muwx/Routing/RouteIcons.h,
+	muwx/Routing/RouteLists.h, muwx/bitmaps/copy.xpm,
+	muwx/bitmaps/cut.xpm, muwx/bitmaps/help.xpm, muwx/bitmaps/new.xpm,
+	muwx/bitmaps/open.xpm, muwx/bitmaps/paste.xpm,
+	muwx/bitmaps/preview.xpm, muwx/bitmaps/print.xpm,
+	muwx/bitmaps/save.xpm, muwx/configtree.cpp, muwx/configtree.h,
+	muwx/resourceload.h, muwx/stclanguage.cpp, muwx/stclanguage.h,
+	mywx/.cvsignore, mywx/mhArray.h, mywx/mhDefs.h,
+	mywx/muconvauto.cpp, mywx/muconvauto.h, mywx/mutDebug.cpp,
+	mywx/mutDebug.h, mywx/mutDebugFlags.h, mywx/mxDefs.cpp,
+	mywx/valNum.cpp, mywx/valNum.h, mywx/valRadio.cpp, mywx/valRadio.h,
+	old-stuff/HandBook.rh, old-stuff/Handbook.rtf, old-stuff/Help.rh,
+	old-stuff/Kopie von main.rc, old-stuff/Mutabor.fbp,
+	old-stuff/Mutabor.rtf, old-stuff/NoHelp.rtf,
+	old-stuff/bison/allocate.c, old-stuff/bison/bison.1,
+	old-stuff/bison/bison.cld, old-stuff/bison/bison.hai,
+	old-stuff/bison/bison.inf, old-stuff/bison/bison.log,
+	old-stuff/bison/bison.sim, old-stuff/bison/bison.tex,
+	old-stuff/bison/build.com, old-stuff/bison/changelo,
+	old-stuff/bison/closure.c, old-stuff/bison/conflict.c,
+	old-stuff/bison/copying, old-stuff/bison/derives.c,
+	old-stuff/bison/dviscr.dlg, old-stuff/bison/files.c,
+	old-stuff/bison/files.h, old-stuff/bison/getargs.c,
+	old-stuff/bison/getopt.c, old-stuff/bison/gram.c,
+	old-stuff/bison/gram.h, old-stuff/bison/lalr.c,
+	old-stuff/bison/lex.c, old-stuff/bison/lex.h,
+	old-stuff/bison/lr0.c, old-stuff/bison/machine.h,
+	old-stuff/bison/main.c, old-stuff/bison/makefile,
+	old-stuff/bison/new.h, old-stuff/bison/nullable.c,
+	old-stuff/bison/output.c, old-stuff/bison/print.c,
+	old-stuff/bison/reader.c, old-stuff/bison/readme,
+	old-stuff/bison/reduce.c, old-stuff/bison/referenc,
+	old-stuff/bison/state.h, old-stuff/bison/symtab.c,
+	old-stuff/bison/symtab.h, old-stuff/bison/system.h,
+	old-stuff/bison/texinfo.log, old-stuff/bison/texinfo.tex,
+	old-stuff/bison/types.h, old-stuff/bison/version.c,
+	old-stuff/bison/vmsgetar.c, old-stuff/bison/vmshlp.mar,
+	old-stuff/bison/warshall.c, old-stuff/devmidi2.cpp,
+	old-stuff/dllexp.h, old-stuff/editfile.rc, old-stuff/handbook.cnt,
+	old-stuff/handbook.hpj, old-stuff/main.rc, old-stuff/midiauto.cpp,
+	old-stuff/midiauto.h, old-stuff/midiwin.cpp, old-stuff/midiwin.h,
+	old-stuff/muhlp.rtf, old-stuff/mutabor.cfg, old-stuff/mutabor.cnt,
+	old-stuff/mutabor.hpj, old-stuff/mutabor.nis,
+	old-stuff/playwin.cpp, old-stuff/playwin.h, old-stuff/routes.cfg,
+	old-stuff/setup.h, old-stuff/upx.bat, old/devmidi2.cpp,
+	old/dllexp.h, old/midiauto.cpp, old/midiauto.h, old/midiwin.cpp,
+	old/midiwin.h, old/playwin.cpp, old/playwin.h, old/setup.h,
+	routes.cfg, rtmidi/RtError.h, rtmidi/RtMidi.cpp, rtmidi/RtMidi.h,
+	rtmidi/config/config.guess, rtmidi/config/config.sub,
+	rtmidi/config/install.sh, rtmidi/configure, rtmidi/configure.ac,
+	rtmidi/doc/doxygen/Doxyfile, rtmidi/doc/doxygen/footer.html,
+	rtmidi/doc/doxygen/header.html, rtmidi/doc/doxygen/tutorial.txt,
+	rtmidi/doc/html/RtError_8h-source.html,
+	rtmidi/doc/html/RtError_8h_source.html,
+	rtmidi/doc/html/RtMidi_8h-source.html,
+	rtmidi/doc/html/RtMidi_8h_source.html,
+	rtmidi/doc/html/annotated.html,
+	rtmidi/doc/html/classRtError-members.html,
+	rtmidi/doc/html/classRtError.html,
+	rtmidi/doc/html/classRtMidi-members.html,
+	rtmidi/doc/html/classRtMidi.html,
+	rtmidi/doc/html/classRtMidiIn-members.html,
+	rtmidi/doc/html/classRtMidiIn.html,
+	rtmidi/doc/html/classRtMidiOut-members.html,
+	rtmidi/doc/html/classRtMidiOut.html, rtmidi/doc/html/classes.html,
+	rtmidi/doc/html/doxygen.css, rtmidi/doc/html/files.html,
+	rtmidi/doc/html/functions.html,
+	rtmidi/doc/html/functions_enum.html,
+	rtmidi/doc/html/functions_eval.html,
+	rtmidi/doc/html/functions_func.html,
+	rtmidi/doc/html/functions_type.html,
+	rtmidi/doc/html/hierarchy.html, rtmidi/doc/html/index.html,
+	rtmidi/doc/html/structRtMidiIn_1_1MidiMessage-members.html,
+	rtmidi/doc/html/structRtMidiIn_1_1MidiMessage.html,
+	rtmidi/doc/html/structRtMidiIn_1_1MidiQueue-members.html,
+	rtmidi/doc/html/structRtMidiIn_1_1MidiQueue.html,
+	rtmidi/doc/html/structRtMidiIn_1_1RtMidiInData-members.html,
+	rtmidi/doc/html/structRtMidiIn_1_1RtMidiInData.html,
+	rtmidi/doc/html/tabs.css, rtmidi/doc/release.txt,
+	rtmidi/msw/readme, rtmidi/msw/rtmidilib.vcproj, rtmidi/readme,
+	rtmidi/tests/Makefile.in, rtmidi/tests/cmidiin.cpp,
+	rtmidi/tests/midiout.cpp, rtmidi/tests/midiprobe.cpp,
+	rtmidi/tests/qmidiin.cpp, rtmidi/tests/sysextest.cpp,
+	src/gmut/ext.cpp, src/gmut/ext.h, src/gmut/gmn2midi.cpp,
+	src/gmut/gmut.cpp, src/gmut/gmutdos.cpp, src/gmut/infile.cpp,
+	src/gmut/infile.h, src/gmut/mis.cpp, src/gmut/mis.h,
+	src/gmut/mutgis.cpp, src/gmut/mutgis.h, src/includes/.cvsignore,
+	src/includes/Makefile.am, src/includes/mutabor/.cvsignore,
+	src/includes/mutabor/Makefile.am, src/includes/mutabor/aktion.h,
+	src/includes/mutabor/anweisung.h, src/includes/mutabor/argument.h,
+	src/includes/mutabor/ausloeser.h, src/includes/mutabor/bad_decl.h,
+	src/includes/mutabor/case_liste.h, src/includes/mutabor/errors.h,
+	src/includes/mutabor/global.h, src/includes/mutabor/harmonie.h,
+	src/includes/mutabor/heap.h, src/includes/mutabor/identifier.def,
+	src/includes/mutabor/identifier.h,
+	src/includes/mutabor/identifier.hh,
+	src/includes/mutabor/idlist.def, src/includes/mutabor/idlist.h,
+	src/includes/mutabor/idlist.hh, src/includes/mutabor/instrument.h,
+	src/includes/mutabor/interpreter.h,
+	src/includes/mutabor/interval.def, src/includes/mutabor/interval.h,
+	src/includes/mutabor/interval.hh,
+	src/includes/mutabor/intervalDiff.def,
+	src/includes/mutabor/intervalDiff.h,
+	src/includes/mutabor/intervalDiff.hh,
+	src/includes/mutabor/intervalInv.def,
+	src/includes/mutabor/intervalInv.h,
+	src/includes/mutabor/intervalInv.hh,
+	src/includes/mutabor/intervalPlaceholder.def,
+	src/includes/mutabor/intervalPlaceholder.h,
+	src/includes/mutabor/intervalPlaceholder.hh,
+	src/includes/mutabor/intervalStretch.def,
+	src/includes/mutabor/intervalStretch.h,
+	src/includes/mutabor/intervalStretch.hh,
+	src/includes/mutabor/intervalSum.def,
+	src/includes/mutabor/intervalSum.h,
+	src/includes/mutabor/intervalSum.hh, src/includes/mutabor/logik.h,
+	src/includes/mutabor/makeclass.pl, src/includes/mutabor/midicalc.h,
+	src/includes/mutabor/mut_tab.h, src/includes/mutabor/mutfile.def,
+	src/includes/mutabor/mutfile.h, src/includes/mutabor/mutfile.hh,
+	src/includes/mutabor/object.def, src/includes/mutabor/object.h,
+	src/includes/mutabor/object.hh, src/includes/mutabor/parameter.h,
+	src/includes/mutabor/parser.h, src/includes/mutabor/ptrlist.def,
+	src/includes/mutabor/ptrlist.h, src/includes/mutabor/ptrlist.hh,
+	src/includes/mutabor/tabgen.h, src/includes/mutabor/taste.h,
+	src/includes/mutabor/ton.h, src/includes/mutabor/tonsystem.h,
+	src/includes/mutabor/umstimmung.h,
+	src/includes/netinet/netinet/in.h, src/kernel/Defs.h,
+	src/kernel/EDevice.cpp, src/kernel/EDevice.h,
+	src/kernel/Errors.cpp, src/kernel/Errors.h, src/kernel/Execute.cpp,
+	src/kernel/Execute.h, src/kernel/Frac.cpp, src/kernel/Frac.h,
+	src/kernel/Global.h, src/kernel/GrafKern.cpp,
+	src/kernel/GrafKern.h, src/kernel/Hilfs.cpp, src/kernel/Hilfs.h,
+	src/kernel/Interpre.h, src/kernel/Interval.cpp,
+	src/kernel/Interval.h, src/kernel/MidiKern.h,
+	src/kernel/Mut_Tab.cpp, src/kernel/Parser.cpp,
+	src/kernel/Runtime.cpp, src/kernel/Runtime.h,
+	src/kernel/TabGen.cpp, src/kernel/box.cpp, src/kernel/box.h,
+	src/kernel/mut.cpp, src/kernel/mut.h, src/kernel/mut.y,
+	src/kernel/routing/Device-inlines.h, src/kernel/routing/Device.cpp,
+	src/kernel/routing/Device.h, src/kernel/routing/Route-inlines.h,
+	src/kernel/routing/Route.cpp, src/kernel/routing/Route.h,
+	src/kernel/routing/RouteCompat.cpp,
+	src/kernel/routing/RouteCompat.h,
+	src/kernel/routing/gmn/DevGIS.cpp, src/kernel/routing/gmn/DevGIS.h,
+	src/kernel/routing/gmn/GIS.cpp, src/kernel/routing/gmn/GIS.h,
+	src/kernel/routing/gmn/GIS_Head.cpp,
+	src/kernel/routing/gmn/GIS_Head.h, src/kernel/routing/gmn/GSP.cpp,
+	src/kernel/routing/gmn/GSP.h, src/kernel/routing/gmn/GSP_Err.cpp,
+	src/kernel/routing/gmn/GSP_File.cpp,
+	src/kernel/routing/gmn/GSP_File.h,
+	src/kernel/routing/midi/DevMidF.cpp,
+	src/kernel/routing/midi/DevMidF.h,
+	src/kernel/routing/midi/DevMidi.cpp,
+	src/kernel/routing/midi/DevMidi.h, src/kernel/treestorage.h,
+	src/libmutabor/.cvsignore, src/libmutabor/Makefile.am,
+	src/libmutabor/aktion.c, src/libmutabor/anweisung.c,
+	src/libmutabor/argument.c, src/libmutabor/ausloeser.c,
+	src/libmutabor/case_liste.c, src/libmutabor/cmutlex.c,
+	src/libmutabor/errors.c, src/libmutabor/harmonie.c,
+	src/libmutabor/heap.c, src/libmutabor/identifier.c,
+	src/libmutabor/idlist.c, src/libmutabor/instrument.c,
+	src/libmutabor/interpreter.c, src/libmutabor/interval.c,
+	src/libmutabor/intervalDiff.c, src/libmutabor/intervalInv.c,
+	src/libmutabor/intervalPlaceholder.c,
+	src/libmutabor/intervalStretch.c, src/libmutabor/intervalSum.c,
+	src/libmutabor/lextables/lex-en.sed,
+	src/libmutabor/lextables/lex-ru.sed,
+	src/libmutabor/lextables/mutlex-en.l,
+	src/libmutabor/lextables/mutlex-ru.l, src/libmutabor/logik.c,
+	src/libmutabor/midicalc.c, src/libmutabor/mut.c,
+	src/libmutabor/mut.h, src/libmutabor/mut.y,
+	src/libmutabor/mutfile.c, src/libmutabor/mutlex.c,
+	src/libmutabor/mutlex.h, src/libmutabor/mutlex.l,
+	src/libmutabor/object.c, src/libmutabor/parameter.c,
+	src/libmutabor/parser.c, src/libmutabor/ptrlist.c,
+	src/libmutabor/taste.c, src/libmutabor/tests/.cvsignore,
+	src/libmutabor/tests/Demo.mut, src/libmutabor/tests/Makefile.am,
+	src/libmutabor/tests/testchkobject.c,
+	src/libmutabor/tests/testidentifier.c,
+	src/libmutabor/tests/testidlist.c,
+	src/libmutabor/tests/testinterval.c,
+	src/libmutabor/tests/testmutfile.c,
+	src/libmutabor/tests/testobject.c,
+	src/libmutabor/tests/testparser.c,
+	src/libmutabor/tests/testparser.sh,
+	src/libmutabor/tests/testplaceholder.c,
+	src/libmutabor/tests/testptrlist.c, src/libmutabor/ton.c,
+	src/libmutabor/tonsystem.c, src/libmutabor/umstimmung.c,
+	src/wxGUI/.cvsignore, src/wxGUI/Action.cpp, src/wxGUI/Action.h,
+	src/wxGUI/CompDlg.cpp, src/wxGUI/CompDlg.h,
+	src/wxGUI/GUIBoxData-inlines.h, src/wxGUI/GUIBoxData.cpp,
+	src/wxGUI/GUIBoxData.h, src/wxGUI/Icon/ActTextBox.xpm,
+	src/wxGUI/Icon/AddPause.xpm, src/wxGUI/Icon/AddPlay.xpm,
+	src/wxGUI/Icon/AddStop.xpm, src/wxGUI/Icon/AddStopDis.xpm,
+	src/wxGUI/Icon/DevGMN.xpm, src/wxGUI/Icon/DevMidiFile.xpm,
+	src/wxGUI/Icon/DevMidiPort.xpm, src/wxGUI/Icon/DevUnknown.xpm,
+	src/wxGUI/Icon/Document.xpm, src/wxGUI/Icon/ErrorPlop.xpm,
+	src/wxGUI/Icon/KeyTextBox.xpm, src/wxGUI/Icon/Logic.xpm,
+	src/wxGUI/Icon/LogicOpen.xpm, src/wxGUI/Icon/Mutabor.xpm,
+	src/wxGUI/Icon/NewPlop.xpm, src/wxGUI/Icon/PausePlop.xpm,
+	src/wxGUI/Icon/PlayPlop.xpm, src/wxGUI/Icon/Route.xpm,
+	src/wxGUI/Icon/TSTextBox.xpm, src/wxGUI/Icon/Tonesyst.xpm,
+	src/wxGUI/Icon/TonesystOpen.xpm, src/wxGUI/IconShape.cpp,
+	src/wxGUI/IconShape.h, src/wxGUI/InputDevDlg.cpp,
+	src/wxGUI/InputDevDlg.h, src/wxGUI/MutApp.cpp, src/wxGUI/MutApp.h,
+	src/wxGUI/MutBitmaps.cpp, src/wxGUI/MutBitmaps.h,
+	src/wxGUI/MutChild.cpp, src/wxGUI/MutChild.h,
+	src/wxGUI/MutConfDlg.h, src/wxGUI/MutDocManager.cpp,
+	src/wxGUI/MutDocManager.h, src/wxGUI/MutDocument.cpp,
+	src/wxGUI/MutDocument.h, src/wxGUI/MutEditFile.cpp,
+	src/wxGUI/MutEditFile.h, src/wxGUI/MutFrame.cpp,
+	src/wxGUI/MutFrame.h, src/wxGUI/MutIcon.cpp, src/wxGUI/MutIcon.h,
+	src/wxGUI/MutLogicWnd.cpp, src/wxGUI/MutLogicWnd.h,
+	src/wxGUI/MutRouteWnd.cpp, src/wxGUI/MutRouteWnd.h,
+	src/wxGUI/MutTextBox.cpp, src/wxGUI/MutTextBox.h,
+	src/wxGUI/MutView.cpp, src/wxGUI/MutView.h, src/wxGUI/Mutabor.rc,
+	src/wxGUI/Mutabor.rh, src/wxGUI/Panel.cpp, src/wxGUI/Panel.h,
+	src/wxGUI/Routing/BoxChannelShape.cpp,
+	src/wxGUI/Routing/BoxChannelShape.h, src/wxGUI/Routing/BoxDlg.cpp,
+	src/wxGUI/Routing/BoxDlg.h, src/wxGUI/Routing/BoxIconShape.cpp,
+	src/wxGUI/Routing/BoxIconShape.h, src/wxGUI/Routing/BoxShape.cpp,
+	src/wxGUI/Routing/BoxShape.h, src/wxGUI/Routing/DebugRoute.cpp,
+	src/wxGUI/Routing/DebugRoute.h, src/wxGUI/Routing/DeviceShape.cpp,
+	src/wxGUI/Routing/DeviceShape.h,
+	src/wxGUI/Routing/GUIRoute-inlines.h,
+	src/wxGUI/Routing/GUIRoute.cpp, src/wxGUI/Routing/GUIRoute.h,
+	src/wxGUI/Routing/InputDevDlg.cpp, src/wxGUI/Routing/InputDevDlg.h,
+	src/wxGUI/Routing/InputDeviceShape.cpp,
+	src/wxGUI/Routing/InputDeviceShape.h,
+	src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/InputGuidoFileDeviceShape.h,
+	src/wxGUI/Routing/InputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiDeviceShape.h,
+	src/wxGUI/Routing/InputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/InputMidiFileDeviceShape.h,
+	src/wxGUI/Routing/NewBoxShape.cpp, src/wxGUI/Routing/NewBoxShape.h,
+	src/wxGUI/Routing/NewInputDeviceShape.cpp,
+	src/wxGUI/Routing/NewInputDeviceShape.h,
+	src/wxGUI/Routing/NewOutputDeviceShape.cpp,
+	src/wxGUI/Routing/NewOutputDeviceShape.h,
+	src/wxGUI/Routing/OutputDevDlg.cpp,
+	src/wxGUI/Routing/OutputDevDlg.h,
+	src/wxGUI/Routing/OutputDeviceShape.cpp,
+	src/wxGUI/Routing/OutputDeviceShape.h,
+	src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp,
+	src/wxGUI/Routing/OutputGuidoFileDeviceShape.h,
+	src/wxGUI/Routing/OutputMidiDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiDeviceShape.h,
+	src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp,
+	src/wxGUI/Routing/OutputMidiFileDeviceShape.h,
+	src/wxGUI/Routing/RouteIcons.cpp, src/wxGUI/Routing/RouteIcons.h,
+	src/wxGUI/Routing/RouteLists.h, src/wxGUI/bitmaps/copy.xpm,
+	src/wxGUI/bitmaps/cut.xpm, src/wxGUI/bitmaps/help.xpm,
+	src/wxGUI/bitmaps/new.xpm, src/wxGUI/bitmaps/open.xpm,
+	src/wxGUI/bitmaps/paste.xpm, src/wxGUI/bitmaps/preview.xpm,
+	src/wxGUI/bitmaps/print.xpm, src/wxGUI/bitmaps/save.xpm,
+	src/wxGUI/configtree.cpp, src/wxGUI/configtree.h,
+	src/wxGUI/generic/.cvsignore, src/wxGUI/generic/mhArray.h,
+	src/wxGUI/generic/mhDefs.h, src/wxGUI/generic/muconvauto.cpp,
+	src/wxGUI/generic/muconvauto.h, src/wxGUI/generic/mutDebug.cpp,
+	src/wxGUI/generic/mutDebug.h, src/wxGUI/generic/mutDebugFlags.h,
+	src/wxGUI/generic/mxDefs.cpp, src/wxGUI/generic/valNum.cpp,
+	src/wxGUI/generic/valNum.h, src/wxGUI/generic/valRadio.cpp,
+	src/wxGUI/generic/valRadio.h, src/wxGUI/resourceload.h,
+	src/wxGUI/stclanguage.cpp, src/wxGUI/stclanguage.h,
+	src/wxintl/.cvsignore, src/wxintl/Makefile.am,
+	src/wxintl/gettext.c, src/wxintl/libintl.h, src/xrc/.cvsignore,
+	src/xrc/Mutabor.xrc, src/xrc/reslocale.cpp, src/xrc/wxresource.cpp,
+	src/xrc/wxresource.h, upx.bat, wxintl/.cvsignore,
+	wxintl/Makefile.am, wxintl/gettext.c, wxintl/libintl.h,
+	xrc/.cvsignore, xrc/Mutabor.xrc, xrc/reslocale.cpp,
+	xrc/wxresource.cpp, xrc/wxresource.h: Moved some files around
+
+2012-06-09  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* : Fix Germen Help file
+
+	* muwx/IconShape.cpp: macro for ending event table
+
+	* muwx/Routing/BoxShape.cpp: Fix border on focusing box shapes.
+
+2012-05-01  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* debian/changelog, debian/control: release a debian and ubuntu
+	packages using ppa
+
+	* Makefile.am: Distribute examples and icon
+
+2012-04-16  Tobias Schlemmer <keinstein@users.berlios.de>
+
+	* make a running .spec file
+
 2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
 
 	* osdep/win/Mutabor.nsi, po/de.po, po/en.po, po/en_GB.po,
 	po/mutabor.pot, po/ru.po: Build for release 4.0.0beta1
-
-2012-04-15  Tobias Schlemmer <keinstein@users.berlios.de>
 
 	* Makefile.am, doc/Makefile.am, doc/Makefile.cmn,
 	doc/localized/de/Makefile.am, doc/localized/en/Makefile.am: Fix
