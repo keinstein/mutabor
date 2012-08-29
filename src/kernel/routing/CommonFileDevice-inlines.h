@@ -300,6 +300,7 @@ namespace mutabor {
 			Stop();
 		case DeviceStop:
 			e = 0;
+			break;
 		case DeviceTimingError:
 		case DeviceCompileError:
 		default:
