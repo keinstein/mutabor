@@ -2,15 +2,16 @@
 !define PACKAGE_NAME "Mutabor"
 !define PACKAGE_VERSION "4.0.0beta2"
 !define NAME_VERSION "${PACKAGE_NAME} ${PACKAGE_VERSION}"
-!define EXENAME "mutabor"
+!define NAME_VERSION_BUNDLE "${PACKAGE_NAME}-${PACKAGE_VERSION}"
+!define EXENAME "mutabor.exe"
 !define MUTSHORTCUTDIR "$SMPROGRAMS\${PACKAGE_NAME}"
 !define INSTALLATIONNAME "${PACKAGE_NAME}"
-!define srcdir "../../mutabor-git"
+!define srcdir "../../../mutabor-git"
 
 Name "${NAME_VERSION}"
 
 ; name the installer
-outFile "${NAME_VERSION}.exe"
+outFile "${NAME_VERSION_BUNDLE}.exe"
  
 ; define the directory to install to, the desktop in this case as specified  
 ; by the predefined $DESKTOP variable

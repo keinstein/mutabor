@@ -558,7 +558,7 @@ endif
 
 
 
-nsis: installwin
+nsis: installwin $(top_srcdir)/osdep/win/Mutabor.nsi
 	rm -f mutabor-files.nsh
 	rm -f mutabor-dirs.nsh
 	rm -f mutabor-uninst-files.nsh
