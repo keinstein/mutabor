@@ -37,3 +37,4 @@ $(BUILT_SOURCES):makeclass.pl
 @COND_PERL_TRUE@@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mutfile.Po@am__quote@
 
 
+DISTCLEANFILES+= ./$(DEPDIR)/*.Po

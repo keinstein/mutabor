@@ -96,7 +96,7 @@ AC_PROG_CC
 AC_PROG_CXX
 
 
-
+DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
 	AS_HELP_STRING([--enable-debug],[Enable extra debugging functionality]),
@@ -529,7 +529,7 @@ for v in host build target; do
     fi 
 done 
 # propagate certain configure options to DISTCHECK_CONFIGURE_FLAGS 
-for v in with-wx-config with-wx-dir with-boost ; do 
+for v in with-wx-config with-wx-dir with-boost with-cppunit-prefix with-cppunit-exec-prefix ; do 
     tmp="`echo "$v" | sed -e 's/-/_/g'`"
     eval s=\${$tmp+set}
     if test "$s" = 'set' ; then 
@@ -562,10 +562,6 @@ src/kernel/routing/midi/Makefile
 src/kernel/routing/midi/tests/Makefile
 src/kernel/routing/tests/Makefile
 src/kernel/tests/Makefile
-src/libmutabor/lextables/Makefile
-src/libmutabor/lextables/tests/Makefile
-src/libmutabor/Makefile
-src/libmutabor/tests/Makefile
 src/tests/Makefile
 src/wxGUI/generic/Makefile
 src/wxGUI/generic/tests/Makefile
@@ -589,7 +585,11 @@ doc/localized/en/Makefile
 Doxyfile
 osdep/linux/OpenSuse.spec
 ])
-dnl AC_CONFIG_FILES([
+dnl  src/libmutabor/lextables/Makefile
+dnl  src/libmutabor/lextables/tests/Makefile
+dnl  src/libmutabor/Makefile
+dnl  src/libmutabor/tests/Makefile
+dnl  dnl AC_CONFIG_FILES([
 dnl libmutabor/Makefile 
 dnl libmutabor/tests/Makefile 
 dnl includes/mutabor/Makefile 

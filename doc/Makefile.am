@@ -1,4 +1,6 @@
 SUBDIRS = localized
+include $(top_srcdir)/common-rules.mk
+
 #RECURSIVE_TARGETS += mac-recursive
 noinst_PROGRAMS = fixhhp htmldecode
 EXTRA_DIST = \

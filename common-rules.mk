@@ -39,7 +39,8 @@ CLEANFILES = \
 	mutabor-cxxprecompiled.h \
 	mutabor-cxxprecompiled.stamp \
 	Mutabor.xrc \
-	$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
+	*.002t.class 
+
 
 INDENTS = $(INDENTSOURCES) $(INDENTHEADERS) $(INLINEHEADERS)
 
@@ -47,6 +48,11 @@ noinst_HEADERS =  $(INDENTHEADERS) \
 		  $(INLINEHEADERS)
 
 mutabordir=$(datadir)/mutabor
+
+DISTCLEANFILES = \
+	libstdc++*.dll \
+	libgcc*.dll \
+	wx*.dll
 
 DLLCOPYPATTERN = \(wx\|mingw\)
 DLLEXEDIR = Mutabor
@@ -259,6 +265,8 @@ installdll:
 #-------------------------------------------------------------------------------------
 # Recursive generation of potfiles.chk
 #-------------------------------------------------------------------------------------
+
+CLEANFILES += POTFILES.tmp POTFILES.tmp.local
 
 potfilechk-recursive:potfilechk-makerecursive
 

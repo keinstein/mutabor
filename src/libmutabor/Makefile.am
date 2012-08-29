@@ -1,4 +1,4 @@
-SUBDIRS = tests
+SUBDIRS = tests lextables
 include $(top_srcdir)/common-rules.mk
 override buildincludedir=$(top_builddir)/includes
 

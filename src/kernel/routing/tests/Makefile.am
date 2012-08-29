@@ -23,7 +23,8 @@ testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
 	main.cpp \
-	RouteTest.h
+	RouteTest.h \
+	CommonFileDeviceTest.h
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \

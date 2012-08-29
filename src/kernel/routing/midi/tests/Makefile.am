@@ -1,9 +1,14 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+CLEANFILES += playmidi1.mid
+
+AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
 check_PROGRAMS = \
 	playmidi1 \
 	midiopenfail1
+
+EXTRA_DIST = midi1_source.mid
 
 check_SCRIPTS = playmidi1.mid
 
@@ -44,7 +49,7 @@ testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
 	main.cpp \
-	DevMidFtest.h
+	DevMidFTest.h
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \

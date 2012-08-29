@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 		std::clog << "Class construction failed." << std::endl;
 		exit(-1);
 	}
-	in -> SetName(_T("playmidi1.mid"));
+	in -> SetName(_T(SRCDIR) _T("/midi1_source.mid"));
 //	mutabor::InputDevice prevent_from_deletion(in);
 	if (!(in -> Open())) {
 		std::clog << "Open faild. Exiting." << std::endl;

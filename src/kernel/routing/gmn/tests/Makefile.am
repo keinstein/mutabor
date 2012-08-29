@@ -1,6 +1,11 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
+CLEANFILES += playgmn1.gmn
+
+AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
+EXTRA_DIST = gmn1_source.gmn
+
 check_PROGRAMS = \
 	playgmn1 \
 	gmnopenfail1

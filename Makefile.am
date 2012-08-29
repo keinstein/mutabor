@@ -12,6 +12,7 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 
+CLEANFILES += POTFILES.tmp2
 
 NOCOMPSOURCES= \
 	src/xrc/wxresource.cpp \
@@ -24,7 +25,7 @@ EXTRA_DIST = config.rpath \
 	debian \
 	lib/libasprintf \
 	Images \
-	src/kernel/mut.y \
+	src/kernel/mut.yy \
 	osdep/macosx/Application_Code.txt \
 	osdep/macosx/background.png \
 	osdep/macosx/background.svg \
@@ -204,6 +205,8 @@ libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 # librtmidi.a
 #-------------------------------------------------------------
 
+CLEANFILES += lib/rtmidi/*.002t.class
+
 librtmidi_a_INLINEHEADERS = \
 		lib/rtmidi/RtError.h \
 		lib/rtmidi/RtMidi.h
@@ -369,6 +372,7 @@ mutabor_SHORTNAME = mutabor
 mutabor_LDADD = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a $(LDADD) $(AM_LDFLAGS)
 
 if COND_WINRC
+CLEANFILES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 BUILT_SOURCES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor_LDADD += $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)
 mutabor.$(EXEEXT):$(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)

@@ -62,7 +62,7 @@ public:
 	void testPlayMidi() 
 	{ 
 		CPPUNIT_ASSERT( in );
-		in -> SetName(_T("playmidi1.mid"));
+		in -> SetName(_T(SRCDIR) _T("/midi1_source.mid"));
 		CPPUNIT_ASSERT((in -> Open()));
 	
 		in -> Play(wxTHREAD_JOINABLE);
