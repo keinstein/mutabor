@@ -553,7 +553,6 @@ for v in with-wx-config with-wx-dir with-boost with-cppunit-prefix with-cppunit-
        eval val=\$`echo $tmp`
        val=`abspath "$val"`
        preserve_flags="${preserve_flags}'--${v}=${val}' " 
-       echo "$preserve_flags"
     fi 
 done 
 DISTCHECK_CONFIGURE_FLAGS="$preserve_flags"
