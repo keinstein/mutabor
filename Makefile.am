@@ -484,8 +484,15 @@ Mutabor.appold:all Mutabor.xrc mutabor update-gmo
 	done
 
 Mutabor.app:all Mutabor.xrc mutabor update-gmo
-	$(MAKE) "prefix=`pwd`/Mutabor.app/Contents" 'bindir=$$(prefix)/MacOS' 'datarootdir=$$(prefix)/Resources' 'libdir=$$(prefix)' \
-		'libexecdir=$$(prefix)/libs' 'localedir=$$(prefix)/locales' 'pkgdatadir=$$(prefix)/Resources' install installwxlocale
+	$(MAKE) "prefix=`pwd`/Mutabor.app/Contents" \
+		'bindir=$$(prefix)/MacOS' \
+		'datarootdir=$$(prefix)/Resources' \
+		'libdir=$$(prefix)' \
+		'libexecdir=$$(prefix)/libs' \
+		'localedir=$$(prefix)/locales' \
+		'pkgdatadir=$$(prefix)/Resources' \
+		'mutabordir=$$(prefix)' \
+		install installwxlocale
 	ls Mutabor.app/Contents/locales/*/LC_MESSAGES/*.mo | \
 	while read file ; do \
 		lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/.*\.mo,\1,g'` ; echo $$lang ;\
@@ -515,16 +522,34 @@ installwinold: mutabor.exe
 		cp $$d Mutabor ; \
 	done
 
+wx_locale_pattern=$(localedir)/$$lang/LC_MESSAGES/wxstd.mo
+if WX_INPLACE
 installwxlocale:
+	echo inplace
+	test -z "$(WX_LOCALE_DIRS)" || { for dir in  $(WX_LOCALE_DIRS) ; \
+	do \
+		(cd "$$dir" && make allmo) ; \
+		ls "$$dir"/*.mo | \
+		while read file ; do \
+			echo \|$$file\| ; \
+			lang=`echo $$file | sed -e 's,^\(.*/\)\([^/]*\)\.mo$$,\2,g'` ; echo $$lang ;\
+			mkdir -p "`dirname $(wx_locale_pattern)`" ; \
+			cp $$file "$(wx_locale_pattern)" ; \
+		done ; \
+	done }
+else
+installwxlocale:
+	echo installed
 	test -z "$(WX_LOCALE_DIRS)" || { for dir in  $(WX_LOCALE_DIRS) ; \
 	do \
 		ls "$$dir"/*/LC_MESSAGES/wxstd.mo | \
 		while read file ; do \
 			lang=`echo $$file | sed -e 's,.*/\([^/]*\)/LC_MESSAGES/wxstd.mo,\1,g'` ; echo $$lang ;\
-			mkdir -p $(localedir)/$$lang/LC_MESSAGES ; \
-			cp $$file $(localedir)/$$lang/LC_MESSAGES ; \
+			mkdir -p "`dirname $(wx_locale_pattern)`" ; \
+			cp $$file "$(wx_locale_pattern)" ; \
 		done ; \
 	done }
+endif
 
 installwin:
 	rm -f Mutabor/mutabor.exe
