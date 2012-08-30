@@ -567,6 +567,7 @@ installwin:
 	for d in GPL-2 LGPL-2.1 ChangeLog; do \
 		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
 	done
+	cp -r $(top_srcdir)/Examples Mutabor
 
 
 #-------------------------------------------------------------------------------------
