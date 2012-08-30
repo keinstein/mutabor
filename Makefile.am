@@ -563,7 +563,7 @@ installwin:
 		'mutabordir=$$(prefix)' \
 		install installwxlocale
 	$(MAKE) DLLLINKFILE="mutabor.exe" installdll
-	for d in GPL-2 LGPL-2.1 ; do \
+	for d in GPL-2 LGPL-2.1 ChangeLog; do \
 		cp $(top_srcdir)/$$d Mutabor/$$d.txt ; \
 	done
 
