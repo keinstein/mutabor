@@ -455,6 +455,7 @@ dmg: dylibbundler
 	cp $(top_srcdir)/osdep/macosx/background.png dmg/Mutabor/.background
 	cp $(top_srcdir)/Images/Icons/icns/Mutabor.icns dmg/Mutabor/.VolumeIcon.icns 
 	ln -s /Applications dmg/Mutabor
+	cp -r $(top_srcdir)/Examples dmg/Mutabor
 	rm -f "$(PACKAGE_NAME)-$(PACKAGE_VERSION).dmg"
 	hdiutil create -srcfolder dmg/Mutabor -volname "$(PACKAGE_NAME)" "$(PACKAGE_NAME)-$(PACKAGE_VERSION)"
 	rm -r dmg/Mutabor
