@@ -271,7 +271,8 @@ namespace mutaborGUI {
 			return vector[nr]; 
 		}
 
-		static void InitializeBoxes() {
+		static void InitializeBoxes(size_t count = MAX_BOX) {
+			vector.resize(count);
 			for (size_t i = 0 ; i < vector.size() ; i++) {
 				vector[i].box = &(mut_box[i]);
 				mut_box[i].userdata = &(vector[i]);
@@ -319,12 +320,7 @@ namespace mutaborGUI {
 		int current_key_tonesystem; // 0
 		int current_key_logic; // 1
 
-		class  BoxVector: public std::vector<BoxData> {
-		public:
-			BoxVector(size_t count):std::vector<BoxData>(count) {
-				BoxData::InitializeBoxes();
-			}
-		};
+		typedef std::vector<BoxData> BoxVector;
 		static BoxVector vector;
 		static BoxData GmnBoxData;
 		static BoxData NoBoxData;

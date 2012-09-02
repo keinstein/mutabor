@@ -807,13 +807,14 @@ namespace mutaborGUI {
 				auimanager.LoadPerspective(auidata,false);
 			config->SetPath(oldpath);
 
-			// some panes might still be hidden
+			// some panes might have incorrect data (e.g. from earlier builds).
 			wxAuiPaneInfoArray & panes = auimanager.GetAllPanes();
 			int pane_i, pane_count = panes.GetCount();
 			for (pane_i = 0; pane_i < pane_count; ++pane_i)
 			{
 				wxAuiPaneInfo& p = panes.Item(pane_i);
 				p.Show();
+				p.DestroyOnClose(true);
 			}
 		}
 
@@ -1043,7 +1044,8 @@ namespace mutaborGUI {
 				   .CloseButton(false)
 				   .MaximizeButton(true)
 				   .Float()
-				   .Caption(Name));
+				   .Caption(Name)
+				   .DestroyOnClose(true));
 		client->SetFocus();
 		auimanager.Update();
 		UpdateBoxMenu();
@@ -1106,9 +1108,7 @@ namespace mutaborGUI {
 		if (openclose) {
 			TextBoxOpen(kind, curBox);
 		} else if (win) {
-			auimanager.DetachPane(win);
-			win->Close();
-			auimanager.Update();
+			CloseClientWindow(win,true);
 		} 
 	}
 
@@ -1145,16 +1145,16 @@ namespace mutaborGUI {
 		wxWindow * win;
 		win = boxdata.GetLogicWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetKeyWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetTonesystemWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetActionsWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 
 		if (update) {
 			auimanager.Update();
@@ -1228,9 +1228,9 @@ namespace mutaborGUI {
 						  -1,
 						  wxDefaultPosition,
 						  wxSize(width, height));
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (other, _T("s:= %s"),s);
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("s:= %s"),s);
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		wxString str;
 
@@ -1239,20 +1239,22 @@ namespace mutaborGUI {
 		else
 			str = wxEmptyString;
 
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (other, _T("pane title = %s"),(const wxChar *)title);
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
 
 		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
 				   .CaptionVisible(true)
 				   .CloseButton(true).MaximizeButton(true)
 				   .Float()
-				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
+				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
+				   .DestroyOnClose(true));
 
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
+		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		client->NewText(str, true);
 
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		if (update_auimanager)
 			auimanager.Update();
@@ -1897,13 +1899,13 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				case WK_NULL:
 					win = boxdata -> GetKeyWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetTonesystemWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetActionsWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetLogicWindow();
 					break;
 				default:
@@ -1911,7 +1913,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					UNREACHABLEC;
 				}
 				if (win)
-					CloseClientWindow(win);
+					CloseClientWindow(win,false);
+				
 			}
 			box = b.next_used;
 		} while (box);

@@ -449,17 +449,20 @@ namespace mutaborGUI {
 		wxMenu * editmenu;
 		wxMenu * filemenu;
 	
-		void CloseClientWindow(wxWindow * w)
+		void CloseClientWindow(wxWindow * w, bool update = true)
 			{
 				mutASSERT(w);
 				if (!w) return;
 
 				w->Disable();
+				// if this attribute is not set, whe have forgotten to set it
+				// it is needed for User interaction
+				mutASSERT(auimanager.GetPane(w).IsDestroyOnClose());
 				// undocumented but does what we want
 				auimanager.ClosePane(auimanager.GetPane(w));
 				DEBUGLOG(other, _T("Detaching pane."));
                                 // should be done by ClosePane: auimanager.DetachPane(w);
-				auimanager.Update();
+				if (update) auimanager.Update();
 
 				DEBUGLOG(other, _T("Closing window."));
 				// should be done by ClosePane:	w->Close(); 

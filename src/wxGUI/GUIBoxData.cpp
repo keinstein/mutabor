@@ -76,11 +76,13 @@
 namespace mutaborGUI {
 	size_t curBox = 0;
 
-	BoxData::BoxVector BoxData::vector = BoxData::BoxVector(MAX_BOX);
+	// don't initialize these classes before WX is intialized
+	BoxData::BoxVector BoxData::vector; 
 	BoxData BoxData::GmnBoxData;
 	BoxData BoxData::NoBoxData;
 	BoxData BoxData::NewBoxData;
-	BoxData::BoxData():shapes(),
+	BoxData::BoxData():box(NULL),
+			   shapes(),
 			   current_logic(),
 			   current_tonesystem(),
 			   current_key_tonesystem(0),

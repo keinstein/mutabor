@@ -192,16 +192,20 @@ namespace mutaborGUI {
 		// installed the catalogs are in the parent directory (because the binary
 		// is in a subdirectory of samples/internat) where we wouldn't find them by
 		// default
-		wxLocale::AddCatalogLookupPathPrefix(_T("."));
-		wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
+#ifdef __WXMSW__
+		data = _T(".");
+		wxLocale::AddCatalogLookupPathPrefix(data);
+//		wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
+#endif
 
 		// Initialize the catalogs we'll be using
 		m_locale.AddCatalog(wxT("mutabor"));
 		m_locale.AddCatalog(wxT("wxstd"));
 #ifdef __LINUX__
 		{
-			wxLogNull noLog;
-			m_locale.AddCatalog(_T("fileutils"));
+//			wxLogNull noLog;
+			data = _T("fileutils");
+			m_locale.AddCatalog(data);
 		}
 #endif
 
@@ -263,7 +267,7 @@ namespace mutaborGUI {
 
 
 
-		// init global objects
+		// init global wx objects
 		// -------------------
 
 		g_printData = new wxPrintData;
@@ -304,6 +308,11 @@ namespace mutaborGUI {
 			std::cerr << "Warning: could not initialize Help system: "
 				  << (const char *)(wxString(_("Help.zip")).ToUTF8())
 				  << std::endl;
+
+
+		// initialize Mutabor bevore the doc manager
+		mutabor::initialize_data();
+		BoxData::InitializeBoxes();
 
 
 		if (!(document_manager=new MutDocManager()))
