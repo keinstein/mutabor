@@ -2834,8 +2834,11 @@ static void check_konsistenz (void)
 		for (lauf = list_of_tonsysteme; lauf; lauf = lauf->next) {
 			check_komplex_intervall (lauf->periode, lauf->name);
 
-			if (lauf->taste < 24  ||  lauf->taste > 108) {
-				fatal_error(47,lauf->taste,mutC_STR(lauf->name)); /* UngÅlt. Taste */
+			if (lauf->taste < MUTABOR_KEYRANGE_MIN_KEY  ||  lauf->taste > MUTABOR_KEYRANGE_MAX_KEY) {
+				fatal_error(47,
+					    lauf->taste,MUTABOR_KEYRANGE_MIN_KEY,
+					    MUTABOR_KEYRANGE_MAX_KEY,
+					    mutC_STR(lauf->name)); /* UngÅlt. Taste */
 			}
 
 			for (ton_lauf = lauf->toene;

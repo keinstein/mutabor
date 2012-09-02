@@ -82,7 +82,10 @@
 #define bzero(s,n) memset((s),0,(n))
 #define bcmp(b1,b2,len) memcmp((b1),(b2),(len))
 
-#define MAX_BREITE 72
+/* originial values were: 72, 36, 96 */
+#define MUTABOR_KEYRANGE_MAX_WIDTH 128
+#define MUTABOR_KEYRANGE_MIN_KEY 0 
+#define MUTABOR_KEYRANGE_MAX_KEY 128
 /* (=Maximale Breite eines Tonsystems */
 #define MAX_MIDI 32
 /* (=Max. Anzahl Bytes in MIDIOUT / MIDIIN) */
@@ -102,7 +105,6 @@ void init_yylex (void);
 struct parameter_liste
 {
 	const char * name;
-
 	struct parameter_liste * next;
 };
 

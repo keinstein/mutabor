@@ -429,10 +429,10 @@ void change_anker(int box, int neu)
 
 	laufzeit_zentrum[box]%=tonsys->breite;
 
-	while (neu<36)
+	while (neu< MUTABOR_KEYRANGE_MIN_KEY)
 		neu += tonsys->breite;
 
-	while (neu>96)
+	while (neu> MUTABOR_KEYRANGE_MAX_KEY)
 		neu -= tonsys->breite;
 
 	free_tonesystem->ton[0]=GET_FREQ(neu,tonsys);
@@ -454,7 +454,7 @@ void change_breite(int box, int neu)
 	int i;
 	
 	DEBUGLOG2(kernel_exec,_T("Box %d got new width: %d"), box, neu);
-	if ( neu>0 && neu < MAX_BREITE ) {
+	if ( neu>0 && neu < MUTABOR_KEYRANGE_MAX_WIDTH ) {
 		if ( neu > tonsys->breite )
 			for (i = tonsys->breite; i < neu; i++)
 				tonsys->ton[i]=GET_FREQ((tonsys->anker+i),tonsys);

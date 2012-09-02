@@ -832,7 +832,7 @@ PATTERNN * expand_pattern (const char * harmonie_name)
 
 	help = (PTRN*) xmalloc (sizeof (PATTERNN));
 
-	for (i=0;i<MAX_BREITE;i++) help->tonigkeit[i]=1; /* Off */
+	for (i=0;i<MUTABOR_KEYRANGE_MAX_WIDTH;i++) help->tonigkeit[i]=1; /* Off */
 
 	for (lauf_taste = the_harmonie->tastenliste;
 	                lauf_taste;

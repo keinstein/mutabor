@@ -79,12 +79,12 @@ typedef struct TSYS
 	int anker;
 	int breite;
 	long periode;
-	long ton[MAX_BREITE];
+	long ton[MUTABOR_KEYRANGE_MAX_WIDTH];
 } tone_system;
 
 typedef struct PTRN
 {
-	int tonigkeit[MAX_BREITE];
+	int tonigkeit[MUTABOR_KEYRANGE_MAX_WIDTH];
 } PATTERNN;
 
 /*****************************
