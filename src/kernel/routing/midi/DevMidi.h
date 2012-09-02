@@ -185,9 +185,8 @@ namespace mutabor {
 		virtual void AddTime(frac time)
 			{};
 
-		virtual void MidiOut(DWORD data, char n);
-		virtual void MidiOut(BYTE * p, char n)
-			{};
+		virtual void MidiOut(DWORD data, size_t n);
+		virtual void MidiOut(BYTE * p, size_t n);
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 

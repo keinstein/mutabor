@@ -586,14 +586,26 @@ namespace mutabor {
 //void Gis(GisToken *token, char turn) {};
 
 #ifdef RTMIDI
-	void OutputMidiPort::MidiOut(DWORD data, char n)
+	void OutputMidiPort::MidiOut(DWORD data, size_t n)
 	{
 		std::vector<unsigned char> message;
 
 		while ( n-- ) {
-			DEBUGLOG (other, _T("sending byte %x"), data & 0xff);
+			DEBUGLOG (midiio, _T("sending byte %x"), data & 0xff);
 			message.push_back(data & 0xFF);
 			data >>= 8;
+		}
+
+		hMidiOut->sendMessage(&message);
+	}
+
+	void OutputMidiPort::MidiOut(BYTE * data, size_t n)
+	{
+		std::vector<unsigned char> message;
+
+		while ( n--) {
+			DEBUGLOG (midiio, _T("sending byte %x"),(int) *data);
+			message.push_back(*(data++) );
 		}
 
 		hMidiOut->sendMessage(&message);
@@ -925,7 +937,7 @@ InputMidiPort:\n\
 		case 0x90: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
 				if ( route->Active )
-					AddKey(Box, (midiCode >> 8) & 0xff, route->GetId());
+					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, route->GetId());
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -941,7 +953,7 @@ InputMidiPort:\n\
 			
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(Box,(midiCode >> 8) & 0xff, route->GetId());
+				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()
@@ -992,7 +1004,7 @@ InputMidiPort:\n\
 
 		if ( Box >= 0 && route->Active )
 			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(Box,midiCode & 0xff);
+				MidiAnalysis(&mut_box[Box],midiCode & 0xff);
 				midiCode >>= 8;
 			}
 	}

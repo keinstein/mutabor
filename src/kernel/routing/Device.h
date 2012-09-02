@@ -571,8 +571,8 @@ namespace mutabor {
 		virtual int  GetChannel(int taste) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
-		virtual void MidiOut(DWORD data, char n) = 0;
-		virtual void MidiOut(BYTE *p, char n) = 0;
+		virtual void MidiOut(DWORD data, size_t n) = 0;
+		virtual void MidiOut(BYTE *p, size_t n) = 0;
 		virtual void Quite(RouteClass * r) = 0;
 		virtual void Panic() {};
 
@@ -1013,7 +1013,8 @@ namespace mutabor {
 
 //frac InReadOn(frac time);
 
-	void MidiOut(int box, DWORD data, char n = -1);
+	
+	void MidiOut(mutabor_box_type * box, struct midiliste * outliste);
 
 	void NotesCorrect(int box);
 

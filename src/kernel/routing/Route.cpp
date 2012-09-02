@@ -3,7 +3,7 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Route.cpp,v 1.9 2011/10/02 16:58:41 keinstein Exp $
+ $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -11,60 +11,6 @@
  * \version $Revision: 1.9 $
  * \license GPL
  *
- * $Log: Route.cpp,v $
- * Revision 1.9  2011/10/02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.8  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.7  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.6  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.3  2011-01-29 20:00:14  keinstein
- * include Device.h
- *
- * Revision 1.2  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.5  2010-09-29 15:06:40  keinstein
- * Reset config before saving routing information and fix two bugs concerned with the deletion of boxes
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.3.2.2  2010-07-06 09:06:26  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.3.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
  *
  *
  ********************************************************************
@@ -81,6 +27,7 @@
 #include "Device.h"
 #include <algorithm>
 #include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/kernel/GrafKern.h"
 
 namespace mutabor {
 // Route ------------------------------------------------------------
@@ -640,6 +587,11 @@ TRouteClass<I,O>:\n\
 		mutASSERT(oldpath == config.GetPath());
 	}
 
+
+	void initialize_data() 
+	{
+		mutabor_set_midi_callback(MidiOut);
+	}
 }
 
 

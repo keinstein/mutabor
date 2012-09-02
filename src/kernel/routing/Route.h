@@ -690,6 +690,7 @@ namespace mutabor {
 	    that can be used in such situations */
 	extern Route NullRoute; 
 
+	void initialize_data();
 
 }
 #endif /* PRECOMPILED */

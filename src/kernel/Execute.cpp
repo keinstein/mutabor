@@ -362,10 +362,14 @@ void execute_aktion (int box, struct do_aktion * aktion)
 		break;
 
 		case aufruf_midi_out: {
+			if (mutabor_midi_callback) {
+				mutabor_midi_callback(box,aktion->u.aufruf_midi_out.out_liste);
+			}
+/*
 			struct midiliste * lauf;
 			unsigned long data = 0, faktor = 1, n = 0;
 			;
-			TRACE;
+			DEBUGLOG2(kernel_exec,_T(""));
 
 			for (lauf = aktion->u.aufruf_midi_out.out_liste;
 			                lauf && faktor ;
@@ -375,11 +379,12 @@ void execute_aktion (int box, struct do_aktion * aktion)
 				n++;
 			}
 			mutabor::MidiOut(box, data, n);
+*/
 		}
 		break;
 
 		case aufruf_umst_umst_bund:
-			TRACE;
+			DEBUGLOG2(kernel_exec,_T(""));
 			wxLogWarning(_("Unhandled case path: aufruf_umst_umst_bund"));
 			UNREACHABLE;
 			break;

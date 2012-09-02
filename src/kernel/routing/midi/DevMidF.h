@@ -231,8 +231,8 @@ namespace mutabor {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		virtual void MidiOut(DWORD data, char n);
-		virtual void MidiOut(BYTE *p, char n);
+		virtual void MidiOut(DWORD data, size_t n);
+		virtual void MidiOut(BYTE *p, size_t n);
 		virtual void Quite(RouteClass * r);
 
 		virtual void SetName(const wxString & s) 

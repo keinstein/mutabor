@@ -608,7 +608,7 @@ namespace mutabor {
 	void OutputMidiFile::Sustain(char on, int channel)
 	{ mutUnused(on); mutUnused(channel); STUBC;}
 
-	void OutputMidiFile::MidiOut(DWORD data, char n)
+	void OutputMidiFile::MidiOut(DWORD data, size_t n)
 	{
 		Tracks.WriteDelta();
 
@@ -621,7 +621,7 @@ namespace mutabor {
 		}
 	}
 
-	void OutputMidiFile::MidiOut(BYTE *p, char n)
+	void OutputMidiFile::MidiOut(BYTE *p, size_t n)
 	{
 		Tracks.WriteDelta();
 

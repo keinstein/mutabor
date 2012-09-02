@@ -185,10 +185,10 @@ namespace mutabor {
 			}
 
 		virtual void Gis(GisToken *token, char turn);
-		virtual void MidiOut(DWORD data, char n)
+		virtual void MidiOut(DWORD data, size_t n)
 			{};
 
-		virtual void MidiOut(BYTE *p, char n)
+		virtual void MidiOut(BYTE *p, size_t n)
 			{};
 
 		virtual void AddTime(frac time)

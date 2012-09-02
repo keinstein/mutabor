@@ -630,19 +630,30 @@ InputDeviceClass:\n\
 	}
 
 
-	void MidiOut(int box, DWORD data, char n)
+	void MidiOut(mutabor_box_type * box, struct midiliste * outliste)
 	{
 		DEBUGLOG2(smartptr,_T(""));
+
+		size_t laenge = midi_list_laenge(outliste);
+		BYTE * data = (BYTE *)malloc(laenge * sizeof(BYTE));
+		struct midiliste * cursor = outliste;
+		BYTE * bcursor=data;
+		while (cursor != NULL) {
+			(*bcursor++) = (BYTE) cursor->midi_code;
+			cursor = cursor -> next;
+		}
+	       
 		const routeListType & list = RouteClass::GetRouteList();
 		for (routeListType::const_iterator R = list.begin(); 
 		     R != list.end(); R++) {
 			OutputDevice out;
-			if ( (*R)->GetBox() == box && 
+			if ( (*R)->GetBox() == box->id && 
 			     (out = (*R)->GetOutputDevice())) {
-				out -> MidiOut(data, n);
+				out -> MidiOut(data, laenge);
 			}
 		}
-		DEBUGLOG2(smartptr,_T(""));
+
+		free(data);
 	}
 
 	void NotesCorrect(int box)
