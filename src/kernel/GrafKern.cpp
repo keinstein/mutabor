@@ -2,79 +2,11 @@
  ********************************************************************
  * Output operations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/GrafKern.cpp,v 1.19 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.19 $
  * \license GPL
- *
- * $Log: GrafKern.cpp,v $
- * Revision 1.19  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.18  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.17  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.16  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.15  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.14  2011-09-06 08:09:20  keinstein
- * fix a compiler error showing a corruped error message
- *
- * Revision 1.13  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.12  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.11.2.2  2010-03-30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.11.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.11  2008/10/27 15:00:16  keinstein
- * Adopted VC8-changes to any
- *
- * Revision 1.10  2008/10/19 23:08:32  krausze
- * Dateien und Anpassungen für Microsoft Visual Studio 8 (VC8)
- *
- * Revision 1.9  2008/10/10 08:33:19  keinstein
- * make compile on windws
- *
- * Revision 1.8  2008/10/01 09:30:47  keinstein
- * fixed inclution for XCode build
- *
- * Revision 1.7  2008/08/18 15:02:41  keinstein
- * fixed some const char * warnings
- *
- * Revision 1.6  2008/06/02 16:00:12  keinstein
- * UTF-8
- * don't include Mutabor.rh (already included)
- * access compile dialog static text directly to display line number
- * fix formatting of line numbers
- *
- * Revision 1.5  2006/01/18 15:28:03  keinstein
- * Get translations of error strings
- *
- * Revision 1.4  2005/11/07 19:42:54  keinstein
- * Some additional changes
  *
  *
  ********************************************************************
@@ -142,6 +74,17 @@ char sd1[100], sd2[100];
 char Fmeldung[255];
 
 #endif
+
+mutabor_midi_callback_type mutabor_midi_callback = NULL;
+
+mutabor_midi_callback_type mutabor_set_midi_callback(mutabor_midi_callback_type callback) {
+	mutabor_midi_callback_type old = mutabor_midi_callback;
+	mutabor_midi_callback = callback;
+	return old;
+}
+mutabor_midi_callback_type mutabor_get_midi_callback() {
+	return mutabor_midi_callback;
+}
 
 
 // Aktionen ---------------------------------------------------------
@@ -357,6 +300,8 @@ void laufzeit_message(const char * Meldung )
 	}
 }
 
+#if 0 
+/* must be somewhere else */
 void init_laufzeit_protokoll( void )
 
 {
@@ -378,8 +323,10 @@ void laufzeit_protokoll(const char * formatstring , ... )
 	laufzeit_message (Fmeldung);
 }
 
-#ifdef MUTWIN
+#endif
 
+#ifdef MUTWIN
+#if 0
 char* pascal _export GetKeyString(int box, char asTS)
 {
 	init_laufzeit_protokoll();
@@ -404,7 +351,7 @@ char* pascal _export GetTSString(int box, char asTS)
 
 	return protokoll_string;
 }
-
+#endif 
 int pascal _export GetLineNumbers()
 {
 	return protokoll_ausgabezeile;

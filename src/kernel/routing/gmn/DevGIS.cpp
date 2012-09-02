@@ -412,7 +412,7 @@ namespace mutabor {
 		if ( mutStrEq(ParaName, mutT("key")) ) {
 			if ( GetGisType(Para) == GTParaStr )
 ///		KeyboardIn(Box, ((GisParaStr*)Para)->s);
-				KeyboardIn(box, ((GisParaStr*)Para)->s);
+				KeyboardIn(&(mut_box[box]), ((GisParaStr*)Para)->s);
 		}
 
 		if ( mutStrEq(ParaName, mutT("box")) || mutStrEq(ParaName, mutT("instrument")) ) {
@@ -480,10 +480,10 @@ namespace mutabor {
 
 			if ( turn != 1 && route->Active ) {
 				if ( turn )
-					DeleteKey(Box, Key, route->GetId());
+					DeleteKey(&mut_box[Box], Key, route->GetId());
 				else
 
-					AddKey(Box, Key, route->GetId());
+					AddKey(&mut_box[Box], Key, route->GetId());
 			}
 
 			if ( turn != 2 && route->GetOutputDevice() ) {

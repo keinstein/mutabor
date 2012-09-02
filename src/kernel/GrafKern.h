@@ -73,8 +73,10 @@
 // headers
 // ---------------------------------------------------------------------------
 
-#include "Defs.h"
-#include "Errors.h"
+#include "src/kernel/Defs.h"
+#include "src/kernel/Errors.h"
+#include "src/kernel/box.h"
+#include "src/kernel/Interpre.h"
 
 #ifndef MU32_GRAFKERN_H_PRECOMPILED
 #define MU32_GRAFKERN_H_PRECOMPILED
@@ -82,25 +84,30 @@
 
 
 extern char has_gui;
+
+
+typedef void (* mutabor_midi_callback_type) (mutabor_box_type * box, struct midiliste * outliste);
+extern mutabor_midi_callback_type mutabor_midi_callback;
+
+mutabor_midi_callback_type  mutabor_set_midi_callback(mutabor_midi_callback_type callback);
+mutabor_midi_callback_type  mutabor_get_midi_callback();
+
 void scanner_protokoll(int zeichen);
 void AktionenInit();
 
-void AktionenMessage(int box, const char *meldung );
+void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion);
 
 void fatal_error( int nummer, ... ) __attribute__ ((noreturn));
 
 void compiler_warning( int nummer, ... );
 
+/*
 void laufzeit_protokoll(const char * formatstring , ... );
-
 void init_laufzeit_protokoll( void );
-
 void exit_laufzeit_protokoll( void );
-
 void protokoll_aktion(const char * name);
-
 void clear_protokoll_screen( void );
-
+*/
 void calc_declaration_numbers(char withNames = 0);
 
 void show_line_number( int n );

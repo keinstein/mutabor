@@ -111,7 +111,7 @@ void pascal SetDrivers(int *driver);
 char pascal GetChannels(char start, int &base, int &from, int &to, int &thru);
 void pascal SetChannels(int base, int from, int to, int thru);
 void pascal SetAktuellesKeyboardInstrument(int instr);
-int  pascal GetAktuellesKeyboardInstrument();
+mutabor_box_type * pascal GetAktuellesKeyboardInstrument();
 
 #ifndef WX
 void pascal ScanDevices(char *config);

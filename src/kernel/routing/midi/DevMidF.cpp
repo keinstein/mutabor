@@ -1101,7 +1101,7 @@ namespace mutabor {
 		case 0x90: // Note On
 			if ( MIDICODE(2) > 0 ) {
 				if ( route->Active )
-					AddKey(Box, MIDICODE(1), route->GetId());
+					AddKey(&mut_box[Box], MIDICODE(1), route->GetId());
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -1117,7 +1117,7 @@ namespace mutabor {
 
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(Box, MIDICODE(1), route->GetId());
+				DeleteKey(&mut_box[Box], MIDICODE(1), route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()
@@ -1166,7 +1166,7 @@ namespace mutabor {
 
 		if ( Box >= 0 && route->Active )
 			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(Box, MIDICODE(0));
+				MidiAnalysis(&mut_box[Box], MIDICODE(0));
 				midiCode >>= 8;
 			}
 	}

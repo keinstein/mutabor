@@ -12,111 +12,6 @@
  * \version $Revision: 1.11 $
  * \license GPL
  *
- * $Log: Device.h,v $
- * Revision 1.11  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.10  2011-10-02 16:58:40  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.9  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.8  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.7  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.6  2011-09-04 12:02:08  keinstein
- * require wxWidgets 2.8.5 configure.in
- *
- * Revision 1.5  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.3  2010-11-21 23:39:00  keinstein
- * some corrections for allowing debuild to complete
- *
- * Revision 1.2  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.7  2010-11-18 21:46:14  keinstein
- * MutFrame: get rid of OnIdle (this may break something, but saves much more CPU cycles
- * Some further steps to get rid of EDevice*
- *
- * Revision 1.1.2.6  2010-11-14 21:28:38  keinstein
- * implement loading and saving old files with new routing system
- *
- * Revision 1.1.2.5  2010-09-29 15:06:40  keinstein
- * Reset config before saving routing information and fix two bugs concerned with the deletion of boxes
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.9.2.13  2010-07-06 09:06:26  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.9.2.12  2010/06/22 15:05:45  keinstein
- * debugging segfault in route check after replacement of MutOutputDevice
- *
- * Revision 1.9.2.11  2010/06/21 14:28:12  keinstein
- * implement deletion of output devices
- *
- * Revision 1.9.2.10  2010/06/15 14:30:14  keinstein
- * allow deleting of input devices in route window
- * several bug fixes
- * rudimentary box deletion support
- *
- * Revision 1.9.2.9  2010/05/07 11:40:27  keinstein
- * actual_settings
- *
- * Revision 1.9.2.8  2010/04/26 15:53:05  keinstein
- * BoxDlg reacts on “Remove Route”. Implementation of routing must be checked.;
- *
- * Revision 1.9.2.7  2010/04/20 17:41:38  keinstein
- * One step towards using Mutabor: Activation of a logic now honours the state of the Device Editor.
- *
- * Revision 1.9.2.6  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.9.2.5  2010/03/30 08:40:15  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.9.2.4  2010/02/15 12:08:20  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.9.2.3  2010/01/14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.9.2.2  2009/11/03 12:39:30  keinstein
- * input device dialog: Allow to edit input devices
- * fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
- *
- * Revision 1.9.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
  *
  *
  ********************************************************************
@@ -1016,7 +911,7 @@ namespace mutabor {
 	
 	void MidiOut(mutabor_box_type * box, struct midiliste * outliste);
 
-	void NotesCorrect(int box);
+	void NotesCorrect(mutabor_box_type *  box);
 
 	int GetChannel(int box, int taste);
 

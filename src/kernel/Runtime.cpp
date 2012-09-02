@@ -330,9 +330,10 @@ bool pascal _export CheckNeedsRealTime() {
 
 struct keyboard_ereignis *last;
 
-char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &key, int box) {
-	if ( box != -1 )
-		last = first_keyboard[box];
+char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box) {
+	mutASSERT(box != NULL);
+	if ( box -> id != -1 )
+		last = box->first_keyboard;
 	else
 		if ( last ) last = last->next;
 
@@ -354,7 +355,7 @@ char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &
 
 char pascal _export IsLogicKey(char key) {
 
-	struct keyboard_ereignis *last = first_keyboard[aktuelle_keyboard_box];
+	struct keyboard_ereignis *last = current_computer_keyboard_box->first_keyboard;
 
 	while ( last ) {
 		if ( key == last->taste )
@@ -366,21 +367,21 @@ char pascal _export IsLogicKey(char key) {
 	return 2;
 }
 
-bool pascal _export KeyChanged(int box) {
-	int flag = mut_box[box].keys_changed;
-	mut_box[box].keys_changed = 0;
+bool pascal _export KeyChanged(mutabor_box_type * box) {
+	int flag = box->keys_changed;
+	box->keys_changed = 0;
 	return flag;
 }
 
-tone_system last_tonsystem[MAX_BOX];
+//tone_system last_tonsystem[MAX_BOX]; moved to box
 
-bool pascal _export TSChanged(int box) {
-	int flag = memcmp(&(last_tonsystem[box]),
-			  mut_box[box].tonesystem,
+bool pascal _export TSChanged(mutabor_box_type * box) {
+	int flag = memcmp(&(box->last_tonesystem),
+			  box->tonesystem,
 			  (2*sizeof(int)) + sizeof(long) +
-			  (mut_box[box].tonesystem->breite*
+			  (box->tonesystem->breite*
 			   sizeof(long)) );
-	last_tonsystem[box] = *(mut_box[box].tonesystem);
+	box->last_tonesystem = *(box->tonesystem);
 	return flag;
 }
 
@@ -427,12 +428,12 @@ void pascal _export SetChannels(int base, int from, int to, int thru) {
 	get_instrument_dekl (base, from, to, thru, &list_of_config_instrumente);
 }
 
-void pascal _export SetAktuellesKeyboardInstrument(int instr) {
-	aktuelle_keyboard_box = instr;
+void pascal _export SetAktuellesKeyboardInstrument(mutabor_box_type * box) {
+	current_computer_keyboard_box = box;
 }
 
-int pascal _export GetAktuellesKeyboardInstrument() {
-	return aktuelle_keyboard_box;
+mutabor_box_type * pascal _export GetAktuellesKeyboardInstrument() {
+	return current_computer_keyboard_box;
 }
 
 // scan-Hilfsfunktionen ---------------------------------------------

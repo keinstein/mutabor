@@ -114,7 +114,7 @@ void gis_notes_correct( int instr, TONSYSTEM * tonsys )
   for (i=1; i<=16 ; i++ )
 	 if (ton_auf_kanal[i].taste &&
 		  ausgabe_instrument[ton_auf_kanal[i].id >> 8][AI_UMLEIT] == instr &&
-		  ton_auf_kanal[i].id != last_note_id[instr])
+		  ton_auf_kanal[i].id != last_note_id[instr]) // this field has been deletd as this code is commented out.
 	{
 	  k_alt=ton_auf_kanal[i].key;
 	  f_alt=ton_auf_kanal[i].fine;

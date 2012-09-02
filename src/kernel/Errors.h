@@ -141,7 +141,7 @@ const mutChar * Error_text[] =
     / * 45 * /
     N_("Bad MIDI channel (valid: 1...16)"),
     N_("Bad interval value in %s"),
-    N_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
+    N_("Bad key %d (valid: 36...96 (in tonesystem %s)"),
     N_("Not-complex tone in retuning %s ( %s )"),
     N_("Bad value in %s"), / * (allgemein) * /
     N_("Bad MIDI-Code in logic %s (expecting %s )"),

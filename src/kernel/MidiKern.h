@@ -64,11 +64,6 @@
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 
-extern "C"
-{
-	void pascal _export KeyboardAnalyse(int box, int taste, char isLogic);
-	void pascal _export KeyboardAnalyseSimple(int box, int taste);
-}
 
 // berechnet die Tonigkeit einer Taste bzgl. tonsystem
 #define GET_INDEX(taste,tonsystem)                \
