@@ -62,9 +62,15 @@
               GET_ABSTAND(taste,(tonsystem))  +                         \
                    (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
 
-#define ZWZ 1.059463094 // 12.Wurzel 2
-#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((float)x)/(double)16777216.0))-69))
-#define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
+#define ZWZ pow(2.0l,1.0l/12.0l)// 12 √ 2
+
+#define LONG_TO_HERTZ( freq ) (440.0*pow(2.0l,((double)(freq-69*0x01000000) / ((double) (0x01000000*12)))))
+/* 440 * (12 √ 2) ^ (pitch difference to “a440” in half tones)  */
+
+/** Despite its name the following macro translates a long value into halftones.
+ *  Cents are easy to deduce: they are the first two decimals.
+ */
+#define LONG_TO_CENT( freq ) ( (double)(freq) / ((double) 0x01000000))
 
 #endif /* precompiled */
 #endif
