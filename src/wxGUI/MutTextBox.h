@@ -116,6 +116,36 @@ public:
 	             const wxSize& size = wxDefaultSize);
 
 	void UpdateUI(wxCommandEvent& event);
+	
+	/** 
+	 * Get the string describing the current key configuration of our box.
+	 * 
+	 * This function collects key data from the box of the object and updates the corresponding list.
+	 * 
+	 * \param asTS bool if true frequencies will be shown as absolute cents otherwise relative to the previous key.
+	 */
+	void GetKeys(bool asTS);
+
+	/** 
+	 * Update data to match the current tone system.
+	 * 
+	 * \param asTS bool if true frequencies will be shown as absolute cents otherwise relative to the previous key.
+	 */
+	void GetToneSystem(bool asTS);
+
+	/** 
+	 * Update date to match the list of all actions executed at sometime in any box.
+	 * 
+	 */
+
+	void GetAllActions();
+
+
+	/** 
+	 * Update date to match the list of all actions executed at sometime in one fixed box.
+	 * 
+	 */
+	void GetBoxActions();
 
 	void NewText(char *s, bool newTitle = false);
 

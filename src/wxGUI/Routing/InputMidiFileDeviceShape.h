@@ -227,7 +227,7 @@ namespace mutaborGUI {
 		wxFileName fileName;
 
 	private:
-		DECLARE_DYNAMIC_CLASS(MutInputMidiFileDeviceShape);
+		DECLARE_DYNAMIC_CLASS(MutInputMidiFileDeviceShape)
 
 	};
 

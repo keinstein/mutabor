@@ -62,7 +62,7 @@ static int bad = 0;
 int OpenFile(const mutString &Name)
 {
 //  File = new STD_PRE::ifstream(Name, STD_PRE::ios::in/*, 0/*int = filebuf::openprot*/);
-	File = new mutOpenITextStream(,Name);
+	File = new mutOpenITextStream(Name);
 #ifdef WX
 	initialized = false;
 	return bad=(!(File->Open()));

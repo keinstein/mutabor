@@ -330,7 +330,7 @@ namespace mutaborGUI {
 #endif 
 
 	private:
-		DECLARE_ABSTRACT_CLASS(MutDeviceShape);
+		DECLARE_ABSTRACT_CLASS(MutDeviceShape)
 	};
 
 

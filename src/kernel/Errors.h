@@ -79,6 +79,7 @@ enum
         MUT_ERR_INVALID_CHAR,
         MUT_ERR_FILE_OPEN_FAILED,
         MUT_ERR_UNFINISHED_TRANSLATION, /* Memory exhausted or insufficient source file */
+	MUT_ERROR_COUNT
 };
 
 /*

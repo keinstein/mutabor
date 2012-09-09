@@ -227,8 +227,8 @@ namespace mutaborGUI {
 		}
 #endif
 	private:
-		DECLARE_DYNAMIC_CLASS(MutIconShape);
-		DECLARE_EVENT_TABLE();
+		DECLARE_DYNAMIC_CLASS(MutIconShape)
+		DECLARE_EVENT_TABLE()
 	};
 
 }

@@ -52,6 +52,7 @@
 #define pascal
 #define CALLBACK
 #endif
+#pragma GCC diagnostic ignored "-Wlong-long"
 #define mutint64 int_fast64_t
 #define _export
 #else // not WX
@@ -107,8 +108,10 @@
 	wxFFileOutputStream name (filename, _T("wb"))
 #define mutOpenIFstream(name,filename) \
 	wxFFileInputStream name (filename, _T("rb"))
-#define mutOpenITextStream(name, filename) \
-	wxTextFile name (filename)
+//#define mutOpenITextStream(name, filename)	\
+//	wxTextFile name (filename)
+#define mutOpenITextStream(filename) \
+	wxTextFile (filename)
 
 #define mutWriteStream(stream,data,count) \
 	(stream).Write(data,count)

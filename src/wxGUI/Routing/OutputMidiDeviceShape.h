@@ -143,7 +143,7 @@ namespace mutaborGUI {
 		}
 
 	private:
-		DECLARE_DYNAMIC_CLASS(MutOutputMidiDeviceShape);
+		DECLARE_DYNAMIC_CLASS(MutOutputMidiDeviceShape)
 
 	};
 

@@ -345,7 +345,7 @@ namespace mutaborGUI {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 	private:
-		DECLARE_DYNAMIC_CLASS(MutDeviceShape);
+		DECLARE_DYNAMIC_CLASS(MutDeviceShape)
 	};
 
 
