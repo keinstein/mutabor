@@ -96,6 +96,7 @@ void MutResetKeys()
    that will be assigned to the boxes via pointers later. */
 void GlobalReset()
 {
+#pragma message "tonesystem_memory should be box specific to be thread proof"
 	for (int i = 0; i < MAX_BOX; i++) {
 		tonesystem_memory[i] = tonesystem_init;
 		mut_box[i].tonesystem = tonesystem_memory + i;
@@ -607,40 +608,40 @@ void HarmonyAnalysis(mutabor_box_type * box, PATTERNN * pattern )
 
 
 // die taste in box wird in die Listen (pattern, liegende_taste) aufgenommen
-void AddKey( mutabor_box_type * box, int taste, size_t id, void * userdata)
+void AddKey( mutabor_box_type * box, int taste, size_t id, size_t channel, void * userdata)
 {          
 	mutabor_key_type *new_key = mutabor_create_key_in_box(box);
 	new_key->number = taste;
+	new_key->channel = channel;
 	new_key->id = id;
 	new_key->userdata = userdata;
 	
-	box->pattern.tonigkeit[GET_INDEX(taste,box->tonesystem)]++;
-	HarmonyAnalysis(box, &(box->pattern));
+	if (box->tonesystem && box->tonesystem != NULL) {
+		box->pattern.tonigkeit[GET_INDEX(taste,box->tonesystem)]++;
+		HarmonyAnalysis(box, &(box->pattern));
+	}
 	KEY_CHANGED(box);
 }
 
 // die taste in box wird aus den Listen (pattern, liegende_taste) gestrichen */
-void DeleteKey( mutabor_box_type * box, int taste, size_t id)
+void DeleteKey( mutabor_box_type * box, int taste, size_t id, size_t channel)
 {
 	size_t index=0, oldindex=0;
 	DEBUGLOG2(kernel_exec,_T(""));
-	mutabor_key_type * key = mutabor_find_key_in_box(box,0);
-	if (key == NULL) return;
-	if (key->number == taste && key ->id == id ) {
-		mutabor_delete_key_in_box(box,0);
-		return;
-	}
-	do {
-		index = mutabor_find_key_in_box_by_key(box, taste, index);
-		if (key == NULL) return;
-		oldindex = index;
+	mutabor_key_type * key;
+	while ((key = mutabor_find_key_in_box(box,index)) != NULL) {
+		if (key->number == taste && key ->id == id && key -> channel == channel) 
+			break;
 		index = key->next;
-	} while (key->id != id);
+	}
+
+	if (key == NULL) return;
+	mutabor_delete_key_in_box(box,index);
 	
-	mutabor_delete_key_in_box(box,oldindex);
-	
-	box->pattern.tonigkeit[GET_INDEX(taste,box->tonesystem)]--;
-	HarmonyAnalysis(box, &(box->pattern));
+	if (box->tonesystem) {
+		box->pattern.tonigkeit[GET_INDEX(taste,box->tonesystem)]--;
+		HarmonyAnalysis(box, &(box->pattern));
+	}
 	KEY_CHANGED(box);
 
 /* This code is a little bit slower than the old one but it preserves the order of the keys.*/
@@ -767,7 +768,7 @@ void protokoll_aktuelles_tonsystem( mutabor_box_type * box )
 		}
 	}
 
-	exit_laufzeit_protokoll( );
+exit_laufzeit_protokoll( );
 }
 
 #define SHOW_CHANNEL

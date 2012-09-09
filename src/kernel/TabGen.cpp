@@ -363,6 +363,9 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 					    struct logik * the_logik)
 {
 
+
+	mutASSERT(the_logik != NULL);
+
 	struct do_aktion * help;
 	int i;
 	TRACE;
@@ -448,9 +451,7 @@ static struct case_element * expand_case_liste (mutabor_box_type * box,
 	TRACE;
 
 	struct case_element * start_liste = NULL;
-
 	struct case_element ** ende_liste = & start_liste;
-
 	struct case_liste * lauf_liste;
 
 	for (lauf_liste = the_liste; lauf_liste; lauf_liste = lauf_liste -> next)
@@ -650,14 +651,12 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		        the_umstimmung->u.umstimmung_midi_out.out_liste;
 
 		help -> next = NULL;
-
 		return help;
 
 		/*        break; */
 
 	default:
 		fatal_error (0, __FILE__, __LINE__);
-
 		return NULL;
 
 	}
@@ -783,7 +782,7 @@ PATTERNN * expand_pattern (const char * harmonie_name)
 }
 
 
-void insert_in_globale_liste (int instrument, struct logik * lauf)
+void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 
 {
 
@@ -792,6 +791,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 	struct midi_ereignis     ** temp_midi;
 
 	TRACE;
+	mutASSERT(lauf && lauf != NULL);
 
 	if (lauf->ausloeser)
 	{
@@ -799,12 +799,13 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 
 		case ausloeser_harmonie:
 			TRACE;
+#pragma message ("using constant lauf->ausloeser->u.ausloeser_harmonie.vortaste -2 should be changed")
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
 				/* Dann unmöglicher Harmonieauslöser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & mut_box[instrument].first_harmony;
+			for (temp_harmonie = &box->first_harmony;
 			                *temp_harmonie;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -828,7 +829,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & mut_box[instrument].first_harmony;
+			for (temp_harmonie = & box->first_harmony;
 			                *temp_harmonie;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -848,7 +849,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 		case ausloeser_taste:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_keyboard = & mut_box[instrument].first_keyboard;
+			for (temp_keyboard = & box->first_keyboard;
 			                *temp_keyboard;
 			                temp_keyboard = & (*temp_keyboard)->next)
 				;
@@ -864,7 +865,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 		case ausloeser_midi_in:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_midi = & mut_box[instrument].first_midi;
+			for (temp_midi = & box->first_midi;
 			                *temp_midi;
 			                temp_midi = & (*temp_midi)->next)
 				;
@@ -889,7 +890,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 	}
 }
 
-void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
+void insert_in_lokale_liste (mutabor_box_type * box, int logiknr, struct anweisung * lauf,
 
                              const char * name_der_logik)
 {
@@ -909,7 +910,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & box->first_harmony;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
 			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -917,15 +918,10 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 			*temp_harmonie = (harmonie_ereignis*) xmalloc( (size_t)sizeof(struct harmonie_ereignis));
 
 			(*temp_harmonie) -> pattern =expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie.name) ;
-
 			(*temp_harmonie) -> ist_harmonieform=0;
-
-			(*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
-
+ 			(*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
 			(*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie.nachtaste ;
-
 			(*temp_harmonie) -> name=name_der_logik;
-
 			(*temp_harmonie) -> aktion=
 			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
@@ -940,7 +936,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & box->first_harmony;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
 			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -967,7 +963,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 		case ausloeser_default:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & box->first_harmony;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
 			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -976,18 +972,15 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 
 			(*temp_harmonie) -> pattern=NULL ;
 
+#pragma message "Do not use integer constants!"
 			(*temp_harmonie) -> ist_harmonieform=2;
-
 			/* 2 als Wert für ANSONSTEN */
 
 			(*temp_harmonie) -> vortaste=0 ;
-
 			(*temp_harmonie) -> nachtaste=0 ;
-
 			(*temp_harmonie) -> name=name_der_logik;
-
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (box, lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_harmonie) -> next=NULL;
 
@@ -996,7 +989,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 		case ausloeser_taste:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_keyboard = & box->first_keyboard;
+			for (temp_keyboard = &box->first_local_keyboard[logiknr];
 			                *temp_keyboard != NULL;
 			                temp_keyboard = & (*temp_keyboard)->next)
 				;
@@ -1008,7 +1001,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 			(*temp_keyboard) -> name=name_der_logik;
 
 			(*temp_keyboard) -> aktion=
-			        expand_aktions_liste (box, lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_keyboard) -> next=NULL;
 
@@ -1017,7 +1010,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 		case ausloeser_midi_in:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_midi = & box->first_midi;
+			for (temp_midi = &box->first_local_midi[logiknr];
 			                *temp_midi != NULL;
 			                temp_midi = & (*temp_midi)->next)
 				;
@@ -1033,7 +1026,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 			(*temp_midi) -> name=name_der_logik;
 
 			(*temp_midi) -> aktion=
-			        expand_aktions_liste (box, lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_midi) -> next = NULL;
 
@@ -1050,65 +1043,45 @@ void insert_in_lokale_liste (mutabor_box_type * box, struct anweisung * lauf,
 static void expandiere_in_globale_liste (void)
 {
 
-	struct harmonie_ereignis * lauf_harmonie [MAX_BOX];
-
-	struct keyboard_ereignis * lauf_keyboard [MAX_BOX];
-
-	struct midi_ereignis     * lauf_midi     [MAX_BOX];
+	struct harmonie_ereignis * lauf_harmonie;
+	struct keyboard_ereignis * lauf_keyboard;
+	struct midi_ereignis     * lauf_midi    ;
 	int i;
 	
 	TRACE;
 
 	for (i=0; i<MAX_BOX; i++) {
-		lauf_harmonie[i] = mut_box[i].first_harmony;
-		lauf_keyboard[i] = mut_box[i].first_keyboard;
-		lauf_midi    [i] = mut_box[i].first_midi;
-	}
+		mutabor_box_type * box = &mut_box[i];
 
-	while (lauf_harmonie[0]) {
-		int j;
+		lauf_harmonie = box->first_harmony;
+		while (lauf_harmonie) {
+			mutASSERT(lauf_harmonie);
+			DEBUGLOG2(kernel_tabgen,_T("lauf_harmonie[%d](=%p)->the_logic_to_expand = %p"),
+				  i,lauf_harmonie,lauf_harmonie -> the_logik_to_expand);
+			lauf_harmonie -> aktion =
+				expandiere_logik (box,lauf_harmonie -> the_logik_to_expand);
+//			lauf_harmonie -> aktion = lauf_harmonie[i] -> aktion;
 
-
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_harmonie[j] -> aktion =
-				expandiere_logik (&mut_box[j],lauf_harmonie[j] -> the_logik_to_expand);
-//			lauf_harmonie[j] -> aktion = lauf_harmonie[0] -> aktion;
+			lauf_harmonie = lauf_harmonie -> next;
 		}
 
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_harmonie[j] = lauf_harmonie[j] -> next;
-		}
-	}
+		lauf_keyboard = box->first_keyboard;
+		while (lauf_keyboard) {
+			lauf_keyboard -> aktion =
+				expandiere_logik (box, lauf_keyboard -> the_logik_to_expand);
+//			lauf_keyboard -> aktion = lauf_keyboard[i] -> aktion;
 
-	while (lauf_keyboard[0]) {
-		int j;
-
-
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_keyboard[j] -> aktion =
-				expandiere_logik (&mut_box[j], lauf_keyboard[j] -> the_logik_to_expand);
-//			lauf_keyboard[j] -> aktion = lauf_keyboard[0] -> aktion;
+			lauf_keyboard = lauf_keyboard -> next;
 		}
 
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_keyboard[j] = lauf_keyboard[j] -> next;
-		}
-	}
 
 
-
-	while (lauf_midi[0]) {
-		int j;
-
-
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_midi[j] -> aktion =
-				expandiere_logik (&mut_box[j],lauf_midi[j] -> the_logik_to_expand);
-//			lauf_midi[j] -> aktion = lauf_midi[0] -> aktion;
-		}
-
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_midi[j] = lauf_midi[j] -> next;
+		lauf_midi     = box->first_midi;
+		while (lauf_midi) {
+			lauf_midi -> aktion =
+				expandiere_logik (box,lauf_midi -> the_logik_to_expand);
+//			lauf_midi -> aktion = lauf_midi -> aktion;
+			lauf_midi = lauf_midi -> next;
 		}
 	}
 
@@ -1154,63 +1127,90 @@ static struct midi_ereignis **
 void mutabor_tabellen_generator (void)
 {
 
+	/** \todo find out the semantics of global and local lists */
+	/** \todo combine the loops this depends on: */
+	/** \todo ensure that the logics of the different boxes are independent */
 	/* Ausgabe der Pointer-Setz-Prozeduren */
 
 	struct logik * lauf;
 
 	struct anweisung * lauf_anweisung;
 	int i, j;
+	mutabor_box_type * box;
 	TRACE;
 
 
 	for (i=0; i<MAX_BOX; i++) {
+		
 		mut_box[i].cache_konstanten = NULL;
-		mut_box[i].first_midi = NULL;
-		mut_box[i].first_keyboard = NULL;
 		mut_box[i].first_harmony = NULL;
+		mut_box[i].last_global_harmony = NULL;
+		mut_box[i].first_local_harmony = NULL;
+		mut_box[i].first_keyboard = NULL;
+		mut_box[i].last_global_keyboard = NULL;
+		mut_box[i].first_local_keyboard = NULL;
+		mut_box[i].first_midi = NULL;
+		mut_box[i].last_global_midi = NULL;
+		mut_box[i].first_local_midi = NULL;
 	}
 
 
 	for (i=0;i<MAX_BOX;i++) {
-
+		box = &mut_box[i];
 		/* Die globalen Listen werden initialisiert: */
-
 		/* Die globalen Auslöser werden in die vorbereiteten Listen eingetragen: */
 
 		for (lauf = list_of_logiken; lauf; lauf = lauf -> next) {
-
-			insert_in_globale_liste (i, lauf);
+			insert_in_globale_liste (box, lauf);
 		}
 
-		mut_box[i].last_global_harmony=get_ende_harmonie (& mut_box[i].first_harmony);
-
-		mut_box[i].last_global_keyboard=get_ende_keyboard (& mut_box[i].first_keyboard);
-		mut_box[i].last_global_midi=get_ende_midi (& mut_box[i].first_midi);
+		box->last_global_harmony  = get_ende_harmonie (& box->first_harmony);
+		box->last_global_keyboard = get_ende_keyboard (& box->first_keyboard);
+		box->last_global_midi     = get_ende_midi     (& box->first_midi);
+#ifdef DEBUG
+		for (j = i+1 ; j < MAX_BOX; j++) {
+			mutASSERT(mut_box[j].cache_konstanten == NULL);
+			mutASSERT(mut_box[j].first_harmony == NULL);
+			mutASSERT(mut_box[j].last_global_harmony == NULL);
+			mutASSERT(mut_box[j].first_local_harmony == NULL);
+			mutASSERT(mut_box[j].first_keyboard == NULL);
+			mutASSERT(mut_box[j].last_global_keyboard == NULL);
+			mutASSERT(mut_box[j].first_local_keyboard == NULL);
+			mutASSERT(mut_box[j].first_midi == NULL);
+			mutASSERT(mut_box[j].last_global_midi == NULL);
+			mutASSERT(mut_box[j].first_local_midi == NULL);
+		}
+#endif
 	}
 
 	/* Die lokalen Listen werden erzeugt: */
 	/* Es wird ein Array mit Anfangszeigern  auf die lokalen
 	   Auslöser angelegt. Die Nummer der Logik ist index */
 
-	j = logik_list_laenge (list_of_logiken);
+	i = logik_list_laenge (list_of_logiken);
 
-	first_lokal_harmonie = (harmonie_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_harmonie[0]));
+	for (int j = 0 ; j < MAX_BOX; j++) {
+		box = &mut_box[j];
 
-	first_lokal_keyboard = (keyboard_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_keyboard[0]));
+		/* important: calloc must clear all data (fill with 0 */
+		box->first_local_harmony  = (harmonie_ereignis* *) xcalloc ((size_t)i, sizeof(harmonie_ereignis *));
+		box->first_local_keyboard = (keyboard_ereignis* *) xcalloc ((size_t)i, sizeof(keyboard_ereignis *));
+		box->first_local_midi     = (midi_ereignis* *)     xcalloc ((size_t)i, sizeof(midi_ereignis *));
 
-	first_lokal_midi     = (midi_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_midi[0]));
+		/* ensure compatibility with original code */
+		mutASSERT(sizeof(box->first_local_harmony[0])  == sizeof(harmonie_ereignis *));
+		mutASSERT(sizeof(box->first_local_keyboard[0]) == sizeof(keyboard_ereignis *));
+		mutASSERT(sizeof(box->first_local_midi[0])     == sizeof(midi_ereignis *));
 	
-	/* #### Wichtig ist, daß calloc alles auf 0 setzt (NULL)  */
+		for (lauf=list_of_logiken, i=0;
+		     lauf;
+		     lauf=lauf->next, i++ ) {
 
-	for (lauf=list_of_logiken, j=0;
-	     lauf;
-	     lauf=lauf->next, j++ ) {
-
-		for (lauf_anweisung=lauf->anweisungsliste; lauf_anweisung;
-		     lauf_anweisung=lauf_anweisung->next) {
-
-			for (i = 0 ; i < MAX_BOX; i++)
-				insert_in_lokale_liste (&mut_box[i], lauf_anweisung, lauf->name);
+			for (lauf_anweisung=lauf->anweisungsliste;
+			     lauf_anweisung;
+			     lauf_anweisung=lauf_anweisung->next) {
+				insert_in_lokale_liste (box, i, lauf_anweisung, lauf->name);
+			}
 		}
 	}
 	
