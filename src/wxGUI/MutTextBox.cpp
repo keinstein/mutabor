@@ -162,6 +162,14 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                 }        
 }
 
+
+static inline long get_frequency (long key, tone_system * tonesys) {
+	if (!tonesys) return 0;
+	long retval = tonesys->ton[GET_INDEX(key,tonesys)];
+	if (!retval)  return 0;
+	return ((long) tonesys->periode) * GET_ABSTAND(key,tonesys)  + retval;
+}
+
 void MutTextBox::GetKeys(bool asTS) 
 {
 	wxString keys;
@@ -182,23 +190,23 @@ void MutTextBox::GetKeys(bool asTS)
 		long freq;
 		double cents;
 		
-		if ( (freq=GET_FREQ( lt ,tonsys ))!=0) {
+		if ( (freq=get_frequency( lt ,tonsys ))!=0) {
 			if (asTS) {
 				cents = LONG_TO_CENT(freq);
 			} else {
 				int last_lt = last_key->number;
-				long delta = GET_FREQ(lt, tonsys ) -  GET_FREQ(last_lt, tonsys); 
+				long delta = freq -  get_frequency(last_lt, tonsys); 
 				cents = LONG_TO_CENT(freq);
 				last_key = key;
 
 			}
-			keys.Printf(_("%2d : %8.1f Hz (%6.2lfct)[ch: %d]\n"),
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d]"),
 				    lt,
 				    LONG_TO_HERTZ(freq),
 				    cents,
 				    mutabor::GetChannel(box, lt));
 		} else {
-			keys.Printf(_("%2d : empty\n"),lt);
+			keys.Printf(_("%2d : empty"),lt);
 		}
 		Append(keys);
 	}
@@ -221,7 +229,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 	Append(keys);
 	keys.Printf(_("Width = %d"),tonsys->breite);
 	Append(keys);
-	keys.Printf(_("Period = %.1f cent"),
+	keys.Printf(_("Period = %.1f HT"),
 		    LONG_TO_CENT(tonsys->periode));
 	Append(keys);
 
@@ -238,12 +246,12 @@ void MutTextBox::GetToneSystem(bool asTS)
 	for (int i=0;i<tonsys->breite;i++) {
 		if ( (freq=tonsys->ton[i])!=0) {
 			if (!asTS) freq -= ref;
-			keys.Printf(_("%2d : %8.1f Hz (%6.2lf cent)"),
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT)"),
 				    i, 
 				    LONG_TO_HERTZ(tonsys->ton[i]) ,
 				    LONG_TO_CENT(freq) );
 		} else {
-			keys.Printf(_("%2d : empty\n"),i);
+			keys.Printf(_("%2d : empty"),i);
 		}
 		Append(keys);
 	}
