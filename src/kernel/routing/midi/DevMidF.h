@@ -77,6 +77,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/CommonFileDevice.h"
+#include "src/kernel/routing/midi/DevMidi.h"
 
 #ifdef WX
 #include "src/wxGUI/generic/mhArray.h"
@@ -91,8 +92,9 @@
 #include "wx/timer.h"
 
 #ifdef WX
-WX_DEFINE_ARRAY_INT(BYTE, TBYTEBase1);
-DEF_MHARRAY(BYTE, TByteArray, TBYTEBase1);
+//WX_DEFINE_ARRAY_INT(BYTE, TBYTEBase1);
+//DEF_MHARRAY(BYTE, TByteArray, TBYTEBase1);
+typedef mhArray<BYTE> TByteArray;
 #else
 #include <classlib/arrays.h>
 typedef TArray<BYTE> TByteArray;
@@ -144,14 +146,17 @@ namespace mutabor {
 			}
 	};
 
+/*
 	typedef struct TAK1
 	{
-		int taste;
-		int key;
+		int inkey;
+		int outkey;
+		size_t unique_id;
+		int channel;
 		int fine;
-		DWORD id;         // (channel << 24) +(Route->Id << 16) + (Box << 8) + Taste
 		// zum Identifizieren fürs korrekte Ausschalten
 	} TonAufKanal1;
+*/
 
 	// OutMidiFile ------------------------------------------------------
 
@@ -291,7 +296,7 @@ namespace mutabor {
 		Track Tracks;
 		ChannelData Cd[16];
 		char KeyDir[16];
-		TonAufKanal1 ton_auf_kanal[16];
+		TonAufKanal ton_auf_kanal[16];
 		int nKeyOn;
 	};
 

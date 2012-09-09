@@ -48,6 +48,7 @@
 #endif
 
 #include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
@@ -83,7 +84,6 @@ namespace mutabor {
 
 #define ZWZ 1.059463094 /* 12.Wurzel 2 */
 #define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/(double)16777216.0))-69))
-#define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
 
 // Midi-Ausgabe
 #define MIDI_OUT3(code1, code2, code3)		\
@@ -100,7 +100,7 @@ namespace mutabor {
 // Pitch
 #define MIDI_PITCH(i)							\
 	int pb = ( (((int)bytenr(freq,2))<<6) + (bytenr(freq,1)>>2) ) / bending_range; \
-	MIDI_OUT3(0xE0+i, bytenr(pb,0) >> 1 , 64+(ton_auf_kanal[i].fine=(bytenr(pb,1))))
+	MIDI_OUT3(0xE0+i, bytenr(pb,0) >> 1 , 64+(bytenr(pb,1)))
 
 // Sound
 #define MIDI_SOUND(i, sound)				\
@@ -267,10 +267,12 @@ namespace mutabor {
 
 		for (int i = 0; i < 16; i++) {
 			Cd[i].Reset();
-			ton_auf_kanal[i].taste = 0;
-			ton_auf_kanal[i].id = 0;
-			ton_auf_kanal[i].key = -1;
-			ton_auf_kanal[i].fine = -1;
+			ton_auf_kanal[i].active = false;
+			ton_auf_kanal[i].inkey = -1;
+			ton_auf_kanal[i].outkey = -1;
+			ton_auf_kanal[i].channel = 0;
+			ton_auf_kanal[i].midi_channel = 0;
+			ton_auf_kanal[i].unique_id = 0;
 			KeyDir[i] = (char)i; // alle nicht benutzt
 		}
 
@@ -287,8 +289,8 @@ namespace mutabor {
 
 		for (int i = 0; i < 16; i++)
 			if ( KeyDir[i] >= 16 )  {// benutzt
-				mutASSERT(ton_auf_kanal[i].key != -1);
-				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
+				mutASSERT(ton_auf_kanal[i].outkey != -1);
+				MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, 64);
 			}
 
 		// Datei speichern
@@ -313,12 +315,13 @@ namespace mutabor {
 				    int taste, 
 				    int velo, 
 				    RouteClass * r, 
-				    int channel, 
+				    size_t id, 
 				    ChannelData *cd)
 	{
 		int i = 0, s;
 		DWORD p;
 		unsigned long freq;
+		if (!r || r == NULL) return;
 
 		if ( box == -2 ) {
 			freq = ((long)taste) << 24;
@@ -353,18 +356,18 @@ namespace mutabor {
 
 			for (REUSE(int) j =r->OFrom; j <= r->OTo; j++)
 				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					AM += ton_auf_kanal[j].taste;
+					AM += ton_auf_kanal[j].inkey;
 
 			AM /= help + 1 - r->OFrom;
 
 			for (REUSE(int) j = r->OFrom; j <= r->OTo; j++ )
 				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					if ( abs(AM - ton_auf_kanal[j].taste) < abs(AM - ton_auf_kanal[i].taste) )
+					if ( abs(AM - ton_auf_kanal[j].inkey) < abs(AM - ton_auf_kanal[i].inkey) )
 						i = j;
 
 			// Ton auf Kanal i ausschalten
-			mutASSERT(ton_auf_kanal[i].key != -1);
-			MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
+			mutASSERT(ton_auf_kanal[i].outkey != -1);
+			MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, 64);
 
 			// KeyDir umsortieren
 			BYTE oldKeyDir = KeyDir[i];
@@ -403,34 +406,41 @@ namespace mutabor {
 			Cd[i].Pitch = p;
 		}
 
-		ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
 
-		ton_auf_kanal[i].taste = taste;
-		ton_auf_kanal[i].id = MAKE_ID(r, box, taste, channel);
-		MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, velo);
+		ton_auf_kanal[i].active = true;
+		ton_auf_kanal[i].inkey = taste;
+		ton_auf_kanal[i].outkey = bytenr(freq,3) & 0x7f;
+		ton_auf_kanal[i].channel = r->GetId();
+		ton_auf_kanal[i].midi_channel = i;
+		ton_auf_kanal[i].unique_id = id;
+		MIDI_OUT3(0x90+i, ton_auf_kanal[i].outkey, velo);
 	}
 
 	void OutputMidiFile::NoteOff(int box, 
 				     int taste, 
 				     int velo, 
 				     RouteClass * r, 
-				     int channel)
+				     size_t id)
 	{
+		if (!r || r == NULL) return;
 		if ( box == -2 )
 			box = 255;
 
-		DWORD id = MAKE_ID(r, box, taste, channel);
-
+	
 		if ( !velo ) //3 ?? notwendig?
 			velo = 64;
 
 		for (int i = r->OFrom; i <= r->OTo; i++)
 			if ( i != DRUMCHANNEL || !r->ONoDrum )
-				if ( ton_auf_kanal[i].id == id ) {
-					ton_auf_kanal[i].taste=0;
-					ton_auf_kanal[i].id=0;
-					mutASSERT(ton_auf_kanal[i].key != -1);
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, velo);
+				if ( ton_auf_kanal[i].unique_id == id ) {
+					mutASSERT(ton_auf_kanal[i].outkey != -1);
+					MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, velo);
+					ton_auf_kanal[i].active = false;
+					ton_auf_kanal[i].inkey = 0;
+					ton_auf_kanal[i].outkey =-1;
+					ton_auf_kanal[i].channel = 0;
+					ton_auf_kanal[i].midi_channel = -1;
+					ton_auf_kanal[i].unique_id=0;
 					// KeyDir umsortieren
 					int oldKeyDir = KeyDir[i];
 
@@ -521,8 +531,8 @@ namespace mutabor {
 	void OutputMidiFile::Quite(RouteClass * r)
 	{
 		for (int i = 0; i < 16; i++)
-			if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->GetId() )
-				NoteOff(r->GetBox(), ton_auf_kanal[i].id % 256, 64, r, ton_auf_kanal[i].id >> 24);
+			if ( ton_auf_kanal[i].channel == r->GetId() )
+				NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id);
 	}
 
 
@@ -535,14 +545,12 @@ namespace mutabor {
 		for (int i = 1; i<16; i++)
 			s.Printf(_T(", %d"),KeyDir[i]);
 		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,f=%d"), 
-			 ton_auf_kanal[0].taste, 
-			 ton_auf_kanal[0].key, 
-			 ton_auf_kanal[0].fine);
+			 ton_auf_kanal[0].inkey, 
+			 ton_auf_kanal[0].outkey);
 		for (int i = 1; i<16; i++)
 			s.Printf(_T("; t=%d,k=%d,f=%d"), 
-				 ton_auf_kanal[i].taste, 
-				 ton_auf_kanal[i].key, 
-				 ton_auf_kanal[i].fine);
+				 ton_auf_kanal[i].inkey, 
+				 ton_auf_kanal[i].outkey);
 		s+=_T("]");
 		return s;
 		}

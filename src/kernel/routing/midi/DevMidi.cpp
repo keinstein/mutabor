@@ -42,9 +42,6 @@
 		  GET_ABSTAND(taste,(tonsystem))  +			\
 		  (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
 
-#define ZWZ 1.059463094 /* 12.Wurzel 2 */
-//#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/16777216.0l))-69))
-//#define LONG_TO_CENT( x ) ( ((double)x)/167772.13l  )
 
 #ifdef RTMIDI
 #include "RtMidi.h"
@@ -215,9 +212,12 @@ namespace mutabor {
 
 		for (i = 0; i < 16; i++) {
 			Cd[i].Reset();
-			ton_auf_kanal[i].taste = 0;
-			ton_auf_kanal[i].id = 0;
-			ton_auf_kanal[i].key = 0;
+			ton_auf_kanal[i].active = false;
+			ton_auf_kanal[i].inkey = -1;
+			ton_auf_kanal[i].outkey = -1;
+			ton_auf_kanal[i].channel = 0;
+			ton_auf_kanal[i].midi_channel = 0;
+			ton_auf_kanal[i].unique_id = 0;
 			KeyDir[i] = (char)i; // alle nicht benutzt
 		}
 
@@ -263,7 +263,7 @@ namespace mutabor {
 
 		for (int i = 0; i < 16; i++)
 			if ( KeyDir[i] >= 16 )  // benutzt
-				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
+				MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, 64);
 
 		/*  for (int i = 0; i < 16; i++)
 		    MidiOut3(176+i, 122, 1);  // local on */
@@ -513,21 +513,25 @@ namespace mutabor {
 	void OutputMidiPort::Sustain(char on, int channel)
 	{
 		DEBUGLOG (other, _T(""));
+
 		DWORD chan = channel; // Midi has unsigned channels
 
 		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].id >> 24) == chan ) {
+			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == channel ) {
 				MIDI_OUT3(0xB0+i, 64, on);
 				Cd[i].Sustain = on;
 			}
+
+	
+		
 	}
 
-	int OutputMidiPort::GetChannel(int taste)
+	int OutputMidiPort::GetChannel(int inkey)
 	{
 		DEBUGLOG (other, _T(""));
 
 		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].taste == taste) )
+			if ( ton_auf_kanal[i].active && (ton_auf_kanal[i].inkey == inkey) )
 				return i;
 
 		return -1;
@@ -575,8 +579,8 @@ namespace mutabor {
 		DEBUGLOG (other, _T(""));
 
 		for (int i = 0; i < 16; i++)
-			if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->GetId() )
-				NoteOff(r->GetBox(), ton_auf_kanal[i].id % 256, 64, r,  ton_auf_kanal[i].id >> 24);
+			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->GetId() )
+				NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id);
 	}
 
 	void OutputMidiPort::Panic()
@@ -585,12 +589,13 @@ namespace mutabor {
 
 		for (int i = 0; i < 16; i++) {
 			MIDI_OUT3(176+i, 123, 0);  // All notes off */
-			MIDI_OUT3(0xB0+i, 7, 127);  // main volume
+//			MIDI_OUT3(0xB0+i, 7, 127);  // main volume
 			// sound piano
-			MIDI_OUT2(0xC0+i, 0);
+//			MIDI_OUT2(0xC0+i, 0);
 			// Merker aufr‰umen
-			ton_auf_kanal[i].taste=0;
-			ton_auf_kanal[i].id=0;
+			ton_auf_kanal[i].active = false;
+			ton_auf_kanal[i].inkey=0;
+			ton_auf_kanal[i].unique_id=0;
 			Cd[i].Sound = 0;
 			Cd[i].Sustain = 0;
 			KeyDir[i] = i; // alle nicht benutzt
@@ -615,16 +620,19 @@ namespace mutabor {
 	wxString OutputMidiPort::TowxString() const {
 		wxString channelString;
 		for (int i = 0 ; i<16; i++) {
-			channelString += wxString::Format(_T(" ({%d,%d,%d,%d,%ld},%d,[%d,%d,%d])"),
+			channelString += wxString::Format(_T(" ({%d,%d,%d,%d,%ld},%d,[%d,%d,%d,%d,%d])"),
 							  Cd[i].Sound,
 							  Cd[i].Sustain,
 							  Cd[i].BankSelectMSB,
 							  Cd[i].BankSelectLSB,
 							  Cd[i].Pitch,
 							  KeyDir[i],
-							  ton_auf_kanal[i].taste,
-							  ton_auf_kanal[i].key,
-							  ton_auf_kanal[i].id);
+							  ton_auf_kanal[i].active,
+							  ton_auf_kanal[i].inkey,
+							  ton_auf_kanal[i].outkey,
+							  ton_auf_kanal[i].unique_id,
+							  ton_auf_kanal[i].channel
+				);
 		}
 		return OutputDeviceClass::TowxString()
 			+ wxString::Format(_T("\
@@ -834,7 +842,7 @@ OutputMidiPort:\n\
 #endif
 		Quite();
 		isOpen = false;
-	};
+	}
 
 
 

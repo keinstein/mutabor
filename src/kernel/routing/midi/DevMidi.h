@@ -64,10 +64,12 @@ namespace mutabor {
 
 	typedef struct TAK
 	{
-		int taste;
-		int key;
-		DWORD id;         // (channel << 24) + (Route->Id << 16) + (Box << 8) + Taste
-		// zum Identifizieren fürs korrekte Ausschalten
+		bool active; //< is this tone active or free?
+		int inkey;   //< internal key id. provided by input device
+		int outkey;  //< key that has been output to the MIDI device
+		int channel; //< route that broght the note to this device
+		int midi_channel; //< MIDI channel (unsused)
+		size_t unique_id; //< unique id defined by input device
 	} TonAufKanal;
 
 
