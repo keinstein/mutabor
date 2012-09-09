@@ -476,6 +476,8 @@ InputDeviceClass:\n\
 		//CurrentTime.Stop();
 	}
 
+#if 0 
+/* Delete if no problem occurs */
 	void OutNotesCorrect(mutabor_box_type * box)
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
@@ -483,6 +485,7 @@ InputDeviceClass:\n\
 		     Out != list.end(); Out++)
 			(*Out)->NotesCorrect(box->id);
 	}
+#endif
 
 	bool OutOpen()
 	{
@@ -597,12 +600,14 @@ InputDeviceClass:\n\
 		free(data);
 	}
 
-	void NotesCorrect(int box)
+	void NotesCorrect(mutabor_box_type * box)
 	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
-		for (OutputDeviceList::const_iterator Out = list.begin();
-		     Out != list.end(); Out++)
-			(*Out)->NotesCorrect(box);
+		const routeListType & list = RouteClass::GetRouteList();
+		for (routeListType::const_iterator route = list.begin();
+		     route != list.end(); route++) {
+			if ((*route)->GetBox() == box->id)
+				(*route)->NotesCorrect();
+		}
 	}
 
 	int GetChannel(int box, int taste)

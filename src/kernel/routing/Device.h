@@ -455,13 +455,18 @@ namespace mutabor {
 			CommonTypedDeviceAPI<OutputDeviceClass>::Destroy();
 			TRACEC;
 		}
-		virtual void NoteOn(int box, int taste, int velo, 
+		virtual void NoteOn(int box, 
+				    int taste, 
+				    int velo, 
 				    RouteClass * r,
-				    int channel, ChannelData *cd) = 0;
-		virtual void NoteOff(int box, int taste, int velo, 
+				    size_t id, 
+				    ChannelData *cd) = 0;
+		virtual void NoteOff(int box, 
+				     int taste, 
+				     int velo, 
 				     RouteClass * r,
-				     int channel) = 0;
-		virtual void NotesCorrect(int box) = 0;
+				     size_t id) = 0;
+		virtual void NotesCorrect(RouteClass * route) = 0;
 		virtual void Sustain(char on, int channel) = 0;
 		virtual int  GetChannel(int taste) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
@@ -892,7 +897,7 @@ namespace mutabor {
 
 
 
-	void OutNotesCorrect(int box);
+//	void OutNotesCorrect(mutabor_box_type *  box);
 
 	bool OutOpen();
 
