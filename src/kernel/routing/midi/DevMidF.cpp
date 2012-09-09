@@ -448,34 +448,34 @@ namespace mutabor {
 		return (x < 0)? -x : x;
 	}
 
-	void OutputMidiFile::NotesCorrect(int box)
+	void OutputMidiFile::NotesCorrect(RouteClass * route)
 	{
 		for (int i = 0; i < 16; i++)
-			if ( KeyDir[i] >= 16 && ton_auf_kanal[i].id ) {
-				int Box = (ton_auf_kanal[i].id >> 8) & 0xFF;
+			if ( KeyDir[i] >= 16 && ton_auf_kanal[i].active ) {
+				int RouteID = (ton_auf_kanal[i].channel);
+					       
+				if (route->GetId() != RouteID) 
+					continue;
 
-				if ( Box != box )
-					break;
-
-				long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[box].tonesystem);
+				long freq = GET_FREQ(ton_auf_kanal[i].inkey, mut_box[route->GetBox()].tonesystem);
 
 
-				mutASSERT(ton_auf_kanal[i].key != -1);
+				mutASSERT(ton_auf_kanal[i].outkey != -1);
 				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 				// Ton aus und einschalten zu vermeiden
-				if ( ton_auf_kanal[i].key == (bytenr(freq,3) & 0x7f) &&
+				if ( ton_auf_kanal[i].outkey == (bytenr(freq,3) & 0x7f) &&
 				     Cd[i].Pitch == (freq & 0xFFFFFF) )
 					continue;
 
-				long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
+				long Delta = freq - ((long)ton_auf_kanal[i].outkey << 24);
 
 				char SwitchTone = (LongAbs(Delta) >= ((long)bending_range << 24));
 
 				// evtl. Ton ausschalten
 				if ( SwitchTone ) {
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-					ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
-					Delta = freq - ((DWORD)ton_auf_kanal[i].key << 24);
+					MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, 0x7F);
+					ton_auf_kanal[i].outkey = bytenr(freq,3) & 0x7f;
+					Delta = freq - ((DWORD)ton_auf_kanal[i].outkey << 24);
 				} else if ( Delta == Cd[i].Pitch )
 					continue;
 
@@ -490,7 +490,7 @@ namespace mutabor {
 
 				// evtl. Ton einschalten
 				if ( SwitchTone )
-					MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, 64);  //3 velo speichern ??
+					MIDI_OUT3(0x90+i, ton_auf_kanal[i].outkey, 64);  //3 velo speichern ??
 			}
 	}
 
@@ -990,7 +990,7 @@ namespace mutabor {
 		case 0x90: // Note On
 			if ( MIDICODE(2) > 0 ) {
 				if ( route->Active )
-					AddKey(&mut_box[Box], MIDICODE(1), route->GetId());
+					AddKey(&mut_box[Box], MIDICODE(1), 0, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -1006,7 +1006,7 @@ namespace mutabor {
 
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(&mut_box[Box], MIDICODE(1), route->GetId());
+				DeleteKey(&mut_box[Box], MIDICODE(1), 0, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()

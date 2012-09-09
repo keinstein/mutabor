@@ -690,7 +690,7 @@ namespace mutaborGUI {
 		wxWindow *aWin;
 		nTags = 0;
 
-		if ( GetMutTag(isLogic, s, s1, key, boxnumber) )
+		if ( GetMutTag(isLogic, s, s1, key, box.GetNonGUIBox()) )
 			do {
 				nTags++;
 				sText = muT(s);
@@ -717,7 +717,7 @@ namespace mutaborGUI {
 				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
 
 				if ( isOpen ) ToFocus = aWin;
-			} while ( GetMutTag(isLogic, s, s1, key) );
+			} while ( GetMutTag(isLogic, s, s1, key, NULL) );
 
 		// Color Bars
 		if ( UseColorBars ) {

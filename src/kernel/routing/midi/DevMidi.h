@@ -128,11 +128,18 @@ namespace mutabor {
 	
 		virtual bool Open();
 		virtual void Close();
-		virtual void NoteOn(int Box, int taste, int velo, RouteClass * r,
-				    int channel, ChannelData *cd);
-		virtual void NoteOff(int Box, int taste, int velo, 
-				     RouteClass * r, int channel);
-		virtual void NotesCorrect(int box);
+		virtual void NoteOn(int Box, 
+				    int taste, 
+				    int velo, 
+				    RouteClass * r,
+				    size_t id, 
+				    ChannelData *cd);
+		virtual void NoteOff(int Box, 
+				     int taste, 
+				     int velo, 
+				     RouteClass * r, 
+				     size_t id);
+		virtual void NotesCorrect(RouteClass * route);
 		virtual void Sustain(char on, int channel);
 		virtual int  GetChannel(int taste);
 

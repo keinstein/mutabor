@@ -478,12 +478,13 @@ namespace mutabor {
 
 			Key += h->GetOctave()*12;
 
+			/** \todo provide working GIS note id. Currently Mutabor outputs only MIDI so it's no problem */
 			if ( turn != 1 && route->Active ) {
 				if ( turn )
-					DeleteKey(&mut_box[Box], Key, route->GetId());
+					DeleteKey(&mut_box[Box], Key, 0, route->GetId());
 				else
 
-					AddKey(&mut_box[Box], Key, route->GetId());
+					AddKey(&mut_box[Box], Key, 0, route->GetId(), NULL);
 			}
 
 			if ( turn != 2 && route->GetOutputDevice() ) {

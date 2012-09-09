@@ -280,20 +280,24 @@ namespace mutabor {
 		isOpen = false;
 	}
 
-	void OutputMidiPort::NoteOn(int box, int taste, int velo, 
-				    RouteClass * r, int channel, ChannelData *cd)
+	void OutputMidiPort::NoteOn(int box, 
+				    int inkey, 
+				    int velo, 
+				    RouteClass * r, 
+				    size_t id, 
+				    ChannelData *cd)
 	{
-		DEBUGLOG (other, _T("box %d, key %d, velo %d, channel %d"),
-			  box, taste, velo, channel);
+		DEBUGLOG (other, _T("box %d, inkey %d, velo %d, id %d"),
+			  box, inkey, velo, id);
 		int free = 16, freeSus = r->OTo, freeV = 64, freeSusV = 64, s;
 		DWORD p;
 		long freq;
 
 		if ( box == -2 ) {
-			freq = ((long)taste) << 24;
+			freq = ((long)inkey) << 24;
 			box = 255;
 		} else
-			freq = GET_FREQ (taste, mut_box[box].tonesystem);
+			freq = GET_FREQ (inkey, mut_box[box].tonesystem);
 
 		// testen, ob nicht belegte Taste
 		if ( !freq )
@@ -326,17 +330,17 @@ namespace mutabor {
 
 			for (j = r->OFrom; j <= r->OTo; j++)
 				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					AM += ton_auf_kanal[j].taste;
+					AM += ton_auf_kanal[j].inkey;
 
 			AM /= r->OTo + 1 - r->OFrom;
 
 			for ( j = r->OFrom; j <= r->OTo; j++ )
 				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					if ( abs(AM - ton_auf_kanal[j].taste) < abs(AM - ton_auf_kanal[free].taste) )
+					if ( abs(AM - ton_auf_kanal[j].inkey) < abs(AM - ton_auf_kanal[free].inkey) )
 						free = j;
 
 			// Ton auf Kanal free ausschalten
-			MIDI_OUT3(0x80+free, ton_auf_kanal[free].key, 64);
+			MIDI_OUT3(0x80+free, ton_auf_kanal[free].outkey, 64);
 
 			// evtl. Sustain ausschalten
 			if ( Cd[free].Sustain )
@@ -385,38 +389,44 @@ namespace mutabor {
 			Cd[free].Pitch = p;
 		}
 
-		ton_auf_kanal[free].key = (freq >> 24) & 0x7f;
+		ton_auf_kanal[free].outkey = (freq >> 24) & 0x7f;
 
-		ton_auf_kanal[free].taste = taste;
-		ton_auf_kanal[free].id = MAKE_ID(r, box, taste, channel);
-		MIDI_OUT3(0x90+free, ton_auf_kanal[free].key, velo);
+		ton_auf_kanal[free].inkey = inkey;
+		ton_auf_kanal[free].unique_id = id;
+		ton_auf_kanal[free].channel = r->GetId();
+		ton_auf_kanal[free].midi_channel = free;
+		ton_auf_kanal[free].active = true;
+//			MAKE_ID(r, box, inkey, channel);
+
+		MIDI_OUT3(0x90+free, ton_auf_kanal[free].outkey, velo);
 
 		if ( cd->Sustain ) {
 			MIDI_OUT3(0xB0+free, 64, cd->Sustain);
 			Cd[free].Sustain = cd->Sustain;
 		}
-	};
+	}
 
-	void OutputMidiPort::NoteOff(int box, int taste, int velo, 
-				     RouteClass * r, int channel)
+	void OutputMidiPort::NoteOff(int box, int inkey, int velo, 
+				     RouteClass * r, size_t id)
 	{
-		DEBUGLOG (midiio, _T("box %d, key %d, velo %d, channel %d"),
-			  box, taste, velo, channel);
+		if (!r || r == NULL) return;
+		DEBUGLOG (midiio, _T("box %d, key %d, velo %d, id %d"),
+			  box, inkey, velo, id);
 
 		if ( box == -2 )
 			box = MAX_BOX+1;
 
-		DWORD id = MAKE_ID(r, box, taste, channel);
 
 		if ( !velo ) //3 ?? notwendig?
 			velo = 64;
 
 		for (int i = r->OFrom; i <= r->OTo; i++)
 			if ( i != DRUMCHANNEL || !r->ONoDrum )
-				if ( KeyDir[i] >= 16 && ton_auf_kanal[i].id == id ) {
-					ton_auf_kanal[i].taste=0;
+				if ( KeyDir[i] >= 16 && ton_auf_kanal[i].unique_id == id && ton_auf_kanal[i].channel == r->GetId() ) {
+					ton_auf_kanal[i].inkey=0;
+					ton_auf_kanal[i].active = false;
 // ???     ton_auf_kanal[i].id=0;
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, velo);
+					MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, velo);
 					// KeyDir umsortieren
 					int oldKeyDir = KeyDir[i];
 
@@ -426,6 +436,7 @@ namespace mutabor {
 					nKeyOn--;
 
 					KeyDir[i] = 15;
+					break;
 				}
 	}
 
@@ -434,31 +445,35 @@ namespace mutabor {
 		return (x < 0)? -x : x;
 	}
 
-	void OutputMidiPort::NotesCorrect(int box)
+	void OutputMidiPort::NotesCorrect(RouteClass * route)
 	{
 		DEBUGLOG (midiio, _T(""));
+		if (!route || route == NULL) {
+			UNREACHABLEC;
+			return;
+		}
 
 		for (int i = 0; i < 16; i++)
-			if ( (KeyDir[i] >= 16 && ton_auf_kanal[i].id) || Cd[i].Sustain ) {
-				int Box = (ton_auf_kanal[i].id >> 8) & 0xFF;
+			if ( (KeyDir[i] >= 16 && ton_auf_kanal[i].active) || Cd[i].Sustain ) {
+				int RouteID = (ton_auf_kanal[i].channel);
+					       
+				if (route->GetId() != RouteID) 
+					continue;
 
-				if ( Box != box )
-					break;
+				DEBUGLOG(midiio,_T("old(hex/dec): channel = %01x/%d, Inkey = %02x/%d, key = %02x/%d, pitch = %06x/%d"), 
+					 i,i,ton_auf_kanal[i].inkey,ton_auf_kanal[i].inkey, 
+					 ton_auf_kanal[i].outkey,ton_auf_kanal[i].outkey,Cd[i].Pitch,Cd[i].Pitch);
 
-				DEBUGLOG(midiio,_T("old(hex/dec): channel = %01x/%d, Taste = %02x/%d, key = %02x/%d, pitch = %06x/%d"), 
-					 i,i,ton_auf_kanal[i].taste,ton_auf_kanal[i].taste, 
-					 ton_auf_kanal[i].key,ton_auf_kanal[i].key,Cd[i].Pitch,Cd[i].Pitch);
-
-				long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[Box].tonesystem);
+				long freq = GET_FREQ(ton_auf_kanal[i].inkey, mut_box[route->GetBox()].tonesystem);
 
 				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
 				// Ton aus und einschalten zu vermeiden
-				if ( ton_auf_kanal[i].key == ((freq >> 24) & 0x7f) &&
+				if ( ton_auf_kanal[i].outkey == ((freq >> 24) & 0x7f) &&
 				     Cd[i].Pitch == ((long)freq & 0xFFFFFF) )
 					continue;
 
 
-				long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
+				long Delta = freq - ((long)ton_auf_kanal[i].outkey << 24);
 
 				bool SwitchTone = (LongAbs(Delta) >= ((long)bending_range << 24));
 
@@ -472,9 +487,9 @@ namespace mutabor {
 							continue;
 					}
 
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-					ton_auf_kanal[i].key = (freq >> 24) & 0x7F;
-					Delta = freq - ((long)ton_auf_kanal[i].key << 24);
+					MIDI_OUT3(0x80+i, ton_auf_kanal[i].outkey, 0x7F);
+					ton_auf_kanal[i].outkey = (freq >> 24) & 0x7F;
+					Delta = freq - ((long)ton_auf_kanal[i].outkey << 24);
 				} else if ( Delta == Cd[i].Pitch )
 					continue;
 
@@ -491,7 +506,7 @@ namespace mutabor {
 
 				// evtl. Ton einschalten
 				if ( SwitchTone )
-					MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, 64);  //3 velo speichern ??
+					MIDI_OUT3(0x90+i, ton_auf_kanal[i].outkey, 64);  //3 velo speichern ??
 			}
 	}
 
@@ -615,7 +630,7 @@ namespace mutabor {
 			+ wxString::Format(_T("\
 OutputMidiPort:\n\
    hMidiOut = %p\n\
-   channels ({sound,sustain,MSB,LSB,pitch},KeyDir,[tasta,key,id]):\n\
+   channels ({sound,sustain,MSB,LSB,pitch},KeyDir,[tasta,outkey,id]):\n\
              %s\n\
    nKeyOn   = %d\n\
 "),hMidiOut, (const wxChar *)channelString, nKeyOn);
@@ -872,7 +887,7 @@ InputMidiPort:\n\
 		case 0x90: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
 				if ( route->Active )
-					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, route->GetId());
+					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, 0, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -888,7 +903,7 @@ InputMidiPort:\n\
 			
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, route->GetId());
+				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, 0, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()

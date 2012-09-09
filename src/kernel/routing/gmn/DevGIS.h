@@ -165,15 +165,22 @@ namespace mutabor {
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-		virtual void NoteOn(int box, int taste, int velo,
-				    RouteClass * r, int channel, ChannelData *cd)
+		virtual void NoteOn(int box, 
+				    int taste, 
+				    int velo,
+				    RouteClass * r, 
+				    size_t id, 
+				    ChannelData *cd)
 			{};
 
-		virtual void NoteOff(int box, int taste,
-				     int velo, RouteClass * r, int channel)
+		virtual void NoteOff(int box, 
+				     int taste,
+				     int velo, 
+				     RouteClass * r, 
+				     size_t id)
 			{};
 
-		virtual void NotesCorrect(int box)
+		virtual void NotesCorrect(RouteClass * route)
 			{};
 
 		virtual void Sustain(char on, int channel)
