@@ -168,6 +168,7 @@ namespace mutaborGUI {
 		*/
 		wxRegisterId(MUT_LAST);
 
+
 		SetAppName(_T(PACKAGE));
 		SetClassName(_T(PACKAGE_NAME));
 
@@ -193,8 +194,7 @@ namespace mutaborGUI {
 		// is in a subdirectory of samples/internat) where we wouldn't find them by
 		// default
 #ifdef __WXMSW__
-		data = _T(".");
-		wxLocale::AddCatalogLookupPathPrefix(data);
+		wxLocale::AddCatalogLookupPathPrefix(_T("."));
 //		wxLocale::AddCatalogLookupPathPrefix(wxT(".."));
 #endif
 
@@ -204,42 +204,52 @@ namespace mutaborGUI {
 #ifdef __LINUX__
 		{
 //			wxLogNull noLog;
-			data = _T("fileutils");
-			m_locale.AddCatalog(data);
+			m_locale.AddCatalog(_T("fileutils"));
 		}
 #endif
 
 
 #ifdef DEBUG
-		std::cout << (const char *)(muT(__FUNCTION__).ToUTF8()) << std::endl;
-		std::cout << (const char *)(muT(typeid(m_locale).name()).ToUTF8()) 
+		std::cout << (__FUNCTION__) << std::endl;
+		std::cout << (typeid(m_locale).name())
 			  << std::endl;
 		std::cout << "ConfigDir:        "
 
-			  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl
+			  << (const char *)(sp.GetConfigDir().ToUTF8()) << std::endl;
+		std::cout 
 			  << "DataDir:          "
-			  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl
+			  << (const char *)(sp.GetDataDir().ToUTF8()) << std::endl;
+		std::cout 
 			  << "DocumentsDir:     "
-			  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl
+			  << (const char *)(sp.GetDocumentsDir().ToUTF8()) << std::endl;
+		std::cout 
 			  << "ExecutablePath:   "
-			  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl
+			  << (const char *)(sp.GetExecutablePath().ToUTF8()) << std::endl;
 
 #if defined(__UNIX__) && !defined(__WXMAC__)
+		std::cout 
 			  << "InstallPrefix:    " << (const char *)(sp.GetInstallPrefix().ToUTF8())
-			  << std::endl
+			  << std::endl;
 #endif
+		std::cout 
 			  << "LocalDataDir:     " << (const char *)(sp.GetLocalDataDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "PluginsDir:       " << (const char *)(sp.GetPluginsDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "ResourcesDir:     " << (const char *)(sp.GetResourcesDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "TempDir:          " << (const char *)(sp.GetTempDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "UserConfigDir:    " << (const char *)(sp.GetUserConfigDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "UserDataDir:      " << (const char *)(sp.GetUserDataDir().ToUTF8())
-			  << std::endl
+			  << std::endl;
+		std::cout 
 			  << "UserLocalDataDir: " << (const char *)(sp.GetUserLocalDataDir().ToUTF8())
 			  << std::endl;
 
@@ -247,15 +257,18 @@ namespace mutaborGUI {
 			<< "LocalizedResourcesDir(Can): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
 								      sp.ResourceCat_None).ToUTF8())
-			<< std::endl
+			<< std::endl;
+		std::cout 
 			<< "LocalizedResourcesDir(Can,Messages): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetCanonicalName(),
 								      sp.ResourceCat_Messages).ToUTF8())
-			<< std::endl
+			<< std::endl;
+		std::cout 
 			<< "LocalizedResourcesDir(): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
 								      sp.ResourceCat_None).ToUTF8())
-			<< std::endl
+			<< std::endl;
+		std::cout 
 			<< "LocalizedResourcesDir(Messages): "
 			<< (const char *)(sp.GetLocalizedResourcesDir(m_locale.GetName(),
 								      sp.ResourceCat_Messages).ToUTF8())
