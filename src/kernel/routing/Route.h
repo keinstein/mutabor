@@ -101,6 +101,22 @@ namespace mutabor {
 	protected:
 		// private members: access only via access functions for debugging purposes
 
+		class NoOutputDevice {
+		public:
+			Route route;
+			NoOutputDevice(const thistype * r) 
+				{
+					r = const_cast<thistype *>(r);
+				}
+		};
+		class NoInputDevice {
+		public:
+			Route route;
+			NoInputDevice(const thistype * r) 
+				{
+					r = const_cast<thistype *>(r);
+				}
+		};
 		WATCHEDPTR(void,routing,TRouteClass) userdata;
 		OutputDevice Out;
 		InputDevice In;
@@ -232,11 +248,18 @@ namespace mutabor {
 	public:
 
 		const OutputDevice & GetOutputDevice() const {
+			if (!Out) throw NoOutputDevice(this);
 			return Out;
 		}
 
 		const InputDevice & GetInputDevice() const {
+			if (!In) throw NoInputDevice(this);
 			return In;
+		}
+
+		void NotesCorrect() {
+			if (Out) 
+				Out->NotesCorrect(this);
 		}
 
 		/// add a new output device
@@ -492,6 +515,9 @@ namespace mutabor {
 	typedef TRouteClass<InputDevice,OutputDevice> RouteClass;
 	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
 	typedef TRouteClass<InputDevice,OutputDevice>::routePtrList routePtrList;
+
+
+	Route FindRoute(size_t id);
 
        /** Class for creation of Routes.   
 	* This class will create a
