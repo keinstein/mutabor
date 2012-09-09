@@ -33,27 +33,7 @@
 #include "wx/toolbar.h"
 #include "wx/image.h"
 
-#if !defined(__WXMSW__) && 0
-#include "Images/Icons/xpm/Mutabor.xpm"
-#include "Images/Icons/xpm/Document.xpm"
-#include "Images/Icons/xpm/KeyTextBox.xpm"
-#include "Images/Icons/xpm/TSTextBox.xpm"
-#include "Images/Icons/xpm/ActTextBox.xpm"
-#endif
-
 #include "Images/Icons/xpm/Route.xpm"
-
-
-#if 0
-#include "Images/Icons/xpm/new.xpm"
-#include "Images/Icons/xpm/open.xpm"
-#include "Images/Icons/xpm/save.xpm"
-#include "Images/Icons/xpm/copy.xpm"
-#include "Images/Icons/xpm/cut.xpm"
-#include "Images/Icons/xpm/paste.xpm"
-#include "Images/Icons/xpm/print.xpm"
-#include "Images/Icons/xpm/help.xpm"
-#endif
 
 #include "wx/filename.h"
 #include "wx/config.h"
@@ -746,8 +726,6 @@ namespace mutaborGUI {
 		if ( !mut_box[curBox].used ) {
 			curBox = minimal_box_used;
 		}
-
-		SetAktuellesKeyboardInstrument(curBox);
 
 
 #if 0
@@ -1987,7 +1965,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				if ( (*R)->GetBox() >= 0 ) {
 					if ((*R)->GetBox() >= MAX_BOX) UNREACHABLE;
 					else
-						mut_box[(*R)->GetBox()].used = true;
+						mut_box[(*R)->GetBox()].used = 1;
 				}
 			}
 		}
