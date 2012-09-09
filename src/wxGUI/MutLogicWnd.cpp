@@ -611,7 +611,7 @@ namespace mutaborGUI {
 			ColorBar2->SetSize(-xv*10, -yv*10, 2, max(ny*MUTTAGY+8, R.GetHeight()));
 
 		CorrectScroller();
-	};
+	}
 
 // Reaktion auf geklickte TMutTag-s
 
@@ -671,8 +671,8 @@ namespace mutaborGUI {
 	void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	{
 		// Analyse zuerst
-		KeyboardAnalyse(boxnumber, thekey, isLogicKey);
 		BoxData & box = BoxData::GetBox(boxnumber);
+		box.KeyboardAnalyse(thekey, isLogicKey);
 		if (isLogicKey) {
 			box.SetKeyTonesystem(0);
 			box.SetKeyLogic(thekey);
