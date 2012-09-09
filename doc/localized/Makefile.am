@@ -1,3 +1,4 @@
+include $(top_srcdir)/common-rules.mk
 SUBDIRS = de en
 
 mac: mac-recursive
