@@ -236,11 +236,11 @@ bool pascal _export CheckNeedsRealTime() {
 struct keyboard_ereignis *last;
 
 char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box) {
-	mutASSERT(box != NULL);
-	if ( box -> id != -1 )
-		last = box->first_keyboard;
-	else
+	if (!box || box == NULL) {
 		if ( last ) last = last->next;
+	} else  {
+		last = box->first_keyboard;
+	}
 
 	if ( !last ) return 0;
 
@@ -333,6 +333,7 @@ void pascal _export SetChannels(int base, int from, int to, int thru) {
 	get_instrument_dekl (base, from, to, thru, &list_of_config_instrumente);
 }
 
+#pragma message "remove the following two functions"
 void pascal _export SetAktuellesKeyboardInstrument(mutabor_box_type * box) {
 	current_computer_keyboard_box = box;
 }
@@ -340,6 +341,7 @@ void pascal _export SetAktuellesKeyboardInstrument(mutabor_box_type * box) {
 mutabor_box_type * pascal _export GetAktuellesKeyboardInstrument() {
 	return current_computer_keyboard_box;
 }
+
 
 // scan-Hilfsfunktionen ---------------------------------------------
 

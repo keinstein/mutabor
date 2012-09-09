@@ -100,7 +100,7 @@ void pascal InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
 bool pascal CheckNeedsRealTime();
 
 // box = -1 ... weiterlesen in angefangener Liste
-char pascal GetMutTag(char &isLogic, char *text, char *einsttext, char &key, int box = -1);
+char pascal GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box);
 char pascal IsLogicKey(char key);
 bool pascal KeyChanged(int box);
 bool pascal TSChanged(int box);
