@@ -1,43 +1,20 @@
 /** \file 
  ********************************************************************
- * Description
+ * Some MIDI macros
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/MidiKern.h,v 1.6 2011/09/27 20:13:21 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * Copyright:   (c) 1998-2011 TU Dresden
+ * \author  R.Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/09/27 20:13:21 $
  * \version $Revision: 1.6 $
  * \license GPL
- *
- * $Log: MidiKern.h,v $
- * Revision 1.6  2011/09/27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.4  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
- *
  *
  ********************************************************************
  * \addtogroup templates
  * \{
  ********************************************************************/
 // ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
-// MIDI-Makros
 // ------------------------------------------------------------------
 
 /* we guard a little bit complicated to ensure the references are set right

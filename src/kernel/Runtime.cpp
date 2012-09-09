@@ -2,107 +2,12 @@
  ********************************************************************
  * Mutabor runtime functions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Runtime.cpp,v 1.22 2011/11/02 14:31:57 keinstein Exp $
- * Copyright:   (c) 1997-2007 TU Dresden
- * \author R√ºdiger Krau√üe <krausze@mail.berlios.de>
+ * Copyright:   (c) 1997-2011 TU Dresden
+ * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.22 $
  * \license GPL
- *
- * $Log: Runtime.cpp,v $
- * Revision 1.22  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.21  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.20  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.19  2011-09-06 08:09:20  keinstein
- * fix a compiler error showing a corruped error message
- *
- * Revision 1.18  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.17  2011-03-06 13:15:41  keinstein
- * some rearrangement for update callback kernel->GUI
- *
- * Revision 1.16  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.15  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.14.2.9  2010-11-20 21:58:16  keinstein
- * reactivate midi playback
- *
- * Revision 1.14.2.8  2010-11-14 22:29:53  keinstein
- * Remvoed EDevice.cpp and EDevice.h from the sources list
- * They still reside in the source tree, since they have been used for Midi/GMN
- * file playing. That funcitonality has been disabled so far.
- * After reimplementation the files can be removed.
- *
- * Revision 1.14.2.7  2010-05-07 11:40:27  keinstein
- * actual_settings
- *
- * Revision 1.14.2.6  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.14.2.5  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.14.2.4  2010/01/14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.14.2.3  2009/11/03 12:39:31  keinstein
- * input device dialog: Allow to edit input devices
- * fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
- *
- * Revision 1.14.2.2  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.14.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.14  2008/10/27 14:57:51  keinstein
- * Moved CurrentTimer stuff to Device
- *
- * Revision 1.13  2008/10/19 23:08:32  krausze
- * Dateien und Anpassungen f¸r Microsoft Visual Studio 8 (VC8)
- *
- * Revision 1.12  2008/10/10 08:33:19  keinstein
- * make compile on windws
- *
- * Revision 1.11  2008/10/01 09:31:07  keinstein
- * Routing broken
- *
- * Revision 1.10  2008/07/21 09:03:11  keinstein
- * Use symbolic enum values for device modes and device actions
- * move FlushUpdateUI() to Execute.cpp
- *
- * Revision 1.9  2008/06/02 16:02:00  keinstein
- * dont include Mutabor.rh since it is already included now
- * New interfache for IntCompDia
- * Set status dialog fields directly
- *
- * Revision 1.8  2008/03/11 10:37:34  keinstein
- * Holyday edition
- * put CM_xxx in an enum
- * use wx constants
- * document mutframe
- * some white space formattings
- * make route saving more system specific
- * many other fixes
  *
  *
  ********************************************************************

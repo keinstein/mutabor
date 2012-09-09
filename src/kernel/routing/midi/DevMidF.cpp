@@ -2,7 +2,6 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
@@ -24,116 +23,6 @@
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Log: DevMidF.cpp,v $
- * Revision 1.13  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.12  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.11  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.10  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.9  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.8  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.7  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.6  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.5  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.3  2010-11-23 21:19:22  keinstein
- * make automatic stopping working again
- *
- * Revision 1.2  2010-11-21 13:15:46  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.13.2.4  2010-07-06 09:06:25  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.13.2.3  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.13.2.2  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.13.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.13  2008/10/27 15:02:58  keinstein
- * moved CurrentTimer to Device
- *
- * Revision 1.12  2008/10/01 09:26:10  keinstein
- * fix midi file playing
- *
- * Revision 1.11  2008/07/22 07:57:06  keinstein
- * solved some valgrind issues
- *
- * Revision 1.10  2008/07/21 08:56:18  keinstein
- * Changed numeric device modes into an enum
- * use wxTimer instead of obsolete WinXP timers
- *
- * Revision 1.9  2008/04/28 08:00:37  keinstein
- * Fix some size warnings
- *
- * Revision 1.8  2008/03/11 10:37:34  keinstein
- * Holyday edition
- * put CM_xxx in an enum
- * use wx constants
- * document mutframe
- * some white space formattings
- * make route saving more system specific
- * many other fixes
- *
- * Revision 1.7  2007/12/17 12:52:15  keinstein
- * Make the file compile in WX Unicode mode
- *
- * Revision 1.6  2006/01/18 15:07:39  keinstein
- * 3 translation calls
- *
- * Revision 1.5  2005/11/07 19:42:54  keinstein
- * Some additional changes
  *
  ********************************************************************
  * \addtogroup route

@@ -2,7 +2,6 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutTextBox.cpp,v 1.22 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -10,40 +9,6 @@
  * $Date: 2011/11/02 14:31:59 $
  * \version $Revision: 1.22 $
  * \license GPL
- *
- * $Log: MutTextBox.cpp,v $
- * Revision 1.22  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.21  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.20  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.19  2011-09-08 18:50:41  keinstein
- * Fix some further update bug
- *
- * Revision 1.18  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.17  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.16  2011-09-05 11:30:08  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.15  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
  *
  *
  *

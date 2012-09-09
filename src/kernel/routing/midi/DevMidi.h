@@ -3,50 +3,12 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.h,v 1.11 2012/01/29 22:08:36 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008-2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2012/01/29 22:08:36 $
  * \version $Revision: 1.11 $
  * \license GPL
- *
- * $Log: DevMidi.h,v $
- * Revision 1.11  2012/01/29 22:08:36  keinstein
- * allow to add nonexisting devices in the route editor (partly fixes #16908)
- *
- * Revision 1.10  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.9  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.8  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.7  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.6  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.5  2011-09-07 15:54:40  keinstein
- * fix some compilation issues
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
  *
  *
  *

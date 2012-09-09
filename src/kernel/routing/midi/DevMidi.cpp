@@ -1,84 +1,19 @@
 /** \file 
  ********************************************************************
- * Description
+ * Midi Port IO (Mutabor layer)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.cpp,v 1.16 2012/01/29 22:08:36 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * Copyright:   (c) 1998-2011 TU Dresden
+ * \author  R.Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2012/01/29 22:08:36 $
  * \version $Revision: 1.16 $
  * \license GPL
  *
- * $Log: DevMidi.cpp,v $
- * Revision 1.16  2012/01/29 22:08:36  keinstein
- * allow to add nonexisting devices in the route editor (partly fixes #16908)
- *
- * Revision 1.15  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.14  2011-10-22 16:32:38  keinstein
- * commit to continue debugging on Linux/wine
- *
- * Revision 1.13  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.12  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.11  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.10  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.9  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.8  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.7  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.6  2011-09-07 15:54:40  keinstein
- * fix some compilation issues
- *
- * Revision 1.5  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
- *
  ********************************************************************
- * \addtogroup 
+ * \addtogroup route
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
-// MidiPort Klassen
-// ------------------------------------------------------------------
 
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/Execute.h"
