@@ -5,7 +5,7 @@
 #include <cppunit/BriefTestProgressListener.h>
 
 // Skip the GUI related checks from DebugRoute.cpp
-#if 0
+#if 1
 #define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 #undef no_wxGUI

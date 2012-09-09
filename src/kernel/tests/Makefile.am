@@ -15,13 +15,13 @@ testcppunit_SOURCES = \
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutaborkernel.a \
+	$(top_builddir)/libmutabordebug.a \
+	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/librtmidi.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS)
 
-#	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutabordebug.a \
-	$(top_builddir)/librtmidi.a 
 endif
 
 
