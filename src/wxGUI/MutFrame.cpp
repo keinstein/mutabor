@@ -1170,27 +1170,56 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG (other, _T("%d,%d"),kind,box);
 
-		char *s = NULL;
 		wxString title;
 
-		switch ( kind ) {
 
+		int width, height;
+
+		GetClientSize(&width, &height);
+		width /= 2;
+		height /= 2;
+
+		MutTextBox *client = new MutChild(kind,
+						  box,
+						  this,
+						  -1,
+						  wxDefaultPosition,
+						  wxSize(width, height));
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+
+		wxString str = wxEmptyString;
+
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
+
+		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
+				   .CaptionVisible(true)
+				   .CloseButton(true).MaximizeButton(true)
+				   .Float()
+				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
+				   .DestroyOnClose(true));
+
+		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+
+		switch ( kind ) {
 		case WK_KEY:
-			s = GetKeyString(box, asTS);
+			client->GetKeys(asTS);
 			title.Printf(_("Keys -- Box %d"),box);
 			break;
 
 		case WK_TS:
-			s = GetTSString(box, asTS);
+			client->GetToneSystem(asTS);
 			title.Printf(_("Tone system -- Box %d"),box);
 			break;
 
 		case WK_ACT:
 			if (CAW) {
-				s = GenerateCAWString();
+				client->GetAllActions();
 				title=_("Action log");
 			} else {
-				s = GenerateACTString(box);
+				client->GetBoxActions();
 				title.Printf(_("Actions -- Box %d"),box);
 			}
 			break;
@@ -1215,44 +1244,6 @@ namespace mutaborGUI {
 			wxLogError(_("Unexpected window kind: %d"), kind);
 			UNREACHABLEC;
 		}
-
-		int width, height;
-
-		GetClientSize(&width, &height);
-		width /= 2;
-		height /= 2;
-
-		MutTextBox *client = new MutChild(kind,
-						  box,
-						  this,
-						  -1,
-						  wxDefaultPosition,
-						  wxSize(width, height));
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (gui, _T("s:= %s"),s);
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-
-		wxString str;
-
-		if (s)
-			str = muT(s);
-		else
-			str = wxEmptyString;
-
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
-
-		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
-				   .CaptionVisible(true)
-				   .CloseButton(true).MaximizeButton(true)
-				   .Float()
-				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
-				   .DestroyOnClose(true));
-
-		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
-		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-
-		client->NewText(str, true);
 
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 

@@ -113,18 +113,19 @@ void AktionenInit()
   aktionen_changed = 1;
 }*/
 
-void AktionenMessage(int box, const char* aktionName)
+void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion)
 {
+	
 	if ( nAktionen < AKTIONEN_MAX ) {
-		boxAktionen[nAktionen] = ((unsigned char*)&box)[0];
+		boxAktionen[nAktionen] = box->id;
 		int l = 0;
 
 		if ( nAktionen )
 			l = lAktionen[nAktionen-1];
 
-		strcpy(&sAktionen[l], aktionName);
+		strcpy(&sAktionen[l], aktion->name);
 
-		lAktionen[nAktionen++] = l + strlen(aktionName);
+		lAktionen[nAktionen++] = l + strlen(aktion->name);
 	}
 }
 
@@ -327,17 +328,6 @@ void laufzeit_protokoll(const char * formatstring , ... )
 
 #ifdef MUTWIN
 #if 0
-char* pascal _export GetKeyString(int box, char asTS)
-{
-	init_laufzeit_protokoll();
-
-	if ( asTS )
-		protokoll_liegende_frequenzen(box);
-	else
-		protokoll_liegende_relationen(box);
-
-	return protokoll_string;
-}
 
 char* pascal _export GetTSString(int box, char asTS)
 

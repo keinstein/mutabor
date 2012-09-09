@@ -38,6 +38,7 @@
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/GrafKern.h"
+#include "src/kernel/MidiKern.h"
 #include "src/wxGUI/Action.h"
 
 
@@ -126,17 +127,17 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
 {
                switch (winKind) {
                 case WK_KEY: 
-                        NewText(GetKeyString(box, asTS));
+                        GetKeys(asTS);
                         break;
                 case WK_TS: 
-                        NewText(GetTSString(box, asTS));
+                        GetToneSystem(asTS);
                         break;
                 case WK_ACT:
                         TakeOverActions();
                         if (CAW) {
-                                NewText(GenerateCAWString());
+                                GetAllActions();
                         } else {
-                                NewText(GenerateACTString(box));
+                                GetBoxActions();
                         }
                         break;
                 case WK_LOGIC:
@@ -159,6 +160,105 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                         wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
                 }        
+}
+
+void MutTextBox::GetKeys(bool asTS) 
+{
+	wxString keys;
+	
+	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
+	if (b == NULL || !b) return;
+	Clear();
+	
+	if (!b->key_count) return;
+	tone_system * tonsys = b->tonesystem;
+
+	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0), 
+		     * last_key = key;
+	     key != NULL; 
+	     key = mutabor_find_key_in_box(b,key->next)) {
+
+		int lt = key->number;
+		long freq;
+		double cents;
+		
+		if ( (freq=GET_FREQ( lt ,tonsys ))!=0) {
+			if (asTS) {
+				cents = LONG_TO_CENT(freq);
+			} else {
+				int last_lt = last_key->number;
+				long delta = GET_FREQ(lt, tonsys ) -  GET_FREQ(last_lt, tonsys); 
+				cents = LONG_TO_CENT(freq);
+				last_key = key;
+
+			}
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lfct)[ch: %d]\n"),
+				    lt,
+				    LONG_TO_HERTZ(freq),
+				    cents,
+				    mutabor::GetChannel(box, lt));
+		} else {
+			keys.Printf(_("%2d : empty\n"),lt);
+		}
+		Append(keys);
+	}
+}
+
+void MutTextBox::GetToneSystem(bool asTS) 
+{
+	wxString keys;
+	
+	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
+	if (b == NULL || !b) return;
+
+	tone_system * tonsys = b->tonesystem;
+	if (!tonsys || tonsys == NULL) return;
+
+	Clear();
+		
+
+	keys.Printf(_("Anchor = %d"),tonsys->anker);
+	Append(keys);
+	keys.Printf(_("Width = %d"),tonsys->breite);
+	Append(keys);
+	keys.Printf(_("Period = %.1f cent"),
+		    LONG_TO_CENT(tonsys->periode));
+	Append(keys);
+
+	
+	size_t i = 0;
+	for (;i<tonsys->breite && tonsys->ton[i]==0;i++);
+	if (!asTS) {
+		keys.Printf(_("Reference = %d"),i);
+		Append(keys);
+	}
+	
+	long freq, ref = tonsys->ton[i];
+
+	for (int i=0;i<tonsys->breite;i++) {
+		if ( (freq=tonsys->ton[i])!=0) {
+			if (!asTS) freq -= ref;
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf cent)"),
+				    i, 
+				    LONG_TO_HERTZ(tonsys->ton[i]) ,
+				    LONG_TO_CENT(freq) );
+		} else {
+			keys.Printf(_("%2d : empty\n"),i);
+		}
+		Append(keys);
+	}
+}
+
+void MutTextBox::GetAllActions () 
+{
+	/** \todo write this code */
+	NewText(GenerateCAWString());
+}
+
+void MutTextBox::GetBoxActions() 
+{
+	/** \todo write this code */
+	NewText(GenerateACTString(box));
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)
