@@ -83,6 +83,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/box.h"
+#include "src/kernel/Execute.h"
 #include "src/wxGUI/Routing/RouteLists.h"
 
 
@@ -122,6 +123,13 @@ namespace mutaborGUI {
 			bool want_actions_window:1;
 		};
 	public:
+
+		class NoSuchBoxException {
+		public:
+			int boxnumber ;
+			NoSuchBoxException(int i):boxnumber(i) {}
+		};
+
 		BoxData();
 
 		int GetId() {
@@ -136,6 +144,11 @@ namespace mutaborGUI {
 		void reset();
 
 		MutBoxShape * GetBoxShape(wxWindow * parent);
+
+		void KeyboardAnalyse(int taste, char isLogic) {
+			if (!box) return;
+			::KeyboardAnalyse(box,taste,isLogic);
+		}
 
 		/// Sets the name of the currently active logic
 		/** \param s wxString name of the logic
@@ -266,7 +279,12 @@ namespace mutaborGUI {
 				case Box0:
 				default:
 					UNREACHABLECT(BoxData);
+					throw NoSuchBoxException(nr);
 				}
+			}
+			if (nr >= vector.size()) {
+				UNREACHABLECT(BoxData);
+				throw NoSuchBoxException(nr);
 			}
 			return vector[nr]; 
 		}
@@ -308,6 +326,7 @@ namespace mutaborGUI {
 		static bool LoadAll(wxConfigBase * config);
 
 
+		mutabor_box_type * GetNonGUIBox() { return box; }
 	protected: 
 		/** \todo curent_logic and current_tonesystem are set
 		 *  but unused as well as current_key_tonesystem and 
