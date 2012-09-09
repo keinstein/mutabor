@@ -27,9 +27,6 @@
 /*** Das sind die Anfangslisten des Interpreters **/
 
 
-struct harmonie_ereignis ** first_lokal_harmonie;
-struct keyboard_ereignis ** first_lokal_keyboard;
-struct midi_ereignis     ** first_lokal_midi;
 
 long anzahl_eingelesene_zeichen;
 
@@ -401,11 +398,9 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 
 	i = get_logik_nummer (the_logik -> name, list_of_logiken);
 
-	help -> u.aufruf_logik.lokal_harmonie = & first_lokal_harmonie [i];
-
-	help -> u.aufruf_logik.lokal_keyboard = & first_lokal_keyboard [i];
-
-	help -> u.aufruf_logik.lokal_midi     = & first_lokal_midi     [i];
+	help -> u.aufruf_logik.lokal_harmonie = & box->first_local_harmony [i];
+	help -> u.aufruf_logik.lokal_keyboard = & box->first_local_keyboard [i];
+	help -> u.aufruf_logik.lokal_midi     = & box->first_local_midi     [i];
 
 	help -> next = NULL;
 

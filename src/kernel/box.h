@@ -53,13 +53,15 @@ enum BoxType
 /** linked list containing key information. First is always 0 last has next == 0. */
 typedef struct {
 	int number;
-	size_t id; /**< unique Id */
+	int channel;
+	size_t id; /**< unique Id if the input device suports it */
 	void * userdata;
 	size_t next;
 } mutabor_key_type;
 
 #define MUT_BOX_MAX_KEY_INDEX_LOG (6)
 #define MUT_BOX_MAX_KEY_INDEX ((1 << MUT_BOX_MAX_KEY_INDEX_LOG) - 1)
+#define MUTABOR_NO_NEXT (~((size_t) 0))
 
 typedef struct mutabor_key_index_type {
 	mutabor_key_type key[1 << MUT_BOX_MAX_KEY_INDEX_LOG];
@@ -114,19 +116,22 @@ typedef struct {
 	/* Certain linked lists for events */
 	struct harmonie_ereignis *  first_harmony;
 	struct harmonie_ereignis ** last_global_harmony;
+	struct harmonie_ereignis ** first_local_harmony;
 	struct keyboard_ereignis *  first_keyboard;
 	struct keyboard_ereignis ** last_global_keyboard;
+	struct keyboard_ereignis ** first_local_keyboard;
 	struct midi_ereignis     *  first_midi;
 	struct midi_ereignis     ** last_global_midi;
+	struct midi_ereignis     ** first_local_midi;
 
 	/** cache constants see struct cach_konstanten. */
 	struct cache_konstanten * cache_konstanten;
         // flags
-        int used:1; //< box currently in use or wasting memory
-        int keys_changed:1;
-        int logic_changed:1;
-        int action_changed:1;
-	int tonesys_changed:1; //< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
+        unsigned int used:1; //< box currently in use or wasting memory
+        unsigned int keys_changed:1;
+        unsigned int logic_changed:1;
+        unsigned int action_changed:1;
+	unsigned int tonesys_changed:1; //< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
 } mutabor_box_type;
 
 
@@ -146,7 +151,7 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane);
 inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {
 	mutabor_key_index_type *plane_ptr;
 	size_t plane;
-	if (!box->key_count) return NULL;
+	if (!box->key_count || index == MUTABOR_NO_NEXT) return NULL;
 	plane = index >> MUT_BOX_MAX_KEY_INDEX_LOG;
 	plane_ptr = &(box->current_keys);
 	while (plane-- && plane_ptr) plane_ptr = plane_ptr->next;
@@ -171,12 +176,12 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
 	size_t newidx=index;
 	char found = 0;
 	mutabor_key_type * key  = mutabor_find_key_in_box(box,index);
-	if (key == NULL ) return 0;
-	do {
+	if (key == NULL ) return MUTABOR_NO_NEXT;
+	while (key != NULL && key->number != key_number) {
 		newidx = key->next;
 		key = mutabor_find_key_in_box(box,newidx);
-	} while (key != NULL && key->number != key_number);
-	if (key == NULL) return 0;
+	} ;
+	if (key == NULL) return MUTABOR_NO_NEXT;
 	return newidx;
 }
 
@@ -199,12 +204,15 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 
 	if (!index) {
 		
-		if (current_key -> next) {
+		if (current_key -> next != MUTABOR_NO_NEXT) {
 			next_key = mutabor_find_key_in_box(box,current_key->next);
+			if (current_key->next == box->last_key)
+				box -> last_key = 0;
 			*(current_key) = *(next_key);
-			next_key->next = 0;
+			next_key->next = MUTABOR_NO_NEXT;
 			next_key->userdata = NULL;
 			box->key_count--;
+			
 		} else {
 			mutASSERT(box->key_count == 1);
 			current_key->userdata = NULL;
@@ -213,13 +221,24 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 		return;
 	}
 
+	
+	
+	DEBUGLOG2(kernel_box,_T("index = %d"),index);
 	last_key = mutabor_find_key_in_box(box,0);
-	while (last_key != NULL && last_key -> next != index) 
-		last_key = mutabor_find_key_in_box(box,last_key->next);
-	if (last_key  == NULL) return;
+	size_t last_index = 0;
+	while (last_key != NULL && last_key -> next != index) {
+//		DEBUGLOG2(kernel_box,_T("last_key->next = %d"), last_key->next);
+		last_index = last_key->next;
+		last_key = mutabor_find_key_in_box(box,last_index);
+	}
+	if (last_key  == NULL || last_key -> next != index) return;
+	if (index == box->last_key) {
+		mutASSERT(last_index != box->last_key);
+		box->last_key = last_index;
+	}
 
 	last_key->next = current_key->next;
-	current_key -> next = 0;
+	current_key -> next = MUTABOR_NO_NEXT;
 	current_key -> userdata = NULL;
 	box->key_count--;
 }
@@ -238,7 +257,7 @@ inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 	if (!box->key_count) {
 		box->key_count = 1;
 		mutASSERT(box->current_keys.key[0].userdata == NULL);
-		mutASSERT(box->current_keys.key[0].next == 0);
+		mutASSERT(box->current_keys.key[0].next == MUTABOR_NO_NEXT);
 		return &(box->current_keys.key[0]);
 	}
 
@@ -256,9 +275,11 @@ inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 			if (i+curridx == box->last_key) {
 				continue;
 			}
-			if (plane->key[i].next == 0) {
+			if (plane->key[i].next == MUTABOR_NO_NEXT) {
 				index = i + curridx;
-				last -> next = index;
+				box -> last_key = last -> next = index;
+				box->key_count++;
+				plane->key[i].next = MUTABOR_NO_NEXT;
 				return  &(plane->key[i]);
 			}
 		}
@@ -275,7 +296,8 @@ inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 		new_key = &(plane->key[0]);
 		index = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;
 	}
-	last -> next = index;
+	box -> last_key = last -> next = index;
+	box->key_count++;
 	return new_key;
 }
 

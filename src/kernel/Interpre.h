@@ -256,11 +256,6 @@ struct harmonie_ereignis
 
 
 
-/* Globale Listen: */
-
-extern struct harmonie_ereignis ** first_lokal_harmonie;
-extern struct keyboard_ereignis ** first_lokal_keyboard;
-extern struct midi_ereignis     ** first_lokal_midi;
 
 extern int laufzeit_meldungen_erlaubt; /* Hier gibt es 2 Level:
 

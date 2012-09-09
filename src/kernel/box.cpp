@@ -20,14 +20,15 @@
 
 #include "box.h"
 
-tone_system * free_tonesystem;
-
+mutabor_box_type * current_computer_keyboard_box = NULL;
+tone_system *free_tonesystem = NULL;
 mutabor_box_type mut_box[MAX_BOX];
 int laufzeit_meldungen_erlaubt = 0;
 int aktuelles_midi_instrument = 0;
 /* int aktuelle_keyboard_box = 0; */
 size_t minimal_box_used = 0;
 int keys_changed_sum = 0;
+
 
 
 void initialize_box(mutabor_box_type * box, int id) 
@@ -40,7 +41,6 @@ void initialize_box(mutabor_box_type * box, int id)
 /* C standard does not define NULL to be 0 */
 #if 0 != NULL
 	box->userdata = NULL;
-	mutabor_initialize_keyplane(&box->current_keys);
 	box->anchor_node.next = NULL;
 	box->tonesystem = NULL;
 	box->first_harmony = NULL;
@@ -51,16 +51,19 @@ void initialize_box(mutabor_box_type * box, int id)
 	box->list_global_midi = NULL;
 	box->cache_konstanten = NULL
 #endif
+	mutabor_initialize_keyplane(&box->current_keys);
 	box->anchor_node.value_field = &box->anchor;
 	box->distance_node.next = &box->anchor_node;
 	box->distance_node.value_field = &box->distance;
 	box->start_parameter_list = &box->distance_node;
+	box->id = id;
 }
 
 void initialize_boxes () 
 {
-	for (size_t i = 0 ; i < MAX_BOX; i++) {
-		mutabor_initialize_box( &mut_box[i],i);
+	// use int here, as otherwise C++ doesn't find mutabor_initialize_box
+	for (int i = 0 ; i < MAX_BOX; i++) {
+		initialize_box( &mut_box[i],i);
 	}
 }
 void mutabor_initialize_keyplane(mutabor_key_index_type * plane)
@@ -70,7 +73,7 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane)
 	for (i = 0 ; i <= MUT_BOX_MAX_KEY_INDEX; i++) {
 		key = &(plane->key[i]);
 		key->userdata = NULL;
-		key->next = 0;
+		key->next = MUTABOR_NO_NEXT;
 	}
 	plane->next = NULL;
 }
