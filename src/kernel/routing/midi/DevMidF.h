@@ -1,10 +1,11 @@
 /** \file  -*- C++ -*-
  ********************************************************************
- * Description
+ * Device providing MIDI files.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * Copyright:   (c) 1998-2011 TU Dresden
+ * \author 
+ * R.Krauße,
+ * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/11/02 14:31:58 $
  * \version $Revision: 1.8 $
@@ -25,42 +26,12 @@
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Log: DevMidF.h,v $
- * Revision 1.8  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.7  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.6  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.5  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
  *
  *
  ********************************************************************
  * \addtogroup route
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauße
-// MIDI-File als Device
-// ------------------------------------------------------------------
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -77,10 +48,10 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/CommonFileDevice.h"
-#include "src/kernel/routing/midi/DevMidi.h"
+#include "src/kernel/routing/midi/midicmn.h"
 
 #ifdef WX
-#include "src/wxGUI/generic/mhArray.h"
+//#include "src/wxGUI/generic/mhArray.h"
 #endif
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDF_H_PRECOMPILED
@@ -91,92 +62,182 @@
 #include <fstream>
 #include "wx/timer.h"
 
-#ifdef WX
-//WX_DEFINE_ARRAY_INT(BYTE, TBYTEBase1);
-//DEF_MHARRAY(BYTE, TByteArray, TBYTEBase1);
-typedef mhArray<BYTE> TByteArray;
-#else
-#include <classlib/arrays.h>
-typedef TArray<BYTE> TByteArray;
-#endif
-
 
 
 namespace mutabor {
 
 // Track ------------------------------------------------------------
 
-	class Track
+	class Track: public std::vector<uint8_t>
 	{
 
 	public:
+		typedef std::vector<uint8_t> base;
 		wxLongLong Time;
-		TByteArray *Data;
-		Track()
-			{
-				Time = 0;
-				Data = new TByteArray(100, 0, 100);
-			}
+		Track(): vector(), Time() {
+			reserve(100);
+		}
 
-		~Track()
-			{
-				delete Data;
-			}
+		~Track() {}
 
 		void WriteDelta();
-		void MidiOut3(BYTE c1, BYTE c2, BYTE c3)
-			{
-				WriteDelta();
-				Data->Add(c1);
-				Data->Add(c2);
-				Data->Add(c3);
+		void WriteNumber(size_t count) {
+			int i = 0;
+			size_t mask = 0x7F << 7;
+			while(count & mask) {
+				i++;
+			}
+			mutASSERT(i<6);// 32bit/7bit = 4.571 > 4 
+			for (;i>=0;i--) 
+				push_back((count >> i*7) & 0x7F);
+		}
+		void WriteLength(mutOFstream &os, size_t l);
+	
+		void MidiOut(uint8_t c1, uint8_t c2, uint8_t c3) {
+			WriteDelta();
+			push_back(c1);
+			push_back(c2);
+			push_back(c3);
+		}
+
+		void MidiOut(uint8_t c1, uint8_t c2) {
+			WriteDelta();
+			push_back(c1);
+			push_back(c2);
+		}
+
+		void MidiOut(uint8_t c1) {
+			WriteDelta();
+			push_back(c1);
+		}
+
+		void SendSysEx (uint8_t * data, size_t count) {
+			if (data[0] == midi::SYSEX_START) {
+				UNREACHABLEC;
+				return;
 			}
 
-		void MidiOut2(BYTE c1, BYTE c2)
-			{
-				WriteDelta();
-				Data->Add(c1);
-				Data->Add(c2);
+			WriteDelta();
+			push_back(midi::SYSEX_START);
+			WriteNumber(count+1);
+			for (size_t i = 0 ; i < count ; i++) {
+				push_back(data[i-1]);
 			}
+			push_back(midi::SYSEX_END);
+		}
+
 
 		void Save(mutOFstream &os);
-		void Add(BYTE c)
-			{
-				Data->Add(c);
-			}
 	};
 
-/*
-	typedef struct TAK1
-	{
-		int inkey;
-		int outkey;
-		size_t unique_id;
-		int channel;
-		int fine;
-		// zum Identifizieren fürs korrekte Ausschalten
-	} TonAufKanal1;
-*/
+
+	class MidiFileOutputProvider {
+	public:
+		MidiFileOutputProvider():Tracks() {}
+		~MidiFileOutputProvider() {}
+
+		bool Open() {
+			Tracks.clear();
+		}
+
+		void Close() {}
+		void Close(mutOFstream &os) {
+			Tracks.Save(os);
+		}
+
+		/** 
+		 * Outputs a three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiFileOutputProvider & operator() (int channel,
+						      uint8_t byte1,
+						      uint8_t byte2,
+						      uint8_t byte3) {
+			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			}
+			Tracks.MidiOut(byte1,byte2,byte3);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		MidiFileOutputProvider & operator() (int channel,
+						     uint8_t byte1,
+						     uint8_t byte2) {
+			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			}
+			Tracks.MidiOut(byte1,byte2);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a one-byte message.
+		 * 
+		 * \param byte1 1st byte
+		 */
+		MidiFileOutputProvider & operator() (uint8_t byte1) {
+			Tracks.MidiOut(byte1);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a one-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider (ignored)
+		 * \param byte1 1st byte
+		 */
+		MidiFileOutputProvider & SendSysEx (BYTE * data,
+						    size_t count) {
+			Tracks.SendSysEx(data,count);
+			return *this;
+		}
+
+		/** 
+		 * Write the MIDI file to a stream.
+		 * 
+		 * \param os stream to write to
+		 */
+		void Save(mutOFstream &os) {
+			Tracks.Save(os);
+		}
+
+	protected:
+
+		Track Tracks;
+	};
+	
+
 
 	// OutMidiFile ------------------------------------------------------
 
 	class MidiFileFactory;
-	class OutputMidiFile : public OutputDeviceClass
+	class OutputMidiFile : public CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice>
 	{
 		friend class MidiFileFactory;
-	protected:
-		int bending_range;
-		OutputMidiFile(): OutputDeviceClass(), bending_range (2) {}
-
-		OutputMidiFile(int devId, 
-			       const mutStringRef name, 
-			       int id = -1, 
-			       int bendingRange = 2)
-			: OutputDeviceClass(devId, name, id)
-			{
-				bending_range = bendingRange;
-			}
 	public:
+		typedef CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice> base;
+
 		virtual ~OutputMidiFile() {};
 	
 		/// Save current device settings in a tree storage
@@ -207,31 +268,11 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass * route);
 
 	
-		virtual bool Open();
 		virtual void Close();
-		virtual void NoteOn(int box, 
-				    int taste, 
-				    int velo, 
-				    RouteClass * r, 
-				    size_t id, 
-				    ChannelData *cd);
-		virtual void NoteOff(int box, 
-				     int taste, 
-				     int velo, 
-				     RouteClass * r, 
-				     size_t id);
-		virtual void NotesCorrect(RouteClass * route);
-		virtual void Sustain(char on, int channel);
-
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-
-		virtual int  GetChannel(int taste)
-			{
-				return -1;
-			} // it would be possible to return the real value, but this is not very useful
 
 		virtual void Gis(GisToken * token, char turn)
 			{};
@@ -242,10 +283,6 @@ namespace mutabor {
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
-
-		virtual void MidiOut(DWORD data, size_t n);
-		virtual void MidiOut(BYTE *p, size_t n);
-		virtual void Quite(RouteClass * r);
 
 		virtual void SetName(const wxString & s) 
 			{
@@ -261,16 +298,6 @@ namespace mutabor {
 				}
 			}
 		
-
-		void SetBendingRange(const int i)
-			{
-				bending_range = i;
-			}
-
-		int GetBendingRange () const 
-			{
-				return bending_range;
-			}
 
 		virtual DevType GetType() const
 			{
@@ -288,16 +315,14 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-		virtual void ReadData(wxConfigBase * config);
-		virtual void WriteData(wxConfigBase * config);
-	
 	protected:
+		OutputMidiFile(): base() {}
 
-		Track Tracks;
-		ChannelData Cd[16];
-		char KeyDir[16];
-		TonAufKanal ton_auf_kanal[16];
-		int nKeyOn;
+		OutputMidiFile(int devId, 
+			       const mutStringRef name, 
+			       int id = -1, 
+			       int bendingRange = 2)
+			: base(devId, name, id, bendingRange) {}
 	};
 
 

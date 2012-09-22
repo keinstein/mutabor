@@ -290,7 +290,7 @@ OutputDeviceClass:\n\
 		for (routeListType::iterator R = routes.begin(); 
 		     R != routes.end(); R++)
 			if ((*R)->GetOutputDevice() )
-				(*R)->GetOutputDevice()->Quite(R->get());
+				(*R)->GetOutputDevice()->Quiet(R->get());
 		DEBUGLOG(smartptr,_T(""));
 	}
 
@@ -490,6 +490,7 @@ InputDeviceClass:\n\
 	bool OutOpen()
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		DEBUGLOG2(midiio,_T("count: %d"),list.size());
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			if ( !(*Out)->Open() ) {
@@ -610,24 +611,25 @@ InputDeviceClass:\n\
 		}
 	}
 
-	int GetChannel(int box, int taste)
+	int GetChannel(int box, int key, int channel)
 	{
-		DEBUGLOG2(smartptr,_T(""));
+		DEBUGLOG2(midiio,_T(""));
 		const routeListType & list = RouteClass::GetRouteList();
 		for (routeListType::const_iterator R = list.begin(); 
 		     R != list.end(); R++) {
 			OutputDevice out;
 			if ( (*R)->GetBox() == box
+			     && (channel == (*R)->GetId())
 			     && (out = (*R)->GetOutputDevice())) {
-				int c = out->GetChannel(taste);
+				int c = out->GetChannel(key,channel);
 				
 				if ( c != -1 ) {
-					DEBUGLOG2(smartptr,_T(""));
+					DEBUGLOG2(midiio,_T(""));
 					return c;
 				}
 			}
 		}
-		DEBUGLOG2(smartptr,_T(""));
+		DEBUGLOG2(midiio,_T(""));
 		return -1;
 	}
 

@@ -35,6 +35,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/MidiKern.h"
 
 #ifndef MU32_ROUTING_DEVICE_H_PRECOMPILED
 #define MU32_ROUTING_DEVICE_H_PRECOMPILED
@@ -75,39 +76,115 @@ namespace mutabor {
 
 	class ChannelData
 	{
-
 	public:
-		int Sound;          // -1 = noch nicht verwendet
-		char Sustain;
-		int BankSelectMSB;  // -1 .. noch nicht benutzt
-		int BankSelectLSB;  // -1 .. noch nicht benutzt
-		long Pitch;         // 0 = ungepitcht, kann durchaus auch negativ sein
-		ChannelData(int sound = -1, char sustain = 0)
+		ChannelData(int sound = -1, int8_t sustain = 0):controller(128,-1),
+								controller_changed(128,-1),
+								first_unchanged(0),
+								looped(false),
+								Sound(sound),
+								bank_coarse(-1),
+								bank_fine(-1),
+								bend(0)
 			{
-				Sound = sound;
-				Sustain = sustain;
-				BankSelectMSB = -1;
-				BankSelectLSB = -1;
-				Pitch = 0;
+				controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
+				if (sustain != 0) {
+					controller_changed[first_unchanged] 
+						= midi::HOLD_PEDAL_ON_OFF;
+					first_unchanged++;
+				}
 			}
 
 		void Reset()
 			{
+				for (controller_vector::iterator i = controller.begin();
+				     i != controller.end();
+				     i++) *i = -1;
+				for (controller_vector::iterator i = controller_changed.begin();
+				     i != controller_changed.end();
+				     i++) *i = -1;
+				first_unchanged = 0;
+				looped = false;
 				Sound = -1;
-				Sustain = 0;
-				BankSelectMSB = -1;
-				BankSelectLSB = -1;
+				bank_coarse = -1;
+				bank_fine = -1;
+				bend = 0;
+				
+				
 			}
 
-		bool operator ==(ChannelData &cd)
-			{
-				return ( Sound == -1 || cd.Sound == -1 || Sound == cd.Sound ) &&
-					( Sustain == -1 || cd.Sustain == -1 || Sustain == cd.Sustain ) &&
-					( BankSelectMSB == -1 || cd.BankSelectMSB == -1 || BankSelectMSB == cd.BankSelectMSB ) &&
-					( BankSelectLSB == -1 || cd.BankSelectLSB == -1 || BankSelectLSB == cd.BankSelectLSB );
+		int8_t set_controller(int8_t number, int8_t data) {
+			int8_t retval = controller[number];
+			controller[number] = data;
+			bool found = false;
+			size_t index;
+			for (int i = 0; i < (looped?controller.size():first_unchanged);i++) {
+				if (controller_changed[i] == number) {
+					controller_vector :: iterator beg = controller_changed.begin();
+					std::rotate(beg + i,beg+i+1 ,beg +first_unchanged);
+					found = true;
+					index = i;
+					break;
+				}
 			}
+			if (!found) 
+				index = first_unchanged++;
+
+			controller_changed[index] = number;
+
+			return retval;
+		}
+
+		int8_t get_controller(int8_t number) const {
+			return controller[number];
+		}
+
+		void program_change(int program) {
+			Sound = program;
+			uint8_t data = controller[midi::BANK_COARSE];
+			if (data != -1) bank_coarse = data;
+			data = controller[midi::BANK_FINE];
+			if (data != -1) bank_fine = data;
+		}
+
+		void program_change(const ChannelData & o) {
+			Sound = o.Sound;
+			bank_coarse = o.bank_coarse;
+			bank_fine = o.bank_fine;
+		}
+ 
+		bool is_compatible (const ChannelData &cd) const {
+			/* \todo check that ignoring pitch bend is ok */
+			if (Sound != -1 && cd.Sound != -1 
+			    && Sound != cd.Sound) return false;
+			if (controller.size() 
+			    != cd.controller.size()) return false;
+				
+			/* \todo optimization */
+			for (size_t i = 0 ; i < controller.size() ; i++) {
+				if (controller[i] != -1 
+				    && cd.controller[i] != -1 
+				    && controller[i] != cd.controller[i]) return false;
+			}
+			return true;
+		}
+
+		int get_bend() { return bend; }
+		int set_bend(int b) { bend = b; }
+
+		int get_program() const {return Sound; }
+		int get_bank_coarse() const { return bank_coarse; }
+		int get_bank_fine() const { return bank_fine; }
+	protected:
+		typedef std::vector<int8_t> controller_vector;
+		controller_vector controller;
+		controller_vector controller_changed;
+		size_t first_unchanged;
+		bool looped;
+		int Sound;                // -1 = noch nicht verwendet
+		uint8_t bank_coarse;      // MSB as saved during last program change
+		uint8_t bank_fine;        // LSB as saved during last program change
+		int bend;                 // 0 = ungepitcht, kann durchaus auch negativ sein
 	};
-
 
 	class Device
 	{
@@ -455,26 +532,27 @@ namespace mutabor {
 			CommonTypedDeviceAPI<OutputDeviceClass>::Destroy();
 			TRACEC;
 		}
-		virtual void NoteOn(int box, 
+		virtual void NoteOn(mutabor_box_type * box, 
 				    int taste, 
 				    int velo, 
 				    RouteClass * r,
 				    size_t id, 
-				    ChannelData *cd) = 0;
-		virtual void NoteOff(int box, 
+				    const ChannelData & input_channel_data) = 0;
+		virtual void NoteOff(mutabor_box_type * box, 
 				     int taste, 
 				     int velo, 
 				     RouteClass * r,
-				     size_t id) = 0;
+				     size_t id,
+				     bool is_note_on) = 0;
 		virtual void NotesCorrect(RouteClass * route) = 0;
-		virtual void Sustain(char on, int channel) = 0;
-		virtual int  GetChannel(int taste) = 0;
+		virtual void Sustain(int channel, const ChannelData & cd) = 0;
+		virtual int  GetChannel(int inkey, int channel) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
-		virtual void MidiOut(DWORD data, size_t n) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
-		virtual void Quite(RouteClass * r) = 0;
+		virtual void Quiet(RouteClass * r) = 0;
 		virtual void Panic() {};
+		virtual bool Open() { return true; }
 
 		virtual bool NeedsRealTime() {
 			return false;
@@ -918,7 +996,7 @@ namespace mutabor {
 
 	void NotesCorrect(mutabor_box_type *  box);
 
-	int GetChannel(int box, int taste);
+	int GetChannel(int box, int taste, int channel);
 
 
 }

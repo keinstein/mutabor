@@ -512,7 +512,7 @@ int StartSep()
 	*Current = new GisToken(Sep, 0);
 	Current = &((*Current)->Next);
 	return 0;
-};
+}
 
 int BeginSegment()
 {
@@ -529,7 +529,7 @@ int BeginSegment()
 	Current = &(Seg->Contents);
 
 	return 0;
-};
+}
 
 int EndSegment()
 {
@@ -546,7 +546,7 @@ int EndSegment()
 	LastOpenBracket = LastOpenBracket->Next;
 
 	return 0;
-};
+}
 
 int BeginSequenz()
 {
@@ -563,7 +563,7 @@ int BeginSequenz()
 	Current = &(Seq->Contents);
 
 	return 0;
-};
+}
 
 int EndSequenz()
 {
@@ -580,14 +580,14 @@ int EndSequenz()
 	LastOpenBracket = LastOpenBracket->Next;
 
 	return 0;
-};
+}
 
 int BeginParameter()
 {
 	DEBUGLOG2(gmnfile,_T("<"));
 	AddStr(TagSep, mutT("<"), Sep);
 	return 0;
-};
+}
 
 int EndParameter()
 {
@@ -599,7 +599,7 @@ int EndParameter()
 		AddStr(TagSep, mutT(">"), Sep);
 
 	return 0;
-};
+}
 
 int BeginRange()
 {
@@ -633,7 +633,7 @@ int BeginRange()
 	TagMode = 0;
 
 	return 0;
-};
+}
 
 int EndRange()
 {
@@ -652,7 +652,7 @@ int EndRange()
 	(Tag->Begin)->End = Tag;
 
 	return 0;
-};
+}
 
 int NextSequenz()
 {
@@ -661,7 +661,7 @@ int NextSequenz()
 	if ( TagMode ) BuildTag();
 
 	return 0;
-};
+}
 
 int Note(const mutString name, const mutString accedentials, int octave, frac duration)
 {
@@ -684,7 +684,7 @@ int Note(const mutString name, const mutString accedentials, int octave, frac du
 	Current = &(Note->Next);
 
 	return 0;
-};
+}
 
 int Tag(const mutString tagName)
 {
@@ -699,7 +699,7 @@ int Tag(const mutString tagName)
 	TagMode = 1;
 
 	return 0;
-};
+}
 
 int TagParaInt(long i)
 {
@@ -714,7 +714,7 @@ int TagParaInt(long i)
 	LastPara = p;
 
 	return 0;
-};
+}
 
 int TagParaReal(double x)
 {
@@ -729,7 +729,7 @@ int TagParaReal(double x)
 	LastPara = p;
 
 	return 0;
-};
+}
 
 int TagParaStr(mutString s)
 {
@@ -744,7 +744,7 @@ int TagParaStr(mutString s)
 	LastPara = p;
 
 	return 0;
-};
+}
 
 int Comma()
 {
@@ -757,7 +757,7 @@ int Comma()
 	Current = &((*Current)->Next);
 
 	return 0;
-};
+}
 
 // ##################################################################
 // clean up procedures (after errors)

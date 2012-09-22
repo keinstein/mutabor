@@ -1,41 +1,15 @@
 /** \file    -*- C++ -*-
 ********************************************************************
-* Description
+* GIS - devices
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/DevGIS.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
-* Copyright:   (c) 2008 TU Dresden
-* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* Copyright:   (c) 1998-2011 TU Dresden
+* \author  
+* R. Krauße,
+* Tobias Schlemmer <keinstein@users.berlios.de>
 * \date 
 * $Date: 2011/11/02 14:31:57 $
 * \version $Revision: 1.7 $
 * \license GPL
-*
-* $Log: DevGIS.h,v $
-* Revision 1.7  2011/11/02 14:31:57  keinstein
-* fix some errors crashing Mutabor on Windows
-*
-* Revision 1.6  2011-10-02 16:58:41  keinstein
-* * generate Class debug information when compile in debug mode
-* * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
-* * Reenable confirmation dialog when closing document while the logic is active
-* * Change debug flag management to be more debugger friendly
-* * implement automatic route/device deletion check
-* * new debug flag --debug-trace
-* * generate lots of tracing output
-*
-* Revision 1.5  2011-09-30 09:10:24  keinstein
-* Further improvements in the routing system.
-*
-* Revision 1.4  2011-09-27 20:13:22  keinstein
-* * Reworked route editing backend
-* * rewireing is done by RouteClass/GUIRoute now
-* * other classes forward most requests to this pair
-* * many bugfixes
-* * Version change: We are reaching beta phase now
-*
-* Revision 1.3  2011-02-20 22:35:56  keinstein
-* updated license information; some file headers have to be revised, though
-*
 *
 *
 ********************************************************************
@@ -165,28 +139,29 @@ namespace mutabor {
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-		virtual void NoteOn(int box, 
+		virtual void NoteOn(mutabor_box_type * box, 
 				    int taste, 
 				    int velo,
 				    RouteClass * r, 
 				    size_t id, 
-				    ChannelData *cd)
+				    const ChannelData &cd)
 			{};
 
-		virtual void NoteOff(int box, 
+		virtual void NoteOff(mutabor_box_type * box, 
 				     int taste,
 				     int velo, 
 				     RouteClass * r, 
-				     size_t id)
+				     size_t id,
+				     bool is_note_on)
 			{};
 
 		virtual void NotesCorrect(RouteClass * route)
 			{};
 
-		virtual void Sustain(char on, int channel)
+		virtual void Sustain(int channel, const ChannelData & cd)
 			{};
 
-		virtual int  GetChannel(int taste)
+		virtual int  GetChannel(int taste, int channel)
 			{
 				return -1;
 			}
@@ -203,7 +178,7 @@ namespace mutabor {
 				Head->AddTime(time);
 			}
 
-		virtual void Quite(RouteClass * r)
+		virtual void Quiet(RouteClass * r)
 			{};
 
 #if defined(_MSC_VER)

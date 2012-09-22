@@ -1,13 +1,11 @@
 // -*- C++ -*- 
 /** \file 
  ********************************************************************
- * Description
+ * Classes for midi port
  *
  * Copyright:   (c) 2008-2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2012/01/29 22:08:36 $
- * \version $Revision: 1.11 $
+ *
  * \license GPL
  *
  *
@@ -16,10 +14,6 @@
  * \addtogroup route
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
-// MidiPort Klassen
-// ------------------------------------------------------------------
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -35,8 +29,10 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/wxGUI/generic/mhDefs.h"
+#include "src/kernel/routing/midi/midicmn.h"
+//#include "src/wxGUI/generic/mhDefs.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/GrafKern.h"
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
 #define MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
@@ -62,43 +58,162 @@ namespace mutabor {
 
 // OutputMidiPort ------------------------------------------------------
 
-	typedef struct TAK
-	{
-		bool active; //< is this tone active or free?
-		int inkey;   //< internal key id. provided by input device
-		int outkey;  //< key that has been output to the MIDI device
-		int channel; //< route that broght the note to this device
-		int midi_channel; //< MIDI channel (unsused)
-		size_t unique_id; //< unique id defined by input device
-	} TonAufKanal;
-
-
 	class MidiPortFactory;
-	class OutputMidiPort : public OutputDeviceClass
+
+	class MidiPortOutputProvider {
+	public:
+		MidiPortOutputProvider():port(NULL) {}
+		~MidiPortOutputProvider() {
+			if (port && port != NULL) {
+				Close();
+			}
+		}
+
+		bool Open(int id, const mutStringRef name) {
+#ifdef RTMIDI
+			try {
+				port = new RtMidiOut(PACKAGE_STRING);
+			} catch (RtError &error) {
+				LAUFZEIT_ERROR0(_("Can not open ouput Midi devices due to memory allocation  problems."));
+				return false;
+			}
+			
+			try {
+				port->openPort(id,(const char *)name.ToUTF8());
+			} catch (RtError &error) {
+				LAUFZEIT_ERROR2(_("Can not open output Midi device no. %d (%s)"), 
+						id, (name.c_str()));
+				return false;
+			}
+
+#else
+			midiOutOpen(&hMidiOut, DevId, NULL, NULL, NULL);
+
+#endif
+			return true;
+		}
+		
+		bool Open() {
+			// Should be done by device.
+			if (!port) return false;
+			return true;
+		}
+
+		void Close() {
+#ifdef RTMIDI
+			port->closePort();
+			delete port;
+			port = NULL;
+#else
+			midiOutClose(hMidiOut);
+
+#endif
+			
+		}
+
+		/** 
+		 * Outputs a three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiPortOutputProvider & operator() (int channel,
+						      uint8_t byte1,
+						      uint8_t byte2,
+						      uint8_t byte3) {
+			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			}
+			std::vector<unsigned char> message(3);
+			message[0] = byte1;
+			message[1] = byte2;
+			message[2] = byte3;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		MidiPortOutputProvider & operator() (int channel,
+						      uint8_t byte1,
+						      uint8_t byte2)
+			{
+			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			}
+			std::vector<unsigned char> message(2);
+			message[0] = byte1;
+			message[1] = byte2;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a one-byte message.
+		 * 
+		 * \param byte1 1st byte
+		 */
+		MidiPortOutputProvider & operator() (uint8_t byte1) {
+			std::vector<unsigned char> message(1);
+			message[0] = byte1;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a System Exclusive  message.
+		 * 
+		 * \param data byte array containing the complete SysEx message
+		 * \param count length of the SysEx message
+		 */
+		MidiPortOutputProvider & SendSysEx (BYTE * data,
+						    size_t count) {
+			if (data[0] == midi::SYSEX_START) {
+				UNREACHABLEC;
+				return *this;
+			}
+			std::vector<unsigned char> message(count + 2);
+			message[0] = midi::SYSEX_START;
+			for (size_t i = 1 ; i <= count ; i++) {
+				message[i] = data[i-1];
+			}
+			message[count+1] = midi::SYSEX_END;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+	protected:
+		RtMidiOut * port;
+	};
+
+	class OutputMidiPort : public CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass>
 	{
 		friend class MidiPortFactory;
 	protected:
-		int bending_range;
-		OutputMidiPort():OutputDeviceClass(), 
-				 bending_range (2), 
-				 hMidiOut(NULL), 
-				 nKeyOn(0) { }
-
-		OutputMidiPort(int devId, 
-			       wxString name, 
-			       int id = -1, 
-			       int bendingRange = 2)
-			: OutputDeviceClass(devId, name, id),
-			  bending_range (bendingRange), 
-			  hMidiOut(NULL), 
-			  nKeyOn(0)
-			{
-				DEBUGLOG(other,_T(""));
-			}
-
 	public:
-		~OutputMidiPort()
-			{};
+
+		typedef CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass> base;
+		
+		~OutputMidiPort() {};
 	
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -128,23 +243,12 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass *  route);
 
 	
-		virtual bool Open();
-		virtual void Close();
-		virtual void NoteOn(int Box, 
-				    int taste, 
-				    int velo, 
-				    RouteClass * r,
-				    size_t id, 
-				    ChannelData *cd);
-		virtual void NoteOff(int Box, 
-				     int taste, 
-				     int velo, 
-				     RouteClass * r, 
-				     size_t id);
-		virtual void NotesCorrect(RouteClass * route);
-		virtual void Sustain(char on, int channel);
-		virtual int  GetChannel(int taste);
-
+		virtual bool Open() {
+			bool retval = Out.Open(DevId, Name);
+			if (!retval) return false;
+			return base::Open();
+		}
+	
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -156,14 +260,11 @@ namespace mutabor {
 		virtual void AddTime(frac time)
 			{};
 
-		virtual void MidiOut(DWORD data, size_t n);
-		virtual void MidiOut(BYTE * p, size_t n);
+//		virtual void MidiOut(DWORD data, size_t n);
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		virtual void Quite(RouteClass * r);
-		virtual void Panic();
 		virtual bool NeedsRealTime()
 			{
 				return true;
@@ -184,15 +285,6 @@ namespace mutabor {
 				Open();
 			}
 		}
-		
-		void SetBendingRange (int r) {
-			bending_range = r;
-		}
-
-		int GetBendingRange() {
-			return bending_range;
-		}
-        
 
 		virtual DevType GetType() const
 			{
@@ -203,8 +295,10 @@ namespace mutabor {
 			return N_("Midi output device");
 		}
 
+#if 0
 		virtual void ReadData(wxConfigBase * config);
 		virtual void WriteData(wxConfigBase * config);
+#endif
 	
 #ifdef WX
 		virtual wxString TowxString() const;
@@ -213,17 +307,26 @@ namespace mutabor {
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 	
-	private:
+	protected:
 
+
+#if 0
 #ifdef RTMIDI
 		RtMidiOut *hMidiOut;
 #else
 		HMIDIOUT hMidiOut;
 #endif
-		ChannelData Cd[16];
-		char KeyDir[16];
-		TonAufKanal ton_auf_kanal[16];
-		int nKeyOn;
+#endif
+		
+		OutputMidiPort():base() { }
+
+		OutputMidiPort(int devId, 
+			       wxString name, 
+			       int id = -1, 
+			       int bendingRange = 2):
+			base(devId, name, id, bendingRange) {
+			DEBUGLOG(other,_T(""));
+		}
 	};
 
 // InputMidiPort -------------------------------------------------------

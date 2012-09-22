@@ -186,27 +186,27 @@ void MutTextBox::GetKeys(bool asTS)
 	     key != NULL; 
 	     key = mutabor_find_key_in_box(b,key->next)) {
 
-		int lt = key->number;
+		int pitch = key->number;
 		long freq;
 		double cents;
 		
-		if ( (freq=get_frequency( lt ,tonsys ))!=0) {
+		if ( (freq=get_frequency( pitch ,tonsys ))!=0) {
 			if (asTS) {
 				cents = LONG_TO_CENT(freq);
 			} else {
-				int last_lt = last_key->number;
-				long delta = freq -  get_frequency(last_lt, tonsys); 
+				int last_pitch = last_key->number;
+				long depitcha = freq -  get_frequency(last_pitch, tonsys); 
 				cents = LONG_TO_CENT(freq);
 				last_key = key;
 
 			}
 			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d]"),
-				    lt,
+				    pitch,
 				    LONG_TO_HERTZ(freq),
 				    cents,
-				    mutabor::GetChannel(box, lt));
+				    mutabor::GetChannel(box, pitch, key->channel));
 		} else {
-			keys.Printf(_("%2d : empty"),lt);
+			keys.Printf(_("%2d : empty"),pitch);
 		}
 		Append(keys);
 	}

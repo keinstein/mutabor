@@ -28,7 +28,7 @@
 #include "src/kernel/Execute.h"
 #include "box.h"
 #include "GrafKern.h"
-#include "MidiKern.h"
+#include "src/kernel/MidiKern.h"
 #include "Runtime.h"
 #include "src/kernel/routing/Device.h"
 #include "src/kernel/routing/Route-inlines.h"
