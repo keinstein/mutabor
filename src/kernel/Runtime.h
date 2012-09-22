@@ -10,29 +10,6 @@
  * \version $Revision: 1.15 $
  * \license GPL
  *
- * $Log: Runtime.h,v $
- * Revision 1.15  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.14  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.13  2011-03-06 13:15:41  keinstein
- * some rearrangement for update callback kernel->GUI
- *
- * Revision 1.12  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
- *
  *
  ********************************************************************
  * \addtogroup runtime
@@ -101,7 +78,7 @@ bool pascal CheckNeedsRealTime();
 
 // box = -1 ... weiterlesen in angefangener Liste
 char pascal GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box);
-char pascal IsLogicKey(char key);
+char pascal IsLogicKey(mutabor_box_type * box, char key);
 bool pascal KeyChanged(int box);
 bool pascal TSChanged(int box);
 bool pascal InDevicesChanged();

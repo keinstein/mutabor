@@ -532,7 +532,7 @@ namespace mutaborGUI {
 			if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
 
 			// ermiteln, ob Logik
-			char isLogic = IsLogicKey((char)key);
+			char isLogic = IsLogicKey(&mut_box[boxnumber], (char)key);
 
 			if ( isLogic == 2 ) return;
 

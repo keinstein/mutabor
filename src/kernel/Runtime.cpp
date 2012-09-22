@@ -258,9 +258,9 @@ char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &
 	return 1;
 }
 
-char pascal _export IsLogicKey(char key) {
+char pascal _export IsLogicKey(mutabor_box_type * box, char key) {
 
-	struct keyboard_ereignis *last = current_computer_keyboard_box->first_keyboard;
+	struct keyboard_ereignis *last = box->first_keyboard;
 
 	while ( last ) {
 		if ( key == last->taste )
