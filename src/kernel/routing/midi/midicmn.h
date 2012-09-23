@@ -511,6 +511,11 @@ namespace mutabor {
 		void SplitOut (BYTE * p, size_t n);
 		void Quiet(RouteClass * r);
 		void Panic();
+		/** 
+		 * Gis output is unimplemented. 
+		 * Ignore GIS tokens.
+		 */
+		void Gis(GisToken*, char) {}
 		void MidiOut(BYTE *p, size_t n) {
 			SplitOut(p,n);
 		}
