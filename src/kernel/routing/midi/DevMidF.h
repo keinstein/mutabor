@@ -160,7 +160,7 @@ namespace mutabor {
 						      uint8_t byte1,
 						      uint8_t byte2,
 						      uint8_t byte3) {
-			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+			if ((byte1 & midi::TYPE_MASK) != midi::SYSTEM) {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
@@ -200,7 +200,7 @@ namespace mutabor {
 		MidiFileOutputProvider & operator() (int channel,
 						     uint8_t byte1,
 						     uint8_t byte2) {
-			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+			if ((byte1 & midi::TYPE_MASK) != midi::SYSTEM) {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
