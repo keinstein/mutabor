@@ -130,7 +130,7 @@ namespace mutabor {
 		iterator reserve_channel(iterator actual) {
 			if (actual != this->end()) {
 				if (first_free <= actual) {
-					move_to_front(first_free,actual);
+					move_to_front(actual,first_free);
 					actual = first_free;
 					first_free ++ ;
 					if (first_free > last_sustained) {
