@@ -63,12 +63,14 @@ void FlushUpdateUI();
 
 // berechnet die Tonigkeit einer Taste bzgl. tonsystem
 inline int GET_INDEX(int key, tone_system * tonsystem) {
-	 int retval = (key - tonsystem->anker) % tonsystem->breite;
-	 return retval < 0 ? retval + tonsystem->breite : retval;
+	mutASSERT(tonsystem);
+	int retval = (key - tonsystem->anker) % tonsystem->breite;
+	return retval < 0 ? retval + tonsystem->breite : retval;
 }
 
 // berechnet die 'Oktavlage' einer taste bzgl. tonsystem
 inline int GET_ABSTAND(int taste, tone_system * tonsystem) {
+	mutASSERT(tonsystem);
 	int retval = (int)(taste - (tonsystem->anker % tonsystem->breite)) / tonsystem->breite;
 	retval -= ((int)tonsystem->anker  / tonsystem->breite);
 	return retval;
@@ -82,6 +84,7 @@ inline int GET_ABSTAND(int taste, tone_system * tonsystem) {
 #endif
 
 inline long GET_FREQ(int key,tone_system * tonsystem) {
+	mutASSERT(tonsystem);
 	size_t index = GET_INDEX(key,tonsystem);
 	if (tonsystem->ton[index]==0) 
 		return 0;
