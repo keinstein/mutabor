@@ -49,7 +49,9 @@ testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
 	main.cpp \
-	DevMidFTest.h
+	DevMidFTest.h \
+	midicmnTest.h \
+	midicmnTest.cpp
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \

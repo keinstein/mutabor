@@ -1,4 +1,5 @@
 #include "src/kernel/routing/midi/tests/DevMidFTest.h"
+#include "src/kernel/routing/midi/tests/midicmnTest.h"
 #include "wx/app.h"
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
@@ -32,6 +33,7 @@ main(int argc, char** argv)
 	runner.eventManager().addListener(&listener);
 
 	runner.addTest( InputMidiFileTest<mutabor::InputMidiFile>::suite() );
+	runner.addTest( CommonMidiOutputTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 
