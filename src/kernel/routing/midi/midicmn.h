@@ -92,6 +92,21 @@ namespace mutabor {
 		}
 
 		
+		template<class F>
+		iterator find_matching_channel  (iterator start, F filter) {
+			if (start == this->end()) {
+				DEBUGLOG(midiio,_T("No channel found"));
+				return start;
+			}
+			iterator actual = start;
+			while ((!(filter((int)(*actual)))) && actual != this->end()) {
+				DEBUGLOG(midiio,_T("Not using Channel %d"),(int)(*actual));
+				actual++;
+			}
+			DEBUGLOG(midiio,_T("Using Channel %d"),(int)(*actual));
+			return actual;
+		}
+
 
 		/** 
 		 * Reserves the first free channel. 
@@ -108,10 +123,7 @@ namespace mutabor {
 		 */		
 		template<class F>
 		const_iterator reserve_channel_filtered (F filter) {
-			iterator actual; 
-			for (actual = first_free; 
-			     filter((int)(*actual)) && actual != this->end();
-			     actual++);
+			iterator actual = find_matching_channel(first_free, filter);
 			return reserve_channel (actual);
 		}
 
