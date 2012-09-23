@@ -129,13 +129,14 @@ namespace mutabor {
 
 		iterator reserve_channel(iterator actual) {
 			if (actual != this->end()) {
-				if (first_free >= last_sustained) {
-					last_sustained++;
-				}
 				if (first_free <= actual) {
 					move_to_front(first_free,actual);
 					actual = first_free;
 					first_free ++ ;
+					if (first_free > last_sustained) {
+						last_sustained++;
+					}
+					mutASSERT(first_free == this->end() || first_free <= last_sustained);
 				} else {
 					// we are rearranging used channels 
 					// thus first_free doesn't change
