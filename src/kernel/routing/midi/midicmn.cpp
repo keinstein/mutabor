@@ -337,7 +337,7 @@ namespace mutabor {
 
 		for (int channel = 0; channel < 16; channel++)
 			if ( (ton_auf_kanal[channel].active 
-			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF) ) 
+			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF)>0 ) 
 			     && ton_auf_kanal[channel].channel == route->GetId()) {
 
 				TAK & tone = ton_auf_kanal[channel];
