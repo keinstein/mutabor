@@ -200,7 +200,7 @@ void MutTextBox::GetKeys(bool asTS)
 				last_key = key;
 
 			}
-			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d]"),
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"),
 				    pitch,
 				    LONG_TO_HERTZ(freq),
 				    cents,
