@@ -608,7 +608,7 @@ namespace mutabor {
 			}
 
 			if ( sound != -1 ) 
-				Out(channel,midi::PROGRAM_CHANGE | (channel & 0x0f), sound);
+				Out(channel,midi::PROGRAM_CHANGE, sound);
 		}
 
 		void controller(int channel, int controller, int value) {
