@@ -280,7 +280,10 @@ namespace mutabor {
 		)
 	{
 		mutASSERT(this->isOpen);
-		if (!r || r == NULL) return;
+		if (!r || r == NULL) {
+			UNREACHABLEC;
+			return;
+		}
 		DEBUGLOG (midiio, _T("box %p, key %d, velo %d, id %d"),
 			  box, inkey, velo, id);
 
