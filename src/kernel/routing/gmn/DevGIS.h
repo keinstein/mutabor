@@ -161,7 +161,7 @@ namespace mutabor {
 		virtual void Sustain(int channel, const ChannelData & cd)
 			{};
 
-		virtual int  GetChannel(int taste, int channel)
+		virtual int  GetChannel(int taste, int channel, int id)
 			{
 				return -1;
 			}

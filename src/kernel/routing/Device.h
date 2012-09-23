@@ -546,7 +546,7 @@ namespace mutabor {
 				     bool is_note_on) = 0;
 		virtual void NotesCorrect(RouteClass * route) = 0;
 		virtual void Sustain(int channel, const ChannelData & cd) = 0;
-		virtual int  GetChannel(int inkey, int channel) = 0;
+		virtual int  GetChannel(int inkey, int channel, int id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
@@ -996,7 +996,7 @@ namespace mutabor {
 
 	void NotesCorrect(mutabor_box_type *  box);
 
-	int GetChannel(int box, int taste, int channel);
+	int GetChannel(int box, int taste, int channel, int id);
 
 
 }

@@ -522,7 +522,7 @@ namespace mutabor {
 			);	
 		void NotesCorrect(RouteClass * route);
 		void Sustain(int channel, const ChannelData & cd);
-		int GetChannel(int inkey, int channel);
+		int GetChannel(int inkey, int channel, int id);
 		void SplitOut (BYTE * p, size_t n);
 		void Quiet(RouteClass * r);
 		void Panic();

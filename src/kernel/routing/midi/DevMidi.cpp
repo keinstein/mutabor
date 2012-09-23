@@ -419,7 +419,7 @@ InputMidiPort:\n\
 		case 0x90: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
 				if ( route->Active )
-					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, 0, route->GetId(), NULL);
+					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, MidiChannel, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -435,7 +435,7 @@ InputMidiPort:\n\
 			
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, 0, route->GetId());
+				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, MidiChannel, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()

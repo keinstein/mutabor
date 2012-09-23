@@ -204,7 +204,8 @@ void MutTextBox::GetKeys(bool asTS)
 				    pitch,
 				    LONG_TO_HERTZ(freq),
 				    cents,
-				    mutabor::GetChannel(box, pitch, key->channel));
+				    mutabor::GetChannel(box, pitch, key->channel, key->id),
+				    key->id);
 		} else {
 			keys.Printf(_("%2d : empty"),pitch);
 		}

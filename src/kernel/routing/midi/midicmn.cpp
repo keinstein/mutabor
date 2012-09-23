@@ -405,13 +405,14 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel)
+	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, int id)
 	{
 		mutASSERT(this->isOpen);
 		DEBUGLOG (midiio, _T(""));
 
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].active 
+			     && (ton_auf_kanal[i].unique_id == id)
 			     && (ton_auf_kanal[i].inkey == inkey) 
 			     && (ton_auf_kanal[i].channel == channel) )
 				return ton_auf_kanal[i].midi_channel;

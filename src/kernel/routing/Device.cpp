@@ -611,7 +611,7 @@ InputDeviceClass:\n\
 		}
 	}
 
-	int GetChannel(int box, int key, int channel)
+	int GetChannel(int box, int key, int channel, int id)
 	{
 		DEBUGLOG2(midiio,_T(""));
 		const routeListType & list = RouteClass::GetRouteList();
@@ -621,7 +621,7 @@ InputDeviceClass:\n\
 			if ( (*R)->GetBox() == box
 			     && (channel == (*R)->GetId())
 			     && (out = (*R)->GetOutputDevice())) {
-				int c = out->GetChannel(key,channel);
+				int c = out->GetChannel(key,channel,id);
 				
 				if ( c != -1 ) {
 					DEBUGLOG2(midiio,_T(""));

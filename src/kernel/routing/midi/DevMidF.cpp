@@ -716,7 +716,7 @@ namespace mutabor {
 		case NOTE_ON: // Note On
 			if ( MIDICODE(2) > 0 ) {
 				if ( route->Active )
-					AddKey(&mut_box[Box], MIDICODE(1), 0, route->GetId(), NULL);
+					AddKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -732,7 +732,7 @@ namespace mutabor {
 
 		case NOTE_OFF: // Note Off
 			if ( route->Active )
-				DeleteKey(&mut_box[Box], MIDICODE(1), 0, route->GetId());
+				DeleteKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()
