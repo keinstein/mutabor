@@ -109,9 +109,10 @@ namespace mutabor {
 		ChannelFilter(const RouteClass * r):route(r) {}
 		
 		bool operator () (int channel) {
-			return channel <= route->OFrom 
-				&& channel >= route->OTo &&
-				(!route->ONoDrum || channel != DRUMCHANNEL);
+			return channel >= route->OFrom 
+				&& channel <= route->OTo 
+				&& (!route->ONoDrum 
+				    || channel != DRUMCHANNEL);
 		}
 		
 		bool check() {
