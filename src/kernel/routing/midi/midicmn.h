@@ -244,6 +244,7 @@ namespace mutabor {
 		 * \param end position after the end position of the element.
 		 */
 		void move_to_end (iterator current, iterator end) {
+			mutASSERT(current < end);
 			if (current == this->end()) {
 				UNREACHABLEC;
 				return;
@@ -258,6 +259,7 @@ namespace mutabor {
 		 * \param final position where the element should be moved to
 		 */
 		void move_to_front (iterator current, iterator final) {
+			mutASSERT(final <= current);
 			if (current == this->end()) {
 				UNREACHABLEC;
 				return;
