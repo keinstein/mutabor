@@ -286,15 +286,49 @@ namespace mutabor {
 	
 	
 	/** 
-	 * A simple MIDI output provider describing the API.
+	 * A simple MIDI output provider describing the API and providing simple means for debugging.
 	 * 
 	 */
 	class DebugMidiOutputProvider {
 	public:
-		DebugMidiOutputProvider() {}
+
+		DebugMidiOutputProvider():data(),open(false) {}
+
+		
+		/** 
+		 * Opens the output.
+		 * 
+		 * 
+		 * \retval true on success.  
+		 * \retval false if an error
+		 * occurred. In that case assume that everything below
+		 * this function has been restored to closed state.
+		 */
+		bool Open() {
+			mutASSERT(!open);
+			open = true;
+			data = _T("Opened...\n");
+			return true;
+		}
+
 
 		/** 
-		 * Outputs a three-byte message.
+		 * Opens the output.
+		 * 
+		 * 
+		 * \retval true on success.  
+		 * \retval false if an error
+		 * occurred. In that case assume that everything below
+		 * this function has been restored to closed state.
+		 */
+		void Close() {
+			mutASSERT(open);
+			open = false;
+			data += _T("...closed.\n");
+		}
+
+		/** 
+		 * Outputs a three-byte message merging the channel into the data.
 		 * 
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
@@ -306,14 +340,35 @@ namespace mutabor {
 		DebugMidiOutputProvider & operator() (int channel,
 						      uint8_t byte1,
 						      uint8_t byte2,
-						      uint8_t byte3) 
-			{
-				DEBUGLOG(midiio,_T("MIDI OUT to %02x: %02x %02x %02x"), channel, byte1,byte2,byte3);
-				return *this;
-			}
+						      uint8_t byte3) {
+			mutASSERT(open);
+			byte1 |= channel & midi::CHANNEL_MASK;
+			return RawMsg(channel,byte1,byte2,byte3);
+		}
+		/** 
+		 * Outputs a raw three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		DebugMidiOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2,
+						  uint8_t byte3) { 
+			mutASSERT(open);
+			mutString tmp;
+			tmp.Printf(_T("%3d: %02x %02x %02x"), channel, byte1, byte2, byte3);
+			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
+			data += tmp + _T("\n");
+			return *this;
+		}
 
 		/** 
-		 * Outputs a two-byte message.
+		 * Outputs a two-byte message merging the channel into the message.
 		 * 
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
@@ -323,11 +378,50 @@ namespace mutabor {
 		 */
 		DebugMidiOutputProvider & operator() (int channel,
 						      uint8_t byte1,
-						      uint8_t byte2)
-			{
-				DEBUGLOG(midiio,_T("MIDI OUT to %02x: %02x %02x"), channel, byte1, byte2);
-				return * this;
-			}
+						      uint8_t byte2) {
+			mutASSERT(open);
+			byte1 |= channel & midi::CHANNEL_MASK;
+			return RawMsg(channel,byte1,byte2);
+		}
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		DebugMidiOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2) {
+			mutASSERT(open);
+			mutString tmp;
+			tmp.Printf(_T("%3d: %02x %02x"), channel, byte1,byte2);
+			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
+			data += tmp + _T("\n");
+			return * this;
+		}
+		
+		/** 
+		 * Outputs a one-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 byte
+		 */
+		DebugMidiOutputProvider & RawMsg (int channel, uint8_t byte1) {
+			// channel is used in multi track environments
+			mutASSERT(open);
+			mutString tmp;
+			tmp.Printf(_T("%3d: %02x"), byte1);
+			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
+			data += tmp + _T("\n");
+			return * this;
+		}
+
+
 
 		/** 
 		 * Outputs a System Exclusive Message.
@@ -335,11 +429,33 @@ namespace mutabor {
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider 
-		 * \param data vector containing data to be sent.
+		 * \param message byte array containang the message
+		 * \param count number of bytes to be sent
 		 */
-		void MidiOutSysEx(unsigned int channel,
-				  std::vector<uint8_t> data) {
+		DebugMidiOutputProvider & SendSysEx(int channel, BYTE * message, size_t count){
+			// channel is used in multi track environments
+			mutASSERT(open);
+			if (data[0] == (BYTE)midi::SYSEX_START 
+			    || data[count-1] == (BYTE)midi::SYSEX_END) {
+				UNREACHABLEC;
+				return *this;
+			}
+			mutString tmp = mutString::Format(_T("%3d: SysEx"),channel);
+			for (size_t i = 0 ; i < count; i++) {
+				tmp += mutString::Format(_T(" %02x"),message[i]);
+			}
+			
+			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
+			data += tmp + _T(" End\n");
+			return * this;
 		}
+
+		operator mutString () { return data; }
+		void ClearData() { data = _T(""); } 
+	protected:
+		/* the data fields not not necessary for and output provider */
+		mutString data;
+		bool open;
 	};
 
 	

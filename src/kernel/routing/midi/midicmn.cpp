@@ -459,6 +459,7 @@ namespace mutabor {
 				
 			case midi::SYSTEM:
 				if (!(channel & 0x08)) datalength = 0;
+				channel = -1;
 				switch (p[pos]) {
 				case midi::SYSEX_START:
 				{
@@ -471,7 +472,7 @@ namespace mutabor {
 						counter++;
 					}
 					if (p[pos] == midi::SYSEX_END) counter++;
-					Out.SendSysEx(&p[pos+1],counter-pos-1);
+					Out.SendSysEx(channel,&p[pos+1],counter-pos-1);
 					pos = counter;
 				}
 					break;
@@ -508,7 +509,7 @@ namespace mutabor {
 				case midi::STOP_PLAY:
 				case midi::ACTIVE_SENSE:
  				case midi::RESET:
-					Out(p[pos]);
+					Out.RawMsg(channel, p[pos]);
 				default:
 					pos++;
 				}

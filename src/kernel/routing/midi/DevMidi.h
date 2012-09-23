@@ -125,11 +125,29 @@ namespace mutabor {
 						      uint8_t byte1,
 						      uint8_t byte2,
 						      uint8_t byte3) {
-			if (byte1 & midi::TYPE_MASK != midi::SYSTEM) {
+			if ((byte1 & midi::TYPE_MASK) != midi::SYSTEM) {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
 			}
+			return RawMsg(channel,byte1,byte2,byte3);
+		}
+		/** 
+		 * Outputs a raw three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiPortOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2,
+						  uint8_t byte3) { 
 			std::vector<unsigned char> message(3);
 			message[0] = byte1;
 			message[1] = byte2;
@@ -156,7 +174,25 @@ namespace mutabor {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
 			}
+			
+			return RawMsg(channel,byte1,byte2);
+		}
+
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		 MidiPortOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2) {
 			std::vector<unsigned char> message(2);
 			message[0] = byte1;
 			message[1] = byte2;
@@ -170,7 +206,8 @@ namespace mutabor {
 		 * 
 		 * \param byte1 1st byte
 		 */
-		MidiPortOutputProvider & operator() (uint8_t byte1) {
+		MidiPortOutputProvider & RawMsg (int channel, uint8_t byte1) {
+			mutASSERT(0 <= channel && channel <= midi::CHANNEL_MASK);
 			std::vector<unsigned char> message(1);
 			message[0] = byte1;
 			
@@ -184,9 +221,12 @@ namespace mutabor {
 		 * \param data byte array containing the complete SysEx message
 		 * \param count length of the SysEx message
 		 */
-		MidiPortOutputProvider & SendSysEx (BYTE * data,
+		MidiPortOutputProvider & SendSysEx (int channel,
+						    BYTE * data,
 						    size_t count) {
-			if (data[0] == midi::SYSEX_START) {
+			mutASSERT(0 <= channel && channel <= midi::CHANNEL_MASK);
+			if (data[0] == midi::SYSEX_START 
+			    || data[count-1] == midi::SYSEX_END) {
 				UNREACHABLEC;
 				return *this;
 			}

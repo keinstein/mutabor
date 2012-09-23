@@ -112,7 +112,8 @@ namespace mutabor {
 		}
 
 		void SendSysEx (uint8_t * data, size_t count) {
-			if (data[0] == midi::SYSEX_START) {
+			if (data[0] == midi::SYSEX_START 
+			    || data[count-1] == midi::SYSEX_END) {
 				UNREACHABLEC;
 				return;
 			}
@@ -163,7 +164,26 @@ namespace mutabor {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
 			}
+			return RawMsg(channel,byte1,byte2,byte3);
+		}
+
+		/** 
+		 * Outputs a raw three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiFileOutputProvider & RawMsg (int channel,
+						 uint8_t byte1,
+						 uint8_t byte2,
+						 uint8_t byte3) { 
 			Tracks.MidiOut(byte1,byte2,byte3);
 			return *this;
 		}
@@ -184,18 +204,26 @@ namespace mutabor {
 				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
 				mutASSERT(channel < 0x10);
 				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
 			}
-			Tracks.MidiOut(byte1,byte2);
-			return *this;
+			
+			return RawMsg(channel,byte1,byte2);
 		}
 
 		/** 
-		 * Outputs a one-byte message.
+		 * Outputs a two-byte message.
 		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
 		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
 		 */
-		MidiFileOutputProvider & operator() (uint8_t byte1) {
-			Tracks.MidiOut(byte1);
+		 MidiFileOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2) {
+			Tracks.MidiOut(byte1,byte2);
 			return *this;
 		}
 
@@ -204,10 +232,24 @@ namespace mutabor {
 		 * 
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 */
+		MidiFileOutputProvider & RawMsg (int channel, uint8_t byte1) {
+			Tracks.MidiOut(byte1);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a system exclusive message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider (ignored)
 		 * \param byte1 1st byte
 		 */
-		MidiFileOutputProvider & SendSysEx (BYTE * data,
+		MidiFileOutputProvider & SendSysEx (int channel,
+						    BYTE * data,
 						    size_t count) {
 			Tracks.SendSysEx(data,count);
 			return *this;
