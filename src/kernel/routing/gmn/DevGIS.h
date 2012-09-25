@@ -159,8 +159,10 @@ namespace mutabor {
 			{};
 
 		virtual void Controller(int,int,int) {}
+/*
 		virtual void Sustain(int channel, const ChannelData & cd)
 			{};
+*/
 
 		virtual int  GetChannel(int taste, int channel, int id)
 			{

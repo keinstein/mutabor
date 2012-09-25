@@ -409,6 +409,8 @@ namespace mutabor {
 				} 
 			}
 	}
+
+	/*
 	void CommonMidiOutput<T,D>::Sustain(int channel, const ChannelData & cd)
 	{
 		mutASSERT(this->isOpen);
@@ -421,6 +423,7 @@ namespace mutabor {
 				channel_queue.sustain_channel(i);
 			}
 	}
+	*/
 
 	template<class T, class D>
 	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, int id)
