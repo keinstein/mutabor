@@ -657,8 +657,8 @@ namespace mutabor {
 			   implemented the complicate correct formula above.
 			*/
 			
-			// must solve the equation 0x 80 00 00 / divisor + 0x 20 00 = 0x 40 00
-			return retval / 0x400; //we can't use >> because of negative values
+			// must solve the equation 0x1 00 00 00 / divisor + 0x 3f ff = 0x 7f ff
+			return retval / 0x800; //we can't use >> because of negative values
 		}
 
 		pitch_bend_type pitch_and_bend(long tuned_note) {
