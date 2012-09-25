@@ -262,6 +262,10 @@ namespace mutabor {
 				Out->NotesCorrect(this);
 		}
 
+		void Controller(int controller, int value) {
+			if (Out) Out->Controller(GetId(), controller, value);
+		}
+
 		/// add a new output device
 		virtual void Add (OutputDevice & out);
 		/// add a new input device

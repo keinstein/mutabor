@@ -158,6 +158,7 @@ namespace mutabor {
 		virtual void NotesCorrect(RouteClass * route)
 			{};
 
+		virtual void Controller(int,int,int) {}
 		virtual void Sustain(int channel, const ChannelData & cd)
 			{};
 

@@ -388,9 +388,27 @@ namespace mutabor {
 				}
 			}
 	}
-	
 
 	template<class T, class D>
+	void  CommonMidiOutput<T,D>::Controller(int mutabor_channel, int ctrl, int value)
+	{
+		mutASSERT(ctrl < 0x80);
+		mutASSERT(value < 0x80);
+		mutASSERT(this->isOpen);
+		for (int i = 0; i < 16; i++)
+			if ( ton_auf_kanal[i].channel == mutabor_channel
+			     && (ton_auf_kanal[i].active 
+				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
+				controller(i, ctrl, value);
+				Cd[i].set_controller(ctrl, value);
+				
+				// sustained section contains only inactive MIDI channels
+				if (ctrl == midi::HOLD_PEDAL_ON_OFF
+				    && !ton_auf_kanal[i].active) {
+					channel_queue.sustain_channel(i, value > 0x40);
+				} 
+			}
+	}
 	void CommonMidiOutput<T,D>::Sustain(int channel, const ChannelData & cd)
 	{
 		mutASSERT(this->isOpen);

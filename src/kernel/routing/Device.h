@@ -114,6 +114,8 @@ namespace mutabor {
 
 		int8_t set_controller(int8_t number, int8_t data) {
 			int8_t retval = controller[number];
+			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
+
 			controller[number] = data;
 			bool found = false;
 			size_t index;
@@ -545,6 +547,7 @@ namespace mutabor {
 				     size_t id,
 				     bool is_note_on) = 0;
 		virtual void NotesCorrect(RouteClass * route) = 0;
+		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
 		virtual void Sustain(int channel, const ChannelData & cd) = 0;
 		virtual int  GetChannel(int inkey, int channel, int id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;

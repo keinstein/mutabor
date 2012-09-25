@@ -455,9 +455,12 @@ InputMidiPort:\n\
 
 		case CONTROLLER: // Control Change
 			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
+			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
+			break;
 		case KEY_PRESSURE:
+#pragma warning "implement key_pressure"
 		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-			//3 ??
+#pragma warning "implement channel_pressure"			
 			break;
 		}
 

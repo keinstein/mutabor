@@ -210,7 +210,8 @@ namespace mutabor {
 		 * 
 		 * \param current iterator pointing to the channel to be regarded as sustained.
 		 */
-		 iterator sustain_channel (iterator current) {			
+		iterator sustain_channel (iterator current) {
+			if (last_sustained <= current) return current;
 			if (first_free <= current) {
 				// includes last_sustained <= current
 				UNREACHABLEC;
@@ -521,6 +522,7 @@ namespace mutabor {
 			     bool is_note_on /* = false */
 			);	
 		void NotesCorrect(RouteClass * route);
+		void Controller(int mutabor_channel, int controller, int value);
 		void Sustain(int channel, const ChannelData & cd);
 		int GetChannel(int inkey, int channel, int id);
 		void SplitOut (BYTE * p, size_t n);
