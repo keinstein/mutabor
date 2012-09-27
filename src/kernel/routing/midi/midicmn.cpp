@@ -151,11 +151,20 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::UpdateControllers(int channel, const ChannelData & input_channel_data) {
-#warning "implement UpdateControllers"
+	void CommonMidiOutput<T,D>::UpdateControllers(int channel, const ChannelData & input) {
+		// a simple implementation with room for improvements
+		for(ChannelData::controller_vector::const_iterator i = input.get_first_changed_controller(Cd[channel]);
+		    input.is_changed_controller(i);
+		    i = input.get_next_changed_controller(Cd[channel],i)) {
+			int number =  *i;
+			int value =   input.get_controller(number);
+			mutASSERT(number < 0x80);
+			mutASSERT(value < 0x80);
+			Cd[channel].set_controller(number,value);
+			controller(channel,number,value);
+		}
 	}
 		
-#warning "Fix gmn box"
 
 	template<class T, class D>
 	void 
@@ -198,6 +207,7 @@ namespace mutabor {
 				      size_t id, 
 				      const ChannelData & input_channel_data)
 	{
+#warning "Fix gmn box"
 		mutASSERT(this->isOpen);
 		if (!ChannelFilter(r).check()) {
 			UNREACHABLEC;

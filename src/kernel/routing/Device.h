@@ -77,6 +77,8 @@ namespace mutabor {
 	class ChannelData
 	{
 	public:
+		typedef std::vector<int8_t> controller_vector;
+
 		ChannelData(int sound = -1, int8_t sustain = 0):controller(128,-1),
 								controller_changed(128,-1),
 								first_unchanged(0),
@@ -140,6 +142,32 @@ namespace mutabor {
 			return controller[number];
 		}
 
+		controller_vector::const_iterator get_first_changed_controller(const ChannelData & other) const {
+			controller_vector::const_iterator retval = controller_changed.begin();
+			if (*retval == -1 || controller[*retval]==other.controller[*retval])
+				return retval;
+			return get_next_changed_controller(other,retval);
+		}
+		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other, controller_vector::const_iterator last) const {
+			mutASSERT(controller_changed.begin() <= last);
+			mutASSERT(last < controller_changed.end());
+			controller_vector::const_iterator retval = last;
+			do {
+				retval++;
+			} while (retval != controller_changed.end() && (*retval != -1) && controller[*retval] == other.controller[*retval]);
+			return retval;
+		}
+
+		bool is_changed_controller(controller_vector::const_iterator actual) const {
+			mutASSERT(controller_changed.begin() <= actual);
+			mutASSERT(actual<= controller_changed.end());
+			if (actual == controller_changed.end()) return false;
+			if (*actual == -1) return false;
+			mutASSERT(0<= *actual);
+			mutASSERT(*actual < controller.size());
+			return true;
+		}
+
 		void program_change(int program) {
 			Sound = program;
 			uint8_t data = controller[midi::BANK_COARSE];
@@ -177,7 +205,6 @@ namespace mutabor {
 		int get_bank_coarse() const { return bank_coarse; }
 		int get_bank_fine() const { return bank_fine; }
 	protected:
-		typedef std::vector<int8_t> controller_vector;
 		controller_vector controller;
 		controller_vector controller_changed;
 		size_t first_unchanged;
