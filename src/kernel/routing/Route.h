@@ -248,12 +248,10 @@ namespace mutabor {
 	public:
 
 		const OutputDevice & GetOutputDevice() const {
-			if (!Out) throw NoOutputDevice(this);
 			return Out;
 		}
 
 		const InputDevice & GetInputDevice() const {
-			if (!In) throw NoInputDevice(this);
 			return In;
 		}
 
