@@ -99,7 +99,7 @@ namespace mutabor {
 				return start;
 			}
 			iterator actual = start;
-			while ((!(filter((int)(*actual)))) && actual != this->end()) {
+			while (actual != this->end() && (!(filter((int)(*actual))))) {
 				DEBUGLOG(midiio,_T("Not using Channel %d"),(int)(*actual));
 				actual++;
 			}
