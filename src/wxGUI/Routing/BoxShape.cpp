@@ -408,8 +408,8 @@ namespace mutaborGUI {
 			m_parent->Layout();
 			m_parent->InvalidateBestSize();
 			m_parent->FitInside();
-			m_parent->Refresh();
 			m_parent->Update();
+			m_parent->Refresh();
 		} else Update();
 	
 		// Signalize to delete this control
