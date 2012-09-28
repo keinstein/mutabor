@@ -206,7 +206,7 @@ namespace mutabor {
 		 * \param byte1 1st byte
 		 */
 		MidiPortOutputProvider & RawMsg (int channel, uint8_t byte1) {
-			mutASSERT(0 <= channel && channel <= midi::CHANNEL_MASK);
+			mutASSERT(channel == -1);
 			std::vector<unsigned char> message(1);
 			message[0] = byte1;
 			
@@ -223,7 +223,7 @@ namespace mutabor {
 		MidiPortOutputProvider & SendSysEx (int channel,
 						    BYTE * data,
 						    size_t count) {
-			mutASSERT(0 <= channel && channel <= midi::CHANNEL_MASK);
+			mutASSERT(-1);
 			if (data[0] == midi::SYSEX_START 
 			    || data[count-1] == midi::SYSEX_END) {
 				UNREACHABLEC;

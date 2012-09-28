@@ -459,7 +459,7 @@ namespace mutabor {
 		uint8_t last_command;
 		while (pos < n) {
 			uint8_t command = p[pos] & midi::TYPE_MASK;
-			uint8_t channel = p[pos] & midi::CHANNEL_MASK;
+			int channel = p[pos] & midi::CHANNEL_MASK;
 			switch (command) {
 			case midi::NOTE_OFF:
 			case midi::NOTE_ON:
