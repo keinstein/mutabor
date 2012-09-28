@@ -752,15 +752,20 @@ namespace mutabor {
 
 		case CONTROLLER:
 			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
-
+			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
+			break;
 		case KEY_PRESSURE:
-		case CHANNEL_PRESSURE: // Key Pressure, Controller, Channel Pressure
-			//3 ??
+#pragma warning "implement key_pressure"
+		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
+#pragma warning "implement channel_pressure"			
 			break;
 
 		case SYSTEM:
+#pragma message "implement system messsages"
+#if 0
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()->MidiOut(pData, nData);
+#endif
 			
 		}
 
