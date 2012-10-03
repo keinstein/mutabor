@@ -33,27 +33,7 @@
 #include "wx/toolbar.h"
 #include "wx/image.h"
 
-#if !defined(__WXMSW__) && 0
-#include "Images/Icons/xpm/Mutabor.xpm"
-#include "Images/Icons/xpm/Document.xpm"
-#include "Images/Icons/xpm/KeyTextBox.xpm"
-#include "Images/Icons/xpm/TSTextBox.xpm"
-#include "Images/Icons/xpm/ActTextBox.xpm"
-#endif
-
 #include "Images/Icons/xpm/Route.xpm"
-
-
-#if 0
-#include "Images/Icons/xpm/new.xpm"
-#include "Images/Icons/xpm/open.xpm"
-#include "Images/Icons/xpm/save.xpm"
-#include "Images/Icons/xpm/copy.xpm"
-#include "Images/Icons/xpm/cut.xpm"
-#include "Images/Icons/xpm/paste.xpm"
-#include "Images/Icons/xpm/print.xpm"
-#include "Images/Icons/xpm/help.xpm"
-#endif
 
 #include "wx/filename.h"
 #include "wx/config.h"
@@ -747,8 +727,6 @@ namespace mutaborGUI {
 			curBox = minimal_box_used;
 		}
 
-		SetAktuellesKeyboardInstrument(curBox);
-
 
 #if 0
 		// WinAttrs säubern
@@ -807,13 +785,14 @@ namespace mutaborGUI {
 				auimanager.LoadPerspective(auidata,false);
 			config->SetPath(oldpath);
 
-			// some panes might still be hidden
+			// some panes might have incorrect data (e.g. from earlier builds).
 			wxAuiPaneInfoArray & panes = auimanager.GetAllPanes();
 			int pane_i, pane_count = panes.GetCount();
 			for (pane_i = 0; pane_i < pane_count; ++pane_i)
 			{
 				wxAuiPaneInfo& p = panes.Item(pane_i);
 				p.Show();
+				p.DestroyOnClose(true);
 			}
 		}
 
@@ -1043,7 +1022,8 @@ namespace mutaborGUI {
 				   .CloseButton(false)
 				   .MaximizeButton(true)
 				   .Float()
-				   .Caption(Name));
+				   .Caption(Name)
+				   .DestroyOnClose(true));
 		client->SetFocus();
 		auimanager.Update();
 		UpdateBoxMenu();
@@ -1106,9 +1086,7 @@ namespace mutaborGUI {
 		if (openclose) {
 			TextBoxOpen(kind, curBox);
 		} else if (win) {
-			auimanager.DetachPane(win);
-			win->Close();
-			auimanager.Update();
+			CloseClientWindow(win,true);
 		} 
 	}
 
@@ -1145,16 +1123,16 @@ namespace mutaborGUI {
 		wxWindow * win;
 		win = boxdata.GetLogicWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetKeyWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetTonesystemWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 		win = boxdata.GetActionsWindow();
 		if (win) 
-			CloseClientWindow(win);
+			CloseClientWindow(win,false);
 
 		if (update) {
 			auimanager.Update();
@@ -1170,27 +1148,56 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG (other, _T("%d,%d"),kind,box);
 
-		char *s = NULL;
 		wxString title;
 
-		switch ( kind ) {
 
+		int width, height;
+
+		GetClientSize(&width, &height);
+		width /= 2;
+		height /= 2;
+
+		MutTextBox *client = new MutChild(kind,
+						  box,
+						  this,
+						  -1,
+						  wxDefaultPosition,
+						  wxSize(width, height));
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+
+		wxString str = wxEmptyString;
+
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
+
+		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
+				   .CaptionVisible(true)
+				   .CloseButton(true).MaximizeButton(true)
+				   .Float()
+				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
+				   .DestroyOnClose(true));
+
+		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+
+		switch ( kind ) {
 		case WK_KEY:
-			s = GetKeyString(box, asTS);
+			client->GetKeys(asTS);
 			title.Printf(_("Keys -- Box %d"),box);
 			break;
 
 		case WK_TS:
-			s = GetTSString(box, asTS);
+			client->GetToneSystem(asTS);
 			title.Printf(_("Tone system -- Box %d"),box);
 			break;
 
 		case WK_ACT:
 			if (CAW) {
-				s = GenerateCAWString();
+				client->GetAllActions();
 				title=_("Action log");
 			} else {
-				s = GenerateACTString(box);
+				client->GetBoxActions();
 				title.Printf(_("Actions -- Box %d"),box);
 			}
 			break;
@@ -1216,43 +1223,7 @@ namespace mutaborGUI {
 			UNREACHABLEC;
 		}
 
-		int width, height;
-
-		GetClientSize(&width, &height);
-		width /= 2;
-		height /= 2;
-
-		MutTextBox *client = new MutChild(kind,
-						  box,
-						  this,
-						  -1,
-						  wxDefaultPosition,
-						  wxSize(width, height));
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (other, _T("s:= %s"),s);
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-
-		wxString str;
-
-		if (s)
-			str = muT(s);
-		else
-			str = wxEmptyString;
-
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (other, _T("pane title = %s"),(const wxChar *)title);
-
-		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
-				   .CaptionVisible(true)
-				   .CloseButton(true).MaximizeButton(true)
-				   .Float()
-				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box)));
-
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
-
-		client->NewText(str, true);
-
-		DEBUGLOG (other, _T("client->winKind=%d"),client->GetKind());
+		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		if (update_auimanager)
 			auimanager.Update();
@@ -1897,13 +1868,13 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				case WK_NULL:
 					win = boxdata -> GetKeyWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetTonesystemWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetActionsWindow();
 					if (win) 
-						CloseClientWindow(win);
+						CloseClientWindow(win,false);
 					win = boxdata -> GetLogicWindow();
 					break;
 				default:
@@ -1911,7 +1882,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					UNREACHABLEC;
 				}
 				if (win)
-					CloseClientWindow(win);
+					CloseClientWindow(win,false);
+				
 			}
 			box = b.next_used;
 		} while (box);
@@ -1993,7 +1965,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				if ( (*R)->GetBox() >= 0 ) {
 					if ((*R)->GetBox() >= MAX_BOX) UNREACHABLE;
 					else
-						mut_box[(*R)->GetBox()].used = true;
+						mut_box[(*R)->GetBox()].used = 1;
 				}
 			}
 		}

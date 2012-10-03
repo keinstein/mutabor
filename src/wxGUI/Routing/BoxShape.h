@@ -341,7 +341,7 @@ namespace mutaborGUI {
 	private:
 		void SetBoxId(int Id, bool layout=true);
 		DECLARE_CLASS(MutBoxShape)
-		DECLARE_EVENT_TABLE();
+		DECLARE_EVENT_TABLE()
 	};
 
 	typedef std::list <MutBoxShape *> MutBoxShapeList;

@@ -1,42 +1,22 @@
 /** \file 
  ********************************************************************
- * Description
+ * Table genarator
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/TabGen.cpp,v 1.7 2011/10/13 18:26:13 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * Copyright:   (c) 1997-2008 TU Dresden
+ * \author  
+ * R.Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/10/13 18:26:13 $
  * \version $Revision: 1.7 $
  * \license GPL
  *
- * $Log: TabGen.cpp,v $
- * Revision 1.7  2011/10/13 18:26:13  keinstein
- * Fix a Bug in the kernel:
- * retuning case did not execute the following statements,
- * which lead to unexpected results
- *
- * Revision 1.6  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.5  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
  *
  *
  ********************************************************************
  * \addtogroup kernel
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
-// Tabellengenerator
-// ------------------------------------------------------------------
 
 #include "Global.h"
 #include "Interpre.h"
@@ -47,23 +27,6 @@
 /*** Das sind die Anfangslisten des Interpreters **/
 
 
-struct harmonie_ereignis *  first_harmonie[MAX_BOX];
-
-struct harmonie_ereignis ** last_global_harmonie[MAX_BOX];
-
-struct harmonie_ereignis ** first_lokal_harmonie;
-
-struct keyboard_ereignis *  first_keyboard[MAX_BOX];
-
-struct keyboard_ereignis ** last_global_keyboard[MAX_BOX];
-
-struct keyboard_ereignis ** first_lokal_keyboard;
-
-struct midi_ereignis     *  first_midi[MAX_BOX];
-
-struct midi_ereignis     ** last_global_midi[MAX_BOX];
-
-struct midi_ereignis     ** first_lokal_midi;
 
 long anzahl_eingelesene_zeichen;
 
@@ -72,20 +35,16 @@ long anzahl_eingelesene_zeichen;
        neu allokierte Aktion zurück.
 *****/
 
-static struct do_aktion * expandiere_name (
-			        const char * name,
+static do_aktion*   expandiere_name (mutabor_box_type * box,
+				       const char * name,
+				       struct argument_liste * parameter,
+				       struct interpreter_parameter_list * bezugs_liste);
 
-			        struct argument_liste * parameter,
+static do_aktion*  expandiere_umstimmung (mutabor_box_type * box,
+					     struct umstimmung * the_umstimmung,
+					     struct interpreter_parameter_list * aktuelle_parameter);
 
-			        struct interpreter_parameter_liste * bezugs_liste);
-
-static struct do_aktion * expandiere_umstimmung (
-
-			        struct umstimmung * the_umstimmung,
-
-			        struct interpreter_parameter_liste * aktuelle_parameter);
-
-static struct do_aktion * expandiere_midi (struct midiliste * liste);
+static do_aktion*  expandiere_midi (struct midiliste * liste);
 
 
 /**************************************************/
@@ -116,7 +75,6 @@ double get_komplex_faktor (struct komplex_intervall * lauf)
 
 
 double get_komplex_frequenz (struct ton * dieser)
-
 {
 	double ret = get_ton (dieser->u.ton_komplex.bezugston, list_of_toene)
 	             -> u.ton_absolut.ton_wert;
@@ -159,6 +117,7 @@ static int enthaelt_nur_konstante_toene (struct ton * lauf)
 /******** Haupt-Expandier-Routine **************/
 
 
+#if 0
 /***** Diese Zweielementige Liste ist Parameterliste bei Logiken */
 
 static struct interpreter_parameter_liste zentrums_knoten =
@@ -173,114 +132,93 @@ static struct interpreter_parameter_liste abstands_knoten =
 
 struct interpreter_parameter_liste * start_parameter_liste =
 			        & abstands_knoten;
+#endif
 
+typedef int * intptr;
 
-
-/**** cache_konstanten enthält alle jemals als Wert benutzten
-      Konstanten (ohne doppelte)
-*******/
-
-struct cache_konstanten
-{
-	int konstante [MAX_BOX];
-
-	struct cache_konstanten * next;
-};
-
-static struct cache_konstanten * cache_konstanten = NULL;
-
-static int (* get_cache_konstante (int wert) ) [MAX_BOX]
+static intptr get_cache_konstante (mutabor_box_type * box, int wert)
 {
 
         struct cache_konstanten ** lauf;
         int i;
 
-        for (lauf = & cache_konstanten; *lauf; lauf = & (*lauf)->next) {
-        if ((*lauf)->konstante[0] == wert)
+        for (lauf = & box->cache_konstanten; *lauf; lauf = & (*lauf)->next) {
+        if ((*lauf)->konstante == wert)
 		        return & (*lauf)->konstante;
         }
 
         *lauf = (struct cache_konstanten*) xmalloc (sizeof (struct cache_konstanten));
-
-        for (i=0; i<MAX_BOX; i++)
-        (*lauf)->konstante[i] = wert;
-
+        (*lauf)->konstante = wert;
         (*lauf)->next = NULL;
-
         return & (*lauf)->konstante;
 }
 
-static struct interpreter_parameter_liste * gen_parameter_liste (
+static struct interpreter_parameter_list * 
+gen_parameter_liste (mutabor_box_type * box,
+		     struct argument_liste * liste,
+		     struct interpreter_parameter_list * bezugs_liste)
+{
 
-			        struct argument_liste * liste,
+	struct interpreter_parameter_list * help;
+	TRACE;
 
-			        struct interpreter_parameter_liste * bezugs_liste)
+	if (liste == NULL)
+		return NULL;
+
+	help = (interpreter_parameter_list*) xmalloc (sizeof (struct interpreter_parameter_list));
+
+	switch (liste->argument.argument_typ)
 	{
 
-		struct interpreter_parameter_liste * help;
-		TRACE;
+	case zahl:
+		help->value_field = get_cache_konstante (box,liste->argument.u.zahl.zahl);
+		break;
 
-		if (liste == NULL)
-			return NULL;
+	case parameter: {
+		int i;
 
-		help = (interpreter_parameter_liste*) xmalloc (sizeof (struct interpreter_parameter_liste));
+		struct interpreter_parameter_list * lauf;
 
-		switch (liste->argument.argument_typ)
-		{
+		for (lauf = bezugs_liste, i=liste->argument.u.parameter.parameter_nummer;
+		     lauf && i;
+		     lauf = lauf -> next, i--)
+			;
 
-		case zahl:
-			help->werte_feld = get_cache_konstante (liste->argument.u.zahl.zahl);
-
-			break;
-
-		case parameter: {
-			int i;
-
-			struct interpreter_parameter_liste * lauf;
-
-			for (lauf = bezugs_liste, i=liste->argument.u.parameter.parameter_nummer;
-			                lauf && i;
-			                lauf = lauf -> next, i--)
-				;
-
-			if (lauf)
-				help->werte_feld = lauf -> werte_feld;
-			else
-				fatal_error (0, __FILE__, __LINE__);
-		}
+		if (lauf)
+			help->value_field = lauf -> value_field;
+		else
+			fatal_error (0, __FILE__, __LINE__);
+	}
 
 		break;
 
-		default:
-			fatal_error (0, __FILE__, __LINE__);
+	default:
+		fatal_error (0, __FILE__, __LINE__);
 
-			break;
-		}
-
-		help->next = gen_parameter_liste (liste->next, bezugs_liste);
-
-		return help;
+		break;
 	}
 
-static int * get_wert_of_argument (
+	help->next = gen_parameter_liste (box,liste->next, bezugs_liste);
 
-        struct argument * argument,
+	return help;
+}
 
-        struct interpreter_parameter_liste * aktuelle_parameter
-)
+static int * get_wert_of_argument (mutabor_box_type * box,
+				   struct argument * argument,
+				   struct interpreter_parameter_list * aktuelle_parameter)
 {
 	TRACE;
 	switch (argument->argument_typ)
 	{
 
 	case zahl:
-		return * get_cache_konstante (argument->u.zahl.zahl);
+		return get_cache_konstante (box,argument->u.zahl.zahl);
 
 		/*    break; */
 
 	case parameter: {
 
-		struct interpreter_parameter_liste * lauf;
+		struct interpreter_parameter_list * lauf;
 		int i;
 
 		for (lauf=aktuelle_parameter, i=argument->u.parameter.parameter_nummer;
@@ -289,7 +227,7 @@ static int * get_wert_of_argument (
 			;
 
 		if (lauf)
-			return * lauf->werte_feld;
+			return lauf->value_field;
 		else {
 			fatal_error (0, __FILE__, __LINE__);
 			return NULL;
@@ -421,10 +359,12 @@ static struct do_aktion * expandiere_tonsystem (
 }
 
 
-static struct do_aktion * expandiere_logik (
-
-			        struct logik * the_logik)
+static struct do_aktion * expandiere_logik (mutabor_box_type * box,
+					    struct logik * the_logik)
 {
+
+
+	mutASSERT(the_logik != NULL);
 
 	struct do_aktion * help;
 	int i;
@@ -450,7 +390,7 @@ static struct do_aktion * expandiere_logik (
 			                                  list_of_umstimmungen);
 
 			if (help_umstimmung) {
-				help -> u.aufruf_logik.einstimmung = expandiere_umstimmung (help_umstimmung, NULL);
+				help -> u.aufruf_logik.einstimmung = expandiere_umstimmung (box, help_umstimmung, NULL);
 			} else {
 				fatal_error (0, __FILE__, __LINE__);
 				help -> u.aufruf_logik.einstimmung = NULL;
@@ -461,22 +401,18 @@ static struct do_aktion * expandiere_logik (
 
 	i = get_logik_nummer (the_logik -> name, list_of_logiken);
 
-	help -> u.aufruf_logik.lokal_harmonie = & first_lokal_harmonie [i];
-
-	help -> u.aufruf_logik.lokal_keyboard = & first_lokal_keyboard [i];
-
-	help -> u.aufruf_logik.lokal_midi     = & first_lokal_midi     [i];
+	help -> u.aufruf_logik.lokal_harmonie = & box->first_local_harmony [i];
+	help -> u.aufruf_logik.lokal_keyboard = & box->first_local_keyboard [i];
+	help -> u.aufruf_logik.lokal_midi     = & box->first_local_midi     [i];
 
 	help -> next = NULL;
 
 	return help;
 }
 
-static struct do_aktion * expand_aktions_liste (
-
-			        struct aktions_liste * the_liste,
-
-			        struct interpreter_parameter_liste * aktuelle_parameter)
+static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
+						struct aktions_liste * the_liste,
+						struct interpreter_parameter_list * aktuelle_parameter)
 {
 
 	struct do_aktion * help_1, * help_2, ** help_3;
@@ -486,7 +422,8 @@ static struct do_aktion * expand_aktions_liste (
 
 	if (the_liste -> aktions_typ == aktion_aufruf)
 	{
-		help_1 = expandiere_name (the_liste -> u.aktion_aufruf.name,
+		help_1 = expandiere_name (box,
+					  the_liste -> u.aktion_aufruf.name,
 		                          the_liste -> u.aktion_aufruf.argument_liste,
 		                          aktuelle_parameter);
 	} else if (the_liste -> aktions_typ == aktion_midi_out)
@@ -495,7 +432,7 @@ static struct do_aktion * expand_aktions_liste (
 	} else
 		fatal_error (0, __FILE__, __LINE__);
 
-	help_2 = expand_aktions_liste (the_liste -> next, aktuelle_parameter);
+	help_2 = expand_aktions_liste (box, the_liste -> next, aktuelle_parameter);
 
 	for (help_3 = & help_1; * help_3; help_3 = & (*help_3)->next)
 		;
@@ -507,18 +444,14 @@ static struct do_aktion * expand_aktions_liste (
 }
 
 
-static struct case_element * expand_case_liste (
-
-			        struct case_liste * the_liste,
-
-			        struct interpreter_parameter_liste * aktuelle_parameter)
+static struct case_element * expand_case_liste (mutabor_box_type * box,
+						struct case_liste * the_liste,
+						struct interpreter_parameter_list * aktuelle_parameter)
 {
 	TRACE;
 
 	struct case_element * start_liste = NULL;
-
 	struct case_element ** ende_liste = & start_liste;
-
 	struct case_liste * lauf_liste;
 
 	for (lauf_liste = the_liste; lauf_liste; lauf_liste = lauf_liste -> next)
@@ -529,9 +462,9 @@ static struct case_element * expand_case_liste (
 			(*ende_liste) -> case_wert = lauf_liste -> case_label;
 			(*ende_liste) -> is_default = 0;
 			(*ende_liste) -> case_aktion =
-			        expand_aktions_liste (
-			                lauf_liste -> case_aktion,
-			                aktuelle_parameter);
+			        expand_aktions_liste (box,
+						      lauf_liste -> case_aktion,
+						      aktuelle_parameter);
 			(*ende_liste) -> next = NULL;
 			ende_liste = & (*ende_liste) -> next;
 		}
@@ -545,9 +478,9 @@ static struct case_element * expand_case_liste (
 			(*ende_liste) -> case_wert = lauf_liste -> case_label;
 			(*ende_liste) -> is_default = 1;
 			(*ende_liste) -> case_aktion =
-			        expand_aktions_liste (
-			                lauf_liste -> case_aktion,
-			                aktuelle_parameter);
+			        expand_aktions_liste (box,
+						      lauf_liste -> case_aktion,
+						      aktuelle_parameter);
 			(*ende_liste) -> next = NULL;
 			ende_liste = & (*ende_liste) -> next;
 		}
@@ -557,11 +490,9 @@ static struct case_element * expand_case_liste (
 }
 
 
-static struct do_aktion * expandiere_umstimmung (
-
-			        struct umstimmung * the_umstimmung,
-
-			        struct interpreter_parameter_liste * aktuelle_parameter)
+static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
+						 struct umstimmung * the_umstimmung,
+						 struct interpreter_parameter_list * aktuelle_parameter)
 {
 
 	struct do_aktion * help;
@@ -578,8 +509,9 @@ static struct do_aktion * expandiere_umstimmung (
 		help -> aufruf_typ = aufruf_umst_taste_abs;
 
 		help -> u.aufruf_umst_taste_abs.wert =
-		        get_wert_of_argument ( & the_umstimmung->u.umstimmung_taste_abs.argument,
-		                               aktuelle_parameter);
+		        get_wert_of_argument (box,
+					      & the_umstimmung->u.umstimmung_taste_abs.argument,
+					      aktuelle_parameter);
 
 		help -> next = NULL;
 
@@ -592,8 +524,9 @@ static struct do_aktion * expandiere_umstimmung (
 		help -> aufruf_typ = aufruf_umst_breite_abs;
 
 		help -> u.aufruf_umst_breite_abs.wert =
-		        get_wert_of_argument ( & the_umstimmung->u.umstimmung_breite_abs.argument,
-		                               aktuelle_parameter);
+		        get_wert_of_argument (box,
+					      & the_umstimmung->u.umstimmung_breite_abs.argument,
+					      aktuelle_parameter);
 
 		help -> next = NULL;
 
@@ -638,7 +571,8 @@ static struct do_aktion * expandiere_umstimmung (
 		help -> aufruf_typ = aufruf_umst_taste_rel;
 
 		help -> u.aufruf_umst_taste_rel.wert =
-		        get_wert_of_argument ( & the_umstimmung->u.umstimmung_taste_rel.argument,
+		        get_wert_of_argument ( box,
+					       & the_umstimmung->u.umstimmung_taste_rel.argument,
 		                               aktuelle_parameter);
 
 		help -> u.aufruf_umst_taste_rel.rechenzeichen = the_umstimmung->u.umstimmung_taste_rel.rechenzeichen;
@@ -654,7 +588,8 @@ static struct do_aktion * expandiere_umstimmung (
 		help -> aufruf_typ = aufruf_umst_breite_rel;
 
 		help -> u.aufruf_umst_breite_rel.wert =
-		        get_wert_of_argument ( & the_umstimmung->u.umstimmung_breite_rel.argument,
+		        get_wert_of_argument ( box,
+					       & the_umstimmung->u.umstimmung_breite_rel.argument,
 		                               aktuelle_parameter);
 
 		help -> u.aufruf_umst_breite_rel.rechenzeichen = the_umstimmung->u.umstimmung_breite_rel.rechenzeichen;
@@ -682,7 +617,8 @@ static struct do_aktion * expandiere_umstimmung (
 		xfree (help);
 		TRACE;
 
-		return expand_aktions_liste (the_umstimmung->u.umstimmung_umstimmungsbund.aktions_liste,
+		return expand_aktions_liste (box,
+					     the_umstimmung->u.umstimmung_umstimmungsbund.aktions_liste,
 		                             aktuelle_parameter);
 
 		/*        break; */
@@ -692,11 +628,13 @@ static struct do_aktion * expandiere_umstimmung (
 		help -> aufruf_typ = aufruf_umst_umst_case;
 
 		help -> u.aufruf_umst_umst_case.wert =
-		        get_wert_of_argument ( & the_umstimmung->u.umstimmung_umstimmungs_case.argument,
+		        get_wert_of_argument ( box,
+					       & the_umstimmung->u.umstimmung_umstimmungs_case.argument,
 		                               aktuelle_parameter);
 
 		help -> u.aufruf_umst_umst_case.umst_case =
-		        expand_case_liste (the_umstimmung->u.umstimmung_umstimmungs_case.umstimmungs_case_liste,
+		        expand_case_liste (box,
+					   the_umstimmung->u.umstimmung_umstimmungs_case.umstimmungs_case_liste,
 		                           aktuelle_parameter);
 
 		help -> next = NULL;
@@ -713,14 +651,12 @@ static struct do_aktion * expandiere_umstimmung (
 		        the_umstimmung->u.umstimmung_midi_out.out_liste;
 
 		help -> next = NULL;
-
 		return help;
 
 		/*        break; */
 
 	default:
 		fatal_error (0, __FILE__, __LINE__);
-
 		return NULL;
 
 	}
@@ -728,12 +664,10 @@ static struct do_aktion * expandiere_umstimmung (
 
 
 
-static struct do_aktion * expandiere_name (
-			        const char * name,
-
-			        struct argument_liste * parameter,
-
-			        struct interpreter_parameter_liste * bezugs_liste)
+static struct do_aktion * expandiere_name (mutabor_box_type * box,
+					   const char * name,
+					   struct argument_liste * parameter,
+					   struct interpreter_parameter_list * bezugs_liste)
 {
 	struct logik * help_logik;
 	struct tonsystem * help_tonsystem;
@@ -749,7 +683,7 @@ static struct do_aktion * expandiere_name (
 	if (help_logik)
 	{
 
-		return expandiere_logik (help_logik);
+		return expandiere_logik (box,help_logik);
 
 	} else
 	{
@@ -766,9 +700,10 @@ static struct do_aktion * expandiere_name (
 
 			if (help_umstimmung) {
 
-				struct interpreter_parameter_liste * aktuelle_parameter;
-				aktuelle_parameter = gen_parameter_liste (parameter, bezugs_liste);
-				return expandiere_umstimmung (help_umstimmung,
+				struct interpreter_parameter_list * aktuelle_parameter;
+				aktuelle_parameter = gen_parameter_liste (box, parameter, bezugs_liste);
+				return expandiere_umstimmung (box,
+							      help_umstimmung,
 				                              aktuelle_parameter);
 
 			} else
@@ -832,7 +767,7 @@ PATTERNN * expand_pattern (const char * harmonie_name)
 
 	help = (PTRN*) xmalloc (sizeof (PATTERNN));
 
-	for (i=0;i<MAX_BREITE;i++) help->tonigkeit[i]=1; /* Off */
+	for (i=0;i<MUTABOR_KEYRANGE_MAX_WIDTH;i++) help->tonigkeit[i]=1; /* Off */
 
 	for (lauf_taste = the_harmonie->tastenliste;
 	                lauf_taste;
@@ -847,7 +782,7 @@ PATTERNN * expand_pattern (const char * harmonie_name)
 }
 
 
-void insert_in_globale_liste (int instrument, struct logik * lauf)
+void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 
 {
 
@@ -856,6 +791,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 	struct midi_ereignis     ** temp_midi;
 
 	TRACE;
+	mutASSERT(lauf && lauf != NULL);
 
 	if (lauf->ausloeser)
 	{
@@ -863,12 +799,13 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 
 		case ausloeser_harmonie:
 			TRACE;
+#pragma message ("using constant lauf->ausloeser->u.ausloeser_harmonie.vortaste -2 should be changed")
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
 				/* Dann unmöglicher Harmonieauslöser */
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & first_harmonie[instrument];
+			for (temp_harmonie = &box->first_harmony;
 			                *temp_harmonie;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -892,7 +829,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & first_harmonie[instrument];
+			for (temp_harmonie = & box->first_harmony;
 			                *temp_harmonie;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
@@ -912,7 +849,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 		case ausloeser_taste:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_keyboard = & first_keyboard[instrument];
+			for (temp_keyboard = & box->first_keyboard;
 			                *temp_keyboard;
 			                temp_keyboard = & (*temp_keyboard)->next)
 				;
@@ -928,7 +865,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 		case ausloeser_midi_in:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_midi = & first_midi[instrument];
+			for (temp_midi = & box->first_midi;
 			                *temp_midi;
 			                temp_midi = & (*temp_midi)->next)
 				;
@@ -953,7 +890,7 @@ void insert_in_globale_liste (int instrument, struct logik * lauf)
 	}
 }
 
-void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
+void insert_in_lokale_liste (mutabor_box_type * box, int logiknr, struct anweisung * lauf,
 
                              const char * name_der_logik)
 {
@@ -973,25 +910,20 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & first_lokal_harmonie[instrument];
-			                *temp_harmonie;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
+			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
 
 			*temp_harmonie = (harmonie_ereignis*) xmalloc( (size_t)sizeof(struct harmonie_ereignis));
 
 			(*temp_harmonie) -> pattern =expand_pattern ((lauf->ausloeser)->u.ausloeser_harmonie.name) ;
-
 			(*temp_harmonie) -> ist_harmonieform=0;
-
-			(*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
-
+ 			(*temp_harmonie) -> vortaste=(lauf->ausloeser)->u.ausloeser_harmonie.vortaste ;
 			(*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie.nachtaste ;
-
 			(*temp_harmonie) -> name=name_der_logik;
-
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (lauf->aktion, start_parameter_liste);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_harmonie) -> next=NULL;
 
@@ -1004,8 +936,8 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 				break;
 
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & first_lokal_harmonie[instrument];
-			                *temp_harmonie;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
+			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
 
@@ -1022,7 +954,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 			(*temp_harmonie) -> name=name_der_logik;
 
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (lauf->aktion, start_parameter_liste);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_harmonie) -> next=NULL;
 
@@ -1031,8 +963,8 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 		case ausloeser_default:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_harmonie = & first_lokal_harmonie[instrument];
-			                *temp_harmonie;
+			for (temp_harmonie = & box->first_local_harmony[logiknr];
+			                *temp_harmonie != NULL;
 			                temp_harmonie = & (*temp_harmonie)->next)
 				;
 
@@ -1040,18 +972,15 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 
 			(*temp_harmonie) -> pattern=NULL ;
 
+#pragma message "Do not use integer constants!"
 			(*temp_harmonie) -> ist_harmonieform=2;
-
 			/* 2 als Wert für ANSONSTEN */
 
 			(*temp_harmonie) -> vortaste=0 ;
-
 			(*temp_harmonie) -> nachtaste=0 ;
-
 			(*temp_harmonie) -> name=name_der_logik;
-
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (lauf->aktion, start_parameter_liste);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_harmonie) -> next=NULL;
 
@@ -1060,8 +989,8 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 		case ausloeser_taste:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_keyboard = & first_lokal_keyboard[instrument];
-			                *temp_keyboard;
+			for (temp_keyboard = &box->first_local_keyboard[logiknr];
+			                *temp_keyboard != NULL;
 			                temp_keyboard = & (*temp_keyboard)->next)
 				;
 
@@ -1072,7 +1001,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 			(*temp_keyboard) -> name=name_der_logik;
 
 			(*temp_keyboard) -> aktion=
-			        expand_aktions_liste (lauf->aktion, start_parameter_liste);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_keyboard) -> next=NULL;
 
@@ -1081,8 +1010,8 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 		case ausloeser_midi_in:
 			TRACE;
 			/* Neuen Eintrag erzeugen */
-			for (temp_midi = & first_lokal_midi[instrument];
-			                *temp_midi;
+			for (temp_midi = &box->first_local_midi[logiknr];
+			                *temp_midi != NULL;
 			                temp_midi = & (*temp_midi)->next)
 				;
 
@@ -1097,7 +1026,7 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 			(*temp_midi) -> name=name_der_logik;
 
 			(*temp_midi) -> aktion=
-			        expand_aktions_liste (lauf->aktion, start_parameter_liste);
+			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
 
 			(*temp_midi) -> next = NULL;
 
@@ -1114,67 +1043,45 @@ void insert_in_lokale_liste (int instrument, struct anweisung * lauf,
 static void expandiere_in_globale_liste (void)
 {
 
-	struct harmonie_ereignis * lauf_harmonie [MAX_BOX];
-
-	struct keyboard_ereignis * lauf_keyboard [MAX_BOX];
-
-	struct midi_ereignis     * lauf_midi     [MAX_BOX];
+	struct harmonie_ereignis * lauf_harmonie;
+	struct keyboard_ereignis * lauf_keyboard;
+	struct midi_ereignis     * lauf_midi    ;
 	int i;
 	
 	TRACE;
 
 	for (i=0; i<MAX_BOX; i++) {
-		lauf_harmonie[i] = first_harmonie[i];
-		lauf_keyboard[i] = first_keyboard[i];
-		lauf_midi    [i] = first_midi    [i];
-	}
+		mutabor_box_type * box = &mut_box[i];
 
-	while (lauf_harmonie[0]) {
-		int j;
+		lauf_harmonie = box->first_harmony;
+		while (lauf_harmonie) {
+			mutASSERT(lauf_harmonie);
+			DEBUGLOG2(kernel_tabgen,_T("lauf_harmonie[%d](=%p)->the_logic_to_expand = %p"),
+				  i,lauf_harmonie,lauf_harmonie -> the_logik_to_expand);
+			lauf_harmonie -> aktion =
+				expandiere_logik (box,lauf_harmonie -> the_logik_to_expand);
+//			lauf_harmonie -> aktion = lauf_harmonie[i] -> aktion;
 
-		lauf_harmonie[0] -> aktion =
-		        expandiere_logik (lauf_harmonie[0] -> the_logik_to_expand);
-
-		for (j=1; j<MAX_BOX; j++) {
-			lauf_harmonie[j] -> aktion = lauf_harmonie[0] -> aktion;
+			lauf_harmonie = lauf_harmonie -> next;
 		}
 
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_harmonie[j] = lauf_harmonie[j] -> next;
-		}
-	}
+		lauf_keyboard = box->first_keyboard;
+		while (lauf_keyboard) {
+			lauf_keyboard -> aktion =
+				expandiere_logik (box, lauf_keyboard -> the_logik_to_expand);
+//			lauf_keyboard -> aktion = lauf_keyboard[i] -> aktion;
 
-
-
-	while (lauf_keyboard[0]) {
-		int j;
-
-		lauf_keyboard[0] -> aktion =
-		        expandiere_logik (lauf_keyboard[0] -> the_logik_to_expand);
-
-		for (j=1; j<MAX_BOX; j++) {
-			lauf_keyboard[j] -> aktion = lauf_keyboard[0] -> aktion;
+			lauf_keyboard = lauf_keyboard -> next;
 		}
 
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_keyboard[j] = lauf_keyboard[j] -> next;
-		}
-	}
 
 
-
-	while (lauf_midi[0]) {
-		int j;
-
-		lauf_midi[0] -> aktion =
-		        expandiere_logik (lauf_midi[0] -> the_logik_to_expand);
-
-		for (j=1; j<MAX_BOX; j++) {
-			lauf_midi[j] -> aktion = lauf_midi[0] -> aktion;
-		}
-
-		for (j=0; j<MAX_BOX; j++) {
-			lauf_midi[j] = lauf_midi[j] -> next;
+		lauf_midi     = box->first_midi;
+		while (lauf_midi) {
+			lauf_midi -> aktion =
+				expandiere_logik (box,lauf_midi -> the_logik_to_expand);
+//			lauf_midi -> aktion = lauf_midi -> aktion;
+			lauf_midi = lauf_midi -> next;
 		}
 	}
 
@@ -1219,40 +1126,61 @@ static struct midi_ereignis **
 
 void mutabor_tabellen_generator (void)
 {
-	//Neu:  extra Löschungen
-	cache_konstanten = NULL;
 
+	/** \todo find out the semantics of global and local lists */
+	/** \todo combine the loops this depends on: */
+	/** \todo ensure that the logics of the different boxes are independent */
 	/* Ausgabe der Pointer-Setz-Prozeduren */
 
 	struct logik * lauf;
 
 	struct anweisung * lauf_anweisung;
-	int i;
+	int i, j;
+	mutabor_box_type * box;
 	TRACE;
 
 
 	for (i=0; i<MAX_BOX; i++) {
-		first_midi     [i] = NULL;
-		first_keyboard [i] = NULL;
-		first_harmonie [i] = NULL;
+		
+		mut_box[i].cache_konstanten = NULL;
+		mut_box[i].first_harmony = NULL;
+		mut_box[i].last_global_harmony = NULL;
+		mut_box[i].first_local_harmony = NULL;
+		mut_box[i].first_keyboard = NULL;
+		mut_box[i].last_global_keyboard = NULL;
+		mut_box[i].first_local_keyboard = NULL;
+		mut_box[i].first_midi = NULL;
+		mut_box[i].last_global_midi = NULL;
+		mut_box[i].first_local_midi = NULL;
 	}
 
 
 	for (i=0;i<MAX_BOX;i++) {
-
+		box = &mut_box[i];
 		/* Die globalen Listen werden initialisiert: */
-
 		/* Die globalen Auslöser werden in die vorbereiteten Listen eingetragen: */
 
 		for (lauf = list_of_logiken; lauf; lauf = lauf -> next) {
-
-			insert_in_globale_liste (i, lauf);
+			insert_in_globale_liste (box, lauf);
 		}
 
-		last_global_harmonie[i]=get_ende_harmonie (& first_harmonie[i]);
-
-		last_global_keyboard[i]=get_ende_keyboard (& first_keyboard[i]);
-		last_global_midi[i]=get_ende_midi (& first_midi[i]);
+		box->last_global_harmony  = get_ende_harmonie (& box->first_harmony);
+		box->last_global_keyboard = get_ende_keyboard (& box->first_keyboard);
+		box->last_global_midi     = get_ende_midi     (& box->first_midi);
+#ifdef DEBUG
+		for (j = i+1 ; j < MAX_BOX; j++) {
+			mutASSERT(mut_box[j].cache_konstanten == NULL);
+			mutASSERT(mut_box[j].first_harmony == NULL);
+			mutASSERT(mut_box[j].last_global_harmony == NULL);
+			mutASSERT(mut_box[j].first_local_harmony == NULL);
+			mutASSERT(mut_box[j].first_keyboard == NULL);
+			mutASSERT(mut_box[j].last_global_keyboard == NULL);
+			mutASSERT(mut_box[j].first_local_keyboard == NULL);
+			mutASSERT(mut_box[j].first_midi == NULL);
+			mutASSERT(mut_box[j].last_global_midi == NULL);
+			mutASSERT(mut_box[j].first_local_midi == NULL);
+		}
+#endif
 	}
 
 	/* Die lokalen Listen werden erzeugt: */
@@ -1261,26 +1189,31 @@ void mutabor_tabellen_generator (void)
 
 	i = logik_list_laenge (list_of_logiken);
 
-	first_lokal_harmonie = (harmonie_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_harmonie[0]));
+	for (int j = 0 ; j < MAX_BOX; j++) {
+		box = &mut_box[j];
 
-	first_lokal_keyboard = (keyboard_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_keyboard[0]));
+		/* important: calloc must clear all data (fill with 0 */
+		box->first_local_harmony  = (harmonie_ereignis* *) xcalloc ((size_t)i, sizeof(harmonie_ereignis *));
+		box->first_local_keyboard = (keyboard_ereignis* *) xcalloc ((size_t)i, sizeof(keyboard_ereignis *));
+		box->first_local_midi     = (midi_ereignis* *)     xcalloc ((size_t)i, sizeof(midi_ereignis *));
 
-	first_lokal_midi     = (midi_ereignis* *) xcalloc ((size_t)i, sizeof(first_lokal_midi[0]));
+		/* ensure compatibility with original code */
+		mutASSERT(sizeof(box->first_local_harmony[0])  == sizeof(harmonie_ereignis *));
+		mutASSERT(sizeof(box->first_local_keyboard[0]) == sizeof(keyboard_ereignis *));
+		mutASSERT(sizeof(box->first_local_midi[0])     == sizeof(midi_ereignis *));
 	
-	/* #### Wichtig ist, daß calloc alles auf 0 setzt (NULL)  */
+		for (lauf=list_of_logiken, i=0;
+		     lauf;
+		     lauf=lauf->next, i++ ) {
 
-	for (lauf=list_of_logiken, i=0;
-	                lauf;
-	                lauf=lauf->next, i++ ) {
-
-		for (lauf_anweisung=lauf->anweisungsliste; lauf_anweisung;
-		                lauf_anweisung=lauf_anweisung->next) {
-
-			insert_in_lokale_liste (i, lauf_anweisung, lauf->name);
+			for (lauf_anweisung=lauf->anweisungsliste;
+			     lauf_anweisung;
+			     lauf_anweisung=lauf_anweisung->next) {
+				insert_in_lokale_liste (box, i, lauf_anweisung, lauf->name);
+			}
 		}
 	}
-
-
+	
 	expandiere_in_globale_liste ();
 
 } /* end of mutabor_tabellen_generator */

@@ -1,84 +1,19 @@
 /** \file 
  ********************************************************************
- * Description
+ * Midi Port IO (Mutabor layer)
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.cpp,v 1.16 2012/01/29 22:08:36 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
+ * Copyright:   (c) 1998-2011 TU Dresden
+ * \author  R.Krauße
+ * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2012/01/29 22:08:36 $
  * \version $Revision: 1.16 $
  * \license GPL
  *
- * $Log: DevMidi.cpp,v $
- * Revision 1.16  2012/01/29 22:08:36  keinstein
- * allow to add nonexisting devices in the route editor (partly fixes #16908)
- *
- * Revision 1.15  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.14  2011-10-22 16:32:38  keinstein
- * commit to continue debugging on Linux/wine
- *
- * Revision 1.13  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.12  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.11  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.10  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.9  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.8  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.7  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.6  2011-09-07 15:54:40  keinstein
- * fix some compilation issues
- *
- * Revision 1.5  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
- *
  ********************************************************************
- * \addtogroup 
+ * \addtogroup route
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
-// MidiPort Klassen
-// ------------------------------------------------------------------
 
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/Execute.h"
@@ -91,55 +26,22 @@
 
 //static long freq ;
 
-// GET_INDEX is algready defined in MidiKern.h
-
-// berechnet die 'Oktavlage' einer taste bzgl. tonsystem
-#define GET_ABSTAND(taste,tonsystem)					\
-	( (int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))	\
-	  / (tonsystem)->breite -((int) (tonsystem)->anker		\
-				  / (tonsystem)->breite ))
-
-// berechnet die Frequenz in Midi-Form
-#define GET_FREQ(taste,tonsystem)					\
-	( ( (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]==0) ?	\
-	  (long) 0 :							\
-	  (long)( (tonsystem)->periode *				\
-		  GET_ABSTAND(taste,(tonsystem))  +			\
-		  (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]))
-
-#define ZWZ 1.059463094 /* 12.Wurzel 2 */
-//#define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/16777216.0l))-69))
-//#define LONG_TO_CENT( x ) ( ((double)x)/167772.13l  )
-
 #ifdef RTMIDI
 #include "RtMidi.h"
 #endif
 
+#include "src/kernel/routing/midi/midicmn-inlines.h"
 
 namespace mutabor {
-#ifdef RTMIDI
-	extern RtMidiOut *rtmidiout;
+
+	template class CommonMidiOutput<MidiPortOutputProvider,OutputDeviceClass>;
+
+	using namespace midi;
 	
+	extern  RtMidiOut * rtmidiout;
 	extern RtMidiIn *rtmidiin;
 
-// Midi-Ausgabe
-#define MIDI_OUT3(code1, code2, code3)				\
-	{ std::vector<unsigned char> message(3);		\
-		message[0]=code1;				\
-		message[1]=code2;				\
-		message[2]=code3;				\
-		DEBUGLOG2(midiio,_T("MIDI OUT %x %x %x"),	\
-			  code1,code2,code3);			\
-		hMidiOut->sendMessage(&message); }
-
-#define MIDI_OUT2(code1, code2)				\
-	{ std::vector<unsigned char> message(2);	\
-		message[0]=code1;		\
-		message[1]=code2;		\
-		DEBUGLOG2(midiio,_T("MIDI OUT %x %x"),	\
-			  code1,code2);			\
-		hMidiOut->sendMessage(&message); }
-#else
+#if 0 // old windows code
 #define MIDI_OUT3(code1, code2, code3)			\
 	midiOutShortMsg(hMidiOut,			\
 			((DWORD) (code3) << 16) +	\
@@ -152,60 +54,24 @@ namespace mutabor {
 			((DWORD) (code1)))
 #endif
 
-// Zugriffe
-//#define zugriff  ((unsigned char*) &freq)
-//#define zgf  ((unsigned char*) &pb)
-
-// Pitch
-/* zugriff: 00000000111111112222222233333333
-   22222222000000 + 111111
-
-   zugriff: 0 1 2 3 4 5 6 7 | 8 9 10 11 12 13 14 15 |
-   16 17 18 19 20 21 22 23 | 24 25 26 27 28 29 30 31
-   zugriff[2] << 6 =  0  0  0  0  0  0 16 17 18 19 20 21 22 23
-   zugriff[1] >> 2 = 10 11 12 13 14 15
-   pb            = ( 10 11 12 13 14 15 16 17 18 19 20 21 22 23 ) / bending_range;
-   zgf0 >> 1 =          11 12 13 14 16 16 17
-   zgf1 +64 =                                18 19 20 21 22 23 "1"
-   pb & 0xff >> 1  =    11 12 13 14 15 16 17
-   (pb>>8+0x4000)&0x7f00 =                   18 19 20 21 22 23 "1"
-
-*/
-#define MIDI_PITCH(i,freq)						\
-	{ unsigned int pb = ( ((freq & 0xffffff) / bending_range) >> 11) ; \
-		DEBUGLOG2(midiio,_T("MIDI_PITCH(%x/%d,%x/%d) = %x/%d (%x/%d, %x/%d, %x/%d)"), \
-			  i,i,freq,freq,pb,pb,0xE0 + i,0xE0 + i, pb & 0x7f, pb & 0x7f,  (0x40 + (pb >> 7) ) & 0x7f, \
-			  (0x40 + (pb >> 7) ) & 0x7f );			\
-		MIDI_OUT3 (0xE0 + i, pb & 0x7f, (0x40 + (pb >> 7) ) & 0x7f) }
-
-//	int pb = ( (((int)zugriff[2])<<6) + (zugriff[1]>>2) ) / bending_range; 
-//	MIDI_OUT3(0xE0+i, zgf[0] >> 1 , 64+zgf[1])
-
-// Sound
-#define MIDI_SOUND(i, sound)				\
-	if ( sound != -1 ) MIDI_OUT2(0xC0+i, sound)
-
-// ID errechnen
-#define MAKE_ID(route, box, taste, channel)				\
-	((((DWORD)channel) << 24) + (((DWORD)route->GetId()&0xff) << 16) + ((DWORD)box << 8) + taste)
 
 
-/// Save current device settings in a tree storage
-/** \argument config (tree_storage) storage class, where the data will be saved.
- */
+        /// Save current device settings in a tree storage
+        /** \argument config (tree_storage) storage class, where the data will be saved.
+	 */
 	void OutputMidiPort::Save (tree_storage & config) 
 	{
 		config.Write(_T("Device Id"),DevId);
 		config.Write(_T("Device Name"),Name);
-		config.Write(_T("Bending Range"),bending_range);
+		config.Write(_T("Bending Range"),GetBendingRange());
 	}
 
-/// Save route settings (filter settings) for a given route
-/** Some route settings (e.g. filter settings) are device type 
- * specific. This function saves them in a tree storage.
- * \argument config (tree_storage *) Storage class, where the data will be saved.
- * \argument route (Route ) Route whos data shall be saved.
- */
+        /// Save route settings (filter settings) for a given route
+	/** Some route settings (e.g. filter settings) are device type 
+	 * specific. This function saves them in a tree storage.
+	 * \argument config (tree_storage *) Storage class, where the data will be saved.
+	 * \argument route (Route ) Route whos data shall be saved.
+	 */
 	void OutputMidiPort::Save (tree_storage & config, const RouteClass * route)
 	{
 #ifdef DEBUG
@@ -233,7 +99,7 @@ namespace mutabor {
 		DevId = config.Read(_T("Device Id"),0);
 		Name = config.Read(_T("Device Name"), rtmidiout?(rtmidiout->getPortCount()?
 				   muT(rtmidiout->getPortName(0).c_str()):wxString(_("Unknown"))):wxString(_("no device")));
-		bending_range = config.Read(_T("Bending Range"),2);
+		SetBendingRange(config.Read(_T("Bending Range"),DEFAULT_BENDING_RANGE));
 		mutASSERT(oldpath == config.GetPath());
 	}
 
@@ -272,406 +138,39 @@ namespace mutabor {
 	}
 
 
-	bool OutputMidiPort::Open()
-	{
-		mutASSERT(!isOpen);
-		DEBUGLOG (other, _T(""));
-		int i;
 
-		for (i = 0; i < 16; i++) {
-			Cd[i].Reset();
-			ton_auf_kanal[i].taste = 0;
-			ton_auf_kanal[i].id = 0;
-			ton_auf_kanal[i].key = 0;
-			KeyDir[i] = (char)i; // alle nicht benutzt
-		}
-
-		nKeyOn = 0;
-
-#ifdef RTMIDI
-		// RtMidiIn constructor
-		try {
-			hMidiOut = new RtMidiOut(PACKAGE_STRING);
-		} catch (RtError &error) {
-			LAUFZEIT_ERROR0(_("Can not open ouput Midi devices."));
-			return false;
-		}
-
-		try {
-			hMidiOut->openPort(DevId,(const char *)(GetName().ToUTF8()));
-		} catch (RtError &error) {
-			LAUFZEIT_ERROR2(_("Can not open output Midi device nr. %d (%s)"), DevId, (GetName().c_str()));
-			return false;
-		}
-
-#else
-		midiOutOpen(&hMidiOut, DevId, NULL, NULL, NULL);
-
-#endif
-		for (i = 0; i < 16; i++) {
-			MIDI_OUT3(0xE0+i, 0x00, 0x40); // pitch auf 0
-			MIDI_OUT3(0xB0+i, 122, 0);  // local off
-			MIDI_OUT3(0xB0+i, 125, 0);  // omni on
-			MIDI_OUT3(0xB0+i, 127, 0);  // poly on
-		}
-
-		isOpen = true;
-		return true;
-	}
-
-	void OutputMidiPort::Close()
-
-	{
-		mutASSERT(isOpen);
-		DEBUGLOG (other, _T(""));
-		// alle liegenden Tˆne ausschalten
-
-		for (int i = 0; i < 16; i++)
-			if ( KeyDir[i] >= 16 )  // benutzt
-				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
-
-		/*  for (int i = 0; i < 16; i++)
-		    MidiOut3(176+i, 122, 1);  // local on */
-		// Device schlieﬂen
-#ifdef RTMIDI
-		hMidiOut->closePort();
-
-		delete hMidiOut;
-
-#else
-		midiOutClose(hMidiOut);
-
-#endif
-		isOpen = false;
-	}
-
-	void OutputMidiPort::NoteOn(int box, int taste, int velo, 
-				    RouteClass * r, int channel, ChannelData *cd)
-	{
-		DEBUGLOG (other, _T("box %d, key %d, velo %d, channel %d"),
-			  box, taste, velo, channel);
-		int free = 16, freeSus = r->OTo, freeV = 64, freeSusV = 64, s;
-		DWORD p;
-		long freq;
-
-		if ( box == -2 ) {
-			freq = ((long)taste) << 24;
-			box = 255;
-		} else
-			freq = GET_FREQ (taste, mut_box[box].tonesystem);
-
-		// testen, ob nicht belegte Taste
-		if ( !freq )
-			return;
-
-		for ( int j = r->OFrom; j <= r->OTo; j++ ) 
-			if ( j != DRUMCHANNEL || !r->ONoDrum ) {
-				if ( Cd[j].Sustain ) {
-					if ( KeyDir[j] < freeSusV ) {
-						freeSus = j;
-						freeSusV = KeyDir[j];
-					}
-				} else {
-					if ( KeyDir[j] < freeV ) {
-						free = j;
-						freeV = KeyDir[j];
-					}
-				}
-			}
-		if ( freeV >= 16 ) {
-			free = freeSus;
-			freeV = freeSusV;
-		}
-
-		if ( freeV >= 16 )  // keinen freien gefunden
-		{
-			// "mittelste Taste weglassen"
-			int AM = 0; // arithmetisches Mittel der Tasten
-			int j;
-
-			for (j = r->OFrom; j <= r->OTo; j++)
-				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					AM += ton_auf_kanal[j].taste;
-
-			AM /= r->OTo + 1 - r->OFrom;
-
-			for ( j = r->OFrom; j <= r->OTo; j++ )
-				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					if ( abs(AM - ton_auf_kanal[j].taste) < abs(AM - ton_auf_kanal[free].taste) )
-						free = j;
-
-			// Ton auf Kanal free ausschalten
-			MIDI_OUT3(0x80+free, ton_auf_kanal[free].key, 64);
-
-			// evtl. Sustain ausschalten
-			if ( Cd[free].Sustain )
-				MIDI_OUT3(0xB0+free, 64, 0);
-
-			// KeyDir umsortieren
-			BYTE oldKeyDir = KeyDir[free];
-
-			for (int k = 0; k < 16; k++)
-				if ( KeyDir[k] > oldKeyDir ) KeyDir[k]--;
-
-			KeyDir[free] = (char)(15+nKeyOn);
-		} else {
-			nKeyOn++;
-			KeyDir[free] = (char)(15 + nKeyOn);
-		}
-
-		// freier Kanal = free
-
-		// evtl. Sustain ausschalten
-		if ( Cd[free].Sustain ) {
-			MIDI_OUT3(0xB0+free, 64, 0);
-			Cd[free].Sustain = 0;
-		}
-
-		// Sound testen
-		if ( (s = cd->Sound) != Cd[free].Sound ) {
-			MIDI_SOUND(free, s);
-			Cd[free].Sound = s;
-		}
-
-		// Bank testen
-		if ( (s = cd->BankSelectMSB) != Cd[free].BankSelectMSB && s != -1 ) {
-			MIDI_OUT3(0xB0+free, 0, (BYTE) s);
-			Cd[free].BankSelectMSB = s;
-		}
-
-		if ( (s = cd->BankSelectLSB) != Cd[free].BankSelectLSB && s != -1 ) {
-			MIDI_OUT3(0xB0+free, 32, (BYTE) s);
-			Cd[free].BankSelectLSB = s;
-		}
-
-		// Pitch testen
-		if ( (long)(p = (freq & 0xFFFFFF)) != Cd[free].Pitch ) {
-			MIDI_PITCH(free, freq);
-			Cd[free].Pitch = p;
-		}
-
-		ton_auf_kanal[free].key = (freq >> 24) & 0x7f;
-
-		ton_auf_kanal[free].taste = taste;
-		ton_auf_kanal[free].id = MAKE_ID(r, box, taste, channel);
-		MIDI_OUT3(0x90+free, ton_auf_kanal[free].key, velo);
-
-		if ( cd->Sustain ) {
-			MIDI_OUT3(0xB0+free, 64, cd->Sustain);
-			Cd[free].Sustain = cd->Sustain;
-		}
-	};
-
-	void OutputMidiPort::NoteOff(int box, int taste, int velo, 
-				     RouteClass * r, int channel)
-	{
-		DEBUGLOG (midiio, _T("box %d, key %d, velo %d, channel %d"),
-			  box, taste, velo, channel);
-
-		if ( box == -2 )
-			box = MAX_BOX+1;
-
-		DWORD id = MAKE_ID(r, box, taste, channel);
-
-		if ( !velo ) //3 ?? notwendig?
-			velo = 64;
-
-		for (int i = r->OFrom; i <= r->OTo; i++)
-			if ( i != DRUMCHANNEL || !r->ONoDrum )
-				if ( KeyDir[i] >= 16 && ton_auf_kanal[i].id == id ) {
-					ton_auf_kanal[i].taste=0;
-// ???     ton_auf_kanal[i].id=0;
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, velo);
-					// KeyDir umsortieren
-					int oldKeyDir = KeyDir[i];
-
-					for (int k = 0; k < 16; k++)
-						if ( KeyDir[k] > oldKeyDir || KeyDir[k] < 16) KeyDir[k]--;
-
-					nKeyOn--;
-
-					KeyDir[i] = 15;
-				}
-	}
-
-	inline long LongAbs(long x)
-	{
-		return (x < 0)? -x : x;
-	}
-
-	void OutputMidiPort::NotesCorrect(int box)
-	{
-		DEBUGLOG (midiio, _T(""));
-
-		for (int i = 0; i < 16; i++)
-			if ( (KeyDir[i] >= 16 && ton_auf_kanal[i].id) || Cd[i].Sustain ) {
-				int Box = (ton_auf_kanal[i].id >> 8) & 0xFF;
-
-				if ( Box != box )
-					break;
-
-				DEBUGLOG(midiio,_T("old(hex/dec): channel = %01x/%d, Taste = %02x/%d, key = %02x/%d, pitch = %06x/%d"), 
-					 i,i,ton_auf_kanal[i].taste,ton_auf_kanal[i].taste, 
-					 ton_auf_kanal[i].key,ton_auf_kanal[i].key,Cd[i].Pitch,Cd[i].Pitch);
-
-				long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[Box].tonesystem);
-
-				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
-				// Ton aus und einschalten zu vermeiden
-				if ( ton_auf_kanal[i].key == ((freq >> 24) & 0x7f) &&
-				     Cd[i].Pitch == ((long)freq & 0xFFFFFF) )
-					continue;
-
-
-				long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
-
-				bool SwitchTone = (LongAbs(Delta) >= ((long)bending_range << 24));
-
-				// evtl. Ton ausschalten
-				if ( SwitchTone ) {
-					if ( Cd[i].Sustain ) {
-						MIDI_OUT3(0xB0+i, 64, 0);
-						Cd[i].Sustain = 0;
-
-						if ( KeyDir[i] < 16 )
-							continue;
-					}
-
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-					ton_auf_kanal[i].key = (freq >> 24) & 0x7F;
-					Delta = freq - ((long)ton_auf_kanal[i].key << 24);
-				} else if ( Delta == Cd[i].Pitch )
-					continue;
-
-				// Spezialbending (groﬂer Range)
-				Cd[i].Pitch = Delta;
-
-				Delta /= bending_range;
-				Delta = Delta >> 11;
-				Delta +=  0x40 << 7; // we have to add here as Delta can be negative
-				DEBUGLOG(midiio,_T("new freq = %08x/%d, Pitch= %06x/%d, Delta = %06x/%d, i=%d"), 
-					 freq, freq, Cd[i].Pitch, Cd[i].Pitch, Delta, Delta, i);
-				//      MIDI_OUT3(0xE0+i, ((BYTE*)&Delta)[1] >> 1, (((BYTE*)&Delta)[2]));
-				MIDI_OUT3(0xE0+i, Delta & 0x7f, (Delta >> 7) & 0x7f );
-
-				// evtl. Ton einschalten
-				if ( SwitchTone )
-					MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, 64);  //3 velo speichern ??
-			}
-	}
-
-	void OutputMidiPort::Sustain(char on, int channel)
-	{
-		DEBUGLOG (other, _T(""));
-		DWORD chan = channel; // Midi has unsigned channels
-
-		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].id >> 24) == chan ) {
-				MIDI_OUT3(0xB0+i, 64, on);
-				Cd[i].Sustain = on;
-			}
-	}
-
-	int OutputMidiPort::GetChannel(int taste)
-	{
-		DEBUGLOG (other, _T(""));
-
-		for (int i = 0; i < 16; i++)
-			if ( ton_auf_kanal[i].id && (ton_auf_kanal[i].taste == taste) )
-				return i;
-
-		return -1;
-	}
-
-//void Gis(GisToken *token, char turn) {};
-
-#ifdef RTMIDI
-	void OutputMidiPort::MidiOut(DWORD data, char n)
-	{
-		std::vector<unsigned char> message;
-
-		while ( n-- ) {
-			DEBUGLOG (other, _T("sending byte %x"), data & 0xff);
-			message.push_back(data & 0xFF);
-			data >>= 8;
-		}
-
-		hMidiOut->sendMessage(&message);
-	}
-
-#else
-	void OutputMidiPort::MidiOut(DWORD data, char n)
-	{
-		DEBUGLOG (other, _T("without RtMidi"));
-		midiOutShortMsg(hMidiOut, data);
-	}
-
-#endif
-
-	void OutputMidiPort::Quite(RouteClass * r)
-	{
-		DEBUGLOG (other, _T(""));
-
-		for (int i = 0; i < 16; i++)
-			if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->GetId() )
-				NoteOff(r->GetBox(), ton_auf_kanal[i].id % 256, 64, r,  ton_auf_kanal[i].id >> 24);
-	}
-
-	void OutputMidiPort::Panic()
-	{
-		DEBUGLOG (other, _T(""));
-
-		for (int i = 0; i < 16; i++) {
-			MIDI_OUT3(176+i, 123, 0);  // All notes off */
-			MIDI_OUT3(0xB0+i, 7, 127);  // main volume
-			// sound piano
-			MIDI_OUT2(0xC0+i, 0);
-			// Merker aufr‰umen
-			ton_auf_kanal[i].taste=0;
-			ton_auf_kanal[i].id=0;
-			Cd[i].Sound = 0;
-			Cd[i].Sustain = 0;
-			KeyDir[i] = i; // alle nicht benutzt
-		}
-
-		nKeyOn = 0;
-	}
-
+#if 0
 	void OutputMidiPort::ReadData(wxConfigBase * config) 
 	{
-		bending_range = config->Read(_("Bending_Range"),
-					     (long)bending_range);
+		midi.SetBendingRange(config->Read(_("Bending_Range"),
+						  DEFAULT_BENDING_RANGE));
 	}
 
 	void OutputMidiPort::WriteData(wxConfigBase * config) 
 	{
 		config->Write(_("Bending_Range"), (long)bending_range);
 	}
-
+#endif
 
 #ifdef WX
 	wxString OutputMidiPort::TowxString() const {
 		wxString channelString;
 		for (int i = 0 ; i<16; i++) {
-			channelString += wxString::Format(_T(" ({%d,%d,%d,%d,%ld},%d,[%d,%d,%d])"),
-							  Cd[i].Sound,
-							  Cd[i].Sustain,
-							  Cd[i].BankSelectMSB,
-							  Cd[i].BankSelectLSB,
-							  Cd[i].Pitch,
-							  KeyDir[i],
-							  ton_auf_kanal[i].taste,
-							  ton_auf_kanal[i].key,
-							  ton_auf_kanal[i].id);
+			channelString += wxString::Format(_T(" ({not implemented},%d,[%d,%d,%d,%d,%d])"),
+							  ton_auf_kanal[i].active,
+							  ton_auf_kanal[i].inkey,
+							  ton_auf_kanal[i].outkey,
+							  ton_auf_kanal[i].unique_id,
+							  ton_auf_kanal[i].channel
+				);
 		}
 		return OutputDeviceClass::TowxString()
 			+ wxString::Format(_T("\
 OutputMidiPort:\n\
-   hMidiOut = %p\n\
-   channels ({sound,sustain,MSB,LSB,pitch},KeyDir,[tasta,key,id]):\n\
+   channels ({sound,sustain,MSB,LSB,pitch},KeyDir,[tasta,outkey,id]):\n\
              %s\n\
    nKeyOn   = %d\n\
-"),hMidiOut, (const wxChar *)channelString, nKeyOn);
+"), (const wxChar *)channelString, nKeyOn);
 
 	}
 #endif
@@ -872,7 +371,7 @@ OutputMidiPort:\n\
 #endif
 		Quite();
 		isOpen = false;
-	};
+	}
 
 
 
@@ -881,12 +380,7 @@ OutputMidiPort:\n\
 	wxString InputMidiPort::TowxString() const {
 		wxString channelString;
 		for (int i = 0; i < 16; i++) {
-			channelString += wxString::Format(_T(" {%d,%d,%d,%d,%ld}"),
-							  Cd[i].Sound,
-							  Cd[i].Sustain,
-							  Cd[i].BankSelectMSB,
-							  Cd[i].BankSelectLSB,
-							  Cd[i].Pitch);
+			channelString += wxString::Format(_T(" {not implemented}"));
 		}
 		return InputDeviceClass::TowxString()
 			+wxString::Format(_T("\
@@ -925,63 +419,48 @@ InputMidiPort:\n\
 		case 0x90: // Note On
 			if ( (midiCode & 0x7f0000) > 0 ) {
 				if ( route->Active )
-					AddKey(Box, (midiCode >> 8) & 0xff, route->GetId());
+					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, MidiChannel, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
-						->NoteOn(Box, 
+						->NoteOn(&mut_box[Box], 
 							 (midiCode >> 8) & 0xff, 
 							 (midiCode >> 16) & 0xff,
 							 route.get(),
 							 MidiChannel, 
-							 &Cd[MidiChannel]);
+							 Cd[MidiChannel]);
 
 				break;
 			}
 			
 		case 0x80: // Note Off
 			if ( route->Active )
-				DeleteKey(Box,(midiCode >> 8) & 0xff, route->GetId());
+				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, MidiChannel, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()
-					->NoteOff(Box, 
+					->NoteOff(&mut_box[Box], 
 						  (midiCode >> 8) & 0xff, 
 						  (midiCode >> 16) & 0xff, 
 						  route.get(), 
-						  MidiChannel);
+						  MidiChannel,
+						  false);
 
 			break;
 
 		case 0xC0: // Programm Change
-			Cd[MidiChannel].Sound = (midiCode >> 8) & 0xff;
+			Cd[MidiChannel].program_change((midiCode >> 8) & 0xff);
 
 			break;
 
-		case 0xB0: // Control Change
-		{ int control = (midiCode >> 8) & 0xff;
-				int data = (midiCode >> 16) & 0xff;
-				if ( control == 64 ) {
-					Cd[MidiChannel].Sustain = data;
-
-					if ( route->GetOutputDevice() )
-						route->GetOutputDevice()->Sustain(Cd[MidiChannel].Sustain, MidiChannel);
-
-					break;
-				} else if ( control == 0 ) // BankSelectMSB
-				{
-					Cd[MidiChannel].BankSelectMSB = data;
-					break;
-				} else if ( control == 32 ) // BankSelectLSB
-				{
-					Cd[MidiChannel].BankSelectLSB =data;
-					break;
-				}
-		}
-		case 0xA0:
-
-		case 0xD0: // Key Pressure, Controler, Channel Pressure
-			//3 ??
+		case CONTROLLER: // Control Change
+			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
+			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
+			break;
+		case KEY_PRESSURE:
+#pragma warning "implement key_pressure"
+		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
+#pragma warning "implement channel_pressure"			
 			break;
 		}
 
@@ -992,7 +471,7 @@ InputMidiPort:\n\
 
 		if ( Box >= 0 && route->Active )
 			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(Box,midiCode & 0xff);
+				MidiAnalysis(&mut_box[Box],midiCode & 0xff);
 				midiCode >>= 8;
 			}
 	}

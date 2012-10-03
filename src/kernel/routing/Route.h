@@ -101,6 +101,22 @@ namespace mutabor {
 	protected:
 		// private members: access only via access functions for debugging purposes
 
+		class NoOutputDevice {
+		public:
+			Route route;
+			NoOutputDevice(const thistype * r) 
+				{
+					r = const_cast<thistype *>(r);
+				}
+		};
+		class NoInputDevice {
+		public:
+			Route route;
+			NoInputDevice(const thistype * r) 
+				{
+					r = const_cast<thistype *>(r);
+				}
+		};
 		WATCHEDPTR(void,routing,TRouteClass) userdata;
 		OutputDevice Out;
 		InputDevice In;
@@ -237,6 +253,15 @@ namespace mutabor {
 
 		const InputDevice & GetInputDevice() const {
 			return In;
+		}
+
+		void NotesCorrect() {
+			if (Out) 
+				Out->NotesCorrect(this);
+		}
+
+		void Controller(int controller, int value) {
+			if (Out) Out->Controller(GetId(), controller, value);
 		}
 
 		/// add a new output device
@@ -493,6 +518,9 @@ namespace mutabor {
 	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
 	typedef TRouteClass<InputDevice,OutputDevice>::routePtrList routePtrList;
 
+
+	Route FindRoute(size_t id);
+
        /** Class for creation of Routes.   
 	* This class will create a
 	* route object corresponding to the type given to the Create function.
@@ -690,6 +718,7 @@ namespace mutabor {
 	    that can be used in such situations */
 	extern Route NullRoute; 
 
+	void initialize_data();
 
 }
 #endif /* PRECOMPILED */

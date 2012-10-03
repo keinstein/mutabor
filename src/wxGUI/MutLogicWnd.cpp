@@ -532,7 +532,7 @@ namespace mutaborGUI {
 			if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
 
 			// ermiteln, ob Logik
-			char isLogic = IsLogicKey((char)key);
+			char isLogic = IsLogicKey(&mut_box[boxnumber], (char)key);
 
 			if ( isLogic == 2 ) return;
 
@@ -611,7 +611,7 @@ namespace mutaborGUI {
 			ColorBar2->SetSize(-xv*10, -yv*10, 2, max(ny*MUTTAGY+8, R.GetHeight()));
 
 		CorrectScroller();
-	};
+	}
 
 // Reaktion auf geklickte TMutTag-s
 
@@ -671,8 +671,8 @@ namespace mutaborGUI {
 	void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	{
 		// Analyse zuerst
-		KeyboardAnalyse(boxnumber, thekey, isLogicKey);
 		BoxData & box = BoxData::GetBox(boxnumber);
+		box.KeyboardAnalyse(thekey, isLogicKey);
 		if (isLogicKey) {
 			box.SetKeyTonesystem(0);
 			box.SetKeyLogic(thekey);
@@ -690,7 +690,7 @@ namespace mutaborGUI {
 		wxWindow *aWin;
 		nTags = 0;
 
-		if ( GetMutTag(isLogic, s, s1, key, boxnumber) )
+		if ( GetMutTag(isLogic, s, s1, key, box.GetNonGUIBox()) )
 			do {
 				nTags++;
 				sText = muT(s);
@@ -717,7 +717,7 @@ namespace mutaborGUI {
 				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
 
 				if ( isOpen ) ToFocus = aWin;
-			} while ( GetMutTag(isLogic, s, s1, key) );
+			} while ( GetMutTag(isLogic, s, s1, key, NULL) );
 
 		// Color Bars
 		if ( UseColorBars ) {

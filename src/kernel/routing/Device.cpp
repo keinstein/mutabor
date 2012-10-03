@@ -12,65 +12,6 @@
  * \version $Revision: 1.13 $
  * \license GPL
  *
- * $Log: Device.cpp,v $
- * Revision 1.13  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.12  2011-10-02 16:58:40  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.11  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.10  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.9  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.8  2011-09-28 07:35:53  keinstein
- * Make distclean happy
- *
- * Revision 1.7  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.6  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.5  2011-09-04 12:02:08  keinstein
- * require wxWidgets 2.8.5 configure.in
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.3  2010-12-11 02:10:08  keinstein
- * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
- *
- * Revision 1.2  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.5  2010-09-30 16:26:26  keinstein
- * remove global variables routewindow and frame
- * move route loading and route saving into MutRouteWnd
- * implement MutRouteWnd::InitShapes.
- * Destroy Route children before loading new route configuration (still some crashes)
  *
  *
  ********************************************************************
@@ -349,7 +290,7 @@ OutputDeviceClass:\n\
 		for (routeListType::iterator R = routes.begin(); 
 		     R != routes.end(); R++)
 			if ((*R)->GetOutputDevice() )
-				(*R)->GetOutputDevice()->Quite(R->get());
+				(*R)->GetOutputDevice()->Quiet(R->get());
 		DEBUGLOG(smartptr,_T(""));
 	}
 
@@ -535,17 +476,21 @@ InputDeviceClass:\n\
 		//CurrentTime.Stop();
 	}
 
-	void OutNotesCorrect(int box)
+#if 0 
+/* Delete if no problem occurs */
+	void OutNotesCorrect(mutabor_box_type * box)
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
-			(*Out)->NotesCorrect(box);
+			(*Out)->NotesCorrect(box->id);
 	}
+#endif
 
 	bool OutOpen()
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
+		DEBUGLOG2(midiio,_T("count: %d"),list.size());
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			if ( !(*Out)->Open() ) {
@@ -630,50 +575,65 @@ InputDeviceClass:\n\
 	}
 
 
-	void MidiOut(int box, DWORD data, char n)
+	void MidiOut(mutabor_box_type * box, struct midiliste * outliste)
 	{
 		DEBUGLOG2(smartptr,_T(""));
+
+		size_t laenge = midi_list_laenge(outliste);
+		BYTE * data = (BYTE *)malloc(laenge * sizeof(BYTE));
+		struct midiliste * cursor = outliste;
+		BYTE * bcursor=data;
+		while (cursor != NULL) {
+			(*bcursor++) = (BYTE) cursor->midi_code;
+			cursor = cursor -> next;
+		}
+	       
 		const routeListType & list = RouteClass::GetRouteList();
 		for (routeListType::const_iterator R = list.begin(); 
 		     R != list.end(); R++) {
 			OutputDevice out;
-			if ( (*R)->GetBox() == box && 
+			if ( (*R)->GetBox() == box->id && 
 			     (out = (*R)->GetOutputDevice())) {
-				out -> MidiOut(data, n);
+				out -> MidiOut(data, laenge);
 			}
 		}
-		DEBUGLOG2(smartptr,_T(""));
+
+		free(data);
 	}
 
-	void NotesCorrect(int box)
+	void NotesCorrect(mutabor_box_type * box)
 	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
-		for (OutputDeviceList::const_iterator Out = list.begin();
-		     Out != list.end(); Out++)
-			(*Out)->NotesCorrect(box);
+		const routeListType & list = RouteClass::GetRouteList();
+		for (routeListType::const_iterator route = list.begin();
+		     route != list.end(); route++) {
+			if ((*route)->GetBox() == box->id)
+				(*route)->NotesCorrect();
+		}
 	}
 
-	int GetChannel(int box, int taste)
+	int GetChannel(int box, int key, int channel, int id)
 	{
-		DEBUGLOG2(smartptr,_T(""));
+		DEBUGLOG2(midiio,_T(""));
 		const routeListType & list = RouteClass::GetRouteList();
 		for (routeListType::const_iterator R = list.begin(); 
 		     R != list.end(); R++) {
 			OutputDevice out;
 			if ( (*R)->GetBox() == box
+			     && (channel == (*R)->GetId())
 			     && (out = (*R)->GetOutputDevice())) {
-				int c = out->GetChannel(taste);
+				int c = out->GetChannel(key,channel,id);
 				
 				if ( c != -1 ) {
-					DEBUGLOG2(smartptr,_T(""));
+					DEBUGLOG2(midiio,_T(""));
 					return c;
 				}
 			}
 		}
-		DEBUGLOG2(smartptr,_T(""));
+		DEBUGLOG2(midiio,_T(""));
 		return -1;
 	}
 
+	
 }
 
 /// \}

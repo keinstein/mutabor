@@ -231,7 +231,7 @@ namespace mutaborGUI {
 		enum MenuType {
 			ProgramMenu, ///< Mac: common application menu
 			EditorMenu, ///< File editor menu
-			RouteMenu, ///< Route editor menu
+			RouteMenu ///< Route editor menu
 		};
 
 		/// Initialization

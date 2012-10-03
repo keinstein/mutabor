@@ -130,6 +130,7 @@ namespace mutaborGUI {
 		
 		wxWindow * parent = shape->GetGrandParent();
 		mutASSERT(route);
+
 		mutabor::OutputDevice out = route->GetOutputDevice();
 		if (out) {
 			MutOutputDeviceShape * outshape =
@@ -138,7 +139,6 @@ namespace mutaborGUI {
 				outshape->Add(shape);
 				shape->Add(outshape);
 			}
-			
 		}
 		mutabor::InputDevice & in = 
 			const_cast<mutabor::InputDevice &>(route->GetInputDevice());
@@ -149,7 +149,6 @@ namespace mutaborGUI {
 				inshape->Add(shape);
 				shape->Add(inshape);
 			}
-			
 		}
 	}
 

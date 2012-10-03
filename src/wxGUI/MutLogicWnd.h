@@ -106,7 +106,7 @@ namespace mutaborGUI {
 		void OnGetFocus(wxFocusEvent& event);
 
 
-		DECLARE_EVENT_TABLE();
+		DECLARE_EVENT_TABLE()
 	};
 }
 #endif

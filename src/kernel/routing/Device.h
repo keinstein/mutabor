@@ -12,111 +12,6 @@
  * \version $Revision: 1.11 $
  * \license GPL
  *
- * $Log: Device.h,v $
- * Revision 1.11  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.10  2011-10-02 16:58:40  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.9  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.8  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.7  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.6  2011-09-04 12:02:08  keinstein
- * require wxWidgets 2.8.5 configure.in
- *
- * Revision 1.5  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.3  2010-11-21 23:39:00  keinstein
- * some corrections for allowing debuild to complete
- *
- * Revision 1.2  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.7  2010-11-18 21:46:14  keinstein
- * MutFrame: get rid of OnIdle (this may break something, but saves much more CPU cycles
- * Some further steps to get rid of EDevice*
- *
- * Revision 1.1.2.6  2010-11-14 21:28:38  keinstein
- * implement loading and saving old files with new routing system
- *
- * Revision 1.1.2.5  2010-09-29 15:06:40  keinstein
- * Reset config before saving routing information and fix two bugs concerned with the deletion of boxes
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.9.2.13  2010-07-06 09:06:26  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.9.2.12  2010/06/22 15:05:45  keinstein
- * debugging segfault in route check after replacement of MutOutputDevice
- *
- * Revision 1.9.2.11  2010/06/21 14:28:12  keinstein
- * implement deletion of output devices
- *
- * Revision 1.9.2.10  2010/06/15 14:30:14  keinstein
- * allow deleting of input devices in route window
- * several bug fixes
- * rudimentary box deletion support
- *
- * Revision 1.9.2.9  2010/05/07 11:40:27  keinstein
- * actual_settings
- *
- * Revision 1.9.2.8  2010/04/26 15:53:05  keinstein
- * BoxDlg reacts on “Remove Route”. Implementation of routing must be checked.;
- *
- * Revision 1.9.2.7  2010/04/20 17:41:38  keinstein
- * One step towards using Mutabor: Activation of a logic now honours the state of the Device Editor.
- *
- * Revision 1.9.2.6  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.9.2.5  2010/03/30 08:40:15  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.9.2.4  2010/02/15 12:08:20  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.9.2.3  2010/01/14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.9.2.2  2009/11/03 12:39:30  keinstein
- * input device dialog: Allow to edit input devices
- * fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
- *
- * Revision 1.9.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
  *
  *
  ********************************************************************
@@ -140,6 +35,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/MidiKern.h"
 
 #ifndef MU32_ROUTING_DEVICE_H_PRECOMPILED
 #define MU32_ROUTING_DEVICE_H_PRECOMPILED
@@ -180,39 +76,144 @@ namespace mutabor {
 
 	class ChannelData
 	{
-
 	public:
-		int Sound;          // -1 = noch nicht verwendet
-		char Sustain;
-		int BankSelectMSB;  // -1 .. noch nicht benutzt
-		int BankSelectLSB;  // -1 .. noch nicht benutzt
-		long Pitch;         // 0 = ungepitcht, kann durchaus auch negativ sein
-		ChannelData(int sound = -1, char sustain = 0)
+		typedef std::vector<int8_t> controller_vector;
+
+		ChannelData(int sound = -1, int8_t sustain = 0):controller(128,-1),
+								controller_changed(128,-1),
+								first_unchanged(0),
+								looped(false),
+								Sound(sound),
+								bank_coarse(-1),
+								bank_fine(-1),
+								bend(0)
 			{
-				Sound = sound;
-				Sustain = sustain;
-				BankSelectMSB = -1;
-				BankSelectLSB = -1;
-				Pitch = 0;
+				controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
+				if (sustain != 0) {
+					controller_changed[first_unchanged] 
+						= midi::HOLD_PEDAL_ON_OFF;
+					first_unchanged++;
+				}
 			}
 
 		void Reset()
 			{
+				for (controller_vector::iterator i = controller.begin();
+				     i != controller.end();
+				     i++) *i = -1;
+				for (controller_vector::iterator i = controller_changed.begin();
+				     i != controller_changed.end();
+				     i++) *i = -1;
+				first_unchanged = 0;
+				looped = false;
 				Sound = -1;
-				Sustain = 0;
-				BankSelectMSB = -1;
-				BankSelectLSB = -1;
+				bank_coarse = -1;
+				bank_fine = -1;
+				bend = 0;
+				
+				
 			}
 
-		bool operator ==(ChannelData &cd)
-			{
-				return ( Sound == -1 || cd.Sound == -1 || Sound == cd.Sound ) &&
-					( Sustain == -1 || cd.Sustain == -1 || Sustain == cd.Sustain ) &&
-					( BankSelectMSB == -1 || cd.BankSelectMSB == -1 || BankSelectMSB == cd.BankSelectMSB ) &&
-					( BankSelectLSB == -1 || cd.BankSelectLSB == -1 || BankSelectLSB == cd.BankSelectLSB );
+		int8_t set_controller(int8_t number, int8_t data) {
+			int8_t retval = controller[number];
+			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
+
+			controller[number] = data;
+			bool found = false;
+			size_t index;
+			for (int i = 0; i < (looped?controller.size():first_unchanged);i++) {
+				if (controller_changed[i] == number) {
+					controller_vector :: iterator beg = controller_changed.begin();
+					std::rotate(beg + i,beg+i+1 ,beg +first_unchanged);
+					found = true;
+					index = i;
+					break;
+				}
 			}
+			if (!found) 
+				index = first_unchanged++;
+
+			controller_changed[index] = number;
+
+			return retval;
+		}
+
+		int8_t get_controller(int8_t number) const {
+			return controller[number];
+		}
+
+		controller_vector::const_iterator get_first_changed_controller(const ChannelData & other) const {
+			controller_vector::const_iterator retval = controller_changed.begin();
+			if (*retval == -1 || controller[*retval]==other.controller[*retval])
+				return retval;
+			return get_next_changed_controller(other,retval);
+		}
+		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other, controller_vector::const_iterator last) const {
+			mutASSERT(controller_changed.begin() <= last);
+			mutASSERT(last < controller_changed.end());
+			controller_vector::const_iterator retval = last;
+			do {
+				retval++;
+			} while (retval != controller_changed.end() && (*retval != -1) && controller[*retval] == other.controller[*retval]);
+			return retval;
+		}
+
+		bool is_changed_controller(controller_vector::const_iterator actual) const {
+			mutASSERT(controller_changed.begin() <= actual);
+			mutASSERT(actual<= controller_changed.end());
+			if (actual == controller_changed.end()) return false;
+			if (*actual == -1) return false;
+			mutASSERT(0<= *actual);
+			mutASSERT(*actual < controller.size());
+			return true;
+		}
+
+		void program_change(int program) {
+			Sound = program;
+			uint8_t data = controller[midi::BANK_COARSE];
+			if (data != -1) bank_coarse = data;
+			data = controller[midi::BANK_FINE];
+			if (data != -1) bank_fine = data;
+		}
+
+		void program_change(const ChannelData & o) {
+			Sound = o.Sound;
+			bank_coarse = o.bank_coarse;
+			bank_fine = o.bank_fine;
+		}
+ 
+		bool is_compatible (const ChannelData &cd) const {
+			/* \todo check that ignoring pitch bend is ok */
+			if (Sound != -1 && cd.Sound != -1 
+			    && Sound != cd.Sound) return false;
+			if (controller.size() 
+			    != cd.controller.size()) return false;
+				
+			/* \todo optimization */
+			for (size_t i = 0 ; i < controller.size() ; i++) {
+				if (controller[i] != -1 
+				    && cd.controller[i] != -1 
+				    && controller[i] != cd.controller[i]) return false;
+			}
+			return true;
+		}
+
+		int get_bend() { return bend; }
+		int set_bend(int b) { bend = b; }
+
+		int get_program() const {return Sound; }
+		int get_bank_coarse() const { return bank_coarse; }
+		int get_bank_fine() const { return bank_fine; }
+	protected:
+		controller_vector controller;
+		controller_vector controller_changed;
+		size_t first_unchanged;
+		bool looped;
+		int Sound;                // -1 = noch nicht verwendet
+		uint8_t bank_coarse;      // MSB as saved during last program change
+		uint8_t bank_fine;        // LSB as saved during last program change
+		int bend;                 // 0 = ungepitcht, kann durchaus auch negativ sein
 	};
-
 
 	class Device
 	{
@@ -560,21 +561,28 @@ namespace mutabor {
 			CommonTypedDeviceAPI<OutputDeviceClass>::Destroy();
 			TRACEC;
 		}
-		virtual void NoteOn(int box, int taste, int velo, 
+		virtual void NoteOn(mutabor_box_type * box, 
+				    int taste, 
+				    int velo, 
 				    RouteClass * r,
-				    int channel, ChannelData *cd) = 0;
-		virtual void NoteOff(int box, int taste, int velo, 
+				    size_t id, 
+				    const ChannelData & input_channel_data) = 0;
+		virtual void NoteOff(mutabor_box_type * box, 
+				     int taste, 
+				     int velo, 
 				     RouteClass * r,
-				     int channel) = 0;
-		virtual void NotesCorrect(int box) = 0;
-		virtual void Sustain(char on, int channel) = 0;
-		virtual int  GetChannel(int taste) = 0;
+				     size_t id,
+				     bool is_note_on) = 0;
+		virtual void NotesCorrect(RouteClass * route) = 0;
+		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
+//		virtual void Sustain(int channel, const ChannelData & cd) = 0;
+		virtual int  GetChannel(int inkey, int channel, int id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
-		virtual void MidiOut(DWORD data, char n) = 0;
-		virtual void MidiOut(BYTE *p, char n) = 0;
-		virtual void Quite(RouteClass * r) = 0;
+		virtual void MidiOut(BYTE *p, size_t n) = 0;
+		virtual void Quiet(RouteClass * r) = 0;
 		virtual void Panic() {};
+		virtual bool Open() { return true; }
 
 		virtual bool NeedsRealTime() {
 			return false;
@@ -997,7 +1005,7 @@ namespace mutabor {
 
 
 
-	void OutNotesCorrect(int box);
+//	void OutNotesCorrect(mutabor_box_type *  box);
 
 	bool OutOpen();
 
@@ -1013,11 +1021,12 @@ namespace mutabor {
 
 //frac InReadOn(frac time);
 
-	void MidiOut(int box, DWORD data, char n = -1);
+	
+	void MidiOut(mutabor_box_type * box, struct midiliste * outliste);
 
-	void NotesCorrect(int box);
+	void NotesCorrect(mutabor_box_type *  box);
 
-	int GetChannel(int box, int taste);
+	int GetChannel(int box, int taste, int channel, int id);
 
 
 }

@@ -1,4 +1,4 @@
-/** \file 
+/** \file   -*- C++ -*-
  ********************************************************************
  * Description
  *
@@ -17,7 +17,7 @@
  *
  *
  ********************************************************************
- * \addtogroup templates
+ * \addtogroup other
  * \{
  ********************************************************************/
 #ifndef mhARRAY_H
@@ -25,39 +25,56 @@
 
 #include "wx/dynarray.h"
 
-#define DEF_MHARRAY(T, name, baseType)								\
-class name															\
-{                                                                   \
-public:                                                             \
-    baseType data;													\
-	name(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {};                       \
-	~name() {};                                                     \
-	size_t GetItemsInContainer() const { return data.GetCount(); }  \
-	void Flush() { data.Clear(); }                                 \
-    void Add(T t) { data.Add(t); }									\
-    T& operator[](size_t uiIndex) const { return data[uiIndex]; }	\
-	void Destroy(size_t uiIndex) { data.RemoveAt(uiIndex); }		\
-	void AddAt(T t, size_t uiIndex) { data.Insert(t, uiIndex); }		\
-	void RemoveEntry(size_t uiIndex) { data.RemoveAt(uiIndex); }	\
-};																	\
+template <class T>
+class mhArray {
+protected:
+	WX_DEFINE_ARRAY_INT(BYTE, baseType);
+	baseType data;
+public:
+	mhArray(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {};
+	~mhArray() {};
+	size_t GetItemsInContainer() const { return data.GetCount(); }
+	void Flush() { data.Clear(); }
+	void Add(T t) { data.Add(t); }
+	T& operator[](size_t uiIndex) const { return data[uiIndex]; }
+	void Destroy(size_t uiIndex) { data.RemoveAt(uiIndex); }
+	void AddAt(T t, size_t uiIndex) { data.Insert(t, uiIndex); }
+	void RemoveEntry(size_t uiIndex) { data.RemoveAt(uiIndex); }
+};
+
+#define DEF_MHARRAY(T, name, baseType)					\
+	class name							\
+	{								\
+	public:								\
+		baseType data;						\
+		name(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {}; \
+		~name() {};						\
+		size_t GetItemsInContainer() const { return data.GetCount(); } \
+		void Flush() { data.Clear(); }				\
+		void Add(T t) { data.Add(t); }				\
+		T& operator[](size_t uiIndex) const { return data[uiIndex]; } \
+		void Destroy(size_t uiIndex) { data.RemoveAt(uiIndex); } \
+		void AddAt(T t, size_t uiIndex) { data.Insert(t, uiIndex); } \
+		void RemoveEntry(size_t uiIndex) { data.RemoveAt(uiIndex); } \
+	}								\
 
 /*
 */
-#define DEF_MHARRAYPTR(T, name, baseType)							\
-class name															\
-{                                                                   \
-public:                                                             \
-    baseType data;													\
-    name(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {};                       \
-	~name() {};                                                     \
-    size_t GetItemsInContainer() const { return data.GetCount(); }  \
-    void Add(T t) { data.Add(new T(t)); }					\
-	void Flush() { data.Clear(); }                                  \
-	void RemoveEntry(size_t i) { data.RemoveAt(i); }					\
-    T& operator[](size_t uiIndex) const { return *(data[uiIndex]); }\
-	void Destroy(size_t uiIndex) { /*delete data[uiIndex];*/ data.RemoveAt(uiIndex); }		\
-	void AddAt(T t, size_t uiIndex) { data.Insert(new T(t), uiIndex); }		\
-};																	\
+#define DEF_MHARRAYPTR(T, name, baseType)				\
+	class name							\
+	{								\
+	public:								\
+		baseType data;						\
+		name(int WXUNUSED(i), int WXUNUSED(j), int WXUNUSED(k)) {}; \
+		~name() {};						\
+		size_t GetItemsInContainer() const { return data.GetCount(); } \
+		void Add(T t) { data.Add(new T(t)); }			\
+		void Flush() { data.Clear(); }				\
+		void RemoveEntry(size_t i) { data.RemoveAt(i); }	\
+		T& operator[](size_t uiIndex) const { return *(data[uiIndex]); } \
+		void Destroy(size_t uiIndex) { /*delete data[uiIndex];*/ data.RemoveAt(uiIndex); } \
+		void AddAt(T t, size_t uiIndex) { data.Insert(new T(t), uiIndex); } \
+	};								\
 
 #define DEF_STACK(T, name, baseType)											\
 class name															\

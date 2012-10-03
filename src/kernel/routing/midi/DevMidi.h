@@ -1,52 +1,12 @@
 // -*- C++ -*- 
 /** \file 
  ********************************************************************
- * Description
+ * Classes for midi port
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidi.h,v 1.11 2012/01/29 22:08:36 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008-2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2012/01/29 22:08:36 $
- * \version $Revision: 1.11 $
+ *
  * \license GPL
- *
- * $Log: DevMidi.h,v $
- * Revision 1.11  2012/01/29 22:08:36  keinstein
- * allow to add nonexisting devices in the route editor (partly fixes #16908)
- *
- * Revision 1.10  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.9  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.8  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.7  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.6  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.5  2011-09-07 15:54:40  keinstein
- * fix some compilation issues
- *
- * Revision 1.4  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
  *
  *
  *
@@ -54,10 +14,6 @@
  * \addtogroup route
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 3, 1998, R.Krauﬂe
-// MidiPort Klassen
-// ------------------------------------------------------------------
 
 /* we guard a little bit complicated to ensure the references are set right
  */
@@ -73,8 +29,10 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/wxGUI/generic/mhDefs.h"
+#include "src/kernel/routing/midi/midicmn.h"
+//#include "src/wxGUI/generic/mhDefs.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/GrafKern.h"
 
 #ifndef MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
 #define MU32_ROUTING_MIDI_DEVMIDI_H_PRECOMPILED
@@ -100,41 +58,201 @@ namespace mutabor {
 
 // OutputMidiPort ------------------------------------------------------
 
-	typedef struct TAK
-	{
-		int taste;
-		int key;
-		DWORD id;         // (channel << 24) + (Route->Id << 16) + (Box << 8) + Taste
-		// zum Identifizieren fürs korrekte Ausschalten
-	} TonAufKanal;
-
-
 	class MidiPortFactory;
-	class OutputMidiPort : public OutputDeviceClass
+
+	class MidiPortOutputProvider {
+	public:
+		MidiPortOutputProvider():port(NULL) {}
+		~MidiPortOutputProvider() {
+			if (port && port != NULL) {
+				Close();
+			}
+		}
+
+		bool Open(int id, const mutStringRef name) {
+#ifdef RTMIDI
+			try {
+				port = new RtMidiOut(PACKAGE_STRING);
+			} catch (RtError &error) {
+				LAUFZEIT_ERROR0(_("Can not open ouput Midi devices due to memory allocation  problems."));
+				return false;
+			}
+			
+			try {
+				port->openPort(id,(const char *)name.ToUTF8());
+			} catch (RtError &error) {
+				LAUFZEIT_ERROR2(_("Can not open output Midi device no. %d (%s)"), 
+						id, (name.c_str()));
+				return false;
+			}
+
+#else
+			midiOutOpen(&hMidiOut, DevId, NULL, NULL, NULL);
+
+#endif
+			return true;
+		}
+		
+		bool Open() {
+			// Should be done by device.
+			if (!port) return false;
+			return true;
+		}
+
+		void Close() {
+#ifdef RTMIDI
+			port->closePort();
+			delete port;
+			port = NULL;
+#else
+			midiOutClose(hMidiOut);
+
+#endif
+			
+		}
+
+		/** 
+		 * Outputs a three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiPortOutputProvider & operator() (int channel,
+						      uint8_t byte1,
+						      uint8_t byte2,
+						      uint8_t byte3) {
+			if ((byte1 & midi::TYPE_MASK) != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
+			}
+			return RawMsg(channel,byte1,byte2,byte3);
+		}
+		/** 
+		 * Outputs a raw three-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte 
+		 * \param byte2 2nd byte 
+		 * \param byte3 3rd byte
+		 */
+		MidiPortOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2,
+						  uint8_t byte3) { 
+			std::vector<unsigned char> message(3);
+			message[0] = byte1;
+			message[1] = byte2;
+			message[2] = byte3;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		MidiPortOutputProvider & operator() (int channel,
+						      uint8_t byte1,
+						      uint8_t byte2) {
+			if ((byte1 & midi::TYPE_MASK) != midi::SYSTEM) {
+				mutASSERT(!(byte1 & midi::CHANNEL_MASK));
+				mutASSERT(channel < 0x10);
+				byte1 |= channel;
+			} else {
+				UNREACHABLEC;
+			}
+			
+			return RawMsg(channel,byte1,byte2);
+		}
+
+		/** 
+		 * Outputs a two-byte message.
+		 * 
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider 
+		 * \param byte1 1st byte
+		 * \param byte2 2nd byte
+		 */
+		 MidiPortOutputProvider & RawMsg (int channel,
+						  uint8_t byte1,
+						  uint8_t byte2) {
+			std::vector<unsigned char> message(2);
+			message[0] = byte1;
+			message[1] = byte2;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a one-byte message.
+		 * 
+		 * \param byte1 1st byte
+		 */
+		MidiPortOutputProvider & RawMsg (int channel, uint8_t byte1) {
+			mutASSERT(channel == -1);
+			std::vector<unsigned char> message(1);
+			message[0] = byte1;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+		/** 
+		 * Outputs a System Exclusive  message.
+		 * 
+		 * \param data byte array containing the complete SysEx message
+		 * \param count length of the SysEx message
+		 */
+		MidiPortOutputProvider & SendSysEx (int channel,
+						    BYTE * data,
+						    size_t count) {
+			mutASSERT(-1);
+			if (data[0] == midi::SYSEX_START 
+			    || data[count-1] == midi::SYSEX_END) {
+				UNREACHABLEC;
+				return *this;
+			}
+			std::vector<unsigned char> message(count + 2);
+			message[0] = midi::SYSEX_START;
+			for (size_t i = 1 ; i <= count ; i++) {
+				message[i] = data[i-1];
+			}
+			message[count+1] = midi::SYSEX_END;
+			
+			port->sendMessage(&message);
+			return *this;
+		}
+
+	protected:
+		RtMidiOut * port;
+	};
+
+	class OutputMidiPort : public CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass>
 	{
 		friend class MidiPortFactory;
 	protected:
-		int bending_range;
-		OutputMidiPort():OutputDeviceClass(), 
-				 bending_range (2), 
-				 hMidiOut(NULL), 
-				 nKeyOn(0) { }
-
-		OutputMidiPort(int devId, 
-			       wxString name, 
-			       int id = -1, 
-			       int bendingRange = 2)
-			: OutputDeviceClass(devId, name, id),
-			  bending_range (bendingRange), 
-			  hMidiOut(NULL), 
-			  nKeyOn(0)
-			{
-				DEBUGLOG(other,_T(""));
-			}
-
 	public:
-		~OutputMidiPort()
-			{};
+
+		typedef CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass> base;
+		
+		~OutputMidiPort() {};
 	
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
@@ -164,16 +282,12 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass *  route);
 
 	
-		virtual bool Open();
-		virtual void Close();
-		virtual void NoteOn(int Box, int taste, int velo, RouteClass * r,
-				    int channel, ChannelData *cd);
-		virtual void NoteOff(int Box, int taste, int velo, 
-				     RouteClass * r, int channel);
-		virtual void NotesCorrect(int box);
-		virtual void Sustain(char on, int channel);
-		virtual int  GetChannel(int taste);
-
+		virtual bool Open() {
+			bool retval = Out.Open(DevId, Name);
+			if (!retval) return false;
+			return base::Open();
+		}
+	
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
@@ -185,15 +299,11 @@ namespace mutabor {
 		virtual void AddTime(frac time)
 			{};
 
-		virtual void MidiOut(DWORD data, char n);
-		virtual void MidiOut(BYTE * p, char n)
-			{};
+//		virtual void MidiOut(DWORD data, size_t n);
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		virtual void Quite(RouteClass * r);
-		virtual void Panic();
 		virtual bool NeedsRealTime()
 			{
 				return true;
@@ -214,15 +324,6 @@ namespace mutabor {
 				Open();
 			}
 		}
-		
-		void SetBendingRange (int r) {
-			bending_range = r;
-		}
-
-		int GetBendingRange() {
-			return bending_range;
-		}
-        
 
 		virtual DevType GetType() const
 			{
@@ -233,8 +334,10 @@ namespace mutabor {
 			return N_("Midi output device");
 		}
 
+#if 0
 		virtual void ReadData(wxConfigBase * config);
 		virtual void WriteData(wxConfigBase * config);
+#endif
 	
 #ifdef WX
 		virtual wxString TowxString() const;
@@ -243,17 +346,26 @@ namespace mutabor {
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
 	
-	private:
+	protected:
 
+
+#if 0
 #ifdef RTMIDI
 		RtMidiOut *hMidiOut;
 #else
 		HMIDIOUT hMidiOut;
 #endif
-		ChannelData Cd[16];
-		char KeyDir[16];
-		TonAufKanal ton_auf_kanal[16];
-		int nKeyOn;
+#endif
+		
+		OutputMidiPort():base() { }
+
+		OutputMidiPort(int devId, 
+			       wxString name, 
+			       int id = -1, 
+			       int bendingRange = 2):
+			base(devId, name, id, bendingRange) {
+			DEBUGLOG(other,_T(""));
+		}
 	};
 
 // InputMidiPort -------------------------------------------------------

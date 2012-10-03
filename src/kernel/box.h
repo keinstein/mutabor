@@ -2,40 +2,12 @@
  ********************************************************************
  * Description: Collect all properties, which are used by boxes
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/box.h,v 1.6 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/09/27 20:13:21 $
  * \version $Revision: 1.6 $
  * \license GPL
- *
- * $Log: box.h,v $
- * Revision 1.6  2011/09/27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-09-08 18:50:41  keinstein
- * Fix some further update bug
- *
- * Revision 1.4  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.3  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.2  2011-09-05 11:30:07  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.1  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
  *
  *
  ********************************************************************
@@ -78,38 +50,257 @@ enum BoxType
 
 #define MIN_BOX NewBox
 
+/** linked list containing key information. First is always 0 last has next == 0. */
+typedef struct {
+	int number;
+	int channel;
+	size_t id; /**< unique Id if the input device suports it */
+	void * userdata;
+	size_t next;
+} mutabor_key_type;
+
+#define MUT_BOX_MAX_KEY_INDEX_LOG (6)
+#define MUT_BOX_MAX_KEY_INDEX ((1 << MUT_BOX_MAX_KEY_INDEX_LOG) - 1)
+#define MUTABOR_NO_NEXT (~((size_t) 0))
+
+typedef struct mutabor_key_index_type {
+	mutabor_key_type key[1 << MUT_BOX_MAX_KEY_INDEX_LOG];
+	struct mutabor_key_index_type * next;
+	
+} mutabor_key_index_type;
+
+/** Cache of constant values.
+ *   each value is stored only once (and equal for all boxes) 
+ *
+ *  \todo check purpose of constant cache. Propably the pointer is more expensive.
+ *  But maybe the code to handle real constants is more expensive (I daubt it).
+ *  Even on 16 bit i286 a pointer has at least 32 bits.
+ */
+struct cache_konstanten
+{
+	int konstante;
+	struct cache_konstanten * next;
+};
+
+
 /** Mutabor box type. */
 typedef struct {
         int id;
 	int next_used;
 	void * userdata;
+
+	mutabor_key_index_type current_keys;
+	size_t key_count;
+	size_t last_key;
+	int distance;
+	int anchor;
+
+	// pointer to anchor;
+	struct interpreter_parameter_list anchor_node; 
+	struct interpreter_parameter_list distance_node;
+	struct interpreter_parameter_list * start_parameter_list;
+
 	/** pattern structure in current box */
 	PATTERNN pattern;
+	
+
 	/** tone system.  
 	    we use pointers here, since this enables us
 	    to quickly change the tone sytem. This saves us 
 	    a copy operation.
 	 */
 	tone_system * tonesystem;
+	tone_system last_tonesystem;
+
+
+	/* Certain linked lists for events */
+	struct harmonie_ereignis *  first_harmony;
+	struct harmonie_ereignis ** last_global_harmony;
+	struct harmonie_ereignis ** first_local_harmony;
+	struct keyboard_ereignis *  first_keyboard;
+	struct keyboard_ereignis ** last_global_keyboard;
+	struct keyboard_ereignis ** first_local_keyboard;
+	struct midi_ereignis     *  first_midi;
+	struct midi_ereignis     ** last_global_midi;
+	struct midi_ereignis     ** first_local_midi;
+
+	/** cache constants see struct cach_konstanten. */
+	struct cache_konstanten * cache_konstanten;
         // flags
-        int used:1; //< box currently in use or wasting memory
-        int keys_changed:1;
-        int logic_changed:1;
-        int action_changed:1;
+        unsigned int used:1; //< box currently in use or wasting memory
+        unsigned int keys_changed:1;
+        unsigned int logic_changed:1;
+        unsigned int action_changed:1;
+	unsigned int tonesys_changed:1; //< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
 } mutabor_box_type;
 
 
-
+extern mutabor_box_type * current_computer_keyboard_box;
 extern tone_system * free_tonesystem;
 extern mutabor_box_type mut_box[MAX_BOX];
 extern int laufzeit_meldungen_erlaubt;
 extern int aktuelles_midi_instrument;
-extern int aktuelle_keyboard_box;
 extern size_t minimal_box_used;
 
 extern int keys_changed_sum;
 
+void mutabor_initialize_box(mutabor_box_type * box, int id);
 void initialize_boxes();
+void mutabor_initialize_keyplane(mutabor_key_index_type * plane);
+
+inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {
+	mutabor_key_index_type *plane_ptr;
+	size_t plane;
+	if (!box->key_count || index == MUTABOR_NO_NEXT) return NULL;
+	plane = index >> MUT_BOX_MAX_KEY_INDEX_LOG;
+	plane_ptr = &(box->current_keys);
+	while (plane-- && plane_ptr) plane_ptr = plane_ptr->next;
+	if (!plane_ptr) {
+		return NULL;
+	} 
+	return &(plane_ptr->key[index & MUT_BOX_MAX_KEY_INDEX]);
+}
+/** 
+ * Find a key in the given box.
+ * 
+ * \param box Box to be seached in.
+ * \param key Key number to be found.
+ * \param index Starting point. The first index to be checked is its successer. So you have to
+ * check index number 0 yourself (which should be fast enough).
+ * 
+ * \return index of the key structure that has been found our 0
+ * otherwise.
+ */
+inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_number, size_t index) {
+	mutabor_key_index_type *plane_ptr;
+	size_t newidx=index;
+	char found = 0;
+	mutabor_key_type * key  = mutabor_find_key_in_box(box,index);
+	if (key == NULL ) return MUTABOR_NO_NEXT;
+	while (key != NULL && key->number != key_number) {
+		newidx = key->next;
+		key = mutabor_find_key_in_box(box,newidx);
+	} ;
+	if (key == NULL) return MUTABOR_NO_NEXT;
+	return newidx;
+}
+
+/** 
+ * Delete the key with the given index from the box.
+ * 
+ * \param box Box where the key shall be deleted.
+ * \param index Index of the key in box->current_keys of the key that shall be deleted.
+ */
+inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
+	if (!box->key_count) return;
+	size_t current, last;
+	mutabor_key_type *last_key, *current_key, *next_key;
+
+	current_key = mutabor_find_key_in_box(box,index);
+	if (current_key == NULL) {
+		UNREACHABLE;
+		return;
+	}
+
+	if (!index) {
+		
+		if (current_key -> next != MUTABOR_NO_NEXT) {
+			next_key = mutabor_find_key_in_box(box,current_key->next);
+			if (current_key->next == box->last_key)
+				box -> last_key = 0;
+			*(current_key) = *(next_key);
+			next_key->next = MUTABOR_NO_NEXT;
+			next_key->userdata = NULL;
+			box->key_count--;
+			
+		} else {
+			mutASSERT(box->key_count == 1);
+			current_key->userdata = NULL;
+			box->key_count = 0;
+		}
+		return;
+	}
+
+	
+	
+	DEBUGLOG2(kernel_box,_T("index = %d"),index);
+	last_key = mutabor_find_key_in_box(box,0);
+	size_t last_index = 0;
+	while (last_key != NULL && last_key -> next != index) {
+//		DEBUGLOG2(kernel_box,_T("last_key->next = %d"), last_key->next);
+		last_index = last_key->next;
+		last_key = mutabor_find_key_in_box(box,last_index);
+	}
+	if (last_key  == NULL || last_key -> next != index) return;
+	if (index == box->last_key) {
+		mutASSERT(last_index != box->last_key);
+		box->last_key = last_index;
+	}
+
+	last_key->next = current_key->next;
+	current_key -> next = MUTABOR_NO_NEXT;
+	current_key -> userdata = NULL;
+	box->key_count--;
+}
+
+
+inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
+	mutabor_key_type * last, *new_key = NULL;
+	mutabor_key_index_type *plane;
+	mutabor_key_index_type *oldplane;
+	size_t index = 0;
+	size_t planeidx = 0;
+	size_t curridx = 0;
+
+	mutASSERT(box);
+
+	if (!box->key_count) {
+		box->key_count = 1;
+		mutASSERT(box->current_keys.key[0].userdata == NULL);
+		mutASSERT(box->current_keys.key[0].next == MUTABOR_NO_NEXT);
+		return &(box->current_keys.key[0]);
+	}
+
+	last = mutabor_find_key_in_box(box,box->last_key);
+	if (last == NULL) {
+		UNREACHABLE;
+		return NULL;
+	}
+	oldplane = plane = &(box->current_keys);
+	
+	while (plane != NULL && new_key == NULL) {
+		size_t i;
+		curridx = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;
+		for (i = 0 ; i <= MUT_BOX_MAX_KEY_INDEX; i++) {
+			if (i+curridx == box->last_key) {
+				continue;
+			}
+			if (plane->key[i].next == MUTABOR_NO_NEXT) {
+				index = i + curridx;
+				box -> last_key = last -> next = index;
+				box->key_count++;
+				plane->key[i].next = MUTABOR_NO_NEXT;
+				return  &(plane->key[i]);
+			}
+		}
+		planeidx++;
+		oldplane = plane;
+		plane = plane->next;
+	}
+	if (new_key == NULL) {
+		size_t i;
+		plane = oldplane->next = (mutabor_key_index_type *)malloc(sizeof(mutabor_key_index_type));
+		if (plane == NULL) 
+			return NULL;
+		mutabor_initialize_keyplane(plane);
+		new_key = &(plane->key[0]);
+		index = planeidx << MUT_BOX_MAX_KEY_INDEX_LOG;
+	}
+	box -> last_key = last -> next = index;
+	box->key_count++;
+	return new_key;
+}
+
 
 
 #endif

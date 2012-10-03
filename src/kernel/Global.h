@@ -10,32 +10,6 @@
  * \version $Revision: 1.13 $
  * \license GPL
  *
- * $Log: Global.h,v $
- * Revision 1.13  2011/10/13 18:26:13  keinstein
- * Fix a Bug in the kernel:
- * retuning case did not execute the following statements,
- * which lead to unexpected results
- *
- * Revision 1.12  2011-09-27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.11  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.10  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
  *
  *
  ********************************************************************
@@ -82,7 +56,10 @@
 #define bzero(s,n) memset((s),0,(n))
 #define bcmp(b1,b2,len) memcmp((b1),(b2),(len))
 
-#define MAX_BREITE 72
+/* originial values were: 72, 36, 96 */
+#define MUTABOR_KEYRANGE_MAX_WIDTH 128
+#define MUTABOR_KEYRANGE_MIN_KEY 0 
+#define MUTABOR_KEYRANGE_MAX_KEY 128
 /* (=Maximale Breite eines Tonsystems */
 #define MAX_MIDI 32
 /* (=Max. Anzahl Bytes in MIDIOUT / MIDIIN) */
@@ -102,7 +79,6 @@ void init_yylex (void);
 struct parameter_liste
 {
 	const char * name;
-
 	struct parameter_liste * next;
 };
 
@@ -114,36 +90,27 @@ struct argument
 {
 	enum argument_typ argument_typ ;
 	union {
-
 		struct {
 			int zahl;
-		}
-
-		zahl;
+		} zahl;
 
 		struct {
-			int parameter_nummer;   /* Der soundsovielte ,
-																																				                                                                                            der deklariert ist. */
-
+			int parameter_nummer;   
+                        /* Der soundsovielte , der deklariert ist. */
 			const char * parameter_name;
-		}
-
-		parameter;
+		} parameter;
 	} u;
 };
 
 struct argument_liste
 {
-
 	struct argument argument;
-
 	struct argument_liste * next;
 };
 
 struct midiliste
 {
 	int midi_code;
-
 	struct midiliste * next;
 };
 
@@ -154,27 +121,17 @@ enum intervall_typ {intervall_absolut, intervall_komplex};
 struct intervall
 {
 	const char * name;
-
 	enum intervall_typ intervall_typ;
-
 	union
 	{
-
 		struct {
 			double intervall_wert;
-		}
-
-		intervall_absolut;
+		} intervall_absolut;
 
 		struct {
-
 			struct komplex_intervall * komplex_liste;
-		}
-
-		intervall_komplex;
-	}
-
-	u;
+		} intervall_komplex;
+	} u;
 
 	struct intervall *next;
 };
@@ -216,28 +173,18 @@ enum ton_typ {ton_absolut, ton_komplex};
 struct ton
 {
 	const char * name;
-
 	enum ton_typ ton_typ;
-
 	union
 	{
-
 		struct {
 			double ton_wert;
-		}
-
-		ton_absolut;
+		} ton_absolut;
 
 		struct {
 			const char * bezugston;
-
 			struct komplex_intervall * komplex_liste;
-		}
-
-		ton_komplex;
-	}
-
-	u;
+		} ton_komplex;
+	} u;
 
 	struct ton * next;
 };
@@ -252,13 +199,9 @@ struct ton
 struct tonsystem
 {
 	const char *name;
-
 	int taste;
-
 	struct komplex_intervall *periode;
-
 	struct ton *toene;
-
 	struct tonsystem *next;
 };
 
@@ -296,9 +239,7 @@ struct case_liste
 struct umstimmung
 {
 	const char *name;
-
 	struct parameter_liste * parameter_liste;
-
 	enum umstimmung_typ umstimmung_typ;
 
 	union
@@ -382,39 +323,25 @@ struct ausloeser
 {
 	enum ausloeser_typ ausloeser_typ;
 	union {
+		struct {
+			int vortaste;
+			const char * name;
+			int nachtaste;
+		} ausloeser_harmonie;
 
 		struct {
 			int vortaste;
-
 			const char * name;
-
 			int nachtaste;
-		}
-
-		ausloeser_harmonie;
-
-		struct {
-			int vortaste;
-
-			const char * name;
-
-			int nachtaste;
-		}
-
-		ausloeser_harmonie_form;
+		} ausloeser_harmonie_form;
 
 		struct {
 			const char * taste;
-		}
-
-		ausloeser_taste;
+		} ausloeser_taste;
 
 		struct {
-
 			struct midiliste * midi_code;
-		}
-
-		ausloeser_midi_in;
+		} ausloeser_midi_in;
 	} u;
 };
 
@@ -447,9 +374,7 @@ struct anweisung
 {
 
 	struct ausloeser * ausloeser;
-
 	struct aktions_liste * aktion;
-
 	struct anweisung * next;
 };
 
@@ -485,29 +410,17 @@ void * xcalloc (size_t anzahl, size_t size);
 /* Gemeinsame Funktionen zwischen Compiler und Parser */
 
 int yylex();
-
 void yyerror(const char *);
-
 int yyparse ();
-
 void mutabor_programm_einlesen (const wxChar * filename) ;
-
 void mutabor_tabellen_generator (void);
-
 void mutabor_codegenerator(const char * filename);
-
 void write_kompletten_code (FILE * zieldatei);
-
 void get_new_intervall (const char * name, double wert);
-
 void get_new_intervall_komplex (const char * name);
-
 double get_wert_komplex_intervall (struct komplex_intervall * intervall);
-
 void get_new_ton_absolut (const char * name, double wert);
-
 void init_komplex_ton_list (void);
-
 void get_new_faktor_anteil (double f, const char *name);
 
 /**
@@ -515,40 +428,22 @@ void get_new_relativ_anteil (double f,
                           char *linke_grenze, char *rechte_grenze);
 *******/
 void get_new_ton_komplex_positive (const char *name, const char *bezugston);
-
 void get_new_ton_komplex_negative (const char *name, const char *bezugston);
-
 void init_ton_liste (void);
-
 void get_new_ton_in_tonsystem (const char *name);
-
 void get_new_tonsystem (const char *name, int taste);
-
 void get_new_tonsystem_negative (const char *name, int taste);
-
-
 void init_parameter_liste (void);
-
 void get_new_name_in_parameterlist (const char * name);
-
 void get_new_number_in_parameterlist (double wert);
-
 void init_argument_liste (void);
-
 void get_new_name_in_argument_list (const char * parameter);
-
 void get_new_number_in_argument_list (double parameter);
-
 void init_aktions_liste (void);
-
 void get_new_aktion_aufruf_element (const char * name);
-
 void get_new_aktion_midi_out_element (void);
-
 void init_umstimmung (const char * name);
-
 void eintrage_parameterliste_in_umstimmung (void);
-
 void get_new_umstimmung (void);
 
 void get_umstimmung_taste_abs (

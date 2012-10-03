@@ -151,7 +151,7 @@ namespace mutaborGUI {
 		wxFileName fileName;
 
 	private:
-		DECLARE_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape);
+		DECLARE_DYNAMIC_CLASS(MutOutputGuidoFileDeviceShape)
 
 	};
 }

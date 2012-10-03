@@ -2,39 +2,11 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.cpp,v 1.10 2011/02/20 22:35:55 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/02/20 22:35:55 $
  * \version $Revision: 1.10 $
  * \license GPL
- *
- * $Log: Errors.cpp,v $
- * Revision 1.10  2011/02/20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.9  2010-12-11 02:10:08  keinstein
- * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
- *
- * Revision 1.8  2010-11-21 13:15:44  keinstein
- * merged experimental_tobias
- *
- * Revision 1.7.2.3  2010-05-07 11:40:27  keinstein
- * actual_settings
- *
- * Revision 1.7.2.2  2009/11/30 12:08:57  keinstein
- * split MutRouteShapes into several files into directory Routing
- *
- * Revision 1.7.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.7  2008/10/14 08:07:59  keinstein
- * added Errors.h and started to define Error symbols
- *
- * Revision 1.6  2008/08/18 14:59:41  keinstein
- * added License header
- * added const to string arrays
- * some reformatting
  *
  *
  ********************************************************************
@@ -234,7 +206,7 @@ const mutTranslationChar * Error_text[] =
                 /* 45 */
                 N_("Bad MIDI channel (valid: 1...16)"),
                 N_("Bad interval value in %s"),
-                N_("Bad key %d (valid: 36..96 (in tonesystem %s)"),
+                N_("Bad key %d (valid: %d...%d) in tonesystem %s"),
                 N_("Not-complex tone in retuning %s ( %s )"),
                 N_("Bad value in %s"), /* (allgemein) */
                 N_("Bad MIDI-Code in logic %s (expecting %s )"),

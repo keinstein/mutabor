@@ -128,7 +128,7 @@ namespace mutaborGUI {
 		virtual bool replaceSelfBy (MutOutputDeviceShape  * newshape);
 	
 	private:
-		DECLARE_DYNAMIC_CLASS(MutOutputDeviceShape);
+		DECLARE_DYNAMIC_CLASS(MutOutputDeviceShape)
 	};
 }
 #endif				/* NEWOUTPUTDEVICESHAPE_H_PRECOMPILED */

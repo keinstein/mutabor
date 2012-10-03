@@ -2,7 +2,6 @@
  ********************************************************************
  * Textbox for Lists
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutTextBox.cpp,v 1.22 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author   R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
@@ -10,40 +9,6 @@
  * $Date: 2011/11/02 14:31:59 $
  * \version $Revision: 1.22 $
  * \license GPL
- *
- * $Log: MutTextBox.cpp,v $
- * Revision 1.22  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.21  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.20  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.19  2011-09-08 18:50:41  keinstein
- * Fix some further update bug
- *
- * Revision 1.18  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.17  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.16  2011-09-05 11:30:08  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.15  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
  *
  *
  *
@@ -73,6 +38,7 @@
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/GrafKern.h"
+#include "src/kernel/MidiKern.h"
 #include "src/wxGUI/Action.h"
 
 
@@ -161,17 +127,17 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
 {
                switch (winKind) {
                 case WK_KEY: 
-                        NewText(GetKeyString(box, asTS));
+                        GetKeys(asTS);
                         break;
                 case WK_TS: 
-                        NewText(GetTSString(box, asTS));
+                        GetToneSystem(asTS);
                         break;
                 case WK_ACT:
                         TakeOverActions();
                         if (CAW) {
-                                NewText(GenerateCAWString());
+                                GetAllActions();
                         } else {
-                                NewText(GenerateACTString(box));
+                                GetBoxActions();
                         }
                         break;
                 case WK_LOGIC:
@@ -194,6 +160,114 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                         wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
                 }        
+}
+
+
+static inline long get_frequency (long key, tone_system * tonesys) {
+	if (!tonesys) return 0;
+	long retval = tonesys->ton[GET_INDEX(key,tonesys)];
+	if (!retval)  return 0;
+	return ((long) tonesys->periode) * GET_ABSTAND(key,tonesys)  + retval;
+}
+
+void MutTextBox::GetKeys(bool asTS) 
+{
+	wxString keys;
+	
+	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
+	if (b == NULL || !b) return;
+	Clear();
+	
+	if (!b->key_count) return;
+	tone_system * tonsys = b->tonesystem;
+
+	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0), 
+		     * last_key = key;
+	     key != NULL; 
+	     key = mutabor_find_key_in_box(b,key->next)) {
+
+		int pitch = key->number;
+		long freq;
+		double cents;
+		
+		if ( (freq=get_frequency( pitch ,tonsys ))!=0) {
+			if (asTS) {
+				cents = LONG_TO_CENT(freq);
+			} else {
+				int last_pitch = last_key->number;
+				long depitcha = freq -  get_frequency(last_pitch, tonsys); 
+				cents = LONG_TO_CENT(freq);
+				last_key = key;
+
+			}
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"),
+				    pitch,
+				    LONG_TO_HERTZ(freq),
+				    cents,
+				    mutabor::GetChannel(box, pitch, key->channel, key->id),
+				    key->id);
+		} else {
+			keys.Printf(_("%2d : empty"),pitch);
+		}
+		Append(keys);
+	}
+}
+
+void MutTextBox::GetToneSystem(bool asTS) 
+{
+	wxString keys;
+	
+	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
+	if (b == NULL || !b) return;
+
+	tone_system * tonsys = b->tonesystem;
+	if (!tonsys || tonsys == NULL) return;
+
+	Clear();
+		
+
+	keys.Printf(_("Anchor = %d"),tonsys->anker);
+	Append(keys);
+	keys.Printf(_("Width = %d"),tonsys->breite);
+	Append(keys);
+	keys.Printf(_("Period = %.1f HT"),
+		    LONG_TO_CENT(tonsys->periode));
+	Append(keys);
+
+	
+	size_t i = 0;
+	for (;i<tonsys->breite && tonsys->ton[i]==0;i++);
+	if (!asTS) {
+		keys.Printf(_("Reference = %d"),i);
+		Append(keys);
+	}
+	
+	long freq, ref = tonsys->ton[i];
+
+	for (int i=0;i<tonsys->breite;i++) {
+		if ( (freq=tonsys->ton[i])!=0) {
+			if (!asTS) freq -= ref;
+			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT)"),
+				    i, 
+				    LONG_TO_HERTZ(tonsys->ton[i]) ,
+				    LONG_TO_CENT(freq) );
+		} else {
+			keys.Printf(_("%2d : empty"),i);
+		}
+		Append(keys);
+	}
+}
+
+void MutTextBox::GetAllActions () 
+{
+	/** \todo write this code */
+	NewText(GenerateCAWString());
+}
+
+void MutTextBox::GetBoxActions() 
+{
+	/** \todo write this code */
+	NewText(GenerateACTString(box));
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)

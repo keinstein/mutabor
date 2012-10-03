@@ -2,7 +2,6 @@
  ********************************************************************
  * MIDI-File als Device.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.cpp,v 1.13 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date $Date: 2011/11/02 14:31:57 $
@@ -24,116 +23,6 @@
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Log: DevMidF.cpp,v $
- * Revision 1.13  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.12  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.11  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.10  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.9  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.8  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.7  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.6  2011-07-27 20:48:32  keinstein
- * started to move arrays using MAX_BOX into struct mutabor_box_type
- *
- * Revision 1.5  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.3  2010-11-23 21:19:22  keinstein
- * make automatic stopping working again
- *
- * Revision 1.2  2010-11-21 13:15:46  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.4  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.3  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.2  2010-08-10 15:54:29  keinstein
- * new, direct route configuration on init
- *
- * Revision 1.13.2.4  2010-07-06 09:06:25  keinstein
- * allow empty input and output devices in routes
- *
- * Revision 1.13.2.3  2010/04/15 09:28:43  keinstein
- * changing routes works, but is not honoured by MIDI, yet
- *
- * Revision 1.13.2.2  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.13.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.13  2008/10/27 15:02:58  keinstein
- * moved CurrentTimer to Device
- *
- * Revision 1.12  2008/10/01 09:26:10  keinstein
- * fix midi file playing
- *
- * Revision 1.11  2008/07/22 07:57:06  keinstein
- * solved some valgrind issues
- *
- * Revision 1.10  2008/07/21 08:56:18  keinstein
- * Changed numeric device modes into an enum
- * use wxTimer instead of obsolete WinXP timers
- *
- * Revision 1.9  2008/04/28 08:00:37  keinstein
- * Fix some size warnings
- *
- * Revision 1.8  2008/03/11 10:37:34  keinstein
- * Holyday edition
- * put CM_xxx in an enum
- * use wx constants
- * document mutframe
- * some white space formattings
- * make route saving more system specific
- * many other fixes
- *
- * Revision 1.7  2007/12/17 12:52:15  keinstein
- * Make the file compile in WX Unicode mode
- *
- * Revision 1.6  2006/01/18 15:07:39  keinstein
- * 3 translation calls
- *
- * Revision 1.5  2005/11/07 19:42:54  keinstein
- * Some additional changes
  *
  ********************************************************************
  * \addtogroup route
@@ -159,6 +48,7 @@
 #endif
 
 #include "src/kernel/routing/midi/DevMidF.h"
+#include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/Execute.h"
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
@@ -168,22 +58,13 @@
 #include "wx/msgdlg.h"
 #include <inttypes.h>
 
-
+#include "src/kernel/routing/midi/midicmn-inlines.h"
 
 namespace mutabor {
+	using namespace midi;
+	template class CommonMidiOutput<MidiFileOutputProvider,CommonFileOutputDevice>;
 
-/* berechnet die Tonigkeit einer Taste bzgl. tonsystem */
-#define GET_INDEX(taste,tonsystem)					\
-	((int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))	\
-	 % (tonsystem)->breite )
-
-
-// berechnet die 'Oktavlage' einer taste bzgl. tonsystem
-#define GET_ABSTAND(taste,tonsystem)					\
-	( (int)((taste)-( (tonsystem)->anker % (tonsystem)->breite ))	\
-	  / (tonsystem)->breite -((int) (tonsystem)->anker		\
-				  / (tonsystem)->breite ))
-
+#if 0
 // berechnet die Frequenz in Midi-Form
 #define GET_FREQ(taste,tonsystem)					\
 	( ( (tonsystem)->ton[GET_INDEX(taste,(tonsystem))]==0) ?	\
@@ -194,7 +75,6 @@ namespace mutabor {
 
 #define ZWZ 1.059463094 /* 12.Wurzel 2 */
 #define LONG_TO_HERTZ( x ) (440.0*pow(ZWZ,((((double)x)/(double)16777216.0))-69))
-#define LONG_TO_CENT( x ) ( ((float)x)/(double)167772.13  )
 
 // Midi-Ausgabe
 #define MIDI_OUT3(code1, code2, code3)		\
@@ -208,42 +88,25 @@ namespace mutabor {
 		return (number >> index * 8) & 0xFF;
 	}
 
-// Pitch
-#define MIDI_PITCH(i)							\
-	int pb = ( (((int)bytenr(freq,2))<<6) + (bytenr(freq,1)>>2) ) / bending_range; \
-	MIDI_OUT3(0xE0+i, bytenr(pb,0) >> 1 , 64+(ton_auf_kanal[i].fine=(bytenr(pb,1))))
-
-// Sound
-#define MIDI_SOUND(i, sound)				\
-	if ( sound != -1 ) MIDI_OUT2(0xC0+i, sound)
-
-// ID errechnen
-#define MAKE_ID(route, box, taste, channel)				\
-	((((DWORD)channel) << 24) + (((DWORD)route->GetId()) << 16) + ((DWORD)box << 8) + taste)
+#endif
 
 #define NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
 
-	int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
+
+	static int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
+	
 
 // Daten ¸bergeben für NoRealTime-Übersetzungen
 	BYTE *pData;
 	int nData;
 	long NRT_Speed;
 
-	DWORD ReadLength(mutIFstream &is)
+	static DWORD ReadLength(mutIFstream &is)
 	{
-		BYTE a[4];
+		BYTE a[4] = {0,0,0,0};
 		mutReadStream(is,(char*)a, 4);
 		return (((DWORD)a[0]) << 24) + (((DWORD)a[1]) << 16) +
 			(((DWORD)a[2]) << 8) + ((DWORD)a[3]);
-	}
-
-	void WriteLength(mutOFstream &os, DWORD l)
-	{
-		mutPutC(os,(BYTE) ((l >> 24) & 0xFF));
-		mutPutC(os,(BYTE) ((l >> 16) & 0xFF));
-		mutPutC(os,(BYTE) ((l >> 8) & 0xFF));
-		mutPutC(os,(BYTE) (l & 0xFF));
 	}
 
 
@@ -256,33 +119,29 @@ namespace mutabor {
 		int i = 0;
 		DWORD Delta = (long)CurrentTime - Time.GetValue();
 		Time = (long)CurrentTime;
-		w[0] = Delta & 0x7F;
-		Delta >>= 7;
 
-		while ( Delta ) {
-			i++;
-			w[i] = 0x80 | (Delta & 0x7F);
-			Delta >>= 7;
-		}
+		WriteNumber(Delta);
+	}
 
-		for (;i>=0;i--)
-			Data->Add(w[i]);
+	void Track::WriteLength(mutOFstream &os, size_t l)
+	{
+		mutPutC(os,(BYTE) ((l >> 24) & 0xFF));
+		mutPutC(os,(BYTE) ((l >> 16) & 0xFF));
+		mutPutC(os,(BYTE) ((l >> 8) & 0xFF));
+		mutPutC(os,(BYTE) (l & 0xFF));
 	}
 
 	void Track::Save(mutOFstream &os)
 	{
 		mutWriteStream(os,"MTrk",4);
-		WriteLength(os, Data->GetItemsInContainer()+4);
+		WriteLength(os, size()+4);
 
-		for (DWORD i = 0; i < Data->GetItemsInContainer(); i++)
-			mutPutC(os,(BYTE)(*Data)[i]);
+		for (DWORD i = 0; i < size(); i++)
+			mutPutC(os,(BYTE)(at(i)));
 
 		mutPutC(os,(BYTE)0x00);
-
 		mutPutC(os,(BYTE)0xFF);
-
 		mutPutC(os,(BYTE)0x2F);
-
 		mutPutC(os,(BYTE)0x00);
 	}
 
@@ -370,45 +229,19 @@ namespace mutabor {
 	}
 
 
-	bool OutputMidiFile::Open()
-	{
-		mutASSERT(!isOpen);
-		Tracks.Data->Flush();
-		isOpen = true;
-
-		for (int i = 0; i < 16; i++) {
-			Cd[i].Reset();
-			ton_auf_kanal[i].taste = 0;
-			ton_auf_kanal[i].id = 0;
-			ton_auf_kanal[i].key = -1;
-			ton_auf_kanal[i].fine = -1;
-			KeyDir[i] = (char)i; // alle nicht benutzt
-		}
-
-		nKeyOn = 0;
-
-		return isOpen;
-	}
-
 	void OutputMidiFile::Close()
 	{
-		mutASSERT(isOpen);
-		isOpen = false;
-		// alle liegenden Tˆne ausschalten
+		base::Close();
 
-		for (int i = 0; i < 16; i++)
-			if ( KeyDir[i] >= 16 )  {// benutzt
-				mutASSERT(ton_auf_kanal[i].key != -1);
-				MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
-			}
-
-		// Datei speichern
 		mutOpenOFstream(os,Name);
 
 		BYTE Header[41] =
-			{ 'M', 'T', 'h', 'd', 0, 0, 0, 6, 0, 1, 0, 2, 1, 0x00,
-			  'M', 'T', 'r', 'k', 0, 0, 0, 0x13, 0x00, 0xFF, 0x51, 0x03, 0x07, 0xD0, 0x00,
-			  0x00, 0xFF, 0x58, 0x04, 0x04, 0x02, 0x18, 0x08, 0x00, 0xFF, 0x2F, 0x00 };
+			{ 'M', 'T', 'h', 'd', 
+			  0, 0, 0, 6, 0,  1, 0, 2, 1, 0, 
+			  'M', 'T', 'r', 'k', 
+			  0x00, 0x00, 0x00, 0x13,  0x00, 0xFF, 0x51, 0x03,
+			  0x07, 0xD0, 0x00, 0x00,  0xFF, 0x58, 0x04, 0x04,
+			  0x02, 0x18, 0x08, 0x00,  0xFF, 0x2F, 0x00 };
 
 		if ( !RealTime ) {
 			Header[12] = ((WORD)(NRT_Speed >> 8)) & 0xFF;
@@ -417,224 +250,9 @@ namespace mutabor {
 
 		mutWriteStream(os,Header, 41);
 
-		Tracks.Save(os);
+		Out.Save(os);
 	}
 
-	void OutputMidiFile::NoteOn(int box, 
-				    int taste, 
-				    int velo, 
-				    RouteClass * r, 
-				    int channel, 
-				    ChannelData *cd)
-	{
-		int i = 0, s;
-		DWORD p;
-		unsigned long freq;
-
-		if ( box == -2 ) {
-			freq = ((long)taste) << 24;
-			box = 255;
-		} else
-			freq = GET_FREQ (taste, mut_box[box].tonesystem);
-
-		// testen, ob nicht belegte Taste
-		if ( !freq )
-			return;
-
-		int help = r->OTo;
-
-		i = r->OFrom; // "irgendein" Startwert im g¸ltigen Bereich
-
-		if ( i == DRUMCHANNEL && r->ONoDrum && i < r->OTo )
-			i++;
-
-		int j;
-
-		mutASSERT(r->OFrom >= 0);
-		mutASSERT(r->OTo < 16);
-		for (j = r->OFrom; j <= r->OTo; j++ )
-			if ( j != DRUMCHANNEL || !r->ONoDrum )
-				if ( KeyDir[j] < KeyDir[i] )
-					i = j;
-
-		if ( KeyDir[i] >= 16 )  // keinen freien gefunden
-		{
-			// "mittelste Taste weglassen"
-			int AM = 0; // arithmetisches Mittel der Tasten
-
-			for (REUSE(int) j =r->OFrom; j <= r->OTo; j++)
-				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					AM += ton_auf_kanal[j].taste;
-
-			AM /= help + 1 - r->OFrom;
-
-			for (REUSE(int) j = r->OFrom; j <= r->OTo; j++ )
-				if ( j != DRUMCHANNEL || !r->ONoDrum )
-					if ( abs(AM - ton_auf_kanal[j].taste) < abs(AM - ton_auf_kanal[i].taste) )
-						i = j;
-
-			// Ton auf Kanal i ausschalten
-			mutASSERT(ton_auf_kanal[i].key != -1);
-			MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 64);
-
-			// KeyDir umsortieren
-			BYTE oldKeyDir = KeyDir[i];
-
-			for (int k = 0; k < 16; k++)
-				if ( KeyDir[k] > oldKeyDir ) KeyDir[k]--;
-
-			KeyDir[i] = 15+nKeyOn;
-		} else {
-			nKeyOn++;
-			KeyDir[i] = 15 + nKeyOn;
-		}
-
-		// freier Kanal = i
-
-		// Sound testen
-		if ( (s = cd->Sound) != Cd[i].Sound ) {
-			MIDI_SOUND(i, s);
-			Cd[i].Sound = s;
-		}
-
-		// Bank testen
-		if ( (s = cd->BankSelectMSB) != Cd[i].BankSelectMSB && s != -1 ) {
-			MIDI_OUT3(0xB0+i, 0, (BYTE) s);
-			Cd[i].BankSelectMSB = s;
-		}
-
-		if ( (s = cd->BankSelectLSB) != Cd[i].BankSelectLSB && s != -1 ) {
-			MIDI_OUT3(0xB0+i, 32, (BYTE) s);
-			Cd[i].BankSelectLSB = s;
-		}
-
-		// Pitch testen
-		if ( (long) (p = freq & 0xFFFFFF) != Cd[i].Pitch ) {
-			MIDI_PITCH(i);
-			Cd[i].Pitch = p;
-		}
-
-		ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
-
-		ton_auf_kanal[i].taste = taste;
-		ton_auf_kanal[i].id = MAKE_ID(r, box, taste, channel);
-		MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, velo);
-	}
-
-	void OutputMidiFile::NoteOff(int box, 
-				     int taste, 
-				     int velo, 
-				     RouteClass * r, 
-				     int channel)
-	{
-		if ( box == -2 )
-			box = 255;
-
-		DWORD id = MAKE_ID(r, box, taste, channel);
-
-		if ( !velo ) //3 ?? notwendig?
-			velo = 64;
-
-		for (int i = r->OFrom; i <= r->OTo; i++)
-			if ( i != DRUMCHANNEL || !r->ONoDrum )
-				if ( ton_auf_kanal[i].id == id ) {
-					ton_auf_kanal[i].taste=0;
-					ton_auf_kanal[i].id=0;
-					mutASSERT(ton_auf_kanal[i].key != -1);
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, velo);
-					// KeyDir umsortieren
-					int oldKeyDir = KeyDir[i];
-
-					for (int k = 0; k < 16; k++)
-						if ( KeyDir[k] > oldKeyDir || KeyDir[k] < 16) KeyDir[k]--;
-
-					nKeyOn--;
-
-					KeyDir[i] = 15;
-				}
-	}
-
-	inline long LongAbs(long x)
-	{
-		return (x < 0)? -x : x;
-	}
-
-	void OutputMidiFile::NotesCorrect(int box)
-	{
-		for (int i = 0; i < 16; i++)
-			if ( KeyDir[i] >= 16 && ton_auf_kanal[i].id ) {
-				int Box = (ton_auf_kanal[i].id >> 8) & 0xFF;
-
-				if ( Box != box )
-					break;
-
-				long freq = GET_FREQ(ton_auf_kanal[i].taste, mut_box[box].tonesystem);
-
-
-				mutASSERT(ton_auf_kanal[i].key != -1);
-				// hier kann ein evtl. grˆﬂerer bending_range genutzt werden, um
-				// Ton aus und einschalten zu vermeiden
-				if ( ton_auf_kanal[i].key == (bytenr(freq,3) & 0x7f) &&
-				     Cd[i].Pitch == (freq & 0xFFFFFF) )
-					continue;
-
-				long Delta = freq - ((long)ton_auf_kanal[i].key << 24);
-
-				char SwitchTone = (LongAbs(Delta) >= ((long)bending_range << 24));
-
-				// evtl. Ton ausschalten
-				if ( SwitchTone ) {
-					MIDI_OUT3(0x80+i, ton_auf_kanal[i].key, 0x7F);
-					ton_auf_kanal[i].key = bytenr(freq,3) & 0x7f;
-					Delta = freq - ((DWORD)ton_auf_kanal[i].key << 24);
-				} else if ( Delta == Cd[i].Pitch )
-					continue;
-
-				// Spezialbending (groﬂer Range)
-				Cd[i].Pitch = Delta;
-
-				Delta /= (4*bending_range);
-
-				Delta += 0x400000;
-
-				MIDI_OUT3(0xE0+i, ((BYTE*)&Delta)[1] >> 1, (((BYTE*)&Delta)[2]));
-
-				// evtl. Ton einschalten
-				if ( SwitchTone )
-					MIDI_OUT3(0x90+i, ton_auf_kanal[i].key, 64);  //3 velo speichern ??
-			}
-	}
-
-	void OutputMidiFile::Sustain(char on, int channel)
-	{ mutUnused(on); mutUnused(channel); STUBC;}
-
-	void OutputMidiFile::MidiOut(DWORD data, char n)
-	{
-		Tracks.WriteDelta();
-
-		if ( n == -1 )
-			n = lMidiCode[(data & 0xF0) >> 5];
-
-		for (int i = 0; i < n; i++) {
-			Tracks.Add(data & 0xFF);
-			data >>= 8;
-		}
-	}
-
-	void OutputMidiFile::MidiOut(BYTE *p, char n)
-	{
-		Tracks.WriteDelta();
-
-		for (int i = 0; i < n; i++)
-			Tracks.Add(p[i]);
-	}
-
-	void OutputMidiFile::Quite(RouteClass * r)
-	{
-		for (int i = 0; i < 16; i++)
-			if ( (char)((ton_auf_kanal[i].id >> 16) & 0x0FF) == r->GetId() )
-				NoteOff(r->GetBox(), ton_auf_kanal[i].id % 256, 64, r, ton_auf_kanal[i].id >> 24);
-	}
 
 
 #ifdef WX
@@ -642,23 +260,20 @@ namespace mutabor {
 		wxString s = OutputDeviceClass::TowxString() +
 			wxString::Format(_T("\n  Name = %s\n  DevId = %d\n  Bending Range = %d\n  nKeyOn"),
 					 Name.c_str(), DevId, bending_range, nKeyOn);
-		s.Printf(_T("\n  KeyDir = [ %d"), KeyDir[0]);
-		for (int i = 1; i<16; i++)
-			s.Printf(_T(", %d"),KeyDir[i]);
+	
 		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,f=%d"), 
-			 ton_auf_kanal[0].taste, 
-			 ton_auf_kanal[0].key, 
-			 ton_auf_kanal[0].fine);
+			 ton_auf_kanal[0].inkey, 
+			 ton_auf_kanal[0].outkey);
 		for (int i = 1; i<16; i++)
 			s.Printf(_T("; t=%d,k=%d,f=%d"), 
-				 ton_auf_kanal[i].taste, 
-				 ton_auf_kanal[i].key, 
-				 ton_auf_kanal[i].fine);
+				 ton_auf_kanal[i].inkey, 
+				 ton_auf_kanal[i].outkey);
 		s+=_T("]");
 		return s;
 		}
 #endif
 
+#if 0
 	void OutputMidiFile::ReadData(wxConfigBase * config) 
 	{
 		bending_range = config->Read(_("Bending_Range"),
@@ -669,9 +284,9 @@ namespace mutabor {
 	{
 		config->Write(_("Bending_Range"), (long)bending_range);
 	}
+#endif
 
-
-	
+       
 // InputMidiFile -------------------------------------------------------
 
 /*
@@ -822,7 +437,7 @@ namespace mutabor {
 			isOpen = false;
 			return false;
 		}
-		DWORD l = ReadLength(is);
+		DWORD l = mutabor::ReadLength(is);
 		if (l!=6) {
 			LAUFZEIT_ERROR2(_("Unknown header (chunk length %d) in file '%s'."),l, Name.c_str());
 			isOpen = false;
@@ -868,7 +483,7 @@ namespace mutabor {
 
 		for (i = 0; i < nTrack; i++ ) {
 			mutReadStream(is,Header, 4);
-			l = ReadLength(is);
+			l = mutabor::ReadLength(is);
 
 			if ( l > (long) 64000 ) {
 				Mode = DeviceCompileError;
@@ -1098,75 +713,65 @@ namespace mutabor {
 
 		switch ( MidiStatus ) {
 
-		case 0x90: // Note On
+		case NOTE_ON: // Note On
 			if ( MIDICODE(2) > 0 ) {
 				if ( route->Active )
-					AddKey(Box, MIDICODE(1), route->GetId());
+					AddKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
-						->NoteOn(Box, 
+						->NoteOn(&mut_box[Box], 
 							 MIDICODE(1), 
 							 MIDICODE(2), 
 							 route.get(),
 							 MidiChannel, 
-							 &Cd[MidiChannel]);
+							 Cd[MidiChannel]);
 
 				break;
 			}
 
-		case 0x80: // Note Off
+		case NOTE_OFF: // Note Off
 			if ( route->Active )
-				DeleteKey(Box, MIDICODE(1), route->GetId());
+				DeleteKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()
-					->NoteOff(Box, 
+					->NoteOff(&mut_box[Box], 
 						  MIDICODE(1), 
 						  MIDICODE(2), 
 						  route.get(), 
-						  MidiChannel);
+						  MidiChannel,
+						  false);
 
 			break;
 
-		case 0xC0: // Programm Change
-			Cd[MidiChannel].Sound = MIDICODE(1);
+		case PROGRAM_CHANGE: // Programm Change
+			Cd[MidiChannel].program_change(MIDICODE(1));
 
 			break;
 
-		case 0xB0:
-			if ( MIDICODE(1) == 64 ) {
-				Cd[MidiChannel].Sustain = MIDICODE(2);
-
-				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()
-						->Sustain(Cd[MidiChannel].Sustain,
-							  MidiChannel);
-
-				break;
-			} else if ( MIDICODE(1) == 0 ) { // BankSelect MSB
-				Cd[MidiChannel].BankSelectMSB = MIDICODE(2);
-				break;
-			} else if ( MIDICODE(1) == 32 ) {// BankSelectLSB
-				Cd[MidiChannel].BankSelectLSB = MIDICODE(2);
-				break;
-			}
-
-		case 0xA0:
-
-		case 0xD0: // Key Pressure, Controler, Channel Pressure
-			//3 ??
+		case CONTROLLER:
+			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
+			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
+			break;
+		case KEY_PRESSURE:
+#pragma warning "implement key_pressure"
+		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
+#pragma warning "implement channel_pressure"			
 			break;
 
-		case 0xF0:
+		case SYSTEM:
+#pragma message "implement system messsages"
+#if 0
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()->MidiOut(pData, nData);
-
+#endif
+			
 		}
 
 		if ( Box >= 0 && route->Active )
 			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(Box, MIDICODE(0));
+				MidiAnalysis(&mut_box[Box], MIDICODE(0));
 				midiCode >>= 8;
 			}
 	}

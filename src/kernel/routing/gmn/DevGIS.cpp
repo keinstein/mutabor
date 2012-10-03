@@ -412,7 +412,7 @@ namespace mutabor {
 		if ( mutStrEq(ParaName, mutT("key")) ) {
 			if ( GetGisType(Para) == GTParaStr )
 ///		KeyboardIn(Box, ((GisParaStr*)Para)->s);
-				KeyboardIn(box, ((GisParaStr*)Para)->s);
+				KeyboardIn(&(mut_box[box]), ((GisParaStr*)Para)->s);
 		}
 
 		if ( mutStrEq(ParaName, mutT("box")) || mutStrEq(ParaName, mutT("instrument")) ) {
@@ -478,31 +478,33 @@ namespace mutabor {
 
 			Key += h->GetOctave()*12;
 
+			/** \todo provide working GIS note id. Currently Mutabor outputs only MIDI so it's no problem */
 			if ( turn != 1 && route->Active ) {
 				if ( turn )
-					DeleteKey(Box, Key, route->GetId());
+					DeleteKey(&mut_box[Box], Key, 0, route->GetId());
 				else
 
-					AddKey(Box, Key, route->GetId());
+					AddKey(&mut_box[Box], Key, 0, route->GetId(), NULL);
 			}
 
 			if ( turn != 2 && route->GetOutputDevice() ) {
 				if ( turn )
 					route->GetOutputDevice()
-						->NoteOff(Box, 
+						->NoteOff(&mut_box[Box], 
 							  Key, 
 							  h->GetIntensity(turn), 
 							  route.get(), 
-							  0); //4 ?? channelid aus staff
+							  0,
+							  false); //4 ?? channelid aus staff
 				else {
-					Cd.Sound = h->GetInstr();
+					Cd.program_change(h->GetInstr());
 					route->GetOutputDevice()
-						->NoteOn(Box, 
+						->NoteOn(&mut_box[Box], 
 							 Key, 
 							 h->GetIntensity(turn), 
 							 route.get(), 
 							 0, 
-							 &Cd);
+							 Cd);
 				}
 			}
 

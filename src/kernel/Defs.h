@@ -1,59 +1,14 @@
 /** \file 
  ********************************************************************
- * Description
+ * Common definitions
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Defs.h,v 1.24 2011/11/02 14:31:57 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008-2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 
  * $Date: 2011/11/02 14:31:57 $
  * \version $Revision: 1.24 $
  * \license GPL
  *
- * $Log: Defs.h,v $
- * Revision 1.24  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.23  2011-10-04 17:16:13  keinstein
- * make program compile on Mac (wx 2.9) and fix some memory corruption
- *
- * Revision 1.22  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.21  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.20  2011-09-28 07:35:53  keinstein
- * Make distclean happy
- *
- * Revision 1.19  2011-09-28 05:35:47  keinstein
- * fix compiling on ubuntu
- *
- * Revision 1.18  2011-09-27 20:13:20  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.17  2011-09-06 08:09:20  keinstein
- * fix a compiler error showing a corruped error message
- *
- * Revision 1.16  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
  *
  *
  ********************************************************************
@@ -97,6 +52,7 @@
 #define pascal
 #define CALLBACK
 #endif
+#pragma GCC diagnostic ignored "-Wlong-long"
 #define mutint64 int_fast64_t
 #define _export
 #else // not WX
@@ -152,8 +108,10 @@
 	wxFFileOutputStream name (filename, _T("wb"))
 #define mutOpenIFstream(name,filename) \
 	wxFFileInputStream name (filename, _T("rb"))
-#define mutOpenITextStream(name, filename) \
-	wxTextFile name (filename)
+//#define mutOpenITextStream(name, filename)	\
+//	wxTextFile name (filename)
+#define mutOpenITextStream(filename) \
+	wxTextFile (filename)
 
 #define mutWriteStream(stream,data,count) \
 	(stream).Write(data,count)

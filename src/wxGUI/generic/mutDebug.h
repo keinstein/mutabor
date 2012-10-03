@@ -70,6 +70,7 @@
 #include "wx/cmdline.h"
 #include "wx/string.h"
 #include "wx/debug.h"
+#pragma GCC diagnostic ignored "-Wvariadic-macros"
 
 void MutInitConsole();
 
@@ -109,7 +110,6 @@ struct debugFlags {
 	static void InitCommandLine(wxCmdLineParser&  parser);
 	static void ProcessCommandLine(wxCmdLineParser&  parser);
 };
-
 
 
 #define isDebugFlag(level) (debugFlags::flags.level)

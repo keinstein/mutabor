@@ -113,6 +113,53 @@ AC_ARG_ENABLE(debug,
 	       			[AC_MSG_RESULT([yes])], 
 				[CXXFLAGS="$tmpcxxflags"]
 	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -fbounds-check"
+	       AC_MSG_CHECKING([whether $CXX supports -fbounds-check])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -pedantic"
+	       AC_MSG_CHECKING([whether $CXX supports -pedantic])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -fdiagnostics-show-option"
+	       AC_MSG_CHECKING([whether $CXX supports -fdiagnostics-show-option])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -Wno-long-long"
+	       AC_MSG_CHECKING([whether $CXX supports -Wno-long-long])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -Wno-variadic-macros"
+	       AC_MSG_CHECKING([whether $CXX supports -Wno-variadic-macros])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
+dnl	       tmpcxxflags="$CXXFLAGS"
+dnl	       tmplibs="$LIBS"
+dnl	       CXXFLAGS="$CXXFLAGS -fmudflapth"
+dnl	       LIBS="-lmudflapth"
+dnl	       AC_MSG_CHECKING([whether $CXX supports  -fmudflapth -lmudflapth])
+dnl      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+dnl	       			[AC_MSG_RESULT([yes])], 
+dnl				[CXXFLAGS="$tmpcxxflags"
+dnl				LIBS="$tmplibs"]
+dnl	       			[AC_MSG_RESULT([no])])
+dnl
 	       case "$host_os" in 
 	       darwin*)
 	       	       tmpcxxflags="$CXXFLAGS"
@@ -558,6 +605,7 @@ done
 DISTCHECK_CONFIGURE_FLAGS="$preserve_flags"
 
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)  
+AC_SUBST(LIBS)
 
 AC_CONFIG_FILES([  
 po/Makefile.in 

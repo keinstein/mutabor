@@ -823,6 +823,6 @@ int GspParse(const mutString &FileName)
 		return DoError(31); // couldn't close file
 
 	return GspError;
-};
+}
 
 ///\}

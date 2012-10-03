@@ -115,6 +115,9 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/gmn/GSP.h \
 		src/kernel/routing/midi/DevMidF.h \
 		src/kernel/routing/midi/DevMidi.h \
+		src/kernel/routing/midi/midicmn.h \
+		src/kernel/routing/midi/midicmn-inlines.h \
+		src/kernel/routing/midi/midicmn.cpp \
 		src/kernel/routing/CommonFileDevice.h \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
