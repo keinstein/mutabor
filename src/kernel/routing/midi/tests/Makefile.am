@@ -45,7 +45,7 @@ TESTS += \
 
 check_PROGRAMS += testcppunit
 
-testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+testcppunit_CXXFLAGS =  $(CPPUNIT_CFLAGS) $(AM_CXXFLAGS)
 
 testcppunit_SOURCES = \
 	main.cpp \
@@ -58,9 +58,9 @@ testcppunit_LDADD = \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/libmutabordebug.a \
 	$(top_builddir)/librtmidi.a \
+	$(CPPUNIT_LIBS) \
 	$(LDADD) \
-	$(AM_LDFLAGS) \
-	$(CPPUNIT_LIBS)
+	$(AM_LDFLAGS)
 endif
 
 

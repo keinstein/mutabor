@@ -6,8 +6,10 @@ AM_CPPFLAGS = -I$(buildincludedir)  \
 	@NETINET_INC@ \
 	-I $(top_builddir)/intl \
 	$(WX_CPPFLAGS) \
-	-DPREFIX='"$(prefix)"'
-AM_LDFLAGS = $(ALSA_LIBS) $(WX_LIBS)
+	-DPREFIX='"$(prefix)"' \
+	$(BOOST_CPPFLAGS)
+LIBS += $(ALSA_LIBS) $(WX_LIBS)
+#LIBS += $(BOOST_LDFLAGS)
 AM_CFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
