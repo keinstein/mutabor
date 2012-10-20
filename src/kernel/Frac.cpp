@@ -10,16 +10,6 @@
  * \version $Revision: 1.6 $
  * \license GPL
  *
- * $Log: Frac.cpp,v $
- * Revision 1.6  2011/02/20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
- *
  *
  ********************************************************************
  * \addtogroup kernel
@@ -279,7 +269,7 @@ frac& frac::operator =(const int &i)
 
 
 
-long frac::gcd(long a, long b)
+mutint64 frac::gcd(mutint64 a, mutint64 b)
 
 {
 	long p, q, r = 1;
