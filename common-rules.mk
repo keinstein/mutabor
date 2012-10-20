@@ -39,7 +39,7 @@ CLEANFILES = \
 	mutabor-cxxprecompiled.h \
 	mutabor-cxxprecompiled.stamp \
 	Mutabor.xrc \
-	*.002t.class 
+	*.class 
 
 
 INDENTS = $(INDENTSOURCES) $(INDENTHEADERS) $(INLINEHEADERS)

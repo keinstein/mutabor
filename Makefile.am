@@ -208,7 +208,7 @@ libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 # librtmidi.a
 #-------------------------------------------------------------
 
-CLEANFILES += lib/rtmidi/*.002t.class
+CLEANFILES += lib/rtmidi/*.class
 
 librtmidi_a_INLINEHEADERS = \
 		lib/rtmidi/RtError.h \
