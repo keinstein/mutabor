@@ -764,7 +764,10 @@ namespace mutabor {
 #pragma message "implement system messsages"
 #if 0
 			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->MidiOut(pData, nData);
+				route->GetOutputDevice()->MidiOut(pData,
+                                nData);
+#else
+                        ;
 #endif
 			
 		}

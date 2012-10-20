@@ -170,7 +170,7 @@ namespace mutabor {
 
 		void program_change(int program) {
 			Sound = program;
-			uint8_t data = controller[midi::BANK_COARSE];
+			int8_t data = controller[midi::BANK_COARSE];
 			if (data != -1) bank_coarse = data;
 			data = controller[midi::BANK_FINE];
 			if (data != -1) bank_fine = data;

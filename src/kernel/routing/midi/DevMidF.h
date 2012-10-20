@@ -74,7 +74,7 @@ namespace mutabor {
 	public:
 		typedef std::vector<uint8_t> base;
 		wxLongLong Time;
-		Track(): vector(), Time() {
+		Track(): base(), Time() {
 			reserve(100);
 		}
 

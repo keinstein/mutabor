@@ -275,8 +275,8 @@ END_EVENT_TABLE()
 					    name<T1>::wxCreateObject, T1)
 
 
-IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(MutIconShapeClass, wxControl, wxControl);
-IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(MutIconShapeClass, MutPanel, MutPanel);
+IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(MutIconShapeClass, wxControl, wxControl)
+IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(MutIconShapeClass, MutPanel, MutPanel)
 //template wxClassInfo MutIconShapeClass<wxControl>::ms_classInfo;
 /*
 template<> wxClassInfo MutIconShapeClass<wxControl>::ms_classInfo
