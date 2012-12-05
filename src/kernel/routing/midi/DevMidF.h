@@ -84,7 +84,9 @@ namespace mutabor {
 		void WriteNumber(size_t count) {
 			int i = 0;
 			size_t mask = 0x7F << 7;
-			while(count & mask) {
+			size_t tmp = count >> 7;
+			while(tmp) {
+				tmp >>= 7;
 				i++;
 			}
 			mutASSERT(i<6);// 32bit/7bit = 4.571 > 4 
@@ -139,6 +141,7 @@ namespace mutabor {
 
 		bool Open() {
 			Tracks.clear();
+			return true;
 		}
 
 		void Close() {}
