@@ -1,7 +1,9 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
-CLEANFILES += playmidi1.mid
+CLEANFILES += \
+	playmidi1.mid \
+	test_output.mid
 
 AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
 check_PROGRAMS = \
@@ -50,6 +52,7 @@ testcppunit_CXXFLAGS =  $(CPPUNIT_CFLAGS) $(AM_CXXFLAGS)
 testcppunit_SOURCES = \
 	main.cpp \
 	DevMidFTest.h \
+	DevMidFTest.cpp \
 	midicmnTest.h \
 	midicmnTest.cpp
 

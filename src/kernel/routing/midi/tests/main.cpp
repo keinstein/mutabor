@@ -34,6 +34,7 @@ main(int argc, char** argv)
 
 	runner.addTest( InputMidiFileTest<mutabor::InputMidiFile>::suite() );
 	runner.addTest( CommonMidiOutputTest::suite() );
+	runner.addTest( OutputMidiFileTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 
