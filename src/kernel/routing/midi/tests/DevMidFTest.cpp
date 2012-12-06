@@ -162,6 +162,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOn(box,63,98,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n") ) );
 
+	usleep(200000);
 	out->NoteOff(box,56,53,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n")) );
 	out->NoteOff(box,60,54,route.get(),0,false);
@@ -169,6 +170,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOff(box,63,55,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n")) );
 
+	usleep(200000);
 	DEBUGLOG(midiio,_T("132"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
@@ -178,6 +180,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOn(box,63,98,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n") ) );
 
+	usleep(200000);
 	out->NoteOff(box,56,53,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n")) );
 	out->NoteOff(box,63,55,route.get(),0,false);
@@ -187,6 +190,7 @@ void OutputMidiFileTest::testNoteOnOff()
 
 	DEBUGLOG(midiio,_T("213"));
 
+	usleep(200000);
 	out->NoteOn(box,56,96,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n") ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
@@ -201,6 +205,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOff(box,63,55,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 37\n")) );
 
+	usleep(200000);
 	DEBUGLOG(midiio,_T("231"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
@@ -210,6 +215,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOn(box,63,98,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n") ) );
 
+	usleep(200000);
 	out->NoteOff(box,60,54,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n")) );
 	out->NoteOff(box,63,55,route.get(),0,false);
@@ -217,6 +223,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOff(box,56,53,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 35\n")) );
 
+	usleep(200000);
 	DEBUGLOG(midiio,_T("312"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
@@ -226,6 +233,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOn(box,63,98,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n") ) );
 
+	usleep(200000);
 	out->NoteOff(box,63,55,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n")) );
 	// check sending note on with velocity = 0 
@@ -234,6 +242,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOff(box,60,54,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 36\n")) );
 
+	usleep(200000);
 	DEBUGLOG(midiio,_T("321"));
 
 	// Add check for NULL as tone system parameter
@@ -244,6 +253,7 @@ void OutputMidiFileTest::testNoteOnOff()
 	out->NoteOn(NULL,63,98,route.get(),0,cd);
 //	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n") ) );
 
+	usleep(200000);
 	out->NoteOff(NULL,63,55,route.get(),0,false);
 //	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n")) );
 	out->NoteOff(NULL,60,54,route.get(),0,false);
