@@ -82,7 +82,7 @@ namespace mutabor {
 
 		void WriteDelta();
 		void WriteNumber(size_t count) {
-			int i = 0;
+			int i = 1;
 			size_t mask = 0x7F << 7;
 			size_t tmp = count >> 7;
 			while(tmp) {
@@ -90,8 +90,9 @@ namespace mutabor {
 				i++;
 			}
 			mutASSERT(i<6);// 32bit/7bit = 4.571 > 4 
-			for (;i>=0;i--) 
-				push_back((count >> i*7) & 0x7F);
+			for (;i>0;i--) 
+				push_back(((count >> i*7) & 0x7F)| 0x80);
+			push_back(count & 0x7F);
 		}
 		void WriteLength(mutOFstream &os, size_t l);
 	
