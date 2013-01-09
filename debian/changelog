@@ -1,3 +1,200 @@
+mutabor (4.0.0beta2) unstable; urgency=low
+
+  * Fix border on focusing box shapes.
+  * Fix Germen Help file
+  * Provide abstract file devices. This currently implements timing.
+  * Prepare Makefile tree for unit tests.
+  * Update template.
+  * Move some images from source tree to Images tree.
+  * Normalise file endings.
+  * move some definitions to common makefile include files
+  * Collect compiled sources into certain libraries (eases creation of
+    tests; might be broken by following changes)
+  * Change the calling of bison and flex.
+  * Update POTFILES.in
+  * Update CommonFileInputDevice towards a working version using threads.
+  * Fix copying of DLLs in windows checks.
+  * Add a silent MIDI player.
+  * Define 64bit Integers
+  * Remove Debugging noise
+  * Simplify Debugging macro and make Emacs happy with the output format.
+  * Prepare DebugCheckRoutes for non-GUI builds.
+  * Move RtMidi binaries into own librariy.
+  * Change timer and thread management to be accessible bei InputMidiFile.
+    Calculate most timing issues using 64bit (wxLongLong might be 128bit).
+  * Fix non-GUI Device factories
+  * Update Midi File Class to use the new timers.
+  * Disable Non-Realtime Play until the function is updated.
+  * Silence some ignored errors during make.
+  * Define mutint64 regardless of architecture.
+  * Add test for missing midi files.
+  * Fix compiling of tests in non-debug-mode
+  * Preprare some GIS stuff
+  * Add a demo GUIDO file for testing.
+  * Add GUIDO tests: play an arbitrary file try to play nonexistent file
+  * Add Debugflag gmnfile for GUIDO files.
+  * Use 64 bit values in fractions.
+  * Quick hack to make compile_error usable without GUI.
+  * Use gmnfile debug flag instead of other for some GUIDO related stuff.
+  * Hopefully last patch that fixes Bug #18688
+  * Fix Compiling on win32.
+  * Improve writing of temporary file: • Close file before deletion
+    (fixes #18687) • Close and remove file on error if necessary
+  * Clear pointer to timer when timer is deleted.
+  * Initialize ton_auf_kanal[*].key to avoid invalid access in Close()
+  * Start using cppunit
+  * Implement RouteClass::GetNextFreeBox
+  * Use bit operations in order to separate bytes.
+  * Preinitialize ton_auf_kanal[i].key and implement some debug runtime
+    checks.
+  * preallocate byte sequence for MIDI out.
+  * Initialize new box number to be the first free number.
+  * Generate Mutabor.nsi only from main Makefile
+  * Fix icon installation for Mac
+  * Some cleanup for Multithreading: • File Object is held using
+    intrusiveptr to prevent its deletion (removes one kind of race
+    conditions) • The timer pointer is deleted as early as possible at
+    end of Playback to reduce the propability of the other kind of race
+    condition. • The file pointer is deleted as soon as it is not needed
+    anymore.
+  * fix some compiler warnings
+  * add routinggui flag for debug output
+  * Fix some errors with bad Box display.
+  * Prevent Play from beeing entered twice.
+  * Add -ggdb on Mac OS X
+  * Update layout in certain situations
+  * Fix bad access due to bad handling of wxWidgets changes in 2.9 branch
+    (see #14612 on http://trac.wxwidgets.org).
+  * Fix crash on changing device type for input and output from the GUI.
+  * SetFocus initalizes the window. So we must not call it too early.
+  * Fix some access to uninitalized attribute.
+  * Fix problem on closing pane, where a deleted window is going to be
+    closed (bad access).
+  * Fix return code in normal playback.
+  * make distcheck happy on binfmt/wine and linux
+  * Build installer without spaces in file name (confuses Berlios).
+  * update ChangeLog
+  * de.mo has never been used. Remove it to avoid confusion.
+  * fix installing wxWidgets locales on Windows (and propably mac) in case
+    wxWidgets is not installed
+  * Silence a debug message.
+  * Add changelog to Windows distribution.
+  * Install examples on Windows
+  * provide examples with Mutabor
+  * try to associate Mutabor files with Mutabor on Mac OS X
+  * fix some memory management bugs
+  * add testcase for box.h/box.cpp. First test: Insert 5* planesize keys
+    and check for correct operation.
+  * prepare for mudflap usage (currently broken). add -fbounds_check in
+    debug mode.
+  * rename MAX_BREITE -> MUTABOR_KEYRANGE_MAX_WIDTH, extend key range to
+    keys 0-128 and tonesystem width to 128, so that we can map at least
+    the full MIDI scale.
+  * Change midi behavior. Maybe it allows for arbitrary length MIDI
+    message. Open problem: Parse and split midi messages while saving in
+    MIDI file in order to add correct timestamps.
+  * move some arrays into mutabor_box_type in order to get a cleaner
+    structure and develop it towards a more object oriented design. These
+    changes are part of a bugfix which prevents mutabor from crashing when
+    there seem to be more than 64 keys in one box (e.g. after multiple
+    play/stop cycles without panic button or logic restart.
+  * add compiler flags -pedantic -fdiagnostics-show-option -Wno-long-long
+    -Wno-variadic-macros in debug mode
+  * fix recursive target potfilescheck by adding common-rules.mk even if
+    it is not needed otherwise.
+  * Fix comment file header (remove outdated logs, add some minmal
+    descriptions).
+  * Fix some pedantic warnings.
+  * Add debugflag kernel_box
+  * mhArray is now a template (not a macro). some formatting.
+  * fix continuation signalling in GetMutTag after change to box pointers
+    add a compiler message to remind the developer that something has to
+    be overthought reagarding the handling of the box that has keyboard
+    focus.
+  * Throw an exception if device is not set in GetOutputDevice and
+    GetInputdevice Proviede NotesCorrect on Route level. Global function
+    FindRoute.
+  * Update NotesCorrect to use Routes
+  * (mainly) change some functions to reference boxes directly instead of
+    pointers Some additional changes are related to other patches.
+  * Unify ton_auf_kanal for DevMidi and DevMidF. (some other changes are
+    not separated).
+  * Move some preparation of status data from Kernel to MutTextBox
+  * Silence another pedantic warning
+  * KeyboardAnalyse is now forwarded by GUIBoxData
+  * remove unused xpm data and silence some warning
+  * GUIBoxData: Provide GetNonGUIBox(), KeyboardAnalyse() Throw an
+    exception if non-existent box is referenced.
+  * box.h/box.cpp: silence some warning. mutabor_key_type: null reference
+    is denoted by ~0 (MUTABOR_NO_NEXT). to avoid disambiguities with
+    referencing 1st key in list. keyplanes are initialized correctly.
+  * Changes towards box based api: box parameters are pointers, now. Many
+    data has been moved into mutabor_box_type. Several bugs fixed. Many
+    remain.
+  * Tests for new data structure.
+  * some reorganisation of debug output.
+  * let the C/C++ compiler calculate the numbers we need for frequency
+    calculations
+  * Adapt frequency display to match the old behaviour showing 12ET half
+    tones to see cent values.
+  * Big patch to move common MIDI code into a common class.
+  * Fix a crash in key handling, introduced with the redesign of the logic
+    code.
+  * Remove outdated logs from comments
+  * add midicmn to makefile and potfiles
+  * Add some assertions
+  * Rework midi providers in order to make testing possible and to avoid
+    bugs.
+  * Create a test for NoteOn/NoteOff
+  * Correct Sustain condition
+  * Add an assertion
+  * Add a function to CommonMidiOutput in order to compile the
+    NoteOn/NoteOff test.
+  * rework channel finding code
+  * Fix condition that lead to wrong incrementation of last_sustained.
+  * Fix channel filter condition.
+  * move_to_front was called with the wrong order of the arguments causing
+    errors.
+  * assert proper calling conventions for move_to_front and move_to_end
+  * fix wrong assumption abort precedences for binary and logical
+    operations
+  * fix channel submission for progam change messages
+  * remove unused code part
+  * Use Midi Channel as Id also for boxes on midi input.
+  * Output the tone id.
+  * Make controllers (or only sustain?) working in single intstrument
+    input situations.
+  * Fix pitch bend calculation introduced with one of the last commits.
+  * Implement copying of controllers. (unchecked)
+  * fix crash on creating route channels (InputDevice and OutputDevice are
+    smart pointers, so they always exist).
+  * small change in update handling
+  * fix crash if more keys are pressed than output channels availlable
+  * white space fixes
+  * Fix channel data to perform correctly even on system messages.
+  * Disable system messages for input for now. They are not properly
+    implemented and the current stuff does not work anyway.
+  * Updated translation files to match current version. (German
+    translation has been updated).
+  * .class files have different pre-extension on different systems. So
+    delete all of them on distclean.
+  * sort out CPPFLAGS and LDFLAGS and similar variables which caused
+    cppunit to be linked from the wrong location
+  * fix compilation of Frac.cpp in case boost is not detected (logic
+    errors remain)
+  * fix some small compilation issues and warnings
+  * Create first test for OutputMidiFile class.
+  * Fix a bug that leads to endless loops in midi file output.
+  * Fix writing of MIDI variable length numbers
+  * Sleep a little bit in order to separate Notes in Midi File output
+    test.
+  * Fix debian-doc to match new position of example logics
+  * Fix compiling in non-debug-mode.
+  * Provide usleep function for windows.
+  * update po/mo files to match current source tree
+
+ -- Tobias Schlemmer <keinstein@users.berlios.de>  Wed, 09 Jan 2013 07:25:53 +0100
+
 mutabor (4.0.0beta1) unstable; urgency=low
 
   * add rudimentary manpage
