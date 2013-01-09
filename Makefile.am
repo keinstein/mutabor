@@ -12,7 +12,8 @@ GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 
-CLEANFILES += POTFILES.tmp2
+CLEANFILES += POTFILES.tmp2 \
+	Mutabor.xrc 
 
 NOCOMPSOURCES= \
 	src/xrc/wxresource.cpp \

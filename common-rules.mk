@@ -40,7 +40,6 @@ CLEANFILES = \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
 	mutabor-cxxprecompiled.h \
 	mutabor-cxxprecompiled.stamp \
-	Mutabor.xrc \
 	*.class 
 
 
