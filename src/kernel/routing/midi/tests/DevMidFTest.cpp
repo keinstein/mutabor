@@ -43,9 +43,11 @@ void OutputMidiFileTest::setUp()
 	debugFlags::flags.midiio = true;
 	debugFlags::flags.midifile = true;
 #else 
+#ifdef DEBUG
 	debugFlags::flags.timer = false;
 	debugFlags::flags.midiio = false;
 	debugFlags::flags.midifile = false;
+#endif
 #endif
 	std::clog << "Running setUp()" << std::endl;
 
