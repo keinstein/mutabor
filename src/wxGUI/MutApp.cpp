@@ -365,7 +365,8 @@ namespace mutaborGUI {
 
 		// RestoreState needs initialized MIDI
 		initialize_boxes();
-		MidiInit();
+		MidiInit();       
+		initMutIconShapes();
 		InitGUIRouteFactories();
 
 		RestoreState();

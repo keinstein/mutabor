@@ -221,7 +221,6 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
         SetSizer(new wxFlexGridSizer(3,0,50));
         SetScrollRate(1, 1);
 
-        initMutIconShapes();
 	InitShapes();
 }
 
