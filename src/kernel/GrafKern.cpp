@@ -280,7 +280,7 @@ void compiler_warning( int nr, ... )
 	} else {
 		wxString out = wxString::FormatV(wxGetTranslation(Warning_text[nr]),
 						 arglist);
-		std::clog << "Compiler warning: " << out.ToUTF8() << std::endl;
+		std::clog << "Compiler warning: " << (const char *)out.ToUTF8() << std::endl;
 	}
 #else
 	char Fmeldung[255];

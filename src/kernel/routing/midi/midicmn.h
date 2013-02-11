@@ -461,8 +461,8 @@ namespace mutabor {
 			// channel is used in multi track environments
 			// Flawfinder: ignore
 			mutASSERT(open);
-			if (data[0] == (BYTE)midi::SYSEX_START 
-			    || data[count-1] == (BYTE)midi::SYSEX_END) {
+			if (message[0] == (BYTE)midi::SYSEX_START 
+			    || message[count-1] == (BYTE)midi::SYSEX_END) {
 				UNREACHABLEC;
 				return *this;
 			}
