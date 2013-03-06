@@ -521,9 +521,15 @@ template<typename T>
 	borderOffset = maxBorderSize - this->GetWindowBorderSize()/2;
 #endif
 	this->InvalidateBestSize();
+
 	if (this->GetParent())
 		this->GetParent()->Layout();
 	Layout();
+	if (!this->IsShown()) {
+		this->Thaw();
+		return;
+	}
+
 	wxSizer * sizer = this->GetSizer();
 	if (sizer) 
 		sizer->SetSizeHints(this);
