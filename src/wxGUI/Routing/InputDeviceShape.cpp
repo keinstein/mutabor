@@ -448,13 +448,13 @@ namespace mutaborGUI {
 		wxSizer * sizer = GetContainingSizer();
 		sizer -> Replace (this, newshape, false);
 
+		newshape->SetFocus();
 		Hide();	
 		wxWindow * parent = m_parent;
 		parent->RemoveChild(this);
 		parent->Layout();
 		parent->FitInside();
 		parent->SetVirtualSize(wxDefaultSize);
-		newshape->SetFocus();
 
 		TRACEC;
 		device->Destroy();
