@@ -555,7 +555,8 @@ namespace mutaborGUI {
 	void MutLogicWnd::DoLayout()
 	{
 		wxSize R = GetClientSize();
-		int nx = (R.GetWidth()-4) / MUTTAGX, ny = (R.GetHeight()-4)/ MUTTAGY;
+		int nx = (R.GetWidth()-4) / MUTTAGX, 
+			ny = (R.GetHeight()-4)/ MUTTAGY;
 		bool quer = R.GetWidth() > R.GetHeight();
 
 		if ( nx * ny < nTags ) // Scroller notwendig

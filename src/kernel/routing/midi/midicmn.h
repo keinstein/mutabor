@@ -45,6 +45,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
+//#include "src/kernel/MidiKern.h"
 
 #ifndef ROUTING_MIDICMN_H_PRECOMPILED
 #define ROUTING_MIDICMN_H_PRECOMPILED
@@ -103,7 +104,7 @@ namespace mutabor {
 				DEBUGLOG(midiio,_T("Not using Channel %d"),(int)(*actual));
 				actual++;
 			}
-			DEBUGLOG(midiio,_T("Using Channel %d"),(int)(*actual));
+			DEBUGLOG(midiio,_T("Using Channel %d"),(actual != this->end()?(int)(*actual):(int)-1));
 			return actual;
 		}
 
@@ -307,7 +308,8 @@ namespace mutabor {
 	 */
 	class DebugMidiOutputProvider {
 	public:
-
+		
+		// Flawfinder: ignore
 		DebugMidiOutputProvider():data(),open(false) {}
 
 		
@@ -321,6 +323,7 @@ namespace mutabor {
 		 * this function has been restored to closed state.
 		 */
 		bool Open() {
+			// Flawfinder: ignore
 			mutASSERT(!open);
 			open = true;
 			data = _T("Opened...\n");
@@ -338,6 +341,7 @@ namespace mutabor {
 		 * this function has been restored to closed state.
 		 */
 		void Close() {
+			// Flawfinder: ignore
 			mutASSERT(open);
 			open = false;
 			data += _T("...closed.\n");
@@ -357,6 +361,7 @@ namespace mutabor {
 						      uint8_t byte1,
 						      uint8_t byte2,
 						      uint8_t byte3) {
+			// Flawfinder: ignore
 			mutASSERT(open);
 			byte1 |= channel & midi::CHANNEL_MASK;
 			return RawMsg(channel,byte1,byte2,byte3);
@@ -375,6 +380,7 @@ namespace mutabor {
 						  uint8_t byte1,
 						  uint8_t byte2,
 						  uint8_t byte3) { 
+			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
 			tmp.Printf(_T("%3d: %02x %02x %02x"), channel, byte1, byte2, byte3);
@@ -395,6 +401,7 @@ namespace mutabor {
 		DebugMidiOutputProvider & operator() (int channel,
 						      uint8_t byte1,
 						      uint8_t byte2) {
+			// Flawfinder: ignore
 			mutASSERT(open);
 			byte1 |= channel & midi::CHANNEL_MASK;
 			return RawMsg(channel,byte1,byte2);
@@ -411,6 +418,7 @@ namespace mutabor {
 		DebugMidiOutputProvider & RawMsg (int channel,
 						  uint8_t byte1,
 						  uint8_t byte2) {
+			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
 			tmp.Printf(_T("%3d: %02x %02x"), channel, byte1,byte2);
@@ -429,6 +437,7 @@ namespace mutabor {
 		 */
 		DebugMidiOutputProvider & RawMsg (int channel, uint8_t byte1) {
 			// channel is used in multi track environments
+			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
 			tmp.Printf(_T("%3d: %02x"), byte1);
@@ -450,6 +459,7 @@ namespace mutabor {
 		 */
 		DebugMidiOutputProvider & SendSysEx(int channel, BYTE * message, size_t count){
 			// channel is used in multi track environments
+			// Flawfinder: ignore
 			mutASSERT(open);
 			if (data[0] == (BYTE)midi::SYSEX_START 
 			    || data[count-1] == (BYTE)midi::SYSEX_END) {
@@ -471,6 +481,7 @@ namespace mutabor {
 	protected:
 		/* the data fields not not necessary for and output provider */
 		mutString data;
+		// Flawfinder: ignore
 		bool open;
 	};
 
@@ -528,6 +539,14 @@ namespace mutabor {
 		void SplitOut (BYTE * p, size_t n);
 		void Quiet(RouteClass * r);
 		void Panic();
+		void SendBendingRange(int channel) {
+			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 
+				   (midi::PITCH_BEND_SENSITIVITY >> 8) & 0x7F);
+			controller(channel,midi::REGISTERED_PARAMETER_FINE, 
+				   midi::PITCH_BEND_SENSITIVITY & 0x7F);
+			controller(channel,midi::DATA_ENTRY_COARSE, bending_range);
+			controller(channel,midi::DATA_ENTRY_FINE, 0);
+		}
 		/** 
 		 * Gis output is unimplemented. 
 		 * Ignore GIS tokens.
@@ -540,7 +559,14 @@ namespace mutabor {
 
 
 //		midiprovider & GetProvider () { return Out(); }
-		void SetBendingRange(int br) { bending_range = br; }
+		void SetBendingRange(int br) { 
+			bending_range = br; 
+			if (!this->isOpen) return;
+			int max = GetMaxChannel();
+			for (int i = GetMinChannel() ; i < max ; i++) {
+				SendBendingRange(i);
+			}
+		}
 		int GetBendingRange() const { return bending_range; }
 						   
 		virtual int GetMaxChannel() const = 0;
@@ -724,16 +750,33 @@ namespace mutabor {
 			}
 	};
 
-	template<class T>
-	class CommonMidiInput:InputDeviceClass {
-	public:
-		typedef T midiprovider;
 
-		
+	template<class D>
+	class CommonMidiInput:public D {
+	public:
+		typedef D parenttype;
+		void Proceed(DWORD midiCode, int data =0);
+		void Proceed(const std::vector<unsigned char > * midiCode, int data =0);
 
 	protected:
-		midiprovider provider;
-		
+		CommonMidiInput():parenttype() {}
+		CommonMidiInput(int devId, 
+				const mutStringRef name):parenttype(devId, name) {}
+
+		CommonMidiInput(int devId,
+				const mutStringRef name, 
+				MutaborModeType mode,
+				int id):parenttype(devId,name,mode,id) {}
+		ChannelData Cd[16];
+		enum proceed_bool {ProceedYes,ProceedNo,ProceedElse};
+
+
+		void ProceedRoute(DWORD midiCode, Route route);
+		void ProceedRoute(const std::vector<unsigned char > * midiCode, Route route);
+		virtual proceed_bool shouldProceed(Route R, DWORD midiCode,  int data =0) = 0;
+		virtual proceed_bool shouldProceed(Route R, 
+						   const std::vector<unsigned char > * midiCode,  
+						   int data =0) = 0;
 	};
 
 }

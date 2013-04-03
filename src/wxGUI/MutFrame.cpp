@@ -652,7 +652,7 @@ namespace mutaborGUI {
 
 		MutChild * win = boxdata.GetKeyWindow();
 		if (win) {
-			if (win) wxPostEvent(win,event);
+			wxPostEvent(win,event);
 		}
 
 		if (logic_changed) {
@@ -916,7 +916,10 @@ namespace mutaborGUI {
 			// Titel
 			//    SetTitle(APPNAME);
 			// alle Fenser schlieﬂen
-			wxMenuItem * boxSelector = ClearMenuItem(CM_SELECTBOX);
+#ifdef DEBUG
+			wxMenuItem * boxSelector = 
+#endif
+				ClearMenuItem(CM_SELECTBOX);
 			mutASSERT(boxSelector->IsSubMenu());
 
 			ActiveWindow -> CloseAll();

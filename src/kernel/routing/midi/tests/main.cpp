@@ -32,9 +32,12 @@ main(int argc, char** argv)
 	CppUnit::BriefTestProgressListener listener; 
 	runner.eventManager().addListener(&listener);
 
-	runner.addTest( InputMidiFileTest<mutabor::InputMidiFile>::suite() );
 	runner.addTest( CommonMidiOutputTest::suite() );
 	runner.addTest( OutputMidiFileTest::suite() );
+
+	/// Input tests use the output device for logging
+	runner.addTest( CommonMidiInputTest::suite() );
+	runner.addTest( InputMidiFileTest<mutabor::InputMidiFile>::suite() );
 	
 	bool wasSuccessful = runner.run();
 

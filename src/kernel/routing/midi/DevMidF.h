@@ -376,24 +376,24 @@ namespace mutabor {
 
 // InMidiFile -------------------------------------------------------
 
-	class InputMidiFile : public CommonFileInputDevice
+	class InputMidiFile : public CommonMidiInput<CommonFileInputDevice>
 	{
-		typedef CommonFileInputDevice base;
+		typedef CommonMidiInput<CommonFileInputDevice> base;
 		friend class MidiFileFactory;
 	protected:
-		InputMidiFile(): CommonFileInputDevice(),
+		InputMidiFile(): base(),
 				 Track(NULL), 
 				 TrackPos(NULL),
 				 curDelta(NULL),
 				 StatusByte(NULL) { }
 
 		InputMidiFile(int devId,
-			      wxString name, 
+			      mutString name, 
 			      MutaborModeType mode,
-			      int id): CommonFileInputDevice(devId, 
-							name, 
-							mode, 
-							id),
+			      int id): base(devId, 
+					    name, 
+					    mode, 
+					    id),
 					  Track(NULL),
 					  TrackPos(NULL),
 					  curDelta(NULL),
@@ -472,6 +472,11 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
+
+		proceed_bool shouldProceed(Route R, DWORD midiCode,  int track = 0);
+		proceed_bool shouldProceed(Route R, 
+					   const std::vector<unsigned char > * midiCode,  
+					   int data =0);
 	protected:
 		int FileType;
 		size_t nTrack;
@@ -481,13 +486,12 @@ namespace mutabor {
 		mutint64 *curDelta;
 		mutint64 minDelta;
 		BYTE *StatusByte;
-		ChannelData Cd[16];
 		//  UINT TimerId;
 		BOOL Busy;
 		DWORD TicksPerQuarter;
 		mutint64 MMSPerQuarter;
-		void Proceed(DWORD midiCode, int track);
-		void ProceedRoute(DWORD midiCode, Route route);
+//		void Proceed(DWORD midiCode, int track);
+//		void ProceedRoute(DWORD midiCode, Route route);
 		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
 	};
 

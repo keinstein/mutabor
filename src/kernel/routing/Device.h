@@ -48,6 +48,7 @@
 #include <sstream>
 #include "wx/thread.h"
 #include "wx/stopwatch.h"
+#include <boost/unordered_set.hpp>
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 
@@ -282,6 +283,10 @@ namespace mutabor {
 		virtual bool Replace(Route & oldRoute, Route & newRoute) = 0;
                 /// remove a route
 		virtual bool Remove(Route & route) = 0;
+
+		/// reset the device if requested
+		virtual void Panic() = 0;
+
 	protected: /** \todo lift this restrection afer GUI is working again */
 		friend class GUIOutputDeviceBase;
 		friend class GUIInputDeviceBase;
@@ -581,7 +586,7 @@ namespace mutabor {
 		virtual void AddTime(frac time) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
 		virtual void Quiet(RouteClass * r) = 0;
-		virtual void Panic() {};
+		virtual void Panic() { STUBC; };
 		virtual bool Open() { return true; }
 
 		virtual bool NeedsRealTime() {
@@ -621,8 +626,6 @@ namespace mutabor {
 		*/
 		//InputDevice Next;
 
-		enum MutaborModeType Mode;
-
 		InputDeviceClass():CommonTypedDeviceAPI<InputDeviceClass>(), 
 //			   Next(this,_T("Next")), 
 			   Mode(DeviceStop)
@@ -640,6 +643,66 @@ namespace mutabor {
 			}
 
 	public:
+		struct current_keys_type {
+			struct entry {
+				int key;
+				int unique_id;
+				int velocity;
+				Route route;
+				entry(int k, int u, int v, Route &R): key(k),
+								      unique_id(u),
+								      velocity(v),
+								      route (R) {}
+
+				bool operator == (const entry & e) const {
+					return e.key == key && e.unique_id == unique_id && e.route == route;
+				}
+			};
+
+			struct hash_type {
+				uint8_t operator () (const entry & val) const {
+					size_t seed = 0;
+					boost::hash_combine(seed, val.key);
+					boost::hash_combine(seed, val.unique_id);
+					boost::hash_combine(seed, val.route.get());
+					return seed & 0xFF;
+				}
+			};
+			
+			typedef boost::unordered_multiset<entry, hash_type> map_type;
+			typedef map_type::iterator iterator;
+			typedef map_type::const_iterator const_iterator;
+
+			void add (int key,
+				  int velocity,
+				  int unique_id, 
+				  Route & R) {
+				map.insert(entry(key,unique_id,velocity, R));
+			}
+
+			void remove(int key,
+				    int velocity,
+				    int unique_id, 
+				    Route & R) {
+				std::pair<map_type::iterator, map_type::iterator> range = map.equal_range(entry(key,unique_id,velocity, R));
+				if (range.first != map.end()) {
+					map.erase(range.first);
+				}
+			}
+
+			void remove (iterator i ) {
+				map.erase(i);
+			}
+
+			iterator begin() { return map.begin(); }
+			const_iterator begin() const { return map.begin(); }
+
+			iterator end() { return map.end(); }
+			const_iterator end() const { return map.end(); } 
+		protected:
+			map_type map;
+		};
+
 		virtual ~InputDeviceClass() { TRACEC; }
 		/// Remove from the input device list to be deleted, when it becomes free.
 		/**
@@ -695,7 +758,7 @@ namespace mutabor {
 		}
 		//	  virtual frac ReadOn(frac time) = 0;
 
-		void Quite(); // all Routes quite
+		
 		virtual bool NeedsRealTime()
 			{
 				return false;
@@ -720,6 +783,31 @@ namespace mutabor {
 		 * piece in μs.
 		 */
 		virtual mutint64 PrepareNextEvent() {}
+
+		void NoteOn(Route &R, int key, int velocity,
+			    size_t make_unique,
+			    const ChannelData & input_channel_data,
+			    void * userdata) {
+			current_keys.add(key, make_unique, velocity, R);
+			if (R) {
+				R->NoteOn(key,velocity,make_unique, input_channel_data, userdata);
+			}
+		}
+
+		void NoteOff(Route & R,
+			     int key,
+			     int velocity,
+			     size_t make_unique) {
+			current_keys.remove(key, make_unique, velocity, R);
+			if (R) {
+				R->NoteOff(key,velocity,make_unique);
+			}
+		}
+
+
+		void Panic() { Panic(true); } // is virtual in Device
+		void Panic(bool global);
+			
 
 		virtual DevType GetType() const
 			{
@@ -761,6 +849,10 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const; 
 #endif
+
+	protected:
+		enum MutaborModeType Mode;
+		current_keys_type current_keys;
 	};
 
 

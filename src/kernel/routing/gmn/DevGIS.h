@@ -290,6 +290,7 @@ namespace mutabor {
 
 		virtual void Close();
 		virtual void Stop();
+		virtual void Panic();
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);
 		void ProceedRoute(GisReadArtHead *h, char turn);

@@ -32,6 +32,7 @@
 #include "src/kernel/routing/midi/tests/midicmnTest.h"
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/Runtime.cpp"
 
 template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass>;
 
@@ -65,7 +66,7 @@ void CommonMidiOutputTest::tearDown()
 { 
 #ifdef DEBUG
 	debugFlags::flags.timer = false;
-	debugFlags::flags.midifile = false;
+	debugFlags::flags.midiio = true;
 #endif
 	out = NULL;
 	guard = NULL;
@@ -82,66 +83,130 @@ void CommonMidiOutputTest::testNoteOnOff()
 				      "  0: b0 7a 00\n"
 				      "  0: b0 7d 00\n"
 				      "  0: b0 7f 00\n"
+				      "  0: b0 65 00\n"
+				      "  0: b0 64 00\n"
+				      "  0: b0 06 02\n"
+				      "  0: b0 26 00\n"
 				      "  1: e1 00 40\n"
 				      "  1: b1 7a 00\n"
 				      "  1: b1 7d 00\n"
 				      "  1: b1 7f 00\n"
+				      "  1: b1 65 00\n"
+				      "  1: b1 64 00\n"
+				      "  1: b1 06 02\n"
+				      "  1: b1 26 00\n"
 				      "  2: e2 00 40\n"
 				      "  2: b2 7a 00\n"
 				      "  2: b2 7d 00\n"
 				      "  2: b2 7f 00\n"
+				      "  2: b2 65 00\n"
+				      "  2: b2 64 00\n"
+				      "  2: b2 06 02\n"
+				      "  2: b2 26 00\n"
 				      "  3: e3 00 40\n"
 				      "  3: b3 7a 00\n"
 				      "  3: b3 7d 00\n"
 				      "  3: b3 7f 00\n"
+				      "  3: b3 65 00\n"
+				      "  3: b3 64 00\n"
+				      "  3: b3 06 02\n"
+				      "  3: b3 26 00\n"
 				      "  4: e4 00 40\n"
 				      "  4: b4 7a 00\n"
 				      "  4: b4 7d 00\n"
 				      "  4: b4 7f 00\n"
+				      "  4: b4 65 00\n"
+				      "  4: b4 64 00\n"
+				      "  4: b4 06 02\n"
+				      "  4: b4 26 00\n"
 				      "  5: e5 00 40\n"
 				      "  5: b5 7a 00\n"
 				      "  5: b5 7d 00\n"
 				      "  5: b5 7f 00\n"
+				      "  5: b5 65 00\n"
+				      "  5: b5 64 00\n"
+				      "  5: b5 06 02\n"
+				      "  5: b5 26 00\n"
 				      "  6: e6 00 40\n"
 				      "  6: b6 7a 00\n"
 				      "  6: b6 7d 00\n"
 				      "  6: b6 7f 00\n"
+				      "  6: b6 65 00\n"
+				      "  6: b6 64 00\n"
+				      "  6: b6 06 02\n"
+				      "  6: b6 26 00\n"
 				      "  7: e7 00 40\n"
 				      "  7: b7 7a 00\n"
 				      "  7: b7 7d 00\n"
 				      "  7: b7 7f 00\n"
+				      "  7: b7 65 00\n"
+				      "  7: b7 64 00\n"
+				      "  7: b7 06 02\n"
+				      "  7: b7 26 00\n"
 				      "  8: e8 00 40\n"
 				      "  8: b8 7a 00\n"
 				      "  8: b8 7d 00\n"
 				      "  8: b8 7f 00\n"
+				      "  8: b8 65 00\n"
+				      "  8: b8 64 00\n"
+				      "  8: b8 06 02\n"
+				      "  8: b8 26 00\n"
 				      "  9: e9 00 40\n"
 				      "  9: b9 7a 00\n"
 				      "  9: b9 7d 00\n"
 				      "  9: b9 7f 00\n"
+				      "  9: b9 65 00\n"
+				      "  9: b9 64 00\n"
+				      "  9: b9 06 02\n"
+				      "  9: b9 26 00\n"
 				      " 10: ea 00 40\n"
 				      " 10: ba 7a 00\n"
 				      " 10: ba 7d 00\n"
 				      " 10: ba 7f 00\n"
+				      " 10: ba 65 00\n"
+				      " 10: ba 64 00\n"
+				      " 10: ba 06 02\n"
+				      " 10: ba 26 00\n"
 				      " 11: eb 00 40\n"
 				      " 11: bb 7a 00\n"
 				      " 11: bb 7d 00\n"
 				      " 11: bb 7f 00\n"
+				      " 11: bb 65 00\n"
+				      " 11: bb 64 00\n"
+				      " 11: bb 06 02\n"
+				      " 11: bb 26 00\n"
 				      " 12: ec 00 40\n"
 				      " 12: bc 7a 00\n"
 				      " 12: bc 7d 00\n"
 				      " 12: bc 7f 00\n"
+				      " 12: bc 65 00\n"
+				      " 12: bc 64 00\n"
+				      " 12: bc 06 02\n"
+				      " 12: bc 26 00\n"
 				      " 13: ed 00 40\n"
 				      " 13: bd 7a 00\n"
 				      " 13: bd 7d 00\n"
 				      " 13: bd 7f 00\n"
+				      " 13: bd 65 00\n"
+				      " 13: bd 64 00\n"
+				      " 13: bd 06 02\n"
+				      " 13: bd 26 00\n"
 				      " 14: ee 00 40\n"
 				      " 14: be 7a 00\n"
 				      " 14: be 7d 00\n"
 				      " 14: be 7f 00\n"
+				      " 14: be 65 00\n"
+				      " 14: be 64 00\n"
+				      " 14: be 06 02\n"
+				      " 14: be 26 00\n"
 				      " 15: ef 00 40\n"
 				      " 15: bf 7a 00\n"
 				      " 15: bf 7d 00\n"
-				      " 15: bf 7f 00\n")) );
+				      " 15: bf 7f 00\n"
+				      " 15: bf 65 00\n"
+				      " 15: bf 64 00\n"
+				      " 15: bf 06 02\n"
+				      " 15: bf 26 00\n"), __LINE__, _T(__FILE__)) );
 
 	/* check all permutations */
 
@@ -249,6 +314,987 @@ void CommonMidiOutputTest::testNoteOnOff()
 	out->Close();
 	DEBUGLOG(midiio,_T("|%s|"),((mutString)(out->getOut())).c_str());
 	CPPUNIT_ASSERT( out->Check(_T("...closed.\n")) );
+}
+
+void CommonMidiOutputTest::testMoreNotesThanChannels()
+{
+	CPPUNIT_ASSERT( out );
+	out->Open();
+	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
+				      "  0: e0 00 40\n"
+				      "  0: b0 7a 00\n"
+				      "  0: b0 7d 00\n"
+				      "  0: b0 7f 00\n"
+				      "  0: b0 65 00\n"
+				      "  0: b0 64 00\n"
+				      "  0: b0 06 02\n"
+				      "  0: b0 26 00\n"
+				      "  1: e1 00 40\n"
+				      "  1: b1 7a 00\n"
+				      "  1: b1 7d 00\n"
+				      "  1: b1 7f 00\n"
+				      "  1: b1 65 00\n"
+				      "  1: b1 64 00\n"
+				      "  1: b1 06 02\n"
+				      "  1: b1 26 00\n"
+				      "  2: e2 00 40\n"
+				      "  2: b2 7a 00\n"
+				      "  2: b2 7d 00\n"
+				      "  2: b2 7f 00\n"
+				      "  2: b2 65 00\n"
+				      "  2: b2 64 00\n"
+				      "  2: b2 06 02\n"
+				      "  2: b2 26 00\n"
+				      "  3: e3 00 40\n"
+				      "  3: b3 7a 00\n"
+				      "  3: b3 7d 00\n"
+				      "  3: b3 7f 00\n"
+				      "  3: b3 65 00\n"
+				      "  3: b3 64 00\n"
+				      "  3: b3 06 02\n"
+				      "  3: b3 26 00\n"
+				      "  4: e4 00 40\n"
+				      "  4: b4 7a 00\n"
+				      "  4: b4 7d 00\n"
+				      "  4: b4 7f 00\n"
+				      "  4: b4 65 00\n"
+				      "  4: b4 64 00\n"
+				      "  4: b4 06 02\n"
+				      "  4: b4 26 00\n"
+				      "  5: e5 00 40\n"
+				      "  5: b5 7a 00\n"
+				      "  5: b5 7d 00\n"
+				      "  5: b5 7f 00\n"
+				      "  5: b5 65 00\n"
+				      "  5: b5 64 00\n"
+				      "  5: b5 06 02\n"
+				      "  5: b5 26 00\n"
+				      "  6: e6 00 40\n"
+				      "  6: b6 7a 00\n"
+				      "  6: b6 7d 00\n"
+				      "  6: b6 7f 00\n"
+				      "  6: b6 65 00\n"
+				      "  6: b6 64 00\n"
+				      "  6: b6 06 02\n"
+				      "  6: b6 26 00\n"
+				      "  7: e7 00 40\n"
+				      "  7: b7 7a 00\n"
+				      "  7: b7 7d 00\n"
+				      "  7: b7 7f 00\n"
+				      "  7: b7 65 00\n"
+				      "  7: b7 64 00\n"
+				      "  7: b7 06 02\n"
+				      "  7: b7 26 00\n"
+				      "  8: e8 00 40\n"
+				      "  8: b8 7a 00\n"
+				      "  8: b8 7d 00\n"
+				      "  8: b8 7f 00\n"
+				      "  8: b8 65 00\n"
+				      "  8: b8 64 00\n"
+				      "  8: b8 06 02\n"
+				      "  8: b8 26 00\n"
+				      "  9: e9 00 40\n"
+				      "  9: b9 7a 00\n"
+				      "  9: b9 7d 00\n"
+				      "  9: b9 7f 00\n"
+				      "  9: b9 65 00\n"
+				      "  9: b9 64 00\n"
+				      "  9: b9 06 02\n"
+				      "  9: b9 26 00\n"
+				      " 10: ea 00 40\n"
+				      " 10: ba 7a 00\n"
+				      " 10: ba 7d 00\n"
+				      " 10: ba 7f 00\n"
+				      " 10: ba 65 00\n"
+				      " 10: ba 64 00\n"
+				      " 10: ba 06 02\n"
+				      " 10: ba 26 00\n"
+				      " 11: eb 00 40\n"
+				      " 11: bb 7a 00\n"
+				      " 11: bb 7d 00\n"
+				      " 11: bb 7f 00\n"
+				      " 11: bb 65 00\n"
+				      " 11: bb 64 00\n"
+				      " 11: bb 06 02\n"
+				      " 11: bb 26 00\n"
+				      " 12: ec 00 40\n"
+				      " 12: bc 7a 00\n"
+				      " 12: bc 7d 00\n"
+				      " 12: bc 7f 00\n"
+				      " 12: bc 65 00\n"
+				      " 12: bc 64 00\n"
+				      " 12: bc 06 02\n"
+				      " 12: bc 26 00\n"
+				      " 13: ed 00 40\n"
+				      " 13: bd 7a 00\n"
+				      " 13: bd 7d 00\n"
+				      " 13: bd 7f 00\n"
+				      " 13: bd 65 00\n"
+				      " 13: bd 64 00\n"
+				      " 13: bd 06 02\n"
+				      " 13: bd 26 00\n"
+				      " 14: ee 00 40\n"
+				      " 14: be 7a 00\n"
+				      " 14: be 7d 00\n"
+				      " 14: be 7f 00\n"
+				      " 14: be 65 00\n"
+				      " 14: be 64 00\n"
+				      " 14: be 06 02\n"
+				      " 14: be 26 00\n"
+				      " 15: ef 00 40\n"
+				      " 15: bf 7a 00\n"
+				      " 15: bf 7d 00\n"
+				      " 15: bf 7f 00\n"
+				      " 15: bf 65 00\n"
+				      " 15: bf 64 00\n"
+				      " 15: bf 06 02\n"
+				      " 15: bf 26 00\n"), __LINE__, _T(__FILE__)) );
+
+	/* check all permutations */
+
+	DEBUGLOG(midiio,_T("123"));
+
+	out->NoteOn(box,56,96,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,60,97,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,63,98,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,56,96,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,60,97,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,63,98,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,56,96,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,60,97,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,63,98,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,56,96,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,60,97,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,63,98,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,56,96,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,60,97,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,63,98,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__)) );
+
+
+	out->NoteOn(box,64,99,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 40\n  0: 90 40 63\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,65,100,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 40\n  3: 93 41 64\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,66,101,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 86 38 40\n  6: 96 42 65\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,67,102,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 40\n 10: 9a 43 66\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,68,103,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 40\n  1: 91 44 67\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,69,104,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  4: 84 3c 40\n  4: 94 45 68\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,70,105,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 40\n  7: 97 46 69\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,71,106,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 40\n 11: 9b 47 6a\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,72,107,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 40\n 14: 9e 48 6b\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,73,108,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 40\n  2: 92 49 6c\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,74,109,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  5: 85 3f 40\n  5: 95 4a 6d\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,75,110,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 40\n  8: 98 4b 6e\n"), __LINE__, _T(__FILE__)) );
+
+	out->NoteOn(box,76,111,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 40 40\n  0: 90 4c 6f\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,77,112,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 41 40\n  3: 93 4d 70\n"), __LINE__, _T(__FILE__)) );
+	out->NoteOn(box,78,113,route.get(),0,cd);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 86 42 40\n  6: 96 4e 71\n"), __LINE__, _T(__FILE__)) );
+
+ 	out->Close();
+ 	CPPUNIT_ASSERT( out->Check(_T(" 12: 8c 3f 40\n 13: 8d 38 40\n 15: 8f 3f 40\n 10: 8a 43 40\n  1: 81 44 40\n  4: 84 45 40\n  7: 87 46 40\n 11: 8b 47 40\n 14: 8e 48 40\n  2: 82 49 40\n  5: 85 4a 40\n  8: 88 4b 40\n  0: 80 4c 40\n  3: 83 4d 40\n  6: 86 4e 40\n...closed.\n"), __LINE__, _T(__FILE__)) );
+}
+
+
+void CommonMidiInputTest::setUp() 
+{ 
+// change DEBUGA to DEBUG in case you need the debug input
+#ifdef DEBUG
+	debugFlags::flags.timer = true;
+	debugFlags::flags.midiio = true;
+#endif
+	std::clog << "Running setUp()" << std::endl;
+
+	initialize_boxes();
+	GlobalReset();
+	route = mutabor::RouteFactory::Create();
+	route->Attatch(0);
+	box = &mut_box[route->GetBox()];
+
+	RealTime = true;
+	in = new midicmnInputDevice(3,_T("Test"));
+	guard = in;
+	out = new midicmnOutputDevice(3,_T("Test"));
+	outguard = out;
+
+	route->Attatch (guard);
+	route->Attatch (outguard);
+	route->SetOutputFrom (0);
+	route->SetOutputTo (15);
+	route->OutputAvoidDrumChannel (true);
+}
+
+void CommonMidiInputTest::tearDown()
+{ 
+#ifdef DEBUG
+	debugFlags::flags.timer = false;
+	debugFlags::flags.midiio = false;
+#endif
+	in = NULL;
+	out = NULL;
+	guard = NULL;
+	route = NULL;
+}
+
+
+void CommonMidiInputTest::testPanic()
+{
+	CPPUNIT_ASSERT( in );
+	out->Open();
+	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
+				      "  0: e0 00 40\n"
+				      "  0: b0 7a 00\n"
+				      "  0: b0 7d 00\n"
+				      "  0: b0 7f 00\n"
+				      "  0: b0 65 00\n"
+				      "  0: b0 64 00\n"
+				      "  0: b0 06 02\n"
+				      "  0: b0 26 00\n"
+				      "  1: e1 00 40\n"
+				      "  1: b1 7a 00\n"
+				      "  1: b1 7d 00\n"
+				      "  1: b1 7f 00\n"
+				      "  1: b1 65 00\n"
+				      "  1: b1 64 00\n"
+				      "  1: b1 06 02\n"
+				      "  1: b1 26 00\n"
+				      "  2: e2 00 40\n"
+				      "  2: b2 7a 00\n"
+				      "  2: b2 7d 00\n"
+				      "  2: b2 7f 00\n"
+				      "  2: b2 65 00\n"
+				      "  2: b2 64 00\n"
+				      "  2: b2 06 02\n"
+				      "  2: b2 26 00\n"
+				      "  3: e3 00 40\n"
+				      "  3: b3 7a 00\n"
+				      "  3: b3 7d 00\n"
+				      "  3: b3 7f 00\n"
+				      "  3: b3 65 00\n"
+				      "  3: b3 64 00\n"
+				      "  3: b3 06 02\n"
+				      "  3: b3 26 00\n"
+				      "  4: e4 00 40\n"
+				      "  4: b4 7a 00\n"
+				      "  4: b4 7d 00\n"
+				      "  4: b4 7f 00\n"
+				      "  4: b4 65 00\n"
+				      "  4: b4 64 00\n"
+				      "  4: b4 06 02\n"
+				      "  4: b4 26 00\n"
+				      "  5: e5 00 40\n"
+				      "  5: b5 7a 00\n"
+				      "  5: b5 7d 00\n"
+				      "  5: b5 7f 00\n"
+				      "  5: b5 65 00\n"
+				      "  5: b5 64 00\n"
+				      "  5: b5 06 02\n"
+				      "  5: b5 26 00\n"
+				      "  6: e6 00 40\n"
+				      "  6: b6 7a 00\n"
+				      "  6: b6 7d 00\n"
+				      "  6: b6 7f 00\n"
+				      "  6: b6 65 00\n"
+				      "  6: b6 64 00\n"
+				      "  6: b6 06 02\n"
+				      "  6: b6 26 00\n"
+				      "  7: e7 00 40\n"
+				      "  7: b7 7a 00\n"
+				      "  7: b7 7d 00\n"
+				      "  7: b7 7f 00\n"
+				      "  7: b7 65 00\n"
+				      "  7: b7 64 00\n"
+				      "  7: b7 06 02\n"
+				      "  7: b7 26 00\n"
+				      "  8: e8 00 40\n"
+				      "  8: b8 7a 00\n"
+				      "  8: b8 7d 00\n"
+				      "  8: b8 7f 00\n"
+				      "  8: b8 65 00\n"
+				      "  8: b8 64 00\n"
+				      "  8: b8 06 02\n"
+				      "  8: b8 26 00\n"
+				      "  9: e9 00 40\n"
+				      "  9: b9 7a 00\n"
+				      "  9: b9 7d 00\n"
+				      "  9: b9 7f 00\n"
+				      "  9: b9 65 00\n"
+				      "  9: b9 64 00\n"
+				      "  9: b9 06 02\n"
+				      "  9: b9 26 00\n"
+				      " 10: ea 00 40\n"
+				      " 10: ba 7a 00\n"
+				      " 10: ba 7d 00\n"
+				      " 10: ba 7f 00\n"
+				      " 10: ba 65 00\n"
+				      " 10: ba 64 00\n"
+				      " 10: ba 06 02\n"
+				      " 10: ba 26 00\n"
+				      " 11: eb 00 40\n"
+				      " 11: bb 7a 00\n"
+				      " 11: bb 7d 00\n"
+				      " 11: bb 7f 00\n"
+				      " 11: bb 65 00\n"
+				      " 11: bb 64 00\n"
+				      " 11: bb 06 02\n"
+				      " 11: bb 26 00\n"
+				      " 12: ec 00 40\n"
+				      " 12: bc 7a 00\n"
+				      " 12: bc 7d 00\n"
+				      " 12: bc 7f 00\n"
+				      " 12: bc 65 00\n"
+				      " 12: bc 64 00\n"
+				      " 12: bc 06 02\n"
+				      " 12: bc 26 00\n"
+				      " 13: ed 00 40\n"
+				      " 13: bd 7a 00\n"
+				      " 13: bd 7d 00\n"
+				      " 13: bd 7f 00\n"
+				      " 13: bd 65 00\n"
+				      " 13: bd 64 00\n"
+				      " 13: bd 06 02\n"
+				      " 13: bd 26 00\n"
+				      " 14: ee 00 40\n"
+				      " 14: be 7a 00\n"
+				      " 14: be 7d 00\n"
+				      " 14: be 7f 00\n"
+				      " 14: be 65 00\n"
+				      " 14: be 64 00\n"
+				      " 14: be 06 02\n"
+				      " 14: be 26 00\n"
+				      " 15: ef 00 40\n"
+				      " 15: bf 7a 00\n"
+				      " 15: bf 7d 00\n"
+				      " 15: bf 7f 00\n"
+				      " 15: bf 65 00\n"
+				      " 15: bf 64 00\n"
+				      " 15: bf 06 02\n"
+				      " 15: bf 26 00\n"), __LINE__, _T(__FILE__)) );
+	in->Open();
+
+	/* check all permutations */
+
+	DEBUGLOG(midiio,_T("123"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("132"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  5: 85 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  4: 84 3c 36\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("213"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 86 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("231"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 8c 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 35\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("312"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	// check sending note on with velocity = 0 
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 8d 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 36\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("321"));
+
+	// Add check for NULL as tone system parameter
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
+
+	// now collect data
+	DEBUGLOG(midiio,_T("123"));
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("132"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("213"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("231"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("312"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("321"));
+
+	// Add check for NULL as tone system parameter
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 38 40\n  2: 92 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 38 40\n  2: 92 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 40\n  3: 93 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	in->Panic();
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3c 40\n"
+				      "  3: 83 3f 40\n"
+				      "  4: 84 3f 40\n"
+				      "  5: 85 3c 40\n"
+				      "  6: 86 3c 40\n"
+				      "  8: 88 3f 40\n"
+				      " 10: 8a 3f 40\n"
+				      " 11: 8b 38 40\n"
+				      " 12: 8c 3c 40\n"
+				      " 13: 8d 3c 40\n"
+				      " 14: 8e 3f 40\n"
+				      " 15: 8f 38 40\n"), 
+				   __LINE__, 
+				   _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	// check sending note on with velocity = 0 
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->Close();
+	out->Close();
+	DEBUGLOG(midiio,_T("|%s|"),((mutString)(out->getOut())).c_str());
+	CPPUNIT_ASSERT( out->Check(_T("...closed.\n"), __LINE__, _T(__FILE__) ) );
+}
+
+void CommonMidiInputTest::testGlobalPanic()
+{
+	CPPUNIT_ASSERT( in );
+	out->Open();
+	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
+				      "  0: e0 00 40\n"
+				      "  0: b0 7a 00\n"
+				      "  0: b0 7d 00\n"
+				      "  0: b0 7f 00\n"
+				      "  0: b0 65 00\n"
+				      "  0: b0 64 00\n"
+				      "  0: b0 06 02\n"
+				      "  0: b0 26 00\n"
+				      "  1: e1 00 40\n"
+				      "  1: b1 7a 00\n"
+				      "  1: b1 7d 00\n"
+				      "  1: b1 7f 00\n"
+				      "  1: b1 65 00\n"
+				      "  1: b1 64 00\n"
+				      "  1: b1 06 02\n"
+				      "  1: b1 26 00\n"
+				      "  2: e2 00 40\n"
+				      "  2: b2 7a 00\n"
+				      "  2: b2 7d 00\n"
+				      "  2: b2 7f 00\n"
+				      "  2: b2 65 00\n"
+				      "  2: b2 64 00\n"
+				      "  2: b2 06 02\n"
+				      "  2: b2 26 00\n"
+				      "  3: e3 00 40\n"
+				      "  3: b3 7a 00\n"
+				      "  3: b3 7d 00\n"
+				      "  3: b3 7f 00\n"
+				      "  3: b3 65 00\n"
+				      "  3: b3 64 00\n"
+				      "  3: b3 06 02\n"
+				      "  3: b3 26 00\n"
+				      "  4: e4 00 40\n"
+				      "  4: b4 7a 00\n"
+				      "  4: b4 7d 00\n"
+				      "  4: b4 7f 00\n"
+				      "  4: b4 65 00\n"
+				      "  4: b4 64 00\n"
+				      "  4: b4 06 02\n"
+				      "  4: b4 26 00\n"
+				      "  5: e5 00 40\n"
+				      "  5: b5 7a 00\n"
+				      "  5: b5 7d 00\n"
+				      "  5: b5 7f 00\n"
+				      "  5: b5 65 00\n"
+				      "  5: b5 64 00\n"
+				      "  5: b5 06 02\n"
+				      "  5: b5 26 00\n"
+				      "  6: e6 00 40\n"
+				      "  6: b6 7a 00\n"
+				      "  6: b6 7d 00\n"
+				      "  6: b6 7f 00\n"
+				      "  6: b6 65 00\n"
+				      "  6: b6 64 00\n"
+				      "  6: b6 06 02\n"
+				      "  6: b6 26 00\n"
+				      "  7: e7 00 40\n"
+				      "  7: b7 7a 00\n"
+				      "  7: b7 7d 00\n"
+				      "  7: b7 7f 00\n"
+				      "  7: b7 65 00\n"
+				      "  7: b7 64 00\n"
+				      "  7: b7 06 02\n"
+				      "  7: b7 26 00\n"
+				      "  8: e8 00 40\n"
+				      "  8: b8 7a 00\n"
+				      "  8: b8 7d 00\n"
+				      "  8: b8 7f 00\n"
+				      "  8: b8 65 00\n"
+				      "  8: b8 64 00\n"
+				      "  8: b8 06 02\n"
+				      "  8: b8 26 00\n"
+				      "  9: e9 00 40\n"
+				      "  9: b9 7a 00\n"
+				      "  9: b9 7d 00\n"
+				      "  9: b9 7f 00\n"
+				      "  9: b9 65 00\n"
+				      "  9: b9 64 00\n"
+				      "  9: b9 06 02\n"
+				      "  9: b9 26 00\n"
+				      " 10: ea 00 40\n"
+				      " 10: ba 7a 00\n"
+				      " 10: ba 7d 00\n"
+				      " 10: ba 7f 00\n"
+				      " 10: ba 65 00\n"
+				      " 10: ba 64 00\n"
+				      " 10: ba 06 02\n"
+				      " 10: ba 26 00\n"
+				      " 11: eb 00 40\n"
+				      " 11: bb 7a 00\n"
+				      " 11: bb 7d 00\n"
+				      " 11: bb 7f 00\n"
+				      " 11: bb 65 00\n"
+				      " 11: bb 64 00\n"
+				      " 11: bb 06 02\n"
+				      " 11: bb 26 00\n"
+				      " 12: ec 00 40\n"
+				      " 12: bc 7a 00\n"
+				      " 12: bc 7d 00\n"
+				      " 12: bc 7f 00\n"
+				      " 12: bc 65 00\n"
+				      " 12: bc 64 00\n"
+				      " 12: bc 06 02\n"
+				      " 12: bc 26 00\n"
+				      " 13: ed 00 40\n"
+				      " 13: bd 7a 00\n"
+				      " 13: bd 7d 00\n"
+				      " 13: bd 7f 00\n"
+				      " 13: bd 65 00\n"
+				      " 13: bd 64 00\n"
+				      " 13: bd 06 02\n"
+				      " 13: bd 26 00\n"
+				      " 14: ee 00 40\n"
+				      " 14: be 7a 00\n"
+				      " 14: be 7d 00\n"
+				      " 14: be 7f 00\n"
+				      " 14: be 65 00\n"
+				      " 14: be 64 00\n"
+				      " 14: be 06 02\n"
+				      " 14: be 26 00\n"
+				      " 15: ef 00 40\n"
+				      " 15: bf 7a 00\n"
+				      " 15: bf 7d 00\n"
+				      " 15: bf 7f 00\n"
+				      " 15: bf 65 00\n"
+				      " 15: bf 64 00\n"
+				      " 15: bf 06 02\n"
+				      " 15: bf 26 00\n"), __LINE__, _T(__FILE__)) );
+	in->Open();
+
+	/* check all permutations */
+
+	DEBUGLOG(midiio,_T("123"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("132"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  5: 85 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  4: 84 3c 36\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("213"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 86 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("231"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 8c 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 35\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("312"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	// check sending note on with velocity = 0 
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 8d 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 36\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("321"));
+
+	// Add check for NULL as tone system parameter
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__) ) );
+
+	// now collect data
+	DEBUGLOG(midiio,_T("123"));
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  5: 95 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  4: 94 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("132"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 97 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  6: 96 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("213"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 9b 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 9c 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 9a 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("231"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 9f 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 9e 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("312"));
+
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	DEBUGLOG(midiio,_T("321"));
+
+	// Add check for NULL as tone system parameter
+	in->NoteOn(0,56,96);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 38 40\n  2: 92 38 60\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,60,97);
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 38 40\n  2: 92 3c 61\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOn(0,63,98);
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 40\n  3: 93 3f 62\n"), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 38 35\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
+
+	::Panic();
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3c 40\n"
+				      "  3: 83 3f 40\n"
+				      "  4: 84 3f 40\n"
+				      "  5: 85 3c 40\n"
+				      "  6: 86 3c 40\n"
+				      "  8: 88 3f 40\n"
+				      " 10: 8a 3f 40\n"
+				      " 11: 8b 38 40\n"
+				      " 12: 8c 3c 40\n"
+				      " 13: 8d 3c 40\n"
+				      " 14: 8e 3f 40\n"
+				      " 15: 8f 38 40\n"
+				      "  0: b0 7b 00\n"
+				      "  1: b1 7b 00\n"
+				      "  2: b2 7b 00\n"
+				      "  3: b3 7b 00\n"
+				      "  4: b4 7b 00\n"
+				      "  5: b5 7b 00\n"
+				      "  6: b6 7b 00\n"
+				      "  7: b7 7b 00\n"
+				      "  8: b8 7b 00\n"
+				      "  9: b9 7b 00\n"
+				      " 10: ba 7b 00\n"
+				      " 11: bb 7b 00\n"
+				      " 12: bc 7b 00\n"
+				      " 13: bd 7b 00\n"
+				      " 14: be 7b 00\n"
+				      " 15: bf 7b 00\n"), 
+				   __LINE__, 
+				   _T(__FILE__) ) );
+
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	// check sending note on with velocity = 0 
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->NoteOff(0,63,55);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,60,54);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+	in->NoteOff(0,56,53);
+	CPPUNIT_ASSERT( out->Check(_T(""), __LINE__, _T(__FILE__) ) );
+
+	in->Close();
+	out->Close();
+	DEBUGLOG(midiio,_T("|%s|"),((mutString)(out->getOut())).c_str());
+	CPPUNIT_ASSERT( out->Check(_T("...closed.\n"), __LINE__, _T(__FILE__) ) );
 }
 
 ///\}

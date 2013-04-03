@@ -110,6 +110,7 @@ namespace mutaborGUI {
 	template<class T> 
 	class GUIfyRoute: public T {
 		friend class GUIRouteBase;
+		typedef GUIfyRoute<T> thistype;
 	protected:
 		typedef TGUIRoute<T> GUIData;
 		virtual void setUserData (void * data) 
@@ -158,14 +159,14 @@ namespace mutaborGUI {
 			if (T::Box >= 0) {
 				BoxData::GetBox(T::Box).Add(shape);
 			} else {
-				UNREACHABLECT(GUIRouteBase);
+				UNREACHABLECT(thistype);
 			}
 		}
 		static bool Remove(MutBoxShape * shape) {
 			if (T::Box >= 0) {
 				return BoxData::GetBox(T::Box).Remove(shape);
 			} else {
-				UNREACHABLECT(GUIRouteBase);
+				UNREACHABLECT(thistype);
 			}
 		}
 
@@ -200,21 +201,21 @@ namespace mutaborGUI {
 			if (T::Box >= 0)
 				BoxData::GetBox(T::Box).Attatch(shape);
 			else {
-				UNREACHABLECT(GUIRouteBase);
+				UNREACHABLECT(thistype);
 			}
 		}
 		static bool Detatch(MutBoxShape * shape) {
 			if (T::Box >= 0)
 				return BoxData::GetBox(T::Box).Detatch(shape);
 			else {
-				UNREACHABLECT(GUIRouteBase);
+				UNREACHABLECT(thistype);
 			}
 		}
 		static bool Delete(MutBoxShape * shape) {
 			if (T::Box >= 0) 
 				return BoxData::GetBox(T::Box).Delete(shape);
 			else {
-				UNREACHABLECT(GUIRouteBase);
+				UNREACHABLECT(thistype);
 			}
 		}
 

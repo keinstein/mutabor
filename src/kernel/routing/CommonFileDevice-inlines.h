@@ -243,7 +243,7 @@ namespace mutabor {
 				pauseTime = wxGetLocalTimeMillis().GetValue();
 			}
 			Mode = DevicePause;
-			Quite();
+			Panic();
 			break;
 		case DevicePause:
 			Play(); // A mechanical Pause button usually is released if pressed twice

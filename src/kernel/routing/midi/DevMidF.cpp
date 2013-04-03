@@ -430,6 +430,7 @@ namespace mutabor {
 		}
 
 		// Header Chunk
+		// Flawfinder: ignore
 		char Header[5] = {0,0,0,0,0};
 		mutReadStream(is,Header, 4);
 		if (strcmp(Header,"MThd")) {
@@ -483,6 +484,12 @@ namespace mutabor {
 
 		for (i = 0; i < nTrack; i++ ) {
 			mutReadStream(is,Header, 4);
+			if (strcmp(Header,"MTrk")) {
+				LAUFZEIT_ERROR1(_("File '%s' has a broken track header."), Name.c_str())	;
+				isOpen = false;
+				return false;
+			}
+
 			l = mutabor::ReadLength(is);
 
 			if ( l > (long) 64000 ) {
@@ -700,84 +707,6 @@ namespace mutabor {
 //(((BYTE*)(&midiCode))[i])
 
 // f¸r bestimmte Route Codeverarbeitung
-	void InputMidiFile::ProceedRoute(DWORD midiCode, Route route)
-	{
-	
-		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
-			  route->Active,
-			  route->GetOutputDevice().get());
-		int Box = route->GetBox();
-		BYTE MidiChannel = MIDICODE(0) & 0x0F;
-		BYTE MidiStatus = MIDICODE(0) & 0xF0;
-		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
-
-		switch ( MidiStatus ) {
-
-		case NOTE_ON: // Note On
-			if ( MIDICODE(2) > 0 ) {
-				if ( route->Active )
-					AddKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId(), NULL);
-
-				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()
-						->NoteOn(&mut_box[Box], 
-							 MIDICODE(1), 
-							 MIDICODE(2), 
-							 route.get(),
-							 MidiChannel, 
-							 Cd[MidiChannel]);
-
-				break;
-			}
-
-		case NOTE_OFF: // Note Off
-			if ( route->Active )
-				DeleteKey(&mut_box[Box], MIDICODE(1), MidiChannel, route->GetId());
-
-			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()
-					->NoteOff(&mut_box[Box], 
-						  MIDICODE(1), 
-						  MIDICODE(2), 
-						  route.get(), 
-						  MidiChannel,
-						  false);
-
-			break;
-
-		case PROGRAM_CHANGE: // Programm Change
-			Cd[MidiChannel].program_change(MIDICODE(1));
-
-			break;
-
-		case CONTROLLER:
-			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
-			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
-			break;
-		case KEY_PRESSURE:
-#pragma warning "implement key_pressure"
-		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#pragma warning "implement channel_pressure"			
-			break;
-
-		case SYSTEM:
-#pragma message "implement system messsages"
-#if 0
-			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->MidiOut(pData,
-                                nData);
-#else
-                        ;
-#endif
-			
-		}
-
-		if ( Box >= 0 && route->Active )
-			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(&mut_box[Box], MIDICODE(0));
-				midiCode >>= 8;
-			}
-	}
 
 	
 #ifdef WX
@@ -799,42 +728,66 @@ namespace mutabor {
 	
 
 // Routen testen und jenachdem entsprechend Codeverarbeitung
-	void InputMidiFile::Proceed(DWORD midiCode, int track)
+	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R, DWORD midiCode, int track)
 	{
 		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
-		char DidOut = 0;
-		
-		for (routeListType::iterator R = routes.begin(); 
-		     R != routes.end(); R++)
-			switch ( (*R)->Type ) {
-
-			case RTchannel:
-				if ( (*R)->Check(midiCode & 0x0F) ) {
-					ProceedRoute(midiCode, *R);
-					DidOut = 1;
-				}
-
-				break;
-
-			case RTstaff:
-				if ( (*R)->Check(track) ) {
-					ProceedRoute(midiCode, (*R));
-					DidOut = 1;
-				}
-
-				break;
-
-			case RTelse:
-				if ( DidOut )
-					break;
-
-			case RTall:
-				ProceedRoute(midiCode, (*R));
+		switch ( R->Type ) {
+		case RTchannel:
+			if ( R->Check(midiCode & 0x0F) ) {
+				return ProceedYes;
 			}
+			break;
 
-		FLUSH_UPDATE_UI;
+		case RTstaff:
+			if ( R->Check(track) ) {
+				return ProceedYes;
+			}
+			break;
+		case RTelse:
+			return ProceedElse;
+			break;
+			
+		case RTall:
+			return ProceedYes;
+			break;
+		default:
+			UNREACHABLEC;
+		}
+		return ProceedNo;
 	}
+	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R, 
+								 const std::vector<unsigned char > * midiCode,
+								 int track)
+	{
+		mutASSERT(midiCode);
+		if (midiCode->at(0) != midi::SYSTEM) 
+			UNREACHABLEC;
 
+		switch ( R->Type ) {
+		case RTchannel:
+//			if ( R->Check(midiCode & 0x0F) ) {
+				return ProceedYes;
+//			}
+			break;
+
+		case RTstaff:
+			if ( R->Check(track) ) {
+				return ProceedYes;
+			}
+			break;
+		case RTelse:
+//			return ProceedElse;
+			return ProceedYes;
+			break;
+			
+		case RTall:
+			return ProceedYes;
+			break;
+		default:
+			UNREACHABLEC;
+		}
+		return ProceedNo;
+	}
 	MidiFileFactory::~MidiFileFactory() {}
 
 	OutputDeviceClass * MidiFileFactory::DoCreateOutput () const

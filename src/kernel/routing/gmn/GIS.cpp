@@ -295,6 +295,7 @@ int Acc2Int(const mutString acc)
 #else
 char *strdupchr(char a)
 {
+	// Flawfinder: ignore
 	char s[2] = "w";
 	s[0] = a;
 	return strdup(s);

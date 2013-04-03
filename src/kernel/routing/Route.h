@@ -47,6 +47,7 @@
 #include "src/kernel/box.h"
 
 #include "src/kernel/treestorage.h"
+#include "src/kernel/Execute.h"
 
 #ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED
@@ -76,6 +77,7 @@ namespace mutabor {
 	typedef boost::intrusive_ptr<OutputDeviceClass> OutputDevice;
 	class InputDeviceClass;
 	typedef boost::intrusive_ptr<InputDeviceClass> InputDevice;	
+	class ChannelData;
 	
 	class RouteFactory;
 	
@@ -255,9 +257,71 @@ namespace mutabor {
 			return In;
 		}
 
+
+		void NoteOn(int key,
+			    int velocity,
+			    size_t make_unique,
+			    const ChannelData & input_channel_data,
+			    void * userdata ) {
+			if (Active) {
+				// global C part
+				::AddKey(&mut_box[GetBox()],
+						key, make_unique, GetId(), userdata);
+			}
+			if (Out) {
+				Out->NoteOn(&mut_box[GetBox()],
+					    key, velocity, this, make_unique, 
+					    input_channel_data);						    
+			}
+		}
+
+		void NoteOff(int key,
+			     int velocity,
+			     size_t make_unique) {
+			if (Active) {
+				DeleteKey(&mut_box[GetBox()], 
+					  key, 
+					  make_unique, 
+					  GetId());
+			}
+			if (Out) {
+				Out->NoteOff(&mut_box[Box], 
+					     key, 
+					     velocity,
+					     this, 
+					     make_unique,
+					     false);
+			}
+		}
+
+		void MidiAnalysis(DWORD midiCode) {
+			/// \todo Delegate midi data as Message to the box.
+			static const int midilength[8] = {
+				3, 3, 3, 3, 2, 2, 3, 1
+			};
+
+			if (!( Box >= 0 && Active )) return;
+			if (!midiCode & 0x80) {
+				UNREACHABLEC;
+				return;
+			}
+
+			int len = midilength[(midiCode & 0x70) >> 4];
+			for (int i = 0; i <  len; i++) {
+				::MidiAnalysis(&mut_box[Box],midiCode & 0xff);
+				midiCode >>= 8;
+			}
+		}
+
 		void NotesCorrect() {
 			if (Out) 
 				Out->NotesCorrect(this);
+		}
+
+		void Panic() {
+			/// \todo reset keys by channel
+			if (Out) 
+				Out -> Quiet(this);
 		}
 
 		void Controller(int controller, int value) {

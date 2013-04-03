@@ -20,8 +20,7 @@ void compiler_warning( int nr, ... )
   va_list arglist;
 
   va_start(arglist,nr); 
-  fprintf(stderr,"Warnung: ");
-  fprintf(stderr,Warning_text[nr], arglist );
+  fprintf(stderr,"Warnung: %s", Warning_text[nr], arglist );
 }
 
 void fatal_error( int nr, ... ) 
@@ -32,6 +31,7 @@ void fatal_error( int nr, ... )
   fprintf(stderr,"Fehler: ");
   if (mutabor_debug_level)
     fprintf(stderr,"Nr. %d ",nr);
+  // Flawfinder: ignore
   vfprintf(stderr,Error_text[nr], arglist /* arglist */);
   fprintf(stderr,"\n");
 }

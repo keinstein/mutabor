@@ -133,6 +133,7 @@ namespace mutabor {
 			return false;
 		}
 		bool open = IsOpen();
+		// Flawfinder: ignore
 		if (open) {
 			if (!newclass->IsOpen()) newclass->Open();
 		}
@@ -284,14 +285,18 @@ OutputDeviceClass:\n\
 		TRACEC;
 	}
 
-	void InputDeviceClass::Quite()
-	{
-		DEBUGLOG(smartptr,_T(""));
-		for (routeListType::iterator R = routes.begin(); 
-		     R != routes.end(); R++)
-			if ((*R)->GetOutputDevice() )
-				(*R)->GetOutputDevice()->Quiet(R->get());
-		DEBUGLOG(smartptr,_T(""));
+	void InputDeviceClass::Panic(bool global) {
+		current_keys_type::iterator i;
+		while ((i = current_keys.begin())!= current_keys.end()) {
+			i->route->NoteOff(i->key,i->velocity,i->unique_id);
+			current_keys.remove(i);
+		}
+
+		if (global) {
+			for (routeListType::iterator j = routes.begin(); j!= routes.end(); j++) {
+				(*j)->Panic();
+			}
+		}
 	}
 
 #ifdef WX

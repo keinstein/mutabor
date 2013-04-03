@@ -37,6 +37,7 @@
 #include "src/kernel/routing/midi/midicmn.h"
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/Execute.h"
+#include "src/kernel/Runtime.h"
 
 
 #ifdef __BORLANDC__
@@ -76,11 +77,13 @@ namespace mutabor {
 			return false;
 		}
 
-		for (i = this->GetMinChannel(); i <= this->GetMaxChannel(); i++) {
+		for (i = 0; i < 16; i++) {
 			pitch_bend(i,0);
+			// omni and poly act on 0
 			controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
 			controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
-			controller(i,midi::POLY_ON_OFF, midi::CONTROLLER_OFF );
+			controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
+			SendBendingRange(i);
 		}
 
 		this->isOpen = true;
@@ -402,15 +405,23 @@ namespace mutabor {
 	template<class T, class D>
 	void  CommonMidiOutput<T,D>::Controller(int mutabor_channel, int ctrl, int value)
 	{
-		mutASSERT(ctrl < 0x80);
-		mutASSERT(value < 0x80);
-		mutASSERT(this->isOpen);
+		mutASSERT(ctrl < 0x20000);
+		mutASSERT(value < 0x10000);
+		mutASSERT(this->isOpen || ctrl == midi::PITCH_BEND_SENSITIVITY);
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].channel == mutabor_channel
 			     && (ton_auf_kanal[i].active 
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
-				controller(i, ctrl, value);
-				Cd[i].set_controller(ctrl, value);
+				if (ctrl & 0x10000 == 0) {
+					controller(i, ctrl, value);
+					Cd[i].set_controller(ctrl, value);
+				} else {
+					controller(i,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+					controller(i,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+
+					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
+				}
 				
 				// sustained section contains only inactive MIDI channels
 				if (ctrl == midi::HOLD_PEDAL_ON_OFF
@@ -586,6 +597,7 @@ namespace mutabor {
 			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->GetId() )
 				NoteOff(&mut_box[r->GetBox()], ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
+
 	}
 
 	template<class T, class D>
@@ -605,6 +617,250 @@ namespace mutabor {
 		channel_queue.init();
 		
 		nKeyOn = 0;
+		for (int i = 0; i < GetMaxChannel(); i++) {
+			Controller(i,midi::ALL_NOTES_OFF,0);
+		}
+	}
+
+	template <class D>
+	void CommonMidiInput<D>::ProceedRoute(DWORD midiCode, Route route)
+	{
+		if (!route) {
+			UNREACHABLEC;
+			return;
+		}
+		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
+			  route->Active,
+			  route->GetOutputDevice().get());
+		BYTE MidiChannel = midiCode & 0x0F;
+		BYTE MidiStatus  = midiCode & 0xF0;
+		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+
+		switch ( MidiStatus ) {
+
+		case midi::NOTE_ON: // Note On
+			if ( (midiCode & 0x7f0000) > 0 ) {
+				this->NoteOn(route, 
+				       (midiCode >> 8) & 0xff,
+				       (midiCode >> 16) & 0xff,	      
+				       MidiChannel,
+				       Cd[MidiChannel],
+				       NULL);
+				break;
+			}
+
+		case midi::NOTE_OFF: // Note Off
+			this->NoteOff(route,
+				(midiCode >> 8) & 0xff, 
+				(midiCode >> 16) & 0xff,
+				MidiChannel);
+			break;
+
+		case midi::PROGRAM_CHANGE: // Programm Change
+			Cd[MidiChannel].program_change((midiCode >> 8) & 0xff);
+			break;
+
+		case midi::CONTROLLER:
+			if (((midiCode >> 8) & 0xff == midi::ALL_NOTES_OFF)&& 
+			    ((midiCode >> 16) & 0xff) == 0) {
+				::Panic();
+			} else {
+				Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
+							       (midiCode >> 16) & 0xff);
+				route -> Controller((midiCode >> 8) & 0xff,  
+						    (midiCode >> 16) & 0xff);
+				break;
+			}
+		case midi::KEY_PRESSURE:
+#pragma warning "implement key_pressure"
+		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
+#pragma warning "implement channel_pressure"			
+			break;
+
+		case midi::SYSTEM:
+#pragma message "implement system messsages"
+#if 0
+			if ( route->GetOutputDevice() )
+				route->GetOutputDevice()->MidiOut(pData,
+                                nData);
+#else
+                        ;
+#endif
+			
+		}
+
+		route->MidiAnalysis(midiCode);
+
+	}
+
+	template <class D>
+	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route)
+	{
+#pragma warning "Unimplemented SysEx ProceedRoute"
+		return;
+	
+		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
+			  route->Active,
+			  route->GetOutputDevice().get());
+		int Box = route->GetBox();
+		BYTE MidiChannel = midiCode->at(0) & 0x0F;
+		BYTE MidiStatus  = midiCode->at(0) & 0xF0;
+		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
+
+		switch ( MidiStatus ) {
+
+		case midi::NOTE_ON: // Note On
+			if ( midiCode->at(2) & 0x7f > 0 ) {
+				if ( route->Active )
+					AddKey(&mut_box[Box],
+					       midiCode->at(1), 
+					       MidiChannel, 
+					       route->GetId(), NULL);
+
+				if ( route->GetOutputDevice() )
+					route->GetOutputDevice()
+						->NoteOn(&mut_box[Box], 
+							 midiCode->at(1), 
+							 midiCode->at(2),
+							 route.get(),
+							 MidiChannel, 
+							 Cd[MidiChannel]);
+
+				break;
+			}
+
+		case midi::NOTE_OFF: // Note Off
+			if ( route->Active )
+				DeleteKey(&mut_box[Box], midiCode->at(1), 
+					  MidiChannel, 
+					  route->GetId());
+
+			if ( route->GetOutputDevice() )
+				route->GetOutputDevice()
+					->NoteOff(&mut_box[Box], 
+						  midiCode->at(1), 
+						  midiCode->at(2),
+						  route.get(), 
+						  MidiChannel,
+						  false);
+
+			break;
+
+		case midi::PROGRAM_CHANGE: // Programm Change
+			Cd[MidiChannel].program_change(midiCode->at(1));
+
+			break;
+
+		case midi::CONTROLLER:
+			Cd[MidiChannel].set_controller(midiCode->at(1), 
+						       midiCode->at(2));
+			route -> Controller(midiCode->at(1),  
+					    midiCode->at(2));
+			break;
+		case midi::KEY_PRESSURE:
+#pragma warning "implement key_pressure"
+		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
+#pragma warning "implement channel_pressure"			
+			break;
+
+		case midi::SYSTEM:
+#pragma message "implement system messsages"
+#if 0
+			if ( route->GetOutputDevice() )
+				route->GetOutputDevice()->MidiOut(pData,
+                                nData);
+#else
+                        ;
+#endif
+			
+		}
+
+		// Midianalyse
+		static const int midilength[8] = {
+			3, 3, 3, 3, 2, 2, 3, 1
+		};
+
+		if ( Box >= 0 && route->Active )
+			for (int i = 0; i < midilength[MidiStatus >> 5]; i++) {
+				MidiAnalysis(&mut_box[Box],midiCode->at(i));
+			}
+	}
+
+
+	/** 
+	 * Check which routes shall work on the midi code and forward the code.
+	 * 
+	 * \param midiCode Code to be processed
+	 * \param data     Additional data that might be necessardy
+	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
+
+	template <class D>
+	void CommonMidiInput<D>::Proceed(DWORD midiCode, int data)
+	{
+		bool DidOut = 0;
+		routeListType elseroutes;
+		
+		for (routeListType::iterator R = this->routes.begin(); 
+		     R != this->routes.end(); R++)
+			switch (shouldProceed(*R,midiCode, data)) {
+			case ProceedYes:
+				ProceedRoute(midiCode, *R);
+				DidOut = 1;
+				break;
+			case ProceedNo:
+				break;
+			case ProceedElse:
+				elseroutes.push_back(*R);
+				break;
+			default:
+				UNREACHABLEC;
+			}
+		if (!DidOut) {
+			for (routeListType::iterator R = elseroutes.begin(); 
+			     R != elseroutes.end(); R++) {
+				ProceedRoute(midiCode,*R);
+			}
+		}
+
+		FLUSH_UPDATE_UI;
+	}
+
+	/** 
+	 * Check which routes shall work on the midi code and forward the code.
+	 * 
+	 * \param midiCode Code to be processed
+	 * \param data     Additional data that might be necessardy
+	 */// Routen testen und jenachdem entsprechend Codeverarbeitung
+
+	template <class D>
+	void CommonMidiInput<D>::Proceed(const std::vector<unsigned char > * midiCode, int data)
+	{
+		bool DidOut = 0;
+		routeListType elseroutes;
+		
+		for (routeListType::iterator R = this->routes.begin(); 
+		     R != this->routes.end(); R++)
+			switch (shouldProceed(*R,midiCode, data)) {
+			case ProceedYes:
+				ProceedRoute(midiCode, *R);
+				DidOut = 1;
+				break;
+			case ProceedNo:
+				break;
+			case ProceedElse:
+				elseroutes.push_back(*R);
+				break;
+			default:
+				UNREACHABLEC;
+			}
+		if (!DidOut) {
+			for (routeListType::iterator R = elseroutes.begin(); 
+			     R != this->routes.end(); R++) {
+				ProceedRoute(midiCode,*R);
+			}
+		}
+
+		FLUSH_UPDATE_UI;
 	}
 
 

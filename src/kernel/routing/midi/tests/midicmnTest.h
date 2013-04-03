@@ -82,9 +82,15 @@ public:
 	void AddTime(frac) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
-	bool Check(mutString s) {
+	bool Check(mutString s,int line = -1, mutString filename = _T(__FILE__)) {
 		bool retval = (s == (mutString)Out);
+		if (!retval) {
+			DEBUGLOG(midiio,_T("Check failed:\n%s:%d:"),filename.c_str(),line);
+			DEBUGLOG(midiio,_T("Expected:\n%s"),s.c_str());
+			DEBUGLOG(midiio,_T("Got:\n%s"), mutString(Out).c_str());
+		}
 		Out.ClearData();
+//		retval = true;
 		return retval;
 	}
 };
@@ -93,6 +99,7 @@ class CommonMidiOutputTest : public CPPUNIT_NS::TestFixture
 {
 	CPPUNIT_TEST_SUITE( CommonMidiOutputTest );
 	CPPUNIT_TEST( testNoteOnOff );
+	CPPUNIT_TEST( testMoreNotesThanChannels );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -115,10 +122,78 @@ public:
 	void tearDown();
 
 	void testNoteOnOff();
+	void testMoreNotesThanChannels();
 
 protected:
 	mutabor::OutputDevice guard;
 	midicmnOutputDevice * out;
+	mutabor ::Route  route;
+	mutabor_box_type * box;
+	mutabor::ChannelData cd;
+};
+
+class  midicmnInputDevice:public mutabor::CommonMidiInput<mutabor::InputDeviceClass> {
+public:
+	typedef mutabor::CommonMidiInput<mutabor::InputDeviceClass> base;
+
+	midicmnInputDevice(int devId = -1, 
+			    wxString name = wxEmptyString):base(devId,name) {}
+	~midicmnInputDevice() {}
+
+// fix pure virtual functions:
+	void Save(tree_storage&) {}
+	void Save(tree_storage&, const mutabor::RouteClass*) {}
+	void Load(tree_storage&) {}
+	void Load(tree_storage&, mutabor::RouteClass*) {}
+	bool Open () { isOpen = true; }
+	proceed_bool shouldProceed(mutabor::Route R, DWORD midiCode,  int data =0) { return ProceedYes; }
+	proceed_bool shouldProceed(mutabor::Route R, 
+				   const std::vector<unsigned char > * midiCode,  
+				   int data =0) { return ProceedYes; }
+
+	void NoteOn(int channel, int inkey, int velocity) {
+		Proceed(mutabor::midi::NOTE_ON | (channel & 0x0f)| ((inkey & 0x7f) << 8)  | (velocity & 0x7f) << 16);
+	}
+	void NoteOff(int channel, int inkey, int velocity) {
+		Proceed(mutabor::midi::NOTE_OFF | (channel & 0x0f)| ((inkey & 0x7f) << 8)  | (velocity & 0x7f) << 16);
+	}
+
+};
+
+class CommonMidiInputTest : public CPPUNIT_NS::TestFixture 
+{
+	CPPUNIT_TEST_SUITE( CommonMidiInputTest );
+	CPPUNIT_TEST( testPanic );
+	CPPUNIT_TEST( testGlobalPanic );
+	CPPUNIT_TEST_SUITE_END();
+
+public:
+
+	CommonMidiInputTest()
+	{
+	}
+
+	virtual ~CommonMidiInputTest()
+	{
+	}
+
+	int countTestCases () const
+	{ 
+		abort();
+		return 1; 
+	}
+  
+	void setUp();
+	void tearDown();
+
+	void testPanic();
+	void testGlobalPanic();
+
+protected:
+	mutabor::InputDevice guard;
+	mutabor::OutputDevice outguard;
+	midicmnOutputDevice * out;
+	midicmnInputDevice * in;
 	mutabor ::Route  route;
 	mutabor_box_type * box;
 	mutabor::ChannelData cd;

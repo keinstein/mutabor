@@ -188,7 +188,11 @@ namespace mutabor {
 			ALL_NOTES_OFF            = 0x7B,
 			OMNI_OFF                 = 0x7C,
 			OMNI_ON                  = 0x7D, // (125)
-			POLY_ON_OFF              = 0x7F // (127)
+			// mono means not poly and vice versa
+			MONO_ON                  = 0x7E, // 126
+			POLY_OFF                 = 0x7E, // 126
+			MONO_OFF                 = 0x7F, // (127)
+			POLY_ON                  = 0x7F // (127)
 		};
 
 
@@ -197,8 +201,18 @@ namespace mutabor {
 			CONTROLLER_OFF          = 0X00
 		};
 
+		enum midi_registered_parameters {
+			// Form: 0x1MMLL
+			PITCH_BEND_SENSITIVITY = 0x10000,
+			CHANNEL_FINE_TUNING    = 0x10001,
+			CHANNEL_COARSE_TUNING  = 0x10002,
+			MODULATION_DEPTH_RANGE = 0x10005,
+			RPN_NULL               = 0x17F7F
+		};
+
 	}
 }
+
 #endif
 
 #endif /* precompiled */

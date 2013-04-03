@@ -383,6 +383,11 @@ namespace mutabor {
 		// Delta-Times lesen
 		minDelta = 0;
 		Mode = DeviceStop;
+		Panic();
+	}
+
+	void InputGis::Panic() {
+#pragma warning "Implement Panic()"
 	}
 
 // Gis arbeitet auf "tick" - Basis, ein tick = 2ms

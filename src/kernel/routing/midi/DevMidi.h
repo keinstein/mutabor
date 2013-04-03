@@ -370,22 +370,23 @@ namespace mutabor {
 
 // InputMidiPort -------------------------------------------------------
 
-	class InputMidiPort : public InputDeviceClass
+	class InputMidiPort : public CommonMidiInput<InputDeviceClass>
 	{
 		friend class MidiPortFactory;
+		typedef CommonMidiInput<InputDeviceClass> parentType;
 	protected:
 		InputMidiPort *NextMidiPort;
 
-		InputMidiPort() : InputDeviceClass(), NextMidiPort (NULL) { }
+		InputMidiPort() : parentType(), NextMidiPort (NULL) { }
                        
 		InputMidiPort(int devId, 
 			      const mutStringRef name,
 			      MutaborModeType mode,
 			      int id):
-			InputDeviceClass (devId,name,mode,id),
+			parentType (devId,name,mode,id),
 			NextMidiPort(NULL) {}
 		InputMidiPort(const mutStringRef name, int devId)
-			: InputDeviceClass(devId, name), NextMidiPort (NULL) {}
+			: parentType(devId, name), NextMidiPort (NULL) {}
 
 	public:
 		virtual ~InputMidiPort() {}
@@ -492,7 +493,10 @@ namespace mutabor {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		void Proceed(DWORD midiCode);
+		proceed_bool shouldProceed(Route R, DWORD midiCode, int data = 0);
+		proceed_bool shouldProceed(Route R, 
+					   const std::vector<unsigned char > * midiCode,  
+					   int data =0);
 	
 		virtual int GetMaxChannel() const { return 15; }
 		virtual int GetMinChannel() const { return 0; }
@@ -522,9 +526,7 @@ namespace mutabor {
 
 #endif
 	private:
-		ChannelData Cd[16];
 
-		void ProceedRoute(DWORD midiCode, Route route);
 	};
 
 	class MidiPortFactory:public DeviceFactory { 

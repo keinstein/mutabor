@@ -184,10 +184,22 @@ OutputMidiPort:\n\
 		mutUnused(deltatime);
 		DWORD data = 0;
 
+		mutASSERT(userData);
+		mutASSERT(message);
+		if (!message || !userData) {
+			UNREACHABLE;
+		}
+		InputMidiPort * thisPort = static_cast<InputMidiPort *>(userData);
+
+		if (message->size() > 4) {
+			thisPort -> Proceed(message,0);
+			return;
+		}
+
 		for (int i = message->size()-1; i >= 0; i--)
 			data = ((data << 8) | ((unsigned char)(*message)[i]));
 
-		((InputMidiPort*)userData)->Proceed(data);
+		thisPort->Proceed(data,0);
 	}
 
 #else
@@ -369,7 +381,7 @@ OutputMidiPort:\n\
 		midiInReset(hMidiIn);
 		midiInClose(hMidiIn);
 #endif
-		Quite();
+		Panic();
 		isOpen = false;
 	}
 
@@ -393,125 +405,60 @@ InputMidiPort:\n\
 	}
 #endif
 
-
-
-
-
-
-
-
-/*#define MIDICODE(i)                           \
-  (((BYTE*)(&midiCode))[i])
-*/
-// f¸r bestimmte Route Codeverarbeitung
-	void InputMidiPort::ProceedRoute(DWORD midiCode, Route route)
+// Routen testen und jenachdem entsprechend Codeverarbeitung
+	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, DWORD midiCode, int data)
 	{
-#ifdef DEBUG
-		if (midiCode != 0xf8)
-			DEBUGLOG(midiio,_T("midiCode = %x"), midiCode);
-#endif
-		int Box = route->GetBox();
-		BYTE MidiChannel = midiCode & 0x0F;
-		BYTE MidiStatus = midiCode & 0xF0;
-
-		switch ( MidiStatus ) {
-
-		case 0x90: // Note On
-			if ( (midiCode & 0x7f0000) > 0 ) {
-				if ( route->Active )
-					AddKey(&mut_box[Box], (midiCode >> 8) & 0xff, MidiChannel, route->GetId(), NULL);
-
-				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()
-						->NoteOn(&mut_box[Box], 
-							 (midiCode >> 8) & 0xff, 
-							 (midiCode >> 16) & 0xff,
-							 route.get(),
-							 MidiChannel, 
-							 Cd[MidiChannel]);
-
-				break;
-			}
-			
-		case 0x80: // Note Off
-			if ( route->Active )
-				DeleteKey(&mut_box[Box],(midiCode >> 8) & 0xff, MidiChannel, route->GetId());
-
-			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()
-					->NoteOff(&mut_box[Box], 
-						  (midiCode >> 8) & 0xff, 
-						  (midiCode >> 16) & 0xff, 
-						  route.get(), 
-						  MidiChannel,
-						  false);
-
+		switch ( R->Type ) {
+		case RTchannel:
+			if (R->Check(midiCode & 0x0F)) 
+				return ProceedYes;
+			break;
+		case RTstaff:
+			if ( ((midiCode & 0xF0) != 0x80 && 
+			      (midiCode & 0xF0) != 0x90) 
+			     || R->Check((midiCode >> 8) & 0xFF) )
+				return ProceedYes;
 			break;
 
-		case 0xC0: // Programm Change
-			Cd[MidiChannel].program_change((midiCode >> 8) & 0xff);
-
-			break;
-
-		case CONTROLLER: // Control Change
-			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, (midiCode >> 16) & 0xff);
-			route -> Controller((midiCode >> 8) & 0xff,  (midiCode >> 16) & 0xff);
-			break;
-		case KEY_PRESSURE:
-#pragma warning "implement key_pressure"
-		case CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#pragma warning "implement channel_pressure"			
-			break;
+		case RTelse:
+			return ProceedElse;
+		case RTall:
+			return ProceedYes;
+		default:
+			UNREACHABLEC;
 		}
-
-		// Midianalyse
-		int lMidiCode[8] = {
-			3, 3, 3, 3, 2, 2, 3, 1
-		};
-
-		if ( Box >= 0 && route->Active )
-			for (int i = 0; i < lMidiCode[MidiStatus >> 5]; i++) {
-				MidiAnalysis(&mut_box[Box],midiCode & 0xff);
-				midiCode >>= 8;
-			}
+		return ProceedNo;
 	}
 
-// Routen testen und jenachdem entsprechend Codeverarbeitung
-	void InputMidiPort::Proceed(DWORD midiCode)
+	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, const std::vector<unsigned char > * midiCode, int data)
 	{
-		char DidOut = 0;
+		mutASSERT(midiCode);
+		if (midiCode->at(0) != midi::SYSTEM) 
+			UNREACHABLEC;
+		
+		return ProceedYes;
+#if 0
+		switch ( R->Type ) {
+		case RTchannel:
+			if (R->Check(midiCode & 0x0F)) 
+				return ProceedYes;
+			break;
+		case RTstaff:
+			if ( ((midiCode & 0xF0) != 0x80 && 
+			      (midiCode & 0xF0) != 0x90) 
+			     || R->Check((midiCode >> 8) & 0xFF) )
+				return ProceedYes;
+			break;
 
-		for (routeListType::iterator R = routes.begin(); 
-		     R!= routes.end(); R++)
-			switch ( (*R)->Type ) {
-
-			case RTchannel:
-				if ( (*R)->Check(midiCode & 0x0F) ) {
-					ProceedRoute(midiCode, (*R));
-					DidOut = 1;
-				}
-
-				break;
-
-			case RTstaff:
-				if ( ((midiCode & 0xF0) != 0x80 && 
-				      (midiCode & 0xF0) != 0x90) 
-				     || (*R)->Check((midiCode >> 8) & 0xFF) ) {
-					ProceedRoute(midiCode, (*R));
-					DidOut = 1;
-				}
-
-				break;
-
-			case RTelse:
-				if ( DidOut )
-					break;
-
-			case RTall:
-				ProceedRoute(midiCode, *R);
-			}
-
-		FLUSH_UPDATE_UI;
+		case RTelse:
+			return ProceedElse;
+		case RTall:
+			return ProceedYes;
+		default:
+			UNREACHABLEC;
+		}
+		return ProceedNo;
+#endif
 	}
 
 	MidiPortFactory::~MidiPortFactory() {}

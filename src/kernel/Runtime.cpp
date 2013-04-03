@@ -215,17 +215,23 @@ void pascal _export InDeviceAction(int inDevNr, enum MutaborModeType action) {
 }
 
 void pascal _export Panic() {
-	
+	const InputDeviceList & inlist = InputDeviceClass::GetDeviceList();
+	for (InputDeviceList::const_iterator In = inlist.begin();
+	     In != inlist.end(); In++) 
+		boost::const_pointer_cast<InputDeviceClass> (*In) -> Panic();
+
+	MutResetKeys();
+
 	const OutputDeviceList & list = OutputDeviceClass::GetDeviceList();
 	for (OutputDeviceList::const_iterator Out = list.begin();
 	     Out != list.end(); Out++) 
 		boost::const_pointer_cast<OutputDeviceClass> (*Out) -> Panic();
 
-	MutResetKeys();
-
-	for (int i = 0; i<MAX_BOX ; i++) 
-	{
-		updatecallback(i,false);
+	if (updatecallback) {
+		for (int i = 0; i<MAX_BOX ; i++) 
+		{
+			updatecallback(i,false);
+		}
 	}
 }
 
