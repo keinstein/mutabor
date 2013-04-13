@@ -1485,27 +1485,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		config->SetPath(_T(".."));
 	}
 
-/*bool CheckMutChild(char *name, char *data)
-  {
-  for (TWinKind kind = WK_KEY; kind <= WK_ROUTE; kind++)
-  if ( !stricmp(name, WinName[kind]) )
-  {
-  int box, x, y, w, h, wanted;
-  int test = sscanf (data, " = %d %d %d %d %d %d",
-  &box, &x, &y, &w, &h, &wanted);
-  if (test < 5)
-  {
-  break;
-  }
-  TWinAttr *WinAttr = GetWinAttr(kind, box);
-  WinAttr->X = x; WinAttr->Y = y;
-  WinAttr->W = w; WinAttr->H = h;
-  WinAttr->Wanted = wanted;
-  return true;
-  }
-  return false;
-  }*/
-
 	void MutFrame::RestoreState()
 	{
 
@@ -1682,88 +1661,10 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		SetTitle(wxString::Format(_("%s -- %s"), APPNAME, event.GetString().c_str()));
 	}
 
-// Updaten der Protokollfenster
-	void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
+        // Updaten der Protokollfenster
+ 	void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 	{
 
-#if 0
-		bool takeoveractions = TakeOverActions();
-		bool update_per_box = takeoveractions && !CAW;
-
-		size_t box = minimal_box_used;
-		do {
-			mutabor_box_type & b = mut_box[box];
-			BoxData * boxdata = static_cast<BoxData *>(b.userdata);
-		
-		
-			if (boxdata) {
-				MutChild * win = boxdata -> GetKeyWindow();
-				if (KeyChanged(box) && win) 
-					win = boxdata -> GetTonesystemWindow();
-				if (TSChanged(box) && win)
-					win -> NewText(GetTSString(box, asTS));
-				if (update_per_box) {
-					win = boxdata -> GetActionsWindow();
-					if (win && ACTChanged(box)) 
-						win -> NewText(GenerateACTString(box));
-				}
-			}
-			box = b.next_used;
-		} while (box);
-
-		// Aktionen
-		if ( takeoveractions && CAW ) {
-			BoxData & boxdata = GetCurrentBox();
-		
-			MutChild * win = boxdata.GetActionsWindow();
-	
-			if (win)
-				win ->NewText(GenerateCAWString());
-		}
-#endif
-		// Zeilen/Spalte
-		/*  if ( ActiveWinKind == WK_EDIT )
-		    {
-		    TMDIChild* curChild = Client->GetActiveMDIChild();
-		    if ( curChild )
-		    curChild->SendMessage(WM_COMMAND, CM_GETLINE);
-		    }
-		    else
-		    EditLine = -1;
-		    if ( EditLine != oldEditLine || EditRow != oldEditRow )
-		    {
-		    char s[10] = "";
-		    if ( EditLine != -1 ) sprintf(s, "%d:%d", EditLine, EditRow);
-		    IndikatorGadget->SetText(s);
-		    oldEditLine = EditLine; oldEditRow = EditRow;
-		    }*/
-
-
-#if 0 
-		if ( InDevicesChanged() ) {
-			const InputDeviceList & list = 
-				InputDeviceClass::GetDeviceList(); 
-			
-			for (InputDeviceList::const_iterator In = list.begin();
-			     In != list.end(); ++In) {
-				if ( (*In)->GetMode() 
-				     == DeviceCompileError ) 
-					continue;
-				if ( (*In)->GetMode() 
-				     ==  DeviceTimingError ) {
-					(*In)->SetMode(DeviceStop);
-					(*In)->Stop();
-				}
-			}
-
-			repaint_route();
-
-			if ( !RealTime )
-				wxMessageBox(_("Translation in batch mode completed.\
- Output was generated."),
-					     _("Batch translation finished"), wxOK);
-		}
-#endif
 	}
 
 
@@ -1826,12 +1727,12 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		return normal;
 	}
 
-/// Close all child windows of given kind
-/** This function closes all child windows of the given kind.
- *
- * \param kind any wk_kind, that describes which kind of windows shall
- * be closed. Use WK_NULL to close all windows.
- */
+	/// Close all child windows of given kind
+	/** This function closes all child windows of the given kind.
+	 *
+	 * \param kind any wk_kind, that describes which kind of windows shall
+	 * be closed. Use WK_NULL to close all windows.
+	 */
 	void MutFrame::CloseAll(WinKind kind)
 	{
 		DEBUGLOG (other, _T(""));
