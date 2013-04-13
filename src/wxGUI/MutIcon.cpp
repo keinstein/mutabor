@@ -52,6 +52,11 @@
 MutIcon MutNullIcon;
 #endif
 
+
+#ifdef DEBUG
+int MutIconSilenceMudflapBuild=0;
+#endif
+
 /*
  * \}
  */

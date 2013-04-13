@@ -46,6 +46,11 @@
 #pragma hdrstop
 #endif
 
+#ifdef DEBUG
+int CompDlgSilenceMudflapBuild=0;
+#endif
+
+
 #if 0
 /*!
  * CompDlg type definition
