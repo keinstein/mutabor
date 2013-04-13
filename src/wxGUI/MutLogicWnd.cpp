@@ -758,6 +758,10 @@ namespace mutaborGUI {
 		win = boxdata.GetTonesystemWindow();
 		if (win) 
 			wxPostEvent(win,event1);
+		/* keys may be retuned, now */
+		win = boxdata.GetKeyWindow();
+		if (win) 
+			wxPostEvent(win,event1);
 		Ok = true;
 	}
 
