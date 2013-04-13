@@ -89,12 +89,15 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 	if ( LogicOn ) {
                 switch (winKind) {
                 case WK_KEY: 
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetKeyWindow()) == this);
                         boxdata.WantKeyWindow(false);
                         break;
                 case WK_TS: 
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetTonesystemWindow()) == this);
                         boxdata.WantTonesystemWindow(false);
                         break;
                 case WK_ACT: 
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetActionsWindow()) == this);
                         boxdata.WantActionsWindow(false);
                         break;
                 case WK_LOGIC:
