@@ -243,12 +243,18 @@ AS_IF(test "$cxx_cv_iso_for_loop_scope" = yes,
 # Checks for libraries.
 AC_CHECK_LIB(m,pow)
 
+dnl check for boost earlier as it might correct the library path.
+dnl some systems don't set it correctly
+AX_BOOST_BASE
+
 
 AC_CANONICAL_HOST
 AC_MSG_CHECKING(for MIDI API)
 AC_SUBST( midiapi, [""] )
 
 copydlls=false
+
+echo $host_os
 
 case "$host_os" in 
 dnl GNU/Linux on an Intel or compatible
@@ -262,58 +268,113 @@ dnl GNU/Linux on an Intel or compatible
 				[CXXFLAGS="$tmpcxxflags"]
 	       			[AC_MSG_RESULT([yes])])
     	AC_LANG_POP(C++)	       
-
+	
 	PLATFORM=linux
-  	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (linux only)], 
-	[
-  	  AC_SUBST( midiapi, [-D__LINUX_JACK__] )
-	  AC_MSG_RESULT(using JACK)
-  	  AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))], )
-	  
-  	  if [test "$midiapi" == "";] then
-    	     AC_SUBST( midiapi, [-D__LINUX_ALSASEQ__] )
-    	     AC_CHECK_LIB(asound, snd_seq_open, , AC_MSG_ERROR($PACKAGE in Linux requires the ALSA asound library!))
-    	     # Checks for pthread library.
-    	     AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR($PACKAGE requires the pthread library!))
-  	   fi
+		
+	AC_MSG_CHECKING(for MIDI API)
+	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
+ 		midiapi="$midiapi -D__UNIX_JACK__"
+		AC_MSG_RESULT(using JACK)
+			AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))], )
+
+	# Look for ALSA flag
+	AC_ARG_WITH(alsa, [  --with-alsa = choose native ALSA sequencer API support (linux only)], [
+	midiapi="$midiapi -D__LINUX_ALSA__"
+	AC_MSG_RESULT(using ALSA)
+	AC_CHECK_LIB(asound, snd_seq_open, , AC_MSG_ERROR(ALSA support requires the asound library!))], )
+
+	if [test "$midiapi" == "";] then
+	    AC_MSG_RESULT(searching for ALSA and Jack)
+	    AC_CHECK_LIB(asound, snd_seq_open)
+	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
+	      midiapi="$midiapi -D__LINUX_ALSA__"
+	    fi
+	    AC_CHECK_LIB(jack, jack_client_open)
+	    if test "x$ac_cv_lib_jack_jack_client_open" = xyes; then :
+	      midiapi="$midiapi -D__UNIX_JACK__"
+	    fi
+	fi
+
+	if [test "$midiapi" == "";] then
+	    AC_MSG_ERROR(ALSA or Jack are needed to configure MIDI support!)
+	fi
+
+	# Checks for pthread library.
+	AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR(RtMidi requires the pthread library!))
 
 	;;
 
-  *-sgi*)
-	PLATFORM=irix
-	AC_SUBST( midiapi, ["-D__IRIX_MD__ -LANG:std -w"] )
-  	AC_MSG_RESULT(using IRIX MD)
-  	AC_CHECK_LIB(md, mdInit, , AC_MSG_ERROR(IRIX MIDI support requires the md library!) )
-  	# Checks for pthread library.
-  	AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR(RtMidi requires the pthread library!))
-  	;;
-
 darwin*)
 	PLATFORM=macosx
-	  # Check for CoreAudio framework
-  	  AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h, [AC_SUBST(midiapi, [-D__MACOSX_CORE__] )], [AC_MSG_ERROR(CoreMIDI header files not found!)] )
-  AC_SUBST( LIBS, ["-framework CoreMIDI -framework CoreFoundation -framework CoreAudio"] )
+	# Check for CoreAudio framework
+	LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio"
 
 	LDFLAGS="$LDFLAGS -framework Cocoa -framework Carbon -Wl,-Y,1455 -framework CoreAudio -framework CoreMIDI -framework CoreFoundation"
+
+	  AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
+	    midiapi="$midiapi -D__UNIX_JACK__"
+	    AC_MSG_RESULT(using JACK)
+	    AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))], )
+
+	 # Look for Core flag
+	 AC_ARG_WITH(core, [  --with-core = choose CoreMidi API support (mac only)], [
+	 	midiapi="$midiapi -D__MACOSX_CORE__"
+		AC_MSG_RESULT(using CoreMidi)
+		AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h, [], [AC_MSG_ERROR(CoreMIDI header files not found!)] )
+    		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
+
+	# If no api flags specified, use CoreMidi
+	if [test "$midiapi" == ""; ] then
+	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
+	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
+		midiapi="$midiapi -D__MACOSX_CORE__"]
+		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" 
+	   , )
+	   AC_CHECK_LIB(jack, jack_client_open)
+	   if test "x$ac_cv_lib_jack_jack_client_open" = xyes; then :
+	      midiapi="$midiapi -D__UNIX_JACK__"
+	   fi
+	fi
+
 	;;
 
 *winnt*|*interix*|cygwin*|*mingw*|uwin*)
 	PLATFORM=windows
 	copydlls=true
-	LDFLAGS="$LDFLAGS -lwinmm"
-  	# Use WinMM library
-  	AC_SUBST( midiapi, [-D__WINDOWS_MM__] )
-	ac_includes_default="$ac_includes_default 
-	#include <windows.h>
-	#include <mmsystem.h>
-	"
-	AC_LIB_WINMM([midiOutGetNumDevs])
 	LT_LANG([Windows Resource])
 	AC_LIBTOOL_LANG_RC_CONFIG
 	AC_CHECK_HEADERS([winsock2.h])
 	AC_CHECK_LIB_HEADER(ws2_32,ntohs,[
 	#include <winsock2.h>
 	])
+   	# Look for WinMM flag
+	AC_ARG_WITH(winmm, [  --with-winmm = choose Windows MultiMedia (MM) API support (windoze only)], [
+	    midiapi="$midiapi -D__WINDOWS_MM__"
+	    ac_includes_default="$ac_includes_default 
+#include <windows.h>
+#include <mmsystem.h>
+"
+	    AC_LIB_WINMM([midiOutGetNumDevs])
+	    AC_MSG_RESULT(using WinMM)
+	    dnl LIBS="$LIBS -lwinmm 
+	    ], )
+
+	AC_ARG_WITH(winks, [  --with-winks = choose kernel streaming support (windoze only)], [
+	    api="$api -D__WINDOWS_KS__"
+	    AC_SUBST( LIBS, ["-lsetupapi -lksuser"] )
+	    AC_MSG_RESULT(using kernel streaming) ], )
+
+  # If no api flags specified, use WinMM
+  if [test "$api" == "";] then
+	    midiapi="$midiapi -D__WINDOWS_MM__"
+	    ac_includes_default="$ac_includes_default 
+#include <windows.h>
+#include <mmsystem.h>
+"
+	    AC_LIB_WINMM([midiOutGetNumDevs])
+	    AC_MSG_RESULT(using WinMM)
+	    dnl LIBS="$LIBS -lwinmm 
+  fi
 	
 	if test "$cross_compiling" = yes; then
 		case "$target_os" in 
@@ -356,7 +417,7 @@ CPPFLAGS="$CPPFLAGS $midiapi"
 AM_CONDITIONAL(COPYDLLS,$copydlls)
 
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.18.1])
+AM_GNU_GETTEXT_VERSION([0.18])
 dnl wxMenuItem::GetItemLabel is implemented from 2.8.5
 AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,core,html,xrc,stc,xml],[$wxflags])
 if test "$wxWin" != 1 -a -z "$XCode"; then

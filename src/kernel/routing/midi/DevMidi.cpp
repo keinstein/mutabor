@@ -347,7 +347,7 @@ OutputMidiPort:\n\
 
 #ifdef RTMIDI
 		try {
-			hMidiIn = new RtMidiIn(PACKAGE_STRING);
+			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
 			LAUFZEIT_ERROR0(_("Can not open Midi input devices."));
 			return false;
