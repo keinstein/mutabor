@@ -349,7 +349,7 @@ OutputMidiPort:\n\
 		try {
 			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
-			LAUFZEIT_ERROR0(_("Can not open Midi input devices."));
+			LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
 			return false;
 		}
 
@@ -360,7 +360,11 @@ OutputMidiPort:\n\
 			return false;
 		}
 
-		hMidiIn->setCallback(mycallback, this);
+		try {
+			hMidiIn->setCallback(mycallback, this);
+		} catch (RtError & error) {
+			LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
+		}
 
 #else
 		midiInOpen(&hMidiIn, DevId, (DWORD)MidiInPortFunc, (DWORD)this, CALLBACK_FUNCTION);
@@ -397,7 +401,7 @@ OutputMidiPort:\n\
 		return InputDeviceClass::TowxString()
 			+wxString::Format(_T("\
 InputMidiPort:\n\
-   hMidiOut = %p\n\
+   hMidiIn = %p\n\
    channels {sound,sustain,MSB,LSB,pitch}:\n\
              %s\n\
 "), hMidiIn, (const wxChar *)channelString);
@@ -550,14 +554,14 @@ InputMidiPort:\n\
 #ifdef RTMIDI
 
 		try {
-			rtmidiout = new RtMidiOut();
+			rtmidiout = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
 			error.printMessage();
 			// abort();
 		}
 
 		try {
-			rtmidiin = new RtMidiIn();
+			rtmidiin = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
 			error.printMessage();
 			// abort();
@@ -568,8 +572,10 @@ InputMidiPort:\n\
 
 	void MidiUninit()
 	{
+#ifdef RTMIDI
 		delete rtmidiin;
 		delete rtmidiout;
+#endif
 	}
 
 }
