@@ -1385,12 +1385,19 @@ unsigned int portInfo( snd_seq_t *seq, snd_seq_port_info_t *pinfo, unsigned int 
     client = snd_seq_client_info_get_client( cinfo );
     if ( client == 0 ) continue;
     // Reset query info
+    std::cerr << "client: " << snd_seq_client_info_get_name( cinfo ) << std::endl;
     snd_seq_port_info_set_client( pinfo, client );
     snd_seq_port_info_set_port( pinfo, -1 );
     while ( snd_seq_query_next_port( seq, pinfo ) >= 0 ) {
+	    std::cerr << "  port: "
+		      << snd_seq_port_info_get_client( pinfo );  // GO: with full portnames added to ensure individual device names
+	    std::cerr << ":";
+	    std::cerr << snd_seq_port_info_get_port( pinfo ) << std::endl;
       unsigned int atyp = snd_seq_port_info_get_type( pinfo );
       //      if ( ( atyp & SND_SEQ_PORT_TYPE_MIDI_GENERIC ) == 0 ) continue;
+      std::cerr << "        type: " << std::hex << atyp << std::endl;
       unsigned int caps = snd_seq_port_info_get_capability( pinfo );
+      std::cerr << "        caps: " << std::hex << caps << std::endl;
       if ( ( caps & type ) != type ) continue;
       if ( count == portNumber ) return 1;
       ++count;
