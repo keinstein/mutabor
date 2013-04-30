@@ -1394,7 +1394,7 @@ unsigned int portInfo( snd_seq_t *seq, snd_seq_port_info_t *pinfo, unsigned int 
 	    std::cerr << ":";
 	    std::cerr << snd_seq_port_info_get_port( pinfo ) << std::endl;
       unsigned int atyp = snd_seq_port_info_get_type( pinfo );
-      //      if ( ( atyp & SND_SEQ_PORT_TYPE_MIDI_GENERIC ) == 0 ) continue;
+      if ( ( atyp & SND_SEQ_PORT_TYPE_MIDI_GENERIC ) == 0 ) continue;
       std::cerr << "        type: " << std::hex << atyp << std::endl;
       unsigned int caps = snd_seq_port_info_get_capability( pinfo );
       std::cerr << "        caps: " << std::hex << caps << std::endl;
