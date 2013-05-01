@@ -267,7 +267,7 @@ void MidiInApi :: setCallback( RtMidiIn::RtMidiCallback callback, void *userData
     return;
   }
 
-  inputData_.userCallback = (void *) callback;
+  inputData_.userCallback = callback;
   inputData_.userData = userData;
   inputData_.usingCallback = true;
 }
