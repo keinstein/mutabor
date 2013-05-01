@@ -72,7 +72,7 @@ namespace mutabor {
 		bool Open(int id, const mutStringRef name) {
 #ifdef RTMIDI
 			try {
-				port = new RtMidiOut(PACKAGE_STRING);
+				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 			} catch (RtError &error) {
 				LAUFZEIT_ERROR0(_("Can not open ouput Midi devices due to memory allocation  problems."));
 				return false;
