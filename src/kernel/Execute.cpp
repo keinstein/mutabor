@@ -669,7 +669,6 @@ void DeleteKey( mutabor_box_type * box, int taste, size_t id, size_t channel)
 void KeyboardIn(mutabor_box_type * box, const mutChar *keys)
 {
 	DEBUGLOG2(kernel_exec,_T(""));
-	current_computer_keyboard_box = box;
 	char TonSystem = 0;
 
 	for (size_t i= 0; i < mutStrLen(keys); i++) {
@@ -726,12 +725,6 @@ void pascal _export KeyboardAnalyse(mutabor_box_type * box, int taste, char isLo
 			execute_aktion(box, help->aktion);
 			return;
 		}
-}
-
-void keyboard_analyse( int taste )
-{
-	DEBUGLOG2(kernel_exec,_T(""));
-	KeyboardAnalyseSimple(current_computer_keyboard_box, taste);
 }
 
 void pascal _export KeyboardAnalyseSimple(mutabor_box_type * box, int taste)

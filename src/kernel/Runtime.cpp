@@ -339,15 +339,6 @@ void pascal _export SetChannels(int base, int from, int to, int thru) {
 	get_instrument_dekl (base, from, to, thru, &list_of_config_instrumente);
 }
 
-#pragma message "remove the following two functions"
-void pascal _export SetAktuellesKeyboardInstrument(mutabor_box_type * box) {
-	current_computer_keyboard_box = box;
-}
-
-mutabor_box_type * pascal _export GetAktuellesKeyboardInstrument() {
-	return current_computer_keyboard_box;
-}
-
 
 // scan-Hilfsfunktionen ---------------------------------------------
 

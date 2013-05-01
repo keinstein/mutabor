@@ -135,7 +135,6 @@ typedef struct {
 } mutabor_box_type;
 
 
-extern mutabor_box_type * current_computer_keyboard_box;
 extern tone_system * free_tonesystem;
 extern mutabor_box_type mut_box[MAX_BOX];
 extern int laufzeit_meldungen_erlaubt;

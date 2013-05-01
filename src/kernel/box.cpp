@@ -20,7 +20,6 @@
 
 #include "box.h"
 
-mutabor_box_type * current_computer_keyboard_box = NULL;
 tone_system *free_tonesystem = NULL;
 mutabor_box_type mut_box[MAX_BOX];
 int laufzeit_meldungen_erlaubt = 0;
