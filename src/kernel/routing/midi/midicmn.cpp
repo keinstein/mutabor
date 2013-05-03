@@ -210,7 +210,6 @@ namespace mutabor {
 				      size_t id, 
 				      const ChannelData & input_channel_data)
 	{
-#warning "Fix gmn box"
 		mutASSERT(this->isOpen);
 		if (!ChannelFilter(r).check()) {
 			UNREACHABLEC;

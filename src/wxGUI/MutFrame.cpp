@@ -728,19 +728,6 @@ while playing by computer keyboard.)"),
 		}
 
 
-#if 0
-		// WinAttrs säubern
-		DEBUGLOG (gui, _T("Clear window attributes"));
-
-		for (WinKind kind = WK_KEY; kind < WK_NULL; kind++) {
-			size_t i;
-
-			while ( (i = WinAttrs[kind].GetCount()) > 0)
-				if ( !mut_box[WinAttrs[kind][i].Box].used )
-					WinAttrs[kind].RemoveAt(i);
-		}
-#endif
-
 		DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
 
 
@@ -752,18 +739,11 @@ while playing by computer keyboard.)"),
 		//  LogicWinOpen(curBox);
 		LogicOn = true;
 
-		// Toolbar
-		/*2	ControlBar->Remove(*ButtonActivate);
-		  ControlBar->Insert(*ButtonStop, TGadgetWindow::Before, ButtonPanic);
-		  ControlBar->LayoutSession();*/
 		// Statusbar
 		SetStatus(SG_LOGIC);
 
 		DEBUGLOG (other, _T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
 
-		// set windows except curBox setzen
-//	if ( !OWM ) {
-		
 		Freeze();
 
 		size_t i = minimal_box_used;
@@ -773,7 +753,6 @@ while playing by computer keyboard.)"),
 				i = mut_box[i].next_used;
 			} while (i);
 		}
-//	}
 
 		wxConfigBase *config = wxConfig::Get();
 		if (config) {
@@ -802,9 +781,6 @@ while playing by computer keyboard.)"),
 		DEBUGLOG (other, _T("Repaint route"));
 
 		repaint_route();
-
-		DEBUGLOG (other, _T("event.Skip()"));
-		event.Skip(false);
 	}
 
 	wxMenuItem * MutFrame::ClearMenuItem(int id)

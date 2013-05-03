@@ -468,29 +468,6 @@ InputDeviceClass:\n\
 
 
 	// functions --------------------------------------------------------
-	// set timer
-	void StartCurrentTime()
-	{
-		CurrentTime.Start(0);
-	}
-
-        // reset timer
-	void StopCurrentTime()
-	{
-		// not needed any more
-		//CurrentTime.Stop();
-	}
-
-#if 0 
-/* Delete if no problem occurs */
-	void OutNotesCorrect(mutabor_box_type * box)
-	{
-		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
-		for (OutputDeviceList::const_iterator Out = list.begin();
-		     Out != list.end(); Out++)
-			(*Out)->NotesCorrect(box->id);
-	}
-#endif
 
 	bool OutOpen()
 	{
