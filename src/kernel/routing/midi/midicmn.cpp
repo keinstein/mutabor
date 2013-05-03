@@ -216,7 +216,7 @@ namespace mutabor {
 			return;
 		}
 
-		DEBUGLOG (midiio, _T("box %d, inkey %d, velocity %d, id %d"),
+		DEBUGLOG (midiio, _T("box %p, inkey %d, velocity %d, id %d"),
 			  box, inkey, velocity, id);
 //		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
 //		DWORD p;
