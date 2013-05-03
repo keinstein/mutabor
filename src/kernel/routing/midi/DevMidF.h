@@ -433,19 +433,17 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 
-		virtual frac ReadOn(frac time)
-			{
-				return frac(0, 1);
-			}
+		virtual frac ReadOn(frac time) {
+			return frac(0, 1);
+		}
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 	
-		virtual DevType GetType() const
-			{
-				return DTMidiFile;
-			}
+		virtual DevType GetType() const	{
+			return DTMidiFile;
+		}
 
 
 		/** 
@@ -480,7 +478,7 @@ namespace mutabor {
 	protected:
 		int FileType;
 		size_t nTrack;
-		int Speed;
+		int Speed;              //< Quarters per minute
 		BYTE **Track;
 		DWORD *TrackPos;
 		mutint64 *curDelta;
@@ -488,8 +486,8 @@ namespace mutabor {
 		BYTE *StatusByte;
 		//  UINT TimerId;
 		BOOL Busy;
-		DWORD TicksPerQuarter;
-		mutint64 MMSPerQuarter;
+		DWORD TicksPerQuarter;  //< ticks/quarter
+		mutint64 MMSPerQuarter; //< μs/quarter
 //		void Proceed(DWORD midiCode, int track);
 //		void ProceedRoute(DWORD midiCode, Route route);
 		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
