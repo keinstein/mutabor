@@ -52,7 +52,7 @@ public:
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
-		RealTime = true;
+		CurrentTimer.UseRealtime(true);
 		max = 0; min = 100000; i= 0;
 		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
 		sw.Start();

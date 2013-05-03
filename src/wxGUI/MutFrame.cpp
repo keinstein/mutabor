@@ -688,22 +688,22 @@ namespace mutaborGUI {
 #ifndef NOACTIVATE
 		DEBUGLOG(other,_T("Activate"));
 
-		RealTime = true;
 
-		if ( !CheckNeedsRealTime() )
-			RealTime = (wxMessageBox(_("There are no realtime \
-		                           instruments in the routes.\n\
-		                           Shall Mutabor translate the files in batch mode, \
-		                           to keep the MIDI files with the original time stamp?\n\
-		                           (This means also, that you can't modify the tunings \
-		                           while playing by computer keyboard.)"),
-						 _("No realtime => batch mode?"),
-						 wxYES_NO | wxICON_QUESTION
-						 /*| MB_DEFBUTTON2*/) == wxNO);
+		bool realtime = false;
+		if ( !NeedsRealTime() ) {
+			realtime = (wxMessageBox(_("There are no realtime \
+instruments in the routes.\n	\
+Shall Mutabor translate the files in batch mode, \
+to keep the MIDI files with the original time stamp?\n \
+(This means also, that you can't modify the tunings \
+while playing by computer keyboard.)"),
+							      _("No realtime => batch mode?"),
+							      wxYES_NO | wxICON_QUESTION) != wxYES);
+		} 
 
 		ActiveWindow = this;
 
-		if ( !Activate(RealTime, &UpdateUIcallback) )
+		if ( !Activate(realtime, &UpdateUIcallback) )
 			return;
 
 #endif

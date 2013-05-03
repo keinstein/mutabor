@@ -46,7 +46,6 @@
 
 namespace mutabor {
 
-	unsigned long CommonFileOutputDevice::NRT_Speed=0l;
 
 #if __WXMSW__ && 0
 	void CALLBACK CommonFileInputDevice::ostimer::Callback(PVOID lpParam, BOOLEAN TimerOrWaitFired) 

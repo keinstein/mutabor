@@ -182,8 +182,8 @@ namespace mutabor {
 			starting = false; 
 			return;
 		case DeviceStop:
-			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)RealTime);
-			if ( RealTime ) {
+			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)mutabor::CurrentTime.isRealtime());
+			if ( mutabor::CurrentTime.isRealtime() ) {
 				mutASSERT(timer == NULL);
 				referenceTime = wxGetLocalTimeMillis().GetValue();
 				pauseTime = 0;
@@ -206,8 +206,8 @@ namespace mutabor {
 			}
 			break;
 		case DevicePause:
-			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)RealTime);
-			if ( RealTime ) {
+			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)CurrentTime.isRealtime());
+			if ( CurrentTime.isRealtime() ) {
 				referenceTime += wxGetLocalTimeMillis().GetValue() - pauseTime;
 				pauseTime = 0;
 				if (timer) {
@@ -233,7 +233,7 @@ namespace mutabor {
 		case DeviceStop:
 			break;
 		case DevicePlay:
-			if ( RealTime ) {
+			if ( CurrentTime.isRealtime() ) {
 				// we use this function for some cleanup inside Stop()
 				// which is called from inside the thread.
 				// In this case we shouldn't pause ourselves

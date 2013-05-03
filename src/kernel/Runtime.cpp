@@ -36,7 +36,6 @@
 
 using namespace mutabor;
 
-bool RealTime = false;
 
 jmp_buf weiter_gehts_nach_compilerfehler;
 
@@ -80,16 +79,11 @@ char pascal _export Compile(mutaborGUI::CompDlg *compDia, const wxChar *name) {
 UpdateCallback* updatecallback;
 
 bool pascal _export Activate(bool realTime, UpdateCallback* callback) {
-	RealTime = realTime;
+	CurrentTime.UseRealtime(realTime);
 	GlobalReset();
 	AktionenInit();
 	updatecallback = callback;
-#if !defined(WX) || defined(__WXMSW__)
 
-	if ( RealTime )
-		timeBeginPeriod(1);
-
-#endif
 	bool ok = mutabor::OutOpen();
 
 	if ( ok && !mutabor::InOpen() ) {
@@ -98,43 +92,31 @@ bool pascal _export Activate(bool realTime, UpdateCallback* callback) {
 	}
 
 	if ( !ok ) {
-#if !defined(WX) || defined(__WXMSW__)
-		if ( RealTime )
-			timeEndPeriod(1);
-#endif
 		wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
 		return false;
 	}
 
-	if ( RealTime )
-		mutabor::StartCurrentTime();
-	else
-		mutabor::CurrentTime = 0;
+	mutabor::CurrentTime = 0;
 	return true;
 }
 
 void pascal _export Stop() {
-	if ( RealTime )
-		mutabor::StopCurrentTime();
-
+	mutabor::CurrentTime.Stop();
 	mutabor::InClose();
-
 	mutabor::OutClose();
 
-#if !defined(WX) || defined(__WXMSW__)
-	if ( RealTime )
-		timeEndPeriod(1);
-
-#endif
 	GlobalReset();
 }
 
 
+#if 0
 // NoRealTime - Aktionen
 
 void NRT_Play() {
-	// start all devices
 
+#pragma warning "NRT_Play() must be revised"
+
+	// start all devices
 	const mutabor::InputDeviceList & list = 
 		mutabor::InputDeviceClass::GetDeviceList();
 	for (mutabor::InputDeviceList::const_iterator In = list.begin();
@@ -214,6 +196,11 @@ void pascal _export InDeviceAction(int inDevNr, enum MutaborModeType action) {
 	}
 }
 
+bool pascal _export CheckNeedsRealTime() {
+	return NeedsRealTime();
+}
+#endif
+
 void pascal _export Panic() {
 	const InputDeviceList & inlist = InputDeviceClass::GetDeviceList();
 	for (InputDeviceList::const_iterator In = inlist.begin();
@@ -233,10 +220,6 @@ void pascal _export Panic() {
 			updatecallback(i,false);
 		}
 	}
-}
-
-bool pascal _export CheckNeedsRealTime() {
-	return NeedsRealTime();
 }
 
 struct keyboard_ereignis *last;

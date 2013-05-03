@@ -52,7 +52,7 @@ void CommonMidiOutputTest::setUp()
 	route->Attatch(0);
 	box = &mut_box[route->GetBox()];
 
-	RealTime = true;
+	CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(3,_T("Test"));
 	guard = out;
 
@@ -545,7 +545,7 @@ void CommonMidiInputTest::setUp()
 	route->Attatch(0);
 	box = &mut_box[route->GetBox()];
 
-	RealTime = true;
+	CurrentTime.UseRealtime(true);
 	in = new midicmnInputDevice(3,_T("Test"));
 	guard = in;
 	out = new midicmnOutputDevice(3,_T("Test"));

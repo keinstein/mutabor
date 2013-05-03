@@ -94,7 +94,7 @@ public:
 		debugFlags::flags.midifile = true;
 #endif
 		std::clog << "Running setUp()" << std::endl;
-		RealTime = true;
+		CurrentTime.UseRealtime(true);
 		in = mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile);
 	}
   

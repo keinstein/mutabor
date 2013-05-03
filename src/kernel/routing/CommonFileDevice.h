@@ -112,8 +112,6 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-	protected:
-		static unsigned long NRT_Speed;
 	};
 
 

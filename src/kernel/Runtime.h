@@ -55,8 +55,6 @@
 
 typedef void UpdateCallback(int Box, bool Logic);
 
-extern bool RealTime;
-
 extern jmp_buf weiter_gehts_nach_compilerfehler;
 extern UpdateCallback* updatecallback;
 
@@ -72,9 +70,7 @@ void pascal Stop();
 void pascal Panic();
 
 //  void pascal InDeviceActionAll(char action);
-void pascal InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
-
-bool pascal CheckNeedsRealTime();
+//void pascal InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
 
 // box = -1 ... weiterlesen in angefangener Liste
 char pascal GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box);

@@ -1,6 +1,6 @@
 /** \file
  ********************************************************************
- * MIDI-File als Device.
+ * MIDI-File as device.
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  *         Tobias Schlemmer <keinstein@users.berlios.de>
@@ -99,7 +99,6 @@ namespace mutabor {
 // Daten ¸bergeben für NoRealTime-Übersetzungen
 	BYTE *pData;
 	int nData;
-	long NRT_Speed;
 
 	static DWORD ReadLength(mutIFstream &is)
 	{
@@ -243,7 +242,7 @@ namespace mutabor {
 			  0x07, 0xD0, 0x00, 0x00,  0xFF, 0x58, 0x04, 0x04,
 			  0x02, 0x18, 0x08, 0x00,  0xFF, 0x2F, 0x00 };
 
-		if ( !RealTime ) {
+		if ( !CurrentTime.isRealtime() ) {
 			Header[12] = ((WORD)(NRT_Speed >> 8)) & 0xFF;
 			Header[13] = ((WORD)(NRT_Speed)) & 0xFF;
 		}
@@ -691,7 +690,7 @@ namespace mutabor {
 				 _T("Next event on Track %d after %ld Ticks"),
 				 nr, Delta);
 
-			if ( RealTime ) {
+			if ( CurrentTime.isRealtime() ) {
 				Delta = (MMSPerQuarter * Delta) / Speed;
 				DEBUGLOG(midifile,
 					 _T("This event on Track %d after %ldμs (time = %ldμs)"),

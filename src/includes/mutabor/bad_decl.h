@@ -56,7 +56,6 @@ namespace mutabor {
     void compiler_warning( int nummer, ... );
  
     extern int keys_changed[MAX_BOX];
-    extern bool RealTime;
 
 #define GERMAN
 

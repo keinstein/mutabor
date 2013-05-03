@@ -124,7 +124,7 @@ class myDevice: public mutabor::InputGis {
 	}
 	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
 		std::clog << "Starting..." << std::endl;
-		RealTime = true;
+		CurrentTimer.UseRealtime(true);
 		mutabor::InputGis::Play(kind);
 		std::clog << "Started." << std::endl;
 	}
