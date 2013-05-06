@@ -248,12 +248,15 @@ namespace mutaborGUI {
 		void OnInitCmdLine(wxCmdLineParser&  parser);
 		/// Process command line arguments
 		bool OnCmdLineParsed(wxCmdLineParser&  parser);
-#ifdef __WIN32__
-		void OnUnhandledException() { throw; }
-		bool OnExceptionInMainLoop() { throw; }
-		void OnFatalException() { throw; }
-#endif 
 
+		void OnUnhandledException();
+		bool OnExceptionInMainLoop();
+		void OnFatalException();
+		void OnAssertFailure(const wxChar *file,
+				     int line,
+				     const wxChar *func,
+				     const wxChar *cond,
+				     const wxChar *msg);
 		// Extend event processing to search the document manager's event table
 		virtual bool ProcessEvent(wxEvent& event);
 	

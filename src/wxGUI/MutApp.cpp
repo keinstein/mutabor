@@ -436,6 +436,58 @@ namespace mutaborGUI {
 		return true;
 	}
 
+	void MutApp::OnUnhandledException() { 
+		try {
+			throw; 
+		} catch (std::exception e) {
+			std::cerr << "Unhandled exception: " << e.what() << std::endl;
+#ifdef DEBUG
+			abort();
+#endif
+		}
+	}
+	bool MutApp::OnExceptionInMainLoop() { 
+		try {
+			throw; 
+		} catch (std::exception e) {
+			std::cerr << "Unhandled exception: " << e.what() << std::endl;
+#ifdef DEBUG
+			abort();
+#endif
+		}
+	}
+	void MutApp::OnFatalException() { 
+		try {
+			throw; 
+		} catch (std::exception e) {
+			std::cerr << "Unhandled exception: " << e.what() << std::endl;
+#ifdef DEBUG
+			abort();
+#endif
+		}
+	}
+	
+	void MutApp::OnAssertFailure(const wxChar *file,
+				    int line,
+				    const wxChar *func,
+				    const wxChar *cond,
+				    const wxChar *msg)
+ 	{
+		if (!std::clog.good()) MutInitConsole();
+		wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"), file,line,func,cond,msg);
+		std::clog << s.ToUTF8() << std::endl;
+		// take care to not show the message box from a worker thread, this doesn't
+		// work as it doesn't have any event loop
+		if ( !wxIsMainThread() ||
+		     wxMessageBox ( s,
+				    _T(PACKAGE_STRING),
+				    wxYES_NO | wxICON_QUESTION)
+		     == wxYES )
+		{
+			wxApp::OnAssertFailure(file, line, func, cond, msg);
+		}
+ 	} 	
+
 // Extend event processing to search the view's event table
 	bool MutApp::ProcessEvent(wxEvent& event)
 	{
