@@ -90,15 +90,12 @@ namespace mutabor {
 
 #endif
 
-#define NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
 
 
-	static int lMidiCode[8] = { 3, 3, 3, 3, 2, 2, 3, 1 };
 	
 
 // Daten ¸bergeben für NoRealTime-Übersetzungen
 	BYTE *pData;
-	int nData;
 
 	static DWORD ReadLength(mutIFstream &is)
 	{
@@ -136,6 +133,59 @@ namespace mutabor {
 		WriteNumber(Delta < 0x0FFFFFFF ? Delta: 0x0FFFFFFF);
 	}
 
+	uint32_t Track::ReadInt() {
+		uint32_t l = 0;
+		uint8_t a;
+
+		int i =0 ; 
+		do {
+			if (++i > 4) {
+				throw delta_length_error(gettext_noop("Number contains too many bytes"));
+			}
+			a = at(position);
+			position++;
+			l = (l << 7) + (a & 0x7F);
+		} while (a & 0x80);
+		return l;
+	}
+
+
+	Track::base Track::ReadMessage() {
+		uint8_t status, metatype;
+		if ((status = at(position)) & 0x80) {
+			position++;
+			if (midi::reset_running_status (status)) 
+				running_status = 0;
+			else if (store_running_status(status)) 
+				running_status = status;
+		} else status = running_status;
+		if (! status & 0x80) {
+			throw invalid_status (gettext_noop("Invalid status byte"));
+		}
+
+		size_t offset = 1;
+		// databytes may be nagative
+		int data_bytes = midi::get_data_size(status) - 1; 
+		if (data_bytes < 0) {
+			mutASSERT(status == midi::SYSEX_START || 
+				  status == midi::SYSEX_END || 
+				  status == midi::META);
+			if (status == midi::META) {
+				metatype = at(position++);
+				offset++;
+			}
+			data_bytes = ReadInt();
+		}
+
+		data_bytes += offset;
+ 		base retval(data_bytes,status);
+		if (status == midi::META) 
+			retval[1] = metatype;
+
+		for (size_t i = offset ; i < data_bytes ; i++ ) 
+			retval [i] = at(position++); // should throw on access violation.
+
+		return retval;
 	}
 
 	void Track::WriteLength(mutOFstream &os, size_t l)
@@ -251,17 +301,50 @@ namespace mutabor {
 		mutOpenOFstream(os,Name);
 
 		BYTE Header[41] =
-			{ 'M', 'T', 'h', 'd', 
-			  0, 0, 0, 6, 0,  1, 0, 2, 1, 0, 
-			  'M', 'T', 'r', 'k', 
-			  0x00, 0x00, 0x00, 0x13,  0x00, 0xFF, 0x51, 0x03,
-			  0x07, 0xD0, 0x00, 0x00,  0xFF, 0x58, 0x04, 0x04,
-			  0x02, 0x18, 0x08, 0x00,  0xFF, 0x2F, 0x00 };
+			{ 
+				// File header
+				'M', 'T', 'h', 'd', // Chunk type MIDI file header
+				0, 0, 0, 6,         // chunk length
+				0, 0,               // file type
+				0, 1,               // number of tracks
+				1, 0,               // 256 Ticks per second
+				/* Alternatve format last 2 bytes:
+				   0x80 & negative_SMPTE_format_in_7bit,
+				   ticks_per_frame */
+			  
 
+
+				// Tempo map
+				'M', 'T', 'r', 'k',                    // Chunk type Track
+				0x00, 0x00, 0x00, 0x13,                // Chunk length
+
+				0x00,                                  // delta 0
+				midi::META, midi::META_SET_TEMPO,      // meta event
+				0x03,                                  // 3 data bytes
+				0x07, 0xD0, 0x00,                      // 462080 μs/qarter
+				
+				0x00,                                  // delta 0
+				midi::META, midi::META_TIME_SIGNATURE, // meta event
+				0x04,                                  // 4 data bytes
+				0x04,                                  // numerator of 4/4
+				0x02,                                  // exp. of denominator of 4/(2^2)
+				0x18,                                  // 1 metronome click = 18 clocks
+				0x08,                                  // 8/32 = 1/4
+
+				0x00,                                  // delta 0
+				midi::META, midi::META_END_OF_TRACK,   // meta event
+				0x00                                   // no data bytes
+			};
+
+
+
+#warning "NRT_Speed must be replaced, here"
+#if 0
 		if ( !CurrentTime.isRealtime() ) {
 			Header[12] = ((WORD)(NRT_Speed >> 8)) & 0xFF;
 			Header[13] = ((WORD)(NRT_Speed)) & 0xFF;
 		}
+#endif
 
 		mutWriteStream(os,Header, 41);
 
@@ -311,18 +394,6 @@ namespace mutabor {
   }
 */
 	/// \todo: check for array borders
-	inline unsigned long ReadDelta(BYTE * data, DWORD &position)
-	{
-		unsigned long l = 0;
-		BYTE a;
-
-		do {
-			a = data[position];
-			position++;
-			l = (l << 7) + (a & 0x7F);
-		} while ( a & 0x80);
-		return l;
-	}
 
 
 /// Save route settings (filter settings) for a given route
@@ -429,34 +500,30 @@ namespace mutabor {
 		size_t nTrack;
 		DWORD l;
 		timing.reset();
+		
 
 		// read file
 		mutOpenIFstream(is, Name);
 
 		if ( mutStreamBad(is) ) {
 			DEBUGLOG (midifile, _T("Opening Stream failed"));
-			Mode = DeviceCompileError;
-//			InDevChanged = 1;
-//		LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), GetName());
 			LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), Name.c_str());
-			isOpen = false;
-			return false;
+			goto error_cleanup;
 		}
 
 		// Header Chunk
 		// Flawfinder: ignore
-		char Header[5] = {0,0,0,0,0};
 		mutReadStream(is,Header, 4);
 		if (strcmp(Header,"MThd")) {
 			LAUFZEIT_ERROR1(_("File '%s' is not a valid midi file."), Name.c_str())	;
-			isOpen = false;
-			return false;
+			goto error_cleanup;
 		}
-		DWORD l = mutabor::ReadLength(is);
+
+		l = mutabor::ReadLength(is);
+
 		if (l!=6) {
 			LAUFZEIT_ERROR2(_("Unknown header (chunk length %d) in file '%s'."),l, Name.c_str());
-			isOpen = false;
-			return false;
+			goto error_cleanup;
 		}
 
 		BYTE a, b;
@@ -466,8 +533,7 @@ namespace mutabor {
 		FileType = ((int)a << 8) + mutGetC(is); //mutGetC(is,FileType);
 		if (FileType > 3) {
 			LAUFZEIT_ERROR2(_("Unknown file typ %d in file '%s'."), FileType, Name.c_str());
-			isOpen = false;
-			return false;
+			goto error_cleanup;
 		}
 
 		// number of tracks
@@ -501,45 +567,54 @@ namespace mutabor {
 		for (i = 0; i < nTrack; i++ ) {
 			mutReadStream(is,Header, 4);
 			if (strcmp(Header,"MTrk")) {
-				LAUFZEIT_ERROR1(_("File '%s' has a broken track header."), Name.c_str())	;
-				isOpen = false;
-				return false;
+				LAUFZEIT_ERROR(_("File '%s' has a broken track header."), Name.c_str())	;
+				goto error_cleanup;
 			}
 
 			l = mutabor::ReadLength(is);
 
-			if ( l > (long) 64000 ) {
+			if ( l >  64000l ) {
 				Mode = DeviceCompileError;
-//				InDevChanged = 1;
-				LAUFZEIT_ERROR1(_("Midi input file '%s' is too long."), Name.c_str());
+				LAUFZEIT_ERROR(_("Track %d of MIDI input file '%s' is too long (=%d, max: %d)."),
+						i, Name.c_str(), (int)l, 64000);
 				DEBUGLOG (midifile, _T("Midi input file '%s' is too long."),Name.c_str());
-				isOpen = false;
-				return false;
+				goto error_cleanup;
 			}
 
 			Tracks[i].clear();
 			Tracks[i].resize(l);
 
-			if ( l > 32000 ) {
-				mutReadStream(is, (char*)Track[i], 32000);
-				mutReadStream(is, (char*)&Track[i][32000], l-32000);
-			} else
-				mutReadStream(is, (char*)Track[i], l);
-
-			if ( /*is.gcount() != l ||*/ mutStreamBad(is) ) {
-				DEBUGLOG (midifile, _("Midi input file '%s' produces errors."),
-					  Name.c_str());
+			if ( Tracks[i].size() < l) {
 				Mode = DeviceCompileError;
-//				InDevChanged = 1;
-				LAUFZEIT_ERROR1(_("Midi input file '%s' produces errors."), Name.c_str());
-				isOpen = false;
-				return false;
+				LAUFZEIT_ERROR(_("Could not allocate data for track %d of MIDI input file '%s'."),
+						i, Name.c_str());
+				goto error_cleanup;
+			}
+			
+			if ( l > 32000 ) {
+				
+				mutReadStream(is, (char*)(Tracks[i].data()), 32000);
+				mutReadStream(is, (char*)(Tracks[i].data())+32000, l-32000);
+			} else
+				mutReadStream(is, (char*)(Tracks[i].data()), l);
+
+			if ( mutStreamBad(is) ) {
+				DEBUGLOG (midifile, _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
+					  Name.c_str(),i);
+				goto error_cleanup;
 			}
 		}
 
 		mutCloseStream(is);
 		
 		return base::Open();
+
+	error_cleanup:
+		Mode = DeviceCompileError;
+		isOpen = false;
+		mutCloseStream(is);
+		Tracks.clear();
+		return false;
 	}
 
 	void InputMidiFile::Close()
@@ -615,7 +690,7 @@ namespace mutabor {
 			uint8_t status = message[0];
 			int a = status;
 
-			if ( SB <  0xF0 ) // normaler midi code
+			if ( status  <  midi::SYSTEM ) // normaler midi code
 			{
 				
 				int l = message.size();
@@ -641,6 +716,7 @@ namespace mutabor {
 
 /// \todo how do we deal with wrong meta event lenghts? If the rest the file is syntactically intact we can proceed.
 					switch (meta_type) {
+#if 0
 // according to the MIDI specification the time signature provides
 // interpretation for metronomes, but not for delta times
 					case midi::META_TIME_SIGNATURE: 
@@ -650,6 +726,7 @@ namespace mutabor {
 								 TicksPerQuarter);
 						}
 						break;
+#endif
 					case midi::META_SET_TEMPO:
 						if (message.size() >= 2+3) {
 							long NewQuarterDuration =
@@ -784,6 +861,7 @@ namespace mutabor {
 		}
 		return ProceedNo;
 	}
+
 	MidiFileFactory::~MidiFileFactory() {}
 
 	OutputDeviceClass * MidiFileFactory::DoCreateOutput () const

@@ -10,39 +10,20 @@
  * \version $Revision: 1.11 $
  * \license GPL
  *
- * $Log: mutDebug.h,v $
- * Revision 1.11  2011/11/02 14:32:01  keinstein
- * fix some errors crashing Mutabor on Windows
  *
- * Revision 1.10  2011-10-22 16:32:39  keinstein
- * commit to continue debugging on Linux/wine
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.9  2011-10-04 20:09:16  keinstein
- * Clean up focus handling a little bit.
- * Change perimeter point handling a little bit. Need at least one night to
- * get overthought.
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.8  2011-10-04 17:16:14  keinstein
- * make program compile on Mac (wx 2.9) and fix some memory corruption
- *
- * Revision 1.7  2011-10-03 20:03:27  keinstein
- * add missing struct nogetflag
- *
- * Revision 1.6  2011-10-02 16:58:42  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.5  2011-08-21 16:52:05  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.4  2011-02-20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************

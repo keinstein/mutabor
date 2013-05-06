@@ -275,6 +275,7 @@ namespace mutabor {
 				break;
 			}
 			nextEvent = PrepareNextEvent();
+			mutASSERT(nextEvent >= 0);
 			DEBUGLOG(timer,_T("Preparing next event is at %ld (isdelta=%d)"), nextEvent,IsDelta(nextEvent));
 			DEBUGLOG(timer,_T("NoDelta = %ld"), GetNO_DELTA());
 			if (IsDelta(nextEvent)) {

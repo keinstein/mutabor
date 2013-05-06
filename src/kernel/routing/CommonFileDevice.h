@@ -164,26 +164,6 @@ namespace mutabor {
 		};
 		friend class FileTimer;
 
-	protected:
-		
-		FileTimer * timer;
-
-		CommonFileInputDevice(): InputDeviceClass(),
-					 timer (NULL),
-					 referenceTime(0),
-					 pauseTime(0) { }
-
-		CommonFileInputDevice(int devId,
-				      wxString name, 
-				      MutaborModeType mode,
-				      int id): InputDeviceClass(devId, 
-								name, 
-								mode, 
-								id),
-					       timer(NULL),
-					       referenceTime(0),
-					       pauseTime(0) {}
-
 	public:
 		virtual ~CommonFileInputDevice() {
 			mutASSERT(timer == NULL);
@@ -226,7 +206,8 @@ namespace mutabor {
 		 * operations.
 		 */
 		wxThread::ExitCode ThreadPlay(FileTimer * timer);
-		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) {
+		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait
+						       flags=wxTHREAD_WAIT_BLOCK) {
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);
@@ -249,12 +230,30 @@ namespace mutabor {
 #endif
 		
 	protected:
+		FileTimer * timer;
 		/** 
 		 * Fixed offset for the relative time the file returns.
 		 */
 		mutint64 referenceTime; // ms
 		mutint64 pauseTime;     // ms
 		timing_params timing;
+
+		CommonFileInputDevice(): InputDeviceClass(),
+					 timer (NULL),
+					 referenceTime(0),
+					 pauseTime(0) { }
+
+		CommonFileInputDevice(int devId,
+				      wxString name, 
+				      MutaborModeType mode,
+				      int id): InputDeviceClass(devId, 
+								name, 
+								mode, 
+								id),
+					       timer(NULL),
+					       referenceTime(0),
+					       pauseTime(0) {}
+
 	};
 
 
