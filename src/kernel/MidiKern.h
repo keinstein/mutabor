@@ -229,6 +229,45 @@ namespace mutabor {
 			RPN_NULL               = 0x17F7F
 		};
 
+		inline int get_data_size(uint8_t status_byte) {
+			static const int midi_size[]   = { 3, 3, 3, 3, 2, 2, 3,-1 };
+			static const int system_size[] = {-1, 2, 3, 2, 1, 1, 1, -1, 
+							  1, 1, 1, 1, 1, 1, 1, -1 };
+			
+			if (!(status_byte & 0x80)) return -1;
+			int size = midi_size [(status_byte >> 4) & 0x7];
+			return size == -1 ? system_size[status_byte & 0x0F]:size;
+		}
+
+		inline bool is_system_exclusive(uint8_t status) {
+			return status == SYSEX_START;
+		}
+
+		inline bool is_system_common(uint8_t status) {
+			return ( status == QUARTER_FRAME) || 
+				( status == SONG_POSITION) ||
+				( status == SONG_SELECT) ||
+				( status == TUNE_REQUEST) ||
+				( status == SYSEX_END);
+		}
+
+		inline bool is_system_realtime(uint8_t status) {
+			return (0xF8 <= status) && (status <= 0xFF);
+		}
+		
+		inline bool is_channel_message(uint8_t status) {
+			return (status & 0x80) && (((status >> 4) & 0x7) != 0x7);
+		}
+
+		inline bool reset_running_status(uint8_t status) {
+			return is_system_exclusive(status) || is_system_common(status);
+		}
+
+		inline bool store_running_status(uint8_t status) {
+			return is_channel_message(status);
+		}
+
+
 	}
 }
 
