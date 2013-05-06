@@ -82,6 +82,7 @@ namespace mutabor {
 			STOP_PLAY               = 0xFC,
 			ACTIVE_SENSE            = 0xFE,
 			RESET                   = 0xFF,
+			META                    = 0xFF,
 
 			/* message group masks */
 			STARTBYTE_MASK          = 0x80,
@@ -89,7 +90,25 @@ namespace mutabor {
 			CHANNEL_MASK            = 0x0F
 		};
 
-// 
+		enum midi_meta_types {
+			META_SEQUENCE_NUMBER   = 0x00,
+			META_EVENT_TEXT        = 0x01,
+			META_COPYRIGHT_NOTICE  = 0x02,
+			META_SEQUENCE_NAME     = 0x03,
+			META_TRACK_NAME        = 0x03,
+			META_INSTRUMENT_NAME   = 0x04,
+			META_LYRIC             = 0x05,
+			META_MARKER            = 0x06,
+			META_CUE_POINT         = 0x07,
+			META_CHANNEL_PREFIX    = 0x20,
+			META_END_OF_TRACK      = 0x2F,
+			META_SET_TEMPO         = 0x51,
+			META_SMPTE_OFFSET      = 0x54,
+			META_TIME_SIGNATURE    = 0x58,
+			META_KEY_SIGNATURE     = 0x59,
+			META_SEQUENCER_SPECIFIC = 0x7F
+		};
+
 		enum midi_controller_indices {
 			/* coarse controllers */
 			BANK_COARSE              = 0x00,
