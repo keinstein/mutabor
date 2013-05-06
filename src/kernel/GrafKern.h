@@ -149,17 +149,18 @@ extern wxString sd1, sd2, sd3, sd4, sd5, sd6;
 extern wxString Fmeldung;
 
 #define LAUFZEIT_ERROR0(format) Fmeldung = format
-#define LAUFZEIT_ERROR1(format, a) Fmeldung = wxString::Format(format, a)
-#define LAUFZEIT_ERROR2(format, a, b) Fmeldung = wxString::Format(format, a, b)
+#define LAUFZEIT_ERROR(format, ...) Fmeldung = wxString::Format(format, __VA_ARGS__)
+
 #else
 extern char sd1[100], sd2[100];
 
 extern char Fmeldung[255];
 
 #define LAUFZEIT_ERROR0(format, a) strcpy(Fmeldung, format)
-#define LAUFZEIT_ERROR1(format, a) sprintf(Fmeldung, format, a)
-#define LAUFZEIT_ERROR2(format, a, b) sprintf(Fmeldung, format, a, b)
+#define LAUFZEIT_ERROR(format, ...) sprintf(Fmeldung, format, __VA_ARGS__)
 #endif
+#define LAUFZEIT_ERROR1(format, a) LAUFZEIT_ERROR(format, a)
+#define LAUFZEIT_ERROR2(format, a, b) LAUFZEIT_ERROR(format, a, b)
 
 #endif // precompiled
 #endif
