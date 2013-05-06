@@ -59,11 +59,7 @@
 #define REUSE(type) type
 #endif
 
-#if defined(WX)
 #define STD_PRE std
-#else
-#define STD_PRE
-#endif
 
 #define mutT _T
 
