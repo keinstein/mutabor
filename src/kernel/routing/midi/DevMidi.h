@@ -214,27 +214,33 @@ namespace mutabor {
 			return *this;
 		}
 
+#warning Verify handling of SysEx messages for realtime MIDI and timing dependent devices
 		/** 
-		 * Outputs a System Exclusive  message.
+		 * Outputs a system exclusive message. The message must include 
+		 * a valid device id.
 		 * 
-		 * \param data byte array containing the complete SysEx message
-		 * \param count length of the SysEx message
+		 * \param channel channel to which data shall be sent
+		 *        to. How channels are split into tracks or
+		 *        subdevices is managed by the OutputProvider (ignored)
+		 * \param from iterator pointing to the beginning of the message.
+		 * \param to iterator pointing just after the end of the message.
 		 */
+		template<class i>
 		MidiPortOutputProvider & SendSysEx (int channel,
-						    BYTE * data,
-						    size_t count) {
-			mutASSERT(-1);
-			if (data[0] == midi::SYSEX_START 
-			    || data[count-1] == midi::SYSEX_END) {
+						    i from,
+						    i to) {
+			if (from == to) return * this;
+			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return *this;
 			}
-			std::vector<unsigned char> message(count + 2);
+
+			std::vector<unsigned char> message(to - from + 1);
 			message[0] = midi::SYSEX_START;
-			for (size_t i = 1 ; i <= count ; i++) {
-				message[i] = data[i-1];
+			size_t i = 1;
+			while (from != to) {
+				message[i++] = (*(from++));
 			}
-			message[count+1] = midi::SYSEX_END;
 			
 			port->sendMessage(&message);
 			return *this;

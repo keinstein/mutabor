@@ -49,6 +49,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/CommonFileDevice.h"
 #include "src/kernel/routing/midi/midicmn.h"
+#include "src/kernel/routing/midi/midicmn.h"
 
 #ifdef WX
 //#include "src/wxGUI/generic/mhArray.h"
@@ -73,14 +74,107 @@ namespace mutabor {
 
 	public:
 		typedef std::vector<uint8_t> base;
-		wxLongLong Time;
-		Track(): base(), Time() {
+
+		class delta_length_error:public std::range_error {
+		public:
+			explicit delta_length_error (const std::string& what_arg): 
+				range_error(what_arg) {}
+		};
+		class invalid_status:public std::range_error {
+		public:
+			explicit invalid_status (const std::string& what_arg): 
+				range_error(what_arg) {}
+		};
+		class message_length_error:public std::range_error {
+		public:
+			explicit message_length_error (const std::string& what_arg): 
+				range_error(what_arg) {}
+		};
+		class wrong_id:public std::range_error {
+		public:
+			explicit wrong_id (const std::string& what_arg): 
+				range_error(what_arg) {}
+		};
+
+		Track(): base(), 
+			 Time(),
+			 timing(),
+			 position(0), 
+			 current_delta(MUTABOR_NO_DELTA), 
+			 remaining_delta(0),
+			 running_status(0) {
 			reserve(100);
 		}
 
+		Track(timing_params p): base(),
+					Time(),
+					timing(p),
+					position(0),
+					current_delta(MUTABOR_NO_DELTA),
+					remaining_delta(0),
+					running_status(0) {
+			reserve(100);
+		}
+					
+
 		~Track() {}
 
+		size_t GetPosition() { return position; }
+		void ResetPosition(size_t p, bool resettiming = false) { 
+			position = 0; 
+			if (resettiming) {
+				timing.set_duration(500000); //  120 bpm
+				Time = 0;
+			}
+		}
+
+		mutint64 ResetDelta() { remaining_delta = 0; }
+		mutint64 GetDelta() { return remaining_delta; }
+		mutint64 ReadDelta();
+		mutint64 PassDelta(mutint64 p) { return remaining_delta -= p; }
+		mutint64 UpdateDelta() { return remaining_delta += current_delta; }
 		void WriteDelta();
+
+		void SetQuarterDuration(mutint64 new_duration,
+					bool update = false, 
+					mutint64 offset = 0) {
+			if (!update) {
+				timing.set_duration(new_duration);
+				return;
+			}
+			timing_params old(timing);
+			timing.set_duration(new_duration);
+			remaining_delta = timing_params::update_duration(remaining_delta-offset,
+									 old,
+									 timing)
+				+ offset;
+		}
+
+#if 0
+		// this is not needed at the moment
+		void SetTicksPerQuarter(mutint64 new_ticks,
+					bool update = false, 
+					mutint64 offset = 0) {
+			if (!update) {
+				timing.set_ticks(new_ticks);
+				return;
+			}
+			timing_params old(timing);
+			timing.set_ticks(new_tiks);
+			remaining_delta = timing_params::update_duration(remaining_delta-offset,
+									 old,
+									 timing)
+				+ offset;
+		}
+#endif
+
+		std::pair<uint8_t,uint8_t> getMidiIickSignature() {
+			return timing.get_MIDI_tick_signature();
+		}
+
+		uint32_t ReadInt();
+		base ReadMessage();
+
 		void WriteNumber(size_t count) {
 			int i = 1;
 			size_t mask = 0x7F << 7;
@@ -97,6 +191,7 @@ namespace mutabor {
 		void WriteLength(mutOFstream &os, size_t l);
 	
 		void MidiOut(uint8_t c1, uint8_t c2, uint8_t c3) {
+			FixSysEx();
 			WriteDelta();
 			push_back(c1);
 			push_back(c2);
@@ -104,36 +199,147 @@ namespace mutabor {
 		}
 
 		void MidiOut(uint8_t c1, uint8_t c2) {
+			FixSysEx();
 			WriteDelta();
 			push_back(c1);
 			push_back(c2);
 		}
 
 		void MidiOut(uint8_t c1) {
+			FixSysEx();
 			WriteDelta();
 			push_back(c1);
 		}
 
-		void SendSysEx (uint8_t * data, size_t count) {
-			if (data[0] == midi::SYSEX_START 
-			    || data[count-1] == midi::SYSEX_END) {
+		template <class i>
+		void WriteLongChunk(i from, i to, size_t offset = 0) {
+			size_t count = (to - from) + offset;
+			
+			size_t c = count;
+
+			c = count+offset;
+			if (capacity() < size()+c+4) 
+				reserve (size()+c+4);
+			WriteNumber(count+offset);
+			while (from != to)
+				push_back(*(from++));
+		}
+
+		template <class i> 
+		void SendMeta (uint8_t type, i from, i to, mutint64 delta = -1) {
+			if (type & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return;
 			}
+			FixSysEx(delta);
+			if (delta < 0) {
+				WriteDelta();
+			} else {
+				WriteNumber(delta);
+			}
+			push_back(midi::META);
+			push_back(type);
+			WriteLongChunk(from,to,delta,0);
+		}
 
-			WriteDelta();
-			push_back(midi::SYSEX_START);
-			WriteNumber(count+1);
-			for (size_t i = 0 ; i < count ; i++) {
-				push_back(data[i-1]);
+		template <class i> 
+		void SendSysEx (i from, i to, mutint64 delta = -1) {
+			if ((*from) & midi::STARTBYTE_MASK) {
+				UNREACHABLEC;
+				return;
+			}
+			FixSysEx(delta);
+			SendSysExCont(from,to,delta,1);
+			push_back(midi::SYSEX_END);
+			running_sysex = false;
+		}
+
+		template <class i>
+		void SendSysExCont (i from, i to, 
+				    mutint64 delta = -1, 
+				    size_t offset = 0)
+			{
+			 
+
+			if (from == to) {
+				throw message_length_error(
+					gettext_noop("The system exclusive message must contain at least a device id."));
+			}
+
+			int tmp_sysex_id = *from ;
+			if (tmp_sysex_id == 0) {
+				i myfrom = from + 1;
+				if (to - myfrom < 2) {
+					throw wrong_id(gettext_noop("System exclusive message contains an invalid device id"));
+				}		
+				tmp_sysex_id = 0x10000 | ((*(myfrom++)) << 8);
+				tmp_sysex_id |= ((*myfrom) << 8);
+			}
+
+			if (!running_sysex) {
+				sysex_id = tmp_sysex_id;
+			} else if (sysex_id != tmp_sysex_id) {
+				throw wrong_id(gettext_noop("Device id of continuation package deos not match the id of the system exclusive message"));
+			}
+
+			if (delta < 0) {
+				WriteDelta();
+			} else {
+				WriteNumber(delta);
+			}
+			
+			push_back(running_sysex?midi::SYSEX_END:midi::SYSEX_START);
+			WriteLongChunk(from, to, offset);
+
+			if (offset == 0 && *(to -1) != midi::SYSEX_END) {
+				running_sysex = true;
+			} else {
+				running_sysex = false;
+			}
+		}
+
+
+		void FixSysEx(mutint64 delta = -1) {
+			if (!running_sysex) return;
+			if (capacity() < size() + 10)
+				reserve(size()+6);
+			WriteNumber(delta);
+			push_back(midi::SYSEX_END);
+			WriteNumber(4);
+			if (sysex_id > 0x10000) {
+				push_back(0);
+				push_back((sysex_id >> 8) & 0x7F);
+				push_back((sysex_id) & 0x7F);
+			} else {
+				push_back((sysex_id) & 0x7F);
+				push_back(0);
+				push_back(0);
 			}
 			push_back(midi::SYSEX_END);
+			running_sysex = false;
 		}
 
 
 		void Save(mutOFstream &os);
+
+		void Stop() {
+			remaining_delta = current_delta = MUTABOR_NO_DELTA;
+			running_sysex   = false;
+			sysex_id        = 0;
+			position        = 0;
+		}
+	protected:
+		mutint64 Time;            //< Time of last action (at least in record mode)
+		timing_params timing;
+		size_t position;
+		mutint64 current_delta;   //< Difference between last and next event
+		mutint64 remaining_delta; //< Difference between “now” and the next event
+		uint8_t running_status;   //< Save status byte for (de)coding running status
+		bool running_sysex;
+		int sysex_id;
 	};
 
+	typedef std::vector<Track> TrackList;
 
 	class MidiFileOutputProvider {
 	public:
@@ -245,17 +451,20 @@ namespace mutabor {
 		}
 
 		/** 
-		 * Outputs a system exclusive message.
+		 * Outputs a system exclusive message. The message must include 
+		 * a valid device id.
 		 * 
 		 * \param channel channel to which data shall be sent
 		 *        to. How channels are split into tracks or
 		 *        subdevices is managed by the OutputProvider (ignored)
-		 * \param byte1 1st byte
+		 * \param from iterator pointing to the beginning of the message.
+		 * \param to iterator pointing just after the end of the message.
 		 */
+		template<class i>
 		MidiFileOutputProvider & SendSysEx (int channel,
-						    BYTE * data,
-						    size_t count) {
-			Tracks.SendSysEx(data,count);
+						    i from,
+						    i to) {
+			Tracks.SendSysEx(from,to);
 			return *this;
 		}
 
@@ -382,10 +591,8 @@ namespace mutabor {
 		friend class MidiFileFactory;
 	protected:
 		InputMidiFile(): base(),
-				 Track(NULL), 
-				 TrackPos(NULL),
-				 curDelta(NULL),
-				 StatusByte(NULL) { }
+				 Tracks(),
+				 timing() { }
 
 		InputMidiFile(int devId,
 			      mutString name, 
@@ -394,10 +601,8 @@ namespace mutabor {
 					    name, 
 					    mode, 
 					    id),
-					  Track(NULL),
-					  TrackPos(NULL),
-					  curDelta(NULL),
-					  StatusByte(NULL) {}
+				       Tracks(), 
+				       timing() {}
 
 	public:
 		virtual ~InputMidiFile()
@@ -477,19 +682,10 @@ namespace mutabor {
 					   int data =0);
 	protected:
 		int FileType;
-		size_t nTrack;
-		int Speed;              //< Quarters per minute
-		BYTE **Track;
-		DWORD *TrackPos;
-		mutint64 *curDelta;
-		mutint64 minDelta;
-		BYTE *StatusByte;
-		//  UINT TimerId;
+		TrackList Tracks;
+		mutint64 minDelta;        //< time interval to next event μs
 		BOOL Busy;
-		DWORD TicksPerQuarter;  //< ticks/quarter
-		mutint64 MMSPerQuarter; //< μs/quarter
-//		void Proceed(DWORD midiCode, int track);
-//		void ProceedRoute(DWORD midiCode, Route route);
+		timing_params timing;    //< timing parameters
 		mutint64 ReadMidiProceed(size_t nr, mutint64 time);
 	};
 

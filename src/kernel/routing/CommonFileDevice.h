@@ -254,6 +254,7 @@ namespace mutabor {
 		 */
 		mutint64 referenceTime; // ms
 		mutint64 pauseTime;     // ms
+		timing_params timing;
 	};
 
 

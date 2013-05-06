@@ -112,14 +112,30 @@ namespace mutabor {
 
 // Tracks -----------------------------------------------------------
 
+	mutint64 Track::ReadDelta()
+	{
+		current_delta = ReadInt();
+#warning fix to meet current_delta = (MMSPerQuarter * Delta) / Speed;
+		remaining_delta += timing.get_time(current_delta);
+		return remaining_delta;
+	}
+
 	void Track::WriteDelta()
 	{
 		BYTE w[5];
 		int i = 0;
-		DWORD Delta = (long)CurrentTime - Time.GetValue();
-		Time = (long)CurrentTime;
+		mutint64 newtime = CurrentTime.Get();
+		mutint64 Deltatime = (newtime - Time);
+		mutint64 Delta = timing.get_delta(Deltatime);
 
-		WriteNumber(Delta);
+		// we should take care of rounding errors
+		Time = newtime + timing.get_time(Delta) - Deltatime;
+
+		// if the Delta time is bad wite a correct number
+		mutASSERT(Delta < 0x0FFFFFFF);
+		WriteNumber(Delta < 0x0FFFFFFF ? Delta: 0x0FFFFFFF);
+	}
+
 	}
 
 	void Track::WriteLength(mutOFstream &os, size_t l)
@@ -408,12 +424,11 @@ namespace mutabor {
 	{
 		mutASSERT(!isOpen);
 		DEBUGLOG (midifile, _T("start"));
-		Track = 0;
-		curDelta = 0;
-		TrackPos = 0;
-		StatusByte = 0;
-		TicksPerQuarter = 0;
-		MMSPerQuarter = wxLL(500000); // Default value: 120 bpm = 0.5s/Quarter
+		Tracks.clear();
+		char Header[5] = {0,0,0,0,0};   // storage for header mark
+		size_t nTrack;
+		DWORD l;
+		timing.reset();
 
 		// read file
 		mutOpenIFstream(is, Name);
@@ -463,14 +478,12 @@ namespace mutabor {
 		// speed info
 		a = mutGetC(is); //mutGetC(is,a);
 		b = mutGetC(is); //mutGetC(is,b);
-		Speed = (((int)a) << 8) + b;
+		timing.set_MIDI_tick_signature(a,b);
 		DEBUGLOG(midifile, 
-			 _T("File type: %d; Tracks: %d; Speed: %dTicks/Qarter"),
+			 _T("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
 			 FileType, 
 			 nTrack, 
-			 Speed);
-
-		NRT_Speed = Speed;
+			 timing.get_ticks());
 
 		// rest of header
 		DWORD i;
@@ -479,7 +492,11 @@ namespace mutabor {
 			a = mutGetC(is);// mutGetC(is,a);
 
 		// Tracks lesen
-		Track = (BYTE**) malloc(nTrack*sizeof(BYTE*));
+		Tracks.resize(nTrack,Track(timing));
+		if (Tracks.empty()) {
+			LAUFZEIT_ERROR1(_("Could not allocate memory for the track list of file '%s'."), Name.c_str())	;
+			goto error_cleanup;
+		}
 
 		for (i = 0; i < nTrack; i++ ) {
 			mutReadStream(is,Header, 4);
@@ -500,7 +517,8 @@ namespace mutabor {
 				return false;
 			}
 
-			Track[i] = (BYTE*)malloc(l*sizeof(BYTE));
+			Tracks[i].clear();
+			Tracks[i].resize(l);
 
 			if ( l > 32000 ) {
 				mutReadStream(is, (char*)Track[i], 32000);
@@ -520,11 +538,6 @@ namespace mutabor {
 		}
 
 		mutCloseStream(is);
-
-		// Daten vorbereiten
-		curDelta = (mutint64 *)malloc(nTrack*sizeof(mutint64));
-		TrackPos = (DWORD*)malloc(nTrack*sizeof(DWORD));
-		StatusByte = (BYTE*)malloc(nTrack*sizeof(BYTE));
 		
 		return base::Open();
 	}
@@ -536,13 +549,7 @@ namespace mutabor {
 		if ( Mode == DeviceCompileError )
 			return;
 
-		for (size_t i = 0; i < nTrack; i++ )
-			free(Track[i]);
-
-		free(Track);
-		free(TrackPos);
-		free(curDelta);
-		free(StatusByte);
+		Tracks.clear();
 	}
 
 	void InputMidiFile::Stop()
@@ -554,48 +561,40 @@ namespace mutabor {
 			return;
 
 		// Delta-Times lesen
-		minDelta = NO_DELTA;
+		minDelta = MUTABOR_NO_DELTA;
+		timing.reset();
 
-		MMSPerQuarter = 1000000l;
-
-		for (size_t i = 0; i < nTrack; i++ ) {
-			TrackPos[i] = 0;
-			curDelta[i] = ReadDelta(Track[i], TrackPos[i]);
-
-			if ( curDelta[i] < minDelta )
-				minDelta = curDelta[i];
+		for (size_t i = 0; i < Tracks.size(); i++ ) {
+			Tracks[i].ResetPosition(0,true);
+#warning Implement catching of dalta_length_error
+			minDelta = std::min(minDelta, Tracks[i].ReadDelta());
 		}
 	}
 
 	mutint64 InputMidiFile::PrepareNextEvent()
 	{
 		mutint64 passedDelta = minDelta;
-
-		mutint64 NewMinDelta = NO_DELTA;
-
-		for (size_t i = 0; i < nTrack; i++ ) {
-			if ( curDelta[i] != NO_DELTA ) {
-				if ( curDelta[i] <= passedDelta )
-					curDelta[i] = ReadMidiProceed(i, passedDelta-curDelta[i]);
-				else
-					curDelta[i] -= passedDelta;
-
-				if ( curDelta[i] != NO_DELTA && 
-				     curDelta[i] < NewMinDelta ) {
-					NewMinDelta = curDelta[i];
-				}
+		mutint64 NewMinDelta = MUTABOR_NO_DELTA;
+		for (size_t i = 0; i < Tracks.size(); i++ ) {
+			mutint64 delta = Tracks[i].GetDelta();
+			if ( delta  == MUTABOR_NO_DELTA ) 
+				continue;
+			mutint64 remainingDelta = Tracks[i].PassDelta(passedDelta);
+			if ( remainingDelta <= 0 )
+				delta = ReadMidiProceed(i, passedDelta);
+			else (delta = remainingDelta);
+			
+			mutASSERT(delta == Tracks[i].GetDelta());
+				
+			if (delta != MUTABOR_NO_DELTA && 
+			    delta < NewMinDelta ) {
+					NewMinDelta = delta;
 			}
-			DEBUGLOG(midifile,_T("Track: %d,delta: %ldμs"),i,curDelta[i]);
+			DEBUGLOG(midifile,_T("Track: %d,delta: %ldμs"),i,Tracks[i].GetDelta());
 		}
-
-
+		DEBUGLOG(midifile,_T("Next event after %ld μs (MUTABOR_NO_DELTA = %ld)"),minDelta,MUTABOR_NO_DELTA);
 		minDelta = NewMinDelta;
-		DEBUGLOG(midifile,_T("Next event after %ldμs (NO_DELTA = %ld)"),minDelta,NO_DELTA);
-		if (NewMinDelta == NO_DELTA) {
-			return GetNO_DELTA();
-		} else  {
-			return minDelta;
-		}
+		return NewMinDelta;
 	}
 
 	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 time)
@@ -605,97 +604,97 @@ namespace mutabor {
 
 		while ( time >= Delta ) {
 			time -= Delta;
-			pData = &(Track[nr][TrackPos[nr]]);
+
+			Track::base message = Tracks[nr].ReadMessage();
+
+/*			pData = &(Track[nr][TrackPos[nr]]);
 			OldPos = TrackPos[nr];
 			DWORD a = Track[nr][TrackPos[nr]++];
+*/
 
-			if ( a & 0x80 )
-				StatusByte[nr] = a;
-			else {
-				TrackPos[nr]--;
-				a = StatusByte[nr];
-			}
-
-			BYTE SB = StatusByte[nr];
+			uint8_t status = message[0];
+			int a = status;
 
 			if ( SB <  0xF0 ) // normaler midi code
 			{
-				int l = lMidiCode[(SB >> 4) & 07];
+				
+				int l = message.size();
+				mutASSERT(l<4);
 				int shift = 8;
 
 				for (int i = 1; i < l; i++)
 				{
-					a += (DWORD)Track[nr][TrackPos[nr]++] << shift;
+					a += (int)(message[i]) << shift;
 					shift += 8;
 				}
 			}
-			else if ( SB == 0xF0 || SB == 0xF7 ) // SysEx I, SysEx II
-			{
-				DWORD EventLength = ReadDelta(Track[nr], TrackPos[nr]); // length
-				TrackPos[nr] += EventLength;
-			} else if ( SB == 0xFF ) // meta event
-			{
-				a += Track[nr][TrackPos[nr]++] << 8;         // event number
-				DWORD EventLength = ReadDelta(Track[nr], TrackPos[nr]); // length
-
-				if ( (a >> 8) == 0x58 ) // Time Signature
+			else switch (status) {
+				case midi::SYSEX_START:
+				case midi::SYSEX_END:
 				{
-					TicksPerQuarter = Track[nr][TrackPos[nr]+2];
-					DEBUGLOG(midifile,_T("Change time signature to  %d ticks/qarter"),
-						 TicksPerQuarter);
-										
-				} else if ( (a >> 8) == 0x51 ) // Tempo
+#warning Implement SysEx handling in MIDI files
+				} 
+				break;
+				case midi::META: // meta event
 				{
-					long NewMMSPerQuarter =
-						(((DWORD)Track[nr][TrackPos[nr]]) << 16) +
-						(((DWORD)Track[nr][TrackPos[nr]+1]) << 8) +
-						((DWORD)Track[nr][TrackPos[nr]+2]);
+					uint8_t meta_type = message[1];
 
-					for (size_t j = 0; j < nr; j++ )
-						if ( curDelta[j] != NO_DELTA )
-							curDelta[j] = (curDelta[j] * NewMMSPerQuarter) / MMSPerQuarter;
-
-					for (REUSE(size_t) j = nr+1; j < nTrack; j++ )
-						if ( curDelta[j] != NO_DELTA && curDelta[j] >= minDelta)
-							curDelta[j] = ((curDelta[j]-minDelta) * NewMMSPerQuarter) / MMSPerQuarter +minDelta;
-					
-					DEBUGLOG(midifile,
-						 _T("Change tempo from %ldμs to %ldμs per quarter (next event after %ld)"),
-						 MMSPerQuarter, NewMMSPerQuarter, minDelta);
-
-					MMSPerQuarter = NewMMSPerQuarter;
+/// \todo how do we deal with wrong meta event lenghts? If the rest the file is syntactically intact we can proceed.
+					switch (meta_type) {
+// according to the MIDI specification the time signature provides
+// interpretation for metronomes, but not for delta times
+					case midi::META_TIME_SIGNATURE: 
+						if (message.size() >= 2+4) {
+							TicksPerQuarter = Track[nr][TrackPos[nr]+2];
+							DEBUGLOG(midifile,_T("Change time signature to  %d ticks/qarter"),
+								 TicksPerQuarter);
+						}
+						break;
+					case midi::META_SET_TEMPO:
+						if (message.size() >= 2+3) {
+							long NewQuarterDuration =
+								(((int)message[2]) << 16) +
+								(((int)message[3]) << 8) +
+								(((int)message[4]));
+						
+							size_t j,e;
+							if (FileType == 1) {
+								j = nr; e = nr+1;
+							} else {
+								j = 0; e = Tracks.size();
+							}
+							for (; j < e; j++ )
+								Tracks[j].SetQuarterDuration(NewQuarterDuration, 
+											     true, 
+											     j>nr ? minDelta: (mutint64)0);
+							
+							DEBUGLOG(midifile,
+								 _T("Change tempo to %ldμs per quarter (next event after %ld)"),
+								 NewQuarterDuration, minDelta);
+						}
+						break;
+					case midi::META_END_OF_TRACK:
+						Tracks[nr].Stop();
+						return MUTABOR_NO_DELTA;
+						break;
+					}
 				}
-				TrackPos[nr] += EventLength;
-			} else if ( SB == 0xF2 ) // song position pointer
-			{
-				a += Track[nr][TrackPos[nr]++] << 8;
-				a += Track[nr][TrackPos[nr]++] << 16;
-			} else if ( SB == 0xF3 ) // song select
-				a += Track[nr][TrackPos[nr]++] << 8;
-
-			// ausf¸hren
-			nData = TrackPos[nr] - OldPos;
-
-//9    if ( *((BYTE*)(&a)) < 0xF0 )
-			if ( a == 0x2FFF ) {
-				TrackPos[nr] = 0xFFFFFFFF;
-				return NO_DELTA;
-			} else
-				Proceed(a, nr);
+				break;
+				case midi::SONG_POSITION: 
+					a += message[1] << 8 + message[2] << 16;
+					break;
+				case midi::SONG_SELECT:
+					a += message[1] << 8;
+					break;
+				}
+			Proceed(a, nr);
 
 			// Delta Time
-			Delta = ReadDelta(Track[nr], TrackPos[nr]);
+			Delta = Tracks[nr].ReadDelta();
 			
 			DEBUGLOG(midifile,
-				 _T("Next event on Track %d after %ld Ticks"),
+				 _T("Next event on Track %d after %ld μs"),
 				 nr, Delta);
-
-			if ( CurrentTime.isRealtime() ) {
-				Delta = (MMSPerQuarter * Delta) / Speed;
-				DEBUGLOG(midifile,
-					 _T("This event on Track %d after %ldμs (time = %ldμs)"),
-					 nr, Delta, time);
-			}
 		}
 
 		return Delta - time;
@@ -711,17 +710,15 @@ namespace mutabor {
 #ifdef WX
 	wxString InputMidiFile::TowxString() const {
 		return InputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  FileType = %d\n  nTrack = %d\n\
-  Speed = %d\n  TrackPos = %d\n  curDelta = %ld\n\
-  minDelta = %ld\n  StatusByte = %x\n\
-  Busy = %d\n  TicksPerQuarter = %d\n  MMSPerQuarter = %ld"),
-					 FileType, nTrack, 
-					 Speed, (Track?(*Track?**Track:-1):-2), 
-					 (TrackPos?*TrackPos:-1),
-					 (curDelta?*curDelta:-1), 
+			wxString::Format(_T("\n\
+  FileType = %d\n\
+  Tracks: %d\n\
+  minDelta = %ld\n				\
+  Busy = %d\n"),
+					 FileType, 
+					 Tracks.size(), 
 					 minDelta,
-					 (StatusByte?*StatusByte:-1), 
-					 Busy, TicksPerQuarter, MMSPerQuarter);
+					 Busy);
 	}
 #endif
 	

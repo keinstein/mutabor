@@ -457,19 +457,18 @@ namespace mutabor {
 		 * \param message byte array containang the message
 		 * \param count number of bytes to be sent
 		 */
-		DebugMidiOutputProvider & SendSysEx(int channel, BYTE * message, size_t count){
+		template < class i>
+		DebugMidiOutputProvider & SendSysEx(int channel, i from, i to){
 			// channel is used in multi track environments
 			// Flawfinder: ignore
 			mutASSERT(open);
-			if (message[0] == (BYTE)midi::SYSEX_START 
-			    || message[count-1] == (BYTE)midi::SYSEX_END) {
+			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return *this;
 			}
 			mutString tmp = mutString::Format(_T("%3d: SysEx"),channel);
-			for (size_t i = 0 ; i < count; i++) {
-				tmp += mutString::Format(_T(" %02x"),message[i]);
-			}
+			while ( from != to) 
+				tmp += mutString::Format(_T(" %02x"),*(from++));
 			
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T(" End\n");

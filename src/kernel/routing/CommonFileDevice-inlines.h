@@ -35,6 +35,7 @@
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/Runtime.h"
 
+
 #include "wx/wfstream.h"
 #include "wx/msgdlg.h"
 #include "wx/timer.h"
@@ -185,7 +186,7 @@ namespace mutabor {
 			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)mutabor::CurrentTime.isRealtime());
 			if ( mutabor::CurrentTime.isRealtime() ) {
 				mutASSERT(timer == NULL);
-				referenceTime = wxGetLocalTimeMillis().GetValue();
+				referenceTime = CurrentTime.Get();
 				pauseTime = 0;
 
 				timer = new FileTimer(this,kind);
@@ -208,7 +209,7 @@ namespace mutabor {
 		case DevicePause:
 			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)CurrentTime.isRealtime());
 			if ( CurrentTime.isRealtime() ) {
-				referenceTime += wxGetLocalTimeMillis().GetValue() - pauseTime;
+				referenceTime += CurrentTime.Get() - pauseTime;
 				pauseTime = 0;
 				if (timer) {
 					mutASSERT(timer -> IsPaused());
@@ -240,7 +241,7 @@ namespace mutabor {
 				if (timer != wxThread::This()) {
 					timer -> Pause();
 				}
-				pauseTime = wxGetLocalTimeMillis().GetValue();
+				pauseTime = CurrentTime.Get();
 			}
 			Mode = DevicePause;
 			Panic();
@@ -252,6 +253,8 @@ namespace mutabor {
 			mutASSERT(!"Unknown value");
 		}
 	}
+	
+	/* we use microseconds as errors sum up */
 
 	inline wxThread::ExitCode
 	CommonFileInputDevice::ThreadPlay(FileTimer * thistimer)
@@ -264,7 +267,7 @@ namespace mutabor {
 
 		mutint64 nextEvent = wxLL(0); // in μs
 		mutint64 playTime  = wxLL(0); // in μs
-		mutint64 reference = wxLL(0); // in ms
+		mutint64 reference = wxLL(0); // in μs
 		mutint64 delta; // in ms
 		wxThread::ExitCode e;
 		do {
@@ -277,18 +280,19 @@ namespace mutabor {
 			if (IsDelta(nextEvent)) {
 				reference = referenceTime;
 				playTime += nextEvent;
-				delta = reference + playTime/1000 - wxGetLocalTimeMillis().GetValue();
-				DEBUGLOG(timer,_T("Delta %ldms."),delta);
+				DEBUGLOG(timer,_T("time: %ld μs"),CurrentTime.Get());
+				delta = reference + playTime - CurrentTime.Get();
+				DEBUGLOG(timer,_T("Delta %ld μs."),delta);
 				
 				if (delta > 0) {
-					if (delta > std::numeric_limits<unsigned long>::max()) {
+					if (delta > wxLL(1000)*std::numeric_limits<unsigned long>::max()) {
 						nextEvent = GetNO_DELTA();
 						Mode = DeviceTimingError;
 						break;
 					}
 
-					DEBUGLOG(timer,_T("Sleeping %ld ms."),(unsigned long)delta);
-					wxThread::Sleep((unsigned long)delta);
+					DEBUGLOG(timer,_T("Sleeping %ld ms."),(unsigned long)(delta/1000));
+					wxThread::Sleep((unsigned long)(delta/1000));
 				}
 			}
 		} while (IsDelta(nextEvent));

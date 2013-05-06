@@ -37,6 +37,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
+#include "src/kernel/routing/timing.h"
 #include <cstdlib>
 #include <wx/app.h>
 
@@ -124,7 +125,7 @@ class myDevice: public mutabor::InputGis {
 	}
 	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
 		std::clog << "Starting..." << std::endl;
-		CurrentTimer.UseRealtime(true);
+		mutabor::CurrentTime.UseRealtime(true);
 		mutabor::InputGis::Play(kind);
 		std::clog << "Started." << std::endl;
 	}

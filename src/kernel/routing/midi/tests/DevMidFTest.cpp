@@ -57,7 +57,7 @@ void OutputMidiFileTest::setUp()
 	route->Attatch(0);
 	box = &mut_box[route->GetBox()];
 
-	CurrentTime.UseRealtime(true);
+	mutabor::CurrentTime.UseRealtime(true);
 	out = static_cast<mutabor::OutputMidiFile *>(mutabor::DeviceFactory::CreateOutput(mutabor::DTMidiFile).get());
 	out->SetName(_T("test_output.mid"));
 	out->SetBendingRange(2);

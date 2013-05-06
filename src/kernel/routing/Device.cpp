@@ -262,9 +262,6 @@ CommonTypedDeviceAPI:\n\
 	template class CommonTypedDeviceAPI<OutputDeviceClass>;
 	template class CommonTypedDeviceAPI<InputDeviceClass>;
 
-        // CurrentTime ------------------------------------------------------
-	CurrentTimer CurrentTime;
-
 
 #ifdef WX
 	wxString OutputDeviceClass::TowxString() const {

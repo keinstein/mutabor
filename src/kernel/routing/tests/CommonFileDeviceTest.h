@@ -38,6 +38,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/CommonFileDevice-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/kernel/routing/timing.h"
 #include <cstdlib>
 
 
@@ -48,13 +49,15 @@ public:
 	long i;
 	long max;
 	long min;
+	mutint64 lasttime ;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw() {
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
-		CurrentTimer.UseRealtime(true);
+		mutabor::CurrentTime.UseRealtime(true);
 		max = 0; min = 100000; i= 0;
 		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
+		lasttime = wxGetLocalTimeMillis().GetValue();
 		sw.Start();
 	}
 
@@ -83,7 +86,7 @@ public:
 	}
 	mutint64 PrepareNextEvent() {
 		mutint64 tl = wxGetLocalTimeMillis().GetValue();
-		tl = tl - (referenceTime + (mutint64)(i*(i+1))/2);
+		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
 		if (tl > 10) {
@@ -91,6 +94,7 @@ public:
 				  << " Runtime: " << tl << "ms" << std::endl;
 			exit(3);
 		}
+		lasttime = wxGetLocalTimeMillis().GetValue();
 		if (++i<100) {
 			return (mutint64)(i * 1000);
 		}

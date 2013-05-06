@@ -63,6 +63,7 @@ class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
 protected:
 	wxStopWatch sw;
 public:
+	mutint64 lasttime;
 	long i;
 	long max;
 	long min;
@@ -70,9 +71,10 @@ public:
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
-		CurrentTimer.UseRealtime(true);
+		CurrentTime.UseRealtime(true);
 		max = 0; min = 100000; i= 0;
 		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
+		lasttime = wxGetLocalTimeMillis().GetValue();
 		sw.Start();
 	}
 
@@ -98,7 +100,7 @@ public:
 	}
 	mutint64 PrepareNextEvent() {
 		mutint64 tl = wxGetLocalTimeMillis().GetValue();
-		tl = tl - (referenceTime + (mutint64)(i*(i+1))/2);
+		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
 		if (max < tl)  max = tl;
 		if (min > tl || min == 0) min = tl;
 		if (tl > 10) {
@@ -106,6 +108,7 @@ public:
 				  << " Runtime: " << tl << "ms" << std::endl;
 			exit(3);
 		}
+		lasttime = wxGetLocalTimeMillis().GetValue();
 		if (++i<100) {
 			std::clog << "." << i << std::flush;
 			return (mutint64)(i * 1000);

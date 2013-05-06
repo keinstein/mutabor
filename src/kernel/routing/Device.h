@@ -35,6 +35,7 @@
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/gmn/GIS.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/timing.h"
 #include "src/kernel/MidiKern.h"
 
 #ifndef MU32_ROUTING_DEVICE_H_PRECOMPILED
@@ -1047,74 +1048,6 @@ namespace mutabor {
 
 	void InitDeviceFactories();
 
-
-	class CurrentTimer: public wxStopWatch
-	{
-	public:
-		CurrentTimer(long t = 0):wxStopWatch() {
-			Start(t);
-			is_realtime = false;
-		}
-	
-		virtual ~CurrentTimer() {}
-		
-		void UseRealtime(bool flag) { 
-			if (flag == is_realtime) return;
-			is_realtime = flag;
-			
-			if (is_realtime) {
-				Start(time);
-			} else {
-				time = Time();
-			}
-		}
-
-		bool isRealtime() { return is_realtime; }
-
-		void Set(mutint64 t = 0) {
-			if (is_realtime) {
-				Start(t);
-			} else {
-				time = t;
-			}
-		}
-
-		void Stop() {}
-		
-		mutint64 Get() { return is_realtime?(mutint64)Time():time; }
-		
-		void SetSpeed(mutint64 s) { speed = s; }
-		mutint64 GetSpeed() const { return speed; }
-
-		CurrentTimer& operator = (mutint64 t) {
-			Set(t);
-			return * this;
-		}
-
-		virtual void  Notify() {
-			STUBC;
-		}
-
-		CurrentTimer& operator += (mutint64 t) {
-			mutASSERT(is_realtime);
-			time += t;
-		}
-
-		operator unsigned int () {
-			return Get();
-		}
-	
-		operator mutint64 () {
-			return Get();
-		}
-
-	protected:
-		mutint64 time;
-		mutint64 speed;
-		bool is_realtime;
-	};
-
-	extern CurrentTimer CurrentTime;
 
 
 // functions --------------------------------------------------------

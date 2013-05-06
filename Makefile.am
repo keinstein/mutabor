@@ -122,7 +122,8 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/CommonFileDevice.h \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
-		src/kernel/routing/RouteCompat.h
+		src/kernel/routing/RouteCompat.h \
+		src/kernel/routing/timing.h
 
 libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/gmn/DevGIS.cpp \
@@ -136,7 +137,8 @@ libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/CommonFileDevice.cpp \
 		src/kernel/routing/Device.cpp \
 		src/kernel/routing/Route.cpp \
-		src/kernel/routing/RouteCompat.cpp
+		src/kernel/routing/RouteCompat.cpp \
+		src/kernel/routing/timing.cpp
 
 noinst_HEADERS += $(libmutaborrouting_a_INLINEHEADERS) $(libmutaborrouting_a_INDENTHEADERS)
 

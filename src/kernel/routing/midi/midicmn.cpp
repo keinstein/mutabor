@@ -509,16 +509,18 @@ namespace mutabor {
 				switch (p[pos]) {
 				case midi::SYSEX_START:
 				{
-					size_t counter = pos;
-					while (counter < n && p[counter] 
-					       != midi::SYSEX_END) {
+					size_t counter = pos + 1;
+					while (counter < n && 
+					       p[counter] != midi::SYSEX_END) {
 						if (p[counter] & 0x80) {
 							break;
 						}
 						counter++;
 					}
 					if (p[pos] == midi::SYSEX_END) counter++;
-					Out.SendSysEx(channel,&p[pos+1],counter-pos-1);
+					// Dont interfere with sysex messages as some
+					// devices require proper timing
+					Out.SendSysEx(channel,&p[pos+1],p + counter);
 					pos = counter;
 				}
 					break;
@@ -671,17 +673,16 @@ namespace mutabor {
 				break;
 			}
 		case midi::KEY_PRESSURE:
-#pragma warning "implement key_pressure"
+#warning "implement key_pressure"
 		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#pragma warning "implement channel_pressure"			
+#warning "implement channel_pressure"			
 			break;
 
 		case midi::SYSTEM:
-#pragma message "implement system messsages"
+#warning "implement system messsages"
 #if 0
 			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()->MidiOut(pData,
-                                nData);
+				route->GetOutputDevice()->MidiOut(pData,nData);
 #else
                         ;
 #endif
@@ -757,13 +758,13 @@ namespace mutabor {
 					    midiCode->at(2));
 			break;
 		case midi::KEY_PRESSURE:
-#pragma warning "implement key_pressure"
+#warning "implement key_pressure"
 		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
-#pragma warning "implement channel_pressure"			
+#warning "implement channel_pressure"			
 			break;
 
 		case midi::SYSTEM:
-#pragma message "implement system messsages"
+#warning "implement system messsages"
 #if 0
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()->MidiOut(pData,
