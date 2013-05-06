@@ -191,6 +191,11 @@
 #define mutASSERT(cond)
 #endif
 
+#ifdef gettext_noop
+#undef gettext_noop
+#endif
+#define gettext_noop(a) a
+
 inline wxString getContextLocal(const wxString & s)
 {
 	wxString ret = s.AfterFirst('|');
