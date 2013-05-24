@@ -58,6 +58,7 @@
 #include "src/wxGUI/configtree.h"
 #include "src/kernel/box.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/generic/mutDebug.h"
 
 #ifdef __WXMAC__
 #include <ApplicationServices/ApplicationServices.h>
@@ -71,7 +72,11 @@ using namespace mutabor;
 using namespace mutaborGUI;
 
 
+#ifdef MUTABOR_TEST
+IMPLEMENT_APP_NO_MAIN(MutApp)
+#else
 IMPLEMENT_APP(MutApp)
+#endif
 
 namespace mutaborGUI {
 
@@ -467,26 +472,19 @@ namespace mutaborGUI {
 		}
 	}
 	
+#ifdef DEBUG
 	void MutApp::OnAssertFailure(const wxChar *file,
 				    int line,
 				    const wxChar *func,
 				    const wxChar *cond,
 				    const wxChar *msg)
  	{
-		if (!std::clog.good()) MutInitConsole();
-		wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"), file,line,func,cond,msg);
-		std::clog << s.ToUTF8() << std::endl;
-		// take care to not show the message box from a worker thread, this doesn't
-		// work as it doesn't have any event loop
-		if ( !wxIsMainThread() ||
-		     wxMessageBox ( s,
-				    _T(PACKAGE_STRING),
-				    wxYES_NO | wxICON_QUESTION)
-		     == wxYES )
-		{
-			wxApp::OnAssertFailure(file, line, func, cond, msg);
-		}
+
+		mutAssertFailure(file,line,func,cond,msg);
  	} 	
+#endif
+
+
 
 // Extend event processing to search the view's event table
 	bool MutApp::ProcessEvent(wxEvent& event)

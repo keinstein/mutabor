@@ -14,8 +14,9 @@ testcppunit_SOURCES = \
 	boxTest.h 
 
 testcppunit_LDADD = \
+	$(top_builddir)/libmutabordebugcppunit.a \
+	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/librtmidi.a \
 	$(LDADD) \

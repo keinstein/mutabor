@@ -180,15 +180,17 @@
 
 #endif
 
+#ifdef MUTABOR_CPPUNIT
+#define mutASSERT CPPUNIT_ASSERT
+#define mutAssertMsg(cond,msg) CPPUNIT_ASSERT_MESSAGE(msg,cond)
+#else
 #ifdef DEBUG
-#define mutAssertMsg(cond,msg) \
-   if (!(cond)) \
-	 std::cerr << (const char *)(wxString(msg).ToUTF8()) << std::endl; \
-   assert(cond)
+#define mutAssertMsg(cond,msg) wxASSERT_MSG(cond,msg)
 #define mutASSERT wxASSERT
 #else
 #define mutAssertMsg(cond,msg)
 #define mutASSERT(cond)
+#endif
 #endif
 
 #ifdef gettext_noop
@@ -305,6 +307,11 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 #define MIDI_MAX_CHANNEL 15
 #define MIDI_MIN_KEY 0
 #define MIDI_MAX_KEY 0x7f
+
+
+#ifdef MUTABOR_CPPUNIT
+#include "cppunit/extensions/HelperMacros.h"
+#endif
 #endif /* MU32_DEFS_H */
 
 

@@ -22,17 +22,19 @@ playmidi1_SOURCES = \
 	playmidi1.cpp
 
 playmidi1_LDADD = \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
 	$(top_builddir)/librtmidi.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
 midiopenfail1_LDADD = \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
 	$(top_builddir)/librtmidi.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
@@ -57,9 +59,10 @@ testcppunit_SOURCES = \
 	midicmnTest.cpp
 
 testcppunit_LDADD = \
+	$(top_builddir)/libmutabordebugtest.a \
+	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
 	$(top_builddir)/librtmidi.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \

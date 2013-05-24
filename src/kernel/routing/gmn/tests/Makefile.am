@@ -20,17 +20,19 @@ playgmn1_SOURCES = \
 	playgmn1.cpp
 
 playgmn1_LDADD = \
-	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutabordebugtest.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
+	$(top_builddir)/libmutaborgui.a \
+	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/librtmidi.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
 gmnopenfail1_LDADD = \
-	$(top_builddir)/libmutaborrouting.a \
+	$(top_builddir)/libmutabordebugtest.a \
 	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutabordebug.a \
+	$(top_builddir)/libmutaborgui.a \
+	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/librtmidi.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)

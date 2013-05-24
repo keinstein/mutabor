@@ -624,7 +624,7 @@ AM_PATH_CPPUNIT(1.8.0)
 # You can set up an automake conditional and use it to conditionally
 # build cppunit-using test programs.
 AM_CONDITIONAL(HAVE_CPPUNIT, test "$CPPUNIT_LIBS")
-
+CPPUNIT_CFLAGS="$CPPUNIT_CFLAGS -DMUTABOR_CPPUNIT -DMUTABOR_TEST"
 
 dnl non verbose
 

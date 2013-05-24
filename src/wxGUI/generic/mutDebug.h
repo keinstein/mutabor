@@ -212,6 +212,12 @@ inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
 #endif
 
+void mutAssertFailure(const wxChar *file,
+		      int line,
+		      const wxChar *func,
+		      const wxChar *cond,
+		      const wxChar *msg);
+
 #endif
 
 ///\}

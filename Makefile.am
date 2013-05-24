@@ -96,7 +96,118 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 
 
 bin_PROGRAMS = mutabor
-noinst_LIBRARIES = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+noinst_LIBRARIES = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a libmutabordebugcppunit.a libmutabordebugtest.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+
+#-------------------------------------------------------------
+# libmutaborgui.a
+#-------------------------------------------------------------
+
+libmutaborgui_a_INLINEHEADERS = \
+		src/wxGUI/GUIBoxData-inlines.h \
+		src/wxGUI/Routing/GUIRoute-inlines.h 
+
+
+libmutaborgui_a_INDENTHEADERS = \
+		src/wxGUI/Routing/BoxChannelShape.h \
+		src/wxGUI/Routing/BoxDlg.h \
+		src/wxGUI/Routing/BoxIconShape.h \
+		src/wxGUI/Routing/BoxShape.h \
+		src/wxGUI/Routing/DebugRoute.h \
+		src/wxGUI/Routing/DeviceShape.h \
+		src/wxGUI/Routing/GUIRoute.h \
+		src/wxGUI/Routing/InputDevDlg.h \
+		src/wxGUI/Routing/InputDeviceShape.h \
+		src/wxGUI/Routing/InputGuidoFileDeviceShape.h \
+		src/wxGUI/Routing/InputMidiDeviceShape.h \
+		src/wxGUI/Routing/InputMidiFileDeviceShape.h \
+		src/wxGUI/Routing/NewBoxShape.h \
+		src/wxGUI/Routing/NewInputDeviceShape.h \
+		src/wxGUI/Routing/NewOutputDeviceShape.h \
+		src/wxGUI/Routing/OutputDevDlg.h \
+		src/wxGUI/Routing/OutputDeviceShape.h \
+		src/wxGUI/Routing/OutputGuidoFileDeviceShape.h \
+		src/wxGUI/Routing/OutputMidiDeviceShape.h \
+		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
+		src/wxGUI/Routing/RouteIcons.h \
+		src/wxGUI/Routing/RouteLists.h \
+		src/wxGUI/Action.h \
+		src/wxGUI/GUIBoxData.h \
+		src/wxGUI/MutBitmaps.h \
+		src/wxGUI/Mutabor.rh \
+		src/wxGUI/CompDlg.h \
+		src/wxGUI/configtree.h \
+		src/wxGUI/IconShape.h \
+		src/wxGUI/MutApp.h \
+		src/wxGUI/MutChild.h \
+		src/wxGUI/MutConfDlg.h \
+		src/wxGUI/MutDocManager.h \
+		src/wxGUI/MutDocument.h \
+		src/wxGUI/MutEditFile.h \
+		src/wxGUI/MutFrame.h \
+		src/wxGUI/MutIcon.h \
+		src/wxGUI/MutLogicWnd.h \
+		src/wxGUI/MutRouteWnd.h \
+		src/wxGUI/MutTextBox.h \
+		src/wxGUI/MutView.h \
+		src/wxGUI/Panel.h \
+		src/wxGUI/resourceload.h \
+		src/wxGUI/stclanguage.h \
+		src/wxGUI/generic/mhArray.h \
+		src/wxGUI/generic/mhDefs.h \
+		src/wxGUI/generic/muconvauto.h \
+		src/wxGUI/generic/valNum.h \
+		src/wxGUI/generic/valRadio.h
+
+libmutaborgui_a_INDENTS = \
+		src/wxGUI/Routing/BoxChannelShape.cpp \
+		src/wxGUI/Routing/BoxDlg.cpp \
+		src/wxGUI/Routing/BoxIconShape.cpp \
+		src/wxGUI/Routing/BoxShape.cpp \
+		src/wxGUI/Routing/DebugRoute.cpp \
+		src/wxGUI/Routing/DeviceShape.cpp \
+		src/wxGUI/Routing/GUIRoute.cpp \
+		src/wxGUI/Routing/InputDevDlg.cpp \
+		src/wxGUI/Routing/InputDeviceShape.cpp \
+		src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp \
+		src/wxGUI/Routing/InputMidiDeviceShape.cpp \
+		src/wxGUI/Routing/InputMidiFileDeviceShape.cpp \
+		src/wxGUI/Routing/NewBoxShape.cpp \
+		src/wxGUI/Routing/NewInputDeviceShape.cpp \
+		src/wxGUI/Routing/NewOutputDeviceShape.cpp \
+		src/wxGUI/Routing/OutputDevDlg.cpp \
+		src/wxGUI/Routing/OutputDeviceShape.cpp \
+		src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp \
+		src/wxGUI/Routing/OutputMidiDeviceShape.cpp \
+		src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp \
+		src/wxGUI/Routing/RouteIcons.cpp \
+		src/wxGUI/Action.cpp \
+		src/wxGUI/GUIBoxData.cpp \
+		src/wxGUI/MutBitmaps.cpp \
+		src/wxGUI/CompDlg.cpp \
+		src/wxGUI/configtree.cpp \
+		src/wxGUI/IconShape.cpp \
+		src/wxGUI/MutChild.cpp \
+		src/wxGUI/MutDocManager.cpp \
+		src/wxGUI/MutDocument.cpp \
+		src/wxGUI/MutEditFile.cpp \
+		src/wxGUI/MutFrame.cpp \
+		src/wxGUI/MutIcon.cpp \
+		src/wxGUI/MutLogicWnd.cpp \
+		src/wxGUI/MutRouteWnd.cpp  \
+		src/wxGUI/MutTextBox.cpp \
+		src/wxGUI/MutView.cpp \
+		src/wxGUI/Panel.cpp \
+		src/wxGUI/stclanguage.cpp \
+		src/wxGUI/generic/muconvauto.cpp \
+		src/wxGUI/generic/mxDefs.cpp \
+		src/wxGUI/generic/valNum.cpp \
+		src/wxGUI/generic/valRadio.cpp
+
+noinst_HEADERS += $(libmutaborgui_a_INLINEHEADERS) $(libmutaborgui_a_INDENTHEADERS)
+
+libmutaborgui_a_POTSOURCES = $(libmutaborgui_a_INLINEHEADERS) $(libmutaborgui_a_INDENTHEADERS) $(libmutaborgui_a_INDENTS)
+
+libmutaborgui_a_SOURCES = $(libmutaborgui_a_INDENTS)
 
 #-------------------------------------------------------------
 # libmutaborrouting.a
@@ -208,6 +319,46 @@ libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 
 
 #-------------------------------------------------------------
+# libmutabordebugcppunit.a
+#-------------------------------------------------------------
+
+libmutabordebugcppunit_a_INLINEHEADERS = \
+		$(libmutabordebug_a_INLINEHEADERS)
+libmutabordebugcppunit_a_INDENTHEADERS = \
+		$(libmutabordebug_a_INDENTHEADERS) \
+		src/wxGUI/MutApp.h
+libmutabordebugcppunit_a_INDENTS = \
+		$(libmutabordebug_a_INDENTS) \
+		src/wxGUI/MutApp.cpp
+
+# no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
+
+libmutabordebugcppunit_a_SOURCES = $(libmutabordebugcppunit_a_INDENTS)
+libmutabordebugcppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+
+
+#-------------------------------------------------------------
+# libmutabordebugtest.a
+#-------------------------------------------------------------
+
+libmutabordebugtest_a_INLINEHEADERS = \
+		$(libmutabordebug_a_INLINEHEADERS)
+libmutabordebugtest_a_INDENTHEADERS = \
+		$(libmutabordebug_a_INDENTHEADERS) \
+		src/wxGUI/MutApp.h
+
+libmutabordebugtest_a_INDENTS = \
+		$(libmutabordebug_a_INDENTS) \
+		src/wxGUI/MutApp.cpp
+
+
+# no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
+
+libmutabordebugtest_a_SOURCES = $(libmutabordebugtest_a_INDENTS)
+libmutabordebugtest_a_CXXFLAGS = $(AM_CXXFLAGS) -DMUTABOR_TEST
+
+
+#-------------------------------------------------------------
 # librtmidi.a
 #-------------------------------------------------------------
 
@@ -237,109 +388,16 @@ INLINEHEADERS = \
 		$(libmutaborkernel_a_INLINEHEADERS) \
 		$(libmutabordebug_a_INLINEHEADERS) \
 		$(librtmidi_a_INLINEHEADERS) \
-		src/wxGUI/GUIBoxData-inlines.h \
-		src/wxGUI/Routing/GUIRoute-inlines.h 
-
+		$(libmutaborgui_a_INLINEHEADERS)
 
 INDENTHEADERS = \
 		$(libmutaborrouting_a_INDENTHEADERS) \
 		$(libmutaborkernel_a_INDENTHEADERS) \
 		$(libmutabordebug_a_INDENTHEADERS) \
-		src/wxGUI/Routing/BoxChannelShape.h \
-		src/wxGUI/Routing/BoxDlg.h \
-		src/wxGUI/Routing/BoxIconShape.h \
-		src/wxGUI/Routing/BoxShape.h \
-		src/wxGUI/Routing/DebugRoute.h \
-		src/wxGUI/Routing/DeviceShape.h \
-		src/wxGUI/Routing/GUIRoute.h \
-		src/wxGUI/Routing/InputDevDlg.h \
-		src/wxGUI/Routing/InputDeviceShape.h \
-		src/wxGUI/Routing/InputGuidoFileDeviceShape.h \
-		src/wxGUI/Routing/InputMidiDeviceShape.h \
-		src/wxGUI/Routing/InputMidiFileDeviceShape.h \
-		src/wxGUI/Routing/NewBoxShape.h \
-		src/wxGUI/Routing/NewInputDeviceShape.h \
-		src/wxGUI/Routing/NewOutputDeviceShape.h \
-		src/wxGUI/Routing/OutputDevDlg.h \
-		src/wxGUI/Routing/OutputDeviceShape.h \
-		src/wxGUI/Routing/OutputGuidoFileDeviceShape.h \
-		src/wxGUI/Routing/OutputMidiDeviceShape.h \
-		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
-		src/wxGUI/Routing/RouteIcons.h \
-		src/wxGUI/Routing/RouteLists.h \
-		src/wxGUI/Action.h \
-		src/wxGUI/GUIBoxData.h \
-		src/wxGUI/MutBitmaps.h \
-		src/wxGUI/Mutabor.rh \
-		src/wxGUI/CompDlg.h \
-		src/wxGUI/configtree.h \
-		src/wxGUI/IconShape.h \
-		src/wxGUI/MutApp.h \
-		src/wxGUI/MutChild.h \
-		src/wxGUI/MutConfDlg.h \
-		src/wxGUI/MutDocManager.h \
-		src/wxGUI/MutDocument.h \
-		src/wxGUI/MutEditFile.h \
-		src/wxGUI/MutFrame.h \
-		src/wxGUI/MutIcon.h \
-		src/wxGUI/MutLogicWnd.h \
-		src/wxGUI/MutRouteWnd.h \
-		src/wxGUI/MutTextBox.h \
-		src/wxGUI/MutView.h \
-		src/wxGUI/Panel.h \
-		src/wxGUI/resourceload.h \
-		src/wxGUI/stclanguage.h \
-		src/wxGUI/generic/mhArray.h \
-		src/wxGUI/generic/mhDefs.h \
-		src/wxGUI/generic/muconvauto.h \
-		src/wxGUI/generic/valNum.h \
-		src/wxGUI/generic/valRadio.h
+		$(libmutaborgui_a_INDENTHEADERS)
 
 mutabor_INDENTS = \
-		src/wxGUI/Routing/BoxChannelShape.cpp \
-		src/wxGUI/Routing/BoxDlg.cpp \
-		src/wxGUI/Routing/BoxIconShape.cpp \
-		src/wxGUI/Routing/BoxShape.cpp \
-		src/wxGUI/Routing/DebugRoute.cpp \
-		src/wxGUI/Routing/DeviceShape.cpp \
-		src/wxGUI/Routing/GUIRoute.cpp \
-		src/wxGUI/Routing/InputDevDlg.cpp \
-		src/wxGUI/Routing/InputDeviceShape.cpp \
-		src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp \
-		src/wxGUI/Routing/InputMidiDeviceShape.cpp \
-		src/wxGUI/Routing/InputMidiFileDeviceShape.cpp \
-		src/wxGUI/Routing/NewBoxShape.cpp \
-		src/wxGUI/Routing/NewInputDeviceShape.cpp \
-		src/wxGUI/Routing/NewOutputDeviceShape.cpp \
-		src/wxGUI/Routing/OutputDevDlg.cpp \
-		src/wxGUI/Routing/OutputDeviceShape.cpp \
-		src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp \
-		src/wxGUI/Routing/OutputMidiDeviceShape.cpp \
-		src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp \
-		src/wxGUI/Routing/RouteIcons.cpp \
-		src/wxGUI/Action.cpp \
-		src/wxGUI/GUIBoxData.cpp \
-		src/wxGUI/MutBitmaps.cpp \
-		src/wxGUI/CompDlg.cpp \
-		src/wxGUI/configtree.cpp \
-		src/wxGUI/IconShape.cpp \
-		src/wxGUI/MutApp.cpp \
-		src/wxGUI/MutChild.cpp \
-		src/wxGUI/MutDocManager.cpp \
-		src/wxGUI/MutDocument.cpp \
-		src/wxGUI/MutEditFile.cpp \
-		src/wxGUI/MutFrame.cpp \
-		src/wxGUI/MutIcon.cpp \
-		src/wxGUI/MutLogicWnd.cpp \
-		src/wxGUI/MutRouteWnd.cpp  \
-		src/wxGUI/MutTextBox.cpp \
-		src/wxGUI/MutView.cpp \
-		src/wxGUI/Panel.cpp \
-		src/wxGUI/stclanguage.cpp \
-		src/wxGUI/generic/muconvauto.cpp \
-		src/wxGUI/generic/mxDefs.cpp \
-		src/wxGUI/generic/valNum.cpp \
-		src/wxGUI/generic/valRadio.cpp
+		src/wxGUI/MutApp.cpp
 
 #		src/wxGUI/InputFilterDlg.cpp \
 #		src/wxGUI/InputFilterDlg.h \
@@ -352,7 +410,8 @@ INDENTSOURCES = \
 	$(libmutaborrouting_a_INDENTS) \
 	$(libmutaborkernel_a_INDENTS) \
 	$(librtmidi_a_INDENTS) \
-	$(libmutabordebug_a_INDENTS) 
+	$(libmutabordebug_a_INDENTS) \
+	$(libmutaborgui_a_INDENTS)
 
 
 
@@ -367,7 +426,8 @@ POTSOURCES=$(INDENTSOURCES) \
 	$(libmutaborrouting_a_POTSOURCES) \
 	$(libmutaborkernel_a_POTSOURCES) \
 	$(librtmidi_a_POTSOURCES) \
-	$(libmutabordebug_a_POTSOURCES)
+	$(libmutabordebug_a_POTSOURCES) \
+	$(libmutaborgui_a_POTSOURCES)
 
 if COND_WINRC
 mutabor_COMPILESOURCES += src/wxGUI/Mutabor.rc
@@ -375,7 +435,7 @@ endif
 
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
-mutabor_LDADD = libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a $(LDADD) $(AM_LDFLAGS)
+mutabor_LDADD = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a $(LDADD) $(AM_LDFLAGS)
 
 if COND_WINRC
 CLEANFILES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)

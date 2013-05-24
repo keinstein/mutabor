@@ -10,34 +10,6 @@
  * \version $Revision: 1.7 $
  * \license GPL
  *
- * $Log: mutDebug.cpp,v $
- * Revision 1.7  2011/11/03 17:20:15  keinstein
- * fix some focus issues on msw
- *
- * Revision 1.6  2011-11-02 14:32:01  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.5  2011-10-02 16:58:42  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.4  2011-08-24 21:19:36  keinstein
- * first run with 2.9.2+
- *
- * Revision 1.3  2011-02-20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
- *
  *
  ********************************************************************
  * \addtogroup debug
@@ -54,6 +26,13 @@
 
 #include "src/kernel/Defs.h"
 #ifdef DEBUG
+#ifdef MUTABOR_CPPUNIT
+#include "cppunit/extensions/HelperMacros.h"
+#include "cppunit/Portability.h"
+#include "cppunit/Asserter.h"
+#include "cppunit/Message.h"
+#include "cppunit/SourceLine.h"
+#endif
 #include "mutDebug.h"
 #include <list>
 #if __WXMSW__
@@ -62,6 +41,9 @@
 #include <conio.h>
 #include <stdio.h>
 #endif
+#include "src/wxGUI/MutApp.h"
+#include "wx/apptrait.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 debugFlags::flagtype debugFlags::flags;
 
@@ -188,5 +170,140 @@ void MutInitConsole()
 }
 
 #endif
+
+
+static bool DoShowAssertDialog(const wxString& msg)
+{
+    // under MSW we can show the dialog even in the console mode
+#if defined(__WXMSW__) && !defined(__WXMICROWIN__)
+    wxString msgDlg(msg);
+
+    // this message is intentionally not translated -- it is for
+    // developpers only
+    msgDlg += wxT("\nDo you want to stop the program?\n")
+              wxT("You can also choose [Cancel] to suppress ")
+              wxT("further warnings.");
+
+    switch ( ::MessageBox(NULL, msgDlg, _T("wxWidgets Debug Alert"),
+                          MB_YESNOCANCEL | MB_ICONSTOP ) )
+    {
+        case IDYES:
+            wxTrap();
+            break;
+
+        case IDCANCEL:
+            // stop the asserts
+            return true;
+
+        //case IDNO: nothing to do
+    }
+#else // !__WXMSW__
+    wxFprintf(stderr, wxT("%s\n"), msg.c_str());
+    fflush(stderr);
+
+    // TODO: ask the user to enter "Y" or "N" on the console?
+    wxTrap();
+#endif // __WXMSW__/!__WXMSW__
+
+    // continue with the asserts
+    return false;
+}
+
+void mutAssertFailure(const wxChar *file,
+		      int line,
+		      const wxChar *func,
+		      const wxChar *cond,
+		      const wxChar *msg)
+{
+#ifdef MUTABOR_CPPUNIT
+	{ 
+	       		CPPUNIT_NS::Message mesg( "assertion failed",		
+						  std::string(wxString::Format(_T("%s:%d:%s\nFunction: %s; Expression: %s"),
+									       file,
+									       line, 
+									       (msg?msg:_T("")),
+									       func, 
+									       cond).ToUTF8()));
+		
+			wxString filename(file);
+			CPPUNIT_NS::Asserter::fail(mesg,
+						   CPPUNIT_NS::SourceLine(std::string(filename.ToUTF8()), line )
+				);
+	}
+
+#else
+	if (!std::clog.good()) MutInitConsole();
+	wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"), 
+				      file,line,func,cond,msg);
+	std::clog << s.ToUTF8() << std::endl;
+
+
+	// use wxWidgets ShowAssertDialog function (it's static so we repeat its code, here.
+
+	{
+		// this variable can be set to true to suppress "assert failure" messages
+		static bool s_bNoAsserts = false;
+
+		wxString message;
+ 		message.reserve(2048);
+
+		// here, we change format to the gcc form
+		message.Printf(wxT("%s:%d: assert \"%s\" failed"), file, line, cond);
+
+		// add the function name, if any
+		if ( func && *func )
+			message << _T(" in ") << func << _T("()");
+
+		// and the message itself
+		if ( msg )
+		{
+			message << _T(": ") << msg;
+		}
+		else // no message given
+		{
+			message << _T('.');
+		}
+
+#if wxUSE_THREADS
+		// if we are not in the main thread, output the assert directly and trap
+		// since dialogs cannot be displayed
+		if ( !wxThread::IsMain() )
+		{
+			message += wxT(" [in child thread]");
+
+#if defined(__WXMSW__) && !defined(__WXMICROWIN__)
+			message << wxT("\r\n");
+			OutputDebugString(message );
+#else
+			// send to stderr
+			wxFprintf(stderr, wxT("%s\n"), message.c_str());
+			fflush(stderr);
+#endif
+			// He-e-e-e-elp!! we're asserting in a child thread
+			wxTrap();
+		}
+		else
+#endif // wxUSE_THREADS
+
+			if ( !s_bNoAsserts )
+			{
+				// send it to the normal log destination
+				wxLogDebug(_T("%s"), message.c_str());
+
+				if ( wxGetApp().GetTraits() )
+				{
+					// delegate showing assert dialog (if possible) to that class
+					s_bNoAsserts = wxGetApp().GetTraits()->ShowAssertDialog(message);
+				}
+				else // no traits object
+				{
+					// fall back to the function of last resort
+					s_bNoAsserts = DoShowAssertDialog(message);
+				}
+			}
+	}
+#endif	
+}
+
 
 ///\}

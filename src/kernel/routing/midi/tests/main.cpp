@@ -1,6 +1,7 @@
 #include "src/kernel/routing/midi/tests/DevMidFTest.h"
 #include "src/kernel/routing/midi/tests/midicmnTest.h"
 #include "wx/app.h"
+#include "wx/log.h"
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/BriefTestProgressListener.h>
@@ -21,6 +22,7 @@ main(int argc, char** argv)
 		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
 		return -1;
 	}
+	wxLog::SetActiveTarget(new wxLogStderr);
 	mutabor::InitDeviceFactories();
 
 #ifdef _GLIBCXX_DEBUG
@@ -37,7 +39,7 @@ main(int argc, char** argv)
 
 	/// Input tests use the output device for logging
 	runner.addTest( CommonMidiInputTest::suite() );
-	runner.addTest( InputMidiFileTest<mutabor::InputMidiFile>::suite() );
+	runner.addTest( InputMidiFileTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 
