@@ -26,42 +26,14 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: GUIRoute.h,v $
- * Revision 1.6  2011/11/03 17:20:15  keinstein
- * fix some focus issues on msw
- *
- * Revision 1.5  2011-11-02 14:32:00  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.4  2011-10-04 17:16:14  keinstein
- * make program compile on Mac (wx 2.9) and fix some memory corruption
- *
- * Revision 1.3  2011-10-02 16:58:42  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.2  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.1  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- *
  *
  ********************************************************************
- * \addtogroup GUI
- * \{
+ * \addtogroup GUI 
+ * \{ 
+ *
+ * \todo Rewrite shape classes to use GUI-references. In order to do
+ * that, a special reference counting function should be provided that
+ * use the non-GUI counter.
  ********************************************************************/
 // availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
 

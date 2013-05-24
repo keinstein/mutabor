@@ -4,69 +4,14 @@
  *
  * $Id: OutputDevDlg.h,v 1.5 2011/11/02 14:32:00 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
+ *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \date Created: 2005/12/10 14:22:47
  * $Date: 2011/11/02 14:32:00 $
  * \version $Revision: 1.5 $
  * \license: GPL
- * Copyright:   (c) R. Krauße, TU Dresden
+ * Copyright:   (c) R. Krauße, TU Dresden, 
+ *              2013 Tobias Schlemmer
  *
- * $Log: OutputDevDlg.h,v $
- * Revision 1.5  2011/11/02 14:32:00  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.4  2011-09-30 18:07:06  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.3  2011-09-27 20:13:25  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.2  2010-11-21 13:15:49  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.5  2010-06-22 15:05:45  keinstein
- * debugging segfault in route check after replacement of MutOutputDevice
- *
- * Revision 1.1.2.4  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.1.2.3  2010/02/15 12:08:21  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.1.2.2  2010/01/14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.1.2.1  2009/11/30 15:46:46  keinstein
- * moved InputDevDlg.h InputDevDlg.cpp OutputDevDlg.h OutputDevDlg.cpp into subdirectory Routing.
- *
- * Revision 1.6.2.2  2009/11/03 15:07:07  keinstein
- * Compile on Ubuntu 9.10
- * remove several interface and implementation pragmas
- * fixed some file names for case insensitive filesystems
- *
- * Revision 1.6.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.7  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.6  2008/08/18 15:06:35  keinstein
- * Changed Input dev dialog to wxResources
- *
- * Revision 1.5  2008/01/25 09:08:58  keinstein
- * charset conversion
- *
- * Revision 1.4  2006/01/18 15:34:57  keinstein
- * Doxygen header
- *
- * ID definition conflict solved
  *
  */
 

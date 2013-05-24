@@ -25,46 +25,6 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * $Log: GUIBoxData.h,v $
- * Revision 1.9  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.8  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.7  2011-09-30 09:10:24  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.6  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.4  2011-09-06 08:09:21  keinstein
- * fix a compiler error showing a corruped error message
- *
- * Revision 1.3  2011-09-05 11:30:07  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.2  2011-09-05 06:56:44  keinstein
- * Added GUIBoxData.cpp
- *
- * Revision 1.1  2011-09-05 06:42:47  keinstein
- * Added GUIBoxData.h
- *
- *
  *
  ********************************************************************
  * \addtogroup GUI
