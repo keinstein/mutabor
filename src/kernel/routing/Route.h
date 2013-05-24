@@ -526,13 +526,16 @@ namespace mutabor {
 		 * This class is thrown if a routefactory is already set.
 		 * 
 		 */
-		struct FactoryAlreadySet {
+		struct FactoryAlreadySet:public std::logic_error {
 			RouteFactory * old; 
 			RouteFactory * created;
-			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): old(o), created(n) {}
+			FactoryAlreadySet(RouteFactory * o, RouteFactory * n): logic_error(gettext_noop("Route factory already set")),
+											   old(o), created(n) {}
 		};
 
-		struct RouteFactoryNotSet {};
+		struct RouteFactoryNotSet:public std::logic_error {
+			RouteFactoryNotSet():logic_error(gettext_noop("Trying to create a route without the correct factory. You (the programmer) must create one!")) {}
+		};
 			
                 /** Creates a route Factory.  
 		 * Constructor. Should be overridden if classes inhert from Route.

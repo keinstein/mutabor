@@ -51,6 +51,7 @@
 #define MUWX_GUIBOXDATA_H_PRECOMPILED
 
 #include <vector>
+#include <stdexcept>
 
 // system headers change not so often
 #include "wx/config.h"
@@ -84,10 +85,10 @@ namespace mutaborGUI {
 		};
 	public:
 
-		class NoSuchBoxException {
+		class NoSuchBoxException: std::invalid_argument {
 		public:
 			int boxnumber ;
-			NoSuchBoxException(int i):boxnumber(i) {}
+			NoSuchBoxException(int i):invalid_argument("No such box."),boxnumber(i) {}
 		};
 
 		BoxData();
