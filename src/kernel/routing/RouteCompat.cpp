@@ -458,16 +458,16 @@ namespace compat30 {
 				Device * dev = (*R)->GetOutputDevice().get();
 				int OutNr;
 				OutNr = (dev ? dev->GetId(): -1);
-				config << wxT("    ") << RTName[(*R)->Type]  <<
+				config << wxT("    ") << RTName[(*R)->GetType()]  <<
 					wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
-							 (*R)->IFrom, 
-							 (*R)->ITo, 
+							 (*R)->GetInputFrom(), 
+							 (*R)->GetInputTo(), 
 							 (*R)->GetBox(), 
-							 (*R)->Active, 
+							 (*R)->GetActive(), 
 							 OutNr,
-							 (*R)->OFrom, 
-							 (*R)->OTo, 
-							 (*R)->ONoDrum ? 1 : 0);
+							 (*R)->GetOutputFrom(), 
+							 (*R)->GetOutputTo(), 
+							 (*R)->OutputAvoidDrumChannel() ? 1 : 0);
 			}
 		}
 		

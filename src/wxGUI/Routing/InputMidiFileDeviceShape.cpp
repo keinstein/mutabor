@@ -164,10 +164,10 @@ namespace mutaborGUI {
 			panel->SetRouteType(RTall);
 			return panel;
 		}
-		panel->SetFromChannel(route->IFrom, minchannel, maxchannel);
-		panel->SetToChannel(route->ITo, minchannel, maxchannel);
-		panel->SetFromTrack(route->IFrom, mintrack, maxtrack);
-		panel->SetToTrack(route->ITo, mintrack, maxtrack);
+		panel->SetFromChannel(route->GetInputFrom(), minchannel, maxchannel);
+		panel->SetToChannel(route->GetInputTo(), minchannel, maxchannel);
+		panel->SetFromTrack(route->GetInputFrom(), mintrack, maxtrack);
+		panel->SetToTrack(route->GetInputTo(), mintrack, maxtrack);
 		panel->SetRouteType(route->GetType());
 		return panel;
 	}

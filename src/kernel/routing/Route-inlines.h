@@ -128,6 +128,47 @@ namespace mutabor {
 			}
 			return retval;
 		}
+	template <class I, class O>
+	inline void TRouteClass<I,O>::Create(InputDevice & in,
+					OutputDevice & out,
+					RouteType type,
+					int iFrom,
+					int iTo,
+					int box,
+					bool active,
+					int oFrom,
+					int oTo,
+					bool oNoDrum)
+	{
+		DEBUGLOG(smartptr,_T("Route %p (%d)"),
+			 this, 
+			 intrusive_ptr_get_refcount(this));
+		DEBUGLOG(smartptr,_T("input device %p (%d)"),
+			 in.get(),
+			 intrusive_ptr_get_refcount(in.get()));
+		DEBUGLOG(smartptr,_T("output device %p (%d)"),
+			 out.get(),
+			 intrusive_ptr_get_refcount(out.get()));
+		Route self(this);
+		if (in) 
+			connect(self,in);
+		else 
+			In = NULL;
+		if (out)
+			connect(self,out);
+		else 
+			Out = NULL;
+		Type = type;
+		IFrom = iFrom;
+		ITo = iTo;
+		Box = box;
+		Active = active;
+		OFrom = oFrom;
+		OTo = oTo;
+		ONoDrum = oNoDrum;
+		Id = NextRouteId();
+	}
+
 
 	inline Route RouteFactory::Create(InputDevice & in,
 					  OutputDevice & out,

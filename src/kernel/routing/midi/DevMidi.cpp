@@ -80,9 +80,9 @@ namespace mutabor {
 		mutASSERT(route);
 		
 		config.toLeaf(_T("Midi Output"));
-		config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
-		config.Write(_T("Channel Range From"), route->OFrom);
-		config.Write(_T("Channel Range To"), route->OTo);
+		config.Write(_T("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
+		config.Write(_T("Channel Range From"), route->GetOutputFrom());
+		config.Write(_T("Channel Range To"), route->GetOutputTo());
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -116,18 +116,26 @@ namespace mutabor {
 #endif
 		mutASSERT(route);
 		config.toLeaf(_T("Midi Output"));
-		route->ONoDrum = config.Read(_T("Avoid Drum Channel"), true);
+		route->OutputAvoidDrumChannel(config.Read(_T("Avoid Drum Channel"), true));
 		int oldfrom, oldto;
-		oldfrom = route->OFrom = config.Read(_T("Channel Range From"), GetMinChannel());
-		oldto = route->OTo = config.Read(_T("Channel Range To"), GetMaxChannel());
+		route->SetOutputFrom(oldfrom = config.Read(_T("Channel Range From"), GetMinChannel()));
+		route->SetOutputTo(oldto = config.Read(_T("Channel Range To"), GetMaxChannel()));
 		bool correct = true;
-		if (route->OFrom < GetMinChannel()) {
+		if (oldfrom < GetMinChannel()) {
 			correct = false;
-			route->OFrom = GetMinChannel();
+			route->SetOutputFrom(GetMinChannel());
 		}
-		if (route->OTo > GetMaxChannel()) {
+		if (oldfrom > GetMaxChannel()) {
 			correct = false;
-			route->OTo = GetMaxChannel();
+			route->SetOutputFrom(GetMaxChannel());
+		}
+		if (oldto < GetMinChannel()) {
+			correct = false;
+			route->SetOutputTo(GetMinChannel());
+		}
+		if (oldto > GetMaxChannel()) {
+			correct = false;
+			route->SetOutputTo(GetMaxChannel());
 		}
 		if (!correct)
 			wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. The current route had to be corrected."),
@@ -242,15 +250,15 @@ OutputMidiPort:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi Input"));
-		config.Write(_T("Filter Type"), route->Type);
-		switch(route->Type) {
+		config.Write(_T("Filter Type"), route->GetType());
+		switch(route->GetType()) {
 		case RTchannel: 
-			config.Write(_T("Channel From"), route->IFrom);
-			config.Write(_T("Channel To"), route->ITo);
+			config.Write(_T("Channel From"), route->GetInputFrom());
+			config.Write(_T("Channel To"), route->GetInputTo());
 			break;
 		case RTstaff:
-			config.Write(_T("Key From"), route->IFrom);
-			config.Write(_T("Key To"), route->ITo);
+			config.Write(_T("Key From"), route->GetInputFrom());
+			config.Write(_T("Key To"), route->GetInputTo());
 			break;
 		case RTelse:
 		case RTall:
@@ -289,21 +297,29 @@ OutputMidiPort:\n\
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi Input"));
-		route->Type = (RouteType) config.Read(_T("Filter Type"), (int) RTchannel);
-		switch(route->Type) {
+		route->SetType((RouteType) config.Read(_T("Filter Type"), (int) RTchannel));
+		switch(route->GetType()) {
 		case RTchannel: 
 		{
 			int oldfrom, oldto;
-			oldfrom = route->IFrom = config.Read(_T("Channel From"), GetMinChannel());
-			oldto = route->ITo = config.Read(_T("Channel To"), GetMaxChannel());
+			route->SetInputFrom(oldfrom = config.Read(_T("Channel From"), GetMinChannel()));
+			route->SetInputTo(oldto = config.Read(_T("Channel To"), GetMaxChannel()));
 			bool correct = true;
-			if (route->IFrom < GetMinChannel()) {
+			if (oldfrom < GetMinChannel()) {
 				correct = false;
-				route->IFrom = GetMinChannel();
+				route->SetInputFrom(GetMinChannel());
 			}
-			if (route->ITo > GetMaxChannel()) {
+			if (oldfrom > GetMaxChannel()) {
 				correct = false;
-				route->ITo = GetMaxChannel();
+				route->SetInputFrom(GetMaxChannel());
+			}
+			if (oldto < GetMinChannel()) {
+				correct = false;
+				route->SetInputTo(GetMinChannel());
+			}
+			if (oldto > GetMaxChannel()) {
+				correct = false;
+				route->SetInputTo(GetMaxChannel());
 			}
 			if (!correct)
 				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. The current route had to be corrected."),
@@ -311,19 +327,28 @@ OutputMidiPort:\n\
 					     _("Warning loading route"),wxICON_EXCLAMATION);
 			break;
 		}
+
 		case RTstaff:
 		{
 			int oldfrom, oldto;
-			route->IFrom = oldfrom = config.Read(_T("Key From"), GetMinKey());
-			route->ITo = oldto = config.Read(_T("Key To"), GetMaxKey());
+			route->SetInputFrom(oldfrom = config.Read(_T("Key From"), GetMinKey()));
+			route->SetInputTo(oldto = config.Read(_T("Key To"), GetMaxKey()));
 			bool correct = true;
-			if (route->IFrom < GetMinKey()) {
+			if (oldfrom < GetMinKey()) {
 				correct = false;
-				route->IFrom = GetMinKey();
+				route->SetInputFrom(GetMinKey());
 			}
-			if (route->ITo > GetMaxKey()) {
+			if (oldfrom > GetMaxKey()) {
 				correct = false;
-				route->ITo = GetMaxKey();
+				route->SetInputFrom(GetMaxKey());
+			}
+			if (oldto < GetMinKey()) {
+				correct = false;
+				route->SetInputTo(GetMinKey());
+			}
+			if (oldto > GetMaxKey()) {
+				correct = false;
+				route->SetInputTo(GetMaxKey());
 			}
 			if (!correct)
 				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI input device must be inside %d--%d. The current route had to be corrected."),
@@ -412,7 +437,7 @@ InputMidiPort:\n\
 // Routen testen und jenachdem entsprechend Codeverarbeitung
 	InputMidiPort::proceed_bool InputMidiPort::shouldProceed(Route R, DWORD midiCode, int data)
 	{
-		switch ( R->Type ) {
+		switch ( R->GetType() ) {
 		case RTchannel:
 			if (R->Check(midiCode & 0x0F)) 
 				return ProceedYes;

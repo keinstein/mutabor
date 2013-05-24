@@ -217,10 +217,10 @@ namespace mutaborGUI {
 			panel->SetRouteType(RTall);		
 			return panel;
 		}
-		panel->SetFromBox(route->IFrom, 0, maxint);
-		panel->SetToBox(route->ITo, 0, maxint);
-		panel->SetFromStaff(route->IFrom, 0, maxint);
-		panel->SetToStaff(route->ITo, 0, maxint);
+		panel->SetFromBox(route->GetInputFrom(), 0, maxint);
+		panel->SetToBox(route->GetInputTo(), 0, maxint);
+		panel->SetFromStaff(route->GetInputFrom(), 0, maxint);
+		panel->SetToStaff(route->GetInputTo(), 0, maxint);
 		panel->SetRouteType(route->GetType());
 		return panel;
 	}

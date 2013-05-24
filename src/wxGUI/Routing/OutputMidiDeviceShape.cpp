@@ -185,9 +185,9 @@ namespace mutaborGUI {
 			panel->SetAvoidDrumChannel(true);
 			return panel;
 		}
-		panel->SetFromChannel(route->OFrom, minchannel, maxchannel);
-		panel->SetToChannel(route->OTo, minchannel, maxchannel);
-		panel->SetAvoidDrumChannel(route->ONoDrum);
+		panel->SetFromChannel(route->GetOutputFrom(), minchannel, maxchannel);
+		panel->SetToChannel(route->GetOutputTo(), minchannel, maxchannel);
+		panel->SetAvoidDrumChannel(route->OutputAvoidDrumChannel());
 		return panel;
 	}
 

@@ -112,14 +112,14 @@ namespace mutabor {
 		ChannelFilter(const RouteClass * r):route(r) {}
 		
 		bool operator () (int channel) {
-			return channel >= route->OFrom 
-				&& channel <= route->OTo 
-				&& (!route->ONoDrum 
+			return channel >= route->GetOutputFrom()
+				&& channel <= route->GetOutputTo()
+				&& (!route->OutputAvoidDrumChannel() 
 				    || channel != DRUMCHANNEL);
 		}
 		
 		bool check() {
-			return route->OFrom <= route->OTo;
+			return route->GetOutputFrom() <= route->GetOutputTo();
 		}
 	protected:
 		const RouteClass * route;
@@ -135,14 +135,14 @@ namespace mutabor {
 		int j;
 		int free = 0;
 
-		for (j = r->OFrom; j <= r->OTo; j++)
-			if ( j != DRUMCHANNEL || !r->ONoDrum )
+		for (j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++)
+			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
 				AM += ton_auf_kanal[j].tuned_key;
 
-		AM /= r->OTo + 1 - r->OFrom;
+		AM /= r->GetOutputTo() + 1 - r->GetOutputFrom();
 
-		for ( j = r->OFrom; j <= r->OTo; j++ )
-			if ( j != DRUMCHANNEL || !r->ONoDrum )
+		for ( j = r->GetOutputFrom(); j <= r->GetOutputTo(); j++ )
+			if ( j != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
 				if ( abs(AM - (ton_auf_kanal[j].tuned_key)) 
 				     < abs(AM - (ton_auf_kanal[free].tuned_key) ))
 					free = j;
@@ -313,8 +313,8 @@ namespace mutabor {
 		   not easily distinguished. */
 
 
-		for (int i = r->OFrom; i <= r->OTo; i++)
-			if ( i != DRUMCHANNEL || !r->ONoDrum )
+		for (int i = r->GetOutputFrom(); i <= r->GetOutputTo(); i++)
+			if ( i != DRUMCHANNEL || !r->OutputAvoidDrumChannel() )
 				if ( ton_auf_kanal[i].active 
 				     && ton_auf_kanal[i].inkey == inkey
 				     && ton_auf_kanal[i].unique_id == id 
@@ -631,7 +631,7 @@ namespace mutabor {
 			return;
 		}
 		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
-			  route->Active,
+			  route->GetActive(),
 			  route->GetOutputDevice().get());
 		BYTE MidiChannel = midiCode & 0x0F;
 		BYTE MidiStatus  = midiCode & 0xF0;
@@ -700,7 +700,7 @@ namespace mutabor {
 		return;
 	
 		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
-			  route->Active,
+			  route->GetActive(),
 			  route->GetOutputDevice().get());
 		int Box = route->GetBox();
 		BYTE MidiChannel = midiCode->at(0) & 0x0F;
@@ -711,7 +711,7 @@ namespace mutabor {
 
 		case midi::NOTE_ON: // Note On
 			if ( midiCode->at(2) & 0x7f > 0 ) {
-				if ( route->Active )
+				if ( route->GetActive() )
 					AddKey(&mut_box[Box],
 					       midiCode->at(1), 
 					       MidiChannel, 
@@ -730,7 +730,7 @@ namespace mutabor {
 			}
 
 		case midi::NOTE_OFF: // Note Off
-			if ( route->Active )
+			if ( route->GetActive() )
 				DeleteKey(&mut_box[Box], midiCode->at(1), 
 					  MidiChannel, 
 					  route->GetId());
@@ -780,7 +780,7 @@ namespace mutabor {
 			3, 3, 3, 3, 2, 2, 3, 1
 		};
 
-		if ( Box >= 0 && route->Active )
+		if ( Box >= 0 && route->GetActive() )
 			for (int i = 0; i < midilength[MidiStatus >> 5]; i++) {
 				MidiAnalysis(&mut_box[Box],midiCode->at(i));
 			}

@@ -439,7 +439,7 @@ namespace mutabor {
 			Key += h->GetOctave()*12;
 
 			/** \todo provide working GIS note id. Currently Mutabor outputs only MIDI so it's no problem */
-			if ( turn != 1 && route->Active ) {
+			if ( turn != 1 && route->GetActive() ) {
 				if ( turn )
 					DeleteKey(&mut_box[Box], Key, 0, route->GetId());
 				else
@@ -488,9 +488,9 @@ namespace mutabor {
 		for (routeListType::iterator R = routes.begin(); 
 		     R!= routes.end(); R++) {
 			DEBUGLOG (gmnfile, _T("Route type: %d, DidOut: %d"),
-				  (*R)->Type, DidOut);
+				  (*R)->GetType(), DidOut);
 
-			switch ( (*R)->Type ) {
+			switch ( (*R)->GetType() ) {
 
 			case RTstaff:
 				if ( (*R)->Check(staff) ) {

@@ -238,9 +238,9 @@ namespace mutabor {
 #endif
 		config.toLeaf(_T("Midi File Output"));
 		mutASSERT(route);
-		config.Write(_T("Avoid Drum Channel"), route->ONoDrum);
-		config.Write(_T("Channel Range From"), route->OFrom);
-		config.Write(_T("Channel Range To"), route->OTo);
+		config.Write(_T("Avoid Drum Channel"), route->OutputAvoidDrumChannel());
+		config.Write(_T("Channel Range From"), route->GetOutputFrom());
+		config.Write(_T("Channel Range To"), route->GetOutputTo());
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -272,18 +272,26 @@ namespace mutabor {
 #endif
 		config.toLeaf(_T("Midi File Output"));
 		mutASSERT(route);
-		route->ONoDrum = config.Read (_T("Avoid Drum Channel"), true);
+		route->OutputAvoidDrumChannel(config.Read (_T("Avoid Drum Channel"), true));
 		int oldfrom, oldto;
-		oldfrom = route->OFrom = config.Read(_T("Channel Range From"), GetMinChannel());
-		oldto = route->OTo = config.Read(_T("Channel Range To"), GetMaxChannel());
+		route->SetOutputFrom(oldfrom = config.Read(_T("Channel Range From"), GetMinChannel()));
+		route->SetOutputTo(oldto = config.Read(_T("Channel Range To"), GetMaxChannel()));
 		bool correct = true;
-		if (route->OFrom < GetMinChannel()) {
+		if (oldfrom < GetMinChannel()) {
 			correct = false;
-			route->OFrom = GetMinChannel();
+			route->SetOutputFrom(GetMinChannel());
 		}
-		if (route->OTo > GetMaxChannel()) {
+		if (oldfrom > GetMaxChannel()) {
 			correct = false;
-			route->OTo = GetMaxChannel();
+			route->SetOutputFrom(GetMaxChannel());
+		}
+		if (oldto < GetMinChannel()) {
+			correct = false;
+			route->SetOutputTo(GetMinChannel());
+		}
+		if (oldto > GetMaxChannel()) {
+			correct = false;
+			route->SetOutputTo(GetMaxChannel());
 		}
 		if (!correct)
 			wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
@@ -408,15 +416,15 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi File Input"));
-		config.Write(_T("Filter Type"), route->Type);
-		switch(route->Type) {
+		config.Write(_T("Filter Type"), route->GetType());
+		switch(route->GetType()) {
 		case RTchannel: 
-			config.Write(_T("Channel From"), route->IFrom);
-			config.Write(_T("Channel To"), route->ITo);
+			config.Write(_T("Channel From"), route->GetInputFrom());
+			config.Write(_T("Channel To"), route->GetInputTo());
 			break;
 		case RTstaff:
-			config.Write(_T("Track From"), route->IFrom);
-			config.Write(_T("Track To"), route->ITo);
+			config.Write(_T("Track From"), route->GetInputFrom());
+			config.Write(_T("Track To"), route->GetInputTo());
 			break;
 		case RTelse:
 		case RTall:
@@ -440,21 +448,29 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Midi File Input"));
-		route -> Type = (RouteType) config.Read(_T("Filter Type"), (int)RTchannel);
-		switch(route->Type) {
+		route -> SetType((RouteType) config.Read(_T("Filter Type"), (int)RTchannel));
+		switch(route->GetType()) {
 		case RTchannel: 
 		{
 			int oldfrom, oldto;
-			oldfrom = route->IFrom = config.Read(_T("Channel From"), GetMinChannel());
-			oldto = route->ITo = config.Read(_T("Channel To"), GetMaxChannel());
+			route->SetInputFrom(oldfrom = config.Read(_T("Channel From"), GetMinChannel()));
+			route->SetInputTo(oldto = config.Read(_T("Channel To"), GetMaxChannel()));
 			bool correct = true;
-			if (route->IFrom < GetMinChannel()) {
+			if (oldfrom < GetMinChannel()) {
 				correct = false;
-				route->IFrom = GetMinChannel();
+				route->SetInputFrom(GetMinChannel());
 			}
-			if (route->ITo > GetMaxChannel()) {
+			if (oldfrom > GetMaxChannel()) {
 				correct = false;
-				route->ITo = GetMaxChannel();
+				route->SetInputFrom(GetMaxChannel());
+			}
+			if (oldto < GetMinChannel()) {
+				correct = false;
+				route->SetInputTo(GetMinChannel());
+			}
+			if (oldto > GetMaxChannel()) {
+				correct = false;
+				route->SetInputTo(GetMaxChannel());
 			}
 			if (!correct)
 				wxMessageBox(wxString::Format(_("The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
@@ -465,16 +481,24 @@ namespace mutabor {
 		case RTstaff:
 		{
 			int oldfrom, oldto;
-			route -> IFrom = oldfrom = config.Read(_T("Track From"), GetMinTrack());
-			route -> ITo = oldto = config.Read(_T("Track To"), GetMaxTrack());
+			route -> SetInputFrom(oldfrom = config.Read(_T("Track From"), GetMinTrack()));
+			route -> SetInputTo(oldto = config.Read(_T("Track To"), GetMaxTrack()));
 			bool correct = true;
-			if (route->IFrom < GetMinTrack()) {
+			if (oldfrom < GetMinTrack()) {
 				correct = false;
-				route->IFrom = GetMinTrack();
+				route->SetInputFrom(GetMinTrack());
 			}
-			if (route->ITo > GetMaxTrack()) {
+			if (oldfrom > GetMaxTrack()) {
 				correct = false;
-				route->ITo = GetMaxTrack();
+				route->SetInputFrom(GetMaxTrack());
+			}
+			if (oldto < GetMinTrack()) {
+				correct = false;
+				route->SetInputTo(GetMinTrack());
+			}
+			if (oldto > GetMaxTrack()) {
+				correct = false;
+				route->SetInputTo(GetMaxTrack());
 			}
 			if (!correct)
 				wxMessageBox(wxString::Format(_("The Track range %d--%d of the MIDI file %s must be inside %d--%d. The current route had to be corrected."),
@@ -804,7 +828,7 @@ namespace mutabor {
 	InputMidiFile::proceed_bool InputMidiFile::shouldProceed(Route R, DWORD midiCode, int track)
 	{
 		DEBUGLOG(midifile,_T("midiCode: %x, track %d"),midiCode,track);
-		switch ( R->Type ) {
+		switch ( R->GetType() ) {
 		case RTchannel:
 			if ( R->Check(midiCode & 0x0F) ) {
 				return ProceedYes;
@@ -836,7 +860,7 @@ namespace mutabor {
 		if (midiCode->at(0) != midi::SYSTEM) 
 			UNREACHABLEC;
 
-		switch ( R->Type ) {
+		switch ( R->GetType() ) {
 		case RTchannel:
 //			if ( R->Check(midiCode & 0x0F) ) {
 				return ProceedYes;

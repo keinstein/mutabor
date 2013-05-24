@@ -119,108 +119,7 @@ namespace mutabor {
 					r = const_cast<thistype *>(r);
 				}
 		};
-		WATCHEDPTR(void,routing,TRouteClass) userdata;
-		OutputDevice Out;
-		InputDevice In;
-	
-		//Route Next;
-
-		// This list is managed automatically and availlable 
-		// only to not forget about routes. These references must not be counted
-//		Route globalNext;
-		static routeListType routeList;
-		int Id;
-		int inputid;
-		int outputid;
-		int Box;
-
-		TRouteClass():
-			userdata(this,_T("userdata")) {
-			TRACEC;
-			AppendToRouteList(this);
-			InputDevice in (NULL);
-			OutputDevice out (NULL);
-			Create(in,out,RTall,
-			       -1,-1,
-			       -1,false,
-			       -1,-1,true);
-		}
-
-		TRouteClass(
-			InputDevice & in,
-			OutputDevice & out,
-			RouteType type = RTall,
-			int iFrom = -1,
-			int iTo = -1,
-			int box = NoBox,
-			bool active = false,
-			int oFrom = -1,
-			int oTo = -1,
-			bool oNoDrum = true/*,
-					     Route next = NULL*/):
-			userdata(this,_T("userdata"))
-			/*,  globalNext(NULL)*/
-			{
-				TRACEC;
-				AppendToRouteList(this);
-				Create(in,out,type,
-				       iFrom,iTo,
-				       box,active,
-				       oFrom,oTo,oNoDrum/*,
-							  next*/);
-			}
-
-		void Create(
-			InputDevice & in,
-			OutputDevice & out,
-			RouteType type = RTall,
-			int iFrom = -1,
-			int iTo = -1,
-			int box = NoBox,
-			bool active = false,
-			int oFrom = -1,
-			int oTo = -1,
-			bool oNoDrum = true/*,
-					     Route next = NULL*/)
-			{
-				DEBUGLOG(smartptr,_T("Route %p (%d)"),
-					 this, 
-					 intrusive_ptr_get_refcount(this));
-				DEBUGLOG(smartptr,_T("input device %p (%d)"),
-					in.get(),
-					intrusive_ptr_get_refcount(in.get()));
-				DEBUGLOG(smartptr,_T("output device %p (%d)"),
-					out.get(),
-					intrusive_ptr_get_refcount(out.get()));
-				if (in) 
-					Attatch(in);
-				else 
-					In = NULL;
-				if (out)
-					Attatch(out);
-				else 
-					Out = NULL;
-				Type = type;
-				IFrom = iFrom;
-				ITo = iTo;
-				Box = box;
-				Active = active;
-				OFrom = oFrom;
-				OTo = oTo;
-				ONoDrum = oNoDrum;
-				Id = NextRouteId();
-				// Next=next;
-			}
-
-		
-	public:
-		RouteType Type;
-		int IFrom, ITo;
-		bool Active;
-		int OFrom, OTo;
-		bool ONoDrum;
-		static int maxRouteId;
-
+	public: // functions
 		virtual ~TRouteClass();
 
 		/// Write the route settings into a tree based configuration.
@@ -243,11 +142,6 @@ namespace mutabor {
 		char Check(int i) {
 			return (IFrom <= i && i <= ITo);
 		}
-        protected:
-		virtual void setUserData (void * data);
-
-		virtual void * getUserData() const;
-	public:
 
 		const OutputDevice & GetOutputDevice() const {
 			return Out;
@@ -402,92 +296,75 @@ namespace mutabor {
 		}
 
 	
-		bool GetActive() const 
-			{
-				return Active;
-			}
+		bool GetActive() const {
+			return Active;
+		}
 	
-		void SetActive(bool active) 
-			{
-				Active = active;
-			}
+		void SetActive(bool active) {
+			Active = active;
+		}
 	
-		int GetBox() const
-			{
-				return Box;
-			}
+		int GetBox() const {
+			return Box;
+		}
 	
-		virtual void SetBox(int box)
-			{
-				Box = box;
-			}
+		virtual void SetBox(int box) {
+			Box = box;
+		}
 	
 		static int GetNextFreeBox();
 
-		RouteType GetType() const
-			{
-				return Type;
-			}
+		RouteType GetType() const {
+			return Type;
+		}
 	
-		void SetType(RouteType type)
-			{
-				Type = type;
-			}
+		void SetType(RouteType type) {
+			Type = type;
+		}
 	
-		const mutString & GetTypeName()
-			{
-				return RTName[Type];
-			}
+		const mutString & GetTypeName()	{
+			return RTName[Type];
+		}
 	
-		int GetInputFrom() const
-			{
-				return IFrom;
-			}
+		int GetInputFrom() const {
+			return IFrom;
+		}
 	
-		void SetInputFrom(int i)
-			{
-				IFrom = i;
-			}
+		void SetInputFrom(int i) {
+			IFrom = i;
+		}
 	
-		int GetOutputFrom() const
-			{
-				return OFrom;
-			}
+		int GetOutputFrom() const {
+			return OFrom;
+		}
 	
-		void SetOutputFrom(int o)
-			{
-				OFrom = o;
-			}
+		void SetOutputFrom(int o) {
+			OFrom = o;
+		}
 	
-		int GetInputTo() const
-			{
-				return ITo;
-			}
+		int GetInputTo() const {
+			return ITo;
+		}
 	
-		void SetInputTo(int i)
-			{
-				ITo = i;
-			}
+		void SetInputTo(int i) {
+			ITo = i;
+		}
 	
-		int GetOutputTo() const
-			{
-				return OTo;
-			}
+		int GetOutputTo() const	{
+			return OTo;
+		}
 	
-		void SetOutputTo(int o)
-			{
-				OTo = o;
-			}
+		void SetOutputTo(int o)	{
+			OTo = o;
+		}
 	
 	
-		bool OutputAvoidDrumChannel() const
-			{
-				return ONoDrum;
-			}
-		void OutputAvoidDrumChannel(bool avoid) 
-			{
-				ONoDrum = avoid;
-			}
+		bool OutputAvoidDrumChannel() const {
+			return ONoDrum;
+		}
+		void OutputAvoidDrumChannel(bool avoid) {
+			ONoDrum = avoid;
+		}
 	
 #if 0
 		Route  GetNext() const {
@@ -567,7 +444,81 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-	protected:
+	protected: // members
+		WATCHEDPTR(void,routing,TRouteClass) userdata;
+		OutputDevice Out;
+		InputDevice In;
+	
+		//Route Next;
+
+		// This list is managed automatically and availlable 
+		// only to not forget about routes. These references must not be counted
+//		Route globalNext;
+		static routeListType routeList;
+		int Id;
+		int inputid;
+		int outputid;
+		int Box;
+
+		
+		RouteType Type;
+		int IFrom, ITo;
+		bool Active;
+		int OFrom, OTo;
+		bool ONoDrum;
+		static int maxRouteId;
+
+		// functions
+		TRouteClass():
+			userdata(this,_T("userdata")) {
+			TRACEC;
+			AppendToRouteList(this);
+			InputDevice in (NULL);
+			OutputDevice out (NULL);
+			Create(in,out,RTall,
+			       -1,-1,
+			       -1,false,
+			       -1,-1,true);
+		}
+
+		TRouteClass(
+			InputDevice & in,
+			OutputDevice & out,
+			RouteType type = RTall,
+			int iFrom = -1,
+			int iTo = -1,
+			int box = NoBox,
+			bool active = false,
+			int oFrom = -1,
+			int oTo = -1,
+			bool oNoDrum = true/*,
+					     Route next = NULL*/):
+			userdata(this,_T("userdata"))
+			/*,  globalNext(NULL)*/
+			{
+				TRACEC;
+				AppendToRouteList(this);
+				Create(in,out,type,
+				       iFrom,iTo,
+				       box,active,
+				       oFrom,oTo,oNoDrum/*,
+							  next*/);
+			}
+
+		void Create(InputDevice & in,
+			    OutputDevice & out,
+			    RouteType type = RTall,
+			    int iFrom = -1,
+			    int iTo = -1,
+			    int box = NoBox,
+			    bool active = false,
+			    int oFrom = -1,
+			    int oTo = -1,
+			    bool oNoDrum = true);
+
+		virtual void setUserData (void * data);
+
+		virtual void * getUserData() const;
 		static void AppendToRouteList (Route route);
 		static void RemoveFromRouteList (Route route);
 	
