@@ -48,15 +48,18 @@ void CommonMidiOutputTest::setUp()
 
 	initialize_boxes();
 	GlobalReset();
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
 	route = mutabor::RouteFactory::Create();
-	route->Attatch(0);
+	connect(route, 0);
 	box = &mut_box[route->GetBox()];
 
 	CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(3,_T("Test"));
 	guard = out;
 
-	route->Attatch (guard);
+	connect(route, guard);
 	route->SetOutputFrom (0);
 	route->SetOutputTo (15);
 	route->OutputAvoidDrumChannel (true);
@@ -68,9 +71,14 @@ void CommonMidiOutputTest::tearDown()
 	debugFlags::flags.timer = false;
 	debugFlags::flags.midiio = true;
 #endif
+	guard->Destroy();
+	route->Destroy();
 	out = NULL;
 	guard = NULL;
 	route = NULL;
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
 }
 
 
@@ -542,7 +550,7 @@ void CommonMidiInputTest::setUp()
 	initialize_boxes();
 	GlobalReset();
 	route = mutabor::RouteFactory::Create();
-	route->Attatch(0);
+	connect(route, 0);
 	box = &mut_box[route->GetBox()];
 
 	CurrentTime.UseRealtime(true);
@@ -551,8 +559,8 @@ void CommonMidiInputTest::setUp()
 	out = new midicmnOutputDevice(3,_T("Test"));
 	outguard = out;
 
-	route->Attatch (guard);
-	route->Attatch (outguard);
+	connect(route,guard);
+	connect(route,outguard);
 	route->SetOutputFrom (0);
 	route->SetOutputTo (15);
 	route->OutputAvoidDrumChannel (true);
@@ -564,6 +572,13 @@ void CommonMidiInputTest::tearDown()
 	debugFlags::flags.timer = false;
 	debugFlags::flags.midiio = false;
 #endif
+
+	if (in)
+		in->Destroy();
+	if(out)
+		out->Destroy();
+	if(route)
+		route->Destroy();
 	in = NULL;
 	out = NULL;
 	guard = NULL;

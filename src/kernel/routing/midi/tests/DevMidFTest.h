@@ -61,12 +61,12 @@
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/Runtime.h"
 
-template<class input> 
 class InputMidiFileTest : public CPPUNIT_NS::TestFixture 
 {
 	CPPUNIT_TEST_SUITE( InputMidiFileTest );
 	CPPUNIT_TEST( testOpenFail );
 	CPPUNIT_TEST( testPlayMidi );
+	CPPUNIT_TEST( testBatchPlay1 );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -88,23 +88,33 @@ public:
   
 	void setUp() 
 	{ 
+		std::cout << std::endl << "setting up..." << std::endl;
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUGA
 		debugFlags::flags.timer = true;
 		debugFlags::flags.midifile = true;
 #endif
-		std::clog << "Running setUp()" << std::endl;
+		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
 		mutabor::CurrentTime.UseRealtime(true);
 		in = mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile);
+		CPPUNIT_ASSERT(in);
 	}
   
 	void tearDown()
 	{ 
+		std::cout << std::endl << "shutting down..." << std::endl;
 #ifdef DEBUG
 		debugFlags::flags.timer = false;
 		debugFlags::flags.midifile = false;
 #endif
+		if (in) 
+			in -> Destroy();
 		in = NULL;
+		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
 	}
   
 	void testOpenFail() 
@@ -123,6 +133,8 @@ public:
 		in -> Play(wxTHREAD_JOINABLE);
 		CPPUNIT_ASSERT(!in->WaitForDeviceFinish());
 	}
+
+	void testBatchPlay1();
 };
 
 

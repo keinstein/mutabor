@@ -326,7 +326,8 @@ namespace mutabor {
 			// Flawfinder: ignore
 			mutASSERT(!open);
 			open = true;
-			data = _T("Opened...\n");
+			WriteTime();
+			data += _T("Opened...\n");
 			return true;
 		}
 
@@ -344,6 +345,7 @@ namespace mutabor {
 			// Flawfinder: ignore
 			mutASSERT(open);
 			open = false;
+			WriteTime();
 			data += _T("...closed.\n");
 		}
 
@@ -383,6 +385,7 @@ namespace mutabor {
 			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
+			WriteTime();
 			tmp.Printf(_T("%3d: %02x %02x %02x"), channel, byte1, byte2, byte3);
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T("\n");
@@ -421,6 +424,7 @@ namespace mutabor {
 			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
+			WriteTime();
 			tmp.Printf(_T("%3d: %02x %02x"), channel, byte1,byte2);
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T("\n");
@@ -440,6 +444,7 @@ namespace mutabor {
 			// Flawfinder: ignore
 			mutASSERT(open);
 			mutString tmp;
+			WriteTime();
 			tmp.Printf(_T("%3d: %02x"), byte1);
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T("\n");
@@ -466,6 +471,7 @@ namespace mutabor {
 				UNREACHABLEC;
 				return *this;
 			}
+			WriteTime();
 			mutString tmp = mutString::Format(_T("%3d: SysEx"),channel);
 			while ( from != to) 
 				tmp += mutString::Format(_T(" %02x"),*(from++));
@@ -482,6 +488,14 @@ namespace mutabor {
 		mutString data;
 		// Flawfinder: ignore
 		bool open;
+
+		void WriteTime() {
+			mutString tmp;
+			if (!CurrentTime.isRealtime()) {
+				tmp.Printf(_T("%ld "),CurrentTime.Get());
+				data += tmp;
+			}
+		}
 	};
 
 	
