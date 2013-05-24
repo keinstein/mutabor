@@ -141,8 +141,7 @@ namespace mutabor {
 		DevicePtr thisptr(static_cast<thistype *>(this));
 		routeListType::iterator i;
 		while ((i = routes.begin()) != routes.end()) {
-			boost::const_pointer_cast<RouteClass>(*i)
-				->Reconnect(thisptr, newclass);
+			reconnect(*i, thisptr, newclass);
 		}
 		DEBUGLOG(smartptr,_T(""));
 		return true;

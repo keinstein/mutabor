@@ -90,14 +90,17 @@
 #include "src/wxGUI/Routing/NewBoxShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/RouteLists.h"
-#include "src/wxGUI/GUIBoxData-inlines.h"
-#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/MutFrame.h"
 
 
+#include "src/kernel/routing/Route-inlines.h"
+#include "src/wxGUI/GUIBoxData-inlines.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
+
 using namespace mutabor;
 namespace mutaborGUI {
+#if 0
 	void GUIRouteBase::Attatch (mutabor::OutputDevice & dev) 
 	{
 		// this can be more effective if the lists were ordered 
@@ -505,30 +508,32 @@ namespace mutaborGUI {
 			 boxid);
 		return retval;
 	}
+#endif
+
 
 	void GUIRouteBase::Destroy() {
+		Route r(GetRoute());
 		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 route, 
-			 intrusive_ptr_get_refcount(route));
-		Route r(route);
+			 r.get(), 
+			 intrusive_ptr_get_refcount(r.get()));
 		MutBoxChannelShapeList::iterator i;
 		while ( (i = shapes.begin()) != shapes.end()) {
 			MutBoxChannelShape * shape = *i;
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 route, 
-				 intrusive_ptr_get_refcount(route));
-			shape -> Detatch(r);
+				 r.get(), 
+				 intrusive_ptr_get_refcount(r.get()));
+			disconnect(r,shape);
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 route, 
-				 intrusive_ptr_get_refcount(route));
+				 r.get(), 
+				 intrusive_ptr_get_refcount(r.get()));
 			shape -> Destroy();
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 route, 
-				 intrusive_ptr_get_refcount(route));
+				 r.get(), 
+				 intrusive_ptr_get_refcount(r.get()));
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), disconnected shapes"),
-			 route, 
-			 intrusive_ptr_get_refcount(route));
+			 r.get(), 
+			 intrusive_ptr_get_refcount(r.get()));
 //		box -> Detatch(route);
 		r = NULL;
 	}
@@ -536,10 +541,9 @@ namespace mutaborGUI {
 
 
 	template<class T> 
-	void GUIfyRoute<T>::Destroy() 
+	void GUIfiedRoute<T>::Destroy() 
 	{ 
 		int saveboxid = T::GetBox();
-		GUIRouteBase * gui = &GetGUIRoute();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
 			 this, 
 			 intrusive_ptr_get_refcount(this));
@@ -547,8 +551,7 @@ namespace mutaborGUI {
 		DEBUGLOG(smartptr,_T("Route; %p (%d), destroying GUI"),
 			 this, 
 			 intrusive_ptr_get_refcount(this));
-		mutASSERT(gui);
-		gui->Destroy();    //
+		GUIRouteBase::Destroy();    //
 		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
 			 this, 
 			 intrusive_ptr_get_refcount(this));
@@ -660,12 +663,12 @@ namespace mutaborGUI {
 
 	void GUIOutputDeviceBase::Destroy() {
 		TRACEC;
-		OutputDevice Out(device);
+		OutputDevice Out(GetDevice());
 		MutOutputDeviceShapeList::iterator i;
 		while ((i = shapes.begin()) != shapes.end()) {
 			MutOutputDeviceShape * shape = *i;
 			TRACEC;
-			shape -> Detatch(Out);
+			disconnect(this,shape);
 			TRACEC;
 			shape -> Destroy();
 		}
@@ -675,9 +678,9 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	void GUIfyOutputDevice<T>::Destroy() {
+	void GUIfiedOutputDevice<T>::Destroy() {
 		TRACEC;
-		GetGUIDevice().Destroy();
+		GUIOutputDeviceBase::Destroy();
 		TRACEC;
 		basetype::Destroy();
 		TRACEC;
@@ -685,12 +688,12 @@ namespace mutaborGUI {
 
 	void GUIInputDeviceBase::Destroy() {
 		TRACEC;
-		InputDevice In(device);
+		InputDevice In(GetDevice());
 		MutInputDeviceShapeList::iterator i;
 		while ((i = shapes.begin()) != shapes.end()) {
 			MutInputDeviceShape * shape = *i;
 			TRACEC;
-			shape -> Detatch(In);
+			disconnect(this,shape);
 			TRACEC;
 			shape -> Destroy();
 		}
@@ -700,9 +703,9 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	void GUIfyInputDevice<T>::Destroy() {
+	void GUIfiedInputDevice<T>::Destroy() {
 		TRACEC;
-		GetGUIDevice().Destroy();
+		GUIInputDeviceBase::Destroy();
 		TRACEC;
 		T::Destroy();
 		TRACEC;

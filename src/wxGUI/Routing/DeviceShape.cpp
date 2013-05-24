@@ -80,8 +80,13 @@ namespace mutaborGUI {
 	}
 
 	bool MutDeviceShape::Replace(MutBoxChannelShape * oldroute,
-					  MutBoxChannelShape * newroute)
+				     MutBoxChannelShape * newroute)
 	{
+#ifdef DEBUG
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),oldroute);
+		mutASSERT(pos != routes.end());
+#endif
 		bool retval = Remove(oldroute);
 		Add(newroute);
 		Recompute();

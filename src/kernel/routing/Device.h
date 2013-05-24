@@ -53,6 +53,11 @@
 
 #define DRUMCHANNEL 9  // Schlagzeugkanal bei General Midi (Kanal 9, bzw. 10)
 
+namespace mutaborGUI {
+	class GUIOutputDeviceBase;
+	class GUIInputDeviceBase;
+}
+
 namespace mutabor {
 
 	enum MutaborModeType {
@@ -219,7 +224,7 @@ namespace mutabor {
 
 	class Device
 	{
-	private:
+ 	private:
 		void * userdata;
 		int Id;
 	protected:
@@ -289,8 +294,8 @@ namespace mutabor {
 		virtual void Panic() = 0;
 
 	protected: /** \todo lift this restrection afer GUI is working again */
-		friend class GUIOutputDeviceBase;
-		friend class GUIInputDeviceBase;
+		friend class ::mutaborGUI::GUIOutputDeviceBase;
+		friend class ::mutaborGUI::GUIInputDeviceBase;
 		virtual void setUserData (void * data) {
 			userdata = data; 
 		}
@@ -395,7 +400,7 @@ namespace mutabor {
 				TRACEC;
 				route = (*R);
 				TRACEC;
-				route->Detatch(self);
+				disconnect(route,self);
 				TRACEC;
 			}
 			
@@ -415,40 +420,6 @@ namespace mutabor {
 		virtual bool Remove(Route & route);
 		/// Move routes to another device 
 		virtual bool MoveRoutes (DevicePtr & newclass);
-
-        
-		/// Attatch to a given route
-		void Attatch(Route & route) {
-			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-			DevicePtr self(thisptr());
-			route -> Attatch(self);
-			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-		}
-
-		/// Replace a given route 
-		void Reconnect(Route & oldroute, 
-			       Route & newroute) {
-			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
-				 oldroute.get(),newroute.get());
-			bool ok = Replace(oldroute,newroute);
-			if (ok) {
-				DevicePtr self(thisptr());
-				oldroute->Remove(self);
-				newroute->Add(self);
-			}
-			DEBUGLOG(smartptr,_T("oldroute: %p, newroute: %p"),
-				 oldroute.get(),
-				 newroute.get());
-		}
-
-		/// Detatch a given route
-		void Detatch(Route & route) {
-			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-			DevicePtr self(thisptr());
-			route -> Detatch(self);
-			DEBUGLOG(smartptr,_T("Route; %p"),route.get());
-		}
-
 	
 //		Route GetRoute(int nr);   // counting starts with 0
 		size_t nRoutes() { return routes.size(); };

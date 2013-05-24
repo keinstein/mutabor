@@ -56,78 +56,114 @@
 
 namespace mutabor {
 
-	template <class I, class O>
-	inline void TRouteClass<I,O>::Attatch (OutputDevice & dev) {
-			TRACEC;	
-			Add(dev)		;
-			TRACEC;		
-			Route r(this);
-			TRACEC;	
-			dev->Add(r);
-			TRACEC;
+
+
+	inline void connect(Route & r, OutputDevice & out) {
+		r->Add(out);
+		out->Add(r);
+	}
+
+
+	inline void connect(Route & r, InputDevice & in) {
+		r->Add(in);
+		in->Add(r);
+	}
+
+	inline void connect(Route & r, int boxid) {
+		r->Add(boxid);
+	}
+
+	inline void connect(OutputDevice & out, Route & r) { connect(r,out); }
+	inline void connect(InputDevice & in, Route & r) { connect(r,in); }
+	inline void connect(int boxid, Route & r) { connect(boxid,r); }
+
+	inline bool disconnect(Route & r, OutputDevice & out) {
+		bool retval = out->Remove(r);
+		if (retval) 
+			if (!(retval = r->Remove(out))) {
+				out->Add(r);
+			}
+		return retval;
+	}
+
+	inline bool disconnect(Route & r, InputDevice & in) {
+		bool retval = in->Remove(r);
+		if (retval) {
+			if (!(retval = r->Remove(in))) {
+				in -> Add(r);
+			}
+		}
+		return retval;
+	}
+
+	inline bool disconnect(Route & r, int boxid) {
+		return r->Remove(boxid);
+	}
+
+	inline bool disconnect(OutputDevice & out, Route & r) { return disconnect(r,out); }
+	inline bool disconnect(InputDevice & in, Route & r) { return disconnect(r,in); }
+	inline bool disconnect(int boxid, Route & r) { return disconnect(boxid,r); }
+
+	inline bool reconnect(Route & r, OutputDevice & oldout, OutputDevice & newout) {
+		bool retval = oldout->Remove(r);
+		if (retval) {
+			retval = r->Replace(oldout,newout);
+		}
+		if (retval) {
+			newout->Add(r);
+		} else {
+			mutASSERT(false);
+			r->Remove(newout);
+			// Check that oldout is correcty disconnected
+			
+		}
+		return retval;
+	}
+
+	inline bool reconnect(Route & r, InputDevice & oldin, InputDevice & newin) {
+		bool retval = r->Replace(oldin,newin);
+		if (retval) {
+			retval = retval && oldin->Remove(r);
+		}
+		if (retval) {
+			newin->Add(r);
+		} else {
+			mutASSERT(false);
+			// Check that oldin is correcty disconnected
+			r->Remove(newin);
+			
+		}
+		return retval;
 	}
 	
-	template <class I, class O>
-	inline void TRouteClass<I,O>::Attatch (InputDevice & dev) {
-			TRACEC;
-			Add(dev);
-			Route r(this);
-			dev->Add(r);
+	inline bool reconnect(Route & r, int oldboxid, int newboxid) {
+			return r->Replace(oldboxid,newboxid);
 	}
 
-	template <class I, class O>
-	inline bool TRouteClass<I,O>::Reconnect(OutputDevice & olddev, 
-				       OutputDevice & newdev) {
-			bool retval = Replace(olddev,newdev);
- 			Route r(this);
-			if (retval) {
-				retval = retval && olddev->Remove(r);
-			}
-			if (retval) {
-				newdev->Add(r);
-			} else
-				mutASSERT(false);
-				// Check taht olddev is correcty disconnected
-			return retval;
-	}
-
-	template <class I, class O>
-	inline bool TRouteClass<I,O>::Reconnect(InputDevice & olddev, 
-				       InputDevice & newdev) {
-			bool retval = Replace(olddev,newdev);
-			Route r(this);
-			if (retval) {
-				retval = retval && olddev->Remove(r);
-			}
-			if (retval) {
-				newdev->Add(r);
-			} else 
-				mutASSERT(false);
-			return retval;
-	}
-
-	/// Detatch current output device
-	template <class I, class O>
-	inline bool TRouteClass<I,O>::Detatch(OutputDevice & dev) {
-			Route r (this);
-			bool retval = dev->Remove(r);
-			if (retval) {
-				// this might delete dev
-				retval = Remove(dev);
-			}
-			return retval;
+	inline bool reconnect(OutputDevice & out, Route & oldroute, Route & newroute) {
+		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
+			  out.get(),oldroute.get(),newroute.get());
+		bool ok = out->Replace(oldroute,newroute);
+		if (ok) {
+			oldroute->Remove(out);
+			newroute->Add(out);
 		}
-		/// Detatch current input device
-	template <class I, class O>
-	inline bool TRouteClass<I,O>::Detatch(InputDevice & dev) {
-			Route r(this);
-			bool retval = dev->Remove(r);
-			if (retval) {
-				// this might delete dev
-				retval = Remove(dev);
-			}
-			return retval;
+		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
+			  out.get(),oldroute.get(),newroute.get());
+	}
+
+	inline bool reconnect(InputDevice & in, Route & oldroute, Route & newroute) {
+		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
+			  in.get(),oldroute.get(),newroute.get());
+		bool ok = in->Replace(oldroute,newroute);
+		if (ok) {
+			oldroute->Remove(in);
+			newroute->Add(in);
 		}
+		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
+			  in.get(),oldroute.get(),newroute.get());
+	}
+
 	template <class I, class O>
 	inline void TRouteClass<I,O>::Create(InputDevice & in,
 					OutputDevice & out,
@@ -168,6 +204,7 @@ namespace mutabor {
 		ONoDrum = oNoDrum;
 		Id = NextRouteId();
 	}
+
 
 
 	inline Route RouteFactory::Create(InputDevice & in,

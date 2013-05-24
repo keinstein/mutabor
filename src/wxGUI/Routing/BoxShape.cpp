@@ -27,6 +27,7 @@
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -221,14 +222,14 @@ namespace mutaborGUI {
 		Route  route  = RouteFactory::Create();
 		mutASSERT(route);
 		if (!route) return NULL;
-		route -> Attatch(boxId); // this might be ovewritten by ReadPanel
+		connect(route,boxId); // this might be ovewritten by ReadPanel
 		BoxData::OpenRoute(boxId);
 					
 	
 
 		MutBoxChannelShape * channel = 
 #ifdef DEBUG
-			ToGUIBase(route).GetShape(GetParent());
+			ToGUIBase(route)->GetShape(GetParent());
 		mutASSERT(!channel);
 		channel = 
 #endif
@@ -275,7 +276,7 @@ namespace mutaborGUI {
 			MutBoxChannelShape * channel = (MutBoxChannelShape *) ((*i)->GetWindow());
 			mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
 			mutASSERT(dynamic_cast<MutBoxChannelShape *>((*i)->GetWindow()));
-			channel->Attatch(device);
+			connect(channel,device);
 		}
 	}
 

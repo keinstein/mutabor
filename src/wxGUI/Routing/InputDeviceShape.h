@@ -219,13 +219,14 @@ namespace mutaborGUI {
 		using MutDeviceShape::Remove;
 		using MutDeviceShape::MoveRoutes;
 
-		virtual void Add(mutabor::InputDevice & dev);
+		virtual void Add(mutabor::InputDeviceClass * dev);
 		/// replace a dev
 		virtual bool Replace(mutabor::InputDevice & olddev,
 				     mutabor::InputDevice & newdev);
 		/// remove a dev
-		virtual bool Remove(mutabor::InputDevice & dev);
+		virtual bool Remove(mutabor::InputDeviceClass * dev);
 
+#if 0 
 		/// attach a device to the shape
 		void Attatch(mutabor::InputDevice & dev) {
 			mutASSERT(device.get() == NULL);
@@ -236,7 +237,7 @@ namespace mutaborGUI {
 		/// Attatch to a given route
 		void Attatch(mutabor::Route & route) {
 			TRACEC;
-			device -> Attatch(route);
+			connect(device,route);
 			TRACEC;
 		}
 		/// Attatch to a given route
@@ -250,7 +251,7 @@ namespace mutaborGUI {
 		void Reconnect(mutabor::Route & oldroute, 
 			       mutabor::Route & newroute) {
 			TRACEC;
-			device->Reconnect(oldroute,newroute);
+			reconnect(device,oldroute,newroute);
 			TRACEC;
 		}
 		/// Replace a given route 
@@ -278,7 +279,7 @@ namespace mutaborGUI {
 		/// Detatch a given route
 		void Detatch(mutabor::Route & route) {
 			TRACEC;
-			device -> Detatch(route);
+			disconnect(device,route);
 			TRACEC;
 		}
 		/// Detatch a given route
@@ -287,15 +288,17 @@ namespace mutaborGUI {
 			Detatch(route->GetRoute());
 			TRACEC;
 		}
+
+#endif
 	
 		const mutabor::InputDevice & GetDevice() const { return device; }
 		mutabor::InputDevice & GetDevice() { return device; }
 
-		const GUIInputDeviceBase & GetGUIDevice() const { 
-			return (const GUIInputDeviceBase &)(device);
+		const GUIInputDeviceBase * GetGUIDevice() const { 
+			return ToGUIBase(device);
 		}
-		GUIInputDeviceBase & GetGUIDevice() { 
-			return (GUIInputDeviceBase &)(device);
+		GUIInputDeviceBase * GetGUIDevice() { 
+			return ToGUIBase(device);
 		}
 
 #if defined(_MSC_VER)

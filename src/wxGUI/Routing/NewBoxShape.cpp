@@ -126,6 +126,9 @@
 #include "src/wxGUI/Routing/BoxDlg.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/BoxShape.h"
+
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "InputDevDlg.h"

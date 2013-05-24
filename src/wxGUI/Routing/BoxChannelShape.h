@@ -228,27 +228,7 @@ namespace mutaborGUI {
 			}
 
 	public:
-		virtual ~MutBoxChannelShape()
-			{
-				if (route) {
-					ToGUIBase(route).Detatch (this);
-				}
-				DetachChannel();
-/*
-				DEBUGLOG(routing,_T("Parent is %p"),m_parent);
-				if (m_parent) {
-					wxSizer * sizer = GetContainingSizer();
-					if (sizer) 
-						sizer -> Detach (this);
-					wxWindow * parent = m_parent;
-					parent->RemoveChild(this);
-					SetParent(NULL);
-					parent->InvalidateBestSize();
-					parent->SetInitialSize(wxDefaultSize);
-					parent->Layout();		
-				}
-*/
-			}
+		virtual ~MutBoxChannelShape();
 
 		// can this window have focus?
 		virtual bool AcceptsFocus() const { 
@@ -270,33 +250,7 @@ namespace mutaborGUI {
 		    \retval false if an error has occured
 		*/
 		bool Create (wxWindow * p = NULL, wxWindowID id = wxID_ANY, 
-			     mutabor::Route & r=NullRoute)
-			{ 
-				mutASSERT(!route || !r);
-				if (route && r) {
-					UNREACHABLEC;
-					return false;
-				}
-				bool fine = MutIconShape::Create(p,id);
-				if (p) {
-					SetBackgroundColour(
-						p->GetBackgroundColour()
-						);
-				}
-
-				this->SetWindowStyle(
-					(this->GetWindowStyle() & ~ wxBORDER_MASK)
-					| wxBORDER_NONE);
-#if __WXGTK__
-				borderOffset = wxSize(0,0);
-#else
-				borderOffset = 
-					maxBorderSize = GetWindowBorderSize();
-#endif
-				if (fine)
-					ToGUIBase(r).Attatch(this);
-				return fine;
-			}
+			     mutabor::Route & r=NullRoute);
 
 		/*****************************************/
 		// Event handlers
@@ -382,6 +336,7 @@ namespace mutaborGUI {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
+#if 0
 		// fortunately we can distinguish devices 
 		// and shapes by their pointer types
 
@@ -398,7 +353,7 @@ namespace mutaborGUI {
 		template <class device>
 		void Attatch (boost::intrusive_ptr<device> dev) {
 			if (route)
-				route->Attatch(dev);
+				connect(route,dev);
 			else 
 				UNREACHABLEC;
 		}
@@ -420,34 +375,14 @@ namespace mutaborGUI {
 		bool Reconnect(boost::intrusive_ptr<device> & olddev, 
 			       boost::intrusive_ptr<device> & newdev) {
 			if (route) 
-				return route->Reconnect(olddev,newdev);
+				return reconnect(route,olddev,newdev);
 			UNREACHABLEC;
 			return false;
 		}
 
-		/// Detatch current device shape
-		template <class deviceshape>
-		bool Detatch (deviceshape * dev) {
-			if (dev) {
-				typename deviceshape::devicetype d(dev->GetDevice());
-				return Detatch(d);
-			}
-			UNREACHABLEC;
-			return false;
-		}
-		/// Detatch current device
-		template <class device>
-		bool Detatch(boost::intrusive_ptr<device> & dev) {
-			if (route)
-				return route->Detatch(dev);
-			else {
-				UNREACHABLEC;
-				return false;
-			}
-		}
 		void Attatch(mutabor::Route & r);
 		void Detatch(mutabor::Route & r);
-		
+#endif		
 		
 		mutabor::Route & GetRoute() const { 
 			return const_cast<mutabor::Route &>(route); 
@@ -465,8 +400,8 @@ namespace mutaborGUI {
 			return output; 
 		}
 
-		GUIfiedRoute * GetGUIfiedRoute() const { 
-			return static_cast<GUIfiedRoute *>(route.get()); 
+		GUIRoute * GetGUIRoute() const { 
+			return static_cast<GUIRoute *>(route.get()); 
 		}
 
 		static void CreateRoutePanel(MutBoxChannelShape * channel, 

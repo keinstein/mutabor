@@ -55,11 +55,15 @@
 // system headers which do seldom change
 #include <boost/intrusive_ptr.hpp>
 #include <list>
+#include <stdexcept>
 
 #ifdef WX
 #include "wx/config.h"
 #endif
 // Route ------------------------------------------------------------
+namespace mutaborGUI {
+	class GUIRouteBase;
+}
 
 namespace mutabor {
         /// Type of route input filter
@@ -91,7 +95,9 @@ namespace mutabor {
 	class TRouteClass
 	{
 		friend class RouteFactory;
-	public:
+		/// \todo remove this reference after GUI is working again
+		friend class mutaborGUI::GUIRouteBase;
+	public: // types
 		typedef TRouteClass thistype;
 		typedef I InputDevice;
 		typedef O OutputDevice;
@@ -100,16 +106,17 @@ namespace mutabor {
 		typedef boost::intrusive_ptr<TRouteClass> Route;
 		typedef std::list<Route> routeListType;
 		typedef std::list<thistype *> routePtrList;
-	protected:
+	protected: // types
 		// private members: access only via access functions for debugging purposes
 
-		class NoOutputDevice {
+		class NoOutputDevice:std::invalid_argument {
 		public:
 			Route route;
-			NoOutputDevice(const thistype * r) 
-				{
-					r = const_cast<thistype *>(r);
-				}
+			NoOutputDevice(const thistype * r):
+			invalid_argument(gettext_noop("No such output device")) {
+				r = const_cast<thistype *>(r);
+			}
+			virtual ~NoOutputDevice() throw() {} 
 		};
 		class NoInputDevice {
 		public:
@@ -243,43 +250,6 @@ namespace mutabor {
 		/// remov an existing box
 		virtual bool Remove (int id);
 
-		/// Attatch a new output device
-		inline virtual void Attatch (OutputDevice & dev);
-
-		/// Attatch a new input device
-		inline virtual void Attatch (InputDevice & dev);
-
-		/// Attach a new box
-		virtual void Attatch (int boxid) {
-			Add(boxid);
-		}
-
-		/// Replace current output device with a new one
-		inline virtual bool Reconnect(OutputDevice & olddev, 
-				       OutputDevice & newdev);
-
-		/// Replace current input device with a new one
-		inline virtual bool Reconnect(InputDevice & olddev, 
-				       InputDevice & newdev);
-
-		/// Replace current box with a new one
-		virtual bool Reconnect(int oldboxid,
-			       int newboxid) {
-			return Replace(oldboxid,newboxid);
-		}
-
-		/// Detatch current output device
-		inline virtual bool Detatch(OutputDevice & dev);
-		
-		/// Detatch current input device
-		inline virtual bool Detatch(InputDevice & dev);
-
-		/// Detach a current box
-		virtual bool Detatch(int boxid) {
-			return Remove(boxid);
-		}
-
-	
 		void SetDeviceId(int Id,I) {
 			inputid = Id;
 		}
@@ -398,10 +368,11 @@ namespace mutabor {
 		 * any more.
 		 */
 		virtual void Destroy() {
+			Route self(this);
 			debug_destroy_class(this);
 			RemoveFromRouteList(this);
-			if (In) Detatch(In);
-			if (Out) Detatch(Out);
+			if (In) disconnect(self,In);
+			if (Out) disconnect(self,Out);
 		}
 	
 		/// Initialize the internal device identifiers.
@@ -535,6 +506,8 @@ namespace mutabor {
 
 
 	Route FindRoute(size_t id);
+
+	// see Route-inlines for the connecting functions:
 
        /** Class for creation of Routes.   
 	* This class will create a

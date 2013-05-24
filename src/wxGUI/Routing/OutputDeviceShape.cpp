@@ -162,8 +162,14 @@ namespace mutaborGUI {
 	IMPLEMENT_ABSTRACT_CLASS(MutOutputDeviceShape, MutDeviceShape)
 	//MutOutputDeviceShape::stringmaptype MutOutputDeviceShape::stringmap;
 	wxSizerFlags MutOutputDeviceShape::sizerFlags;
+	MutOutputDeviceShape::~MutOutputDeviceShape() {
+		if (device) {
+			disconnect(device,const_cast<MutOutputDeviceShape *>(this));
+		}
+		DEBUGLOG(other, _T("Deleting."));
+	}
 
-	bool MutOutputDeviceShape:: Create (wxWindow * parent, wxWindowID id, OutputDevice d)
+	bool MutOutputDeviceShape:: Create (wxWindow * parent, wxWindowID id, OutputDevice & d)
 	{
 		if (!d) return false;
 
@@ -173,7 +179,7 @@ namespace mutaborGUI {
 		bool fine =  MutDeviceShape::Create (parent, id, d->GetName());
 
 		if (fine)
-			ToGUIBase(d).Attatch(this);
+			connect(d,this);
 
 		return fine;
 	}
@@ -181,7 +187,7 @@ namespace mutaborGUI {
 #if 0
 	MutOutputDeviceShape * MutOutputDeviceShape::CreateShape(wxWindow * parent,
 								 wxWindowID id,
-								 OutputDevice d)
+								 OutputDevice & d)
 	{
 		DEBUGLOGTYPE(routing,MutOutputDeviceShape,_T("Creating device shape"));
 		mutASSERT (d);
@@ -437,7 +443,7 @@ namespace mutaborGUI {
 		for (MutBoxChannelShapeList::iterator i = routes.begin(); i!= routes.end(); i = routes.begin()) {
 			MutBoxChannelShape *channel = *i;
 			mutASSERT(channel);
-			Detatch(channel);
+			disconnect(channel,this);
 		}
 	
 		device->Destroy();
@@ -471,7 +477,7 @@ namespace mutaborGUI {
 				  this,newshape,device.get(), newshape->device.get(), (*i));
 			MutBoxChannelShape * channel = *i;
 			mutASSERT(channel->GetRoute()->GetOutputDevice() == device);
-			channel->Reconnect(this,newshape);
+			reconnect(channel,this,newshape);
 		}
 
 		DEBUGLOG (routing, _T(""));
@@ -508,10 +514,10 @@ namespace mutaborGUI {
 		MutOutputDeviceShape * newShape = panel->GetCurrentSelection();
 		Route  route = channel->GetRoute();
 		if (!active) {
-			Detatch(route);
+			disconnect(channel,this);
 			return;
 		} else if (newShape != this) {
-			channel->Reconnect(this,newShape);
+			reconnect(channel,this,newShape);
 		}
 		if (newShape) {
 			wxWindow * FilterPanel = panel->GetCurrentDevicePage();

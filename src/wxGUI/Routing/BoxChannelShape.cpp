@@ -31,6 +31,7 @@
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/Routing/BoxShape.h"
 
 #include "wx/dc.h"
 using namespace mutabor;
@@ -58,6 +59,28 @@ namespace mutaborGUI {
 	{
 	}
 
+	MutBoxChannelShape::~MutBoxChannelShape()
+	{
+		if (route) {
+			disconnect(route, const_cast<MutBoxChannelShape *>(this));
+		}
+		DetachChannel();
+/*
+  DEBUGLOG(routing,_T("Parent is %p"),m_parent);
+  if (m_parent) {
+  wxSizer * sizer = GetContainingSizer();
+  if (sizer) 
+  sizer -> Detach (this);
+  wxWindow * parent = m_parent;
+  parent->RemoveChild(this);
+  SetParent(NULL);
+  parent->InvalidateBestSize();
+  parent->SetInitialSize(wxDefaultSize);
+  parent->Layout();		
+  }
+*/
+	}
+
 
 	bool MutBoxChannelShape::Destroy() {
 /*
@@ -76,6 +99,37 @@ namespace mutaborGUI {
 		return MutIconShape::Destroy();
 	}
 	
+	bool MutBoxChannelShape::Create (wxWindow * p,
+					 wxWindowID id, 
+					 mutabor::Route & r)
+	{ 
+		mutASSERT(!route || !r);
+		if (route && r) {
+			UNREACHABLEC;
+			return false;
+		}
+		bool fine = MutIconShape::Create(p,id);
+		if (p) {
+			SetBackgroundColour(
+				p->GetBackgroundColour()
+				);
+		}
+
+		this->SetWindowStyle(
+			(this->GetWindowStyle() & ~ wxBORDER_MASK)
+			| wxBORDER_NONE);
+#if __WXGTK__
+		borderOffset = wxSize(0,0);
+#else
+		borderOffset = 
+			maxBorderSize = GetWindowBorderSize();
+#endif
+		if (fine)
+			connect(r,this);
+		return fine;
+	}
+
+
 	MutIcon& MutBoxChannelShape::GetMutIcon()
 	{
 
@@ -187,7 +241,8 @@ namespace mutaborGUI {
 		}
 		return retval;
 	}
-	
+
+#if 0	
 	void MutBoxChannelShape::Attatch(mutabor::Route & r) {
 		if (route) UNREACHABLEC;
 		else {
@@ -196,6 +251,7 @@ namespace mutaborGUI {
 		}
 
 	}
+
 	void MutBoxChannelShape::Detatch(mutabor::Route & r) {
 		mutASSERT (route == r);
 		
@@ -203,7 +259,7 @@ namespace mutaborGUI {
 			 route.get(), 
 			 intrusive_ptr_get_refcount(route.get()));
 		if (route) 
-			ToGUIBase(route).Detatch(this);
+			disconnect(route).Detatch(this);
 		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
 			 route.get(), 
 			 intrusive_ptr_get_refcount(route.get()));
@@ -212,7 +268,7 @@ namespace mutaborGUI {
 			 route.get(), 
 			 intrusive_ptr_get_refcount(route.get()));
 	}
-
+#endif
 	void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel, 
 						  MutRouteWnd * parentwin, 
 						  wxWindow * routeWindow, 
@@ -441,7 +497,7 @@ namespace mutaborGUI {
 			MutBoxShape * oldbox = 
 				dynamic_cast<MutBoxShape *>(GetParent());
 			mutASSERT(oldbox);
-			ToGUIBase(route).Reconnect(oldbox,box);
+			reconnect(route,oldbox,box);
 			BoxData::CloseBox(oldbox->GetBoxId());
 			
 		}
@@ -459,15 +515,15 @@ namespace mutaborGUI {
 			if (newoutput) {
 				if (newoutput != output) {
 					if (output) 
-						Reconnect(output,newoutput);
+						reconnect(this,output,newoutput);
 					else {
-						Attatch(newoutput);
+						connect(this,newoutput);
 					}
 				}
 				output->ReadPanel(outputPanel,this);
 				output->Refresh();
 			} else if (output) {
-				Detatch(output);
+				disconnect(this,output);
 			}
 		}
 
@@ -483,9 +539,9 @@ namespace mutaborGUI {
 				if (newinput != input) {
 					TRACEC;
 					if (input) 
-						Reconnect(input,newinput);
+						reconnect(this,input,newinput);
 					else {
-						Attatch(newinput);
+						connect(this,newinput);
 					}
 				}
 				TRACEC;
@@ -495,7 +551,7 @@ namespace mutaborGUI {
 				TRACEC;
 			} else if (input) {
 				TRACEC;
-				Detatch(input);
+				disconnect(this,input);
 				TRACEC;
 			}
 		}
@@ -678,8 +734,8 @@ void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
 
 
 	void MutBoxChannelShape::DetachChannel() {
-		if (input) Detatch(input);
-		if (output) Detatch(output);
+		if (input) disconnect(this,input);
+		if (output) disconnect(this,output);
 	}
 }
 

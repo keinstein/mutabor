@@ -129,18 +129,20 @@
  *\{
  ********************************************************************/
 #include "src/kernel/Defs.h"
-#include "src/kernel/routing/Route-inlines.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
 #include "src/wxGUI/Routing/InputMidiDeviceShape.h"
 #include "src/wxGUI/Routing/InputMidiFileDeviceShape.h"
 #include "src/wxGUI/Routing/InputGuidoFileDeviceShape.h"
 #include "src/kernel/routing/midi/DevMidi.h"
-#include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/InputDevDlg.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/Routing/BoxDlg.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/wxGUI/MutFrame.h"
+
+#include "src/kernel/routing/Route-inlines.h"
 
 //#include "MutApp.h"
 //#include "MutIcon.h"
@@ -163,7 +165,7 @@ namespace mutaborGUI {
 	MutInputDeviceShape::~MutInputDeviceShape() {
 		TRACEC;
 		if (device) {
-			ToGUIBase(device).Detatch(this);
+			disconnect(device,this);
 			TRACEC;
 		}
 		TRACEC;
@@ -185,7 +187,7 @@ namespace mutaborGUI {
 
 		TRACEC;
 		if (fine) 
-			ToGUIBase(d).Attatch(this);
+			connect(d,this);
 
 		TRACEC;
 		return fine;
@@ -197,7 +199,7 @@ namespace mutaborGUI {
 	}
 
 	/// add a route
-	void MutInputDeviceShape::Add(mutabor::InputDevice & dev)
+	void MutInputDeviceShape::Add(mutabor::InputDeviceClass * dev)
 	{
 		TRACEC;
 		if (device)
@@ -220,7 +222,7 @@ namespace mutaborGUI {
 		return true;
 	}
 	/// remove a dev
-	bool MutInputDeviceShape::Remove(mutabor::InputDevice & dev)
+	bool MutInputDeviceShape::Remove(mutabor::InputDeviceClass * dev)
 	{
 		TRACEC;
 		if (device != dev) {
@@ -477,12 +479,12 @@ namespace mutaborGUI {
 		Route & route = channel->GetRoute();
 		if (!active) {
 			TRACEC;
-			Detatch(route);
+			disconnect(channel,this);
 			TRACEC;
 			return;
 		} else if (newShape != this) {
 			TRACEC;
-			channel->Reconnect(this,newShape);
+			reconnect(channel,this,newShape);
 			TRACEC;
 		}
 		if (newShape) {

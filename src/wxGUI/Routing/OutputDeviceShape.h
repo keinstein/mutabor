@@ -161,13 +161,7 @@ namespace mutaborGUI {
 	public:
 		typedef mutabor::OutputDevice devicetype;
 
-		virtual ~MutOutputDeviceShape() 
-			{
-				if (device) {
-					Detatch(device);
-				}
-				DEBUGLOG(other, _T("Deleting."));
-			}
+		virtual ~MutOutputDeviceShape();
 
 
 		bool Create (wxWindow * parent, wxWindowID id, 
@@ -177,7 +171,7 @@ namespace mutaborGUI {
 				return MutDeviceShape::Create (parent,id, name);
 			}
 
-		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice d);
+		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice & d);
 
 
 
@@ -221,6 +215,8 @@ namespace mutaborGUI {
 		/// remove a dev
 		virtual bool Remove(mutabor::OutputDevice dev);
 
+
+#if 0
 		/// attach a device to the shape
 		void Attatch(mutabor::OutputDevice & dev) {
 			mutASSERT(device.get() == NULL);
@@ -228,7 +224,7 @@ namespace mutaborGUI {
 		}
 		/// Attatch to a given route
 		void Attatch(mutabor::Route & route) {
-			device -> Attatch(route);
+			connect(device, route);
 		}
 		/// Attatch to a given route
 		void Attatch(MutBoxChannelShape * route) {
@@ -238,7 +234,7 @@ namespace mutaborGUI {
 		/// Replace a given route 
 		void Reconnect(mutabor::Route & oldroute, 
 			       mutabor::Route & newroute) {
-			device->Reconnect(oldroute,newroute);
+			reconnect(device,oldroute,newroute);
 		}
 		/// Replace a given route 
 		void Reconnect(MutBoxChannelShape * oldroute, 
@@ -246,6 +242,7 @@ namespace mutaborGUI {
 			Reconnect(oldroute->GetRoute(),newroute->GetRoute());
 		}
 
+		
 		/// Detach a device from the shape
 		/** this function is usually called short before the
 		    deletion of the window
@@ -258,12 +255,13 @@ namespace mutaborGUI {
 		}
 		/// Detatch a given route
 		void Detatch(mutabor::Route & route) {
-			device -> Detatch(route);
+			disconnect(device, route);
 		}
 		/// Detatch a given route
 		void Detatch(MutBoxChannelShape * route) {
 			Detatch(route->GetRoute());
 		}
+#endif
 
 		mutabor::Route getRoutes()
 			{
