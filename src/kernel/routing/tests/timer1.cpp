@@ -71,15 +71,16 @@ public:
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
-		CurrentTime.UseRealtime(true);
+		mutabor::CurrentTime.UseRealtime(true);
 		max = 0; min = 100000; i= 0;
 		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
 		lasttime = wxGetLocalTimeMillis().GetValue();
-		sw.Start();
+		sw.Start(0);
 	}
 
 	bool Open() {
-		sw.Start();
+		sw.Start(0);
+		lasttime = wxGetLocalTimeMillis().GetValue();
 		CommonFileInputDevice::Open();
 	}
 

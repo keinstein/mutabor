@@ -72,28 +72,30 @@ public:
 
 	void Stop() {
 		CommonFileInputDevice::Stop();
-		if (sw.Time() > (i*(i-1))/2+30) {
-			std::clog << "Played too long!" << std::endl;
-			exit (1);
-		}
-		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
-		if (sw.Time() < (i*(i-1))/2-30) {
-			std::clog << "Played too short!" << std::endl;
-			exit (1);
-		}
-		std::clog << "Played " << sw.Time() << "ms (goal is " << (i*(i-1))/2 << "ms)" << std::endl;
+		// check the overall time
+		CPPUNIT_ASSERT(sw.Time() <= (i*(i-1))/2+30);
+		CPPUNIT_ASSERT(sw.Time() >= (i*(i-1))/2-30);
 		sw.Pause();
 	}
+
 	mutint64 PrepareNextEvent() {
 		mutint64 tl = wxGetLocalTimeMillis().GetValue();
-		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
-		if (max < tl)  max = tl;
-		if (min > tl || min == 0) min = tl;
+//		tl = tl - (lasttime + (mutint64)(i*(i+1))/2);
+		tl = tl - lasttime - (mutint64) i;
+		mutint64 deviation = std::abs(tl);
+		if (max < deviation)  max = deviation;
+		if (min > deviation || min == 0) min = deviation;
 		if (tl > 10) {
 			std::cerr << "Too slow: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
 				  << " Runtime: " << tl << "ms" << std::endl;
-			exit(3);
+			CPPUNIT_ASSERT(tl <= 10);
 		}
+		if (tl < -10) {
+			std::cerr << "Too fast: (" << i << "^2 + " << i << ") / 2 = " << (i*(i+1))/2 
+				  << " Runtime: " << tl << "ms" << std::endl;
+			CPPUNIT_ASSERT(tl >= -10);
+		}
+
 		lasttime = wxGetLocalTimeMillis().GetValue();
 		if (++i<100) {
 			return (mutint64)(i * 1000);

@@ -155,9 +155,7 @@ namespace mutabor {
 		if ( Mode == DevicePlay || Mode == DeviceTimingError )
 			Pause();
 		
-		if ( Mode == DeviceCompileError )
-			return;
-		
+		mutASSERT(Mode == DevicePause || !timer);
 		if (timer && (timer != wxThread::This())) {
 			timer -> ClearFile();
 			timer -> Delete();
@@ -166,7 +164,9 @@ namespace mutabor {
 
 		referenceTime = 0;
 		pauseTime = 0;
-		Mode = DeviceStop;
+
+		if ( Mode != DeviceCompileError )
+			Mode = DeviceStop;
 	}
 
 	inline void CommonFileInputDevice::Play(wxThreadKind kind)
@@ -184,10 +184,11 @@ namespace mutabor {
 			return;
 		case DeviceStop:
 			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)mutabor::CurrentTime.isRealtime());
+			referenceTime = CurrentTime.Get();
+			pauseTime = 0;
+
 			if ( mutabor::CurrentTime.isRealtime() ) {
 				mutASSERT(timer == NULL);
-				referenceTime = CurrentTime.Get();
-				pauseTime = 0;
 
 				timer = new FileTimer(this,kind);
 				if (!timer) {
@@ -203,18 +204,17 @@ namespace mutabor {
 					starting = false; 
 					return;
 				}
-			
 			}
 			break;
 		case DevicePause:
 			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)CurrentTime.isRealtime());
-			if ( CurrentTime.isRealtime() ) {
-				referenceTime += CurrentTime.Get() - pauseTime;
-				pauseTime = 0;
-				if (timer) {
-					mutASSERT(timer -> IsPaused());
-					timer -> Resume();
-				}
+			referenceTime += CurrentTime.Get() - pauseTime;
+			pauseTime = 0;
+			// timer should be 0 in Realtime mode
+			mutASSERT(!timer || CurrentTime.isRealtime());
+			if (timer) {
+				mutASSERT(timer -> IsPaused());
+				timer -> Resume();
 			}
 			break;
 		case DevicePlay:
@@ -241,8 +241,8 @@ namespace mutabor {
 				if (timer != wxThread::This()) {
 					timer -> Pause();
 				}
-				pauseTime = CurrentTime.Get();
 			}
+			pauseTime = CurrentTime.Get();
 			Mode = DevicePause;
 			Panic();
 			break;

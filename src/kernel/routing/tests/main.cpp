@@ -1,4 +1,5 @@
 #include "src/kernel/routing/tests/RouteTest.h"
+#include "src/kernel/routing/tests/timing.h"
 #include "src/kernel/routing/tests/CommonFileDeviceTest.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/app.h"
@@ -35,6 +36,7 @@ main(int argc, char** argv)
 
 	runner.addTest( RouteTest<mutabor::RouteClass>::suite() );
 	runner.addTest( CommonFileDeviceTest::suite() );
+	runner.addTest( TimingParamsTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 

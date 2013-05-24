@@ -48,6 +48,10 @@ namespace mutabor {
 		if (!is_fixed_ticks) {
 			retval.first = (quarter_divisions >> 8)& 0xFF;
 			retval.second = quarter_divisions & 0xFF;
+			DEBUGLOG(midifile,_T("%x: %x %x"),
+				 quarter_divisions, 
+				 retval.first,
+				 retval.second);
 			return retval;
 		} else if (fps) {
 			retval.first = (-fps) & 0xFF;
@@ -58,34 +62,44 @@ namespace mutabor {
 				throw std::range_error(gettext_noop("frame rate does not divide time divisiens"));
 			}
 			
-		} else if (!(quotient = quarter_divisions/30)) {
-			fps = 30;
+		} else { 
+			if (!(quarter_divisions % 30)) 
+				fps = 30;
+			else if (!(quarter_divisions % 25)) 
+				fps = 25;
+			else if (!(quarter_divisions % 24)) 
+				fps = 24;
+			else {
+				throw std::range_error(gettext_noop("frame rate does not divide time divisiens"));
+			}
+
+			quotient = quarter_divisions / fps;
 			retval.first = (-fps) & 0xff;
 			retval.second = quotient & 0xFF;
-		} else if (!(quotient = quarter_divisions/25)) {
-			fps = 25;
-			retval.first = (-fps) & 0xff;
-			retval.second = quotient & 0xFF;
-		} else if (!(quotient = quarter_divisions/24)) {
-			fps = 24;
-			retval.first = (-fps) & 0xff;
-			retval.second = quotient & 0xFF;
-		} else {
-			throw std::range_error(gettext_noop("frame rate does not divide time divisiens"));
 		}
 
 		if (quotient > 0xFF) {
 			throw std::range_error(gettext_noop("time division is too high for current frame rate"));
 		}
+
+		DEBUGLOG(midifile,_T("%x: %x %x"),
+			 quarter_divisions,
+			 retval.first,
+			 retval.second);
+		return retval;
 	}
 
 	void timing_params::set_MIDI_tick_signature(uint8_t bfps, uint8_t bcount) {
-		if (!(fps & 0x80)) {
+		if (!(bfps & 0x80)) {
 			// quarter divisions
-			quarter_divisions = (((int) fps) << 8) + bcount;
+			if (!bfps && ! bcount) 
+				throw std::range_error(gettext_noop("Trying to set bad midi header parameters"));
+			quarter_divisions = (((int) bfps) << 8) + bcount;
 			is_fixed_ticks = false;
 			return;
 		}
+		if (! bcount) 
+			throw std::range_error(gettext_noop("Trying to set bad midi header parameters"));
 		is_fixed_ticks = true;
 		fps = 0x100 - (int) bfps;
 		if (fps == 29) fps = 30; // ignoring NTSC 29.97Hz frame dropping should be ok.

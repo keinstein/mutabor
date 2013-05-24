@@ -28,6 +28,7 @@
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include <algorithm>
+#include <queue>
 #include "src/kernel/routing/Device-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/Route.h"
@@ -295,6 +296,74 @@ OutputDeviceClass:\n\
 			}
 		}
 	}
+
+
+	/// \todo {find a better place for BatchPlay and RealtimePlay:
+	/// we should not reference CurrentTime from
+	/// Device.{h,cpp,-inlines.h} }
+	bool InputDeviceClass::BatchPlay() {
+		// Note::keep this function in sync with Activate (Runtime.cpp)
+		typedef std::pair <mutint64, InputDevice> queue_element;
+		typedef std::priority_queue< queue_element,
+					     std::deque<queue_element>,
+					     std::greater<queue_element> > batch_queue;
+		// Currenttime is used by output devices to keep track of the time
+		/// \todo implement event types that use timestamps
+		CurrentTime.UseRealtime(false);
+		CurrentTime.Set(0);
+		
+		if (!mutabor::OutOpen())
+			return false;
+		
+		if (!mutabor::InOpen() ) {
+			mutabor::OutClose();
+			return false;
+		}
+
+		batch_queue queue;
+
+		for (InputDeviceList::iterator i = deviceList.begin();
+		     i != deviceList.end(); i++) {
+			(*i)->Play();
+			queue.push(queue_element(0,*i));
+		}
+		
+		mutASSERT(CurrentTime.Get() == 0);
+
+		while (!queue.empty()) {
+			queue_element element = queue.top();
+			queue.pop();
+			mutASSERT(element.first >= CurrentTime.Get());
+			CurrentTime = element.first;
+			mutint64 delta = element.second->PrepareNextEvent();
+			if (delta != MUTABOR_NO_DELTA) {
+				mutASSERT(delta >= 0);
+				element.first += delta;
+				queue.push(element);
+			}
+		}
+
+		for (InputDeviceList::iterator i = deviceList.begin();
+		     i != deviceList.end(); i++) {
+			(*i)->Stop();
+		}
+
+		mutabor::CurrentTime.Stop();
+		mutabor::InClose();
+		mutabor::OutClose();
+
+		GlobalReset();
+
+		return true;
+	}
+
+	void InputDeviceClass::RealtimePlay() {
+		for (InputDeviceList::iterator i = deviceList.begin();
+		     i != deviceList.end(); i++) {
+			(*i)->Play();
+		}
+	}
+
 
 #ifdef WX
 	wxString InputDeviceClass::TowxString() const {

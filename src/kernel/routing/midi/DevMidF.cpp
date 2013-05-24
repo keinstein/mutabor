@@ -90,13 +90,6 @@ namespace mutabor {
 
 #endif
 
-
-
-	
-
-// Daten ¸bergeben für NoRealTime-Übersetzungen
-	BYTE *pData;
-
 	static DWORD ReadLength(mutIFstream &is)
 	{
 		BYTE a[4] = {0,0,0,0};
@@ -113,7 +106,7 @@ namespace mutabor {
 	{
 		current_delta = ReadInt();
 #warning fix to meet current_delta = (MMSPerQuarter * Delta) / Speed;
-		remaining_delta += timing.get_time(current_delta);
+		remaining_delta += timing.get_time_midi(current_delta);
 		return remaining_delta;
 	}
 
@@ -123,14 +116,17 @@ namespace mutabor {
 		int i = 0;
 		mutint64 newtime = CurrentTime.Get();
 		mutint64 Deltatime = (newtime - Time);
-		mutint64 Delta = timing.get_delta(Deltatime);
+		// note: Deltatime may be a little bit ahead if get_delta rounds up
+		mutint64 Delta = timing.get_delta_midi(Deltatime);
 
 		// we should take care of rounding errors
-		Time = newtime + timing.get_time(Delta) - Deltatime;
+		//Time = newtime + timing.get_time(Delta) - Deltatime;
+		Time += timing.get_time_midi(Delta);
 
 		// if the Delta time is bad wite a correct number
+		mutASSERT(0 <= Delta);
 		mutASSERT(Delta < 0x0FFFFFFF);
-		WriteNumber(Delta < 0x0FFFFFFF ? Delta: 0x0FFFFFFF);
+		WriteNumber(Delta < 0x0FFFFFFF ? (0 <= Delta ? Delta : 0): 0x0FFFFFFF);
 	}
 
 	uint32_t Track::ReadInt() {
@@ -199,15 +195,35 @@ namespace mutabor {
 	void Track::Save(mutOFstream &os)
 	{
 		mutWriteStream(os,"MTrk",4);
-		WriteLength(os, size()+4);
 
-		for (DWORD i = 0; i < size(); i++)
-			mutPutC(os,(BYTE)(at(i)));
+		const uint8_t tempo_events[] = {
+			/// \todo Implement Format 2 files with one separate track for each route
+			
+			/* Tempo map will be needed for Format 1 files
+			 * in these files the first track contains all tempo changes
+			 */
+			
+			0x00,                                  // delta 0
+			midi::META, midi::META_SET_TEMPO,      // meta event
+			0x03,                                  // 3 data bytes
+			0x07, 0xD0, 0x00,                      // 462080 μs/qarter
+			
+			0x00,                                  // delta 0
+			midi::META, midi::META_TIME_SIGNATURE, // meta event
+			0x04,                                  // 4 data bytes
+			0x04,                                  // numerator of 4/4
+			0x02,                                  // exp. of denominator of 4/(2^2)
+			0x18,                                  // 1 metronome click = 18 clocks
+			0x08                                  // 8/32 = 1/4
+		};
 
-		mutPutC(os,(BYTE)0x00);
-		mutPutC(os,(BYTE)0xFF);
-		mutPutC(os,(BYTE)0x2F);
-		mutPutC(os,(BYTE)0x00);
+		static const uint8_t EOT[] = {0x00, midi::META, midi::META_END_OF_TRACK, 0x00};
+
+		WriteLength(os, 15+size()+4);
+
+		mutWriteStream(os,tempo_events,15);
+		mutWriteStream(os,data(),size());
+		mutWriteStream(os,EOT,4);
 	}
 
 // OutputMidiFile ------------------------------------------------------
@@ -307,55 +323,6 @@ namespace mutabor {
 		base::Close();
 
 		mutOpenOFstream(os,Name);
-
-		BYTE Header[41] =
-			{ 
-				// File header
-				'M', 'T', 'h', 'd', // Chunk type MIDI file header
-				0, 0, 0, 6,         // chunk length
-				0, 0,               // file type
-				0, 1,               // number of tracks
-				1, 0,               // 256 Ticks per second
-				/* Alternatve format last 2 bytes:
-				   0x80 & negative_SMPTE_format_in_7bit,
-				   ticks_per_frame */
-			  
-
-
-				// Tempo map
-				'M', 'T', 'r', 'k',                    // Chunk type Track
-				0x00, 0x00, 0x00, 0x13,                // Chunk length
-
-				0x00,                                  // delta 0
-				midi::META, midi::META_SET_TEMPO,      // meta event
-				0x03,                                  // 3 data bytes
-				0x07, 0xD0, 0x00,                      // 462080 μs/qarter
-				
-				0x00,                                  // delta 0
-				midi::META, midi::META_TIME_SIGNATURE, // meta event
-				0x04,                                  // 4 data bytes
-				0x04,                                  // numerator of 4/4
-				0x02,                                  // exp. of denominator of 4/(2^2)
-				0x18,                                  // 1 metronome click = 18 clocks
-				0x08,                                  // 8/32 = 1/4
-
-				0x00,                                  // delta 0
-				midi::META, midi::META_END_OF_TRACK,   // meta event
-				0x00                                   // no data bytes
-			};
-
-
-
-#warning "NRT_Speed must be replaced, here"
-#if 0
-		if ( !CurrentTime.isRealtime() ) {
-			Header[12] = ((WORD)(NRT_Speed >> 8)) & 0xFF;
-			Header[13] = ((WORD)(NRT_Speed)) & 0xFF;
-		}
-#endif
-
-		mutWriteStream(os,Header, 41);
-
 		Out.Save(os);
 	}
 
@@ -568,7 +535,11 @@ namespace mutabor {
 		// speed info
 		a = mutGetC(is); //mutGetC(is,a);
 		b = mutGetC(is); //mutGetC(is,b);
-		timing.set_MIDI_tick_signature(a,b);
+		try {
+			timing.set_MIDI_tick_signature(a,b);
+		} catch (std::range_error e) {
+			LAUFZEIT_ERROR(_("Midi file '%s' has corrupted timing information."), Name.c_str())	;
+		}
 		DEBUGLOG(midifile, 
 			 _T("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
 			 FileType, 
@@ -597,16 +568,12 @@ namespace mutabor {
 
 			l = mutabor::ReadLength(is);
 
-			if ( l >  64000l ) {
-				Mode = DeviceCompileError;
-				LAUFZEIT_ERROR(_("Track %d of MIDI input file '%s' is too long (=%d, max: %d)."),
-						i, Name.c_str(), (int)l, 64000);
-				DEBUGLOG (midifile, _T("Midi input file '%s' is too long."),Name.c_str());
-				goto error_cleanup;
-			}
-
 			Tracks[i].clear();
-			Tracks[i].resize(l);
+			try {
+				Tracks[i].resize(l);
+			} catch (std::bad_alloc e) {
+				Tracks[i].clear();
+			}
 
 			if ( Tracks[i].size() < l) {
 				Mode = DeviceCompileError;
@@ -615,15 +582,18 @@ namespace mutabor {
 				goto error_cleanup;
 			}
 			
-			if ( l > 32000 ) {
+			
+			if ( l > 0x10000000) {
+				// in order to avoid problems with 32bit integers we read large tracks in 3 chunks
 				
-				mutReadStream(is, (char*)(Tracks[i].data()), 32000);
-				mutReadStream(is, (char*)(Tracks[i].data())+32000, l-32000);
+				mutReadStream(is, (char*)(Tracks[i].data()), l/3);
+				mutReadStream(is, (char*)(Tracks[i].data())+l/3, l/3);
+				mutReadStream(is, (char*)(Tracks[i].data())+l/3+l/3,l-l/3- l/3);
 			} else
 				mutReadStream(is, (char*)(Tracks[i].data()), l);
 
 			if ( mutStreamBad(is) ) {
-				DEBUGLOG (midifile, _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
+				LAUFZEIT_ERROR( _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
 					  Name.c_str(),i);
 				goto error_cleanup;
 			}
@@ -678,13 +648,11 @@ namespace mutabor {
 			mutint64 delta = Tracks[i].GetDelta();
 			if ( delta  == MUTABOR_NO_DELTA ) 
 				continue;
-			mutint64 remainingDelta = Tracks[i].PassDelta(passedDelta);
-			if ( remainingDelta <= 0 )
+			if ( delta <= passedDelta )
 				delta = ReadMidiProceed(i, passedDelta);
-			else (delta = remainingDelta);
+			else 
+				delta = Tracks[i].PassDelta(passedDelta);
 			
-			mutASSERT(delta == Tracks[i].GetDelta());
-				
 			if (delta != MUTABOR_NO_DELTA && 
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
@@ -696,20 +664,16 @@ namespace mutabor {
 		return NewMinDelta;
 	}
 
-	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 time)
+	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 deltatime)
 	{
-		mutint64 Delta = 0;
+		mutint64 Delta = Tracks[nr].GetDelta();
+		mutint64 time = deltatime;
 		size_t OldPos;
 
+		mutASSERT(time >= Delta);
 		while ( time >= Delta ) {
-			time -= Delta;
 
 			Track::base message = Tracks[nr].ReadMessage();
-
-/*			pData = &(Track[nr][TrackPos[nr]]);
-			OldPos = TrackPos[nr];
-			DWORD a = Track[nr][TrackPos[nr]++];
-*/
 
 			uint8_t status = message[0];
 			int a = status;
@@ -759,7 +723,23 @@ namespace mutabor {
 								(((int)message[4]));
 						
 							size_t j,e;
-							if (FileType == 1) {
+							// file type 0
+							// must not
+							// have more
+							// than 1
+							// track file
+							// we treat it
+							// like type
+							// one even
+							// though
+							// files with
+							// multiple
+							// tracks are
+							// corrupted.
+							// type 2 has
+							// independent
+							// tracks
+							if (FileType > 1) {
 								j = nr; e = nr+1;
 							} else {
 								j = 0; e = Tracks.size();
@@ -791,13 +771,22 @@ namespace mutabor {
 			Proceed(a, nr);
 
 			// Delta Time
+			time -= Delta;
+			Tracks[nr].PassDelta(Delta);
 			Delta = Tracks[nr].ReadDelta();
 			
 			DEBUGLOG(midifile,
 				 _T("Next event on Track %d after %ld μs"),
 				 nr, Delta);
 		}
+#ifdef DEBUG
+		mutint64 checktime = 
+#endif
+			Tracks[nr].PassDelta(time);
 
+#ifdef DEBUG
+		mutASSERT(checktime == Delta - time);
+#endif
 		return Delta - time;
 	}
 

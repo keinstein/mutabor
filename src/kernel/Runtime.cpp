@@ -78,14 +78,20 @@ char pascal _export Compile(mutaborGUI::CompDlg *compDia, const wxChar *name) {
 
 UpdateCallback* updatecallback;
 
-bool pascal _export Activate(bool realTime, UpdateCallback* callback) {
-	CurrentTime.UseRealtime(realTime);
+bool pascal _export Activate(bool realtime, UpdateCallback* callback) {
+	CurrentTime.UseRealtime(realtime);
+	mutabor::CurrentTime = 0;
 	GlobalReset();
 	AktionenInit();
 	updatecallback = callback;
 
-	bool ok = mutabor::OutOpen();
 
+	// In batch mode Batch Play handles open and close.
+	if (!realtime)
+		return true;
+
+	bool ok = mutabor::OutOpen();
+		
 	if ( ok && !mutabor::InOpen() ) {
 		ok = false;
 		mutabor::OutClose();
@@ -95,8 +101,6 @@ bool pascal _export Activate(bool realTime, UpdateCallback* callback) {
 		wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
 		return false;
 	}
-
-	mutabor::CurrentTime = 0;
 	return true;
 }
 

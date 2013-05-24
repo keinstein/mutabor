@@ -124,7 +124,7 @@ class myDevice: public mutabor::InputMidiFile {
 	}
 	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
 		std::clog << "Starting..." << std::endl;
-		CurrentTime.UseRealtime(true);
+		mutabor::CurrentTime.UseRealtime(true);
 		mutabor::InputMidiFile::Play(kind);
 		std::clog << "Started." << std::endl;
 	}

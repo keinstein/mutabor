@@ -730,8 +730,21 @@ namespace mutabor {
 		 * that start a new thread for playing the music. Otherwise it is ignored.
 		 */
 		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {
-			Mode = DevicePlay;
+			if (Mode == DeviceStop || Mode == DevicePause)
+				Mode = DevicePlay;
 		}
+
+                /** Play all input devices in batch mode
+		 * The batch mode allows for direct conversion of data in a complex route environment.
+		 * In contrast to the normal Play() function this function doesn't use timers, but simulates
+		 * timing.
+		 */
+		static bool BatchPlay();
+
+                /** Play all input devices in realtime mode
+		 * The the realtime mode allows interactive playing together with the integrated sequencer.
+		 */
+		static void RealtimePlay();
 
 #if (!wxCHECK_VERSION(2,9,2))
 		enum wxThreadWait {
@@ -760,10 +773,10 @@ namespace mutabor {
 		//	  virtual frac ReadOn(frac time) = 0;
 
 		
-		virtual bool NeedsRealTime()
-			{
-				return false;
-			}
+		virtual bool NeedsRealTime() {
+			return false;
+		}
+
 
 		/** 
 		 * Go on to the next event. 

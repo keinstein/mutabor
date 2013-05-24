@@ -689,7 +689,7 @@ namespace mutaborGUI {
 		DEBUGLOG(other,_T("Activate"));
 
 
-		bool realtime = false;
+		bool realtime = true;
 		if ( !NeedsRealTime() ) {
 			realtime = (wxMessageBox(_("There are no realtime \
 instruments in the routes.\n	\
@@ -697,10 +697,9 @@ Shall Mutabor translate the files in batch mode, \
 to keep the MIDI files with the original time stamp?\n \
 (This means also, that you can't modify the tunings \
 while playing by computer keyboard.)"),
-							      _("No realtime => batch mode?"),
+							      _("No realtime ⇒ batch mode?"),
 							      wxYES_NO | wxICON_QUESTION) != wxYES);
-		} 
-
+		}
 		ActiveWindow = this;
 
 		if ( !Activate(realtime, &UpdateUIcallback) )
@@ -711,8 +710,9 @@ while playing by computer keyboard.)"),
 		DEBUGLOG(other,_T("Initialize state"));
 
 		// Initialize boxes
-		// assure that all boxes are initialized as we might activeate 
+		// assure that all boxes are initialized as we might activeate
 		// them during operation later
+
 		for (int box = 0; box < MAX_BOX; box++) {
 			BoxData & boxdata = BoxData::GetBox(box);
 			boxdata.reset();
@@ -781,6 +781,13 @@ while playing by computer keyboard.)"),
 		DEBUGLOG (other, _T("Repaint route"));
 
 		repaint_route();
+
+		if (!realtime) {
+			wxMessageBox(_("Please, configure the initial tuning, now.\n\
+To start the translation hit the play button or select “Play” from the “Sequencer” Menu.\n"),
+				     _("Realtime play"),
+				     wxOK);
+		}
 	}
 
 	wxMenuItem * MutFrame::ClearMenuItem(int id)
@@ -1523,20 +1530,21 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		if ( !LogicOn )
 			CmDoActivate(event);
 
-		const InputDeviceList & list = 
-			InputDeviceClass::GetDeviceList();
-		for ( InputDeviceList::const_iterator In = list.begin(); 
-		      In != list.end(); In++) {
-			if ( (*In)->GetMode() == DeviceStop ||
-			     (*In)->GetMode() == DevicePause ) {
-				boost::const_pointer_cast<InputDeviceClass>(*In)
-					-> Play();
+		if (CurrentTime.isRealtime()) {
+			InputDeviceClass::RealtimePlay();
+			SetStatus(SG_PLAY);
+		} else {
+			if ( InputDeviceClass::BatchPlay() ) {
+				wxMessageBox(_("The conversion finished successfully."),
+					     _("Conversion error"), 
+					     wxOK | wxICON_INFORMATION );
+			} else {
+				wxMessageBox(Fmeldung, _("Conversion error"), 
+					     wxOK | wxICON_ERROR );
 			}
 		}
-	
-		repaint_route();
 
-		SetStatus(SG_PLAY);
+		repaint_route();
 	}
 
 	void MutFrame::CmInDevPause(wxCommandEvent& WXUNUSED(event))

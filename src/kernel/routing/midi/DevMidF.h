@@ -97,7 +97,7 @@ namespace mutabor {
 		};
 
 		Track(): base(), 
-			 Time(),
+			 Time(0),
 			 timing(),
 			 position(0), 
 			 current_delta(MUTABOR_NO_DELTA), 
@@ -107,7 +107,7 @@ namespace mutabor {
 		}
 
 		Track(timing_params p): base(),
-					Time(),
+					Time(0),
 					timing(p),
 					position(0),
 					current_delta(MUTABOR_NO_DELTA),
@@ -123,7 +123,7 @@ namespace mutabor {
 		void ResetPosition(size_t p, bool resettiming = false) { 
 			position = 0; 
 			if (resettiming) {
-				timing.set_duration(500000); //  120 bpm
+				timing.set_quarter_duration(500000); //  120 bpm
 				Time = 0;
 			}
 		}
@@ -139,11 +139,11 @@ namespace mutabor {
 					bool update = false, 
 					mutint64 offset = 0) {
 			if (!update) {
-				timing.set_duration(new_duration);
+				timing.set_quarter_duration(new_duration);
 				return;
 			}
 			timing_params old(timing);
-			timing.set_duration(new_duration);
+			timing.set_quarter_duration(new_duration);
 			remaining_delta = timing_params::update_duration(remaining_delta-offset,
 									 old,
 									 timing)
@@ -176,16 +176,18 @@ namespace mutabor {
 		base ReadMessage();
 
 		void WriteNumber(size_t count) {
-			int i = 1;
-			size_t mask = 0x7F << 7;
-			size_t tmp = count >> 7;
-			while(tmp) {
-				tmp >>= 7;
-				i++;
+			int i = 3;
+			size_t mask = 0x0FffFFff;
+			if (count > mask) 
+				throw delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF"));
+			while (i & count <= mask) {
+				mask = mask >> 7;
+				i--;
 			}
-			mutASSERT(i<6);// 32bit/7bit = 4.571 > 4 
-			for (;i>0;i--) 
-				push_back(((count >> i*7) & 0x7F)| 0x80);
+			while (i) { 
+				push_back(((count >> (i*7)) & 0x7F)| 0x80);
+				i--;
+			}
 			push_back(count & 0x7F);
 		}
 		void WriteLength(mutOFstream &os, size_t l);
@@ -226,13 +228,13 @@ namespace mutabor {
 		}
 
 		template <class i> 
-		void SendMeta (uint8_t type, i from, i to, mutint64 delta = -1) {
+		void SendMeta (uint8_t type, i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
 			if (type & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return;
 			}
-			FixSysEx(delta);
-			if (delta < 0) {
+			FixSysEx();
+			if (delta == MUTABOR_NO_DELTA) {
 				WriteDelta();
 			} else {
 				WriteNumber(delta);
@@ -243,12 +245,12 @@ namespace mutabor {
 		}
 
 		template <class i> 
-		void SendSysEx (i from, i to, mutint64 delta = -1) {
+		void SendSysEx (i from, i to, mutint64 delta = MUTABOR_NO_DELTA) {
 			if ((*from) & midi::STARTBYTE_MASK) {
 				UNREACHABLEC;
 				return;
 			}
-			FixSysEx(delta);
+			FixSysEx();
 			SendSysExCont(from,to,delta,1);
 			push_back(midi::SYSEX_END);
 			running_sysex = false;
@@ -256,7 +258,7 @@ namespace mutabor {
 
 		template <class i>
 		void SendSysExCont (i from, i to, 
-				    mutint64 delta = -1, 
+				    mutint64 delta = MUTABOR_NO_DELTA, 
 				    size_t offset = 0)
 			{
 			 
@@ -282,7 +284,7 @@ namespace mutabor {
 				throw wrong_id(gettext_noop("Device id of continuation package deos not match the id of the system exclusive message"));
 			}
 
-			if (delta < 0) {
+			if (delta == MUTABOR_NO_DELTA) {
 				WriteDelta();
 			} else {
 				WriteNumber(delta);
@@ -291,7 +293,7 @@ namespace mutabor {
 			push_back(running_sysex?midi::SYSEX_END:midi::SYSEX_START);
 			WriteLongChunk(from, to, offset);
 
-			if (offset == 0 && *(to -1) != midi::SYSEX_END) {
+			if (offset == 0 && *(to - 1) != midi::SYSEX_END) {
 				running_sysex = true;
 			} else {
 				running_sysex = false;
@@ -299,11 +301,11 @@ namespace mutabor {
 		}
 
 
-		void FixSysEx(mutint64 delta = -1) {
+		void FixSysEx() {
 			if (!running_sysex) return;
 			if (capacity() < size() + 10)
 				reserve(size()+6);
-			WriteNumber(delta);
+			WriteNumber(0);
 			push_back(midi::SYSEX_END);
 			WriteNumber(4);
 			if (sysex_id > 0x10000) {
@@ -474,6 +476,23 @@ namespace mutabor {
 		 * \param os stream to write to
 		 */
 		void Save(mutOFstream &os) {
+			std::pair<uint8_t,uint8_t > ticks = Tracks.getMidiIickSignature();
+
+			// Let's try to generate Format 0 files: 1 Track including all information.
+
+			uint8_t Header[14] = { 
+				// File header
+				'M', 'T', 'h', 'd', // Chunk type MIDI file header
+				0, 0, 0, 6,         // chunk length
+				0, 0,               // file type Format 2 = independent tracks
+				0, 1,               // number of tracks
+				ticks.first, ticks.second // Ticks per qaurter or second
+				/* Alternatve format last 2 bytes:
+				   0x80 & negative_SMPTE_format_in_7bit,
+				   ticks_per_frame */
+			};
+
+			mutWriteStream(os,Header, 14);
 			Tracks.Save(os);
 		}
 

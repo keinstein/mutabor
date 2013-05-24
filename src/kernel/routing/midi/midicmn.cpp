@@ -411,7 +411,7 @@ namespace mutabor {
 			if ( ton_auf_kanal[i].channel == mutabor_channel
 			     && (ton_auf_kanal[i].active 
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
-				if (ctrl & 0x10000 == 0) {
+				if (ctrl < 0x10000) {
 					controller(i, ctrl, value);
 					Cd[i].set_controller(ctrl, value);
 				} else {
