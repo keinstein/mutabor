@@ -39,8 +39,8 @@
 void  InputMidiFileTest::testBatchPlay1() 
 {
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
 #endif
 
 	mutabor::OutputDevice guard;
@@ -233,33 +233,27 @@ void  InputMidiFileTest::testBatchPlay1()
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n"),__LINE__,_T(__FILE__)));
 
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("\
 0   1: c1 4f\n\
 0   1: 91 40 1f\n"),__LINE__,_T(__FILE__)));
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   1: 81 40 40\n\
 0   2: c2 4f\n\
 0   2: 92 43 3f\n"),__LINE__,_T(__FILE__)));
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   2: 82 43 40\n\
 0   3: c3 4f\n\
 0   3: 93 34 7f\n"),__LINE__,_T(__FILE__)));
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   3: 83 34 40\n"),__LINE__,_T(__FILE__)));
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   0: 80 3c 7f\n"),__LINE__,_T(__FILE__)));
-	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == MUTABOR_NO_DELTA);
 
 	in->Close();
@@ -602,18 +596,707 @@ void  InputMidiFileTest::testBatchPlay1()
 	route = NULL;
 }
 
+
+void  InputMidiFileTest::testBug019010_2() 
+{
+#ifdef DEBUG
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midifile = true;
+#endif
+
+	mutabor::OutputDevice guard;
+	midicmnOutputDevice * out;
+	mutabor ::Route  route;
+	mutabor_box_type * box;
+	mutabor::ChannelData cd;
+
+	initialize_boxes();
+	GlobalReset();
+	route = mutabor::RouteFactory::Create();
+	connect(route,0);
+	box = &mut_box[route->GetBox()];
+
+	mutabor::CurrentTime.UseRealtime(true);
+	out = new midicmnOutputDevice(3,_T("Test"));
+	out->SetBendingRange(2);
+	//out = new midicmnOutputDevice(3,_T("Test"));
+	guard = out;
+
+	connect(route,guard);
+	route->SetOutputFrom (0);
+	route->SetOutputTo (15);
+	route->OutputAvoidDrumChannel (true);
+
+	connect(route, in);
+
+	CPPUNIT_ASSERT( in );
+	in -> SetName(_T(SRCDIR) _T("/bug019010.mid"));
+
+
+	// First check: Input device provides the correct delta times
+
+	GlobalReset();
+	mutabor::CurrentTime.UseRealtime(false);
+	mutabor::CurrentTime = 0;
+
+	CPPUNIT_ASSERT((out -> Open()));
+	CPPUNIT_ASSERT((in -> Open()));
+	CPPUNIT_ASSERT(out->Check(_T("0 Opened...\n\
+0   0: e0 00 40\n\
+0   0: b0 7a 00\n\
+0   0: b0 7d 00\n\
+0   0: b0 7f 00\n\
+0   0: b0 65 00\n\
+0   0: b0 64 00\n\
+0   0: b0 06 02\n\
+0   0: b0 26 00\n\
+0   1: e1 00 40\n\
+0   1: b1 7a 00\n\
+0   1: b1 7d 00\n\
+0   1: b1 7f 00\n\
+0   1: b1 65 00\n\
+0   1: b1 64 00\n\
+0   1: b1 06 02\n\
+0   1: b1 26 00\n\
+0   2: e2 00 40\n\
+0   2: b2 7a 00\n\
+0   2: b2 7d 00\n\
+0   2: b2 7f 00\n\
+0   2: b2 65 00\n\
+0   2: b2 64 00\n\
+0   2: b2 06 02\n\
+0   2: b2 26 00\n\
+0   3: e3 00 40\n\
+0   3: b3 7a 00\n\
+0   3: b3 7d 00\n\
+0   3: b3 7f 00\n\
+0   3: b3 65 00\n\
+0   3: b3 64 00\n\
+0   3: b3 06 02\n\
+0   3: b3 26 00\n\
+0   4: e4 00 40\n\
+0   4: b4 7a 00\n\
+0   4: b4 7d 00\n\
+0   4: b4 7f 00\n\
+0   4: b4 65 00\n\
+0   4: b4 64 00\n\
+0   4: b4 06 02\n\
+0   4: b4 26 00\n\
+0   5: e5 00 40\n\
+0   5: b5 7a 00\n\
+0   5: b5 7d 00\n\
+0   5: b5 7f 00\n\
+0   5: b5 65 00\n\
+0   5: b5 64 00\n\
+0   5: b5 06 02\n\
+0   5: b5 26 00\n\
+0   6: e6 00 40\n\
+0   6: b6 7a 00\n\
+0   6: b6 7d 00\n\
+0   6: b6 7f 00\n\
+0   6: b6 65 00\n\
+0   6: b6 64 00\n\
+0   6: b6 06 02\n\
+0   6: b6 26 00\n\
+0   7: e7 00 40\n\
+0   7: b7 7a 00\n\
+0   7: b7 7d 00\n\
+0   7: b7 7f 00\n\
+0   7: b7 65 00\n\
+0   7: b7 64 00\n\
+0   7: b7 06 02\n\
+0   7: b7 26 00\n\
+0   8: e8 00 40\n\
+0   8: b8 7a 00\n\
+0   8: b8 7d 00\n\
+0   8: b8 7f 00\n\
+0   8: b8 65 00\n\
+0   8: b8 64 00\n\
+0   8: b8 06 02\n\
+0   8: b8 26 00\n\
+0   9: e9 00 40\n\
+0   9: b9 7a 00\n\
+0   9: b9 7d 00\n\
+0   9: b9 7f 00\n\
+0   9: b9 65 00\n\
+0   9: b9 64 00\n\
+0   9: b9 06 02\n\
+0   9: b9 26 00\n\
+0  10: ea 00 40\n\
+0  10: ba 7a 00\n\
+0  10: ba 7d 00\n\
+0  10: ba 7f 00\n\
+0  10: ba 65 00\n\
+0  10: ba 64 00\n\
+0  10: ba 06 02\n\
+0  10: ba 26 00\n\
+0  11: eb 00 40\n\
+0  11: bb 7a 00\n\
+0  11: bb 7d 00\n\
+0  11: bb 7f 00\n\
+0  11: bb 65 00\n\
+0  11: bb 64 00\n\
+0  11: bb 06 02\n\
+0  11: bb 26 00\n\
+0  12: ec 00 40\n\
+0  12: bc 7a 00\n\
+0  12: bc 7d 00\n\
+0  12: bc 7f 00\n\
+0  12: bc 65 00\n\
+0  12: bc 64 00\n\
+0  12: bc 06 02\n\
+0  12: bc 26 00\n\
+0  13: ed 00 40\n\
+0  13: bd 7a 00\n\
+0  13: bd 7d 00\n\
+0  13: bd 7f 00\n\
+0  13: bd 65 00\n\
+0  13: bd 64 00\n\
+0  13: bd 06 02\n\
+0  13: bd 26 00\n\
+0  14: ee 00 40\n\
+0  14: be 7a 00\n\
+0  14: be 7d 00\n\
+0  14: be 7f 00\n\
+0  14: be 65 00\n\
+0  14: be 64 00\n\
+0  14: be 06 02\n\
+0  14: be 26 00\n\
+0  15: ef 00 40\n\
+0  15: bf 7a 00\n\
+0  15: bf 7d 00\n\
+0  15: bf 7f 00\n\
+0  15: bf 65 00\n\
+0  15: bf 64 00\n\
+0  15: bf 06 02\n\
+0  15: bf 26 00\n"),__LINE__,_T(__FILE__)));
+	
+//	in -> Play(wxTHREAD_JOINABLE);
+//	mutabor::InputDeviceClass::BatchPlay();
+	in -> Play();
+	mutint64 delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 1086);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 1954800);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 14725074);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 130320);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 130200);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 4769600);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("\
+0   0: b0 40 00\n\
+0   0: 90 3c 7f\n\
+"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 6287200);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 845040);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 120000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 123960);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 3222960);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("\
+0   1: b1 40 00\n\
+0   1: 91 40 1f\n\
+"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("\
+0   1: 81 40 40\n\
+"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("\
+0   2: b2 40 00\n\
+0   2: 92 43 3f\n\
+"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 10330000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("0   2: 82 43 40\n"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 7809480);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 6100000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("\
+0   3: b3 40 00\n\
+0   3: 93 34 7f\n\
+"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 200000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 146280);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 148080);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 150000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 151800);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 153840);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 155760);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 157800);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 159960);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T(""),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 12104960);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("0   3: 83 34 40\n"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == 13510000);
+
+	delta = in -> PrepareNextEvent();
+	DEBUGLOG(midiio,_T("delta = %d"),delta);
+	CPPUNIT_ASSERT(out->Check(_T("0   0: 80 3c 7f\n"),__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(delta == MUTABOR_NO_DELTA);
+
+	in->Close();
+	out->Close();
+	CPPUNIT_ASSERT(out->Check(_T("0 ...closed.\n"),__LINE__,_T(__FILE__)));
+
+	out->Destroy();
+	out=NULL;
+	route->Destroy();
+	route = NULL;
+}
+
+
+void  InputMidiFileTest::testBug019010() 
+{
+#ifdef DEBUG
+//	debugFlags::flags.timer = true;
+	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midifile = true;
+#endif
+
+	mutabor::OutputDevice guard;
+	midicmnOutputDevice * out;
+	mutabor ::Route  route;
+	mutabor_box_type * box;
+	mutabor::ChannelData cd;
+
+	initialize_boxes();
+	GlobalReset();
+	route = mutabor::RouteFactory::Create();
+	connect(route,0);
+	box = &mut_box[route->GetBox()];
+
+	mutabor::CurrentTime.UseRealtime(true);
+	out = new midicmnOutputDevice(3,_T("Test"));
+	out->SetBendingRange(2);
+	//out = new midicmnOutputDevice(3,_T("Test"));
+	guard = out;
+
+	connect(route,guard);
+	route->SetOutputFrom (0);
+	route->SetOutputTo (15);
+	route->OutputAvoidDrumChannel (true);
+
+	connect(route, in);
+
+	CPPUNIT_ASSERT( in );
+	in -> SetName(_T(SRCDIR) _T("/bug019010.mid"));
+
+
+	// First check: Input device provides the correct delta times
+
+	GlobalReset();
+	mutabor::CurrentTime.UseRealtime(false);
+	mutabor::CurrentTime = 0;
+
+//	in -> Play(wxTHREAD_JOINABLE);
+	mutabor::InputDeviceClass::BatchPlay();
+
+	CPPUNIT_ASSERT(out->Check(_T("\
+0 Opened...\n\
+0   0: e0 00 40\n\
+0   0: b0 7a 00\n\
+0   0: b0 7d 00\n\
+0   0: b0 7f 00\n\
+0   0: b0 65 00\n\
+0   0: b0 64 00\n\
+0   0: b0 06 02\n\
+0   0: b0 26 00\n\
+0   1: e1 00 40\n\
+0   1: b1 7a 00\n\
+0   1: b1 7d 00\n\
+0   1: b1 7f 00\n\
+0   1: b1 65 00\n\
+0   1: b1 64 00\n\
+0   1: b1 06 02\n\
+0   1: b1 26 00\n\
+0   2: e2 00 40\n\
+0   2: b2 7a 00\n\
+0   2: b2 7d 00\n\
+0   2: b2 7f 00\n\
+0   2: b2 65 00\n\
+0   2: b2 64 00\n\
+0   2: b2 06 02\n\
+0   2: b2 26 00\n\
+0   3: e3 00 40\n\
+0   3: b3 7a 00\n\
+0   3: b3 7d 00\n\
+0   3: b3 7f 00\n\
+0   3: b3 65 00\n\
+0   3: b3 64 00\n\
+0   3: b3 06 02\n\
+0   3: b3 26 00\n\
+0   4: e4 00 40\n\
+0   4: b4 7a 00\n\
+0   4: b4 7d 00\n\
+0   4: b4 7f 00\n\
+0   4: b4 65 00\n\
+0   4: b4 64 00\n\
+0   4: b4 06 02\n\
+0   4: b4 26 00\n\
+0   5: e5 00 40\n\
+0   5: b5 7a 00\n\
+0   5: b5 7d 00\n\
+0   5: b5 7f 00\n\
+0   5: b5 65 00\n\
+0   5: b5 64 00\n\
+0   5: b5 06 02\n\
+0   5: b5 26 00\n\
+0   6: e6 00 40\n\
+0   6: b6 7a 00\n\
+0   6: b6 7d 00\n\
+0   6: b6 7f 00\n\
+0   6: b6 65 00\n\
+0   6: b6 64 00\n\
+0   6: b6 06 02\n\
+0   6: b6 26 00\n\
+0   7: e7 00 40\n\
+0   7: b7 7a 00\n\
+0   7: b7 7d 00\n\
+0   7: b7 7f 00\n\
+0   7: b7 65 00\n\
+0   7: b7 64 00\n\
+0   7: b7 06 02\n\
+0   7: b7 26 00\n\
+0   8: e8 00 40\n\
+0   8: b8 7a 00\n\
+0   8: b8 7d 00\n\
+0   8: b8 7f 00\n\
+0   8: b8 65 00\n\
+0   8: b8 64 00\n\
+0   8: b8 06 02\n\
+0   8: b8 26 00\n\
+0   9: e9 00 40\n\
+0   9: b9 7a 00\n\
+0   9: b9 7d 00\n\
+0   9: b9 7f 00\n\
+0   9: b9 65 00\n\
+0   9: b9 64 00\n\
+0   9: b9 06 02\n\
+0   9: b9 26 00\n\
+0  10: ea 00 40\n\
+0  10: ba 7a 00\n\
+0  10: ba 7d 00\n\
+0  10: ba 7f 00\n\
+0  10: ba 65 00\n\
+0  10: ba 64 00\n\
+0  10: ba 06 02\n\
+0  10: ba 26 00\n\
+0  11: eb 00 40\n\
+0  11: bb 7a 00\n\
+0  11: bb 7d 00\n\
+0  11: bb 7f 00\n\
+0  11: bb 65 00\n\
+0  11: bb 64 00\n\
+0  11: bb 06 02\n\
+0  11: bb 26 00\n\
+0  12: ec 00 40\n\
+0  12: bc 7a 00\n\
+0  12: bc 7d 00\n\
+0  12: bc 7f 00\n\
+0  12: bc 65 00\n\
+0  12: bc 64 00\n\
+0  12: bc 06 02\n\
+0  12: bc 26 00\n\
+0  13: ed 00 40\n\
+0  13: bd 7a 00\n\
+0  13: bd 7d 00\n\
+0  13: bd 7f 00\n\
+0  13: bd 65 00\n\
+0  13: bd 64 00\n\
+0  13: bd 06 02\n\
+0  13: bd 26 00\n\
+0  14: ee 00 40\n\
+0  14: be 7a 00\n\
+0  14: be 7d 00\n\
+0  14: be 7f 00\n\
+0  14: be 65 00\n\
+0  14: be 64 00\n\
+0  14: be 06 02\n\
+0  14: be 26 00\n\
+0  15: ef 00 40\n\
+0  15: bf 7a 00\n\
+0  15: bf 7d 00\n\
+0  15: bf 7f 00\n\
+0  15: bf 65 00\n\
+0  15: bf 64 00\n\
+0  15: bf 06 02\n\
+0  15: bf 26 00\n\
+21711080   0: b0 40 00\n\
+21711080   0: 90 3c 7f\n\
+32310240   1: b1 40 00\n\
+32310240   1: 91 40 1f\n\
+42640240   1: 81 40 40\n\
+52970240   2: b2 40 00\n\
+52970240   2: 92 43 3f\n\
+63300240   2: 82 43 40\n\
+77209720   3: b3 40 00\n\
+77209720   3: 93 34 7f\n\
+90738200   3: 83 34 40\n\
+104248200   0: 80 3c 7f\n\
+104248200 ...closed.\n\
+"),__LINE__,_T(__FILE__)));
+
+	sleep(1);
+
+	mutabor::InputDeviceClass::BatchPlay();
+
+	CPPUNIT_ASSERT(out->Check(_T("\
+0 Opened...\n\
+0   0: e0 00 40\n\
+0   0: b0 7a 00\n\
+0   0: b0 7d 00\n\
+0   0: b0 7f 00\n\
+0   0: b0 65 00\n\
+0   0: b0 64 00\n\
+0   0: b0 06 02\n\
+0   0: b0 26 00\n\
+0   1: e1 00 40\n\
+0   1: b1 7a 00\n\
+0   1: b1 7d 00\n\
+0   1: b1 7f 00\n\
+0   1: b1 65 00\n\
+0   1: b1 64 00\n\
+0   1: b1 06 02\n\
+0   1: b1 26 00\n\
+0   2: e2 00 40\n\
+0   2: b2 7a 00\n\
+0   2: b2 7d 00\n\
+0   2: b2 7f 00\n\
+0   2: b2 65 00\n\
+0   2: b2 64 00\n\
+0   2: b2 06 02\n\
+0   2: b2 26 00\n\
+0   3: e3 00 40\n\
+0   3: b3 7a 00\n\
+0   3: b3 7d 00\n\
+0   3: b3 7f 00\n\
+0   3: b3 65 00\n\
+0   3: b3 64 00\n\
+0   3: b3 06 02\n\
+0   3: b3 26 00\n\
+0   4: e4 00 40\n\
+0   4: b4 7a 00\n\
+0   4: b4 7d 00\n\
+0   4: b4 7f 00\n\
+0   4: b4 65 00\n\
+0   4: b4 64 00\n\
+0   4: b4 06 02\n\
+0   4: b4 26 00\n\
+0   5: e5 00 40\n\
+0   5: b5 7a 00\n\
+0   5: b5 7d 00\n\
+0   5: b5 7f 00\n\
+0   5: b5 65 00\n\
+0   5: b5 64 00\n\
+0   5: b5 06 02\n\
+0   5: b5 26 00\n\
+0   6: e6 00 40\n\
+0   6: b6 7a 00\n\
+0   6: b6 7d 00\n\
+0   6: b6 7f 00\n\
+0   6: b6 65 00\n\
+0   6: b6 64 00\n\
+0   6: b6 06 02\n\
+0   6: b6 26 00\n\
+0   7: e7 00 40\n\
+0   7: b7 7a 00\n\
+0   7: b7 7d 00\n\
+0   7: b7 7f 00\n\
+0   7: b7 65 00\n\
+0   7: b7 64 00\n\
+0   7: b7 06 02\n\
+0   7: b7 26 00\n\
+0   8: e8 00 40\n\
+0   8: b8 7a 00\n\
+0   8: b8 7d 00\n\
+0   8: b8 7f 00\n\
+0   8: b8 65 00\n\
+0   8: b8 64 00\n\
+0   8: b8 06 02\n\
+0   8: b8 26 00\n\
+0   9: e9 00 40\n\
+0   9: b9 7a 00\n\
+0   9: b9 7d 00\n\
+0   9: b9 7f 00\n\
+0   9: b9 65 00\n\
+0   9: b9 64 00\n\
+0   9: b9 06 02\n\
+0   9: b9 26 00\n\
+0  10: ea 00 40\n\
+0  10: ba 7a 00\n\
+0  10: ba 7d 00\n\
+0  10: ba 7f 00\n\
+0  10: ba 65 00\n\
+0  10: ba 64 00\n\
+0  10: ba 06 02\n\
+0  10: ba 26 00\n\
+0  11: eb 00 40\n\
+0  11: bb 7a 00\n\
+0  11: bb 7d 00\n\
+0  11: bb 7f 00\n\
+0  11: bb 65 00\n\
+0  11: bb 64 00\n\
+0  11: bb 06 02\n\
+0  11: bb 26 00\n\
+0  12: ec 00 40\n\
+0  12: bc 7a 00\n\
+0  12: bc 7d 00\n\
+0  12: bc 7f 00\n\
+0  12: bc 65 00\n\
+0  12: bc 64 00\n\
+0  12: bc 06 02\n\
+0  12: bc 26 00\n\
+0  13: ed 00 40\n\
+0  13: bd 7a 00\n\
+0  13: bd 7d 00\n\
+0  13: bd 7f 00\n\
+0  13: bd 65 00\n\
+0  13: bd 64 00\n\
+0  13: bd 06 02\n\
+0  13: bd 26 00\n\
+0  14: ee 00 40\n\
+0  14: be 7a 00\n\
+0  14: be 7d 00\n\
+0  14: be 7f 00\n\
+0  14: be 65 00\n\
+0  14: be 64 00\n\
+0  14: be 06 02\n\
+0  14: be 26 00\n\
+0  15: ef 00 40\n\
+0  15: bf 7a 00\n\
+0  15: bf 7d 00\n\
+0  15: bf 7f 00\n\
+0  15: bf 65 00\n\
+0  15: bf 64 00\n\
+0  15: bf 06 02\n\
+0  15: bf 26 00\n\
+21711080   0: b0 40 00\n\
+21711080   0: 90 3c 7f\n\
+32310240   1: b1 40 00\n\
+32310240   1: 91 40 1f\n\
+42640240   1: 81 40 40\n\
+52970240   2: b2 40 00\n\
+52970240   2: 92 43 3f\n\
+63300240   2: 82 43 40\n\
+77209720   3: b3 40 00\n\
+77209720   3: 93 34 7f\n\
+90738200   3: 83 34 40\n\
+104248200   0: 80 3c 7f\n\
+104248200 ...closed.\n\
+"),__LINE__,_T(__FILE__)));
+	out->Destroy();
+	out=NULL;
+	route->Destroy();
+	route = NULL;
+}
+
 void OutputMidiFileTest::setUp() 
 { 
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUGA
-	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
-	debugFlags::flags.midifile = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midifile = true;
 #else 
 #ifdef DEBUG
-	debugFlags::flags.timer = false;
-	debugFlags::flags.midiio = false;
-	debugFlags::flags.midifile = false;
+//	debugFlags::flags.timer = false;
+//	debugFlags::flags.midiio = false;
+//	debugFlags::flags.midifile = false;
 #endif
 #endif
 	std::clog << "Running setUp()" << std::endl;

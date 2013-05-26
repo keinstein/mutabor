@@ -94,7 +94,7 @@ struct debugFlags {
 
 
 #define isDebugFlag(level) (debugFlags::flags.level)
-# define DEBUGLOGBASEINT(level,type,...)				\
+# define DEBUGLOGBASEINT(level,strlevel, type,...)			\
 	do {								\
 		if (level) {						\
 			if (!std::clog.good()) MutInitConsole();	\
@@ -103,11 +103,13 @@ struct debugFlags {
 				  << ": " << ((const char *) type)	\
 				  << "::" << __WXFUNCTION__ << ": ";	\
 			std::clog.flush();				\
-			std::clog << (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) << std::endl; \
+			std::clog << (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) \
+				  << " (" << strlevel << ")"	\
+				  << std::endl;				\
 			std::clog.flush();				\
 		}							\
 	} while (false)
-#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(debugFlags::flags.level,type,__VA_ARGS__)
+#define DEBUGLOGBASE(level,type,...) DEBUGLOGBASEINT(debugFlags::flags.level,#level,type,__VA_ARGS__)
 #define mutRefCast(type,value) dynamic_cast<type &>(value)
 #define mutPtrCast(type,value) (wxASSERT(dynamic_cast<type *>(value)), dynamic_cast<type *>(value))
 #define mutPtrDynCast mutPtrCast
@@ -131,7 +133,7 @@ struct nogetflag {
 #define DEBUGLOG(level,...) DEBUGLOGBASE(level, typeid(*this).name(),__VA_ARGS__)
 #define DEBUGLOG2(level,...) DEBUGLOGBASE(level, _T(""),__VA_ARGS__)
 #define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
-#define DEBUGLOGTYPEINT(level, type,...) DEBUGLOGBASEINT(level, typeid(type).name(), __VA_ARGS__)
+#define DEBUGLOGTYPEINT(level, strlevel,type,...) DEBUGLOGBASEINT(level, strlevel, typeid(type).name(), __VA_ARGS__)
 #define TRACE DEBUGLOGBASE(trace,_T(""),_T(""))
 #define TRACEC DEBUGLOG(trace,_T(""))
 #define TRACET(type) DEBUGLOGTYPE(trace,type,_T(""))
@@ -160,7 +162,7 @@ public:
 	
 	watchedPtr<T,flag,P> &operator= (datatype * d)
 	{
-		DEBUGLOGTYPEINT(flag()(),parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
+		DEBUGLOGTYPEINT(flag()(),"???",parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
 		data = d;
 		return *this;
 	}

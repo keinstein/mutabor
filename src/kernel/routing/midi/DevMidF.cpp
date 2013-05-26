@@ -104,8 +104,9 @@ namespace mutabor {
 
 	mutint64 Track::ReadDelta()
 	{
+		mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
 		current_delta = ReadInt();
-#warning fix to meet current_delta = (MMSPerQuarter * Delta) / Speed;
+		DEBUGLOG(midifile,_T("%s"),(this->c_str()));
 		remaining_delta += timing.get_time_midi(current_delta);
 		return remaining_delta;
 	}
@@ -224,6 +225,16 @@ namespace mutabor {
 		mutWriteStream(os,tempo_events,15);
 		mutWriteStream(os,data(),size());
 		mutWriteStream(os,EOT,4);
+	}
+
+	wxString Track::TowxString () {
+		return wxString::Format(_T("\
+timing: %s\n\
+Time = %ld, position = %d/%d, current_delta = %ld, remaining_delta = %ld\n\
+Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
+					timing.TowxString().c_str(),
+					Time,position,size(),current_delta,remaining_delta,
+					running_status,running_status,running_sysex?_T("true"):_T("false"),sysex_id,sysex_id);
 	}
 
 // OutputMidiFile ------------------------------------------------------
@@ -646,6 +657,7 @@ namespace mutabor {
 		mutint64 NewMinDelta = MUTABOR_NO_DELTA;
 		for (size_t i = 0; i < Tracks.size(); i++ ) {
 			mutint64 delta = Tracks[i].GetDelta();
+			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),i,delta);
 			if ( delta  == MUTABOR_NO_DELTA ) 
 				continue;
 			if ( delta <= passedDelta )
@@ -657,7 +669,7 @@ namespace mutabor {
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
 			}
-			DEBUGLOG(midifile,_T("Track: %d,delta: %ldμs"),i,Tracks[i].GetDelta());
+ 			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),i,Tracks[i].GetDelta());
 		}
 		DEBUGLOG(midifile,_T("Next event after %ld μs (MUTABOR_NO_DELTA = %ld)"),minDelta,MUTABOR_NO_DELTA);
 		minDelta = NewMinDelta;
@@ -667,12 +679,16 @@ namespace mutabor {
 	mutint64 InputMidiFile::ReadMidiProceed(size_t nr, mutint64 deltatime)
 	{
 		mutint64 Delta = Tracks[nr].GetDelta();
+		mutASSERT(Delta >= -1000000);
 		mutint64 time = deltatime;
 		size_t OldPos;
 
-		mutASSERT(time >= Delta);
 		while ( time >= Delta ) {
 
+			// Delta Time
+			mutASSERT(time >= Delta);
+			time -= Delta;
+			Tracks[nr].PassDelta(Delta);
 			Track::base message = Tracks[nr].ReadMessage();
 
 			uint8_t status = message[0];
@@ -747,7 +763,7 @@ namespace mutabor {
 							for (; j < e; j++ )
 								Tracks[j].SetQuarterDuration(NewQuarterDuration, 
 											     true, 
-											     j>nr ? minDelta: (mutint64)0);
+											     j>nr ? deltatime - time: (mutint64)0);
 							
 							DEBUGLOG(midifile,
 								 _T("Change tempo to %ldμs per quarter (next event after %ld)"),
@@ -770,11 +786,8 @@ namespace mutabor {
 				}
 			Proceed(a, nr);
 
-			// Delta Time
-			time -= Delta;
-			Tracks[nr].PassDelta(Delta);
 			Delta = Tracks[nr].ReadDelta();
-			
+		
 			DEBUGLOG(midifile,
 				 _T("Next event on Track %d after %ld μs"),
 				 nr, Delta);

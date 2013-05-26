@@ -102,8 +102,12 @@ namespace mutabor {
 			 position(0), 
 			 current_delta(MUTABOR_NO_DELTA), 
 			 remaining_delta(0),
-			 running_status(0) {
+			 running_status(0),
+			 running_sysex(false),
+			 sysex_id() {
 			reserve(100);
+			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
+				 
 		}
 
 		Track(timing_params p): base(),
@@ -112,8 +116,11 @@ namespace mutabor {
 					position(0),
 					current_delta(MUTABOR_NO_DELTA),
 					remaining_delta(0),
-					running_status(0) {
+					running_status(0),
+					running_sysex(false),
+					sysex_id() {
 			reserve(100);
+			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
 		}
 					
 
@@ -122,17 +129,43 @@ namespace mutabor {
 		size_t GetPosition() { return position; }
 		void ResetPosition(size_t p, bool resettiming = false) { 
 			position = 0; 
+			running_status = 0;
+			running_sysex = false;
 			if (resettiming) {
 				timing.set_quarter_duration(500000); //  120 bpm
 				Time = 0;
+				current_delta = remaining_delta = 0;
 			}
-		}
+			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
+ 		}
 
-		mutint64 ResetDelta() { remaining_delta = 0; }
+		mutint64 ResetDelta() { 
+			DEBUGLOG(midifile,_T("resetting remaining delta to 0"));
+			remaining_delta = 0;
+		}
 		mutint64 GetDelta() { return remaining_delta; }
 		mutint64 ReadDelta();
-		mutint64 PassDelta(mutint64 p) { return remaining_delta -= p; }
-		mutint64 UpdateDelta() { return remaining_delta += current_delta; }
+		mutint64 PassDelta(mutint64 p) { 
+			mutASSERT(p >= 0);
+			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
+			mutASSERT(p != MUTABOR_NO_DELTA);
+			DEBUGLOG(midifile,_T("remaining_delta = %ld - %ld"),remaining_delta, p);
+			if (p  == MUTABOR_NO_DELTA) 
+				return remaining_delta = MUTABOR_NO_DELTA;
+			if (remaining_delta == MUTABOR_NO_DELTA)
+				return remaining_delta;
+			return remaining_delta -= p; 
+		}
+		mutint64 UpdateDelta() { 
+			mutASSERT(remaining_delta != MUTABOR_NO_DELTA);
+			mutASSERT(current_delta != MUTABOR_NO_DELTA);
+			DEBUGLOG(midifile,_T("remaining_delta = %ld + %ld"),remaining_delta, current_delta);
+			if (current_delta  == MUTABOR_NO_DELTA) 
+				return remaining_delta = MUTABOR_NO_DELTA;
+			if (remaining_delta == MUTABOR_NO_DELTA) 
+				return remaining_delta;
+			return remaining_delta += current_delta; 
+		}
 		void WriteDelta();
 
 		void SetQuarterDuration(mutint64 new_duration,
@@ -144,10 +177,20 @@ namespace mutabor {
 			}
 			timing_params old(timing);
 			timing.set_quarter_duration(new_duration);
-			remaining_delta = timing_params::update_duration(remaining_delta-offset,
-									 old,
-									 timing)
+			DEBUGLOG(midifile,
+				 _T("remaining_dellta = %ld, new_duration = %ld, offset = %ld"),
+				 remaining_delta,
+				 new_duration,
+				 offset);
+			if (remaining_delta == MUTABOR_NO_DELTA)
+				return;
+			mutint64 remaining_remaining_delta = remaining_delta - offset;
+			
+			remaining_delta = timing_params::update_duration_midi(remaining_remaining_delta,
+									      old,
+									      timing)
 				+ offset;
+			DEBUGLOG(midifile, _T("remaining delta: %ld"),remaining_delta);
 		}
 
 #if 0
@@ -161,6 +204,9 @@ namespace mutabor {
 			}
 			timing_params old(timing);
 			timing.set_ticks(new_tiks);
+			if (remaining_delta == MUTABOR_NO_DELTA) 
+				return;
+
 			remaining_delta = timing_params::update_duration(remaining_delta-offset,
 									 old,
 									 timing)
@@ -180,7 +226,7 @@ namespace mutabor {
 			size_t mask = 0x0FffFFff;
 			if (count > mask) 
 				throw delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF"));
-			while (i & count <= mask) {
+			while (i && count <= mask) {
 				mask = mask >> 7;
 				i--;
 			}
@@ -329,6 +375,11 @@ namespace mutabor {
 			running_sysex   = false;
 			sysex_id        = 0;
 			position        = 0;
+		}
+
+		wxString TowxString ();
+		const mutChar * c_str() {
+			return (this->TowxString ()).c_str();
 		}
 	protected:
 		mutint64 Time;            //< Time of last action (at least in record mode)

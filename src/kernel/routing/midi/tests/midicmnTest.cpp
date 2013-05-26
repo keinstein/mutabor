@@ -41,11 +41,9 @@ void CommonMidiOutputTest::setUp()
 { 
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
 #endif
-	std::clog << "Running setUp()" << std::endl;
-
 	initialize_boxes();
 	GlobalReset();
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
@@ -68,8 +66,8 @@ void CommonMidiOutputTest::setUp()
 void CommonMidiOutputTest::tearDown()
 { 
 #ifdef DEBUG
-	debugFlags::flags.timer = false;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.timer = false;
+//	debugFlags::flags.midiio = true;
 #endif
 	guard->Destroy();
 	route->Destroy();
@@ -542,8 +540,8 @@ void CommonMidiInputTest::setUp()
 { 
 // change DEBUGA to DEBUG in case you need the debug input
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midiio = true;
 #endif
 	std::clog << "Running setUp()" << std::endl;
 
@@ -569,8 +567,8 @@ void CommonMidiInputTest::setUp()
 void CommonMidiInputTest::tearDown()
 { 
 #ifdef DEBUG
-	debugFlags::flags.timer = false;
-	debugFlags::flags.midiio = false;
+//	debugFlags::flags.timer = false;
+//	debugFlags::flags.midiio = false;
 #endif
 
 	if (in)

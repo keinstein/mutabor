@@ -105,6 +105,12 @@ namespace mutabor {
 		if (fps == 29) fps = 30; // ignoring NTSC 29.97Hz frame dropping should be ok.
 		quarter_divisions = (mutint64)fps * (mutint64)bcount;
 	}
+
+	wxString timing_params::TowxString() {
+		return wxString::Format(_T("\
+is_fixed_ticks = %d, fps = %d, quarter_divisions = %ld, quarter_duration = %ld"),
+					is_fixed_ticks, fps, quarter_divisions, quarter_duration);
+	}
 }
 
 ///\}

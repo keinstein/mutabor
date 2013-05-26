@@ -67,6 +67,8 @@ class InputMidiFileTest : public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testOpenFail );
 	CPPUNIT_TEST( testPlayMidi );
 	CPPUNIT_TEST( testBatchPlay1 );
+	CPPUNIT_TEST( testBug019010_2 );
+	CPPUNIT_TEST( testBug019010 );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -88,11 +90,10 @@ public:
   
 	void setUp() 
 	{ 
-		std::cout << std::endl << "setting up..." << std::endl;
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUGA
-		debugFlags::flags.timer = true;
-		debugFlags::flags.midifile = true;
+//		debugFlags::flags.timer = true;
+//		debugFlags::flags.midifile = true;
 #endif
 		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
@@ -104,7 +105,6 @@ public:
   
 	void tearDown()
 	{ 
-		std::cout << std::endl << "shutting down..." << std::endl;
 #ifdef DEBUG
 		debugFlags::flags.timer = false;
 		debugFlags::flags.midifile = false;
@@ -135,6 +135,8 @@ public:
 	}
 
 	void testBatchPlay1();
+	void testBug019010_2();
+	void testBug019010();
 };
 
 

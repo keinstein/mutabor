@@ -140,8 +140,8 @@ class myDevice: public mutabor::InputMidiFile {
 int main(int argc, char **argv)
 {
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.midifile = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.midifile = true;
 #endif
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 

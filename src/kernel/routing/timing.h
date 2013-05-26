@@ -245,9 +245,43 @@ namespace mutabor {
 		 * 
 		 * \return recalculated duration according to the two passed timing objects.
 		 */		
-		static mutint64 update_duration(mutint64 duration,
-						const timing_params oldd,
-						const timing_params newd) {
+		static mutint64 update_duration_midi(mutint64 duration,
+						const timing_params & oldd,
+						const timing_params & newd) {
+			if ((oldd.is_fixed_ticks && newd.is_fixed_ticks) || duration == MUTABOR_NO_DELTA) return duration;
+			mutint64 old_quarter = oldd.is_fixed_ticks ? 1000000 : oldd.quarter_duration;
+			mutint64 new_quarter = newd.is_fixed_ticks ? 1000000 : newd.quarter_duration;
+			mutint64 old_factor = old_quarter/oldd.quarter_divisions;
+			mutint64 new_factor = new_quarter/newd.quarter_divisions;
+			
+			return ((duration + (old_factor+1)/2) / old_factor) * new_factor;
+		}
+
+		/** 
+		 * Update the a duration when the parameters change.
+		 *
+		 * In Type 1 MIDI files the first track contains
+		 * timing parameters for all tracks. This function can
+		 * be used to update time stamps that are stored in
+		 * microseconds.
+		 *
+		 * This version tries to be more exact than the MIDI
+		 * standard. For decoding standard MIDI files
+		 * update_duration_midi is recommended.
+		 *
+		 * \note This function assumes that the change should
+		 * take after an offset of 0 μs. Thus, offsets must be
+		 * honoured in the calling code.
+		 * 
+		 * \param duration  time to be recalculated
+		 * \param oldd  old timing object.
+		 * \param newd  now timing object.
+		 * 
+		 * \return recalculated duration according to the two passed timing objects.
+		 */		
+		static mutint64 update_duration_exact(mutint64 duration,
+						const timing_params & oldd,
+						const timing_params & newd) {
 			if ((oldd.is_fixed_ticks && newd.is_fixed_ticks) || duration == MUTABOR_NO_DELTA) return duration;
 			mutint64 old_quarter = oldd.is_fixed_ticks ? 1000000 : oldd.quarter_duration;
 			mutint64 new_quarter = newd.is_fixed_ticks ? 1000000 : newd.quarter_duration;
@@ -256,12 +290,18 @@ namespace mutabor {
 				duration = (duration * new_quarter)/old_quarter;
 			}
 			if (oldd.quarter_divisions != newd.quarter_divisions) {
-				duration = (duration * newd.quarter_divisions)/oldd.quarter_divisions;
+				duration = (duration * oldd.quarter_divisions)/newd.quarter_divisions;
 			}
 			if (delta_quarter < 0) {
 				duration = (duration * new_quarter)/old_quarter;
 			}
 			return duration;
+
+		}
+
+		wxString TowxString ();
+		const mutChar * c_str() {
+			return (this->TowxString()).c_str();
 		}
 	protected:
 		bool is_fixed_ticks;       //< indicates whether we are in MIDI time code and ignore quarter_duration
