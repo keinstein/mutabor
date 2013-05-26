@@ -1,6 +1,5 @@
-#include "src/kernel/routing/tests/RouteTest.h"
-#include "src/kernel/routing/tests/timing.h"
-#include "src/kernel/routing/tests/CommonFileDeviceTest.h"
+#include "src/wxGUI/Routing/tests/GUIRouteTest.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/app.h"
 #include <cppunit/ui/text/TestRunner.h>
@@ -23,7 +22,18 @@ main(int argc, char** argv)
 		fprintf(stderr, "Failed to initialize the wxWidgets library, aborting.");
 		return -1;
 	}
-	mutabor::InitDeviceFactories();
+
+
+	// We are using .png files for some extra bitmaps.
+	wxImageHandler * pnghandler = new wxPNGHandler;
+	wxImage::AddHandler(pnghandler);
+	wxImage::AddHandler(new wxGIFHandler);
+
+	mutaborGUI::initMutIconShapes();
+	mutaborGUI::InitGUIRouteFactories();
+
+
+	
 
 #ifdef _GLIBCXX_DEBUG
 	std::clog << "In case of segmentation faults assure that cppunit is compiled using -D_GLIBCXX_DEBUG" << std::endl;
@@ -34,9 +44,7 @@ main(int argc, char** argv)
 	CppUnit::BriefTestProgressListener listener; 
 	runner.eventManager().addListener(&listener);
 
-	runner.addTest( RouteTest<mutabor::RouteClass>::suite() );
-	runner.addTest( CommonFileDeviceTest::suite() );
-	runner.addTest( TimingParamsTest::suite() );
+	runner.addTest( GUIRouteTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 

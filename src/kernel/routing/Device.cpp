@@ -99,10 +99,10 @@ namespace mutabor {
 						  Route & newroute) {
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
 			 oldroute.get(),newroute.get());
-		bool found = Remove(oldroute);
+		bool found = CommonTypedDeviceAPI<T,P,L>::Remove(oldroute);
 		mutASSERT(found);
 		if (found) 
-			Add(newroute);
+			CommonTypedDeviceAPI<T,P,L>::Add(newroute);
 
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
 			 oldroute.get(),newroute.get());
@@ -116,7 +116,7 @@ namespace mutabor {
 			 intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i = 
 			std::find(routes.begin(),routes.end(),route.get());
-		bool found = i != routes.end();
+		bool found = (i != routes.end());
 		mutASSERT(found);
 		(*i) = NULL;// list can save some memory for reuse,
 		            // but route must be deleted

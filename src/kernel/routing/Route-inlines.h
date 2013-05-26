@@ -143,25 +143,31 @@ namespace mutabor {
 	inline bool reconnect(OutputDevice & out, Route & oldroute, Route & newroute) {
 		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
 			  out.get(),oldroute.get(),newroute.get());
-		bool ok = out->Replace(oldroute,newroute);
+
+		bool ok = oldroute->Remove(out);
+		if (ok) 
+			ok = out->Replace(oldroute,newroute);
 		if (ok) {
-			oldroute->Remove(out);
 			newroute->Add(out);
 		}
 		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
 			  out.get(),oldroute.get(),newroute.get());
+		return ok;
 	}
 
 	inline bool reconnect(InputDevice & in, Route & oldroute, Route & newroute) {
 		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
 			  in.get(),oldroute.get(),newroute.get());
-		bool ok = in->Replace(oldroute,newroute);
+
+		bool ok = oldroute->Remove(in);
+		if (ok) 
+			ok = in->Replace(oldroute,newroute);
 		if (ok) {
-			oldroute->Remove(in);
 			newroute->Add(in);
 		}
 		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
 			  in.get(),oldroute.get(),newroute.get());
+		return ok;
 	}
 
 	template <class I, class O>
@@ -261,6 +267,13 @@ namespace mutabor {
 		}
 			
 	}
+
+	inline ScopedRoute::~ScopedRoute()
+	{ 
+		if (get())
+			get()->Destroy();
+	}
+
 }
 
 

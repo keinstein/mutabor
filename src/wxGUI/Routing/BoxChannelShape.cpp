@@ -171,10 +171,9 @@ namespace mutaborGUI {
 	bool MutBoxChannelShape::Replace (MutOutputDeviceShape * olddev, 
 					  MutOutputDeviceShape * newdev) {
 		bool retval = olddev == output;
-		if (retval)
-			output = newdev;
-		else
-			mutASSERT(retval);
+		if (!retval) 
+			UNREACHABLEC;
+		output = newdev;
 		return retval;
 	}
 	
@@ -209,7 +208,7 @@ namespace mutaborGUI {
 
 	/// remove an existing output device
 	bool MutBoxChannelShape::Remove (MutOutputDeviceShape * out) {
-		bool retval = out == output;
+		bool retval = (out == output);
 		if (retval)
 			output = NULL;
 		else 

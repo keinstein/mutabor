@@ -694,6 +694,17 @@ namespace mutabor {
 		static RouteFactory * factory;				 /**< Pointer to the current factory */
 	};
 
+	class ScopedRoute: public Route {
+	public:
+		~ScopedRoute();
+
+		ScopedRoute & operator = (element_type * rhs) {
+			(*(static_cast<Route *>(this))) = rhs;
+		}
+		ScopedRoute & operator = (const Route & rhs) {
+			(*(static_cast<Route *>(this))) = rhs;
+		}
+	};
 
 	extern const mutString DevTypeName[];
 

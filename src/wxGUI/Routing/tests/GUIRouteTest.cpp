@@ -33,7 +33,15 @@
 #include "src/kernel/Runtime.h"
 
 #include "src/wxGUI/Routing/tests/GUIRouteTest.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/MutRouteWnd.h"
+
+#include "wx/frame.h"
+
 #include "src/kernel/routing/Route-inlines.h"
+
+using namespace mutabor;
+using namespace mutaborGUI;
 
 void GUIRouteTest::setUp() 
 { 
@@ -56,6 +64,149 @@ void GUIRouteTest::tearDown()
   
 void GUIRouteTest::testConnect()
 { 	  
+	ScopedOutputDevice out1, out2;
+	ScopedRoute r1, r2;
+	ScopedInputDevice in1, in2;
+
+	wxWindow * parent = new wxFrame(0,wxID_ANY,_T("Test"));
+	MutRouteWnd * wnd;
+
+	out1 = DeviceFactory::CreateOutput(DTMidiFile,1,_T("testmidi_output1.mid"));
+	out2 = DeviceFactory::CreateOutput(DTMidiFile,1,_T("testmidi_output2.mid"));
+	r1 = RouteFactory::Create();
+	r2 = RouteFactory::Create();
+	in1 = DeviceFactory::CreateInput(DTMidiFile,1,_T("testmidi_input1.mid"));
+	in2 = DeviceFactory::CreateInput(DTMidiFile,1,_T("testmidi_input2.mid"));
+
+	DebugCheckRoutes();
+ 
+	connect (r1,out1);
+	CPPUNIT_ASSERT(out1->nRoutes() == 1);
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out1);
+	DebugCheckRoutes();
+	reconnect (r1,out1,out2);
+	CPPUNIT_ASSERT(out1->nRoutes() == 0);
+	CPPUNIT_ASSERT(out2->nRoutes() == 1);
+	CPPUNIT_ASSERT(out2->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out2);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(out2->GetRoutes().front() == r1);
+	reconnect (r1,out2,out1);
+	CPPUNIT_ASSERT(out1->nRoutes() == 1);
+	CPPUNIT_ASSERT(out2->nRoutes() == 0);
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	disconnect (r1,out1);
+	DebugCheckRoutes();
+
+
+	DebugCheckRoutes();
+ 
+	connect (r1,in1);
+	CPPUNIT_ASSERT(in1->nRoutes() == 1);
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in1);
+	DebugCheckRoutes();
+	reconnect (r1,in1,in2);
+	CPPUNIT_ASSERT(in1->nRoutes() == 0);
+	CPPUNIT_ASSERT(in2->nRoutes() == 1);
+	CPPUNIT_ASSERT(in2->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in2);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(in2->GetRoutes().front() == r1);
+	reconnect (r1,in2,in1);
+	CPPUNIT_ASSERT(in1->nRoutes() == 1);
+	CPPUNIT_ASSERT(in2->nRoutes() == 0);
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	disconnect (r1,in1);
+	DebugCheckRoutes();
+
+
+	wnd = new MutRouteWnd(parent);
+
+	DebugCheckRoutes();
+ 
+	connect (r1,out1);
+	CPPUNIT_ASSERT(out1->nRoutes() == 1);
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out1);
+	DebugCheckRoutes();
+	reconnect (r1,out1,out2);
+	CPPUNIT_ASSERT(out1->nRoutes() == 0);
+	CPPUNIT_ASSERT(out2->nRoutes() == 1);
+	CPPUNIT_ASSERT(out2->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out2);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(out2->GetRoutes().front() == r1);
+	reconnect (r1,out2,out1);
+	CPPUNIT_ASSERT(out1->nRoutes() == 1);
+	CPPUNIT_ASSERT(out2->nRoutes() == 0);
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == out1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
+	reconnect (out1,r1,r2);
+	CPPUNIT_ASSERT(out1->nRoutes() == 1);
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r2);
+	CPPUNIT_ASSERT(r1->GetOutputDevice() == NULL);
+	CPPUNIT_ASSERT(r2->GetOutputDevice() == out1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(out1->GetRoutes().front() == r2);
+	disconnect (r2,out1);
+	DebugCheckRoutes();
+
+
+	DebugCheckRoutes();
+ 
+	connect (r1,in1);
+	CPPUNIT_ASSERT(in1->nRoutes() == 1);
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in1);
+	DebugCheckRoutes();
+	reconnect (r1,in1,in2);
+	CPPUNIT_ASSERT(in1->nRoutes() == 0);
+	CPPUNIT_ASSERT(in2->nRoutes() == 1);
+	CPPUNIT_ASSERT(in2->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in2);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(in2->GetRoutes().front() == r1);
+	reconnect (r1,in2,in1);
+	CPPUNIT_ASSERT(in1->nRoutes() == 1);
+	CPPUNIT_ASSERT(in2->nRoutes() == 0);
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == in1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r1);
+	reconnect (in1,r1,r2);
+	CPPUNIT_ASSERT(in1->nRoutes() == 1);
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r2);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == NULL);
+	CPPUNIT_ASSERT(r2->GetInputDevice() == in1);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(in1->GetRoutes().front() == r2);
+	disconnect (r2,in1);
+	CPPUNIT_ASSERT(in1->nRoutes() == 0);
+	CPPUNIT_ASSERT(r1->GetInputDevice() == NULL);
+	DebugCheckRoutes();
+
+	delete wnd;
+	delete parent;
+
+
+	/* this is done automatically:
+	in1 -> Destroy();
+	in2 -> Destroy();
+	r1 -> Destroy();
+	r2 -> Destroy();
+	out1 -> Destroy();
+	out2 -> Destroy();
+	*/
 }
 
 ///\}

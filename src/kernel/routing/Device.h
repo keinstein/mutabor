@@ -1011,6 +1011,35 @@ namespace mutabor {
 
 	void InitDeviceFactories();
 
+	class ScopedInputDevice: public InputDevice {
+	public:
+		~ScopedInputDevice() { 
+			if (get())
+				get()->Destroy();
+		}
+
+		ScopedInputDevice & operator = (InputDeviceClass * rhs) {
+			(*(static_cast<InputDevice *>(this))) = rhs;
+		}
+		ScopedInputDevice & operator = (const InputDevice & rhs) {
+			(*(static_cast<InputDevice *>(this))) = rhs;
+		}
+	};
+
+	class ScopedOutputDevice: public OutputDevice {
+	public:
+		~ScopedOutputDevice() { 
+			if (get())
+				get()->Destroy();
+		}
+		ScopedOutputDevice & operator = (OutputDeviceClass * rhs) {
+			(*(static_cast<OutputDevice *>(this))) = rhs;
+		}
+		ScopedOutputDevice & operator = (const OutputDevice & rhs) {
+			(*(static_cast<OutputDevice *>(this))) = rhs;
+		}
+	};
+
 
 
 // functions --------------------------------------------------------
