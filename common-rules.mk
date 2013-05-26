@@ -14,6 +14,7 @@ AM_CFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=itemset
+EXTRA_PROGRAMS = 
 
 BUILT_SOURCES = \
 	$(top_srcdir)/src/xrc/wxresource.h \
@@ -302,3 +303,15 @@ POTFILES.tmp:POTFILES.tmp.local Makefile  potfilechk-recursive
 			test '(' -f $$d/POTFILES.tmp ')' -a '(' $$d != . ')' && echo $$d/POTFILES.tmp ; \
 		done`" ; \
 	cat $$filelist|LC_ALL=C sort -u >$@
+
+
+#-------------------------------------------------------------------------------------
+# mf2txt and txt2mf generation
+#-------------------------------------------------------------------------------------
+
+midi2text: mf2txt txt2mf
+
+mf2txt txt2mf:
+	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/tools/midi2text $@$(EXEEXT)
+	cp $(top_builddir)/tools/midi2text/$@$(EXEEXT) .
+

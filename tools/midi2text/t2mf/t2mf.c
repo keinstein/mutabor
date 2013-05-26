@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <setjmp.h>
+#include <errno.h>
 
 #include <memory.h>
 #include <string.h>
@@ -136,7 +137,6 @@ const char *mode;
 {
 
     FILE *f;
-    extern int errno;
 
     if ( (f=fopen(name,mode)) == NULL ) {
         (void) fprintf(stderr,"*** ERROR *** Cannot open '%s'!\n",name);

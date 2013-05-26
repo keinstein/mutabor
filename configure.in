@@ -94,7 +94,7 @@ AM_MAINTAINER_MODE
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_CXX
-
+AM_PROG_CC_C_O
 
 DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
@@ -723,6 +723,7 @@ doc/localized/de/Makefile
 doc/localized/en/Makefile
 Doxyfile
 osdep/linux/OpenSuse.spec
+tools/midi2text/Makefile
 ])
 dnl  src/libmutabor/lextables/Makefile
 dnl  src/libmutabor/lextables/tests/Makefile
