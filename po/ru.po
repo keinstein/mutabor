@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2012-12-06 21:57+0100\n"
+"POT-Creation-Date: 2013-05-25 18:05+0200\n"
 "PO-Revision-Date: 2012-08-29 21:39+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: Russian\n"
@@ -385,25 +385,25 @@ msgstr ""
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Ошибка в файле кисти GIMP \"%s\""
 
-#: src/kernel/Execute.cpp:368
+#: src/kernel/Execute.cpp:374
 msgid "Unhandled case path: aufruf_umst_umst_bund"
 msgstr ""
 
-#: src/kernel/Execute.cpp:373
+#: src/kernel/Execute.cpp:379
 #, fuzzy, c-format
 msgid "Unexpected action type: %d"
 msgstr "Неизвестный тип действия: %s"
 
-#: src/kernel/GrafKern.cpp:254
+#: src/kernel/GrafKern.cpp:255
 #, fuzzy, c-format
 msgid "Error %d:"
 msgstr "Ошибка"
 
-#: src/kernel/GrafKern.cpp:278
+#: src/kernel/GrafKern.cpp:279
 msgid "Compiler warning"
 msgstr "Предупреждающее сообщение компилятора"
 
-#: src/kernel/GrafKern.cpp:355 src/kernel/GrafKern.cpp:358
+#: src/kernel/GrafKern.cpp:356 src/kernel/GrafKern.cpp:359
 msgid "line"
 msgstr "Строка"
 
@@ -430,27 +430,27 @@ msgstr "байт"
 msgid "retuning"
 msgstr ""
 
-#: src/kernel/Runtime.cpp:58
+#: src/kernel/Runtime.cpp:57
 #, fuzzy
 msgid "Generating tables"
 msgstr "<b>Таблицы налогов</b>"
 
-#: src/kernel/Runtime.cpp:64
+#: src/kernel/Runtime.cpp:63
 #, fuzzy
 msgid "Translation successful"
 msgstr "Регистрация завершена успешно"
 
-#: src/kernel/Runtime.cpp:65
+#: src/kernel/Runtime.cpp:64
 #, fuzzy
 msgid "No error occured."
 msgstr "При запуске %s произошла ошибка"
 
-#: src/kernel/Runtime.cpp:71
+#: src/kernel/Runtime.cpp:70
 #, fuzzy
 msgid "Translation interrupted."
 msgstr "Соединение прервано."
 
-#: src/kernel/Runtime.cpp:105
+#: src/kernel/Runtime.cpp:101
 #, fuzzy
 msgid "Activation error"
 msgstr "Ошибка Системы активации объектов (OAF)"
@@ -460,29 +460,29 @@ msgstr "Ошибка Системы активации объектов (OAF)"
 msgid "Generic output file"
 msgstr "Выходный GIS-файл."
 
-#: src/kernel/routing/CommonFileDevice.h:246
+#: src/kernel/routing/CommonFileDevice.h:225
 #, fuzzy
 msgid "Generic input file"
 msgstr "Входный GIS-файл."
 
-#: src/kernel/routing/Device.h:329
+#: src/kernel/routing/Device.h:353
 #, fuzzy
 msgid "Device base class"
 msgstr "базовый класс C++ не определен"
 
-#: src/kernel/routing/Device.h:596
+#: src/kernel/routing/Device.h:565
 #, fuzzy
 msgid "Undefined output device"
 msgstr "Сбросить устройство вывода"
 
-#: src/kernel/routing/Device.h:750
+#: src/kernel/routing/Device.h:815
 #, fuzzy
 msgid "Undefined input device"
 msgstr "Другие устройства _ввода:"
 
 #: src/kernel/routing/Route.cpp:328 src/kernel/routing/Route.cpp:376
 #: src/kernel/routing/midi/DevMidi.cpp:101
-#: src/kernel/routing/midi/DevMidi.cpp:264
+#: src/kernel/routing/midi/DevMidi.cpp:284
 msgid "Unknown"
 msgstr "Неизвестен"
 
@@ -502,6 +502,21 @@ msgstr "Выбрать MIDI-файл..."
 msgid "GUIDO .gmn File"
 msgstr "Ошибка открытия файла %s!"
 
+#: src/kernel/routing/Route.h:116
+#, fuzzy
+msgid "No such output device"
+msgstr "Сбросить устройство вывода"
+
+#: src/kernel/routing/Route.h:526
+msgid "Route factory already set"
+msgstr ""
+
+#: src/kernel/routing/Route.h:531
+msgid ""
+"Trying to create a route without the correct factory. You (the programmer) "
+"must create one!"
+msgstr ""
+
 #: src/kernel/routing/RouteCompat.cpp:408
 #, fuzzy
 msgid "Device found, but device type not set."
@@ -516,11 +531,11 @@ msgstr "распакован, но не настроен"
 msgid "GIS output file."
 msgstr "Выходный GIS-файл."
 
-#: src/kernel/routing/gmn/DevGIS.h:309
+#: src/kernel/routing/gmn/DevGIS.h:310
 msgid "GIS input file."
 msgstr "Входный GIS-файл."
 
-#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:642
+#: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:706
 #: src/wxGUI/MutEditFile.cpp:1269 src/xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
@@ -589,8 +604,17 @@ msgstr "Файл должен начинаться с скобкой »[« ил�
 msgid "Range without preceeding tag."
 msgstr "Раздел без предыдущий тег."
 
-#: src/kernel/routing/midi/DevMidF.cpp:224
-#: src/kernel/routing/midi/DevMidF.cpp:374
+#: src/kernel/routing/midi/DevMidF.cpp:139
+msgid "Number contains too many bytes"
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:159
+#, fuzzy
+msgid "Invalid status byte"
+msgstr "Размер: %i байт."
+
+#: src/kernel/routing/midi/DevMidF.cpp:313
+#: src/kernel/routing/midi/DevMidF.cpp:443
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -599,23 +623,23 @@ msgstr ""
 "Разделу каналов %d—%d файла MIDI %s необходимо быть внутри %d—%d. Актуальная "
 "конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: src/kernel/routing/midi/DevMidF.cpp:226
-#: src/kernel/routing/midi/DevMidF.cpp:376
-#: src/kernel/routing/midi/DevMidF.cpp:396
-#: src/kernel/routing/midi/DevMidi.cpp:135
-#: src/kernel/routing/midi/DevMidi.cpp:299
-#: src/kernel/routing/midi/DevMidi.cpp:319
+#: src/kernel/routing/midi/DevMidF.cpp:315
+#: src/kernel/routing/midi/DevMidF.cpp:445
+#: src/kernel/routing/midi/DevMidF.cpp:473
+#: src/kernel/routing/midi/DevMidi.cpp:143
+#: src/kernel/routing/midi/DevMidi.cpp:327
+#: src/kernel/routing/midi/DevMidi.cpp:356
 msgid "Warning loading route"
 msgstr "Предупреждение при открытия маршрута"
 
-#: src/kernel/routing/midi/DevMidF.cpp:279
-#: src/kernel/routing/midi/DevMidF.cpp:285
-#: src/kernel/routing/midi/DevMidi.cpp:145
-#: src/kernel/routing/midi/DevMidi.cpp:151
+#: src/kernel/routing/midi/DevMidF.cpp:352
+#: src/kernel/routing/midi/DevMidF.cpp:358
+#: src/kernel/routing/midi/DevMidi.cpp:153
+#: src/kernel/routing/midi/DevMidi.cpp:159
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:394
+#: src/kernel/routing/midi/DevMidF.cpp:471
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -624,55 +648,89 @@ msgstr ""
 "Разделу дорожек %d—%d файла MIDI %s необходимо быть внутри %d—%d. Актуальная "
 "конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: src/kernel/routing/midi/DevMidF.cpp:427
+#: src/kernel/routing/midi/DevMidF.cpp:501
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Не удалось открыть входной Midi-файл «%s»."
 
-#: src/kernel/routing/midi/DevMidF.cpp:436
+#: src/kernel/routing/midi/DevMidF.cpp:509
 #, fuzzy, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "%s: \"%s\" не является верной кодировкой сервера\n"
 
-#: src/kernel/routing/midi/DevMidF.cpp:442
+#: src/kernel/routing/midi/DevMidF.cpp:516
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:453
+#: src/kernel/routing/midi/DevMidF.cpp:526
 #, fuzzy, c-format
 msgid "Unknown file typ %d in file '%s'."
 msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 
-#: src/kernel/routing/midi/DevMidF.cpp:491
+#: src/kernel/routing/midi/DevMidF.cpp:541
 #, c-format
-msgid "Midi input file '%s' is too long."
-msgstr "Файл введения MIDI „%s“ слишком длинный."
+msgid "Midi file '%s' has corrupted timing information."
+msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:506
-#: src/kernel/routing/midi/DevMidF.cpp:510
+#: src/kernel/routing/midi/DevMidF.cpp:558
 #, c-format
-msgid "Midi input file '%s' produces errors."
-msgstr "Файл Midi введения „%s“ ощибается."
+msgid "Could not allocate memory for the track list of file '%s'."
+msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:358
+#: src/kernel/routing/midi/DevMidF.cpp:565
+#, c-format
+msgid "File '%s' has a broken track header."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:580
+#, c-format
+msgid "Could not allocate data for track %d of MIDI input file '%s'."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.cpp:596
+#, c-format
+msgid ""
+"The MIDI input file “%s” is corrupted. This has been detected while reading "
+"track %d."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.h:182
+msgid "trying to write number > 0x0FFFFFFF"
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.h:268
+msgid "The system exclusive message must contain at least a device id."
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.h:275
+msgid "System exclusive message contains an invalid device id"
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.h:284
+msgid ""
+"Device id of continuation package deos not match the id of the system "
+"exclusive message"
+msgstr ""
+
+#: src/kernel/routing/midi/DevMidF.h:586
 msgid "MIDI output file"
 msgstr "Выходной MIDI-файл"
 
-#: src/kernel/routing/midi/DevMidF.h:469
+#: src/kernel/routing/midi/DevMidF.h:691
 msgid "MIDI input file"
 msgstr "Входной MIDI-файл"
 
 #: src/kernel/routing/midi/DevMidi.cpp:101
-#: src/kernel/routing/midi/DevMidi.cpp:264
-#: src/kernel/routing/midi/DevMidi.h:322 src/kernel/routing/midi/DevMidi.h:464
-#: src/wxGUI/Routing/InputDeviceShape.cpp:364
-#: src/wxGUI/Routing/OutputDeviceShape.cpp:405
+#: src/kernel/routing/midi/DevMidi.cpp:284
+#: src/kernel/routing/midi/DevMidi.h:328 src/kernel/routing/midi/DevMidi.h:471
+#: src/wxGUI/Routing/InputDeviceShape.cpp:366
+#: src/wxGUI/Routing/OutputDeviceShape.cpp:289
 #, fuzzy
 msgid "no device"
 msgstr "Ни одно устройство не настроено"
 
-#: src/kernel/routing/midi/DevMidi.cpp:133
+#: src/kernel/routing/midi/DevMidi.cpp:141
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -681,7 +739,7 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI выдачи %s необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: src/kernel/routing/midi/DevMidi.cpp:297
+#: src/kernel/routing/midi/DevMidi.cpp:325
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -690,7 +748,7 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI введения %s необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: src/kernel/routing/midi/DevMidi.cpp:317
+#: src/kernel/routing/midi/DevMidi.cpp:354
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -699,11 +757,9 @@ msgstr ""
 "Разделу каналов %d—%d прибора MIDI введения необходимо быть внутри %d—%d. "
 "Актуальная конфигурация исправлена. Актуальная конфигурация исправлена."
 
-#: src/kernel/routing/midi/DevMidi.cpp:340
-msgid "Can not open Midi input devices."
-msgstr "Не могу открывать прибору MIDI введения."
-
-#: src/kernel/routing/midi/DevMidi.cpp:347
+#: src/kernel/routing/midi/DevMidi.cpp:377
+#: src/kernel/routing/midi/DevMidi.cpp:384
+#: src/kernel/routing/midi/DevMidi.cpp:391
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Не могу открывать прибору MIDI введения № %d (%s)."
@@ -718,177 +774,189 @@ msgstr "Не могу открывать прибор Midi выдачи."
 msgid "Can not open output Midi device no. %d (%s)"
 msgstr "Не могу открывать прибор Midi выдачи № %d (%s)"
 
-#: src/kernel/routing/midi/DevMidi.h:334
+#: src/kernel/routing/midi/DevMidi.h:340
 #, fuzzy
 msgid "Midi output device"
 msgstr "Сбросить устройство вывода"
 
-#: src/kernel/routing/midi/DevMidi.h:509
+#: src/kernel/routing/midi/DevMidi.h:519
 #, fuzzy
 msgid "Midi input device"
 msgstr "Другие устройства _ввода:"
 
-#: src/wxGUI/CompDlg.cpp:109 src/xrc/reslocale.cpp:20
+#: src/kernel/routing/timing.cpp:62 src/kernel/routing/timing.cpp:73
+msgid "frame rate does not divide time divisiens"
+msgstr ""
+
+#: src/kernel/routing/timing.cpp:82
+msgid "time division is too high for current frame rate"
+msgstr ""
+
+#: src/kernel/routing/timing.cpp:96 src/kernel/routing/timing.cpp:102
+msgid "Trying to set bad midi header parameters"
+msgstr ""
+
+#: src/wxGUI/CompDlg.cpp:114 src/xrc/reslocale.cpp:20
 msgid "Source"
 msgstr "Источник"
 
-#: src/wxGUI/CompDlg.cpp:116 src/xrc/reslocale.cpp:21
+#: src/wxGUI/CompDlg.cpp:121 src/xrc/reslocale.cpp:21
 msgid "File:"
 msgstr "Файл:"
 
-#: src/wxGUI/CompDlg.cpp:119 src/xrc/reslocale.cpp:23
+#: src/wxGUI/CompDlg.cpp:124 src/xrc/reslocale.cpp:23
 msgid "Line:"
 msgstr "Строка:"
 
-#: src/wxGUI/CompDlg.cpp:128
+#: src/wxGUI/CompDlg.cpp:133
 msgid "..."
 msgstr "…"
 
-#: src/wxGUI/CompDlg.cpp:131 src/wxGUI/MutEditFile.cpp:1256
+#: src/wxGUI/CompDlg.cpp:136 src/wxGUI/MutEditFile.cpp:1256
 #: src/xrc/reslocale.cpp:25
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/wxGUI/CompDlg.cpp:138 src/xrc/reslocale.cpp:26
+#: src/wxGUI/CompDlg.cpp:143 src/xrc/reslocale.cpp:26
 msgid "Logics:"
 msgstr ""
 
-#: src/wxGUI/CompDlg.cpp:141 src/xrc/reslocale.cpp:28
+#: src/wxGUI/CompDlg.cpp:146 src/xrc/reslocale.cpp:28
 #, fuzzy
 msgid "Tones:"
 msgstr "Тональный"
 
-#: src/wxGUI/CompDlg.cpp:144 src/xrc/reslocale.cpp:30
+#: src/wxGUI/CompDlg.cpp:149 src/xrc/reslocale.cpp:30
 msgid "Tunes:"
 msgstr ""
 
-#: src/wxGUI/CompDlg.cpp:150 src/wxGUI/CompDlg.cpp:153
-#: src/wxGUI/CompDlg.cpp:156 src/wxGUI/CompDlg.cpp:174
-#: src/wxGUI/CompDlg.cpp:177 src/wxGUI/CompDlg.cpp:180
+#: src/wxGUI/CompDlg.cpp:155 src/wxGUI/CompDlg.cpp:158
+#: src/wxGUI/CompDlg.cpp:161 src/wxGUI/CompDlg.cpp:179
+#: src/wxGUI/CompDlg.cpp:182 src/wxGUI/CompDlg.cpp:185
 #: src/xrc/reslocale.cpp:27 src/xrc/reslocale.cpp:29 src/xrc/reslocale.cpp:31
 #: src/xrc/reslocale.cpp:33 src/xrc/reslocale.cpp:35 src/xrc/reslocale.cpp:37
 msgid "000000"
 msgstr ""
 
-#: src/wxGUI/CompDlg.cpp:162
+#: src/wxGUI/CompDlg.cpp:167
 #, fuzzy
 msgid "Tone syst.:"
 msgstr "Генератор сигналов: "
 
-#: src/wxGUI/CompDlg.cpp:165 src/xrc/reslocale.cpp:34
+#: src/wxGUI/CompDlg.cpp:170 src/xrc/reslocale.cpp:34
 msgid "Intervals:"
 msgstr ""
 
-#: src/wxGUI/CompDlg.cpp:168 src/xrc/reslocale.cpp:36
+#: src/wxGUI/CompDlg.cpp:173 src/xrc/reslocale.cpp:36
 #, fuzzy
 msgid "Read chars:"
 msgstr "не удалось прочитать %s"
 
-#: src/wxGUI/CompDlg.cpp:183 src/xrc/reslocale.cpp:38
+#: src/wxGUI/CompDlg.cpp:188 src/xrc/reslocale.cpp:38
 msgid "Message"
 msgstr "Сообщение"
 
-#: src/wxGUI/CompDlg.cpp:190 src/xrc/reslocale.cpp:40
+#: src/wxGUI/CompDlg.cpp:195 src/xrc/reslocale.cpp:40
 #, fuzzy
 msgid "Reading Source ..."
 msgstr "Исходный файл"
 
-#: src/wxGUI/GUIBoxData.cpp:96 src/wxGUI/MutLogicWnd.cpp:706
+#: src/wxGUI/GUIBoxData.cpp:96 src/wxGUI/MutLogicWnd.cpp:707
 #, fuzzy
 msgid "(INITIAL)"
 msgstr "Начальное состояние"
 
-#: src/wxGUI/MutApp.cpp:320 src/wxGUI/MutApp.cpp:322
+#: src/wxGUI/MutApp.cpp:338 src/wxGUI/MutApp.cpp:340
 #, fuzzy
 msgid "Help.zip"
 msgstr "Индекс"
 
-#: src/wxGUI/MutApp.cpp:337
+#: src/wxGUI/MutApp.cpp:355
 #, fuzzy
 msgid "Mutabor logic file"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/MutApp.cpp:357 src/wxGUI/MutApp.cpp:1235 src/xrc/reslocale.cpp:48
+#: src/wxGUI/MutApp.cpp:375 src/wxGUI/MutApp.cpp:1318 src/xrc/reslocale.cpp:48
 #: src/xrc/reslocale.cpp:103
 msgid "&Help"
 msgstr "&Справка"
 
-#: src/wxGUI/MutApp.cpp:398
+#: src/wxGUI/MutApp.cpp:417
 #, fuzzy
 msgid "logic file"
 msgstr "ет файла."
 
-#: src/wxGUI/MutApp.cpp:491
+#: src/wxGUI/MutApp.cpp:555
 #, c-format
 msgid ""
 "The file '%s' couldn't be opened.\n"
 "It has been removed from the most recently used files list."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:509
+#: src/wxGUI/MutApp.cpp:573
 #, c-format
 msgid ""
 "The file '%s' doesn't exist and couldn't be opened.\n"
 "It has been removed from the most recently used files list."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:554
+#: src/wxGUI/MutApp.cpp:618
 msgid "(c) 2005-2011 TU Dresden"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:561
+#: src/wxGUI/MutApp.cpp:625
 msgid ""
 "An application to implement different tuning logics.\n"
 " Both fixed, adaptive and mutable tunings are supported."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:562
+#: src/wxGUI/MutApp.cpp:626
 msgid "Rudolf Wille (mathematical foundation)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:563
+#: src/wxGUI/MutApp.cpp:627
 msgid "Tobias Schlemmer (new icon/splash)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:564
+#: src/wxGUI/MutApp.cpp:628
 msgid "Bernhard Ganter"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:565 src/wxGUI/MutApp.cpp:569
+#: src/wxGUI/MutApp.cpp:629 src/wxGUI/MutApp.cpp:633
 msgid "Volker Abel"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:566 src/wxGUI/MutApp.cpp:570
+#: src/wxGUI/MutApp.cpp:630 src/wxGUI/MutApp.cpp:634
 #, fuzzy
 msgid "Peter Reiss"
 msgstr "Питер Миллер"
 
-#: src/wxGUI/MutApp.cpp:567 src/wxGUI/MutApp.cpp:571
+#: src/wxGUI/MutApp.cpp:631 src/wxGUI/MutApp.cpp:635
 msgid "Ruediger Krausze <krausze@mail.berlios.de>"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:568 src/wxGUI/MutApp.cpp:572
+#: src/wxGUI/MutApp.cpp:632 src/wxGUI/MutApp.cpp:636
 msgid "Tobias Schlemmer <keinstein@mail.berlios.de>"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:573
+#: src/wxGUI/MutApp.cpp:637
 msgid "English: Tobias Schlemmer"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:590
+#: src/wxGUI/MutApp.cpp:654
 msgid "About ..."
 msgstr "&О программе..."
 
-#: src/wxGUI/MutApp.cpp:594
+#: src/wxGUI/MutApp.cpp:658
 msgid "Version: "
 msgstr "Версия: "
 
-#: src/wxGUI/MutApp.cpp:596
+#: src/wxGUI/MutApp.cpp:660
 #, fuzzy
 msgid "Written by: "
 msgstr "Авторы"
 
-#: src/wxGUI/MutApp.cpp:597
+#: src/wxGUI/MutApp.cpp:661
 msgid ""
 "Bernhard Ganter\n"
 "Volker Abel\n"
@@ -897,541 +965,541 @@ msgid ""
 "Tobias Schlemmer <keinstein@mail.berlios.de>"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:602
+#: src/wxGUI/MutApp.cpp:666
 #, fuzzy
 msgid ""
 "Mathematical\n"
 "modelling:"
 msgstr "Математические символы из греческого алфавита"
 
-#: src/wxGUI/MutApp.cpp:603
+#: src/wxGUI/MutApp.cpp:667
 msgid "Rudolf Wille"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:604
+#: src/wxGUI/MutApp.cpp:668
 #, fuzzy
 msgid "Licence type: "
 msgstr "Тип картинки"
 
-#: src/wxGUI/MutApp.cpp:605
+#: src/wxGUI/MutApp.cpp:669
 msgid "GPL"
 msgstr "Лицензия GPL"
 
-#: src/wxGUI/MutApp.cpp:606
+#: src/wxGUI/MutApp.cpp:670
 msgid "wxWidgets: "
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:608
+#: src/wxGUI/MutApp.cpp:672
 #, fuzzy
 msgid "Copyright: "
 msgstr "%r: Авторское право"
 
-#: src/wxGUI/MutApp.cpp:609
+#: src/wxGUI/MutApp.cpp:673
 msgid "(c) 2007 TU Dresden, Institut fuer Algebra"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:633
+#: src/wxGUI/MutApp.cpp:697
 #, fuzzy
 msgid "Mutabor tuning"
 msgstr "Настройка жёсткого диска"
 
-#: src/wxGUI/MutApp.cpp:807
+#: src/wxGUI/MutApp.cpp:871
 #, fuzzy
 msgid "help.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: src/wxGUI/MutApp.cpp:812 src/wxGUI/MutConfDlg.h:93
+#: src/wxGUI/MutApp.cpp:876 src/wxGUI/MutConfDlg.h:93
 #, fuzzy
 msgid "The setup dialog"
 msgstr "Диалог настройки..."
 
-#: src/wxGUI/MutApp.cpp:817
+#: src/wxGUI/MutApp.cpp:881
 #, fuzzy
 msgid "manual.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: src/wxGUI/MutApp.cpp:822
+#: src/wxGUI/MutApp.cpp:886
 #, fuzzy
 msgid "reference.html"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: src/wxGUI/MutApp.cpp:827
+#: src/wxGUI/MutApp.cpp:891
 #, fuzzy
 msgid "Help window"
 msgstr "/Помощь/Окно _отладки"
 
-#: src/wxGUI/MutApp.cpp:837
+#: src/wxGUI/MutApp.cpp:901
 #, fuzzy
 msgid "Search for?"
 msgstr "_Искать: "
 
-#: src/wxGUI/MutApp.cpp:838
+#: src/wxGUI/MutApp.cpp:902
 #, fuzzy
 msgid "Search help for keyword"
 msgstr "искать точное совпадения каждого ключа"
 
-#: src/wxGUI/MutApp.cpp:906
+#: src/wxGUI/MutApp.cpp:970
 #, fuzzy, c-format
 msgid "Closing window of class %s"
 msgstr "При &закрытии последнего окна завершается работа с программой"
 
-#: src/wxGUI/MutApp.cpp:959
+#: src/wxGUI/MutApp.cpp:1042
 #, fuzzy
 msgid "&New\tCtrl+N"
 msgstr "Создать к&аталог..."
 
-#: src/wxGUI/MutApp.cpp:960
+#: src/wxGUI/MutApp.cpp:1043
 #, fuzzy
 msgid "Create a new logic file."
 msgstr "%s: не удалось создать новый файл значений по умолчанию\n"
 
-#: src/wxGUI/MutApp.cpp:961
+#: src/wxGUI/MutApp.cpp:1044
 #, fuzzy
 msgid "&Open...\tCtrl+O"
 msgstr "Открыть каталог"
 
-#: src/wxGUI/MutApp.cpp:962
+#: src/wxGUI/MutApp.cpp:1045
 #, fuzzy
 msgid "Open a logic file in editor window"
 msgstr "Открывать исходные файлы в редакторе, а не в программе просмотра"
 
-#: src/wxGUI/MutApp.cpp:972
+#: src/wxGUI/MutApp.cpp:1055
 #, fuzzy
 msgid "&Execute\tCtrl+F9"
 msgstr "Убрать сообщения (F9)"
 
-#: src/wxGUI/MutApp.cpp:973
+#: src/wxGUI/MutApp.cpp:1056
 msgid "Load a logic file an immediately activate it"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:982
+#: src/wxGUI/MutApp.cpp:1065
 #, fuzzy
 msgid "Proper&ties ...\tCtrl+I"
 msgstr "Открыть каталог"
 
-#: src/wxGUI/MutApp.cpp:983
+#: src/wxGUI/MutApp.cpp:1066
 #, fuzzy
 msgid "Get some information about the currently edited file"
 msgstr "Показать информацию о программе Evolution"
 
-#: src/wxGUI/MutApp.cpp:991
+#: src/wxGUI/MutApp.cpp:1074
 msgid "Print setup..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:992
+#: src/wxGUI/MutApp.cpp:1075
 msgid "Configure how the pages will be printed"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1012
+#: src/wxGUI/MutApp.cpp:1095
 msgid "&File"
 msgstr "&Файл"
 
-#: src/wxGUI/MutApp.cpp:1014
+#: src/wxGUI/MutApp.cpp:1097
 #, fuzzy
 msgid "@MAC|&File"
 msgstr "Файл HTML (*.html)|*.html"
 
-#: src/wxGUI/MutApp.cpp:1034
+#: src/wxGUI/MutApp.cpp:1117
 msgid "Select &line\tCtrl+Shift+L"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1035
+#: src/wxGUI/MutApp.cpp:1118
 msgid "Select the complete line at cursor position"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1039
+#: src/wxGUI/MutApp.cpp:1122
 msgid "Find &next\tCtrl+G"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1040
+#: src/wxGUI/MutApp.cpp:1123
 msgid "Continue last search"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1043
+#: src/wxGUI/MutApp.cpp:1126
 msgid "Replace &again\tShift+F4"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1044
+#: src/wxGUI/MutApp.cpp:1127
 msgid "Go on with replacement"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1047
+#: src/wxGUI/MutApp.cpp:1130
 msgid "&Match brace\tCtrl+M"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1048
+#: src/wxGUI/MutApp.cpp:1131
 msgid "Find matching brace and select all contained characters"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1050
+#: src/wxGUI/MutApp.cpp:1133
 #, fuzzy
 msgid "&Goto Line...\tCtrl+L"
 msgstr "Открыть каталог"
 
-#: src/wxGUI/MutApp.cpp:1051
+#: src/wxGUI/MutApp.cpp:1134
 msgid "Jump to a specific line"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1058
+#: src/wxGUI/MutApp.cpp:1141
 msgid "&Overwrite mode\tIns"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1059
+#: src/wxGUI/MutApp.cpp:1142
 msgid "Replace the caracters at the caret position by the ones you type in"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1061
+#: src/wxGUI/MutApp.cpp:1144
 #, fuzzy
 msgid "&Wrap mode\tCtrl+U"
 msgstr "Сохранить &как..."
 
-#: src/wxGUI/MutApp.cpp:1062
+#: src/wxGUI/MutApp.cpp:1145
 msgid "Automatic line breaking while inserting text"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1064
+#: src/wxGUI/MutApp.cpp:1147
 msgid "&Readonly mode"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1065
+#: src/wxGUI/MutApp.cpp:1148
 msgid "Disallow changing the document"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1070
+#: src/wxGUI/MutApp.cpp:1153
 msgid "&Upper case"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1071
+#: src/wxGUI/MutApp.cpp:1154
 msgid "Change the current selection to upper case"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1073
+#: src/wxGUI/MutApp.cpp:1156
 msgid "&Lower case"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1074
+#: src/wxGUI/MutApp.cpp:1157
 msgid "Change the current selection to lower case"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1079
+#: src/wxGUI/MutApp.cpp:1162
 msgid "CR (&Linux/MAC OS X)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1080
+#: src/wxGUI/MutApp.cpp:1163
 msgid "Change line endings to carrage return only (Unix style)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1082
+#: src/wxGUI/MutApp.cpp:1165
 #, fuzzy
 msgid "CR+LF (&Windows)"
 msgstr "Windows"
 
-#: src/wxGUI/MutApp.cpp:1083
+#: src/wxGUI/MutApp.cpp:1166
 msgid "Change line endigs to carrage return + line feed (DOS/Windows style)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1085
+#: src/wxGUI/MutApp.cpp:1168
 msgid "LF (&Macintosh)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1086
+#: src/wxGUI/MutApp.cpp:1169
 msgid "Change line endings to line feed only (old Macintosh style)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1088
+#: src/wxGUI/MutApp.cpp:1171
 msgid "Edit options ..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1089
+#: src/wxGUI/MutApp.cpp:1172
 msgid "Change &case to ..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1091
+#: src/wxGUI/MutApp.cpp:1174
 msgid "Convert line &endings to ..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1094
+#: src/wxGUI/MutApp.cpp:1177
 msgid "&Edit"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1101
+#: src/wxGUI/MutApp.cpp:1184
 #, fuzzy
 msgid "&Compile\tAlt+F9"
 msgstr "Убрать сообщения (F9)"
 
-#: src/wxGUI/MutApp.cpp:1101
+#: src/wxGUI/MutApp.cpp:1184
 msgid "Load the actual file into the Mutabor Kernel."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1102
+#: src/wxGUI/MutApp.cpp:1185
 #, fuzzy
 msgid "&Activate\tF9"
 msgstr "Активные соединения"
 
-#: src/wxGUI/MutApp.cpp:1102
+#: src/wxGUI/MutApp.cpp:1185
 #, fuzzy
 msgid "Activate the Mutabor Kernel."
 msgstr "Длина единицы ядра:"
 
-#: src/wxGUI/MutApp.cpp:1103
+#: src/wxGUI/MutApp.cpp:1186
 #, fuzzy
 msgid "&Stop\tF8"
 msgstr "Остановить поиск..."
 
-#: src/wxGUI/MutApp.cpp:1103
+#: src/wxGUI/MutApp.cpp:1186
 #, fuzzy
 msgid "Stop the Mutabor Kernel."
 msgstr "Длина единицы ядра:"
 
-#: src/wxGUI/MutApp.cpp:1105
+#: src/wxGUI/MutApp.cpp:1188
 #, fuzzy
 msgid "&Panic\tF12"
 msgstr "%s: паника: Недопустимое l_value %d\n"
 
-#: src/wxGUI/MutApp.cpp:1105
+#: src/wxGUI/MutApp.cpp:1188
 msgid "Send \"all notes off\" signal to on all MIDI Channels."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1106
+#: src/wxGUI/MutApp.cpp:1189
 #, fuzzy
 msgid "&Logic"
 msgstr "Логика"
 
-#: src/wxGUI/MutApp.cpp:1112 src/wxGUI/MutFrame.cpp:383
+#: src/wxGUI/MutApp.cpp:1195 src/wxGUI/MutFrame.cpp:383
 #, fuzzy
 msgid "&Load routes"
 msgstr "Торговые пути"
 
-#: src/wxGUI/MutApp.cpp:1113 src/wxGUI/MutFrame.cpp:384
+#: src/wxGUI/MutApp.cpp:1196 src/wxGUI/MutFrame.cpp:384
 msgid "Load the current route configuration from a file"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1114 src/wxGUI/MutFrame.cpp:385
+#: src/wxGUI/MutApp.cpp:1197 src/wxGUI/MutFrame.cpp:385
 #, fuzzy
 msgid "&Save routes"
 msgstr "Торговые пути"
 
-#: src/wxGUI/MutApp.cpp:1115 src/wxGUI/MutFrame.cpp:386
+#: src/wxGUI/MutApp.cpp:1198 src/wxGUI/MutFrame.cpp:386
 #, fuzzy
 msgid "Save current route configuration to a file."
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
 
-#: src/wxGUI/MutApp.cpp:1116
+#: src/wxGUI/MutApp.cpp:1199
 #, fuzzy
 msgid "Save routes &as"
 msgstr "Сохранить игру как... (_A)"
 
-#: src/wxGUI/MutApp.cpp:1117
+#: src/wxGUI/MutApp.cpp:1200
 msgid "Save current route configuration to a file with a new name."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1118
+#: src/wxGUI/MutApp.cpp:1201
 #, fuzzy
 msgid "&Routes"
 msgstr "Торговые пути"
 
-#: src/wxGUI/MutApp.cpp:1137
+#: src/wxGUI/MutApp.cpp:1220
 #, fuzzy
 msgid "&ANSI (Windows)"
 msgstr "Windows"
 
-#: src/wxGUI/MutApp.cpp:1138
+#: src/wxGUI/MutApp.cpp:1221
 msgid "&MAC (Macintosh)"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1141
+#: src/wxGUI/MutApp.cpp:1224
 msgid "&Hilight language..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1145
+#: src/wxGUI/MutApp.cpp:1228
 msgid "&Toggle current fold\tCtrl+T"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1147
+#: src/wxGUI/MutApp.cpp:1230
 msgid "Show line &endings"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1148
+#: src/wxGUI/MutApp.cpp:1231
 msgid "Show &indent guides"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1149
+#: src/wxGUI/MutApp.cpp:1232
 msgid "Show line &numbers"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1150
+#: src/wxGUI/MutApp.cpp:1233
 msgid "Show &long line marker"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1151
+#: src/wxGUI/MutApp.cpp:1234
 msgid "Show white&space"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1153
+#: src/wxGUI/MutApp.cpp:1236
 msgid "Use &code page of..."
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1167
+#: src/wxGUI/MutApp.cpp:1250
 msgid "Current ke&ys\tF5"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1168
+#: src/wxGUI/MutApp.cpp:1251
 #, fuzzy
 msgid "Show current keys window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: src/wxGUI/MutApp.cpp:1169
+#: src/wxGUI/MutApp.cpp:1252
 #, fuzzy
 msgid "&Tone system\tF6"
 msgstr "Корень файловой системы"
 
-#: src/wxGUI/MutApp.cpp:1170
+#: src/wxGUI/MutApp.cpp:1253
 #, fuzzy
 msgid "Show tone system window"
 msgstr "Система X Window (без расширения Xv)"
 
-#: src/wxGUI/MutApp.cpp:1171
+#: src/wxGUI/MutApp.cpp:1254
 #, fuzzy
 msgid "&Actions\tF7"
 msgstr "Действия каравана"
 
-#: src/wxGUI/MutApp.cpp:1172
+#: src/wxGUI/MutApp.cpp:1255
 #, fuzzy
 msgid "Show current actions window"
 msgstr "Показывать текущий выбор в окнах файлового менеджера"
 
-#: src/wxGUI/MutApp.cpp:1174
+#: src/wxGUI/MutApp.cpp:1257
 #, fuzzy
 msgid "&Routes\tF11"
 msgstr "Торговые пути"
 
-#: src/wxGUI/MutApp.cpp:1175
+#: src/wxGUI/MutApp.cpp:1258
 #, fuzzy
 msgid "Open route configuration window"
 msgstr "Открыть окно главной книги"
 
-#: src/wxGUI/MutApp.cpp:1185
+#: src/wxGUI/MutApp.cpp:1268
 #, fuzzy
 msgid "Select &Box"
 msgstr "Установка или снятие флажка"
 
-#: src/wxGUI/MutApp.cpp:1186
+#: src/wxGUI/MutApp.cpp:1269
 #, fuzzy
 msgid "Select current Box"
 msgstr "Установка или снятие флажка"
 
-#: src/wxGUI/MutApp.cpp:1189
+#: src/wxGUI/MutApp.cpp:1272
 msgid "&View"
 msgstr "&Вид"
 
-#: src/wxGUI/MutApp.cpp:1195 src/wxGUI/MutFrame.cpp:388
+#: src/wxGUI/MutApp.cpp:1278 src/wxGUI/MutFrame.cpp:388
 #, fuzzy
 msgid "&Play"
 msgstr "_Воспроизвести"
 
-#: src/wxGUI/MutApp.cpp:1196 src/wxGUI/MutFrame.cpp:389
+#: src/wxGUI/MutApp.cpp:1279 src/wxGUI/MutFrame.cpp:389
 msgid "Start playing the music from input file devices"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1197 src/wxGUI/MutFrame.cpp:390
+#: src/wxGUI/MutApp.cpp:1280 src/wxGUI/MutFrame.cpp:390
 #, fuzzy
 msgid "St&op"
 msgstr "_Остановить анимацию"
 
-#: src/wxGUI/MutApp.cpp:1198 src/wxGUI/MutFrame.cpp:391
+#: src/wxGUI/MutApp.cpp:1281 src/wxGUI/MutFrame.cpp:391
 msgid "Stop playing the music from input file devices"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1199 src/wxGUI/MutFrame.cpp:392
+#: src/wxGUI/MutApp.cpp:1282 src/wxGUI/MutFrame.cpp:392
 #, fuzzy
 msgid "P&ause"
 msgstr "_Приостановить"
 
-#: src/wxGUI/MutApp.cpp:1200 src/wxGUI/MutFrame.cpp:393
+#: src/wxGUI/MutApp.cpp:1283 src/wxGUI/MutFrame.cpp:393
 msgid "Pause plaing the music from input file devices"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1201
+#: src/wxGUI/MutApp.cpp:1284
 msgid "&Sequencer"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1209
+#: src/wxGUI/MutApp.cpp:1292
 #, fuzzy
 msgid "Online &Help\tF1"
 msgstr "Справка Freeciv"
 
-#: src/wxGUI/MutApp.cpp:1210
+#: src/wxGUI/MutApp.cpp:1293
 #, fuzzy
 msgid "Open the help Window"
 msgstr "Открыть окно справки GnuCash"
 
-#: src/wxGUI/MutApp.cpp:1211
+#: src/wxGUI/MutApp.cpp:1294
 #, fuzzy
 msgid "&Manual"
 msgstr "Ручное"
 
-#: src/wxGUI/MutApp.cpp:1212
+#: src/wxGUI/MutApp.cpp:1295
 #, fuzzy
 msgid "Open the manual"
 msgstr "Открыть справку"
 
-#: src/wxGUI/MutApp.cpp:1213
+#: src/wxGUI/MutApp.cpp:1296
 #, fuzzy
 msgid "Language &reference"
 msgstr "Неправильная ссылка"
 
-#: src/wxGUI/MutApp.cpp:1214
+#: src/wxGUI/MutApp.cpp:1297
 msgid "Open the Mutabor language reference"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1216
+#: src/wxGUI/MutApp.cpp:1299
 #, fuzzy
 msgid "&Index"
 msgstr "_Индекс"
 
-#: src/wxGUI/MutApp.cpp:1217
+#: src/wxGUI/MutApp.cpp:1300
 #, fuzzy
 msgid "Open the help index"
 msgstr "Открыть помощь по GnuCash"
 
-#: src/wxGUI/MutApp.cpp:1218
+#: src/wxGUI/MutApp.cpp:1301
 msgid "&Search"
 msgstr "&Поиск"
 
-#: src/wxGUI/MutApp.cpp:1219
+#: src/wxGUI/MutApp.cpp:1302
 msgid "Search the help system for a specific keyword"
 msgstr ""
 
-#: src/wxGUI/MutApp.cpp:1221
+#: src/wxGUI/MutApp.cpp:1304
 #, fuzzy
 msgid "Help &on help"
 msgstr ", помощь по "
 
-#: src/wxGUI/MutApp.cpp:1222
+#: src/wxGUI/MutApp.cpp:1305
 #, fuzzy
 msgid "Show Help about the help system"
 msgstr "_Показывать значок системного лотка:"
 
-#: src/wxGUI/MutApp.cpp:1228
+#: src/wxGUI/MutApp.cpp:1311
 msgid "&About"
 msgstr "&О программе..."
 
-#: src/wxGUI/MutApp.cpp:1229
+#: src/wxGUI/MutApp.cpp:1312
 #, fuzzy
 msgid "Show information about the program"
 msgstr "Показать информацию о программе Evolution"
 
-#: src/wxGUI/MutApp.cpp:1232 src/wxGUI/MutFrame.cpp:372
+#: src/wxGUI/MutApp.cpp:1315 src/wxGUI/MutFrame.cpp:372
 #, fuzzy
 msgid "Stop"
 msgstr "Остановить поиск..."
 
-#: src/wxGUI/MutApp.cpp:1233
+#: src/wxGUI/MutApp.cpp:1316
 #, fuzzy
 msgid "Stop the current program"
 msgstr "Сохранить текущий файл"
 
-#: src/wxGUI/MutApp.cpp:1297 src/wxGUI/MutApp.cpp:1326
+#: src/wxGUI/MutApp.cpp:1380 src/wxGUI/MutApp.cpp:1409
 #, fuzzy
 msgid "Could not get configuration storage"
 msgstr "Сохранить·настройки·эффект-процессора·в·текущий·файл"
@@ -1448,8 +1516,8 @@ msgstr "Ошибка"
 
 #: src/wxGUI/MutChild.cpp:150 src/wxGUI/MutChild.cpp:207
 #: src/wxGUI/MutChild.cpp:303 src/wxGUI/MutChild.cpp:342
-#: src/wxGUI/MutFrame.cpp:1059 src/wxGUI/MutFrame.cpp:1206
-#: src/wxGUI/MutTextBox.cpp:101 src/wxGUI/MutTextBox.cpp:144
+#: src/wxGUI/MutFrame.cpp:1045 src/wxGUI/MutFrame.cpp:1192
+#: src/wxGUI/MutTextBox.cpp:104 src/wxGUI/MutTextBox.cpp:147
 #, fuzzy
 msgid "Unexpected value: WK_LOGIC"
 msgstr "непредвиденные данные после значения переменной"
@@ -1457,9 +1525,9 @@ msgstr "непредвиденные данные после значения п
 #: src/wxGUI/MutChild.cpp:154 src/wxGUI/MutChild.cpp:211
 #: src/wxGUI/MutChild.cpp:268 src/wxGUI/MutChild.cpp:307
 #: src/wxGUI/MutChild.cpp:346 src/wxGUI/MutChild.cpp:398
-#: src/wxGUI/MutFrame.cpp:1063 src/wxGUI/MutFrame.cpp:1210
-#: src/wxGUI/MutFrame.cpp:1861 src/wxGUI/MutTextBox.cpp:105
-#: src/wxGUI/MutTextBox.cpp:148
+#: src/wxGUI/MutFrame.cpp:1049 src/wxGUI/MutFrame.cpp:1196
+#: src/wxGUI/MutFrame.cpp:1749 src/wxGUI/MutTextBox.cpp:108
+#: src/wxGUI/MutTextBox.cpp:151
 #, fuzzy
 msgid "Unexpected value: WK_ROUTE"
 msgstr "непредвиденные данные после значения переменной"
@@ -1467,9 +1535,9 @@ msgstr "непредвиденные данные после значения п
 #: src/wxGUI/MutChild.cpp:158 src/wxGUI/MutChild.cpp:215
 #: src/wxGUI/MutChild.cpp:272 src/wxGUI/MutChild.cpp:311
 #: src/wxGUI/MutChild.cpp:350 src/wxGUI/MutChild.cpp:402
-#: src/wxGUI/MutFrame.cpp:1067 src/wxGUI/MutFrame.cpp:1214
-#: src/wxGUI/MutFrame.cpp:1865 src/wxGUI/MutTextBox.cpp:109
-#: src/wxGUI/MutTextBox.cpp:152
+#: src/wxGUI/MutFrame.cpp:1053 src/wxGUI/MutFrame.cpp:1200
+#: src/wxGUI/MutFrame.cpp:1753 src/wxGUI/MutTextBox.cpp:112
+#: src/wxGUI/MutTextBox.cpp:155
 #, fuzzy
 msgid "Unexpected value: WK_EDIT"
 msgstr "непредвиденные данные после значения переменной"
@@ -1477,8 +1545,8 @@ msgstr "непредвиденные данные после значения п
 #: src/wxGUI/MutChild.cpp:162 src/wxGUI/MutChild.cpp:219
 #: src/wxGUI/MutChild.cpp:276 src/wxGUI/MutChild.cpp:315
 #: src/wxGUI/MutChild.cpp:354 src/wxGUI/MutChild.cpp:406
-#: src/wxGUI/MutFrame.cpp:1071 src/wxGUI/MutFrame.cpp:1218
-#: src/wxGUI/MutTextBox.cpp:113 src/wxGUI/MutTextBox.cpp:156
+#: src/wxGUI/MutFrame.cpp:1057 src/wxGUI/MutFrame.cpp:1204
+#: src/wxGUI/MutTextBox.cpp:116 src/wxGUI/MutTextBox.cpp:159
 #, fuzzy
 msgid "Unexpected value: WK_NULL"
 msgstr "Внутренняя ошибка: неожиданно нет решения."
@@ -1486,9 +1554,9 @@ msgstr "Внутренняя ошибка: неожиданно нет реше�
 #: src/wxGUI/MutChild.cpp:166 src/wxGUI/MutChild.cpp:223
 #: src/wxGUI/MutChild.cpp:280 src/wxGUI/MutChild.cpp:319
 #: src/wxGUI/MutChild.cpp:358 src/wxGUI/MutChild.cpp:410
-#: src/wxGUI/MutFrame.cpp:1075 src/wxGUI/MutFrame.cpp:1222
-#: src/wxGUI/MutFrame.cpp:1881 src/wxGUI/MutTextBox.cpp:117
-#: src/wxGUI/MutTextBox.cpp:160
+#: src/wxGUI/MutFrame.cpp:1061 src/wxGUI/MutFrame.cpp:1208
+#: src/wxGUI/MutFrame.cpp:1769 src/wxGUI/MutTextBox.cpp:120
+#: src/wxGUI/MutTextBox.cpp:163
 #, fuzzy, c-format
 msgid "Unexpected window kind: %d"
 msgstr "4 одинаковых [25 + сумма]"
@@ -1742,129 +1810,138 @@ msgstr ""
 msgid "noname.mut"
 msgstr "Неназванный.mut"
 
-#: src/wxGUI/MutFrame.cpp:611 src/wxGUI/MutFrame.cpp:1679
+#: src/wxGUI/MutFrame.cpp:611 src/wxGUI/MutFrame.cpp:1645
 #, c-format
 msgid "%s -- %s"
 msgstr ""
 
 #: src/wxGUI/MutFrame.cpp:694
 msgid ""
-"There are no realtime \t\t                           instruments in the "
-"routes.\n"
-"\t\t                           Shall Mutabor translate the files in batch "
-"mode, \t\t                           to keep the MIDI files with the "
-"original time stamp?\n"
-"\t\t                           (This means also, that you can't modify the "
-"tunings \t\t                           while playing by computer keyboard.)"
+"There are no realtime instruments in the routes.\n"
+"\tShall Mutabor translate the files in batch mode, to keep the MIDI files "
+"with the original time stamp?\n"
+" (This means also, that you can't modify the tunings while playing by "
+"computer keyboard.)"
 msgstr ""
 
 #: src/wxGUI/MutFrame.cpp:700
 #, fuzzy
-msgid "No realtime => batch mode?"
+msgid "No realtime ⇒ batch mode?"
 msgstr "пакетный режим: ничего не запрашивать"
 
-#: src/wxGUI/MutFrame.cpp:990
+#: src/wxGUI/MutFrame.cpp:786
+msgid ""
+"Please, configure the initial tuning, now.\n"
+"To start the translation hit the play button or select “Play” from the "
+"“Sequencer” Menu.\n"
+msgstr ""
+
+#: src/wxGUI/MutFrame.cpp:788
+msgid "Realtime play"
+msgstr ""
+
+#: src/wxGUI/MutFrame.cpp:976
 #, fuzzy
 msgid "Routes"
 msgstr "Торговые пути"
 
-#: src/wxGUI/MutFrame.cpp:1013
+#: src/wxGUI/MutFrame.cpp:999
 #, fuzzy, c-format
 msgid "Logic -- Box %d"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/MutFrame.cpp:1187
+#: src/wxGUI/MutFrame.cpp:1173
 #, fuzzy, c-format
 msgid "Keys -- Box %d"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/MutFrame.cpp:1192
+#: src/wxGUI/MutFrame.cpp:1178
 #, fuzzy, c-format
 msgid "Tone system -- Box %d"
 msgstr "Файловая система"
 
-#: src/wxGUI/MutFrame.cpp:1198
+#: src/wxGUI/MutFrame.cpp:1184
 #, fuzzy
 msgid "Action log"
 msgstr "П&росмотреть отчет..."
 
-#: src/wxGUI/MutFrame.cpp:1201
+#: src/wxGUI/MutFrame.cpp:1187
 #, fuzzy, c-format
 msgid "Actions -- Box %d"
 msgstr "Группирующая рамка"
 
-#: src/wxGUI/MutFrame.cpp:1371
+#: src/wxGUI/MutFrame.cpp:1357
 #, fuzzy
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "Новый счет (не реализовано)"
 
-#: src/wxGUI/MutFrame.cpp:1759
-msgid "Translation in batch mode completed. Output was generated."
+#: src/wxGUI/MutFrame.cpp:1538
+msgid "The conversion finished successfully."
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1761
+#: src/wxGUI/MutFrame.cpp:1539 src/wxGUI/MutFrame.cpp:1542
 #, fuzzy
-msgid "Batch translation finished"
-msgstr "Завершено с ошибкой"
+msgid "Conversion error"
+msgstr "Ошибка Системы активации объектов (OAF)"
 
-#: src/wxGUI/MutFrame.cpp:1911
+#: src/wxGUI/MutFrame.cpp:1799
 #, fuzzy, c-format
 msgid "Box %d got id %d"
 msgstr "Недопустимый ID фрейма"
 
-#: src/wxGUI/MutFrame.cpp:1914
+#: src/wxGUI/MutFrame.cpp:1802
 #, fuzzy, c-format
 msgid "Currently %d items in box menu"
 msgstr "В этом меню нет %d пунктов."
 
-#: src/wxGUI/MutFrame.cpp:1916
+#: src/wxGUI/MutFrame.cpp:1804
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1917
+#: src/wxGUI/MutFrame.cpp:1805
 #, fuzzy, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Установка или снятие флажка"
 
-#: src/wxGUI/MutFrame.cpp:1918
+#: src/wxGUI/MutFrame.cpp:1806
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr ""
 
-#: src/wxGUI/MutFrame.cpp:1928
+#: src/wxGUI/MutFrame.cpp:1816
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr ""
 
-#: src/wxGUI/MutLogicWnd.cpp:768
+#: src/wxGUI/MutLogicWnd.cpp:773
 #, fuzzy, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/MutRouteWnd.cpp:507
+#: src/wxGUI/MutRouteWnd.cpp:509
 #, fuzzy, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "%d выбранный файл может быть добавлен (%s)"
 
-#: src/wxGUI/MutRouteWnd.cpp:512
+#: src/wxGUI/MutRouteWnd.cpp:514
 #, fuzzy, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "isoquery: Не удалось открыть файл %(filename)s.\n"
 
-#: src/wxGUI/MutRouteWnd.cpp:565
+#: src/wxGUI/MutRouteWnd.cpp:567
 #, fuzzy, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "ошибка открытия резервного файла \"%s\" для записи"
 
-#: src/wxGUI/MutRouteWnd.cpp:581
+#: src/wxGUI/MutRouteWnd.cpp:583
 #, fuzzy, c-format
 msgid "Error writing file '%s'."
 msgstr ""
 "Ошибка сохранения файла '%s':\n"
 "%s"
 
-#: src/wxGUI/MutRouteWnd.cpp:603
+#: src/wxGUI/MutRouteWnd.cpp:605
 #, fuzzy, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "%s: \"%s\" не является верной кодировкой сервера\n"
@@ -1889,57 +1966,57 @@ msgstr "Действия"
 msgid "<init>"
 msgstr "Холсты..."
 
-#: src/wxGUI/MutTextBox.cpp:203
+#: src/wxGUI/MutTextBox.cpp:206
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:210 src/wxGUI/MutTextBox.cpp:255
+#: src/wxGUI/MutTextBox.cpp:213 src/wxGUI/MutTextBox.cpp:258
 #, c-format
 msgid "%2d : empty"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:229
+#: src/wxGUI/MutTextBox.cpp:232
 #, c-format
 msgid "Anchor = %d"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:231
+#: src/wxGUI/MutTextBox.cpp:234
 #, c-format
 msgid "Width = %d"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:233
+#: src/wxGUI/MutTextBox.cpp:236
 #, c-format
 msgid "Period = %.1f HT"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:241
+#: src/wxGUI/MutTextBox.cpp:244
 #, fuzzy, c-format
 msgid "Reference = %d"
 msgstr "&Установки"
 
-#: src/wxGUI/MutTextBox.cpp:250
+#: src/wxGUI/MutTextBox.cpp:253
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:344
+#: src/wxGUI/MutTextBox.cpp:347
 #, fuzzy
 msgid "Actions - all boxes"
 msgstr "Группирующая рамка"
 
-#: src/wxGUI/MutTextBox.cpp:346
+#: src/wxGUI/MutTextBox.cpp:349
 #, fuzzy, c-format
 msgid "%s - Box %d"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/Routing/BoxChannelShape.cpp:287
+#: src/wxGUI/Routing/BoxChannelShape.cpp:342
 #, fuzzy
 msgid "No input device"
 msgstr "Другие устройства _ввода:"
 
-#: src/wxGUI/Routing/BoxChannelShape.cpp:389
+#: src/wxGUI/Routing/BoxChannelShape.cpp:444
 #, fuzzy
 msgid "No output device"
 msgstr "Сбросить устройство вывода"
@@ -1969,22 +2046,22 @@ msgstr "Площадка (BB)"
 msgid "GUIDO file box"
 msgstr "Информация о файле"
 
-#: src/wxGUI/Routing/BoxShape.cpp:168
+#: src/wxGUI/Routing/BoxShape.cpp:169
 #, fuzzy
 msgid "New Box"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/Routing/BoxShape.cpp:172
+#: src/wxGUI/Routing/BoxShape.cpp:173
 #, fuzzy
 msgid "No Box / Though mode"
 msgstr "\"%mode:1\": нет доступного выражения magic для magic \"%magic:2\"."
 
-#: src/wxGUI/Routing/BoxShape.cpp:176
+#: src/wxGUI/Routing/BoxShape.cpp:177
 #, fuzzy
 msgid "GUIDO Box"
 msgstr "Площадка (BB)"
 
-#: src/wxGUI/Routing/BoxShape.cpp:181
+#: src/wxGUI/Routing/BoxShape.cpp:182
 #, fuzzy, c-format
 msgid "Box %d"
 msgstr "Параллелепипед"
@@ -2025,7 +2102,7 @@ msgstr "УСТРОЙСТВО [РАЗДЕЛ[+/-[ТИП]]] ..."
 msgid "Input Device"
 msgstr "Устройство входа"
 
-#: src/wxGUI/Routing/NewBoxShape.cpp:153
+#: src/wxGUI/Routing/NewBoxShape.cpp:54
 #, fuzzy
 msgid "Create Box"
 msgstr "Создание паралеллепипеда"
@@ -2039,6 +2116,15 @@ msgstr "Выберите устройство ввода звука:"
 #, fuzzy
 msgid "New Output device"
 msgstr "Выберите устройство вывода звука"
+
+#: src/wxGUI/generic/mutDebug.cpp:239
+#, c-format
+msgid ""
+"%s:%d: An assert failed in %s().\n"
+"Condition: %s\n"
+"Message:%s\n"
+"Do you want to call the default assert handler?"
+msgstr ""
 
 #: src/wxGUI/generic/mutDebugFlags.h:26
 #, fuzzy
@@ -2550,6 +2636,19 @@ msgstr "Параметры, независимые от канала"
 #: src/xrc/reslocale.cpp:142
 msgid "track"
 msgstr "дорожка"
+
+#~ msgid "Midi input file '%s' is too long."
+#~ msgstr "Файл введения MIDI „%s“ слишком длинный."
+
+#~ msgid "Midi input file '%s' produces errors."
+#~ msgstr "Файл Midi введения „%s“ ощибается."
+
+#~ msgid "Can not open Midi input devices."
+#~ msgstr "Не могу открывать прибору MIDI введения."
+
+#, fuzzy
+#~ msgid "Batch translation finished"
+#~ msgstr "Завершено с ошибкой"
 
 #, fuzzy
 #~ msgid "%ls %d %d %d %d %d %d %d %d"
