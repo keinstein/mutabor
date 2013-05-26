@@ -144,7 +144,10 @@ namespace mutabor {
 
 	inline void CommonFileInputDevice::Close()
 	{
-		mutASSERT(isOpen);
+#ifdef DEBUG
+		if (mutabor::CurrentTime.isRealtime())
+			mutASSERT(isOpen);
+#endif
 		Stop();
 		isOpen = false;
 	}

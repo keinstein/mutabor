@@ -93,7 +93,10 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::Close() {
-		mutASSERT(this->isOpen);
+#ifdef DEBUG
+		if (mutabor::CurrentTime.isRealtime())
+			mutASSERT(this->isOpen);
+#endif
 		DEBUGLOG (midiio, _T(""));
 
 		for (channel_queue_type::iterator i = channel_queue.begin();
