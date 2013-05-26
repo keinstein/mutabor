@@ -25,6 +25,9 @@
  */
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/MutApp.h"
+#include "wx/apptrait.h"
+#include "wx/log.h"
 #ifdef DEBUG
 #ifdef MUTABOR_CPPUNIT
 #include "cppunit/extensions/HelperMacros.h"
@@ -41,8 +44,7 @@
 #include <conio.h>
 #include <stdio.h>
 #endif
-#include "src/wxGUI/MutApp.h"
-#include "wx/apptrait.h"
+
 #include "src/kernel/routing/Route-inlines.h"
 
 debugFlags::flagtype debugFlags::flags;
@@ -112,13 +114,8 @@ bool debug_is_all_deleted()
 	return debug_save_pointers.empty();
 }
 
-// execute as early as possible
-class consoleinit {
-public:
-	consoleinit() {
-		MutInitConsole();
-	}
-} g_consoleinit;
+
+#endif
 
 void MutInitConsole()
 {
@@ -169,7 +166,13 @@ void MutInitConsole()
 #endif
 }
 
-#endif
+// execute as early as possible
+class consoleinit {
+public:
+	consoleinit() {
+		MutInitConsole();
+	}
+} g_consoleinit;
 
 
 static bool DoShowAssertDialog(const wxString& msg)
@@ -290,12 +293,14 @@ void mutAssertFailure(const wxChar *file,
 				// send it to the normal log destination
 				wxLogDebug(_T("%s"), message.c_str());
 
+#ifdef __WXDEBUG__
 				if ( wxGetApp().GetTraits() )
 				{
 					// delegate showing assert dialog (if possible) to that class
 					s_bNoAsserts = wxGetApp().GetTraits()->ShowAssertDialog(message);
 				}
 				else // no traits object
+#endif
 				{
 					// fall back to the function of last resort
 					s_bNoAsserts = DoShowAssertDialog(message);

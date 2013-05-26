@@ -36,7 +36,6 @@
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/Runtime.h"
 
-template<class route> 
 class GUIRouteTest : public CPPUNIT_NS::TestFixture 
 {
 	CPPUNIT_TEST_SUITE( GUIRouteTest );

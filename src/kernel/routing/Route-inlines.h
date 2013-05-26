@@ -205,6 +205,15 @@ namespace mutabor {
 		Id = NextRouteId();
 	}
 
+	template <class I, class O>
+	inline void TRouteClass<I,O>::Destroy() 
+	{
+		Route self(this);
+		debug_destroy_class(this);
+		RemoveFromRouteList(this);
+		if (In) disconnect(self,In);
+		if (Out) disconnect(self,Out);
+	}
 
 
 	inline Route RouteFactory::Create(InputDevice & in,

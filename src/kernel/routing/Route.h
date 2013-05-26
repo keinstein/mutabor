@@ -367,13 +367,7 @@ namespace mutabor {
 		 * function explicitely allows to delete the object when it is not used 
 		 * any more.
 		 */
-		virtual void Destroy() {
-			Route self(this);
-			debug_destroy_class(this);
-			RemoveFromRouteList(this);
-			if (In) disconnect(self,In);
-			if (Out) disconnect(self,Out);
-		}
+		virtual void Destroy();
 	
 		/// Initialize the internal device identifiers.
 		/** This function sets the internal device ids of 

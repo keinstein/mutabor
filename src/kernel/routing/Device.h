@@ -388,28 +388,7 @@ namespace mutabor {
 	public:
 		virtual ~CommonTypedDeviceAPI();
 
-		virtual void Destroy() {
-			TRACEC;
-			DevicePtr self(static_cast<thistype *>(this));
-			TRACEC;
-
-			Route route (NULL);
-			routeListType::iterator R;
-			
-			while ( (R = routes.begin()) != routes.end() ) {
-				TRACEC;
-				route = (*R);
-				TRACEC;
-				disconnect(route,self);
-				TRACEC;
-			}
-			
-			route = NULL;
-			TRACEC;
-			debug_destroy_class(this);
-			RemoveFromDeviceList(static_cast<thistype *>(this));
-			TRACEC;
-		}
+		virtual void Destroy();
 
 		/// add a route
 		virtual void Add(Route & route);
