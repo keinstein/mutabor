@@ -214,36 +214,41 @@ void  InputMidiFileTest::testBatchPlay1()
 //	mutabor::InputDeviceClass::BatchPlay();
 	in -> Play();
 	mutint64 delta = in -> PrepareNextEvent();
-	CPPUNIT_ASSERT(out->Check(_T("0   0: b0 40 00\n\
-0   0: b0 20 ff\n\
-0   0: b0 00 ff\n\
+	CPPUNIT_ASSERT(out->Check(_T("0   0: b0 7b 00\n\
+0   1: b1 7b 00\n\
+0   2: b2 7b 00\n\
+0   3: b3 7b 00\n\
+0   4: b4 7b 00\n\
+0   5: b5 7b 00\n\
+0   6: b6 7b 00\n\
+0   7: b7 7b 00\n\
+0   8: b8 7b 00\n\
+0   9: b9 7b 00\n\
+0  10: ba 7b 00\n\
+0  11: bb 7b 00\n\
+0  12: bc 7b 00\n\
+0  13: bd 7b 00\n\
+0  14: be 7b 00\n\
+0  15: bf 7b 00\n\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n"),__LINE__,_T(__FILE__)));
 
 	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
-	CPPUNIT_ASSERT(out->Check(_T("0   1: b1 40 00\n\
-0   1: b1 20 ff\n\
-0   1: b1 00 ff\n\
+	CPPUNIT_ASSERT(out->Check(_T("\
 0   1: c1 4f\n\
 0   1: 91 40 1f\n"),__LINE__,_T(__FILE__)));
 	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   1: 81 40 40\n\
-0   2: b2 40 00\n\
-0   2: b2 20 ff\n\
-0   2: b2 00 ff\n\
 0   2: c2 4f\n\
 0   2: 92 43 3f\n"),__LINE__,_T(__FILE__)));
 	std::cout << delta << std::endl;
 	CPPUNIT_ASSERT(delta == 49920);
 	delta = in -> PrepareNextEvent();
 	CPPUNIT_ASSERT(out->Check(_T("0   2: 82 43 40\n\
-0   3: b3 40 00\n\
-0   3: b3 20 ff\n\
-0   3: b3 00 ff\n\
 0   3: c3 4f\n\
 0   3: 93 34 7f\n"),__LINE__,_T(__FILE__)));
 	std::cout << delta << std::endl;
@@ -399,26 +404,30 @@ void  InputMidiFileTest::testBatchPlay1()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-0   0: b0 40 00\n\
-0   0: b0 20 ff\n\
-0   0: b0 00 ff\n\
+0   0: b0 7b 00\n\
+0   1: b1 7b 00\n\
+0   2: b2 7b 00\n\
+0   3: b3 7b 00\n\
+0   4: b4 7b 00\n\
+0   5: b5 7b 00\n\
+0   6: b6 7b 00\n\
+0   7: b7 7b 00\n\
+0   8: b8 7b 00\n\
+0   9: b9 7b 00\n\
+0  10: ba 7b 00\n\
+0  11: bb 7b 00\n\
+0  12: bc 7b 00\n\
+0  13: bd 7b 00\n\
+0  14: be 7b 00\n\
+0  15: bf 7b 00\n\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n\
-49920   1: b1 40 00\n\
-49920   1: b1 20 ff\n\
-49920   1: b1 00 ff\n\
 49920   1: c1 4f\n\
 49920   1: 91 40 1f\n\
 99840   1: 81 40 40\n\
-99840   2: b2 40 00\n\
-99840   2: b2 20 ff\n\
-99840   2: b2 00 ff\n\
 99840   2: c2 4f\n\
 99840   2: 92 43 3f\n\
 149760   2: 82 43 40\n\
-149760   3: b3 40 00\n\
-149760   3: b3 20 ff\n\
-149760   3: b3 00 ff\n\
 149760   3: c3 4f\n\
 149760   3: 93 34 7f\n\
 199680   3: 83 34 40\n\
@@ -558,26 +567,30 @@ void  InputMidiFileTest::testBatchPlay1()
 0  15: bf 64 00\n\
 0  15: bf 06 02\n\
 0  15: bf 26 00\n\
-0   0: b0 40 00\n\
-0   0: b0 20 ff\n\
-0   0: b0 00 ff\n\
+0   0: b0 7b 00\n\
+0   1: b1 7b 00\n\
+0   2: b2 7b 00\n\
+0   3: b3 7b 00\n\
+0   4: b4 7b 00\n\
+0   5: b5 7b 00\n\
+0   6: b6 7b 00\n\
+0   7: b7 7b 00\n\
+0   8: b8 7b 00\n\
+0   9: b9 7b 00\n\
+0  10: ba 7b 00\n\
+0  11: bb 7b 00\n\
+0  12: bc 7b 00\n\
+0  13: bd 7b 00\n\
+0  14: be 7b 00\n\
+0  15: bf 7b 00\n\
 0   0: c0 4f\n\
 0   0: 90 3c 7f\n\
-49920   1: b1 40 00\n\
-49920   1: b1 20 ff\n\
-49920   1: b1 00 ff\n\
 49920   1: c1 4f\n\
 49920   1: 91 40 1f\n\
 99840   1: 81 40 40\n\
-99840   2: b2 40 00\n\
-99840   2: b2 20 ff\n\
-99840   2: b2 00 ff\n\
 99840   2: c2 4f\n\
 99840   2: 92 43 3f\n\
 149760   2: 82 43 40\n\
-149760   3: b3 40 00\n\
-149760   3: b3 20 ff\n\
-149760   3: b3 00 ff\n\
 149760   3: c3 4f\n\
 149760   3: 93 34 7f\n\
 199680   3: 83 34 40\n\

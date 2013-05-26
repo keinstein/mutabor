@@ -621,8 +621,9 @@ namespace mutabor {
 			/* if only one bank byte has been set we correct it in case we send
 			   msb or lsb only. Otherwise we do not have access to the internal state
 			   of the devie and leave it alone with the setting the user provided */
-			if (lsb != -1) {
-				if (msb != -1) {
+			// check for valid msb/lsb combinations
+			if (!(lsb & 0x80)) {
+				if (!(msb & 0x80)) {
 					switch (bank_mode) {
 					case lsb_first:
 						controller(channel,midi::BANK_FINE,lsb);
@@ -643,9 +644,11 @@ namespace mutabor {
 							    midi::BANK_FINE),lsb);
 				}
 			} else {
-				controller(channel,(bank_mode == lsb_only?
-						    midi::BANK_FINE:
-						    midi::BANK_COARSE),lsb);
+				if (!(msb & 0x80)) {
+					controller(channel,(bank_mode == lsb_only?
+							    midi::BANK_FINE:
+							    midi::BANK_COARSE),lsb);
+				}
 			}
 
 			if ( sound != -1 ) 

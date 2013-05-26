@@ -216,7 +216,7 @@ namespace mutabor {
 
 
 		enum midi_controller_values {
-			CONTROLLER_ON           = 0xFF,
+			CONTROLLER_ON           = 0x7F,
 			CONTROLLER_OFF          = 0X00
 		};
 

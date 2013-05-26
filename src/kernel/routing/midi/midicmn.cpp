@@ -405,13 +405,14 @@ namespace mutabor {
 	void  CommonMidiOutput<T,D>::Controller(int mutabor_channel, int ctrl, int value)
 	{
 		mutASSERT(ctrl < 0x20000);
-		mutASSERT(value < 0x10000);
+		mutASSERT(value < 0x4000);
 		mutASSERT(this->isOpen || ctrl == midi::PITCH_BEND_SENSITIVITY);
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].channel == mutabor_channel
 			     && (ton_auf_kanal[i].active 
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
 				if (ctrl < 0x10000) {
+					mutASSERT(value < 0x80);
 					controller(i, ctrl, value);
 					Cd[i].set_controller(ctrl, value);
 				} else {
@@ -662,16 +663,24 @@ namespace mutabor {
 			break;
 
 		case midi::CONTROLLER:
-			if (((midiCode >> 8) & 0xff == midi::ALL_NOTES_OFF)&& 
-			    ((midiCode >> 16) & 0xff) == 0) {
-				::Panic();
-			} else {
-				Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
-							       (midiCode >> 16) & 0xff);
-				route -> Controller((midiCode >> 8) & 0xff,  
-						    (midiCode >> 16) & 0xff);
-				break;
+#warning "Implement less rigourous answers to reset messages"
+			Cd[MidiChannel].set_controller((midiCode >> 8) & 0xff, 
+						       (midiCode >> 16) & 0xff);
+			switch ((midiCode >> 8) & 0xff) {
+			case midi::ALL_CONTROLLERS_OFF:
+				Cd[MidiChannel].Reset();
+			case midi::ALL_SOUND_OFF:
+			case midi::LOCAL_ON_OFF:
+			case midi::ALL_NOTES_OFF:
+			case midi::OMNI_OFF:
+			case midi::OMNI_ON:
+			case midi::MONO_ON:
+			case midi::POLY_ON:
+				Panic();
 			}
+			route -> Controller((midiCode >> 8) & 0xff,  
+					    (midiCode >> 8) & 0xff);
+			break;
 		case midi::KEY_PRESSURE:
 #warning "implement key_pressure"
 		case midi::CHANNEL_PRESSURE: // Key Pressure, Controler, Channel Pressure
@@ -754,6 +763,18 @@ namespace mutabor {
 		case midi::CONTROLLER:
 			Cd[MidiChannel].set_controller(midiCode->at(1), 
 						       midiCode->at(2));
+			switch (midiCode -> at(1)) {
+			case midi::ALL_CONTROLLERS_OFF:
+				Cd[MidiChannel].Reset();
+			case midi::ALL_SOUND_OFF:
+			case midi::LOCAL_ON_OFF:
+			case midi::ALL_NOTES_OFF:
+			case midi::OMNI_OFF:
+			case midi::OMNI_ON:
+			case midi::MONO_ON:
+			case midi::POLY_ON:
+				Panic();
+			}
 			route -> Controller(midiCode->at(1),  
 					    midiCode->at(2));
 			break;
