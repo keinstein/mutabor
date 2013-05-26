@@ -11,6 +11,19 @@
  * \version $Revision: 1.55 $
  * \license GPL
  *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * \addtogroup src/wxGUI
  * \{
@@ -987,6 +1000,24 @@ namespace mutaborGUI {
 
 	wxString MutApp::GetResourceName(const wxString & file)
 	{
+#ifdef MUTABOR_TEST
+		wxFileName rcname(srcdir,file);
+		if (rcname.IsFileReadable()) {
+			return rcname.GetFullPath();
+		} 
+		rcname.SetPath(top_srcdir);
+		if (rcname.IsFileReadable()) {
+			return rcname.GetFullPath();
+		} 
+		rcname.SetPath(mutString(top_srcdir) + _T("/Images/Icons/png/"));
+		if (rcname.IsFileReadable()) {
+			return rcname.GetFullPath();
+		} 
+		std::cout << rcname.GetFullPath().ToUTF8() << std::endl;
+		return file;
+
+#else
+
 		const wxLocale * m_locale = wxGetLocale();
 		wxStandardPathsBase & sp = wxStandardPaths::Get();
 		wxString localename = m_locale->GetCanonicalName();
@@ -1002,6 +1033,7 @@ namespace mutaborGUI {
 		}
 		localename = rcname.GetFullPath();
 		return localename;
+#endif
 	}
 
 	wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)

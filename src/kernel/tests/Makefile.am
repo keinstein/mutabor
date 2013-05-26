@@ -10,10 +10,12 @@ check_PROGRAMS = testcppunit
 testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
+	debugPaths.cpp \
 	main.cpp \
 	boxTest.h 
 
 testcppunit_LDADD = \
+	$(top_builddir)/libmutabormaincppunit.a \
 	$(top_builddir)/libmutabordebugcppunit.a \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborkernel.a \

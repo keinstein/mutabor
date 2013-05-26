@@ -19,6 +19,7 @@ TESTS = \
 	midiopenfail1$(EXEEXT)
 
 playmidi1_SOURCES = \
+	debugPaths.cpp \
 	playmidi1.cpp
 
 playmidi1_LDADD = \
@@ -40,6 +41,7 @@ midiopenfail1_LDADD = \
 	$(AM_LDFLAGS)
 
 midiopenfail1_SOURCES = \
+	debugPaths.cpp \
 	midiopenfail1.cpp
 
 
@@ -52,6 +54,7 @@ check_PROGRAMS += testcppunit
 testcppunit_CXXFLAGS =  $(CPPUNIT_CFLAGS) $(AM_CXXFLAGS)
 
 testcppunit_SOURCES = \
+	debugPaths.cpp \
 	main.cpp \
 	DevMidFTest.h \
 	DevMidFTest.cpp \
@@ -59,11 +62,7 @@ testcppunit_SOURCES = \
 	midicmnTest.cpp
 
 testcppunit_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/libmutabormaincppunit.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS)

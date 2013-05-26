@@ -218,6 +218,12 @@ void mutAssertFailure(const wxChar *file,
 		      const wxChar *cond,
 		      const wxChar *msg);
 
+#ifdef MUTABOR_TEST
+extern const wxChar * srcdir;
+extern const wxChar * top_srcdir;
+extern const wxChar * top_builddir;
+#endif
+
 #endif
 
 ///\}

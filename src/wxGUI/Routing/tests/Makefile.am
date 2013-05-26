@@ -1,7 +1,7 @@
 include $(top_srcdir)/common-rules.mk
 include $(top_srcdir)/common-linklibs.mk
 
-
+TESTS =
 check_PROGRAMS = 
 
 if HAVE_CPPUNIT
@@ -13,16 +13,13 @@ check_PROGRAMS += testcppunit
 testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
+	debugPaths.cpp \
 	main.cpp \
 	GUIRouteTest.h \
 	GUIRouteTest.cpp
 
 testcppunit_LDADD = \
-	$(top_builddir)/libmutabordebugcppunit.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/libmutabormaincppunit.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS)

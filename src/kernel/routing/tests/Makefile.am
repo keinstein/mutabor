@@ -5,7 +5,10 @@ check_PROGRAMS=timer1
 
 TESTS=timer1$(EXEEXT)
 
-timer1_SOURCES=timer1.cpp
+timer1_SOURCES = \
+	debugPaths.cpp \
+	timer1.cpp
+
 timer1_LDADD= \
 	$(top_builddir)/libmutabordebugtest.a \
 	$(top_builddir)/libmutaborgui.a \
@@ -24,11 +27,14 @@ check_PROGRAMS += testcppunit
 testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
+	debugPaths.cpp \
 	main.cpp \
+	timing.h \
 	RouteTest.h \
 	CommonFileDeviceTest.h
 
 testcppunit_LDADD = \
+	$(top_builddir)/libmutabormaincppunit.a \
 	$(top_builddir)/libmutabordebugcppunit.a \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \

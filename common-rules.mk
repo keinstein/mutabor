@@ -17,7 +17,8 @@ AM_YFLAGS = -d -v --report=itemset
 
 BUILT_SOURCES = \
 	$(top_srcdir)/src/xrc/wxresource.h \
-	$(top_srcdir)/osdep/win/Mutabor.nsi
+	$(top_srcdir)/osdep/win/Mutabor.nsi \
+	debugPaths.cpp
 
 SUFFIXES = .$(PCHEXT_CXX) .rc .res
 INDENT = astyle --style=linux --indent=tab=8
@@ -235,6 +236,12 @@ $(top_srcdir)/src/xrc/reslocale.cpp : $(top_srcdir)/src/xrc/Mutabor.xrc
 	(cd $(top_srcdir)/src/xrc; \
 	wxrc -g -o reslocale.cpp Mutabor.xrc)
 
+debugPaths.cpp: Makefile
+	echo '#include "src/kernel/Defs.h"' >$@
+	echo 'const mutChar * srcdir = _T("$(srcdir)");' >> $@
+	echo 'const mutChar * top_srcdir = _T("$(top_srcdir)");' >> $@
+	echo 'const mutChar * top_builddir = _T("$(top_builddir)");' >> $@
+
 
 #-------------------------------------------------------------------------------------
 # Installing DLLs
@@ -267,7 +274,7 @@ installdll:
 # Recursive generation of potfiles.chk
 #-------------------------------------------------------------------------------------
 
-CLEANFILES += POTFILES.tmp POTFILES.tmp.local
+CLEANFILES += POTFILES.tmp POTFILES.tmp.local debugPaths.cpp
 
 potfilechk-recursive:potfilechk-makerecursive
 

@@ -96,7 +96,8 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 
 
 bin_PROGRAMS = mutabor
-noinst_LIBRARIES = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a libmutabordebugcppunit.a libmutabordebugtest.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+noinst_LIBRARIES = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
+check_LIBRARIES = libmutabordebugcppunit.a libmutabordebugtest.a libmutabormaincppunit.a libmutabormaintest.a
 
 #-------------------------------------------------------------
 # libmutaborgui.a
@@ -325,17 +326,38 @@ libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 libmutabordebugcppunit_a_INLINEHEADERS = \
 		$(libmutabordebug_a_INLINEHEADERS)
 libmutabordebugcppunit_a_INDENTHEADERS = \
-		$(libmutabordebug_a_INDENTHEADERS) \
-		src/wxGUI/MutApp.h
+		$(libmutabordebug_a_INDENTHEADERS)
 libmutabordebugcppunit_a_INDENTS = \
-		$(libmutabordebug_a_INDENTS) \
-		src/wxGUI/MutApp.cpp
+		$(libmutabordebug_a_INDENTS)
 
 # no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
 
 libmutabordebugcppunit_a_SOURCES = $(libmutabordebugcppunit_a_INDENTS)
-libmutabordebugcppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
+libmutabordebugcppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST
 
+
+#-------------------------------------------------------------
+# libmutabordebugcppunit.a
+#-------------------------------------------------------------
+
+libmutabormaincppunit_a_INLINEHEADERS = 
+libmutabormaincppunit_a_INDENTHEADERS = \
+		src/wxGUI/MutApp.h
+libmutabormaincppunit_a_INDENTS = \
+		src/wxGUI/MutApp.cpp
+
+# no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
+
+libmutabormaincppunit_a_SOURCES = $(libmutabormaincppunit_a_INDENTS)
+libmutabormaincppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST \
+					"-DSRCDIR=\"$(srcdir)\""
+libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
+				$(libmutaborrouting_a_OBJECTS) \
+				$(libmutaborkernel_a_OBJECTS) \
+				$(libmutabordebugcppunit_a_OBJECTS) \
+				$(librtmidi_a_OBJECTS)
+
+libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
 
 #-------------------------------------------------------------
 # libmutabordebugtest.a
@@ -357,6 +379,28 @@ libmutabordebugtest_a_INDENTS = \
 libmutabordebugtest_a_SOURCES = $(libmutabordebugtest_a_INDENTS)
 libmutabordebugtest_a_CXXFLAGS = $(AM_CXXFLAGS) -DMUTABOR_TEST
 
+
+#-------------------------------------------------------------
+# libmutabordebugtest.a
+#-------------------------------------------------------------
+
+libmutabormaintest_a_INLINEHEADERS = 
+libmutabormaintest_a_INDENTHEADERS = \
+		src/wxGUI/MutApp.h
+libmutabormaintest_a_INDENTS = \
+		src/wxGUI/MutApp.cpp
+
+# no noinst_HEADERS or POTSOURCES needed as we are using common files declared elsewhere
+
+libmutabormaintest_a_SOURCES = $(libmutabormaintest_a_INDENTS)
+libmutabormaintest_a_CXXFLAGS = $(AM_CXXFLAGS) $(TEST_CFLAGS) -DMUTABOR_TEST
+libmutabormaintest_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
+				$(libmutaborrouting_a_OBJECTS) \
+				$(libmutaborkernel_a_OBJECTS) \
+				$(libmutabordebugtest_a_OBJECTS) \
+				$(librtmidi_a_OBJECTS)
+
+libmutabormaintest_a_DEPENDENCIES = $(libmutabormaintest_a_LIBADD)
 
 #-------------------------------------------------------------
 # librtmidi.a

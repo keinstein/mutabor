@@ -17,27 +17,21 @@ TESTS = \
 	gmnopenfail1$(EXEEXT)
 
 playgmn1_SOURCES = \
+	debugPaths.cpp \
 	playgmn1.cpp
 
 playgmn1_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/libmutabormaintest.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
 gmnopenfail1_LDADD = \
-	$(top_builddir)/libmutabordebugtest.a \
-	$(top_builddir)/libmutaborkernel.a \
-	$(top_builddir)/libmutaborgui.a \
-	$(top_builddir)/libmutaborrouting.a \
-	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/libmutabormaintest.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
 gmnopenfail1_SOURCES = \
+	debugPaths.cpp \
 	gmnopenfail1.cpp
 
 

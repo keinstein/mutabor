@@ -1,4 +1,6 @@
 mutaborlibraries = \
+	$(top_builddir)/libmutabormaintest.a \
+	$(top_builddir)/libmutabormaincppunit.a \
 	$(top_builddir)/libmutaborgui.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
@@ -14,9 +16,9 @@ mutaborlibraries = \
 $(mutaborlibraries):mkmutaborlibraries
 
 mkmutaborlibraries:
+	lib="" ; \
 	for d in $(mutaborlibraries) ; \
 	do \
-		lib="`basename "$$d"`" ; \
-		echo "$$lib" ; \
-		$(MAKE) $(AM_MAKEFLAGS) -C "$(top_builddir)" "$$lib" || exit 1 ; \
-	done
+		lib="$$lib `basename "$$d"`" ; \
+	done ;\
+	$(MAKE) $(AM_MAKEFLAGS) -C "$(top_builddir)" $$lib || exit 1 ; 
