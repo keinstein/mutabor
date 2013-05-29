@@ -224,6 +224,8 @@ void mutAssertFailure(const wxChar *file,
 extern const wxChar * srcdir;
 extern const wxChar * top_srcdir;
 extern const wxChar * top_builddir;
+
+wxString StreamToHex(wxStreamBuffer * buf);
 #endif
 
 #endif

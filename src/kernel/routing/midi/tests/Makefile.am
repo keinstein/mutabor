@@ -3,14 +3,19 @@ include $(top_srcdir)/common-linklibs.mk
 
 CLEANFILES += \
 	playmidi1.mid \
-	test_output.mid
+	test_output.mid \
+	test_output2.mid
 
 AM_CPPFLAGS += -DSRCDIR="\"$(srcdir)\""
 check_PROGRAMS = \
 	playmidi1 \
 	midiopenfail1
 
-EXTRA_DIST = midi1_source.mid
+EXTRA_DIST = \
+	midi1_source.mid \
+	midi1_source.txt \
+	bug019010.mid \
+	bug019010.txt
 
 check_SCRIPTS = playmidi1.mid
 

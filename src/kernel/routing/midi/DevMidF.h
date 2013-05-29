@@ -640,6 +640,10 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
+
+		mutString Save(mutOFstream &os) {
+			Out.Save(os);
+		}
 	protected:
 		OutputMidiFile(): base() {}
 

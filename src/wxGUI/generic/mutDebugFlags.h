@@ -44,5 +44,6 @@ DEBUGFLAG(editor, N_("Debug editor related functionality"))
 DEBUGFLAG(smartptr, N_("Debug smart pointer related functionality"))
 DEBUGFLAG(trace, N_("Output some tracepoints"))
 DEBUGFLAG(timer, N_("Trace thread timer problems"))
+DEBUGFLAG(always, N_("Show messages that are always shown ;-). (for internal use only)"))
 
 ///\}

@@ -172,6 +172,7 @@ class OutputMidiFileTest : public CPPUNIT_NS::TestFixture
 {
 	CPPUNIT_TEST_SUITE( OutputMidiFileTest );
 	CPPUNIT_TEST( testNoteOnOff );
+	CPPUNIT_TEST( testBatchPlay1 );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -193,7 +194,10 @@ public:
 	void setUp();
 	void tearDown();
 
+	bool CheckOut(mutString s, int line, const mutChar * file);
+
 	void testNoteOnOff();
+	void testBatchPlay1();
 
 protected:
 	mutabor::OutputDevice guard;

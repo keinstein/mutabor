@@ -56,7 +56,7 @@ debugFlags::flagtype::flagtype()
 	flags.flag = false;
 #include "mutDebugFlags.h"
 #undef DEBUGFLAG	
-
+	flags.always = true;
 	// manual overrides for debug purposes
 //	flags.smartptr = true;
 }
@@ -309,6 +309,52 @@ void mutAssertFailure(const wxChar *file,
 	}
 #endif	
 }
+
+#ifdef MUTABOR_TEST
+mutString StreamToHex(mutStreamBuffer * buf)
+{
+	mutString retval;
+	if (!buf) 
+		return retval;
+	if (buf->Seek(0,wxFromStart) == wxInvalidOffset) 
+		return retval;
+
+	size_t max = buf->GetDataLeft();
+	retval.Alloc(6*max);
+	unsigned char * start = (unsigned char *)buf->GetBufferStart();
+	unsigned char * end = start + max;
+	wxChar tmpchar;
+	wxString clearstring;
+	clearstring.Alloc(9);
+	
+	for (unsigned char * i = start; i < end ; i++ ) {
+		if ((i-start) && !((i-start)%16)){
+			retval += _T("   ") + clearstring + _T("\n");
+			clearstring = _T("");
+			clearstring.Alloc(9);
+		}
+		else if ((i-start) && !((i-start)%8)) {
+			retval += _T(" ");
+			clearstring += _T(" ");
+		}
+		retval += wxString::Format(_T(" %02x"),*i);
+		tmpchar = *i;
+		if (32 <= tmpchar && tmpchar < 127) 
+			clearstring += tmpchar;
+		else 
+			clearstring += _T("…");
+	}
+	for (size_t j = 15-((end-start+15) % 16); j ; j--) {
+		retval += _T("   ");
+	}
+//	retval += wxString :: Format(_T("  %d/%d  "),(end-start), (end-start)%16);
+	if ((end-start+15)%16 < 8 )
+		retval += _T(" ");
+	
+	retval += _T("   ") + clearstring + _T("\n");
+	return retval;
+}
+#endif
 
 
 ///\}

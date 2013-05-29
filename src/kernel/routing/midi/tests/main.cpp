@@ -35,11 +35,12 @@ main(int argc, char** argv)
 	runner.eventManager().addListener(&listener);
 
 	runner.addTest( CommonMidiOutputTest::suite() );
-	runner.addTest( OutputMidiFileTest::suite() );
 
 	/// Input tests use the output device for logging
 	runner.addTest( CommonMidiInputTest::suite() );
 	runner.addTest( InputMidiFileTest::suite() );
+	// Output file tests use input devices
+	runner.addTest( OutputMidiFileTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 
