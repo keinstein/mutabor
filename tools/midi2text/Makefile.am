@@ -2,8 +2,9 @@
 #include $(top_srcdir)/common-rules.mk
 
 all: midi2text
+midi2text: mf2txt$(EXEEXT) txt2mf$(EXEEXT)
 
-bin_PROGRAMS = mf2txt txt2mf
+noinst_PROGRAMS = mf2txt txt2mf
 
 mf2txt_SOURCES = \
 	mf2t/crack.c \
