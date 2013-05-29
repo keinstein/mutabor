@@ -35,6 +35,7 @@
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 
+#include "wx/mstream.h"
 
 void  InputMidiFileTest::testBatchPlay1() 
 {
@@ -43,9 +44,9 @@ void  InputMidiFileTest::testBatchPlay1()
 //	debugFlags::flags.midiio = true;
 #endif
 
-	mutabor::OutputDevice guard;
+	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::Route  route;
+	mutabor ::ScopedRoute  route;
 	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
@@ -590,10 +591,6 @@ void  InputMidiFileTest::testBatchPlay1()
 199680   3: 83 34 40\n\
 249600   0: 80 3c 7f\n\
 249600 ...closed.\n"),__LINE__,_T(__FILE__)));
-	out->Destroy();
-	out=NULL;
-	route->Destroy();
-	route = NULL;
 }
 
 
@@ -605,9 +602,9 @@ void  InputMidiFileTest::testBug019010_2()
 //	debugFlags::flags.midifile = true;
 #endif
 
-	mutabor::OutputDevice guard;
+	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::Route  route;
+	mutabor ::ScopedRoute  route;
 	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
@@ -639,7 +636,7 @@ void  InputMidiFileTest::testBug019010_2()
 	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
-
+ 
 	CPPUNIT_ASSERT((out -> Open()));
 	CPPUNIT_ASSERT((in -> Open()));
 	CPPUNIT_ASSERT(out->Check(_T("0 Opened...\n\
@@ -933,10 +930,6 @@ void  InputMidiFileTest::testBug019010_2()
 	out->Close();
 	CPPUNIT_ASSERT(out->Check(_T("0 ...closed.\n"),__LINE__,_T(__FILE__)));
 
-	out->Destroy();
-	out=NULL;
-	route->Destroy();
-	route = NULL;
 }
 
 
@@ -944,13 +937,13 @@ void  InputMidiFileTest::testBug019010()
 {
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-	debugFlags::flags.midiio = true;
+//	debugFlags::flags.midiio = true;
 //	debugFlags::flags.midifile = true;
 #endif
 
-	mutabor::OutputDevice guard;
+	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::Route  route;
+	mutabor ::ScopedRoute  route;
 	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
@@ -1279,10 +1272,6 @@ void  InputMidiFileTest::testBug019010()
 104248200   0: 80 3c 7f\n\
 104248200 ...closed.\n\
 "),__LINE__,_T(__FILE__)));
-	out->Destroy();
-	out=NULL;
-	route->Destroy();
-	route = NULL;
 }
 
 bool OutputMidiFileTest::CheckOut(mutString s,int line, const mutChar * file) {
@@ -1325,7 +1314,7 @@ void OutputMidiFileTest::setUp()
 //	debugFlags::flags.midifile = false;
 #endif
 #endif
-	std::clog << "Running setUp()" << std::endl;
+//	std::clog << "Running setUp()" << std::endl;
 
 	initialize_boxes();
 	GlobalReset();
@@ -1356,7 +1345,8 @@ void OutputMidiFileTest::tearDown()
 	debugFlags::flags.timer = false;
 	debugFlags::flags.midifile = false;
 #endif
-	out -> Destroy();
+	if (out)
+		out -> Destroy();
 	out = NULL;
 	guard = NULL;
 	route -> Destroy();
