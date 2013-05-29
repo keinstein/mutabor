@@ -222,19 +222,20 @@ namespace mutabor {
 		base ReadMessage();
 
 		void WriteNumber(size_t count) {
-			int i = 3;
-			size_t mask = 0x0FffFFff;
-			if (count > mask) 
+			uint8_t tmp[4];
+			int i = 0;
+			tmp[0] = count & 0x7f;
+			while (count && i < 4) {
+				tmp[i++] = count & 0x7f;
+				count >>= 7;
+			}
+			if (count) 
 				throw delta_length_error(gettext_noop("trying to write number > 0x0FFFFFFF"));
-			while (i && count <= mask) {
-				mask = mask >> 7;
-				i--;
-			}
-			while (i) { 
-				push_back(((count >> (i*7)) & 0x7F)| 0x80);
-				i--;
-			}
-			push_back(count & 0x7F);
+
+			if (i == 0) i++;
+			while (--i) 
+				push_back(tmp[i] | 0x80);
+			push_back(tmp[0]);
 		}
 		void WriteLength(mutOFstream &os, size_t l);
 	

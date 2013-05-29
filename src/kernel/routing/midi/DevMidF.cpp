@@ -116,10 +116,13 @@ namespace mutabor {
 		BYTE w[5];
 		int i = 0;
 		mutint64 newtime = CurrentTime.Get();
-		mutint64 Deltatime = (newtime - Time);
+		mutint64 Deltatime = std::max(newtime - Time,(mutint64)0);
 		// note: Deltatime may be a little bit ahead if get_delta rounds up
 		mutint64 Delta = timing.get_delta_midi(Deltatime);
-
+		DEBUGLOG(midifile,
+			 _T("Deltatime = %ld, Delta = %ld, get_time_midi(Delta) = %ld, get_delta_midi(get_time_midi(Delta)) = %ld"),
+			 Deltatime, Delta, timing.get_time_midi(Delta), timing.get_delta_midi(timing.get_time_midi(Delta)));
+		mutASSERT(timing.get_delta_midi(timing.get_time_midi(Delta)) == Delta);
 		// we should take care of rounding errors
 		//Time = newtime + timing.get_time(Delta) - Deltatime;
 		Time += timing.get_time_midi(Delta);

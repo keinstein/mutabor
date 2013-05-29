@@ -156,6 +156,10 @@ public:
 		CPPUNIT_ASSERT(params.second == 40);
 		CPPUNIT_ASSERT(timing.get_time_midi(1) == 1000);
 		CPPUNIT_ASSERT(timing.get_delta_midi(1000) == 1);
+		CPPUNIT_ASSERT(timing.get_delta_midi(4769600) == 4770);
+		CPPUNIT_ASSERT(timing.get_delta_midi(3222960) == 3223);
+		CPPUNIT_ASSERT(timing.get_delta_midi(148080) == 148);
+		CPPUNIT_ASSERT(timing.get_delta_midi(14725074) == 14725);
 
 	}
 	void testExactTicks() {

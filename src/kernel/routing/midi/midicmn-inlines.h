@@ -1,6 +1,6 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Common midi functunos
+ * Common midi functions
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
