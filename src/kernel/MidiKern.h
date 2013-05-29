@@ -163,16 +163,20 @@ namespace mutabor {
 			HOLD_2_PEDAL_ON_OFF      = 0x45,
 
 	
-			/* Sound controllers */
+			/* Sound controllers (includes RP-021 from midi.org) */
 			SOUND_VARIATION          = 0x46,
 			SOUND_TIMBRE             = 0x47,
 			SOUND_RELEASE_TIME       = 0x48,
 			SOUND_ATTACK_TIME        = 0x49,
 			SOUND_BRIGHTNESS         = 0x4A,
 			SOUND_6                  = 0x4B,
+			SOUND_DECAY_TIME         = 0x4B,
 			SOUND_7                  = 0x4C,
+			SOUND_VIBRATO_RATE       = 0x4C,
 			SOUND_8                  = 0x4D,
+			SOUND_VIBRATO_DEPTH      = 0x4D,
 			SOUND_9                  = 0x4E,
+			SOUND_VIBRATO_DELAY      = 0x4E,
 			SOUND_10                 = 0x4F,
 
 			/* general purpose on/off */
