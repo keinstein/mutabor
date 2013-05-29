@@ -80,6 +80,10 @@ namespace mutabor {
 		for (i = 0; i < 16; i++) {
 			pitch_bend(i,0);
 			// omni and poly act on 0
+			Controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
+			Controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
+			Controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
+			// we must set the controllers manually
 			controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
 			controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
 			controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
@@ -164,9 +168,6 @@ namespace mutabor {
 		    i = input.get_next_changed_controller(Cd[channel],i)) {
 			int number =  *i;
 			int value =   input.get_controller(number);
-			mutASSERT(number < 0x80);
-			mutASSERT(value < 0x80);
-			Cd[channel].set_controller(number,value);
 			controller(channel,number,value);
 		}
 	}
@@ -409,16 +410,36 @@ namespace mutabor {
 	{
 		mutASSERT(ctrl < 0x20000);
 		mutASSERT(value < 0x4000);
-		mutASSERT(this->isOpen || ctrl == midi::PITCH_BEND_SENSITIVITY);
+		mutASSERT(this->isOpen 
+			  || ctrl == midi::PITCH_BEND_SENSITIVITY
+			  || ctrl == midi::LOCAL_ON_OFF
+			  || ctrl == midi::OMNI_ON
+			  || ctrl == midi::POLY_ON);
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].channel == mutabor_channel
 			     && (ton_auf_kanal[i].active 
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
+				Cd[i].set_controller(ctrl, value);
+				switch (ctrl) {
+				case midi::REGISTERED_PARAMETER_COARSE:
+				case midi::REGISTERED_PARAMETER_FINE:
+				case midi::NON_REGISTERED_PARAMETER_COARSE:
+				case midi::NON_REGISTERED_PARAMETER_FINE:
+					ctrl = -1;
+					break;
+				default:
+					ctrl = Cd[i].get_index(ctrl);
+				}
 				if (ctrl < 0x10000) {
 					mutASSERT(value < 0x80);
 					controller(i, ctrl, value);
-					Cd[i].set_controller(ctrl, value);
-				} else {
+				} else if (0x10000 <= ctrl && ctrl < 0x20000) {
+					controller(i,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+					controller(i,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+
+					controller(i,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+					controller(i,midi::DATA_ENTRY_FINE, value & 0x7F);
+				} else if (ctrl <= 0x30000) {
 					controller(i,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
 					controller(i,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
 

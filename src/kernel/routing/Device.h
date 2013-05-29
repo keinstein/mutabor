@@ -84,7 +84,7 @@ namespace mutabor {
 	class ChannelData
 	{
 	public:
-		typedef std::vector<int8_t> controller_vector;
+		typedef std::vector<int> controller_vector;
 
 		ChannelData(int sound = -1, int8_t sustain = 0):controller(128,-1),
 								controller_changed(128,-1),
@@ -121,11 +121,67 @@ namespace mutabor {
 				
 			}
 
-		int8_t set_controller(int8_t number, int8_t data) {
-			int8_t retval = controller[number];
-			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
+		int set_controller(int number, int8_t data) {
 
+			if (controller.size() <= number) 
+				controller.resize(number +1);
+			int retval = controller[number];
+			int param = -1;
+			DEBUGLOG(midiio,_T("ctrl: %d, %d => %d"),(int)number,(int)retval,(int)data);
 			controller[number] = data;
+			switch (number) {
+			case midi::NON_REGISTERED_PARAMETER_FINE:
+			case midi::NON_REGISTERED_PARAMETER_COARSE:
+				data_is_rpn = false;
+				break;
+			case midi::REGISTERED_PARAMETER_FINE:
+			case midi::REGISTERED_PARAMETER_COARSE:
+				data_is_rpn = true;
+				break;
+			case midi::DATA_ENTRY_COARSE:
+			case midi::DATA_ENTRY_FINE:
+			case midi::DATA_BUTTON_INCREMENT:
+			case midi::DATA_BUTTON_DECREMENT:
+ 				if (!data_is_rpn 
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
+					param = 0x20000 
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
+				} else if (data_is_rpn
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+					   && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+					   && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f) {
+					param = 0x10000 
+						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::REGISTERED_PARAMETER_FINE];
+				}
+				if (param != -1) {
+					if (controller.size() <= param) 
+						controller.resize(param+1);
+					switch (number) {
+					case midi::DATA_BUTTON_INCREMENT:
+						controller[param]++;
+						break;
+					case midi::DATA_BUTTON_DECREMENT:
+						controller[param]--;
+						break;
+					case midi::DATA_ENTRY_COARSE:
+					case midi::DATA_ENTRY_FINE:
+						int value = (controller[midi::DATA_ENTRY_COARSE]) << 8 
+							|| (controller[midi::DATA_ENTRY_COARSE]);
+						if (!(value & 0x8080))
+							controller[param] = value;
+					}
+				}
+				break;
+			}
+
+
+
 			bool found = false;
 			size_t index;
 			for (int i = 0; i < (looped?controller.size():first_unchanged);i++) {
@@ -140,12 +196,64 @@ namespace mutabor {
 			if (!found) 
 				index = first_unchanged++;
 
-			controller_changed[index] = number;
+			controller_changed[index] = (param == -1 ? number : param);
 
 			return retval;
 		}
 
-		int8_t get_controller(int8_t number) const {
+		int get_index(int message) {
+
+			switch (message) {
+			case midi::NON_REGISTERED_PARAMETER_FINE:
+			case midi::NON_REGISTERED_PARAMETER_COARSE:
+ 				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
+					return 0x20000 
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
+				}
+				return -1;
+			case midi::REGISTERED_PARAMETER_FINE:
+			case midi::REGISTERED_PARAMETER_COARSE:
+				if (controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+				    && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
+				    && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f)
+					return 0x10000 
+						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::REGISTERED_PARAMETER_FINE];
+				return -1;
+			case midi::DATA_ENTRY_COARSE:
+			case midi::DATA_ENTRY_FINE:
+			case midi::DATA_BUTTON_INCREMENT:
+			case midi::DATA_BUTTON_DECREMENT:
+ 				if (!data_is_rpn 
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
+					return 0x20000 
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
+				} else if (data_is_rpn
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+					   && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+					   && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f) {
+					return 0x10000 
+						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+						| controller[midi::REGISTERED_PARAMETER_FINE];
+				}
+				return -1;
+			}
+			return message;
+			
+		}
+
+		int get_controller(int number) const {
+			if (number >= controller.size()) return -1;
 			return controller[number];
 		}
 
@@ -161,7 +269,9 @@ namespace mutabor {
 			controller_vector::const_iterator retval = last;
 			do {
 				retval++;
-			} while (retval != controller_changed.end() && (*retval != -1) && controller[*retval] == other.controller[*retval]);
+			} while (retval != controller_changed.end() && (*retval != -1) 
+				 && *retval < other.controller.size()
+				 && controller[*retval] == other.controller[*retval]);
 			return retval;
 		}
 
@@ -197,7 +307,7 @@ namespace mutabor {
 			    != cd.controller.size()) return false;
 				
 			/* \todo optimization */
-			for (size_t i = 0 ; i < controller.size() ; i++) {
+			for (size_t i = 0 ; i < std::min(controller.size(),cd.controller.size()) ; i++) {
 				if (controller[i] != -1 
 				    && cd.controller[i] != -1 
 				    && controller[i] != cd.controller[i]) return false;
@@ -216,10 +326,11 @@ namespace mutabor {
 		controller_vector controller_changed;
 		size_t first_unchanged;
 		bool looped;
-		int Sound;                // -1 = noch nicht verwendet
-		uint8_t bank_coarse;      // MSB as saved during last program change
-		uint8_t bank_fine;        // LSB as saved during last program change
-		int bend;                 // 0 = ungepitcht, kann durchaus auch negativ sein
+		bool data_is_rpn;         //< false if current Data entry is for NRPN
+		int Sound;                //< Programe -1 if unused
+		uint8_t bank_coarse;      //< MSB as saved during last program change
+		uint8_t bank_fine;        //< LSB as saved during last program change
+		int bend;                 //< pitch bend value as integer -8192 – +8191
 	};
 
 	class Device

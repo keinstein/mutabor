@@ -553,6 +553,7 @@ namespace mutabor {
 		void Quiet(RouteClass * r);
 		void Panic();
 		void SendBendingRange(int channel) {
+			Controller(channel,midi::PITCH_BEND_SENSITIVITY,bending_range);
 			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 
 				   (midi::PITCH_BEND_SENSITIVITY >> 8) & 0x7F);
 			controller(channel,midi::REGISTERED_PARAMETER_FINE, 
