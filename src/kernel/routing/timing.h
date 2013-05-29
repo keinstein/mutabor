@@ -413,7 +413,7 @@ namespace mutabor {
 		 * \return reference to self.
 		 */
 		CurrentTimer& operator += (mutint64 t) {
-			mutASSERT(is_realtime);
+			mutASSERT(!is_realtime);
 			time += t;
 			return * this;
 		}
