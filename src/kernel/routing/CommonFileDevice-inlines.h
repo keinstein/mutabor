@@ -55,7 +55,9 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.Write(_T("File Name"),Name);
+#ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
+#endif
 	}
 
 
@@ -69,7 +71,9 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		Name = config.Read(_T("File Name"),mutEmptyString);
+#ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
+#endif
 	}
 
 	inline bool CommonFileOutputDevice::Open()
@@ -109,7 +113,9 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.Write(_T("File Name"),Name);
+#ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
+#endif
 	}
 
 
@@ -123,7 +129,9 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		Name = config.Read(_T("File Name"),mutEmptyString);
+#ifdef DEBUG
 		mutASSERT(oldpath == config.GetPath());
+#endif
 	}
 	
 

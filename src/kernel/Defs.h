@@ -122,6 +122,8 @@
 #define mutStreamGood(stream) ((stream).IsOk())
 #define mutStreamEOF(stream) ((stream).Eof())
 
+#define mutStreamBuffer wxStreamBuffer
+
 #if wxCHECK_VERSION(2,9,0)
 #define mutTranslationChar char
 #define N_T(s) (s)
