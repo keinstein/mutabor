@@ -1,5 +1,6 @@
 #include "src/wxGUI/Routing/tests/GUIRouteTest.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/app.h"
 #include <cppunit/ui/text/TestRunner.h>
