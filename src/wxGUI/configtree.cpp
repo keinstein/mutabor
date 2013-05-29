@@ -8,38 +8,19 @@
  * \version $Revision: 1.8 $
  * \license GPL
  *
- * $Log: configtree.cpp,v $
- * Revision 1.8  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.7  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.6  2011-09-09 09:29:10  keinstein
- * fix loading of routing configuration
- *
- * Revision 1.5  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.4  2010-12-11 02:10:09  keinstein
- * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
- *
- * Revision 1.3  2010-11-21 23:39:00  keinstein
- * some corrections for allowing debuild to complete
- *
- * Revision 1.2  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.3  2010-09-29 13:03:30  keinstein
- * config can be stored and restored with new treeconfig
- *
- * Revision 1.1.2.2  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.1  2010-08-10 16:33:37  keinstein
- * added simple wrapper for config and XML like files
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
