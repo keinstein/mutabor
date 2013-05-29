@@ -168,7 +168,34 @@ namespace mutabor {
 		    i = input.get_next_changed_controller(Cd[channel],i)) {
 			int number =  *i;
 			int value =   input.get_controller(number);
-			controller(channel,number,value);
+			int ctrl = Cd[channel].get_index(number);
+			
+			if (ctrl == number && 
+			    Cd[channel].get_controller(ctrl) == value) 
+				continue;
+			
+			// this might change the index
+			Cd[channel].set_controller(number,value);
+			ctrl = Cd[channel].get_index(number);
+
+			if (ctrl == -1) continue;
+			
+			if (ctrl < 0x10000) {
+				mutASSERT(value < 0x80);
+				controller(channel, ctrl, value);
+			} else if (0x10000 <= ctrl && ctrl < 0x20000) {
+				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+				
+				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+			} else if (ctrl <= 0x30000) {
+				controller(channel,midi::REGISTERED_PARAMETER_COARSE, (ctrl >> 8) & 0x7F);
+				controller(channel,midi::REGISTERED_PARAMETER_FINE, ctrl & 0x7F);
+				
+				controller(channel,midi::DATA_ENTRY_COARSE, value >> 7 & 0x7F);
+				controller(channel,midi::DATA_ENTRY_FINE, value & 0x7F);
+			}
 		}
 	}
 		
@@ -408,6 +435,8 @@ namespace mutabor {
 	template<class T, class D>
 	void  CommonMidiOutput<T,D>::Controller(int mutabor_channel, int ctrl, int value)
 	{
+
+
 		mutASSERT(ctrl < 0x20000);
 		mutASSERT(value < 0x4000);
 		mutASSERT(this->isOpen 
@@ -419,17 +448,26 @@ namespace mutabor {
 			if ( ton_auf_kanal[i].channel == mutabor_channel
 			     && (ton_auf_kanal[i].active 
 				 || Cd[i].get_controller(midi::HOLD_PEDAL_ON_OFF) > 0x40)) {
-				Cd[i].set_controller(ctrl, value);
-				switch (ctrl) {
-				case midi::REGISTERED_PARAMETER_COARSE:
-				case midi::REGISTERED_PARAMETER_FINE:
-				case midi::NON_REGISTERED_PARAMETER_COARSE:
-				case midi::NON_REGISTERED_PARAMETER_FINE:
-					ctrl = -1;
-					break;
-				default:
-					ctrl = Cd[i].get_index(ctrl);
+				if (Cd[i].get_controller(ctrl) == value) {
+					switch (ctrl) {
+					case midi::DATA_ENTRY_COARSE:
+					case midi::DATA_ENTRY_FINE:
+						break;
+					default:
+						continue;
+					}
 				}
+
+				int newctrl = Cd[i].get_index(ctrl);
+				if (ctrl == newctrl && Cd[i].get_controller(newctrl) == value)
+				    continue;
+
+				// this might change the index (e.g. RPN/NRPN coarse/fine)
+				Cd[i].set_controller(ctrl, value);
+				ctrl = Cd[i].get_index(ctrl);
+				
+				if (ctrl == -1) continue;
+
 				if (ctrl < 0x10000) {
 					mutASSERT(value < 0x80);
 					controller(i, ctrl, value);
