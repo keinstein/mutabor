@@ -244,11 +244,12 @@ namespace mutaborGUI {
 	};
 
 
+	class GUIRouteFactory;
 
 	template<class T> 
 	class GUIfiedRoute: public T, public GUIRouteBase {
-		friend class GUIRouteFactory;
 	public:
+		friend class GUIRouteFactory;
 		typedef GUIfiedRoute<T> thistype;
 		typedef T base;
 	protected:
