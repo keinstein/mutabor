@@ -378,6 +378,10 @@ namespace mutabor {
 			position        = 0;
 		}
 
+#ifdef DEFINE_VECTOR_DATA
+		base::value_type * data() { return &(this->at(0)); }
+#endif
+
 		wxString TowxString ();
 		const mutChar * c_str() {
 			return (this->TowxString ()).c_str();
@@ -391,6 +395,7 @@ namespace mutabor {
 		uint8_t running_status;   //< Save status byte for (de)coding running status
 		bool running_sysex;
 		int sysex_id;
+
 	};
 
 	typedef std::vector<Track> TrackList;

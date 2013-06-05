@@ -616,7 +616,7 @@ AC_FUNC_SELECT_ARGTYPES
 AC_FUNC_VPRINTF
 AC_CHECK_FUNCS([memmove pow getcwd gettimeofday memset select stpcpy strchr strstr]) 
 AC_CHECK_FUNC(strdup)
-
+AC_FUNCTION_VECTOR_DATA
 
 # Locate CppUnit (minimum version 1.8.0) for testing.  
 AM_PATH_CPPUNIT(1.8.0)
