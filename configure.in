@@ -246,7 +246,7 @@ AC_CHECK_LIB(m,pow)
 dnl check for boost earlier as it might correct the library path.
 dnl some systems don't set it correctly
 AX_BOOST_BASE
-
+PKG_PROG_PKG_CONFIG
 
 AC_CANONICAL_HOST
 AC_MSG_CHECKING(for MIDI API)
@@ -275,7 +275,7 @@ dnl GNU/Linux on an Intel or compatible
 	AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
  		midiapi="$midiapi -D__UNIX_JACK__"
 		AC_MSG_RESULT(using JACK)
-			AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))], )
+		PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!) ) ], )
 
 	# Look for ALSA flag
 	AC_ARG_WITH(alsa, [  --with-alsa = choose native ALSA sequencer API support (linux only)], [
@@ -289,10 +289,7 @@ dnl GNU/Linux on an Intel or compatible
 	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
 	      midiapi="$midiapi -D__LINUX_ALSA__"
 	    fi
-	    AC_CHECK_LIB(jack, jack_client_open)
-	    if test "x$ac_cv_lib_jack_jack_client_open" = xyes; then :
-	      midiapi="$midiapi -D__UNIX_JACK__"
-	    fi
+	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"])
 	fi
 
 	if [test "$midiapi" == "";] then
@@ -314,7 +311,7 @@ darwin*)
 	  AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
 	    midiapi="$midiapi -D__UNIX_JACK__"
 	    AC_MSG_RESULT(using JACK)
-	    AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))], )
+	    PKG_CHECK_MODULES(JACK,[jack], , AC_MSG_ERROR(JACK support requires the jack library!))], )
 
 	 # Look for Core flag
 	 AC_ARG_WITH(core, [  --with-core = choose CoreMidi API support (mac only)], [
@@ -330,10 +327,7 @@ darwin*)
 		midiapi="$midiapi -D__MACOSX_CORE__"]
 		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" 
 	   , )
-	   AC_CHECK_LIB(jack, jack_client_open)
-	   if test "x$ac_cv_lib_jack_jack_client_open" = xyes; then :
-	      midiapi="$midiapi -D__UNIX_JACK__"
-	   fi
+	   PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"] , AC_MSG_ERROR(JACK support requires the jack library!))
 	fi
 
 	;;

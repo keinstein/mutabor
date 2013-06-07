@@ -8,9 +8,9 @@ AM_CPPFLAGS = -I$(buildincludedir)  \
 	$(WX_CPPFLAGS) \
 	-DPREFIX='"$(prefix)"' \
 	$(BOOST_CPPFLAGS)
-LIBS += $(ALSA_LIBS) $(WX_LIBS)
+LIBS += $(JACK_LIBS) $(ALSA_LIBS) $(WX_LIBS)
 #LIBS += $(BOOST_LDFLAGS)
-AM_CFLAGS = $(ALSA_CFLAGS)  $(WX_CFLAGS)
+AM_CFLAGS = $(ALSA_CFLAGS) $(JACK_LIBS)  $(WX_CFLAGS)
 AM_CXXFLAGS = $(AM_CFLAGS)
 AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=itemset
