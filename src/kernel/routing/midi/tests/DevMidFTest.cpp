@@ -1276,6 +1276,7 @@ void  InputMidiFileTest::testBug019010()
 
 bool OutputMidiFileTest::CheckOut(mutString s,int line, const mutChar * file) {
 	wxMemoryOutputStream stream;
+	CPPUNIT_ASSERT(out);
 	out->Save(stream);
 	mutString tmp = StreamToHex(stream.GetOutputStreamBuffer());
 	bool retval = (tmp == s);
