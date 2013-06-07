@@ -10,149 +10,21 @@
  * \version $Revision: 1.28 $
  * \license GPL
  *
- * $Log: MutApp.h,v $
- * Revision 1.28  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.27  2011-09-28 05:35:47  keinstein
- * fix compiling on ubuntu
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.26  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.25  2011-08-31 20:18:16  keinstein
- * some work on printing the editor file
- *
- * Revision 1.24  2011-08-24 21:19:36  keinstein
- * first run with 2.9.2+
- *
- * Revision 1.23  2011-08-21 16:52:04  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.22  2011-08-20 17:50:39  keinstein
- * use  wxSTC for the editor windows
- *
- * Revision 1.21  2011-08-16 07:13:54  keinstein
- * added Creator code to .app meta data
- *
- * Revision 1.20  2011-08-06 09:21:23  keinstein
- * activated and debugged document manager
- *
- * Revision 1.19  2011-07-31 20:16:04  keinstein
- * Implemented opening files from command line using Document/View framework
- *
- * Revision 1.18  2011-07-31 12:40:41  keinstein
- * Added classes and functions for Document/View support
- *
- * Revision 1.17  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.16  2011-02-19 00:21:19  keinstein
- * change version number
- *
- * Revision 1.15  2010-12-10 09:28:23  keinstein
- * add menu item to help menu, which calls exit(0).
- *
- * Revision 1.14  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.12.2.3  2010-09-30 16:26:26  keinstein
- * remove global variables routewindow and frame
- * move route loading and route saving into MutRouteWnd
- * implement MutRouteWnd::InitShapes.
- * Destroy Route children before loading new route configuration (still some crashes)
- *
- * Revision 1.12.2.2  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.12.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.13  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.12  2008/10/09 15:14:02  keinstein
- * make compile on mingw
- *
- * Revision 1.11  2008/06/30 08:27:10  keinstein
- * New Variable: routewindow
- * OnInit(): Register Ids from Mutabor.rh
- * Implement Loading and Saving routes
- * MustOpenFrame(): New function.
- * On window open: use MustOpenFrame() to determine if new frame must be created
- * CmRoutes(): Implement correct window opening.
- * CmQuit(): Reimplemented Frame deletion to prevent crashes and endless loops on quitting
- *
- * Revision 1.10  2008/03/11 10:37:34  keinstein
- * Holyday edition
- * put CM_xxx in an enum
- * use wx constants
- * document mutframe
- * some white space formattings
- * make route saving more system specific
- * many other fixes
- *
- * Revision 1.9  2008/01/25 09:14:35  keinstein
- * MutApp::OnInit:
- * 	Remove unused i18n demo code.
- * 	output directory constants in Debug compilation
- * 	Add PNG and GIF image handlers.
- * 	Add ZIP filesystem handler
- * 	Load Resource file Mutabor.xrc
- *
- * MutApp::GetResourceName:
- * MutApp::CmSetup:
- * 	New function.
- *
- * Add CM_SETUP event handler.
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * First steps towards a help system
- *
- * Revision 1.8  2007/12/17 12:56:04  keinstein
- * Fix Unicode compilation
- * Catch CM_ROUTES
- * MutApp::CmRoutes: New function.
- * MuttApp::CreateMainFrame: Accept window id as argument.
- *
- * Revision 1.7  2007/10/09 14:57:49  keinstein
- * AppAbout: New class.
- * MutApp::CmAbout: Use AppAbout for displaying about window.
- *
- * Revision 1.6  2007/10/08 12:15:51  keinstein
- * Move FileNew and FileOpen from MutFrame to MutApp
- * Enable multiple main windows
- * MutApp:
- * 	CmFileNew(),
- * 	CmFileOpen()
- * 	CmQuit(),
- * 	RegisterFrame(),
- * 	UnregisterFrame(): New functions.
- * 	Rename OnAbout -> CmAbout
- *
- * 	frames, quitting: New Member variables
- *
- * New Class: FrameHash;
- *
- * Revision 1.5  2007/10/05 12:39:38  keinstein
- * first steps towards a real mac version:
- *  - automagic locale selection
- *  - dont exit on fram delete on Mac
- *  - install own event table
- *  - CreateMainFrame: new function
- *  - move OnAbout from MutFrame
- *
- * Revision 1.4  2006/03/27 17:19:14  keinstein
- * Preliminary localization support
- *
- * Revision 1.3  2006/01/18 15:35:43  keinstein
- * Prevent from double inclusion
  *
  *************************************************************************
  * \dir src/wxGUI
@@ -252,11 +124,13 @@ namespace mutaborGUI {
 		void OnUnhandledException();
 		bool OnExceptionInMainLoop();
 		void OnFatalException();
+#ifdef DEBUG
 		void OnAssertFailure(const wxChar *file,
 				     int line,
 				     const wxChar *func,
 				     const wxChar *cond,
 				     const wxChar *msg);
+#endif
 		// Extend event processing to search the document manager's event table
 		virtual bool ProcessEvent(wxEvent& event);
 	
