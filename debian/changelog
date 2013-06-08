@@ -1,3 +1,98 @@
+mutabor (4.0.0beta2.99-0) unstable; urgency=low
+
+  * update certain autotools related stuff
+  * Do not delete the original Mutabor.xrc on distclean.
+  * Add script for automatic version generation from git tree.
+  * Add tutorial example
+  * Initialise icons in OnInit(). This fixes a crash that occured when no
+    route window has been opened so far (e.g. opneing files from command
+    line).
+  * During input device shape replacement: change focus before hiding to
+    avoid segfault
+  * Call Fit only if window is shown to avoid segmentation fault.
+  * Implement common midi input, panic for input devices, send bending
+    range, and fix several related bugs
+  * Add -fsanitize=address -fno-omit-frame-pointer to debug flags if
+    supported by $CC
+  * Fix some compiling issues on older systems
+  * Remove unused code an fix some indentation
+  * Some additional assertions
+  * Issue compiler warning for strcpy
+  * Fix update of current keys window if logic is changed from GUI.
+  * Remove EDevice as it is superseded by GUIDevice
+  * silence MudFlap in case of empty files.
+  * Upgrade RtMidi to Version 2.01
+  * Display all MIDI devices.
+  * add some debug output to RtMidi
+  * Revert "Display all MIDI devices."
+  * Improve error reporting for certain RtMidi errors.
+  * Save correct input port after creation.
+  * Unify the output of getPortName()
+  * Make inputData_.userCallback a funtion pointer.
+  * Remove handling of keybord focus of boxes from kernel.
+  * change some line endings to native
+  * move realtime flag into the common timer
+  * Some code cleanup.
+  * Comment on some variables.
+  * Fix a pointer debug message.
+  * provide a class for handling timing information and a timer that
+    simulates μs reslolution.
+  * Add functions that handle exception errors.
+  * provide std:: unconditionally as the C++ standard should have spread,
+    now.
+  * Define gettext_noop to leave text unchanged for usage where we need
+    real UTF8 characters.
+  * reorganaize LAUFZEIT_ERROR macros to allow variadic arguments.
+  * Provide constants for standard MIDI file meta events.
+  * Implement some MIDI helper funtions.
+  * Replace timers with new microsecond aware timer, use vectors for
+    Tracks, and other improvements.
+  * Some additional code cleanup and improvements or fixes to the last
+    commit.
+  * added a conversion tool between SMF and Text representation
+  * Imitate CPPUNIT_ASSERT with mutASSERT in cppunit builds.
+  * Reorganize route. Make members private.
+  * Implement batch play mode and fix several timing and midi file related
+    issues.
+  * Simplify route class structure.
+  * Remove some outdated logs from source file headers.
+  * Base exceptions on std::exception
+  * Add and fix tests for midi files, batch conversion mode and timing.
+  * Implement basic stuff to add GUIRoute tests.
+  * Make file ressource handling suitable for the test suite
+  * Fix some compiling related bug that occur in different circumstances.
+  * Add a route connect test and fix related issues in new routing code.
+  * Improve handling of MIDI controllers and do submit MSB/LSB if not set.
+  * Fix complaining about closed MIDI devices in batch mode.
+  * build midi2text on demand
+  * Fix issues with timing calculations.
+  * Updated mutabor.pot. Source files are scanned now as UTF-8 files.
+  * Missing Version bump.
+  * Add MIDI controllers from RP-021 to definitions
+  * Add midi File recording test.
+  * Fix WriteDelta that created the wrong time.
+  * Handle RPN and NRPN Controller values correctly.
+  * Fix shutdown of some tests.
+  * Add midi2text to compilation
+  * Fix building in non-debug mode
+  * fix time update in CurrentTimer.
+  * Fix compiling.
+  * Remove some logs from file headers.
+  * Prevent some controller redundancy from being sent.
+  * Add config to aviaillable groups in C++ file template.
+  * Declare GUIRouteFactory so that the compiler consideres the right
+    class in the right namespace.
+  * fix douplicate type in RtMidi.cpp
+  * Add quirk for compilers that do not support vector::data().
+  * Fix for build error due to missing OnAssertFailure in vtable.
+  * Provide a sleep function for Windows in certain tests.
+  * Enable building with jack support
+  * Add pkg.m4 and vector_data.m4
+  * Reenable -Wall in debug mode.
+  * Fix compiler warnings.
+
+ -- Tobias Schlemmer <keinstein@users.berlios.de>  Sat, 08 Jun 2013 22:12:34 +0200
+
 mutabor (4.0.0beta2) unstable; urgency=low
 
   * Fix border on focusing box shapes.
