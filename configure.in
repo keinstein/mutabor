@@ -107,6 +107,13 @@ AC_ARG_ENABLE(debug,
 	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
 	       AC_LANG_PUSH(C++)
 	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -Wall"
+	       AC_MSG_CHECKING([whether $CXX supports -Wall])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
 	       CXXFLAGS="$CXXFLAGS -fdump-class-hierarchy"
 	       AC_MSG_CHECKING([whether $CXX supports -fdump-class-hierarchy])
       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
