@@ -1,9 +1,9 @@
 ; Our name
 !define PACKAGE_NAME "Mutabor"
-!define PACKAGE_VERSION "4.0.0beta2"
+!define PACKAGE_VERSION "4.0.0beta3"
 !define NAME_VERSION "${PACKAGE_NAME} ${PACKAGE_VERSION}"
 !define NAME_VERSION_BUNDLE "${PACKAGE_NAME}-${PACKAGE_VERSION}"
-!define EXENAME "mutabor.exe"
+!define EXENAME "mutabor"
 !define MUTSHORTCUTDIR "$SMPROGRAMS\${PACKAGE_NAME}"
 !define INSTALLATIONNAME "${PACKAGE_NAME}"
 !define srcdir "../../../mutabor-git"

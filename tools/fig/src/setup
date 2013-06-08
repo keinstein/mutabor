@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Bash script to set the environment variables necessary to run FIG with
+# the in-line logging option (without the wrapper/shared-memory/logging
+# daemon). Copies these settings to /tmp/fig.conf in case a program
+# calls exec() and tries to change the environment seen by the exec()'d
+# procedure. In this case, the instrumented version of execve() looks in
+# /tmp/fig.conf and resets all of the FIG environment variables to their
+# proper settings.
+
+LOC=`pwd`
+rm -f /tmp/fig.conf
+echo "LD_PRELOAD=" >> /tmp/fig.conf
+echo "$LOC/libfig.so" >> /tmp/fig.conf
+echo "LIBFIG_CONTROL=" >> /tmp/fig.conf
+echo "$LOC/control.out" >> /tmp/fig.conf
+echo "LIBFIG_OUTPUT=" >> /tmp/fig.conf
+echo "$LOC/fig.log" >> /tmp/fig.conf
+
+if [ ! -f /tmp/fig.conf ]; then
+  echo "Unable to open /tmp/fig.conf. FIG cannot guarantee that calls to"
+  echo "exec() will be properly instrumented."
+fi
+
+export LD_PRELOAD=$LOC/libfig.so
+export LIBFIG_CONTROL=$LOC/control.out
+export LIBFIG_OUTPUT=$LOC/fig.log

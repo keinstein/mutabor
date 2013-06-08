@@ -1,0 +1,7 @@
+open	__libc_open	int	%s %d %d	const char *	path	int	flags	mode_t	mode
+close	__libc_close	int	%d	int	fd
+read	__libc_read	ssize_t	%d %p %d	int	fd	void *	buf	size_t	count
+write	__libc_write	ssize_t	%d %p %d	int	fd	void *	buf	size_t	count
+send	__libc_send	int	%d %p %d %d	int	s	const void *	buf	size_t	len	int	flags 
+recv	__libc_recv	int	%d %p %d %d	int	s	void *	buf	size_t	len	int	flags
+select	__select	int	%d %d %p %p %p %p	int	n	fd_set *	readfds	fd_set *	writefds	fd_set *	exceptfds	struct timeval *	timeout

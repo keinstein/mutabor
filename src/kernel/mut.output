@@ -1,0 +1,4346 @@
+Grammatik
+
+    0 $accept: start $end
+
+    1 start: /* leer */
+    2      | start intervalldeklaration
+    3      | start tondeklaration
+    4      | start tonsystemdeklaration
+    5      | start umstimmungdeklaration
+    6      | start harmoniedeklaration
+    7      | start logikdeklaration
+    8      | start instrumentdeklaration
+    9      | start error
+
+   10 intervalldeklaration: INTERVALL intervalldekl1
+
+   11 intervalldekl1: /* leer */
+   12               | intervalldekl1 intervalldekl2_1
+
+   13 $@1: /* leer */
+
+   14 intervalldekl2_1: $@1 intervalldekl2
+
+   15 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
+   16               | IDENTIFIER '=' GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL
+   17               | IDENTIFIER '=' KOMPLEX_TON_LIST
+   18               | IDENTIFIER '=' error
+   19               | IDENTIFIER error
+
+   20 tondeklaration: TON tondekl1
+
+   21 tondekl1: /* leer */
+   22         | tondekl1 tondekl2_1
+
+   23 $@2: /* leer */
+
+   24 tondekl2_1: $@2 tondekl2
+
+   25 tondekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL
+   26         | IDENTIFIER '=' IDENTIFIER '-' KOMPLEX_TON_LIST
+   27         | IDENTIFIER '=' IDENTIFIER
+   28         | IDENTIFIER '=' IDENTIFIER '+' KOMPLEX_TON_LIST
+   29         | IDENTIFIER '=' error
+
+   30 KOMPLEX_TON_LIST: KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+
+   31 KOMPLEX_TON_LIST_2: /* leer */
+   32                   | KOMPLEX_TON_LIST_2 KOMPLEX_TON_1
+
+   33 KOMPLEX_TON_1: '+' IDENTIFIER
+   34              | '-' IDENTIFIER
+   35              | '+' GLEITKOMMA_ZAHL IDENTIFIER
+   36              | '-' GLEITKOMMA_ZAHL IDENTIFIER
+   37              | '+' '/' GLEITKOMMA_ZAHL IDENTIFIER
+   38              | '-' '/' GLEITKOMMA_ZAHL IDENTIFIER
+   39              | '+' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+   40              | '-' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+   41 KOMPLEX_TON_START: IDENTIFIER
+   42                  | GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+   45 tonsystemdeklaration: TONSYSTEM tonsystemdekl1
+
+   46 tonsystemdekl1: /* leer */
+   47               | tonsystemdekl1 tonsystemdekl2_1
+
+   48 $@3: /* leer */
+
+   49 tonsystemdekl2_1: $@3 tonsystemdekl2
+
+   50 $@4: /* leer */
+
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@4 KOMPLEX_TON_LIST
+
+   52 $@5: /* leer */
+
+   53 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+
+   54 tonliste: ton_element
+   55         | tonliste ',' ton_element
+
+   56 ton_element: IDENTIFIER
+   57            | /* leer */
+   58            | error
+
+   59 parameter_liste: IDENTIFIER
+   60                | parameter_liste ',' IDENTIFIER
+   61                | error
+
+   62 argument_liste: argument_listenelement
+   63               | argument_liste ',' argument_listenelement
+   64               | error
+
+   65 argument_listenelement: IDENTIFIER
+   66                       | INTEGER
+   67                       | '-' INTEGER
+
+   68 umstimmungdeklaration: UMSTIMMUNG umstimmungs_dekl_1
+
+   69 umstimmungs_dekl_1: /* leer */
+   70                   | umstimmungs_dekl_1 umstimmungs_dekl_2
+
+   71 $@6: /* leer */
+
+   72 $@7: /* leer */
+
+   73 umstimmungs_dekl_2: IDENTIFIER $@6 '=' $@7 umstimmungs_dekl_3
+
+   74 $@8: /* leer */
+
+   75 $@9: /* leer */
+
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste ')' '=' $@9 umstimmungs_dekl_3
+
+   77 umstimmungs_dekl_3: umstimmungs_dekl_taste_abs
+   78                   | umstimmungs_dekl_taste_rel
+   79                   | umstimmungs_dekl_breite_abs
+   80                   | umstimmungs_dekl_breite_rel
+   81                   | umstimmungs_dekl_tonhoehe_veraendert
+   82                   | umstimmungs_dekl_wiederholung_abs
+   83                   | umstimmungs_dekl_wiederholung_rel
+   84                   | umstimmungs_dekl_umstimmungs_bund
+   85                   | umstimmungs_dekl_umstimmungs_case
+   86                   | umstimmungs_dekl_midi_out
+   87                   | error
+
+   88 umstimmungs_dekl_taste_abs: INTEGER '[' ']'
+   89                           | IDENTIFIER '[' ']'
+
+   90 umstimmungs_dekl_taste_rel: '@' '+' INTEGER '[' ']'
+   91                           | '@' '+' IDENTIFIER '[' ']'
+   92                           | '@' '-' INTEGER '[' ']'
+   93                           | '@' '-' IDENTIFIER '[' ']'
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' INTEGER '>' '>' ']'
+   95                            | '[' '<' '<' IDENTIFIER '>' '>' ']'
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' INTEGER '>' '>' ']'
+   97                            | '[' '<' '<' '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | '[' '<' '<' '@' '-' INTEGER '>' '>' ']'
+   99                            | '[' '<' '<' '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | '[' '<' '<' '@' '*' INTEGER '>' '>' ']'
+  101                            | '[' '<' '<' '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | '[' '<' '<' '@' '/' INTEGER '>' '>' ']'
+  103                            | '[' '<' '<' '@' '/' IDENTIFIER '>' '>' ']'
+
+  104 $@10: /* leer */
+
+  105 umstimmungs_dekl_tonhoehe_veraendert: '[' $@10 nonempty_umstimm_expression_list ']'
+
+  106 nonempty_umstimm_expression_list: nonempty_umstimm_expression
+  107                                 | nonempty_umstimm_expression ',' umstimm_expression_list
+
+  108 $@11: /* leer */
+
+  109 nonempty_umstimm_expression_list: ',' $@11 umstimm_expression_list
+
+  110 umstimm_expression_list: umstimm_expression
+  111                        | umstimm_expression_list ',' umstimm_expression
+
+  112 umstimm_expression: /* leer */
+  113                   | nonempty_umstimm_expression
+
+  114 nonempty_umstimm_expression: IDENTIFIER
+  115                            | '@'
+
+  116 $@12: /* leer */
+
+  117 nonempty_umstimm_expression: IDENTIFIER '+' $@12 KOMPLEX_TON_LIST
+
+  118 $@13: /* leer */
+
+  119 nonempty_umstimm_expression: '@' '+' $@13 KOMPLEX_TON_LIST
+
+  120 $@14: /* leer */
+
+  121 nonempty_umstimm_expression: IDENTIFIER '-' $@14 KOMPLEX_TON_LIST
+
+  122 $@15: /* leer */
+
+  123 nonempty_umstimm_expression: '@' '-' $@15 KOMPLEX_TON_LIST
+
+  124 $@16: /* leer */
+
+  125 umstimmungs_dekl_wiederholung_abs: '[' ']' $@16 KOMPLEX_TON_LIST
+
+  126 $@17: /* leer */
+
+  127 umstimmungs_dekl_wiederholung_abs: '[' ']' $@17 '-' KOMPLEX_TON_LIST
+
+  128 $@18: /* leer */
+
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '+' $@18 KOMPLEX_TON_LIST
+
+  130 $@19: /* leer */
+
+  131 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '-' $@19 KOMPLEX_TON_LIST
+
+  132 $@20: /* leer */
+
+  133 umstimmungs_dekl_umstimmungs_bund: '{' $@20 aktions_liste '}'
+
+  134 aktions_liste: aktion
+  135              | aktions_liste ',' aktion
+
+  136 aktion: IDENTIFIER
+
+  137 $@21: /* leer */
+
+  138 aktion: IDENTIFIER '(' $@21 argument_liste ')'
+
+  139 $@22: /* leer */
+
+  140 aktion: MIDI_OUT '(' $@22 integersequenz ')'
+
+  141 $@23: /* leer */
+
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER '{' $@23 umstimmungs_case_liste '}'
+
+  143 $@24: /* leer */
+
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER '{' $@24 umstimmungs_case_liste '}'
+
+  145 umstimmungs_case_liste: umstimmungs_case_element
+  146                       | umstimmungs_case_liste umstimmungs_case_element
+
+  147 $@25: /* leer */
+
+  148 umstimmungs_case_element: INTEGER '-' '>' $@25 aktions_liste
+
+  149 $@26: /* leer */
+
+  150 umstimmungs_case_element: '-' INTEGER '-' '>' $@26 aktions_liste
+
+  151 $@27: /* leer */
+
+  152 umstimmungs_case_element: ANSONSTEN '-' '>' $@27 aktions_liste
+
+  153 $@28: /* leer */
+
+  154 umstimmungs_dekl_midi_out: MIDI_OUT '(' $@28 integersequenz ')'
+
+  155 harmoniedeklaration: HARMONIE harmonie_dekl_1
+
+  156 harmonie_dekl_1: /* leer */
+  157                | harmonie_dekl_1 harmonie_dekl_2
+
+  158 $@29: /* leer */
+
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' $@29 tasten_liste '}' bezugs_taste
+  160                | IDENTIFIER '=' error
+
+  161 bezugs_taste: /* leer */
+  162             | '.' INTEGER
+
+  163 tasten_liste: taste
+  164             | tasten_liste ',' taste
+
+  165 taste: INTEGER
+  166      | '*' INTEGER
+
+  167 logikdeklaration: LOGIK logik_dekl_1
+
+  168 logik_dekl_1: /* leer */
+
+  169 $@30: /* leer */
+
+  170 logik_dekl_1: logik_dekl_1 $@30 logik_dekl_2
+
+  171 $@31: /* leer */
+
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' '[' $@31 anweisungs_liste ']'
+
+  173 $@32: /* leer */
+
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER '[' $@32 anweisungs_liste ']'
+
+  175 anweisungs_liste: /* leer */
+  176                 | anweisungs_liste anweisung
+
+  177 $@33: /* leer */
+
+  178 anweisung: ausloeser '-' '>' '{' $@33 aktions_liste '}'
+
+  179 $@34: /* leer */
+
+  180 anweisung: ausloeser '-' '>' $@34 aktion
+
+  181 harmoniebezeichner: INTEGER '~' IDENTIFIER '~' INTEGER
+  182                   | IDENTIFIER '~' INTEGER
+  183                   | INTEGER '~' IDENTIFIER
+  184                   | IDENTIFIER
+
+  185 ausloeser: ANSONSTEN
+  186          | harmoniebezeichner
+  187          | FORM harmoniebezeichner
+  188          | TASTE IDENTIFIER
+
+  189 $@35: /* leer */
+
+  190 ausloeser: MIDI_IN '(' $@35 integersequenz ')'
+
+  191 integersequenz: INTEGER
+  192               | integersequenz ',' INTEGER
+  193               | error
+
+  194 instrumentdeklaration: INSTRUMENT instrument_dekl_1
+
+  195 instrument_dekl_1: /* leer */
+  196                  | instrument_dekl_1 instrument_dekl_2
+
+  197 instrument_dekl_2: INTEGER '-' '>' INTEGER
+  198                  | INTEGER '-' '>' INTEGER '-' INTEGER
+  199                  | INTEGER '-' '>' '[' INTEGER ']'
+  200                  | INTEGER '-' '>' INTEGER '[' INTEGER ']'
+  201                  | INTEGER '-' '>' INTEGER '-' INTEGER '[' INTEGER ']'
+
+  202 GLEITKOMMA_ZAHL: F_NUMBER
+  203                | INTEGER
+
+
+Terminale und die Regeln, in denen sie verwendet werden
+
+$end (0) 0
+'(' (40) 76 138 140 154 190
+')' (41) 76 138 140 154 190
+'*' (42) 100 101 166
+'+' (43) 28 33 35 37 39 90 91 96 97 117 119 129
+',' (44) 55 60 63 107 109 111 135 164 192
+'-' (45) 26 34 36 38 40 53 67 92 93 98 99 121 123 127 131 148 150 152
+    178 180 197 198 199 200 201
+'.' (46) 162
+'/' (47) 37 38 39 40 43 44 102 103
+':' (58) 15
+'<' (60) 94 95 96 97 98 99 100 101 102 103
+'=' (61) 15 16 17 18 25 26 27 28 29 51 53 73 76 159 160 172 174
+'>' (62) 94 95 96 97 98 99 100 101 102 103 148 150 152 178 180 197
+    198 199 200 201
+'@' (64) 90 91 92 93 96 97 98 99 100 101 102 103 115 119 123 129 131
+'[' (91) 51 53 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103
+    105 125 127 129 131 172 174 199 200 201
+']' (93) 51 53 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103
+    105 125 127 129 131 172 174 199 200 201
+'{' (123) 133 142 144 159 178
+'}' (125) 133 142 144 159 178
+'~' (126) 181 182 183
+error (256) 9 18 19 29 58 61 64 87 160 193
+IDENTIFIER (258) 15 16 17 18 19 25 26 27 28 29 33 34 35 36 37 38 39
+    40 41 42 43 44 51 53 56 59 60 65 73 76 89 91 93 95 97 99 101 103
+    114 117 121 136 138 144 159 160 172 174 181 182 183 184 188
+F_NUMBER (259) 202
+INTEGER (260) 51 53 66 67 88 90 92 94 96 98 100 102 142 148 150 162
+    165 166 181 182 183 191 192 197 198 199 200 201 203
+INTERVALL (261) 10
+WURZEL (262) 16
+TON (263) 20
+TONSYSTEM (264) 45
+UMSTIMMUNG (265) 68
+HARMONIE (266) 155
+LOGIK (267) 167
+FORM (268) 187
+INSTRUMENT (269) 194
+TASTE (270) 188
+MIDI_IN (271) 190
+MIDI_OUT (272) 140 154
+ANSONSTEN (273) 152 185
+
+
+Nicht-Terminal und die Regeln, in denen sie verwendet werden
+
+$accept (37)
+    auf der linken Seite: 0
+start (38)
+    auf der linken Seite: 1 2 3 4 5 6 7 8 9, auf der rechten Seite:
+    0 2 3 4 5 6 7 8 9
+intervalldeklaration (39)
+    auf der linken Seite: 10, auf der rechten Seite: 2
+intervalldekl1 (40)
+    auf der linken Seite: 11 12, auf der rechten Seite: 10 12
+intervalldekl2_1 (41)
+    auf der linken Seite: 14, auf der rechten Seite: 12
+$@1 (42)
+    auf der linken Seite: 13, auf der rechten Seite: 14
+intervalldekl2 (43)
+    auf der linken Seite: 15 16 17 18 19, auf der rechten Seite: 14
+tondeklaration (44)
+    auf der linken Seite: 20, auf der rechten Seite: 3
+tondekl1 (45)
+    auf der linken Seite: 21 22, auf der rechten Seite: 20 22
+tondekl2_1 (46)
+    auf der linken Seite: 24, auf der rechten Seite: 22
+$@2 (47)
+    auf der linken Seite: 23, auf der rechten Seite: 24
+tondekl2 (48)
+    auf der linken Seite: 25 26 27 28 29, auf der rechten Seite: 24
+KOMPLEX_TON_LIST (49)
+    auf der linken Seite: 30, auf der rechten Seite: 17 26 28 51 53
+    117 119 121 123 125 127 129 131
+KOMPLEX_TON_LIST_2 (50)
+    auf der linken Seite: 31 32, auf der rechten Seite: 30 32
+KOMPLEX_TON_1 (51)
+    auf der linken Seite: 33 34 35 36 37 38 39 40, auf der rechten Seite:
+    32
+KOMPLEX_TON_START (52)
+    auf der linken Seite: 41 42 43 44, auf der rechten Seite: 30
+tonsystemdeklaration (53)
+    auf der linken Seite: 45, auf der rechten Seite: 4
+tonsystemdekl1 (54)
+    auf der linken Seite: 46 47, auf der rechten Seite: 45 47
+tonsystemdekl2_1 (55)
+    auf der linken Seite: 49, auf der rechten Seite: 47
+$@3 (56)
+    auf der linken Seite: 48, auf der rechten Seite: 49
+tonsystemdekl2 (57)
+    auf der linken Seite: 51 53, auf der rechten Seite: 49
+$@4 (58)
+    auf der linken Seite: 50, auf der rechten Seite: 51
+$@5 (59)
+    auf der linken Seite: 52, auf der rechten Seite: 53
+tonliste (60)
+    auf der linken Seite: 54 55, auf der rechten Seite: 51 53 55
+ton_element (61)
+    auf der linken Seite: 56 57 58, auf der rechten Seite: 54 55
+parameter_liste (62)
+    auf der linken Seite: 59 60 61, auf der rechten Seite: 60 76
+argument_liste (63)
+    auf der linken Seite: 62 63 64, auf der rechten Seite: 63 138
+argument_listenelement (64)
+    auf der linken Seite: 65 66 67, auf der rechten Seite: 62 63
+umstimmungdeklaration (65)
+    auf der linken Seite: 68, auf der rechten Seite: 5
+umstimmungs_dekl_1 (66)
+    auf der linken Seite: 69 70, auf der rechten Seite: 68 70
+umstimmungs_dekl_2 (67)
+    auf der linken Seite: 73 76, auf der rechten Seite: 70
+$@6 (68)
+    auf der linken Seite: 71, auf der rechten Seite: 73
+$@7 (69)
+    auf der linken Seite: 72, auf der rechten Seite: 73
+$@8 (70)
+    auf der linken Seite: 74, auf der rechten Seite: 76
+$@9 (71)
+    auf der linken Seite: 75, auf der rechten Seite: 76
+umstimmungs_dekl_3 (72)
+    auf der linken Seite: 77 78 79 80 81 82 83 84 85 86 87, auf der rechten Seite:
+    73 76
+umstimmungs_dekl_taste_abs (73)
+    auf der linken Seite: 88 89, auf der rechten Seite: 77
+umstimmungs_dekl_taste_rel (74)
+    auf der linken Seite: 90 91 92 93, auf der rechten Seite: 78
+umstimmungs_dekl_breite_abs (75)
+    auf der linken Seite: 94 95, auf der rechten Seite: 79
+umstimmungs_dekl_breite_rel (76)
+    auf der linken Seite: 96 97 98 99 100 101 102 103, auf der rechten Seite:
+    80
+umstimmungs_dekl_tonhoehe_veraendert (77)
+    auf der linken Seite: 105, auf der rechten Seite: 81
+$@10 (78)
+    auf der linken Seite: 104, auf der rechten Seite: 105
+nonempty_umstimm_expression_list (79)
+    auf der linken Seite: 106 107 109, auf der rechten Seite: 105
+$@11 (80)
+    auf der linken Seite: 108, auf der rechten Seite: 109
+umstimm_expression_list (81)
+    auf der linken Seite: 110 111, auf der rechten Seite: 107 109 111
+umstimm_expression (82)
+    auf der linken Seite: 112 113, auf der rechten Seite: 110 111
+nonempty_umstimm_expression (83)
+    auf der linken Seite: 114 115 117 119 121 123, auf der rechten Seite:
+    106 107 113
+$@12 (84)
+    auf der linken Seite: 116, auf der rechten Seite: 117
+$@13 (85)
+    auf der linken Seite: 118, auf der rechten Seite: 119
+$@14 (86)
+    auf der linken Seite: 120, auf der rechten Seite: 121
+$@15 (87)
+    auf der linken Seite: 122, auf der rechten Seite: 123
+umstimmungs_dekl_wiederholung_abs (88)
+    auf der linken Seite: 125 127, auf der rechten Seite: 82
+$@16 (89)
+    auf der linken Seite: 124, auf der rechten Seite: 125
+$@17 (90)
+    auf der linken Seite: 126, auf der rechten Seite: 127
+umstimmungs_dekl_wiederholung_rel (91)
+    auf der linken Seite: 129 131, auf der rechten Seite: 83
+$@18 (92)
+    auf der linken Seite: 128, auf der rechten Seite: 129
+$@19 (93)
+    auf der linken Seite: 130, auf der rechten Seite: 131
+umstimmungs_dekl_umstimmungs_bund (94)
+    auf der linken Seite: 133, auf der rechten Seite: 84
+$@20 (95)
+    auf der linken Seite: 132, auf der rechten Seite: 133
+aktions_liste (96)
+    auf der linken Seite: 134 135, auf der rechten Seite: 133 135 148
+    150 152 178
+aktion (97)
+    auf der linken Seite: 136 138 140, auf der rechten Seite: 134 135
+    180
+$@21 (98)
+    auf der linken Seite: 137, auf der rechten Seite: 138
+$@22 (99)
+    auf der linken Seite: 139, auf der rechten Seite: 140
+umstimmungs_dekl_umstimmungs_case (100)
+    auf der linken Seite: 142 144, auf der rechten Seite: 85
+$@23 (101)
+    auf der linken Seite: 141, auf der rechten Seite: 142
+$@24 (102)
+    auf der linken Seite: 143, auf der rechten Seite: 144
+umstimmungs_case_liste (103)
+    auf der linken Seite: 145 146, auf der rechten Seite: 142 144 146
+umstimmungs_case_element (104)
+    auf der linken Seite: 148 150 152, auf der rechten Seite: 145 146
+$@25 (105)
+    auf der linken Seite: 147, auf der rechten Seite: 148
+$@26 (106)
+    auf der linken Seite: 149, auf der rechten Seite: 150
+$@27 (107)
+    auf der linken Seite: 151, auf der rechten Seite: 152
+umstimmungs_dekl_midi_out (108)
+    auf der linken Seite: 154, auf der rechten Seite: 86
+$@28 (109)
+    auf der linken Seite: 153, auf der rechten Seite: 154
+harmoniedeklaration (110)
+    auf der linken Seite: 155, auf der rechten Seite: 6
+harmonie_dekl_1 (111)
+    auf der linken Seite: 156 157, auf der rechten Seite: 155 157
+harmonie_dekl_2 (112)
+    auf der linken Seite: 159 160, auf der rechten Seite: 157
+$@29 (113)
+    auf der linken Seite: 158, auf der rechten Seite: 159
+bezugs_taste (114)
+    auf der linken Seite: 161 162, auf der rechten Seite: 159
+tasten_liste (115)
+    auf der linken Seite: 163 164, auf der rechten Seite: 159 164
+taste (116)
+    auf der linken Seite: 165 166, auf der rechten Seite: 163 164
+logikdeklaration (117)
+    auf der linken Seite: 167, auf der rechten Seite: 7
+logik_dekl_1 (118)
+    auf der linken Seite: 168 170, auf der rechten Seite: 167 170
+$@30 (119)
+    auf der linken Seite: 169, auf der rechten Seite: 170
+logik_dekl_2 (120)
+    auf der linken Seite: 172 174, auf der rechten Seite: 170
+$@31 (121)
+    auf der linken Seite: 171, auf der rechten Seite: 172
+$@32 (122)
+    auf der linken Seite: 173, auf der rechten Seite: 174
+anweisungs_liste (123)
+    auf der linken Seite: 175 176, auf der rechten Seite: 172 174 176
+anweisung (124)
+    auf der linken Seite: 178 180, auf der rechten Seite: 176
+$@33 (125)
+    auf der linken Seite: 177, auf der rechten Seite: 178
+$@34 (126)
+    auf der linken Seite: 179, auf der rechten Seite: 180
+harmoniebezeichner (127)
+    auf der linken Seite: 181 182 183 184, auf der rechten Seite: 186
+    187
+ausloeser (128)
+    auf der linken Seite: 185 186 187 188 190, auf der rechten Seite:
+    172 174 178 180
+$@35 (129)
+    auf der linken Seite: 189, auf der rechten Seite: 190
+integersequenz (130)
+    auf der linken Seite: 191 192 193, auf der rechten Seite: 140 154
+    190 192
+instrumentdeklaration (131)
+    auf der linken Seite: 194, auf der rechten Seite: 8
+instrument_dekl_1 (132)
+    auf der linken Seite: 195 196, auf der rechten Seite: 194 196
+instrument_dekl_2 (133)
+    auf der linken Seite: 197 198 199 200 201, auf der rechten Seite:
+    196
+GLEITKOMMA_ZAHL (134)
+    auf der linken Seite: 202 203, auf der rechten Seite: 15 16 25
+    35 36 37 38 39 40 42 43 44
+
+
+Zustand 0
+
+    0 $accept: . start $end
+    1 start: .
+    2      | . start intervalldeklaration
+    3      | . start tondeklaration
+    4      | . start tonsystemdeklaration
+    5      | . start umstimmungdeklaration
+    6      | . start harmoniedeklaration
+    7      | . start logikdeklaration
+    8      | . start instrumentdeklaration
+    9      | . start error
+
+    $default  reduziere mit Regel 1 (start)
+
+    start  gehe zu Zustand 1 über
+
+
+Zustand 1
+
+    0 $accept: start . $end
+    2 start: start . intervalldeklaration
+    3      | start . tondeklaration
+    4      | start . tonsystemdeklaration
+    5      | start . umstimmungdeklaration
+    6      | start . harmoniedeklaration
+    7      | start . logikdeklaration
+    8      | start . instrumentdeklaration
+    9      | start . error
+   10 intervalldeklaration: . INTERVALL intervalldekl1
+   20 tondeklaration: . TON tondekl1
+   45 tonsystemdeklaration: . TONSYSTEM tonsystemdekl1
+   68 umstimmungdeklaration: . UMSTIMMUNG umstimmungs_dekl_1
+  155 harmoniedeklaration: . HARMONIE harmonie_dekl_1
+  167 logikdeklaration: . LOGIK logik_dekl_1
+  194 instrumentdeklaration: . INSTRUMENT instrument_dekl_1
+
+    $end        schiebe und gehe zu Zustand 2 über
+    error       schiebe und gehe zu Zustand 3 über
+    INTERVALL   schiebe und gehe zu Zustand 4 über
+    TON         schiebe und gehe zu Zustand 5 über
+    TONSYSTEM   schiebe und gehe zu Zustand 6 über
+    UMSTIMMUNG  schiebe und gehe zu Zustand 7 über
+    HARMONIE    schiebe und gehe zu Zustand 8 über
+    LOGIK       schiebe und gehe zu Zustand 9 über
+    INSTRUMENT  schiebe und gehe zu Zustand 10 über
+
+    intervalldeklaration   gehe zu Zustand 11 über
+    tondeklaration         gehe zu Zustand 12 über
+    tonsystemdeklaration   gehe zu Zustand 13 über
+    umstimmungdeklaration  gehe zu Zustand 14 über
+    harmoniedeklaration    gehe zu Zustand 15 über
+    logikdeklaration       gehe zu Zustand 16 über
+    instrumentdeklaration  gehe zu Zustand 17 über
+
+
+Zustand 2
+
+    0 $accept: start $end .
+
+    $default  annehmen
+
+
+Zustand 3
+
+    9 start: start error .
+
+    $default  reduziere mit Regel 9 (start)
+
+
+Zustand 4
+
+   10 intervalldeklaration: INTERVALL . intervalldekl1
+   11 intervalldekl1: .
+   12               | . intervalldekl1 intervalldekl2_1
+
+    $default  reduziere mit Regel 11 (intervalldekl1)
+
+    intervalldekl1  gehe zu Zustand 18 über
+
+
+Zustand 5
+
+   20 tondeklaration: TON . tondekl1
+   21 tondekl1: .
+   22         | . tondekl1 tondekl2_1
+
+    $default  reduziere mit Regel 21 (tondekl1)
+
+    tondekl1  gehe zu Zustand 19 über
+
+
+Zustand 6
+
+   45 tonsystemdeklaration: TONSYSTEM . tonsystemdekl1
+   46 tonsystemdekl1: .
+   47               | . tonsystemdekl1 tonsystemdekl2_1
+
+    $default  reduziere mit Regel 46 (tonsystemdekl1)
+
+    tonsystemdekl1  gehe zu Zustand 20 über
+
+
+Zustand 7
+
+   68 umstimmungdeklaration: UMSTIMMUNG . umstimmungs_dekl_1
+   69 umstimmungs_dekl_1: .
+   70                   | . umstimmungs_dekl_1 umstimmungs_dekl_2
+
+    $default  reduziere mit Regel 69 (umstimmungs_dekl_1)
+
+    umstimmungs_dekl_1  gehe zu Zustand 21 über
+
+
+Zustand 8
+
+  155 harmoniedeklaration: HARMONIE . harmonie_dekl_1
+  156 harmonie_dekl_1: .
+  157                | . harmonie_dekl_1 harmonie_dekl_2
+
+    $default  reduziere mit Regel 156 (harmonie_dekl_1)
+
+    harmonie_dekl_1  gehe zu Zustand 22 über
+
+
+Zustand 9
+
+  167 logikdeklaration: LOGIK . logik_dekl_1
+  168 logik_dekl_1: .
+  170             | . logik_dekl_1 $@30 logik_dekl_2
+
+    $default  reduziere mit Regel 168 (logik_dekl_1)
+
+    logik_dekl_1  gehe zu Zustand 23 über
+
+
+Zustand 10
+
+  194 instrumentdeklaration: INSTRUMENT . instrument_dekl_1
+  195 instrument_dekl_1: .
+  196                  | . instrument_dekl_1 instrument_dekl_2
+
+    $default  reduziere mit Regel 195 (instrument_dekl_1)
+
+    instrument_dekl_1  gehe zu Zustand 24 über
+
+
+Zustand 11
+
+    2 start: start intervalldeklaration .
+
+    $default  reduziere mit Regel 2 (start)
+
+
+Zustand 12
+
+    3 start: start tondeklaration .
+
+    $default  reduziere mit Regel 3 (start)
+
+
+Zustand 13
+
+    4 start: start tonsystemdeklaration .
+
+    $default  reduziere mit Regel 4 (start)
+
+
+Zustand 14
+
+    5 start: start umstimmungdeklaration .
+
+    $default  reduziere mit Regel 5 (start)
+
+
+Zustand 15
+
+    6 start: start harmoniedeklaration .
+
+    $default  reduziere mit Regel 6 (start)
+
+
+Zustand 16
+
+    7 start: start logikdeklaration .
+
+    $default  reduziere mit Regel 7 (start)
+
+
+Zustand 17
+
+    8 start: start instrumentdeklaration .
+
+    $default  reduziere mit Regel 8 (start)
+
+
+Zustand 18
+
+   10 intervalldeklaration: INTERVALL intervalldekl1 .
+   12 intervalldekl1: intervalldekl1 . intervalldekl2_1
+   13 $@1: .
+   14 intervalldekl2_1: . $@1 intervalldekl2
+
+    IDENTIFIER  reduziere mit Regel 13 ($@1)
+    $default    reduziere mit Regel 10 (intervalldeklaration)
+
+    intervalldekl2_1  gehe zu Zustand 25 über
+    $@1               gehe zu Zustand 26 über
+
+
+Zustand 19
+
+   20 tondeklaration: TON tondekl1 .
+   22 tondekl1: tondekl1 . tondekl2_1
+   23 $@2: .
+   24 tondekl2_1: . $@2 tondekl2
+
+    IDENTIFIER  reduziere mit Regel 23 ($@2)
+    $default    reduziere mit Regel 20 (tondeklaration)
+
+    tondekl2_1  gehe zu Zustand 27 über
+    $@2         gehe zu Zustand 28 über
+
+
+Zustand 20
+
+   45 tonsystemdeklaration: TONSYSTEM tonsystemdekl1 .
+   47 tonsystemdekl1: tonsystemdekl1 . tonsystemdekl2_1
+   48 $@3: .
+   49 tonsystemdekl2_1: . $@3 tonsystemdekl2
+
+    IDENTIFIER  reduziere mit Regel 48 ($@3)
+    $default    reduziere mit Regel 45 (tonsystemdeklaration)
+
+    tonsystemdekl2_1  gehe zu Zustand 29 über
+    $@3               gehe zu Zustand 30 über
+
+
+Zustand 21
+
+   68 umstimmungdeklaration: UMSTIMMUNG umstimmungs_dekl_1 .
+   70 umstimmungs_dekl_1: umstimmungs_dekl_1 . umstimmungs_dekl_2
+   73 umstimmungs_dekl_2: . IDENTIFIER $@6 '=' $@7 umstimmungs_dekl_3
+   76                   | . IDENTIFIER $@8 '(' parameter_liste ')' '=' $@9 umstimmungs_dekl_3
+
+    IDENTIFIER  schiebe und gehe zu Zustand 31 über
+
+    $default  reduziere mit Regel 68 (umstimmungdeklaration)
+
+    umstimmungs_dekl_2  gehe zu Zustand 32 über
+
+
+Zustand 22
+
+  155 harmoniedeklaration: HARMONIE harmonie_dekl_1 .
+  157 harmonie_dekl_1: harmonie_dekl_1 . harmonie_dekl_2
+  159 harmonie_dekl_2: . IDENTIFIER '=' '{' $@29 tasten_liste '}' bezugs_taste
+  160                | . IDENTIFIER '=' error
+
+    IDENTIFIER  schiebe und gehe zu Zustand 33 über
+
+    $default  reduziere mit Regel 155 (harmoniedeklaration)
+
+    harmonie_dekl_2  gehe zu Zustand 34 über
+
+
+Zustand 23
+
+  167 logikdeklaration: LOGIK logik_dekl_1 .
+  169 $@30: .
+  170 logik_dekl_1: logik_dekl_1 . $@30 logik_dekl_2
+
+    IDENTIFIER  reduziere mit Regel 169 ($@30)
+    $default    reduziere mit Regel 167 (logikdeklaration)
+
+    $@30  gehe zu Zustand 35 über
+
+
+Zustand 24
+
+  194 instrumentdeklaration: INSTRUMENT instrument_dekl_1 .
+  196 instrument_dekl_1: instrument_dekl_1 . instrument_dekl_2
+  197 instrument_dekl_2: . INTEGER '-' '>' INTEGER
+  198                  | . INTEGER '-' '>' INTEGER '-' INTEGER
+  199                  | . INTEGER '-' '>' '[' INTEGER ']'
+  200                  | . INTEGER '-' '>' INTEGER '[' INTEGER ']'
+  201                  | . INTEGER '-' '>' INTEGER '-' INTEGER '[' INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 36 über
+
+    $default  reduziere mit Regel 194 (instrumentdeklaration)
+
+    instrument_dekl_2  gehe zu Zustand 37 über
+
+
+Zustand 25
+
+   12 intervalldekl1: intervalldekl1 intervalldekl2_1 .
+
+    $default  reduziere mit Regel 12 (intervalldekl1)
+
+
+Zustand 26
+
+   14 intervalldekl2_1: $@1 . intervalldekl2
+   15 intervalldekl2: . IDENTIFIER '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
+   16               | . IDENTIFIER '=' GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL
+   17               | . IDENTIFIER '=' KOMPLEX_TON_LIST
+   18               | . IDENTIFIER '=' error
+   19               | . IDENTIFIER error
+
+    IDENTIFIER  schiebe und gehe zu Zustand 38 über
+
+    intervalldekl2  gehe zu Zustand 39 über
+
+
+Zustand 27
+
+   22 tondekl1: tondekl1 tondekl2_1 .
+
+    $default  reduziere mit Regel 22 (tondekl1)
+
+
+Zustand 28
+
+   24 tondekl2_1: $@2 . tondekl2
+   25 tondekl2: . IDENTIFIER '=' GLEITKOMMA_ZAHL
+   26         | . IDENTIFIER '=' IDENTIFIER '-' KOMPLEX_TON_LIST
+   27         | . IDENTIFIER '=' IDENTIFIER
+   28         | . IDENTIFIER '=' IDENTIFIER '+' KOMPLEX_TON_LIST
+   29         | . IDENTIFIER '=' error
+
+    IDENTIFIER  schiebe und gehe zu Zustand 40 über
+
+    tondekl2  gehe zu Zustand 41 über
+
+
+Zustand 29
+
+   47 tonsystemdekl1: tonsystemdekl1 tonsystemdekl2_1 .
+
+    $default  reduziere mit Regel 47 (tonsystemdekl1)
+
+
+Zustand 30
+
+   49 tonsystemdekl2_1: $@3 . tonsystemdekl2
+   51 tonsystemdekl2: . IDENTIFIER '=' INTEGER '[' tonliste ']' $@4 KOMPLEX_TON_LIST
+   53               | . IDENTIFIER '=' INTEGER '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+
+    IDENTIFIER  schiebe und gehe zu Zustand 42 über
+
+    tonsystemdekl2  gehe zu Zustand 43 über
+
+
+Zustand 31
+
+   71 $@6: .
+   73 umstimmungs_dekl_2: IDENTIFIER . $@6 '=' $@7 umstimmungs_dekl_3
+   74 $@8: .
+   76 umstimmungs_dekl_2: IDENTIFIER . $@8 '(' parameter_liste ')' '=' $@9 umstimmungs_dekl_3
+
+    '('       reduziere mit Regel 74 ($@8)
+    $default  reduziere mit Regel 71 ($@6)
+
+    $@6  gehe zu Zustand 44 über
+    $@8  gehe zu Zustand 45 über
+
+
+Zustand 32
+
+   70 umstimmungs_dekl_1: umstimmungs_dekl_1 umstimmungs_dekl_2 .
+
+    $default  reduziere mit Regel 70 (umstimmungs_dekl_1)
+
+
+Zustand 33
+
+  159 harmonie_dekl_2: IDENTIFIER . '=' '{' $@29 tasten_liste '}' bezugs_taste
+  160                | IDENTIFIER . '=' error
+
+    '='  schiebe und gehe zu Zustand 46 über
+
+
+Zustand 34
+
+  157 harmonie_dekl_1: harmonie_dekl_1 harmonie_dekl_2 .
+
+    $default  reduziere mit Regel 157 (harmonie_dekl_1)
+
+
+Zustand 35
+
+  170 logik_dekl_1: logik_dekl_1 $@30 . logik_dekl_2
+  172 logik_dekl_2: . IDENTIFIER ausloeser '=' '[' $@31 anweisungs_liste ']'
+  174             | . IDENTIFIER ausloeser '=' IDENTIFIER '[' $@32 anweisungs_liste ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 47 über
+
+    logik_dekl_2  gehe zu Zustand 48 über
+
+
+Zustand 36
+
+  197 instrument_dekl_2: INTEGER . '-' '>' INTEGER
+  198                  | INTEGER . '-' '>' INTEGER '-' INTEGER
+  199                  | INTEGER . '-' '>' '[' INTEGER ']'
+  200                  | INTEGER . '-' '>' INTEGER '[' INTEGER ']'
+  201                  | INTEGER . '-' '>' INTEGER '-' INTEGER '[' INTEGER ']'
+
+    '-'  schiebe und gehe zu Zustand 49 über
+
+
+Zustand 37
+
+  196 instrument_dekl_1: instrument_dekl_1 instrument_dekl_2 .
+
+    $default  reduziere mit Regel 196 (instrument_dekl_1)
+
+
+Zustand 38
+
+   15 intervalldekl2: IDENTIFIER . '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
+   16               | IDENTIFIER . '=' GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL
+   17               | IDENTIFIER . '=' KOMPLEX_TON_LIST
+   18               | IDENTIFIER . '=' error
+   19               | IDENTIFIER . error
+
+    error  schiebe und gehe zu Zustand 50 über
+    '='    schiebe und gehe zu Zustand 51 über
+
+
+Zustand 39
+
+   14 intervalldekl2_1: $@1 intervalldekl2 .
+
+    $default  reduziere mit Regel 14 (intervalldekl2_1)
+
+
+Zustand 40
+
+   25 tondekl2: IDENTIFIER . '=' GLEITKOMMA_ZAHL
+   26         | IDENTIFIER . '=' IDENTIFIER '-' KOMPLEX_TON_LIST
+   27         | IDENTIFIER . '=' IDENTIFIER
+   28         | IDENTIFIER . '=' IDENTIFIER '+' KOMPLEX_TON_LIST
+   29         | IDENTIFIER . '=' error
+
+    '='  schiebe und gehe zu Zustand 52 über
+
+
+Zustand 41
+
+   24 tondekl2_1: $@2 tondekl2 .
+
+    $default  reduziere mit Regel 24 (tondekl2_1)
+
+
+Zustand 42
+
+   51 tonsystemdekl2: IDENTIFIER . '=' INTEGER '[' tonliste ']' $@4 KOMPLEX_TON_LIST
+   53               | IDENTIFIER . '=' INTEGER '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+
+    '='  schiebe und gehe zu Zustand 53 über
+
+
+Zustand 43
+
+   49 tonsystemdekl2_1: $@3 tonsystemdekl2 .
+
+    $default  reduziere mit Regel 49 (tonsystemdekl2_1)
+
+
+Zustand 44
+
+   73 umstimmungs_dekl_2: IDENTIFIER $@6 . '=' $@7 umstimmungs_dekl_3
+
+    '='  schiebe und gehe zu Zustand 54 über
+
+
+Zustand 45
+
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 . '(' parameter_liste ')' '=' $@9 umstimmungs_dekl_3
+
+    '('  schiebe und gehe zu Zustand 55 über
+
+
+Zustand 46
+
+  159 harmonie_dekl_2: IDENTIFIER '=' . '{' $@29 tasten_liste '}' bezugs_taste
+  160                | IDENTIFIER '=' . error
+
+    error  schiebe und gehe zu Zustand 56 über
+    '{'    schiebe und gehe zu Zustand 57 über
+
+
+Zustand 47
+
+  172 logik_dekl_2: IDENTIFIER . ausloeser '=' '[' $@31 anweisungs_liste ']'
+  174             | IDENTIFIER . ausloeser '=' IDENTIFIER '[' $@32 anweisungs_liste ']'
+  181 harmoniebezeichner: . INTEGER '~' IDENTIFIER '~' INTEGER
+  182                   | . IDENTIFIER '~' INTEGER
+  183                   | . INTEGER '~' IDENTIFIER
+  184                   | . IDENTIFIER
+  185 ausloeser: . ANSONSTEN
+  186          | . harmoniebezeichner
+  187          | . FORM harmoniebezeichner
+  188          | . TASTE IDENTIFIER
+  190          | . MIDI_IN '(' $@35 integersequenz ')'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 58 über
+    INTEGER     schiebe und gehe zu Zustand 59 über
+    FORM        schiebe und gehe zu Zustand 60 über
+    TASTE       schiebe und gehe zu Zustand 61 über
+    MIDI_IN     schiebe und gehe zu Zustand 62 über
+    ANSONSTEN   schiebe und gehe zu Zustand 63 über
+
+    harmoniebezeichner  gehe zu Zustand 64 über
+    ausloeser           gehe zu Zustand 65 über
+
+
+Zustand 48
+
+  170 logik_dekl_1: logik_dekl_1 $@30 logik_dekl_2 .
+
+    $default  reduziere mit Regel 170 (logik_dekl_1)
+
+
+Zustand 49
+
+  197 instrument_dekl_2: INTEGER '-' . '>' INTEGER
+  198                  | INTEGER '-' . '>' INTEGER '-' INTEGER
+  199                  | INTEGER '-' . '>' '[' INTEGER ']'
+  200                  | INTEGER '-' . '>' INTEGER '[' INTEGER ']'
+  201                  | INTEGER '-' . '>' INTEGER '-' INTEGER '[' INTEGER ']'
+
+    '>'  schiebe und gehe zu Zustand 66 über
+
+
+Zustand 50
+
+   19 intervalldekl2: IDENTIFIER error .
+
+    $default  reduziere mit Regel 19 (intervalldekl2)
+
+
+Zustand 51
+
+   15 intervalldekl2: IDENTIFIER '=' . GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL
+   16               | IDENTIFIER '=' . GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL
+   17               | IDENTIFIER '=' . KOMPLEX_TON_LIST
+   18               | IDENTIFIER '=' . error
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    error       schiebe und gehe zu Zustand 67 über
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 72 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 74 über
+
+
+Zustand 52
+
+   25 tondekl2: IDENTIFIER '=' . GLEITKOMMA_ZAHL
+   26         | IDENTIFIER '=' . IDENTIFIER '-' KOMPLEX_TON_LIST
+   27         | IDENTIFIER '=' . IDENTIFIER
+   28         | IDENTIFIER '=' . IDENTIFIER '+' KOMPLEX_TON_LIST
+   29         | IDENTIFIER '=' . error
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    error       schiebe und gehe zu Zustand 75 über
+    IDENTIFIER  schiebe und gehe zu Zustand 76 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 77 über
+
+
+Zustand 53
+
+   51 tonsystemdekl2: IDENTIFIER '=' . INTEGER '[' tonliste ']' $@4 KOMPLEX_TON_LIST
+   53               | IDENTIFIER '=' . INTEGER '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+
+    INTEGER  schiebe und gehe zu Zustand 78 über
+
+
+Zustand 54
+
+   72 $@7: .
+   73 umstimmungs_dekl_2: IDENTIFIER $@6 '=' . $@7 umstimmungs_dekl_3
+
+    $default  reduziere mit Regel 72 ($@7)
+
+    $@7  gehe zu Zustand 79 über
+
+
+Zustand 55
+
+   59 parameter_liste: . IDENTIFIER
+   60                | . parameter_liste ',' IDENTIFIER
+   61                | . error
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' . parameter_liste ')' '=' $@9 umstimmungs_dekl_3
+
+    error       schiebe und gehe zu Zustand 80 über
+    IDENTIFIER  schiebe und gehe zu Zustand 81 über
+
+    parameter_liste  gehe zu Zustand 82 über
+
+
+Zustand 56
+
+  160 harmonie_dekl_2: IDENTIFIER '=' error .
+
+    $default  reduziere mit Regel 160 (harmonie_dekl_2)
+
+
+Zustand 57
+
+  158 $@29: .
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' . $@29 tasten_liste '}' bezugs_taste
+
+    $default  reduziere mit Regel 158 ($@29)
+
+    $@29  gehe zu Zustand 83 über
+
+
+Zustand 58
+
+  182 harmoniebezeichner: IDENTIFIER . '~' INTEGER
+  184                   | IDENTIFIER .
+
+    '~'  schiebe und gehe zu Zustand 84 über
+
+    $default  reduziere mit Regel 184 (harmoniebezeichner)
+
+
+Zustand 59
+
+  181 harmoniebezeichner: INTEGER . '~' IDENTIFIER '~' INTEGER
+  183                   | INTEGER . '~' IDENTIFIER
+
+    '~'  schiebe und gehe zu Zustand 85 über
+
+
+Zustand 60
+
+  181 harmoniebezeichner: . INTEGER '~' IDENTIFIER '~' INTEGER
+  182                   | . IDENTIFIER '~' INTEGER
+  183                   | . INTEGER '~' IDENTIFIER
+  184                   | . IDENTIFIER
+  187 ausloeser: FORM . harmoniebezeichner
+
+    IDENTIFIER  schiebe und gehe zu Zustand 58 über
+    INTEGER     schiebe und gehe zu Zustand 59 über
+
+    harmoniebezeichner  gehe zu Zustand 86 über
+
+
+Zustand 61
+
+  188 ausloeser: TASTE . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 87 über
+
+
+Zustand 62
+
+  190 ausloeser: MIDI_IN . '(' $@35 integersequenz ')'
+
+    '('  schiebe und gehe zu Zustand 88 über
+
+
+Zustand 63
+
+  185 ausloeser: ANSONSTEN .
+
+    $default  reduziere mit Regel 185 (ausloeser)
+
+
+Zustand 64
+
+  186 ausloeser: harmoniebezeichner .
+
+    $default  reduziere mit Regel 186 (ausloeser)
+
+
+Zustand 65
+
+  172 logik_dekl_2: IDENTIFIER ausloeser . '=' '[' $@31 anweisungs_liste ']'
+  174             | IDENTIFIER ausloeser . '=' IDENTIFIER '[' $@32 anweisungs_liste ']'
+
+    '='  schiebe und gehe zu Zustand 89 über
+
+
+Zustand 66
+
+  197 instrument_dekl_2: INTEGER '-' '>' . INTEGER
+  198                  | INTEGER '-' '>' . INTEGER '-' INTEGER
+  199                  | INTEGER '-' '>' . '[' INTEGER ']'
+  200                  | INTEGER '-' '>' . INTEGER '[' INTEGER ']'
+  201                  | INTEGER '-' '>' . INTEGER '-' INTEGER '[' INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 90 über
+    '['      schiebe und gehe zu Zustand 91 über
+
+
+Zustand 67
+
+   18 intervalldekl2: IDENTIFIER '=' error .
+
+    $default  reduziere mit Regel 18 (intervalldekl2)
+
+
+Zustand 68
+
+   41 KOMPLEX_TON_START: IDENTIFIER .
+
+    $default  reduziere mit Regel 41 (KOMPLEX_TON_START)
+
+
+Zustand 69
+
+  202 GLEITKOMMA_ZAHL: F_NUMBER .
+
+    $default  reduziere mit Regel 202 (GLEITKOMMA_ZAHL)
+
+
+Zustand 70
+
+  203 GLEITKOMMA_ZAHL: INTEGER .
+
+    $default  reduziere mit Regel 203 (GLEITKOMMA_ZAHL)
+
+
+Zustand 71
+
+   43 KOMPLEX_TON_START: '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 92 über
+
+
+Zustand 72
+
+   17 intervalldekl2: IDENTIFIER '=' KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 17 (intervalldekl2)
+
+
+Zustand 73
+
+   30 KOMPLEX_TON_LIST: KOMPLEX_TON_START . KOMPLEX_TON_LIST_2
+   31 KOMPLEX_TON_LIST_2: .
+   32                   | . KOMPLEX_TON_LIST_2 KOMPLEX_TON_1
+
+    $default  reduziere mit Regel 31 (KOMPLEX_TON_LIST_2)
+
+    KOMPLEX_TON_LIST_2  gehe zu Zustand 93 über
+
+
+Zustand 74
+
+   15 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL . ':' GLEITKOMMA_ZAHL
+   16               | IDENTIFIER '=' GLEITKOMMA_ZAHL . WURZEL GLEITKOMMA_ZAHL
+   42 KOMPLEX_TON_START: GLEITKOMMA_ZAHL . IDENTIFIER
+   44                  | GLEITKOMMA_ZAHL . '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 94 über
+    WURZEL      schiebe und gehe zu Zustand 95 über
+    ':'         schiebe und gehe zu Zustand 96 über
+    '/'         schiebe und gehe zu Zustand 97 über
+
+
+Zustand 75
+
+   29 tondekl2: IDENTIFIER '=' error .
+
+    $default  reduziere mit Regel 29 (tondekl2)
+
+
+Zustand 76
+
+   26 tondekl2: IDENTIFIER '=' IDENTIFIER . '-' KOMPLEX_TON_LIST
+   27         | IDENTIFIER '=' IDENTIFIER .
+   28         | IDENTIFIER '=' IDENTIFIER . '+' KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 98 über
+    '+'  schiebe und gehe zu Zustand 99 über
+
+    $default  reduziere mit Regel 27 (tondekl2)
+
+
+Zustand 77
+
+   25 tondekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL .
+
+    $default  reduziere mit Regel 25 (tondekl2)
+
+
+Zustand 78
+
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER . '[' tonliste ']' $@4 KOMPLEX_TON_LIST
+   53               | IDENTIFIER '=' INTEGER . '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+
+    '['  schiebe und gehe zu Zustand 100 über
+
+
+Zustand 79
+
+   73 umstimmungs_dekl_2: IDENTIFIER $@6 '=' $@7 . umstimmungs_dekl_3
+   77 umstimmungs_dekl_3: . umstimmungs_dekl_taste_abs
+   78                   | . umstimmungs_dekl_taste_rel
+   79                   | . umstimmungs_dekl_breite_abs
+   80                   | . umstimmungs_dekl_breite_rel
+   81                   | . umstimmungs_dekl_tonhoehe_veraendert
+   82                   | . umstimmungs_dekl_wiederholung_abs
+   83                   | . umstimmungs_dekl_wiederholung_rel
+   84                   | . umstimmungs_dekl_umstimmungs_bund
+   85                   | . umstimmungs_dekl_umstimmungs_case
+   86                   | . umstimmungs_dekl_midi_out
+   87                   | . error
+   88 umstimmungs_dekl_taste_abs: . INTEGER '[' ']'
+   89                           | . IDENTIFIER '[' ']'
+   90 umstimmungs_dekl_taste_rel: . '@' '+' INTEGER '[' ']'
+   91                           | . '@' '+' IDENTIFIER '[' ']'
+   92                           | . '@' '-' INTEGER '[' ']'
+   93                           | . '@' '-' IDENTIFIER '[' ']'
+   94 umstimmungs_dekl_breite_abs: . '[' '<' '<' INTEGER '>' '>' ']'
+   95                            | . '[' '<' '<' IDENTIFIER '>' '>' ']'
+   96 umstimmungs_dekl_breite_rel: . '[' '<' '<' '@' '+' INTEGER '>' '>' ']'
+   97                            | . '[' '<' '<' '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | . '[' '<' '<' '@' '-' INTEGER '>' '>' ']'
+   99                            | . '[' '<' '<' '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | . '[' '<' '<' '@' '*' INTEGER '>' '>' ']'
+  101                            | . '[' '<' '<' '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | . '[' '<' '<' '@' '/' INTEGER '>' '>' ']'
+  103                            | . '[' '<' '<' '@' '/' IDENTIFIER '>' '>' ']'
+  105 umstimmungs_dekl_tonhoehe_veraendert: . '[' $@10 nonempty_umstimm_expression_list ']'
+  125 umstimmungs_dekl_wiederholung_abs: . '[' ']' $@16 KOMPLEX_TON_LIST
+  127                                  | . '[' ']' $@17 '-' KOMPLEX_TON_LIST
+  129 umstimmungs_dekl_wiederholung_rel: . '[' ']' '@' '+' $@18 KOMPLEX_TON_LIST
+  131                                  | . '[' ']' '@' '-' $@19 KOMPLEX_TON_LIST
+  133 umstimmungs_dekl_umstimmungs_bund: . '{' $@20 aktions_liste '}'
+  142 umstimmungs_dekl_umstimmungs_case: . INTEGER '{' $@23 umstimmungs_case_liste '}'
+  144                                  | . IDENTIFIER '{' $@24 umstimmungs_case_liste '}'
+  154 umstimmungs_dekl_midi_out: . MIDI_OUT '(' $@28 integersequenz ')'
+
+    error       schiebe und gehe zu Zustand 101 über
+    IDENTIFIER  schiebe und gehe zu Zustand 102 über
+    INTEGER     schiebe und gehe zu Zustand 103 über
+    MIDI_OUT    schiebe und gehe zu Zustand 104 über
+    '['         schiebe und gehe zu Zustand 105 über
+    '@'         schiebe und gehe zu Zustand 106 über
+    '{'         schiebe und gehe zu Zustand 107 über
+
+    umstimmungs_dekl_3                    gehe zu Zustand 108 über
+    umstimmungs_dekl_taste_abs            gehe zu Zustand 109 über
+    umstimmungs_dekl_taste_rel            gehe zu Zustand 110 über
+    umstimmungs_dekl_breite_abs           gehe zu Zustand 111 über
+    umstimmungs_dekl_breite_rel           gehe zu Zustand 112 über
+    umstimmungs_dekl_tonhoehe_veraendert  gehe zu Zustand 113 über
+    umstimmungs_dekl_wiederholung_abs     gehe zu Zustand 114 über
+    umstimmungs_dekl_wiederholung_rel     gehe zu Zustand 115 über
+    umstimmungs_dekl_umstimmungs_bund     gehe zu Zustand 116 über
+    umstimmungs_dekl_umstimmungs_case     gehe zu Zustand 117 über
+    umstimmungs_dekl_midi_out             gehe zu Zustand 118 über
+
+
+Zustand 80
+
+   61 parameter_liste: error .
+
+    $default  reduziere mit Regel 61 (parameter_liste)
+
+
+Zustand 81
+
+   59 parameter_liste: IDENTIFIER .
+
+    $default  reduziere mit Regel 59 (parameter_liste)
+
+
+Zustand 82
+
+   60 parameter_liste: parameter_liste . ',' IDENTIFIER
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste . ')' '=' $@9 umstimmungs_dekl_3
+
+    ','  schiebe und gehe zu Zustand 119 über
+    ')'  schiebe und gehe zu Zustand 120 über
+
+
+Zustand 83
+
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' $@29 . tasten_liste '}' bezugs_taste
+  163 tasten_liste: . taste
+  164             | . tasten_liste ',' taste
+  165 taste: . INTEGER
+  166      | . '*' INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 121 über
+    '*'      schiebe und gehe zu Zustand 122 über
+
+    tasten_liste  gehe zu Zustand 123 über
+    taste         gehe zu Zustand 124 über
+
+
+Zustand 84
+
+  182 harmoniebezeichner: IDENTIFIER '~' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 125 über
+
+
+Zustand 85
+
+  181 harmoniebezeichner: INTEGER '~' . IDENTIFIER '~' INTEGER
+  183                   | INTEGER '~' . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 126 über
+
+
+Zustand 86
+
+  187 ausloeser: FORM harmoniebezeichner .
+
+    $default  reduziere mit Regel 187 (ausloeser)
+
+
+Zustand 87
+
+  188 ausloeser: TASTE IDENTIFIER .
+
+    $default  reduziere mit Regel 188 (ausloeser)
+
+
+Zustand 88
+
+  189 $@35: .
+  190 ausloeser: MIDI_IN '(' . $@35 integersequenz ')'
+
+    $default  reduziere mit Regel 189 ($@35)
+
+    $@35  gehe zu Zustand 127 über
+
+
+Zustand 89
+
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' . '[' $@31 anweisungs_liste ']'
+  174             | IDENTIFIER ausloeser '=' . IDENTIFIER '[' $@32 anweisungs_liste ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 128 über
+    '['         schiebe und gehe zu Zustand 129 über
+
+
+Zustand 90
+
+  197 instrument_dekl_2: INTEGER '-' '>' INTEGER .
+  198                  | INTEGER '-' '>' INTEGER . '-' INTEGER
+  200                  | INTEGER '-' '>' INTEGER . '[' INTEGER ']'
+  201                  | INTEGER '-' '>' INTEGER . '-' INTEGER '[' INTEGER ']'
+
+    '-'  schiebe und gehe zu Zustand 130 über
+    '['  schiebe und gehe zu Zustand 131 über
+
+    $default  reduziere mit Regel 197 (instrument_dekl_2)
+
+
+Zustand 91
+
+  199 instrument_dekl_2: INTEGER '-' '>' '[' . INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 132 über
+
+
+Zustand 92
+
+   43 KOMPLEX_TON_START: '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 133 über
+
+
+Zustand 93
+
+   30 KOMPLEX_TON_LIST: KOMPLEX_TON_START KOMPLEX_TON_LIST_2 .
+   32 KOMPLEX_TON_LIST_2: KOMPLEX_TON_LIST_2 . KOMPLEX_TON_1
+   33 KOMPLEX_TON_1: . '+' IDENTIFIER
+   34              | . '-' IDENTIFIER
+   35              | . '+' GLEITKOMMA_ZAHL IDENTIFIER
+   36              | . '-' GLEITKOMMA_ZAHL IDENTIFIER
+   37              | . '+' '/' GLEITKOMMA_ZAHL IDENTIFIER
+   38              | . '-' '/' GLEITKOMMA_ZAHL IDENTIFIER
+   39              | . '+' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+   40              | . '-' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+    '-'  schiebe und gehe zu Zustand 134 über
+    '+'  schiebe und gehe zu Zustand 135 über
+
+    $default  reduziere mit Regel 30 (KOMPLEX_TON_LIST)
+
+    KOMPLEX_TON_1  gehe zu Zustand 136 über
+
+
+Zustand 94
+
+   42 KOMPLEX_TON_START: GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 42 (KOMPLEX_TON_START)
+
+
+Zustand 95
+
+   16 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL WURZEL . GLEITKOMMA_ZAHL
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 137 über
+
+
+Zustand 96
+
+   15 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL ':' . GLEITKOMMA_ZAHL
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 138 über
+
+
+Zustand 97
+
+   44 KOMPLEX_TON_START: GLEITKOMMA_ZAHL '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 139 über
+
+
+Zustand 98
+
+   26 tondekl2: IDENTIFIER '=' IDENTIFIER '-' . KOMPLEX_TON_LIST
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 140 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 99
+
+   28 tondekl2: IDENTIFIER '=' IDENTIFIER '+' . KOMPLEX_TON_LIST
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 142 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 100
+
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' . tonliste ']' $@4 KOMPLEX_TON_LIST
+   53               | IDENTIFIER '=' INTEGER '[' . tonliste ']' $@5 '-' KOMPLEX_TON_LIST
+   54 tonliste: . ton_element
+   55         | . tonliste ',' ton_element
+   56 ton_element: . IDENTIFIER
+   57            | .
+   58            | . error
+
+    error       schiebe und gehe zu Zustand 143 über
+    IDENTIFIER  schiebe und gehe zu Zustand 144 über
+
+    ']'  reduziere mit Regel 57 (ton_element)
+    ','  reduziere mit Regel 57 (ton_element)
+
+    tonliste     gehe zu Zustand 145 über
+    ton_element  gehe zu Zustand 146 über
+
+
+Zustand 101
+
+   87 umstimmungs_dekl_3: error .
+
+    $default  reduziere mit Regel 87 (umstimmungs_dekl_3)
+
+
+Zustand 102
+
+   89 umstimmungs_dekl_taste_abs: IDENTIFIER . '[' ']'
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER . '{' $@24 umstimmungs_case_liste '}'
+
+    '['  schiebe und gehe zu Zustand 147 über
+    '{'  schiebe und gehe zu Zustand 148 über
+
+
+Zustand 103
+
+   88 umstimmungs_dekl_taste_abs: INTEGER . '[' ']'
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER . '{' $@23 umstimmungs_case_liste '}'
+
+    '['  schiebe und gehe zu Zustand 149 über
+    '{'  schiebe und gehe zu Zustand 150 über
+
+
+Zustand 104
+
+  154 umstimmungs_dekl_midi_out: MIDI_OUT . '(' $@28 integersequenz ')'
+
+    '('  schiebe und gehe zu Zustand 151 über
+
+
+Zustand 105
+
+   94 umstimmungs_dekl_breite_abs: '[' . '<' '<' INTEGER '>' '>' ']'
+   95                            | '[' . '<' '<' IDENTIFIER '>' '>' ']'
+   96 umstimmungs_dekl_breite_rel: '[' . '<' '<' '@' '+' INTEGER '>' '>' ']'
+   97                            | '[' . '<' '<' '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | '[' . '<' '<' '@' '-' INTEGER '>' '>' ']'
+   99                            | '[' . '<' '<' '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | '[' . '<' '<' '@' '*' INTEGER '>' '>' ']'
+  101                            | '[' . '<' '<' '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | '[' . '<' '<' '@' '/' INTEGER '>' '>' ']'
+  103                            | '[' . '<' '<' '@' '/' IDENTIFIER '>' '>' ']'
+  104 $@10: .
+  105 umstimmungs_dekl_tonhoehe_veraendert: '[' . $@10 nonempty_umstimm_expression_list ']'
+  125 umstimmungs_dekl_wiederholung_abs: '[' . ']' $@16 KOMPLEX_TON_LIST
+  127                                  | '[' . ']' $@17 '-' KOMPLEX_TON_LIST
+  129 umstimmungs_dekl_wiederholung_rel: '[' . ']' '@' '+' $@18 KOMPLEX_TON_LIST
+  131                                  | '[' . ']' '@' '-' $@19 KOMPLEX_TON_LIST
+
+    ']'  schiebe und gehe zu Zustand 152 über
+    '<'  schiebe und gehe zu Zustand 153 über
+
+    $default  reduziere mit Regel 104 ($@10)
+
+    $@10  gehe zu Zustand 154 über
+
+
+Zustand 106
+
+   90 umstimmungs_dekl_taste_rel: '@' . '+' INTEGER '[' ']'
+   91                           | '@' . '+' IDENTIFIER '[' ']'
+   92                           | '@' . '-' INTEGER '[' ']'
+   93                           | '@' . '-' IDENTIFIER '[' ']'
+
+    '-'  schiebe und gehe zu Zustand 155 über
+    '+'  schiebe und gehe zu Zustand 156 über
+
+
+Zustand 107
+
+  132 $@20: .
+  133 umstimmungs_dekl_umstimmungs_bund: '{' . $@20 aktions_liste '}'
+
+    $default  reduziere mit Regel 132 ($@20)
+
+    $@20  gehe zu Zustand 157 über
+
+
+Zustand 108
+
+   73 umstimmungs_dekl_2: IDENTIFIER $@6 '=' $@7 umstimmungs_dekl_3 .
+
+    $default  reduziere mit Regel 73 (umstimmungs_dekl_2)
+
+
+Zustand 109
+
+   77 umstimmungs_dekl_3: umstimmungs_dekl_taste_abs .
+
+    $default  reduziere mit Regel 77 (umstimmungs_dekl_3)
+
+
+Zustand 110
+
+   78 umstimmungs_dekl_3: umstimmungs_dekl_taste_rel .
+
+    $default  reduziere mit Regel 78 (umstimmungs_dekl_3)
+
+
+Zustand 111
+
+   79 umstimmungs_dekl_3: umstimmungs_dekl_breite_abs .
+
+    $default  reduziere mit Regel 79 (umstimmungs_dekl_3)
+
+
+Zustand 112
+
+   80 umstimmungs_dekl_3: umstimmungs_dekl_breite_rel .
+
+    $default  reduziere mit Regel 80 (umstimmungs_dekl_3)
+
+
+Zustand 113
+
+   81 umstimmungs_dekl_3: umstimmungs_dekl_tonhoehe_veraendert .
+
+    $default  reduziere mit Regel 81 (umstimmungs_dekl_3)
+
+
+Zustand 114
+
+   82 umstimmungs_dekl_3: umstimmungs_dekl_wiederholung_abs .
+
+    $default  reduziere mit Regel 82 (umstimmungs_dekl_3)
+
+
+Zustand 115
+
+   83 umstimmungs_dekl_3: umstimmungs_dekl_wiederholung_rel .
+
+    $default  reduziere mit Regel 83 (umstimmungs_dekl_3)
+
+
+Zustand 116
+
+   84 umstimmungs_dekl_3: umstimmungs_dekl_umstimmungs_bund .
+
+    $default  reduziere mit Regel 84 (umstimmungs_dekl_3)
+
+
+Zustand 117
+
+   85 umstimmungs_dekl_3: umstimmungs_dekl_umstimmungs_case .
+
+    $default  reduziere mit Regel 85 (umstimmungs_dekl_3)
+
+
+Zustand 118
+
+   86 umstimmungs_dekl_3: umstimmungs_dekl_midi_out .
+
+    $default  reduziere mit Regel 86 (umstimmungs_dekl_3)
+
+
+Zustand 119
+
+   60 parameter_liste: parameter_liste ',' . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 158 über
+
+
+Zustand 120
+
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste ')' . '=' $@9 umstimmungs_dekl_3
+
+    '='  schiebe und gehe zu Zustand 159 über
+
+
+Zustand 121
+
+  165 taste: INTEGER .
+
+    $default  reduziere mit Regel 165 (taste)
+
+
+Zustand 122
+
+  166 taste: '*' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 160 über
+
+
+Zustand 123
+
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' $@29 tasten_liste . '}' bezugs_taste
+  164 tasten_liste: tasten_liste . ',' taste
+
+    ','  schiebe und gehe zu Zustand 161 über
+    '}'  schiebe und gehe zu Zustand 162 über
+
+
+Zustand 124
+
+  163 tasten_liste: taste .
+
+    $default  reduziere mit Regel 163 (tasten_liste)
+
+
+Zustand 125
+
+  182 harmoniebezeichner: IDENTIFIER '~' INTEGER .
+
+    $default  reduziere mit Regel 182 (harmoniebezeichner)
+
+
+Zustand 126
+
+  181 harmoniebezeichner: INTEGER '~' IDENTIFIER . '~' INTEGER
+  183                   | INTEGER '~' IDENTIFIER .
+
+    '~'  schiebe und gehe zu Zustand 163 über
+
+    $default  reduziere mit Regel 183 (harmoniebezeichner)
+
+
+Zustand 127
+
+  190 ausloeser: MIDI_IN '(' $@35 . integersequenz ')'
+  191 integersequenz: . INTEGER
+  192               | . integersequenz ',' INTEGER
+  193               | . error
+
+    error    schiebe und gehe zu Zustand 164 über
+    INTEGER  schiebe und gehe zu Zustand 165 über
+
+    integersequenz  gehe zu Zustand 166 über
+
+
+Zustand 128
+
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER . '[' $@32 anweisungs_liste ']'
+
+    '['  schiebe und gehe zu Zustand 167 über
+
+
+Zustand 129
+
+  171 $@31: .
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' '[' . $@31 anweisungs_liste ']'
+
+    $default  reduziere mit Regel 171 ($@31)
+
+    $@31  gehe zu Zustand 168 über
+
+
+Zustand 130
+
+  198 instrument_dekl_2: INTEGER '-' '>' INTEGER '-' . INTEGER
+  201                  | INTEGER '-' '>' INTEGER '-' . INTEGER '[' INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 169 über
+
+
+Zustand 131
+
+  200 instrument_dekl_2: INTEGER '-' '>' INTEGER '[' . INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 170 über
+
+
+Zustand 132
+
+  199 instrument_dekl_2: INTEGER '-' '>' '[' INTEGER . ']'
+
+    ']'  schiebe und gehe zu Zustand 171 über
+
+
+Zustand 133
+
+   43 KOMPLEX_TON_START: '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 43 (KOMPLEX_TON_START)
+
+
+Zustand 134
+
+   34 KOMPLEX_TON_1: '-' . IDENTIFIER
+   36              | '-' . GLEITKOMMA_ZAHL IDENTIFIER
+   38              | '-' . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   40              | '-' . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 172 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 173 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 174 über
+
+
+Zustand 135
+
+   33 KOMPLEX_TON_1: '+' . IDENTIFIER
+   35              | '+' . GLEITKOMMA_ZAHL IDENTIFIER
+   37              | '+' . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   39              | '+' . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 175 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 176 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 177 über
+
+
+Zustand 136
+
+   32 KOMPLEX_TON_LIST_2: KOMPLEX_TON_LIST_2 KOMPLEX_TON_1 .
+
+    $default  reduziere mit Regel 32 (KOMPLEX_TON_LIST_2)
+
+
+Zustand 137
+
+   16 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL WURZEL GLEITKOMMA_ZAHL .
+
+    $default  reduziere mit Regel 16 (intervalldekl2)
+
+
+Zustand 138
+
+   15 intervalldekl2: IDENTIFIER '=' GLEITKOMMA_ZAHL ':' GLEITKOMMA_ZAHL .
+
+    $default  reduziere mit Regel 15 (intervalldekl2)
+
+
+Zustand 139
+
+   44 KOMPLEX_TON_START: GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 178 über
+
+
+Zustand 140
+
+   26 tondekl2: IDENTIFIER '=' IDENTIFIER '-' KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 26 (tondekl2)
+
+
+Zustand 141
+
+   42 KOMPLEX_TON_START: GLEITKOMMA_ZAHL . IDENTIFIER
+   44                  | GLEITKOMMA_ZAHL . '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 94 über
+    '/'         schiebe und gehe zu Zustand 97 über
+
+
+Zustand 142
+
+   28 tondekl2: IDENTIFIER '=' IDENTIFIER '+' KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 28 (tondekl2)
+
+
+Zustand 143
+
+   58 ton_element: error .
+
+    $default  reduziere mit Regel 58 (ton_element)
+
+
+Zustand 144
+
+   56 ton_element: IDENTIFIER .
+
+    $default  reduziere mit Regel 56 (ton_element)
+
+
+Zustand 145
+
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste . ']' $@4 KOMPLEX_TON_LIST
+   53               | IDENTIFIER '=' INTEGER '[' tonliste . ']' $@5 '-' KOMPLEX_TON_LIST
+   55 tonliste: tonliste . ',' ton_element
+
+    ']'  schiebe und gehe zu Zustand 179 über
+    ','  schiebe und gehe zu Zustand 180 über
+
+
+Zustand 146
+
+   54 tonliste: ton_element .
+
+    $default  reduziere mit Regel 54 (tonliste)
+
+
+Zustand 147
+
+   89 umstimmungs_dekl_taste_abs: IDENTIFIER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 181 über
+
+
+Zustand 148
+
+  143 $@24: .
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER '{' . $@24 umstimmungs_case_liste '}'
+
+    $default  reduziere mit Regel 143 ($@24)
+
+    $@24  gehe zu Zustand 182 über
+
+
+Zustand 149
+
+   88 umstimmungs_dekl_taste_abs: INTEGER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 183 über
+
+
+Zustand 150
+
+  141 $@23: .
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER '{' . $@23 umstimmungs_case_liste '}'
+
+    $default  reduziere mit Regel 141 ($@23)
+
+    $@23  gehe zu Zustand 184 über
+
+
+Zustand 151
+
+  153 $@28: .
+  154 umstimmungs_dekl_midi_out: MIDI_OUT '(' . $@28 integersequenz ')'
+
+    $default  reduziere mit Regel 153 ($@28)
+
+    $@28  gehe zu Zustand 185 über
+
+
+Zustand 152
+
+  124 $@16: .
+  125 umstimmungs_dekl_wiederholung_abs: '[' ']' . $@16 KOMPLEX_TON_LIST
+  126 $@17: .
+  127 umstimmungs_dekl_wiederholung_abs: '[' ']' . $@17 '-' KOMPLEX_TON_LIST
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' . '@' '+' $@18 KOMPLEX_TON_LIST
+  131                                  | '[' ']' . '@' '-' $@19 KOMPLEX_TON_LIST
+
+    '@'  schiebe und gehe zu Zustand 186 über
+
+    '-'       reduziere mit Regel 126 ($@17)
+    $default  reduziere mit Regel 124 ($@16)
+
+    $@16  gehe zu Zustand 187 über
+    $@17  gehe zu Zustand 188 über
+
+
+Zustand 153
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' . '<' INTEGER '>' '>' ']'
+   95                            | '[' '<' . '<' IDENTIFIER '>' '>' ']'
+   96 umstimmungs_dekl_breite_rel: '[' '<' . '<' '@' '+' INTEGER '>' '>' ']'
+   97                            | '[' '<' . '<' '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | '[' '<' . '<' '@' '-' INTEGER '>' '>' ']'
+   99                            | '[' '<' . '<' '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | '[' '<' . '<' '@' '*' INTEGER '>' '>' ']'
+  101                            | '[' '<' . '<' '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | '[' '<' . '<' '@' '/' INTEGER '>' '>' ']'
+  103                            | '[' '<' . '<' '@' '/' IDENTIFIER '>' '>' ']'
+
+    '<'  schiebe und gehe zu Zustand 189 über
+
+
+Zustand 154
+
+  105 umstimmungs_dekl_tonhoehe_veraendert: '[' $@10 . nonempty_umstimm_expression_list ']'
+  106 nonempty_umstimm_expression_list: . nonempty_umstimm_expression
+  107                                 | . nonempty_umstimm_expression ',' umstimm_expression_list
+  109                                 | . ',' $@11 umstimm_expression_list
+  114 nonempty_umstimm_expression: . IDENTIFIER
+  115                            | . '@'
+  117                            | . IDENTIFIER '+' $@12 KOMPLEX_TON_LIST
+  119                            | . '@' '+' $@13 KOMPLEX_TON_LIST
+  121                            | . IDENTIFIER '-' $@14 KOMPLEX_TON_LIST
+  123                            | . '@' '-' $@15 KOMPLEX_TON_LIST
+
+    IDENTIFIER  schiebe und gehe zu Zustand 190 über
+    ','         schiebe und gehe zu Zustand 191 über
+    '@'         schiebe und gehe zu Zustand 192 über
+
+    nonempty_umstimm_expression_list  gehe zu Zustand 193 über
+    nonempty_umstimm_expression       gehe zu Zustand 194 über
+
+
+Zustand 155
+
+   92 umstimmungs_dekl_taste_rel: '@' '-' . INTEGER '[' ']'
+   93                           | '@' '-' . IDENTIFIER '[' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 195 über
+    INTEGER     schiebe und gehe zu Zustand 196 über
+
+
+Zustand 156
+
+   90 umstimmungs_dekl_taste_rel: '@' '+' . INTEGER '[' ']'
+   91                           | '@' '+' . IDENTIFIER '[' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 197 über
+    INTEGER     schiebe und gehe zu Zustand 198 über
+
+
+Zustand 157
+
+  133 umstimmungs_dekl_umstimmungs_bund: '{' $@20 . aktions_liste '}'
+  134 aktions_liste: . aktion
+  135              | . aktions_liste ',' aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktions_liste  gehe zu Zustand 201 über
+    aktion         gehe zu Zustand 202 über
+
+
+Zustand 158
+
+   60 parameter_liste: parameter_liste ',' IDENTIFIER .
+
+    $default  reduziere mit Regel 60 (parameter_liste)
+
+
+Zustand 159
+
+   75 $@9: .
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste ')' '=' . $@9 umstimmungs_dekl_3
+
+    $default  reduziere mit Regel 75 ($@9)
+
+    $@9  gehe zu Zustand 203 über
+
+
+Zustand 160
+
+  166 taste: '*' INTEGER .
+
+    $default  reduziere mit Regel 166 (taste)
+
+
+Zustand 161
+
+  164 tasten_liste: tasten_liste ',' . taste
+  165 taste: . INTEGER
+  166      | . '*' INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 121 über
+    '*'      schiebe und gehe zu Zustand 122 über
+
+    taste  gehe zu Zustand 204 über
+
+
+Zustand 162
+
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' $@29 tasten_liste '}' . bezugs_taste
+  161 bezugs_taste: .
+  162             | . '.' INTEGER
+
+    '.'  schiebe und gehe zu Zustand 205 über
+
+    $default  reduziere mit Regel 161 (bezugs_taste)
+
+    bezugs_taste  gehe zu Zustand 206 über
+
+
+Zustand 163
+
+  181 harmoniebezeichner: INTEGER '~' IDENTIFIER '~' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 207 über
+
+
+Zustand 164
+
+  193 integersequenz: error .
+
+    $default  reduziere mit Regel 193 (integersequenz)
+
+
+Zustand 165
+
+  191 integersequenz: INTEGER .
+
+    $default  reduziere mit Regel 191 (integersequenz)
+
+
+Zustand 166
+
+  190 ausloeser: MIDI_IN '(' $@35 integersequenz . ')'
+  192 integersequenz: integersequenz . ',' INTEGER
+
+    ','  schiebe und gehe zu Zustand 208 über
+    ')'  schiebe und gehe zu Zustand 209 über
+
+
+Zustand 167
+
+  173 $@32: .
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER '[' . $@32 anweisungs_liste ']'
+
+    $default  reduziere mit Regel 173 ($@32)
+
+    $@32  gehe zu Zustand 210 über
+
+
+Zustand 168
+
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' '[' $@31 . anweisungs_liste ']'
+  175 anweisungs_liste: .
+  176                 | . anweisungs_liste anweisung
+
+    $default  reduziere mit Regel 175 (anweisungs_liste)
+
+    anweisungs_liste  gehe zu Zustand 211 über
+
+
+Zustand 169
+
+  198 instrument_dekl_2: INTEGER '-' '>' INTEGER '-' INTEGER .
+  201                  | INTEGER '-' '>' INTEGER '-' INTEGER . '[' INTEGER ']'
+
+    '['  schiebe und gehe zu Zustand 212 über
+
+    $default  reduziere mit Regel 198 (instrument_dekl_2)
+
+
+Zustand 170
+
+  200 instrument_dekl_2: INTEGER '-' '>' INTEGER '[' INTEGER . ']'
+
+    ']'  schiebe und gehe zu Zustand 213 über
+
+
+Zustand 171
+
+  199 instrument_dekl_2: INTEGER '-' '>' '[' INTEGER ']' .
+
+    $default  reduziere mit Regel 199 (instrument_dekl_2)
+
+
+Zustand 172
+
+   34 KOMPLEX_TON_1: '-' IDENTIFIER .
+
+    $default  reduziere mit Regel 34 (KOMPLEX_TON_1)
+
+
+Zustand 173
+
+   38 KOMPLEX_TON_1: '-' '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 214 über
+
+
+Zustand 174
+
+   36 KOMPLEX_TON_1: '-' GLEITKOMMA_ZAHL . IDENTIFIER
+   40              | '-' GLEITKOMMA_ZAHL . '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 215 über
+    '/'         schiebe und gehe zu Zustand 216 über
+
+
+Zustand 175
+
+   33 KOMPLEX_TON_1: '+' IDENTIFIER .
+
+    $default  reduziere mit Regel 33 (KOMPLEX_TON_1)
+
+
+Zustand 176
+
+   37 KOMPLEX_TON_1: '+' '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 217 über
+
+
+Zustand 177
+
+   35 KOMPLEX_TON_1: '+' GLEITKOMMA_ZAHL . IDENTIFIER
+   39              | '+' GLEITKOMMA_ZAHL . '/' GLEITKOMMA_ZAHL IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 218 über
+    '/'         schiebe und gehe zu Zustand 219 über
+
+
+Zustand 178
+
+   44 KOMPLEX_TON_START: GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 44 (KOMPLEX_TON_START)
+
+
+Zustand 179
+
+   50 $@4: .
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' . $@4 KOMPLEX_TON_LIST
+   52 $@5: .
+   53 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' . $@5 '-' KOMPLEX_TON_LIST
+
+    '-'       reduziere mit Regel 52 ($@5)
+    $default  reduziere mit Regel 50 ($@4)
+
+    $@4  gehe zu Zustand 220 über
+    $@5  gehe zu Zustand 221 über
+
+
+Zustand 180
+
+   55 tonliste: tonliste ',' . ton_element
+   56 ton_element: . IDENTIFIER
+   57            | .
+   58            | . error
+
+    error       schiebe und gehe zu Zustand 143 über
+    IDENTIFIER  schiebe und gehe zu Zustand 144 über
+
+    ']'  reduziere mit Regel 57 (ton_element)
+    ','  reduziere mit Regel 57 (ton_element)
+
+    ton_element  gehe zu Zustand 222 über
+
+
+Zustand 181
+
+   89 umstimmungs_dekl_taste_abs: IDENTIFIER '[' ']' .
+
+    $default  reduziere mit Regel 89 (umstimmungs_dekl_taste_abs)
+
+
+Zustand 182
+
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER '{' $@24 . umstimmungs_case_liste '}'
+  145 umstimmungs_case_liste: . umstimmungs_case_element
+  146                       | . umstimmungs_case_liste umstimmungs_case_element
+  148 umstimmungs_case_element: . INTEGER '-' '>' $@25 aktions_liste
+  150                         | . '-' INTEGER '-' '>' $@26 aktions_liste
+  152                         | . ANSONSTEN '-' '>' $@27 aktions_liste
+
+    INTEGER    schiebe und gehe zu Zustand 223 über
+    ANSONSTEN  schiebe und gehe zu Zustand 224 über
+    '-'        schiebe und gehe zu Zustand 225 über
+
+    umstimmungs_case_liste    gehe zu Zustand 226 über
+    umstimmungs_case_element  gehe zu Zustand 227 über
+
+
+Zustand 183
+
+   88 umstimmungs_dekl_taste_abs: INTEGER '[' ']' .
+
+    $default  reduziere mit Regel 88 (umstimmungs_dekl_taste_abs)
+
+
+Zustand 184
+
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER '{' $@23 . umstimmungs_case_liste '}'
+  145 umstimmungs_case_liste: . umstimmungs_case_element
+  146                       | . umstimmungs_case_liste umstimmungs_case_element
+  148 umstimmungs_case_element: . INTEGER '-' '>' $@25 aktions_liste
+  150                         | . '-' INTEGER '-' '>' $@26 aktions_liste
+  152                         | . ANSONSTEN '-' '>' $@27 aktions_liste
+
+    INTEGER    schiebe und gehe zu Zustand 223 über
+    ANSONSTEN  schiebe und gehe zu Zustand 224 über
+    '-'        schiebe und gehe zu Zustand 225 über
+
+    umstimmungs_case_liste    gehe zu Zustand 228 über
+    umstimmungs_case_element  gehe zu Zustand 227 über
+
+
+Zustand 185
+
+  154 umstimmungs_dekl_midi_out: MIDI_OUT '(' $@28 . integersequenz ')'
+  191 integersequenz: . INTEGER
+  192               | . integersequenz ',' INTEGER
+  193               | . error
+
+    error    schiebe und gehe zu Zustand 164 über
+    INTEGER  schiebe und gehe zu Zustand 165 über
+
+    integersequenz  gehe zu Zustand 229 über
+
+
+Zustand 186
+
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' . '+' $@18 KOMPLEX_TON_LIST
+  131                                  | '[' ']' '@' . '-' $@19 KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 230 über
+    '+'  schiebe und gehe zu Zustand 231 über
+
+
+Zustand 187
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  125 umstimmungs_dekl_wiederholung_abs: '[' ']' $@16 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 232 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 188
+
+  127 umstimmungs_dekl_wiederholung_abs: '[' ']' $@17 . '-' KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 233 über
+
+
+Zustand 189
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' . INTEGER '>' '>' ']'
+   95                            | '[' '<' '<' . IDENTIFIER '>' '>' ']'
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' . '@' '+' INTEGER '>' '>' ']'
+   97                            | '[' '<' '<' . '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | '[' '<' '<' . '@' '-' INTEGER '>' '>' ']'
+   99                            | '[' '<' '<' . '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | '[' '<' '<' . '@' '*' INTEGER '>' '>' ']'
+  101                            | '[' '<' '<' . '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | '[' '<' '<' . '@' '/' INTEGER '>' '>' ']'
+  103                            | '[' '<' '<' . '@' '/' IDENTIFIER '>' '>' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 234 über
+    INTEGER     schiebe und gehe zu Zustand 235 über
+    '@'         schiebe und gehe zu Zustand 236 über
+
+
+Zustand 190
+
+  114 nonempty_umstimm_expression: IDENTIFIER .
+  117                            | IDENTIFIER . '+' $@12 KOMPLEX_TON_LIST
+  121                            | IDENTIFIER . '-' $@14 KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 237 über
+    '+'  schiebe und gehe zu Zustand 238 über
+
+    $default  reduziere mit Regel 114 (nonempty_umstimm_expression)
+
+
+Zustand 191
+
+  108 $@11: .
+  109 nonempty_umstimm_expression_list: ',' . $@11 umstimm_expression_list
+
+    $default  reduziere mit Regel 108 ($@11)
+
+    $@11  gehe zu Zustand 239 über
+
+
+Zustand 192
+
+  115 nonempty_umstimm_expression: '@' .
+  119                            | '@' . '+' $@13 KOMPLEX_TON_LIST
+  123                            | '@' . '-' $@15 KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 240 über
+    '+'  schiebe und gehe zu Zustand 241 über
+
+    $default  reduziere mit Regel 115 (nonempty_umstimm_expression)
+
+
+Zustand 193
+
+  105 umstimmungs_dekl_tonhoehe_veraendert: '[' $@10 nonempty_umstimm_expression_list . ']'
+
+    ']'  schiebe und gehe zu Zustand 242 über
+
+
+Zustand 194
+
+  106 nonempty_umstimm_expression_list: nonempty_umstimm_expression .
+  107                                 | nonempty_umstimm_expression . ',' umstimm_expression_list
+
+    ','  schiebe und gehe zu Zustand 243 über
+
+    $default  reduziere mit Regel 106 (nonempty_umstimm_expression_list)
+
+
+Zustand 195
+
+   93 umstimmungs_dekl_taste_rel: '@' '-' IDENTIFIER . '[' ']'
+
+    '['  schiebe und gehe zu Zustand 244 über
+
+
+Zustand 196
+
+   92 umstimmungs_dekl_taste_rel: '@' '-' INTEGER . '[' ']'
+
+    '['  schiebe und gehe zu Zustand 245 über
+
+
+Zustand 197
+
+   91 umstimmungs_dekl_taste_rel: '@' '+' IDENTIFIER . '[' ']'
+
+    '['  schiebe und gehe zu Zustand 246 über
+
+
+Zustand 198
+
+   90 umstimmungs_dekl_taste_rel: '@' '+' INTEGER . '[' ']'
+
+    '['  schiebe und gehe zu Zustand 247 über
+
+
+Zustand 199
+
+  136 aktion: IDENTIFIER .
+  138       | IDENTIFIER . '(' $@21 argument_liste ')'
+
+    '('  schiebe und gehe zu Zustand 248 über
+
+    $default  reduziere mit Regel 136 (aktion)
+
+
+Zustand 200
+
+  140 aktion: MIDI_OUT . '(' $@22 integersequenz ')'
+
+    '('  schiebe und gehe zu Zustand 249 über
+
+
+Zustand 201
+
+  133 umstimmungs_dekl_umstimmungs_bund: '{' $@20 aktions_liste . '}'
+  135 aktions_liste: aktions_liste . ',' aktion
+
+    ','  schiebe und gehe zu Zustand 250 über
+    '}'  schiebe und gehe zu Zustand 251 über
+
+
+Zustand 202
+
+  134 aktions_liste: aktion .
+
+    $default  reduziere mit Regel 134 (aktions_liste)
+
+
+Zustand 203
+
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste ')' '=' $@9 . umstimmungs_dekl_3
+   77 umstimmungs_dekl_3: . umstimmungs_dekl_taste_abs
+   78                   | . umstimmungs_dekl_taste_rel
+   79                   | . umstimmungs_dekl_breite_abs
+   80                   | . umstimmungs_dekl_breite_rel
+   81                   | . umstimmungs_dekl_tonhoehe_veraendert
+   82                   | . umstimmungs_dekl_wiederholung_abs
+   83                   | . umstimmungs_dekl_wiederholung_rel
+   84                   | . umstimmungs_dekl_umstimmungs_bund
+   85                   | . umstimmungs_dekl_umstimmungs_case
+   86                   | . umstimmungs_dekl_midi_out
+   87                   | . error
+   88 umstimmungs_dekl_taste_abs: . INTEGER '[' ']'
+   89                           | . IDENTIFIER '[' ']'
+   90 umstimmungs_dekl_taste_rel: . '@' '+' INTEGER '[' ']'
+   91                           | . '@' '+' IDENTIFIER '[' ']'
+   92                           | . '@' '-' INTEGER '[' ']'
+   93                           | . '@' '-' IDENTIFIER '[' ']'
+   94 umstimmungs_dekl_breite_abs: . '[' '<' '<' INTEGER '>' '>' ']'
+   95                            | . '[' '<' '<' IDENTIFIER '>' '>' ']'
+   96 umstimmungs_dekl_breite_rel: . '[' '<' '<' '@' '+' INTEGER '>' '>' ']'
+   97                            | . '[' '<' '<' '@' '+' IDENTIFIER '>' '>' ']'
+   98                            | . '[' '<' '<' '@' '-' INTEGER '>' '>' ']'
+   99                            | . '[' '<' '<' '@' '-' IDENTIFIER '>' '>' ']'
+  100                            | . '[' '<' '<' '@' '*' INTEGER '>' '>' ']'
+  101                            | . '[' '<' '<' '@' '*' IDENTIFIER '>' '>' ']'
+  102                            | . '[' '<' '<' '@' '/' INTEGER '>' '>' ']'
+  103                            | . '[' '<' '<' '@' '/' IDENTIFIER '>' '>' ']'
+  105 umstimmungs_dekl_tonhoehe_veraendert: . '[' $@10 nonempty_umstimm_expression_list ']'
+  125 umstimmungs_dekl_wiederholung_abs: . '[' ']' $@16 KOMPLEX_TON_LIST
+  127                                  | . '[' ']' $@17 '-' KOMPLEX_TON_LIST
+  129 umstimmungs_dekl_wiederholung_rel: . '[' ']' '@' '+' $@18 KOMPLEX_TON_LIST
+  131                                  | . '[' ']' '@' '-' $@19 KOMPLEX_TON_LIST
+  133 umstimmungs_dekl_umstimmungs_bund: . '{' $@20 aktions_liste '}'
+  142 umstimmungs_dekl_umstimmungs_case: . INTEGER '{' $@23 umstimmungs_case_liste '}'
+  144                                  | . IDENTIFIER '{' $@24 umstimmungs_case_liste '}'
+  154 umstimmungs_dekl_midi_out: . MIDI_OUT '(' $@28 integersequenz ')'
+
+    error       schiebe und gehe zu Zustand 101 über
+    IDENTIFIER  schiebe und gehe zu Zustand 102 über
+    INTEGER     schiebe und gehe zu Zustand 103 über
+    MIDI_OUT    schiebe und gehe zu Zustand 104 über
+    '['         schiebe und gehe zu Zustand 105 über
+    '@'         schiebe und gehe zu Zustand 106 über
+    '{'         schiebe und gehe zu Zustand 107 über
+
+    umstimmungs_dekl_3                    gehe zu Zustand 252 über
+    umstimmungs_dekl_taste_abs            gehe zu Zustand 109 über
+    umstimmungs_dekl_taste_rel            gehe zu Zustand 110 über
+    umstimmungs_dekl_breite_abs           gehe zu Zustand 111 über
+    umstimmungs_dekl_breite_rel           gehe zu Zustand 112 über
+    umstimmungs_dekl_tonhoehe_veraendert  gehe zu Zustand 113 über
+    umstimmungs_dekl_wiederholung_abs     gehe zu Zustand 114 über
+    umstimmungs_dekl_wiederholung_rel     gehe zu Zustand 115 über
+    umstimmungs_dekl_umstimmungs_bund     gehe zu Zustand 116 über
+    umstimmungs_dekl_umstimmungs_case     gehe zu Zustand 117 über
+    umstimmungs_dekl_midi_out             gehe zu Zustand 118 über
+
+
+Zustand 204
+
+  164 tasten_liste: tasten_liste ',' taste .
+
+    $default  reduziere mit Regel 164 (tasten_liste)
+
+
+Zustand 205
+
+  162 bezugs_taste: '.' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 253 über
+
+
+Zustand 206
+
+  159 harmonie_dekl_2: IDENTIFIER '=' '{' $@29 tasten_liste '}' bezugs_taste .
+
+    $default  reduziere mit Regel 159 (harmonie_dekl_2)
+
+
+Zustand 207
+
+  181 harmoniebezeichner: INTEGER '~' IDENTIFIER '~' INTEGER .
+
+    $default  reduziere mit Regel 181 (harmoniebezeichner)
+
+
+Zustand 208
+
+  192 integersequenz: integersequenz ',' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 254 über
+
+
+Zustand 209
+
+  190 ausloeser: MIDI_IN '(' $@35 integersequenz ')' .
+
+    $default  reduziere mit Regel 190 (ausloeser)
+
+
+Zustand 210
+
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER '[' $@32 . anweisungs_liste ']'
+  175 anweisungs_liste: .
+  176                 | . anweisungs_liste anweisung
+
+    $default  reduziere mit Regel 175 (anweisungs_liste)
+
+    anweisungs_liste  gehe zu Zustand 255 über
+
+
+Zustand 211
+
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' '[' $@31 anweisungs_liste . ']'
+  176 anweisungs_liste: anweisungs_liste . anweisung
+  178 anweisung: . ausloeser '-' '>' '{' $@33 aktions_liste '}'
+  180          | . ausloeser '-' '>' $@34 aktion
+  181 harmoniebezeichner: . INTEGER '~' IDENTIFIER '~' INTEGER
+  182                   | . IDENTIFIER '~' INTEGER
+  183                   | . INTEGER '~' IDENTIFIER
+  184                   | . IDENTIFIER
+  185 ausloeser: . ANSONSTEN
+  186          | . harmoniebezeichner
+  187          | . FORM harmoniebezeichner
+  188          | . TASTE IDENTIFIER
+  190          | . MIDI_IN '(' $@35 integersequenz ')'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 58 über
+    INTEGER     schiebe und gehe zu Zustand 59 über
+    FORM        schiebe und gehe zu Zustand 60 über
+    TASTE       schiebe und gehe zu Zustand 61 über
+    MIDI_IN     schiebe und gehe zu Zustand 62 über
+    ANSONSTEN   schiebe und gehe zu Zustand 63 über
+    ']'         schiebe und gehe zu Zustand 256 über
+
+    anweisung           gehe zu Zustand 257 über
+    harmoniebezeichner  gehe zu Zustand 64 über
+    ausloeser           gehe zu Zustand 258 über
+
+
+Zustand 212
+
+  201 instrument_dekl_2: INTEGER '-' '>' INTEGER '-' INTEGER '[' . INTEGER ']'
+
+    INTEGER  schiebe und gehe zu Zustand 259 über
+
+
+Zustand 213
+
+  200 instrument_dekl_2: INTEGER '-' '>' INTEGER '[' INTEGER ']' .
+
+    $default  reduziere mit Regel 200 (instrument_dekl_2)
+
+
+Zustand 214
+
+   38 KOMPLEX_TON_1: '-' '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 260 über
+
+
+Zustand 215
+
+   36 KOMPLEX_TON_1: '-' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 36 (KOMPLEX_TON_1)
+
+
+Zustand 216
+
+   40 KOMPLEX_TON_1: '-' GLEITKOMMA_ZAHL '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 261 über
+
+
+Zustand 217
+
+   37 KOMPLEX_TON_1: '+' '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 262 über
+
+
+Zustand 218
+
+   35 KOMPLEX_TON_1: '+' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 35 (KOMPLEX_TON_1)
+
+
+Zustand 219
+
+   39 KOMPLEX_TON_1: '+' GLEITKOMMA_ZAHL '/' . GLEITKOMMA_ZAHL IDENTIFIER
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    F_NUMBER  schiebe und gehe zu Zustand 69 über
+    INTEGER   schiebe und gehe zu Zustand 70 über
+
+    GLEITKOMMA_ZAHL  gehe zu Zustand 263 über
+
+
+Zustand 220
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@4 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 264 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 221
+
+   53 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@5 . '-' KOMPLEX_TON_LIST
+
+    '-'  schiebe und gehe zu Zustand 265 über
+
+
+Zustand 222
+
+   55 tonliste: tonliste ',' ton_element .
+
+    $default  reduziere mit Regel 55 (tonliste)
+
+
+Zustand 223
+
+  148 umstimmungs_case_element: INTEGER . '-' '>' $@25 aktions_liste
+
+    '-'  schiebe und gehe zu Zustand 266 über
+
+
+Zustand 224
+
+  152 umstimmungs_case_element: ANSONSTEN . '-' '>' $@27 aktions_liste
+
+    '-'  schiebe und gehe zu Zustand 267 über
+
+
+Zustand 225
+
+  150 umstimmungs_case_element: '-' . INTEGER '-' '>' $@26 aktions_liste
+
+    INTEGER  schiebe und gehe zu Zustand 268 über
+
+
+Zustand 226
+
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER '{' $@24 umstimmungs_case_liste . '}'
+  146 umstimmungs_case_liste: umstimmungs_case_liste . umstimmungs_case_element
+  148 umstimmungs_case_element: . INTEGER '-' '>' $@25 aktions_liste
+  150                         | . '-' INTEGER '-' '>' $@26 aktions_liste
+  152                         | . ANSONSTEN '-' '>' $@27 aktions_liste
+
+    INTEGER    schiebe und gehe zu Zustand 223 über
+    ANSONSTEN  schiebe und gehe zu Zustand 224 über
+    '-'        schiebe und gehe zu Zustand 225 über
+    '}'        schiebe und gehe zu Zustand 269 über
+
+    umstimmungs_case_element  gehe zu Zustand 270 über
+
+
+Zustand 227
+
+  145 umstimmungs_case_liste: umstimmungs_case_element .
+
+    $default  reduziere mit Regel 145 (umstimmungs_case_liste)
+
+
+Zustand 228
+
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER '{' $@23 umstimmungs_case_liste . '}'
+  146 umstimmungs_case_liste: umstimmungs_case_liste . umstimmungs_case_element
+  148 umstimmungs_case_element: . INTEGER '-' '>' $@25 aktions_liste
+  150                         | . '-' INTEGER '-' '>' $@26 aktions_liste
+  152                         | . ANSONSTEN '-' '>' $@27 aktions_liste
+
+    INTEGER    schiebe und gehe zu Zustand 223 über
+    ANSONSTEN  schiebe und gehe zu Zustand 224 über
+    '-'        schiebe und gehe zu Zustand 225 über
+    '}'        schiebe und gehe zu Zustand 271 über
+
+    umstimmungs_case_element  gehe zu Zustand 270 über
+
+
+Zustand 229
+
+  154 umstimmungs_dekl_midi_out: MIDI_OUT '(' $@28 integersequenz . ')'
+  192 integersequenz: integersequenz . ',' INTEGER
+
+    ','  schiebe und gehe zu Zustand 208 über
+    ')'  schiebe und gehe zu Zustand 272 über
+
+
+Zustand 230
+
+  130 $@19: .
+  131 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '-' . $@19 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 130 ($@19)
+
+    $@19  gehe zu Zustand 273 über
+
+
+Zustand 231
+
+  128 $@18: .
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '+' . $@18 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 128 ($@18)
+
+    $@18  gehe zu Zustand 274 über
+
+
+Zustand 232
+
+  125 umstimmungs_dekl_wiederholung_abs: '[' ']' $@16 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 125 (umstimmungs_dekl_wiederholung_abs)
+
+
+Zustand 233
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  127 umstimmungs_dekl_wiederholung_abs: '[' ']' $@17 '-' . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 275 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 234
+
+   95 umstimmungs_dekl_breite_abs: '[' '<' '<' IDENTIFIER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 276 über
+
+
+Zustand 235
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' INTEGER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 277 über
+
+
+Zustand 236
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' . '+' INTEGER '>' '>' ']'
+   97                            | '[' '<' '<' '@' . '+' IDENTIFIER '>' '>' ']'
+   98                            | '[' '<' '<' '@' . '-' INTEGER '>' '>' ']'
+   99                            | '[' '<' '<' '@' . '-' IDENTIFIER '>' '>' ']'
+  100                            | '[' '<' '<' '@' . '*' INTEGER '>' '>' ']'
+  101                            | '[' '<' '<' '@' . '*' IDENTIFIER '>' '>' ']'
+  102                            | '[' '<' '<' '@' . '/' INTEGER '>' '>' ']'
+  103                            | '[' '<' '<' '@' . '/' IDENTIFIER '>' '>' ']'
+
+    '-'  schiebe und gehe zu Zustand 278 über
+    '+'  schiebe und gehe zu Zustand 279 über
+    '/'  schiebe und gehe zu Zustand 280 über
+    '*'  schiebe und gehe zu Zustand 281 über
+
+
+Zustand 237
+
+  120 $@14: .
+  121 nonempty_umstimm_expression: IDENTIFIER '-' . $@14 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 120 ($@14)
+
+    $@14  gehe zu Zustand 282 über
+
+
+Zustand 238
+
+  116 $@12: .
+  117 nonempty_umstimm_expression: IDENTIFIER '+' . $@12 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 116 ($@12)
+
+    $@12  gehe zu Zustand 283 über
+
+
+Zustand 239
+
+  109 nonempty_umstimm_expression_list: ',' $@11 . umstimm_expression_list
+  110 umstimm_expression_list: . umstimm_expression
+  111                        | . umstimm_expression_list ',' umstimm_expression
+  112 umstimm_expression: .
+  113                   | . nonempty_umstimm_expression
+  114 nonempty_umstimm_expression: . IDENTIFIER
+  115                            | . '@'
+  117                            | . IDENTIFIER '+' $@12 KOMPLEX_TON_LIST
+  119                            | . '@' '+' $@13 KOMPLEX_TON_LIST
+  121                            | . IDENTIFIER '-' $@14 KOMPLEX_TON_LIST
+  123                            | . '@' '-' $@15 KOMPLEX_TON_LIST
+
+    IDENTIFIER  schiebe und gehe zu Zustand 190 über
+    '@'         schiebe und gehe zu Zustand 192 über
+
+    $default  reduziere mit Regel 112 (umstimm_expression)
+
+    umstimm_expression_list      gehe zu Zustand 284 über
+    umstimm_expression           gehe zu Zustand 285 über
+    nonempty_umstimm_expression  gehe zu Zustand 286 über
+
+
+Zustand 240
+
+  122 $@15: .
+  123 nonempty_umstimm_expression: '@' '-' . $@15 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 122 ($@15)
+
+    $@15  gehe zu Zustand 287 über
+
+
+Zustand 241
+
+  118 $@13: .
+  119 nonempty_umstimm_expression: '@' '+' . $@13 KOMPLEX_TON_LIST
+
+    $default  reduziere mit Regel 118 ($@13)
+
+    $@13  gehe zu Zustand 288 über
+
+
+Zustand 242
+
+  105 umstimmungs_dekl_tonhoehe_veraendert: '[' $@10 nonempty_umstimm_expression_list ']' .
+
+    $default  reduziere mit Regel 105 (umstimmungs_dekl_tonhoehe_veraendert)
+
+
+Zustand 243
+
+  107 nonempty_umstimm_expression_list: nonempty_umstimm_expression ',' . umstimm_expression_list
+  110 umstimm_expression_list: . umstimm_expression
+  111                        | . umstimm_expression_list ',' umstimm_expression
+  112 umstimm_expression: .
+  113                   | . nonempty_umstimm_expression
+  114 nonempty_umstimm_expression: . IDENTIFIER
+  115                            | . '@'
+  117                            | . IDENTIFIER '+' $@12 KOMPLEX_TON_LIST
+  119                            | . '@' '+' $@13 KOMPLEX_TON_LIST
+  121                            | . IDENTIFIER '-' $@14 KOMPLEX_TON_LIST
+  123                            | . '@' '-' $@15 KOMPLEX_TON_LIST
+
+    IDENTIFIER  schiebe und gehe zu Zustand 190 über
+    '@'         schiebe und gehe zu Zustand 192 über
+
+    $default  reduziere mit Regel 112 (umstimm_expression)
+
+    umstimm_expression_list      gehe zu Zustand 289 über
+    umstimm_expression           gehe zu Zustand 285 über
+    nonempty_umstimm_expression  gehe zu Zustand 286 über
+
+
+Zustand 244
+
+   93 umstimmungs_dekl_taste_rel: '@' '-' IDENTIFIER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 290 über
+
+
+Zustand 245
+
+   92 umstimmungs_dekl_taste_rel: '@' '-' INTEGER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 291 über
+
+
+Zustand 246
+
+   91 umstimmungs_dekl_taste_rel: '@' '+' IDENTIFIER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 292 über
+
+
+Zustand 247
+
+   90 umstimmungs_dekl_taste_rel: '@' '+' INTEGER '[' . ']'
+
+    ']'  schiebe und gehe zu Zustand 293 über
+
+
+Zustand 248
+
+  137 $@21: .
+  138 aktion: IDENTIFIER '(' . $@21 argument_liste ')'
+
+    $default  reduziere mit Regel 137 ($@21)
+
+    $@21  gehe zu Zustand 294 über
+
+
+Zustand 249
+
+  139 $@22: .
+  140 aktion: MIDI_OUT '(' . $@22 integersequenz ')'
+
+    $default  reduziere mit Regel 139 ($@22)
+
+    $@22  gehe zu Zustand 295 über
+
+
+Zustand 250
+
+  135 aktions_liste: aktions_liste ',' . aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktion  gehe zu Zustand 296 über
+
+
+Zustand 251
+
+  133 umstimmungs_dekl_umstimmungs_bund: '{' $@20 aktions_liste '}' .
+
+    $default  reduziere mit Regel 133 (umstimmungs_dekl_umstimmungs_bund)
+
+
+Zustand 252
+
+   76 umstimmungs_dekl_2: IDENTIFIER $@8 '(' parameter_liste ')' '=' $@9 umstimmungs_dekl_3 .
+
+    $default  reduziere mit Regel 76 (umstimmungs_dekl_2)
+
+
+Zustand 253
+
+  162 bezugs_taste: '.' INTEGER .
+
+    $default  reduziere mit Regel 162 (bezugs_taste)
+
+
+Zustand 254
+
+  192 integersequenz: integersequenz ',' INTEGER .
+
+    $default  reduziere mit Regel 192 (integersequenz)
+
+
+Zustand 255
+
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER '[' $@32 anweisungs_liste . ']'
+  176 anweisungs_liste: anweisungs_liste . anweisung
+  178 anweisung: . ausloeser '-' '>' '{' $@33 aktions_liste '}'
+  180          | . ausloeser '-' '>' $@34 aktion
+  181 harmoniebezeichner: . INTEGER '~' IDENTIFIER '~' INTEGER
+  182                   | . IDENTIFIER '~' INTEGER
+  183                   | . INTEGER '~' IDENTIFIER
+  184                   | . IDENTIFIER
+  185 ausloeser: . ANSONSTEN
+  186          | . harmoniebezeichner
+  187          | . FORM harmoniebezeichner
+  188          | . TASTE IDENTIFIER
+  190          | . MIDI_IN '(' $@35 integersequenz ')'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 58 über
+    INTEGER     schiebe und gehe zu Zustand 59 über
+    FORM        schiebe und gehe zu Zustand 60 über
+    TASTE       schiebe und gehe zu Zustand 61 über
+    MIDI_IN     schiebe und gehe zu Zustand 62 über
+    ANSONSTEN   schiebe und gehe zu Zustand 63 über
+    ']'         schiebe und gehe zu Zustand 297 über
+
+    anweisung           gehe zu Zustand 257 über
+    harmoniebezeichner  gehe zu Zustand 64 über
+    ausloeser           gehe zu Zustand 258 über
+
+
+Zustand 256
+
+  172 logik_dekl_2: IDENTIFIER ausloeser '=' '[' $@31 anweisungs_liste ']' .
+
+    $default  reduziere mit Regel 172 (logik_dekl_2)
+
+
+Zustand 257
+
+  176 anweisungs_liste: anweisungs_liste anweisung .
+
+    $default  reduziere mit Regel 176 (anweisungs_liste)
+
+
+Zustand 258
+
+  178 anweisung: ausloeser . '-' '>' '{' $@33 aktions_liste '}'
+  180          | ausloeser . '-' '>' $@34 aktion
+
+    '-'  schiebe und gehe zu Zustand 298 über
+
+
+Zustand 259
+
+  201 instrument_dekl_2: INTEGER '-' '>' INTEGER '-' INTEGER '[' INTEGER . ']'
+
+    ']'  schiebe und gehe zu Zustand 299 über
+
+
+Zustand 260
+
+   38 KOMPLEX_TON_1: '-' '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 38 (KOMPLEX_TON_1)
+
+
+Zustand 261
+
+   40 KOMPLEX_TON_1: '-' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 300 über
+
+
+Zustand 262
+
+   37 KOMPLEX_TON_1: '+' '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 37 (KOMPLEX_TON_1)
+
+
+Zustand 263
+
+   39 KOMPLEX_TON_1: '+' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL . IDENTIFIER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 301 über
+
+
+Zustand 264
+
+   51 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@4 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 51 (tonsystemdekl2)
+
+
+Zustand 265
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+   53 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@5 '-' . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 302 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 266
+
+  148 umstimmungs_case_element: INTEGER '-' . '>' $@25 aktions_liste
+
+    '>'  schiebe und gehe zu Zustand 303 über
+
+
+Zustand 267
+
+  152 umstimmungs_case_element: ANSONSTEN '-' . '>' $@27 aktions_liste
+
+    '>'  schiebe und gehe zu Zustand 304 über
+
+
+Zustand 268
+
+  150 umstimmungs_case_element: '-' INTEGER . '-' '>' $@26 aktions_liste
+
+    '-'  schiebe und gehe zu Zustand 305 über
+
+
+Zustand 269
+
+  144 umstimmungs_dekl_umstimmungs_case: IDENTIFIER '{' $@24 umstimmungs_case_liste '}' .
+
+    $default  reduziere mit Regel 144 (umstimmungs_dekl_umstimmungs_case)
+
+
+Zustand 270
+
+  146 umstimmungs_case_liste: umstimmungs_case_liste umstimmungs_case_element .
+
+    $default  reduziere mit Regel 146 (umstimmungs_case_liste)
+
+
+Zustand 271
+
+  142 umstimmungs_dekl_umstimmungs_case: INTEGER '{' $@23 umstimmungs_case_liste '}' .
+
+    $default  reduziere mit Regel 142 (umstimmungs_dekl_umstimmungs_case)
+
+
+Zustand 272
+
+  154 umstimmungs_dekl_midi_out: MIDI_OUT '(' $@28 integersequenz ')' .
+
+    $default  reduziere mit Regel 154 (umstimmungs_dekl_midi_out)
+
+
+Zustand 273
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  131 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '-' $@19 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 306 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 274
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '+' $@18 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 307 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 275
+
+  127 umstimmungs_dekl_wiederholung_abs: '[' ']' $@17 '-' KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 127 (umstimmungs_dekl_wiederholung_abs)
+
+
+Zustand 276
+
+   95 umstimmungs_dekl_breite_abs: '[' '<' '<' IDENTIFIER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 308 über
+
+
+Zustand 277
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' INTEGER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 309 über
+
+
+Zustand 278
+
+   98 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' . INTEGER '>' '>' ']'
+   99                            | '[' '<' '<' '@' '-' . IDENTIFIER '>' '>' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 310 über
+    INTEGER     schiebe und gehe zu Zustand 311 über
+
+
+Zustand 279
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' . INTEGER '>' '>' ']'
+   97                            | '[' '<' '<' '@' '+' . IDENTIFIER '>' '>' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 312 über
+    INTEGER     schiebe und gehe zu Zustand 313 über
+
+
+Zustand 280
+
+  102 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' . INTEGER '>' '>' ']'
+  103                            | '[' '<' '<' '@' '/' . IDENTIFIER '>' '>' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 314 über
+    INTEGER     schiebe und gehe zu Zustand 315 über
+
+
+Zustand 281
+
+  100 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' . INTEGER '>' '>' ']'
+  101                            | '[' '<' '<' '@' '*' . IDENTIFIER '>' '>' ']'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 316 über
+    INTEGER     schiebe und gehe zu Zustand 317 über
+
+
+Zustand 282
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  121 nonempty_umstimm_expression: IDENTIFIER '-' $@14 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 318 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 283
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  117 nonempty_umstimm_expression: IDENTIFIER '+' $@12 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 319 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 284
+
+  109 nonempty_umstimm_expression_list: ',' $@11 umstimm_expression_list .
+  111 umstimm_expression_list: umstimm_expression_list . ',' umstimm_expression
+
+    ','  schiebe und gehe zu Zustand 320 über
+
+    $default  reduziere mit Regel 109 (nonempty_umstimm_expression_list)
+
+
+Zustand 285
+
+  110 umstimm_expression_list: umstimm_expression .
+
+    $default  reduziere mit Regel 110 (umstimm_expression_list)
+
+
+Zustand 286
+
+  113 umstimm_expression: nonempty_umstimm_expression .
+
+    $default  reduziere mit Regel 113 (umstimm_expression)
+
+
+Zustand 287
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  123 nonempty_umstimm_expression: '@' '-' $@15 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 321 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 288
+
+   30 KOMPLEX_TON_LIST: . KOMPLEX_TON_START KOMPLEX_TON_LIST_2
+   41 KOMPLEX_TON_START: . IDENTIFIER
+   42                  | . GLEITKOMMA_ZAHL IDENTIFIER
+   43                  | . '/' GLEITKOMMA_ZAHL IDENTIFIER
+   44                  | . GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER
+  119 nonempty_umstimm_expression: '@' '+' $@13 . KOMPLEX_TON_LIST
+  202 GLEITKOMMA_ZAHL: . F_NUMBER
+  203                | . INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 68 über
+    F_NUMBER    schiebe und gehe zu Zustand 69 über
+    INTEGER     schiebe und gehe zu Zustand 70 über
+    '/'         schiebe und gehe zu Zustand 71 über
+
+    KOMPLEX_TON_LIST   gehe zu Zustand 322 über
+    KOMPLEX_TON_START  gehe zu Zustand 73 über
+    GLEITKOMMA_ZAHL    gehe zu Zustand 141 über
+
+
+Zustand 289
+
+  107 nonempty_umstimm_expression_list: nonempty_umstimm_expression ',' umstimm_expression_list .
+  111 umstimm_expression_list: umstimm_expression_list . ',' umstimm_expression
+
+    ','  schiebe und gehe zu Zustand 320 über
+
+    $default  reduziere mit Regel 107 (nonempty_umstimm_expression_list)
+
+
+Zustand 290
+
+   93 umstimmungs_dekl_taste_rel: '@' '-' IDENTIFIER '[' ']' .
+
+    $default  reduziere mit Regel 93 (umstimmungs_dekl_taste_rel)
+
+
+Zustand 291
+
+   92 umstimmungs_dekl_taste_rel: '@' '-' INTEGER '[' ']' .
+
+    $default  reduziere mit Regel 92 (umstimmungs_dekl_taste_rel)
+
+
+Zustand 292
+
+   91 umstimmungs_dekl_taste_rel: '@' '+' IDENTIFIER '[' ']' .
+
+    $default  reduziere mit Regel 91 (umstimmungs_dekl_taste_rel)
+
+
+Zustand 293
+
+   90 umstimmungs_dekl_taste_rel: '@' '+' INTEGER '[' ']' .
+
+    $default  reduziere mit Regel 90 (umstimmungs_dekl_taste_rel)
+
+
+Zustand 294
+
+   62 argument_liste: . argument_listenelement
+   63               | . argument_liste ',' argument_listenelement
+   64               | . error
+   65 argument_listenelement: . IDENTIFIER
+   66                       | . INTEGER
+   67                       | . '-' INTEGER
+  138 aktion: IDENTIFIER '(' $@21 . argument_liste ')'
+
+    error       schiebe und gehe zu Zustand 323 über
+    IDENTIFIER  schiebe und gehe zu Zustand 324 über
+    INTEGER     schiebe und gehe zu Zustand 325 über
+    '-'         schiebe und gehe zu Zustand 326 über
+
+    argument_liste          gehe zu Zustand 327 über
+    argument_listenelement  gehe zu Zustand 328 über
+
+
+Zustand 295
+
+  140 aktion: MIDI_OUT '(' $@22 . integersequenz ')'
+  191 integersequenz: . INTEGER
+  192               | . integersequenz ',' INTEGER
+  193               | . error
+
+    error    schiebe und gehe zu Zustand 164 über
+    INTEGER  schiebe und gehe zu Zustand 165 über
+
+    integersequenz  gehe zu Zustand 329 über
+
+
+Zustand 296
+
+  135 aktions_liste: aktions_liste ',' aktion .
+
+    $default  reduziere mit Regel 135 (aktions_liste)
+
+
+Zustand 297
+
+  174 logik_dekl_2: IDENTIFIER ausloeser '=' IDENTIFIER '[' $@32 anweisungs_liste ']' .
+
+    $default  reduziere mit Regel 174 (logik_dekl_2)
+
+
+Zustand 298
+
+  178 anweisung: ausloeser '-' . '>' '{' $@33 aktions_liste '}'
+  180          | ausloeser '-' . '>' $@34 aktion
+
+    '>'  schiebe und gehe zu Zustand 330 über
+
+
+Zustand 299
+
+  201 instrument_dekl_2: INTEGER '-' '>' INTEGER '-' INTEGER '[' INTEGER ']' .
+
+    $default  reduziere mit Regel 201 (instrument_dekl_2)
+
+
+Zustand 300
+
+   40 KOMPLEX_TON_1: '-' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 40 (KOMPLEX_TON_1)
+
+
+Zustand 301
+
+   39 KOMPLEX_TON_1: '+' GLEITKOMMA_ZAHL '/' GLEITKOMMA_ZAHL IDENTIFIER .
+
+    $default  reduziere mit Regel 39 (KOMPLEX_TON_1)
+
+
+Zustand 302
+
+   53 tonsystemdekl2: IDENTIFIER '=' INTEGER '[' tonliste ']' $@5 '-' KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 53 (tonsystemdekl2)
+
+
+Zustand 303
+
+  147 $@25: .
+  148 umstimmungs_case_element: INTEGER '-' '>' . $@25 aktions_liste
+
+    $default  reduziere mit Regel 147 ($@25)
+
+    $@25  gehe zu Zustand 331 über
+
+
+Zustand 304
+
+  151 $@27: .
+  152 umstimmungs_case_element: ANSONSTEN '-' '>' . $@27 aktions_liste
+
+    $default  reduziere mit Regel 151 ($@27)
+
+    $@27  gehe zu Zustand 332 über
+
+
+Zustand 305
+
+  150 umstimmungs_case_element: '-' INTEGER '-' . '>' $@26 aktions_liste
+
+    '>'  schiebe und gehe zu Zustand 333 über
+
+
+Zustand 306
+
+  131 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '-' $@19 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 131 (umstimmungs_dekl_wiederholung_rel)
+
+
+Zustand 307
+
+  129 umstimmungs_dekl_wiederholung_rel: '[' ']' '@' '+' $@18 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 129 (umstimmungs_dekl_wiederholung_rel)
+
+
+Zustand 308
+
+   95 umstimmungs_dekl_breite_abs: '[' '<' '<' IDENTIFIER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 334 über
+
+
+Zustand 309
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' INTEGER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 335 über
+
+
+Zustand 310
+
+   99 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' IDENTIFIER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 336 über
+
+
+Zustand 311
+
+   98 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' INTEGER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 337 über
+
+
+Zustand 312
+
+   97 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' IDENTIFIER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 338 über
+
+
+Zustand 313
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' INTEGER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 339 über
+
+
+Zustand 314
+
+  103 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' IDENTIFIER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 340 über
+
+
+Zustand 315
+
+  102 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' INTEGER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 341 über
+
+
+Zustand 316
+
+  101 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' IDENTIFIER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 342 über
+
+
+Zustand 317
+
+  100 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' INTEGER . '>' '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 343 über
+
+
+Zustand 318
+
+  121 nonempty_umstimm_expression: IDENTIFIER '-' $@14 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 121 (nonempty_umstimm_expression)
+
+
+Zustand 319
+
+  117 nonempty_umstimm_expression: IDENTIFIER '+' $@12 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 117 (nonempty_umstimm_expression)
+
+
+Zustand 320
+
+  111 umstimm_expression_list: umstimm_expression_list ',' . umstimm_expression
+  112 umstimm_expression: .
+  113                   | . nonempty_umstimm_expression
+  114 nonempty_umstimm_expression: . IDENTIFIER
+  115                            | . '@'
+  117                            | . IDENTIFIER '+' $@12 KOMPLEX_TON_LIST
+  119                            | . '@' '+' $@13 KOMPLEX_TON_LIST
+  121                            | . IDENTIFIER '-' $@14 KOMPLEX_TON_LIST
+  123                            | . '@' '-' $@15 KOMPLEX_TON_LIST
+
+    IDENTIFIER  schiebe und gehe zu Zustand 190 über
+    '@'         schiebe und gehe zu Zustand 192 über
+
+    $default  reduziere mit Regel 112 (umstimm_expression)
+
+    umstimm_expression           gehe zu Zustand 344 über
+    nonempty_umstimm_expression  gehe zu Zustand 286 über
+
+
+Zustand 321
+
+  123 nonempty_umstimm_expression: '@' '-' $@15 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 123 (nonempty_umstimm_expression)
+
+
+Zustand 322
+
+  119 nonempty_umstimm_expression: '@' '+' $@13 KOMPLEX_TON_LIST .
+
+    $default  reduziere mit Regel 119 (nonempty_umstimm_expression)
+
+
+Zustand 323
+
+   64 argument_liste: error .
+
+    $default  reduziere mit Regel 64 (argument_liste)
+
+
+Zustand 324
+
+   65 argument_listenelement: IDENTIFIER .
+
+    $default  reduziere mit Regel 65 (argument_listenelement)
+
+
+Zustand 325
+
+   66 argument_listenelement: INTEGER .
+
+    $default  reduziere mit Regel 66 (argument_listenelement)
+
+
+Zustand 326
+
+   67 argument_listenelement: '-' . INTEGER
+
+    INTEGER  schiebe und gehe zu Zustand 345 über
+
+
+Zustand 327
+
+   63 argument_liste: argument_liste . ',' argument_listenelement
+  138 aktion: IDENTIFIER '(' $@21 argument_liste . ')'
+
+    ','  schiebe und gehe zu Zustand 346 über
+    ')'  schiebe und gehe zu Zustand 347 über
+
+
+Zustand 328
+
+   62 argument_liste: argument_listenelement .
+
+    $default  reduziere mit Regel 62 (argument_liste)
+
+
+Zustand 329
+
+  140 aktion: MIDI_OUT '(' $@22 integersequenz . ')'
+  192 integersequenz: integersequenz . ',' INTEGER
+
+    ','  schiebe und gehe zu Zustand 208 über
+    ')'  schiebe und gehe zu Zustand 348 über
+
+
+Zustand 330
+
+  178 anweisung: ausloeser '-' '>' . '{' $@33 aktions_liste '}'
+  179 $@34: .
+  180 anweisung: ausloeser '-' '>' . $@34 aktion
+
+    '{'  schiebe und gehe zu Zustand 349 über
+
+    $default  reduziere mit Regel 179 ($@34)
+
+    $@34  gehe zu Zustand 350 über
+
+
+Zustand 331
+
+  134 aktions_liste: . aktion
+  135              | . aktions_liste ',' aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+  148 umstimmungs_case_element: INTEGER '-' '>' $@25 . aktions_liste
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktions_liste  gehe zu Zustand 351 über
+    aktion         gehe zu Zustand 202 über
+
+
+Zustand 332
+
+  134 aktions_liste: . aktion
+  135              | . aktions_liste ',' aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+  152 umstimmungs_case_element: ANSONSTEN '-' '>' $@27 . aktions_liste
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktions_liste  gehe zu Zustand 352 über
+    aktion         gehe zu Zustand 202 über
+
+
+Zustand 333
+
+  149 $@26: .
+  150 umstimmungs_case_element: '-' INTEGER '-' '>' . $@26 aktions_liste
+
+    $default  reduziere mit Regel 149 ($@26)
+
+    $@26  gehe zu Zustand 353 über
+
+
+Zustand 334
+
+   95 umstimmungs_dekl_breite_abs: '[' '<' '<' IDENTIFIER '>' '>' ']' .
+
+    $default  reduziere mit Regel 95 (umstimmungs_dekl_breite_abs)
+
+
+Zustand 335
+
+   94 umstimmungs_dekl_breite_abs: '[' '<' '<' INTEGER '>' '>' ']' .
+
+    $default  reduziere mit Regel 94 (umstimmungs_dekl_breite_abs)
+
+
+Zustand 336
+
+   99 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' IDENTIFIER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 354 über
+
+
+Zustand 337
+
+   98 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' INTEGER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 355 über
+
+
+Zustand 338
+
+   97 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' IDENTIFIER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 356 über
+
+
+Zustand 339
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' INTEGER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 357 über
+
+
+Zustand 340
+
+  103 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' IDENTIFIER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 358 über
+
+
+Zustand 341
+
+  102 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' INTEGER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 359 über
+
+
+Zustand 342
+
+  101 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' IDENTIFIER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 360 über
+
+
+Zustand 343
+
+  100 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' INTEGER '>' . '>' ']'
+
+    '>'  schiebe und gehe zu Zustand 361 über
+
+
+Zustand 344
+
+  111 umstimm_expression_list: umstimm_expression_list ',' umstimm_expression .
+
+    $default  reduziere mit Regel 111 (umstimm_expression_list)
+
+
+Zustand 345
+
+   67 argument_listenelement: '-' INTEGER .
+
+    $default  reduziere mit Regel 67 (argument_listenelement)
+
+
+Zustand 346
+
+   63 argument_liste: argument_liste ',' . argument_listenelement
+   65 argument_listenelement: . IDENTIFIER
+   66                       | . INTEGER
+   67                       | . '-' INTEGER
+
+    IDENTIFIER  schiebe und gehe zu Zustand 324 über
+    INTEGER     schiebe und gehe zu Zustand 325 über
+    '-'         schiebe und gehe zu Zustand 326 über
+
+    argument_listenelement  gehe zu Zustand 362 über
+
+
+Zustand 347
+
+  138 aktion: IDENTIFIER '(' $@21 argument_liste ')' .
+
+    $default  reduziere mit Regel 138 (aktion)
+
+
+Zustand 348
+
+  140 aktion: MIDI_OUT '(' $@22 integersequenz ')' .
+
+    $default  reduziere mit Regel 140 (aktion)
+
+
+Zustand 349
+
+  177 $@33: .
+  178 anweisung: ausloeser '-' '>' '{' . $@33 aktions_liste '}'
+
+    $default  reduziere mit Regel 177 ($@33)
+
+    $@33  gehe zu Zustand 363 über
+
+
+Zustand 350
+
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+  180 anweisung: ausloeser '-' '>' $@34 . aktion
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktion  gehe zu Zustand 364 über
+
+
+Zustand 351
+
+  135 aktions_liste: aktions_liste . ',' aktion
+  148 umstimmungs_case_element: INTEGER '-' '>' $@25 aktions_liste .
+
+    ','  schiebe und gehe zu Zustand 250 über
+
+    $default  reduziere mit Regel 148 (umstimmungs_case_element)
+
+
+Zustand 352
+
+  135 aktions_liste: aktions_liste . ',' aktion
+  152 umstimmungs_case_element: ANSONSTEN '-' '>' $@27 aktions_liste .
+
+    ','  schiebe und gehe zu Zustand 250 über
+
+    $default  reduziere mit Regel 152 (umstimmungs_case_element)
+
+
+Zustand 353
+
+  134 aktions_liste: . aktion
+  135              | . aktions_liste ',' aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+  150 umstimmungs_case_element: '-' INTEGER '-' '>' $@26 . aktions_liste
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktions_liste  gehe zu Zustand 365 über
+    aktion         gehe zu Zustand 202 über
+
+
+Zustand 354
+
+   99 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' IDENTIFIER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 366 über
+
+
+Zustand 355
+
+   98 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' INTEGER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 367 über
+
+
+Zustand 356
+
+   97 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' IDENTIFIER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 368 über
+
+
+Zustand 357
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' INTEGER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 369 über
+
+
+Zustand 358
+
+  103 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' IDENTIFIER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 370 über
+
+
+Zustand 359
+
+  102 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' INTEGER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 371 über
+
+
+Zustand 360
+
+  101 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' IDENTIFIER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 372 über
+
+
+Zustand 361
+
+  100 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' INTEGER '>' '>' . ']'
+
+    ']'  schiebe und gehe zu Zustand 373 über
+
+
+Zustand 362
+
+   63 argument_liste: argument_liste ',' argument_listenelement .
+
+    $default  reduziere mit Regel 63 (argument_liste)
+
+
+Zustand 363
+
+  134 aktions_liste: . aktion
+  135              | . aktions_liste ',' aktion
+  136 aktion: . IDENTIFIER
+  138       | . IDENTIFIER '(' $@21 argument_liste ')'
+  140       | . MIDI_OUT '(' $@22 integersequenz ')'
+  178 anweisung: ausloeser '-' '>' '{' $@33 . aktions_liste '}'
+
+    IDENTIFIER  schiebe und gehe zu Zustand 199 über
+    MIDI_OUT    schiebe und gehe zu Zustand 200 über
+
+    aktions_liste  gehe zu Zustand 374 über
+    aktion         gehe zu Zustand 202 über
+
+
+Zustand 364
+
+  180 anweisung: ausloeser '-' '>' $@34 aktion .
+
+    $default  reduziere mit Regel 180 (anweisung)
+
+
+Zustand 365
+
+  135 aktions_liste: aktions_liste . ',' aktion
+  150 umstimmungs_case_element: '-' INTEGER '-' '>' $@26 aktions_liste .
+
+    ','  schiebe und gehe zu Zustand 250 über
+
+    $default  reduziere mit Regel 150 (umstimmungs_case_element)
+
+
+Zustand 366
+
+   99 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' IDENTIFIER '>' '>' ']' .
+
+    $default  reduziere mit Regel 99 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 367
+
+   98 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '-' INTEGER '>' '>' ']' .
+
+    $default  reduziere mit Regel 98 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 368
+
+   97 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' IDENTIFIER '>' '>' ']' .
+
+    $default  reduziere mit Regel 97 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 369
+
+   96 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '+' INTEGER '>' '>' ']' .
+
+    $default  reduziere mit Regel 96 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 370
+
+  103 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' IDENTIFIER '>' '>' ']' .
+
+    $default  reduziere mit Regel 103 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 371
+
+  102 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '/' INTEGER '>' '>' ']' .
+
+    $default  reduziere mit Regel 102 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 372
+
+  101 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' IDENTIFIER '>' '>' ']' .
+
+    $default  reduziere mit Regel 101 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 373
+
+  100 umstimmungs_dekl_breite_rel: '[' '<' '<' '@' '*' INTEGER '>' '>' ']' .
+
+    $default  reduziere mit Regel 100 (umstimmungs_dekl_breite_rel)
+
+
+Zustand 374
+
+  135 aktions_liste: aktions_liste . ',' aktion
+  178 anweisung: ausloeser '-' '>' '{' $@33 aktions_liste . '}'
+
+    ','  schiebe und gehe zu Zustand 250 über
+    '}'  schiebe und gehe zu Zustand 375 über
+
+
+Zustand 375
+
+  178 anweisung: ausloeser '-' '>' '{' $@33 aktions_liste '}' .
+
+    $default  reduziere mit Regel 178 (anweisung)

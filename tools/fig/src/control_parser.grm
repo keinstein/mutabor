@@ -1,0 +1,329 @@
+/*
+ * "Copyright (c) 2002 and The Regents of the University 
+ * of California.  All rights reserved.
+ *
+ * Permission to use, copy, modify, and distribute this software and its
+ * documentation for any purpose, without fee, and without written agreement is
+ * hereby granted, provided that the above copyright notice and the following
+ * two paragraphs appear in all copies of this software.
+ * 
+ * IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
+ * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+ * OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF
+ * CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+ * THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+ * ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
+ * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS."
+ *
+ *  Authors:   Peter Broadwell (pbwell@cs.berkeley.edu)
+ *             Naveen Sastry (nks@cs.berkeley.edu)
+ *             Jonathan Traupman (jont@cs.berkeley.edu)
+ */
+
+/*
+ * Grammar file to parse the FIG control file.
+ *
+ * The parser (control_parser.c) that is generated from this grammar is run
+ * whenever a program running under FIG calls an instrumented FIG library
+ * function for the first time. Doing so results in a call to fig_error()
+ * from prob.c, which runs the init() routine to build the error injection
+ * call set, which in turn calls getCallSet(), running the parser on the
+ * control file to extract the error injection rules.
+ *
+ * Note that we used Bison's guidelines for building re-entrant parsers, because
+ * we were worried that nested calls to the control file parse routines might
+ * produce unexpected behavior.
+ *
+ * Sample file has been 
+ * provided below:
+ * 
+ * 10 
+ *        interval 1 to 40 return 1 errno 2
+ *        callnumber 32 return 9 errno 94
+ *        interval 9329 to infinity return 3292 errno 94 probability .2921
+ *
+ * 11   
+ *        callnumber 16 return 9 
+ */
+
+/* C DECLARATIONS */
+
+%{
+#include <stdio.h>
+#include "control.h"
+#include "log.h"
+
+#define YYDEBUG 1
+
+// FOR REENTRANT VERSION:
+struct parser_control {
+  callset * currentCallSet;
+  ruleset * currentRuleSet;
+  FILE * controlFile;
+};  
+
+#define YYPARSE_PARAM parm
+#define YYLEX_PARAM parm
+
+// error reporting function. Currently does nothing.
+yyerror(s)
+  char *s;
+{// exit(1);
+}
+
+%}
+
+/* BISON DECLARATIONS: */
+
+%pure_parser
+
+/* union of all non-terminal return types: */
+%union {
+  double prob;
+  int    val;
+  rule * r;
+  interval * i;
+  ruleset * rs;
+  call * c;
+  callset * cs;
+}
+
+/* our start symbol */
+%start control
+
+/* terminals: */
+%token INTERVAL 
+%token TO
+%token CALLNUMBER
+%token RETURN
+%token ERRNO
+%token PROBABILITY
+%token <val> INT
+%token <prob> PROB_VAL
+
+/* non-terminals and their return type [field names from the union] */
+%type <r> rule 
+%type <rs> ruleset 
+%type <c> call 
+%type <val> err
+%type <val> ret
+%type <prob> pr
+%type <i> when
+%type <cs> control
+%type <val> exp
+
+%%
+
+/* THE ACTUAL GRAMMAR: */
+
+// ALWAYS USE LEFT RECURSION!
+control: control call {
+        ((struct parser_control *) parm)->currentCallSet->calls[((struct parser_control *) parm)->currentCallSet->numCalls++] = $2;
+        $$ = ((struct parser_control *) parm)->currentCallSet;
+      } | /* empty */ {
+        do {
+          ((struct parser_control *) parm)->currentCallSet = (callset *)malloc (sizeof (callset));
+        } while (!((struct parser_control *) parm)->currentCallSet);
+        do {
+          ((struct parser_control *) parm)->currentCallSet->calls = (call**)malloc (MAX_CALLS * sizeof (call*));
+        } while (!((struct parser_control *) parm)->currentCallSet->calls);
+        ((struct parser_control *) parm)->currentCallSet->numCalls = 0;
+        $$ = ((struct parser_control *) parm)->currentCallSet;
+      } ;
+
+call: exp ruleset {
+        do {
+          $$ = (call*)malloc (sizeof (call));
+        } while (!$$);
+        $$->callNumber = $1;
+        $$->rules = $2;
+      } ;
+
+exp: INT { $$ =$1; }
+   | '(' exp '+' exp { $$ = $2 + $4; } ;
+
+ruleset: ruleset rule {
+        ((struct parser_control *) parm)->currentRuleSet->rules[((struct parser_control *) parm)->currentRuleSet->numRules++] = $2;
+        $$ = ((struct parser_control *) parm)->currentRuleSet;
+      } | /* empty */ {
+        do {
+          ((struct parser_control *) parm)->currentRuleSet = (ruleset*)malloc (sizeof (ruleset));
+        } while (!((struct parser_control *) parm)->currentRuleSet);
+        do {
+          ((struct parser_control *) parm)->currentRuleSet->rules = (rule**)malloc (MAX_RULES * sizeof (rule*));
+        } while (!((struct parser_control *) parm)->currentRuleSet->rules);
+        ((struct parser_control *) parm)->currentRuleSet->numRules = 0;
+      } ;
+
+rule: when ret err pr {
+       do {
+         $$ = (rule*)malloc (sizeof (rule));
+       } while (!$$);
+       $$->i.left = $1->left;
+       $$->i.right = $1->right;
+       $$->retval = $2;
+       $$->errno = $3;
+       $$->prob = $4;
+       free ($1);
+     } ;
+
+when: INTERVAL INT TO INT { 
+        do {
+          $$ = (interval*)malloc (sizeof (interval));
+        } while (!$$);
+        $$->left = $2;
+        $$->right = $4;
+      } | CALLNUMBER INT {
+        do { 
+          $$ = (interval*)malloc (sizeof (interval));
+        } while (!$$);
+        $$->left = $2;
+        $$->right = $2;
+      } ;
+
+ret: RETURN INT { 
+        $$ = $2;
+      } ;
+
+err: ERRNO INT {
+        $$ = $2;
+      } | /* empty */ {
+        $$ = 0;
+      } ;
+
+pr: PROBABILITY PROB_VAL {
+        $$ = $2;
+      } | /* empty */ {
+        $$ = 1;
+      } ;
+%%
+
+/*
+ * Main entry point by external users into the parser. Parses the
+ * given filename and returns a call set. Currently will exit() if the
+ * file does not conform to the grammar -- perhaps this should be changed to
+ * return an empty callset.
+ *
+ */
+callset * getCallSet (char * file) 
+{
+  struct parser_control
+  {
+    callset * currentCallSet;
+    ruleset * currentRuleSet;
+    FILE * controlFile;
+  };
+
+  struct parser_control pcontrol;
+
+  pcontrol.controlFile = fopen (file, "r");
+  if (!pcontrol.controlFile) {
+    yyerror("Unable to open control file.");
+  }
+  yyparse((void *) &pcontrol);
+  return pcontrol.currentCallSet;
+}
+
+
+/* int main()
+ * {
+ *   printf("Calling printCallSet\n");
+ *   printCallSet (getCallSet ("control.out"));
+ *   printf("Finished printing callset\n");
+ * }
+ */
+
+// null print function -- useful for debugging.
+void blank (void * blah, ...) {}
+
+// the print function we use to debug the lexer. Uncomment the second to get
+// debugging output. 
+#define LEX_PRINT blank
+//#define LEX_PRINT printf
+
+/*
+ * Tokenize the stream. We assume that the file has already been opened
+ * for us before this has been called. Sets the value into yylval and returns
+ * the appropriate token type.
+ */
+int yylex(lvalp, parm)
+  YYSTYPE *lvalp;
+{
+    int c;
+    char buf[256]; // watch the line length in the control file, otherwise
+                   // buffer overruns could result
+    /* FOR REENTRANT VERSION */
+    double probval;
+    int intval;
+
+    buf[0] = 0;
+
+    while (c = fgetc (((struct parser_control *) parm)->controlFile)) {
+      /* skip white space */ 
+      if (c == '\t' || c == ' ' || c == '\r' ) continue;
+      /* handle newlines */
+      if (c == '\n') {
+        continue;
+      }
+      // Handle arithemtic expression elements
+      if (c == '(' || c == ')' || c == '+')
+        return c;
+      break;
+    }
+
+    ungetc(c, ((struct parser_control *) parm)->controlFile);
+    fscanf (((struct parser_control *) parm)->controlFile, "%s", buf);
+    LEX_PRINT ("next lex scan: %s\n", buf);
+    // check for a number:
+    if ( isdigit(c) || c == '.' || c == '-') {
+       if (strchr (buf, '.')) {
+          sscanf (buf, "%lf", &probval);
+          LEX_PRINT("Got a prob_val %lf\n", probval);
+          *lvalp = (YYSTYPE)probval;
+          return PROB_VAL;
+       } 
+       sscanf (buf, "%d", &intval);
+       LEX_PRINT("Got an int %d\n", intval);
+       *lvalp = (YYSTYPE)intval;
+       return INT;
+    }
+    // else it's a non terminal. Go through the cases and return the proper
+    // token.
+    if(!strncmp(buf, "return", 6)) {
+        LEX_PRINT("Got RETURN\n");
+        return RETURN;
+    }
+    if(!strncmp(buf, "errno", 5)) {
+        LEX_PRINT("Got ERRNO\n");
+        return ERRNO;
+    }
+    if(!strncmp(buf, "probability", 11)) {
+        LEX_PRINT("Got PROBABILITY\n");
+        return PROBABILITY;
+    }
+    if(!strncmp(buf, "infinity", 8)) {
+        LEX_PRINT("Got INFINITY\n");
+        intval = -1;
+        *lvalp = (YYSTYPE)intval;
+        return INT;
+    }
+    if(!strncmp(buf, "interval", 8)) {
+        LEX_PRINT("Got INTERVAL\n");
+        return INTERVAL;
+    }
+    if(!strncmp(buf, "to", 2)) {
+        LEX_PRINT("Got TO\n");
+        return TO;
+    }
+    if(!strncmp(buf, "callnumber", 10)) {
+        LEX_PRINT("Got CALLNUMBER\n");
+        return CALLNUMBER;
+    }
+    if (c == EOF)
+      return 0;
+    // all others get treated as EOF:
+    return c;
+}

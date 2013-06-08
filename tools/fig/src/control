@@ -1,0 +1,87 @@
+#include "func.h"
+#include <asm/errno.h>
+
+/* A sample control file. The comments are removed by running make_control
+ * on this file. This is also done automatically when 'make' is run.
+ *
+ * Return values and possible errnos returned by a library call can be
+ * looked up in the function's manual page or in its kernel header.
+ * 
+ * All functions described in this file must have entries for stub auto-
+ * generation in func.desc, or else be written manually and entered into
+ * the makefile, with an entry for their index number added to userfunc.h
+ */
+
+/*
+ * malloc call errors
+ */
+MALLOC_INDEX
+       // not enough memory to satisfy request
+       interval 0 to 37 return 0 errno ENOMEM probability 0.0
+
+/*
+ * open call errors 
+ */
+OPEN_INDEX
+       // too many symbolic links (forming a loop)
+       callnumber 4 return -1 errno ELOOP probability 0.0
+       // device out of space   
+       interval 59 to infinity return -1 errno ENOSPC probability 0.0
+       // kernel out of memory
+       interval 10 to 12 return -1 errno ENOMEM probability 0.0
+       // too many files open in system
+       interval 14 to 19 return -1 errno ENFILE probability 0.0
+
+/*
+ * close call errors 
+ */
+CLOSE_INDEX
+       // system call was interrupted by a signal
+       interval 0 to infinity return -1 errno EINTR probability 0.0
+       // random i/o error
+       interval 10 to 15 return -1 errno EIO probability 0.0
+
+/*
+ * read call errors 
+ */
+READ_INDEX 
+       // system call was interrupted by a signal
+       interval 0 to infinity return -1 errno EINTR probability 0.0
+       // random i/o error
+       interval 50 to infinity return -1 errno EIO probability 0.0
+
+/*
+ * write call errors 
+ */
+WRITE_INDEX 
+       // system call was interrupted by a signal
+       interval 10 to infinity return -1 errno EINTR probability 0.0
+       // random i/o failure
+       interval 11 to infinity return -1 errno EIO probability 0.0
+       // no space left on disk
+       interval 11 to infinity return -1 errno ENOSPC probability 0.0
+
+/*
+ * send call errors 
+ */
+SEND_INDEX 
+       // output queue is full; device may be down
+       callnumber 11 return -1 errno ENOBUFS probability 0.0
+       // out of memory
+       callnumber 13 return -1 errno ENOMEM probability 0.0
+
+/*
+ * recv call errors 
+ */
+RECV_INDEX 
+       // connection refused (remote host is down)
+       callnumber 9 return -1 errno ECONNREFUSED probability 0.0
+       // connections has timed out, need to resend
+       callnumber 10 return -1 errno EAGAIN probability 0.0
+
+/*
+ * select call errors 
+ */
+SELECT_INDEX
+       // out of memory
+       interval 3 to 18 return -1 errno ENOMEM probability 0.0
