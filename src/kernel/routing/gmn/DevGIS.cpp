@@ -342,7 +342,7 @@ namespace mutabor {
 	}
 
 	void InputGis::Panic() {
-#pragma warning "Implement Panic()"
+#warning "Implement Panic()"
 	}
 
         // Gis arbeitet auf "tick" - Basis, ein tick = 1ms

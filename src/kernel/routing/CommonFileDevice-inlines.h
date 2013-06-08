@@ -153,8 +153,9 @@ namespace mutabor {
 	inline void CommonFileInputDevice::Close()
 	{
 #ifdef DEBUG
-		if (mutabor::CurrentTime.isRealtime())
+		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(isOpen);
+		}
 #endif
 		Stop();
 		isOpen = false;
@@ -190,6 +191,7 @@ namespace mutabor {
 		switch (Mode) {
 		case DeviceCompileError:
 		case DeviceTimingError:
+		case DeviceUnregistered:
 			DEBUGLOG(timer,_T("Returnung due to device error."));
 			starting = false; 
 			return;
@@ -276,6 +278,23 @@ namespace mutabor {
 		mutASSERT(timer != NULL);
 		mutASSERT(Mode != DeviceCompileError );
 
+
+		/* this looks a little bit strange. But it is hard to
+		 * compare two sined and unsiged integers whose size we do not
+		 * know. */
+		mutint64 maxallowed = (mutint64)(std::numeric_limits<mutint64>::max());
+		const unsigned long maxulong = (std::numeric_limits<unsigned long>::max());
+		maxallowed /= 1000;
+		mutint64 alloweddelta;
+		
+		if ((unsigned long) maxallowed <= maxulong && 
+		    (maxallowed  <= (mutint64) maxulong ||
+		     (mutint64) maxulong < 0))
+			alloweddelta = std::numeric_limits<mutint64>::max();
+		else 
+			alloweddelta = 1000*(mutint64)maxulong;
+
+
 		mutint64 nextEvent = wxLL(0); // in μs
 		mutint64 playTime  = wxLL(0); // in μs
 		mutint64 reference = wxLL(0); // in μs
@@ -297,7 +316,7 @@ namespace mutabor {
 				DEBUGLOG(timer,_T("Delta %ld μs."),delta);
 				
 				if (delta > 0) {
-					if (delta > wxLL(1000)*std::numeric_limits<unsigned long>::max()) {
+					if (delta > alloweddelta) {
 						nextEvent = GetNO_DELTA();
 						Mode = DeviceTimingError;
 						break;
@@ -320,7 +339,7 @@ namespace mutabor {
 		case DeviceTimingError:
 		case DeviceCompileError:
 		default:
-			e = (void *)1;
+			e = (void *)Mode;
 			break;
 		}
 

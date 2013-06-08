@@ -219,6 +219,7 @@ namespace mutabor {
 #endif
 				} else return timer;
 			}
+			return 0;
 		}
 
 		virtual mutString GetTypeName () const {

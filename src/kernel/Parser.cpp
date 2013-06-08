@@ -632,7 +632,7 @@ void mutabor_programm_einlesen (const mutChar * filename )
 			
 			for (lauf=list_of_intervalle; lauf; lauf=lauf->next) {
 				if (lauf->intervall_typ == intervall_absolut) {
-					printf ("Name: %s, Wert: %lf:\n", 
+					printf ("Name: %s, Wert: %f:\n", 
 						lauf->name,
 						lauf->u.intervall_absolut.intervall_wert );
 				} else {
@@ -660,7 +660,7 @@ void mutabor_programm_einlesen (const mutChar * filename )
 					"Tonleiter_breite: %d\n",
 					lauf->name,
 					lauf->taste,
-					lauf->periode,
+					(void *)(lauf->periode),
 					ton_list_laenge (lauf->toene));
 
 				for (help = lauf->toene; help; help = help->next ) {
@@ -899,13 +899,13 @@ static void drucke_ton (struct ton * lauf)
 
           switch (lauf->ton_typ) {
             case ton_absolut :
-                printf ("%lf\n", lauf->u.ton_absolut.ton_wert);
+                printf ("%f\n", lauf->u.ton_absolut.ton_wert);
                 break;
             case ton_komplex : {
                  struct komplex_intervall * help = lauf->u.ton_komplex.komplex_liste;
                  printf ("%s ", lauf->u.ton_komplex.bezugston);
                  while (help) {
-                     printf ("Faktor: %lf %s ",
+                     printf ("Faktor: %f %s ",
                              help->faktor,
                              help->name);
                      help = help->next;

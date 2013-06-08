@@ -43,8 +43,6 @@
 
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
-protected:
-	wxStopWatch sw;
 public:
 	long i;
 	long max;
@@ -67,7 +65,7 @@ public:
 
 	bool Open() {
 		sw.Start();
-		CommonFileInputDevice::Open();
+		return CommonFileInputDevice::Open();
 	}
 
 	void Stop() {
@@ -105,6 +103,8 @@ public:
 
 	void Save(tree_storage&, const mutabor::RouteClass*){}
 	void Load(tree_storage&, mutabor::RouteClass*){}
+protected:
+	wxStopWatch sw;
 };
 
 class CommonFileDeviceTest : public CPPUNIT_NS::TestFixture {

@@ -47,14 +47,12 @@ void  InputMidiFileTest::testBatchPlay1()
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
 	mutabor ::ScopedRoute  route;
-	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
 	initialize_boxes();
 	GlobalReset();
 	route = mutabor::RouteFactory::Create();
 	connect(route,0);
-	box = &mut_box[route->GetBox()];
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(3,_T("Test"));
@@ -605,14 +603,12 @@ void  InputMidiFileTest::testBug019010_2()
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
 	mutabor ::ScopedRoute  route;
-	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
 	initialize_boxes();
 	GlobalReset();
 	route = mutabor::RouteFactory::Create();
 	connect(route,0);
-	box = &mut_box[route->GetBox()];
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(3,_T("Test"));
@@ -944,14 +940,12 @@ void  InputMidiFileTest::testBug019010()
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
 	mutabor ::ScopedRoute  route;
-	mutabor_box_type * box;
 	mutabor::ChannelData cd;
 
 	initialize_boxes();
 	GlobalReset();
 	route = mutabor::RouteFactory::Create();
 	connect(route,0);
-	box = &mut_box[route->GetBox()];
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(3,_T("Test"));
@@ -1275,11 +1269,12 @@ void  InputMidiFileTest::testBug019010()
 }
 
 bool OutputMidiFileTest::CheckOut(mutString s,int line, const mutChar * file) {
-	wxMemoryOutputStream stream;
-	CPPUNIT_ASSERT(out);
-	out->Save(stream);
-	mutString tmp = StreamToHex(stream.GetOutputStreamBuffer());
-	bool retval = (tmp == s);
+	wxMemoryOutputStream * stream = new wxMemoryOutputStream();
+	out->Save(*stream);
+	mutString *tmp = new mutString();
+	*tmp = StreamToHex(stream->GetOutputStreamBuffer());
+	delete stream;
+	bool retval = (*tmp == s);
 	if (!retval) {
 		DEBUGLOG(always,_("\n\
 %s:%d: Stream check failed.\n\
@@ -1295,8 +1290,9 @@ Got:\n\
 |-------------------\n\
 \n\
 "),
-			 file,line,s.c_str(),tmp.c_str());
+			 file,line,s.c_str(),tmp->c_str());
 	}
+	delete tmp;
 	return retval;
 }
 
@@ -1573,7 +1569,6 @@ void  OutputMidiFileTest::testBatchPlay1()
 	mutabor::CurrentTime = 0;
  
 	CPPUNIT_ASSERT((out -> Open()));
-	CPPUNIT_ASSERT((in -> Open()));
 
 
 	DataStr = _T("\
@@ -1615,6 +1610,8 @@ void  OutputMidiFileTest::testBatchPlay1()
  72 6b 00 00 02 13 00 ff  51 03 07 d0 00 00 ff 58   rk……………… Q………………X\n") 
 		+ DataStr + _T(" 02 00 bf 26 00 00 ff 2f  00                        ………&………/ …\n");
 
+	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT((in -> Open()));
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 
 	in -> Play();

@@ -140,8 +140,8 @@ class myDevice: public mutabor::InputGis {
 int main(int argc, char **argv)
 {
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.gmnfile = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.gmnfile = true;
 #endif
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
@@ -168,6 +168,7 @@ int main(int argc, char **argv)
 	in -> Play(wxTHREAD_JOINABLE);
 
 	wxThread::ExitCode e = in->WaitForDeviceFinish();
+	if (e != 0) return 0x100 + ((size_t)e & 0xFF);
 	//int e = 0;
 //	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
 	return 1; 

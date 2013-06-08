@@ -777,7 +777,7 @@ start_lex:
     
     /* # starts a HEX-number => parse the number. */
     if (c == '#') {
-        int help;
+        unsigned int help;
         if (fscanf (quelldatei, "%x", &help) == 0) {
             fatal_error (78, yylloc.first_line + 1);
             exit (1);

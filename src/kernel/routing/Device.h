@@ -74,12 +74,12 @@ namespace mutaborGUI {
 namespace mutabor {
 
 	enum MutaborModeType {
-		DeviceUnregistered = -1,
-		DeviceStop,
-		DevicePlay,
-		DevicePause,
-		DeviceCompileError,
-		DeviceTimingError
+		DeviceUnregistered = -1, //< Unregistered device – currently unused
+		DeviceStop,              //< Device is OK, but no playback.
+		DevicePlay,              //< Playback is running
+		DevicePause,             //< Playback is paused
+		DeviceCompileError,      //< Error while compiling/decoding the file (file propably corrupted)
+		DeviceTimingError        //< Timing problems e.g. backwards runnig time in a file.
 	};
 
 	extern char InDevChanged;
@@ -134,7 +134,7 @@ namespace mutabor {
 				
 			}
 
-		int set_controller(int number, int8_t data) {
+		int set_controller(size_t number, int8_t data) {
 
 			if (controller.size() <= number) 
 				controller.resize(number +1);
@@ -173,7 +173,7 @@ namespace mutabor {
 						| controller[midi::REGISTERED_PARAMETER_FINE];
 				}
 				if (param != -1) {
-					if (controller.size() <= param) 
+					if (controller.size() <= (size_t) param) 
 						controller.resize(param+1);
 					switch (number) {
 					case midi::DATA_BUTTON_INCREMENT:
@@ -197,8 +197,8 @@ namespace mutabor {
 
 			bool found = false;
 			size_t index;
-			for (int i = 0; i < (looped?controller.size():first_unchanged);i++) {
-				if (controller_changed[i] == number) {
+			for (size_t i = 0; i < (looped?controller.size():first_unchanged);i++) {
+				if (controller_changed[i] == (int)number) {
 					controller_vector :: iterator beg = controller_changed.begin();
 					std::rotate(beg + i,beg+i+1 ,beg +first_unchanged);
 					found = true;
@@ -267,7 +267,7 @@ namespace mutabor {
 			
 		}
 
-		int get_controller(int number) const {
+		int get_controller(size_t number) const {
 			if (number >= controller.size()) return -1;
 			return controller[number];
 		}
@@ -278,14 +278,15 @@ namespace mutabor {
 				return retval;
 			return get_next_changed_controller(other,retval);
 		}
-		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other, controller_vector::const_iterator last) const {
+		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other, 
+									      controller_vector::const_iterator last) const {
 			mutASSERT(controller_changed.begin() <= last);
 			mutASSERT(last < controller_changed.end());
 			controller_vector::const_iterator retval = last;
 			do {
 				retval++;
 			} while (retval != controller_changed.end() && (*retval != -1) 
-				 && *retval < other.controller.size()
+				 && (size_t)(*retval) < other.controller.size()
 				 && controller[*retval] == other.controller[*retval]);
 			return retval;
 		}
@@ -296,7 +297,7 @@ namespace mutabor {
 			if (actual == controller_changed.end()) return false;
 			if (*actual == -1) return false;
 			mutASSERT(0<= *actual);
-			mutASSERT(*actual < controller.size());
+			mutASSERT((size_t)(*actual) < controller.size());
 			return true;
 		}
 
@@ -331,7 +332,7 @@ namespace mutabor {
 		}
 
 		int get_bend() { return bend; }
-		int set_bend(int b) { bend = b; }
+		void set_bend(int b) { bend = b; }
 
 		int get_program() const {return Sound; }
 		int get_bank_coarse() const { return bank_coarse; }
@@ -659,7 +660,7 @@ namespace mutabor {
 		virtual void NotesCorrect(RouteClass * route) = 0;
 		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
-		virtual int  GetChannel(int inkey, int channel, int id) = 0;
+		virtual int  GetChannel(int inkey, int channel, size_t id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
@@ -873,7 +874,7 @@ namespace mutabor {
 		 * \return uint_fast64_t Absolute temporal position of the next event in the
 		 * piece in μs.
 		 */
-		virtual mutint64 PrepareNextEvent() {}
+		virtual mutint64 PrepareNextEvent() { return MUTABOR_NO_DELTA; }
 
 		void NoteOn(Route &R, int key, int velocity,
 			    size_t make_unique,
@@ -1147,9 +1148,11 @@ namespace mutabor {
 
 		ScopedInputDevice & operator = (InputDeviceClass * rhs) {
 			(*(static_cast<InputDevice *>(this))) = rhs;
+			return *this;
 		}
 		ScopedInputDevice & operator = (const InputDevice & rhs) {
 			(*(static_cast<InputDevice *>(this))) = rhs;
+			return *this;
 		}
 	};
 
@@ -1161,9 +1164,11 @@ namespace mutabor {
 		}
 		ScopedOutputDevice & operator = (OutputDeviceClass * rhs) {
 			(*(static_cast<OutputDevice *>(this))) = rhs;
+			return *this;
 		}
 		ScopedOutputDevice & operator = (const OutputDevice & rhs) {
 			(*(static_cast<OutputDevice *>(this))) = rhs;
+			return *this;
 		}
 	};
 

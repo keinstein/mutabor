@@ -123,7 +123,7 @@ void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion)
 		if ( nAktionen )
 			l = lAktionen[nAktionen-1];
 
-#pragma warning "strcpy must be replaced"
+#warning "strcpy must be replaced"
 		strcpy(&sAktionen[l], aktion->name);
 
 		lAktionen[nAktionen++] = l + strlen(aktion->name);

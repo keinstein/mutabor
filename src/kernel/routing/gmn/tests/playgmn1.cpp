@@ -142,8 +142,8 @@ class myDevice: public mutabor::InputGis {
 int main(int argc, char **argv)
 {
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
-	debugFlags::flags.gmnfile = true;
+//	debugFlags::flags.timer = true;
+//	debugFlags::flags.gmnfile = true;
 #endif
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 

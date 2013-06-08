@@ -245,7 +245,7 @@ namespace mutaborGUI {
 		}
 		mutabor::Route r = channel->GetRoute();
 		mutabor::OutputDevice dev = out->GetDevice();
-		disconnect(r,dev);
+		return disconnect(r,dev);
 	}
 
 	inline bool disconnect(MutBoxChannelShape * channel, MutInputDeviceShape * in) {
@@ -255,7 +255,7 @@ namespace mutaborGUI {
 		}
 		mutabor::Route r = channel->GetRoute();
 		mutabor::InputDevice dev = in->GetDevice();
-		disconnect(r,dev);
+		return disconnect(r,dev);
 	}
 
 	template <class device_class, class shape_class>
@@ -597,6 +597,7 @@ namespace mutaborGUI {
 
 	inline bool GUIRouteBase::Remove (mutabor::OutputDevice & dev) 
 	{
+
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
@@ -610,6 +611,9 @@ namespace mutaborGUI {
 			 intrusive_ptr_get_refcount(dev.get()));
 
 		GUIOutputDeviceBase * outbase = ToGUIBase(dev);
+
+		if (shapes.empty() && outbase -> GetShapes().empty()) 
+			return true;
 
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -649,6 +653,9 @@ namespace mutaborGUI {
 			 intrusive_ptr_get_refcount(dev.get()));
 
 		GUIInputDeviceBase * inbase = ToGUIBase(dev);
+
+		if (shapes.empty() && inbase -> GetShapes().empty()) 
+			return true;
 
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -779,39 +786,56 @@ namespace mutaborGUI {
 	template<class T> 
 	bool GUIfiedRoute<T>::Replace (mutabor::OutputDevice & olddev, 
 		      mutabor::OutputDevice & newdev) {
-		base::Replace(olddev,newdev);
-		GUIRouteBase::Replace(olddev,newdev);
+		bool retval = base::Replace(olddev,newdev);
+		if (retval) {
+			retval = GUIRouteBase::Replace(olddev,newdev);
+		}
+		return retval;
 	}
 	/// replace an existing input device
 	template<class T> 
 	bool GUIfiedRoute<T>::Replace (mutabor::InputDevice & olddev, 
 		      mutabor::InputDevice & newdev) {
-		GUIRouteBase::Replace(olddev,newdev);
-		base::Replace(olddev,newdev);
+		bool retval = GUIRouteBase::Replace(olddev,newdev);
+		if (retval) 
+			retval = base::Replace(olddev,newdev);
+		return retval;
 	}
 	/// replace an existing box
 	template<class T> 
 	bool GUIfiedRoute<T>::Replace (int oldbox, int newbox) {
-		GUIRouteBase::Replace(oldbox,newbox);
-		base::Replace(oldbox,newbox);
+		bool retval = 
+			GUIRouteBase::Replace(oldbox,newbox);
+		if (retval) 
+			retval = base::Replace(oldbox,newbox);
+		return retval;
 	}
 	/// remove an existing output device
 	template<class T> 
 	bool GUIfiedRoute<T>::Remove (mutabor::OutputDevice & out) {
-		GUIRouteBase::Remove(out);
-		base::Remove(out);
+		bool retval = 
+			GUIRouteBase::Remove(out);
+		if (retval) 
+			retval = base::Remove(out);
+		return retval;
 	}
 	/// remove an existing input device
 	template<class T> 
 	bool GUIfiedRoute<T>::Remove (mutabor::InputDevice & in) {
-		GUIRouteBase::Remove(in);
-		base::Remove(in);
+		bool retval = 
+			GUIRouteBase::Remove(in);
+		if (retval)
+			retval = base::Remove(in);
+		return retval;
 	}
 	/// remov an existing box
 	template<class T> 
 	bool GUIfiedRoute<T>::Remove (int id) {
-		GUIRouteBase::Remove(id);
-		base::Remove(id);
+		bool retval =
+			GUIRouteBase::Remove(id);
+		if (retval)
+			retval = base::Remove(id);
+		return retval;
 	}
 
 	inline void GUIOutputDeviceBase::Add(mutabor::Route & route) {

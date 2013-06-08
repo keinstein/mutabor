@@ -140,7 +140,6 @@ static intptr get_cache_konstante (mutabor_box_type * box, int wert)
 {
 
         struct cache_konstanten ** lauf;
-        int i;
 
         for (lauf = & box->cache_konstanten; *lauf; lauf = & (*lauf)->next) {
         if ((*lauf)->konstante == wert)
@@ -799,7 +798,7 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 
 		case ausloeser_harmonie:
 			TRACE;
-#pragma message ("using constant lauf->ausloeser->u.ausloeser_harmonie.vortaste -2 should be changed")
+#warning "using constant lauf->ausloeser->u.ausloeser_harmonie.vortaste -2 should be changed"
 			if (lauf->ausloeser->u.ausloeser_harmonie.vortaste == -2)
 				/* Dann unmöglicher Harmonieauslöser */
 				break;
@@ -972,7 +971,7 @@ void insert_in_lokale_liste (mutabor_box_type * box, int logiknr, struct anweisu
 
 			(*temp_harmonie) -> pattern=NULL ;
 
-#pragma message "Do not use integer constants!"
+#warning "Do not use integer constants!"
 			(*temp_harmonie) -> ist_harmonieform=2;
 			/* 2 als Wert für ANSONSTEN */
 

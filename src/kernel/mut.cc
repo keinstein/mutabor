@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
+/* A Bison parser, made by GNU Bison 2.7.12-4996.  */
 
 /* Bison implementation for Yacc-like parsers in C
    
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
+      Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.5"
+#define YYBISON_VERSION "2.7.12-4996"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -58,14 +58,11 @@
 /* Pull parsers.  */
 #define YYPULL 1
 
-/* Using locations.  */
-#define YYLSP_NEEDED 1
 
 
 
 /* Copy the first part of user declarations.  */
-
-/* Line 268 of yacc.c  */
+/* Line 371 of yacc.c  */
 #line 37 "mut.yy"
 
 
@@ -99,14 +96,16 @@
                    /* wegen fehlendem alloca in PUREC */
 
 
+/* Line 371 of yacc.c  */
+#line 101 "../../../mutabor-git/src/kernel/mut.cc"
 
-/* Line 268 of yacc.c  */
-#line 105 "src/kernel/mut.cc"
-
-/* Enabling traces.  */
-#ifndef YYDEBUG
-# define YYDEBUG 0
-#endif
+# ifndef YY_NULL
+#  if defined __cplusplus && 201103L <= __cplusplus
+#   define YY_NULL nullptr
+#  else
+#   define YY_NULL 0
+#  endif
+# endif
 
 /* Enabling verbose error messages.  */
 #ifdef YYERROR_VERBOSE
@@ -116,11 +115,17 @@
 # define YYERROR_VERBOSE 0
 #endif
 
-/* Enabling the token table.  */
-#ifndef YYTOKEN_TABLE
-# define YYTOKEN_TABLE 0
+/* In a future release of Bison, this section will be replaced
+   by #include "y.tab.h".  */
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
+/* Enabling traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
 #endif
-
+#if YYDEBUG
+extern int yydebug;
+#endif
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -166,12 +171,10 @@
 
 
 
-
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
 {
-
-/* Line 293 of yacc.c  */
+/* Line 387 of yacc.c  */
 #line 70 "mut.yy"
 
     double      f_value;        /* fr Gleitkommazahlen */
@@ -179,9 +182,8 @@ typedef union YYSTYPE
     char        *identifier;    /* Fr Namen */
 
 
-
-/* Line 293 of yacc.c  */
-#line 185 "src/kernel/mut.cc"
+/* Line 387 of yacc.c  */
+#line 187 "../../../mutabor-git/src/kernel/mut.cc"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -201,12 +203,28 @@ typedef struct YYLTYPE
 # define YYLTYPE_IS_TRIVIAL 1
 #endif
 
+extern YYSTYPE yylval;
+extern YYLTYPE yylloc;
+#ifdef YYPARSE_PARAM
+#if defined __STDC__ || defined __cplusplus
+int yyparse (void *YYPARSE_PARAM);
+#else
+int yyparse ();
+#endif
+#else /* ! YYPARSE_PARAM */
+#if defined __STDC__ || defined __cplusplus
+int yyparse (void);
+#else
+int yyparse ();
+#endif
+#endif /* ! YYPARSE_PARAM */
+
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-
-/* Line 343 of yacc.c  */
-#line 210 "src/kernel/mut.cc"
+/* Line 390 of yacc.c  */
+#line 228 "../../../mutabor-git/src/kernel/mut.cc"
 
 #ifdef short
 # undef short
@@ -259,24 +277,33 @@ typedef short int yytype_int16;
 # if defined YYENABLE_NLS && YYENABLE_NLS
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
-#   define YY_(msgid) dgettext ("bison-runtime", msgid)
+#   define YY_(Msgid) dgettext ("bison-runtime", Msgid)
 #  endif
 # endif
 # ifndef YY_
-#  define YY_(msgid) msgid
+#  define YY_(Msgid) Msgid
+# endif
+#endif
+
+#ifndef __attribute__
+/* This feature is available in gcc versions 2.5 and later.  */
+# if (! defined __GNUC__ || __GNUC__ < 2 \
+      || (__GNUC__ == 2 && __GNUC_MINOR__ < 5))
+#  define __attribute__(Spec) /* empty */
 # endif
 #endif
 
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
-# define YYUSE(e) ((void) (e))
+# define YYUSE(E) ((void) (E))
 #else
-# define YYUSE(e) /* empty */
+# define YYUSE(E) /* empty */
 #endif
+
 
 /* Identity function, used to suppress warnings about constant conditions.  */
 #ifndef lint
-# define YYID(n) (n)
+# define YYID(N) (N)
 #else
 #if (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
@@ -312,6 +339,7 @@ YYID (yyi)
 #    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
      || defined __cplusplus || defined _MSC_VER)
 #     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
+      /* Use EXIT_SUCCESS as a witness for stdlib.h.  */
 #     ifndef EXIT_SUCCESS
 #      define EXIT_SUCCESS 0
 #     endif
@@ -405,20 +433,20 @@ union yyalloc
 #endif
 
 #if defined YYCOPY_NEEDED && YYCOPY_NEEDED
-/* Copy COUNT objects from FROM to TO.  The source and destination do
+/* Copy COUNT objects from SRC to DST.  The source and destination do
    not overlap.  */
 # ifndef YYCOPY
 #  if defined __GNUC__ && 1 < __GNUC__
-#   define YYCOPY(To, From, Count) \
-      __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
+#   define YYCOPY(Dst, Src, Count) \
+      __builtin_memcpy (Dst, Src, (Count) * sizeof (*(Src)))
 #  else
-#   define YYCOPY(To, From, Count)		\
-      do					\
-	{					\
-	  YYSIZE_T yyi;				\
-	  for (yyi = 0; yyi < (Count); yyi++)	\
-	    (To)[yyi] = (From)[yyi];		\
-	}					\
+#   define YYCOPY(Dst, Src, Count)              \
+      do                                        \
+        {                                       \
+          YYSIZE_T yyi;                         \
+          for (yyi = 0; yyi < (Count); yyi++)   \
+            (Dst)[yyi] = (Src)[yyi];            \
+        }                                       \
       while (YYID (0))
 #  endif
 # endif
@@ -611,7 +639,7 @@ static const yytype_uint16 yyrline[] =
 };
 #endif
 
-#if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
+#if YYDEBUG || YYERROR_VERBOSE || 0
 /* YYTNAME[SYMBOL-NUM] -- String name of the symbol SYMBOL-NUM.
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
@@ -646,7 +674,7 @@ static const char *const yytname[] =
   "logik_dekl_2", "$@31", "$@32", "anweisungs_liste", "anweisung", "$@33",
   "$@34", "harmoniebezeichner", "ausloeser", "$@35", "integersequenz",
   "instrumentdeklaration", "instrument_dekl_1", "instrument_dekl_2",
-  "GLEITKOMMA_ZAHL", 0
+  "GLEITKOMMA_ZAHL", YY_NULL
 };
 #endif
 
@@ -877,10 +905,10 @@ static const yytype_int16 yytable[] =
        0,     0,     0,    65,     0,     0,     0,     0,    86
 };
 
-#define yypact_value_is_default(yystate) \
-  ((yystate) == (-321))
+#define yypact_value_is_default(Yystate) \
+  (!!((Yystate) == (-321)))
 
-#define yytable_value_is_error(yytable_value) \
+#define yytable_value_is_error(Yytable_value) \
   YYID (0)
 
 static const yytype_int16 yycheck[] =
@@ -993,23 +1021,24 @@ static const yytype_uint8 yystos[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)					\
-do								\
-  if (yychar == YYEMPTY && yylen == 1)				\
-    {								\
-      yychar = (Token);						\
-      yylval = (Value);						\
-      YYPOPSTACK (1);						\
-      goto yybackup;						\
-    }								\
-  else								\
-    {								\
+#define YYBACKUP(Token, Value)                                  \
+do                                                              \
+  if (yychar == YYEMPTY)                                        \
+    {                                                           \
+      yychar = (Token);                                         \
+      yylval = (Value);                                         \
+      YYPOPSTACK (yylen);                                       \
+      yystate = *yyssp;                                         \
+      goto yybackup;                                            \
+    }                                                           \
+  else                                                          \
+    {                                                           \
       yyerror (YY_("syntax error: cannot back up")); \
       YYERROR;							\
     }								\
 while (YYID (0))
 
-
+/* Error token number */
 #define YYTERROR	1
 #define YYERRCODE	256
 
@@ -1018,26 +1047,27 @@ while (YYID (0))
    If N is 0, then set CURRENT to the empty location which ends
    the previous symbol: RHS[0] (always defined).  */
 
-#define YYRHSLOC(Rhs, K) ((Rhs)[K])
 #ifndef YYLLOC_DEFAULT
-# define YYLLOC_DEFAULT(Current, Rhs, N)				\
-    do									\
-      if (YYID (N))                                                    \
-	{								\
-	  (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;	\
-	  (Current).first_column = YYRHSLOC (Rhs, 1).first_column;	\
-	  (Current).last_line    = YYRHSLOC (Rhs, N).last_line;		\
-	  (Current).last_column  = YYRHSLOC (Rhs, N).last_column;	\
-	}								\
-      else								\
-	{								\
-	  (Current).first_line   = (Current).last_line   =		\
-	    YYRHSLOC (Rhs, 0).last_line;				\
-	  (Current).first_column = (Current).last_column =		\
-	    YYRHSLOC (Rhs, 0).last_column;				\
-	}								\
+# define YYLLOC_DEFAULT(Current, Rhs, N)                                \
+    do                                                                  \
+      if (YYID (N))                                                     \
+        {                                                               \
+          (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;        \
+          (Current).first_column = YYRHSLOC (Rhs, 1).first_column;      \
+          (Current).last_line    = YYRHSLOC (Rhs, N).last_line;         \
+          (Current).last_column  = YYRHSLOC (Rhs, N).last_column;       \
+        }                                                               \
+      else                                                              \
+        {                                                               \
+          (Current).first_line   = (Current).last_line   =              \
+            YYRHSLOC (Rhs, 0).last_line;                                \
+          (Current).first_column = (Current).last_column =              \
+            YYRHSLOC (Rhs, 0).last_column;                              \
+        }                                                               \
     while (YYID (0))
 #endif
+
+#define YYRHSLOC(Rhs, K) ((Rhs)[K])
 
 
 /* YY_LOCATION_PRINT -- Print the location on the stream.
@@ -1046,10 +1076,46 @@ while (YYID (0))
 
 #ifndef YY_LOCATION_PRINT
 # if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
-#  define YY_LOCATION_PRINT(File, Loc)			\
-     fprintf (File, "%d.%d-%d.%d",			\
-	      (Loc).first_line, (Loc).first_column,	\
-	      (Loc).last_line,  (Loc).last_column)
+
+/* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
+
+__attribute__((__unused__))
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static unsigned
+yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
+#else
+static unsigned
+yy_location_print_ (yyo, yylocp)
+    FILE *yyo;
+    YYLTYPE const * const yylocp;
+#endif
+{
+  unsigned res = 0;
+  int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
+  if (0 <= yylocp->first_line)
+    {
+      res += fprintf (yyo, "%d", yylocp->first_line);
+      if (0 <= yylocp->first_column)
+        res += fprintf (yyo, ".%d", yylocp->first_column);
+    }
+  if (0 <= yylocp->last_line)
+    {
+      if (yylocp->first_line < yylocp->last_line)
+        {
+          res += fprintf (yyo, "-%d", yylocp->last_line);
+          if (0 <= end_col)
+            res += fprintf (yyo, ".%d", end_col);
+        }
+      else if (0 <= end_col && yylocp->first_column < end_col)
+        res += fprintf (yyo, "-%d", end_col);
+    }
+  return res;
+ }
+
+#  define YY_LOCATION_PRINT(File, Loc)          \
+  yy_location_print_ (File, &(Loc))
+
 # else
 #  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
 # endif
@@ -1057,7 +1123,6 @@ while (YYID (0))
 
 
 /* YYLEX -- calling `yylex' with the right arguments.  */
-
 #ifdef YYLEX_PARAM
 # define YYLEX yylex (YYLEX_PARAM)
 #else
@@ -1108,6 +1173,8 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep, yylocationp)
     YYLTYPE const * const yylocationp;
 #endif
 {
+  FILE *yyo = yyoutput;
+  YYUSE (yyo);
   if (!yyvaluep)
     return;
   YYUSE (yylocationp);
@@ -1117,11 +1184,7 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep, yylocationp)
 # else
   YYUSE (yyoutput);
 # endif
-  switch (yytype)
-    {
-      default:
-	break;
-    }
+  YYUSE (yytype);
 }
 
 
@@ -1364,12 +1427,11 @@ static int
 yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yytype_int16 *yyssp, int yytoken)
 {
-  YYSIZE_T yysize0 = yytnamerr (0, yytname[yytoken]);
+  YYSIZE_T yysize0 = yytnamerr (YY_NULL, yytname[yytoken]);
   YYSIZE_T yysize = yysize0;
-  YYSIZE_T yysize1;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
-  const char *yyformat = 0;
+  const char *yyformat = YY_NULL;
   /* Arguments of yyformat. */
   char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
   /* Number of reported tokens (one for the "unexpected", one per
@@ -1429,11 +1491,13 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                     break;
                   }
                 yyarg[yycount++] = yytname[yyx];
-                yysize1 = yysize + yytnamerr (0, yytname[yyx]);
-                if (! (yysize <= yysize1
-                       && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-                  return 2;
-                yysize = yysize1;
+                {
+                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULL, yytname[yyx]);
+                  if (! (yysize <= yysize1
+                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                    return 2;
+                  yysize = yysize1;
+                }
               }
         }
     }
@@ -1453,10 +1517,12 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 # undef YYCASE_
     }
 
-  yysize1 = yysize + yystrlen (yyformat);
-  if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-    return 2;
-  yysize = yysize1;
+  {
+    YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
+    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+      return 2;
+    yysize = yysize1;
+  }
 
   if (*yymsg_alloc < yysize)
     {
@@ -1514,39 +1580,34 @@ yydestruct (yymsg, yytype, yyvaluep, yylocationp)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
 
-  switch (yytype)
-    {
-
-      default:
-	break;
-    }
+  YYUSE (yytype);
 }
 
 
-/* Prevent warnings from -Wmissing-prototypes.  */
-#ifdef YYPARSE_PARAM
-#if defined __STDC__ || defined __cplusplus
-int yyparse (void *YYPARSE_PARAM);
-#else
-int yyparse ();
-#endif
-#else /* ! YYPARSE_PARAM */
-#if defined __STDC__ || defined __cplusplus
-int yyparse (void);
-#else
-int yyparse ();
-#endif
-#endif /* ! YYPARSE_PARAM */
 
 
 /* The lookahead symbol.  */
 int yychar;
 
+
+#ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END
+#endif
+#ifndef YY_INITIAL_VALUE
+# define YY_INITIAL_VALUE(Value) /* Nothing. */
+#endif
+
 /* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval;
+YYSTYPE yylval YY_INITIAL_VALUE(yyval_default);
 
 /* Location data for the lookahead symbol.  */
-YYLTYPE yylloc;
+YYLTYPE yylloc
+# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+  = { 1, 1, 1, 1 }
+# endif
+;
+
 
 /* Number of syntax errors so far.  */
 int yynerrs;
@@ -1587,7 +1648,7 @@ yyparse ()
        `yyvs': related to semantic values.
        `yyls': related to locations.
 
-       Refer to the stacks thru separate pointers, to allow yyoverflow
+       Refer to the stacks through separate pointers, to allow yyoverflow
        to reallocate them elsewhere.  */
 
     /* The state stack.  */
@@ -1613,7 +1674,7 @@ yyparse ()
   int yyn;
   int yyresult;
   /* Lookahead token as an internal (translated) token number.  */
-  int yytoken;
+  int yytoken = 0;
   /* The variables used to return semantic value and location from the
      action routines.  */
   YYSTYPE yyval;
@@ -1632,10 +1693,9 @@ yyparse ()
      Keep to zero when no symbol should be popped.  */
   int yylen = 0;
 
-  yytoken = 0;
-  yyss = yyssa;
-  yyvs = yyvsa;
-  yyls = yylsa;
+  yyssp = yyss = yyssa;
+  yyvsp = yyvs = yyvsa;
+  yylsp = yyls = yylsa;
   yystacksize = YYINITDEPTH;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
@@ -1644,21 +1704,7 @@ yyparse ()
   yyerrstatus = 0;
   yynerrs = 0;
   yychar = YYEMPTY; /* Cause a token to be read.  */
-
-  /* Initialize stack pointers.
-     Waste one element of value and location stack
-     so that they stay on the same level as the state stack.
-     The wasted elements are never initialized.  */
-  yyssp = yyss;
-  yyvsp = yyvs;
-  yylsp = yyls;
-
-#if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
-  /* Initialize the default location before parsing starts.  */
-  yylloc.first_line   = yylloc.last_line   = 1;
-  yylloc.first_column = yylloc.last_column = 1;
-#endif
-
+  yylsp[0] = yylloc;
   goto yysetstate;
 
 /*------------------------------------------------------------.
@@ -1804,7 +1850,9 @@ yybackup:
   yychar = YYEMPTY;
 
   yystate = yyn;
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
   *++yylsp = yylloc;
   goto yynewstate;
 
@@ -1842,22 +1890,19 @@ yyreduce:
   switch (yyn)
     {
         case 10:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 109 "mut.yy"
     {  fatal_error(1,FEHLERZEILE); }
     break;
 
   case 14:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 121 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 16:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 126 "mut.yy"
     { if ( fabs((yyvsp[(5) - (5)].f_value)) > 0.001 )
                          get_new_intervall ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].f_value) / (yyvsp[(5) - (5)].f_value));
@@ -1866,8 +1911,7 @@ yyreduce:
     break;
 
   case 17:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 132 "mut.yy"
     { if ( fabs ((yyvsp[(3) - (5)].f_value)) > 0.001 )
                           get_new_intervall ((yyvsp[(1) - (5)].identifier), pow ((yyvsp[(5) - (5)].f_value), 1 / (yyvsp[(3) - (5)].f_value)));
@@ -1876,99 +1920,85 @@ yyreduce:
     break;
 
   case 18:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 141 "mut.yy"
     { get_new_intervall_komplex ((yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 19:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 142 "mut.yy"
     { fatal_error(71, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 20:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 143 "mut.yy"
     { fatal_error(70,mutT("="),FEHLERZEILE); }
     break;
 
   case 24:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 155 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 26:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 160 "mut.yy"
     { get_new_ton_absolut ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].f_value)); }
     break;
 
   case 27:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 164 "mut.yy"
     { get_new_ton_komplex_negative ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 28:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 168 "mut.yy"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (3)].identifier), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 29:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 172 "mut.yy"
     { get_new_ton_komplex_positive ((yyvsp[(1) - (5)].identifier), (yyvsp[(3) - (5)].identifier)); }
     break;
 
   case 30:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 174 "mut.yy"
     { fatal_error( 72, mutC_STR((yyvsp[(1) - (3)].identifier)) ); }
     break;
 
   case 34:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 188 "mut.yy"
     { get_new_faktor_anteil ( (double) 1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 35:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 191 "mut.yy"
     { get_new_faktor_anteil ( (double) -1, (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 36:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 194 "mut.yy"
     { get_new_faktor_anteil ( (yyvsp[(2) - (3)].f_value), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 37:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 197 "mut.yy"
     { get_new_faktor_anteil ( -((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 38:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 200 "mut.yy"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -1977,8 +2007,7 @@ yyreduce:
     break;
 
   case 39:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 206 "mut.yy"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) -1 / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -1987,8 +2016,7 @@ yyreduce:
     break;
 
   case 40:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 212 "mut.yy"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
@@ -1997,8 +2025,7 @@ yyreduce:
     break;
 
   case 41:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 218 "mut.yy"
     { if ( fabs((yyvsp[(4) - (5)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( -((yyvsp[(2) - (5)].f_value)) / ((yyvsp[(4) - (5)].f_value)), (yyvsp[(5) - (5)].identifier));
@@ -2007,22 +2034,19 @@ yyreduce:
     break;
 
   case 42:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 239 "mut.yy"
     { get_new_faktor_anteil ( (double) 1.0 , (yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 43:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 247 "mut.yy"
     { get_new_faktor_anteil ( (yyvsp[(1) - (2)].f_value), (yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 44:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 250 "mut.yy"
     { if ( fabs((yyvsp[(2) - (3)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( (double) 1 / ((yyvsp[(2) - (3)].f_value)), (yyvsp[(3) - (3)].identifier));
@@ -2031,8 +2055,7 @@ yyreduce:
     break;
 
   case 45:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 256 "mut.yy"
     { if ( fabs((yyvsp[(3) - (4)].f_value)) > 0.001 )
                        get_new_faktor_anteil ( ((yyvsp[(1) - (4)].f_value)) / ((yyvsp[(3) - (4)].f_value)), (yyvsp[(4) - (4)].identifier));
@@ -2041,388 +2064,333 @@ yyreduce:
     break;
 
   case 49:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 289 "mut.yy"
     { init_ton_liste (); }
     break;
 
   case 51:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 294 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 52:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 296 "mut.yy"
     { get_new_tonsystem ((yyvsp[(1) - (8)].identifier), (yyvsp[(3) - (8)].integer)); }
     break;
 
   case 53:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 298 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 54:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 300 "mut.yy"
     { get_new_tonsystem_negative ((yyvsp[(1) - (9)].identifier), (yyvsp[(3) - (9)].integer)); }
     break;
 
   case 57:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 306 "mut.yy"
     { get_new_ton_in_tonsystem ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 58:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 307 "mut.yy"
     { get_new_ton_in_tonsystem (NULL); }
     break;
 
   case 59:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 308 "mut.yy"
     { fatal_error(73,FEHLERZEILE); }
     break;
 
   case 60:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 312 "mut.yy"
     { get_new_name_in_parameterlist ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 61:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 314 "mut.yy"
     { get_new_name_in_parameterlist ((yyvsp[(3) - (3)].identifier)); }
     break;
 
   case 62:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 315 "mut.yy"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 63:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 320 "mut.yy"
     {}
     break;
 
   case 64:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 321 "mut.yy"
     {}
     break;
 
   case 65:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 322 "mut.yy"
     { fatal_error(74,FEHLERZEILE); }
     break;
 
   case 66:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 327 "mut.yy"
     { get_new_name_in_argument_list ((yyvsp[(1) - (1)].identifier)) ;  }
     break;
 
   case 67:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 328 "mut.yy"
     { get_new_number_in_argument_list ((yyvsp[(1) - (1)].integer)) ;  }
     break;
 
   case 68:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 329 "mut.yy"
     { get_new_number_in_argument_list (-((yyvsp[(2) - (2)].integer))); }
     break;
 
   case 72:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 344 "mut.yy"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
 
   case 73:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 346 "mut.yy"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 74:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 348 "mut.yy"
     { get_new_umstimmung (); }
     break;
 
   case 75:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 351 "mut.yy"
     { init_umstimmung ((yyvsp[(1) - (1)].identifier));
                       init_parameter_liste (); }
     break;
 
   case 76:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 354 "mut.yy"
     { eintrage_parameterliste_in_umstimmung (); }
     break;
 
   case 77:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 356 "mut.yy"
     { get_new_umstimmung (); }
     break;
 
   case 78:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 360 "mut.yy"
     {}
     break;
 
   case 79:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 361 "mut.yy"
     {}
     break;
 
   case 80:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 362 "mut.yy"
     {}
     break;
 
   case 81:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 363 "mut.yy"
     {}
     break;
 
   case 82:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 364 "mut.yy"
     {}
     break;
 
   case 83:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 365 "mut.yy"
     {}
     break;
 
   case 84:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 366 "mut.yy"
     {}
     break;
 
   case 85:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 367 "mut.yy"
     {}
     break;
 
   case 86:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 368 "mut.yy"
     {}
     break;
 
   case 87:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 369 "mut.yy"
     {}
     break;
 
   case 88:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 370 "mut.yy"
     {fatal_error(75,FEHLERZEILE);}
     break;
 
   case 89:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 376 "mut.yy"
     { get_umstimmung_taste_abs (zahl, (yyvsp[(1) - (3)].integer), NULL); }
     break;
 
   case 90:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 378 "mut.yy"
     { get_umstimmung_taste_abs (parameter, 0.0, (yyvsp[(1) - (3)].identifier)); }
     break;
 
   case 91:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 383 "mut.yy"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '+'); }
     break;
 
   case 92:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 385 "mut.yy"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '+'); }
     break;
 
   case 93:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 387 "mut.yy"
     { get_umstimmung_taste_rel (zahl, (yyvsp[(3) - (5)].integer), NULL, '-'); }
     break;
 
   case 94:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 389 "mut.yy"
     { get_umstimmung_taste_rel (parameter, 0.0, (yyvsp[(3) - (5)].identifier), '-'); }
     break;
 
   case 95:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 394 "mut.yy"
     { get_umstimmung_breite_abs (zahl, (yyvsp[(4) - (7)].integer), NULL); }
     break;
 
   case 96:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 396 "mut.yy"
     { get_umstimmung_breite_abs (parameter, 0.0, (yyvsp[(4) - (7)].identifier)); }
     break;
 
   case 97:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 401 "mut.yy"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '+'); }
     break;
 
   case 98:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 403 "mut.yy"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '+'); }
     break;
 
   case 99:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 405 "mut.yy"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '-'); }
     break;
 
   case 100:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 407 "mut.yy"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '-'); }
     break;
 
   case 101:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 409 "mut.yy"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '*'); }
     break;
 
   case 102:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 411 "mut.yy"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '*'); }
     break;
 
   case 103:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 413 "mut.yy"
     { get_umstimmung_breite_rel (zahl, (yyvsp[(6) - (9)].integer), NULL, '/'); }
     break;
 
   case 104:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 415 "mut.yy"
     { get_umstimmung_breite_rel (parameter, 0.0, (yyvsp[(6) - (9)].identifier), '/'); }
     break;
 
   case 105:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 420 "mut.yy"
     { init_umstimm_expression_list (); }
     break;
 
   case 106:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 422 "mut.yy"
     { get_umstimmung_tonhoehe_veraendert (); }
     break;
 
   case 107:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 429 "mut.yy"
     {}
     break;
 
   case 108:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 430 "mut.yy"
     {}
     break;
 
   case 109:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 432 "mut.yy"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
@@ -2430,29 +2398,25 @@ yyreduce:
     break;
 
   case 110:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 435 "mut.yy"
     {}
     break;
 
   case 111:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 439 "mut.yy"
     {}
     break;
 
   case 112:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 440 "mut.yy"
     {}
     break;
 
   case 113:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 445 "mut.yy"
     { init_komplex_ton_list();
                      get_new_umstimm_expression (NULL);
@@ -2460,394 +2424,338 @@ yyreduce:
     break;
 
   case 115:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 453 "mut.yy"
     { get_new_umstimm_expression ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 116:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 454 "mut.yy"
     { get_new_umstimm_expression ("@"); }
     break;
 
   case 117:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 456 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 118:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 458 "mut.yy"
     { get_new_umstimm_expression_positive ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 119:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 459 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 120:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 461 "mut.yy"
     { get_new_umstimm_expression_positive ( "@" ); }
     break;
 
   case 121:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 462 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 122:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 464 "mut.yy"
     { get_new_umstimm_expression_negative ((yyvsp[(1) - (4)].identifier)); }
     break;
 
   case 123:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 465 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 124:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 467 "mut.yy"
     { get_new_umstimm_expression_negative ( "@" ); }
     break;
 
   case 125:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 472 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 126:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 474 "mut.yy"
     { get_umstimmung_wiederholung_abs (); }
     break;
 
   case 127:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 475 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 128:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 477 "mut.yy"
     { get_umstimmung_wiederholung_abs_negative (); }
     break;
 
   case 129:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 481 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 130:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 483 "mut.yy"
     { get_umstimmung_wiederholung_rel_positive (); }
     break;
 
   case 131:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 484 "mut.yy"
     { init_komplex_ton_list (); }
     break;
 
   case 132:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 486 "mut.yy"
     { get_umstimmung_wiederholung_rel_negative (); }
     break;
 
   case 133:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 490 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 134:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 492 "mut.yy"
     { get_umstimmung_umstimmungs_bund (); }
     break;
 
   case 135:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 496 "mut.yy"
     {}
     break;
 
   case 136:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 497 "mut.yy"
     {}
     break;
 
   case 137:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 501 "mut.yy"
     { init_argument_liste (); 
                        get_new_aktion_aufruf_element ((yyvsp[(1) - (1)].identifier)); }
     break;
 
   case 138:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 503 "mut.yy"
     { init_argument_liste (); }
     break;
 
   case 139:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 505 "mut.yy"
     { get_new_aktion_aufruf_element ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 140:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 507 "mut.yy"
     { init_integersequenz ();}
     break;
 
   case 141:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 509 "mut.yy"
     { get_new_aktion_midi_out_element (); }
     break;
 
   case 142:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 513 "mut.yy"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 143:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 515 "mut.yy"
     { get_umstimmung_umstimm_case_zahl ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 144:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 516 "mut.yy"
     { init_umstimmungs_case_liste (); }
     break;
 
   case 145:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 518 "mut.yy"
     { get_umstimmung_umstimm_case_parameter ((yyvsp[(1) - (5)].identifier)); }
     break;
 
   case 146:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 522 "mut.yy"
     {}
     break;
 
   case 147:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 523 "mut.yy"
     {}
     break;
 
   case 148:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 528 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 149:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 530 "mut.yy"
     { get_umstimmungs_case_zahl_element ((yyvsp[(1) - (5)].integer)); }
     break;
 
   case 150:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 532 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 151:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 534 "mut.yy"
     { get_umstimmungs_case_zahl_element (-((yyvsp[(2) - (6)].integer))); }
     break;
 
   case 152:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 536 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 153:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 538 "mut.yy"
     { get_umstimmungs_case_default_element (); }
     break;
 
   case 154:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 543 "mut.yy"
     { init_integersequenz ();}
     break;
 
   case 155:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 545 "mut.yy"
     { get_umstimmung_midi_out (); }
     break;
 
   case 156:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 550 "mut.yy"
     {}
     break;
 
   case 157:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 554 "mut.yy"
     {}
     break;
 
   case 158:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 555 "mut.yy"
     {}
     break;
 
   case 159:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 560 "mut.yy"
     { init_tastenliste (); }
     break;
 
   case 160:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 562 "mut.yy"
     { get_new_harmonie ((yyvsp[(1) - (7)].identifier), (yyvsp[(7) - (7)].integer)); }
     break;
 
   case 161:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 564 "mut.yy"
     { fatal_error(76, mutC_STR((yyvsp[(1) - (3)].identifier))); }
     break;
 
   case 162:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 568 "mut.yy"
     { (yyval.integer) = -1; }
     break;
 
   case 163:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 569 "mut.yy"
     { (yyval.integer) = (yyvsp[(2) - (2)].integer); }
     break;
 
   case 164:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 573 "mut.yy"
     {}
     break;
 
   case 165:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 574 "mut.yy"
     {}
     break;
 
   case 166:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 578 "mut.yy"
     { get_new_taste ( (yyvsp[(1) - (1)].integer), '+'); }
     break;
 
   case 167:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 579 "mut.yy"
     { get_new_taste ( (yyvsp[(2) - (2)].integer), '*'); }
     break;
 
   case 168:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 583 "mut.yy"
     {}
     break;
 
   case 169:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 587 "mut.yy"
     {}
     break;
 
   case 170:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 588 "mut.yy"
     { init_ausloeser ();
                          /* fr die Anfangsausloesung der Logik */
@@ -2855,249 +2763,214 @@ yyreduce:
     break;
 
   case 171:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 591 "mut.yy"
     {}
     break;
 
   case 172:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 596 "mut.yy"
     { get_new_logik ((yyvsp[(1) - (4)].identifier), NULL);
                 init_anweisungs_liste (); }
     break;
 
   case 173:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 599 "mut.yy"
     { vervollstaendige_logik (); }
     break;
 
   case 174:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 601 "mut.yy"
     { get_new_logik ((yyvsp[(1) - (5)].identifier), (yyvsp[(4) - (5)].identifier));
                 init_anweisungs_liste (); }
     break;
 
   case 175:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 604 "mut.yy"
     { vervollstaendige_logik (); }
     break;
 
   case 176:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 608 "mut.yy"
     {}
     break;
 
   case 177:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 609 "mut.yy"
     {}
     break;
 
   case 178:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 614 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 179:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 616 "mut.yy"
     { get_new_anweisung (); }
     break;
 
   case 180:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 618 "mut.yy"
     { init_aktions_liste (); }
     break;
 
   case 181:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 620 "mut.yy"
     { get_new_anweisung (); }
     break;
 
   case 182:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 625 "mut.yy"
     { get_harmoniebezeichner (  (yyvsp[(1) - (5)].integer), (yyvsp[(3) - (5)].identifier),  (yyvsp[(5) - (5)].integer)); }
     break;
 
   case 183:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 627 "mut.yy"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (3)].identifier),  (yyvsp[(3) - (3)].integer)); }
     break;
 
   case 184:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 629 "mut.yy"
     { get_harmoniebezeichner (  (yyvsp[(1) - (3)].integer), (yyvsp[(3) - (3)].identifier), -1); }
     break;
 
   case 185:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 631 "mut.yy"
     { get_harmoniebezeichner (-1, (yyvsp[(1) - (1)].identifier), -1); }
     break;
 
   case 186:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 635 "mut.yy"
     { get_ausloeser_default (); }
     break;
 
   case 187:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 636 "mut.yy"
     { get_ausloeser_harmonie (); }
     break;
 
   case 188:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 637 "mut.yy"
     { get_ausloeser_harmonie_form (); }
     break;
 
   case 189:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 638 "mut.yy"
     { get_ausloeser_taste ((yyvsp[(2) - (2)].identifier)); }
     break;
 
   case 190:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 639 "mut.yy"
     { init_integersequenz (); }
     break;
 
   case 191:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 641 "mut.yy"
     { get_ausloeser_midi_in (); }
     break;
 
   case 192:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 646 "mut.yy"
     { get_new_integer_in_integersequenz ((yyvsp[(1) - (1)].integer));}
     break;
 
   case 193:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 648 "mut.yy"
     { get_new_integer_in_integersequenz ((yyvsp[(3) - (3)].integer));}
     break;
 
   case 194:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 649 "mut.yy"
     { fatal_error( 77, FEHLERZEILE ); }
     break;
 
   case 195:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 654 "mut.yy"
     {}
     break;
 
   case 196:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 658 "mut.yy"
     {}
     break;
 
   case 197:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 659 "mut.yy"
     {}
     break;
 
   case 198:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 664 "mut.yy"
     { get_instrument_dekl ((yyvsp[(1) - (4)].integer), (yyvsp[(4) - (4)].integer), (yyvsp[(4) - (4)].integer), 0, & list_of_instrumente); }
     break;
 
   case 199:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 666 "mut.yy"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), (yyvsp[(4) - (6)].integer), (yyvsp[(6) - (6)].integer), 0, & list_of_instrumente); }
     break;
 
   case 200:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 668 "mut.yy"
     { get_instrument_dekl ((yyvsp[(1) - (6)].integer), 0, 0, (yyvsp[(5) - (6)].integer), & list_of_instrumente); }
     break;
 
   case 201:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 670 "mut.yy"
     { get_instrument_dekl ((yyvsp[(1) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(4) - (7)].integer), (yyvsp[(6) - (7)].integer), & list_of_instrumente); }
     break;
 
   case 202:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 672 "mut.yy"
     { get_instrument_dekl ((yyvsp[(1) - (9)].integer), (yyvsp[(4) - (9)].integer), (yyvsp[(6) - (9)].integer), (yyvsp[(8) - (9)].integer), & list_of_instrumente); }
     break;
 
   case 203:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 676 "mut.yy"
     { (yyval.f_value) = (yyvsp[(1) - (1)].f_value) ; }
     break;
 
   case 204:
-
-/* Line 1806 of yacc.c  */
+/* Line 1787 of yacc.c  */
 #line 677 "mut.yy"
     { (yyval.f_value) = (double) (yyvsp[(1) - (1)].integer) ; }
     break;
 
 
-
-/* Line 1806 of yacc.c  */
-#line 3101 "src/kernel/mut.cc"
+/* Line 1787 of yacc.c  */
+#line 2974 "../../../mutabor-git/src/kernel/mut.cc"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3262,7 +3135,9 @@ yyerrlab1:
       YY_STACK_PRINT (yyss, yyssp);
     }
 
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 
   yyerror_range[2] = yylloc;
   /* Using YYLLOC is tempting, but would change the location of
@@ -3291,7 +3166,7 @@ yyabortlab:
   yyresult = 1;
   goto yyreturn;
 
-#if !defined(yyoverflow) || YYERROR_VERBOSE
+#if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
 | yyexhaustedlab -- memory exhaustion comes here.  |
 `-------------------------------------------------*/
@@ -3333,8 +3208,7 @@ yyreturn:
 }
 
 
-
-/* Line 2067 of yacc.c  */
+/* Line 2050 of yacc.c  */
 #line 681 "mut.yy"
 
 /// \todo check whether this function is necessary for any system but windows
@@ -3435,7 +3309,7 @@ start_lex:
     
     /* # starts a HEX-number => parse the number. */
     if (c == '#') {
-        int help;
+        unsigned int help;
         if (fscanf (quelldatei, "%x", &help) == 0) {
             fatal_error (78, yylloc.first_line + 1);
             exit (1);
@@ -3591,4 +3465,3 @@ void yyerror(const char *s) {
 /* 
  * \}
  */
-

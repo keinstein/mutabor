@@ -98,8 +98,9 @@ namespace mutabor {
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::Close() {
 #ifdef DEBUG
-		if (mutabor::CurrentTime.isRealtime())
+		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(this->isOpen);
+		}
 #endif
 		DEBUGLOG (midiio, _T(""));
 
@@ -272,8 +273,7 @@ namespace mutabor {
 		ChannelData & output_data = Cd[channel];
  		pitch_bend_type note = pitch_and_bend(freq);
 		int8_t controller_value;
-		int sound;
- 
+	
 		if ( note.bend != output_data.get_bend() ) {
 			pitch_bend(channel,note.bend);
 			output_data.set_bend(note.bend);
@@ -509,7 +509,7 @@ namespace mutabor {
 	*/
 
 	template<class T, class D>
-	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, int id)
+	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, size_t id)
 	{
 		mutASSERT(this->isOpen);
 		DEBUGLOG (midiio, _T(""));
@@ -767,7 +767,7 @@ namespace mutabor {
 	template <class D>
 	void CommonMidiInput<D>::ProceedRoute(const std::vector<unsigned char > * midiCode, Route route)
 	{
-#pragma warning "Unimplemented SysEx ProceedRoute"
+#warning "Unimplemented SysEx ProceedRoute"
 		return;
 	
 		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
@@ -781,7 +781,7 @@ namespace mutabor {
 		switch ( MidiStatus ) {
 
 		case midi::NOTE_ON: // Note On
-			if ( midiCode->at(2) & 0x7f > 0 ) {
+			if ( (midiCode->at(2) & 0x7f) > 0 ) {
 				if ( route->GetActive() )
 					AddKey(&mut_box[Box],
 					       midiCode->at(1), 

@@ -102,7 +102,7 @@ void MutResetKeys()
    that will be assigned to the boxes via pointers later. */
 void GlobalReset()
 {
-#pragma message "tonesystem_memory should be box specific to be thread proof"
+#warning "tonesystem_memory should be box specific to be thread proof"
 	for (int i = 0; i < MAX_BOX; i++) {
 		tonesystem_memory[i] = tonesystem_init;
 		mut_box[i].tonesystem = tonesystem_memory + i;
@@ -463,10 +463,8 @@ void change_breite(mutabor_box_type * box, int neu)
 int tiefste_taste(mutabor_box_type *  box)
 {
 	size_t index = 0;
-	size_t plane;
 	mutabor_key_type * key;
 	int cmp;
-	mutabor_key_index_type * plane_ptr;
 	
 	int min = INT_MAX;
 
@@ -493,10 +491,8 @@ int tiefste_taste(mutabor_box_type *  box)
 int hoechste_taste(mutabor_box_type * box)
 {
 	size_t index = 0;
-	size_t plane;
 	mutabor_key_type * key;
 	int cmp;
-	mutabor_key_index_type * plane_ptr;
 	
 	int max = INT_MIN;
 
@@ -630,9 +626,9 @@ void AddKey( mutabor_box_type * box, int taste, size_t id, size_t channel, void 
 }
 
 // die taste in box wird aus den Listen (pattern, liegende_taste) gestrichen */
-void DeleteKey( mutabor_box_type * box, int taste, size_t id, size_t channel)
+void DeleteKey( mutabor_box_type * box, int taste, size_t id, int channel)
 {
-	size_t index=0, oldindex=0;
+	size_t index=0;
 	DEBUGLOG2(kernel_exec,_T(""));
 	mutabor_key_type * key;
 	while ((key = mutabor_find_key_in_box(box,index)) != NULL) {

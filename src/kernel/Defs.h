@@ -104,8 +104,9 @@
 	wxFFileOutputStream name (filename, _T("wb"))
 #define mutOpenIFstream(name,filename) \
 	wxFFileInputStream name (filename, _T("rb"))
-//#define mutOpenITextStream(name, filename)	\
-//	wxTextFile name (filename)
+/* #define mutOpenITextStream(name, filename)	\
+	wxTextFile name (filename)
+*/
 #define mutOpenITextStream(filename) \
 	wxTextFile (filename)
 

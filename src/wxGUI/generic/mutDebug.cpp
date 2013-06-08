@@ -174,7 +174,7 @@ public:
 	}
 } g_consoleinit;
 
-
+#ifndef MUTABOR_CPPUNIT
 static bool DoShowAssertDialog(const wxString& msg)
 {
     // under MSW we can show the dialog even in the console mode
@@ -211,6 +211,8 @@ static bool DoShowAssertDialog(const wxString& msg)
     // continue with the asserts
     return false;
 }
+#endif
+
 
 void mutAssertFailure(const wxChar *file,
 		      int line,

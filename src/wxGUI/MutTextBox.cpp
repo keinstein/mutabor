@@ -184,8 +184,7 @@ void MutTextBox::GetKeys(bool asTS)
 	if (!b->key_count) return;
 	tone_system * tonsys = b->tonesystem;
 
-	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0), 
-		     * last_key = key;
+	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0);
 	     key != NULL; 
 	     key = mutabor_find_key_in_box(b,key->next)) {
 
@@ -197,10 +196,9 @@ void MutTextBox::GetKeys(bool asTS)
 			if (asTS) {
 				cents = LONG_TO_CENT(freq);
 			} else {
-				int last_pitch = last_key->number;
-				long depitcha = freq -  get_frequency(last_pitch, tonsys); 
+//				int last_pitch = last_key->number;
 				cents = LONG_TO_CENT(freq);
-				last_key = key;
+//				last_key = key;
 
 			}
 			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"),
@@ -239,7 +237,7 @@ void MutTextBox::GetToneSystem(bool asTS)
 
 	
 	size_t i = 0;
-	for (;i<tonsys->breite && tonsys->ton[i]==0;i++);
+	for (;i<(size_t)tonsys->breite && tonsys->ton[i]==0;i++);
 	if (!asTS) {
 		keys.Printf(_("Reference = %d"),i);
 		Append(keys);

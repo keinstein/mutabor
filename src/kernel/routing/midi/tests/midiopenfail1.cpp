@@ -164,11 +164,6 @@ int main(int argc, char **argv)
 		std::clog << "Open faild. Exiting." << std::endl;
 		exit(0);
 	}
-	in -> Play(wxTHREAD_JOINABLE);
-
-	wxThread::ExitCode e = in->WaitForDeviceFinish();
-	//int e = 0;
-//	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
 	return 1; 
 }
 ///\}

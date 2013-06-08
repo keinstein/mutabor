@@ -60,8 +60,6 @@
 
 
 class testCommonFileDeviceTimer: public mutabor::CommonFileInputDevice {
-protected:
-	wxStopWatch sw;
 public:
 	mutint64 lasttime;
 	long i;
@@ -81,7 +79,7 @@ public:
 	bool Open() {
 		sw.Start(0);
 		lasttime = wxGetLocalTimeMillis().GetValue();
-		CommonFileInputDevice::Open();
+		return CommonFileInputDevice::Open();
 	}
 
 	void Stop() {
@@ -119,13 +117,15 @@ public:
 
 	void Save(tree_storage&, const mutabor::RouteClass*){}
 	void Load(tree_storage&, mutabor::RouteClass*){}
+protected:
+	wxStopWatch sw;
 };
 
 int main(int argc, char **argv)
 {
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 #ifdef DEBUG
-	debugFlags::flags.timer = true;
+//	debugFlags::flags.timer = true;
 #endif
 
 	wxInitializer initializer;

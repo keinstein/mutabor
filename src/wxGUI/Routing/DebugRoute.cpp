@@ -278,6 +278,7 @@ namespace mutaborGUI {
 	}
 
 
+#if wxGUI
 	static void Check(const MutOutputDeviceShape * output,
 			  const MutBoxChannelShape * route) {
 		// both shapes are found. Are they connected?
@@ -294,7 +295,6 @@ namespace mutaborGUI {
 	}
 
 
-#if wxGUI
 	static void Check(const MutOutputDeviceShape * output,
 			  const RouteClass * route) {
 		// output has shape search for route shape

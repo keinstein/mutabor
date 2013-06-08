@@ -139,7 +139,7 @@ namespace mutabor {
 			DEBUGLOG(midifile,_T("%s"), (this->c_str()));
  		}
 
-		mutint64 ResetDelta() { 
+		void ResetDelta() { 
 			DEBUGLOG(midifile,_T("resetting remaining delta to 0"));
 			remaining_delta = 0;
 		}
@@ -647,7 +647,7 @@ namespace mutabor {
 		virtual wxString TowxString() const;
 #endif
 
-		mutString Save(mutOFstream &os) {
+		void Save(mutOFstream &os) {
 			Out.Save(os);
 		}
 	protected:

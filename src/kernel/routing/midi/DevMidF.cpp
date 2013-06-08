@@ -113,8 +113,6 @@ namespace mutabor {
 
 	void Track::WriteDelta()
 	{
-		BYTE w[5];
-		int i = 0;
 		mutint64 newtime = CurrentTime.Get();
 		mutint64 Deltatime = std::max(newtime - Time,(mutint64)0);
 		// note: Deltatime may be a little bit ahead if get_delta rounds up
@@ -182,7 +180,7 @@ namespace mutabor {
 		if (status == midi::META) 
 			retval[1] = metatype;
 
-		for (size_t i = offset ; i < data_bytes ; i++ ) 
+		for (size_t i = offset ; i < (size_t)data_bytes ; i++ ) 
 			retval [i] = at(position++); // should throw on access violation.
 
 		return retval;
@@ -684,7 +682,6 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		mutint64 Delta = Tracks[nr].GetDelta();
 		mutASSERT(Delta >= -1000000);
 		mutint64 time = deltatime;
-		size_t OldPos;
 
 		while ( time >= Delta ) {
 
@@ -781,7 +778,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 				}
 				break;
 				case midi::SONG_POSITION: 
-					a += message[1] << 8 + message[2] << 16;
+					a += message[1] << (8 + message[2]) << 16;
 					break;
 				case midi::SONG_SELECT:
 					a += message[1] << 8;

@@ -202,7 +202,7 @@ namespace mutabor {
 			};
 
 			if (!( Box >= 0 && Active )) return;
-			if (!midiCode & 0x80) {
+			if (!(midiCode & 0x80)) {
 				UNREACHABLEC;
 				return;
 			}
@@ -700,9 +700,11 @@ namespace mutabor {
 
 		ScopedRoute & operator = (element_type * rhs) {
 			(*(static_cast<Route *>(this))) = rhs;
+			return *this;
 		}
 		ScopedRoute & operator = (const Route & rhs) {
 			(*(static_cast<Route *>(this))) = rhs;
+			return *this;
 		}
 	};
 

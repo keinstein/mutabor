@@ -280,6 +280,7 @@ namespace mutabor {
 		pitch_bend_type & operator -= (const pitch_bend_type & other) {
 			pitch -= other.pitch;
 			bend -= other.bend;
+			return *this;
 		}
 
 		bool operator == (pitch_bend_type & other) {
@@ -548,7 +549,7 @@ namespace mutabor {
 		void NotesCorrect(RouteClass * route);
 		void Controller(int mutabor_channel, int controller, int value);
 //		void Sustain(int channel, const ChannelData & cd);
-		int GetChannel(int inkey, int channel, int id);
+		int GetChannel(int inkey, int channel, size_t id);
 		void SplitOut (BYTE * p, size_t n);
 		void Quiet(RouteClass * r);
 		void Panic();

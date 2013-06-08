@@ -145,7 +145,7 @@ public:
 	void Save(tree_storage&, const mutabor::RouteClass*) {}
 	void Load(tree_storage&) {}
 	void Load(tree_storage&, mutabor::RouteClass*) {}
-	bool Open () { isOpen = true; }
+	bool Open () { isOpen = true; return true; }
 	proceed_bool shouldProceed(mutabor::Route R, DWORD midiCode,  int data =0) { return ProceedYes; }
 	proceed_bool shouldProceed(mutabor::Route R, 
 				   const std::vector<unsigned char > * midiCode,  

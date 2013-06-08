@@ -118,9 +118,11 @@ namespace mutabor {
 			std::find(routes.begin(),routes.end(),route.get());
 		bool found = (i != routes.end());
 		mutASSERT(found);
-		(*i) = NULL;// list can save some memory for reuse,
-		            // but route must be deleted
-		routes.erase(i);
+		if (found) {
+			(*i) = NULL;// list can save some memory for reuse,
+			// but route must be deleted
+			routes.erase(i);
+		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d)"),route.get(),
 			 intrusive_ptr_get_refcount(route.get()));
 		return found;

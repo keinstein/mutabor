@@ -171,9 +171,7 @@ inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t
  * otherwise.
  */
 inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_number, size_t index) {
-	mutabor_key_index_type *plane_ptr;
 	size_t newidx=index;
-	char found = 0;
 	mutabor_key_type * key  = mutabor_find_key_in_box(box,index);
 	if (key == NULL ) return MUTABOR_NO_NEXT;
 	while (key != NULL && key->number != key_number) {
@@ -191,9 +189,9 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
  * \param index Index of the key in box->current_keys of the key that shall be deleted.
  */
 inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
-	if (!box->key_count) return;
-	size_t current, last;
 	mutabor_key_type *last_key, *current_key, *next_key;
+
+	if (!box->key_count) return;
 
 	current_key = mutabor_find_key_in_box(box,index);
 	if (current_key == NULL) {
@@ -287,7 +285,6 @@ inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 		plane = plane->next;
 	}
 	if (new_key == NULL) {
-		size_t i;
 		plane = oldplane->next = (mutabor_key_index_type *)malloc(sizeof(mutabor_key_index_type));
 		if (plane == NULL) 
 			return NULL;

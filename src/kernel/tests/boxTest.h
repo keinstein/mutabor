@@ -50,7 +50,7 @@ public:
 			initialize_box(&boxes[i], i);
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
-		debugFlags::flags.kernel_box = true;
+//		debugFlags::flags.kernel_box = true;
 //		debugFlags::flags.midifile = true;
 #endif
 //		RealTime = true;
@@ -59,7 +59,7 @@ public:
 	void tearDown()
 	{ 
 #ifdef DEBUG
-		debugFlags::flags.kernel_box = false;
+//		debugFlags::flags.kernel_box = false;
 //		debugFlags::flags.midifile = false;
 #endif
 //		in = NULL;
@@ -189,7 +189,6 @@ public:
 	{
 		int mask[MUT_BOX_MAX_KEY_INDEX+1];
 		for (size_t j = 0 ; j <= MUT_BOX_MAX_KEY_INDEX; j++) mask[j] = 0;
-		size_t k = 0; 
 		for (size_t j = 0 ; j < 5* (MUT_BOX_MAX_KEY_INDEX+1); j++) {
 			mutabor_key_type * key = mutabor_find_key_in_box(boxes, j);
 			CPPUNIT_ASSERT(key != NULL);
@@ -300,7 +299,7 @@ public:
 		/* check deleting key 0: 2 cases either with following keys or without, so we must empty all keys */
 		while ((key = mutabor_find_key_in_box(box,0)) != NULL) {
 			mutASSERT(box->key_count > 0);
-			int count = 0; 
+			size_t count = 0; 
 			for (mutabor_key_type * key2 = key; 
 			     key2 != NULL; 
 			     key2 = mutabor_find_key_in_box(box,key2->next))

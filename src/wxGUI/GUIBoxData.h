@@ -243,7 +243,7 @@ namespace mutaborGUI {
 					throw NoSuchBoxException(nr);
 				}
 			}
-			if (nr >= vector.size()) {
+			if (nr >= 0 && (size_t)nr >= vector.size()) {
 				UNREACHABLECT(BoxData);
 				throw NoSuchBoxException(nr);
 			}
