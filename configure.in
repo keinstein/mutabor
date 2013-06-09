@@ -95,6 +95,7 @@ AM_MAINTAINER_MODE
 AC_PROG_CC
 AC_PROG_CXX
 AM_PROG_CC_C_O
+PKG_PROG_PKG_CONFIG([0.14.0])
 
 DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
@@ -328,13 +329,18 @@ darwin*)
     		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" ], )
 
 	# If no api flags specified, use CoreMidi
-	if [test "$midiapi" == ""; ] then
+	if [test "$midiapi" == "";] then
 	   AC_MSG_RESULT(using both CoreMIDI and Jack if possible)
 	   AC_CHECK_HEADER(CoreMIDI/CoreMIDI.h,[
 		midiapi="$midiapi -D__MACOSX_CORE__"]
 		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" 
 	   , )
-	   PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"] , AC_MSG_ERROR(JACK support requires the jack library!))
+	   AS_IF(test -n "$PKG_CONFIG",
+	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"]))
+	fi
+
+	if [test "$midiapi" == "";] then
+	    AC_MSG_ERROR(Core MIDI or Jack are needed to configure MIDI support!)
 	fi
 
 	;;
