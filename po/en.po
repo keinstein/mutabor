@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0alpha0\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2013-05-25 18:05+0200\n"
+"POT-Creation-Date: 2013-06-08 19:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: English <mutabor@mailbox.tu-dresden.de>\n"
@@ -471,20 +471,20 @@ msgstr "Activation error"
 msgid "Generic output file"
 msgstr "GIS output file."
 
-#: src/kernel/routing/CommonFileDevice.h:225
+#: src/kernel/routing/CommonFileDevice.h:226
 #, fuzzy
 msgid "Generic input file"
 msgstr "GIS input file."
 
-#: src/kernel/routing/Device.h:353
+#: src/kernel/routing/Device.h:467
 msgid "Device base class"
 msgstr "Device base class"
 
-#: src/kernel/routing/Device.h:565
+#: src/kernel/routing/Device.h:680
 msgid "Undefined output device"
 msgstr "Undefined output device"
 
-#: src/kernel/routing/Device.h:815
+#: src/kernel/routing/Device.h:930
 msgid "Undefined input device"
 msgstr "Undefined input device"
 
@@ -607,17 +607,17 @@ msgstr "The file must begin with â[â or '{'."
 msgid "Range without preceeding tag."
 msgstr "Range without preceeding tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:139
+#: src/kernel/routing/midi/DevMidF.cpp:141
 msgid "Number contains too many bytes"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:159
+#: src/kernel/routing/midi/DevMidF.cpp:161
 #, fuzzy
 msgid "Invalid status byte"
 msgstr "status byte"
 
-#: src/kernel/routing/midi/DevMidF.cpp:313
-#: src/kernel/routing/midi/DevMidF.cpp:443
+#: src/kernel/routing/midi/DevMidF.cpp:325
+#: src/kernel/routing/midi/DevMidF.cpp:455
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -626,23 +626,23 @@ msgstr ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:315
-#: src/kernel/routing/midi/DevMidF.cpp:445
-#: src/kernel/routing/midi/DevMidF.cpp:473
+#: src/kernel/routing/midi/DevMidF.cpp:327
+#: src/kernel/routing/midi/DevMidF.cpp:457
+#: src/kernel/routing/midi/DevMidF.cpp:485
 #: src/kernel/routing/midi/DevMidi.cpp:143
 #: src/kernel/routing/midi/DevMidi.cpp:327
 #: src/kernel/routing/midi/DevMidi.cpp:356
 msgid "Warning loading route"
 msgstr "Warning loading route"
 
-#: src/kernel/routing/midi/DevMidF.cpp:352
-#: src/kernel/routing/midi/DevMidF.cpp:358
+#: src/kernel/routing/midi/DevMidF.cpp:364
+#: src/kernel/routing/midi/DevMidF.cpp:370
 #: src/kernel/routing/midi/DevMidi.cpp:153
 #: src/kernel/routing/midi/DevMidi.cpp:159
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:471
+#: src/kernel/routing/midi/DevMidF.cpp:483
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -651,76 +651,76 @@ msgstr ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
 "current route had to be corrected."
 
-#: src/kernel/routing/midi/DevMidF.cpp:501
+#: src/kernel/routing/midi/DevMidF.cpp:513
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Can not open Midi input file '%s'."
 
-#: src/kernel/routing/midi/DevMidF.cpp:509
+#: src/kernel/routing/midi/DevMidF.cpp:521
 #, fuzzy, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "The string â%sâ is not a valid file name."
 
-#: src/kernel/routing/midi/DevMidF.cpp:516
+#: src/kernel/routing/midi/DevMidF.cpp:528
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:526
+#: src/kernel/routing/midi/DevMidF.cpp:538
 #, fuzzy, c-format
 msgid "Unknown file typ %d in file '%s'."
 msgstr "Unknown device type %d."
 
-#: src/kernel/routing/midi/DevMidF.cpp:541
+#: src/kernel/routing/midi/DevMidF.cpp:553
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:558
+#: src/kernel/routing/midi/DevMidF.cpp:570
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:565
+#: src/kernel/routing/midi/DevMidF.cpp:577
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:580
+#: src/kernel/routing/midi/DevMidF.cpp:592
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.cpp:596
+#: src/kernel/routing/midi/DevMidF.cpp:608
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
 "track %d."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:182
+#: src/kernel/routing/midi/DevMidF.h:233
 msgid "trying to write number > 0x0FFFFFFF"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:268
+#: src/kernel/routing/midi/DevMidF.h:315
 msgid "The system exclusive message must contain at least a device id."
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:275
+#: src/kernel/routing/midi/DevMidF.h:322
 msgid "System exclusive message contains an invalid device id"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:284
+#: src/kernel/routing/midi/DevMidF.h:331
 msgid ""
 "Device id of continuation package deos not match the id of the system "
 "exclusive message"
 msgstr ""
 
-#: src/kernel/routing/midi/DevMidF.h:586
+#: src/kernel/routing/midi/DevMidF.h:643
 msgid "MIDI output file"
 msgstr "MIDI output file"
 
-#: src/kernel/routing/midi/DevMidF.h:691
+#: src/kernel/routing/midi/DevMidF.h:752
 msgid "MIDI input file"
 msgstr "MIDI input file"
 
@@ -1863,27 +1863,27 @@ msgstr "Connecting command with id %d for box %d"
 msgid "Logic: %s - Box %d"
 msgstr "Logic: %s - Box %d"
 
-#: src/wxGUI/MutRouteWnd.cpp:509
+#: src/wxGUI/MutRouteWnd.cpp:506
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "File â%sâ couldn't be loaded"
 
-#: src/wxGUI/MutRouteWnd.cpp:514
+#: src/wxGUI/MutRouteWnd.cpp:511
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "File â%sâ could be opened, but not loaded."
 
-#: src/wxGUI/MutRouteWnd.cpp:567
+#: src/wxGUI/MutRouteWnd.cpp:564
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Cannot open routes file â%sâ for writing."
 
-#: src/wxGUI/MutRouteWnd.cpp:583
+#: src/wxGUI/MutRouteWnd.cpp:580
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Error writing file '%s'."
 
-#: src/wxGUI/MutRouteWnd.cpp:605
+#: src/wxGUI/MutRouteWnd.cpp:602
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "The string â%sâ is not a valid file name."
@@ -1904,47 +1904,47 @@ msgstr "Actions"
 msgid "<init>"
 msgstr "<init>"
 
-#: src/wxGUI/MutTextBox.cpp:206
+#: src/wxGUI/MutTextBox.cpp:204
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:213 src/wxGUI/MutTextBox.cpp:258
+#: src/wxGUI/MutTextBox.cpp:211 src/wxGUI/MutTextBox.cpp:256
 #, c-format
 msgid "%2d : empty"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:232
+#: src/wxGUI/MutTextBox.cpp:230
 #, c-format
 msgid "Anchor = %d"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:234
+#: src/wxGUI/MutTextBox.cpp:232
 #, c-format
 msgid "Width = %d"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:236
+#: src/wxGUI/MutTextBox.cpp:234
 #, c-format
 msgid "Period = %.1f HT"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:244
+#: src/wxGUI/MutTextBox.cpp:242
 #, fuzzy, c-format
 msgid "Reference = %d"
 msgstr "&Preferences"
 
-#: src/wxGUI/MutTextBox.cpp:253
+#: src/wxGUI/MutTextBox.cpp:251
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT)"
 msgstr ""
 
-#: src/wxGUI/MutTextBox.cpp:347
+#: src/wxGUI/MutTextBox.cpp:345
 #, fuzzy
 msgid "Actions - all boxes"
 msgstr "Actions at Box %d"
 
-#: src/wxGUI/MutTextBox.cpp:349
+#: src/wxGUI/MutTextBox.cpp:347
 #, fuzzy, c-format
 msgid "%s - Box %d"
 msgstr "Logic: %s - Box %d"
@@ -2036,7 +2036,7 @@ msgstr "New Input device"
 msgid "New Output device"
 msgstr "New Output device"
 
-#: src/wxGUI/generic/mutDebug.cpp:239
+#: src/wxGUI/generic/mutDebug.cpp:241
 #, c-format
 msgid ""
 "%s:%d: An assert failed in %s().\n"
@@ -2123,6 +2123,10 @@ msgstr ""
 
 #: src/wxGUI/generic/mutDebugFlags.h:46
 msgid "Trace thread timer problems"
+msgstr ""
+
+#: src/wxGUI/generic/mutDebugFlags.h:47
+msgid "Show messages that are always shown ;-). (for internal use only)"
 msgstr ""
 
 #: src/wxGUI/generic/mxDefs.cpp:58

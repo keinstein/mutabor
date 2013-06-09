@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2013-05-25 18:05+0200\n"
-"PO-Revision-Date: 2012-09-27 21:29+0100\n"
+"POT-Creation-Date: 2013-06-08 19:56+0200\n"
+"PO-Revision-Date: 2013-06-08 21:43+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -16,10 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: /home/tobias/macbookbackup/Entwicklung/mutabor/"
 "mutabor-git\n"
 
@@ -451,19 +450,19 @@ msgstr "Fehler beim Aktivieren"
 msgid "Generic output file"
 msgstr "Rudimentäre Ausgabedatei"
 
-#: src/kernel/routing/CommonFileDevice.h:225
+#: src/kernel/routing/CommonFileDevice.h:226
 msgid "Generic input file"
 msgstr "Rudimentäre Eingabedatei"
 
-#: src/kernel/routing/Device.h:353
+#: src/kernel/routing/Device.h:467
 msgid "Device base class"
 msgstr "Basistyp eines Gerätes"
 
-#: src/kernel/routing/Device.h:565
+#: src/kernel/routing/Device.h:680
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
-#: src/kernel/routing/Device.h:815
+#: src/kernel/routing/Device.h:930
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
@@ -487,19 +486,20 @@ msgid "GUIDO .gmn File"
 msgstr "GUIDO-Datei (.gmn)"
 
 #: src/kernel/routing/Route.h:116
-#, fuzzy
 msgid "No such output device"
-msgstr "Kein Ausgabegerät"
+msgstr "Kein solches Ausgabegerät"
 
 #: src/kernel/routing/Route.h:526
 msgid "Route factory already set"
-msgstr ""
+msgstr "Die Routenfabrik-Klasse wurde schon erstellt."
 
 #: src/kernel/routing/Route.h:531
 msgid ""
 "Trying to create a route without the correct factory. You (the programmer) "
 "must create one!"
 msgstr ""
+"Versuchte eine Route ohne die geeignete Routen-Fabrik (RouteFactory) zu "
+"erstellen. Du (der Programmierer) musst eine erstellen!"
 
 #: src/kernel/routing/RouteCompat.cpp:408
 msgid "Device found, but device type not set."
@@ -586,17 +586,16 @@ msgstr "Die Datei muss mit „[“ oder „{“ beginnen."
 msgid "Range without preceeding tag."
 msgstr "Bereich ohne vorheriges Tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:139
+#: src/kernel/routing/midi/DevMidF.cpp:141
 msgid "Number contains too many bytes"
-msgstr ""
+msgstr "Die Zahl enthält zu viele Bytes"
 
-#: src/kernel/routing/midi/DevMidF.cpp:159
-#, fuzzy
+#: src/kernel/routing/midi/DevMidF.cpp:161
 msgid "Invalid status byte"
-msgstr "Status-Byte"
+msgstr "Ungültiges Status-Byte"
 
-#: src/kernel/routing/midi/DevMidF.cpp:313
-#: src/kernel/routing/midi/DevMidF.cpp:443
+#: src/kernel/routing/midi/DevMidF.cpp:325
+#: src/kernel/routing/midi/DevMidF.cpp:455
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -605,23 +604,23 @@ msgstr ""
 "Der Kanalbereich %d–%d der aktuellen MIDI-Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde korrikgiert."
 
-#: src/kernel/routing/midi/DevMidF.cpp:315
-#: src/kernel/routing/midi/DevMidF.cpp:445
-#: src/kernel/routing/midi/DevMidF.cpp:473
+#: src/kernel/routing/midi/DevMidF.cpp:327
+#: src/kernel/routing/midi/DevMidF.cpp:457
+#: src/kernel/routing/midi/DevMidF.cpp:485
 #: src/kernel/routing/midi/DevMidi.cpp:143
 #: src/kernel/routing/midi/DevMidi.cpp:327
 #: src/kernel/routing/midi/DevMidi.cpp:356
 msgid "Warning loading route"
 msgstr "Warnung beim Laden der Route"
 
-#: src/kernel/routing/midi/DevMidF.cpp:352
-#: src/kernel/routing/midi/DevMidF.cpp:358
+#: src/kernel/routing/midi/DevMidF.cpp:364
+#: src/kernel/routing/midi/DevMidF.cpp:370
 #: src/kernel/routing/midi/DevMidi.cpp:153
 #: src/kernel/routing/midi/DevMidi.cpp:159
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:471
+#: src/kernel/routing/midi/DevMidF.cpp:483
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -630,76 +629,84 @@ msgstr ""
 "Der Bereich für die MIDI-Spuren (%d–%d) der Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidF.cpp:501
+#: src/kernel/routing/midi/DevMidF.cpp:513
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Kann Midi-Eingabedatei „%s“ nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:509
+#: src/kernel/routing/midi/DevMidF.cpp:521
 #, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "Die Datei „%s“ ist keine gültige MIDI-Datei."
 
-#: src/kernel/routing/midi/DevMidF.cpp:516
+#: src/kernel/routing/midi/DevMidF.cpp:528
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr "Unbekannter Dateikopf (Abschnittslänge %d) in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:526
+#: src/kernel/routing/midi/DevMidF.cpp:538
 #, c-format
 msgid "Unknown file typ %d in file '%s'."
 msgstr "Unbekannter Dateityp %d in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:541
+#: src/kernel/routing/midi/DevMidF.cpp:553
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
-msgstr ""
+msgstr "Die MIDI-Datei „%s“ enthält kaputte Zeitstempel."
 
-#: src/kernel/routing/midi/DevMidF.cpp:558
+#: src/kernel/routing/midi/DevMidF.cpp:570
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
-msgstr ""
+msgstr "Die Speicheranforderung für die Spurliste der Datei „%s“ schlug fehl."
 
-#: src/kernel/routing/midi/DevMidF.cpp:565
+#: src/kernel/routing/midi/DevMidF.cpp:577
 #, c-format
 msgid "File '%s' has a broken track header."
-msgstr ""
+msgstr "Die Datei „%s“ enthält einen kaputten Spuranfang."
 
-#: src/kernel/routing/midi/DevMidF.cpp:580
+#: src/kernel/routing/midi/DevMidF.cpp:592
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
+"Ich habe keinen Speicher für die Spur %d der MIDI-Eingabedatei „%s“ bekommen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:596
+#: src/kernel/routing/midi/DevMidF.cpp:608
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
 "track %d."
 msgstr ""
+"Die MIDI-Eingabedatei „%s“ ist kaputt. Das habe ich festgestellt, während "
+"ich die Spur %d lesen wollte."
 
-#: src/kernel/routing/midi/DevMidF.h:182
+#: src/kernel/routing/midi/DevMidF.h:233
 msgid "trying to write number > 0x0FFFFFFF"
 msgstr ""
+"Es wurde versucht, eine Zahl zu speichern, die größer als 0x0FFFFFFF ist"
 
-#: src/kernel/routing/midi/DevMidF.h:268
+#: src/kernel/routing/midi/DevMidF.h:315
 msgid "The system exclusive message must contain at least a device id."
 msgstr ""
+"Eine systemexklusive Nachritcht (SysEx) muss mindestens eine Gerätekennung "
+"enthalten."
 
-#: src/kernel/routing/midi/DevMidF.h:275
+#: src/kernel/routing/midi/DevMidF.h:322
 msgid "System exclusive message contains an invalid device id"
-msgstr ""
+msgstr "Die systemexklusive Nachricht enthält eine  ungültige Gerätekennung."
 
-#: src/kernel/routing/midi/DevMidF.h:284
+#: src/kernel/routing/midi/DevMidF.h:331
 msgid ""
 "Device id of continuation package deos not match the id of the system "
 "exclusive message"
 msgstr ""
+"Die Gerätekennung des Fortsetzungspaketes passt nicht zur Kennung der "
+"systemexklusiven Nachricht."
 
-#: src/kernel/routing/midi/DevMidF.h:586
+#: src/kernel/routing/midi/DevMidF.h:643
 msgid "MIDI output file"
 msgstr "MIDI-Ausgabedatei"
 
-#: src/kernel/routing/midi/DevMidF.h:691
+#: src/kernel/routing/midi/DevMidF.h:752
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
@@ -764,16 +771,15 @@ msgstr "MIDI-Eingabegerät"
 
 #: src/kernel/routing/timing.cpp:62 src/kernel/routing/timing.cpp:73
 msgid "frame rate does not divide time divisiens"
-msgstr ""
+msgstr "Die Bildrate ist kein Teiler der Zeitunterteilung."
 
 #: src/kernel/routing/timing.cpp:82
 msgid "time division is too high for current frame rate"
-msgstr ""
+msgstr "Zeitunterteilung ist zu groß für die aktuelle Bildrate."
 
 #: src/kernel/routing/timing.cpp:96 src/kernel/routing/timing.cpp:102
-#, fuzzy
 msgid "Trying to set bad midi header parameters"
-msgstr "In der Umstimmung „%s“ und „%s“: Falsche Parameter"
+msgstr "Versuchte, falsche MIDI-Kopfparameter zu setzen"
 
 #: src/wxGUI/CompDlg.cpp:114 src/xrc/reslocale.cpp:20
 msgid "Source"
@@ -1735,7 +1741,6 @@ msgid "%s -- %s"
 msgstr "%s – %s"
 
 #: src/wxGUI/MutFrame.cpp:694
-#, fuzzy
 msgid ""
 "There are no realtime instruments in the routes.\n"
 "\tShall Mutabor translate the files in batch mode, to keep the MIDI files "
@@ -1744,15 +1749,14 @@ msgid ""
 "computer keyboard.)"
 msgstr ""
 "In den Routen sind keine Echtzeitinstrumente eingetragen.\n"
-"Soll Mutabor die Dateien im Stapelmodus überseten? Dabei würden bei MIDI-"
+"\tSoll Mutabor die Dateien im Stapelmodus übersetzen? Dabei würden bei MIDI-"
 "Dateien die Original-Zeitstempel erhalten.\n"
-"(Das bedeutet auch, dass die Stimmungen zur Laufzeit nicht geändert werden "
-"können.)"
+"(Das bedeutet auch, dass die Stimmungen während des Abspulens nicht geändert "
+"werden können.)"
 
 #: src/wxGUI/MutFrame.cpp:700
-#, fuzzy
 msgid "No realtime ⇒ batch mode?"
-msgstr "Keine Echtzeit => Stapelmodus?"
+msgstr "Keine Echtzeit ⇒ Stapelmodus?"
 
 #: src/wxGUI/MutFrame.cpp:786
 msgid ""
@@ -1760,10 +1764,13 @@ msgid ""
 "To start the translation hit the play button or select “Play” from the "
 "“Sequencer” Menu.\n"
 msgstr ""
+"Stellen Sie bitte jetzt die Anfangsstimmung ein.\n"
+"Zum Starten der Übersetzung klicken Sie bitte auf den Abspielen-Knopf oder "
+"wählen Sie „Abspielen“ aus dem „Sequenzer“-Menü.\n"
 
 #: src/wxGUI/MutFrame.cpp:788
 msgid "Realtime play"
-msgstr ""
+msgstr "Abspielen in Echtzeit"
 
 #: src/wxGUI/MutFrame.cpp:976
 msgid "Routes"
@@ -1799,12 +1806,11 @@ msgstr "MutFrame::WindowSize: nicht implementiert"
 
 #: src/wxGUI/MutFrame.cpp:1538
 msgid "The conversion finished successfully."
-msgstr ""
+msgstr "Die Übersetzung wurde erfolgreich beendet."
 
 #: src/wxGUI/MutFrame.cpp:1539 src/wxGUI/MutFrame.cpp:1542
-#, fuzzy
 msgid "Conversion error"
-msgstr "Fehler beim Aktivieren"
+msgstr "Übersetzungsfehler"
 
 #: src/wxGUI/MutFrame.cpp:1799
 #, c-format
@@ -1841,27 +1847,27 @@ msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten %d"
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
 
-#: src/wxGUI/MutRouteWnd.cpp:509
+#: src/wxGUI/MutRouteWnd.cpp:506
 #, c-format
 msgid "File '%s' couldn't be loaded"
 msgstr "Die Datei „%s“ konnte nicht geladen werden."
 
-#: src/wxGUI/MutRouteWnd.cpp:514
+#: src/wxGUI/MutRouteWnd.cpp:511
 #, c-format
 msgid "File '%s' could be opened, but not loaded."
 msgstr "Die Datei „%s“ konnte zwar geöffnet, aber nicht geladen werden."
 
-#: src/wxGUI/MutRouteWnd.cpp:567
+#: src/wxGUI/MutRouteWnd.cpp:564
 #, c-format
 msgid "Cannot open routes file '%s' for writing."
 msgstr "Kann Routendatei „%s“ nicht zum Schreiben öffnen."
 
-#: src/wxGUI/MutRouteWnd.cpp:583
+#: src/wxGUI/MutRouteWnd.cpp:580
 #, c-format
 msgid "Error writing file '%s'."
 msgstr "Fehler beim Schreiben der Datei „%s“."
 
-#: src/wxGUI/MutRouteWnd.cpp:605
+#: src/wxGUI/MutRouteWnd.cpp:602
 #, c-format
 msgid "The string '%s' is not a valid file name."
 msgstr "Die Zeichenkette „%s“ ist kein gültiger Dateiname."
@@ -1882,46 +1888,46 @@ msgstr "Aktionen"
 msgid "<init>"
 msgstr "<init>"
 
-#: src/wxGUI/MutTextBox.cpp:206
+#: src/wxGUI/MutTextBox.cpp:204
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"
 msgstr "%2d : %8.1f Hz (%6.2lf HT) [K.: %d, Id.: %d]"
 
-#: src/wxGUI/MutTextBox.cpp:213 src/wxGUI/MutTextBox.cpp:258
+#: src/wxGUI/MutTextBox.cpp:211 src/wxGUI/MutTextBox.cpp:256
 #, c-format
 msgid "%2d : empty"
 msgstr "%2d : leer"
 
-#: src/wxGUI/MutTextBox.cpp:232
+#: src/wxGUI/MutTextBox.cpp:230
 #, c-format
 msgid "Anchor = %d"
 msgstr "Anker = %d"
 
-#: src/wxGUI/MutTextBox.cpp:234
+#: src/wxGUI/MutTextBox.cpp:232
 #, c-format
 msgid "Width = %d"
 msgstr "Breite = %d"
 
-#: src/wxGUI/MutTextBox.cpp:236
+#: src/wxGUI/MutTextBox.cpp:234
 #, c-format
 msgid "Period = %.1f HT"
 msgstr "Periode = %.1f HT"
 
-#: src/wxGUI/MutTextBox.cpp:244
+#: src/wxGUI/MutTextBox.cpp:242
 #, c-format
 msgid "Reference = %d"
 msgstr "Bezugston = %d"
 
-#: src/wxGUI/MutTextBox.cpp:253
+#: src/wxGUI/MutTextBox.cpp:251
 #, c-format
 msgid "%2d : %8.1f Hz (%6.2lf HT)"
 msgstr "%2d : %8.1f Hz (%6.2lf HT)"
 
-#: src/wxGUI/MutTextBox.cpp:347
+#: src/wxGUI/MutTextBox.cpp:345
 msgid "Actions - all boxes"
 msgstr "Aktionen – alle Kästen %d"
 
-#: src/wxGUI/MutTextBox.cpp:349
+#: src/wxGUI/MutTextBox.cpp:347
 #, c-format
 msgid "%s - Box %d"
 msgstr "%s – Kasten %d"
@@ -2013,7 +2019,7 @@ msgstr "Neues Eingabegerät"
 msgid "New Output device"
 msgstr "Neues Ausgabegerät"
 
-#: src/wxGUI/generic/mutDebug.cpp:239
+#: src/wxGUI/generic/mutDebug.cpp:241
 #, c-format
 msgid ""
 "%s:%d: An assert failed in %s().\n"
@@ -2021,6 +2027,10 @@ msgid ""
 "Message:%s\n"
 "Do you want to call the default assert handler?"
 msgstr ""
+"%s:%d: Eine Überprüfung in %s() ist fehlgeschlagen.\n"
+"Bedingung: %s\n"
+"Nachricht:%s\n"
+"Möchten Sie die Standardbehandlungsroutine aufrufen (im Zweifelsfall: ja)?"
 
 #: src/wxGUI/generic/mutDebugFlags.h:26
 msgid "Unspecified debug information"
@@ -2097,6 +2107,12 @@ msgstr "Einige Ablaufpunkte loggen"
 #: src/wxGUI/generic/mutDebugFlags.h:46
 msgid "Trace thread timer problems"
 msgstr "Verfolge Zeitgeber-Probleme"
+
+#: src/wxGUI/generic/mutDebugFlags.h:47
+msgid "Show messages that are always shown ;-). (for internal use only)"
+msgstr ""
+"Zeige Nachrichten, die immer angezeigt werden ;-). (Nur für internen "
+"Gebrauch)"
 
 #: src/wxGUI/generic/mxDefs.cpp:58
 msgid ""
