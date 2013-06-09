@@ -297,7 +297,8 @@ dnl GNU/Linux on an Intel or compatible
 	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
 	      midiapi="$midiapi -D__LINUX_ALSA__"
 	    fi
-	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"])
+	    AS_IF(test -n "$PKG_CONFIG",
+	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"]))
 	fi
 
 	if [test "$midiapi" == "";] then
