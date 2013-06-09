@@ -1,0 +1,172 @@
+FIG: Library-Level Error Injection for Shared Libraries
+Version 0.3 BETA
+Developers: Pete Broadwell - pbwell@cs.berkeley.edu
+            Naveen Sastry - nks@cs.berkeley.edu
+            Jonathan Traupman - jont@cs.berkeley.edu
+
+FIG (originally, Fault Injection in Glibc) is a UNIX tool to generate and inject
+errors from shared libraries into applications. It can be used to simulate
+failures from the underlying system environment when run on glibc library
+routines. In this manner, it is able to test the ability of applications to
+handle faults from library routines. In addition, it includes a call logging
+tool, similar to strace, and an error injection interface that uses a control
+file to describe error sequences. 
+
+To install:
+   see INSTALL
+
+To run:
+
+This distribution provides two ways of running FIG. The first, referred to as
+the stand-alone version, sets LD_PRELOAD and other FIG-related environment
+variables via the "setup" shell script, as described in the INSTALL file. Once
+this script is run, any programs initiated from that shell instance will use
+the instrumented FIG "stub" library functions in place of the usual library
+functions, assuming that FIG stubs have been generated for these functions.
+Logs of the actions of the FIG stubs during the session will be written to
+the files "fig.log.[pid]", where "pid" is the ID of the process making the
+calls.
+To turn off FIG for any subsequent programs run from the session, use the
+"reset" script, as described in the INSTALL file.
+
+The second way of running FIG, described as the "wrapper" method, uses the
+"fig" executable as a front-end. This wrapper runs the specified program
+under the FIG environment, as above.
+The logging information from the target program and any child processes it
+may spawn is written to "fig.log".
+The general command to invoke the wrapper is
+
+        ./fig [options] program [program options]
+
+The wrapper also provides a number of other options; type './fig -h' to see
+them.
+
+How FIG works, in a nutshell:
+
+FIG makes use of the LD_PRELOAD environment variable, which can specify a
+special library file that is to be consulted prior to any other shared
+libraries when the system linker is searching for a function implementation.
+The FIG distribution includes files that facilitate the generation of
+replacement, or "stub" library functions. These functions are ultimately
+compiled into the FIG library (libfig.so). Enabling FIG sets this library as
+the value of the LD_PRELOAD variable.
+A subequent call by an application to a shared library function for which a
+FIG stub exists, such as malloc(), will result in the dynamic linker using
+the stub version of malloc() instead of the standard implementation.
+The FIG stub versions of library functions generally contain code to log the
+occurrence of a call to that function, consult the error injection rules and
+then either return an error code that is indicative of a certain failure (e.g.,
+not enough memory), or else run the standard implementation of the function and
+return normally.
+
+
+A description of the FIG distribution files and how they are used:
+
+control - This is the top-level control file, which directs the error patterns
+          that FIG will inject. When 'make' is run to compile the FIG library,
+          it is pre-processed, resulting in control.out. This is the version
+          that the instrumentation stubs consult in order to build structures
+          that describe the error injection rules they will follow.
+          The entries in the control file are fairly self-explanatory: all C
+          comments are included only for human-readability. For each
+          instrumented stub, it is necessary to include a reference to its
+          function number (e.g., MALLOC_INDEX) and then one or more lines
+          describing error types and frequencies. These are of the format
+
+callnumber [callno] return [error return code] errno [errno, if applicable]
+    probability [prob, where 1.0 = 1/1, and 0.3 = 3/10]
+                                - or -
+interval [start of interval] to [end of interval, can use 'infinity'] ...
+
+          The call numbers represent a count of the number of invocations
+          of the instrumented function since the program began.
+
+func.desc - A tab-delimited file that gives specifics about the function stubs
+            that are automatically generated for FIG when 'make' is run.
+            Its format:
+ column
+   1             the function name that is being overriddent. $(NAME)_INDEX
+                     (see func.h for auto-assigned index numbers) is used in
+                     the control file to refer to this function
+   2             the secondary definition of the function that the library
+                     should call to run the standard implementation of this
+                     function
+   3             the return type of the function
+   4             space-separated list of argument types. This is the string
+                    which is passed into fprintf to write the arguments
+                    to the log
+   5 \t 6 ...    tab-separated pairs of argument types and names
+
+            To find the secondary definition of a glibc function call, run
+            'objdump -T' on your system's libc.so file, and grep through the
+            output for likely secondary names, usually of the form
+            __libc_[function name]. If no secondary definition exists for the
+            function, you may have to use more inventive measures, like
+            calling getLibraryFunction() (see below) or creating a copy of
+            the instrumented file with a different name. 
+
+userfunc.h - The FIG library must be rebuilt after func.desc is modified, as
+             described in the INSTALL file. At this time, not all functions can
+             be auto-generated using func.desc (and the stubgen.awk script).
+             Examples of manually-generated stub files in the distribution are
+             malloc.c and execve.c. Entries for additional user-generated
+             stubs must be added to the Makefile, as well as to userfunc.h.
+
+util.c - Includes code for getLibraryFunction(), which uses dlsym() to bypass
+         the first implementation of a function that the dynamic linker finds.
+         In the case of FIG, this is usually the instrumented stub version, so
+         getLibraryFunction() returns a pointer to the standard implementation
+         of the function in question.
+
+execve.c - Some programs, like MySQL and some version of Netscape, unset
+           LD_PRELOAD in the environment that is passed to the main execution
+           module of the program. This instrumented version of execve() catches
+           all calls to the various versions of exec() and resets the FIG
+           environment variables to their initial settings (as stored in
+           /tmp/fig.conf) before allowing the call to exec() to complete
+           normally.
+
+launcher.c - Includes code to run the "fig" wrapper program. Among other things,
+             the wrapper sets up a region of shared memory and then spawns a
+             separate logging daemon process, whose job is to monitor the
+             log messages that are written by instrumented stubs to the
+             shared memory region and dump them to a file.
+             The purpose of this design was to provide better logging
+             performance than the in-line approach used by the stand-alone
+             version of FIG. In reality, the wrapper provided only a marginal
+             peformance speedup. What mattered more than HOW we ran the
+             logging was WHAT we logged -- cutting out the timing information
+             from the log increases performance, as does disabling logging of
+             certain frequently-called functions, such as malloc().
+
+log.c - Code to implement either the "wrapper" approach to logging or the
+        "in-line" version, depending on which is compiled in.
+
+prob.c - Implements the decision-making portion of the error injection process.
+         Builds up data structures to represent the entries in control.out to
+         each process, then consults these instructions upon each reference to
+         an instrumented function to see whether an error should be injected
+         and if so, which type of error.
+
+stubgen.awk - AWK script to auto-generate the FIG function stubs from the
+              entries in func.desc.
+
+
+Errata
+
+- FIG still seems to have trouble logging and instrumenting calls made by
+  daemon programs, especially those (like Apache) that spawn a child, which
+  spawns another child, which becomes the daemon. For testing purposes, we
+  can get around this in Apache by running it in single-process mode. Another
+  multiprocessing program that cooperates less than optimally with FIG is
+  MySQL. In general, the stand-alone version of FIG handles these programs
+  better than the wrapper version.
+- See the in-code comments for other idiosyncrasies of our implementation.
+
+
+To do (ideas):
+
+- Modify the stand-alone version of FIG to pop up a separate, FIG-enabled
+  shell window when the setup script is run.
+
+- Add support for time-based error injection triggers, other types of triggers.

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Bash script to unset the FIG environment variables, which ensures that all
+# further programs run from the current shell are not subjected to FIG's
+# error injection.
+
+LOC=`pwd`
+export LD_PRELOAD=""
+export LIBFIG_CONTROL=""
+export LIBFIG_OUTPUT=""

@@ -1,0 +1,15 @@
+Currently FIG doesn't have an install script per se. To use FIG, simply 
+untar the distribution into a directory and compile it:
+1.  type 'tar -zxvf fig.tar.gz'
+2.  cd to fig/src
+3a. to build the stand-alone FIG library (libfig.so), type 'make all', or
+3b. to build the version of the FIG library that uses a separate logging daemon,
+    spawned by the fig wrapper program, type 'make wrapper'
+4a. to run a session under the stand-alone version of FIG, run '. ./setup'
+    in the same directory as the fig library (libfig.so) and the control file
+    (control.out).
+4b. to run a program under the FIG wrapper program (fig), make sure that
+    the wrapper, the FIG library (libfig.so) and the control file (control.out)
+    are in the same directory, then run
+    'fig [options] program [program options]'
+5.  to disable FIG for a given session, run '. ./reset'

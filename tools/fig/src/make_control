@@ -1,0 +1,8 @@
+#/bin/sh
+
+# This simple script merely runs the C pre-processor on the given input
+# file (preferably a control file) and generates an output file with
+# the comments removed and the *_INDEX constant names replaced by their
+# values from func.h
+
+cpp -P $1 | tee $1.out
