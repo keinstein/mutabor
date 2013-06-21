@@ -11,3 +11,6 @@
 
 %:
 	dh $@ --with autoreconf --with autotools-dev
+
+override_dh_auto_test:
+	@echo Edit debian/rules to enable tests. They are currently disabled as they need X11.
