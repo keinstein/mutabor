@@ -1,0 +1,1808 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxDialog" name="ConfigDlg">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<exstyle>wxDIALOG_EX_CONTEXTHELP</exstyle>
+		<tooltip>toooltip</tooltip>
+		<title>Mutabor configuration</title>
+		<centered>1</centered>
+		<object class="wxFlexGridSizer">
+			<rows>2</rows>
+			<cols>2</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols>2</growablecols>
+			<growablerows>1</growablerows>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_RIGHT|wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxRadioBox" name="ToneSystem">
+							<style>wxRA_SPECIFY_COLS</style>
+							<tooltip>How shall the tone system be reported: relative or absolute?</tooltip>
+							<label>Tone System</label>
+							<selection>0</selection>
+							<content>
+								<item>as &amp;relations</item>
+								<item>as &amp;tone system</item>
+							</content>
+							<dimension>1</dimension>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>Windows</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxBOTTOM|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxCheckBox" name="SaveEditor">
+									<style>wxCHK_2STATE|wxNO_BORDER</style>
+									<tooltip>save editor window before compiling</tooltip>
+									<label>save _editor files</label>
+									<checked>1</checked>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxEXPAND|wxTOP</flag>
+								<border>5</border>
+								<object class="wxCheckBox" name="ColorBars">
+									<style>wxCHK_2STATE|wxNO_BORDER</style>
+									<tooltip>Use color bars.</tooltip>
+									<label>use color bars</label>
+									<checked>1</checked>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="spacer">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<tooltip>Save settings.</tooltip>
+							<label>OK</label>
+							<default>1</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<tooltip>Discard changes.</tooltip>
+							<label>Cancel</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<style>wxNO_BORDER|wxNO_BORDER</style>
+							<label>Help</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="AboutDlg">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<title>About Mutabor</title>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxHtmlWindow" name="m_htmlWin2">
+					<style>wxHW_SCROLLBAR_AUTO</style>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStdDialogButtonSizer">
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>&amp;OK</label>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="CompileDlg">
+		<style>wxSIMPLE_BORDER</style>
+		<title>Compiling</title>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStaticBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<label>Source</label>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>0</border>
+						<object class="wxFlexGridSizer">
+							<rows>2</rows>
+							<cols>2</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols></growablecols>
+							<growablerows></growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<style>wxALIGN_LEFT</style>
+									<label>File:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="filename">
+									<style>wxALIGN_LEFT|wxSUNKEN_BORDER</style>
+									<label>No file.</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<style>wxALIGN_RIGHT</style>
+									<label>Line:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="line">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>00000000</label>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxALIGN_CENTER_HORIZONTAL|wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStaticBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<label>Statistics</label>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxFlexGridSizer">
+							<rows>3</rows>
+							<cols>2</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols></growablecols>
+							<growablerows></growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL|wxLEFT|wxRIGHT</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<style>wxALIGN_LEFT</style>
+									<label>Logics:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="logic">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL|wxLEFT|wxRIGHT</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="tonelabel">
+									<label>Tones:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="tones">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<label>Tunes:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="tunes">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxEXPAND | wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticLine">
+							<style>wxLI_VERTICAL</style>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxFlexGridSizer">
+							<rows>3</rows>
+							<cols>2</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols></growablecols>
+							<growablerows></growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<label>Tone systems:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="tone_system">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<label>Intervals:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="intervals">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<label>Read chars:</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticText" name="chars">
+									<style>wxALIGN_RIGHT|wxSUNKEN_BORDER</style>
+									<label>000000</label>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStaticBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<label>Message</label>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticText" name="message">
+							<label>Reading source ...</label>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxButton" name="wxID_OK">
+					<enabled>0</enabled>
+					<label>Reading Source ...</label>
+					<default>1</default>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="mutabor_box">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<title>Mutabor-Box</title>
+		<object class="wxFlexGridSizer">
+			<rows>3</rows>
+			<cols>1</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols></growablecols>
+			<growablerows></growablerows>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStaticBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<label>Box</label>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxFlexGridSizer">
+							<rows>2</rows>
+							<cols>2</cols>
+							<vgap>0</vgap>
+							<hgap>0</hgap>
+							<growablecols></growablecols>
+							<growablerows></growablerows>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP</flag>
+								<border>5</border>
+								<object class="wxRadioButton" name="use_box">
+									<style>wxRB_GROUP</style>
+									<label>Box number:</label>
+									<value>1</value>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxTOP</flag>
+								<border>5</border>
+								<object class="wxTextCtrl" name="m_textCtrl2">
+									<style>wxTE_RIGHT</style>
+									<value>0</value>
+									<maxlength>2</maxlength>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxTOP</flag>
+								<border>5</border>
+								<object class="wxRadioButton" name="guido_box">
+									<label>GUIDO-File</label>
+									<value>0</value>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag></flag>
+								<border>5</border>
+								<object class="wxFilePickerCtrl" name="m_filePicker1">
+									<value></value>
+									<message>Select a GUIDO file</message>
+									<wildcard>GUIDO files|*.gmn</wildcard>
+									<style>wxFLP_DEFAULT_STYLE|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN</style>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxTOP</flag>
+						<border>5</border>
+						<object class="wxRadioButton" name="no_box">
+							<pos>-1,-1</pos>
+							<label>no Box / thru-mode</label>
+							<value>0</value>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStdDialogButtonSizer">
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>&amp;OK</label>
+						</object>
+					</object>
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>&amp;Cancel</label>
+						</object>
+					</object>
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<label>&amp;Help</label>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="InputFilterDlgBase">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<title>Input filter</title>
+		<object class="wxFlexGridSizer">
+			<rows>2</rows>
+			<cols>2</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols></growablecols>
+			<growablerows></growablerows>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxRadioBox" name="Type">
+									<style>wxRA_SPECIFY_COLS</style>
+									<tooltip>This value shows the type of filtering</tooltip>
+									<label>Type</label>
+									<selection>0</selection>
+									<content>
+										<item>&amp;all</item>
+										<item>&amp;else</item>
+										<item>&amp;channel</item>
+										<item>&amp;staff</item>
+									</content>
+									<dimension>1</dimension>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>1</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxStaticBoxSizer">
+									<orient>wxHORIZONTAL</orient>
+									<label>Range</label>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<object class="wxStaticText" name="fromlabel">
+											<pos>-1,-1</pos>
+											<enabled>0</enabled>
+											<label>from</label>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+										<border>5</border>
+										<object class="wxTextCtrl" name="From">
+											<enabled>0</enabled>
+											<value>0</value>
+											<maxlength>7</maxlength>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxALIGN_CENTER_VERTICAL|wxBOTTOM|wxLEFT|wxTOP</flag>
+										<border>5</border>
+										<object class="wxStaticText" name="tolabel">
+											<enabled>0</enabled>
+											<label>to</label>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxALIGN_CENTER_VERTICAL|wxALL</flag>
+										<border>5</border>
+										<object class="wxTextCtrl" name="To">
+											<enabled>0</enabled>
+											<value>0</value>
+											<maxlength>0</maxlength>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>O_K</label>
+							<default>1</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>_Cancel</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_REMOVE">
+							<style>wxBU_EXACTFIT</style>
+							<label>Remove</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<label>Help</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="InputDevDlgBase">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<title>Input device</title>
+		<object class="wxFlexGridSizer">
+			<rows>1</rows>
+			<cols>2</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols></growablecols>
+			<growablerows></growablerows>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>Device type</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxChoice" name="DeviceChoice">
+									<selection>0</selection>
+									<content>
+										<item>Select Device</item>
+										<item>MIDI device</item>
+										<item>MIDI file</item>
+										<item>GUIDO file</item>
+									</content>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>MIDI device</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxChoice" name="PortChoice">
+									<selection>0</selection>
+									<content />
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>MIDI file</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxFilePickerCtrl" name="MidiFilePicker">
+									<value></value>
+									<message>Select a MIDI input file</message>
+									<wildcard>MIDI Files|*.mid;*.midi|All files|*.*</wildcard>
+									<style>wxFLP_CHANGE_DIR|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN|wxFLP_USE_TEXTCTRL</style>
+									<tooltip>Give a file Name for the MIDI input.</tooltip>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>GUIDO file</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxFilePickerCtrl" name="GuidoFilePicker">
+									<value></value>
+									<message>Select a GUIDO input file</message>
+									<wildcard>GUIDO Files|*.gmn|All files|*.*</wildcard>
+									<style>wxFLP_CHANGE_DIR|wxFLP_FILE_MUST_EXIST|wxFLP_OPEN|wxFLP_USE_TEXTCTRL</style>
+									<tooltip>Give a file Name for the GUIDO input.</tooltip>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>O_K</label>
+							<default>1</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>Cancel</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_REMOVE">
+							<label>_Remove</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>0</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<label>Help</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>0</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="OutputDevDlgBase">
+		<style>wxDEFAULT_DIALOG_STYLE</style>
+		<title>Output device</title>
+		<object class="wxFlexGridSizer">
+			<rows>1</rows>
+			<cols>2</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols></growablecols>
+			<growablerows></growablerows>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>Device type</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxChoice" name="DeviceChoice">
+									<selection>0</selection>
+									<content>
+										<item>Select Device</item>
+										<item>MIDI device</item>
+										<item>MIDI file</item>
+										<item>GUIDO file</item>
+									</content>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>MIDI device</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxChoice" name="PortChoice">
+									<selection>0</selection>
+									<content />
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxBoxSizer">
+									<orient>wxHORIZONTAL</orient>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxStaticText" name="MidiBendingRangeLabel">
+											<style>wxALIGN_LEFT</style>
+											<label>Bending range:</label>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxSpinCtrl" name="MidiBendingRange">
+											<style>wxSP_ARROW_KEYS</style>
+											<value>2</value>
+											<min>0</min>
+											<max>128</max>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxStaticText">
+											<style>wxALIGN_LEFT</style>
+											<label>half tones</label>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>MIDI file</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxFilePickerCtrl" name="MidiFilePicker">
+									<value></value>
+									<message>Select a MIDI output file</message>
+									<wildcard>MIDI Files|*.mid;*.midi|All files|*.*</wildcard>
+									<style>wxFLP_CHANGE_DIR|wxFLP_OVERWRITE_PROMPT|wxFLP_SAVE|wxFLP_USE_TEXTCTRL</style>
+									<tooltip>Give a file Name for recording the MIDI data.</tooltip>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxBoxSizer">
+									<orient>wxHORIZONTAL</orient>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxStaticText" name="MidiFileBendingRangeLabel">
+											<style>wxALIGN_LEFT</style>
+											<label>Bending range:</label>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxSpinCtrl" name="MidiFileBendingRange">
+											<style>wxSP_ARROW_KEYS</style>
+											<value>2</value>
+											<min>0</min>
+											<max>128</max>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxEXPAND</flag>
+										<border>5</border>
+										<object class="wxStaticText">
+											<style>wxALIGN_LEFT</style>
+											<label>half tones</label>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxStaticBoxSizer">
+							<orient>wxVERTICAL</orient>
+							<label>GUIDO file</label>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALL|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxFilePickerCtrl" name="GuidoFilePicker">
+									<value></value>
+									<message>Select a GUIDO output file</message>
+									<wildcard>GUIDO Files|*.gmn|All files|*.*</wildcard>
+									<style>wxFLP_CHANGE_DIR|wxFLP_OVERWRITE_PROMPT|wxFLP_SAVE|wxFLP_USE_TEXTCTRL</style>
+									<tooltip>Give a file Name for recording GUIDO data.</tooltip>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>O_K</label>
+							<default>1</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>Cancel</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_REMOVE">
+							<label>_Remove</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>0</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<label>Help</label>
+							<default>0</default>
+						</object>
+					</object>
+					<object class="spacer">
+						<option>0</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<size>0,0</size>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxDialog" name="BoxDlgBase">
+		<style platform="mac">wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxMAXIMIZE_BOX|wxMINIMIZE_BOX</style>
+		<style platform="unix|win">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER|wxMAXIMIZE_BOX</style>
+		<exstyle>wxDIALOG_EX_CONTEXTHELP</exstyle>
+		<title>Box settings</title>
+		<centered>1</centered>
+		<object class="wxFlexGridSizer">
+			<rows>0</rows>
+			<cols>1</cols>
+			<vgap>0</vgap>
+			<hgap>0</hgap>
+			<growablecols>0</growablecols>
+			<growablerows>1</growablerows>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxEXPAND | wxALL</flag>
+						<border>5</border>
+						<object class="wxChoicebook" name="boxType">
+							<style>wxCHB_LEFT</style>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxEXPAND | wxALIGN_RIGHT | wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_REMOVE">
+							<tooltip>Press this button to delete the box and all attached routes.</tooltip>
+							<label>Remove Box</label>
+							<default>0</default>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxEXPAND | wxALL </flag>
+				<border>5</border>
+				<object class="wxScrolledWindow" name="routeWindow">
+					<style>wxHSCROLL|wxVSCROLL</style>
+					<scrollrate>1</scrollrate>
+					<object class="wxFlexGridSizer">
+						<rows>0</rows>
+						<cols>4</cols>
+						<vgap>20</vgap>
+						<hgap>0</hgap>
+						<growablecols></growablecols>
+						<growablerows></growablerows>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL|wxALIGN_LEFT</flag>
+				<border>5</border>
+				<object class="wxButton" name="wxID_ADD">
+					<label>_Add Route</label>
+					<default>0</default>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxStdDialogButtonSizer">
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_OK">
+							<label>&amp;OK</label>
+						</object>
+					</object>
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_CANCEL">
+							<label>&amp;Cancel</label>
+						</object>
+					</object>
+					<object class="button">
+						<flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+						<border>5</border>
+						<object class="wxButton" name="wxID_HELP">
+							<label>&amp;Help</label>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="MutaborBoxSettingsBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxBoxSizer">
+			<orient>wxHORIZONTAL</orient>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT|wxTOP</flag>
+				<border>5</border>
+				<object class="wxStaticText" name="boxNumberLabel">
+					<style>wxALIGN_RIGHT</style>
+					<label>Box number</label>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxTOP</flag>
+				<border>5</border>
+				<object class="wxSpinCtrl" name="boxNumber">
+					<style>wxSP_ARROW_KEYS</style>
+					<value>0</value>
+					<min>0</min>
+					<max>255</max>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="GuidoFileBoxSettingsBase">
+		<style>wxTAB_TRAVERSAL</style>
+	</object>
+	<object class="wxPanel" name="NoBoxSettingsBase">
+		<style>wxTAB_TRAVERSAL</style>
+	</object>
+	<object class="wxPanel" name="InputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<size>500,300</size>
+		<object class="wxStaticBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<label>Input device and filter</label>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxChoicebook" name="inputDevice">
+					<style>wxCHB_DEFAULT</style>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="OutputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<size>500,300</size>
+		<object class="wxStaticBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<label>Output device and filter</label>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxChoicebook" name="outputDevice">
+					<style>wxCHB_DEFAULT</style>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="RoutePanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxStaticBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<label>Route settings</label>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxFlexGridSizer">
+					<rows>0</rows>
+					<cols>1</cols>
+					<vgap>0</vgap>
+					<hgap>0</hgap>
+					<growablecols></growablecols>
+					<growablerows></growablerows>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxBOTTOM|wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxBoxSizer">
+							<orient>wxHORIZONTAL</orient>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL|wxRIGHT</flag>
+								<border>5</border>
+								<object class="wxStaticText">
+									<label>Box</label>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<option>0</option>
+								<flag>wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<object class="wxChoice" name="box">
+									<selection>0</selection>
+									<content />
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxBoxSizer">
+							<orient>wxHORIZONTAL</orient>
+							<object class="sizeritem">
+								<option>1</option>
+								<flag>wxALIGN_LEFT|wxEXPAND</flag>
+								<border>5</border>
+								<object class="wxBoxSizer">
+									<orient>wxVERTICAL</orient>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag></flag>
+										<border>5</border>
+										<object class="wxRadioButton" name="active">
+											<label>_active</label>
+											<value>1</value>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<option>0</option>
+										<flag>wxALIGN_LEFT</flag>
+										<border>5</border>
+										<object class="wxRadioButton" name="passive">
+											<label>_passive</label>
+											<value>0</value>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="GisInputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxChoicebook" name="type">
+					<style>wxCHB_DEFAULT</style>
+					<object class="choicebookpage">
+						<label>all</label>
+						<selected>1</selected>
+						<object class="wxPanel" name="all_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>box tag</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="box_tag_panel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_box">
+										<style>wxSP_ARROW_KEYS</style>
+										<tooltip>The first box tag number, which will be processed according to this route</tooltip>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_box">
+										<style>wxSP_ARROW_KEYS</style>
+										<tooltip>The last box tag number which will be processed according to this route</tooltip>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>staves</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="staves_panel">
+							<style>wxNO_BORDER|wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_staff">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_staff">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>unhandled notes</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="else_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="GisOutputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+	</object>
+	<object class="wxPanel" name="MidiInputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxChoicebook" name="type">
+					<style>wxCHB_DEFAULT</style>
+					<object class="choicebookpage">
+						<label>all</label>
+						<selected>1</selected>
+						<object class="wxPanel" name="all_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>channel</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="channel_panel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_channel">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_channel">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>key range</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="key_panel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_key">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>127</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_key">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>127</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>unhandled notes</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="else_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="MidiOutputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxStaticBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<label>Channel</label>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+						<border>5</border>
+						<object class="wxStaticText">
+							<label>from</label>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+						<border>5</border>
+						<object class="wxSpinCtrl" name="from_channel">
+							<style>wxSP_ARROW_KEYS</style>
+							<value>2</value>
+							<min>1</min>
+							<max>16</max>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+						<border>5</border>
+						<object class="wxStaticText">
+							<label>to</label>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+						<border>5</border>
+						<object class="wxSpinCtrl" name="to_channel">
+							<style>wxSP_ARROW_KEYS</style>
+							<value>1</value>
+							<min>1</min>
+							<max>16</max>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag></flag>
+				<border>5</border>
+				<object class="wxCheckBox" name="avoid_drum_channel">
+					<label>avoid drum channel</label>
+					<checked>0</checked>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="MidiFileInputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxChoicebook" name="type">
+					<style>wxCHB_DEFAULT</style>
+					<object class="choicebookpage">
+						<label>all</label>
+						<selected>1</selected>
+						<object class="wxPanel" name="all_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>channel</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="channel_panel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_channel">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_channel">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>track</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="track_panel">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxStaticBoxSizer">
+								<orient>wxHORIZONTAL</orient>
+								<label>Range</label>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<style>wxALIGN_RIGHT</style>
+										<label>from</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="from_track">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+									<border>5</border>
+									<object class="wxStaticText">
+										<label>to</label>
+									</object>
+								</object>
+								<object class="sizeritem">
+									<option>0</option>
+									<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+									<border>5</border>
+									<object class="wxSpinCtrl" name="to_track">
+										<style>wxSP_ARROW_KEYS</style>
+										<value>0</value>
+										<min>0</min>
+										<max>10</max>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="choicebookpage">
+						<label>unhandled notes</label>
+						<selected>0</selected>
+						<object class="wxPanel" name="else_panel">
+							<style>wxTAB_TRAVERSAL</style>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="MidiFileOutputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+		<object class="wxStaticBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<label>Channel</label>
+			<object class="sizeritem">
+				<option>1</option>
+				<flag>wxEXPAND</flag>
+				<border>5</border>
+				<object class="wxBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT</flag>
+						<border>5</border>
+						<object class="wxStaticText">
+							<label>from</label>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT|wxRIGHT</flag>
+						<border>5</border>
+						<object class="wxSpinCtrl" name="from_channel">
+							<style>wxSP_ARROW_KEYS</style>
+							<value>2</value>
+							<min>1</min>
+							<max>16</max>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT|wxLEFT</flag>
+						<border>5</border>
+						<object class="wxStaticText">
+							<label>to</label>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxALIGN_CENTER_VERTICAL|wxALIGN_LEFT</flag>
+						<border>5</border>
+						<object class="wxSpinCtrl" name="to_channel">
+							<style>wxSP_ARROW_KEYS</style>
+							<value>1</value>
+							<min>1</min>
+							<max>16</max>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="sizeritem">
+				<option>0</option>
+				<flag></flag>
+				<border>5</border>
+				<object class="wxCheckBox" name="avoid_drum_channel">
+					<label>avoid drum channel</label>
+					<checked>0</checked>
+				</object>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="UnknownInputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+	</object>
+	<object class="wxPanel" name="UnknownOutputFilterPanelBase">
+		<style>wxTAB_TRAVERSAL</style>
+	</object>
+</resource>

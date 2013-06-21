@@ -1,0 +1,71 @@
+"==== Modulation depending on chords ================================"
+LOGIK
+    Modulation Key M = Init
+    [
+      FORM Major -> midiout(#B0, 01,#7f)
+      FORM Minor -> midiout(#B0, 1,#3f)
+      FORM aKey  -> midiout(#B0, 01,#00) 
+    ] 
+
+    Split Key S = 
+    [
+"      Key L -> Lower"
+
+      Key U -> UpperA
+      MIDIIN(#90, 61) -> UpperG
+      MIDIIN(#90, 63) -> Uppera
+    ]
+
+RETUNING
+    Init = [<<12>>]
+
+PATTERN
+    Major = {0, 4, 7}
+    Minor = {0, 3, 7}
+    aKey = {0, *1, *2, *3, *4, *5, *6, *7, *8, *9, *10, *11}
+
+" ====================================== Obertöne 
+  Auf den weissen Tasten eine Obertonreihe, auf den schwarzen eine
+  Untertonreihe ; über 3 Oktaven der Klaviatur "
+
+INTERVALL
+    i1=1:1   i2=2:1   i3=3:1   i4=4:1   i5=5:1   i6=6:1
+    i7=7:1   i8=8:1   i9=9:1   i10=10:1 i11=11:1 i12=12:1
+    i13=13:1 i14=14:1 i15=15:1 i16=16:1 i17=17:1 i18=18:1
+    i19=19:1 i20=20:1 i21=21:1 i22=22:1 i23=23:1 i24=24:1
+    i25=25:1 i27=27:1 i28=28:1 i30=30:1
+    ht = 12 root 2
+
+TON
+    AA=220
+    AG=AA-2ht
+    o2=AA+i2   o3=AA+i3   o4=AA+i4   o5=AA+i5   o6=AA+i6   o7=AA+i7
+    o8=AA+i8   o9=AA+i9   o10=AA+i10 o11=AA+i11 o12=AA+i12 o13=AA+i13
+    o14=AA+i14 o15=AA+i15 o16=AA+i16 o17=AA+i17 o18=AA+i18 o19=AA+i19
+    o20=AA+i20 o21=AA+i21 o22=AA+i22 o23=AA+i23 o24=AA+i24 o25=AA+i25
+    o27=AA+i27 o28=AA+i28 o30=AA+i30
+    CC=AA+5i2
+    u2=CC-i2   u3=CC-i3   u4=CC-i4   u5=CC-i5   u6=CC-i6   u7=CC-i7
+    u8=CC-i8   u9=CC-i9   u10=CC-i10 u11=CC-i11 u12=CC-i12 u13=CC-i13
+    u14=CC-i14 u15=CC-i15 u16=CC-i16 u17=CC-i17 u18=CC-i18 u19=CC-i19
+    u20=CC-i20 u21=CC-i21 u22=CC-i22 u23=CC-i23 u24=CC-i24 
+
+    g2=AG+i2   g3=AG+i3   g4=AG+i4   g5=AG+i5   g6=AG+i6   g7=AG+i7
+    g8=AG+i8   g9=AG+i9   g10=AG+i10 g11=AG+i11 g12=AG+i12 g13=AG+i13
+    g14=AG+i14 g15=AG+i15 g16=AG+i16 g17=AG+i17 g18=AG+i18 g19=AG+i19
+    g20=AG+i20 g21=AG+i21 g22=AG+i22 g23=AG+i23 g24=AG+i24 g25=AG+i25
+    g27=AG+i27 g28=AG+i28 g30=AG+i30
+ 
+TONSYSTEM
+    UpperG = 60 [ AG,u15,g2,u14,g3,g4,u13,g5,u12,g6,u11,g7,
+                  g8,u10,g9,u9,g10,g11,u8,g12,u7,g13,u6,g14,
+                  g15,u5,g16,u4,g17,g18,u3,g19,u2,g20,CC,g21 ] i1 
+   UpperA = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
+                o8,u10,o9,u9,o10,o11,u8,o12,u7,o13,u6,o14,
+                  o15,u5,o16,u4,o17,o18,u3,o19,u2,o20,CC,o21 ] i1
+
+
+
+MIDIKANAL
+    1 -> 1 - 8
+    2 -> 9 - 16  	

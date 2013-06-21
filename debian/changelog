@@ -1,4 +1,4 @@
-mutabor (4.0.0~beta2.99-1) experimental; urgency=low
+mutabor (4.0.0beta2.99-1) UNRELEASED; urgency=low
 
   * Fix Jack detection on Mac OS X
   * Updated debian changelog
@@ -7,10 +7,13 @@ mutabor (4.0.0~beta2.99-1) experimental; urgency=low
   * Check for Jack only if pkg-config is installed on linux.
   * Translation files and German translation.
   * Use libcppunit-dev for compiling on debian.
+  * Update debian changelog and bump version.
+  * fix some of the lintian complaints
+  * Disable test suite as it needs a usable Display.
 
- -- Tobias Schlemmer <keinstein@users.berlios.de>  Sun, 09 Jun 2013 11:40:55 +0200
+ -- Tobias Schlemmer <keinstein@users.berlios.de>  Fri, 21 Jun 2013 23:21:34 +0200
 
-mutabor (4.0.0~beta2.99-0) unstable; urgency=low
+mutabor (4.0.0beta2.99-0) experimental; urgency=low
 
   * update certain autotools related stuff
   * Do not delete the original Mutabor.xrc on distclean.

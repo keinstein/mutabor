@@ -1,0 +1,43 @@
+LOGIC
+    C Key C = cmajor
+    [
+      G7 -> Do_G7
+      E7 -> Do_E7
+      Dm -> Do_Dm		
+      FORM aKey -> Cmajor
+    ] 
+
+INTERVAL
+    Third = 5:4
+    Fifth = 3:2
+    Octave = 2:1
+    JustSeventh = 7:4
+    
+
+TONE
+	C = 264
+	D = G + Fifth - Octave
+	E = C + Third
+	F = C + Octave - Fifth
+	G = C + Fifth
+	A = F + Third
+	H = G + Third
+"G7"	F_G7 = G + JustSeventh - Octave
+"E7"	Gis = E + Third
+	D_E7 = E + JustSeventh - Octave
+"Dm"	D_Dm = A - Fifth
+	
+	
+TONSYSTEM
+    CMAJOR        = 60 [ C,,D,,E,F,,G,Gis,A,,H ] Octave
+
+PATTERN
+    G7 = {2,5,7,*11}
+    E7 = {2,4,*8,11}
+    Dm = {2,*5,9}
+    aKey = {0,*1,*2,*3,*4,*5,*6,*7,*8,*9,*10,*11}
+
+RETUNING
+  do_g7 = [@,@,@,@,@,F_G7,@,@,@,@,@,@]
+  do_E7 = [@,@,D_E7,@,@,@,@,@,@,@,@,@]
+  do_Dm = [@,@,D_Dm,@,@,@,@,@,@,@,@,@]
