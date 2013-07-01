@@ -97,7 +97,11 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 
 bin_PROGRAMS = mutabor
 noinst_LIBRARIES = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a #libmutaborGUIrouting.a libmutaborGUI.a
-check_LIBRARIES = libmutabordebugcppunit.a libmutabordebugtest.a libmutabormaincppunit.a libmutabormaintest.a
+check_LIBRARIES = libmutabordebugtest.a libmutabormaintest.a
+
+if HAVE_CPPUNIT
+check_LIBRARIES += libmutabordebugcppunit.a libmutabormaincppunit.a
+endif
 
 #-------------------------------------------------------------
 # libmutaborgui.a
@@ -319,10 +323,10 @@ libmutabordebug_a_POTSOURCES = $(libmutabordebug_a_INLINEHEADERS) $(libmutaborde
 libmutabordebug_a_SOURCES = $(libmutabordebug_a_INDENTS)
 
 
+if HAVE_CPPUNIT
 #-------------------------------------------------------------
 # libmutabordebugcppunit.a
 #-------------------------------------------------------------
-
 libmutabordebugcppunit_a_INLINEHEADERS = \
 		$(libmutabordebug_a_INLINEHEADERS)
 libmutabordebugcppunit_a_INDENTHEADERS = \
@@ -334,7 +338,6 @@ libmutabordebugcppunit_a_INDENTS = \
 
 libmutabordebugcppunit_a_SOURCES = $(libmutabordebugcppunit_a_INDENTS)
 libmutabordebugcppunit_a_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS) -DMUTABOR_TEST
-
 
 #-------------------------------------------------------------
 # libmutabordebugcppunit.a
@@ -358,6 +361,7 @@ libmutabormaincppunit_a_LIBADD = $(libmutaborgui_a_OBJECTS) \
 				$(librtmidi_a_OBJECTS)
 
 libmutabormaincppunit_a_DEPENDENCIES = $(libmutabormaincppunit_a_LIBADD)
+endif
 
 #-------------------------------------------------------------
 # libmutabordebugtest.a
