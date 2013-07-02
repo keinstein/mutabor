@@ -10,22 +10,6 @@
  * \version $Revision: 1.7 $
  * \license GPL
  *
- * $Log: muconvauto.cpp,v $
- * Revision 1.7  2011/11/02 14:32:01  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.6  2011-09-27 20:13:25  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.5  2011-08-12 09:45:19  keinstein
- * fix BOM detection in case no length is providet by wxWidgets
- *
- * Revision 1.4  2011-02-20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
  *
  *
  *

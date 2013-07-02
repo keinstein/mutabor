@@ -10,59 +10,19 @@
 * \version $Revision: 1.13 $
 * \license GPL
 *
-* $Log: MutDocument.cpp,v $
-* Revision 1.13  2011/11/02 14:31:58  keinstein
-* fix some errors crashing Mutabor on Windows
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
 *
-* Revision 1.12  2011-10-02 16:58:41  keinstein
-* * generate Class debug information when compile in debug mode
-* * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
-* * Reenable confirmation dialog when closing document while the logic is active
-* * Change debug flag management to be more debugger friendly
-* * implement automatic route/device deletion check
-* * new debug flag --debug-trace
-* * generate lots of tracing output
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
 *
-* Revision 1.11  2011-09-30 18:07:04  keinstein
-* * make compile on windows
-* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
-* * add ax_boost_base for boost detection
-*
-* Revision 1.10  2011-09-27 20:13:23  keinstein
-* * Reworked route editing backend
-* * rewireing is done by RouteClass/GUIRoute now
-* * other classes forward most requests to this pair
-* * many bugfixes
-* * Version change: We are reaching beta phase now
-*
-* Revision 1.9  2011-08-28 20:09:11  keinstein
-* several impovements for opening and saving files
-*
-* Revision 1.8  2011-08-21 16:52:05  keinstein
-* Integrate a more sophisticated editor menu based on the stc sample
-*
-* Revision 1.7  2011-08-20 17:50:39  keinstein
-* use  wxSTC for the editor windows
-*
-* Revision 1.6  2011-08-16 20:20:03  keinstein
-* Fix compiling on Mac OS X 10.5
-*
-* Revision 1.5  2011-08-11 19:00:48  keinstein
-* get Document/View running.
-* Needs further testing (possible segfaults).
-*
-* Revision 1.4  2011-08-06 09:20:16  keinstein
-* documentation fixes
-*
-* Revision 1.3  2011-07-31 21:32:21  keinstein
-* Slightly improved window positioning
-* Suppress route window, when a Window is opened from the command line
-*
-* Revision 1.2  2011-07-31 20:16:04  keinstein
-* Implemented opening files from command line using Document/View framework
-*
-* Revision 1.1  2011-07-31 12:40:41  keinstein
-* Added classes and functions for Document/View support
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 *
 *

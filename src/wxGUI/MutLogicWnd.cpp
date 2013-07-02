@@ -3,81 +3,25 @@
  * Logic window
  *
  * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutLogicWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author R. Krauﬂe
+ * Copyright:   (c) 2008-2012 TU Dresden
+ *               Changes after 10/2011 Tobias Schlemmer
+ * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.33 $
  * \license GPL
  *
- * $Log: MutLogicWnd.cpp,v $
- * Revision 1.33  2011/11/02 14:31:59  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.32  2011-10-22 16:32:38  keinstein
- * commit to continue debugging on Linux/wine
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.31  2011-10-04 20:09:16  keinstein
- * Clean up focus handling a little bit.
- * Change perimeter point handling a little bit. Need at least one night to
- * get overthought.
- *
- * Revision 1.30  2011-10-03 15:50:21  keinstein
- * Fix focus issues in the route window. This includes:
- *  * Using templates to describe the base class of MutIconShape.
- *  * Rename MutIconShape->MutIconShapeClass.
- *  * typedef MutIconShapeClass<wxControl> MutIconShape
- *  * Expand the control container macros in MutPanel.
- *  * Disable most of the control container behaviour as we don't need it, currently
- *  * Focus NewInputDevice on window creation.
- *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
- *  * Display focused Window with sunken border
- *
- * Revision 1.29  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.28  2011-09-30 09:10:25  keinstein
- * Further improvements in the routing system.
- *
- * Revision 1.27  2011-09-28 05:35:47  keinstein
- * fix compiling on ubuntu
- *
- * Revision 1.26  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.25  2011-09-08 18:50:41  keinstein
- * Fix some further update bug
- *
- * Revision 1.24  2011-09-08 16:51:21  keinstein
- * Set foreground color in box status windows
- * Fix updating box status windows
- * update RtMidi (includes Jack compilation mode)
- *
- * Revision 1.23  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.22  2011-09-05 11:30:08  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.21  2011-07-30 12:58:49  keinstein
- * Fix bug introduced before last commit.
- * Change MutTag::OnLefUp into MutTag::OnLeftDown
- *
- * Revision 1.20  2011-07-30 12:06:20  keinstein
- * Change tone system status window when changing the tuning logic by hand
- *
- * Revision 1.19  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
  * \addtogroup src/wxGUI
