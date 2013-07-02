@@ -153,14 +153,14 @@ namespace mutaborGUI {
 
 	bool MutCommandProcessor::Undo()
 	{
-		DEBUGLOG(editor,_T(""));
+		DEBUGLOG(editor,_T("."));
 		STUBC;
 		return wxCommandProcessor::Undo();
 	}
 
 	bool MutCommandProcessor::Redo()
 	{
-		DEBUGLOG(editor,_T(""));
+		DEBUGLOG(editor,_T("."));
 		STUBC;
 		return wxCommandProcessor::Redo();
 	}
@@ -181,19 +181,19 @@ namespace mutaborGUI {
 
 	void MutCommandProcessor::Initialize()
 	{
-		DEBUGLOG(editor,_T(""));
+		DEBUGLOG(editor,_T("."));
 		wxCommandProcessor::Initialize();
 	}
 
 	void MutCommandProcessor::SetMenuStrings()
 	{
-		DEBUGLOG(editor,_T(""));
+		DEBUGLOG(editor,_T("."));
 		wxCommandProcessor::SetMenuStrings();
 	}
 
 	void MutCommandProcessor::ClearCommands()
 	{
-		DEBUGLOG(editor,_T(""));
+		DEBUGLOG(editor,_T("."));
 		wxCommandProcessor::ClearCommands();
 	}
 
@@ -293,7 +293,7 @@ namespace mutaborGUI {
 
 	wxSTD istream& MutDocument::LoadObject(wxSTD istream& stream)
 	{
-		DEBUGLOG(docview,_T(""));
+		DEBUGLOG(docview,_T("."));
 		bool bOK(false);
 		int nA(0);
 		char ch(0);
@@ -406,7 +406,7 @@ namespace mutaborGUI {
 	bool MutDocument::TryParent(wxEvent& event)
 	{
 		mutUnused(event);
-		DEBUGLOG(eventqueue,_T(""));
+		DEBUGLOG(eventqueue,_T("."));
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
 		return false;

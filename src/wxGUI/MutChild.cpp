@@ -172,7 +172,7 @@ namespace mutaborGUI {
 	MutChild::~MutChild()
 	{
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 		deleteFromWinAttrs();
 	}
 
@@ -181,7 +181,7 @@ namespace mutaborGUI {
 		if (event.GetActive()) {
 			mutUnused(event);
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-			DEBUGLOG (other, _T(""));
+			TRACEC;
 			mutaborGUI::curBox = box;
 		}
 		event.Skip();
@@ -242,7 +242,7 @@ namespace mutaborGUI {
 		
 		mutaborGUI::curBox = box;
 		mutASSERT(mut_box[box].used);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 	}
 
 	bool IsOpen (WinKind kind, int box)
@@ -418,7 +418,7 @@ namespace mutaborGUI {
 	{
 		mutaborGUI::curBox = box;
 		mutASSERT(mut_box[box].used);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 		event.Skip();
 	}
 

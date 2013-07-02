@@ -64,7 +64,7 @@ namespace mutaborGUI {
 		void OnClose(wxCloseEvent& event)
 		{
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-			DEBUGLOG(other,_T(""));
+			TRACEC;
 			deleteFromWinAttrs();
 			MutTextBox::OnClose(event);
 		}
@@ -75,7 +75,7 @@ namespace mutaborGUI {
 		{
 			mutUnused(event);
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-			DEBUGLOG(other,_T(""));
+			TRACEC;
 			deleteFromWinAttrs();
 		}
 

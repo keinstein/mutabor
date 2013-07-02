@@ -224,16 +224,16 @@ namespace mutaborGUI {
 			} else if (type != DTNotSet) {
 				OutputDevice outdev = DeviceFactory::CreateOutput (type);
 				if (outdev) {
-				  MutOutputDeviceShape * newdev = 
-					  GUIDeviceFactory::CreateShape (outdev,
-									 GetParent());
-				  if (! newdev) {
-				    UNREACHABLEC;
-				    return;
-				  }
-					DEBUGLOG (dialog, _T(""));
- 					newdev -> readDialog (out);
-					DEBUGLOG (dialog, _T(""));
+					MutOutputDeviceShape * newdev = 
+						GUIDeviceFactory::CreateShape (outdev,
+									       GetParent());
+					if (! newdev) {
+						UNREACHABLEC;
+						return;
+					}
+					TRACEC;
+					newdev -> readDialog (out);
+					TRACEC;
 					destroySelf = replaceSelfBy (newdev);
 				}
 			}
@@ -347,18 +347,22 @@ namespace mutaborGUI {
 		mutASSERT (newshape);
 		mutASSERT (newshape->device);
 
-		DEBUGLOG (routing, _T(""));
+		TRACEC;
 	
 		for(MutBoxChannelShapeList::iterator i = routes.begin(); i!=routes.end(); i = routes.begin())
 		{
 			DEBUGLOG (routing, _T("this = %p ; newshape = %p ; device = %p ; newshape->device = %p ; boxchannel = %p"),
-				  this,newshape,device.get(), newshape->device.get(), (*i));
+				  (void*)this,
+				  (void*)newshape,
+				  (void*)device.get(), 
+				  (void*)newshape->device.get(), 
+				  (void*)(*i));
 			MutBoxChannelShape * channel = *i;
 			mutASSERT(channel->GetRoute()->GetOutputDevice() == device);
 			reconnect(channel,this,newshape);
 		}
 
-		DEBUGLOG (routing, _T(""));
+		TRACE;
        
 		newshape->MoveBeforeInTabOrder (this);
 

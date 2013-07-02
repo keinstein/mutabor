@@ -370,7 +370,7 @@ namespace mutabor {
 			       int id = -1, 
 			       int bendingRange = 2):
 			base(devId, name, id, bendingRange) {
-			DEBUGLOG(other,_T(""));
+			TRACEC;
 		}
 	};
 

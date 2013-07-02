@@ -277,7 +277,7 @@ inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
 	if (!obj) return;
 	++(obj->intrusive_ptr_refcount);
 	DEBUGLOGTYPE(smartptr,*obj,_T("Incrementing %p to %d"),
-		  obj,intrusive_ptr_get_refcount(obj));
+		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 }
 
 template <class intrusive_ptr_T>
@@ -285,7 +285,7 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 {
 	if (!obj) return;
 	DEBUGLOGTYPE(smartptr,*obj,_T("Decrementing %p from %d"),
-		  obj,intrusive_ptr_get_refcount(obj));
+		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
 	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
 }
 

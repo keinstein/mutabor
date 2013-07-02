@@ -446,7 +446,7 @@ namespace mutabor {
 			mutASSERT(open);
 			mutString tmp;
 			WriteTime();
-			tmp.Printf(_T("%3d: %02x"), byte1);
+			tmp.Printf(_T("%3d: %02x"), channel, byte1);
 			DEBUGLOG(midiio,_T("MIDI OUT to %s"),tmp.c_str());
 			data += tmp + _T("\n");
 			return * this;
@@ -764,7 +764,7 @@ namespace mutabor {
 			bank_mode(lsb_first),
 			nKeyOn(0)
 			{
-				DEBUGLOG(other,_T(""));
+				TRACEC;
 			}
 	};
 

@@ -142,11 +142,11 @@ namespace compat30 {
 	
 	void LoadRoutes(const mutStringRef config)
 	{
-	  bool error = false;
+		bool error = false;
+		
+		TRACE;
 
-		DEBUGLOG2(routing,_T(""));
-
-		// emty lists
+		// empty lists
 		TRACE;
 		InputDeviceClass::ClearDeviceList();
 		TRACE;
@@ -176,10 +176,10 @@ namespace compat30 {
 			
 			DEBUGLOG2(routing,_T("a%s"),s.c_str());
 #if (wxUSE_UNICODE || wxUSE_WCHAR_T)
-			int test = SSCANF(s.c_str(), _T("%ls \"%l[^\"]\" %d %d"),
+			int test = SSCANF(s.c_str(), _T("%s \"%[^\"]\" %d %d"),
 					  Type, Name, &DevId, &BendingRange);
 			if ( test < 2 )
-				test = SSCANF(s.c_str(), _T("%ls %ls %d %d"),
+				test = SSCANF(s.c_str(), _T("%s %s %d %d"),
 					      Type, Name, &DevId, &BendingRange);
 
 			if ( test < 3 ) {
@@ -249,10 +249,10 @@ namespace compat30 {
 			//wxString Type, Name;
 			int DevId = -1;
 #if (wxUSE_UNICODE || wxUSE_WCHAR_T)
-			int test = SSCANF(s, _T("%ls \"%l[^\"]\" %d"),
+			int test = SSCANF(s, _T("%s \"%[^\"]\" %d"),
 					  Type, Name, &DevId);
 			if ( test < 2 )
-				test = SSCANF(s, _T("%ls %ls %d"),
+				test = SSCANF(s, _T("%s %s %d"),
 					      Type, Name, &DevId);
 			if ( test < 3 ) {
 			  error = 1;
@@ -286,7 +286,7 @@ namespace compat30 {
 				OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
 #if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 				test = SSCANF(s.c_str(),
-					      _T("%ls %d %d %d %d %d %d %d %d"),
+					      _T("%s %d %d %d %d %d %d %d %d"),
 					      Type, &IFrom, &ITo, &Box, &BoxActive,
 					      &OutDev, &OFrom, &OTo, &ONoDrum);
 				

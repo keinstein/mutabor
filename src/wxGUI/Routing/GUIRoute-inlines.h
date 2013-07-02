@@ -120,7 +120,7 @@ namespace mutaborGUI {
 	inline void connect_device_shape(device_class * dev, shape_class * shape) 
 	{
  		TRACE;
-		DEBUGLOG2(routing,_T("Disconnecting %p"),shape);
+		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
 		if (!shape || !dev) {
 			UNREACHABLE;
 			return;
@@ -181,7 +181,7 @@ namespace mutaborGUI {
 	}
 
 	inline bool disconnect(mutabor::Route & r, MutBoxChannelShape *  shape) {
-		DEBUGLOG2(routing,_T("Disconnecting %p"),shape);
+		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
 		if (!shape) {
 			UNREACHABLE;
 			return false;
@@ -191,47 +191,47 @@ namespace mutaborGUI {
 		MutInputDeviceShape * in = 
 			shape -> GetInput();
  		if (retval && in) {
-			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),shape,in);
+			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)in);
 			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removing in from shape"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && shape->Remove(in);
 			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removing shape from in"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && in->Remove(shape);
 		}
 		DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), disconnecting shapes"),
-			 r.get(), 
-			 intrusive_ptr_get_refcount(r.get()));
+			  (void *)r.get(), 
+			  (int)intrusive_ptr_get_refcount(r.get()));
 
 		MutOutputDeviceShape * out = 
 			shape -> GetOutput();
 		if (retval && out) {
-			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),shape,out);
+			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void *)shape,(void *)out);
 			retval = retval && shape->Remove(out);
-			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removed out from shap"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removed out from shape"),
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 			retval = retval && out->Remove(shape);
 			DEBUGLOG2(smartptr,_T("R.Get(): %p (%d), removed shape from out"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 		}
 		
 		GUIRouteBase * route = ToGUIBase(r);
-		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),shape,route);
+		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)route);
 		if (retval && route) 
 			retval = route->Remove(shape);
 			DEBUGLOG2(smartptr,_T("Route: %p (%d), removed shape"),
-				  r.get(), 
-				  intrusive_ptr_get_refcount(r.get()));
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 
 		if (retval && r) {
 			retval = shape->Remove(r);
 			DEBUGLOG2(smartptr,_T("Route: %p (%d), removed from shape"),
-				  r.get(), 
-				  intrusive_ptr_get_refcount(r.get()));
+				  (void *)r.get(), 
+				  (int)intrusive_ptr_get_refcount(r.get()));
 		}
 		if (!retval) 
 			UNREACHABLE;
@@ -262,7 +262,7 @@ namespace mutaborGUI {
 	inline bool disconnect_device_shape(device_class * dev, shape_class * shape) 
 	{
  		TRACE;
-		DEBUGLOG2(routing,_T("Disconnecting %p"),shape);
+		DEBUGLOG2(routing,_T("Disconnecting %p"),(void*)shape);
 		if (!shape) {
 			UNREACHABLE;
 			return false;
@@ -270,20 +270,20 @@ namespace mutaborGUI {
 		bool retval = true; 
 		const MutBoxChannelShapeList & channels = 
 			shape->GetChannels();
-		DEBUGLOG2(routing,_T("%d channels"), channels.size());
+		DEBUGLOG2(routing,_T("%d channels"), (int)channels.size());
 		MutBoxChannelShapeList::const_iterator i;
 		while ( (i = channels.begin()) != channels.end()) {
 			MutBoxChannelShape * channel = 
 				const_cast<MutBoxChannelShape *>(*i);
 			DEBUGLOG2(routing,_T("Disconnecting %p from %p"),
-				 shape,channel);
+				  (void*)shape,(void*)channel);
 			TRACE;
 			retval = retval && shape -> Remove(channel);
 			TRACE;
 			retval = retval && channel -> Remove(shape);
 		}
 
-		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),shape,dev);
+		DEBUGLOG2(routing,_T("Disconnecting %p from %p"),(void*)shape,(void*)dev);
  		TRACE;
 		if (retval) 
 			retval = dev->Remove(shape);
@@ -409,8 +409,8 @@ namespace mutaborGUI {
 
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching box %d"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
 		const MutBoxShapeList & boxshapes = 
 			BoxData::GetBox(boxid).GetBoxShapes();
@@ -432,8 +432,8 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %d"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
 	}
 
@@ -448,12 +448,12 @@ namespace mutaborGUI {
 		mutASSERT(olddev && newdev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting output device\
  from %p (%d) to %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 olddev.get(),
-			 intrusive_ptr_get_refcount(olddev.get()),
-			 newdev.get(),
-			 intrusive_ptr_get_refcount(newdev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)olddev.get(),
+			 (int)intrusive_ptr_get_refcount(olddev.get()),
+			 (void *)newdev.get(),
+			 (int)intrusive_ptr_get_refcount(newdev.get()));
 
 		GUIOutputDeviceBase * oldbase = ToGUIBase(olddev);
 		GUIOutputDeviceBase * newbase = ToGUIBase(newdev);
@@ -480,12 +480,12 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected output device\
  from %p (%d) to %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 olddev.get(),
-			 intrusive_ptr_get_refcount(olddev.get()),
-			 newdev.get(),
-			 intrusive_ptr_get_refcount(newdev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)olddev.get(),
+			 (int)intrusive_ptr_get_refcount(olddev.get()),
+			 (void *)newdev.get(),
+			 (int)intrusive_ptr_get_refcount(newdev.get()));
 
 		return retval;
 	}
@@ -501,12 +501,12 @@ namespace mutaborGUI {
 		mutASSERT(olddev && newdev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting input device\
  from %p (%d) to %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 olddev.get(),
-			 intrusive_ptr_get_refcount(olddev.get()),
-			 newdev.get(),
-			 intrusive_ptr_get_refcount(newdev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)olddev.get(),
+			 (int)intrusive_ptr_get_refcount(olddev.get()),
+			 (void *)newdev.get(),
+			 (int)intrusive_ptr_get_refcount(newdev.get()));
 
 		GUIInputDeviceBase * oldbase = ToGUIBase(olddev);
 		GUIInputDeviceBase * newbase = ToGUIBase(newdev);
@@ -533,12 +533,12 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected input device\
  from %p (%d) to %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 olddev.get(),
-			 intrusive_ptr_get_refcount(olddev.get()),
-			 newdev.get(),
-			 intrusive_ptr_get_refcount(newdev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)olddev.get(),
+			 (int)intrusive_ptr_get_refcount(olddev.get()),
+			 (void *)newdev.get(),
+			 (int)intrusive_ptr_get_refcount(newdev.get()));
 
 		return retval;
 	}
@@ -605,10 +605,10 @@ namespace mutaborGUI {
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), deta(t)ching output device %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 dev.get(),
-			 intrusive_ptr_get_refcount(dev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)dev.get(),
+			 (int)intrusive_ptr_get_refcount(dev.get()));
 
 		GUIOutputDeviceBase * outbase = ToGUIBase(dev);
 
@@ -630,10 +630,10 @@ namespace mutaborGUI {
 
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), deta(t)ched output device %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 dev.get(),
-			 intrusive_ptr_get_refcount(dev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)dev.get(),
+			 (int)intrusive_ptr_get_refcount(dev.get()));
 
 		return retval;
 	}
@@ -647,10 +647,10 @@ namespace mutaborGUI {
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), deta(t)ching input device %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 dev.get(),
-			 intrusive_ptr_get_refcount(dev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)dev.get(),
+			 (int)intrusive_ptr_get_refcount(dev.get()));
 
 		GUIInputDeviceBase * inbase = ToGUIBase(dev);
 
@@ -672,10 +672,10 @@ namespace mutaborGUI {
 
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), deta(t)ched input device %p (%d)"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
-			 dev.get(),
-			 intrusive_ptr_get_refcount(dev.get()));
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)dev.get(),
+			 (int)intrusive_ptr_get_refcount(dev.get()));
 
 		return retval;
 	}
@@ -687,8 +687,8 @@ namespace mutaborGUI {
 		
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
 		bool retval = true;
 		const MutBoxShapeList & boxshapes =
@@ -709,8 +709,8 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
-			 this, 
-			 intrusive_ptr_get_refcount(GetRoute()),
+			 (void *)this, 
+			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
 		return retval;
 	}
@@ -737,7 +737,7 @@ namespace mutaborGUI {
 		}
 		return ok;
 	}
-
+	
 #if 0
 	inline bool GUIRouteBase::Delete(MutBoxChannelShape * shape) {
 		if (!shape) {
@@ -844,10 +844,10 @@ namespace mutaborGUI {
 		
 		mutASSERT(route);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching output device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 
 		GUIRouteBase * r = ToGUIBase(route);
 
@@ -863,10 +863,10 @@ namespace mutaborGUI {
 		}
 
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched output device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));	
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));	
 	}
 
 	inline bool GUIOutputDeviceBase::Replace(mutabor::Route & oldroute,mutabor::Route & newroute) {
@@ -910,10 +910,10 @@ namespace mutaborGUI {
 		mutASSERT(route);
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), removing from output device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 		GUIRouteBase * r = ToGUIBase(route);
 		if (!r) {
 			UNREACHABLEC;
@@ -930,10 +930,10 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d) removed from output device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 		return retval;
 	}
 
@@ -1165,10 +1165,10 @@ namespace mutaborGUI {
 		
 		mutASSERT(route);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching input device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 
 		GUIRouteBase * r = ToGUIBase(route);
 
@@ -1184,10 +1184,10 @@ namespace mutaborGUI {
 		}
 
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched input device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));	
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));	
 	}
 
 
@@ -1234,10 +1234,10 @@ namespace mutaborGUI {
 		mutASSERT(route);
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), removing from input device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 		GUIRouteBase * r = ToGUIBase(route);
 		if (!r) {
 			UNREACHABLEC;
@@ -1254,10 +1254,10 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d) removed from input device %p (%d)"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()),
-			 GetDevice(),
-			 intrusive_ptr_get_refcount(GetDevice()));
+			 (void *)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()),
+			 (void *)GetDevice(),
+			 (int)intrusive_ptr_get_refcount(GetDevice()));
 		return retval;
 	}
 

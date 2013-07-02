@@ -89,13 +89,13 @@ namespace mutaborGUI {
 		~MutConfigDialog() {}
 
 		void CmHelp(wxCommandEvent& event) {
-			DEBUGLOG(other,_T(""));
+			TRACEC;
 			HelpController->Display(_("The setup dialog"));
 			event.Skip();
 		}
 	private:
 		DECLARE_EVENT_TABLE()
-			};
+	};
 
 }
 #endif /* precompile */

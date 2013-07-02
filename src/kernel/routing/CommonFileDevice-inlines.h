@@ -145,7 +145,7 @@ namespace mutabor {
 		Mode = DeviceStop;
 		// init
 		Stop();
-		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,this);
+		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,(void*)this);
 		isOpen = true;
 		return true;
 	}
@@ -234,7 +234,7 @@ namespace mutabor {
 			starting = false; 
 			return;
 		}
-		DEBUGLOG(timer,_T("timer = %p"),timer);
+		DEBUGLOG(timer,_T("timer = %p"),(void*)timer);
 		Mode = DevicePlay;
 		starting = false;
 	}

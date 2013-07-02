@@ -89,14 +89,14 @@ namespace mutaborGUI {
 
  	MutView::MutView()
 	{
-		DEBUGLOG(docview,_T(""));
+		TRACEC;
 		textsw = (MutEditFile *) NULL;
 		SetFrame(NULL);
 	}
 
 	MutView::~MutView()
 	{
-		DEBUGLOG(docview,_T(""));
+		TRACEC;
 		if (textsw) textsw->SetView(NULL);
 		MutFrame * f = GetMutFrame();
 		if (f) {
@@ -113,7 +113,7 @@ namespace mutaborGUI {
 	bool MutView::OnCreate(wxDocument* doc, long flags)
 	{
 		mutUnused(flags);
-		DEBUGLOG(docview,_T(""));
+		TRACEC;
 		if (doc) {
 			mutASSERT(dynamic_cast<MutDocument *>(doc));
 		}
@@ -212,17 +212,17 @@ namespace mutaborGUI {
 				     wxView *activeView, 
 				     wxView *deactiveView)
 	{
-			mutUnused(deactiveView);
+		mutUnused(deactiveView);
 		// don't implement this function before looking at the debug output
-		DEBUGLOG(docview,_T("Activate: %d && %x == %x"),
-			 activate, activeView, this);
+		DEBUGLOG(docview,_T("Activate: %d && %p == %p"),
+			 activate, (void*)activeView, (void*)this);
 	}
 
 
 	bool MutView::TryParent(wxEvent& event)
 	{
 		mutUnused(event);
-		DEBUGLOG(eventqueue,_T(""));
+		TRACEC;
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
 #if 0

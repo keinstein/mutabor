@@ -103,7 +103,7 @@ void configtree::toLeaf(const mutStringRef subdir)
 	config -> SetPath(subdir);
 	newstate.chdepth = 1;
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+	DEBUGLOG(config,_T("current path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s')"),
 		 config->GetPath().c_str(), newstate.oldpath.c_str(), newstate.chdepth, 
 		 newstate.leafid, newstate.group.c_str());
 }
@@ -117,7 +117,7 @@ void configtree::toLeaf(const mutStringRef name, int id)
 	newstate.chdepth++;
 	states.pop();
 	states.push(newstate);
-	DEBUGLOG(config,_T("current path = '%s',nowstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s'"),
+	DEBUGLOG(config,_T("current path = '%s',nowstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s'"),
 		 config->GetPath().c_str(), 
 		 newstate.oldpath.c_str(), 
 		 newstate.chdepth, 
@@ -145,7 +145,7 @@ int configtree::toFirstLeaf(const mutStringRef name,mutStringRef id)
 	newstate.group=name;
 	mutASSERT(newstate == states.top());
 	DEBUGLOG(config,
-		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s')"),
 		 config->GetPath().c_str(), 
 		 newstate.oldpath.c_str(), 
 		 newstate.chdepth, 
@@ -163,7 +163,7 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 	state oldstate=states.top();
 	mutASSERT(oldstate.group==name);
 	DEBUGLOG(config,
-		 _T("path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+		 _T("path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s')"),
 		 config->GetPath().c_str(), 
 		 oldstate.oldpath.c_str(), oldstate.chdepth, 
 		 oldstate.leafid, oldstate.group.c_str());
@@ -186,7 +186,7 @@ int configtree::toNextLeaf(const mutStringRef name, mutStringRef id)
 	}
 	mutASSERT(newstate == states.top());
 	DEBUGLOG(config,
-		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+		 _T("path = '%s', newstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s')"),
 		 config->GetPath().c_str(), 
 		 newstate.oldpath.c_str(), 
 		 newstate.chdepth, newstate.leafid,
@@ -220,7 +220,7 @@ void configtree::toParent(unsigned int count)
 		mutASSERT(config->GetPath() == oldstate.oldpath);
 #endif
 		DEBUGLOG(config,
-			 _T("current path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %d, group = '%s')"),
+			 _T("current path = '%s', oldstate(oldpath = '%s', chdepth = %d, leafid = %ld, group = '%s')"),
 			 config->GetPath().c_str(), 
 			 oldstate.oldpath.c_str(), 
 			 oldstate.chdepth, oldstate.leafid, 

@@ -289,7 +289,7 @@ namespace mutabor {
 		    Mode = DeviceStop; 
 		*/
 		// initialisieren
-		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		return base::Open();
 	}
 
@@ -329,12 +329,12 @@ namespace mutabor {
 
 		Head = new GisReadArtHead(NULL, Data, Id);
 
-		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		Head->Box = 0; /// hier muﬂ noch was hin
-		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		//  Head->Prev = Head;
 		Head->PrevPtr = (GisReadHead**)&Head;
-		DEBUGLOG (gmnfile, _T("Head = %p"),Head);
+		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		// Delta-Times lesen
 		minDelta = 0;
 		Mode = DeviceStop;
@@ -348,7 +348,7 @@ namespace mutabor {
         // Gis arbeitet auf "tick" - Basis, ein tick = 1ms
 	mutint64 InputGis::PrepareNextEvent()
 	{
-		DEBUGLOG (gmnfile, _T("Next tone. Mindelta = %d"),minDelta);
+		DEBUGLOG (gmnfile, _T("Next tone. Mindelta = %d"),(int)minDelta);
 
 		minDelta = ReadOn(minDelta);
 
@@ -480,7 +480,7 @@ namespace mutabor {
 		mutASSERT(h);
 		mutASSERT(h->Cursor);
 		DEBUGLOG (gmnfile, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
-			  (h->Id).c_str(),(h->Id).Len(), Id.c_str(), Id.Len());
+			  (h->Id).c_str(),(int)(h->Id).Len(), Id.c_str(),(int) Id.Len());
 		mutChar staff = h->Id[mutLen(Id)];
 		bool DidOut = false;
 		DEBUGLOG (gmnfile, _T("staff: %d, DidOut: %d"),staff, DidOut);
@@ -566,8 +566,8 @@ namespace mutabor {
 		while ( *H ) {
 
 			GisReadArtHead *h = dynamic_cast<GisReadArtHead *> (*H);
-			DEBUGLOG (gmnfile, _T("H = %p; h = %p"),H,
-				  dynamic_cast<GisReadArtHead *>(*H));
+			DEBUGLOG (gmnfile, _T("H = %p; h = %p"),(void*)H,
+				  (void*)dynamic_cast<GisReadArtHead *>(*H));
 
 			mutASSERT(h);
 			DEBUGLOG (gmnfile, _T("h->nSub = %d"),h->nSub);
@@ -588,11 +588,11 @@ namespace mutabor {
 				h->Delta = 0;
 			}
 
-			DEBUGLOG (gmnfile, _T("h->Delta = %d"),h->Delta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %ld"),h->Delta);
 
 			if ( h->Delta > 0 ) {// header in normal state
 				DEBUGLOG (gmnfile, 
-					  _T("Time: %d/%d, delta: %d, speed: %d"),
+					  _T("Time: %ld/%ld, delta: %ld, speed: %d"),
 					  h->Time.numerator(),
 					  h->Time.denominator(), 
 					  delta,
@@ -618,7 +618,7 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 
 					/ h->Time.denominator();
-				DEBUGLOG (gmnfile, _T("Time: %ld/%ld, Time2: %ld/%ld, delta: %ld, speed: %ld"),
+				DEBUGLOG (gmnfile, _T("Time: %ld/%ld, Time2: %ld/%ld, delta: %ld, speed: %d"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta,
@@ -630,17 +630,17 @@ namespace mutabor {
 			// now check, wether count down Time is 0
 			// if h->time = 0 then h->Cursor points to the GisToken next to proceed
 
-			DEBUGLOG (gmnfile, _T("h->Delta = %d"),h->Delta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %ld"),h->Delta);
 
 			while ( h->Delta == 0 ) { // read next tokens
 				DEBUGLOG (gmnfile, _T("h->Turn = %d"),h->Turn);
 
 				if ( h->Turn) {
 					ProceedRoute(h, h->Turn++);
-					DEBUGLOG (gmnfile, _T("h->Delta = %d, h->Turn = %d"),h->Delta, h->Turn);
+					DEBUGLOG (gmnfile, _T("h->Delta = %ld, h->Turn = %d"),h->Delta, h->Turn);
 
 					if ( h->Turn == 2 ) {
-						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),::TowxString(h->Time).c_str(), ::TowxString(h->Time2).c_str());
+						DEBUGLOG(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),::TowxString(h->Time).c_str(), ::TowxString(h->Time2).c_str());
 						h->Time = h->Time2;
 						h->Time2 = 0;
 						h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
@@ -678,7 +678,7 @@ namespace mutabor {
 
 				h->Read();
 
-				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %ld/%ld, Time2: %ld/%ld, delta: %ld"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta);
@@ -686,10 +686,11 @@ namespace mutabor {
 				h->Delta = (h->GetSpeedFactor() * h->Time.numerator())
 					/ h->Time.denominator();
 
-				DEBUGLOG (gmnfile, _T("h->Delta = %d * %d / %d = %d"), h->GetSpeedFactor(),
+				DEBUGLOG (gmnfile, _T("h->Delta = %d * %ld / %ld = %ld"), 
+					  h->GetSpeedFactor(),
 					  h->Time.numerator(), h->Time.denominator(), h->Delta);
 
-				DEBUGLOG (gmnfile, _T("Time: %d/%d, Time2: %d/%d, delta: %d, speed: %d"),
+				DEBUGLOG (gmnfile, _T("Time: %ld/%ld, Time2: %ld/%ld, delta: %ld, speed: %d"),
 					  h->Time.numerator(),h->Time.denominator(),
 					  h->Time2.numerator(),h->Time2.denominator(),
 					  delta,
@@ -707,7 +708,7 @@ namespace mutabor {
 			}
 
 			// check MinTime
-			DEBUGLOG (gmnfile, _T("h->Delta = %d, MinDelta = %d"),h->Delta,MinDelta);
+			DEBUGLOG (gmnfile, _T("h->Delta = %ld, MinDelta = %ld"),h->Delta,MinDelta);
 
 			if ( !IsDelta(MinDelta) || (MinDelta >= 0 && h->Delta < MinDelta) )
 				MinDelta = h->Delta;
@@ -716,7 +717,7 @@ namespace mutabor {
 			H = &(h->Next);
 		}
 
-		DEBUGLOG2(gmnfile,_T("returning %d"),MinDelta);
+		DEBUGLOG2(gmnfile,_T("returning %ld"),MinDelta);
 
 		return MinDelta;
 	}

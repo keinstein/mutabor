@@ -458,7 +458,7 @@ namespace mutaborGUI {
 		}
 
 		//	}text.mb_str(*wxConvFileName)
-		DEBUGLOG(other,_T("frame: %p"),frame);
+		DEBUGLOG(other,_T("frame: %p"),(void*)frame);
 
 		event.Skip();
 
@@ -468,7 +468,7 @@ namespace mutaborGUI {
 	{
 
 		TRACEC;
-		DEBUGLOG (other, _T("%x == %x"),this,ActiveWindow);
+		DEBUGLOG (other, _T("%p == %p"),(void*)this,(void*)ActiveWindow);
 
 		if ( event.CanVeto() ) {
 			if (!static_cast<MutDocument *>(GetDocument())
@@ -626,9 +626,9 @@ namespace mutaborGUI {
 			return false;
 		}
 	
-		DEBUGLOG(docview,_T("Setting client of %x to %x with title '%s'"),
-			 this,
-			 win,
+		DEBUGLOG(docview,_T("Setting client of %p to %p with title '%s'"),
+			 (void*)this,
+			 (void*)win,
 			 (const wxChar *)title.c_str());
 
 		client = win;
@@ -668,7 +668,7 @@ namespace mutaborGUI {
 	{
 		if (LogicOn) return;
 
-		DEBUGLOG (gui, _T(""));
+		TRACEC;
 
 		if ( !Compiled )
 			return;
@@ -806,7 +806,7 @@ To start the translation hit the play button or select “Play” from the “Se
 		wxMenu * menu = item->GetSubMenu();
 		DEBUGLOG (other, _T("item: '%s' on %p\n"),
 			  (item->GetItemLabel()).c_str(),
-			  item);
+			  (void*)item);
 
 		if (! menu) return;
 
@@ -815,11 +815,12 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		wxMenuItemList& l = menu->GetMenuItems();
 
-		DEBUGLOG (other, _T(" %d items"),l.GetCount());
+		DEBUGLOG (other, _T(" %d items"),(int)l.GetCount());
 
 		for (wxMenuItemList::iterator i = l.begin(); i!=l.end(); i=l.begin()) {
 			wxMenuItem * node = *i;
-			DEBUGLOG (other, _T("ptr %x handling %s"), node,(node->GetItemLabel()).c_str());
+			DEBUGLOG (other, _T("ptr %p handling %s"), 
+				  (void*)node,(node->GetItemLabel()).c_str());
 
 			if (node->IsSubMenu())
 				ClearSubMenu(node);
@@ -852,7 +853,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		mutASSERT(i!=MAX_BOX);
 
-		DEBUGLOG (other, _T("%d"),i);
+		DEBUGLOG (other, _T("%d"),(int)i);
 
 		curBox = i;
 
@@ -1027,7 +1028,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		BoxData & box = BoxData::GetBox(curBox);
 		bool openclose = false;
-		MutChild * win;
+		MutChild * win = NULL;
 		switch (kind) {
 		case WK_KEY: 
 			openclose = box.ToggleKeyWindow();
@@ -1066,7 +1067,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		if ( !LogicOn ) return;
 
-		DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,curBox,IsOpen(kind, curBox));
+		DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,(int)curBox,IsOpen(kind, curBox));
 		mutASSERT(IsOpen(kind,curBox) == !openclose);
 
 		if (openclose) {
@@ -1525,7 +1526,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::CmInDevPlay(wxCommandEvent& event)
 	{
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 
 		if ( !LogicOn )
 			CmDoActivate(event);
@@ -1595,7 +1596,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				  (*In)->GetType(),
 				  DTMidiFile,
 				  (*In)->GetMode(),
-				  (*In).get());
+				  (void*)(*In).get());
 
 			if ( (*In)->GetType() >= DTMidiFile &&
 			     ((*In)->GetMode() == DeviceStop ||
@@ -1684,7 +1685,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	wxRect MutFrame::DetermineFrameSize ()
 	{
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 
 		wxSize scr = wxGetDisplaySize();
 
@@ -1719,7 +1720,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	 */
 	void MutFrame::CloseAll(WinKind kind)
 	{
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 
 		auimanager.Update();
 
@@ -1786,7 +1787,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		mutASSERT(boxSelector->IsSubMenu());
 		wxMenu * boxMenu = boxSelector->GetSubMenu();
 		mutASSERT(boxMenu);
-		DEBUGLOG (other, _T("boxMenu = %p"),boxMenu);
+		DEBUGLOG (other, _T("boxMenu = %p"),(void*)boxMenu);
 		//  wxID_HIGHEST
 		//  wxMenu *
 

@@ -116,7 +116,7 @@
 
 namespace mutaborGUI {
 
-	int pubTaste; // Taste aus anderen Fenstern f¸r MutWin
+	int pubTaste; // Taste aus anderen Fenstern für MutWin
 
 	extern bool UseColorBars;
 
@@ -145,8 +145,12 @@ namespace mutaborGUI {
 
 	public:
 
-		MutTag(wxWindow *parent, const wxPoint& pos,
-		       int isLogic, int isOpen, int key, const wxString& text);
+		MutTag(wxWindow *parent, 
+		       const wxPoint& pos,
+		       int isLogic, 
+		       int isOpen, 
+		       int key, 
+		       const wxString& text);
 
 	private:
 		bool IsLogic;
@@ -175,11 +179,11 @@ namespace mutaborGUI {
 
 	private:
 		void PaintCenteredText(wxDC &dc, wxString s, int y)
-			{
-				wxCoord w, h;
-				dc.GetTextExtent(s, &w, &h);
-				dc.DrawText(s, (MUTTAGX-w)/2, y);
-			}
+		{
+			wxCoord w, h;
+			dc.GetTextExtent(s, &w, &h);
+			dc.DrawText(s, (MUTTAGX-w)/2, y);
+		}
 
 	public:
 		DECLARE_EVENT_TABLE()
@@ -193,11 +197,6 @@ namespace mutaborGUI {
 	EVT_KILL_FOCUS(MutTag::OnGetFocus)
 	END_EVENT_TABLE()
 
-	/*TFont MutFont(8, 0, 0, 0, FW_NORMAL,
-	  false, false, false, 1, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-	  DEFAULT_QUALITY, DEFAULT_PITCH|FF_DONTCARE, "MS Sans Serif");
-
-	  SETUPWINDOW_FONT(TMutTag, TButton, MutFont)*/
 
 	MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
 		       int isLogic, int isOpen, int key, const wxString& text)
@@ -305,53 +304,6 @@ namespace mutaborGUI {
 
 	}
 
-/*void TMutTag::ODADrawEntire(DRAWITEMSTRUCT far& drawInfo)
-  {
-  TDC dc(drawInfo.hDC);
-  // evtl. erst noch Abteilung des Textes berechnen
-  if ( TPos == -1 ) InitText(dc);
-  // Selected-Rahmen
-  if (drawInfo.itemState & ODS_SELECTED)
-  SelectObject(drawInfo.hDC, GetStockObject(BLACK_PEN));
-  else
-  SelectObject(drawInfo.hDC, GetStockObject(WHITE_PEN));
-  if ( TPos )
-  dc.Rectangle(TRect(1, 3, MUTTAGX-3, MUTTAGY));
-  else
-  dc.Rectangle(TRect(1, 3, MUTTAGX-3, MUTTAGY-3));
-  dc.RestorePen();
-  // Icon zeichnen
-  dc.DrawIcon(MUTTAGX/2-16, 10, *Icon);
-  // Taste auf Icon
-  dc.SetBkMode(TRANSPARENT);
-  char s[20];
-  sprintf(s, "%c", Key);
-  dc.DrawText(s, -1, TRect(MUTTAGX/2-10, 20, MUTTAGX/2+10, 20+14), DT_CENTER | DT_VCENTER);
-  dc.SetBkMode(OPAQUE);
-  // Beschriftung
-  if ( TPos )
-  {
-  dc.DrawText(Text, TPos, TRect(2, 44, MUTTAGX-2, 44+14), DT_CENTER | DT_VCENTER);
-  dc.DrawText(&(Text[TPos]), -1, TRect(2, 56, MUTTAGX-2, 56+14), DT_CENTER | DT_VCENTER);
-  }
-  else
-  dc.DrawText(Text, -1, TRect(2, 50, MUTTAGX-2, 50+14), DT_CENTER | DT_VCENTER);
-  // Focus
-  if (drawInfo.itemState & ODS_FOCUS)
-  dc.DrawFocusRect(TRect(MUTTAGX/2-19, 7, MUTTAGX/2+19, 7+38));
-  }
-
-  void TMutTag::ODAFocus(DRAWITEMSTRUCT far& drawInfo)
-  {
-  TDC dc(drawInfo.hDC);
-  dc.DrawFocusRect(TRect(MUTTAGX/2-19, 7, MUTTAGX/2+19, 7+38));
-  }
-
-  void TMutTag::ODASelect(DRAWITEMSTRUCT far& drawInfo)
-  {
-  ODADrawEntire(drawInfo);
-  }*/
-
 	void MutTag::OnChar(wxKeyEvent& event)
 	{
 //  TButton::EvChar(key, repeatCount, flags);
@@ -447,7 +399,7 @@ namespace mutaborGUI {
 
 	void MutLogicWnd::doClose(wxEvent& event)
 	{
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 		wxWindow * parent = NULL;
 		bool stop;
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
@@ -456,7 +408,7 @@ namespace mutaborGUI {
 			parent = GetParent();
 
 			while (!(dynamic_cast<MutFrame *>(parent))) {
-				DEBUGLOG (other, _T("Searching for MutFrame: %p..."),parent);
+				DEBUGLOG (other, _T("Searching for MutFrame: %p..."),(void*)parent);
 				parent = parent->GetParent();
 			}
 
@@ -485,7 +437,7 @@ namespace mutaborGUI {
 
 		mutaborGUI::curBox = boxnumber;
 		mutASSERT(mut_box[boxnumber].used);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 
 		event.Skip();
 	}
@@ -623,7 +575,7 @@ namespace mutaborGUI {
 
 		mutaborGUI::curBox = boxnumber;
 		mutASSERT(mut_box[boxnumber].used);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 	}
 
 	void MutLogicWnd::CorrectScroller()
@@ -668,7 +620,7 @@ namespace mutaborGUI {
 		Scroll(dx / 10, dy / 10);
 	}
 
-// keyboardanalyse, Fenster aufr‰umen, Logiken lesen und anzeigen
+// keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
 	void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
 	{
 		// Analyse zuerst
@@ -681,7 +633,7 @@ namespace mutaborGUI {
 		wxWindow *ToFocus = NULL;
 
 		// alte TMutTag-s lˆschen
-		//* \todo we must reuse old entries rendering can be expensive
+		//* \todo we must reuse old entries rendering can be expensiveg
 		DestroyChildren();
 
 		// neue erstellen
@@ -782,7 +734,7 @@ namespace mutaborGUI {
 			mutaborGUI::curBox = boxnumber;
 			mutUnused(event);
 			mutASSERT(mut_box[boxnumber].used);
-			DEBUGLOG (other, _T(""));
+			TRACEC;
 		}
 	}
 
@@ -790,7 +742,7 @@ namespace mutaborGUI {
 	{
 		mutaborGUI::curBox = boxnumber;
 		mutASSERT(mut_box[boxnumber].used);
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 		event.Skip();
 	}
 

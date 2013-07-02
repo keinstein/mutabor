@@ -113,7 +113,7 @@ inline int CharIn(mutChar c, const mutChar * s)
 
 {
 	DEBUGLOG2(other,_T("'%c' is in '%s' at position %d, returning %d"),
-	          c, s, mutStrChr(s, c), mutStrChr(s, c) != NULL);
+	          c, s, (int)(mutStrChr(s, c)-s), (int)(mutStrChr(s, c) != NULL));
 	return mutStrChr(s, c) != NULL;
 }
 
@@ -237,7 +237,8 @@ int GetSep()
 
 	while ( !Eof && !GspError ) {
 #ifdef WX
-		DEBUGLOG2(other,_T("%d >= %d? Sep.Len=%d"),CurrentPos,CurrentLine.Len(),Sep.Len());
+		DEBUGLOG2(other,_T("%d >= %d? Sep.Len=%d"),
+			  (int)CurrentPos,(int)CurrentLine.Len(),(int)Sep.Len());
 		DEBUGLOG2(other,_T("%s"),CurrentLine.c_str());
 
 		if (CurrentPos >= CurrentLine.Len())
@@ -254,7 +255,7 @@ int GetSep()
 #ifdef WX
 				Sep = Sep.Left(1);
 				DEBUGLOG2(other,_T("Returning 1 at with (%d) '%s'"),
-				          SepPos, Sep.c_str());
+				          (int)SepPos, Sep.c_str());
 				return SepPos;
 #else
 				return ( SepPos = 1 );
@@ -323,7 +324,7 @@ int GetSep()
 		break;
 	}
 
-	DEBUGLOG2(other,_T("Returning with (%d) '%s'"),SepPos,Sep.c_str());
+	DEBUGLOG2(other,_T("Returning with (%d) '%s'"),(int)SepPos,Sep.c_str());
 
 #ifndef WX
 	Sep[SepPos] = 0;
@@ -356,7 +357,7 @@ long ReadLong(int SignAllowed)
 	GetSep();
 
 	while ( mutIsdigit(CHAR0) && !SepPos ) {
-		DEBUGLOG2(other,_T("Number char %c? (a=%d)"), CHAR0, a);
+		DEBUGLOG2(other,_T("Number char %c? (a=%ld)"), CHAR0, a);
 		a = a*10 + (CurrentLine[CurrentPos++]-mutT('0'));
 		NumberLength++;
 		GetSep();
@@ -523,7 +524,7 @@ int ReadNote()
 
 #endif
 
-	DEBUGLOG2(other,_T("SepPos: %d"),SepPos);
+	DEBUGLOG2(other,_T("SepPos: %d"),(int)SepPos);
 
 	if ( SepPos )
 		return CheckError(Note(Name, accedentials, octave, duration));
@@ -544,7 +545,7 @@ int ReadNote()
 
 #endif
 
-	DEBUGLOG2(other,_T("SepPos: %d"),SepPos);
+	DEBUGLOG2(other,_T("SepPos: %d"),(int)SepPos);
 
 	if ( SepPos )
 		return CheckError(Note(Name, accedentials, octave, duration));
@@ -653,7 +654,7 @@ int DoParse()
 			if ( CharIn(c, DelimitChars) ) {
 				mutChar i = 0;
 
-				while ( DelimitChars[i] != c ) i++;
+				while ( DelimitChars[(size_t)i] != c ) i++;
 
 				if ( i & 1 ) // closing bracket
 				{

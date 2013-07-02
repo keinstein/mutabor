@@ -172,7 +172,7 @@ namespace mutaborGUI {
 
 	bool MutBoxIconShape::Layout() {
 		if (!MutIconShapeClass<MutPanel>::Layout()) return false;
-		DEBUGLOG (other, _T(""));
+		TRACEC;
 		if (staticText) {
 			staticText->Move(borderOffset.x,borderOffset.y);
 			staticText->CentreOnParent(wxHORIZONTAL);

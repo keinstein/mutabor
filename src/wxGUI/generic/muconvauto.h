@@ -51,7 +51,7 @@ public:
 	// default ctor, the real conversion will be created on demand
 	muConvAuto() : wxMBConv()
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		m_conv = NULL;
 		m_fallback = muConvAutoFallback;
 		m_ownsFallback = false;
@@ -63,7 +63,7 @@ public:
 
 	muConvAuto(const muConvAuto& other) : wxMBConv()
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		m_conv = NULL;
 		m_fallback = other.m_fallback->Clone();
 		m_ownsFallback = true;
@@ -72,7 +72,7 @@ public:
 	virtual ~muConvAuto()
 
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		if ( m_conv && m_ownsConv ) delete m_conv;
 		if ( m_fallback && m_ownsFallback ) delete m_fallback;
 	}
@@ -86,13 +86,13 @@ public:
 
 	virtual size_t GetMBNulLen() const
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		return m_conv->GetMBNulLen();
 	}
 
 	virtual wxMBConv *Clone() const
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		return new muConvAuto(*this);
 	}
 
@@ -116,7 +116,7 @@ private:
 	// initialize m_conv with the conversion to use by default (UTF-8)
 	void InitWithDefault()
 	{
-		DEBUGLOG(other,_T(""));
+		TRACEC;
 		m_conv = &wxConvUTF8;
 		m_ownsConv = false;
 	}

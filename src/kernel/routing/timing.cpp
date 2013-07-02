@@ -48,7 +48,7 @@ namespace mutabor {
 		if (!is_fixed_ticks) {
 			retval.first = (quarter_divisions >> 8)& 0xFF;
 			retval.second = quarter_divisions & 0xFF;
-			DEBUGLOG(midifile,_T("%x: %x %x"),
+			DEBUGLOG(midifile,_T("%lx: %x %x"),
 				 quarter_divisions, 
 				 retval.first,
 				 retval.second);
@@ -82,7 +82,7 @@ namespace mutabor {
 			throw std::range_error(gettext_noop("time division is too high for current frame rate"));
 		}
 
-		DEBUGLOG(midifile,_T("%x: %x %x"),
+		DEBUGLOG(midifile,_T("%lx: %x %x"),
 			 quarter_divisions,
 			 retval.first,
 			 retval.second);

@@ -220,7 +220,7 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 
 	
 	
-	DEBUGLOG2(kernel_box,_T("index = %d"),index);
+	DEBUGLOG2(kernel_box,_T("index = %d"),(int)index);
 	last_key = mutabor_find_key_in_box(box,0);
 	size_t last_index = 0;
 	while (last_key != NULL && last_key -> next != index) {

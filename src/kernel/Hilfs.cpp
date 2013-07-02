@@ -84,7 +84,7 @@ void * xalloca (size_t size)
 #endif
 
 	if (help == NULL) {
-		DEBUGLOG2(other,_T("malloc(%d) failed."),size);
+		DEBUGLOG2(other,_T("malloc(%d) failed."),(int)size);
 		fatal_error (MUT_ERR_MALLOC_FAILED);
 		return NULL;
 	}
@@ -140,7 +140,7 @@ void xfree (void * pointer)
 void * xmalloc (size_t size)
 {
 	if (size + OFFSET > HEAP_PORTION_SYNTAX) {
-		DEBUGLOG2(other,_T("Error: %d + %d > %d"),size,OFFSET, HEAP_PORTION_SYNTAX);
+		DEBUGLOG2(other,_T("Error: %d + %d > %d"),(int)size,(int)OFFSET, HEAP_PORTION_SYNTAX);
 		fatal_error (4);
 		return NULL;
 	}
@@ -158,8 +158,7 @@ void * xmalloc (size_t size)
 
 		if (syntax_heap == NULL) {
 			DEBUGLOG2(other,_T("calloc(1,%d) failed"),
-
-			          sizeof (struct heap_element));
+			          (int)sizeof (struct heap_element));
 			fatal_error (4);
 			return NULL;
 		}
@@ -200,7 +199,14 @@ void * xmalloc (size_t size)
 
 		heap_to_use_syntax -> next = NULL;
 		heap_to_use_syntax -> anzahl_belegt = size + OFFSET;
-		*(size_t *)&(heap_to_use_syntax -> inhalt [ 0 ]) = size;
+		{ 
+			void * tmp = (void*)heap_to_use_syntax -> inhalt;
+			size_t * tmp2 = (size_t *) tmp;
+			*tmp2 = size;
+			/* Original code:
+			 * (size_t *)&(heap_to_use_syntax -> inhalt [ 0 ]) = size; 
+			 */
+		}
 		return & heap_to_use_syntax -> inhalt [ OFFSET ] ;
 	}
 }
@@ -228,7 +234,7 @@ void * xrealloc (void * block, size_t newsize)
 			memmove (help, block, newsize);
 			return help;
 		} else {
-			DEBUGLOG2(other,_T("xmalloc (%d) failed"),newsize);
+			DEBUGLOG2(other,_T("xmalloc (%d) failed"),(int)newsize);
 			fatal_error (4);
 			return NULL;
 		}
@@ -244,7 +250,7 @@ void * xcalloc (size_t anzahl, size_t size)
 		memset (help, 0, anzahl * size);
 		return help;
 	} else {
-		DEBUGLOG2(other,_T("xmalloc(%d * %d) failed"),anzahl,size);
+		DEBUGLOG2(other,_T("xmalloc(%d * %d) failed"),(int)anzahl,(int)size);
 		fatal_error (4);
 		return NULL;
 	}
@@ -312,9 +318,8 @@ void * ymalloc (size_t size)
 	struct mini_heap * help2 = (mini_heap*) malloc (sizeof (struct mini_heap));
 
 	if (help1 == NULL || help2 == NULL) {
-		DEBUGLOG2(other,_T("help1 == %x(%d) ; help2 == %x(%d)"),
-
-		          help1,size,help2,sizeof(struct mini_heap));
+		DEBUGLOG2(other,_T("help1 == %p(%d) ; help2 == %p(%d)"),
+		          help1,(int)size,(void*)help2,(int)sizeof(struct mini_heap));
 		fatal_error (4);
 		return NULL;
 	}

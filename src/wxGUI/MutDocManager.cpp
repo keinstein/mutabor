@@ -91,7 +91,7 @@ namespace mutaborGUI {
 	bool MutDocManager::TryParent(wxEvent& event)
 	{
 		mutUnused(event);
-		DEBUGLOG(eventqueue,_T(""));
+		TRACEC;
 		// if we must pass some events to the Application, 
 		// they must be handled here somehow replacing false
 #if 0
@@ -118,8 +118,8 @@ namespace mutaborGUI {
 		if (!wxEvtHandler::ProcessEvent(event))
 		{
 			wxView* view = GetCurrentView();
-			DEBUGLOG(eventqueue,_T("View: %x"),
-				 dynamic_cast<MutView *>(view));
+			DEBUGLOG(eventqueue,_T("View: %p"),
+				 (void*)(dynamic_cast<MutView *>(view)));
 			if (view && view->ProcessEvent(event))
 				return true;
 			else return false;

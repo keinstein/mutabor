@@ -161,7 +161,7 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::Add(mutabor::Route & r)
 	{
 		if (route) UNREACHABLEC;
-		DEBUGLOG(smartptr,_T("Adding route %p"),r.get());
+		DEBUGLOG(smartptr,_T("Adding route %p"),(void *)r.get());
 		route = r;
 		Icon = GetMutIcon();
 	}
@@ -198,7 +198,7 @@ namespace mutaborGUI {
 		bool retval = oldroute == route;
 		if (retval) {
 			DEBUGLOG(smartptr,_T("Replacing route %p by %p"),
-				 oldroute.get(), newroute.get());
+				 (void *)oldroute.get(), (void *)newroute.get());
 
 			route = newroute;
 		} else
@@ -235,7 +235,7 @@ namespace mutaborGUI {
 		if (!retval)
 			UNREACHABLEC;
 		if (retval) {
-			DEBUGLOG(smartptr,_T("removing route %p"),r.get());
+			DEBUGLOG(smartptr,_T("removing route %p"),(void *)r.get());
 			route = NULL;
 		}
 		return retval;
@@ -332,8 +332,8 @@ namespace mutaborGUI {
 			route = shape->route;
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
 				     _T("set intermediete route %p (%d)"),
-				     route.get(),
-				     intrusive_ptr_get_refcount(route.get()));
+				     (void *)route.get(),
+				     (int)intrusive_ptr_get_refcount(route.get()));
 		} else
 			route = NULL;
 		TRACET(MutBoxChannelShape);
@@ -365,8 +365,8 @@ namespace mutaborGUI {
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
 			     _T("End of function. Destruct pointer to  %p (%d)"),
-			     route.get(),
-			     intrusive_ptr_get_refcount(route.get()));
+			     (void*)route.get(),
+			     (int)intrusive_ptr_get_refcount(route.get()));
 	}
 			
 	void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
@@ -382,7 +382,7 @@ namespace mutaborGUI {
 		if (shape) {
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
 				     _T("setting intermediete route %p"),
-				 shape->route.get());
+				     (void *)shape->route.get());
 			route = shape->route;
 		} else
 			route = NULL;
@@ -412,8 +412,8 @@ namespace mutaborGUI {
 		if (!found)
 			panel->AddBox(NULL, true);
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("End of function destruct pointer to  %p"),
-			 route.get());
+			     _T("End of function: destruct pointer to  %p"),
+			     (void *)route.get());
 	}
 
 	void MutBoxChannelShape::InitializeOutputFilter(OutputFilterPanel * panel, 
@@ -435,7 +435,7 @@ namespace mutaborGUI {
 		if (shape) {
 			DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
 				     _T("setting intermediete route %p"),
-				 shape->route.get());
+				     (void*)shape->route.get());
 			route = shape->route;
 		} else
 			route = NULL;
@@ -461,8 +461,8 @@ namespace mutaborGUI {
 					  device);
 		}
 		DEBUGLOGTYPE(smartptr,MutBoxChannelShape,
-				     _T("End of function destruct pointer to  %p"),
-			 route.get());
+			     _T("End of function destruct pointer to  %p"),
+			     (void*)route.get());
 	}
 
 	void MutBoxChannelShape::ReadPanel(RoutePanel * panel) 
@@ -629,8 +629,8 @@ namespace mutaborGUI {
 
 		if (output) {
 #ifdef DEBUG
-			DEBUGLOG (routinggui, _T("Drawing output line to device %x"),
-				  output->GetDevice().get());
+			DEBUGLOG (routinggui, _T("Drawing output line to device %p"),
+				  (void*)output->GetDevice().get());
 			mutASSERT(output->GetDevice());
 			DEBUGLOG (routinggui, 
 				  _T("Lines for device:\n%s"), 

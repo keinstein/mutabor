@@ -492,7 +492,7 @@ char *AddStr(char **s1, const char *s2, const char *s3)
 
 int BuildTag()
 {
-	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),(int)TagName.Len(),TagName.c_str());
 	GisTag *Tag = new GisTag(TagName, Para, TagSep);
 	*Current = Tag;
 	Current = &(Tag->Next);
@@ -719,7 +719,7 @@ int TagParaInt(long i)
 
 int TagParaReal(double x)
 {
-	DEBUGLOG2(gmnfile,_T("ParaReal: %lg"), x);
+	DEBUGLOG2(gmnfile,_T("ParaReal: %g"), x);
 	GisParaReal *p = new GisParaReal(x, Sep, 0);
 
 	if ( LastPara )
@@ -853,7 +853,7 @@ GisToken *GisParse(const mutString FileName)
 	TagSep = mutEmptyString;
 	Para = 0;
 	LastPara = 0;
-	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),TagName.Len(),TagName.c_str());
+	DEBUGLOG2(gmnfile,_T("TagName.len %d, '%s'"),(int)TagName.Len(),TagName.c_str());
 
 	if ( GspParse(FileName) ) {
 		UnRavel();

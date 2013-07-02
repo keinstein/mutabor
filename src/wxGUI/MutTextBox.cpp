@@ -71,7 +71,7 @@ MutTextBox::MutTextBox(WinKind k,
 		winKind(k),
 		box(boxId)
 {
-	DEBUGLOG (other, _T(""));
+	TRACEC;
 	SetBackgroundStyle(wxBG_STYLE_COLOUR);
 //	SetBackgroundColour(*wxWHITE);
 	SetForegroundColour(BoxTextColour(box));
@@ -274,7 +274,7 @@ void MutTextBox::GetBoxActions()
 void MutTextBox::NewText(char *s, bool newTitle)
 {
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-	DEBUGLOG (other, _T(""));
+	TRACEC;
 	// Text in Liste
 	Clear();
 	char s1[2000];

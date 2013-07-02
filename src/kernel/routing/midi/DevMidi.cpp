@@ -164,12 +164,13 @@ namespace mutabor {
 	wxString OutputMidiPort::TowxString() const {
 		wxString channelString;
 		for (int i = 0 ; i<16; i++) {
-			channelString += wxString::Format(_T(" ({not implemented},%d,[%d,%d,%d,%d,%d])"),
+			channelString += wxString::Format(_T(" ({not implemented},%d,[in=%d,p=%d,b=%d,u=%d,ch=%d])"),
 							  ton_auf_kanal[i].active,
 							  ton_auf_kanal[i].inkey,
-							  ton_auf_kanal[i].outkey,
-							  ton_auf_kanal[i].unique_id,
-							  ton_auf_kanal[i].channel
+							  ton_auf_kanal[i].outkey.pitch,
+							  ton_auf_kanal[i].outkey.bend,
+							  (int)ton_auf_kanal[i].unique_id,
+							  (int)ton_auf_kanal[i].channel
 				);
 		}
 		return OutputDeviceClass::TowxString()
@@ -429,7 +430,7 @@ InputMidiPort:\n\
    hMidiIn = %p\n\
    channels {sound,sustain,MSB,LSB,pitch}:\n\
              %s\n\
-"), hMidiIn, (const wxChar *)channelString);
+"), (void*)hMidiIn, (const wxChar *)channelString);
 
 	}
 #endif

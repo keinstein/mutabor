@@ -302,12 +302,12 @@ namespace mutaborGUI {
 					  return;
 					}
 					mutASSERT(newdev->device);
-					DEBUGLOG (dialog, _T(""));
+					TRACEC;
 					newdev -> readDialog (in);
 					if (LogicOn && !(newdev->device->IsOpen())) 
 						newdev->device->Open();
 
-					DEBUGLOG (dialog, _T(""));
+					TRACEC;
 					destroySelf = replaceSelfBy (newdev);
 				}
 			}
@@ -426,9 +426,6 @@ namespace mutaborGUI {
 		mutASSERT (newshape);
 		mutASSERT (newshape->device);
 
-		DEBUGLOG (routing, _T(""));
-	
-		
 		TRACEC;
 		if (device) // might be zero as in MutNewInputDeviceShape
 			device->MoveRoutes(newshape->GetDevice());
@@ -443,8 +440,6 @@ namespace mutaborGUI {
 */
 
 
-		DEBUGLOG (routing, _T(""));
-       
 		newshape->MoveBeforeInTabOrder (this);
 
 		wxSizer * sizer = GetContainingSizer();

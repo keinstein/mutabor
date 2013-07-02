@@ -302,7 +302,7 @@ public:
 	       mutString sep = mutEmptyString, GisToken *next = 0)
 			: GisToken(sep, next)
 	{
-		DEBUGLOG(other, _T("name.len %d"),name.Len());
+		DEBUGLOG(other, _T("name.len %d"),(int)(name.Len()));
 		Id = GetTagId(name, Name);
 
 		if ( Id == -1 ) {
@@ -409,7 +409,7 @@ public:
 	virtual wxString ToString()
 	{
 		return _T("GisTagBegin: {\n") + GisTag::ToString() +
-		       wxString::Format(_T("End: %p\n}\n"),End);
+			wxString::Format(_T("End: %p\n}\n"),(void *)End);
 	}
 
 #endif
@@ -446,7 +446,7 @@ public:
 	virtual wxString ToString()
 	{
 		return _T("GisTagEnd: {\n") + GisToken::ToString() +
-		       wxString::Format(_T("Begin: %p\n}\n"),Begin);
+			wxString::Format(_T("Begin: %p\n}\n"),(void *)Begin);
 	}
 
 #endif

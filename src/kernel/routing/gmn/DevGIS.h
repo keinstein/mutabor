@@ -313,8 +313,10 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const {
 			return InputDeviceClass::TowxString() +
-				wxString::Format(_T("\n  Id: %s\n  actDelta = %ld\n  minDelta = %ld\n  TimerId = %d\n  Busy = %d"),
-						 Id.c_str());
+				wxString::Format(_T("\n\
+  Id: %s\n  minDelta = %ld\n"),
+						 Id.c_str(),
+						 minDelta);
 		}
 #endif
 	

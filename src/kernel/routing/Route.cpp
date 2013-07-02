@@ -49,7 +49,7 @@ namespace mutabor {
 	template <class I, class O>
 	TRouteClass<I,O>::~TRouteClass() 
 	{
-		DEBUGLOG(smartptr,_T("deleting %p"),this);
+		DEBUGLOG(smartptr,_T("deleting %p"),(void*)this);
 #ifdef DEBUG
 		typename routeListType::iterator r = 
 			std::find(routeList.begin(),
@@ -261,8 +261,8 @@ namespace mutabor {
 				route -> Load(config);
 			DEBUGLOGTYPE(smartptr,thistype,
 				     _T("route is %p (%d)"),
-				     route.get(),
-				     intrusive_ptr_get_refcount(route.get()));
+				     (void*)route.get(),
+				     (int)intrusive_ptr_get_refcount(route.get()));
 			i = config.toNextLeaf(_T("Route"));
 		}
 	
@@ -317,7 +317,7 @@ TRouteClass<I,O>:\n\
    OFrom    = %d\n\
    OTo      = %d\n\
    flags:     Active:%d, ONoDrum:%d\n\
-"),(void *)userdata,Out.get(),In.get(),inputid,outputid,Box,Type,IFrom,ITo,OFrom,OTo,
+"),(void *)userdata,(void*)Out.get(),(void*)In.get(),Id,inputid,outputid,Box,Type,IFrom,ITo,OFrom,OTo,
 					Active,ONoDrum);
 	}
 

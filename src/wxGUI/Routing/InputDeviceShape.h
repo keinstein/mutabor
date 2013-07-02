@@ -139,7 +139,7 @@ namespace mutaborGUI {
 		friend class GUIInputDeviceFactory;
 	protected: 
 		mutabor::InputDevice device;
-//	static stringmaptype stringmap;
+		//	static stringmaptype stringmap;
 		static wxSizerFlags sizerFlags;
 
 
@@ -150,16 +150,16 @@ namespace mutaborGUI {
 				     const wxString &
 				     name):MutDeviceShape (),
 					   device(NULL)
-			{
-				Create (parent, id, name);
-			}
+		{
+			Create (parent, id, name);
+		}
 
 
 		MutInputDeviceShape (wxWindow * parent, wxWindowID id, 
 				     mutabor::InputDevice & d):
 			MutDeviceShape(),
 			device(NULL)
-			{
+		{
 			Create (parent, id, d);
 		}
 	public:
@@ -169,47 +169,47 @@ namespace mutaborGUI {
 
 		bool Create (wxWindow * parent, wxWindowID id, const wxString &
 	                     name)
-			{
-				DEBUGLOG (other,_T (""));
-				device = NULL;
-				TRACEC;
-				return MutDeviceShape::Create (parent, id, name);
-			}
+		{
+			TRACEC;
+			device = NULL;
+			TRACEC;
+			return MutDeviceShape::Create (parent, id, name);
+		}
 
 		bool Create (wxWindow * parent, wxWindowID id, 
 			     mutabor::InputDevice & d);
 
-/*
-		static MutInputDeviceShape * CreateShape(wxWindow * parent,
-							 wxWindowID id,
-							 mutabor::InputDevice d);
+		/*
+		  static MutInputDeviceShape * CreateShape(wxWindow * parent,
+		  wxWindowID id,
+		  mutabor::InputDevice d);
 
-		MutInputDeviceShape * CreateShape (mutabor::InputDevice d) 
-			{
-				DEBUGLOG (other,_T (""));
-				return CreateShape (m_parent, wxID_ANY,d);
-			}
-*/
+		  MutInputDeviceShape * CreateShape (mutabor::InputDevice d) 
+		  {
+		  DEBUGLOG (other,_T (""));
+		  return CreateShape (m_parent, wxID_ANY,d);
+		  }
+		*/
 		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
 		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
 
 		void SetLabel(const wxString & st );
 
 		MutIcon & GetMutIcon ()
-			{
-				return MidiInputDevBitmap;
-			}
+		{
+			return MidiInputDevBitmap;
+		}
 
 		mutabor::routeListType & getRoutes()
-			{
+		{
 #ifdef DEBUG
-				if (!device) {
-					UNREACHABLEC;
-				}
-#endif
-				TRACEC;
-				return device->GetRoutes();
+			if (!device) {
+				UNREACHABLEC;
 			}
+#endif
+			TRACEC;
+			return device->GetRoutes();
+		}
 		
 		// pull some functions from MutDeviceShape
 
@@ -265,7 +265,7 @@ namespace mutaborGUI {
 		/// Detach a device from the shape
 		/** this function is usually called short before the
 		    deletion of the window
-		 */
+		*/
 		void Detatch(mutabor::InputDevice & dev) {
 			TRACEC;
 			mutASSERT(device == dev);
@@ -310,17 +310,17 @@ namespace mutaborGUI {
 		InputDevDlg * ShowDeviceDialog();
 		virtual wxPanel * GetInputFilterPanel(wxWindow * parent, 
 						      mutabor::Route & route) const
-			{ 
-				ABSTRACT_FUNCTIONC;
-				return NULL; 
-			}
+		{ 
+			ABSTRACT_FUNCTIONC;
+			return NULL; 
+		}
 	
 		virtual void ReadInputFilterPanel(wxWindow * panel, 
 						  mutabor::Route & route) 
-			{
-				ABSTRACT_FUNCTIONC;
-				return;
-			}
+		{
+			ABSTRACT_FUNCTIONC;
+			return;
+		}
 		virtual void ReadPanel(InputFilterPanel * panel, MutBoxChannelShape * channel);
 
 	protected: 

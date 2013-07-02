@@ -159,7 +159,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
         if (!sizer) DEBUGLOG2 (other,_T("NULL Pointer."));
         DEBUGLOGTYPE (other, *sizer, _T ("%sSizer: %p to Window %p"),
                       offset.c_str (),
-                      sizer,sizer->GetContainingWindow ());
+                      (void*)sizer,(void*)sizer->GetContainingWindow ());
         wxSizerItemList &childs = sizer -> GetChildren ();
         for (wxSizerItemList::iterator i = childs.begin ();
              i!=childs.end (); i++) {
@@ -179,7 +179,7 @@ void PRINTSIZER (wxSizer * sizer, const wxString & offset)
                         DEBUGLOGTYPE (other, *window, 
                                       _T ("%sWindow: %p with parent window %p (%s) from (%d,%d) to (%d,%d)"),
                                       offset.c_str (),
-                                      window,window->GetParent (),
+                                      (void*)window,(void*)window->GetParent (),
                                       (item -> IsShown ()?
                                        _T ("shown"):_T ("hidden")),
                                       rect.x,rect.y, rect.x+rect.width,

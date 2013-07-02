@@ -264,7 +264,7 @@ namespace mutaborGUI {
 	bool MutEditFile::DoLoadFile(const wxString &filename, 
 				     int WXUNUSED(fileType))
 	{
-		DEBUGLOG(mutparser,_T(""));
+		TRACEC;
 		wxFFile file(filename);
 
 		if ( file.IsOpened() ) {
@@ -767,8 +767,7 @@ namespace mutaborGUI {
 			}
 		}
 			
-		DEBUGLOG(other,_T(""));
-		DEBUGLOG(editor,_T(""));
+		TRACEC;
 		return result;
 		
 	}

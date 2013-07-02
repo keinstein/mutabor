@@ -217,7 +217,7 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 */
 
 
-        DEBUGLOG (other, _T("this is window %p"),this);
+        DEBUGLOG (other, _T("this is window %p"), (void*)this);
         SetSizer(new wxFlexGridSizer(3,0,50));
         SetScrollRate(1, 1);
 
@@ -240,12 +240,12 @@ void MutRouteWnd::InitShapes()
 	
 	mutASSERT(Boxes.empty());
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
-			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
+		 NewBox,(int)BoxData::GetBox(NewBox).GetBoxShapes().size());	
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
 	GetSizer()->Add(boxShape, flags);
 	Boxes.push_back(boxShape);
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d now)"),
-			 NewBox,BoxData::GetBox(NewBox).GetBoxShapes().size());	
+		 NewBox,(int)BoxData::GetBox(NewBox).GetBoxShapes().size());	
 
 	mutASSERT(OutputDevices.empty());
 	MutOutputDeviceShape * newout = new MutNewOutputDeviceShape(this,wxID_ANY);
@@ -299,7 +299,7 @@ void MutRouteWnd::createInputDevices(wxSizerFlags flags)
 	for ( InputDeviceList::const_iterator In = list.begin(); 
 	      In != list.end(); In++) {
                 DEBUGLOG (other, _T("In the loop %p"), 
-			  (*In).get());
+			  (void*)(*In).get());
 		TRACEC;
                 MutInputDeviceShape * newin = 
 			GUIDeviceFactory::CreateShape(const_cast<InputDevice &>(*In),
@@ -542,7 +542,7 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 
 void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 {
-	DEBUGLOGTYPE(other,MutFrame,_T(""));
+	TRACET(MutFrame);
 	event.Skip(false);
 	
 	if (!MurFileData.name.IsOk() ) {
@@ -585,7 +585,7 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 
 void MutRouteWnd::CmRouteSaveAs(wxCommandEvent& event)
 {
-	DEBUGLOGTYPE(other,MutFrame,_T(""));
+	TRACET(MutFrame);
 	
 	// it's our task
 	event.Skip(false);

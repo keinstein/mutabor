@@ -134,9 +134,9 @@ struct nogetflag {
 #define DEBUGLOG2(level,...) DEBUGLOGBASE(level, _T(""),__VA_ARGS__)
 #define DEBUGLOGTYPE(level, type,...) DEBUGLOGBASE(level, typeid(type).name(), __VA_ARGS__)
 #define DEBUGLOGTYPEINT(level, strlevel,type,...) DEBUGLOGBASEINT(level, strlevel, typeid(type).name(), __VA_ARGS__)
-#define TRACE DEBUGLOGBASE(trace,_T(""),_T(""))
-#define TRACEC DEBUGLOG(trace,_T(""))
-#define TRACET(type) DEBUGLOGTYPE(trace,type,_T(""))
+#define TRACE DEBUGLOGBASE(trace,_T(""),_T("."))
+#define TRACEC DEBUGLOG(trace,_T("."))
+#define TRACET(type) DEBUGLOGTYPE(trace,type,_T("."))
 
 template <class T,class flag, class P>
 class watchedPtr {
@@ -162,7 +162,9 @@ public:
 	
 	watchedPtr<T,flag,P> &operator= (datatype * d)
 	{
-		DEBUGLOGTYPEINT(flag()(),"???",parenttype,_T("Setting %s in %p from %p to %p"),name.c_str(),parent,data,d);
+		DEBUGLOGTYPEINT(flag()(),"???",parenttype,
+				_T("Setting %s in %p from %p to %p"),
+				name.c_str(),(void*)parent,(void*)data,d);
 		data = d;
 		return *this;
 	}

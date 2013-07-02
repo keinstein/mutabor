@@ -440,7 +440,7 @@ namespace mutaborGUI {
 		{
 			// we have a document to open
 			str = parser.GetParam(i);
-			printf("cmd line param: %ls\n", WXSTRINGCAST(str));
+			printf("cmd line param: %s\n", WXSTRINGCAST(str));
 			// this will probably see if the file exists, and has the right extension
 
 //		MutFrame * frame = CreateMainFrame(EditorMenu);
@@ -833,8 +833,8 @@ namespace mutaborGUI {
 	void MutApp::CmRoutes (wxCommandEvent& event)
 	{
 		DEBUGLOG(other,_T("window %p is casted %p"),
-			 wxWindow::FindWindowById(WK_ROUTE),
-			 dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)));
+			 (void*)wxWindow::FindWindowById(WK_ROUTE),
+			 (void*)dynamic_cast <MutFrame *>(wxWindow::FindWindowById(WK_ROUTE)));
 
 		MutFrame * frame = 
 			dynamic_cast<MutFrame*>(wxWindow::FindWindowById(WK_ROUTE));
@@ -913,7 +913,7 @@ namespace mutaborGUI {
 
 	void MutApp::CmQuit (wxCommandEvent& event)
 	{
-		DEBUGLOG (other, _T(""));
+		TRACE;
 
 		SetExitOnFrameDelete(true);
 		//		Exit();

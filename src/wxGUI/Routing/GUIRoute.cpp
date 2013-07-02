@@ -478,26 +478,26 @@ namespace mutaborGUI {
 	void GUIRouteBase::Destroy() {
 		Route r(GetRoute());
 		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 r.get(), 
-			 intrusive_ptr_get_refcount(r.get()));
+			 (void*)r.get(), 
+			 (int)intrusive_ptr_get_refcount(r.get()));
 		MutBoxChannelShapeList::iterator i;
 		while ( (i = shapes.begin()) != shapes.end()) {
 			MutBoxChannelShape * shape = *i;
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				 (void*)r.get(), 
+				 (int)intrusive_ptr_get_refcount(r.get()));
 			disconnect(r,shape);
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				 (void*)r.get(), 
+				 (int)intrusive_ptr_get_refcount(r.get()));
 			shape -> Destroy();
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 r.get(), 
-				 intrusive_ptr_get_refcount(r.get()));
+				 (void*)r.get(), 
+				 (int)intrusive_ptr_get_refcount(r.get()));
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), disconnected shapes"),
-			 r.get(), 
-			 intrusive_ptr_get_refcount(r.get()));
+			 (void*)r.get(), 
+			 (int)intrusive_ptr_get_refcount(r.get()));
 //		box -> Detatch(route);
 		r = NULL;
 	}
@@ -509,21 +509,21 @@ namespace mutaborGUI {
 	{ 
 		int saveboxid = T::GetBox();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
-			 this, 
-			 intrusive_ptr_get_refcount(this));
+			 (void*)this, 
+			 (int)intrusive_ptr_get_refcount(this));
 		Route self(this); // prevent us from beeing deleted
 		DEBUGLOG(smartptr,_T("Route; %p (%d), destroying GUI"),
-			 this, 
-			 intrusive_ptr_get_refcount(this));
+			 (void*)this, 
+			 (int)intrusive_ptr_get_refcount(this));
 		GUIRouteBase::Destroy();    //
 		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
-			 this, 
-			 intrusive_ptr_get_refcount(this));
+			 (void*) this, 
+			 (int)intrusive_ptr_get_refcount(this));
 		T::Destroy();
 		mutASSERT(intrusive_ptr_get_refcount(this) <= 2);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
-			 this, 
-			 intrusive_ptr_get_refcount(this));
+			 (void*)this, 
+			 (int)intrusive_ptr_get_refcount(this));
 		BoxData::CloseRoute(saveboxid);
 	}
 
@@ -549,11 +549,11 @@ namespace mutaborGUI {
 							     mutabor::Route next*/) const
 	{
 		DEBUGLOG(smartptr,_T("input device %p (%d)"),
-			in.get(),
-			intrusive_ptr_get_refcount(in.get()));
+			 (void*)in.get(),
+			 (int)intrusive_ptr_get_refcount(in.get()));
 		DEBUGLOG(smartptr,_T("output device %p (%d)"),
-			out.get(),
-			intrusive_ptr_get_refcount(out.get()));
+			 (void*)out.get(),
+			 (int)intrusive_ptr_get_refcount(out.get()));
 		GUIRoute * r = new GUIRoute (in,out,type,
 					     iFrom,iTo,
 					     box,active,
@@ -561,8 +561,8 @@ namespace mutaborGUI {
 					     oNoDrum/*,next*/);
 		if (r) {
 			DEBUGLOG(smartptr,_T("Route; %p (%d), created"),
-				 r->GetRoute(), 
-				 intrusive_ptr_get_refcount(r->GetRoute()));
+				 (void*)r->GetRoute(), 
+				 (int)intrusive_ptr_get_refcount(r->GetRoute()));
 			return (r->GetRoute());
 		} else 
 			return NULL;
@@ -572,7 +572,7 @@ namespace mutaborGUI {
 							wxWindow * parent) const {
 		MutBoxShape * shape;	
 		DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
-			 box,BoxData::GetBox(box).GetBoxShapes().size());
+			 box,(int)BoxData::GetBox(box).GetBoxShapes().size());
 		
 	
 		if (box == NewBox) 
@@ -584,7 +584,7 @@ namespace mutaborGUI {
 			shape = new MutBoxShape(parent, wxID_ANY,box);
 
 		DEBUGLOG(routing,_T("Added box shape for box %d (list of %d)"),
-			 box,BoxData::GetBox(box).GetBoxShapes().size());
+			 box,(int)BoxData::GetBox(box).GetBoxShapes().size());
 
 #if 0 // the box is registered during Create
 		if (box >= 0) {
@@ -609,8 +609,8 @@ namespace mutaborGUI {
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
 		DEBUGLOG(smartptr,_T("Route; %p (%d), new shape"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()));
+			 (void*)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()));
 
 		MutBoxChannelShape * shape = 
 			new MutBoxChannelShape (parent,wxID_ANY,route);
@@ -620,8 +620,8 @@ namespace mutaborGUI {
 		}
 		*/
 		DEBUGLOG(smartptr,_T("Route; %p (%d), shape created"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()));
+			 (void*)route.get(), 
+			 (int)intrusive_ptr_get_refcount(route.get()));
 		return shape;
 	}
 

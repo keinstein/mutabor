@@ -226,7 +226,7 @@ namespace mutaborGUI {
 	{
 		bool retval = true;
 		for (size_t box = 0 ; box < vector.size() ; box++) {
-			config->SetPath(wxString::Format(_T("%d"),box));
+			config->SetPath(wxString::Format(_T("%d"),(int)box));
 			retval &= vector[box].Save(config);
 			config->SetPath(_T(".."));
 		}
@@ -237,7 +237,7 @@ namespace mutaborGUI {
 	{
 		bool retval = true;
 		for (size_t box = 0 ; box < vector.size() ; box++) {
-			config->SetPath(wxString::Format(_T("%d"),box));
+			config->SetPath(wxString::Format(_T("%d"),(int)box));
 			retval &= vector[box].Load(config);
 			config->SetPath(_T(".."));
 		}

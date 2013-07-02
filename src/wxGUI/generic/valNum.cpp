@@ -73,7 +73,7 @@ wxNumValidator::wxNumValidator(long *val, int style, int min, int max, wxCheckBo
 		: wxTextValidator(wxFILTER_NUMERIC, &bufferString)
 {
 	DEBUGLOG(other,_T("val: %p, style: %d, min: %d, max: %d, enabler: %p"),
-	         val,style,min,max,enabler);
+	         (void*)val,style,min,max,(void*)enabler);
 	Style = style ;
 	Min = min;
 	Max = max;
@@ -91,16 +91,16 @@ wxNumValidator::wxNumValidator(long *val, int style, int min, int max, wxCheckBo
 wxNumValidator::wxNumValidator(const wxNumValidator& val)
 		: wxTextValidator(wxFILTER_NUMERIC, &bufferString)
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	Copy(val);
 }
 
 bool wxNumValidator::Copy(const wxNumValidator& val)
 
 {
-	DEBUGLOG(other,_T("%p"),m_stringValue);
+	DEBUGLOG(other,_T("%p"),(void*)m_stringValue);
 	wxTextValidator::Copy(val);
-	DEBUGLOG(other,_T("%p"),m_stringValue);
+	DEBUGLOG(other,_T("%p"),(void*)m_stringValue);
 	m_stringValue = &bufferString;
 
 	Style = val.Style ;
@@ -122,7 +122,7 @@ wxNumValidator::~wxNumValidator()
 // This function can pop up an error message.
 bool wxNumValidator::Validate(wxWindow *parent)
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 
 	if ( !wxTextValidator::Validate(parent) )
 		return FALSE;
@@ -172,7 +172,7 @@ bool wxNumValidator::Validate(wxWindow *parent)
 // Called to transfer data to the window
 bool wxNumValidator::TransferToWindow(void)
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 
 	if ( !CheckValidator() )
 		return FALSE;
@@ -190,7 +190,7 @@ bool wxNumValidator::TransferToWindow(void)
 // Called to transfer data to the window
 bool wxNumValidator::TransferFromWindow(void)
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 
 	if ( !CheckValidator() )
 		return FALSE;

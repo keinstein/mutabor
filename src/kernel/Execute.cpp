@@ -125,14 +125,14 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 	bool WasNewLogic = false;
 	mutASSERT(box);
 	mutASSERT(box->tonesystem);
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 
 	for ( ; aktion; aktion = aktion -> next)
 	{
 		AktionenMessage(box, aktion);
 		switch (aktion->aufruf_typ) {
 		case aufruf_logik:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			execute_aktion (box, aktion->u.aufruf_logik.einstimmung);
 
 			mutASSERT(box->last_global_keyboard);
@@ -149,7 +149,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_tonsystem:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 
 			*(box -> tonesystem) =
 			        *aktion->u.aufruf_tonsystem.tonsystem;
@@ -163,7 +163,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_taste_abs:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			change_anker(box,
 			             aktion->u.aufruf_umst_taste_abs.wert[box->id]);
 
@@ -177,7 +177,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_breite_abs:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			change_breite(box,
 			              aktion->u.aufruf_umst_breite_abs.wert[box->id]);
 
@@ -191,7 +191,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_wiederholung_abs:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			box->tonesystem->periode =
 			        aktion->u.aufruf_umst_wiederholung_abs.faktor;
 
@@ -204,7 +204,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			break;
 
 		case aufruf_umst_wiederholung_rel:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			box->tonesystem->periode +=
 			        aktion->u.aufruf_umst_wiederholung_rel.faktor;
 
@@ -218,7 +218,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 
 		case aufruf_umst_taste_rel: {
 			int help;
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			help = box->tonesystem->anker;
 			
 			switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
@@ -248,7 +248,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 
 		case aufruf_umst_breite_rel: {
 			int help;
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			help = box->tonesystem->breite;
 
 			switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
@@ -288,7 +288,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		case aufruf_umst_toene_veraendert: {
 			long * ton_zeiger;
 			struct ton_einstell * lauf;
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 
 			for (ton_zeiger = box->tonesystem->ton,
 			                lauf = aktion->u.aufruf_umst_toene_veraendert.tonliste;
@@ -332,7 +332,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		case aufruf_umst_umst_case: {
 			struct case_element * lauf;
 			int i;
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			i=aktion->u.aufruf_umst_umst_case.wert[box->id];
 
 			for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
@@ -355,7 +355,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			struct midiliste * lauf;
 			unsigned long data = 0, faktor = 1, n = 0;
 			;
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 
 			for (lauf = aktion->u.aufruf_midi_out.out_liste;
 			                lauf && faktor ;
@@ -370,7 +370,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		break;
 
 		case aufruf_umst_umst_bund:
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			wxLogWarning(_("Unhandled case path: aufruf_umst_umst_bund"));
 			UNREACHABLE;
 			break;
@@ -398,7 +398,7 @@ void update_pattern(mutabor_box_type * box)
 	PATTERNN * temp_pattern = &(box->pattern);
 	tone_system * tonsys = box->tonesystem;
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 
 	for (i=0;i<tonsys->breite;i++) temp_pattern->tonigkeit[i]=0;
 
@@ -415,7 +415,7 @@ void change_anker(mutabor_box_type * box, int neu)
 	tone_system * tonsys = box->tonesystem;
 	tone_system * temp = tonsys;
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	/** \todo why do we have two anchors? */
 	box->anchor -= neu-tonsys->anker;
 
@@ -448,7 +448,7 @@ void change_breite(mutabor_box_type * box, int neu)
 	tone_system * tonsys = box->tonesystem;
 	int i;
 	
-	DEBUGLOG2(kernel_exec,_T("Box %d got new width: %d"), box, neu);
+	DEBUGLOG2(kernel_exec,_T("Box %p got new width: %d"), (void*)box, neu);
 	if ( neu>0 && neu < MUTABOR_KEYRANGE_MAX_WIDTH ) {
 		if ( neu > tonsys->breite )
 			for (i = tonsys->breite; i < neu; i++)
@@ -471,7 +471,7 @@ int tiefste_taste(mutabor_box_type *  box)
 	if (!(box->key_count)) {
 		return INT_MIN;
 	}
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	
 	do {
 		key = mutabor_find_key_in_box(box,index);
@@ -499,7 +499,7 @@ int hoechste_taste(mutabor_box_type * box)
 	if (!(box->key_count)) {
 		return INT_MAX;
 	}
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	
 	do {
 		key = mutabor_find_key_in_box(box,index);
@@ -520,7 +520,7 @@ int hoechste_taste(mutabor_box_type * box)
 int compare_harmonie(int breite, int startindex, PATTERNN * laufzeit, PATTERNN * vergleich)
 {
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 
 	for (i=0;i<breite; i++,startindex++) {
 		if ( vergleich->tonigkeit[i] ) {
@@ -547,13 +547,13 @@ void HarmonyAnalysis(mutabor_box_type * box, PATTERNN * pattern )
 	struct harmonie_ereignis *help;
 	tone_system *tonsys = box->tonesystem;
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 
 	for (help = box->first_harmony; help; help=help->next ) {
 		switch ( help->ist_harmonieform ) {
 
 		case 0: // analysiere auf harmonie
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			if ( help->vortaste>=0 &&
 			                GET_INDEX(tiefste_taste(box),tonsys ) != help->vortaste ) {
 				// failed
@@ -575,7 +575,7 @@ void HarmonyAnalysis(mutabor_box_type * box, PATTERNN * pattern )
 			break;
 
 		case 1: // analysiere auf harmonieform
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			for (i=0; i<tonsys->breite; i++) {
 				if ( help->vortaste>=0 &&
 				                GET_INDEX(tiefste_taste(box)-i, tonsys) != help->vortaste ) {
@@ -600,7 +600,7 @@ void HarmonyAnalysis(mutabor_box_type * box, PATTERNN * pattern )
 			break;
 
 		case 2: // default
-			DEBUGLOG2(kernel_exec,_T(""));
+			TRACE;
 			execute_aktion(box, help->aktion);
 
 			break;
@@ -629,7 +629,7 @@ void AddKey( mutabor_box_type * box, int taste, size_t id, size_t channel, void 
 void DeleteKey( mutabor_box_type * box, int taste, size_t id, int channel)
 {
 	size_t index=0;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	mutabor_key_type * key;
 	while ((key = mutabor_find_key_in_box(box,index)) != NULL) {
 		if (key->number == taste && key ->id == id && key -> channel == channel) 
@@ -664,7 +664,7 @@ void DeleteKey( mutabor_box_type * box, int taste, size_t id, int channel)
 
 void KeyboardIn(mutabor_box_type * box, const mutChar *keys)
 {
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	char TonSystem = 0;
 
 	for (size_t i= 0; i < mutStrLen(keys); i++) {
@@ -692,7 +692,7 @@ void MidiAnalysis(mutabor_box_type * box, BYTE midiByte)
 		UNREACHABLE;
 		return;
 	}
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 
 	if ( midiByte & 0x80 )
 		midiByte &= 0xF0;
@@ -713,7 +713,7 @@ void MidiAnalysis(mutabor_box_type * box, BYTE midiByte)
 
 void pascal _export KeyboardAnalyse(mutabor_box_type * box, int taste, char isLogic)
 {
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	for (struct keyboard_ereignis *help = box->first_keyboard; 
 	     help ; help=help->next)
 		if ( toupper(taste)==help->taste && isLogic == 
@@ -725,7 +725,7 @@ void pascal _export KeyboardAnalyse(mutabor_box_type * box, int taste, char isLo
 
 void pascal _export KeyboardAnalyseSimple(mutabor_box_type * box, int taste)
 {
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	for (struct keyboard_ereignis *help = box->first_keyboard; 
 	     help ; help=help->next)
 		if ( toupper(taste)==help->taste ) {
@@ -745,7 +745,7 @@ void protokoll_aktuelles_tonsystem( mutabor_box_type * box )
 	tone_system * tonsys = box->tonesystem;
 	long freq;
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	init_laufzeit_protokoll();
 //  laufzeit_protokoll("Tonsystem: (#%d)",box);
 	laufzeit_protokoll("Anker= %d",tonsys->anker);
@@ -773,7 +773,7 @@ void protokoll_liegende_frequenzen( mutabor_box_type * box )
 	int i, imax, lts[64], lt;
 	long freq;
 //	unsigned char * zugriff = (unsigned char*) & freq;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	imax = (box->last_key);
 	bcopy(liegende_tasten[box], lts, imax*sizeof(int));
 	init_laufzeit_protokoll();
@@ -805,7 +805,7 @@ void protokoll_aktuelle_relationen( mutabor_box_type * box )
 {
 	tone_system * tonsys = box->tonesystem;
 	int i,j;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	init_laufzeit_protokoll();
 
 	for (i=0;i<tonsys->breite && tonsys->ton[i]==0;i++);
@@ -830,7 +830,7 @@ void protokoll_liegende_relationen( mutabor_box_type * box )
 {
 	tone_system * tonsys = box->tonesystem;
 	int i;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	init_laufzeit_protokoll();
 //  laufzeit_protokoll("Liegende Relationen (#%d):",box);
 
@@ -853,7 +853,7 @@ void FlushUpdateUI()
 {
         int i = minimal_box_used;
         mutabor_box_type * box;
-	DEBUGLOG2(kernel_exec,_T(""));
+	TRACE;
 	if ( keys_changed_sum && updatecallback ) {
                 do {
                         box = &mut_box[i];

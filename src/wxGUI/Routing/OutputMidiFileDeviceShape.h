@@ -115,15 +115,15 @@ namespace mutaborGUI {
 	public:
 		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice d)
 			{
-				DEBUGLOG (other,_T (""));
+				TRACEC;
 				bool ret = MutOutputDeviceShape::Create(parent,id,d);
-				DEBUGLOG (other,_T (""));
+				TRACEC;
 				return ret;
 			}
 
 		virtual MutIcon & GetMutIcon () 
 			{
-				DEBUGLOG(other, _T(""));
+				TRACEC;
 				return MidiFileBitmap;
 			}
 

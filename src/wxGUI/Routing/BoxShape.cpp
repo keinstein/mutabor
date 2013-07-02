@@ -244,7 +244,7 @@ namespace mutaborGUI {
 
 	MutBoxChannelShape * MutBoxShape::AddChannel(Route & route)
 	{
-		DEBUGLOG (other, _T("Adding route %p to window %p"),route.get(), m_parent);
+		DEBUGLOG (other, _T("Adding route %p to window %p"),(void*)route.get(), (void*)m_parent);
 		MutBoxChannelShape * channel = 
 			GUIRouteFactory::CreateBoxChannelShape(route,this);
 		return Add(channel);

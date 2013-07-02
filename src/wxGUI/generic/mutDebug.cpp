@@ -240,7 +240,7 @@ void mutAssertFailure(const wxChar *file,
 	if (!std::clog.good()) MutInitConsole();
 	wxString s = wxString::Format(_("%s:%d: An assert failed in %s().\nCondition: %s\nMessage:%s\nDo you want to call the default assert handler?"), 
 				      file,line,func,cond,msg);
-	std::clog << s.ToUTF8() << std::endl;
+	std::clog << (const char *) s.ToUTF8() << std::endl;
 
 
 	// use wxWidgets ShowAssertDialog function (it's static so we repeat its code, here.

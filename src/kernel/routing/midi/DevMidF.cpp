@@ -149,7 +149,7 @@ namespace mutabor {
 
 
 	Track::base Track::ReadMessage() {
-		uint8_t status, metatype;
+		uint8_t status, metatype = midi::META_SEQUENCER_SPECIFIC;
 		if ((status = at(position)) & 0x80) {
 			position++;
 			if (midi::reset_running_status (status)) 
@@ -234,7 +234,7 @@ timing: %s\n\
 Time = %ld, position = %d/%d, current_delta = %ld, remaining_delta = %ld\n\
 Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 					timing.TowxString().c_str(),
-					Time,position,size(),current_delta,remaining_delta,
+					Time,(int)position,(int)size(),current_delta,remaining_delta,
 					running_status,running_status,running_sysex?_T("true"):_T("false"),sysex_id,sysex_id);
 	}
 
@@ -343,16 +343,18 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 #ifdef WX
 	wxString OutputMidiFile::TowxString() const {
 		wxString s = OutputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  Name = %s\n  DevId = %d\n  Bending Range = %d\n  nKeyOn"),
+			wxString::Format(_T("\n  Name = %s\n  DevId = %d\n  Bending Range = %d\n  nKeyOn = %d"),
 					 Name.c_str(), DevId, bending_range, nKeyOn);
 	
-		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,f=%d"), 
+		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,b=%d"), 
 			 ton_auf_kanal[0].inkey, 
-			 ton_auf_kanal[0].outkey);
+			 ton_auf_kanal[0].outkey.pitch,
+			 ton_auf_kanal[0].outkey.bend);
 		for (int i = 1; i<16; i++)
-			s.Printf(_T("; t=%d,k=%d,f=%d"), 
+			s.Printf(_T("; t=%d,k=%d,b=%d"), 
 				 ton_auf_kanal[i].inkey, 
-				 ton_auf_kanal[i].outkey);
+				 ton_auf_kanal[i].outkey.pitch,
+				 ton_auf_kanal[0].outkey.bend);
 		s+=_T("]");
 		return s;
 		}
@@ -555,8 +557,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		DEBUGLOG(midifile, 
 			 _T("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
 			 FileType, 
-			 nTrack, 
-			 timing.get_ticks());
+			 (int)nTrack, 
+			 (int)timing.get_ticks());
 
 		// rest of header
 		DWORD i;
@@ -658,7 +660,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		mutint64 NewMinDelta = MUTABOR_NO_DELTA;
 		for (size_t i = 0; i < Tracks.size(); i++ ) {
 			mutint64 delta = Tracks[i].GetDelta();
-			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),i,delta);
+			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),(int)i,delta);
 			if ( delta  == MUTABOR_NO_DELTA ) 
 				continue;
 			if ( delta <= passedDelta )
@@ -670,7 +672,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 			    delta < NewMinDelta ) {
 					NewMinDelta = delta;
 			}
- 			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),i,Tracks[i].GetDelta());
+ 			DEBUGLOG(midifile,_T("Track: %d, delta: %ld μs"),(int)i,Tracks[i].GetDelta());
 		}
 		DEBUGLOG(midifile,_T("Next event after %ld μs (MUTABOR_NO_DELTA = %ld)"),minDelta,MUTABOR_NO_DELTA);
 		minDelta = NewMinDelta;
@@ -790,7 +792,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		
 			DEBUGLOG(midifile,
 				 _T("Next event on Track %d after %ld μs"),
-				 nr, Delta);
+				 (int)nr, Delta);
 		}
 #ifdef DEBUG
 		mutint64 checktime = 
@@ -819,7 +821,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
   minDelta = %ld\n				\
   Busy = %d\n"),
 					 FileType, 
-					 Tracks.size(), 
+					 (int)Tracks.size(), 
 					 minDelta,
 					 Busy);
 	}

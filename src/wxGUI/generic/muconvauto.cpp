@@ -72,7 +72,7 @@
 
 muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 {
-	DEBUGLOGTYPE(other,muConvAuto,_T("Detecting BOM at length %d"),srcLen);
+	DEBUGLOGTYPE(other,muConvAuto,_T("Detecting BOM at length %d"),(int)srcLen);
 	if (srcLen == wxNO_LEN) { // zero terminated string
 		for (srcLen = 0; src[srcLen] && srcLen <= 4; srcLen++); 
 	}
@@ -126,7 +126,7 @@ muConvAuto::BOMType muConvAuto::DetectBOM(const char *src, size_t srcLen)
 
 void muConvAuto::InitFromBOM(BOMType bomType)
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	m_consumedBOM = false;
 
 	switch ( bomType ) {
@@ -167,7 +167,7 @@ void muConvAuto::InitFromBOM(BOMType bomType)
 
 void muConvAuto::SkipBOM(const char **src, size_t *len) const
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	int ofs;
 	switch ( m_bomType ) {
 	case BOM_UTF32BE:
@@ -200,7 +200,7 @@ void muConvAuto::SkipBOM(const char **src, size_t *len) const
 void muConvAuto::InitFromInput(const char **src, size_t *len)
 
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	m_bomType = DetectBOM(*src, *len);
 	InitFromBOM(m_bomType);
 	SkipBOM(src, len);
@@ -209,7 +209,7 @@ void muConvAuto::InitFromInput(const char **src, size_t *len)
 size_t muConvAuto::ToWChar(wchar_t *dst, size_t dstLen,
                     const char *src, size_t srcLen) const
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	// we check BOM and create the appropriate conversion the first time we're
 	// called but we also need to ensure that the BOM is skipped not only
 	// during this initial call but also during the first call with non-NULL
@@ -238,7 +238,7 @@ size_t muConvAuto::ToWChar(wchar_t *dst, size_t dstLen,
 size_t muConvAuto::FromWChar(char *dst, size_t dstLen,
                       const wchar_t *src, size_t srcLen) const
 {
-	DEBUGLOG(other,_T(""));
+	TRACEC;
 	if ( !m_conv ) {
 		// default to UTF-8 for the multibyte output
 		wx_const_cast(muConvAuto *, this)->InitWithDefault();

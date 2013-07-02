@@ -201,7 +201,7 @@ namespace mutaborGUI {
 
 		virtual MutIcon & GetMutIcon () 
 			{
-				DEBUGLOG (other, _T(""));
+				TRACEC;
 				return MidiFileBitmap;
 			}
 

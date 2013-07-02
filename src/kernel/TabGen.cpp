@@ -1056,7 +1056,7 @@ static void expandiere_in_globale_liste (void)
 		while (lauf_harmonie) {
 			mutASSERT(lauf_harmonie);
 			DEBUGLOG2(kernel_tabgen,_T("lauf_harmonie[%d](=%p)->the_logic_to_expand = %p"),
-				  i,lauf_harmonie,lauf_harmonie -> the_logik_to_expand);
+				  i,(void*)lauf_harmonie,(void*)lauf_harmonie -> the_logik_to_expand);
 			lauf_harmonie -> aktion =
 				expandiere_logik (box,lauf_harmonie -> the_logik_to_expand);
 //			lauf_harmonie -> aktion = lauf_harmonie[i] -> aktion;

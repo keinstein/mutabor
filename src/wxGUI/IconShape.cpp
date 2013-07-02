@@ -398,7 +398,7 @@ END_EVENT_TABLE()
 template<typename T>
 bool MutIconShapeClass<T>::Create (wxWindow * parent, wxWindowID id)
 {
-	DEBUGLOG (other,_T (""));
+	TRACEC;
 	//    Enable(true);
 	//		  SetBackgroundColour(BoxColor(GetId()));
 	Icon = GetMutIcon(); // this must be before create
@@ -460,7 +460,7 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 	
 	
 	if (staticText) s += staticText->GetBestSize();
-	DEBUGLOG (other, _T("staticText %p best size: %dx%d"),&staticText,s.x,s.y);
+	DEBUGLOG (other, _T("staticText %p best size: %dx%d"),(void*)&staticText,s.x,s.y);
 	if (GetIcon().IsOk()) {
 		s.x = std::max (Icon.GetWidth(), s.x);
 		int h = Icon.GetHeight();
@@ -469,7 +469,7 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 
 	if (this->GetSizer()) {
 		s1 = this->GetSizer()->CalcMin();
-		DEBUGLOG (other, _T("our %p sizer best size: %dx%d"),this,s1.x,s1.y);
+		DEBUGLOG (other, _T("our %p sizer best size: %dx%d"),(void*)this,s1.x,s1.y);
 		s.x = std::max(s.x,s1.x);
 		s.y += std::max(s1.y,0);
 	}
@@ -488,11 +488,11 @@ wxSize MutIconShapeClass<T>::DoGetBestSize() const
 	
 	// s1 = MutPanel::DoGetBestSize();
         // call to base class not needed.
-	DEBUGLOG (other, _T("our %p parent best size: %dx%d"),this,s1.x,s1.y);
+	DEBUGLOG (other, _T("our %p parent best size: %dx%d"),(void*)this,s1.x,s1.y);
 	
 	s1.IncTo(s);
 
-	DEBUGLOG (other, _T("our %p best size: %dx%d"),this,s.x,s.y);
+	DEBUGLOG (other, _T("our %p best size: %dx%d"),(void*)this,s.x,s.y);
 	wxConstCast(this,MutIconShapeClass<T>)->SetMinSize(s1);
 	this->CacheBestSize(s1);
 	return s1;
@@ -559,7 +559,7 @@ void MutIconShapeClass<T>::GotFocus() {
 		DEBUGLOGTYPE (other,
 			      (*(focuswin)),
 			      _T(" focus has objet %p"),
-			      wxWindow::FindFocus());
+			      (void*)wxWindow::FindFocus());
 	} else
 		DEBUGLOG(other,_T("NULL pointer"));
 #endif
@@ -585,7 +585,7 @@ void MutIconShapeClass<T>::GotFocus() {
 template<typename T>
 void MutIconShapeClass<T>::LostFocus()
 {
-	DEBUGLOG (other, _T(""));
+	TRACEC;
 	UpdateBorder(wxBORDER_NONE);
 }
 
@@ -679,7 +679,7 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 		dc.DrawIcon(GetIcon(), x, y);
 	}
 
-	DEBUGLOG (other, _T("Focus %p and this %p"),this->FindFocus(),this);
+	DEBUGLOG (other, _T("Focus %p and this %p"),(void*)this->FindFocus(),(void*)this);
 /*  Draw a black bock around focused item 
 	if (FindFocus() == this) {
 		DEBUGLOG (other, _T("Painting Box"));

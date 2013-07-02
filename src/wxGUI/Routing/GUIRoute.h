@@ -89,7 +89,7 @@ namespace mutaborGUI {
 			box = &(BoxData::GetBox(newbox));
 
 			DEBUGLOG(routing, _T("Set Box data to %p from id %d"),
-				 box, newbox);
+				 (void*)box, newbox);
 			BoxData::ReOpenRoute(oldbox, newbox);
 		}
 

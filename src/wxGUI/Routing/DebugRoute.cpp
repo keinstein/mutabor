@@ -164,7 +164,7 @@ namespace mutaborGUI {
 	
 	template<class T> 
 	static void CheckList(const T & list) {
-		DEBUGLOG2(routing,_T("List at %p has %d entries"),&list,list.size());
+		DEBUGLOG2(routing,_T("List at %p has %d entries"),(void*)&list,(int)list.size());
 		for (typename T::const_iterator i = list.begin();
 		     i != list.end(); i++) {
 			typename T::const_iterator j = i;
@@ -401,9 +401,9 @@ namespace mutaborGUI {
 		const MutBoxShapeList & list = ToGUIBase(route)->GetBoxShapes();
 		DEBUGLOG2(routing, _T("Box %d: %p == %p (%d entries)"),
 			  route->GetBox(),
-			  &list,
-			  &(BoxData::GetBox(route->GetBox()).GetBoxShapes()),
-			  list.size());
+			  (void*)&list,
+			  (void*)&(BoxData::GetBox(route->GetBox()).GetBoxShapes()),
+			  (int)list.size());
 		const BoxData * routeboxdata = ToGUIBase(route)->GetBoxData();
 		int i;
 		for (i = MIN_BOX; i < MAX_BOX && 
@@ -411,11 +411,11 @@ namespace mutaborGUI {
 		     i++);
 		if (i < MAX_BOX) {
 			DEBUGLOG2(routing, _T("Box %p has GUI number %d and id %d"),
-				  routeboxdata,
+				  (void*)routeboxdata,
 				  i,route->GetBox());
 		} else {
 			DEBUGLOG2(routing, _T("Box %p has no GUI number but id %d"),
-				  routeboxdata,
+				  (void*)routeboxdata,
 				  route->GetBox());
 		}
 		CheckList(list);

@@ -50,7 +50,7 @@ namespace mutabor {
 	bool CommonMidiOutput<T,D>::Open() {
 		int i;
 		mutASSERT(!this->isOpen);
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 
 
 		for (i = 0; i < 16; i++) {
@@ -102,7 +102,7 @@ namespace mutabor {
 			mutASSERT(this->isOpen);
 		}
 #endif
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 
 		for (channel_queue_type::iterator i = channel_queue.begin();
 		     i != channel_queue.get_first_free();
@@ -249,7 +249,7 @@ namespace mutabor {
 		}
 
 		DEBUGLOG (midiio, _T("box %p, inkey %d, velocity %d, id %d"),
-			  box, inkey, velocity, id);
+			  (void*)box, inkey, velocity, (int)id);
 //		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
 //		DWORD p;
 		long freq;
@@ -329,7 +329,7 @@ namespace mutabor {
 			return;
 		}
 		DEBUGLOG (midiio, _T("box %p, key %d, velo %d, id %d"),
-			  box, inkey, velo, id);
+			  (void*)box, inkey, velo, (int)id);
 
 
 		/* This schouldn't be necessary
@@ -376,7 +376,7 @@ namespace mutabor {
 	void CommonMidiOutput<T,D>::NotesCorrect(RouteClass * route)
 	{
 		mutASSERT(this->isOpen);
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 		if (!route || route == NULL) {
 			UNREACHABLEC;
 			return;
@@ -512,7 +512,7 @@ namespace mutabor {
 	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, size_t id)
 	{
 		mutASSERT(this->isOpen);
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 
 		for (int i = 0; i < 16; i++)
 			if ( ton_auf_kanal[i].active 
@@ -528,8 +528,8 @@ namespace mutabor {
 	void CommonMidiOutput<T,D>::SplitOut (BYTE * p, size_t n) {
 		mutASSERT(this->isOpen);
 		size_t pos = 0;
-		size_t datalength;
-		uint8_t last_command;
+		size_t datalength = 0;
+		uint8_t last_command = 0;
 		while (pos < n) {
 			uint8_t command = p[pos] & midi::TYPE_MASK;
 			int channel = p[pos] & midi::CHANNEL_MASK;
@@ -571,21 +571,21 @@ namespace mutabor {
 				channel = -1;
 				switch (p[pos]) {
 				case midi::SYSEX_START:
-				{
-					size_t counter = pos + 1;
-					while (counter < n && 
-					       p[counter] != midi::SYSEX_END) {
-						if (p[counter] & 0x80) {
-							break;
+					{
+						size_t counter = pos + 1;
+						while (counter < n && 
+						       p[counter] != midi::SYSEX_END) {
+							if (p[counter] & 0x80) {
+								break;
+							}
+							counter++;
 						}
-						counter++;
+						if (p[pos] == midi::SYSEX_END) counter++;
+						// Dont interfere with sysex messages as some
+						// devices require proper timing
+						Out.SendSysEx(channel,&p[pos+1],p + counter);
+						pos = counter;
 					}
-					if (p[pos] == midi::SYSEX_END) counter++;
-					// Dont interfere with sysex messages as some
-					// devices require proper timing
-					Out.SendSysEx(channel,&p[pos+1],p + counter);
-					pos = counter;
-				}
 					break;
 				case midi::QUARTER_FRAME:
 				case midi::SONG_SELECT:
@@ -655,7 +655,7 @@ namespace mutabor {
 	void CommonMidiOutput<T,D>::Quiet(RouteClass * r)
 	{
 		if (!this->isOpen) return;
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 
 		for (int i = 0; i < 16; i++) {
 			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->GetId() )
@@ -668,7 +668,7 @@ namespace mutabor {
 	void CommonMidiOutput<T,D>::Panic()
 	{
 		if (!this->isOpen) return;
-		DEBUGLOG (midiio, _T(""));
+		TRACEC;
 
 		for (int i = 0; i < 16; i++) {
 			controller(i,midi::ALL_NOTES_OFF,0);
@@ -695,7 +695,7 @@ namespace mutabor {
 		}
 		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
 			  route->GetActive(),
-			  route->GetOutputDevice().get());
+			  (void*)route->GetOutputDevice().get());
 		BYTE MidiChannel = midiCode & 0x0F;
 		BYTE MidiStatus  = midiCode & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
@@ -770,9 +770,10 @@ namespace mutabor {
 #warning "Unimplemented SysEx ProceedRoute"
 		return;
 	
-		DEBUGLOG (midifile, _T("Code: %x, Active: %d, Out: %p"),midiCode,
+		DEBUGLOG (midifile, _T("Code: %p, Active: %d, Out: %p"),
+			  (void*)midiCode,
 			  route->GetActive(),
-			  route->GetOutputDevice().get());
+			  (void*)route->GetOutputDevice().get());
 		int Box = route->GetBox();
 		BYTE MidiChannel = midiCode->at(0) & 0x0F;
 		BYTE MidiStatus  = midiCode->at(0) & 0xF0;

@@ -68,7 +68,7 @@ namespace mutabor {
 	CommonTypedDeviceAPI<T,P,L>::~CommonTypedDeviceAPI()
 	{
 		// if there are remaining pointers we have other problems.
-		DEBUGLOG(routing,_T("this = %p"),this);
+		DEBUGLOG(routing,_T("this = %p"),(void*)this);
 #ifdef Debug
 		listttype::iterator i = FindInDeviceList(this);
 		if (i != deviceList.end()) {
@@ -82,7 +82,7 @@ namespace mutabor {
 
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::Add(Route & route) {
-		DEBUGLOG(smartptr,_T("Route; %p"),route.get());
+		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i = 
 			find(routes.begin(),routes.end(),route.get());
@@ -91,29 +91,29 @@ namespace mutabor {
 #endif
 		TRACEC;
 		routes.push_back(route);
-		DEBUGLOG(smartptr,_T("Route; %p saved"),route.get());
+		DEBUGLOG(smartptr,_T("Route; %p saved"),(void*)route.get());
 	}
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::Replace(Route & oldroute, 
 						  Route & newroute) {
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
-			 oldroute.get(),newroute.get());
+			 (void*)oldroute.get(),(void*)newroute.get());
 		bool found = CommonTypedDeviceAPI<T,P,L>::Remove(oldroute);
 		mutASSERT(found);
 		if (found) 
 			CommonTypedDeviceAPI<T,P,L>::Add(newroute);
 
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
-			 oldroute.get(),newroute.get());
+			 (void*)oldroute.get(),(void*)newroute.get());
 		return found;
 	}
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::Remove(Route & route) {
 		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
-			 route.get(),
-			 intrusive_ptr_get_refcount(route.get()));
+			 (void*)route.get(),
+			 (int)intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i = 
 			std::find(routes.begin(),routes.end(),route.get());
 		bool found = (i != routes.end());
@@ -123,14 +123,14 @@ namespace mutabor {
 			// but route must be deleted
 			routes.erase(i);
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d)"),route.get(),
-			 intrusive_ptr_get_refcount(route.get()));
+		DEBUGLOG(smartptr,_T("Route; %p (%d)"),(void*)route.get(),
+			 (int)intrusive_ptr_get_refcount(route.get()));
 		return found;
 	}
 
 	template <class T, class P, class L>
 	bool CommonTypedDeviceAPI<T,P,L>::MoveRoutes (DevicePtr & newclass) {
-		DEBUGLOG(smartptr,_T(""));
+		TRACEC;
 		if (!newclass->routes.empty()) {
 			UNREACHABLEC;
 			return false;
@@ -145,7 +145,7 @@ namespace mutabor {
 		while ((i = routes.begin()) != routes.end()) {
 			reconnect(*i, thisptr, newclass);
 		}
-		DEBUGLOG(smartptr,_T(""));
+		TRACEC;
 		return true;
 	}
 		
@@ -165,7 +165,7 @@ namespace mutabor {
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::InitializeIds()
 	{
-		DEBUGLOGTYPE(smartptr,thistype,_T(""));
+		TRACET(thistype);
 		size_t nr = 0;
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
@@ -180,7 +180,7 @@ namespace mutabor {
 			}
 			nr++;
 		}
-		DEBUGLOGTYPE(smartptr,thistype,_T(""));
+	        TRACET(thistype);
 	}
 
 	template <class T, class P, class L>
@@ -257,7 +257,7 @@ namespace mutabor {
 			+ wxString::Format(_T("\
 CommonTypedDeviceAPI:\n\
    ptrct    = %d\n\
-"),intrusive_ptr_get_refcount(this));
+"),(int)intrusive_ptr_get_refcount(this));
 	}
 #endif
 
@@ -539,7 +539,7 @@ InputDeviceClass:\n\
 	bool OutOpen()
 	{
 		const OutputDeviceList& list = OutputDeviceClass::GetDeviceList(); 
-		DEBUGLOG2(midiio,_T("count: %d"),list.size());
+		DEBUGLOG2(midiio,_T("count: %d"),(int)list.size());
 		for (OutputDeviceList::const_iterator Out = list.begin();
 		     Out != list.end(); Out++)
 			if ( !(*Out)->Open() ) {
@@ -626,7 +626,7 @@ InputDeviceClass:\n\
 
 	void MidiOut(mutabor_box_type * box, struct midiliste * outliste)
 	{
-		DEBUGLOG2(smartptr,_T(""));
+		TRACE;
 
 		size_t laenge = midi_list_laenge(outliste);
 		BYTE * data = (BYTE *)malloc(laenge * sizeof(BYTE));
@@ -662,7 +662,7 @@ InputDeviceClass:\n\
 
 	int GetChannel(int box, int key, int channel, int id)
 	{
-		DEBUGLOG2(midiio,_T(""));
+		TRACE;
 		const routeListType & list = RouteClass::GetRouteList();
 		for (routeListType::const_iterator R = list.begin(); 
 		     R != list.end(); R++) {
@@ -673,12 +673,12 @@ InputDeviceClass:\n\
 				int c = out->GetChannel(key,channel,id);
 				
 				if ( c != -1 ) {
-					DEBUGLOG2(midiio,_T(""));
+					TRACE;
 					return c;
 				}
 			}
 		}
-		DEBUGLOG2(midiio,_T(""));
+		TRACE;
 		return -1;
 	}
 

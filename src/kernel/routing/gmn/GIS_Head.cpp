@@ -112,7 +112,7 @@ char GetMidiInstrument(GisToken *token)
  */
 mutint64 GetTheSpeedFactor(GisToken *token)
 {
-	DEBUGLOG2(gmnfile,_T("%p"),token);
+	DEBUGLOG2(gmnfile,_T("%p"),(void*)token);
 	
 	mutint64 retval = 2l * 1000l * 1000l; // 1/4 = 120bpm => 1/1 = 2s
 
@@ -144,7 +144,7 @@ mutint64 GetTheSpeedFactor(GisToken *token)
 		while ( ZIFFER )
 			bpm = bpm*10 + (t[i++]-mutT('0'));
 
-		DEBUGLOG2(gmnfile,_T("%d / %d / %d"),denominator, numerator, bpm);
+		DEBUGLOG2(gmnfile,_T("%ld / %ld / %ld"),denominator, numerator, bpm);
 
 
 		if ( numerator && denominator && bpm > 0 ) {
@@ -161,7 +161,7 @@ mutint64 GetTheSpeedFactor(GisToken *token)
 
 GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 {
-	DEBUGLOG (gmnfile, _T("pos = %p; this = %p"),position,this);
+	DEBUGLOG (gmnfile, _T("pos = %p; this = %p"),(void*)position,(void*)this);
 
 	if ( !position ) {
 		Next = NULL;
@@ -199,20 +199,20 @@ GisReadHead* GisReadHead::InsertInfrontOf(GisReadHead *position)
 
 	if ( *(position->PrevPtr) == position ) { // first position
 		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
-		         position,
-		         position->Prev,
-		         position->Next,
-		         *((position->PrevPtr))
+			  (void*)position,
+		          (void*)position->Prev,
+		          (void*)position->Next,
+		          (void*)*((position->PrevPtr))
 		        );
 		*(position->PrevPtr) = this;
 		PrevPtr = position->PrevPtr;
 		position->PrevPtr = &(position->Prev);
 	} else { // normal position in list
 		DEBUGLOG (gmnfile, _T("first position %p, Prev: %p, Next: %p, cmp: %p"),
-		         position,
-		         position->Prev,
-		         position->Next,
-		         *((GisReadHead**)(position->PrevPtr))
+		          (void*)position,
+		          (void*)position->Prev,
+		          (void*)position->Next,
+		          (void*)*((GisReadHead**)(position->PrevPtr))
 		        );
 
 		position->Prev->Next = this;
@@ -294,7 +294,7 @@ void GisReadHead::CreateSegmentSubs()
 	{
 		nSub++;
 		id[mutLen(Id)] = nSub;
-		DEBUGLOG (gmnfile, _T("Creating Sub for %p (%d, %s)"),Cont,nSub,id.c_str());
+		DEBUGLOG (gmnfile, _T("Creating Sub for %p (%d, %s)"), (void*)Cont,nSub,id.c_str());
 
 //		GisReadHead *Sub = // unused variable
 			Build(this, Cont, id, 1);
@@ -333,7 +333,7 @@ void GisReadHead::CreateSequenzSubs()
 // reading the token at the cursor
 void GisReadHead::Read()
 {
-	DEBUGLOG (gmnfile, _T("Cursor: %p"),Cursor);
+	DEBUGLOG (gmnfile, _T("Cursor: %p"), (void*)Cursor);
 
 	if ( !Cursor ) return;
 
@@ -369,8 +369,8 @@ wxString GisReadHead::ToString()
 {
 	wxString ret = wxString::Format(_T("GisReadHead: {\nthis: %p; Boss: %p; Next: %p; Prev: %p; PrevPtr: %p; *PrevPtr: %p;\n"
 	                                   "nSub: %d; Cursor: {\n"),
-	                                this, Boss, Next, Prev,
-	                                PrevPtr, *PrevPtr, nSub) +
+	                                 (void*)this,  (void*)Boss,  (void*)Next,  (void*)Prev,
+	                                 (void*)PrevPtr,  (void*)*PrevPtr, nSub) +
 	               (Cursor?((wxString) *Cursor):wxString(_T(""))) + _T("}\nTime: ") + (TowxString(Time)) +
 	               wxString::Format(_T("; Id: '%s'; Turn: %d; SingleToken: %d\n}\n"),
 	                                Id.c_str(), Turn, SingleToken);
@@ -531,7 +531,7 @@ TagList *EndTag(TagList **list, GisTagEnd *tagEnd)
 void GisReadArtHead::Read()
 {
 	int Id = 0;
-	DEBUGLOG (gmnfile, _T("Id: %d; Cursor: %p"), Id, Cursor);
+	DEBUGLOG (gmnfile, _T("Id: %d; Cursor: %p"), Id, (void*) Cursor);
 
 	if ( !Cursor ) return;
 
@@ -650,7 +650,8 @@ wxString GisReadArtHead::ToString()
 	                            "Alter: %p; Instr: %p; Tempo: %p\n"
 	                            "}\n"),
 	                         Delta,Box,
-	                         Intensity,Articulation,Octave,Alter,Instr,Tempo);
+				 (void*)Intensity, (void*)Articulation, (void*)Octave, 
+				 (void*)Alter, (void*)Instr, (void*)Tempo);
 	return ret;
 }
 
@@ -669,7 +670,7 @@ void GisReadArtDummy(GisReadArtHead*, char)
 // ReadOn the GisReadArtHead, chained
 frac GisReadArtHeadOn(GisReadArtHead **Head, frac dTime, GisReadArtProceed *proceed)
 {
-	DEBUGLOG2(gmnfile,_T(""));
+	TRACE;
 	frac MinTime = frac(-1, 1);
 
 beginloop:
@@ -695,7 +696,7 @@ beginloop:
 			if ( h->Time <= frac(0, 1) )
 			{
 				proceed(h, h->Turn++);
-				DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
+				DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
 
 				if ( h->Turn == 2 ) {
 					h->Time = h->Time2;
@@ -719,7 +720,7 @@ beginloop:
 				proceed(h, h->Turn++);
 
 				if ( h->Turn == 2 ) {
-					DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %ld, new: %ld)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
+					DEBUGLOG2(gmnfile, _T("Turn:2; Moving time2 to time (old: %s, new: %s)"),TowxString(h->Time).c_str(), TowxString(h->Time2).c_str());
 					h->Time = h->Time2;
 					h->Time2 = 0;
 				}

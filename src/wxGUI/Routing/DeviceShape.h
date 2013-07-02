@@ -87,9 +87,6 @@ namespace mutaborGUI {
 		bool Create (wxWindow * parent, wxWindowID id, 
 			     const wxString & name = wxEmptyString)
 			{
-
-
-				DEBUGLOG(other, _T(""));
 				DEBUGLOG(other, _T("Name %s"),name.c_str());
 				bool state = MutIconShape::Create (parent,id);
 				if (state) SetLabel(name);
