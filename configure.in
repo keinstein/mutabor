@@ -297,8 +297,9 @@ dnl GNU/Linux on an Intel or compatible
 	    if test "x$ac_cv_lib_asound_snd_seq_open" = xyes; then :
 	      midiapi="$midiapi -D__LINUX_ALSA__"
 	    fi
+	    dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
 	    AS_IF(test -n "$PKG_CONFIG",
-	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"]))
+	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
 	fi
 
 	if [test "$midiapi" == "";] then
@@ -336,8 +337,9 @@ darwin*)
 		midiapi="$midiapi -D__MACOSX_CORE__"]
 		LIBS="$LIBS -framework CoreMIDI -framework CoreFoundation -framework CoreAudio" 
 	   , )
+	   dnl the 4th argument to PKG_CHECK_MODULES should must be provided to prevent an error message, here
 	   AS_IF(test -n "$PKG_CONFIG",
-	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"]))
+	   	    PKG_CHECK_MODULES(JACK,[jack],[midiapi="$midiapi -D__UNIX_JACK__"],))
 	fi
 
 	if [test "$midiapi" == "";] then
