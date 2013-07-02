@@ -228,7 +228,12 @@ void pascal _export Panic() {
 
 struct keyboard_ereignis *last;
 
-char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box) {
+#warning Use dynamic string management for GetMutTag
+char pascal _export GetMutTag(char &isLogic, 
+			      char *text, 
+			      char *einsttext, 
+			      char &key, 
+			      mutabor_box_type * box) {
 	if (!box || box == NULL) {
 		if ( last ) last = last->next;
 	} else  {
@@ -239,14 +244,16 @@ char pascal _export GetMutTag(char &isLogic, char *text, char *einsttext, char &
 
 	key = last->taste;
 
-	strncpy(text, last->aktion->name, 20);
+	strncpy(text, last->aktion->name, 199);
+	text[199] = 0;
 
 	isLogic = ( last->the_logik_to_expand != NULL );
 
-	if ( isLogic && last->the_logik_to_expand->einstimmungs_name )
-		strncpy(einsttext, last->the_logik_to_expand->einstimmungs_name, 20);
-	else
-		strcpy(einsttext, "");
+	if ( isLogic && last->the_logik_to_expand->einstimmungs_name ) {
+		strncpy(einsttext, last->the_logik_to_expand->einstimmungs_name, 199);
+	        einsttext[199]=0;
+	} else
+		einsttext[0] = 0;
 
 	return 1;
 }
