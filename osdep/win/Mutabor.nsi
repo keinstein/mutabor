@@ -6,7 +6,7 @@
 !define EXENAME "mutabor"
 !define MUTSHORTCUTDIR "$SMPROGRAMS\${PACKAGE_NAME}"
 !define INSTALLATIONNAME "${PACKAGE_NAME}"
-!define srcdir "../../../mutabor-git"
+!define srcdir "../.."
 
 Name "${NAME_VERSION}"
 
