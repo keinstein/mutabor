@@ -147,14 +147,15 @@ podeps.stamp:
 
 
 Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
-        @case '$?' in \
-          *config.status*) \
-            echo ' $(SHELL) ./config.status'; \
-            $(SHELL) ./config.status;; \
-          *) \
-            echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
-            cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
-        esac;
+	@case '$?' in \
+	  *config.status*) \
+	    echo ' $(SHELL) ./config.status'; \
+	    $(SHELL) ./config.status;; \
+	  *) \
+	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
+	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
+	esac;
+
 remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
 	rm -f podeps.stamp
 	touch $@
@@ -203,7 +204,7 @@ mutabor-cxxprecompiled.sorted: Makefile
 		rm -f $@.tmp ;\
         else \
 		mv $@.tmp $@; \
-        fi 
+	fi 
 
 mutabor-cxxprecompiled.h:mutabor-cxxprecompiled.h.shuffle
 
