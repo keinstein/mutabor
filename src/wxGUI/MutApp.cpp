@@ -1013,7 +1013,7 @@ namespace mutaborGUI {
 		if (rcname.IsFileReadable()) {
 			return rcname.GetFullPath();
 		} 
-		std::cout << rcname.GetFullPath().ToUTF8() << std::endl;
+		std::cout << (const char *)rcname.GetFullPath().ToUTF8() << std::endl;
 		return file;
 
 #else
