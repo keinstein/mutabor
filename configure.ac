@@ -429,6 +429,7 @@ AM_CONDITIONAL(COPYDLLS,$copydlls)
 
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18])
+AM_GNU_GETTEXT_INTL_SUBDIR
 dnl wxMenuItem::GetItemLabel is implemented from 2.8.5
 AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,core,html,xrc,stc,xml],[$wxflags])
 if test "$wxWin" != 1 -a -z "$XCode"; then
@@ -441,10 +442,8 @@ if test "$wxWin" != 1 -a -z "$XCode"; then
                 'wx-config --libs' command) is in LD_LIBRARY_PATH or
                 equivalent variable and wxWindows version is 2.8.0 or above.
         ])
-	AC_SUBST(INTLDIR,intl)
 	AC_SUBST(USE_INCLUDED_LIBWXINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,no)
-	AM_GNU_GETTEXT_INTL_SUBDIR
 else
 	AC_DEFINE(WX,1,[Define to 1 if $PACKAGE should be compiled using wxWidgets.])
 	AC_SUBST(INTLDIR,wxintl)
@@ -725,6 +724,7 @@ src/xrc/Makefile
 src/xrc/tests/Makefile
 lib/Makefile
 lib/missfunc/Makefile
+intl/Makefile
 osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile
