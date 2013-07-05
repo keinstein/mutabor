@@ -98,6 +98,13 @@ AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
 
+tmpcxxflags="$CXXFLAGS"
+CXXFLAGS="$CXXFLAGS -pipe"
+AC_MSG_CHECKING([whether $CXX supports -pipe])
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+		[AC_MSG_RESULT([yes])], 
+		[CXXFLAGS="$tmpcxxflags"]
+		[AC_MSG_RESULT([no])])
 DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
