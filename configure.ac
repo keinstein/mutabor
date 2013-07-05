@@ -35,7 +35,7 @@ AS_IF(test "${enable_silent_rules+set}" != set,
    enable_silent_rules=yes
    AM_DEFAULT_VERBOSITY=0)
 
-AM_PROG_AR
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_SILENT_RULES
 LT_INIT
 
