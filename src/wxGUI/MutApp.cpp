@@ -440,7 +440,7 @@ namespace mutaborGUI {
 		{
 			// we have a document to open
 			str = parser.GetParam(i);
-			printf("cmd line param: %s\n", WXSTRINGCAST(str));
+			DEBUGLOG(always,_T("cmd line param: %s\n"), WXSTRINGCAST(str));
 			// this will probably see if the file exists, and has the right extension
 
 //		MutFrame * frame = CreateMainFrame(EditorMenu);
