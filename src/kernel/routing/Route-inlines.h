@@ -58,18 +58,18 @@ namespace mutabor {
 
 
 
-	inline void connect(Route & r, OutputDevice & out) {
+	inline void connect(Route r, OutputDevice out) {
 		r->Add(out);
 		out->Add(r);
 	}
 
 
-	inline void connect(Route & r, InputDevice & in) {
+	inline void connect(Route r, InputDevice in) {
 		r->Add(in);
 		in->Add(r);
 	}
 
-	inline void connect(Route & r, int boxid) {
+	inline void connect(Route r, int boxid) {
 		r->Add(boxid);
 	}
 
@@ -77,7 +77,7 @@ namespace mutabor {
 	inline void connect(InputDevice & in, Route & r) { connect(r,in); }
 	inline void connect(int boxid, Route & r) { connect(boxid,r); }
 
-	inline bool disconnect(Route & r, OutputDevice & out) {
+	inline bool disconnect(Route r, OutputDevice out) {
 		bool retval = out->Remove(r);
 		if (retval) 
 			if (!(retval = r->Remove(out))) {
@@ -86,7 +86,7 @@ namespace mutabor {
 		return retval;
 	}
 
-	inline bool disconnect(Route & r, InputDevice & in) {
+	inline bool disconnect(Route r, InputDevice in) {
 		bool retval = in->Remove(r);
 		if (retval) {
 			if (!(retval = r->Remove(in))) {
@@ -96,15 +96,15 @@ namespace mutabor {
 		return retval;
 	}
 
-	inline bool disconnect(Route & r, int boxid) {
+	inline bool disconnect(Route r, int boxid) {
 		return r->Remove(boxid);
 	}
 
 	inline bool disconnect(OutputDevice & out, Route & r) { return disconnect(r,out); }
 	inline bool disconnect(InputDevice & in, Route & r) { return disconnect(r,in); }
-	inline bool disconnect(int boxid, Route & r) { return disconnect(boxid,r); }
+	inline bool disconnect(int & boxid, Route & r) { return disconnect(boxid,r); }
 
-	inline bool reconnect(Route & r, OutputDevice & oldout, OutputDevice & newout) {
+	inline bool reconnect(Route r, OutputDevice oldout, OutputDevice newout) {
 		bool retval = oldout->Remove(r);
 		if (retval) {
 			retval = r->Replace(oldout,newout);
@@ -120,7 +120,7 @@ namespace mutabor {
 		return retval;
 	}
 
-	inline bool reconnect(Route & r, InputDevice & oldin, InputDevice & newin) {
+	inline bool reconnect(Route r, InputDevice oldin, InputDevice newin) {
 		bool retval = r->Replace(oldin,newin);
 		if (retval) {
 			retval = retval && oldin->Remove(r);
@@ -136,11 +136,11 @@ namespace mutabor {
 		return retval;
 	}
 	
-	inline bool reconnect(Route & r, int oldboxid, int newboxid) {
+	inline bool reconnect(Route r, int oldboxid, int newboxid) {
 			return r->Replace(oldboxid,newboxid);
 	}
 
-	inline bool reconnect(OutputDevice & out, Route & oldroute, Route & newroute) {
+	inline bool reconnect(OutputDevice out, Route oldroute, Route newroute) {
 		DEBUGLOG2(smartptr,_T("out: %p, oldroute: %p, newroute: %p"),
 			  (void *)(out.get()),(void *)(oldroute.get()),(void *)(newroute.get()));
 
@@ -155,7 +155,7 @@ namespace mutabor {
 		return ok;
 	}
 
-	inline bool reconnect(InputDevice & in, Route & oldroute, Route & newroute) {
+	inline bool reconnect(InputDevice in, Route oldroute, Route newroute) {
 		DEBUGLOG2(smartptr,_T("in: %p, oldroute: %p, newroute: %p"),
 			  (void *)(in.get()),(void *)(oldroute.get()),(void *)(newroute.get()));
 
