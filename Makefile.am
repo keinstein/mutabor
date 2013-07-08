@@ -268,7 +268,7 @@ libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 
 libmutaborkernel_a_INLINEHEADERS = \
 		src/kernel/mut.cc \
-		src/kernel/mut.h
+		src/kernel/mut.hh
 
 
 libmutaborkernel_a_INDENTHEADERS = \
@@ -790,8 +790,8 @@ all-local:
 		cmp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc || \
 		cp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc ; \
 	fi
-	if test -f src/kernel/mut.h ; \
+	if test -f src/kernel/mut.hh ; \
 	then \
-		cmp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h || \
-		cp src/kernel/mut.h $(top_srcdir)/src/kernel/mut.h ; \
+		cmp src/kernel/mut.hh $(top_srcdir)/src/kernel/mut.hh || \
+		cp src/kernel/mut.hh $(top_srcdir)/src/kernel/mut.hh ; \
 	fi
