@@ -51,6 +51,7 @@
 // system headers which do seldom change
 #include <limits>
 #include <exception>
+#include <stdexcept>
 #include "wx/stopwatch.h"
 
 #define MUTABOR_NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
