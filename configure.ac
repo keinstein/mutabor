@@ -123,6 +123,13 @@ AC_ARG_ENABLE(debug,
 				[CXXFLAGS="$tmpcxxflags"]
 	       			[AC_MSG_RESULT([no])])
 	       tmpcxxflags="$CXXFLAGS"
+	       CXXFLAGS="$CXXFLAGS -Wno-unused-local-typedefs"
+	       AC_MSG_CHECKING([whether $CXX supports -Wno-unused-local-typedefs])
+      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	       			[AC_MSG_RESULT([yes])], 
+				[CXXFLAGS="$tmpcxxflags"]
+	       			[AC_MSG_RESULT([no])])
+	       tmpcxxflags="$CXXFLAGS"
 	       CXXFLAGS="$CXXFLAGS -fdump-class-hierarchy"
 	       AC_MSG_CHECKING([whether $CXX supports -fdump-class-hierarchy])
       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
