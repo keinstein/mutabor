@@ -26,7 +26,7 @@ INDENT = astyle --style=linux --indent=tab=8
 
 
 if COND_PRECOMP_C
-AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps
+#AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps
 endif
 
 if COND_PRECOMP_CXX
@@ -212,7 +212,7 @@ mutabor-cxxprecompiled.h.shuffle: mutabor-cxxprecompiled.sorted
 	$(MAKE) mutabor-cxxprecompiled.sorted
 	@echo 'Shuffling mutabor-cxxprecompiled.h ...'
 	echo '#define PRECOMPILE 1' >mutabor-cxxprecompiled.h
-	echo '#include "Defs.h"' >> mutabor-cxxprecompiled.h
+	echo '#include "src/kernel/Defs.h"' >> mutabor-cxxprecompiled.h
 	$(SHUFFLE) <$< >> mutabor-cxxprecompiled.h
 	echo '#undef PRECOMPILE' >> mutabor-cxxprecompiled.h
 	touch -d '2000-01-01 00:00:00' mutabor-cxxprecompiled.h
