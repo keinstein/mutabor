@@ -32,9 +32,13 @@
 
 #include "src/kernel/routing/midi/midicmn-inlines.h"
 
+// the following file is not compiled independently
+#include "src/kernel/routing/midi/midicmn.cpp"
+
 namespace mutabor {
 
 	template class CommonMidiOutput<MidiPortOutputProvider,OutputDeviceClass>;
+	template class CommonMidiInput<InputDeviceClass>;
 
 	using namespace midi;
 	

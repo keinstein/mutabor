@@ -37,6 +37,9 @@
 
 #include "wx/mstream.h"
 
+#include "src/kernel/routing/midi/midicmn.cpp"
+template class mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider, mutabor::OutputDeviceClass>;
+
 void  InputMidiFileTest::testBatchPlay1() 
 {
 #ifdef DEBUG

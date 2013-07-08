@@ -57,6 +57,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/resourceload.h"
 #include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutApp.h"
 
 #ifndef MUWX_MUTCONFDLG_H_PRECOMPILED
 #define MUWX_MUTCONFDLG_H_PRECOMPILED
