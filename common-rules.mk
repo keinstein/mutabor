@@ -28,18 +28,6 @@ SUFFIXES = .$(PCHEXT_CXX) .rc .res
 INDENT = astyle --style=linux --indent=tab=8
 
 
-if COND_PRECOMP_C
-#AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps
-endif
-
-if COND_PRECOMP_CXX
-AM_CXXFLAGS += -include mutabor-cxxprecompiled.h # -fpch-deps
-BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
-
-if AMDEP
-@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
-endif
-endif
 
 CLEANFILES = \
 	mutabor-cxxprecompiled.$(PCHEXT_CXX) \
@@ -184,6 +172,11 @@ remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
 		echo '	touch $$@' >>$@ ; \
 	done
 @am__include@ @am__quote@./$(DEPDIR)/podeps.dep@am__quote@
+
+
+if COND_PRECOMP_CXX
+
+#./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
 
 mutabor-cxxprecompiled.stamp:mutabor-cxxprecompiled.$(PCHEXT_CXX)
 	if test \! -f mutabor-cxxprecompiled.stamp ; then touch mutabor-cxxprecompiled.stamp ; fi

@@ -496,9 +496,20 @@ else
 $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT):$(srcdir)/src/wxGUI/Mutabor.rc
 endif
 
-if COND_PRECOMP_CXX
-nodist_mutabor_SOURCES = mutabor-cxxprecompiled.$(PCHEXT_CXX)
+if COND_PRECOMP_C
+#AM_CFLAGS += -include mutabor-precompiled.h # -fpch-deps
 endif
+
+if COND_PRECOMP_CXX
+AM_CXXFLAGS += -include mutabor-cxxprecompiled.h # -fpch-deps
+BUILT_SOURCES += mutabor-cxxprecompiled.$(PCHEXT_CXX)
+nodist_mutabor_SOURCES = mutabor-cxxprecompiled.$(PCHEXT_CXX)
+
+if AMDEP
+@am__include@ @am__quote@./$(DEPDIR)/mutabor-cxxprecompiled.Po@am__quote@
+endif
+endif
+
 
 
 .PHONY: cvs_dist cvs_distcheck \
