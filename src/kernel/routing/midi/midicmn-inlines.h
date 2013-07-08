@@ -34,7 +34,7 @@
  */
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/routing/midi/midicmn.cpp"
+#include "src/kernel/routing/midi/midicmn.h"
 #include "src/kernel/MidiKern.h"
 
 #ifdef __BORLANDC__
