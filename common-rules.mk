@@ -133,21 +133,20 @@ if COND_PRECOMP_CXX
 
 #./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
 
-podeps.stamp:
+#Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
+#	@case '$?' in \
+#	  *config.status*) \
+#	    echo ' $(SHELL) ./config.status'; \
+#	    $(SHELL) ./config.status;; \
+#	  *) \
+#	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
+#	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
+#	esac;
+
+podeps.stamp:remove-podeps.stamp
 	touch $@
 
-
-Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
-	@case '$?' in \
-	  *config.status*) \
-	    echo ' $(SHELL) ./config.status'; \
-	    $(SHELL) ./config.status;; \
-	  *) \
-	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
-	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
-	esac;
-
-remove-podeps.stamp:$(srcdir)/Makefile.in $(top_builddir)/config.status
+remove-podeps.stamp:Makefile
 	rm -f podeps.stamp
 	touch $@
 
