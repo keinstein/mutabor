@@ -43,6 +43,7 @@
 #if wxUSE_VALIDATORS
 
 #include "wx/validate.h"
+#include "wx/radiobut.h"
 
 #define NV_MIN 1
 #define NV_MAX 2
