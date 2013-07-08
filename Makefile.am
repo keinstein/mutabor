@@ -690,11 +690,12 @@ installwin:
 
 
 if MAINTAINER_MODE
+Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi
 $(top_srcdir)/osdep/win/Mutabor.nsi: $(top_srcdir)/osdep/win/Mutabor.nsi.in \
 	$(top_builddir)/config.status
 	cd $(top_builddir) ; ./config.status osdep/win/Mutabor.nsi
-	sed -e 's:!define\s+srcdir\s+".*":!define srcdir "../..":'  $(top_builddir)/osdep/win/Mutabor.nsi >$(top_builddir)/osdep/win/Mutabor.nsi.dist
-	cmp $(top_builddir)/osdep/win/Mutabor.nsi.dist $@ || cp $(top_builddir)/osdep/win/Mutabor.nsi.dist $@
+	sed -e 's|!define\s\s*srcdir\s\s*".*"|!define srcdir "../.."|;s|!define\s\s*EXENAME\s\s*".*"|!define EXENAME "$(PACKAGE).exe"|'  $(top_builddir)/osdep/win/Mutabor.nsi >$(top_builddir)/osdep/win/Mutabor.nsi.dist
+	test -f "$@" && cmp -s $(top_builddir)/osdep/win/Mutabor.nsi.dist "$@" || cp $(top_builddir)/osdep/win/Mutabor.nsi.dist "$@"
 endif
 
 
