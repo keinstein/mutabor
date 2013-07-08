@@ -127,12 +127,6 @@ endif
 		 -c  `test -f '$<' || echo '$(srcdir)/'`$<
 endif
 
-
-
-if COND_PRECOMP_CXX
-
-#./$(DEPDIR)/mutabor-cxxprecompiled.Po:fixdependencies.stamp
-
 #Makefile:remove-podeps.stamp $(srcdir)/Makefile.in $(top_builddir)/config.status
 #	@case '$?' in \
 #	  *config.status*) \
