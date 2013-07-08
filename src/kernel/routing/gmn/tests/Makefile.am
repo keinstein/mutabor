@@ -17,8 +17,10 @@ TESTS = \
 	gmnopenfail1$(EXEEXT)
 
 playgmn1_SOURCES = \
-	debugPaths.cpp \
 	playgmn1.cpp
+
+nodist_playgmn1_SOURCES = \
+	debugPaths.cpp
 
 playgmn1_LDADD = \
 	$(top_builddir)/libmutabormaintest.a \
@@ -31,8 +33,10 @@ gmnopenfail1_LDADD = \
 	$(AM_LDFLAGS)
 
 gmnopenfail1_SOURCES = \
-	debugPaths.cpp \
 	gmnopenfail1.cpp
+
+nodist_gmnopenfail1_SOURCES = \
+	debugPaths.cpp
 
 
 playgmn1.gmn: gmn1_source.gmn

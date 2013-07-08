@@ -13,10 +13,13 @@ check_PROGRAMS += testcppunit
 testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
-	debugPaths.cpp \
 	main.cpp \
 	GUIRouteTest.h \
 	GUIRouteTest.cpp
+
+
+nodist_testcppunit_SOURCES = \
+	debugPaths.cpp
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutabormaincppunit.a \
