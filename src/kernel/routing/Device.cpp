@@ -276,13 +276,6 @@ OutputDeviceClass:\n\
 	}
 #endif
 	
-	void InputDeviceClass::Destroy() {
-		TRACEC;
-		if (IsOpen()) Close();
-		TRACEC;
-		CommonTypedDeviceAPI<InputDeviceClass>::Destroy();
-		TRACEC;
-	}
 
 	void InputDeviceClass::Panic(bool global) {
 		current_keys_type::iterator i;

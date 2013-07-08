@@ -4,7 +4,6 @@
  ********************************************************************
  * Routing. Mutoabor Core.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Device.h,v 1.11 2011/11/02 14:31:57 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998
@@ -515,7 +514,27 @@ namespace mutabor {
 	public:
 		virtual ~CommonTypedDeviceAPI();
 
+		/** 
+		 * Destroy the current object.  
+		 * This function is
+		 * called when an object shall be deleted. It clears
+		 * up all references to itself so that it will be deleted if it is not needed anymore.
+		 * 
+		 * This functions detatches the device from all routes and calls DoDestroy() afterwards. 
+		 * Finally the Device is going to removed from the device list.
+		 */
 		virtual void Destroy();
+
+
+		/** 
+		 * Disconnect the device from all pairings with routes GUI data or something else. 
+		 *
+		 * This function should be extended in subclasses so
+		 * that after calling it only temporary pointers
+		 * (variables in functions or temporary objects) point
+		 * to the object.
+		 */
+		virtual void DisconnectFromAll();
 
 		/// add a route
 		virtual void Add(Route & route);
@@ -637,12 +656,6 @@ namespace mutabor {
 		virtual ~OutputDeviceClass() { 
 			TRACEC;
 			wxASSERT(!IsOpen());
-			TRACEC;
-		}
-		virtual void Destroy() {
-			if (IsOpen()) Close();
-			TRACEC;
-			CommonTypedDeviceAPI<OutputDeviceClass>::Destroy();
 			TRACEC;
 		}
 		virtual void NoteOn(mutabor_box_type * box, 
@@ -783,15 +796,6 @@ namespace mutabor {
 		};
 
 		virtual ~InputDeviceClass() { TRACEC; }
-		/// Remove from the input device list to be deleted, when it becomes free.
-		/**
-		 * As we are using smart pointers the Route gets deleted, when no pointers
-		 * point to it any more. As we want to interactively manage routes,
-		 * We must allow routes to have no input device attached to it. This
-		 * function explicitely allows to delete the object when it is not used 
-		 * any more.
-		 */
-		virtual void Destroy();
 
 		virtual void Close() { 
 			Stop();

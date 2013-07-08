@@ -592,7 +592,7 @@ namespace mutaborGUI {
 			return static_cast<basetype *>(this);
 		}
 
-		virtual void Destroy();
+		virtual void DisconnectFromAll();
 	};
 
 	inline GUIOutputDeviceBase * ToGUIBase(mutabor::OutputDeviceClass * d) {
@@ -728,7 +728,7 @@ namespace mutaborGUI {
 		/// Move routes to another device 
 //		virtual bool MoveRoutes (DevicePtr newclass);
 
-		virtual void Destroy();
+		virtual void DisconnectFromAll();
 	};
 
 

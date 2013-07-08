@@ -61,14 +61,26 @@
 namespace mutabor {
 
 	template <class T, class P, class L>
-	void CommonTypedDeviceAPI<T,P,L>::Destroy()  {
+	inline void CommonTypedDeviceAPI<T,P,L>::Destroy()  {
 		TRACEC;
 		DevicePtr self(static_cast<thistype *>(this));
 		TRACEC;
+		if (IsOpen()) Close();
 
+		DisconnectFromAll();
+
+		TRACEC;
+		debug_destroy_class(this);
+		RemoveFromDeviceList(static_cast<thistype *>(this));
+		TRACEC;
+	}
+
+	template <class T, class P, class L>
+	inline void CommonTypedDeviceAPI<T,P,L>::DisconnectFromAll()  {
 		Route route (NULL);
+		DevicePtr self(static_cast<thistype *>(this));
+
 		routeListType::iterator R;
-			
 		while ( (R = routes.begin()) != routes.end() ) {
 			TRACEC;
 			route = (*R);
@@ -76,12 +88,7 @@ namespace mutabor {
 			disconnect(route,self);
 			TRACEC;
 		}
-			
 		route = NULL;
-		TRACEC;
-		debug_destroy_class(this);
-		RemoveFromDeviceList(static_cast<thistype *>(this));
-		TRACEC;
 	}
 
 }

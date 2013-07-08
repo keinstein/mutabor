@@ -642,11 +642,11 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	void GUIfiedOutputDevice<T>::Destroy() {
+	void GUIfiedOutputDevice<T>::DisconnectFromAll() {
 		TRACEC;
+		basetype::DisconnectFromAll();
+
 		GUIOutputDeviceBase::Destroy();
-		TRACEC;
-		basetype::Destroy();
 		TRACEC;
 	}
 
@@ -667,11 +667,11 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	void GUIfiedInputDevice<T>::Destroy() {
+	void GUIfiedInputDevice<T>::DisconnectFromAll() {
+		TRACEC;
+		basetype::DisconnectFromAll();
 		TRACEC;
 		GUIInputDeviceBase::Destroy();
-		TRACEC;
-		T::Destroy();
 		TRACEC;
 	}
 
