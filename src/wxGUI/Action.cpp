@@ -133,17 +133,35 @@ char *GenerateACTString(int box)
 	ActLineNumbers = 0;
 
 	for ( TAktionTrace *a = AktionTraceBase; a; a = a->Next)
-		if ( a->Box == box ) {
-			while ( strlen(sAktion) > 1900 ) {
-				char *s = strchr(sAktion, '\n');
-				strcpy(sAktion, &s[1]);
-				ActLineNumbers--;
+		if ( a->Box == box && a->Name ) {
+			int maxsize = 1999-strlen(a->Name)-strlen("\n");
+			if (maxsize < 0) maxsize = 0;
+			int size = strlen(sAktion);
+			if (size>maxsize) {
+				char * s = strchr(sAktion+size-maxsize, '\n');
+				char * s2 = sAktion;
+
+				while ((s2=strchr(s2+1,'\n')) < s)
+					ActLineNumbers--;
+				if (s != sAktion)
+					ActLineNumbers--;
+
+				if (s) {
+					memmove(sAktion,s+1,size-(s-sAktion)-1);
+					size -= s-sAktion + 1;
+				} else {
+					sAktion[0]=0;
+					size = 0;
+				}
 			}
 
-			if ( sAktion[0] )
-				strcat(sAktion, "\n");
+			if ( size ) {
+				strcpy(sAktion+size, "\n");
+				size += strlen("\n");
+			}
 
-			strcat(sAktion, a->Name);
+			strncat(sAktion+size, a->Name,1999-size);
+			sAktion[1999]=0;
 
 			ActLineNumbers++;
 		}
