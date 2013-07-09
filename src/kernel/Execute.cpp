@@ -165,7 +165,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		case aufruf_umst_taste_abs:
 			TRACE;
 			change_anker(box,
-			             aktion->u.aufruf_umst_taste_abs.wert[box->id]);
+			             *(aktion->u.aufruf_umst_taste_abs.keynr));
 
 			update_pattern(box);
 
@@ -179,7 +179,7 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		case aufruf_umst_breite_abs:
 			TRACE;
 			change_breite(box,
-			              aktion->u.aufruf_umst_breite_abs.wert[box->id]);
+			              *(aktion->u.aufruf_umst_breite_abs.width));
 
 			update_pattern(box);
 
@@ -224,12 +224,12 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
 
 			case '+':
-				help += aktion->u.aufruf_umst_taste_rel.wert[box->id];
+				help += *(aktion->u.aufruf_umst_taste_rel.distance);
 
 				break;
 
 			case '-':
-				help -= aktion->u.aufruf_umst_taste_rel.wert[box->id];
+				help -= *(aktion->u.aufruf_umst_taste_rel.distance);
 
 				break;
 			}
@@ -254,22 +254,22 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 			switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
 
 			case '+':
-				help += aktion->u.aufruf_umst_breite_rel.wert[box->id];
+				help += *(aktion->u.aufruf_umst_breite_rel.difference);
 
 				break;
 
 			case '-':
-				help -= aktion->u.aufruf_umst_breite_rel.wert[box->id];
+				help -= *(aktion->u.aufruf_umst_breite_rel.difference);
 
 				break;
 
 			case '*':
-				help *= aktion->u.aufruf_umst_breite_rel.wert[box->id];
+				help *= *(aktion->u.aufruf_umst_breite_rel.difference);
 
 				break;
 
 			case '/':
-				help /= aktion->u.aufruf_umst_breite_rel.wert[box->id];
+				help /= *(aktion->u.aufruf_umst_breite_rel.difference);
 
 				break;
 			}
@@ -329,11 +329,16 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 		}
 		break;
 
+		case aufruf_umst_umst_bund:
+			TRACE;
+			/* nothing to be done here, this is only the head (containing the name) of the compound */
+			break;
+
 		case aufruf_umst_umst_case: {
 			struct case_element * lauf;
 			int i;
 			TRACE;
-			i=aktion->u.aufruf_umst_umst_case.wert[box->id];
+			i=*(aktion->u.aufruf_umst_umst_case.choice);
 
 			for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
 			                lauf;
@@ -368,12 +373,6 @@ void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
 */
 		}
 		break;
-
-		case aufruf_umst_umst_bund:
-			TRACE;
-			wxLogWarning(_("Unhandled case path: aufruf_umst_umst_bund"));
-			UNREACHABLE;
-			break;
 
 		default:
 			wxLogError(_("Unexpected action type: %d"), aktion->aufruf_typ);

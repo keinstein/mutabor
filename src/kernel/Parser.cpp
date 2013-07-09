@@ -523,31 +523,19 @@ void setze_nummer_von_abstand_und_zentrum (void)
 
 					case parameter:
 						TRACE;
-						if ( ! strcmp (lauf_arg->argument.u.parameter.parameter_name,
-						                "ABSTAND")) {
-							lauf_arg->argument.u.parameter.parameter_nummer
-							= 0;
+						if ( (! strcmp (lauf_arg->argument.u.parameter.parameter_name,
+								"ABSTAND")) || !strcmp (lauf_arg->argument.u.parameter.parameter_name,
+											"DISTANCE")) {
+							lauf_arg->argument.u.parameter.parameter_nummer = 0;
+						} else if ( (!strcmp (lauf_arg->argument.u.parameter.parameter_name,
+								      "ZENTRUM"))|| !strcmp (lauf_arg->argument.u.parameter.parameter_name,
+											     "CENTER")) {
+							lauf_arg->argument.u.parameter.parameter_nummer	= 1;
 						} else
-							if ( ! strcmp (lauf_arg->argument.u.parameter.parameter_name,
-							                "DISTANCE")) {
-								lauf_arg->argument.u.parameter.parameter_nummer
-								= 0;
-							} else
-								if ( ! strcmp (lauf_arg->argument.u.parameter.parameter_name,
-								                "ZENTRUM")) {
-									lauf_arg->argument.u.parameter.parameter_nummer
-									= 1;
-								} else
-									if ( ! strcmp (lauf_arg->argument.u.parameter.parameter_name,
-									                "CENTER")) {
-										lauf_arg->argument.u.parameter.parameter_nummer
-										= 1;
-									} else
-										fatal_error (39,
-										             mutC_STR(lauf_arg->argument.u.parameter.parameter_name),
-										             mutC_STR(lauf_anw->aktion->u.aktion_aufruf.name),
-										             mutC_STR(lauf->name));
-
+							fatal_error (39,
+								     mutC_STR(lauf_arg->argument.u.parameter.parameter_name),
+								     mutC_STR(lauf_anw->aktion->u.aktion_aufruf.name),
+								     mutC_STR(lauf->name));
 						break;
 
 					default:
@@ -1626,10 +1614,10 @@ void get_umstimmung_umstimmungs_bund (void)
 	TRACE;
 	tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungsbund;
 	tmp_umstimmung -> u.umstimmung_umstimmungsbund
-	.aktions_liste = get_last_aktions_liste ();
+		.aktions_liste = get_last_aktions_liste ();
 
 
-	/* check, ob die Parameter zulÑssig sind */
+	/* check for valid parameters */
 
 	{
 
@@ -2941,19 +2929,19 @@ static void check_konsistenz (void)
 				TRACE;
 
 				for (help_aktionen = lauf -> u.umstimmung_umstimmungsbund.aktions_liste;
-				                help_aktionen;
-				                help_aktionen = help_aktionen -> next) {
+				     help_aktionen;
+				     help_aktionen = help_aktionen -> next) {
 					if (help_aktionen -> aktions_typ == aktion_aufruf) {
-
+						
 						struct umstimmung * umst =
-									        get_umstimmung (help_aktionen -> u.aktion_aufruf.name,
-									                        list_of_umstimmungen);
+							get_umstimmung (help_aktionen -> u.aktion_aufruf.name,
+									list_of_umstimmungen);
 
 						if (umst == NULL) {
-
+							
 							struct tonsystem * tonsys =
-										        parser_get_tonsystem (help_aktionen -> u.aktion_aufruf.name,
-										                              list_of_tonsysteme);
+								parser_get_tonsystem (help_aktionen -> u.aktion_aufruf.name,
+										      list_of_tonsysteme);
 
 							if (tonsys == NULL) {
 

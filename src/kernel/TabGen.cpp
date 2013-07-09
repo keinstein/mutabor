@@ -613,12 +613,21 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		/*        break; */
 
 	case umstimmung_umstimmungsbund:
-		xfree (help);
 		TRACE;
+		/* Technically we could omit the initial action, but then we also lose the name of the 
+		   compound, which is needed elsewhere. */
+		help -> next = expand_aktions_liste (box,
+						     the_umstimmung->u.umstimmung_umstimmungsbund.aktions_liste,
+						     aktuelle_parameter);
 
-		return expand_aktions_liste (box,
-					     the_umstimmung->u.umstimmung_umstimmungsbund.aktions_liste,
-		                             aktuelle_parameter);
+		if (help->name && help->name[0]) {
+			help -> aufruf_typ = aufruf_umst_umst_bund;
+		} else {
+			struct do_aktion * help2 = help;
+			help = help->next;
+			xfree(help);
+		}
+		return help;
 
 		/*        break; */
 
