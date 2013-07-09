@@ -507,7 +507,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_taste_abs;
 
-		help -> u.aufruf_umst_taste_abs.wert =
+		help -> u.aufruf_umst_taste_abs.keynr =
 		        get_wert_of_argument (box,
 					      & the_umstimmung->u.umstimmung_taste_abs.argument,
 					      aktuelle_parameter);
@@ -522,7 +522,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_breite_abs;
 
-		help -> u.aufruf_umst_breite_abs.wert =
+		help -> u.aufruf_umst_breite_abs.width =
 		        get_wert_of_argument (box,
 					      & the_umstimmung->u.umstimmung_breite_abs.argument,
 					      aktuelle_parameter);
@@ -569,7 +569,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_taste_rel;
 
-		help -> u.aufruf_umst_taste_rel.wert =
+		help -> u.aufruf_umst_taste_rel.distance =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_taste_rel.argument,
 		                               aktuelle_parameter);
@@ -586,7 +586,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_breite_rel;
 
-		help -> u.aufruf_umst_breite_rel.wert =
+		help -> u.aufruf_umst_breite_rel.difference =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_breite_rel.argument,
 		                               aktuelle_parameter);
@@ -626,7 +626,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_umst_case;
 
-		help -> u.aufruf_umst_umst_case.wert =
+		help -> u.aufruf_umst_umst_case.choice =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_umstimmungs_case.argument,
 		                               aktuelle_parameter);

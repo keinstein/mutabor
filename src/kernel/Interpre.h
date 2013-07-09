@@ -177,11 +177,11 @@ struct do_aktion
 		} aufruf_tonsystem;
 
 		struct {
-			int * wert;
+			int * keynr;
 		} aufruf_umst_taste_abs;
 
 		struct {
-			int * wert;
+			int * width;
 		} aufruf_umst_breite_abs;
 
 		struct {
@@ -193,12 +193,12 @@ struct do_aktion
 		} aufruf_umst_wiederholung_rel;
 
 		struct {
-			int * wert;
+			int * distance;
 			char rechenzeichen;
 		} aufruf_umst_taste_rel;
 
 		struct {
-			int * wert;
+			int * difference;
 			char rechenzeichen;
 		} aufruf_umst_breite_rel;
 
@@ -207,8 +207,13 @@ struct do_aktion
 			struct ton_einstell * tonliste;
 		} aufruf_umst_toene_veraendert;
 
+#if 0 
 		struct {
-			int * wert;
+		} aufruf_umst_umst_bund;
+#endif
+
+		struct {
+			int * choice;
 			struct case_element * umst_case;
 		} aufruf_umst_umst_case;
 
