@@ -449,14 +449,15 @@ void change_breite(mutabor_box_type * box, int neu)
 	int i;
 	
 	DEBUGLOG2(kernel_exec,_T("Box %p got new width: %d"), (void*)box, neu);
-	if ( neu>0 && neu < MUTABOR_KEYRANGE_MAX_WIDTH ) {
-		if ( neu > tonsys->breite )
-			for (i = tonsys->breite; i < neu; i++)
-				tonsys->ton[i]=GET_FREQ((tonsys->anker+i),tonsys);
-		tonsys->periode =
-		        GET_FREQ(tonsys->anker+neu,tonsys) - GET_FREQ(tonsys->anker,tonsys);
-		tonsys->breite=neu;
-	}
+	if ( neu <= 0 ) neu = 1;
+	if ( neu > MUTABOR_KEYRANGE_MAX_WIDTH)
+		neu = MUTABOR_KEYRANGE_MAX_WIDTH;
+	if ( neu > tonsys->breite )
+		for (i = tonsys->breite; i < neu; i++)
+			tonsys->ton[i]=GET_FREQ((tonsys->anker+i),tonsys);
+	tonsys->periode =
+		GET_FREQ(tonsys->anker+neu,tonsys) - GET_FREQ(tonsys->anker,tonsys);
+	tonsys->breite=neu;
 }
 
 /** return the smallest key pressed actually */
