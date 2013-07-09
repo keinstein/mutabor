@@ -117,23 +117,6 @@ static int enthaelt_nur_konstante_toene (struct ton * lauf)
 /******** Haupt-Expandier-Routine **************/
 
 
-#if 0
-/***** Diese Zweielementige Liste ist Parameterliste bei Logiken */
-
-static struct interpreter_parameter_liste zentrums_knoten =
-        {
-	        & laufzeit_zentrum, NULL
-        };
-
-static struct interpreter_parameter_liste abstands_knoten =
-        {
-	        & laufzeit_abstand, & zentrums_knoten
-        };
-
-struct interpreter_parameter_liste * start_parameter_liste =
-			        & abstands_knoten;
-#endif
-
 typedef int * intptr;
 
 static intptr get_cache_konstante (mutabor_box_type * box, int wert)
