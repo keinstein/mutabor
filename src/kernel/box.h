@@ -72,9 +72,9 @@ typedef struct mutabor_key_index_type {
 /** Cache of constant values.
  *   each value is stored only once (and equal for all boxes) 
  *
- *  \todo check purpose of constant cache. Propably the pointer is more expensive.
- *  But maybe the code to handle real constants is more expensive (I daubt it).
- *  Even on 16 bit i286 a pointer has at least 32 bits.
+ *  As constants are usually parameters in functions that can be
+ *  called with arbitrary parameters we use this to avoid the need of
+ *  duplicate functions.
  */
 struct cache_konstanten
 {
