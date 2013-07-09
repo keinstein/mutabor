@@ -49,10 +49,12 @@ extern jmp_buf weiter_gehts_nach_compilerfehler;
 #define PROT_MAXLINES 30
 #define PROT_MAXCHARS PROT_MAXLINES*40
 #define AKTIONEN_MAX 100
+#define AKTIONEN_STRLEN (AKTIONEN_MAX*50)
 
 char protokoll_string[PROT_MAXCHARS];
 
-char sAktionen[AKTIONEN_MAX*50];
+char sAktionen[AKTIONEN_STRLEN];
+
 
 unsigned char boxAktionen[AKTIONEN_MAX];
 
@@ -123,8 +125,9 @@ void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion)
 		if ( nAktionen )
 			l = lAktionen[nAktionen-1];
 
-#warning "strcpy must be replaced"
-		strcpy(&sAktionen[l], aktion->name);
+		if (l < AKTIONEN_STRLEN)
+			strncpy(&sAktionen[l], aktion->name, AKTIONEN_STRLEN-1-l);
+		sAktionen[AKTIONEN_STRLEN-1]=0;
 
 		lAktionen[nAktionen++] = l + strlen(aktion->name);
 	}
