@@ -224,8 +224,6 @@ struct do_aktion
 	struct do_aktion * next;
 };
 
-
-
 struct midi_ereignis
 {
 	int * first_pos;

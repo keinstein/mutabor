@@ -115,22 +115,166 @@ void AktionenInit()
   aktionen_changed = 1;
 }*/
 
+char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_parameters) {
+#warning "Symbolic parameters are not implemented yet"
+	int size = 2000, length = 0, tmp;
+	char * s = (char*)malloc(size), *tmpstr, *parameters = NULL;
+	s[0] = 0;
+
+	if (!s) {
+		mutabor_out_of_memory(_("Failed to allocate Memory for action."),__FILE__,__LINE__);
+		return NULL;
+	}
+	
+	if (action->name) {
+		if ((tmp = strlen(action->name)) > size) {
+			tmpstr = (char *)realloc(s,tmp*2);
+			if (!tmpstr) {
+				mutabor_out_of_memory(_("Cannot enhance action description."),__FILE__,__LINE__);
+			} else {
+				s = tmpstr;
+				size = tmp*2;
+				s[size-1]=0;
+			}
+		}
+		strncpy(s,action->name,size-length-1);
+		length += tmp;
+	}
+
+	switch (action->aufruf_typ) {
+	case aufruf_logik:
+		if (!length && action->u.aufruf_logik.einstimmung) {
+			tmp = asprintf(&parameters,"%s%s",
+					      (length?":":""),
+					      mutabor_do_aktion_to_string(action->u.aufruf_logik.einstimmung,
+									  symbolic_parameters));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+	case aufruf_tonsystem:
+		/* tone_system has no name :-( 
+		if (action->u.aufruf_tonsystem.tonsystem && !length) {
+			parameters = strdup(action->u.aufruf_tonsystem.tonsystem->name);
+		}
+		*/
+		break;
+	case aufruf_umst_taste_abs:
+		if (action->u.aufruf_umst_taste_abs.keynr) {
+			tmp = asprintf(&parameters,"(%d)", *(action->u.aufruf_umst_taste_abs.keynr));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+	case aufruf_umst_breite_abs:
+		if (action->u.aufruf_umst_breite_abs.width) {
+			tmp = asprintf(&parameters,"(%d)", *(action->u.aufruf_umst_taste_abs.keynr));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+	case aufruf_umst_wiederholung_abs:
+		tmp = asprintf(&parameters,"(%f ct)", ((double)action->u.aufruf_umst_wiederholung_abs.faktor)*100.0/(double)(0x1000000));
+		if (tmp < 0) parameters = NULL;
+		break;
+	case aufruf_umst_wiederholung_rel:
+		tmp = asprintf(&parameters,"(%+f ct)", 
+				      ((double)action->u.aufruf_umst_wiederholung_abs.faktor)*100.0/(double)(0x1000000));
+		if (tmp < 0) parameters = NULL;
+		break;
+	case aufruf_umst_taste_rel:
+		if (action->u.aufruf_umst_taste_rel.distance) {
+			tmp = asprintf(&parameters,"(%c%d)", 
+					      action->u.aufruf_umst_taste_rel.rechenzeichen,
+					      *(action->u.aufruf_umst_taste_rel.distance));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+	case aufruf_umst_breite_rel:
+		if (action->u.aufruf_umst_breite_rel.difference) {
+			tmp = asprintf(&parameters,"(%c%d)", 
+					      action->u.aufruf_umst_breite_rel.rechenzeichen,
+					      *(action->u.aufruf_umst_breite_rel.difference));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+	case aufruf_umst_toene_veraendert: 
+		if (!length) {
+			parameters = strdup("{unimplemented}");
+		}
+		break;
+	case aufruf_umst_umst_bund:
+		if (!length) {
+			parameters = strdup("{unimplemented}");
+		}
+		break;
+	case aufruf_umst_umst_case:
+		if (action->u.aufruf_umst_umst_case.choice) {
+			tmp = asprintf(&parameters,"(%d)", *(action->u.aufruf_umst_umst_case.choice));
+			if (tmp < 0) parameters = NULL;
+		}
+		break;
+
+	case aufruf_midi_out:
+		if (action->u.aufruf_midi_out.out_liste) {
+			/* todo: work against memory fragmentation */
+			tmp = asprintf(&parameters,"%x", action->u.aufruf_midi_out.out_liste->midi_code);
+			if (tmp < 0) parameters = NULL;
+			else for (midiliste * i = action->u.aufruf_midi_out.out_liste->next; i ; i=i->next) {
+					tmpstr = parameters;
+					tmp = asprintf(&parameters,"%s %x",tmpstr,i->midi_code);
+					if (tmp < 0) {
+						parameters = tmpstr;
+						break;
+					}
+					free(tmpstr);
+			}
+			tmpstr=parameters;
+			tmp = asprintf(&parameters,"(%s)",tmpstr);
+			if (tmp < 0) {
+				parameters = tmpstr;
+				break;
+			}
+			free(tmpstr);
+		}
+		break;
+	}
+	if (parameters) {
+		tmp = strlen(parameters);
+		if (length+tmp > size-1) {
+			tmpstr = (char *)realloc(s,tmp+length+1);
+			if (!tmpstr) tmp = size-length-1;
+			else size = tmp+length+1;
+		}
+		strncpy(s+length,parameters,tmp);
+		s[size-1]=0;
+		free(parameters);
+	}
+	return s;
+}
+
+
+
 void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion)
 {
-	
-	if ( nAktionen < AKTIONEN_MAX ) {
-		boxAktionen[nAktionen] = box->id;
-		int l = 0;
+	int l = 0,l2;
+	char * name = mutabor_do_aktion_to_string(aktion,false);
 
-		if ( nAktionen )
-			l = lAktionen[nAktionen-1];
+	if (nAktionen >= AKTIONEN_MAX) return;
 
-		if (l < AKTIONEN_STRLEN)
-			strncpy(&sAktionen[l], aktion->name, AKTIONEN_STRLEN-1-l);
-		sAktionen[AKTIONEN_STRLEN-1]=0;
+	boxAktionen[nAktionen] = box->id;
 
-		lAktionen[nAktionen++] = l + strlen(aktion->name);
-	}
+	if ( nAktionen )
+		l = lAktionen[nAktionen-1];
+
+	l2 = strlen(name);
+
+	if (l < AKTIONEN_STRLEN)
+		strncpy(&sAktionen[l], name, AKTIONEN_STRLEN-1-l);
+	sAktionen[AKTIONEN_STRLEN-1]=0;
+
+	if (l+l2 > AKTIONEN_STRLEN) 
+		lAktionen[nAktionen++] = AKTIONEN_STRLEN;
+	else 
+		lAktionen[nAktionen++] = l+ l2;
+
 }
 
 int pascal _export GetActString(unsigned char **box, int **l, char **s)

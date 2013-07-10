@@ -71,6 +71,8 @@
 #define mut_thread_lock(name) do {} while (0)
 #define mut_thread_release(name) do {} while (0)
 
+#warning Implement mutabor_out_of_memory
+#define mutabor_out_of_memory(...)
 
 #define mutChar   wxChar
 #define mutString wxString

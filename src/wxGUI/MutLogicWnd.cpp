@@ -581,16 +581,17 @@ namespace mutaborGUI {
 		DestroyChildren();
 
 		// neue erstellen
-		char isLogic, s[200], s1[200], key, isOpen;
+		char isLogic, *s, s1[200], key, isOpen;
 
 		wxString sText, sEinst;
 		wxWindow *aWin;
 		nTags = 0;
 
-		if ( GetMutTag(isLogic, s, s1, key, box.GetNonGUIBox()) )
+		if ( GetMutTag(isLogic, &s, s1, key, box.GetNonGUIBox()) )
 			do {
 				nTags++;
 				sText = muT(s);
+				free(s);s = NULL;
 				sEinst = muT(s1);
 
 				if ( (isOpen = (key == thekey)) != 0 ) {
@@ -614,7 +615,7 @@ namespace mutaborGUI {
 				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
 
 				if ( isOpen ) ToFocus = aWin;
-			} while ( GetMutTag(isLogic, s, s1, key, NULL) );
+			} while ( GetMutTag(isLogic, &s, s1, key, NULL) );
 
 		// Color Bars
 		if ( UseColorBars ) {

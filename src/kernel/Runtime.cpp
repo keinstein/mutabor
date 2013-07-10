@@ -230,7 +230,7 @@ struct keyboard_ereignis *last;
 
 #warning Use dynamic string management for GetMutTag
 char pascal _export GetMutTag(char &isLogic, 
-			      char *text, 
+			      char **text, 
 			      char *einsttext, 
 			      char &key, 
 			      mutabor_box_type * box) {
@@ -244,8 +244,7 @@ char pascal _export GetMutTag(char &isLogic,
 
 	key = last->taste;
 
-	strncpy(text, last->aktion->name, 199);
-	text[199] = 0;
+	*text = mutabor_do_aktion_to_string(last->aktion,false);
 
 	isLogic = ( last->the_logik_to_expand != NULL );
 

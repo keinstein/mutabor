@@ -73,7 +73,7 @@ void pascal Panic();
 //void pascal InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
 
 // box = -1 ... weiterlesen in angefangener Liste
-char pascal GetMutTag(char &isLogic, char *text, char *einsttext, char &key, mutabor_box_type * box);
+char pascal GetMutTag(char &isLogic, char **text, char *einsttext, char &key, mutabor_box_type * box);
 char pascal IsLogicKey(mutabor_box_type * box, char key);
 bool pascal KeyChanged(int box);
 bool pascal TSChanged(int box);

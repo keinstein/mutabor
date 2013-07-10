@@ -131,9 +131,11 @@ void enable_protokoll_frame( void );
 
 extern int scanner_echo;
 
+
 #ifdef MUTWIN
-extern "C"
-{
+extern "C" {
+	char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_parameters);
+
 	int pascal GetActString(unsigned char **box, int **l, char **s);
 	char* pascal GetKeyString(int box, char asTS);
 	char* pascal GetTSString(int box, char asTS);
