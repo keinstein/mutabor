@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mutabor 3.1.0-0pre1\n"
 "Report-Msgid-Bugs-To: mutabor@mailbox.tu-dresden.de\n"
-"POT-Creation-Date: 2013-06-09 13:06+0200\n"
-"PO-Revision-Date: 2013-06-08 21:43+0100\n"
+"POT-Creation-Date: 2013-07-10 22:40+0200\n"
+"PO-Revision-Date: 2013-07-10 22:39+0100\n"
 "Last-Translator: Tobias Schlemmer <keinstein@users.berlios.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
@@ -383,46 +383,50 @@ msgstr "Die MIDI-Kanäle %d und %d überschneiden sich"
 msgid "Error in GMN-File %s position(%d, %d): %s"
 msgstr "Fehler in der GMN-Datei „%s“ an der Position (%d, %d): %s"
 
-#: src/kernel/Execute.cpp:374
-msgid "Unhandled case path: aufruf_umst_umst_bund"
-msgstr "Unhandled case path: aufruf_umst_umst_bund"
-
-#: src/kernel/Execute.cpp:379
+#: src/kernel/Execute.cpp:378
 #, c-format
 msgid "Unexpected action type: %d"
 msgstr "Unerwarteter Aktionstyp: %d"
 
-#: src/kernel/GrafKern.cpp:255
+#: src/kernel/GrafKern.cpp:125
+msgid "Failed to allocate Memory for action."
+msgstr "Die Speicheranforderung für die Aktion schlug fehl."
+
+#: src/kernel/GrafKern.cpp:133
+msgid "Cannot enhance action description."
+msgstr "Kann Aktionsbeschriftung nicht erweitern."
+
+#: src/kernel/GrafKern.cpp:402
 #, c-format
 msgid "Error %d:"
 msgstr "Fehler %d:"
 
-#: src/kernel/GrafKern.cpp:279
+#: src/kernel/GrafKern.cpp:426
 msgid "Compiler warning"
 msgstr "Warnung des Übersetzers"
 
-#: src/kernel/GrafKern.cpp:356 src/kernel/GrafKern.cpp:359
+#: src/kernel/GrafKern.cpp:503 src/kernel/GrafKern.cpp:506
 msgid "line"
 msgstr "Zeile"
 
 #: src/kernel/Interval.cpp:199 src/kernel/Interval.cpp:243
-#: src/kernel/Parser.cpp:2362 src/kernel/Parser.cpp:2399
+#: src/kernel/Parser.cpp:2350 src/kernel/Parser.cpp:2387
 msgid "loop"
 msgstr "Schleife"
 
-#: src/kernel/Parser.cpp:2594
+#: src/kernel/Parser.cpp:2582
 msgid "status byte"
 msgstr "Status-Byte"
 
-#: src/kernel/Parser.cpp:2607
+#: src/kernel/Parser.cpp:2595
 msgid "data byte"
 msgstr "Datenbyte"
 
-#: src/kernel/Parser.cpp:2636
+#: src/kernel/Parser.cpp:2624
 msgid "byte"
 msgstr "Byte"
 
-#: src/kernel/Parser.cpp:2915
+#: src/kernel/Parser.cpp:2903
 msgid "retuning"
 msgstr "Umstimmung"
 
@@ -454,21 +458,21 @@ msgstr "Rudimentäre Ausgabedatei"
 msgid "Generic input file"
 msgstr "Rudimentäre Eingabedatei"
 
-#: src/kernel/routing/Device.h:467
+#: src/kernel/routing/Device.h:466
 msgid "Device base class"
 msgstr "Basistyp eines Gerätes"
 
-#: src/kernel/routing/Device.h:680
+#: src/kernel/routing/Device.h:693
 msgid "Undefined output device"
 msgstr "Undefiniertes Ausgabegerät"
 
-#: src/kernel/routing/Device.h:930
+#: src/kernel/routing/Device.h:934
 msgid "Undefined input device"
 msgstr "Unbekanntes Eingabegerät"
 
 #: src/kernel/routing/Route.cpp:328 src/kernel/routing/Route.cpp:376
-#: src/kernel/routing/midi/DevMidi.cpp:101
-#: src/kernel/routing/midi/DevMidi.cpp:284
+#: src/kernel/routing/midi/DevMidi.cpp:105
+#: src/kernel/routing/midi/DevMidi.cpp:289
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -501,11 +505,11 @@ msgstr ""
 "Versuchte eine Route ohne die geeignete Routen-Fabrik (RouteFactory) zu "
 "erstellen. Du (der Programmierer) musst eine erstellen!"
 
-#: src/kernel/routing/RouteCompat.cpp:408
+#: src/kernel/routing/RouteCompat.cpp:389
 msgid "Device found, but device type not set."
 msgstr "Gerät wurde gefunden, aber kein Typ gesetzt."
 
-#: src/kernel/routing/RouteCompat.cpp:449
+#: src/kernel/routing/RouteCompat.cpp:430
 msgid "Device found but device type not set."
 msgstr "Gerät gefunden, aber Gerätetyp nicht gesetzt."
 
@@ -518,7 +522,7 @@ msgid "GIS input file."
 msgstr "GIS-Eingabedatei."
 
 #: src/kernel/routing/gmn/GSP_Err.cpp:34 src/wxGUI/MutApp.cpp:706
-#: src/wxGUI/MutEditFile.cpp:1269 src/xrc/reslocale.cpp:13
+#: src/wxGUI/MutEditFile.cpp:1268 src/xrc/reslocale.cpp:13
 msgid "OK"
 msgstr "OK"
 
@@ -586,16 +590,16 @@ msgstr "Die Datei muss mit „[“ oder „{“ beginnen."
 msgid "Range without preceeding tag."
 msgstr "Bereich ohne vorheriges Tag."
 
-#: src/kernel/routing/midi/DevMidF.cpp:141
+#: src/kernel/routing/midi/DevMidF.cpp:144
 msgid "Number contains too many bytes"
 msgstr "Die Zahl enthält zu viele Bytes"
 
-#: src/kernel/routing/midi/DevMidF.cpp:161
+#: src/kernel/routing/midi/DevMidF.cpp:164
 msgid "Invalid status byte"
 msgstr "Ungültiges Status-Byte"
 
-#: src/kernel/routing/midi/DevMidF.cpp:325
-#: src/kernel/routing/midi/DevMidF.cpp:455
+#: src/kernel/routing/midi/DevMidF.cpp:328
+#: src/kernel/routing/midi/DevMidF.cpp:460
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -604,23 +608,23 @@ msgstr ""
 "Der Kanalbereich %d–%d der aktuellen MIDI-Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde korrikgiert."
 
-#: src/kernel/routing/midi/DevMidF.cpp:327
-#: src/kernel/routing/midi/DevMidF.cpp:457
-#: src/kernel/routing/midi/DevMidF.cpp:485
-#: src/kernel/routing/midi/DevMidi.cpp:143
-#: src/kernel/routing/midi/DevMidi.cpp:327
-#: src/kernel/routing/midi/DevMidi.cpp:356
+#: src/kernel/routing/midi/DevMidF.cpp:330
+#: src/kernel/routing/midi/DevMidF.cpp:462
+#: src/kernel/routing/midi/DevMidF.cpp:490
+#: src/kernel/routing/midi/DevMidi.cpp:147
+#: src/kernel/routing/midi/DevMidi.cpp:332
+#: src/kernel/routing/midi/DevMidi.cpp:361
 msgid "Warning loading route"
 msgstr "Warnung beim Laden der Route"
 
-#: src/kernel/routing/midi/DevMidF.cpp:364
-#: src/kernel/routing/midi/DevMidF.cpp:370
-#: src/kernel/routing/midi/DevMidi.cpp:153
-#: src/kernel/routing/midi/DevMidi.cpp:159
+#: src/kernel/routing/midi/DevMidF.cpp:369
+#: src/kernel/routing/midi/DevMidF.cpp:375
+#: src/kernel/routing/midi/DevMidi.cpp:157
+#: src/kernel/routing/midi/DevMidi.cpp:163
 msgid "Bending_Range"
 msgstr "Bending_Range"
 
-#: src/kernel/routing/midi/DevMidF.cpp:483
+#: src/kernel/routing/midi/DevMidF.cpp:488
 #, c-format
 msgid ""
 "The Track range %d--%d of the MIDI file %s must be inside %d--%d. The "
@@ -629,48 +633,48 @@ msgstr ""
 "Der Bereich für die MIDI-Spuren (%d–%d) der Datei „%s“ muss innerhalb von %d–"
 "%d liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidF.cpp:513
+#: src/kernel/routing/midi/DevMidF.cpp:518
 #, c-format
 msgid "Can not open Midi input file '%s'."
 msgstr "Kann Midi-Eingabedatei „%s“ nicht öffnen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:521
+#: src/kernel/routing/midi/DevMidF.cpp:526
 #, c-format
 msgid "File '%s' is not a valid midi file."
 msgstr "Die Datei „%s“ ist keine gültige MIDI-Datei."
 
-#: src/kernel/routing/midi/DevMidF.cpp:528
+#: src/kernel/routing/midi/DevMidF.cpp:533
 #, c-format
 msgid "Unknown header (chunk length %d) in file '%s'."
 msgstr "Unbekannter Dateikopf (Abschnittslänge %d) in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:538
+#: src/kernel/routing/midi/DevMidF.cpp:543
 #, c-format
 msgid "Unknown file typ %d in file '%s'."
 msgstr "Unbekannter Dateityp %d in Datei „%s“."
 
-#: src/kernel/routing/midi/DevMidF.cpp:553
+#: src/kernel/routing/midi/DevMidF.cpp:558
 #, c-format
 msgid "Midi file '%s' has corrupted timing information."
 msgstr "Die MIDI-Datei „%s“ enthält kaputte Zeitstempel."
 
-#: src/kernel/routing/midi/DevMidF.cpp:570
+#: src/kernel/routing/midi/DevMidF.cpp:575
 #, c-format
 msgid "Could not allocate memory for the track list of file '%s'."
 msgstr "Die Speicheranforderung für die Spurliste der Datei „%s“ schlug fehl."
 
-#: src/kernel/routing/midi/DevMidF.cpp:577
+#: src/kernel/routing/midi/DevMidF.cpp:582
 #, c-format
 msgid "File '%s' has a broken track header."
 msgstr "Die Datei „%s“ enthält einen kaputten Spuranfang."
 
-#: src/kernel/routing/midi/DevMidF.cpp:592
+#: src/kernel/routing/midi/DevMidF.cpp:597
 #, c-format
 msgid "Could not allocate data for track %d of MIDI input file '%s'."
 msgstr ""
 "Ich habe keinen Speicher für die Spur %d der MIDI-Eingabedatei „%s“ bekommen."
 
-#: src/kernel/routing/midi/DevMidF.cpp:608
+#: src/kernel/routing/midi/DevMidF.cpp:613
 #, c-format
 msgid ""
 "The MIDI input file “%s” is corrupted. This has been detected while reading "
@@ -710,15 +714,15 @@ msgstr "MIDI-Ausgabedatei"
 msgid "MIDI input file"
 msgstr "MIDI-Eingabedatei"
 
-#: src/kernel/routing/midi/DevMidi.cpp:101
-#: src/kernel/routing/midi/DevMidi.cpp:284
+#: src/kernel/routing/midi/DevMidi.cpp:105
+#: src/kernel/routing/midi/DevMidi.cpp:289
 #: src/kernel/routing/midi/DevMidi.h:328 src/kernel/routing/midi/DevMidi.h:471
 #: src/wxGUI/Routing/InputDeviceShape.cpp:366
 #: src/wxGUI/Routing/OutputDeviceShape.cpp:289
 msgid "no device"
 msgstr "Kein Gerät"
 
-#: src/kernel/routing/midi/DevMidi.cpp:141
+#: src/kernel/routing/midi/DevMidi.cpp:145
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI output device %s must be inside %d--%d. "
@@ -727,7 +731,7 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Ausgabegerätes „%s“ muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidi.cpp:325
+#: src/kernel/routing/midi/DevMidi.cpp:330
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device %s must be inside %d--%d. "
@@ -736,7 +740,7 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Eingabegerätes „%s“ muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidi.cpp:354
+#: src/kernel/routing/midi/DevMidi.cpp:359
 #, c-format
 msgid ""
 "The Channel range %d--%d of the MIDI input device must be inside %d--%d. The "
@@ -745,9 +749,9 @@ msgstr ""
 "Der Kanalbereich %d–%d des MIDI-Eingabegerätes muss innerhalb von %d–%d "
 "liegen. Die aktuelle Route wurde angepasst."
 
-#: src/kernel/routing/midi/DevMidi.cpp:377
-#: src/kernel/routing/midi/DevMidi.cpp:384
-#: src/kernel/routing/midi/DevMidi.cpp:391
+#: src/kernel/routing/midi/DevMidi.cpp:382
+#: src/kernel/routing/midi/DevMidi.cpp:389
+#: src/kernel/routing/midi/DevMidi.cpp:396
 #, c-format
 msgid "Can not open Midi input device no. %d (%s)."
 msgstr "Kann MIDI-Gerät Nummer %d (%s) nicht zum Lesen öffenn."
@@ -797,7 +801,7 @@ msgstr "Zeile"
 msgid "..."
 msgstr "…"
 
-#: src/wxGUI/CompDlg.cpp:136 src/wxGUI/MutEditFile.cpp:1256
+#: src/wxGUI/CompDlg.cpp:136 src/wxGUI/MutEditFile.cpp:1255
 #: src/xrc/reslocale.cpp:25
 msgid "Statistics"
 msgstr "Statistik"
@@ -842,7 +846,7 @@ msgstr "Meldung"
 msgid "Reading Source ..."
 msgstr "Lese Quelltext ..."
 
-#: src/wxGUI/GUIBoxData.cpp:96 src/wxGUI/MutLogicWnd.cpp:707
+#: src/wxGUI/GUIBoxData.cpp:96 src/wxGUI/MutLogicWnd.cpp:641
 msgid "(INITIAL)"
 msgstr "(INITIAL)"
 
@@ -992,7 +996,7 @@ msgstr ""
 msgid "help.html"
 msgstr "Bedienung.html"
 
-#: src/wxGUI/MutApp.cpp:876 src/wxGUI/MutConfDlg.h:93
+#: src/wxGUI/MutApp.cpp:876 src/wxGUI/MutConfDlg.h:94
 msgid "The setup dialog"
 msgstr "Der Einstellungsdialog"
 
@@ -1450,7 +1454,7 @@ msgstr "Fehler"
 
 #: src/wxGUI/MutChild.cpp:150 src/wxGUI/MutChild.cpp:207
 #: src/wxGUI/MutChild.cpp:303 src/wxGUI/MutChild.cpp:342
-#: src/wxGUI/MutFrame.cpp:1045 src/wxGUI/MutFrame.cpp:1192
+#: src/wxGUI/MutFrame.cpp:1046 src/wxGUI/MutFrame.cpp:1185
 #: src/wxGUI/MutTextBox.cpp:104 src/wxGUI/MutTextBox.cpp:147
 msgid "Unexpected value: WK_LOGIC"
 msgstr "Unerwarteter Wert: WK_LOGIC"
@@ -1458,8 +1462,8 @@ msgstr "Unerwarteter Wert: WK_LOGIC"
 #: src/wxGUI/MutChild.cpp:154 src/wxGUI/MutChild.cpp:211
 #: src/wxGUI/MutChild.cpp:268 src/wxGUI/MutChild.cpp:307
 #: src/wxGUI/MutChild.cpp:346 src/wxGUI/MutChild.cpp:398
-#: src/wxGUI/MutFrame.cpp:1049 src/wxGUI/MutFrame.cpp:1196
-#: src/wxGUI/MutFrame.cpp:1749 src/wxGUI/MutTextBox.cpp:108
+#: src/wxGUI/MutFrame.cpp:1050 src/wxGUI/MutFrame.cpp:1189
+#: src/wxGUI/MutFrame.cpp:1751 src/wxGUI/MutTextBox.cpp:108
 #: src/wxGUI/MutTextBox.cpp:151
 msgid "Unexpected value: WK_ROUTE"
 msgstr "Unerwarteter Wert: WK_ROUTE"
@@ -1467,8 +1471,8 @@ msgstr "Unerwarteter Wert: WK_ROUTE"
 #: src/wxGUI/MutChild.cpp:158 src/wxGUI/MutChild.cpp:215
 #: src/wxGUI/MutChild.cpp:272 src/wxGUI/MutChild.cpp:311
 #: src/wxGUI/MutChild.cpp:350 src/wxGUI/MutChild.cpp:402
-#: src/wxGUI/MutFrame.cpp:1053 src/wxGUI/MutFrame.cpp:1200
-#: src/wxGUI/MutFrame.cpp:1753 src/wxGUI/MutTextBox.cpp:112
+#: src/wxGUI/MutFrame.cpp:1054 src/wxGUI/MutFrame.cpp:1193
+#: src/wxGUI/MutFrame.cpp:1755 src/wxGUI/MutTextBox.cpp:112
 #: src/wxGUI/MutTextBox.cpp:155
 msgid "Unexpected value: WK_EDIT"
 msgstr "Unerwarteter Wert: WK_EDIT"
@@ -1476,7 +1480,7 @@ msgstr "Unerwarteter Wert: WK_EDIT"
 #: src/wxGUI/MutChild.cpp:162 src/wxGUI/MutChild.cpp:219
 #: src/wxGUI/MutChild.cpp:276 src/wxGUI/MutChild.cpp:315
 #: src/wxGUI/MutChild.cpp:354 src/wxGUI/MutChild.cpp:406
-#: src/wxGUI/MutFrame.cpp:1057 src/wxGUI/MutFrame.cpp:1204
+#: src/wxGUI/MutFrame.cpp:1058 src/wxGUI/MutFrame.cpp:1197
 #: src/wxGUI/MutTextBox.cpp:116 src/wxGUI/MutTextBox.cpp:159
 msgid "Unexpected value: WK_NULL"
 msgstr "Unerwarteter Wert: WK_NULL"
@@ -1484,8 +1488,8 @@ msgstr "Unerwarteter Wert: WK_NULL"
 #: src/wxGUI/MutChild.cpp:166 src/wxGUI/MutChild.cpp:223
 #: src/wxGUI/MutChild.cpp:280 src/wxGUI/MutChild.cpp:319
 #: src/wxGUI/MutChild.cpp:358 src/wxGUI/MutChild.cpp:410
-#: src/wxGUI/MutFrame.cpp:1061 src/wxGUI/MutFrame.cpp:1208
-#: src/wxGUI/MutFrame.cpp:1769 src/wxGUI/MutTextBox.cpp:120
+#: src/wxGUI/MutFrame.cpp:1062 src/wxGUI/MutFrame.cpp:1201
+#: src/wxGUI/MutFrame.cpp:1771 src/wxGUI/MutTextBox.cpp:120
 #: src/wxGUI/MutTextBox.cpp:163
 #, c-format
 msgid "Unexpected window kind: %d"
@@ -1495,7 +1499,7 @@ msgstr "Unerwarteter Fenstertyp: %d"
 msgid " - "
 msgstr "–"
 
-#: src/wxGUI/MutDocument.cpp:267
+#: src/wxGUI/MutDocument.cpp:227
 msgid ""
 "This logic is currently active. On closing it will be deactivated. Really "
 "close this window?"
@@ -1503,7 +1507,7 @@ msgstr ""
 "Diese Logik ist momentan aktiv. Beim Schließen wird sie deaktiviert. Dieses "
 "Fenster wirklich schließen?"
 
-#: src/wxGUI/MutDocument.cpp:269
+#: src/wxGUI/MutDocument.cpp:229
 msgid "Please confirm closing."
 msgstr "Bitte bestätigen sie, das Fenster zu schließen."
 
@@ -1577,55 +1581,55 @@ msgstr ""
 "Die Suche erreichte den Anfang der Datei.\n"
 "Von hinten fortsetzen?"
 
-#: src/wxGUI/MutEditFile.cpp:811
+#: src/wxGUI/MutEditFile.cpp:810
 msgid "Where shall we jump to?"
 msgstr "Wohin wollen Sie Springen?"
 
-#: src/wxGUI/MutEditFile.cpp:812
+#: src/wxGUI/MutEditFile.cpp:811
 msgid "Line No.:"
 msgstr "Zeilennummer:"
 
-#: src/wxGUI/MutEditFile.cpp:813
+#: src/wxGUI/MutEditFile.cpp:812
 msgid "Goto"
 msgstr "Gehe zu"
 
-#: src/wxGUI/MutEditFile.cpp:1183
+#: src/wxGUI/MutEditFile.cpp:1182
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: src/wxGUI/MutEditFile.cpp:1189
+#: src/wxGUI/MutEditFile.cpp:1188
 msgid "Full filename"
 msgstr "Vollständiger Dateiname"
 
-#: src/wxGUI/MutEditFile.cpp:1197
+#: src/wxGUI/MutEditFile.cpp:1196
 msgid "Language"
 msgstr "Sprache"
 
-#: src/wxGUI/MutEditFile.cpp:1202
+#: src/wxGUI/MutEditFile.cpp:1201
 msgid "Lexer-ID: "
 msgstr "Lexer-ID:"
 
-#: src/wxGUI/MutEditFile.cpp:1214
+#: src/wxGUI/MutEditFile.cpp:1213
 msgid "Line endings"
 msgstr "Zeilenumbrüche"
 
-#: src/wxGUI/MutEditFile.cpp:1222
+#: src/wxGUI/MutEditFile.cpp:1221
 msgid "Informations"
 msgstr "Informationen"
 
-#: src/wxGUI/MutEditFile.cpp:1229
+#: src/wxGUI/MutEditFile.cpp:1228
 msgid "Total lines"
 msgstr "Anzahl Zeilen"
 
-#: src/wxGUI/MutEditFile.cpp:1235
+#: src/wxGUI/MutEditFile.cpp:1234
 msgid "Total chars"
 msgstr "Zeichen insgesamt"
 
-#: src/wxGUI/MutEditFile.cpp:1241
+#: src/wxGUI/MutEditFile.cpp:1240
 msgid "Current line"
 msgstr "Aktuelle Zeile"
 
-#: src/wxGUI/MutEditFile.cpp:1247
+#: src/wxGUI/MutEditFile.cpp:1246
 msgid "Current pos"
 msgstr "Aktuelle Position"
 
@@ -1735,7 +1739,7 @@ msgstr "Unerwartetes Ereignis in MutFrame::CmFileOpen: %d"
 msgid "noname.mut"
 msgstr "Unbenannt.mut"
 
-#: src/wxGUI/MutFrame.cpp:611 src/wxGUI/MutFrame.cpp:1645
+#: src/wxGUI/MutFrame.cpp:611 src/wxGUI/MutFrame.cpp:1647
 #, c-format
 msgid "%s -- %s"
 msgstr "%s – %s"
@@ -1772,77 +1776,77 @@ msgstr ""
 msgid "Realtime play"
 msgstr "Abspielen in Echtzeit"
 
-#: src/wxGUI/MutFrame.cpp:976
+#: src/wxGUI/MutFrame.cpp:977
 msgid "Routes"
 msgstr "Routen"
 
-#: src/wxGUI/MutFrame.cpp:999
+#: src/wxGUI/MutFrame.cpp:1000
 #, c-format
 msgid "Logic -- Box %d"
 msgstr "Logik – Kasten %d"
 
-#: src/wxGUI/MutFrame.cpp:1173
+#: src/wxGUI/MutFrame.cpp:1166
 #, c-format
 msgid "Keys -- Box %d"
 msgstr "Tasten – Kasten %d"
 
-#: src/wxGUI/MutFrame.cpp:1178
+#: src/wxGUI/MutFrame.cpp:1171
 #, c-format
 msgid "Tone system -- Box %d"
 msgstr "Tonsystem – Kasten %d"
 
-#: src/wxGUI/MutFrame.cpp:1184
+#: src/wxGUI/MutFrame.cpp:1177
 msgid "Action log"
 msgstr "Aktionen"
 
-#: src/wxGUI/MutFrame.cpp:1187
+#: src/wxGUI/MutFrame.cpp:1180
 #, c-format
 msgid "Actions -- Box %d"
 msgstr "Aktionen – Kasten %d"
 
-#: src/wxGUI/MutFrame.cpp:1357
+#: src/wxGUI/MutFrame.cpp:1359
 msgid "MutFrame::WindowSize:  not implemented"
 msgstr "MutFrame::WindowSize: nicht implementiert"
 
-#: src/wxGUI/MutFrame.cpp:1538
+#: src/wxGUI/MutFrame.cpp:1540
 msgid "The conversion finished successfully."
 msgstr "Die Übersetzung wurde erfolgreich beendet."
 
-#: src/wxGUI/MutFrame.cpp:1539 src/wxGUI/MutFrame.cpp:1542
+#: src/wxGUI/MutFrame.cpp:1541 src/wxGUI/MutFrame.cpp:1544
 msgid "Conversion error"
 msgstr "Übersetzungsfehler"
 
-#: src/wxGUI/MutFrame.cpp:1799
+#: src/wxGUI/MutFrame.cpp:1801
 #, c-format
 msgid "Box %d got id %d"
 msgstr "Kasten %d bekam die Identifikationsnummer %d"
 
-#: src/wxGUI/MutFrame.cpp:1802
+#: src/wxGUI/MutFrame.cpp:1804
 #, c-format
 msgid "Currently %d items in box menu"
 msgstr "Momentan gibt es %d Punkte im Kastenmenü"
 
-#: src/wxGUI/MutFrame.cpp:1804
+#: src/wxGUI/MutFrame.cpp:1806
 #, c-format
 msgid "Appending menu for box %d with id %d"
 msgstr "Hänge Menü für Kasten %d mit Identifikationsnummer %d an."
 
-#: src/wxGUI/MutFrame.cpp:1805
+#: src/wxGUI/MutFrame.cpp:1807
 #, c-format
 msgid "Select box %d\tCtrl+%d"
 msgstr "Kasten %d auswählen\tCtrl+%d"
 
-#: src/wxGUI/MutFrame.cpp:1806
+#: src/wxGUI/MutFrame.cpp:1808
 #, c-format
 msgid "Select box %d as the active Box for box specific commands."
 msgstr "Kasten %d als aktiven Kasten für Kommandos auswählen."
 
-#: src/wxGUI/MutFrame.cpp:1816
+#: src/wxGUI/MutFrame.cpp:1818
 #, c-format
 msgid "Connecting command with id %d for box %d"
 msgstr "Verbinde Kommando mit Identifikationsnummer %d für Kasten %d"
 
-#: src/wxGUI/MutLogicWnd.cpp:773
+#: src/wxGUI/MutLogicWnd.cpp:720
 #, c-format
 msgid "Logic: %s - Box %d"
 msgstr "Logik: %s - Kasten %d"
@@ -1932,11 +1936,11 @@ msgstr "Aktionen – alle Kästen %d"
 msgid "%s - Box %d"
 msgstr "%s – Kasten %d"
 
-#: src/wxGUI/Routing/BoxChannelShape.cpp:342
+#: src/wxGUI/Routing/BoxChannelShape.cpp:355
 msgid "No input device"
 msgstr "Kein Eingabegerät"
 
-#: src/wxGUI/Routing/BoxChannelShape.cpp:444
+#: src/wxGUI/Routing/BoxChannelShape.cpp:457
 msgid "No output device"
 msgstr "Kein Ausgabegerät"
 
@@ -2492,6 +2496,9 @@ msgstr "Schlagzeug-Kanal vermeiden"
 #: src/xrc/reslocale.cpp:142
 msgid "track"
 msgstr "Spur"
+
+#~ msgid "Unhandled case path: aufruf_umst_umst_bund"
+#~ msgstr "Unhandled case path: aufruf_umst_umst_bund"
 
 #~ msgid "Midi input file '%s' is too long."
 #~ msgstr "Die Midi-Eingabedatei „%s“ ist zu lang."
