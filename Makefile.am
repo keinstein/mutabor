@@ -12,7 +12,16 @@ REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
 
 CLEANFILES += POTFILES.tmp2 \
-	Mutabor.xrc 
+	Mutabor.xrc
+
+CLEANFILES += TAGS
+
+emacstags: tags
+	replace $(top_srcdir) ./ <TAGS >TAGS.src
+	cmp TAGS.src $(top_srcdir)/TAGS || cp TAGS.src $(top_srcdir)/TAGS
+
+all-local:emacstags
+
 
 NOCOMPSOURCES= \
 	src/xrc/wxresource.cpp \
