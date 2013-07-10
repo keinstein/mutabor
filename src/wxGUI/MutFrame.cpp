@@ -1158,14 +1158,6 @@ To start the translation hit the play button or select “Play” from the “Se
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
 
-		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
-				   .CaptionVisible(true)
-				   .CloseButton(true).MaximizeButton(true)
-				   .Float()
-				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
-				   .DestroyOnClose(true));
-
-		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		switch ( kind ) {
@@ -1211,6 +1203,15 @@ To start the translation hit the play button or select “Play” from the “Se
 		}
 
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
+
+		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
+				   .CaptionVisible(true)
+				   .CloseButton(true).MaximizeButton(true)
+				   .Float()
+				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
+				   .DestroyOnClose(true));
+
+		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
 
 		if (update_auimanager)
 			auimanager.Update();
