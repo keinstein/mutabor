@@ -2,8 +2,8 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutLogicWnd.h,v 1.13 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
+ *               Changes after 10/2011 Tobias Schlemmer
  * \author  R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 2005/09/01
@@ -62,7 +62,7 @@ namespace mutaborGUI {
 	{
 
 	private:
-		void DoLayout();
+//		void DoLayout();
 		bool Ok;
 		int nTags;
 		wxWindow *ColorBar1, *ColorBar2;
@@ -70,7 +70,10 @@ namespace mutaborGUI {
 
 	public:
 
-		MutLogicWnd(wxWindow *parent, 	int box, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize);
+		MutLogicWnd(wxWindow *parent, 
+			    int box, 
+			    const wxPoint& pos = wxDefaultPosition, 
+			    const wxSize& size = wxDefaultSize);
 
 		~MutLogicWnd()
 		{
@@ -80,6 +83,7 @@ namespace mutaborGUI {
 		}
 
 		void OnSize(wxSizeEvent& event);
+		void FixSizer();
 
 		void OnClose(wxCloseEvent& event)
 		{
@@ -93,7 +97,7 @@ namespace mutaborGUI {
 
 		void doClose(wxEvent& event);
 		void UpDate(int thekey, bool isLogicKey);
-		void CorrectScroller();
+//		void CorrectScroller();
 		void CmMutTag(wxCommandEvent& event);
 		void CmBox();
 		void OnChar(wxKeyEvent& event);

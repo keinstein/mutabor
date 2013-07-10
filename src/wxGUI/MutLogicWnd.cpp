@@ -2,7 +2,6 @@
  ********************************************************************
  * Logic window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutLogicWnd.cpp,v 1.33 2011/11/02 14:31:59 keinstein Exp $
  * Copyright:   (c) 2008-2012 TU Dresden
  *               Changes after 10/2011 Tobias Schlemmer
  * \author R. Krauße
@@ -150,8 +149,6 @@ namespace mutaborGUI {
 		    Attr.Style |= BS_OWNERDRAW | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
 		    | WS_GROUP | WS_TABSTOP;
 		    Icon = new TIcon(GetModule()->GetInstance(), (TResId)Types[isLogic + 2*isOpen]);*/
-		SetBackgroundColour(*wxWHITE);
-
 		const char  ** TagIcon[4] = {
 			tonesyst_xpm, logic_xpm, tonesystopen_xpm, logicopen_xpm
 		};
@@ -208,6 +205,8 @@ namespace mutaborGUI {
 	void MutTag::OnPaint(wxPaintEvent& WXUNUSED(event))
 	{
 		wxPaintDC dc(this);
+		//dc.SetBackgroundMode(wxTRANSPARENT);
+		dc.SetBackground(GetBackgroundColour());
 
 		dc.SetMapMode(wxMM_TEXT);
 		// evtl. erst noch Abteilung des Textes berechnen
@@ -215,31 +214,29 @@ namespace mutaborGUI {
 		if ( TPos == -1 ) InitText(dc);
 
 		// Selected-Rahmen
-		wxPen SelPen(*wxBLACK, 1, wxDOT);
+		wxPen SelPen(GetForegroundColour(), 1, wxDOT);
+		wxBrush SelBrush(GetBackgroundColour(),wxTRANSPARENT);
 
-		if ( wxWindow::FindFocus() == this )
+		if ( wxWindow::FindFocus() == this ) {
 			dc.SetPen(SelPen);
-		else
-			dc.SetPen(*wxWHITE_PEN);
+			dc.SetBrush(SelBrush);
+			if ( TPos )
+				dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-3);
+			else
+				dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-6);
+		}
 
-		if ( TPos )
-			dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-3);
-		else
-			dc.DrawRectangle(1, 3, MUTTAGX-6, MUTTAGY-6);
-
-		dc.SetPen(wxNullPen);
+		// dc.SetPen(wxNullPen);
 
 		// Icon zeichnen
 		dc.DrawIcon(Icon, MUTTAGX/2-16, 10);
 
 		// Taste auf Icon
-		dc.SetBackgroundMode(wxTRANSPARENT);
-
+		dc.SetTextBackground(GetBackgroundColour());
+		dc.SetTextForeground(*wxBLACK);
 		PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 20);
 
-		dc.SetBackgroundMode(wxSOLID);
-
-		// Beschriftung
+		dc.SetTextForeground(GetForegroundColour());
 		if ( TPos ) {
 			PaintCenteredText(dc, Text.Mid(0, TPos), 44);
 			PaintCenteredText(dc, Text.Mid(TPos), 56);
@@ -265,14 +262,13 @@ namespace mutaborGUI {
 		event1.SetEventObject(this);
 		//((MutLogicWnd*)GetParent())->UpDate(GetKey(), GetIsLogic());
 		wxPostEvent(GetParent(),event1);
-		event.Skip();
 	}
 
 	void MutTag::OnGetFocus(wxFocusEvent& event)
 	{
 //		SetFocus();
 		Refresh();
-		((MutLogicWnd*)GetParent())->CorrectScroller();
+//		((MutLogicWnd*)GetParent())->CorrectScroller();
 		event.Skip();
 	}
 
@@ -337,9 +333,47 @@ namespace mutaborGUI {
 //	SetBackgroundColour(*wxWHITE);
 		SetForegroundColour(BoxTextColour(box));
 		SetBackgroundColour(BoxColour(box));
+		wxFlexGridSizer * sizer = new wxFlexGridSizer(1,10, 10);
+		if (sizer) {
+			sizer->SetFlexibleDirection(wxVERTICAL);
+			sizer->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_ALL);
+			SetSizer(sizer);
+		}
 		CmBox();
 	}
 
+
+	void MutLogicWnd::OnSize(wxSizeEvent& event)
+	{
+		FixSizer();
+	}
+
+	void MutLogicWnd::FixSizer() {
+		wxSize size = GetClientSize();
+		wxGridSizer * sizer = dynamic_cast<wxGridSizer *>(GetSizer());
+		if (!sizer) return;
+
+		int columns = std::max(sizer->GetCols(),1);
+		int rows = sizer->GetRows();
+		size_t clients = GetChildren().size();
+		wxSize children_size;
+		
+		if (rows != 0) sizer->SetRows(0);
+		mutASSERT(sizer->GetRows() == 0);
+		
+		while ((children_size = sizer->GetMinSize()).x <= size.GetWidth()) {
+			if (columns > clients && 
+			    children_size.x*columns/clients > size.GetWidth())
+				break;
+			sizer->SetCols(++columns);
+		}
+
+		while ((sizer->GetMinSize().x > size.GetWidth() && columns > 1)
+		       || (columns > clients && children_size.x*columns/clients > size.GetWidth()))
+			sizer->SetCols(--columns);
+		
+		FitInside();		
+	}
 
 	void MutLogicWnd::doClose(wxEvent& event)
 	{
@@ -437,19 +471,15 @@ namespace mutaborGUI {
 		}
 	}
 
-	void MutLogicWnd::OnSize(wxSizeEvent& event)
-	{
-		//  wxScrolledWindow::EvSize(sizeType, size);
-		event.Skip();
-		DoLayout();
-	}
-
+#if 0
 #ifndef max
 #define max(a, b) ((a) < (b) ? (b) : (a))
 #endif
 
+
 	void MutLogicWnd::DoLayout()
 	{
+/*
 		wxSize R = GetClientSize();
 		int nx = (R.GetWidth()-4) / MUTTAGX, 
 			ny = (R.GetHeight()-4)/ MUTTAGY;
@@ -508,8 +538,10 @@ namespace mutaborGUI {
 			ColorBar2->SetSize(-xv*10, -yv*10, 2, max(ny*MUTTAGY+8, R.GetHeight()));
 
 		CorrectScroller();
+*/
 	}
 
+#endif
 // Reaktion auf geklickte TMutTag-s
 
 	void MutLogicWnd::CmMutTag(wxCommandEvent& event)
@@ -521,7 +553,7 @@ namespace mutaborGUI {
 		mutASSERT(mut_box[boxnumber].used);
 		TRACEC;
 	}
-
+#if 0
 	void MutLogicWnd::CorrectScroller()
 	{
 		wxWindow *Win = wxWindow::FindFocus();
@@ -563,6 +595,7 @@ namespace mutaborGUI {
 
 		Scroll(dx / 10, dy / 10);
 	}
+#endif
 
 // keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
 	void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
@@ -575,9 +608,11 @@ namespace mutaborGUI {
 			box.SetKeyLogic(thekey);
 		}
 		wxWindow *ToFocus = NULL;
+		wxSizer * sizer = GetSizer();
+		wxFlexGridSizer * gridsizer = dynamic_cast<wxFlexGridSizer *> (sizer);
 
-		// alte TMutTag-s lˆschen
-		//* \todo we must reuse old entries rendering can be expensiveg
+		
+		//* \todo we must reuse old entries as rendering can be expensive
 		DestroyChildren();
 
 		// neue erstellen
@@ -587,8 +622,10 @@ namespace mutaborGUI {
 		wxWindow *aWin;
 		nTags = 0;
 
-		if ( GetMutTag(isLogic, &s, s1, key, box.GetNonGUIBox()) )
-			do {
+		wxColour background = GetBackgroundColour();
+		wxColour foreground = GetForegroundColour();
+
+		if ( GetMutTag(isLogic, &s, s1, key, box.GetNonGUIBox())) do {
 				nTags++;
 				sText = muT(s);
 				free(s);s = NULL;
@@ -613,10 +650,18 @@ namespace mutaborGUI {
 				}
 
 				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
+				aWin->SetBackgroundColour(background);
+				aWin->SetForegroundColour(foreground);
+				if (sizer) 
+					sizer->Add(aWin);
 
 				if ( isOpen ) ToFocus = aWin;
 			} while ( GetMutTag(isLogic, &s, s1, key, NULL) );
 
+		Layout();
+		FixSizer();
+
+#if 0
 		// Color Bars
 		if ( UseColorBars ) {
 			wxColour BarColor = BoxColour(boxnumber);
@@ -630,7 +675,7 @@ namespace mutaborGUI {
 			ColorBar1 = 0;
 			ColorBar2 = 0;
 		}
-
+#endif
 		// neue TMutTag-s aktivieren
 		//CreateChildren();
 		// Fokus setzen
@@ -642,12 +687,17 @@ namespace mutaborGUI {
 		if ( ToFocus && FindFocus() != ToFocus)
 			ToFocus->SetFocus();
 
+#if 0
 		// Tags anordnen
 		DoLayout();
+#endif
 
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
 				      CM_UPDATEUI);
+#if 0
 		GetParent()->GetEventHandler()->ProcessEvent(event1);
+#endif
+
 		BoxData & boxdata = BoxData::GetBox(boxnumber);
 		wxWindow * win = boxdata.GetActionsWindow();
 		if (win) 
@@ -670,7 +720,7 @@ namespace mutaborGUI {
 		GetParent()->SetName(wxString::Format(_("Logic: %s - Box %d"),
 						      CompiledFile.c_str(), boxnumber));
 		// Tags updaten
-		UpDate(0, true);
+		UpDate(-1, true);
 	}
 
 	void MutLogicWnd::OnActivate(wxActivateEvent& event)
