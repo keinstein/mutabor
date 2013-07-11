@@ -58,7 +58,7 @@ namespace mutaborGUI {
 // Fenster, das die Routen enth‰lt
 
 
-	class MutLogicWnd : public wxScrolledWindow
+	class MutLogicWnd : public wxScrolledWindow, public MutChildApi
 	{
 
 	private:
@@ -81,6 +81,8 @@ namespace mutaborGUI {
 			boxdata.SetLogicWindow(NULL);
 			DEBUGLOG(other, _T("Finished"));
 		}
+
+		virtual wxString MakeTitle();
 
 		void OnSize(wxSizeEvent& event);
 		void FixSizer();

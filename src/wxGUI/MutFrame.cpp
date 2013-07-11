@@ -772,6 +772,8 @@ while playing by computer keyboard.)"),
 				wxAuiPaneInfo& p = panes.Item(pane_i);
 				p.Show();
 				p.DestroyOnClose(true);
+				MutChildApi * win = dynamic_cast<MutChildApi *>(p.window);
+				if (win) p.Caption(win->MakeTitle());
 			}
 		}
 
@@ -996,20 +998,15 @@ To start the translation hit the play button or select “Play” from the “Se
 		MutLogicWnd *client = new MutLogicWnd(this, box,
 						      wxPoint(0, 0),
 						      wxSize(width,height));
-		wxString Name;
-		Name.Printf(_("Logic -- Box %d"),box);
-		DEBUGLOG (other, _T("Adding pane '%s' with caption '%s'"), 
-			  Name.Format(_T("Logic%d"),box).c_str(),Name.c_str());
 		auimanager.AddPane(client,
-				   wxAuiPaneInfo().Name(Name.Format(_T("Logic%d"),
-								    box)
-					   )
+				   wxAuiPaneInfo().Name(wxString::Format(_T("Logic%d"),
+									 box))
 				   .Bottom()
 				   .Floatable(true)
 				   .CloseButton(false)
 				   .MaximizeButton(true)
 				   .Float()
-				   .Caption(Name)
+				   .Caption(client->MakeTitle())
 				   .DestroyOnClose(true));
 		client->SetFocus();
 		auimanager.Update();
@@ -1135,16 +1132,13 @@ To start the translation hit the play button or select “Play” from the “Se
 	{
 		DEBUGLOG (other, _T("%d,%d"),kind,box);
 
-		wxString title;
-
-
 		int width, height;
 
 		GetClientSize(&width, &height);
 		width /= 2;
 		height /= 2;
 
-		MutTextBox *client = new MutChild(kind,
+		MutChild *client = new MutChild(kind,
 						  box,
 						  this,
 						  -1,
@@ -1156,28 +1150,22 @@ To start the translation hit the play button or select “Play” from the “Se
 		wxString str = wxEmptyString;
 
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
-		DEBUGLOG (gui, _T("pane title = %s"),(const wxChar *)title);
-
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
 		switch ( kind ) {
 		case WK_KEY:
 			client->GetKeys(asTS);
-			title.Printf(_("Keys -- Box %d"),box);
 			break;
 
 		case WK_TS:
 			client->GetToneSystem(asTS);
-			title.Printf(_("Tone system -- Box %d"),box);
-			break;
+ 			break;
 
 		case WK_ACT:
 			if (CAW) {
 				client->GetAllActions();
-				title=_("Action log");
 			} else {
 				client->GetBoxActions();
-				title.Printf(_("Actions -- Box %d"),box);
 			}
 			break;
 
@@ -1204,8 +1192,8 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
-		auimanager.AddPane(client,wxAuiPaneInfo().Caption(title)
-				   .CaptionVisible(true)
+		auimanager.AddPane(client,wxAuiPaneInfo()
+				   .CaptionVisible(true).Caption(client->MakeTitle())
 				   .CloseButton(true).MaximizeButton(true)
 				   .Float()
 				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))

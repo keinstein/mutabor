@@ -343,6 +343,12 @@ namespace mutaborGUI {
 	}
 
 
+	wxString MutLogicWnd::MakeTitle() {
+		return wxString::Format(_("Logic: %s - Box %d"),
+					wxFileNameFromPath(CompiledFile).c_str(),
+					boxnumber);
+	}
+
 	void MutLogicWnd::OnSize(wxSizeEvent& event)
 	{
 		FixSizer();
@@ -717,8 +723,7 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG (other, _T("%s at box %d"),CompiledFile.c_str(),boxnumber );
 		// Titel setzen
-		GetParent()->SetName(wxString::Format(_("Logic: %s - Box %d"),
-						      CompiledFile.c_str(), boxnumber));
+		GetParent()->SetName(MakeTitle());
 		// Tags updaten
 		UpDate(-1, true);
 	}
