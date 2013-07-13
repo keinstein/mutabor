@@ -499,7 +499,7 @@ namespace mutaborGUI {
 		// miscelaneous
 		m_LineNrMargin = TextWidth (wxSTC_STYLE_LINENUMBER, _T("_999999"));
 		m_FoldingMargin = 16;
-		CmdKeyClear (wxSTC_KEY_TAB, 0); // this is done by the menu accelerator key
+		//CmdKeyClear (wxSTC_KEY_TAB, 0); // this is done by the menu accelerator key
 		SetLayoutCache (wxSTC_CACHE_PAGE);
 	}
 
@@ -937,6 +937,7 @@ namespace mutaborGUI {
 			if (currentLine > 0) {
 				lineInd = GetLineIndentation(currentLine - 1);
 			}
+			DEBUGLOG(editor,_T("Indentation: %d"),lineInd);
 			if (lineInd == 0) return;
 			SetLineIndentation (currentLine, lineInd);
 			GotoPos(PositionFromLine (currentLine) + lineInd);
@@ -1076,6 +1077,7 @@ namespace mutaborGUI {
 		SetTabIndents (true);
 		SetBackSpaceUnIndents (true);
 		SetIndent (g_CommonPrefs.indentEnable? 4: 0);
+		SetIndent (4);
 
 		// others
 		SetViewEOL (g_CommonPrefs.displayEOLEnable);
