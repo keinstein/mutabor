@@ -1219,6 +1219,8 @@ namespace mutaborGUI {
 			wxMenu *menuCharset = new wxMenu;
 			menuCharset->Append (CM_CHARSETANSI, _("&ANSI (Windows)"));
 			menuCharset->Append (CM_CHARSETMAC, _("&MAC (Macintosh)"));
+			menuCharset->Append (CM_CHARSETUTF8, _("&UTF-8 (International)"));
+			menuCharset->Append (CM_CHARSETUTF8, _("Uni&code (same as UTF-8)"));
 
 			menu->Append (CM_HILIGHTLANG, 
 				      _("&Hilight language..."), 

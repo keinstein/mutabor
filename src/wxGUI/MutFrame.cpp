@@ -193,6 +193,7 @@ namespace mutaborGUI {
 	EVT_MENU (CM_CONVERTLF,        MutFrame::PassEventToEditor)
 	EVT_MENU (CM_CHARSETANSI,      MutFrame::PassEventToEditor)
 	EVT_MENU (CM_CHARSETMAC,       MutFrame::PassEventToEditor)
+	EVT_MENU (CM_CHARSETUTF8,       MutFrame::PassEventToEditor)
 	//    EVT_MENU(CM_ROUTES, MutFrame::CmRoutes)
 
 	EVT_MENU(CM_TOGGLEKEY, MutFrame::CmToggleKey)

@@ -127,6 +127,7 @@ EVT_MENU (CM_READONLY,           MutEditFile::OnSetReadOnly)
 EVT_MENU (CM_WRAPMODEON,         MutEditFile::OnWrapmodeOn)
 EVT_MENU (CM_CHARSETANSI,        MutEditFile::OnUseCharset)
 EVT_MENU (CM_CHARSETMAC,         MutEditFile::OnUseCharset)
+EVT_MENU (CM_CHARSETUTF8,         MutEditFile::OnUseCharset)
 // extra
 EVT_MENU (CM_CHANGELOWER,        MutEditFile::OnChangeCase)
 EVT_MENU (CM_CHANGEUPPER,        MutEditFile::OnChangeCase)
@@ -884,6 +885,7 @@ namespace mutaborGUI {
 		switch (event.GetId()) {
 		case CM_CHARSETANSI: {charset = wxSTC_CHARSET_ANSI; break;}
 		case CM_CHARSETMAC: {charset = wxSTC_CHARSET_ANSI; break;}
+		case CM_CHARSETUTF8: {charset = wxSTC_CP_UTF8; break; }
 		}
 		for (Nr = 0; Nr < wxSTC_STYLE_LASTPREDEFINED; Nr++) {
 			StyleSetCharacterSet (Nr, charset);
