@@ -1,8 +1,8 @@
 LOGIK
     Gleich Taste G = Halb
     [
-	Taste T -> Test
-	Taste D -> Drittel
+        Taste T -> Test
+        Taste D -> Drittel
         Taste V -> Viertel
         Taste A -> Achtel 
         Taste S -> Sechzehntel
@@ -11,7 +11,7 @@ LOGIK
 
     Historisch Taste H =
     [ 
-  	Taste P -> Pythagoras
+        Taste P -> Pythagoras
         Taste M -> Mitteltoenig                                 
         Taste S -> Silbermann 
         Taste W -> Werckmeister
@@ -23,7 +23,7 @@ LOGIK
     TonNetz Taste N = C_Dur
     [
         FORM nTerz -> Transpo ( Abstand )
-   	FORM nDur  -> Transpo ( Abstand ) 
+        FORM nDur  -> Transpo ( Abstand ) 
         FORM nMoll -> Transpo ( Abstand ) 
     ]
 
@@ -32,8 +32,8 @@ LOGIK
     Selbst Taste S = Init
     [
     	Taste U -> Up(ABSTAND)
-   	Taste D -> Down(ABSTAND)
-	FORM Keyb -> Leer
+        Taste D -> Down(ABSTAND)
+        FORM Keyb -> Leer
     ]
 
 INTERVALL
@@ -363,7 +363,7 @@ UMSTIMMUNG
   
     Down(dist) = dist
     {
-   	0 -> D__0  
+        0 -> D__0  
      	1 -> D__1  
      	2 -> D__2
      	3 -> D__3
