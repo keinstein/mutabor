@@ -10,77 +10,19 @@
 * \version $Revision: 1.22 $
 * \license GPL
 *
-* $Log: MutEditFile.h,v $
-* Revision 1.22  2011/11/02 14:31:59  keinstein
-* fix some errors crashing Mutabor on Windows
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
 *
-* Revision 1.21  2011-09-27 20:13:23  keinstein
-* * Reworked route editing backend
-* * rewireing is done by RouteClass/GUIRoute now
-* * other classes forward most requests to this pair
-* * many bugfixes
-* * Version change: We are reaching beta phase now
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
 *
-* Revision 1.20  2011-09-04 15:35:08  keinstein
-* disable print preview on OS X and when using libgnomeprint as they proviede their own means
-*
-* Revision 1.19  2011-09-04 12:02:08  keinstein
-* require wxWidgets 2.8.5 configure.in
-*
-* Revision 1.18  2011-08-31 20:18:16  keinstein
-* some work on printing the editor file
-*
-* Revision 1.17  2011-08-28 21:24:56  keinstein
-* added file properties dialog
-*
-* Revision 1.16  2011-08-27 17:44:44  keinstein
-* Implemented Search and Search/Replace
-*
-* Revision 1.15  2011-08-21 16:52:05  keinstein
-* Integrate a more sophisticated editor menu based on the stc sample
-*
-* Revision 1.14  2011-08-20 17:50:39  keinstein
-* use  wxSTC for the editor windows
-*
-* Revision 1.13  2011-08-11 19:00:48  keinstein
-* get Document/View running.
-* Needs further testing (possible segfaults).
-*
-* Revision 1.12  2011-07-31 20:16:04  keinstein
-* Implemented opening files from command line using Document/View framework
-*
-* Revision 1.11  2011-02-20 22:35:57  keinstein
-* updated license information; some file headers have to be revised, though
-*
-* Revision 1.10  2010-11-21 13:15:47  keinstein
-* merged experimental_tobias
-*
-* Revision 1.8.2.1  2009-08-10 11:23:12  keinstein
-* merged from wrong tree
-*
-* Revision 1.9  2009/08/10 11:15:46  keinstein
-* some steps towards new route window
-*
-* Revision 1.8  2008/10/27 15:51:26  keinstein
-* fixes for non-Unicode
-*
-* Revision 1.7  2008/10/01 09:33:22  keinstein
-* Better multibyte wxString support
-*
-* Revision 1.6  2008/08/18 15:09:39  keinstein
-* Moved temp file handling a little bit around
-*
-* Revision 1.5  2008/06/02 16:17:31  keinstein
-* CmFileSaveAs: new function
-*
-* Revision 1.4  2007/12/17 13:00:46  keinstein
-* MutEditFile::DoLoadFile, MutEditFile::DoSaveFile: New functions.
-* Fix compilation in Unicode mode.
-* Copy Some Routines from wxRichEdit to try to circumvent wx/wine incompatibility
-* 	in non-Unicode build
-*
-* Revision 1.3  2006/01/18 15:37:02  keinstein
-* no MDI Windows in some environments
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 * \addtogroup src/wxGUI
 * \{
