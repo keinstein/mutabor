@@ -72,7 +72,11 @@ MutTextBox::MutTextBox(WinKind k,
 		box(boxId)
 {
 	TRACEC;
+#if wxCHECK_VERSION(2,9,0)
+	SetBackgroundStyle(wxBG_STYLE_ERASE);
+#else
 	SetBackgroundStyle(wxBG_STYLE_COLOUR);
+#endif
 //	SetBackgroundColour(*wxWHITE);
 	SetForegroundColour(BoxTextColour(box));
 	SetBackgroundColour(BoxColour(box));

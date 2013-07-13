@@ -245,7 +245,11 @@ bool MutPanel::Create(wxWindow *parent,
 #endif
 
 // wxGTK
+#if wxCHECK_VERSION(2,9,0)
+	SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+#else
 	SetBackgroundStyle(wxBG_STYLE_COLOUR);
+#endif
 	SetBackgroundColour(wxNullColour);
 
 	return true;
