@@ -69,13 +69,17 @@ namespace mutaborGUI {
 //----------------------------------------------------------------------------
 // keywordlists
 // Mutabor
-	const wxChar* MutWordlist1 =
+	const wxChar* MutSectionKeywords =
 		_T("interval intervall logic logik midiin midiout tonsystem tonesystem ")
 		_T("tone ton retuning umstimmung pattern harmonie ");
-	const wxChar* MutWordlist2 =
-		_T("shifted form key taste root wurzel");
-	const wxChar* MutWordlist3 =
-		_T("distance abstand ");
+	const wxChar* MutOperators = 
+		_T("* - / + wurzel root :");
+	const wxChar* MutReservedWords =
+		_T("shifted form key taste");
+	const wxChar* MutDelimiters =
+		_T("{ } [ ] ( ) << >>  < >");
+	const wxChar* MutParameters =
+		_T("distance abstand @");
 //----------------------------------------------------------------------------
 // keywordlists
 // C++
@@ -123,26 +127,27 @@ namespace mutaborGUI {
 		// Mutabor
 		{_T("Mutabor"),
 		 _T("*.mut;*.mus"),
-		 wxSTC_LEX_PROPERTIES,
-		 {{MutSTC_TYPE_DEFAULT, NULL},
-		  {MutSTC_TYPE_COMMENT, NULL},
-		  {MutSTC_TYPE_COMMENT_LINE, NULL},
-		  {MutSTC_TYPE_COMMENT_DOC, NULL},
-		  {MutSTC_TYPE_NUMBER, NULL},
-		  {MutSTC_TYPE_WORD1, CppWordlist1}, // KEYWORDS
-		  {MutSTC_TYPE_STRING, NULL},
-		  {MutSTC_TYPE_CHARACTER, NULL},
-		  {MutSTC_TYPE_UUID, NULL},
-		  {MutSTC_TYPE_PREPROCESSOR, NULL},
-		  {MutSTC_TYPE_OPERATOR, NULL},
-		  {MutSTC_TYPE_IDENTIFIER, NULL},
-		  {MutSTC_TYPE_STRING_EOL, NULL},
-		  {MutSTC_TYPE_DEFAULT, NULL}, // VERBATIM
-		  {MutSTC_TYPE_REGEX, NULL},
-		  {MutSTC_TYPE_COMMENT_SPECIAL, NULL}, // DOXY
-		  {MutSTC_TYPE_WORD2, CppWordlist2}, // EXTRA WORDS
-		  {MutSTC_TYPE_WORD3, CppWordlist3}, // DOXY KEYWORDS
-		  {MutSTC_TYPE_ERROR, NULL}, // KEYWORDS ERROR
+		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'"),
+		 wxSTC_LEX_CONTAINER,
+		 {{MutSTCLexer::DEFAULT, NULL},
+		  {MutSTCLexer::IDENTIFIER, NULL},
+		  {MutSTCLexer::SECTIONKEYWORD, MutSectionKeywords},
+		  {MutSTCLexer::OPERATOR, MutOperators},
+		  {MutSTCLexer::RESERVEDWORD, MutReservedWords},
+		  {MutSTCLexer::DELIMITER, MutDelimiters},
+		  {MutSTCLexer::COMMENT, NULL},
+		  {MutSTCLexer::NUMBER, NULL},
+		  {MutSTCLexer::PARAMETER, MutParameters},
+		  {MutSTCLexer::ERROR, NULL},
+		  {-1, NULL},
+		  {-1, NULL},
+		  {-1, NULL},
+		  {-1, NULL}, // VERBATIM
+		  {-1, NULL},
+		  {-1, NULL}, // DOXY
+		  {-1, NULL}, // EXTRA WORDS
+		  {-1, NULL}, // DOXY KEYWORDS
+		  {-1, NULL}, // KEYWORDS ERROR
 		  {-1, NULL},
 		  {-1, NULL},
 		  {-1, NULL},
@@ -160,6 +165,7 @@ namespace mutaborGUI {
 		// C++
 		{_T("C++"),
 		 _T("*.c;*.cc;*.cpp;*.cxx;*.cs;*.h;*.hh;*.hpp;*.hxx;*.sma"),
+		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"),
 		 wxSTC_LEX_CPP,
 		 {{MutSTC_TYPE_DEFAULT, NULL},
 		  {MutSTC_TYPE_COMMENT, NULL},
@@ -197,6 +203,7 @@ namespace mutaborGUI {
 		// Python
 		{_T("Python"),
 		 _T("*.py;*.pyw"),
+		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"),
 		 wxSTC_LEX_PYTHON,
 		 {{MutSTC_TYPE_DEFAULT, NULL},
 		  {MutSTC_TYPE_COMMENT_LINE, NULL},
@@ -234,6 +241,7 @@ namespace mutaborGUI {
 		// * (any)
 		{(const wxChar *)DEFAULT_LANGUAGE,
 		 _T("*.*"),
+		 _T("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
 		 wxSTC_LEX_PROPERTIES,
 		 {{MutSTC_TYPE_DEFAULT, NULL},
 		  {MutSTC_TYPE_DEFAULT, NULL},
@@ -433,6 +441,142 @@ namespace mutaborGUI {
 	};
 
 	const int g_StylePrefsSize = WXSIZEOF(g_StylePrefs);
+
+
+// Lexer
+#ifdef DEBUG
+	inline wxString cbGetSubstring(wxCharBuffer & b, size_t pos, size_t length) {
+		return wxString::FromUTF8(b.data()+pos, length);
+	}
+#endif
+
+	void MutSTCLexer::OnStyleNeeded(wxStyledTextEvent & event) {
+		int pos = event.GetPosition();
+		wxPoint editpos = editor->GetPosition();
+		int laststyled = editor->GetEndStyled();
+		DEBUGLOG(editlexer, 
+			 _T("event.pos = %d, editor pos = (%d,%d), last syled pos = %d"),
+			 pos,editpos.x,editpos.y,laststyled);
+		int style = ERROR;
+		if (laststyled) {
+			style = editor->GetStyleAt(laststyled-1);
+		}
+		DEBUGLOG(editlexer,_T("laststyed style = %x"),style);
+
+		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
+		int counter = 0; 
+		int length = 0;
+
+		editor->StartStyling (laststyled, 0x1f);
+
+		do {
+			mutChar c = text[counter+length];
+			switch (style) {
+			case COMMENT:
+			{
+				while ((counter+length < text.length())
+				       && ((c = text[counter + length]) != '"')) length++;
+				length++;
+				laststyled = SetStyling(COMMENT, laststyled, length);
+				
+				DEBUGLOG(editlexer,
+					 _T("comment: %s"),
+					 cbGetSubstring(text,counter,length).c_str());
+				counter += length;
+				length = 0;
+				style = ERROR;
+			}
+				break;
+			}
+			if (counter + length >= text.length()) break;
+			c = text[counter+length];
+			int newstyle = style;
+			if (isspace(c)) newstyle = DEFAULT;
+			else if ((isdigit(c) && style != IDENTIFIER) || c == '#') newstyle = NUMBER;
+			else if (isalpha(c) || (style == IDENTIFIER && isdigit(c))|| c == '_' || c == '\'') 
+				newstyle = IDENTIFIER;
+			else switch (c) {
+				case '+':
+				case '-':
+				case '*':
+				case ':':
+				case '/':
+				case '~':
+					newstyle = OPERATOR;
+					break;
+				case '[':
+				case ']':
+				case '(':
+				case ')':
+				case '<':
+				case '>':
+ 				case '{':
+				case '}':
+					newstyle = DELIMITER;
+					break;
+
+				case '@':
+					newstyle = PARAMETER;
+					break;
+
+				case '=':
+				case ',':
+				case ';':
+					newstyle = OTHER;
+					break;
+				case '"':
+					newstyle = COMMENT;
+					break;
+				default:
+					newstyle = ERROR;
+				}
+			if (length && newstyle != style) {
+				laststyled = SetStyling(style, laststyled, length);
+				DEBUGLOG(editlexer,
+					 _T("style %d: %s"),
+					 style,
+					 cbGetSubstring(text,counter,length).c_str());
+				counter += length;
+				length = 1;
+
+			} else length++;
+			style = newstyle;
+			
+		} while (counter+length < text.length());
+		if (length) {
+			laststyled = SetStyling(style, laststyled, length);
+			DEBUGLOG(editlexer,
+				 _T("style %d: %s"),
+				 style,
+				 cbGetSubstring(text,counter,length).c_str());
+		}
+		event.Skip();
+	}
+
+	int MutSTCLexer::SetStyling(int style, int pos, int length) {
+		if (!editor) return pos;
+#if wxCHECK_VERSION(2,9,0)
+		wxTextAttr styleattrs(editor->StyleGetForeground(style),
+				      editor->StyleGetBackground(style),
+				      editor->StyleGetFont(style));
+#endif
+		int delta, endpos = pos+length;
+		editor->SetStyling(endpos-pos,style);
+#if wxCHECK_VERSION(2,9,0)
+		//	editor->SetStyle(pos,pos+length,styleattrs);
+#endif
+#ifdef DEBUG
+		for (size_t i = pos ; i< pos+length; i++) {
+			if ((editor->GetStyleAt(i) & 0x1f) != style) {
+				DEBUGLOG(editlexer,
+					 _T("checking style at %d (%d – %d), %x == %x"),
+					 (int)i,(int)pos,(int)pos+length,(int)editor->GetStyleAt(i),(int)style);
+				mutASSERT((editor->GetStyleAt(i) & 0x1f) == style);
+			}
+		}
+#endif
+		return pos+length;
+	}
 
 
 }

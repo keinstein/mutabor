@@ -196,6 +196,7 @@ namespace mutaborGUI {
 	struct LanguageInfo {
 		const wxChar *name;
 		const wxChar *filepattern;
+		const wxChar *wordchars;
 		int lexer;
 		struct {
 			int type;
@@ -222,6 +223,29 @@ namespace mutaborGUI {
 	extern const StyleInfo g_StylePrefs[];
 	extern const int g_StylePrefsSize;
 
+	class MutSTCLexer {
+	public: 
+		enum States {
+			DEFAULT = 0,
+			IDENTIFIER = 1,
+			SECTIONKEYWORD = 2,
+			OPERATOR = 3,
+			RESERVEDWORD = 4,
+			DELIMITER = 5,
+			COMMENT = 6,
+			NUMBER = 7,
+			PARAMETER = 8,
+			OTHER = 9,
+			ERROR = 10
+		};
+
+		MutSTCLexer(wxStyledTextCtrl * e):editor(e) {}
+		void OnStyleNeeded (wxStyledTextEvent & event);
+	protected:
+		wxStyledTextCtrl * editor;
+
+		int SetStyling(int style, int pos, int len);
+	};
 
 }
 

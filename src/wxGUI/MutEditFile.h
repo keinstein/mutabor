@@ -120,11 +120,13 @@ namespace mutaborGUI {
 	class MutEditPrint;
 	class MutEditProperties;
 
+
 	class MutEditFile : public wxStyledTextCtrl
 	{
 		friend class MutEditProperties;
 		friend class MutEditPrint;
 	public:
+
 		struct FindFlags 
 		{
 			bool down:1;
@@ -225,6 +227,7 @@ namespace mutaborGUI {
 		// stc
 		void OnMarginClick (wxStyledTextEvent &event);
 		void OnCharAdded  (wxStyledTextEvent &event);
+		void OnStyleNeeded  (wxStyledTextEvent &event);
 		void OnProperties (wxCommandEvent &WXUNUSED(event));
 
 		//! language/lexer
@@ -314,6 +317,7 @@ namespace mutaborGUI {
 
 		MutView * view;
 		muConvAuto autoConverter;
+		MutSTCLexer lexer;
 
 		DECLARE_EVENT_TABLE()
 	};

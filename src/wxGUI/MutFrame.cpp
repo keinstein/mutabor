@@ -39,6 +39,7 @@
 #include "wx/config.h"
 #include "wx/confbase.h"
 #include "wx/fileconf.h"
+#include "wx/stc/stc.h"
 #ifdef __WXMSW__
 #  include <wx/msw/regconf.h>
 #endif
@@ -402,10 +403,11 @@ namespace mutaborGUI {
 
 	void MutFrame::PassEventToEditor(wxCommandEvent &event)
 	{
-		event.Skip(false);
-
-		if (dynamic_cast<MutEditFile*>(client)) {
-			wxPostEvent(client,event);
+		if (event.GetEventType() != wxEVT_STC_STYLENEEDED) {
+			event.Skip(false);
+			if (dynamic_cast<MutEditFile*>(client)) {
+				wxPostEvent(client,event);
+			}
 		}
 	}
 

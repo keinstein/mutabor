@@ -137,6 +137,7 @@ EVT_MENU (CM_CONVERTLF,          MutEditFile::OnConvertEOL)
 // stc
 EVT_STC_MARGINCLICK (wxID_ANY,   MutEditFile::OnMarginClick)
 EVT_STC_CHARADDED (wxID_ANY,     MutEditFile::OnCharAdded)
+EVT_STC_STYLENEEDED(wxID_ANY,    MutEditFile::OnStyleNeeded)
 END_EVENT_TABLE()
 
 namespace mutaborGUI {
@@ -157,7 +158,8 @@ namespace mutaborGUI {
 				   size, 
 				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN 
 				   | wxWANTS_CHARS, 
-				   name)
+				   name),
+		  lexer(this)
 	{
 		Init();
 #if wxUSE_FINDREPLDLG
@@ -179,7 +181,8 @@ namespace mutaborGUI {
 				   wxHSCROLL | wxVSCROLL | wxBORDER_SUNKEN  
 				   | wxWANTS_CHARS, 
 				   name),
-		  view(v)
+		  view(v),
+		  lexer(this)
 	{
 		Init();
 #if wxUSE_FINDREPLDLG
@@ -944,6 +947,10 @@ namespace mutaborGUI {
 		}
 	}
 
+	void MutEditFile::OnStyleNeeded (wxStyledTextEvent &event) {
+		lexer.OnStyleNeeded(event);
+	}
+
 
 //----------------------------------------------------------------------------
 // private functions
@@ -972,6 +979,7 @@ namespace mutaborGUI {
 	}
 
 	bool MutEditFile::InitializePrefs (const wxString &name) {
+		DEBUGLOG(editlexer, _T("initialising prefs for %s"), name.c_str());
 
 		// initialize styles
 		StyleClearAll();
@@ -991,6 +999,7 @@ namespace mutaborGUI {
 
 		// set lexer and language
 		SetLexer (curInfo->lexer);
+		SetWordChars (curInfo->wordchars);
 		m_language = curInfo;
 
 		// set margin for line numbers
