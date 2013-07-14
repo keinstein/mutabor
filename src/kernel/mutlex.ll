@@ -47,7 +47,7 @@ WURZEL|ROOT       BUMP return MUTABOR_TOKEN_ROOT;
 TONE?             BUMP  return MUTABOR_TOKEN_TONE;
 TONE?SYSTEM       BUMP  return MUTABOR_TOKEN_TONESYSTEM;
 UMSTIMMUNG|RETUNING    BUMP  return MUTABOR_TOKEN_RETUNING;
-HARMONY           BUMP  return MUTABOR_TOKEN_HARMONY;
+HARMON(Y|IE)      BUMP  return MUTABOR_TOKEN_HARMONY;
 LOGI[KC]          BUMP  return MUTABOR_TOKEN_LOGIC;
 FORM|PATTERN      BUMP  return MUTABOR_TOKEN_FORM;
 MIDIKANAL|INSTRUMENT   BUMP  return MUTABOR_TOKEN_MIDICHANNEL;
@@ -63,6 +63,7 @@ ABSTAND|DISTANCE  BUMP   {
                   BUMP yylval->identifier = strdup(yytext);
                   return MUTABOR_TOKEN_IDENTIFIER;
                   }
+->                BUMP  return MUTABOR_TOKEN_CALLS;
 [-+/[\]*:=(),~@<>{};]     BUMP return yytext[0]; 
 [[:space:]]+       BUMP  return MUTABOR_TOKEN_SPACES;
  .                BUMP  return MUTABOR_TOKEN_OTHER; /* fatal error */

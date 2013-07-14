@@ -66,8 +66,9 @@ extern int yydebug;
      MUTABOR_TOKEN_COMMENT = 275,
      MUTABOR_TOKEN_PARAMETER = 276,
      MUTABOR_TOKEN_OTHER = 277,
-     MUTABOR_TOKEN_ERROR = 278,
-     MUTABOR_TOKEN_ENDOFFILE = 279
+     MUTABOR_TOKEN_CALLS = 278,
+     MUTABOR_TOKEN_ERROR = 279,
+     MUTABOR_TOKEN_ENDOFFILE = 280
    };
 #endif
 /* Tokens.  */
@@ -91,8 +92,9 @@ extern int yydebug;
 #define MUTABOR_TOKEN_COMMENT 275
 #define MUTABOR_TOKEN_PARAMETER 276
 #define MUTABOR_TOKEN_OTHER 277
-#define MUTABOR_TOKEN_ERROR 278
-#define MUTABOR_TOKEN_ENDOFFILE 279
+#define MUTABOR_TOKEN_CALLS 278
+#define MUTABOR_TOKEN_ERROR 279
+#define MUTABOR_TOKEN_ENDOFFILE 280
 
 
 
@@ -108,7 +110,7 @@ typedef union YYSTYPE
 
 
 /* Line 2053 of yacc.c  */
-#line 112 "../../../mutabor-git/src/kernel/mut.hh"
+#line 114 "../../../mutabor-git/src/kernel/mut.hh"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
