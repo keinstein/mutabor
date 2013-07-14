@@ -551,7 +551,7 @@ ac_includes_default="$ac_includes_default
 #endif
 "
 
-echo \|$HAVE_NETINET_IN_H\|
+dnl echo \|$HAVE_NETINET_IN_H\|
 if test "$ac_cv_header_netinet_in_h" = no ; then
 	AC_SUBST(NETINET_INC,"-I\$(top_srcdir)/includes/netinet")
 fi
@@ -721,6 +721,7 @@ AC_SUBST(LIBS)
 AC_CONFIG_FILES([  
 po/Makefile.in 
 Makefile
+intl/Makefile
 src/Makefile
 src/gmut/Makefile
 src/gmut/tests/Makefile
@@ -750,7 +751,6 @@ src/xrc/Makefile
 src/xrc/tests/Makefile
 lib/Makefile
 lib/missfunc/Makefile
-intl/Makefile
 osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile

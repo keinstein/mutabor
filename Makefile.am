@@ -1,6 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 #AUTOMAKE_OPTIONS = dejagnu
-SUBDIRS = po lib src . doc $(subdirs) tools/midi2text intl #libmutabor .
+# intl must be before any source directories
+SUBDIRS = po intl lib src . doc tools/midi2text #libmutabor .
 #DIST_SUBDIRS = $(SUBDIRS)
 precompCOMPILESOURCES=$(mutabor_COMPILESOURCES)
 include common-rules.mk
@@ -18,9 +19,6 @@ CLEANFILES += POTFILES.tmp2 \
 CLEANFILES += TAGS
 
 emacstags: tags
-	replace $(top_srcdir) ./ <TAGS >TAGS.src
-	cmp TAGS.src $(top_srcdir)/TAGS || cp TAGS.src $(top_srcdir)/TAGS
-
 all-local:emacstags
 
 

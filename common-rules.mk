@@ -137,12 +137,16 @@ endif
 #	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
 #	esac;
 
+DISTCLEANFILES += podeps.stamp remove-podeps.stamp ./$(DEPDIR)/podeps.dep
+
 podeps.stamp:remove-podeps.stamp
 	touch $@
 
 remove-podeps.stamp:Makefile
 	rm -f podeps.stamp
 	touch $@
+
+
 
 ./$(DEPDIR)/podeps.dep:$(precompCOMPILESOURCES) podeps.stamp
 	$(MKDIR_P) `dirname $@`
