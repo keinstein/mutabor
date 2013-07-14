@@ -230,7 +230,15 @@ AC_ARG_ENABLE(gui,
 ])
 AM_WITH_DMALLOC
 AC_DEFINE(RTMIDI,1,[Define to 1 for usage of the RtMidi Library.])
+
+dnl Flex search as suggested at http://people.cs.aau.dk/~marius/sw/flex/Using-Flex-with-the-GNU-Build-System.html
+dnl Sometimes Flex is installed as Lex, e.g., NetBSD.
+AC_CHECK_PROG([FLEX], [flex lex], [flex])
+dnl Force the use of `missing' to wrap Flex invocations.
+AM_MISSING_PROG([LEX], [$FLEX])
+dnl Perform all the tests Automake and Autoconf need.
 AC_PROG_LEX
+
 AC_PROG_YACC
 LT_INIT
 AC_PROG_INSTALL
@@ -533,6 +541,10 @@ AC_HEADER_STDC
 AC_HEADER_STDBOOL
 AC_HEADER_TIME
 AC_CHECK_HEADERS_ONCE([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h mcheck.h])
+AC_LANG_PUSH(C++)
+dnl AC_CHECK_HEADERS_ONCE is too restricted to check for C++ headers
+AC_CHECK_HEADERS([FlexLexer.h])
+AC_LANG_POP(C++)
 ac_includes_default="$ac_includes_default 
 #if HAVE_MALLOC_H
 #  include <malloc.h>

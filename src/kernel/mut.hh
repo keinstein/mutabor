@@ -46,41 +46,53 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     IDENTIFIER = 258,
-     F_NUMBER = 259,
-     INTEGER = 260,
-     INTERVALL = 261,
-     WURZEL = 262,
-     TON = 263,
-     TONSYSTEM = 264,
-     UMSTIMMUNG = 265,
-     HARMONIE = 266,
-     LOGIK = 267,
-     FORM = 268,
-     INSTRUMENT = 269,
-     TASTE = 270,
-     MIDI_IN = 271,
-     MIDI_OUT = 272,
-     ANSONSTEN = 273
+     MUTABOR_TOKEN_IDENTIFIER = 258,
+     MUTABOR_TOKEN_F_NUMBER = 259,
+     MUTABOR_TOKEN_INTEGER = 260,
+     MUTABOR_TOKEN_INTERVAL = 261,
+     MUTABOR_TOKEN_ROOT = 262,
+     MUTABOR_TOKEN_TONE = 263,
+     MUTABOR_TOKEN_TONESYSTEM = 264,
+     MUTABOR_TOKEN_RETUNING = 265,
+     MUTABOR_TOKEN_HARMONY = 266,
+     MUTABOR_TOKEN_LOGIC = 267,
+     MUTABOR_TOKEN_FORM = 268,
+     MUTABOR_TOKEN_MIDICHANNEL = 269,
+     MUTABOR_TOKEN_KEY = 270,
+     MUTABOR_TOKEN_MIDI_IN = 271,
+     MUTABOR_TOKEN_MIDI_OUT = 272,
+     MUTABOR_TOKEN_ELSE = 273,
+     MUTABOR_TOKEN_SPACES = 274,
+     MUTABOR_TOKEN_COMMENT = 275,
+     MUTABOR_TOKEN_PARAMETER = 276,
+     MUTABOR_TOKEN_OTHER = 277,
+     MUTABOR_TOKEN_ERROR = 278,
+     MUTABOR_TOKEN_ENDOFFILE = 279
    };
 #endif
 /* Tokens.  */
-#define IDENTIFIER 258
-#define F_NUMBER 259
-#define INTEGER 260
-#define INTERVALL 261
-#define WURZEL 262
-#define TON 263
-#define TONSYSTEM 264
-#define UMSTIMMUNG 265
-#define HARMONIE 266
-#define LOGIK 267
-#define FORM 268
-#define INSTRUMENT 269
-#define TASTE 270
-#define MIDI_IN 271
-#define MIDI_OUT 272
-#define ANSONSTEN 273
+#define MUTABOR_TOKEN_IDENTIFIER 258
+#define MUTABOR_TOKEN_F_NUMBER 259
+#define MUTABOR_TOKEN_INTEGER 260
+#define MUTABOR_TOKEN_INTERVAL 261
+#define MUTABOR_TOKEN_ROOT 262
+#define MUTABOR_TOKEN_TONE 263
+#define MUTABOR_TOKEN_TONESYSTEM 264
+#define MUTABOR_TOKEN_RETUNING 265
+#define MUTABOR_TOKEN_HARMONY 266
+#define MUTABOR_TOKEN_LOGIC 267
+#define MUTABOR_TOKEN_FORM 268
+#define MUTABOR_TOKEN_MIDICHANNEL 269
+#define MUTABOR_TOKEN_KEY 270
+#define MUTABOR_TOKEN_MIDI_IN 271
+#define MUTABOR_TOKEN_MIDI_OUT 272
+#define MUTABOR_TOKEN_ELSE 273
+#define MUTABOR_TOKEN_SPACES 274
+#define MUTABOR_TOKEN_COMMENT 275
+#define MUTABOR_TOKEN_PARAMETER 276
+#define MUTABOR_TOKEN_OTHER 277
+#define MUTABOR_TOKEN_ERROR 278
+#define MUTABOR_TOKEN_ENDOFFILE 279
 
 
 
@@ -88,7 +100,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2053 of yacc.c  */
-#line 70 "../../../mutabor-git/src/kernel/mut.yy"
+#line 68 "../../../mutabor-git/src/kernel/mut.yy"
 
     double      f_value;        /* fÅr Gleitkommazahlen */
     int         integer;        /* FÅr integers */
@@ -96,7 +108,7 @@ typedef union YYSTYPE
 
 
 /* Line 2053 of yacc.c  */
-#line 100 "../../../mutabor-git/src/kernel/mut.hh"
+#line 112 "../../../mutabor-git/src/kernel/mut.hh"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

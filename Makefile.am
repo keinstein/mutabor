@@ -10,6 +10,7 @@ CVS = cvs
 GIT = git
 REPOSITORY = http://git.berlios.de/mutabor
 REPOSITORY_PATH = .
+AM_LFLAGS = --c++ -o lex.yy.c
 
 CLEANFILES += POTFILES.tmp2 \
 	Mutabor.xrc
@@ -35,6 +36,7 @@ EXTRA_DIST = config.rpath \
 	lib/libasprintf \
 	Images \
 	src/kernel/mut.yy \
+	src/kernel/mutlex.ll \
 	osdep/macosx/Application_Code.txt \
 	osdep/macosx/background.png \
 	osdep/macosx/background.svg \
@@ -276,8 +278,8 @@ libmutaborrouting_a_SOURCES = $(libmutaborrouting_a_INDENTS)
 
 libmutaborkernel_a_INLINEHEADERS = \
 		src/kernel/mut.cc \
-		src/kernel/mut.hh
-
+		src/kernel/mut.hh \
+		src/kernel/mutlex.cc
 
 libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Defs.h \
@@ -292,7 +294,9 @@ libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Interval.h \
 		src/kernel/MidiKern.h \
 		src/kernel/Runtime.h \
-		src/kernel/treestorage.h 
+		src/kernel/treestorage.h \
+		src/kernel/mutlex.h
+
 
 libmutaborkernel_a_INDENTS = \
 		src/kernel/box.cpp \
@@ -311,7 +315,9 @@ noinst_HEADERS += $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDEN
 libmutaborkernel_a_POTSOURCES = $(libmutaborkernel_a_INLINEHEADERS) $(libmutaborkernel_a_INDENTHEADERS) $(libmutaborkernel_a_INDENTS)
 
 libmutaborkernel_a_SOURCES = $(libmutaborkernel_a_INDENTS) \
-			src/kernel/mut.yy 
+			src/kernel/mut.yy \
+			src/kernel/mutlex.ll
+
 
 #-------------------------------------------------------------
 # libmutabordebug.a
@@ -566,7 +572,7 @@ cvs_distcheck: Makefile.am
 
 
 
-mutlex.h: mutlex.l
+
 
 
 mac: copymac
@@ -805,13 +811,10 @@ check-local: potfilechk
 
 
 all-local:
-	if test -f src/kernel/mut.cc ; \
-	then \
-		cmp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc || \
-		cp src/kernel/mut.cc $(top_srcdir)/src/kernel/mut.cc ; \
-	fi
-	if test -f src/kernel/mut.hh ; \
-	then \
-		cmp src/kernel/mut.hh $(top_srcdir)/src/kernel/mut.hh || \
-		cp src/kernel/mut.hh $(top_srcdir)/src/kernel/mut.hh ; \
-	fi
+	for file in src/kernel/mut{.cc,.hh,lex.cc} ; \
+	do if test -f "$$file" ; \
+		then \
+			cmp "$$file" "$(top_srcdir)/$$file" || \
+			cp "$$file" "$(top_srcdir)/$$file" ; \
+		fi \
+	done

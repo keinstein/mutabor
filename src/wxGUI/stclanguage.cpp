@@ -42,6 +42,7 @@
 * \{
 ********************************************************************/
 #include "src/wxGUI/stclanguage.h"       // Preferences
+#include "src/kernel/mutlex.h"
 
 namespace mutaborGUI {
 //============================================================================
@@ -461,95 +462,104 @@ namespace mutaborGUI {
 		if (laststyled) {
 			style = editor->GetStyleAt(laststyled-1);
 		}
+		/* we may have an unfinished token or comment left over in the last run */
+		while (laststyled) {
+			int newstyle = editor->GetStyleAt(laststyled-1);
+			if (newstyle != style) break;
+			laststyled--;
+		}
 		DEBUGLOG(editlexer,_T("laststyed style = %x"),style);
 
 		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
-		int counter = 0; 
 		int length = 0;
 
 		editor->StartStyling (laststyled, 0x1f);
 
-		do {
-			mutChar c = text[counter+length];
+		mutabor::mutabor_lexer lexer(text,pos-laststyled);
+		for (style = lexer.yylex(); style; style = lexer.yylex()) {
 			switch (style) {
-			case COMMENT:
-			{
-				while ((counter+length < text.length())
-				       && ((c = text[counter + length]) != '"')) length++;
-				length++;
-				laststyled = SetStyling(COMMENT, laststyled, length);
+			case MUTABOR_TOKEN_COMMENT:
+				style = COMMENT;
+				break;
+
+			case MUTABOR_TOKEN_IDENTIFIER:
+				style = IDENTIFIER;
+				lexer.free_identifier();
+				break;
+
+			case MUTABOR_TOKEN_F_NUMBER:
+			case MUTABOR_TOKEN_INTEGER:
+				style = NUMBER;
+				break;
+
+			case MUTABOR_TOKEN_INTERVAL:
+			case MUTABOR_TOKEN_TONE:
+			case MUTABOR_TOKEN_TONESYSTEM:
+			case MUTABOR_TOKEN_RETUNING:
+			case MUTABOR_TOKEN_HARMONY:
+			case MUTABOR_TOKEN_LOGIC:
+			case MUTABOR_TOKEN_MIDICHANNEL:
+				style = SECTIONKEYWORD;
+				break;
+
+			case MUTABOR_TOKEN_ROOT:
+			case MUTABOR_TOKEN_MIDI_IN:
+ 			case MUTABOR_TOKEN_MIDI_OUT:
+ 			case '-':
+			case '+':
+			case '/':
+			case '*':
+			case '~':
+				style = OPERATOR;
+				break;
+
+			case MUTABOR_TOKEN_FORM:
+			case MUTABOR_TOKEN_KEY:
+				style = RESERVEDWORD;
+				break;
+
+			case MUTABOR_TOKEN_PARAMETER:
+				lexer.free_identifier();
+			case MUTABOR_TOKEN_ELSE:
+			case '@':
+				style = PARAMETER;
+				break;
+
+			case MUTABOR_TOKEN_SPACES:
+				style = DEFAULT;
+				break;
+
+			case MUTABOR_TOKEN_OTHER:
+			case '=':
+			case ':':
+			case ',':
+				style = OTHER;
+				break;
 				
-				DEBUGLOG(editlexer,
-					 _T("comment: %s"),
-					 cbGetSubstring(text,counter,length).c_str());
-				counter += length;
-				length = 0;
+
+			case '[':
+			case ']':
+			case '(':
+			case ')':
+			case '<':
+			case '>':
+			case '{':
+			case '}':
+				style = DELIMITER;
+				break;
+
+			case MUTABOR_TOKEN_ERROR:
+			case MUTABOR_TOKEN_ENDOFFILE: /* should not be reached, here */
+			default:
 				style = ERROR;
-			}
 				break;
 			}
-			if (counter + length >= text.length()) break;
-			c = text[counter+length];
-			int newstyle = style;
-			if (isspace(c)) newstyle = DEFAULT;
-			else if ((isdigit(c) && style != IDENTIFIER) || c == '#') newstyle = NUMBER;
-			else if (isalpha(c) || (style == IDENTIFIER && isdigit(c))|| c == '_' || c == '\'') 
-				newstyle = IDENTIFIER;
-			else switch (c) {
-				case '+':
-				case '-':
-				case '*':
-				case ':':
-				case '/':
-				case '~':
-					newstyle = OPERATOR;
-					break;
-				case '[':
-				case ']':
-				case '(':
-				case ')':
-				case '<':
-				case '>':
- 				case '{':
-				case '}':
-					newstyle = DELIMITER;
-					break;
-
-				case '@':
-					newstyle = PARAMETER;
-					break;
-
-				case '=':
-				case ',':
-				case ';':
-					newstyle = OTHER;
-					break;
-				case '"':
-					newstyle = COMMENT;
-					break;
-				default:
-					newstyle = ERROR;
-				}
-			if (length && newstyle != style) {
-				laststyled = SetStyling(style, laststyled, length);
-				DEBUGLOG(editlexer,
-					 _T("style %d: %s"),
-					 style,
-					 cbGetSubstring(text,counter,length).c_str());
-				counter += length;
-				length = 1;
-
-			} else length++;
-			style = newstyle;
-			
-		} while (counter+length < text.length());
-		if (length) {
+			length = lexer.YYLeng();
+			DEBUGLOG(editlexer,_T("flex style %d for %d chars: %s"),
+				 style, length, wxString::FromUTF8(lexer.YYText(), length));
 			laststyled = SetStyling(style, laststyled, length);
-			DEBUGLOG(editlexer,
-				 _T("style %d: %s"),
-				 style,
-				 cbGetSubstring(text,counter,length).c_str());
 		}
+		
 		event.Skip();
 	}
 
@@ -560,13 +570,13 @@ namespace mutaborGUI {
 				      editor->StyleGetBackground(style),
 				      editor->StyleGetFont(style));
 #endif
-		int delta, endpos = pos+length;
+		int endpos = pos+length;
 		editor->SetStyling(endpos-pos,style);
 #if wxCHECK_VERSION(2,9,0)
 		//	editor->SetStyle(pos,pos+length,styleattrs);
 #endif
 #ifdef DEBUG
-		for (size_t i = pos ; i< pos+length; i++) {
+		for (int i = pos ; i< (int) pos+length; i++) {
 			if ((editor->GetStyleAt(i) & 0x1f) != style) {
 				DEBUGLOG(editlexer,
 					 _T("checking style at %d (%d – %d), %x == %x"),
