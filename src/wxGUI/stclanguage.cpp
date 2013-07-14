@@ -462,21 +462,54 @@ namespace mutaborGUI {
 		if (laststyled) {
 			style = editor->GetStyleAt(laststyled-1);
 		}
+
+		int length = 0;
+		int lineNumber, level, oldlevel, levelstatus;
+		bool forceheader = false;
+
+		lineNumber = editor->LineFromPosition(laststyled);
 		/* we may have an unfinished token or comment left over in the last run */
 		while (laststyled) {
 			int newstyle = editor->GetStyleAt(laststyled-1);
-			if (newstyle != style) break;
-			laststyled--;
+			int newline = editor->LineFromPosition(laststyled-1);
+			if (newstyle != style && newline != lineNumber) break;
+			laststyled--; 
+			style = newstyle;
+			lineNumber = newline;
 		}
+
+		oldlevel = editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK;
 		DEBUGLOG(editlexer,_T("laststyed style = %x"),style);
 
-		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
-		int length = 0;
-
 		editor->StartStyling (laststyled, 0x1f);
+		wxCharBuffer text = editor->GetTextRangeRaw(laststyled,pos);
+
+		// setting up folding data
+		if (laststyled) {
+			lineNumber = editor->LineFromPosition(laststyled-1);
+			level = editor->GetFoldLevel(lineNumber);
+			int newline = editor->LineFromPosition(laststyled);
+			levelstatus = level & ~wxSTC_FOLDLEVELNUMBERMASK;
+			level = level & wxSTC_FOLDLEVELNUMBERMASK;
+			if (newline != lineNumber) {
+				/* one character difference means '\n' */
+				levelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) 
+					| wxSTC_FOLDLEVELWHITEFLAG;
+				lineNumber = newline;
+			}
+		} else {
+			lineNumber = editor->LineFromPosition(laststyled);
+			level = 0;
+			oldlevel = 0;
+			editor->SetFoldLevel(lineNumber,level);
+			levelstatus = wxSTC_FOLDLEVELWHITEFLAG;
+		}
 
 		mutabor::mutabor_lexer lexer(text,pos-laststyled);
 		for (style = lexer.yylex(); style; style = lexer.yylex()) {
+
+			bool isspace = false;
+
 			switch (style) {
 			case MUTABOR_TOKEN_COMMENT:
 				style = COMMENT;
@@ -499,7 +532,11 @@ namespace mutaborGUI {
 			case MUTABOR_TOKEN_HARMONY:
 			case MUTABOR_TOKEN_LOGIC:
 			case MUTABOR_TOKEN_MIDICHANNEL:
+				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
 				style = SECTIONKEYWORD;
+				forceheader = true;
+				level = 1;
+				oldlevel = 0;
 				break;
 
 			case MUTABOR_TOKEN_ROOT:
@@ -526,10 +563,12 @@ namespace mutaborGUI {
 				break;
 
 			case MUTABOR_TOKEN_SPACES:
+				isspace = true;
 				style = DEFAULT;
 				break;
 
 			case MUTABOR_TOKEN_OTHER:
+			case MUTABOR_TOKEN_CALLS:
 			case '=':
 			case ':':
 			case ',':
@@ -538,14 +577,20 @@ namespace mutaborGUI {
 				
 
 			case '[':
-			case ']':
 			case '(':
-			case ')':
 			case '<':
+			case '{': 
+				if (level < oldlevel) forceheader = true;
+				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
+				level++;
+				style = DELIMITER;
+				break;
+			case ']':
+			case ')':
 			case '>':
-			case '{':
 			case '}':
 				style = DELIMITER;
+				level--;
 				break;
 
 			case MUTABOR_TOKEN_ERROR:
@@ -557,7 +602,34 @@ namespace mutaborGUI {
 			length = lexer.YYLeng();
 			DEBUGLOG(editlexer,_T("flex style %d for %d chars: %s"),
 				 style, length, wxString::FromUTF8(lexer.YYText(), length));
+			
 			laststyled = SetStyling(style, laststyled, length);
+			// updating lines
+			int endline = editor->LineFromPosition(laststyled);
+			if (!isspace) 
+				levelstatus &= ~wxSTC_FOLDLEVELWHITEFLAG;
+			if (!forceheader && level <= oldlevel)
+				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
+			editor->SetFoldLevel(lineNumber, levelstatus | oldlevel);
+			DEBUGLOG(editlexer,_T("line status: %x, level %d – %d"),
+				 editor->GetFoldLevel(lineNumber),
+				 oldlevel,
+				 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
+			       
+			int tmplevelstatus = levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG | level;
+			if (isspace) 
+				tmplevelstatus |= wxSTC_FOLDLEVELWHITEFLAG;
+			if (lineNumber < endline) 
+				oldlevel = level;
+			while (lineNumber < endline) {
+				forceheader = false;
+				levelstatus &= ~wxSTC_FOLDLEVELHEADERFLAG;
+				editor -> SetFoldLevel(++lineNumber, tmplevelstatus);
+				DEBUGLOG(editlexer,_T("line status: %x, level %d – %d"),
+					 editor->GetFoldLevel(lineNumber),
+					 oldlevel,
+					 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
+			}
 		}
 		
 		event.Skip();
