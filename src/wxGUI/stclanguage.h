@@ -236,7 +236,8 @@ namespace mutaborGUI {
 			NUMBER = 7,
 			PARAMETER = 8,
 			OTHER = 9,
-			ERROR = 10
+			ERROR = 10,
+			BRACE = 11
 		};
 
 		MutSTCLexer(wxStyledTextCtrl * e):editor(e) {}

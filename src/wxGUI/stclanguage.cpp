@@ -225,7 +225,7 @@ namespace mutaborGUI {
 
 		// MutSTC_TYPE_WORD3
 		{_T("Keyword3"),
-		 _T("CORNFLOWER BLUE"), _T("WHITE"),
+		 _T("SEA GREEN"), _T("WHITE"),
 		 _T(""), 10, 0, 0},
 
 		// MutSTC_TYPE_WORD4
@@ -300,8 +300,8 @@ namespace mutaborGUI {
 
 		// MutSTC_TYPE_BRACE
 		{_T("Label"),
-		 _T("VIOLET"), _T("WHITE"),
-		 _T(""), 10, 0, 0},
+		 _T("VIOLET RED"), _T("WHITE"),
+		 _T(""), 10, MutSTC_STYLE_BOLD, 0},
 
 		// MutSTC_TYPE_COMMAND
 		{_T("Command"),
@@ -325,7 +325,7 @@ namespace mutaborGUI {
 
 		// MutSTC_TYPE_PARAMETER
 		{_T("Parameter"),
-		 _T("VIOLET"), _T("WHITE"),
+		 _T("BLUE VIOLET"), _T("WHITE"),
 		 _T(""), 10, MutSTC_STYLE_ITALIC, 0},
 
 		// MutSTC_TYPE_REGEX
@@ -467,6 +467,7 @@ namespace mutaborGUI {
 			case '/':
 			case '*':
 			case '~':
+			case ':':
 				style = OPERATOR;
 				break;
 
@@ -490,9 +491,11 @@ namespace mutaborGUI {
 			case MUTABOR_TOKEN_OTHER:
 			case MUTABOR_TOKEN_CALLS:
 			case '=':
-			case ':':
-			case ',':
 				style = OTHER;
+				break;
+
+			case ',':
+				style = DELIMITER;
 				break;
 				
 
@@ -519,13 +522,13 @@ namespace mutaborGUI {
 				if (level < oldlevel) forceheader = true;
 				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
 				level++;
-				style = DELIMITER;
+				style = BRACE;
 				break;
 			case ']':
 			case ')':
 			case '>':
 			case '}':
-				style = DELIMITER;
+				style = BRACE;
 				level--;
 				break;
 
