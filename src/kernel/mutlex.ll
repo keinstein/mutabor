@@ -35,9 +35,9 @@ extern "C" inline int dummyisatty (int fd) { return isatty(fd); }
 
 %}
 
-\"                BUMP BEGIN(comment); return MUTABOR_TOKEN_COMMENT;
+\"                BUMP BEGIN(comment); return MUTABOR_TOKEN_COMMENT_START;
 <comment>[^"]*    BUMP /* comment */   return MUTABOR_TOKEN_COMMENT;
-<comment>\"       BUMP BEGIN(0);       return MUTABOR_TOKEN_COMMENT;
+<comment>\"       BUMP BEGIN(0);       return MUTABOR_TOKEN_COMMENT_END;
 
 [[:digit:]]*"."[[:digit:]]*   BUMP yylval->f_value = atof(yytext); return MUTABOR_TOKEN_F_NUMBER;
 [[:digit:]]*            BUMP yylval->integer = atoi(yytext); return MUTABOR_TOKEN_INTEGER;

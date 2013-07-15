@@ -807,6 +807,8 @@ debuild: dch
 check-local: potfilechk
 
 src/kernel/mut.hh: src/kernel/mut.cc
+src/kernel/mut.cc: src/kernel/mut.yy
+
 
 all-local:
 	for file in src/kernel/mut{.cc,.hh,lex.cc} ; \

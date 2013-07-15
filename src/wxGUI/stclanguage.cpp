@@ -511,10 +511,6 @@ namespace mutaborGUI {
 			bool isspace = false;
 
 			switch (style) {
-			case MUTABOR_TOKEN_COMMENT:
-				style = COMMENT;
-				break;
-
 			case MUTABOR_TOKEN_IDENTIFIER:
 				style = IDENTIFIER;
 				lexer.free_identifier();
@@ -575,6 +571,22 @@ namespace mutaborGUI {
 				style = OTHER;
 				break;
 				
+
+			case MUTABOR_TOKEN_COMMENT:
+				style = COMMENT;
+				break;
+
+			case MUTABOR_TOKEN_COMMENT_START:
+				if (level < oldlevel) forceheader = true;
+				levelstatus |= wxSTC_FOLDLEVELHEADERFLAG;
+				level++;
+				style = COMMENT;
+				break;
+
+			case MUTABOR_TOKEN_COMMENT_END:
+				level--;
+				style = COMMENT;
+				break;
 
 			case '[':
 			case '(':

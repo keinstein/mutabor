@@ -978,7 +978,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 38 "../../../mutabor-git/src/kernel/mutlex.ll"
-BUMP BEGIN(comment); return MUTABOR_TOKEN_COMMENT;
+BUMP BEGIN(comment); return MUTABOR_TOKEN_COMMENT_START;
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
@@ -989,7 +989,7 @@ BUMP /* comment */   return MUTABOR_TOKEN_COMMENT;
 case 3:
 YY_RULE_SETUP
 #line 40 "../../../mutabor-git/src/kernel/mutlex.ll"
-BUMP BEGIN(0);       return MUTABOR_TOKEN_COMMENT;
+BUMP BEGIN(0);       return MUTABOR_TOKEN_COMMENT_END;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
