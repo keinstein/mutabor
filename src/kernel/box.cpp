@@ -78,4 +78,25 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane)
 }
 
 
+void mutabor_check_key_count(mutabor_box_type * box) {
+	static bool checking = false;
+	if (checking) return;
+	checking = true;
+	size_t index = 0;
+	size_t count = 0;
+	if (!box->key_count) { checking = false; return; }
+	while (index != MUTABOR_NO_NEXT) {
+		count++;
+		mutabor_key_type * key = mutabor_find_key_in_box(box,index);
+		if (!key) {
+			UNREACHABLE;
+			checking = false;
+			return;
+		}
+		index = key->next;
+	}
+	mutASSERT(box->key_count == count);
+	checking = false;
+}
+
 ///\}
