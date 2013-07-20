@@ -139,7 +139,11 @@ namespace mutaborGUI {
 		else
 		{
 			wxString docName;
+#if wxCHECK_VERSION(2,9,0)
+			docName = doc->GetUserReadableName();
+#else
 			doc->GetPrintableName(docName);
+#endif
 			title = docName + wxString(_(" - ")) + _T(PACKAGE_NAME);
 		}
 		return title;
