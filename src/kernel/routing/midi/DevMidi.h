@@ -428,14 +428,9 @@ namespace mutabor {
 	
 		virtual bool Open();
 		virtual void Close();
-		virtual void Stop()
-			{};
-
-		virtual void Play()
-			{};
-
-		virtual void Pause()
-			{};
+		virtual void Stop() { Panic(false); };
+		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {};
+		virtual void Pause() {};
 
 //	   void Proceed(GisReadArtHead *h, char turn, Route route) {};
 //	   void ProceedRoute(GisReadArtHead *h, char turn) {};

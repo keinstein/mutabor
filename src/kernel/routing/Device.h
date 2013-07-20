@@ -801,6 +801,7 @@ namespace mutabor {
 			Stop();
 		}
 		virtual void Stop() { 
+			Panic(false);
 			Mode = DeviceStop;
 		}
 
