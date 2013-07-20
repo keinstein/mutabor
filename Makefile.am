@@ -16,10 +16,7 @@ AM_LFLAGS = --c++ -o lex.yy.c
 CLEANFILES += POTFILES.tmp2 \
 	Mutabor.xrc
 
-CLEANFILES += TAGS
-
-emacstags: tags
-all-local:emacstags
+BUILT_SOURCES += TAGS
 
 
 NOCOMPSOURCES= \
