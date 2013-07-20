@@ -672,6 +672,10 @@ namespace mutaborGUI {
 		bool Delete(MutInputDeviceShape * shape);
 #endif
 
+		virtual void Play();
+		virtual void Stop();
+		virtual void Pause();
+
 
 		MutInputDeviceShape * GetShape(wxWindow * parent);
 		
@@ -718,6 +722,25 @@ namespace mutaborGUI {
 		basetype * GetDevice() {
 			return static_cast<basetype *>(this);
 		}
+
+
+		virtual void  Play() {
+			basetype::Play();
+			GUIInputDeviceBase::Play();
+		}
+		virtual void  Play(wxThreadKind tk) {
+			basetype::Play(tk);
+			GUIInputDeviceBase::Play();
+		}
+		virtual void  Pause() {
+			basetype::Pause();
+			GUIInputDeviceBase::Pause();
+		}
+		virtual void  Stop() {
+			basetype::Stop();
+			GUIInputDeviceBase::Stop();
+		}
+
 
 		/// add a route
 		virtual void Add(mutabor::Route & route);

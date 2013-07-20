@@ -743,7 +743,8 @@ while playing by computer keyboard.)"),
 		LogicOn = true;
 
 		// Statusbar
-		SetStatus(SG_LOGIC);
+		StatusBar::AllSetActive(LogicOn);
+		StatusBar::AllSetPlaystate(StatusBar::Stop,false);
 
 		DEBUGLOG (other, _T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
 
@@ -900,8 +901,8 @@ To start the translation hit the play button or select “Play” from the “Se
 					ControlBar->Insert(*ButtonActivate, TGadgetWindow::Before, ButtonPanic);
 					ControlBar->LayoutSession();*/
 			// Statusleiste
-			SetStatus(SG_NOTHING);
-			//		StatusBar->SetText("");
+			StatusBar::AllSetActive(LogicOn);
+			StatusBar::AllSetPlaystate(StatusBar::Hide,true);
 			// Titel
 			//    SetTitle(APPNAME);
 			// alle Fenser schlieﬂen
@@ -1492,6 +1493,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::StopInDev()
 	{
+		StatusBar::AllSetPlaystate(StatusBar::Stop,true);
 		const InputDeviceList & list = 
 			InputDeviceClass::GetDeviceList();
 		for ( InputDeviceList::const_iterator In = list.begin(); 
@@ -1504,8 +1506,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					-> Stop();
 			}
 		}
-
-		SetStatus(1-LogicOn);
 	}
 
 
@@ -1513,19 +1513,20 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	{
 		StopInDev();
 		repaint_route();
-		SetStatus(1-LogicOn);
+		// SetStatus(1-LogicOn);
 	}
 
 	void MutFrame::CmInDevPlay(wxCommandEvent& event)
 	{
 		TRACEC;
-
+		
 		if ( !LogicOn )
 			CmDoActivate(event);
 
+		StatusBar::AllSetPlaystate(StatusBar::Play,true);
 		if (CurrentTime.isRealtime()) {
 			InputDeviceClass::RealtimePlay();
-			SetStatus(SG_PLAY);
+			//SetStatus(SG_PLAY);
 		} else {
 			if ( InputDeviceClass::BatchPlay() ) {
 				wxMessageBox(_("The conversion finished successfully."),
@@ -1542,6 +1543,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::CmInDevPause(wxCommandEvent& WXUNUSED(event))
 	{
+		StatusBar::AllSetPlaystate(StatusBar::Pause,true);
 		const InputDeviceList & list = 
 			InputDeviceClass::GetDeviceList();
 		for ( InputDeviceList::const_iterator In = list.begin(); 
@@ -1552,7 +1554,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			}
 		}
 		repaint_route();
-		SetStatus(SG_PAUSE);
+		// SetStatus(SG_PAUSE);
 	}
 
 	void MutFrame::CeInDevStop(wxUpdateUIEvent& event)
@@ -1616,20 +1618,21 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				if ((*In)->GetMode() == DevicePlay ) {
 					event.Enable(true);
 				
-					if ( curStatusImg != SG_PLAY )
-						SetStatus(SG_PLAY);
+					//if ( curStatusImg != SG_PLAY )
+						//			SetStatus(SG_PLAY);
 	
 					return;
 				} else if ( (*In)->GetMode() == DevicePause )
 					Pause = true;
 			}
 		}
+/*
 		if ( Pause ) {
 			if ( curStatusImg != SG_PAUSE )
 				SetStatus(SG_PAUSE);
 		} else if ( curStatusImg != 1-LogicOn )
 			SetStatus(1-LogicOn);
- 
+*/ 
 		event.Enable(false);
 	}
 

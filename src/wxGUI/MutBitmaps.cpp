@@ -145,6 +145,31 @@ namespace mutaborGUI {
 		initialized = true;
 		return true;	
 	}
+
+	bool StatusBarBitmaps::initialized = false;
+	wxBitmap StatusBarBitmaps::Play;
+	wxBitmap StatusBarBitmaps::Stop;
+	wxBitmap StatusBarBitmaps::Pause;
+	wxBitmap StatusBarBitmaps::Active;
+
+	bool StatusBarBitmaps::DoInit() {
+		if (initialized) return(true);
+		initMutBitmap(Play,
+			      wxGetApp().GetResourceName (_T ("InDevPlay.png")),
+			      wxBITMAP_TYPE_PNG);
+		initMutBitmap(Stop,
+			      wxGetApp().GetResourceName (_T ("InDevStop.png")),
+			      wxBITMAP_TYPE_PNG);
+		initMutBitmap(Pause,
+			      wxGetApp().GetResourceName (_T ("InDevPause.png")),
+			      wxBITMAP_TYPE_PNG);
+		initMutBitmap(Active,
+			      wxGetApp().GetResourceName (_T ("ToolbarLogicActive.png")),
+			      wxBITMAP_TYPE_PNG);
+		initialized = true;
+		return true;	
+	}
+
 }
 
 //\}

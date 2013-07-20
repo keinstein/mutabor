@@ -80,6 +80,22 @@ namespace mutaborGUI {
 		static wxBitmap IndevsPause;
 		static wxBitmap About;
 	};
+
+	class StatusBarBitmaps {
+	private:
+		static bool initialized;
+		static bool DoInit();
+	public:
+		static bool Init() {
+			if (!initialized) return DoInit();
+			else return true;
+		}
+
+		static wxBitmap Play;
+		static wxBitmap Stop;
+		static wxBitmap Pause;
+		static wxBitmap Active;
+	};
 }
 
 #endif // precompile

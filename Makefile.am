@@ -99,7 +99,8 @@ dist_pkgdata_DATA = src/xrc/Mutabor.xrc \
 	Images/Icons/png/InDevPlay.png \
 	Images/Icons/png/InDevStop.png \
 	Images/Icons/png/InDevPause.png \
-	Images/Icons/png/help-browser.png
+	Images/Icons/png/help-browser.png \
+	Images/Icons/png/ToolbarLogicActive.png
 #RECURSIVE_TARGETS += mac-recursive
 
 
@@ -163,6 +164,7 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/MutTextBox.h \
 		src/wxGUI/MutView.h \
 		src/wxGUI/Panel.h \
+		src/wxGUI/StatusBar.h \
 		src/wxGUI/resourceload.h \
 		src/wxGUI/stclanguage.h \
 		src/wxGUI/generic/mhArray.h \
@@ -210,6 +212,7 @@ libmutaborgui_a_INDENTS = \
 		src/wxGUI/MutTextBox.cpp \
 		src/wxGUI/MutView.cpp \
 		src/wxGUI/Panel.cpp \
+		src/wxGUI/StatusBar.cpp \
 		src/wxGUI/stclanguage.cpp \
 		src/wxGUI/generic/muconvauto.cpp \
 		src/wxGUI/generic/mxDefs.cpp \

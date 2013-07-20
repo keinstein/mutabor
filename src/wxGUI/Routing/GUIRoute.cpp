@@ -56,6 +56,7 @@
 #include "src/wxGUI/Routing/RouteLists.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/StatusBar.h"
 
 
 #include "src/kernel/routing/Route-inlines.h"
@@ -648,6 +649,19 @@ namespace mutaborGUI {
 
 		GUIOutputDeviceBase::Destroy();
 		TRACEC;
+	}
+
+
+	void GUIInputDeviceBase::Play() {
+		StatusBar::AllSetPlaystate(StatusBar::Play);
+	}
+
+	void GUIInputDeviceBase::Stop() {
+		StatusBar::AllSetPlaystate(StatusBar::Stop);
+	}
+
+	void GUIInputDeviceBase::Pause() {
+		StatusBar::AllSetPlaystate(StatusBar::Pause);
 	}
 
 	void GUIInputDeviceBase::Destroy() {

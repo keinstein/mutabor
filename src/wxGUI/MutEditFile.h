@@ -170,6 +170,7 @@ namespace mutaborGUI {
 		void OnMarginClick (wxStyledTextEvent &event);
 		void OnCharAdded  (wxStyledTextEvent &event);
 		void OnStyleNeeded  (wxStyledTextEvent &event);
+		void OnUpdateStcUI(wxStyledTextEvent & event);
 		void OnProperties (wxCommandEvent &WXUNUSED(event));
 
 		//! language/lexer

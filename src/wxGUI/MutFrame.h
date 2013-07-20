@@ -194,6 +194,7 @@
 #include "src/wxGUI/MutChild.h"
 #include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/MutRouteWnd.h"
+#include "src/wxGUI/StatusBar.h"
 
 #ifndef MUWX_MUTFRAME_H_PRECOMPILED
 #define MUWX_MUTFRAME_H_PRECOMPILED
@@ -407,11 +408,6 @@ namespace mutaborGUI {
 
 		void CloseAll(WinKind kind = WK_NULL);
 
-		void SetStatus(int WXUNUSED(imgNr))
-			{
-				//StatusGadget->SelectImage(curStatusImg = imgNr, true);
-			}
-
 		wxRect DetermineFrameSize ();
 
 		/// retrun true if we have already a client
@@ -468,6 +464,13 @@ namespace mutaborGUI {
 				// should be done by ClosePane:	w->Close(); 
                                 // win should be invalid now.
 			}
+		virtual wxStatusBar* OnCreateStatusBar(int number, long style, wxWindowID id, const wxString& name) {
+			StatusBar * bar = new StatusBar(this, id, style, name);
+			if (!bar) return NULL;
+			bar->SetActive(LogicOn);
+			bar->SetPlaystate(StatusBar::Hide);
+			return bar;
+		}
 
 		int curStatusImg;
 

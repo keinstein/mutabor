@@ -152,6 +152,7 @@ EVT_MENU (CM_CONVERTLF,          MutEditFile::OnConvertEOL)
 EVT_STC_MARGINCLICK (wxID_ANY,   MutEditFile::OnMarginClick)
 EVT_STC_CHARADDED (wxID_ANY,     MutEditFile::OnCharAdded)
 EVT_STC_STYLENEEDED(wxID_ANY,    MutEditFile::OnStyleNeeded)
+EVT_STC_UPDATEUI(wxID_ANY,       MutEditFile::OnUpdateStcUI)
 END_EVENT_TABLE()
 
 namespace mutaborGUI {
@@ -179,6 +180,9 @@ namespace mutaborGUI {
 #if wxUSE_FINDREPLDLG
 		m_dlgFind = m_dlgReplace = NULL;
 #endif
+		if (parent) 
+			StatusBar::SetInsert(this,!GetOvertype());
+
 		
 	}
 	
@@ -202,6 +206,8 @@ namespace mutaborGUI {
 #if wxUSE_FINDREPLDLG
 		m_dlgFind = m_dlgReplace = NULL;
 #endif
+		if (parent) 
+			StatusBar::SetInsert(this,!GetOvertype());
 	}
 
 
@@ -885,7 +891,9 @@ namespace mutaborGUI {
 	}
 
 	void MutEditFile::OnSetOverType (wxCommandEvent &WXUNUSED(event)) {
-		SetOvertype (!GetOvertype());
+		bool overtype = !GetOvertype();
+		SetOvertype (overtype);
+		StatusBar::SetInsert(this,!overtype);
 	}
 
 	void MutEditFile::OnSetReadOnly (wxCommandEvent &WXUNUSED(event)) {
@@ -964,6 +972,14 @@ namespace mutaborGUI {
 	void MutEditFile::OnStyleNeeded (wxStyledTextEvent &event) {
 		lexer.OnStyleNeeded(event);
 	}
+
+	void MutEditFile::OnUpdateStcUI(wxStyledTextEvent & event) {
+		int line = GetCurrentLine();
+		int pos = GetCurrentPos();
+		pos -= PositionFromLine(line);
+		StatusBar::SetPosition(this,line + 1,pos);
+	}
+
 
 
 //----------------------------------------------------------------------------
