@@ -12,167 +12,19 @@
 * \version $Revision: 1.18 $
 * \license GPL
 *
-* $Log: IconShape.cpp,v $
-* Revision 1.18  2011/11/05 15:19:38  keinstein
-* Fix route drawing in route window on GTK
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
 *
-* Revision 1.17  2011-11-04 15:02:03  keinstein
-* fix drawing iconshapes on Mac OS X
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
 *
-* Revision 1.16  2011-11-03 17:20:15  keinstein
-* fix some focus issues on msw
-*
-* Revision 1.15  2011-11-02 14:31:58  keinstein
-* fix some errors crashing Mutabor on Windows
-*
-* Revision 1.14  2011-10-05 16:28:39  keinstein
-* correct layout on mac
-*
-* Revision 1.13  2011-10-04 20:09:16  keinstein
-* Clean up focus handling a little bit.
-* Change perimeter point handling a little bit. Need at least one night to
-* get overthought.
-*
-* Revision 1.12  2011-10-04 17:16:13  keinstein
-* make program compile on Mac (wx 2.9) and fix some memory corruption
-*
-* Revision 1.11  2011-10-04 05:38:44  keinstein
-* some configuration fixes
-*
-* Revision 1.10  2011-10-03 15:50:21  keinstein
-* Fix focus issues in the route window. This includes:
-*  * Using templates to describe the base class of MutIconShape.
-*  * Rename MutIconShape->MutIconShapeClass.
-*  * typedef MutIconShapeClass<wxControl> MutIconShape
-*  * Expand the control container macros in MutPanel.
-*  * Disable most of the control container behaviour as we don't need it, currently
-*  * Focus NewInputDevice on window creation.
-*  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
-*  * Display focused Window with sunken border
-*
-* Revision 1.9  2011-09-30 18:07:04  keinstein
-* * make compile on windows
-* * s/wxASSERT/mutASSERT/g to get assert handler completely removed
-* * add ax_boost_base for boost detection
-*
-* Revision 1.8  2011-09-30 09:10:24  keinstein
-* Further improvements in the routing system.
-*
-* Revision 1.7  2011-09-29 05:26:58  keinstein
-* debug intrusive_ptr
-* fix storage and retrieving of input/output devices in treestorage
-* save maximum border size in icons
-* Apply the calculated offset in IconShape (box and box channels still missing)
-* Fix debug saving and restoring route information/route window on activation
-* Add wxWANTS_CHARS to MutEditWindow
-*
-* Revision 1.6  2011-09-27 20:13:22  keinstein
-* * Reworked route editing backend
-* * rewireing is done by RouteClass/GUIRoute now
-* * other classes forward most requests to this pair
-* * many bugfixes
-* * Version change: We are reaching beta phase now
-*
-* Revision 1.5  2011-08-24 21:19:36  keinstein
-* first run with 2.9.2+
-*
-* Revision 1.4  2011-02-20 22:35:57  keinstein
-* updated license information; some file headers have to be revised, though
-*
-* Revision 1.3  2010-12-11 02:10:09  keinstein
-* make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
-*
-* Revision 1.2  2010-11-21 13:15:47  keinstein
-* merged experimental_tobias
-*
-* Revision 1.1.2.7  2010-06-15 14:30:14  keinstein
-* allow deleting of input devices in route window
-* several bug fixes
-* rudimentary box deletion support
-*
-* Revision 1.1.2.6  2010/06/02 11:20:08  keinstein
-* Route.h:
-* 	new enum BoxType
-* 	new box type NewBox
-*
-* IconShape.cpp:
-* 	Hide shape in MutIconShape::DeleteSelf
-*
-* MutChild.h:
-* 	Changes on the increment value for Clientsize
-*
-* MutLogicWnd:
-* 	smaller whitespace fixes
-*
-* MutRouteWnd.cpp:
-* 	save sizerflags for MutBoxShape too
-*
-* BoxChannelShape.cpp:
-* 	rename CreateRouteShape to CreateRoutePanel
-* 	replace some wxDynamicCast by dynamic_cast
-* 	add Box “New Box“ if current box is not found
-* 	delete Route if route panel is disabled
-*
-* BoxChannelShape.h:
-* 	Update BoxShape layout  if necessary
-*
-* BoxDlg.cpp:
-* 	RoutePanel::AddBox: allow NULL boxShape
-* 	Fix Bug that didn't preselect GUIDO boxes and Through mode
-*
-* BoxShape.cpp:
-* 	fix color mapping for box numbers (shift right by 1 bit).
-* 	Add MutBoxShape::sizerFlags
-* 	SetBoxId: New function
-* 	Use SetBoxId for setting Box Id an Label in sync
-* 	AddChannel: call Layout()
-* 	implement replacement in DoLeftDblClick (enables New Box)
-* 	ShowBoxDialog: use dynamic_cast
-* 	ReadDialog: Add Channel only if new route is enabled (not deleted)
-* 	ReplaceSelfBy: new function (Unreachable as only needed for
-* 		class NewMutBoxShape)
-*
-* NewBoxShape.cpp/.h:
-* 	replaceSelfBy: new function
-* 	initialize Box id as NewBox
-*
-* *.po/mutabor.pot/ *.gmo
-*  	Sync with sources
-*
-* Revision 1.1.2.5  2010/05/07 11:40:28  keinstein
-* actual_settings
-*
-* Revision 1.1.2.4  2010/03/30 08:38:26  keinstein
-* added rudimentary command line support
-* changed debug system to allow selection of messages via command line
-* further enhancements to the route dialogs
-*
-* Revision 1.1.2.3  2010/02/15 12:08:20  keinstein
-* intermediate update for backup progress
-*
-* Revision 1.1.2.2  2010/01/14 09:34:24  keinstein
-* Checkin searching for a bug
-*
-* Revision 1.1.2.1  2009/11/30 12:08:57  keinstein
-* split MutRouteShapes into several files into directory Routing
-*
-* Revision 1.1.2.3  2009/11/03 15:07:07  keinstein
-* Compile on Ubuntu 9.10
-* remove several interface and implementation pragmas
-* fixed some file names for case insensitive filesystems
-*
-* Revision 1.1.2.2  2009/11/03 12:39:31  keinstein
-* input device dialog: Allow to edit input devices
-* fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
-*
-* Revision 1.1.2.1  2009/08/10 11:23:12  keinstein
-* merged from wrong tree
-*
-* Revision 1.2  2009/08/10 11:15:47  keinstein
-* some steps towards new route window
-*
-* Revision 1.1  2008/11/03 15:31:54  keinstein
-* Added to the system
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 *
 ********************************************************************

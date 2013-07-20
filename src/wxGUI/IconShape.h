@@ -1,5 +1,4 @@
 // -*- C++ -*-
-
 /** \file
  ********************************************************************
  * Icon shape.
@@ -12,90 +11,19 @@
  * \version $Revision: 1.14 $
  * \license GPL
  *
- * $Log: IconShape.h,v $
- * Revision 1.14  2011/11/04 15:02:03  keinstein
- * fix drawing iconshapes on Mac OS X
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.13  2011-11-03 17:20:15  keinstein
- * fix some focus issues on msw
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.12  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.11  2011-10-05 16:28:39  keinstein
- * correct layout on mac
- *
- * Revision 1.10  2011-10-04 20:09:16  keinstein
- * Clean up focus handling a little bit.
- * Change perimeter point handling a little bit. Need at least one night to
- * get overthought.
- *
- * Revision 1.9  2011-10-04 05:38:44  keinstein
- * some configuration fixes
- *
- * Revision 1.8  2011-10-03 15:50:21  keinstein
- * Fix focus issues in the route window. This includes:
- *  * Using templates to describe the base class of MutIconShape.
- *  * Rename MutIconShape->MutIconShapeClass.
- *  * typedef MutIconShapeClass<wxControl> MutIconShape
- *  * Expand the control container macros in MutPanel.
- *  * Disable most of the control container behaviour as we don't need it, currently
- *  * Focus NewInputDevice on window creation.
- *  * MutBoxChannelShape focuses its parent on focus (which can be done only by mouse so far).
- *  * Display focused Window with sunken border
- *
- * Revision 1.7  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.6  2011-09-29 05:26:58  keinstein
- * debug intrusive_ptr
- * fix storage and retrieving of input/output devices in treestorage
- * save maximum border size in icons
- * Apply the calculated offset in IconShape (box and box channels still missing)
- * Fix debug saving and restoring route information/route window on activation
- * Add wxWANTS_CHARS to MutEditWindow
- *
- * Revision 1.5  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.4  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.3  2010-12-13 00:27:53  keinstein
- * compiles in linux as well as in mingw
- *
- * Revision 1.2  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.3  2010-03-30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.1.2.2  2010/02/15 12:08:20  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.1.2.1  2009/11/30 12:08:57  keinstein
- * split MutRouteShapes into several files into directory Routing
- *
- * Revision 1.1.2.2  2009/11/03 12:39:31  keinstein
- * input device dialog: Allow to edit input devices
- * fix a bug on Mac OS X, that prevented Mutabor from starting if no MIDI device is availlable
- *
- * Revision 1.1.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.2  2009/08/10 11:15:47  keinstein
- * some steps towards new route window
- *
- * Revision 1.1  2008/11/03 15:31:54  keinstein
- * Added to the system
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
