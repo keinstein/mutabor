@@ -205,12 +205,22 @@ void MutTextBox::GetKeys(bool asTS)
 //				last_key = key;
 
 			}
-			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT) [ch: %d, id: %d]"),
+#if 0
+			/* we cant use %z for now. See http://trac.wxwidgets.org/ticket/14311 for details */
+			keys.Printf(_("%2d : %8.1f Hz (%6.2f HT) [ch: %d, id: %z]"),
 				    pitch,
 				    LONG_TO_HERTZ(freq),
 				    cents,
 				    mutabor::GetChannel(box, pitch, key->channel, key->id),
 				    key->id);
+#else
+			keys.Printf(_("%2d : %8.1f Hz (%6.2f HT) [ch: %d, id: %lu]"),
+				    pitch,
+				    LONG_TO_HERTZ(freq),
+				    cents,
+				    mutabor::GetChannel(box, pitch, key->channel, key->id),
+				    (unsigned long)key->id);
+#endif
 		} else {
 			keys.Printf(_("%2d : empty"),pitch);
 		}

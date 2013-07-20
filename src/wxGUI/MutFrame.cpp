@@ -1797,9 +1797,9 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 				DEBUGLOG (other, _("Currently %d items in box menu"),boxMenu->GetMenuItemCount());
 
-				DEBUGLOG (other, _("Appending menu for box %d with id %d"),i,boxCommandIds[i]);
-				wxString name = wxString::Format(_("Select box %d\tCtrl+%d"),i,i);
-				wxString description = wxString::Format(_("Select box %d as the active Box for box specific commands."),i);
+				DEBUGLOG (other, _("Appending menu for box %d with id %d"),(int)i,(int)boxCommandIds[i]);
+				wxString name = wxString::Format(_("Select box %d\tCtrl+%d"),(int)i,(int)i);
+				wxString description = wxString::Format(_("Select box %d as the active Box for box specific commands."),(int)i);
 				mutASSERT(!(GetMenuBar()->FindItem(boxCommandIds[i])));
 				wxMenuItem * item = new wxMenuItem(boxMenu,boxCommandIds[i],
 								   name,
