@@ -359,7 +359,7 @@ namespace mutaborGUI {
 		wxGridSizer * sizer = dynamic_cast<wxGridSizer *>(GetSizer());
 		if (!sizer) return;
 
-		int columns = std::max(sizer->GetCols(),1);
+		size_t columns = std::max(sizer->GetCols(),1);
 		int rows = sizer->GetRows();
 		size_t clients = GetChildren().size();
 		wxSize children_size;
@@ -369,13 +369,13 @@ namespace mutaborGUI {
 		
 		while ((children_size = sizer->GetMinSize()).x <= size.GetWidth()) {
 			if (columns > clients && 
-			    children_size.x*columns/clients > size.GetWidth())
+			    children_size.x*columns/clients > (size_t) size.GetWidth())
 				break;
 			sizer->SetCols(++columns);
 		}
 
 		while ((sizer->GetMinSize().x > size.GetWidth() && columns > 1)
-		       || (columns > clients && children_size.x*columns/clients > size.GetWidth()))
+		       || (columns > clients && children_size.x*columns/clients > (size_t) size.GetWidth()))
 			sizer->SetCols(--columns);
 		
 		FitInside();		
@@ -615,7 +615,6 @@ namespace mutaborGUI {
 		}
 		wxWindow *ToFocus = NULL;
 		wxSizer * sizer = GetSizer();
-		wxFlexGridSizer * gridsizer = dynamic_cast<wxFlexGridSizer *> (sizer);
 
 		
 		//* \todo we must reuse old entries as rendering can be expensive
