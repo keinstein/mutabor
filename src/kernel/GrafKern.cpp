@@ -122,7 +122,7 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 	s[0] = 0;
 
 	if (!s) {
-		mutabor_out_of_memory(_("Failed to allocate Memory for action."),__FILE__,__LINE__);
+		mutabor_out_of_memory(__FILE__,__LINE__,_("Failed to allocate Memory for action."));
 		return NULL;
 	}
 	
@@ -130,7 +130,7 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 		if ((tmp = strlen(action->name)) > size) {
 			tmpstr = (char *)realloc(s,tmp*2);
 			if (!tmpstr) {
-				mutabor_out_of_memory(_("Cannot enhance action description."),__FILE__,__LINE__);
+				mutabor_out_of_memory(__FILE__,__LINE__,_("Cannot enhance action description."));
 			} else {
 				s = tmpstr;
 				size = tmp*2;

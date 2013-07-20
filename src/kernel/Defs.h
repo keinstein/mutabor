@@ -65,14 +65,12 @@
 
 #define mutUnused(expr) do { (void)(expr); } while (0)
 
+
 #ifdef WX
 #define mut_thread_mutex(name)
 #define mut_thread_locker(name)
 #define mut_thread_lock(name) do {} while (0)
 #define mut_thread_release(name) do {} while (0)
-
-#warning Implement mutabor_out_of_memory
-#define mutabor_out_of_memory(...)
 
 #define mutChar   wxChar
 #define mutString wxString
@@ -312,6 +310,20 @@ inline void intrusive_ptr_release(intrusive_ptr_T * obj)
 #define MIDI_MAX_CHANNEL 15
 #define MIDI_MIN_KEY 0
 #define MIDI_MAX_KEY 0x7f
+
+inline void mutabor_out_of_memory(const char * file,int line, const char * format, ...) {
+	va_list args;
+	va_start(args,format);
+	fprintf(stderr,"%s:%d: out of memory\n",file,line);	\
+	vfprintf(stderr,format,args);
+	va_end(args);
+}
+
+#ifdef WX
+inline void mutabor_out_of_memory(const char * file, int line, wxString comment) {
+	mutabor_out_of_memory(file,line,"%s",(const char *)comment.ToUTF8());
+}
+#endif
 
 
 #ifdef MUTABOR_CPPUNIT
