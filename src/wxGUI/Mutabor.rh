@@ -1,66 +1,57 @@
-// menu items ids  -*- C++ -*-
-/*
-enum
-{
-    MDI_QUIT = wxID_EXIT,
-    MDI_NEW_WINDOW = 101,
-    MDI_REFRESH,
-    MDI_CHANGE_TITLE,
-    MDI_CHANGE_POSITION,
-    MDI_CHANGE_SIZE,
-    MDI_CHILD_QUIT,
-    MDI_ABOUT = wxID_ABOUT
-}; */
+/** \file               -*- C++ -*-
+********************************************************************
+* Several constants.
+*
+* Copyright:   (c) 2013 Tobias Schlemmer
+* \author  Tobias Schlemmer <keinstein@users.berlios.de>
+* \date 
+* $Date: 2011/09/27 20:13:26 $
+* \version $Version$
+* \license GPL
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+********************************************************************
+* \addtogroup GUI
+* \{
+********************************************************************/
+// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview
 
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
-// alt
+#if (!defined(WXGUI_MUTABOR_RH) && !defined(PRECOMPILE))	\
+	|| (!defined(WXGUI_MUTABOR_RH_PRECOMPILED))
+#ifndef PRECOMPILE
+#define WXGUI_MUTABOR_RH
+#endif
 
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
-// Konstantendefinitionen
-// ------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
 
-/* //#define ICON_2	2
-//#define ICON_1	1
-#define IDB_NOTE	  140
-#define IDB_ABOUT	    141*/
+#include "src/kernel/Defs.h"
 
-#define IDI_MUTABOR         101
-#define IDI_DOC             102
-#define IDI_LOGIC           103
-#define IDI_LOGICOPEN       104
-#define IDI_TONSYST	       105
-#define IDI_TONSYSTOPEN     106
-#define IDI_TSTEXTBOX	    107
-#define IDI_KEYTEXTBOX	    108
-#define IDI_ACTTEXTBOX	    109
-#define IDI_ABOUT    	    110
-#define IDI_ROUTE	        111
+#ifndef WXGUI_MUTABOR_RH_PRECOMPILED
+#define WXGUI_MUTABOR_RH_PRECOMPILED
 
-/*#define ICON_RUNKNOWN 	200
-#define ICON_RMIDIPORT	201
-#define ICON_RMIDIFILE	202
-#define ICON_RGMN	203
+// system headers which do seldom change
 
-#define IDI_STOP        300
-#define IDI_PLAY        301
-#define IDI_PAUSE       302
-#define IDI_STOPDIS     303
+namespace mutaborGUI {
 
-#define IDI_PLAYPLOP    300
-#define IDI_PAUSEPLOP   301
-#define IDI_ERRORPLOP   302
-#define IDI_NEWPLOP     303
-
-#define IDA_MDIFILE         100
-#define IDA_MUTWIN  	       101
-#define IDA_GRAYDIALOG      102
-#define IDA_ROUTE           103
-
-#define IDM_EDITFILE_DOC    100
-#define IDM_EDITFILE_CHILD  101
-#define IDM_DEMO_DOC	       102
-*/
 
 #define CM_FILEOPEN wxID_OPEN
 #define CM_FILECLOSE wxID_CLOSE
@@ -74,180 +65,116 @@ enum
 #define CM_HELPINDEX wxID_HELP_INDEX
 #define CM_HELPSEARCH wxID_HELP_SEARCH
 #define CM_ABOUT wxID_ABOUT
-enum {
-        MUT_FIRST,
-        CM_EXECUTE=101,
-        CM_SETUP=102,
+	enum {
+		MUT_FIRST,
+		CM_EXECUTE=101,
+		CM_SETUP=102,
 
-        CM_COMPILE=104,
-        CM_ACTIVATE,
-        CM_STOP,
-        CM_PANIC,
+		CM_COMPILE=104,
+		CM_ACTIVATE,
+		CM_STOP,
+		CM_PANIC,
 
-        CM_TOGGLEKEY,
-        CM_TOGGLETS,
-        CM_TOGGLEACT,
-        CM_ROUTES,
-        CM_OWM,
-        CM_CAW,
-        CM_SELECTBOX,
+		CM_TOGGLEKEY,
+		CM_TOGGLETS,
+		CM_TOGGLEACT,
+		CM_ROUTES,
+		CM_OWM,
+		CM_CAW,
+		CM_SELECTBOX,
 
-        CM_ROUTELOAD,
-        CM_ROUTESAVE,
-        CM_ROUTESAVEAS,
+		CM_ROUTELOAD,
+		CM_ROUTESAVE,
+		CM_ROUTESAVEAS,
 
-        CM_INDEVPLAY,
-        CM_INDEVSTOP,
-        CM_INDEVPAUSE,
+		CM_INDEVPLAY,
+		CM_INDEVSTOP,
+		CM_INDEVPAUSE,
 
-        CM_HELPREFERENCE,
-        CM_HELPHANDBOOK,
-        CM_HELPONHELP,
-        CM_HELPCOMMON,
+		CM_HELPREFERENCE,
+		CM_HELPHANDBOOK,
+		CM_HELPONHELP,
+		CM_HELPCOMMON,
 
-        CM_BOX,
+		CM_BOX,
 
-        CM_HELPCONTEXT,
+		CM_HELPCONTEXT,
 
-        CM_COMPACT,
-        CM_MUTTAG,
-        CM_SBREFRESH,
-        CM_GETLINE,
-        CM_DOACTIVATE,
-        CM_TASTE,
-	CM_LEFT_DOUBLE_CLICK,
-        CM_UPDATE,
+		CM_COMPACT,
+		CM_MUTTAG,
+		CM_SBREFRESH,
+		CM_GETLINE,
+		CM_DOACTIVATE,
+		CM_TASTE,
+		CM_LEFT_DOUBLE_CLICK,
+		CM_UPDATE,
 
-        MDI_REFRESH,
+		MDI_REFRESH,
 
-        CM_UPDATEUI,
-        CM_SETTITLE,
-        CM_SELECT_BOXWINDOW,
-        ID_CHOICE_DEVICE,
+		CM_UPDATEUI,
+		CM_SETTITLE,
+		CM_SELECT_BOXWINDOW,
+		ID_CHOICE_DEVICE,
 		
-	CM_DELETE_CONTROL,
-	cmCallExitId,
+		CM_DELETE_CONTROL,
+		cmCallExitId,
 
-	CM_PROPERTIES,
-	CM_INDENTINC,
-	CM_INDENTRED,
-	CM_FINDNEXT,
-	CM_REPLACENEXT,
-	CM_BRACEMATCH,
-	CM_GOTO,
-	CM_PAGEACTIVE,
-	CM_DISPLAYEOL,
-	CM_INDENTGUIDE,
-	CM_LINENUMBER,
-	CM_LONGLINEON,
-	CM_WHITESPACE,
-	CM_FOLDTOGGLE,
-	CM_OVERTYPE,
-	CM_READONLY,
-	CM_WRAPMODEON,
-	CM_CHANGECASE,
-	CM_CHANGELOWER,
-	CM_CHANGEUPPER,
-	CM_HILIGHTLANG,
-	CM_HILIGHTFIRST,
-	CM_HILIGHTLAST = CM_HILIGHTFIRST + 99,
-	CM_CONVERTEOL,
-	CM_CONVERTCR,
-	CM_CONVERTCRLF,
-	CM_CONVERTLF,
-	CM_USECHARSET,
-	CM_CHARSETANSI,
-	CM_CHARSETMAC,
-	CM_CHARSETUTF8,
-	CM_PAGEPREV,
-	CM_PAGENEXT,
-	CM_SELECTLINE,
+		CM_PROPERTIES,
+		CM_INDENTINC,
+		CM_INDENTRED,
+		CM_FINDNEXT,
+		CM_REPLACENEXT,
+		CM_BRACEMATCH,
+		CM_GOTO,
+		CM_PAGEACTIVE,
+		CM_DISPLAYEOL,
+		CM_INDENTGUIDE,
+		CM_LINENUMBER,
+		CM_LONGLINEON,
+		CM_WHITESPACE,
+		CM_FOLDTOGGLE,
+		CM_OVERTYPE,
+		CM_READONLY,
+		CM_WRAPMODEON,
+		CM_CHANGECASE,
+		CM_CHANGELOWER,
+		CM_CHANGEUPPER,
+		CM_HILIGHTLANG,
+		CM_HILIGHTFIRST,
+		CM_HILIGHTLAST = CM_HILIGHTFIRST + 99,
+		CM_CONVERTEOL,
+		CM_CONVERTCR,
+		CM_CONVERTCRLF,
+		CM_CONVERTLF,
+		CM_USECHARSET,
+		CM_CHARSETANSI,
+		CM_CHARSETMAC,
+		CM_CHARSETUTF8,
+		CM_PAGEPREV,
+		CM_PAGENEXT,
+		CM_SELECTLINE,
 
-	// other IDs
-	CM_STATUSBAR,
-	CM_TITLEBAR,
-	CM_ABOUTTIMER,
-	CM_UPDATETIMER,
+		// other IDs
+		CM_STATUSBAR,
+		CM_TITLEBAR,
+		CM_ABOUTTIMER,
+		CM_UPDATETIMER,
 
-	// dialog find IDs
-	CM_DLG_FIND_TEXT,
+		// dialog find IDs
+		CM_DLG_FIND_TEXT,
 
-	// preferences IDs
-	CM_PREFS_LANGUAGE,
-	CM_PREFS_STYLETYPE,
-	CM_PREFS_KEYWORDS,
+		// preferences IDs
+		CM_PREFS_LANGUAGE,
+		CM_PREFS_STYLETYPE,
+		CM_PREFS_KEYWORDS,
 
-	// last id 
-        MUT_LAST
-};
-/*
-#define IDD_COMPILER 100
-#define IDD_SETUP    101
-#define IDD_ABOUT    102
-#define IDC_BUTTON1	101
-//#define IDC_STATICBITMAP1	101
+		// last id 
+		MUT_LAST
+	};
 
-#define IDD_R0	      104
-#define IDD_R1	      105
-#define IDD_R2	      106
-#define IDD_R3	      107
-#define IDD_R4	      108
+}
+#endif // precompiled
+#endif // header loaded
 
-#define IDR_RADIOBUTTON11	100
-#define IDR_RADIOBUTTON12	101
-#define IDR_RADIOBUTTON13	102
-#define IDR_RADIOBUTTON14	103
-#define IDR_RADIOBUTTON21	104
-#define IDR_RADIOBUTTON22	105
-#define IDR_RADIOBUTTON23	106
-#define IDR_RADIOBUTTON24	107
-#define IDR_RADIOBUTTON25	108
 
-#define IDR_GROUPBOX01	110
-#define IDR_GROUPBOX02	111
-#define IDR_GROUPBOX11	112
-#define IDR_GROUPBOX12	113
-#define IDR_GROUPBOX21	114
-#define IDR_GROUPBOX22	115
-#define IDR_GROUPBOX31	116
-//#define IDC_CHECKBOX1	101
-//#define IDC_RCHECKBOX1	101
-
-#define IDR_EDIT01	120
-#define IDR_EDIT02	121
-#define IDR_EDIT12	122
-#define IDR_EDIT11	123
-#define IDR_EDIT21	124
-#define IDR_EDIT31	125
-#define IDR_EDIT32	126
-
-#define IDR_COMBOBOX01	130
-#define IDR_COMBOBOX02	131
-
-#define IDR_STATIC1	140
-
-#define IDR_CHECKBOX31  141
-
-#define IDR_ERASE01	150
-#define IDR_ERASE02	151
-#define IDR_BUTTON01	152
-
-#define IDS_COMP1   100
-#define IDS_COMP2   101
-#define IDS_COMP3   102
-#define IDS_COMP4   103
-#define IDS_COMP5   104
-
-#define IDSD_RADIOTS1      156
-#define IDSD_RADIOTS2      157
-#define IDSD_CHECKSE       158
-#define IDR_GROUPBOX1      159
-#define IDR_GROUPBOX2      155
-#define IDSD_CHECKCB       160
-
-#define IDC_ALINK          300
-#define IDHELP_            998
-*/
-
-#define IDW_STATUSBAR  32040    // Grabbed from OWL's headers
-#define IDW_TOOLBAR    32041
+///\}

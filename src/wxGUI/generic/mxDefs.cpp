@@ -75,7 +75,7 @@ wxString FileNameDialog(wxWindow * parent,
 
 		break;
 
-	case CM_EXECUTE:
+	case mutaborGUI::CM_EXECUTE:
 		title = _("Which Mutabor file shall be executed?");
 
 		filetypes = logic_sources;
@@ -93,7 +93,7 @@ wxString FileNameDialog(wxWindow * parent,
 
 		break;
 
-	case CM_ROUTELOAD:
+	case mutaborGUI::CM_ROUTELOAD:
 		title = _("Which Mutabor route file shall be loaded?");
 
 		filetypes = route_sources;
@@ -102,9 +102,9 @@ wxString FileNameDialog(wxWindow * parent,
 
 		break;
 
-	case CM_ROUTESAVE:
+	case mutaborGUI::CM_ROUTESAVE:
 
-	case CM_ROUTESAVEAS:
+	case mutaborGUI::CM_ROUTESAVEAS:
 		title = _("Enter the new Mutabor route file name, please!");
 
 		filetypes = route_sources;
