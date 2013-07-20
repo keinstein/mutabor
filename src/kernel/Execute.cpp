@@ -75,14 +75,13 @@ void MutResetKeys()
 		if ( mut_box[i].last_global_midi && *(mut_box[i].last_global_midi) )
 			*(mut_box[i].last_global_midi)=NULL;
 
-		mut_box[i].key_count = 0;
-		mut_box[i].current_keys.key[0].next = MUTABOR_NO_NEXT;
 
 		/* we make no shortcuts, here to avoid errors and make them more easy to find */
 		while (mutabor_find_key_in_box(&(mut_box[i]), 0) != NULL) {
 			mutabor_delete_key_in_box(&(mut_box[i]), 0);
 		}
-		mut_box[i].current_keys.next = NULL;
+		mut_box[i].key_count = 0;
+		mut_box[i].current_keys.key[0].next = MUTABOR_NO_NEXT;
 
 		for (int j = 0; j < MUTABOR_KEYRANGE_MAX_WIDTH; j++)
 			mut_box[i].pattern.tonigkeit[j] = 0;
