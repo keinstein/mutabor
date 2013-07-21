@@ -58,7 +58,7 @@ void  InputMidiFileTest::testBatchPlay1()
 	connect(route,0);
 
 	mutabor::CurrentTime.UseRealtime(true);
-	out = new midicmnOutputDevice(3,_T("Test"));
+	out = new midicmnOutputDevice(_T("Test"));
 	out->SetBendingRange(2);
 	//out = new midicmnOutputDevice(3,_T("Test"));
 	guard = out;
@@ -614,7 +614,7 @@ void  InputMidiFileTest::testBug019010_2()
 	connect(route,0);
 
 	mutabor::CurrentTime.UseRealtime(true);
-	out = new midicmnOutputDevice(3,_T("Test"));
+	out = new midicmnOutputDevice(_T("Test"));
 	out->SetBendingRange(2);
 	//out = new midicmnOutputDevice(3,_T("Test"));
 	guard = out;
@@ -951,7 +951,7 @@ void  InputMidiFileTest::testBug019010()
 	connect(route,0);
 
 	mutabor::CurrentTime.UseRealtime(true);
-	out = new midicmnOutputDevice(3,_T("Test"));
+	out = new midicmnOutputDevice(_T("Test"));
 	out->SetBendingRange(2);
 	//out = new midicmnOutputDevice(3,_T("Test"));
 	guard = out;

@@ -35,28 +35,30 @@
 
 
 namespace mutabor {
+	template <> size_t idtype<Device>::idpool(0);
+
 #ifdef WX
 	wxString Device::TowxString() const {
 		wxString routeString;
 		for (routeListType::const_iterator r = routes.begin();
 		     r != routes.end(); r++)
 			routeString += wxString::Format(_T(" %d:(%d->%d->%d)"),
-							(*r)->GetId(),
+							(*r)->get_routefile_id(),
 							(*r)->GetDeviceId(InputDevice()),
 							(*r)->GetBox(),
 							(*r)->GetDeviceId(OutputDevice()));
 		
 
 		return wxString::Format(_T("\nDevice:\n\
-   id       = %d\n\
-   userdata = %p\n\
-   DevId    = %d\n\
-   Name     = '%s'\n\
-   Flags:     dirty:%d, isOpen:%d\n\
-   Routes:   %s\n"),
-					Id,
+   session_id    = %lu\n\
+   routefile_id  = %d\n\
+   userdata      = %p\n\
+   Name          = '%s'\n\
+   Flags:        dirty:%d, isOpen:%d\n\
+   Routes:       %s\n"),
+					(unsigned long)session_id(),
+					routefile_id,
 					userdata,
-					DevId,
 					(const wxChar *) Name,
 					dirty,isOpen,
 					(const wxChar *) routeString);
@@ -170,7 +172,7 @@ namespace mutabor {
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {
-			(*i)->Device::SetId(nr);
+			(*i)->set_file_id(nr);
 			routeListType & list = (*i)->routes;
 			for (routeListType::iterator j = list.begin();
 			     j != list.end();
@@ -190,7 +192,7 @@ namespace mutabor {
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {
-			if ((*i)->Device::GetId() == id) {
+			if ((*i)->get_routefile_id() == id) {
 				return (*i);
 			}
 		}
@@ -399,7 +401,7 @@ InputDeviceClass:\n\
 			DevType type = (DevType) config.Read(_T("Type"), DTMidiPort);
 			OutputDevice out = DeviceFactory::CreateOutput(type);
 			if (!out) continue;
-			out -> Device::SetId(i);
+			out -> set_file_id(i);
 			wxString name = config.Read(_T("Type Name"),
 						    _T("Midi output device"));
 			DEBUGLOGTYPE(config,
@@ -428,7 +430,7 @@ InputDeviceClass:\n\
 		for (OutputDeviceList::const_iterator out = list.begin(); 
 		     out != list.end(); out++) {
 			config.toLeaf(_T("Device"),
-				      static_cast<Device *>((*out).get())->GetId());
+				      static_cast<Device *>((*out).get())->get_routefile_id());
 			config.Write(_T("Type"),(*out)->GetType());
 			config.Write(_T("Type Name"),(*out)->GetTypeName());
 			(*out) -> Save (config);
@@ -452,7 +454,7 @@ InputDeviceClass:\n\
 			TRACE;
 			InputDevice in = CreateInput(type);
 			TRACE;
-			in -> Device::SetId(i);
+			in -> Device::set_file_id(i);
 #ifdef DEBUG
 			wxString name = config.Read(_T("Type Name"),
 						    _T("Midi input device"));
@@ -484,7 +486,7 @@ InputDeviceClass:\n\
 		const InputDeviceList & list = InputDeviceClass::GetDeviceList();
 		for (InputDeviceList::const_iterator in = list.begin();
 		     in != list.end(); in++) {
-			config.toLeaf(_T("Device"),(*in)->Device::GetId());
+			config.toLeaf(_T("Device"),(*in)->get_routefile_id());
 			config.Write(_T("Type"),(*in)->GetType());
 			config.Write(_T("Type Name"),(*in)->GetTypeName());
 			(*in) -> Save (config);
@@ -661,7 +663,7 @@ InputDeviceClass:\n\
 		     R != list.end(); R++) {
 			OutputDevice out;
 			if ( (*R)->GetBox() == box
-			     && (channel == (*R)->GetId())
+			     && (channel == (*R)->get_session_id())
 			     && (out = (*R)->GetOutputDevice())) {
 				int c = out->GetChannel(key,channel,id);
 				

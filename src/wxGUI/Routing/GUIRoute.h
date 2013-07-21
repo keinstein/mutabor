@@ -565,13 +565,9 @@ namespace mutaborGUI {
 		typedef T basetype;
 		typedef GUIfiedOutputDevice<T> thistype;
 	protected:
-		GUIfiedOutputDevice():T() {
-			this->setUserData(static_cast<GUIOutputDeviceBase *>(this));
-		}
-		GUIfiedOutputDevice(int devId,
-				  const mutStringRef name = mutEmptyString, 
-				  int id = -1):T(devId, name, id),
-					       GUIOutputDeviceBase() {
+		GUIfiedOutputDevice(const mutStringRef name = mutEmptyString, 
+				    int id = -1):T(name, id),
+						 GUIOutputDeviceBase() {
 			this->setUserData(static_cast<GUIOutputDeviceBase *>(this));
 		}
 	public:
@@ -700,18 +696,12 @@ namespace mutaborGUI {
 		typedef GUIfiedInputDevice<T> thistype;
 
 	protected:
-		GUIfiedInputDevice():T() {
-			this->setUserData(static_cast<GUIInputDeviceBase *>(this));
-		}
-
-		GUIfiedInputDevice(int devId, 
-				 const mutStringRef name = mutEmptyString, 
-				 mutabor::MutaborModeType mode
-				 = mutabor::DeviceStop, 
-				 int id = -1):T(devId,
-						name,
-						mode,
-						id) {
+		GUIfiedInputDevice(const mutStringRef name = mutEmptyString, 
+				   mutabor::MutaborModeType mode
+				   = mutabor::DeviceStop, 
+				   int id = -1):T(name,
+						  mode,
+						  id) {
 			this->setUserData(static_cast<GUIInputDeviceBase *>(this));
 		}
 	public:
@@ -811,25 +801,11 @@ namespace mutaborGUI {
 				return mutabor::DTMidiPort;
 			}
 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+								    int id = -1) const;
+		
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
+ 		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
 							   mutabor::MutaborModeType mode, 
 							   int id = -1) const;
 
@@ -857,27 +833,11 @@ namespace mutaborGUI {
 				return mutabor::DTMidiFile;
 			}
 
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id = -1) const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+								    int id = -1) const;
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
+								  mutabor::MutaborModeType mode, 
+								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
 			mutabor::OutputDevice & device,
 			wxWindow * parent) const;
@@ -897,32 +857,15 @@ namespace mutaborGUI {
 
 	protected:
 		
-		virtual size_t GetType() const
-			{
-				return mutabor::DTGis;
-			}
+		virtual size_t GetType() const { return mutabor::DTGis;	}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+								    int id = -1) const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id = -1) const;
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
+								  mutabor::MutaborModeType mode, 
+								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
 			mutabor::OutputDevice & device,
 			wxWindow * parent) const;

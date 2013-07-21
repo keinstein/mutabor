@@ -350,33 +350,6 @@ namespace mutabor {
 
 	class Device
 	{
- 	private:
-		void * userdata;
-		int Id;
-	protected:
-		int DevId;
-		mutString Name;
-		bool dirty:1;
-		bool isOpen:1;
-		routeListType routes;
-	
-		Device():userdata(NULL),Id(-1),
-			 DevId(-1),
-			 Name(mutEmptyString),
-			 dirty(false),
-			 isOpen(false),
-			 routes() { }
-	
-		Device(int devid, 
-		       const mutStringRef name = mutEmptyString,
-		       int id = -1):userdata(NULL),
-				    Id(id),
-				    DevId(devid),
-				    Name(name),
-				    dirty(false),
-				    isOpen(false),
-				    routes() {}
-	
 	public:
 		virtual ~Device() { TRACEC; }
 	
@@ -428,30 +401,32 @@ namespace mutabor {
 		virtual void * getUserData() const { return userdata; }
 	public:
 
-		const wxString & GetName() const
-			{
-				return Name;
-			}
+		const wxString & GetName() const {
+			return Name;
+		}
 	
-		virtual void SetName(const wxString & s) 
-			{
-				Name = s;
-			}
+		virtual void SetName(const wxString & s) {
+			Name = s;
+		}
 	
-		int GetDevId() const
-			{
-				return DevId;
-			}
+                /*
+		int GetDevId() const {
+			return DevId;
+		}
 	
-		virtual void SetDevId(int id)
-			{
-				DevId = id;
-			}
+		virtual void SetDevId(int id) {
+			DevId = id;
+		}
+		*/
 	
-		int GetId() const
-			{
-				return Id;
-			}
+
+		size_t get_session_id() const {
+			return session_id;
+		}
+
+		int get_routefile_id() const {
+			return routefile_id;
+		}
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
@@ -476,11 +451,32 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
+ 	private:
+		void * userdata;
 	protected:
-		void SetId(int id)
-			{
-				Id = id;
-			}
+		/**
+		   Id used during runtime;
+		 */
+		idtype<Device> session_id;
+		int routefile_id;
+		mutString Name;
+		bool dirty:1;
+		bool isOpen:1;
+		routeListType routes;
+	
+		Device(const mutStringRef name = mutEmptyString,
+		       int id = -1):userdata(NULL),
+				    session_id(),
+				    routefile_id(id),
+				    Name(name),
+				    dirty(false),
+				    isOpen(false),
+				    routes() {}
+
+		void set_file_id(int id) {
+			routefile_id = id;
+		}
+	
 	};
 
 	// A common api for input and output devices that must be typed
@@ -499,17 +495,14 @@ namespace mutabor {
 	protected:
 	        static listtype deviceList;
 
-		CommonTypedDeviceAPI():Device()
-			{
-				AppendToDeviceList(static_cast<thistype *>(this));
-			}
+		CommonTypedDeviceAPI():Device()	{
+			AppendToDeviceList(static_cast<thistype *>(this));
+		}
 
-		CommonTypedDeviceAPI(int devId, 
-				     const mutStringRef name, 
-				     int id = -1):Device(devId, name, id)
-			{
-				AppendToDeviceList(static_cast<thistype *>(this));
-			}
+		CommonTypedDeviceAPI(const mutStringRef name, 
+				     int id = -1):Device(name, id) {
+			AppendToDeviceList(static_cast<thistype *>(this));
+		}
 
 	public:
 		virtual ~CommonTypedDeviceAPI();
@@ -641,17 +634,11 @@ namespace mutabor {
 		  OutputDeviceNext;
 		  static OutputDevice deviceList;
 		*/
-		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>()
-			{
-			}
+		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>() {}
 
-		OutputDeviceClass(int devId, 
-				  const mutStringRef name, 
+		OutputDeviceClass(const mutStringRef name, 
 				  int id = -1):
-			CommonTypedDeviceAPI<OutputDeviceClass>(devId, name, id)
-			{
-			}
-
+			CommonTypedDeviceAPI<OutputDeviceClass>(name, id) {}
 	public:
 		virtual ~OutputDeviceClass() { 
 			TRACEC;
@@ -709,31 +696,6 @@ namespace mutabor {
 	class InputDeviceClass: public CommonTypedDeviceAPI<InputDeviceClass>
 	{
 		friend class DeviceFactory;
-	protected:
-		// private members: access only via access functions for debugging purposes
-		/*
-		  InDevice *Next;
-		  static InDevice * deviceList;
-		  Route Routes;
-		*/
-		//InputDevice Next;
-
-		InputDeviceClass():CommonTypedDeviceAPI<InputDeviceClass>(), 
-//			   Next(this,_T("Next")), 
-			   Mode(DeviceStop)
-			{
-			}
-	
-		InputDeviceClass(int devId, 
-				 const mutStringRef name = mutEmptyString, 
-				 mutabor::MutaborModeType mode = DeviceStop, 
-				 int id = -1):
-			CommonTypedDeviceAPI<InputDeviceClass>(devId, name, id), 
-//			Next(this,_T("Next")), 
-			Mode(mode)
-			{
-			}
-
 	public:
 		struct current_keys_type {
 			struct entry {
@@ -919,18 +881,6 @@ namespace mutabor {
 			}
 	
 
-#if 0	
-		InputDevice GetNext() const {
-			mutASSERT(Next != this);
-			return Next; 
-		}
-	
-		void SetNext(InputDevice n) 
-			{
-				mutASSERT(n != this);
-				Next = n;
-			}
-#endif
 		virtual mutString GetTypeName () const {
 			return N_("Undefined input device");
 		}
@@ -950,6 +900,14 @@ namespace mutabor {
 	protected:
 		enum MutaborModeType Mode;
 		current_keys_type current_keys;
+
+		InputDeviceClass(const mutStringRef name = mutEmptyString, 
+				 mutabor::MutaborModeType mode = DeviceStop, 
+				 int id = -1):
+			CommonTypedDeviceAPI<InputDeviceClass>(name, id), 
+			Mode(mode) {
+		}
+
 	};
 
 
@@ -974,21 +932,8 @@ namespace mutabor {
 		DeviceFactory(size_t id = 0);
 		virtual ~DeviceFactory();
 
-		static OutputDevice  CreateOutput (int type) {
-			mutASSERT(type >= 0);
-			if (factories.size() <= (size_t)type) {
-				throw FactoryNotFound(type);
-				UNREACHABLECT(DeviceFactory);
-				return NULL;
-			}
-			if (!factories[type]) 
-				throw FactoryNotFound(type);
-
-			return factories[type]->DoCreateOutput();
-		}
 		static OutputDevice CreateOutput (int type, 
-						  int devId,
-						  const mutStringRef name, 
+						  const mutStringRef name = mutEmptyString, 
 						  int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
@@ -998,54 +943,13 @@ namespace mutabor {
 			}
 			if (!factories[type]) 
 				throw FactoryNotFound(type);
-			return factories[type]->DoCreateOutput(devId,name,id);
-		}
-		static OutputDevice CreateOutput(int type,
-						 int devId, 
-						 const mutStringRef name, 
-						 MutaborModeType mode, 
-						 int id = -1) {
-			mutASSERT(type >= 0);
-			if (factories.size() <= (size_t)type) {
-				throw FactoryNotFound(type);
-				UNREACHABLECT(DeviceFactory);
-				return NULL;
-			}
-			if (!factories[type]) 
-				throw FactoryNotFound(type);
-			return factories[type]->DoCreateOutput(devId, name, mode, id);
+			return factories[type]->DoCreateOutput(name,id);
 		}
 
-		static InputDevice CreateInput (int type) {
-			mutASSERT(type >= 0);
-			if (factories.size() <= (size_t)type) {
-				throw FactoryNotFound(type);
-				UNREACHABLECT(DeviceFactory);
-				return NULL;
-			}
-			
-			if (!factories[type]) 
-				throw FactoryNotFound(type);
-			return factories[type]->DoCreateInput();
-		}
-		static InputDevice CreateInput (int type, 
-						int devId,
-						const mutStringRef name, 
-						int id = -1) {
-			mutASSERT(type >= 0);
-			if (factories.size() <= (size_t)type) {
-				throw FactoryNotFound(type);
-				UNREACHABLECT(DeviceFactory);
-				return NULL;
-			}
-			if (!factories[type]) 
-				throw FactoryNotFound(type);
-			return factories[type]->DoCreateInput(devId,name,id);
-		}
+
 		static InputDevice CreateInput(int type,
-					       int devId, 
-					       const mutStringRef name, 
-					       MutaborModeType mode, 
+					       const mutStringRef name = mutEmptyString, 
+					       MutaborModeType mode = DeviceStop, 
 					       int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
@@ -1055,7 +959,7 @@ namespace mutabor {
 			}
 			if (!factories[type]) 
 				throw FactoryNotFound(type);
-			return factories[type]->DoCreateInput(devId,name, mode, id);
+			return factories[type]->DoCreateInput(name, mode, id);
 		}
 
 		static void Destroy() {
@@ -1098,26 +1002,12 @@ namespace mutabor {
 	
 		virtual size_t GetType() const = 0;
 
-		virtual OutputDeviceClass * DoCreateOutput() const = 0;
+		virtual OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+							   int id = -1) const = 0;
 		
-		virtual InputDeviceClass * DoCreateInput() const = 0;
-		virtual OutputDeviceClass * DoCreateOutput(int devId,
-						    const mutStringRef name, 
-						    int id = -1) const = 0;
-		
-		virtual InputDeviceClass * DoCreateInput(int devId,
-						  const mutStringRef name, 
-						  int id = -1) const = 0;
-
-		virtual OutputDeviceClass * DoCreateOutput(int devId,
-						    const mutStringRef name, 
-						    MutaborModeType mode, 
-						    int id = -1) const = 0;
-		
-		virtual InputDeviceClass * DoCreateInput(int devId,
-						  const mutStringRef name, 
-						  MutaborModeType mode, 
-						  int id = -1) const = 0;
+		virtual InputDeviceClass * DoCreateInput(const mutStringRef name, 
+							 MutaborModeType mode, 
+							 int id = -1) const = 0;
 	
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from

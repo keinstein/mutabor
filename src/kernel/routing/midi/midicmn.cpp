@@ -304,7 +304,7 @@ namespace mutabor {
 		ton_auf_kanal[channel].inkey = inkey;
 		ton_auf_kanal[channel].velocity = velocity;
 		ton_auf_kanal[channel].outkey = note;
-		ton_auf_kanal[channel].channel = r->GetId();
+		ton_auf_kanal[channel].channel = r->get_session_id();
 		ton_auf_kanal[channel].midi_channel = channel;
 		ton_auf_kanal[channel].unique_id = id;
 		ton_auf_kanal[channel].tuned_key = freq;
@@ -349,7 +349,7 @@ namespace mutabor {
 				if ( ton_auf_kanal[i].active 
 				     && ton_auf_kanal[i].inkey == inkey
 				     && ton_auf_kanal[i].unique_id == id 
-				     && ton_auf_kanal[i].channel == r->GetId() ) {
+				     && ton_auf_kanal[i].channel == r->get_session_id() ) {
 
 					ton_auf_kanal[i].active = false;
 
@@ -385,7 +385,7 @@ namespace mutabor {
 		for (int channel = 0; channel < 16; channel++)
 			if ( (ton_auf_kanal[channel].active 
 			      || Cd[channel].get_controller(midi::HOLD_PEDAL_ON_OFF)>0 ) 
-			     && ton_auf_kanal[channel].channel == route->GetId()) {
+			     && ton_auf_kanal[channel].channel == route->get_session_id()) {
 
 				TAK & tone = ton_auf_kanal[channel];
 				
@@ -658,7 +658,7 @@ namespace mutabor {
 		TRACEC;
 
 		for (int i = 0; i < 16; i++) {
-			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->GetId() )
+			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->get_session_id() )
 				NoteOff(&mut_box[r->GetBox()], ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
 
@@ -787,7 +787,7 @@ namespace mutabor {
 					AddKey(&mut_box[Box],
 					       midiCode->at(1), 
 					       MidiChannel, 
-					       route->GetId(), NULL);
+					       route->get_session_id(), NULL);
 
 				if ( route->GetOutputDevice() )
 					route->GetOutputDevice()
@@ -805,7 +805,7 @@ namespace mutabor {
 			if ( route->GetActive() )
 				DeleteKey(&mut_box[Box], midiCode->at(1), 
 					  MidiChannel, 
-					  route->GetId());
+					  route->get_session_id());
 
 			if ( route->GetOutputDevice() )
 				route->GetOutputDevice()

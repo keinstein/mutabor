@@ -71,12 +71,12 @@ void GUIRouteTest::testConnect()
 	wxWindow * parent = new wxFrame(0,wxID_ANY,_T("Test"));
 	MutRouteWnd * wnd;
 
-	out1 = DeviceFactory::CreateOutput(DTMidiFile,1,_T("testmidi_output1.mid"));
-	out2 = DeviceFactory::CreateOutput(DTMidiFile,1,_T("testmidi_output2.mid"));
+	out1 = DeviceFactory::CreateOutput(DTMidiFile,_T("testmidi_output1.mid"));
+	out2 = DeviceFactory::CreateOutput(DTMidiFile,_T("testmidi_output2.mid"));
 	r1 = RouteFactory::Create();
 	r2 = RouteFactory::Create();
-	in1 = DeviceFactory::CreateInput(DTMidiFile,1,_T("testmidi_input1.mid"));
-	in2 = DeviceFactory::CreateInput(DTMidiFile,1,_T("testmidi_input2.mid"));
+	in1 = DeviceFactory::CreateInput(DTMidiFile,_T("testmidi_input1.mid"));
+	in2 = DeviceFactory::CreateInput(DTMidiFile,_T("testmidi_input2.mid"));
 
 	DebugCheckRoutes();
  

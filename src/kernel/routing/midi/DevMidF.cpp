@@ -346,8 +346,8 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 #ifdef WX
 	wxString OutputMidiFile::TowxString() const {
 		wxString s = OutputDeviceClass::TowxString() +
-			wxString::Format(_T("\n  Name = %s\n  DevId = %d\n  Bending Range = %d\n  nKeyOn = %d"),
-					 Name.c_str(), DevId, bending_range, nKeyOn);
+			wxString::Format(_T("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d\n  Bending Range = %d\n  nKeyOn = %d"),
+					 Name.c_str(), (unsigned long)session_id, routefile_id, bending_range, nKeyOn);
 	
 		s.Printf(_T("]\n  ton_auf_kanal = [ t=%d,k=%d,b=%d"), 
 			 ton_auf_kanal[0].inkey, 
@@ -895,50 +895,17 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 	MidiFileFactory::~MidiFileFactory() {}
 
-	OutputDeviceClass * MidiFileFactory::DoCreateOutput () const
+	OutputDeviceClass * MidiFileFactory::DoCreateOutput (const mutStringRef name, 
+							     int id) const
 	{
-		return new OutputMidiFile();
+		return new OutputMidiFile(name,id);
 	}
 
-	OutputDeviceClass * MidiFileFactory::DoCreateOutput (int devId,
-						      const mutStringRef name, 
-						      int id) const
-	{
-		return new OutputMidiFile(devId,name,id);
-	}
-
-	OutputDeviceClass * MidiFileFactory::DoCreateOutput (int devId,
-						      const mutStringRef name, 
-						      MutaborModeType mode, 
-						      int id) const
-	{
- 		STUBC;
-		return NULL;
-#if 0
-		return new OutputMidiFile(devId,name,id);
-#endif
-	}
-
-
-	InputDeviceClass * MidiFileFactory::DoCreateInput () const
-		
-	{
-		return new InputMidiFile();
-	}
-
-	InputDeviceClass * MidiFileFactory::DoCreateInput (int devId,
-							   const mutStringRef name, 
-							   int id) const
-	{
-		return new InputMidiFile(devId,name,DeviceStop,id);
-	}
-
-	InputDeviceClass * MidiFileFactory::DoCreateInput (int devId,
-							   const mutStringRef name, 
+	InputDeviceClass * MidiFileFactory::DoCreateInput (const mutStringRef name, 
 							   MutaborModeType mode, 
 							   int id) const
 	{
-		return new InputMidiFile(devId,name,mode,id);
+		return new InputMidiFile(name,mode,id);
 	}
 
 }

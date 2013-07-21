@@ -31,9 +31,8 @@
 
 namespace mutabor {
 // Route ------------------------------------------------------------
+	template <> size_t idtype<RouteClass>::idpool(0);
 
-	template <class I, class O>
-	int TRouteClass<I,O>::maxRouteId = 1;
 
 	Route NullRoute(NULL); 
 
@@ -209,7 +208,7 @@ namespace mutabor {
 		int i = 0;
 		for (typename routeListType::iterator r = routeList.begin();
 		     r != routeList.end(); r++) {
-			(*r) -> Id = i++;
+			(*r) -> routefile_id = i++;
 		}
 		InputDeviceClass::InitializeIds();
 	}
@@ -225,7 +224,7 @@ namespace mutabor {
 		for (typename TRouteClass<I, O>::routeListType::iterator  
 			     route = routeList.begin();
 		     route != routeList.end(); route++) {
-			config.toLeaf(_T("Route"),(*route)->GetId());
+			config.toLeaf(_T("Route"),(*route)->get_routefile_id());
 			config.Write(_T("Input Device"), (*route)->inputid);
 			config.Write(_T("Output Device"), (*route)->outputid);
 			(*route) -> Save (config);
@@ -307,7 +306,8 @@ TRouteClass<I,O>:\n\
    userdata = %p\n\
    Out      = %p\n\
    In       = %p\n\
-   Id       = %d\n\
+   fileid   = %d\n\
+   sess.id  = %lu\n\
    inputid  = %d\n\
    outputid = %d\n\
    Box      = %d\n\
@@ -317,7 +317,7 @@ TRouteClass<I,O>:\n\
    OFrom    = %d\n\
    OTo      = %d\n\
    flags:     Active:%d, ONoDrum:%d\n\
-"),(void *)userdata,(void*)Out.get(),(void*)In.get(),Id,inputid,outputid,Box,Type,IFrom,ITo,OFrom,OTo,
+"),(void *)userdata,(void*)Out.get(),(void*)In.get(),routefile_id,(unsigned long)session_id(),inputid,outputid,Box,Type,IFrom,ITo,OFrom,OTo,
 					Active,ONoDrum);
 	}
 

@@ -653,11 +653,10 @@ namespace mutabor {
 	protected:
 		OutputMidiFile(): base() {}
 
-		OutputMidiFile(int devId, 
-			       const mutStringRef name, 
+		OutputMidiFile(const mutStringRef name, 
 			       int id = -1, 
 			       int bendingRange = 2)
-			: base(devId, name, id, bendingRange) {}
+			: base(name, id, bendingRange) {}
 	};
 
 
@@ -674,11 +673,9 @@ namespace mutabor {
 				 Tracks(),
 				 timing() { }
 
-		InputMidiFile(int devId,
-			      mutString name, 
+		InputMidiFile(mutString name, 
 			      MutaborModeType mode,
-			      int id): base(devId, 
-					    name, 
+			      int id): base(name, 
 					    mode, 
 					    id),
 				       Tracks(), 
@@ -783,26 +780,12 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+								    int id = -1) const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id = -1) const;
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
+								  mutabor::MutaborModeType mode, 
+								  int id = -1) const;
 	};
 
 

@@ -755,11 +755,10 @@ namespace mutabor {
 			bank_mode(lsb_first),
 			nKeyOn(0) { }
 
-		CommonMidiOutput(int devId, 
-				 wxString name, 
+		CommonMidiOutput(wxString name, 
 				 int id = -1, 
 				 int bendingRange = 2)
-			: base(devId, name, id),
+			: base(name, id),
 			bending_range (bendingRange), 
 			bank_mode(lsb_first),
 			nKeyOn(0)
@@ -777,14 +776,11 @@ namespace mutabor {
 		void Proceed(const std::vector<unsigned char > * midiCode, int data =0);
 
 	protected:
-		CommonMidiInput():parenttype() {}
-		CommonMidiInput(int devId, 
-				const mutStringRef name):parenttype(devId, name) {}
 
-		CommonMidiInput(int devId,
-				const mutStringRef name, 
-				MutaborModeType mode,
-				int id):parenttype(devId,name,mode,id) {}
+		CommonMidiInput(const mutStringRef name = mutEmptyString, 
+				MutaborModeType mode = DeviceStop,
+				int id = -1):parenttype(name,mode,id) {}
+
 		ChannelData Cd[16];
 		enum proceed_bool {ProceedYes,ProceedNo,ProceedElse};
 

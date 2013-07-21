@@ -67,10 +67,9 @@ namespace mutabor {
 	protected:
 		CommonFileOutputDevice(): OutputDeviceClass() {}
 
-		CommonFileOutputDevice(int devId, 
-			       const mutStringRef name, 
-			       int id = -1)
-			: OutputDeviceClass(devId, name, id) { }
+		CommonFileOutputDevice(const mutStringRef name, 
+				       int id = -1)
+			: OutputDeviceClass(name, id) { }
  	public:
 		virtual ~CommonFileOutputDevice() {};
 	
@@ -244,11 +243,9 @@ namespace mutabor {
 					 referenceTime(0),
 					 pauseTime(0) { }
 
-		CommonFileInputDevice(int devId,
-				      wxString name, 
+		CommonFileInputDevice(wxString name, 
 				      MutaborModeType mode,
-				      int id): InputDeviceClass(devId, 
-								name, 
+				      int id): InputDeviceClass(name, 
 								mode, 
 								id),
 					       timer(NULL),

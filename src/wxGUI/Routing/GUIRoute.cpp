@@ -691,100 +691,15 @@ namespace mutaborGUI {
 
 	GUIDeviceFactory::~GUIDeviceFactory() {}
 
-#if 0
-
-	OutputDeviceClass * GUIDeviceFactory::DoCreateOutput () const
-	{
-		return new GUIOutputDevice();
-	}
-
-	OutputDeviceClass * GUIDeviceFactory::DoCreateOutput (const mutStringRef name, 
-					       int id) const
-	{
-		return new GUIOutputDevice(name,id);
-	}
-
-	OutputDeviceClass * GUIDeviceFactory::DoCreateOutput (int devId,
-						      mutString name, 
-						      MutaborModeType mode, 
-						      int id) const
-	{
- 		STUBC;
-		return NULL;
-
-		GUIOutputDevice * port = new GUIOutputDevice(name,devId);
-		port->Device::SetId(id);
-		switch (mode) {
-		case DevicePause:
-		case DeviceStop:
-		case DevicePlay:
-			port -> Open() ; 
-			break;
-		case DeviceUnregistered:
-		case DeviceCompileError:
-		case DeviceTimingError:
-		default:
-			UNREACHABLEC;
-		}
-		return port;
-	}
-
-
-	InputDeviceClass * GUIDeviceFactory::DoCreateInput () const
-		
-	{
-		TRACEC;
-		return new GUIInputDevice();
-	}
-
-	InputDeviceClass * GUIDeviceFactory::DoCreateInput(const mutStringRef name, 
-					    int id) const
-	{
-		TRACEC;
-		return new GUIInputDevice(name,id);
-	}
-
-	InputDeviceClass * GUIDeviceFactory::DoCreateInput (int devId,
-					   mutString name, 
-					   MutaborModeType mode, 
-					   int id) const
-	{
- 		STUBC;
-		return NULL;
-
-		return new GUIInputDevice(name,devId);
-	}
-#endif
-
-
-
 
 	GUIMidiPortFactory::~GUIMidiPortFactory() {}
 
 
-		
-
-	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput () const
+	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(const mutStringRef name, 
+									int id) const
 	{
 		TRACEC;
-		GUIOutputMidiPort * port = new GUIOutputMidiPort();
-		TRACEC;
-		if (port) {
-			OutputDeviceClass * dev = port->GetDevice();
-			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
-				dev->Open();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(int devId,
-							  const mutStringRef name, 
-							  int id) const
-	{
-		TRACEC;
-		GUIOutputMidiPort * port = new GUIOutputMidiPort(devId,name,id);
+		GUIOutputMidiPort * port = new GUIOutputMidiPort(name,id);
 		TRACEC;
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
@@ -796,56 +711,14 @@ namespace mutaborGUI {
 			return NULL;
 	}
 
-	mutabor::OutputDeviceClass *  GUIMidiPortFactory::DoCreateOutput (int devId,
-							   const mutStringRef name, 
-							   MutaborModeType mode, 
-							   int id) const
-	{
-		STUBC;
-		return NULL;
-#if 0
-		GUIOutputMidiPort * port = new GUIOutputMidiPort(name,devId);
-		port->MidiPort::SetId(id);
-		switch (mode) {
-		case MutaborMidiPortPause:
-		case MutaborMidiPortStop:
-		case MutaborMidiPortPlay:
-			port -> Open() ; 
-			break;
-		case MutaborMidiPortUnregistered:
-		case MutaborMidiPortCompileError:
-		case MutaborMidiPortTimingError:
-		default:
-			UNREACHABLEC;
-		}
-		return port;
-#endif
-	}
 
-	mutabor::InputDeviceClass * GUIMidiPortFactory::DoCreateInput () const
-		
-	{
-		TRACEC;
-		GUIInputMidiPort * port = new GUIInputMidiPort();
-		TRACEC;
-		if (port) { 
-			InputDeviceClass * dev = port->GetDevice();
-			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
-				dev->Open();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (int devId,
-								const mutStringRef name, 
-								int id) const
+	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (const mutStringRef name, 
+									MutaborModeType mode, 
+									int id) const
 	{
 		TRACEC;
 		GUIInputMidiPort * port = 
-			new GUIInputMidiPort(devId,name,
-					     mutabor::DeviceStop,id);
+			new GUIInputMidiPort(name,mode,id);
 		TRACEC;
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
@@ -855,15 +728,6 @@ namespace mutaborGUI {
 			return dev;
 		} else 
 			return NULL;
-	}
-
-	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (int devId,
-							 const mutStringRef name, 
-							 MutaborModeType mode, 
-							 int id) const
-	{
- 		STUBC;
-		return NULL;
 	}
 
 	MutOutputDeviceShape * 
@@ -904,10 +768,11 @@ namespace mutaborGUI {
 
 	GUIMidiFileFactory::~GUIMidiFileFactory() {}
 
-	mutabor::OutputDeviceClass *  GUIMidiFileFactory::DoCreateOutput () const
+	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (const mutStringRef name, 
+									 int id) const
 	{
 		TRACEC;
-		GUIOutputMidiFile * port = new GUIOutputMidiFile();
+		GUIOutputMidiFile * port = new GUIOutputMidiFile(name,id);
 		TRACEC;
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
@@ -919,71 +784,13 @@ namespace mutaborGUI {
 			return NULL;
 	}
 
-	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (int devId,
-							   const mutStringRef name, 
-							   int id) const
-	{
-		TRACEC;
-		GUIOutputMidiFile * port = new GUIOutputMidiFile(devId,name,id);
-		TRACEC;
-		if (port)  {
-			OutputDeviceClass * dev = port->GetDevice();
-			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
-				dev->Open();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id) const
-	{
- 		STUBC;
-		return NULL;
-#if 0
-		GUIOutputMidiFile * port = new GUIOutputMidiFile(name,devId);
-		port->MidiFile::SetId(id);
-		switch (mode) {
-		case MutaborMidiFilePause:
-		case MutaborMidiFileStop:
-		case MutaborMidiFilePlay:
-			port -> Open() ; 
-			break;
-		case MutaborMidiFileUnregistered:
-		case MutaborMidiFileCompileError:
-		case MutaborMidiFileTimingError:
-		default:
-			UNREACHABLEC;
-		}
-		return port;
-#endif
-	}
-
-
-	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput () const
-		
-	{
-		TRACEC;
-		GUIInputMidiFile * port = new GUIInputMidiFile();
-		TRACEC;
-		if (port)  {
-			InputDeviceClass *dev = port->GetDevice();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (int devId,
-							   const mutStringRef name, 
-							   int id) const
+	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (const mutStringRef name, 
+								       mutabor::MutaborModeType mode, 
+								       int id) const
 	{
 		TRACEC;
 		GUIInputMidiFile * port = 
-			new GUIInputMidiFile(devId,name,
-					     mutabor::DeviceStop,id);
+			new GUIInputMidiFile(name,mode,id);
 		TRACEC;
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
@@ -994,16 +801,6 @@ namespace mutaborGUI {
 		} else 
 			return NULL;
 	}
-
-	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id) const
-	{
- 		STUBC;
-		return NULL;
-	}
-
 
 	MutInputDeviceShape * 
 	GUIMidiFileFactory::DoCreateShape(mutabor::InputDevice & d,
@@ -1034,10 +831,11 @@ namespace mutaborGUI {
 
 	GUIGisFactory::~GUIGisFactory() {}
 
-	mutabor::OutputDeviceClass *GUIGisFactory::DoCreateOutput () const
+	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(const mutStringRef name, 
+								   int id) const
 	{
 		TRACEC;
-		GUIOutputGis * port = new GUIOutputGis();
+		GUIOutputGis * port = new GUIOutputGis(name,id);
 		TRACEC;
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
@@ -1049,73 +847,13 @@ namespace mutaborGUI {
 			return NULL;
 	}
 
-	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(int devId,
-						const mutStringRef name, 
-						int id) const
+	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (const mutStringRef name, 
+								  mutabor::MutaborModeType mode, 
+								  int id) const
 	{
 		TRACEC;
-		GUIOutputGis * port = new GUIOutputGis(devId,name,id);
-		TRACEC;
-		if (port)  {
-			OutputDeviceClass * dev = port->GetDevice();
-			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
-				dev->Open();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput (int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id) const
-	{
- 		STUBC;
-		return NULL;
-#if 0
-		GUIOutputGis * port = new GUIOutputGis(name,devId);
-		port->Gis::SetId(id);
-		switch (mode) {
-		case MutaborGisPause:
-		case MutaborGisStop:
-		case MutaborGisPlay:
-			port -> Open() ; 
-			break;
-		case MutaborGisUnregistered:
-		case MutaborGisCompileError:
-		case MutaborGisTimingError:
-		default:
-			UNREACHABLEC;
-		}
-		return port;
-#endif
-	}
-
-
-	mutabor::InputDeviceClass *  GUIGisFactory::DoCreateInput () const
-		
-	{
-		TRACEC;
-		GUIInputGis * port = new GUIInputGis();
-		TRACEC;
-		if (port)  {
-			InputDeviceClass * dev = port->GetDevice();
-			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
-				dev->Open();
-			return dev;
-		} else 
-			return NULL;
-	}
-
-	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (int devId,
-					       const mutStringRef name, 
-					       int id) const
-	{
-		TRACEC;
-		GUIInputGis * port = new GUIInputGis(devId,name,
-						     mutabor::DeviceStop,
+		GUIInputGis * port = new GUIInputGis(name,
+						     mode,
 						     id);
 		TRACEC;
 		if (port)  {
@@ -1126,15 +864,6 @@ namespace mutaborGUI {
 			return dev;
 		} else 
 			return NULL;
-	}
-
-	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (int devId,
-					       const mutStringRef name, 
-					       mutabor::MutaborModeType mode, 
-					       int id) const
-	{
- 		STUBC;
-		return NULL;
 	}
 
 	MutInputDeviceShape * 

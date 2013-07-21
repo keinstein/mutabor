@@ -67,9 +67,8 @@ namespace mutabor {
 				Head = 0;
 			}
 
-		OutputGis(int devId,
-			  const mutStringRef name, 
-			  int id = -1) : OutputDeviceClass(devId, name, id)
+		OutputGis(const mutStringRef name, 
+			  int id = -1) : OutputDeviceClass(name, id)
 			{
 				Head = new GisWriteHead(0, name);
 			}
@@ -214,55 +213,19 @@ namespace mutabor {
 		friend class GisFactory;
 
 	protected:
-		wxString Id;
 		GisToken *Data;
 		GisReadArtHead *Head;
 
-/*
-		class GisTimer : public wxTimer
-		{
-			InputGis * file;
-                
-		public:
-			GisTimer(InputGis * f) : wxTimer(),file(f)
-				{}
-
-			void Notify()
-				{
-					file->IncDelta();
-				}
-		};
-
-		GisTimer timer;
-
-
-*/
-		InputGis()
-			: CommonFileInputDevice(),Id()
-			{
-				Head = 0;
-				Data = 0;
-			}
-
-		InputGis(int devId, 
-			 const mutStringRef name = mutEmptyString, 
+		InputGis(const mutStringRef name = mutEmptyString, 
 			 mutabor::MutaborModeType mode
 			 = mutabor::DeviceStop, 
 			 int id = -1)
-			: CommonFileInputDevice(devId,name,mode,id),Id(name)
+			: CommonFileInputDevice(name,mode,id)
 			{
 				Head = 0;
 				Data = 0;
 			}
 
-/*
-		InputGis(const mutStringRef name, int id):CommonFileInputDevice(id,name),
-							 Id(name)
-			{
-				Head = 0;
-				Data = 0;
-			}
-*/	
 	public:
 		typedef CommonFileInputDevice base;
 
@@ -315,7 +278,7 @@ namespace mutabor {
 			return InputDeviceClass::TowxString() +
 				wxString::Format(_T("\n\
   Id: %s\n  minDelta = %ld\n"),
-						 Id.c_str(),
+						 Name.c_str(),
 						 minDelta);
 		}
 #endif
@@ -342,26 +305,12 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+								    int id = -1) const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     mutabor::MutaborModeType mode, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-							   const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
-							   int id = -1) const;
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
+								  mutabor::MutaborModeType mode, 
+								  int id = -1) const;
 	};
 
 }

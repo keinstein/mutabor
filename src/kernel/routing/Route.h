@@ -66,6 +66,22 @@ namespace mutaborGUI {
 }
 
 namespace mutabor {
+	template<class T>
+	class idtype {
+	public:
+		typedef T referenceing_type;
+		idtype():id(idpool++) {}
+
+		size_t operator ()() const { return id; }
+		operator size_t () const { return id; }
+		operator int () const { return (int) id; }
+	protected:
+		const size_t id;
+		static size_t idpool;
+	};
+
+
+
         /// Type of route input filter
 	enum RouteType
 	{
@@ -141,10 +157,6 @@ namespace mutabor {
 		 */
 		virtual void Load(tree_storage & config);
 	
-		static unsigned int NextRouteId() {
-			return maxRouteId++;
-		}
-
 
 		char Check(int i) {
 			return (IFrom <= i && i <= ITo);
@@ -167,7 +179,7 @@ namespace mutabor {
 			if (Active) {
 				// global C part
 				::AddKey(&mut_box[GetBox()],
-						key, make_unique, GetId(), userdata);
+						key, make_unique, session_id, userdata);
 			}
 			if (Out) {
 				Out->NoteOn(&mut_box[GetBox()],
@@ -183,7 +195,7 @@ namespace mutabor {
 				DeleteKey(&mut_box[GetBox()], 
 					  key, 
 					  make_unique, 
-					  GetId());
+					  session_id);
 			}
 			if (Out) {
 				Out->NoteOff(&mut_box[Box], 
@@ -226,7 +238,7 @@ namespace mutabor {
 		}
 
 		void Controller(int controller, int value) {
-			if (Out) Out->Controller(GetId(), controller, value);
+			if (Out) Out->Controller(session_id, controller, value);
 		}
 
 		/// add a new output device
@@ -345,10 +357,14 @@ namespace mutabor {
 			Next = route;
 		}
 #endif	
-		int GetId() const {
-			return Id;
+		int get_routefile_id () const {
+			return routefile_id;
 		}
 	
+		size_t get_session_id () const {
+			return session_id;
+		}
+
 		static const  routeListType & GetRouteList() {
 			return routeList;
 		}
@@ -420,7 +436,8 @@ namespace mutabor {
 		// only to not forget about routes. These references must not be counted
 //		Route globalNext;
 		static routeListType routeList;
-		int Id;
+		idtype<TRouteClass<I,O> > session_id;
+		int routefile_id;
 		int inputid;
 		int outputid;
 		int Box;
@@ -431,7 +448,6 @@ namespace mutabor {
 		bool Active;
 		int OFrom, OTo;
 		bool ONoDrum;
-		static int maxRouteId;
 
 		// functions
 		TRouteClass():

@@ -410,6 +410,7 @@ OutputMidiPort:\n\
 #ifdef RTMIDI
 		hMidiIn->closePort();
 		delete hMidiIn;
+		hMidiIn = NULL;
 #else
 		midiInStop(hMidiIn);
 		midiInReset(hMidiIn);
@@ -500,22 +501,15 @@ InputMidiPort:\n\
 
 		
 
-	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput () const
+	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(const mutStringRef name, 
+								     int id) const
 	{
-		OutputMidiPort * port = new OutputMidiPort();
+		OutputMidiPort * port = new OutputMidiPort(name,id);
 		if (!port) throw DeviceNotCreated();
 		return port;
 	}
 
-	mutabor::OutputDeviceClass * MidiPortFactory::DoCreateOutput(int devId,
-							  const mutStringRef name, 
-							  int id) const
-	{
-		OutputMidiPort * port = new OutputMidiPort(devId,name,id);
-		if (!port) throw DeviceNotCreated();
-		return port;
-	}
-
+/*
 	mutabor::OutputDeviceClass *  MidiPortFactory::DoCreateOutput (int devId,
 							   const mutStringRef name, 
 							   MutaborModeType mode, 
@@ -538,32 +532,13 @@ InputMidiPort:\n\
 		}
 		return port;
 	}
+*/
 
-	mutabor::InputDeviceClass * MidiPortFactory::DoCreateInput () const
-		
+	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (const mutStringRef name, 
+								     MutaborModeType mode, 
+								     int id) const
 	{
-		InputMidiPort * port = new InputMidiPort();
-		if (!port) throw DeviceNotCreated();
-		return port;
-	}
-
-	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (int devId,
-								const mutStringRef name, 
-								int id) const
-	{
-		InputMidiPort * port = 
-			new InputMidiPort(devId,name,
-					  mutabor::DeviceStop,id);
-		if (!port) throw DeviceNotCreated();
-		return port;
-	}
-
-	mutabor::InputDeviceClass *  MidiPortFactory::DoCreateInput (int devId,
-							 const mutStringRef name, 
-							 MutaborModeType mode, 
-							 int id) const
-	{
- 		InputMidiPort * port = new InputMidiPort(devId,name,mode,id);
+ 		InputMidiPort * port = new InputMidiPort(name,mode,id);
 		if (!port) throw DeviceNotCreated();
 		return port;
 	}

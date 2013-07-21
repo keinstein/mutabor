@@ -330,6 +330,8 @@ namespace mutabor {
 				Open();
 			}
 		}
+		
+		int GetDevId() { return DevId; }
 
 		virtual DevType GetType() const
 			{
@@ -353,8 +355,7 @@ namespace mutabor {
 		virtual int GetMinChannel() const { return 0; }
 	
 	protected:
-
-
+		int DevId; //< Id of the hardware MIDI device
 #if 0
 #ifdef RTMIDI
 		RtMidiOut *hMidiOut;
@@ -363,13 +364,11 @@ namespace mutabor {
 #endif
 #endif
 		
-		OutputMidiPort():base() { }
-
-		OutputMidiPort(int devId, 
-			       wxString name, 
+		OutputMidiPort(wxString name = mutEmptyString, 
 			       int id = -1, 
 			       int bendingRange = 2):
-			base(devId, name, id, bendingRange) {
+			base(name, id, bendingRange),
+			DevId(-1) {
 			TRACEC;
 		}
 	};
@@ -380,20 +379,6 @@ namespace mutabor {
 	{
 		friend class MidiPortFactory;
 		typedef CommonMidiInput<InputDeviceClass> parentType;
-	protected:
-		InputMidiPort *NextMidiPort;
-
-		InputMidiPort() : parentType(), NextMidiPort (NULL) { }
-                       
-		InputMidiPort(int devId, 
-			      const mutStringRef name,
-			      MutaborModeType mode,
-			      int id):
-			parentType (devId,name,mode,id),
-			NextMidiPort(NULL) {}
-		InputMidiPort(const mutStringRef name, int devId)
-			: parentType(devId, name), NextMidiPort (NULL) {}
-
 	public:
 		virtual ~InputMidiPort() {}
 	
@@ -517,7 +502,10 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-	
+
+
+	protected:
+		int DevId; //< Id of the hardware MIDI device;
 	
 #ifdef RTMIDI
 		RtMidiIn *hMidiIn;
@@ -526,7 +514,13 @@ namespace mutabor {
 		HMIDIIN hMidiIn;
 
 #endif
-	private:
+		InputMidiPort(const mutStringRef name = mutEmptyString,
+			      MutaborModeType mode = DeviceStop,
+			      int id = -1):
+			parentType (name,mode,id),
+			DevId(-1),
+			hMidiIn (NULL) {}
+
 
 	};
 
@@ -543,24 +537,10 @@ namespace mutabor {
 			}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput() const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput() const;
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-							     const mutStringRef name, 
-							     int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-								  const mutStringRef name, 
-								  int id = -1) const;
-
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(int devId,
-								    const mutStringRef name, 
-								    mutabor::MutaborModeType mode, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
 								    int id = -1) const;
 		
-		virtual mutabor::InputDeviceClass * DoCreateInput(int devId,
-								  const mutStringRef name, 
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
 								  mutabor::MutaborModeType mode, 
 								  int id = -1) const;
 	};

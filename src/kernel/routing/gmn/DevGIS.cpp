@@ -327,7 +327,7 @@ namespace mutabor {
 			Head = 0;
 		}
 
-		Head = new GisReadArtHead(NULL, Data, Id);
+		Head = new GisReadArtHead(NULL, Data, Name);
 
 		DEBUGLOG (gmnfile, _T("Head = %p"),(void*)Head);
 		Head->Box = 0; /// hier muﬂ noch was hin
@@ -441,10 +441,10 @@ namespace mutabor {
 			/** \todo provide working GIS note id. Currently Mutabor outputs only MIDI so it's no problem */
 			if ( turn != 1 && route->GetActive() ) {
 				if ( turn )
-					DeleteKey(&mut_box[Box], Key, 0, route->GetId());
+					DeleteKey(&mut_box[Box], Key, 0, route->get_session_id());
 				else
 
-					AddKey(&mut_box[Box], Key, 0, route->GetId(), NULL);
+					AddKey(&mut_box[Box], Key, 0, route->get_session_id(), NULL);
 			}
 
 			if ( turn != 2 && route->GetOutputDevice() ) {
@@ -480,8 +480,8 @@ namespace mutabor {
 		mutASSERT(h);
 		mutASSERT(h->Cursor);
 		DEBUGLOG (gmnfile, _T("h->Id = '%s' (%d), Id = '%s' (%d)"),
-			  (h->Id).c_str(),(int)(h->Id).Len(), Id.c_str(),(int) Id.Len());
-		mutChar staff = h->Id[mutLen(Id)];
+			  (h->Id).c_str(),(int)(h->Id).Len(), Name.c_str(),(int) Name.Len());
+		mutChar staff = h->Id[mutLen(Name)];
 		bool DidOut = false;
 		DEBUGLOG (gmnfile, _T("staff: %d, DidOut: %d"),staff, DidOut);
 
@@ -725,63 +725,19 @@ namespace mutabor {
 
 	GisFactory::~GisFactory() {}
 
-	OutputDeviceClass * GisFactory::DoCreateOutput () const
+	OutputDeviceClass * GisFactory::DoCreateOutput (const mutStringRef name, 
+							int id) const
 	{
-		return new OutputGis();
-	}
-
-	OutputDeviceClass * GisFactory::DoCreateOutput (int devId,
-						 const mutStringRef name, 
-						 int id) const
-	{
-		return new OutputGis(devId,name,id);
-	}
-
-	OutputDeviceClass * GisFactory::DoCreateOutput (int devId,
-						 const mutStringRef name, 
-						 MutaborModeType mode, 
-						 int id) const
-	{
- 		STUBC;
-		return NULL;
-
-		OutputGis * dev = new OutputGis(devId, name,id);
-		switch (mode) {
-		case DevicePause:
-		case DeviceStop:
-		case DevicePlay:
-			dev -> Open() ; 
-			break;
-		case DeviceUnregistered:
-		case DeviceCompileError:
-		case DeviceTimingError:
-		default:
-			;
-		}
-		return dev;
+		return new OutputGis(name,id);
 	}
 
 
-	InputDeviceClass * GisFactory::DoCreateInput () const
-		
-	{
-		return new InputGis();
-	}
 
-	InputDeviceClass * GisFactory::DoCreateInput (int devId,
-					       const mutStringRef name, 
-					       int id) const
+	InputDeviceClass * GisFactory::DoCreateInput (const mutStringRef name, 
+						      MutaborModeType mode, 
+						      int id) const
 	{
-		return new InputGis(devId, name, DeviceStop,id);
-	}
-
-	InputDeviceClass * GisFactory::DoCreateInput (int devId,
-					   const mutStringRef name, 
-					   MutaborModeType mode, 
-					   int id) const
-	{
-		InputGis * dev = new InputGis(devId,name,mode,id);
-		/*
+		InputGis * dev = new InputGis(name,mode,id);
 		switch (mode) {
 		case DevicePause:
 		case DeviceStop:
@@ -797,7 +753,6 @@ namespace mutabor {
 		default:
 			UNREACHABLEC;
 		}
-		*/
 		return dev;
 	}
 

@@ -208,7 +208,6 @@ namespace mutabor {
 		OFrom = oFrom;
 		OTo = oTo;
 		ONoDrum = oNoDrum;
-		Id = NextRouteId();
 	}
 
 	template <class I, class O>

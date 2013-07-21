@@ -67,10 +67,9 @@ class  midicmnOutputDevice:public mutabor::CommonMidiOutput<mutabor::DebugMidiOu
 public:
 	typedef mutabor::CommonMidiOutput<mutabor::DebugMidiOutputProvider,mutabor::OutputDeviceClass> base;
 
-	midicmnOutputDevice(int devId, 
-			    wxString name, 
+	midicmnOutputDevice(wxString name, 
 			    int id = -1, 
-			    int bendingRange = 2):base(devId,name,id,bendingRange) {}
+			    int bendingRange = 2):base(name,id,bendingRange) {}
 	~midicmnOutputDevice() {}
 	mutabor::DebugMidiOutputProvider & getOut() { return Out; }
 
@@ -136,8 +135,7 @@ class  midicmnInputDevice:public mutabor::CommonMidiInput<mutabor::InputDeviceCl
 public:
 	typedef mutabor::CommonMidiInput<mutabor::InputDeviceClass> base;
 
-	midicmnInputDevice(int devId = -1, 
-			    wxString name = wxEmptyString):base(devId,name) {}
+	midicmnInputDevice( wxString name = wxEmptyString):base(name) {}
 	~midicmnInputDevice() {}
 
 // fix pure virtual functions:

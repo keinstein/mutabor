@@ -180,7 +180,6 @@ namespace compat30 {
 			DEBUGLOG2(routing,_T("Name = '%s'"),(wxString(Name).c_str()));
 			OutputDevice Out = 
 				DeviceFactory::CreateOutput(Str2DT(muT(Type)), 
-							    DevId,
 							    Name);
 			
 			switch (Str2DT(muT(Type))) {
@@ -192,8 +191,10 @@ namespace compat30 {
 						dynamic_cast<OutputMidiPort *>(Out.get());
 					if (!dev) 
 						UNREACHABLE;
-					else 
+					else {
+						dev -> SetDevId(DevId);
 						dev -> SetBendingRange (BendingRange);
+					}
 				}
 				break;
 			case DTMidiFile:
@@ -254,8 +255,12 @@ namespace compat30 {
 			DEBUGLOG2(routing,_T("%d input parameters read: Type = '%s', Name = '%s', DevId = %d"), test, Type, Name, DevId);
 			InputDevice In = 
 				DeviceFactory::CreateInput(Str2DT(muT(Type)), 
-							   DevId, 
 							   (mutString)Name);
+
+			switch (Str2DT(muT(Type))) {
+			case DTMidiPort:
+				static_cast<InputMidiPort *>(In.get()) -> SetDevId(DevId);
+			}
 			GETLINE;
 			DEBUGLOG2(routing,_T("+%s"),s.c_str());
 			
@@ -359,7 +364,7 @@ namespace compat30 {
 				if (MidiOut)
 					config << wxString::Format(_T("  MIDIPORT %s %d %d\n"),
 								   sName.c_str(), 
-								   (*Out)->Device::GetId(),
+								   (*Out)->get_routefile_id(),
 								   MidiOut->GetBendingRange());
 				else 
 					UNREACHABLE;
@@ -417,7 +422,8 @@ namespace compat30 {
 					break;
 				
 				case DTMidiPort:
-				  config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), (*In)->GetDevId());
+				  config << wxString::Format(_T("  MIDIPORT %s %d\n"), sName.c_str(), 
+							     static_cast<InputMidiPort *>((*In).get())->GetDevId());
 					
 					break;
 				
@@ -438,7 +444,7 @@ namespace compat30 {
 			     R!= routes.end(); R++) {
 				Device * dev = (*R)->GetOutputDevice().get();
 				int OutNr;
-				OutNr = (dev ? dev->GetId(): -1);
+				OutNr = (dev ? dev->get_routefile_id(): -1);
 				config << wxT("    ") << RTName[(*R)->GetType()]  <<
 					wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
 							 (*R)->GetInputFrom(), 
