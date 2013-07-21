@@ -12,6 +12,8 @@ TOOLBARICONS = \
 	edit-paste \
 	edit-undo \
 	edit-redo \
+	go-up \
+	go-down \
 	RouteLoad \
 	RouteSave \
 	InDevPlay \
