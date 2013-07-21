@@ -79,6 +79,16 @@ namespace mutaborGUI {
 // declarations
 //============================================================================
 
+/* wingdi.h defines ERROR to 0 and RGN_ERROR to ERROR
+ * we clean up a little bit, here.
+ * see also https://github.com/reorg/pg_repack/tree/master/msvc
+ */
+#ifdef ERROR
+#undef ERROR
+#undef RGN_ERROR
+#define RGN_ERROR 0
+#endif
+
 #define DEFAULT_LANGUAGE _("<default>")
 
 #define PAGE_COMMON _("Common")
