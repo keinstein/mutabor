@@ -116,6 +116,12 @@ namespace mutaborGUI {
 			case mutabor::DevicePause:
 				retval = Pause;
 				break;
+			case mutabor::DeviceUnregistered:
+			case mutabor::DeviceStop:
+			case mutabor::DeviceCompileError:
+			case mutabor::DeviceTimingError:
+			default:
+				break;
 			}
 		}
 		return retval;
