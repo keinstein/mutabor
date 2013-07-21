@@ -31,6 +31,7 @@
 #include <iostream>
 
 #include "wx/tokenzr.h"
+#include "wx/log.h"
 
 #include "src/wxGUI/MutTextBox.h"
 #include "src/wxGUI/MutFrame.h"

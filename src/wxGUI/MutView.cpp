@@ -177,7 +177,11 @@ namespace mutaborGUI {
 		if (textsw) {
 			mutASSERT(GetDocument());
 			wxString name;
+#if wxCHECK_VERSION(2,9,0)
+			name = GetDocument()->GetUserReadableName();
+#else
 			GetDocument()->GetPrintableName(name);
+#endif
 			return new MutEditPrint(this,textsw,name);
 		} else {
 			return wxView::OnCreatePrintout();

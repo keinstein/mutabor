@@ -61,6 +61,7 @@
 
 #include "wx/toolbar.h"
 #include "wx/image.h"
+#include "wx/log.h"
 
 #if 0
 #include "bitmaps/new.xpm"
