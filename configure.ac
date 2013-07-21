@@ -243,6 +243,7 @@ AC_PROG_YACC
 LT_INIT
 AC_PROG_INSTALL
 AC_PROG_LN_S
+AC_PROG_MKDIR_P
 AC_PATH_PROG(GIT,git)
 AS_IF(test -n "$GIT",
 	   tmpval=`$GIT --describe --tags 2>/dev/null`
