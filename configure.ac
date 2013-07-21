@@ -548,6 +548,7 @@ AC_CHECK_HEADERS_ONCE([limits.h stddef.h math.h netinet/in.h sys/time.h malloc.h
 AC_LANG_PUSH(C++)
 dnl AC_CHECK_HEADERS_ONCE is too restricted to check for C++ headers
 AC_CHECK_HEADERS([FlexLexer.h])
+AM_CONDITIONAL(COND_INTERNAL_FLEXLEXER,test "$ac_cv_header_FlexLexer_h" = "no" )
 AC_LANG_POP(C++)
 ac_includes_default="$ac_includes_default 
 #if HAVE_MALLOC_H

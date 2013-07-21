@@ -16,6 +16,10 @@ AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=itemset
 EXTRA_PROGRAMS = 
 
+if COND_INTERNAL_FLEXLEXER
+AM_CXXFLAGS += -I$(top_srcdir)/lib/includes/flex
+endif
+
 BUILT_SOURCES = \
 	$(top_srcdir)/src/xrc/wxresource.h \
 	$(top_srcdir)/osdep/win/Mutabor.nsi

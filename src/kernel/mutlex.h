@@ -56,7 +56,7 @@
 #ifdef HAVE_FLEXLEXER_H
 #include <FlexLexer.h>
 #else
-#include "lib/includes/FlexLexer.h"
+#include "FlexLexer.h"
 #endif
 #endif
 
