@@ -97,7 +97,7 @@
 
 
 /* Line 371 of yacc.c  */
-#line 101 "../../../mutabor-git/src/kernel/mut.cc"
+#line 101 "src/kernel/mut.cc"
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -117,8 +117,8 @@
 
 /* In a future release of Bison, this section will be replaced
    by #include "y.tab.h".  */
-#ifndef YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
+#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -201,7 +201,7 @@ typedef union YYSTYPE
 
 
 /* Line 387 of yacc.c  */
-#line 205 "../../../mutabor-git/src/kernel/mut.cc"
+#line 205 "src/kernel/mut.cc"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -237,12 +237,12 @@ int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED  */
+#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 246 "../../../mutabor-git/src/kernel/mut.cc"
+#line 246 "src/kernel/mut.cc"
 
 #ifdef short
 # undef short
@@ -2997,7 +2997,7 @@ yyreduce:
 
 
 /* Line 1787 of yacc.c  */
-#line 3001 "../../../mutabor-git/src/kernel/mut.cc"
+#line 3001 "src/kernel/mut.cc"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

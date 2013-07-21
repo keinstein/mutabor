@@ -540,7 +540,7 @@ namespace mutaborGUI {
 			}
 			length = lexer.YYLeng();
 			DEBUGLOG(editlexer,_T("flex style %d for %d chars: %s"),
-				 style, length, wxString::FromUTF8(lexer.YYText(), length));
+				 style, length, ((wxString::FromUTF8(lexer.YYText(), length)).c_str()));
 			
 			laststyled = SetStyling(style, laststyled, length);
 			// updating lines

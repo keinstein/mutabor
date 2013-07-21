@@ -77,7 +77,7 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane)
 	plane->next = NULL;
 }
 
-
+#ifdef DEBUG
 void mutabor_check_key_count(mutabor_box_type * box) {
 	static bool checking = false;
 	if (checking) return;
@@ -99,4 +99,5 @@ void mutabor_check_key_count(mutabor_box_type * box) {
 	checking = false;
 }
 
+#endif
 ///\}

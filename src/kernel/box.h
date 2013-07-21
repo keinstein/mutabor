@@ -149,7 +149,7 @@ void mutabor_initialize_keyplane(mutabor_key_index_type * plane);
 #ifdef DEBUG
 void mutabor_check_key_count(mutabor_box_type * box);
 #else
-inline mutabor_check_key_count(mutabor_box_type * box) {}
+inline void mutabor_check_key_count(mutabor_box_type * box) {}
 #endif
 
 inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {

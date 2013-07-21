@@ -69,7 +69,7 @@ namespace mutaborGUI {
 		StatusBar(wxWindow* parent, 
 			  wxWindowID id = wxID_ANY, 
 			  long style = wxST_SIZEGRIP, 
-			  const wxString& name = "statusBar"):wxStatusBar(),
+			  const wxString& name = _T("statusBar")):wxStatusBar(),
 							      insertStatus(NULL),
 							      active(NULL),
 							      play(NULL),
@@ -81,7 +81,7 @@ namespace mutaborGUI {
 		bool Create(wxWindow* parent, 
 			    wxWindowID id = wxID_ANY, 
 			    long style = wxST_SIZEGRIP, 
-			    const wxString& name = "statusBar") {
+			    const wxString& name = _T("statusBar")) {
 			StatusBarBitmaps::Init();
 			bool retval = wxStatusBar::Create (parent,id,style,name);
 			if (!retval) return false;
@@ -110,9 +110,9 @@ namespace mutaborGUI {
 			
 			bar -> line = line;
 			bar -> column = column;
-			wxString tmp = "";
+			wxString tmp = _T("");
 			if (line >= 0) tmp << line;
-			if (column >= 0) tmp << ":" << column;
+			if (column >= 0) tmp << _T(":") << column;
 			bar->SetStatusText(tmp,StatusbarLineNo);
 		}
 

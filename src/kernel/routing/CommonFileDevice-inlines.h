@@ -93,7 +93,7 @@ namespace mutabor {
 	inline wxString CommonFileOutputDevice::TowxString() const {
 		wxString s = OutputDeviceClass::TowxString() +
 			wxString::Format(_T("\n  Name = %s\n  session_id = %lu\n  routefile_id = %d"), 
-					 Name.c_str(), (unsigned long)session_id, routefile_id);
+					 Name.c_str(), (unsigned long)session_id(), routefile_id);
 		return s;
 	}
 #endif
