@@ -2,39 +2,22 @@
  ***********************************************************************
  * abstract class for tree like storage
  *
- * $Id: treestorage.h,v 1.5 2011/09/27 20:13:21 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.5 $
  * \license GPL
  *
- * $Log: treestorage.h,v $
- * Revision 1.5  2011/09/27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.4  2011-06-23 07:41:30  keinstein
- * fix compile errors
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.3  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:45  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.3  2010-09-29 15:06:40  keinstein
- * Reset config before saving routing information and fix two bugs concerned with the deletion of boxes
- *
- * Revision 1.1.2.2  2010-09-15 17:58:01  keinstein
- * old configuration can be loaded again.
- *
- * Revision 1.1.2.1  2010-08-10 16:33:37  keinstein
- * added simple wrapper for config and XML like files
- *
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
