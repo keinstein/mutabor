@@ -261,6 +261,9 @@ AS_IF(test -z "$PERL",
 	     $PACKAGE_BUGREPORT 
 	  please.
 ]))
+
+AC_PATH_PROG(INKSCAPE,inkscape)
+AM_CONDITIONAL(COND_INKSCAPE, test -n "$INKSCAPE")
 dnl this test must be implemented if necessary
 AC_SUBST(SHUFFLE,["sort -R"])
 
@@ -751,6 +754,8 @@ src/xrc/Makefile
 src/xrc/tests/Makefile
 lib/Makefile
 lib/missfunc/Makefile
+Images/Makefile
+Images/Icons/png/16x16/Makefile
 osdep/macosx/Info.plist
 osdep/win/Mutabor.nsi
 doc/Makefile

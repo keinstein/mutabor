@@ -1,0 +1,1 @@
+SUBDIRS = Icons/png/16x16

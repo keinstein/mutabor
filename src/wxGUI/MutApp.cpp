@@ -1021,13 +1021,17 @@ namespace mutaborGUI {
 		const wxLocale * m_locale = wxGetLocale();
 		wxStandardPathsBase & sp = wxStandardPaths::Get();
 		wxString localename = m_locale->GetCanonicalName();
-		wxFileName rcname(sp.GetLocalizedResourcesDir(localename),file);
+		wxFileName relativename(file);
+		wxFileName rcname(relativename);
+		rcname.MakeAbsolute(sp.GetLocalizedResourcesDir(localename));
 		DEBUGLOGTYPE(other,MutApp,_T("Trying do load resources...\n%s\n%s"),rcname.GetFullPath().c_str(),sp.GetResourcesDir().c_str());
 		if (!rcname.IsFileReadable()) {
-			rcname.SetPath(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
+			rcname = relativename;
+			rcname.MakeAbsolute(sp.GetLocalizedResourcesDir(localename.BeforeFirst(_T('_'))));
 			DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
 			if (!rcname.IsFileReadable()) {
-				rcname.SetPath(sp.GetResourcesDir());
+				rcname = relativename;
+				rcname.MakeAbsolute(sp.GetResourcesDir());
 				DEBUGLOGTYPE(other,MutApp,_T("Trying %s"),rcname.GetFullPath().c_str());
 			}
 		}

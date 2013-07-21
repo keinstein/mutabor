@@ -3,32 +3,10 @@
  * Mutabor Bitmaps. We save Bitmaps in global variables as they can be used in several contexts.
  * so their data can be shared if the underlying framework supports it.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutBitmaps.cpp,v 1.4 2011/11/16 14:07:03 keinstein Exp $
  * Copyright:   (c) TU Dresden
  * \author 
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2011/02/13
- * $Date: 2011/11/16 14:07:03 $
- * \version $Revision: 1.4 $
  * \license GPL
- *
- * $Log: MutBitmaps.cpp,v $
- * Revision 1.4  2011/11/16 14:07:03  keinstein
- * passed make distcheck on linux
- * addedd some osdep files to the archive
- *
- * Revision 1.3  2011-11-02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.2  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.1  2011-02-16 07:01:33  keinstein
- * added files for global bitmap storage
  *
  *
  * \addtogroup src/wxGUI
@@ -79,68 +57,80 @@ namespace mutaborGUI {
 		mutASSERT(bitmap.IsOk());
 	}
 
-// Please use Tango names for new bitmap files
-// http://tango.freedesktop.org/Tango_Desktop_Project
+/* Please use Tango names for new bitmap files
+   http://tango.freedesktop.org/Tango_Desktop_Project
+   cvs access:
+
+   cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/tango login
+   cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/tango co tango-icon-theme
+
+   and naming tools
+
+   cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/icon-theme login
+   cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/icon-theme co icon-naming-utils
+
+*/
+
 
 	bool MutToolBarBitmaps::Init() {
 		if (initialized) return(true);
 		EmptyBitmap.Create(16,16,-1);
 		initMutBitmap(New,
-			      wxGetApp().GetResourceName (_T ("document-new.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/document-new.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Open,
-			      wxGetApp().GetResourceName (_T ("document-open.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/document-open.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Save,
-			      wxGetApp().GetResourceName (_T ("document-save.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/document-save.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(SaveAs,
-			      wxGetApp().GetResourceName (_T ("document-save-as.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/document-save-as.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Print,
-			      wxGetApp().GetResourceName (_T ("document-print.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/document-print.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicActivate,
-			      wxGetApp().GetResourceName (_T ("ActivateMutabor.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/ActivateMutabor.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicStop,
-			      wxGetApp().GetResourceName (_T ("StopMutabor.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/StopMutabor.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(LogicPanic,
-			      wxGetApp().GetResourceName (_T ("Panic.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/Panic.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Copy,
-			      wxGetApp().GetResourceName (_T ("edit-copy.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/edit-copy.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Cut,
-			      wxGetApp().GetResourceName (_T ("edit-cut.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/edit-cut.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Paste,
-			      wxGetApp().GetResourceName (_T ("edit-paste.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/edit-paste.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Undo,
-			      wxGetApp().GetResourceName (_T ("edit-undo.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/edit-undo.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Redo,
-			      wxGetApp().GetResourceName (_T ("edit-redo.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/edit-redo.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(RouteLoad,
-			      wxGetApp().GetResourceName (_T ("RouteLoad.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/RouteLoad.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(RouteSave,
-			      wxGetApp().GetResourceName (_T ("RouteSave.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/RouteSave.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsPlay,
-			      wxGetApp().GetResourceName (_T ("InDevPlay.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevPlay.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsStop,
-			      wxGetApp().GetResourceName (_T ("InDevStop.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevStop.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(IndevsPause,
-			      wxGetApp().GetResourceName (_T ("InDevPause.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/InDevPause.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(About,
-			      wxGetApp().GetResourceName (_T ("help-browser.png")),
+			      wxGetApp().GetResourceName (_T ("16x16/help-browser.png")),
 			      wxBITMAP_TYPE_PNG);
 		initialized = true;
 		return true;	
