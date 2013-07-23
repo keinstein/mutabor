@@ -73,6 +73,8 @@ namespace mutaborGUI {
 		static wxBitmap Paste;
 		static wxBitmap Undo;
 		static wxBitmap Redo;
+		static wxBitmap GoUp;
+		static wxBitmap GoDown;
 		static wxBitmap RouteLoad;
 		static wxBitmap RouteSave;
 		static wxBitmap IndevsPlay;

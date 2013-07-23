@@ -173,6 +173,8 @@ IMPLEMENT_DYNAMIC_CLASS(MutRouteWnd, wxScrolledWindow)
 
 
 BEGIN_EVENT_TABLE(MutRouteWnd, wxScrolledWindow)
+	EVT_MENU(CM_MOVE_UP, MutRouteWnd::OnMoveShape)
+	EVT_MENU(CM_MOVE_DOWN, MutRouteWnd::OnMoveShape)
 //	EVT_SIZE(MutRouteWnd::OnSize)
 //	EVT_LEFT_DOWN(MutRouteWnd::OnLeftDown)
 //	EVT_LEFT_DCLICK(MutRouteWnd::OnLeftDClick)
@@ -691,6 +693,16 @@ void MutRouteWnd::OnDraw(wxDC& dc)
         }
 }
 
+void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
+	DEBUGLOG(routinggui,_T("Move Event: %d"),(int)event.GetId());
+	wxWindow * win = FindFocus();
+	if (dynamic_cast<MutBoxShape *>(win) || 
+	    dynamic_cast<MutInputDeviceShape *>(win) || 
+	    dynamic_cast<MutOutputDeviceShape *>(win)) {
+#warning Enable this as soon as the classes catch the event
+//		wxPostEvent(win,event);	
+	}
+}
 
 
 #if 0

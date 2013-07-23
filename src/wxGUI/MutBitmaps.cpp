@@ -35,6 +35,8 @@ namespace mutaborGUI {
 	wxBitmap MutToolBarBitmaps::Paste;
 	wxBitmap MutToolBarBitmaps::Undo;
 	wxBitmap MutToolBarBitmaps::Redo;
+	wxBitmap MutToolBarBitmaps::GoUp;
+	wxBitmap MutToolBarBitmaps::GoDown;
 	wxBitmap MutToolBarBitmaps::RouteLoad;
 	wxBitmap MutToolBarBitmaps::RouteSave;
 	wxBitmap MutToolBarBitmaps::IndevsPlay;
@@ -113,6 +115,12 @@ namespace mutaborGUI {
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(Redo,
 			      wxGetApp().GetResourceName (_T ("16x16/edit-redo.png")),
+			      wxBITMAP_TYPE_PNG);
+		initMutBitmap(GoUp,
+			      wxGetApp().GetResourceName (_T ("16x16/go-up.png")),
+			      wxBITMAP_TYPE_PNG);
+		initMutBitmap(GoDown,
+			      wxGetApp().GetResourceName (_T ("16x16/go-down.png")),
 			      wxBITMAP_TYPE_PNG);
 		initMutBitmap(RouteLoad,
 			      wxGetApp().GetResourceName (_T ("16x16/RouteLoad.png")),

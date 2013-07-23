@@ -275,6 +275,8 @@ namespace mutaborGUI {
 			DoLeftDblClick(); 
 		}
 
+
+		void CmMoveIcon(wxCommandEvent & event);
 		void OnKeyDown (wxKeyEvent & event);
 
 		BoxDlg * ShowBoxDialog() const;

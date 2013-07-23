@@ -1196,6 +1196,11 @@ namespace mutaborGUI {
 	void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
+		MENUITEM(_("&Move icon up\tShift+Up"), CM_MOVE_UP,
+			 _("Moves the device or box upwards in the window."));
+		MENUITEM(_("&Move icon down\tShift+Down"), CM_MOVE_DOWN,
+			 _("Moves the device or box downwards in the window."));
+		MENUITEM_SEPARATOR;
 		MENUITEM(_("&Load routes"), CM_ROUTELOAD,
 			 _("Load the current route configuration from a file"));
 		MENUITEM(_("&Save routes"), CM_ROUTESAVE,

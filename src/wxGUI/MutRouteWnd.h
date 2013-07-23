@@ -220,6 +220,7 @@ namespace mutaborGUI {
 		void OnSize(wxSizeEvent& event);
 		
 		virtual void OnDraw(wxDC& dc);
+		void OnMoveShape(wxCommandEvent& event);
 
 		//	void OnSize(wxSizeEvent& event);
 

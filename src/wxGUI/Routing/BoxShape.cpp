@@ -116,9 +116,11 @@ namespace mutaborGUI {
 	IMPLEMENT_CLASS(MutBoxShape, MutBoxIconShape)
 
 	BEGIN_EVENT_TABLE(MutBoxShape, MutBoxIconShape)
-	EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
+	EVT_KEY_DOWN(MutBoxShape::OnKeyDown)
 	EVT_LEFT_DCLICK(MutBoxShape::LeftDblClickEvent)
 	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutBoxShape::CmLeftDblClick)
+	EVT_MENU(CM_MOVE_UP, MutBoxShape::CmMoveIcon)
+	EVT_MENU(CM_MOVE_DOWN, MutBoxShape::CmMoveIcon)
 	//EVT_CLOSE(MutDeviceShape::DeleteSelfEvent)
 	END_EVENT_TABLE()
 
@@ -600,6 +602,18 @@ namespace mutaborGUI {
 	}
 
 
+	void MutBoxShape::CmMoveIcon(wxCommandEvent & event) {
+		switch (event.GetId()) {
+		case CM_MOVE_UP:
+			DEBUGLOG(routinggui,_T("Implement move up"));
+			break;
+		case CM_MOVE_DOWN:
+			DEBUGLOG(routinggui,_T("Implement move down"));
+			break;
+		default:
+			UNREACHABLEC;
+		}
+	}
 
 	void MutBoxShape::OnKeyDown (wxKeyEvent & event) {
 		if (event.HasModifiers()) {

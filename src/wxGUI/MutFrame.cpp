@@ -164,6 +164,8 @@ namespace mutaborGUI {
 	EVT_MENU(CM_ACTIVATE,MutFrame::PassEventToEditor)
         EVT_MENU(CM_PROPERTIES, MutFrame::PassEventToEditor)
 	EVT_MENU(CM_GETLINE, MutFrame::PassEventToEditor)
+	EVT_MENU(CM_MOVE_UP, MutFrame::PassEventToEditor)
+	EVT_MENU(CM_MOVE_DOWN, MutFrame::PassEventToEditor)
 	EVT_MENU (wxID_CLEAR,            MutFrame::PassEventToEditor)
 	EVT_MENU (wxID_CUT,              MutFrame::PassEventToEditor)
 	EVT_MENU (wxID_COPY,             MutFrame::PassEventToEditor)
@@ -400,6 +402,11 @@ namespace mutaborGUI {
 		toolBar->AddTool(CM_ROUTESAVE,_("&Save routes"), MutToolBarBitmaps::RouteSave,
 				 _("Save current route configuration to a file."));
 		toolBar->AddSeparator();
+		toolBar->AddTool(CM_MOVE_UP,_("&Move Icon up"), MutToolBarBitmaps::GoUp,
+				 _("Moves the device or box upwards in the window."));
+		toolBar->AddTool(CM_MOVE_DOWN,_("&Move Icon down"), MutToolBarBitmaps::GoDown,
+				 _("Moves the device or box downwards in the window."));
+		toolBar->AddSeparator();
 		toolBar->AddTool(CM_INDEVPLAY,_("&Play"), MutToolBarBitmaps::IndevsPlay,
 				 _("Start playing the music from input file devices"));
 		toolBar->AddTool(CM_INDEVSTOP,_("St&op"), MutToolBarBitmaps::IndevsStop,
@@ -418,8 +425,17 @@ namespace mutaborGUI {
 	{
 		if (event.GetEventType() != wxEVT_STC_STYLENEEDED) {
 			event.Skip(false);
-			if (dynamic_cast<MutEditFile*>(client)) {
-				wxPostEvent(client,event);
+			switch (event.GetId()) {
+			case CM_MOVE_UP:
+			case CM_MOVE_DOWN:
+				if (dynamic_cast<MutRouteWnd*>(client)) {
+					wxPostEvent(client,event);
+				}
+				break;
+			default:
+				if (dynamic_cast<MutEditFile*>(client)) {
+					wxPostEvent(client,event);
+				}
 			}
 		}
 	}

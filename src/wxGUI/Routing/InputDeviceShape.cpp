@@ -380,6 +380,12 @@ namespace mutaborGUI {
 		return in;
 	}
 
+	void MoveDevice(int count) {
+		if (device) {
+			device->move_in_list(count);
+		}
+	}
+	
 	bool MutInputDeviceShape::DetachDevice ()
 	{
 	
