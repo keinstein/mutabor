@@ -3,12 +3,8 @@
  ********************************************************************
  * Devices Basisklassen.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/InputDeviceShape.h,v 1.7 2011/11/02 14:32:00 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2009/11/23
- * $Date: 2011/11/02 14:32:00 $
- * \version $Revision: 1.7 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

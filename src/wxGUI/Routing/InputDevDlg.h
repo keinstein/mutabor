@@ -2,73 +2,22 @@
  ***********************************************************************
  * Input device selection dialog.
  *
- * $Id: InputDevDlg.h,v 1.6 2011/11/02 14:32:00 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date Created: 2005/12/10 14:22:47
- * $Date: 2011/11/02 14:32:00 $
- * \version $Revision: 1.6 $
  * \license: GPL
- * Copyright:   (c) R. Krauße, TU Dresden
  *
- * $Log: InputDevDlg.h,v $
- * Revision 1.6  2011/11/02 14:32:00  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.5  2011-09-30 18:07:05  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.4  2011-09-27 20:13:24  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.3  2011-02-20 22:35:58  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.2  2010-11-21 13:15:48  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.4  2010-06-15 14:30:14  keinstein
- * allow deleting of input devices in route window
- * several bug fixes
- * rudimentary box deletion support
- *
- * Revision 1.1.2.3  2010/03/30 08:38:27  keinstein
- * added rudimentary command line support
- * changed debug system to allow selection of messages via command line
- * further enhancements to the route dialogs
- *
- * Revision 1.1.2.2  2010/02/15 12:08:21  keinstein
- * intermediate update for backup progress
- *
- * Revision 1.1.2.1  2009/11/30 15:46:46  keinstein
- * moved InputDevDlg.h InputDevDlg.cpp OutputDevDlg.h OutputDevDlg.cpp into subdirectory Routing.
- *
- * Revision 1.6.2.2  2009/11/03 15:07:07  keinstein
- * Compile on Ubuntu 9.10
- * remove several interface and implementation pragmas
- * fixed some file names for case insensitive filesystems
- *
- * Revision 1.6.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.7  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.6  2008/08/18 15:06:35  keinstein
- * Changed Input dev dialog to wxResources
- *
- * Revision 1.5  2008/01/25 09:08:58  keinstein
- * charset conversion
- *
- * Revision 1.4  2006/01/18 15:34:57  keinstein
- * Doxygen header
- *
- * ID definition conflict solved
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
