@@ -66,24 +66,6 @@ namespace mutaborGUI {
 	class MutOutputDeviceShape:public MutDeviceShape
 	{
 		friend class GUIDeviceFactory;
-	protected:
-		static wxSizerFlags sizerFlags;
-		mutabor::OutputDevice device;
-
-		MutOutputDeviceShape():MutDeviceShape(),device(NULL) { }
-
-
-		MutOutputDeviceShape (wxWindow * parent, wxWindowID id, 
-				      const wxString & name) {
-			Create (parent, id, name);
-		}
-	
-		MutOutputDeviceShape (wxWindow * parent, wxWindowID id, 
-				      mutabor::OutputDevice d):
-			MutDeviceShape() {
-			Create (parent, id,  d);
-		}
-
 	public:
 		typedef mutabor::OutputDevice devicetype;
 
@@ -98,21 +80,6 @@ namespace mutaborGUI {
 			}
 
 		bool Create (wxWindow * parent, wxWindowID id, mutabor::OutputDevice & d);
-
-
-
-/*	
-		static MutOutputDeviceShape * CreateShape(wxWindow * parent,
-
-							  wxWindowID id,
-							  mutabor::OutputDevice d);
-
-		MutOutputDeviceShape * CreateShape (mutabor::OutputDevice d) 
-			{
-				DEBUGLOG (other,_T (""));
-				return CreateShape (m_parent, wxID_ANY,d);
-			}
-*/
 
 		static void SetSizerFlags (wxSizerFlags flags) 
 			{
@@ -140,54 +107,6 @@ namespace mutaborGUI {
 				     mutabor::OutputDevice newdev);
 		/// remove a dev
 		virtual bool Remove(mutabor::OutputDevice dev);
-
-
-#if 0
-		/// attach a device to the shape
-		void Attatch(mutabor::OutputDevice & dev) {
-			mutASSERT(device.get() == NULL);
-			device = dev;
-		}
-		/// Attatch to a given route
-		void Attatch(mutabor::Route & route) {
-			connect(device, route);
-		}
-		/// Attatch to a given route
-		void Attatch(MutBoxChannelShape * route) {
-			Attatch(route->GetRoute());
-		}
-
-		/// Replace a given route 
-		void Reconnect(mutabor::Route & oldroute, 
-			       mutabor::Route & newroute) {
-			reconnect(device,oldroute,newroute);
-		}
-		/// Replace a given route 
-		void Reconnect(MutBoxChannelShape * oldroute, 
-			       MutBoxChannelShape * newroute) {
-			Reconnect(oldroute->GetRoute(),newroute->GetRoute());
-		}
-
-		
-		/// Detach a device from the shape
-		/** this function is usually called short before the
-		    deletion of the window
-		 */
-		void Detatch(mutabor::OutputDevice & dev) {
-			mutASSERT(device == dev);
-			if (device)
-				ToGUIBase(device).Detatch(this);
-			device = NULL;
-		}
-		/// Detatch a given route
-		void Detatch(mutabor::Route & route) {
-			disconnect(device, route);
-		}
-		/// Detatch a given route
-		void Detatch(MutBoxChannelShape * route) {
-			Detatch(route->GetRoute());
-		}
-#endif
 
 		mutabor::Route getRoutes()
 			{
@@ -230,6 +149,32 @@ namespace mutaborGUI {
 		virtual void ReadPanel(OutputFilterPanel * panel, MutBoxChannelShape * channel);
 	
 	protected:
+		static wxSizerFlags sizerFlags;
+		mutabor::OutputDevice device;
+
+		MutOutputDeviceShape():MutDeviceShape(),device(NULL) { }
+
+
+		MutOutputDeviceShape (wxWindow * parent, wxWindowID id, 
+				      const wxString & name) {
+			Create (parent, id, name);
+		}
+	
+		MutOutputDeviceShape (wxWindow * parent, wxWindowID id, 
+				      mutabor::OutputDevice d):
+			MutDeviceShape() {
+			Create (parent, id,  d);
+		}
+
+		/** 
+		 * Move the corresponding device in the device list and 
+		 * update the GUI according to the new order.
+		 * 
+		 * \param count number of entries the device should be moved
+		 *              up. Negative values indicate downwards direction.
+		 */
+		virtual void MoveDevice(int count);
+
 		virtual void InitializeDialog(OutputDevDlg * out) const
 			{
 				DEBUGLOG(other, _T("Initializing only generic OutputDeviceShape"));

@@ -38,11 +38,6 @@
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
-//#include "MutApp.h"
-//#include "MutIcon.h"
-//#include "MutRouteWnd.h"
-//#include "InputDevDlg.h"
-//#include "Device.h"
 using namespace mutabor;
 
 namespace mutaborGUI {
@@ -67,22 +62,6 @@ namespace mutaborGUI {
 		}
 	}
 
-/*
-  wxColour BoxColors[MAX_BOX]  =
-  {
-  wxColour(0xFF, 0x00, 0x00),
-  wxColour(0x00, 0xFF, 0x00),
-  wxColour(0x80, 0x80, 0xFF),
-  wxColour(0xFF, 0xFF, 0x00),
-  wxColour(0x00, 0xFF, 0xFF),
-  wxColour(0xFF, 0x00, 0xFF),
-  wxColour(0xC0, 0xC0, 0xC0),
-  wxColour(0x40, 0x80, 0x80),
-  wxColour(0x00, 0x80, 0x00),
-  wxColour(0x80, 0xFF, 0x00),
-  wxColour(0xFF, 0xFF, 0x80),
-  };
-*/
 	const wxColour & BoxColour(int nr)
 	{
 
@@ -144,7 +123,7 @@ namespace mutaborGUI {
 		channels = new wxBoxSizer(wxVERTICAL);
 		SetSizer(channels);
 		//	SetAutoLayout(true); done by SetSizer()
-//	m_icon = new MutBoxIconShape(this,-1);
+                //	m_icon = new MutBoxIconShape(this,-1);
 		m_icon = this;
 		SetBoxId(Id,false);
 		BoxData::GetBox(Id).Attatch(this);

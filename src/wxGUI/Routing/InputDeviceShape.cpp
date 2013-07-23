@@ -45,10 +45,6 @@
 
 #include "src/kernel/routing/Route-inlines.h"
 
-//#include "MutApp.h"
-//#include "MutIcon.h"
-//#include "MutRouteWnd.h"
-//#include "Device.h"
 
 #if defined(__WXMAC__) && defined(__WXMAC_CARBON__)
 #	include "wx/mac/carbon/private.h"
@@ -134,43 +130,6 @@ namespace mutaborGUI {
 		TRACEC;
 		return true;
 	}
-
-
-
-#if 0
-	void MutInputDeviceShape::RemoveRoute(Route & route) {
-		if (!route) return;
-		Route  r = getRoutes();
-		if (!r) return;
-
-		if (r == route) {
-			device->SetRoute(route->GetNext());
-			route->SetNext(NULL);
-			return;
-		}
-	
-		do {
-			if (r->GetNext() == route) {
-				r->SetNext(route->GetNext());
-				route->SetNext(NULL);
-				return;
-			}
-		} while ((r = r->GetNext()));
-		mutASSERT(!r);
-	}
-
-	void MutInputDeviceShape::AddRoute(Route & route)
-	{
-		if (!device) return;
-		if (!route) {
-			UNREACHABLEC;
-			return;
-		}
-		mutASSERT(!route->GetNext());
-		route->SetNext(device->GetRoutes());
-		device->SetRoute(route);
-	}
-#endif
 
 	void MutInputDeviceShape::DoLeftDblClick() {
 		/** \todo replace by command handler and emit command event */
@@ -289,22 +248,6 @@ namespace mutaborGUI {
 	bool MutInputDeviceShape::DetachDevice ()
 	{
 	
-#if 0
-		for(Route  route = getRoutes();
-		    route; route = getRoutes()) 
-		{
-			void * p = route->getUserData();
-			mutASSERT (wxDynamicCast (p,MutBoxChannelShape));
-			MutBoxChannelShape * channel = (MutBoxChannelShape *) p;
-		
-			mutASSERT (channel->GetInput() == this);
-			Detatch (channel);
-		}
-		device->Destroy();
-		device = NULL;
-#endif
-
-	
 		wxWindow * parent = m_parent;
 		wxSizer * sizer = GetContainingSizer();
 		Hide();
@@ -337,14 +280,6 @@ namespace mutaborGUI {
 		if (device) // might be zero as in MutNewInputDeviceShape
 			device->MoveRoutes(newshape->GetDevice());
 		TRACEC;
-/*
-		for(MutBoxChannelShapeList::iterator i = routes.begin();
-		    i != routes.end();
-		    i++)
-		{
-			if (!((*i)->Reconnect(this,newshape))) return false;
-		}
-*/
 
 
 		newshape->MoveBeforeInTabOrder (this);

@@ -69,31 +69,6 @@ namespace mutaborGUI {
 
 	class MutInputDeviceShape:public MutDeviceShape{
 		friend class GUIInputDeviceFactory;
-	protected: 
-		mutabor::InputDevice device;
-		//	static stringmaptype stringmap;
-		static wxSizerFlags sizerFlags;
-
-
-		MutInputDeviceShape():MutDeviceShape(),device(NULL) {
-		}
-
-		MutInputDeviceShape (wxWindow * parent, wxWindowID id, 
-				     const wxString &
-				     name):MutDeviceShape (),
-					   device(NULL)
-		{
-			Create (parent, id, name);
-		}
-
-
-		MutInputDeviceShape (wxWindow * parent, wxWindowID id, 
-				     mutabor::InputDevice & d):
-			MutDeviceShape(),
-			device(NULL)
-		{
-			Create (parent, id, d);
-		}
 	public:
 		typedef mutabor::InputDevice devicetype;
 
@@ -158,70 +133,6 @@ namespace mutaborGUI {
 		/// remove a dev
 		virtual bool Remove(mutabor::InputDeviceClass * dev);
 
-#if 0 
-		/// attach a device to the shape
-		void Attatch(mutabor::InputDevice & dev) {
-			mutASSERT(device.get() == NULL);
-			TRACEC;
-			device = dev;
-			TRACEC;
-		}
-		/// Attatch to a given route
-		void Attatch(mutabor::Route & route) {
-			TRACEC;
-			connect(device,route);
-			TRACEC;
-		}
-		/// Attatch to a given route
-		void Attatch(MutBoxChannelShape * route) {
-			TRACEC;
-			Attatch(route->GetRoute());
-			TRACEC;
-		}
-
-		/// Replace a given route 
-		void Reconnect(mutabor::Route & oldroute, 
-			       mutabor::Route & newroute) {
-			TRACEC;
-			reconnect(device,oldroute,newroute);
-			TRACEC;
-		}
-		/// Replace a given route 
-		void Reconnect(MutBoxChannelShape * oldroute, 
-			       MutBoxChannelShape * newroute) {
-			TRACEC;
-			Reconnect(oldroute->GetRoute(),newroute->GetRoute());
-			TRACEC;
-		}
-
-		/// Detach a device from the shape
-		/** this function is usually called short before the
-		    deletion of the window
-		*/
-		void Detatch(mutabor::InputDevice & dev) {
-			TRACEC;
-			mutASSERT(device == dev);
-			TRACEC;
-			if (device)
-				ToGUIBase(device).Detatch(this);
-			TRACEC;
-			device = NULL;
-			TRACEC;
-		}
-		/// Detatch a given route
-		void Detatch(mutabor::Route & route) {
-			TRACEC;
-			disconnect(device,route);
-			TRACEC;
-		}
-		/// Detatch a given route
-		void Detatch(MutBoxChannelShape * route) {
-			TRACEC;
-			Detatch(route->GetRoute());
-			TRACEC;
-		}
-
-#endif
 	
 		const mutabor::InputDevice & GetDevice() const { return device; }
 		mutabor::InputDevice & GetDevice() { return device; }
@@ -256,6 +167,40 @@ namespace mutaborGUI {
 		virtual void ReadPanel(InputFilterPanel * panel, MutBoxChannelShape * channel);
 
 	protected: 
+		mutabor::InputDevice device;
+		//	static stringmaptype stringmap;
+		static wxSizerFlags sizerFlags;
+
+
+		MutInputDeviceShape():MutDeviceShape(),device(NULL) {
+		}
+
+		MutInputDeviceShape (wxWindow * parent, wxWindowID id, 
+				     const wxString &
+				     name):MutDeviceShape (),
+					   device(NULL)
+		{
+			Create (parent, id, name);
+		}
+
+
+		MutInputDeviceShape (wxWindow * parent, wxWindowID id, 
+				     mutabor::InputDevice & d):
+			MutDeviceShape(),
+			device(NULL)
+		{
+			Create (parent, id, d);
+		}
+
+		/** 
+		 * Move the corresponding device in the device list and 
+		 * update the GUI according to the new order.
+		 * 
+		 * \param count number of entries the device should be moved
+		 *              up. Negative values indicate downwards direction.
+		 */
+		virtual void MoveDevice(int count);
+
 		virtual void InitializeDialog(InputDevDlg * in) const { }
 		/// Initialize device data from a dialog
 		/** Transfers the data from a dialog window into the corresponding 
