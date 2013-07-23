@@ -5,11 +5,21 @@
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2009/11/23
- * $Date: 2011/11/02 14:32:00 $
- * \version $Revision: 1.8 $
  * \license GPL
  *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
@@ -17,24 +27,203 @@
  *\{
  ********************************************************************/
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+#include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "src/wxGUI/Routing/BoxDlg.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
+#include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <algorithm>
+#include "wx/defs.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
 //#include "InputDevDlg.h"
 //#include "Device.h"
 
-namespace mutaborGUI {
-	IMPLEMENT_ABSTRACT_CLASS(MutDeviceShape, MutIconShape)
-	
-	BEGIN_EVENT_TABLE(MutDeviceShape, MutIconShape)
-	EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
-	EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
-	EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
-	END_EVENT_TABLE()
 
-	void MutDeviceShape::OnKeyDown (wxKeyEvent & event) {
+
+// common part of the macros below
+#define wxIMPLEMENT_CLASS_COMMON_TEMPLATE1(name, basename, baseclsinfo2, func, T1) \
+	template<>						\
+	wxClassInfo name<T1>::ms_classInfo(wxT(#name "<" #T1 ">"),	\
+					   &basename::ms_classInfo,	\
+					   baseclsinfo2,		\
+					   (int) sizeof(name<T1>),	\
+					   (wxObjectConstructorFn) func); \
+	template<>							\
+	wxClassInfo *name<T1>::GetClassInfo() const			\
+        { return &name<T1>::ms_classInfo; }
+
+#define wxIMPLEMENT_CLASS_COMMON1_TEMPLATE1(name, basename, func, T1)	\
+	wxIMPLEMENT_CLASS_COMMON_TEMPLATE1(name, basename, NULL, func, T1)
+
+
+    // Single inheritance with one base class
+
+#define IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(name, basename, T1)	\
+    wxIMPLEMENT_CLASS_COMMON1_TEMPLATE1(name, basename, NULL, T1)
+
+
+    // Single inheritance with one base class
+#define IMPLEMENT_DYNAMIC_CLASS_TEMPLATE1(name, basename, T1)		\
+	template<>							\
+	wxObject* name<T1>::wxCreateObject()				\
+        { return new name<T1>; }					\
+	wxIMPLEMENT_CLASS_COMMON1_TEMPLATE1(name, basename,		\
+					    name<T1>::wxCreateObject, T1)
+
+using namespace mutaborGUI;
+	
+BEGIN_EVENT_TABLE_TEMPLATE1(MutDeviceShape, MutIconShape, T)
+EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
+EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
+EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
+EVT_MENU(CM_MOVE_UP, MutDeviceShape::CmMoveIcon)
+EVT_MENU(CM_MOVE_DOWN, MutDeviceShape::CmMoveIcon)
+END_EVENT_TABLE()
+
+using namespace mutabor;
+namespace mutaborGUI {
+
+	template<class T>
+	MutDeviceShape<T>::~MutDeviceShape() {
+			TRACEC;
+			if (device) {
+				disconnect(device,this);
+				TRACEC;
+			}
+			TRACEC;
+		}
+	template<class T>
+	bool MutDeviceShape<T>::Create (wxWindow * parent,
+					wxWindowID id, 
+					devicetype & d)
+	{
+		if (!d) return false;
+		
+		DEBUGLOG (other,_T ("Checking icon"));
+		mutASSERT(MidiInputDevBitmap.IsOk());
+		mutASSERT(MidiOutputDevBitmap.IsOk());
+		
+		TRACEC;
+
+		bool fine = 
+			Create (parent, id, d->GetName());
+
+		TRACEC;
+		if (fine) 
+			connect(d,this);
+
+		TRACEC;
+		return fine;
+	}
+
+
+	template<class T>
+	void MutDeviceShape<T>::Add(MutBoxChannelShape *  route) 
+	{
+#ifdef DEBUG
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),route);
+		mutASSERT(pos == routes.end());
+#endif 
+		routes.push_back(route);
+		ClearPerimeterPoints();
+		Update();
+	}
+
+	template<class T>
+	bool MutDeviceShape<T>::Replace(MutBoxChannelShape * oldroute,
+				     MutBoxChannelShape * newroute)
+	{
+#ifdef DEBUG
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),oldroute);
+		mutASSERT(pos != routes.end());
+#endif
+		bool retval = Remove(oldroute);
+		Add(newroute);
+		Recompute();
+		return retval;
+	}
+
+	template<class T>
+	bool MutDeviceShape<T>::Remove(MutBoxChannelShape * route)
+	{
+		MutBoxChannelShapeList::iterator pos = 
+			std::find(routes.begin(),routes.end(),route);
+		if (pos == routes.end()) {
+			UNREACHABLEC;
+			return false;
+		} else { 
+			routes.erase(pos);
+		}
+		Recompute();
+		return true;
+	}
+
+	template<class T>
+	bool MutDeviceShape<T>::MoveRoutes (MutDeviceShape * newclass) 
+	{
+		routes.swap(newclass->routes);
+		Recompute();
+		return true;
+	}
+
+	template<class T>
+	bool MutDeviceShape<T>::Recompute() 
+	{
+		ClearPerimeterPoints();
+		SetIcon(GetMutIcon());
+		//  SetLabel (filename.GetFullName());
+		return GetIcon().IsOk();
+	}
+
+
+
+	template<class T>
+	void MutDeviceShape<T>::ReadPanel(FilterPanel * panel, 
+				    MutBoxChannelShape * channel)
+	{
+		mutASSERT(panel);
+		mutASSERT(channel);
+		if (!panel || !channel) return;
+	
+		bool active = panel->IsShown();
+	
+		thistype * newShape = panel->GetCurrentSelection();
+
+		Route & route = channel->GetRoute();
+		if (!active) {
+			TRACEC;
+			disconnect(channel,this);
+			TRACEC;
+			return;
+		} else if (newShape != this) {
+			TRACEC;
+			reconnect(channel,this,newShape);
+			TRACEC;
+		}
+		if (newShape) {
+			wxWindow * subpanel = panel->GetCurrentDevicePage();
+			if (!panel) {
+				UNREACHABLEC;
+				return;
+			}
+			TRACEC;
+			newShape->ReadFilterPanel(subpanel,route);
+		}
+		TRACEC;
+	}
+
+
+	template<class T>
+	void MutDeviceShape<T>::OnKeyDown (wxKeyEvent & event) {
 		if (event.HasModifiers()) {
 			event.Skip();
 			return;
@@ -64,61 +253,260 @@ namespace mutaborGUI {
 		}
 	}
 
+	/** 
+	 * Move the corresponding device in the device list and 
+	 * update the GUI according to the new order.
+	 * 
+	 * \param event wxCommandEvent containing the request
+	 */
+	template <class T>
+	void MutDeviceShape<T>::CmMoveIcon (wxCommandEvent & event) {
+		switch (event.GetId()) {
+		case CM_MOVE_UP:
+			MoveDevice(-1);
+			break;
+		case CM_MOVE_DOWN:
+			MoveDevice(+1);
+			break;
+		}
+	}
+	
+	template <class T>
+	void MutDeviceShape<T>::DoLeftDblClick() {
+		TRACEC;
+		DeviceDialog * dlg = ShowDeviceDialog();
+		int Res = dlg->ShowModal();
+		TRACEC;
+		bool destroySelf = false;
+		wxWindow * parent = m_parent; // to be availlable after deleten.
+
+		TRACEC;
+		if (Res == wxID_OK) {
+			DevType type = dlg->GetType();
+
+			if (CanHandleType (type)) {
+				TRACEC;
+				readDialog (dlg);
+			} else if (type != DTNotSet) { // assure type is set.
+				TRACEC;
+				devicetype dev = 
+					DeviceFactory::Create<devicetype>(type);
+				if (dev) {
+					TRACEC;
+					thistype * newdev = 
+						GUIDeviceFactory::CreateShape (dev,
+									       GetParent());
+					
+					if (! newdev) {
+					  UNREACHABLEC;
+					  return;
+					}
+					mutASSERT(newdev->device);
+					TRACEC;
+					newdev -> readDialog (dlg);
+					if (LogicOn && !(newdev->device->IsOpen())) 
+						newdev->device->Open();
+
+					TRACEC;
+					destroySelf = replaceSelfBy (newdev);
+				}
+			}
+		} else if (Res == ::wxID_REMOVE) {
+			TRACEC;
+			device -> Destroy();
+		}
+
+		// Now, we may be deleted.
+
+		dlg->Destroy();
+		DebugCheckRoutes();
+		TRACEC;
+
+		if (Res != ::wxID_REMOVE && !destroySelf) {
+			Layout();
+			InvalidateBestSize();
+			Fit();
+			Refresh();
+		}
+		if (parent) {
+			parent->InvalidateBestSize();
+			parent->Layout();
+			parent->FitInside();
+			parent->Refresh();
+			parent->Update();
+		} else if (Res != ::wxID_REMOVE && !destroySelf) Update();
+		/* we don't need to destroy this control. 
+		   This should have been done during device destruction 
+		*/
+		TRACE;
+	}
+
+	template<class T>
+	typename MutDeviceShape<T>::DeviceDialog * MutDeviceShape<T>::ShowDeviceDialog() {
+			ABSTRACT_FUNCTIONC;
+			abort();
+	}
+
+	template <class T>
+	bool MutDeviceShape<T>::DetachDevice ()
+	{
+	
+		wxWindow * parent = m_parent;
+		wxSizer * sizer = GetContainingSizer();
+		Hide();
+		if (sizer) {
+			sizer -> Detach(this);
+		}
+
+		if (parent) {
+			parent->Layout();
+			parent->FitInside();
+			parent->SetVirtualSize(wxDefaultSize);
+			parent->Refresh();
+		}
+		TRACEC;
+		device->Destroy();
+		TRACEC;
+
+		return true;
+	}
 
 	
-
-	void MutDeviceShape::Add(MutBoxChannelShape *  route) 
+	template<class T>
+	bool MutDeviceShape<T>::replaceSelfBy (thistype  * newshape)
 	{
-#ifdef DEBUG
-		MutBoxChannelShapeList::iterator pos = 
-			std::find(routes.begin(),routes.end(),route);
-		mutASSERT(pos == routes.end());
-#endif 
-		routes.push_back(route);
-		ClearPerimeterPoints();
-		Update();
+		/** \todo transfer this function to GUIRoute */
+		
+		mutASSERT (newshape);
+		mutASSERT (newshape->device);
+
+		TRACEC;
+		if (device) // might be zero as in MutNewInputDeviceShape
+			device->MoveRoutes(newshape->GetDevice());
+		TRACEC;
+
+
+		newshape->MoveBeforeInTabOrder (this);
+
+		wxSizer * sizer = GetContainingSizer();
+		sizer -> Replace (this, newshape, false);
+
+		newshape->SetFocus();
+		Hide();	
+		wxWindow * parent = m_parent;
+		parent->RemoveChild(this);
+		parent->Layout();
+		parent->FitInside();
+		parent->SetVirtualSize(wxDefaultSize);
+
+		TRACEC;
+		device->Destroy();
+		// at this moment this points to invalid memory
+		TRACET(MutInputDeviceShape);
+		return true;
 	}
+	
 
-	bool MutDeviceShape::Replace(MutBoxChannelShape * oldroute,
-				     MutBoxChannelShape * newroute)
-	{
-#ifdef DEBUG
-		MutBoxChannelShapeList::iterator pos = 
-			std::find(routes.begin(),routes.end(),oldroute);
-		mutASSERT(pos != routes.end());
+	// instantiate MutInputDeviceShape
+
+	template<>
+	InputDevDlg * MutInputDeviceShape::ShowDeviceDialog() {
+		InputDevDlg * in = new InputDevDlg (m_parent);
+		int nMidi;
+
+#ifdef RTMIDI
+		nMidi = (rtmidiin?rtmidiin->getPortCount():0);
+
+		if ( nMidi )  {
+			wxString portName;
+
+			for (int i = 0; i < nMidi; i++) {
+				try {
+					portName = muT(rtmidiin->getPortName(i).c_str());
+					in->AppendPortChoice(portName);
+				} catch (RtError &error) {
+					error.printMessage();
+					break;
+				}
+			}
+		} else
+			in->AppendPortChoice(_("no device"));
+#else
+		STUBC;
 #endif
-		bool retval = Remove(oldroute);
-		Add(newroute);
-		Recompute();
-		return retval;
-	}
-	bool MutDeviceShape::Remove(MutBoxChannelShape * route)
-	{
-		MutBoxChannelShapeList::iterator pos = 
-			std::find(routes.begin(),routes.end(),route);
-		if (pos == routes.end()) {
-			UNREACHABLEC;
-			return false;
-		} else { 
-			routes.erase(pos);
-		}
-		Recompute();
-		return true;
-	}
-	bool MutDeviceShape::MoveRoutes (MutDeviceShape * newclass) 
-	{
-		routes.swap(newclass->routes);
-		Recompute();
-		return true;
+		//		in->SetType(DTUnknown);
+		in->SetMidiDevice(0);
+		in->SetMidiFile(wxEmptyString);
+		in->SetGUIDOFile(wxEmptyString);
+
+		InitializeDialog(in);
+		
+		in->Fit();
+
+		return in;
 	}
 
-	bool MutDeviceShape::Recompute() 
+	template<>
+	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
 	{
-		ClearPerimeterPoints();
-		SetIcon(GetMutIcon());
-		//  SetLabel (filename.GetFullName());
-		return GetIcon().IsOk();
+		OutputDevDlg * out = new OutputDevDlg (m_parent);
+		int nMidi;
+
+#ifdef RTMIDI
+		nMidi = (rtmidiout?rtmidiout->getPortCount():0);
+
+		DEBUGLOG (other, _T("Midi ports %d"),nMidi);
+		if ( nMidi )  {
+			wxString portName;
+
+			for (int i = 0; i < nMidi; i++) {
+				try {
+					portName = muT(rtmidiout->getPortName(i).c_str());
+				} catch (RtError &error) {
+					error.printMessage();
+					break;
+				}
+				out->AppendPortChoice(portName);
+			}
+		} else
+			out->AppendPortChoice(_("no device"));
+#else
+		/*    nMidi = midiInGetNumDevs();
+		      if ( nMidi )
+		      {
+		      for (int i = 0; i < nMidi; i++)
+		      {
+		      MIDIINCAPS miin;
+		      midiInGetDevCaps(i, &miin, sizeof(MIDIINCAPS));
+		      DataR0.Device.AddString(miin.szPname);
+		      }
+		      }
+		      else
+		      DataR0.Device.AddString("no device");*/
+#endif
+		//		in->SetType(DTUnknown);
+		out->SetMidiDevice(0);
+		out->SetMidiFile(wxEmptyString);
+		out->SetGUIDOFile(wxEmptyString);
+		out->SetMidiBendingRange(2);
+		out->SetMidiFileBendingRange(2);
+
+		InitializeDialog(out);
+		
+		out->Fit();
+
+		return out;
 	}
+
+
+	IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(MutDeviceShape, MutIconShape, inputdevicetypes)
+	IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(MutDeviceShape, MutIconShape, outputdevicetypes)
+
+//	template<>  MutDeviceShape<inputdevicetypes>
+//	template<> 
+
+	template class MutDeviceShape<inputdevicetypes>;
+	template class MutDeviceShape<outputdevicetypes>;
 }
 
 

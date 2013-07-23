@@ -88,6 +88,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/MutIcon.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/OutputDeviceShape.h"
 //#include "Device.h"
 
@@ -135,10 +136,10 @@ namespace mutaborGUI {
 			MutOutputDeviceShape::SetLabel (fileName.GetFullName());
 		}
 	
-		virtual wxPanel * GetOutputFilterPanel(wxWindow * parent, 
-						       mutabor::Route & route) const;
-		virtual void ReadOutputFilterPanel(wxWindow * panel, 
-						   mutabor::Route & route);
+		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+						 mutabor::Route & route) const;
+		virtual void ReadFilterPanel(wxWindow * panel, 
+					     mutabor::Route & route);
 
 
 	protected: 

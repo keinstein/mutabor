@@ -80,11 +80,17 @@ namespace mutaborGUI {
 	class MutBoxShape;
 	typedef std::list <MutBoxShape *> MutBoxShapeList;
 
-	class MutInputDeviceShape;
+	template<class T>
+	class MutDeviceShape;
+	
+	struct outputdevicetypes;
+	struct inputdevicetypes;
+
+	typedef MutDeviceShape<inputdevicetypes> MutInputDeviceShape;
 	typedef std::list<MutInputDeviceShape *> MutInputDeviceShapeList;
 
-	class MutOutputDeviceShape;
-	typedef std::list<MutOutputDeviceShape *>  MutOutputDeviceShapeList;
+	typedef MutDeviceShape<outputdevicetypes> MutOutputDeviceShape;
+	typedef std::list<MutOutputDeviceShape *> MutOutputDeviceShapeList;
 
 	class MutBoxShape;
 	typedef std::list<MutBoxShape *> MutBoxShapeList;

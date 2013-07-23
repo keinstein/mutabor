@@ -79,6 +79,7 @@
 #include "NewInputDeviceShape.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 

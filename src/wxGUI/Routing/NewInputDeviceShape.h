@@ -72,6 +72,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
 //#include "Device.h"
 
@@ -110,6 +111,15 @@ namespace mutaborGUI {
 				return NewInputDevBitmap;
 			}
 
+		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+						 mutabor::Route & route) const {
+			UNREACHABLEC;
+			return new wxPanel(parent);
+		}
+		virtual void ReadFilterPanel(wxWindow * panel, 
+					     mutabor::Route & route) {
+			UNREACHABLEC;
+		}
 	protected:
 		virtual void InitializeDialog(InputDevDlg * in) const;
 		virtual bool replaceSelfBy (MutInputDeviceShape  * newshape);

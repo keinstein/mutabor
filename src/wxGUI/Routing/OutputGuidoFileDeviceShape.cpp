@@ -87,6 +87,7 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/OutputGuidoFileDeviceShape.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -118,7 +119,7 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	wxPanel * MutOutputGuidoFileDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
+	wxPanel * MutOutputGuidoFileDeviceShape::GetFilterPanel(wxWindow * parent, 
 								      Route & route) const
 	{
 		mutUnused(route);
@@ -129,7 +130,7 @@ namespace mutaborGUI {
 	}
 
 
-	void MutOutputGuidoFileDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route & route)
+	void MutOutputGuidoFileDeviceShape::ReadFilterPanel(wxWindow * panel, Route & route)
 	{
 		mutUnused(route);
 		GisOutputFilterPanel * pan = dynamic_cast<GisOutputFilterPanel *> (panel);

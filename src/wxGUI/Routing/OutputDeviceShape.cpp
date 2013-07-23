@@ -18,6 +18,7 @@
  *\addtogroup route
  *\{
  ********************************************************************/
+#if 0
 #include "src/wxGUI/Routing/OutputDeviceShape.h"
 #include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
 #include "src/wxGUI/Routing/OutputMidiFileDeviceShape.h"
@@ -413,6 +414,8 @@ namespace mutaborGUI {
 	}
 }
 
+
+#endif
 /*
  * \}
  */

@@ -128,6 +128,7 @@
  *\addtogroup route
  *\{
  ********************************************************************/
+#if 0
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"
@@ -495,7 +496,7 @@ namespace mutaborGUI {
 	}
 
 }
-
+#endif
 /*
  * \}
  */

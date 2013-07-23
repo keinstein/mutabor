@@ -368,7 +368,7 @@ namespace mutaborGUI {
 		
 			if (!device) continue;
 			wxPanel * devicePanel = 
-				device -> GetInputFilterPanel(choiceBook, route);
+				device -> GetFilterPanel(choiceBook, route);
 			TRACET(MutBoxChannelShape);
 			panel -> AddPage(devicePanel, 
 					 device->GetLabel(), 
@@ -467,7 +467,7 @@ namespace mutaborGUI {
 					      MutOutputDeviceShape);
 			if (!device) continue;
 			wxPanel * devicePanel = 
-				device -> GetOutputFilterPanel (choiceBook, route);
+				device -> GetFilterPanel (choiceBook, route);
 	 		panel -> AddPage (devicePanel, 
 					  device->GetLabel(), 
 					  output == device, 

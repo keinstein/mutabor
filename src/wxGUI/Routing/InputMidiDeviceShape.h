@@ -89,7 +89,11 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/Device.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/resourceload.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_INPUTMIDIDEVICESHAPE_H_PRECOMPILED
@@ -198,9 +202,9 @@ namespace mutaborGUI {
 				return MidiInputDevBitmap;
 			}
 	
-		virtual wxPanel * GetInputFilterPanel(wxWindow * parent, 
+		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
 						      mutabor::Route & route) const;
-		virtual void ReadInputFilterPanel(wxWindow * panel, 
+		virtual void ReadFilterPanel(wxWindow * panel, 
 						  mutabor::Route & route);
 
 

@@ -89,6 +89,7 @@
  ********************************************************************/
 #include "src/kernel/Defs.h"
 #include <limits>
+#include "src/wxGUI/Routing/InputDevDlg.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/Routing/InputGuidoFileDeviceShape.h"
 //#include "MutApp.h"
@@ -203,7 +204,7 @@ namespace mutaborGUI {
 #ifdef max
 #undef max
 #endif
-	wxPanel * MutInputGuidoFileDeviceShape::GetInputFilterPanel(wxWindow * parent, 
+	wxPanel * MutInputGuidoFileDeviceShape::GetFilterPanel(wxWindow * parent, 
 								    Route & route) const
 	{
 		const int maxint = std::numeric_limits<int>().max();
@@ -225,7 +226,7 @@ namespace mutaborGUI {
 		return panel;
 	}
 
-	void MutInputGuidoFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route & route)
+	void MutInputGuidoFileDeviceShape::ReadFilterPanel(wxWindow * panel, Route & route)
 	{
 		GisInputFilterPanel * pan = dynamic_cast<GisInputFilterPanel *> (panel);
 		if (!pan) {

@@ -931,7 +931,9 @@ namespace mutabor {
 
 		static OutputDevice CreateOutput (int type, 
 						  const mutStringRef name = mutEmptyString, 
+						  MutaborModeType mode = DeviceStop, 
 						  int id = -1) {
+			/* \todo implement output device record/pause */
 			mutASSERT(type >= 0);
 			if (factories.size() <=(size_t) type) {
 				throw FactoryNotFound(type);
@@ -958,6 +960,11 @@ namespace mutabor {
 				throw FactoryNotFound(type);
 			return factories[type]->DoCreateInput(name, mode, id);
 		}
+
+		template<class T> static T Create(int type,
+						  const mutStringRef name = mutEmptyString,
+						  MutaborModeType mode = DeviceStop, 
+						  int id = -1);
 
 		static void Destroy() {
 			if (!factories.empty()) {
@@ -1028,6 +1035,22 @@ namespace mutabor {
 		virtual void DoSaveInputDevices(tree_storage & config) const;
 	
 	};
+
+	template <>
+	inline InputDevice DeviceFactory::Create<InputDevice>(int type,
+						       const mutStringRef name,
+						       MutaborModeType mode, 
+						       int id) {
+	        return CreateInput(type,name,mode,id);
+	}
+
+	template<>
+	inline OutputDevice DeviceFactory::Create<OutputDevice>(int type,
+						       const mutStringRef name,
+						       MutaborModeType mode, 
+						       int id) {
+	        return CreateOutput(type,name,mode,id);
+	}
 
 	void InitDeviceFactories();
 

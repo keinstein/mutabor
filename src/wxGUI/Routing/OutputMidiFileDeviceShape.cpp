@@ -20,6 +20,7 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
 #include <limits>
 
 #ifdef max
@@ -90,7 +91,7 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	wxPanel * MutOutputMidiFileDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
+	wxPanel * MutOutputMidiFileDeviceShape::GetFilterPanel(wxWindow * parent, 
 								     Route & route) const
 	{
 		const int maxint = std::numeric_limits<int>().max();
@@ -111,7 +112,7 @@ namespace mutaborGUI {
 		return panel;
 	}
 
-	void MutOutputMidiFileDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route & route)
+	void MutOutputMidiFileDeviceShape::ReadFilterPanel(wxWindow * panel, Route & route)
 	{
 		mutASSERT(route);
 		MidiFileOutputFilterPanel * pan = dynamic_cast<MidiFileOutputFilterPanel *> (panel);

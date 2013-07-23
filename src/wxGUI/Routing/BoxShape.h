@@ -198,7 +198,7 @@
 namespace mutaborGUI {
 	class BoxDlg;
 	class MutBoxChannelShape;
-	class MutOutputDeviceShape;
+//	class MutOutputDeviceShape;
 	class RoutePanel;
 
 	const wxColour & BoxColour(int nr);

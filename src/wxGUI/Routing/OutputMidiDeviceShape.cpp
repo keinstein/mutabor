@@ -96,6 +96,7 @@
 #include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/midi/DevMidi.h"
+#include "src/wxGUI/Routing/OutputDevDlg.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <limits>
 
@@ -170,7 +171,7 @@ namespace mutaborGUI {
 #undef max
 #endif
 
-	wxPanel * MutOutputMidiDeviceShape::GetOutputFilterPanel(wxWindow * parent, 
+	wxPanel * MutOutputMidiDeviceShape::GetFilterPanel(wxWindow * parent, 
 								 Route & route) const
 	{
 		const int maxint = std::numeric_limits<int>().max();
@@ -191,7 +192,7 @@ namespace mutaborGUI {
 		return panel;
 	}
 
-	void MutOutputMidiDeviceShape::ReadOutputFilterPanel(wxWindow * panel, Route & route)
+	void MutOutputMidiDeviceShape::ReadFilterPanel(wxWindow * panel, Route & route)
 	{
 		mutASSERT(route);
 		MidiOutputFilterPanel * pan = dynamic_cast<MidiOutputFilterPanel *> (panel);

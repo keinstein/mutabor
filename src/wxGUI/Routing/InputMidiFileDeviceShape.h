@@ -89,6 +89,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/InputDeviceShape.h"
 //#include "Device.h"
 
@@ -211,9 +212,9 @@ namespace mutaborGUI {
 			MutInputDeviceShape::SetLabel (fileName.GetFullName());
 		}
 
-		virtual wxPanel * GetInputFilterPanel(wxWindow * parent, 
+		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
 						      mutabor::Route &  route) const;
-		virtual void ReadInputFilterPanel(wxWindow * panel, 
+		virtual void ReadFilterPanel(wxWindow * panel, 
 						  mutabor::Route & route);
 
 

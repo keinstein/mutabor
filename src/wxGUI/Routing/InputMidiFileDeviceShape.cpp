@@ -91,7 +91,9 @@
  *\{
  ********************************************************************/
 #include "InputMidiFileDeviceShape.h"
+#include "src/wxGUI/Routing/InputDevDlg.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/wxGUI/resourceload.h"
 #include <limits>
 
 using namespace mutabor;
@@ -145,7 +147,7 @@ namespace mutaborGUI {
 	 * \return A panel, that is correctly initialized to communicate the filter data with the user. 
 	 *           The calling function must take care of it's deletion (or delegate it)
 	 */
-	wxPanel * MutInputMidiFileDeviceShape::GetInputFilterPanel(wxWindow * parent, 
+	wxPanel * MutInputMidiFileDeviceShape::GetFilterPanel(wxWindow * parent, 
 								   Route & route) const
 	{
 		const int maxint = std::numeric_limits<int>().max();
@@ -184,7 +186,7 @@ namespace mutaborGUI {
 	 * \param panel Panel with the data the user entered
 	 * \param route Route object 
 	 */
-	void MutInputMidiFileDeviceShape::ReadInputFilterPanel(wxWindow * panel, Route & route)
+	void MutInputMidiFileDeviceShape::ReadFilterPanel(wxWindow * panel, Route & route)
 	{
 		MidiFileInputFilterPanel * pan = dynamic_cast<MidiFileInputFilterPanel *> (panel);
 		if (!pan) {

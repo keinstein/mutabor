@@ -53,7 +53,7 @@ namespace mutaborGUI {
 	class InputFilterPanel;
 	class RoutePanel;
 	class OutputFilterPanel;
-	class MutOutputDeviceShape;
+//	class MutOutputDeviceShape;
 
 	class MutBoxChannelShape:public MutIconShape
 	{

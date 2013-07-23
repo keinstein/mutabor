@@ -45,10 +45,12 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
+#if 0 
+// this is done by DeviceShape.h
 #include "src/kernel/routing/Device.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
-#include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/Routing/InputDevDlg.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
 
@@ -288,6 +290,7 @@ namespace mutaborGUI {
 
 }
 #endif				/* INPUTDEVICESHAPE_H_PRECOMPILED */
+#endif                          /* if 0 */
 #endif				/* INPUTDEVICESHAPE_H */
 /*
  * \}

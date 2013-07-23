@@ -31,6 +31,8 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/IconShape.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Device.h"
+#include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/RouteLists.h"
 //#include "Device.h"
 
@@ -40,6 +42,7 @@
 // system headers which do seldom change
 
 #include <map>
+#include "wx/sizer.h"
 //#include "wx/defs.h"
 //#include "wx/ogl/ogl.h"
 //#include "wx/icon.h"
@@ -49,10 +52,54 @@
 namespace mutaborGUI {
 
 	class InputDevDlg;
+	class GUIInputDeviceBase;
+	class InputFilterPanel;
 
+	struct inputdevicetypes {
+		typedef mutabor::InputDevice Device;
+		typedef mutabor::InputDeviceClass DeviceClass;
+		typedef GUIInputDeviceBase GUIDeviceBase;
+		typedef InputDevDlg DeviceDialog;
+		typedef InputFilterPanel FilterPanel;
+#if 0
+		MutIcon & GetMutIcon ()
+		{
+			return MidiInputDevBitmap;
+		}
+#endif
+
+	};
+
+	class OutputDevDlg;
+	class GUIOutputDeviceBase;
+	class OutputFilterPanel;
+
+	struct outputdevicetypes {
+		typedef mutabor::OutputDevice Device;
+		typedef mutabor::OutputDeviceClass DeviceClass;
+		typedef GUIOutputDeviceBase GUIDeviceBase;
+		typedef OutputDevDlg DeviceDialog;
+		typedef OutputFilterPanel FilterPanel;
+#if 0
+		MutIcon & GetMutIcon ()
+		{
+			return MidiOutputDevBitmap;
+		}
+#endif
+
+	};
+
+	template<class T>
 	class MutDeviceShape:public MutIconShape
 	{
-	protected:
+	public:
+		typedef typename T::Device devicetype;
+		typedef typename T::DeviceClass DeviceClass;
+		typedef typename T::GUIDeviceBase GUIDeviceBase;
+		typedef typename T::DeviceDialog DeviceDialog;
+		typedef typename T::FilterPanel FilterPanel;
+		typedef MutDeviceShape<T> thistype;
+
 		//	wxFileName filename;
 		class strptrless {
 		public:
@@ -64,25 +111,11 @@ namespace mutaborGUI {
 			}
 		};
 
-		MutBoxChannelShapeList routes;
-	public:
-
 		typedef std::map<wxString *, MutDeviceShape *, strptrless> 
 		stringmaptype;
-		typedef stringmaptype::iterator stringmapiterator;
+		typedef typename stringmaptype::iterator stringmapiterator;
   
-	protected:
-		MutDeviceShape():MutIconShape() 
-			{
-			}
-		MutDeviceShape (wxWindow * parent, wxWindowID id, 
-				const wxString & name = wxEmptyString):
-			MutIconShape()
-			{
-				Create(parent, id, name);
-			}
-	public:
-		virtual ~MutDeviceShape() {}
+		virtual ~MutDeviceShape();
  
 		bool Create (wxWindow * parent, wxWindowID id, 
 			     const wxString & name = wxEmptyString)
@@ -92,10 +125,77 @@ namespace mutaborGUI {
 				if (state) SetLabel(name);
 				return state;
 			}
+
+		bool Create (wxWindow * parent, 
+			     wxWindowID id, 
+			     devicetype & d);
+
+
+		const devicetype & GetDevice() const { return device; }
+		devicetype & GetDevice() { return device; }
+
+		const GUIDeviceBase * GetGUIDevice() const { 
+			return ToGUIBase(device);
+		}
+		GUIDeviceBase * GetGUIDevice() { 
+			return ToGUIBase(device);
+		}
+		mutabor::routeListType & getRoutes()
+		{
+#ifdef DEBUG
+			if (!device) {
+				UNREACHABLEC;
+			}
+#endif
+			TRACEC;
+			return device->GetRoutes();
+		}
+
+		
 		const MutBoxChannelShapeList & GetChannels() const {
 			return routes;
 		}
 	
+		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
+		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
+
+		/// add a route
+		virtual void Add(DeviceClass * dev) {
+			TRACEC;
+			if (device)
+				UNREACHABLEC;
+			else 
+				device = dev;
+			TRACEC;
+		};
+
+		/// replace a dev
+		virtual bool Replace(devicetype olddev,
+				     devicetype newdev) {
+			/* we are using no references here, as we might get deleted
+			   otherwise */
+			TRACEC;
+			if (device != olddev) {
+				UNREACHABLEC;
+				return false;
+			} else 
+				device = newdev;
+			TRACEC;
+			return true;
+		}
+
+		/// remove a dev
+		virtual bool Remove(devicetype dev) {
+			TRACEC;
+			if (device != dev) {
+				UNREACHABLEC;
+				return false;
+			} else 
+				device = NULL;
+			TRACEC;
+			return true;
+		}
+
 		/// add a route
 		virtual void Add(MutBoxChannelShape *  route);
 		/// replace a route
@@ -106,9 +206,39 @@ namespace mutaborGUI {
 		/// Move routes to another device 
 		virtual bool MoveRoutes (MutDeviceShape * newclass);
 
+
 		virtual bool Recompute();
 //		virtual mutabor::Route getRoutes() = 0;
-		virtual void DoLeftDblClick() = 0;
+		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+						 mutabor::Route & route) const = 0;
+/*
+		{ 
+			ABSTRACT_FUNCTIONC;
+			return NULL; 
+		}
+*/	
+		virtual void ReadFilterPanel(wxWindow * panel, 
+					     mutabor::Route & route) = 0;
+/*
+		{
+			ABSTRACT_FUNCTIONC;
+			return;
+		}
+*/
+		virtual void ReadPanel(FilterPanel * panel, 
+				       MutBoxChannelShape * channel);
+
+
+		void OnKeyDown (wxKeyEvent & event);
+
+		/** 
+		 * Move the corresponding device in the device list and 
+		 * update the GUI according to the new order.
+		 * 
+		 * \param event wxCommandEvent containing the request
+		 */
+		void CmMoveIcon (wxCommandEvent & event);
+
 
 
 #if defined(_MSC_VER)
@@ -139,10 +269,83 @@ namespace mutaborGUI {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		void OnKeyDown (wxKeyEvent & event);
+	protected:
+		MutBoxChannelShapeList routes;
+		devicetype device;
+		//	static stringmaptype stringmap;
+		static wxSizerFlags sizerFlags;
+		
+		MutDeviceShape():MutIconShape(),
+				 routes(),
+				 device(NULL) {
+		}
+
+		MutDeviceShape (wxWindow * parent, wxWindowID id, 
+				const wxString & name = wxEmptyString):
+			MutIconShape(),
+			routes(),
+			device(NULL)
+			{
+				Create(parent, id, name);
+			}
+
+		MutDeviceShape (wxWindow * parent, 
+				wxWindowID id, 
+				devicetype & d):
+			MutIconShape(),
+			routes(),
+			device(NULL) // device gets assigned by Create
+		{
+			Create (parent, id, d);
+		}
+
+
+		/** 
+		 * Move the corresponding device in the device list and 
+		 * update the GUI according to the new order.
+		 * 
+		 * \param count number of entries the device should be moved
+		 *              up. Negative values indicate downwards direction.
+		 */
+		virtual void MoveDevice(int count) {
+#warning MoveDevice
+			//	device->MoveInList(count);
+		}
+
+		/** 
+		 * Execute the double click. Despite its name this function must 
+		 * not be called directly from a double click event handler.
+		 * Click event handlers are not proof against control deletion.
+		 */
+		virtual void DoLeftDblClick();
+		DeviceDialog * ShowDeviceDialog();
+
+		virtual void InitializeDialog(DeviceDialog * in) const { }
+		/// Initialize device data from a dialog
+		/** Transfers the data from a dialog window into the corresponding 
+		 *  device object. 
+		 * \param dlg device dialog
+		 * \retval true if the device has changed in a way that it must be reinitialized.
+		 * \retval false otherwise
+		 */
+		virtual bool readDialog (DeviceDialog * dlg) { 
+			mutASSERT (false);
+			return false; 
+		}
+		/// detach device
+		/** Detaches the device from any route and deletes the device. 
+		 * \return true if the corresponding device has been removed and we can delete the Shape.
+		 */
+		virtual bool DetachDevice ();
+		virtual bool replaceSelfBy (thistype  * newshape);
+		virtual bool CanHandleType (mutabor::DevType  type) { return false; }
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
+
 
 #if 0
-	protected:
 		void RemoveFromStringMap(stringmaptype & sm) {
 			std::pair<stringmapiterator,stringmapiterator> 
 				bounds = sm.equal_range(&m_label);
@@ -159,11 +362,23 @@ namespace mutaborGUI {
 		void InsertSelfToStringMap(stringmaptype & sm) {
 			sm.insert(std::make_pair(&m_label,this)); 
 		}
-#endif
+#endif	       
 	private:
-		DECLARE_DYNAMIC_CLASS(MutIconShape)
-		DECLARE_EVENT_TABLE()
+		DECLARE_ABSTRACT_CLASS(MutDeviceShape)
+		DECLARE_EVENT_TABLE() 
 	};
+
+	template <class T>
+	wxSizerFlags MutDeviceShape<T>::sizerFlags;
+
+
+
+
+	typedef MutDeviceShape<inputdevicetypes> MutInputDeviceShape;
+	typedef std::list<MutInputDeviceShape *> MutInputDeviceShapeList;
+
+	typedef MutDeviceShape<outputdevicetypes> MutOutputDeviceShape;
+	typedef std::list<MutOutputDeviceShape *> MutOutputDeviceShapeList;
 
 }
 #endif				/* DEVICESHAPE_H_PRECOMPILED */
