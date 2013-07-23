@@ -43,7 +43,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/MutIcon.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
-#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 //#include "Device.h"
 
 

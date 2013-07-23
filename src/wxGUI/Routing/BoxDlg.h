@@ -47,8 +47,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/resourceload.h"
-#include "src/wxGUI/Routing/InputDeviceShape.h"
-#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 
 #ifndef MUWX_ROUTING_BOXDLG_H_PRECOMPILED
 #define MUWX_ROUTING_BOXDLG_H_PRECOMPILED

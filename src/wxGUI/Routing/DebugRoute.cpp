@@ -21,8 +21,7 @@
 #ifdef DEBUG
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/kernel/routing/Device.h"
-#include "src/wxGUI/Routing/InputDeviceShape.h"
-#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"

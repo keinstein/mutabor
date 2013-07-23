@@ -43,7 +43,7 @@
 #include "src/kernel/routing/Route.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
-#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
 #include "src/wxGUI/Routing/OutputMidiDeviceShape.h"
 #include "src/wxGUI/Routing/OutputMidiFileDeviceShape.h"

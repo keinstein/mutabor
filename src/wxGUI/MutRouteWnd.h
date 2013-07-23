@@ -43,8 +43,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/RouteLists.h"
 #include "src/wxGUI/generic/muconvauto.h"
-#include "src/wxGUI/Routing/InputDeviceShape.h"
-#include "src/wxGUI/Routing/OutputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 
 #ifndef MUWX_MUTROUTEWND_H_PRECOMPILED

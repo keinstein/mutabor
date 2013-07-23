@@ -45,7 +45,7 @@
 #include "src/kernel/routing/Device.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
-#include "src/wxGUI/Routing/InputDeviceShape.h"
+#include "src/wxGUI/Routing/DeviceShape.h"
 #include "src/wxGUI/resourceload.h"
 //#include "Device.h"
 

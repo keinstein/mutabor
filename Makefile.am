@@ -127,7 +127,6 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/Routing/DeviceShape.h \
 		src/wxGUI/Routing/GUIRoute.h \
 		src/wxGUI/Routing/InputDevDlg.h \
-		src/wxGUI/Routing/InputDeviceShape.h \
 		src/wxGUI/Routing/InputGuidoFileDeviceShape.h \
 		src/wxGUI/Routing/InputMidiDeviceShape.h \
 		src/wxGUI/Routing/InputMidiFileDeviceShape.h \
@@ -135,7 +134,6 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/Routing/NewInputDeviceShape.h \
 		src/wxGUI/Routing/NewOutputDeviceShape.h \
 		src/wxGUI/Routing/OutputDevDlg.h \
-		src/wxGUI/Routing/OutputDeviceShape.h \
 		src/wxGUI/Routing/OutputGuidoFileDeviceShape.h \
 		src/wxGUI/Routing/OutputMidiDeviceShape.h \
 		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
@@ -179,7 +177,6 @@ libmutaborgui_a_INDENTS = \
 		src/wxGUI/Routing/DeviceShape.cpp \
 		src/wxGUI/Routing/GUIRoute.cpp \
 		src/wxGUI/Routing/InputDevDlg.cpp \
-		src/wxGUI/Routing/InputDeviceShape.cpp \
 		src/wxGUI/Routing/InputGuidoFileDeviceShape.cpp \
 		src/wxGUI/Routing/InputMidiDeviceShape.cpp \
 		src/wxGUI/Routing/InputMidiFileDeviceShape.cpp \
@@ -187,7 +184,6 @@ libmutaborgui_a_INDENTS = \
 		src/wxGUI/Routing/NewInputDeviceShape.cpp \
 		src/wxGUI/Routing/NewOutputDeviceShape.cpp \
 		src/wxGUI/Routing/OutputDevDlg.cpp \
-		src/wxGUI/Routing/OutputDeviceShape.cpp \
 		src/wxGUI/Routing/OutputGuidoFileDeviceShape.cpp \
 		src/wxGUI/Routing/OutputMidiDeviceShape.cpp \
 		src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp \
