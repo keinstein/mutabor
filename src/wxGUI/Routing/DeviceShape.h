@@ -320,8 +320,7 @@ namespace mutaborGUI {
 		 *              up. Negative values indicate downwards direction.
 		 */
 		virtual void MoveDevice(int count) {
-#warning MoveDevice
-			//	device->MoveInList(count);
+				device->MoveInList(count);
 		}
 
 		/** 

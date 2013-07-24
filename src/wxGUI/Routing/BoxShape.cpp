@@ -115,6 +115,10 @@ namespace mutaborGUI {
 	wxSizerFlags MutBoxShape::sizerFlags;
 	int MutBoxShape::maxBoxId = Box0 - 1;
 
+	MutBoxShape::~MutBoxShape() {
+		BoxData::GetBox(boxId).Detatch(this);
+	}
+
 //* \todo  fix tab order
 	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, int Id)
 	{

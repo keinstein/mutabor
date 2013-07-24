@@ -104,10 +104,7 @@ namespace mutaborGUI {
 				Create(parent,wid,Id);
 			}
   
-		virtual ~MutBoxShape()
-			{ 
-//		delete channels; 
-			}
+		virtual ~MutBoxShape(); 
 	
 		bool Create(wxWindow * parent,wxWindowID wid, int Id = NoBox);
 

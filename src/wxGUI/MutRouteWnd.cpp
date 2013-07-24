@@ -700,7 +700,7 @@ void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
 	    dynamic_cast<MutInputDeviceShape *>(win) || 
 	    dynamic_cast<MutOutputDeviceShape *>(win)) {
 #warning Enable this as soon as the classes catch the event
-//		wxPostEvent(win,event);	
+		wxPostEvent(win,event);	
 	}
 }
 

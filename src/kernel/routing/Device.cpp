@@ -206,6 +206,24 @@ namespace mutabor {
 	}
 
 
+	template <class T, class P, class L>
+	int CommonTypedDeviceAPI<T,P,L>::MoveInList(int count) {
+		if (!count) return -1;
+		thistype * dev = static_cast <thistype *> (this);
+		typename listtype::iterator pos = FindInDeviceList(DevicePtr(dev));
+
+		if (pos == deviceList.end()) return -1;
+		typename listtype::iterator newpos = pos + count;
+		if (newpos == deviceList.end()) --newpos;
+		if (count > 0) 
+			std::rotate (pos, newpos, newpos + 1);
+		else 
+			std::rotate (newpos, pos, pos + 1);
+		return newpos - deviceList.begin();
+		
+	}
+
+
 #ifdef WX
 	template <class T, class P, class L>
 	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {

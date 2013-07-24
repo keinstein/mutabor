@@ -589,6 +589,8 @@ namespace mutabor {
 			return static_cast<const thistype *>(this);
 		}
 
+		virtual	int MoveInList(int count);
+
 		static void ClearDeviceList() {
 			while (!deviceList.empty()) {
 #ifdef DEBUG
