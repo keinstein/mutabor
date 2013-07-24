@@ -301,7 +301,7 @@ namespace mutaborGUI {
 		/** This function creates the roues menu.
 		    \param menuBar Menu bar, where the file menu is to be appended
 		*/
-		void MakeRoutesMenu(wxMenuBar * menuBar);
+		void MakeRoutesMenu(wxMenuBar * menuBar, MenuType type);
 
 		/// Creates a View menu
 		/** This function creates the view menu.

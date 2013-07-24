@@ -739,7 +739,7 @@ namespace mutaborGUI {
 		MakeEditMenu(menuBar, type);
 		MakeViewMenu(menuBar, type);
 		MakeLogicMenu(menuBar);
-		MakeRoutesMenu(menuBar);
+		MakeRoutesMenu(menuBar, type);
 		MakeSequencerMenu(menuBar);
 		MakeHelpMenu(menuBar);
 
@@ -1193,14 +1193,16 @@ namespace mutaborGUI {
 		menuBar->Append(menu, _("&Logic"));
 	}
 
-	void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
+	void MutApp::MakeRoutesMenu(wxMenuBar * menuBar, MenuType type)
 	{
 		wxMenu * menu = new wxMenu;
+		if (type == RouteMenu) {
 			menu->Append( CM_MOVE_UP, _("&Move icon up\tShift+Up"), 
 				      _("Moves the device or box upwards in the window."));
 			menu->Append( CM_MOVE_DOWN, _("&Move icon down\tShift+Down"), 
 				      _("Moves the device or box downwards in the window."));
 			menu->AppendSeparator();
+		}
 		menu->Append( CM_ROUTELOAD, _("&Load routes"), 
 			      _("Load the current route configuration from a file"));
 		menu->Append( CM_ROUTESAVE, _("&Save routes"), 
