@@ -1043,10 +1043,10 @@ namespace mutaborGUI {
 	wxMenu * MutApp::MakeFileMenu(wxMenuBar * menuBar, MenuType type)
 	{
 		wxMenu * menu = new wxMenu;
-		MENUITEM(_("&New\tCtrl+N"), CM_FILENEW,
-			 _("Create a new logic file."));
-		MENUITEM(_("&Open...\tCtrl+O"), CM_FILEOPEN,
-			 _("Open a logic file in editor window"));
+		menu->Append( CM_FILENEW, _("&New\tCtrl+N"), 
+			      _("Create a new logic file."));
+		menu->Append( CM_FILEOPEN, _("&Open...\tCtrl+O"), 
+			      _("Open a logic file in editor window"));
 
 		if (type == EditorMenu || type == RouteMenu) {
 			menu->Append (wxID_SAVE);
@@ -1054,15 +1054,15 @@ namespace mutaborGUI {
 			menu->Append (wxID_CLOSE);
 		}
 
-		MENUITEM_SEPARATOR;
+		menu->AppendSeparator();
 
-		MENUITEM(_("&Execute\tCtrl+F9"), CM_EXECUTE,
-			 _("Load a logic file an immediately activate it"));
+		menu->Append( CM_EXECUTE, _("&Execute\tCtrl+F9"), 
+			      _("Load a logic file an immediately activate it"));
 
 #if (defined(__WXMAC__) || defined(__WXCOCOA__))
 		if (type == EditorMenu)
 #endif
-			MENUITEM_SEPARATOR;
+			menu->AppendSeparator();
 
 		if (type == EditorMenu) {
 			menu->Append (CM_PROPERTIES,
@@ -1088,7 +1088,7 @@ namespace mutaborGUI {
 
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-		MENUITEM_SEPARATOR;
+		menu->AppendSeparator();
 #endif
 		menu->Append(wxID_EXIT);
 		DEBUGLOG(docview,_T("Adding file history menu"));
@@ -1185,28 +1185,28 @@ namespace mutaborGUI {
 	void MutApp::MakeLogicMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
-		MENUITEM(_("&Compile\tAlt+F9"), CM_COMPILE, _("Load the actual file into the Mutabor Kernel."));
-		MENUITEM(_("&Activate\tF9"), CM_ACTIVATE, _("Activate the Mutabor Kernel."));
-		MENUITEM(_("&Stop\tF8"), CM_STOP, _("Stop the Mutabor Kernel."));
-		MENUITEM_SEPARATOR;
-		MENUITEM(_("&Panic\tF12"), CM_PANIC, _("Send \"all notes off\" signal to on all MIDI Channels."));
+		menu->Append( CM_COMPILE, _("&Compile\tAlt+F9"),  _("Load the actual file into the Mutabor Kernel."));
+		menu->Append( CM_ACTIVATE, _("&Activate\tF9"),  _("Activate the Mutabor Kernel."));
+		menu->Append( CM_STOP, _("&Stop\tF8"),  _("Stop the Mutabor Kernel."));
+		menu->AppendSeparator();
+		menu->Append( CM_PANIC, _("&Panic\tF12"),  _("Send \"all notes off\" signal to on all MIDI Channels."));
 		menuBar->Append(menu, _("&Logic"));
 	}
 
 	void MutApp::MakeRoutesMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
-		MENUITEM(_("&Move icon up\tShift+Up"), CM_MOVE_UP,
-			 _("Moves the device or box upwards in the window."));
-		MENUITEM(_("&Move icon down\tShift+Down"), CM_MOVE_DOWN,
-			 _("Moves the device or box downwards in the window."));
-		MENUITEM_SEPARATOR;
-		MENUITEM(_("&Load routes"), CM_ROUTELOAD,
-			 _("Load the current route configuration from a file"));
-		MENUITEM(_("&Save routes"), CM_ROUTESAVE,
-			 _("Save current route configuration to a file."));
-		MENUITEM(_("Save routes &as"), CM_ROUTESAVEAS,
-			 _("Save current route configuration to a file with a new name."));
+			menu->Append( CM_MOVE_UP, _("&Move icon up\tShift+Up"), 
+				      _("Moves the device or box upwards in the window."));
+			menu->Append( CM_MOVE_DOWN, _("&Move icon down\tShift+Down"), 
+				      _("Moves the device or box downwards in the window."));
+			menu->AppendSeparator();
+		menu->Append( CM_ROUTELOAD, _("&Load routes"), 
+			      _("Load the current route configuration from a file"));
+		menu->Append( CM_ROUTESAVE, _("&Save routes"), 
+			      _("Save current route configuration to a file."));
+		menu->Append( CM_ROUTESAVEAS, _("Save routes &as"), 
+			      _("Save current route configuration to a file with a new name."));
 		menuBar->Append(menu, _("&Routes"));
 	}
 
@@ -1248,34 +1248,34 @@ namespace mutaborGUI {
 			menu->AppendSeparator();
 		}
 	
-		/*	MENUCHECKITEM(_("&Status bar"), IDW_STATUSBAR,
+		/*	menu->AppendCheckItem( IDW_STATUSBAR, _("&Status bar"), 
 			_("Toggle status bar on/off"));
-			MENUCHECKITEM(_("&Toolbar"), IDW_TOOLBAR,
+			menu->AppendCheckItem( IDW_TOOLBAR, _("&Toolbar"), 
 			_("Toggle tool bar on/off"));
-			MENUITEM_SEPARATOR;
+			menu->AppendSeparator();
 		*/
 		if (type != ProgramMenu) {
 			if (type != EditorMenu) {
-				MENUITEM_SEPARATOR;
+				menu->AppendSeparator();
 			}
-			MENUCHECKITEM(_("Current ke&ys\tF5"), CM_TOGGLEKEY,
-				      _("Show current keys window"));
-			MENUCHECKITEM(_("&Tone system\tF6"), CM_TOGGLETS,
-				      _("Show tone system window"));
-			MENUCHECKITEM(_("&Actions\tF7"), CM_TOGGLEACT,
-				      _("Show current actions window"));
+			menu->AppendCheckItem( CM_TOGGLEKEY, _("Current ke&ys\tF5"), 
+					       _("Show current keys window"));
+			menu->AppendCheckItem( CM_TOGGLETS, _("&Tone system\tF6"), 
+					       _("Show tone system window"));
+			menu->AppendCheckItem( CM_TOGGLEACT, _("&Actions\tF7"), 
+					       _("Show current actions window"));
 		}
-		MENUCHECKITEM(_("&Routes\tF11"), CM_ROUTES,
-			      _("Open route configuration window"));
+		menu->AppendCheckItem( CM_ROUTES, _("&Routes\tF11"), 
+				       _("Open route configuration window"));
 
 		if (type != ProgramMenu) {
-			/*	  MENUITEM_SEPARATOR;
-				  MENUCHECKITEM(_("&One window mode"), CM_OWM,
+			/*	  menu->AppendSeparator();
+				  menu->AppendCheckItem( CM_OWM, _("&One window mode"), 
 				  _("Toggle logic satus window: one each or one common"));
-				  MENUCHECKITEM(_("One &common action window"), CM_CAW,
+				  menu->AppendCheckItem( CM_CAW, _("One &common action window"), 
 				  _("Toggle action window mode: one each or one common"));
 			*/
-			MENUITEM_SEPARATOR;
+			menu->AppendSeparator();
 			menu->Append(CM_SELECTBOX,_("Select &Box"), new wxMenu(),
 				     _("Select current Box"));
 		}
@@ -1286,12 +1286,12 @@ namespace mutaborGUI {
 	void MutApp::MakeSequencerMenu(wxMenuBar * menuBar)
 	{
 		wxMenu * menu = new wxMenu;
-		MENUITEM(_("&Play"), CM_INDEVPLAY,
-			 _("Start playing the music from input file devices"));
-		MENUITEM(_("St&op"), CM_INDEVSTOP,
-			 _("Stop playing the music from input file devices"));
-		MENUITEM(_("P&ause"), CM_INDEVPAUSE,
-			 _("Pause plaing the music from input file devices"));
+		menu->Append( CM_INDEVPLAY, _("&Play"), 
+			      _("Start playing the music from input file devices"));
+		menu->Append( CM_INDEVSTOP, _("St&op"), 
+			      _("Stop playing the music from input file devices"));
+		menu->Append( CM_INDEVPAUSE, _("P&ause"), 
+			      _("Pause plaing the music from input file devices"));
 		menuBar->Append(menu, _("&Sequencer"));
 	}
 
@@ -1300,31 +1300,31 @@ namespace mutaborGUI {
 
 	{
 		wxMenu * menu = new wxMenu;
-		MENUITEM(_("Online &Help\tF1"), CM_HELP,
-			 _("Open the help Window"));
-		MENUITEM(_("&Manual"), CM_HELPHANDBOOK,
-			 _("Open the manual"));
-		MENUITEM(_("Language &reference"), CM_HELPREFERENCE,
-			 _("Open the Mutabor language reference"));
-		MENUITEM_SEPARATOR;
-		MENUITEM(_("&Index"), CM_HELPINDEX,
-			 _("Open the help index"));
-		MENUITEM(_("&Search"), CM_HELPSEARCH,
-			 _("Search the help system for a specific keyword"));
-		MENUITEM_SEPARATOR;
-		MENUITEM(_("Help &on help"), CM_HELPONHELP,
-			 _("Show Help about the help system"));
+		menu->Append( CM_HELP, _("Online &Help\tF1"), 
+			      _("Open the help Window"));
+		menu->Append( CM_HELPHANDBOOK, _("&Manual"), 
+			      _("Open the manual"));
+		menu->Append( CM_HELPREFERENCE, _("Language &reference"), 
+			      _("Open the Mutabor language reference"));
+		menu->AppendSeparator();
+		menu->Append( CM_HELPINDEX, _("&Index"), 
+			      _("Open the help index"));
+		menu->Append( CM_HELPSEARCH, _("&Search"), 
+			      _("Search the help system for a specific keyword"));
+		menu->AppendSeparator();
+		menu->Append( CM_HELPONHELP, _("Help &on help"), 
+			      _("Show Help about the help system"));
 
 #if !(defined(__WXMAC__) || defined(__WXCOCOA__))
-		MENUITEM_SEPARATOR;
+		menu->AppendSeparator();
 #endif
 
-		MENUITEM(_("&About"), CM_ABOUT,
-			 _("Show information about the program"));
+		menu->Append( CM_ABOUT, _("&About"), 
+			      _("Show information about the program"));
 #ifdef DEBUG
-		MENUITEM_SEPARATOR;
-		MENUITEM(_("Stop"), cmCallExitId,
-			 _("Stop the current program"));
+		menu->AppendSeparator();
+		menu->Append( cmCallExitId, _("Stop"), 
+			      _("Stop the current program"));
 #endif
 		menuBar->Append(menu, _("&Help"));
 	}
