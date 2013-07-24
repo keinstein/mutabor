@@ -952,43 +952,24 @@ namespace mutaborGUI {
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 */
 
-		for (wxWindowList::iterator i = wxTopLevelWindows.begin();
-		     i!= wxTopLevelWindows.end();
+		/* make a copy of the top level window list as the 
+		   list may change or not, this depends on actions, we
+		   don't have control over */ 
+		wxWindowList frames = wxTopLevelWindows;
+
+		for (wxWindowList::iterator i = frames.begin();
+		     i!= frames.end();
 		     i++) {
-			if (!window->Close()) {
+			wxWindow * window = *i;
+			if (wxTopLevelWindows.Find(window) == NULL) 
+				continue;
+			if (! window->Close()) {
 //			wxIdleEvent::SetMode(imode);
 				quitting = false;
 				return;
 			}
                 
 		}
-#if 0
-		while ((window = GetTopWindow())) {
-			DEBUGLOG (other, _("Closing window of class %s"), 
-				  muT(typeid(*(window)).name()).c_str());
-
-			if (!window->Close()) {
-				wxIdleEvent::SetMode(imode);
-				quitting = false;
-				return;
-			}
-
-			DEBUGLOG (other, _T("Closed window"));
-
-			// empty queue and process idle event to delete the frame
-
-/*		while (Pending())
-		Dispatch();
-*/
-			//   wxIdleEvent idle;
-			//ProcessEvent(idle);
-			//while(Pending())
-			//  Dispatch();
-//		DeletePendingObjects();
-
-			DEBUGLOG (other, _T("Dispatched all events"));
-		}
-#endif
 
 		DEBUGLOG (other, _T("finished loop"));
 	}
