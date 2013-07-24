@@ -509,7 +509,7 @@ namespace mutabor {
 	*/
 
 	template<class T, class D>
-	int CommonMidiOutput<T,D>::GetChannel(int inkey, int channel, size_t id)
+	int CommonMidiOutput<T,D>::GetChannel(int inkey, size_t channel, size_t id)
 	{
 		mutASSERT(this->isOpen);
 		TRACEC;

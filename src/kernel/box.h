@@ -53,7 +53,7 @@ enum BoxType
 /** linked list containing key information. First is always 0 last has next == 0. */
 typedef struct {
 	int number;
-	int channel;
+	size_t channel;
 	size_t id; /**< unique Id if the input device suports it */
 	void * userdata;
 	size_t next;

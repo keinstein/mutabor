@@ -587,20 +587,6 @@ namespace mutaborGUI {
 		DEBUGLOG(routing,_T("Added box shape for box %d (list of %d)"),
 			 box,(int)BoxData::GetBox(box).GetBoxShapes().size());
 
-#if 0 // the box is registered during Create
-		if (box >= 0) {
-#ifdef DEBUG
-			const MutBoxShapeList & list = 
-				BoxData::GetBox(box).GetBoxShapes();
-			MutBoxShapeList::const_iterator pos = 
-				std::find(list.begin(),
-					  list.end(),
-					  shape);
-			mutASSERT(pos == list.end());
-#endif
-			BoxData::GetBox(box).Attatch(shape);
-		}
-#endif
 		return shape;
 	}
 

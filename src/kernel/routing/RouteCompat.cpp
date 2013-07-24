@@ -49,7 +49,7 @@ namespace compat30 {
 	{
 		if ( nr < 0 )
 			return 0;
-		OutputDevice Out = OutputDeviceClass::GetDevice(nr);
+		OutputDevice Out = OutputDeviceClass::GetDevice(nr, Device::IDTypeFile);
 		return Out;
 	}
 	
@@ -260,6 +260,13 @@ namespace compat30 {
 			switch (Str2DT(muT(Type))) {
 			case DTMidiPort:
 				static_cast<InputMidiPort *>(In.get()) -> SetDevId(DevId);
+			case DTNotSet:
+			case DTUnknown:
+			case DTMidiFile:
+			case DTGis:
+			default:
+				/* do nothing, here */
+				;
 			}
 			GETLINE;
 			DEBUGLOG2(routing,_T("+%s"),s.c_str());

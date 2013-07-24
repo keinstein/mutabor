@@ -35,6 +35,8 @@
 // the following file is not compiled independently
 #include "src/kernel/routing/midi/midicmn.cpp"
 
+#warning Verify handling of SysEx messages for realtime MIDI and timing dependent devices
+
 namespace mutabor {
 
 	template class CommonMidiOutput<MidiPortOutputProvider,OutputDeviceClass>;

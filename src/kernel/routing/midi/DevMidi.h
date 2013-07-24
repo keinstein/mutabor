@@ -214,7 +214,6 @@ namespace mutabor {
 			return *this;
 		}
 
-#warning Verify handling of SysEx messages for realtime MIDI and timing dependent devices
 		/** 
 		 * Outputs a system exclusive message. The message must include 
 		 * a valid device id.

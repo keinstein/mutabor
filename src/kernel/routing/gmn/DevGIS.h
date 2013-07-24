@@ -163,7 +163,7 @@ namespace mutabor {
 			{};
 */
 
-		virtual int  GetChannel(int taste, int channel, size_t id)
+		virtual int  GetChannel(int taste, size_t channel, size_t id)
 			{
 				return -1;
 			}

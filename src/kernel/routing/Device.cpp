@@ -93,7 +93,7 @@ namespace mutabor {
 		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
 #ifdef DEBUG
 		routeListType::const_iterator i = 
-			find(routes.begin(),routes.end(),route.get());
+			find(routes.begin(),routes.end(),route);
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInDeviceList(static_cast<thistype *>(this)));
 #endif
@@ -123,7 +123,7 @@ namespace mutabor {
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		routeListType::iterator i = 
-			std::find(routes.begin(),routes.end(),route.get());
+			std::find(routes.begin(),routes.end(),route);
 		bool found = (i != routes.end());
 		mutASSERT(found);
 		if (found) {
@@ -156,19 +156,6 @@ namespace mutabor {
 		TRACEC;
 		return true;
 	}
-		
-#if 0
-	template <class T, class P, class L>
-	Route CommonTypedDeviceAPI<T,P,L>::GetRoute(int nr)// Nummern beginnen mit 0
-	{
-		mutASSERT(nr >= 0);
-		routeTypeList::iterator i = routes.begin();
-		while (nr--) {
-			if (i++ == routes.end()) return NULL;
-		}
-		return *i;
-	}
-#endif
 
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::InitializeIds()
@@ -193,26 +180,51 @@ namespace mutabor {
 
 	template <class T, class P, class L>
 	typename CommonTypedDeviceAPI<T,P,L>::DevicePtr 
-	CommonTypedDeviceAPI<T,P,L>::GetDevice(int id)
+	CommonTypedDeviceAPI<T,P,L>::GetDevice(int id, devidtype kind)
 	{
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {
-			if ((*i)->get_routefile_id() == id) {
+			int devid;
+			switch (kind) {
+			case IDTypeSession:
+				devid = (*i)->get_session_id();
+				break;
+			case IDTypeFile:
+				devid = (*i)->get_routefile_id();
+				break;
+			case IDTypeHardware:
+			default:
+				UNREACHABLECT(thistype);
+				return *(deviceList.end());
+			}
+			if (devid == id) {
 				return (*i);
 			}
 		}
 		return NULL;
 	}
 
+
+#ifdef WX
+	template <class T, class P, class L>
+	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {
+		return Device::TowxString() 
+			+ wxString::Format(_T("\
+CommonTypedDeviceAPI:\n\
+   ptrct    = %d\n\
+"),(int)intrusive_ptr_get_refcount(this));
+	}
+#endif
+
+// protected:
+
 	template <class T, class P, class L>
 	void CommonTypedDeviceAPI<T,P,L>::AppendToDeviceList (DevicePtr dev) 
 	{
 #ifdef DEBUG
 		typename listtype::iterator i = 
-			std::find(deviceList.begin(),
-				  deviceList.end(),
-				  dev);
+			FindInDeviceList(dev);
 		if (i != deviceList.end()) {
 			UNREACHABLECT(listtype);
 		}
@@ -224,9 +236,7 @@ namespace mutabor {
 	void CommonTypedDeviceAPI<T,P,L>::RemoveFromDeviceList (DevicePtr dev) 
 	{
 		typename listtype::iterator i = 
-			std::find(deviceList.begin(),
-				  deviceList.end(),
-				  dev);
+			FindInDeviceList(dev);
 		if (i == deviceList.end()) {
 			UNREACHABLECT(listtype);
 		} else 	
@@ -255,19 +265,6 @@ namespace mutabor {
 		}
 #endif
 	}
-
-
-
-#ifdef WX
-	template <class T, class P, class L>
-	wxString CommonTypedDeviceAPI<T,P,L>::TowxString() const {
-		return Device::TowxString() 
-			+ wxString::Format(_T("\
-CommonTypedDeviceAPI:\n\
-   ptrct    = %d\n\
-"),(int)intrusive_ptr_get_refcount(this));
-	}
-#endif
 
 	template class CommonTypedDeviceAPI<OutputDeviceClass>;
 	template class CommonTypedDeviceAPI<InputDeviceClass>;
@@ -661,7 +658,7 @@ InputDeviceClass:\n\
 		}
 	}
 
-	int GetChannel(int box, int key, int channel, int id)
+	int GetChannel(int box, int key, size_t channel, size_t id)
 	{
 		TRACE;
 		const routeListType & list = RouteClass::GetRouteList();

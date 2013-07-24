@@ -250,9 +250,9 @@ namespace mutabor {
 			int inputid = config.Read(_T("Input Device"), -1);
 			int outputid = config.Read(_T("Output Device"), -1);
 			TRACET(thistype);
-			InputDevice in = InputDeviceClass::GetDevice(inputid);
+			InputDevice in = InputDeviceClass::GetDevice(inputid, Device::IDTypeFile);
 			TRACET(thistype);
-			OutputDevice out = OutputDeviceClass::GetDevice(outputid);
+			OutputDevice out = OutputDeviceClass::GetDevice(outputid, Device::IDTypeFile);
 			TRACET(thistype);
 			Route route = RouteFactory::Create(in,out);
 			TRACET(thistype);

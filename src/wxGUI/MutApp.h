@@ -2,12 +2,8 @@
  ***********************************************************************
  * Mutabor Application.
  *
- * $Id: MutApp.h,v 1.28 2011/11/02 14:31:58 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  *         T. Schlemmer <keinstein@users.berlios.de>
- * \date  2005/08/12
- *  $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.28 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

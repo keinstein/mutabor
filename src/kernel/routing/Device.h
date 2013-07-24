@@ -348,6 +348,13 @@ namespace mutabor {
 	class Device
 	{
 	public:
+		/* this will be used to get the right Id */
+		enum devidtype {
+			IDTypeSession,
+			IDTypeFile,
+			IDTypeHardware
+		};
+
 		virtual ~Device() { TRACEC; }
 	
 		/// Save current device settings in a tree storage
@@ -479,7 +486,7 @@ namespace mutabor {
 	// A common api for input and output devices that must be typed
 
 	template <class T, class P = boost::intrusive_ptr<T>, 
-		  class L = std::list <P> >
+		  class L = std::vector <P> >
 	class CommonTypedDeviceAPI: public Device {
 	private:
 		REFPTR_INTERFACE
@@ -559,11 +566,12 @@ namespace mutabor {
 		 */
 		static void InitializeIds();
 	
+
 		/// Scan the list of input devices for a given id.
 		/** \argument id (int) id to scan for
 		 *  \return (OutputDevice) pointer to the input device with the given id if found, NULL else.
 		 */
-		static DevicePtr GetDevice(int id);
+		static DevicePtr GetDevice(int id, devidtype kind);
 
 		operator const thistype & () const {
 			return *(static_cast <const thistype *>(this));
@@ -657,7 +665,7 @@ namespace mutabor {
 		virtual void NotesCorrect(RouteClass * route) = 0;
 		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
-		virtual int  GetChannel(int inkey, int channel, size_t id) = 0;
+		virtual int  GetChannel(int inkey, size_t channel, size_t id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
@@ -1114,7 +1122,7 @@ namespace mutabor {
 
 	void NotesCorrect(mutabor_box_type *  box);
 
-	int GetChannel(int box, int taste, int channel, int id);
+	int GetChannel(int box, int key, size_t channel, size_t id);
 
 
 }

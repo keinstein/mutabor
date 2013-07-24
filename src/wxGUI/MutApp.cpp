@@ -3,12 +3,9 @@
  * Mutabor Application.
  *
  * Copyright:   (c) 2005,2006,2007-2011 TU Dresden
- * Changes: (c) 2012 Tobias Schlemmer
+ * Changes: (c) 2012-2013 Tobias Schlemmer
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2011/11/05 15:19:38 $
- * \version $Revision: 1.55 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

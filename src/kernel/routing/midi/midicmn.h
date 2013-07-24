@@ -549,7 +549,7 @@ namespace mutabor {
 		void NotesCorrect(RouteClass * route);
 		void Controller(int mutabor_channel, int controller, int value);
 //		void Sustain(int channel, const ChannelData & cd);
-		int GetChannel(int inkey, int channel, size_t id);
+		int GetChannel(int inkey, size_t channel, size_t id);
 		void SplitOut (BYTE * p, size_t n);
 		void Quiet(RouteClass * r);
 		void Panic();
