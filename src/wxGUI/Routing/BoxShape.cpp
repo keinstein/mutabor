@@ -275,10 +275,30 @@ namespace mutaborGUI {
 	}
 
 
-	void MutBoxShape::DrawLines(wxDC & dc, const wxRect & screenpos) 
+	void MutBoxShape::DrawLines(wxDC & dc,
+				    wxWindow * paintingWindow)
 	{
-		mutASSERT(screenpos.width > 0);
-		mutASSERT(screenpos.height > 0);
+		mutASSERT(paintingWindow);
+#if 0 
+// code for checking that certain positions are correct.
+// Unfortunately this ClientToScreen does not work correctly for GTK
+		wxRect rect1 = GetScreenRect();
+		wxRect rect2 = GetRect();
+		
+		wxPoint pos1 = GetScreenPosition();
+		wxPoint pos2 = GetParent()->ClientToScreen(GetPosition());
+		wxPoint pos3 = rect1.GetTopLeft();
+		wxPoint pos4 = rect2.GetTopLeft();
+		wxPoint pos5 = GetParent()->ClientToScreen(pos4);
+		wxSize parentborder = (GetSize()-GetClientSize()).Scale(0.5,0.5);
+		DEBUGLOG(routinggui,_T("screen pos (%d,%d), client pos (%d,%d)"),
+			 pos1.x,pos1.y,pos2.x,pos2.y);
+		mutASSERT(pos1 == pos2 + parentborder);
+		mutASSERT(pos1 == pos3);
+		mutASSERT(pos2 == pos5);
+#endif
+		//mutASSERT(screenpos.width > 0);
+		//mutASSERT(screenpos.height > 0);
 		wxSizerItemList list = channels->GetChildren();
 		for (wxSizerItemList::iterator i = list.begin(); 
 		     i != (list.end()); i++)
@@ -290,11 +310,14 @@ namespace mutaborGUI {
 			mutASSERT(dynamic_cast<
 				  MutBoxChannelShape *
 				  >((*i)->GetWindow()));
+			channel->DrawLines(dc, paintingWindow);
+#if 0
 			wxPoint pos = GetPosition();
 #if __WXMAC__
 			pos += maxBorderSize - borderOffset;
 #endif
 			channel->DrawLines(dc, pos, screenpos);
+#endif
 		}
 	}
 

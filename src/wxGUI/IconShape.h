@@ -131,28 +131,43 @@ public:
 	void         OnPaint (wxPaintEvent &event ) ;
 	virtual void OnDraw (wxDC & dc);
 	virtual wxPoint GetPerimeterPoint( const wxPoint &i,
-					   const wxPoint &o ) const;
+					   const wxPoint &o, 
+					   wxWindow * paintingWindow ) const;
 	virtual void DrawPerimeterPoint(wxDC & dc, 
 					const wxPoint & center, 
 					wxPoint p) const;
 	virtual wxRect GetIconRect() const 
 	{
-		wxRect r = this->GetRect();
+		wxRect r = this->GetClientSize();
 		int iw = Icon.GetWidth();
+
 		r.x += maxBorderSize.x;
 		r.y += maxBorderSize.y;
-		return wxRect(r.x + (r.width - iw)/2, 
-			      r.y,
+
+		return wxRect((r.width - iw)/2, 
+			      0,
 			      iw,
 			      Icon.GetHeight());
 	}
-	
+
+        /** 
+	 * Tries to find the correct position of the window in a parent window.
+	 * 
+	 * \param win parent window.
+	 * 
+	 * \return position in win
+	 */
+	virtual wxPoint GetPositionInWindow(const wxWindow * win) const;
+
 	virtual void LineTo (wxDC & dc , 
 			     const wxPoint & p,
 			     const wxRect & screenpos) const;
 	virtual bool Recompute();
 	
 	virtual bool Layout();
+	virtual void Fit() {
+		this->SetSize(this->GetBestSize());
+	}
 
 	virtual bool AcceptsFocus() const {
 		return this->IsShown() && this->IsEnabled();

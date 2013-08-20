@@ -579,30 +579,56 @@ namespace mutaborGUI {
 		Refresh();
 	}
 
-#if 0
-
-	
-					   bool changeRoute) 
-	{
-		DEBUGLOG(routinggui,_T("Setting output of %p to %p (change route %p = %d)"),this,device,route.get(), changeRoute);
-		if (changeRoute) {
-			mutASSERT(route);
-			OutputDevice dev = device ? device -> GetDevice() : NULL;
-			route -> Attatch(dev);
-		}
-#ifdef DEBUG
-		if (device && route) {
-			mutASSERT(device->GetDevice() == route->GetOutputDevice());
-		}
-#endif
-		output = device;
-	}
-#endif
 
 	void MutBoxChannelShape::DrawLines(wxDC & dc, 
-					   const wxPoint & parentPosition,
-					   const wxRect & screenpos) const
+					   wxWindow * paintingWindow) const
 	{
+		mutASSERT(paintingWindow);
+		if (!paintingWindow)
+			return;
+
+		wxPoint myoffset = GetPositionInWindow(paintingWindow);
+		wxRect screenRect = GetClientRect();
+		wxPoint center(screenRect.x + screenRect.width/2,
+			       screenRect.y + screenRect.height/2);
+
+		center += myoffset;
+
+		wxPoint origin(dc.DeviceToLogicalX(0), dc.DeviceToLogicalY(0));
+		wxPoint drawingCenter = center + origin; 
+                // without origin as this has been incorporated in the screen coordinates
+
+		if (input) {
+			wxRect inputRect = input->GetClientRect();
+			wxPoint inputOffset = input->GetPositionInWindow(paintingWindow);
+			wxPoint inputPosition(inputRect.x + inputRect.width/2,
+					      inputRect.y + inputRect.height/2);
+			inputPosition += inputOffset;
+
+			inputPosition = input->GetPerimeterPoint(inputPosition,center, paintingWindow);
+			wxPoint position = GetPerimeterPoint(center,inputPosition,paintingWindow);
+			position = position + origin;
+			
+			dc.DrawLine(inputPosition+origin, position);
+			dc.DrawLine(drawingCenter, position); // make it visible outside the shape
+		}
+
+		if (output) {
+			wxRect outputRect = output->GetScreenRect();
+			wxPoint outputOffset = output->GetPositionInWindow(paintingWindow);
+			wxPoint outputPosition(outputRect.x + outputRect.width/2,
+					       outputRect.y + outputRect.height/2);
+			outputPosition += outputOffset;
+			outputPosition = output->GetPerimeterPoint(outputPosition,center,paintingWindow);
+			wxPoint position = GetPerimeterPoint(center,outputPosition, paintingWindow);
+			position = position + origin;
+
+			dc.DrawLine(outputPosition + origin, position);
+			dc.DrawLine(drawingCenter, position); // make it visible outside the shape
+		}
+
+
+#if 0
 		wxRect m_rect = GetRect();
 		m_rect.x += parentPosition.x;
 		m_rect.y += parentPosition.y;
@@ -631,7 +657,7 @@ namespace mutaborGUI {
 				wxPoint p2(center.x, 
 					   m_rect.y + Icon.GetHeight()/2);
 				wxPoint p1(rect.x+rect.width/2,
-				       rect.y + rect.height/2);
+					   rect.y + rect.height/2);
 				p1 = input->GetPerimeterPoint(p1, p2);
 				p2 = GetPerimeterPoint(p2,p1,parentPosition);
 				input -> LineTo(dc,p1,screenpos);
@@ -670,7 +696,7 @@ namespace mutaborGUI {
 
 				wxPoint p2(center.x, m_rect.y + Icon.GetHeight()/2);
 				wxPoint p1(rect.x+rect.width/2,
-				   rect.y + rect.height/2);
+					   rect.y + rect.height/2);
 				p1 = output->GetPerimeterPoint(p1, p2);
 				p2 = GetPerimeterPoint(p2,p1,parentPosition);
 				output -> LineTo(dc,p1,screenpos);
@@ -678,12 +704,36 @@ namespace mutaborGUI {
 				dc.DrawLine(p2+origin, center+origin);
 			}
 		}
+#endif
 	}
 	
 	wxPoint MutBoxChannelShape::GetPerimeterPoint(const wxPoint &i,
 						      const wxPoint &o, 
-						      const wxPoint & parentPosition)
-		const {
+						      wxWindow * paintingWindow) const 
+	{
+		
+		wxPoint myoffset = GetPositionInWindow(paintingWindow);
+//	          wxPoint inner = ScreenToClient(i); unused
+		wxPoint outer = o - myoffset;
+		wxRect screenRect = GetClientRect();
+		// transform Screen rect to upper left and 
+		wxPoint upperLeft(screenRect.x,screenRect.y);
+		wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);
+
+		wxPoint center((upperLeft.x+lowerRight.x)/2,
+			       (upperLeft.y+lowerRight.y)/2);
+		
+		wxPoint perimeterpoint(outer.x <= center.x ? upperLeft.x: lowerRight.x,
+				       center.y);
+				       
+		mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),
+						       usedperimeterpoints.end(),
+						       perimeterpoint);
+		if (pos == usedperimeterpoints.end())
+			usedperimeterpoints.push_back(perimeterpoint);
+
+		return perimeterpoint + myoffset;
+#if 0
 		wxRect r = GetRect();
 		mutASSERT(r.width > 0);
 		mutASSERT(r.height > 0);
@@ -718,22 +768,23 @@ namespace mutaborGUI {
 
 	
 		return p;
+#endif
 	}
 
-void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc, 
-					    const wxPoint & center, 
-					    wxPoint p) const 
-{
-	mutUnused(center); // we are providing our own centre
-	wxPoint mycenter = wxPoint()+GetSize()/2;
-	mutASSERT(mycenter.x > 0);
-	mutASSERT(mycenter.y > 0);
+	void MutBoxChannelShape::DrawPerimeterPoint(wxDC & dc, 
+						    const wxPoint & center, 
+						    wxPoint p) const 
+	{
+		mutUnused(center); // we are providing our own centre
+		wxPoint mycenter = wxPoint()+GetSize()/2;
+		mutASSERT(mycenter.x > 0);
+		mutASSERT(mycenter.y > 0);
 #if __WXGTK__
-	mycenter.y -= maxBorderSize.y;
-	p.y -= maxBorderSize.y;
+		mycenter.y -= maxBorderSize.y;
+		p.y -= maxBorderSize.y;
 #endif
-	dc.DrawLine(mycenter, p);
-}
+		dc.DrawLine(mycenter, p);
+	}
 
 
 

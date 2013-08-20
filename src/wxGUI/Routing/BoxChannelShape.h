@@ -276,11 +276,10 @@ namespace mutaborGUI {
 		virtual void ReadPanel(RoutePanel * panel);
 
 		virtual void DrawLines(wxDC & dc, 
-				       const wxPoint & parentPosition,
-				       const wxRect & screenpos) const;
+				       wxWindow * paintingWindow) const;
 		virtual wxPoint GetPerimeterPoint(const wxPoint &i,
 						  const wxPoint &o,
-						  const wxPoint & parentPosition) const;
+						  wxWindow * paintingWindow) const;
 		virtual void DrawPerimeterPoint(wxDC & dc, 
 						const wxPoint & center, 
 						wxPoint p) const;

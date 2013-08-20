@@ -182,7 +182,8 @@ namespace mutaborGUI {
 			return box->Delete(this);
 		}
 
-		virtual void DrawLines(wxDC & dc, const wxRect & screenpos);
+		virtual void DrawLines(wxDC & dc, 
+				       wxWindow * paintingWindow);
   
 		virtual bool Detach( wxWindow *window );
 		virtual bool Detach( wxSizer *sizer ) 

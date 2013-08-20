@@ -391,13 +391,13 @@ template<typename T>
 	pos -= maxBorderSize;
 	wxSize size = this->GetSize();
 	size += maxBorderSize + maxBorderSize;
-	ClearPerimeterPoints();
+//	ClearPerimeterPoints();
 	this->GetParent()->RefreshRect(wxRect(pos.x,pos.y,size.x,size.y));
-	this->GetParent()->Update();
 #if __WXGTK__ 
 	this->Refresh(true);
 //	this->Update();
 #endif
+	this->GetParent()->Update();
 	this->Thaw();
 #endif
 }
@@ -543,7 +543,59 @@ void MutIconShapeClass<T>::OnDraw (wxDC & dc)
 }
 
 template<typename T>
-wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &o) const {
+wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &o, wxWindow * paintingWindow) const {
+//	wxPoint inner = ScreenToClient(i); unused
+	wxPoint myoffset = GetPositionInWindow(paintingWindow);
+	wxPoint outer = o - myoffset;
+	DEBUGLOG(routinggui,_T("outer (%d,%d) is in device (%d,%d)"),o.x,o.y,outer.x,outer.y);
+	wxRect iconRect = this->GetIconRect();
+	DEBUGLOG(routinggui,_T("Icon rect: x=%d, y=%d, w=%d, h=%d"),iconRect.x,iconRect.y,iconRect.width,iconRect.height);
+	wxPoint iconCenter(iconRect.x+iconRect.width/2,
+			   iconRect.y+iconRect.height/2);
+	DEBUGLOG(routinggui,_T("center = (%d,%d)"), iconCenter.x, iconCenter.y);
+/*
+	wxRect screenRect = this->GetScreenRect();
+	// transform Screen rect to upper left and 
+	wxPoint upperLeft(this->ScreenToClient(wxPoint(screenRect.x,screenRect.y)));
+	wxPoint lowerRight(this->ScreenToClient(wxPoint(screenRect.x+screenRect.width,screenRect.y+screenRect.height)));
+*/
+	wxRect screenRect = this->GetClientRect();
+	wxPoint upperLeft(screenRect.x,screenRect.y);
+	wxPoint lowerRight(screenRect.x+screenRect.width,screenRect.y+screenRect.height);
+	DEBUGLOG(routinggui,_T("Rectangle: (%d,%d) -- (%d,%d)"),upperLeft.x, upperLeft.y, lowerRight.x, lowerRight.y);
+
+	wxPoint perimeterpoint(0,0);
+	if (lowerRight.x <= outer.x) {
+		perimeterpoint.x = lowerRight.x;
+		perimeterpoint.y = iconCenter.y;
+	} else if (outer.x <= upperLeft.x) {
+		perimeterpoint.x = upperLeft.x;
+		perimeterpoint.y = iconCenter.y;
+	} else if (outer.y <= upperLeft.y) {
+		perimeterpoint.x = iconCenter.x;
+		perimeterpoint.y = upperLeft.y;
+	} else if (lowerRight.y <= outer.y) {
+		perimeterpoint.x = iconCenter.x;
+		perimeterpoint.y = lowerRight.y;
+	} else {
+		perimeterpoint = iconCenter;
+	}
+
+	mutpointlist::iterator pos = std::find(usedperimeterpoints.begin(),
+					       usedperimeterpoints.end(),
+					       perimeterpoint);
+	if (pos == usedperimeterpoints.end())
+		usedperimeterpoints.push_back(perimeterpoint);
+
+	wxPoint retval = perimeterpoint + myoffset;
+
+	DEBUGLOG(routinggui,_T("perimeter point (%d,%d), returning (%d,%d)"), 
+		 perimeterpoint.x,perimeterpoint.y,retval.x,retval.y);
+
+	return retval;
+
+
+#if 0
 	wxRect r = this->GetRect();
 	DEBUGLOG (other, _T("Rect: (%d,%d) -- (%d,%d)"),r.x,r.y,r.x+r.width,r.y+r.height);
 	DEBUGLOG (other, _T("Points: i = (%d,%d), o = (%d, %d)"),i.x,i.y,o.x,o.y);
@@ -587,8 +639,8 @@ wxPoint MutIconShapeClass<T>::GetPerimeterPoint(const wxPoint &i,const wxPoint &
 #if __WXGTK__ && 0
 	p.y += maxBorderSize.y - this->GetWindowBorderSize().y / 2;
 #endif
-
 	return p;
+#endif
 }
 
 template<typename T>
@@ -596,6 +648,8 @@ void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
 					      const wxPoint & center, 
 					      wxPoint p) const 
 {
+	dc.DrawLine(center, p);
+#if 0
 	wxRect origin(this->GetRect());
 	p.x -= origin.x;
 	p.y -= origin.y;
@@ -608,7 +662,24 @@ void MutIconShapeClass<T>::DrawPerimeterPoint(wxDC & dc,
 	else p.x -= maxBorderSize.x;
 #endif
 	dc.DrawLine(center, p);
+#endif
   }
+
+
+
+template<typename T>
+wxPoint MutIconShapeClass<T>::GetPositionInWindow(const wxWindow * win) const {
+	wxPoint p(0,0);
+	const wxWindow * tmp = this;
+	while (tmp && tmp != win) {
+		p += tmp->GetPosition();
+		wxSize border = (tmp->GetSize() - tmp->GetClientSize());
+		p += border.Scale(0.5,0.5);
+
+		tmp = tmp->GetParent();
+	}
+	return tmp ? p:wxPoint(0,0);
+}
 
 template<typename T>
 void MutIconShapeClass<T>::LineTo(wxDC &dc, const wxPoint & p,
@@ -631,9 +702,10 @@ bool MutIconShapeClass<T>::Recompute()
 
 template<typename T>
 bool MutIconShapeClass<T>::Layout() {
-	wxRect rect = this->GetRect();
+	//ClearPerimeterPoints();
+	wxRect rect = this->GetClientRect();
 	int w = rect.width, h = rect.height, 
-	y = Icon.GetHeight() +	borderOffset.y;
+		y = Icon.GetHeight() +	borderOffset.y;
 
 	w -= 2* borderOffset.x;
 	h -= 2* borderOffset.y;

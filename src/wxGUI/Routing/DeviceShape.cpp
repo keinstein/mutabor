@@ -133,7 +133,8 @@ namespace mutaborGUI {
 		mutASSERT(pos == routes.end());
 #endif 
 		routes.push_back(route);
-		ClearPerimeterPoints();
+//		ClearPerimeterPoints();
+		Refresh();
 		Update();
 	}
 
@@ -178,7 +179,7 @@ namespace mutaborGUI {
 	template<class T>
 	bool MutDeviceShape<T>::Recompute() 
 	{
-		ClearPerimeterPoints();
+//		ClearPerimeterPoints();
 		SetIcon(GetMutIcon());
 		//  SetLabel (filename.GetFullName());
 		return GetIcon().IsOk();
@@ -363,6 +364,7 @@ namespace mutaborGUI {
 			parent->FitInside();
 			parent->SetVirtualSize(wxDefaultSize);
 			parent->Refresh();
+			parent->Update();
 		}
 		TRACEC;
 		device->Destroy();
