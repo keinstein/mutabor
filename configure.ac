@@ -115,76 +115,18 @@ AC_ARG_ENABLE(debug,
 	       CFLAGS="$CFLAGS -g"
 	       CXXFLAGS="$CXXFLAGS -g -D_GLIBCXX_DEBUG -D__RTMIDI_DEBUG__"
 	       AC_LANG_PUSH(C++)
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -Wall"
-	       AC_MSG_CHECKING([whether $CXX supports -Wall])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -Wno-unused-local-typedefs"
-	       AC_MSG_CHECKING([whether $CXX supports -Wno-unused-local-typedefs])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fdump-class-hierarchy"
-	       AC_MSG_CHECKING([whether $CXX supports -fdump-class-hierarchy])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fbounds-check"
-	       AC_MSG_CHECKING([whether $CXX supports -fbounds-check])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -pedantic"
-	       AC_MSG_CHECKING([whether $CXX supports -pedantic])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fdiagnostics-show-option"
-	       AC_MSG_CHECKING([whether $CXX supports -fdiagnostics-show-option])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -Wno-long-long"
-	       AC_MSG_CHECKING([whether $CXX supports -Wno-long-long])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -Wno-variadic-macros"
-	       AC_MSG_CHECKING([whether $CXX supports -Wno-variadic-macros])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fsanitize=address"
-	       AC_MSG_CHECKING([whether $CXX supports -fsanitize=address])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
-	       tmpcxxflags="$CXXFLAGS"
-	       CXXFLAGS="$CXXFLAGS -fno-omit-frame-pointer"
-	       AC_MSG_CHECKING([whether $CXX supports -fno-omit-frame-pointer])
-      	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
-	       			[AC_MSG_RESULT([yes])], 
-				[CXXFLAGS="$tmpcxxflags"]
-	       			[AC_MSG_RESULT([no])])
+	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
+	       	    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
+		     -Wno-variadic-macros
+	       do
+	       	       tmpcxxflags="$CXXFLAGS"
+	       	       CXXFLAGS="$CXXFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CXX supports $flag])
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [CXXFLAGS="$tmpcxxflags"
+              			         AC_MSG_RESULT([no])])
+	       done
 dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
 dnl	       tmpcxxflags="$CXXFLAGS"
 dnl	       tmplibs="$LIBS"
