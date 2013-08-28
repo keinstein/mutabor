@@ -64,9 +64,9 @@ TONE "common tone declaration"
     a = 440
     c = a-Third+Fifth-Octave
 
-" ==== Historic Tunings ============================================= "
+" ==== Historic Tunings =============================================
 
-  Quellen: - B.Billeter, Anweisung zum Stimmen von Tasteninstrumenten
+  Sources: - B.Billeter, Anweisung zum Stimmen von Tasteninstrumenten
            - H.Kelletat, Zur musikalischen Temperatur (Band I + II)
            - Wandel&Goltermann (Hrsg.), Ein Beitrag zur musik.Temp.
                                 der Musikinstrumente vom Mittelalter
@@ -87,7 +87,7 @@ TONSYSTEM
     Pythagorean = 60 [ pc, ,pd, ,pe,pf, ,pg, ,pa, ,ph] Octave
 
 
-" ==== Mitteltoenig ================================================= "
+" ==== Mean tone ================================================= "
 
 INTERVAL
     SynKomma=81:80
@@ -132,15 +132,15 @@ TONESYSTEM
 
 " ==== Werckmeister =================================================
 
-  Bei vielen Stimmungen wurde eine Inkonsistenz in der Literatur
-  bemerkt. Wenn dort in der Stimmanweisung die Rede war von
-  'Die Quinten von C bis A mitteltˆnig', und wir die mitteltˆnige
-  Fifth mit 1/4 Synton.Komma ansetzen, so erh‰lt man bereits beim
-  A Abweichungen von ¸ber 1.4 Cent gegen¸ber den Centtabellen in
-  derselbel Literatur! Deshalb habe ich hier ein wenig interpoliert. "
+  Considering many tunings, an inconsistency in the literaure has been
+  realiszed. If we read the instruction ‚ÄúDie Quinten von C bis A
+  mittelt√∂nig‚Äù, and if we assume a fifth with 1/4 syntonic comma, we
+  get a difference at A of more than 1.4 Cent in comparison with the
+  cent tables in the same literature. Therefore some interpolation has
+  been applied. "
 
 INTERVAL
-    MQ = 1.495:1 "a little bit lower than the exactly calulated fifth"
+    MQ = 1.495:1 "a little bit lower than the exactly calculated fifth"
 
 TONE
     wc   = c
@@ -161,9 +161,8 @@ TONESYSTEM
 
 
 " ==== Kirnberger 3 ================================================= "
-" Das pyth. Komma wird ungleichmÑ·ig auf die
-  Quinten C-G-D-A und Cis-Fis verteilt.
-  siehe H.Kelletat, Zur musik. Temp. Band II, 1982, S.140 "
+" The pyth. comma is distributed unevenly over the fifth C-G-D-A and Cis-Fis.
+  comp. H.Kelletat, Zur musik. Temp. Band II, 1982, S.140 "
 
 INTERVAL
     p1_12   = 1.00112989063:1 "1/12   pyth. Komma"
@@ -191,10 +190,10 @@ TONESYSTEM
     Kirnberger3 = 60 [kc,kcis,kd,kes,ke,kf,kfis,kg,kgis,ka,kb,kh] Octave
 
 
-" ==== 'Bach' (nach Billeter 1979) ================================== "
+" ==== 'Bach' (nach Billeter 1979) ================================== 
 
-  hier erschien es mir am sinnvollsten, einfach die in der
-  Literatur angegebene Cent-tabelle abzuschreiben.              "
+  It seems to be the best to transscribe the cent table that has been
+  given in the literature.  "
 
 TONE
     bc   = c
@@ -216,11 +215,10 @@ TONESYSTEM
 
 " ==== Schlick ======================================================
 
-  Es hat ¸ber eine Stunde gebraucht, bis ich diese Stimmung fertig
-  programmiert hatte. Dies lag an der schwer zu interpretierenden
-  Literatur ¸ber die Schlick-Stimmung. Angaben im Buch stimmten nicht
-  mit dem Hˆrtest ¸berein, und so habe ich mehrmals neu programmiert.
-  ich hoffe, die Stimmung nun getroffen zu haben.                     "
+  It took more than an hour to complete this tuning. The literature
+  about the Schlick turning can be hardly interpreted. Information in
+  the book didn't coincide with the hearing test. Thus, the tuning had
+  to be reprogrammed several times. I hope that I hit it now.  "
 
 INTERVAL
     Spy = 1.002261058:1 "sixth of a Pythagorean comma"
@@ -243,9 +241,9 @@ TONESYSTEM
     Schlick = 60 [c,ccis,cd,ces,ce,cf,cfis,cg,cas,ca,cb,ch] Octave
 
 
-" ==== Tonale Net ===================================================
+" ==== Tonnetz ===================================================
 
-  Eine mutierende Rein-Stimmung nach Martin Vogel. "
+  A mutating just intonation according to Martin Vogel. "
 
 TONE
     nc   = nf + Fifth - Octave
@@ -273,8 +271,8 @@ PATTERN
     nMinor = {0,3,7}
 
 " ==== Overtones ====================================================
-  At whithe keys there is an overtone sequenz, at the black ones an
-  undertone sequenz; uses 3 octaves of the piano "
+  At the white keys there is an overtone sequence, at the black ones an
+  undertone sequence; uses 3 octaves of the piano "
 
 INTERVAL
     i1=1:1   i2=2:1   i3=3:1   i4=4:1   i5=5:1   i6=6:1
