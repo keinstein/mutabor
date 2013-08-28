@@ -212,6 +212,23 @@ dnl
 	       wxflags="--debug"
 ])
 
+AC_ARG_ENABLE(address-sanitizer,
+	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
+	[AS_IF(test "$enableval" = yes,
+	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common
+	       do
+	       	       tmpcxxflags="$CXXFLAGS"
+	       	       CXXFLAGS="$CXXFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CXX supports $flag])
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [CXXFLAGS="$tmpcxxflags"
+              			         AC_MSG_RESULT([no])])
+	       done
+	       )
+	]
+)	
+
 AC_ARG_ENABLE(ansi,
 	AS_HELP_STRING([--enable-ansi],[Enable strict ansi compiling and warnings]),
 	[AS_IF(test "$enableval" = yes,
