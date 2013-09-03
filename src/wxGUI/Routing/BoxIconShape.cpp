@@ -3,12 +3,8 @@
  ********************************************************************
  * Box icon shape for route window.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/BoxIconShape.cpp,v 1.10 2011/11/03 17:20:15 keinstein Exp $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 1998
- * $Date: 2011/11/03 17:20:15 $
- * \version $Revision: 1.10 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

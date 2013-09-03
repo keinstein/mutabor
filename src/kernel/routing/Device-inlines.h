@@ -2,12 +2,8 @@
 ********************************************************************
 * Inline routitnes for the device class
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Device-inlines.h,v 1.2 2011/11/02 14:31:57 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 
-* $Date: 2011/11/02 14:31:57 $
-* \version $Revision: 1.2 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -30,8 +26,6 @@
 * \addtogroup route
 * \{
 ********************************************************************/
-// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
-
 /* we guard a little bit complicated to ensure the references are set right
  */
 

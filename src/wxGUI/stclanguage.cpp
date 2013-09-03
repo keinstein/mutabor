@@ -2,12 +2,9 @@
 ********************************************************************
 * Language definitions for wxStyledTextControl (wxScintilla)
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/stclanguage.cpp,v 1.3 2011/08/24 21:19:36 keinstein Exp $
 * Copyright:   (c) 2011 TU Dresden
+*              changes after 2011-11 (c) by the authors
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 
-* $Date: 2011/08/24 21:19:36 $
-* \version $Revision: 1.3 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -24,16 +21,6 @@
 *    along with this program; if not, write to the Free Software
 *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-*
-* $Log: stclanguage.cpp,v $
-* Revision 1.3  2011/08/24 21:19:36  keinstein
-* first run with 2.9.2+
-*
-* Revision 1.2  2011-08-21 16:52:05  keinstein
-* Integrate a more sophisticated editor menu based on the stc sample
-*
-* Revision 1.1  2011-08-20 18:15:36  keinstein
-* new files
 *
 *
 *

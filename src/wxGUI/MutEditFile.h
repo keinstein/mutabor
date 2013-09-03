@@ -2,12 +2,8 @@
 ***********************************************************************
 * Mutabor MDI-Child.
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutEditFile.h,v 1.22 2011/11/02 14:31:59 keinstein Exp $
 * \author R. Krauﬂe <krausze@users.berlios.de>
 * T. Schlemmer <keinstein@users.berlios.de>
-* \date 2005/08/12
-* $Date: 2011/11/02 14:31:59 $
-* \version $Revision: 1.22 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify

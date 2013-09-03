@@ -1,13 +1,12 @@
 /** \file                             -*- C -*- 
  ********************************************************************
- * Description
+ * Mutabor tone systems
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/mut.y,v 1.11 2011/09/06 08:09:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/09/06 08:09:21 $
- * \version $Revision: 1.11 $
+ *              changes after 2011-11 (c) by the authors
+ * \author  
+ *              Volker Abel,
+ *              Tobias Schlemmer <keinstein@users.berlios.de>
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

@@ -1,34 +1,31 @@
 /** \file 
  ********************************************************************
- * Description
+ * Interval calculations
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/Interval.cpp,v 1.5 2011/02/20 22:35:55 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
+ *              changes after 2011 (c) Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/02/20 22:35:55 $
- * \version $Revision: 1.5 $
  * \license GPL
  *
- * $Log: Interval.cpp,v $
- * Revision 1.5  2011/02/20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
  * \addtogroup templates
  * \{
  ********************************************************************/
-// ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
-// Intervallberechnungen
-// ------------------------------------------------------------------
 
 #include "box.h"
 #include "Global.h"

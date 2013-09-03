@@ -2,15 +2,10 @@
  ********************************************************************
  * Description
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/box.cpp,v 1.4 2011/09/27 20:13:21 keinstein Exp $
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.4 $
  * \license GPL
  *
- * $Log*
  *
  *
  ********************************************************************

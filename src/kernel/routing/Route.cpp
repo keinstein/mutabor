@@ -3,7 +3,6 @@
  ********************************************************************
  * Routing. Mutabor Core.
  *
- $
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
  * \date 1998

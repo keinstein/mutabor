@@ -2,13 +2,9 @@
  ********************************************************************
  * Routing window
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutRouteWnd.h,v 1.12 2012/02/18 18:14:13 keinstein Exp $
  * Copyright:   (c) 2005 TU Dresden
  * \author R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/09/01
- * $Date: 2012/02/18 18:14:13 $
- * \version $Revision: 1.12 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

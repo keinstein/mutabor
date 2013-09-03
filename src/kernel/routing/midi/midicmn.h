@@ -1,12 +1,9 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Common Midi devic base
+ * Common Midi device base
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Version$
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

@@ -2,13 +2,9 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/GUIRoute.h,v 1.6 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden,
  *                  2013 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/03 17:20:15 $
- * \version $Revision: 1.6 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

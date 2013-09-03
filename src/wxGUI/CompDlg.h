@@ -1,51 +1,12 @@
 // -*- C++ -*-
 /** \file
  ***********************************************************************
- *.
+ * Compilation dialog box.
  *
- * $Id: CompDlg.h,v 1.11 2011/11/02 14:31:58 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
- * \date 05/08/14 21:41:59
- * $Date: 2011/11/02 14:31:58 $
+ *         Tobias Schlemmer <keinstein@users.berlios.de>
  * \version $Revision: 1.11 $
  *
- * $Log: CompDlg.h,v $
- * Revision 1.11  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.10  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.9  2011-09-06 08:09:21  keinstein
- * fix a compiler error showing a corruped error message
- *
- * Revision 1.8  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
- * Revision 1.7  2010-11-21 13:15:47  keinstein
- * merged experimental_tobias
- *
- * Revision 1.5.2.2  2010-01-14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.5.2.1  2009/08/10 11:23:12  keinstein
- * merged from wrong tree
- *
- * Revision 1.6  2009/08/10 11:15:46  keinstein
- * some steps towards new route window
- *
- * Revision 1.5  2008/06/30 08:16:30  keinstein
- * Check if childs exist, when updating data.
- *
- * Revision 1.4  2008/06/02 16:39:17  keinstein
- * Use CompieleDlg from resource system now
- *
- * Revision 1.3  2006/01/18 15:33:42  keinstein
- * Doxygen header
  *
  * \addtogroup GUI
  * \{

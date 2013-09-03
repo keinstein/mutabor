@@ -1,48 +1,31 @@
 //     -*- C++ -*-
 /** \file 
- ********************************************************************
- * Description
- *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/gmn/GIS_Head.h,v 1.7 2011/11/02 14:31:57 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
- * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.7 $
- * \license GPL
- *
- * $Log: GIS_Head.h,v $
- * Revision 1.7  2011/11/02 14:31:57  keinstein
- * fix some errors crashing Mutabor on Windows
- *
- * Revision 1.6  2011-10-02 16:58:41  keinstein
- * * generate Class debug information when compile in debug mode
- * * InputDeviceClass::Destroy() prevented RouteClass::Destroy() from clearing references -- fixed.
- * * Reenable confirmation dialog when closing document while the logic is active
- * * Change debug flag management to be more debugger friendly
- * * implement automatic route/device deletion check
- * * new debug flag --debug-trace
- * * generate lots of tracing output
- *
- * Revision 1.5  2011-09-27 20:13:22  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.4  2011-07-27 19:47:25  keinstein
- * avoid compiler warning due to intialisaton with NULL
- *
- * Revision 1.3  2011-02-20 22:35:56  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
- *
- ********************************************************************
- * \addtogroup route
- * \{
- ********************************************************************/
+********************************************************************
+* Description
+*
+* Copyright:   (c) 2008 TU Dresden
+* \license GPL
+*
+*    This program is free software; you can redistribute it and/or modify
+*    it under the terms of the GNU General Public License as published by
+*    the Free Software Foundation; either version 2 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*
+*    You should have received a copy of the GNU General Public License
+*    along with this program; if not, write to the Free Software
+*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*
+*
+********************************************************************
+* \addtogroup route
+* \{
+********************************************************************/
 
 // #################################################################
 // header file for read header for GIS (GMN Intern Structur)

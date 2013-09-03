@@ -1,23 +1,30 @@
 /** \file 
  ********************************************************************
- * Description
+ * GUIDO Music Notation file
  *
  * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.11 $
  * \license GPL
  *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
  * \addtogroup route
  * \{
  ********************************************************************/
-// #################################################################
-// Mutabor, GIS - Devices
-// #################################################################
 
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include "src/kernel/routing/gmn/GSP.h"

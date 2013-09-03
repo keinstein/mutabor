@@ -2,12 +2,9 @@
  ********************************************************************
  * GUI Box data.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/GUIBoxData.h,v 1.9 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
+ * Changes after 2011-11 (c) Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.9 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

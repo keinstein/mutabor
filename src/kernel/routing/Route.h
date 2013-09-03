@@ -6,9 +6,7 @@
  *
  * \author Rüdiger Krauße <krausze@mail.berlios.de>,
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 1998-2012
- * $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.8 $
+ * \date 1998-2013
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

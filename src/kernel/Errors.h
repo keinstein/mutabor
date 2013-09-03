@@ -2,44 +2,23 @@
  ***********************************************************************
  * Error descriptions for Mutabor.
  *
- * $Id: Errors.h,v 1.5 2011/09/27 20:13:21 keinstein Exp $
  * \author R. Krauße <krausze@users.berlios.de>
  * T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/09/27 20:13:21 $
- * \version $Revision: 1.5 $
  * \license GPL
  *
- * $Log: Errors.h,v $
- * Revision 1.5  2011/09/27 20:13:21  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.4  2011-02-20 22:35:55  keinstein
- * updated license information; some file headers have to be revised, though
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.3  2010-12-11 02:10:08  keinstein
- * make 2.9.1 build but Mutabor crashes still at runtime in an infinite recursion :-(
- *
- * Revision 1.2  2010-11-21 13:15:44  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.2  2010-01-14 09:34:24  keinstein
- * Checkin searching for a bug
- *
- * Revision 1.1.2.1  2009/08/04 11:30:49  keinstein
- * removed mut.h
- *
- * Revision 1.1  2008/10/14 08:13:45  keinstein
- * provide symbolic error constants
- *
- * Revision 1.6  2008/08/18 14:59:41  keinstein
- * added License header
- * added const to string arrays
- * some reformatting
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
  * \addtogroup kernel
