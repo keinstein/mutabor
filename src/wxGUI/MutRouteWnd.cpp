@@ -650,7 +650,52 @@ void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
 }
 
 
+void MutRouteWnd::MoveShape(wxWindow * shape, int newpos, wxSizer * sizer) {
+	Freeze();
+ 	mutASSERT(sizer);
+	wxSizerItemList & list = sizer->GetChildren();
+	wxSizerItemList::iterator pos = list.begin();
+	while (pos != list.end() && (*pos)->GetWindow() != shape) pos++;
+	wxSizerItem * item = *pos;
+	wxSizerItem * nextitem = sizer->GetItem(newpos);
+	wxWindow * nextsibling = (nextitem ? nextitem->GetWindow() : NULL);
+	list.erase(pos);
+	list.Insert(newpos,item);
+	shape->MoveBeforeInTabOrder(nextsibling);
+	GetSizer()->SetItemMinSize(shape, -1 ,-1);
+	
+	Thaw();
+	InvalidateBestSize();
+	Layout();
+	FitInside();
+	Refresh();
+	Update();
+}
+
+
+
 #if 0
+void MutRouteWnd::MoveShape(MutInputDeviceShape * shape, int newpos) {
+
+	mutASSERT(InputSizer);
+	Freeze();
+
+	wxSizerItemList & list = InputSizer->GetChildren();
+	wxSizerItemList::iterator pos = list.begin();
+	while (pos != list.end() && (*pos)->GetWindow() != shape) pos++;
+	wxSizerItem * item = *pos;
+	wxSizerItem * nextitem = InputSizer->GetItem(newpos);
+	/* \todo make this better */
+	wxWindow * nextsibling = (nextitem ? nextitem->GetWindow() : NULL);
+	list.erase(pos);
+	list.Insert(newpos,item);
+	shape->MoveBeforeInTabOrder(nextsibling);
+	GetSizer()->SetItemMinSize(shape, -1 ,-1);
+	
+	Thaw();
+	Layout();
+	FitInside();
+	Update();
 }
 
 #endif

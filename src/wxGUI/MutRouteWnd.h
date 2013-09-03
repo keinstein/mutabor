@@ -239,16 +239,57 @@ namespace mutaborGUI {
 		void OnPaint(wxPaintEvent & event);
 		virtual void OnDraw(wxDC& dc);
 		void OnMoveShape(wxCommandEvent& event);
+		
+		template<class T>
+		wxSizer * GetShapeSizer ();
 
+		template<class T>
+		wxSizer * GetShapeSizer (T * shape) {
+			return GetShapeSizer<T>();
+		}
+		
+		template<class T> 
+		void MoveShape(T * shape, int newpos) {
+			return MoveShape(shape, newpos, GetShapeSizer<T>());
+		}
 
 
 	public:
 	  //		WX_DECLARE_CONTROL_CONTAINER();
+	protected:
+		/** 
+		 * Rally move shape. This function should not be called from outside the 
+		 * class. It's here, because C++ does not allow partial specialisation
+		 * of functions.
+		 * 
+		 * \param shape   Shape to be moved.
+		 * \param newpos  New position where the shape shall be dropped.
+		 * \param sizer   Sizer that is responsible for the dropped window
+		 */
+		void MoveShape(wxWindow * shape, int newpos, wxSizer * sizer);
+
 
 	private:
 		DECLARE_DYNAMIC_CLASS_NO_COPY(MutRouteWnd)
 		DECLARE_EVENT_TABLE()
 	};
+
+
+	template<> 
+	inline wxSizer * MutRouteWnd::GetShapeSizer<MutInputDeviceShape> () {
+		return InputSizer;
+	}
+
+	template<> 
+	inline wxSizer * MutRouteWnd::GetShapeSizer<MutOutputDeviceShape> () {
+		return OutputSizer;
+	}
+
+	template<> 
+	inline wxSizer * MutRouteWnd::GetShapeSizer<MutBoxShape> () {
+		return BoxSizer;
+	}
+
 
 	extern bool LogicOn;
 }

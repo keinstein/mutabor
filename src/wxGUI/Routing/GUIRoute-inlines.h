@@ -943,6 +943,17 @@ namespace mutaborGUI {
 	}
 
 
+	inline void GUIOutputDeviceBase::MoveToInList(int newpos) {
+		for (MutOutputDeviceShapeList::iterator i = shapes.begin();
+		     i != shapes.end();
+		     i++) {
+			wxWindow * win = (*i)->GetParent();
+			MutRouteWnd * display = NULL;
+			while (win && !(display = dynamic_cast<MutRouteWnd *>(win)))
+				win = win->GetParent();
+			if (display)
+				display -> MoveShape(*i,newpos);
+		}
 	}
 
 	/// add a route
@@ -967,6 +978,15 @@ namespace mutaborGUI {
 		TRACEC;
 		return retval;
 	}
+
+
+	template <class T>
+	inline int GUIfiedOutputDevice<T>::MoveInList(int count) {
+		int newpos = basetype::MoveInList(count);
+		GUIOutputDeviceBase::MoveToInList(newpos);
+		return newpos;
+	}
+
 	/// remove a route
 	template<class T> 
 	inline  bool GUIfiedOutputDevice<T>::Remove(mutabor::Route & route) {
@@ -1183,9 +1203,25 @@ namespace mutaborGUI {
 	}
 
 		
+	inline void GUIInputDeviceBase::MoveToInList(int newpos) {
+		for (MutInputDeviceShapeList::iterator i = shapes.begin();
+		     i != shapes.end();
+		     i++) {
+			wxWindow * win = (*i)->GetParent();
+			MutRouteWnd * display = NULL;
+			while (win && !(display = dynamic_cast<MutRouteWnd *>(win)))
+				win = win->GetParent();
+			if (display)
+				display -> MoveShape(*i,newpos);
+		}
 	}
 
 
+	template <class T>
+	inline int GUIfiedInputDevice<T>::MoveInList(int count) {
+		int newpos = basetype::MoveInList(count);
+		GUIInputDeviceBase::MoveToInList(newpos);
+		return newpos;
 	}
 
 
