@@ -17,6 +17,7 @@ timer1_LDADD= \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
@@ -32,6 +33,8 @@ testcppunit_SOURCES = \
 	main.cpp \
 	timing.h \
 	RouteTest.h \
+	BoxTest.h \
+	BoxTest.cpp \
 	CommonFileDeviceTest.h
 
 nodist_testcppunit_SOURCES = \
@@ -44,6 +47,7 @@ testcppunit_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS)

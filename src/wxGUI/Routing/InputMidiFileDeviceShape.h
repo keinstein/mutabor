@@ -44,6 +44,7 @@
 #include "src/kernel/Defs.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
+#include "src/wxGUI/resourceload.h"
 //#include "Device.h"
 
 #ifndef MUWX_ROUTING_INPUTMIDIFILEDEVICESHAPE_H_PRECOMPILED

@@ -150,7 +150,9 @@ namespace mutaborGUI {
 	 * BoxDlg event table definition
 	 */
 
-	void RoutePanel::SetBox(MutBoxShape * shape) {
+#if 0
+	void RoutePanel::SetBox(mutabor Box & b) {
+		
 		if (!box) {
 			UNREACHABLEC;
 		}
@@ -161,9 +163,9 @@ namespace mutaborGUI {
 		STUBC;
 //		box->SetClientObject(data);
 	}
+#endif
 
-
-	MutBoxShape * RoutePanel::GetBox() { 
+	mutabor::Box RoutePanel::GetBox() { 
 		if (!box) {
 			UNREACHABLEC;
 			return NULL;
@@ -178,24 +180,27 @@ namespace mutaborGUI {
 	}
 
 
-	int RoutePanel::AddBox(MutBoxShape * boxShape, bool selected) {
+	int RoutePanel::AddBox(mutabor::Box b, bool selected) {
 		int number;
-		if (boxShape)
-			number = box->Append(boxShape->GetLabel(), 
-					     new BoxShapeData(boxShape));
-		else number = box->Append(_T("New Box"), 
+		if (selected) {
+			number = box->Append(_("this box"), 
+					     new BoxShapeData(b));
+			box->SetSelection(number);
+		} else 	if (b)
+			number = box->Append(b->GetLabel(), 
+					     new BoxShapeData(b));
+		else number = box->Append(_("new box"), 
 					  new BoxShapeData(NULL));
 
 #ifdef DEBUG
-		if (boxShape) {
-			DEBUGLOG(dialog,_T("Entry box Id %d at Entry No. %d"),
-				 boxShape->GetBoxId(),number);
+		if (b) {
+			DEBUGLOG(dialog,_T("Entry box %p at Entry No. %d"),
+				 b.get(),number);
 		} else {
 			DEBUGLOG(dialog,_T("Entry 'new box' at Entry No. %d"),
 				 number);
 		}
 #endif
-		if (selected) box->SetSelection(number);
 		return number;
 	}
 
@@ -208,11 +213,6 @@ namespace mutaborGUI {
 		Show(enable);
 		if (inPanel) inPanel -> Show(enable);
 		if (outPanel) outPanel -> Show(enable);
-//	Layout();
-//	GetSizer()->SetSizeHints(this);
-//	Fit();
-//	GetParent()->GetSizer()->SetSizeHints(GetParent());
-//	GetParent()->FitInside();
 	}
 
 	BEGIN_EVENT_TABLE( RouteRemoveButton, wxButton )
@@ -319,7 +319,7 @@ namespace mutaborGUI {
 		mutASSERT(boxType && boxTypeChoice);
 		if (!boxType || !boxTypeChoice) return false;
 		DEBUGLOG(dialog,_T("Setting box type number %d"), type);
-		if (0<= type && type < MAX_BOX) type = Box0;
+		if (0<= type) type = Box0;
 		wxWindow * page;
 		switch (type) {
 		case NoBox:
@@ -350,15 +350,14 @@ namespace mutaborGUI {
 		mutUnused(event);
 		MutRouteWnd * parentwin = dynamic_cast<MutRouteWnd *> (m_parent);
 		if (!parentwin || !routeWindow) UNREACHABLEC;
+		mutabor::Box box = mutabor::BoxClass::GetBox(GetBoxType()==Box0?GetBoxNumber():GetBoxType(),
+							     mutabor::BoxClass::IDTypeFile);
 		MutBoxChannelShape::CreateRoutePanel(NULL, 
 						     parentwin, 
 						     routeWindow, 
-						     GetBoxType()==Box0?GetBoxNumber():GetBoxType());
-		routeWindow->Layout();
+						     box);
 		routeWindow->InvalidateBestSize();
-		Layout();
-		InvalidateBestSize();
-		GetSizer()->SetSizeHints(this);
+		routeWindow->Fit();
 		Fit();
 	}
 

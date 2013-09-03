@@ -56,6 +56,7 @@
 #include <list>
 #include <algorithm>
 #include <sstream>
+#include <stdarg.h>
 #include "wx/thread.h"
 #include "wx/stopwatch.h"
 #include <boost/unordered_set.hpp>
@@ -68,6 +69,7 @@ namespace mutaborGUI {
 }
 
 namespace mutabor {
+	typedef std::vector<uint8_t> midi_string;
 
 	enum MutaborModeType {
 		DeviceUnregistered = -1, //< Unregistered device – currently unused
@@ -396,6 +398,16 @@ namespace mutabor {
 		/// reset the device if requested
 		virtual void Panic() = 0;
 
+		/// Process an error message
+		void runtime_error(bool iswarning, mutString message, ...) {
+			va_list args;
+			va_start(args,message);
+			runtime_error(iswarning,message,args);
+		}
+
+		/// Process an error message (doing the real work)
+		virtual void runtime_error(bool iswarning, const mutString & message, va_list & args);
+
 	protected: /** \todo lift this restrection afer GUI is working again */
 		friend class ::mutaborGUI::GUIOutputDeviceBase;
 		friend class ::mutaborGUI::GUIInputDeviceBase;
@@ -652,24 +664,25 @@ namespace mutabor {
 			wxASSERT(!IsOpen());
 			TRACEC;
 		}
-		virtual void NoteOn(mutabor_box_type * box, 
+		virtual void NoteOn(Box box, 
 				    int taste, 
 				    int velo, 
 				    RouteClass * r,
 				    size_t id, 
 				    const ChannelData & input_channel_data) = 0;
-		virtual void NoteOff(mutabor_box_type * box, 
+		virtual void NoteOff(Box box, 
 				     int taste, 
 				     int velo, 
 				     RouteClass * r,
 				     size_t id,
 				     bool is_note_on) = 0;
-		virtual void NotesCorrect(RouteClass * route) = 0;
+		virtual void UpdateTones(RouteClass * route) = 0;
 		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
 		virtual int  GetChannel(int inkey, size_t channel, size_t id) = 0;
 		virtual void Gis(GisToken *token, char turn) = 0;
 		virtual void AddTime(frac time) = 0;
+		virtual void MidiOut(mutabor::Box box, midi_string data) = 0;
 		virtual void MidiOut(BYTE *p, size_t n) = 0;
 		virtual void Quiet(RouteClass * r) = 0;
 		virtual void Panic() { STUBC; };
@@ -1120,11 +1133,6 @@ namespace mutabor {
 //frac InReadOn(frac time);
 
 	
-	void MidiOut(mutabor_box_type * box, struct midiliste * outliste);
-
-	void NotesCorrect(mutabor_box_type *  box);
-
-	int GetChannel(int box, int key, size_t channel, size_t id);
 
 
 }

@@ -29,12 +29,14 @@
  *\{
  ********************************************************************/
 
+#include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
 #include "src/kernel/routing/midi/DevMidi.h"
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "src/kernel/routing/gmn/DevGIS.h"
 #include <algorithm>
 #include <queue>
+#include <stdarg.h>
 #include "src/kernel/routing/Device-inlines.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/routing/Route.h"
@@ -42,6 +44,12 @@
 
 namespace mutabor {
 	template <> size_t idtype<Device>::idpool(0);
+
+	void Device::runtime_error(bool iswarning, const mutStringRef message, va_list & args) {
+		mutPrintf(_T("%s: "),(const mutChar *)(iswarning?_("Warning"):_("Error")));
+		mutVPrintf(message,args);
+	}
+	
 
 #ifdef WX
 	wxString Device::TowxString() const {
@@ -51,7 +59,7 @@ namespace mutabor {
 			routeString += wxString::Format(_T(" %d:(%d->%d->%d)"),
 							(*r)->get_routefile_id(),
 							(*r)->GetDeviceId(InputDevice()),
-							(*r)->GetBox(),
+							(*r)->GetBox()?(*r)->GetBox()->get_routefile_id():NoBox,
 							(*r)->GetDeviceId(OutputDevice()));
 		
 
@@ -329,13 +337,8 @@ OutputDeviceClass:\n\
 		CurrentTime.UseRealtime(false);
 		CurrentTime.Set(0);
 		
-		if (!mutabor::OutOpen())
-			return false;
-		
-		if (!mutabor::InOpen() ) {
-			mutabor::OutClose();
-			return false;
-		}
+
+		OpenAll();
 
 		batch_queue queue;
 
@@ -367,9 +370,10 @@ OutputDeviceClass:\n\
 
 		mutabor::CurrentTime.Stop();
 		mutabor::InClose();
+		mutabor::BoxClose();
 		mutabor::OutClose();
 
-		GlobalReset();
+//		GlobalReset();
 
 		return true;
 	}
@@ -541,6 +545,7 @@ InputDeviceClass:\n\
 
 
 	void InitDeviceFactories() {
+		new BoxFactory;
 		new RouteFactory;
 		new MidiPortFactory;
 		new MidiFileFactory;
@@ -639,64 +644,6 @@ InputDeviceClass:\n\
 		return false;
 	}
 
-
-	void MidiOut(mutabor_box_type * box, struct midiliste * outliste)
-	{
-		TRACE;
-
-		size_t laenge = midi_list_laenge(outliste);
-		BYTE * data = (BYTE *)malloc(laenge * sizeof(BYTE));
-		struct midiliste * cursor = outliste;
-		BYTE * bcursor=data;
-		while (cursor != NULL) {
-			(*bcursor++) = (BYTE) cursor->midi_code;
-			cursor = cursor -> next;
-		}
-	       
-		const routeListType & list = RouteClass::GetRouteList();
-		for (routeListType::const_iterator R = list.begin(); 
-		     R != list.end(); R++) {
-			OutputDevice out;
-			if ( (*R)->GetBox() == box->id && 
-			     (out = (*R)->GetOutputDevice())) {
-				out -> MidiOut(data, laenge);
-			}
-		}
-
-		free(data);
-	}
-
-	void NotesCorrect(mutabor_box_type * box)
-	{
-		const routeListType & list = RouteClass::GetRouteList();
-		for (routeListType::const_iterator route = list.begin();
-		     route != list.end(); route++) {
-			if ((*route)->GetBox() == box->id)
-				(*route)->NotesCorrect();
-		}
-	}
-
-	int GetChannel(int box, int key, size_t channel, size_t id)
-	{
-		TRACE;
-		const routeListType & list = RouteClass::GetRouteList();
-		for (routeListType::const_iterator R = list.begin(); 
-		     R != list.end(); R++) {
-			OutputDevice out;
-			if ( (*R)->GetBox() == box
-			     && (channel == (*R)->get_session_id())
-			     && (out = (*R)->GetOutputDevice())) {
-				int c = out->GetChannel(key,channel,id);
-				
-				if ( c != -1 ) {
-					TRACE;
-					return c;
-				}
-			}
-		}
-		TRACE;
-		return -1;
-	}
 
 	
 }

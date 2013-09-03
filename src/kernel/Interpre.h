@@ -37,6 +37,12 @@
 #ifndef MU32_INTERPRE_H_PRECOMPILED
 #define MU32_INTERPRE_H_PRECOMPILED
 
+#ifdef __cplusplus
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
+
 // system headers which do seldom change
 
 
@@ -146,13 +152,18 @@ typedef int * parameter_liste[16];
 */
 
 enum aufruf_typ { aufruf_logik, aufruf_tonsystem,
-                  aufruf_umst_taste_abs, aufruf_umst_breite_abs,
+                  aufruf_umst_taste_abs, 
+		  aufruf_umst_breite_abs,
                   aufruf_umst_wiederholung_abs,
                   aufruf_umst_wiederholung_rel,
                   aufruf_umst_taste_rel,
-                  aufruf_umst_breite_rel, aufruf_umst_toene_veraendert,
-                  aufruf_umst_umst_bund, aufruf_umst_umst_case,
-                  aufruf_midi_out };
+                  aufruf_umst_breite_rel, 
+		  aufruf_umst_toene_veraendert,
+                  aufruf_umst_umst_bund, 
+		  aufruf_umst_umst_case,
+                  aufruf_midi_out,
+		  aufruf_harmony_analysis
+};
 
 struct do_aktion
 {
@@ -166,10 +177,13 @@ struct do_aktion
 	union
 	{
 		struct {
-			struct do_aktion * einstimmung;
-			struct harmonie_ereignis ** lokal_harmonie;
-			struct keyboard_ereignis ** lokal_keyboard;
-			struct midi_ereignis     ** lokal_midi;
+			struct logik * logic;
+			/*
+			  each list is stored only once
+			  struct harmonie_ereignis ** lokal_harmonie;
+			  struct keyboard_ereignis ** lokal_keyboard;
+			  struct midi_ereignis     ** lokal_midi;
+			*/
 		} aufruf_logik;
 
 		struct {
@@ -208,6 +222,7 @@ struct do_aktion
 		} aufruf_umst_toene_veraendert;
 
 #if 0 
+		// currently no data fields
 		struct {
 		} aufruf_umst_umst_bund;
 #endif
@@ -243,10 +258,16 @@ struct keyboard_ereignis
 	struct keyboard_ereignis * next;
 };
 
+enum is_harmonic_form_collection {
+	mutabor_is_no_harmonic_form = 0,
+	mutabor_is_harmonic_form = 1,
+	mutabor_is_else_path = 2
+};
+
 struct harmonie_ereignis
 {
 	PATTERNN * pattern;
-	char ist_harmonieform;
+	enum is_harmonic_form_collection ist_harmonieform;
 	int vortaste;
 	int nachtaste;
 
@@ -281,6 +302,12 @@ int laufzeit_zentrum[MAX_BOX];
 #define SYNTHESIZER_TYP_MULTI16   2
 #define SYNTHESIZER_TYP_GIS       3
 /* jedem Kanal seinen Synthesizer */
+
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
 
 #endif /* precompiled */
 #endif

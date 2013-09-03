@@ -38,15 +38,15 @@ namespace mutabor {
 
 	/*
 	template <class I, class O>
-	typename TRouteClass<I,O>::Route TRouteClass<I,O>::routeList;
+	typename TRouteClass<I,O,B>::Route TRouteClass<I,O,B>::routeList;
 	*/
 	const mutString RTName[] =
 	{
 		_T("ALL"), _T("ELSE"), _T("CHANNEL"), _T("STAFF")
 	};
 
-	template <class I, class O>
-	TRouteClass<I,O>::~TRouteClass() 
+	template <class I, class O, class B>
+	TRouteClass<I,O,B>::~TRouteClass() 
 	{
 		DEBUGLOG(smartptr,_T("deleting %p"),(void*)this);
 #ifdef DEBUG
@@ -61,13 +61,13 @@ namespace mutabor {
 	}
 
 
-	template <class I, class O>
-	void TRouteClass<I,O>::Save(tree_storage & config) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::Save(tree_storage & config) 
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		config.Write(_T("Box"),Box);
+		config.Write(_T("Box"),box);
 		config.Write(_T("Active"),Active);
 		if (In)
 			In->Save(config,this);
@@ -76,13 +76,13 @@ namespace mutabor {
 		mutASSERT(oldpath == config.GetPath());
 	}
 
-	template <class I, class O>
-	void TRouteClass<I,O>::Load(tree_storage & config) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::Load(tree_storage & config) 
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		SetBox(config.Read(_T("Box"),NoBox));
+		SetBox(BoxClass::GetOrCreateBox(config.Read(_T("Box"),NoBox)));
 		Active = config.Read(_T("Active"),true);
 		if (In)
 			In->Load(config,this);
@@ -91,8 +91,9 @@ namespace mutabor {
 		mutASSERT(oldpath == config.GetPath());
 	}
 
-	template <class I, class O>
-	int TRouteClass<I,O>::GetNextFreeBox ()
+#if 0
+	template <class I, class O, class B>
+	int TRouteClass<I,O,B>::GetNextFreeBox ()
 	{
 		int retval = 0;
 		bool changed = false;
@@ -112,37 +113,37 @@ namespace mutabor {
 		} while (changed);
 		return retval;
 	}
-
+#endif
 	
 
-	template <class I, class O>
-	void TRouteClass<I,O>::setUserData (void * data) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::setUserData (void * data) 
 	{ 
 		userdata = data; 
 	}
 
-	template <class I, class O>
-	void * TRouteClass<I,O>::getUserData() const 
+	template <class I, class O, class B>
+	void * TRouteClass<I,O,B>::getUserData() const 
 	{ 
 		return userdata; 
 	}
 
 
-	template <class I, class O>
-	void TRouteClass<I,O>::Add (OutputDevice & out) {
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::Add (OutputDevice & out) {
 		Out = out;
 	}
-	template <class I, class O>
-	void TRouteClass<I,O>::Add (InputDevice & in) {
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::Add (InputDevice & in) {
 		In = in;
 	}
-	template <class I, class O>
-	void TRouteClass<I,O>::Add (int id) {
-		SetBox(id);
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::Add (Box & b) {
+		SetBox(b);
 	}
 
-	template <class I, class O>
-	bool TRouteClass<I,O>::Replace (OutputDevice & olddev,
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Replace (OutputDevice & olddev,
 					OutputDevice & newdev) {
 		if (Out != olddev) {
 			UNREACHABLEC;
@@ -151,8 +152,8 @@ namespace mutabor {
 		Out = newdev;
 		return true;
 	}
-	template <class I, class O>
-	bool TRouteClass<I,O>::Replace (InputDevice & olddev,
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Replace (InputDevice & olddev,
 					InputDevice & newdev) {
 		if (In != olddev) {
 			UNREACHABLEC;
@@ -161,10 +162,10 @@ namespace mutabor {
 		In = newdev;
 		return true;
 	}
-	template <class I, class O>
-	bool TRouteClass<I,O>::Replace (int oldbox,
-					   int newbox) {
-		if (Box != oldbox) {
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Replace (Box & oldbox,
+					  Box & newbox) {
+		if (box != oldbox) {
 			UNREACHABLEC;
 			return false;
 		}
@@ -172,8 +173,8 @@ namespace mutabor {
 		return true;
 	}
 
-	template <class I, class O>
-	bool TRouteClass<I,O>::Remove (OutputDevice & out) {
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Remove (OutputDevice & out) {
 		if (out != Out) {
 			UNREACHABLEC;
 			return false;
@@ -181,8 +182,8 @@ namespace mutabor {
 		Out = NULL;
 		return true;
 	}
-	template <class I, class O>
-	bool TRouteClass<I,O>::Remove (InputDevice & in) {
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Remove (InputDevice & in) {
 		if (In != in) {
 			UNREACHABLEC;
 			return false;
@@ -190,19 +191,19 @@ namespace mutabor {
 		In = NULL;
 		return true;
 	}
-	template <class I, class O>
-	bool TRouteClass<I,O>::Remove (int id) {
-		if (Box != id) {
+	template <class I, class O, class B>
+	bool TRouteClass<I,O,B>::Remove (Box & b ) {
+		if (box != b) {
 			UNREACHABLEC;
 			return false;
 		}
-		SetBox(NoBox);
+		SetBox(NULL);
 		return true;
 	}
 	
 
-	template <class I, class O>
-	void TRouteClass<I,O>::InitializeIds() 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::InitializeIds() 
 	{
 		OutputDeviceClass::InitializeIds();
 		int i = 0;
@@ -213,8 +214,8 @@ namespace mutabor {
 		InputDeviceClass::InitializeIds();
 	}
 
-	template <class I, class O>
-	void TRouteClass<I,O>::SaveRoutes(tree_storage & config) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::SaveRoutes(tree_storage & config) 
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -235,8 +236,8 @@ namespace mutabor {
 		mutASSERT(oldpath == config.GetPath());
 	}
 
-	template <class I, class O>
-	void TRouteClass<I,O>::LoadRoutes(tree_storage & config) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::LoadRoutes(tree_storage & config) 
 	{
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
@@ -270,8 +271,8 @@ namespace mutabor {
 	}
 
 
-	template <class I, class O>
-	void TRouteClass<I,O>::AppendToRouteList (Route  route) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::AppendToRouteList (Route  route) 
 	{
 #ifdef DEBUG
 		typename TRouteClass<I, O>::routeListType::iterator r = 
@@ -284,8 +285,8 @@ namespace mutabor {
 		routeList.push_back(route);
 	}
 
-	template <class I, class O>
-	void TRouteClass<I,O>::RemoveFromRouteList (Route route) 
+	template <class I, class O, class B>
+	void TRouteClass<I,O,B>::RemoveFromRouteList (Route route) 
 	{
 		typename TRouteClass<I, O>::routeListType::iterator r = 
 			std::find(routeList.begin(),
@@ -298,11 +299,11 @@ namespace mutabor {
 		}
 	}
 
-	template <class I, class O>
-	wxString TRouteClass<I,O>::TowxString () const 
+	template <class I, class O, class B>
+	wxString TRouteClass<I,O,B>::TowxString () const 
 	{
 		return wxString::Format(_T("\
-TRouteClass<I,O>:\n\
+TRouteClass<I,O,B>:\n\
    userdata = %p\n\
    Out      = %p\n\
    In       = %p\n\
@@ -310,14 +311,14 @@ TRouteClass<I,O>:\n\
    sess.id  = %lu\n\
    inputid  = %d\n\
    outputid = %d\n\
-   Box      = %d\n\
+   Box      = %p\n\
    Type     = %d\n\
    IFrom    = %d\n\
    ITo      = %d\n\
    OFrom    = %d\n\
    OTo      = %d\n\
    flags:     Active:%d, ONoDrum:%d\n\
-"),(void *)userdata,(void*)Out.get(),(void*)In.get(),routefile_id,(unsigned long)session_id(),inputid,outputid,Box,Type,IFrom,ITo,OFrom,OTo,
+"),(void *)userdata,(void*)Out.get(),(void*)In.get(),routefile_id,(unsigned long)session_id(),inputid,outputid,box.get(),Type,IFrom,ITo,OFrom,OTo,
 					Active,ONoDrum);
 	}
 
@@ -535,7 +536,7 @@ TRouteClass<I,O>:\n\
 					    RouteType type,
 					    int iFrom,
 					    int iTo,
-					    int box,
+					    Box box,
 					    bool active,
 					    int oFrom,
 					    int oTo,
@@ -588,10 +589,6 @@ TRouteClass<I,O>:\n\
 	}
 
 
-	void initialize_data() 
-	{
-		mutabor_set_midi_callback(MidiOut);
-	}
 }
 
 

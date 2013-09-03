@@ -41,6 +41,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Route.h"
+#include "src/kernel/routing/Box.h"
 #include "src/kernel/treestorage.h"
 
 #ifndef MUWX_CONFIGTREE_H_PRECOMPILED
@@ -48,7 +49,7 @@
 
 #include <stack>
 
-class configtree:public tree_storage 
+class configtree:public mutabor::tree_storage 
 {
 	wxConfigBase * config; ///< configuration object
 	bool deleteconfig; ///< true if the config is private and must be deleted on deletion
@@ -149,12 +150,14 @@ public:
 inline void LoadRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
+	mutabor::BoxFactory::LoadBoxes(conf);
 	mutabor::RouteFactory::LoadRoutes(conf);
 }
 
 inline void SaveRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
+	mutabor::BoxFactory::SaveBoxes(conf);
 	mutabor::RouteFactory::SaveRoutes(conf);
 }
 

@@ -101,8 +101,8 @@ public:
 		return GetNO_DELTA();
 	}
 
-	void Save(tree_storage&, const mutabor::RouteClass*){}
-	void Load(tree_storage&, mutabor::RouteClass*){}
+	void Save(mutabor::tree_storage&, const mutabor::RouteClass*){}
+	void Load(mutabor::tree_storage&, mutabor::RouteClass*){}
 protected:
 	wxStopWatch sw;
 };

@@ -1,12 +1,9 @@
 /** \file               -*- C++ -*-
  ********************************************************************
- * Description
+ * Thread wrapper classses.
  *
- * Copyright:   (c) 2012 Tobias Schlemmer
+ * Copyright:   (c) 2013 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Version$
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,44 +22,48 @@
  *
  *
  ********************************************************************
- * \addtogroup tests
+ * \addtogroup templates
  * \{
  ********************************************************************/
-#ifndef __TESTS_GUIROUTETEST_H__
-#define __TESTS_GUIROUTETEST_H__
+// availlable groups: GUI, route, kernel, muwx, debug, docview, config, docview
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/portability/Stream.h>
-#include "src/kernel/routing/Route.h"
-//#include "src/kernel/Runtime.h"
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
-class GUIRouteTest : public CPPUNIT_NS::TestFixture 
-{
-	CPPUNIT_TEST_SUITE( GUIRouteTest );
-	CPPUNIT_TEST( testConnect );
-	CPPUNIT_TEST_SUITE_END();
-
-protected:
-//	mutabor::Route route;
-
-public:
-	GUIRouteTest()
-	{
-	}
-
-	virtual ~GUIRouteTest()
-	{
-	}
-
-	int countTestCases () const
-	{ 
-		return 1; 
-	}
-  
-	void setUp();
-	void tearDown();
-
-	void testConnect();
-};
-
+#if (!defined(HEADERFILENAME) && !defined(PRECOMPILE)) \
+	|| (!defined(HEADERFILENAME_PRECOMPILED))
+#ifndef PRECOMPILE
+#define HEADERFILENAME
 #endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "src/kernel/Defs.h"
+
+#ifndef HEADERFILENAME_PRECOMPILED
+#define HEADERFILENAME_PRECOMPILED
+
+// system headers which do seldom change
+
+
+#ifdef WX
+#include "wx/thread.h"
+namespace mutabor {
+	// see CommonFileDevice for usage
+	typedef wxThread      Thread;
+	typedef wxThreadKind  ThreadKind;
+	typedef wxMutex       Mutex;
+	typedef wxMutexLocker ScopedLock;
+	typedef wxMutexError  ThreadResult;
+	#define MUTABOR_THREAD_OK wxMUTEX_NO_ERROR
+}
+#endif
+
+
+#endif // precompiled
+#endif // header loaded
+
+
+///\}

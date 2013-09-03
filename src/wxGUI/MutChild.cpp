@@ -126,26 +126,26 @@ namespace mutaborGUI {
 	// ===========================================================================
 
 	MutChild::MutChild (WinKind k,
-			    int boxId,
+			    mutabor::Box box,
 			    wxWindow * parent,
 			    wxWindowID id,
 
 			    const wxPoint& pos,
 			    const wxSize & size):
-	MutTextBox(k,boxId,parent,id,pos,size)
+	MutTextBox(k,box,parent,id,pos,size)
 	{
 		DEBUGLOG (other, _T("winKind=%d"),k);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
-		BoxData & boxdata = BoxData::GetBox(boxId);
+		BoxData * boxdata = ToGUIBase(box);
 		switch (k) {
 		case WK_KEY: 
-			boxdata.SetKeyWindow(this);
+			boxdata->SetKeyWindow(this);
 			break;
 		case WK_TS: 
-			boxdata.SetTonesystemWindow(this);
+			boxdata->SetTonesystemWindow(this);
 			break;
 		case WK_ACT: 
-			boxdata.SetActionsWindow(this);
+			boxdata->SetActionsWindow(this);
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -183,7 +183,7 @@ namespace mutaborGUI {
 			mutUnused(event);
 			mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 			TRACEC;
-			mutaborGUI::curBox = box;
+			SetCurrentBox(box);
 		}
 		event.Skip();
 	}
@@ -192,17 +192,17 @@ namespace mutaborGUI {
 	{
 		DEBUGLOG (other, _T("winKind: %d"),winKind);
 	
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 		switch (winKind) {
 		case WK_KEY: 
-			boxdata.SetKeyWindow(NULL);
+			boxdata->SetKeyWindow(NULL);
 			break;
 		case WK_TS: 
-			boxdata.SetTonesystemWindow(NULL);
+			boxdata->SetTonesystemWindow(NULL);
 			break;
 		case WK_ACT: 
-			boxdata.SetActionsWindow(NULL);
+			boxdata->SetActionsWindow(NULL);
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -232,38 +232,40 @@ namespace mutaborGUI {
 		     || event.GetKeyCode() == WXK_TAB 
 		     || event.GetKeyCode() == WXK_RETURN 
 		     || event.GetKeyCode() == WXK_SPACE ){
-			MutLogicWnd * logic = BoxData::GetBox(box).GetLogicWindow();
-			if (logic)
-				wxPostEvent(logic->GetEventHandler(),event);
-			else {
-				UNREACHABLEC;
+			if ((box) && ToGUIBase(box)) {
+				MutLogicWnd * logic = ToGUIBase(box)->GetLogicWindow();
+				if (logic)
+					wxPostEvent(logic->GetEventHandler(),event);
+				else {
+					UNREACHABLEC;
+				}
 			}
 		}
 		else event.Skip();
 		
-		mutaborGUI::curBox = box;
-		mutASSERT(mut_box[box].used);
+		SetCurrentBox(box);
+		mutASSERT(box);
 		TRACEC;
 	}
 
-	bool IsOpen (WinKind kind, int box)
+	bool IsOpen (WinKind kind, mutabor::Box & box)
 	{
 		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
-		mutASSERT(0 <= box && box <= MAX_BOX);
+		//mutASSERT(0 <= box && box <= MAX_BOX);
 
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		switch (kind) {
 		case WK_KEY: 
-			return boxdata.GetKeyWindow() != NULL;
+			return boxdata->GetKeyWindow() != NULL;
 			break;
 		case WK_TS: 
-			return boxdata.GetTonesystemWindow() != NULL;
+			return boxdata->GetTonesystemWindow() != NULL;
 			break;
 		case WK_ACT: 
-			return boxdata.GetActionsWindow() != NULL;
+			return boxdata->GetActionsWindow() != NULL;
 			break;
 		case WK_LOGIC:
-			return boxdata.GetLogicWindow() != NULL;
+			return boxdata->GetLogicWindow() != NULL;
 			break;
 		case WK_ROUTE:
 			wxLogWarning(_("Unexpected value: WK_ROUTE"));
@@ -284,21 +286,19 @@ namespace mutaborGUI {
 		return false;
 	}
 
-	bool IsWanted(WinKind kind, int box)
+	bool IsWanted(WinKind kind, mutabor::Box & box)
 	{
 		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
-		mutASSERT(0 <= box && box <= MAX_BOX);
-
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		switch (kind) {
 		case WK_KEY: 
-			return boxdata.WantKeyWindow();
+			return boxdata->WantKeyWindow();
 			break;
 		case WK_TS: 
-			return boxdata.WantTonesystemWindow();
+			return boxdata->WantTonesystemWindow();
 			break;
 		case WK_ACT: 
-			return boxdata.WantActionsWindow();
+			return boxdata->WantActionsWindow();
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -323,21 +323,20 @@ namespace mutaborGUI {
 		return false;
 	}
 
-	void DontWant(WinKind kind, int box)
+	void DontWant(WinKind kind, mutabor::Box & box)
 	{
 		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
-		mutASSERT(0 <= box && box <= MAX_BOX);
 
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		switch (kind) {
 		case WK_KEY: 
-			boxdata.WantKeyWindow(false);
+			boxdata->WantKeyWindow(false);
 			break;
 		case WK_TS: 
-			boxdata.WantTonesystemWindow(false);
+			boxdata->WantTonesystemWindow(false);
 			break;
 		case WK_ACT: 
-			boxdata.WantActionsWindow(false);
+			boxdata->WantActionsWindow(false);
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -361,6 +360,7 @@ namespace mutaborGUI {
 		}	
 	}
 
+#if 0
 	int NumberOfOpen(WinKind kind)
 	{
 		mutASSERT(WK_KEY <= kind && kind < WK_NULL);
@@ -413,12 +413,11 @@ namespace mutaborGUI {
 		}	
 		return n;
 	}
-
+#endif
 
 	void MutChild::OnGetFocus(wxFocusEvent& event)
 	{
-		mutaborGUI::curBox = box;
-		mutASSERT(mut_box[box].used);
+		SetCurrentBox(box);
 		TRACEC;
 		event.Skip();
 	}

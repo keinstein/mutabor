@@ -27,8 +27,9 @@
 #include "wx/ffile.h"
 #include "wx/log.h"
 #include "wx/dc.h"
+#include "wx/dcclient.h"
 
-#include "src/kernel/Runtime.h"
+//#include "src/kernel/Runtime.h"
 #include "src/wxGUI/generic/mhDefs.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/Routing/InputDevDlg.h"
@@ -84,27 +85,6 @@ using namespace mutabor;
 using namespace mutaborGUI;
 
 extern int curBox;
-
-/*wx
-  void RightButtonMenu(TWindow *win, TPoint &point);
-*/
-// help functions ---------------------------------------------------
-/*
-
-void TRouteDialog::SetupWindow()
-{
-TGraySetupDialog::SetupWindow();
-if ( Kind == 4 )
-SetCaption("Output device");
-if ( Kind == 1)
-if ( IsDT == DTGis )
-R3->SetCaption("box tag");
-else
-R4->SetCaption((IsDT == DTMidiFile) ? "track" : "key range");
-UpDate();
-}
-
-*/
 
 
 #if wxUSE_EXTENDED_RTTI
@@ -175,7 +155,8 @@ IMPLEMENT_DYNAMIC_CLASS(MutRouteWnd, wxScrolledWindow)
 BEGIN_EVENT_TABLE(MutRouteWnd, wxScrolledWindow)
 	EVT_MENU(CM_MOVE_UP, MutRouteWnd::OnMoveShape)
 	EVT_MENU(CM_MOVE_DOWN, MutRouteWnd::OnMoveShape)
-//	EVT_SIZE(MutRouteWnd::OnSize)
+	EVT_PAINT(MutRouteWnd::OnPaint)
+	EVT_SIZE(MutRouteWnd::OnSize)
 //	EVT_LEFT_DOWN(MutRouteWnd::OnLeftDown)
 //	EVT_LEFT_DCLICK(MutRouteWnd::OnLeftDClick)
 //WX_EVENT_TABLE_CONTROL_CONTAINER(MutRouteWnd)
@@ -194,34 +175,17 @@ MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& siz
 	  OutputSizer(NULL),
 	  BoxSizer(NULL)
 {
-// This leeds to “assert !m_winParent fauled in SetContainerWindow(),
+// This leeds to “assert !m_winParent failed in SetContainerWindow(),
 //        even if the container is commented out 
 //        -> m_container is defined elsewhere
 // that it works means that we already have a control container
 //	m_container.SetContainerWindow(this);
 //
 
-/*
-	DevIcon[DTUnknown] = new ICON(devunknown);
-	DevIcon[DTMidiPort] = new ICON(devmidiport);
-	DevIcon[DTMidiFile] = new ICON(devmidifile);
-	DevIcon[DTGis] = new ICON(devgmn);
-	ConIcon[0] = new wxBitmap(AddStop_xpm);//, wxBITMAP_TYPE_XPM);
-	ConIcon[1] = new wxBitmap(AddPlay_xpm);//, wxBITMAP_TYPE_XPM);
-	ConIcon[2] = new wxBitmap(AddPause_xpm);//, wxBITMAP_TYPE_XPM);
-	ConIcon[3] = new wxBitmap(AddStopDis_xpm);//, wxBITMAP_TYPE_XPM);
-	PlopIcon[0] = new ICON(newplop);
-	PlopIcon[1] = new ICON(playplop);
-	PlopIcon[2] = new ICON(pauseplop);
-	PlopIcon[3] = new ICON(errorplop);
-	spacey = 8;
-        spacex = 20;
-*/
-
-
         DEBUGLOG (other, _T("this is window %p"), (void*)this);
         SetSizer(new wxFlexGridSizer(3,0,50));
         SetScrollRate(1, 1);
+	SetAutoLayout(true);
 
 	InitShapes();
 }
@@ -241,13 +205,15 @@ void MutRouteWnd::InitShapes()
 	InputDevices.push_back(newin);
 	
 	mutASSERT(Boxes.empty());
+	mutabor::Box newbox = mutabor::BoxClass::GetOrCreateBox(NewBox);
+	BoxData * box = ToGUIBase(newbox);
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
-		 NewBox,(int)BoxData::GetBox(NewBox).GetBoxShapes().size());	
+		 NewBox,(int)(box->GetShapes().size()));	
 	MutBoxShape * boxShape = new NewMutBoxShape(this,wxID_ANY);
 	GetSizer()->Add(boxShape, flags);
 	Boxes.push_back(boxShape);
 	DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d now)"),
-		 NewBox,(int)BoxData::GetBox(NewBox).GetBoxShapes().size());	
+		 NewBox,(int)(box->GetShapes().size()));	
 
 	mutASSERT(OutputDevices.empty());
 	MutOutputDeviceShape * newout = new MutNewOutputDeviceShape(this,wxID_ANY);
@@ -257,6 +223,7 @@ void MutRouteWnd::InitShapes()
 	createInputDevices(flags);
 	createBoxes(flags);
 	createOutputDevices(flags);
+	createRoutes(flags);
         FitInside();
 	newin->SetFocus();
 
@@ -334,113 +301,59 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 	}
 
 	MutBoxShape * boxShape;
+	const BoxListType & list = BoxClass::GetBoxList();
+        for (BoxListType::const_iterator box = list.begin();
+             box != list.end(); ++box) {
+
+		BoxData * Box = const_cast<BoxData *>(ToGUIBase(*box));
+		mutASSERT(Box);
+		if (!Box) continue;
+		mutASSERT(!Box->GetShape(this));
+		boxShape = 
+			GUIBoxFactory::CreateBoxShape(*box,this);
+                if (!boxShape) {
+                        UNREACHABLEC;
+			continue;
+                }
+		AddBox(boxShape, flags);
+        }
+	
+}
+
+void MutRouteWnd::createRoutes(wxSizerFlags flags)
+{
+	MutBoxShape * boxShape;
 	const routeListType & list = RouteClass::GetRouteList();
         for (routeListType::const_iterator route = list.begin();
              route != list.end(); ++route) {
-
-		mutASSERT(MIN_BOX <= (*route)->GetBox()
-			 && (*route)->GetBox() < MAX_BOX);
-		BoxData & Box = BoxData::GetBox((*route)->GetBox());
-		boxShape = Box.GetBoxShape(this);
-		if (!boxShape) {
-			boxShape = 
-				GUIRouteFactory::CreateBoxShape((*route)->GetBox(),
-								this);
-			AddBox(boxShape, flags);
-		}
-                
-                if (!boxShape) {
-                        UNREACHABLEC;
-                }
-
 		TRACEC;
 		Route & r = const_cast<Route &>(*route);
 		TRACEC;
+		mutASSERT(r);
 		MutBoxChannelShape * channel =
-			GUIRouteFactory::CreateBoxChannelShape(r,
-							       boxShape);
+			GUIRouteFactory::CreateBoxChannelShape(r,this);
 		TRACEC;
-		boxShape->Add(channel);
-                // the box might have been initalized already
-                boxShape->Layout();
-		TRACEC;
-        }
-	
-/*
-        for (MutInputDeviceShapeList::iterator iter = InputDevices.begin();
-             iter != InputDevices.end(); ++iter) {
-
-                MutInputDeviceShape * device = 
-			dynamic_cast<MutInputDeviceShape*>(*iter);
-		mutASSERT(device);
-                if (!device) continue;
-
-                Route  Route = device->getRoutes();
-                while (Route) {
-                        mutASSERT(0<= Route->Box && Route->Box < MAX_BOX);
-                        if (!BoxPTRs[Route->Box]) {
-                                DEBUGLOG (other, _T("Creating box"));
-                                BoxPTRs[Route->Box] = boxShape = 
-                                        new MutBoxShape(this,wxID_ANY, Route->Box);
-                                DEBUGLOG (other, _T("Box shape: %p"),boxShape);
-                                mutASSERT(boxShape);
-                                if (!boxShape) continue;
-                                AddBox(boxShape, flags);
-                        } else {
-                                boxShape = BoxPTRs[Route->Box];
-                                mutASSERT(wxDynamicCast(boxShape,MutBoxShape));
-                        }
-
-                        DEBUGLOG (other, _T("Adding Route to Box %p on window %p"),boxShape,this);
-                        MutBoxChannelShape * channel =
-                                boxShape->AddChannel(Route);
-                        channel->Attatch(device);
-
-                        Route = Route->GetNext();
-                }
-        }
-	
-	// Adding routes without input device
-	Route  route = RouteClass::GetRouteList();
-	while (route) {
-		mutASSERT(0<= route->Box && route->Box < MAX_BOX);
-		
-		bool found = false;
-		
-		wxSizerItemList & list = BoxSizer->GetChildren();
-		for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
-			MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
-			mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
-			if (box && box->HasChannel(route)) {
-				found = true;
-				break;
-			}
+		AddRoute(channel,flags);
+#if 0
+		Box b = r->GetBox();
+		InputDevice i = r->GetInputDevice();
+		OutputDevice o = r->GetOutputDevice();
+		MutBoxShape * boxshape = ToGUIBase(b)->GetShape(this);
+		if (i) {
+			MutInputDeviceShape * inputshape = ToGUIBase(i)->GetShape(this);
+			channel->Add(inputshape);
+			inputshape->Add(channel);
 		}
-		if (found) {
-			route = route -> GetGlobalNext();
-			continue;
+		if (o) {
+			MutOutputDeviceShape * outputshape = ToGUIBase(o)->GetShape(this);
+			//		boxshape->Add(channel);
+			channel->Add(outputshape);
+			outputshape->Add(channel);
 		}
-		
-		if (!BoxPTRs[route->Box]) {
-			DEBUGLOG (other, _T("Creating box"));
-			BoxPTRs[route->Box] = boxShape = 
-			new MutBoxShape(this,wxID_ANY, route->Box);
-			DEBUGLOG (other, _T("Box shape: %p"),boxShape);
-			mutASSERT(boxShape);
-			if (!boxShape) continue;
-			AddBox(boxShape, flags);
-		} else {
-			boxShape = BoxPTRs[route->Box];
-			mutASSERT(wxDynamicCast(boxShape,MutBoxShape));
-		}
-		
-		DEBUGLOG (other, _T("Adding Route to Box %p on window %p"),boxShape,this);
-		boxShape->AddChannel(route);
-		
-		route = route->GetGlobalNext();
-	}
-*/	
+#endif
+        }	
 }
+
 void MutRouteWnd::ClearBoxes()
 {
 	TRACEC;
@@ -632,9 +545,22 @@ KeyboardAnalyseSimple(curBox, key);
 }
 */
 
+void MutRouteWnd::FitInside() {
+	wxSize size(GetClientSize());
+	if (!GetChildren().empty()) {
+		size.IncTo(GetBestVirtualSize());
+	}
+	SetVirtualSize(size);
+}
 
 void MutRouteWnd::OnSize(wxSizeEvent& event)
 {
+	FitInside();
+	Layout();
+	Refresh(); // we must repaint the entire window on resizing.
+	//event.Skip(); // pass the event to enable the sizers to work
+
+#if 0
     if (GetAutoLayout())
         Layout();
 #if wxUSE_CONSTRAINTS
@@ -667,17 +593,22 @@ void MutRouteWnd::OnSize(wxSizeEvent& event)
 #endif // wxUSE_CONSTRAINTS
 
     event.Skip();
+#endif
 }
 
+void MutRouteWnd::OnPaint(wxPaintEvent & event) 
+{
+	wxPaintDC dc(this);
+	DoPrepareDC(dc);
+	dc.DestroyClippingRegion();
+	OnDraw(dc);
+}
 
 
 
 void MutRouteWnd::OnDraw(wxDC& dc)
 {
         wxScrolledWindow::OnDraw(dc);
-	wxRect screenpos;
-	GetViewStart(&screenpos.x,&screenpos.y);
-	GetClientSize(&screenpos.width,&screenpos.height);
         PRINTSIZER(GetSizer());
 //        dc.SetDeviceOrigin(0,0);
 	if (!BoxSizer) {
@@ -688,8 +619,9 @@ void MutRouteWnd::OnDraw(wxDC& dc)
         for (wxSizerItemList::const_iterator i = list.begin(); i != list.end(); i++) {
                 MutBoxShape * box = static_cast<MutBoxShape * > ((*i)->GetWindow());
 		mutASSERT(dynamic_cast<MutBoxShape *> ((*i)->GetWindow()));
+		DEBUGLOG(routinggui,_T("Redrawing box %p"),box);
 		if (box)
-			box->DrawLines(dc,screenpos);
+			box->DrawLines(dc,this);
         }
 }
 
@@ -706,54 +638,6 @@ void MutRouteWnd::OnMoveShape(wxCommandEvent& event) {
 
 
 #if 0
-// keyboardanalyse, Fenster aufr‰umen, Logiken lesen und anzeigen
-void TRouteWin::UpDate(int thekey, bool isLogicKey)
-{
-// Analyse zuerst
-        keyboard_analyse(thekey, isLogicKey);
-        curTaste[curInstr][isLogicKey] = thekey;
-        TWindow *ToFocus = NULL;
-        if ( isLogicKey )
-                curTaste[curInstr][0] = 0;
-// alte TMutTag-s lˆschen
-        ChildBroadcastMessage(WM_CLOSE);
-// neue erstellen
-        char isLogic, s[100], s1[100], key, isOpen;
-        TWindow *aWin;
-        nTags = 0;
-        if ( GetMutTag(isLogic, s, s1, key, true) )
-                do
-                {
-                        nTags++;
-                        if ( (isOpen = (key == curTaste[curInstr][isLogic])) != 0 )
-                                if ( isLogic )
-                                {
-                                        SetString(&(curLogic[curInstr]), s);
-                                        if ( !s1[0] )
-                                                if ( !curTS[curInstr] )
-                                                        sprintf(s1, "(INITIAL)");
-                                                else if ( curTS[curInstr][0] != '[' )
-                                                        sprintf(s1, "[%s]", curTS[curInstr]);
-                                                else strcpy(s1, curTS[curInstr]);
-                                        SetString(&(curTS[curInstr]), s1);
-                                }
-                                else
-                                        SetString(&(curTS[curInstr]), s);
-                        aWin = new TMutTag(this, isLogic, isOpen,	10, 10, key, s, GetModule());
-                        if ( isOpen ) ToFocus = aWin;
-                }
-                while ( GetMutTag(isLogic, s, s1, key, false) );
-// neue TMutTag-s aktivieren
-        CreateChildren();
-// Fokus setzen
-        if ( !ToFocus )
-                ToFocus = GetFirstChild();
-        ToFocus->SetFocus();
-// Tags anordnen
-        SendMessage(WM_SIZE);
-        SetFocusPos();
-        Parent->SendMessage(WM_COMMAND, CM_SBREFRESH);
-        MutWinOk = true;
 }
 
 #endif

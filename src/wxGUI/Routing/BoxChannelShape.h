@@ -32,7 +32,6 @@
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/IconShape.h"
 //#include "Device.h"
-#include "src/kernel/box.h"
 
 #ifndef MUWX_ROUTING_BOXCHANNELSHAPE_H_PRECOMPILED
 #define MUWX_ROUTING_BOXCHANNELSHAPE_H_PRECOMPILED
@@ -261,14 +260,14 @@ namespace mutaborGUI {
 		static void CreateRoutePanel(MutBoxChannelShape * channel, 
 					     MutRouteWnd * parentwin, 
 					     wxWindow * routeWindow, 
-					     int selectBox);
+					     const mutabor::Box & box);
 		static void InitializeInputFilter(InputFilterPanel * panel, 
 						  MutRouteWnd * par,
 						  MutBoxChannelShape * shape = NULL);
 		static void InitializeRoute(RoutePanel * panel, 
 					    MutRouteWnd * par,
 					    MutBoxChannelShape * shape = NULL,
-					    int selectBox = NoBox);
+					    mutabor::Box b = NULL);
 		
 		static void InitializeOutputFilter(OutputFilterPanel * panel, 
 						   MutRouteWnd * par,
@@ -289,6 +288,7 @@ namespace mutaborGUI {
 		 * This function detaches a channel from its containing Box. The shape is not deteted.
 		 */
 		void DetachChannel();
+		void DeleteRoute();
 	private:
 		DECLARE_EVENT_TABLE()
 	};

@@ -222,7 +222,6 @@ namespace mutabor {
 			POLY_ON                  = 0x7F // (127)
 		};
 
-
 		enum midi_controller_values {
 			CONTROLLER_ON           = 0x7F,
 			CONTROLLER_OFF          = 0X00
@@ -235,6 +234,11 @@ namespace mutabor {
 			CHANNEL_COARSE_TUNING  = 0x10002,
 			MODULATION_DEPTH_RANGE = 0x10005,
 			RPN_NULL               = 0x17F7F
+		};
+
+
+		enum midi_channel_constants {
+			NO_CHANNEL = -127
 		};
 
 		inline int get_data_size(uint8_t status_byte) {

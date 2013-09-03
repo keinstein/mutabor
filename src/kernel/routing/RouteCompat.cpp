@@ -135,6 +135,8 @@ namespace compat30 {
 		TRACE;
 		RouteClass::ClearRouteList();
 		TRACE;
+		BoxClass::ClearBoxList();
+		TRACE;
  		
 		// Zerlegen von config
 		wxString s;
@@ -179,10 +181,10 @@ namespace compat30 {
 			DEBUGLOG2(routing,_T("%d parameters read: Type = '%s', Name = '%s', devid = %d, bendingrange = %d"),test,Type,Name,DevId,BendingRange);
 			DEBUGLOG2(routing,_T("Name = '%s'"),(wxString(Name).c_str()));
 			OutputDevice Out = 
-				DeviceFactory::CreateOutput(Str2DT(muT(Type)), 
+				DeviceFactory::CreateOutput(Str2DT(Type), 
 							    Name);
 			
-			switch (Str2DT(muT(Type))) {
+			switch (Str2DT(Type)) {
 			case DTMidiPort:
 				if (test < 4)
 					error = true;
@@ -254,10 +256,10 @@ namespace compat30 {
 #endif
 			DEBUGLOG2(routing,_T("%d input parameters read: Type = '%s', Name = '%s', DevId = %d"), test, Type, Name, DevId);
 			InputDevice In = 
-				DeviceFactory::CreateInput(Str2DT(muT(Type)), 
+				DeviceFactory::CreateInput(Str2DT(Type), 
 							   (mutString)Name);
 
-			switch (Str2DT(muT(Type))) {
+			switch (Str2DT(Type)) {
 			case DTMidiPort:
 				static_cast<InputMidiPort *>(In.get()) -> SetDevId(DevId);
 			case DTNotSet:
@@ -275,12 +277,12 @@ namespace compat30 {
 			while ( Str2DT(s) == DTUnknown ) {
 				// Route lesen
 				mutChar Type[40];
-				int IFrom = 0, ITo = 0, Box = 0, BoxActive = 0,
+				int IFrom = 0, ITo = 0, boxid = 0, BoxActive = 0,
 				OutDev = -1, OFrom = -1, OTo = -1, ONoDrum = 1;
 #if (wxUSE_UNICODE || wxUSE_WCHAR_T)
 				test = SSCANF(s.c_str(),
 					      _T("%s %d %d %d %d %d %d %d %d"),
-					      Type, &IFrom, &ITo, &Box, &BoxActive,
+					      Type, &IFrom, &ITo, &boxid, &BoxActive,
 					      &OutDev, &OFrom, &OTo, &ONoDrum);
 				
 				if ( test < 9 ) {
@@ -290,7 +292,7 @@ namespace compat30 {
 #else
 				test = SSCANF(s.c_str(),
 					      _T("%s %d %d %d %d %d %d %d %d"),
-					      Type, &IFrom, &ITo, &Box,
+					      Type, &IFrom, &ITo, &boxid,
 					      &BoxActive, &OutDev, &OFrom, &OTo,
 					      &ONoDrum);
 				
@@ -300,12 +302,13 @@ namespace compat30 {
 				
 #endif
 				DEBUGLOG2(routing,_T("%d parameters read: Type = '%s', IFrom = %d, ITo = %d"),test, Type, IFrom, ITo);
-				DEBUGLOG2(routing,_T("    Box = %d, BoxActive= %d, OutDev = %d, OFrom = %d, OTo = %d, ONoDrum = %d"), Box, BoxActive, OutDev, OFrom, OTo, ONoDrum);
+				DEBUGLOG2(routing,_T("    boxid = %d, BoxActive= %d, OutDev = %d, OFrom = %d, OTo = %d, ONoDrum = %d"), boxid, BoxActive, OutDev, OFrom, OTo, ONoDrum);
 
 				OutputDevice Out = GetOut(OutDev);
+				Box box = BoxClass::GetOrCreateBox(boxid);
 				Route r(RouteFactory::Create(In, Out,
 							     Str2RT(Type),
-							     IFrom, ITo, Box,
+							     IFrom, ITo, box,
 							     BoxActive, 
 							     OFrom, OTo, ONoDrum != 0));
 				In->Add(r);
@@ -456,7 +459,9 @@ namespace compat30 {
 					wxString::Format(_T(" %d %d  %d %d  %d  %d %d %d\n"),
 							 (*R)->GetInputFrom(), 
 							 (*R)->GetInputTo(), 
-							 (*R)->GetBox(), 
+							 ((*R)->GetBox()?
+							  (*R)->GetBox()->get_routefile_id():
+							  NoBox), 
 							 (*R)->GetActive(), 
 							 OutNr,
 							 (*R)->GetOutputFrom(), 

@@ -2,12 +2,9 @@
  ********************************************************************
  * Interface to separate Mutabor functionality from the GUI
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/Routing/GUIRoute.cpp,v 1.6 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2011 TU Dresden
+ *              changes after 2011-11 (c) by the authors
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/03 17:20:15 $
- * \version $Revision: 1.6 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -40,6 +37,7 @@
 #include "src/kernel/Defs.h"
 #include "wx/string.h"
 #include "wx/window.h"
+#include "wx/msgdlg.h"
 #include "src/kernel/routing/Route.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
@@ -503,12 +501,17 @@ namespace mutaborGUI {
 		r = NULL;
 	}
 
+	void GUIRouteBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
+		wxString error = wxString::FormatV(message,args);
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	}
 
 
 	template<class T> 
 	void GUIfiedRoute<T>::Destroy() 
 	{ 
-		int saveboxid = T::GetBox();
+//		int saveboxid = T::GetBox();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
 			 (void*)this, 
 			 (int)intrusive_ptr_get_refcount(this));
@@ -525,7 +528,7 @@ namespace mutaborGUI {
 		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
 			 (void*)this, 
 			 (int)intrusive_ptr_get_refcount(this));
-		BoxData::CloseRoute(saveboxid);
+//		BoxData::CloseRoute(saveboxid);
 	}
 
 	RouteClass * GUIRouteFactory::DoCreate() const
@@ -542,7 +545,7 @@ namespace mutaborGUI {
 					       mutabor::RouteType type,
 					       int iFrom,
 					       int iTo,
-					       int box,
+					       Box box,
 					       bool active,
 					       int oFrom,
 					       int oTo,
@@ -568,15 +571,15 @@ namespace mutaborGUI {
 		} else 
 			return NULL;
 	}
-
-	MutBoxShape * GUIRouteFactory::DoCreateBoxShape(int box,
+#if 0
+	MutBoxShape * GUIRouteFactory::DoCreateBoxShape(mutabor::Box & box,
 							wxWindow * parent) const {
 		MutBoxShape * shape;	
 		DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
-			 box,(int)BoxData::GetBox(box).GetBoxShapes().size());
+			 box,(int)ToGUIBase(box)->GetShapes().size());
 		
 	
-		if (box == NewBox) 
+		if (box == NULL) 
 			shape = new NewMutBoxShape(parent,wxID_ANY);
 		else
 			/** \todo implement ID sharing between the different
@@ -589,6 +592,7 @@ namespace mutaborGUI {
 
 		return shape;
 	}
+#endif
 
 	MutBoxChannelShape * 
 	GUIRouteFactory::DoCreateBoxChannelShape(mutabor::Route & route,
@@ -599,8 +603,22 @@ namespace mutaborGUI {
 			 (void*)route.get(), 
 			 (int)intrusive_ptr_get_refcount(route.get()));
 
+		mutASSERT(route);
+		Box box = route->GetBox();
+		MutBoxShape * boxshape = NULL;
+		if (!box) {
+			box = BoxFactory::Create(mutabor::NoBox);
+			connect (route,box);
+			boxshape = GUIBoxFactory::CreateBoxShape(box, parent);
+			MutRouteWnd * root = dynamic_cast<MutRouteWnd *>(parent);
+			root->AddBox(boxshape,MutBoxShape::GetSizerFlags());
+		} else {
+			boxshape = const_cast<MutBoxShape *>(ToGUIBase(box)->GetShape(parent));
+		}
 		MutBoxChannelShape * shape = 
-			new MutBoxChannelShape (parent,wxID_ANY,route);
+			new MutBoxChannelShape (boxshape,
+						wxID_ANY,
+						route);
                 /* MutBoxChannelShape establishes the connection
 		if (shape) {
 			ToGUIBase(route).Attatch(shape);
@@ -627,6 +645,13 @@ namespace mutaborGUI {
 		Out = NULL;
 		TRACEC;
 	}
+
+	void GUIOutputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
+		wxString error = wxString::FormatV(message,args);
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	}
+
 
 	template<class T>
 	void GUIfiedOutputDevice<T>::DisconnectFromAll() {
@@ -664,6 +689,12 @@ namespace mutaborGUI {
 		TRACEC;
 		In = NULL;
 		TRACEC;
+	}
+
+	void GUIInputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
+		wxString error = wxString::FormatV(message,args);
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
 	}
 
 	template<class T>
@@ -880,6 +911,7 @@ namespace mutaborGUI {
 
 	void InitGUIRouteFactories()
 	{
+		new GUIBoxFactory;
 		new GUIRouteFactory;
 		new GUIMidiPortFactory;
 		new GUIMidiFileFactory;

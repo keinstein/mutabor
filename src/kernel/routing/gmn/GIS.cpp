@@ -306,7 +306,7 @@ char *strdupchr(char a)
 GisNote::GisNote(int key, int octave, int acc, mutString sep, GisToken *next)
 		: GisToken(sep, next)
 {
-	if ( key == NO_KEY ) {
+	if ( key == GMN_NO_KEY ) {
 #ifdef WX
 		Name = mutT("_");
 #else

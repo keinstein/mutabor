@@ -50,15 +50,16 @@
 #include "src/kernel/Defs.h"
 
 #include "src/wxGUI/Action.h"
-#include "src/kernel/GrafKern.h"
-#include "src/kernel/box.h"
+//#include "src/kernel/GrafKern.h"
 
 #ifdef __BORLANDC__
 #pragma hdrstop
 #endif
 
-// Aktionen ---------------------------------------------------------
+#if 0
 
+// we are deleting this file
+// Aktionen ---------------------------------------------------------
 class TAktionTrace
 {
 
@@ -123,7 +124,6 @@ bool ACTChanged(int box)
 	return flag;
 }
 
-
 char sAktion[2000];
 int ActLineNumbers;
 
@@ -168,6 +168,7 @@ char *GenerateACTString(int box)
 
 	return sAktion;
 }
+*/
 
 char *GenerateCAWString()
 {
@@ -196,5 +197,5 @@ char *GenerateCAWString()
 	return sAktion;
 }
 
-
+#endif
 ///\}

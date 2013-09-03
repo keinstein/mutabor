@@ -67,7 +67,7 @@
 
 #include "src/wxGUI/generic/mhDefs.h"
 #include "src/kernel/Runtime.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 #include "src/wxGUI/Action.h"
 #include "src/wxGUI/MutRouteWnd.h"
 #include "src/wxGUI/MutLogicWnd.h"
@@ -125,7 +125,7 @@ namespace mutaborGUI {
 
 	char WinName[5][12] = { "KEYWIN", "TONSYSTWIN", "ACTIONWIN", "LOGICWIN", "ROUTEWIN" };
 
-	int MutFrame::boxCommandIds[MAX_BOX];
+	std::map<int,mutabor::Box> MutFrame::boxCommandIds;
 
 #define SG_NOTHING 1
 #define SG_LOGIC   0
@@ -263,9 +263,9 @@ namespace mutaborGUI {
 							      pos, 
 							      size,
 							      style | wxNO_FULL_REPAINT_ON_RESIZE |wxTAB_TRAVERSAL),
-		curStatusImg(0),
-		auimanager(this,wxAUI_MGR_DEFAULT |
-			   wxAUI_MGR_ALLOW_ACTIVE_PANE | wxAUI_MGR_LIVE_RESIZE)
+					      curStatusImg(0),
+					      auimanager(this,wxAUI_MGR_DEFAULT |
+							 wxAUI_MGR_ALLOW_ACTIVE_PANE | wxAUI_MGR_LIVE_RESIZE)
 	{
 
 		SetSize (DetermineFrameSize ());
@@ -674,10 +674,10 @@ namespace mutaborGUI {
 
 // Logic-Arbeit: CmDoActivate, CmStop, CmPanic, CmExecute
 
-
-	void UpdateUIcallback(int box,bool logic_changed)
-	{
-		BoxData & boxdata = BoxData::GetBox(box);
+#if 0
+	// Box Callback (updateuicallback)
+	void MutFrame::BoxChanged(bool logic_changed) {
+		BoxData & boxdata = ToGUIBase(box);
 
 		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
 				     CM_UPDATEUI);
@@ -695,6 +695,8 @@ namespace mutaborGUI {
 			if (win) wxPostEvent(win,event);
 		}
 	}
+#endif
+
 
 	void MutFrame::CmDoActivate(wxCommandEvent& event)
 	{
@@ -714,7 +716,6 @@ namespace mutaborGUI {
 		DebugCheckRoutes();
 #endif
 
-		AktionTraceReset();
 
 		// aktivieren
 #ifndef NOACTIVATE
@@ -729,17 +730,22 @@ Shall Mutabor translate the files in batch mode, \
 to keep the MIDI files with the original time stamp?\n \
 (This means also, that you can't modify the tunings \
 while playing by computer keyboard.)"),
-							      _("No realtime ⇒ batch mode?"),
-							      wxYES_NO | wxICON_QUESTION) != wxYES);
+						 _("No realtime ⇒ batch mode?"),
+						 wxYES_NO | wxICON_QUESTION) != wxYES);
 		}
 		ActiveWindow = this;
 
-		if ( !Activate(realtime, &UpdateUIcallback) )
+		if ( mutabor::BoxClass::ActivateAll(realtime) )
 			return;
 
 #endif
 
 		DEBUGLOG(other,_T("Initialize state"));
+
+#if 0
+// this should be done during ActivateAll
+
+		mutabor::Box::ResetActions();
 
 		// Initialize boxes
 		// assure that all boxes are initialized as we might activeate
@@ -755,17 +761,32 @@ while playing by computer keyboard.)"),
 		// curBox checken
 		CheckBoxesUsed();
 
+
+		// should be done by GUIBoxData
+
 		if ( !mut_box[curBox].used ) {
 			curBox = minimal_box_used;
 		}
 
 
-		DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
+
+		size_t i = minimal_box_used;
+		if (mut_box[i].used) {
+			do {
+				BoxWindowsOpen(i,false);
+				i = mut_box[i].next_used;
+			} while (i);
+		}
 
 
 		UpdateBoxMenu();
 		MutFrame * routewin = dynamic_cast<MutFrame *>(FindWindowById(WK_ROUTE));
 		if ( routewin ) routewin->UpdateBoxMenu();
+#endif
+
+		DEBUGLOG (gui, _T("Open other than logic; One window mode: %d"),OWM);
+
+
 		DEBUGLOG (gui, _T("Open Logic window"));
 		// curBox-Fenstersetzen
 		//  LogicWinOpen(curBox);
@@ -778,14 +799,6 @@ while playing by computer keyboard.)"),
 		DEBUGLOG (other, _T("Open Text boxes: %d -- %d"),WK_KEY,WK_ACT);
 
 		Freeze();
-
-		size_t i = minimal_box_used;
-		if (mut_box[i].used) {
-			do {
-				BoxWindowsOpen(i,false);
-				i = mut_box[i].next_used;
-			} while (i);
-		}
 
 		wxConfigBase *config = wxConfig::Get();
 		if (config) {
@@ -882,18 +895,13 @@ To start the translation hit the play button or select “Play” from the “Se
 		mutASSERT(ActiveWindow == this);
 		DEBUGLOG (other, _T("%d"),event.GetId());
 
-		size_t i = 0;
+		mutabor::Box box = boxCommandIds[event.GetId()];
+		if (!box) return;
 
-		while (i < MAX_BOX && boxCommandIds[i] != event.GetId()) i++;
+		SetCurrentBox(box);
 
-		mutASSERT(i!=MAX_BOX);
-
-		DEBUGLOG (other, _T("%d"),(int)i);
-
-		curBox = i;
-
-		BoxData & boxdata = ::GetCurrentBox();
-		MutLogicWnd * w = boxdata.GetLogicWindow();
+		BoxData * boxdata = ToGUIBase(box);
+		MutLogicWnd * w = boxdata->GetLogicWindow();
 		if (w) {
 
 			wxFrame * win =
@@ -923,7 +931,7 @@ To start the translation hit the play button or select “Play” from the “Se
 			}
 			LogicOn = false;
 			StopInDev();
-			Stop();
+			mutabor::BoxClass::StopAll();
 
 			// Ampel umschalten
 			/*		ControlBar->Remove(*ButtonStop);
@@ -940,10 +948,6 @@ To start the translation hit the play button or select “Play” from the “Se
 #endif
 				ClearMenuItem(CM_SELECTBOX);
 			mutASSERT(boxSelector->IsSubMenu());
-
-			ActiveWindow -> CloseAll();
-
-			AktionTraceReset();
 
 			repaint_route();
 			ActiveWindow = NULL;
@@ -1022,7 +1026,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 // TextBox-Arbeit: ToggleTextBox, TextBoxOpen, CmToggleKey, CmToggleTS
 
-	void MutFrame::LogicWinOpen(int box)
+	void MutFrame::LogicWinOpen(mutabor::Box box)
 	{
 		int width, height;
 		GetClientSize(&width, &height);
@@ -1032,8 +1036,9 @@ To start the translation hit the play button or select “Play” from the “Se
 						      wxPoint(0, 0),
 						      wxSize(width,height));
 		auimanager.AddPane(client,
-				   wxAuiPaneInfo().Name(wxString::Format(_T("Logic%d"),
-									 box))
+				   wxAuiPaneInfo().Name(wxString::Format(_T("Logic %s"),
+									 (box?box->GetLabel()
+									  :wxString(_("(unknown)"))).c_str()))
 				   .Bottom()
 				   .Floatable(true)
 				   .CloseButton(false)
@@ -1056,21 +1061,23 @@ To start the translation hit the play button or select “Play” from the “Se
 			return;
 		}
 
-		BoxData & box = BoxData::GetBox(curBox);
+		mutabor::Box b = GetCurrentBox();
+		BoxData * box = ToGUIBase(b);
+		if (!box) return;
 		bool openclose = false;
 		MutChild * win = NULL;
 		switch (kind) {
 		case WK_KEY: 
-			openclose = box.ToggleKeyWindow();
-			win = box.GetKeyWindow();
+			openclose = box->ToggleKeyWindow();
+			win = box->GetKeyWindow();
 			break;
 		case WK_TS: 
-			openclose = box.ToggleTonesystemWindow();
-			win = box.GetTonesystemWindow();
+			openclose = box->ToggleTonesystemWindow();
+			win = box->GetTonesystemWindow();
 			break;
 		case WK_ACT: 
-			openclose = box.ToggleActionsWindow();
-			win = box.GetActionsWindow();
+			openclose = box->ToggleActionsWindow();
+			win = box->GetActionsWindow();
 			break;
 		case WK_LOGIC:
 			wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -1096,28 +1103,27 @@ To start the translation hit the play button or select “Play” from the “Se
 		DEBUGLOG(gui,_T("LogicOn %d"),LogicOn);
 
 		if ( !LogicOn ) return;
-
-		DEBUGLOG(gui,_T("IsOpen(%d, %d) = %d"),kind,(int)curBox,IsOpen(kind, curBox));
-		mutASSERT(IsOpen(kind,curBox) == !openclose);
+		
+		DEBUGLOG(gui,_T("IsOpen(%d, %p) = %d"),kind,GetCurrentBox().get(),IsOpen(kind, b));
+		mutASSERT(IsOpen(kind,b) == !openclose);
 
 		if (openclose) {
-			TextBoxOpen(kind, curBox);
+			TextBoxOpen(kind, b);
 		} else if (win) {
 			CloseClientWindow(win,true);
 		} 
 	}
 
 
-	void MutFrame::DoBoxWindowsOpen(int box, bool update) {
+	void MutFrame::DoBoxWindowsOpen(mutabor::Box box, bool update) {
 		mutUnused(update);
-		mutASSERT(mut_box[box].used);
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		
-		if (boxdata.WantKeyWindow())
+		if (boxdata->WantKeyWindow())
 			TextBoxOpen(WK_KEY, box);
-		if (boxdata.WantTonesystemWindow())
+		if (boxdata->WantTonesystemWindow())
 			TextBoxOpen(WK_TS, box);
-		if (boxdata.WantActionsWindow())
+		if (boxdata->WantActionsWindow())
 			TextBoxOpen(WK_ACT, box);
 
 		LogicWinOpen(box); // updates already
@@ -1130,24 +1136,24 @@ To start the translation hit the play button or select “Play” from the “Se
 		// auimanager.Update();
 	}
 		
-	void MutFrame::DoBoxWindowsClose(int box,bool update) {
-		if (MIN_BOX> box || box >= MAX_BOX) {
+	void MutFrame::DoBoxWindowsClose(mutabor::Box box,bool update) {
+		if (!box) {
 			UNREACHABLEC;
 			return;
 		}
 			
-		BoxData & boxdata = BoxData::GetBox(box);
+		BoxData * boxdata = ToGUIBase(box);
 		wxWindow * win;
-		win = boxdata.GetLogicWindow();
+		win = boxdata->GetLogicWindow();
 		if (win) 
 			CloseClientWindow(win,false);
-		win = boxdata.GetKeyWindow();
+		win = boxdata->GetKeyWindow();
 		if (win) 
 			CloseClientWindow(win,false);
-		win = boxdata.GetTonesystemWindow();
+		win = boxdata->GetTonesystemWindow();
 		if (win) 
 			CloseClientWindow(win,false);
-		win = boxdata.GetActionsWindow();
+		win = boxdata->GetActionsWindow();
 		if (win) 
 			CloseClientWindow(win,false);
 
@@ -1161,9 +1167,9 @@ To start the translation hit the play button or select “Play” from the “Se
 
 
 
-	void MutFrame::TextBoxOpen(WinKind kind, int box, bool update_auimanager)
+	void MutFrame::TextBoxOpen(WinKind kind, Box & box, bool update_auimanager)
 	{
-		DEBUGLOG (other, _T("%d,%d"),kind,box);
+		DEBUGLOG (other, _T("%d,%p"),kind,box.get());
 
 		int width, height;
 
@@ -1172,11 +1178,11 @@ To start the translation hit the play button or select “Play” from the “Se
 		height /= 2;
 
 		MutChild *client = new MutChild(kind,
-						  box,
-						  this,
-						  -1,
-						  wxDefaultPosition,
-						  wxSize(width, height));
+						box,
+						this,
+						-1,
+						wxDefaultPosition,
+						wxSize(width, height));
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 		DEBUGLOG (gui, _T("client->winKind=%d"),client->GetKind());
 
@@ -1192,7 +1198,7 @@ To start the translation hit the play button or select “Play” from the “Se
 
 		case WK_TS:
 			client->GetToneSystem(asTS);
- 			break;
+			break;
 
 		case WK_ACT:
 			if (CAW) {
@@ -1229,7 +1235,8 @@ To start the translation hit the play button or select “Play” from the “Se
 				   .CaptionVisible(true).Caption(client->MakeTitle())
 				   .CloseButton(true).MaximizeButton(true)
 				   .Float()
-				   .Name(wxString::Format(_T("WK_%d_%d"),kind,box))
+				   .Name(wxString::Format(_T("WK_%d_%d"),kind,
+							  box?box->get_routefile_id():NoBox))
 				   .DestroyOnClose(true));
 
 		mutASSERT(auimanager.GetPane(client).IsDestroyOnClose());
@@ -1316,17 +1323,23 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::CeToggleKey(wxUpdateUIEvent& event)
 	{
-		event.Check(BoxData::GetBox(curBox).WantKeyWindow());
+		mutabor::Box box = GetCurrentBox();
+		BoxData * guibox = ToGUIBase(box);
+		event.Check(guibox?guibox->WantKeyWindow():false);
 	}
 
 	void MutFrame::CeToggleTS(wxUpdateUIEvent& event)
 	{
-		event.Check(BoxData::GetBox(curBox).WantTonesystemWindow());
+		mutabor::Box box = GetCurrentBox();
+		BoxData * guibox = ToGUIBase(box);
+		event.Check(guibox?guibox->WantTonesystemWindow():false);
 	}
 
 	void MutFrame::CeToggleAct(wxUpdateUIEvent& event)
 	{
-		event.Check(BoxData::GetBox(curBox).WantActionsWindow());
+		mutabor::Box box = GetCurrentBox();
+		BoxData * guibox = ToGUIBase(box);
+		event.Check(guibox?guibox->WantActionsWindow():false);
 	}
 
 	void MutFrame::CeToggleOWM(wxUpdateUIEvent& event)
@@ -1370,10 +1383,10 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 	wxSize subSize = wxDefaultSize;
 
 	int WSize[4][3] =
-        { { 640, 530, 252},
-          { 800, 646, 328},
-          {1024, 826, 425},
-          {1280, 994, 620} };
+	{ { 640, 530, 252},
+	  { 800, 646, 328},
+	  {1024, 826, 425},
+	  {1280, 994, 620} };
 
 	void MutFrame::WindowSize(MutChild *win)
 	{
@@ -1561,10 +1574,14 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 				wxMessageBox(_("The conversion finished successfully."),
 					     _("Conversion error"), 
 					     wxOK | wxICON_INFORMATION );
-			} else {
+			} 
+#if 0
+			// Centralized Error collector has not been implemented.
+			else {
 				wxMessageBox(Fmeldung, _("Conversion error"), 
 					     wxOK | wxICON_ERROR );
 			}
+#endif
 		}
 
 		repaint_route();
@@ -1623,7 +1640,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 			if ( (*In)->GetType() >= DTMidiFile &&
 			     ((*In)->GetMode() == DeviceStop ||
-			     (*In)->GetMode() == DevicePause) ) {
+			      (*In)->GetMode() == DevicePause) ) {
 				DEBUGLOG (routing, _T("Device can be activated"));
 				event.Enable(true);
 				return;
@@ -1648,7 +1665,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					event.Enable(true);
 				
 					//if ( curStatusImg != SG_PLAY )
-						//			SetStatus(SG_PLAY);
+					//			SetStatus(SG_PLAY);
 	
 					return;
 				} else if ( (*In)->GetMode() == DevicePause )
@@ -1656,11 +1673,11 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			}
 		}
 /*
-		if ( Pause ) {
-			if ( curStatusImg != SG_PAUSE )
-				SetStatus(SG_PAUSE);
-		} else if ( curStatusImg != 1-LogicOn )
-			SetStatus(1-LogicOn);
+  if ( Pause ) {
+  if ( curStatusImg != SG_PAUSE )
+  SetStatus(SG_PAUSE);
+  } else if ( curStatusImg != 1-LogicOn )
+  SetStatus(1-LogicOn);
 */ 
 		event.Enable(false);
 	}
@@ -1670,8 +1687,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		SetTitle(wxString::Format(_("%s -- %s"), APPNAME, event.GetString().c_str()));
 	}
 
-        // Updaten der Protokollfenster
- 	void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
+// Updaten der Protokollfenster
+	void MutFrame::UpdateUI(wxCommandEvent& WXUNUSED(event))
 	{
 
 	}
@@ -1736,14 +1753,18 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		return normal;
 	}
 
-	/// Close all child windows of given kind
-	/** This function closes all child windows of the given kind.
-	 *
-	 * \param kind any wk_kind, that describes which kind of windows shall
-	 * be closed. Use WK_NULL to close all windows.
-	 */
+/// Close all child windows of given kind
+/** This function closes all child windows of the given kind.
+ *
+ * \param kind any wk_kind, that describes which kind of windows shall
+ * be closed. Use WK_NULL to close all windows.
+ */
 	void MutFrame::CloseAll(WinKind kind)
 	{
+
+
+#warning reimplement this or remove the function
+#if 0
 		TRACEC;
 
 		auimanager.Update();
@@ -1802,6 +1823,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		} while (box);
 		Thaw();
 		auimanager.Update();
+#endif
 	}
 
 	void MutFrame::UpdateBoxMenu()
@@ -1815,6 +1837,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		//  wxID_HIGHEST
 		//  wxMenu *
 
+#warning Reimplement UpdateBoxMenu using the new api
+#if 0
 		for (size_t i = 0; i < MAX_BOX; i++) {
 			if (mut_box[i].used) {
 				//if (ActiveWindow == this) LogicWinOpen(i);
@@ -1847,6 +1871,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 			}
 		}
+#endif
 	}
 
 	bool MutFrame::RaiseTheFrame()
@@ -1861,6 +1886,8 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void CheckBoxesUsed()
 	{
+#warning Check whether CheckBoxesUsed is in use
+#if 0
 		for (int i = 0; i < MAX_BOX; i++) {
 			mutabor_box_type & b = mut_box[i];
 			b.id = i;
@@ -1893,9 +1920,10 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 			} else b.next_used = 0;
 		}
 		minimal_box_used = last_used;
+#endif
 	}
 
-
+#if 0
 	int SmallestBoxUsed()
 		
 	{
@@ -1918,6 +1946,6 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 		else
 			return Box;
 	}
-
+#endif
 }
 //\}

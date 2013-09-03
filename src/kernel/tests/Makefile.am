@@ -11,7 +11,8 @@ testcppunit_CXXFLAGS = $(AM_CXXFLAGS) $(CPPUNIT_CFLAGS)
 
 testcppunit_SOURCES = \
 	main.cpp \
-	boxTest.h 
+	boxTest.h \
+	boxTest.cpp
 
 nodist_testcppunit_SOURCES = \
 	debugPaths.cpp

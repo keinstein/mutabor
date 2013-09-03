@@ -1,12 +1,9 @@
-/** \file               -*- C++ -*-
+/** \file 
  ********************************************************************
- * Description
+ * Table generators for the Mutabor engine
  *
- * Copyright:   (c) 2012 Tobias Schlemmer
+ * Copyright:   (c) 2008 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/09/27 20:13:26 $
- * \version $Version$
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -25,44 +22,49 @@
  *
  *
  ********************************************************************
- * \addtogroup tests
+ * \addtogroup kernel
  * \{
  ********************************************************************/
-#ifndef __TESTS_GUIROUTETEST_H__
-#define __TESTS_GUIROUTETEST_H__
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/portability/Stream.h>
-#include "src/kernel/routing/Route.h"
-//#include "src/kernel/Runtime.h"
 
-class GUIRouteTest : public CPPUNIT_NS::TestFixture 
-{
-	CPPUNIT_TEST_SUITE( GUIRouteTest );
-	CPPUNIT_TEST( testConnect );
-	CPPUNIT_TEST_SUITE_END();
+/* we guard a little bit complicated to ensure the references are set right
+ */
 
-protected:
-//	mutabor::Route route;
-
-public:
-	GUIRouteTest()
-	{
-	}
-
-	virtual ~GUIRouteTest()
-	{
-	}
-
-	int countTestCases () const
-	{ 
-		return 1; 
-	}
-  
-	void setUp();
-	void tearDown();
-
-	void testConnect();
-};
-
+#if (!defined(SRC_KERNEL_TABGEN_H) && !defined(PRECOMPILE)) \
+	|| (!defined(SRC_KERNEL_TABGEN_H_PRECOMPILED))
+#ifndef PRECOMPILE
+#define SRC_KERNEL_TABGEN_H
 #endif
+
+// ---------------------------------------------------------------------------
+// headers
+// ---------------------------------------------------------------------------
+
+#include "Defs.h"
+
+#ifndef SRC_KERNEL_TABGEN_H_PRECOMPILED
+#define SRC_KERNEL_TABGEN_H_PRECOMPILED
+
+// system headers which do seldom change
+
+#ifdef __cplusplus 
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
+
+
+/* TabGen.cpp */
+void mutabor_tabellen_generator (mutabor_box_type * box);
+
+#ifdef __cplusplus 
+		} // extern "C"
+	} // namespace hidden
+} // namespace mutabor
+#endif
+
+#endif // precompiled
+#endif
+
+
+///\}

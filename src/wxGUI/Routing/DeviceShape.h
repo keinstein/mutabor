@@ -171,7 +171,7 @@ namespace mutaborGUI {
 		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
 		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
 
-		/// add a route
+		/// add a device
 		virtual void Add(DeviceClass * dev) {
 			TRACEC;
 			if (device)
@@ -181,7 +181,7 @@ namespace mutaborGUI {
 			TRACEC;
 		};
 
-		/// replace a dev
+		/// replace a device
 		virtual bool Replace(devicetype olddev,
 				     devicetype newdev) {
 			/* we are using no references here, as we might get deleted
@@ -196,7 +196,7 @@ namespace mutaborGUI {
 			return true;
 		}
 
-		/// remove a dev
+		/// remove a device
 		virtual bool Remove(devicetype dev) {
 			TRACEC;
 			if (device != dev) {

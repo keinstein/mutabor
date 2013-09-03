@@ -41,12 +41,13 @@
 #ifndef PRECOMPILE
 #define MUWX_ACTION_H
 #endif
+#if 0 
+// we are deleting this file
 
 #include "src/kernel/Global.h"
 
 #ifndef MUWX_ACTION_H_PRECOMPILED
 #define MUWX_ACTION_H_PRECOMPILED
-
 void AktionTraceReset();
 bool TakeOverActions();
 bool ACTChanged(int box);
@@ -55,6 +56,7 @@ char *GenerateACTString(int box);
 char *GenerateCAWString();
 
 #endif // precompile
+#endif // if0
 #endif // header loaded
 
 

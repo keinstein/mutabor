@@ -27,8 +27,9 @@
 *\{
 ********************************************************************/
 #include "src/kernel/Defs.h"
-#include "src/kernel/Global.h"
+//#include "src/kernel/Global.h"
 #include "src/kernel/routing/Route-inlines.h"
+#include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
@@ -37,58 +38,10 @@
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
 #include "src/wxGUI/Routing/BoxChannelShape.h"
+#include "wx/msgdlg.h"
 using namespace mutabor;
 
 namespace mutaborGUI {
-
-	wxColour BoxColours[MAX_BOX];
-	const wxColour * BoxTextColours[MAX_BOX];
-
-	void initBoxColours() {
-		for (int i = 1; i<= MAX_BOX; i++) {
-			int r = ((i & 0x01) << 7 ) | ((i & 0x08) << 3) | ((i & 0x40) >> 1);
-			r = r?r-1:0;
-			int g = ((i & 0x02) << 6 ) | ((i & 0x10) << 2) | ((i & 0x80) >> 2);
-			g = g?g-1:0;
-			int b = ((i & 0x04) << 5 ) | ((i & 0x20) << 1) | ((i & 0x100) >> 3);
-			b = b?b-1:0;
-			DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),i-1,r,g,b);
-			if (r+b+g < 0x180) 
-				BoxTextColours[i-1] = wxWHITE;
-			else
-				BoxTextColours[i-1] = wxBLACK;
-			BoxColours[i-1]=wxColour(r,g,b);
-		}
-	}
-
-	const wxColour & BoxColour(int nr)
-	{
-
-		DEBUGLOG2(other,_T("Colour for box %d requested"),nr);
-		if ( nr == GmnBox )
-			return wxNullColour;
-		else if (nr == NoBox) 
-			return wxNullColour;
-		//	nr %= 11;
-		nr %= MAX_BOX;
-		if (nr < 0) nr += MAX_BOX;
-		DEBUGLOG2(other,_T("Returning colour for Box number %d"),nr);
-		return BoxColours[nr];
-
-	}
-
-	const wxColour & BoxTextColour(int nr)
-	{
-		DEBUGLOG2(other,_T("Text colour for box %d requested"),nr);
-		if ( nr == GmnBox )
-			return *wxBLACK;
-		//	nr %= 11;
-		nr %= MAX_BOX;
-		if (nr < 0) nr += MAX_BOX;
-		DEBUGLOG2(other,_T("Returning text colour for Box number %d"),nr);
-		return *(BoxTextColours[nr]);
-	}
-
 
 	static inline wxSize GetStaticBoxSize( MutBoxIconShape *box )
 	{
@@ -113,24 +66,27 @@ namespace mutaborGUI {
 	END_EVENT_TABLE()
 
 	wxSizerFlags MutBoxShape::sizerFlags;
-	int MutBoxShape::maxBoxId = Box0 - 1;
 
 	MutBoxShape::~MutBoxShape() {
-		BoxData::GetBox(boxId).Detatch(this);
+		if (box)
+			disconnect(box,this);
 	}
 
 //* \todo  fix tab order
-	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, int Id)
+	bool MutBoxShape::Create(wxWindow * parent,wxWindowID wid, Box & b)
 	{
-		MutBoxIconShape::Create(parent,wid);
+		if (!b) return false;
+		bool fine = 
+			MutBoxIconShape::Create(parent,wid);
+		if (!fine) return false;
 		channels = new wxBoxSizer(wxVERTICAL);
 		SetSizer(channels);
 		//	SetAutoLayout(true); done by SetSizer()
                 //	m_icon = new MutBoxIconShape(this,-1);
 		m_icon = this;
-		SetBoxId(Id,false);
-		BoxData::GetBox(Id).Attatch(this);
 		if (!m_icon) return false;
+
+		connect(b,this);
 		return true;
 	}
 
@@ -154,35 +110,33 @@ namespace mutaborGUI {
 	}
 
 
-	void MutBoxShape::SetBoxId(int Id, bool layout) {
-		boxId = Id;
-		if (boxId >= maxBoxId) maxBoxId = boxId + 1;
+	void MutBoxShape::SetBox(Box & b, bool layout) {
+		box = b;
 		if (m_icon) {
+			if (!box) 
+				SetBox();
+			BoxData * guibox = ToGUIBase(box);
+			int boxId = box->get_routefile_id();
 			switch (boxId) {
 			case NewBox:
 				m_icon->SetLabel(_("New Box"));
 				m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
 				break;
 			case NoBox:
-				m_icon->SetLabel(_("No Box / Though mode"));
-				m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+				SetBox();
 				break;
 			case GmnBox:
 				m_icon->SetLabel(_("GUIDO Box"));
-				m_icon->SetForegroundColour(BoxTextColour(boxId));
-				m_icon->SetBackgroundColour(BoxColour(boxId));
 				break;
 			default:
-				m_icon->SetLabel(wxString::Format(_("Box %d"),
-								  boxId));
-				m_icon->SetForegroundColour(BoxTextColour(boxId));
-				m_icon->SetBackgroundColour(BoxColour(boxId));
+				m_icon->SetLabel(wxString::Format(_("Box %d"),boxId));
 				break;
 			}
+			m_icon->SetForegroundColour(guibox->GetTextColour());
+			m_icon->SetBackgroundColour(guibox->GetBackgroundColour());
 			if (layout) {
 				InvalidateBestSize();
-				SetInitialSize(wxDefaultSize);
-				m_parent->Layout();
+				Fit();
 			}
 		}
 	
@@ -216,26 +170,25 @@ namespace mutaborGUI {
 		Route  route  = RouteFactory::Create();
 		mutASSERT(route);
 		if (!route) return NULL;
-		connect(route,boxId); // this might be ovewritten by ReadPanel
-		BoxData::OpenRoute(boxId);
-					
-	
+
+		connect(route,box); // this might be ovewritten by ReadPanel
 
 		MutBoxChannelShape * channel = 
-#ifdef DEBUG
-			ToGUIBase(route)->GetShape(GetParent());
-		mutASSERT(!channel);
-		channel = 
-#endif
-			GUIRouteFactory::CreateBoxChannelShape(route,this);
+			GUIRouteFactory::CreateBoxChannelShape(route,
+							       GetParent());
+		Add(channel);
+
+		mutASSERT(channel);
+		mutASSERT(channel->GetParent() == this);
+		mutASSERT(GetChannels()->GetItem(channel) != NULL);
 
 		if (channel) {
-			Add(channel);
 			channel->ReadPanel(panel);
 		}
 		return channel;
 	}
 
+#if 0
 	MutBoxChannelShape * MutBoxShape::AddChannel(Route & route)
 	{
 		DEBUGLOG (other, _T("Adding route %p to window %p"),(void*)route.get(), (void*)m_parent);
@@ -243,6 +196,7 @@ namespace mutaborGUI {
 			GUIRouteFactory::CreateBoxChannelShape(route,this);
 		return Add(channel);
 	}
+#endif
 
 	bool MutBoxShape::Remove(MutBoxChannelShape * shape) {
 		return Detach(shape);
@@ -321,9 +275,9 @@ namespace mutaborGUI {
 		}
 	}
 
-
+#if 0
 	void MutBoxShape::Add(BoxData * box) {
-		SetBoxId(box->GetId());
+		SetBox(box);
 	}
 	bool MutBoxShape::Remove(BoxData * box){
 		if (boxId == box->GetId()) {
@@ -332,6 +286,7 @@ namespace mutaborGUI {
 		}
 		return false;
 	}
+#endif
 
 	bool MutBoxShape::Detach( wxWindow *window )
 	{
@@ -381,66 +336,82 @@ namespace mutaborGUI {
 	}
 
 	void MutBoxShape::DoLeftDblClick() {
-		BoxDlg * box = ShowBoxDialog();
-		mutASSERT(box);
+		BoxDlg * dlg = ShowBoxDialog();
+		wxWindow * parent = m_parent; // we may lose the object
+		mutASSERT(dlg);
+		if (!dlg) return;
 	
-		if (!box) return;
-		int Res = box->ShowModal();
-		bool destroySelf = false;
+		int Res, type, boxid;
+		mutabor::Box b;
+		MutBoxShape * newbox = NULL;
+
+		/** \todo Move this check into MutBoxDlg */
+		do {
+			Res = dlg->ShowModal();
+			
+			if (Res != wxID_OK) break;
 	
-		if (Res == wxID_OK) {
-			int type = box->GetBoxType();
+			type = dlg->GetBoxType();
+			boxid = (type == Box0) ?dlg->GetBoxNumber() : type;
 		
+			b = mutabor::BoxClass::GetBox(boxid, mutabor::BoxClass::IDTypeFile);
+
+			if (!b || b == box) 
+				break;
+			
+			wxMessageBox(_("You selected a box id that is already in use. Please, try another one."),
+				     _("Error"), wxOK | wxICON_ERROR);
+		} while  (true);
+
+		bool destroySelf = false;
+		GetParent() -> Freeze();
+
+		if (Res == wxID_OK) {
+
 			if (CanHandleType (type)) {
-				readDialog (box);
+				newbox = this;
+				readDialog (dlg);
 			} else {
-				MutBoxShape * newbox = 
-					new MutBoxShape(m_parent, wxID_ANY, type);
+				mutabor::Box box2 = BoxFactory::Create(boxid);
+				newbox = GUIBoxFactory::CreateBoxShape(box2, GetParent());
+
 				if (newbox) {
-					newbox->readDialog(box);
+					newbox->readDialog(dlg);
 					destroySelf = replaceSelfBy(newbox);
-//				m_parent->SetInitialSize(wxDefaultSize);
-//				m_parent->InvalidateBestSize();
 				}
+				GetParent()->GetSizer()->SetItemMinSize(newbox,-1,-1);
 			}
 		} else if (Res == wxID_REMOVE) {
-			wxSizerItemList list = channels->GetChildren();
-			for (wxSizerItemList::iterator i = list.begin(); 
-			     i != (list.end()); i++) {
-				mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
-				static_cast<MutBoxChannelShape *> ((*i)->GetWindow())->GetRoute()->Destroy();
-			}
-
-			destroySelf = DetachBox();
+			destroySelf = DeleteBox();
+			// now we must not use this anymore
 		}
 	
-		box->Destroy();
+		dlg->Destroy();
 	
 		DebugCheckRoutes();
 
-		Layout();
-		InvalidateBestSize();
-		Fit();
-		Refresh();
-		if (m_parent) {
-			m_parent->Layout();
-			m_parent->InvalidateBestSize();
-			m_parent->FitInside();
-			m_parent->Update();
-			m_parent->Refresh();
-		} else Update();
+		parent->Thaw();
+		if (newbox) {
+			newbox->InvalidateBestSize();
+			newbox->Fit();
+		}
+		if (parent) {
+			parent->GetSizer()->FitInside(m_parent); // this calles layout
+			parent->Refresh();
+			
+		} else {
+//			Refresh(true);
+//			Update();
+		}
 	
-		// Signalize to delete this control
+		// Signalise to delete this control
 		if (destroySelf) Destroy();
 	
 	}
 
 
 	void MutBoxShape::GotFocus() {
-		int box = GetBoxId();
-		mutASSERT(MIN_BOX <= box && box < MAX_BOX);
-		if (box>=0 && mut_box[box].used)
-			curBox = box;
+		SetCurrentBox(box);
 		MutBoxIconShape::GotFocus();
 	}
 
@@ -455,14 +426,14 @@ namespace mutaborGUI {
 		mutASSERT(parentwin);
 		if (!parentwin) return NULL;
 	
-		BoxDlg * box = new BoxDlg (parentwin);
-		mutASSERT(box);
-		if (!box) return NULL;
+		BoxDlg * dlg = new BoxDlg (parentwin);
+		mutASSERT(dlg);
+		if (!dlg) return NULL;
 
-		wxWindow * routeWindow = box->GetRouteWindow();
+		wxWindow * routeWindow = dlg->GetRouteWindow();
 		mutASSERT(routeWindow);
 		if (!routeWindow) {
-			box->Destroy();
+			dlg->Destroy();
 			return NULL;
 		}
 		wxGridSizer * routeSizer = dynamic_cast<wxGridSizer *> (routeWindow->GetSizer());
@@ -472,7 +443,7 @@ namespace mutaborGUI {
 		
 			routeSizer = new wxGridSizer(4);
 			if (!routeSizer) {
-				box->Destroy(); 
+				dlg->Destroy(); 
 				return NULL;
 			}
 			routeWindow->SetSizer(routeSizer);		
@@ -485,33 +456,47 @@ namespace mutaborGUI {
 			MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
 							     parentwin, 
 							     routeWindow, 
-							     GetBoxId());
+							     box);
 		}
 	 
-		InitializeDialog(box);
+		InitializeDialog(dlg);
 
 		routeWindow->Layout();
 		routeWindow->FitInside();
-		box->Layout();
-		box->Fit();
-		box->CenterOnParent(wxBOTH);
+		dlg->Layout();
+		dlg->Fit();
+		dlg->CenterOnParent(wxBOTH);
 	
-		return box;
+		return dlg;
 	}
 
 	void MutBoxShape::InitializeDialog(BoxDlg * dlg) const {
 		mutASSERT(dlg);
+		int boxId = box ? box->get_routefile_id() : mutabor::NoBox;
 		dlg->SetBoxType(boxId);
 		if (boxId >= Box0) 
 			dlg->SetBoxNumber(boxId);
 		else
-			dlg->SetBoxNumber(maxBoxId);
+			dlg->SetBoxNumber(mutabor::BoxClass::GetNextFreeBox());
 	}
 
-	bool MutBoxShape::readDialog (BoxDlg * box) {
-		mutASSERT(box);
-		if (!box) return false;
-		int type = box->GetBoxType();
+	bool MutBoxShape::readDialog (BoxDlg * dlg) {
+		mutASSERT(dlg);
+		if (!dlg) return false;
+		int id = dlg->GetBoxType();
+		if (id == Box0) id = dlg->GetBoxNumber();
+		Box newbox = mutabor::BoxClass::GetBox(id,
+						       mutabor::BoxClass::IDTypeFile);
+		mutASSERT(!newbox || newbox == box);
+		if (newbox && newbox != box)
+			return false;
+		if (box) box->set_routefile_id(id);
+		else { 
+			box = BoxClass::GetOrCreateBox(id);
+			connect (box, this);
+		}
+#if 0
+		int boxid = box ? box->get_routefile_id : NoBox;
 		switch (type) {
 		case NoBox:
 		case GmnBox:
@@ -523,7 +508,7 @@ namespace mutaborGUI {
 			}
 			break;
 		default:
-			int newBoxId = box->GetBoxNumber();
+			int newBoxId = dlg->GetBoxNumber();
 			if (newBoxId != boxId) {
 				BoxData * oldboxdata = &BoxData::GetBox(boxId);
 				Detatch(oldboxdata);
@@ -532,8 +517,9 @@ namespace mutaborGUI {
 			}
 			break;
 		}
+#endif
 	
-		wxWindow * routeWindow = box->GetRouteWindow();
+		wxWindow * routeWindow = dlg->GetRouteWindow();
 		mutASSERT(routeWindow);
 		if (!routeWindow) {
 			return false;
@@ -554,11 +540,7 @@ namespace mutaborGUI {
 			}
 		}
 
-		int boxid = GetBoxId();
-		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
-		if (boxid >=0 && mut_box[boxid].used)
-			curBox = boxid;
-
+		SetCurrentBox(box);
 		return true;
 	}
 
@@ -605,15 +587,9 @@ namespace mutaborGUI {
 		return false;
 	}
 
-	bool MutBoxShape::DetachBox() {
-		wxSizerItemList &list = channels->GetChildren();
-		for (wxSizerItemList::iterator i = list.begin(); 
-		     i != (list.end()); i++) {
-			MutBoxChannelShape * channel = dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow());
-			mutASSERT(channel);
-			channel->DetachChannel();
-		}
-		return true;
+	bool MutBoxShape::DeleteBox() {
+		box->Destroy();
+		return false;
 	}
 
 

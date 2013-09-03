@@ -26,15 +26,30 @@
  * \{
  ********************************************************************/
 // ------------------------------------------------------------------
-// Mutabor 2.win, 1997, R.Krauße
+// Mutabor 2.win, 1997, R.KrauÃŸe
 // Heapverwaltung
 // ------------------------------------------------------------------
 
 #include "Global.h"
-#include "GrafKern.h"
+#include "Execute.h"
+#include "Parser.h"
 #include "Hilfs.h"
+#include "box.h"
+
+#ifdef _
+#undef _
+#endif
+#define _ _mut
+
+
+#ifdef __cplusplus
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
 #undef ACS_VERSION
 
+#if 0
 char SeRiEnNuMmEr[] = { 4,3,70,2,11,61,
                         127
                       };
@@ -68,14 +83,14 @@ int  intern_ungetc( int c, FILE *stream )
 }
 
 //#pragma warn .par
-
+#endif
 /************************************
 
 nur wenn alloca nicht da ist !
 
 *************************************/
 
-void * xalloca (size_t size)
+void * xalloca (mutabor_box_type * box, size_t size)
 {
 #ifdef ACS_VERSION
 	void * help = Ax_malloc (size);
@@ -85,7 +100,10 @@ void * xalloca (size_t size)
 
 	if (help == NULL) {
 		DEBUGLOG2(other,_T("malloc(%d) failed."),(int)size);
-		fatal_error (MUT_ERR_MALLOC_FAILED);
+		mutabor_error_message (box,
+				       true, 
+				       _("Not enough memory or too few data for mutabor in source file"));
+				       
 		return NULL;
 	}
 
@@ -105,8 +123,7 @@ void xde_alloca (void * pointer)
 
 /********************************************************
 
-    Verwaltung von zwei eigenen Heaps,
-    die am STšCK gel”scht werden k”nnen !
+    Management of two heaps that can be deleted at once.
 
 *****************************************************/
 
@@ -117,10 +134,6 @@ struct heap_element
 
 	struct heap_element * next;
 };
-
-static struct heap_element * syntax_heap = NULL ;
-
-static struct heap_element * heap_to_use_syntax = NULL;
 
 #define OFFSET (sizeof(size_t))
 
@@ -137,132 +150,148 @@ void xfree (void * pointer)
 
 //#pragma warn .par
 
-void * xmalloc (size_t size)
+void * xmalloc (mutabor_box_type * box, size_t size)
 {
 	if (size + OFFSET > HEAP_PORTION_SYNTAX) {
 		DEBUGLOG2(other,_T("Error: %d + %d > %d"),(int)size,(int)OFFSET, HEAP_PORTION_SYNTAX);
-		fatal_error (4);
+		mutabor_error_message(box,
+				      false,
+				      _("A chunk of memory has been requested that was too large (%d > %d)"),
+				      (int)size,
+				      (int)HEAP_PORTION_SYNTAX-size);
+
 		return NULL;
 	}
 
-	if (syntax_heap == NULL) {
+	if (box->file->heap.syntax_heap == NULL) {
 #ifdef ACS_VERSION
 
-		syntax_heap = Ax_malloc (sizeof (struct heap_element));
-
-		memset(syntax_heap,0,sizeof (struct heap_element));
+		box->file->heap.syntax_heap = Ax_malloc (sizeof (struct heap_element));
+		memset(box->file->heap.syntax_heap,0,sizeof (struct heap_element));
 #else
 
-		syntax_heap = (heap_element*) calloc (1,sizeof (struct heap_element));
+		box->file->heap.syntax_heap = (heap_element*) calloc (1,sizeof (struct heap_element));
 #endif
 
-		if (syntax_heap == NULL) {
+		if (box->file->heap.syntax_heap == NULL) {
 			DEBUGLOG2(other,_T("calloc(1,%d) failed"),
 			          (int)sizeof (struct heap_element));
-			fatal_error (4);
+			mutabor_error_message(box,
+					      false,
+					      _("Could not allocate syntax heap chunk."));
 			return NULL;
 		}
 
-		heap_to_use_syntax = syntax_heap;
+		box->file->heap.heap_to_use_syntax = box->file->heap.syntax_heap;
 
-		heap_to_use_syntax -> anzahl_belegt = 0;
-		heap_to_use_syntax -> next = NULL;
+		box->file->heap.heap_to_use_syntax -> anzahl_belegt = 0;
+		box->file->heap.heap_to_use_syntax -> next = NULL;
 	}
 
 	/**** Jetzt ist zumindest ein Block da ******/
 
-	if (heap_to_use_syntax -> anzahl_belegt + size + OFFSET
+	if (box->file->heap.heap_to_use_syntax -> anzahl_belegt + size + OFFSET
 	                < HEAP_PORTION_SYNTAX) {
-		void * help = & heap_to_use_syntax ->
-		              inhalt [ heap_to_use_syntax -> anzahl_belegt + OFFSET ] ;
-		heap_to_use_syntax -> anzahl_belegt += size + OFFSET;
+		void * help = & (box->file->heap.heap_to_use_syntax ->
+				 inhalt [ box->file->heap.heap_to_use_syntax -> anzahl_belegt + OFFSET ]) ;
+		box->file->heap.heap_to_use_syntax -> anzahl_belegt += size + OFFSET;
 		((size_t *)help) [ - 1 ] = size;
 		return help;
 	} else {
 #ifdef ACS_VERSION
 
-		heap_to_use_syntax -> next = Ax_malloc (sizeof (struct heap_element));
+		box->file->heap.heap_to_use_syntax -> next = Ax_malloc (sizeof (struct heap_element));
 
-		memset(heap_to_use_syntax -> next,0,sizeof (struct heap_element));
+		box->file->heap.memset(heap_to_use_syntax -> next,0,sizeof (struct heap_element));
 #else
 
-		heap_to_use_syntax -> next = (heap_element*) calloc (1,sizeof (struct heap_element));
+		box->file->heap.heap_to_use_syntax -> next = (heap_element*) calloc (1,sizeof (struct heap_element));
 #endif
 
-		if (heap_to_use_syntax -> next == NULL) {
+		if (box->file->heap.heap_to_use_syntax -> next == NULL) {
 			DEBUGLOG2(other,_T("heap_to_use_syntax -> nex == NULL"));
-			fatal_error (4);
+			mutabor_error_message(box,
+					      false,
+					      _("Could not allocate syntax heap chunk."));
 			return NULL;
 		}
+		
+		box->file->heap.heap_to_use_syntax = box->file->heap.heap_to_use_syntax -> next;
 
-		heap_to_use_syntax = heap_to_use_syntax -> next;
-
-		heap_to_use_syntax -> next = NULL;
-		heap_to_use_syntax -> anzahl_belegt = size + OFFSET;
+		box->file->heap.heap_to_use_syntax -> next = NULL;
+		box->file->heap.heap_to_use_syntax -> anzahl_belegt = size + OFFSET;
 		{ 
-			void * tmp = (void*)heap_to_use_syntax -> inhalt;
+			void * tmp = (void*)box->file->heap.heap_to_use_syntax -> inhalt;
 			size_t * tmp2 = (size_t *) tmp;
 			*tmp2 = size;
 			/* Original code:
 			 * (size_t *)&(heap_to_use_syntax -> inhalt [ 0 ]) = size; 
 			 */
 		}
-		return & heap_to_use_syntax -> inhalt [ OFFSET ] ;
+		return & box->file->heap.heap_to_use_syntax -> inhalt [ OFFSET ] ;
 	}
 }
 
-void * xrealloc (void * block, size_t newsize)
+void * xrealloc (mutabor_box_type * box, void * block, size_t newsize)
 
 {
 	if ( ((size_t *)block) [ - 1 ] + (char*)block
-	                == & heap_to_use_syntax ->
-	                inhalt [heap_to_use_syntax -> anzahl_belegt]
-	                &&
-	                (char*)block + newsize <
-	                &(heap_to_use_syntax -> inhalt [ HEAP_PORTION_SYNTAX ])) {
+	     == & (box->file->heap.heap_to_use_syntax ->
+		   inhalt [box->file->heap.heap_to_use_syntax -> anzahl_belegt])
+	     &&
+	     (char*)block + newsize <
+	     &(box->file->heap.heap_to_use_syntax -> inhalt [ HEAP_PORTION_SYNTAX ])) {
 
 		/* Dann war block der vorherige xmalloc und es passt noch rein */
 
-		heap_to_use_syntax -> anzahl_belegt +=
+		box->file->heap.heap_to_use_syntax -> anzahl_belegt +=
 		        newsize - ((size_t *)block) [ - 1 ] ;
 		((size_t *)block) [ - 1 ] = newsize;
 		return block;
 	} else {
-		void * help = xmalloc (newsize);
+		void * help = xmalloc (box, newsize);
 
 		if (help) {
 			memmove (help, block, newsize);
 			return help;
 		} else {
 			DEBUGLOG2(other,_T("xmalloc (%d) failed"),(int)newsize);
-			fatal_error (4);
+			mutabor_error_message (box,
+					       true, 
+					       _("Reallocation of memory failed."));
+				       
 			return NULL;
 		}
 	}
 }
 
 
-void * xcalloc (size_t anzahl, size_t size)
+void * xcalloc (mutabor_box_type * box, size_t anzahl, size_t size)
 {
-	void * help = xmalloc (anzahl * size);
+	void * help = xmalloc (box, anzahl * size);
 
 	if (help) {
 		memset (help, 0, anzahl * size);
 		return help;
 	} else {
 		DEBUGLOG2(other,_T("xmalloc(%d * %d) failed"),(int)anzahl,(int)size);
-		fatal_error (4);
+		mutabor_error_message (box,
+				       true, 
+				       _("Not enough memory."));
+				       
 		return NULL;
 	}
 }
 
-int loesche_syntax_speicher ( void )
+int loesche_syntax_speicher ( mutabor_box_type * box)
 {
 
-	struct heap_element * lauf = syntax_heap;
+	struct heap_element * lauf;
 
+	if (!box || !box->file) return 0;
+
+	lauf = box->file->heap.syntax_heap;
 	while (lauf) {
-
 		struct heap_element * help = lauf->next;
 #ifdef ACS_VERSION
 		Ax_ifree (lauf);
@@ -272,16 +301,14 @@ int loesche_syntax_speicher ( void )
 		lauf = help;
 	}
 
-	syntax_heap = NULL;
-
-	heap_to_use_syntax = NULL;
-
+	box->file->heap.syntax_heap = NULL;
+	box->file->heap.heap_to_use_syntax = NULL;
 	return 0; /* 0=ok, 1=fehler */
 }
 
-int init_syntax_speicher ( void )
+int init_syntax_speicher ( mutabor_box_type * box )
 {
-	return loesche_syntax_speicher ();
+	return loesche_syntax_speicher (box);
 }
 
 /***************************
@@ -293,11 +320,8 @@ int init_syntax_speicher ( void )
 struct mini_heap
 {
 	void * pointer;
-
 	struct mini_heap * next;
 };
-
-static struct mini_heap * laufzeit_heap = NULL;
 
 //#pragma warn -par
 void yfree (void * pointer)
@@ -307,7 +331,7 @@ void yfree (void * pointer)
 
 //#pragma warn .par
 
-void * ymalloc (size_t size)
+void * ymalloc (mutabor_box_type * box, size_t size)
 {
 #ifdef ACS_VERSION
 	void * help1 = Ax_malloc (size);
@@ -320,29 +344,30 @@ void * ymalloc (size_t size)
 	if (help1 == NULL || help2 == NULL) {
 		DEBUGLOG2(other,_T("help1 == %p(%d) ; help2 == %p(%d)"),
 		          help1,(int)size,(void*)help2,(int)sizeof(struct mini_heap));
-		fatal_error (4);
+		mutabor_error_message(box,false,
+				      _("Not enough memory."));
 		return NULL;
 	}
 
 	help2 -> pointer = help1;
 
-	help2 -> next = laufzeit_heap;
-	laufzeit_heap = help2;
+	help2 -> next = box->runtime_heap;
+	box->runtime_heap = help2;
 
 	return help1;
 }
 
-void * yrealloc (void * block, size_t newsize)
+void * yrealloc (mutabor_box_type * box, void * block, size_t newsize)
 
 {
-	void * help = ymalloc (newsize);
+	void * help = ymalloc (box, newsize);
 	memmove (help, block, newsize);
 	return help;
 }
 
-void * ycalloc (size_t anzahl, size_t size)
+void * ycalloc (mutabor_box_type * box, size_t anzahl, size_t size)
 {
-	void * help = ymalloc ( anzahl * size );
+	void * help = ymalloc ( box, anzahl * size );
 	memset (help, 0, anzahl * size);
 	return help;
 }
@@ -350,15 +375,15 @@ void * ycalloc (size_t anzahl, size_t size)
 
 
 
-int init_laufzeit_speicher ( void )
+int init_laufzeit_speicher ( mutabor_box_type * box )
 {
-	return loesche_laufzeit_speicher ();
+	return loesche_laufzeit_speicher (box);
 }
 
-int loesche_laufzeit_speicher ( void )
+int loesche_laufzeit_speicher ( mutabor_box_type * box )
 {
 
-	struct mini_heap * lauf = laufzeit_heap;
+	struct mini_heap * lauf = box->runtime_heap;
 
 	while (lauf) {
 
@@ -379,11 +404,15 @@ int loesche_laufzeit_speicher ( void )
 
 	}
 
-	laufzeit_heap = NULL;
+	box->runtime_heap = NULL;
 
 	return 0; /* 0=ok, 1=fehler */
 }
 
-
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
 
 ///\}

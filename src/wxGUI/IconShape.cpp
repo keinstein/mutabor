@@ -94,6 +94,8 @@ EVT_SIZE(MutIconShapeClass::OnSize)
   EVT_KILL_FOCUS(MutIconShapeClass::OnKillFocus)
 //  EVT_CLOSE(MutIconShapeClass::DeleteSelfEvent)
   EVT_LEFT_DOWN(MutIconShapeClass::OnMouseClick)
+EVT_MOVE(MutIconShapeClass::OnMove)
+EVT_SIZE(MutIconShapeClass::OnSize)
 END_EVENT_TABLE()
 
 // common part of the macros below
@@ -475,8 +477,13 @@ void MutIconShapeClass<T>::OnMouseClick(wxMouseEvent & event)
 	  event.Skip();
 }
 
-
-
+template<typename T>
+void MutIconShapeClass<T>::OnMove( wxMoveEvent & event )
+{
+//	ClearPerimeterPoints();
+//	GetParent()->Refresh();
+	event.Skip();
+}
 
 template<typename T>
 void MutIconShapeClass<T>::OnPaint( wxPaintEvent& WXUNUSED(event) )

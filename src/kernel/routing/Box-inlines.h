@@ -2,12 +2,8 @@
 ********************************************************************
 * Inline routitnes for the device class
 *
-* $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/Device-inlines.h,v 1.2 2011/11/02 14:31:57 keinstein Exp $
-* Copyright:   (c) 2011 TU Dresden
+* Copyright:   (c) 2013 Tobias Schlemmer
 * \author  Tobias Schlemmer <keinstein@users.berlios.de>
-* \date 
-* $Date: 2011/11/02 14:31:57 $
-* \version $Revision: 1.2 $
 * \license GPL
 *
 *    This program is free software; you can redistribute it and/or modify
@@ -30,15 +26,13 @@
 * \addtogroup route
 * \{
 ********************************************************************/
-// availlable groups: GUI, route, kernel, src/wxGUI, debug, docview
-
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(ROUTING_DEVICE_INLINES) && !defined(PRECOMPILE))	\
-	|| (!defined(ROUTING_DEVICE_INLINES_PRECOMPILED))
+#if (!defined(ROUTING_BOX_INLINES) && !defined(PRECOMPILE))	\
+	|| (!defined(ROUTING_BOX_INLINES_PRECOMPILED))
 #ifndef PRECOMPILE
-#define ROUTING_DEVICE_INLINES
+#define ROUTING_BOX_INLINES
 #endif
 
 // ---------------------------------------------------------------------------
@@ -46,19 +40,19 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Box.h"
+#include "src/kernel/routing/Route-inlines.h"
 
-#ifndef ROUTING_DEVICE_INLINES_PRECOMPILED
-#define ROUTING_DEVICE_INLINES_PRECOMPILED
+#ifndef ROUTING_BOX_INLINES_PRECOMPILED
+#define ROUTING_BOX_INLINES_PRECOMPILED
 
 // system headers which do seldom change
 
 namespace mutabor {
 
-	template <class T, class P, class L>
-	inline void CommonTypedDeviceAPI<T,P,L>::Destroy()  {
+	inline void BoxClass::Destroy()  {
 		TRACEC;
-		DevicePtr self(static_cast<thistype *>(this));
+		Box self(this);
 		TRACEC;
 		if (IsOpen()) Close();
 
@@ -66,14 +60,13 @@ namespace mutabor {
 
 		TRACEC;
 		debug_destroy_class(this);
-		RemoveFromDeviceList(static_cast<thistype *>(this));
+		RemoveFromBoxList(this);
 		TRACEC;
 	}
 
-	template <class T, class P, class L>
-	inline void CommonTypedDeviceAPI<T,P,L>::DisconnectFromAll()  {
+	inline void BoxClass::DisconnectFromAll()  {
 		Route route (NULL);
-		DevicePtr self(static_cast<thistype *>(this));
+		Box self(this);
 
 		routeListType::iterator R;
 		while ( (R = routes.begin()) != routes.end() ) {

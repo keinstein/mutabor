@@ -39,7 +39,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/Global.h"
+//#include "src/kernel/Global.h"
 #include "src/wxGUI/MutChild.h"
 #include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/MutRouteWnd.h"
@@ -230,25 +230,25 @@ namespace mutaborGUI {
 
 		void RestoreState();
 
-		void LogicWinOpen(int box);
+		void LogicWinOpen(mutabor::Box box);
 		
 		void ToggleTextBox(WinKind kind);
 
-		static void BoxWindowsOpen(int box, bool update = true) {
+		static void BoxWindowsOpen(mutabor::Box box, bool update = true) {
 			if (ActiveWindow)
 				ActiveWindow -> DoBoxWindowsOpen(box,update);
 		}
 
-		static void BoxWindowsClose(int box, bool update = true) {
+		static void BoxWindowsClose(mutabor::Box box, bool update = true) {
 			if (ActiveWindow)
 				ActiveWindow -> DoBoxWindowsClose(box,update);
 		}
 
-		void DoBoxWindowsOpen(int box, bool update = true);
-		void DoBoxWindowsClose(int box, bool update = true);
+		void DoBoxWindowsOpen(mutabor::Box box, bool update = true);
+		void DoBoxWindowsClose(mutabor::Box box, bool update = true);
 
 		void TextBoxOpen(WinKind kind,
-				 int box, 
+				 mutabor::Box & box, 
 				 bool update_auimanager	= true);
 
 		void CmSelectBox();
@@ -275,7 +275,10 @@ namespace mutaborGUI {
 				if (routewin) {
 					MutRouteWnd * route = dynamic_cast<MutRouteWnd *> (routewin->client);
 
-					if (route) route->Refresh();
+					if (route) {
+						route->Refresh();
+						route->Update();
+					}
 				}
 			}
 
@@ -325,14 +328,16 @@ namespace mutaborGUI {
 
 		wxAuiManager auimanager;
 
+#if 0
 		wxWindow *keywindows[MAX_BOX];
 		wxWindow *tswindows[MAX_BOX];
 		wxWindow *actionwindows[MAX_BOX];
+#endif
 
 		wxWindow *client;
 
 		static MutFrame * ActiveWindow;
-		static int boxCommandIds[MAX_BOX];
+		static std::map<int,mutabor::Box> boxCommandIds;
 		DECLARE_EVENT_TABLE()
 	};
 

@@ -318,7 +318,7 @@ namespace mutaborGUI {
 		*/
 		void MakeHelpMenu(wxMenuBar * menuBar);
 
-
+		
 	protected:
 
 		/// locale data to be used inside the application

@@ -46,7 +46,7 @@ namespace mutabor {
 #define ROUND_FACTOR 1000000
 #define ROUND(x) x = (floor(x*ROUND_FACTOR+0.5)) / ROUND_FACTOR
 //#define ROUND(x) x=x
-
+#if 0
 	void GetKeyPitch(int taste, tone_system *tonsystem, int &key, double &pitch)
 	{
 		int Index = (taste - tonsystem->anker) % tonsystem->breite;
@@ -60,7 +60,7 @@ namespace mutabor {
 		long Tone = (tonsystem)->ton[Index];
 
 		if ( !Tone ) {
-			key = NO_KEY;
+			key = GMN_NO_KEY;
 			pitch = 0;
 			return;
 		}
@@ -80,6 +80,7 @@ namespace mutabor {
 
 		ROUND(pitch);
 	}
+#endif
 
 // ##################################################################
 // OutputGis
@@ -155,7 +156,7 @@ namespace mutabor {
 
 // InputGis ------------------------------------------------------------
 /*
-  void CALLBACK _export GisTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
+  void CALLBACK GisTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
   {
   ((InputGis*)dwUser)->IncDelta();
   }
@@ -271,7 +272,12 @@ namespace mutabor {
 
 			DEBUGLOG (gmnfile, _T("Issuing Compiler warning 9..."));
 
-			compiler_warning(9, C_STR(Name), GspErrorLineNr, GspErrorPos, mutC_STR(GspErrorText[GspError]));
+			runtime_error(true,
+				      _("Error in GUIDO file “%s” positon (%d, %d): %s"), 
+				      C_STR(Name), 
+				      GspErrorLineNr, 
+				      GspErrorPos, 
+				      mutC_STR(GspErrorText[GspError]));
 
 			DEBUGLOG (gmnfile, _T("... done"));
 			Mode = DeviceCompileError;
@@ -360,7 +366,7 @@ namespace mutabor {
 		return minDelta;
 	}
 
-	void MutaborTag(GisReadArtHead *h, GisToken *Para, int box)
+	void MutaborTag(GisReadArtHead *h, GisToken *Para, mutabor::Box box)
 	{
 		if ( !Para || Para->Type() != GTParaStr )
 			return; // strange parameters
@@ -372,12 +378,12 @@ namespace mutabor {
 		if ( mutStrEq(ParaName, mutT("key")) ) {
 			if ( GetGisType(Para) == GTParaStr )
 ///		KeyboardIn(Box, ((GisParaStr*)Para)->s);
-				KeyboardIn(&(mut_box[box]), ((GisParaStr*)Para)->s);
+				box->KeyboardAnalysis(((GisParaStr*)Para)->s);
 		}
 
 		if ( mutStrEq(ParaName, mutT("box")) || mutStrEq(ParaName, mutT("instrument")) ) {
 			if ( GetGisType(Para) == GTParaInt )
-				h->Box = ((GisParaInt*)Para)->i;
+				h->Box = mutabor::BoxClass::GetOrCreateBox(((GisParaInt*)Para)->i);
 		}
 	}
 
@@ -389,18 +395,18 @@ namespace mutabor {
 		CurrentId = h->Id;
 		CurrentSep = h->Cursor->Sep;
 		// calculate box
-		int Box = route->GetBox();
+		mutabor::Box box = route->GetBox();
 
-		if ( Box == -1 )
-			Box = h->Box;
+		if ( !box  )
+			box = h->Box;
 
 		DEBUGLOG (gmnfile, _T("Id: %s, Box: %d, Sep: %s"),
-			  CurrentId.c_str(), Box, CurrentSep.c_str());
+			  CurrentId.c_str(), box->get_routefile_id(), CurrentSep.c_str());
 
 		OutputDevice out = route->GetOutputDevice();
 
 		// check wether no box should be used
-		if ( Box == -2 ) {
+		if ( !box || box->get_routefile_id() == mutabor::NoBox ) {
 			if ( out )
 				out->Gis(h->Cursor, turn);
 
@@ -416,7 +422,7 @@ namespace mutabor {
 
 		case GTTagBegin:
 			if ( ((GisTag*)(h->Cursor))->Id == TTmutabor )
-				MutaborTag(h, ((GisTag*)(h->Cursor))->Para, Box);
+				MutaborTag(h, ((GisTag*)(h->Cursor))->Para, box);
 
 			if ( ((GisTag*)(h->Cursor))->Id == TTalter ) return;
 
@@ -439,33 +445,32 @@ namespace mutabor {
 			Key += h->GetOctave()*12;
 
 			/** \todo provide working GIS note id. Currently Mutabor outputs only MIDI so it's no problem */
-			if ( turn != 1 && route->GetActive() ) {
-				if ( turn )
-					DeleteKey(&mut_box[Box], Key, 0, route->get_session_id());
-				else
+			switch (turn) {
+			case 0:
+				Cd.program_change(h->GetInstr());
+				route->NoteOn(Key,
+					      h->GetIntensity(turn),
+					      0,
+					      Cd,
+					      NULL);
+				break;
+			case 1:
+				route->GetOutputDevice()
+					->NoteOff(box,
+						  Key, 
+						  h->GetIntensity(turn),
+						  route.get(), 
+						  0,
+						  false); //4 ?? channelid aus staff
+				break;
+			case 2:
+				box->DeleteNote(Key, 0, route->get_session_id());
+			default:
+				route->NoteOff(Key,
+					       h->GetIntensity(turn),
+					       0);
+				break;
 
-					AddKey(&mut_box[Box], Key, 0, route->get_session_id(), NULL);
-			}
-
-			if ( turn != 2 && route->GetOutputDevice() ) {
-				if ( turn )
-					route->GetOutputDevice()
-						->NoteOff(&mut_box[Box], 
-							  Key, 
-							  h->GetIntensity(turn), 
-							  route.get(), 
-							  0,
-							  false); //4 ?? channelid aus staff
-				else {
-					Cd.program_change(h->GetInstr());
-					route->GetOutputDevice()
-						->NoteOn(&mut_box[Box], 
-							 Key, 
-							 h->GetIntensity(turn), 
-							 route.get(), 
-							 0, 
-							 Cd);
-				}
 			}
 
 			break;
@@ -501,7 +506,9 @@ namespace mutabor {
 				break;
 
 			case RTchannel:
-				if ( (*R)->Check(h->Box) ) {
+				if ( (*R)->Check(h->Box?
+						 h->Box->get_routefile_id():
+						 mutabor::NoBox) ) {
 					Proceed(h, turn, *R);
 					DidOut = true;
 				}

@@ -47,15 +47,21 @@ void  InputMidiFileTest::testBatchPlay1()
 //	debugFlags::flags.midiio = true;
 #endif
 
+	// input device is set up during setUp
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().size()==1);
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
+
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::ScopedRoute  route;
+	mutabor::ScopedBox box;
+	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
-	initialize_boxes();
-	GlobalReset();
 	route = mutabor::RouteFactory::Create();
-	connect(route,0);
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route,box);
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(_T("Test"));
@@ -76,11 +82,11 @@ void  InputMidiFileTest::testBatchPlay1()
 
 	// First check: Input device provides the correct delta times
 
-	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
 
 	CPPUNIT_ASSERT((out -> Open()));
+	CPPUNIT_ASSERT(box -> Open());
 	CPPUNIT_ASSERT((in -> Open()));
 	CPPUNIT_ASSERT(out->Check(_T("0 Opened...\n\
 0   0: e0 00 40\n\
@@ -259,6 +265,7 @@ void  InputMidiFileTest::testBatchPlay1()
 	CPPUNIT_ASSERT(delta == MUTABOR_NO_DELTA);
 
 	in->Close();
+	box->Close();
 	out->Close();
 	CPPUNIT_ASSERT(out->Check(_T("0 ...closed.\n"),__LINE__,_T(__FILE__)));
 
@@ -603,15 +610,21 @@ void  InputMidiFileTest::testBug019010_2()
 //	debugFlags::flags.midifile = true;
 #endif
 
+	// input device is created during setUp
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().size() == 1);
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
+
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::ScopedRoute  route;
+	mutabor::ScopedBox box;
+	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
-	initialize_boxes();
-	GlobalReset();
 	route = mutabor::RouteFactory::Create();
-	connect(route,0);
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route,box);
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(_T("Test"));
@@ -631,8 +644,6 @@ void  InputMidiFileTest::testBug019010_2()
 
 
 	// First check: Input device provides the correct delta times
-
-	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
  
@@ -940,15 +951,21 @@ void  InputMidiFileTest::testBug019010()
 //	debugFlags::flags.midifile = true;
 #endif
 
+	// input device is set up during setUp
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().size() == 1);
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
+
 	mutabor::ScopedOutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::ScopedRoute  route;
+	mutabor::ScopedBox box;
+	mutabor::ScopedRoute  route;
 	mutabor::ChannelData cd;
 
-	initialize_boxes();
-	GlobalReset();
 	route = mutabor::RouteFactory::Create();
-	connect(route,0);
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route,box);
 
 	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(_T("Test"));
@@ -968,8 +985,6 @@ void  InputMidiFileTest::testBug019010()
 
 
 	// First check: Input device provides the correct delta times
-
-	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
 
@@ -1316,22 +1331,22 @@ void OutputMidiFileTest::setUp()
 #endif
 //	std::clog << "Running setUp()" << std::endl;
 
-	initialize_boxes();
-	GlobalReset();
-	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+	// input device is already configured
+	CPPUNIT_ASSERT(!mutabor::InputDeviceClass::GetDeviceList().size() == 1);
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 
 	route = mutabor::RouteFactory::Create();
-	connect(route, 0);
-	box = &mut_box[route->GetBox()];
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route, box);
 
 	mutabor::CurrentTime.UseRealtime(true);
-	out = static_cast<mutabor::OutputMidiFile *>(mutabor::DeviceFactory::CreateOutput(mutabor::DTMidiFile).get());
+	guard =mutabor::DeviceFactory::CreateOutput(mutabor::DTMidiFile);
+	out = static_cast<mutabor::OutputMidiFile *>(guard.get());
 	out->SetName(_T("test_output.mid"));
 	out->SetBendingRange(2);
 	//out = new midicmnOutputDevice(3,_T("Test"));
-	guard = out;
 
 	connect(route, guard);
 	route->SetOutputFrom (0);
@@ -1351,11 +1366,13 @@ void OutputMidiFileTest::tearDown()
 	guard = NULL;
 	route -> Destroy();
 	route = NULL;
+	box -> Destroy();
+	box = NULL;
 
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
-
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 }
 
 
@@ -1567,7 +1584,6 @@ void  OutputMidiFileTest::testBatchPlay1()
 	connect(route, inguard);
 
 	in -> SetName(_T(SRCDIR) _T("/bug019010.mid"));
-	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
  
@@ -1614,6 +1630,7 @@ void  OutputMidiFileTest::testBatchPlay1()
 		+ DataStr + _T(" 02 00 bf 26 00 00 ff 2f  00                        ………&………/ …\n");
 
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
+	CPPUNIT_ASSERT(box->Open());
 	CPPUNIT_ASSERT((in -> Open()));
 	CPPUNIT_ASSERT(CheckOut(CheckStr,__LINE__,_T(__FILE__)));
 
@@ -1843,7 +1860,6 @@ void  OutputMidiFileTest::testBatchPlay1()
 
 	// First check: Input device provides the correct delta times
 
-	GlobalReset();
 	mutabor::CurrentTime.UseRealtime(false);
 	mutabor::CurrentTime = 0;
 

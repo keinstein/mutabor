@@ -38,7 +38,7 @@
 #include "src/wxGUI/GUIBoxData.h"
 #include "src/wxGUI/Routing/BoxShape.h"
 #include "src/kernel/routing/Route-inlines.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 #include "src/kernel/MidiKern.h"
 #include "src/wxGUI/Action.h"
 
@@ -62,7 +62,7 @@ END_EVENT_TABLE()
 wxString ListInit[1] = { _("<init>") };
 
 MutTextBox::MutTextBox(WinKind k,
-                       int boxId,
+                       mutabor::Box & b,
                        wxWindow* parent,
                        wxWindowID id,
 
@@ -70,7 +70,7 @@ MutTextBox::MutTextBox(WinKind k,
                        const wxSize& size):
 		wxListBox(parent, id, pos, size, 1, ListInit),
 		winKind(k),
-		box(boxId)
+		box(b)
 {
 	TRACEC;
 #if wxCHECK_VERSION(2,9,0)
@@ -79,8 +79,11 @@ MutTextBox::MutTextBox(WinKind k,
 	SetBackgroundStyle(wxBG_STYLE_COLOUR);
 #endif
 //	SetBackgroundColour(*wxWHITE);
-	SetForegroundColour(BoxTextColour(box));
-	SetBackgroundColour(BoxColour(box));
+	if (box) {
+		BoxData * guibox = ToGUIBase(box);
+		SetForegroundColour(guibox->GetTextColour());
+		SetBackgroundColour(guibox->GetBackgroundColour());
+	}
 }
 
 
@@ -90,20 +93,20 @@ void MutTextBox::OnClose(wxCloseEvent& event)
 	mutUnused(event);
 	mutASSERT(WK_KEY <= winKind && winKind < WK_NULL);
 	DEBUGLOG (other, _T("winKind: %d"), winKind);
-        BoxData & boxdata = BoxData::GetBox(box);
+        BoxData * boxdata = ToGUIBase(box);
 	if ( LogicOn ) {
                 switch (winKind) {
                 case WK_KEY: 
-			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetKeyWindow()) == this);
-                        boxdata.WantKeyWindow(false);
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetKeyWindow()) == this);
+                        boxdata->WantKeyWindow(false);
                         break;
                 case WK_TS: 
-			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetTonesystemWindow()) == this);
-                        boxdata.WantTonesystemWindow(false);
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetTonesystemWindow()) == this);
+                        boxdata->WantTonesystemWindow(false);
                         break;
                 case WK_ACT: 
-			mutASSERT(dynamic_cast<MutTextBox *> (boxdata.GetActionsWindow()) == this);
-                        boxdata.WantActionsWindow(false);
+			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetActionsWindow()) == this);
+                        boxdata->WantActionsWindow(false);
                         break;
                 case WK_LOGIC:
                         wxLogWarning(_("Unexpected value: WK_LOGIC"));
@@ -141,7 +144,6 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                         GetToneSystem(asTS);
                         break;
                 case WK_ACT:
-                        TakeOverActions();
                         if (CAW) {
                                 GetAllActions();
                         } else {
@@ -170,24 +172,27 @@ void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event))
                 }        
 }
 
-
+#if 0
 static inline long get_frequency (long key, tone_system * tonesys) {
 	if (!tonesys) return 0;
 	long retval = tonesys->ton[GET_INDEX(key,tonesys)];
 	if (!retval)  return 0;
 	return ((long) tonesys->periode) * GET_ABSTAND(key,tonesys)  + retval;
 }
+#endif
 
 void MutTextBox::GetKeys(bool asTS) 
 {
 	wxString keys;
 	
-	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
-	if (b == NULL || !b) return;
+	if (box == NULL || !box) return;
 	Clear();
 	
-	if (!b->key_count) return;
-	tone_system * tonsys = b->tonesystem;
+
+#warning implement GetKeys()
+#if 0
+	if (!box->get_key_count()) return;
+	tone_system * tonsys = box->tonesystem;
 
 	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0);
 	     key != NULL; 
@@ -197,7 +202,7 @@ void MutTextBox::GetKeys(bool asTS)
 		long freq;
 		double cents;
 		
-		if ( (freq=get_frequency( pitch ,tonsys ))!=0) {
+		if ( (freq=box->get_frequency( pitch)!=0) {
 			if (asTS) {
 				cents = LONG_TO_CENT(freq);
 			} else {
@@ -227,12 +232,15 @@ void MutTextBox::GetKeys(bool asTS)
 		}
 		Append(keys);
 	}
+#endif
 }
 
 void MutTextBox::GetToneSystem(bool asTS) 
 {
 	wxString keys;
-	
+
+#warning reimplement this after Mutabor is running again	
+#if 0
 	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
 	if (b == NULL || !b) return;
 
@@ -272,18 +280,25 @@ void MutTextBox::GetToneSystem(bool asTS)
 		}
 		Append(keys);
 	}
+#endif
 }
 
 void MutTextBox::GetAllActions () 
 {
+#warning write this code 
+#if 0
 	/** \todo write this code */
 	NewText(GenerateCAWString());
+#endif
 }
 
 void MutTextBox::GetBoxActions() 
 {
+#warning write this code 
+#if 0
 	/** \todo write this code */
 	NewText(GenerateACTString(box));
+#endif
 }
 
 void MutTextBox::NewText(char *s, bool newTitle)
@@ -359,9 +374,9 @@ wxString MutTextBox::MakeTitle() const {
 	if (winKind == WK_ACT && CAW) {
 		return _("Actions - all boxes");
 	} else {
-		return wxString::Format(wxGetTranslation(_("%s - Box %d")),
+		return wxString::Format(wxGetTranslation(_("%s - %s")),
 					(const wxChar *)wxGetTranslation(TextBoxTitle[winKind]),
-					box);
+					(const wxChar *)(box?box->GetLabel():wxString(_("unknown"))));
 	}
 }
 

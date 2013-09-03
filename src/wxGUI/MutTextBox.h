@@ -42,7 +42,8 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/Global.h"
+//#include "src/kernel/Global.h"
+#include "src/kernel/routing/Box.h"
 // #include "MutChild.h"
 
 #ifndef MUWX_MUTTEXTBOX_H_PRECOMPILED
@@ -89,11 +90,11 @@ class MutTextBox : public wxListBox
 
 protected:
 	WinKind winKind;
-	int box;
+	mutabor::Box & box;
 
 public:
 	MutTextBox(  WinKind k,
-	             int boxId,
+	             mutabor::Box & b,
 	             wxWindow* parent = NULL,
 	             wxWindowID id=-1,
 
@@ -150,7 +151,7 @@ public:
 
 protected:
 
-	int Box()
+	mutabor::Box Box()
 	{
 		return box;
 	}

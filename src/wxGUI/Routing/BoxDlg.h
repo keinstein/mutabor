@@ -111,10 +111,11 @@ namespace mutaborGUI {
 		
 			protected:
 		class BoxShapeData: public wxClientData {
-			MutBoxShape * box;
+			mutabor::Box box;
 		public:
-		BoxShapeData(MutBoxShape * b):wxClientData() { box = b; }
-			MutBoxShape * GetBox() { return box; }
+			BoxShapeData(mutabor::Box b):wxClientData(),
+					      box(b) {}
+			mutabor::Box & GetBox() { return box; }
 		};
 		InputFilterPanel * inPanel;
 		OutputFilterPanel * outPanel;
@@ -150,7 +151,7 @@ namespace mutaborGUI {
 		}
 	
 		void SetBox(MutBoxShape * box);
-		MutBoxShape * GetBox();
+		mutabor::Box GetBox();
 		void SetInput(InputFilterPanel * in) { inPanel = in; }
 		InputFilterPanel * GetInput() const { return inPanel; }
 		void SetOutput(OutputFilterPanel * out) { outPanel = out; }
@@ -158,7 +159,7 @@ namespace mutaborGUI {
 		void SetChannel(MutBoxChannelShape * ch) { channel = ch; }
 		MutBoxChannelShape * GetChannel() const { return channel; }
 		wxChoice * GetBoxChoice() { return box; }
-		int AddBox(MutBoxShape * boxShape, bool selected = false);
+		int AddBox(mutabor::Box box, bool selected = false);
 	
 		void EnableRoute(bool enable = true);
 	
@@ -228,12 +229,13 @@ namespace mutaborGUI {
 		/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
 	
 	protected:
-		void OnRemoveClick( wxCommandEvent& event );	
-		void AddButtonPressed(wxCommandEvent &event);
-	
 		NoBoxSettings * noBoxPanel;
 		MutaborBoxSettings * mutaborBoxPanel;
 		GuidoFileBoxSettings * guidoFileBoxPanel;
+
+		void OnRemoveClick( wxCommandEvent& event );	
+		void AddButtonPressed(wxCommandEvent &event);
+
 		DECLARE_DYNAMIC_CLASS( BoxDlg )
 			DECLARE_EVENT_TABLE()
 			};

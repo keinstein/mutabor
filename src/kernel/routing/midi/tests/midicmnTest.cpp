@@ -42,18 +42,17 @@ void CommonMidiOutputTest::setUp()
 // change DEBUGA to DEBUG in case you need the debug output
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-//	debugFlags::flags.midiio = true;
+	debugFlags::flags.midiio = true;
 #endif
-	initialize_boxes();
-	GlobalReset();
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 	route = mutabor::RouteFactory::Create();
-	connect(route, 0);
-	box = &mut_box[route->GetBox()];
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route, box);
 
-	CurrentTime.UseRealtime(true);
+	mutabor::CurrentTime.UseRealtime(true);
 	out = new midicmnOutputDevice(_T("Test"));
 	guard = out;
 
@@ -65,25 +64,33 @@ void CommonMidiOutputTest::setUp()
 
 void CommonMidiOutputTest::tearDown()
 { 
-#ifdef DEBUG
-//	debugFlags::flags.timer = false;
-//	debugFlags::flags.midiio = true;
-#endif
 	guard->Destroy();
 	route->Destroy();
 	out = NULL;
 	guard = NULL;
 	route = NULL;
+	box -> Destroy();
+	box = NULL;
+
 	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
+#ifdef DEBUG
+//	debugFlags::flags.timer = false;
+	debugFlags::flags.midiio = false;
+#endif
 }
 
 
 void CommonMidiOutputTest::testNoteOnOff()
 {
 	CPPUNIT_ASSERT( out );
-	out->Open();
+	CPPUNIT_ASSERT(out->Open());
+	if (!box->Compile(NULL, "")) {
+		CPPUNIT_FAIL((const char *)box->get_errors().ToUTF8());
+	}
+	CPPUNIT_ASSERT(box->Open());
 	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
 				      "  0: e0 00 40\n"
 				      "  0: b0 7a 00\n"
@@ -219,100 +226,100 @@ void CommonMidiOutputTest::testNoteOnOff()
 	DEBUGLOG(midiio,_T("123"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: b0 40 00\n  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: b1 40 00\n  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: b2 40 00\n  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,56,53,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__)) );
 
 	DEBUGLOG(midiio,_T("132"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: b3 40 00\n  3: 93 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: b4 40 00\n  4: 94 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: b5 40 00\n  5: 95 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,56,53,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  3: 83 38 35\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  5: 85 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  5: 85 3f 37\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  4: 84 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  4: 84 3c 36\n"), __LINE__, _T(__FILE__)) );
 
 	DEBUGLOG(midiio,_T("213"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: b6 40 00\n  6: 96 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: b7 40 00\n  7: 97 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: b8 40 00\n  8: 98 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  7: 87 3c 36\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,56,53,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  6: 86 38 35\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  6: 86 38 35\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  8: 88 3f 37\n"), __LINE__, _T(__FILE__)) );
 
 	DEBUGLOG(midiio,_T("231"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: ba 40 00\n 10: 9a 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: bb 40 00\n 11: 9b 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: bc 40 00\n 12: 9c 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 11: 8b 3c 36\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T(" 12: 8c 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 12: 8c 3f 37\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,56,53,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 35\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 10: 8a 38 35\n"), __LINE__, _T(__FILE__)) );
 
 	DEBUGLOG(midiio,_T("312"));
 
 	out->NoteOn(box,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: bd 40 00\n 13: 9d 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: be 40 00\n 14: 9e 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(box,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: bf 40 00\n 15: 9f 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(box,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 15: 8f 3f 37\n"), __LINE__, _T(__FILE__)) );
 	// check sending note on with velocity = 0 
 	out->NoteOff(box,56,53,route.get(),0,true);
-	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 00\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 13: 9d 38 00\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(box,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T(" 14: 8e 3c 36\n"), __LINE__, _T(__FILE__)) );
 
 	DEBUGLOG(midiio,_T("321"));
 
 	// Add check for NULL as tone system parameter
 	out->NoteOn(NULL,56,96,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 90 38 60\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(NULL,60,97,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 91 3c 61\n"), __LINE__, _T(__FILE__) ) );
 	out->NoteOn(NULL,63,98,route.get(),0,cd);
-	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n") ) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 92 3f 62\n"), __LINE__, _T(__FILE__) ) );
 
 	out->NoteOff(NULL,63,55,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3f 37\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(NULL,60,54,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  1: 81 3c 36\n"), __LINE__, _T(__FILE__)) );
 	out->NoteOff(NULL,56,53,route.get(),0,false);
-	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n")) );
+	CPPUNIT_ASSERT( out->Check(_T("  0: 80 38 35\n"), __LINE__, _T(__FILE__)) );
 
 
 
@@ -326,6 +333,7 @@ void CommonMidiOutputTest::testMoreNotesThanChannels()
 {
 	CPPUNIT_ASSERT( out );
 	out->Open();
+	box->Open();
 	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
 				      "  0: e0 00 40\n"
 				      "  0: b0 7a 00\n"
@@ -541,17 +549,20 @@ void CommonMidiInputTest::setUp()
 // change DEBUGA to DEBUG in case you need the debug input
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
-//	debugFlags::flags.midiio = true;
+	debugFlags::flags.midiio = true;
 #endif
 	std::clog << "Running setUp()" << std::endl;
 
-	initialize_boxes();
-	GlobalReset();
-	route = mutabor::RouteFactory::Create();
-	connect(route, 0);
-	box = &mut_box[route->GetBox()];
+	CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
+	CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+	CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 
-	CurrentTime.UseRealtime(true);
+	route = mutabor::RouteFactory::Create();
+	box = mutabor::BoxFactory::Create(mutabor::Box0,0);
+	connect(route, box);
+
+	mutabor::CurrentTime.UseRealtime(true);
 	in = new midicmnInputDevice(_T("Test"));
 	guard = in;
 	out = new midicmnOutputDevice(_T("Test"));
@@ -566,10 +577,6 @@ void CommonMidiInputTest::setUp()
 
 void CommonMidiInputTest::tearDown()
 { 
-#ifdef DEBUG
-//	debugFlags::flags.timer = false;
-//	debugFlags::flags.midiio = false;
-#endif
 
 	if (in)
 		in->Destroy();
@@ -577,10 +584,17 @@ void CommonMidiInputTest::tearDown()
 		out->Destroy();
 	if(route)
 		route->Destroy();
+	if (box)
+		box -> Destroy();
 	in = NULL;
 	out = NULL;
 	guard = NULL;
 	route = NULL;
+	box = NULL;
+#ifdef DEBUG
+//	debugFlags::flags.timer = false;
+	debugFlags::flags.midiio = false;
+#endif
 }
 
 
@@ -588,6 +602,7 @@ void CommonMidiInputTest::testPanic()
 {
 	CPPUNIT_ASSERT( in );
 	out->Open();
+	box->Open();
 	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
 				      "  0: e0 00 40\n"
 				      "  0: b0 7a 00\n"
@@ -943,6 +958,7 @@ void CommonMidiInputTest::testGlobalPanic()
 {
 	CPPUNIT_ASSERT( in );
 	out->Open();
+	box->Open();
 	CPPUNIT_ASSERT( out->Check(_T("Opened...\n"
 				      "  0: e0 00 40\n"
 				      "  0: b0 7a 00\n"
@@ -1236,7 +1252,7 @@ void CommonMidiInputTest::testGlobalPanic()
 	in->NoteOff(0,63,55);
 	CPPUNIT_ASSERT( out->Check(_T("  0: 80 3f 37\n"), __LINE__, _T(__FILE__) ) );
 
-	::Panic();
+	mutabor::Panic();
 	CPPUNIT_ASSERT( out->Check(_T("  2: 82 3c 40\n"
 				      "  3: 83 3f 40\n"
 				      "  4: 84 3f 40\n"

@@ -71,10 +71,10 @@
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutEditFile.h"
 #include "src/wxGUI/CompDlg.h"
-#include "src/kernel/Runtime.h"
+//#include "src/kernel/Runtime.h"
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/stclanguage.h"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
 #include "src/kernel/routing/Route-inlines.h"
 
 #ifdef __BORLANDC__
@@ -221,7 +221,7 @@ namespace mutaborGUI {
 
 	bool MutEditFile::Compile(bool activate)
 	{
-		wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
+		//		wxString TmpFile = wxFileName::CreateTempFileName(wxT(PACKAGE));
 
 		if ( SaveEditor )
 			SaveFile(m_filename);
@@ -232,6 +232,8 @@ namespace mutaborGUI {
 			wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
 			GetParent()->GetEventHandler()->ProcessEvent(event);
 		}
+		
+#if 0
 
 		wxFile file(TmpFile,wxFile::write);
 		if (!file.IsOpened()) {
@@ -243,7 +245,7 @@ namespace mutaborGUI {
 
 		if (!file.Write(GetText(), wxConvUTF8) ) {
 			wxMessageBox(_("Can't write temporary file."),
-				     _("Error"), wxOK | wxICON_HAND);
+				     _("Error"), wxOK | wxICON_ERROR);
 			CompiledFile = wxEmptyString;
 			if (file.IsOpened()) 
 				file.Close();
@@ -252,6 +254,7 @@ namespace mutaborGUI {
 			}
 			return false;
 		} 
+#endif
 
 		CompDia = new CompDlg(this);
 
@@ -261,7 +264,15 @@ namespace mutaborGUI {
 
 		CompDia->SetFileName(GetName());
 
-		if ( ::Compile(CompDia, TmpFile.c_str()) ) {
+		mutabor::Box box = mutabor::BoxClass::GetBoxList().front();
+		if (!box) {
+			wxMessageBox(_("At least one box is needed to compile the logic"),
+				     _("Error"), wxOK | wxICON_ERROR);
+			return false;
+		}
+
+		int line;
+		if ( (line = box->Compile(CompDia, GetText().ToUTF8())) >= 0 ) {
 			CompiledFile = m_filename;
 
 			if (activate) {
@@ -275,11 +286,11 @@ namespace mutaborGUI {
 		} else {
 			CompiledFile = wxEmptyString;
 			CompDia->EnableButton(true);
-			GoErrorLine();
+			GoToErrorLine(line);
 			result = false;
 		}
 
-		wxRemoveFile(TmpFile);
+		//wxRemoveFile(TmpFile);
 			
 		return result;
 		
@@ -399,9 +410,8 @@ namespace mutaborGUI {
 		    EditRow = Sel2 - LineFirstPos + 1;*/
 	}
 
-	void MutEditFile::GoErrorLine()
+	void MutEditFile::GoToErrorLine(int Line)
 	{
-		int Line = GetErrorLine();
 		if ( Line == -1 ) return;
 		GotoLine(Line);
 	}

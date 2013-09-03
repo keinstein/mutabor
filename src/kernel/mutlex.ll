@@ -14,7 +14,16 @@
 #endif
 
 #define YY_NO_UNISTD_H
+#include "src/kernel/box.h"
+using namespace mutabor;
+using namespace mutabor::hidden;
+namespace mutabor {
+	  namespace hidden {
+	  	  extern "C" {
 #include "src/kernel/mut.hh"
+		}
+	}
+}
 #include "src/kernel/mutlex.h"
 
 extern "C" inline int dummyisatty (int fd) { return isatty(fd); }

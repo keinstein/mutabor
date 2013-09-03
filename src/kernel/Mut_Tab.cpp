@@ -1778,7 +1778,7 @@ static struct {
 /* printf("symbuffer:%s:\n", symbuffer); */
 
         for (i=0; reserved_words[i].word; i++) {
-            if ( ! strcmp (symbuffer, reserved_words[i].word)) {
+            if ( ! strcasecmp (symbuffer, reserved_words[i].word)) {
                 xfree (symbuffer);
                 return reserved_words[i].token;
             }

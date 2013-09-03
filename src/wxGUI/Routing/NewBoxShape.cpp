@@ -48,9 +48,9 @@ namespace mutaborGUI {
 
 	void NewMutBoxShape::InitializeDialog(BoxDlg * dlg) const {
 		mutASSERT(dlg);
-		mutASSERT(boxId == NewBox);
+		mutASSERT(box == NULL);
 		dlg->SetBoxType(Box0);
-		dlg->SetBoxNumber(RouteClass::GetNextFreeBox());
+		dlg->SetBoxNumber(BoxClass::GetNextFreeBox());
 		dlg->SetTitle(_("Create Box"));
 		dlg->DisableRemove(true);
 	}
@@ -59,6 +59,13 @@ namespace mutaborGUI {
 	{
 		MutRouteWnd * p = dynamic_cast<MutRouteWnd *> (m_parent);
 		mutASSERT(p);
+
+		/* make shure the shape has the correct size.  this
+		   must be done here, as we could have added some
+		   content to the control (e.g. BoxChannelShapes) */
+		// newshape -> Layout(); // we call SetSize() from Fit(), and Layout() from OnSize();
+		newshape -> Fit();
+
 		// the "New device" icon won't be replaced, so we just append the device
 		p->AddBox(newshape,sizerFlags);
 		return false;

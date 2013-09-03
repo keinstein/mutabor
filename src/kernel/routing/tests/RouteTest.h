@@ -10,7 +10,7 @@ template<class route>
 class RouteTest : public CPPUNIT_NS::TestFixture 
 {
 	CPPUNIT_TEST_SUITE( RouteTest );
-	CPPUNIT_TEST( testGetNextFreeBox );
+	CPPUNIT_TEST( testDummy );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -49,38 +49,8 @@ public:
 //		in = NULL;
 	}
   
-	void testGetNextFreeBox() 
+	void testDummy() 
 	{ 	  
-		mutabor::Route route0 = mutabor::RouteFactory::Create();
-		route0->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route0->GetBox() == 0 );
-		mutabor::Route route1 = mutabor::RouteFactory::Create();
-		route1->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route1->GetBox() == 1 );
-		mutabor::Route route2 = mutabor::RouteFactory::Create();
-		route2->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route2->GetBox() == 2 );
-		mutabor::Route route3 = mutabor::RouteFactory::Create();
-		route3->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route3->GetBox() == 3 );
-		route1->Destroy();
-		route1=NULL;
-		route2->Destroy();
-		route2=NULL;
-		route1 = mutabor::RouteFactory::Create();
-		route1->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route1->GetBox() == 1 );
-		route2 = mutabor::RouteFactory::Create();
-		route2->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route2->GetBox() == 2 );
-		mutabor::Route route4 = mutabor::RouteFactory::Create();
-		route4->SetBox(mutabor::RouteClass::GetNextFreeBox());
-		CPPUNIT_ASSERT( route4->GetBox() == 4 );
-		route0->Destroy();
-		route1->Destroy();
-		route2->Destroy();
-		route3->Destroy();
-		route4->Destroy();
 	}
 };
 

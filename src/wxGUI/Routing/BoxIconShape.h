@@ -82,7 +82,7 @@
  *\{
  ********************************************************************/
 
-#if (!defined(MUWX_ROUTING_BOXICONSHAPE_H) && !defined(PRECOMPILE)) \
+#if (!defined(MUWX_ROUTING_BOXICONSHAPE_H) && !defined(PRECOMPILE))	\
 	|| (!defined(MUWX_ROUTING_BOXICONSHAPE_H_PRECOMPILED))
 #ifndef PRECOMPILE
 #define MUWX_ROUTING_BOXICONSHAPE_H

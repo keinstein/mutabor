@@ -235,7 +235,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::NoteOn(mutabor_box_type * box, 
+	void CommonMidiOutput<T,D>::NoteOn(Box box, 
 				      int inkey, 
 				      int velocity, 
 				      RouteClass * r, 
@@ -249,7 +249,7 @@ namespace mutabor {
 		}
 
 		DEBUGLOG (midiio, _T("box %p, inkey %d, velocity %d, id %d"),
-			  (void*)box, inkey, velocity, (int)id);
+			  box.get(), inkey, velocity, (int)id);
 //		int free = 16, freeSus = r->OTo, freeVelocitycity = 64, freeSusVelocitycity = 64, s;
 //		DWORD p;
 		long freq;
@@ -257,7 +257,7 @@ namespace mutabor {
 		if ( box == NULL ) {
 			freq = ((long)inkey) << 24;
 		} else
-			freq = GET_FREQ (inkey, box->tonesystem);
+			freq = box->get_frequency(inkey);
 
 		if ( !freq ) return;
 
@@ -315,7 +315,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::NoteOff(mutabor_box_type * box, 
+	void CommonMidiOutput<T,D>::NoteOff(Box box, 
 				       int inkey, 
 				       int velo, 
 				       RouteClass * r, 
@@ -329,7 +329,7 @@ namespace mutabor {
 			return;
 		}
 		DEBUGLOG (midiio, _T("box %p, key %d, velo %d, id %d"),
-			  (void*)box, inkey, velo, (int)id);
+			  box.get(), inkey, velo, (int)id);
 
 
 		/* This schouldn't be necessary
@@ -373,7 +373,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::NotesCorrect(RouteClass * route)
+	void CommonMidiOutput<T,D>::UpdateTones(RouteClass * route)
 	{
 		mutASSERT(this->isOpen);
 		TRACEC;
@@ -396,7 +396,7 @@ namespace mutabor {
 					 tone.outkey.pitch,tone.outkey.pitch,
 					 Cd[channel].get_bend(),Cd[channel].get_bend());
 
-				long freq = GET_FREQ(tone.inkey, mut_box[route->GetBox()].tonesystem);
+				long freq = route->GetBox()->get_frequency(tone.inkey);
 				
 				if (freq == tone.tuned_key) continue;
 
@@ -521,7 +521,7 @@ namespace mutabor {
 			     && (ton_auf_kanal[i].channel == channel) )
 				return ton_auf_kanal[i].midi_channel;
 
-		return -1;
+		return midi::NO_CHANNEL;
 	}
 
 	template<class T, class D>
@@ -659,7 +659,7 @@ namespace mutabor {
 
 		for (int i = 0; i < 16; i++) {
 			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->get_session_id() )
-				NoteOff(&mut_box[r->GetBox()], ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
+				NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
 
 	}
@@ -774,7 +774,7 @@ namespace mutabor {
 			  (void*)midiCode,
 			  route->GetActive(),
 			  (void*)route->GetOutputDevice().get());
-		int Box = route->GetBox();
+		Box box = route->GetBox();
 		BYTE MidiChannel = midiCode->at(0) & 0x0F;
 		BYTE MidiStatus  = midiCode->at(0) & 0xF0;
 		DEBUGLOG (midifile, _T("Status: %x"), MidiStatus);
@@ -783,39 +783,18 @@ namespace mutabor {
 
 		case midi::NOTE_ON: // Note On
 			if ( (midiCode->at(2) & 0x7f) > 0 ) {
-				if ( route->GetActive() )
-					AddKey(&mut_box[Box],
-					       midiCode->at(1), 
-					       MidiChannel, 
-					       route->get_session_id(), NULL);
-
-				if ( route->GetOutputDevice() )
-					route->GetOutputDevice()
-						->NoteOn(&mut_box[Box], 
-							 midiCode->at(1), 
-							 midiCode->at(2),
-							 route.get(),
-							 MidiChannel, 
-							 Cd[MidiChannel]);
-
+				route->NoteOn(midiCode->at(1),
+					      midiCode->at(2),
+					      MidiChannel, 
+					      Cd[MidiChannel],
+					      NULL);
 				break;
 			}
 
 		case midi::NOTE_OFF: // Note Off
-			if ( route->GetActive() )
-				DeleteKey(&mut_box[Box], midiCode->at(1), 
-					  MidiChannel, 
-					  route->get_session_id());
-
-			if ( route->GetOutputDevice() )
-				route->GetOutputDevice()
-					->NoteOff(&mut_box[Box], 
-						  midiCode->at(1), 
-						  midiCode->at(2),
-						  route.get(), 
-						  MidiChannel,
-						  false);
-
+			route->NoteOff(midiCode->at(1), 
+				       midiCode->at(2),
+				       MidiChannel);
 			break;
 
 		case midi::PROGRAM_CHANGE: // Programm Change
@@ -864,9 +843,9 @@ namespace mutabor {
 			3, 3, 3, 3, 2, 2, 3, 1
 		};
 
-		if ( Box >= 0 && route->GetActive() )
+		if ( box->get_routefile_id() >= 0 && route->GetActive() )
 			for (int i = 0; i < midilength[MidiStatus >> 5]; i++) {
-				MidiAnalysis(&mut_box[Box],midiCode->at(i));
+				box->MidiAnalysis(midiCode->at(i));
 			}
 	}
 
@@ -905,8 +884,6 @@ namespace mutabor {
 				ProceedRoute(midiCode,*R);
 			}
 		}
-
-		FLUSH_UPDATE_UI;
 	}
 
 	/** 
@@ -943,8 +920,6 @@ namespace mutabor {
 				ProceedRoute(midiCode,*R);
 			}
 		}
-
-		FLUSH_UPDATE_UI;
 	}
 
 

@@ -1,4 +1,5 @@
 #include "src/kernel/routing/tests/RouteTest.h"
+#include "src/kernel/routing/tests/BoxTest.h"
 #include "src/kernel/routing/tests/timing.h"
 #include "src/kernel/routing/tests/CommonFileDeviceTest.h"
 #include "src/kernel/routing/Route-inlines.h"
@@ -11,6 +12,7 @@
 #define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
 #undef no_wxGUI
+
 
 int 
 main(int argc, char** argv)
@@ -35,8 +37,9 @@ main(int argc, char** argv)
 	runner.eventManager().addListener(&listener);
 
 	runner.addTest( RouteTest<mutabor::RouteClass>::suite() );
-	runner.addTest( CommonFileDeviceTest::suite() );
+	runner.addTest( BoxTest::suite() );
 	runner.addTest( TimingParamsTest::suite() );
+	runner.addTest( CommonFileDeviceTest::suite() );
 	
 	bool wasSuccessful = runner.run();
 

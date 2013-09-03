@@ -30,7 +30,7 @@
  ********************************************************************/
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/portability/Stream.h>
-#include "src/kernel/Runtime.h"
+//#include "src/kernel/Runtime.h"
 
 #include "src/wxGUI/Routing/tests/GUIRouteTest.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
@@ -67,12 +67,14 @@ void GUIRouteTest::testConnect()
 	ScopedOutputDevice out1, out2;
 	ScopedRoute r1, r2;
 	ScopedInputDevice in1, in2;
+	ScopedBox MyNoBox;
 
-	wxWindow * parent = new wxFrame(0,wxID_ANY,_T("Test"));
+	std::auto_ptr<wxWindow> parent(new wxFrame(0,wxID_ANY,_T("Test")));
 	MutRouteWnd * wnd;
 
 	out1 = DeviceFactory::CreateOutput(DTMidiFile,_T("testmidi_output1.mid"));
 	out2 = DeviceFactory::CreateOutput(DTMidiFile,_T("testmidi_output2.mid"));
+	MyNoBox = BoxFactory::Create(mutabor::NoBox);
 	r1 = RouteFactory::Create();
 	r2 = RouteFactory::Create();
 	in1 = DeviceFactory::CreateInput(DTMidiFile,_T("testmidi_input1.mid"));
@@ -101,6 +103,11 @@ void GUIRouteTest::testConnect()
 	CPPUNIT_ASSERT(out1->GetRoutes().front() == r1);
 	disconnect (r1,out1);
 	DebugCheckRoutes();
+	connect(r1,MyNoBox);
+	DebugCheckRoutes();
+	CPPUNIT_ASSERT(MyNoBox->GetRoutes().front() == r1);
+	CPPUNIT_ASSERT(r1->GetBox() == MyNoBox);
+	
 
 
 	DebugCheckRoutes();
@@ -127,8 +134,7 @@ void GUIRouteTest::testConnect()
 	disconnect (r1,in1);
 	DebugCheckRoutes();
 
-
-	wnd = new MutRouteWnd(parent);
+	wnd = new MutRouteWnd(parent.get());
 
 	DebugCheckRoutes();
  
@@ -196,7 +202,6 @@ void GUIRouteTest::testConnect()
 	DebugCheckRoutes();
 
 	delete wnd;
-	delete parent;
 
 
 	/* this is done automatically:

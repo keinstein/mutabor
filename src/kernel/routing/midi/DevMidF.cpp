@@ -380,7 +380,7 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 // InputMidiFile -------------------------------------------------------
 
 /*
-  void CALLBACK _export MidiTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
+  void CALLBACK MidiTimeFunc(UINT wTimerID, UINT wMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
   {
   ((InputMidiFile*)dwUser)->IncDelta();
   }
@@ -515,7 +515,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 		if ( mutStreamBad(is) ) {
 			DEBUGLOG (midifile, _T("Opening Stream failed"));
-			LAUFZEIT_ERROR1(_("Can not open Midi input file '%s'."), Name.c_str());
+			runtime_error(false,
+				      _("Can not open Midi input file '%s'."), 
+				      (const mutChar *) Name.c_str());
 			goto error_cleanup;
 		}
 
@@ -523,14 +525,19 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		// Flawfinder: ignore
 		mutReadStream(is,Header, 4);
 		if (strcmp(Header,"MThd")) {
-			LAUFZEIT_ERROR1(_("File '%s' is not a valid midi file."), Name.c_str())	;
+			runtime_error(false,
+				      _("File '%s' is not a valid midi file."), 
+				      (const mutChar *)Name.c_str())	;
 			goto error_cleanup;
 		}
 
 		l = mutabor::ReadLength(is);
 
 		if (l!=6) {
-			LAUFZEIT_ERROR2(_("Unknown header (chunk length %d) in file '%s'."),l, Name.c_str());
+			runtime_error(false,
+				      _("Unknown header (chunk length %d) in file '%s'."),
+				      l, 
+				      (const mutChar *)Name.c_str());
 			goto error_cleanup;
 		}
 
@@ -540,7 +547,10 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		a = mutGetC(is); //mutGetC(is,a);
 		FileType = ((int)a << 8) + mutGetC(is); //mutGetC(is,FileType);
 		if (FileType > 3) {
-			LAUFZEIT_ERROR2(_("Unknown file typ %d in file '%s'."), FileType, Name.c_str());
+			runtime_error(false,
+				      _("Unknown file typ %d in file '%s'."), 
+				      FileType, 
+				      (const mutChar *) Name.c_str());
 			goto error_cleanup;
 		}
 
@@ -555,7 +565,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		try {
 			timing.set_MIDI_tick_signature(a,b);
 		} catch (std::range_error e) {
-			LAUFZEIT_ERROR(_("Midi file '%s' has corrupted timing information."), Name.c_str())	;
+			runtime_error(false,
+				      _("Midi file '%s' has corrupted timing information."), 
+				      (const mutChar *)Name.c_str())	;
 		}
 		DEBUGLOG(midifile, 
 			 _T("File type: %d; Tracks: %d; Speed: %d Ticks/Qarter"),
@@ -572,14 +584,17 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 		// Tracks lesen
 		Tracks.resize(nTrack,Track(timing));
 		if (Tracks.empty()) {
-			LAUFZEIT_ERROR1(_("Could not allocate memory for the track list of file '%s'."), Name.c_str())	;
+			runtime_error(false,
+				      _("Could not allocate memory for the track list of file '%s'."), 
+				      (const mutChar *)Name.c_str())	;
 			goto error_cleanup;
 		}
 
 		for (i = 0; i < nTrack; i++ ) {
 			mutReadStream(is,Header, 4);
 			if (strcmp(Header,"MTrk")) {
-				LAUFZEIT_ERROR(_("File '%s' has a broken track header."), Name.c_str())	;
+				runtime_error(false,_("File '%s' has a broken track header."), 
+					      (const mutChar *)Name.c_str())	;
 				goto error_cleanup;
 			}
 
@@ -594,8 +609,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 
 			if ( Tracks[i].size() < l) {
 				Mode = DeviceCompileError;
-				LAUFZEIT_ERROR(_("Could not allocate data for track %d of MIDI input file '%s'."),
-						i, Name.c_str());
+				runtime_error(false,
+					      _("Could not allocate data for track %d of MIDI input file '%s'."),
+					      i, (const mutChar *)Name.c_str());
 				goto error_cleanup;
 			}
 			
@@ -610,8 +626,9 @@ Running status = %d (%x), running_sysex = %s, SysEx Id = %d (%x)"),
 				mutReadStream(is, (char*)(Tracks[i].data()), l);
 
 			if ( mutStreamBad(is) ) {
-				LAUFZEIT_ERROR( _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
-					  Name.c_str(),i);
+				runtime_error(false,
+					      _("The MIDI input file “%s” is corrupted. This has been detected while reading track %d."),
+					      (const mutChar *)Name.c_str(),i);
 				goto error_cleanup;
 			}
 		}

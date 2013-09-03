@@ -44,10 +44,9 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/box.h"
+#include "src/kernel/MidiKern.h"
 
 #include "src/kernel/treestorage.h"
-#include "src/kernel/Execute.h"
 
 #ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED
@@ -55,6 +54,7 @@
 // system headers which do seldom change
 #include <boost/intrusive_ptr.hpp>
 #include <list>
+#include <vector>
 #include <stdexcept>
 
 #ifdef WX
@@ -66,20 +66,7 @@ namespace mutaborGUI {
 }
 
 namespace mutabor {
-	template<class T>
-	class idtype {
-	public:
-		typedef T referenceing_type;
-		idtype():id(idpool++) {}
-
-		size_t operator ()() const { return id; }
-		operator size_t () const { return id; }
-		operator int () const { return (int) id; }
-	protected:
-		const size_t id;
-		static size_t idpool;
-	};
-
+	typedef std::vector<uint8_t> midi_string;
 
 
         /// Type of route input filter
@@ -98,6 +85,8 @@ namespace mutabor {
 	class InputDeviceClass;
 	typedef boost::intrusive_ptr<InputDeviceClass> InputDevice;	
 	class ChannelData;
+	class BoxClass;
+	typedef boost::intrusive_ptr<BoxClass> Box;	
 	
 	class RouteFactory;
 	
@@ -107,7 +96,7 @@ namespace mutabor {
 	* point to it any more. As we want to interactively manage routes,
 	* We must allow routes to have no input device attached to it.
 	*/
-	template <class I=InputDevice, class O = OutputDevice>
+	template <class I=InputDevice, class O = OutputDevice, class B = Box>
 	class TRouteClass
 	{
 		friend class RouteFactory;
@@ -117,6 +106,7 @@ namespace mutabor {
 		typedef TRouteClass thistype;
 		typedef I InputDevice;
 		typedef O OutputDevice;
+		typedef B Box;
 
 		// To gain a little speed in realtime we use intrusive_ptr
 		typedef boost::intrusive_ptr<TRouteClass> Route;
@@ -178,11 +168,10 @@ namespace mutabor {
 			    void * userdata ) {
 			if (Active) {
 				// global C part
-				::AddKey(&mut_box[GetBox()],
-						key, make_unique, session_id, userdata);
+				box->AddNote(key, make_unique, session_id, userdata);
 			}
 			if (Out) {
-				Out->NoteOn(&mut_box[GetBox()],
+				Out->NoteOn(box,
 					    key, velocity, this, make_unique, 
 					    input_channel_data);						    
 			}
@@ -192,13 +181,12 @@ namespace mutabor {
 			     int velocity,
 			     size_t make_unique) {
 			if (Active) {
-				DeleteKey(&mut_box[GetBox()], 
-					  key, 
-					  make_unique, 
-					  session_id);
+				box->DeleteNote(key, 
+					       make_unique, 
+					       session_id);
 			}
 			if (Out) {
-				Out->NoteOff(&mut_box[Box], 
+				Out->NoteOff(box, 
 					     key, 
 					     velocity,
 					     this, 
@@ -213,7 +201,7 @@ namespace mutabor {
 				3, 3, 3, 3, 2, 2, 3, 1
 			};
 
-			if (!( Box >= 0 && Active )) return;
+			if (!(box && box->IsNormal() && Active )) return;
 			if (!(midiCode & 0x80)) {
 				UNREACHABLEC;
 				return;
@@ -221,14 +209,26 @@ namespace mutabor {
 
 			int len = midilength[(midiCode & 0x70) >> 4];
 			for (int i = 0; i <  len; i++) {
-				::MidiAnalysis(&mut_box[Box],midiCode & 0xff);
+				if (box)
+					box->MidiAnalysis(midiCode & 0xff);
 				midiCode >>= 8;
 			}
 		}
 
-		void NotesCorrect() {
+		void MidiOut(midi_string & data) {
+			if (Out)
+				Out->MidiOut(box,data);
+		}
+
+		void UpdateTones() {
 			if (Out) 
-				Out->NotesCorrect(this);
+				Out->UpdateTones(this);
+		}
+
+		int GetChannel(int key, size_t channel, size_t id) {
+			if (channel == session_id()) 
+				return Out->GetChannel(key, channel, id);
+			return midi::NO_CHANNEL;
 		}
 
 		void Panic() {
@@ -246,7 +246,7 @@ namespace mutabor {
 		/// add a new input device
 		virtual void Add (InputDevice & in);
 		/// add a new box
-		virtual void Add(int id);
+		virtual void Add(Box & b);
 		/// replace an existing output device
 		virtual bool Replace (OutputDevice & olddev, 
 				      OutputDevice & newdev);
@@ -254,13 +254,13 @@ namespace mutabor {
 		virtual bool Replace (InputDevice & olddev, 
 				      InputDevice & newdev);
 		/// replace an existing box
-		virtual bool Replace (int oldbox, int newbox);
+		virtual bool Replace (Box & oldbox, Box & newbox);
 		/// remove an existing output device
 		virtual bool Remove (OutputDevice & out);
 		/// remove an existing input device
 		virtual bool Remove (InputDevice & in);
 		/// remov an existing box
-		virtual bool Remove (int id);
+		virtual bool Remove (Box & b);
 
 		void SetDeviceId(int Id,I) {
 			inputid = Id;
@@ -269,12 +269,19 @@ namespace mutabor {
 		void SetDeviceId(int Id,O) {
 			outputid = Id;
 		}
+		void SetBoxId(int Id) {
+			boxid = Id;
+		}
+
 		int GetDeviceId(I) {
 			return inputid;
 		}
 
 		int GetDeviceId(O) {
 			return outputid;
+		}
+		int GetBoxId() {
+			return boxid;
 		}
 
 	
@@ -286,16 +293,14 @@ namespace mutabor {
 			Active = active;
 		}
 	
-		int GetBox() const {
-			return Box;
+		Box GetBox() const {
+			return box;
 		}
 	
-		virtual void SetBox(int box) {
-			Box = box;
+		virtual void SetBox(Box b) {
+			box = b;
 		}
 	
-		static int GetNextFreeBox();
-
 		RouteType GetType() const {
 			return Type;
 		}
@@ -429,6 +434,7 @@ namespace mutabor {
 		WATCHEDPTR(void,routing,TRouteClass) userdata;
 		OutputDevice Out;
 		InputDevice In;
+		Box box;
 	
 		//Route Next;
 
@@ -440,7 +446,7 @@ namespace mutabor {
 		int routefile_id;
 		int inputid;
 		int outputid;
-		int Box;
+		int boxid;
 
 		
 		RouteType Type;
@@ -458,7 +464,8 @@ namespace mutabor {
 			OutputDevice out (NULL);
 			Create(in,out,RTall,
 			       -1,-1,
-			       -1,false,
+			       NULL,
+			       false,
 			       -1,-1,true);
 		}
 
@@ -468,22 +475,20 @@ namespace mutabor {
 			RouteType type = RTall,
 			int iFrom = -1,
 			int iTo = -1,
-			int box = NoBox,
+			Box & box = NULL,
 			bool active = false,
 			int oFrom = -1,
 			int oTo = -1,
-			bool oNoDrum = true/*,
-					     Route next = NULL*/):
+			bool oNoDrum = true):
 			userdata(this,_T("userdata"))
-			/*,  globalNext(NULL)*/
 			{
 				TRACEC;
 				AppendToRouteList(this);
 				Create(in,out,type,
 				       iFrom,iTo,
-				       box,active,
-				       oFrom,oTo,oNoDrum/*,
-							  next*/);
+				       box,
+				       active,
+				       oFrom,oTo,oNoDrum);
 			}
 
 		void Create(InputDevice & in,
@@ -491,7 +496,7 @@ namespace mutabor {
 			    RouteType type = RTall,
 			    int iFrom = -1,
 			    int iTo = -1,
-			    int box = NoBox,
+			    Box box = NULL,
 			    bool active = false,
 			    int oFrom = -1,
 			    int oTo = -1,
@@ -506,13 +511,13 @@ namespace mutabor {
 		REFPTR_INTERFACE
 	};
 
-	template<class I, class O> 
-	typename TRouteClass<I,O>::routeListType TRouteClass<I,O>::routeList;
+	template<class I, class O, class B> 
+	typename TRouteClass<I,O, B>::routeListType TRouteClass<I,O, B>::routeList;
 
-	typedef TRouteClass<InputDevice,OutputDevice>::Route Route;
-	typedef TRouteClass<InputDevice,OutputDevice> RouteClass;
-	typedef TRouteClass<InputDevice,OutputDevice>::routeListType routeListType;
-	typedef TRouteClass<InputDevice,OutputDevice>::routePtrList routePtrList;
+	typedef TRouteClass<InputDevice,OutputDevice, Box>::Route Route;
+	typedef TRouteClass<InputDevice,OutputDevice, Box> RouteClass;
+	typedef TRouteClass<InputDevice,OutputDevice, Box>::routeListType routeListType;
+	typedef TRouteClass<InputDevice,OutputDevice, Box>::routePtrList routePtrList;
 
 
 	Route FindRoute(size_t id);
@@ -597,7 +602,7 @@ namespace mutabor {
 			RouteType type = RTall,
 			int iFrom = -1,
 			int iTo = -1,
-			int box = -1,
+			Box box = NULL,
 			bool active = false,
 			int oFrom = -1,
 			int oTo = -1,
@@ -690,7 +695,7 @@ namespace mutabor {
 			RouteType type,
 			int iFrom,
 			int iTo,
-			int box,
+			Box box,
 			bool active,
 			int oFrom,
 			int oTo,
@@ -732,7 +737,6 @@ namespace mutabor {
 	    that can be used in such situations */
 	extern Route NullRoute; 
 
-	void initialize_data();
 
 }
 #endif /* PRECOMPILED */

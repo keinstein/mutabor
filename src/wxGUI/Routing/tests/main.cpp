@@ -8,9 +8,9 @@
 #include <cppunit/BriefTestProgressListener.h>
 
 // Skip the GUI related checks from DebugRoute.cpp
-#define no_wxGUI 1
+//#define no_wxGUI 1
 #include "src/wxGUI/Routing/DebugRoute.cpp"
-#undef no_wxGUI
+//#undef no_wxGUI
 
 int 
 main(int argc, char** argv)

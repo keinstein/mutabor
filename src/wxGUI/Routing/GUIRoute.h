@@ -75,18 +75,18 @@ namespace mutaborGUI {
 
 	class GUIRouteBase {
 	protected:
-		BoxData * box;
 		MutBoxChannelShapeList shapes;
 
-		GUIRouteBase():box(NULL),shapes() {}
+		GUIRouteBase():shapes() {}
  		virtual ~GUIRouteBase() {
 			TRACEC;
 		}
 
 	public:
 
+#if 0
 		void ReconfigureBox(int oldbox, int newbox) {
-			box = &(BoxData::GetBox(newbox));
+			box = &(BoxClass::GetBox(newbox,BoxClass::IdTypeFile));
 
 			DEBUGLOG(routing, _T("Set Box data to %p from id %d"),
 				 (void*)box, newbox);
@@ -100,15 +100,12 @@ namespace mutaborGUI {
 		BoxData * GetBoxData() {
 			return box;
 		}
+#endif
 
-		const MutBoxShapeList & GetBoxShapes() const {
-			if (!box) {
-				UNREACHABLECT(GUIRouteBase);
-			}
-			return box->GetBoxShapes();
-		}
-
+		
+/*
 		void Add(MutBoxShape * shape) {
+			Box box = GetRoute()->GetBox();
 			if (box) {
 				 box->Add(shape);
 			} else {
@@ -116,6 +113,7 @@ namespace mutaborGUI {
 			}
 		}
 		bool Remove(MutBoxShape * shape) {
+			Box box = GetRoute()->GetBox();
 			if (box) {
 				return box->Remove(shape);
 			} else {
@@ -123,13 +121,14 @@ namespace mutaborGUI {
 				return false;
 			}
 		}
+*/
 
 		/// add a new output device
 		virtual void Add (mutabor::OutputDevice & dev);
 		/// add a new input device
 		virtual void Add (mutabor::InputDevice & dev);
 		/// add a new box
-		virtual void Add(int id);
+		virtual void Add(mutabor::Box & b);
 		/// replace an existing output device
 		virtual bool Replace (mutabor::OutputDevice & olddev, 
 				      mutabor::OutputDevice & newdev);
@@ -137,59 +136,26 @@ namespace mutaborGUI {
 		virtual bool Replace (mutabor::InputDevice & olddev, 
 				      mutabor::InputDevice & newdev);
 		/// replace an existing box
-		virtual bool Replace (int oldbox, int newbox);
+		virtual bool Replace(mutabor::Box & oldbox,
+				     mutabor::Box & newbox);
 		/// remove an existing output device
 		virtual bool Remove (mutabor::OutputDevice & out);
 		/// remove an existing input device
 		virtual bool Remove (mutabor::InputDevice & in);
 		/// remov an existing box
-		virtual bool Remove (int id);
+		virtual bool Remove (mutabor::Box & b);
 
-#if 0
-		/// Attatch a new output device
-		virtual void Attatch (mutabor::OutputDevice & dev);
-		/// Attatch a new input device
-		virtual void Attatch (mutabor::InputDevice & dev);
-		/// Replace current output device with a new one
-		virtual bool Reconnect(mutabor::OutputDevice & olddev, 
-				       mutabor::OutputDevice & newdev);
-		/// Replace current input device with a new one
-		virtual bool Reconnect(mutabor::InputDevice & olddev,
-				       mutabor::InputDevice & newdev);
-		/// Detatch current output device
-		virtual bool Detatch(mutabor::OutputDevice & dev);
-		/// Detatch current input device
-		virtual bool Detatch(mutabor::InputDevice & dev);
-
-		/// Attatch a new box
-		virtual void Attatch (int boxid);
-		/// Replace by a new one
-		virtual bool Reconnect(int oldboxid,
-				       int newboxid);
-		/// Detach a current box
-		virtual bool Detatch(int boxid);
-
-		void Attatch(MutBoxShape * shape) {
-			if (box)
-				box->Attatch(shape);
-			else {
+/*
+		const MutBoxShapeList & GetBoxShapes() const {
+			Box box = GetRoute()->GetBox();
+			if (!box) {
 				UNREACHABLECT(GUIRouteBase);
 			}
-		}
-		bool Detatch(MutBoxShape * shape) {
-			if (box)
-				return box->Detatch(shape);
-			else {
-				UNREACHABLECT(GUIRouteBase);
-				return false;
-			}
+			return box->GetBoxShapes();
 		}
 
-		bool Reconnect(MutBoxShape * oldshape,
-			       MutBoxShape * newshape);
-
-#endif 
 		bool Delete(MutBoxShape * shape) {
+			Box box = GetRoute()->GetBox();
 			if (box) 
 				return box -> Delete(shape);
 			else {
@@ -197,7 +163,7 @@ namespace mutaborGUI {
 				return false;
 			}
 		}
-			     
+*/
 
 		const MutBoxChannelShapeList & 
 		GetBoxChannelShapes() const {
@@ -206,11 +172,6 @@ namespace mutaborGUI {
 		void Add(MutBoxChannelShape * shape);
 		bool Remove(MutBoxChannelShape * shape);
 
-#if 0
-		void Attatch(MutBoxChannelShape * shape);
-		bool Detatch(MutBoxChannelShape * shape);
-		bool Delete(MutBoxChannelShape * shape);
-#endif
 		
 		static GUIRouteBase * GetGUIRoute(mutabor::Route & r) {
 			return static_cast<GUIRouteBase *>(r->getUserData());
@@ -230,17 +191,7 @@ namespace mutaborGUI {
 		*/
 		MutBoxChannelShape * GetShape(wxWindow * parent);
 
-#if 0
-	protected:
-
-		void InitializeRoute() {
-			if (route) 
-				static_cast<GUIfyRoute
-					<mutabor::RouteClass> *>(route)
-					-> SetGUIRoute (this);
-			ReconfigureBox(NewBox, route->GetBox());
-		}
-#endif
+		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
 	};
 
 
@@ -262,7 +213,7 @@ namespace mutaborGUI {
 			     mutabor::RouteType type = mutabor::RTall,
 			     int iFrom = -1,
 			     int iTo = -1,
-			     int box = -1,
+			     mutabor::Box box = -1,
 			     bool active = false,
 			     int oFrom = -1,
 			     int oTo = -1,
@@ -282,19 +233,20 @@ namespace mutaborGUI {
 		bool IsRoute(const mutabor::RouteClass * r) const {
 			return static_cast<mutabor::RouteClass *>(this) == r;
 		}
-
+#if 0
 		virtual void SetBox(int box) {
 			int oldbox = T::GetBox();
 			T::SetBox(box);
 			ReconfigureBox(oldbox, box);
 		}
+#endif
 
 		/// add a new output device
 		virtual void Add (mutabor::OutputDevice & out);
 		/// add a new input device
 		virtual void Add (mutabor::InputDevice & in);
 		/// add a new box
-		virtual void Add(int id);
+		virtual void Add(mutabor::Box & b);
 		/// replace an existing output device
 		virtual bool Replace (mutabor::OutputDevice & olddev, 
 				      mutabor::OutputDevice & newdev);
@@ -302,115 +254,28 @@ namespace mutaborGUI {
 		virtual bool Replace (mutabor::InputDevice & olddev, 
 				      mutabor::InputDevice & newdev);
 		/// replace an existing box
-		virtual bool Replace (int oldbox, int newbox);
+		virtual bool Replace (mutabor::Box & oldbox,
+				      mutabor::Box & newbox);
 		/// remove an existing output device
 		virtual bool Remove (mutabor::OutputDevice & out);
 		/// remove an existing input device
 		virtual bool Remove (mutabor::InputDevice & in);
 		/// remov an existing box
-		virtual bool Remove (int id);
+		virtual bool Remove (mutabor::Box & b);
 
 		virtual mutabor::RouteClass * GetRoute() {
 			return static_cast<mutabor::RouteClass *> (this);
 		}
 
-
-#if 0
-		// static looks strange, here.
-		static void Add(MutBoxShape * shape) {
-			if (T::Box >= 0) {
-				BoxData::GetBox(T::Box).Add(shape);
-			} else {
-				UNREACHABLECT(thistype);
-			}
-		}
-		static bool Remove(MutBoxShape * shape) {
-			if (T::Box >= 0) {
-				return BoxData::GetBox(T::Box).Remove(shape);
-			} else {
-				UNREACHABLECT(thistype);
-			}
-		}
-#endif
-		
-
-#if 0
-		/// Attatch a new output device
-		virtual void Attatch (mutabor::OutputDevice & dev);
-		/// Attatch a new input device
-		virtual void Attatch (mutabor::InputDevice & dev);
-		/// Replace current output device with a new one
-		virtual bool Reconnect(mutabor::OutputDevice & olddev, 
-				       mutabor::OutputDevice & newdev);
-		/// Replace current input device with a new one
-		virtual bool Reconnect(mutabor::InputDevice & olddev,
-				       mutabor::InputDevice & newdev);
-		/// Detatch current output device
-		virtual bool Detatch(mutabor::OutputDevice & dev);
-		/// Detatch current input device
-		virtual bool Detatch(mutabor::InputDevice & dev);
-
-
-		// Handle the box
-		/// Attatch a new box
-		virtual void Attatch (int id);
-		/// Replace by a new one
-		virtual bool Reconnect(int oldboxid,
-			       int newboxid);
-		/// Detach a current box
-		virtual bool Detatch(int boxid);
-
-
-		static void Attatch(MutBoxShape * shape) {
-			if (T::Box >= 0)
-				BoxData::GetBox(T::Box).Attatch(shape);
-			else {
-				UNREACHABLECT(thistype);
-			}
-		}
-		static bool Detatch(MutBoxShape * shape) {
-			if (T::Box >= 0)
-				return BoxData::GetBox(T::Box).Detatch(shape);
-			else {
-				UNREACHABLECT(thistype);
-			}
-		}
-		static bool Delete(MutBoxShape * shape) {
-			if (T::Box >= 0) 
-				return BoxData::GetBox(T::Box).Delete(shape);
-			else {
-				UNREACHABLECT(thistype);
-			}
-		}
-#endif
-
-
-#if 0
-		// should be already included
-		void Add(MutBoxChannelShape * shape) {
-			GetGUIRoute().Add(shape);
-		}
-		bool Remove(MutBoxChannelShape * shape) {
-			return GetGUIRoute().Remove(shape);
-		}
-
-		void Attatch(MutBoxChannelShape * shape) {
-			return GetGUIRoute().Attatch(shape);
-		}
-
-		bool Detatch(MutBoxChannelShape * shape) {
-			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 this, 
-				 intrusive_ptr_get_refcount(this));
-			return GetGUIRoute().Detatch(shape);
-		}
-
-		bool Delete(MutBoxChannelShape * shape) {
-			return GetGUIRoute().Delete(shape);
-		}
-#endif
-
 		virtual void Destroy();
+
+		virtual void  runtime_error(bool iswarning, 
+					    const mutString& message, 
+					    va_list & args) {
+			GUIRouteBase::runtime_error(iswarning,
+						message,
+						args);
+		}
 	};
 
 
@@ -441,6 +306,15 @@ namespace mutaborGUI {
 		GUIRouteFactory() {};
 		virtual ~GUIRouteFactory() {};
 
+		static MutBoxChannelShape * CreateBoxChannelShape(
+			mutabor::Route & route,
+			wxWindow * parent) 
+			__attribute__ ((malloc)) 
+		{
+			return ((GUIRouteFactory *)factory)->
+				DoCreateBoxChannelShape(route,parent);
+		}
+
 	protected:
 		virtual mutabor::RouteClass * DoCreate() const
 			__attribute__ ((malloc));
@@ -450,31 +324,15 @@ namespace mutaborGUI {
 			mutabor::RouteType type,
 			int iFrom,
 			int iTo,
-			int box,
+			mutabor::Box box,
 			bool active,
 			int oFrom,
 			int oTo,
 			bool oNoDrum) const __attribute__ ((malloc));
-		virtual MutBoxShape * DoCreateBoxShape(int box,
-						       wxWindow * parent) const;
 
 		virtual MutBoxChannelShape * 
 		DoCreateBoxChannelShape (mutabor::Route & route,
 					 wxWindow * parent) const;
-	public:
-		static MutBoxShape * CreateBoxShape(int box,
-						    wxWindow * parent) {
-			mutASSERT(dynamic_cast<GUIRouteFactory *> (factory));
-			return ((GUIRouteFactory *)factory)->
-				DoCreateBoxShape(box,parent);
-		}
-			
-		static MutBoxChannelShape * CreateBoxChannelShape(
-			mutabor::Route & route,
-			wxWindow * parent) {
-			return ((GUIRouteFactory *)factory)->
-				DoCreateBoxChannelShape(route,parent);
-		}
 	};
 
 /********************************************************************************/
@@ -511,17 +369,6 @@ namespace mutaborGUI {
 			return shapes;
 		}
 
-#if 0 // maybe useful functions
-		bool IsDevice(const mutabor::OutputDeviceClass * d) const {
-			return device == d;
-		}
-
-		operator mutabor::OutputDeviceClass &() {
-			return *GetDevice();
-		}
-
-#endif
-
 		/// add a route
 		virtual void Add(mutabor::Route & route);
 		/// replace a route
@@ -534,26 +381,24 @@ namespace mutaborGUI {
 		void Add(MutOutputDeviceShape * shape);
 		bool Remove(MutOutputDeviceShape * shape);
 
-#if 0		
-		void Attatch(MutOutputDeviceShape * shape);
-		bool Detatch(MutOutputDeviceShape * shape);
-		bool Delete(MutOutputDeviceShape * shape);
-#endif
-		
 		MutOutputDeviceShape * GetShape(wxWindow * parent);
 
 		static GUIOutputDeviceBase * GetGUIOutputDevice(mutabor::OutputDeviceClass * d) {
 			return static_cast<GUIOutputDeviceBase *>(d->getUserData());
 		}
-		static const GUIOutputDeviceBase * GetGUIOutputDevice(const mutabor::OutputDeviceClass * d) {
+		static const GUIOutputDeviceBase * 
+		GetGUIOutputDevice(const mutabor::OutputDeviceClass * d) {
 			return static_cast<GUIOutputDeviceBase *>(d->getUserData());
 		}
 
 		
 		virtual mutabor::OutputDeviceClass * GetDevice() = 0;	
 		
+		virtual	void MoveToInList(int newpos);
+
 		void Destroy();
 
+		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
 	};
 
 	template<class T> 
@@ -589,6 +434,14 @@ namespace mutaborGUI {
 		}
 
 		virtual void DisconnectFromAll();
+		virtual	int MoveInList(int count);
+		virtual void  runtime_error(bool iswarning, 
+					    const mutString& message, 
+					    va_list & args) {
+			GUIOutputDeviceBase::runtime_error(iswarning,
+							   message,
+							   args);
+		}
 	};
 
 	inline GUIOutputDeviceBase * ToGUIBase(mutabor::OutputDeviceClass * d) {
@@ -682,7 +535,9 @@ namespace mutaborGUI {
 			return static_cast<GUIInputDeviceBase *>(d->getUserData());
 		}
 
+		virtual	void MoveToInList(int newpos);
 		void Destroy();
+		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
 	};
 
 
@@ -742,6 +597,14 @@ namespace mutaborGUI {
 //		virtual bool MoveRoutes (DevicePtr newclass);
 
 		virtual void DisconnectFromAll();
+		virtual	int MoveInList(int count);
+		virtual void  runtime_error(bool iswarning, 
+					    const mutString& message, 
+					    va_list & args) {
+			GUIInputDeviceBase::runtime_error(iswarning,
+							  message,
+							  args);
+		}
 	};
 
 

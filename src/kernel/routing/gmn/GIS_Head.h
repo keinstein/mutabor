@@ -51,7 +51,7 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(MU32_ROUTING_GMN_GIS_HEAD_H) && !defined(PRECOMPILE)) \
+#if (!defined(MU32_ROUTING_GMN_GIS_HEAD_H) && !defined(PRECOMPILE))	\
 	|| (!defined(MU32_ROUTING_GMN_GIS_HEAD_H_PRECOMPILED))
 #ifndef PRECOMPILE
 #define MU32_ROUTING_GMN_GIS_HEAD_H
@@ -62,6 +62,7 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/Box.h"
 #include "src/kernel/routing/gmn/GIS.h"
 
 #ifndef MU32_ROUTING_GMN_GIS_HEAD_H_PRECOMPILED
@@ -90,60 +91,60 @@ public:
 	bool SingleToken; // proceed only one token (in accords)
 
 	GisReadHead(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
-	{
-		PrevPtr = &Prev;
-		DEBUGLOG(gmnfile,_T("boss = %p"),(void *)boss);
-		Next = Prev = NULL;
-		Cursor = cursor;
-		mutCopyString(Id,id);
-		InsertInfrontOf(boss);
-		Boss = boss;
-		nSub = -1;
-		Time = frac(0, 1);
-		SingleToken = singleToken;
-	}
+		{
+			PrevPtr = &Prev;
+			DEBUGLOG(gmnfile,_T("boss = %p"),(void *)boss);
+			Next = Prev = NULL;
+			Cursor = cursor;
+			mutCopyString(Id,id);
+			InsertInfrontOf(boss);
+			Boss = boss;
+			nSub = -1;
+			Time = frac(0, 1);
+			SingleToken = singleToken;
+		}
 
 	virtual ~GisReadHead()
 
-	{
-		mutFreeString(Id);
+		{
+			mutFreeString(Id);
 
-		if ( Next ) delete Next; // only the following will be deleted
-	}
+			if ( Next ) delete Next; // only the following will be deleted
+		}
 
 	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString &id, bool singleToken = false)
-	{
-		return new GisReadHead(boss, cursor, id, singleToken);
-	}
+		{
+			return new GisReadHead(boss, cursor, id, singleToken);
+		}
 
 	GisReadHead *InsertInfrontOf(GisReadHead *position);
 
 	GisReadHead *CutOut();
 	GisToken *CursorNext() // move Cursor, care for single token mode
-	{
-		Turn = 0;
+		{
+			Turn = 0;
 
-		if ( !Cursor )
-			return 0;
+			if ( !Cursor )
+				return 0;
 
-		if ( SingleToken && Cursor->Type() == GTComma)
-			Cursor = 0;
-		else
-			Cursor = Cursor->Next;
+			if ( SingleToken && Cursor->Type() == GTComma)
+				Cursor = 0;
+			else
+				Cursor = Cursor->Next;
 
-		return Cursor;
-	}
+			return Cursor;
+		}
 	void CreateSegmentSubs();
 	void CreateSequenzSubs();
 	void Read();
 #ifdef WX
 	operator wxString()
-	{
-		if (Next)
-			return ToString() + (wxString) (*Next) ;
-		else
-			return ToString();
-	}
+		{
+			if (Next)
+				return ToString() + (wxString) (*Next) ;
+			else
+				return ToString();
+		}
 
 	virtual wxString ToString();
 #endif
@@ -181,7 +182,7 @@ class GisReadArtHead : public GisReadHead
 public:
 	frac Time2;
 	mutint64 Delta; // in μs
-	int Box;
+	mutabor::Box Box;
 
 private:
 	TagList *Intensity;
@@ -194,120 +195,120 @@ private:
 public:
 
 	GisReadArtHead(GisReadArtHead *boss, GisToken *cursor, const mutString id, bool singleToken = false)
-			: GisReadHead(boss, cursor, id, singleToken)
-	{
-		DEBUGLOG(gmnfile,_T("boss = %p"), (void *)boss);
-		DEBUGLOG(gmnfile,_T("cursor = %p"), (void *)cursor);
+		: GisReadHead(boss, cursor, id, singleToken)
+		{
+			DEBUGLOG(gmnfile,_T("boss = %p"), (void *)boss);
+			DEBUGLOG(gmnfile,_T("cursor = %p"), (void *)cursor);
 
-		if ( boss ) {
-			Intensity = Copy(boss->Intensity);
-			Articulation = Copy(boss->Articulation);
-			Octave = Copy(boss->Octave);
-			Alter = Copy(boss->Alter);
-			Instr = Copy(boss->Instr);
-			Tempo = Copy(boss->Tempo);
-			Box = boss->Box;
-		} else {
-			Intensity = NULL;
-			Articulation = NULL;
-			Octave = NULL;
-			Alter = NULL;
-			Instr = NULL;
-			Tempo = NULL;
-			Box = 0;
+			if ( boss ) {
+				Intensity = Copy(boss->Intensity);
+				Articulation = Copy(boss->Articulation);
+				Octave = Copy(boss->Octave);
+				Alter = Copy(boss->Alter);
+				Instr = Copy(boss->Instr);
+				Tempo = Copy(boss->Tempo);
+				Box = boss->Box;
+			} else {
+				Intensity = NULL;
+				Articulation = NULL;
+				Octave = NULL;
+				Alter = NULL;
+				Instr = NULL;
+				Tempo = NULL;
+				Box = 0;
+			}
+
+			Time2 = 0;
+
+			Delta = 0;
+			Turn = 0;
 		}
-
-		Time2 = 0;
-
-		Delta = 0;
-		Turn = 0;
-	}
 
 	~GisReadArtHead()
 
-	{
-		Erase(Intensity);
-		Erase(Articulation);
-		Erase(Octave);
-		Erase(Alter);
-		Erase(Instr);
-		Erase(Tempo);
-	}
+		{
+			Erase(Intensity);
+			Erase(Articulation);
+			Erase(Octave);
+			Erase(Alter);
+			Erase(Instr);
+			Erase(Tempo);
+		}
 
 	virtual GisReadHead *Build(GisReadHead *boss, GisToken *cursor, const mutString & id, bool singleToken = false)
-	{
-		return new GisReadArtHead((GisReadArtHead*)boss, cursor, id, singleToken);
-	}
+		{
+			return new GisReadArtHead((GisReadArtHead*)boss, cursor, id, singleToken);
+		}
 
 	void Read();
 
 	ARType GetArticulation()
-	{
-		if ( Articulation )
-			return (ARType) Articulation->Data.ch;
-		else
-			return ARNormal;
-	}
+		{
+			if ( Articulation )
+				return (ARType) Articulation->Data.ch;
+			else
+				return ARNormal;
+		}
 
 	char GetIntensity(char noteOff = 0)
-	{
-		if ( !noteOff ) {
-			if ( Intensity )
-				return Intensity->Data.ch;
-			else
-				return 80;
-		} else {
-			if ( GetArticulation() >= ARPortato )
-				return 127;
-			else
-				return 60;
+		{
+			if ( !noteOff ) {
+				if ( Intensity )
+					return Intensity->Data.ch;
+				else
+					return 80;
+			} else {
+				if ( GetArticulation() >= ARPortato )
+					return 127;
+				else
+					return 60;
+			}
 		}
-	}
 
 	int GetOctave()
-	{
-		if ( Octave )
-			return Octave->Data.i;
-		else
-			return 0;
-	}
+		{
+			if ( Octave )
+				return Octave->Data.i;
+			else
+				return 0;
+		}
 
 	int GetAlter()
-	{
-		if ( Alter )
-			return Alter->Data.i;
-		else
-			return 0;
-	}
+		{
+			if ( Alter )
+				return Alter->Data.i;
+			else
+				return 0;
+		}
 
 	int GetInstr()
-	{
-		if ( Instr )
-			return Instr->Data.ch;
-		else
-			return -1;
-	}
+		{
+			if ( Instr )
+				return Instr->Data.ch;
+			else
+				return -1;
+		}
 
 	int GetSpeedFactor()
-	{
-		DEBUGLOG(gmnfile,_T("Tempo: %p"),(void *)Tempo);
+		{
+			DEBUGLOG(gmnfile,_T("Tempo: %p"),(void *)Tempo);
 
-		if (Tempo) {
-			DEBUGLOG(gmnfile,_T("Tempo->Data.i: %ld"),Tempo->Data.i);
-			return Tempo->Data.i;
+			if (Tempo) {
+				DEBUGLOG(gmnfile,_T("Tempo->Data.i: %ld"),Tempo->Data.i);
+				return Tempo->Data.i;
+			}
+			else
+				return 2000;
 		}
-		else
-			return 2000;
-	}
 
 #ifdef WX
 	operator wxString()
-	{
-		if (Next)
-			return ToString() + (wxString) (*Next) ;
-		else
-			return ToString();
-	}
+		{
+			if (Next)
+				return ToString() + (wxString) (*Next) ;
+			else
+				return ToString();
+		}
 
 	virtual wxString ToString();
 #endif
@@ -342,52 +343,52 @@ public:
 	TagList *Key;
 
 	GisWriteHead(GisWriteHead *boss, const mutString id)
-	{
-		Prev = 0;
-		Next = 0;
-		Data = 0;
-		Cursor = &Data;
-		CHECKDUP(Id, id);
-		Boss = boss;
+		{
+			Prev = 0;
+			Next = 0;
+			Data = 0;
+			Cursor = &Data;
+			CHECKDUP(Id, id);
+			Boss = boss;
 
-		if ( boss ) {
-			if ( boss->nSub == -1 )
-				boss->nSub = 1;
-			else
-				boss->nSub++;
+			if ( boss ) {
+				if ( boss->nSub == -1 )
+					boss->nSub = 1;
+				else
+					boss->nSub++;
+			}
+
+			nSub = -1;
+
+			TotalTime = frac(0, 1);
+			CurrentTime = frac(0, 1);
+			SingleToken = (boss && boss->State() == GTSegment);
+			ChordNotes = 0;
+			NoteOn = 0;
+			CommaAtEnd = 0;
+			Octave = 0;
+			Key = 0;
 		}
-
-		nSub = -1;
-
-		TotalTime = frac(0, 1);
-		CurrentTime = frac(0, 1);
-		SingleToken = (boss && boss->State() == GTSegment);
-		ChordNotes = 0;
-		NoteOn = 0;
-		CommaAtEnd = 0;
-		Octave = 0;
-		Key = 0;
-	}
 
 	~GisWriteHead()
 
-	{
-		mutFreeString(Id);
-		Erase(Octave);
-		Erase(Key);
+		{
+			mutFreeString(Id);
+			Erase(Octave);
+			Erase(Key);
 
-		if ( Next ) delete Next; // only the following will be deleted
-	}
+			if ( Next ) delete Next; // only the following will be deleted
+		}
 
 	GisWriteHead *InsertAfter(GisWriteHead *position);
 	GisWriteHead *CutOut();
 	GisType State()
-	{
-		if ( *Cursor )
-			return (*Cursor)->Type();
-		else
-			return GTNull;
-	}
+		{
+			if ( *Cursor )
+				return (*Cursor)->Type();
+			else
+				return GTNull;
+		}
 
 	ChordNote *GetFreeNote();
 	ChordNote *GetNote(int instrId, int taste);
@@ -399,29 +400,29 @@ public:
 	void WriteChord();
 	void AddTime(frac dTime);
 	int GetOctave()
-	{
-		if ( Octave )
-			return Octave->Data.i;
-		else
-			return 0;
-	}
+		{
+			if ( Octave )
+				return Octave->Data.i;
+			else
+				return 0;
+		}
 
 	int GetKey()
-	{
-		if ( Key )
-			return Key->Data.i;
-		else
-			return 0;
-	}
+		{
+			if ( Key )
+				return Key->Data.i;
+			else
+				return 0;
+		}
 };
 
 
 int GisWriteHeadGis(GisWriteHead **head, mutString id, GisToken *token, char turn);
 
 /*
-int GisWriteAlteredNoteOn(GisWriteHead **head,  char *id, long freq, int noteId,
+  int GisWriteAlteredNoteOn(GisWriteHead **head,  char *id, long freq, int noteId,
   int octave, int acc, char *Sep);
-int GisWriteAlteredNoteOff(GisWriteHead **head,  char *id, int noteId);
+  int GisWriteAlteredNoteOff(GisWriteHead **head,  char *id, int noteId);
 */
 // search the header with the matching Id
 GisWriteHead *GetMatchingHeader(GisWriteHead **head, mutString id);
@@ -429,9 +430,9 @@ GisWriteHead *GetMatchingHeader(GisWriteHead **head, mutString id);
 void CloseAllSubs(GisWriteHead *head);
 
 /*
-class MisTrack;
+  class MisTrack;
 
-int GisWriteHeadMis(GisWriteHead **head, char *id, DWORD midi, MisTrack* track);
+  int GisWriteHeadMis(GisWriteHead **head, char *id, DWORD midi, MisTrack* track);
 */
 
 #define CNAlter  1  // ChordNote - status
@@ -462,48 +463,48 @@ public:
 	int Key;       // outputed key
 	double Pitch;  // corresponding pitch
 	ChordNote(GisWriteHead *boss) // first ChordNote of a WriteHead
-	{
-		Boss = boss;
-		BossPos = Boss->Cursor;
-		Next = 0;
-		TotalTime = Boss->CurrentTime;
-		Data = 0;
-		Cursor = &Data;
+		{
+			Boss = boss;
+			BossPos = Boss->Cursor;
+			Next = 0;
+			TotalTime = Boss->CurrentTime;
+			Data = 0;
+			Cursor = &Data;
 
-		if ( (bool) TotalTime )
-			AddGis(new GisNote(mutT("_"),
-			                   mutEmptyString,
-			                   0,
-			                   TotalTime,
-			                   mutT(" "), 0));
+			if ( (bool) TotalTime )
+				AddGis(new GisNote(mutT("_"),
+						   mutEmptyString,
+						   0,
+						   TotalTime,
+						   mutT(" "), 0));
 
-		CurrentTime = 0;
+			CurrentTime = 0;
 
-		Boss->ChordPos = Boss->Cursor;
+			Boss->ChordPos = Boss->Cursor;
 
-		Status = 0;
+			Status = 0;
 
-		TieBegin = 0;
+			TieBegin = 0;
 
-		nTie = 0;
+			nTie = 0;
 
-		LastSep = 0;
+			LastSep = 0;
 
-		InstrId = -1;
+			InstrId = -1;
 
-		Taste = NO_KEY;
+			Taste = GMN_NO_KEY;
 
-		Key = NO_KEY;
+			Key = GMN_NO_KEY;
 
-		Pitch = 0;
-	}
+			Pitch = 0;
+		}
 	ChordNote(ChordNote *first); // not the first ChordNote
 	~ChordNote()
-	{
-		if ( Data ) delete Data;
+		{
+			if ( Data ) delete Data;
 
-		if ( Next ) delete Next;
-	}
+			if ( Next ) delete Next;
+		}
 
 	void CountOnTime(frac dTime);
 	void SetNoteOn(GisToken *note);
@@ -512,28 +513,28 @@ public:
 	void CheckCloseAlter();
 	void CheckCloseTie();
 	void CheckClose()
-	{
-		CheckCloseAlter();
-		CheckCloseTie();
-	}
+		{
+			CheckCloseAlter();
+			CheckCloseTie();
+		}
 
 	int MutNoteOn(int key, double pitch, int instrId, int taste, mutString sep);
 	int MutNoteOff();
 	char CheckId(int instrId, int taste)
-	{
-		return (InstrId == instrId) && (Taste == taste);
-	}
+		{
+			return (InstrId == instrId) && (Taste == taste);
+		}
 
 	char Cmp(int key, double pitch)
-	{
-		if ( key != NO_KEY )
-			return Key == NO_KEY;
+		{
+			if ( key != GMN_NO_KEY )
+				return Key == GMN_NO_KEY;
 
-		if ( (double)key + pitch == (double)Key + Pitch )
-			return 1;
-		else
-			return 0;
-	}
+			if ( (double)key + pitch == (double)Key + Pitch )
+				return 1;
+			else
+				return 0;
+		}
 };
 
 

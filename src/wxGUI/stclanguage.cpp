@@ -42,6 +42,9 @@
 * \{
 ********************************************************************/
 #include "src/wxGUI/stclanguage.h"       // Preferences
+#include "src/kernel/box.h"
+using namespace mutabor;
+
 #include "src/kernel/mutlex.h"
 
 namespace mutaborGUI {
@@ -555,7 +558,7 @@ namespace mutaborGUI {
 				 oldlevel,
 				 editor->GetFoldLevel(lineNumber) & wxSTC_FOLDLEVELNUMBERMASK);
 			       
-			int tmplevelstatus = levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG | level;
+			int tmplevelstatus = (levelstatus & ~wxSTC_FOLDLEVELHEADERFLAG) | level;
 			if (isspace) 
 				tmplevelstatus |= wxSTC_FOLDLEVELWHITEFLAG;
 			if (lineNumber < endline) 

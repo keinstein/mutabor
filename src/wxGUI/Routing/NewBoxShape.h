@@ -65,18 +65,15 @@ namespace mutaborGUI {
 		virtual MutIcon& GetMutIcon();
 
 	public:
-		NewMutBoxShape(wxWindow * parent, wxWindowID wid):MutBoxShape()
-			{
-				Create (parent, wid);
-			}
+		NewMutBoxShape(wxWindow * parent, wxWindowID wid):MutBoxShape()	{
+			Create (parent, wid);
+		}
 
-		bool Create (wxWindow * parent, wxWindowID wid)
-			{ 
-				if (!MutBoxShape::Create(parent, 
-							 wid, 
-							 NewBox)) return false;
-				return true;
-			}
+		bool Create (wxWindow * parent, wxWindowID wid)	{ 
+			if (!MutBoxShape::Create(parent, 
+						 wid)) return false;
+			return true;
+		}
 
 		virtual ~NewMutBoxShape() {}
 	

@@ -44,6 +44,7 @@
 #include "src/wxGUI/MutIcon.h"
 #include "src/wxGUI/Routing/RouteIcons.h"
 #include "src/wxGUI/Routing/DeviceShape.h"
+#include "src/wxGUI/resourceload.h"
 //#include "Device.h"
 
 

@@ -169,6 +169,7 @@ namespace mutaborGUI {
 	}
 
 
+
 	inline void connect(MutBoxChannelShape * channel, MutInputDeviceShape * in) {
 		if (!channel || !in)  {
 			UNREACHABLE;
@@ -330,8 +331,8 @@ namespace mutaborGUI {
 		mutASSERT(newshape);
 		mutASSERT(route);
 		return reconnect(route,
-				 oldshape->GetBoxId(),
-				 newshape->GetBoxId());
+				 oldshape->GetBox(),
+				 newshape->GetBox());
 	}
 
 	inline bool reconnect(GUIRoute * route,
@@ -365,6 +366,21 @@ namespace mutaborGUI {
 			return false;
 		}
 	}
+
+	inline bool reconnect(MutBoxChannelShape* channel, 
+			      MutBoxShape* oldout, 
+			      MutBoxShape* newout) {
+		if (oldout && newout && channel) 
+			return reconnect(channel->GetRoute(),
+					 oldout->GetBox(),
+					 newout->GetBox());
+		else {
+			UNREACHABLE;
+			return false;
+		}
+	}
+
+
 
 	inline void GUIRouteBase::Add (mutabor::OutputDevice & dev) {
 		GUIOutputDeviceBase * outbase = ToGUIBase(dev);
@@ -400,19 +416,21 @@ namespace mutaborGUI {
 		}
 	}
 
-	inline void  GUIRouteBase::Add (int boxid) 
+	inline void  GUIRouteBase::Add (mutabor::Box & b) 
 	{
+		BoxData * boxbase = ToGUIBase(b);
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-
+#if 0
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching box %d"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
+#endif
 		const MutBoxShapeList & boxshapes = 
-			BoxData::GetBox(boxid).GetBoxShapes();
+			boxbase -> GetShapes();
 		for (MutBoxChannelShapeList::const_iterator i = shapes.begin();
 		     i != shapes.end();
 		     i++) {
@@ -430,10 +448,10 @@ namespace mutaborGUI {
 				}
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %d"),
+		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %p"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
-			 boxid);
+			 boxbase);
 	}
 
 	inline bool GUIRouteBase::Replace (mutabor::OutputDevice & olddev,
@@ -542,53 +560,54 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	inline bool GUIRouteBase::Replace (int oldboxid,
-					   int newboxid)
+	inline bool GUIRouteBase::Replace (mutabor::Box & oldbox,
+					   mutabor::Box & newbox)
 	{
 
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
 		
-		mutASSERT(MIN_BOX <= oldboxid && oldboxid < MAX_BOX);
-		mutASSERT(MIN_BOX <= newboxid && newboxid < MAX_BOX);
+//		mutASSERT(MIN_BOX <= oldboxid && oldboxid < MAX_BOX);
+//		mutASSERT(MIN_BOX <= newboxid && newboxid < MAX_BOX);
 		bool retval = true;
-		const MutBoxShapeList & oldboxshapes = 
-			BoxData::GetBox(oldboxid).GetBoxShapes();
-		const MutBoxShapeList & newboxshapes = 
-			BoxData::GetBox(newboxid).GetBoxShapes();
+		BoxData * oldbase = ToGUIBase(oldbox);
+		BoxData * newbase = ToGUIBase(newbox);
+
+		const MutBoxShapeList & oldboxshapes = oldbase->GetShapes();
+		const MutBoxShapeList & newboxshapes = newbase->GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
 		     i++) {
 			bool oldfound = false;
 			wxWindow * parent = (*i)->GetGrandParent();
-			MutBoxShapeList::const_iterator oldbox;
-			for (oldbox = oldboxshapes.begin();
-			     oldbox != oldboxshapes.end();
-			     oldbox++) {
-				if ((*oldbox)->GetParent() == parent) {
-					(*oldbox)->Remove(*i);
+			MutBoxShapeList::const_iterator oldshape;
+			for (oldshape = oldboxshapes.begin();
+			     oldshape != oldboxshapes.end();
+			     oldshape++) {
+				if ((*oldshape)->GetParent() == parent) {
+					(*oldshape)->Remove(*i);
 					oldfound = true;
 					break;
 				}
 			}
 			bool newfound = false;
-			MutBoxShapeList::const_iterator newbox;
-			for (newbox = newboxshapes.begin();
-			     newbox != newboxshapes.end();
-			     newbox++) {
-				if ((*newbox)->GetParent() == parent) {
-					(*newbox)->Add(*i);
+			MutBoxShapeList::const_iterator newshape;
+			for (newshape = newboxshapes.begin();
+			     newshape != newboxshapes.end();
+			     newshape++) {
+				if ((*newshape)->GetParent() == parent) {
+					(*newshape)->Add(*i);
 					newfound = true;
 					break;
 				}
 			}
 			retval = retval && oldfound && newfound;
 			if (oldfound && newfound) {
-				(*i) -> Replace(*oldbox,*newbox);
+				(*i) -> Replace(*oldshape,*newshape);
 			} else if (oldfound) {
-				(*i) -> Remove(*oldbox);
+				(*i) -> Remove(*oldshape);
 			} else if (newfound) {
-				(*i)->Add(*newbox);
+				(*i)->Add(*newshape);
 			}
 		}
 		return retval;
@@ -679,19 +698,21 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-	inline bool GUIRouteBase::Remove (int boxid) 
+	inline bool GUIRouteBase::Remove (mutabor::Box & box) 
 	{
 		// this can be more effective if the lists were ordered 
 		// according to thir parents.
-		
+
+#if 0		
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
 			 boxid);
+#endif
+		BoxData * boxbase = ToGUIBase(box);
 		bool retval = true;
-		const MutBoxShapeList & boxshapes =
-			BoxData::GetBox(boxid).GetBoxShapes();
+		const MutBoxShapeList & boxshapes = boxbase->GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
 		     i++) {
@@ -707,10 +728,10 @@ namespace mutaborGUI {
 				} else retval = false;
 			}
 		}
-		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
+		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %p"),
 			 (void *)this, 
 			 (int)intrusive_ptr_get_refcount(GetRoute()),
-			 boxid);
+			 box.get());
 		return retval;
 	}
 
@@ -737,18 +758,6 @@ namespace mutaborGUI {
 		return ok;
 	}
 	
-#if 0
-	inline bool GUIRouteBase::Delete(MutBoxChannelShape * shape) {
-		if (!shape) {
-			UNREACHABLEC;
-			return false;
-		}
-		bool retval = Detatch(shape);
-		if (retval) 
-			shape -> Destroy();
-	}
-
-#endif
 	inline MutBoxChannelShape * 
 	GUIRouteBase::GetShape(wxWindow * parent) {
 		if (!parent) return NULL;
@@ -777,9 +786,9 @@ namespace mutaborGUI {
 	}
 	/// add a new box
 	template<class T> 
-	void GUIfiedRoute<T>::Add(int id) {
-		base::Add(id);
-		GUIRouteBase::Add(id);
+	void GUIfiedRoute<T>::Add(mutabor::Box & b) {
+		base::Add(b);
+		GUIRouteBase::Add(b);
 	}
 	/// replace an existing output device
 	template<class T> 
@@ -802,7 +811,8 @@ namespace mutaborGUI {
 	}
 	/// replace an existing box
 	template<class T> 
-	bool GUIfiedRoute<T>::Replace (int oldbox, int newbox) {
+	bool GUIfiedRoute<T>::Replace (mutabor::Box & oldbox, 
+				       mutabor::Box & newbox) {
 		bool retval = 
 			GUIRouteBase::Replace(oldbox,newbox);
 		if (retval) 
@@ -829,11 +839,11 @@ namespace mutaborGUI {
 	}
 	/// remov an existing box
 	template<class T> 
-	bool GUIfiedRoute<T>::Remove (int id) {
+	bool GUIfiedRoute<T>::Remove (mutabor::Box & b) {
 		bool retval =
-			GUIRouteBase::Remove(id);
+			GUIRouteBase::Remove(b);
 		if (retval)
-			retval = base::Remove(id);
+			retval = base::Remove(b);
 		return retval;
 	}
 
@@ -937,101 +947,7 @@ namespace mutaborGUI {
 	}
 
 
-#if 0		
-	template<class T> 
-	inline connect
-	inline void GUIfyRoute<T>::Attatch (mutabor::OutputDevice & dev) {
-		TRACEC;
-		T::Attatch(dev);
-		TRACEC;
-		GetGUIRoute().Attatch(dev);
-		TRACEC;
 	}
-
-	template<class T> 
-	inline void GUIfyRoute<T>::Attatch (mutabor::InputDevice & dev) {
-		TRACEC;
-		T::Attatch(dev);
-		TRACEC;
-		GetGUIRoute().Attatch(dev);
-		TRACEC;
-	}
-	template<class T> 
-	inline void GUIfyRoute<T>::Attatch (int boxid) {
-		TRACEC;
-		T::Attatch(boxid);
-		TRACEC;
-		GetGUIRoute().Attatch(boxid);
-		TRACEC;
-	}
-
-	template<class T> 
-	inline bool GUIfyRoute<T>::Reconnect(mutabor::OutputDevice & olddev, 
-					     mutabor::OutputDevice & newdev){
-		TRACEC;
-		bool retval = T::Reconnect(olddev, newdev);
-		TRACEC;
-		if (retval)
-			retval = GetGUIRoute().Reconnect(olddev, newdev);
-		TRACEC;
-		return retval;
-	}
-	template<class T> 
-	inline bool GUIfyRoute<T>::Reconnect (mutabor::InputDevice & olddev,
-					      mutabor::InputDevice & newdev) {
-		TRACEC;
-		bool retval = T::Reconnect(olddev, newdev);
-		TRACEC;
-		if (retval)
-			retval = GetGUIRoute().Reconnect(olddev, newdev);
-		TRACEC;
-		return retval;
-	}
-	template<class T> 
-	inline bool GUIfyRoute<T>::Reconnect (int oldboxid,
-					      int newboxid) {
-		TRACEC;
-		bool retval = T::Reconnect(oldboxid, newboxid);
-		TRACEC;
-		if (retval)
-			retval = GetGUIRoute().Reconnect(oldboxid, 
-								   newboxid);
-		TRACEC;
-		return retval;
-	}
-
-	template<class T> 
-	inline bool GUIfyRoute<T>::Detatch (mutabor::OutputDevice & dev) {
-		TRACEC;
-		bool retval = GetGUIRoute().Detatch(dev);
-		TRACEC;
-		if (retval)
-			retval = T::Detatch(dev);
-		TRACEC;
-		return retval;
-	}
-	template<class T> 
-	inline bool GUIfyRoute<T>::Detatch (mutabor::InputDevice & dev) {
-		TRACEC;
-		bool retval = GetGUIRoute().Detatch(dev);
-		TRACEC;
-		if (retval)
-			retval = T::Detatch(dev);
-		TRACEC;
-		return retval;
-	}
-	template<class T> 
-	inline bool GUIfyRoute<T>::Detatch (int boxid) {
-		TRACEC;
-		bool retval = GetGUIRoute().Detatch(boxid);
-		TRACEC;
-		if (retval)
-			retval = T::Detatch(boxid);
-		TRACEC;
-		return retval;
-	}
-
-#endif
 
 	/// add a route
 	template<class T> 
@@ -1090,59 +1006,6 @@ namespace mutaborGUI {
 		return ok;
 	}
 		
-#if 0
-	inline void GUIOutputDeviceBase::Attatch(MutOutputDeviceShape * shape) {
- 		TRACEC;
-		if (!shape) {
-			UNREACHABLEC;
-			return;
-		}
- 		TRACEC;
-		Add(shape);
- 		TRACEC;
-		shape->Add(device);
- 		TRACEC;
-
-		wxWindow * parent = shape->GetParent();
-		mutASSERT(device);
-		TRACEC;
-		const mutabor::routeListType & routes = device -> GetRoutes();
-		for (mutabor::routeListType::const_iterator 
-			     route = routes.begin();
-		     route != routes.end(); route++) {
-			mutabor::Route & r = const_cast<mutabor::Route & >(*route);
-			TRACEC;
-			MutBoxChannelShape * channel =
-				ToGUIBase(r).GetShape(parent);
-			if (channel) {
-				shape->Add(channel);
-				TRACEC;
-				channel->Add(shape);
-				TRACEC;
-			}
-			
-		}
-		
-	}
-
-	inline bool GUIOutputDeviceBase::Detatch(MutOutputDeviceShape * shape) {
-	}
-#endif
-
-#if 0
-	inline bool GUIOutputDeviceBase::Delete(MutOutputDeviceShape * shape) {
-		if (!shape) {
-			UNREACHABLEC;
-			return false;
-		}
- 		TRACEC;
-		bool retval = Detatch(shape);
- 		TRACEC;
-		if (retval) 
-			shape -> Destroy();
- 		TRACEC;
-	}
-#endif
 
 	inline MutOutputDeviceShape * 
 	GUIOutputDeviceBase::GetShape(wxWindow * parent) {
@@ -1309,21 +1172,6 @@ namespace mutaborGUI {
 		return ok;
 	}
 		
-#if 0
-
-	inline bool GUIInputDeviceBase::Delete(MutInputDeviceShape * shape) {
-		if (!shape) {
-			UNREACHABLEC;
-			return false;
-		}
- 		TRACEC;
-		bool retval = Detatch(shape);
- 		TRACEC;
-		if (retval) 
-			shape -> Destroy();
- 		TRACEC;
-	}
-#endif
 	inline MutInputDeviceShape * 
 	GUIInputDeviceBase::GetShape(wxWindow * parent) {
 		if (!parent) return NULL;
@@ -1339,62 +1187,12 @@ namespace mutaborGUI {
 	}
 
 		
-#if 0
-	inline  const GUIInputDeviceBase & 
-	ToGUIBase(const mutabor::InputDeviceClass * d) {
-		mutASSERT((const GUIfiedInputDevice *)(d));
-		mutASSERT((((const GUIfiedInputDevice *)(d))
-			  -> GetGUIDevice()).IsDevice(d));
-		
-		return ((const GUIfiedInputDevice *)(d))
-			-> GetGUIDevice();
 	}
 
-	inline  GUIInputDeviceBase & ToGUIBase(mutabor::InputDeviceClass * d) {
-		mutASSERT((GUIfiedInputDevice *)(d));
-		mutASSERT((((GUIfiedInputDevice *)(d))
-			  -> GetGUIDevice()).IsDevice(d));
-		
-		return ((GUIfiedInputDevice *)(d))
-			-> GetGUIDevice();
+
 	}
 
-	inline  const GUIOutputDeviceBase & 
-	ToGUIBase(const mutabor::OutputDeviceClass * d) {
-		mutASSERT((const GUIfiedOutputDevice *)(d));
-		mutASSERT((((const GUIfiedOutputDevice *)(d))
-			  -> GetGUIDevice()).IsDevice(d));
-		
-		return ((const GUIfiedOutputDevice *)(d))
-			-> GetGUIDevice();
-	}
-	inline  GUIOutputDeviceBase & ToGUIBase(mutabor::OutputDeviceClass * d) {
-		mutASSERT((GUIfiedOutputDevice *)(d));
-		mutASSERT((((GUIfiedOutputDevice *)(d))
-			  -> GetGUIDevice()).IsDevice(d));
-		
-		return ((GUIfiedOutputDevice *)(d))
-			-> GetGUIDevice();
-	}
 
-	inline  const GUIInputDeviceBase & 
-	ToGUIBase(const mutabor::InputDevice &  d) {
-		return ToGUIBase(d.get());
-	}
-
-	inline  GUIInputDeviceBase & ToGUIBase(mutabor::InputDevice & d) {
-		return ToGUIBase(d.get());
-	}
-
-	inline  const GUIOutputDeviceBase & 
-	ToGUIBase(const mutabor::OutputDevice & d) {
-		return ToGUIBase(d.get());
-	}
-
-	inline  GUIOutputDeviceBase & ToGUIBase(mutabor::OutputDevice & d) {
-		return ToGUIBase(d.get());
-	}
-#endif
 
 	inline MutOutputDeviceShape * GUIDeviceFactory::CreateShape(
 		mutabor::OutputDevice & device, wxWindow * parent) {

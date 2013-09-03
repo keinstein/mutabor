@@ -219,7 +219,7 @@ OutputMidiPort:\n\
 
 #else
 
-	void CALLBACK _export MidiInPortFunc(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+	void CALLBACK MidiInPortFunc(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
 	{
 		//  CurrentTimeStamp = dwParam2;
 
@@ -381,21 +381,30 @@ OutputMidiPort:\n\
 		try {
 			hMidiIn = new RtMidiIn(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 		} catch (RtError &error) {
-			LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
+			runtime_error(false,
+				      _("Can not open Midi input device no. %d (%s)."), 
+				      DevId, 
+				      (const mutChar *)(GetName().c_str()));
 			return false;
 		}
 
 		try {
 			hMidiIn->openPort(DevId,(const char *)(GetName().ToUTF8()));
 		} catch (RtError &error) {
-			LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
+			runtime_error(false,
+				      _("Can not open Midi input device no. %d (%s)."), 
+				      DevId, 
+				      (const mutChar *)(GetName().c_str()));
 			return false;
 		}
 
 		try {
 			hMidiIn->setCallback(mycallback, this);
 		} catch (RtError & error) {
-			LAUFZEIT_ERROR2(_("Can not open Midi input device no. %d (%s)."), DevId, (GetName().c_str()));
+			runtime_error(false,
+				      _("Can not open Midi input device no. %d (%s)."), 
+				      DevId, 
+				      (const mutChar *)(GetName().c_str()));
 		}
 
 #else

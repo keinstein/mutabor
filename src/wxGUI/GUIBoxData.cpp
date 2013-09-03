@@ -72,25 +72,64 @@
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/Routing/NewBoxShape.h"
+#include "wx/msgdlg.h"
 
 namespace mutaborGUI {
-	size_t curBox = 0;
+	mutabor::Box BoxData::curBox(NULL);
 
 	// don't initialize these classes before WX is intialized
-	BoxData::BoxVector BoxData::vector; 
-	BoxData BoxData::GmnBoxData;
-	BoxData BoxData::NoBoxData;
-	BoxData BoxData::NewBoxData;
-	BoxData::BoxData():box(NULL),
-			   shapes(),
-			   current_logic(),
-			   current_tonesystem(),
-			   current_key_tonesystem(0),
-			   current_key_logic(0),
-			   winattr()
+//	BoxData::BoxVector BoxData::vector; 
+//	BoxData BoxData::GmnBoxData;
+//	BoxData BoxData::NoBoxData;
+//	BoxData BoxData::NewBoxData;
+	BoxData::BoxData(int id):BoxClass(id),
+				 shapes(),
+/*
+  current_logic(),
+  current_tonesystem(),
+  current_key_tonesystem(0),
+  current_key_logic(0),
+*/
+				 winattr()
 	{		
 	}
 
+	void BoxData::set_routefile_id(int id) {
+		BoxClass::set_routefile_id(id);
+		if (box)
+			id = box->id;
+
+		switch (id) {
+		case mutabor::NewBox:
+		case mutabor::NoBox:
+		case mutabor::GmnBox: 
+			background_colour = wxNullColour;
+			text_colour = *wxBLACK;
+			break;
+		default:
+			int r = ((id & 0x01) << 7 ) | ((id & 0x08) << 3) | ((id & 0x40) >> 1) |
+				((id & 0x200) >> 5) | ((id & 0x1000) >> 9) | ((id & 0x8000) >> 13) |
+				((id & 0x40000) >> 17) | ((id & 0x200000) >> 21) ;
+			r = r?r-1:0;
+			int g = ((id & 0x02) << 6 ) | ((id & 0x10) << 2) | ((id & 0x80) >> 2) |
+				((id & 0x400) >> 6) | ((id & 0x2000) >> 10) | ((id & 0x10000) >> 14) |
+				((id & 0x80000) >> 18) | ((id & 0x400000) >> 22);
+			g = g?g-1:0;
+			int b = ((id & 0x04) << 5 ) | ((id & 0x20) << 1) | ((id & 0x100) >> 3) |
+				((id & 0x800) >> 7) | ((id & 0x4000) >> 11) | ((id & 0x20000) >> 15) |
+				((id & 0x100000) >> 19) | ((id & 0x800000) >> 23);
+			b = b?b-1:0;
+			DEBUGLOG2(other,_T("Box %d color %x,%x,%x"),id-1,r,g,b);
+			if (r+b+g < 0x180) 
+				text_colour = *wxWHITE;
+			else
+				text_colour = *wxBLACK;
+			background_colour = wxColour(r,g,b);
+		}
+	}
+		
+#if 0
 	void BoxData::reset() 
 	{
 		current_logic = _("(INITIAL)");
@@ -101,9 +140,11 @@ namespace mutaborGUI {
 		mutASSERT(!winattr.actions_window);
 		mutASSERT(!winattr.logic_window);
 	}
+#endif
 
 
-	void BoxData::CloseRoute(int boxid) {
+#if 0
+	void BoxData::CloseRoute(mutabor::Box) {
 		// if logic is off we are not resposible
 		if (!LogicOn) return;
 		// check whether the windows should be closed
@@ -116,6 +157,8 @@ namespace mutaborGUI {
 		}
 		CloseBox(boxid);
 	}
+
+
 
 	void BoxData::CloseBox(int boxid) {
 		if (!(MIN_BOX <= boxid && boxid < MAX_BOX)) {
@@ -148,7 +191,6 @@ namespace mutaborGUI {
 		mut_box[boxid].next_used = 0;
 		MutFrame::BoxWindowsClose(boxid,true);
 	}
-
 	
 	void BoxData::OpenRoute(int boxid) {
 		// if logic is off we are not resposible
@@ -199,29 +241,31 @@ namespace mutaborGUI {
 		CloseRoute(old_boxid);
 		OpenRoute(new_boxid);
 	}
+#endif
 
-	bool BoxData::Save(wxConfigBase * config) {
-		config->Write(_T("KeyWindow"), 
-			      winattr.want_key_window);
-		config->Write(_T("ToneSystemWindow"), 
-			      winattr.want_tonesystem_window);
-		config->Write(_T("ActionsWindow"), 
-			      winattr.want_actions_window);
-		return true;
+	void BoxData::Save(mutabor::tree_storage & config) {
+		mutabor::BoxClass::Save(config);
+		config.Write(_T("KeyWindow"), 
+			     winattr.want_key_window);
+		config.Write(_T("ToneSystemWindow"), 
+			     winattr.want_tonesystem_window);
+		config.Write(_T("ActionsWindow"), 
+			     winattr.want_actions_window);
 	}
 
-	bool BoxData::Load(wxConfigBase * config) {
-		winattr.want_key_window = config->Read(_T("KeyWindow"), 
+	void BoxData::Load(mutabor::tree_storage & config) {
+		mutabor::BoxClass::Load(config);
+		winattr.want_key_window = config.Read(_T("KeyWindow"), 
 						       (long int)false) != 0l;
 		winattr.want_tonesystem_window =
-			config->Read(_T("ToneSystemWindow"),
+			config.Read(_T("ToneSystemWindow"),
 				     (long int)false) != 0l;
 		winattr.want_actions_window =
-			config->Read(_T("ActionsWindow"), 
+			config.Read(_T("ActionsWindow"), 
 				     (long int)false) != 0l;
-		return true;
 	}
 
+#if 0
 	bool BoxData::SaveAll(wxConfigBase * config) 
 	{
 		bool retval = true;
@@ -243,6 +287,36 @@ namespace mutaborGUI {
 		}
 		return retval;
 	}
+#endif
+
+	void BoxData::runtime_error(bool iswarning, const char * message) {
+		wxString str = wxString::FromUTF8(message);
+		wxMessageBox(str, iswarning?_("Warning"):_("Error"), 
+			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	}
+
+
+	MutBoxShape * GUIBoxFactory::DoCreateBoxShape(mutabor::Box & box,
+						      wxWindow * parent) const {
+		MutBoxShape * shape;	
+		DEBUGLOG(routing,_T("Adding box shape for box %p (list of %d)"),
+			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
+		
+	
+		if (box == NULL) 
+			shape = new NewMutBoxShape(parent,wxID_ANY);
+		else
+			/** \todo implement ID sharing between the different
+			    shapes of one common route */
+			    
+			shape = new MutBoxShape(parent, wxID_ANY,box);
+
+		DEBUGLOG(routing,_T("Added box shape for box %p (list of %d)"),
+			 box.get(),(int)(ToGUIBase(box)->GetShapes().size()));
+
+		return shape;
+	}
+
 
 }
 ///\}

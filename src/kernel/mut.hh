@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
-# define YY_YY_SRC_KERNEL_MUT_HH_INCLUDED
+#ifndef YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
+# define YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -50,27 +50,28 @@ extern int yydebug;
      MUTABOR_TOKEN_F_NUMBER = 259,
      MUTABOR_TOKEN_INTEGER = 260,
      MUTABOR_TOKEN_INTERVAL = 261,
-     MUTABOR_TOKEN_ROOT = 262,
-     MUTABOR_TOKEN_TONE = 263,
-     MUTABOR_TOKEN_TONESYSTEM = 264,
-     MUTABOR_TOKEN_RETUNING = 265,
-     MUTABOR_TOKEN_HARMONY = 266,
-     MUTABOR_TOKEN_LOGIC = 267,
-     MUTABOR_TOKEN_FORM = 268,
-     MUTABOR_TOKEN_MIDICHANNEL = 269,
-     MUTABOR_TOKEN_KEY = 270,
+     MUTABOR_TOKEN_TONE = 262,
+     MUTABOR_TOKEN_TONESYSTEM = 263,
+     MUTABOR_TOKEN_RETUNING = 264,
+     MUTABOR_TOKEN_HARMONY = 265,
+     MUTABOR_TOKEN_LOGIC = 266,
+     MUTABOR_TOKEN_MIDICHANNEL = 267,
+     MUTABOR_TOKEN_KEY = 268,
+     MUTABOR_TOKEN_FORM = 269,
+     MUTABOR_TOKEN_ROOT = 270,
      MUTABOR_TOKEN_MIDI_IN = 271,
      MUTABOR_TOKEN_MIDI_OUT = 272,
-     MUTABOR_TOKEN_ELSE = 273,
-     MUTABOR_TOKEN_SPACES = 274,
-     MUTABOR_TOKEN_COMMENT = 275,
-     MUTABOR_TOKEN_COMMENT_START = 276,
-     MUTABOR_TOKEN_COMMENT_END = 277,
-     MUTABOR_TOKEN_PARAMETER = 278,
-     MUTABOR_TOKEN_OTHER = 279,
-     MUTABOR_TOKEN_CALLS = 280,
-     MUTABOR_TOKEN_ERROR = 281,
-     MUTABOR_TOKEN_ENDOFFILE = 282
+     MUTABOR_TOKEN_HARMONY_ANALYSIS = 273,
+     MUTABOR_TOKEN_CALLS = 274,
+     MUTABOR_TOKEN_ELSE = 275,
+     MUTABOR_TOKEN_PARAMETER = 276,
+     MUTABOR_TOKEN_ENDOFFILE = 277,
+     MUTABOR_TOKEN_ERROR = 278,
+     MUTABOR_TOKEN_SPACES = 279,
+     MUTABOR_TOKEN_COMMENT = 280,
+     MUTABOR_TOKEN_COMMENT_START = 281,
+     MUTABOR_TOKEN_COMMENT_END = 282,
+     MUTABOR_TOKEN_OTHER = 283
    };
 #endif
 /* Tokens.  */
@@ -78,27 +79,28 @@ extern int yydebug;
 #define MUTABOR_TOKEN_F_NUMBER 259
 #define MUTABOR_TOKEN_INTEGER 260
 #define MUTABOR_TOKEN_INTERVAL 261
-#define MUTABOR_TOKEN_ROOT 262
-#define MUTABOR_TOKEN_TONE 263
-#define MUTABOR_TOKEN_TONESYSTEM 264
-#define MUTABOR_TOKEN_RETUNING 265
-#define MUTABOR_TOKEN_HARMONY 266
-#define MUTABOR_TOKEN_LOGIC 267
-#define MUTABOR_TOKEN_FORM 268
-#define MUTABOR_TOKEN_MIDICHANNEL 269
-#define MUTABOR_TOKEN_KEY 270
+#define MUTABOR_TOKEN_TONE 262
+#define MUTABOR_TOKEN_TONESYSTEM 263
+#define MUTABOR_TOKEN_RETUNING 264
+#define MUTABOR_TOKEN_HARMONY 265
+#define MUTABOR_TOKEN_LOGIC 266
+#define MUTABOR_TOKEN_MIDICHANNEL 267
+#define MUTABOR_TOKEN_KEY 268
+#define MUTABOR_TOKEN_FORM 269
+#define MUTABOR_TOKEN_ROOT 270
 #define MUTABOR_TOKEN_MIDI_IN 271
 #define MUTABOR_TOKEN_MIDI_OUT 272
-#define MUTABOR_TOKEN_ELSE 273
-#define MUTABOR_TOKEN_SPACES 274
-#define MUTABOR_TOKEN_COMMENT 275
-#define MUTABOR_TOKEN_COMMENT_START 276
-#define MUTABOR_TOKEN_COMMENT_END 277
-#define MUTABOR_TOKEN_PARAMETER 278
-#define MUTABOR_TOKEN_OTHER 279
-#define MUTABOR_TOKEN_CALLS 280
-#define MUTABOR_TOKEN_ERROR 281
-#define MUTABOR_TOKEN_ENDOFFILE 282
+#define MUTABOR_TOKEN_HARMONY_ANALYSIS 273
+#define MUTABOR_TOKEN_CALLS 274
+#define MUTABOR_TOKEN_ELSE 275
+#define MUTABOR_TOKEN_PARAMETER 276
+#define MUTABOR_TOKEN_ENDOFFILE 277
+#define MUTABOR_TOKEN_ERROR 278
+#define MUTABOR_TOKEN_SPACES 279
+#define MUTABOR_TOKEN_COMMENT 280
+#define MUTABOR_TOKEN_COMMENT_START 281
+#define MUTABOR_TOKEN_COMMENT_END 282
+#define MUTABOR_TOKEN_OTHER 283
 
 
 
@@ -106,15 +108,15 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2053 of yacc.c  */
-#line 68 "../../../mutabor-git/src/kernel/mut.yy"
+#line 85 "../../../mutabor-git/src/kernel/mut.yy"
 
-    double      f_value;        /* fÅr Gleitkommazahlen */
-    int         integer;        /* FÅr integers */
-    char        *identifier;    /* FÅr Namen */
+    double      f_value;        /* f„Äâ Gleitkommazahlen */
+    int         integer;        /* F„Äâ integers */
+    char        *identifier;    /* F„Äâ Namen */
 
 
 /* Line 2053 of yacc.c  */
-#line 118 "src/kernel/mut.hh"
+#line 120 "../../../mutabor-git/src/kernel/mut.hh"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -134,8 +136,7 @@ typedef struct YYLTYPE
 # define YYLTYPE_IS_TRIVIAL 1
 #endif
 
-extern YYSTYPE yylval;
-extern YYLTYPE yylloc;
+
 #ifdef YYPARSE_PARAM
 #if defined __STDC__ || defined __cplusplus
 int yyparse (void *YYPARSE_PARAM);
@@ -144,10 +145,10 @@ int yyparse ();
 #endif
 #else /* ! YYPARSE_PARAM */
 #if defined __STDC__ || defined __cplusplus
-int yyparse (void);
+int yyparse (mutabor_box_type * box);
 #else
 int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_YY_SRC_KERNEL_MUT_HH_INCLUDED  */
+#endif /* !YY_YY__MUTABOR_GIT_SRC_KERNEL_MUT_HH_INCLUDED  */

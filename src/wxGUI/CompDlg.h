@@ -62,6 +62,7 @@
  */
 
 #include "src/kernel/Defs.h"
+#include "src/kernel/routing/Box.h"
 #include "src/wxGUI/resourceload.h"
 
 #ifndef MUWX_COMPDLG_H_PRECOMPILED
@@ -79,7 +80,8 @@ namespace mutaborGUI {
  * CompDlg class declaration
  */
 
-	class CompDlg: public CompileDlg
+	class CompDlg: public CompileDlg,
+		       public mutabor::BoxClass::CompileCallback
 	{
 		//DECLARE_DYNAMIC_CLASS( CompDlg )
 		//DECLARE_EVENT_TABLE()
@@ -98,43 +100,50 @@ namespace mutaborGUI {
 				return line;
 			}
 
-		void SetStatus(wxString l, wxString to, wxString tu,
-			       wxString ts, wxString i, wxString ch)
+		void SetLine(int l) {
+			line->SetLabel(wxString::Format(_T("%d"),l));
+			wxSafeYield(this,true);
+		}
+
+		void SetStatus(int logics, 
+			       int tones, 
+			       int tunings,
+			       int tone_systems,
+			       int intervals,
+			       int characters)
 			{
-				if (logic && !l.empty()) {
-					logic->SetLabel(l);
+				if (logic) {
+					logic->SetLabel(wxString::Format(_T("%i"),logics));
 					logic->InvalidateBestSize();
 				}
 
-				if (tones && !to.empty()) {
-					tones->SetLabel(to);
-					tones->InvalidateBestSize();
+				if (this->tones) {
+					this->tones->SetLabel(wxString::Format(_T("%i"),tones));
+					this->tones->InvalidateBestSize();
 				}
 
-				if (tunes && !tu.empty()) {
-					tunes->SetLabel(tu);
+				if (tunes) {
+					tunes->SetLabel(wxString::Format(_T("%i"),tunings));
 					tunes->InvalidateBestSize();
 				}
 
-				if (tone_system && !ts.empty()) {
-					tone_system->SetLabel(ts);
+				if (tone_system) {
+					tone_system->SetLabel(wxString::Format(_T("%i"),tone_systems));
 					tone_system->InvalidateBestSize();
 				}
 
-				if (intervals && !i.empty()) {
-					intervals->SetLabel(i);
-					intervals->InvalidateBestSize();
+				if (this->intervals) {
+					this->intervals->SetLabel(wxString::Format(_T("%i"),intervals));
+					this->intervals->InvalidateBestSize();
 				}
 
-				if (chars && !ch.empty()) {
-					chars->SetLabel(ch);
+				if (chars) {
+					chars->SetLabel(wxString::Format(_T("%i"),characters));
 					chars->InvalidateBestSize();
 				}
 
-				Layout();
-				InvalidateBestSize();
-				GetSizer()->SetSizeHints(this);
 				Fit();
+				wxSafeYield(this,true);
 			}
 
 		void SetFileName(wxString s)
@@ -147,19 +156,17 @@ namespace mutaborGUI {
 				InvalidateBestSize();
 				GetSizer()->SetSizeHints(this);
 				Fit();
+				wxSafeYield(this,true);
 			}
 
-		void SetButtonText(wxString s)
-			{
-				if (wxID_OK) {
-					wxID_OK->SetLabel(s);
-					wxID_OK->InvalidateBestSize();
-				}
-				Layout();
-				InvalidateBestSize();
-				GetSizer()->SetSizeHints(this);
-				Fit();
+		void SetStatus(wxString s) {
+			if (wxID_OK) {
+				wxID_OK->SetLabel(s);
+				wxID_OK->InvalidateBestSize();
 			}
+			Fit();
+			wxSafeYield(this,true);
+		}
 
 		void SetMessage(wxString s)
 			{
@@ -171,13 +178,19 @@ namespace mutaborGUI {
 				InvalidateBestSize();
 				GetSizer()->SetSizeHints(this);
 				Fit();
+				wxSafeYield(this,true);
 			}
 
 		void EnableButton(bool enable = true)
 			{
 				if (wxID_OK)
 					wxID_OK->Enable(enable);
+				wxSafeYield(this,true);
 			}
+
+		void Refresh() {
+			CompileDlg::Refresh();
+		}
 
 		/*
 		  CompDlg( wxWindow* parent, wxWindowID id = SYMBOL_COMPDLG_IDNAME, const wxString& caption = SYMBOL_COMPDLG_TITLE, const wxPoint& pos = SYMBOL_COMPDLG_POSITION, const wxSize& size = SYMBOL_COMPDLG_SIZE, long style = SYMBOL_COMPDLG_STYLE );

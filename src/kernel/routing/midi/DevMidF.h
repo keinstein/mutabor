@@ -402,7 +402,7 @@ namespace mutabor {
 
 	class MidiFileOutputProvider {
 	public:
-		MidiFileOutputProvider():Tracks() {}
+		MidiFileOutputProvider(Device * d):device(d),Tracks() {}
 		~MidiFileOutputProvider() {}
 
 		bool Open() {
@@ -554,7 +554,7 @@ namespace mutabor {
 		}
 
 	protected:
-
+		Device * device;
 		Track Tracks;
 	};
 	

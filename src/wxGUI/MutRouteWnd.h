@@ -54,8 +54,10 @@
 
 namespace mutaborGUI {
 
+/* 
 #define xz 5 // Zwischenräume
 #define yz 5
+*/
 
 // RouteWin ----------------------------------------------------------
 // Fenster, das die Routen enthält
@@ -116,6 +118,7 @@ namespace mutaborGUI {
 	
 		void createInputDevices(wxSizerFlags flags);
 		void createBoxes(wxSizerFlags flags);
+		void createRoutes(wxSizerFlags flags);
 		void createOutputDevices(wxSizerFlags flags);
 	public:
 		/// interactive route loading
@@ -190,10 +193,29 @@ namespace mutaborGUI {
 		bool AddBox(MutBoxShape * box, const wxSizerFlags & flags) {
 			mutASSERT(BoxSizer);
 			BoxSizer -> Add(box,flags);
+#if 0
+			box->Fit();
+			box->Layout();
+//			GetSizer()->SetItemMinSize(box,-1,-1);
+//			GetSizer()->RecalcSizes();
+//			Layout();
+			Fit();
 			Layout();
-			SetVirtualSize(wxDefaultSize);
 			FitInside();
+			Refresh();
+//			SetVirtualSize(GetBestVirtualSize());
+#endif
 			Boxes.push_back(box);
+//			InvalidateRect(GetClientRect);
+			return true;
+		}
+
+		bool AddRoute(MutBoxChannelShape * channel, const wxSizerFlags & flags) {
+			mutASSERT(BoxSizer);
+			mutabor::Route r = channel->GetRoute();
+			mutabor::Box b = r->GetBox();
+			MutBoxShape * boxshape = ToGUIBase(b)->GetShape(this);
+			boxshape->Add(channel);
 			return true;
 		}
 
@@ -217,35 +239,16 @@ namespace mutaborGUI {
 	
 		// calls layout for layout constraints and sizers
 		void OnSize(wxSizeEvent& event);
-		
+		virtual void FitInside();
+		void OnPaint(wxPaintEvent & event);
 		virtual void OnDraw(wxDC& dc);
 		void OnMoveShape(wxCommandEvent& event);
 
-		//	void OnSize(wxSizeEvent& event);
 
-		/*  protected:
-		    virtual void SetupWindow();
-		    virtual bool CanClose();
-		    virtual void EvChar(uint key, uint repeatCount, uint flags);
-		    void CorrectScroller();
-		    void SetFocusPos();*/
-		/*
-		  int CalcXl()
-		  {
-		  return x1+x2+x3+x4+x5+10*xz;
-		  }
-
-		  int CalcYl();
-
-		  bool CheckPoint(wxPoint point, EDevice **in, ERoute *r, 
-		  int &token, bool &needNew);
-		  void OnLeftDown(wxMouseEvent &event);
-		  void OnLeftDClick(wxMouseEvent &event);
-		  void EvLButtonDblClk(UINT modKeys, TPoint& point);
-		  void EvRButtonDown(uint modKeys, TPoint& point);*/
 
 	public:
 	  //		WX_DECLARE_CONTROL_CONTAINER();
+
 	private:
 		DECLARE_DYNAMIC_CLASS_NO_COPY(MutRouteWnd)
 		DECLARE_EVENT_TABLE()

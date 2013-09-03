@@ -138,7 +138,7 @@ namespace mutabor {
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-		virtual void NoteOn(mutabor_box_type * box, 
+		virtual void NoteOn(mutabor::Box box, 
 				    int taste, 
 				    int velo,
 				    RouteClass * r, 
@@ -146,7 +146,7 @@ namespace mutabor {
 				    const ChannelData &cd)
 			{};
 
-		virtual void NoteOff(mutabor_box_type * box, 
+		virtual void NoteOff(mutabor::Box box, 
 				     int taste,
 				     int velo, 
 				     RouteClass * r, 
@@ -154,8 +154,7 @@ namespace mutabor {
 				     bool is_note_on)
 			{};
 
-		virtual void NotesCorrect(RouteClass * route)
-			{};
+		virtual void UpdateTones(RouteClass * route) {};
 
 		virtual void Controller(int,int,int) {}
 /*
@@ -165,16 +164,13 @@ namespace mutabor {
 
 		virtual int  GetChannel(int taste, size_t channel, size_t id)
 			{
-				return -1;
+				return midi::NO_CHANNEL;
 			}
 
 		virtual void Gis(GisToken *token, char turn);
-		virtual void MidiOut(DWORD data, size_t n)
-			{};
-
-		virtual void MidiOut(BYTE *p, size_t n)
-			{};
-
+		virtual void MidiOut(DWORD data, size_t n) {};
+		virtual void MidiOut(BYTE *p, size_t n)	{};
+		virtual void MidiOut(mutabor::Box box, midi_string data) {};
 		virtual void AddTime(frac time)
 			{
 				Head->AddTime(time);

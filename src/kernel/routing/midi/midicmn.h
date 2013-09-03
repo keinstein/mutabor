@@ -311,7 +311,7 @@ namespace mutabor {
 	public:
 		
 		// Flawfinder: ignore
-		DebugMidiOutputProvider():data(),open(false) {}
+		DebugMidiOutputProvider(Device * d):device(d), data(),open(false) {}
 
 		
 		/** 
@@ -485,6 +485,7 @@ namespace mutabor {
 		operator mutString () { return data; }
 		void ClearData() { data = _T(""); } 
 	protected:
+		Device * device;
 		/* the data fields not not necessary for and output provider */
 		mutString data;
 		// Flawfinder: ignore
@@ -532,21 +533,21 @@ namespace mutabor {
 		void CopyProgramChange(const ChannelData & input_channel_data,
 				       ChannelData & output_data,
 				       int channel);
-		void NoteOn(mutabor_box_type * box, 
+		void NoteOn(Box box, 
 			    int inkey, 
 			    int velocity, 
 			    RouteClass * r, 
 			    size_t id, 
 			    const ChannelData & input_channel_data);
 
-		void NoteOff(mutabor_box_type * box, 
+		void NoteOff(Box box, 
 			     int inkey, 
 			     int velo, 
 			     RouteClass * r, 
 			     size_t id,
 			     bool is_note_on /* = false */
 			);	
-		void NotesCorrect(RouteClass * route);
+		void UpdateTones(RouteClass * route);
 		void Controller(int mutabor_channel, int controller, int value);
 //		void Sustain(int channel, const ChannelData & cd);
 		int GetChannel(int inkey, size_t channel, size_t id);
@@ -570,6 +571,9 @@ namespace mutabor {
 		void MidiOut(BYTE *p, size_t n) {
 			SplitOut(p,n);
 		}
+		void MidiOut(mutabor::Box box, midi_string data) {
+			SplitOut(data.data(),data.size());
+		}
 
 
 
@@ -588,7 +592,9 @@ namespace mutabor {
 		virtual int GetMinChannel() const = 0;
 
 	protected:
-		CommonMidiOutput(int b):bending_range(b),
+		CommonMidiOutput(int b):base(),
+					Out(this),
+					bending_range(b),
 					channel_queue(),
 					nKeyOn(0) {}
 		
@@ -751,17 +757,19 @@ namespace mutabor {
 		int nKeyOn;
 
 		CommonMidiOutput():base(), 
-			bending_range (2),
-			bank_mode(lsb_first),
-			nKeyOn(0) { }
+				   Out(this),
+				   bending_range (2),
+				   bank_mode(lsb_first),
+				   nKeyOn(0) { }
 
 		CommonMidiOutput(wxString name, 
 				 int id = -1, 
 				 int bendingRange = 2)
 			: base(name, id),
-			bending_range (bendingRange), 
-			bank_mode(lsb_first),
-			nKeyOn(0)
+			  Out(this),
+			  bending_range (bendingRange), 
+			  bank_mode(lsb_first),
+			  nKeyOn(0)
 			{
 				TRACEC;
 			}

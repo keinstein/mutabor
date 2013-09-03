@@ -74,9 +74,6 @@ namespace mutaborGUI {
 
 	MutBoxChannelShape::~MutBoxChannelShape()
 	{
-		if (route) {
-			disconnect(route, const_cast<MutBoxChannelShape *>(this));
-		}
 		DetachChannel();
 /*
   DEBUGLOG(routing,_T("Parent is %p"),m_parent);
@@ -97,17 +94,17 @@ namespace mutaborGUI {
 
 	bool MutBoxChannelShape::Destroy() {
 /*
-		if (m_parent) {
-			wxSizer * sizer = GetContainingSizer();
-			if (sizer) 
-				sizer -> Detach (this);
-			wxWindow * parent = m_parent;
-			parent->RemoveChild(this);
-			SetParent(NULL);
-			parent->InvalidateBestSize();
-			parent->SetInitialSize(wxDefaultSize);
-			parent->Layout();		
-		}
+  if (m_parent) {
+  wxSizer * sizer = GetContainingSizer();
+  if (sizer) 
+  sizer -> Detach (this);
+  wxWindow * parent = m_parent;
+  parent->RemoveChild(this);
+  SetParent(NULL);
+  parent->InvalidateBestSize();
+  parent->SetInitialSize(wxDefaultSize);
+  parent->Layout();		
+  }
 */
 		return MutIconShape::Destroy();
 	}
@@ -149,7 +146,7 @@ namespace mutaborGUI {
 		DEBUGLOG (other, _T("Checking icons"));
 
 		mutASSERT(ActiveChannelBitmap.IsOk () 
-			 && PassiveChannelBitmap.IsOk ());
+			  && PassiveChannelBitmap.IsOk ());
 
 		if (route && (route -> GetActive())) {
 			return ActiveChannelBitmap;
@@ -192,7 +189,7 @@ namespace mutaborGUI {
 	
 	/// replace an existing input device
 	bool MutBoxChannelShape::Replace (MutInputDeviceShape * olddev, 
-			    MutInputDeviceShape * newdev) {
+					  MutInputDeviceShape * newdev) {
 		TRACEC;
 		bool retval = olddev == input;
 		TRACEC;
@@ -254,37 +251,10 @@ namespace mutaborGUI {
 		return retval;
 	}
 
-#if 0	
-	void MutBoxChannelShape::Attatch(mutabor::Route & r) {
-		if (route) UNREACHABLEC;
-		else {
-			DEBUGLOG(smartptr,_T("Atta(t)ching route %p"),r.get());
-			route = r;
-		}
-
-	}
-
-	void MutBoxChannelShape::Detatch(mutabor::Route & r) {
-		mutASSERT (route == r);
-		
-		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()));
-		if (route) 
-			disconnect(route).Detatch(this);
-		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()));
-		route = NULL;
-		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 route.get(), 
-			 intrusive_ptr_get_refcount(route.get()));
-	}
-#endif
 	void MutBoxChannelShape::CreateRoutePanel(MutBoxChannelShape * channel, 
 						  MutRouteWnd * parentwin, 
 						  wxWindow * routeWindow, 
-						  int selectBox) {
+						  const mutabor::Box & box) {
 		wxSizer * routeSizer = routeWindow->GetSizer();
 		if (!routeSizer) UNREACHABLECT(MutBoxChannelShape);
 	
@@ -297,7 +267,7 @@ namespace mutaborGUI {
 		MutBoxChannelShape::InitializeRoute(routePanel,
 						    parentwin,
 						    channel,
-						    selectBox);
+						    box);
 	
 		OutputFilterPanel * outputfilter = 
 			new OutputFilterPanel(routeWindow);
@@ -385,7 +355,7 @@ namespace mutaborGUI {
 	void MutBoxChannelShape::InitializeRoute(RoutePanel * panel, 
 						 MutRouteWnd * par,
 						 MutBoxChannelShape * shape,
-						 int selectBox)
+						 mutabor::Box box)
 	{
 		mutASSERT(par);
 		mutASSERT(panel);
@@ -405,21 +375,18 @@ namespace mutaborGUI {
 		else
 			panel->SetActive(true);
 	
-		wxSizer *boxes = par->GetBoxes();
+		//wxSizer *boxes = par->GetBoxes();
 
 	
 		bool found = false;
 	
-		const wxSizerItemList &list = boxes->GetChildren();
-		for (wxSizerItemList::const_iterator i = list.begin(); 
+
+		const mutabor::BoxListType &list = mutabor::BoxClass::GetBoxList();
+		for (mutabor::BoxListType::const_iterator i = list.begin(); 
 		     i != (list.end()); i++) {
-			MutBoxShape * box = 
-				dynamic_cast<MutBoxShape *> ((*i)->GetWindow());
-			if (box) {
-				bool select = box->GetBoxId() == selectBox;
-				panel->AddBox(box, select);
-				found |= select;
-			}
+			bool select = ((*i) == box);
+			found |= select;
+			panel->AddBox(*i, select);
 		}
 
 		if (!found)
@@ -489,8 +456,8 @@ namespace mutaborGUI {
 			//		BoxData::CloseRoute(route->GetBox());
 			route->Destroy();
 			/*
-			DetachChannel();
-			DeleteSelf();
+			  DetachChannel();
+			  DeleteSelf();
 			*/
 			return;
 		}
@@ -499,24 +466,42 @@ namespace mutaborGUI {
 			  route->GetActive(),
 			  panel->GetActive());
 		route->SetActive(panel->GetActive());
-	
-		int oldbox = route -> GetBox();
-		MutBoxShape * box = panel->GetBox();
-		if (!box) {
-			box = dynamic_cast<MutBoxShape *> (GetParent());
-			if (!box) UNREACHABLEC;
-		} else if (box != GetParent()) {
-			MutBoxShape * oldbox = 
-				dynamic_cast<MutBoxShape *>(GetParent());
-			mutASSERT(oldbox);
-			reconnect(route,oldbox,box);
-			BoxData::CloseBox(oldbox->GetBoxId());
-			
-		}
 
-		int newbox = box->GetBoxId();
+#if 0	
+		mutabor::Box box = panel->GetBox();
+		BoxData * guibox = ToGUIBase(box);
+		mutASSERT(guibox);
+		if (!guibox) {
+			UNREACHABLEC;
+			return;
+		}
+		MutBoxShape * shape = guibox->GetShape(GetGrandParent());       
+		
+		if (!shape) {
+			shape = dynamic_cast<MutBoxShape *> (GetParent());
+			if (!box) UNREACHABLEC;
+		} 
+		// this should be done by reconnect below
+		else if (shape != GetParent()) {
+			MutBoxShape * oldshape = 
+				dynamic_cast<MutBoxShape *>(GetParent());
+			mutASSERT(oldshape);
+			reconnect(this,oldshape,shape);
+		}
+#endif
+
+		Box oldbox = route -> GetBox();
+		Box newbox = panel->GetBox();
 		if (oldbox != newbox) {
-			route -> SetBox(newbox);
+			if (oldbox) {
+				if (newbox)
+					reconnect(route,oldbox,newbox);
+				else 
+					disconnect(route,oldbox);
+			} else {
+				if (newbox) 
+					connect(route,newbox);
+			}
 		}
 	
 		OutputFilterPanel * outputPanel = panel->GetOutput();
@@ -788,7 +773,7 @@ namespace mutaborGUI {
 
 
 
-void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
+	void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
 		if (!rect) {
 			SetIcon(GetMutIcon());
 		}
@@ -797,8 +782,14 @@ void MutBoxChannelShape::Refresh(bool eraseBackground, const wxRect* rect) {
 
 
 	void MutBoxChannelShape::DetachChannel() {
-		if (input) disconnect(this,input);
-		if (output) disconnect(this,output);
+		if (route) 
+			disconnect(route,this);
+	}
+
+	void MutBoxChannelShape::DeleteRoute() {
+		if (route)
+			route->Destroy();
+		route = NULL;
 	}
 }
 

@@ -71,42 +71,29 @@ namespace mutaborGUI {
 //	class MutOutputDeviceShape;
 	class RoutePanel;
 
-	const wxColour & BoxColour(int nr);
-	const wxColour & BoxTextColour(int nr);
-	void initBoxColours();
-
 	class MutBoxShape:public MutBoxIconShape
 	{
-	protected:
-		MutBoxIconShape * m_icon;
-		wxSizer * channels;
-		static wxSizerFlags sizerFlags;
-		int boxId;
-		static int maxBoxId;
-	
 	public:
 		MutBoxShape():MutBoxIconShape(),m_icon(NULL),channels(NULL),
-			      boxId(NoBox) {}
+			      box() {}
 
 #if defined(_MSC_VER)
 #pragma warning(push) // Save warning settings.
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
-		MutBoxShape(wxStaticBox * box, int orient):
-			MutBoxIconShape(),m_icon(NULL),channels(NULL)
-			{
-				STUBC;
-			}
 
-		MutBoxShape(wxWindow * parent,wxWindowID wid, int Id = NoBox):
-			MutBoxIconShape(),m_icon(NULL),channels(NULL)
-			{
-				Create(parent,wid,Id);
-			}
+
+		MutBoxShape(wxWindow * parent,wxWindowID wid, mutabor::Box & b):
+			MutBoxIconShape(),m_icon(NULL),channels(NULL),box(NULL) {
+			Create(parent,wid,b);
+		}
   
 		virtual ~MutBoxShape(); 
-	
-		bool Create(wxWindow * parent,wxWindowID wid, int Id = NoBox);
+
+		bool Create(wxWindow * parent, wxWindowID wid) {
+			return MutBoxIconShape::Create(parent,wid);
+		}
+		bool Create(wxWindow * parent,wxWindowID wid, mutabor::Box & b);
 
 		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
 		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
@@ -150,12 +137,52 @@ namespace mutaborGUI {
 		virtual void InitializeDialog(BoxDlg * dlg) const;
 
 		
-		virtual MutBoxChannelShape * AddChannel(mutabor::Route & route);
+		//		virtual MutBoxChannelShape * AddChannel(mutabor::Route & route);
 		virtual MutBoxChannelShape * AddChannel(RoutePanel * panel);
+
+		/// add a box
+		virtual void Add(mutabor::Box & b) {
+			TRACEC;
+			if (box || !b)
+				UNREACHABLEC;
+			else 
+				SetBox(b, true);
+			TRACEC;
+		};
+
+		/// replace a box
+		virtual bool Replace(mutabor::Box oldbox,
+				     mutabor::Box newbox) {
+			/* we are using no references here, as we might get deleted
+			   otherwise */
+			TRACEC;
+			if (box != oldbox) {
+				UNREACHABLEC;
+				return false;
+			} else 
+				SetBox(newbox);
+			TRACEC;
+			return true;
+		}
+
+		/// remove a box
+		virtual bool Remove(mutabor::Box b) {
+			TRACEC;
+			if (box != b) {
+				UNREACHABLEC;
+				return false;
+			} else {
+				SetBox();
+			}
+			
+			TRACEC;
+			return true;
+		}
+
 
 		virtual MutBoxChannelShape * Add(MutBoxChannelShape * channel);
 		virtual bool Remove(MutBoxChannelShape * shape);
-	
+
 		virtual bool HasChannel(const mutabor::Route & route);
 
 		virtual void AddPossibleOutput(MutOutputDeviceShape * device);
@@ -169,6 +196,7 @@ namespace mutaborGUI {
 		//  override to hide/show the static box as well
 //	virtual void ShowItems (bool show);
 
+#if 0
 		virtual void Add(BoxData * box);
 		virtual bool Remove(BoxData * box);
 		
@@ -181,6 +209,7 @@ namespace mutaborGUI {
 		bool Delete(BoxData * box) {
 			return box->Delete(this);
 		}
+#endif
 
 		virtual void DrawLines(wxDC & dc, 
 				       wxWindow * paintingWindow);
@@ -201,15 +230,26 @@ namespace mutaborGUI {
 					return false;
 			}
 		virtual bool replaceSelfBy (MutBoxShape  * newshape);
-		virtual bool DetachBox ();
+		virtual bool DeleteBox ();
 	
-		virtual bool readDialog (BoxDlg * box);
+		virtual bool readDialog (BoxDlg * boxdlg);
 		virtual bool CanHandleType (int  type) { return true; }
-		int GetBoxId() const { return boxId; }
+		mutabor::Box GetBox() const { return box; }
 
 		wxSizer * GetChannels() const { return channels; }
+
+	protected:
+		MutBoxIconShape * m_icon;
+		wxSizer * channels;
+		mutabor::Box box;
+		static wxSizerFlags sizerFlags;
+	
 	private:
-		void SetBoxId(int Id, bool layout=true);
+		void SetBox() {
+			m_icon->SetLabel(_("No Box / Though mode"));
+			m_icon->SetBackgroundStyle(wxBG_STYLE_SYSTEM);
+		}
+		void SetBox(mutabor::Box & b, bool layout=true);
 		DECLARE_CLASS(MutBoxShape)
 		DECLARE_EVENT_TABLE()
 	};

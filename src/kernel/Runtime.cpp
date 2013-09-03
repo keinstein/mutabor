@@ -18,6 +18,7 @@
 #include "src/kernel/Defs.h"
 
 #include "src/kernel/Global.h"
+#include "src/kernel/Parser.h"
 
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/GrafKern.h"
@@ -34,84 +35,13 @@
 #include "src/kernel/routing/midi/DevMidF.h"
 #include "wx/msgdlg.h"
 
-using namespace mutabor;
-
+#ifdef __cplusplus
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
 
 jmp_buf weiter_gehts_nach_compilerfehler;
-
-char pascal _export Compile(mutaborGUI::CompDlg *compDia, const wxChar *name) {
-	InitCompDia(compDia, name);
-		
-	if (!setjmp(weiter_gehts_nach_compilerfehler)) {
-		loesche_syntax_speicher();
-		init_yylex ();
-
-		mutabor_programm_einlesen ( name );
-
-		calc_declaration_numbers();
-
-		compDia->SetStatus(sd1,sd2,sd3,sd4,sd5,sd6);
-
-		//	 show_line_number(-1);
-
-		compDia->SetButtonText(_("Generating tables"));
-		compDia->Refresh();
-
-		mutabor_tabellen_generator();
-
-
-		compDia->SetButtonText(_("Translation successful"));
-		compDia->SetMessage(_("No error occured."));
-		compDia->Refresh();
-
-		return 1;
-	} else {
-		//show_line_number(-1);
-		compDia->SetButtonText(_("Translation interrupted."));
-
-		compDia->SetMessage(Fmeldung);
-		compDia->Refresh();
-
-		return 0;
-	}
-}
-
-UpdateCallback* updatecallback;
-
-bool pascal _export Activate(bool realtime, UpdateCallback* callback) {
-	CurrentTime.UseRealtime(realtime);
-	mutabor::CurrentTime = 0;
-	GlobalReset();
-	AktionenInit();
-	updatecallback = callback;
-
-
-	// In batch mode Batch Play handles open and close.
-	if (!realtime)
-		return true;
-
-	bool ok = mutabor::OutOpen();
-		
-	if ( ok && !mutabor::InOpen() ) {
-		ok = false;
-		mutabor::OutClose();
-	}
-
-	if ( !ok ) {
-		wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
-		return false;
-	}
-	return true;
-}
-
-void pascal _export Stop() {
-	mutabor::CurrentTime.Stop();
-	mutabor::InClose();
-	mutabor::OutClose();
-
-	GlobalReset();
-}
-
 
 #if 0
 // NoRealTime - Aktionen
@@ -154,7 +84,7 @@ void NRT_Play() {
 //	InDevChanged = 1;
 }
 
-void pascal _export InDeviceAction(int inDevNr, enum MutaborModeType action) {
+void  InDeviceAction(int inDevNr, enum MutaborModeType action) {
 //  return; entkoppeln (zum debuggen)
 
 	if ( !RealTime ) {
@@ -200,36 +130,16 @@ void pascal _export InDeviceAction(int inDevNr, enum MutaborModeType action) {
 	}
 }
 
-bool pascal _export CheckNeedsRealTime() {
+bool  CheckNeedsRealTime() {
 	return NeedsRealTime();
 }
 #endif
 
-void pascal _export Panic() {
-	const InputDeviceList & inlist = InputDeviceClass::GetDeviceList();
-	for (InputDeviceList::const_iterator In = inlist.begin();
-	     In != inlist.end(); In++) 
-		boost::const_pointer_cast<InputDeviceClass> (*In) -> Panic();
-
-	MutResetKeys();
-
-	const OutputDeviceList & list = OutputDeviceClass::GetDeviceList();
-	for (OutputDeviceList::const_iterator Out = list.begin();
-	     Out != list.end(); Out++) 
-		boost::const_pointer_cast<OutputDeviceClass> (*Out) -> Panic();
-
-	if (updatecallback) {
-		for (int i = 0; i<MAX_BOX ; i++) 
-		{
-			updatecallback(i,false);
-		}
-	}
-}
-
 struct keyboard_ereignis *last;
 
+#if 0 
 #warning Use dynamic string management for GetMutTag
-char pascal _export GetMutTag(char &isLogic, 
+char  GetMutTag(char &isLogic, 
 			      char **text, 
 			      char *einsttext, 
 			      char &key, 
@@ -257,7 +167,7 @@ char pascal _export GetMutTag(char &isLogic,
 	return 1;
 }
 
-char pascal _export IsLogicKey(mutabor_box_type * box, char key) {
+char IsLogicKey(mutabor_box_type * box, char key) {
 
 	struct keyboard_ereignis *last = box->first_keyboard;
 
@@ -268,18 +178,21 @@ char pascal _export IsLogicKey(mutabor_box_type * box, char key) {
 		last = last->next;
 	}
 
-	return 2;
+	return 0;
 }
+#endif
 
-bool pascal _export KeyChanged(mutabor_box_type * box) {
+#if 0
+bool KeyChanged(mutabor_box_type * box) {
 	int flag = box->keys_changed;
 	box->keys_changed = 0;
 	return flag;
 }
+#endif
 
 //tone_system last_tonsystem[MAX_BOX]; moved to box
 
-bool pascal _export TSChanged(mutabor_box_type * box) {
+bool  TSChanged(mutabor_box_type * box) {
 	int flag = memcmp(&(box->last_tonesystem),
 			  box->tonesystem,
 			  (2*sizeof(int)) + sizeof(long) +
@@ -290,14 +203,14 @@ bool pascal _export TSChanged(mutabor_box_type * box) {
 }
 
 #if 0
-bool pascal _export InDevicesChanged() {
+bool  InDevicesChanged() {
 //	char flag = InDevChanged;
 	InDevChanged = 0;
 	return flag;
 }
 #endif
 
-void pascal _export GetInDevicesMode(enum MutaborModeType *mode) {
+void  GetInDevicesMode(enum MutaborModeType *mode) {
 	int nr = 0;
 
 	const InputDeviceList & list = 
@@ -307,29 +220,28 @@ void pascal _export GetInDevicesMode(enum MutaborModeType *mode) {
 		mode[nr] = (*In)->GetMode();
 }
 
-struct instrument * lauf_instrument;
 
-char pascal _export GetChannels(char start, int &base, int &from, int &to, int &thru) {
+char  GetChannels(mutabor_box_type * box, char start, int &base, int &from, int &to, int &thru) {
 	if ( start )
-		lauf_instrument = list_of_config_instrumente;
-	else if ( lauf_instrument )
-		lauf_instrument = lauf_instrument -> next;
+		box->file->lauf_instrument = box->file->list_of_config_instrumente;
+	else if ( box->file->lauf_instrument )
+		box->file->lauf_instrument = box->file->lauf_instrument -> next;
 
-	if ( !lauf_instrument ) return 0;
+	if ( !box->file->lauf_instrument ) return 0;
 
-	base = lauf_instrument -> midi_in;
+	base = box->file->lauf_instrument -> midi_in;
 
-	from = lauf_instrument -> midi_von;
+	from = box->file->lauf_instrument -> midi_von;
 
-	to 	 = lauf_instrument -> midi_bis;
+	to 	 = box->file->lauf_instrument -> midi_bis;
 
-	thru = lauf_instrument -> midi_umleit;
+	thru = box->file->lauf_instrument -> midi_umleit;
 
 	return 1;
 }
 
-void pascal _export SetChannels(int base, int from, int to, int thru) {
-	get_instrument_dekl (base, from, to, thru, &list_of_config_instrumente);
+void  SetChannels(mutabor_box_type * box, int base, int from, int to, int thru) {
+	get_instrument_dekl (box, base, from, to, thru, &box->file->list_of_config_instrumente);
 }
 
 
@@ -395,7 +307,7 @@ OutputDevice *GetOut(int nr) {
 */
 
 // Timerdaten
-void pascal _export GetTimerData(UINT &min, UINT &max) {
+void  GetTimerData(UINT &min, UINT &max) {
 #if !defined(WX) || defined(__WXMSW__)
 	TIMECAPS TimeCaps;
 	timeGetDevCaps(&TimeCaps, sizeof(TIMECAPS));
@@ -405,7 +317,11 @@ void pascal _export GetTimerData(UINT &min, UINT &max) {
 	//TODO
 #endif
 }
-
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
 
 
 /* \} */

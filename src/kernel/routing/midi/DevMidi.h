@@ -62,7 +62,8 @@ namespace mutabor {
 
 	class MidiPortOutputProvider {
 	public:
-		MidiPortOutputProvider():port(NULL) {}
+		MidiPortOutputProvider(Device * p):port(NULL),
+						   device(p) {}
 		~MidiPortOutputProvider() {
 			if (port && port != NULL) {
 				Close();
@@ -74,15 +75,17 @@ namespace mutabor {
 			try {
 				port = new RtMidiOut(RtMidi::UNSPECIFIED, PACKAGE_STRING);
 			} catch (RtError &error) {
-				LAUFZEIT_ERROR0(_("Can not open ouput Midi devices due to memory allocation  problems."));
+				device->runtime_error(false,
+						      _("Can not open ouput Midi devices due to memory allocation  problems."));
 				return false;
 			}
 			
 			try {
 				port->openPort(id,(const char *)name.ToUTF8());
 			} catch (RtError &error) {
-				LAUFZEIT_ERROR2(_("Can not open output Midi device no. %d (%s)"), 
-						id, (name.c_str()));
+				device->runtime_error(false,
+						      _("Can not open output Midi device no. %d (%s)"), 
+						      id, (const mutChar *)(name.c_str()));
 				return false;
 			}
 
@@ -247,6 +250,7 @@ namespace mutabor {
 
 	protected:
 		RtMidiOut * port;
+		mutabor::Device * device;
 	};
 
 	class OutputMidiPort : public CommonMidiOutput<MidiPortOutputProvider, OutputDeviceClass>

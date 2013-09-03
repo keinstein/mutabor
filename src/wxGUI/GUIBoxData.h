@@ -42,8 +42,8 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
-#include "src/kernel/box.h"
-#include "src/kernel/Execute.h"
+#include "src/kernel/treestorage.h"
+#include "src/kernel/routing/Box.h"
 #include "src/wxGUI/Routing/RouteLists.h"
 
 
@@ -59,9 +59,8 @@
 namespace mutaborGUI {
 	class MutChild;
 	class MutLogicWnd;
-	extern size_t curBox;
 
-	class BoxData {
+	class BoxData: public mutabor::BoxClass {
 	protected:
 		struct WinAttr {
 			WinAttr():
@@ -91,61 +90,21 @@ namespace mutaborGUI {
 			NoSuchBoxException(int i):invalid_argument("No such box."),boxnumber(i) {}
 		};
 
-		BoxData();
-
-		int GetId() {
-			if (box) return box->id;
-			if (this == &NewBoxData) 
-				return NewBox;
-			if (this == &GmnBoxData)
-				return GmnBox;
-			return NoBox;
-		}
-
 		void reset();
 
-		MutBoxShape * GetBoxShape(wxWindow * parent);
+		const MutBoxShape * GetShape(wxWindow * parent) const;
+		MutBoxShape * GetShape(wxWindow * parent);
 
-		void KeyboardAnalyse(int taste, char isLogic) {
-			if (!box) return;
-			::KeyboardAnalyse(box,taste,isLogic);
+
+		virtual void set_routefile_id(int id);
+
+		const wxColour & GetBackgroundColour() const {
+			return background_colour;
 		}
 
-		/// Sets the name of the currently active logic
-		/** \param s wxString name of the logic
-		*/
-		void SetLogic(const wxString & s) { current_logic = s; }
-		/// Returns the name of the currently active logic
-		/** \return wxString name of the logic
-		 */
-		wxString GetLogic() const { return current_logic; }
-		
-		/// Sets the name of the currently active tone system
-		/** \param s wxString name of the tone system
-		*/
-		void SetTonesystem(const wxString & s) { current_tonesystem = s; }
-		/// Returns the name of the currently active tone system
-		/** \return wxString name of the tone system
-		 */
-		wxString GetTonesystem() const { return current_tonesystem; }
-
-		/// Sets the key of the currently active tone system
-		/** \param nr int number of the key
-		*/
-		void SetKeyTonesystem(int nr) { current_key_tonesystem = nr; }
-		/// Returns the key of the currently active tone system
-		/** \return int number of the key
-		 */
-		int GetKeyTonesystem() const { return current_key_tonesystem; }
-
-		/// Sets the key of the currently active logic
-		/** \param nr int number of the key
-		*/
-		void SetKeyLogic(int nr) { current_key_logic = nr; }
-		/// Returns the key of the currently active tone system
-		/** \return int key of the tone system
-		 */
-		int GetKeyLogic() const { return current_key_logic; }
+		const wxColour & GetTextColour() const {
+			return text_colour;
+		}
 
 		bool WantKeyWindow() const { 
 			return winattr.want_key_window; 
@@ -213,43 +172,21 @@ namespace mutaborGUI {
 			return winattr.logic_window; 
 		}
 
-		const MutBoxShapeList & GetBoxShapes() const {
+		const MutBoxShapeList & GetShapes() const {
 			return shapes;
 		}
 
 		void Add(MutBoxShape * shape);
 		bool Remove(MutBoxShape * shape);
-		
+
+#if 0		
 		void Attatch(MutBoxShape * shape);
 		bool Detatch(MutBoxShape * shape);
 		bool Delete(MutBoxShape * shape);
+#endif
 		
-		static BoxData & GetBox(int nr) 
-		{ 
-			if (nr < Box0) {
-				switch(nr) {
-				case NewBox: 
-					return NewBoxData;
-					break;
-				case NoBox:
-					return NoBoxData;
-					break;
-				case GmnBox:
-					return GmnBoxData;
-					break;
-				case Box0:
-				default:
-					UNREACHABLECT(BoxData);
-					throw NoSuchBoxException(nr);
-				}
-			}
-			if (nr >= 0 && (size_t)nr >= vector.size()) {
-				UNREACHABLECT(BoxData);
-				throw NoSuchBoxException(nr);
-			}
-			return vector[nr]; 
-		}
 
+#if 0
 		static void InitializeBoxes(size_t count = MAX_BOX) {
 			vector.resize(count);
 			for (size_t i = 0 ; i < vector.size() ; i++) {
@@ -257,6 +194,7 @@ namespace mutaborGUI {
 				mut_box[i].userdata = &(vector[i]);
 			}
 		}
+#endif
 
 
 		/// Check whether a closed route means closing a box
@@ -280,39 +218,127 @@ namespace mutaborGUI {
 		/// Reopen all wanted windows associated to the box boxid
 		static void ReOpenBox(int old_boxid, int new_boxid);
 
-		bool Save(wxConfigBase * config);
-		bool Load(wxConfigBase * config);
+		void Save(mutabor::tree_storage & config);
+		void Load(mutabor::tree_storage &  config);
 
+#if 0
 		static bool SaveAll(wxConfigBase * config);
 		static bool LoadAll(wxConfigBase * config);
+#endif
 
 
-		mutabor_box_type * GetNonGUIBox() { return box; }
+		static mutabor::Box GetCurrentBox() {
+			return curBox;
+		}
+		static void SetCurrentBox(mutabor::Box b) {
+			curBox = b;
+		}
+
+		/// Process an error message (doing the real work)
+		virtual void runtime_error(bool iswarning, const char * message);
+
+
+//		mutabor_box_type * GetNonGUIBox() { return box; }
 	protected: 
 		/** \todo curent_logic and current_tonesystem are set
 		 *  but unused as well as current_key_tonesystem and 
 		 *  current_key_logic
 		 */
-		mutabor_box_type * box;
 		MutBoxShapeList shapes;
-		wxString current_logic;
-		wxString current_tonesystem;
-		int current_key_tonesystem; // 0
-		int current_key_logic; // 1
+		wxColour text_colour;
+		wxColour background_colour;
 
+		friend class GUIBoxFactory;
+
+		static mutabor::Box curBox;
+
+		BoxData(int id);
+
+
+
+/*
+		mutabor_box_type * box;
 		typedef std::vector<BoxData> BoxVector;
 		static BoxVector vector;
 		static BoxData GmnBoxData;
 		static BoxData NoBoxData;
 		static BoxData NewBoxData;
+*/
 
 		WinAttr winattr;
 
 	};
 
-	inline BoxData & GetCurrentBox() {
-		return BoxData::GetBox(curBox);
+	inline BoxData * ToGUIBase(mutabor::BoxClass * b) {
+		mutASSERT(dynamic_cast<BoxData *>(b));
+		return static_cast<BoxData *>(b);
 	}
+	inline BoxData * ToGUIBase(mutabor::Box & b) {
+		return ToGUIBase(b.get());
+	}
+	inline const BoxData * ToGUIBase(const mutabor::BoxClass * b) {
+		mutASSERT(dynamic_cast<const BoxData *>(b));
+		return static_cast<const BoxData *>(b);
+	}
+	inline const BoxData * ToGUIBase(const mutabor::Box & b) {
+		return ToGUIBase(b.get());
+	}
+
+	class GUIBoxFactory:public mutabor::BoxFactory {
+	public:
+		GUIBoxFactory(size_t id = 0) : BoxFactory(id) {}
+		virtual ~GUIBoxFactory() {}
+
+		static MutBoxShape * CreateBoxShape(mutabor::Box box,
+						    wxWindow * parent) {
+			int type = box->GetType();
+			if (type < 0) type = 0;
+			mutASSERT(type >= 0);
+			if (factories.size() <=(size_t) type) {
+				throw FactoryNotFound(type);
+				UNREACHABLECT(BoxFactory);
+				return NULL;
+			}
+			if (!factories[type]) 
+				throw FactoryNotFound(type);
+			BoxFactory * factory = factories[type];
+			mutASSERT(dynamic_cast<GUIBoxFactory *> (factory));
+			return ((GUIBoxFactory *)factory)->
+				DoCreateBoxShape(box,parent);
+		}
+	protected:
+		virtual size_t GetType() const { return 0; }
+
+		virtual mutabor::BoxClass * DoCreateBox (int id = -1) const {
+			return new BoxData(id);
+		}
+			
+		virtual MutBoxShape * DoCreateBoxShape(mutabor::Box & box,
+						       wxWindow * parent) const;
+
+		
+		/// load the routes from a tree based configuration
+		/** \param config conifiguration to be read from
+		 */
+		virtual void DoLoadBoxes(mutabor::tree_storage & config) const {
+		}
+
+		/// write the routes to the configuration
+		/** \param config configuration to be written to
+		 */ 
+		virtual void DoSaveBoxes(mutabor::tree_storage & config) const {
+		}
+	};
+
+	//	void InitGUIBoxFactories();
+
+	inline mutabor::Box GetCurrentBox() {
+		return BoxData::GetCurrentBox();
+	}
+	inline void SetCurrentBox(mutabor::Box b) {
+		BoxData::SetCurrentBox(b);
+	}
+
 }
  
 #endif

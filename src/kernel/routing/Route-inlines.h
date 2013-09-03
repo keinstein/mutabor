@@ -51,7 +51,8 @@
 #define MU32_ROUTING_ROUTE_INLINES_H_PRECOMPILED
 
 // system headers which do seldom change
-#include "Device.h"
+#include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/Box.h"
 
 
 namespace mutabor {
@@ -69,13 +70,13 @@ namespace mutabor {
 		in->Add(r);
 	}
 
-	inline void connect(Route r, int boxid) {
-		r->Add(boxid);
+	inline void connect(Route r, Box box) {
+		r->Add(box);
+		box->Add(r);
 	}
 
 	inline void connect(OutputDevice & out, Route & r) { connect(r,out); }
 	inline void connect(InputDevice & in, Route & r) { connect(r,in); }
-	inline void connect(int boxid, Route & r) { connect(boxid,r); }
 
 	inline bool disconnect(Route r, OutputDevice out) {
 		bool retval = out->Remove(r);
@@ -96,13 +97,19 @@ namespace mutabor {
 		return retval;
 	}
 
-	inline bool disconnect(Route r, int boxid) {
-		return r->Remove(boxid);
+	inline bool disconnect(Route r, Box box) {
+		bool retval = box->Remove(r);
+		if (retval) {
+			if (!(retval = r->Remove(box))) {
+				box -> Add(r);
+			}
+		}
+		return retval;
 	}
 
 	inline bool disconnect(OutputDevice & out, Route & r) { return disconnect(r,out); }
 	inline bool disconnect(InputDevice & in, Route & r) { return disconnect(r,in); }
-	inline bool disconnect(int & boxid, Route & r) { return disconnect(boxid,r); }
+	inline bool disconnect(Box & box, Route & r) { return disconnect(box,r); }
 
 	inline bool reconnect(Route r, OutputDevice oldout, OutputDevice newout) {
 		bool retval = oldout->Remove(r);
@@ -135,9 +142,20 @@ namespace mutabor {
 		}
 		return retval;
 	}
-	
-	inline bool reconnect(Route r, int oldboxid, int newboxid) {
-			return r->Replace(oldboxid,newboxid);
+
+	inline bool reconnect(Route r, Box oldbox, Box newbox) {
+		bool retval = r->Replace(oldbox,newbox);
+		if (retval) {
+			retval = oldbox->Remove(r);
+		}
+		if (retval) {
+			newbox->Add(r);
+		} else {
+			mutASSERT(false);
+			// Check that oldbox is correcty disconnected
+			r->Remove(newbox);
+		}
+		return retval;
 	}
 
 	inline bool reconnect(OutputDevice out, Route oldroute, Route newroute) {
@@ -170,13 +188,13 @@ namespace mutabor {
 		return ok;
 	}
 
-	template <class I, class O>
-	inline void TRouteClass<I,O>::Create(InputDevice & in,
+	template <class I, class O, class B>
+	inline void TRouteClass<I,O,B>::Create(InputDevice & in,
 					OutputDevice & out,
 					RouteType type,
 					int iFrom,
 					int iTo,
-					int box,
+					Box box,
 					bool active,
 					int oFrom,
 					int oTo,
@@ -203,21 +221,22 @@ namespace mutabor {
 		Type = type;
 		IFrom = iFrom;
 		ITo = iTo;
-		Box = box;
+		this->box = box;
 		Active = active;
 		OFrom = oFrom;
 		OTo = oTo;
 		ONoDrum = oNoDrum;
 	}
 
-	template <class I, class O>
-	inline void TRouteClass<I,O>::Destroy() 
+	template <class I, class O, class B>
+	inline void TRouteClass<I,O,B>::Destroy() 
 	{
 		Route self(this);
 		debug_destroy_class(this);
 		RemoveFromRouteList(this);
 		if (In) disconnect(self,In);
 		if (Out) disconnect(self,Out);
+		if (box) disconnect(self,box);
 	}
 
 
@@ -226,7 +245,7 @@ namespace mutabor {
 					  RouteType type,
 					  int iFrom,
 					  int iTo,
-					  int box,
+					  Box box,
 					  bool active,
 					  int oFrom,
 					  int oTo,

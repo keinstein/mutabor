@@ -56,15 +56,30 @@
 #ifndef MU32_INTERVAL_H_PRECOMPILED
 #define MU32_INTERVAL_H_PRECOMPILED
 
+#ifdef __cplusplus
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
+
 // system headers which do seldom change
 
 int intervall_list_laenge (struct intervall *list);
 
-void berechne_intervalle_absolut (struct intervall * list_of_intervalle);
+void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * list_of_intervalle);
 
-void check_komplex_intervall (struct komplex_intervall * liste,
-
+void check_komplex_intervall (mutabor_box_type * box, 
+			      struct komplex_intervall * liste,
                               const char * konstrukt_name);
+
+double get_wert_komplex_intervall (mutabor_box_type * box, 
+				   struct komplex_intervall * intervall);
+
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
 
 #endif /* precompiled */
 #endif

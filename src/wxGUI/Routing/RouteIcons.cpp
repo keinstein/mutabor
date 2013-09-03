@@ -93,7 +93,6 @@ namespace mutaborGUI {
 		initMutIcon(NewBoxBitmap,
 			    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
 			    wxBITMAP_TYPE_PNG);
-		initBoxColours();	
 		return true;
 	}
 }

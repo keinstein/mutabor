@@ -43,11 +43,10 @@
 // #################################################################
 // provides read header for GIS (GMN Intern Structur)
 // ##################################################################
-
 #include "GIS_Head.h"
 #include <stdlib.h>
 
-#if defined(WX)
+#ifdef WX
 #include "wx/string.h"
 #else
 #include <string.h>
@@ -74,7 +73,7 @@ char GetMidiInstrument(GisToken *token)
 {
 	if ( token && GetGisType(token) == GTParaStr ) {
 		mutString t;
-#if defined(WX)
+#ifdef WX
 		mutString v;
 		long value;
 		t=(((GisParaStr*)token)->s).Upper();
@@ -645,11 +644,11 @@ wxString GisReadArtHead::ToString()
 	ret += GisReadHead::ToString();
 	ret += _T("Time2: ") + (TowxString(Time2));
 	ret +=
-	        wxString::Format(_T("; Delta: %ld; Box: %d\n"
+	        wxString::Format(_T("; Delta: %ld; Box: %d (%p)\n"
 	                            "Intensity: %p; Articulation: %p; Octave: %p\n"
 	                            "Alter: %p; Instr: %p; Tempo: %p\n"
 	                            "}\n"),
-	                         Delta,Box,
+	                         Delta,Box->get_routefile_id(),Box.get(),
 				 (void*)Intensity, (void*)Articulation, (void*)Octave, 
 				 (void*)Alter, (void*)Instr, (void*)Tempo);
 	return ret;
@@ -834,9 +833,9 @@ ChordNote::ChordNote(ChordNote *first) // not the first ChordNote
 
 	InstrId = -1;
 
-	Taste = NO_KEY;
+	Taste = GMN_NO_KEY;
 
-	Key = NO_KEY;
+	Key = GMN_NO_KEY;
 
 	Pitch = 0;
 }
@@ -952,7 +951,7 @@ int ChordNote::MutNoteOn(int key, double pitch, int instrId, int taste, mutStrin
 	if ( Status & CNNoteOn )
 		return 1;
 
-	if ( pitch != Pitch && key != NO_KEY ) {
+	if ( pitch != Pitch && key != GMN_NO_KEY ) {
 		CheckCloseAlter();
 		AlterBegin = Cursor;
 		AddGis(new GisTagBegin(TTalter, 0, new GisParaReal(pitch, mutT(">(")), mutT("<"), 0));

@@ -82,14 +82,29 @@
 extern wxHtmlHelpController * HelpController;
 
 #ifdef WX
+
+inline wxString muT(const char * x) {
+	if (!x || !(*x)) return wxEmptyString;
+	wxString retval = wxString::FromUTF8(x);
+	if (retval.IsEmpty()) {
+		retval = wxString(x, wxConvISO8859_1);
+	}
+	return retval;
+}
+inline wxString muT(const wxChar * x) {
+	if (!x || !(*x)) return wxEmptyString;
+	return wxString(x);
+}
+inline wxString muT(const std::string & s) {
+	return muT(s.c_str());
+}
+
 #if defined(WX) && (defined(UNICODE) || wxUSE_WCHAR_T)
 #include "wx/strconv.h"
 extern wxCSConv muCSConv;
 
-#define muT(x)  (wxString(x, wxConvISO8859_1))
 #define mumT(x) _T(x)
 #else
-#define muT(x) wxString(x)
 #define mumT(x) _T(x)
 #endif
 #else
@@ -132,6 +147,21 @@ do { \
 #define ABSTRACT_FUNCTIONC ABSTRACT_FUNCTIONCT(*this)
 
 
+/** 
+ * Call update on a Window hierarchy recursively.
+ * \note this function is very expensive. It should be called very rarly (as well as Update().
+ * 
+ * \param win Parent window that shall be updated.
+ */
+inline void UpdateRecursive (wxWindow * win) {
+	if (!win) return;
+	wxWindowList & list = win->GetChildren();
+	for (wxWindowList::iterator i = list.begin();
+	     i != list.end();
+	     i++)
+		UpdateRecursive(*i);
+	win->Update();
+}
 
 #ifdef DEBUG
 void PRINTSIZER (wxSizer * sizer, const wxString & offset = _T (""));

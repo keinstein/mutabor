@@ -48,50 +48,38 @@
 #ifndef UINT
 #define UINT unsigned int
 #endif
-#define pascal
 #endif
 #include <setjmp.h>
 
 
-typedef void UpdateCallback(int Box, bool Logic);
-
 extern jmp_buf weiter_gehts_nach_compilerfehler;
-extern UpdateCallback* updatecallback;
 
-#ifndef WX
-char pascal Compile( TDialog *compWin, const char *name );
 
-#else
-char pascal Compile(mutaborGUI::CompDlg *compDia, const wxChar *name );
+//  void  InDeviceActionAll(char action);
+//void  InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
 
-#endif
-bool pascal Activate(bool realTime, UpdateCallback* callback);
-void pascal Stop();
-void pascal Panic();
-
-//  void pascal InDeviceActionAll(char action);
-//void pascal InDeviceAction(int inDevNr, enum mutabor::MutaborModeType action);
-
+#if 0
+char  IsLogicKey(mutabor_box_type * box, char key);
 // box = -1 ... weiterlesen in angefangener Liste
-char pascal GetMutTag(char &isLogic, char **text, char *einsttext, char &key, mutabor_box_type * box);
-char pascal IsLogicKey(mutabor_box_type * box, char key);
-bool pascal KeyChanged(int box);
-bool pascal TSChanged(int box);
-bool pascal InDevicesChanged();
-void pascal GetInDevicesMode(enum mutabor::MutaborModeType *mode);
-void pascal GetDrivers(int *driver);
-void pascal SetDrivers(int *driver);
-char pascal GetChannels(char start, int &base, int &from, int &to, int &thru);
-void pascal SetChannels(int base, int from, int to, int thru);
-void pascal SetAktuellesKeyboardInstrument(int instr);
-mutabor_box_type * pascal GetAktuellesKeyboardInstrument();
+char  GetMutTag(char &isLogic, char **text, char *einsttext, char &key, mutabor_box_type * box);
+bool  KeyChanged(int box);
+bool  TSChanged(int box);
+bool  InDevicesChanged();
+void  GetInDevicesMode(enum mutabor::MutaborModeType *mode);
+void  GetDrivers(int *driver);
+void  SetDrivers(int *driver);
+char  GetChannels(char start, int &base, int &from, int &to, int &thru);
+void  SetChannels(int base, int from, int to, int thru);
+void  SetAktuellesKeyboardInstrument(int instr);
+mutabor_box_type *  GetAktuellesKeyboardInstrument();
 
 #ifndef WX
-void pascal ScanDevices(char *config);
+void  ScanDevices(char *config);
 #endif
 
 mutabor::OutputDevice GetOut(int nr);
-void pascal GetTimerData(UINT &min, UINT &max);
+void  GetTimerData(UINT &min, UINT &max);
+#endif 
 
 #endif /* precompiled */
 #endif

@@ -36,57 +36,69 @@
 #ifndef MU32_BOX_H_PRECOMPILED
 #define MU32_BOX_H_PRECOMPILED
 
+#ifdef __cplusplus
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
+
 // system headers which do seldom change
 
 
-enum BoxType
-{
-	NewBox = -3,
-	NoBox,
-	GmnBox,
-	Box0 = 0
-};
-	
 
-#define MIN_BOX NewBox
-
-/** linked list containing key information. First is always 0 last has next == 0. */
+/** linked list containing key information for incoming keys or notes. First is always 0 last has next == 0. */
 typedef struct {
 	int number;
 	size_t channel;
 	size_t id; /**< unique Id if the input device suports it */
 	void * userdata;
 	size_t next;
-} mutabor_key_type;
+} mutabor_note_type;
+
+inline int mutabor_get_note_index(int note, tone_system * system) {
+	if (!system) return INT_MIN;
+	int retval = (note - system->anker) % system->breite;
+		return retval < 0 ? retval + system->breite : retval;	
+}
+
+inline int mutabor_get_note_distance(int note, tone_system * system) {
+	if (!system) return INT_MIN;
+	int retval = (int)(note - (system->anker % system->breite)) / system->breite;
+	retval -= ((int)system->anker  / system->breite);
+	return retval;
+}
+
+inline long mutabor_get_note_frequency(int note, tone_system * system) {
+	if (!system) return LONG_MIN;
+	long retval = system->ton[mutabor_get_note_index(note, system)];
+	if (!retval) return 0;
+	return ((long)system->periode) * mutabor_get_note_distance(note,system) + retval;
+}
 
 #define MUT_BOX_MAX_KEY_INDEX_LOG (6)
 #define MUT_BOX_MAX_KEY_INDEX ((1 << MUT_BOX_MAX_KEY_INDEX_LOG) - 1)
 #define MUTABOR_NO_NEXT (~((size_t) 0))
 
 typedef struct mutabor_key_index_type {
-	mutabor_key_type key[1 << MUT_BOX_MAX_KEY_INDEX_LOG];
+	mutabor_note_type key[1 << MUT_BOX_MAX_KEY_INDEX_LOG];
 	struct mutabor_key_index_type * next;
 	
 } mutabor_key_index_type;
 
-/** Cache of constant values.
- *   each value is stored only once (and equal for all boxes) 
- *
- *  As constants are usually parameters in functions that can be
- *  called with arbitrary parameters we use this to avoid the need of
- *  duplicate functions.
- */
-struct cache_konstanten
-{
-	int konstante;
-	struct cache_konstanten * next;
+struct mutabor_scanner_data;
+struct mutabor_logic_parsed;
+struct mini_heap;
+
+struct mutabor_box_flags {
+	char local_harmony_before_global:1;
+	char local_keyboard_before_global:1;
+	char local_midi_before_global:1;
 };
 
-
 /** Mutabor box type. */
-typedef struct {
+struct mutabor_box_type {
         int id;
-	int next_used;
+//	int next_used;
 	void * userdata;
 
 	mutabor_key_index_type current_keys;
@@ -110,10 +122,14 @@ typedef struct {
 	    a copy operation.
 	 */
 	tone_system * tonesystem;
+	tone_system tonesystem_memory[2];
 	tone_system last_tonesystem;
 
+	struct logik * current_logic; /*< currently active logic */
 
-	/* Certain linked lists for events */
+#if 0
+	/* Certain linked lists for events, 
+	 either obsolete or moved to current_logic or file */
 	struct harmonie_ereignis *  first_harmony;
 	struct harmonie_ereignis ** last_global_harmony;
 	struct harmonie_ereignis ** first_local_harmony;
@@ -124,27 +140,42 @@ typedef struct {
 	struct midi_ereignis     ** last_global_midi;
 	struct midi_ereignis     ** first_local_midi;
 
-	/** cache constants see struct cach_konstanten. */
-	struct cache_konstanten * cache_konstanten;
+	/** protocol trace has been moved to the application code*/
+	struct action_protocol * protocol;
+	struct action_protocol ** nextprotocol;
+#endif
+
+	/** cache constants see struct cache_konstanten. */
+	struct mini_heap * runtime_heap;
+	struct mutabor_scanner_data * scanner;
+	struct mutabor_logic_parsed * file;
+
+	struct mutabor_box_flags flags;
+
+#if 0
         // flags
         unsigned int used:1; //< box currently in use or wasting memory
         unsigned int keys_changed:1;
         unsigned int logic_changed:1;
         unsigned int action_changed:1;
-	unsigned int tonesys_changed:1; //< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
-} mutabor_box_type;
+	unsigned int tonesys_changed:1; /*< Has tonesystem changed since last called. (still unsupported) \todo implement tonesys_changed */
+#endif
+};
+typedef struct mutabor_box_type mutabor_box_type;
 
 
-extern tone_system * free_tonesystem;
-extern mutabor_box_type mut_box[MAX_BOX];
+//extern mutabor_box_type mut_box[MAX_BOX];
 extern int laufzeit_meldungen_erlaubt;
 extern int aktuelles_midi_instrument;
 extern size_t minimal_box_used;
 
 extern int keys_changed_sum;
+void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parsed * logic);
+void mutabor_reset_keys(struct mutabor_box_type * box);
+void mutabor_reset_box(struct mutabor_box_type * box);
 
 void mutabor_initialize_box(mutabor_box_type * box, int id);
-void initialize_boxes();
+void mutabor_initialize_boxes();
 void mutabor_initialize_keyplane(mutabor_key_index_type * plane);
 #ifdef DEBUG
 void mutabor_check_key_count(mutabor_box_type * box);
@@ -152,7 +183,7 @@ void mutabor_check_key_count(mutabor_box_type * box);
 inline void mutabor_check_key_count(mutabor_box_type * box) {}
 #endif
 
-inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {
+inline mutabor_note_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t index) {
 	mutabor_key_index_type *plane_ptr;
 	size_t plane;
 	mutabor_check_key_count(box);
@@ -178,7 +209,7 @@ inline mutabor_key_type * mutabor_find_key_in_box(mutabor_box_type * box, size_t
  */
 inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_number, size_t index) {
 	size_t newidx=index;
-	mutabor_key_type * key  = mutabor_find_key_in_box(box,index);
+	mutabor_note_type * key  = mutabor_find_key_in_box(box,index);
 	if (key == NULL ) return MUTABOR_NO_NEXT;
 	while (key != NULL && key->number != key_number) {
 		newidx = key->next;
@@ -195,7 +226,7 @@ inline size_t mutabor_find_key_in_box_by_key(mutabor_box_type * box, int key_num
  * \param index Index of the key in box->current_keys of the key that shall be deleted.
  */
 inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
-	mutabor_key_type *last_key, *current_key, *next_key;
+	mutabor_note_type *last_key, *current_key, *next_key;
 
 	if (!box->key_count) return;
 
@@ -251,8 +282,8 @@ inline void mutabor_delete_key_in_box(mutabor_box_type * box, size_t index) {
 }
 
 
-inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
-	mutabor_key_type * last, *new_key = NULL;
+inline mutabor_note_type * mutabor_create_key_in_box (mutabor_box_type * box) {
+	mutabor_note_type * last, *new_key = NULL;
 	mutabor_key_index_type *plane;
 	mutabor_key_index_type *oldplane;
 	size_t index = 0;
@@ -316,6 +347,11 @@ inline mutabor_key_type * mutabor_create_key_in_box (mutabor_box_type * box) {
 }
 
 
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
 
 #endif
 #endif

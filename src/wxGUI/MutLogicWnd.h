@@ -66,20 +66,22 @@ namespace mutaborGUI {
 		bool Ok;
 		int nTags;
 		wxWindow *ColorBar1, *ColorBar2;
-		int boxnumber;
+		mutabor::Box box;
 
 	public:
 
 		MutLogicWnd(wxWindow *parent, 
-			    int box, 
+			    mutabor::Box b, 
 			    const wxPoint& pos = wxDefaultPosition, 
 			    const wxSize& size = wxDefaultSize);
 
 		~MutLogicWnd()
 		{
-			mutaborGUI::BoxData & boxdata = mutaborGUI::BoxData::GetBox(boxnumber);
-			boxdata.SetLogicWindow(NULL);
-			DEBUGLOG(other, _T("Finished"));
+			BoxData * guibox = ToGUIBase(box);
+			mutASSERT(guibox);
+			if (!guibox)
+				UNREACHABLEC;
+			guibox->SetLogicWindow(NULL);
 		}
 
 		virtual wxString MakeTitle();
@@ -98,7 +100,8 @@ namespace mutaborGUI {
 		}
 
 		void doClose(wxEvent& event);
-		void UpDate(int thekey, bool isLogicKey);
+		void UpDate(int thekey, 
+			    typename mutabor::BoxClass::KeyboardFlags flags);
 //		void CorrectScroller();
 		void CmMutTag(wxCommandEvent& event);
 		void CmBox();

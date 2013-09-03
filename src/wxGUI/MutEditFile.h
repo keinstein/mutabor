@@ -216,7 +216,7 @@ namespace mutaborGUI {
 
 		void CmHelpContext(wxCommandEvent& WXUNUSED(event));
 
-		void GoErrorLine();
+		void GoToErrorLine(int Line);
 
 
 #if 0

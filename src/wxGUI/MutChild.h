@@ -58,7 +58,7 @@ namespace mutaborGUI {
 
 	public:
 		MutChild (WinKind winkind,
-			  int boxId,
+			  mutabor::Box b,
 			  wxWindow * parent= NULL,
 			  wxWindowID id = -1,
 
@@ -151,11 +151,11 @@ namespace mutaborGUI {
 		DECLARE_EVENT_TABLE()
 	};
 
-	bool IsOpen(WinKind kind, int box = 0);
+	bool IsOpen(WinKind kind, mutabor::Box & b);
 
-	bool IsWanted(WinKind kind, int box = 0);
+	bool IsWanted(WinKind kind, mutabor::Box & b);
 
-	void DontWant(WinKind kind, int box = 0);
+	void DontWant(WinKind kind, mutabor::Box & b);
 
 	int NumberOfOpen(WinKind kind);
 }

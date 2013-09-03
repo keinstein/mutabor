@@ -52,7 +52,8 @@
 #endif
 
 //#include "Mutabor.rh"
-#include "src/kernel/GrafKern.h"
+//#include "src/kernel/GrafKern.h"
+#include <boost/exception/diagnostic_information.hpp>
 #include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/MutDocument.h"
@@ -66,7 +67,6 @@
 #include "src/wxGUI/MutDocManager.h"
 #include "src/wxGUI/Routing/GUIRoute.h"
 #include "src/wxGUI/configtree.h"
-#include "src/kernel/box.h"
 #include "src/wxGUI/Routing/DebugRoute.h"
 #include "src/wxGUI/generic/mutDebug.h"
 
@@ -291,7 +291,7 @@ namespace mutaborGUI {
 
 #endif
 		// tell the mutabor kernel that we are using a GUI
-		has_gui = 1;
+		//		has_gui = 1;
 
 
 
@@ -338,10 +338,8 @@ namespace mutaborGUI {
 				  << std::endl;
 
 
-		// initialize Mutabor bevore the doc manager
-		mutabor::initialize_data();
-		BoxData::InitializeBoxes();
-
+		// initialize Mutabor before the doc manager
+		mutabor::initialize_box_data();
 
 		if (!(document_manager=new MutDocManager()))
 			return false;
@@ -379,10 +377,11 @@ namespace mutaborGUI {
 #endif
 
 		// RestoreState needs initialized MIDI
-		initialize_boxes();
+		initialize_box_data();
 		MidiInit();       
 		initMutIconShapes();
 		InitGUIRouteFactories();
+		//		InitGUIBoxFactories();
 
 		RestoreState();
 
@@ -455,31 +454,44 @@ namespace mutaborGUI {
 		try {
 			throw; 
 		} catch (std::exception e) {
-			std::cerr << "Unhandled exception: " << e.what() << std::endl;
-#ifdef DEBUG
-			abort();
-#endif
+			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
+				boost::current_exception_diagnostic_information();
+		} catch(...) {
+			std::cerr << "Unhandled exception!" << std::endl <<
+				boost::current_exception_diagnostic_information();
 		}
+#ifdef DEBUG
+		abort();
+#endif
 	}
 	bool MutApp::OnExceptionInMainLoop() { 
 		try {
 			throw; 
 		} catch (std::exception e) {
-			std::cerr << "Unhandled exception: " << e.what() << std::endl;
-#ifdef DEBUG
-			abort();
-#endif
+			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
+				boost::current_exception_diagnostic_information();
+		} catch(...) {
+			std::cerr << "Unhandled exception!" << std::endl <<
+				boost::current_exception_diagnostic_information();
+			return 1; //or whatever...
 		}
+#ifdef DEBUG
+		abort();
+#endif
 	}
 	void MutApp::OnFatalException() { 
 		try {
 			throw; 
 		} catch (std::exception e) {
-			std::cerr << "Unhandled exception: " << e.what() << std::endl;
-#ifdef DEBUG
-			abort();
-#endif
+			std::cerr << "Unhandled exception: " << e.what() << std::endl <<
+				boost::current_exception_diagnostic_information();
+		} catch(...) {
+			std::cerr << "Unhandled exception!" << std::endl <<
+				boost::current_exception_diagnostic_information();
 		}
+#ifdef DEBUG
+		abort();
+#endif
 	}
 	
 #ifdef DEBUG
@@ -503,7 +515,7 @@ namespace mutaborGUI {
 #ifdef DEBUG
 		if (!retval) {
 			DEBUGLOG(eventqueue,
-				 _T("Undhandled event %p, id=%d, type=%d"),
+				 _T("Unhandled event %p, id=%d, type=%d"),
 				 static_cast<void *>(&event),
 				 (int)(event.GetId()),
 				 (int)(event.GetEventType())
@@ -1313,7 +1325,7 @@ namespace mutaborGUI {
 	{
 		SaveState();
 
-		AktionTraceReset();
+//		AktionTraceReset();
 
 		TRACEC;
 		InputDeviceClass::ClearDeviceList();
@@ -1379,10 +1391,6 @@ namespace mutaborGUI {
 		config->Write(_T("Save editor"), SaveEditor);
 		config->Write(_T("Color bars"), UseColorBars);
 
-		config->SetPath(_T("Box settings"));
-		BoxData::SaveAll(config);
-		config->SetPath(_T(".."));
-
 		config->SetPath(_T("DocManager"));
 		document_manager->FileHistorySave(*config);
 		config->SetPath(_T(".."));
@@ -1417,10 +1425,6 @@ namespace mutaborGUI {
 		config->Read(_T("ToneSystem"), &asTS, true);
 		config->Read(_T("SaveEditor"), &SaveEditor, true);
 		config->Read(_T("ColorBars"), &UseColorBars, true);
-
-		config->SetPath(_T("Box settings"));
-		BoxData::LoadAll(config);
-		config->SetPath(_T(".."));
 
 		config->SetPath(_T("DocManager"));
 		document_manager->FileHistoryLoad(*config);
@@ -1459,7 +1463,7 @@ namespace mutaborGUI {
 			routewnd->InitDevices();
 			routewnd->Layout();
 			routewnd->FitInside();
-//			routewnd->Refresh();
+			routewnd->Refresh();
 //			routewnd->Update();
 
 			DebugCheckRoutes();

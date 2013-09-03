@@ -30,55 +30,82 @@
 // Intervallberechnungen
 // ------------------------------------------------------------------
 
+#include "box.h"
 #include "Global.h"
-#include "GrafKern.h"
+#include "Runtime.h"
+#include "Execute.h"
 #include "Interval.h"
+#include "Parser.h"
 #include "Hilfs.h"
 
-static double get_intervall_wert (const char * name)
+#ifdef _
+#undef _
+#endif
+#define _ _mut
+
+
+#ifdef __cplusplus
+using namespace mutabor;
+using namespace mutabor::hidden;
+extern "C" {
+#endif
+
+static double get_intervall_wert (mutabor_box_type * box,
+				  const char * name)
 {
 
 	struct intervall *lauf;
 
-	for (lauf = list_of_intervalle; lauf; lauf = lauf -> next) {
-		if ( ! strcmp (name, lauf->name)) {
+	for (lauf = box->file->list_of_intervalle; lauf; lauf = lauf -> next) {
+		if ( ! strcasecmp (name, lauf->name)) {
 			switch (lauf -> intervall_typ) {
 
-			default: /* und */
-
 			case intervall_komplex:
-				fatal_error (0, mutC_STR(__FILE__), __LINE__);
-
+				return get_wert_komplex_intervall(box,
+								  lauf->u.intervall_komplex.komplex_liste);
 				break;
 
 			case intervall_absolut:
 				return lauf->u.intervall_absolut.intervall_wert ;
-
-				/* break; */
+				break;
+				
+			default:
+				mutabor_error_message(box,
+						      true,
+						      _("Undefined interval type %d for interval %s."),
+						      lauf->intervall_typ,
+						      (name));
+				
+				return 0.0;
 			}
 		}
 	}
 
-	fatal_error(26,mutC_STR(name)); /* Intrvall n.dekl. */
+	mutabor_error_message(box,
+			      true,
+			      _("Undefined interval: %s"),
+			      (name));
 
 	return 0.0; /* to prevent warnings */
 }
 
 
-double get_wert_komplex_intervall (struct komplex_intervall * intervall)
+double get_wert_komplex_intervall (mutabor_box_type * box, struct komplex_intervall * intervall)
 
 {
 	double ret = 1.0;
 
 	for ( ; intervall ; intervall = intervall -> next )
 	{
-		double help = get_intervall_wert (intervall -> name);
+		double help = get_intervall_wert (box, intervall -> name);
 
 		if (help > 0)
 			ret *= pow (help, intervall -> faktor);
 		else {
-			fatal_error(46, mutC_STR(intervall -> name));
-			/* unzul. Intervallwert */
+			mutabor_error_message(box,
+					      false,
+					      _("Bad interval value in %s"),	    
+					      (intervall -> name));
 		}
 
 	}
@@ -135,38 +162,44 @@ static void belege_intervalle (struct intervall **intervalle, struct intervall *
 	}
 }
 
-static int intervall_nummer (const char *name)
+static int intervall_nummer (mutabor_box_type * box, const char *name)
 {
 	int i;
 
 	for (i=0; i<anzahl_intervalle; i++)
-		if ( ! strcmp (name, intervalle[i]->name)) return i;
+		if ( ! strcasecmp (name, intervalle[i]->name)) return i;
 
-	fatal_error(26,mutC_STR(name)); /* Ton n.dekl. */
+	mutabor_error_message(box,
+			      false,
+			      _("Undefined interval: %s"),
+			      (name)); 
 
 	return 0; /* to prevent warnings */
 }
 
-static void test_zyklen (int startknoten)
+static void test_zyklen (mutabor_box_type * box, int startknoten)
 {
 	int i;
 
 	for (i=0; i<anzahl_intervalle; i++) {
 		if (adjazent (startknoten, i)) {
 			if (visited [i]) {
-				fatal_error(67,mutC_STR(intervalle [startknoten]->name),
-				            intervalle [i]->name);
+				mutabor_error_message(box,
+						      false,
+				              _("Intervals %s and %s depend on each other"),
+					      (intervalle [startknoten]->name),
+					      intervalle [i]->name);
 			}
 
 			visited [i] = 1;
 
-			test_zyklen (i);
+			test_zyklen (box, i);
 			visited [i] = 0;
 		}
 	}
 }
 
-static void berechne_intervall_endgueltig (int k)
+static void berechne_intervall_endgueltig (mutabor_box_type * box, int k)
 {
 	int b;
 	double help;
@@ -183,33 +216,37 @@ static void berechne_intervall_endgueltig (int k)
 		for (lauf = intervalle[k]->u.intervall_komplex.komplex_liste;
 		                lauf;
 		                lauf = lauf -> next) {
-			b = intervall_nummer (lauf -> name);
-			berechne_intervall_endgueltig (b);
+			b = intervall_nummer (box, lauf -> name);
+			berechne_intervall_endgueltig (box, b);
 		}
 
-		help = get_wert_komplex_intervall (intervalle[k]->u.intervall_komplex.komplex_liste);
+		help = get_wert_komplex_intervall (box,
+						   intervalle[k]->u.intervall_komplex.komplex_liste);
 
 		intervalle[k]->intervall_typ = intervall_absolut;
 		intervalle[k]->u.intervall_absolut.intervall_wert = help;
 	}
-
-	break;
-
+		break;
+		
 	default:
-		fatal_error(0,_C_STR(_("loop")));
+		mutabor_error_message(box, 
+				      false,
+				      _("Unknown error in %s , line %d."),	     
+				      _("loop"),
+				      -1);
 	}
 }
 
-void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
+void berechne_intervalle_absolut (mutabor_box_type * box, struct intervall * list_of_intervalle)
 
 {
 	int i,j,k;
 
 	anzahl_intervalle = intervall_list_laenge (list_of_intervalle);
 
-	intervalle = (intervall* *) xalloca (sizeof(struct intervall *) * anzahl_intervalle);
-	visited = (char*) xalloca (sizeof(char) * anzahl_intervalle);
-	matrix = (char*) xalloca (sizeof(char) * anzahl_intervalle * anzahl_intervalle);
+	intervalle = (intervall* *) xalloca (box, sizeof(struct intervall *) * anzahl_intervalle);
+	visited = (char*) xalloca (box, sizeof(char) * anzahl_intervalle);
+	matrix = (char*) xalloca (box, sizeof(char) * anzahl_intervalle * anzahl_intervalle);
 
 
 	/* Feld mit intervallen initialisieren (zum schnelleren Zugriff) */
@@ -237,10 +274,14 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 			for (lauf = intervalle[i]->u.intervall_komplex.komplex_liste;
 			                lauf;
 			                lauf = lauf -> next) {
-				adjazent (i, intervall_nummer (lauf -> name)) = 1;
+				adjazent (i, intervall_nummer (box, lauf -> name)) = 1;
 			}
 		} else {
-			fatal_error(0,_C_STR(_("loop")));
+			mutabor_error_message(box,
+					      false,
+					      _("Undefined interval type %d for interval %s."),
+					      intervalle[i]->intervall_typ,
+					      (intervalle[i]->name));
 		}
 	}
 
@@ -273,14 +314,14 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 	for (k=0; k<anzahl_intervalle; k++)
 	{
 		visited [k] = 1;
-		test_zyklen (k);
+		test_zyklen (box, k);
 		visited [k] = 0;
 	}
 
 	/* Toene endgueltig berechnen */
 
 	for (k=0; k<anzahl_intervalle; k++)
-		berechne_intervall_endgueltig (k);
+		berechne_intervall_endgueltig (box, k);
 
 #ifdef DEBUG_ANZEIGE_3
 	/* Adjazenzmatrix anzeigen */
@@ -311,27 +352,38 @@ void berechne_intervalle_absolut (struct intervall * list_of_intervalle)
 
 /*****************************************/
 
-void check_komplex_intervall (struct komplex_intervall * liste,
-
+void check_komplex_intervall (mutabor_box_type * box, 
+			      struct komplex_intervall * liste,
                               const char * konstrukt_name)
 {
 	for ( ; liste ; liste = liste -> next )
 	{
 
-		struct intervall * help = get_intervall (liste -> name, list_of_intervalle);
+		struct intervall * help = get_intervall (liste -> name, box->file->list_of_intervalle);
 
 		if (help == NULL) {
-			fatal_error (32, mutC_STR(liste -> name), mutC_STR(konstrukt_name));
+			mutabor_error_message(box,
+					      false,
+					      _("Undefined interval: %s (in %s)"),
+					      (liste -> name), 
+					      (konstrukt_name));
 			return;
 		}
 
 		if (help -> intervall_typ != intervall_absolut) {
-			fatal_error (0, _T(__FILE__), __LINE__);
+			mutabor_error_message(box,
+					      false,
+					      _("Undefined interval type %d for interval %s (%s:%d)."),
+					      help->intervall_typ,
+					      _T(__FILE__), 
+					      __LINE__);
 			return;
 		}
 	}
 }
 
 
-
+#ifdef __cplusplus
+}
+#endif
 ///\}

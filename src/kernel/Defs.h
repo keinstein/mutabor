@@ -27,6 +27,7 @@
 //#define MUTMIDI
 #endif
 
+#include <stdarg.h>
 #ifdef WX
 #include "src/wxGUI/generic/mhDefs.h"
 #include "wx/wxchar.h"
@@ -54,7 +55,6 @@
 #endif
 #pragma GCC diagnostic ignored "-Wlong-long"
 #define mutint64 int_fast64_t
-#define _export
 #else // not WX
 #define REUSE(type) type
 #endif
@@ -87,8 +87,22 @@
 #define mutStrEq2(left, right) (left.IsSameAs(right))
 #define mutStrLast(x) ((x).Last())
 #define mutLen(x) ((x).Len())
-#define C_STR(x) ((const wxChar *)(x))
-#define mutC_STR(x) (C_STR(muT(x)))
+#define mutConvertString(x) wxString::FromUTF8(x)
+#define mutConvertCString(x) C_STR(wxString::FromUTF8(x))
+
+#define C_STR(x) ((const mutChar *)(x).c_str())
+#define mutC_STR(x) C_STR(muT(x))
+
+
+inline void mutVPrintf(const wxChar * format,va_list args) {
+	std::cerr << wxString::FormatV(format,args).ToUTF8();
+}
+inline void mutPrintf(const wxChar * format, ...) {
+	va_list args;
+	va_start(args,format);
+	mutVPrintf(format,args);
+}
+
 
 #define mutStrLen wxStrlen
 #define mutStrChr wxStrchr
@@ -209,6 +223,22 @@ inline wxString getContextLocal(const wxString & s)
 	else return ret;
 }
 
+
+namespace mutabor {
+	template<class T>
+		class idtype {
+	public:
+		typedef T referenceing_type;
+	idtype():id(idpool++) {}
+
+		size_t operator ()() const { return id; }
+		operator size_t () const { return id; }
+		operator int () const { return (int) id; }
+	protected:
+		const size_t id;
+		static size_t idpool;
+	};
+}
 
 
 class intrusive_ptr_refcount_type {

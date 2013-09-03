@@ -42,7 +42,13 @@
 // ---------------------------------------------------------------------------
 
 #include "src/kernel/Defs.h"
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
 #include "src/kernel/mut.hh"
+		}
+	}
+}
 
 #ifndef HEADERFILENAME_PRECOMPILED
 #define HEADERFILENAME_PRECOMPILED
@@ -79,7 +85,7 @@ namespace mutabor {
 					  buflen(len),
 					  position(0),
 					  report_parameters(true),
-					  yylval(new YYSTYPE) {}
+					  yylval(new mutabor::hidden::YYSTYPE) {}
 		~mutabor_lexer() { delete yylval; }
 		
 		int yylex();
@@ -95,7 +101,7 @@ namespace mutabor {
 		size_t buflen;
 		size_t position;
 		bool report_parameters;
-		YYSTYPE * yylval;
+		mutabor::hidden::YYSTYPE * yylval;
 	};
 }
 

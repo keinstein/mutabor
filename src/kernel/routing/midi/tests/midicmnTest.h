@@ -55,7 +55,7 @@
 #endif
 
 
-
+#include "src/kernel/treestorage.h"
 #include "src/kernel/routing/midi/midicmn.h"
 
 #include <cppunit/extensions/HelperMacros.h>
@@ -74,10 +74,10 @@ public:
 	mutabor::DebugMidiOutputProvider & getOut() { return Out; }
 
 // fix pure virtual functions:
-	void Save(tree_storage&) {}
-	void Save(tree_storage&, const mutabor::RouteClass*) {}
-	void Load(tree_storage&) {}
-	void Load(tree_storage&, mutabor::RouteClass*) {}
+	void Save(mutabor::tree_storage&) {}
+	void Save(mutabor::tree_storage&, const mutabor::RouteClass*) {}
+	void Load(mutabor::tree_storage&) {}
+	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
 	void AddTime(frac) {}
 	int GetMaxChannel() const { return 15; }
 	int GetMinChannel() const { return 0; }
@@ -126,8 +126,8 @@ public:
 protected:
 	mutabor::OutputDevice guard;
 	midicmnOutputDevice * out;
-	mutabor ::Route  route;
-	mutabor_box_type * box;
+	mutabor::Route  route;
+	mutabor::Box box;
 	mutabor::ChannelData cd;
 };
 
@@ -139,10 +139,10 @@ public:
 	~midicmnInputDevice() {}
 
 // fix pure virtual functions:
-	void Save(tree_storage&) {}
-	void Save(tree_storage&, const mutabor::RouteClass*) {}
-	void Load(tree_storage&) {}
-	void Load(tree_storage&, mutabor::RouteClass*) {}
+	void Save(mutabor::tree_storage&) {}
+	void Save(mutabor::tree_storage&, const mutabor::RouteClass*) {}
+	void Load(mutabor::tree_storage&) {}
+	void Load(mutabor::tree_storage&, mutabor::RouteClass*) {}
 	bool Open () { isOpen = true; return true; }
 	proceed_bool shouldProceed(mutabor::Route R, DWORD midiCode,  int data =0) { return ProceedYes; }
 	proceed_bool shouldProceed(mutabor::Route R, 
@@ -192,8 +192,8 @@ protected:
 	mutabor::OutputDevice outguard;
 	midicmnOutputDevice * out;
 	midicmnInputDevice * in;
-	mutabor ::Route  route;
-	mutabor_box_type * box;
+	mutabor::Route  route;
+	mutabor::Box box;
 	mutabor::ChannelData cd;
 };
 

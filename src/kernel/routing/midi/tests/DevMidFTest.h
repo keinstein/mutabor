@@ -98,6 +98,7 @@ public:
 		CPPUNIT_ASSERT(mutabor::InputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::OutputDeviceClass::GetDeviceList().empty());
 		CPPUNIT_ASSERT(mutabor::RouteClass::GetRouteList().empty());
+		CPPUNIT_ASSERT(mutabor::BoxClass::GetBoxList().empty());
 		mutabor::CurrentTime.UseRealtime(true);
 		in = mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile);
 		CPPUNIT_ASSERT(in);
@@ -220,8 +221,8 @@ public:
 protected:
 	mutabor::OutputDevice guard;
 	mutabor::OutputMidiFile * out;
-	mutabor ::Route  route;
-	mutabor_box_type * box;
+	mutabor::Route  route;
+       	mutabor::Box box;
 	mutabor::ChannelData cd;
 #if __WXMSW__
 	void usleep(int waitTime) {

@@ -33,6 +33,7 @@
  */
 
 #include "src/wxGUI/StatusBar.h"
+#include "src/kernel/routing/Box.h"
 #include "src/kernel/routing/Device.h"
 // system headers which do seldom change
 

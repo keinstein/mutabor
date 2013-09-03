@@ -47,6 +47,7 @@
 // ---------------------------------------------------------------------------
 
 #include "Defs.h"
+#include "box.h"
 
 #ifndef MU32_Hilfs_H_PRECOMPILED
 #define MU32_Hilfs_H_PRECOMPILED
@@ -54,30 +55,40 @@
 // system headers which do seldom change
 #include <stdio.h>
 
+
+#ifdef __cplusplus 
+namespace mutabor {
+	namespace hidden {
+		extern "C" {
+#endif
 #define HEAP_PORTION_SYNTAX   /*65536L*/ 64000
 #define HEAP_PORTION_LAUFZEIT /*65536L*/ 64000
 
-int  intern_fgetc( FILE *stream );
-int  intern_ungetc( int c, FILE *stream );
 
 void xfree (void * pointer);
-void * xmalloc (size_t size);
-void * xrealloc (void * block, size_t newsize);
-void * xcalloc (size_t anzahl, size_t size);
+void * xmalloc (mutabor_box_type * box, size_t size);
+void * xrealloc (mutabor_box_type * box, void * block, size_t newsize);
+void * xcalloc (mutabor_box_type * box, size_t anzahl, size_t size);
 
 void yfree (void * pointer);
-void * ymalloc (size_t size);
-void * yrealloc (void * block, size_t newsize);
-void * ycalloc (size_t anzahl, size_t size);
+void * ymalloc (mutabor_box_type * box, size_t size);
+void * yrealloc (mutabor_box_type * box, void * block, size_t newsize);
+void * ycalloc (mutabor_box_type * box, size_t anzahl, size_t size);
 
-int loesche_syntax_speicher ( void );
-int init_syntax_speicher ( void );
-int init_laufzeit_speicher ( void );
-int loesche_laufzeit_speicher ( void );
-void * xalloca (size_t size);
+int loesche_syntax_speicher (mutabor_box_type * box);
+int init_syntax_speicher (mutabor_box_type * box);
+int init_laufzeit_speicher ( mutabor_box_type * box );
+int loesche_laufzeit_speicher ( mutabor_box_type * box );
+void * xalloca (mutabor_box_type * box, size_t size);
 void xde_alloca (void * pointer);
 
 
+#ifdef __cplusplus
+		}
+	}
+}
+#endif
+			
 #endif /* MU32_HILFS_H_PRECOMPILED */
 
 #endif /* MU32_HILFS_H */

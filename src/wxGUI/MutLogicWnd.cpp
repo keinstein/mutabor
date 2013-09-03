@@ -34,7 +34,7 @@
 #include "src/kernel/Defs.h"
 
 #include "src/kernel/Global.h"
-#include "src/kernel/Runtime.h"
+//#include "src/kernel/Runtime.h"
 #include "src/kernel/MidiKern.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/wxGUI/MutLogicWnd.h"
@@ -268,6 +268,7 @@ namespace mutaborGUI {
 	{
 //		SetFocus();
 		Refresh();
+		Update();
 //		((MutLogicWnd*)GetParent())->CorrectScroller();
 		event.Skip();
 	}
@@ -310,7 +311,7 @@ namespace mutaborGUI {
 	END_EVENT_TABLE()
 
 	MutLogicWnd::MutLogicWnd(wxWindow *parent,
-				 int box,
+				 mutabor::Box b,
 
 				 const wxPoint& pos,
 				 const wxSize& size)
@@ -320,25 +321,31 @@ namespace mutaborGUI {
                 nTags(-1),
                 ColorBar1(NULL),
                 ColorBar2(NULL),
-                boxnumber(box)
+                box(b)
 	{
 
-		DEBUGLOG(other,_T("box %d"), box);
+		DEBUGLOG(other,_T("box %p"), box.get());
 
-		BoxData & boxdata = BoxData::GetBox(box);
-		mutASSERT(!boxdata.GetLogicWindow());
-		boxdata.SetLogicWindow(this);
 
 		SetScrollRate( 10, 10 );
+		
+		BoxData * guibox = ToGUIBase(box);
 //	SetBackgroundColour(*wxWHITE);
-		SetForegroundColour(BoxTextColour(box));
-		SetBackgroundColour(BoxColour(box));
+		SetForegroundColour(guibox->GetTextColour());
+		SetBackgroundColour(guibox->GetBackgroundColour());
 		wxFlexGridSizer * sizer = new wxFlexGridSizer(1,10, 10);
 		if (sizer) {
 			sizer->SetFlexibleDirection(wxVERTICAL);
 			sizer->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_ALL);
 			SetSizer(sizer);
 		}
+
+		BoxData * boxdata = ToGUIBase(box);
+		mutASSERT(boxdata);
+		if (!boxdata) return;
+		mutASSERT(!boxdata->GetLogicWindow());
+		boxdata->SetLogicWindow(this);
+
 		CmBox();
 	}
 
@@ -346,7 +353,7 @@ namespace mutaborGUI {
 	wxString MutLogicWnd::MakeTitle() {
 		return wxString::Format(_("Logic: %s - Box %d"),
 					wxFileNameFromPath(CompiledFile).c_str(),
-					boxnumber);
+					box->get_routefile_id());
 	}
 
 	void MutLogicWnd::OnSize(wxSizeEvent& event)
@@ -369,7 +376,7 @@ namespace mutaborGUI {
 		
 		while ((children_size = sizer->GetMinSize()).x <= size.GetWidth()) {
 			if (columns > clients && 
-			    children_size.x*columns/clients > (size_t) size.GetWidth())
+			    (children_size.x*columns)/clients > (size_t) size.GetWidth())
 				break;
 			sizer->SetCols(++columns);
 		}
@@ -385,20 +392,23 @@ namespace mutaborGUI {
 	{
 		TRACEC;
 		wxWindow * parent = NULL;
-		bool stop;
 		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED, CM_STOP);
 
+#if 0
+		bool stop;
 		if ( (stop = (NumberOfOpen(WK_LOGIC) <= 1) ) ) {
+#endif
 			parent = GetParent();
 
-			while (!(dynamic_cast<MutFrame *>(parent))) {
+			while (parent && !(dynamic_cast<MutFrame *>(parent))) {
 				DEBUGLOG (other, _T("Searching for MutFrame: %p..."),(void*)parent);
 				parent = parent->GetParent();
 			}
 
 			//GetApplication()->GetMainWindow()->PostMessage(WM_COMMAND, CM_STOP);
+#if 0
 		}
-
+#endif
 		//    delete winAttr;
 		event.Skip(false);
 
@@ -406,7 +416,7 @@ namespace mutaborGUI {
 
 		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 
-		if (parent && stop) wxPostEvent(parent,event1);
+		if (parent /* && stop*/) wxPostEvent(parent,event1);
 
 		DEBUGLOGBASE(other,"MutLogicWnd",_T("Destroyed Window"));
 	}
@@ -419,8 +429,7 @@ namespace mutaborGUI {
 		pubTaste = event.GetKeyCode();
 		CmTaste();
 
-		mutaborGUI::curBox = boxnumber;
-		mutASSERT(mut_box[boxnumber].used);
+		SetCurrentBox(box);
 		TRACEC;
 
 		event.Skip();
@@ -460,7 +469,10 @@ namespace mutaborGUI {
 			wxWindow *w = wxWindow::FindFocus();
 
 			if ( w && w->GetId() == CM_MUTTAG )
-				UpDate(((MutTag*)w)->GetKey(), ((MutTag*)w)->GetIsLogic());
+				UpDate(((MutTag*)w)->GetKey(), 
+				       ((MutTag*)w)->GetIsLogic() ? 
+				       mutabor::BoxClass::KeyboardLogic :
+				       mutabor::BoxClass::KeyboardNoLogic);
 		} else {
 			// Buchstabentaste
 			// Umwandeln in Groﬂbuchstaben
@@ -468,12 +480,15 @@ namespace mutaborGUI {
 			if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
 
 			// ermiteln, ob Logik
-			char isLogic = IsLogicKey(&mut_box[boxnumber], (char)key);
+			char isLogic = box->IsLogicKey(key);
 
 			if ( isLogic == 2 ) return;
 
 			// Update aufrufen
-			UpDate(key, isLogic != 0);
+			UpDate(key, 
+			       isLogic != 0 ? 
+			       mutabor::BoxClass::KeyboardLogic :
+			       mutabor::BoxClass::KeyboardNoLogic);
 		}
 	}
 
@@ -553,10 +568,11 @@ namespace mutaborGUI {
 	void MutLogicWnd::CmMutTag(wxCommandEvent& event)
 	{
 		MutTag *Tag = (MutTag*)event.GetEventObject();
-		UpDate(Tag->GetKey(), Tag->GetIsLogic());
+		UpDate(Tag->GetKey(), Tag->GetIsLogic()?
+		       mutabor::BoxClass::KeyboardLogic:
+		       mutabor::BoxClass::KeyboardNoLogic);
 
-		mutaborGUI::curBox = boxnumber;
-		mutASSERT(mut_box[boxnumber].used);
+		SetCurrentBox(box);
 		TRACEC;
 	}
 #if 0
@@ -604,16 +620,21 @@ namespace mutaborGUI {
 #endif
 
 // keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
-	void MutLogicWnd::UpDate(int thekey, bool isLogicKey)
+	void MutLogicWnd::UpDate(int thekey,
+				 mutabor::BoxClass::KeyboardFlags flags)
 	{
-		// Analyse zuerst
-		BoxData & box = BoxData::GetBox(boxnumber);
-		box.KeyboardAnalyse(thekey, isLogicKey);
-		if (isLogicKey) {
-			box.SetKeyTonesystem(0);
-			box.SetKeyLogic(thekey);
-		}
 		wxWindow *ToFocus = NULL;
+
+#warning reimplement this using BoxClass::GetLogics();
+#if 0
+		// Analyse zuerst
+		BoxData * guibox = ToGUIBase(box);
+		mutASSERT(guibox);
+		guibox->KeyboardAnalysis(thekey,flags);
+		if (flags == mutabor::BoxClass::KeyboardLogic) {
+			guibox->SetKeyTonesystem(0);
+			guibox->SetKeyLogic(thekey);
+		}
 		wxSizer * sizer = GetSizer();
 
 		
@@ -630,7 +651,7 @@ namespace mutaborGUI {
 		wxColour background = GetBackgroundColour();
 		wxColour foreground = GetForegroundColour();
 
-		if ( GetMutTag(isLogic, &s, s1, key, box.GetNonGUIBox())) do {
+		if ( guibox->GetMutTag(isLogic, &s, s1, key)) do {
 				nTags++;
 				sText = muT(s);
 				free(s);s = NULL;
@@ -638,20 +659,20 @@ namespace mutaborGUI {
 
 				if ( (isOpen = (key == thekey)) != 0 ) {
 					if ( isLogic ) {
-						box.SetLogic(sText);
+						guibox->SetLogic(sText);
 
 						if ( !sEinst.IsEmpty() )
-							box.SetTonesystem(sEinst);
-						else if ( box.GetTonesystem().empty() )
-							box.SetTonesystem(_("(INITIAL)"));
-						else if ( box.GetTonesystem()[0] != '[' )
-							box.SetTonesystem(
+							guibox->SetTonesystem(sEinst);
+						else if ( guibox->GetTonesystem().empty() )
+							guibox->SetTonesystem(_("(INITIAL)"));
+						else if ( guibox->GetTonesystem()[0] != '[' )
+							guibox->SetTonesystem(
 								_T("[")
-								+ box.GetTonesystem()
+								+ guibox->GetTonesystem()
 								+ _T("]")
 								);
 					} else
-						box.SetTonesystem(sText);
+						guibox->SetTonesystem(sText);
 				}
 
 				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
@@ -662,6 +683,7 @@ namespace mutaborGUI {
 
 				if ( isOpen ) ToFocus = aWin;
 			} while ( GetMutTag(isLogic, &s, s1, key, NULL) );
+#endif
 
 		Layout();
 		FixSizer();
@@ -669,7 +691,7 @@ namespace mutaborGUI {
 #if 0
 		// Color Bars
 		if ( UseColorBars ) {
-			wxColour BarColor = BoxColour(boxnumber);
+			wxColour BarColor = BoxColour(box);
 			ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
 			ColorBar1->SetBackgroundColour(BarColor);
 			ColorBar1->Disable();
@@ -703,15 +725,15 @@ namespace mutaborGUI {
 		GetParent()->GetEventHandler()->ProcessEvent(event1);
 #endif
 
-		BoxData & boxdata = BoxData::GetBox(boxnumber);
-		wxWindow * win = boxdata.GetActionsWindow();
+		BoxData * boxdata = ToGUIBase(box);
+		wxWindow * win = boxdata->GetActionsWindow();
 		if (win) 
 			wxPostEvent(win,event1);
-		win = boxdata.GetTonesystemWindow();
+		win = boxdata->GetTonesystemWindow();
 		if (win) 
 			wxPostEvent(win,event1);
 		/* keys may be retuned, now */
-		win = boxdata.GetKeyWindow();
+		win = boxdata->GetKeyWindow();
 		if (win) 
 			wxPostEvent(win,event1);
 		Ok = true;
@@ -720,27 +742,25 @@ namespace mutaborGUI {
 // Reaktion auf neues aktuelles Instrument
 	void MutLogicWnd::CmBox()
 	{
-		DEBUGLOG (other, _T("%s at box %d"),CompiledFile.c_str(),boxnumber );
+		DEBUGLOG (other, _T("%s at box %p"),CompiledFile.c_str(),box.get() );
 		// Titel setzen
 		GetParent()->SetName(MakeTitle());
 		// Tags updaten
-		UpDate(-1, true);
+		UpDate(-1, mutabor::BoxClass::KeyboardLogic);
 	}
 
 	void MutLogicWnd::OnActivate(wxActivateEvent& event)
 	{
 		if (event.GetActive()) {
-			mutaborGUI::curBox = boxnumber;
+			SetCurrentBox(box);
 			mutUnused(event);
-			mutASSERT(mut_box[boxnumber].used);
 			TRACEC;
 		}
 	}
 
 	void MutLogicWnd::OnGetFocus(wxFocusEvent& event)
 	{
-		mutaborGUI::curBox = boxnumber;
-		mutASSERT(mut_box[boxnumber].used);
+		SetCurrentBox(box);
 		TRACEC;
 		event.Skip();
 	}
