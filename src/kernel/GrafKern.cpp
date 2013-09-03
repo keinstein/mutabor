@@ -13,6 +13,8 @@
  * \addtogroup kernel
  * \{
  ********************************************************************/
+
+#if 0
 // ------------------------------------------------------------------
 // Mutabor 2.win, 1997, R.Krauße
 // Ausgabe-Funktionen
@@ -32,12 +34,19 @@
 #include "src/kernel/Runtime.h"
 #include "src/kernel/routing/Route-inlines.h"
 
+#ifdef _
+#undef _
+#endif
+#define _ _mut
+
+#if 0
 #ifdef MUTWIN
 #ifdef WX
 #include "wx/msgdlg.h"
 wxStaticText* CompDiaLine = NULL;
 #else
 HWND CompDiaLine;
+#endif
 #endif
 #endif
 
@@ -77,17 +86,6 @@ char Fmeldung[255];
 
 #endif
 
-mutabor_midi_callback_type mutabor_midi_callback = NULL;
-
-mutabor_midi_callback_type mutabor_set_midi_callback(mutabor_midi_callback_type callback) {
-	mutabor_midi_callback_type old = mutabor_midi_callback;
-	mutabor_midi_callback = callback;
-	return old;
-}
-mutabor_midi_callback_type mutabor_get_midi_callback() {
-	return mutabor_midi_callback;
-}
-
 
 // Aktionen ---------------------------------------------------------
 
@@ -117,42 +115,22 @@ void AktionenInit()
 
 char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_parameters) {
 #warning "Symbolic parameters are not implemented yet"
-	int size = 2000, length = 0, tmp;
-	char * s = (char*)malloc(size), *tmpstr, *parameters = NULL;
-	s[0] = 0;
-
-	if (!s) {
-		mutabor_out_of_memory(__FILE__,__LINE__,_("Failed to allocate Memory for action."));
-		return NULL;
-	}
-	
-	if (action->name) {
-		if ((tmp = strlen(action->name)) > size) {
-			tmpstr = (char *)realloc(s,tmp*2);
-			if (!tmpstr) {
-				mutabor_out_of_memory(__FILE__,__LINE__,_("Cannot enhance action description."));
-			} else {
-				s = tmpstr;
-				size = tmp*2;
-				s[size-1]=0;
-			}
-		}
-		strncpy(s,action->name,size-length-1);
-		length += tmp;
-	}
+	int tmp;
+	bool hasName = (action->name && action->name[0]);
+	char *tmpstr, *parameters = NULL;
 
 	switch (action->aufruf_typ) {
 	case aufruf_logik:
-		if (!length && action->u.aufruf_logik.einstimmung) {
+		if (action->u.aufruf_logik.einstimmung) {
 			tmp = asprintf(&parameters,"%s%s",
-					      (length?":":""),
-					      mutabor_do_aktion_to_string(action->u.aufruf_logik.einstimmung,
-									  symbolic_parameters));
+				       (hasName?":":""),
+				       mutabor_do_aktion_to_string(action->u.aufruf_logik.einstimmung,
+								   symbolic_parameters));
 			if (tmp < 0) parameters = NULL;
 		}
 		break;
 	case aufruf_tonsystem:
-		/* tone_system has no name :-( 
+		/* tone_system has no name :-(
 		if (action->u.aufruf_tonsystem.tonsystem && !length) {
 			parameters = strdup(action->u.aufruf_tonsystem.tonsystem->name);
 		}
@@ -175,13 +153,13 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 		if (tmp < 0) parameters = NULL;
 		break;
 	case aufruf_umst_wiederholung_rel:
-		tmp = asprintf(&parameters,"(%+f ct)", 
+		tmp = asprintf(&parameters,"(%+f ct)",
 				      ((double)action->u.aufruf_umst_wiederholung_abs.faktor)*100.0/(double)(0x1000000));
 		if (tmp < 0) parameters = NULL;
 		break;
 	case aufruf_umst_taste_rel:
 		if (action->u.aufruf_umst_taste_rel.distance) {
-			tmp = asprintf(&parameters,"(%c%d)", 
+			tmp = asprintf(&parameters,"(%c%d)",
 					      action->u.aufruf_umst_taste_rel.rechenzeichen,
 					      *(action->u.aufruf_umst_taste_rel.distance));
 			if (tmp < 0) parameters = NULL;
@@ -189,20 +167,20 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 		break;
 	case aufruf_umst_breite_rel:
 		if (action->u.aufruf_umst_breite_rel.difference) {
-			tmp = asprintf(&parameters,"(%c%d)", 
+			tmp = asprintf(&parameters,"(%c%d)",
 					      action->u.aufruf_umst_breite_rel.rechenzeichen,
 					      *(action->u.aufruf_umst_breite_rel.difference));
 			if (tmp < 0) parameters = NULL;
 		}
 		break;
-	case aufruf_umst_toene_veraendert: 
-		if (!length) {
-			parameters = strdup("{unimplemented}");
+	case aufruf_umst_toene_veraendert:
+		if (!hasName) {
+			parameters = strdup(_("anonymous pitch change"));
 		}
 		break;
 	case aufruf_umst_umst_bund:
-		if (!length) {
-			parameters = strdup("{unimplemented}");
+		if (!hasName) {
+			parameters = strdup(_("anonymous compound"));
 		}
 		break;
 	case aufruf_umst_umst_case:
@@ -215,11 +193,11 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 	case aufruf_midi_out:
 		if (action->u.aufruf_midi_out.out_liste) {
 			/* todo: work against memory fragmentation */
-			tmp = asprintf(&parameters,"%x", action->u.aufruf_midi_out.out_liste->midi_code);
+			tmp = asprintf(&parameters,"#%x", action->u.aufruf_midi_out.out_liste->midi_code);
 			if (tmp < 0) parameters = NULL;
 			else for (midiliste * i = action->u.aufruf_midi_out.out_liste->next; i ; i=i->next) {
 					tmpstr = parameters;
-					tmp = asprintf(&parameters,"%s %x",tmpstr,i->midi_code);
+					tmp = asprintf(&parameters,"%s,#%x",tmpstr,i->midi_code);
 					if (tmp < 0) {
 						parameters = tmpstr;
 						break;
@@ -235,7 +213,39 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 			free(tmpstr);
 		}
 		break;
+	case aufruf_harmony_analysis:
+		if (!hasName) 
+			parameters = strdup(_("harmony analysis"));
 	}
+	if (!hasName && parameters) {
+#if 0
+		if ((tmp = strlen(action->name)) > size) {
+			tmpstr = (char *)realloc(s,tmp*2);
+			if (!tmpstr) {
+				mutabor_out_of_memory(__FILE__,__LINE__,_("Cannot enhance action description."));
+			} else {
+				s = tmpstr;
+				size = tmp*2;
+				s[size-1]=0;
+			}
+		}
+		strncpy(s,action->name,size-length-1);
+		length += tmp;
+#endif
+
+		retval = parameters;
+	} else if (hasName && parameters) {
+		retval = asprintf("%s %s", 
+				  action->name,
+				  parameters);
+		free(parameters);
+	} else if (hasName) {
+		retval = strdup(action->name);
+	} else {
+		retval = strdup(_("{anonymous action}");
+	}
+
+#if 0
 	if (parameters) {
 		tmp = strlen(parameters);
 		if (length+tmp > size-1) {
@@ -248,6 +258,7 @@ char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_para
 		free(parameters);
 	}
 	return s;
+#endif
 }
 
 
@@ -270,14 +281,14 @@ void AktionenMessage(mutabor_box_type * box, struct do_aktion * aktion)
 		strncpy(&sAktionen[l], name, AKTIONEN_STRLEN-1-l);
 	sAktionen[AKTIONEN_STRLEN-1]=0;
 
-	if (l+l2 > AKTIONEN_STRLEN) 
+	if (l+l2 > AKTIONEN_STRLEN)
 		lAktionen[nAktionen++] = AKTIONEN_STRLEN;
-	else 
+	else
 		lAktionen[nAktionen++] = l+ l2;
 
 }
 
-int pascal _export GetActString(unsigned char **box, int **l, char **s)
+int GetActString(unsigned char **box, int **l, char **s)
 
 {
 	int n = nAktionen;
@@ -290,6 +301,7 @@ int pascal _export GetActString(unsigned char **box, int **l, char **s)
 
 // Compiler-Dialog --------------------------------------------------
 
+#if 0
 #ifdef WX
 void InitCompDia(mutaborGUI::CompDlg *compDia, wxString filename)
 {
@@ -317,7 +329,9 @@ void aktionen_message( char * Meldung )
 }
 
 #endif
+#endif
 
+#if 0
 void calc_declaration_numbers(char withNames)
 {
 #ifdef MUTWIN
@@ -341,7 +355,7 @@ void calc_declaration_numbers(char withNames)
 #else
 
 	if ( withNames) {
-		sprintf(sd1, "  logics: %d\n  tones: %d\n  tunes: %d",
+		sprintf(sd1, "  logics: %d\n  tones: %d\n  tunings: %d",
 		        logik_list_laenge(list_of_logiken),
 		        ton_list_laenge(list_of_toene),
 		        umstimmungs_list_laenge(list_of_umstimmungen));
@@ -362,7 +376,9 @@ void calc_declaration_numbers(char withNames)
 
 #endif
 }
+#endif
 
+#if 0
 void show_line_number( int n )
 
 {
@@ -393,7 +409,9 @@ void show_line_number( int n )
 #endif
 #endif
 }
+#endif
 
+#if 0
 void fatal_error( int nr, ... )
 {
 	va_list arglist;
@@ -448,8 +466,8 @@ void laufzeit_message(const char * Meldung )
 		protokoll_ausgabezeile++;
 	}
 }
-
-#if 0 
+#endif
+#if 0
 /* must be somewhere else */
 void init_laufzeit_protokoll( void )
 
@@ -477,7 +495,7 @@ void laufzeit_protokoll(const char * formatstring , ... )
 #ifdef MUTWIN
 #if 0
 
-char* pascal _export GetTSString(int box, char asTS)
+char* GetTSString(int box, char asTS)
 
 {
 	init_laufzeit_protokoll();
@@ -489,15 +507,16 @@ char* pascal _export GetTSString(int box, char asTS)
 
 	return protokoll_string;
 }
-#endif 
-int pascal _export GetLineNumbers()
+int GetLineNumbers()
 {
 	return protokoll_ausgabezeile;
 }
 
 #endif
+#endif
 
-int pascal _export GetErrorLine()
+#if 0
+int GetErrorLine()
 {
 #if defined(WX)
 	int i = Fmeldung.First(_("line"));
@@ -517,6 +536,7 @@ int pascal _export GetErrorLine()
 
 #endif
 }
+#endif
 
-
+#endif
 ///\}

@@ -60,6 +60,7 @@
  * \{
  ********************************************************************/
 
+#if 0
 /* we guard a little bit complicated to ensure the references are set right
  */
 
@@ -86,11 +87,6 @@
 extern char has_gui;
 
 
-typedef void (* mutabor_midi_callback_type) (mutabor_box_type * box, struct midiliste * outliste);
-extern mutabor_midi_callback_type mutabor_midi_callback;
-
-mutabor_midi_callback_type  mutabor_set_midi_callback(mutabor_midi_callback_type callback);
-mutabor_midi_callback_type  mutabor_get_midi_callback();
 
 void scanner_protokoll(int zeichen);
 void AktionenInit();
@@ -136,11 +132,11 @@ extern int scanner_echo;
 extern "C" {
 	char * mutabor_do_aktion_to_string(struct do_aktion * action, bool symbolic_parameters);
 
-	int pascal GetActString(unsigned char **box, int **l, char **s);
-	char* pascal GetKeyString(int box, char asTS);
-	char* pascal GetTSString(int box, char asTS);
-	int pascal GetLineNumbers();
-	int pascal GetErrorLine();
+	int GetActString(unsigned char **box, int **l, char **s);
+	char* GetKeyString(int box, char asTS);
+	char* GetTSString(int box, char asTS);
+	int GetLineNumbers();
+	int GetErrorLine();
 }
 
 #endif
@@ -167,5 +163,5 @@ extern char Fmeldung[255];
 #endif // precompiled
 #endif
 
-
+#endif
 ///\}
