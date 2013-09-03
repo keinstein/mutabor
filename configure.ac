@@ -415,6 +415,7 @@ AM_CONDITIONAL(COPYDLLS,$copydlls)
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18])
 AM_GNU_GETTEXT_INTL_SUBDIR
+BISON_I18N
 dnl wxMenuItem::GetItemLabel is implemented from 2.8.5
 AM_PATH_WXCONFIG(2.8.5, wxWin=1, wxWin=0, [aui,adv,core,html,xrc,stc,xml],[$wxflags])
 if test "$wxWin" != 1 -a -z "$XCode"; then
@@ -431,9 +432,10 @@ if test "$wxWin" != 1 -a -z "$XCode"; then
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,no)
 else
 	AC_DEFINE(WX,1,[Define to 1 if $PACKAGE should be compiled using wxWidgets.])
-	AC_SUBST(INTLDIR,wxintl)
+	AC_SUBST(WXINTLDIR,src/wxintl)
 	AC_SUBST(USE_INCLUDED_LIBWXINTL,yes)
 	AC_SUBST(BUILD_INCLUDED_LIBWXINTL,yes)
+	AC_SUBST(WXINTLLDADD,[\$\(WXINTLDIR\)/libwxintl.a])
 	AC_SUBST(USE_INCLUDED_LIBINTL,no)
 	AC_SUBST(BUILD_INCLUDED_LIBINTL,no)
 	enable_nls="no"

@@ -64,6 +64,7 @@
 #define BOOL bool
 #define pascal
 #define CALLBACK
+#include "src/wxintl/libintl.h"
 #endif
 #pragma GCC diagnostic ignored "-Wlong-long"
 #define mutint64 int_fast64_t
@@ -150,6 +151,12 @@ inline void mutPrintf(const wxChar * format, ...) {
 #define mutStreamEOF(stream) ((stream).Eof())
 
 #define mutStreamBuffer wxStreamBuffer
+
+
+#define _mut wxwidgets_gettext
+#define _dmut wxwidgets_dgettext
+#define _nmut wxwidgets_ngettext
+#define _dnmut wxwidgets_dngettext
 
 #if wxCHECK_VERSION(2,9,0)
 #define mutTranslationChar char
