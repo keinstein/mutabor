@@ -463,6 +463,7 @@ namespace mutaborGUI {
 
 			case MUTABOR_TOKEN_FORM:
 			case MUTABOR_TOKEN_KEY:
+			case MUTABOR_TOKEN_HARMONY_ANALYSIS:
 				style = RESERVEDWORD;
 				break;
 

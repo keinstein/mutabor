@@ -113,6 +113,7 @@
 %token MUTABOR_TOKEN_MIDI_OUT
 
 /* actions and case values */
+%token MUTABOR_TOKEN_HARMONY_ANALYSIS
 %token MUTABOR_TOKEN_CALLS
 %token MUTABOR_TOKEN_ELSE
 
@@ -627,6 +628,7 @@ aktion :
 		              { init_integersequenz (box);}
 		           integersequenz ')' 
 			   { get_new_aktion_midi_out_element (box); }
+        | MUTABOR_TOKEN_HARMONY_ANALYSIS { get_new_aktion_harmony_analysis(box); }
         ;          
 
 umstimmungs_dekl_umstimmungs_case :
@@ -934,6 +936,7 @@ static struct {
 { "HARMONIE"   , MUTABOR_TOKEN_HARMONY   },
 { "LOGIK"      , MUTABOR_TOKEN_LOGIC      },
 { "FORM"       , MUTABOR_TOKEN_FORM       },
+{ "HARMONIEANALYSE", MUTABOR_TOKEN_HARMONY_ANALYSIS },
 { "MIDIKANAL"  , MUTABOR_TOKEN_MIDICHANNEL },
 { "TASTE"      , MUTABOR_TOKEN_KEY      },
 { "MIDIIN"     , MUTABOR_TOKEN_MIDI_IN    },
@@ -946,6 +949,7 @@ static struct {
 { "TONESYSTEM" , MUTABOR_TOKEN_TONESYSTEM  },
 { "RETUNING"   , MUTABOR_TOKEN_RETUNING },
 { "PATTERN"    , MUTABOR_TOKEN_HARMONY   },
+{ "HARMONY_ANALYSIS", MUTABOR_TOKEN_HARMONY_ANALYSIS },
 { "LOGIC"      , MUTABOR_TOKEN_LOGIC      },
 { "SHIFTED"    , MUTABOR_TOKEN_FORM       },
 { "MIDICHANNEL", MUTABOR_TOKEN_MIDICHANNEL },

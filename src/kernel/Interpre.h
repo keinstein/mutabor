@@ -235,6 +235,10 @@ struct do_aktion
 		struct {
 			struct midiliste * out_liste;
 		} aufruf_midi_out;
+#if 0
+		struct {
+		} aufruf_harmony_analysis;
+#endif 
 	} u;
 	struct do_aktion * next;
 };

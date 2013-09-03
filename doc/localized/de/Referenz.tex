@@ -746,9 +746,18 @@ Klammern stehende Aktions-Liste aus\-füh\-ren. Im Falle der Aktions-Liste
 werden die einzelnen Aktionen der Liste in genau der angegebenen
 Reihenfolge ausgeführt.
 
+In Aktionslisten steht darüber hinaus die Möglichkeit zur Verfügung,
+eine erneute Analyse der Harmonie mit der aktuell gültigen Logik und
+dem aktuell gültigen Tonsystem einzuschieben. Dazu dient das
+Schlüsselwort \emph{HARMONIEANALYSE}\index{HARMONIEANALYSE}. Eine erneute Harmonieanalyse ist nur
+erlaubt, wenn sich seit der letzten Analyse das Tonsystem oder die
+Logik geändert haben. Eine fehlerhafte Logik kann das gesamte Programm
+zum Absturz bringen, wenn dadurch eine Aktion sich immer wieder selbst
+aufruft.
+
 
 \helpsection{MIDI-Ausgaben}{REFERENCE_ACTION_MIDI_OUTUPUT}
-\subsection{action-midi-output}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
+\subsection{MIDI-Ausgaben}\index{MIDI!Ausgabe}\label{sec:midi-ausgaben}
 \index{Aktion!MIDI-Ausgabe}
 
 MIDI-Ausgaben werden mit dem Wort \emph{MIDIOUT}\index{MIDIOUT}

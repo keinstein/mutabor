@@ -410,6 +410,9 @@ namespace mutabor {
 					mutabor_midi_out(box, aktion->u.aufruf_midi_out.out_liste);
 					break;
 
+				case aufruf_harmony_analysis:
+					HarmonyAnalysis(box, &(box->pattern));
+
 				default:
 					mutabor_error_message(box,true,_("Unexpected action type: %d"), aktion->aufruf_typ);
 					UNREACHABLE;

@@ -413,6 +413,18 @@ void get_new_aktion_midi_out_element (mutabor_box_type * box)
 	(* lauf) -> next                  = NULL;
 }
 
+void get_new_aktion_harmony_analysis(mutabor_box_type * box)
+{
+	struct aktions_liste * * lauf;
+	TRACE;
+
+	for (lauf= & box->file->list_of_aktionen; * lauf; lauf= & (*lauf)->next) {}
+
+	(* lauf) = (aktions_liste*) xmalloc (box, (size_t) sizeof (struct aktions_liste));
+	(* lauf) -> aktions_typ           = aktion_harmony_analysis;
+	(* lauf) -> next                  = NULL;
+}
+
 static struct aktions_liste * get_last_aktions_liste (mutabor_box_type * box)
 {
 	TRACE;
@@ -3567,6 +3579,9 @@ static void print_action (struct aktions_liste * action)
 			drucke_argument ( & help -> argument );
 		}
 		break;
+	}
+	case aktion_harmony_analysis: {
+		printf("                Harmony analysis");
 	}
 	default:
 		UNREACHABLE;
