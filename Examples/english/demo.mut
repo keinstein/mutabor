@@ -19,7 +19,7 @@ LOGIC
         Key C -> Schlick
     ]
 
-    ToneNet Key N = C_Major
+    Tonnetz Key N = C_Major
     [
         SHIFTED nThird -> Transpo ( DISTANCE )
    	SHIFTED nMajor -> Transpo ( DISTANCE )
@@ -260,7 +260,7 @@ TONE
     nh   = ng+Third
 
 TONESYSTEM
-    C_dur = 60  [ nc,ndes,nd,nes,ne,nf,nfis,ng,nas,na,nb,nh] Octave
+    C_major = 60  [ nc,ndes,nd,nes,ne,nf,nfis,ng,nas,na,nb,nh] Octave
 
 RETUNING
     Transpo(x) = @+x[]
@@ -295,7 +295,7 @@ TONE
     u20=CC-i20 u21=CC-i21 u22=CC-i22 u23=CC-i23 u24=CC-i24
 
 TONESYSTEM
-    Obertoene = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
+    OverTones = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
                   o8,u10,o9,u9,o10,o11,u8,o12,u7,o13,u6,o14,
                   o15,u5,o16,u4,o17,o18,u3,o19,u2,o20,CC,o21 ] i1
 

@@ -2,8 +2,8 @@
 LOGIK
     Modulation Key M = Init
     [
-      FORM Major -> midiout(#B0, 01,#7f)
-      FORM Minor -> midiout(#B0, 1,#3f)
+      FORM Dur -> midiout(#B0, 01,#7f)
+      FORM Moll -> midiout(#B0, 1,#3f)
       FORM aKey  -> midiout(#B0, 01,#00) 
     ] 
 
@@ -11,22 +11,22 @@ LOGIK
     [
 "      Key L -> Lower"
 
-      Key U -> UpperA
-      MIDIIN(#90, 61) -> UpperG
-      MIDIIN(#90, 63) -> Uppera
+      Key U -> UeberA
+      MIDIIN(#90, 61) -> UeberG
+      MIDIIN(#90, 63) -> Uebera
     ]
 
-RETUNING
+Umstimmung
     Init = [<<12>>]
 
-PATTERN
-    Major = {0, 4, 7}
-    Minor = {0, 3, 7}
+Harmonie
+    Dur = {0, 4, 7}
+    Moll = {0, 3, 7}
     aKey = {0, *1, *2, *3, *4, *5, *6, *7, *8, *9, *10, *11}
 
-" ====================================== Obertöne 
+" ====================================== ObertÃ¶ne 
   Auf den weissen Tasten eine Obertonreihe, auf den schwarzen eine
-  Untertonreihe ; über 3 Oktaven der Klaviatur "
+  Untertonreihe ; Ã¼ber 3 Oktaven der Klaviatur "
 
 INTERVALL
     i1=1:1   i2=2:1   i3=3:1   i4=4:1   i5=5:1   i6=6:1
@@ -57,10 +57,10 @@ TON
     g27=AG+i27 g28=AG+i28 g30=AG+i30
  
 TONSYSTEM
-    UpperG = 60 [ AG,u15,g2,u14,g3,g4,u13,g5,u12,g6,u11,g7,
+    UeberG = 60 [ AG,u15,g2,u14,g3,g4,u13,g5,u12,g6,u11,g7,
                   g8,u10,g9,u9,g10,g11,u8,g12,u7,g13,u6,g14,
                   g15,u5,g16,u4,g17,g18,u3,g19,u2,g20,CC,g21 ] i1 
-   UpperA = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
+   UeberA = 60 [ AA,u15,o2,u14,o3,o4,u13,o5,u12,o6,u11,o7,
                 o8,u10,o9,u9,o10,o11,u8,o12,u7,o13,u6,o14,
                   o15,u5,o16,u4,o17,o18,u3,o19,u2,o20,CC,o21 ] i1
 
