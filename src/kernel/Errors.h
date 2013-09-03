@@ -83,7 +83,7 @@ enum
 };
 
 /*
-const mutChar * Error_text[] =
+const char * Error_text[] =
   {
 
     / * 0 * / N_("Unknown error in %s , line %d !"), / * allgemeinster Fehler * /
@@ -184,7 +184,7 @@ const mutChar * Error_text[] =
 
   };
 
-const mutChar * Warning_text[] =
+const char * Warning_text[] =
   {
     / *  0 * / N_("Undefined compiler warning"),
     N_("MIDI event in logic %s does not start with channel 0 status byte. Value corrected."),

@@ -25,7 +25,7 @@
 
 #if defined(GERMAN) && !defined(WX)
 
-const mutChar * Error_text[] =
+const char * Error_text[] =
         {
 
                 /* 0 */ "Undefinierter Fehler in %s   Zeile %d !", /* allgemeinster Fehler */
@@ -128,7 +128,7 @@ const mutChar * Error_text[] =
 
         };
 
-const mutChar * Warning_text[] =
+const char * Warning_text[] =
         {
                 /*  0 */ "Undefinierte Compilerwarnung",
                 "MIDI-Auslöser in Logik %s beginnt nicht mit Kanal 0-Statusbyte. "
@@ -241,6 +241,7 @@ const mutTranslationChar * Error_text[] =
                 N_("Bad tonesystem declaration. (line %d)"),
                 N_("Bad parameter list in call to %s in line %d"),
                 N_("Bad retuning in line %d"),
+
                 N_("bad pattern decl. at %s"),
                 N_("Bad MIDI list in line %d"),
                 N_("No hex number after # (line %d)"),

@@ -139,7 +139,6 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/Routing/OutputMidiFileDeviceShape.h \
 		src/wxGUI/Routing/RouteIcons.h \
 		src/wxGUI/Routing/RouteLists.h \
-		src/wxGUI/Action.h \
 		src/wxGUI/GUIBoxData.h \
 		src/wxGUI/MutBitmaps.h \
 		src/wxGUI/Mutabor.rh \
@@ -188,7 +187,6 @@ libmutaborgui_a_INDENTS = \
 		src/wxGUI/Routing/OutputMidiDeviceShape.cpp \
 		src/wxGUI/Routing/OutputMidiFileDeviceShape.cpp \
 		src/wxGUI/Routing/RouteIcons.cpp \
-		src/wxGUI/Action.cpp \
 		src/wxGUI/GUIBoxData.cpp \
 		src/wxGUI/MutBitmaps.cpp \
 		src/wxGUI/CompDlg.cpp \
@@ -225,7 +223,8 @@ libmutaborgui_a_SOURCES = $(libmutaborgui_a_INDENTS)
 libmutaborrouting_a_INLINEHEADERS = \
 		src/kernel/routing/CommonFileDevice-inlines.h \
 		src/kernel/routing/Device-inlines.h \
-		src/kernel/routing/Route-inlines.h
+		src/kernel/routing/Route-inlines.h \
+		src/kernel/routing/Box-inlines.h
 
 
 libmutaborrouting_a_INDENTHEADERS = \
@@ -242,8 +241,10 @@ libmutaborrouting_a_INDENTHEADERS = \
 		src/kernel/routing/CommonFileDevice.h \
 		src/kernel/routing/Device.h \
 		src/kernel/routing/Route.h \
+		src/kernel/routing/Box.h \
 		src/kernel/routing/RouteCompat.h \
-		src/kernel/routing/timing.h
+		src/kernel/routing/timing.h \
+		src/kernel/routing/thread.h
 
 libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/gmn/DevGIS.cpp \
@@ -257,6 +258,7 @@ libmutaborrouting_a_INDENTS = \
 		src/kernel/routing/CommonFileDevice.cpp \
 		src/kernel/routing/Device.cpp \
 		src/kernel/routing/Route.cpp \
+		src/kernel/routing/Box.cpp \
 		src/kernel/routing/RouteCompat.cpp \
 		src/kernel/routing/timing.cpp
 
@@ -286,8 +288,10 @@ libmutaborkernel_a_INDENTHEADERS = \
 		src/kernel/Hilfs.h \
 		src/kernel/Interpre.h \
 		src/kernel/Interval.h \
+		src/kernel/Parser.h \
 		src/kernel/MidiKern.h \
 		src/kernel/Runtime.h \
+		src/kernel/TabGen.h \
 		src/kernel/treestorage.h \
 		src/kernel/mutlex.h
 
@@ -491,7 +495,8 @@ endif
 
 mutabor_CXXLD=$(CXX)
 mutabor_SHORTNAME = mutabor
-mutabor_LDADD = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a $(LDADD) $(AM_LDFLAGS)
+mutabor_LDADD = libmutaborgui.a libmutaborrouting.a libmutaborkernel.a libmutabordebug.a librtmidi.a \
+	$(WXINTLLDADD) $(LDADD) $(AM_LDFLAGS)
 
 if COND_WINRC
 CLEANFILES +=  $(mutabor_SHORTNAME)-Mutabor-winrc.$(OBJEXT)

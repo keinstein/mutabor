@@ -592,6 +592,7 @@ AC_CHECK_HEADERS([boost/intrusive_ptr.hpp])
 AC_CHECK_HEADERS([boost/rational.hpp])
 AC_CHECK_HEADERS([boost/spirit/core.hpp])
 AC_CHECK_HEADERS([boost/spirit/actor/push_back_actor.hpp])
+AC_CHECK_HEADERS([boost/exception/diagnostic_information.hpp])
 CPPFLAGS="$tmpcppflags"
 AC_LANG_POP(C++)
 
