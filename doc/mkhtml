@@ -40,8 +40,8 @@ mkdir -p "$installpath"
 for datei in "$@"
 do
 	instpath="$installpath"
-        tex4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidate
-        t4ht -f/${datei%.tex} -cunihtf -cconvert -cvalidatehtml ## -d~/WWW/temp/ -m644 
+        tex4ht -f/${datei%.tex} -cunihtf -utf8 -cconvert -cvalidate
+        t4ht -f/${datei%.tex} -cunihtf -utf8 -cconvert -cvalidatehtml ## -d~/WWW/temp/ -m644 
 
 	filebase="`basename ${datei%.tex}`"
 
