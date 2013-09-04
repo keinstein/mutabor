@@ -67,7 +67,7 @@ namespace mutabor {
 	static void mutabor_default_midi_out(mutabor_box_type * box, struct midiliste * outliste) {
 		/* do nothing */
 	}
-	static void mutabor_default_error_message(mutabor_box_type * box, 
+	static void mutabor_default_error_message(mutabor_box_type * box,
 						  bool iswarning,
 						  const char * message)
 	{
@@ -187,12 +187,12 @@ namespace mutabor {
 				case aufruf_logik: {
 					struct logik * logic = aktion->u.aufruf_logik.logic;
 					TRACE;
-					
+
 					mutASSERT(logic);
 					box->current_logic = logic;
 					execute_aktion (box, logic->einstimmung);
 
-#if 0					
+#if 0
 					mutASSERT(box->last_global_keyboard);
 					mutASSERT(box->last_global_harmony);
 					mutASSERT(box->last_global_midi);
@@ -667,15 +667,21 @@ Please, report this error to the MUTABOR team."),
 		TRACE;
 
 		if (box->flags.local_harmony_before_global) {
- 			first = box->current_logic->harmony_list;
+			first = box->current_logic != NULL?
+				box->current_logic->harmony_list:
+				NULL;
 			secound = box->file->global_harmonies;
 		} else {
- 			first = box->file->global_harmonies;
-			secound = box->current_logic->harmony_list;
+			first = box->file->global_harmonies;
+			secound = box->current_logic != NULL?
+				box->current_logic->harmony_list:
+				NULL;
 		}
-		
-		retval = local_harmony_analysis(box, first, pattern);
-		if (!retval)
+
+		retval = first != NULL ?
+			local_harmony_analysis(box, first, pattern):
+			false;
+		if (!retval && secound)
 			retval = local_harmony_analysis(box, secound, pattern);
 	}
 
@@ -761,7 +767,7 @@ Please, report this error to the MUTABOR team."),
 
 	static inline bool local_midi_analysis(mutabor_box_type * box,
 					      struct midi_ereignis * event,
-					      BYTE midiByte) 
+					      BYTE midiByte)
 	{
 		struct midi_ereignis * index;
 		for (index = event;
@@ -784,7 +790,7 @@ Please, report this error to the MUTABOR team."),
 		return false;
 	}
 
-		
+
 	void MidiAnalysis(mutabor_box_type * box, BYTE midiByte)
 	{
 		bool retval = false;
@@ -803,28 +809,34 @@ Please, report this error to the MUTABOR team."),
 			midiByte &= 0xF0;
 
 		if (box->flags.local_midi_before_global) {
- 			first = box->current_logic->midi_input_list;
+			first = box->current_logic != NULL ?
+				box->current_logic->midi_input_list:
+				NULL;
 			secound = box->file->global_midi_inputs;
 		} else {
- 			first = box->file->global_midi_inputs;
-			secound = box->current_logic->midi_input_list;
+			first = box->file->global_midi_inputs;
+			secound = box->current_logic != NULL ?
+				box->current_logic->midi_input_list :
+				NULL;
 		}
-		
-		retval = local_midi_analysis(box, first, midiByte);
-		if (!retval)
+
+		retval = first != NULL ?
+			local_midi_analysis(box, first, midiByte):
+			false;
+		if (!retval && secound != NULL)
 			retval = local_midi_analysis(box, secound, midiByte);
 	}
 
 	static inline bool local_keyboard_analysis(mutabor_box_type * box,
 						   struct keyboard_ereignis * event,
 						   int key,
-						   char is_logic, 
+						   char is_logic,
 						   char is_simple)
 	{
 		for (struct keyboard_ereignis *help = event;
 		     help ; help=help->next) {
-			if ( toupper(key) == help->taste 
-			     && (is_simple 
+			if ( toupper(key) == help->taste
+			     && (is_simple
 				 || is_logic == (help->the_logik_to_expand != NULL))) {
 				execute_aktion(box, help->aktion);
 				return true;
@@ -834,7 +846,7 @@ Please, report this error to the MUTABOR team."),
 	}
 
 
-	static inline void generic_keyboard_analysis(mutabor_box_type * box, 
+	static inline void generic_keyboard_analysis(mutabor_box_type * box,
 						     int taste,
 						     char isLogic,
 						     char isSimple)
@@ -852,15 +864,21 @@ Please, report this error to the MUTABOR team."),
 		TRACE;
 
 		if (box->flags.local_keyboard_before_global) {
- 			first = box->current_logic->keystroke_list;
+			first = box->current_logic != NULL ?
+				box->current_logic->keystroke_list :
+				NULL;
 			secound = box->file->global_keystrokes;
 		} else {
- 			first = box->file->global_keystrokes;
-			secound = box->current_logic->keystroke_list;
+			first = box->file->global_keystrokes;
+			secound = box->current_logic != NULL ?
+				box->current_logic->keystroke_list :
+				NULL;
 		}
-		
-		retval = local_keyboard_analysis(box, first, taste, isLogic, isSimple);
-		if (!retval)
+
+		retval = first != NULL ?
+			local_keyboard_analysis(box, first, taste, isLogic, isSimple) :
+			false;
+		if (!retval && secound != NULL)
 			retval = local_keyboard_analysis(box, secound, taste, isLogic, isSimple);
 	}
 
