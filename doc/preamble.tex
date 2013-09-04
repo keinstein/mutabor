@@ -1,6 +1,7 @@
 % Um alles auf einmal pflegen zu können, verwenden wir \ifhtml als
 % Anzeige für tex4ht oder „normales“ (PDF)LaTeX.
 %
+\errorcontextlines\maxdimen
 \makeatletter
 
 \newif\ifhelp\helpfalse
@@ -51,7 +52,8 @@
 %
 % Koma-Skript liefert ein paar nützliche zusätzliche Definitionen
 %
-\documentclass[german,a4paper,BCOR1.0cm]{scrbook}
+
+\documentclass[a4paper,BCOR1.0cm]{scrbook}
 %
 % Für tex4ht müssen wir auch tex4ht laden...
 \ifhtml
@@ -60,7 +62,7 @@
 % Einstellungen für Latex laden
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[german]{babel}
+\usepackage{babel}
 % Some mathematics
 \usepackage{amsmath}
 % Exteren Referenzen und Hyperref laden. 
@@ -77,6 +79,8 @@
 \fi
 % Überschriften als Referenzen einfügen.
 \usepackage{nameref}
+%\usepackage{zref-xr}
+%\zxrsetup{toltxlabel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{listings}
