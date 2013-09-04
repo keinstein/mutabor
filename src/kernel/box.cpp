@@ -49,7 +49,6 @@ void mutabor_set_logic(struct mutabor_box_type * box, struct mutabor_logic_parse
 		}
 	}
 	box->file = logic;
-	mutabor_tabellen_generator(box);
 	if (logic) {
 		mutabor_unlock_logic(logic);
 	}
