@@ -395,7 +395,7 @@ namespace mutabor {
 				callback->Refresh();
 			}
 
-			mutabor_tabellen_generator(box);
+			expand_decition_tree(box);
 
 
 			if (callback) {
@@ -487,8 +487,8 @@ namespace mutabor {
 		return mutabor_get_note_distance(note, box->tonesystem);
 	}
 
-	void BoxClass::runtime_error(bool iswarning, const char * message) {
-		fprintf(stderr,"%s: %s\n",(iswarning?_mut("Warning"):_mut("Error")),message);
+	void BoxClass::runtime_error(error_type type, const char * message) {
+	    fprintf(stderr,"%s: %s\n",to_string(type),message);
 	}
 
 	BoxClass::BoxClass(int id): box(NULL),
@@ -562,11 +562,11 @@ namespace mutabor {
 		}
 	}
 
-	static void error_callback(mutabor_box_type * b, bool iswarning,
+	static void error_callback(mutabor_box_type * b, error_type type,
 			      const char * message) {
 		
 		BoxClass * box = (BoxClass *)b -> userdata;
-		box->runtime_error(iswarning,message);
+		box->runtime_error(type, message);
 	}
 
 #warning implement logic locking

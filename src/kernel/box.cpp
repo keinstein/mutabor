@@ -82,8 +82,6 @@ void mutabor_reset_keys(struct mutabor_box_type * box)
 		*(box->last_global_midi)=NULL;
 
 #endif
-	box->current_logic = NULL;
-
 	/* we make no shortcuts, here to avoid errors and make them more easy to find */
 	while (mutabor_find_key_in_box(box, 0) != NULL) {
 		mutabor_delete_key_in_box(box, 0);
@@ -116,7 +114,13 @@ void mutabor_reset_box(struct mutabor_box_type * box)
 	}
 	box->tonesystem = &(box->tonesystem_memory[0]);
 	box->last_tonesystem = tonesystem_init;
-		
+
+	// reset parameters but don't free them.
+	// box->parameters can be used during the next run.
+	box->current_parameters = NULL;
+	box->current_logic = NULL;
+	box->distance = 0;
+
 	mutabor_reset_keys (box);
 }
 
@@ -128,24 +132,18 @@ void mutabor_initialize_box(mutabor_box_type * box, int id)
 	memset(box,0,sizeof(mutabor_box_type));
 	mutASSERT(box->current_keys.key != 0);
 
-/* C standard does not define NULL to be 0 */
-#if 0 != NULL
-	box->userdata = NULL;
-	box->anchor_node.next = NULL;
-	box->first_harmony = NULL;
-	box->last_global_harmony = NULL;
-	box->first_keyboard = NULL;
-	box->last_global_keyboard = NULL;
-	box->first_midi = NULL;
-	box->list_global_midi = NULL;
-	box->cache_konstanten = NULL;
-	box->protocol = NULL;
-#endif
+	/* C standard does not define NULL to be 0 */
+	/* the following if statement will be optimized away
+	   if not needed */
+	if (0 != NULL) {
+		box->userdata = NULL;
+		box->current_logic = NULL;
+	}
+
 	mutabor_initialize_keyplane(&box->current_keys);
-	box->anchor_node.value_field = &box->anchor;
-	box->distance_node.next = &box->anchor_node;
-	box->distance_node.value_field = &box->distance;
-	box->start_parameter_list = &box->distance_node;
+	box->parameters = NULL;
+	box->current_parameters = box->parameters;
+
 #if 0
 	/* application is now responsible for logging actions */
 	box->nextprotocol = &box->protocol;
@@ -153,7 +151,6 @@ void mutabor_initialize_box(mutabor_box_type * box, int id)
 	box->id = id;
 	mutabor_reset_box(box);
 }
-			/*
 /* This function uses tonsystem_memory which is just a set of tone systems
    that will be assigned to the boxes via pointers later. 
 void GlobalReset()

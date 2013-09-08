@@ -1,4 +1,4 @@
-/** \file                             -*- C -*- 
+/** \file                             -*- bison -*- 
  ********************************************************************
  * Mutabor tone systems
  *
@@ -83,9 +83,11 @@
 %}
 
 %union {
-    double      f_value;        /* f〉 Gleitkommazahlen */
-    int         integer;        /* F〉 integers */
-    char        *identifier;    /* F〉 Namen */
+			double      f_value;        /* floating point numbers */
+			int         integer;        /* integers */
+			char        *identifier;    /* names/identifiers */
+			struct argument_list * arguments;  /* argument list */
+			struct parameter_list * parameters; /* parameter list */
 }
 
 /* %define api.token.prefix MUTABOR_TOKEN_ */
@@ -119,6 +121,8 @@
 
 /* other tokens */
 %token MUTABOR_TOKEN_PARAMETER
+%token MUTABOR_TOKEN_ANCHOR
+%token MUTABOR_TOKEN_DISTANCE
 %token MUTABOR_TOKEN_ENDOFFILE
 %token MUTABOR_TOKEN_ERROR
 
@@ -130,15 +134,19 @@
 %token MUTABOR_TOKEN_COMMENT_END
 %token MUTABOR_TOKEN_OTHER
 
+
+/* types of derived rules */
 %type <integer> bezugs_taste
 %type <f_value> GLEITKOMMA_ZAHL
+%type <arguments> argument_list nonempty_argument_list argument_list_element
+%type <parameters> parameter_list nonempty_parameter_list parameter
 
 %{
 int yylex(YYSTYPE* lvalp, YYLTYPE* llocp,  mutabor_box_type * box);
 void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 {
 	mutabor_error_message(box,
-			      false,
+			      compiler_error,
 			      _("%s at line %d"),
 			      err,
 			      locp->first_line);
@@ -152,17 +160,26 @@ void yyerror(YYLTYPE* locp, mutabor_box_type * box, const char* err)
 %% /* Grammar rules and actions */
 
 start : /* empty */
-        | start intervalldeklaration
-        | start tondeklaration
-        | start tonsystemdeklaration
-      	| start umstimmungdeklaration
-        | start harmoniedeklaration
-        | start logikdeklaration
-        | start instrumentdeklaration
-        | start error {  mutabor_error_message(box,
-					       false,
-					       _("Syntax error in line %d."),
-					       FEHLERZEILE); }
+	|	blocks 
+;
+
+blocks:		block
+	|	blocks block
+	;
+
+block: 
+        | 	intervalldeklaration
+        | 	tondeklaration
+        |	tonsystemdeklaration
+      	| 	umstimmungdeklaration
+        | 	harmoniedeklaration
+        |  	logikdeklaration
+        |  	instrumentdeklaration
+        |  	error block {  mutabor_error_message(box,
+		compiler_error,
+		_("Syntax error in line %d."),
+		FEHLERZEILE); 
+		}
 ;
 
 intervalldeklaration :
@@ -182,7 +199,7 @@ intervalldekl2 :
                     { if ( fabs($5) > 0.001 )
 				    get_new_intervall (box, $1, $3 / $5);
                       else
-			      mutabor_error_message (box,false,
+			      mutabor_error_message (box,compiler_error,
 					   _("Bad interval value in %s"),
 					   ($1) ); }
 
@@ -190,7 +207,7 @@ intervalldekl2 :
                     { if ( fabs ($3) > 0.001 )
 				    get_new_intervall (box, $1, pow ($5, 1 / $3));
                       else
-			      mutabor_error_message (box,false,
+			      mutabor_error_message (box,compiler_error,
 						     _("Bad interval value in %s"),
 						     ($1)); }
 /*****
@@ -201,14 +218,14 @@ intervalldekl2 :
 	{ get_new_intervall_komplex (box,$1); }
         | MUTABOR_TOKEN_IDENTIFIER '=' error { 
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Bad interval declaration of intervall %s in line %d."),
 				      ($1),
 				      FEHLERZEILE); 
 	  }
         | MUTABOR_TOKEN_IDENTIFIER error { 
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Wrong character. Expecting %s in line %d."),
 				      mutT("="),FEHLERZEILE); 
 	  }
@@ -244,7 +261,7 @@ tondekl2 :
 
       | MUTABOR_TOKEN_IDENTIFIER '=' error { 
 	      mutabor_error_message(box,
-				    false,
+				    compiler_error,
 				    _("Bad tone declaration of tone %s in line %d."),
 				    ($1),
 				    FEHLERZEILE); 
@@ -278,7 +295,7 @@ KOMPLEX_TON_1 :
 				   get_new_faktor_anteil (box, (double) 1 / ($3), $4);
 			   else
 				   mutabor_error_message(box,
-							 false,
+							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
@@ -288,7 +305,7 @@ KOMPLEX_TON_1 :
 				   get_new_faktor_anteil (box, (double) -1 / ($3), $4);
                      else
 				   mutabor_error_message(box,
-							 false,
+							 compiler_error,
 							 _("Division by (nearly) 0 in line %d."),
 							 FEHLERZEILE);  
 		   }
@@ -298,7 +315,7 @@ KOMPLEX_TON_1 :
 				   get_new_faktor_anteil (box, ($2) / ($4), $5);
                      else
 			     mutabor_error_message(box,
-						   false,
+						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
@@ -308,7 +325,7 @@ KOMPLEX_TON_1 :
 				   get_new_faktor_anteil (box, -($2) / ($4), $5);
                      else
 			     mutabor_error_message(box,
-						   false,
+						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
@@ -344,7 +361,7 @@ KOMPLEX_TON_START :
 				   get_new_faktor_anteil (box, (double) 1 / ($2), $3);
                      else
 			     mutabor_error_message(box,
-						   false,
+						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
@@ -354,7 +371,7 @@ KOMPLEX_TON_START :
 				   get_new_faktor_anteil (box, ($1) / ($3), $4);
                      else
 			     mutabor_error_message(box,
-						   false,
+						   compiler_error,
 						   _("Division by (nearly) 0 in line %d."),
 						   FEHLERZEILE);  
 		   }
@@ -404,75 +421,141 @@ tonsystemdekl2 :
 tonliste : ton_element | tonliste ',' ton_element ;
 
 ton_element :
-MUTABOR_TOKEN_IDENTIFIER      { get_new_ton_in_tonsystem (box, $1); }
-| /* empty */     { get_new_ton_in_tonsystem (box, NULL); }
-        | error { 
+		MUTABOR_TOKEN_IDENTIFIER      { get_new_ton_in_tonsystem (box, $1); }
+	| /* 	empty */     { get_new_ton_in_tonsystem (box, NULL); }
+        | 	error {     mutabor_error_message(box,
+		compiler_error,
+		_("Bad tonesystem declaration in line %d."),		      
+		FEHLERZEILE);
+		}
+		;
+
+parameter_list : 
+		/* empty */ { $$ = NULL; }
+	|	nonempty_parameter_list { $$ = $1; 
+                    enumerate_parameters(box,$$);
+		} 
+		;
+
+nonempty_parameter_list :      /* list of identifiers */
+		parameter
+	| 	parameter ',' nonempty_parameter_list
+		{
+		    if ($1 != NULL) {
+			$$ = $1;
+		        $$->next = $3;
+   		    } else {$$ = $3;}
+		}
+		;
+
+
+parameter:
+		MUTABOR_TOKEN_IDENTIFIER { $$ = get_new_name_in_parameterlist (box, $1); }
+	|	MUTABOR_TOKEN_DISTANCE { 
+		    $$ = NULL;
+		    mutabor_error_message(box,
+					  compiler_warning,
+		                          _("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		                          FEHLERZEILE);
+		}
+	|	MUTABOR_TOKEN_ANCHOR { $$ = NULL;
+		    mutabor_error_message(box,
+					  compiler_warning,
+		_("Arguments named “DISTANCE” or “ABSTAND” have a fixed meaning. Using them as parameters as in line %d is not supported. Expect undexpected behaviour."),
+		FEHLERZEILE);
+		}
+		;
+
+
+/*
+	| 	error {
+		    mutabor_error_message(box,	compiler_error,
+		_("Bad parameter list in call in line %d"),
+		FEHLERZEILE); 
+		}
+		;
+*/
+
+argument_list :
+		/* empty */ { $$ = NULL; }
+	| 	nonempty_argument_list { $$ = $1; }
+
+nonempty_argument_list : 
+		/* we use the stack here to get the arguments in the right order */
+		argument_list_element { $$ = $1; }
+	|  	argument_list_element ',' nonempty_argument_list
+		{ $$ = $1; $1->next = $3;}
+		/* error recovery should be done in the calling entity
+	| 	error { 
 		mutabor_error_message(box,
-				      false,
-				      _("Bad tonesystem declaration in line %d."),		      
-				      FEHLERZEILE);
-	  }
-      ;
+		compiler_error,
+		_("Bad parameter list in call to %s in line %d"),
+		FEHLERZEILE); 
+		}
+		*/
+		;
 
-parameter_liste :      /* allgemein eine Liste von Identifiern */
-MUTABOR_TOKEN_IDENTIFIER      { get_new_name_in_parameterlist (box, $1); }
-        | parameter_liste ',' MUTABOR_TOKEN_IDENTIFIER
-	{ get_new_name_in_parameterlist (box, $3); }
-        | error {
-		mutabor_error_message(box,
-				      false,
-				      _("Bad parameter list in call to %s in line %d"),
-				      FEHLERZEILE); 
-	  }
-        ;
-
-
-argument_liste :
-        argument_listenelement {}
-        | argument_liste ',' argument_listenelement {}
-        | error { 
-		mutabor_error_message(box,
-				      false,
-				      _("Bad parameter list in call to %s in line %d"),
-				      FEHLERZEILE); 
-	  }
-;
-
-argument_listenelement :        /* allgemein eine Liste von Identifiern
+argument_list_element :        /* allgemein eine Liste von Identifiern
                           oder Kommazahlen */
-MUTABOR_TOKEN_IDENTIFIER      { get_new_name_in_argument_list (box, $1) ;  }
-| MUTABOR_TOKEN_INTEGER        { get_new_number_in_argument_list (box, $1) ;  }
-| '-' MUTABOR_TOKEN_INTEGER        { get_new_number_in_argument_list (box, -($2)); }
-
-        ;
+		MUTABOR_TOKEN_IDENTIFIER      
+		{ $$ = get_new_name_in_argument_list (box, $1) ;  }
+	| 	MUTABOR_TOKEN_INTEGER       
+		{ $$ = get_new_number_in_argument_list (box, $1) ;  }
+	| '-' 	MUTABOR_TOKEN_INTEGER
+		{ $$ = get_new_number_in_argument_list (box, -($2)); }
+	| 	MUTABOR_TOKEN_DISTANCE
+		{ $$ = get_new_distance_in_argument_list (box); }
+	| 	MUTABOR_TOKEN_ANCHOR
+		{ $$ = get_new_anchor_in_argument_list (box); }
+		;
 
 
 umstimmungdeklaration :
-        MUTABOR_TOKEN_RETUNING umstimmungs_dekl_1 ;
+		MUTABOR_TOKEN_RETUNING
+		retuning_definitions
+		;
 
-umstimmungs_dekl_1 :
-          /* empty */
-        | umstimmungs_dekl_1 umstimmungs_dekl_2
-      ;
+retuning_definitions :
+		/* empty */
+        | 	retuning_definition retuning_definitions
+		;
 
-umstimmungs_dekl_2 :
+retuning_definition :
           MUTABOR_TOKEN_IDENTIFIER
-	  { init_umstimmung (box, $1);
-                      init_parameter_liste (box); }
-          '='       { eintrage_parameterliste_in_umstimmung (box); }
-          umstimmungs_dekl_3
+	  { init_umstimmung (box, $1); }
+          '='       { eintrage_parameterliste_in_umstimmung (box, NULL); }
+		retuning_term
                     { get_new_umstimmung (box); }
-        |
-          MUTABOR_TOKEN_IDENTIFIER
-	{ init_umstimmung (box,$1);
-		init_parameter_liste (box); }
-          '(' parameter_liste ')' '=' 
-                    { eintrage_parameterliste_in_umstimmung (box); }
-          umstimmungs_dekl_3 
+        |	MUTABOR_TOKEN_IDENTIFIER
+		'(' parameter_list ')' '=' 
+                    { init_umstimmung (box,$1); 
+		eintrage_parameterliste_in_umstimmung (box, $3); }
+		retuning_term 
                     { get_new_umstimmung (box); }
+        |	MUTABOR_TOKEN_IDENTIFIER
+		'(' parameter_list error '=' 
+		{ 
+		    init_umstimmung (box,$1);
+		    eintrage_parameterliste_in_umstimmung (box, $3);
+		mutabor_error_message(box,
+		compiler_error,
+		_("Invalid parameter list in retuning %s line %d"),
+		$1, FEHLERZEILE); }
+		retuning_term 
+		{ get_new_umstimmung (box); }
+        |	MUTABOR_TOKEN_IDENTIFIER
+		{ init_umstimmung (box,$1); }
+		error '=' 
+		{ eintrage_parameterliste_in_umstimmung (box, NULL);
+		mutabor_error_message(box,
+		compiler_error,
+		_("Error while reading %s line %d"),
+		$1, FEHLERZEILE); }
+		retuning_term 
+		{ get_new_umstimmung (box); }
         ;
         
-umstimmungs_dekl_3 :
+retuning_term :
           umstimmungs_dekl_taste_abs            {}
         | umstimmungs_dekl_taste_rel            {}
         | umstimmungs_dekl_breite_abs           {}
@@ -485,7 +568,7 @@ umstimmungs_dekl_3 :
         | umstimmungs_dekl_midi_out             {}  
         | error {
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Bad retuning in line %d."),
 				      FEHLERZEILE);
 	  }   
@@ -494,46 +577,46 @@ umstimmungs_dekl_3 :
 
 umstimmungs_dekl_taste_abs :
           MUTABOR_TOKEN_INTEGER '[' ']'
-          { get_umstimmung_taste_abs (box, zahl, $1, NULL); }
+          { get_umstimmung_taste_abs (box, mutabor_argument_integer, $1, NULL); }
         | MUTABOR_TOKEN_IDENTIFIER '[' ']'
-	{ get_umstimmung_taste_abs (box, parameter, 0.0, $1); }
+		  { get_umstimmung_taste_abs (box, mutabor_argument_parameter, 0.0, $1); }
         ;
 
 umstimmungs_dekl_taste_rel :
           '@' '+' MUTABOR_TOKEN_INTEGER '[' ']'
-          { get_umstimmung_taste_rel (box, zahl, $3, NULL, '+'); }
+          { get_umstimmung_taste_rel (box, mutabor_argument_integer, $3, NULL, '+'); }
         | '@' '+' MUTABOR_TOKEN_IDENTIFIER '[' ']'
-	{ get_umstimmung_taste_rel (box, parameter, 0.0, $3, '+'); }
+	{ get_umstimmung_taste_rel (box, mutabor_argument_parameter, 0.0, $3, '+'); }
         | '@' '-' MUTABOR_TOKEN_INTEGER '[' ']'
-	{ get_umstimmung_taste_rel (box, zahl, $3, NULL, '-'); }
+	{ get_umstimmung_taste_rel (box, mutabor_argument_integer, $3, NULL, '-'); }
         | '@' '-' MUTABOR_TOKEN_IDENTIFIER '[' ']'
-	{ get_umstimmung_taste_rel (box, parameter, 0.0, $3, '-'); }
+	{ get_umstimmung_taste_rel (box, mutabor_argument_parameter, 0.0, $3, '-'); }
         ;
 
 umstimmungs_dekl_breite_abs :
           '[' '<' '<' MUTABOR_TOKEN_INTEGER '>' '>' ']'
-          { get_umstimmung_breite_abs (box, zahl, $4, NULL); }
+          { get_umstimmung_breite_abs (box, mutabor_argument_integer, $4, NULL); }
         | '[' '<' '<' MUTABOR_TOKEN_IDENTIFIER '>' '>' ']'
-	{ get_umstimmung_breite_abs (box, parameter, 0.0, $4); }
+	{ get_umstimmung_breite_abs (box, mutabor_argument_parameter, 0.0, $4); }
         ;
 
 umstimmungs_dekl_breite_rel :
           '[' '<' '<' '@' '+' MUTABOR_TOKEN_INTEGER '>' '>' ']'
-          { get_umstimmung_breite_rel (box, zahl, $6, NULL, '+'); }
+          { get_umstimmung_breite_rel (box, mutabor_argument_integer, $6, NULL, '+'); }
         | '[' '<' '<' '@' '+' MUTABOR_TOKEN_IDENTIFIER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, parameter, 0.0, $6, '+'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_parameter, 0.0, $6, '+'); }
         | '[' '<' '<' '@' '-' MUTABOR_TOKEN_INTEGER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, zahl, $6, NULL, '-'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_integer, $6, NULL, '-'); }
         | '[' '<' '<' '@' '-' MUTABOR_TOKEN_IDENTIFIER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, parameter, 0.0, $6, '-'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_parameter, 0.0, $6, '-'); }
         | '[' '<' '<' '@' '*' MUTABOR_TOKEN_INTEGER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, zahl, $6, NULL, '*'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_integer, $6, NULL, '*'); }
         | '[' '<' '<' '@' '*' MUTABOR_TOKEN_IDENTIFIER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, parameter, 0.0, $6, '*'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_parameter, 0.0, $6, '*'); }
         | '[' '<' '<' '@' '/' MUTABOR_TOKEN_INTEGER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, zahl, $6, NULL, '/'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_integer, $6, NULL, '/'); }
         | '[' '<' '<' '@' '/' MUTABOR_TOKEN_IDENTIFIER '>' '>' ']'
-	{ get_umstimmung_breite_rel (box, parameter, 0.0, $6, '/'); }
+	{ get_umstimmung_breite_rel (box, mutabor_argument_parameter, 0.0, $6, '/'); }
         ;
 
 umstimmungs_dekl_tonhoehe_veraendert :
@@ -619,11 +702,19 @@ aktions_liste :
         ;
         
 aktion : 
-          MUTABOR_TOKEN_IDENTIFIER { init_argument_liste (box); 
-		  get_new_aktion_aufruf_element (box,$1); }
-        | MUTABOR_TOKEN_IDENTIFIER '(' { init_argument_liste (box); }
-            argument_liste ')'
-	    { get_new_aktion_aufruf_element (box,$1); }
+          MUTABOR_TOKEN_IDENTIFIER { 
+		  get_new_aktion_aufruf_element (box,$1,NULL); 
+	  }
+        | MUTABOR_TOKEN_IDENTIFIER '(' argument_list ')'
+		    { get_new_aktion_aufruf_element (box,$1, $3); }
+        | MUTABOR_TOKEN_IDENTIFIER '(' argument_list error ')'
+		    { get_new_aktion_aufruf_element (box,$1, $3);
+			    mutabor_error_message(box,
+						 compiler_error,
+						 _("Invalid argument list for call to %s in line %d"),
+						 $1,
+						 FEHLERZEILE);
+		    }
         | MUTABOR_TOKEN_MIDI_OUT '(' 
 		              { init_integersequenz (box);}
 		           integersequenz ')' 
@@ -685,7 +776,7 @@ harmonie_dekl_2 :
 
         | MUTABOR_TOKEN_IDENTIFIER '=' error { 
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Bad pattern declaration “%s” at line %d"),
 				      ($1),
 				      FEHLERZEILE); 
@@ -776,7 +867,7 @@ integersequenz :
 	{ get_new_integer_in_integersequenz (box,$3);}
         | error { 
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Bad MIDI list in line %d"),  
 				      FEHLERZEILE );
 	  }
@@ -905,7 +996,7 @@ start_lex:
 	help = strtoull(box->scanner->pos, &newpos, 16);
         if (errno || newpos == box->scanner->pos) {
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("No hex number after # (line %d)"),
 				      llocp->first_line + 1);
 		return MUTABOR_TOKEN_ERROR;
@@ -942,6 +1033,8 @@ static struct {
 { "MIDIIN"     , MUTABOR_TOKEN_MIDI_IN    },
 { "MIDIOUT"    , MUTABOR_TOKEN_MIDI_OUT   },
 { "ANSONSTEN"  , MUTABOR_TOKEN_ELSE  },
+{ "ABSTAND"    , MUTABOR_TOKEN_DISTANCE  },
+{ "ZENTRUM"    , MUTABOR_TOKEN_ANCHOR  },
 /* English keywords : */
 { "INTERVAL"   , MUTABOR_TOKEN_INTERVAL  },
 { "ROOT"       , MUTABOR_TOKEN_ROOT     },
@@ -955,6 +1048,8 @@ static struct {
 { "MIDICHANNEL", MUTABOR_TOKEN_MIDICHANNEL },
 { "KEY"        , MUTABOR_TOKEN_KEY      },
 { "ELSE"       , MUTABOR_TOKEN_ELSE  },
+{ "DISTANCE"   , MUTABOR_TOKEN_DISTANCE  },
+{ "CENTER"     , MUTABOR_TOKEN_ANCHOR  },
 { NULL         , 0          }
 };
 
@@ -1044,7 +1139,7 @@ static struct {
 
     
     mutabor_error_message(box,
-			  false,
+			  compiler_error,
 			  _("Invalid character: “%c” = %x at line %d."),
 			  c,c,llocp->first_line + 1);
     

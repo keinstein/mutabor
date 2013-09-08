@@ -117,13 +117,24 @@ struct mutabor_box_type {
 	mutabor_key_index_type current_keys;
 	size_t key_count;
 	size_t last_key;
-	int distance;
-	int anchor;
 
-	// pointer to anchor;
-	struct interpreter_parameter_list anchor_node; 
-	struct interpreter_parameter_list distance_node;
-	struct interpreter_parameter_list * start_parameter_list;
+        /**
+	 * Distance of the root of the harmony or harmonic form as it
+	 * has been calculated during the last harmony analysis.
+	 */
+	int distance;
+    
+	/* parameter lists are arrays arranged in a linked list. Each
+	   list element represents a maximal parameter vector. 
+	   It doesn't have to be used completely. As we reuse old list elements 
+	   after they became free all data vectors must have the same size.
+
+	   Current_parameters refers to the parameters of the current call.
+	   Parameters refers to the global box parameters such as distance 
+	   and anchor.
+	*/
+	struct interpreter_parameter_list * current_parameters;  /*< currently active parameter list */
+	struct interpreter_parameter_list * parameters; /*< pointer to the first parameter list */
 
 	/** pattern structure in current box */
 	PATTERNN pattern;

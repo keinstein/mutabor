@@ -24,11 +24,13 @@ nodist_playgmn1_SOURCES = \
 
 playgmn1_LDADD = \
 	$(top_builddir)/libmutabormaintest.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
 gmnopenfail1_LDADD = \
 	$(top_builddir)/libmutabormaintest.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 

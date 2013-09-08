@@ -90,37 +90,48 @@ namespace mutabor {
 
 /****** Allgemeine Strukturen *******/
 
-struct parameter_liste
+struct parameter_list
 {
-	const char * name;
-	struct parameter_liste * next;
+    const char * name;
+    int index;
+    struct parameter_list * next;
 };
 
-typedef int parameter_typ;
+		    //typedef int parameter_typ;
 
-enum argument_typ {zahl, parameter};
+enum argument_typ {
+	mutabor_argument_integer, 
+	mutabor_argument_parameter,
+	mutabor_argument_distance,
+	mutabor_argument_anchor
+};
 
 struct argument
 {
-	enum argument_typ argument_typ ;
+	enum argument_typ argument_type ;
 	union {
 		struct {
-			int zahl;
-		} zahl;
+			int number;
+		} integer;
 
 		struct {
-			int parameter_nummer;
-                        /* Der soundsovielte , der deklariert ist. */
-			const char * parameter_name;
+		    const char * name;
+		    struct parameter_list * parameter;
 		} parameter;
+#if 0
+		struct {} distance;
+		struct {} anchor;
+#endif
 	} u;
 };
 
-struct argument_liste
+struct argument_list
 {
 	struct argument argument;
-	struct argument_liste * next;
+	struct argument_list * next;
 };
+
+
 
 struct midiliste
 {
@@ -251,7 +262,7 @@ struct case_liste
 struct umstimmung
 {
 	const char *name;
-	struct parameter_liste * parameter_liste;
+	struct parameter_list * parameter_liste;
 	enum umstimmung_typ umstimmung_typ;
 
 	union
@@ -376,7 +387,7 @@ struct aktions_liste
 
 		struct {
 			const char * name;
-			struct argument_liste * argument_liste;
+			struct argument_list * argument_liste;
 		} aktion_aufruf;
 #if 0
 		// currently empty

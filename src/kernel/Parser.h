@@ -124,12 +124,16 @@ struct mutabor_logic_parsed {
 	struct ton * tmp_tonliste;
 	struct case_liste * tmp_umstimmungs_case_liste;
 	struct midiliste * list_of_integers;
-	struct parameter_liste * list_of_names;
-	struct argument_liste * list_of_argumente;
+	struct parameter_list * list_of_names;
+	struct argument_list * list_of_argumente;
 	struct aktions_liste * list_of_aktionen;
 	struct komplex_intervall * the_komplex_liste;
 	struct taste * tmp_tastenliste;
 	struct instrument * lauf_instrument;
+
+	struct interpreter_parameter_list start_parameters;
+	size_t constant_count;
+	size_t parameter_count;
 
 	/* some triggers that are always active if the logic is active. E.g., the main triggers of logics */
 	struct harmonie_ereignis * global_harmonies; /*< harmony triggers that are always active */
@@ -195,13 +199,21 @@ struct logik * get_logik (const char * name, struct logik * liste);
 
 void init_integersequenz (mutabor_box_type * box);
 void get_new_integer_in_integersequenz (mutabor_box_type * box, int wert);
-void init_parameter_liste (mutabor_box_type * box);
-void get_new_name_in_parameterlist (mutabor_box_type * box, const char * name);
-void init_argument_liste (mutabor_box_type * box);
-void get_new_number_in_argument_list (mutabor_box_type * box, double parameter);
-void get_new_name_in_argument_list (mutabor_box_type * box, const char * parameter);
+		    //void init_parameter_liste (mutabor_box_type * box);
+struct parameter_list * get_new_name_in_parameterlist (mutabor_box_type * box, const char * name);
+void enumerate_parameters (mutabor_box_type * box, struct parameter_list * parameters);
+		    //void init_argument_liste (mutabor_box_type * box);
+struct argument_list * get_new_number_in_argument_list (mutabor_box_type * box, double number);
+struct argument_list * get_new_name_in_argument_list (mutabor_box_type * box, const char * parameter);
+struct argument_list * get_new_distance_in_argument_list (mutabor_box_type * box);
+struct argument_list * get_new_anchor_in_argument_list (mutabor_box_type * box);
+	
+
 void init_aktions_liste (mutabor_box_type * box);
-void get_new_aktion_aufruf_element (mutabor_box_type * box, const char * name);
+void get_new_aktion_aufruf_element (mutabor_box_type * box, 
+				    const char * name,
+				    struct argument_list * arguments);
+			
 void get_new_aktion_midi_out_element (mutabor_box_type * box);
 void get_new_aktion_harmony_analysis(mutabor_box_type * box);
 void init_komplex_ton_list (mutabor_box_type * box);
@@ -221,7 +233,8 @@ void get_new_tonsystem (mutabor_box_type * box, const char *name, int taste);
 void get_new_tonsystem_negative (mutabor_box_type * box, const char *name, int taste);
 void init_umstimmung (mutabor_box_type * box, const char * name);
 void get_new_umstimmung (mutabor_box_type * box);
-void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box);
+void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
+					    parameter_list * list);
 
 
 void get_umstimmung_taste_abs (mutabor_box_type * box,

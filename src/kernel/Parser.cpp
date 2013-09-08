@@ -134,7 +134,7 @@ int get_logik_nummer (mutabor_box_type * box, const char * name, struct logik * 
 	TRACE;
 	if (liste == NULL) {
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("The logic was not intialized. Found in %s, %d"),
 				      _T(__FILE__), __LINE__);
 		return 0;
@@ -144,7 +144,7 @@ int get_logik_nummer (mutabor_box_type * box, const char * name, struct logik * 
 	return 1 + get_logik_nummer (box, name, liste->next);
 }
 
-int parameter_list_laenge (struct parameter_liste *list)
+int parameter_list_laenge (struct parameter_list *list)
 
 {
 	TRACE;
@@ -153,7 +153,7 @@ int parameter_list_laenge (struct parameter_liste *list)
 	return 0;
 }
 
-int argument_list_laenge (struct argument_liste *list)
+int argument_list_laenge (struct argument_list *list)
 {
 	TRACE;
 	if (list) return 1 + argument_list_laenge (list -> next);
@@ -261,57 +261,74 @@ void init_parameter_liste (mutabor_box_type * box)
 }
 
 
-void get_new_name_in_parameterlist (mutabor_box_type * box, const char * name)
-
+struct parameter_list * 
+get_new_name_in_parameterlist (mutabor_box_type * box, const char * name)
 {
 
-	struct parameter_liste * * lauf;
+	struct parameter_list * retval;
 	TRACE;
-
-	for (lauf= & box->file->list_of_names; * lauf; lauf= & (*lauf)->next) {
-		if ( ! strcasecmp (name, (*lauf)->name)) {
-			mutabor_error_message(box, 
-					      false,
-					      _("The parameter name %s was used twice"),
-					      (name)); /* Parametername doppelt: name */
-		}
-	}
-
-	(* lauf) = (parameter_liste*) xmalloc (box, (size_t) sizeof (struct parameter_liste));
-	(* lauf) -> name          = name;
-	(* lauf) -> next          = NULL;
+	retval = (parameter_list*) 
+	    xmalloc (box, (size_t) sizeof (struct parameter_list));
+	retval -> name = name;
+	retval -> next = NULL;
+	return retval;
 }
 
+void enumerate_parameters (mutabor_box_type * box, struct parameter_list * parameters) {
+    size_t i = interpreter_parameter_first_parameter;
+    while (parameters != NULL) {
+	parameters -> index = i++;
+	parameters = parameters -> next;
+    }
+    if (box->file->parameter_count < i) 
+	box->file->parameter_count = i;
+}
+
+		    /*
 static struct parameter_liste * get_last_parameter_liste (mutabor_box_type * box)
 {
 	return box->file->list_of_names;
 }
+		    */
 
 
-static int parameter_nummer (int aktueller_index, const char * such_name,
-
-                             struct parameter_liste * knoten)
+static struct parameter_list * 
+get_parameter_by_name (mutabor_box_type * box, 
+		       const char * search_name,
+		       struct parameter_list * node)
 {
 	TRACE;
-	if (knoten == NULL) return EOF;
-
-	if ( ! strcasecmp (such_name, knoten -> name))
-		return aktueller_index;
-
-	return parameter_nummer (aktueller_index + 1, such_name,
-	                         knoten -> next);
+	if (node == NULL) return NULL;
+	while ( strcasecmp (search_name, node -> name)) {
+		node = node->next;
+		if (node == NULL) return NULL;
+	}
+	return node;
 }
 
-void print_argumentliste (struct argument_liste * this_)
+void print_argumentliste (struct argument_list * this_)
 
 {
 	TRACE;
 	if (this_)
 		{
-			if (this_ -> argument.argument_typ == zahl)
-				printf (" %d ", this_ -> argument.u.zahl.zahl);
-			else
-				printf (" %s ", this_ -> argument.u.parameter.parameter_name);
+			switch (this_ -> argument.argument_type) {
+				
+			case mutabor_argument_integer:
+				printf (" %d ", this_ -> argument.u.integer.number);
+				break;
+			case mutabor_argument_parameter:
+				printf (" %s ", this_ -> argument.u.parameter.name);
+				break;
+			case mutabor_argument_distance:
+			    printf (" %s ", _("DISTANCE"));
+				break;
+			case mutabor_argument_anchor:
+			    printf (" %s ",_("CENTER"));
+				break;
+			default:
+				printf ("{unknown argument type}");
+			}
 
 			print_argumentliste (this_ -> next);
 		}
@@ -327,50 +344,72 @@ void init_argument_liste (mutabor_box_type * box)
 }
 
 
-void get_new_number_in_argument_list (mutabor_box_type * box, double parameter_zahl)
+struct argument_list *
+get_new_number_in_argument_list (mutabor_box_type * box, 
+				 double number)
 
 {
 
-	struct argument_liste * * lauf;
+	struct argument_list * token;
 	TRACE;
 
-	for (lauf= & box->file->list_of_argumente; * lauf; lauf= & (*lauf)->next) {}
-
-	(* lauf) = (argument_liste*) xmalloc (box, (size_t) sizeof (struct argument_liste));
-	(* lauf) -> argument.argument_typ = zahl;
-	(* lauf) -> argument.u.zahl.zahl  = (int) parameter_zahl;
-	(* lauf) -> next                  = NULL;
+	token = (argument_list*) xmalloc (box, (size_t) sizeof (struct argument_list));
+	token -> argument.argument_type = mutabor_argument_integer;
+	token -> argument.u.integer.number = (int) number;
+	token -> next = NULL;
+	return token;
 }
 
-#warning check for duplicate parameter names
-void get_new_name_in_argument_list (mutabor_box_type * box, const char * parameter_name)
+struct argument_list *
+get_new_name_in_argument_list (mutabor_box_type * box, 
+			       const char * parameter_name)
 {
 
-	struct argument_liste * * lauf;
+	struct argument_list * lauf;
 	TRACE;
 
-	for (lauf= & box->file->list_of_argumente; * lauf; lauf= & (*lauf)->next) {
+	lauf = (argument_list*) xmalloc (box, (size_t) sizeof (struct argument_list));
+	lauf -> argument.argument_type = mutabor_argument_parameter;
+	lauf -> argument.u.parameter.parameter = NULL;
+	lauf -> argument.u.parameter.name = parameter_name;
+	lauf -> next = NULL;
+	return lauf;
+}
+
+struct argument_list *
+get_new_distance_in_argument_list (mutabor_box_type * box)
+
+{
+
+	struct argument_list * token;
+	TRACE;
+
+	token = (argument_list*) xmalloc (box, (size_t) sizeof (struct argument_list));
+	token -> argument.argument_type = mutabor_argument_distance;
+	token -> next = NULL;
+	return token;
+}
+struct argument_list *
+get_new_anchor_in_argument_list (mutabor_box_type * box)
+
+{
+
+	struct argument_list * token;
+	TRACE;
+
+	token = (argument_list*) xmalloc (box, (size_t) sizeof (struct argument_list));
+	token -> argument.argument_type = mutabor_argument_anchor;
+	token -> next = NULL;
+	return token;
+}
+
 #if 0
-
-		if ( ! strcasecmp (name, (*lauf)->name)) {
-			fatal_error(17,(name)); /* Parametername doppelt: name */
-		}
-
-#endif
-	}
-
-	(* lauf) = (argument_liste*) xmalloc (box, (size_t) sizeof (struct argument_liste));
-	(* lauf) -> argument.argument_typ = parameter;
-	(* lauf) -> argument.u.parameter.parameter_nummer = 0;
-	(* lauf) -> argument.u.parameter.parameter_name = parameter_name;
-	(* lauf) -> next          = NULL;
-}
-
-static struct argument_liste * get_last_argument_liste (mutabor_box_type * box)
+static struct argument_list * get_last_argument_liste (mutabor_box_type * box)
 {
 	TRACE;
 	return box->file->list_of_argumente;
 }
+#endif
 
 
 /********* Einleseroutinen fuer Aktions-liste          *********/
@@ -382,7 +421,9 @@ void init_aktions_liste (mutabor_box_type * box)
 }
 
 
-void get_new_aktion_aufruf_element (mutabor_box_type * box,const char * name)
+void get_new_aktion_aufruf_element (mutabor_box_type * box,
+				    const char * name,
+				    struct argument_list * arguments)
 
 {
 
@@ -394,7 +435,7 @@ void get_new_aktion_aufruf_element (mutabor_box_type * box,const char * name)
 	(* lauf) = (aktions_liste*) xmalloc (box,(size_t) sizeof (struct aktions_liste));
 	(* lauf) -> aktions_typ           = aktion_aufruf;
 	(* lauf) -> u.aktion_aufruf.name  = name;
-	(* lauf) -> u.aktion_aufruf.argument_liste = get_last_argument_liste (box);
+	(* lauf) -> u.aktion_aufruf.argument_liste = arguments;
 	(* lauf) -> next                  = NULL;
 }
 
@@ -497,7 +538,7 @@ void get_new_relativ_anteil (double f,
 /************************/
 
 
-
+#if 0
 void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 {
 
@@ -512,28 +553,27 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 		     lauf_anw; lauf_anw=lauf_anw->next) {
 			if (lauf_anw->aktion->aktions_typ == aktion_aufruf) {
 
-				struct argument_liste * lauf_arg;
+				struct argument_list * lauf_arg;
 
 				for (lauf_arg=lauf_anw->aktion->u.aktion_aufruf.argument_liste;
 				     lauf_arg;
 				     lauf_arg=lauf_arg->next) {
-					switch (lauf_arg->argument.argument_typ) {
+					switch (lauf_arg->argument.argument_type) {
 
-					case zahl:
+					case mutabor_argument_integer:
 						TRACE;
 						/* OK */
 						break;
 
-					case parameter:
+					case mutabor_argument_parameter:
 						TRACE;
-						if ( (! strcasecmp (lauf_arg->argument.u.parameter.parameter_name,
-								"ABSTAND")) || !strcasecmp (lauf_arg->argument.u.parameter.parameter_name,
-											"DISTANCE")) {
-							lauf_arg->argument.u.parameter.parameter_nummer = 0;
+						if ( (! strcasecmp (lauf_arg->argument.u.parameter.parameter_name, "ABSTAND")) 
+|| !strcasecmp (lauf_arg->argument.u.parameter.parameter_name, "DISTANCE")) {
+							lauf_arg->argument.u.parameter.parameter_number = interpreter_parameter_distance;
 						} else if ( (!strcasecmp (lauf_arg->argument.u.parameter.parameter_name,
 								      "ZENTRUM"))|| !strcasecmp (lauf_arg->argument.u.parameter.parameter_name,
 											     "CENTER")) {
-							lauf_arg->argument.u.parameter.parameter_nummer	= 1;
+							lauf_arg->argument.u.parameter.parameter_number	= interpreter_parameter_anchor;
 						} else
 							mutabor_error_message(box,
 									      false,
@@ -543,12 +583,21 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 									      (lauf->name));
 						break;
 
+					case mutabor_argument_distance:
+						TRACE;
+						lauf_arg->argument.u.parameter.parameter_number = interpreter_parameter_distance;
+						break;
+
+					case mutabor_argument_anchor:
+						lauf_arg->argument.u.parameter.parameter_number	= interpreter_parameter_anchor;
+						break;
+
 					default:
 						TRACE;
 						mutabor_error_message(box,
-								      false,
+								      internal_error,
 								      _("Invalid argument type %d detected at\n%s:%n"),
-								      lauf_arg->argument.argument_typ,
+								      lauf_arg->argument.argument_type,
 								      _T(__FILE__), __LINE__);
 
 						break;
@@ -558,7 +607,7 @@ void setze_nummer_von_abstand_und_zentrum (mutabor_box_type * box)
 		}
 	}
 }
-
+#endif
 
 
 int yyparse(mutabor_box_type * box);
@@ -623,7 +672,7 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 	}
 
 
-	setze_nummer_von_abstand_und_zentrum (box);
+	//	setze_nummer_von_abstand_und_zentrum (box);
 
 	check_konsistenz (box);
 
@@ -684,7 +733,7 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 			for (lauf=box->file->list_of_umstimmungen; lauf; lauf=lauf->next) {
 
-				struct parameter_liste * help;
+				struct parameter_list * help;
 				printf ("\nName: %s, Parameter: ", lauf->name);
 
 				for (help = lauf->parameter_liste; help; help = help->next ) {
@@ -881,13 +930,29 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 static void drucke_argument (struct argument * z_or_p)
 {
-	if (z_or_p -> argument_typ == zahl) {
-		printf (" Number: %d ", z_or_p->u.zahl.zahl);
+	switch (z_or_p -> argument_type) {
+	case mutabor_argument_integer: {
+		printf (" Number: %d ", z_or_p->u.integer.number);
+		break;
 	}
-	else {
-		printf (" Parameter: %s, Nr: %d ",
-			z_or_p->u.parameter.parameter_name,
-			z_or_p->u.parameter.parameter_nummer);
+	case mutabor_argument_parameter: {
+		printf (" Parameter: %s, Ptr: %p , Nr:  %d ",
+			z_or_p->u.parameter.name,
+			(void *)z_or_p->u.parameter.parameter,
+			z_or_p->u.parameter.parameter?
+			z_or_p->u.parameter.parameter->index:0);
+		break;
+	}
+	case mutabor_argument_distance: {
+		printf (" ANCHOR ");
+		break;
+	}
+	case mutabor_argument_anchor: {
+		printf (" ANCHOR ");
+		break;
+	}
+	default:
+		printf (" {unknown argument type} ");
 	}
 }
 
@@ -977,7 +1042,7 @@ static void print_ausloeser (mutabor_box_type * box, struct ausloeser * this_)
 				break;
 			default:
 				mutabor_error_message(box,
-						      false,
+						      internal_error,
 						      _("Invalid event type %d detected at\n%s:%d"),
 						      (this_->ausloeser_typ),
 						      __FILE__,__LINE__);
@@ -1020,7 +1085,7 @@ void get_new_intervall (mutabor_box_type * box, const char *name, double wert)
 	for (lauf= & box->file->list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The interval name %s was used twice"),
 					      (name)); /* Intervallname doppelt */
 		}
@@ -1028,7 +1093,7 @@ void get_new_intervall (mutabor_box_type * box, const char *name, double wert)
 
 	if (fabs (wert) < 0.001)
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Bad interval value in %s"),
 				      (name));
 
@@ -1049,7 +1114,7 @@ void get_new_intervall_komplex (mutabor_box_type * box, const char *name)
 	for (lauf= & box->file->list_of_intervalle; * lauf; lauf= &(*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The interval name %s was used twice"),
 					      (name)); /* Intervallname doppelt */
 		}
@@ -1077,7 +1142,7 @@ void get_new_ton_absolut (mutabor_box_type * box, const char *name, double wert)
 	for (lauf= & box->file->list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (* lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The tone name %s was used twice."),
 					      (name)); /* Tonname doppelt */
 		}
@@ -1102,7 +1167,7 @@ void get_new_ton_komplex_positive (mutabor_box_type * box, const char *name, con
 	for (lauf= & box->file->list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The tone name %s was used twice."),
 					      (name)); /* Tonname doppelt */
 		}
@@ -1127,7 +1192,7 @@ void get_new_ton_komplex_negative (mutabor_box_type * box, const char *name, con
 	for (lauf= & box->file->list_of_toene; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The tone name %s was used twice."),
 					      (name)); /* Tonname doppelt */
 		}
@@ -1144,7 +1209,7 @@ void get_new_ton_komplex_negative (mutabor_box_type * box, const char *name, con
 
 		if (help == NULL) {
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Internal error while creating interval “%s” at\n%s:%d"),
 					      ((*lauf)->name),
 					      _T(__FILE__),
@@ -1196,7 +1261,7 @@ void get_new_tonsystem (mutabor_box_type * box, const char * name, int taste)
 	for (lauf= & box->file->list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The tone system name “%s” was used twice"),
 					      (name)); /* Tonsystemname doppelt */
 		}
@@ -1221,7 +1286,7 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 	for (lauf= & box->file->list_of_tonsysteme; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The tone system name “%s” was used twice"),
 					      (name)); /* Tonsystemname doppelt */
 		}
@@ -1236,7 +1301,7 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char * name, int 
 
 		if (help == NULL)
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Internal error while creating interval “%s” at\n%s:%d"),
 					      ((*lauf)->name),
 					      _T(__FILE__),
@@ -1270,7 +1335,7 @@ void init_umstimmung (mutabor_box_type * box, const char * name)
 	for (lauf= box->file->list_of_umstimmungen; lauf; lauf= lauf -> next) {
 		if ( ! strcasecmp (name, lauf -> name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The retuning name %s was used twice"),
 					      (name)); /* Umstimmungsname doppelt */
 		}
@@ -1289,18 +1354,62 @@ void get_new_umstimmung (mutabor_box_type * box)
 
 	struct umstimmung * * lauf;
 	TRACE;
-
 	for (lauf= & box->file->list_of_umstimmungen; * lauf; lauf= & (*lauf)->next) {}
-
 	(* lauf) = box->file->tmp_umstimmung;
+	
 }
 
-void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box)
+void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
+					    parameter_list * list)
 {
 	TRACE;
-	box->file->tmp_umstimmung -> parameter_liste = get_last_parameter_liste (box);
+	box->file->tmp_umstimmung -> parameter_liste = list;
 }
 
+inline static void initialize_argument(mutabor_box_type * box,
+				       struct argument * argument,
+				       enum argument_typ type,
+				       double zahl_wert, 
+				       const char * parameter_name)
+{
+	argument->argument_type = type;
+
+	switch (type) {
+	case mutabor_argument_integer:
+		argument->u.integer.number = (int) zahl_wert;
+		break;
+	case mutabor_argument_parameter: {
+  	        argument->u.parameter.name = parameter_name;
+		argument->u.parameter.parameter = get_parameter_by_name(box, 
+									parameter_name,
+									box->file->tmp_umstimmung->parameter_liste);
+
+		if (argument->u.parameter.parameter == NULL) {
+			mutabor_error_message(box,
+					      compiler_error,
+					      _("Undefined parameter name “%s” in “%s”."),
+					      (parameter_name),
+					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
+		}
+		break;
+	}
+	case mutabor_argument_distance: {
+	    argument->u.parameter.parameter = NULL;
+	    argument->u.parameter.name = _("DISTANCE");
+	}
+	case mutabor_argument_anchor: {
+		argument->u.parameter.parameter = NULL;
+		argument->u.parameter.name = _("CENTER");
+	}
+	default:
+		mutabor_error_message(box,
+				      internal_error,
+				      _("Invalid parameter argument type %d for argument %s while calling %s. Please, report the error to the MUTABOR team."),
+				      argument->argument_type,
+				      parameter_name,
+				      __FUNCTION__);
+	}
+}
 
 
 /************ Die folgenden Funktionen tragen je eine         */
@@ -1314,154 +1423,64 @@ void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box)
 void get_umstimmung_taste_abs (mutabor_box_type * box, 
 			       enum argument_typ argument,
 			       double zahl_wert, 
-			       const char * parameter)
+			       const char * parameter_name)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_taste_abs;
-	box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
-		argument.argument_typ
-		= argument;
-
-	if (argument == zahl) {
-		box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
-			argument.u.zahl.zahl = (int) zahl_wert;
-	} else {
-		int i = parameter_nummer (0, parameter,
-		                          box->file->tmp_umstimmung->parameter_liste);
-
-		if (i == EOF) {
-			mutabor_error_message(box,
-					      false,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (parameter),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		}
-
-		box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
-
-			argument.u.parameter.
-			parameter_nummer = i;
-		box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
-			argument.u.parameter.
-			parameter_name = parameter;
-	}
+	initialize_argument(box,
+			    &(box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
+			      argument),
+			    argument,
+			    zahl_wert,
+			    parameter_name);
 }
 
 void get_umstimmung_taste_rel (mutabor_box_type * box, 
 			       enum argument_typ argument,
 			       double zahl_wert, 
-			       const char * parameter, 
+			       const char * parameter_name, 
 			       char vorzeichen)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_taste_rel;
-	box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
-		argument.argument_typ
-		= argument;
-
-	if (argument == zahl) {
-		box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
-			argument.u.zahl.zahl = (int) zahl_wert;
-	} else {
-		int i = parameter_nummer (0, parameter,
-		                          box->file->tmp_umstimmung->parameter_liste);
-
-		if (i == EOF) {
-			mutabor_error_message(box,
-					      false,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (parameter),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		}
-
-		box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
-
-			argument.u.parameter.
-			parameter_nummer = i;
-		box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
-			argument.u.parameter.
-			parameter_name = parameter;
-	}
-
-	box->file->tmp_umstimmung -> u.umstimmung_taste_rel.rechenzeichen
-
-		= vorzeichen;
+	initialize_argument(box,
+			    &(box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
+			      argument),
+			    argument,
+			    zahl_wert,
+			    parameter_name);
 }
 
 void get_umstimmung_breite_abs (mutabor_box_type * box, 
 				enum argument_typ argument,
 				double zahl_wert,
-				const char * parameter)
+				const char * parameter_name)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_breite_abs;
-	box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
-		argument.argument_typ
-		= argument;
-
-	if (argument == zahl) {
-		box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
-			argument.u.zahl.zahl = (int) zahl_wert;
-	} else {
-		int i = parameter_nummer (0, parameter,
-		                          box->file->tmp_umstimmung->parameter_liste);
-
-		if (i == EOF) {
-			mutabor_error_message(box,
-					      false,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (parameter),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		}
-
-		box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
-
-			argument.u.parameter.
-			parameter_nummer = i;
-		box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
-			argument.u.parameter.
-			parameter_name = parameter;
-	}
+	initialize_argument(box,
+			    &(box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
+			      argument),
+			    argument,
+			    zahl_wert,
+			    parameter_name);
 }
 
 void get_umstimmung_breite_rel (mutabor_box_type * box, 
 				enum argument_typ argument,
 				double zahl_wert,
-				const char * parameter,
+				const char * parameter_name,
 				char vorzeichen)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_breite_rel;
-	box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
-		argument.argument_typ
-		= argument;
-
-	if (argument == zahl) {
-		box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
-			argument.u.zahl.zahl = (int) zahl_wert;
-	} else {
-		int i = parameter_nummer (0, parameter,
-		                          box->file->tmp_umstimmung->parameter_liste);
-
-		if (i == EOF) {
-			mutabor_error_message(box,
-					      false,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (parameter),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		}
-
-		box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
-
-			argument.u.parameter.
-			parameter_nummer = i;
-		box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
-			argument.u.parameter.
-			parameter_name = parameter;
-	}
-
+	initialize_argument(box,
+			    &(box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
+			      argument),
+			    argument,
+			    zahl_wert,
+			    parameter_name);
 	box->file->tmp_umstimmung -> u.umstimmung_breite_rel.rechenzeichen
-
 		= vorzeichen;
 }
 
@@ -1581,7 +1600,7 @@ void get_umstimmung_wiederholung_abs_negative (mutabor_box_type * box)
 
 		if (help == NULL)
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Internal error at\n%s:%d"),
 					      _T(__FILE__),
 					      __LINE__);
@@ -1654,10 +1673,11 @@ void get_umstimmungs_bund_element (const char * name)
 		for (params = (* lauf) -> parameterliste;
 		     params;
 		     params = params -> next ) {
-			if (parameter_nummer (0,params->name,
+			if (parameter_nummer (box,
+					      params->name,
 			                      box->file->tmp_umstimmung -> parameterliste)  == EOF ) {
 				mutabor_error_message(box,
-false,
+internal_error,
 						      _T("Error 31"),(params->name),((*lauf)->name)); /* Parameter n.dekl. */
 			}
 		}
@@ -1687,24 +1707,26 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box)
 
 			if (aktions_lauf -> aktions_typ == aktion_aufruf) {
 
-				struct argument_liste * argument_lauf;
+				struct argument_list * argument_lauf;
 
 				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
 				     argument_lauf;
 				     argument_lauf = argument_lauf -> next ) {
-					if (argument_lauf -> argument.argument_typ == parameter) {
-						int i = parameter_nummer (0,
-						                          argument_lauf->argument.u.parameter.parameter_name,
-						                          box->file->tmp_umstimmung -> parameter_liste);
-
-						if (i == EOF ) {
+#warning make switch
+					if (argument_lauf -> argument.argument_type 
+					    == mutabor_argument_parameter) {
+					    struct parameter_list * param
+						= get_parameter_by_name (box,
+									 argument_lauf->argument.u.parameter.name,
+									 box->file->tmp_umstimmung -> parameter_liste);
+						if (param == NULL ) {
 							mutabor_error_message(box,
-									      false,
+									      compiler_error,
 									      _("Undefined parameter name “%s” in “%s”."),
-									      (argument_lauf->argument.u.parameter.parameter_name),
+									      (argument_lauf->argument.u.parameter.name),
 									      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
 						} else {
-							argument_lauf->argument.u.parameter.parameter_nummer = i;
+							argument_lauf->argument.u.parameter.parameter = param;
 						} /* if */
 					} /* if */
 				}  /* for argument_lauf */
@@ -1768,7 +1790,8 @@ void get_umstimmungs_case_aufrufs_element (const char * aktion)
 		     params;
 		     params = params -> next ) {
 			if (params -> argument.argument_typ == parameter) {
-				if (parameter_nummer (0,params->argument.u.parameter.parameter_name,
+				if (parameter_nummer (box,
+						      params->argument.u.parameter.parameter_name,
 				                      box->file->tmp_umstimmung -> parameter_liste)  == EOF ) {
 					mutabor_error_message(box,
 							      _T("Error 31"),
@@ -1842,10 +1865,10 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.argument
-		.argument_typ = zahl;
+		.argument_type = mutabor_argument_integer;
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.argument
-		.u.zahl.zahl = selector;
+		.u.integer.number = selector;
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.umstimmungs_case_liste = box->file->tmp_umstimmungs_case_liste;
 
@@ -1870,25 +1893,27 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 				if (aktions_lauf -> aktions_typ != aktion_aufruf) 
 					continue;
 
-				struct argument_liste * argument_lauf;
+				struct argument_list * argument_lauf;
 
 				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
 				     argument_lauf;
 				     argument_lauf = argument_lauf -> next ) {
-					if (argument_lauf -> argument.argument_typ != parameter)
+#warning make switch
+					if (argument_lauf -> argument.argument_type != mutabor_argument_parameter)
 						continue;
-					int i = parameter_nummer (0,
-								  argument_lauf->argument.u.parameter.parameter_name,
-								  box->file->tmp_umstimmung -> parameter_liste);
+					struct parameter_list * param 
+					    = get_parameter_by_name (box,
+								     argument_lauf->argument.u.parameter.name,
+								     box->file->tmp_umstimmung -> parameter_liste);
 
-					if (i == EOF ) {
+					if (param == NULL) {
 						mutabor_error_message(box,
-								      false,
+								      compiler_error,
 								      _("Undefined parameter name “%s” in “%s”."),
-								      (argument_lauf->argument.u.parameter.parameter_name),
+								      (argument_lauf->argument.u.parameter.name),
 								      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
 					} else {
-						argument_lauf->argument.u.parameter.parameter_nummer = i;
+						argument_lauf->argument.u.parameter.parameter = param;
 					} /* if */
 				}  /* for argument_lauf */
 			}  /* for aktions_lauf */
@@ -1903,84 +1928,64 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
-	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-		.argument
-		.argument_typ = parameter;
-	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-		.argument
-		.u.parameter.parameter_name = selector;
-
-	/* und test, ob selector als Parameter deklariert ist. */
-
-	{
-		int i = parameter_nummer (0,selector, box->file->tmp_umstimmung -> parameter_liste);
-
-		if (i == EOF ) {
-			mutabor_error_message(box,
-					      false,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (selector),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		} else {
-			box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-				.argument
-				.u.parameter.parameter_nummer = i;
-
-		}
-	}
-
+	initialize_argument(box,
+			    &(box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
+			      .argument),
+			    mutabor_argument_parameter,
+			    0, 
+			    selector);
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.umstimmungs_case_liste = box->file->tmp_umstimmungs_case_liste;
 
-
-
-	/* check, ob die Parameter zulÑssig sind */
-
+#if 0
+	/* arguments to actions are checked as soon as they are parsed 
+	   this will change when we use return parameters of reduction rules.
+	   Then, this part must be rewritten and reactivated */
+	/* check whether the argumets are valid */
 	{
 
-		struct case_liste * case_lauf;
+	    struct case_liste * case_lauf;
 
-		for (case_lauf = box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-			     .umstimmungs_case_liste ;
-		     case_lauf;
-		     case_lauf = case_lauf -> next) {
+	    for (case_lauf = box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
+		     .umstimmungs_case_liste ;
+		 case_lauf;
+		 case_lauf = case_lauf -> next) {
 
-			struct aktions_liste * aktions_lauf;
+		struct aktions_liste * aktions_lauf;
 
-			for (aktions_lauf = case_lauf -> case_aktion;
-			     aktions_lauf;
-			     aktions_lauf = aktions_lauf -> next) {
+		for (aktions_lauf = case_lauf -> case_aktion;
+		     aktions_lauf;
+		     aktions_lauf = aktions_lauf -> next) {
 
-				if (aktions_lauf -> aktions_typ != aktion_aufruf) 
-					continue;
+		    if (aktions_lauf -> aktions_typ != aktion_aufruf) 
+			continue;
 
-				struct argument_liste * argument_lauf;
+		    struct argument_list * argument_lauf;
 
-				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
-				     argument_lauf;
-				     argument_lauf = argument_lauf -> next ) {
-					if (argument_lauf -> argument.argument_typ == parameter) 
-						continue;
-					int i = parameter_nummer (0,
-								  argument_lauf->argument.u.parameter.parameter_name,
-								  box->file->tmp_umstimmung -> parameter_liste);
+		    for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
+			 argument_lauf;
+			 argument_lauf = argument_lauf -> next ) {
+#warning make extra function assign_parameters_to_arguments
+			if (argument_lauf -> argument.argument_type == mutabor_argument_parameter) 
+			    continue;
+			int i = parameter_nummer (box,
+						  argument_lauf->argument.u.parameter.parameter_name,
+						  box->file->tmp_umstimmung -> parameter_liste);
 
-					if (i == EOF ) {
-						mutabor_error_message(box,
-								      false,
-								      _("Undefined parameter name “%s” in “%s”."),
-								      (argument_lauf->argument.u.parameter.parameter_name),
-								      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-					} else {
-						argument_lauf->argument.u.parameter.parameter_nummer = i;
-					} /* if */
-				}  /* for argument_lauf */
- 			}  /* for aktions_lauf */
-		}  /* for case_lauf */
+			if (i == EOF ) {
+			    mutabor_error_message(box,
+						  compiler_error,
+						  _("Undefined parameter name “%s” in “%s”."),
+						  (argument_lauf->argument.u.parameter.parameter_name),
+						  (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
+			} else {
+			    argument_lauf->argument.u.parameter.parameter_number = i;
+			} /* if */
+		    }  /* for argument_lauf */
+		}  /* for aktions_lauf */
+	    }  /* for case_lauf */
 	}
-
-
-
+#endif
 }
 
 
@@ -2035,7 +2040,7 @@ void init_tastenliste (mutabor_box_type * box)
 	for (lauf= & box->file->list_of_harmonien; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The pattern name %s was used twice"),
 					      (name)); /* Harmoniename doppelt */
 		}
@@ -2153,7 +2158,7 @@ void get_ausloeser_harmonie_form (mutabor_box_type * box)
 
 	if (strlen (name) != 1) {
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("A Key needs to be a single character (got “%s”)"),
 				      (name));
 	}
@@ -2216,7 +2221,7 @@ void get_new_anweisung (mutabor_box_type * box)
 	for (lauf= & box->file->list_of_logiken; * lauf; lauf= & (*lauf)->next) {
 		if ( ! strcasecmp (name, (*lauf)->name)) {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("The logic name %s was used twice"),
 					      (name)); /* Logikname doppelt */
 		}
@@ -2266,7 +2271,7 @@ void vervollstaendige_logik (mutabor_box_type * box)
 		{
 			if ( midi_in == (*list_to_insert)->midi_in) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("The MIDI-Instrument %d was used twice"),
 						      midi_in); /* MIDI-Instrument doppelt */
 			}
@@ -2283,7 +2288,7 @@ void vervollstaendige_logik (mutabor_box_type * box)
 	if ( (midi_in < 1) || (midi_in > 16) )
 		{
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("Bad MIDI channel %d (valid: 1...16)"),
 					      midi_in);
 		}
@@ -2292,13 +2297,13 @@ void vervollstaendige_logik (mutabor_box_type * box)
 		{
 			if ( (midi_von < 1) || (midi_von > 16) )
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Bad MIDI from channel %d (valid: 1...16)"),
 						      midi_von);
 			
 			if ( (midi_bis < 1) || (midi_bis > 16) )
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Bad MIDI to channel %d (valid: 1...16)"),
 						      midi_bis);
 		}
@@ -2306,7 +2311,7 @@ void vervollstaendige_logik (mutabor_box_type * box)
 	if ( (midi_umleit < 0) || (midi_umleit > 16) )
 		{
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("Bad MIDI rerouting channel %d (valid: 1...16)"),
 					      midi_umleit);
 		}
@@ -2342,7 +2347,7 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 		if ( ! strcasecmp (name, box->file->toene[i]->name)) return i;
 
 	mutabor_error_message(box,
-			      false,
+			      compiler_error,
 			      _("Undefined tone: %s"),
 			      (name)); /* Ton n.dekl. */
 
@@ -2358,7 +2363,7 @@ static void belege_toene (struct ton **toene, struct ton * liste)
 		if (mutabor_adjacent (box->file->matrix, startknoten, i)) {
 			if (box->file->visited [i]) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Tones %s and %s depend on each other."),
 						      (box->file->toene [startknoten]->name),
 						      (box->file->toene [i]->name));
@@ -2401,7 +2406,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 
 	default:
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("Invalid tone type %d detected at\n%s:%d"),
 				      box->file->toene[k]->ton_typ,
 				      (__FILE__),
@@ -2447,7 +2452,7 @@ static void berechne_ton_endgueltig (mutabor_box_type * box, int k)
 				break;
 			default:
 				mutabor_error_message(box,
-						      false,
+						      internal_error,
 						      _("Invalid tone type %d detected at\n%s:%d"),
 						      box->file->toene[i]->ton_typ,
 						      (__FILE__),
@@ -2573,7 +2578,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 
 			if (help_harmonie == NULL) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Undefined harmony “%s” in logic %s."),
 						      (ausloeser->u.ausloeser_harmonie_form.name),
 						      (name));
@@ -2585,7 +2590,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				/* OK */
 			} else {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("Lowest chroma %d of harmonic form %s in logic %s is not a member of that harmony. This harmonic form trigger will be ignored."),
 						      ausloeser->u.ausloeser_harmonie_form.vortaste,
 						      (ausloeser->u.ausloeser_harmonie_form.name),
@@ -2602,7 +2607,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				/* OK */
 			} else {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("Highest chroma %d of harmonic form %s in logic %s is not a member of that harmony. This harmonic form trigger will be ignored."),
 						      ausloeser->u.ausloeser_harmonie_form.nachtaste,
 						      (ausloeser->u.ausloeser_harmonie_form.name),
@@ -2619,7 +2624,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 
 			if (help_harmonie == NULL) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Undefined harmony: %s (in logic %s)"),
 						      
 						      (ausloeser->u.ausloeser_harmonie.name),
@@ -2634,7 +2639,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				/* OK */
 			} else {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("Lowest chroma %d of harmony %s in logic %s is not a member of that harmony. This harmony trigger will be ignored."),
 						      ausloeser->u.ausloeser_harmonie.vortaste,
 						      (ausloeser->u.ausloeser_harmonie.name),
@@ -2651,7 +2656,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				/* OK */
 			} else {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("Lowest chroma %d of harmony %s in logic %s is not a member of that harmony. This harmony trigger will be ignored."),
 						      ausloeser->u.ausloeser_harmonie.nachtaste,
 						      (ausloeser->u.ausloeser_harmonie.name),
@@ -2670,7 +2675,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 			if (midi_lauf -> midi_code < 0x80 ||
 			    midi_lauf -> midi_code > 0xff ) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Bad MIDI-Code %x in logic %s (expecting status byte %s )"),
 						      midi_lauf->midi_code, 
 						      (name), 
@@ -2681,7 +2686,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				int oldmidicode = midi_lauf->midi_code;
 				midi_lauf -> midi_code &= 0xFFF0;
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("MIDI event in logic %s does not start with channel 0 status byte.\nGot byte #%x. Value corrected to #%x."),
 						      (name),
 						      oldmidicode,
@@ -2694,7 +2699,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				if (midi_lauf -> midi_code < 0 ||
 				    midi_lauf -> midi_code > 0x7f ) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("Bad MIDI-Code #%x in logic %s (expecting a data byte in the range #00...#7f )"),
 							      midi_lauf->midi_code,
 							      (name));
@@ -2723,7 +2728,7 @@ int case_label_enthalten_in_case_liste (double case_label, struct case_liste * l
 				if (midi_lauf -> midi_code < 0 ||
 				    midi_lauf -> midi_code > 0xffffff) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("Bad MIDI-Code in logic %s, expecting a byte I got %d=#%x.\n\
 Note: Each number can hold at maximum 3 bytes.\n\
 Trying to recover..."),
@@ -2752,7 +2757,7 @@ Trying to recover..."),
 			if (midi_lauf -> midi_code < 0x80 ||
 			    midi_lauf -> midi_code > 0xff ) {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("MIDI event in logic %s does not start with status byte.\n\
 Got byte #%x. This will be probably ignored by your MIDI device."),
 						      (name),
@@ -2762,7 +2767,7 @@ Got byte #%x. This will be probably ignored by your MIDI device."),
 			if (midi_lauf -> midi_code >= 0x80 &&
 			    midi_lauf -> midi_code < 0xf0 && midi_lauf->midi_code & 0x0f ) {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("MIDI event in logic %s must be defined for channel 0, only.\n\
 Got byte %x. Value corrected."),
 						      (name),
@@ -2796,7 +2801,7 @@ Got byte %x. Value corrected."),
 
 			if (i == 0) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Undefined action: %s (in logic %s)"),
 						      aktionen->u.aktion_aufruf.name,
 						      name);
@@ -2804,7 +2809,7 @@ Got byte %x. Value corrected."),
 
 			if (i > 1) {
 				mutabor_error_message(box,
-						      true,
+						      compiler_warning,
 						      _("Non well defined event %s in logic %s"),
 						      (aktionen->u.aktion_aufruf.name), 
 						      (name));
@@ -2814,14 +2819,14 @@ Got byte %x. Value corrected."),
 				if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 				    > parameter_list_laenge (help_umstimmung->parameter_liste)) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("In logic %s: Too many parameters while calling retuning %s."),
 							      (name), 
 							      (aktionen->u.aktion_aufruf.name));
 				} else if (argument_list_laenge (aktionen->u.aktion_aufruf.argument_liste)
 					   < parameter_list_laenge (help_umstimmung->parameter_liste)) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("In logic %s: Too few parameters while calling retuning %s."),
 							      (name), 
 							      (aktionen->u.aktion_aufruf.name));
@@ -2832,7 +2837,7 @@ Got byte %x. Value corrected."),
 				    != 0 ) {
 
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("In logic %s: Tonesystem %s must be called without parameters."),
 							      (name), 
 							      (aktionen->u.aktion_aufruf.name));
@@ -2842,7 +2847,7 @@ Got byte %x. Value corrected."),
 				    != 0 ) {
 
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("In logic %s: Logic %s must be called without parameters."),
 							      (name),
 							      (aktionen->u.aktion_aufruf.name));
@@ -2854,7 +2859,7 @@ Got byte %x. Value corrected."),
 		case aktion_harmony_analysis: {
 			if (!may_do_harmony_analysis) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("In logic %s: Harmony analysis may be performed only after a logic or tonesystem change."),
 						      (name));
 			}
@@ -2862,7 +2867,7 @@ Got byte %x. Value corrected."),
 		}
 		default:
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Internal error in check_aktionen() while processing logic %s.\n\
 Unknown action type %d.\n\
 Please, report this error to the Mutabor team."),
@@ -2926,7 +2931,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
 		     ) return i;
 
 	mutabor_error_message(box,
-			      false,
+			      compiler_error,
 			      _("Undefined retuning: %s"),
 			      (name)); /* Umst.n.dekl. */
 	
@@ -2942,7 +2947,7 @@ static void belege_zyklenfeld (struct umst_oder_logik *zyklen_feld,
 		if (mutabor_u_adjacent (box->file->u_matrix, startknoten, i)) {
 			if (box->file->u_visited [i]) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Retunings/logics %s and %s depend on each other"),
 						      box->file->zyklen_feld [startknoten].umst_oder_logik_typ == typ_umstimmung ?
 						      (box->file->zyklen_feld [startknoten].u.umstimmung->name) :
@@ -2984,7 +2989,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 			if (lauf->taste < MUTABOR_KEYRANGE_MIN_KEY  ||  lauf->taste > MUTABOR_KEYRANGE_MAX_KEY) {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Bad key %d (valid: %d...%d) in tonesystem %s"),
 						      lauf->taste,
 						      MUTABOR_KEYRANGE_MIN_KEY,
@@ -2998,7 +3003,7 @@ static void check_konsistenz (mutabor_box_type * box)
 				if ((ton_lauf->name != NULL) &&
 				    (get_ton (box, ton_lauf->name, box->file->list_of_toene) == NULL)) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("Undefined tone: %s (in tone system %s)"),
 							      (ton_lauf->name),
 							      (lauf->name));
@@ -3057,7 +3062,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 						if (lauf_ton -> ton_typ == ton_absolut) {
 							mutabor_error_message(box,
-									      false,
+									      internal_error,
 									      _("Fixed tone %s in retuning %s"),
 									      (lauf_ton->name),
 									      (lauf->name));
@@ -3067,7 +3072,7 @@ static void check_konsistenz (mutabor_box_type * box)
 						if (strcasecmp (lauf_ton->name,
 							    lauf_ton->u.ton_komplex.bezugston)) {
 							mutabor_error_message(box,
-									      false,
+									      internal_error,
 									      _("Tone does %s not match its reference tone %s. Dectected in retuning code at %s:%d"),
 									      (lauf_ton->name),
 									      (lauf_ton->u.ton_komplex.bezugston),
@@ -3078,7 +3083,7 @@ static void check_konsistenz (mutabor_box_type * box)
 						if ((lauf_ton->name[0] != '@') &&
 						    (get_ton (box, lauf_ton->name, box->file->list_of_toene) == NULL)) {
 							mutabor_error_message(box,
-									      false,
+									      compiler_error,
 									      _("Undefined tone: %s (in retuning %s)"),
 									      (lauf_ton->name),
 									      (lauf->name));
@@ -3127,7 +3132,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 								if (help_logik == NULL) {
 									mutabor_error_message(box,
-											      false,
+											      compiler_error,
 											      _("Undefined retuning: %s (in retuning %s)."),
 											      (help_aktionen -> u.aktion_aufruf.name),
 											      (lauf->name));
@@ -3135,7 +3140,7 @@ static void check_konsistenz (mutabor_box_type * box)
 								} else {
 									if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
 										mutabor_error_message(box,
-												      false,
+												      compiler_error,
 												      _("In collection %s : call to %s mustn't have parameters."),
 												      (lauf -> name) ,
 												      (help_aktionen -> u.aktion_aufruf.name));
@@ -3144,7 +3149,7 @@ static void check_konsistenz (mutabor_box_type * box)
 							} else {
 								if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
 									mutabor_error_message(box,
-											      false,
+											      compiler_error,
 											      _("In collection %s : call to %s mustn't have parameters"),
 											      (lauf -> name), 
 											      (help_aktionen -> u.aktion_aufruf.name));
@@ -3154,7 +3159,7 @@ static void check_konsistenz (mutabor_box_type * box)
 							if (argument_list_laenge (help_aktionen -> u.aktion_aufruf.argument_liste)
 							    != parameter_list_laenge (umst -> parameter_liste)) {
 								mutabor_error_message(box,
-										      false,
+										      compiler_error,
 										      _("In retuning %s and %s : Bad parameters"),
 										      (lauf->name),
 										      (help_aktionen -> u.aktion_aufruf.name));
@@ -3187,7 +3192,7 @@ static void check_konsistenz (mutabor_box_type * box)
 					      case_label_enthalten_in_case_liste (case_lauf -> case_label,
 										  case_lauf -> next ) ) {
 						mutabor_error_message(box,
-								      false,
+								      compiler_error,
 								      _("The alternative %d is used twice in %s"),
 								      (int)(case_lauf -> case_label),
 								      (lauf -> name));
@@ -3205,7 +3210,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 						if (anzahl_defaults > 1) {
 							mutabor_error_message(box,
-									      false,
+									      compiler_error,
 									      _("Retuning %s contains more than one ELSE statement"),
 									      (lauf -> name));
 						}
@@ -3239,7 +3244,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 									if (help_logik == NULL) {
 										mutabor_error_message(box,
-												      false,
+												      compiler_error,
 												      _("Undefined retuning: %s (in retuning %s)"),
 												      (help_aktionen -> u.aktion_aufruf.name),
 												      lauf->name);
@@ -3247,7 +3252,7 @@ static void check_konsistenz (mutabor_box_type * box)
 									} else {
 										if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
 											mutabor_error_message(box,
-													      false,
+													      compiler_error,
 													      _("In case %s : call to %s mustn't have parameters"),
 													      (lauf -> name) ,
 													      (help_aktionen -> u.aktion_aufruf.name));
@@ -3256,7 +3261,7 @@ static void check_konsistenz (mutabor_box_type * box)
 								} else {
 									if (help_aktionen -> u.aktion_aufruf.argument_liste != NULL) {
 										mutabor_error_message(box,
-												      false,
+												      compiler_error,
 												      _("In case %s : call to %s mustn't have parameters"),
 												      (lauf -> name) ,
 												      (help_aktionen -> u.aktion_aufruf.name));
@@ -3266,7 +3271,7 @@ static void check_konsistenz (mutabor_box_type * box)
 								if (argument_list_laenge (help_aktionen -> u.aktion_aufruf.argument_liste)
 								    != parameter_list_laenge (umst -> parameter_liste)) {
 									mutabor_error_message(box,
-											      false,
+											      compiler_error,
 											      _("In retuning %s and %s : Bad parameters"),
 											      (lauf->name),
 											      (help_aktionen -> u.aktion_aufruf.name));
@@ -3281,7 +3286,7 @@ static void check_konsistenz (mutabor_box_type * box)
 			default :
 				TRACE;
 				mutabor_error_message(box,
-						      false,
+						      internal_error,
 						      _("Undefined returning type %d detected in\n%s:%d"),
 						      _T(__FILE__),
 						      __LINE__);
@@ -3490,7 +3495,7 @@ static void check_konsistenz (mutabor_box_type * box)
 			if (lauf->ausloeser) {
 				if (lauf->ausloeser->ausloeser_typ == ausloeser_default) {
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("Logic %s must not be called by ELSE"),
 							      (lauf->name));
 				}
@@ -3500,7 +3505,7 @@ static void check_konsistenz (mutabor_box_type * box)
 				if (parser_get_tonsystem (lauf->einstimmungs_name, box->file->list_of_tonsysteme) == NULL) {
 					if ((help_umstimmung=get_umstimmung (lauf->einstimmungs_name, box->file->list_of_umstimmungen)) == NULL) {
 						mutabor_error_message(box,
-								      false,
+								      compiler_error,
 								      _("Undefined initial tuning: %s (in logic %s)"),
 								      (lauf->einstimmungs_name),
 								      (lauf->name));
@@ -3508,7 +3513,7 @@ static void check_konsistenz (mutabor_box_type * box)
 					} else {
 						if (parameter_list_laenge (help_umstimmung -> parameter_liste) != 0) {
 							mutabor_error_message(box,
-									      false,
+									      compiler_error,
 									      _("In logik %s : initial tuning %s mustn't have parameters"),
 									      (lauf->name),
 									      (lauf->einstimmungs_name));
@@ -3526,7 +3531,7 @@ static void check_konsistenz (mutabor_box_type * box)
 
 				if (anweisungs_lauf->ausloeser == NULL)
 					mutabor_error_message(box,
-							      false,
+							      compiler_error,
 							      _("No event defined for action %s. Detected at\n%s:%d"),
 							      (lauf->name),
 							      _T(__FILE__),
@@ -3538,13 +3543,13 @@ static void check_konsistenz (mutabor_box_type * box)
 
 						if (anzahl_default_ausloeser > 1) {
 							mutabor_error_message(box,
-									      false,
+									      compiler_error,
 									      _("Logik %s contains more than one ELSE statement"),
 									      (lauf -> name));
 						} else {
 							if (anweisungs_lauf -> next != NULL)
 								mutabor_error_message(box,
-										      true,
+										      compiler_warning,
 										      _("Event ELSE is last in %s"), 
 										      (lauf -> name));
 						}
@@ -3569,7 +3574,7 @@ static void print_action (struct aktions_liste * action)
 		STUB;
 		break;
 	case aktion_aufruf: {
-		struct argument_liste * help;
+		struct argument_list * help;
 		printf ("                Umstimmungs-name: %s, Parameter: ",
 			action->u.aktion_aufruf.name ? 
 			action->u.aktion_aufruf.name : "(NULL)");

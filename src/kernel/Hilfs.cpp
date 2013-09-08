@@ -102,8 +102,8 @@ void * xalloca (mutabor_box_type * box, size_t size)
 	if (help == NULL) {
 		DEBUGLOG2(other,_T("malloc(%d) failed."),(int)size);
 		mutabor_error_message (box,
-				       true, 
-				       _("Not enough memory or too few data for mutabor in source file"));
+				       error, 
+				       _("Not enough memory for mutabor in source file"));
 				       
 		return NULL;
 	}
@@ -156,7 +156,7 @@ void * xmalloc (mutabor_box_type * box, size_t size)
 	if (size + OFFSET > HEAP_PORTION_SYNTAX) {
 		DEBUGLOG2(other,_T("Error: %d + %d > %d"),(int)size,(int)OFFSET, HEAP_PORTION_SYNTAX);
 		mutabor_error_message(box,
-				      false,
+				      error,
 				      _("A chunk of memory has been requested that was too large (%d > %d)"),
 				      (int)size,
 				      (int)HEAP_PORTION_SYNTAX-size);
@@ -178,7 +178,7 @@ void * xmalloc (mutabor_box_type * box, size_t size)
 			DEBUGLOG2(other,_T("calloc(1,%d) failed"),
 			          (int)sizeof (struct heap_element));
 			mutabor_error_message(box,
-					      false,
+					      error,
 					      _("Could not allocate syntax heap chunk."));
 			return NULL;
 		}
@@ -212,7 +212,7 @@ void * xmalloc (mutabor_box_type * box, size_t size)
 		if (box->file->heap.heap_to_use_syntax -> next == NULL) {
 			DEBUGLOG2(other,_T("heap_to_use_syntax -> nex == NULL"));
 			mutabor_error_message(box,
-					      false,
+					      error,
 					      _("Could not allocate syntax heap chunk."));
 			return NULL;
 		}
@@ -258,7 +258,7 @@ void * xrealloc (mutabor_box_type * box, void * block, size_t newsize)
 		} else {
 			DEBUGLOG2(other,_T("xmalloc (%d) failed"),(int)newsize);
 			mutabor_error_message (box,
-					       true, 
+					       error, 
 					       _("Reallocation of memory failed."));
 				       
 			return NULL;
@@ -277,7 +277,7 @@ void * xcalloc (mutabor_box_type * box, size_t anzahl, size_t size)
 	} else {
 		DEBUGLOG2(other,_T("xmalloc(%d * %d) failed"),(int)anzahl,(int)size);
 		mutabor_error_message (box,
-				       true, 
+				       error, 
 				       _("Not enough memory."));
 				       
 		return NULL;
@@ -345,7 +345,7 @@ void * ymalloc (mutabor_box_type * box, size_t size)
 	if (help1 == NULL || help2 == NULL) {
 		DEBUGLOG2(other,_T("help1 == %p(%d) ; help2 == %p(%d)"),
 		          help1,(int)size,(void*)help2,(int)sizeof(struct mini_heap));
-		mutabor_error_message(box,false,
+		mutabor_error_message(box,error,
 				      _("Not enough memory."));
 		return NULL;
 	}

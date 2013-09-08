@@ -1654,7 +1654,7 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 
 	void MutFrame::CeInDevPause(wxUpdateUIEvent& event)
 	{
-		bool Pause = 0;
+		//		bool Pause = 0;
   
 		const InputDeviceList & list = 
 			InputDeviceClass::GetDeviceList();
@@ -1668,8 +1668,11 @@ TextBoxOpen(WK_ACT, WinAttrs[WK_ACT][i].Box);
 					//			SetStatus(SG_PLAY);
 	
 					return;
-				} else if ( (*In)->GetMode() == DevicePause )
+				} 
+					/*
+					else if ( (*In)->GetMode() == DevicePause )
 					Pause = true;
+					*/
 			}
 		}
 /*

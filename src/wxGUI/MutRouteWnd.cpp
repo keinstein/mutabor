@@ -335,7 +335,7 @@ void MutRouteWnd::createBoxes(wxSizerFlags flags)
 
 void MutRouteWnd::createRoutes(wxSizerFlags flags)
 {
-	MutBoxShape * boxShape;
+	//	MutBoxShape * boxShape;
 	const routeListType & list = RouteClass::GetRouteList();
         for (routeListType::const_iterator route = list.begin();
              route != list.end(); ++route) {

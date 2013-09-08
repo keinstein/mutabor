@@ -65,10 +65,8 @@ TASTE|KEY         BUMP  return MUTABOR_TOKEN_KEY;
 MIDIIN|MIDI\ EIN  BUMP  return MUTABOR_TOKEN_MIDI_IN;
 MIDIOUT|MIDI\ AUS BUMP  return MUTABOR_TOKEN_MIDI_OUT;
 ANSONSTEN|ELSE    BUMP  return MUTABOR_TOKEN_ELSE;
-ABSTAND|DISTANCE  BUMP   { 
-                  BUMP yylval->identifier = strdup(yytext);
-                  return report_parameters?MUTABOR_TOKEN_PARAMETER:MUTABOR_TOKEN_IDENTIFIER;
-                  }
+ZENTRUM|CENTER    BUMP  return MUTABOR_TOKEN_ANCHOR;
+ABSTAND|DISTANCE  BUMP  return MUTABOR_TOKEN_DISTANCE;
 [[:alpha:]_'\x80-\xff][[:alpha:][:digit:]_'\x80-\xff]*    { 
                   BUMP yylval->identifier = strdup(yytext);
                   return MUTABOR_TOKEN_IDENTIFIER;

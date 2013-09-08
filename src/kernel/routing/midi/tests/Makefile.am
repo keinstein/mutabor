@@ -35,6 +35,7 @@ playmidi1_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
@@ -44,6 +45,7 @@ midiopenfail1_LDADD = \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS)
 
@@ -74,6 +76,7 @@ nodist_testcppunit_SOURCES = \
 
 testcppunit_LDADD = \
 	$(top_builddir)/libmutabormaincppunit.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(CPPUNIT_LIBS) \
 	$(LDADD) \
 	$(AM_LDFLAGS)

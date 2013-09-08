@@ -43,6 +43,7 @@
 #include "src/kernel/box.h"
 #include "src/kernel/GrafKern.h"
 #include "src/kernel/MidiKern.h"
+#include "src/kernel/Hilfs.h"
 #include "src/kernel/Runtime.h"
 #include "src/kernel/Parser.h"
 #include "src/kernel/routing/Device.h"
@@ -61,6 +62,21 @@ namespace mutabor {
 		extern "C" {
 #endif
 
+		    const char * mutabor_error_type_to_string(mutabor_error_type type) 
+		    {
+			switch (type) {
+			case warning: return _("Warning");
+			case compiler_warning: return _("Compiler warning");
+			case runtime_warning: return _("Runtime warning");
+			case error: return _("Error");
+			case internal_error: return ("Internal error");
+			case compiler_error: return ("Compiler error");
+			case runtime_error: return ("Runtime error");
+			default: return _("Unknown error");
+			}
+		    }
+
+
 	static void mutabor_default_update(mutabor_box_type * box, unsigned int flags) {
 		/* do nothing */
 	}
@@ -68,12 +84,12 @@ namespace mutabor {
 		/* do nothing */
 	}
 	static void mutabor_default_error_message(mutabor_box_type * box,
-						  bool iswarning,
+						  mutabor_error_type type,
 						  const char * message)
 	{
 		fprintf(stderr,
 			"%s: %s",
-			(const char *)(iswarning?_("Warning"):_("Error")),
+			mutabor_error_type_to_string(type),
 			message);
 	}
 	static void mutabor_default_update_display(mutabor_box_type * box, int line_number) {
@@ -170,8 +186,80 @@ namespace mutabor {
 		}
 	}
 #endif
+void execute_aktion (mutabor_box_type * box, 
+		     struct do_aktion * aktion,
+		     struct interpreter_parameter_list * parameters);
 
-	void execute_aktion (mutabor_box_type * box, struct do_aktion * aktion)
+inline static void call_actions (mutabor_box_type * box,
+				 struct do_aktion * aktion_list,
+				 struct interpreter_parameter_list * parameters) {
+    interpreter_parameter_list * current_parameters;
+    interpreter_parameter_list * old_parameters = box->current_parameters;
+    
+    if ((box->current_parameters == NULL && box->parameters == NULL)
+	|| box->current_parameters->next == NULL) {
+	current_parameters = (struct interpreter_parameter_list *)
+	    ymalloc(box,sizeof(struct interpreter_parameter_list));
+	current_parameters->next = NULL;
+	current_parameters->data = (int *)ycalloc(box,
+						  box->file->parameter_count, 
+						  sizeof(int));
+	if (box->parameters == NULL) {
+	    mutASSERT(box->current_parameters == NULL);
+	    box->current_parameters = 
+		box->parameters = current_parameters;
+	} 
+	    
+	box->current_parameters->next = current_parameters;
+	box->current_parameters = current_parameters;
+    } else if ( box->current_parameters == NULL) {
+	current_parameters = box->current_parameters = box->parameters;
+    } else {
+	current_parameters = box->current_parameters -> next;
+	box->current_parameters = current_parameters;
+    }
+    for (struct do_aktion * aktion = aktion_list ;
+	 aktion; aktion = aktion -> next) {
+	interpreter_argument_list * arguments = aktion -> arguments;
+	size_t size;
+	if (arguments == NULL) {
+	    execute_aktion (box, aktion, NULL);
+	    continue;
+	} 
+	size = arguments->size;
+	current_parameters -> size = size;
+	mutASSERT(size >= box->file->parameter_count);
+	for (size_t i = 0 ; i < size; i++) {
+	    switch (arguments->types[i]) {
+	    case mutabor_argument_integer: 
+		current_parameters->data[i] = arguments->data[i].constant;
+		break;
+	    case mutabor_argument_parameter:
+		current_parameters->data[i] 
+		    = parameters->data[arguments->data[i].index];
+		break;
+	    case mutabor_argument_distance:
+		current_parameters->data[i]
+		    = box->distance;
+		break;
+	    case mutabor_argument_anchor:
+		current_parameters->data[i]
+		    = box->tonesystem->anker;
+		break;
+	    }
+	    
+	}
+	execute_aktion(box,
+		       aktion,
+		       current_parameters);
+    }
+    if (old_parameters != NULL) 
+	box->current_parameters = old_parameters;
+}
+
+	void execute_aktion (mutabor_box_type * box, 
+			     struct do_aktion * aktion,
+			     struct interpreter_parameter_list * parameters)
 	{
 #if 0
 		bool WasNewLogic = false;
@@ -180,17 +268,19 @@ namespace mutabor {
 		mutASSERT(box->tonesystem);
 		TRACE;
 
-		for ( ; aktion; aktion = aktion -> next)
+//		for ( ; aktion; aktion = aktion -> next)
 			{
 				mutabor_log_action(box, aktion);
 				switch (aktion->aufruf_typ) {
 				case aufruf_logik: {
-					struct logik * logic = aktion->u.aufruf_logik.logic;
+					struct logik * logic = aktion->calling.logic;
 					TRACE;
 
 					mutASSERT(logic);
 					box->current_logic = logic;
-					execute_aktion (box, logic->einstimmung);
+					call_actions (box, 
+						      logic->einstimmung, 
+						      parameters);
 
 #if 0
 					mutASSERT(box->last_global_keyboard);
@@ -204,7 +294,7 @@ namespace mutabor {
 					*(box->last_global_midi) =
 						*aktion->u.aufruf_logik.lokal_midi;
 
-					// \todo Check, if this is necessary or used
+					// This is left to the logic programmer
 					HarmonyAnalysis(box, &(box->pattern));
 #endif
 
@@ -212,7 +302,6 @@ namespace mutabor {
 				}
 				case aufruf_tonsystem:
 					TRACE;
-
 					*(box -> tonesystem) =
 						*aktion->u.aufruf_tonsystem.tonsystem;
 					update_pattern(box);
@@ -225,8 +314,16 @@ namespace mutabor {
 
 				case aufruf_umst_taste_abs:
 					TRACE;
-					change_anker(box,
-						     *(aktion->u.aufruf_umst_taste_abs.keynr));
+					if (!parameters ||
+					    parameters->size != 1 ||
+					    !parameters->data) {
+					    mutabor_error_message(box,
+								  internal_error,
+ 								  _("Trying to set the anchor with incompatible parameters. Please report to the MUTABOR team."));
+					    break;
+					}
+
+					change_anker(box, parameters->data[0]);
 
 					update_pattern(box);
 
@@ -238,9 +335,16 @@ namespace mutabor {
 
 				case aufruf_umst_breite_abs:
 					TRACE;
-					change_breite(box,
-						      *(aktion->u.aufruf_umst_breite_abs.width));
+					if (!parameters ||
+					    parameters->size != 1 ||
+					    !parameters->data) {
+					    mutabor_error_message(box,
+								  internal_error,
+ 								  _("Setting tone system width with incompatible parameters. Please report to the MUTABOR team."));
+					    break;
+					}
 
+					change_breite(box, parameters->data[0]);
 					update_pattern(box);
 
 #ifdef NOTES_CORRECT_SOFORT
@@ -276,17 +380,25 @@ namespace mutabor {
 				case aufruf_umst_taste_rel: {
 					int help;
 					TRACE;
+					if (!parameters ||
+					    parameters->size != 1 ||
+					    !parameters->data) {
+					    mutabor_error_message(box,
+								  internal_error,
+ 								  _("Changing anchor with incompatible parameters. Please report to the MUTABOR team."));
+					    break;
+					}
 					help = box->tonesystem->anker;
 
 					switch (aktion->u.aufruf_umst_taste_rel.rechenzeichen) {
 
 					case '+':
-						help += *(aktion->u.aufruf_umst_taste_rel.distance);
+						help += parameters->data[0];
 
 						break;
 
 					case '-':
-						help -= *(aktion->u.aufruf_umst_taste_rel.distance);
+						help -= parameters->data[0];
 
 						break;
 					}
@@ -305,33 +417,36 @@ namespace mutabor {
 				case aufruf_umst_breite_rel: {
 					int help;
 					TRACE;
+					if (!parameters ||
+					    parameters->size != 1 ||
+					    !parameters->data) {
+					    mutabor_error_message(box,
+								  internal_error,
+ 								  _("Changing tone system width with incompatible parameters. Please report to the MUTABOR team."));
+					    break;
+					}
 					help = box->tonesystem->breite;
 
 					switch (aktion->u.aufruf_umst_breite_rel.rechenzeichen) {
 
 					case '+':
-						help += *(aktion->u.aufruf_umst_breite_rel.difference);
-
+						help += parameters->data[0];
 						break;
 
 					case '-':
-						help -= *(aktion->u.aufruf_umst_breite_rel.difference);
-
+						help -= parameters->data[0];
 						break;
 
 					case '*':
-						help *= *(aktion->u.aufruf_umst_breite_rel.difference);
-
+						help *= parameters->data[0];
 						break;
 
 					case '/':
-						help /= *(aktion->u.aufruf_umst_breite_rel.difference);
-
+						help /= parameters->data[0];
 						break;
 					}
 
 					change_breite(box, help);
-
 					update_pattern(box);
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
@@ -392,13 +507,23 @@ namespace mutabor {
 					struct case_element * lauf;
 					int i;
 					TRACE;
-					i=*(aktion->u.aufruf_umst_umst_case.choice);
+					if (!parameters ||
+					    parameters->size != 1 ||
+					    !parameters->data) {
+					    mutabor_error_message(box,
+								  internal_error,
+ 								  _("Switching cases with incompatible parameter list. Please report to the MUTABOR team."));
+					    break;
+					}
+					i=parameters->data[0];
 
 					for (lauf = aktion->u.aufruf_umst_umst_case.umst_case;
 					     lauf;
 					     lauf = lauf->next) {
 						if ( (i == lauf->case_wert) || (lauf->is_default)) {
-							execute_aktion (box, lauf->case_aktion);
+							call_actions (box,
+								      lauf->case_aktion,
+								      parameters);
 							// return would break further execution
 							break;
 						}
@@ -414,7 +539,9 @@ namespace mutabor {
 					HarmonyAnalysis(box, &(box->pattern));
 
 				default:
-					mutabor_error_message(box,true,_("Unexpected action type: %d"), aktion->aufruf_typ);
+					mutabor_error_message(box,
+							      internal_error,
+							      _("Unexpected action type: %d"), aktion->aufruf_typ);
 					UNREACHABLE;
 				}
 			}
@@ -453,14 +580,15 @@ namespace mutabor {
 			&(box->tonesystem_memory[0]);
 		int i;
 		TRACE;
-		/** \todo why do we have two anchors? */
-		box->anchor -= neu-tonsys->anker;
+		/* update the distance parameter for logic calls */
+		box->distance -= neu-tonsys->anker;
 
-		while ( box->anchor < 0 )
-			box->anchor += tonsys->breite;
+		while ( box->distance < 0 )
+			box->distance += tonsys->breite;
 
-		box->anchor %= tonsys->breite;
+		box->distance %= tonsys->breite;
 
+		/* update the tone system */
 		while (neu< MUTABOR_KEYRANGE_MIN_KEY)
 			neu += tonsys->breite;
 
@@ -599,7 +727,9 @@ namespace mutabor {
 
 						if ( compare_harmonie(tonesys->breite,0,harmony,index->pattern) ) {
 							// PASST !!!
-							execute_aktion(box,index->aktion);
+							call_actions(box,
+								     index->aktion,
+								     NULL);
 							return true;
 						}
 					}
@@ -624,8 +754,10 @@ namespace mutabor {
 
 							if (compare_harmonie(tonesys->breite, i, harmony, index->pattern)) {
 								// PASST !!!
-								box->distance = box->anchor = i;
-								execute_aktion(box, index->aktion);
+								box->distance = i;
+								call_actions(box,
+									     index->aktion,
+									     NULL);
 								return true;
 							}
 						}
@@ -636,13 +768,13 @@ namespace mutabor {
 			case mutabor_is_else_path: // default
 #warning This seems odd check, when mutabor is running
 				TRACE;
-				execute_aktion(box, index->aktion);
+				call_actions(box, index->aktion, NULL);
 				return true;
 				break;
 			default:
 				mutabor_error_message(box,
-						      true,
-						      _("Internal error: Undefined harmonic harmony class %d in HarmonyAnalysis().\n\
+						      internal_error,
+						      _("Undefined harmonic harmony class %d in HarmonyAnalysis().\n\
 Please, report this error to the MUTABOR team."),
 						      index->ist_harmonieform);
 			}
@@ -784,8 +916,8 @@ Please, report this error to the MUTABOR team."),
 		}
 
 		if ( index ) {
-			execute_aktion( box, index->aktion);
-			return true;
+		    call_actions( box, index->aktion, NULL);
+		    return true;
 		}
 		return false;
 	}
@@ -838,7 +970,7 @@ Please, report this error to the MUTABOR team."),
 			if ( toupper(key) == help->taste
 			     && (is_simple
 				 || is_logic == (help->the_logik_to_expand != NULL))) {
-				execute_aktion(box, help->aktion);
+			    call_actions(box, help->aktion, NULL);
 				return true;
 			}
 		}

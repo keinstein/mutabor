@@ -68,13 +68,24 @@ namespace mutabor {
 				mutabor_action_changed = 0x08
 			};
 
+  		        enum mutabor_error_type {
+			    warning,
+			    compiler_warning,
+			    runtime_warning,
+			    error,
+			    internal_error,
+			    compiler_error,
+			    runtime_error
+			};
+
+		    const char * mutabor_error_type_to_string(mutabor_error_type type);
 
 			typedef void mutabor_callback_update_type(mutabor_box_type * box,
 								  unsigned int flags);
 			typedef void mutabor_callback_midi_out_type (mutabor_box_type * box,
 								     struct midiliste * outliste);
 			typedef void mutabor_callback_error_message_type(mutabor_box_type * box,
-									 bool iswarning,
+									 mutabor_error_type type,
 									 const char * message);
 			typedef void mutabor_callback_update_display(mutabor_box_type * box, int line_number);
 			typedef void mutabor_callback_log_action(mutabor_box_type * box,
@@ -110,8 +121,9 @@ namespace mutabor {
 						   const char * message,
 						   ...)  __attribute__ ((format(printf, 3, 4))) ;*/
 
+			
 			inline void mutabor_error_message(mutabor_box_type * box,
-							  bool iswarning,
+							  enum mutabor_error_type type,
 							  const char * message,
 							  ...) {
 				char * formatted;
@@ -124,7 +136,7 @@ namespace mutabor {
 							(char *) "Error in Error: Could not allocate buffer for error message.";
 				}
 				va_end(args);
-				mutabor_callbacks->error_message(box,iswarning,formatted);
+				mutabor_callbacks->error_message(box,type,formatted);
 			}
 
 			inline void show_line_number(mutabor_box_type * box, int line_number ) {

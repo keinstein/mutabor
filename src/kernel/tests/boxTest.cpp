@@ -32,6 +32,9 @@
 #include "src/kernel/routing/Route-inlines.h"
 #include "src/kernel/Runtime.h"
 #include "src/kernel/Execute.h"
+#include "src/kernel/TabGen.h"
+#include "src/kernel/Parser.h"
+#include "src/kernel/Hilfs.h"
 #include "src/kernel/box.h"
 #include <iostream>
 
@@ -229,12 +232,10 @@ void boxTest::test_init()
 		CPPUNIT_ASSERT(boxes[i].key_count == 0);
 		CPPUNIT_ASSERT(boxes[i].last_key == 0);
 		CPPUNIT_ASSERT(boxes[i].distance == 0);
-		CPPUNIT_ASSERT(boxes[i].anchor == 0);
-		CPPUNIT_ASSERT(boxes[i].anchor_node.value_field == &boxes[i].anchor);
-		CPPUNIT_ASSERT(boxes[i].anchor_node.next == NULL);
-		CPPUNIT_ASSERT(boxes[i].distance_node.value_field == &boxes[i].distance);
-		CPPUNIT_ASSERT(boxes[i].distance_node.next == &boxes[i].anchor_node);
-		CPPUNIT_ASSERT(boxes[i].start_parameter_list == &boxes[i].distance_node);
+  	        CPPUNIT_ASSERT(boxes[i].current_parameters == NULL);
+  	        CPPUNIT_ASSERT(boxes[i].parameters == NULL);
+  	        CPPUNIT_ASSERT(boxes[i].current_logic == NULL);
+		
 		for (int j = 0 ; j < MUTABOR_KEYRANGE_MAX_WIDTH; j++) {
 			CPPUNIT_ASSERT(boxes[i].pattern.tonigkeit[j] == 0);
 		}
@@ -254,6 +255,7 @@ void boxTest::test_init()
 		for (int j = 1 ; j < MUTABOR_KEYRANGE_MAX_WIDTH; j++) {
 			CPPUNIT_ASSERT(boxes[i].last_tonesystem.ton[j] == 0);
 		}
+#if 0
 		CPPUNIT_ASSERT(boxes[i].first_harmony == NULL);
 		CPPUNIT_ASSERT(boxes[i].last_global_harmony == NULL);
 		CPPUNIT_ASSERT(boxes[i].first_local_harmony == NULL);
@@ -263,6 +265,7 @@ void boxTest::test_init()
 		CPPUNIT_ASSERT(boxes[i].first_midi == NULL);
 		CPPUNIT_ASSERT(boxes[i].last_global_midi == NULL);
 		CPPUNIT_ASSERT(boxes[i].first_local_midi == NULL);
+#endif
 		CPPUNIT_ASSERT(boxes[i].runtime_heap == NULL);
 		CPPUNIT_ASSERT(boxes[i].scanner == NULL);
 		CPPUNIT_ASSERT(boxes[i].file == NULL);
@@ -280,6 +283,9 @@ void boxTest::test_init()
 void boxTest::testFindKeyByKey()
 {
 	mutabor_box_type * box = &boxes[0];
+	loesche_syntax_speicher(box);
+	mutabor_programm_einlesen(box,"");
+	expand_decition_tree(box);
 	AddKey (box,77,1,5,NULL);
 	AddKey (box,78,3,5,NULL);
 	AddKey (box,74,5,5,NULL);
@@ -324,6 +330,10 @@ void boxTest::testFindKeyByKey()
 
 void boxTest::testBug1Permutation1 () {
 	mutabor_box_type * box = &boxes[0];
+	loesche_syntax_speicher(box);
+	mutabor_programm_einlesen(box,"");
+	expand_decition_tree(box);
+
 	AddKey (box,77,1,5,NULL);
 	AddKey (box,78,3,5,NULL);
 	AddKey (box,74,5,5,NULL);
@@ -358,6 +368,10 @@ void boxTest::testBug1Permutation1 () {
 
 void boxTest::testBug1Permutation2 () {
 	mutabor_box_type * box = &boxes[0];
+
+	loesche_syntax_speicher(box);
+	mutabor_programm_einlesen(box,"");
+	expand_decition_tree(box);
 	/* second try (check all permutations) */
 	/* deleting first 77 */
 	CPPUNIT_ASSERT(box->last_key == 0);

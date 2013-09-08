@@ -61,13 +61,13 @@ long anzahl_eingelesene_zeichen;
 *****/
 
 static do_aktion*   expandiere_name (mutabor_box_type * box,
-				       const char * name,
-				       struct argument_liste * parameter,
-				       struct interpreter_parameter_list * bezugs_liste);
+				     const char * name,
+				     struct argument_list * parameter,
+				     struct interpreter_argument_list * bezugs_liste);
 
 static do_aktion*  expandiere_umstimmung (mutabor_box_type * box,
-					     struct umstimmung * the_umstimmung,
-					     struct interpreter_parameter_list * aktuelle_parameter);
+					  struct umstimmung * the_umstimmung,
+					  struct interpreter_argument_list * aktuelle_parameter);
 
 static do_aktion*  expandiere_midi (mutabor_box_type * box, struct midiliste * liste);
 static struct do_aktion * expand_harmony_analysis(mutabor_box_type * box) ;
@@ -106,14 +106,14 @@ double get_komplex_faktor (mutabor_box_type * box, struct komplex_intervall * la
 				break;
 			default:
 				mutabor_error_message(box,
-						      false,
+						      internal_error,
 						      _("Unknown interval type %d detected at\n%s:%d"),
 						      __FILE__, __LINE__);
 			}
 		} else {
 			mutabor_error_message(box,
-					      false,
-					      _("Could not get interval %s."),
+					      compiler_error,
+					      _("Could not find interval %s."),
 					      (lauf->name));
 		}
 
@@ -135,18 +135,26 @@ double get_komplex_frequenz (mutabor_box_type * box, struct ton * dieser)
  void fprint_argument (mutabor_box_type * box, FILE * zieldatei, struct argument * argument)
  {
 	 TRACE;
-	if (argument -> argument_typ == zahl)
-		{
-		fprintf (zieldatei, ", %d ", argument -> u.zahl.zahl);
-	} else if (argument -> argument_typ == parameter)
-	{
-		fprintf (zieldatei, ", %s ", argument -> u.parameter.parameter_name);
-	} else
-		mutabor_error_message(box,
-				      false,
+	 switch (argument -> argument_type) {
+	 case mutabor_argument_integer:
+		 fprintf (zieldatei, ", %d ", argument -> u.integer.number);
+		 break;
+	 case mutabor_argument_parameter:
+		 fprintf (zieldatei, ", %s ", argument -> u.parameter.name);
+		 break;
+	 case mutabor_argument_distance:
+		 fprintf (zieldatei, ", %s ", _("DISTANCE"));
+		 break;
+	 case mutabor_argument_anchor:
+		 fprintf (zieldatei, ", %s ", _("CENTER"));
+		 break;
+	 default:
+		 mutabor_error_message(box,
+				      internal_error,
 				      _("Unknown parameter type %d detected at %s:%d"),
 				      _T(__FILE__), 
 				      __LINE__ );
+	 }
 }
 
 /*
@@ -172,82 +180,108 @@ static int enthaelt_nur_konstante_toene (struct ton * lauf)
 
 typedef int * intptr;
 
-static intptr get_cache_konstante (mutabor_box_type * box, int wert)
+#if 0
+static size_t get_constant_index (mutabor_box_type * box, int wert)
 {
-
         struct constant_memory ** lauf;
-
-        for (lauf = & box->file->list_of_constants; *lauf; lauf = & (*lauf)->next) {
-        if ((*lauf)->constant == wert)
-		        return & (*lauf)->constant;
+	size_t i = interpreter_parameter_first_constant;
+	
+        for (lauf = & box->file->list_of_constants; *lauf; lauf = & (*lauf)->next, i++) {
+		if ((*lauf)->constant == wert)
+		        return i;
         }
 
         *lauf = (struct constant_memory*) xmalloc (box, sizeof (struct constant_memory));
         (*lauf)->constant = wert;
         (*lauf)->next = NULL;
-        return & (*lauf)->constant;
+	mutASSERT(box->file->constant_count == i);
+	box->file->constant_count = i+1; /* don't forget index 0 */
+        return i;
+}
+#endif
+
+static inline void reduce_argument(mutabor_box_type * box,
+				   struct interpreter_argument_list * list,
+				   size_t index,
+				   struct interpreter_argument_list * reference)
+{
+    if (!list || !reference) return;
+    switch (reference->types[list->data[index].index]) {
+    case mutabor_argument_integer:
+	list->types[index]=mutabor_argument_integer;
+	list->data[index].constant = 
+	    reference->data[list->data[index].index].constant;
+	break;
+    case mutabor_argument_distance:
+    case mutabor_argument_anchor:
+	/* distance and anchor cannot be reduced
+	   as they may change after the assignment */
+    case mutabor_argument_parameter:
+	/* unreduced parameters must be copied at runtime */
+	break;
+    }
 }
 
-static struct interpreter_parameter_list * 
-gen_parameter_liste (mutabor_box_type * box,
-		     struct argument_liste * liste,
-		     struct interpreter_parameter_list * bezugs_liste)
+static struct interpreter_argument_list * 
+generate_argument_list (mutabor_box_type * box,
+		    struct argument_list * element,
+		    struct interpreter_argument_list * bezugs_liste)
 {
 
-	struct interpreter_parameter_list * help;
+	struct interpreter_argument_list * help;
 	TRACE;
 
-	if (liste == NULL)
+	if (element == NULL)
 		return NULL;
 
-	help = (interpreter_parameter_list*) xmalloc (box, sizeof (struct interpreter_parameter_list));
+	help = (interpreter_argument_list*) 
+		xmalloc (box, sizeof (struct interpreter_parameter_list));
+	
+	help->size = 0;
+	for (argument_list * i = element;
+	     i != NULL; i = i->next) help->size++;
+	help->data = (union interpreter_argument *)
+	    xcalloc(box,
+		    help->size,
+		    sizeof(union interpreter_argument));
 
-	switch (liste->argument.argument_typ)
-	{
+	help->types = (enum argument_typ *) xcalloc(box,
+						    help->size,
+						    sizeof(enum argument_typ));
 
-	case zahl:
-		help->value_field = get_cache_konstante (box,liste->argument.u.zahl.zahl);
-		break;
+	int j = 0;
+	for (struct argument_list * i = element;
+	     i != NULL; i = i->next, j++) {
+		help->types[j]=i->argument.argument_type;
+		switch (i->argument.argument_type) {
+		case mutabor_argument_integer:
+			help->data[j].constant = i->argument.u.integer.number;
+			break;
+		case mutabor_argument_distance:
+		case mutabor_argument_anchor:
+			break;
 
-	case parameter: {
-		int i;
-
-		struct interpreter_parameter_list * lauf;
-
-		for (lauf = bezugs_liste, i=liste->argument.u.parameter.parameter_nummer;
-		     lauf && i;
-		     lauf = lauf -> next, i--)
-			;
-
-		if (lauf)
-			help->value_field = lauf -> value_field;
-		else
+		case mutabor_argument_parameter:
+			help->data[j].index=i->argument.u.parameter.parameter->index;
+			reduce_argument(box,help,j,bezugs_liste);
+			break;
+			
+		default:
 			mutabor_error_message(box,
-					      false,
-					      _("Unknown parameter number %d detected at \n%s:%d."),
-					      liste->argument.u.parameter.parameter_nummer,
+					      internal_error,
+					      _("Unknown argument type %d detected at \n%s:%d."),
+					      element->argument.argument_type,
 					      _T(__FILE__), 
 					      __LINE__ );
-	}
-
-		break;
-
-	default:
-		mutabor_error_message(box,
-				      false,
-				      _("Unknown argument type %d detected at \n%s:%d."),
-				      liste->argument.argument_typ,
-				      _T(__FILE__), 
-				      __LINE__ );
 		
-		break;
+			break;
+		}
 	}
-
-	help->next = gen_parameter_liste (box,liste->next, bezugs_liste);
 
 	return help;
 }
 
+#if 0 /* should be not necessary */
 static int * get_wert_of_argument (mutabor_box_type * box,
 				   struct argument * argument,
 				   struct interpreter_parameter_list * aktuelle_parameter)
@@ -275,7 +309,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 			return lauf->value_field;
 		else {
 			mutabor_error_message(box,
-					      false,
+					      compiler_error,
 					      _("Unknown parameter number %d detected at \n%s:%d."),
 					      argument->u.parameter.parameter_nummer,
 					      _T(__FILE__), 
@@ -288,7 +322,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 
 	default:
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("Unknown argument type %d detected at \n%s:%d."),
 				      argument->argument_typ,
 				      _T(__FILE__), 
@@ -300,7 +334,7 @@ static int * get_wert_of_argument (mutabor_box_type * box,
 	}
 
 }
-
+#endif
 
 static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 					      struct ton * the_tonliste)
@@ -355,7 +389,7 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 		break;
 	default:
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("Unknown tone type %d detected at\n%s:%d"),
 				      the_tonliste -> ton_typ,
 				      __FILE__, __LINE__);
@@ -424,13 +458,12 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 	mutASSERT(the_logik != NULL);
 
 	struct do_aktion * help;
-	int i;
 	TRACE;
 
 	help = (do_aktion*) xmalloc (box, sizeof (struct do_aktion));
 	help -> name = the_logik -> name;
 	help -> aufruf_typ = aufruf_logik;
-	help -> u.aufruf_logik.logic = the_logik;
+	help -> calling.logic = the_logik;
 
 	if (the_logik -> einstimmungs_name &&
 	    the_logik -> einstimmung == NULL )
@@ -451,7 +484,7 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 				the_logik -> einstimmung = expandiere_umstimmung (box, help_umstimmung, NULL);
 			} else {
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Unable to find the initial tuning or retuning ‘%s’"),
 						      (the_logik->einstimmungs_name));
 				/* reset the guard */
@@ -489,7 +522,7 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 
 static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 						struct aktions_liste * the_liste,
-						struct interpreter_parameter_list * aktuelle_parameter)
+						struct interpreter_argument_list * current_parameters)
 {
 
 	struct do_aktion * help_1, * help_2, ** help_3;
@@ -502,7 +535,7 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 		help_1 = expandiere_name (box,
 					  the_liste -> u.aktion_aufruf.name,
 		                          the_liste -> u.aktion_aufruf.argument_liste,
-		                          aktuelle_parameter);
+		                          current_parameters);
 		break;
 	case aktion_midi_out:
 		help_1 = expandiere_midi (box, the_liste -> u.aktion_midi_out.midi_code);
@@ -511,13 +544,13 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 		help_1 = expand_harmony_analysis(box);
 	default:
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("Unknown action type %d detected at\n%s:%d"),
 				      the_liste -> aktions_typ,
 				      __FILE__, __LINE__);
 	}
 
-	help_2 = expand_aktions_liste (box, the_liste -> next, aktuelle_parameter);
+	help_2 = expand_aktions_liste (box, the_liste -> next, current_parameters);
 
 	for (help_3 = & help_1; * help_3; help_3 = & (*help_3)->next)
 		;
@@ -531,7 +564,7 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 
 static struct case_element * expand_case_liste (mutabor_box_type * box,
 						struct case_liste * the_liste,
-						struct interpreter_parameter_list * aktuelle_parameter)
+						struct interpreter_argument_list * aktuelle_parameter)
 {
 	TRACE;
 
@@ -577,47 +610,44 @@ static struct case_element * expand_case_liste (mutabor_box_type * box,
 
 static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 						 struct umstimmung * the_umstimmung,
-						 struct interpreter_parameter_list * aktuelle_parameter)
+						 struct interpreter_argument_list * aktuelle_parameter)
 {
 
 	struct do_aktion * help;
 	TRACE;
 
 	help = (do_aktion*) xmalloc (box, sizeof (struct do_aktion));
+	help -> calling.retuning = the_umstimmung;
 	help -> name = the_umstimmung -> name;
+	help -> arguments = aktuelle_parameter;
+	help -> next = NULL;
 
 	switch (the_umstimmung -> umstimmung_typ)
 	{
 
 	case umstimmung_taste_abs:
 		TRACE;
-		help -> aufruf_typ = aufruf_umst_taste_abs;
+		  help -> aufruf_typ = aufruf_umst_taste_abs;
+		/*
+		  must be evaluated at runtime
 
 		help -> u.aufruf_umst_taste_abs.keynr =
 		        get_wert_of_argument (box,
 					      & the_umstimmung->u.umstimmung_taste_abs.argument,
 					      aktuelle_parameter);
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		*/
+		break; 
 
 	case umstimmung_breite_abs:
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_breite_abs;
-
+		/* runtime:
 		help -> u.aufruf_umst_breite_abs.width =
 		        get_wert_of_argument (box,
 					      & the_umstimmung->u.umstimmung_breite_abs.argument,
 					      aktuelle_parameter);
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		*/
+		break;
 
 	case umstimmung_wiederholung_abs:
 		TRACE;
@@ -629,11 +659,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 						get_wert_komplex_intervall (box,
 									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
 
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_wiederholung_rel:
 		TRACE;
@@ -644,46 +670,36 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		                FAKTOR_TO_MIDI (
 						get_wert_komplex_intervall (box,
 									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_taste_rel:
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_taste_rel;
+		help -> u.aufruf_umst_taste_rel.rechenzeichen
+		    = the_umstimmung->u.umstimmung_taste_rel.rechenzeichen;
 
+		/* runtime
 		help -> u.aufruf_umst_taste_rel.distance =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_taste_rel.argument,
 		                               aktuelle_parameter);
+		*/
 
-		help -> u.aufruf_umst_taste_rel.rechenzeichen = the_umstimmung->u.umstimmung_taste_rel.rechenzeichen;
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_breite_rel:
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_breite_rel;
+		help -> u.aufruf_umst_breite_rel.rechenzeichen
+		    = the_umstimmung->u.umstimmung_breite_rel.rechenzeichen;
 
+		/* runtime 
 		help -> u.aufruf_umst_breite_rel.difference =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_breite_rel.argument,
 		                               aktuelle_parameter);
-
-		help -> u.aufruf_umst_breite_rel.rechenzeichen = the_umstimmung->u.umstimmung_breite_rel.rechenzeichen;
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		*/
+		break;
 
 	case umstimmung_toene_veraendert:
 		TRACE;
@@ -691,12 +707,7 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 
 		help -> u.aufruf_umst_toene_veraendert.tonliste =
 		        expand_tonliste (box, the_umstimmung->u.umstimmung_toene_veraendert.tonliste);
-
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_umstimmungsbund:
 		TRACE;
@@ -709,62 +720,57 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		if (help->name && help->name[0]) {
 			help -> aufruf_typ = aufruf_umst_umst_bund;
 		} else {
+		    struct do_aktion * help2 = help;
 			help = help->next;
-			xfree(help);
+			xfree(help2);
 		}
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_umstimmungs_case:
 		TRACE;
 		help -> aufruf_typ = aufruf_umst_umst_case;
-
+		/* runtime 
 		help -> u.aufruf_umst_umst_case.choice =
 		        get_wert_of_argument ( box,
 					       & the_umstimmung->u.umstimmung_umstimmungs_case.argument,
-		                               aktuelle_parameter);
+					       aktuelle_parameter);
+		*/
 
 		help -> u.aufruf_umst_umst_case.umst_case =
 		        expand_case_liste (box,
 					   the_umstimmung->u.umstimmung_umstimmungs_case.umstimmungs_case_liste,
 		                           aktuelle_parameter);
 
-		help -> next = NULL;
-
-		return help;
-
-		/*        break; */
+		break;
 
 	case umstimmung_midi_out:
 		TRACE;
+		/** \todo make out_liste an argument list */
 		help -> aufruf_typ = aufruf_midi_out;
 
 		help -> u.aufruf_midi_out.out_liste =
 		        the_umstimmung->u.umstimmung_midi_out.out_liste;
 
-		help -> next = NULL;
-		return help;
-
-		/*        break; */
+		break;
 
 	default:
 		mutabor_error_message(box,
-				      false,
+				      internal_error,
 				      _("Unknown retuning type %d detected at\n%s:%d"),
 				      the_umstimmung -> umstimmung_typ,
 				      __FILE__, __LINE__);
-		return NULL;
-
+		xfree (help);
+		help =  NULL;
 	}
+	return help;
 }
 
 
 
 static struct do_aktion * expandiere_name (mutabor_box_type * box,
 					   const char * name,
-					   struct argument_liste * parameter,
-					   struct interpreter_parameter_list * bezugs_liste)
+					   struct argument_list * parameter,
+					   struct interpreter_argument_list * bezugs_liste)
 {
 	struct logik * help_logik;
 	struct tonsystem * help_tonsystem;
@@ -797,8 +803,8 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 
 			if (help_umstimmung) {
 
-				struct interpreter_parameter_list * aktuelle_parameter;
-				aktuelle_parameter = gen_parameter_liste (box, parameter, bezugs_liste);
+				struct interpreter_argument_list * aktuelle_parameter;
+				aktuelle_parameter = generate_argument_list (box, parameter, bezugs_liste);
 				return expandiere_umstimmung (box,
 							      help_umstimmung,
 				                              aktuelle_parameter);
@@ -806,7 +812,7 @@ static struct do_aktion * expandiere_name (mutabor_box_type * box,
 			} else
 				/** \todo check that the conversion succeeds always */
 				mutabor_error_message(box,
-						      false,
+						      compiler_error,
 						      _("Unknown tuning or logic ‘%s’"),
 						      name,
 						      __FILE__, __LINE__);
@@ -878,7 +884,7 @@ static int * create_midi_scan_liste (mutabor_box_type * box, struct midiliste * 
 
 	if (the_harmonie == NULL) {
 		mutabor_error_message(box,
-				      false,
+				      compiler_error,
 				      _("Harmony ‘%s’ could not be found."),
 				      harmonie_name);
 	}
@@ -1001,7 +1007,7 @@ void insert_in_globale_liste (mutabor_box_type * box, struct logik * lauf)
 		default:
 			TRACE;
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Unknown event type %d detected at\n%s:%d"),
 					      (lauf->ausloeser)->ausloeser_typ,
 					      __FILE__, __LINE__);
@@ -1043,7 +1049,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie.nachtaste ;
 			(*temp_harmonie) -> name = logic->name;
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, NULL);
 
 			(*temp_harmonie) -> next=NULL;
 
@@ -1068,7 +1074,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_harmonie) -> nachtaste=(lauf->ausloeser)->u.ausloeser_harmonie_form.nachtaste ;
 			(*temp_harmonie) -> name=logic->name;
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_harmonie) -> next=NULL;
 			break;
 
@@ -1087,7 +1093,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_harmonie) -> nachtaste=0 ;
 			(*temp_harmonie) -> name=logic->name;
 			(*temp_harmonie) -> aktion=
-			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_harmonie) -> next=NULL;
 
 			break;
@@ -1104,7 +1110,7 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 			(*temp_keyboard) -> taste= (*((lauf->ausloeser)->u.ausloeser_taste.taste)) ;
 			(*temp_keyboard) -> name=logic->name;
 			(*temp_keyboard) -> aktion=
-			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_keyboard) -> next=NULL;
 
 			break;
@@ -1123,14 +1129,14 @@ void insert_in_lokale_liste (mutabor_box_type * box,
 				create_midi_scan_liste (box, lauf->ausloeser->u.ausloeser_midi_in.midi_code);
 			(*temp_midi) -> name = logic->name;
 			(*temp_midi) -> aktion=
-			        expand_aktions_liste (box,lauf->aktion, box->start_parameter_list);
+			        expand_aktions_liste (box,lauf->aktion, NULL);
 			(*temp_midi) -> next = NULL;
 			break;
 
 		default:
 			TRACE;
 			mutabor_error_message(box,
-					      false,
+					      internal_error,
 					      _("Unknown event type %d detected at\n%s:%d"),
 					      (lauf->ausloeser)->ausloeser_typ,
 					      __FILE__, __LINE__);
@@ -1213,11 +1219,8 @@ get_ende_midi (struct midi_ereignis ** lauf)
 /*==============================================================*/
 
 
-void mutabor_tabellen_generator (mutabor_box_type * box)
+void expand_decition_tree (mutabor_box_type * box)
 {
-
-	/** \todo find out the semantics of global and local lists */
-	/** \todo combine the loops this depends on: */
 	/** \todo ensure that the logics of the different boxes are independent */
 	/* Ausgabe der Pointer-Setz-Prozeduren */
 
@@ -1246,9 +1249,12 @@ void mutabor_tabellen_generator (mutabor_box_type * box)
 	mutASSERT(box->file->global_midi_inputs == NULL);
 
 
-	/* Die globalen Listen werden initialisiert: */
-	/* Die globalen Auslöser werden in die vorbereiteten Listen eingetragen: */
+	/* Here we start to expand the complete decition tree of the logic file */
 
+	/* In a first step we expand the global triggers, leaving
+	   their actions unexpanded. As we start with no activated
+	   logic, all actions that cannot be reached over a global
+	   trigger can not be reached at all */
 	for (lauf = box->file->list_of_logiken; lauf; lauf = lauf -> next) {
 		insert_in_globale_liste (box, lauf);
 	}
@@ -1286,7 +1292,8 @@ void mutabor_tabellen_generator (mutabor_box_type * box)
 		}
 	}
 #endif
-	
+	/* Finally we expand everything that is not expanded yet. 
+	   This function actually generates the decition tree. */
 	expandiere_in_globale_liste (box);
 
 } /* end of mutabor_tabellen_generator */

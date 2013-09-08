@@ -39,12 +39,12 @@
 
 
 extern "C" {
-static void error_callback(mutabor::hidden::mutabor_box_type * b, bool iswarning,
+    static void error_callback(mutabor::hidden::mutabor_box_type * b, mutabor::error_type type,
 			   const char * message) {
 	mutabor::BoxClass * box = (mutabor::BoxClass *)b -> userdata;
-	box->runtime_error(iswarning,message);
-	CPPUNIT_ASSERT(iswarning);
-	CPPUNIT_FAIL("Warnings should not be issued during tests!");
+	box->runtime_error(type,message);
+	//	CPPUNIT_ASSERT(iswarning);
+	CPPUNIT_FAIL("Syntax errors and warnings should not be issued during these kinds of tests!");
 }
 }
 

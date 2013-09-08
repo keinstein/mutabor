@@ -138,14 +138,31 @@ struct case_element
 	struct case_element * next;
 };
 
+enum interpreter_parameter_indices {
+	interpreter_parameter_distance = 0,
+	interpreter_parameter_anchor,
+	interpreter_parameter_first_parameter
+};
 
 struct interpreter_parameter_list
 {
-	int * value_field;
-	struct interpreter_parameter_list * next;
+	size_t size; /**< size of the allocated memory */
+	int * data;  /**< data fields */
+	struct interpreter_parameter_list * next; /**< possibly next element */
 };
 
+union interpreter_argument {
+	size_t index;
+	int constant;
+};
 
+struct interpreter_argument_list
+{
+	size_t size;
+	union interpreter_argument * data;
+	enum argument_typ * types;
+};
+	
 
 /*
 typedef int * parameter_liste[16];
@@ -173,30 +190,43 @@ struct do_aktion
 
 	const char * name;
 	enum aufruf_typ aufruf_typ;
+        struct interpreter_argument_list * arguments;
+
+        union {
+	    struct logik * logic;
+	    struct umstimmung * retuning;
+	} calling;
 
 	union
 	{
+#if 0 
+	    /* logic is handled in colling */
 		struct {
-			struct logik * logic;
-			/*
+		    struct logik * logic;
+		/*
 			  each list is stored only once
 			  struct harmonie_ereignis ** lokal_harmonie;
 			  struct keyboard_ereignis ** lokal_keyboard;
 			  struct midi_ereignis     ** lokal_midi;
 			*/
 		} aufruf_logik;
+#endif
 
 		struct {
 			tone_system * tonsystem;
 		} aufruf_tonsystem;
 
-		struct {
-			int * keynr;
-		} aufruf_umst_taste_abs;
+#if 0
+	    /* first argument */
+	    struct {
+		int * keynr;
+	    } aufruf_umst_taste_abs;
 
+	    /* first argument */
 		struct {
 			int * width;
 		} aufruf_umst_breite_abs;
+#endif
 
 		struct {
 			long faktor;
@@ -207,15 +237,20 @@ struct do_aktion
 		} aufruf_umst_wiederholung_rel;
 
 		struct {
+#if 0
+		    /* first argument */
 			int * distance;
+#endif
 			char rechenzeichen;
 		} aufruf_umst_taste_rel;
 
 		struct {
+#if 0
+		    /* first argument */
 			int * difference;
+#endif
 			char rechenzeichen;
 		} aufruf_umst_breite_rel;
-
 		struct {
 
 			struct ton_einstell * tonliste;
@@ -228,7 +263,10 @@ struct do_aktion
 #endif
 
 		struct {
-			int * choice;
+#if 0
+		    // first argument
+		    int * choice;
+#endif
 			struct case_element * umst_case;
 		} aufruf_umst_umst_case;
 

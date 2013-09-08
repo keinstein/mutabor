@@ -55,7 +55,7 @@ namespace mutabor {
 
 
 /* TabGen.cpp */
-void mutabor_tabellen_generator (mutabor_box_type * box);
+void expand_decition_tree (mutabor_box_type * box);
 
 #ifdef __cplusplus 
 		} // extern "C"

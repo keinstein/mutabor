@@ -78,6 +78,12 @@ namespace mutabor {
 	using hidden::keyboard_action;
 	using hidden::midiliste;
 
+        typedef hidden::mutabor_error_type error_type;
+
+        inline const char * to_string(error_type type) {
+	    return hidden::mutabor_error_type_to_string(type);
+	}
+
 
 	enum BoxType
 	{
@@ -514,7 +520,8 @@ namespace mutabor {
 #endif
 
 		/// Process an error message (doing the real work)
-		virtual void runtime_error(bool iswarning, const char * message);
+		virtual void runtime_error(error_type type, const char * message);
+
 
 	        /// Return the collected errors and warnings.
 		/** 

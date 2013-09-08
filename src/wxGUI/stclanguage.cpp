@@ -469,6 +469,8 @@ namespace mutaborGUI {
 
 			case MUTABOR_TOKEN_PARAMETER:
 				lexer.free_identifier();
+			case MUTABOR_TOKEN_DISTANCE:
+			case MUTABOR_TOKEN_ANCHOR:
 			case MUTABOR_TOKEN_ELSE:
 			case '@':
 				style = PARAMETER;

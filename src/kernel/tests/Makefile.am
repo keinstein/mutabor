@@ -24,6 +24,7 @@ testcppunit_LDADD = \
 	$(top_builddir)/libmutaborkernel.a \
 	$(top_builddir)/libmutaborrouting.a \
 	$(top_builddir)/librtmidi.a \
+	$(top_builddir)/src/wxintl/libwxintl.a \
 	$(LDADD) \
 	$(AM_LDFLAGS) \
 	$(CPPUNIT_LIBS)

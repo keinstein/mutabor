@@ -65,13 +65,15 @@ extern int yydebug;
      MUTABOR_TOKEN_CALLS = 274,
      MUTABOR_TOKEN_ELSE = 275,
      MUTABOR_TOKEN_PARAMETER = 276,
-     MUTABOR_TOKEN_ENDOFFILE = 277,
-     MUTABOR_TOKEN_ERROR = 278,
-     MUTABOR_TOKEN_SPACES = 279,
-     MUTABOR_TOKEN_COMMENT = 280,
-     MUTABOR_TOKEN_COMMENT_START = 281,
-     MUTABOR_TOKEN_COMMENT_END = 282,
-     MUTABOR_TOKEN_OTHER = 283
+     MUTABOR_TOKEN_ANCHOR = 277,
+     MUTABOR_TOKEN_DISTANCE = 278,
+     MUTABOR_TOKEN_ENDOFFILE = 279,
+     MUTABOR_TOKEN_ERROR = 280,
+     MUTABOR_TOKEN_SPACES = 281,
+     MUTABOR_TOKEN_COMMENT = 282,
+     MUTABOR_TOKEN_COMMENT_START = 283,
+     MUTABOR_TOKEN_COMMENT_END = 284,
+     MUTABOR_TOKEN_OTHER = 285
    };
 #endif
 /* Tokens.  */
@@ -94,13 +96,15 @@ extern int yydebug;
 #define MUTABOR_TOKEN_CALLS 274
 #define MUTABOR_TOKEN_ELSE 275
 #define MUTABOR_TOKEN_PARAMETER 276
-#define MUTABOR_TOKEN_ENDOFFILE 277
-#define MUTABOR_TOKEN_ERROR 278
-#define MUTABOR_TOKEN_SPACES 279
-#define MUTABOR_TOKEN_COMMENT 280
-#define MUTABOR_TOKEN_COMMENT_START 281
-#define MUTABOR_TOKEN_COMMENT_END 282
-#define MUTABOR_TOKEN_OTHER 283
+#define MUTABOR_TOKEN_ANCHOR 277
+#define MUTABOR_TOKEN_DISTANCE 278
+#define MUTABOR_TOKEN_ENDOFFILE 279
+#define MUTABOR_TOKEN_ERROR 280
+#define MUTABOR_TOKEN_SPACES 281
+#define MUTABOR_TOKEN_COMMENT 282
+#define MUTABOR_TOKEN_COMMENT_START 283
+#define MUTABOR_TOKEN_COMMENT_END 284
+#define MUTABOR_TOKEN_OTHER 285
 
 
 
@@ -110,13 +114,15 @@ typedef union YYSTYPE
 /* Line 2053 of yacc.c  */
 #line 85 "../../../mutabor-git/src/kernel/mut.yy"
 
-    double      f_value;        /* f〉 Gleitkommazahlen */
-    int         integer;        /* F〉 integers */
-    char        *identifier;    /* F〉 Namen */
+			double      f_value;        /* floating point numbers */
+			int         integer;        /* integers */
+			char        *identifier;    /* names/identifiers */
+			struct argument_list * arguments;  /* argument list */
+			struct parameter_list * parameters; /* parameter list */
 
 
 /* Line 2053 of yacc.c  */
-#line 120 "../../../mutabor-git/src/kernel/mut.hh"
+#line 126 "../../../mutabor-git/src/kernel/mut.hh"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
