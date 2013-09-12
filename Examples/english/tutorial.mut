@@ -55,7 +55,7 @@ TONESYSTEM
 PATTERN 
 	fifth = {0, *3, *4, 7,*9} 
 RETUNING 
-	transpo (distance) = @+distance []
+	transpo (dist) = @ + dist []
 LOGIC
 	adaptive KEY a = pythagoras [
 		SHIFTED fifth -> transpo(distance) 
