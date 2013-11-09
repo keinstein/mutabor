@@ -501,7 +501,7 @@ namespace mutabor {
 		  class L = std::vector <P> >
 	class CommonTypedDeviceAPI: public Device {
 	private:
-		REFPTR_INTERFACE
+		REFPTR_INTERFACE;
 		
 	public:
 		// To gain a little speed in realtime we use intrusive_ptr

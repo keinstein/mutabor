@@ -220,7 +220,7 @@ namespace mutabor {
 		}
 
 		void UpdateTones() {
-			if (Out) 
+			if (Out && Out->IsOpen()) 
 				Out->UpdateTones(this);
 		}
 
@@ -507,7 +507,7 @@ namespace mutabor {
 		static void AppendToRouteList (Route route);
 		static void RemoveFromRouteList (Route route);
 	
-		REFPTR_INTERFACE
+		REFPTR_INTERFACE;
 	};
 
 	template<class I, class O, class B> 

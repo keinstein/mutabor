@@ -626,7 +626,7 @@ namespace mutabor {
 
 
 	private:
-		REFPTR_INTERFACE
+		REFPTR_INTERFACE;
 	};
 		
 
