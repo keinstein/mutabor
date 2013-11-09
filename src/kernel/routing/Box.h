@@ -69,14 +69,34 @@ namespace mutabor {
 		extern "C" {
 			struct mutabor_box_type;
 			struct keyboard_ereignis;
+			struct midi_ereignis;
+			struct harmonie_ereignis;
 			typedef struct keyboard_ereignis keyboard_action;
+			typedef struct midi_ereignis     midi_action;
+			typedef struct harmonie_ereignis harmony_action;
+			struct any_trigger;
 			struct midiliste;
 		}
 	}
 	using hidden::mutabor_box_type;
 	using hidden::keyboard_ereignis;
 	using hidden::keyboard_action;
+	using hidden::midi_ereignis;
+	using hidden::midi_action;
+	using hidden::harmonie_ereignis;
+	using hidden::harmony_action;
+	using hidden::any_trigger;
 	using hidden::midiliste;
+
+
+	using hidden::warning;
+	using hidden::compiler_warning;
+	using hidden::runtime_warning;
+	using hidden::error;
+	using hidden::internal_error;
+	using hidden::compiler_error;
+	using hidden::runtime_error;
+	
 
         typedef hidden::mutabor_error_type error_type;
 
@@ -351,11 +371,12 @@ namespace mutabor {
 		static void StopAll();
 
 		struct logic_entry {
-			bool isLogic;
+			enum { none, Logic, CurrentLogic } flags;
+			bool active;
 			mutString name;
-			mutString startTuning;
+			mutString     startTuning;
 			int key;
-			keyboard_action * logic;
+			struct any_trigger trigger;
 		};
 		
 		typedef std::list<logic_entry> logic_list;
@@ -512,6 +533,13 @@ namespace mutabor {
 #endif
 
 		/** 
+		 * Activate the current box.
+		 * This method is called when a box is being activated. Its implementation 
+		 * should be done in the user code. Otherwise its just a no-op function.
+		 */
+		virtual void Activate () {}
+
+		/** 
 		 * Destroy the current object.  
 		 * This function is
 		 * called when an object shall be deleted. It clears
@@ -609,6 +637,7 @@ namespace mutabor {
 		void ExecuteCallbacks(unsigned int flags);
 		void ExecuteCallbacks(ChangedCallback::action * action);
 		
+
 
 		static void AppendToBoxList (Box dev);
 		static void RemoveFromBoxList (Box  dev);

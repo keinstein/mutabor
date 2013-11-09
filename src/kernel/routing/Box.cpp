@@ -43,6 +43,7 @@
 #include "src/kernel/Parser.h"
 #include "src/kernel/Runtime.h"
 #include "src/kernel/Execute.h"
+#include "src/kernel/Interpre.h"
 #include "src/kernel/Hilfs.h"
 #include "src/kernel/Interval.h"
 
@@ -342,6 +343,36 @@ namespace mutabor {
 		}
 	};
 
+	bool OpenAll() {
+		BoxClass_CallOpen callopen;
+		if (!mutabor::OutOpen())
+			return false;
+
+		BoxListType & boxList = const_cast<BoxListType &>(BoxClass::GetBoxList());
+		std::for_each(boxList.begin(),boxList.end(),callopen);
+		if (!callopen.ok) {
+			BoxClass::CloseAll();
+			OutClose();
+			return false;
+		}
+		
+		if (!InOpen() ) {
+			BoxClass::CloseAll();
+			OutClose();
+			return false;
+		}
+
+
+#if 0
+		if ( !ok ) {
+			wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
+
+			return false;
+		}
+#endif
+		return true;
+	}
+
 	void BoxClass::CloseAll() {
 		BoxClass_CallClose callclose;
 		std::for_each(boxList.begin(),boxList.end(),callclose);
@@ -357,16 +388,120 @@ namespace mutabor {
 		//AktionenInit();
 
 		// In batch mode Batch Play handles open and close.
-		if (realtime)
-			return OpenAll();
-		else return true;
+		bool retval = realtime ? OpenAll() : true;
+
+		if (!boxList.empty()) {
+			mutabor::Box b = boxList.front();
+			if (b) b->Activate();
+		}
+		return retval;
 	}
 	
 	void  BoxClass::StopAll() {
 		mutabor::CurrentTime.Stop();
 		mutabor::InClose();
 		mutabor::OutClose();
-		
+		CloseAll();
+	}
+
+	static inline void append_triggers (BoxClass::logic_list & list,
+					    mutabor_box_type * box,
+					    struct mutabor::hidden::logik * logic,
+					    struct keyboard_ereignis * keystrokes) {
+		for (struct keyboard_ereignis * i = keystrokes;
+		     i ; i=i->next) {
+			BoxClass::logic_entry entry = {
+				((i->the_logik_to_expand == NULL)?
+				 BoxClass::logic_entry::none:
+				 ((i->the_logik_to_expand == logic)?
+				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::Logic)),
+				(box->last_trigger.type
+				 == mutabor::hidden::any_trigger::key &&
+				 box->last_trigger.key_trigger == i),
+				i->name,
+				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
+				 (i->aktion?i->aktion->name:i->name)),
+				i->taste,
+				{ mutabor::hidden::any_trigger::key, i }
+				};
+			list.push_back(entry);
+		}
+	}
+
+	static inline void append_triggers (BoxClass::logic_list & list,
+					    mutabor_box_type * box,
+					    struct mutabor::hidden::logik * logic,
+					    struct harmonie_ereignis * harmonies) {
+		for (struct harmonie_ereignis * i = harmonies;
+		     i ; i=i->next) {
+			mutabor::hidden::any_trigger trigger;
+			trigger.type = mutabor::hidden::any_trigger::harmony;
+			trigger.harmony_trigger = i;
+			BoxClass::logic_entry entry = {
+				((i->the_logik_to_expand == NULL)?
+				 BoxClass::logic_entry::none:
+				 ((i->the_logik_to_expand == logic)?
+				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::Logic)),
+				(box->last_trigger.type == 
+				 mutabor::hidden::any_trigger::harmony &&
+				 box->last_trigger.harmony_trigger == i),
+				i->name,
+				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
+				 (i->aktion?i->aktion->name:i->name)),
+				-1,
+				trigger
+				};
+			list.push_back(entry);
+		}
+	}
+
+	static inline void append_triggers (BoxClass::logic_list & list,
+					    mutabor_box_type * box,
+					    struct mutabor::hidden::logik * logic,
+					    struct midi_ereignis * midis) {
+		for (struct midi_ereignis * i = midis;
+		     i ; i=i->next) {
+			mutabor::hidden::any_trigger trigger;
+			trigger.type = mutabor::hidden::any_trigger::midi;
+			trigger.midi_trigger = i;
+			BoxClass::logic_entry entry = {
+				((i->the_logik_to_expand == NULL)?
+				 BoxClass::logic_entry::none:
+				 ((i->the_logik_to_expand == logic)?
+				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::Logic)),
+				(box->last_trigger.type == mutabor::hidden::any_trigger::midi &&
+				 box->last_trigger.midi_trigger == i),
+				i->name,
+				(i->the_logik_to_expand?i->the_logik_to_expand->einstimmungs_name:
+				 (i->aktion?i->aktion->name:i->name)),
+				-1,
+				trigger
+				};
+			list.push_back(entry);
+		}
+	}
+
+	BoxClass::logic_list BoxClass::GetLogics () {
+		ScopedLock lock(mutex);
+		logic_list retval;
+		if (!box) return retval;
+		struct mutabor_logic_parsed * file = box->file;
+		if (!file) return retval;
+		// no file means no logic (implying no current logic)
+
+		struct mutabor::hidden::logik * logic = box->current_logic;
+		append_triggers (retval, box, logic, file->global_keystrokes );
+		append_triggers (retval, box, logic, file->global_harmonies  );
+		append_triggers (retval, box, logic, file->global_midi_inputs);
+		if (logic) {
+			append_triggers(retval, box, logic, logic->keystroke_list );
+			append_triggers(retval, box, logic, logic->harmony_list   );
+			append_triggers(retval, box, logic, logic->midi_input_list);
+		}
+		return retval;
 	}
 	
 	bool BoxClass::Compile(CompileCallback * callback, const char * logic) {
@@ -700,35 +835,6 @@ namespace mutabor {
 		std::for_each(outlist.begin(),outlist.end(),dopanic);
 	}
 
-
-	bool OpenAll() {
-		BoxClass_CallOpen callopen;
-		if (!mutabor::OutOpen())
-			return false;
-
-		BoxListType & boxList = const_cast<BoxListType &>(BoxClass::GetBoxList());
-		std::for_each(boxList.begin(),boxList.end(),callopen);
-		if (!callopen.ok) {
-			BoxClass::CloseAll();
-			OutClose();
-			return false;
-		}
-		
-		if (!InOpen() ) {
-			BoxClass::CloseAll();
-			OutClose();
-			return false;
-		}
-
-#if 0
-		if ( !ok ) {
-			wxMessageBox(Fmeldung, _("Activation error"), wxOK | wxICON_ASTERISK );
-
-			return false;
-		}
-#endif
-		return true;
-	}
 
 
 	void initialize_box_data() 

@@ -58,15 +58,10 @@ namespace mutaborGUI {
 // Fenster, das die Routen enth‰lt
 
 
-	class MutLogicWnd : public wxScrolledWindow, public MutChildApi
+	class MutLogicWnd : public wxScrolledWindow, 
+			    public MutChildApi,
+			    public mutabor::BoxClass::ChangedCallback
 	{
-
-	private:
-//		void DoLayout();
-		bool Ok;
-		int nTags;
-		wxWindow *ColorBar1, *ColorBar2;
-		mutabor::Box box;
 
 	public:
 
@@ -100,15 +95,25 @@ namespace mutaborGUI {
 		}
 
 		void doClose(wxEvent& event);
-		void UpDate(int thekey, 
-			    typename mutabor::BoxClass::KeyboardFlags flags);
+		void UpDate();
 //		void CorrectScroller();
 		void CmMutTag(wxCommandEvent& event);
+		void CmUpdateUI(wxCommandEvent & event);
 		void CmBox();
 		void OnChar(wxKeyEvent& event);
 		void CmTaste();
 		void OnActivate(wxActivateEvent& event);
 		void OnGetFocus(wxFocusEvent& event);
+		void BoxChangedAction(int flags);
+
+	protected:
+//		void DoLayout();
+		bool Ok;
+		int nTags;
+		wxWindow *ColorBar1, *ColorBar2;
+		mutabor::Box box;
+		wxSize TagMinSize;
+
 
 
 		DECLARE_EVENT_TABLE()

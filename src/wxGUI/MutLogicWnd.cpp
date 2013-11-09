@@ -68,11 +68,6 @@ namespace mutaborGUI {
 // TMutTag -----------------------------------------------------------
 // repr‰sentiert Logik im Mut-Dialog
 
-#define MUTTAGX 90
-#define MUTTAGY 70
-
-
-	wxSize MutTagSize(MUTTAGX, MUTTAGY);
 
 /*#define SETUPWINDOW_FONT(CLASS, BASECLASS, FONT)         \
   void CLASS::SetupWindow()										\
@@ -83,7 +78,7 @@ namespace mutaborGUI {
 
 */
 
-	class MutTag : public wxWindow
+	class MutTag : public MutIconShape
 	{
 
 	public:
@@ -92,8 +87,11 @@ namespace mutaborGUI {
 		       const wxPoint& pos,
 		       int isLogic, 
 		       int isOpen, 
-		       int key, 
-		       const wxString& text);
+		       int key);
+
+		wxIcon & GetMutIcon() {
+			return Icon;
+		}
 
 	private:
 		bool IsLogic;
@@ -114,8 +112,11 @@ namespace mutaborGUI {
 				return IsLogic;
 			}
 
+#if 0
 		void InitText(wxDC& dc);
 		void OnPaint(wxPaintEvent& WXUNUSED(event));
+#endif
+		void OnDraw (wxDC & dc);
 		void OnChar(wxKeyEvent& event);
 		void OnLeftDown(wxMouseEvent& event);
 		void OnGetFocus(wxFocusEvent& event);
@@ -124,26 +125,30 @@ namespace mutaborGUI {
 		void PaintCenteredText(wxDC &dc, wxString s, int y)
 		{
 			wxCoord w, h;
-			dc.GetTextExtent(s, &w, &h);
-			dc.DrawText(s, (MUTTAGX-w)/2, y);
+			dc.GetMultiLineTextExtent(s, &w, &h);
+			wxRect rect(wxPoint(0,0),GetSize());
+			wxRect area = GetIconRect();
+			rect.height = h;
+			rect.y = y;
+			dc.DrawLabel(s, area, wxALIGN_TOP | wxALIGN_CENTRE | wxST_NO_AUTORESIZE);
 		}
 
 	public:
 		DECLARE_EVENT_TABLE()
 	};
 
-	BEGIN_EVENT_TABLE(MutTag, wxWindow)
-	EVT_PAINT(MutTag::OnPaint)
+	BEGIN_EVENT_TABLE(MutTag, MutIconShape)
+	//	EVT_PAINT(MutTag::OnPaint)
 	EVT_CHAR(MutTag::OnChar)
 	EVT_LEFT_DOWN(MutTag::OnLeftDown)
-	EVT_SET_FOCUS(MutTag::OnGetFocus)
-	EVT_KILL_FOCUS(MutTag::OnGetFocus)
+	//	EVT_SET_FOCUS(MutTag::OnGetFocus)
+	//	EVT_KILL_FOCUS(MutTag::OnGetFocus)
 	END_EVENT_TABLE()
 
 
 	MutTag::MutTag(wxWindow *parent, const wxPoint& pos,
-		       int isLogic, int isOpen, int key, const wxString& text)
-	: wxWindow(parent, CM_MUTTAG, pos, MutTagSize)
+		       int isLogic, int isOpen, int key)
+	: MutIconShape()
 	{
 		/*  int Types[4] = { IDI_TONSYST, IDI_LOGIC, IDI_TONSYSTOPEN, IDI_LOGICOPEN};
 		    Attr.Style |= BS_OWNERDRAW | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
@@ -154,20 +159,29 @@ namespace mutaborGUI {
 		};
 
 		Icon = wxIcon(TagIcon[isLogic + 2*isOpen]);
-		Text = text;
 		TPos = -1;
 		IsLogic = isLogic != 0;
 		Key = key;
 
+		Create(parent, CM_MUTTAG);
 //TODO  Attr.AccelTable = IDA_MUTWIN;
 	}
 
+
+	void MutTag::OnDraw(wxDC & dc) {
+		MutIconShape::OnDraw(dc);
+		dc.SetTextBackground(GetBackgroundColour());
+		dc.SetTextForeground(*wxBLACK);
+		if (Key > 0)
+			PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 15);
+	}
+#if 0
 	void MutTag::InitText(wxDC& dc)
 
 	{
 		int i = Text.Length();
 		wxCoord w, h;
-		dc.GetTextExtent(Text, &w, &h);
+		dc.GetMultiLineTextExtent(Text, &w, &h);
 
 		if ( w <= MUTTAGX-4 ) TPos = 0;
 
@@ -175,7 +189,7 @@ namespace mutaborGUI {
 			if ( Text[i] == '_' ) {
 				Text[i] = '-';
 				if ( TPos == -1 ) {
-					dc.GetTextExtent(Text.Left(i+1), &w, &h);
+					dc.GetMultiLineTextExtent(Text.Left(i+1), &w, &h);
 					if ( w <= MUTTAGX-4 ) TPos = i+1;
 				}
 			}
@@ -185,12 +199,12 @@ namespace mutaborGUI {
 
 		if ( TPos == -1 ) TPos = 0;
 
-		dc.GetTextExtent(Text.Mid(TPos), &w, &h);
+		dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
 
 		if ( w > MUTTAGX-4 )
 			Text.Last() = '.';
 
-		dc.GetTextExtent(Text.Mid(TPos), &w, &h);
+		dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
 
 		int l = Text.Length();
 
@@ -198,9 +212,11 @@ namespace mutaborGUI {
 			l--;
 			Text.Truncate(l);
 			Text.Last() = '.';
-			dc.GetTextExtent(Text.Mid(TPos), &w, &h);
+			dc.GetMultiLineTextExtent(Text.Mid(TPos), &w, &h);
 		}
 	}
+
+	
 
 	void MutTag::OnPaint(wxPaintEvent& WXUNUSED(event))
 	{
@@ -234,7 +250,8 @@ namespace mutaborGUI {
 		// Taste auf Icon
 		dc.SetTextBackground(GetBackgroundColour());
 		dc.SetTextForeground(*wxBLACK);
-		PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 20);
+		if (Key > 0)
+			PaintCenteredText(dc, wxString::Format(_T("%c"), Key), 20);
 
 		dc.SetTextForeground(GetForegroundColour());
 		if ( TPos ) {
@@ -244,6 +261,7 @@ namespace mutaborGUI {
 			PaintCenteredText(dc, Text, 50);
 
 	}
+#endif
 
 	void MutTag::OnChar(wxKeyEvent& event)
 	{
@@ -306,6 +324,7 @@ namespace mutaborGUI {
 	EVT_CHAR(MutLogicWnd::OnChar)
 	EVT_SIZE(MutLogicWnd::OnSize)
 	EVT_MENU(CM_MUTTAG, MutLogicWnd::CmMutTag)
+	EVT_MENU(CM_UPDATEUI, MutLogicWnd::CmUpdateUI)
 	EVT_CLOSE(MutLogicWnd::OnClose)
 	EVT_ACTIVATE(MutLogicWnd::OnActivate)
 	END_EVENT_TABLE()
@@ -317,11 +336,13 @@ namespace mutaborGUI {
 				 const wxSize& size)
 	: wxScrolledWindow(parent, -1, pos, size, wxHSCROLL |
 				 wxVSCROLL | wxTAB_TRAVERSAL),
+		ChangedCallback(b),
                 Ok(false),
                 nTags(-1),
                 ColorBar1(NULL),
                 ColorBar2(NULL),
-                box(b)
+                box(b),
+		TagMinSize(80,40)
 	{
 
 		DEBUGLOG(other,_T("box %p"), box.get());
@@ -333,10 +354,10 @@ namespace mutaborGUI {
 //	SetBackgroundColour(*wxWHITE);
 		SetForegroundColour(guibox->GetTextColour());
 		SetBackgroundColour(guibox->GetBackgroundColour());
-		wxFlexGridSizer * sizer = new wxFlexGridSizer(1,10, 10);
+		wxGridSizer * sizer = new wxGridSizer(1,10, 10);
 		if (sizer) {
-			sizer->SetFlexibleDirection(wxVERTICAL);
-			sizer->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_ALL);
+			//			sizer->SetFlexibleDirection(wxVERTICAL);
+			//			sizer->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_ALL);
 			SetSizer(sizer);
 		}
 
@@ -366,24 +387,48 @@ namespace mutaborGUI {
 		wxGridSizer * sizer = dynamic_cast<wxGridSizer *>(GetSizer());
 		if (!sizer) return;
 
-		size_t columns = std::max(sizer->GetCols(),1);
+		//		size_t columns = std::max(sizer->GetCols(),1);
 		int rows = sizer->GetRows();
-		size_t clients = GetChildren().size();
+		// size_t clients = GetChildren().size();
 		wxSize children_size;
+		// size_t max_columns = size.x+TagMinSize.x-1/TagMinSize.x;
 		
 		if (rows != 0) sizer->SetRows(0);
 		mutASSERT(sizer->GetRows() == 0);
+
+
+#if 0
+		if (!clients) {
+			// this should not happen, but just in case
+			// we need to avoid division by zero
+			sizer->SetCols(1);
+			FitInside();
+			return;
+		}
 		
 		while ((children_size = sizer->GetMinSize()).x <= size.GetWidth()) {
 			if (columns > clients && 
 			    (children_size.x*columns)/clients > (size_t) size.GetWidth())
 				break;
 			sizer->SetCols(++columns);
+			// we need some overhead for calculation of the right size
+			if (columns > max_columns) break; 
 		}
+		
+		if (children_size.x / columns > TagMinSize.x) {
+			TagMinSize.x = children_size.x/columns;
+			max_columns = (size.x+TagMinSize.x-1)/TagMinSize.x;
+		}
+
+		if (columns > max_columns) columns = max_columns;
 
 		while ((sizer->GetMinSize().x > size.GetWidth() && columns > 1)
 		       || (columns > clients && children_size.x*columns/clients > (size_t) size.GetWidth()))
 			sizer->SetCols(--columns);
+#endif
+		mutASSERT(TagMinSize.x >0);
+		if (TagMinSize.x)
+			sizer->SetCols(std::max(size.x/TagMinSize.x,1));
 		
 		FitInside();		
 	}
@@ -468,27 +513,20 @@ namespace mutaborGUI {
 					SetFocusPos();*/
 			wxWindow *w = wxWindow::FindFocus();
 
-			if ( w && w->GetId() == CM_MUTTAG )
-				UpDate(((MutTag*)w)->GetKey(), 
-				       ((MutTag*)w)->GetIsLogic() ? 
-				       mutabor::BoxClass::KeyboardLogic :
-				       mutabor::BoxClass::KeyboardNoLogic);
+			if ( w && w->GetId() == CM_MUTTAG ) {
+				mutASSERT(box);
+				box->KeyboardAnalysis(((MutTag*)w)->GetKey(), 
+						      ((MutTag*)w)->GetIsLogic()?
+				      mutabor::BoxClass::KeyboardLogic:
+				      mutabor::BoxClass::KeyboardNoLogic);
+			}
 		} else {
-			// Buchstabentaste
-			// Umwandeln in Groﬂbuchstaben
-
-			if ( 'a' <= key && key <= 'z' ) key += 'A' - 'a';
-
-			// ermiteln, ob Logik
-			char isLogic = box->IsLogicKey(key);
-
-			if ( isLogic == 2 ) return;
-
-			// Update aufrufen
-			UpDate(key, 
-			       isLogic != 0 ? 
-			       mutabor::BoxClass::KeyboardLogic :
-			       mutabor::BoxClass::KeyboardNoLogic);
+			mutASSERT(box);
+			if (!box){
+				UNREACHABLEC;
+				return;
+			}
+			box->KeyboardAnalysis(key,mutabor::BoxClass::KeyboardAny);
 		}
 	}
 
@@ -563,18 +601,122 @@ namespace mutaborGUI {
 	}
 
 #endif
+	void MutLogicWnd::UpDate()
+	{
+		if (Ok) return;
+		/* We might use a mutex here until rendering is done
+		   to avoid rerendering, but this would at least slow
+		   down music handling in BoxChangedAction. Currently
+		   we waste time in the main thread when it is idle
+		   anyway.
+		*/
+		Ok = true;
+		// Analyse zuerst
+		BoxData * guibox = ToGUIBase(box);
+		mutASSERT(guibox);
+#warning reimplement this using BoxClass::GetLogics();
+#if 0
+		guibox->KeyboardAnalysis(thekey,flags);
+		if (flags == mutabor::BoxClass::KeyboardLogic) {
+			guibox->SetKeyTonesystem(0);
+			guibox->SetKeyLogic(thekey);
+		}
+#endif
+		wxSizer * sizer = GetSizer();
+		wxSizerFlags flags;
+		flags.Expand().Centre();
+
+		
+		//* \todo we must reuse old entries as rendering can be expensive
+		DestroyChildren();
+		MutTag * toFocus=NULL;
+		bool isOpen;
+
+		mutabor::BoxClass::logic_list logics = box->GetLogics();
+		for (mutabor::BoxClass::logic_list::iterator i = logics.begin();
+		     i != logics.end();
+		     i++) {
+			if ( (isOpen = i->flags == mutabor::BoxClass::logic_entry::CurrentLogic)) {
+#if 0
+				// guibox->SetLogic(sText);
+				if ( !sEinst.IsEmpty() )
+					guibox->SetTonesystem(sEinst);
+				else if ( guibox->GetTonesystem().empty() )
+					guibox->SetTonesystem(_("(INITIAL)"));
+				else if ( guibox->GetTonesystem()[0] != '[' )
+					guibox->SetTonesystem(
+							      _T("[")
+							      + guibox->GetTonesystem()
+							      + _T("]")
+							      );
+#endif
+			} else
+				//				guibox->SetTonesystem(sText);
+				;
+			bool isLogic = isOpen||i->flags == mutabor::BoxClass::logic_entry::Logic;
+			MutTag * tag = new MutTag(this, 
+						  wxDefaultPosition, 
+						  isLogic,
+						  isOpen || i->active,
+						  i -> key);
+			tag->SetLabel(isLogic ? i-> name + (!i->startTuning.IsEmpty() ? 
+							    "\n(" + i -> startTuning + ")":""): 
+				      i->startTuning);
+			tag -> SetBackgroundColour(GetBackgroundColour());
+			tag -> SetForegroundColour(GetForegroundColour());
+			TagMinSize.IncTo(tag->GetBestSize());
+			if (sizer)
+				sizer->Add(tag,flags);
+			if (isOpen || i->active) toFocus = tag;
+		}
+
+		Layout();
+		FixSizer();
+
+		if ( toFocus && FindFocus() != toFocus)
+			toFocus->SetFocus();
+
+#if 0
+		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
+				      CM_UPDATEUI);
+
+		BoxData * boxdata = ToGUIBase(box);
+		wxWindow * win = boxdata->GetActionsWindow();
+		if (win) 
+			wxPostEvent(win,event1);
+		win = boxdata->GetTonesystemWindow();
+		if (win) 
+			wxPostEvent(win,event1);
+		/* keys may be retuned, now */
+		win = boxdata->GetKeyWindow();
+		if (win) 
+			wxPostEvent(win,event1);
+#endif
+	}
 // Reaktion auf geklickte TMutTag-s
 
 	void MutLogicWnd::CmMutTag(wxCommandEvent& event)
 	{
+		mutASSERT(box);
+		if (!box) {
+			UNREACHABLEC;
+			return;
+		}
 		MutTag *Tag = (MutTag*)event.GetEventObject();
-		UpDate(Tag->GetKey(), Tag->GetIsLogic()?
-		       mutabor::BoxClass::KeyboardLogic:
-		       mutabor::BoxClass::KeyboardNoLogic);
+		box->KeyboardAnalysis(Tag->GetKey(), 
+				      Tag->GetIsLogic()?
+				      mutabor::BoxClass::KeyboardLogic:
+				      mutabor::BoxClass::KeyboardNoLogic);
 
 		SetCurrentBox(box);
 		TRACEC;
 	}
+
+	void MutLogicWnd::CmUpdateUI(wxCommandEvent & event) 
+	{
+		UpDate();
+	}
+
 #if 0
 	void MutLogicWnd::CorrectScroller()
 	{
@@ -620,124 +762,6 @@ namespace mutaborGUI {
 #endif
 
 // keyboardanalyse, Fenster aufräumen, Logiken lesen und anzeigen
-	void MutLogicWnd::UpDate(int thekey,
-				 mutabor::BoxClass::KeyboardFlags flags)
-	{
-		wxWindow *ToFocus = NULL;
-
-#warning reimplement this using BoxClass::GetLogics();
-#if 0
-		// Analyse zuerst
-		BoxData * guibox = ToGUIBase(box);
-		mutASSERT(guibox);
-		guibox->KeyboardAnalysis(thekey,flags);
-		if (flags == mutabor::BoxClass::KeyboardLogic) {
-			guibox->SetKeyTonesystem(0);
-			guibox->SetKeyLogic(thekey);
-		}
-		wxSizer * sizer = GetSizer();
-
-		
-		//* \todo we must reuse old entries as rendering can be expensive
-		DestroyChildren();
-
-		// neue erstellen
-		char isLogic, *s, s1[200], key, isOpen;
-
-		wxString sText, sEinst;
-		wxWindow *aWin;
-		nTags = 0;
-
-		wxColour background = GetBackgroundColour();
-		wxColour foreground = GetForegroundColour();
-
-		if ( guibox->GetMutTag(isLogic, &s, s1, key)) do {
-				nTags++;
-				sText = muT(s);
-				free(s);s = NULL;
-				sEinst = muT(s1);
-
-				if ( (isOpen = (key == thekey)) != 0 ) {
-					if ( isLogic ) {
-						guibox->SetLogic(sText);
-
-						if ( !sEinst.IsEmpty() )
-							guibox->SetTonesystem(sEinst);
-						else if ( guibox->GetTonesystem().empty() )
-							guibox->SetTonesystem(_("(INITIAL)"));
-						else if ( guibox->GetTonesystem()[0] != '[' )
-							guibox->SetTonesystem(
-								_T("[")
-								+ guibox->GetTonesystem()
-								+ _T("]")
-								);
-					} else
-						guibox->SetTonesystem(sText);
-				}
-
-				aWin = new MutTag(this, wxDefaultPosition, isLogic, isOpen, key, sText);
-				aWin->SetBackgroundColour(background);
-				aWin->SetForegroundColour(foreground);
-				if (sizer) 
-					sizer->Add(aWin);
-
-				if ( isOpen ) ToFocus = aWin;
-			} while ( GetMutTag(isLogic, &s, s1, key, NULL) );
-#endif
-
-		Layout();
-		FixSizer();
-
-#if 0
-		// Color Bars
-		if ( UseColorBars ) {
-			wxColour BarColor = BoxColour(box);
-			ColorBar1 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
-			ColorBar1->SetBackgroundColour(BarColor);
-			ColorBar1->Disable();
-			ColorBar2 = new wxWindow(this, -1, wxPoint(0, 0), wxSize(2,2));
-			ColorBar2->SetBackgroundColour(BarColor);
-			ColorBar2->Disable();
-		} else {
-			ColorBar1 = 0;
-			ColorBar2 = 0;
-		}
-#endif
-		// neue TMutTag-s aktivieren
-		//CreateChildren();
-		// Fokus setzen
-#if 0
-		if ( !ToFocus )
-			ToFocus = GetChildren().GetFirst()->GetData();
-#endif
-
-		if ( ToFocus && FindFocus() != ToFocus)
-			ToFocus->SetFocus();
-
-#if 0
-		// Tags anordnen
-		DoLayout();
-#endif
-
-		wxCommandEvent event1(wxEVT_COMMAND_MENU_SELECTED,
-				      CM_UPDATEUI);
-#if 0
-		GetParent()->GetEventHandler()->ProcessEvent(event1);
-#endif
-
-		BoxData * boxdata = ToGUIBase(box);
-		wxWindow * win = boxdata->GetActionsWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-		win = boxdata->GetTonesystemWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-		/* keys may be retuned, now */
-		win = boxdata->GetKeyWindow();
-		if (win) 
-			wxPostEvent(win,event1);
-		Ok = true;
-	}
 
 // Reaktion auf neues aktuelles Instrument
 	void MutLogicWnd::CmBox()
@@ -746,7 +770,7 @@ namespace mutaborGUI {
 		// Titel setzen
 		GetParent()->SetName(MakeTitle());
 		// Tags updaten
-		UpDate(-1, mutabor::BoxClass::KeyboardLogic);
+		UpDate();
 	}
 
 	void MutLogicWnd::OnActivate(wxActivateEvent& event)
@@ -763,6 +787,16 @@ namespace mutaborGUI {
 		SetCurrentBox(box);
 		TRACEC;
 		event.Skip();
+	}
+
+	void MutLogicWnd::BoxChangedAction(int flags) {
+		if (flags & (ChangedCallback::LogicChanged | 
+			     ChangedCallback::ActionChanged)) {
+			Ok = false;
+			wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
+					      CM_UPDATEUI);
+			wxPostEvent(this,event);
+		}
 	}
 
 
