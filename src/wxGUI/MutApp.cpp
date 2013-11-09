@@ -1355,6 +1355,8 @@ namespace mutaborGUI {
 		TRACEC;
 		OutputDeviceClass::ClearDeviceList();
 		TRACEC;
+		BoxClass::ClearBoxList();
+		TRACEC;
 		RouteClass::ClearRouteList();
 		TRACEC;
 
@@ -1469,18 +1471,19 @@ namespace mutaborGUI {
 */	
 		// emty lists
 		TRACE;
+		RouteClass::ClearRouteList();
+		TRACE;
 		InputDeviceClass::ClearDeviceList();
 		TRACE;
-		OutputDeviceClass::ClearDeviceList();
+		BoxClass::ClearBoxList();
 		TRACE;
-		RouteClass::ClearRouteList();
+		OutputDeviceClass::ClearDeviceList();
 		TRACE;
 
 		DebugCheckRoutes();
 
 		LoadRoutes(config);
 
-		DebugCheckRoutes();
 
 		if (routewnd) {
 			routewnd->InitDevices();
@@ -1489,8 +1492,8 @@ namespace mutaborGUI {
 			routewnd->Refresh();
 //			routewnd->Update();
 
-			DebugCheckRoutes();
 		}
+		DebugCheckRoutes();
 
 		config->SetPath(oldpath);
 	}
