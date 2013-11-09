@@ -16,6 +16,9 @@ AM_CXX = $(MAKE) $(AM_MAKEFLAGS) mutabor-precompile && $(CXX)
 AM_YFLAGS = -d -v --report=itemset
 EXTRA_PROGRAMS = 
 
+TAGS_FILES = $(POTFILES)
+AM_ETAGSFLAGS = -I --members --declarations -r '/inline[ \t]+\([^ \t(]+[ \t]+\)*\([^ \t(]+\)[ \t]*(/\2/m'
+
 if COND_INTERNAL_FLEXLEXER
 AM_CXXFLAGS += -I$(top_srcdir)/lib/includes/flex
 endif
