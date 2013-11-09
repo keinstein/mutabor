@@ -292,11 +292,6 @@ namespace mutaborGUI {
 		static MutFrame * GetActiveWindow() {
 			return ActiveWindow;
 		}
-	private:
-
-		wxMenu * editmenu;
-		wxMenu * filemenu;
-	
 		void CloseClientWindow(wxWindow * w, bool update = true) {
 			mutASSERT(w);
 			if (!w) return;
@@ -316,6 +311,11 @@ namespace mutaborGUI {
 			// win should be invalid now.
 		}
 
+	private:
+
+		wxMenu * editmenu;
+		wxMenu * filemenu;
+	
 		virtual wxStatusBar* OnCreateStatusBar(int number, long style, wxWindowID id, const wxString& name) {
 			StatusBar * bar = new StatusBar(this, id, style, name);
 			if (!bar) return NULL;
