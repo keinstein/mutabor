@@ -90,7 +90,7 @@ class MutTextBox : public wxListBox
 
 protected:
 	WinKind winKind;
-	mutabor::Box & box;
+	mutabor::Box box;
 
 public:
 	MutTextBox(  WinKind k,
