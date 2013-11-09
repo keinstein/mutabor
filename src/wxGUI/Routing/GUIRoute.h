@@ -569,10 +569,6 @@ namespace mutaborGUI {
 			basetype::Play();
 			GUIInputDeviceBase::Play();
 		}
-		virtual void  Play(wxThreadKind tk) {
-			basetype::Play(tk);
-			GUIInputDeviceBase::Play();
-		}
 		virtual void  Pause() {
 			basetype::Pause();
 			GUIInputDeviceBase::Pause();
