@@ -41,6 +41,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Box.h"
+#include "src/kernel/Interpre.h"
 #include "src/kernel/routing/Route-inlines.h"
 
 #ifndef ROUTING_BOX_INLINES_PRECOMPILED
@@ -77,6 +78,25 @@ namespace mutabor {
 			TRACEC;
 		}
 		route = NULL;
+	}
+	
+	inline bool is_key_trigger(struct any_trigger & trigger) {
+		return trigger.type == any_trigger::key;
+	}
+	inline bool is_harmony_trigger(struct any_trigger & trigger) {
+		return trigger.type == any_trigger::key;
+	}
+	inline bool is_midi_trigger(struct any_trigger & trigger) {
+		return trigger.type == any_trigger::key;
+	}
+	inline keyboard_action * get_key_trigger(struct any_trigger & trigger) {
+		return trigger.key_trigger;
+	}
+	inline harmony_action * get_harmony_trigger(struct any_trigger & trigger) {
+		return trigger.harmony_trigger;
+	}
+	inline midi_action * get_midi_trigger(struct any_trigger & trigger) {
+		return trigger.midi_trigger;
 	}
 
 }

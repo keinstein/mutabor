@@ -149,7 +149,8 @@ struct mutabor_box_type {
 	tone_system tonesystem_memory[2];
 	tone_system last_tonesystem;
 
-	struct logik * current_logic; /*< currently active logic */
+	struct logik * current_logic;    /*< currently active logic */
+	struct any_trigger last_trigger; /*< last trigger that has been matched */
 
 #if 0
 	/* Certain linked lists for events, 
