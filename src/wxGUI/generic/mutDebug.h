@@ -53,6 +53,12 @@
 #include "wx/debug.h"
 #pragma GCC diagnostic ignored "-Wvariadic-macros"
 
+#ifdef WX
+#include "wx/thread.h"
+typedef wxMutex debugMutex;
+typedef wxMutexLocker debugScopedLock;
+#endif
+
 void MutInitConsole();
 
 struct debugFlags {
@@ -92,17 +98,18 @@ struct debugFlags {
 	static void ProcessCommandLine(wxCmdLineParser&  parser);
 };
 
+extern debugMutex debugmutex;
 
 #define isDebugFlag(level) (debugFlags::flags.level)
 # define DEBUGLOGBASEINT(level,strlevel, type,...)			\
 	do {								\
 		if (level) {						\
+			debugScopedLock lock(debugmutex);		\
 			if (!std::clog.good()) MutInitConsole();	\
 			wxASSERT(std::clog.good());			\
 			std::clog << __FILE__ << ":" << __LINE__	\
 				  << ": " << ((const char *) type)	\
 				  << "::" << __WXFUNCTION__ << ": ";	\
-			std::clog.flush();				\
 			std::clog << (const char *)(wxString::Format( __VA_ARGS__ ).ToUTF8()) \
 				  << " (" << strlevel << ")"	\
 				  << std::endl;				\

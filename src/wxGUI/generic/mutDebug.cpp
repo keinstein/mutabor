@@ -88,7 +88,7 @@ void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser)
 #undef DEBUGFLAG	
 }
 
-typedef std::list<void *> ptrlist;
+debugMutex debugmutex;
 static ptrlist debug_save_pointers;
 
 void debug_destroy_class(void * ptr) 
