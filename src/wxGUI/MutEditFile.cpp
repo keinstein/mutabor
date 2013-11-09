@@ -74,6 +74,9 @@
 //#include "src/kernel/Runtime.h"
 #include "src/wxGUI/MutView.h"
 #include "src/wxGUI/stclanguage.h"
+#include "src/wxGUI/MutApp.h"
+#include "src/wxGUI/Routing/DebugRoute.h"
+
 //#include "src/kernel/GrafKern.h"
 #include "src/kernel/routing/Route-inlines.h"
 
@@ -264,16 +267,36 @@ namespace mutaborGUI {
 
 		CompDia->SetFileName(GetName());
 
-		mutabor::Box box = mutabor::BoxClass::GetBoxList().front();
+#ifdef DEBUG
+		if (activate) {
+		wxGetApp().SaveState();
+		DebugCheckRoutes();
+		DEBUGLOG (gui, _T("Restoring state for debugging"));
+		wxGetApp().RestoreState();
+		DebugCheckRoutes();
+	}
+
+#endif
+
+		const mutabor::BoxListType & boxlist = mutabor::BoxClass::GetBoxList();
+		mutabor::BoxListType::const_iterator i = boxlist.begin();
+		mutabor::Box box = *i;
 		if (!box) {
 			wxMessageBox(_("At least one box is needed to compile the logic"),
 				     _("Error"), wxOK | wxICON_ERROR);
 			return false;
 		}
 
+
 		int line;
 		if ( (line = box->Compile(CompDia, GetText().ToUTF8())) >= 0 ) {
 			CompiledFile = m_filename;
+			ToGUIBase(box)->SetEditor(this);
+			for (;i!= boxlist.end(); i++) {
+				mutabor::Box b = *i;
+				b->SetLogic(box);
+				ToGUIBase(b)->SetEditor(this);
+			}
 
 			if (activate) {
 				wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, 
