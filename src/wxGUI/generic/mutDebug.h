@@ -212,16 +212,17 @@ public:
 
 
 #ifdef DEBUG
-void debug_destroy_class(void * ptr);
+void debug_destroy_class(void * ptr, std::string file, int l);
 void debug_destruct_class(void * ptr);
 void debug_print_pointers();
 bool debug_is_all_deleted();
 #else 
-inline void debug_destroy_class(void * ptr) {}
+inline void debug_destroy_class(void * ptr, std::string file, int l) {}
 inline void debug_destruct_class(void * ptr) {}
 inline void debug_print_pointers() {}
 inline bool debug_is_all_deleted() { return true; }
 #endif
+#define debug_destroy_class(ptr) debug_destroy_class(ptr,__FILE__,__LINE__)
 
 void mutAssertFailure(const wxChar *file,
 		      int line,

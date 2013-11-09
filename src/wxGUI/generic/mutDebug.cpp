@@ -89,22 +89,49 @@ void debugFlags::ProcessCommandLine(wxCmdLineParser&  parser)
 }
 
 debugMutex debugmutex;
+
+struct ptrlist_item {
+	void * ptr;
+	std::string file;
+	int line;
+	ptrlist_item(void * p, std::string &f, int l):ptr(p),
+					       file(f),
+					       line(l) {}
+	bool operator == (void * p) const { return ptr == p ; }
+	bool operator < (void * p) const { return ptr < p ; }
+};
+
+typedef std::list<ptrlist_item> ptrlist;
 static ptrlist debug_save_pointers;
 
-void debug_destroy_class(void * ptr) 
+#undef debug_destroy_class
+void debug_destroy_class(void * ptr, std::string file, int l) 
 {
-	debug_save_pointers.push_back(ptr);
+	mutASSERT(std::find(debug_save_pointers.begin(),
+			    debug_save_pointers.end(),
+			    ptr) 
+		  == debug_save_pointers.end());
+	debug_save_pointers.push_back(ptrlist_item(ptr,file,l));
 }
+
 void debug_destruct_class(void * ptr) 
 {
-	debug_save_pointers.remove(ptr);
+	ptrlist::iterator i = std::find(debug_save_pointers.begin(),
+					debug_save_pointers.end(),
+					ptr);
+	mutASSERT(i!=debug_save_pointers.end());
+	if (i != debug_save_pointers.end())
+		debug_save_pointers.erase (i);
 }
 void debug_print_pointers()
 {
 	for (ptrlist::iterator i = debug_save_pointers.begin();
 	     i != debug_save_pointers.end();
 	     i++) {
-		fprintf(stderr, "\nUndeleted pointer: %p",(void *)(*i));
+		fprintf(stderr, "\n%s:%d:\nUndeleted pointer: %p",
+			i->file.c_str(),
+			i->line,
+			i->ptr);
 	}
 	fprintf(stderr,"\n");
 }
