@@ -34,10 +34,13 @@
 
 #include "GUIBoxData.h"
 #include "src/kernel/routing/Route.h"
-#include "src/kernel/routing/Route-inlines.h"
+#include "src/wxGUI/MutApp.h"
 #include "src/wxGUI/MutFrame.h"
+#include "src/wxGUI/MutLogicWnd.h"
 #include "src/wxGUI/Routing/NewBoxShape.h"
 #include "wx/msgdlg.h"
+#include "GUIBoxData-inlines.h"
+#include "src/kernel/routing/Route-inlines.h"
 
 namespace mutaborGUI {
 	mutabor::Box BoxData::curBox(NULL);
@@ -49,6 +52,9 @@ namespace mutaborGUI {
 //	BoxData BoxData::NewBoxData;
 	BoxData::BoxData(int id):BoxClass(id),
 				 shapes(),
+				 editor(NULL),
+				 text_colour(*wxBLACK),
+				 background_colour(),
 /*
   current_logic(),
   current_tonesystem(),
@@ -57,6 +63,7 @@ namespace mutaborGUI {
 */
 				 winattr()
 	{		
+		set_routefile_id(id);
 	}
 
 	void BoxData::set_routefile_id(int id) {
@@ -90,6 +97,20 @@ namespace mutaborGUI {
 			else
 				text_colour = *wxBLACK;
 			background_colour = wxColour(r,g,b);
+		}
+	}
+
+	void BoxData::Destroy() {
+		if (GetCurrentBox() == this) {
+			SetCurrentBox(NULL);
+		}
+		mutabor::Box b = this;
+		mutabor::BoxClass::Destroy();
+		MutBoxShapeList::iterator i;
+		while ((i = shapes.begin())!= shapes.end()) {
+			MutBoxShape * shape = *i;
+			disconnect (b, shape);
+			shape->Destroy();
 		}
 	}
 		
@@ -259,6 +280,89 @@ namespace mutaborGUI {
 			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
 	}
 
+
+	bool BoxData::DoOpen() 
+	{
+		mutASSERT(editor);
+		wxWindow * win = editor->GetParent();
+		while (win && (typeid(*win) != typeid(MutFrame))) win = win->GetParent();
+		mutASSERT(dynamic_cast<MutFrame *>(win));
+		MutFrame * frame = static_cast<MutFrame *>(win);
+		if (!frame) {
+			UNREACHABLEC;
+			return false;
+		}
+		bool retval = mutabor::BoxClass::DoOpen();
+		//temporarily unlock the mutex (we don't need it and GetLogics complains)
+		mutex.Unlock();
+		mutabor::Box b(this);
+		if (WantKeyWindow())
+			frame->TextBoxOpen(WK_KEY, b, false);
+		if (WantTonesystemWindow())
+			frame->TextBoxOpen(WK_TS, b, false);
+		if (WantActionsWindow())
+			frame->TextBoxOpen(WK_ACT, b, false);
+
+		frame -> LogicWinOpen(b); // updates already
+		frame -> UpdateBoxMenu();
+		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+		if ( routewin ) routewin->UpdateBoxMenu();
+		mutex.Lock();
+		return retval;
+	}
+
+	void BoxData::DoClose()
+	{
+		mutASSERT(editor);
+		if (editor) {
+			wxWindow * win = editor->GetParent();
+			while (win && (typeid(*win) != typeid(MutFrame))) win = win->GetParent();
+			mutASSERT(dynamic_cast<MutFrame *>(win));
+			MutFrame * frame = static_cast<MutFrame *>(win);
+			if (!frame) {
+				UNREACHABLEC;
+				return;
+			}
+			win = GetKeyWindow();
+			if (win) 
+				frame->CloseClientWindow(win,false);
+			win = GetTonesystemWindow();
+			if (win) 
+				frame->CloseClientWindow(win,false);
+			win = GetActionsWindow();
+			if (win) 
+				frame->CloseClientWindow(win,false);
+			win = GetLogicWindow();
+			if (win) 
+				frame->CloseClientWindow(win,true);
+			else {
+				UNREACHABLEC;
+			}
+
+			frame->UpdateBoxMenu();
+		} else {
+			mutASSERT(!GetKeyWindow());
+			mutASSERT(!GetTonesystemWindow());
+			mutASSERT(!GetActionsWindow());
+			mutASSERT(!GetLogicWindow());
+		}
+
+		MutFrame * routewin = dynamic_cast<MutFrame *>(wxWindow::FindWindowById(WK_ROUTE));
+		if ( routewin ) routewin->UpdateBoxMenu();
+	}
+
+	void BoxData::Activate () {
+		curBox = this;
+		wxWindow * win = GetLogicWindow();
+		if (win) {
+			win -> SetFocus();
+			win -> Raise();
+			while (win && !dynamic_cast<wxTopLevelWindow *>(win))
+				win = win ->GetParent();
+			if (win)
+				win->Raise();
+		}
+	}
 
 	void BoxData::runtime_error(mutabor::error_type type, const char * message) {
 		wxString msg(message), head(mutabor::to_string(type));

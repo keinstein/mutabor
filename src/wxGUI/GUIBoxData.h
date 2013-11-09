@@ -42,7 +42,7 @@
 #include "src/kernel/treestorage.h"
 #include "src/kernel/routing/Box.h"
 #include "src/wxGUI/Routing/RouteLists.h"
-
+#include "src/wxGUI/MutEditFile.h"
 
 #ifndef MUWX_GUIBOXDATA_H_PRECOMPILED
 #define MUWX_GUIBOXDATA_H_PRECOMPILED
@@ -87,13 +87,18 @@ namespace mutaborGUI {
 			NoSuchBoxException(int i):invalid_argument("No such box."),boxnumber(i) {}
 		};
 
+#if 0
 		void reset();
-
+#endif
 		const MutBoxShape * GetShape(wxWindow * parent) const;
 		MutBoxShape * GetShape(wxWindow * parent);
 
 
 		virtual void set_routefile_id(int id);
+
+
+		MutEditFile * GetEditor() { return editor; }
+		void SetEditor(MutEditFile * edit) { editor = edit; }
 
 		const wxColour & GetBackgroundColour() const {
 			return background_colour;
@@ -176,6 +181,17 @@ namespace mutaborGUI {
 		void Add(MutBoxShape * shape);
 		bool Remove(MutBoxShape * shape);
 
+		/** 
+		 * Destroy the current object.  
+		 * This function is
+		 * called when an object shall be deleted. It clears
+		 * up all references to itself so that it will be deleted if it is not needed anymore.
+		 * 
+		 * This functions detatches the device from all routes and calls DoDestroy() afterwards. 
+		 * Finally the Device is going to removed from the device list.
+		 */
+		virtual void Destroy();
+
 #if 0		
 		void Attatch(MutBoxShape * shape);
 		bool Detatch(MutBoxShape * shape);
@@ -194,6 +210,7 @@ namespace mutaborGUI {
 #endif
 
 
+#if 0		
 		/// Check whether a closed route means closing a box
 		/** this function calls CloseBox(int boxid) in case 
 		    the box boxid has no routes attatched anymore */
@@ -214,7 +231,7 @@ namespace mutaborGUI {
 		static void ReOpenRoute(int old_boxid, int new_boxid);
 		/// Reopen all wanted windows associated to the box boxid
 		static void ReOpenBox(int old_boxid, int new_boxid);
-
+#endif
 		void Save(mutabor::tree_storage & config);
 		void Load(mutabor::tree_storage &  config);
 
@@ -231,9 +248,16 @@ namespace mutaborGUI {
 			curBox = b;
 		}
 
+
 		/// Process an error message (doing the real work)
 		virtual void runtime_error(bool iswarning, const char * message);
+		
+		/// do the work for opening a box
+		virtual bool DoOpen();
+		/// do the work for closing a box
+		virtual void DoClose();
 
+		void Activate ();
 
 //		mutabor_box_type * GetNonGUIBox() { return box; }
 	protected: 
@@ -242,6 +266,7 @@ namespace mutaborGUI {
 		 *  current_key_logic
 		 */
 		MutBoxShapeList shapes;
+		MutEditFile * editor;
 		wxColour text_colour;
 		wxColour background_colour;
 
@@ -251,7 +276,8 @@ namespace mutaborGUI {
 
 		BoxData(int id);
 
-
+		void runtime_error(mutabor::error_type type, const char * message);
+		
 
 /*
 		mutabor_box_type * box;
@@ -267,14 +293,14 @@ namespace mutaborGUI {
 	};
 
 	inline BoxData * ToGUIBase(mutabor::BoxClass * b) {
-		mutASSERT(dynamic_cast<BoxData *>(b));
+		mutASSERT(!b || dynamic_cast<BoxData *>(b));
 		return static_cast<BoxData *>(b);
 	}
 	inline BoxData * ToGUIBase(mutabor::Box & b) {
 		return ToGUIBase(b.get());
 	}
 	inline const BoxData * ToGUIBase(const mutabor::BoxClass * b) {
-		mutASSERT(dynamic_cast<const BoxData *>(b));
+		mutASSERT(!b || dynamic_cast<const BoxData *>(b));
 		return static_cast<const BoxData *>(b);
 	}
 	inline const BoxData * ToGUIBase(const mutabor::Box & b) {

@@ -307,8 +307,22 @@ namespace mutabor {
 #pragma warning(pop) // Restore warnings to previous state.
 #endif 
 
-		virtual bool Open();
-		virtual void Close();
+		bool Open() {
+			BoxLock lock(this);
+			if (!open)
+				open = DoOpen();
+			return open;
+		}
+
+		void Close() {
+			BoxLock lock(this);
+			if (open) 
+				DoClose();
+			open = false;
+		}
+
+		virtual bool DoOpen();
+		virtual void DoClose();
 		bool IsOpen() { return open; }
 
 		/** 

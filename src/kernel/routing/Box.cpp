@@ -310,18 +310,14 @@ namespace mutabor {
 	}
 
 
-	bool BoxClass::Open() {
-		BoxLock lock(this);
+	bool BoxClass::DoOpen() {
 		Reset();
 		// hidden::mutabor_reset_action_trace(box);
-		open = true;
 		return true;
 	}
 
-	void BoxClass::Close() {
-		BoxLock lock(this);
+	void BoxClass::DoClose() {
 		Reset();
-		open = false;
 	}
 
 	struct BoxClass_CallReset {
