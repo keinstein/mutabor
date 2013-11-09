@@ -193,68 +193,78 @@ void execute_aktion (mutabor_box_type * box,
 inline static void call_actions (mutabor_box_type * box,
 				 struct do_aktion * aktion_list,
 				 struct interpreter_parameter_list * parameters) {
-    interpreter_parameter_list * current_parameters;
-    interpreter_parameter_list * old_parameters = box->current_parameters;
+	interpreter_parameter_list * current_parameters;
+	interpreter_parameter_list * old_parameters = box->current_parameters;
     
-    if ((box->current_parameters == NULL && box->parameters == NULL)
-	|| box->current_parameters->next == NULL) {
-	current_parameters = (struct interpreter_parameter_list *)
-	    ymalloc(box,sizeof(struct interpreter_parameter_list));
-	current_parameters->next = NULL;
-	current_parameters->data = (int *)ycalloc(box,
-						  box->file->parameter_count, 
-						  sizeof(int));
-	if (box->parameters == NULL) {
-	    mutASSERT(box->current_parameters == NULL);
-	    box->current_parameters = 
-		box->parameters = current_parameters;
-	} 
-	    
-	box->current_parameters->next = current_parameters;
-	box->current_parameters = current_parameters;
-    } else if ( box->current_parameters == NULL) {
-	current_parameters = box->current_parameters = box->parameters;
-    } else {
-	current_parameters = box->current_parameters -> next;
-	box->current_parameters = current_parameters;
-    }
-    for (struct do_aktion * aktion = aktion_list ;
-	 aktion; aktion = aktion -> next) {
-	interpreter_argument_list * arguments = aktion -> arguments;
-	size_t size;
-	if (arguments == NULL) {
-	    execute_aktion (box, aktion, NULL);
-	    continue;
-	} 
-	size = arguments->size;
-	current_parameters -> size = size;
-	mutASSERT(size >= box->file->parameter_count);
-	for (size_t i = 0 ; i < size; i++) {
-	    switch (arguments->types[i]) {
-	    case mutabor_argument_integer: 
-		current_parameters->data[i] = arguments->data[i].constant;
-		break;
-	    case mutabor_argument_parameter:
-		current_parameters->data[i] 
-		    = parameters->data[arguments->data[i].index];
-		break;
-	    case mutabor_argument_distance:
-		current_parameters->data[i]
-		    = box->distance;
-		break;
-	    case mutabor_argument_anchor:
-		current_parameters->data[i]
-		    = box->tonesystem->anker;
-		break;
-	    }
-	    
+	// check whether we must allocate memory
+	if ((box->current_parameters == NULL && box->parameters == NULL)
+	    || box->current_parameters->next == NULL) {
+		current_parameters = (struct interpreter_parameter_list *)
+			ymalloc(box,sizeof(struct interpreter_parameter_list));
+		current_parameters->next = NULL;
+		current_parameters->data = (int *)ycalloc(box,
+							  box->file->parameter_count, 
+							  sizeof(int));
+		if (box->parameters == NULL) {
+			mutASSERT(box->current_parameters == NULL);
+			box->current_parameters = 
+				box->parameters = current_parameters;
+		} else {
+			box->current_parameters->next = current_parameters;
+		}
+	
+	}   
+	// we have a free parameter list
+	else if ( box->current_parameters == NULL) {
+		current_parameters = box->current_parameters = box->parameters;
+	} else {
+		current_parameters = box->current_parameters -> next;
+		box->current_parameters = current_parameters;
 	}
-	execute_aktion(box,
-		       aktion,
-		       current_parameters);
-    }
-    if (old_parameters != NULL) 
-	box->current_parameters = old_parameters;
+	for (struct do_aktion * aktion = aktion_list ;
+	     aktion; aktion = aktion -> next) {
+		interpreter_argument_list * arguments = 
+			aktion -> secondary_arguments ? 
+			aktion -> secondary_arguments :
+			aktion -> arguments;
+		size_t size;
+		if (arguments == NULL) {
+			execute_aktion (box, aktion, NULL);
+			continue;
+		} 
+		size = arguments->size;
+		current_parameters -> size = size;
+		mutASSERT(size <= box->file->parameter_count);
+		for (size_t i = 0 ; i < size; i++) {
+			switch (arguments->types[i]) {
+			case mutabor_argument_integer: 
+				current_parameters->data[i] = arguments->data[i].constant;
+				break;
+			case mutabor_argument_parameter:
+				current_parameters->data[i] 
+					= parameters->data[arguments->data[i].index];
+				break;
+			case mutabor_argument_distance:
+				current_parameters->data[i]
+					= box->distance;
+				break;
+			case mutabor_argument_anchor:
+				current_parameters->data[i]
+					= box->tonesystem->anker;
+				break;
+			case mutabor_argument_invalid: 
+				current_parameters->data[i] = -1;
+				mutASSERT(arguments->types[i] != mutabor_argument_invalid);
+				break;
+			}
+	    
+		}
+		execute_aktion(box,
+			       aktion,
+			       current_parameters);
+	}
+	if (old_parameters != NULL) 
+		box->current_parameters = old_parameters;
 }
 
 	void execute_aktion (mutabor_box_type * box, 
@@ -268,7 +278,7 @@ inline static void call_actions (mutabor_box_type * box,
 		mutASSERT(box->tonesystem);
 		TRACE;
 
-//		for ( ; aktion; aktion = aktion -> next)
+		//		for ( ; aktion; aktion = aktion -> next)
 			{
 				mutabor_log_action(box, aktion);
 				switch (aktion->aufruf_typ) {
@@ -309,7 +319,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 					break;
 
 				case aufruf_umst_taste_abs:
@@ -330,7 +340,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 					break;
 
 				case aufruf_umst_breite_abs:
@@ -350,7 +360,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 					break;
 
 				case aufruf_umst_wiederholung_abs:
@@ -362,7 +372,7 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 					break;
 
 				case aufruf_umst_wiederholung_rel:
@@ -374,7 +384,7 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 					break;
 
 				case aufruf_umst_taste_rel: {
@@ -409,7 +419,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 				}
 
 					break;
@@ -451,7 +461,7 @@ inline static void call_actions (mutabor_box_type * box,
 #ifdef NOTES_CORRECT_SOFORT
 					NotesCorrect(box);
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 				}
 					break;
 
@@ -494,13 +504,14 @@ inline static void call_actions (mutabor_box_type * box,
 					NotesCorrect(box);
 
 #endif
-					mutabor_update(box, mutabor_keys_changed || mutabor_logic_changed);
+					mutabor_update(box, mutabor_keys_changed || mutabor_box_changed);
 				}
 					break;
 
 				case aufruf_umst_umst_bund:
 					TRACE;
-					/* nothing to be done here, this is only the head (containing the name) of the compound */
+					/* nothing to be done here, this is only the head (containing the name) of the compound,
+					 */
 					break;
 
 				case aufruf_umst_umst_case: {
@@ -727,9 +738,12 @@ inline static void call_actions (mutabor_box_type * box,
 
 						if ( compare_harmonie(tonesys->breite,0,harmony,index->pattern) ) {
 							// PASST !!!
+							box->last_trigger.type            = any_trigger::harmony;
+							box->last_trigger.harmony_trigger = index;
 							call_actions(box,
 								     index->aktion,
 								     NULL);
+							mutabor_update(box, mutabor_action_changed);
 							return true;
 						}
 					}
@@ -754,10 +768,14 @@ inline static void call_actions (mutabor_box_type * box,
 
 							if (compare_harmonie(tonesys->breite, i, harmony, index->pattern)) {
 								// PASST !!!
+								box->last_trigger.type            = any_trigger::harmony;
+								box->last_trigger.harmony_trigger = index;
+
 								box->distance = i;
 								call_actions(box,
 									     index->aktion,
 									     NULL);
+								mutabor_update (box,mutabor_action_changed);
 								return true;
 							}
 						}
@@ -768,7 +786,11 @@ inline static void call_actions (mutabor_box_type * box,
 			case mutabor_is_else_path: // default
 #warning This seems odd check, when mutabor is running
 				TRACE;
+				box->last_trigger.type            = any_trigger::harmony;
+				box->last_trigger.harmony_trigger = index;
+
 				call_actions(box, index->aktion, NULL);
+				mutabor_update (box,mutabor_action_changed);
 				return true;
 				break;
 			default:
@@ -916,8 +938,11 @@ Please, report this error to the MUTABOR team."),
 		}
 
 		if ( index ) {
-		    call_actions( box, index->aktion, NULL);
-		    return true;
+			box->last_trigger.type         = any_trigger::midi;
+			box->last_trigger.midi_trigger = index;
+			call_actions( box, index->aktion, NULL);
+			mutabor_update(box,mutabor_action_changed);
+			return true;
 		}
 		return false;
 	}
@@ -970,7 +995,10 @@ Please, report this error to the MUTABOR team."),
 			if ( toupper(key) == help->taste
 			     && (is_simple
 				 || is_logic == (help->the_logik_to_expand != NULL))) {
-			    call_actions(box, help->aktion, NULL);
+				box->last_trigger.type        = any_trigger::key;
+				box->last_trigger.key_trigger = help;
+				call_actions(box, help->aktion, NULL);
+				mutabor_update (box,mutabor_action_changed);
 				return true;
 			}
 		}

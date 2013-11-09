@@ -107,7 +107,8 @@ namespace mutabor {
 			extern struct mutabor_callback_type * mutabor_callbacks;
 
 			inline void mutabor_update(mutabor_box_type * box, unsigned int flags) {
-				mutabor_callbacks->update(box,flags);
+				if (flags)
+					mutabor_callbacks->update(box,flags);
 			}
 
 			inline void mutabor_midi_out(mutabor_box_type * box,
