@@ -1,7 +1,7 @@
+#include "src/kernel/routing/tests/CommonFileDeviceTest.h"
 #include "src/kernel/routing/tests/RouteTest.h"
 #include "src/kernel/routing/tests/BoxTest.h"
 #include "src/kernel/routing/tests/timing.h"
-#include "src/kernel/routing/tests/CommonFileDeviceTest.h"
 #include "src/kernel/routing/Route-inlines.h"
 #include "wx/app.h"
 #include <cppunit/ui/text/TestRunner.h>
@@ -36,12 +36,15 @@ main(int argc, char** argv)
 	CppUnit::BriefTestProgressListener listener; 
 	runner.eventManager().addListener(&listener);
 
-	runner.addTest( RouteTest<mutabor::RouteClass>::suite() );
-	runner.addTest( BoxTest::suite() );
 	runner.addTest( TimingParamsTest::suite() );
+	runner.addTest( BoxTest::suite() );
+	runner.addTest( RouteTest::suite() );
 	runner.addTest( CommonFileDeviceTest::suite() );
 	
 	bool wasSuccessful = runner.run();
-
+#ifdef DEBUG
+	std::clog << "Sucess: " << (wasSuccessful ? "Yes" : "No") << std::endl << std::flush;
+#endif
+	sleep(1);
 	return wasSuccessful ? 0 : 1;
 }

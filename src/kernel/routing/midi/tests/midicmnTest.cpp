@@ -575,8 +575,9 @@ void CommonMidiInputTest::setUp()
 void CommonMidiInputTest::tearDown()
 { 
 
-	if (in)
+	if (in) {
 		in->Destroy();
+	}
 	if(out)
 		out->Destroy();
 	if(route)

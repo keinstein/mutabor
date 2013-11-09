@@ -66,12 +66,13 @@ public:
 	long max;
 	long min;
 	testCommonFileDeviceTimer():CommonFileInputDevice(),i(0),sw() {
+		//		SetThreadKind(wxTHREAD_JOINABLE);
 	}
 	virtual ~testCommonFileDeviceTimer() {}
 	void Play() {
 		mutabor::CurrentTime.UseRealtime(true);
 		max = 0; min = 100000; i= 0;
-		CommonFileInputDevice::Play(wxTHREAD_JOINABLE );
+		CommonFileInputDevice::Play();
 		lasttime = wxGetLocalTimeMillis().GetValue();
 		sw.Start(0);
 	}
@@ -126,6 +127,7 @@ int main(int argc, char **argv)
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
+	debugFlags::flags.thread = true;
 #endif
 
 	wxInitializer initializer;
@@ -146,6 +148,8 @@ int main(int argc, char **argv)
 
 	wxThread::ExitCode e = tim->WaitForDeviceFinish();
 	std::clog << "Deviation min: " << tim->min << " max: " << tim->max << std::endl;
+	
+
 	return (intptr_t)e; 
 }
 ///\}

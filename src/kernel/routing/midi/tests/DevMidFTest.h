@@ -131,7 +131,7 @@ public:
 		in -> SetName(_T(SRCDIR) _T("/midi1_source.mid"));
 		CPPUNIT_ASSERT((in -> Open()));
 	
-		in -> Play(wxTHREAD_JOINABLE);
+		in -> Play();
 		CPPUNIT_ASSERT(!in->WaitForDeviceFinish());
 	}
 

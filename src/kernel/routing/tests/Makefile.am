@@ -33,6 +33,7 @@ testcppunit_SOURCES = \
 	main.cpp \
 	timing.h \
 	RouteTest.h \
+	RouteTest.cpp \
 	BoxTest.h \
 	BoxTest.cpp \
 	CommonFileDeviceTest.h

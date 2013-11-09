@@ -123,10 +123,10 @@ class myDevice: public mutabor::InputGis {
 		mutabor::InputGis::Close();
 		std::clog << "Closed." << std::endl;
 	}
-	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
+	virtual void Play() {
 		std::clog << "Starting..." << std::endl;
 		mutabor::CurrentTime.UseRealtime(true);
-		mutabor::InputGis::Play(kind);
+		mutabor::InputGis::Play();
 		std::clog << "Started." << std::endl;
 	}
 	virtual void Pause() {
@@ -165,7 +165,9 @@ int main(int argc, char **argv)
 		std::clog << "Open faild. Exiting." << std::endl;
 		exit(0);
 	}
-	in -> Play(wxTHREAD_JOINABLE);
+	in -> Play();
+	
+	in -> Close();
 
 	wxThread::ExitCode e = in->WaitForDeviceFinish();
 	if (e != 0) return 0x100 + ((size_t)e & 0xFF);

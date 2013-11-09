@@ -102,6 +102,10 @@ public:
 */
 
 class myDevice: public mutabor::InputGis {
+public:
+	myDevice(): InputGis() {
+		//		SetThreadKind(wxTHREAD_JOINABLE);
+	}
 	virtual void Stop() {
 		std::clog << "Stopping..." << std::endl;
 		mutabor::InputGis::Stop();
@@ -118,10 +122,10 @@ class myDevice: public mutabor::InputGis {
 		mutabor::InputGis::Close();
 		std::clog << "Closed." << std::endl;
 	}
-	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
+	virtual void Play() {
 		std::clog << "Starting..." << std::endl;
 		mutabor::CurrentTime.UseRealtime(true);
-		mutabor::InputGis::Play(kind);
+		mutabor::InputGis::Play();
 		std::clog << "Started." << std::endl;
 	}
 	virtual void Pause() {
@@ -137,6 +141,7 @@ int main(int argc, char **argv)
 #ifdef DEBUG
 //	debugFlags::flags.timer = true;
 //	debugFlags::flags.gmnfile = true;
+	debugFlags::flags.thread = true;
 #endif
 	wxApp::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE, "program");
 
@@ -151,16 +156,17 @@ int main(int argc, char **argv)
 	mutabor::InputDevice in(new myDevice());
 //	mutabor::InputDevice in(mutabor::DeviceFactory::CreateInput(mutabor::DTMidiFile));
 	if (!in) {
-		std::clog << "Class construction failed." << std::endl;
+		DEBUGLOG2(always,_T("Class construction failed."));
 		exit(-1);
 	}
 	in -> SetName(_T(SRCDIR) _T("/gmn1_source.gmn"));
 //	mutabor::InputDevice prevent_from_deletion(in);
 	if (!(in -> Open())) {
-		std::clog << "Open faild. Exiting." << std::endl;
+		DEBUGLOG2(always,_T("Open faild. Exiting."));
 		exit(1);
 	}
-	in -> Play(wxTHREAD_JOINABLE);
+	in -> Play();
+	in -> Close();
 
 	wxThread::ExitCode e = in->WaitForDeviceFinish();
 	//int e = 0;

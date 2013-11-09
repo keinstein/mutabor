@@ -122,10 +122,10 @@ class myDevice: public mutabor::InputMidiFile {
 		mutabor::InputMidiFile::Close();
 		std::clog << "Closed." << std::endl;
 	}
-	virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED) {
+	virtual void Play() {
 		std::clog << "Starting..." << std::endl;
 		mutabor::CurrentTime.UseRealtime(true);
-		mutabor::InputMidiFile::Play(kind);
+		mutabor::InputMidiFile::Play();
 		std::clog << "Started." << std::endl;
 	}
 	virtual void Pause() {

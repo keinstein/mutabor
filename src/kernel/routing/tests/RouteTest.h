@@ -6,11 +6,11 @@
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/Runtime.h"
 
-template<class route> 
 class RouteTest : public CPPUNIT_NS::TestFixture 
 {
 	CPPUNIT_TEST_SUITE( RouteTest );
 	CPPUNIT_TEST( testDummy );
+	CPPUNIT_TEST( testDestroyAll );
 	CPPUNIT_TEST_SUITE_END();
 
 protected:
@@ -52,6 +52,8 @@ public:
 	void testDummy() 
 	{ 	  
 	}
+
+	void testDestroyAll();
 };
 
 #endif
