@@ -98,6 +98,7 @@ AC_PROG_CXX
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG([0.14.0])
 
+AC_LANG_PUSH(C++)
 tmpcxxflags="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -pipe"
 AC_MSG_CHECKING([whether $CXX supports -pipe])
@@ -105,6 +106,16 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],
 		[AC_MSG_RESULT([yes])], 
 		[CXXFLAGS="$tmpcxxflags"]
 		[AC_MSG_RESULT([no])])
+AC_LANG_POP(C++)
+AC_LANG_PUSH(C)
+tmpcflags="$CFLAGS"
+CFLAGS="$CFLAGS -pipe"
+AC_MSG_CHECKING([whether $CC supports -pipe])
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+		[AC_MSG_RESULT([yes])], 
+		[CFLAGS="$tmpcflags"]
+		[AC_MSG_RESULT([no])])
+AC_LANG_POP(C)
 DEBUGCPPFLAGS=
 dnl for final we could consider --repo to reduce object size
 AC_ARG_ENABLE(debug,
@@ -117,7 +128,7 @@ AC_ARG_ENABLE(debug,
 	       AC_LANG_PUSH(C++)
 	       for flag in -Wall  -Wno-unused-local-typedefs  -fdump-class-hierarchy \
 	       	    -fbounds-check  -pedantic  -fdiagnostics-show-option  -Wno-long-long \
-		     -Wno-variadic-macros
+		     -Wno-variadic-macros -ggdb3 -g3
 	       do
 	       	       tmpcxxflags="$CXXFLAGS"
 	       	       CXXFLAGS="$CXXFLAGS $flag"
@@ -126,6 +137,15 @@ AC_ARG_ENABLE(debug,
 	      	                         [AC_MSG_RESULT([yes])], 
 					 [CXXFLAGS="$tmpcxxflags"
               			         AC_MSG_RESULT([no])])
+		       AC_LANG_PUSH(C)
+	       	       tmpcflags="$CFLAGS"
+	       	       CFLAGS="$CFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CC supports $flag])
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [CFLAGS="$tmpcflags"
+              			         AC_MSG_RESULT([no])])
+		       AC_LANG_POP(C)
 	       done
 dnl mudflap is not possible with g++ 4.7.1 and wxWidgets 2.8
 dnl	       tmpcxxflags="$CXXFLAGS"
@@ -148,6 +168,15 @@ dnl
 					       	 [AC_MSG_RESULT([yes])], 
 						 [CXXFLAGS="$tmpcxxflags"]
 	       					 [AC_MSG_RESULT([no])])
+		       AC_LANG_PUSH(C)
+	       	       tmpcxxflags="$CFLAGS"
+	       	       CXXFLAGS="$CFLAGS -ggdb"
+		       	       AC_MSG_CHECKING([whether $CC supports -ggdb])
+			       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+					       	 [AC_MSG_RESULT([yes])], 
+						 [CFLAGS="$tmpcflags"]
+	       					 [AC_MSG_RESULT([no])])
+                       AC_LANG_POP(C)
 			;;
 	       esac
       	       AC_LANG_POP(C++)	       
@@ -157,6 +186,8 @@ dnl
 AC_ARG_ENABLE(address-sanitizer,
 	AS_HELP_STRING([--enable-address-sanitizer],[Enable gcc/clang address santizer]),
 	[AS_IF(test "$enableval" = yes,
+	       
+	       AC_LANG_PUSH(C++)
 	       for flag in  -fsanitize=address  -fno-omit-frame-pointer  -fno-common
 	       do
 	       	       tmpcxxflags="$CXXFLAGS"
@@ -165,6 +196,51 @@ AC_ARG_ENABLE(address-sanitizer,
       	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
 	      	                         [AC_MSG_RESULT([yes])], 
 					 [CXXFLAGS="$tmpcxxflags"
+              			         AC_MSG_RESULT([no])])
+			AC_LANG_PUSH(C)
+			tmpcflags="$CFLAGS"
+			CFLAGS="$CFLAGS $flag"
+			AC_MSG_CHECKING([whether $CC supports $flag])
+			AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                          [AC_MSG_RESULT([yes])], 
+				 	  [CFLAGS="$tmpcflags"
+              			          AC_MSG_RESULT([no])])
+			AC_LANG_POP(C)
+	       done
+	       )
+	]
+)	
+
+AC_ARG_ENABLE(thread-sanitizer,
+	AS_HELP_STRING([--enable-thread-sanitizer],[Enable gcc/clang thread santizer]),
+	[AS_IF(test "$enableval" = yes,
+	       for flag in  -fsanitize=thread  -fno-omit-frame-pointer  -fno-common -fPIC
+	       do
+	       	       tmpcxxflags="$CXXFLAGS"
+	       	       CXXFLAGS="$CXXFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CXX supports $flag])
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [CXXFLAGS="$tmpcxxflags"
+              			         AC_MSG_RESULT([no])])
+		       AC_LANG_PUSH(C)
+	       	       tmpcflags="$CFLAGS"
+	       	       CFLAGS="$CFLAGS $flag"
+		       AC_MSG_CHECKING([whether $CC supports $flag])
+      	       	       AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [CFLAGS="$tmpcflags"
+              			         AC_MSG_RESULT([no])])
+	       	       AC_LANG_POP(C)
+	       done
+	       for flag in  -pie
+	       do
+	       	       tmpldflags="$LDFLAGS"
+	       	       LDFLAGS="$LDFLAGS $flag"
+		       AC_MSG_CHECKING([whether $LD supports $flag])
+      	       	       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],[[]])], 
+	      	                         [AC_MSG_RESULT([yes])], 
+					 [LDFLAGS="$tmpldflags"
               			         AC_MSG_RESULT([no])])
 	       done
 	       )
