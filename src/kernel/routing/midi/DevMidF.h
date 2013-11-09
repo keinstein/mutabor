@@ -600,21 +600,6 @@ namespace mutabor {
 
 	
 		virtual void Close();
-#if defined(_MSC_VER)
-#pragma warning(push) // Save warning settings.
-#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
-#endif
-
-		virtual void Gis(GisToken * token, char turn)
-			{};
-
-		virtual void AddTime(frac time)
-			{};
-
-#if defined(_MSC_VER)
-#pragma warning(pop) // Restore warnings to previous state.
-#endif 
-
 		virtual void SetName(const wxString & s) 
 			{
 				if (s != Name) {
@@ -657,6 +642,22 @@ namespace mutabor {
 			       int id = -1, 
 			       int bendingRange = 2)
 			: base(name, id, bendingRange) {}
+
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
+		virtual void do_Gis(GisToken * token, char turn)
+			{};
+
+		virtual void do_AddTime(frac time)
+			{};
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
+
 	};
 
 

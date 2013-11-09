@@ -514,10 +514,12 @@ namespace mutabor {
 			msb_first
 		};
 
-		bool Open();
 		void Close();
 		channel_queue_type::const_iterator EmergencyFindChannel(RouteClass * r);
-		void UpdateControllers(int channel, const ChannelData & input_channel_data);
+		void UpdateControllers(int channel, const ChannelData & input_channel_data) {
+			ScopedLock lock(this->write_lock);
+			do_UpdateControllers(channel,input_channel_data);
+		}
 
 		/** 
 		 * Copies the program change and bank data from the input channel to the output
@@ -530,57 +532,17 @@ namespace mutabor {
 		void CopyProgramChange(const ChannelData & input_channel_data,
 				       ChannelData & output_data,
 				       int channel);
-		void NoteOn(Box box, 
-			    int inkey, 
-			    int velocity, 
-			    RouteClass * r, 
-			    size_t id, 
-			    const ChannelData & input_channel_data);
-
-		void NoteOff(Box box, 
-			     int inkey, 
-			     int velo, 
-			     RouteClass * r, 
-			     size_t id,
-			     bool is_note_on /* = false */
-			);	
-		void UpdateTones(RouteClass * route);
-		void Controller(int mutabor_channel, int controller, int value);
-//		void Sustain(int channel, const ChannelData & cd);
-		int GetChannel(int inkey, size_t channel, size_t id);
-		void SplitOut (BYTE * p, size_t n);
-		void Quiet(RouteClass * r);
-		void Panic();
-		void SendBendingRange(int channel) {
-			Controller(channel,midi::PITCH_BEND_SENSITIVITY,bending_range);
-			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 
-				   (midi::PITCH_BEND_SENSITIVITY >> 8) & 0x7F);
-			controller(channel,midi::REGISTERED_PARAMETER_FINE, 
-				   midi::PITCH_BEND_SENSITIVITY & 0x7F);
-			controller(channel,midi::DATA_ENTRY_COARSE, bending_range);
-			controller(channel,midi::DATA_ENTRY_FINE, 0);
-		}
-		/** 
-		 * Gis output is unimplemented. 
-		 * Ignore GIS tokens.
-		 */
-		void Gis(GisToken*, char) {}
-		void MidiOut(BYTE *p, size_t n) {
-			SplitOut(p,n);
-		}
-		void MidiOut(mutabor::Box box, midi_string data) {
-			SplitOut(data.data(),data.size());
-		}
 
 
 
 //		midiprovider & GetProvider () { return Out(); }
-		void SetBendingRange(int br) { 
+		void SetBendingRange(int br) {
+			ScopedLock lock(this->write_lock);
 			bending_range = br; 
 			if (!this->isOpen) return;
 			int max = GetMaxChannel();
 			for (int i = GetMinChannel() ; i < max ; i++) {
-				SendBendingRange(i);
+				do_SendBendingRange(i);
 			}
 		}
 		int GetBendingRange() const { return bending_range; }
@@ -595,6 +557,50 @@ namespace mutabor {
 					channel_queue(),
 					nKeyOn(0) {}
 		
+		bool do_Open();
+		void do_NoteOn(Box box, 
+			    int inkey, 
+			    int velocity, 
+			    RouteClass * r, 
+			    size_t id, 
+			    const ChannelData & input_channel_data);
+
+		void do_NoteOff(Box box, 
+			     int inkey, 
+			     int velo, 
+			     RouteClass * r, 
+			     size_t id,
+			     bool is_note_on /* = false */
+			);	
+		void do_UpdateTones(RouteClass * route);
+		void do_Controller(int mutabor_channel, int controller, int value);
+//		void Sustain(int channel, const ChannelData & cd);
+		int do_GetChannel(int inkey, size_t channel, size_t id);
+		void do_SplitOut (BYTE * p, size_t n);
+		void do_Quiet(RouteClass * r);
+		void do_Panic();
+		void do_SendBendingRange(int channel) {
+			do_Controller(channel,midi::PITCH_BEND_SENSITIVITY,bending_range);
+			controller(channel,midi::REGISTERED_PARAMETER_COARSE, 
+				   (midi::PITCH_BEND_SENSITIVITY >> 8) & 0x7F);
+			controller(channel,midi::REGISTERED_PARAMETER_FINE, 
+				   midi::PITCH_BEND_SENSITIVITY & 0x7F);
+			controller(channel,midi::DATA_ENTRY_COARSE, bending_range);
+			controller(channel,midi::DATA_ENTRY_FINE, 0);
+		}
+
+		/** 
+		 * Gis output is unimplemented. 
+		 * Ignore GIS tokens.
+		 */
+		void do_Gis(GisToken*, char) {}
+		void do_MidiOut(BYTE *p, size_t n) {
+			do_SplitOut(p,n);
+		}
+		void do_MidiOut(mutabor::Box box, midi_string data) {
+			do_SplitOut(data.data(),data.size());
+		}
+		void do_UpdateControllers(int channel, const ChannelData & input_channel_data);
 		/** 
 		 * Sends a pitchbend signal.
 		 * 

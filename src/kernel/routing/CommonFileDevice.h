@@ -42,6 +42,7 @@
 
 #include "src/kernel/Defs.h"
 #include "src/kernel/routing/Device.h"
+#include "src/kernel/routing/thread.h"
 
 
 #ifndef MU32_ROUTING_MIDI_COMMONFILEDEVICE_H_PRECOMPILED
@@ -81,7 +82,7 @@ namespace mutabor {
 		 */
 		virtual void Load (tree_storage & config);
 	
-		virtual bool Open();
+		virtual bool do_Open();
 		virtual void Close();
 
 		virtual void SetName(const wxString & s) 

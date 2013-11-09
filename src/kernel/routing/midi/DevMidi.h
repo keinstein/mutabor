@@ -304,27 +304,6 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass *  route);
 
 	
-		virtual bool Open() {
-			bool retval = Out.Open(DevId, Name);
-			if (!retval) return false;
-			return base::Open();
-		}
-	
-#if defined(_MSC_VER)
-#pragma warning(push) // Save warning settings.
-#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
-#endif
-
-		virtual void Gis(GisToken *token, char turn)
-			{};
-
-		virtual void AddTime(frac time)
-			{};
-
-//		virtual void MidiOut(DWORD data, size_t n);
-#if defined(_MSC_VER)
-#pragma warning(pop) // Restore warnings to previous state.
-#endif 
 
 		virtual bool NeedsRealTime()
 			{
@@ -387,6 +366,27 @@ namespace mutabor {
 			DevId(-1) {
 			TRACEC;
 		}
+		bool do_Open() {
+			bool retval = Out.Open(DevId, Name);
+			if (!retval) return false;
+			return base::do_Open();
+		}
+	
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+
+		void do_Gis(GisToken *token, char turn)
+			{};
+
+		void do_AddTime(frac time)
+			{};
+
+//		virtual void MidiOut(DWORD data, size_t n);
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
 	};
 
 // InputMidiPort -------------------------------------------------------

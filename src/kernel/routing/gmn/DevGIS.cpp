@@ -155,7 +155,7 @@ namespace mutabor {
   }
   }
 */
-	void OutputGis::Gis(GisToken *token, char turn)
+	void OutputGis::do_Gis(GisToken *token, char turn)
 	{
 		GisWriteHeadGis(&Head, CurrentId, token, turn);
 		STUBC;

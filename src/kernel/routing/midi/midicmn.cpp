@@ -47,7 +47,7 @@
 
 namespace mutabor {
 	template<class T, class D>
-	bool CommonMidiOutput<T,D>::Open() {
+	bool CommonMidiOutput<T,D>::do_Open() {
 		int i;
 		mutASSERT(!this->isOpen);
 		TRACEC;
@@ -71,7 +71,7 @@ namespace mutabor {
 		bool retval = Out.Open();
 		if (!retval) return false;
 
-		retval = base::Open();
+		retval = base::do_Open();
 		if (!retval) {
 			Out.Close();
 			return false;
@@ -80,14 +80,14 @@ namespace mutabor {
 		for (i = 0; i < 16; i++) {
 			pitch_bend(i,0);
 			// omni and poly act on 0
-			Controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
-			Controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
-			Controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
+			do_Controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
+			do_Controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
+			do_Controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
 			// we must set the controllers manually
 			controller(i,midi::LOCAL_ON_OFF, midi::CONTROLLER_OFF );
 			controller(i,midi::OMNI_ON, midi::CONTROLLER_OFF );
 			controller(i,midi::POLY_ON, midi::CONTROLLER_OFF );
-			SendBendingRange(i);
+			do_SendBendingRange(i);
 		}
 
 		this->isOpen = true;
@@ -97,6 +97,7 @@ namespace mutabor {
 
 	template<class T, class D>
 	void CommonMidiOutput<T,D>::Close() {
+		ScopedLock lock(this->write_lock);
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(this->isOpen);
@@ -162,7 +163,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::UpdateControllers(int channel, const ChannelData & input) {
+	void CommonMidiOutput<T,D>::do_UpdateControllers(int channel, const ChannelData & input) {
 		// a simple implementation with room for improvements
 		for(ChannelData::controller_vector::const_iterator i = input.get_first_changed_controller(Cd[channel]);
 		    input.is_changed_controller(i);
@@ -235,7 +236,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::NoteOn(Box box, 
+	void CommonMidiOutput<T,D>::do_NoteOn(Box box, 
 				      int inkey, 
 				      int velocity, 
 				      RouteClass * r, 
@@ -311,11 +312,11 @@ namespace mutabor {
 
 		note_on(channel, note.pitch, velocity);
 
-		UpdateControllers(channel, input_channel_data);
+		do_UpdateControllers(channel, input_channel_data);
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::NoteOff(Box box, 
+	void CommonMidiOutput<T,D>::do_NoteOff(Box box, 
 				       int inkey, 
 				       int velo, 
 				       RouteClass * r, 
@@ -373,7 +374,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::UpdateTones(RouteClass * route)
+	void CommonMidiOutput<T,D>::do_UpdateTones(RouteClass * route)
 	{
 		mutASSERT(this->isOpen);
 		TRACEC;
@@ -433,7 +434,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void  CommonMidiOutput<T,D>::Controller(int mutabor_channel, int ctrl, int value)
+	void  CommonMidiOutput<T,D>::do_Controller(int mutabor_channel, int ctrl, int value)
 	{
 
 
@@ -509,7 +510,7 @@ namespace mutabor {
 	*/
 
 	template<class T, class D>
-	int CommonMidiOutput<T,D>::GetChannel(int inkey, size_t channel, size_t id)
+	int CommonMidiOutput<T,D>::do_GetChannel(int inkey, size_t channel, size_t id)
 	{
 		mutASSERT(this->isOpen);
 		TRACEC;
@@ -525,7 +526,7 @@ namespace mutabor {
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::SplitOut (BYTE * p, size_t n) {
+	void CommonMidiOutput<T,D>::do_SplitOut (BYTE * p, size_t n) {
 		mutASSERT(this->isOpen);
 		size_t pos = 0;
 		size_t datalength = 0;
@@ -652,20 +653,20 @@ namespace mutabor {
 	}
 	
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::Quiet(RouteClass * r)
+	void CommonMidiOutput<T,D>::do_Quiet(RouteClass * r)
 	{
 		if (!this->isOpen) return;
 		TRACEC;
 
 		for (int i = 0; i < 16; i++) {
 			if ( ton_auf_kanal[i].active && ton_auf_kanal[i].channel == r->get_session_id() )
-				NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
+				do_NoteOff(r->GetBox(), ton_auf_kanal[i].inkey, 64, r, ton_auf_kanal[i].unique_id, false);
 		}
 
 	}
 
 	template<class T, class D>
-	void CommonMidiOutput<T,D>::Panic()
+	void CommonMidiOutput<T,D>::do_Panic()
 	{
 		if (!this->isOpen) return;
 		TRACEC;
@@ -682,7 +683,7 @@ namespace mutabor {
 		
 		nKeyOn = 0;
 		for (int i = 0; i < GetMaxChannel(); i++) {
-			Controller(i,midi::ALL_NOTES_OFF,0);
+			do_Controller(i,midi::ALL_NOTES_OFF,0);
 		}
 	}
 

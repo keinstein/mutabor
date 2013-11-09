@@ -112,11 +112,6 @@ namespace mutabor {
 		virtual void Load (tree_storage & config, RouteClass * route);
 
 	
-		virtual bool Open()
-			{
-				return false;
-			}
-
 		virtual bool IsOpen() {
 			return false;
 		}
@@ -140,55 +135,6 @@ namespace mutabor {
 				}
 			}
 
-#if defined(_MSC_VER)
-#pragma warning(push) // Save warning settings.
-#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
-#endif
-		virtual void NoteOn(mutabor::Box box, 
-				    int taste, 
-				    int velo,
-				    RouteClass * r, 
-				    size_t id, 
-				    const ChannelData &cd)
-			{};
-
-		virtual void NoteOff(mutabor::Box box, 
-				     int taste,
-				     int velo, 
-				     RouteClass * r, 
-				     size_t id,
-				     bool is_note_on)
-			{};
-
-		virtual void UpdateTones(RouteClass * route) {};
-
-		virtual void Controller(int,int,int) {}
-/*
-		virtual void Sustain(int channel, const ChannelData & cd)
-			{};
-*/
-
-		virtual int  GetChannel(int taste, size_t channel, size_t id)
-			{
-				return midi::NO_CHANNEL;
-			}
-
-		virtual void Gis(GisToken *token, char turn);
-		virtual void MidiOut(DWORD data, size_t n) {};
-		virtual void MidiOut(BYTE *p, size_t n)	{};
-		virtual void MidiOut(mutabor::Box box, midi_string data) {};
-		virtual void AddTime(frac time)
-			{
-				Head->AddTime(time);
-			}
-
-		virtual void Quiet(RouteClass * r)
-			{};
-
-#if defined(_MSC_VER)
-#pragma warning(pop) // Restore warnings to previous state.
-#endif 
-
 		virtual DevType GetType() const
 			{
 				return DTGis;
@@ -205,6 +151,62 @@ namespace mutabor {
 						 Name.c_str());
 		}
 #endif
+	protected:
+
+		virtual bool do_Open()
+			{
+				return false;
+			}
+
+#if defined(_MSC_VER)
+#pragma warning(push) // Save warning settings.
+#pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
+#endif
+		virtual void do_NoteOn(mutabor::Box box, 
+				    int taste, 
+				    int velo,
+				    RouteClass * r, 
+				    size_t id, 
+				    const ChannelData &cd)
+			{};
+
+		virtual void do_NoteOff(mutabor::Box box, 
+				     int taste,
+				     int velo, 
+				     RouteClass * r, 
+				     size_t id,
+				     bool is_note_on)
+			{};
+
+		virtual void do_UpdateTones(RouteClass * route) {};
+
+		virtual void do_Controller(int,int,int) {}
+/*
+		virtual void Sustain(int channel, const ChannelData & cd)
+			{};
+*/
+
+		virtual int  do_GetChannel(int taste, size_t channel, size_t id)
+			{
+				return midi::NO_CHANNEL;
+			}
+
+		virtual void do_Gis(GisToken *token, char turn);
+		virtual void do_MidiOut(DWORD data, size_t n) {};
+		virtual void do_MidiOut(BYTE *p, size_t n)	{};
+		virtual void do_MidiOut(mutabor::Box box, midi_string data) {};
+		virtual void do_AddTime(frac time)
+			{
+				Head->AddTime(time);
+			}
+
+		virtual void do_Quiet(RouteClass * r)
+			{};
+
+#if defined(_MSC_VER)
+#pragma warning(pop) // Restore warnings to previous state.
+#endif 
+
 	
 	};
 
@@ -250,11 +252,10 @@ namespace mutabor {
 		 */
 		virtual void Load (tree_storage & config, RouteClass * route);
 
-	
-		virtual bool Open();
-
 		virtual void Close();
 		virtual void Stop();
+	
+		virtual bool Open();
 		virtual void Panic();
 
 		void Proceed(GisReadArtHead *h, char turn, Route route);

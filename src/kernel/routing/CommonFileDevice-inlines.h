@@ -74,7 +74,7 @@ namespace mutabor {
 #endif
 	}
 
-	inline bool CommonFileOutputDevice::Open()
+	inline bool CommonFileOutputDevice::do_Open()
 	{
 		mutASSERT(!isOpen);
 		isOpen = true;

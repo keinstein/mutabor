@@ -647,46 +647,72 @@ namespace mutabor {
 	class OutputDeviceClass: public CommonTypedDeviceAPI<OutputDeviceClass>
 	{
 		friend class DeviceFactory;
-	protected:
-		// private members: access only via access functions for debugging purposes
-		/*
-		  OutputDeviceNext;
-		  static OutputDevice deviceList;
-		*/
-		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>() {}
-
-		OutputDeviceClass(const mutStringRef name, 
-				  int id = -1):
-			CommonTypedDeviceAPI<OutputDeviceClass>(name, id) {}
 	public:
 		virtual ~OutputDeviceClass() { 
 			TRACEC;
 			wxASSERT(!IsOpen());
 			TRACEC;
 		}
-		virtual void NoteOn(Box box, 
+		void NoteOn(Box box, 
 				    int taste, 
 				    int velo, 
 				    RouteClass * r,
 				    size_t id, 
-				    const ChannelData & input_channel_data) = 0;
-		virtual void NoteOff(Box box, 
+				    const ChannelData & input_channel_data) {
+			ScopedLock lock(write_lock);
+			do_NoteOn(box,taste,velo,r,id,input_channel_data);
+		
+		}
+		void NoteOff(Box box, 
 				     int taste, 
 				     int velo, 
 				     RouteClass * r,
 				     size_t id,
-				     bool is_note_on) = 0;
-		virtual void UpdateTones(RouteClass * route) = 0;
-		virtual void Controller(int mutabor_channel, int controller, int value) = 0;
+				     bool is_note_on) {
+			ScopedLock lock(write_lock);
+			do_NoteOff(box,taste,velo,r,id,is_note_on);
+		}
+		void UpdateTones(RouteClass * route) {
+			ScopedLock lock(write_lock);
+			do_UpdateTones(route);
+		}
+		void Controller(int mutabor_channel, int controller, int value) {
+			ScopedLock lock(write_lock);
+			do_Controller(mutabor_channel, controller, value);
+		}
 //		virtual void Sustain(int channel, const ChannelData & cd) = 0;
-		virtual int  GetChannel(int inkey, size_t channel, size_t id) = 0;
-		virtual void Gis(GisToken *token, char turn) = 0;
-		virtual void AddTime(frac time) = 0;
-		virtual void MidiOut(mutabor::Box box, midi_string data) = 0;
-		virtual void MidiOut(BYTE *p, size_t n) = 0;
-		virtual void Quiet(RouteClass * r) = 0;
-		virtual void Panic() { STUBC; };
-		virtual bool Open() { return true; }
+		int  GetChannel(int inkey, size_t channel, size_t id) {
+			ScopedLock lock(write_lock);
+			return do_GetChannel(inkey,channel,id);
+		}
+		void Gis(GisToken *token, char turn) {
+			ScopedLock lock(write_lock);
+			do_Gis(token,turn);
+		}
+		void AddTime(frac time) {
+			ScopedLock lock(write_lock);
+			do_AddTime(time);
+		}
+		void MidiOut(mutabor::Box box, midi_string data) {
+			ScopedLock lock(write_lock);
+			do_MidiOut(box,data);
+		}
+		void MidiOut(BYTE *p, size_t n) {
+			ScopedLock lock(write_lock);
+			do_MidiOut(p,n);
+		}
+		void Quiet(RouteClass * r) {
+			ScopedLock lock(write_lock);
+			do_Quiet(r);
+		}
+		void Panic() {
+			ScopedLock lock(write_lock);
+			do_Panic();
+		};
+		bool Open() { 
+			ScopedLock lock(write_lock);
+			return do_Open();
+		}
 
 		virtual bool NeedsRealTime() {
 			return false;
@@ -703,7 +729,44 @@ namespace mutabor {
 		virtual wxString TowxString() const;
 #endif
 	
+	protected:
+		Mutex write_lock;
+		// private members: access only via access functions for debugging purposes
+		/*
+		  OutputDeviceNext;
+		  static OutputDevice deviceList;
+		*/
+		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>(),
+				    write_lock() {}
 
+		OutputDeviceClass(const mutStringRef name, 
+				  int id = -1):
+			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
+			write_lock() {}
+
+		virtual void do_NoteOn(Box box, 
+				    int taste, 
+				    int velo, 
+				    RouteClass * r,
+				    size_t id, 
+				    const ChannelData & input_channel_data) = 0;
+		virtual void do_NoteOff(Box box, 
+				     int taste, 
+				     int velo, 
+				     RouteClass * r,
+				     size_t id,
+				     bool is_note_on) = 0;
+		virtual void do_UpdateTones(RouteClass * route) = 0;
+		virtual void do_Controller(int mutabor_channel, int controller, int value) = 0;
+//		virtual void Sustain(int channel, const ChannelData & cd) = 0;
+		virtual int  do_GetChannel(int inkey, size_t channel, size_t id) = 0;
+		virtual void do_Gis(GisToken *token, char turn) = 0;
+		virtual void do_AddTime(frac time) = 0;
+		virtual void do_MidiOut(mutabor::Box box, midi_string data) = 0;
+		virtual void do_MidiOut(BYTE *p, size_t n) = 0;
+		virtual void do_Quiet(RouteClass * r) = 0;
+		virtual void do_Panic() { STUBC; };
+		virtual bool do_Open() { return true; }
 	
 	};
 
