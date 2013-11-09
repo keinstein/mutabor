@@ -105,6 +105,7 @@ namespace mutaborGUI {
 			return false;
 		}
 
+#if 0
 
 		wxWindow * parent = shape->GetParent();
 		TRACE;
@@ -116,8 +117,12 @@ namespace mutaborGUI {
 			TRACE;
 			MutBoxChannelShape * channel =
 				ToGUIBase(r)->GetShape(parent);
+			/* clients are removed automatically and routes are removed in the destructor */
 			if (channel) {
-#warning this seems odd: check it after Mutabor is running again.
+				// #warning this seems odd: check it
+				// after Mutabor is running again. at
+				// least each channel should be
+				// disconnected from its route
 				shape->Remove(channel);
 				TRACE;
 				channel->Remove(shape);
@@ -127,6 +132,7 @@ namespace mutaborGUI {
 			}
 			
 		}
+#endif
 
 		guibox->Remove(shape);
 		shape->Remove(box);
