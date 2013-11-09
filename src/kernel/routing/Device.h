@@ -73,6 +73,7 @@ namespace mutabor {
 
 	enum MutaborModeType {
 		DeviceUnregistered = -1, //< Unregistered device – currently unused
+		DeviceInitializing,      //< Intitialization phase (e.g. thread creation)
 		DeviceStop,              //< Device is OK, but no playback.
 		DevicePlay,              //< Playback is running
 		DevicePause,             //< Playback is paused
@@ -852,12 +853,8 @@ namespace mutabor {
 
                 /** Command the device to play music. 
 		 * This function starts playing the music of the device at the curren position.
-		 * 
-		 * \param tk Kind of thread to be created. It can be
-		 * wxTHREAD_DETACHED or wxTHREAD_JOINABLE. This parameter is used only on devices
-		 * that start a new thread for playing the music. Otherwise it is ignored.
 		 */
-		virtual void Play(wxThreadKind tk = wxTHREAD_DETACHED) {
+		virtual void Play() {
 			if (Mode == DeviceStop || Mode == DevicePause)
 				Mode = DevicePlay;
 		}

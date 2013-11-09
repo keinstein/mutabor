@@ -51,6 +51,7 @@
 // system headers which do seldom change
 
 #include <limits>
+#include <cstdio>
 #include "wx/thread.h"
 
 namespace mutabor {
@@ -120,21 +121,23 @@ namespace mutabor {
 	{
 		friend class MidiFileFactory;
 	public:
- 		class FileTimer: public wxThread
+ 		class FileTimer: public Thread
 		{
 	      
 			boost::intrusive_ptr<CommonFileInputDevice> file;
 		public:
 			FileTimer(CommonFileInputDevice * f,
-				  wxThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
-									   file(f)
-				{}
-
+				  ThreadKind kind = wxTHREAD_DETACHED) : wxThread(kind),
+									 file(f)
+			{}
+			
 			virtual ~FileTimer() {
+				mutASSERT(!file);
 				if (file) {
 					if (file->timer == this)
 						file -> timer = NULL;
 				}
+				std::fprintf(stderr,"exiting thread");
 			}
 
 			ExitCode Entry() {
@@ -143,6 +146,7 @@ namespace mutabor {
 			}
 
 			void OnExit() {
+				mutASSERT(!IsDetached() || !file);
 				if (file) {
 					if (file->timer == this)
 						file -> timer = NULL;
@@ -157,11 +161,14 @@ namespace mutabor {
 			bool HasFile(CommonFileInputDevice * f) {
 				return file == f;
 			}
+		protected:
 		};
+
 		friend class FileTimer;
 
 	public:
 		virtual ~CommonFileInputDevice() {
+			if (isOpen) Close();
 			mutASSERT(timer == NULL);
 		};
 	
@@ -179,7 +186,7 @@ namespace mutabor {
 		virtual bool Open();
 		virtual void Close();
 		virtual void Stop();
-		virtual void Play(wxThreadKind kind = wxTHREAD_DETACHED);
+		virtual void Play();
 		virtual void Pause();
 
 		virtual void SetName(const wxString & s) {
@@ -196,27 +203,61 @@ namespace mutabor {
 		}
 
 		/** 
+		 * Sets the thread kind for the next thread that is
+		 * being generated. If we have already a timer thread
+		 * then the thread kind will not be changed, but the 
+		 * value is stored for the next generated thread.
+		 * 
+		 * \param k thread kind to be saved
+		 * 
+		 * \retval true if everything is ok.  
+		 * \retval false if there is a thread that
+		 * could not be updated.
+		 */
+		virtual bool SetThreadKind(wxThreadKind k) {
+			threadkind = k;
+			return !timer;
+		}
+
+		/** 
 		 * Play the file.
 		 * This function is called from the
 		 * thread object. It plays the file using sleep
 		 * operations.
 		 */
 		wxThread::ExitCode ThreadPlay(FileTimer * timer);
-		wxThread::ExitCode WaitForDeviceFinish(wxThreadWait
-						       flags=wxTHREAD_WAIT_BLOCK) {
+		wxThread::ExitCode WaitForDeviceFinish() {
 			mutASSERT(timer);
 			if (timer) {
 				mutASSERT(wxThread::This() != timer);
 				if (wxThread::This() != timer) {
-#if wxCHECK_VERSION(2,9,2)
-					return (timer -> Wait(flags));
-#else
-					return (timer -> Wait());
-#endif
+					DEBUGLOG(thread,
+						 _T("Thread %p locking at threadsignal = %x"),
+						 Thread::This(),
+						 threadsignal.get());
+					ScopedLock lock(waitMutex);
+					DEBUGLOG(thread,
+						 _T("Thread %p locked at threadsignal = %x"),
+						 Thread::This(),
+						 threadsignal.get());
+
+					if (timer->IsDetached()) {
+						switch (Mode) {
+						case DevicePlay:
+						case DevicePause: 
+						case DeviceStop:
+							return 0;
+						case DeviceTimingError:
+						case DeviceCompileError:
+						default:
+							return (void *)Mode;
+							
+						}
+					}
 				} else return timer;
 			}
 			return 0;
-		}
+	}
 
 		virtual mutString GetTypeName () const {
 			return N_("Generic input file");
@@ -228,17 +269,32 @@ namespace mutabor {
 		
 	protected:
 		FileTimer * timer;
+		enum ThreadCommunication {
+			Nothing       = 0,
+			RequestExit   = 1,
+			RequestPause  = 2,
+			ResetTime     = 4
+		};
+		/* volatile is handled inside the class */
+		safe_integer<int> threadsignal;
+		Mutex waitMutex, threadReady, lockMode, exitLock;
+		ThreadCondition waitCondition;
 		/** 
 		 * Fixed offset for the relative time the file returns.
 		 */
-		mutint64 referenceTime; // ms
-		mutint64 pauseTime;     // ms
+		volatile mutint64 referenceTime; // ms
+		volatile mutint64 pauseTime;     // ms
 		timing_params timing;
+		wxThreadKind threadkind;
 
 		CommonFileInputDevice(): InputDeviceClass(),
 					 timer (NULL),
+					 threadsignal (Nothing),
+					 waitMutex(),
+					 waitCondition(waitMutex),
 					 referenceTime(0),
-					 pauseTime(0) { }
+					 pauseTime(0),
+					 threadkind(wxTHREAD_DETACHED) { }
 
 		CommonFileInputDevice(wxString name, 
 				      MutaborModeType mode,
@@ -246,8 +302,12 @@ namespace mutabor {
 								mode, 
 								id),
 					       timer(NULL),
+					       threadsignal (Nothing),
+					       waitMutex(),
+					       waitCondition(waitMutex),
 					       referenceTime(0),
-					       pauseTime(0) {}
+					       pauseTime(0),
+					       threadkind(wxTHREAD_DETACHED) {}
 
 	};
 

@@ -38,6 +38,11 @@
 #include "wx/msgdlg.h"
 #include "wx/timer.h"
 
+#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+#include <time.h>
+#include <errno.h>
+#endif
+
 
 namespace mutabor {
 
@@ -137,41 +142,122 @@ namespace mutabor {
 
 	inline bool CommonFileInputDevice::Open()
 	{
+		
 		mutASSERT(!isOpen);
 		DEBUGLOG (other, _T("start"));
 
 		Mode = DeviceStop;
 		// init
 		Stop();
-		DEBUGLOG (other, _T("finished. Mode = %d, this = %p"),Mode,(void*)this);
+		DEBUGLOG (other, 
+			  _T("finished. Mode = %d, this = %p"),
+			  Mode,
+			  (void*)this);
+
+		
+		if ( mutabor::CurrentTime.isRealtime() ) {
+			mutASSERT(timer == NULL);
+			DEBUGLOG(thread,
+				 _T("Thread %p locking at threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+			ScopedLock locker(waitMutex);
+			DEBUGLOG(thread,
+				 _T("Thread %p locked at threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+			
+			/* creating threads might be expensive. So we
+			   create it here, as Play() must be
+			   considered to be a realtime function
+			   synchronized with other devices */
+			timer = new FileTimer(this,threadkind);
+			if (!timer) {
+				Mode = DeviceTimingError;
+				Close();
+				return false;
+			}
+			wxThreadError result = timer -> Create(1024*100); // Stack Size
+			if (result != wxTHREAD_NO_ERROR) {
+				delete timer;
+				timer = NULL;
+				Mode = DeviceTimingError;
+				Close();
+				return false;
+			}
+			timer->Run();
+			threadsignal = RequestPause;
+			/* wait until the timer thread has been initialized */
+			DEBUGLOG(thread,
+				 _T("Thread %p waiting at threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+			waitCondition.Wait();
+			DEBUGLOG(thread,
+				 _T("Thread %p continue at %d threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+		}
+
+		DEBUGLOG(timer,_T("timer = %p"),(void*)timer);
 		isOpen = true;
 		return true;
 	}
 
 	inline void CommonFileInputDevice::Close()
 	{
+		exitLock.Lock();
 #ifdef DEBUG
 		if (mutabor::CurrentTime.isRealtime()) {
 			mutASSERT(isOpen);
 		}
 #endif
 		Stop();
+		
+		DEBUGLOG(thread,_T("timer = %p"),(void *)timer);
+		if (timer) {
+			DEBUGLOG(thread,
+				 _T("Thread %p locking at threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+			waitMutex.Lock();
+			// prepare exit when the thread is paused.
+			threadsignal |= RequestExit;
+			DEBUGLOG(thread,
+				 _T("Thread %p broadcasting at threadsignal = %x"),
+				 Thread::This(),
+				 threadsignal.get());
+			FileTimer *tmp = timer;
+			/* detached status must be checked before a
+			   detached thead may be deleted. */
+			bool must_join = !timer->IsDetached(); 
+			timer = NULL;
+			tmp -> ClearFile();
+			waitCondition.Broadcast();
+			waitMutex.Unlock();
+			exitLock.Unlock();
+			// tmp -> Delete();
+			if (must_join) {
+#if wxCHECK_VERSION(2,9,2)
+				tmp -> Wait(wxTHREAD_WAIT_BLOCK);
+#else
+				tmp -> Wait();
+#endif
+			        delete tmp;
+			}
+		} else exitLock.Unlock();
+		
 		isOpen = false;
 	}
 
 	inline void CommonFileInputDevice::Stop()
 	{
+		ScopedLock modelock(lockMode);
 		DEBUGLOG(routing,_T("old mode = %d"),Mode);
 		if ( Mode == DevicePlay || Mode == DeviceTimingError )
 			Pause();
 		
-		mutASSERT(Mode == DevicePause || !timer);
-		if (timer && (timer != wxThread::This())) {
-			timer -> ClearFile();
-			timer -> Delete();
-			timer = NULL;
-		}
-
+		threadsignal |= ResetTime;
 		referenceTime = 0;
 		pauseTime = 0;
 
@@ -179,9 +265,10 @@ namespace mutabor {
 			Mode = DeviceStop;
 	}
 
-	inline void CommonFileInputDevice::Play(wxThreadKind kind)
+	inline void CommonFileInputDevice::Play()
 	{
 		static bool starting = false;
+		ScopedLock modelock(lockMode);
 
 		if (starting) return;
 		starting = true;
@@ -190,47 +277,42 @@ namespace mutabor {
 		case DeviceCompileError:
 		case DeviceTimingError:
 		case DeviceUnregistered:
-			DEBUGLOG(timer,_T("Returnung due to device error."));
+			DEBUGLOG(timer,
+				 _T("Returnung due to device error."));
 			starting = false; 
 			return;
 		case DeviceStop:
-			DEBUGLOG(timer,_T("Stopped. Realtime = %d."),(int)mutabor::CurrentTime.isRealtime());
-			referenceTime = CurrentTime.Get();
+			referenceTime = 0;
 			pauseTime = 0;
-
-			if ( mutabor::CurrentTime.isRealtime() ) {
-				mutASSERT(timer == NULL);
-
-				timer = new FileTimer(this,kind);
-				if (!timer) {
-					starting = false; 
-					return;
-				}
-				wxThreadError result = timer -> Create(1024*100); // Stack Size
-				if (result == wxTHREAD_NO_ERROR)
-					timer -> Run();
-				else {
-					delete timer;
-					timer = NULL;
-					starting = false; 
-					return;
-				}
-			}
-			break;
 		case DevicePause:
-			DEBUGLOG(timer,_T("Paused. Realtime = %d."),(int)CurrentTime.isRealtime());
+			DEBUGLOG(timer,
+				 _T("Paused. Realtime = %d."),
+				 (int)CurrentTime.isRealtime());
+			threadsignal |= ResetTime;
 			referenceTime += CurrentTime.Get() - pauseTime;
 			pauseTime = 0;
+
 			// timer should be 0 in Realtime mode
 			mutASSERT(!timer || CurrentTime.isRealtime());
 			if (timer) {
-				mutASSERT(timer -> IsPaused());
-				timer -> Resume();
+				threadsignal &= ~(int)RequestPause;
+				DEBUGLOG(thread,
+					 _T("Thread %p locking at threadsignal = %x"),
+					 Thread::This(),
+					 threadsignal.get());
+				waitMutex.Lock();
+				DEBUGLOG(thread,
+					 _T("Thread %p broadcasting at threadsignal = %x"),
+					 Thread::This(),
+					 threadsignal.get());
+				waitCondition.Broadcast();
+				waitMutex.Unlock();
 			}
 			break;
 		case DevicePlay:
 			starting = false; 
 			return;
+			
 		}
 		DEBUGLOG(timer,_T("timer = %p"),(void*)timer);
 		Mode = DevicePlay;
@@ -249,9 +331,7 @@ namespace mutabor {
 				// we use this function for some cleanup inside Stop()
 				// which is called from inside the thread.
 				// In this case we shouldn't pause ourselves
-				if (timer != wxThread::This()) {
-					timer -> Pause();
-				}
+				threadsignal |= RequestPause;
 			}
 			pauseTime = CurrentTime.Get();
 			Mode = DevicePause;
@@ -264,9 +344,51 @@ namespace mutabor {
 			mutASSERT(!"Unknown value");
 		}
 	}
-	
-	/* we use microseconds as errors sum up */
 
+#if 0
+	void CommonFileInputDevice::Sleep(mutint64 time) {
+#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+		struct timespec data,remain = {0,0};
+#ifdef DEBUG
+		if (debugFlags::flags.timer) {
+			clock_getres(CLOCK_MONOTONIC, &data);
+			DEBUGLOGTYPE(timer,
+				     CommonFileInputDevice,
+				  _T("Timer resolution: %d s %ld ns"),
+				  (int)data.tv_sec,
+				  (long)data.tv_nsec);
+		}
+#endif
+		data.tv_sec = time/1000000;
+		mutint64 tmp = time % 1000000;
+		if (tmp < 0) tmp+= 1000000;
+		data.tv_nsec = (long)(tmp *1000);
+		DEBUGLOGTYPE(timer,
+			     CommonFileInputDevice,
+			     _T("sleeping time: %d s, %ld ns"),
+			     (int)data.tv_sec,
+			     (long)data.tv_nsec);
+		int status = clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
+		DEBUGLOGTYPE(timer,
+			     CommonFileInputDevice,
+			     _T("Remaining time: %d s, %ld ns"),
+			     (int)remain.tv_sec,
+			     (long)remain.tv_nsec);
+		mutASSERT(status != EINTR);
+		mutASSERT(status != EINVAL);
+		mutASSERT(status != EFAULT);
+		mutASSERT(!status);
+#else 
+		DEBUGLOGTYPE(timer,
+			     CommonFileInputDevice,
+			     _T("wxSleeping: %lu ms"),
+			     (unsigned long) time/1000);
+		Thread::Sleep((unsigned long)time/1000);
+#endif
+	}
+#endif
+
+	/* we use microseconds as errors sum up */
 	inline wxThread::ExitCode
 	CommonFileInputDevice::ThreadPlay(FileTimer * thistimer)
 	{
@@ -277,6 +399,7 @@ namespace mutabor {
 		mutASSERT(Mode != DeviceCompileError );
 
 
+#if 0
 		/* this looks a little bit strange. But it is hard to
 		 * compare two sined and unsiged integers whose size we do not
 		 * know. */
@@ -291,48 +414,128 @@ namespace mutabor {
 			alloweddelta = std::numeric_limits<mutint64>::max();
 		else 
 			alloweddelta = 1000*(mutint64)maxulong;
+#endif
 
+		if (Mode == DeviceInitializing) 
+			Mode = DeviceStop;
+		/* tell the main thread that we are initialized */
+		DEBUGLOG(thread,
+			 _T("Thread %p locking at threadsignal = %x"),
+			 Thread::This(),
+			 threadsignal.get());
+		waitMutex.Lock(); 
+		DEBUGLOG(thread,
+			 _T("Thread %p broadcasting at threadsignal = %x"),
+			 Thread::This(),
+			 threadsignal.get());
+		waitCondition.Broadcast();
+		DEBUGLOG(thread,
+			 _T("Thread %p locking again at threadsignal = %x"),
+			 Thread::This(),
+			 threadsignal.get());
+		/* leave Mutex locked */
+		/*
+		waitMutex.Lock();
+		DEBUGLOG(thread,
+			 _T("Thread %p locked at threadsignal = %x"),
+			 Thread::This(),
+			 threadsignal.get());
+		*/
 
 		mutint64 nextEvent = wxLL(0); // in μs
 		mutint64 playTime  = wxLL(0); // in μs
 		mutint64 reference = wxLL(0); // in μs
 		mutint64 delta; // in ms
-		wxThread::ExitCode e;
-		do {
-			if (thistimer->TestDestroy()) {
-				break;
-			}
-			nextEvent = PrepareNextEvent();
-			mutASSERT(nextEvent >= 0);
-			DEBUGLOG(timer,_T("Preparing next event is at %ld (isdelta=%d)"), nextEvent,IsDelta(nextEvent));
-			DEBUGLOG(timer,_T("NoDelta = %ld"), GetNO_DELTA());
-			if (IsDelta(nextEvent)) {
+		wxThread::ExitCode e = 0;
+		while (true) {
+			if (threadsignal & RequestPause) {
+				DEBUGLOG(thread,
+					 _T("Thread %p waiting at threadsignal = %x"),
+					 Thread::This(),
+					 threadsignal.get());
+				waitCondition.Wait();
+				DEBUGLOG(thread,
+					 _T("Thread %p continuing and locking at threadsignal = %x"),
+					 Thread::This(),
+					 threadsignal.get());
+#if 0
+				waitMutex.Lock();
+				DEBUGLOG(thread,
+					 _T("Thread %p Locked at threadsignal = %x"),
+					 Thread::This(),
+					 threadsignal.get());
+#endif
+				if (threadsignal & RequestExit)
+					break;
+				if (threadsignal & ResetTime) {
+					nextEvent = wxLL(0); // in μs
+					playTime  = wxLL(0); // in μs
+					threadsignal &= ~(int)ResetTime;
+				} 
 				reference = referenceTime;
-				playTime += nextEvent;
+			} else if (thistimer -> TestDestroy()) {
+				return (void *) (Mode + 0x100);
+			}
+			mutASSERT(IsDelta(nextEvent));
+			if (!delta && IsDelta(nextEvent)) {
+				nextEvent = PrepareNextEvent();
+				mutASSERT(nextEvent >= 0);
+				DEBUGLOG(timer,
+					 _T("Preparing next event is at %ld (isdelta=%d)"), 
+					 nextEvent,
+					 IsDelta(nextEvent));
+				DEBUGLOG(timer,_T("NoDelta = %ld"), GetNO_DELTA());
+				if (IsDelta(nextEvent)) {
+					reference = referenceTime;
+					playTime += nextEvent;
+				}
+			}
+			if (!IsDelta(nextEvent)) {
+				{ 
+					ScopedLock modelock(lockMode);
+					switch (Mode) {
+					case DevicePlay:
+					case DevicePause: 
+					case DeviceStop:
+						break;
+					case DeviceTimingError:
+					case DeviceCompileError:
+					default:
+						e = (void *)Mode;
+						break;
+					}
+					// unlocking
+				}
+				Stop();
+			} else if (!(threadsignal & (ResetTime | RequestExit | RequestPause))) {
 				DEBUGLOG(timer,_T("time: %ld μs"),CurrentTime.Get());
 				delta = reference + playTime - CurrentTime.Get();
 				DEBUGLOG(timer,_T("Delta %ld μs."),delta);
-				
-				if (delta > 0) {
-					if (delta > alloweddelta) {
-						nextEvent = GetNO_DELTA();
-						Mode = DeviceTimingError;
-						break;
-					}
 
-					DEBUGLOG(timer,_T("Sleeping %ld ms."),(unsigned long)(delta/1000));
-					wxThread::Sleep((unsigned long)(delta/1000));
+				/* we wake up in regular time intervals in order
+				   to assure that external commands (stop/close)
+				   can be handled in reasonable time) 
+
+				   The delta slices should be smaller than the 
+				   resolution that is forced in the test suite.
+				   Currently (as this comment is created) the
+				   maximum allowed difference is 10 ms.
+				*/
+				if (delta > 2000) {
+					CurrentTime.Sleep(2000);
+				} else {
+					if (delta > 0) 
+						CurrentTime.Sleep(delta);
+					delta = 0;
 				}
 			}
-		} while (IsDelta(nextEvent));
-
-		
+		}
+		DEBUGLOG(timer,_T("returning"));
 		switch (Mode) {
 		case DevicePlay:
 		case DevicePause: 
 			Stop();
 		case DeviceStop:
-			e = 0;
 			break;
 		case DeviceTimingError:
 		case DeviceCompileError:
@@ -340,13 +543,14 @@ namespace mutabor {
 			e = (void *)Mode;
 			break;
 		}
-
-		timer = NULL;
-		referenceTime = 0;
-		pauseTime = 0;
-
-	        thistimer->ClearFile(); 
-                        // this might delete us (smartptr).
+		DEBUGLOG(thread,
+			 _T("Thread %p unlocking at threadsignal = %x"),
+			 Thread::This(),
+			 threadsignal.get());
+		// assure that Close() has done its worke before exiting
+		exitLock.Lock();
+		waitMutex.Unlock();
+		exitLock.Unlock();
 		return e;
 	}
 
@@ -358,6 +562,6 @@ namespace mutabor {
 					 referenceTime, pauseTime);
 	}
 #endif
-	
+
 }
 ///\}
