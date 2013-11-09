@@ -111,6 +111,9 @@ namespace mutabor {
 is_fixed_ticks = %d, fps = %d, quarter_divisions = %ld, quarter_duration = %ld"),
 					is_fixed_ticks, fps, quarter_divisions, quarter_duration);
 	}
+
+
+	
 }
 
 ///\}

@@ -49,7 +49,14 @@
 #include <limits>
 #include <exception>
 #include <stdexcept>
+#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+#include <time.h>
+#include <errno.h>
+//#elseif __WXMSW__
+#else
 #include "wx/stopwatch.h"
+#include "thread.h"
+#endif
 
 #define MUTABOR_NO_DELTA (std::numeric_limits<mutint64>::max()) //2147483647  // long max-Zahl
 
@@ -309,6 +316,112 @@ namespace mutabor {
  	};
 
 
+#if _XOPEN_SOURCE >= 600 || _POSIX_C_SOURCE >= 200112L
+	class CurrentTimerBase {
+	public:
+		CurrentTimerBase():running(false) {
+		}
+
+		void Sleep(mutint64 time) {
+			struct timespec data,remain = {0,0};
+#ifdef DEBUG
+			if (debugFlags::flags.timer) {
+				clock_getres(CLOCK_MONOTONIC, &data);
+				DEBUGLOGTYPE(timer,
+					     CurrentTimerBase,
+					     _T("Timer resolution: %d s %ld ns"),
+					     (int)data.tv_sec,
+					     data.tv_nsec);
+			}
+#endif
+			data.tv_sec = time/1000000;
+			mutint64 tmp = time % 1000000;
+			if (tmp < 0) tmp+= 1000000;
+			data.tv_nsec = (long)(tmp *1000);
+			DEBUGLOGTYPE(timer,
+				     CurrentTimerBase,
+				     _T("sleeping time: %d s, %ld ns"),
+				     (int)data.tv_sec,
+				     data.tv_nsec);
+			int status = clock_nanosleep(CLOCK_MONOTONIC,0,&data,&remain);
+			DEBUGLOGTYPE(timer,
+				     CurrentTimerBase,
+				     _T("Remaining time: %d s, %ld ns"),
+				     (int)remain.tv_sec,
+				     remain.tv_nsec);
+			mutASSERT(status != EINTR);
+			mutASSERT(status != EINVAL);
+			mutASSERT(status != EFAULT);
+			mutASSERT(!status);
+		}
+
+	protected:
+		struct timespec start, resolution;
+		bool running;
+		
+
+		void Start(mutint64 t = 0) {
+			clock_getres(CLOCK_MONOTONIC,&resolution);
+			clock_gettime(CLOCK_MONOTONIC,&start);
+			start.tv_sec -= t/(1000*1000);
+			start.tv_nsec -= (t % (1000*1000))*1000;
+			if (start.tv_nsec < 0) {
+				start.tv_sec -= 1;
+				start.tv_nsec += 1000*1000*1000;
+			} else if (start.tv_nsec > 1000*1000*1000) {
+				start.tv_nsec -= 1000*1000*1000;
+				start.tv_sec += 1;
+			}
+			DEBUGLOGTYPE(timer,
+				     CurrentTimerBase,
+				     _T("Starting time: %d s, %ld ns"),
+				     (int)start.tv_sec,
+				     start.tv_nsec);
+			running=true;
+		}
+
+		mutint64 Time() {
+			struct timespec tmp;
+			mutASSERT(running);
+			clock_gettime(CLOCK_MONOTONIC,&tmp);
+			tmp.tv_sec -= start.tv_sec;
+			tmp.tv_nsec -= start.tv_nsec;
+			DEBUGLOGTYPE(timer,
+				     CurrentTimerBase,
+				     _T("Elapsed time: %d s, %ld ns; = %ld μs"),
+				     (int)tmp.tv_sec,
+				     tmp.tv_nsec,
+				     tmp.tv_sec *1000*1000 + tmp.tv_nsec/1000);
+			return tmp.tv_sec *1000*1000 + tmp.tv_nsec/1000;
+		}
+		
+	};
+
+#else
+	class CurrentTimerBase:protected wxStopWatch {
+		static void Sleep(mutint64 time) {
+			DEBUGLOGTYPE(timer,
+				     CurrentTimerBase,
+				     _T("wxSleeping: %lu ms"),
+				     (unsigned long) time/1000);
+			Thread::Sleep((unsigned long)time/1000);
+		}
+	protected:
+		struct timespec start, resolution;
+		
+
+		void Start(mutint64 t = 0) {
+			wxStopWatch::Start(t/1000);
+		}
+
+		mutint64 Time() {
+			return 1000*(mutint64)wxStopWatch::Time();
+		}
+		
+	};
+
+#endif
+
 	/**
 	 * A class for handling global timing issues. This class
 	 * provides support for central timing. In realtime mode it
@@ -318,7 +431,7 @@ namespace mutabor {
 	 * The time resolution is system dependent, but should not be
 	 * worse than 1 ms in real time mode and 1μs in batch mode.
 	 */
-	class CurrentTimer: public wxStopWatch
+	class CurrentTimer: public CurrentTimerBase
 	{
 	public:
 
@@ -327,8 +440,8 @@ namespace mutabor {
 		 * 
 		 * \param t start time
 		 */
-		CurrentTimer(mutint64 t = 0):wxStopWatch() {
-			Start(t/1000);
+		CurrentTimer(mutint64 t = 0):CurrentTimerBase() {
+			Start(t);
 			is_realtime = true;
 		}
 	
@@ -347,9 +460,9 @@ namespace mutabor {
 			is_realtime = flag;
 			
 			if (is_realtime) {
-				Start(time/1000);
+				Start(time);
 			} else {
-				time = Time()*1000;
+				time = Time();
 			}
 		}
 
@@ -368,7 +481,7 @@ namespace mutabor {
 		 */
 		void Set(mutint64 t = 0) {
 			if (is_realtime) {
-				Start(t/1000);
+				Start(t);
 			} else {
 				time = t;
 			}
@@ -380,7 +493,7 @@ namespace mutabor {
 		 * 
 		 * \return Time in μs.
 		 */
-		mutint64 Get() { return is_realtime?(mutint64)Time()*1000:time; }
+		mutint64 Get() { return is_realtime?Time():time; }
 		
 		/** 
 		 * Dummy function for stopping the timer.
@@ -421,10 +534,6 @@ namespace mutabor {
 		mutint64 time; //< Time value for batch mode
 		bool is_realtime; //< flag indicating whether we are in batch mode.
 
-	private:
-		// disable certain functions from the underlying API.
-
-		using wxStopWatch::Time;
 	};
 
 	extern CurrentTimer CurrentTime;
