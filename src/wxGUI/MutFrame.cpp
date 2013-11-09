@@ -707,12 +707,6 @@ namespace mutaborGUI {
 
 		wxGetApp().SaveState();
 
-#ifdef DEBUG
-		DEBUGLOG (gui, _T("Restoring state for debugging"));
-		wxGetApp().RestoreState();
-
-		DebugCheckRoutes();
-#endif
 
 
 		// aktivieren
@@ -733,7 +727,7 @@ while playing by computer keyboard.)"),
 		}
 		ActiveWindow = this;
 
-		if ( mutabor::BoxClass::ActivateAll(realtime) )
+		if (!mutabor::BoxClass::ActivateAll(realtime) )
 			return;
 
 #endif
@@ -931,10 +925,6 @@ To start the translation hit the play button or select “Play” from the “Se
 			StopInDev();
 			mutabor::BoxClass::StopAll();
 
-			// Ampel umschalten
-			/*		ControlBar->Remove(*ButtonStop);
-					ControlBar->Insert(*ButtonActivate, TGadgetWindow::Before, ButtonPanic);
-					ControlBar->LayoutSession();*/
 			// Statusleiste
 			StatusBar::AllSetActive(LogicOn);
 			StatusBar::AllSetPlaystate(StatusBar::Hide,true);
@@ -1116,15 +1106,9 @@ To start the translation hit the play button or select “Play” from the “Se
 	void MutFrame::DoBoxWindowsOpen(mutabor::Box box, bool update) {
 		mutUnused(update);
 		BoxData * boxdata = ToGUIBase(box);
+		mutUnused(boxdata);
+		STUBC;
 		
-		if (boxdata->WantKeyWindow())
-			TextBoxOpen(WK_KEY, box);
-		if (boxdata->WantTonesystemWindow())
-			TextBoxOpen(WK_TS, box);
-		if (boxdata->WantActionsWindow())
-			TextBoxOpen(WK_ACT, box);
-
-		LogicWinOpen(box); // updates already
 
 		// if (!update) return;
 
