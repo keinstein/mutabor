@@ -33,7 +33,7 @@
 #   and this notice are preserved. This file is offered as-is, without any
 #   warranty.
 
-#serial 20
+#serial 21
 
 AC_DEFUN([AX_BOOST_BASE],
 [
@@ -91,17 +91,15 @@ if test "x$want_boost" = "xyes"; then
     dnl are found, e.g. when only header-only libraries are installed!
     libsubdirs="lib"
     ax_arch=`uname -m`
-    if test $ax_arch = x86_64 -o $ax_arch = ppc64 -o $ax_arch = s390x -o $ax_arch = sparc64; then
+    case $ax_arch in
+      x86_64|ppc64|s390x|sparc64|aarch64)
         libsubdirs="lib64 lib lib64"
-    fi
+        ;;
+    esac
 
     dnl first we check the system location for boost libraries
     dnl this location ist chosen if boost libraries are installed with the --layout=system option
     dnl or if you install boost with RPM
-    dnl at first we normalize the boost path
-    if test "$ac_boost_path" != ""; then
-        ac_boost_path="`cd $ac_boost_path && pwd`"
-    fi
     if test "$ac_boost_path" != ""; then
         BOOST_CPPFLAGS="-I$ac_boost_path/include"
         for ac_boost_path_tmp in $libsubdirs; do
