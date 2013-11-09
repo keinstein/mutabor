@@ -4,8 +4,6 @@
  *                  changes since 11/2011 Tobias Schlemmer
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.16 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

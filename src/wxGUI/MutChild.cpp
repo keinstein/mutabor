@@ -2,47 +2,24 @@
  ********************************************************************
  * Mutabor Mutabor Child Frame management.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/MutChild.cpp,v 1.20 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2005,2006,2007 TU Dresden
  * \author Rüdiger Krauße <krausze@mail.berlios.de>
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.20 $
  * \license GPL
  *
- * $Log: MutChild.cpp,v $
- * Revision 1.20  2011/11/02 14:31:58  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.19  2011-10-22 16:32:38  keinstein
- * commit to continue debugging on Linux/wine
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.18  2011-09-30 18:07:04  keinstein
- * * make compile on windows
- * * s/wxASSERT/mutASSERT/g to get assert handler completely removed
- * * add ax_boost_base for boost detection
- *
- * Revision 1.17  2011-09-27 20:13:23  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.16  2011-09-07 13:06:50  keinstein
- * Get rid of WinAttr and Fix window opening and closing
- *
- * Revision 1.15  2011-09-05 11:30:07  keinstein
- * Some code cleanups moving some global box arrays into class mutaborGUI::BoxData
- * Restore perspective on logic start
- *
- * Revision 1.14  2011-08-21 16:52:05  keinstein
- * Integrate a more sophisticated editor menu based on the stc sample
- *
- * Revision 1.13  2011-02-20 22:35:57  keinstein
- * updated license information; some file headers have to be revised, though
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * \addtogroup src/wxGUI
  * \{

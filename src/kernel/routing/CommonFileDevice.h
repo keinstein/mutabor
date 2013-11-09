@@ -1,13 +1,10 @@
 /** \file  -*- C++ -*-
  ********************************************************************
- * File player class which solves common tasks of file related devices such as MIDI file players.
+ * File player class which solves common tasks of file related devices
+ * such as MIDI file players.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/kernel/routing/midi/DevMidF.h,v 1.8 2011/11/02 14:31:58 keinstein Exp $
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:31:58 $
- * \version $Revision: 1.8 $
  * \license GPL
  *
  *
@@ -25,7 +22,6 @@
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Log:$
  *
  ********************************************************************
  * \addtogroup route

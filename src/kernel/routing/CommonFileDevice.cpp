@@ -2,12 +2,8 @@
  ********************************************************************
  * File player class which solves common tasks of file related devices such as MIDI file players.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/templates/template.cpp,v 1.5 2011/09/27 20:13:26 keinstein Exp $
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date$
- * \version $Revision: 1.5 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -23,9 +19,6 @@
  *    You should have received a copy of the GNU General Public License
  *    along with this program; if not, write to the Free Software
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * $Log: template.cpp,v $
  *
  *
  ********************************************************************

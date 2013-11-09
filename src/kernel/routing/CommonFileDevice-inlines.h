@@ -5,8 +5,6 @@
  *
  * Copyright:   (c) 2012 Tobias Schlemmer
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/11/02 14:31:57 $
- * \version $Revision: 1.13 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

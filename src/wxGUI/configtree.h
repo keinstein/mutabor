@@ -3,10 +3,7 @@
  * implementation class for tree like storage using wxConfigBase based 
  * classes.
  *
- * $Id: configtree.h,v 1.7 2011/11/02 14:31:59 keinstein Exp $
  * \author T. Schlemmer <keinstein@users.berlios.de>
- * \date $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.7 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify

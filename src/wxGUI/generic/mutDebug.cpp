@@ -1,13 +1,9 @@
 /** \file 
  ********************************************************************
- * Description
+ * Some functions and classes to help to debug Mutabor
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mutDebug.cpp,v 1.7 2011/11/03 17:20:15 keinstein Exp $
  * Copyright:   (c) 2010,2011 TU Dresden
  * \author  Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/03 17:20:15 $
- * \version $Revision: 1.7 $
  * \license GPL
  *
  *
