@@ -137,6 +137,30 @@ namespace mutaborGUI {
 			active->Show(act);
 		}
 
+		static void SendPlaystateChanged(playstate pst = Stop) {
+			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
+					       CM_PLAYSTATE_CHANGED); 
+			command.SetInt(pst);
+			// assure that our event will be processed onec 
+			// a later state change may override this, but it will
+			// update the status bar anyway
+			lastprocessed = (pst == Stop)?Play:Stop;
+			for (wxWindowList::iterator i = wxTopLevelWindows.begin();
+			     i != wxTopLevelWindows.end(); i++) {
+				wxFrame * win = dynamic_cast<wxFrame *>(*i);
+				if (!win) continue;
+				StatusBar * bar = dynamic_cast<StatusBar*>(win->GetStatusBar());
+				if (!bar) continue;
+				wxPostEvent(bar,command); 
+			}
+		}
+
+		void HandlePlaystateChanged(wxCommandEvent & event) {
+			playstate pst = (playstate)event.GetInt();
+			if (lastprocessed == pst) return;
+			AllSetPlaystate(pst);
+		}
+
 
 		static void AllSetPlaystate(playstate pst = Stop, bool force = false) {
 			static playstate oldpst = Hide;
@@ -206,6 +230,7 @@ namespace mutaborGUI {
 		wxStaticText * insertStatus;
 		wxStaticBitmap * active, *play;
 		wxBitmap * playbmp;
+		static playstate lastprocessed;
 		
 		enum StatusBarSections {
 			StatusbarInfoArea = 0,

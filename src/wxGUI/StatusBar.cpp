@@ -44,9 +44,11 @@
 
 namespace mutaborGUI {
 	BEGIN_EVENT_TABLE(StatusBar, wxStatusBar)
+	EVT_MENU(CM_PLAYSTATE_CHANGED,StatusBar::HandlePlaystateChanged)
 	EVT_SIZE(StatusBar::OnSize)
 	END_EVENT_TABLE()
 
+	StatusBar::playstate StatusBar::lastprocessed=StatusBar::Stop;
 
 	void StatusBar::OnSize(wxSizeEvent& event)
 	{
