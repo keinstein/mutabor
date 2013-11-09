@@ -80,11 +80,6 @@
 
 
 #ifdef WX
-#define mut_thread_mutex(name)
-#define mut_thread_locker(name)
-#define mut_thread_lock(name) do {} while (0)
-#define mut_thread_release(name) do {} while (0)
-
 #define mutChar   wxChar
 #define mutString wxString
 #define mutStringRef mutString &
@@ -258,94 +253,6 @@ namespace mutabor {
 		static size_t idpool;
 	};
 }
-
-
-class intrusive_ptr_refcount_type {
-private:
-	size_t value;
-
-	template<class intrusive_ptr_T>
-		friend void intrusive_ptr_add_ref(intrusive_ptr_T * obj);	
-	template<class intrusive_ptr_T>
-		friend void intrusive_ptr_release(intrusive_ptr_T * obj);
-	template <class intrusive_ptr_T>
-		friend size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj);
-public:
-	mut_thread_mutex(mutex)						
-	intrusive_ptr_refcount_type():value(0) {}
-
-	void lock () {
-		mut_thread_lock(mutex);
-	}
-
-	void unlock () {
-		mut_thread_release(mutex);
-	}
-
-	size_t operator ++() {
-		lock();
-		value++;
-		unlock();
-		return value;
-	}
-
-	size_t operator ++(int) {
-		size_t retval = value;
-		++(*this);
-		return retval;
-	}
-
-	size_t operator --() {
-		lock();
-		value--;
-		unlock();
-		return value;
-	}
-
-	size_t operator --(int) {
-		size_t retval = value;
-		--(*this);
-		return retval;
-	}
-
-	operator size_t () const {
-		return value;
-	}
-};			
-
-template <class intrusive_ptr_T>
-inline size_t intrusive_ptr_get_refcount(intrusive_ptr_T * obj)
-{
-	if (!obj) return 0;
-	return obj->intrusive_ptr_refcount;
-}
-
-template <class intrusive_ptr_T>
-inline void intrusive_ptr_add_ref(intrusive_ptr_T * obj)
-{
-	if (!obj) return;
-	++(obj->intrusive_ptr_refcount);
-	DEBUGLOGTYPE(smartptr,*obj,_T("Incrementing %p to %d"),
-		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
-}
-
-template <class intrusive_ptr_T>
-inline void intrusive_ptr_release(intrusive_ptr_T * obj)
-{
-	if (!obj) return;
-	DEBUGLOGTYPE(smartptr,*obj,_T("Decrementing %p from %d"),
-		     (void *)obj,(int)intrusive_ptr_get_refcount(obj));
-	if (!(--(obj->intrusive_ptr_refcount))) delete obj;
-}
-
-							      
-#define REFPTR_INTERFACE						\
-	public:								\
-	intrusive_ptr_refcount_type intrusive_ptr_refcount;		
-
-
-#define CHECK_REFPTR_NULL(class_data)				\
-	mutASSERT(intrusive_ptr_get_refcount(class_data) <= 1);
 
 // we are using std::max and std::min
 #ifdef max

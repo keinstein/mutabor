@@ -45,6 +45,7 @@
 #include "src/kernel/MidiKern.h"
 
 #include "src/kernel/treestorage.h"
+#include "src/kernel/boost-interface.h"
 
 #ifndef MU32_ROUTING_ROUTE_H_PRECOMPILED
 #define MU32_ROUTING_ROUTE_H_PRECOMPILED

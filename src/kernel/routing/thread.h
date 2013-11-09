@@ -30,10 +30,10 @@
 /* we guard a little bit complicated to ensure the references are set right
  */
 
-#if (!defined(HEADERFILENAME) && !defined(PRECOMPILE)) \
-	|| (!defined(HEADERFILENAME_PRECOMPILED))
+#if (!defined(SRC_KERNEL_ROUTING_THREAD_H) && !defined(PRECOMPILE)) \
+	|| (!defined(SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED))
 #ifndef PRECOMPILE
-#define HEADERFILENAME
+#define SRC_KERNEL_ROUTING_THREAD_H
 #endif
 
 // ---------------------------------------------------------------------------
@@ -42,11 +42,10 @@
 
 #include "src/kernel/Defs.h"
 
-#ifndef HEADERFILENAME_PRECOMPILED
-#define HEADERFILENAME_PRECOMPILED
+#ifndef SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED
+#define SRC_KERNEL_ROUTING_THREAD_H_PRECOMPILED
 
 // system headers which do seldom change
-
 
 #ifdef WX
 #include "wx/thread.h"
@@ -57,8 +56,85 @@ namespace mutabor {
 	typedef wxMutex       Mutex;
 	typedef wxMutexLocker ScopedLock;
 	typedef wxMutexError  ThreadResult;
-	#define MUTABOR_THREAD_OK wxMUTEX_NO_ERROR
+	typedef wxCondition   ThreadCondition;
+
+	template<bool dolock> 
+	class ScopedCondLock: public ScopedLock
+	{
+	public:
+		ScopedCondLock(Mutex & m):ScopedLock(m) {}
+		// nothing
+	};
+
+	template<> 
+	struct ScopedCondLock<false> {
+		ScopedCondLock(const Mutex) {}
+	};
+	
+	
+	template<class T> 
+	class safe_integer {
+	public:
+		typedef T datatype;
+		safe_integer(datatype d):data(d),mutex() {}
+		safe_integer(const safe_integer & o):mutex() {
+			ScopedLock l1(mutex), l2(o.mutex);
+			data = o.data;
+		}
+		safe_integer(safe_integer & o):mutex() {
+			ScopedLock l1(mutex), l2(o.mutex);
+			data = o.data;
+		}
+		safe_integer(volatile safe_integer & o):mutex() {
+			ScopedLock l1(mutex), l2(const_cast<safe_integer&>(o).mutex);
+			data = o.data;
+		}
+		safe_integer & operator = (const safe_integer & other) {
+			ScopedLock l1(mutex), l2(other.mutex);
+			data = other.data;
+			return *this;
+		}
+		safe_integer & operator |= (const safe_integer & other) {
+			ScopedLock l1(mutex), l2(other.mutex);
+			data |= other.data;
+			return *this;
+		}
+		safe_integer & operator &= (const safe_integer & other) {
+			ScopedLock l1(mutex), l2(other.mutex);
+			data &= other.data;
+			return *this;
+		}
+
+		safe_integer & operator = (const datatype & other) {
+			ScopedLock l1(mutex);
+			data = other;
+			return *this;
+		}
+		safe_integer & operator |= (const datatype & other) {
+			ScopedLock l1(mutex);
+			data |= other;
+			return *this;
+		}
+		safe_integer & operator &= (const datatype  & other) {
+			ScopedLock l1(mutex);
+			data &= other;
+			return *this;
+		}
+		operator datatype () { 
+			ScopedLock l1(mutex); 
+			return data; 
+		}
+		datatype get()  {
+			ScopedLock l1(mutex);
+			return data; 
+		}
+
+	protected:
+		volatile datatype data;
+		Mutex mutex;
+        };
 }
+#define MUTABOR_THREAD_OK wxMUTEX_NO_ERROR
 #endif
 
 
