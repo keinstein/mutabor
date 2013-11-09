@@ -5,13 +5,13 @@ LOGIC
         Key Q -> Quarter
         Key A -> Eighth
         Key S -> Sixteenth
-	Key F -> FourtyThree
+        Key F -> FourtyThree
     ]
 
     Historic Key H =
     [
-  	Key P -> Pythagorean
-"%"        Key M -> Mitteltoenig
+        Key P -> Pythagorean
+"%"     Key M -> Meantone
         Key S -> Silbermann
         Key W -> Werckmeister
         Key K -> Kirnberger3
@@ -22,17 +22,17 @@ LOGIC
     Tonnetz Key N = C_Major
     [
         SHIFTED nThird -> Transpo ( DISTANCE )
-   	SHIFTED nMajor -> Transpo ( DISTANCE )
+        SHIFTED nMajor -> Transpo ( DISTANCE )
         SHIFTED nMinor -> Transpo ( DISTANCE )
     ]
 
     OverTones Key O = OverTones [ ]
 
-    User Key U = Init
+    Individual Key I = Init
     [
     	Key U -> Up   ( DISTANCE )
-   	Key D -> Down ( DISTANCE )
-	SHIFTED aKey -> Empty
+        Key D -> Down ( DISTANCE )
+        SHIFTED aKey -> Empty
     ]
 
 INTERVAL
@@ -107,7 +107,7 @@ TONE
     mh   = me   + Fifth - 0.25 Synkomma
 
 TONESYSTEM
-    Mitteltoenig = 60 [ mc,mcis,md,mes,me,mf,mfis,mg,mgis,ma,mb,mh] Octave
+    Meantone = 60 [ mc,mcis,md,mes,me,mf,mfis,mg,mgis,ma,mb,mh] Octave
 
 
 " ==== Silbermann =================================================== "
