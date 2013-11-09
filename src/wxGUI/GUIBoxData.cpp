@@ -260,6 +260,30 @@ namespace mutaborGUI {
 	}
 
 
+	void BoxData::runtime_error(mutabor::error_type type, const char * message) {
+		wxString msg(message), head(mutabor::to_string(type));
+		msg = head + ": " + msg;
+#ifdef DEBUG
+		if (type == mutabor::internal_error) {
+			wxFAIL_MSG(msg);
+		}
+#endif
+		fprintf(stderr,"%s: %s\n",mutabor::to_string(type),message);
+#ifdef DEBUG
+		fprintf(stderr,"%s:%d:\nIn order to debug this message you should watch mutaborGUI::BoxData::runtime_error.\n",
+			__FILE__,
+			__LINE__);
+#endif
+
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, CM_PRINT_ERROR);
+		event.SetString(msg);
+		event.SetInt(type);
+		wxPostEvent(&wxGetApp(),event);
+	       
+	}
+
+	
+
 	MutBoxShape * GUIBoxFactory::DoCreateBoxShape(mutabor::Box & box,
 						      wxWindow * parent) const {
 		MutBoxShape * shape;	

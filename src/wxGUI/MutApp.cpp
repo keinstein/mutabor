@@ -919,6 +919,29 @@ namespace mutaborGUI {
 			break;
 		}
 	}
+	
+	/// Show an error message from somewhere in the program
+	void CmError(wxCommandEvent& event) {
+		mutabor::error_type type = (mutabor::error_type) event.GetInt();
+		int style;
+		switch (type) {
+		case mutabor::warning:
+		case mutabor::compiler_warning:
+		case mutabor::runtime_warning:
+			style = wxICON_WARNING;
+			break;
+		case mutabor::error:
+		case mutabor::internal_error:
+		case mutabor::compiler_error:
+		case mutabor::runtime_error:
+		default:
+			style = wxICON_ERROR;
+			break;
+		}
+		
+		wxMessageBox(event.GetString(),to_string(type),wxOK | style);
+	}
+
 
 	void MutApp::CmQuit (wxCommandEvent& event)
 	{

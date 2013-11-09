@@ -176,6 +176,10 @@ namespace mutaborGUI {
 		    \param commandId wxWidgets command id to open help window for. 
 		*/
 		void ShowHelp(int commandId);
+
+		/// Show an error message from somewhere in the program
+		void CmError(wxCommandEvent& event);
+
 		/// Exit the program
 		void CmQuit (wxCommandEvent& event);
 #ifdef DEBUG
