@@ -103,7 +103,8 @@ enum argument_typ {
 	mutabor_argument_integer, 
 	mutabor_argument_parameter,
 	mutabor_argument_distance,
-	mutabor_argument_anchor
+	mutabor_argument_anchor,
+	mutabor_argument_invalid
 };
 
 struct argument
@@ -263,25 +264,35 @@ struct umstimmung
 {
 	const char *name;
 	struct parameter_list * parameter_liste;
+	struct argument_list * argument_liste;
 	enum umstimmung_typ umstimmung_typ;
 
 	union
 	{
+#if 0
 		struct {
 			struct argument argument;
 		} umstimmung_taste_abs;
+#endif
+
 
 		struct {
+#if 0
 			struct argument argument;
+#endif
 			char rechenzeichen;
 		} umstimmung_taste_rel;
 
+#if 0
 		struct {
 			struct argument argument;
 		} umstimmung_breite_abs;
+#endif
 
 		struct {
+#if 0
 			struct argument argument;
+#endif
 			char rechenzeichen;
 		} umstimmung_breite_rel;
 
@@ -302,7 +313,9 @@ struct umstimmung
 		} umstimmung_umstimmungsbund;
 
 		struct {
+#if 0
 			struct argument argument;
+#endif
 			struct case_liste * umstimmungs_case_liste;
 		} umstimmung_umstimmungs_case;
 

@@ -48,6 +48,7 @@
 
 #ifndef MU32_BOX_H_PRECOMPILED
 #define MU32_BOX_H_PRECOMPILED
+#include <malloc.h>
 
 #ifdef __cplusplus
 namespace mutabor {

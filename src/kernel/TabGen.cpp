@@ -212,6 +212,8 @@ static inline void reduce_argument(mutabor_box_type * box,
 	list->data[index].constant = 
 	    reference->data[list->data[index].index].constant;
 	break;
+    case mutabor_argument_invalid:
+	    /* invalid arguments will be initialized with 1 */
     case mutabor_argument_distance:
     case mutabor_argument_anchor:
 	/* distance and anchor cannot be reduced
@@ -240,14 +242,18 @@ generate_argument_list (mutabor_box_type * box,
 	help->size = 0;
 	for (argument_list * i = element;
 	     i != NULL; i = i->next) help->size++;
-	help->data = (union interpreter_argument *)
-	    xcalloc(box,
-		    help->size,
-		    sizeof(union interpreter_argument));
 
-	help->types = (enum argument_typ *) xcalloc(box,
-						    help->size,
-						    sizeof(enum argument_typ));
+	if (box -> file -> parameter_count < help->size) 
+		box->file->parameter_count = help->size;
+
+	help->data = (union interpreter_argument *)
+		xcalloc(box,
+			help->size,
+			sizeof(union interpreter_argument));
+	help->types = (enum argument_typ *) 
+		xcalloc(box,
+			help->size,
+			sizeof(enum argument_typ));
 
 	int j = 0;
 	for (struct argument_list * i = element;
@@ -273,13 +279,63 @@ generate_argument_list (mutabor_box_type * box,
 					      element->argument.argument_type,
 					      _T(__FILE__), 
 					      __LINE__ );
-		
+			help->types[j] = mutabor_argument_invalid;
+			
 			break;
 		}
 	}
 
 	return help;
 }
+
+static inline void resolve_parameters(mutabor_box_type * box,
+				      struct interpreter_argument_list * target,
+				      struct interpreter_argument_list * reference)
+{
+	if (target == NULL) return;
+	
+	for (size_t i = 0; i < target->size; i++) {
+		switch (target->types[i]) {
+		case mutabor_argument_integer:
+		case mutabor_argument_distance:
+		case mutabor_argument_anchor:
+		case mutabor_argument_invalid:
+			break;
+
+		case mutabor_argument_parameter: {
+			size_t j = target->data[i].index;
+			if (!reference || j > reference->size) {
+				mutabor_error_message(box,
+						      internal_error,
+						      _("Argument number %d has nonexistent index %d at \n%s:%d."),
+						      i, j,
+						      _T(__FILE__), 
+						      __LINE__ );
+				target->types[i] = mutabor_argument_invalid;
+				break;
+			} 
+			/* the parameter referenced here, was an artificial parameter, 
+			   that can be safely replaced by the real one */
+			target->data[i]  = reference->data[j];
+			target->types[i] = reference->types[j];
+			break;
+		}
+			
+		default:
+			mutabor_error_message(box,
+					      internal_error,
+					      _("Unknown argument type %d detected at \n%s:%d."),
+					      target->types[i],
+					      _T(__FILE__), 
+					      __LINE__ );
+			target->types[i] = mutabor_argument_invalid;
+			
+			break;
+		}
+		
+	}
+}
+
 
 #if 0 /* should be not necessary */
 static int * get_wert_of_argument (mutabor_box_type * box,
@@ -415,6 +471,8 @@ static struct do_aktion * expandiere_tonsystem (mutabor_box_type * box,
 	help = (do_aktion*) xmalloc (box, sizeof (struct do_aktion));
 	help -> name = the_tonsystem -> name;
 	help -> aufruf_typ = aufruf_tonsystem;
+	help -> arguments = NULL;
+	help -> secondary_arguments = NULL;
 
 	help_tonsystem = (TSYS*) xmalloc (box, sizeof (tone_system));
 	help_tonsystem -> anker = the_tonsystem -> taste;
@@ -464,6 +522,9 @@ static struct do_aktion * expandiere_logik (mutabor_box_type * box,
 	help -> name = the_logik -> name;
 	help -> aufruf_typ = aufruf_logik;
 	help -> calling.logic = the_logik;
+	help -> arguments = NULL;
+	help -> secondary_arguments = NULL;
+	
 
 	if (the_logik -> einstimmungs_name &&
 	    the_logik -> einstimmung == NULL )
@@ -525,23 +586,23 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 						struct interpreter_argument_list * current_parameters)
 {
 
-	struct do_aktion * help_1, * help_2, ** help_3;
+	struct do_aktion * current, * next, ** help;
 	TRACE;
 
 	if (the_liste == NULL) return NULL;
 	
 	switch (the_liste -> aktions_typ) {
 	case aktion_aufruf:
-		help_1 = expandiere_name (box,
+		current = expandiere_name (box,
 					  the_liste -> u.aktion_aufruf.name,
 		                          the_liste -> u.aktion_aufruf.argument_liste,
 		                          current_parameters);
 		break;
 	case aktion_midi_out:
-		help_1 = expandiere_midi (box, the_liste -> u.aktion_midi_out.midi_code);
+		current = expandiere_midi (box, the_liste -> u.aktion_midi_out.midi_code);
 		break;
 	case aktion_harmony_analysis:
-		help_1 = expand_harmony_analysis(box);
+		current = expand_harmony_analysis(box);
 	default:
 		mutabor_error_message(box,
 				      internal_error,
@@ -550,14 +611,13 @@ static struct do_aktion * expand_aktions_liste (mutabor_box_type * box,
 				      __FILE__, __LINE__);
 	}
 
-	help_2 = expand_aktions_liste (box, the_liste -> next, current_parameters);
+	next = expand_aktions_liste (box, the_liste -> next, current_parameters);
 
-	for (help_3 = & help_1; * help_3; help_3 = & (*help_3)->next)
-		;
+	for (help = & current; * help; help = & (*help)->next)	;
 
-	* help_3 = help_2;
+	* help = next;
 
-	return help_1;
+	return current;
 
 }
 
@@ -620,6 +680,10 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 	help -> calling.retuning = the_umstimmung;
 	help -> name = the_umstimmung -> name;
 	help -> arguments = aktuelle_parameter;
+	help -> secondary_arguments = generate_argument_list (box, 
+							      the_umstimmung->argument_liste, 
+							      aktuelle_parameter);
+	resolve_parameters(box,help->secondary_arguments, help->arguments);
 	help -> next = NULL;
 
 	switch (the_umstimmung -> umstimmung_typ)
@@ -833,6 +897,8 @@ static struct do_aktion * expandiere_midi (mutabor_box_type * box, struct midili
 	help -> name = _("MIDI out");
 	help -> aufruf_typ = aufruf_midi_out;
 	help -> u.aufruf_midi_out.out_liste = liste;
+	help -> arguments = NULL;
+	help -> secondary_arguments = NULL;
 	help -> next = NULL;
 
 	return help;
@@ -847,6 +913,8 @@ static struct do_aktion * expand_harmony_analysis(mutabor_box_type * box)
 	help = (do_aktion*) xmalloc (box, sizeof (struct do_aktion));
 	help -> name = _("harmony analysis");
 	help -> aufruf_typ = aufruf_harmony_analysis;
+	help -> arguments = NULL;
+	help -> secondary_arguments = NULL;
 	help -> next = NULL;
 
 	return help;

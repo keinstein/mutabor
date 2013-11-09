@@ -200,7 +200,8 @@ struct do_aktion
 
 	const char * name;
 	enum aufruf_typ aufruf_typ;
-        struct interpreter_argument_list * arguments;
+        struct interpreter_argument_list * arguments, /**< normal argument list */
+		*secondary_arguments;            /**< arguments of the retuning */
 
         union {
 	    struct logik * logic;

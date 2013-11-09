@@ -275,7 +275,7 @@ get_new_name_in_parameterlist (mutabor_box_type * box, const char * name)
 }
 
 void enumerate_parameters (mutabor_box_type * box, struct parameter_list * parameters) {
-    size_t i = interpreter_parameter_first_parameter;
+    size_t i = 0;
     while (parameters != NULL) {
 	parameters -> index = i++;
 	parameters = parameters -> next;
@@ -749,8 +749,10 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 				case umstimmung_taste_abs :
 					printf ("        umstimmung_taste_abs : ");
 
+#if 0
 					drucke_argument (
 							 & lauf -> u.umstimmung_taste_abs.argument);
+#endif
 
 					printf ("\n");
 
@@ -758,10 +760,10 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 				case umstimmung_taste_rel :
 					printf ("        umstimmung_taste_rel : ");
-
+#if 0
 					drucke_argument (
 							 & lauf -> u.umstimmung_taste_rel.argument);
-
+#endif
 					printf (" Rechenzeichen: \"%c\"\n",
 						lauf -> u.umstimmung_taste_rel.rechenzeichen);
 
@@ -769,20 +771,20 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 				case umstimmung_breite_abs :
 					printf ("        umstimmung_breite_abs : ");
-
+#if 0
 					drucke_argument (
 							 & lauf -> u.umstimmung_breite_abs.argument);
-
+#endif
 					printf ("\n");
 
 					break;
 
 				case umstimmung_breite_rel :
 					printf ("        umstimmung_breite_rel : ");
-
+#if 0
 					drucke_argument (
 							 & lauf -> u.umstimmung_breite_rel.argument);
-
+#endif
 					printf (" Rechenzeichen: \"%c\"\n",
 						lauf -> u.umstimmung_breite_rel.rechenzeichen);
 
@@ -848,8 +850,10 @@ bool mutabor_programm_einlesen (mutabor_box_type * box, const char * logic )
 
 					struct case_liste * help_case;
 					printf ("        umstimmung_umstimmungs_case : \n");
+#if 0
 					drucke_argument (
 							 & lauf -> u.umstimmung_umstimmungs_case.argument);
+#endif
 
 					for (help_case = lauf -> u.umstimmung_umstimmungs_case.umstimmungs_case_liste;
 					     help_case;
@@ -1348,69 +1352,70 @@ void init_umstimmung (mutabor_box_type * box, const char * name)
 	box->file->tmp_umstimmung -> next            = NULL;
 }
 
+inline static void link_arguments_to_parameters(mutabor_box_type * box,
+						struct argument_list * arguments,
+						struct parameter_list * parameters,
+						struct umstimmung * retuning)
+{
+	for (argument_list * entry = arguments;
+	     entry; entry = entry -> next) {
+		switch (entry->argument.argument_type) {
+		case mutabor_argument_parameter: {
+			entry->argument.u.parameter.parameter
+				= get_parameter_by_name(box, 
+							entry->argument.u.parameter.name,
+							parameters);
+
+			if (entry->argument.u.parameter.parameter == NULL) {
+				mutabor_error_message(box,
+						      compiler_error,
+						      _("Undefined parameter name “%s” in “%s”."),
+						      entry->argument.u.parameter.name,
+						      retuning->name); /* Parameter n.dekl. */
+			}
+			break;
+		}
+		case mutabor_argument_integer:
+		case mutabor_argument_distance:
+		case mutabor_argument_anchor:
+			break;
+		default:
+			mutabor_error_message(box,
+					      internal_error,
+					      _("Invalid parameter argument type %d in retuning “%s” while calling %s. Please, report the error to the MUTABOR team."),
+					      entry->argument.argument_type,
+					      retuning->name,
+					      __FUNCTION__);
+		}
+	}
+}
+
 void get_new_umstimmung (mutabor_box_type * box)
 
 {
 
 	struct umstimmung * * lauf;
 	TRACE;
+	link_arguments_to_parameters(box, 
+				     box->file->tmp_umstimmung -> argument_liste, 
+				     box->file->tmp_umstimmung -> parameter_liste, 
+				     box->file->tmp_umstimmung);
 	for (lauf= & box->file->list_of_umstimmungen; * lauf; lauf= & (*lauf)->next) {}
 	(* lauf) = box->file->tmp_umstimmung;
 	
 }
 
+
+
+
+
 void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
+					    struct umstimmung * ret,
 					    parameter_list * list)
 {
 	TRACE;
-	box->file->tmp_umstimmung -> parameter_liste = list;
+	ret -> parameter_liste = list;
 }
-
-inline static void initialize_argument(mutabor_box_type * box,
-				       struct argument * argument,
-				       enum argument_typ type,
-				       double zahl_wert, 
-				       const char * parameter_name)
-{
-	argument->argument_type = type;
-
-	switch (type) {
-	case mutabor_argument_integer:
-		argument->u.integer.number = (int) zahl_wert;
-		break;
-	case mutabor_argument_parameter: {
-  	        argument->u.parameter.name = parameter_name;
-		argument->u.parameter.parameter = get_parameter_by_name(box, 
-									parameter_name,
-									box->file->tmp_umstimmung->parameter_liste);
-
-		if (argument->u.parameter.parameter == NULL) {
-			mutabor_error_message(box,
-					      compiler_error,
-					      _("Undefined parameter name “%s” in “%s”."),
-					      (parameter_name),
-					      (box->file->tmp_umstimmung->name)); /* Parameter n.dekl. */
-		}
-		break;
-	}
-	case mutabor_argument_distance: {
-	    argument->u.parameter.parameter = NULL;
-	    argument->u.parameter.name = _("DISTANCE");
-	}
-	case mutabor_argument_anchor: {
-		argument->u.parameter.parameter = NULL;
-		argument->u.parameter.name = _("CENTER");
-	}
-	default:
-		mutabor_error_message(box,
-				      internal_error,
-				      _("Invalid parameter argument type %d for argument %s while calling %s. Please, report the error to the MUTABOR team."),
-				      argument->argument_type,
-				      parameter_name,
-				      __FUNCTION__);
-	}
-}
-
 
 /************ Die folgenden Funktionen tragen je eine         */
 /*            Version von Umstimmung ein.                     */
@@ -1420,68 +1425,45 @@ inline static void initialize_argument(mutabor_box_type * box,
 /*            get_new_umstimmung (name)                       */
 /*            aufgerufen.                                     */
 
-void get_umstimmung_taste_abs (mutabor_box_type * box, 
-			       enum argument_typ argument,
-			       double zahl_wert, 
-			       const char * parameter_name)
+void get_umstimmung_taste_abs (mutabor_box_type * box,
+			       argument_list *  argument)
 {
 	TRACE;
-	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_taste_abs;
-	initialize_argument(box,
-			    &(box->file->tmp_umstimmung -> u.umstimmung_taste_abs.
-			      argument),
-			    argument,
-			    zahl_wert,
-			    parameter_name);
+	box->file->tmp_umstimmung -> umstimmung_typ  = umstimmung_taste_abs;
+	box->file->tmp_umstimmung -> argument_liste = argument;
+	//	box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("key"));
 }
 
 void get_umstimmung_taste_rel (mutabor_box_type * box, 
-			       enum argument_typ argument,
-			       double zahl_wert, 
-			       const char * parameter_name, 
+			       argument_list * argument,
 			       char vorzeichen)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_taste_rel;
-	initialize_argument(box,
-			    &(box->file->tmp_umstimmung -> u.umstimmung_taste_rel.
-			      argument),
-			    argument,
-			    zahl_wert,
-			    parameter_name);
+	box->file->tmp_umstimmung -> u.umstimmung_taste_rel.rechenzeichen = vorzeichen;
+	box->file->tmp_umstimmung -> argument_liste = argument;
+	//	box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("key difference"));
 }
 
 void get_umstimmung_breite_abs (mutabor_box_type * box, 
-				enum argument_typ argument,
-				double zahl_wert,
-				const char * parameter_name)
+				argument_list * argument)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_breite_abs;
-	initialize_argument(box,
-			    &(box->file->tmp_umstimmung -> u.umstimmung_breite_abs.
-			      argument),
-			    argument,
-			    zahl_wert,
-			    parameter_name);
+	box->file->tmp_umstimmung -> argument_liste = argument;
+	// box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("width"));
 }
 
 void get_umstimmung_breite_rel (mutabor_box_type * box, 
-				enum argument_typ argument,
-				double zahl_wert,
-				const char * parameter_name,
+				argument_list * argument,
 				char vorzeichen)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_breite_rel;
-	initialize_argument(box,
-			    &(box->file->tmp_umstimmung -> u.umstimmung_breite_rel.
-			      argument),
-			    argument,
-			    zahl_wert,
-			    parameter_name);
+	box->file->tmp_umstimmung -> argument_liste = argument;
 	box->file->tmp_umstimmung -> u.umstimmung_breite_rel.rechenzeichen
 		= vorzeichen;
+	// box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("width difference"));
 }
 
 /*********** Bei "tonhîhe verÑndert" muû wieder die gesamte
@@ -1707,6 +1689,13 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box)
 
 			if (aktions_lauf -> aktions_typ == aktion_aufruf) {
 
+
+				link_arguments_to_parameters(box,
+							    aktions_lauf -> u.aktion_aufruf.argument_liste,
+							    box->file->tmp_umstimmung -> parameter_liste,
+							    box->file->tmp_umstimmung);
+
+#if 0							    
 				struct argument_list * argument_lauf;
 
 				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
@@ -1730,6 +1719,7 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box)
 						} /* if */
 					} /* if */
 				}  /* for argument_lauf */
+#endif
 			}  /* if (aktions_lauf... */
 		}  /* for aktions_lauf */
 	}
@@ -1773,11 +1763,8 @@ void get_umstimmungs_case_aufrufs_element (const char * aktion)
 		/* Nur Ende der Liste finden */ ;
 
 	(* lauf) = xmalloc (sizeof (struct aufruf_liste));
-
 	(* lauf) -> name                = aktion;
-
 	(* lauf) -> argument_liste      = get_last_argument_liste ();
-
 	(* lauf) -> next                = NULL;
 
 	/* check, ob die Parameter zulÑssig sind */
@@ -1794,7 +1781,7 @@ void get_umstimmungs_case_aufrufs_element (const char * aktion)
 						      params->argument.u.parameter.parameter_name,
 				                      box->file->tmp_umstimmung -> parameter_liste)  == EOF ) {
 					mutabor_error_message(box,
-							      _T("Error 31"),
+							      _T("Parameter “%s” could not been found in call to '%s'."),
 					            (params->argument.u.parameter.parameter_name),
 					            ((*lauf)->name)); /* Parameter n.dekl. */
 				}
@@ -1818,13 +1805,9 @@ void get_umstimmungs_case_aufrufs_element (const char * aktion)
 		/* Nur Ende der Liste finden */ ;
 
 	(* lauf) = (case_liste*) xmalloc (box, sizeof (struct case_liste));
-
 	(* lauf) -> case_label          = konstante;
-
 	(* lauf) -> is_default          = 0;
-
 	(* lauf) -> case_aktion         = get_last_aktions_liste (box);
-
 	(* lauf) -> next                = NULL;
 }
 
@@ -1841,13 +1824,9 @@ void get_umstimmungs_case_default_element (mutabor_box_type * box)
 		/* Nur Ende der Liste finden */ ;
 
 	(* lauf) = (case_liste*) xmalloc (box, sizeof (struct case_liste));
-
-	(* lauf) -> case_label          = -1000000; /* als dummy-wert */
-
+	(* lauf) -> case_label          = MUTABOR_NO_CASE_LABEL; /* als dummy-xwert */
 	(* lauf) -> is_default          = 1;
-
 	(* lauf) -> case_aktion         = get_last_aktions_liste (box);
-
 	(* lauf) -> next                = NULL;
 }
 
@@ -1859,24 +1838,20 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 	box->file->tmp_umstimmungs_case_liste = NULL;
 }
 
- void get_umstimmung_umstimm_case_zahl (mutabor_box_type * box, int selector)
+void get_umstimmung_umstimm_case (mutabor_box_type * box,
+				  argument_list *  argument)
 {
 	TRACE;
 	box->file->tmp_umstimmung -> umstimmung_typ = umstimmung_umstimmungs_case;
-	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-		.argument
-		.argument_type = mutabor_argument_integer;
-	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
-		.argument
-		.u.integer.number = selector;
+	box->file->tmp_umstimmung -> argument_liste = argument;
 	box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
 		.umstimmungs_case_liste = box->file->tmp_umstimmungs_case_liste;
-
+	// box->file->tmp_umstimmung -> parameter_liste = get_new_name_in_parameterlist (box, _("choice"));
 
 	/* check, ob die Parameter zulÑssig sind */
 
 	{
-
+			
 		struct case_liste * case_lauf;
 
 		for (case_lauf = box->file->tmp_umstimmung -> u.umstimmung_umstimmungs_case
@@ -1893,6 +1868,11 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 				if (aktions_lauf -> aktions_typ != aktion_aufruf) 
 					continue;
 
+				link_arguments_to_parameters(box,
+							     aktions_lauf -> u.aktion_aufruf.argument_liste,
+							     box->file->tmp_umstimmung -> parameter_liste,
+							     box->file->tmp_umstimmung);
+#if 0
 				struct argument_list * argument_lauf;
 
 				for (argument_lauf = aktions_lauf -> u.aktion_aufruf.argument_liste;
@@ -1916,6 +1896,7 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 						argument_lauf->argument.u.parameter.parameter = param;
 					} /* if */
 				}  /* for argument_lauf */
+#endif
 			}  /* for aktions_lauf */
 		}  /* for case_lauf */
 	}
@@ -1923,7 +1904,7 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 
 }
 
-
+#if 0
  void get_umstimmung_umstimm_case_parameter (mutabor_box_type * box, const char * selector)
 {
 	TRACE;
@@ -1987,6 +1968,7 @@ void init_umstimmungs_case_liste (mutabor_box_type * box)
 	}
 #endif
 }
+#endif
 
 
 void get_umstimmung_midi_out (mutabor_box_type * box)

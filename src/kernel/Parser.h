@@ -47,7 +47,8 @@
 #ifndef SRC_KERNEL_PARSER_H_PRECOMPILED
 #define SRC_KERNEL_PARSER_H_PRECOMPILED
 
-
+#include <limits.h>
+#define MUTABOR_NO_CASE_LABEL INT_MIN
 #ifdef __cplusplus
 namespace mutabor {
 	namespace hidden {
@@ -234,26 +235,19 @@ void get_new_tonsystem_negative (mutabor_box_type * box, const char *name, int t
 void init_umstimmung (mutabor_box_type * box, const char * name);
 void get_new_umstimmung (mutabor_box_type * box);
 void eintrage_parameterliste_in_umstimmung (mutabor_box_type * box,
+					    struct umstimmung * ret,
 					    parameter_list * list);
 
 
 void get_umstimmung_taste_abs (mutabor_box_type * box,
-			       enum argument_typ argument, //zahl_oder_parameter_typ zahl_oder_parameter,
-			       double zahl_wert,
-			       const char * parameter);
+			       argument_list * argument);
 void get_umstimmung_taste_rel (mutabor_box_type * box,
-			       enum argument_typ argument,
-			       double zahl_wert,
-			       const char * parameter,
+			       argument_list * argument,
 			       char vorzeichen);
 void get_umstimmung_breite_abs (mutabor_box_type * box,
-				enum argument_typ argument,
-				double zahl_wert,
-				const char * parameter);
+				argument_list * argument);
 void get_umstimmung_breite_rel (mutabor_box_type * box,
-				enum argument_typ argument,
-				double zahl_wert,
-				const char * parameter,
+				argument_list * argument,
 				char vorzeichen);
 void init_umstimm_expression_list (mutabor_box_type * box);
 void get_new_umstimm_expression (mutabor_box_type * box,
@@ -271,8 +265,7 @@ void get_umstimmung_umstimmungs_bund (mutabor_box_type * box);
 void get_umstimmungs_case_zahl_element (mutabor_box_type * box, int konstante);
 void get_umstimmungs_case_default_element (mutabor_box_type * box);
 void init_umstimmungs_case_liste (mutabor_box_type * box);
-void get_umstimmung_umstimm_case_zahl (mutabor_box_type * box, int selector);
-void get_umstimmung_umstimm_case_parameter (mutabor_box_type * box, const char * selector);
+void get_umstimmung_umstimm_case (mutabor_box_type * box, argument_list * argument);
 void get_umstimmung_midi_out (mutabor_box_type * box);
 void init_tastenliste (mutabor_box_type * box);
 void get_new_taste (mutabor_box_type * box, int taste, char stern);
