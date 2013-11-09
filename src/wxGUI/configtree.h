@@ -147,14 +147,12 @@ public:
 inline void LoadRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
-	mutabor::BoxFactory::LoadBoxes(conf);
 	mutabor::RouteFactory::LoadRoutes(conf);
 }
 
 inline void SaveRoutes(wxConfigBase * config)
 {
 	configtree conf(config);
-	mutabor::BoxFactory::SaveBoxes(conf);
 	mutabor::RouteFactory::SaveRoutes(conf);
 }
 

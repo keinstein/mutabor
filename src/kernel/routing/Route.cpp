@@ -81,7 +81,7 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		SetBox(BoxClass::GetOrCreateBox(config.Read(_T("Box"),NoBox)));
+		connect(this,BoxClass::GetOrCreateBox(config.Read(_T("Box"),NoBox)));
 		Active = config.Read(_T("Active"),true);
 		if (In)
 			In->Load(config,this);
@@ -555,6 +555,7 @@ TRouteClass<I,O,B>:\n\
 #endif
 		config.toLeaf(_T("Routing"));
 	
+		BoxFactory::LoadBoxes(config);
 		DeviceFactory::LoadInputDevices(config);
 		DeviceFactory::LoadOutputDevices(config);
 		RouteClass::LoadRoutes(config);
@@ -579,6 +580,7 @@ TRouteClass<I,O,B>:\n\
 		mutaborGUI::DebugCheckRoutes();
 #endif
 	
+		BoxFactory::SaveBoxes(config);
 		DeviceFactory::SaveInputDevices(config);
 		DeviceFactory::SaveOutputDevices(config);
 		RouteClass::SaveRoutes(config);
