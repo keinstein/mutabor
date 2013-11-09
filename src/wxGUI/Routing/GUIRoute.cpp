@@ -516,14 +516,17 @@ namespace mutaborGUI {
 			 (void*)this, 
 			 (int)intrusive_ptr_get_refcount(this));
 		Route self(this); // prevent us from beeing deleted
+		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
+			 (void*) this, 
+			 (int)intrusive_ptr_get_refcount(this));
+		// Disconnecting the Route before destroying the GUI
+		// part is slow, but safe as this path must work
+		// anyway.
+		T::Destroy();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), destroying GUI"),
 			 (void*)this, 
 			 (int)intrusive_ptr_get_refcount(this));
 		GUIRouteBase::Destroy();    //
-		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
-			 (void*) this, 
-			 (int)intrusive_ptr_get_refcount(this));
-		T::Destroy();
 		mutASSERT(intrusive_ptr_get_refcount(this) <= 2);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
 			 (void*)this, 
