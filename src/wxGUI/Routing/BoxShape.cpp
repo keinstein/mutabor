@@ -69,6 +69,27 @@ namespace mutaborGUI {
 	wxSizerFlags MutBoxShape::sizerFlags;
 
 	MutBoxShape::~MutBoxShape() {
+#if 0
+		if (channels) {
+			wxSizerItemList list = channels->GetChildren();
+			Route r;
+
+		
+			for (wxSizerItemList::iterator i = list.begin(); 
+			     i != (list.end()); i++)
+				{
+      
+					MutBoxChannelShape * channel = 
+						static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+					mutASSERT(dynamic_cast<MutBoxChannelShape *>(channel));
+					mutASSERT(dynamic_cast<
+						  MutBoxChannelShape *
+						  >((*i)->GetWindow()));
+					r = channel->GetRoute();
+					disconnect(r,channel);
+				}
+		}
+#endif
 		if (box)
 			disconnect(box,this);
 	}
@@ -338,8 +359,9 @@ namespace mutaborGUI {
 
 	void MutBoxShape::DoLeftDblClick() {
 		BoxDlg * dlg = ShowBoxDialog();
-		wxWindow * parent = m_parent; // we may lose the object
 		mutASSERT(dlg);
+		bool destroySelf = false;
+		wxWindow * parent = m_parent; // we may lose the object
 		if (!dlg) return;
 	
 		int Res, type, boxid;
@@ -364,23 +386,28 @@ namespace mutaborGUI {
 				     _("Error"), wxOK | wxICON_ERROR);
 		} while  (true);
 
-		bool destroySelf = false;
-		GetParent() -> Freeze();
-
 		if (Res == wxID_OK) {
 
 			if (CanHandleType (type)) {
 				newbox = this;
 				readDialog (dlg);
 			} else {
-				mutabor::Box box2 = BoxFactory::Create(boxid);
-				newbox = GUIBoxFactory::CreateBoxShape(box2, GetParent());
+				mutabor::Box box2 = BoxFactory::Create(type, boxid);
+				if (box2) {
+					newbox = GUIBoxFactory::CreateBoxShape(box2, GetParent());
 
-				if (newbox) {
+					if (!newbox) {
+						UNREACHABLEC;
+						return;
+					}
+					mutASSERT(newbox->box);
+
 					newbox->readDialog(dlg);
+					if (LogicOn && !(newbox->box->IsOpen()))
+						newbox->box->Open();
+					
 					destroySelf = replaceSelfBy(newbox);
 				}
-				GetParent()->GetSizer()->SetItemMinSize(newbox,-1,-1);
 			}
 		} else if (Res == wxID_REMOVE) {
 			destroySelf = DeleteBox();
@@ -391,23 +418,28 @@ namespace mutaborGUI {
 	
 		DebugCheckRoutes();
 
-		parent->Thaw();
-		if (newbox) {
+		if (Res != ::wxID_REMOVE && !destroySelf) {
+			Layout();
+			InvalidateBestSize();
+			Fit();
+			Refresh();
+		} else if (newbox) {
+			newbox->Layout();
 			newbox->InvalidateBestSize();
 			newbox->Fit();
 		}
+
 		if (parent) {
-			parent->GetSizer()->FitInside(m_parent); // this calles layout
+			parent->InvalidateBestSize();
+			parent->Layout();
+			parent->FitInside();
 			parent->Refresh();
-			
-		} else {
-//			Refresh(true);
-//			Update();
-		}
-	
-		// Signalise to delete this control
-		if (destroySelf) Destroy();
-	
+			parent->Update();
+		} else if (Res != ::wxID_REMOVE && !destroySelf) Update();
+		/* we don't need to destroy this control. 
+		   This should have been done during device destruction 
+		*/
+		TRACE;
 	}
 
 
@@ -431,33 +463,39 @@ namespace mutaborGUI {
 		mutASSERT(dlg);
 		if (!dlg) return NULL;
 
+		/* get the route area in the dialog */
 		wxWindow * routeWindow = dlg->GetRouteWindow();
 		mutASSERT(routeWindow);
 		if (!routeWindow) {
 			dlg->Destroy();
 			return NULL;
 		}
-		wxGridSizer * routeSizer = dynamic_cast<wxGridSizer *> (routeWindow->GetSizer());
+
+		/* this is the wrong place to manipulate a window */
+		wxSizer * routeSizer = routeWindow->GetSizer();
+		mutASSERT(routeSizer);
+		mutASSERT(!routeSizer || dynamic_cast<wxGridSizer *>(routeSizer));
 	
 		if (!routeSizer) {
-			if (routeWindow->GetSizer()) UNREACHABLEC;
-		
 			routeSizer = new wxGridSizer(4);
 			if (!routeSizer) {
 				dlg->Destroy(); 
 				return NULL;
 			}
-			routeWindow->SetSizer(routeSizer);		
+			routeWindow->SetSizer(routeSizer);
 		}
 	
-		wxSizerItemList list = channels->GetChildren();
-		for (wxSizerItemList::iterator i = list.begin(); 
-		     i != (list.end()); i++) {
-			mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
-			MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
-							     parentwin, 
-							     routeWindow, 
-							     box);
+		// channels may be NULL e.g. for NewBoxShape
+		if (channels) {
+			wxSizerItemList list = channels->GetChildren();
+			for (wxSizerItemList::iterator i = list.begin(); 
+			     i != (list.end()); i++) {
+				mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
+				MutBoxChannelShape::CreateRoutePanel(static_cast<MutBoxChannelShape *> ((*i)->GetWindow()),
+								     parentwin, 
+								     routeWindow, 
+								     box);
+			}
 		}
 	 
 		InitializeDialog(dlg);
@@ -589,8 +627,23 @@ namespace mutaborGUI {
 	}
 
 	bool MutBoxShape::DeleteBox() {
+		// We delete the channels as the GUI access to routes
+		// depends on the corresponding BoxShape.
+		// Without it is not acessible anymore.
+
+		// channels may be NULL e.g. for NewBoxShape
+		if (channels) {
+			wxSizerItemList list = channels->GetChildren();
+			for (wxSizerItemList::iterator i = list.begin(); 
+			     i != (list.end()); i++) {
+				mutASSERT(dynamic_cast<MutBoxChannelShape *> ((*i) -> GetWindow()));
+				MutBoxChannelShape * shape = static_cast<MutBoxChannelShape *> ((*i)->GetWindow());
+				Route r = shape->GetRoute();
+				r->Destroy();
+			}
+		}
 		box->Destroy();
-		return false;
+		return true;
 	}
 
 

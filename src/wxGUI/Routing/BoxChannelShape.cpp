@@ -487,17 +487,16 @@ namespace mutaborGUI {
 #endif
 
 		Box oldbox = route -> GetBox();
-		Box newbox = panel->GetBox();
+		Box newbox = panel -> GetBox();
 		if (oldbox != newbox) {
-			if (oldbox) {
-				if (newbox)
+			if (newbox) {
+				if (oldbox) {
 					reconnect(route,oldbox,newbox);
-				else 
-					disconnect(route,oldbox);
-			} else {
-				if (newbox) 
+				} else {
 					connect(route,newbox);
+				}
 			}
+			/* else we must use the newly created box which is already connected to the route */
 		}
 	
 		OutputFilterPanel * outputPanel = panel->GetOutput();
