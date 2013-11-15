@@ -331,19 +331,6 @@ struct harmonie_ereignis
 };
 
 
-struct any_trigger {
-	enum {
-		key,
-		harmony,
-		midi 
-	} type;
-	union {
-		keyboard_ereignis * key_trigger;
-		harmonie_ereignis * harmony_trigger;
-		midi_ereignis     * midi_trigger;
-	};
-};
-
 
 extern int laufzeit_meldungen_erlaubt; /* Hier gibt es 2 Level:
 

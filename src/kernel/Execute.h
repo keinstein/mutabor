@@ -60,6 +60,10 @@ namespace mutabor {
 			struct mutabor_box_type;
 			typedef struct mutabor_box_type mutabor_box_type;
 			struct mutabor_logic_parsed;
+			
+			struct keyboard_ereignis;
+			struct harmonie_ereignis;
+			struct midi_ereignis;
 
 			enum mutabor_changed_flags {
 				mutabor_box_changed = 0x01,
@@ -77,6 +81,20 @@ namespace mutabor {
 			    compiler_error,
 			    runtime_error
 			};
+			struct any_trigger {
+				enum {
+					key,
+					harmony,
+					midi 
+				} type;
+				union {
+					keyboard_ereignis * key_trigger;
+					harmonie_ereignis * harmony_trigger;
+					midi_ereignis     * midi_trigger;
+				};
+			};
+
+
 
 		    const char * mutabor_error_type_to_string(mutabor_error_type type);
 

@@ -45,6 +45,7 @@
 #include "Defs.h"
 #include "Global.h"
 #include "Interpre.h"
+#include "Execute.h"
 
 #ifndef MU32_BOX_H_PRECOMPILED
 #define MU32_BOX_H_PRECOMPILED
