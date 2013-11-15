@@ -987,6 +987,8 @@ namespace mutaborGUI {
 	wxIdleEvent::SetMode(wxIDLE_PROCESS_ALL);
 */
 
+		Yield();
+
 		/* make a copy of the top level window list as the 
 		   list may change or not, this depends on actions, we
 		   don't have control over */ 
@@ -1003,7 +1005,7 @@ namespace mutaborGUI {
 				quitting = false;
 				return;
 			}
-                
+			Yield();
 		}
 
 		DEBUGLOG (other, _T("finished loop"));
