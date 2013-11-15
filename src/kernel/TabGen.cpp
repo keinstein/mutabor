@@ -1,6 +1,6 @@
 /** \file 
  ********************************************************************
- * Table genarator
+ * Table generator
  *
  * Copyright:   (c) 1997-2011 TU Dresden
  *               Changes after 2011-11 (c) by the authors
@@ -32,6 +32,7 @@
 #include "box.h"
 #include "Interpre.h"
 #include "Interval.h"
+#include "MidiKern.h"
 #include "Parser.h"
 #include "Execute.h"
 #include "Hilfs.h"
@@ -410,8 +411,8 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 		if (the_tonliste->name) {
 			help -> ton_einstell_typ = einstell_absolut;
 			help -> u.einstell_absolut.wert =
-			        DOUBLE_TO_LONG (
-			                FREQUENZ_TO_MIDI(
+			        mutabor_convert_pitch_to_tone (
+			                mutabor_convert_frequency_to_pitch(
 			                        the_tonliste->u.ton_absolut.ton_wert));
 		} else {
 			help -> ton_einstell_typ = einstell_stumm;
@@ -427,8 +428,8 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 				if (the_tonliste->u.ton_komplex.komplex_liste) {
 					help -> ton_einstell_typ = einstell_relativ;
 					help -> u.einstell_relativ.wert =
-					        DOUBLE_TO_LONG (
-					                FAKTOR_TO_MIDI (
+					        mutabor_convert_pitch_to_interval (
+					                mutabor_convert_factor_to_pitch (
 									get_komplex_faktor (box, the_tonliste->u.ton_komplex.komplex_liste)));
 				} else {
 					help -> ton_einstell_typ = einstell_gleich;
@@ -436,8 +437,8 @@ static struct ton_einstell * expand_tonliste (mutabor_box_type * box,
 			} else { /* normaler ton */
 				help -> ton_einstell_typ = einstell_absolut;
 				help -> u.einstell_absolut.wert =
-				        DOUBLE_TO_LONG (
-				                FREQUENZ_TO_MIDI (
+				        mutabor_convert_pitch_to_tone (
+				                mutabor_convert_frequency_to_pitch (
 								  get_komplex_frequenz (box,the_tonliste)));
 
 			}
@@ -478,8 +479,8 @@ static struct do_aktion * expandiere_tonsystem (mutabor_box_type * box,
 	help_tonsystem -> anker = the_tonsystem -> taste;
 	help_tonsystem -> breite = ton_list_laenge (the_tonsystem -> toene);
 	help_tonsystem -> periode =
-	        DOUBLE_TO_LONG (
-	                FAKTOR_TO_MIDI (
+	        mutabor_convert_pitch_to_interval (
+	                mutabor_convert_factor_to_pitch (
 					get_wert_komplex_intervall (box,
 								    the_tonsystem -> periode)));
 
@@ -493,7 +494,7 @@ static struct do_aktion * expandiere_tonsystem (mutabor_box_type * box,
 		                ton_lauf = ton_lauf -> next , i++ ) {
 			if (ton_lauf->name) {
 				help_tonsystem->ton[i] =
-				        DOUBLE_TO_LONG( FREQUENZ_TO_MIDI(get_ton (box,
+				        mutabor_convert_pitch_to_tone( mutabor_convert_frequency_to_pitch(get_ton (box,
 										  ton_lauf -> name, 
 										  box->file->list_of_toene)
 				                                -> u.ton_absolut.ton_wert));
@@ -718,8 +719,8 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		help -> aufruf_typ = aufruf_umst_wiederholung_abs;
 
 		help -> u.aufruf_umst_wiederholung_abs.faktor =
-		        DOUBLE_TO_LONG (
-		                FAKTOR_TO_MIDI (
+		        mutabor_convert_pitch_to_interval (
+		                mutabor_convert_factor_to_pitch (
 						get_wert_komplex_intervall (box,
 									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
 
@@ -730,8 +731,8 @@ static struct do_aktion * expandiere_umstimmung (mutabor_box_type * box,
 		help -> aufruf_typ = aufruf_umst_wiederholung_rel;
 
 		help -> u.aufruf_umst_wiederholung_rel.faktor =
-		        DOUBLE_TO_LONG (
-		                FAKTOR_TO_MIDI (
+		        mutabor_convert_pitch_to_interval (
+		                mutabor_convert_factor_to_pitch (
 						get_wert_komplex_intervall (box,
 									    the_umstimmung->u.umstimmung_wiederholung_abs.komplex_liste)));
 		break;

@@ -5,7 +5,7 @@
  * Copyright:   (c) 1998-2011 TU Dresden
  * \author  R.Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
+ * \date
  * $Date: 2011/09/27 20:13:21 $
  * \version $Revision: 1.6 $
  * \license GPL
@@ -31,7 +31,6 @@
 // ---------------------------------------------------------------------------
 
 #include "Defs.h"
-#include "box.h"
 
 #ifndef MU32_MIDIKERN_H_PRECOMPILED
 #define MU32_MIDIKERN_H_PRECOMPILED
@@ -43,7 +42,6 @@
 
 #if 0
 #define ZWZ pow(2.0l,1.0l/12.0l)// 12 √ 2
-#endif
 
 inline double LONG_TO_HERTZ( long freq ) {
 	return 440.0*pow(2.0l,((double)(freq-69*0x01000000) / ((double) (0x01000000*12))));
@@ -56,6 +54,70 @@ inline double LONG_TO_HERTZ( long freq ) {
 inline double LONG_TO_CENT( long freq ) {
 	return ( (double)(freq) / ((double) 0x01000000));
 }
+#endif
+
+/**
+ * Convert an interval represented as MIDI based double value to a
+ * frequency factor. The microtonal part is retained in the double
+ * return value.
+ *
+ * \param interval interval in a midi based double. A half tone is
+ * represented as 1.00, and an octave as 12.00.
+ *
+ * \return frequency factor
+ *
+ */
+inline double mutabor_convert_pitch_to_factor(double interval)
+{
+	return exp(log(2.0l)*interval/12.0l);
+}
+
+/**
+ * Convert an interval from factor representation to a pitch based
+ * double according to MIDI pitch numbers. The microtonal part can be
+ * given in the double value.
+ *
+ * \param interval factor to be converted
+ *
+ * \return a double value that represents the interval.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ */
+inline double mutabor_convert_factor_to_pitch(double interval)
+{
+	return log(interval)/log(2.0l)*12.0l;
+}
+
+/**
+ * Convert an interval represented as MIDI based double value to a
+ * frequency. The microtonal part is retained in the double
+ * return value.
+ *
+ * \param tone pitch in a midi based double. A half tone is
+ * represented as 1.00, and an octave as 12.00.
+ *
+ * \return frequency factor
+ *
+ */
+inline double mutabor_convert_pitch_to_frequency(double tone)
+{
+	return 440.0l * mutabor_convert_pitch_to_factor(tone - 69.00l);
+}
+
+/**
+ * Convert a tone from frequency representation to a pitch based
+ * double according to MIDI pitch numbers. The microtonal part can be
+ * given in the double value.
+ *
+ * \param tone frequency to be converted
+ *
+ * \return a double value that represents the pitch.
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ */
+inline double mutabor_convert_frequency_to_pitch(double tone)
+{
+	return 69.00l + mutabor_convert_factor_to_pitch(tone/440.0l);
+}
+
 
 #ifdef __cplusplus
 namespace mutabor {
@@ -139,7 +201,7 @@ namespace mutabor {
 			GENERAL_PURPOSE_SLIDER_4 = 0x13,
 
 			// free controllers 0x14-0x1F
-	
+
 			/* fine controllers */
 			BANK_FINE                = 0x20,
 			MODULATION_WHEEL_FINE    = 0x21,
@@ -166,7 +228,7 @@ namespace mutabor {
 			LEGATO_PEDAL_ON_OFF      = 0x44,
 			HOLD_2_PEDAL_ON_OFF      = 0x45,
 
-	
+
 			/* Sound controllers (includes RP-021 from midi.org) */
 			SOUND_VARIATION          = 0x46,
 			SOUND_TIMBRE             = 0x47,
@@ -190,7 +252,7 @@ namespace mutabor {
 			GENERAL_PURPOSE_ON_OFF_4 = 0x53,
 
 			// free 0x54-0x57
-	
+
 			/* levels */
 			EFFECTS_LEVEL            = 0x5B,
 			TREMULO_LEVEL            = 0x5C,
@@ -243,9 +305,9 @@ namespace mutabor {
 
 		inline int get_data_size(uint8_t status_byte) {
 			static const int midi_size[]   = { 3, 3, 3, 3, 2, 2, 3,-1 };
-			static const int system_size[] = {-1, 2, 3, 2, 1, 1, 1, -1, 
+			static const int system_size[] = {-1, 2, 3, 2, 1, 1, 1, -1,
 							  1, 1, 1, 1, 1, 1, 1, -1 };
-			
+
 			if (!(status_byte & 0x80)) return -1;
 			int size = midi_size [(status_byte >> 4) & 0x7];
 			return size == -1 ? system_size[status_byte & 0x0F]:size;
@@ -256,7 +318,7 @@ namespace mutabor {
 		}
 
 		inline bool is_system_common(uint8_t status) {
-			return ( status == QUARTER_FRAME) || 
+			return ( status == QUARTER_FRAME) ||
 				( status == SONG_POSITION) ||
 				( status == SONG_SELECT) ||
 				( status == TUNE_REQUEST) ||
@@ -266,7 +328,7 @@ namespace mutabor {
 		inline bool is_system_realtime(uint8_t status) {
 			return (0xF8 <= status) && (status <= 0xFF);
 		}
-		
+
 		inline bool is_channel_message(uint8_t status) {
 			return (status & 0x80) && (((status >> 4) & 0x7) != 0x7);
 		}

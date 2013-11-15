@@ -59,19 +59,78 @@ namespace mutabor {
 /* Zur Umrechnung in die Midi-Darstellung
    als Gleitpunktzahl in long.
    Erstes Byte Vorkommastellen, drei Bytes Nachkommastellen. */
-#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L<<24)))
+//#define DOUBLE_TO_LONG(x) ((long int) ((x) * (1L<<24)))
 
 void message_tasten_liste( void );
 
 /* Datenstrukturen: */
 
+typedef long mutabor_interval;
+typedef mutabor_interval mutabor_tone;
+
 typedef struct TSYS
 {
 	int anker;
 	int breite;
-	long periode;
-	long ton[MUTABOR_KEYRANGE_MAX_WIDTH];
+	mutabor_interval periode;
+	mutabor_tone ton[MUTABOR_KEYRANGE_MAX_WIDTH];
 } tone_system;
+
+/** 
+ * Convert an interval to half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part is retained in the double return value.
+ * 
+ * \param interval Interval in the internal representation of Mutabor.
+ * 
+ * \return a double value that represents the interval.
+ *         a half tone is represented as 1.00, and an octave as 12.00.
+ */
+inline double mutabor_convert_interval_to_pitch(mutabor_interval interval) 
+{
+	return ((double) interval ) / (double) (0x01000000);
+}
+
+/** 
+ * Convert an interval from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ * 
+ * \param interval a double value that represents the interval. 
+ *         a semitone is represented as 1.00, and an octave as 12.00
+ * 
+ * \return interval in the internal representation of Mutabor.
+ */
+inline mutabor_interval mutabor_convert_pitch_to_interval(double interval) 
+{
+	return ((double) interval ) * (double) (0x01000000);
+}
+
+/** 
+ * Convert a tone to half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part is retained in the double return value.
+ * 
+ * \param interval Interval in the internal representation of Mutabor.
+ * 
+ * \return a double value that represents the tone a' is represented as 69.00
+ */
+inline double mutabor_convert_tone_to_pitch(mutabor_tone tone) 
+{
+	return 0.0 + mutabor_convert_interval_to_pitch(tone - 0);
+}
+
+/** 
+ * Convert a tone from half tone based pitch according to MIDI pitch numbers.
+ * The microtonal part can be given in the double value.
+ * 
+ * \param tone a double value that represents the tone. 
+ *         a' is represented as 69.00
+ * 
+ * \return tone in the internal representation of Mutabor.
+ */
+inline mutabor_tone mutabor_convert_pitch_to_tone(double tone) 
+{
+	return 0 + mutabor_convert_pitch_to_interval(tone - 0);
+}
+
 
 typedef struct PTRN
 {

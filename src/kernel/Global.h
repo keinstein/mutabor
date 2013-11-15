@@ -76,11 +76,13 @@ namespace mutabor {
 #define MAX_MIDI 32
 /* (=Max. Anzahl Bytes in MIDIOUT / MIDIIN) */
 
+#if 0
 #define FREQUENZ_TO_MIDI(x) (log((x)/440.0)/0.05776226504666210908 + 69)
 /* Die Zahl 0.0577... ist log(Zwoelfte Wurzel aus zwei) */
 
 #define FAKTOR_TO_MIDI(x) (17.31234049066756089 * log(x))
 /* 17.31... ist 12/log(2)  */
+#endif
 
 //#define MAX_BOX 256   // Anzahl der Boxen/Instumente
 #define MUTABOR_NO_KEY (INT_MIN+1)

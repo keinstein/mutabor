@@ -100,7 +100,8 @@ void mutabor_reset_keys(struct mutabor_box_type * box)
 void mutabor_reset_box(struct mutabor_box_type * box)
 {
 	static tone_system tonesystem_init =
-		{0, 1, DOUBLE_TO_LONG(1), { DOUBLE_TO_LONG(60) }} ;
+		{0, 1, mutabor_convert_pitch_to_interval (1), 
+		 { mutabor_convert_pitch_to_tone(60) }} ;
 	if (!tonesystem_init.anker) {
 		memset(&(tonesystem_init.ton[1]),
 		       0, 
