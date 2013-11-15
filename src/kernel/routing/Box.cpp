@@ -64,7 +64,7 @@ namespace mutabor {
 							(*r)->GetDeviceId(InputDevice()),
 							(*r)->GetBoxId(),
 							(*r)->GetDeviceId(OutputDevice()));
-		
+
 
 		return wxString::Format(_T("\nBox:\n\
    session_id    = %lu\n\
@@ -74,7 +74,7 @@ namespace mutabor {
 					routefile_id,routeString.c_str());
 	}
 #endif
-	
+
 
 	BoxClass::~BoxClass()
 	{
@@ -87,7 +87,7 @@ namespace mutabor {
 			UNREACHABLEC;
 			deviceList.erase(i);
 		}
-#endif		
+#endif
 		debug_destruct_class(this);
 		TRACEC;
 		if (box) free(box);
@@ -109,14 +109,14 @@ namespace mutabor {
 	void BoxClass::Save (tree_storage & config) {
 	}
 
-	void BoxClass::Save (tree_storage & config, 
+	void BoxClass::Save (tree_storage & config,
 		   const RouteClass * route) {
 	}
 
 	void BoxClass::Load (tree_storage & config) {
 	}
 
-	void BoxClass::Load (tree_storage & config, 
+	void BoxClass::Load (tree_storage & config,
 			     RouteClass * route) {
 	}
 
@@ -124,7 +124,7 @@ namespace mutabor {
 		BoxLock lock(this);
 		DEBUGLOG(smartptr,_T("Route; %p"),(void*)route.get());
 #ifdef DEBUG
-		routeListType::const_iterator i = 
+		routeListType::const_iterator i =
 			find(routes.begin(),routes.end(),route);
 		mutASSERT(i == routes.end());
 		mutASSERT(IsInBoxList(this));
@@ -139,7 +139,7 @@ namespace mutabor {
 			 (void*)oldroute.get(),(void*)newroute.get());
 		bool found = Remove(oldroute);
 		mutASSERT(found);
-		if (found) 
+		if (found)
 			Add(newroute);
 
 		DEBUGLOG(smartptr,_T("oldroute; %p, newroute; %p"),
@@ -152,7 +152,7 @@ namespace mutabor {
 		DEBUGLOG(smartptr,_T("Route: %p (%d)"),
 			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
-		routeListType::iterator i = 
+		routeListType::iterator i =
 			std::find(routes.begin(),routes.end(),route);
 		bool found = (i != routes.end());
 		mutASSERT(found);
@@ -242,20 +242,20 @@ namespace mutabor {
 		if (pos == boxList.end()) return -1;
 		typename listtype::iterator newpos = pos + count;
 		if (newpos == boxList.end()) --newpos;
-		if (count > 0) 
+		if (count > 0)
 			std::rotate (pos, newpos, newpos + 1);
-		else 
+		else
 			std::rotate (newpos, pos, pos + 1);
 		return newpos - boxList.begin();
-		
+
 	}
 
 // protected:
 
-	void BoxClass::AppendToBoxList (Box b) 
+	void BoxClass::AppendToBoxList (Box b)
 	{
 #ifdef DEBUG
-		typename listtype::iterator i = 
+		typename listtype::iterator i =
 			FindInBoxList(b);
 		if (i != boxList.end()) {
 			UNREACHABLECT(listtype);
@@ -264,28 +264,28 @@ namespace mutabor {
 		boxList.push_back(b);
 	}
 
-	void BoxClass::RemoveFromBoxList (Box b) 
+	void BoxClass::RemoveFromBoxList (Box b)
 	{
-		typename listtype::iterator i = 
+		typename listtype::iterator i =
 			FindInBoxList(b);
 		if (i == boxList.end()) {
 			UNREACHABLECT(listtype);
-		} else 	
+		} else
 			boxList.erase(i);
 	}
 
-	void BoxClass::TruncateBoxList (Box dev) 
+	void BoxClass::TruncateBoxList (Box dev)
 	{
 		STUB;
 		return;
 #if 0
 		if (!boxList) return;
-        
+
 		if (boxList == dev) {
-			boxList = NULL; 
+			boxList = NULL;
 			return;
 		}
-	
+
 		DevicePtr d = boxList ;
 		while (d->GetNext() && d->GetNext() != dev) {
 			d = d->GetNext();
@@ -355,7 +355,7 @@ namespace mutabor {
 			OutClose();
 			return false;
 		}
-		
+
 		if (!InOpen() ) {
 			BoxClass::CloseAll();
 			OutClose();
@@ -396,7 +396,7 @@ namespace mutabor {
 		}
 		return retval;
 	}
-	
+
 	void  BoxClass::StopAll() {
 		mutabor::CurrentTime.Stop();
 		mutabor::InClose();
@@ -414,7 +414,7 @@ namespace mutabor {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
 				 ((i->the_logik_to_expand == logic)?
-				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::CurrentLogic :
 				  BoxClass::logic_entry::Logic)),
 				(box->last_trigger.type
 				 == mutabor::hidden::any_trigger::key &&
@@ -442,9 +442,9 @@ namespace mutabor {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
 				 ((i->the_logik_to_expand == logic)?
-				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::CurrentLogic :
 				  BoxClass::logic_entry::Logic)),
-				(box->last_trigger.type == 
+				(box->last_trigger.type ==
 				 mutabor::hidden::any_trigger::harmony &&
 				 box->last_trigger.harmony_trigger == i),
 				i->name,
@@ -470,7 +470,7 @@ namespace mutabor {
 				((i->the_logik_to_expand == NULL)?
 				 BoxClass::logic_entry::none:
 				 ((i->the_logik_to_expand == logic)?
-				  BoxClass::logic_entry::CurrentLogic : 
+				  BoxClass::logic_entry::CurrentLogic :
 				  BoxClass::logic_entry::Logic)),
 				(box->last_trigger.type == mutabor::hidden::any_trigger::midi &&
 				 box->last_trigger.midi_trigger == i),
@@ -503,7 +503,80 @@ namespace mutabor {
 		}
 		return retval;
 	}
-	
+
+	BoxClass::tone_system BoxClass::GetToneSystem () {
+		ScopedLock lock(mutex);
+		tone_system retval;
+		if (!box) return retval;
+		struct mutabor_logic_parsed * file = box->file;
+		if (!file) return retval;
+		// no file means no logic (implying no current logic)
+
+		hidden::tone_system * system = box->tonesystem;
+		if (!system)
+			return retval;
+		retval.anchor = system->anker;
+		retval.period =
+			mutabor_convert_interval_to_pitch(system->periode);
+		int width = system -> breite;
+		if (width <= 0)
+			return retval;
+		retval.tones.resize(width);
+		mutASSERT(width < MUTABOR_KEYRANGE_MAX_WIDTH);
+		for (int i = 0 ; i < width; i++) {
+			mutabor_tone t = system->ton[i];
+			switch (t) {
+			case MUTABOR_NO_KEY:
+				break;
+			case MUTABOR_INVALID_KEY:
+				retval.tones[i].flag = tone_entry::invalid;
+				break;
+			default:
+				retval.tones[i] =
+					tone_entry(mutabor_convert_tone_to_pitch(t));
+			}
+		}
+		return retval;
+	}
+
+	BoxClass::current_tone_list BoxClass::GetCurrentTones()
+	{
+		ScopedLock lock(mutex);
+		current_tone_list retval;
+		if (!box) return retval;
+		struct mutabor_logic_parsed * file = box->file;
+		if (!file) return retval;
+		// no file means no logic (implying no current logic)
+
+		int count = box->key_count;
+		if (!count) return retval;
+		retval.resize(count);
+
+		size_t i = 0;
+		for (mutabor_note_type * key = mutabor_find_key_in_box(box,0);
+		     key != NULL;
+		     key = mutabor_find_key_in_box(box,key->next)) {
+
+			int index = key->number;
+			mutabor_tone tone;
+
+			switch (tone=get_frequency(index)) {
+			case MUTABOR_NO_KEY:
+				break;
+			case MUTABOR_INVALID_KEY:
+				retval[i].flag=tone_entry::invalid;
+				break;
+			default:
+				retval[i] = current_tone_entry(index,
+							       mutabor_convert_tone_to_pitch(tone),
+							       key->id,
+							       GetChannel(index, key->channel, key->id));
+			}
+			++i;
+		}
+		return retval;
+	}
+
 	bool BoxClass::Compile(CompileCallback * callback, const char * logic) {
 		set_callback callback_holder(this,callback);
 		if (!setjmp(weiter_gehts_nach_compilerfehler)) {
@@ -511,7 +584,7 @@ namespace mutabor {
 			//			init_yylex ();
 
 			mutabor_programm_einlesen (box, logic);
-			
+
 			if (callback) {
 				callback->SetStatus(logik_list_laenge(box->file->list_of_logiken),
 						    ton_list_laenge(box->file->list_of_toene),
@@ -556,8 +629,8 @@ namespace mutabor {
 			(*bcursor++) = (uint8_t) cursor->midi_code;
 			cursor = cursor -> next;
 		}
-	       
-		for (routeListType::const_iterator R = routes.begin(); 
+
+		for (routeListType::const_iterator R = routes.begin();
 		     R != routes.end(); R++) {
 			(*R) -> MidiOut(data);
 		}
@@ -574,10 +647,10 @@ namespace mutabor {
 
 	int BoxClass::GetChannel(int key, size_t channel, size_t id)
 	{
-		for (routeListType::const_iterator R = routes.begin(); 
+		for (routeListType::const_iterator R = routes.begin();
 		     R != routes.end(); R++) {
 			int c = (*R)->GetChannel(key,channel,id);
-			
+
 			if ( c != midi::NO_CHANNEL ) {
 				TRACE;
 				return c;
@@ -651,8 +724,8 @@ namespace mutabor {
 		}
 	};
 	struct doexecute_action {
-		BoxClass::ChangedCallback::action * action;
-		doexecute_action(BoxClass::ChangedCallback::action * a):action(a) {}
+		const char * action;
+		doexecute_action(const char * a):action(a) {}
 		void operator () (BoxClass::ChangedCallback * callback) {
 			callback->BoxChangedAction(action);
 		}
@@ -663,10 +736,17 @@ namespace mutabor {
 		std::for_each(callbacks.begin(),callbacks.end(),doit);
 	}
 
-	void BoxClass::ExecuteCallbacks(ChangedCallback::action * action) {
+	void BoxClass::ExecuteCallbacks(const char * action) {
 		doexecute_action doit(action);
 		std::for_each(callbacks.begin(),callbacks.end(),doit);
 	}
+
+
+	std::string BoxClass::ActionToString(mutabor::BoxClass::ChangedCallback::action * action) {
+		std::string retval = action->name;
+		return retval;
+	}
+
 
 
 	void BoxClass::UpdateCallback(struct mutabor_box_type * b, unsigned int flags) {
@@ -679,7 +759,7 @@ namespace mutabor {
 	}
 
 
-	void BoxClass::MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b, 
+	void BoxClass::MidiOutCallback(struct mutabor::hidden::mutabor_box_type * b,
 				       struct mutabor::hidden::midiliste * outliste) {
 		BoxClass * box = (BoxClass *)b -> userdata;
 		if (!box) return;
@@ -695,7 +775,7 @@ namespace mutabor {
 
 	static void error_callback(mutabor_box_type * b, error_type type,
 			      const char * message) {
-		
+
 		BoxClass * box = (BoxClass *)b -> userdata;
 		box->runtime_error(type, message);
 	}
@@ -711,9 +791,9 @@ namespace mutabor {
 	}
 
 
-	void BoxClass::log_action(mutabor_box_type * b, 
-				  struct mutabor::hidden::do_aktion * action) {
-		
+	void BoxClass::log_action(mutabor_box_type * b,
+				  const char * action) {
+
 		BoxClass * box = (BoxClass *)b -> userdata;
 		box->ExecuteCallbacks(action);
 	}
@@ -727,7 +807,7 @@ namespace mutabor {
 		lock_callback,
 		unlock_callback
 	};
-	
+
 
 
 	BoxFactory::factorylist BoxFactory::factories;
@@ -742,7 +822,7 @@ namespace mutabor {
 			return;
 		}
 		factories[type] = this;
-		
+
 	}
 
 	BoxFactory::~BoxFactory() {}
@@ -753,7 +833,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Boxes"));
-	
+
 		int i = config.toFirstLeaf(_T("Box"));
 		while (i != wxNOT_FOUND) {
 			DEBUGLOGTYPE(config,BoxClass,_T("Loading box device with id %d"),i);
@@ -764,7 +844,7 @@ namespace mutabor {
 			b -> Load(config);
 			i = config.toNextLeaf(_T("Box"));
 		}
-	
+
 		config.toParent(2);
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -775,10 +855,10 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Boxes"));
-	
-		const BoxListType & list = 
+
+		const BoxListType & list =
 			BoxClass::GetBoxList();
-		for (BoxListType::const_iterator b = list.begin(); 
+		for (BoxListType::const_iterator b = list.begin();
 		     b != list.end(); b++) {
 			int id = (*b)->get_routefile_id();
 			config.toLeaf(_T("Box"), id);
@@ -787,7 +867,7 @@ namespace mutabor {
 			(*b) -> Save (config);
 			config.toParent();
 		}
-	
+
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
 	}
@@ -824,24 +904,24 @@ namespace mutabor {
 
 	void  Panic() {
 		dopanic_type dopanic;
-	
+
 		const InputDeviceList & inlist = InputDeviceClass::GetDeviceList();
 		std::for_each(inlist.begin(),inlist.end(),dopanic);
 
 		const BoxListType & boxlist = BoxClass::GetBoxList();
 		std::for_each(boxlist.begin(),boxlist.end(),dopanic);
-	
+
 		const OutputDeviceList & outlist = OutputDeviceClass::GetDeviceList();
 		std::for_each(outlist.begin(),outlist.end(),dopanic);
 	}
 
 
 
-	void initialize_box_data() 
+	void initialize_box_data()
 	{
 		mutabor_set_callbacks(& BoxClass::backend_callbacks);
 	}
-	
+
 }
 
 /// \}

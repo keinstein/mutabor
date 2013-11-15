@@ -2,7 +2,7 @@
 
 /** \file
  ********************************************************************
- * Mutabor Box for C++. Mutoabor Core.
+ * Mutabor Box for C++. Mutabor Core.
  *
  * \author Tobias Schlemmer <keinstein@users.berlios.de>
  * \license GPL
@@ -47,6 +47,7 @@
 #include "src/kernel/routing/thread.h"
 #include "src/kernel/routing/Route.h"
 #include "src/kernel/Execute.h"
+#include "src/kernel/box.h"
 
 #ifndef ROUTING_BOX_H_PRECOMPILED
 #define ROUTING_BOX_H_PRECOMPILED
@@ -96,7 +97,7 @@ namespace mutabor {
 	using hidden::internal_error;
 	using hidden::compiler_error;
 	using hidden::runtime_error;
-	
+
 
         typedef hidden::mutabor_error_type error_type;
 
@@ -117,7 +118,7 @@ namespace mutabor {
 	class BoxClass;
 	typedef boost::intrusive_ptr<BoxClass> Box;
 	typedef std::vector<Box> BoxListType;
-	
+
 
 	class BoxClass
 	{
@@ -152,7 +153,7 @@ namespace mutabor {
 					box->Register(this);
 			}
 			virtual void BoxChangedAction(int flags) = 0;
-			virtual void BoxChangedAction(action * a) {}
+			virtual void BoxChangedAction(const char * action) {}
 		};
 
 		typedef BoxListType listtype;
@@ -212,7 +213,7 @@ namespace mutabor {
 		}
 
 		virtual void set_routefile_id(int id);
-	
+
 		static int GetNextFreeBox() {
 			return nextboxid;
 		}
@@ -221,7 +222,7 @@ namespace mutabor {
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config);
-	
+
 		/// Save route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
 		 * specific. This function saves them in a tree storage.
@@ -230,12 +231,12 @@ namespace mutabor {
 		 */
 		virtual void Save (tree_storage & config, 
 				   const RouteClass * route);
-	
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config);
-	
+
 		/// Load route settings (filter settings) for a given route
 		/** Some route settings (e.g. filter settings) are device type 
 		 * specific. This function loads them from a tree storage.
@@ -244,7 +245,7 @@ namespace mutabor {
 		 */
 		virtual void Load (tree_storage & config, 
 				   RouteClass * route);
-	
+
 
 		/// add a route
 		virtual void Add(Route & route);
@@ -278,7 +279,7 @@ namespace mutabor {
 		 */
 		static Box GetBox(int id, boxidtype kind);
 
-		
+
 		/** 
 		 * Return the box that is associated with the corrent id. In case such a box does not 
 		 * exist the box is created
@@ -378,7 +379,7 @@ namespace mutabor {
 			int key;
 			struct any_trigger trigger;
 		};
-		
+
 		typedef std::list<logic_entry> logic_list;
 
 		/** 
@@ -389,7 +390,44 @@ namespace mutabor {
 		 */
 		logic_list GetLogics();
 
-		// this mimics Com4pDlg
+		struct tone_entry {
+			double pitch;
+			enum {sounding, silent, invalid} flag;
+			tone_entry(double p):pitch(p),
+					     flag(sounding) {}
+			tone_entry():pitch(0.0),
+				     flag(silent) {}
+		};
+		typedef std::vector<tone_entry> tone_list;
+
+		struct tone_system {
+			int anchor;
+			double period;
+			tone_list tones;
+		};
+
+		tone_system GetToneSystem();
+
+
+		struct current_tone_entry: public tone_entry {
+			int index;
+			size_t id;
+			int channel;
+			current_tone_entry():tone_entry() {}
+			current_tone_entry(int ind,
+					   double p,
+					   size_t i,
+					   int c):tone_entry(p),
+						  index(ind),
+						  id (i),
+						  channel(c) {}
+		};
+
+		typedef std::vector<current_tone_entry> current_tone_list;
+
+		current_tone_list GetCurrentTones();
+
+		// this mimics CompDlg
 		struct CompileCallback {
 			virtual void Refresh() = 0;
 			virtual void SetStatus(mutString status) = 0;
@@ -402,7 +440,7 @@ namespace mutabor {
 					       int characters) = 0;
 			virtual void SetLine(int number) = 0;
 		};
-		
+
 		bool Compile(CompileCallback * callback, const char * logic);
 		static void compile_callback(struct mutabor_box_type * b, int line_number);
 
@@ -502,8 +540,8 @@ namespace mutabor {
 		 */
 		wxString GetLogicName() const { return current_logic; }
 
-		
-		
+
+
 		/// Sets the name of the currently active tone system
 		/** \param s wxString name of the tone system
 		*/
@@ -512,6 +550,9 @@ namespace mutabor {
 		/** \return wxString name of the tone system
 		 */
 		wxString GetTonesystem() const { return current_tonesystem; }
+
+
+
 
 		/// Sets the key of the currently active tone system
 		/** \param nr int number of the key
@@ -576,7 +617,8 @@ namespace mutabor {
 			static mutString nothing = mutEmptyString;
 			return nothing; 
 		}
-		static void log_action(mutabor_box_type * box, struct mutabor::hidden::do_aktion * action);
+		std::string ActionToString(ChangedCallback::action * action);
+		static void log_action(mutabor_box_type * box, const char * action);
 		static void UpdateCallback(struct mutabor_box_type * b, unsigned int flags);
 	protected:
 		struct BoxLock: public ScopedLock {
@@ -620,7 +662,7 @@ namespace mutabor {
 		CompileCallback * current_compile_callback;
 		static mutabor::hidden::mutabor_callback_type backend_callbacks;
 		Mutex mutex;
-	
+
 		BoxClass(int id = -1);
 
 		virtual void set_file_id(int id) {
@@ -635,8 +677,8 @@ namespace mutabor {
 		}
 
 		void ExecuteCallbacks(unsigned int flags);
-		void ExecuteCallbacks(ChangedCallback::action * action);
-		
+		void ExecuteCallbacks(const char * action);
+
 
 
 		static void AppendToBoxList (Box dev);
@@ -657,7 +699,7 @@ namespace mutabor {
 	private:
 		REFPTR_INTERFACE;
 	};
-		
+
 
 
 	class BoxFactory { 
@@ -676,7 +718,7 @@ namespace mutabor {
 
 			//! Returns the thrown error message as a c-style string.
 			virtual const char* what( void ) const throw() { return message_.c_str(); }
-			
+
 		};
 
 		BoxFactory(size_t id = 0);
@@ -726,11 +768,11 @@ namespace mutabor {
 	protected:
 		typedef std::vector<BoxFactory *> factorylist;
 		static factorylist factories;
-	
+
 		virtual size_t GetType() { return Box0; };
 
 		virtual BoxClass * DoCreateBox (int id = -1) const;
-		
+
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from
 		 */

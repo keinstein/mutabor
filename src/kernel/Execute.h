@@ -107,7 +107,7 @@ namespace mutabor {
 									 const char * message);
 			typedef void mutabor_callback_update_display(mutabor_box_type * box, int line_number);
 			typedef void mutabor_callback_log_action(mutabor_box_type * box,
-								  struct do_aktion * action);
+								 const char * action);
 
 			typedef void mutabor_callback_lock_logic(mutabor_logic_parsed * logic);
 
@@ -163,7 +163,7 @@ namespace mutabor {
 			}
 
 
-			inline void mutabor_log_action(mutabor_box_type * box, struct do_aktion * action) {
+			inline void mutabor_log_action(mutabor_box_type * box, const char * action) {
 				mutabor_callbacks->log_action(box,action);
 			}
 

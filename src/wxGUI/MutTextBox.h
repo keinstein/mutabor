@@ -6,9 +6,6 @@
  * Copyright:   (c) 2008 TU Dresden
  * \author  R. Krauﬂe
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/09/01
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.15 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
@@ -85,12 +82,9 @@ public:
 };
 */
 
-class MutTextBox : public wxListBox
+class MutTextBox : public wxListBox,
+		   public mutabor::BoxClass::ChangedCallback
 {
-
-protected:
-	WinKind winKind;
-	mutabor::Box box;
 
 public:
 	MutTextBox(  WinKind k,
@@ -102,34 +96,49 @@ public:
 	             const wxSize& size = wxDefaultSize);
 
 	void UpdateUI(wxCommandEvent& event);
-	
-	/** 
+
+	/**
+	 * Handle box updates from ChangedCallback
+	 *
+	 * \param flags flags what has changed.
+	 */
+	void BoxChangedAction(int flags);
+
+
+	/**
+	 * Handle action messages from ChangedCallback
+	 *
+	 * \param action action that shall be executed.
+	 */
+	void BoxChangedAction(const char * a);
+
+	/**
 	 * Get the string describing the current key configuration of our box.
-	 * 
+	 *
 	 * This function collects key data from the box of the object and updates the corresponding list.
-	 * 
+	 *
 	 * \param asTS bool if true frequencies will be shown as absolute cents otherwise relative to the previous key.
 	 */
 	void GetKeys(bool asTS);
 
-	/** 
+	/**
 	 * Update data to match the current tone system.
-	 * 
+	 *
 	 * \param asTS bool if true frequencies will be shown as absolute cents otherwise relative to the previous key.
 	 */
 	void GetToneSystem(bool asTS);
 
-	/** 
+	/**
 	 * Update date to match the list of all actions executed at sometime in any box.
-	 * 
+	 *
 	 */
 
 	void GetAllActions();
 
 
-	/** 
+	/**
 	 * Update date to match the list of all actions executed at sometime in one fixed box.
-	 * 
+	 *
 	 */
 	void GetBoxActions();
 
@@ -150,6 +159,10 @@ public:
 	}
 
 protected:
+	WinKind winKind;
+	mutabor::Box box;
+	bool Ok;
+
 
 	mutabor::Box Box()
 	{

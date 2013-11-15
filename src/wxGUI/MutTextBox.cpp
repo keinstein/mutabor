@@ -2,14 +2,25 @@
  ********************************************************************
  * Textbox for Lists
  *
- * Copyright:   (c) 2008 TU Dresden
- * \author   R. Krauﬂe
+ * Copyright:   (c) 2008-2011 TU Dresden
+ *               changes after 2011/11 (c) by the authors
+ * \author   R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2011/11/02 14:31:59 $
- * \version $Revision: 1.22 $
  * \license GPL
  *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
  ********************************************************************
@@ -69,6 +80,7 @@ MutTextBox::MutTextBox(WinKind k,
                        const wxPoint& pos,
                        const wxSize& size):
 		wxListBox(parent, id, pos, size, 1, ListInit),
+		ChangedCallback(b),
 		winKind(k),
 		box(b)
 {
@@ -96,15 +108,15 @@ void MutTextBox::OnClose(wxCloseEvent& event)
         BoxData * boxdata = ToGUIBase(box);
 	if ( LogicOn ) {
                 switch (winKind) {
-                case WK_KEY: 
+                case WK_KEY:
 			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetKeyWindow()) == this);
                         boxdata->WantKeyWindow(false);
                         break;
-                case WK_TS: 
+                case WK_TS:
 			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetTonesystemWindow()) == this);
                         boxdata->WantTonesystemWindow(false);
                         break;
-                case WK_ACT: 
+                case WK_ACT:
 			mutASSERT(dynamic_cast<MutTextBox *> (boxdata->GetActionsWindow()) == this);
                         boxdata->WantActionsWindow(false);
                         break;
@@ -128,49 +140,102 @@ void MutTextBox::OnClose(wxCloseEvent& event)
                         wxLogError(_("Unexpected window kind: %d"), winKind);
 			UNREACHABLEC;
                 }
-        } 
+        }
         Destroy();
 }
 
 
 // Updaten
-void MutTextBox::UpdateUI(wxCommandEvent& WXUNUSED(event)) 
+void MutTextBox::UpdateUI(wxCommandEvent& event)
 {
-               switch (winKind) {
-                case WK_KEY: 
-                        GetKeys(asTS);
-                        break;
-                case WK_TS: 
-                        GetToneSystem(asTS);
-                        break;
-                case WK_ACT:
-                        if (CAW) {
-                                GetAllActions();
-                        } else {
-                                GetBoxActions();
-                        }
-                        break;
-                case WK_LOGIC:
-                        wxLogWarning(_("Unexpected value: WK_LOGIC"));
-			UNREACHABLEC;
-                        break;
-                case WK_ROUTE:
-                        wxLogWarning(_("Unexpected value: WK_ROUTE"));
-			UNREACHABLEC;
-                        break;
-                case WK_EDIT:
-                        wxLogWarning(_("Unexpected value: WK_EDIT"));
-			UNREACHABLEC;
-                        break;
-                case WK_NULL:
-                        wxLogWarning(_("Unexpected value: WK_NULL"));
-			UNREACHABLEC;
-                        break;
-                default:
-                        wxLogError(_("Unexpected window kind: %d"), winKind);
-			UNREACHABLEC;
-                }        
+	if (Ok && winKind != WK_ACT) return;
+	Ok = true;
+	switch (winKind) {
+	case WK_KEY:
+		GetKeys(asTS);
+		break;
+	case WK_TS:
+		GetToneSystem(asTS);
+		break;
+	case WK_ACT: {
+		wxString action = event.GetString();
+		if (!action.IsEmpty()) {
+			Append(action);
+			SetSelection(GetCount()-1);
+		}
+	}
+		break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLEC;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLEC;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLEC;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLEC;
+		break;
+	default:
+		wxLogError(_("Unexpected window kind: %d"), winKind);
+		UNREACHABLEC;
+	}
 }
+
+void MutTextBox::BoxChangedAction(const char * a) {
+	if (winKind != WK_ACT) {
+		return;
+	}
+	wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
+			     CM_UPDATEUI);
+	event.SetString(a);
+	wxPostEvent(this,event);
+}
+
+void MutTextBox::BoxChangedAction(int flags) {
+	bool sendflags = false;
+
+	switch (winKind) {
+	case WK_KEY:
+		sendflags = flags & ChangedCallback::KeysChanged;
+		break;
+	case WK_TS:
+		sendflags = flags & ChangedCallback::BoxChanged;
+		break;
+	case WK_ACT:
+		sendflags = flags & ChangedCallback::ActionChanged;
+		break;
+	case WK_LOGIC:
+		wxLogWarning(_("Unexpected value: WK_LOGIC"));
+		UNREACHABLEC;
+		break;
+	case WK_ROUTE:
+		wxLogWarning(_("Unexpected value: WK_ROUTE"));
+		UNREACHABLEC;
+		break;
+	case WK_EDIT:
+		wxLogWarning(_("Unexpected value: WK_EDIT"));
+		UNREACHABLEC;
+		break;
+	case WK_NULL:
+		wxLogWarning(_("Unexpected value: WK_NULL"));
+		UNREACHABLEC;
+		break;
+	}
+	if (sendflags) {
+		Ok = false;
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
+				     CM_UPDATEUI);
+		wxPostEvent(this,event);
+	}
+}
+
+
 
 #if 0
 static inline long get_frequency (long key, tone_system * tonesys) {
@@ -181,120 +246,128 @@ static inline long get_frequency (long key, tone_system * tonesys) {
 }
 #endif
 
-void MutTextBox::GetKeys(bool asTS) 
+void MutTextBox::GetKeys(bool asTS)
 {
 	wxString keys;
-	
+
 	if (box == NULL || !box) return;
+	Freeze();
 	Clear();
-	
 
-#warning implement GetKeys()
-#if 0
-	if (!box->get_key_count()) return;
-	tone_system * tonsys = box->tonesystem;
-
-	for (mutabor_key_type * key = mutabor_find_key_in_box(b,0);
-	     key != NULL; 
-	     key = mutabor_find_key_in_box(b,key->next)) {
-
-		int pitch = key->number;
-		long freq;
-		double cents;
-		
-		if ( (freq=box->get_frequency( pitch)!=0) {
-			if (asTS) {
-				cents = LONG_TO_CENT(freq);
-			} else {
-//				int last_pitch = last_key->number;
-				cents = LONG_TO_CENT(freq);
-//				last_key = key;
-
-			}
+	mutabor::BoxClass::current_tone_list tones = box->GetCurrentTones();
+	for (size_t i = 0; i < tones.size(); i++) {
+		switch (tones[i].flag) {
+		case mutabor::BoxClass::tone_entry::sounding:
 #if 0
 			/* we cant use %z for now. See http://trac.wxwidgets.org/ticket/14311 for details */
-			keys.Printf(_("%2d : %8.1f Hz (%6.2f HT) [ch: %d, id: %z]"),
-				    pitch,
-				    LONG_TO_HERTZ(freq),
-				    cents,
-				    mutabor::GetChannel(box, pitch, key->channel, key->id),
-				    key->id);
+			keys.Printf(_("%2z : %8.1lf Hz (%6.2lf HT) [ch: %d, id: %z]"),
+				    i,
+				    mutabor_convert_pitch_to_frequency(tones[i].pitch),
+				    tones[i].pitch,
+				    tones[i].channel,
+				    (unsigned long)tones[i].id);
 #else
-			keys.Printf(_("%2d : %8.1f Hz (%6.2f HT) [ch: %d, id: %lu]"),
-				    pitch,
-				    LONG_TO_HERTZ(freq),
-				    cents,
-				    mutabor::GetChannel(box, pitch, key->channel, key->id),
-				    (unsigned long)key->id);
+			/* implement multiple channels for each route one */
+			keys.Printf(_("%3d : %8.1lf Hz (%6.2lf HT) [ch: %d, id: %lu]"),
+				tones[i].index,
+				mutabor_convert_pitch_to_frequency(tones[i].pitch),
+				tones[i].pitch,
+				tones[i].channel,
+				(unsigned long)tones[i].id);
 #endif
-		} else {
-			keys.Printf(_("%2d : empty"),pitch);
+			break;
+		case mutabor::BoxClass::tone_entry::silent:
+			keys.Printf(_("%2d : empty"),i);
+			break;
+		case mutabor::BoxClass::tone_entry::invalid:
+			keys.Printf(_("%2d : invalid tone"),i);
+			break;
+		default:
+			keys.Printf(_("%2d : (unknown type %d)"),
+				    i,tones[i].flag);
 		}
 		Append(keys);
 	}
-#endif
+	Thaw();
 }
 
-void MutTextBox::GetToneSystem(bool asTS) 
+void MutTextBox::GetToneSystem(bool asTS)
 {
 	wxString keys;
 
-#warning reimplement this after Mutabor is running again	
-#if 0
-	mutabor_box_type * b = BoxData::GetBox(box).GetNonGUIBox();
-	if (b == NULL || !b) return;
-
-	tone_system * tonsys = b->tonesystem;
-	if (!tonsys || tonsys == NULL) return;
+	mutabor::BoxClass::tone_system tonesys = box->GetToneSystem();
+	Freeze();
 
 	Clear();
-		
 
-	keys.Printf(_("Anchor = %d"),tonsys->anker);
+
+	keys.Printf(_("Anchor = %d"), tonesys.anchor);
 	Append(keys);
-	keys.Printf(_("Width = %d"),tonsys->breite);
+	keys.Printf(_("Width = %u"), (unsigned)tonesys.tones.size());
 	Append(keys);
-	keys.Printf(_("Period = %.1f HT"),
-		    LONG_TO_CENT(tonsys->periode));
+	keys.Printf(_("Period = %.1f HT"), tonesys.period);
 	Append(keys);
 
-	
-	size_t i = 0;
-	for (;i<(size_t)tonsys->breite && tonsys->ton[i]==0;i++);
+	if (tonesys.tones.size() < 1) {
+		Append(_("No tones."));
+		Thaw();
+		return;
+	}
+	size_t i;
+	double reference = 0.0l;
 	if (!asTS) {
-		keys.Printf(_("Reference = %d"),i);
+		for (i = 0 ; i < tonesys.tones.size(); i++) {
+			if (tonesys.tones[i].flag ==
+			    mutabor::BoxClass::tone_entry::sounding) {
+				reference = tonesys.tones[i].pitch;
+				break;
+			}
+		}
+		keys.Printf(_("Reference = %d HT"),i);
 		Append(keys);
 	}
-	
-	long freq, ref = tonsys->ton[i];
 
-	for (int i=0;i<tonsys->breite;i++) {
-		if ( (freq=tonsys->ton[i])!=0) {
-			if (!asTS) freq -= ref;
-			keys.Printf(_("%2d : %8.1f Hz (%6.2lf HT)"),
-				    i, 
-				    LONG_TO_HERTZ(tonsys->ton[i]) ,
-				    LONG_TO_CENT(freq) );
-		} else {
+	for (i = 0 ; i < tonesys.tones.size(); i++) {
+		double pitch, frequency;
+		switch(tonesys.tones[i].flag) {
+		case mutabor::BoxClass::tone_entry::sounding:
+			pitch = tonesys.tones[i].pitch;
+			frequency =
+				mutabor_convert_pitch_to_frequency(pitch);
+			if (!asTS) pitch -= reference;
+			keys.Printf(_("%2u : %8.1lf Hz (%6.2lf HT)"),
+				    (unsigned)i,
+				    frequency,
+				    pitch );
+			break;
+		case mutabor::BoxClass::tone_entry::silent:
 			keys.Printf(_("%2d : empty"),i);
+			break;
+		case mutabor::BoxClass::tone_entry::invalid:
+			keys.Printf(_("%2d : invalid tone"),i);
+			break;
+		default:
+			keys.Printf(_("%2d : (unknown type %d)"),
+				    i,tonesys.tones[i].flag);
 		}
 		Append(keys);
 	}
-#endif
+	Thaw();
+
 }
 
-void MutTextBox::GetAllActions () 
+void MutTextBox::GetAllActions ()
 {
-#warning write this code 
+#warning write this code
 #if 0
 	/** \todo write this code */
 	NewText(GenerateCAWString());
 #endif
 }
 
-void MutTextBox::GetBoxActions() 
+void MutTextBox::GetBoxActions()
 {
-#warning write this code 
+#warning write this code
 #if 0
 	/** \todo write this code */
 	NewText(GenerateACTString(box));

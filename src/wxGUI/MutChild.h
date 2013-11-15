@@ -51,7 +51,8 @@ namespace mutaborGUI {
 		virtual wxString MakeTitle() = 0;
 	};
 
-	class MutChild: public MutTextBox, public MutChildApi
+	class MutChild: public MutTextBox,
+			public MutChildApi
 	{
 
 	public:
