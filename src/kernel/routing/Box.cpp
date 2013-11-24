@@ -188,11 +188,25 @@ namespace mutabor {
 
 	void BoxClass::InitializeIds()
 	{
+		TRACET(BoxClass);
+		size_t nr = 0;
+		for (typename listtype::iterator i = boxList.begin();
+		     i != boxList.end();
+		     i++) {
+			/* currently, the user provides the numeric ids, so we don't need to change them */
+			//(*i)->set_file_id(nr);
+			nr = (*i)->get_routefile_id();
+			routeListType & list = (*i)->routes;
+			for (routeListType::iterator j = list.begin();
+			     j != list.end();
+			     j++) {
+				//thistype * ptr = NULL;
+				(*j)->SetBoxId(nr);
+			}
+			//		nr++;
+		}
 		return;
 #if 0
-		/* currently, the user provides the numeric ids, so we don't need to deal with that problem */
-		TRACET(thistype);
-		size_t nr = 0;
 		for (typename listtype::iterator i = deviceList.begin();
 		     i != deviceList.end();
 		     i++) {

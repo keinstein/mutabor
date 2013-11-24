@@ -55,6 +55,7 @@
 #include "src/wxGUI/MutFrame.h"
 #include "src/wxGUI/GUIBoxData-inlines.h"
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
+#include "src/wxGUI/xmltree.h"
 
 
 #ifndef RTMIDI
@@ -423,22 +424,73 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	// it's our task
 	event.Skip(false);
 	
-	wxString filename = FileNameDialog(wxGetApp().GetTopWindow(),
-	                                   event.GetId());
+	MutFileDataType filedata = FileNameDialog(wxGetApp().GetTopWindow(),
+						  event.GetId());
 	
-	if (!filename) return;
 	
-	MurFileData.name.Assign(filename);
-	
-	wxFFile file(filename);
-	if (!file.IsOpened()) {
-		wxLogError(_("File '%s' couldn't be loaded"),filename.c_str());
+	switch (filedata.type) {
+	case MutFileDataType::Canceled:
+		return;
+	case MutFileDataType::TextRoute:
+	case MutFileDataType::UTF8TextRoute:
+	case MutFileDataType::XMLRoute1:
+		break;
+	case MutFileDataType::Unknown:
+	case MutFileDataType::LogicSource:
+		UNREACHABLE;
 		return;
 	}
-	wxString text;
-	if (! file.ReadAll(&text, MurFileData.autoConverter)) {
-		wxLogError(_("File '%s' could be opened, but not loaded."),
-		           filename.c_str());
+	if (!filedata.name.IsOk()) {
+		wxLogError(_("The string '%s' is not a valid file name."),
+		           filedata.name.GetFullPath().c_str());
+		return;
+	}
+	
+	MurFileData = filedata;
+
+	
+	switch (MurFileData.type) {
+	case MutFileDataType::TextRoute:
+	case MutFileDataType::UTF8TextRoute: {
+		wxFFile file(MurFileData.name.GetFullPath());
+		if (!file.IsOpened()) {
+			wxLogError(_("File '%s' couldn't be loaded"),MurFileData.name.GetFullPath().c_str());
+			return;
+		}
+		wxString text;
+		if (file.ReadAll(&text, wxConvUTF8)) {
+			MurFileData.type=MutFileDataType::UTF8TextRoute;
+		} else if (file.ReadAll(&text, wxConvISO8859_1)) {
+			MurFileData.type=MutFileDataType::TextRoute;
+		} else {
+			wxLogError(_("File '%s' could be opened, but not loaded."),
+				   MurFileData.name.GetFullPath().c_str());
+			return;
+		}
+		compat30::LoadRoutes(text);
+	}
+		break;
+	case MutFileDataType::XMLRoute1: {
+		xmltree document("mutabor-routes",false);
+		if (!document.Load(MurFileData.name.GetFullPath())) {
+			wxLogError(_("File '%s' couldn't be loaded"),MurFileData.name.GetFullPath().c_str());
+			return;
+		}
+
+		RouteClass::ClearRouteList();
+		InputDeviceClass::ClearDeviceList();
+		BoxClass::ClearBoxList();
+		OutputDeviceClass::ClearDeviceList();
+
+		DebugCheckRoutes();
+
+		mutabor::RouteFactory::LoadRoutes(document);
+	}
+		break;
+	case MutFileDataType::Canceled:
+	case MutFileDataType::Unknown:
+	case MutFileDataType::LogicSource:
+		UNREACHABLE;
 		return;
 	}
 	
@@ -455,16 +507,16 @@ void MutRouteWnd::CmRouteLoad(wxCommandEvent& event)
 	  }
 	}
 	mutASSERT(routewnd);
-	if (routewnd) {
-	  routewnd->ClearDevices();
-	}
-	
-	compat30::LoadRoutes(text);
-	
+
 	if (routewnd) {
 	  routewnd->InitDevices();
+	  routewnd->Layout();
+	  routewnd->FitInside();
+	  routewnd->Refresh();
 	}
 	
+	DebugCheckRoutes();
+
 	wxCommandEvent ev(wxEVT_COMMAND_MENU_SELECTED,CM_ROUTES);
 	wxGetApp().ProcessEvent(ev);
 }
@@ -474,8 +526,22 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 	TRACET(MutFrame);
 	event.Skip(false);
 	
-	if (!MurFileData.name.IsOk() ) {
+	switch (MurFileData.type) {
+	case MutFileDataType::Canceled:
+		return;
+	case MutFileDataType::Unknown:
 		CmRouteSaveAs(event);
+		return;
+	case MutFileDataType::TextRoute:
+	case MutFileDataType::UTF8TextRoute:
+	case MutFileDataType::XMLRoute1:
+		if (!MurFileData.name.IsOk() ) {
+			CmRouteSaveAs(event);
+			return;
+		}
+		break;
+	case MutFileDataType::LogicSource:
+		UNREACHABLE;
 		return;
 	}
 	
@@ -487,29 +553,49 @@ void MutRouteWnd::CmRouteSave(wxCommandEvent& event)
 	 }
 	 */
 	
-	wxFFile file(MurFileData.name.GetFullPath(), _T("w"));
-	
-	if (!file.IsOpened()) {
-		wxLogError(_("Cannot open routes file '%s' for writing."),
-		           MurFileData.name.GetFullPath().c_str());
-		return;
-	}
-	
-	wxString RouteConfig;
-	
-	compat30::SaveRoutes(RouteConfig);
-	
-	if (file.Write(_T("# Mutabor 3.x routes configuration\n"),
-		       MurFileData.autoConverter))
-		if (file.Write(RouteConfig, MurFileData.autoConverter)) {
-			file.Close();
+	switch (MurFileData.type) {
+	case MutFileDataType::TextRoute:
+	case MutFileDataType::UTF8TextRoute: {
+		wxFFile file(MurFileData.name.GetFullPath(), _T("w"));
+		
+		if (!file.IsOpened()) {
+			wxLogError(_("Cannot open routes file '%s' for writing."),
+				   MurFileData.name.GetFullPath().c_str());
 			return;
 		}
 	
-	wxLogError(_("Error writing file '%s'."),
-		   
-	           MurFileData.name.GetFullPath().c_str());
-	file.Close();
+		wxString RouteConfig;
+	
+		compat30::SaveRoutes(RouteConfig);
+	
+		wxMBConv &converter = MurFileData.type == MutFileDataType::UTF8TextRoute ? 
+			(wxMBConv&)wxConvUTF8 : (wxMBConv&)wxConvISO8859_1;
+	
+		if (file.Write(_T("# Mutabor 3.x routes configuration\n"),
+			       converter))
+			if (file.Write(RouteConfig, converter)) {
+				file.Close();
+				return;
+			}
+	
+		wxLogError(_("Error writing file '%s'."),
+			   MurFileData.name.GetFullPath().c_str());
+		file.Close();
+	}
+		break;
+	case MutFileDataType::XMLRoute1: {
+		xmltree document("mutabor-routes",true);
+		mutabor::RouteFactory::SaveRoutes(document);
+		document.Save(MurFileData.name.GetFullPath());
+			
+	}
+		break;
+	case MutFileDataType::Canceled:
+	case MutFileDataType::Unknown:
+	case MutFileDataType::LogicSource:
+		UNREACHABLE;
+		return;
+	}
 }
 
 void MutRouteWnd::CmRouteSaveAs(wxCommandEvent& event)
@@ -519,20 +605,30 @@ void MutRouteWnd::CmRouteSaveAs(wxCommandEvent& event)
 	// it's our task
 	event.Skip(false);
 	
-	wxString filename = FileNameDialog(wxGetApp().GetTopWindow(),
-	                                   event.GetId(),
-	                                   MurFileData.name.GetFullPath());
 	
-	if (!filename) return;
+	MutFileDataType file = FileNameDialog(wxGetApp().GetTopWindow(),
+					      event.GetId(),
+					      MurFileData.name.GetFullPath());
 	
-	MurFileData.name.Assign(filename);
-	
-	if (!MurFileData.name.IsOk()) {
+	switch (file.type) {
+	case MutFileDataType::Canceled:
+		return;
+	case MutFileDataType::TextRoute:
+	case MutFileDataType::UTF8TextRoute:
+	case MutFileDataType::XMLRoute1:
+		break;
+	case MutFileDataType::Unknown:
+	case MutFileDataType::LogicSource:
+		UNREACHABLE;
+		return;
+	}
+	if (!file.name.IsOk()) {
 		wxLogError(_("The string '%s' is not a valid file name."),
-		           filename.c_str());
+		           file.name.GetFullPath().c_str());
 		return;
 	}
 	
+	MurFileData = file;
 	CmRouteSave(event);
 }
 

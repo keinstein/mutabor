@@ -76,8 +76,10 @@ namespace mutabor {
 #ifdef DEBUG
 		wxString oldpath = config.GetPath();
 #endif
-		config.Write(_T("Box"),box);
-		config.Write(_T("Active"),Active);
+		config.Write(_T("Input Device"),  inputid);
+		config.Write(_T("Output Device"), outputid);
+		config.Write(_T("Box"),           boxid);
+		config.Write(_T("Active"),        Active);
 		if (In)
 			In->Save(config,this);
 		if (Out)
@@ -220,6 +222,7 @@ namespace mutabor {
 		     r != routeList.end(); r++) {
 			(*r) -> routefile_id = i++;
 		}
+		BoxClass::InitializeIds();
 		InputDeviceClass::InitializeIds();
 	}
 
@@ -235,8 +238,6 @@ namespace mutabor {
 			     route = routeList.begin();
 		     route != routeList.end(); route++) {
 			config.toLeaf(_T("Route"),(*route)->get_routefile_id());
-			config.Write(_T("Input Device"), (*route)->inputid);
-			config.Write(_T("Output Device"), (*route)->outputid);
 			(*route) -> Save (config);
 			config.toParent();
 		}
