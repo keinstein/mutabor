@@ -161,6 +161,7 @@ libmutaborgui_a_INDENTHEADERS = \
 		src/wxGUI/StatusBar.h \
 		src/wxGUI/resourceload.h \
 		src/wxGUI/stclanguage.h \
+		src/wxGUI/xmltree.h \
 		src/wxGUI/generic/mhArray.h \
 		src/wxGUI/generic/mhDefs.h \
 		src/wxGUI/generic/muconvauto.h \
@@ -205,6 +206,7 @@ libmutaborgui_a_INDENTS = \
 		src/wxGUI/Panel.cpp \
 		src/wxGUI/StatusBar.cpp \
 		src/wxGUI/stclanguage.cpp \
+		src/wxGUI/xmltree.cpp \
 		src/wxGUI/generic/muconvauto.cpp \
 		src/wxGUI/generic/mxDefs.cpp \
 		src/wxGUI/generic/valNum.cpp \
