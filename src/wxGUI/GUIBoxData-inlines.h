@@ -198,6 +198,25 @@ namespace mutaborGUI {
 		return NULL;
 	}
 
+	inline void BoxData::MoveToInList(int newpos) {
+		for (MutBoxShapeList::iterator i = shapes.begin();
+		     i != shapes.end();
+		     i++) {
+			wxWindow * win = (*i)->GetParent();
+			MutRouteWnd * display = NULL;
+			while (win && !(display = dynamic_cast<MutRouteWnd *>(win)))
+				win = win->GetParent();
+			if (display)
+				display -> MoveShape(*i,newpos);
+		}
+	}
+
+	inline int BoxData::MoveInList(int count) {
+		int newpos = basetype::MoveInList(count);
+		MoveToInList(newpos);
+		return newpos;
+	}
+
 	inline void BoxData::Add(MutBoxShape * shape) {
 		if (shape) {
 			shapes.push_back(shape);

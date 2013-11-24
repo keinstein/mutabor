@@ -390,6 +390,16 @@ namespace mutaborGUI {
 		
 		virtual mutabor::OutputDeviceClass * GetDevice() = 0;	
 		
+		/** 
+		 * Move the associated device shape to a given
+		 * position. This function handles the GUI part of
+		 * GUIfiedOutputDevice::MoveInList().
+		 * 
+		 * \param newpos New position of the shape in the
+		 *  list. This parameter should reflect the actual
+		 *  position of the device in the (non GUI) output
+		 *  device list.
+		 */
 		virtual	void MoveToInList(int newpos);
 
 		void Destroy();
@@ -531,6 +541,16 @@ namespace mutaborGUI {
 			return static_cast<GUIInputDeviceBase *>(d->getUserData());
 		}
 
+		/** 
+		 * Move the associated device shape to a given
+		 * position. This function handles the GUI part of
+		 * GUIInputDevice::MoveInList().
+		 * 
+		 * \param newpos New position of the shape in the
+		 *  list. This parameter should reflect the actual
+		 *  position of the device in the (non GUI) input
+		 *  device list.
+		 */
 		virtual	void MoveToInList(int newpos);
 		void Destroy();
 		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);

@@ -647,18 +647,25 @@ namespace mutaborGUI {
 	}
 
 
-	void MutBoxShape::CmMoveIcon(wxCommandEvent & event) {
+	/** 
+	 * Move the box in the box and update the GUI according to the
+	 * new order.
+	 * 
+	 * \param event wxCommandEvent containing the request
+	 */
+	void MutBoxShape::CmMoveIcon (wxCommandEvent & event) {
 		switch (event.GetId()) {
 		case CM_MOVE_UP:
-			DEBUGLOG(routinggui,_T("Implement move up"));
+			MoveBox(-1);
 			break;
 		case CM_MOVE_DOWN:
-			DEBUGLOG(routinggui,_T("Implement move down"));
+			MoveBox(+1);
 			break;
 		default:
 			UNREACHABLEC;
 		}
 	}
+
 
 	void MutBoxShape::OnKeyDown (wxKeyEvent & event) {
 		if (event.HasModifiers()) {

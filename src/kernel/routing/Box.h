@@ -256,7 +256,6 @@ namespace mutabor {
 		/// Move routes to another device 
 		virtual bool MoveRoutes (Box & newclass);
 
-		virtual	int MoveInList(int count);
 
 		const routeListType & GetRoutes() const {
 			return routes;
@@ -289,6 +288,17 @@ namespace mutabor {
 		 * \return Box that has been found or created
 		 */
 		static Box GetOrCreateBox(int id);
+
+		/** 
+		 * Move the box in the box list.
+		 * 
+		 * \param count Number of places the box should be
+		 * moved up. Negative values indicate downwards
+		 * direction.
+		 * 
+		 * \return new position in the box list.
+		 */
+		virtual	int MoveInList(int count);
 
 		static void ClearBoxList() {
 			while (!boxList.empty()) {

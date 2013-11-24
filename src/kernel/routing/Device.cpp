@@ -221,8 +221,18 @@ namespace mutabor {
 		typename listtype::iterator pos = FindInDeviceList(DevicePtr(dev));
 
 		if (pos == deviceList.end()) return -1;
-		typename listtype::iterator newpos = pos + count;
-		if (newpos == deviceList.end()) --newpos;
+		int current_pos = pos - deviceList.begin();
+		typename listtype::iterator newpos;
+		if (current_pos + count <= 0) {
+			newpos = deviceList.begin();
+			count = -1;
+		} else 	if (current_pos + count >= deviceList.size()) {
+			newpos = deviceList.end() - 1;
+			count = 1;
+		} else {
+			newpos = pos + count;
+		}
+ 		if (newpos == deviceList.end()) --newpos;
 		if (count > 0) 
 			std::rotate (pos, newpos, newpos + 1);
 		else 

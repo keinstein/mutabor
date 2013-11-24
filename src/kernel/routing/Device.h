@@ -602,6 +602,15 @@ namespace mutabor {
 			return static_cast<const thistype *>(this);
 		}
 
+		/** 
+		 * Move the device in the device list.
+		 * 
+		 * \param count Number of places the device should be
+		 * moved up. Negative values indicate downwards
+		 * direction.
+		 * 
+		 * \return new position in the device list.
+		 */
 		virtual	int MoveInList(int count);
 
 		static void ClearDeviceList() {

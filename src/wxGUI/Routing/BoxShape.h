@@ -109,6 +109,17 @@ namespace mutaborGUI {
 		virtual void GotFocus() ;
 
 		virtual bool SetBackgroundColour(const wxColour& colour);
+
+		/** 
+		 * Move the box in the box list and update the GUI
+		 * according to the new order. This function provides the 
+		 * event handler that is called from the GUI.
+		 * 
+		 * \param event wxCommandEvent containing the request
+		 */
+		void CmMoveIcon (wxCommandEvent & event);
+
+
 		/// Get a double click and prepare for execution of the command
 		/** Since programs might produce segmentation faults
 		    when the object is deleted during processing of mouse
@@ -130,7 +141,6 @@ namespace mutaborGUI {
 		}
 
 
-		void CmMoveIcon(wxCommandEvent & event);
 		void OnKeyDown (wxKeyEvent & event);
 
 		BoxDlg * ShowBoxDialog() const;
@@ -243,6 +253,18 @@ namespace mutaborGUI {
 		wxSizer * channels;
 		mutabor::Box box;
 		static wxSizerFlags sizerFlags;
+
+		/** 
+		 * Move the box in the box list and update the GUI
+		 * according to the new order.
+		 * 
+		 * \param count number of entries the device should be moved
+		 *              up. Negative values indicate downwards direction.
+		 */
+		virtual void MoveBox(int count) {
+				box->MoveInList(count);
+		}
+
 	
 	private:
 		void SetBox() {

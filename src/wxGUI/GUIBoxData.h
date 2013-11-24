@@ -80,6 +80,7 @@ namespace mutaborGUI {
 			bool want_actions_window:1;
 		};
 	public:
+		typedef mutabor::BoxClass basetype;
 
 		class NoSuchBoxException: std::invalid_argument {
 		public:
@@ -177,6 +178,19 @@ namespace mutaborGUI {
 		const MutBoxShapeList & GetShapes() const {
 			return shapes;
 		}
+
+		/** 
+		 * Move the associated box shape to a given position. 
+		 * This function handles the GUI part of MoveInList().
+		 * 
+		 * \param newpos New position of the shape in the
+		 *  list. This parameter should reflect the actual
+		 *  position of the box in the (non GUI) box list.
+		 */
+		virtual	void MoveToInList(int newpos);
+
+		virtual	int MoveInList(int count);
+
 
 		void Add(MutBoxShape * shape);
 		bool Remove(MutBoxShape * shape);

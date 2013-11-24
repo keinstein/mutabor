@@ -240,8 +240,18 @@ namespace mutabor {
 		typename listtype::iterator pos = FindInBoxList(Box(this));
 
 		if (pos == boxList.end()) return -1;
-		typename listtype::iterator newpos = pos + count;
-		if (newpos == boxList.end()) --newpos;
+		int current_pos = pos - boxList.begin();
+		typename listtype::iterator newpos;
+		if (current_pos + count <= 0) {
+			newpos = boxList.begin();
+			count = -1;
+		} else 	if ((size_t)(current_pos + count) >= boxList.size()) {
+			newpos = boxList.end() - 1;
+			count = 1;
+		} else {
+			newpos = pos + count;
+		}
+
 		if (count > 0)
 			std::rotate (pos, newpos, newpos + 1);
 		else
