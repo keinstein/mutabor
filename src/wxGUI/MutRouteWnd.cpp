@@ -6,9 +6,6 @@
  * Changes (c) 2012 Tobias Schlemmer
  * \author   R. Krauße
  * Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 2005/08/12
- * $Date: 2012/02/18 18:14:13 $
- * \version $Revision: 1.34 $
  * \license GPL
  *
  *    This program is free software; you can redistribute it and/or modify
