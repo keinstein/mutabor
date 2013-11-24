@@ -24,8 +24,8 @@
  *
  *
  ********************************************************************
- * \addtogroup GUI 
- * \{ 
+ * \addtogroup GUI
+ * \{
  *
  * \todo Rewrite shape classes to use GUI-references. In order to do
  * that, a special reference counting function should be provided that
@@ -98,7 +98,7 @@ namespace mutaborGUI {
 		}
 #endif
 
-		
+
 /*
 		void Add(MutBoxShape * shape) {
 			Box box = GetRoute()->GetBox();
@@ -126,10 +126,10 @@ namespace mutaborGUI {
 		/// add a new box
 		virtual void Add(mutabor::Box & b);
 		/// replace an existing output device
-		virtual bool Replace (mutabor::OutputDevice & olddev, 
+		virtual bool Replace (mutabor::OutputDevice & olddev,
 				      mutabor::OutputDevice & newdev);
 		/// replace an existing input device
-		virtual bool Replace (mutabor::InputDevice & olddev, 
+		virtual bool Replace (mutabor::InputDevice & olddev,
 				      mutabor::InputDevice & newdev);
 		/// replace an existing box
 		virtual bool Replace(mutabor::Box & oldbox,
@@ -152,7 +152,7 @@ namespace mutaborGUI {
 
 		bool Delete(MutBoxShape * shape) {
 			Box box = GetRoute()->GetBox();
-			if (box) 
+			if (box)
 				return box -> Delete(shape);
 			else {
 				UNREACHABLECT(GUIRouteBase);
@@ -161,25 +161,25 @@ namespace mutaborGUI {
 		}
 */
 
-		const MutBoxChannelShapeList & 
+		const MutBoxChannelShapeList &
 		GetBoxChannelShapes() const {
 			return shapes;
 		}
 		void Add(MutBoxChannelShape * shape);
 		bool Remove(MutBoxChannelShape * shape);
 
-		
+
 		static GUIRouteBase * GetGUIRoute(mutabor::Route & r) {
 			return static_cast<GUIRouteBase *>(r->getUserData());
 		}
-		virtual mutabor::RouteClass * GetRoute() = 0;	
+		virtual mutabor::RouteClass * GetRoute() = 0;
 
 		virtual void Destroy();
 
 		/// return the shape that corresponds to the current window
 		/** To use common naming the window is named parent
 		    though it is actually the grandparent of the
-		    returned channel shape 
+		    returned channel shape
 
 		    \param parent wxWindow* window which shall contain
 		    the searched shape
@@ -193,7 +193,7 @@ namespace mutaborGUI {
 
 	class GUIRouteFactory;
 
-	template<class T> 
+	template<class T>
 	class GUIfiedRoute: public T, public GUIRouteBase {
 	public:
 		friend class GUIRouteFactory;
@@ -222,8 +222,8 @@ namespace mutaborGUI {
 			this -> userdata = static_cast<GUIRouteBase *> (this);
 		}
 	public:
-		virtual ~GUIfiedRoute() { 
-			TRACEC; 
+		virtual ~GUIfiedRoute() {
+			TRACEC;
 		}
 
 		bool IsRoute(const mutabor::RouteClass * r) const {
@@ -244,10 +244,10 @@ namespace mutaborGUI {
 		/// add a new box
 		virtual void Add(mutabor::Box & b);
 		/// replace an existing output device
-		virtual bool Replace (mutabor::OutputDevice & olddev, 
+		virtual bool Replace (mutabor::OutputDevice & olddev,
 				      mutabor::OutputDevice & newdev);
 		/// replace an existing input device
-		virtual bool Replace (mutabor::InputDevice & olddev, 
+		virtual bool Replace (mutabor::InputDevice & olddev,
 				      mutabor::InputDevice & newdev);
 		/// replace an existing box
 		virtual bool Replace (mutabor::Box & oldbox,
@@ -265,8 +265,8 @@ namespace mutaborGUI {
 
 		virtual void Destroy();
 
-		virtual void  runtime_error(bool iswarning, 
-					    const mutString& message, 
+		virtual void  runtime_error(bool iswarning,
+					    const mutString& message,
 					    va_list & args) {
 			GUIRouteBase::runtime_error(iswarning,
 						message,
@@ -277,10 +277,10 @@ namespace mutaborGUI {
 
 	/// Prototype of any GUI based route class
 	/** This class is the prototype for any GUI based route.
-	    Since the base class remains RouteClass we must not 
+	    Since the base class remains RouteClass we must not
 	    any fields to it.
 	*/
-	
+
 
 	typedef GUIfiedRoute<mutabor::RouteClass> GUIRoute;
 
@@ -297,15 +297,15 @@ namespace mutaborGUI {
 		return ToGUIBase(r.get());
 	}
 
-	class GUIRouteFactory:public mutabor::RouteFactory { 
+	class GUIRouteFactory:public mutabor::RouteFactory {
 	public:
 		GUIRouteFactory() {};
 		virtual ~GUIRouteFactory() {};
 
 		static MutBoxChannelShape * CreateBoxChannelShape(
 			mutabor::Route & route,
-			wxWindow * parent) 
-			__attribute__ ((malloc)) 
+			wxWindow * parent)
+			__attribute__ ((malloc))
 		{
 			return ((GUIRouteFactory *)factory)->
 				DoCreateBoxChannelShape(route,parent);
@@ -326,13 +326,13 @@ namespace mutaborGUI {
 			int oTo,
 			bool oNoDrum) const __attribute__ ((malloc));
 
-		virtual MutBoxChannelShape * 
+		virtual MutBoxChannelShape *
 		DoCreateBoxChannelShape (mutabor::Route & route,
 					 wxWindow * parent) const;
 	};
 
 /********************************************************************************/
-	class GUIOutputDeviceBase;	
+	class GUIOutputDeviceBase;
 	template<class T> class TGUIOutputDevice;
 
 	template<class T> T * static_cast_to(mutabor::OutputDevice & o,
@@ -371,7 +371,7 @@ namespace mutaborGUI {
 		virtual bool Replace(mutabor::Route & oldroute, mutabor::Route & newroute);
                 /// remove a route
 		virtual bool Remove(mutabor::Route & route);
-		/// Move routes to another device 
+		/// Move routes to another device
 		//virtual bool MoveRoutes (DevicePtr newclass);
 
 		void Add(MutOutputDeviceShape * shape);
@@ -382,19 +382,19 @@ namespace mutaborGUI {
 		static GUIOutputDeviceBase * GetGUIOutputDevice(mutabor::OutputDeviceClass * d) {
 			return static_cast<GUIOutputDeviceBase *>(d->getUserData());
 		}
-		static const GUIOutputDeviceBase * 
+		static const GUIOutputDeviceBase *
 		GetGUIOutputDevice(const mutabor::OutputDeviceClass * d) {
 			return static_cast<GUIOutputDeviceBase *>(d->getUserData());
 		}
 
-		
-		virtual mutabor::OutputDeviceClass * GetDevice() = 0;	
-		
-		/** 
+
+		virtual mutabor::OutputDeviceClass * GetDevice() = 0;
+
+		/**
 		 * Move the associated device shape to a given
 		 * position. This function handles the GUI part of
 		 * GUIfiedOutputDevice::MoveInList().
-		 * 
+		 *
 		 * \param newpos New position of the shape in the
 		 *  list. This parameter should reflect the actual
 		 *  position of the device in the (non GUI) output
@@ -407,7 +407,7 @@ namespace mutaborGUI {
 		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
 	};
 
-	template<class T> 
+	template<class T>
 	class GUIfiedOutputDevice: public T, public GUIOutputDeviceBase {
 		friend class GUIMidiPortFactory;
 		friend class GUIMidiFileFactory;
@@ -416,7 +416,7 @@ namespace mutaborGUI {
 		typedef T basetype;
 		typedef GUIfiedOutputDevice<T> thistype;
 	protected:
-		GUIfiedOutputDevice(const mutStringRef name = mutEmptyString, 
+		GUIfiedOutputDevice(const mutStringRef name = mutEmptyString,
 				    int id = -1):T(name, id),
 						 GUIOutputDeviceBase() {
 			this->setUserData(static_cast<GUIOutputDeviceBase *>(this));
@@ -432,7 +432,7 @@ namespace mutaborGUI {
 		virtual bool Replace(mutabor::Route & oldroute, mutabor::Route & newroute);
                 /// remove a route
 		virtual bool Remove(mutabor::Route & route);
-//		/// Move routes to another device 
+//		/// Move routes to another device
 //		virtual bool MoveRoutes (DevicePtr newclass);
 
 		virtual mutabor::OutputDeviceClass * GetDevice() {
@@ -441,8 +441,8 @@ namespace mutaborGUI {
 
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
-		virtual void  runtime_error(bool iswarning, 
-					    const mutString& message, 
+		virtual void  runtime_error(bool iswarning,
+					    const mutString& message,
 					    va_list & args) {
 			GUIOutputDeviceBase::runtime_error(iswarning,
 							   message,
@@ -484,7 +484,7 @@ namespace mutaborGUI {
 	}
 
 	/// Prototype of any GUI based input device class
-	
+
 	class GUIInputDeviceBase {
 	protected:
 		MutInputDeviceShapeList shapes;
@@ -515,12 +515,12 @@ namespace mutaborGUI {
 		virtual bool Replace(mutabor::Route & oldroute, mutabor::Route & newroute);
                 /// remove a route
 		virtual bool Remove(mutabor::Route &  route);
-		/// Move routes to another device 
+		/// Move routes to another device
 //		virtual bool MoveRoutes (DevicePtr newclass);
 
 		void Add(MutInputDeviceShape * shape);
 		bool Remove(MutInputDeviceShape * shape);
-		
+
 #if 0
 		void Attatch(MutInputDeviceShape * shape);
 		bool Detatch(MutInputDeviceShape * shape);
@@ -530,10 +530,12 @@ namespace mutaborGUI {
 		virtual void Play();
 		virtual void Stop();
 		virtual void Pause();
+		virtual bool Open();
+		virtual void Close();
 
 
 		MutInputDeviceShape * GetShape(wxWindow * parent);
-		
+
 		static GUIInputDeviceBase * GetGUIInputDevice(mutabor::InputDeviceClass * d) {
 			return static_cast<GUIInputDeviceBase *>(d->getUserData());
 		}
@@ -541,11 +543,11 @@ namespace mutaborGUI {
 			return static_cast<GUIInputDeviceBase *>(d->getUserData());
 		}
 
-		/** 
+		/**
 		 * Move the associated device shape to a given
 		 * position. This function handles the GUI part of
 		 * GUIInputDevice::MoveInList().
-		 * 
+		 *
 		 * \param newpos New position of the shape in the
 		 *  list. This parameter should reflect the actual
 		 *  position of the device in the (non GUI) input
@@ -554,10 +556,12 @@ namespace mutaborGUI {
 		virtual	void MoveToInList(int newpos);
 		void Destroy();
 		virtual void runtime_error(bool iswarning, const mutString& message, va_list & args);
+	protected:
+		void NotifyShapes();
 	};
 
 
-	template<class T> 
+	template<class T>
 	class GUIfiedInputDevice: public T, public GUIInputDeviceBase {
 		friend class GUIMidiPortFactory;
 		friend class GUIMidiFileFactory;
@@ -567,9 +571,9 @@ namespace mutaborGUI {
 		typedef GUIfiedInputDevice<T> thistype;
 
 	protected:
-		GUIfiedInputDevice(const mutStringRef name = mutEmptyString, 
+		GUIfiedInputDevice(const mutStringRef name = mutEmptyString,
 				   mutabor::MutaborModeType mode
-				   = mutabor::DeviceStop, 
+				   = mutabor::DeviceStop,
 				   int id = -1):T(name,
 						  mode,
 						  id) {
@@ -597,6 +601,19 @@ namespace mutaborGUI {
 			basetype::Stop();
 			GUIInputDeviceBase::Stop();
 		}
+		virtual bool  Open() {
+			bool retval = basetype::Open();
+			if (retval) {
+				retval &= GUIInputDeviceBase::Open();
+				if (!retval)
+					basetype::Close();
+			}
+			return retval;
+		}
+		virtual void  Close() {
+			basetype::Close();
+			GUIInputDeviceBase::Close();
+		}
 
 
 		/// add a route
@@ -605,13 +622,13 @@ namespace mutaborGUI {
 		virtual bool Replace(mutabor::Route & oldroute, mutabor::Route & newroute);
                 /// remove a route
 		virtual bool Remove(mutabor::Route & route);
-		/// Move routes to another device 
+		/// Move routes to another device
 //		virtual bool MoveRoutes (DevicePtr newclass);
 
 		virtual void DisconnectFromAll();
 		virtual	int MoveInList(int count);
-		virtual void  runtime_error(bool iswarning, 
-					    const mutString& message, 
+		virtual void  runtime_error(bool iswarning,
+					    const mutString& message,
 					    va_list & args) {
 			GUIInputDeviceBase::runtime_error(iswarning,
 							  message,
@@ -633,7 +650,7 @@ namespace mutaborGUI {
 		return ToGUIBase(d.get());
 	}
 
-	class GUIDeviceFactory:public mutabor::DeviceFactory { 
+	class GUIDeviceFactory:public mutabor::DeviceFactory {
 	protected:
 		GUIDeviceFactory(size_t id = 0):
 			DeviceFactory(id) {}
@@ -656,7 +673,7 @@ namespace mutaborGUI {
 
 		static MutInputDeviceShape * CreateShape(
 			mutabor::InputDevice & device, wxWindow * parent);
-			
+
 	};
 
 
@@ -664,7 +681,7 @@ namespace mutaborGUI {
 	typedef GUIfiedOutputDevice<mutabor::OutputMidiPort> GUIOutputMidiPort;
 	typedef GUIfiedInputDevice<mutabor::InputMidiPort> GUIInputMidiPort;
 
-	class GUIMidiPortFactory:public GUIDeviceFactory { 
+	class GUIMidiPortFactory:public GUIDeviceFactory {
 	public:
 		GUIMidiPortFactory(size_t id = mutabor::DTMidiPort):
 			GUIDeviceFactory(id) {}
@@ -676,12 +693,12 @@ namespace mutaborGUI {
 				return mutabor::DTMidiPort;
 			}
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 								    int id = -1) const;
-		
 
- 		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
-							   mutabor::MutaborModeType mode, 
+
+ 		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+							   mutabor::MutaborModeType mode,
 							   int id = -1) const;
 
 		virtual MutOutputDeviceShape * DoCreateShape(
@@ -696,7 +713,7 @@ namespace mutaborGUI {
 	typedef GUIfiedOutputDevice<mutabor::OutputMidiFile> GUIOutputMidiFile;
 	typedef GUIfiedInputDevice<mutabor::InputMidiFile> GUIInputMidiFile;
 
-	class GUIMidiFileFactory:public GUIDeviceFactory { 
+	class GUIMidiFileFactory:public GUIDeviceFactory {
 	public:
 		GUIMidiFileFactory(size_t id = mutabor::DTMidiFile):
 			GUIDeviceFactory(id) {}
@@ -708,10 +725,10 @@ namespace mutaborGUI {
 				return mutabor::DTMidiFile;
 			}
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 								    int id = -1) const;
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
-								  mutabor::MutaborModeType mode, 
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
 			mutabor::OutputDevice & device,
@@ -724,22 +741,22 @@ namespace mutaborGUI {
 	typedef GUIfiedOutputDevice<mutabor::OutputGis> GUIOutputGis;
 	typedef GUIfiedInputDevice<mutabor::InputGis> GUIInputGis;
 
-	class GUIGisFactory:public GUIDeviceFactory { 
+	class GUIGisFactory:public GUIDeviceFactory {
 	public:
 		GUIGisFactory(size_t id = mutabor::DTGis):
 			GUIDeviceFactory(id) {}
 		virtual ~GUIGisFactory();
 
 	protected:
-		
+
 		virtual size_t GetType() const { return mutabor::DTGis;	}
 
 
-		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual mutabor::OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 								    int id = -1) const;
-		
-		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name, 
-								  mutabor::MutaborModeType mode, 
+
+		virtual mutabor::InputDeviceClass * DoCreateInput(const mutStringRef name,
+								  mutabor::MutaborModeType mode,
 								  int id = -1) const;
 		virtual MutOutputDeviceShape * DoCreateShape(
 			mutabor::OutputDevice & device,

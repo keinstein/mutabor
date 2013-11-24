@@ -19,6 +19,7 @@ TOOLBARICONS = \
 	InDevPlay \
 	InDevStop \
 	InDevPause \
+	InDevRecord \
 	help-browser
 
 SVGTOOLBARICONS = $(shell for d in $(TOOLBARICONS); \

@@ -1,5 +1,3 @@
-
-
 XSIZE = 16
 YSIZE = 16
 

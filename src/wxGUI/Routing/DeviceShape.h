@@ -123,13 +123,13 @@ namespace mutaborGUI {
 			}
 		};
 
-		typedef std::map<wxString *, MutDeviceShape *, strptrless> 
+		typedef std::map<wxString *, MutDeviceShape *, strptrless>
 		stringmaptype;
 		typedef typename stringmaptype::iterator stringmapiterator;
-  
+
 		virtual ~MutDeviceShape();
- 
-		bool Create (wxWindow * parent, wxWindowID id, 
+
+		bool Create (wxWindow * parent, wxWindowID id,
 			     const wxString & name = wxEmptyString)
 			{
 				DEBUGLOG(other, _T("Name %s"),name.c_str());
@@ -138,18 +138,18 @@ namespace mutaborGUI {
 				return state;
 			}
 
-		bool Create (wxWindow * parent, 
-			     wxWindowID id, 
+		bool Create (wxWindow * parent,
+			     wxWindowID id,
 			     devicetype & d);
 
 
 		const devicetype & GetDevice() const { return device; }
 		devicetype & GetDevice() { return device; }
 
-		const GUIDeviceBase * GetGUIDevice() const { 
+		const GUIDeviceBase * GetGUIDevice() const {
 			return ToGUIBase(device);
 		}
-		GUIDeviceBase * GetGUIDevice() { 
+		GUIDeviceBase * GetGUIDevice() {
 			return ToGUIBase(device);
 		}
 		mutabor::routeListType & getRoutes()
@@ -163,11 +163,11 @@ namespace mutaborGUI {
 			return device->GetRoutes();
 		}
 
-		
+
 		const MutBoxChannelShapeList & GetChannels() const {
 			return routes;
 		}
-	
+
 		static void SetSizerFlags (wxSizerFlags flags) {sizerFlags = flags; }
 		static const wxSizerFlags & GetSizerFlags() { return sizerFlags; }
 
@@ -176,7 +176,7 @@ namespace mutaborGUI {
 			TRACEC;
 			if (device)
 				UNREACHABLEC;
-			else 
+			else
 				device = dev;
 			TRACEC;
 		};
@@ -190,7 +190,7 @@ namespace mutaborGUI {
 			if (device != olddev) {
 				UNREACHABLEC;
 				return false;
-			} else 
+			} else
 				device = newdev;
 			TRACEC;
 			return true;
@@ -202,7 +202,7 @@ namespace mutaborGUI {
 			if (device != dev) {
 				UNREACHABLEC;
 				return false;
-			} else 
+			} else
 				device = NULL;
 			TRACEC;
 			return true;
@@ -215,21 +215,21 @@ namespace mutaborGUI {
 				     MutBoxChannelShape * newroute);
 		/// remove a route
 		virtual bool Remove(MutBoxChannelShape * route);
-		/// Move routes to another device 
+		/// Move routes to another device
 		virtual bool MoveRoutes (MutDeviceShape * newclass);
 
 
 		virtual bool Recompute();
 //		virtual mutabor::Route getRoutes() = 0;
-		virtual wxPanel * GetFilterPanel(wxWindow * parent, 
+		virtual wxPanel * GetFilterPanel(wxWindow * parent,
 						 mutabor::Route & route) const = 0;
 /*
-		{ 
+		{
 			ABSTRACT_FUNCTIONC;
-			return NULL; 
+			return NULL;
 		}
-*/	
-		virtual void ReadFilterPanel(wxWindow * panel, 
+*/
+		virtual void ReadFilterPanel(wxWindow * panel,
 					     mutabor::Route & route) = 0;
 /*
 		{
@@ -237,20 +237,35 @@ namespace mutaborGUI {
 			return;
 		}
 */
-		virtual void ReadPanel(FilterPanel * panel, 
+		virtual void ReadPanel(FilterPanel * panel,
 				       MutBoxChannelShape * channel);
 
 
 		void OnKeyDown (wxKeyEvent & event);
 
-		/** 
-		 * Move the corresponding device in the device list and 
+		/**
+		 * Move the corresponding device in the device list and
 		 * update the GUI according to the new order.
-		 * 
+		 *
 		 * \param event wxCommandEvent containing the request
 		 */
 		void CmMoveIcon (wxCommandEvent & event);
 
+		/**
+		 * The device notifies the shape about a state change.
+		 *
+		 * \param event wxCommandEvent containing the request
+		 */
+		void CmDeviceNotification (wxCommandEvent & event) {
+			DoDeviceNotification (event);
+		}
+
+		/**
+		 * The device notifies the shape about a state change.
+		 *
+		 * \param event wxCommandEvent containing the request
+		 */
+		virtual void DoDeviceNotification (wxCommandEvent & event);
 
 
 #if defined(_MSC_VER)
@@ -263,10 +278,10 @@ namespace mutaborGUI {
 		    when the object is deleted during processing of mouse
 		    events, we send us a new event using the event queue.
 		*/
-		void LeftDblClickEvent (wxMouseEvent & event) { 
+		void LeftDblClickEvent (wxMouseEvent & event) {
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK); 
-			wxPostEvent(this,command); 
+					       CM_LEFT_DOUBLE_CLICK);
+			wxPostEvent(this,command);
 		}
 		/// Process a double click
 		/** Since programs might produce segmentation faults
@@ -274,48 +289,52 @@ namespace mutaborGUI {
 		    events, we send us a new event using the event queue.
 		*/
 		void CmLeftDblClick (wxCommandEvent& event) {
-			DoLeftDblClick(); 
+			DoLeftDblClick();
 		}
 
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 	protected:
 		MutBoxChannelShapeList routes;
 		devicetype device;
+		wxSizer * playbuttons;
 		//	static stringmaptype stringmap;
 		static wxSizerFlags sizerFlags;
-		
+
 		MutDeviceShape():MutIconShape(),
 				 routes(),
-				 device(NULL) {
+				 device(NULL),
+				 playbuttons(NULL) {
 		}
 
-		MutDeviceShape (wxWindow * parent, wxWindowID id, 
+		MutDeviceShape (wxWindow * parent, wxWindowID id,
 				const wxString & name = wxEmptyString):
 			MutIconShape(),
 			routes(),
-			device(NULL)
+			device(NULL),
+			playbuttons(NULL)
 			{
 				Create(parent, id, name);
 			}
 
-		MutDeviceShape (wxWindow * parent, 
-				wxWindowID id, 
+		MutDeviceShape (wxWindow * parent,
+				wxWindowID id,
 				devicetype & d):
 			MutIconShape(),
 			routes(),
-			device(NULL) // device gets assigned by Create
+			device(NULL), // device gets assigned by Create
+			playbuttons(NULL)
 		{
 			Create (parent, id, d);
 		}
 
 
-		/** 
-		 * Move the corresponding device in the device list and 
+		/**
+		 * Move the corresponding device in the device list and
 		 * update the GUI according to the new order.
-		 * 
+		 *
 		 * \param count number of entries the device should be moved
 		 *              up. Negative values indicate downwards direction.
 		 */
@@ -323,8 +342,8 @@ namespace mutaborGUI {
 				device->MoveInList(count);
 		}
 
-		/** 
-		 * Execute the double click. Despite its name this function must 
+		/**
+		 * Execute the double click. Despite its name this function must
 		 * not be called directly from a double click event handler.
 		 * Click event handlers are not proof against control deletion.
 		 */
@@ -333,34 +352,38 @@ namespace mutaborGUI {
 
 		virtual void InitializeDialog(DeviceDialog * in) const { }
 		/// Initialize device data from a dialog
-		/** Transfers the data from a dialog window into the corresponding 
-		 *  device object. 
+		/** Transfers the data from a dialog window into the corresponding
+		 *  device object.
 		 * \param dlg device dialog
 		 * \retval true if the device has changed in a way that it must be reinitialized.
 		 * \retval false otherwise
 		 */
-		virtual bool readDialog (DeviceDialog * dlg) { 
+		virtual bool readDialog (DeviceDialog * dlg) {
 			mutASSERT (false);
-			return false; 
+			return false;
 		}
 		/// detach device
-		/** Detaches the device from any route and deletes the device. 
+		/** Detaches the device from any route and deletes the device.
 		 * \return true if the corresponding device has been removed and we can delete the Shape.
 		 */
 		virtual bool DetachDevice ();
 		virtual bool replaceSelfBy (thistype  * newshape);
 		virtual bool CanHandleType (mutabor::DevType  type) { return false; }
 
+		virtual void createPlayButtons();
+		virtual void createPauseButton();
+		virtual void createRecordButtons();
+
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 
 
 #if 0
 		void RemoveFromStringMap(stringmaptype & sm) {
-			std::pair<stringmapiterator,stringmapiterator> 
+			std::pair<stringmapiterator,stringmapiterator>
 				bounds = sm.equal_range(&m_label);
-			for (stringmapiterator it = bounds.first; 
+			for (stringmapiterator it = bounds.first;
 			     it != bounds.second; ++it) {
 				if ((*it).second == this) {
 					stringmapiterator it1 = it;
@@ -371,12 +394,12 @@ namespace mutaborGUI {
 		}
 
 		void InsertSelfToStringMap(stringmaptype & sm) {
-			sm.insert(std::make_pair(&m_label,this)); 
+			sm.insert(std::make_pair(&m_label,this));
 		}
-#endif	       
+#endif
 	private:
 		DECLARE_ABSTRACT_CLASS(MutDeviceShape)
-		DECLARE_EVENT_TABLE() 
+		DECLARE_EVENT_TABLE()
 	};
 
 	template <class T>

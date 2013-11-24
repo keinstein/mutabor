@@ -172,6 +172,13 @@ namespace mutaborGUI {
 						  mutabor::Route & route);
 
 
+		/** 
+		 * The device notifies the shape about a state change.
+		 * 
+		 * \param event wxCommandEvent containing the request
+		 */
+		void DoDeviceNotification (wxCommandEvent & event);
+
 	protected: 
 		virtual void InitializeDialog(InputDevDlg * in) const;
 		virtual bool readDialog (InputDevDlg * in);

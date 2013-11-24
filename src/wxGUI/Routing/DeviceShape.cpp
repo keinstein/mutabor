@@ -39,6 +39,7 @@
 #include "src/wxGUI/Routing/GUIRoute-inlines.h"
 #include <algorithm>
 #include "wx/defs.h"
+#include "wx/bmpbuttn.h"
 //#include "MutApp.h"
 //#include "MutIcon.h"
 //#include "MutRouteWnd.h"
@@ -78,13 +79,14 @@
 					    name<T1>::wxCreateObject, T1)
 
 using namespace mutaborGUI;
-	
+
 BEGIN_EVENT_TABLE_TEMPLATE1(MutDeviceShape, MutIconShape, T)
 EVT_KEY_DOWN(MutDeviceShape::OnKeyDown)
 EVT_LEFT_DCLICK(MutDeviceShape::LeftDblClickEvent)
 EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
 EVT_MENU(CM_MOVE_UP, MutDeviceShape::CmMoveIcon)
 EVT_MENU(CM_MOVE_DOWN, MutDeviceShape::CmMoveIcon)
+EVT_MENU(CM_DEVICE_STATE_CHANGED, MutDeviceShape::CmDeviceNotification)
 END_EVENT_TABLE()
 
 using namespace mutabor;
@@ -101,22 +103,22 @@ namespace mutaborGUI {
 		}
 	template<class T>
 	bool MutDeviceShape<T>::Create (wxWindow * parent,
-					wxWindowID id, 
+					wxWindowID id,
 					devicetype & d)
 	{
 		if (!d) return false;
-		
+
 		DEBUGLOG (other,_T ("Checking icon"));
 		mutASSERT(MidiInputDevBitmap.IsOk());
 		mutASSERT(MidiOutputDevBitmap.IsOk());
-		
+
 		TRACEC;
 
-		bool fine = 
+		bool fine =
 			Create (parent, id, d->GetName());
 
 		TRACEC;
-		if (fine) 
+		if (fine)
 			connect(d,this);
 
 		TRACEC;
@@ -125,13 +127,13 @@ namespace mutaborGUI {
 
 
 	template<class T>
-	void MutDeviceShape<T>::Add(MutBoxChannelShape *  route) 
+	void MutDeviceShape<T>::Add(MutBoxChannelShape *  route)
 	{
 #ifdef DEBUG
-		MutBoxChannelShapeList::iterator pos = 
+		MutBoxChannelShapeList::iterator pos =
 			std::find(routes.begin(),routes.end(),route);
 		mutASSERT(pos == routes.end());
-#endif 
+#endif
 		routes.push_back(route);
 //		ClearPerimeterPoints();
 		Refresh();
@@ -143,7 +145,7 @@ namespace mutaborGUI {
 				     MutBoxChannelShape * newroute)
 	{
 #ifdef DEBUG
-		MutBoxChannelShapeList::iterator pos = 
+		MutBoxChannelShapeList::iterator pos =
 			std::find(routes.begin(),routes.end(),oldroute);
 		mutASSERT(pos != routes.end());
 #endif
@@ -156,12 +158,12 @@ namespace mutaborGUI {
 	template<class T>
 	bool MutDeviceShape<T>::Remove(MutBoxChannelShape * route)
 	{
-		MutBoxChannelShapeList::iterator pos = 
+		MutBoxChannelShapeList::iterator pos =
 			std::find(routes.begin(),routes.end(),route);
 		if (pos == routes.end()) {
 			UNREACHABLEC;
 			return false;
-		} else { 
+		} else {
 			routes.erase(pos);
 		}
 		Recompute();
@@ -169,7 +171,7 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	bool MutDeviceShape<T>::MoveRoutes (MutDeviceShape * newclass) 
+	bool MutDeviceShape<T>::MoveRoutes (MutDeviceShape * newclass)
 	{
 		routes.swap(newclass->routes);
 		Recompute();
@@ -177,7 +179,7 @@ namespace mutaborGUI {
 	}
 
 	template<class T>
-	bool MutDeviceShape<T>::Recompute() 
+	bool MutDeviceShape<T>::Recompute()
 	{
 //		ClearPerimeterPoints();
 		SetIcon(GetMutIcon());
@@ -188,15 +190,15 @@ namespace mutaborGUI {
 
 
 	template<class T>
-	void MutDeviceShape<T>::ReadPanel(FilterPanel * panel, 
+	void MutDeviceShape<T>::ReadPanel(FilterPanel * panel,
 				    MutBoxChannelShape * channel)
 	{
 		mutASSERT(panel);
 		mutASSERT(channel);
 		if (!panel || !channel) return;
-	
+
 		bool active = panel->IsShown();
-	
+
 		thistype * newShape = panel->GetCurrentSelection();
 
 		Route & route = channel->GetRoute();
@@ -245,8 +247,8 @@ namespace mutaborGUI {
 		case WXK_MENU:
 		{
 			wxCommandEvent command(wxEVT_COMMAND_MENU_SELECTED,
-					       CM_LEFT_DOUBLE_CLICK); 
-			wxPostEvent(this,command); 
+					       CM_LEFT_DOUBLE_CLICK);
+			wxPostEvent(this,command);
 			return;
 		}
 		default:
@@ -254,10 +256,10 @@ namespace mutaborGUI {
 		}
 	}
 
-	/** 
-	 * Move the corresponding device in the device list and 
+	/**
+	 * Move the corresponding device in the device list and
 	 * update the GUI according to the new order.
-	 * 
+	 *
 	 * \param event wxCommandEvent containing the request
 	 */
 	template <class T>
@@ -271,7 +273,112 @@ namespace mutaborGUI {
 			break;
 		}
 	}
-	
+
+	template <class T>
+	void MutDeviceShape<T>::DoDeviceNotification(wxCommandEvent & event)
+	{
+		if (!device || !playbuttons) return;
+		MutaborModeType mode = device->GetMode();
+		bool open = device->IsOpen();
+		bool hidePlay  = !open;
+		bool hidePause = hidePlay,
+			hideStop  = hidePlay;
+		if (open) {
+			switch (mode) {
+			case DevicePlay:
+				hidePlay  = true;
+				break;
+			case DeviceStop:
+				hideStop  = true;
+				break;
+			case DevicePause:
+				hidePause = true;
+				break;
+			case DeviceUnregistered:
+			case DeviceInitializing:
+			case DeviceCompileError:
+			case DeviceTimingError:
+				return;
+			}
+		}
+
+		wxSizerItemList & playlist = playbuttons->GetChildren();
+		for (wxSizerItemList::iterator i = playlist.begin();
+		     i != playlist.end(); i++) {
+			wxWindow * button = (*i)->GetWindow();
+			bool hide = !open;
+			switch (button -> GetId()) {
+			case CM_PLAYDEVICE:
+				hide = hidePlay;
+				break;
+			case CM_STOPDEVICE:
+				hide = hideStop;
+				break;
+			case CM_PAUSEDEVICE:
+				hide = hidePause;
+				break;
+			}
+			if (hide) playbuttons->Hide(button);
+			else playbuttons->Show(button);
+		}
+		playbuttons->Layout();
+		wxSize size = playbuttons->GetMinSize();
+		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+	}
+
+	template <class T>
+	void MutDeviceShape<T>::createPlayButtons()
+	{
+		mutASSERT(!playbuttons);
+		playbuttons = new wxBoxSizer(wxVERTICAL);
+		if (!playbuttons) return;
+		wxBitmapButton * button =
+			new wxBitmapButton(this,CM_PLAYDEVICE,DevicePlayBitmap);
+		playbuttons->Add(button);
+		button =
+			new wxBitmapButton(this,CM_PAUSEDEVICE,DevicePauseBitmap);
+		playbuttons->Add(button);
+		button =
+			new wxBitmapButton(this,CM_STOPDEVICE,DeviceStopBitmap);
+		playbuttons->Add(button);
+		playbuttons->Layout();
+		wxSize size = playbuttons->GetMinSize();
+		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+	}
+
+	template <class T>
+	void MutDeviceShape<T>::createPauseButton()
+	{
+		mutASSERT(!playbuttons);
+		playbuttons = new wxBoxSizer(wxVERTICAL);
+		if (!playbuttons) return;
+		wxBitmapButton * button =
+			new wxBitmapButton(this,CM_PAUSEDEVICE,DevicePauseBitmap);
+		playbuttons->Add(button);
+		playbuttons->Layout();
+		wxSize size = playbuttons->GetMinSize();
+		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+	}
+	template <class T>
+	void MutDeviceShape<T>::createRecordButtons()
+	{
+		mutASSERT(!playbuttons);
+		playbuttons = new wxBoxSizer(wxVERTICAL);
+		if (!playbuttons) return;
+		wxBitmapButton * button =
+			new wxBitmapButton(this,CM_PLAYDEVICE,DeviceRecordBitmap);
+		playbuttons->Add(button);
+		button =
+			new wxBitmapButton(this,CM_PAUSEDEVICE,DevicePauseBitmap);
+		playbuttons->Add(button);
+		button =
+			new wxBitmapButton(this,CM_STOPDEVICE,DeviceStopBitmap);
+		playbuttons->Add(button);
+		playbuttons->Layout();
+		wxSize size = playbuttons->GetMinSize();
+		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
+	}
+
 	template <class T>
 	void MutDeviceShape<T>::DoLeftDblClick() {
 		TRACEC;
@@ -290,14 +397,14 @@ namespace mutaborGUI {
 				readDialog (dlg);
 			} else if (type != DTNotSet) { // assure type is set.
 				TRACEC;
-				devicetype dev = 
+				devicetype dev =
 					DeviceFactory::Create<devicetype>(type);
 				if (dev) {
 					TRACEC;
-					thistype * newdev = 
+					thistype * newdev =
 						GUIDeviceFactory::CreateShape (dev,
 									       GetParent());
-					
+
 					if (! newdev) {
 					  UNREACHABLEC;
 					  return;
@@ -305,7 +412,7 @@ namespace mutaborGUI {
 					mutASSERT(newdev->device);
 					TRACEC;
 					newdev -> readDialog (dlg);
-					if (LogicOn && !(newdev->device->IsOpen())) 
+					if (LogicOn && !(newdev->device->IsOpen()))
 						newdev->device->Open();
 
 					TRACEC;
@@ -336,8 +443,8 @@ namespace mutaborGUI {
 			parent->Refresh();
 			parent->Update();
 		} else if (Res != ::wxID_REMOVE && !destroySelf) Update();
-		/* we don't need to destroy this control. 
-		   This should have been done during device destruction 
+		/* we don't need to destroy this control.
+		   This should have been done during device destruction
 		*/
 		TRACE;
 	}
@@ -351,7 +458,7 @@ namespace mutaborGUI {
 	template <class T>
 	bool MutDeviceShape<T>::DetachDevice ()
 	{
-	
+
 		wxWindow * parent = m_parent;
 		wxSizer * sizer = GetContainingSizer();
 		Hide();
@@ -373,12 +480,12 @@ namespace mutaborGUI {
 		return true;
 	}
 
-	
+
 	template<class T>
 	bool MutDeviceShape<T>::replaceSelfBy (thistype  * newshape)
 	{
 		/** \todo transfer this function to GUIRoute */
-		
+
 		mutASSERT (newshape);
 		mutASSERT (newshape->device);
 
@@ -394,7 +501,7 @@ namespace mutaborGUI {
 		sizer -> Replace (this, newshape, false);
 
 		newshape->SetFocus();
-		Hide();	
+		Hide();
 		wxWindow * parent = m_parent;
 		parent->RemoveChild(this);
 		parent->Layout();
@@ -407,7 +514,7 @@ namespace mutaborGUI {
 		TRACET(MutInputDeviceShape);
 		return true;
 	}
-	
+
 
 	// instantiate MutInputDeviceShape
 
@@ -442,14 +549,14 @@ namespace mutaborGUI {
 		in->SetGUIDOFile(wxEmptyString);
 
 		InitializeDialog(in);
-		
+
 		in->Fit();
 
 		return in;
 	}
 
 	template<>
-	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog() 
+	OutputDevDlg * MutOutputDeviceShape::ShowDeviceDialog()
 	{
 		OutputDevDlg * out = new OutputDevDlg (m_parent);
 		int nMidi;
@@ -494,7 +601,7 @@ namespace mutaborGUI {
 		out->SetMidiFileBendingRange(2);
 
 		InitializeDialog(out);
-		
+
 		out->Fit();
 
 		return out;
@@ -505,7 +612,7 @@ namespace mutaborGUI {
 	IMPLEMENT_ABSTRACT_CLASS_TEMPLATE1(MutDeviceShape, MutIconShape, outputdevicetypes)
 
 //	template<>  MutDeviceShape<inputdevicetypes>
-//	template<> 
+//	template<>
 
 	template class MutDeviceShape<inputdevicetypes>;
 	template class MutDeviceShape<outputdevicetypes>;

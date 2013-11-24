@@ -85,6 +85,10 @@ namespace mutaborGUI {
 	extern MutIcon NewBoxBitmap;
 	extern MutIcon ActiveChannelBitmap;
 	extern MutIcon PassiveChannelBitmap;
+	extern MutIcon DevicePlayBitmap;
+	extern MutIcon DevicePauseBitmap;
+	extern MutIcon DeviceStopBitmap;
+	extern MutIcon DeviceRecordBitmap;
 
 	bool initMutIconShapes();
 }

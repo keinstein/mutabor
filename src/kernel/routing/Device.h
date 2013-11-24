@@ -109,7 +109,7 @@ namespace mutabor {
 			{
 				controller[midi::HOLD_PEDAL_ON_OFF] = sustain;
 				if (sustain != 0) {
-					controller_changed[first_unchanged] 
+					controller_changed[first_unchanged]
 						= midi::HOLD_PEDAL_ON_OFF;
 					first_unchanged++;
 				}
@@ -129,13 +129,13 @@ namespace mutabor {
 				bank_coarse = -1;
 				bank_fine = -1;
 				bend = 0;
-				
-				
+
+
 			}
 
 		int set_controller(size_t number, int8_t data) {
 
-			if (controller.size() <= number) 
+			if (controller.size() <= number)
 				controller.resize(number +1);
 			int retval = controller[number];
 			int param = -1;
@@ -154,25 +154,25 @@ namespace mutabor {
 			case midi::DATA_ENTRY_FINE:
 			case midi::DATA_BUTTON_INCREMENT:
 			case midi::DATA_BUTTON_DECREMENT:
- 				if (!data_is_rpn 
-				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+ 				if (!data_is_rpn
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
-				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					param = 0x20000 
-						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+					param = 0x20000
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
 				} else if (data_is_rpn
-					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
-					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					param = 0x10000 
-						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+					param = 0x10000
+						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::REGISTERED_PARAMETER_FINE];
 				}
 				if (param != -1) {
-					if (controller.size() <= (size_t) param) 
+					if (controller.size() <= (size_t) param)
 						controller.resize(param+1);
 					switch (number) {
 					case midi::DATA_BUTTON_INCREMENT:
@@ -183,7 +183,7 @@ namespace mutabor {
 						break;
 					case midi::DATA_ENTRY_COARSE:
 					case midi::DATA_ENTRY_FINE:
-						int value = (controller[midi::DATA_ENTRY_COARSE]) << 8 
+						int value = (controller[midi::DATA_ENTRY_COARSE]) << 8
 							|| (controller[midi::DATA_ENTRY_COARSE]);
 						if (!(value & 0x8080))
 							controller[param] = value;
@@ -205,7 +205,7 @@ namespace mutabor {
 					break;
 				}
 			}
-			if (!found) 
+			if (!found)
 				index = first_unchanged++;
 
 			controller_changed[index] = (param == -1 ? number : param);
@@ -220,50 +220,50 @@ namespace mutabor {
 				return -1;
 			case midi::NON_REGISTERED_PARAMETER_FINE:
 			case midi::NON_REGISTERED_PARAMETER_COARSE:
- 				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+ 				if (controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
-				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					return 0x20000 
-						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+					return 0x20000
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
 				}
 				return -1;
 			case midi::REGISTERED_PARAMETER_FINE:
 			case midi::REGISTERED_PARAMETER_COARSE:
-				if (controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+				if (controller[midi::REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
-				    && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f)
-					return get_index(0x10000 
-							 | controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+					return get_index(0x10000
+							 | controller[midi::REGISTERED_PARAMETER_COARSE] << 8
 							 | controller[midi::REGISTERED_PARAMETER_FINE]);
 				return -1;
 			case midi::DATA_ENTRY_COARSE:
 			case midi::DATA_ENTRY_FINE:
 			case midi::DATA_BUTTON_INCREMENT:
 			case midi::DATA_BUTTON_DECREMENT:
- 				if (!data_is_rpn 
-				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1 
+ 				if (!data_is_rpn
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != -1
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != -1
-				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f 
+				    && controller[midi::NON_REGISTERED_PARAMETER_FINE] != 0x7f
 				    && controller[midi::NON_REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					return 0x20000 
-						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8 
+					return 0x20000
+						| controller[midi::NON_REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::NON_REGISTERED_PARAMETER_FINE];
 				} else if (data_is_rpn
-					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1 
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != -1
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != -1
-					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f 
+					   && controller[midi::REGISTERED_PARAMETER_FINE] != 0x7f
 					   && controller[midi::REGISTERED_PARAMETER_COARSE] != 0x7f) {
-					return 0x10000 
-						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8 
+					return 0x10000
+						| controller[midi::REGISTERED_PARAMETER_COARSE] << 8
 						| controller[midi::REGISTERED_PARAMETER_FINE];
 				}
 				return -1;
 			}
 			return message;
-			
+
 		}
 
 		int get_controller(size_t number) const {
@@ -277,14 +277,14 @@ namespace mutabor {
 				return retval;
 			return get_next_changed_controller(other,retval);
 		}
-		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other, 
+		controller_vector::const_iterator get_next_changed_controller(const ChannelData & other,
 									      controller_vector::const_iterator last) const {
 			mutASSERT(controller_changed.begin() <= last);
 			mutASSERT(last < controller_changed.end());
 			controller_vector::const_iterator retval = last;
 			do {
 				retval++;
-			} while (retval != controller_changed.end() && (*retval != -1) 
+			} while (retval != controller_changed.end() && (*retval != -1)
 				 && (size_t)(*retval) < other.controller.size()
 				 && controller[*retval] == other.controller[*retval]);
 			return retval;
@@ -313,18 +313,18 @@ namespace mutabor {
 			bank_coarse = o.bank_coarse;
 			bank_fine = o.bank_fine;
 		}
- 
+
 		bool is_compatible (const ChannelData &cd) const {
 			/* \todo check that ignoring pitch bend is ok */
-			if (Sound != -1 && cd.Sound != -1 
+			if (Sound != -1 && cd.Sound != -1
 			    && Sound != cd.Sound) return false;
-			if (controller.size() 
+			if (controller.size()
 			    != cd.controller.size()) return false;
-				
+
 			/* \todo optimization */
 			for (size_t i = 0 ; i < std::min(controller.size(),cd.controller.size()) ; i++) {
-				if (controller[i] != -1 
-				    && cd.controller[i] != -1 
+				if (controller[i] != -1
+				    && cd.controller[i] != -1
 				    && controller[i] != cd.controller[i]) return false;
 			}
 			return true;
@@ -359,35 +359,35 @@ namespace mutabor {
 		};
 
 		virtual ~Device() { TRACEC; }
-	
+
 		/// Save current device settings in a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be saved.
 		 */
 		virtual void Save (tree_storage & config) = 0;
-	
+
 		/// Save route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function saves them in a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be saved.
 		 * \argument route (Route) Route whos data shall be saved.
 		 */
-		virtual void Save (tree_storage & config, 
+		virtual void Save (tree_storage & config,
 				   const RouteClass * route) = 0;
-	
+
 		/// Load current device settings from a tree storage
 		/** \argument config (tree_storage) storage class, where the data will be loaded from.
 		 */
 		virtual void Load (tree_storage & config) = 0;
-	
+
 		/// Load route settings (filter settings) for a given route
-		/** Some route settings (e.g. filter settings) are device type 
+		/** Some route settings (e.g. filter settings) are device type
 		 * specific. This function loads them from a tree storage.
 		 * \argument config (tree_storage *) Storage class, where the data will be restored from.
 		 * \argument route (Route) Route whos data shall be loaded.
 		 */
-		virtual void Load (tree_storage & config, 
+		virtual void Load (tree_storage & config,
 				   RouteClass * route) = 0;
-	
+
 
 		/// add a route
 		virtual void Add(Route & route) = 0;
@@ -399,6 +399,13 @@ namespace mutabor {
 		/// reset the device if requested
 		virtual void Panic() = 0;
 
+
+		virtual void SetMode(MutaborModeType m) { Mode = m; }
+
+		MutaborModeType GetMode() {
+			return Mode;
+		}
+
 		/// Process an error message
 		void runtime_error(bool iswarning, mutString message, ...) {
 			va_list args;
@@ -409,33 +416,25 @@ namespace mutabor {
 		/// Process an error message (doing the real work)
 		virtual void runtime_error(bool iswarning, const mutString & message, va_list & args);
 
-	protected: /** \todo lift this restrection afer GUI is working again */
-		friend class ::mutaborGUI::GUIOutputDeviceBase;
-		friend class ::mutaborGUI::GUIInputDeviceBase;
-		virtual void setUserData (void * data) {
-			userdata = data; 
-		}
-		virtual void * getUserData() const { return userdata; }
-	public:
 
 		const wxString & GetName() const {
 			return Name;
 		}
-	
+
 		virtual void SetName(const wxString & s) {
 			Name = s;
 		}
-	
+
                 /*
 		int GetDevId() const {
 			return DevId;
 		}
-	
+
 		virtual void SetDevId(int id) {
 			DevId = id;
 		}
 		*/
-	
+
 
 		size_t get_session_id() const {
 			return session_id;
@@ -450,17 +449,17 @@ namespace mutabor {
 #pragma warning(disable : 4100) // Disable unreferenced formal parameter warnings
 #endif
 		virtual void ReadData(wxConfigBase * config) {};
-		virtual void WriteData(wxConfigBase * config) {};	
+		virtual void WriteData(wxConfigBase * config) {};
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
-#endif 
+#endif
 		virtual mutString GetTypeName () const {
 			return N_("Device base class");
 		}
 
 		virtual bool Open() = 0;
 		virtual void Close() = 0;
-	
+
 		bool IsDirty() const { return dirty; }
 		void Dirty(bool d=true) { dirty = d; }
 		bool IsOpen() const { return isOpen; }
@@ -468,9 +467,10 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
- 	private:
-		void * userdata;
 	protected:
+		/** \todo lift this restrection afer GUI is working again */
+		friend class ::mutaborGUI::GUIOutputDeviceBase;
+		friend class ::mutaborGUI::GUIInputDeviceBase;
 		/**
 		   Id used during runtime;
 		 */
@@ -479,31 +479,42 @@ namespace mutabor {
 		mutString Name;
 		bool dirty:1;
 		bool isOpen:1;
+		enum MutaborModeType Mode;
 		routeListType routes;
-	
+
 		Device(const mutStringRef name = mutEmptyString,
-		       int id = -1):userdata(NULL),
-				    session_id(),
+		       int id = -1):session_id(),
 				    routefile_id(id),
 				    Name(name),
 				    dirty(false),
 				    isOpen(false),
-				    routes() {}
+				    Mode(DeviceInitializing),
+				    routes(),
+				    userdata(NULL)
+		{}
+
+		virtual void setUserData (void * data) {
+			userdata = data;
+		}
+		virtual void * getUserData() const { return userdata; }
 
 		void set_file_id(int id) {
 			routefile_id = id;
 		}
-	
+
+	private:
+		void * userdata;
+
 	};
 
 	// A common api for input and output devices that must be typed
 
-	template <class T, class P = boost::intrusive_ptr<T>, 
+	template <class T, class P = boost::intrusive_ptr<T>,
 		  class L = std::vector <P> >
 	class CommonTypedDeviceAPI: public Device {
 	private:
 		REFPTR_INTERFACE;
-		
+
 	public:
 		// To gain a little speed in realtime we use intrusive_ptr
 		typedef T thistype;
@@ -516,7 +527,7 @@ namespace mutabor {
 			AppendToDeviceList(static_cast<thistype *>(this));
 		}
 
-		CommonTypedDeviceAPI(const mutStringRef name, 
+		CommonTypedDeviceAPI(const mutStringRef name,
 				     int id = -1):Device(name, id) {
 			AppendToDeviceList(static_cast<thistype *>(this));
 		}
@@ -524,20 +535,20 @@ namespace mutabor {
 	public:
 		virtual ~CommonTypedDeviceAPI();
 
-		/** 
-		 * Destroy the current object.  
+		/**
+		 * Destroy the current object.
 		 * This function is
 		 * called when an object shall be deleted. It clears
 		 * up all references to itself so that it will be deleted if it is not needed anymore.
-		 * 
-		 * This functions detatches the device from all routes and calls DoDestroy() afterwards. 
+		 *
+		 * This functions detatches the device from all routes and calls DoDestroy() afterwards.
 		 * Finally the Device is going to removed from the device list.
 		 */
 		virtual void Destroy();
 
 
-		/** 
-		 * Disconnect the device from all pairings with routes GUI data or something else. 
+		/**
+		 * Disconnect the device from all pairings with routes GUI data or something else.
 		 *
 		 * This function should be extended in subclasses so
 		 * that after calling it only temporary pointers
@@ -549,13 +560,13 @@ namespace mutabor {
 		/// add a route
 		virtual void Add(Route & route);
 		/// replace a route
-		virtual bool Replace(Route & oldroute, 
+		virtual bool Replace(Route & oldroute,
 				     Route & newroute);
                 /// remove a route
 		virtual bool Remove(Route & route);
-		/// Move routes to another device 
+		/// Move routes to another device
 		virtual bool MoveRoutes (DevicePtr & newclass);
-	
+
 //		Route GetRoute(int nr);   // counting starts with 0
 		size_t nRoutes() { return routes.size(); };
 
@@ -568,17 +579,17 @@ namespace mutabor {
 		}
 
 
-		static const listtype & GetDeviceList() { 
-			return deviceList ; 
+		static const listtype & GetDeviceList() {
+			return deviceList ;
 		}
 
 		/// Initialize the internal device identifiers.
-		/** This function sets the internal device ids of 
-		 *  all output devices, starting from 0 and 
+		/** This function sets the internal device ids of
+		 *  all output devices, starting from 0 and
 		 *  incrementing by 1
 		 */
 		static void InitializeIds();
-	
+
 
 		/// Scan the list of input devices for a given id.
 		/** \argument id (int) id to scan for
@@ -602,13 +613,13 @@ namespace mutabor {
 			return static_cast<const thistype *>(this);
 		}
 
-		/** 
+		/**
 		 * Move the device in the device list.
-		 * 
+		 *
 		 * \param count Number of places the device should be
 		 * moved up. Negative values indicate downwards
 		 * direction.
-		 * 
+		 *
 		 * \return new position in the device list.
 		 */
 		virtual	int MoveInList(int count);
@@ -620,7 +631,7 @@ namespace mutabor {
 #endif
 				deviceList.front()->Destroy();
 #ifdef DEBUG
-				mutASSERT(deviceList.empty() || 
+				mutASSERT(deviceList.empty() ||
 					 d != deviceList.front());
 #endif
 			}
@@ -632,7 +643,7 @@ namespace mutabor {
 		static void AppendToDeviceList (DevicePtr dev);
 		static void RemoveFromDeviceList (DevicePtr  dev);
 		static typename listtype::iterator FindInDeviceList (DevicePtr dev) {
-			typename listtype::iterator i = 
+			typename listtype::iterator i =
 				std::find(deviceList.begin(),
 					  deviceList.end(),
 					  dev);
@@ -645,8 +656,8 @@ namespace mutabor {
 
 	};
 
-	template<class T, class P, class L> 
-	typename CommonTypedDeviceAPI<T,P,L>::listtype 
+	template<class T, class P, class L>
+	typename CommonTypedDeviceAPI<T,P,L>::listtype
 	CommonTypedDeviceAPI<T,P,L>::deviceList;
 
 // Output devices ---------------------------------------------------
@@ -658,24 +669,24 @@ namespace mutabor {
 	{
 		friend class DeviceFactory;
 	public:
-		virtual ~OutputDeviceClass() { 
+		virtual ~OutputDeviceClass() {
 			TRACEC;
 			wxASSERT(!IsOpen());
 			TRACEC;
 		}
-		void NoteOn(Box box, 
-				    int taste, 
-				    int velo, 
+		void NoteOn(Box box,
+				    int taste,
+				    int velo,
 				    RouteClass * r,
-				    size_t id, 
+				    size_t id,
 				    const ChannelData & input_channel_data) {
 			ScopedLock lock(write_lock);
 			do_NoteOn(box,taste,velo,r,id,input_channel_data);
-		
+
 		}
-		void NoteOff(Box box, 
-				     int taste, 
-				     int velo, 
+		void NoteOff(Box box,
+				     int taste,
+				     int velo,
 				     RouteClass * r,
 				     size_t id,
 				     bool is_note_on) {
@@ -719,7 +730,7 @@ namespace mutabor {
 			ScopedLock lock(write_lock);
 			do_Panic();
 		};
-		bool Open() { 
+		bool Open() {
 			ScopedLock lock(write_lock);
 			return do_Open();
 		}
@@ -738,7 +749,7 @@ namespace mutabor {
 #ifdef WX
 		virtual wxString TowxString() const;
 #endif
-	
+
 	protected:
 		Mutex write_lock;
 		// private members: access only via access functions for debugging purposes
@@ -749,20 +760,20 @@ namespace mutabor {
 		OutputDeviceClass():CommonTypedDeviceAPI<OutputDeviceClass>(),
 				    write_lock() {}
 
-		OutputDeviceClass(const mutStringRef name, 
+		OutputDeviceClass(const mutStringRef name,
 				  int id = -1):
 			CommonTypedDeviceAPI<OutputDeviceClass>(name, id),
 			write_lock() {}
 
-		virtual void do_NoteOn(Box box, 
-				    int taste, 
-				    int velo, 
+		virtual void do_NoteOn(Box box,
+				    int taste,
+				    int velo,
 				    RouteClass * r,
-				    size_t id, 
+				    size_t id,
 				    const ChannelData & input_channel_data) = 0;
-		virtual void do_NoteOff(Box box, 
-				     int taste, 
-				     int velo, 
+		virtual void do_NoteOff(Box box,
+				     int taste,
+				     int velo,
 				     RouteClass * r,
 				     size_t id,
 				     bool is_note_on) = 0;
@@ -777,7 +788,7 @@ namespace mutabor {
 		virtual void do_Quiet(RouteClass * r) = 0;
 		virtual void do_Panic() { STUBC; };
 		virtual bool do_Open() { return true; }
-	
+
 	};
 
 
@@ -815,21 +826,21 @@ namespace mutabor {
 					return seed & 0xFF;
 				}
 			};
-			
+
 			typedef boost::unordered_multiset<entry, hash_type> map_type;
 			typedef map_type::iterator iterator;
 			typedef map_type::const_iterator const_iterator;
 
 			void add (int key,
 				  int velocity,
-				  int unique_id, 
+				  int unique_id,
 				  Route & R) {
 				map.insert(entry(key,unique_id,velocity, R));
 			}
 
 			void remove(int key,
 				    int velocity,
-				    int unique_id, 
+				    int unique_id,
 				    Route & R) {
 				std::pair<map_type::iterator, map_type::iterator> range = map.equal_range(entry(key,unique_id,velocity, R));
 				if (range.first != map.end()) {
@@ -845,22 +856,22 @@ namespace mutabor {
 			const_iterator begin() const { return map.begin(); }
 
 			iterator end() { return map.end(); }
-			const_iterator end() const { return map.end(); } 
+			const_iterator end() const { return map.end(); }
 		protected:
 			map_type map;
 		};
 
 		virtual ~InputDeviceClass() { TRACEC; }
 
-		virtual void Close() { 
+		virtual void Close() {
 			Stop();
 		}
-		virtual void Stop() { 
+		virtual void Stop() {
 			Panic(false);
 			Mode = DeviceStop;
 		}
 
-                /** Command the device to play music. 
+                /** Command the device to play music.
 		 * This function starts playing the music of the device at the curren position.
 		 */
 		virtual void Play() {
@@ -894,9 +905,9 @@ namespace mutabor {
 		 * finish playing. It can be used for joinable
 		 * threads, only. For detached threads its behaviour
 		 * is undefined.
-		 * 
+		 *
 		 * \param flags Indicators how to wait see wxThread::Wait for more detail.
-		 * 
+		 *
 		 * \return exit code from the thread after it has ended. Non-threaded devices will return NULL.
 		 */
 		virtual wxThread::ExitCode WaitForDeviceFinish(wxThreadWait flags=wxTHREAD_WAIT_BLOCK) { return NULL; }
@@ -906,14 +917,14 @@ namespace mutabor {
 		}
 		//	  virtual frac ReadOn(frac time) = 0;
 
-		
+
 		virtual bool NeedsRealTime() {
 			return false;
 		}
 
 
-		/** 
-		 * Go on to the next event. 
+		/**
+		 * Go on to the next event.
 		 *
 		 * This function must be provided by the device. It is
 		 * asked to prepare the next event and return the time
@@ -926,7 +937,7 @@ namespace mutabor {
 		 * standard. It has been designed to reduce the
 		 * deviation of a 4 minutes piece at 120 bpm to
 		 * 500μs. If it were 500ms it would be unusable.
-		 * 
+		 *
 		 * \return uint_fast64_t Absolute temporal position of the next event in the
 		 * piece in μs.
 		 */
@@ -955,20 +966,12 @@ namespace mutabor {
 
 		void Panic() { Panic(true); } // is virtual in Device
 		void Panic(bool global);
-			
+
 
 		virtual DevType GetType() const
 			{
 				return DTUnknown;
 			}
-	
-		void SetMode(MutaborModeType m) { Mode = m; }
-
-		MutaborModeType GetMode()
-			{
-				return Mode;
-			}
-	
 
 		virtual mutString GetTypeName () const {
 			return N_("Undefined input device");
@@ -983,24 +986,24 @@ namespace mutabor {
 		}
 
 #ifdef WX
-		virtual wxString TowxString() const; 
+		virtual wxString TowxString() const;
 #endif
 
 	protected:
-		enum MutaborModeType Mode;
 		current_keys_type current_keys;
 
-		InputDeviceClass(const mutStringRef name = mutEmptyString, 
-				 mutabor::MutaborModeType mode = DeviceStop, 
+		InputDeviceClass(const mutStringRef name = mutEmptyString,
+				 mutabor::MutaborModeType m = DeviceStop,
 				 int id = -1):
-			CommonTypedDeviceAPI<InputDeviceClass>(name, id), 
-			Mode(mode) {
+			CommonTypedDeviceAPI<InputDeviceClass>(name, id)
+		{
+			Mode = m;
 		}
 
 	};
 
 
-	class DeviceFactory { 
+	class DeviceFactory {
 	public:
 		struct DeviceNotCreated:public std::exception {};
 		struct FactoryNotFound:public std::exception {
@@ -1016,14 +1019,14 @@ namespace mutabor {
 
 			//! Returns the thrown error message as a c-style string.
 			virtual const char* what( void ) const throw() { return message_.c_str(); }
-			
+
 		};
 		DeviceFactory(size_t id = 0);
 		virtual ~DeviceFactory();
 
-		static OutputDevice CreateOutput (int type, 
-						  const mutStringRef name = mutEmptyString, 
-						  MutaborModeType mode = DeviceStop, 
+		static OutputDevice CreateOutput (int type,
+						  const mutStringRef name = mutEmptyString,
+						  MutaborModeType mode = DeviceStop,
 						  int id = -1) {
 			/* \todo implement output device record/pause */
 			mutASSERT(type >= 0);
@@ -1032,15 +1035,15 @@ namespace mutabor {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
-			if (!factories[type]) 
+			if (!factories[type])
 				throw FactoryNotFound(type);
 			return factories[type]->DoCreateOutput(name,id);
 		}
 
 
 		static InputDevice CreateInput(int type,
-					       const mutStringRef name = mutEmptyString, 
-					       MutaborModeType mode = DeviceStop, 
+					       const mutStringRef name = mutEmptyString,
+					       MutaborModeType mode = DeviceStop,
 					       int id = -1) {
 			mutASSERT(type >= 0);
 			if (factories.size() <= (size_t)type) {
@@ -1048,14 +1051,14 @@ namespace mutabor {
 				UNREACHABLECT(DeviceFactory);
 				return NULL;
 			}
-			if (!factories[type]) 
+			if (!factories[type])
 				throw FactoryNotFound(type);
 			return factories[type]->DoCreateInput(name, mode, id);
 		}
 
 		template<class T> static T Create(int type,
 						  const mutStringRef name = mutEmptyString,
-						  MutaborModeType mode = DeviceStop, 
+						  MutaborModeType mode = DeviceStop,
 						  int id = -1);
 
 		static void Destroy() {
@@ -1067,7 +1070,7 @@ namespace mutabor {
 						delete factory;
 				}
 				factories.clear();
-			} else 
+			} else
 				UNREACHABLECT(DeviceFactory);
 		}
 
@@ -1079,7 +1082,7 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		static void SaveOutputDevices(tree_storage & config);
 
 		/// load the routes from a tree based configuration
@@ -1089,22 +1092,22 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		static void SaveInputDevices(tree_storage & config);
 
 	protected:
 		typedef std::vector<DeviceFactory *> factorylist;
 		static factorylist factories;
-	
+
 		virtual size_t GetType() const = 0;
 
-		virtual OutputDeviceClass * DoCreateOutput(const mutStringRef name, 
+		virtual OutputDeviceClass * DoCreateOutput(const mutStringRef name,
 							   int id = -1) const = 0;
-		
-		virtual InputDeviceClass * DoCreateInput(const mutStringRef name, 
-							 MutaborModeType mode, 
+
+		virtual InputDeviceClass * DoCreateInput(const mutStringRef name,
+							 MutaborModeType mode,
 							 int id = -1) const = 0;
-	
+
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from
 		 */
@@ -1112,9 +1115,9 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		virtual void DoSaveOutputDevices(tree_storage & config) const;
-	
+
 
 		/// load the routes from a tree based configuration
 		/** \param config conifiguration to be read from
@@ -1123,15 +1126,15 @@ namespace mutabor {
 
 		/// write the routes to the configuration
 		/** \param config configuration to be written to
-		 */ 
+		 */
 		virtual void DoSaveInputDevices(tree_storage & config) const;
-	
+
 	};
 
 	template <>
 	inline InputDevice DeviceFactory::Create<InputDevice>(int type,
 						       const mutStringRef name,
-						       MutaborModeType mode, 
+						       MutaborModeType mode,
 						       int id) {
 	        return CreateInput(type,name,mode,id);
 	}
@@ -1139,7 +1142,7 @@ namespace mutabor {
 	template<>
 	inline OutputDevice DeviceFactory::Create<OutputDevice>(int type,
 						       const mutStringRef name,
-						       MutaborModeType mode, 
+						       MutaborModeType mode,
 						       int id) {
 	        return CreateOutput(type,name,mode,id);
 	}
@@ -1148,7 +1151,7 @@ namespace mutabor {
 
 	class ScopedInputDevice: public InputDevice {
 	public:
-		~ScopedInputDevice() { 
+		~ScopedInputDevice() {
 			if (get())
 				get()->Destroy();
 		}
@@ -1165,7 +1168,7 @@ namespace mutabor {
 
 	class ScopedOutputDevice: public OutputDevice {
 	public:
-		~ScopedOutputDevice() { 
+		~ScopedOutputDevice() {
 			if (get())
 				get()->Destroy();
 		}
@@ -1201,7 +1204,7 @@ namespace mutabor {
 
 //frac InReadOn(frac time);
 
-	
+
 
 
 }

@@ -64,14 +64,14 @@
 using namespace mutabor;
 namespace mutaborGUI {
 #if 0
-	void GUIRouteBase::Attatch (mutabor::OutputDevice & dev) 
+	void GUIRouteBase::Attatch (mutabor::OutputDevice & dev)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching output device %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
@@ -80,7 +80,7 @@ namespace mutaborGUI {
 		     i != shapes.end();
 		     i++) {
 			wxWindow * parent = (*i)->GetGrandParent();
-			for (MutOutputDeviceShapeList::iterator out 
+			for (MutOutputDeviceShapeList::iterator out
 				     = outshapes.begin();
 			     out != outshapes.end();
 			     out++) {
@@ -92,20 +92,20 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched output device %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
 	}
 
-	void  GUIRouteBase::Attatch (mutabor::InputDevice & dev) 
+	void  GUIRouteBase::Attatch (mutabor::InputDevice & dev)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching input device %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
@@ -114,7 +114,7 @@ namespace mutaborGUI {
 		     i != shapes.end();
 		     i++) {
 			wxWindow * parent = (*i)->GetGrandParent();
-			for (MutInputDeviceShapeList::iterator in 
+			for (MutInputDeviceShapeList::iterator in
 				     = inshapes.begin();
 			     in != inshapes.end();
 			     in++) {
@@ -126,24 +126,24 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ed input device %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
 	}
 
-	void  GUIRouteBase::Attatch (int boxid) 
+	void  GUIRouteBase::Attatch (int boxid)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ching box %d"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
-		const MutBoxShapeList & boxshapes = 
+		const MutBoxShapeList & boxshapes =
 			BoxData::GetBox(boxid).GetBoxShapes();
 		for (MutBoxChannelShapeList::const_iterator i = shapes.begin();
 		     i != shapes.end();
@@ -154,7 +154,7 @@ namespace mutaborGUI {
 			     box != boxshapes.end();
 			     box++) {
 				if ((*box)->GetParent() == parent) {
-					MutBoxShape * boxshape = 
+					MutBoxShape * boxshape =
 						const_cast<MutBoxShape *>(*box);
 					boxshape->Add(*i);
 					(*i)->Add(boxshape);
@@ -163,31 +163,31 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), atta(t)ched box %d"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
 	}
 
 	bool GUIRouteBase::Reconnect (mutabor::OutputDevice & olddev,
-				      mutabor::OutputDevice & newdev) 
+				      mutabor::OutputDevice & newdev)
 	{
 
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		bool retval = true;
 		mutASSERT(olddev && newdev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting output device\
  from %p (%d) to %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 olddev.get(),
 			 intrusive_ptr_get_refcount(olddev.get()),
 			 newdev.get(),
 			 intrusive_ptr_get_refcount(newdev.get()));
-		MutOutputDeviceShapeList & oldoutshapes = 
+		MutOutputDeviceShapeList & oldoutshapes =
 			ToGUIBase(olddev).GetShapes();
-		MutOutputDeviceShapeList & newoutshapes = 
+		MutOutputDeviceShapeList & newoutshapes =
 			ToGUIBase(newdev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -226,7 +226,7 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected output device\
  from %p (%d) to %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 olddev.get(),
 			 intrusive_ptr_get_refcount(olddev.get()),
@@ -237,27 +237,27 @@ namespace mutaborGUI {
 	}
 
 	bool GUIRouteBase::Reconnect (mutabor::InputDevice & olddev,
-				      mutabor::InputDevice & newdev) 
+				      mutabor::InputDevice & newdev)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
-		// this can be more effective if the lists were ordered 
+
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(olddev && newdev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnecting input device\
  from %p (%d) to %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 olddev.get(),
 			 intrusive_ptr_get_refcount(olddev.get()),
 			 newdev.get(),
 			 intrusive_ptr_get_refcount(newdev.get()));
 		bool retval = true;
-		MutInputDeviceShapeList & oldinshapes = 
+		MutInputDeviceShapeList & oldinshapes =
 			ToGUIBase(olddev).GetShapes();
-		MutInputDeviceShapeList & newinshapes = 
+		MutInputDeviceShapeList & newinshapes =
 			ToGUIBase(newdev).GetShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -297,7 +297,7 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), reconnected input device\
  from %p (%d) to %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 olddev.get(),
 			 intrusive_ptr_get_refcount(olddev.get()),
@@ -310,15 +310,15 @@ namespace mutaborGUI {
 				      int newboxid)
 	{
 
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(MIN_BOX <= oldboxid && oldboxid < MAX_BOX);
 		mutASSERT(MIN_BOX <= newboxid && newboxid < MAX_BOX);
 		bool retval = true;
-		const MutBoxShapeList & oldboxshapes = 
+		const MutBoxShapeList & oldboxshapes =
 			BoxData::GetBox(oldboxid).GetBoxShapes();
-		const MutBoxShapeList & newboxshapes = 
+		const MutBoxShapeList & newboxshapes =
 			BoxData::GetBox(newboxid).GetBoxShapes();
 		for (MutBoxChannelShapeList::iterator i = shapes.begin();
 		     i != shapes.end();
@@ -357,19 +357,19 @@ namespace mutaborGUI {
 		}
 		return retval;
 	}
- 
 
 
-	bool GUIRouteBase::Detatch (mutabor::OutputDevice & dev) 
+
+	bool GUIRouteBase::Detatch (mutabor::OutputDevice & dev)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		bool retval = true;
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching output device\
  %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
@@ -378,7 +378,7 @@ namespace mutaborGUI {
 		     i != shapes.end();
 		     i++) {
 			wxWindow * parent = (*i)->GetGrandParent();
-			for (MutOutputDeviceShapeList::iterator out 
+			for (MutOutputDeviceShapeList::iterator out
 				     = outshapes.begin();
 			     out != outshapes.end();
 			     out++) {
@@ -391,22 +391,22 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ched output device\
  %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
 		return retval;
 	}
 
-	bool  GUIRouteBase::Detatch (mutabor::InputDevice & dev) 
+	bool  GUIRouteBase::Detatch (mutabor::InputDevice & dev)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(dev);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching input device\
  %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
@@ -416,7 +416,7 @@ namespace mutaborGUI {
 		     i != shapes.end();
 		     i++) {
 			wxWindow * parent = (*i)->GetGrandParent();
-			for (MutInputDeviceShapeList::iterator in 
+			for (MutInputDeviceShapeList::iterator in
 				     = inshapes.begin();
 			     in != inshapes.end();
 			     in++) {
@@ -429,22 +429,22 @@ namespace mutaborGUI {
 		}
 		DEBUGLOG(smartptr,
 			 _T("Route; %p (%d), deta(t)ched input device %p (%d)"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 dev.get(),
 			 intrusive_ptr_get_refcount(dev.get()));
 		return retval;
 	}
-	
 
-	bool GUIRouteBase::Detatch (int boxid) 
+
+	bool GUIRouteBase::Detatch (int boxid)
 	{
-		// this can be more effective if the lists were ordered 
+		// this can be more effective if the lists were ordered
 		// according to thir parents.
-		
+
 		mutASSERT(MIN_BOX <= boxid && boxid < MAX_BOX);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
 		bool retval = true;
@@ -454,7 +454,7 @@ namespace mutaborGUI {
 		     i != shapes.end();
 		     i++) {
 			wxWindow * parent = (*i)->GetGrandParent();
-			for (MutBoxShapeList::const_iterator box 
+			for (MutBoxShapeList::const_iterator box
 				     = boxshapes.begin();
 			     box != boxshapes.end();
 			     box++) {
@@ -466,7 +466,7 @@ namespace mutaborGUI {
 			}
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), deta(t)ching box %d"),
-			 route, 
+			 route,
 			 intrusive_ptr_get_refcount(route),
 			 boxid);
 		return retval;
@@ -477,25 +477,25 @@ namespace mutaborGUI {
 	void GUIRouteBase::Destroy() {
 		Route r(GetRoute());
 		DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-			 (void*)r.get(), 
+			 (void*)r.get(),
 			 (int)intrusive_ptr_get_refcount(r.get()));
 		MutBoxChannelShapeList::iterator i;
 		while ( (i = shapes.begin()) != shapes.end()) {
 			MutBoxChannelShape * shape = *i;
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 (void*)r.get(), 
+				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 			disconnect(r,shape);
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 (void*)r.get(), 
+				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 			shape -> Destroy();
 			DEBUGLOG(smartptr,_T("Route: %p (%d), disconnecting shapes"),
-				 (void*)r.get(), 
+				 (void*)r.get(),
 				 (int)intrusive_ptr_get_refcount(r.get()));
 		}
 		DEBUGLOG(smartptr,_T("Route; %p (%d), disconnected shapes"),
-			 (void*)r.get(), 
+			 (void*)r.get(),
 			 (int)intrusive_ptr_get_refcount(r.get()));
 //		box -> Detatch(route);
 		r = NULL;
@@ -503,33 +503,33 @@ namespace mutaborGUI {
 
 	void GUIRouteBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
 		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
 			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
 	}
 
 
-	template<class T> 
-	void GUIfiedRoute<T>::Destroy() 
-	{ 
+	template<class T>
+	void GUIfiedRoute<T>::Destroy()
+	{
 //		int saveboxid = T::GetBox();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), saving pointer"),
-			 (void*)this, 
+			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 		Route self(this); // prevent us from beeing deleted
 		DEBUGLOG(smartptr,_T("Route; %p (%d), calling T::Destroy()"),
-			 (void*) this, 
+			 (void*) this,
 			 (int)intrusive_ptr_get_refcount(this));
 		// Disconnecting the Route before destroying the GUI
 		// part is slow, but safe as this path must work
 		// anyway.
 		T::Destroy();
 		DEBUGLOG(smartptr,_T("Route; %p (%d), destroying GUI"),
-			 (void*)this, 
+			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 		GUIRouteBase::Destroy();    //
 		mutASSERT(intrusive_ptr_get_refcount(this) <= 2);
 		DEBUGLOG(smartptr,_T("Route; %p (%d), leaving function"),
-			 (void*)this, 
+			 (void*)this,
 			 (int)intrusive_ptr_get_refcount(this));
 //		BoxData::CloseRoute(saveboxid);
 	}
@@ -539,7 +539,7 @@ namespace mutaborGUI {
 		GUIRoute * r = new GUIRoute();
 		if (r)
 			return (r->GetRoute());
-		else 
+		else
 			return NULL;
 	}
 
@@ -568,26 +568,26 @@ namespace mutaborGUI {
 					     oNoDrum/*,next*/);
 		if (r) {
 			DEBUGLOG(smartptr,_T("Route; %p (%d), created"),
-				 (void*)r->GetRoute(), 
+				 (void*)r->GetRoute(),
 				 (int)intrusive_ptr_get_refcount(r->GetRoute()));
 			return (r->GetRoute());
-		} else 
+		} else
 			return NULL;
 	}
 #if 0
 	MutBoxShape * GUIRouteFactory::DoCreateBoxShape(mutabor::Box & box,
 							wxWindow * parent) const {
-		MutBoxShape * shape;	
+		MutBoxShape * shape;
 		DEBUGLOG(routing,_T("Adding box shape for box %d (list of %d)"),
 			 box,(int)ToGUIBase(box)->GetShapes().size());
-		
-	
-		if (box == NULL) 
+
+
+		if (box == NULL)
 			shape = new NewMutBoxShape(parent,wxID_ANY);
 		else
 			/** \todo implement ID sharing between the different
 			    shapes of one common route */
-			    
+
 			shape = new MutBoxShape(parent, wxID_ANY,box);
 
 		DEBUGLOG(routing,_T("Added box shape for box %d (list of %d)"),
@@ -597,13 +597,13 @@ namespace mutaborGUI {
 	}
 #endif
 
-	MutBoxChannelShape * 
+	MutBoxChannelShape *
 	GUIRouteFactory::DoCreateBoxChannelShape(mutabor::Route & route,
 						 wxWindow * parent) const {
 		/** \todo implement ID sharing between the different
 		    shapes of one common route */
 		DEBUGLOG(smartptr,_T("Route; %p (%d), new shape"),
-			 (void*)route.get(), 
+			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 
 		mutASSERT(route);
@@ -618,7 +618,7 @@ namespace mutaborGUI {
 		} else {
 			boxshape = const_cast<MutBoxShape *>(ToGUIBase(box)->GetShape(parent));
 		}
-		MutBoxChannelShape * shape = 
+		MutBoxChannelShape * shape =
 			new MutBoxChannelShape (boxshape,
 						wxID_ANY,
 						route);
@@ -628,7 +628,7 @@ namespace mutaborGUI {
 		}
 		*/
 		DEBUGLOG(smartptr,_T("Route; %p (%d), shape created"),
-			 (void*)route.get(), 
+			 (void*)route.get(),
 			 (int)intrusive_ptr_get_refcount(route.get()));
 		return shape;
 	}
@@ -651,7 +651,7 @@ namespace mutaborGUI {
 
 	void GUIOutputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
 		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
 			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
 	}
 
@@ -668,15 +668,28 @@ namespace mutaborGUI {
 
 	void GUIInputDeviceBase::Play() {
 		StatusBar::AllSetPlaystate(StatusBar::Play);
+		NotifyShapes();
 	}
 
 	void GUIInputDeviceBase::Stop() {
 		StatusBar::AllSetPlaystate(StatusBar::Stop);
+		NotifyShapes();
 	}
 
 	void GUIInputDeviceBase::Pause() {
 		StatusBar::AllSetPlaystate(StatusBar::Pause);
+		NotifyShapes();
 	}
+
+	bool GUIInputDeviceBase::Open() {
+		NotifyShapes();
+		return true;
+	}
+
+	void GUIInputDeviceBase::Close() {
+		NotifyShapes();
+	}
+
 
 	void GUIInputDeviceBase::Destroy() {
 		TRACEC;
@@ -696,8 +709,19 @@ namespace mutaborGUI {
 
 	void GUIInputDeviceBase::runtime_error(bool iswarning, const mutString& message, va_list & args) {
 		wxString error = wxString::FormatV(message,args);
-		wxMessageBox(error, iswarning?_("Warning"):_("Error"), 
+		wxMessageBox(error, iswarning?_("Warning"):_("Error"),
 			     wxOK | (iswarning?wxICON_WARNING:wxICON_ERROR) );
+	}
+
+	void GUIInputDeviceBase::NotifyShapes()
+	{
+		wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED,
+				     CM_DEVICE_STATE_CHANGED);
+		for (MutInputDeviceShapeList::iterator i = shapes.begin();
+		     i != shapes.end();
+		     i++) {
+			wxPostEvent(*i,event);
+		}
 	}
 
 	template<class T>
@@ -715,7 +739,7 @@ namespace mutaborGUI {
 	GUIMidiPortFactory::~GUIMidiPortFactory() {}
 
 
-	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(const mutStringRef name, 
+	mutabor::OutputDeviceClass * GUIMidiPortFactory::DoCreateOutput(const mutStringRef name,
 									int id) const
 	{
 		TRACEC;
@@ -724,33 +748,33 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
 
-	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (const mutStringRef name, 
-									MutaborModeType mode, 
+	mutabor::InputDeviceClass *  GUIMidiPortFactory::DoCreateInput (const mutStringRef name,
+									MutaborModeType mode,
 									int id) const
 	{
 		TRACEC;
-		GUIInputMidiPort * port = 
+		GUIInputMidiPort * port =
 			new GUIInputMidiPort(name,mode,id);
 		TRACEC;
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
-	MutOutputDeviceShape * 
+	MutOutputDeviceShape *
 	GUIMidiPortFactory::DoCreateShape(mutabor::OutputDevice & d,
 					  wxWindow * parent) const
 	{
@@ -761,13 +785,13 @@ namespace mutaborGUI {
 		if (!d) return NULL;
 
 		TRACEC;
-		MutOutputMidiDeviceShape * shape = 
+		MutOutputMidiDeviceShape * shape =
 			new MutOutputMidiDeviceShape(parent,wxID_ANY,d);
 		TRACEC;
 		return shape;
 	}
 
-	MutInputDeviceShape * 
+	MutInputDeviceShape *
 	GUIMidiPortFactory::DoCreateShape(mutabor::InputDevice & d,
 					  wxWindow * parent) const
 	{
@@ -778,7 +802,7 @@ namespace mutaborGUI {
 		if (!d) return NULL;
 
 		TRACEC;
-		MutInputMidiDeviceShape * shape = 
+		MutInputMidiDeviceShape * shape =
 			new MutInputMidiDeviceShape(parent,wxID_ANY,d);
 		TRACEC;
 		return shape;
@@ -788,7 +812,7 @@ namespace mutaborGUI {
 
 	GUIMidiFileFactory::~GUIMidiFileFactory() {}
 
-	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (const mutStringRef name, 
+	mutabor::OutputDeviceClass * GUIMidiFileFactory::DoCreateOutput (const mutStringRef name,
 									 int id) const
 	{
 		TRACEC;
@@ -797,32 +821,32 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
-	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (const mutStringRef name, 
-								       mutabor::MutaborModeType mode, 
+	mutabor::InputDeviceClass * GUIMidiFileFactory::DoCreateInput (const mutStringRef name,
+								       mutabor::MutaborModeType mode,
 								       int id) const
 	{
 		TRACEC;
-		GUIInputMidiFile * port = 
+		GUIInputMidiFile * port =
 			new GUIInputMidiFile(name,mode,id);
 		TRACEC;
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
-	MutInputDeviceShape * 
+	MutInputDeviceShape *
 	GUIMidiFileFactory::DoCreateShape(mutabor::InputDevice & d,
 					  wxWindow * parent) const
 	{
@@ -830,12 +854,12 @@ namespace mutaborGUI {
 		mutASSERT (d);
 		if (!d) return NULL;
 
-		MutInputMidiFileDeviceShape * shape = 
+		MutInputMidiFileDeviceShape * shape =
 			new MutInputMidiFileDeviceShape(parent,wxID_ANY,d);
 		return shape;
 	}
 
-	MutOutputDeviceShape * 
+	MutOutputDeviceShape *
 	GUIMidiFileFactory::DoCreateShape(mutabor::OutputDevice & d,
 					  wxWindow * parent) const
 	{
@@ -843,7 +867,7 @@ namespace mutaborGUI {
 		mutASSERT (d);
 		if (!d) return NULL;
 
-		MutOutputMidiFileDeviceShape * shape = 
+		MutOutputMidiFileDeviceShape * shape =
 			new MutOutputMidiFileDeviceShape(parent,wxID_ANY,d);
 		return shape;
 	}
@@ -851,7 +875,7 @@ namespace mutaborGUI {
 
 	GUIGisFactory::~GUIGisFactory() {}
 
-	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(const mutStringRef name, 
+	mutabor::OutputDeviceClass * GUIGisFactory::DoCreateOutput(const mutStringRef name,
 								   int id) const
 	{
 		TRACEC;
@@ -860,15 +884,15 @@ namespace mutaborGUI {
 		if (port)  {
 			OutputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
-	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (const mutStringRef name, 
-								  mutabor::MutaborModeType mode, 
+	mutabor::InputDeviceClass * GUIGisFactory::DoCreateInput (const mutStringRef name,
+								  mutabor::MutaborModeType mode,
 								  int id) const
 	{
 		TRACEC;
@@ -879,14 +903,14 @@ namespace mutaborGUI {
 		if (port)  {
 			InputDeviceClass * dev = port->GetDevice();
 			TRACEC;
-			if (LogicOn && !(dev->IsOpen())) 
+			if (LogicOn && !(dev->IsOpen()))
 				dev->Open();
 			return dev;
-		} else 
+		} else
 			return NULL;
 	}
 
-	MutInputDeviceShape * 
+	MutInputDeviceShape *
 	GUIGisFactory::DoCreateShape(mutabor::InputDevice & d,
 				     wxWindow * parent) const
 	{
@@ -894,12 +918,12 @@ namespace mutaborGUI {
 		mutASSERT (d);
 		if (!d) return NULL;
 
-		MutInputGuidoFileDeviceShape * shape = 
+		MutInputGuidoFileDeviceShape * shape =
 			new MutInputGuidoFileDeviceShape(parent,wxID_ANY,d);
 		return shape;
 	}
 
-	MutOutputDeviceShape * 
+	MutOutputDeviceShape *
 	GUIGisFactory::DoCreateShape(mutabor::OutputDevice & d,
 				     wxWindow * parent) const
 	{
@@ -907,7 +931,7 @@ namespace mutaborGUI {
 		mutASSERT (d);
 		if (!d) return NULL;
 
-		MutOutputGuidoFileDeviceShape * shape = 
+		MutOutputGuidoFileDeviceShape * shape =
 			new MutOutputGuidoFileDeviceShape(parent,wxID_ANY,d);
 		return shape;
 	}

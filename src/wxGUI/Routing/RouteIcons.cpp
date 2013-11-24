@@ -47,7 +47,10 @@ namespace mutaborGUI {
 	MutIcon NewBoxBitmap;
 	MutIcon ActiveChannelBitmap;
 	MutIcon PassiveChannelBitmap;
-
+	MutIcon DevicePlayBitmap;
+	MutIcon DevicePauseBitmap;
+	MutIcon DeviceStopBitmap;
+	MutIcon DeviceRecordBitmap;
 
 	static void initMutIcon(MutIcon & icon, 
 				const wxString & filename,
@@ -92,6 +95,18 @@ namespace mutaborGUI {
 			    wxBITMAP_TYPE_PNG);
 		initMutIcon(NewBoxBitmap,
 			    wxGetApp ().GetResourceName (_T ("TuningBox.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(DevicePlayBitmap,
+			    wxGetApp ().GetResourceName (_T ("16x16/InDevPlay.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(DeviceStopBitmap,
+			    wxGetApp ().GetResourceName (_T ("16x16/InDevStop.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(DevicePauseBitmap,
+			    wxGetApp ().GetResourceName (_T ("16x16/InDevPause.png")),
+			    wxBITMAP_TYPE_PNG);
+		initMutIcon(DeviceRecordBitmap,
+			    wxGetApp ().GetResourceName (_T ("16x16/InDevRecord.png")),
 			    wxBITMAP_TYPE_PNG);
 		return true;
 	}
