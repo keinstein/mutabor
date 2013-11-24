@@ -193,7 +193,7 @@ namespace mutabor {
 		wxString oldpath = config.GetPath();
 #endif
 		config.toLeaf(_T("Guido File Output"));
-		STUBC;
+		/* currently we don't have any parameters, here */
 		mutUnused(route);
 		config.toParent();
 		mutASSERT(oldpath == config.GetPath());
