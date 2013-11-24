@@ -141,7 +141,7 @@ namespace mutabor {
 			}
 
 		virtual mutString GetTypeName () const {
-			return N_("GIS output file.");
+			return N_("GIS output file");
 		}
 
 #ifdef WX
@@ -273,7 +273,7 @@ namespace mutabor {
 		mutint64 PrepareNextEvent();
 
 		virtual mutString GetTypeName () const {
-			return N_("GIS input file.");
+			return N_("GIS input file");
 		}
 
 #ifdef WX
