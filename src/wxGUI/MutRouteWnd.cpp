@@ -176,7 +176,7 @@ END_EVENT_TABLE()
 //WX_DELEGATE_TO_CONTROL_CONTAINER(MutRouteWnd, wxScrolledWindow)
 
 
-MutRouteWnd::MurFileDataType MutRouteWnd::MurFileData;
+MutFileDataType MutRouteWnd::MurFileData;
 
 MutRouteWnd::MutRouteWnd(wxWindow *parent, const wxPoint& pos, const wxSize& size)
         : wxScrolledWindow(parent, wxID_ANY, pos, size, 

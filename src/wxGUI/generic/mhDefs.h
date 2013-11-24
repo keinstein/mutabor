@@ -1,36 +1,25 @@
 /** \file  -*- C++ -*-
  ********************************************************************
- * Description
+ * Uncategorized definitions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mhDefs.h,v 1.24 2011/11/02 14:32:01 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008-2011 TU Dresden
+ *              changes after 2011/11 (c) by the authors
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:32:01 $
- * \version $Revision: 1.24 $
  * \license GPL
  *
- * $Log: mhDefs.h,v $
- * Revision 1.24  2011/11/02 14:32:01  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.23  2011-10-22 16:32:39  keinstein
- * commit to continue debugging on Linux/wine
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.22  2011-10-04 05:38:44  keinstein
- * some configuration fixes
- *
- * Revision 1.21  2011-09-27 20:13:25  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
- *
- * Revision 1.20  2011-02-20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
- *
- *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  ********************************************************************
  * \addtogroup templates
@@ -110,7 +99,23 @@ extern wxCSConv muCSConv;
 #else
 #endif
 
-wxString FileNameDialog(wxWindow * parent,
+struct MutFileDataType {
+	wxFileName name;
+	enum { 
+		Canceled,
+		Unknown,
+		TextRoute,
+		UTF8TextRoute,
+		XMLRoute1,
+		LogicSource
+	} type;
+	operator wxString() {
+		return name.GetPath();
+	}
+	MutFileDataType():name(),type(Unknown) {}
+};
+
+MutFileDataType FileNameDialog(wxWindow * parent,
                         int Command = CM_FILEOPEN,
                         wxString Filename = wxEmptyString);
 

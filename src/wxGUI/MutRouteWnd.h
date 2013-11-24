@@ -101,14 +101,19 @@ namespace mutaborGUI {
 		MutOutputDeviceShapeList OutputDevices;
 		MutBoxShapeList Boxes;
 	
-	
+#if 0
 		struct MurFileDataType
 		{
 			wxFileName name;
-			muConvAuto autoConverter;
+			enum { 
+				TextRoute,
+				UTF8TextRoute,
+				XMLRoute1
+			} type;
 		};
+#endif
 	
-		static MurFileDataType MurFileData;
+		static MutFileDataType MurFileData;
 	
 	
 	

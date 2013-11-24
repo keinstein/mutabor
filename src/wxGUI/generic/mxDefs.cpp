@@ -1,34 +1,26 @@
 /** \file 
  ********************************************************************
- * Description
+ * Uncategorized definitions.
  *
- * $Header: /home/tobias/macbookbackup/Entwicklung/mutabor/cvs-backup/mutabor/mutabor/src/wxGUI/generic/mxDefs.cpp,v 1.13 2011/11/02 14:32:01 keinstein Exp $
- * Copyright:   (c) 2008 TU Dresden
+ * Copyright:   (c) 2008-2011 TU Dresden
+ *              changes after 2011/11 (c) by the authors
  * \author  R. Krauße, Tobias Schlemmer <keinstein@users.berlios.de>
- * \date 
- * $Date: 2011/11/02 14:32:01 $
- * \version $Revision: 1.13 $
  * \license GPL
  *
- * $Log: mxDefs.cpp,v $
- * Revision 1.13  2011/11/02 14:32:01  keinstein
- * fix some errors crashing Mutabor on Windows
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
  *
- * Revision 1.12  2011-09-27 20:13:26  keinstein
- * * Reworked route editing backend
- * * rewireing is done by RouteClass/GUIRoute now
- * * other classes forward most requests to this pair
- * * many bugfixes
- * * Version change: We are reaching beta phase now
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
  *
- * Revision 1.11  2011-02-20 22:35:59  keinstein
- * updated license information; some file headers have to be revised, though
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * Revision 1.2  2010-11-21 13:15:51  keinstein
- * merged experimental_tobias
- *
- * Revision 1.1.2.1  2010-01-11 10:12:59  keinstein
- * added some .cvsignore files
  *
  *
  ********************************************************************
@@ -47,76 +39,59 @@ wxCSConv muCSConv(wxT("ISO-8859-1"));
 
 #endif
 
-wxString FileNameDialog(wxWindow * parent,
+MutFileDataType FileNameDialog(wxWindow * parent,
                         int Command,
                         wxString Filename)
 {
-#ifdef DEBUG
-	std::cout << "FileNameDialog: " << Command << std::endl;
-#endif
+	DEBUGLOG2(gui,_T("Command: %d"),Command);
 
 	static const wxString logic_sources(_("Mutabor tuning file (*.mut)|*.mut|Old Mutabor tuning file (*.mus)|*.mus|All files (*.*)|*.*"));
 
-	static const wxString route_sources(_("Mutabor routing file (*.mur)|*.mur|All files (*.*)|*.*"));
+	static const wxString route_sources(_("Mutabor routing file (*.murx)|*.murx|Old Mutabor routing file (*.mur)|*.mur|All files (*.*)|*.*"));
 
 	wxString title, filetypes,
 	dir(wxEmptyString), name(wxEmptyString) , ext(wxEmptyString);
 
 	int flags;
 
+	MutFileDataType retval;
 	switch (Command) {
 
 	case CM_FILEOPEN:
 		title = _("Which Mutabor file shall be loaded?");
-
 		filetypes = logic_sources;
-
 		flags = wxFD_CHANGE_DIR | wxFD_FILE_MUST_EXIST | wxFD_OPEN;
-
 		break;
 
 	case mutaborGUI::CM_EXECUTE:
 		title = _("Which Mutabor file shall be executed?");
-
 		filetypes = logic_sources;
-
 		flags = wxFD_CHANGE_DIR | wxFD_FILE_MUST_EXIST | wxFD_OPEN;
-
 		break;
 
 	case CM_FILESAVEAS:
 		title = _("Enter the new Mutabor file name, please!");
-
 		filetypes = logic_sources;
-
 		flags = wxFD_CHANGE_DIR | wxFD_OVERWRITE_PROMPT | wxFD_SAVE;
-
 		break;
 
 	case mutaborGUI::CM_ROUTELOAD:
 		title = _("Which Mutabor route file shall be loaded?");
-
 		filetypes = route_sources;
-
 		flags = wxFD_CHANGE_DIR | wxFD_FILE_MUST_EXIST | wxFD_OPEN;
-
 		break;
 
 	case mutaborGUI::CM_ROUTESAVE:
-
 	case mutaborGUI::CM_ROUTESAVEAS:
 		title = _("Enter the new Mutabor route file name, please!");
-
 		filetypes = route_sources;
-
 		flags = wxFD_CHANGE_DIR | wxFD_OVERWRITE_PROMPT | wxFD_SAVE;
-
 		break;
 
 	default:
 		wxLogError(_("Unexpected Command Id in FileNameDialog: %d"),Command);
-
-		return wxString(_T(""));
+		retval.type = MutFileDataType::Unknown;
+		return retval;
 	}
 
 	if (!Filename.IsEmpty()) {
@@ -126,20 +101,46 @@ wxString FileNameDialog(wxWindow * parent,
 		dir = splitter.GetPath();
 	}
 
-	wxFileDialog  * FileSelector = new wxFileDialog(parent, title, dir, name, filetypes,
-
-#ifdef __WXCOCOA__
-	                               0
-#else
-	                               flags
-#endif
-	                               //	,parent
-	                                               );
+	wxFileDialog  * FileSelector = new wxFileDialog(parent, title, dir, name, filetypes, flags);
 
 	int cmd = FileSelector->ShowModal();
 
-	wxString retval;
-	retval = (cmd == wxID_OK) ? (FileSelector->GetPath()) : wxString(wxEmptyString);
+	if (cmd != wxID_OK) {
+		retval.type  = MutFileDataType::Canceled;
+		return retval;
+	}
+	retval.name = FileSelector->GetPath();
+	switch (Command) {
+	case CM_FILEOPEN:
+	case mutaborGUI::CM_EXECUTE:
+	case CM_FILESAVEAS:
+			retval.type=MutFileDataType::LogicSource;
+		break;
+	case mutaborGUI::CM_ROUTELOAD:
+	case mutaborGUI::CM_ROUTESAVE:
+	case mutaborGUI::CM_ROUTESAVEAS:
+		switch (FileSelector->GetFilterIndex()) {
+		case 0: 
+			retval.type = MutFileDataType::XMLRoute1;
+			break;
+		case 1: 
+			retval.type = MutFileDataType::UTF8TextRoute;
+			break;
+		default:
+			wxString ext = retval.name.GetExt().Upper();
+			if (ext == _T("MUR")) {
+				retval.type = MutFileDataType::UTF8TextRoute;
+			} else if (ext == _T("MURX")) {
+				retval.type = MutFileDataType::XMLRoute1;
+			} else retval.type = MutFileDataType::Unknown;
+		}
+		break;
+
+	default:
+		wxLogError(_("Unexpected Command Id in FileNameDialog: %d"),Command);
+		retval.type = MutFileDataType::Unknown;
+		return retval;
+	}
 
 	FileSelector->Destroy();
 
