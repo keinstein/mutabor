@@ -374,6 +374,8 @@ namespace mutaborGUI {
 		virtual void createPauseButton();
 		virtual void createRecordButtons();
 
+		void PlayButtonPressed(wxCommandEvent & event);
+
 #if defined(_MSC_VER)
 #pragma warning(pop) // Restore warnings to previous state.
 #endif

@@ -87,6 +87,9 @@ EVT_MENU(CM_LEFT_DOUBLE_CLICK,MutDeviceShape::CmLeftDblClick)
 EVT_MENU(CM_MOVE_UP, MutDeviceShape::CmMoveIcon)
 EVT_MENU(CM_MOVE_DOWN, MutDeviceShape::CmMoveIcon)
 EVT_MENU(CM_DEVICE_STATE_CHANGED, MutDeviceShape::CmDeviceNotification)
+EVT_BUTTON(CM_PLAYDEVICE, MutDeviceShape::PlayButtonPressed)
+EVT_BUTTON(CM_PAUSEDEVICE, MutDeviceShape::PlayButtonPressed)
+EVT_BUTTON(CM_STOPDEVICE, MutDeviceShape::PlayButtonPressed)
 END_EVENT_TABLE()
 
 using namespace mutabor;
@@ -378,6 +381,25 @@ namespace mutaborGUI {
 		wxSize size = playbuttons->GetMinSize();
 		playbuttons->SetDimension(0,0,size.GetWidth(),size.GetHeight());
 	}
+
+	template <class T>
+	void MutDeviceShape<T>::PlayButtonPressed(wxCommandEvent & event)
+	{
+		if (!device) return;
+		if (!device->IsOpen()) return;
+		switch (event.GetId()) {
+		case CM_PLAYDEVICE:
+			device -> Play();
+			break;
+		case CM_PAUSEDEVICE:
+			device -> Pause();
+			break;
+		case CM_STOPDEVICE:
+			device -> Stop();
+			break;
+		}
+	}
+	
 
 	template <class T>
 	void MutDeviceShape<T>::DoLeftDblClick() {
